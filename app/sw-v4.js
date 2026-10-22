@@ -1,4 +1,4 @@
-const CACHE = 'bfr-conecta-v59';
+const CACHE = 'bfr-conecta-v60';
 const CACHE_PREFIX = 'bfr-conecta-';
 const SHELL_PATHS = new Set(['/', '/index.html']);
 // A query precisa de bater com a que o index.html pede (?v=12 / ?v=2): caches.match compara a URL

@@ -1,0 +1,37 @@
+2072c2072
+<   #teacherView > :not([data-teacher-professional]):not([data-bfr-reading-panel]):not([data-bfr-reading-assist-usage]):not([data-teacher-aee-bridge]) { display:none !important; }
+---
+>   #teacherView > :not([data-teacher-professional]):not([data-bfr-reading-panel]):not([data-bfr-reading-assist-usage]):not([data-teacher-aee-bridge]):not([data-teacher-inbox]) { display:none !important; }
+5579c5579
+<           function setProfessionalTeacherSection(section = 'inicio') { const root = teacherView?.querySelector('[data-teacher-professional]'); if (!root) return false; const key = String(section).replace(/^professor-/, ''); const target = root.querySelector(`[data-teacher-screen="${key}"]`); if (!target) return false; document.querySelectorAll('#appShell .content').forEach(view => view.classList.add('hidden')); teacherView.classList.remove('hidden'); root.querySelectorAll('[data-teacher-screen]').forEach(view => view.classList.toggle('hidden', view !== target)); document.querySelectorAll('[data-teacher-nav-tab]').forEach(item => item.classList.toggle('active', item.dataset.teacherNavTab === key)); document.querySelector('.breadcrumb b').textContent = { inicio:'Início', turmas:'Minhas turmas', atividades:'Atividades', avaliacoes:'Avaliações', frequencia:'Frequência', agenda:'Agenda', biblioteca:'Biblioteca', comunicacao:'Comunicação', espaco:'Meu espaço', conteudos:'Conteúdos trabalhados', diario:'Diário de aula', planejamento:'Planejamento', relatorios:'Relatórios pedagógicos', calendario:'Calendário docente', notificacoes:'Notificações e pendências' }[key] || 'Área do professor'; if (key === 'turmas') teacherRenderClassDetail(); return true; }
+---
+>           function setProfessionalTeacherSection(section = 'inicio') { const root = teacherView?.querySelector('[data-teacher-professional]'); if (!root) return false; const key = String(section).replace(/^professor-/, ''); const target = root.querySelector(`[data-teacher-screen="${key}"]`); if (!target) return false; document.querySelectorAll('#appShell .content').forEach(view => view.classList.add('hidden')); teacherView.classList.remove('hidden'); root.querySelectorAll('[data-teacher-screen]').forEach(view => view.classList.toggle('hidden', view !== target)); document.querySelectorAll('[data-teacher-nav-tab]').forEach(item => item.classList.toggle('active', item.dataset.teacherNavTab === key)); document.querySelector('.breadcrumb b').textContent = { inicio:'Início', turmas:'Minhas turmas', atividades:'Atividades', avaliacoes:'Avaliações', frequencia:'Frequência', agenda:'Agenda', biblioteca:'Biblioteca', comunicacao:'Comunicação', espaco:'Meu espaço', conteudos:'Conteúdos trabalhados', diario:'Diário de aula', planejamento:'Planejamento', relatorios:'Relatórios pedagógicos', calendario:'Calendário docente', notificacoes:'Notificações e pendências' }[key] || 'Área do professor'; if (key === 'turmas') teacherRenderClassDetail(); window.syncTeacherInboxVisibility?.(); return true; }
+11046a11047,11054
+>        function syncTeacherInboxVisibility() {
+>          const inbox = teacherView?.querySelector('[data-teacher-inbox]');
+>          if (!inbox) return;
+>          const screen = teacherView?.querySelector('[data-teacher-professional] [data-teacher-screen]:not(.hidden)');
+>          const key = screen?.dataset?.teacherScreen || '';
+>          inbox.classList.toggle('hidden', !(key === 'frequencia' && Boolean(academicState?.classId)));
+>        }
+>        window.syncTeacherInboxVisibility = syncTeacherInboxVisibility;
+11064a11073
+>          syncTeacherInboxVisibility();
+12987,12988c12996,13003
+<              if (view.querySelector('[data-bfr-reading-panel]')) return;
+<              if (readingTeacherScope().kind === 'wait') return;
+---
+>              const panelScope = readingTeacherScope();
+>              const existingPanel = view.querySelector('[data-bfr-reading-panel]');
+>              if (existingPanel) {
+>                const panelScopeKey = panelScope.kind === 'wait' ? '' : `${user().id}|${panelScope.kind}|${panelScope.kind === 'teacher' ? [...panelScope.classIds].sort().join(',') : ''}`;
+>                if (panelScope.kind !== 'wait' && panelScopeKey !== readingState.scopeKey) { existingPanel.remove(); view.querySelector('[data-bfr-reading-assist-usage]')?.remove(); readingState.loaded = false; }
+>                else return;
+>              }
+>              if (panelScope.kind === 'wait') return;
+18299c18314
+<     gradeGridStatus(`${salvos.length} de ${payload.length} lançamento(s) salvos.${salvos.length !== payload.length ? ' O banco não confirmou todos: atualize antes de continuar.' : ''}`);
+---
+>     const confirmacao = `${salvos.length} de ${payload.length} lançamento(s) salvos.${salvos.length !== payload.length ? ' O banco não confirmou todos: atualize antes de continuar.' : ''}`;
+18303a18319
+>     gradeGridStatus(confirmacao);

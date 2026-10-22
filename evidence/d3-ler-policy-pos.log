@@ -1,0 +1,2 @@
+HTTP 201
+polname: school_activities_staff_insert  |  polcmd: *  |  using_expr: NULL::boolean  |  with_check_expr: ((bfr_is_schedule_manager() OR (is_aee() AND bfr_teacher_can_manage_class_subject(class_id, subject)) OR ((("current_role"())::text = 'pedagogical'::text) AND bfr_teacher_can_manage_class_subject(class_id, subject))) AND (published_by = auth.uid()))

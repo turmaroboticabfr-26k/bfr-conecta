@@ -1,0 +1,260 @@
+{
+  "publicacao": "v60",
+  "publicado_em": "2026-10-22T21:12:15.459Z",
+  "version_id": "79112a32-8953-4947-9893-73f88aa2132e",
+  "escopo": "v60 = v59 + exatamente 5 mudanças no index.html (26 linhas, diff congelado byte a byte): (1) whitelist do teacherView ganha :not([data-teacher-inbox]) — D1; (2) navegação chama syncTeacherInboxVisibility; (3) função nova de sincronização do inbox; (4) guarda do scopeKey do painel de Leitura Assistida — D2; (5) confirmação de Salvar lançamentos movida para depois do ciclo de repaint — D4. SW = SW do ar com UMA linha trocada (CACHE v59 → v60). rp.js e os 12 assets intocados. O D3 (INSERT de atividade escolar pelo papel pedagogical) foi aplicado no banco em passada separada de SQL, fora deste deploy.",
+  "antes": {
+    "html": {
+      "md5": "2e4036071b6e8a4ad232adab61b1b885",
+      "bytes": 3480118,
+      "arquivo": "bfr-candidata-v59-professor/index.html"
+    },
+    "sw": {
+      "md5": "0d5294f72d9d8ff41a241c7bfc8aa8b4",
+      "bytes": 3585,
+      "cache": "bfr-conecta-v59",
+      "arquivo": "ar-assets-v59-live/sw-v4.js"
+    },
+    "js": {
+      "md5": "a83f77baba7453851b287080686c7afb",
+      "bytes": 51742,
+      "arquivo": "ar-assets-v59-live/bfr-responsive-presentation.js"
+    }
+  },
+  "depois": {
+    "html": {
+      "md5": "36feaad4fb5a033a2f011de336a4667e",
+      "bytes": 3481301,
+      "arquivo": "bfr-candidata-v60-src/index.html"
+    },
+    "sw": {
+      "md5": "042670477d613d3044b4e4298a891db4",
+      "bytes": 3585,
+      "cache": "bfr-conecta-v60",
+      "linhas_diferentes_do_ar_anterior": 1
+    },
+    "js": {
+      "md5": "a83f77baba7453851b287080686c7afb",
+      "bytes": 51742,
+      "inalterado_desde_v59": true
+    }
+  },
+  "candidata": {
+    "index_md5": "36feaad4fb5a033a2f011de336a4667e",
+    "index_bytes": 3481301,
+    "js_md5": "a83f77baba7453851b287080686c7afb",
+    "sw_md5": "042670477d613d3044b4e4298a891db4",
+    "mudancas_logicas": 5,
+    "linhas_de_diff": 26,
+    "linhas_de_diff_totais": 38,
+    "hunks_sw": 1,
+    "linhagem": "preflight v60: index da candidata sobre o v59 do ar (2e403607), diff byte-igual ao esperado congelado, 5 assinaturas novas ausentes na base; rp.js e 12 assets byte-idênticos ao ar; só a linha CACHE do sw-v4.js mudou (v59 → v60)",
+    "reversibilidade": "devolver bfr-candidata-v59-professor/index.html (2e403607) como index.html e ar-assets-v59-live/sw-v4.js (0d5294f7, CACHE v59) como sw-v4.js ao SRC, rebuild e wrangler deploy restaura o v59 byte a byte; rp.js (a83f77ba) e os 12 assets são comuns aos dois"
+  },
+  "portoes": {
+    "preflight": {
+      "arquivo": "preflight-v60.json",
+      "problemas": 0,
+      "ar_igual_base59": true,
+      "diff_index_igual_ao_esperado": true,
+      "assinaturas_novas": "5/5",
+      "diff_sw_igual_ao_esperado": true,
+      "assets_iguais_ao_ar": "12/12"
+    },
+    "bundle": {
+      "html_igual_ao_src": true,
+      "html_md5": "36feaad4fb5a033a2f011de336a4667e",
+      "sw_igual_ao_src": true,
+      "sw_dif_do_ar": 1,
+      "cache_no_sw": "const CACHE = 'bfr-conecta-v60'",
+      "precache": "bfr-responsive-presentation.js?v=14",
+      "v59_ainda_no_sw": false,
+      "rp_public_md5": "a83f77baba7453851b287080686c7afb",
+      "rp_igual_ao_src": true,
+      "assets_iguais": 12,
+      "v59_marcas": {
+        "rota_sync_showScreen": 1,
+        "css_porta_leitura": 17,
+        "leitura_lotes_300": 3,
+        "leitura_teto_12s": 6,
+        "leitura_escopo_turma": 3,
+        "frequencia_merge": 6,
+        "frequencia_7d": 2,
+        "autoDate": 2,
+        "classOpen": 6,
+        "day_entries": 3,
+        "seedItems": 0,
+        "sample_fn": 0
+      },
+      "v60_marcas": {
+        "whitelist_inbox": 1,
+        "sync_fn": 1,
+        "sync_chamadas": 5,
+        "painel_scope_guard": 1,
+        "confirmacao_var": 1
+      }
+    },
+    "http": {
+      "arquivo_fetches": "prove-v60-no-ar.json",
+      "html": {
+        "md5": "36feaad4fb5a033a2f011de336a4667e",
+        "bytes": 3481301,
+        "fetches_iguais": 3
+      },
+      "sw": {
+        "md5": "042670477d613d3044b4e4298a891db4",
+        "cache": "bfr-conecta-v60"
+      },
+      "rp": "a83f77baba7453851b287080686c7afb",
+      "assets_ok": "12/12"
+    },
+    "cliente": {
+      "cache_unica": [
+        "bfr-conecta-v60"
+      ],
+      "sw_ativa": "activated",
+      "controlado": true,
+      "script_do_registro": "https://bfr-conecta.turmaroboticabfr.workers.dev/sw-v4.js?v=45",
+      "md5_do_body_na_cache": "36feaad4fb5a033a2f011de336a4667e",
+      "marcadores": {
+        "scripts_inline": 103,
+        "readingTeacherScope": 3,
+        "dailyKeys": 6,
+        "classOpen": 6,
+        "day_entries": 3,
+        "seedItems": 0,
+        "sample_fn": 0,
+        "whitelist_inbox": 1,
+        "sync_fn": 1,
+        "painel_scope_guard": 1,
+        "confirmacao_var": 1,
+        "topbar_lia": false,
+        "appbar": false,
+        "shell": true
+      },
+      "erros_console": 2,
+      "urls_404": [
+        "https://bfr-conecta.turmaroboticabfr.workers.dev/cdn-cgi/rum?",
+        "https://bfr-conecta.turmaroboticabfr.workers.dev/cdn-cgi/rum?"
+      ],
+      "erros_urls_medidas": [
+        "https://bfr-conecta.turmaroboticabfr.workers.dev/cdn-cgi/rum? (beacon da Cloudflare, como no v55-v59)"
+      ],
+      "so_404_aceitaveis": true
+    },
+    "deploy": {
+      "frase_wrangler": "No updated asset files to upload. Proceeding with deployment...",
+      "upload": "3449.33 KiB / gzip: 766.50 KiB",
+      "tempo_s": "12.17",
+      "auth": "grant OAuth do wrangler, com CLOUDFLARE_API_TOKEN/API_KEY/ACCOUNT_ID apagados do ambiente (o token de ~/.cf-token responde 10000 = sem escrita no worker)"
+    }
+  },
+  "validacao_previa": {
+    "metodo": "A/B no harness com fixtures sintéticas e DOM real (mede-v60-ab-d1d2d4.json): v59 × v60 nas larguras 390 e 1280, D1/D2/D4 + modal de correção #240",
+    "celulas": {
+      "v59-prefixo@390": {
+        "d1_frequencia": "oculto",
+        "d1_volta": "oculto",
+        "d2_travou": true,
+        "d2_regenerou": false,
+        "d4_statusDepois": "Regra da escola: Prova 100%. A média aparece só quando as 1 categorias que se aplicam têm ",
+        "d4_ehConfirmacao": false,
+        "d4_ehRegra": true,
+        "modal_240": true,
+        "fx_escreve_nota": true
+      },
+      "v59-prefixo@1280": {
+        "d1_frequencia": "oculto",
+        "d1_volta": "oculto",
+        "d2_travou": true,
+        "d2_regenerou": false,
+        "d4_statusDepois": "Regra da escola: Prova 100%. A média aparece só quando as 1 categorias que se aplicam têm ",
+        "d4_ehConfirmacao": false,
+        "d4_ehRegra": true,
+        "modal_240": true,
+        "fx_escreve_nota": true
+      },
+      "v60-posfixo@390": {
+        "d1_frequencia": "visível 193px",
+        "d1_volta": "visível 193px",
+        "d2_travou": true,
+        "d2_regenerou": true,
+        "d4_statusDepois": "1 de 1 lançamento(s) salvos.",
+        "d4_ehConfirmacao": true,
+        "d4_ehRegra": false,
+        "modal_240": true,
+        "fx_escreve_nota": true
+      },
+      "v60-posfixo@1280": {
+        "d1_frequencia": "visível 187px",
+        "d1_volta": "visível 187px",
+        "d2_travou": false,
+        "d2_regenerou": true,
+        "d4_statusDepois": "1 de 1 lançamento(s) salvos.",
+        "d4_ehConfirmacao": true,
+        "d4_ehRegra": false,
+        "modal_240": true,
+        "fx_escreve_nota": true
+      }
+    },
+    "resumo": {
+      "d1_frequencia_visivel": "2/4",
+      "d2_regenerou": "2/4",
+      "d4_confirmacao": "2/4",
+      "modal_240_abre": "4/4",
+      "escrita_de_nota_nas_duas_bandas": "4/4 (D4 é defeito de exibição, não de gravação)"
+    },
+    "achados_compartilhados": [
+      "primeiro clique engolido na aba notas @390 (pré-existente, material do item 42, não tocado pela v60)",
+      "churn da v59 nos command-cards (~300 muts/s) eliminado na v60; hipótese \"whitelist do D1 causa o loop\" REFUTADA por sonda-loop-lia8.mjs",
+      "404-storm da v60@390 é exclusivo do ambiente de fixture (lia-avatar.png não servido pelo harness; produção serve 200)"
+    ],
+    "nao_testado": [
+      "toda escrita no banco (nota, frequência, diário, planejamento, conteúdo, atividade, recado, chat)",
+      "prova do escopo de leitura/recados dentro de uma sessão HTTP real do app",
+      "LIA enviar/responder (Edge Function de IA)",
+      "CSV/impressão, conflito de horário e percurso com professor real",
+      "E2E do D3 via PostgREST com sessão montada (as contas sintéticas foram apagadas em 22/10; remintar exige OK próprio)"
+    ]
+  },
+  "d3_sql": {
+    "status": "APLICADO no banco em 22/10, em passada separada desta publicação",
+    "arquivos": [
+      "sql-d3-school-activities-insert.sql",
+      "sql-d3-school-activities-insert-reversao.sql"
+    ],
+    "prova": "dry-run comportamental em transação com rollback: ANTES 42501 (defeito), DEPOIS id retornado (braço pedagogical aprova); política viva lida do catálogo com pg_get_expr; conferência pós-aplicação 0 restos de sonda e 0 linhas escritas",
+    "diarios": [
+      "d3-aplicacao.log",
+      "d3-pos-dryrun-conferencia.sql",
+      "d3-ler-policy-pos.sql"
+    ],
+    "reversao": "congelada em sql-d3-school-activities-insert-reversao.sql, não executada"
+  },
+  "evidencias": {
+    "preflight": "preflight-v60.json",
+    "diff": "diff-v60-esperado.txt (5 mudanças lógicas, 26 linhas)",
+    "bundle": "confere-bundle-v60.json",
+    "http": "prove-v60-no-ar.json",
+    "cliente": "prova-sw-v60.json",
+    "deploy_log": "deploy-v60.log",
+    "deployment_list": "deploy-list-v60.json",
+    "ab_harness": "mede-v60-ab-d1d2d4.json",
+    "sondas": [
+      "sonda-loop-lia8.mjs",
+      "sonda-404-v60.mjs"
+    ],
+    "candidata": "bfr-candidata-v60-src/ (14 arquivos)",
+    "bundle_dir": "worker-deploy-v60/",
+    "captura": "medidas-v60/ao-vivo-390.png"
+  },
+  "reversao": {
+    "instrucao": "Devolver bfr-candidata-v59-professor/index.html (md5 2e403607, 3.480.118 B) como index.html e ar-assets-v59-live/sw-v4.js (md5 0d5294f7, CACHE bfr-conecta-v59) como sw-v4.js ao SRC, rebuild, confere-bundle com os md5s do v59 e wrangler deploy. O rp.js (a83f77ba) e os 12 assets não mudam.",
+    "arquivos": {
+      "html": "bfr-candidata-v59-professor/index.html",
+      "sw": "ar-assets-v59-live/sw-v4.js"
+    },
+    "requer_ok": true
+  },
+  "nota": "Nada além do app foi tocado nesta publicação: 0 escritas no banco, 0 mudanças de policy. O SQL do D3 foi aplicado em transação separada antes do deploy, com reversão congelada e não executada; a prova de escrita de nota no A/B usa fixtures sintéticas (echo POST grades), sem linha real gravada."
+}

@@ -1,11 +1,10 @@
-# Manifesto — v59
+# Manifesto — v60
 
-Deployment `06f62d38-282d-4ce7-80d8-de4cf1e0f46f`, version `fc1b3648-7562-4352-a677-ebab223afc78`, publicado em 22/10/2026 11:19 UTC.
+Deployment criado 22/10/2026 21:12:15Z, version `79112a32-8953-4947-9893-73f88aa2132e`.
 
 | Arquivo | Bytes | md5 |
 |---|---:|---|
 | `.gitignore` | 172 | `e5aacfad6410f8c8e794e3684515a98b` |
-| `README.md` | 2413 | `3ca8f6721ab4fbf685338e389612bcf9` |
 | `app/bfr-app-logo.png` | 448736 | `9578faf20083e3cb4d572af5ba10d6ed` |
 | `app/bfr-responsive-presentation.js` | 51742 | `a83f77baba7453851b287080686c7afb` |
 | `app/bfr-teacher-arrivals.js` | 13975 | `dcb69a88c8f4e93a5f818233cf185300` |
@@ -15,22 +14,33 @@ Deployment `06f62d38-282d-4ce7-80d8-de4cf1e0f46f`, version `fc1b3648-7562-4352-a
 | `app/horario-matutino-2026.png` | 501591 | `5d181a1754a45046bc6907a4d9b420f6` |
 | `app/horario-vespertino-2026.pdf` | 1477823 | `954621f29537a9be136c0bd9180e8aa3` |
 | `app/horario-vespertino-2026.png` | 480258 | `58854bb4f3ce5e4dffcc7a1a34c31271` |
-| `app/index.html` | 3480118 | `2e4036071b6e8a4ad232adab61b1b885` |
+| `app/index.html` | 3481301 | `36feaad4fb5a033a2f011de336a4667e` |
 | `app/lia-avatar.png` | 1736466 | `87e5fc3c4f8bc68ed4535c5cf032c47c` |
 | `app/lia-avatar.svg` | 352 | `fd080cd554c553567cb6cd82bbeff0de` |
 | `app/manifest.json` | 484 | `68d155183c80e3e554466ce2415cb268` |
-| `app/sw-v4.js` | 3585 | `0d5294f72d9d8ff41a241c7bfc8aa8b4` |
+| `app/sw-v4.js` | 3585 | `042670477d613d3044b4e4298a891db4` |
 | `docs/aplicacao-escopo-leitura-mensagens-2026-10-22.md` | 3160 | `0480dd89d6216754eb26aa3a14ba1a77` |
 | `docs/manual-v59-2026-10-22.json` | 15306 | `f1b2e9ddcfca23bc5398b8d86c88c344` |
 | `docs/manual-v59-2026-10-22.md` | 6107 | `5422e8c8d230f9ab48133221314a0594` |
 | `docs/relatorio-professor-v59-2026-10-22.md` | 35304 | `00a504a39675def138d2051c94f6b33b` |
 | `evidence/audit-publicacao-v59.json` | 9966 | `475a376e88c3081e45c88f8f2d65de17` |
+| `evidence/audit-publicacao-v60.json` | 10644 | `29e215a7acc8769dd6cce0ed32258798` |
 | `evidence/audit-rotas-no-ar.json` | 1838 | `9cf08f93d723bb13ebe09a4529eaae07` |
 | `evidence/cheat-sintaxe-v59b.log` | 54 | `f6ce6aaf9ab3587e4557ba509085706d` |
 | `evidence/confere-bundle-v59.json` | 1163 | `e1c206a19147f04f7d4810c4c2920aae` |
+| `evidence/confere-bundle-v60.json` | 1308 | `361b2be868b6786d057c78ff4a556024` |
+| `evidence/d3-aplicacao.log` | 9 | `6df4171c2e3b4fe8f4f362a02411c967` |
+| `evidence/d3-dryrun-antes.sql` | 424 | `39161953f89285a005bfe2656d96188a` |
+| `evidence/d3-dryrun-depois.sql` | 917 | `f921f26c592b706cf7ca7f9d99cb7431` |
+| `evidence/d3-ler-policy-pos.log` | 364 | `1794f896c33e4a7d72a5b7afa050081c` |
+| `evidence/d3-pos-aplicacao-conferencia.log` | 74 | `6d7877e38b4e3da212bd4beab2051205` |
+| `evidence/d3-pos-dryrun-conferencia.log` | 72 | `ebb3c80cc56f6c06970aaf3b27fe0861` |
 | `evidence/deploy-list-v59.json` | 4132 | `b7b0035d9d48136e5c4b4074be43850c` |
+| `evidence/deploy-list-v60.json` | 3010 | `8768198fc6bf7bca019508d6fe87edae` |
 | `evidence/deploy-v59.log` | 688 | `9643135248c3726966bfece257f2fa58` |
+| `evidence/deploy-v60.log` | 695 | `8ec2e275ac2ed3488cd4a1171d60b996` |
 | `evidence/diff-v58-v59.txt` | 143027 | `69c49ebadca6b3484493897a4b1d24f7` |
+| `evidence/diff-v60-esperado.txt` | 4919 | `f4da26a3cff212bca9f5c6defe122fb9` |
 | `evidence/manual-v59-e2e-atividade.json` | 2032 | `a24c63a6fc2e58b6d4b1104346d8e437` |
 | `evidence/manual-v59-e2e-controles.json` | 4870 | `4f9e10eb5c3d9d364d1542cd4210d7f1` |
 | `evidence/manual-v59-e2e-correcao.json` | 2415 | `7f5aa52fb485b14197da5ca51c0be04c` |
@@ -40,6 +50,16 @@ Deployment `06f62d38-282d-4ce7-80d8-de4cf1e0f46f`, version `fc1b3648-7562-4352-a
 | `evidence/manual-v59-e2e-nota.json` | 3918 | `2a0d6aea161187ce60e907a36c984d37` |
 | `evidence/manual-v59-e2e-recado.json` | 1382 | `d28b3d004873f815f6e7e3487ba792f7` |
 | `evidence/manual-v59-e2e-relatorios.json` | 3901 | `4eac97e537855a2d96727b29eaf01002` |
+| `evidence/mede-v60-ab-d1d2d4.json` | 67019 | `e3ffb86bbc2d89281170ceb99ba60528` |
+| `evidence/preflight-v60.json` | 4262 | `1f1e3f762769b2f181faa94d1002f3b8` |
+| `evidence/prove-v60-no-ar.json` | 2135 | `9699d4d1f4cda95d16aad437eaccb467` |
+| `evidence/sonda-404-v60.mjs` | 1780 | `5e7f352b5c5809ffc5c65aa89c44347c` |
+| `evidence/sonda-loop-lia8.mjs` | 2338 | `e3f7ebf0139bf827d122c2cd0e288ac1` |
+| `evidence/sql-d3-school-activities-insert-reversao.sql` | 461 | `07bd80319d3bc4a515e67d34bf54abcf` |
+| `evidence/sql-d3-school-activities-insert.sql` | 1126 | `6766c056c40237803cc1c6739dc617c6` |
+| `MANIFEST.md` | 3563 | `450e380e4a49a028a9f09e4a03db476b` |
+| `README.md` | 2413 | `3ca8f6721ab4fbf685338e389612bcf9` |
+| `scripts/manifest.mjs` | 1212 | `e568fa36bb9c864121eca6759b2815b2` |
 | `sql/e2e-activities-policies.sql` | 272 | `8c1bf30d4242a17b6d71b61f48120370` |
 | `sql/e2e-cleanup.sql` | 1351 | `60a66f9de84e39555490241d2ce61c2d` |
 | `sql/e2e-estado-final.sql` | 4773 | `d451de315fdf8061a3c7faa2d8ddcdaf` |
