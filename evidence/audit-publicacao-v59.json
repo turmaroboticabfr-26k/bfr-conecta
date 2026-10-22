@@ -1,0 +1,287 @@
+{
+  "publicacao": "v59",
+  "publicado_em": "2026-10-22T11:19:13.654346Z",
+  "deployment_id": "06f62d38-282d-4ce7-80d8-de4cf1e0f46f",
+  "version_id": "fc1b3648-7562-4352-a677-ebab223afc78",
+  "escopo": "Aba do Professor: 35 hunks no index.html (+178/−70). Sincroniza a rota no showScreen do módulo seguro; remove dados inventados (seedItems/sample); liberta o painel de leitura do portão CSS; leitura do perfil restrita às turmas do professor (lotes 300, teto 12 s, retry); rótulos de nota com matéria+bimestre; frequência com próxima aula em 7 dias, data-autoDate e merge diária+aula; central da turma com classOpen e Voltar que fecha; painel inicial varre 7 dias e exporta BFR_TEACHER_DAY_ENTRIES; busca de aluno restrita às abas certas. Zero mudanças de layout global, papéis, banco ou outros painéis.",
+  "antes": {
+    "html": {
+      "md5": "31f209b6a23b878f6fd968a9285bdbad",
+      "bytes": 3468610,
+      "arquivo": "ar-html-v58-live.html"
+    },
+    "sw": {
+      "md5": "8000099c0dfa9a01af24a2da917155e2",
+      "bytes": 3585,
+      "cache": "bfr-conecta-v58",
+      "arquivo": "ar-sw-v58-live.js"
+    },
+    "js": {
+      "md5": "a83f77baba7453851b287080686c7afb",
+      "bytes": 51742,
+      "arquivo": "ar-js-v58-live.js"
+    }
+  },
+  "depois": {
+    "html": {
+      "md5": "2e4036071b6e8a4ad232adab61b1b885",
+      "bytes": 3480118,
+      "arquivo": "ar-html-v59-live.html"
+    },
+    "sw": {
+      "md5": "0d5294f72d9d8ff41a241c7bfc8aa8b4",
+      "bytes": 3585,
+      "cache": "bfr-conecta-v59",
+      "linhas_diferentes_do_ar_anterior": 1
+    },
+    "js": {
+      "md5": "a83f77baba7453851b287080686c7afb",
+      "bytes": 51742,
+      "inalterado_desde_v58": true
+    }
+  },
+  "candidata": {
+    "index_md5": "2e4036071b6e8a4ad232adab61b1b885",
+    "index_bytes": 3480118,
+    "js_md5": "a83f77baba7453851b287080686c7afb",
+    "js_bytes": 51742,
+    "sw_md5_no_src": "0d5294f72d9d8ff41a241c7bfc8aa8b4",
+    "hunks_diff_padrao": 35,
+    "linhas_adicionadas": 178,
+    "linhas_removidas": 70,
+    "hunks_sw": 1,
+    "linhagem": "preflight v59: index da candidata (2e403607) sobre o v58 do ar; rp.js e 12 assets byte-idênticos ao ar; só a linha CACHE do sw-v4.js mudou (v58 → v59)",
+    "reversibilidade": "devolver ar-html-v58-live.html (31f209b6) como index.html e ar-sw-v58-live.js (8000099c, CACHE v58) como sw-v4.js ao SRC, rebuild e wrangler deploy restaura o v58 byte a byte; rp.js (a83f77ba) e os 12 assets são comuns aos dois"
+  },
+  "portoes": {
+    "preflight": {
+      "arquivo": "preflight-v59.json",
+      "problemas": [],
+      "assets_iguais": 12,
+      "assets_total": 12,
+      "marcas": {
+        "rota sync showScreen": 1,
+        "css porta leitura": 1,
+        "leitura em lotes 300": 1,
+        "teto 12s leitura": 1,
+        "rotulo nota materia+bimestre": 1,
+        "frequencia proxima aula 7d": 1,
+        "classOpen": 1,
+        "BFR_TEACHER_DAY_ENTRIES": 1,
+        "autoDate": 1,
+        "frequencia merge aluno|data": 1,
+        "leitura escopada por turma": 1,
+        "seedItems ausente": true,
+        "sample( ausente": true
+      }
+    },
+    "prepara_src": {
+      "arquivo": "prepara-src-v59.txt",
+      "verde": true,
+      "ultimas_linhas": [
+        "5) SRC pronto em bfr-candidata-v59-src/: 14 arquivos",
+        "6) SRC == pasta da candidata (SW exceto o CACHE): 14/14",
+        "PORTÃO PREPARA-SRC: 4/4 VERDE"
+      ]
+    },
+    "bundle": {
+      "html_igual_ao_src": true,
+      "sw_igual_ao_src": true,
+      "sw_dif_do_ar": 1,
+      "cache": "const CACHE = 'bfr-conecta-v59'",
+      "precache": "bfr-responsive-presentation.js?v=14",
+      "rp_public_md5": "a83f77baba7453851b287080686c7afb",
+      "rp_igual_ao_src": true,
+      "assets_iguais": 12,
+      "v59_marcas": {
+        "rota_sync_showScreen": 1,
+        "css_porta_leitura": 17,
+        "leitura_lotes_300": 3,
+        "leitura_teto_12s": 6,
+        "leitura_escopo_turma": 3,
+        "frequencia_merge": 6,
+        "frequencia_7d": 2,
+        "autoDate": 2,
+        "classOpen": 6,
+        "day_entries": 3,
+        "seedItems": 0,
+        "sample_fn": 0
+      }
+    },
+    "http": {
+      "arquivo": "prova-sw-v59.json",
+      "html": {
+        "status": 200,
+        "bytes": 3480118,
+        "md5": "2e4036071b6e8a4ad232adab61b1b885"
+      },
+      "js": {
+        "status": 200,
+        "bytes": 51742,
+        "md5": "a83f77baba7453851b287080686c7afb"
+      },
+      "sw": {
+        "status": 200,
+        "bytes": 3585,
+        "md5": "0d5294f72d9d8ff41a241c7bfc8aa8b4"
+      },
+      "portao": true
+    },
+    "rotas_verificadas": {
+      "total": 14,
+      "ok": 14
+    },
+    "cliente": {
+      "cache_unica": [
+        "bfr-conecta-v59"
+      ],
+      "sw_ativa": "activated",
+      "controlado": true,
+      "script_do_registro": "https://bfr-conecta.turmaroboticabfr.workers.dev/sw-v4.js?v=45",
+      "md5_do_body_na_cache": "2e4036071b6e8a4ad232adab61b1b885",
+      "marcadores": {
+        "scripts_inline": 103,
+        "readingTeacherScope": 3,
+        "dailyKeys": 6,
+        "classOpen": 6,
+        "day_entries": 3,
+        "seedItems": 0,
+        "sample_fn": 0,
+        "topbar_lia": false,
+        "appbar": false,
+        "shell": true
+      },
+      "erros_console": 3,
+      "log_urls": [
+        {
+          "url": "https://bfr-conecta.turmaroboticabfr.workers.dev/cdn-cgi/rum?",
+          "texto": "Failed to load resource: the server responded with a status of 404 ()"
+        },
+        {
+          "url": "https://bfr-conecta.turmaroboticabfr.workers.dev/cdn-cgi/rum?",
+          "texto": "Failed to load resource: the server responded with a status of 404 ()"
+        },
+        {
+          "url": "https://bfr-conecta.turmaroboticabfr.workers.dev/cdn-cgi/rum?",
+          "texto": "Failed to load resource: the server responded with a status of 404 ()"
+        }
+      ],
+      "erros_urls_medidas": [
+        "https://bfr-conecta.turmaroboticabfr.workers.dev/cdn-cgi/rum? (beacon da Cloudflare, 3×, como no v55/v56/v57/v58)"
+      ]
+    },
+    "deploy": {
+      "frase_wrangler": "No updated asset files to upload. Proceeding with deployment...",
+      "upload": "3448.17 KiB / gzip: 766.13 KiB",
+      "tempo_s": "13.06"
+    }
+  },
+  "validacao_previa": {
+    "metodo": "harness local com fixtures sintéticas e DOM real (mede-v59-final-sweep.json), depois Chrome limpo na URL publicada (prova-sw-v59.json)",
+    "cobertura": {
+      "320": {
+        "telas": 15,
+        "visiveis": 15,
+        "estouro_doc": 0,
+        "estouro_tv": 0
+      },
+      "390": {
+        "telas": 15,
+        "visiveis": 15,
+        "estouro_doc": 0,
+        "estouro_tv": 0
+      },
+      "1280": {
+        "telas": 15,
+        "visiveis": 15,
+        "estouro_doc": 0,
+        "estouro_tv": 0
+      }
+    },
+    "interacoes": {
+      "390": {
+        "abrir6A": true,
+        "abas": [
+          "alunos",
+          "frequencia",
+          "notas",
+          "atividades",
+          "avaliacoes",
+          "acompanhamento"
+        ]
+      },
+      "1280": {
+        "abrir6A": true,
+        "abas": [
+          "alunos",
+          "frequencia",
+          "notas",
+          "atividades",
+          "avaliacoes",
+          "acompanhamento"
+        ]
+      }
+    },
+    "erros_console_harness": {
+      "320": 3,
+      "390": 1,
+      "1280": 2,
+      "390-detalhe": {
+        "network: Failed to load resource: the server responded with a status of 404 (Not Found)": 1
+      },
+      "1280-detalhe": {
+        "network: Failed to load resource: the server responded with a status of 404 (Not Found)": 2
+      },
+      "320-detalhe": {
+        "network: Failed to load resource: the server responded with a status of 404 (Not Found)": 3
+      }
+    },
+    "nao_testado": [
+      "toda escrita no banco (nota, frequência, diário, planejamento, conteúdo, atividade, recado, chat)",
+      "prova do escopo de leitura/recados dentro de uma sessão HTTP real do app",
+      "LIA enviar/responder (Edge Function de IA)",
+      "CSV/impressão, conflito de horário e percurso com professor real"
+    ],
+    "capturas": [
+      "mede-v59-final-sweep.json",
+      "mede-v59-rota-fix.json",
+      "mede-v59-go-frequencia.json",
+      "mede-ab*-v59-posfix-*.png"
+    ]
+  },
+  "evidencias": {
+    "preflight": "preflight-v59.json",
+    "prepara_src": "prepara-src-v59.txt",
+    "sintaxe": "cheat-sintaxe-v59b.log",
+    "diff": "diff-v58-v59.txt (35 hunks, 554 linhas)",
+    "bundle": "confere-bundle-v59.json",
+    "cliente": "prova-sw-v59.json",
+    "rotas": "audit-rotas-no-ar.json",
+    "deploy_log": "deploy-v59.log",
+    "deployment_list": "deploy-list-v59.json",
+    "harness": [
+      "mede-v59-final-sweep.json",
+      "mede-v59-rota-fix.json",
+      "mede-v59-go-frequencia.json",
+      "mede-v59-ab-notas-atividades.json"
+    ],
+    "candidata": "bfr-candidata-v59-professor/ (14 arquivos)",
+    "src": "bfr-candidata-v59-src/ (14 arquivos)",
+    "bundle_dir": "worker-deploy-v59/",
+    "relatorio": "relatorio-professor-v59-2026-10-22.md",
+    "sql_escopo": [
+      "sql-candidata-escopo-leitura-mensagens.sql",
+      "sql-reversao-escopo-leitura-mensagens.sql",
+      "aplicacao-escopo-leitura-mensagens-2026-10-22.md"
+    ]
+  },
+  "reversao": {
+    "instrucao": "Devolver ar-html-v58-live.html (md5 31f209b6, 3.468.610 B) como index.html e ar-sw-v58-live.js (md5 8000099c, CACHE bfr-conecta-v58) como sw-v4.js ao SRC, rebuild, confere-bundle com os md5s do v58 e wrangler deploy. O rp.js (a83f77ba) e os 12 assets não mudam.",
+    "arquivos": {
+      "html": "ar-html-v58-live.html",
+      "sw": "ar-sw-v58-live.js"
+    },
+    "requer_ok": true
+  },
+  "nota": "Nada além do app foi tocado nesta publicação: 0 escritas no banco, 0 mudanças de policy, nenhuma conta criada ou removida. O escopo SQL de leitura/recados (C1) foi aplicado em 22/10 em transação separada, com reversão congelada e não executada; as contagens de dados seguem iguais (student_reading_levels 0, student_messages 1)."
+}

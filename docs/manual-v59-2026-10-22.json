@@ -1,0 +1,271 @@
+{
+  "ensaio": "manual-v59-2026-10-22",
+  "ambiente": {
+    "host": "https://bfr-conecta.turmaroboticabfr.workers.dev",
+    "versao": "fc1b3648-7562-4352-a677-ebab223afc78",
+    "deployment": "06f62d38-282d-4ce7-80d8-de4cf1e0f46f",
+    "html_md5": "2e4036071b6e8a4ad232adab61b1b885",
+    "sw_md5": "0d5294f72d9d8ff41a241c7bfc8aa8b4",
+    "cache_sw": "bfr-conecta-v59",
+    "data": "2026-10-22",
+    "navegador": "Chrome via CDP, clique real (Input.dispatchMouseEvent), 1280x900"
+  },
+  "autorizacao": "OK explícito: criar 1 conta pedagogical, 1 turma e 2 alunos sintéticos; executar todas as escritas pelo app vivo; conferir cada linha; apagar tudo e provar retorno à linha de base.",
+  "conta": {
+    "id": "3204787f-3736-43e7-b940-c1facf6da17c",
+    "email": "auditoria-sintetica-pedagogical-66b83a82@bfr-conecta.test",
+    "role": "pedagogical",
+    "full_name": "PROFESSOR ENSAIO MANUAL",
+    "apagada": true
+  },
+  "turma": {
+    "id": "dfee8520-a361-45e9-b5dc-25c5684df41b",
+    "label": "9º ano ZZ · noturno",
+    "apagada": true
+  },
+  "alunos": [
+    "a05e54a9-724d-449d-8894-cc904ed421e0",
+    "e8faf66b-920a-4acb-88ec-241dba7291e1"
+  ],
+  "vinculo": {
+    "id": "dab52a0e-4ba7-4243-9f9e-cdb89e4ce32f",
+    "subject": "História",
+    "apagado": true
+  },
+  "linhaDeBase": {
+    "grades": 112,
+    "classes": 27,
+    "profiles": 25,
+    "students": 848,
+    "attendance": 25,
+    "school_documents": 226,
+    "student_messages": 1,
+    "bfr_teacher_diary": 0,
+    "bfr_teacher_plans": 0,
+    "school_activities": 0,
+    "bfr_teacher_events": 0,
+    "bfr_teacher_content": 0,
+    "bfr_lesson_attendance": 149,
+    "internal_chat_threads": 1,
+    "learning_action_items": 0,
+    "learning_action_plans": 0,
+    "internal_chat_messages": 2,
+    "student_reading_levels": 0,
+    "bfr_teacher_class_subjects": 5,
+    "internal_chat_room_members": 6,
+    "bfr_lesson_attendance_audit": 0
+  },
+  "testes": [
+    {
+      "id": "nota-grid",
+      "nome": "Lançar nota pela grade por bimestre/categoria (Frequência)",
+      "status": "PARCIAL",
+      "evidencia": "Turma ZZ e História selecionadas; input do aluno UM aceitou 7.5 e mostrou '1 edição(ões) ainda não salvas.'; clique real em 'Salvar lançamentos'. A gravação persistiu (a correção seguinte encontrou 7.5), mas o status da tela continuou na regra da escola por 20,4 s e nunca mostrou confirmação. Defeito D4.",
+      "arquivo": "manual-v59-e2e-nota.json"
+    },
+    {
+      "id": "correcao-nota",
+      "nome": "Corrigir nota com motivo e trilha de auditoria",
+      "status": "APROVADO",
+      "evidencia": "Modal 'Corrigir nota' abriu com aluno/disciplina/avaliação travados, nota 7.5 e bimestre 1; motivo preenchido; status 'Nota corrigida. O valor anterior ficou registrado na trilha de auditoria.' em 18 ms; média passou a 8,0. Banco: grade 9f4f94f8-84c3-483c-a8e3-a34b454af18c com score 8; auditoria 2b7ba531-e77b-4a8d-8db7-0768d05d4848 old_score 7.5 new_score 8 changed_by 3204787f-3736-43e7-b940-c1facf6da17c.",
+      "arquivo": "manual-v59-e2e-correcao.json"
+    },
+    {
+      "id": "frequencia",
+      "nome": "Salvar chamada / frequência",
+      "status": "NÃO TESTADO",
+      "evidencia": "A conta sintética não tem entrada na grade oficial publicada nem linha em bfr_teacher_directory; a tela não ofereceu aula para salvar. Nenhuma escrita foi tentada.",
+      "dependencia": "Entrada publicada em bfr_schedule_entries para a turma/disciplina + linha em bfr_teacher_directory para a conta."
+    },
+    {
+      "id": "conteudo",
+      "nome": "Conteúdos trabalhados",
+      "status": "APROVADO",
+      "evidencia": "Turma ZZ, História, data 2026-10-22, conteúdo e objetivo preenchidos; status 'Registro salvo com segurança.' em 444 ms. Banco: bfr_teacher_content 9d0f737c-4d61-4949-a514-08097c8b42e5, profile_id da conta.",
+      "arquivo": "manual-v59-e2e-formularios.json"
+    },
+    {
+      "id": "diario",
+      "nome": "Diário de aula",
+      "status": "APROVADO",
+      "evidencia": "Conteúdo, metodologia, atividade e observações preenchidos; status 'Registro salvo com segurança.' em 492 ms. Banco: bfr_teacher_diary 15cea5a1-ffb4-49e0-b60c-023e73254283.",
+      "arquivo": "manual-v59-e2e-formularios.json"
+    },
+    {
+      "id": "planejamento",
+      "nome": "Planejamento",
+      "status": "APROVADO",
+      "evidencia": "Período 1, unidade, conteúdo, objetivos, habilidades e atividades preenchidos; status 'Registro salvo com segurança.' em 496 ms. Banco: bfr_teacher_plans b3c27133-9238-4e2b-b35c-37ffb1eb56be.",
+      "arquivo": "manual-v59-e2e-formularios.json"
+    },
+    {
+      "id": "atividade",
+      "nome": "Publicar atividade",
+      "status": "REPROVADO",
+      "evidencia": "Modal abriu com turma ZZ e História; formulário completo; clique real em publicar devolveu 'Não foi possível publicar. Confira se a atualização do banco foi executada.' em 498 ms; lista continuou 'Nenhuma atividade criada.' e school_activities permaneceu 0. Requisição ao PostgREST respondeu 403.",
+      "causa": "A policy school_activities_staff_insert exige (bfr_is_schedule_manager() OR (is_aee() AND bfr_teacher_can_manage_class_subject(class_id, subject))) AND published_by = auth.uid(). O papel pedagogical não é is_aee(); logo o INSERT é negado. Nenhum predicado foi alterado.",
+      "arquivo": "manual-v59-e2e-atividade.json"
+    },
+    {
+      "id": "recado",
+      "nome": "Responder recado do aluno (student_messages)",
+      "status": "PARCIAL",
+      "evidencia": "Resposta enviada pelo formulário real do painel: status 'Resposta enviada.' em 428 ms; banco recebeu a mensagem com sender_id e recipient_id da conta. Mas o painel [data-teacher-inbox] está display:none e 0x0 na v59 (regra CSS 2072), então a resposta só foi possível forçando display:block no teste. A lista acessível em Notificações é somente leitura. Defeito D1.",
+      "arquivo": "manual-v59-e2e-recado.json"
+    },
+    {
+      "id": "leitura",
+      "nome": "Acompanhamento de leitura",
+      "status": "PARCIAL",
+      "evidencia": "Guarda sem nível: 'Escolha um nível antes de salvar.'; com nível 'reads' e observação, status 'Registro de leitura salvo para coordenação e família.' em 443 ms; banco student_reading_levels com level reads, note e updated_by da conta. O painel, porém, foi injetado antes de BFR_SECURE_TEACHER_STATE carregar as turmas e ficou com anos [\"\"]; só funcionou após remover o painel e deixar o intervalo de 1,2 s reinjetar com o escopo real. Defeito D2.",
+      "arquivo": "manual-v59-e2e-leitura.json"
+    },
+    {
+      "id": "lia",
+      "nome": "LIA — enviar e receber",
+      "status": "APROVADO",
+      "evidencia": "Entrada visível do topo ([data-bfr-desktop-lia]) abriu o overlay; mensagem neutra enviada; fetch para /functions/v1/lia-chat respondeu HTTP 200 em 1428 ms e a resposta 'Entendido, mensagem recebida.' foi renderizada. O #liaFab segue oculto por desenho.",
+      "arquivo": "manual-v59-e2e-lia.json"
+    },
+    {
+      "id": "csv-print",
+      "nome": "Relatórios CSV e impressão",
+      "status": "APROVADO",
+      "evidencia": "CSV de alunos: 2 registros; CSV de notas: linha '\"ALUNO ENSAIO MANUAL UM\";\"História\";\"Prova · 1º bimestre\";\"8\";\"1\"'; filtro sem resultado: 'Nenhum registro com estes filtros · nenhum arquivo foi gerado.' com 0 blobs criados; impressão chamou window.print 1 vez.",
+      "arquivo": "manual-v59-e2e-relatorios.json"
+    },
+    {
+      "id": "chat-interno",
+      "nome": "Chat interno",
+      "status": "PARCIAL",
+      "evidencia": "Tela visível, 0 conversas, campo de composição e botão enviar presentes, lista de pessoas carregada. Nenhuma mensagem foi enviada.",
+      "dependencia": "Envio exige uma segunda identidade sintética e mexe em estado compartilhado; não autorizado neste ensaio."
+    },
+    {
+      "id": "botoes-nota",
+      "nome": "Botões 'Lançar nota' de Início e Avaliações",
+      "status": "PARCIAL",
+      "evidencia": "Os dois botões abrem o mesmo modal 'Lançar nota' com aluno, componente, nome da avaliação, nota e bimestre. A gravação por esse modal não foi executada; o caminho de escrita testado foi a grade por categoria em Frequência.",
+      "dependencia": "Nova conta/turma sintética para testar o Salvar nota do modal sem deixar resíduo."
+    },
+    {
+      "id": "agenda-calendario-biblioteca",
+      "nome": "Agenda, Calendário e Biblioteca (leitura)",
+      "status": "PARCIAL",
+      "evidencia": "Agenda: estado vazio honesto ('Nenhuma aula vinculada ao seu perfil na grade oficial de 2026.'). Calendário: 'Nenhum horário ou evento autorizado disponível.'. Biblioteca: 2 cartões informativos (virtual e da escola), sem formulário ou select. Nenhuma escrita existe nessas telas para testar.",
+      "arquivo": "manual-v59-e2e-controles.json"
+    },
+    {
+      "id": "navegacao",
+      "nome": "Navegação e telas do professor",
+      "status": "APROVADO",
+      "evidencia": "Shell pronto com 16 itens de navegação; Início, Avaliações, Frequência, Agenda, Calendário, Biblioteca, Chat, Conteúdos, Diário, Planejamento, Relatórios e Notificações assentaram por clique real; 15/15 telas já medidas em 390/1280/320 no ciclo anterior.",
+      "arquivo": "manual-v59-e2e-controles.json"
+    },
+    {
+      "id": "limpeza",
+      "nome": "Limpeza e retorno à linha de base",
+      "status": "APROVADO",
+      "evidencia": "Todas as linhas sintéticas apagadas em ordem FK-safe; contagens finais iguais à linha de base de produção; 0 restos dos 3 ids sintéticos; 0 contas @bfr-conecta.test.",
+      "arquivo": "_q_e2e_cleanup.sql + _q_e2e_estado_final.sql + _q_e2e_restos.sql"
+    }
+  ],
+  "defeitos": [
+    {
+      "id": "D1",
+      "severidade": "ALTA",
+      "titulo": "Painel de recados do professor invisível na v59",
+      "sintoma": "O professor não consegue ver a caixa de entrada nem responder recados pela tela; a lista de Notificações é somente leitura.",
+      "causa": "A regra CSS da linha 2072 de bfr-candidata-v59-professor/index.html esconde todo filho direto de #teacherView fora da whitelist [data-teacher-professional], [data-bfr-reading-panel], [data-bfr-reading-assist-usage] e [data-teacher-aee-bridge]. O painel injetado tem o atributo [data-teacher-inbox] e cai no :not(...).",
+      "prova": "DOM: [data-teacher-inbox] display none, 0x0, mesmo com mensagens existentes; após forçar display:block no teste, o formulário respondeu e gravou.",
+      "correcao_sugerida": "Incluir [data-teacher-inbox] na whitelist (ou dar-lhe data-teacher-professional). Exige nova candidata + OK de publicação."
+    },
+    {
+      "id": "D2",
+      "severidade": "MÉDIA-ALTA",
+      "titulo": "Corrida do painel de leitura deixa anos/turmas vazios",
+      "sintoma": "Ao abrir a aba, o painel de leitura pode mostrar lista vazia de anos e não se recuperar sem recarregar.",
+      "causa": "ensureReadingPanel() injeta o painel antes de BFR_SECURE_TEACHER_STATE.classes carregar; loadReading() cacheia o escopo vazio com scopeKey e o intervalo de 1,2 s não reinjeta porque o painel já existe.",
+      "prova": "Antes do escopo: anos [\"\"]; depois de remover o painel e aguardar o intervalo: 9º ano e 2 alunos.",
+      "correcao_sugerida": "Só injetar depois de loaded/classes não vazio, ou reinjetar quando o scopeKey mudar. Exige nova candidata + OK."
+    },
+    {
+      "id": "D3",
+      "severidade": "ALTA",
+      "titulo": "Professor pedagogical não consegue publicar atividade (403)",
+      "sintoma": "Formulário completo devolve 'Não foi possível publicar...' e nada é gravado.",
+      "causa": "Policy school_activities_staff_insert: (bfr_is_schedule_manager() OR (is_aee() AND bfr_teacher_can_manage_class_subject(class_id, subject))) AND published_by = auth.uid(). pedagogical não passa em is_aee() nem é schedule manager.",
+      "prova": "PostgREST 403; school_activities 0 após o clique; política lida do catálogo.",
+      "correcao_sugerida": "Alinhar a policy ao papel docente (decisão de produto/segurança) e revalidar em transação. Nenhum predicado foi alterado."
+    },
+    {
+      "id": "D4",
+      "severidade": "MÉDIA",
+      "titulo": "Salvar lançamentos não mostra confirmação de sucesso",
+      "sintoma": "O status continua na regra da escola; o professor não sabe se a nota foi salva e pode relançar.",
+      "causa": "secureAcademicSetup() re-renderiza o painel depois do salvamento e sobrescreve a mensagem de sucesso.",
+      "prova": "Nota 7.5 persistida (auditoria depois registra 7.5→8), mas o texto observado por 20,4 s foi a regra 'Prova 100%...'.",
+      "correcao_sugerida": "Persistir a confirmação fora do nó re-renderizado ou reaplicá-la após o setup. Exige nova candidata + OK."
+    }
+  ],
+  "limpeza": {
+    "linhasApagadas": {
+      "bfr_grade_audit": 1,
+      "grades": 1,
+      "bfr_teacher_content": 1,
+      "bfr_teacher_diary": 1,
+      "bfr_teacher_plans": 1,
+      "student_reading_levels": 1,
+      "student_messages": 3,
+      "bfr_teacher_class_subjects": 1,
+      "students": 2,
+      "classes": 1,
+      "profiles": 1,
+      "auth.users": 1
+    },
+    "dependenciasVerificadasZero": [
+      "aee_adaptations", "aee_materials", "aee_plan_reviews", "aee_resources",
+      "bfr_lesson_attendance", "bfr_lesson_attendance_audit", "gate_checkins",
+      "learning_assessment_results", "learning_goals", "learning_student_progress",
+      "project_results", "psychology_articulations", "psychology_meetings",
+      "psychology_referrals", "psychology_returns", "attendance"
+    ],
+    "contagensFinais": {
+      "grades": 112,
+      "attendance": 25,
+      "bfr_lesson_attendance": 149,
+      "bfr_lesson_attendance_audit": 0,
+      "school_activities": 0,
+      "learning_action_plans": 0,
+      "student_messages": 1,
+      "student_reading_levels": 0,
+      "school_documents": 226,
+      "bfr_teacher_content": 0,
+      "bfr_teacher_diary": 0,
+      "bfr_teacher_plans": 0,
+      "bfr_teacher_events": 0,
+      "internal_chat_threads": 1,
+      "internal_chat_messages": 2,
+      "internal_chat_room_members": 6,
+      "classes": 27,
+      "students": 848,
+      "bfr_teacher_class_subjects": 5,
+      "profiles": 24,
+      "bfr_grade_audit": 0,
+      "auth_users_sinteticos": 0
+    },
+    "restos": {
+      "alunos": 0,
+      "turma": 0,
+      "conta": 0
+    },
+    "observacaoProfiles": "A linha de base registrou profiles=25 porque foi capturada às 11:30:40 UTC, 27 s depois da criação do profile sintético (11:30:13) e 7 s antes da criação da turma/alunos (11:30:47). O valor de produção após a limpeza é 24; a diferença é exatamente o profile sintético, não uma perda de dado real."
+  },
+  "naoTestado": [
+    "Salvar chamada/frequência: falta entrada publicada na grade e linha em bfr_teacher_directory.",
+    "Enviar mensagem no chat interno: exige segunda identidade e mexe em estado compartilhado.",
+    "Salvar nota pelo modal 'Lançar nota' de Início/Avaliações: o modal abriu, mas o clique em Salvar nota não foi executado.",
+    "Abrir/emprestar obra na Biblioteca: a tela só tem dois cartões informativos, sem formulário; a abertura de arquivo não foi exercitada.",
+    "Conta real de professor: todo o ensaio usou a conta sintética pedagogical."
+  ]
+}

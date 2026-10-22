@@ -1,0 +1,140 @@
+{
+  "passos": [
+    {
+      "passo": "selecionar turma ZZ",
+      "ok": true,
+      "valor": "dfee8520-a361-45e9-b5dc-25c5684df41b"
+    },
+    {
+      "rotulo": "CSV lista de alunos",
+      "clique": true,
+      "status": "2 registro(s) exportado(s) · 9º ano ZZ · todas as disciplinas · todos os bimestres",
+      "download": "relatorio-professor-students-2026-10-22.csv",
+      "nBlobs": 1,
+      "csv": "\"aluno\";\"turma\";\"notas\";\"frequencias\"\n\"ALUNO ENSAIO MANUAL DOIS\";\"9º ano ZZ\";\"0\";\"0\"\n\"ALUNO ENSAIO MANUAL UM\";\"9º ano ZZ\";\"1\";\"0\"",
+      "linhas": 3
+    },
+    {
+      "rotulo": "CSV notas",
+      "clique": true,
+      "status": "1 registro(s) exportado(s) · 9º ano ZZ · todas as disciplinas · todos os bimestres",
+      "download": "relatorio-professor-grades-2026-10-22.csv",
+      "nBlobs": 1,
+      "csv": "\"aluno\";\"disciplina\";\"avaliacao\";\"nota\";\"periodo\"\n\"ALUNO ENSAIO MANUAL UM\";\"História\";\"Prova · 1º bimestre\";\"8\";\"1\"",
+      "linhas": 2
+    },
+    {
+      "rotulo": "CSV frequência por aula (vazia)",
+      "clique": true,
+      "status": "Nenhum registro com estes filtros · nenhum arquivo foi gerado.",
+      "download": null,
+      "nBlobs": 0,
+      "csv": null,
+      "linhas": 0
+    }
+  ],
+  "notificacoes": {
+    "ok": true,
+    "sec": "professor-notificacoes",
+    "telaVis": true,
+    "rect": {
+      "x": 110,
+      "y": 450.375,
+      "w": 192,
+      "h": 56,
+      "vis": true,
+      "coberto": false
+    }
+  },
+  "listaRecados": "ALUNO ENSAIO MANUAL UM Para você · 22/10, 08:53 Ensaio manual v59: resposta sintética ao recado de entrada. Não contém dado de aluno real. ALUNO ENSAIO MANUAL UM Para você · 22/10, 08:52 Ensaio manual v59: resposta sintética ao recado de entrada. Não contém dado de aluno real. ALUNO ENSAIO MANUAL UM Para você · 22/10, 08:52 ENSAIO MANUAL v59 - recado de entrada (fixture sintetica, sera apagada)",
+  "rota": {
+    "ok": true,
+    "sec": "professor-relatorios",
+    "telaVis": true,
+    "rect": {
+      "x": 110,
+      "y": 450.375,
+      "w": 192,
+      "h": 56,
+      "vis": true,
+      "coberto": false
+    }
+  },
+  "filtros": {
+    "turma": [
+      {
+        "v": "",
+        "t": "Selecione a turma"
+      },
+      {
+        "v": "dfee8520-a361-45e9-b5dc-25c5684df41b",
+        "t": "9º ano ZZ · noturno"
+      }
+    ],
+    "disciplina": [
+      {
+        "v": "all",
+        "t": "Todas as disciplinas"
+      },
+      {
+        "v": "História",
+        "t": "História"
+      }
+    ],
+    "tipo": [
+      {
+        "v": "students",
+        "t": "Lista de alunos"
+      },
+      {
+        "v": "grades",
+        "t": "Notas"
+      },
+      {
+        "v": "attendance",
+        "t": "Frequência diária"
+      },
+      {
+        "v": "lesson-attendance",
+        "t": "Frequência por aula"
+      },
+      {
+        "v": "lesson-history",
+        "t": "Histórico de correções"
+      },
+      {
+        "v": "summary",
+        "t": "Desempenho"
+      }
+    ],
+    "valorTurma": ""
+  },
+  "previa": "ALUNO ENSAIO MANUAL DOIS turma: 9º ano ZZ · notas: 0 · frequencias: 0 ALUNO ENSAIO MANUAL UM turma: 9º ano ZZ · notas: 1 · frequencias: 0",
+  "vazio": {
+    "rotulo": "CSV frequência por aula (vazia)",
+    "clique": true,
+    "status": "Nenhum registro com estes filtros · nenhum arquivo foi gerado.",
+    "download": null,
+    "nBlobs": 0,
+    "csv": null,
+    "linhas": 0
+  },
+  "impressao": {
+    "clique": true,
+    "chamadas": 1
+  },
+  "erros": [
+    {
+      "tipo": "rede",
+      "texto": "network: Failed to load resource: the server responded with a status of 404 ()"
+    },
+    {
+      "tipo": "rede",
+      "texto": "network: Failed to load resource: the server responded with a status of 404 ()"
+    },
+    {
+      "tipo": "rede",
+      "texto": "network: Failed to load resource: the server responded with a status of 404 ()"
+    }
+  ]
+}

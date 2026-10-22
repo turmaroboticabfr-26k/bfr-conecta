@@ -1,0 +1,164 @@
+{
+  "quando": "2026-10-22T11:43:20.892Z",
+  "classe": "dfee8520-a361-45e9-b5dc-25c5684df41b",
+  "aluno": "a05e54a9-724d-449d-8894-cc904ed421e0",
+  "passos": [
+    {
+      "passo": "boot",
+      "ready": true,
+      "login": false,
+      "nav": 16,
+      "modal": false
+    },
+    {
+      "passo": "ir frequencia",
+      "ok": true,
+      "sec": "professor-frequencia",
+      "telaVis": true,
+      "rect": {
+        "x": 110,
+        "y": 449.875,
+        "w": 192,
+        "h": 41,
+        "vis": true,
+        "coberto": false
+      }
+    },
+    {
+      "passo": "selecionar turma",
+      "ok": true,
+      "valor": "dfee8520-a361-45e9-b5dc-25c5684df41b"
+    },
+    {
+      "passo": "selecionar disciplina História",
+      "ok": true,
+      "valor": "História"
+    },
+    {
+      "passo": "selecionar 1º bimestre",
+      "ok": true,
+      "valor": "1"
+    },
+    {
+      "passo": "abrir aba Notas por categoria",
+      "ok": true,
+      "rect": {
+        "x": 615.171875,
+        "y": 449.828125,
+        "w": 121,
+        "h": 34,
+        "vis": true,
+        "coberto": false
+      },
+      "tentativa": 1
+    },
+    {
+      "passo": "digitar 7,5 no aluno UM · Prova",
+      "ok": true,
+      "valor": "7.5",
+      "status": "1 edição(ões) ainda não salvas."
+    },
+    {
+      "passo": "clicar Salvar lançamentos",
+      "ok": true,
+      "rect": {
+        "x": 362.234375,
+        "y": 449.828125,
+        "w": 136,
+        "h": 36,
+        "vis": true,
+        "coberto": false
+      },
+      "tentativa": 1
+    }
+  ],
+  "uid": "3204787f-3736-43e7-b940-c1facf6da17c",
+  "boot": {
+    "ready": true,
+    "login": false,
+    "nav": 16,
+    "modal": false
+  },
+  "classeOpcoes": {
+    "valor": "dfee8520-a361-45e9-b5dc-25c5684df41b",
+    "opcoes": [
+      {
+        "v": "",
+        "t": "Selecione a turma"
+      },
+      {
+        "v": "dfee8520-a361-45e9-b5dc-25c5684df41b",
+        "t": "9º ano ZZ · noturno"
+      }
+    ]
+  },
+  "disciplinaOpcoes": {
+    "valor": "all",
+    "opcoes": [
+      {
+        "v": "all",
+        "t": "Todas as disciplinas"
+      },
+      {
+        "v": "História",
+        "t": "História"
+      }
+    ]
+  },
+  "grade": {
+    "inputs": [
+      {
+        "chave": "e8faf66b-920a-4acb-88ec-241dba7291e1|História|1|prova",
+        "valor": "",
+        "label": "Nota de ALUNO ENSAIO MANUAL DOIS · Prova (0 a 10)",
+        "dis": false
+      },
+      {
+        "chave": "a05e54a9-724d-449d-8894-cc904ed421e0|História|1|prova",
+        "valor": "",
+        "label": "Nota de ALUNO ENSAIO MANUAL UM · Prova (0 a 10)",
+        "dis": false
+      }
+    ],
+    "linhas": [
+      "ALUNO ENSAIO MANUAL DOIS Não se aplica Não se aplica Não se aplica Aguardando: 1 de 1",
+      "ALUNO ENSAIO MANUAL UM Não se aplica Não se aplica Não se aplica Aguardando: 1 de 1"
+    ],
+    "status": "Regra da escola: Prova 100%. A média aparece só quando as 1 categorias que se aplicam têm lançamento.",
+    "controlesVisiveis": true,
+    "pesos": [
+      " · não se aplica",
+      " · não se aplica",
+      " · 100%",
+      " · não se aplica"
+    ]
+  },
+  "resultado": {
+    "ok": false,
+    "texto": "Regra da escola: Prova 100%. A média aparece só quando as 1 categorias que se aplicam têm lançamento.",
+    "ms": 20392
+  },
+  "statusFinal": "Regra da escola: Prova 100%. A média aparece só quando as 1 categorias que se aplicam têm lançamento.",
+  "depois": {
+    "inputs": [
+      {
+        "chave": "e8faf66b-920a-4acb-88ec-241dba7291e1|História|1|prova",
+        "valor": ""
+      }
+    ],
+    "pills": [
+      "Corrigir Prova · 1º bimestre"
+    ],
+    "mediaLinha": "7,5"
+  },
+  "erros": [
+    {
+      "tipo": "rede",
+      "texto": "network: Failed to load resource: the server responded with a status of 404 ()"
+    },
+    {
+      "tipo": "rede",
+      "texto": "network: Failed to load resource: the server responded with a status of 404 ()"
+    }
+  ]
+}
