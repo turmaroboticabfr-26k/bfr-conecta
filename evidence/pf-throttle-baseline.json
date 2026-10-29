@@ -1,0 +1,83 @@
+{
+  "quando": "2026-10-29T04:11:27.893Z",
+  "somente_leitura": true,
+  "base": [
+    {
+      "tabela": "auth.users",
+      "linhas": 25,
+      "md5": "(somente contagem)"
+    },
+    {
+      "tabela": "net._http_response",
+      "linhas": 4,
+      "md5": "b6452366332f5e493fee8c3cc03c0068"
+    },
+    {
+      "tabela": "public.classes",
+      "linhas": 27,
+      "md5": "a09993ebb6a847b7749aa572e6650066"
+    },
+    {
+      "tabela": "public.guardian_students",
+      "linhas": 3,
+      "md5": "448af015dad6e7cf83de8767f73a4c0f"
+    },
+    {
+      "tabela": "public.profiles",
+      "linhas": 25,
+      "md5": "3e10065b5ca9783059be60412ffec801"
+    },
+    {
+      "tabela": "public.push_subscriptions",
+      "linhas": 1,
+      "md5": "(somente contagem: linha do aparelho-alvo fica viva de proposito)"
+    },
+    {
+      "tabela": "public.student_location_notify_throttle",
+      "linhas": 0,
+      "md5": "d41d8cd98f00b204e9800998ecf8427e"
+    },
+    {
+      "tabela": "public.student_location_report_throttle",
+      "linhas": 0,
+      "md5": "d41d8cd98f00b204e9800998ecf8427e"
+    },
+    {
+      "tabela": "public.student_location_sharing",
+      "linhas": 0,
+      "md5": "d41d8cd98f00b204e9800998ecf8427e"
+    },
+    {
+      "tabela": "public.student_locations",
+      "linhas": 0,
+      "md5": "d41d8cd98f00b204e9800998ecf8427e"
+    },
+    {
+      "tabela": "public.students",
+      "linhas": 848,
+      "md5": "8949fa4c42096a6540a537538d3635a7"
+    },
+    {
+      "tabela": "vault.secrets",
+      "linhas": 1,
+      "md5": "0e0f62671deeba0f089aa0b93585cebf"
+    }
+  ],
+  "catalogo": [
+    {
+      "tipo": "funcao",
+      "nome": "bfr_pf_notify_location",
+      "detalhe": "b96debe20dcbf18bbc61a683b8725b2d"
+    },
+    {
+      "tipo": "tabela_throttle",
+      "nome": "student_location_notify_throttle",
+      "detalhe": "student_location_notify_throttle"
+    },
+    {
+      "tipo": "trigger",
+      "nome": "bfr_pf_notify_location",
+      "detalhe": "21/O"
+    }
+  ]
+}

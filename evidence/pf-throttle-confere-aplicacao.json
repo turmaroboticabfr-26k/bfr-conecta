@@ -1,0 +1,61 @@
+{
+  "quando": "2026-10-29T04:19:39.295Z",
+  "igual": false,
+  "md5_live": "b96debe20dcbf18bbc61a683b8725b2d",
+  "md5_candidata": "3534563f8e36b88bba1e38befa161d38",
+  "len_live": 1941,
+  "len_candidata": 1940,
+  "primeiro_diferente_em": 1940,
+  "live_ao_redor": "\"ao enfileirar (%)', sqlerrm;\\n    return new;\\nend;\\n$function$\\n\"",
+  "cand_ao_redor": "\"ao enfileirar (%)', sqlerrm;\\n    return new;\\nend;\\n$function$\"",
+  "estado": [
+    {
+      "o": "anon_executa",
+      "v": "false"
+    },
+    {
+      "o": "anon_le_tabela",
+      "v": "false"
+    },
+    {
+      "o": "authenticated_executa",
+      "v": "false"
+    },
+    {
+      "o": "constraints",
+      "v": "student_location_notify_throttle_pkey,student_location_notify_throttle_student_id_fkey"
+    },
+    {
+      "o": "funcao",
+      "v": "true owner=postgres acl={postgres=X/postgres,service_role=X/postgres}"
+    },
+    {
+      "o": "gatilho",
+      "v": "21 enabled=O"
+    },
+    {
+      "o": "linhas",
+      "v": "0"
+    },
+    {
+      "o": "policies",
+      "v": "0"
+    },
+    {
+      "o": "tabela",
+      "v": "owner=postgres rls=true force=false acl={postgres=arwdDxtm/postgres,service_role=arwdDxtm/postgres}"
+    }
+  ],
+  "colunas": [
+    {
+      "attname": "student_id",
+      "tipo": "uuid",
+      "attnotnull": true
+    },
+    {
+      "attname": "last_notified_at",
+      "tipo": "timestamp with time zone",
+      "attnotnull": true
+    }
+  ]
+}

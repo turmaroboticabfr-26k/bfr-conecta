@@ -1,0 +1,151 @@
+{
+  "quando": "2026-10-29T04:06:29.620Z",
+  "modo": "aplicar",
+  "candidatas": {
+    "arquivo": "pf-throttle-candidate.sql",
+    "bytes": 4142,
+    "md5": "08e699a2083c693d23054e9c9e8824a4",
+    "md5_espacado": "0 8 e 6 9 9 a 2 0 8 3 c 6 9 3 d 2 3 0 5 4 e 9 c 9 e 8 8 2 4 a 4",
+    "original_md5": "73688dbe8dbf15f7f1855e5cc49cb0cb",
+    "original_md5_espacado": "7 3 6 8 8 d b e 8 d b f 1 5 f 7 f 1 8 5 5 e 5 c c 4 9 c b 0 c b",
+    "corpo_md5": "4f101fbd61e2a7b73865b604686be641"
+  },
+  "gates": {
+    "G0_reaplicacao_do_mesmo_texto": {
+      "ok": true,
+      "detalhe": "tabela existe mas a funcao nao e a da candidata"
+    },
+    "G1_gatilho_no_ar": {
+      "ok": true,
+      "detalhe": "[{\"tgtype\":21,\"en\":\"O\"}]"
+    },
+    "G3_corpo_tem_janela": {
+      "ok": true,
+      "detalhe": "sem v_janela"
+    },
+    "G3_corpo_tem_silencio": {
+      "ok": true,
+      "detalhe": "sem bloco de silencio"
+    },
+    "G3_corpo_tem_carimbo": {
+      "ok": true,
+      "detalhe": "sem carimbo"
+    },
+    "G3_ainda_chama_a_edge": {
+      "ok": true,
+      "detalhe": "perdeu a chamada da Edge"
+    },
+    "G3_sem_nome_de_aluno": {
+      "ok": true,
+      "detalhe": "PII no corpo"
+    },
+    "G4_def_igual_a_candidata": {
+      "ok": true,
+      "detalhe": "corpo aplicado difere da candidata"
+    },
+    "G5_tabela_dono_postgres_rls_sem_force": {
+      "ok": true,
+      "detalhe": "[{\"relname\":\"student_location_notify_throttle\",\"owner\":\"postgres\",\"relrowsecurity\":true,\"relforcerowsecurity\":false,\"acl\":\"{postgres=arwdDxtm/postgres,service_role=arwdDxtm/postgres}\",\"policies\":0}]"
+    },
+    "G6_tabela_zero_policies": {
+      "ok": true,
+      "detalhe": "0"
+    },
+    "G7_anon_sem_exec_na_funcao": {
+      "ok": true,
+      "detalhe": "[{\"a\":false,\"b\":false}]"
+    },
+    "G8_anon_sem_leitura_da_tabela": {
+      "ok": true,
+      "detalhe": "[{\"sel\":false,\"ins\":false}]"
+    },
+    "G9_gatilho_intacto": {
+      "ok": true,
+      "detalhe": "[{\"tgtype\":21,\"tgenabled\":\"O\",\"def\":\"CREATE TRIGGER bfr_pf_notify_location AFTER INSERT OR UPDATE OF reported_at, latitude, longitude ON public.student_locations FOR EACH ROW EXECUTE FUNCTION bfr_pf_notify_location()\"}]"
+    },
+    "G10_tabela_nascida_vazia": {
+      "ok": true,
+      "detalhe": "0"
+    }
+  },
+  "estado_inicial": {
+    "tabela_ja_existe": true,
+    "def_md5": "b96debe20dcbf18bbc61a683b8725b2d",
+    "igual_ao_original": false,
+    "igual_a_candidata": true
+  },
+  "dryrun": [],
+  "dryrun_ok": true,
+  "aplicar": [],
+  "conferencia": {
+    "def_md5": "b96debe20dcbf18bbc61a683b8725b2d",
+    "def_md5_espacado": "b 9 6 d e b e 2 0 d c b f 1 8 b b c 6 1 a 6 8 3 b 8 7 2 5 b 2 d",
+    "corpo_md5_candidata": "4f101fbd61e2a7b73865b604686be641",
+    "corpo_md5_live": "3534563f8e36b88bba1e38befa161d38",
+    "corpo_igual_a_candidata": true,
+    "tabela": [
+      {
+        "relname": "student_location_notify_throttle",
+        "owner": "postgres",
+        "relrowsecurity": true,
+        "relforcerowsecurity": false,
+        "acl": "{postgres=arwdDxtm/postgres,service_role=arwdDxtm/postgres}",
+        "policies": 0
+      }
+    ],
+    "constraints": [
+      {
+        "conname": "student_location_notify_throttle_pkey",
+        "def": "PRIMARY KEY (student_id)"
+      },
+      {
+        "conname": "student_location_notify_throttle_student_id_fkey",
+        "def": "FOREIGN KEY (student_id) REFERENCES students(id) ON DELETE CASCADE"
+      }
+    ],
+    "colunas": [
+      {
+        "attname": "student_id",
+        "tipo": "uuid",
+        "attnotnull": true
+      },
+      {
+        "attname": "last_notified_at",
+        "tipo": "timestamp with time zone",
+        "attnotnull": true
+      }
+    ],
+    "funcao": [
+      {
+        "prosecdef": true,
+        "owner": "postgres",
+        "acl": "{postgres=X/postgres,service_role=X/postgres}"
+      }
+    ],
+    "gatilho": [
+      {
+        "tgtype": 21,
+        "tgenabled": "O",
+        "def": "CREATE TRIGGER bfr_pf_notify_location AFTER INSERT OR UPDATE OF reported_at, latitude, longitude ON public.student_locations FOR EACH ROW EXECUTE FUNCTION bfr_pf_notify_location()"
+      }
+    ],
+    "anon_exec": [
+      {
+        "a": false,
+        "b": false
+      }
+    ],
+    "tabela_livre_para_anon": [
+      {
+        "sel": false,
+        "ins": false
+      }
+    ],
+    "linhas_tabela": [
+      {
+        "n": 0
+      }
+    ]
+  },
+  "veredito": "PF_THROTTLE_APLICADO_OK"
+}

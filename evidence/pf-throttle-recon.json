@@ -1,0 +1,325 @@
+{
+  "quando": "2026-10-29T04:01:00.859Z",
+  "somente_leitura": true,
+  "notifyDef": "CREATE OR REPLACE FUNCTION public.bfr_pf_notify_location()\n RETURNS trigger\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO 'public', 'pg_temp'\nAS $function$\ndeclare\n  v_key text;\n  v_ids jsonb;\nbegin\n  select s.decrypted_secret into v_key\n    from vault.decrypted_secrets s\n   where s.name = 'pf_emissor_service_role'\n   limit 1;\n\n  if v_key is null then\n    raise warning 'bfr_pf_notify_location: segredo pf_emissor_service_role ausente';\n    return new;\n  end if;\n\n  select jsonb_agg(sh.profile_id order by sh.profile_id)\n    into v_ids\n    from public.student_location_sharing sh\n   where sh.student_id = new.student_id\n     and sh.enabled\n     and sh.profile_id is distinct from new.reported_by_profile_id;\n\n  if v_ids is null then\n    return new;\n  end if;\n\n  perform net.http_post(\n    url := 'https://yyzqoxlkcvqpessypfjo.supabase.co/functions/v1/send-school-notification',\n    body := jsonb_build_object(\n      'title', 'Atualização de localização',\n      'body', 'Uma nova localização foi compartilhada. Abra o BFR Conecta para ver no mapa.',\n      'profile_ids', v_ids\n    ),\n    headers := jsonb_build_object(\n      'Content-Type', 'application/json',\n      'Authorization', 'Bearer ' || v_key,\n      'apikey', v_key\n    ),\n    timeout_milliseconds := 5000\n  );\n\n  return new;\nexception\n  when others then\n    raise warning 'bfr_pf_notify_location: falha ao enfileirar (%)', sqlerrm;\n    return new;\nend;\n$function$\n",
+  "shape": [
+    {
+      "relname": "student_location_report_throttle",
+      "attname": "profile_id",
+      "tipo": "uuid",
+      "attnotnull": true
+    },
+    {
+      "relname": "student_location_report_throttle",
+      "attname": "student_id",
+      "tipo": "uuid",
+      "attnotnull": true
+    },
+    {
+      "relname": "student_location_report_throttle",
+      "attname": "last_report_at",
+      "tipo": "timestamp with time zone",
+      "attnotnull": true
+    },
+    {
+      "relname": "student_location_sharing",
+      "attname": "profile_id",
+      "tipo": "uuid",
+      "attnotnull": true
+    },
+    {
+      "relname": "student_location_sharing",
+      "attname": "student_id",
+      "tipo": "uuid",
+      "attnotnull": true
+    },
+    {
+      "relname": "student_location_sharing",
+      "attname": "enabled",
+      "tipo": "boolean",
+      "attnotnull": true
+    },
+    {
+      "relname": "student_location_sharing",
+      "attname": "precision_level",
+      "tipo": "text",
+      "attnotnull": true
+    },
+    {
+      "relname": "student_location_sharing",
+      "attname": "updated_at",
+      "tipo": "timestamp with time zone",
+      "attnotnull": true
+    },
+    {
+      "relname": "student_locations",
+      "attname": "student_id",
+      "tipo": "uuid",
+      "attnotnull": true
+    },
+    {
+      "relname": "student_locations",
+      "attname": "latitude",
+      "tipo": "double precision",
+      "attnotnull": true
+    },
+    {
+      "relname": "student_locations",
+      "attname": "longitude",
+      "tipo": "double precision",
+      "attnotnull": true
+    },
+    {
+      "relname": "student_locations",
+      "attname": "accuracy_m",
+      "tipo": "double precision",
+      "attnotnull": false
+    },
+    {
+      "relname": "student_locations",
+      "attname": "reported_by_profile_id",
+      "tipo": "uuid",
+      "attnotnull": false
+    },
+    {
+      "relname": "student_locations",
+      "attname": "source",
+      "tipo": "text",
+      "attnotnull": true
+    },
+    {
+      "relname": "student_locations",
+      "attname": "reported_at",
+      "tipo": "timestamp with time zone",
+      "attnotnull": true
+    }
+  ],
+  "pks": [
+    {
+      "tabela": "student_location_report_throttle",
+      "conname": "student_location_report_throttle_pkey",
+      "def": "PRIMARY KEY (profile_id, student_id)"
+    },
+    {
+      "tabela": "student_location_report_throttle",
+      "conname": "student_location_report_throttle_profile_id_fkey",
+      "def": "FOREIGN KEY (profile_id) REFERENCES profiles(id) ON DELETE CASCADE"
+    },
+    {
+      "tabela": "student_location_report_throttle",
+      "conname": "student_location_report_throttle_student_id_fkey",
+      "def": "FOREIGN KEY (student_id) REFERENCES students(id) ON DELETE CASCADE"
+    },
+    {
+      "tabela": "student_location_sharing",
+      "conname": "student_location_sharing_pkey",
+      "def": "PRIMARY KEY (profile_id, student_id)"
+    },
+    {
+      "tabela": "student_location_sharing",
+      "conname": "student_location_sharing_precision_level_check",
+      "def": "CHECK ((precision_level = ANY (ARRAY['city'::text, 'street'::text, 'exact'::text])))"
+    },
+    {
+      "tabela": "student_location_sharing",
+      "conname": "student_location_sharing_profile_id_fkey",
+      "def": "FOREIGN KEY (profile_id) REFERENCES profiles(id) ON DELETE CASCADE"
+    },
+    {
+      "tabela": "student_location_sharing",
+      "conname": "student_location_sharing_student_id_fkey",
+      "def": "FOREIGN KEY (student_id) REFERENCES students(id) ON DELETE CASCADE"
+    },
+    {
+      "tabela": "student_locations",
+      "conname": "student_locations_latitude_check",
+      "def": "CHECK (((latitude >= ('-90'::integer)::double precision) AND (latitude <= (90)::double precision)))"
+    },
+    {
+      "tabela": "student_locations",
+      "conname": "student_locations_longitude_check",
+      "def": "CHECK (((longitude >= ('-180'::integer)::double precision) AND (longitude <= (180)::double precision)))"
+    },
+    {
+      "tabela": "student_locations",
+      "conname": "student_locations_pkey",
+      "def": "PRIMARY KEY (student_id)"
+    },
+    {
+      "tabela": "student_locations",
+      "conname": "student_locations_reported_by_profile_id_fkey",
+      "def": "FOREIGN KEY (reported_by_profile_id) REFERENCES profiles(id) ON DELETE SET NULL"
+    },
+    {
+      "tabela": "student_locations",
+      "conname": "student_locations_source_check",
+      "def": "CHECK ((source = ANY (ARRAY['guardian_app'::text, 'student_app'::text])))"
+    },
+    {
+      "tabela": "student_locations",
+      "conname": "student_locations_student_id_fkey",
+      "def": "FOREIGN KEY (student_id) REFERENCES students(id) ON DELETE CASCADE"
+    }
+  ],
+  "meta": [
+    {
+      "relname": "push_subscriptions",
+      "owner": "postgres",
+      "relrowsecurity": true,
+      "relforcerowsecurity": false,
+      "acl": "{postgres=arwdDxtm/postgres,anon=rm/postgres,authenticated=arwdDxtm/postgres,service_role=arwdDxtm/postgres}",
+      "policies": 1
+    },
+    {
+      "relname": "student_location_report_throttle",
+      "owner": "postgres",
+      "relrowsecurity": true,
+      "relforcerowsecurity": false,
+      "acl": "{postgres=arwdDxtm/postgres,service_role=arwdDxtm/postgres}",
+      "policies": 0
+    },
+    {
+      "relname": "student_locations",
+      "owner": "postgres",
+      "relrowsecurity": true,
+      "relforcerowsecurity": false,
+      "acl": "{postgres=arwdDxtm/postgres,service_role=arwdDxtm/postgres}",
+      "policies": 0
+    }
+  ],
+  "throttleRows": [],
+  "locsRows": [],
+  "reportDef": "CREATE OR REPLACE FUNCTION public.bfr_report_location(p_student_id uuid, p_lat double precision, p_lon double precision, p_acc double precision DEFAULT NULL::double precision)\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO 'public'\nAS $function$\ndeclare\n  v_caller uuid := auth.uid();\n  v_source text;\n  v_throttled boolean;\nbegin\n  if v_caller is null then\n    raise exception 'nao autenticado' using errcode = '42501';\n  end if;\n  if p_lat < -90 or p_lat > 90 or p_lon < -180 or p_lon > 180 then\n    raise exception 'coordenadas invalidas' using errcode = '22023';\n  end if;\n  if exists (select 1 from public.guardian_students where profile_id = v_caller and student_id = p_student_id) then\n    v_source := 'guardian_app';\n    if not exists (select 1 from public.student_location_sharing\n                   where profile_id = v_caller and student_id = p_student_id and enabled) then\n      raise exception 'compartilhamento desativado' using errcode = '42501';\n    end if;\n  elsif exists (select 1 from public.students where id = p_student_id and student_profile_id = v_caller) then\n    v_source := 'student_app';\n    if not exists (select 1 from public.student_location_sharing where student_id = p_student_id and enabled) then\n      raise exception 'compartilhamento desativado' using errcode = '42501';\n    end if;\n  else\n    raise exception 'sem vinculo com o aluno' using errcode = '42501';\n  end if;\n  insert into public.student_location_report_throttle (profile_id, student_id, last_report_at)\n  values (v_caller, p_student_id, now())\n  on conflict (profile_id, student_id) do update\n    set last_report_at = excluded.last_report_at\n    where public.student_location_report_throttle.last_report_at <= now() - interval '30 seconds'\n  returning true into v_throttled;\n  if v_throttled is null then\n    raise exception 'rate_limit: aguarde 30 segundos' using errcode = 'P0001';\n  end if;\n  insert into public.student_locations\n    (student_id, latitude, longitude, accuracy_m, reported_by_profile_id, source, reported_at)\n  values (p_student_id, p_lat, p_lon, p_acc, v_caller, v_source, now())\n  on conflict (student_id) do update\n    set latitude = excluded.latitude, longitude = excluded.longitude,\n        accuracy_m = excluded.accuracy_m, reported_by_profile_id = excluded.reported_by_profile_id,\n        source = excluded.source, reported_at = excluded.reported_at;\n  return jsonb_build_object('ok', true, 'source', v_source, 'reported_at', now());\nend;\n$function$\n",
+  "funcs": [
+    {
+      "proname": "bfr_pf_notify_location",
+      "args": "",
+      "prosecdef": true,
+      "owner": "postgres",
+      "acl": "{postgres=X/postgres,service_role=X/postgres}"
+    },
+    {
+      "proname": "bfr_report_location",
+      "args": "p_student_id uuid, p_lat double precision, p_lon double precision, p_acc double precision",
+      "prosecdef": true,
+      "owner": "postgres",
+      "acl": "{postgres=X/postgres,authenticated=X/postgres,service_role=X/postgres}"
+    }
+  ],
+  "netRows": [
+    {
+      "id": 1,
+      "status_code": 200,
+      "erro": "",
+      "created": "2026-10-29 01:13:41.650207+00"
+    },
+    {
+      "id": 2,
+      "status_code": 200,
+      "erro": "",
+      "created": "2026-10-29 02:00:03.988999+00"
+    },
+    {
+      "id": 3,
+      "status_code": 200,
+      "erro": "",
+      "created": "2026-10-29 02:09:10.511738+00"
+    },
+    {
+      "id": 4,
+      "status_code": 200,
+      "erro": "",
+      "created": "2026-10-29 03:27:01.558753+00"
+    }
+  ],
+  "baseline": [
+    {
+      "tabela": "auth.users",
+      "linhas": 25,
+      "md5": "(somente contagem)"
+    },
+    {
+      "tabela": "classes",
+      "linhas": 27,
+      "md5": "a09993ebb6a847b7749aa572e6650066"
+    },
+    {
+      "tabela": "guardian_students",
+      "linhas": 3,
+      "md5": "448af015dad6e7cf83de8767f73a4c0f"
+    },
+    {
+      "tabela": "net._http_response",
+      "linhas": 4,
+      "md5": "b6452366332f5e493fee8c3cc03c0068"
+    },
+    {
+      "tabela": "notification_preferences",
+      "linhas": 5,
+      "md5": "d41f83053cc07ddf9f79dd4e91e39e92"
+    },
+    {
+      "tabela": "profiles",
+      "linhas": 25,
+      "md5": "ad4240919addd1f63a1d19a9d1b58a0e"
+    },
+    {
+      "tabela": "push_subscriptions",
+      "linhas": 1,
+      "md5": "f9d4aad680c514069f86d4a9425def45"
+    },
+    {
+      "tabela": "student_location_report_throttle",
+      "linhas": 0,
+      "md5": "d41d8cd98f00b204e9800998ecf8427e"
+    },
+    {
+      "tabela": "student_location_sharing",
+      "linhas": 0,
+      "md5": "d41d8cd98f00b204e9800998ecf8427e"
+    },
+    {
+      "tabela": "student_locations",
+      "linhas": 0,
+      "md5": "d41d8cd98f00b204e9800998ecf8427e"
+    },
+    {
+      "tabela": "students",
+      "linhas": 848,
+      "md5": "8949fa4c42096a6540a537538d3635a7"
+    },
+    {
+      "tabela": "vault.secrets",
+      "linhas": 1,
+      "md5": "98c44034a233da9e6b1a306c8c0e5965"
+    }
+  ],
+  "pushNorm": [
+    {
+      "linhas": 1,
+      "md5_sem_last_seen": "35adec93ce3a0555b2ba658a2cd6f907"
+    }
+  ],
+  "catalogo": [
+    {
+      "tipo": "funcao",
+      "nome": "bfr_pf_notify_location",
+      "detalhe": "presente"
+    },
+    {
+      "tipo": "segredo",
+      "nome": "pf_emissor_service_role",
+      "detalhe": "1"
+    },
+    {
+      "tipo": "tabela_throttle_notify",
+      "nome": "student_location_notify_throttle",
+      "detalhe": "NAO_EXISTE"
+    },
+    {
+      "tipo": "trigger",
+      "nome": "bfr_pf_notify_location",
+      "detalhe": "21"
+    }
+  ]
+}

@@ -1,0 +1,70 @@
+{
+  "quando": "2026-10-29T04:13:56.706Z",
+  "modo": "aplicar",
+  "alvo_aparelho": "19bc8c0e-5b1c-4e73-a765-80ea58911315",
+  "ids": {
+    "turma": "aa10c001-0000-4000-8000-000000002099",
+    "alunoA": "aa10c00a-0000-4000-8000-000000002099",
+    "alunoB": "aa10c00b-0000-4000-8000-000000002099",
+    "alunoC": "aa10c00c-0000-4000-8000-000000002099"
+  },
+  "antes": {
+    "turma2099": 0,
+    "alunos_fixture": 0,
+    "sharing": 0,
+    "posicoes": 0,
+    "carimbos": 0
+  },
+  "depois": {
+    "turma2099": 1,
+    "alunos_fixture": 3,
+    "sharing": 2,
+    "posicoes": 0,
+    "carimbos": 0
+  },
+  "dentro_da_transacao": [
+    {
+      "nome": "PF THROTTLE ALUNO A",
+      "aluno": "A",
+      "sharing_ativo": 1,
+      "posicao": 0,
+      "carimbo": 0
+    },
+    {
+      "nome": "PF THROTTLE ALUNO B",
+      "aluno": "B",
+      "sharing_ativo": 1,
+      "posicao": 0,
+      "carimbo": 0
+    },
+    {
+      "nome": "PF THROTTLE ALUNO C",
+      "aluno": "C",
+      "sharing_ativo": 0,
+      "posicao": 0,
+      "carimbo": 0
+    }
+  ],
+  "portoes": {
+    "P1_dentro_da_transacao_tres_alunos": {
+      "ok": true,
+      "detalhe": "[{\"nome\":\"PF THROTTLE ALUNO A\",\"aluno\":\"A\",\"sharing_ativo\":1,\"posicao\":0,\"carimbo\":0},{\"nome\":\"PF THROTTLE ALUNO B\",\"aluno\":\"B\",\"sharing_ativo\":1,\"posicao\":0,\"carimbo\":0},{\"nome\":\"PF THROTTLE ALUNO C\",\"aluno\":\"C\",\"sharing_ativo\":0,\"posicao\":0,\"carimbo\":0}]"
+    },
+    "P2_A_e_B_com_sharing_ativo": {
+      "ok": true,
+      "detalhe": "[{\"nome\":\"PF THROTTLE ALUNO A\",\"aluno\":\"A\",\"sharing_ativo\":1,\"posicao\":0,\"carimbo\":0},{\"nome\":\"PF THROTTLE ALUNO B\",\"aluno\":\"B\",\"sharing_ativo\":1,\"posicao\":0,\"carimbo\":0},{\"nome\":\"PF THROTTLE ALUNO C\",\"aluno\":\"C\",\"sharing_ativo\":0,\"posicao\":0,\"carimbo\":0}]"
+    },
+    "P3_C_sem_sharing": {
+      "ok": true,
+      "detalhe": "[{\"nome\":\"PF THROTTLE ALUNO A\",\"aluno\":\"A\",\"sharing_ativo\":1,\"posicao\":0,\"carimbo\":0},{\"nome\":\"PF THROTTLE ALUNO B\",\"aluno\":\"B\",\"sharing_ativo\":1,\"posicao\":0,\"carimbo\":0},{\"nome\":\"PF THROTTLE ALUNO C\",\"aluno\":\"C\",\"sharing_ativo\":0,\"posicao\":0,\"carimbo\":0}]"
+    },
+    "P4_nenhum_carimbo_nem_posicao_na_fixture": {
+      "ok": true,
+      "detalhe": "[{\"nome\":\"PF THROTTLE ALUNO A\",\"aluno\":\"A\",\"sharing_ativo\":1,\"posicao\":0,\"carimbo\":0},{\"nome\":\"PF THROTTLE ALUNO B\",\"aluno\":\"B\",\"sharing_ativo\":1,\"posicao\":0,\"carimbo\":0},{\"nome\":\"PF THROTTLE ALUNO C\",\"aluno\":\"C\",\"sharing_ativo\":0,\"posicao\":0,\"carimbo\":0}]"
+    },
+    "P5_aplicado_persistiu": {
+      "ok": true,
+      "detalhe": "{\"antes\":{\"turma2099\":0,\"alunos_fixture\":0,\"sharing\":0,\"posicoes\":0,\"carimbos\":0},\"depois\":{\"turma2099\":1,\"alunos_fixture\":3,\"sharing\":2,\"posicoes\":0,\"carimbos\":0}}"
+    }
+  }
+}

@@ -1,0 +1,50 @@
+{
+  "quando": "2026-10-29T04:04:18.620Z",
+  "modo": "dry-run",
+  "candidatas": {
+    "arquivo": "pf-throttle-candidate.sql",
+    "bytes": 4142,
+    "md5": "08e699a2083c693d23054e9c9e8824a4",
+    "md5_espacado": "0 8 e 6 9 9 a 2 0 8 3 c 6 9 3 d 2 3 0 5 4 e 9 c 9 e 8 8 2 4 a 4",
+    "original_md5": "73688dbe8dbf15f7f1855e5cc49cb0cb",
+    "original_md5_espacado": "7 3 6 8 8 d b e 8 d b f 1 5 f 7 f 1 8 5 5 e 5 c c 4 9 c b 0 c b",
+    "corpo_md5": "4f101fbd61e2a7b73865b604686be641"
+  },
+  "gates": {
+    "G0_texto_vivo_igual_ao_recon": {
+      "ok": true,
+      "detalhe": "73688dbe8dbf15f7f1855e5cc49cb0cb vs 73688dbe8dbf15f7f1855e5cc49cb0cb"
+    },
+    "G1_tabela_ausente_antes": {
+      "ok": true,
+      "detalhe": "{\"r\":null}"
+    },
+    "G2_gatilho_no_ar": {
+      "ok": true,
+      "detalhe": "[{\"tgtype\":21,\"tgenabled\":\"O\"}]"
+    },
+    "G3_corpo_tem_janela": {
+      "ok": true,
+      "detalhe": "sem v_janela"
+    },
+    "G3_corpo_tem_silencio": {
+      "ok": true,
+      "detalhe": "sem bloco de silencio"
+    },
+    "G3_corpo_tem_carimbo": {
+      "ok": true,
+      "detalhe": "sem carimbo"
+    },
+    "G3_ainda_chama_a_edge": {
+      "ok": true,
+      "detalhe": "perdeu a chamada da Edge"
+    },
+    "G3_sem_nome_de_aluno": {
+      "ok": true,
+      "detalhe": "PII no corpo"
+    }
+  },
+  "dryrun": [],
+  "dryrun_ok": true,
+  "veredito": "PF_THROTTLE_DRYRUN_OK (nada aplicado)"
+}

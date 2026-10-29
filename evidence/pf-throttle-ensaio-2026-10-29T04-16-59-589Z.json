@@ -1,0 +1,214 @@
+{
+  "quando": "2026-10-29T04:16:59.589Z",
+  "artefato": "pf-throttle-ensaio",
+  "fixture_ids": {
+    "turma": "aa10c001-0000-4000-8000-000000002099",
+    "alunoA": "aa10c00a-0000-4000-8000-000000002099",
+    "alunoB": "aa10c00b-0000-4000-8000-000000002099",
+    "alunoC": "aa10c00c-0000-4000-8000-000000002099"
+  },
+  "partida": {
+    "n": 7,
+    "max_id": 7
+  },
+  "resultados": [
+    {
+      "caso": "T0_partida",
+      "net": {
+        "n": 7,
+        "max_id": 7
+      },
+      "throttle_linhas": 0
+    },
+    {
+      "caso": "T1_primeira_emite",
+      "escrita": {
+        "ms": 1426
+      },
+      "posicao": {
+        "latitude": -23.55,
+        "longitude": -46.633,
+        "source": "student_app",
+        "relator": null,
+        "reported_at": "2026-10-29T04:15:57.387Z"
+      },
+      "carimbo_criado": {
+        "aluno": "aa10c00a-0000-4000-8000-000000002099",
+        "carimbo": "2026-10-29T04:15:57.387Z"
+      },
+      "carimbo_apos_envio": {
+        "aluno": "aa10c00a-0000-4000-8000-000000002099",
+        "carimbo": "2026-10-29T04:15:57.387Z"
+      },
+      "net_novas": [
+        {
+          "id": 8,
+          "status_code": 200,
+          "error_msg": null,
+          "created": "2026-10-29 04:15:57.396297+00",
+          "timed_out": false
+        }
+      ],
+      "aguardou_ms": 1166
+    },
+    {
+      "caso": "T2_dentro_da_janela_silencia",
+      "escrita": {
+        "ms": 1192
+      },
+      "posicao": {
+        "latitude": -23.551,
+        "longitude": -46.634,
+        "source": "student_app",
+        "relator": null,
+        "reported_at": "2026-10-29T04:16:04.950Z"
+      },
+      "carimbo": {
+        "aluno": "aa10c00a-0000-4000-8000-000000002099",
+        "carimbo": "2026-10-29T04:15:57.387Z"
+      },
+      "silencio": {
+        "novas": [],
+        "prazo_ms": 15000
+      }
+    },
+    {
+      "caso": "T3_carimbo_retrocedido_reemite",
+      "escrita": {
+        "ms": 1183
+      },
+      "carimbo_retrocedido": {
+        "aluno": "aa10c00a-0000-4000-8000-000000002099",
+        "carimbo": "2026-10-29T04:10:25.083Z"
+      },
+      "net_novas": [
+        {
+          "id": 9,
+          "status_code": 200,
+          "error_msg": null,
+          "created": "2026-10-29 04:16:28.703134+00",
+          "timed_out": false
+        }
+      ],
+      "carimbo_novo": {
+        "aluno": "aa10c00a-0000-4000-8000-000000002099",
+        "carimbo": "2026-10-29T04:16:28.688Z"
+      },
+      "aguardou_ms": 1162
+    },
+    {
+      "caso": "T4_outro_aluno_nao_e_silenciado",
+      "escrita": {
+        "ms": 1160
+      },
+      "janela_de_A": {
+        "aluno": "aa10c00a-0000-4000-8000-000000002099",
+        "carimbo": "2026-10-29T04:16:28.688Z"
+      },
+      "net_novas": [
+        {
+          "id": 10,
+          "status_code": 200,
+          "error_msg": null,
+          "created": "2026-10-29 04:16:34.543934+00",
+          "timed_out": false
+        }
+      ],
+      "carimbo_B": {
+        "aluno": "aa10c00b-0000-4000-8000-000000002099",
+        "carimbo": "2026-10-29T04:16:34.535Z"
+      },
+      "aguardou_ms": 1146
+    },
+    {
+      "caso": "T5_sem_destinatario",
+      "escrita": {
+        "ms": 1173
+      },
+      "posicao": {
+        "latitude": -23.57,
+        "longitude": -46.65,
+        "source": "student_app",
+        "relator": null,
+        "reported_at": "2026-10-29T04:16:39.203Z"
+      },
+      "silencio": {
+        "novas": [],
+        "prazo_ms": 15000
+      },
+      "carimbo_C": null
+    },
+    {
+      "caso": "T9_estado_final",
+      "posicoes": 3,
+      "carimbos": 2,
+      "carimbos_c": 0,
+      "net_total": 10,
+      "net_200": 10
+    }
+  ],
+  "portoes": {
+    "T1_emiteu": {
+      "ok": true,
+      "detalhe": "{\"novas\":[{\"id\":8,\"status_code\":200,\"error_msg\":null,\"created\":\"2026-10-29 04:15:57.396297+00\",\"timed_out\":false}],\"esperado\":true,\"gasto_ms\":1166}"
+    },
+    "T1_carimbo": {
+      "ok": true,
+      "detalhe": "{\"aluno\":\"aa10c00a-0000-4000-8000-000000002099\",\"carimbo\":\"2026-10-29T04:15:57.387Z\"}"
+    },
+    "T2_posicao_gravada": {
+      "ok": true,
+      "detalhe": "{\"pos1\":{\"latitude\":-23.55,\"longitude\":-46.633,\"source\":\"student_app\",\"relator\":null,\"reported_at\":\"2026-10-29T04:15:57.387Z\"},\"pos2\":{\"latitude\":-23.551,\"longitude\":-46.634,\"source\":\"student_app\",\"relator\":null,\"reported_at\":\"2026-10-29T04:16:04.950Z\"}}"
+    },
+    "T2_nada_enviado": {
+      "ok": true,
+      "detalhe": "{\"novas\":[],\"prazo_ms\":15000}"
+    },
+    "T2_carimbo_intacto": {
+      "ok": true,
+      "detalhe": "{\"antes\":{\"aluno\":\"aa10c00a-0000-4000-8000-000000002099\",\"carimbo\":\"2026-10-29T04:15:57.387Z\"},\"depois\":{\"aluno\":\"aa10c00a-0000-4000-8000-000000002099\",\"carimbo\":\"2026-10-29T04:15:57.387Z\"}}"
+    },
+    "T3_reemiteu": {
+      "ok": true,
+      "detalhe": "{\"novas\":[{\"id\":9,\"status_code\":200,\"error_msg\":null,\"created\":\"2026-10-29 04:16:28.703134+00\",\"timed_out\":false}],\"esperado\":true,\"gasto_ms\":1162}"
+    },
+    "T3_carimbo_renovoado": {
+      "ok": true,
+      "detalhe": "{\"antes\":{\"aluno\":\"aa10c00a-0000-4000-8000-000000002099\",\"carimbo\":\"2026-10-29T04:10:25.083Z\"},\"depois\":{\"aluno\":\"aa10c00a-0000-4000-8000-000000002099\",\"carimbo\":\"2026-10-29T04:16:28.688Z\"}}"
+    },
+    "T4_emiteu": {
+      "ok": true,
+      "detalhe": "{\"novas\":[{\"id\":10,\"status_code\":200,\"error_msg\":null,\"created\":\"2026-10-29 04:16:34.543934+00\",\"timed_out\":false}],\"esperado\":true,\"gasto_ms\":1146}"
+    },
+    "T4_carimbo_proprio_do_B": {
+      "ok": true,
+      "detalhe": "{\"B\":{\"aluno\":\"aa10c00b-0000-4000-8000-000000002099\",\"carimbo\":\"2026-10-29T04:16:34.535Z\"},\"A\":{\"aluno\":\"aa10c00a-0000-4000-8000-000000002099\",\"carimbo\":\"2026-10-29T04:16:28.688Z\"}}"
+    },
+    "T5_posicao_gravada": {
+      "ok": true,
+      "detalhe": "{\"latitude\":-23.57,\"longitude\":-46.65,\"source\":\"student_app\",\"relator\":null,\"reported_at\":\"2026-10-29T04:16:39.203Z\"}"
+    },
+    "T5_nada_enviado": {
+      "ok": true,
+      "detalhe": "{\"novas\":[],\"prazo_ms\":15000}"
+    },
+    "T5_janela_nao_gasta": {
+      "ok": true,
+      "detalhe": "null"
+    },
+    "T9_tres_posicoes": {
+      "ok": true,
+      "detalhe": "{\"posicoes\":3,\"carimbos\":2,\"carimbos_c\":0,\"net_total\":10,\"net_200\":10}"
+    },
+    "T9_dois_carimbos": {
+      "ok": true,
+      "detalhe": "{\"posicoes\":3,\"carimbos\":2,\"carimbos_c\":0,\"net_total\":10,\"net_200\":10}"
+    },
+    "T9_tres_envios": {
+      "ok": true,
+      "detalhe": "{\"partida\":{\"n\":7,\"max_id\":7},\"fim\":{\"posicoes\":3,\"carimbos\":2,\"carimbos_c\":0,\"net_total\":10,\"net_200\":10}}"
+    }
+  },
+  "contagem_portoes": 15,
+  "ok": true
+}

@@ -1,0 +1,306 @@
+{
+  "quando": "2026-10-29T04:17:59.898Z",
+  "antes": [
+    {
+      "tabela": "auth.users",
+      "linhas": 25,
+      "md5": "(somente contagem)"
+    },
+    {
+      "tabela": "net._http_response",
+      "linhas": 10,
+      "md5": "85bc93a4bdd44d623bbd4e0f5913fc9f"
+    },
+    {
+      "tabela": "public.classes",
+      "linhas": 28,
+      "md5": "762c05e8b71a8c14f4a921b0e04be9c7"
+    },
+    {
+      "tabela": "public.guardian_students",
+      "linhas": 3,
+      "md5": "448af015dad6e7cf83de8767f73a4c0f"
+    },
+    {
+      "tabela": "public.profiles",
+      "linhas": 25,
+      "md5": "3e10065b5ca9783059be60412ffec801"
+    },
+    {
+      "tabela": "public.push_subscriptions",
+      "linhas": 1,
+      "md5": "(somente contagem: linha do aparelho-alvo fica viva de proposito)"
+    },
+    {
+      "tabela": "public.student_location_notify_throttle",
+      "linhas": 2,
+      "md5": "7b2b84d696f0108999975a19585c9b75"
+    },
+    {
+      "tabela": "public.student_location_report_throttle",
+      "linhas": 0,
+      "md5": "d41d8cd98f00b204e9800998ecf8427e"
+    },
+    {
+      "tabela": "public.student_location_sharing",
+      "linhas": 2,
+      "md5": "b371d5600ba4c76c319f16f5d64dd194"
+    },
+    {
+      "tabela": "public.student_locations",
+      "linhas": 3,
+      "md5": "b7214df0a0fab0424af9fb8eb61771e2"
+    },
+    {
+      "tabela": "public.students",
+      "linhas": 851,
+      "md5": "7b98706c74f3fe44de633f24d4b012ce"
+    },
+    {
+      "tabela": "vault.secrets",
+      "linhas": 1,
+      "md5": "0e0f62671deeba0f089aa0b93585cebf"
+    }
+  ],
+  "depois": [
+    {
+      "tabela": "auth.users",
+      "linhas": 25,
+      "md5": "(somente contagem)"
+    },
+    {
+      "tabela": "net._http_response",
+      "linhas": 10,
+      "md5": "85bc93a4bdd44d623bbd4e0f5913fc9f"
+    },
+    {
+      "tabela": "public.classes",
+      "linhas": 27,
+      "md5": "a09993ebb6a847b7749aa572e6650066"
+    },
+    {
+      "tabela": "public.guardian_students",
+      "linhas": 3,
+      "md5": "448af015dad6e7cf83de8767f73a4c0f"
+    },
+    {
+      "tabela": "public.profiles",
+      "linhas": 25,
+      "md5": "3e10065b5ca9783059be60412ffec801"
+    },
+    {
+      "tabela": "public.push_subscriptions",
+      "linhas": 1,
+      "md5": "(somente contagem: linha do aparelho-alvo fica viva de proposito)"
+    },
+    {
+      "tabela": "public.student_location_notify_throttle",
+      "linhas": 0,
+      "md5": "d41d8cd98f00b204e9800998ecf8427e"
+    },
+    {
+      "tabela": "public.student_location_report_throttle",
+      "linhas": 0,
+      "md5": "d41d8cd98f00b204e9800998ecf8427e"
+    },
+    {
+      "tabela": "public.student_location_sharing",
+      "linhas": 0,
+      "md5": "d41d8cd98f00b204e9800998ecf8427e"
+    },
+    {
+      "tabela": "public.student_locations",
+      "linhas": 0,
+      "md5": "d41d8cd98f00b204e9800998ecf8427e"
+    },
+    {
+      "tabela": "public.students",
+      "linhas": 848,
+      "md5": "8949fa4c42096a6540a537538d3635a7"
+    },
+    {
+      "tabela": "vault.secrets",
+      "linhas": 1,
+      "md5": "0e0f62671deeba0f089aa0b93585cebf"
+    }
+  ],
+  "catalogo": [
+    {
+      "tipo": "funcao",
+      "nome": "bfr_pf_notify_location",
+      "detalhe": "b96debe20dcbf18bbc61a683b8725b2d"
+    },
+    {
+      "tipo": "tabela_throttle",
+      "nome": "student_location_notify_throttle",
+      "detalhe": "student_location_notify_throttle"
+    },
+    {
+      "tipo": "trigger",
+      "nome": "bfr_pf_notify_location",
+      "detalhe": "21/O"
+    }
+  ],
+  "sobra": {
+    "alunos": 0,
+    "turma": 0,
+    "sharing_total": 0,
+    "posicoes_total": 0,
+    "carimbos_total": 0
+  },
+  "baseline_restaurada": [
+    {
+      "tabela": "auth.users",
+      "comparavel": false
+    },
+    {
+      "tabela": "net._http_response",
+      "comparavel": false,
+      "nota": "evidencia do pg_net"
+    },
+    {
+      "tabela": "public.classes",
+      "comparavel": true,
+      "esperado": "a09993ebb6a847b7749aa572e6650066",
+      "obtido": "a09993ebb6a847b7749aa572e6650066",
+      "igual": true,
+      "linhas_esperadas": 27,
+      "linhas_obtidas": 27
+    },
+    {
+      "tabela": "public.guardian_students",
+      "comparavel": true,
+      "esperado": "448af015dad6e7cf83de8767f73a4c0f",
+      "obtido": "448af015dad6e7cf83de8767f73a4c0f",
+      "igual": true,
+      "linhas_esperadas": 3,
+      "linhas_obtidas": 3
+    },
+    {
+      "tabela": "public.profiles",
+      "comparavel": true,
+      "esperado": "3e10065b5ca9783059be60412ffec801",
+      "obtido": "3e10065b5ca9783059be60412ffec801",
+      "igual": true,
+      "linhas_esperadas": 25,
+      "linhas_obtidas": 25
+    },
+    {
+      "tabela": "public.push_subscriptions",
+      "comparavel": false
+    },
+    {
+      "tabela": "public.student_location_notify_throttle",
+      "comparavel": true,
+      "esperado": "d41d8cd98f00b204e9800998ecf8427e",
+      "obtido": "d41d8cd98f00b204e9800998ecf8427e",
+      "igual": true,
+      "linhas_esperadas": 0,
+      "linhas_obtidas": 0
+    },
+    {
+      "tabela": "public.student_location_report_throttle",
+      "comparavel": true,
+      "esperado": "d41d8cd98f00b204e9800998ecf8427e",
+      "obtido": "d41d8cd98f00b204e9800998ecf8427e",
+      "igual": true,
+      "linhas_esperadas": 0,
+      "linhas_obtidas": 0
+    },
+    {
+      "tabela": "public.student_location_sharing",
+      "comparavel": true,
+      "esperado": "d41d8cd98f00b204e9800998ecf8427e",
+      "obtido": "d41d8cd98f00b204e9800998ecf8427e",
+      "igual": true,
+      "linhas_esperadas": 0,
+      "linhas_obtidas": 0
+    },
+    {
+      "tabela": "public.student_locations",
+      "comparavel": true,
+      "esperado": "d41d8cd98f00b204e9800998ecf8427e",
+      "obtido": "d41d8cd98f00b204e9800998ecf8427e",
+      "igual": true,
+      "linhas_esperadas": 0,
+      "linhas_obtidas": 0
+    },
+    {
+      "tabela": "public.students",
+      "comparavel": true,
+      "esperado": "8949fa4c42096a6540a537538d3635a7",
+      "obtido": "8949fa4c42096a6540a537538d3635a7",
+      "igual": true,
+      "linhas_esperadas": 848,
+      "linhas_obtidas": 848
+    },
+    {
+      "tabela": "vault.secrets",
+      "comparavel": true,
+      "esperado": "0e0f62671deeba0f089aa0b93585cebf",
+      "obtido": "0e0f62671deeba0f089aa0b93585cebf",
+      "igual": true,
+      "linhas_esperadas": 1,
+      "linhas_obtidas": 1
+    }
+  ],
+  "portoes": {
+    "L1_zero_linhas_da_fixture": {
+      "ok": true,
+      "detalhe": "{\"alunos\":0,\"turma\":0,\"sharing_total\":0,\"posicoes_total\":0,\"carimbos_total\":0}"
+    },
+    "L2_tabelas_de_posicao_vazias": {
+      "ok": true,
+      "detalhe": "{\"alunos\":0,\"turma\":0,\"sharing_total\":0,\"posicoes_total\":0,\"carimbos_total\":0}"
+    },
+    "L3_md5_restaurado_public.classes": {
+      "ok": true,
+      "detalhe": "{\"tabela\":\"public.classes\",\"comparavel\":true,\"esperado\":\"a09993ebb6a847b7749aa572e6650066\",\"obtido\":\"a09993ebb6a847b7749aa572e6650066\",\"igual\":true,\"linhas_esperadas\":27,\"linhas_obtidas\":27}"
+    },
+    "L3_md5_restaurado_public.guardian_students": {
+      "ok": true,
+      "detalhe": "{\"tabela\":\"public.guardian_students\",\"comparavel\":true,\"esperado\":\"448af015dad6e7cf83de8767f73a4c0f\",\"obtido\":\"448af015dad6e7cf83de8767f73a4c0f\",\"igual\":true,\"linhas_esperadas\":3,\"linhas_obtidas\":3}"
+    },
+    "L3_md5_restaurado_public.profiles": {
+      "ok": true,
+      "detalhe": "{\"tabela\":\"public.profiles\",\"comparavel\":true,\"esperado\":\"3e10065b5ca9783059be60412ffec801\",\"obtido\":\"3e10065b5ca9783059be60412ffec801\",\"igual\":true,\"linhas_esperadas\":25,\"linhas_obtidas\":25}"
+    },
+    "L3_md5_restaurado_public.student_location_notify_throttle": {
+      "ok": true,
+      "detalhe": "{\"tabela\":\"public.student_location_notify_throttle\",\"comparavel\":true,\"esperado\":\"d41d8cd98f00b204e9800998ecf8427e\",\"obtido\":\"d41d8cd98f00b204e9800998ecf8427e\",\"igual\":true,\"linhas_esperadas\":0,\"linhas_obtidas\":0}"
+    },
+    "L3_md5_restaurado_public.student_location_report_throttle": {
+      "ok": true,
+      "detalhe": "{\"tabela\":\"public.student_location_report_throttle\",\"comparavel\":true,\"esperado\":\"d41d8cd98f00b204e9800998ecf8427e\",\"obtido\":\"d41d8cd98f00b204e9800998ecf8427e\",\"igual\":true,\"linhas_esperadas\":0,\"linhas_obtidas\":0}"
+    },
+    "L3_md5_restaurado_public.student_location_sharing": {
+      "ok": true,
+      "detalhe": "{\"tabela\":\"public.student_location_sharing\",\"comparavel\":true,\"esperado\":\"d41d8cd98f00b204e9800998ecf8427e\",\"obtido\":\"d41d8cd98f00b204e9800998ecf8427e\",\"igual\":true,\"linhas_esperadas\":0,\"linhas_obtidas\":0}"
+    },
+    "L3_md5_restaurado_public.student_locations": {
+      "ok": true,
+      "detalhe": "{\"tabela\":\"public.student_locations\",\"comparavel\":true,\"esperado\":\"d41d8cd98f00b204e9800998ecf8427e\",\"obtido\":\"d41d8cd98f00b204e9800998ecf8427e\",\"igual\":true,\"linhas_esperadas\":0,\"linhas_obtidas\":0}"
+    },
+    "L3_md5_restaurado_public.students": {
+      "ok": true,
+      "detalhe": "{\"tabela\":\"public.students\",\"comparavel\":true,\"esperado\":\"8949fa4c42096a6540a537538d3635a7\",\"obtido\":\"8949fa4c42096a6540a537538d3635a7\",\"igual\":true,\"linhas_esperadas\":848,\"linhas_obtidas\":848}"
+    },
+    "L3_md5_restaurado_vault.secrets": {
+      "ok": true,
+      "detalhe": "{\"tabela\":\"vault.secrets\",\"comparavel\":true,\"esperado\":\"0e0f62671deeba0f089aa0b93585cebf\",\"obtido\":\"0e0f62671deeba0f089aa0b93585cebf\",\"igual\":true,\"linhas_esperadas\":1,\"linhas_obtidas\":1}"
+    },
+    "L4_emissor_continua_no_ar": {
+      "ok": true,
+      "detalhe": "[{\"tipo\":\"funcao\",\"nome\":\"bfr_pf_notify_location\",\"detalhe\":\"b96debe20dcbf18bbc61a683b8725b2d\"},{\"tipo\":\"tabela_throttle\",\"nome\":\"student_location_notify_throttle\",\"detalhe\":\"student_location_notify_throttle\"},{\"tipo\":\"trigger\",\"nome\":\"bfr_pf_notify_location\",\"detalhe\":\"21/O\"}]"
+    },
+    "L5_tabela_do_throttle_continua_existindo": {
+      "ok": true,
+      "detalhe": "[{\"tipo\":\"funcao\",\"nome\":\"bfr_pf_notify_location\",\"detalhe\":\"b96debe20dcbf18bbc61a683b8725b2d\"},{\"tipo\":\"tabela_throttle\",\"nome\":\"student_location_notify_throttle\",\"detalhe\":\"student_location_notify_throttle\"},{\"tipo\":\"trigger\",\"nome\":\"bfr_pf_notify_location\",\"detalhe\":\"21/O\"}]"
+    },
+    "L6_conta_aparelho_viva": {
+      "ok": true,
+      "detalhe": "{\"subs\":{\"tabela\":\"public.push_subscriptions\",\"linhas\":1,\"md5\":\"(somente contagem: linha do aparelho-alvo fica viva de proposito)\"},\"users\":{\"tabela\":\"auth.users\",\"linhas\":25,\"md5\":\"(somente contagem)\"}}"
+    }
+  },
+  "ok": true
+}
