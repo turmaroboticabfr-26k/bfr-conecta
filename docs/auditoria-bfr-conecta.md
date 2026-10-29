@@ -1727,6 +1727,28 @@ desta tabela vêm dos diários de bump e de `deployments list`, não de um insta
 
 41. **ITEM 41 FECHADO EM 22/10 (v60 PUBLICADA e D3 APLICADO no banco) — D1, D2 e D4 da suite v59 consertados na v60, provados em A/B no harness nas duas larguras e agora nos bytes do ar; o D3 (atividade escolar 403) foi aplicado no banco em passada separada.** Deploy cirúrgico 22/10 21:12Z, Version ID `79112a32-8953-4947-9893-73f88aa2132e`: `/` md5 `36feaad4fb5a033a2f011de336a4667e` (3.481.301 B), SW `042670477d613d3044b4e4298a891db4` com `CACHE bfr-conecta-v60` (única linha trocada do SW do ar), rp.js `a83f77ba…` e 12/12 assets intocados. Portões verdes: preflight (ar == v59 `2e403607`, diff byte-igual ao congelado, 5/5 assinaturas), confere-bundle (HTML == SRC, SW == SRC com 1 linha de dif do ar, marcas v59 preservadas + v60 presentes), HTTP (3 fetches iguais) e cliente em Chrome limpo (cache única `bfr-conecta-v60`, SW activated/controlado, body cacheado byte-igual, só 404 de `/cdn-cgi/rum?`). O D3 foi aplicado antes do deploy (`node apply-sql.mjs sql-d3-school-activities-insert.sql --apply` → HTTP 201) e provado por catálogo + dry-run transacional (ANTES 42501 → DEPOIS id retornado; 0 linhas escritas; reversão congelada); E2E pelo caminho real TESTADO 22/10 (OK próprio): conta sintética `pedagogical` mintada para o teste — POST positivo 201, SELECT própria visível, negativos 42501×3 e anon 401, PATCH/DELETE casam 0 linhas (seguem fechados para `pedagogical`, fora do escopo do D3), baseline de 7 tabelas restaurada por md5 e conta apagada no fim do ciclo (§37.23, diário `d3-e2e-postgrest.json`). As 4 células do A/B (`mede-v60-ab-d1d2d4.json`, v59/v60 × 390/1280): D1 inbox visível na Frequência e na volta na v60 (193/187px); D2 painel de leitura regenerado após a corrida (anos 6 e 7; @1280 nem trava); D4 '1 de 1 lançamento(s) salvos.' mantido (defeito de exibição — a escrita já existia nas duas bandas); #240 modal de correção abre nas 4 células (gap do rig fechado, armadilha #174). Sobram como material de item próprio: primeiro clique na aba notas engolido a 390 (item 42) e o churn de command-cards da v59 (eliminado de fato na v60, mecanismo não atribuído). Reversão da publicação: devolver index v59 (`2e403607`) + SW v59 (`0d5294f7`) e redeploy — requer OK novo. Detalhe e portões em §37.23; diário `audit-publicacao-v60.json`.
 
+42. **ITEM 42 FECHADO EM 23/10 (v63 PUBLICADA, OK «autoriza a publicação cirúrgica da v63 se o A/B passar») — o primeiro clique na aba "Notas" do professor a 390 era engolido; a causa era a hidratação assíncrona do painel acadêmico.** O painel legado (`#academicPanel`, 5221) nasce com 2 abas; `ensureAcademicUi()` (16689) injeta a toolbar de escopo e as abas `progress`/`notas` **depois dos dados assíncronos**, deslocando a aba "Notas por categoria" de y≈215 para y≈400 — o 1º clique mira a coordenada pré-hidratação e cai na aba "Notas" (prova `mede-v60-ab-d1d2d4.json`: tentativa 1 `{y:215}` → `tab:"grades"`, tentativa 2 `{y:400}` → `tab:"notas"`; o binding é delegado e responde — o problema era só a coordenada; @1280 não ocorre). Candidata: hunk único de +4 linhas em `ensureUi()` completando o painel já na 1ª execução (antes do 1º clique). A/B pré-deploy 4/4 APROVADO (`mede-v63-ab-item42-diario.json`): a v63 elimina a corrida sem tocar no fluxo de correção (M2 idêntico nas duas bandas). **PUBLICADA na v63** (23/10 09:59:56Z, deployment `e445ff76`, Version ID `36d6b88a`, `/` md5 `ea400a7c…` 3.370.588 B, SW `6dc1b249…` CACHE `bfr-conecta-v63`), portões verdes + Chrome limpo (`audit-publicacao-v63.json`).
+
+43. **ITEM 43 FECHADO EM 23/10 (v61 PUBLICADA, OK «ok») — o boletim e o trio do aluno nunca nasciam na v60: corrida de boot entre `setRole` e os módulos deferred, sem retry (D1, crítico).** Atribuição completa no §38: `setRole` (index 10436) chama `setupStudentRealtime()` (9936) antes de `window.BFR_AUTH_MODULES_READY` (10438) executar os scripts deferred; `window.BFRStudentSpace` só existe em 20899 (script iniciado em 20704), o guard de 10905 devolvia "Não foi possível carregar seu espaço escolar." e não havia retry em lugar nenhum — trio `—/—/00` e boletim estáticos para sempre (sonda `aluno-probe-boletim.json`, 12/12 passos). Candidata **C1** (retry no `.then()` de modulesReady) + **C6** (pintor do 3º cartão do trio, que não tinha escritor nenhum no fluxo do aluno) **PUBLICADA na v61 (23/10 02:25Z, `/` md5 `d185a4a7…`, SW `557f35e4…` CACHE v61)** — TESTADA no harness (A/B, §38.9): trio nasce completo (`8,2 / 66,7% / 02`) e statusHome vazio na candidata × erro fixo e `—/—/00` no controle, nas duas bandas. Portões verdes e prova de Chrome limpo no §38.10; diário `audit-publicacao-v61.json`.
+
+44. **ITEM 44 FECHADO EM 23/10 (v61 PUBLICADA, OK «ok») — views de portal vazavam para a área do aluno e cobriam a sidebar (D2, alto).** O hide do roteador (10095) só escondia `.bfr-platform-view`; os ramos de notificacoes/conteudos/relatorios (10052) e resultados-aprendizagem (10051) retornavam antes dele, e `schoolGamesView` abria depois (10127) — ao voltar para uma rota do aluno, `bfrContentHubView`/`schoolGamesView`/`bfrNotificationsView`/`resultsLearningView` continuavam visíveis junto com `studentView` (diários `aluno-mede-390/1280.json`: `conteudos: studentView,bfrContentHubView`). Candidata **C3** (os 5 IDs no hide de 10095) **PUBLICADA na v61 (23/10 02:25Z)** — TESTADA no harness (A/B, §38.9): `inicioDepoisPortal.conteudos` = `studentView` na candidata × `studentView,bfrContentHubView` no controle. §38.10; diário `audit-publicacao-v61.json`.
+
+45. **ITEM 45 ABERTO EM 22/10 — 8 das 19 rotas do aluno não têm tela própria (D3, alto, decisão de produto).** `notas` e `boletim` caem na mesma âncora `.overview-grid`, `agenda` abre o painel de Projetos (não eventos), `horarios`/`jogos` reutilizam painéis legados, `comunicados` cai em `.notice`, e `escola-historia`/`videos-aprender` não têm handler (o whitelist de 8996 permite, nada renderiza). Não é bug de render — é ausência de superfície; construir telas próprias (ou remover as rotas do menu do aluno) é decisão de produto. Detalhe no §38.4.
+
+46. **ITEM 46 PARCIALMENTE FECHADO EM 23/10 (v61 PUBLICADA, OK «ok») — D4–D8 da área do aluno (médio/baixo): D4/D5 consertados pela v61 (C2/H4/D5), D6/D7/D8 seguem como decisão de produto.** D4: Meu Espaço abria com breadcrumb "Escola" e sidebar destacando Escola (BFRStudentSpace.open, 20860-20877, não mantinha `lastArea`/crumb) — **C2 publicada** (lastArea + crumb + aria-current no open) + guard H4 no boot do BFRPlatform (13543) para o reload não reabrir o Meu Espaço do PLATAFORMA sobre o espaço do aluno. D5: notificacoes/conteudos herdavam o crumb anterior (retorno em 10052 antes do breadcrumb de 10149) — **candidata D5 publicada** (crumb próprio no retorno antecipado). D6: a área Escola mostra eventos fictícios fixos no código (13530) enquanto comunicados/agenda exibem dados reais — **ABERTO**: usar `school_events`/`announcements` reais (hoje 0/1 linha) ou marcar os fixos como exemplo. D7: Central de Atividades cumprimenta com a 1ª palavra de `full_name` (13489) — **ABERTO** (slug do e-mail em contas sem nome real). D8: `syncNavigationA11y` (26656, re-disparo por rAF/600ms/900ms em 26712/26723/26724) força breadcrumb "Jogos Escolares" e o destaque do nav enquanto `schoolGamesView` está visível — para o aluno o C3 resolve por efeito colateral; para o operador de placar é o desenho atual (**ABERTO**). Detalhe no §38.5; candidatas em `bfr-candidata-v61-aluno/` (md5 `d185a4a7a9bc9b78587c909d9bdd6d8b`, +1.982 chars/+1.990 B, sintaxe verde) — TESTADAS no harness (A/B, §38.9): D4/D5 consertados e paridade do H4 medida (destino pós-reload idêntico nos dois braços) — **PUBLICADAS na v61 (23/10 02:25Z, `/` md5 `d185a4a7…`, SW `557f35e4…` CACHE v61)**. §38.10; diário `audit-publicacao-v61.json`.
+
+47. **ITEM 47 FECHADO EM 23/10 (v62 PUBLICADA, OK «v62 completa») — a "portaria v2" prometida na UI (turno/calendário/frequência automática) nunca existiu no banco: 2 tabelas + 3 RPCs ausentes; a superfície morta que prometia a migração foi retirada.** Medido no ciclo BU (matriz T4.5, BLOQUEADO): o módulo v2 lê `bfr_school_shift_settings`/`bfr_school_calendar_days` e chama `register_gate_checkin_v2`/`correct_gate_attendance`/`bfr_confirm_school_calendar` — 42P01 nas 2 tabelas e RPCs ausentes do `pg_proc` (`sonda-bu-catalogo.json`); a superfície da Direção que os salvaria estava em script morto (`bfr-coordination-command`, `data-bfr-auth-deferred-disabled`). A rotina legada de portaria funciona de ponta a ponta (T4.1–T4.3 APROVADO) e o app degradava com graça. Decisão do usuário em 23/10 (pergunta sobre os itens 47 + NÃO TESTADOS): **retirar a superfície morta** em vez de criar a migration. **PUBLICADA na v62** (23/10 ~08:15Z, `/` md5 `ebdfe507542542d36fad88f62b194cd2`, 3.370.291 B, SW `e8f4fa2d…` CACHE `bfr-conecta-v62`, Version ID `fe25dc68-b3b3-48ac-996e-6ee5165b43e7`): removidos o script morto `bfr-coordination-command`, o wrapper de retexto legacy (`baseShiftOverviewMarkup`) e a promessa de turno/calendário do pill da portaria. Ensaio no harness antes do deploy (`bu-ensaio-v62.json`, banda item47, gatekeeper): pill "Registro suspenso" com a mensagem correta, `promessa_migracao:false`, `promessa_controle_turno:false`, 0 erros. Nenhuma tabela/RPC criada — a rotina legada continua o caminho único de portaria.
+
+48. **ITEM 48 FECHADO NO BANCO EM 23/10 (SQL APLICADO + re-teste T5.2 APROVADO) — a Coordenação não registrava nem lia Ocorrências: `is_staff()` exclui o coordinator.** Causa raiz (ciclo BU, matriz T5.2 REPROVADO): `is_staff()` = {pedagogical, aee, developer} e a policy ALL `occurrences_staff_manage` usa esse predicado; INSERT com JWT de coordinator → 403 "new row violates row-level security policy" e SELECT → 0 linhas (`bu-t5-comportamento.json`). **APLICADA em 23/10** (arquivo `bu-candidata-48-occurrences.sql` + rollback): policy própria de `occurrences` para o coordinator (INSERT + SELECT, formato exists-profiles, **sem alargar `is_staff()`**, que tem 61 referências). **Re-teste PostgREST com as contas sintéticas do ciclo** (`bu-ret-48-49-50.json`, 23/10 06:16Z, VEREDITO APROVADO): coordinator INSERT **201** (linha própria persistida) + SELECT 1/1; parent continua lendo só o vínculo e o INSERT da família continua **403** — nenhuma brecha. Superfície de escrita no cliente **TESTADA no ar em 23/10** (ciclo F52B, §N.5, diário `f52b-ocorrencias.json`): a central oficial da Coordenação expõe o registro via aba Alertas → `[data-coord-open-occurrences]` (`#bfrOccurrencesView`, módulo `BFRDirectionOperations`), com form validado (aluno obrigatório com 801 opções, título, descrição, `occurred_at` datetime-local e canal bfr/whatsapp/phone). INSERT pela UI **201** em 982 ms e linha renderizada na lista; como a tabela `occurrences` **não tem a coluna `channel`** (42703 provado), o INSERT retenta sem ela e o código apenda «Canal sugerido: …» à descrição (fallback do ar funcionando). Achados: `created_by` nasce `null`, o artigo avisa «Nenhum responsável vinculado a este aluno.» sem vínculo, PATCH/DELETE próprios casam 0 linhas (silencioso, confirmado via PostgREST) e a superfície viva **não expõe** o «Marcar em análise» — o ack (`acknowledged_at`) existe só no módulo morto `bfr-coordination-central` (achado de produto).
+
+49. **ITEM 49 FECHADO NO BANCO EM 23/10 (SQL APLICADO + re-teste T4.4 APROVADO) — a portaria do gatekeeper nascia vazia e a família não lia as passagens do filho.** Causa raiz (matriz T4.4 REPROVADO): policies de `gate_checkins`/`gate_entry_alerts`/`gate_badges`/`entry_restrictions` sem braço de leitura para o gatekeeper nem para a família. **APLICADA em 23/10** (`bu-candidata-49-portaria.sql` + rollback): `gate_checkins_gatekeeper_read` → `is_gatekeeper()` (fila completa) + 3 policies novas (`gate_entry_alerts_gatekeeper_read`, `gate_badges_gatekeeper_read`, `gate_checkins_family_read`). **Re-teste** (`bu-ret-48-49-50.json`, VEREDITO APROVADO): gatekeeper lê a fila ordenada (n=20 com os 2 checkins do ensaio) e por id, os alertas (com o `alert_id` do bloqueio) e os crachás; parent lê **só** os checkins do vínculo (`so_do_vinculo:true`, tem o do filho, não tem o do outro aluno). Efeito colateral medido no 52(b): com a leitura da família valendo, a RLS emite, mas o canal `bfr-parent-gate-{uid}` continua sem frames no ar — **a tabela `gate_checkins` não está na publication `supabase_realtime`** (`pg_publication_tables` mostra só `gate_entry_alerts` entre as tabelas de portaria; §N.5, `f52b-t52b.json`). **DDL da publication APLICADO em 23/10 (OK «ok»)** (`f52b-pub-ddl.json`): `ALTER PUBLICATION supabase_realtime ADD TABLE public.gate_checkins;` — antes FORA (53 tabelas, sem `gate_checkins`), dry-run transacional VISÍVEL, rollback limpo (`f52b-pub-rollback.sql`), aplicação 201, depois NA PUBLICATION (54 tabelas). Prova comportamental no ciclo R64 (§N.6, banda ar): sem mudar o cliente, o frame do check-in **chega ao ar em 818 ms** — a RLS do item 49 já emitia e o único bloqueio restante era a publication. A superfície no cliente (painel oculto na Home compacta) foi **FECHADA pela v64 PUBLICADA em 23/10** (whitelist CSS, §N.6, `audit-publicacao-v64.json`).
+
+50. **ITEM 50 FECHADO NO BANCO EM 23/10 (SQL APLICADO + re-teste T2.6 APROVADO) — o professor não editava nem excluía a própria atividade publicada.** Causa raiz (matriz T2.6 REPROVADO): policies de UPDATE/DELETE de `school_activities` exigiam `bfr_is_schedule_manager() OR (is_aee() AND …)` e o autor (`published_by`) não entrava no predicado — PATCH/DELETE devolviam 204 com a linha intacta. **APLICADA em 23/10** (`bu-candidata-50-atividades.sql` + rollback): staff_update/staff_delete ganham `OR bfr_teacher_can_manage_class_subject(class_id, subject)` mantendo `AND published_by = auth.uid()`; função de apoio provada TRUE para o par pedagogical real e para o fixture (`bu-probe-bftcmcs-2026-10-23.json`). **Re-teste** (`bu-ret-48-49-50.json`, VEREDITO APROVADO): PATCH da própria 200 n=1 com título persistido; DELETE da própria 204 com 0 restantes; PATCH da alheia **403 (42501)** e DELETE da alheia 204 com a linha intacta — o raio é exatamente o próprio vínculo turma-matéria.
+
+51. **ITEM 51 ENCERRADO EM 23/10 (inventário do cliente, sem escrita) — PATCH REST de `grades` devolve 204 mudo.** `grades` não tem policy de UPDATE: um PATCH devolve 204 com corpo vazio e nada muda (seguro por omissão, mas armadilha de API). O inventário dos 21 sítios `from('grades')` dos bytes do ar achou **0 encadeamentos** `.update(`/`.upsert(`/`.delete(` — o único caminho de correção é a RPC `bfr_correct_grade` (`index.html:18582`, audita em `bfr_grade_audit`), que é o que a aba do professor usa. Criar policy de UPDATE espelhando o INSERT alargaria predicado sem consumidor — **não criada**; o 204 mudo fica documentado como armadilha de API.
+
+52. **ITEM 52 FECHADO EM 23/10 — (a) o comunicado não repintava a Home do responsável: PUBLICADO na v62; (b) a chegada na portaria era silenciosa em tempo real: PUBLICADO na v64.** (a) Causa raiz (matriz T6.2 REPROVADO): o boot do parent rodava `setupParentRealtime(true)` e nunca invocava `setupLiveContent()` (o poll de 60 s vive dentro dela) — o frame de `bfr-portal-upgrades` chegava (+118 ms) sem handler que repintasse a Home. Candidata p52a (um hunk, +24 B, `setupLiveContent()` no ramo parent do `setRole`), A/B a 390 e 1280 VEREDITO OK (`mede-p52a-ab-390/1280.json`), **PUBLICADA na v62** — ensaio no harness (`bu-ensaio-v62.json`, banda p52a): a Home repinta dash/note/news **sem reload** (60 s). (b) Causa raiz (matriz T6.3 REPROVADO): 0 frames em `bfr-parent-gate-{uid}` e 0 linhas REST para o responsável em 20 s — RLS silenciava o canal; o coordinator também não assina canal de alertas. A metade RLS foi destravada pelo item 49 (aplicada), e o ciclo F52B de 23/10 mediu o que falta (§N.5, `f52b-t52b.json`): **0 frames mesmo com RLS destravada** porque `gate_checkins` está fora da publication `supabase_realtime` (prova por `pg_publication_tables`); a repintura do painel do responsável vem só do poll de 15 s, e na Home padrão o painel legado da portaria fica oculto pelo dashboard v3 (`#parentView[data-parent-compact-home="true"] > :not([data-parent-dashboard-v3]){display:none!important}`). Correção em dois degraus, ambos aplicados em 23/10: **(1) DDL de publication APLICADO** (OK «ok», §N.6) e **(2) front v64 PUBLICADO 23/10 22:54:31Z** (OK «ok» ao pedido «OK de publicação da v64») — 1 hunk de 2 regras CSS, `/` md5 `d2892c31794ae0e402ba455bc62f0092` 3.370.711 B, SW `f43e7b74a66e884d0aa64d15cfb73b2e` CACHE v64, deploy `e888ae42-75ce-4b26-8023-0e12f0426fe8` version `aba82f9a-d325-4694-a393-a8123fe9a444`; provado no ar por HTTP (3 GETs) e Chrome limpo (`audit-publicacao-v64.json`, `prova-sw-v64.json`); reversão = `ar-html-v63-live.html` + `ar-assets-v63-live/` (requer OK novo).
+
 ## H. A URL publicada medida no navegador (shell v33 nas seções H.1–H.5; o deploy seguinte e a passada sobre ele estão em H.6)
 
 Passada @390 px no endereço público `https://bfr-conecta.turmaroboticabfr.workers.dev/`, com o mesmo instrumento do harness (`audit-sweep2.mjs` com `AUDIT_LIVE=1`, diário `audit-sweep-publicado.json`): 164 visitas, 159 chegaram, 0 trava(s), 0 presa(s) no login, 1 painel(is) com <40 caracteres, 7 sem nenhum controle, mediana de 7.5s por visita.
@@ -3169,3 +3191,198 @@ conta real); sem ela, as telas populadas da aba do Professor seguem sem prova co
 Diários desta seção: `e2e2-baseline.json`, `e2e2-fixture.json`, `e2e2-frequencia.json`, `e2e2-chat.json`,
 `e2e3-nota-modal.json`, `e2e4-biblioteca.json`, `e2e2-limpeza.json`; scripts `e2e2-baseline.mjs`, `e2e2-fixture.mjs`,
 `e2e2-teste-*.mjs`, `e2e3-teste-nota-modal.mjs`, `e2e4-teste-biblioteca.mjs`, `e2e2-limpeza.mjs`.
+
+## M. A área do aluno — análise geral (22/10): o boletim que nunca nasce (corrida de boot) e mais sete defeitos atribuídos
+
+### 38.1 Escopo, método e o dado real
+
+Pedido: "analise a aba dos alunos, veja se falta algo ou se precisa corrigir, faca uma analise geral sem deixar nada
+despercebido" (22/10). Base medida: a **v60 publicada** (`https://bfr-conecta.turmaroboticabfr.workers.dev`, `/` md5
+`36feaad4fb5a033a2f011de336a4667e`, 3.481.301 B); o repositório `bfr-conecta/app/index.html` é **byte-idêntico ao ar**
+(md5 conferido programaticamente, não por olho). Método: conta sintética `student` (UUID em `aluno-fixture.json`) com
+vínculo em `guardian_students` `relationship='aluno'` + aluno/turma/3 notas/3 frequências/2 atividades/evento/comunicado/
+mensagem/sessão/conquista sintéticas (baseline de 28 tabelas congelada em `aluno-baseline.json`, contagem **e** md5);
+varredura das **19 rotas do whitelist do aluno** (index 8996) nas bandas **390 e 1280** contra a URL pública — 19/19
+navegam sem erro nas duas, comportamento idêntico (determinístico); sonda de atribuição do reset
+(`aluno-probe-boletim.json`, 12 passos). Contexto do dado real que explica o defeito crítico ter passado despercebido:
+**só 3 de 848 alunos ativos têm vínculo** em `guardian_students` — a área do aluno quase nunca roda com dado real de
+vínculo.
+
+### 38.2 D1 (crítico) — o trio e o boletim NUNCA nascem: corrida de boot entre `setRole` e os módulos deferred, sem retry
+
+**O que se vê:** Média `—` "aguardando notas", Frequência `—`, Atividades `00` — o markup estático de `studentMarkup`
+(5237) — em **todos os 12 passos** da sonda, inclusive na rota boletim (tabela `[data-student-report]` vazia), com a
+mensagem **"Não foi possível carregar seu espaço escolar."** visível e permanente (pintada por `ensureDataStatus`,
+10787). O probe `—/—/00` é o markup estático intacto, não um estado de dados.
+
+**Causa atribuída no código:** `setRole` (10436) injeta a view do aluno e chama `setupStudentRealtime()` (9936)
+**antes** de `window.BFR_AUTH_MODULES_READY?.()` (10438) executar os scripts `data-bfr-auth-deferred`;
+`window.BFRStudentSpace` só é registrado em **20899**, dentro do script deferred iniciado em **20704**. O guard
+`if (!shared?.load)` (10905) devolve a mensagem de erro e retorna, e **não existe retry em lugar nenhum**:
+`studentDataState.loaded` nunca vira `true`, o trio/boletim ficam estáticos para sempre. Por que o resto parece
+funcionar: o h1 vem de outro caminho (5600, `displayName` do perfil); "Meu Espaço"/cartões do dia carregam porque o
+próprio módulo deferred roda sozinho depois; comunicados/agenda reais vêm de `renderLiveContent` (intervalo de 60s).
+
+**Correção candidata C1** (pronta, NÃO publicada): retry `setupStudentRealtime(true)` no `.then()` de `modulesReady`
+(após 10439), guardado por `currentProfile?.role === 'student' && !studentDataState.loaded && !studentDataState.loading`.
+Efeito colateral desejado: aluno sem vínculo passa a ver a mensagem correta ("A escola ainda não vinculou este login…",
+10909) no lugar da mensagem de erro técnico.
+
+### 38.3 D2 (alto) — views de portal vazam para a área do aluno e cobrem a sidebar
+
+Depois de Conteúdos, a 1280, `#bfrContentHubView` continua visível **junto com** `#studentView` e cobre a sidebar; o
+mesmo com `#schoolGamesView` após Jogos Escolares (diários: `conteudos: studentView,bfrContentHubView` /
+`studentView,schoolGamesView`). Causa: o passo de hide do roteador (10095) esconde SÓ `.bfr-platform-view`; os ramos
+que abrem essas views — resultados-aprendizagem (10051) e notificacoes/conteudos/relatorios (10052) — **retornam antes**
+do hide, então o hide nunca limpa essas views quando o aluno volta para uma rota própria. Correção candidata **C3**
+(pronta): acrescentar os 5 IDs (`bfrNotificationsView`, `bfrReportsView`, `bfrContentHubView`, `schoolGamesView`,
+`resultsLearningView`) ao hide de 10095 — seguro porque `jogos-escolares` abre a view **depois** do hide (10127) e os
+ramos de portal retornam antes dele.
+
+### 38.4 D3 (alto, decisão de produto) — 8 das 19 rotas não têm tela própria
+
+`notas` e `boletim` caem na MESMA âncora `.overview-grid` (mapa de alvos, 10114); `agenda` abre `[data-projects-panel]`
+(painel de Projetos, não eventos); `horarios`→`[data-schedule-panel]` e `jogos`→`[data-games-panel]` reutilizam painéis
+legados; `comunicados` cai em `.notice`; `escola-historia` e `videos-aprender` **não têm handler nenhum** (o whitelist
+permite as rotas, nada renderiza uma tela própria). Não é bug de render: é ausência de superfície. Construir as telas
+(ou tirar as rotas do menu do aluno) é decisão de produto — registrada como item 45 da seção F.
+
+### 38.5 D4–D8 (médio/baixo)
+
+- **D4**: `BFRStudentSpace.open` (20860-20877) esconde as views, sincroniza a navegação e carrega — mas **não** mantém
+  `BFRPlatform.state.lastArea` nem o breadcrumb: Meu Espaço abre com crumb "Escola" e sidebar destacando Escola.
+  Candidata **C2** (pronta): `lastArea='meu-espaco'` + persistir via `BFRPlatform.storageKey` + breadcrumb "Meu Espaço"
+  + `aria-current` no item certo. Guard **H4** junto (também pronto): com `lastArea='meu-espaco'` persistido, o boot do
+  BFRPlatform (13543) reabriria o Meu Espaço **do PLATAFORMA** (outra view) por cima do espaço do aluno; H4 só reabre
+  quando `#studentView` está escondido — o responsável fica intocado. **Medido no ensaio (§38.9): o destino pós-reload
+  NÃO muda com o C2/H4** — quem decide a seção restaurada é o `restoreNavigationState`, igual nos dois braços (ambos
+  voltam para a última seção; no ensaio, `meu-espaco`). O H4 neutraliza só a reabertura redundante do boot: contador de
+  requisições servidas no reload, 65 na candidata vs 54 no controle — o delta é a carga do C1, sem render legado extra.
+- **D5**: notificacoes/conteudos retornam em 10052 **antes** do breadcrumb (10149) e herdam o crumb anterior.
+- **D6**: a área Escola mostra eventos **fictícios fixos no código** (13530: 14 nov Feira de Ciências, 20 nov Reunião de
+  responsáveis, 22 nov Dia da Família, 28 nov Mostra cultural, 03 dez Avaliação de Matemática) e anúncios fixos (13529),
+  enquanto comunicados/agenda exibem dados reais — fontes inconsistentes. Decisão: usar as tabelas reais
+  (`school_events`/`announcements`, hoje 0/1 linha) ou marcar os fixos como exemplo.
+- **D7**: a Central de Atividades cumprimenta com a 1ª palavra de `full_name` (13489) — slug do e-mail em contas sem
+  nome real.
+- **D8**: `syncNavigationA11y` (26656) força breadcrumb "Jogos Escolares" + destaque no nav enquanto `schoolGamesView`
+  está visível, re-disparando por rAF (26712), setTimeout 600ms (26723) e setInterval 900ms (26724) — crumb preso em
+  "Jogos Escolares" em videos-aprender/comunicados e destaque errado na captura do boletim. Para o aluno, o C3 resolve
+  por efeito colateral (a view só fica visível na rota própria); para o operador de placar é o desenho atual.
+
+### 38.6 Candidatas C1/C6/C2/H4/C3/D5 — PUBLICADAS como v61 em 23/10 (02:25Z), registro em §38.10
+
+`bfr-candidata-v61-aluno/index.html` gerada por `gera-candidata-v61-aluno.mjs` a partir **dos bytes do ar** (portão de
+md5 `36feaad4…` no gerador — aborta se a base não for o v60 publicado), **6 hunks** em pontos únicos (linhas do
+candidato: 10052 D5, 10095 C3, 10439 C1, 10922 C6, 13545 H4, 20878 C2), md5
+`d185a4a7a9bc9b78587c909d9bdd6d8b`, **+1.982 chars / +1.990 B (8 bytes multibyte dos acentos)**, **portão de sintaxe
+verde** (97 blocos `node --check` via `_q_sintaxe-v60.mjs`). O **C6 nasceu do próprio ensaio**: a 1ª rodada provou que
+o C1 pinta só média/frequência — o 3º cartão do trio (atividades abertas) **não tem escritor nenhum no fluxo do aluno**
+(o único escritor, 7840, é do `parentView`), então a candidata foi regenerada com o pintor do cartão a partir de
+`data.activities` (mesmo idiom do responsável, filtro de `due_date >= hoje`). O render da candidata é TESTADO no
+harness (A/B contra a v60, duas bandas) — §38.9 — e **PUBLICADA em 23/10 02:25Z com OK explícito «ok»** (deploy
+cirúrgico: preflight → SRC → confere-bundle → wrangler → md5 → Chrome limpo; diário `audit-publicacao-v61.json`,
+registro §38.10).
+
+### 38.7 O que funciona e fica preservado
+
+19/19 rotas navegam sem erro nas duas bandas; o Início monta; o h1 personalizado funciona; Meu Espaço carrega os cartões
+do dia; comunicados/agenda exibem dados reais; Aprender/Evoluir/Biblioteca/Jogos Escolares/Resultados abrem suas views
+próprias. Nenhum recurso foi removido e nenhuma escrita real aconteceu — só a fixture sintética, removida na limpeza do
+§38.8.
+
+### 38.8 Limpeza da fixture e prova de volta à baseline
+
+**Executada 22/10** (`aluno-limpeza.mjs`, canal postgres, PAT de `~/.supabase-pat`; diário `aluno-limpeza.json`):
+
+1. DELETE das linhas da fixture por UUID (achievement, game session, mensagem, comunicado, evento, 2 atividades, 3 frequências, 3 notas, vínculo guardian_students, aluno, classe, perfil) em ordem FK-safe num único multi-statement com `begin/commit`.
+2. DELETE da conta auth `auditoria-sintetica-student-84c79363@bfr-conecta.test` (`d5d6dab3-be0f-4966-ba71-11cba26afa71`) via `delete from auth.users … returning email` — a API admin `DELETE /v1/projects/{ref}/auth/users/{id}` respondeu 404 (rota indisponível neste plano); a via SQL retornou o email, comprovando a remoção.
+3. Re-medição com o MESMO SQL da baseline (28 tabelas, contagem E md5): **`diferencas counts: {}` e `diferencas md5: {}`** — todas as tabelas idênticas à baseline; `conta_testes_vivas: 0`; `perfil_student_real_sem_vinculo: 1` (igual à baseline); `versao_publicada_2026` intacta (`430db726-8a48-4ec8-a6ff-27e05160a420`).
+4. `bfr-audit-contas.json` → `[]`; artefatos locais de credencial/sessão removidos (`bfr-audit-session-student.json`, `bfr-sintetica-cred-student.json`); diários e PNGs de evidência preservados.
+
+
+### 38.9 Ensaio A/B no harness (22/10): a candidata de 6 hunks reproduz os 4 defeitos no controle e os conserta nos dois braços
+
+**Rig.** Harness fixture com sessão falsa (JWT não-assinado em localStorage) e `window.fetch` interceptado para todo o
+domínio do Supabase — **zero escritas no banco** (nenhuma conta mintada; este ensaio não toca o banco, diferente do
+ciclo do §38.1 que foi limpo no §38.8). Duas portas servem o **controle = bytes do v60** (md5 `36feaad4…`, idêntico ao
+ar) e a **candidata** (md5 `d185a4a7…`); o runner `mede-v61-aluno-ab.mjs` dirige dois Chrome (portas por banda) com
+gates de assentamento e `waitForStableDom:false`; diários `mede-v61-aluno-ab-390.json` e `mede-v61-aluno-ab-1280.json`
++ 20 PNGs (`aluno-ab-*`). Duas sondas auxiliares provaram que o reload do harness realmente recarrega
+(`sonda-reload-sw.mjs`: marca sumiu depois do reload, SW ativo com `caches=[]`) e que o destino pós-reload é decidido
+pelo `restoreNavigationState`, não pelo `lastArea` (`sonda-reload-sw2.mjs`).
+
+**Discriminadoras — idênticas nas duas bandas:**
+
+| medida | v60 controle | v61 candidata |
+|---|---|---|
+| D1 trio no boot (statusHome + 3 cartões) | erro fixo + `— / — / 00` | vazio + `8,2 / 66,7% / 02` |
+| D4 crumb/lastArea no Meu Espaço | `Início` / `inicio` | `Meu Espaço` / `meu-espaco` |
+| D2 voltar ao Início depois do portal | `studentView,bfrContentHubView` (vazou) | `studentView` (sem vazamento) |
+| D5 crumb de notificacoes/conteudos | `Meu painel` (herdado) | `Notificações` / `Conteúdos` |
+
+O `02` do 3º cartão é o C6 (2 atividades abertas da fixture; no controle o `00` é o markup estático, sem escritor).
+Nota de consistência: a rota `relatorios` não existe no roteador (a real é `resultados-aprendizagem`), então o 3º ramo
+do D5 cai no mesmo fallback `sec=inicio` nos DOIS braços — comportamento idêntico, não é defeito da candidata.
+
+**Reload (paridade do H4 medida):** depois de visitar Meu Espaço, o reload cai em `meu-espaco` (gate:true) nos DOIS
+braços, nas duas bandas — o destino é do `restoreNavigationState`; o H4 não muda o destino, só impede a reabertura
+redundante do boot (contador de requisições servidas no reload: candidata 65 vs controle 54 — o delta é a carga do C1,
+sem o render legado extra que o `lastArea` gravado dispararia).
+
+**Regressão:** sweep das **19 rotas** do whitelist do aluno limpo nos dois braços e nas duas bandas (`erros: []` em
+todas as rotas); `bloqueios: 0` e `erros: 0` no contador de escritas da fixture (nenhuma chamada não-GET escapou do
+intercept); totais servidos por braço: 74 (controle) vs 85 (candidata) a 390 e 74 vs 85 a 1280; boot com gate aberto
+nos dois braços (controle 2.349 ms/candidata 851 ms a 390; controle 679 ms/candidata 1.098 ms a 1280).
+
+**Veredito:** os 4 defeitos (D1, D2, D4, D5) são reproduzidos no controle e consertados na candidata, com o D1 agora
+completo (o trio inteiro nasce — C1 + C6). Nada a corrigir na candidata; ela fica **pronta para publicação**, que só
+acontece com OK explícito novo (nada foi publicado e nada do banco mudou neste ensaio).
+
+Diários desta seção: `aluno-mede-390.json`, `aluno-mede-1280.json` (+ 16 PNGs de captura), `aluno-probe-boletim.json`,
+`aluno-baseline.json`, `aluno-fixture.json`, `bfr-candidata-v61-aluno/relatorio.json`,
+`mede-v61-aluno-ab-390.json`, `mede-v61-aluno-ab-1280.json` (+ 20 PNGs do ensaio); scripts `aluno-mede.mjs`,
+`aluno-probe-boletim.mjs`, `gera-candidata-v61-aluno.mjs`, `aluno-fixture.mjs`, `aluno-baseline.mjs`,
+`mede-v61-aluno-ab.mjs`, `harness-aluno-v61.mjs`, `sonda-reload-sw.mjs`, `sonda-reload-sw2.mjs`.
+
+### 38.10 Publicação da v61 (23/10 02:25Z, OK explícito «ok») — itens 43, 44 e 46 fechados nos bytes do ar
+
+**Estado:** PUBLICADA. Deploy cirúrgico 23/10 02:25Z, deployment `af328abb-b3e1-4321-be65-31a51e5d3737`, Version ID
+`1e1f5b07-eed4-4c84-892f-2027e5c903dc` (log `deploy-v61.mjs`). OK explícito: «ok» respondendo a «Autoriza publicar a
+v61-aluno?» (precedente v47/v48/v50).
+
+**Portões verdes, em ordem:** (1) **preflight** (`preflight-v61.json`, 0 problemas): ar ainda era o v60 (`36feaad4…`),
+linhagem regenerada byte-igual ao canônico, censo 6/6 hunks (0 no ar, 1 na candidata), marcas v60 do professor
+preservadas 4/4, SW do ar `04267047…` CACHE v60, rp.js `a83f77ba…`, 12 assets congelados; (2) **SRC**
+(`prepara-src-v61.txt`, 14 arquivos): index da candidata `d185a4a7…` + SW do ar com UMA linha trocada (CACHE v60 →
+v61, md5 novo `557f35e4…`) + 12 assets do snapshot; (3) **confere-bundle** (`confere-bundle-v61.json`): HTML embutido
+== SRC, SW embutido == SRC (1 linha de dif do ar, `CACHE bfr-conecta-v61`, `?v=14`, sem resíduo v60), marcas v60
+4/4 + v61 8/8 (C2_aria conta 2: 1 da base + 1 do hunk), rp.js e 12/12 assets; (4) **deploy** `wrangler deploy` por
+grant OAuth (sem `CLOUDFLARE_API_TOKEN`/`CLOUDFLARE_API_KEY`/`CLOUDFLARE_ACCOUNT_ID` no ambiente; `~/.cf-token`
+responde 10000 = morto), exit 0; (5) **HTTP** (`prova-http-v61.json`): 3 fetches de `/` com md5 `d185a4a7…`
+(3.483.291 B), SW `557f35e4…` CACHE v61, rp.js `a83f77ba…`, 12/12 assets idênticos ao snapshot; (6) **cliente em
+Chrome limpo** (`prova-sw-v61.json`): cache única `bfr-conecta-v61`, SW activated e controlado, body do HTML em cache
+md5 `d185a4a7…` == candidata, marcadores no DOM (professor 4/4 preservados, aluno 8/8), únicos erros de console 3×
+404 de `/cdn-cgi/rum?` (armadilha #172 — nada fora do rum).
+
+**O que a v61 muda para o aluno:** D1 — o trio nasce completo (C1 retry + C6 pintor do cartão de atividades, que não
+tinha escritor nenhum); D2 — as views do portal não vazam mais (C3); D4 — Meu Espaço com crumb próprio e sidebar
+certa (C2 + H4); D5 — crumbs de Notificações/Conteúdos (D5). D6/D7/D8 seguem como decisão de produto (§38.5). Nada
+foi removido e nenhuma linha do banco mudou neste deploy. Reversão: devolver `ar-html-v60-live.html` (`36feaad4`) e
+`ar-assets-v60-live/sw-v4.js` (`04267047`, CACHE v60) ao SRC, rebuild e redeploy — requer OK novo.
+
+## N. Ciclo BU — auditoria funcional de ponta a ponta (23/10) e o fechamento dos itens 47–52
+
+**Escopo:** brief de 23/10 — T1 login e permissões, T2 atividades (publicar→receber→corrigir), T3 frequência, T4 QR de portaria, T5 comportamento e notificação ao responsável, T6 tempo real entre sessões. **Contas:** 6 sintéticas `@bfr-conecta.test` (student, pedagogical, parent, coordinator, director, gatekeeper) com papéis reais do enum `account_role`, mintadas com OK explícito («Sim, ciclo completo» e «Sim, mintar gatekeeper»), **apagadas ao fim do ciclo** com baseline de 19 tabelas restaurada e provada por contagem **e** md5 (`bu-e2e-limpeza.json` = `BASELINE_RESTAURADA`, 71 linhas sintéticas → 0, diffs `[]`, 0 contas vivas). Nenhum dado real foi lido além de contagens/assinaturas. **Resultado da matriz (30 testes):** 19 APROVADO, 5 REPROVADO, 1 BLOQUEADO, 3 NÃO TESTADO, 2 NÃO APLICÁVEL; **nenhum P0** — cada papel leu exatamente o escopo autorizado, as 5 negativas de papel na portaria vieram 400, o RPC anônimo veio 401 e a senha errada 400. Relatório completo (matriz B, bugs C, pendências G): `C:/Users/pcmac/.kiro/crew/uploads/bu-relatorio-final.md`.
+
+**N.1 — Correções aplicadas depois da medição (mesmo dia, com OK do usuário).** Três decisões de banco e uma de publicação: (1) **itens 48/49/50 APLICADOS no banco** (`bu-candidata-48-occurrences.sql`, `bu-candidata-49-portaria.sql`, `bu-candidata-50-atividades.sql`, cada um com rollback) e **re-testados** pelo caminho real — PostgREST com JWT das contas sintéticas do ciclo (`bu-ret-48-49-50.json`, VEREDITOS APROVADO nos três; negativos provam que nada alargou: INSERT da família em occurrences 403, PATCH da atividade alheia 42501, parent lê só o vínculo na portaria); (2) **item 51 encerrado** por inventário do cliente (0 consumidores de PATCH em `grades`; a RPC auditada `bfr_correct_grade` é o único caminho — policy de UPDATE não criada); (3) **T6.4 medido e corrigido**: no ar v61 o "Marcar como lida" do responsável atualizava a UI e o `localStorage` mas **nunca persistia** — causa raiz atribuída e medida (`bu-ret-t64-veredito.json`): os builders do postgrest-js v2 são thenables preguiçosos e o `.upsert(...)` fire-and-forget da linha 11501 descarta a promessa, então a requisição nunca sai (prova: 0 requests pelo fetch do client + réplica com `await` persiste; o irmão da linha 19307, `internal_chat_presence`, tem o mesmo padrão e ficou fora do predicado).
+
+**N.2 — Publicação da v62 (23/10 ~08:15Z, OK explícito «v62 completa»).** Deploy cirúrgico único com p52a (repintura da Home do responsável) + item 47 (retirada da superfície morta da portaria v2) + T6.4 (hunk E: o thenable consumido com `.then(() => {}).catch(() => {})`). Antes: v61 `/` md5 `d185a4a7…` (3.483.291 B). Depois: `/` md5 `ebdfe507542542d36fad88f62b194cd2` (3.370.291 B), SW `e8f4fa2dbf37ad0d2470d6298adb9cc6` CACHE `bfr-conecta-v62`, rp.js intocado `a83f77ba…`, Version ID `fe25dc68-b3b3-48ac-996e-6ee5165b43e7` (wrangler por grant OAuth; `~/.cf-token` morto, 10000). Cinco portões verdes em ordem: preflight (ar==v61 em 3 md5, censo v62 7/7, marcas preservadas 13/13, 12 assets congelados), prepara-src (SW do ar com 1 linha trocada: CACHE v61→v62), confere-bundle (HTML embutido == SRC, sem resíduo v61), HTTP (3 fetches de `/` idênticos; a 1ª rodada pegou a janela de propagação da Cloudflare — re-rodada após 20 s com `Cache-Control: no-cache` → verde) e cliente em Chrome limpo (cache única `bfr-conecta-v62`, SW activated e controlado, marcadores DOM v60 4/4 + v61 8/8 + v62: A p52a nova 1/velha 0, B script morto fora do DOM, E thenable consumido; únicos erros 2× 404 de `/cdn-cgi/rum`). Ensaio no harness antes do deploy (`bu-ensaio-v62.json`, VEREDITO APROVADO nas 3 bandas): t64 persiste no banco e sobrevive ao reload (contador 9→8), p52a repinta a Home sem navegação (60 s), item47 deixa o pill do gatekeeper sem promessa de migração. Diário: `audit-publicacao-v62.json`. Reversão: v61 congelada em `ar-html-v61-live.html` + `ar-assets-v61-live/` (SW v61 só difere do v62 no CACHE).
+
+**N.3 — Ciclo de re-teste e limpeza (mint→teste→limpeza, provado).** Re-teste com 4 contas sintéticas (pedagogical, parent, coordinator, gatekeeper — `bfr-audit-contas.json`) e fixture nova (classe 9ZY, 2 alunos, vínculos, crachás — `bu-e2e-ret-fixture.json`): T5.2/T4.4/T2.6 APROVADOS (`bu-ret-48-49-50.json`) e T6.4 medido (REPROVADO na v61 → causa raiz → corrigido na v62). Limpeza (`bu-ret-limpeza.json` = `BASELINE_RESTAURADA`): 37 linhas sintéticas em 24 categorias apagadas em ordem FK-safe; as 19 assinaturas md5 + contagens + versão publicada da grade idênticas ao snapshot pré-ciclo (`bu-e2e-baseline-pre.json`); 0 contas `@bfr-conecta.test` vivas.
+
+**N.4 — O que fica aberto.** 52(b) **FECHADO pela v64 publicada 23/10** (§N.6); T4.6 modo offline da portaria (NÃO TESTADO, decisão de produto); conta real de professor com vínculo vivo (ciclos anteriores); achado de produto das ocorrências (a superfície viva não expõe o «Marcar em análise» — o ack existe só no módulo morto `bfr-coordination-central`; §N.5); D6/D7/D8 da área do aluno (§38.5, decisão de produto).
+
+**N.5 — Ciclo F52B (23/10, OK «ok», no ar v63): re-teste comportamental dos três itens que o ciclo BU deixou pendentes, com mint→teste→limpeza.** Baseline pré-ciclo de **27 tabelas** por contagem **e** md5 (`f52b-pre.json`, 23/10 11:30Z) + 4 contas sintéticas mintadas (parent, gatekeeper, coordinator, pedagogical — `f52b-mint.json`) + fixture (classe 9º ZP, aluno «F52B ALUNO UM», vínculo do parent, crachá, token). Resultados: (1) **52(b) REPROVADO no ar** (`f52b-t52b.json`): check-in do fixture não gera frame no canal `bfr-parent-gate-{uid}` nem repinta o painel do parent (só o poll de 15 s pinta) — a RLS do item 49 já emite, mas a tabela `gate_checkins` **não pertence à publication `supabase_realtime`** (prova por `pg_publication_tables`: entre as tabelas de portaria só `gate_entry_alerts` está publicada); a Home padrão do parent é o dashboard v3 e oculta o painel legado da portaria por CSS. (2) **Ocorrências APROVADO na superfície viva** (`f52b-ocorrencias.json`): form oficial `#bfrOccurrencesView` via aba Alertas → `[data-coord-open-occurrences]`; INSERT pela UI **201** em 982 ms e linha renderizada na lista; coluna `channel` não existe na tabela (42703) e o fallback do ar retenta sem ela apendando «Canal sugerido: …» à descrição; `created_by` null; sem «Marcar em análise» na superfície viva (achado de produto); PATCH/DELETE próprios casam 0 linhas silenciosamente (confirmado via PostgREST). (3) **T6.5 APROVADO** (`f52b-t65.json` + sondas `f52b-t65-probe-reply.json`/`f52b-t65-probe-sala.json`): rajada de 3 envios sem duplicação (3/3 únicos = banco), queda de socket com mensagem perdida (esperado — supabase não faz replay), recuperação via caminho REST sem duplicação (4/4 únicos = banco) e reconexão do canal provada por `phx_reply` ok nas sondas em primeiro plano (~1 s até o indicador voltar a «conectado»); a observação negativa do indicador travado em 40 s no teste principal foi atribuída à condição do rig (duas janelas/contextos, receptor em segundo plano com timers estrangulados — armadilha #177), não a defeito do app. **Limpeza** (`f52b-limpeza.json` = `BASELINE_RESTAURADA`): 22 linhas sintéticas em 14 categorias apagadas em ordem FK-safe; as 27 assinaturas md5 + contagens + versão publicada idênticas ao `f52b-pre.json`; 0 contas `@bfr-conecta.test` vivas.
+
+**N.6 — Ciclo R64 (23/10, OK «ok»): os dois degraus do 52(b) — DDL APLICADO + front v64 PUBLICADO E PROVADO.** (1) **DDL de publication** (`f52b-pub-ddl.json`): `ALTER PUBLICATION supabase_realtime ADD TABLE public.gate_checkins;` com prova antes/depois por `pg_publication_tables` — antes FORA (53 tabelas), dry-run transacional VISÍVEL, rollback limpo (`f52b-pub-rollback.sql`), aplicação 201, depois NA PUBLICATION (54 tabelas). (2) **Candidata v64** (`bfr-candidata-v64-src/index.html`): base = ar v63 (`ea400a7c…`), **1 hunk** de 2 regras CSS no bloco `#bfr-parent-dashboard-v3-style` — a regra compacta passa a ser `#parentView[data-parent-compact-home="true"] > :not([data-parent-dashboard-v3]):not([data-parent-entry-live]){display:none!important}` (whitelist do painel da portaria, mesmo idioma do D1/v60 `:not([data-teacher-inbox])`) + `order:2!important` para o painel vir **abaixo** do dashboard (o `#parentView` é `display:flex;flex-direction:column` e o dashboard tem `order:1!important` — sem o order, o painel renderizaria acima). Gate de sintaxe **97/0**, `diff -u` v63→v64 = 1 hunk (`diff-v64-hunks.txt`), md5 `d2892c31794ae0e402ba455bc62f0092`. **Verificação comportamental** (ciclo mint→teste→limpeza, baseline pré de 27 tabelas por contagem E md5 `f52b-r64-pre.json`, 2 contas sintéticas parent+gatekeeper `f52b-r64-mint.json`, fixture classe 9º ZP + aluno «R64 ALUNO UM» + crachá): **banda ar** (`f52b-r64-teste.json`) — com o DDL aplicado e o cliente intacto, o frame do check-in **chega em 818 ms** mas o painel segue **oculto na Home compacta** (o defeito de visibilidade persiste no ar → candidata necessária); **banda candidata** — a 1ª passada devolveu falso negativo do instrumento, não do app: reusar `direction=entry` fez o RPC `register_gate_checkin` devolver o **MESMO `checkin_id` (`cf943972…`)** por dedup de dia/direção (sem INSERT não há frame) — anotado no diário com `nota_pos_analise`; re-teste focado com `direction=exit` (`f52b-r64-teste-b.json`, VEREDITO **APROVADO**): painel **visível na Home compacta em 1280 e 390**, frame do check-in de saída recebido em **498 ms**, repaint «Saiu na escola às …» em **665 ms sem reload** (navCount 1), ids do `parentGateState.records` trocaram. **Limpeza** (`f52b-r64-limpeza.json` = `BASELINE_RESTAURADA`): todas as linhas sintéticas apagadas em ordem FK-safe, `diffs` vazios contra a baseline, 0 contas vivas, versão da grade idêntica. **Publicação da v64 (23/10 22:54:31Z, OK «ok» ao pedido «OK de publicação da v64 (candidata pronta, 1 hunk, reversível ao v63 byte a byte)»):** pipeline cirúrgico completo — preflight (`preflight-v64.json` VERDE: ar == v63 nos 3 md5, snapshot congelado `ar-html-v63-live.html` + `ar-assets-v63-live/`), prepara-src (`prepara-src-v64.mjs`: linhagem provada — removendo as 2 regras do hunk o HTML volta byte a byte ao ar; SW = ar v63 + 1 linha `CACHE='bfr-conecta-v64'` → md5 `f43e7b74…`), confere-bundle (`confere-bundle-v64.json` VERDE: HTML embutido == SRC, SW difere do ar em 1 linha, marcas v60/v61/v62/v63 preservadas + hunk v64, rp `a83f77ba`, 12/12 assets), `wrangler deploy` (OAuth, version `aba82f9a-d325-4694-a393-a8123fe9a444`, deployment `e888ae42-75ce-4b26-8023-0e12f0426fe8`, `deploy-list-v64.json`), prova-http (`prova-http-v64.json` VERDE: 3 GETs de `/` md5 `d2892c31…` 3.370.711 B na 1ª tentativa, SW CACHE v64, rp `a83f77ba`, 12/12 assets), Chrome limpo (`prova-sw-v64.json` VERDE: cache única `bfr-conecta-v64`, HTML cacheado md5 `d2892c31…`, SW ativo e controlando, marcadores todos presentes — `whitelist_painel_portaria` 1, `ordem_painel` 1, `regra_compacta_sem_whitelist` 0, únicos 404 `/cdn-cgi/rum?`). Diário `audit-publicacao-v64.json` = **PUBLICADO E PROVADO**. **Estado**: 52(b) fechado em duas camadas (DDL no banco + front no ar); reversão = devolver `ar-html-v63-live.html` + `ar-assets-v63-live/sw-v4.js` e redeploy (requer OK novo).
