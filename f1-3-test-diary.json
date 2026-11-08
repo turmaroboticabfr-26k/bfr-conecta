@@ -1,0 +1,165 @@
+{
+  "cycle": "F1.3",
+  "title": "Teste no navegador com conta supervisor",
+  "started": "2026-11-07T21:00:00.000Z",
+  "complete": "2026-11-07T22:30:00.000Z",
+  "status": "PROVEN",
+  "summary": "Deploy v114 publicado (aba Supervisão Educacional na Secretaria). Login GoTrue da conta supervisor.synthetic@bfr.test bloqueado (conta criada via SQL não é reconhecida pelo GoTrue — ver memória gotrue-sql-limitation). Contorno: sessão injetada pós-boot + ativação manual síncrona dos 65 módulos deferred. F1.3 PROVADO no ar v114: a aba Supervisão monta e renderiza, mas a query de supervisão falha com 400 PGRST200 porque o embed usa schools(name) e a FK de supervision_requests.school_id aponta para sports_schools. Bug atribuído à linha 23653. Candidata v115 (troca de 1 token) gerada, validada 11/11 e PUBLICADA 08/11 sob OK explícito «Publicar v115» (deploy c75e8eda / version b800538e, CACHE v115, md5 aba67956; 48/48 portões, HTTP 9/9 + Chrome limpo 8/8).",
+
+  "steps": [
+    {
+      "step": "PREFLIGHT",
+      "action": "Verificar estado do ar antes do deploy",
+      "live_version": "v113",
+      "live_md5": "b1993940f1c1973300f59e460aab688b",
+      "live_size": 3531006,
+      "local_md5": "2496a70573cce3bb3ce23633fac40b79",
+      "local_size": 3488128,
+      "result": "OK"
+    },
+    {
+      "step": "SRC_BUNDLE",
+      "action": "Criar bundle candidata v114",
+      "directory": "bfr-candidata-v114-supervisao",
+      "index_md5": "2496a70573cce3bb3ce23633fac40b79",
+      "sw_md5": "e82b762bef48b6772bd7bdec011d2e30",
+      "cache_version": "bfr-conecta-v114",
+      "result": "OK"
+    },
+    {
+      "step": "WORKER_DEPLOY",
+      "action": "Deploy via wrangler 4.158.0",
+      "worker_name": "bfr-conecta",
+      "version_id": "f9ff7b46-d017-4c52-9b26-41026e3c2b4c",
+      "url": "https://bfr-conecta.turmaroboticabfr.workers.dev",
+      "deploy_time": "12.08 sec",
+      "result": "OK"
+    },
+    {
+      "step": "HTTP_PROOF",
+      "action": "Verificar que o bundle publicado confere com a candidata",
+      "deployed_index_md5": "2496a70573cce3bb3ce23633fac40b79",
+      "deployed_size": 3488128,
+      "match": true,
+      "result": "OK"
+    },
+    {
+      "step": "BROWSER_TEST_LOGIN",
+      "action": "Login GoTrue com supervisor.synthetic@bfr.test",
+      "login_result": "FAILED",
+      "error": "Invalid login credentials (400)",
+      "root_cause": "GoTrue não reconhece contas criadas por INSERT/UPDATE direto em auth.users, mesmo com bcrypt hash + email_confirmed_at. Mantém estado/cache separado. Ver memória gotrue-sql-limitation.",
+      "result": "BLOCKED",
+      "notes": "Não é defeito do produto; é limitação do método de mint via SQL. Contorno aplicado no passo seguinte."
+    },
+    {
+      "step": "BROWSER_TEST_INJECTED",
+      "action": "Injetar sessão supervisor pós-boot + ativar manualmente os módulos deferred + rotear para Secretaria",
+      "method": "CDP: sessão injetada; 65 módulos deferred ativados por lotes síncronos node.replaceWith(script) (3–38 ms/lote); setRole('secretary') (education_supervisor roteia pela branch secretary); BFRSecretaryCentral.ensure() monta a casca Central.",
+      "rig_caveats": [
+        "initScript persistido no CDP executa o core diretamente em cada boot sem ativar deferred (servedHits:0) — exige ativação manual.",
+        "Aba em background throttleia setTimeout chains; usar replaceWith síncrono, não polling.",
+        "take_screenshot falhou NATIVE_BROWSER_VIEWPORT_UNAVAILABLE (visibilityState:hidden) — SEM captura de tela; prova por DOM + rede + REST autenticado."
+      ],
+      "result": "OK",
+      "evidence": {
+        "tab": "data-sec-tab='supervisao' active+visible",
+        "panel_html_bytes": 2397,
+        "metrics": "Pendentes/Em andamento/Prazo vencido/Concluídas = 0",
+        "state_errors": ["supervisão"],
+        "network_reqid_51": "supervision_requests?select=…schools(name) -> 400",
+        "network_schools": "schools -> 200",
+        "network_learning_action_plans": "learning_action_plans -> 200"
+      }
+    },
+    {
+      "step": "AUTHENTICATED_REST_REQUERY",
+      "action": "Reproduzir o erro com o cliente autenticado (window.BFR_SUPABASE_CLIENT) e testar o embed corrigido",
+      "bad_query": "supervision_requests.select('…school_id,schools(name)')",
+      "bad_result": { "status": 400, "error": { "code": "PGRST200", "details": "Searched for a foreign key relationship between 'supervision_requests' and 'schools' in the schema 'public', but no matches were found.", "hint": "Perhaps you meant 'sports_schools' instead of 'schools'.", "message": "Could not find a relationship between 'supervision_requests' and 'schools' in the schema cache" } },
+      "good_query": "supervision_requests.select('…school_id,sports_schools(name)')",
+      "good_result": { "status": 200, "error": null, "count": 0 },
+      "result": "OK",
+      "notes": "Prova comportamental de que a troca de 1 token resolve o 400. supervision_requests está vazia (count 0), então o fix mínimo provado é só o token do embed."
+    }
+  ],
+
+  "findings": [
+    {
+      "finding": "Embed schools(name) em supervision_requests quebra com 400 PGRST200",
+      "location": "bfr-candidata-v114-supervisao/index.html:23653 (módulo bfr-secretary-central.js)",
+      "impact": "A aba Supervisão monta mas state.errors=['supervisão']; lista/métricas de solicitações não carregam.",
+      "root_cause": "supervision_requests.school_id FK -> sports_schools, não schools. O token do embed precisa ser sports_schools(name).",
+      "resolution": "Candidata v115: schools(name) -> sports_schools(name) na linha 23653. Validada 11/11 e PUBLICADA 08/11 (deploy c75e8eda, CACHE v115, md5 aba67956; prova HTTP 9/9 + Chrome limpo 8/8).",
+      "severity": "HIGH"
+    },
+    {
+      "finding": "Mismatch secundário potencial no dropdown de escolas",
+      "location": "index.html:23654 safeQuery('escolas', client.from('schools')…)",
+      "impact": "state.supervisionSchools usa ids da tabela schools, mas supervision_requests.school_id referencia sports_schools. Sem efeito enquanto supervision_requests estiver vazia (count 0).",
+      "resolution": "Fora do escopo do fix mínimo provado. Não alterar sem evidência (tabela vazia). Registrado como observação.",
+      "severity": "LOW"
+    },
+    {
+      "finding": "Login GoTrue da conta supervisor SQL bloqueado",
+      "impact": "Exigiu contorno por injeção de sessão para o teste browser.",
+      "root_cause": "GoTrue não reconhece contas mintadas via SQL direto. Ver gotrue-sql-limitation.",
+      "resolution": "Contorno aplicado (sessão injetada). Para login real via UI, mintar via Auth Admin API / signUp.",
+      "severity": "INFO"
+    }
+  ],
+
+  "candidate_v115": {
+    "directory": "bfr-candidata-v115-supervisao-embed",
+    "base": "v114 (byte-idêntico ao ar)",
+    "fix": "linha 23653: school_id,schools(name) -> school_id,sports_schools(name)",
+    "candidate_md5": "aba67956e2952f9f27e217004d028d74",
+    "candidate_bytes": 3488135,
+    "delta_bytes": 7,
+    "reverse_lineage_md5": "2496a70573cce3bb3ce23633fac40b79",
+    "reverse_lineage_eq_live": true,
+    "portoes": "11/11 OK (portoes-v115.mjs / portoes-v115-diary.json)",
+    "published": true,
+    "published_at": "2026-11-08T10:50:36.705Z",
+    "publication_diary": "bfr-candidata-v115-supervisao-embed/audit-publicacao-v115.json (V115_PUBLICADA_OK, 48/48 portões)"
+  },
+
+  "verdict": "F1.3 PROVADO NO AR v114; bug atribuído (linha 23653); candidata v115 PUBLICADA 08/11 (deploy c75e8eda / version b800538e, CACHE v115, md5 aba67956) — 48/48 portões, prova HTTP 9/9 + Chrome limpo 8/8",
+  "next": "Concluído. S18 (08/11) destravou o GoTrue via Auth Admin API e rodou a prova comportamental com dados: login real 200, embed sports_schools(name) → 200 (service_role retorna 'Escola Municipal Alpha'), schools(name) → 400 PGRST200, RLS supervisor lê fixture, baseline restaurada 25/25. Achado secundário: sports_schools RLS não inclui education_supervisor (embed null para esse papel; gap de policy, não defeito do v115). Reversão para v114/v113 pronta, exige OK novo.",
+
+  "s18_behavioral_proof": {
+    "cycle": "S18",
+    "completed_at": "2026-11-08T11:40:41.000Z",
+    "verdict": "S18_COMPORTAMENTAL_OK",
+    "gates": "25/25",
+    "method": "Auth Admin API mint + password grant login (JWT real) + PostgREST com fixture",
+    "results": {
+      "gotrue_login": "200 — GoTrue reconhece conta mintada via Admin API",
+      "embed_sports_schools_jwt": "200 (FK resolve; sports_schools null por RLS da tabela alvo)",
+      "embed_sports_schools_admin": "200 com dados: {name: 'Escola Municipal Alpha'}",
+      "embed_schools_negative": "400 PGRST200 (controle negativo confirma bug original)",
+      "rls_supervisor_read": "1 linha (policy bfr_is_education_supervisor passa)",
+      "baseline_restaurada": "6 tabelas × contagem E md5 = 12/12"
+    },
+    "finding_secondary": "sports_schools_read policy só permite developer/director/coordinator/secretary. education_supervisor não está na lista → embed null. Não é defeito do v115; é gap de policy a registrar como item de produto.",
+    "diary": "s18-diary.json",
+    "script": "s18-cycle.mjs"
+  },
+
+  "deployment_coordinates": {
+    "version": "v115",
+    "deployment_id": "c75e8eda-75ff-4ff0-96ee-29c83674fb6c",
+    "version_id": "b800538e-af52-413a-8806-b53d6681d667",
+    "url": "https://bfr-conecta.turmaroboticabfr.workers.dev",
+    "published_at": "2026-11-08T10:50:36.705Z",
+    "index_md5": "aba67956e2952f9f27e217004d028d74",
+    "index_bytes": 3488135,
+    "sw_md5": "863660025ed3371859b1546b2a16b26d",
+    "worker_md5": "9d6606ffa01e469bd0104cbbc638371e",
+    "cache_version": "bfr-conecta-v115",
+    "wrangler_version": "4.154.0",
+    "assets_reuploaded": 0,
+    "prior_version": "v114",
+    "prior_version_id": "f9ff7b46-d017-4c52-9b26-41026e3c2b4c"
+  }
+}

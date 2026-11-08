@@ -1,0 +1,249 @@
+{
+  "ciclo": "S18",
+  "em": "2026-11-08T11:35:32.958Z",
+  "queries": {
+    "supervisor_existente": [],
+    "auth_supervisor": [],
+    "policies_supervision": [
+      {
+        "polname": "supervision_requests_developer_insert",
+        "polcmd": "a",
+        "using_expr": null,
+        "check_expr": "(EXISTS ( SELECT 1\n   FROM profiles p\n  WHERE ((p.id = auth.uid()) AND (p.role = 'developer'::account_role))))"
+      },
+      {
+        "polname": "supervision_requests_developer_read",
+        "polcmd": "r",
+        "using_expr": "(EXISTS ( SELECT 1\n   FROM profiles p\n  WHERE ((p.id = auth.uid()) AND (p.role = 'developer'::account_role))))",
+        "check_expr": null
+      },
+      {
+        "polname": "supervision_requests_developer_update",
+        "polcmd": "w",
+        "using_expr": "(EXISTS ( SELECT 1\n   FROM profiles p\n  WHERE ((p.id = auth.uid()) AND (p.role = 'developer'::account_role))))",
+        "check_expr": null
+      },
+      {
+        "polname": "supervision_requests_secretary_update",
+        "polcmd": "w",
+        "using_expr": "(EXISTS ( SELECT 1\n   FROM (staff_schools ss\n     JOIN profiles p ON ((p.id = ss.profile_id)))\n  WHERE ((p.id = auth.uid()) AND (ss.school_id = supervision_requests.school_id) AND (p.role = 'secretary'::account_role))))",
+        "check_expr": null
+      },
+      {
+        "polname": "supervision_requests_staff_insert",
+        "polcmd": "a",
+        "using_expr": null,
+        "check_expr": "((created_by = auth.uid()) AND (EXISTS ( SELECT 1\n   FROM (staff_schools ss\n     JOIN profiles p ON ((p.id = ss.profile_id)))\n  WHERE ((p.id = auth.uid()) AND (ss.school_id = supervision_requests.school_id) AND (p.role = ANY (ARRAY['secretary'::account_role, 'director'::account_role, 'coordinator'::account_role]))))))"
+      },
+      {
+        "polname": "supervision_requests_staff_read",
+        "polcmd": "r",
+        "using_expr": "(EXISTS ( SELECT 1\n   FROM (staff_schools ss\n     JOIN profiles p ON ((p.id = ss.profile_id)))\n  WHERE ((p.id = auth.uid()) AND (ss.school_id = supervision_requests.school_id) AND (p.role = ANY (ARRAY['secretary'::account_role, 'director'::account_role, 'coordinator'::account_role])))))",
+        "check_expr": null
+      },
+      {
+        "polname": "supervision_requests_supervisor_insert",
+        "polcmd": "a",
+        "using_expr": null,
+        "check_expr": "bfr_is_education_supervisor()"
+      },
+      {
+        "polname": "supervision_requests_supervisor_read",
+        "polcmd": "r",
+        "using_expr": "bfr_is_education_supervisor()",
+        "check_expr": null
+      },
+      {
+        "polname": "supervision_requests_supervisor_update",
+        "polcmd": "w",
+        "using_expr": "bfr_is_education_supervisor()",
+        "check_expr": null
+      }
+    ],
+    "fn_is_supervisor": [
+      {
+        "def": "CREATE OR REPLACE FUNCTION public.bfr_is_education_supervisor()\n RETURNS boolean\n LANGUAGE sql\n STABLE SECURITY DEFINER\n SET search_path TO 'public'\nAS $function$\n  SELECT COALESCE(\n    (SELECT true FROM public.profiles \n     WHERE id = auth.uid() AND role = 'education_supervisor'::account_role),\n    false\n  );\n$function$\n"
+      }
+    ],
+    "fn_school_staff_ids": [
+      {
+        "def": "CREATE OR REPLACE FUNCTION public.bfr_school_staff_ids()\n RETURNS uuid[]\n LANGUAGE sql\n STABLE SECURITY DEFINER\n SET search_path TO 'public'\nAS $function$\n  SELECT \n    CASE \n      -- Supervisor: todas as escolas\n      WHEN public.bfr_is_education_supervisor() THEN\n        (SELECT array_agg(id) FROM public.schools WHERE active = true)\n      -- Staff: apenas escolas com vínculo\n      ELSE\n        (SELECT array_agg(school_id) FROM public.staff_schools ss\n         JOIN public.profiles p ON p.id = ss.profile_id\n         WHERE p.id = auth.uid() AND ss.role = p.role::text)\n    END;\n$function$\n"
+      }
+    ],
+    "fn_handle_new_user": [
+      {
+        "def": "CREATE OR REPLACE FUNCTION public.handle_new_user()\n RETURNS trigger\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO 'public'\nAS $function$\r\n                                                                                                                                                                                       declare\r\n                                                                                                                                                                                         assigned_role public.account_role;\r\n                                                                                                                                                                                         begin\r\n                                                                                                                                                                                           select ar.approved_role into assigned_role\r\n                                                                                                                                                                                               from public.access_requests ar\r\n                                                                                                                                                                                                  where lower(ar.email) = lower(coalesce(new.email, ''))\r\n                                                                                                                                                                                                       and ar.status = 'approved'\r\n                                                                                                                                                                                                            and ar.approved_role is not null\r\n                                                                                                                                                                                                               order by ar.reviewed_at desc nulls last, ar.created_at desc\r\n                                                                                                                                                                                                                  limit 1;\r\n                                                                                                                                                                                                                    insert into public.profiles(id, email, full_name, role)\r\n                                                                                                                                                                                                                      values(new.id, coalesce(new.email, ''), coalesce(new.raw_user_meta_data->>'full_name', ''), coalesce(assigned_role, 'parent'))\r\n                                                                                                                                                                                                                        on conflict(id) do update set email = excluded.email;\r\n                                                                                                                                                                                                                          return new;\r\n                                                                                                                                                                                                                          end;\r\n                                                                                                                                                                                                                          $function$\n"
+      }
+    ],
+    "sports_schools_cols": [
+      {
+        "column_name": "id",
+        "data_type": "uuid",
+        "is_nullable": "NO"
+      },
+      {
+        "column_name": "name",
+        "data_type": "text",
+        "is_nullable": "NO"
+      },
+      {
+        "column_name": "city",
+        "data_type": "text",
+        "is_nullable": "YES"
+      },
+      {
+        "column_name": "logo_url",
+        "data_type": "text",
+        "is_nullable": "YES"
+      },
+      {
+        "column_name": "contact_name",
+        "data_type": "text",
+        "is_nullable": "YES"
+      },
+      {
+        "column_name": "contact_email",
+        "data_type": "text",
+        "is_nullable": "YES"
+      },
+      {
+        "column_name": "contact_phone",
+        "data_type": "text",
+        "is_nullable": "YES"
+      },
+      {
+        "column_name": "created_by",
+        "data_type": "uuid",
+        "is_nullable": "YES"
+      },
+      {
+        "column_name": "created_at",
+        "data_type": "timestamp with time zone",
+        "is_nullable": "NO"
+      },
+      {
+        "column_name": "updated_at",
+        "data_type": "timestamp with time zone",
+        "is_nullable": "NO"
+      }
+    ],
+    "staff_schools": [
+      {
+        "id": "29aba9ad-b97a-4eb0-a1ec-0dfc8241c7a4",
+        "profile_id": "cc005f8c-fa2c-414f-8b04-73e828ec8216",
+        "school_id": "08ebef62-2193-4520-ab44-c044160d565f",
+        "role": "director",
+        "created_at": "2026-11-07 01:09:49.675464+00"
+      },
+      {
+        "id": "e9b0e04f-2d2e-4515-99aa-2d69094a0533",
+        "profile_id": "50205728-72c0-49a5-b519-afccdcc24fea",
+        "school_id": "08ebef62-2193-4520-ab44-c044160d565f",
+        "role": "secretary",
+        "created_at": "2026-11-07 01:09:49.675464+00"
+      },
+      {
+        "id": "490de8f7-886d-4fa6-a224-e0c07dc7ca4c",
+        "profile_id": "cb29edaa-5d57-4f7d-a29b-794f74bd5d79",
+        "school_id": "08ebef62-2193-4520-ab44-c044160d565f",
+        "role": "coordinator",
+        "created_at": "2026-11-07 01:09:49.675464+00"
+      },
+      {
+        "id": "e87eb1ad-6e53-470f-b1e1-41d3f6c56fb6",
+        "profile_id": "fc465d31-c8c9-4ba8-9bcf-6fbbd1bf52a7",
+        "school_id": "0f51bc67-9987-483d-aba0-f138b2b7580e",
+        "role": "coordinator",
+        "created_at": "2026-11-07 01:09:49.675464+00"
+      },
+      {
+        "id": "b1db76d3-a468-41fd-b332-cdcda95dbd80",
+        "profile_id": "5a15c6a7-259b-4092-8dbc-744293630f48",
+        "school_id": "0f51bc67-9987-483d-aba0-f138b2b7580e",
+        "role": "coordinator",
+        "created_at": "2026-11-07 01:09:49.675464+00"
+      },
+      {
+        "id": "6f4417db-c8ec-49c7-b604-1358d1599ff9",
+        "profile_id": "7c1af93f-0131-47ad-b967-4db9fabfdb0b",
+        "school_id": "f4ab6309-8c41-4456-a3e2-14f3fe2ad9d3",
+        "role": "coordinator",
+        "created_at": "2026-11-07 01:09:49.675464+00"
+      },
+      {
+        "id": "68329c8d-2d06-4abd-a4b0-aa4fa637eb86",
+        "profile_id": "b1caa975-5a6a-47e4-ae2c-d7f08f0fa8e3",
+        "school_id": "08ebef62-2193-4520-ab44-c044160d565f",
+        "role": "education_supervisor",
+        "created_at": "2026-11-08 09:39:58.911554+00"
+      },
+      {
+        "id": "d1096389-522f-4284-b4d8-6c4e3a823e0b",
+        "profile_id": "b1caa975-5a6a-47e4-ae2c-d7f08f0fa8e3",
+        "school_id": "0f51bc67-9987-483d-aba0-f138b2b7580e",
+        "role": "education_supervisor",
+        "created_at": "2026-11-08 09:39:58.911554+00"
+      },
+      {
+        "id": "25b723e3-b163-4248-ae1c-4f7357b1bbd0",
+        "profile_id": "b1caa975-5a6a-47e4-ae2c-d7f08f0fa8e3",
+        "school_id": "f4ab6309-8c41-4456-a3e2-14f3fe2ad9d3",
+        "role": "education_supervisor",
+        "created_at": "2026-11-08 09:39:58.911554+00"
+      }
+    ],
+    "supervision_count": [
+      {
+        "n": 0
+      }
+    ],
+    "fk_school_id": [
+      {
+        "constraint_name": "supervision_requests_school_id_fkey",
+        "foreign_table": "sports_schools",
+        "foreign_column": "id"
+      }
+    ],
+    "enum_roles": [
+      {
+        "v": "{pending,parent,student,pedagogical,developer,monitor,gatekeeper,coordinator,secretary,aee,director,psychology,social_work,sports_operator,education_supervisor}"
+      }
+    ],
+    "sports_schools_rows": [
+      {
+        "id": "559acff1-e4df-42bc-aea4-2d96b8b5b11b",
+        "name": "Escola Alpha"
+      },
+      {
+        "id": "2efafbdc-12f4-4e63-a58e-2e50ca5479e2",
+        "name": "Escola Beta"
+      },
+      {
+        "id": "75a15897-e987-408b-af1c-eace66b0a70d",
+        "name": "Escola Gamma"
+      },
+      {
+        "id": "08ebef62-2193-4520-ab44-c044160d565f",
+        "name": "Escola Municipal Alpha"
+      },
+      {
+        "id": "0f51bc67-9987-483d-aba0-f138b2b7580e",
+        "name": "Escola Municipal Beta"
+      },
+      {
+        "id": "f4ab6309-8c41-4456-a3e2-14f3fe2ad9d3",
+        "name": "Escola Municipal Gamma"
+      }
+    ],
+    "profiles_check": [
+      {
+        "conname": "profiles_photo_path_owner",
+        "def": "CHECK (((photo_path IS NULL) OR (photo_path = ((id)::text || '/photo.jpg'::text))))"
+      },
+      {
+        "conname": "profiles_role_allowed",
+        "def": "CHECK ((role = ANY (ARRAY['pending'::account_role, 'parent'::account_role, 'student'::account_role, 'pedagogical'::account_role, 'coordinator'::account_role, 'monitor'::account_role, 'gatekeeper'::account_role, 'developer'::account_role, 'director'::account_role, 'secretary'::account_role, 'aee'::account_role, 'psychology'::account_role, 'social_work'::account_role, 'sports_operator'::account_role, 'education_supervisor'::account_role])))"
+      }
+    ]
+  }
+}

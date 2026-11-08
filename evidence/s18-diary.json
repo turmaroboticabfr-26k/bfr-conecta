@@ -1,0 +1,130 @@
+{
+  "ciclo": "S18",
+  "started": "2026-11-08T11:40:26.056Z",
+  "email": "s18-supervisor-82e357@bfr-conecta.test",
+  "stages": {
+    "baseline": {
+      "em": "2026-11-08T11:40:41.284Z",
+      "tabelas": {
+        "auth.users": {
+          "n": 33,
+          "md5": "16eff7f45064719ac067526c897bb148"
+        },
+        "public.profiles": {
+          "n": 33,
+          "md5": "d2145e4459f7e363b878890f5704f9bc"
+        },
+        "public.sports_schools": {
+          "n": 6,
+          "md5": "e336897faf29ba27722e44e680a4b4ae"
+        },
+        "public.staff_schools": {
+          "n": 9,
+          "md5": "491be3f7ba23faef5db42101a2d0b559"
+        },
+        "public.supervision_requests": {
+          "n": 0,
+          "md5": "empty"
+        },
+        "public.supervision_audit": {
+          "n": 9,
+          "md5": "f062e4692c2d990b24d6fa6d9f790f81"
+        }
+      }
+    },
+    "mint": {
+      "em": "2026-11-08T11:40:42.797Z",
+      "uid": "0764b085-141d-4636-b507-0f9fa9e4b412",
+      "http_status": 200
+    },
+    "login": {
+      "em": "2026-11-08T11:40:42.982Z",
+      "exp": "2026-11-08T12:40:41.000Z",
+      "access_len": 823,
+      "http_status": 200
+    },
+    "fixture": {
+      "em": "2026-11-08T11:40:47.814Z",
+      "req_id": "7bb8084a-7ce1-4fc9-a01e-f7253339cb8c",
+      "school_id": "08ebef62-2193-4520-ab44-c044160d565f",
+      "uid": "0764b085-141d-4636-b507-0f9fa9e4b412"
+    },
+    "prova": {
+      "em": "2026-11-08T11:40:48.435Z",
+      "embed_correto_jwt": {
+        "http": 200,
+        "dados": [
+          {
+            "id": "7bb8084a-7ce1-4fc9-a01e-f7253339cb8c",
+            "indicator": "S18 Indicador Sintético",
+            "school_id": "08ebef62-2193-4520-ab44-c044160d565f",
+            "sports_schools": null
+          }
+        ],
+        "nota": "sports_schools null = RLS da tabela alvo não inclui education_supervisor"
+      },
+      "embed_correto_admin": {
+        "http": 200,
+        "dados": [
+          {
+            "id": "7bb8084a-7ce1-4fc9-a01e-f7253339cb8c",
+            "indicator": "S18 Indicador Sintético",
+            "school_id": "08ebef62-2193-4520-ab44-c044160d565f",
+            "sports_schools": {
+              "name": "Escola Municipal Alpha"
+            }
+          }
+        ]
+      },
+      "embed_errado": {
+        "http": 400,
+        "code": "PGRST200",
+        "message": "Could not find a relationship between 'supervision_requests' and 'schools' in the schema cache"
+      },
+      "rls_read": {
+        "http": 200,
+        "count": 1
+      },
+      "jwt_claims": {
+        "sub": "0764b085-141d-4636-b507-0f9fa9e4b412",
+        "role": "authenticated",
+        "exp": 1794141641
+      },
+      "achado_secundario": "sports_schools RLS (sports_schools_read) só permite developer/director/coordinator/secretary. education_supervisor não está na lista → embed null. Não é defeito do v115 (token correto); é gap de policy a registrar."
+    },
+    "pos": {
+      "em": "2026-11-08T11:41:06.465Z",
+      "tabelas": {
+        "auth.users": {
+          "n": 33,
+          "md5": "16eff7f45064719ac067526c897bb148"
+        },
+        "public.profiles": {
+          "n": 33,
+          "md5": "d2145e4459f7e363b878890f5704f9bc"
+        },
+        "public.sports_schools": {
+          "n": 6,
+          "md5": "e336897faf29ba27722e44e680a4b4ae"
+        },
+        "public.staff_schools": {
+          "n": 9,
+          "md5": "491be3f7ba23faef5db42101a2d0b559"
+        },
+        "public.supervision_requests": {
+          "n": 0,
+          "md5": "empty"
+        },
+        "public.supervision_audit": {
+          "n": 9,
+          "md5": "f062e4692c2d990b24d6fa6d9f790f81"
+        }
+      }
+    }
+  },
+  "complete": "2026-11-08T11:41:06.465Z",
+  "portoes": 25,
+  "falhas": 0,
+  "verdict": "S18_COMPORTAMENTAL_OK",
+  "resumo": "GoTrue destravado via Auth Admin API. Login real 200. Embed sports_schools(name) → 200 (FK resolve); service_role retorna nome. schools(name) → 400 PGRST200. RLS supervisor lê fixture. Achado: sports_schools RLS não inclui education_supervisor (embed null para esse papel). Baseline restaurada."
+}
