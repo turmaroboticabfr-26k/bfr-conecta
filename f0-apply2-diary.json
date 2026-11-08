@@ -1,0 +1,28 @@
+{
+  "applied_at": "2026-11-07T20:03:43.627Z",
+  "operation": "add_school_id_to_students_classes",
+  "result": "success",
+  "checks": [
+    {
+      "check_name": "students_school_id_exists",
+      "value": "YES"
+    },
+    {
+      "check_name": "classes_school_id_exists",
+      "value": "YES"
+    },
+    {
+      "check_name": "students_assigned",
+      "value": "848"
+    },
+    {
+      "check_name": "classes_assigned",
+      "value": "27"
+    },
+    {
+      "check_name": "indexes_created",
+      "value": "2"
+    }
+  ],
+  "sql_file": "sql/fase0-students-classes-school-id.sql"
+}

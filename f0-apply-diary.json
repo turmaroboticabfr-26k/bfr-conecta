@@ -1,0 +1,24 @@
+{
+  "applied_at": "2026-11-07T20:00:10.594Z",
+  "operation": "create_schools_table",
+  "result": "success",
+  "checks": [
+    {
+      "check_name": "table_exists",
+      "value": "YES"
+    },
+    {
+      "check_name": "row_count",
+      "value": "3"
+    },
+    {
+      "check_name": "trigger_count",
+      "value": "1"
+    },
+    {
+      "check_name": "rls_enabled",
+      "value": "false"
+    }
+  ],
+  "sql_file": "sql/fase0-schools-table.sql"
+}

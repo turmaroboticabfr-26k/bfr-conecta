@@ -1,0 +1,20 @@
+{
+  "applied_at": "2026-11-07T20:05:36.187Z",
+  "operation": "add_education_supervisor_role",
+  "result": "success",
+  "checks": [
+    {
+      "check_name": "total_roles",
+      "value": "15"
+    },
+    {
+      "check_name": "has_supervisor",
+      "value": "YES"
+    },
+    {
+      "check_name": "enum_values",
+      "value": "{pending,parent,student,pedagogical,developer,monitor,gatekeeper,coordinator,secretary,aee,director,psychology,social_work,sports_operator,education_supervisor}"
+    }
+  ],
+  "note": "ALTER TYPE ADD VALUE cannot be rolled back in PostgreSQL"
+}
