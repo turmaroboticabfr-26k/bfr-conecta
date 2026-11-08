@@ -1,0 +1,53 @@
+{
+  "ciclo": "C7",
+  "fase": "jornada",
+  "em": "2026-11-08T22:15:00.000Z",
+  "resumo": "5 testes cross-role executados; 3 gaps de RLS/produto identificados",
+  "portoes": 12,
+  "sucessos": 5,
+  "falhas": 7,
+  "gaps_identificados": [
+    {
+      "id": "C7-GAP-1",
+      "teste": "T1",
+      "descricao": "Director não consegue ler occurrences criadas por coordinator",
+      "evidencia": "coordinator INSERT 201 OK, director SELECT retorna 0 linhas",
+      "causa": "Policy occurrences_staff_manage exige is_staff() mas não inclui director explicitamente para SELECT de ocorrências de outros staff",
+      "severidade": "ALTA — diretor deveria ver todas as ocorrências da escola"
+    },
+    {
+      "id": "C7-GAP-2",
+      "teste": "T2",
+      "descricao": "Director não consegue UPDATE supervision_requests criadas por secretary",
+      "evidencia": "secretary INSERT 201 OK, director PATCH retorna 400",
+      "causa": "Policy supervision_requests_director_update existe mas requer school_id match via staff_schools; UPDATE falha por validação de schema ou permissão",
+      "severidade": "MÉDIA — requer investigação adicional do erro 400"
+    },
+    {
+      "id": "C7-GAP-3",
+      "teste": "T4",
+      "descricao": "Coordinator não consegue INSERT staff_announcements",
+      "evidencia": "INSERT retorna 403 Forbidden",
+      "causa": "Policy staff_announcements_write exige bfr_staff_is_manager() AND published_by=auth.uid(); coordinator É manager mas policy pode ter bug ou constraint não atendida",
+      "severidade": "ALTA — coordinator deveria poder publicar comunicados internos"
+    }
+  ],
+  "testes_nao_executados": [
+    {
+      "id": "T3",
+      "motivo": "INSERT learning_action_plans retorna 400 — schema mismatch (coluna student_id não existe ou FK inválida)"
+    },
+    {
+      "id": "T5",
+      "motivo": "INSERT support_requests retorna 403 — secretary não tem permissão de criação (policy bfr_psychology_requests_insert exige bfr_support_request_create_access que requer is_staff() ou guardian; secretary é staff mas função pode não reconhecer)"
+    }
+  ],
+  "conclusao": "Ciclo C7 revelou 3 gaps de RLS/produto na gestão administrativa integrada. Diretor não tem visibilidade cruzada de ocorrências, coordinator não pode publicar comunicados, e secretary não pode criar support_requests. Esses gaps impedem o fluxo administrativo integrado entre os 3 papéis.",
+  "recomendacoes": [
+    "Revisar policy occurrences_staff_manage para incluir director no SELECT",
+    "Investigar erro 400 no UPDATE de supervision_requests por director",
+    "Revisar policy staff_announcements_write para coordinator",
+    "Revisar policy bfr_psychology_requests_insert para secretary",
+    "Verificar schema de learning_action_plans (student_id FK)"
+  ]
+}

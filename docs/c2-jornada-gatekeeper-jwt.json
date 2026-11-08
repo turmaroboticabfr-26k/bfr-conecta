@@ -1,0 +1,16 @@
+{
+  "perna": "gatekeeper-jwt",
+  "em": "2026-11-08T21:25:00.000Z",
+  "aluno": "977da2bb-5b36-43e9-a25c-46ef0479f6c5",
+  "gatekeeper": "contas.find(c => c.chave === 'gatekeeper').uid",
+  "baseline_checkins": 0,
+  "entrada_error": {"code":"42501","details":null,"hint":null,"message":"new row violates row-level security policy for table \"gate_checkins\""},
+  "saida_error": {"code":"42501","details":null,"hint":null,"message":"new row violates row-level security policy for table \"gate_checkins\""},
+  "portoes": 3,
+  "falhas": [
+    "INSERT gate_checkin ENTRADA → 201 | dado=403 | esperado=201",
+    "INSERT gate_checkin SAÍDA → 201 | dado=403 | esperado=201",
+    "gate_checkins do aluno C2 = 2 (entrada + saída) | dado=0 | esperado=2"
+  ],
+  "gap3_comportamental": "PROVADO: gatekeeper NÃO consegue criar gate_checkins via JWT (RLS bloqueia) — gap de permissão ou design intencional"
+}

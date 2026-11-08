@@ -1744,7 +1744,7 @@
     const panel = document.querySelector('#adminView #adminStudentDirectoryPanel');
     const trigger = panel?.querySelector('[data-admin-new-student]');
     if (!trigger) return false;
-    trigger.click();
+              trigger.dispatchEvent(new MouseEvent('click', {bubbles:true, cancelable:true, view:window}));
     panel.scrollIntoView({ behavior: 'smooth', block: 'start' });
     await wait(120);
     panel.querySelector('[name="official_name"]')?.focus();
@@ -2045,10 +2045,19 @@
     const params = new URLSearchParams(location.search);
     const hash = new URLSearchParams(location.hash.replace(/^#/, ''));
     let hasStoredSession = false;
-    try { hasStoredSession = Boolean(localStorage.getItem('sb-yyzqoxlkcvqpessypfjo-auth-token')); } catch {}
+    let hasValidSession = false;
+    try {
+      const stored = localStorage.getItem('sb-yyzqoxlkcvqcpessypfjo-auth-token');
+      if (stored) {
+        hasStoredSession = true;
+        const session = JSON.parse(stored);
+        const now = Math.floor(Date.now() / 1000);
+        hasValidSession = session.expires_at && session.expires_at > now;
+      }
+    } catch {}
     const isOAuthCallback = params.has('code') || hash.has('access_token') || params.has('error') || hash.has('error');
-    if (params.has('code') || hash.has('access_token') || hasStoredSession) document.documentElement.classList.add('auth-restoring');
-    if (hasStoredSession && !isOAuthCallback) window.setTimeout(() => {
+    if ((params.has('code') || hash.has('access_token') || hasValidSession) && !isOAuthCallback) document.documentElement.classList.add('auth-restoring');
+    if (hasValidSession && !isOAuthCallback) window.setTimeout(() => {
       if (document.getElementById('appShell')?.classList.contains('ready')) return;
       document.documentElement.classList.remove('auth-restoring');
       const status = document.getElementById('authStatus');
@@ -9653,13 +9662,7 @@ html body #bfrMobileDrawer .bfr-mobile-drawer-link[data-bfr-drawer-logout] > .bf
               host.innerHTML = currentScheduleMarkup();
             }
             setupScheduleViews();
-            if (button.dataset.publicScheduleEvents === 'true') return;
-            button.dataset.publicScheduleEvents = 'true';
-            const hide = () => modal.classList.add('hidden');
-            button.addEventListener('click', () => { modal.classList.remove('hidden'); close?.focus(); });
-            close?.addEventListener('click', hide);
-            modal.addEventListener('click', event => { if (event.target === modal) hide(); });
-            document.addEventListener('keydown', event => { if (event.key === 'Escape' && !modal.classList.contains('hidden')) hide(); });
+            document.addEventListener('keydown', event => { if (event.key === 'Escape' && !modal.classList.contains('hidden')) modal.classList.add('hidden'); });
        }
        function ensureProjectViews() {
          [parentView, studentView, teacherView].forEach(view => { if (view && (view.id === 'parentView' || view.innerHTML) && !view.querySelector('[data-projects-panel]')) view.insertAdjacentHTML('beforeend', currentSchoolYearMarkup(projectsMarkup)); });
@@ -11509,6 +11512,31 @@ html body #bfrMobileDrawer .bfr-mobile-drawer-link[data-bfr-drawer-logout] > .bf
        ensureMobileTapTargets();
        setTimeout(setupGrowthFeatures, 0);
        setupAccountTools();
+       document.addEventListener('click', event => {
+         const openBtn = event.target.closest('#publicScheduleBtn');
+         if (openBtn && !openBtn.dataset.replaying) {
+           event.preventDefault();
+           event.stopImmediatePropagation();
+           const modal = document.getElementById('publicScheduleModal');
+           if (modal) {
+             modal.classList.remove('hidden');
+             document.getElementById('closePublicSchedule')?.focus();
+           }
+           return;
+         }
+         const closeBtn = event.target.closest('#closePublicSchedule');
+         if (closeBtn) {
+           event.preventDefault();
+           event.stopImmediatePropagation();
+           const modal = document.getElementById('publicScheduleModal');
+           if (modal) modal.classList.add('hidden');
+           return;
+         }
+         const modal = event.target.closest('#publicScheduleModal');
+         if (modal && event.target === modal) {
+           modal.classList.add('hidden');
+         }
+       }, true);
          setupPublicSchedule();
          setTimeout(setupScheduleViews, 0);
 
@@ -11673,10 +11701,12 @@ html body #bfrMobileDrawer .bfr-mobile-drawer-link[data-bfr-drawer-logout] > .bf
             try {
               await loadApplication();
               replaying = true;
-              trigger.click();
+              trigger.dataset.replaying = 'true';
+              trigger.dispatchEvent(new MouseEvent('click', {bubbles:true, cancelable:true, view:window}));
             } catch (error) {
               console.error('BFR application failed to start', error);
             } finally {
+              delete trigger.dataset.replaying;
               replaying = false;
             }
           }, true);
@@ -11684,6 +11714,7 @@ html body #bfrMobileDrawer .bfr-mobile-drawer-link[data-bfr-drawer-logout] > .bf
 
         bindTrigger(document.getElementById('googleLogin'));
         bindTrigger(document.getElementById('publicScheduleBtn'));
+        document.querySelectorAll('#loginScreen button, #loginScreen a[href]').forEach(function(el){ if (el.id==='googleLogin'||el.id==='publicScheduleBtn') return; bindTrigger(el); });
         restoreSession().catch(error => console.warn('BFR session restore deferred', error));
       })();
     </script>

@@ -1,0 +1,288 @@
+{
+  "ciclo": "C2",
+  "em": "2026-11-08T20:25:41.719Z",
+  "tipo": "recon-read-only",
+  "triggers": [],
+  "policies": [
+    {
+      "tabela": "gate_checkins",
+      "policyname": "coordinators read gate checkins",
+      "cmd": "SELECT",
+      "papeis": "{authenticated}",
+      "qual": "(EXISTS ( SELECT 1\n   FROM profiles p\n  WHERE ((p.id = auth.uid()) AND (p.role = ANY (ARRAY['coordinator'::account_role, 'pedagogical'::account_role, 'developer'::account_role])))))",
+      "with_check": null
+    },
+    {
+      "tabela": "gate_checkins",
+      "policyname": "gate_checkins_family_read",
+      "cmd": "SELECT",
+      "papeis": "{authenticated}",
+      "qual": "(EXISTS ( SELECT 1\n   FROM guardian_students gs\n  WHERE ((gs.student_id = gate_checkins.student_id) AND (gs.profile_id = auth.uid()))))",
+      "with_check": null
+    },
+    {
+      "tabela": "gate_checkins",
+      "policyname": "gate_checkins_gatekeeper_read",
+      "cmd": "SELECT",
+      "papeis": "{authenticated}",
+      "qual": "is_gatekeeper()",
+      "with_check": null
+    },
+    {
+      "tabela": "gate_checkins",
+      "policyname": "gate_checkins_staff_read",
+      "cmd": "SELECT",
+      "papeis": "{authenticated}",
+      "qual": "is_staff()",
+      "with_check": null
+    },
+    {
+      "tabela": "guardian_students",
+      "policyname": "guardian_students_monitor_read",
+      "cmd": "SELECT",
+      "papeis": "{authenticated}",
+      "qual": "is_monitor()",
+      "with_check": null
+    },
+    {
+      "tabela": "guardian_students",
+      "policyname": "guardian_students_read",
+      "cmd": "SELECT",
+      "papeis": "{authenticated}",
+      "qual": "((profile_id = auth.uid()) OR ((\"current_role\"())::text = ANY (ARRAY['aee'::text, 'developer'::text])))",
+      "with_check": null
+    },
+    {
+      "tabela": "guardian_students",
+      "policyname": "guardian_students_staff_delete",
+      "cmd": "DELETE",
+      "papeis": "{authenticated}",
+      "qual": "((\"current_role\"())::text = 'developer'::text)",
+      "with_check": null
+    },
+    {
+      "tabela": "guardian_students",
+      "policyname": "guardian_students_staff_insert",
+      "cmd": "INSERT",
+      "papeis": "{authenticated}",
+      "qual": null,
+      "with_check": "((\"current_role\"())::text = 'developer'::text)"
+    },
+    {
+      "tabela": "guardian_students",
+      "policyname": "guardian_students_staff_update",
+      "cmd": "UPDATE",
+      "papeis": "{authenticated}",
+      "qual": "((\"current_role\"())::text = 'developer'::text)",
+      "with_check": "((\"current_role\"())::text = 'developer'::text)"
+    },
+    {
+      "tabela": "route_incidents",
+      "policyname": "route_incidents_family_read",
+      "cmd": "SELECT",
+      "papeis": "{authenticated}",
+      "qual": "(EXISTS ( SELECT 1\n   FROM guardian_students gs\n  WHERE ((gs.student_id = route_incidents.student_id) AND (gs.profile_id = auth.uid()))))",
+      "with_check": null
+    },
+    {
+      "tabela": "route_incidents",
+      "policyname": "route_incidents_monitor_manage",
+      "cmd": "ALL",
+      "papeis": "{authenticated}",
+      "qual": "(is_monitor() AND (monitor_id = auth.uid()))",
+      "with_check": "(is_monitor() AND (monitor_id = auth.uid()))"
+    },
+    {
+      "tabela": "route_incidents",
+      "policyname": "route_incidents_staff_read",
+      "cmd": "SELECT",
+      "papeis": "{authenticated}",
+      "qual": "is_staff()",
+      "with_check": null
+    },
+    {
+      "tabela": "student_messages",
+      "policyname": "messages_family_insert",
+      "cmd": "INSERT",
+      "papeis": "{authenticated}",
+      "qual": null,
+      "with_check": "((sender_id = auth.uid()) AND (NOT is_monitor()) AND (EXISTS ( SELECT 1\n   FROM guardian_students gs\n  WHERE ((gs.student_id = student_messages.student_id) AND (gs.profile_id = auth.uid())))))"
+    },
+    {
+      "tabela": "student_messages",
+      "policyname": "messages_family_read",
+      "cmd": "SELECT",
+      "papeis": "{authenticated}",
+      "qual": "((sender_id = auth.uid()) OR (recipient_id = auth.uid()) OR (is_staff() AND bfr_team_can_access_student(student_id)))",
+      "with_check": null
+    },
+    {
+      "tabela": "student_messages",
+      "policyname": "messages_monitor_insert",
+      "cmd": "INSERT",
+      "papeis": "{authenticated}",
+      "qual": null,
+      "with_check": "(is_monitor() AND (sender_id = auth.uid()) AND (EXISTS ( SELECT 1\n   FROM guardian_students gs\n  WHERE ((gs.student_id = student_messages.student_id) AND (gs.profile_id = student_messages.recipient_id)))))"
+    },
+    {
+      "tabela": "student_messages",
+      "policyname": "student_messages_staff_manage",
+      "cmd": "ALL",
+      "papeis": "{authenticated}",
+      "qual": "(is_staff() AND bfr_team_can_access_student(student_id))",
+      "with_check": "(is_staff() AND bfr_team_can_access_student(student_id))"
+    }
+  ],
+  "colunas_route": [
+    {
+      "column_name": "id",
+      "data_type": "uuid",
+      "column_default": "gen_random_uuid()",
+      "is_nullable": "NO"
+    },
+    {
+      "column_name": "student_id",
+      "data_type": "uuid",
+      "column_default": null,
+      "is_nullable": "NO"
+    },
+    {
+      "column_name": "class_id",
+      "data_type": "uuid",
+      "column_default": null,
+      "is_nullable": "NO"
+    },
+    {
+      "column_name": "monitor_id",
+      "data_type": "uuid",
+      "column_default": null,
+      "is_nullable": "NO"
+    },
+    {
+      "column_name": "incident_type",
+      "data_type": "text",
+      "column_default": null,
+      "is_nullable": "NO"
+    },
+    {
+      "column_name": "description",
+      "data_type": "text",
+      "column_default": null,
+      "is_nullable": "NO"
+    },
+    {
+      "column_name": "occurred_at",
+      "data_type": "timestamp with time zone",
+      "column_default": "now()",
+      "is_nullable": "NO"
+    },
+    {
+      "column_name": "notification_status",
+      "data_type": "text",
+      "column_default": "'pending_guardian'::text",
+      "is_nullable": "NO"
+    },
+    {
+      "column_name": "notified_at",
+      "data_type": "timestamp with time zone",
+      "column_default": null,
+      "is_nullable": "YES"
+    },
+    {
+      "column_name": "created_at",
+      "data_type": "timestamp with time zone",
+      "column_default": "now()",
+      "is_nullable": "NO"
+    }
+  ],
+  "funcoes_gate": [
+    {
+      "proname": "bfr_teacher_lesson_gate_evidence",
+      "args": "target_class uuid, target_date date, target_schedule_entry uuid",
+      "auth_exec": true,
+      "chars": 14280
+    },
+    {
+      "proname": "is_gatekeeper",
+      "args": "",
+      "auth_exec": true,
+      "chars": 229
+    },
+    {
+      "proname": "register_gate_checkin",
+      "args": "target_badge_token uuid, gate_direction text, visual_confirmation boolean, intake_source text, target_shift text, exception_reason text",
+      "auth_exec": true,
+      "chars": 3868
+    }
+  ],
+  "funcoes_notificam": [],
+  "funcoes_rota": [],
+  "realtime": [
+    {
+      "tablename": "gate_checkins"
+    }
+  ],
+  "front": {
+    "shell_md5": "ae59d35346b685b2fbf9d18ade4fa5cd",
+    "shell_bytes": 3489467,
+    "monitor_central": {
+      "linha_saveRecord": 25205,
+      "form": "[data-mon-record-form]",
+      "fonte_route": "select[name=source] option[value=route]",
+      "escreve": "route_incidents APENAS",
+      "notification_status": "fica pending_guardian (default)",
+      "student_messages": false
+    },
+    "monitor_legado": {
+      "form": "#routeIncidentForm (linha 5240)",
+      "handler": "submitRouteIncident (5937)",
+      "escondido": "hideLegacy 25189 + CSS 25188 display:none!important",
+      "escreve": "route_incidents + student_messages + update notification_status"
+    },
+    "painel_responsavel": {
+      "painel": "#routeNotificationPanel (3810)",
+      "setup": "setupRouteNotifications (5964)",
+      "unica_chamada": 9981,
+      "ramo": "role !== admin && role !== parent",
+      "veredito": "MORTO para parent na v118 — nunca é chamado"
+    },
+    "home_responsavel": {
+      "loader": "loadGrowthNotifications (11157)",
+      "carrega": [
+        "announcements",
+        "school_events",
+        "grades",
+        "attendance",
+        "occurrences",
+        "student_messages",
+        "gate_checkins"
+      ],
+      "nao_carrega": [
+        "route_incidents"
+      ],
+      "gate_item": "entrou/saiu + blocked (11177)",
+      "cadencia": "setInterval 60000 (11437) + clique no sino (11509)"
+    },
+    "portaria": {
+      "rpc": "register_gate_checkin v1 (3868 chars, SECURITY DEFINER, guard is_gatekeeper)",
+      "escreve": [
+        "gate_checkins",
+        "gate_entry_alerts (só blocked)"
+      ],
+      "student_messages": false
+    },
+    "consumers_route_incidents": [
+      "Monitor Central insert/metrics/LIA (25205/25208/25212)"
+    ],
+    "policies_fix_suportado": {
+      "messages_monitor_insert": "is_monitor() AND sender=auth.uid() AND vínculo guardian_students",
+      "route_incidents_monitor_manage": "ALL is_monitor() AND monitor_id=auth.uid()"
+    }
+  },
+  "veredito_recon": {
+    "gap_1": "Caminho VISÍVEL do monitor (Central, fonte=percurso) NÃO notifica o responsável em nenhuma superfície (sem student_messages, sem trigger, Home não lê route_incidents). notification_status fica pending_guardian.",
+    "gap_2": "Painel dedicado do responsável (#routeNotificationPanel) morto na v118: única chamada exclui o papel parent.",
+    "a_provar_vivo": "Home do responsável mostra entrada/saída via gate_checkins (item entrou/saiu) — staticamente existe, falta prova comportamental.",
+    "produto_herdado": "BU-P: entrada não cria student_messages (briefing exige) — RPC confirma que continua assim."
+  }
+}

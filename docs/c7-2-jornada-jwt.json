@@ -1,0 +1,77 @@
+{
+  "ciclo": "C7",
+  "fase": "jornada",
+  "em": "2026-11-08T22:02:35.301Z",
+  "testes": [
+    {
+      "nome": "T0_DIR_TOKEN",
+      "ok": true,
+      "detalhe": "token director 875B"
+    },
+    {
+      "nome": "T0_COORD_TOKEN",
+      "ok": true,
+      "detalhe": "token coordinator 887B"
+    },
+    {
+      "nome": "T0_SECR_TOKEN",
+      "ok": true,
+      "detalhe": "token secretary 879B"
+    },
+    {
+      "nome": "T1_COORD_INSERT_OCC",
+      "ok": true,
+      "detalhe": "occurrence INSERT status=201"
+    },
+    {
+      "nome": "T1_DIR_READ_OCC",
+      "ok": false,
+      "detalhe": "director SELECT occurrence: 0 linhas"
+    },
+    {
+      "nome": "T1_DIR_SEES_COORD",
+      "ok": false,
+      "detalhe": "created_by=undefined..."
+    },
+    {
+      "nome": "T2_SECR_INSERT_SUP",
+      "ok": true,
+      "detalhe": "supervision_request INSERT status=201"
+    },
+    {
+      "nome": "T2_DIR_UPDATE_SUP",
+      "ok": false,
+      "detalhe": "director UPDATE status=400"
+    },
+    {
+      "nome": "T2_SECR_READ_UPDATED",
+      "ok": false,
+      "detalhe": "secretary SELECT status=Pendente de resposta"
+    },
+    {
+      "nome": "T3_COORD_INSERT_LAP",
+      "ok": false,
+      "detalhe": "learning_action_plan INSERT status=400"
+    },
+    {
+      "nome": "T4_COORD_INSERT_SA",
+      "ok": false,
+      "detalhe": "staff_announcement INSERT status=403"
+    },
+    {
+      "nome": "T5_SECR_INSERT_SR",
+      "ok": false,
+      "detalhe": "support_request INSERT status=403"
+    }
+  ],
+  "portoes": 12,
+  "falhas": [
+    "T1_DIR_READ_OCC",
+    "T1_DIR_SEES_COORD",
+    "T2_DIR_UPDATE_SUP",
+    "T2_SECR_READ_UPDATED",
+    "T3_COORD_INSERT_LAP",
+    "T4_COORD_INSERT_SA",
+    "T5_SECR_INSERT_SR"
+  ]
+}

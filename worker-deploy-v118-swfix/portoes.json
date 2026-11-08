@@ -1,0 +1,57 @@
+{
+  "quando": "2026-11-08T19:20:09.592Z",
+  "total": 11,
+  "falhas": 0,
+  "gates": [
+    {
+      "name": "diff de exatamente 1 linha (linha 9)",
+      "ok": true,
+      "detail": "linhas diferentes: 9"
+    },
+    {
+      "name": "HTML embutido intacto (md5 da linha 1)",
+      "ok": true,
+      "detail": "c e 1 8 e c f a c b 3 4 c 5 3 0 5 8 8 4 a 6 5 b 1 8 9 d d 7 f d "
+    },
+    {
+      "name": "SW embutido intacto (md5 da linha 2)",
+      "ok": true,
+      "detail": "1 2 8 8 c 1 6 0 6 0 6 6 9 c b 8 9 a a b d b 8 3 1 4 8 b 9 5 a 6 "
+    },
+    {
+      "name": "CACHE permanece v118",
+      "ok": true
+    },
+    {
+      "name": "sintaxe node --check",
+      "ok": true
+    },
+    {
+      "name": "/sw-v4.js?v=45 → 200",
+      "ok": true,
+      "detail": "status 200"
+    },
+    {
+      "name": "/sw-v4.js?v=45 devolve o SW v118",
+      "ok": true,
+      "detail": "3575 chars"
+    },
+    {
+      "name": "content-type javascript",
+      "ok": true
+    },
+    {
+      "name": "/sw.js continua 200",
+      "ok": true
+    },
+    {
+      "name": "/ devolve HTML byte-idêntico ao ar v118",
+      "ok": true,
+      "detail": "md5 a e 5 9 d 3 5 3 4 6 b 6 8 5 b 2 f b f 9 d 1 8 a d e 4 f a 5 c d "
+    },
+    {
+      "name": "/manifest.json cai no ASSETS (200 stub)",
+      "ok": true
+    }
+  ]
+}

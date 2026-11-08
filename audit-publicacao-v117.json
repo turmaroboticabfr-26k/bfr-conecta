@@ -1,0 +1,30 @@
+{
+  "version": "v117",
+  "data": "2026-11-08",
+  "deploy": {
+    "worker": "bfr-conecta",
+    "version_id": "23b64f63-ac6d-4e28-a9eb-fb0c73d0626c",
+    "url": "https://bfr-conecta.turmaroboticabfr.workers.dev",
+    "tempo": "11.51 sec"
+  },
+  "md5": {
+    "worker.mjs": "5e3f394b125496ab3cabf9a4279d47d8"
+  },
+  "cache": "bfr-conecta-v117",
+  "assets": {
+    "total": 12,
+    "atualizados": 0,
+    "diretorio": "worker-deploy-v117/public"
+  },
+  "correcao": {
+    "problema": "Botões do modal de horários não funcionavam",
+    "causa": "Event delegation na bubble phase era interceptado por bindTrigger() na capture phase",
+    "solucao": "Mover event delegation para capture phase (3º parâmetro true)",
+    "arquivo": "app/index.html linha 11545"
+  },
+  "portoes": {
+    "sintaxe": "OK",
+    "deploy": "OK",
+    "md5": "5e3f394b125496ab3cabf9a4279d47d8"
+  }
+}

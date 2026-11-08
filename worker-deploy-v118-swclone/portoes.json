@@ -1,0 +1,99 @@
+{
+  "ciclo": "v118-swclone",
+  "data": "2026-11-08",
+  "defeito": "V118-SW-NAV: ramo do shell faz cache.put(req,response) e return response (corpo consumido) -> navegacao ERR_FAILED",
+  "correcao": "response.clone() no ramo do shell (linha 61 do SW vivo), alinhando com o ramo generico",
+  "base": "worker-deploy-v118-swfix/worker.mjs (rota ja corrigida, publicada como version c9235649)",
+  "src_md5": "ba5e65ee6f52e8dc77850a3939186315",
+  "out_md5": "7a2e41f448e5d8c331f1bcc5eb029e9a",
+  "out_bytes": 3614649,
+  "delta_bytes": 8,
+  "sw_src_md5": "7111e4fc3a4069b3df60bc3cfe76ff92",
+  "sw_fixed_md5": "3fcbc3ad52f1a0491362506466c82596",
+  "gates_total": 16,
+  "gates_ok": 16,
+  "gates_falhos": 0,
+  "verdict": "PORTAO_VERDE",
+  "gates": [
+    {
+      "name": "rota_sw_v4_presente",
+      "ok": true,
+      "detail": "fix da rota esperado no worker publicado"
+    },
+    {
+      "name": "shell_sem_clone_unico",
+      "ok": true,
+      "detail": "ocorrencias sem clone = 1"
+    },
+    {
+      "name": "generico_com_clone_unico",
+      "ok": true,
+      "detail": "ocorrencias com clone (generico) = 1"
+    },
+    {
+      "name": "shell_sem_clone_zero_depois",
+      "ok": true,
+      "detail": "ocorrencias sem clone depois = 0"
+    },
+    {
+      "name": "clone_total_dois_depois",
+      "ok": true,
+      "detail": "ocorrencias com clone depois (shell+generico) = 2"
+    },
+    {
+      "name": "diff_apenas_clone",
+      "ok": true,
+      "detail": "delta bytes = 8"
+    },
+    {
+      "name": "diff_replace_unico",
+      "ok": true,
+      "detail": "reversao do clone recupera estrutura"
+    },
+    {
+      "name": "html_linha1_intacta",
+      "ok": true,
+      "detail": "linha HTML identica"
+    },
+    {
+      "name": "apenas_linha2_muda",
+      "ok": true,
+      "detail": "so a linha SW difere"
+    },
+    {
+      "name": "sw_sintaxe_valida",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "sw_cache_v118",
+      "ok": true,
+      "detail": "CACHE name"
+    },
+    {
+      "name": "sw_shell_clona_antes_return",
+      "ok": true,
+      "detail": "clone imediatamente antes do return no shell"
+    },
+    {
+      "name": "sw_diff_so_clone",
+      "ok": true,
+      "detail": "SW diff = 1 clone"
+    },
+    {
+      "name": "out_md5_diferente_src",
+      "ok": true,
+      "detail": "src=ba5e65ee6f52e8dc77850a3939186315 out=7a2e41f448e5d8c331f1bcc5eb029e9a"
+    },
+    {
+      "name": "out_escrito_igual_fixed",
+      "ok": true,
+      "detail": "ficheiro escrito == texto corrigido"
+    },
+    {
+      "name": "assets_identico",
+      "ok": true,
+      "detail": "public/ copiado byte a byte"
+    }
+  ]
+}

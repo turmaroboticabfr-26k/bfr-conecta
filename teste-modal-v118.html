@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Teste do Modal de Horários - v118</title>
+<style>
+  body {
+    font-family: system-ui, -apple-system, sans-serif;
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 20px;
+    background: #f5f5f5;
+  }
+  .test-result {
+    padding: 15px;
+    margin: 10px 0;
+    border-radius: 8px;
+    font-weight: 500;
+  }
+  .pass {
+    background: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+  }
+  .fail {
+    background: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+  }
+  .info {
+    background: #d1ecf1;
+    color: #0c5460;
+    border: 1px solid #bee5eb;
+  }
+  button {
+    padding: 12px 24px;
+    font-size: 16px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    background: #1256b0;
+    color: white;
+    margin: 5px;
+  }
+  button:hover {
+    background: #0d2a63;
+  }
+  .modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.5);
+    z-index: 1000;
+    align-items: center;
+    justify-content: center;
+  }
+  .modal.hidden {
+    display: none !important;
+  }
+  .modal:not(.hidden) {
+    display: flex !important;
+  }
+  .modal-content {
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+    max-width: 500px;
+    position: relative;
+  }
+  .close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: #dc3545;
+    color: white;
+    border: none;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 20px;
+    line-height: 1;
+  }
+  #log {
+    background: #1e1e1e;
+    color: #d4d4d4;
+    padding: 15px;
+    border-radius: 6px;
+    font-family: 'Courier New', monospace;
+    font-size: 13px;
+    max-height: 300px;
+    overflow-y: auto;
+    margin-top: 20px;
+  }
+  .log-entry {
+    margin: 3px 0;
+  }
+  .log-capture { color: #4ec9b0; }
+  .log-bubble { color: #ce9178; }
+  .log-action { color: #dcdcaa; }
+</style>
+</head>
+<body>
+<h1>🧪 Teste do Modal de Horários - v118</h1>
+
+<div class="info test-result">
+  <strong>Instruções:</strong> Clique em "Ver horários" para abrir o modal. Teste as 3 formas de fechar:
+  <ol>
+    <li>Clique no botão ❌ vermelho</li>
+    <li>Clique no fundo escuro do modal</li>
+    <li>Pressione a tecla Escape</li>
+  </ol>
+</div>
+
+<div id="results"></div>
+
+<button id="publicScheduleBtn">📅 Ver horários das aulas</button>
+
+<div id="publicScheduleModal" class="modal hidden">
+  <div class="modal-content">
+    <button id="closePublicSchedule" class="close-btn" aria-label="Fechar">×</button>
+    <h2>Horários das Aulas</h2>
+    <p>Conteúdo do modal de horários...</p>
+    <p style="color: #666; font-size: 14px;">Teste fechar clicando no X, no fundo ou pressionando Escape</p>
+  </div>
+</div>
+
+<h3>📋 Log de Eventos</h3>
+<div id="log"></div>
+
+<script>
+// Simula o código da v118
+const log = document.getElementById('log');
+const results = document.getElementById('results');
+let testResults = {
+  open: false,
+  closeX: false,
+  closeBackdrop: false,
+  closeEscape: false
+};
+
+function addLog(message, type = 'action') {
+  const entry = document.createElement('div');
+  entry.className = `log-entry log-${type}`;
+  entry.textContent = `[${new Date().toLocaleTimeString()}] ${message}`;
+  log.appendChild(entry);
+  log.scrollTop = log.scrollHeight;
+}
+
+function updateResults() {
+  results.innerHTML = '';
+  const tests = [
+    { key: 'open', label: 'Modal abre ao clicar em "Ver horários"' },
+    { key: 'closeX', label: 'Modal fecha ao clicar no botão X' },
+    { key: 'closeBackdrop', label: 'Modal fecha ao clicar no fundo' },
+    { key: 'closeEscape', label: 'Modal fecha ao pressionar Escape' }
+  ];
+  
+  tests.forEach(test => {
+    const div = document.createElement('div');
+    div.className = `test-result ${testResults[test.key] ? 'pass' : 'fail'}`;
+    div.textContent = `${testResults[test.key] ? '✓' : '✗'} ${test.label}`;
+    results.appendChild(div);
+  });
+  
+  const allPass = Object.values(testResults).every(v => v);
+  if (allPass) {
+    const success = document.createElement('div');
+    success.className = 'test-result pass';
+    success.innerHTML = '<strong>🎉 TODOS OS TESTES PASSARAM!</strong><br>A correção da v118 funciona corretamente.';
+    results.appendChild(success);
+  }
+}
+
+// Event delegation na CAPTURE PHASE (como na v118)
+document.addEventListener('click', event => {
+  const openBtn = event.target.closest('#publicScheduleBtn');
+  if (openBtn) {
+    addLog('CAPTURE PHASE - openBtn clicado', 'capture');
+    event.preventDefault();
+    event.stopImmediatePropagation();
+    const modal = document.getElementById('publicScheduleModal');
+    if (modal) {
+      modal.classList.remove('hidden');
+      document.getElementById('closePublicSchedule')?.focus();
+      testResults.open = true;
+      addLog('Modal ABERTO', 'action');
+      updateResults();
+    }
+    return;
+  }
+  
+  const closeBtn = event.target.closest('#closePublicSchedule');
+  if (closeBtn) {
+    addLog('CAPTURE PHASE - closeBtn clicado', 'capture');
+    event.preventDefault();
+    event.stopImmediatePropagation();
+    const modal = document.getElementById('publicScheduleModal');
+    if (modal) {
+      modal.classList.add('hidden');
+      testResults.closeX = true;
+      addLog('Modal FECHADO via X', 'action');
+      updateResults();
+    }
+    return;
+  }
+  
+  const modal = event.target.closest('#publicScheduleModal');
+  if (modal && event.target === modal) {
+    addLog('CAPTURE PHASE - backdrop clicado', 'capture');
+    modal.classList.add('hidden');
+    testResults.closeBackdrop = true;
+    addLog('Modal FECHADO via backdrop', 'action');
+    updateResults();
+  }
+}, true);  // ← capture phase
+
+// Listener do Escape (único listener restante em setupPublicSchedule)
+document.addEventListener('keydown', event => {
+  const modal = document.getElementById('publicScheduleModal');
+  if (event.key === 'Escape' && modal && !modal.classList.contains('hidden')) {
+    addLog('KEYDOWN - Escape pressionado', 'action');
+    modal.classList.add('hidden');
+    testResults.closeEscape = true;
+    addLog('Modal FECHADO via Escape', 'action');
+    updateResults();
+  }
+});
+
+addLog('Teste inicializado - código v118 carregado', 'action');
+updateResults();
+</script>
+</body>
+</html>

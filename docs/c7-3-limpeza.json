@@ -1,0 +1,18 @@
+{
+  "ciclo": "C7",
+  "fase": "limpeza",
+  "em": "2026-11-08T22:06:29.176Z",
+  "portoes": 9,
+  "falhas": [
+    "DEL_OCC",
+    "DEL_SUP",
+    "DEL_STUDENT",
+    "DEL_CLASS",
+    "DEL_STAFF_SCHOOLS",
+    "DEL_ACCOUNT_DIRECTOR",
+    "DEL_ACCOUNT_COORDINATOR",
+    "DEL_ACCOUNT_SECRETARY",
+    "ZERO_VIVAS"
+  ],
+  "erro": "sql HTTP 400: {\"message\":\"Failed to run sql query: ERROR:  0A000: cross-database references are not implemented: \\\"public.auth.users\\\"\\nLINE 1: SELECT count(*) as n FROM public.auth.users\\n                                  ^\\n\"}"
+}

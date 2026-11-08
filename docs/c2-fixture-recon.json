@@ -1,0 +1,712 @@
+{
+  "ciclo": "C2",
+  "em": "2026-11-08T20:36:27.802Z",
+  "tipo": "fixture-recon-read-only",
+  "enum_roles": [
+    {
+      "enumlabel": "pending"
+    },
+    {
+      "enumlabel": "parent"
+    },
+    {
+      "enumlabel": "student"
+    },
+    {
+      "enumlabel": "pedagogical"
+    },
+    {
+      "enumlabel": "developer"
+    },
+    {
+      "enumlabel": "monitor"
+    },
+    {
+      "enumlabel": "gatekeeper"
+    },
+    {
+      "enumlabel": "coordinator"
+    },
+    {
+      "enumlabel": "secretary"
+    },
+    {
+      "enumlabel": "aee"
+    },
+    {
+      "enumlabel": "director"
+    },
+    {
+      "enumlabel": "psychology"
+    },
+    {
+      "enumlabel": "social_work"
+    },
+    {
+      "enumlabel": "sports_operator"
+    },
+    {
+      "enumlabel": "education_supervisor"
+    }
+  ],
+  "colunas": {
+    "students": [
+      {
+        "column_name": "id",
+        "data_type": "uuid",
+        "is_nullable": "NO",
+        "column_default": "gen_random_uuid()"
+      },
+      {
+        "column_name": "official_name",
+        "data_type": "text",
+        "is_nullable": "NO",
+        "column_default": null
+      },
+      {
+        "column_name": "observation",
+        "data_type": "text",
+        "is_nullable": "YES",
+        "column_default": null
+      },
+      {
+        "column_name": "class_id",
+        "data_type": "uuid",
+        "is_nullable": "NO",
+        "column_default": null
+      },
+      {
+        "column_name": "active",
+        "data_type": "boolean",
+        "is_nullable": "NO",
+        "column_default": "true"
+      },
+      {
+        "column_name": "created_at",
+        "data_type": "timestamp with time zone",
+        "is_nullable": "NO",
+        "column_default": "now()"
+      },
+      {
+        "column_name": "student_profile_id",
+        "data_type": "uuid",
+        "is_nullable": "YES",
+        "column_default": null
+      },
+      {
+        "column_name": "school_id",
+        "data_type": "uuid",
+        "is_nullable": "NO",
+        "column_default": null
+      }
+    ],
+    "classes": [
+      {
+        "column_name": "id",
+        "data_type": "uuid",
+        "is_nullable": "NO",
+        "column_default": "gen_random_uuid()"
+      },
+      {
+        "column_name": "year",
+        "data_type": "smallint",
+        "is_nullable": "NO",
+        "column_default": null
+      },
+      {
+        "column_name": "class_code",
+        "data_type": "text",
+        "is_nullable": "NO",
+        "column_default": null
+      },
+      {
+        "column_name": "shift",
+        "data_type": "text",
+        "is_nullable": "NO",
+        "column_default": null
+      },
+      {
+        "column_name": "school_id",
+        "data_type": "uuid",
+        "is_nullable": "NO",
+        "column_default": null
+      }
+    ],
+    "guardian_students": [
+      {
+        "column_name": "profile_id",
+        "data_type": "uuid",
+        "is_nullable": "NO",
+        "column_default": null
+      },
+      {
+        "column_name": "student_id",
+        "data_type": "uuid",
+        "is_nullable": "NO",
+        "column_default": null
+      },
+      {
+        "column_name": "relationship",
+        "data_type": "text",
+        "is_nullable": "NO",
+        "column_default": "'responsável'::text"
+      },
+      {
+        "column_name": "linked_by",
+        "data_type": "uuid",
+        "is_nullable": "YES",
+        "column_default": null
+      },
+      {
+        "column_name": "linked_at",
+        "data_type": "timestamp with time zone",
+        "is_nullable": "YES",
+        "column_default": null
+      }
+    ],
+    "gate_badges": [
+      {
+        "column_name": "id",
+        "data_type": "uuid",
+        "is_nullable": "NO",
+        "column_default": "gen_random_uuid()"
+      },
+      {
+        "column_name": "student_id",
+        "data_type": "uuid",
+        "is_nullable": "NO",
+        "column_default": null
+      },
+      {
+        "column_name": "badge_token",
+        "data_type": "uuid",
+        "is_nullable": "NO",
+        "column_default": "gen_random_uuid()"
+      },
+      {
+        "column_name": "active",
+        "data_type": "boolean",
+        "is_nullable": "NO",
+        "column_default": "true"
+      },
+      {
+        "column_name": "issued_at",
+        "data_type": "timestamp with time zone",
+        "is_nullable": "NO",
+        "column_default": "now()"
+      }
+    ],
+    "profiles": [
+      {
+        "column_name": "id",
+        "data_type": "uuid",
+        "is_nullable": "NO",
+        "column_default": null
+      },
+      {
+        "column_name": "email",
+        "data_type": "text",
+        "is_nullable": "NO",
+        "column_default": null
+      },
+      {
+        "column_name": "full_name",
+        "data_type": "text",
+        "is_nullable": "YES",
+        "column_default": null
+      },
+      {
+        "column_name": "role",
+        "data_type": "USER-DEFINED",
+        "is_nullable": "NO",
+        "column_default": "'pending'::account_role"
+      },
+      {
+        "column_name": "created_at",
+        "data_type": "timestamp with time zone",
+        "is_nullable": "NO",
+        "column_default": "now()"
+      },
+      {
+        "column_name": "phone",
+        "data_type": "text",
+        "is_nullable": "YES",
+        "column_default": null
+      },
+      {
+        "column_name": "birth_date",
+        "data_type": "date",
+        "is_nullable": "YES",
+        "column_default": null
+      },
+      {
+        "column_name": "display_name_custom",
+        "data_type": "text",
+        "is_nullable": "YES",
+        "column_default": null
+      },
+      {
+        "column_name": "photo_path",
+        "data_type": "text",
+        "is_nullable": "YES",
+        "column_default": null
+      }
+    ],
+    "student_school_profiles": [
+      {
+        "column_name": "student_id",
+        "data_type": "uuid",
+        "is_nullable": "NO",
+        "column_default": null
+      },
+      {
+        "column_name": "birth_date",
+        "data_type": "date",
+        "is_nullable": "YES",
+        "column_default": null
+      },
+      {
+        "column_name": "photo_path",
+        "data_type": "text",
+        "is_nullable": "YES",
+        "column_default": null
+      },
+      {
+        "column_name": "address_line",
+        "data_type": "text",
+        "is_nullable": "YES",
+        "column_default": null
+      },
+      {
+        "column_name": "guardian_name",
+        "data_type": "text",
+        "is_nullable": "YES",
+        "column_default": null
+      },
+      {
+        "column_name": "guardian_phone",
+        "data_type": "text",
+        "is_nullable": "YES",
+        "column_default": null
+      },
+      {
+        "column_name": "emergency_contact",
+        "data_type": "text",
+        "is_nullable": "YES",
+        "column_default": null
+      },
+      {
+        "column_name": "inclusion_needs",
+        "data_type": "text",
+        "is_nullable": "YES",
+        "column_default": null
+      },
+      {
+        "column_name": "inclusion_plan",
+        "data_type": "text",
+        "is_nullable": "YES",
+        "column_default": null
+      },
+      {
+        "column_name": "inclusion_observations",
+        "data_type": "text",
+        "is_nullable": "YES",
+        "column_default": null
+      },
+      {
+        "column_name": "updated_by",
+        "data_type": "uuid",
+        "is_nullable": "YES",
+        "column_default": null
+      },
+      {
+        "column_name": "created_at",
+        "data_type": "timestamp with time zone",
+        "is_nullable": "NO",
+        "column_default": "now()"
+      },
+      {
+        "column_name": "updated_at",
+        "data_type": "timestamp with time zone",
+        "is_nullable": "NO",
+        "column_default": "now()"
+      },
+      {
+        "column_name": "guardian_cpf_hash",
+        "data_type": "text",
+        "is_nullable": "YES",
+        "column_default": null
+      },
+      {
+        "column_name": "filiation_1",
+        "data_type": "text",
+        "is_nullable": "YES",
+        "column_default": null
+      },
+      {
+        "column_name": "filiation_2",
+        "data_type": "text",
+        "is_nullable": "YES",
+        "column_default": null
+      }
+    ]
+  },
+  "fks": [
+    {
+      "tabela": "classes",
+      "conname": "fk_classes_school",
+      "def": "FOREIGN KEY (school_id) REFERENCES schools(id)"
+    },
+    {
+      "tabela": "gate_badges",
+      "conname": "gate_badges_student_id_fkey",
+      "def": "FOREIGN KEY (student_id) REFERENCES students(id) ON DELETE CASCADE"
+    },
+    {
+      "tabela": "guardian_students",
+      "conname": "guardian_students_linked_by_fkey",
+      "def": "FOREIGN KEY (linked_by) REFERENCES profiles(id) ON DELETE SET NULL"
+    },
+    {
+      "tabela": "guardian_students",
+      "conname": "guardian_students_profile_id_fkey",
+      "def": "FOREIGN KEY (profile_id) REFERENCES profiles(id) ON DELETE CASCADE"
+    },
+    {
+      "tabela": "guardian_students",
+      "conname": "guardian_students_student_id_fkey",
+      "def": "FOREIGN KEY (student_id) REFERENCES students(id) ON DELETE CASCADE"
+    },
+    {
+      "tabela": "students",
+      "conname": "fk_students_school",
+      "def": "FOREIGN KEY (school_id) REFERENCES schools(id)"
+    },
+    {
+      "tabela": "students",
+      "conname": "students_class_id_fkey",
+      "def": "FOREIGN KEY (class_id) REFERENCES classes(id) ON DELETE RESTRICT"
+    },
+    {
+      "tabela": "students",
+      "conname": "students_student_profile_id_fkey",
+      "def": "FOREIGN KEY (student_profile_id) REFERENCES profiles(id) ON DELETE SET NULL"
+    }
+  ],
+  "policies": [
+    {
+      "tabela": "classes",
+      "policyname": "classes_family_read",
+      "cmd": "SELECT",
+      "papeis": "{authenticated}",
+      "qual": "(EXISTS ( SELECT 1\n   FROM (students s\n     JOIN guardian_students gs ON ((gs.student_id = s.id)))\n  WHERE ((s.class_id = classes.id) AND (gs.profile_id = auth.uid()))))",
+      "with_check": null
+    },
+    {
+      "tabela": "classes",
+      "policyname": "classes_monitor_read",
+      "cmd": "SELECT",
+      "papeis": "{authenticated}",
+      "qual": "is_monitor()",
+      "with_check": null
+    },
+    {
+      "tabela": "classes",
+      "policyname": "classes_read",
+      "cmd": "SELECT",
+      "papeis": "{authenticated}",
+      "qual": "(((\"current_role\"())::text = ANY (ARRAY['aee'::text, 'developer'::text])) OR (((\"current_role\"())::text = 'pedagogical'::text) AND (EXISTS ( SELECT 1\n   FROM bfr_teacher_class_subjects t\n  WHERE ((t.profile_id = auth.uid()) AND (t.class_id = classes.id) AND t.active)))))",
+      "with_check": null
+    },
+    {
+      "tabela": "classes",
+      "policyname": "classes_select_secretary",
+      "cmd": "SELECT",
+      "papeis": "{authenticated}",
+      "qual": "(EXISTS ( SELECT 1\n   FROM profiles p\n  WHERE ((p.id = auth.uid()) AND (p.role = 'secretary'::account_role))))",
+      "with_check": null
+    },
+    {
+      "tabela": "classes",
+      "policyname": "classes_supervisor_read",
+      "cmd": "SELECT",
+      "papeis": "{authenticated}",
+      "qual": "bfr_is_education_supervisor()",
+      "with_check": null
+    },
+    {
+      "tabela": "classes",
+      "policyname": "coordinators read classes",
+      "cmd": "SELECT",
+      "papeis": "{authenticated}",
+      "qual": "(((\"current_role\"())::text = ANY (ARRAY['coordinator'::text, 'developer'::text])) OR (((\"current_role\"())::text = 'pedagogical'::text) AND (EXISTS ( SELECT 1\n   FROM bfr_teacher_class_subjects t\n  WHERE ((t.profile_id = auth.uid()) AND (t.class_id = classes.id) AND t.active)))))",
+      "with_check": null
+    },
+    {
+      "tabela": "classes",
+      "policyname": "director_dashboard_read_classes",
+      "cmd": "SELECT",
+      "papeis": "{authenticated}",
+      "qual": "((\"current_role\"())::text = 'director'::text)",
+      "with_check": null
+    },
+    {
+      "tabela": "gate_badges",
+      "policyname": "gate_badges_family_issue",
+      "cmd": "INSERT",
+      "papeis": "{authenticated}",
+      "qual": null,
+      "with_check": "((\"current_role\"() = ANY (ARRAY['parent'::account_role, 'student'::account_role])) AND (EXISTS ( SELECT 1\n   FROM guardian_students gs\n  WHERE ((gs.student_id = gate_badges.student_id) AND (gs.profile_id = auth.uid())))))"
+    },
+    {
+      "tabela": "gate_badges",
+      "policyname": "gate_badges_family_read",
+      "cmd": "SELECT",
+      "papeis": "{authenticated}",
+      "qual": "(EXISTS ( SELECT 1\n   FROM guardian_students gs\n  WHERE ((gs.student_id = gate_badges.student_id) AND (gs.profile_id = auth.uid()))))",
+      "with_check": null
+    },
+    {
+      "tabela": "gate_badges",
+      "policyname": "gate_badges_gatekeeper_read",
+      "cmd": "SELECT",
+      "papeis": "{authenticated}",
+      "qual": "is_gatekeeper()",
+      "with_check": null
+    },
+    {
+      "tabela": "gate_badges",
+      "policyname": "gate_badges_staff_manage",
+      "cmd": "ALL",
+      "papeis": "{authenticated}",
+      "qual": "is_staff()",
+      "with_check": "is_staff()"
+    },
+    {
+      "tabela": "gate_checkins",
+      "policyname": "coordinators read gate checkins",
+      "cmd": "SELECT",
+      "papeis": "{authenticated}",
+      "qual": "(EXISTS ( SELECT 1\n   FROM profiles p\n  WHERE ((p.id = auth.uid()) AND (p.role = ANY (ARRAY['coordinator'::account_role, 'pedagogical'::account_role, 'developer'::account_role])))))",
+      "with_check": null
+    },
+    {
+      "tabela": "gate_checkins",
+      "policyname": "gate_checkins_family_read",
+      "cmd": "SELECT",
+      "papeis": "{authenticated}",
+      "qual": "(EXISTS ( SELECT 1\n   FROM guardian_students gs\n  WHERE ((gs.student_id = gate_checkins.student_id) AND (gs.profile_id = auth.uid()))))",
+      "with_check": null
+    },
+    {
+      "tabela": "gate_checkins",
+      "policyname": "gate_checkins_gatekeeper_read",
+      "cmd": "SELECT",
+      "papeis": "{authenticated}",
+      "qual": "is_gatekeeper()",
+      "with_check": null
+    },
+    {
+      "tabela": "gate_checkins",
+      "policyname": "gate_checkins_staff_read",
+      "cmd": "SELECT",
+      "papeis": "{authenticated}",
+      "qual": "is_staff()",
+      "with_check": null
+    },
+    {
+      "tabela": "guardian_students",
+      "policyname": "guardian_students_monitor_read",
+      "cmd": "SELECT",
+      "papeis": "{authenticated}",
+      "qual": "is_monitor()",
+      "with_check": null
+    },
+    {
+      "tabela": "guardian_students",
+      "policyname": "guardian_students_read",
+      "cmd": "SELECT",
+      "papeis": "{authenticated}",
+      "qual": "((profile_id = auth.uid()) OR ((\"current_role\"())::text = ANY (ARRAY['aee'::text, 'developer'::text])))",
+      "with_check": null
+    },
+    {
+      "tabela": "guardian_students",
+      "policyname": "guardian_students_staff_delete",
+      "cmd": "DELETE",
+      "papeis": "{authenticated}",
+      "qual": "((\"current_role\"())::text = 'developer'::text)",
+      "with_check": null
+    },
+    {
+      "tabela": "guardian_students",
+      "policyname": "guardian_students_staff_insert",
+      "cmd": "INSERT",
+      "papeis": "{authenticated}",
+      "qual": null,
+      "with_check": "((\"current_role\"())::text = 'developer'::text)"
+    },
+    {
+      "tabela": "guardian_students",
+      "policyname": "guardian_students_staff_update",
+      "cmd": "UPDATE",
+      "papeis": "{authenticated}",
+      "qual": "((\"current_role\"())::text = 'developer'::text)",
+      "with_check": "((\"current_role\"())::text = 'developer'::text)"
+    },
+    {
+      "tabela": "profiles",
+      "policyname": "director_dashboard_read_profiles",
+      "cmd": "SELECT",
+      "papeis": "{authenticated}",
+      "qual": "((\"current_role\"())::text = 'director'::text)",
+      "with_check": null
+    },
+    {
+      "tabela": "profiles",
+      "policyname": "profiles_chat_staff_directory_read",
+      "cmd": "SELECT",
+      "papeis": "{authenticated}",
+      "qual": "(internal_chat_is_staff() AND (role = ANY (ARRAY['pedagogical'::account_role, 'aee'::account_role, 'coordinator'::account_role, 'director'::account_role, 'secretary'::account_role, 'developer'::account_role])))",
+      "with_check": null
+    },
+    {
+      "tabela": "profiles",
+      "policyname": "profiles_hide_test_accounts",
+      "cmd": "SELECT",
+      "papeis": "{authenticated}",
+      "qual": "((id = auth.uid()) OR ((email !~~ '%@bfr-conecta.test'::text) AND (email !~~ 'bfr.qa.email.%'::text)))",
+      "with_check": null
+    },
+    {
+      "tabela": "profiles",
+      "policyname": "profiles_read",
+      "cmd": "SELECT",
+      "papeis": "{authenticated}",
+      "qual": "((id = auth.uid()) OR is_staff())",
+      "with_check": null
+    },
+    {
+      "tabela": "profiles",
+      "policyname": "profiles_staff_update",
+      "cmd": "UPDATE",
+      "papeis": "{authenticated}",
+      "qual": "is_developer()",
+      "with_check": "is_developer()"
+    },
+    {
+      "tabela": "profiles",
+      "policyname": "profiles_update_self",
+      "cmd": "UPDATE",
+      "papeis": "{authenticated}",
+      "qual": "(id = auth.uid())",
+      "with_check": "(id = auth.uid())"
+    },
+    {
+      "tabela": "students",
+      "policyname": "bfr_students_directory_insert",
+      "cmd": "INSERT",
+      "papeis": "{authenticated}",
+      "qual": null,
+      "with_check": "bfr_can_manage_student_directory()"
+    },
+    {
+      "tabela": "students",
+      "policyname": "bfr_students_directory_update",
+      "cmd": "UPDATE",
+      "papeis": "{authenticated}",
+      "qual": "bfr_can_manage_student_directory()",
+      "with_check": "bfr_can_manage_student_directory()"
+    },
+    {
+      "tabela": "students",
+      "policyname": "director_dashboard_read_students",
+      "cmd": "SELECT",
+      "papeis": "{authenticated}",
+      "qual": "((\"current_role\"())::text = 'director'::text)",
+      "with_check": null
+    },
+    {
+      "tabela": "students",
+      "policyname": "staff manage student records",
+      "cmd": "ALL",
+      "papeis": "{authenticated}",
+      "qual": "(EXISTS ( SELECT 1\n   FROM profiles p\n  WHERE ((p.id = auth.uid()) AND (p.role = ANY (ARRAY['coordinator'::account_role, 'developer'::account_role])))))",
+      "with_check": "(EXISTS ( SELECT 1\n   FROM profiles p\n  WHERE ((p.id = auth.uid()) AND (p.role = ANY (ARRAY['coordinator'::account_role, 'developer'::account_role])))))"
+    },
+    {
+      "tabela": "students",
+      "policyname": "students_monitor_read",
+      "cmd": "SELECT",
+      "papeis": "{authenticated}",
+      "qual": "is_monitor()",
+      "with_check": null
+    },
+    {
+      "tabela": "students",
+      "policyname": "students_read",
+      "cmd": "SELECT",
+      "papeis": "{authenticated}",
+      "qual": "((((\"current_role\"())::text = 'aee'::text) AND (EXISTS ( SELECT 1\n   FROM aee_student_roster r\n  WHERE ((r.student_id = students.id) AND r.active)))) OR ((\"current_role\"())::text = 'developer'::text) OR (((\"current_role\"())::text = 'pedagogical'::text) AND bfr_pedagogical_can_manage_student(id)) OR (EXISTS ( SELECT 1\n   FROM guardian_students gs\n  WHERE ((gs.student_id = students.id) AND (gs.profile_id = auth.uid())))))",
+      "with_check": null
+    },
+    {
+      "tabela": "students",
+      "policyname": "students_select_secretary",
+      "cmd": "SELECT",
+      "papeis": "{authenticated}",
+      "qual": "(EXISTS ( SELECT 1\n   FROM profiles p\n  WHERE ((p.id = auth.uid()) AND (p.role = 'secretary'::account_role))))",
+      "with_check": null
+    },
+    {
+      "tabela": "students",
+      "policyname": "students_supervisor_read",
+      "cmd": "SELECT",
+      "papeis": "{authenticated}",
+      "qual": "bfr_is_education_supervisor()",
+      "with_check": null
+    }
+  ],
+  "roles_vivos": [
+    {
+      "role": "aee",
+      "n": 1
+    },
+    {
+      "role": "coordinator",
+      "n": 2
+    },
+    {
+      "role": "developer",
+      "n": 3
+    },
+    {
+      "role": "director",
+      "n": 3
+    },
+    {
+      "role": "education_supervisor",
+      "n": 1
+    },
+    {
+      "role": "gatekeeper",
+      "n": 1
+    },
+    {
+      "role": "monitor",
+      "n": 1
+    },
+    {
+      "role": "pedagogical",
+      "n": 1
+    },
+    {
+      "role": "secretary",
+      "n": 2
+    },
+    {
+      "role": "student",
+      "n": 1
+    }
+  ]
+}
