@@ -4,7 +4,33 @@
 .supabase-service-role
 bfr-audit-session-*.json
 bfr-audit-contas.json
+c2-sessions.json
 *.bak
 *.pem
 .env
 .env.*
+
+# Scripts com credenciais sintéticas hardcoded
+criar-conta-supervisor-api.mjs
+create-supervisor-fresh.mjs
+recreate-supervisor-account.mjs
+signup-supervisor.mjs
+test-gap3-func.mjs
+test-gap3-minimal.mjs
+test-signup-login.mjs
+scripts/c7-gap-fix-prova.mjs
+scripts/c7-2-jornada-jwt.mjs
+scripts/gap3-definitive-test.mjs
+scripts/gap3-deep-diagnostic.mjs
+scripts/gap3-diagnostic.mjs
+scripts/gap3-final-test.mjs
+scripts/s20-behavioral.mjs
+
+# Diários de teste com credenciais
+f0-8-test-diary.json
+
+# SQL com credenciais
+sql/criar-conta-supervisor-completa.sql
+
+# Documentação com credenciais
+GUIA-CRIAR-CONTA-SUPERVISOR.md
