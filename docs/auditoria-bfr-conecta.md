@@ -3409,3 +3409,78 @@ foi removido e nenhuma linha do banco mudou neste deploy. Reversão: devolver `a
 Diário: `confere-bundle-v116-diary.json` (PORTAO_BUNDLE_V116_OK, 10/10).
 
 **N.6 — Ciclo R64 (23/10, OK «ok»): os dois degraus do 52(b) — DDL APLICADO + front v64 PUBLICADO E PROVADO.** (1) **DDL de publication** (`f52b-pub-ddl.json`): `ALTER PUBLICATION supabase_realtime ADD TABLE public.gate_checkins;` com prova antes/depois por `pg_publication_tables` — antes FORA (53 tabelas), dry-run transacional VISÍVEL, rollback limpo (`f52b-pub-rollback.sql`), aplicação 201, depois NA PUBLICATION (54 tabelas). (2) **Candidata v64** (`bfr-candidata-v64-src/index.html`): base = ar v63 (`ea400a7c…`), **1 hunk** de 2 regras CSS no bloco `#bfr-parent-dashboard-v3-style` — a regra compacta passa a ser `#parentView[data-parent-compact-home="true"] > :not([data-parent-dashboard-v3]):not([data-parent-entry-live]){display:none!important}` (whitelist do painel da portaria, mesmo idioma do D1/v60 `:not([data-teacher-inbox])`) + `order:2!important` para o painel vir **abaixo** do dashboard (o `#parentView` é `display:flex;flex-direction:column` e o dashboard tem `order:1!important` — sem o order, o painel renderizaria acima). Gate de sintaxe **97/0**, `diff -u` v63→v64 = 1 hunk (`diff-v64-hunks.txt`), md5 `d2892c31794ae0e402ba455bc62f0092`. **Verificação comportamental** (ciclo mint→teste→limpeza, baseline pré de 27 tabelas por contagem E md5 `f52b-r64-pre.json`, 2 contas sintéticas parent+gatekeeper `f52b-r64-mint.json`, fixture classe 9º ZP + aluno «R64 ALUNO UM» + crachá): **banda ar** (`f52b-r64-teste.json`) — com o DDL aplicado e o cliente intacto, o frame do check-in **chega em 818 ms** mas o painel segue **oculto na Home compacta** (o defeito de visibilidade persiste no ar → candidata necessária); **banda candidata** — a 1ª passada devolveu falso negativo do instrumento, não do app: reusar `direction=entry` fez o RPC `register_gate_checkin` devolver o **MESMO `checkin_id` (`cf943972…`)** por dedup de dia/direção (sem INSERT não há frame) — anotado no diário com `nota_pos_analise`; re-teste focado com `direction=exit` (`f52b-r64-teste-b.json`, VEREDITO **APROVADO**): painel **visível na Home compacta em 1280 e 390**, frame do check-in de saída recebido em **498 ms**, repaint «Saiu na escola às …» em **665 ms sem reload** (navCount 1), ids do `parentGateState.records` trocaram. **Limpeza** (`f52b-r64-limpeza.json` = `BASELINE_RESTAURADA`): todas as linhas sintéticas apagadas em ordem FK-safe, `diffs` vazios contra a baseline, 0 contas vivas, versão da grade idêntica. **Publicação da v64 (23/10 22:54:31Z, OK «ok» ao pedido «OK de publicação da v64 (candidata pronta, 1 hunk, reversível ao v63 byte a byte)»):** pipeline cirúrgico completo — preflight (`preflight-v64.json` VERDE: ar == v63 nos 3 md5, snapshot congelado `ar-html-v63-live.html` + `ar-assets-v63-live/`), prepara-src (`prepara-src-v64.mjs`: linhagem provada — removendo as 2 regras do hunk o HTML volta byte a byte ao ar; SW = ar v63 + 1 linha `CACHE='bfr-conecta-v64'` → md5 `f43e7b74…`), confere-bundle (`confere-bundle-v64.json` VERDE: HTML embutido == SRC, SW difere do ar em 1 linha, marcas v60/v61/v62/v63 preservadas + hunk v64, rp `a83f77ba`, 12/12 assets), `wrangler deploy` (OAuth, version `aba82f9a-d325-4694-a393-a8123fe9a444`, deployment `e888ae42-75ce-4b26-8023-0e12f0426fe8`, `deploy-list-v64.json`), prova-http (`prova-http-v64.json` VERDE: 3 GETs de `/` md5 `d2892c31…` 3.370.711 B na 1ª tentativa, SW CACHE v64, rp `a83f77ba`, 12/12 assets), Chrome limpo (`prova-sw-v64.json` VERDE: cache única `bfr-conecta-v64`, HTML cacheado md5 `d2892c31…`, SW ativo e controlando, marcadores todos presentes — `whitelist_painel_portaria` 1, `ordem_painel` 1, `regra_compacta_sem_whitelist` 0, únicos 404 `/cdn-cgi/rum?`). Diário `audit-publicacao-v64.json` = **PUBLICADO E PROVADO**. **Estado**: 52(b) fechado em duas camadas (DDL no banco + front no ar); reversão = devolver `ar-html-v63-live.html` + `ar-assets-v63-live/sw-v4.js` e redeploy (requer OK novo).
+
+## P. C7-GAP-FIX — 3 gaps RLS de gestão administrativa corrigidos (08/11)
+
+**Escopo:** Corrigir os 3 gaps de RLS identificados no ciclo C7 (Gestão administrativa integrada) que impediam a sincronização cruzada entre papéis administrativos (director, coordinator, secretary). **Ciclo C7-GAP-FIX FECHADO 08/11**: 3 gaps corrigidos, prova behavioral 5/5 portões VERDE, limpeza FK-safe, BASELINE_RESTAURADA, commit `d26b4fa` → pushed `origin/main`.
+
+**P.1 — Gaps identificados no ciclo C7 original (08/11, 33 portões, 26 OK, 7 falhas):**
+
+- **GAP-1**: Director não lê occurrences do Coordinator — policy `ocorrências_staff_manage` exigia `is_staff()` mas não incluía director explicitamente para SELECT de occurrences de outros staff. Impacto: diretor não supervisiona ocorrências da coordenação.
+- **GAP-2**: Director não atualiza supervision_requests do Secretary — policy de UPDATE não permitia director modificar requests criados por secretary. Impacto: diretor não dá seguimento a solicitações da secretaria.
+- **GAP-3**: Coordinator não cria staff_announcements — policy de INSERT não incluía coordinator. Impacto: coordenação não publica anúncios para a equipe.
+
+**P.2 — Correções aplicadas (GAP-1 e GAP-2):** Policies novas criadas para permitir cross-role synchronization:
+- GAP-1: `occurrences_director_select` + `occurrences_director_update` (join via `students.school_id` → `staff_schools` para isolamento por escola)
+- GAP-2: `supervision_requests_director_read` (status corrigido para 'Em análise pela Secretaria' via CHECK constraint, campo `questions` adicionado para NOT NULL)
+
+**P.3 — GAP-3: causa raiz e fix (descoberta por eliminação):**
+
+O INSERT **funcionava**. O 403 vinha do SELECT pós-INSERT quando o cliente envia `Prefer: return=representation` (PostgREST faz SELECT após escrita; se SELECT falha por RLS, retorna 403 mesmo que a escrita tenha succeedido).
+
+**Hipóteses descartadas:**
+- ❌ RESTRICTIVE policy `profiles_hide_test_accounts` bloqueando SELECT dentro de `bfr_is_coordinator()` — funções SECURITY DEFINER bypassam RLS (executam com privilégios do dono)
+- ❌ Dropping da policy RESTRICTIVE não mudou comportamento
+- ✅ INSERT com `return=minimal` funcionava (prova que INSERT policies estão OK)
+- ✅ 403 só ocorria com `return=representation` (prova que SELECT é o problema)
+
+**Fix aplicado** (`fix-gap3-final.sql`):
+```sql
+DROP POLICY IF EXISTS staff_announcements_read ON staff_announcements;
+CREATE POLICY staff_announcements_read ON staff_announcements
+  FOR SELECT TO authenticated
+  USING (
+    bfr_is_staff() AND (
+      bfr_staff_role() = 'developer'
+      OR bfr_staff_role() = ANY (target_roles)
+      OR published_by = auth.uid()  -- NOVO: autores vejam próprios announcements
+    )
+  );
+```
+
+**P.4 — Prova behavioral (5/5 portões VERDE):**
+
+Script `scripts/c7-gap-fix-prova.mjs`, resultado `docs/c7-gap-fix-prova.json` (2026-11-08T23:00:47.729Z):
+- ✅ GAP1_COORD_INSERT: coordinator INSERT occurrence → 201
+- ✅ GAP1_DIR_SELECT: director SELECT occurrences → 1 linha
+- ✅ GAP2_SEC_INSERT: secretary INSERT supervision_request → 201
+- ✅ GAP2_DIR_UPDATE: director UPDATE supervision_request → 200
+- ✅ GAP3_COORD_INSERT: coordinator INSERT staff_announcement → 201
+
+**P.5 — Limpeza FK-safe e baseline:**
+
+- Dados de teste: occurrences + supervision_requests + staff_announcements (title LIKE 'C7-FIX-%')
+- Fixture: 1 student + 1 class
+- Vínculos: 3 staff_schools (director/coordinator/secretary)
+- Contas: 3 apagadas via Auth Admin API (secretary exigiu 2 tentativas por FK constraint de supervision_audit)
+- **BASELINE_RESTAURADA**: 8/8 tabelas conferem, 0 contas sintéticas vivas
+
+**P.6 — Lições aprendidas:**
+
+1. **PostgREST `Prefer: return=representation`**: faz SELECT após INSERT/UPDATE/DELETE; se SELECT falha por RLS, retorna 403 mesmo que a escrita tenha succeedido — testar com `return=minimal` isola se problema é INSERT ou SELECT
+2. **Policy SELECT deve permitir autores**: quando tabela tem coluna `published_by` ou similar, policy SELECT deve incluir `OR published_by = auth.uid()` para autores verem próprios registros
+3. **SECURITY DEFINER functions bypassam RLS**: funções com SECURITY DEFINER executam com privilégios do dono, não do caller; não são bloqueadas por policies RESTRICTIVE
+4. **Diagnóstico por eliminação**: isolar variáveis (INSERT vs SELECT, minimal vs representation, SECURITY DEFINER vs INVOKER) atribui causa raiz sem especulação
+
+**P.7 — Estado atual:**
+
+- 3 gaps corrigidos e provados behavioralmente (5/5 portões VERDE)
+- Fix aplicado permanentemente no banco (`fix-gap3-final.sql`)
+- Catálogo de policies atualizado (occurrences_director_select/update, supervision_requests_director_read, staff_announcements_read modificada)
+- Limpeza FK-safe completa, BASELINE_RESTAURADA
+- Commit `d26b4fa` pushed `origin/main` (165 files, 236515 insertions)
+- **Ciclo C7-GAP-FIX FECHADO**
+
+**Reversão:** Seção ROLLBACK em `fix-gap3-final.sql` (reverter policy `staff_announcements_read` ao predicado original sem `published_by = auth.uid()`).
+
+Diário: `docs/c7-gap-fix-prova.json` (5/5 portões, gaps_corrigidos: true). Memórias: `bfr-c7-gap-fix-aplicado.md`, `bfr-c7-gestao-administrativa.md` (atualizada com referência ao C7-GAP-FIX).
