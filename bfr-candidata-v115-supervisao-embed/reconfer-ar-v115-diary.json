@@ -1,0 +1,56 @@
+{
+  "cycle": "V115-4-reconfer-ar",
+  "kind": "read-only-reconference",
+  "note": "Não toca no diário original prova-http-v115-diary.json; alvo e hashes derivados dele.",
+  "base": "https://bfr-conecta.turmaroboticabfr.workers.dev",
+  "derived_from": "prova-http-v115-diary.json",
+  "expected": {
+    "root_md5": "aba67956e2952f9f27e217004d028d74",
+    "root_bytes": 3488135,
+    "sw_md5": "863660025ed3371859b1546b2a16b26d"
+  },
+  "measured": {
+    "root_md5": "aba67956e2952f9f27e217004d028d74",
+    "root_bytes": 3488135,
+    "sw_md5": "863660025ed3371859b1546b2a16b26d"
+  },
+  "gates": [
+    {
+      "name": "reconfer_root_200_html",
+      "ok": true,
+      "detail": "status=200 ct=text/html; charset=utf-8"
+    },
+    {
+      "name": "reconfer_root_md5_eq_publicado",
+      "ok": true,
+      "detail": "md5=aba67956e2952f9f27e217004d028d74 esperado=aba67956e2952f9f27e217004d028d74"
+    },
+    {
+      "name": "reconfer_root_bytes_eq_publicado",
+      "ok": true,
+      "detail": "bytes=3488135 esperado=3488135"
+    },
+    {
+      "name": "reconfer_root_embed_token",
+      "ok": true,
+      "detail": "sports_schools(name) presente; token antigo ausente"
+    },
+    {
+      "name": "reconfer_sw_200_js",
+      "ok": true,
+      "detail": "status=200 ct=application/javascript"
+    },
+    {
+      "name": "reconfer_sw_cache_v115",
+      "ok": true,
+      "detail": "CACHE=v115"
+    },
+    {
+      "name": "reconfer_sw_md5_eq_publicado",
+      "ok": true,
+      "detail": "md5=863660025ed3371859b1546b2a16b26d esperado=863660025ed3371859b1546b2a16b26d"
+    }
+  ],
+  "ok": true,
+  "measured_at": "2026-11-08T11:02:02.220Z"
+}

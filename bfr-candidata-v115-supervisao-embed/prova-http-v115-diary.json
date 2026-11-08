@@ -1,0 +1,130 @@
+{
+  "cycle": "V115-3-prova-http",
+  "base": "https://bfr-conecta.turmaroboticabfr.workers.dev",
+  "gates": [
+    {
+      "name": "http_root_200_html",
+      "ok": true,
+      "detail": "status=200 ct=text/html; charset=utf-8"
+    },
+    {
+      "name": "http_root_md5_eq_candidata",
+      "ok": true,
+      "detail": "md5=aba67956e2952f9f27e217004d028d74 bytes=3488135"
+    },
+    {
+      "name": "http_root_bytes",
+      "ok": true,
+      "detail": "bytes=3488135"
+    },
+    {
+      "name": "http_root_embed_token",
+      "ok": true,
+      "detail": "sports_schools(name) servido"
+    },
+    {
+      "name": "http_indexhtml_eq_root",
+      "ok": true,
+      "detail": "md5=aba67956e2952f9f27e217004d028d74"
+    },
+    {
+      "name": "http_sw_200_js",
+      "ok": true,
+      "detail": "status=200 ct=application/javascript"
+    },
+    {
+      "name": "http_sw_cache_v115",
+      "ok": true,
+      "detail": "CACHE=v115"
+    },
+    {
+      "name": "http_sw_md5_eq_bundle",
+      "ok": true,
+      "detail": "md5=863660025ed3371859b1546b2a16b26d"
+    },
+    {
+      "name": "http_12_assets_intact",
+      "ok": true,
+      "detail": "12/12 iguais ao baseline do ar"
+    }
+  ],
+  "assets": [
+    {
+      "f": "bfr-responsive-presentation.js",
+      "status": 200,
+      "eq_baseline": true,
+      "md5": "a83f77baba7453851b287080686c7afb"
+    },
+    {
+      "f": "bfr-teacher-arrivals.js",
+      "status": 200,
+      "eq_baseline": true,
+      "md5": "dcb69a88c8f4e93a5f818233cf185300"
+    },
+    {
+      "f": "bfr-teacher-audit.js",
+      "status": 200,
+      "eq_baseline": true,
+      "md5": "255a2cd46599a25584b89775a276ed68"
+    },
+    {
+      "f": "manifest.json",
+      "status": 200,
+      "eq_baseline": true,
+      "md5": "68d155183c80e3e554466ce2415cb268"
+    },
+    {
+      "f": "bfr-app-logo.png",
+      "status": 200,
+      "eq_baseline": true,
+      "md5": "9578faf20083e3cb4d572af5ba10d6ed"
+    },
+    {
+      "f": "lia-avatar.png",
+      "status": 200,
+      "eq_baseline": true,
+      "md5": "87e5fc3c4f8bc68ed4535c5cf032c47c"
+    },
+    {
+      "f": "lia-avatar.svg",
+      "status": 200,
+      "eq_baseline": true,
+      "md5": "fd080cd554c553567cb6cd82bbeff0de"
+    },
+    {
+      "f": "calendario-letivo-2026.pdf",
+      "status": 200,
+      "eq_baseline": true,
+      "md5": "14a6b82bfb212bf115fafdb546163f9f"
+    },
+    {
+      "f": "horario-matutino-2026.pdf",
+      "status": 200,
+      "eq_baseline": true,
+      "md5": "954621f29537a9be136c0bd9180e8aa3"
+    },
+    {
+      "f": "horario-vespertino-2026.pdf",
+      "status": 200,
+      "eq_baseline": true,
+      "md5": "954621f29537a9be136c0bd9180e8aa3"
+    },
+    {
+      "f": "horario-matutino-2026.png",
+      "status": 200,
+      "eq_baseline": true,
+      "md5": "5d181a1754a45046bc6907a4d9b420f6"
+    },
+    {
+      "f": "horario-vespertino-2026.png",
+      "status": 200,
+      "eq_baseline": true,
+      "md5": "58854bb4f3ce5e4dffcc7a1a34c31271"
+    }
+  ],
+  "root_md5": "aba67956e2952f9f27e217004d028d74",
+  "root_bytes": 3488135,
+  "sw_md5": "863660025ed3371859b1546b2a16b26d",
+  "ok": true,
+  "measured_at": "2026-11-08T10:51:32.941Z"
+}

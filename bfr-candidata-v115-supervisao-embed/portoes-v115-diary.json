@@ -1,0 +1,68 @@
+{
+  "cycle": "v115-supervisao-embed",
+  "date": "2026-11-07",
+  "base": "v114",
+  "live_md5": "2496a70573cce3bb3ce23633fac40b79",
+  "candidate_md5": "aba67956e2952f9f27e217004d028d74",
+  "candidate_bytes": 3488135,
+  "fix": "line 23653 schools(name) -> sports_schools(name)",
+  "gates": [
+    {
+      "name": "cand_md5",
+      "ok": true,
+      "detail": "aba67956e2952f9f27e217004d028d74"
+    },
+    {
+      "name": "cand_size",
+      "ok": true,
+      "detail": "3488135 bytes (base 3488128 + 7)"
+    },
+    {
+      "name": "base_eq_live",
+      "ok": true,
+      "detail": "base md5 2496a70573cce3bb3ce23633fac40b79"
+    },
+    {
+      "name": "reverse_lineage",
+      "ok": true,
+      "detail": "reverted md5 2496a70573cce3bb3ce23633fac40b79 == live 2496a70573cce3bb3ce23633fac40b79"
+    },
+    {
+      "name": "reverse_byte_identical",
+      "ok": true,
+      "detail": "reverted === base byte-for-byte"
+    },
+    {
+      "name": "new_token_unique",
+      "ok": true,
+      "detail": "sports_schools(name) occurrences = 1"
+    },
+    {
+      "name": "old_token_gone",
+      "ok": true,
+      "detail": "school_id,schools(name) occurrences = 0"
+    },
+    {
+      "name": "one_line_diff",
+      "ok": true,
+      "detail": "changed lines = [23653]"
+    },
+    {
+      "name": "line_count_same",
+      "ok": true,
+      "detail": "candidate 28630 lines == base 28630 lines"
+    },
+    {
+      "name": "module_syntax",
+      "ok": true,
+      "detail": "vm.Script parsed 65515 chars"
+    },
+    {
+      "name": "script_tag_balance_preserved",
+      "ok": true,
+      "detail": "candidate open/close 108/103 == base 108/103"
+    }
+  ],
+  "verdict": "PORTOES_OK",
+  "published": false
+}

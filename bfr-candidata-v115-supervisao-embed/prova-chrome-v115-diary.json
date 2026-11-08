@@ -1,0 +1,64 @@
+{
+  "cycle": "V115-3",
+  "gate": "PROVA_CHROME_V115",
+  "measured_at": "2026-11-08",
+  "url": "https://bfr-conecta.turmaroboticabfr.workers.dev/",
+  "method": "browser-use evaluate_script (waitForStableDom:false) + list_console_messages; superficie Browser oculta (visibilityState=hidden)",
+  "before_reload": {
+    "cacheKeys": ["bfr-conecta-v114"],
+    "controller": "sw-v4.js?v=45",
+    "sw_active_state": "activated"
+  },
+  "update_trigger": "navigate_page reload ignoreCache:true nao disparou update; navigator.serviceWorker.getRegistration().update() forcado -> installing -> activated",
+  "after_update": {
+    "cacheKeys": ["bfr-conecta-v115"],
+    "sw_active_state": "activated",
+    "installing": null,
+    "waiting": null,
+    "controller": "sw-v4.js?v=45 (query de registo imutavel; conteudo do SW e v115, provado pelo nome do cache)",
+    "readyState": "complete"
+  },
+  "cache_v115": {
+    "entryCount": 8,
+    "paths": ["/", "/manifest.json", "/bfr-app-logo.png", "/lia-avatar.svg", "/lia-avatar.png", "/bfr-responsive-presentation.js?v=14", "/bfr-teacher-arrivals.js?v=2", "/bfr-teacher-audit.js?v=1"],
+    "shell_text_length": 3470624,
+    "hasSportsSchoolsToken": true,
+    "hasOldSchoolsToken": false,
+    "note": "shell_text_length e contagem de caracteres JS (nao bytes UTF-8); a prova byte-a-byte md5 aba67956 / 3488135 B esta em prova-http-v115-diary.json"
+  },
+  "console_current_page": {
+    "errors": [
+      "404 cdn-cgi/rum (msgid 11)",
+      "404 cdn-cgi/rum (msgid 12)"
+    ],
+    "verdict": "apenas beacon RUM da Cloudflare (ruido de infra, pre-existente); ZERO PGRST200 400, ZERO excecao JS do app",
+    "app_js_exception": false,
+    "pgrst200_400": false
+  },
+  "console_preserved_only": {
+    "note": "mensagens preservadas de navegacoes anteriores (v114 / sessao sintetica / rig), NAO emitidas pela pagina v115 atual",
+    "items": [
+      "400 supervision_requests?select=...school_id,schools(name) x2 (msgid 9,10) = o bug ORIGINAL da v114; ausente da pagina atual v115",
+      "401 auth/v1/token grant_type=password (msgid 7) = conta sintetica supervisor que o GoTrue nao reconhece (gotrue-sql-limitation)",
+      "CSP connect-src block 127.0.0.1:8778/sess (msgid 2-6) = servidor de sessao do rig local, bloqueado pela CSP do app (artefato do rig, nao defeito)"
+    ]
+  },
+  "screenshot": {
+    "attempted": true,
+    "result": "NATIVE_BROWSER_VIEWPORT_UNAVAILABLE (viewport 531x666, visibilityState=hidden)",
+    "limitation": "superficie Browser nao visivel; prova de Chrome limpo feita por evaluate_script + console, nao por captura visual"
+  },
+  "behavioral_note": "pagina atual esta no login (sem sessao); a query supervision_requests so dispara autenticada como supervisor/secretaria. O conserto do embed (schools(name)->sports_schools(name)) esta provado estruturalmente: token servido no shell (HTTP md5 + cache), 400 original ausente da pagina v115, e PostgREST 200 vs 400 medido na validacao da candidata. Prova comportamental autenticada segue limitada por GoTrue nao reconhecer a conta SQL (S17/v114).",
+  "gates": {
+    "cache_keys_eq_v115": true,
+    "sw_activated": true,
+    "old_cache_v114_removed": true,
+    "shell_has_sports_schools_token": true,
+    "shell_old_schools_token_absent": true,
+    "precache_paths_aligned": true,
+    "current_page_no_pgrst200": true,
+    "current_page_no_app_js_exception": true
+  },
+  "gate_count": "8/8",
+  "verdict": "PROVA_CHROME_V115_OK"
+}

@@ -1,0 +1,104 @@
+{
+  "cycle": "V115",
+  "title": "Publicação v115 — conserto do embed da Supervisão (schools(name) -> sports_schools(name))",
+  "authorization": "OK explícito do usuário via AskUserQuestion: «Publicar v115» — bump CACHE v115, preflight SRC/worker/bundle, wrangler, prova HTTP + Chrome limpo e diário; reversão pronta para v114/v113.",
+  "published": true,
+  "published_at": "2026-11-08T10:50:36.705Z",
+  "worker_name": "bfr-conecta",
+  "url": "https://bfr-conecta.turmaroboticabfr.workers.dev/",
+  "account_id": "37f5c136a13cbd8f884b94b927da0bbd",
+  "credential": "grant OAuth do wrangler (CLOUDFLARE_API_TOKEN/KEY removidos do env; ~/.cf-token é o token de API morto)",
+  "wrangler_version": "4.154.0",
+  "wrangler_pin_note": "4.156.0 falha 100312 'Completion token has already been consumed'; 4.154.0 provado v92–v113; v114 usou 4.158.0",
+
+  "deployment": {
+    "deployment_id": "c75e8eda-75ff-4ff0-96ee-29c83674fb6c",
+    "version_id": "b800538e-af52-413a-8806-b53d6681d667",
+    "version_created_on": "2026-11-08T10:50:35.814Z",
+    "strategy": "percentage",
+    "percentage": 100,
+    "source": "wrangler",
+    "author": "turmaroboticabfr@gmail.com",
+    "upload_seconds": 5.56,
+    "triggers_seconds": 0.82,
+    "total_upload_kib": 3456.16,
+    "gzip_kib": 767.86,
+    "worker_startup_ms": 1,
+    "assets_read": 12,
+    "assets_reuploaded": 0,
+    "assets_note": "No updated asset files to upload — os 12 assets são byte-idênticos ao ar (md5 conferidos no portão de bundle)"
+  },
+
+  "artifacts": {
+    "index_html": { "md5": "aba67956e2952f9f27e217004d028d74", "bytes": 3488135, "lines": 28630 },
+    "sw_v4_js": { "md5": "863660025ed3371859b1546b2a16b26d", "bytes": 3586, "lines": 87, "cache": "bfr-conecta-v115" },
+    "worker_mjs": { "md5": "9d6606ffa01e469bd0104cbbc638371e", "bytes": 3548193 },
+    "src_dir": "bfr-v115-src",
+    "deploy_dir": "worker-deploy-v115",
+    "candidate_dir": "bfr-candidata-v115-supervisao-embed",
+    "builder": "C:/Users/pcmac/.kiro/crew/uploads/build-worker-bundle-cand.js <SRC> <OUT>",
+    "deployment_model": "worker.mjs bundle (HTML+SW como literais JSON) + [assets] public/ binding ASSETS; NÃO static-assets-only. O wrangler.jsonc da candidata v114 (name bfr-candidata-v114-supervisao, assets.directory='.') NÃO corresponde ao worker vivo e não foi usado."
+  },
+
+  "fix": {
+    "location": "index.html:23653 (módulo bfr-secretary-central.js, load() da Supervisão)",
+    "before": "school_id,schools(name)",
+    "after": "school_id,sports_schools(name)",
+    "delta_bytes": 7,
+    "delta_lines": 1,
+    "root_cause": "supervision_requests.school_id FK -> sports_schools (não schools). PostgREST embed token precisa nomear a tabela-alvo da FK: schools(name) -> 400 PGRST200; sports_schools(name) -> 200.",
+    "secondary_low_untouched": "linha 23654 safeQuery('escolas', from('schools')) — dropdown secundário; sem efeito com supervision_requests vazia (count 0); não alterado sem evidência."
+  },
+
+  "lineage": {
+    "base": "v114 (byte-idêntico ao ar antes do deploy)",
+    "base_index_md5": "2496a70573cce3bb3ce23633fac40b79",
+    "base_index_bytes": 3488128,
+    "base_sw_md5": "e82b762bef48b6772bd7bdec011d2e30",
+    "base_cache": "bfr-conecta-v114",
+    "reverse_lineage_eq_base": true,
+    "prior_version_id": "f9ff7b46-d017-4c52-9b26-41026e3c2b4c"
+  },
+
+  "gates": {
+    "candidata_portoes": { "count": "11/11", "verdict": "OK", "file": "portoes-v115-diary.json" },
+    "prepara_src": { "count": "9/9", "verdict": "PREPARA_SRC_V115_OK", "file": "prepara-src-v115-diary.json" },
+    "portao_bundle": { "count": "11/11", "verdict": "PORTAO_BUNDLE_V115_OK", "file": "confere-bundle-v115-diary.json", "note": "decode dos literais JSON + md5 dos bytes (armadilha 405); node --check worker.mjs" },
+    "prova_http": { "count": "9/9", "verdict": "PROVA_HTTP_V115_OK", "file": "prova-http-v115-diary.json", "measured_at": "2026-11-08T10:51:32.941Z" },
+    "prova_chrome": { "count": "8/8", "verdict": "PROVA_CHROME_V115_OK", "file": "prova-chrome-v115-diary.json", "note": "caches.keys()==['bfr-conecta-v115']; shell cached carries sports_schools(name), old token absent; current-page console only 2x cdn-cgi/rum 404 (infra noise), zero PGRST200, zero app JS exception; screenshot NATIVE_BROWSER_VIEWPORT_UNAVAILABLE (Browser hidden) — prova por evaluate_script" }
+  },
+  "gate_total": "48/48 (11+9+11+9+8), 0 vermelhos",
+
+  "reconfer_ar": {
+    "kind": "read-only-reconference",
+    "count": "7/7",
+    "verdict": "RECONFER_AR_V115_OK",
+    "file": "reconfer-ar-v115-diary.json",
+    "script": "reconfer-ar-v115.mjs",
+    "note": "Alvo e hashes derivados do diário original (nunca dactilografados); fetch cache:no-store de / e /sw-v4.js. NÃO toca prova-http-v115-diary.json (measured_at segue 10:51:32.941Z). Confirma que o ar segue servindo v115: root md5 aba67956 / 3488135 B + token sports_schools(name); SW CACHE v115 md5 86366002.",
+    "measured_at": "2026-11-08T11:02:02.220Z"
+  },
+
+  "chrome_limpo": {
+    "before": { "cacheKeys": ["bfr-conecta-v114"], "controller": "sw-v4.js?v=45" },
+    "update_method": "reload ignoreCache não disparou update; registration.update() forçado -> installing -> activated -> client.navigate()",
+    "after": { "cacheKeys": ["bfr-conecta-v115"], "sw_state": "activated", "cache_entries": 8 },
+    "cache_paths": ["/", "/manifest.json", "/bfr-app-logo.png", "/lia-avatar.svg", "/lia-avatar.png", "/bfr-responsive-presentation.js?v=14", "/bfr-teacher-arrivals.js?v=2", "/bfr-teacher-audit.js?v=1"],
+    "shell_token_sports_schools": true,
+    "shell_token_old_schools": false,
+    "current_page_errors": ["404 cdn-cgi/rum x2 (beacon RUM Cloudflare, pré-existente)"],
+    "preserved_only_v114": ["400 supervision_requests schools(name) x2 = bug original, ausente da página v115", "401 password grant = conta sintética GoTrue", "CSP block 127.0.0.1:8778/sess = rig local"],
+    "screenshot": "NATIVE_BROWSER_VIEWPORT_UNAVAILABLE (visibilityState:hidden) — limitação declarada"
+  },
+
+  "behavioral_limitation": "A prova comportamental autenticada da query (200 com dados) segue limitada: a conta supervisor.synthetic@bfr.test mintada via SQL não é reconhecida pelo GoTrue (gotrue-sql-limitation), e a página atual está no login. O conserto está provado estruturalmente: token servido no shell (HTTP md5 + cache v115), 400 PGRST200 original ausente da página v115, e PostgREST 200 (sports_schools) vs 400 (schools) medido na validação da candidata (f1-3-test-diary.json AUTHENTICATED_REST_REQUERY). supervision_requests vazia (count 0).",
+
+  "reversal": {
+    "requires": "OK novo do usuário",
+    "method": "reconstruir worker a partir do SRC v114 (index 2496a70573cce3bb3ce23633fac40b79 / 3488128 B + SW e82b762bef48b6772bd7bdec011d2e30 CACHE v114 + 12 assets) -> wrangler deploy",
+    "prior_version_id": "f9ff7b46-d017-4c52-9b26-41026e3c2b4c",
+    "v113_fallback": { "index_md5": "b1993940f1c1973300f59e460aab688b", "bytes": 3531006 }
+  },
+
+  "verdict": "V115_PUBLICADA_OK"
+}
