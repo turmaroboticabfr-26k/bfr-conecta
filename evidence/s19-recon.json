@@ -1,0 +1,657 @@
+{
+  "ciclo": "S19",
+  "em": "2026-11-08T12:45:19.809Z",
+  "queries": {
+    "policies_requests": [
+      {
+        "polname": "supervision_requests_developer_insert",
+        "polcmd": "a",
+        "using_expr": null,
+        "check_expr": "(EXISTS ( SELECT 1\n   FROM profiles p\n  WHERE ((p.id = auth.uid()) AND (p.role = 'developer'::account_role))))"
+      },
+      {
+        "polname": "supervision_requests_developer_read",
+        "polcmd": "r",
+        "using_expr": "(EXISTS ( SELECT 1\n   FROM profiles p\n  WHERE ((p.id = auth.uid()) AND (p.role = 'developer'::account_role))))",
+        "check_expr": null
+      },
+      {
+        "polname": "supervision_requests_developer_update",
+        "polcmd": "w",
+        "using_expr": "(EXISTS ( SELECT 1\n   FROM profiles p\n  WHERE ((p.id = auth.uid()) AND (p.role = 'developer'::account_role))))",
+        "check_expr": null
+      },
+      {
+        "polname": "supervision_requests_secretary_update",
+        "polcmd": "w",
+        "using_expr": "(EXISTS ( SELECT 1\n   FROM (staff_schools ss\n     JOIN profiles p ON ((p.id = ss.profile_id)))\n  WHERE ((p.id = auth.uid()) AND (ss.school_id = supervision_requests.school_id) AND (p.role = 'secretary'::account_role))))",
+        "check_expr": null
+      },
+      {
+        "polname": "supervision_requests_staff_insert",
+        "polcmd": "a",
+        "using_expr": null,
+        "check_expr": "((created_by = auth.uid()) AND (EXISTS ( SELECT 1\n   FROM (staff_schools ss\n     JOIN profiles p ON ((p.id = ss.profile_id)))\n  WHERE ((p.id = auth.uid()) AND (ss.school_id = supervision_requests.school_id) AND (p.role = ANY (ARRAY['secretary'::account_role, 'director'::account_role, 'coordinator'::account_role]))))))"
+      },
+      {
+        "polname": "supervision_requests_staff_read",
+        "polcmd": "r",
+        "using_expr": "(EXISTS ( SELECT 1\n   FROM (staff_schools ss\n     JOIN profiles p ON ((p.id = ss.profile_id)))\n  WHERE ((p.id = auth.uid()) AND (ss.school_id = supervision_requests.school_id) AND (p.role = ANY (ARRAY['secretary'::account_role, 'director'::account_role, 'coordinator'::account_role])))))",
+        "check_expr": null
+      },
+      {
+        "polname": "supervision_requests_supervisor_insert",
+        "polcmd": "a",
+        "using_expr": null,
+        "check_expr": "bfr_is_education_supervisor()"
+      },
+      {
+        "polname": "supervision_requests_supervisor_read",
+        "polcmd": "r",
+        "using_expr": "bfr_is_education_supervisor()",
+        "check_expr": null
+      },
+      {
+        "polname": "supervision_requests_supervisor_update",
+        "polcmd": "w",
+        "using_expr": "bfr_is_education_supervisor()",
+        "check_expr": null
+      }
+    ],
+    "policies_responses": [
+      {
+        "polname": "supervision_responses_developer_update",
+        "polcmd": "w",
+        "using_expr": "(EXISTS ( SELECT 1\n   FROM profiles p\n  WHERE ((p.id = auth.uid()) AND (p.role = 'developer'::account_role))))",
+        "check_expr": null
+      },
+      {
+        "polname": "supervision_responses_school_insert",
+        "polcmd": "a",
+        "using_expr": null,
+        "check_expr": "((created_by = auth.uid()) AND (EXISTS ( SELECT 1\n   FROM profiles p\n  WHERE ((p.id = auth.uid()) AND (p.role = ANY (ARRAY['director'::account_role, 'coordinator'::account_role, 'developer'::account_role]))))))"
+      },
+      {
+        "polname": "supervision_responses_staff_read",
+        "polcmd": "r",
+        "using_expr": "(EXISTS ( SELECT 1\n   FROM profiles p\n  WHERE ((p.id = auth.uid()) AND (p.role = ANY (ARRAY['secretary'::account_role, 'developer'::account_role, 'director'::account_role, 'coordinator'::account_role])))))",
+        "check_expr": null
+      }
+    ],
+    "policies_attachments": [
+      {
+        "polname": "supervision_attachments_developer_delete",
+        "polcmd": "d",
+        "using_expr": "(EXISTS ( SELECT 1\n   FROM profiles p\n  WHERE ((p.id = auth.uid()) AND (p.role = 'developer'::account_role))))",
+        "check_expr": null
+      },
+      {
+        "polname": "supervision_attachments_developer_update",
+        "polcmd": "w",
+        "using_expr": "(EXISTS ( SELECT 1\n   FROM profiles p\n  WHERE ((p.id = auth.uid()) AND (p.role = 'developer'::account_role))))",
+        "check_expr": null
+      },
+      {
+        "polname": "supervision_attachments_school_insert",
+        "polcmd": "a",
+        "using_expr": null,
+        "check_expr": "((created_by = auth.uid()) AND (EXISTS ( SELECT 1\n   FROM profiles p\n  WHERE ((p.id = auth.uid()) AND (p.role = ANY (ARRAY['director'::account_role, 'coordinator'::account_role, 'developer'::account_role]))))))"
+      },
+      {
+        "polname": "supervision_attachments_staff_read",
+        "polcmd": "r",
+        "using_expr": "(EXISTS ( SELECT 1\n   FROM profiles p\n  WHERE ((p.id = auth.uid()) AND (p.role = ANY (ARRAY['secretary'::account_role, 'developer'::account_role, 'director'::account_role, 'coordinator'::account_role])))))",
+        "check_expr": null
+      }
+    ],
+    "policies_action_plans": [
+      {
+        "polname": "supervision_plans_secretary_insert",
+        "polcmd": "a",
+        "using_expr": null,
+        "check_expr": "((created_by = auth.uid()) AND (EXISTS ( SELECT 1\n   FROM profiles p\n  WHERE ((p.id = auth.uid()) AND (p.role = ANY (ARRAY['secretary'::account_role, 'developer'::account_role]))))))"
+      },
+      {
+        "polname": "supervision_plans_secretary_update",
+        "polcmd": "w",
+        "using_expr": "(EXISTS ( SELECT 1\n   FROM profiles p\n  WHERE ((p.id = auth.uid()) AND (p.role = ANY (ARRAY['secretary'::account_role, 'developer'::account_role])))))",
+        "check_expr": null
+      },
+      {
+        "polname": "supervision_plans_staff_read",
+        "polcmd": "r",
+        "using_expr": "(EXISTS ( SELECT 1\n   FROM profiles p\n  WHERE ((p.id = auth.uid()) AND (p.role = ANY (ARRAY['secretary'::account_role, 'developer'::account_role, 'director'::account_role, 'coordinator'::account_role])))))",
+        "check_expr": null
+      }
+    ],
+    "policies_sports_schools": [
+      {
+        "polname": "sports_schools_manage",
+        "polcmd": "*",
+        "using_expr": "sports_role_allowed(ARRAY['developer'::text, 'director'::text, 'coordinator'::text])",
+        "check_expr": "sports_role_allowed(ARRAY['developer'::text, 'director'::text, 'coordinator'::text])"
+      },
+      {
+        "polname": "sports_schools_read",
+        "polcmd": "r",
+        "using_expr": "sports_role_allowed(ARRAY['developer'::text, 'director'::text, 'coordinator'::text, 'secretary'::text])",
+        "check_expr": null
+      }
+    ],
+    "policies_staff_schools": [
+      {
+        "polname": "staff_schools_developer_delete",
+        "polcmd": "d",
+        "using_expr": "(EXISTS ( SELECT 1\n   FROM profiles p\n  WHERE ((p.id = auth.uid()) AND (p.role = 'developer'::account_role))))",
+        "check_expr": null
+      },
+      {
+        "polname": "staff_schools_developer_insert",
+        "polcmd": "a",
+        "using_expr": null,
+        "check_expr": "(EXISTS ( SELECT 1\n   FROM profiles p\n  WHERE ((p.id = auth.uid()) AND (p.role = 'developer'::account_role))))"
+      },
+      {
+        "polname": "staff_schools_developer_read",
+        "polcmd": "r",
+        "using_expr": "(EXISTS ( SELECT 1\n   FROM profiles p\n  WHERE ((p.id = auth.uid()) AND (p.role = 'developer'::account_role))))",
+        "check_expr": null
+      },
+      {
+        "polname": "staff_schools_developer_update",
+        "polcmd": "w",
+        "using_expr": "(EXISTS ( SELECT 1\n   FROM profiles p\n  WHERE ((p.id = auth.uid()) AND (p.role = 'developer'::account_role))))",
+        "check_expr": "(EXISTS ( SELECT 1\n   FROM profiles p\n  WHERE ((p.id = auth.uid()) AND (p.role = 'developer'::account_role))))"
+      },
+      {
+        "polname": "staff_schools_own_insert",
+        "polcmd": "a",
+        "using_expr": null,
+        "check_expr": "((profile_id = auth.uid()) AND (EXISTS ( SELECT 1\n   FROM profiles p\n  WHERE ((p.id = auth.uid()) AND (p.role = ANY (ARRAY['director'::account_role, 'coordinator'::account_role, 'secretary'::account_role]))))))"
+      },
+      {
+        "polname": "staff_schools_own_read",
+        "polcmd": "r",
+        "using_expr": "(profile_id = auth.uid())",
+        "check_expr": null
+      }
+    ],
+    "policies_learning_plans": [
+      {
+        "polname": "learning managers plans",
+        "polcmd": "*",
+        "using_expr": "(bfr_learning_is_manager() OR (created_by = auth.uid()) OR (EXISTS ( SELECT 1\n   FROM (learning_action_items ai\n     JOIN learning_teacher_actions ta ON ((ta.action_item_id = ai.id)))\n  WHERE ((ai.plan_id = learning_action_plans.id) AND (ta.teacher_id = auth.uid())))))",
+        "check_expr": "(bfr_learning_is_manager() OR (created_by = auth.uid()))"
+      },
+      {
+        "polname": "learning_action_plans_supervisor_insert",
+        "polcmd": "a",
+        "using_expr": null,
+        "check_expr": "bfr_is_education_supervisor()"
+      },
+      {
+        "polname": "learning_action_plans_supervisor_read",
+        "polcmd": "r",
+        "using_expr": "bfr_is_education_supervisor()",
+        "check_expr": null
+      },
+      {
+        "polname": "learning_action_plans_supervisor_update",
+        "polcmd": "w",
+        "using_expr": "bfr_is_education_supervisor()",
+        "check_expr": null
+      }
+    ],
+    "storage_policies": [
+      {
+        "polname": "bfr_supervision_attachments_delete",
+        "polcmd": "d",
+        "using_expr": "((bucket_id = 'secretary-attachments'::text) AND (name ~ '^supervision/[0-9a-fA-F-]{36}/'::text) AND ((split_part(name, '/'::text, 3) = (auth.uid())::text) OR (EXISTS ( SELECT 1\n   FROM profiles p\n  WHERE ((p.id = auth.uid()) AND (p.role = ANY (ARRAY['developer'::account_role, 'director'::account_role])))))))",
+        "check_expr": null
+      },
+      {
+        "polname": "bfr_supervision_attachments_insert",
+        "polcmd": "a",
+        "using_expr": null,
+        "check_expr": "((bucket_id = 'secretary-attachments'::text) AND (name ~ '^supervision/[0-9a-fA-F-]{36}/[0-9a-fA-F-]{36}/'::text) AND (split_part(name, '/'::text, 1) = 'supervision'::text) AND (EXISTS ( SELECT 1\n   FROM profiles p\n  WHERE ((p.id = auth.uid()) AND (p.role = ANY (ARRAY['director'::account_role, 'coordinator'::account_role, 'developer'::account_role]))))) AND (EXISTS ( SELECT 1\n   FROM supervision_responses r\n  WHERE ((r.id)::text = split_part(objects.name, '/'::text, 2)))) AND (split_part(name, '/'::text, 3) = (auth.uid())::text))"
+      },
+      {
+        "polname": "bfr_supervision_attachments_select",
+        "polcmd": "r",
+        "using_expr": "((bucket_id = 'secretary-attachments'::text) AND (name ~ '^supervision/[0-9a-fA-F-]{36}/'::text) AND (EXISTS ( SELECT 1\n   FROM supervision_response_attachments a\n  WHERE (a.storage_path = objects.name))) AND (EXISTS ( SELECT 1\n   FROM profiles p\n  WHERE ((p.id = auth.uid()) AND (p.role = ANY (ARRAY['secretary'::account_role, 'developer'::account_role, 'director'::account_role, 'coordinator'::account_role]))))))",
+        "check_expr": null
+      },
+      {
+        "polname": "bfr_supervision_attachments_update",
+        "polcmd": "w",
+        "using_expr": "((bucket_id = 'secretary-attachments'::text) AND (name ~ '^supervision/[0-9a-fA-F-]{36}/'::text) AND ((split_part(name, '/'::text, 3) = (auth.uid())::text) OR (EXISTS ( SELECT 1\n   FROM profiles p\n  WHERE ((p.id = auth.uid()) AND (p.role = ANY (ARRAY['developer'::account_role, 'director'::account_role])))))))",
+        "check_expr": "((bucket_id = 'secretary-attachments'::text) AND (name ~ '^supervision/[0-9a-fA-F-]{36}/'::text))"
+      }
+    ],
+    "fn_is_supervisor": [
+      {
+        "def": "CREATE OR REPLACE FUNCTION public.bfr_is_education_supervisor()\n RETURNS boolean\n LANGUAGE sql\n STABLE SECURITY DEFINER\n SET search_path TO 'public'\nAS $function$\n  SELECT COALESCE(\n    (SELECT true FROM public.profiles \n     WHERE id = auth.uid() AND role = 'education_supervisor'::account_role),\n    false\n  );\n$function$\n"
+      }
+    ],
+    "fn_school_staff_ids": [
+      {
+        "def": "CREATE OR REPLACE FUNCTION public.bfr_school_staff_ids()\n RETURNS uuid[]\n LANGUAGE sql\n STABLE SECURITY DEFINER\n SET search_path TO 'public'\nAS $function$\n  SELECT \n    CASE \n      -- Supervisor: todas as escolas\n      WHEN public.bfr_is_education_supervisor() THEN\n        (SELECT array_agg(id) FROM public.schools WHERE active = true)\n      -- Staff: apenas escolas com vínculo\n      ELSE\n        (SELECT array_agg(school_id) FROM public.staff_schools ss\n         JOIN public.profiles p ON p.id = ss.profile_id\n         WHERE p.id = auth.uid() AND ss.role = p.role::text)\n    END;\n$function$\n"
+      }
+    ],
+    "sports_schools_rows": [
+      {
+        "id": "559acff1-e4df-42bc-aea4-2d96b8b5b11b",
+        "name": "Escola Alpha"
+      },
+      {
+        "id": "2efafbdc-12f4-4e63-a58e-2e50ca5479e2",
+        "name": "Escola Beta"
+      },
+      {
+        "id": "75a15897-e987-408b-af1c-eace66b0a70d",
+        "name": "Escola Gamma"
+      },
+      {
+        "id": "08ebef62-2193-4520-ab44-c044160d565f",
+        "name": "Escola Municipal Alpha"
+      },
+      {
+        "id": "0f51bc67-9987-483d-aba0-f138b2b7580e",
+        "name": "Escola Municipal Beta"
+      },
+      {
+        "id": "f4ab6309-8c41-4456-a3e2-14f3fe2ad9d3",
+        "name": "Escola Municipal Gamma"
+      }
+    ],
+    "staff_schools_rows": [
+      {
+        "id": "29aba9ad-b97a-4eb0-a1ec-0dfc8241c7a4",
+        "profile_id": "cc005f8c-fa2c-414f-8b04-73e828ec8216",
+        "school_id": "08ebef62-2193-4520-ab44-c044160d565f",
+        "role": "director"
+      },
+      {
+        "id": "e9b0e04f-2d2e-4515-99aa-2d69094a0533",
+        "profile_id": "50205728-72c0-49a5-b519-afccdcc24fea",
+        "school_id": "08ebef62-2193-4520-ab44-c044160d565f",
+        "role": "secretary"
+      },
+      {
+        "id": "490de8f7-886d-4fa6-a224-e0c07dc7ca4c",
+        "profile_id": "cb29edaa-5d57-4f7d-a29b-794f74bd5d79",
+        "school_id": "08ebef62-2193-4520-ab44-c044160d565f",
+        "role": "coordinator"
+      },
+      {
+        "id": "e87eb1ad-6e53-470f-b1e1-41d3f6c56fb6",
+        "profile_id": "fc465d31-c8c9-4ba8-9bcf-6fbbd1bf52a7",
+        "school_id": "0f51bc67-9987-483d-aba0-f138b2b7580e",
+        "role": "coordinator"
+      },
+      {
+        "id": "b1db76d3-a468-41fd-b332-cdcda95dbd80",
+        "profile_id": "5a15c6a7-259b-4092-8dbc-744293630f48",
+        "school_id": "0f51bc67-9987-483d-aba0-f138b2b7580e",
+        "role": "coordinator"
+      },
+      {
+        "id": "6f4417db-c8ec-49c7-b604-1358d1599ff9",
+        "profile_id": "7c1af93f-0131-47ad-b967-4db9fabfdb0b",
+        "school_id": "f4ab6309-8c41-4456-a3e2-14f3fe2ad9d3",
+        "role": "coordinator"
+      },
+      {
+        "id": "68329c8d-2d06-4abd-a4b0-aa4fa637eb86",
+        "profile_id": "b1caa975-5a6a-47e4-ae2c-d7f08f0fa8e3",
+        "school_id": "08ebef62-2193-4520-ab44-c044160d565f",
+        "role": "education_supervisor"
+      },
+      {
+        "id": "d1096389-522f-4284-b4d8-6c4e3a823e0b",
+        "profile_id": "b1caa975-5a6a-47e4-ae2c-d7f08f0fa8e3",
+        "school_id": "0f51bc67-9987-483d-aba0-f138b2b7580e",
+        "role": "education_supervisor"
+      },
+      {
+        "id": "25b723e3-b163-4248-ae1c-4f7357b1bbd0",
+        "profile_id": "b1caa975-5a6a-47e4-ae2c-d7f08f0fa8e3",
+        "school_id": "f4ab6309-8c41-4456-a3e2-14f3fe2ad9d3",
+        "role": "education_supervisor"
+      }
+    ],
+    "staff_schools_emails": [
+      {
+        "profile_id": "cb29edaa-5d57-4f7d-a29b-794f74bd5d79",
+        "email": "casafamilydale@gmail.com",
+        "profile_role": "coordinator",
+        "link_role": "coordinator",
+        "school_id": "08ebef62-2193-4520-ab44-c044160d565f"
+      },
+      {
+        "profile_id": "fc465d31-c8c9-4ba8-9bcf-6fbbd1bf52a7",
+        "email": "casafamlydale25k@gmail.com",
+        "profile_role": "coordinator",
+        "link_role": "coordinator",
+        "school_id": "0f51bc67-9987-483d-aba0-f138b2b7580e"
+      },
+      {
+        "profile_id": "50205728-72c0-49a5-b519-afccdcc24fea",
+        "email": "daleexcursoes@gmail.com",
+        "profile_role": "secretary",
+        "link_role": "secretary",
+        "school_id": "08ebef62-2193-4520-ab44-c044160d565f"
+      },
+      {
+        "profile_id": "5a15c6a7-259b-4092-8dbc-744293630f48",
+        "email": "eec1@aluno.ifal.edu.br",
+        "profile_role": "coordinator",
+        "link_role": "coordinator",
+        "school_id": "0f51bc67-9987-483d-aba0-f138b2b7580e"
+      },
+      {
+        "profile_id": "cc005f8c-fa2c-414f-8b04-73e828ec8216",
+        "email": "pc.maceedo@gmail.com",
+        "profile_role": "director",
+        "link_role": "director",
+        "school_id": "08ebef62-2193-4520-ab44-c044160d565f"
+      },
+      {
+        "profile_id": "b1caa975-5a6a-47e4-ae2c-d7f08f0fa8e3",
+        "email": "supervisor.test2@gmail.com",
+        "profile_role": "education_supervisor",
+        "link_role": "education_supervisor",
+        "school_id": "08ebef62-2193-4520-ab44-c044160d565f"
+      },
+      {
+        "profile_id": "b1caa975-5a6a-47e4-ae2c-d7f08f0fa8e3",
+        "email": "supervisor.test2@gmail.com",
+        "profile_role": "education_supervisor",
+        "link_role": "education_supervisor",
+        "school_id": "0f51bc67-9987-483d-aba0-f138b2b7580e"
+      },
+      {
+        "profile_id": "b1caa975-5a6a-47e4-ae2c-d7f08f0fa8e3",
+        "email": "supervisor.test2@gmail.com",
+        "profile_role": "education_supervisor",
+        "link_role": "education_supervisor",
+        "school_id": "f4ab6309-8c41-4456-a3e2-14f3fe2ad9d3"
+      },
+      {
+        "profile_id": "7c1af93f-0131-47ad-b967-4db9fabfdb0b",
+        "email": "zetharion.ot@gmail.com",
+        "profile_role": "coordinator",
+        "link_role": "coordinator",
+        "school_id": "f4ab6309-8c41-4456-a3e2-14f3fe2ad9d3"
+      }
+    ],
+    "counts": [
+      {
+        "t": "supervision_requests",
+        "n": 0
+      },
+      {
+        "t": "supervision_responses",
+        "n": 0
+      },
+      {
+        "t": "supervision_response_attachments",
+        "n": 0
+      },
+      {
+        "t": "supervision_action_plans",
+        "n": 0
+      },
+      {
+        "t": "supervision_alerts",
+        "n": 0
+      },
+      {
+        "t": "supervision_audit",
+        "n": 9
+      },
+      {
+        "t": "learning_action_plans",
+        "n": 0
+      },
+      {
+        "t": "support_requests",
+        "n": 1
+      },
+      {
+        "t": "storage_objects_bucket",
+        "n": 1
+      }
+    ],
+    "bucket": [
+      {
+        "id": "secretary-attachments",
+        "public": false,
+        "file_size_limit": 10485760,
+        "allowed_mime_types": [
+          "application/pdf",
+          "application/msword",
+          "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+          "application/vnd.ms-excel",
+          "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+          "image/jpeg",
+          "image/png",
+          "image/webp",
+          "text/plain"
+        ]
+      }
+    ],
+    "attachments_cols": [
+      {
+        "column_name": "id",
+        "data_type": "uuid",
+        "is_nullable": "NO",
+        "column_default": "gen_random_uuid()"
+      },
+      {
+        "column_name": "response_id",
+        "data_type": "uuid",
+        "is_nullable": "NO",
+        "column_default": null
+      },
+      {
+        "column_name": "storage_path",
+        "data_type": "text",
+        "is_nullable": "NO",
+        "column_default": null
+      },
+      {
+        "column_name": "file_name",
+        "data_type": "text",
+        "is_nullable": "NO",
+        "column_default": null
+      },
+      {
+        "column_name": "mime_type",
+        "data_type": "text",
+        "is_nullable": "YES",
+        "column_default": null
+      },
+      {
+        "column_name": "created_by",
+        "data_type": "uuid",
+        "is_nullable": "NO",
+        "column_default": null
+      },
+      {
+        "column_name": "created_at",
+        "data_type": "timestamp with time zone",
+        "is_nullable": "NO",
+        "column_default": "now()"
+      }
+    ],
+    "responses_cols": [
+      {
+        "column_name": "id",
+        "data_type": "uuid",
+        "is_nullable": "NO",
+        "column_default": "gen_random_uuid()"
+      },
+      {
+        "column_name": "request_id",
+        "data_type": "uuid",
+        "is_nullable": "NO",
+        "column_default": null
+      },
+      {
+        "column_name": "round",
+        "data_type": "smallint",
+        "is_nullable": "NO",
+        "column_default": "1"
+      },
+      {
+        "column_name": "justification",
+        "data_type": "text",
+        "is_nullable": "NO",
+        "column_default": "''::text"
+      },
+      {
+        "column_name": "measures_taken",
+        "data_type": "text",
+        "is_nullable": "NO",
+        "column_default": "''::text"
+      },
+      {
+        "column_name": "measures_planned",
+        "data_type": "text",
+        "is_nullable": "NO",
+        "column_default": "''::text"
+      },
+      {
+        "column_name": "responsible_name",
+        "data_type": "text",
+        "is_nullable": "YES",
+        "column_default": null
+      },
+      {
+        "column_name": "responsible_id",
+        "data_type": "uuid",
+        "is_nullable": "YES",
+        "column_default": null
+      },
+      {
+        "column_name": "deadline_at",
+        "data_type": "timestamp with time zone",
+        "is_nullable": "YES",
+        "column_default": null
+      },
+      {
+        "column_name": "created_by",
+        "data_type": "uuid",
+        "is_nullable": "NO",
+        "column_default": null
+      },
+      {
+        "column_name": "created_at",
+        "data_type": "timestamp with time zone",
+        "is_nullable": "NO",
+        "column_default": "now()"
+      }
+    ],
+    "requests_cols": [
+      {
+        "column_name": "id",
+        "data_type": "uuid",
+        "is_nullable": "NO",
+        "column_default": "gen_random_uuid()"
+      },
+      {
+        "column_name": "indicator",
+        "data_type": "text",
+        "is_nullable": "NO",
+        "column_default": null
+      },
+      {
+        "column_name": "motive",
+        "data_type": "text",
+        "is_nullable": "NO",
+        "column_default": null
+      },
+      {
+        "column_name": "description",
+        "data_type": "text",
+        "is_nullable": "NO",
+        "column_default": "''::text"
+      },
+      {
+        "column_name": "questions",
+        "data_type": "jsonb",
+        "is_nullable": "NO",
+        "column_default": "'[]'::jsonb"
+      },
+      {
+        "column_name": "deadline_at",
+        "data_type": "timestamp with time zone",
+        "is_nullable": "YES",
+        "column_default": null
+      },
+      {
+        "column_name": "priority",
+        "data_type": "text",
+        "is_nullable": "NO",
+        "column_default": "'média'::text"
+      },
+      {
+        "column_name": "status",
+        "data_type": "text",
+        "is_nullable": "NO",
+        "column_default": "'Pendente de resposta'::text"
+      },
+      {
+        "column_name": "created_by",
+        "data_type": "uuid",
+        "is_nullable": "NO",
+        "column_default": null
+      },
+      {
+        "column_name": "closed_by",
+        "data_type": "uuid",
+        "is_nullable": "YES",
+        "column_default": null
+      },
+      {
+        "column_name": "closed_at",
+        "data_type": "timestamp with time zone",
+        "is_nullable": "YES",
+        "column_default": null
+      },
+      {
+        "column_name": "created_at",
+        "data_type": "timestamp with time zone",
+        "is_nullable": "NO",
+        "column_default": "now()"
+      },
+      {
+        "column_name": "updated_at",
+        "data_type": "timestamp with time zone",
+        "is_nullable": "NO",
+        "column_default": "now()"
+      },
+      {
+        "column_name": "school_id",
+        "data_type": "uuid",
+        "is_nullable": "YES",
+        "column_default": null
+      }
+    ],
+    "storage_objects_existentes": [
+      {
+        "id": "b31b0297-292c-4081-b8a5-adfa13f43fb4",
+        "name": "ef318170-22ab-463d-a14b-0271fcebf335/.emptyFolderPlaceholder",
+        "bucket_id": "secretary-attachments",
+        "created_at": "2026-09-23 18:38:40.49096+00"
+      }
+    ],
+    "contas_teste_vivas": [
+      {
+        "id": "19bc8c0e-5b1c-4e73-a765-80ea58911315",
+        "email": "auditoria-sintetica-push-device-parent-30678b@bfr-conecta.test"
+      }
+    ]
+  }
+}

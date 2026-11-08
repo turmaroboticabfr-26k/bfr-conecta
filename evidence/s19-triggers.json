@@ -1,0 +1,205 @@
+{
+  "ciclo": "S19",
+  "em": "2026-11-08T12:55:14.008Z",
+  "queries": {
+    "triggers_supervision": [
+      {
+        "event_object_table": "staff_schools",
+        "trigger_name": "staff_schools_updated_at_trigger",
+        "action_timing": "BEFORE",
+        "event_manipulation": "UPDATE",
+        "action_statement": "EXECUTE FUNCTION staff_schools_updated_at()"
+      },
+      {
+        "event_object_table": "supervision_action_plans",
+        "trigger_name": "trg_supervision_audit_plans",
+        "action_timing": "AFTER",
+        "event_manipulation": "UPDATE",
+        "action_statement": "EXECUTE FUNCTION bfr_supervision_audit_log()"
+      },
+      {
+        "event_object_table": "supervision_action_plans",
+        "trigger_name": "trg_supervision_audit_plans",
+        "action_timing": "AFTER",
+        "event_manipulation": "INSERT",
+        "action_statement": "EXECUTE FUNCTION bfr_supervision_audit_log()"
+      },
+      {
+        "event_object_table": "supervision_requests",
+        "trigger_name": "trg_supervision_audit_requests",
+        "action_timing": "AFTER",
+        "event_manipulation": "INSERT",
+        "action_statement": "EXECUTE FUNCTION bfr_supervision_audit_log()"
+      },
+      {
+        "event_object_table": "supervision_requests",
+        "trigger_name": "trg_supervision_audit_requests",
+        "action_timing": "AFTER",
+        "event_manipulation": "UPDATE",
+        "action_statement": "EXECUTE FUNCTION bfr_supervision_audit_log()"
+      },
+      {
+        "event_object_table": "supervision_responses",
+        "trigger_name": "trg_supervision_audit_responses",
+        "action_timing": "AFTER",
+        "event_manipulation": "UPDATE",
+        "action_statement": "EXECUTE FUNCTION bfr_supervision_audit_log()"
+      },
+      {
+        "event_object_table": "supervision_responses",
+        "trigger_name": "trg_supervision_audit_responses",
+        "action_timing": "AFTER",
+        "event_manipulation": "INSERT",
+        "action_statement": "EXECUTE FUNCTION bfr_supervision_audit_log()"
+      },
+      {
+        "event_object_table": "supervision_responses",
+        "trigger_name": "trg_supervision_response_notify",
+        "action_timing": "AFTER",
+        "event_manipulation": "INSERT",
+        "action_statement": "EXECUTE FUNCTION bfr_supervision_response_notify()"
+      }
+    ],
+    "trigger_fns": [
+      {
+        "proname": "bfr_supervision_audit_log",
+        "def": "CREATE OR REPLACE FUNCTION public.bfr_supervision_audit_log()\n RETURNS trigger\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO 'public'\nAS $function$\ndeclare\n  v_id uuid := coalesce(new.id, old.id);\nbegin\n  insert into public.supervision_audit (profile_id, action, entity_type, entity_id, detail)\n  values (coalesce(auth.uid(), new.created_by), tg_op, tg_table_name, v_id,\n          jsonb_build_object('em', now()));\n  return coalesce(new, old);\nend $function$\n"
+      },
+      {
+        "proname": "bfr_supervision_response_notify",
+        "def": "CREATE OR REPLACE FUNCTION public.bfr_supervision_response_notify()\n RETURNS trigger\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO 'public'\nAS $function$\nbegin\n  update public.supervision_requests\n     set status = 'Respondida', updated_at = now()\n   where id = new.request_id\n     and status in ('Pendente de resposta','Aguardando complementação','Prazo vencido');\n  return new;\nend $function$\n"
+      },
+      {
+        "proname": "staff_schools_updated_at",
+        "def": "CREATE OR REPLACE FUNCTION public.staff_schools_updated_at()\n RETURNS trigger\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO 'public'\nAS $function$\nbegin\n  new.updated_at = now();\n  return new;\nend;\n$function$\n"
+      }
+    ],
+    "alerts_cols": [
+      {
+        "column_name": "id",
+        "data_type": "uuid",
+        "is_nullable": "NO",
+        "column_default": "gen_random_uuid()"
+      },
+      {
+        "column_name": "kind",
+        "data_type": "text",
+        "is_nullable": "NO",
+        "column_default": null
+      },
+      {
+        "column_name": "title",
+        "data_type": "text",
+        "is_nullable": "NO",
+        "column_default": null
+      },
+      {
+        "column_name": "body",
+        "data_type": "text",
+        "is_nullable": "NO",
+        "column_default": "''::text"
+      },
+      {
+        "column_name": "entity_type",
+        "data_type": "text",
+        "is_nullable": "YES",
+        "column_default": null
+      },
+      {
+        "column_name": "entity_id",
+        "data_type": "uuid",
+        "is_nullable": "YES",
+        "column_default": null
+      },
+      {
+        "column_name": "dedupe_key",
+        "data_type": "text",
+        "is_nullable": "NO",
+        "column_default": null
+      },
+      {
+        "column_name": "created_at",
+        "data_type": "timestamp with time zone",
+        "is_nullable": "NO",
+        "column_default": "now()"
+      },
+      {
+        "column_name": "acknowledged_by",
+        "data_type": "uuid",
+        "is_nullable": "YES",
+        "column_default": null
+      },
+      {
+        "column_name": "acknowledged_at",
+        "data_type": "timestamp with time zone",
+        "is_nullable": "YES",
+        "column_default": null
+      }
+    ],
+    "audit_cols": [
+      {
+        "column_name": "id",
+        "data_type": "uuid",
+        "is_nullable": "NO",
+        "column_default": "gen_random_uuid()"
+      },
+      {
+        "column_name": "profile_id",
+        "data_type": "uuid",
+        "is_nullable": "YES",
+        "column_default": null
+      },
+      {
+        "column_name": "action",
+        "data_type": "text",
+        "is_nullable": "NO",
+        "column_default": null
+      },
+      {
+        "column_name": "entity_type",
+        "data_type": "text",
+        "is_nullable": "YES",
+        "column_default": null
+      },
+      {
+        "column_name": "entity_id",
+        "data_type": "uuid",
+        "is_nullable": "YES",
+        "column_default": null
+      },
+      {
+        "column_name": "detail",
+        "data_type": "jsonb",
+        "is_nullable": "YES",
+        "column_default": null
+      },
+      {
+        "column_name": "created_at",
+        "data_type": "timestamp with time zone",
+        "is_nullable": "NO",
+        "column_default": "now()"
+      }
+    ],
+    "staff_schools_checks": [
+      {
+        "conname": "staff_schools_profile_id_school_id_role_key",
+        "def": "UNIQUE (profile_id, school_id, role)"
+      },
+      {
+        "conname": "staff_schools_role_check",
+        "def": "CHECK ((role = ANY (ARRAY['director'::text, 'coordinator'::text, 'secretary'::text, 'education_supervisor'::text])))"
+      }
+    ],
+    "responses_checks": [],
+    "requests_checks": [
+      {
+        "conname": "supervision_requests_priority_check",
+        "def": "CHECK ((priority = ANY (ARRAY['alta'::text, 'média'::text, 'baixa'::text])))"
+      },
+      {
+        "conname": "supervision_requests_status_check",
+        "def": "CHECK ((status = ANY (ARRAY['Pendente de resposta'::text, 'Respondida'::text, 'Em análise pela Secretaria'::text, 'Aguardando complementação'::text, 'Plano de ação em andamento'::text, 'Concluída'::text, 'Prazo vencido'::text])))"
+      }
+    ]
+  }
+}
