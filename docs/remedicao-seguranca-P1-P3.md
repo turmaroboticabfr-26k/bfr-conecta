@@ -475,6 +475,8 @@ node scripts/seg-fin-mem-varredura.mjs       # portao por CORPUS: 97 registos fo
 node scripts/seg-fin-mem-varredura.mjs --ver # contexto mascarado (o valor sai por <VALOR>, nunca por extenso)
 node scripts/seg-fin-mem-redact-por-corpus.mjs        # dry-run: so ficheiro:linha, len e md5
 node scripts/seg-fin-mem-redact-por-corpus.mjs --apply  # A ESCRITA: redige e congela em %TEMP%\bfr-mem-redact-corpus-*
+node scripts/seg-fin-mem-indice.mjs          # portao de INTEGRIDADE do indice: linhas == topic files, 25 000 B
+node scripts/seg-precommit-gate.mjs --staged # camadas A, B, C sobre o staged + camada D delegada
 ```
 
 ## P1 item 1 — rotação das 8 combinações vivas — **EXECUTADA 09/11**
@@ -624,6 +626,15 @@ o artefacto foi destruído no fim):
 
 O que a ligação **não** muda: continua a não haver hook instalado, por isso a camada D corre quando
 o portão é chamado — ver «Portão pré-commit» acima.
+
+A camada D diz que não há senha na memória; não diz que a memória é lida. `scripts/seg-fin-mem-indice.mjs`
+(diário §13) fecha esse lado com três predicados que têm consequência medida — linhas do `MEMORY.md`
+== ficheiros `.md`, zero links partidos, e `MEMORY.md` abaixo do tecto de 25 000 bytes do loader, acima
+do qual as últimas linhas deixam de ser lidas. Medido 09/11: 96 | 96, 0 partidos, 24 793 B. O primeiro
+passe deste instrumento teve de ser corrigido por ter importado o erro do §11 — impus um tecto de 200
+caracteres às linhas do índice e 79 das 96 casavam, todas prosa legítima da casa; passou a aviso
+informativo. O achado real foi um frontmatter com `type:` solto em vez de debaixo de `metadata:`,
+normalizado.
 
 ## Em aberto depois deste passe
 

@@ -423,3 +423,78 @@ veredito: camada D ligada e provada nos quatro comportamentos (verde, bloqueio s
 cegos). O que a ligacao NAO muda: nao ha hook instalado (core.hooksPath vazio, .git/hooks so com
 .sample), portanto a camada D corre quando o portao e chamado, nao antes de cada commit. Instalado
 o hook, ela passa a correr sozinha; fica como decisao do dono, nao foi feita aqui.
+
+
+====================================================================================================
+§13 — O portao do INDICE da memoria, congelado em scripts/seg-fin-mem-indice.mjs (09/11)
+====================================================================================================
+
+A camada D do bloco acima prova que nao ha senha por extenso na memoria. Nao prova que a memoria
+e lida: um link partido no MEMORY.md apaga uma memoria sem que nada dea erro, e um MEMORY.md acima
+do tecto do loader e cortado -- as linhas do fim deixam de existir para a conversa seguinte. Esse
+teste morava num ficheiro em %TEMP% e nao estava em parte nenhuma: reabrir a sessao custava
+reconstrui-lo, e foi o que aconteceu. Passa a scripts/seg-fin-mem-indice.mjs.
+
+$ node scripts/seg-fin-mem-indice.mjs      (1a versao, ainda com um predicado de FORMA meu)
+diretorio: C:\Users\pcmac\.qoder\projects\C--Users-pcmac-Documents-Qoder-2026-10-13-28077d9a\memory
+entradas no indice: 96 | topic files: 96
+MEMORY.md: 24793 bytes (tecto 25000) | 99 linhas
+orfos (ficheiro sem linha no indice): 0
+links partidos (linha sem ficheiro): 0
+links duplicados: 0
+frontmatter incompleto (name/description/metadata): 1 -> bfr-c2-transporte-gaps.md
+desc/linha de indice acima de 400/200 chars: 79 -> bfr-activesection-vira-inicio-no-mobile.md linha-indice=205; ...
+PORTAO DO INDICE FALHA
+exit=1
+
+Dois achados, um de cada lado da mesa:
+
+(a) FALSO POSITIVO MEU, 79/79. Inverti o predicado do bloco 11 sem o pensar duas vezes: impus um
+tecto de 200 caracteres as linhas do indice e a casa inteira escreve acima disso -- 79 das 96
+casavam, inclusive as minhas duas linhas deste ciclo. O criterio da casa nao e o do guia; o aviso
+passou a informativo e nao falha. So ficou como falha o que tem consequencia medida (linhas !=
+ficheiros, 0, e bytes > tecto do loader).
+
+(b) ACHADO REAL. `bfr-c2-transporte-gaps.md` tinha `type: project` solto no frontmatter em vez de
+debaixo de `metadata:`, 1 em 96. Normalizado:
+
+$ head -6 memory/bfr-c2-transporte-gaps.md      (depois)
+---
+name: c2-transporte-gaps-comportamentais
+description: Ciclo C2 (08/11) provou 3 gaps comportamentais do transporte escolar -- ...
+metadata:
+  type: project
+---
+
+$ node scripts/seg-fin-mem-indice.mjs      (re-passada, versao congelada)
+entradas no indice: 96 | topic files: 96
+MEMORY.md: 24793 bytes (tecto 25000) | 99 linhas
+orfos: 0 | links partidos: 0 | links duplicados: 0 | frontmatter incompleto: 0
+PORTAO DO INDICE OK -- indice e ficheiros batem certo e o MEMORY.md cabe no loader
+exit=0
+
+Controlo negativo, semeado num diretorio a parte (2 linhas, 1 partida; 1 orfo sem description):
+
+$ node scripts/seg-fin-mem-indice.mjs --mem-dir=%TEMP%/bfr-indice-prova
+entradas no indice: 2 | topic files: 2
+orfos (ficheiro sem linha no indice): 1 -> orfo.md
+links partidos (linha sem ficheiro): 1 -> partido.md
+frontmatter incompleto (name/description/metadata): 1 -> orfo.md
+PORTAO DO INDICE FALHA
+exit=1
+
+$ node scripts/seg-fin-mem-indice.mjs --mem-dir=%TEMP%/bfr-indice-vazio
+INSTRUMENTO CEGO: nao ha indice em bfr-indice-vazio
+exit=1
+
+$ node scripts/seg-fin-mem-indice.mjs --mem-dir=%TEMP%/bfr-indice-naohai
+INSTRUMENTO CEGO: nao ha registos em bfr-indice-naohai
+exit=1
+
+$ rm -rf %TEMP%/bfr-indice-prova %TEMP%/bfr-indice-vazio %TEMP%/memory-index-audita.mjs
+0            # `ls %TEMP% | grep -ci bfr-indice` -- nenhum rastro
+
+veredito: o indice esta coerente (96 | 96, 0 partidos, 0 orfos) e o MEMORY.md mede 24 793 contra o
+tecto de 25 000 -- 207 bytes de folga, ou seja ~2 linhas. O portao corre so por chamada, como o
+restante: nao ha hook. Dois instrumentos independentes deram o mesmo veredito nesta passada (o
+rascunho em %TEMP% e o congelado em scripts/), e foi o rascunho que apanhou o falso positivo meu.
