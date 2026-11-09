@@ -2,13 +2,17 @@
 .cf-token
 .supabase-pat
 .supabase-service-role
-bfr-audit-session-*.json
-bfr-audit-contas.json
-c2-sessions.json
-*.bak
 *.pem
 .env
 .env.*
+
+# Diários de sessão dos ciclos de auditoria — nomeados por ciclo, sempre com JWT.
+# Entradas por ficheiro (o P1 usou) deixaram S19/S20/C2 passarem: usar padrao.
+*-sessions.json
+*-contas*.json
+bfr-audit-session-*.json
+bfr-audit-contas.json
+*.bak
 
 # Scripts com credenciais sintéticas hardcoded
 criar-conta-supervisor-api.mjs
