@@ -547,7 +547,7 @@ portao corre quando chamado.
 
 §15 — Instalador da credencial do GitHub: scripts/seg-p0-install-credencial.mjs (09/11)
 
-O passo 5 do plano (instalar o token no credential manager para destravar os 17 commits parados)
+O passo 5 do plano (instalar o token no credential manager para destravar os commits parados)
 vivia so em prosa, como uma linha de `printf` para colar. Passou a instrumento congelado, com
 --dry-run para se poder provar sem escrever no GCM. O valor sai por STDIN, nunca por argv: argv e
 visivel na lista de processos e fica no historico da shell.
@@ -588,3 +588,40 @@ Caiu do dry-run. Regra: um probe cuja falha e indistinguivel do sucesso nao entr
 
 veredito: instalador congelado e provado nos cinco comportamentos; o push continua a nao ser
 corrido (falta o token real no ~/.gh-token, que so o dono escreve); continua sem hook.
+
+§16 — A contagem de commits por empurrar envelhece no proprio commit que a corrige (09/11)
+
+Medido com o comando, duas vezes no mesmo minuto:
+
+$ git rev-list --count origin/main..HEAD
+18
+$ (commit do passo 1 do doc, que escrevia "18 commits")
+$ git rev-list --count origin/main..HEAD
+19
+
+O erro nao foi contar mal: foi escrever o numero como facto. O commit que corrigia a contagem
+antiga (12 -> 18, linha 689 do plano) e que mudava o HEAD para d262607 tornou imediatamente
+falsa a linha que o proprio acabava de escrever — o novo HEAD e b4131b6, e o intervalo passa a
+ser 8a93164...b4131b6. Mesma doenca do autorreferencia do corpus de senhas (o script de rotacao
+meter-se no proprio corpus), so que aqui o instrumento e o `git log` e o que muda e o observador.
+
+Consequencia aplicada nos tres registos (plano, memoria, diario §15): o numero passa a vir
+acompanhado do comando e da clausula "re-contar, nao repetir". O diario §15 deixou de dizer
+"os 17 commits parados" e diz "os commits parados".
+
+Segunda instancia da mesma doenca, medida logo a seguir e no mesmo ciclo. A memoria de P2/P3
+afirmava «MEMORY.md 24 793 B contra o tecto de 25 000 — 207 B de folga». O auditor re-corrido
+depois das edicoes desta seccao devolve outra coisa:
+
+$ node scripts/seg-fin-mem-indice.mjs
+MEMORY.md: 24947 bytes (tecto 25000) | 99 linhas
+
+Ou seja: a folga caiu de 207 para 53 B pelos proprios actos de escrita que a registavam. Aqui o
+remedio nao foi trocar o numero por outro numero — foi tirar o numero da memoria e deixar la o
+comando, porque esta grandeza muda tambem quando se edita a linha que a descreve (no caso dos
+commits, o observador e o commit; aqui, o observador e a propria linha de texto).
+
+veredito: ao fechar esta seccao a medicao era 19 commits locais por empurrar (HEAD=b4131b6,
+origin/main=80c951c), e o commit que gravou esta linha muda esse numero — o que confirma a regra
+em vez de a violar. Re-contar com `git rev-list --count origin/main..HEAD`. O bloqueio e de
+credencial, nao de contagem; nada foi pushado.

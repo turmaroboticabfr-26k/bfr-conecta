@@ -688,8 +688,9 @@ normalizado.
    (Contents:RW, `Only select repositories` → bfr-conecta) continuam humanos. A **instalação da
    credencial já não é manual**: `node scripts/seg-p0-install-credencial.mjs` lê `~/.gh-token`, deriva
    `host`/`username` do remoto e escreve no credential manager por stdin. O custo de não ter
-   credencial mede-se com o portão D de `seg-p0-access-probe.mjs`. Enquanto isso,
-   **18 commits locais não sobem** (`8a93164`…`d262607`, re-contado 09/11).
+   credencial mede-se com o portão D de `seg-p0-access-probe.mjs`. Enquanto isso, os **commits
+   locais não sobem** — à última medição eram 19 (`8a93164`…`b4131b6`); re-contar com
+   `git rev-list --count origin/main..HEAD`, porque cada commit local muda este número.
 2. **Decisão do CSP** — hoje não há nenhuma protecção declarada contra clickjacking. As rotas, com
    o que cada uma custa:
    - *só `frame-ancestors` como header HTTP do Worker* — o mínimo que fecha o buraco real; 1 linha no
