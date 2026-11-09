@@ -877,3 +877,23 @@ coisas registradas como em aberto, nenhuma delas executavel por mim sem OK novo:
 mora no historico empurrado desde `d26b4fa`, e a morte desse token nao esta provada em lado
 nenhum. Esta seccao vai ser commitada e por isso muda a contagem que o registo cita (24 → 25):
 re-contar com `git rev-list --count origin/main..HEAD`, nao repetir o numero.
+
+7. Re-verificacao (09/11, depois do commit `b1d5c49`). A cadeia que provou os pontos 3 e 5
+   partiu-se a meio — um `git rev-parse --short HEAD refs/remotes/origin/main` com dois
+   argumentos devolve `fatal: Needed a single revision` (exit 128) e, por estar no fim de uma
+   cadeia `&&`, abortou as duas conferencias que vinham depois. Refeitas uma a uma:
+
+$ git ls-files -- docs/c2-fixtures.json | wc -l
+0                                    <- 0 = nao esta no indice: o portao nao le este caminho outra vez
+
+$ git ls-tree --name-only refs/remotes/origin/main -- docs/c2-fixtures.json
+docs/c2-fixtures.json              <- esta VIVO no tip empurrado, nao so num ancestor
+
+   O segundo resultado e a forma mais forte do ponto 5: alem de `d26b4fa` ser ancestor, o
+   ficheiro continua no `origin/main` de hoje, portanto quem clonar o repo recebe o badge_token
+   nem que seja pelo checkout do tip. `git rm --cached` nao chega la; so `filter-repo` + force
+   push, que e destrutivo e mexe em estado partilhado.
+   Contagem depois deste commit: `git rev-list --count origin/main..HEAD` — era 25 com
+   `HEAD`=`b1d5c49`, este bloco acrescenta mais um. Os tres portoes de memoria voltaram a correr
+   verdes depois das edicoes (`indice OK` com o MEMORY.md dentro do tecto, `PORTAO DE MEMORIA OK`
+   com corpus 6, `CONTROLO NEGATIVO OK` 6/6 com motivo).
