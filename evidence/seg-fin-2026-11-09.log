@@ -897,3 +897,87 @@ docs/c2-fixtures.json              <- esta VIVO no tip empurrado, nao so num anc
    `HEAD`=`b1d5c49`, este bloco acrescenta mais um. Os tres portoes de memoria voltaram a correr
    verdes depois das edicoes (`indice OK` com o MEMORY.md dentro do tecto, `PORTAO DE MEMORIA OK`
    com corpus 6, `CONTROLO NEGATIVO OK` 6/6 com motivo).
+
+## 21. A morte do badge_token medida no banco, e o elo que liga o banco ao blob empurrado (09/11)
+
+O ponto 5 da seccao 20 acabou com uma frase literal: «contar em `public.gate_badges` as linhas com
+o token do ficheiro (somente-leitura, 1 numero, sem escrever o valor no registo)». Foi isso que se
+correu. Nada foi escrito no banco; nenhum valor foi impresso em lado nenhum — saida so contagens,
+booleanos e hashes. Instrumento novo: `scripts/seg-badge-token-probe.mjs`, diario em
+`evidence/seg-badge-token-probe.json`.
+
+1. O censo e o veredito.
+
+$ node scripts/seg-badge-token-probe.mjs
+[1] schema de public.gate_badges
+VERDE  colunas badge_token e active existem | ["id","student_id","badge_token","active","issued_at"]
+[2] censo de linhas (contagem, nunca valor)
+   {"linhas":843,"activas":843,"tokens_distintos":843,"tokens_nulos":0}
+[3] controle positivo do predicado (o valor nunca sai do banco)
+VERDE  predicado badge_token = <uuid> encontra uma linha que existe | {"casadas":1}
+[4] o token do ciclo C2
+VERDE  0 linhas com o badge_token do fixture | {"casadas":0}
+VERDE  0 linhas com o id do badge do fixture | {"casadas":0}
+VERDE  0 badges para o aluno do fixture | {"casadas":0}
+[7] veredito
+  TOKEN MORTO — 0 linhas com o token do fixture (linhas totais: 843, activas: 843)
+6 portoes, 0 falhas.                                             EXIT=0
+
+   O ponto [3] e o que separa isto de um zero inventado: o predicado `badge_token = <uuid>` foi
+   alimentado a uma linha que existe e devolveu 1, portanto o mesmo 0 do ponto [4] e ausencia
+   medida, nao instrumento cego. Sem o controle, «0 linhas» queria dizer tanto «o token nao esta la»
+   como «a consulta nao sabe procurar».
+
+2. O caminho que usaria o token, para o veredito nao ficar so em contagem:
+
+   {"usa_token":true,"usa_active":true,"chars":3260,"security_definer":true}
+  acl: {postgres=arwdDxtm/postgres,anon=rm/postgres,authenticated=arwdDxtm/postgres,service_role=arwdDxtm/postgres} | rls_on: true
+  policies: 4 ["gate_badges_family_issue:a","gate_badges_family_read:r","gate_badges_gatekeeper_read:r","gate_badges_staff_manage:*"]
+[6] superficie do anon sobre gate_badges (a chave anon esta no HTML publicado)
+   {"linhas_visiveis":0}
+VERDE  anon nao le nenhuma linha de gate_badges
+
+   `register_gate_checkin` e `security definer`, usa o token e usa o `active`; a linha do fixture nao
+   la, logo nao ha o que usar. E o `anon=rm` do ACL nao da leitura nenhuma: RLS ligada e nenhuma
+   das 4 policies nomeia `anon`, medido por `set local role anon` dentro de `begin; … rollback;` →
+   0 linhas visiveis. A chave anon publicada no HTML nao e uma porta para crachas.
+
+3. O elo que faltava. Provar que o banco nao tem O MEU valor exige saber que o valor que testei e o
+   mesmo que esta no historico empurrado — sena a prova era sobre um ficheiro do disco.
+   `scripts/seg-badge-traceado.mjs`, por `git show` + md5:
+
+d26b4fa                    commit que adicionou o ficheiro 431 B  md5=6d7d0a022ed8c1a0fe13865d5555ff37  igual_disco=true  token_igual=true
+refs/remotes/origin/main   tip empurrado de hoje          431 B  md5=6d7d0a022ed8c1a0fe13865d5555ff37  igual_disco=true  token_igual=true
+HEAD                       arvore local                   NAO EXISTE nesse ref
+
+   Mesmos bytes no `d26b4fa` e no tip de hoje (md5 bate com o do disco, linha por linha do ponto 5
+   da seccao 20), mesmo `badge_token` no JSON dos dois lados, e em `HEAD` o caminho nao existe —
+   que e o corte do `b1d5c49` confirmado pela terceira vez, agora pelo conteudo e nao so pelo indice.
+
+4. A janela, e o fuso que quase a estragou. A linha viveu entre o mint e a limpeza:
+
+janela de vida da linha no banco : 2026-11-08T20:42:47.225Z -> 2026-11-08T21:23:48.039Z
+valor entrou no git em              : 2026-11-08T20:03:22-03:00
+o commit e POSTERIOR a limpeza por  : 99.6 minutos
+SEM JANELA: quando o valor foi commitado, a linha ja estava apagada
+
+   Lidos sem decode, os dois numeros dizem o contrario: «20:03» parece antes de «21:23». Mas o
+   `git show -s --format=%cI` devolve a hora LOCAL com offset (`-03:00`), e o `em` dos JSON do ciclo
+   vem de `toISOString()` e ja vai em Z. Convertido, o commit e 23:03:22Z — 99,6 min DEPOIS da
+   limpeza. Consequencia: quem clonou o repo em nenhum momento recebeu um cracha vivo. O push e
+   ainda mais tarde que o commit, logo o limite inferior tambem esta do lado certo; a afirmacao nao
+   depende de saber a hora exata do push.
+
+5. O que isto NAO e, escrito para nao virar conforto. A morte nao e um control — e um acaso de
+   ordenacao: o ciclo limpou a linha antes de o ficheiro ser commitado. A classe esta viva:
+   843 crachas, 843 activos, 843 tokens distintos, nenhum nulo. Um ciclo futuro que commite o
+   fixture ANTES da limpeza publicaria um token vivo, e ai nem `git rm --cached` nem `filter-repo`
+   o matam — so o banco. O portao tier-B existe para esse dia, e e por isso que ele corre no
+   pre-commit e nao so na revisao.
+
+veredito: a segunda das duas coisas em aberto da seccao 20 esta fechada por medicao — `TOKEN_MORTO`
+com controle positivo e elo de bytes. A primeira (o blob no historico) continua verdadeira e
+continua a exigir `filter-repo` + force push, que nao se faz sem OK novo; agora com o peso certo:
+o valor la dentro nao abre nada. Contagem: este bloco e a seccao vao ser commitados, por isso
+`git rev-list --count origin/main..HEAD` muda — era 26 com `HEAD`=`b145a3a`, re-contar depois, nao
+repetir o numero.

@@ -1,0 +1,56 @@
+{
+  "em": "2026-11-09T08:34:59.292Z",
+  "modo": "somente-leitura",
+  "tipo_token": "uuid",
+  "censo": {
+    "linhas": 843,
+    "activas": 843,
+    "tokens_distintos": 843,
+    "tokens_nulos": 0
+  },
+  "por_token": {
+    "casadas": 0
+  },
+  "por_id": {
+    "casadas": 0
+  },
+  "por_aluno": {
+    "casadas": 0
+  },
+  "rpc": {
+    "usa_token": true,
+    "usa_active": true,
+    "chars": 3260,
+    "security_definer": true
+  },
+  "acl": "{postgres=arwdDxtm/postgres,anon=rm/postgres,authenticated=arwdDxtm/postgres,service_role=arwdDxtm/postgres}",
+  "rls_on": true,
+  "policies": [
+    {
+      "nome": "gate_badges_family_issue",
+      "cmd": "a",
+      "inclui_anon": false
+    },
+    {
+      "nome": "gate_badges_family_read",
+      "cmd": "r",
+      "inclui_anon": false
+    },
+    {
+      "nome": "gate_badges_gatekeeper_read",
+      "cmd": "r",
+      "inclui_anon": false
+    },
+    {
+      "nome": "gate_badges_staff_manage",
+      "cmd": "*",
+      "inclui_anon": false
+    }
+  ],
+  "anon": {
+    "linhas_visiveis": 0
+  },
+  "veredito": "TOKEN_MORTO",
+  "gates": 6,
+  "falhas": []
+}
