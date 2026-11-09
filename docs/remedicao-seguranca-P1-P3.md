@@ -171,8 +171,26 @@ verdadeiros, não falsos positivos:
 - `reset-supervisor-password.mjs` — rastreado e **presente no tip empurrado**, com 1 senha hardcoded
   de 7 caracteres. Confirmado por md5 contra as 3 contas S20 ainda vivas: **não corresponde a
   nenhuma**, ou seja, não é a credencial de uma conta activa — mas é P1 da mesma classe dos 19
-  ficheiros do commit `80c951c` e ficou para trás. Tratar disto (tirar do tracking + rodar a senha)
-  é acção nova e precisa de OK explícito.
+  ficheiros do commit `80c951c` e ficou para trás.
+
+**Item tratado (09/11):** o `git rm --cached` + a entrada no `.gitignore` foram feitos. A **rotação
+não tem alvo** e foi medida como N/A, não assumida:
+- o `USER_ID a6624c51-8b6e-41cd-b8d1-f227eacb2273` do script **não está** em `auth.users`
+  (portão de controlo: a mesma consulta devolve **17** contas, logo o zero é facto e não instrumento cego);
+- `bcrypt.compare` da senha de 7 caracteres contra os 17 hashes vivos → **0 contas destrancadas**;
+- a senha escrita era literal de 7 caracteres num campo que devia levar hash bcrypt, ou seja o
+  script estava quebrado antes de quebrar a conta — e fica invisível ao portão a partir de agora.
+
+**Descoberta do mesmo passe — 8 combinações senha-conta que ainda funcionam hoje.** Colhidas com
+`seg-p1-senha-viva.mjs --com-disco`, que junta o tracking (1 senha) aos ficheiros ignorados do disco
+(7 senhas) e compara por bcrypt contra os hashes vivos:
+- `scripts/c7-gap-fix-prova.mjs` (len 9) → destranca 4 contas `@test.local` deixadas pelo S19
+  (0 sessões) **+** `981fcbb0…@bfr-admin.test` com **1 sessão viva**;
+- `scripts/s20-behavioral.mjs` (len 12) → destranca as 3 contas `@bfr.test` do S20, **3 sessões cada**
+  = os 9 refresh tokens da pendência 1.
+
+Rodar estas 8 é escrita em `auth` e **não estava** no OK do item 2; fica como acção nova. As 9
+contas `@gmail.com` são OAuth-only (sem senha nenhuma) e não se tocam.
 
 Depois dos cortes de `secretary` e da exigência de forma, **zero falsos positivos em ficheiros de
 texto**.
@@ -374,17 +392,28 @@ node scripts/seg-p0-access-probe.mjs        # custo do push depois do URL limpo 
 node scripts/seg-p0-no-secret-in-docs.mjs   # portao: zero tokens por extenso nos registos e memorias
 
 node scripts/seg-precommit-gate.mjs --staged  # portao de aplicacao: nada de credencial no commit
-node scripts/seg-precommit-gate.mjs $(git ls-files)   # varredura dos 445 tracked (Saida=1: 79 binarios + 2 reais)
+node scripts/seg-precommit-gate.mjs $(git ls-files)   # varredura dos tracked (media original: 445, 79 binarios + 2 reais)
 node scripts/seg-precommit-gate.mjs docs/v118-swclone-login.png --ack-binario  # escape humana para binario visto
+
+node scripts/seg-p1-supervisor-recon.mjs      # o USER_ID do reset ainda existe? portao de controlo: 17 contas
+node scripts/seg-p1-senha-viva.mjs            # senhas do tracking x hashes vivos por bcrypt (da 1 senha -> 0)
+node scripts/seg-p1-senha-viva.mjs --com-disco  # idem + ignorados do disco: mede as 8 combinacoes vivas
 ```
 
 ## Em aberto depois deste passe
 
-1. **Remover ou rodar a senha das 3 contas S20 vivas** — fecha os 9 refresh tokens reutilizáveis e a
-   senha partilhada que estão no histórico. Escrita em `auth`, precisa de OK.
+1. **Rodar a senha das 8 combinações que ainda destroem conta hoje** — a régua é
+   `seg-p1-senha-viva.mjs --com-disco` e o número subiu de 3 para 8 nesta passada: as 3 `@bfr.test`
+   do S20 (os 9 refresh tokens) + 4 `@test.local` deixadas pelo S19 (0 sessões) + 1
+   `981fcbb0…@bfr-admin.test` com 1 sessão viva. Escrita em `auth`, precisa de OK. As 9 `@gmail.com`
+   são OAuth-only e não se tocam.
 2. **Revogar o GitHub PAT** — Prioridade 0; o URL limpo já está aplicado, falta só a revogação e
    o substituto no credential manager. Humana (não há sessão do GitHub no browser).
 3. **Decisão do CSP** — uma das três rotas, ou aceitar o risco escrito.
 4. **Sessão em localStorage** — item de arquitetura, não estava no plano.
 5. Push de `8a93164` + `3f9e056` — não feito; agora bloqueado por **falta de credencial**, não só
    pela revogação. Mede-se com o portão D.
+
+**Fechado neste passe:** `reset-supervisor-password.mjs` saiu do tracking (`git rm --cached`) e entrou
+no `.gitignore` junto das irmãs de mint; a rotação do ficheiro foi **medida como N/A** (o `USER_ID`
+já não existe em `auth.users` e a senha destranca 0 contas), não presumida.
