@@ -668,3 +668,49 @@ veredito: indice verde por medicao ao fecho desta seccao (96 == 96, 0 partidos, 
 de 25 000 do loader); a regra de podar passa a valer como passo obrigatorio **depois de cada edicao**
 do indice, corrida com `node scripts/seg-fin-mem-indice.mjs`, nunca citada de memoria; nada foi
 pushado e continua sem hook.
+
+§18 — O commit que envelhece a contagem nao e o commit que fala dela (09/11)
+
+Ao fechar a seccao 17 corrigi nela mesma a colisao de nome: as referencias de corpo «S16» e «S17»
+liam-se como o ciclo de auditoria da Supervisao, que neste repo se escreve `S16-3`. O commit desse
+conserto, `794638e`, nao menciona a contagem em linha nenhuma. Nao a menciona, e ela mudou:
+
+$ git rev-list --count origin/main..HEAD
+22
+$ git log -1 --format=%h
+794638e
+
+Tres coisas desta medicao:
+
+1. O gatilho da regra da seccao 16 estava errado, nao o remedio. A regra dizia «uma grandeza que o
+   meu proprio acto de registar altera»; o que altera a contagem e qualquer commit local, inclusive
+   os que tratam de outra coisa. Logo nao se espera pelo commit «que corrige a linha» para re-contar
+   — conta-se no instante em que se vai citar.
+2. Causa atribuida por leitura comparada, e nao por impressao: `docs/remedicao-seguranca-P1-P3.md`
+   ja diz «re-contar com `git rev-list --count origin/main..HEAD`, porque cada commit local muda este
+   numero». O plano no repo tinha o alcance certo antes de a memoria o ter. Primeira vez neste ciclo
+   em que a corregao foi do ficheiro para a memoria, e nao ao contrario.
+3. Unica ordem que faz o numero ser verdadeiro ao escrever-se: medir, commitar, citar. Esta seccao
+   vai ser commitada e por isso muda a contagem que ela propria cita (22 → 23). Fica registada como
+   historia do instante; o estado e o comando.
+
+Os dois portaos de memoria, corridos antes deste commit:
+
+$ node scripts/seg-fin-mem-indice.mjs
+MEMORY.md: 24967 bytes (tecto 25000) | 99 linhas
+PORTAO DO INDICE OK                                       EXIT=0
+
+$ node scripts/seg-fin-mem-varredura.mjs
+corpus de senhas do disco: 6
+ficheiros de memoria varridos: 97
+PORTAO DE MEMORIA OK                                      EXIT=0
+
+A entrada 17 da memoria de higiene dizia «conserto medido: 24 944 B, folga 56 B». Continua certa como
+historia do instante em que a falha do indice caiu e falsa como estado: ao fecho desta seccao a folga
+medida e 33 B. Passei a clausula para la da propria entrada, para que um leitor nao volte a podar o
+indice pelo numero velho.
+
+veredito: contagem re-medida a 22 no momento da escrita (HEAD `794638e`, `origin/main` `80c951c`),
+comando junto da linha de memoria e alcance da regra alargado a qualquer commit local; indice e
+memoria verdes por medicao acima; nada foi pushado, continua sem hook, e o passo de credencial
+(revogar o PAT e correr `node scripts/seg-p0-install-credencial.mjs`) segue do lado do dono.
