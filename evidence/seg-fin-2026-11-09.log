@@ -498,3 +498,49 @@ veredito: o indice esta coerente (96 | 96, 0 partidos, 0 orfos) e o MEMORY.md me
 tecto de 25 000 -- 207 bytes de folga, ou seja ~2 linhas. O portao corre so por chamada, como o
 restante: nao ha hook. Dois instrumentos independentes deram o mesmo veredito nesta passada (o
 rascunho em %TEMP% e o congelado em scripts/), e foi o rascunho que apanhou o falso positivo meu.
+
+§14 — Controlo negativo CONGELADO em scripts/seg-fin-mem-controles.mjs, e o verde que veio pelo
+motivo errado (09/11)
+
+Re-rodada a cadeia de provas da camada D depois do commit fe499fd, desta vez com o instrumento
+dentro do repo e nao em %TEMP%. Seis casos, todos com o MOTIVO verificado no texto e nao apenas com
+o codigo de saida:
+
+OK  D semeada deve recusar pelo segredo: exit 1 (esperado 1), motivo "PORTAO DE MEMORIA FALHA" presente
+OK  D sem directorio deve falhar alta: exit 1 (esperado 1), motivo "INSTRUMENTO CEGO: nao ha registos" presente
+OK  indice sem directorio deve falhar alto: exit 1 (esperado 1), motivo "INSTRUMENTO CEGO" presente
+OK  indice sem topic files deve falhar alto: exit 1 (esperado 1), motivo "INSTRUMENTO CEGO" presente
+OK  D ao vivo deve passar: exit 0 (esperado 0), motivo "PORTAO DE MEMORIA OK" presente
+OK  colheita identica nos dois instrumentos: local 6 x portao 6
+CONTROLO NEGATIVO OK — recusa pelo segredo, falha alta sem registos, passa ao vivo, artefactos apagados
+seed-camada-d existe ainda? nao
+vazio-camada-d existe ainda? nao
+
+A linha semeada nunca saiu em claro: `prova-camada-d.md: senha md5=1425d5d3160a len=13 aparece 1x`,
+em directorio de os.tmpdir(), apagado no fim com ausencia provada.
+
+O achado desta passada e do proprio controlo, nao do portao. A primeira versao tinha
+`roda = (label, args)` mas era chamada como `roda(gate, [alvo, '--mem-dir=…'])`: o caminho do
+script entrou no parâmetro do rótulo, o `alvo` entrou como argv[1] do node — ou seja, virou o
+script que o node executa — e o portao ficou sem nenhum ficheiro para verificar. Resultado:
+
+$ node scripts/seg-precommit-gate.mjs --mem-dir=…seed…
+INSTRUMENTO CEGO: nenhum ficheiro para verificar
+EXIT=1
+
+e o veredito escreveu `OK  D semeada deve recusar pelo segredo: exit 1 (esperado 1)`. Dois dos
+cinco casos estavam verdes por um motivo que nao era o predicado medido — a recusa vinha da
+falta de alvo, nao da senha semeada. O mesmo exit 1 serve para «segredo encontrado» e para «nem
+olhei para nada»; so a mensagem os distingue.
+
+Regra que fica: **num controlo negativo, o esperado e (codigo, motivo); o codigo sozinho e o
+portao de forma deste mundo.** E o INSTRUMENTO CEGO tem de ser caso de teste afirmativo — se a
+cegueira tambem devolve 1, um harness partido passa no teste de seguranca.
+
+O controlo agora compara ainda o corpus colhido localmente com o que o portao imprime
+(6 x 6), porque a colheita do seed e copia literal do padrao do seg-fin-mem-varredura.mjs: se as
+duas implementacoes divergirem, o veredito falha em vez de silenciar.
+
+veredito: camada D provada nos quatro comportamentos com instrumento congelado; registo semeado
+recusado; cegueira recusada; vivo verde; artefactos apagados. Continua sem hook instalado — o
+portao corre quando chamado.

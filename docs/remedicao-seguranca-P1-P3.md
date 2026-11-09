@@ -476,6 +476,7 @@ node scripts/seg-fin-mem-varredura.mjs --ver # contexto mascarado (o valor sai p
 node scripts/seg-fin-mem-redact-por-corpus.mjs        # dry-run: so ficheiro:linha, len e md5
 node scripts/seg-fin-mem-redact-por-corpus.mjs --apply  # A ESCRITA: redige e congela em %TEMP%\bfr-mem-redact-corpus-*
 node scripts/seg-fin-mem-indice.mjs          # portao de INTEGRIDADE do indice: linhas == topic files, 25 000 B
+node scripts/seg-fin-mem-controles.mjs       # controlo negativo dos dois portoes: 5 casos com exit E motivo
 node scripts/seg-precommit-gate.mjs --staged # camadas A, B, C sobre o staged + camada D delegada
 ```
 
@@ -623,6 +624,15 @@ o artefacto foi destruído no fim):
 | gate com a camada D (3 ficheiros) | `camada D — registos fora do repo (memoria do projecto):` … `PORTAO PRE-COMMIT OK — zero credenciais nas camadas A, B, C e D`, exit 0 |
 | registo semeado com uma senha do corpus | `prova-camada-d.md: senha md5=1425d5d3160a len=13 aparece 1x` → `PORTAO DE MEMORIA FALHA — 1 ocorrencias` → `PORTAO PRE-COMMIT FALHA`, exit 1 |
 | `--mem-dir=` inexistente / directório sem `.md` | `INSTRUMENTO CEGO` nos dois casos, exit 1 |
+
+Re-rodados 09/11 (depois do commit da ligação) com o controlo **congelado** em
+`scripts/seg-fin-mem-controles.mjs` — diário §14, 6/6 verde, artefactos de ensaio apagados com a
+ausência provada. A razão de congelar: na primeira passada o harness chamava `roda(label, args)`
+com `(script, args)`, o argumento de alvo foi consumido como caminho do script, e o portão devolveu
+`INSTRUMENTO CEGO: nenhum ficheiro para verificar` com **exit 1** — que batia certo com o esperado
+dos casos negativos. Dois controles estiveram verdes por um motivo que não era o predicado medido.
+Desde aí cada caso afirma `(código, motivo)`: o código só prova que alguém recusou, não o que foi
+recusado; e como a cegueira também devolve 1, um harness partido passaria no teste de segurança.
 
 O que a ligação **não** muda: continua a não haver hook instalado, por isso a camada D corre quando
 o portão é chamado — ver «Portão pré-commit» acima.
