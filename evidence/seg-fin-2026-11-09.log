@@ -784,3 +784,96 @@ veredito: superficie re-medida ao inves de repetida, duas memorias velhas postas
 os factos, indice verde com folga de 124 B e o conflito `docs/c2-fixtures.json` × portao
 entregue como pergunta. Esta seccao vai ser commitada e por isso muda a contagem que o registo
 cita: re-contar depois, nao repetir o 23.
+
+## 20. docs/c2-fixtures.json sai do tracking, o padrao medido e o que ja foi empurrado (09/11)
+
+Pergunta entregue no fecho da seccao 19, respondida pelo dono com «aplica o git rm --cached e o
+padrao no .gitignore». Registado como execucao, com o custo ao lado.
+
+1. A superficie antes de mexer. Os 7 ficheiros com nome de fixture estao todos tracked (468 no
+   indice). Corridos pelo portao, um a um, bloqueia exactamente um:
+
+$ node scripts/seg-precommit-gate.mjs docs/c2-fixture-recon.json docs/c2-fixtures.json \
+    docs/c7-fixtures.json evidence/e2e2-fixture.json evidence/pf-throttle-fixture-dryrun.json \
+    evidence/pf-throttle-fixture.json evidence/s19-fixtures.json
+  docs/c2-fixtures.json: tier-B=1 <<< BLOQUEIA  chave "badge_token" len 36 @$.badge_token
+  (os outros 6: tier-B=0, OK)
+PORTAO PRE-COMMIT FALHA                                            EXIT=1
+
+2. O que la dentro e segredo, medido por estrutura e nunca por valor (chaves e comprimentos):
+   o ficheiro tem 9 chaves. Uma so entra no portao como tier-B — `badge_token`, len 36; as outras
+   tres de 36 caracteres (`badge`, `parent_uid`, `student_uid`) sao uuids de linhas sintetizadas,
+   ficam fora do tier-B, e as restantes (ciclo, em, school, turma, aluno) sao etiquetas.
+   O badge_token e um token opaco de 36 caracteres: e o cracha mintado pelo C2, ou seja, o
+   ficheiro e da mesma
+   classe dos *-sessions.json e dos *-contas*.json que o .gitignore ja recusa. Os vizinhos de
+   nome parecido nao sao: c7-fixtures.json leva 3 uid e nenhuma senha, s19-fixtures.json leva
+   7 chaves com 0 suspeitas, e os tres *-fixture.json (singular) de evidence/ tem 0.
+
+3. Aplicado. `git rm --cached docs/c2-fixtures.json` — o indice perde 1 dos 468, o disco nao
+   perde nada, provado por hash identico antes e depois:
+
+   antes  431 B  md5 6d7d0a022ed8c1a0fe13865d5555ff37
+   depois 431 B  md5 6d7d0a022ed8c1a0fe13865d5555ff37   (mesmo byte, so mudou o tracking)
+
+4. O padrao escolhido foi medido depois de escrito, com `git check-ignore -q --no-index` por
+   ficheiro — a primeira vez que o medi fora um instrumento cego: passei o padrao como argumento
+   a um comando que so aceita caminhos, e ele respondeu «nao ignora nada» para os 7. Refeito:
+
+   docs/c2-fixtures.json        IGNORA      fora do indice
+   docs/c7-fixtures.json        IGNORA      ainda tracked
+   evidence/s19-fixtures.json   IGNORA      ainda tracked
+   docs/c2-fixture-recon.json   nao ignora  tracked   (nome no singular: -fixture-recon)
+   evidence/*-fixture*.json     nao ignora  tracked   (os 3 do mesmo tipo)
+
+   Custo real do padrao, registado em vez de escondido: gitignore nao afecta o que ja esta no
+   indice, entao c7 e s19 continuam tracked e continuam a ser varridos pelo portao. Mas se
+   alguem os remover do indice — ou se um ciclo novo escrever um `*-fixtures.json` limpo e
+   quiser commita-lo — o `git add` recusa sem `-f`. E o preco de escolher padrao. O caso de
+   09/11 e o inverso: `reset-supervisor-password.mjs` saiu do tracking no commit `2a6a351` com
+   uma entrada por ficheiro, e a regra da casa (memoria do snapshot) e que entradas por
+   ficheiro deixaram S19/S20/C2 passarem — por isso aqui fica o padrao, e fica o custo escrito
+   aqui em vez de descoberto mais tarde.
+
+5. O que o conserto NAO faz, e a parte que interessa ao dono. O valor ja foi empurrado:
+
+$ git merge-base --is-ancestor d26b4fa refs/remotes/origin/main ; echo $?
+0                                    <- 0 = e ancestor: o badge_token esta no historico publico
+
+   O commit `d26b4fa` («congela os ciclos C2, C7 e C7-GAP-FIX») esta antes de `80c951c`, portanto
+   esta no GitHub. `git rm --cached` fecha o futuro — nenhum commit novo leva o ficheiro — e nao
+   reescreve o passado. Reescrever (filter-repo + force push) e destrutivo e mexe em estado
+   partilhado, nao se faz sem OK explicito.
+   E nao posso afirmar que o token esta morto: a prova de limpeza do C2 fica em
+   `docs/c2-4-limpeza.json` e so cobre 3 grandezas (md5_route_incidents=empty,
+   md5_student_messages, md5_gate_checkins), contas_vivas=0, 20 portoes, 0 falhas. Nao ha la
+   nenhuma contagem de `gate_badges`. O que se pode dizer e por inferencia — o aluno sintetico
+   do ficheiro foi eliminado com as contas e o cracha aponta para ele — e inferencia nao e
+   medicao. Fica em aberto, com o comando que a fecha: contar em `public.gate_badges` as linhas
+   com o token do ficheiro (somente-leitura, 1 numero, sem escrever o valor no registo).
+
+6. Dependencia viva no rig. 6 scripts referenciam o caminho `docs/c2-fixtures.json`
+   (c2-mint.mjs escreve; c2-jornada-monitor.mjs, c2-jornada-monitor-jwt.mjs,
+   c2-jornada-parent-jwt.mjs, c2-jornada-gatekeeper-jwt.mjs, c2-4-limpeza.mjs leem). Correm
+   neste disco, onde o ficheiro ficou; num clone novo nao existe, e os scripts do C2 falham la.
+   Aceite de proposito: o ciclo ja fechou, a reprodutibilidade do ciclo nao depende do repo.
+
+Os portoes, corridos depois de tudo:
+
+$ git status --short
+M  .gitignore
+D  docs/c2-fixtures.json
+
+$ node scripts/seg-precommit-gate.mjs --staged
+  .gitignore: PAT=0 service_role-JWT=0 PEM=0 senha-conhecida=0 tier-B=0 JWT-sessao=0 anon-JWT=0 OK
+senhas no corpus: 6 (comprimentos 9/12/12/13/13/14) | ficheiros lidos: 1/1 | binarios nao cobertos: 0
+ficheiros de memoria varridos: 97
+PORTAO DE MEMORIA OK                                       EXIT=0
+PORTAO PRE-COMMIT OK — zero credenciais nas camadas A, B, C e D
+
+veredito: o conflito `docs/c2-fixtures.json` × portao esta fechado pelo lado do tracking, com o
+byte do ficheiro intacto (md5 conferido acima) e o padrao medido ficheiro a ficheiro. Ficam duas
+coisas registradas como em aberto, nenhuma delas executavel por mim sem OK novo: o badge_token
+mora no historico empurrado desde `d26b4fa`, e a morte desse token nao esta provada em lado
+nenhum. Esta seccao vai ser commitada e por isso muda a contagem que o registo cita (24 → 25):
+re-contar com `git rev-list --count origin/main..HEAD`, nao repetir o numero.

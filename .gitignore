@@ -14,6 +14,11 @@ bfr-audit-session-*.json
 bfr-audit-contas.json
 *.bak
 
+# Fixture de ciclo: sao os ids mintados das contas sinteticas e, no C2, o token
+# do cracha — a classe que o portao marca como tier-B. O que ja esta no indice
+# fica la (gitignore nao afecta tracked); o padrao vale para o que vier.
+*-fixtures.json
+
 # Perfis de browser dos rigs de captura: trazem Local Storage e Login Data com
 # as sessões reais do ciclo. 196 MB no C2, e nenhum deles ignorado até aqui.
 *-chrome-profile/
