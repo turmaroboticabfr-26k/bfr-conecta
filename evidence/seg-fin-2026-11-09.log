@@ -544,3 +544,47 @@ duas implementacoes divergirem, o veredito falha em vez de silenciar.
 veredito: camada D provada nos quatro comportamentos com instrumento congelado; registo semeado
 recusado; cegueira recusada; vivo verde; artefactos apagados. Continua sem hook instalado — o
 portao corre quando chamado.
+
+§15 — Instalador da credencial do GitHub: scripts/seg-p0-install-credencial.mjs (09/11)
+
+O passo 5 do plano (instalar o token no credential manager para destravar os 17 commits parados)
+vivia so em prosa, como uma linha de `printf` para colar. Passou a instrumento congelado, com
+--dry-run para se poder provar sem escrever no GCM. O valor sai por STDIN, nunca por argv: argv e
+visivel na lista de processos e fica no historico da shell.
+
+Cinco comportamentos medidos, os quatro primeiros com artefactos de ensaio em %TEMP% (destruidos
+no fim, ausencia provada com ls):
+
+$ node scripts/seg-p0-install-credencial.mjs
+INSTRUMENTO CEGO: nao ha ficheiro de token em C:\Users\pcmac\.gh-token   EXIT=1
+$ … --token-file=…/gh-token      (conteudo «curto»)
+INSTRUMENTO CEGO: token de len=5 … curto demais para ser um PAT valido   EXIT=1
+$ … --token-file=…/nao-pat       (38 chars sem prefixo)
+INSTRUMENTO CEGO: o conteudo … nao comeca por github_pat_ nem ghp_       EXIT=1
+$ … --token-file=…/classico --dry-run
+ficheiro: … | tipo=classico | len=44 | md5=2bbb9c0017b5
+aviso: este e um PAT CLASSICO (todo o account). O plano pede fine-grained …
+$ … --token-file=…/fine --dry-run
+ficheiro: … | tipo=fine-grained | len=69 | md5=f6376d31f08b
+remoto: https://github.com/turmarobiticabfr-26k/bfr-conecta.git | host=github.com | username=turmarobiticabfr-26k (derivados, nao digitados)
+  password=REDACTED
+DRY RUN OK — os predicados passaram e nenhum ficheiro foi tocado            EXIT=0
+
+Nenhum valor foi impresso em nenhum dos cinco passes: so len e os 12 hex do md5, e o payload do
+dry-run sai mascarado. O mascaramento e texto fixo (`REDACTED`), com as quatro rotas de sempre
+(PAT por prefixo, userinfo no URL, linha `password=`, e o literal do token por extenso) — a regra
+vem das duas falhas de sed do P0, em que \0 no substituto reinsere o que casou.
+
+Derivacao, nao digitacao: `host` e `username` saem de `git config --get remote.origin.url`
+(username = primeiro segmento do path). Foi medido 09/11 que e esse o par que o GCM pede
+(`turmarobiticabfr-26k@github.com`). Se o URL voltar a trazer credencial embutida, o instalador
+recusa (`cego`) em vez de re-instalar o P0.
+
+Achado de instrumento: a primeira versao do dry-run tambem chamava `git credential fill` para
+dizer se ja havia credencial guardada. Ao medir, o GCM escreve os `fatal:` dele para a consola,
+nao para o stderr capturado, por isso a saida saida duplicada e o «NAO HA credencial» seria
+afirmado pelo exit code de um modo que nao distingue «nao ha» de «o GCM nao pode perguntar».
+Caiu do dry-run. Regra: um probe cuja falha e indistinguivel do sucesso nao entra num veredito.
+
+veredito: instalador congelado e provado nos cinco comportamentos; o push continua a nao ser
+corrido (falta o token real no ~/.gh-token, que so o dono escreve); continua sem hook.

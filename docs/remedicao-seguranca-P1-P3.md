@@ -83,14 +83,22 @@ revogação não é opcional nem pode esperar por um próximo incidente.
 2. **Emitir substituto mínimo** — de preferência *fine-grained*: *Contents: Read and write*
    e, em *Repository access*, **Only select repositories** → `bfr-conecta`. Nada de `repo` completo,
    nada de admin, nada de write packages.
-3. **Guardar sem voltar ao URL** — duas rotas, escolher uma:
-   - escrever o token novo num ficheiro meu (`~/.gh-token`, com `chmod 600`) e dizer-me; eu instalo-o
-     no credential manager pelo stdin do `git credential approve` e apago o ficheiro. O valor
-     nunca passa pelo comando nem pelo chat.
-   - ou correr uma vez `git push` num terminal interactivo e deixar o Git Credential Manager
-     guardar a credencial sozinho.
+3. **Guardar sem voltar ao URL** — o token vive só em `~/.gh-token`, escrito pelo dono. Em
+   PowerShell, sem que o valor passe pelo histórico nem pela impressão:
+   ```powershell
+   $t = Read-Host "cola o token" -AsSecureString
+   $t | ConvertFrom-SecureString -AsPlainText | Set-Content -NoNewline "$env:USERPROFILE\.gh-token"
+   ```
+   Depois instala-se com `scripts/seg-p0-install-credencial.mjs`, que lê esse ficheiro, deriva
+   `host` e `username` do `remote.origin.url` (o username que o GCM pede é o dono do path:
+   `turmarobiticabfr-26k`), envia o valor **por stdin** para `git credential approve` e confere com
+   `git ls-remote origin`. `--dry-run` mostra o payload com `password=REDACTED` e não escreve em
+   nada; `--token-file=` é para teste. Nunca imprime o token: só `len` e os 12 hex do md5, e o
+   substituto da redacção é **texto fixo** (a regra que vem das duas falhas de `sed` acima).
+   Alternativa: correr uma vez `git push` num terminal interactivo e deixar o GCM guardar sozinho.
    Em nenhuma das rotas se volta a pôr o token no URL do remote.
-4. **Confirmar**: `git ls-remote --heads origin` → deve listar ramos; depois `git push origin main`
+4. **Confirmar**: o passo 3 já confere (`ls-remote` com exit 0 = credencial instalada); depois
+   `git ls-remote --heads origin` → deve listar ramos; e só então `git push origin main`
    para o que está local (`git log --oneline origin/main..HEAD` é a régua; eram 2 em 09/11 de manhã,
    são 5 depois dos commits do censo e do P0).
 
@@ -446,6 +454,8 @@ node scripts/seg-check-token-death.mjs      # agregado read-only de morte das se
 node scripts/seg-p0-token-sweep.mjs         # onde vivem as copias do PAT (so conta/prefixo/comprimento)
 node scripts/seg-p0-clean-remote.mjs        # instala o URL limpo + portoes 1/2
 node scripts/seg-p0-access-probe.mjs        # custo do push depois do URL limpo (portoes A-F)
+node scripts/seg-p0-install-credencial.mjs --dry-run   # pre-visualizacao do payload (password=REDACTED)
+node scripts/seg-p0-install-credencial.mjs  # le ~/.gh-token, approve por stdin, confere com ls-remote
 node scripts/seg-p0-no-secret-in-docs.mjs   # portao: zero tokens por extenso nos registos e memorias
 
 node scripts/seg-precommit-gate.mjs --staged  # portao de aplicacao: nada de credencial no commit
