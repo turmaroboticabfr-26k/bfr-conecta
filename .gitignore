@@ -14,6 +14,10 @@ bfr-audit-session-*.json
 bfr-audit-contas.json
 *.bak
 
+# Perfis de browser dos rigs de captura: trazem Local Storage e Login Data com
+# as sessões reais do ciclo. 196 MB no C2, e nenhum deles ignorado até aqui.
+*-chrome-profile/
+
 # Scripts com credenciais sintéticas hardcoded
 criar-conta-supervisor-api.mjs
 create-supervisor-fresh.mjs
