@@ -62,7 +62,9 @@ const harvest = (dir, depth) => {
     const p = path.join(dir, e.name);
     if (e.isDirectory()) out.push(...harvest(p, depth - 1));
     else if (/\.(mjs|js|sql|md|json)$/.test(e.name)) {
-      out.push(...[...fs.readFileSync(p, 'utf8').matchAll(CORPUS_RX)].map((m) => m[1]));
+      // um literal com ${...} e interpolacao de codigo (ex.: encrypted_password='${hash}'),
+      // nao uma senha em claro; contava como senha e o portao bloqueava o proprio script.
+      out.push(...[...fs.readFileSync(p, 'utf8').matchAll(CORPUS_RX)].map((m) => m[1]).filter((s) => !s.includes('${')));
     }
   }
   return out;

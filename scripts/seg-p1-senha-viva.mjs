@@ -13,6 +13,8 @@ const DIR = 'C:/Users/pcmac/Documents/Qoder/2026-10-13/28077d9a/bfr-conecta';
 const md5 = (s) => crypto.createHash('md5').update(s).digest('hex');
 const BIN = /\.(png|jpe?g|gif|webp|ico|bmp|pdf|zip|gz|tar|7z|woff2?|ttf|otf|mp4|webm|xlsx|docx|pptx)$/i;
 const RX = /password\s*[:=]\s*["']([^"'\n]{4,})["']/gi;
+// `encrypted_password='${hash}'` casa o RX mas e interpolacao de codigo, nao senha em claro
+const senhaReal = (s) => !s.includes('${');
 
 const files = execFileSync('git', ['ls-files'], { cwd: DIR, encoding: 'utf8' }).split('\n').filter(Boolean);
 const senhas = new Map();
@@ -22,10 +24,10 @@ for (const rel of files) {
   let txt;
   try { txt = readFileSync(`${DIR}/${rel}`, 'latin1'); } catch { continue; }
   lidos++;
-  for (const m of txt.matchAll(RX)) if (!senhas.has(m[1])) senhas.set(m[1], rel);
+  for (const m of txt.matchAll(RX)) if (senhaReal(m[1]) && !senhas.has(m[1])) senhas.set(m[1], rel);
 }
-if (!senhas.size) { console.log('INSTRUMENTO CEGO: zero senhas colhidas — a comparacao nao prova nada'); process.exit(1); }
-console.log(`[PUSHED] senhas em claro colhidas de ${lidos} ficheiros rastreados: ${senhas.size}`);
+if (!senhas.size) console.log('[PUSHED] zero senhas no tracking (desde 2a6a351) — o guarda de cegueira passa a olhar o corpus do disco');
+else console.log(`[PUSHED] senhas em claro colhidas de ${lidos} ficheiros rastreados: ${senhas.size}`);
 
 // o mesmo corpus do portao, mas incluindo o que esta no disco sem estar no tracking
 import path from 'node:path';
@@ -38,12 +40,14 @@ const walk = (dir, depth) => {
     const p = path.join(dir, e.name);
     if (e.isDirectory()) walk(p, depth - 1);
     else if (/\.(mjs|js|sql|md|json)$/.test(e.name)) {
-      for (const m of fs.readFileSync(p, 'latin1').matchAll(RX)) if (!disco.has(m[1])) disco.set(m[1], path.relative(DIR, p));
+      for (const m of fs.readFileSync(p, 'latin1').matchAll(RX)) if (senhaReal(m[1]) && !disco.has(m[1])) disco.set(m[1], path.relative(DIR, p));
     }
   }
 };
 if (process.argv.includes('--com-disco')) walk(DIR, 3);
 console.log(`[DISCO] senhas colhidas (tracking + ignorados): ${disco.size}`);
+// o guarda de cegueira avalia o corpus que vai ser comparado, não só o tracking
+if (!disco.size) { console.log('INSTRUMENTO CEGO: zero senhas colhidas — a comparacao nao prova nada'); process.exit(1); }
 
 const rows = await sql(`select id, email, role, created_at, last_sign_in_at, encrypted_password from auth.users order by created_at`);
 if (!Array.isArray(rows) || !rows.length) { console.log('INSTRUMENTO CEGO: auth.users devolveu zero linhas'); process.exit(1); }
