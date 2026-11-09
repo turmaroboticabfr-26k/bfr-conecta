@@ -185,10 +185,12 @@ repetida depois do corte dá **444 ficheiros lidos, 80 bloqueios = 79 binários 
 - corrida sem `--com-disco` depois do corte, o `seg-p1-senha-viva.mjs` sai com **INSTRUMENTO CEGO:
   zero senhas colhidas** — que é precisamente o veredicto correcto: o tracking já não contém senha
   em claro nenhuma, e o guarda de cegueira recusa-se a emitir «nada encontrado» sem instrumento.
+  Re-medido 09/11 depois de `seg-rotacao-8.mjs` entrar no índice: continua **0**, mas só porque o
+  predicado passou a filtrar interpolação — ver a armadilha em «P1 item 1».
 
 **Descoberta do mesmo passe — 8 combinações senha-conta que ainda funcionam hoje.** Colhidas com
 `seg-p1-senha-viva.mjs --com-disco`, que junta o tracking (1 senha, antes do corte) aos ficheiros
-ignorados do disco (7 senhas) e compara por bcrypt contra os hashes vivos:
+ignorados do disco e compara por bcrypt contra os hashes vivos:
 - `scripts/c7-gap-fix-prova.mjs` (len 9) → destranca 4 contas `@test.local` deixadas pelo S19
   (0 sessões) **+** `981fcbb0…@bfr-admin.test` com **1 sessão viva**;
 - `scripts/s20-behavioral.mjs` (len 12) → destranca as 3 contas `@bfr.test` do S20, **3 sessões cada**
@@ -401,24 +403,89 @@ node scripts/seg-precommit-gate.mjs $(git ls-files)   # varredura dos tracked (m
 node scripts/seg-precommit-gate.mjs docs/v118-swclone-login.png --ack-binario  # escape humana para binario visto
 
 node scripts/seg-p1-supervisor-recon.mjs      # o USER_ID do reset ainda existe? portao de controlo: 17 contas
-node scripts/seg-p1-senha-viva.mjs            # senhas do tracking x hashes vivos por bcrypt (da 1 senha -> 0)
-node scripts/seg-p1-senha-viva.mjs --com-disco  # idem + ignorados do disco: mede as 8 combinacoes vivas
+node scripts/seg-p1-senha-viva.mjs            # senhas do tracking x hashes vivos por bcrypt (0, com o filtro de interpolacao)
+node scripts/seg-p1-senha-viva.mjs --com-disco  # idem + ignorados do disco: mediu as 8 combinacoes vivas; hoje da 0
+node scripts/seg-p1-admin-route-probe.mjs     # GET admin por conta: quais existem no GoTrue e quais sao linhas-fantasma
+node scripts/seg-rotacao-8.mjs                # preflight somente-leitura dos alvos + canais + sessoes (nao escreve)
+node scripts/seg-rotacao-8.mjs --rodar        # A ESCRITA: roda a senha dos alvos e prova por bcrypt antes/depois
+node scripts/seg-p1-residuo-pos-rotacao.mjs   # resíduo project-wide de sessoes/refresh depois da rotação
+node scripts/seg-gate-hit.mjs scripts/X.mjs    # que linha do ficheiro casa com o corpus do portao (linha, len, md5)
 ```
+
+## P1 item 1 — rotação das 8 combinações vivas — **EXECUTADA 09/11**
+
+OK do usuário («avança com as 8») sobre a acção nomeada: escrita em `auth`. Instrumento
+`seg-rotacao-8.mjs`; diário `evidence/p1-rotacao-8.json`; senhas novas **só** em
+`C:/Users/pcmac/.bfr-rotacao-senhas.json` (fora do repo, 8 entradas, nunca impressas — no chat saem
+comprimento 32 e md5 de 12 hex).
+
+**Achado que mudou o desenho — 4 das 8 são linhas-fantasma.** O `PUT /auth/v1/admin/users/:id`
+devolveu **404 `user_not_found`** nas 4 `@test.local`, e o `GET` da mesma rota confirma: existem em
+`auth.users` (SQL) mas **o GoTrue não as lista** — 13 contas listadas vs 17 em SQL. É exactamente a
+assinatura já registada do GoTrue não reconhecer contas mintadas por SQL direto: a linha foi criada
+por SQL e nunca foi sincronizada.
+Colhidas 07/11 às 02:24Z por um ciclo que mintou via SQL. Prova comportamental: login com a senha
+vazada numa delas → **HTTP 400 `invalid_credentials`, 0 sessões criadas**. Ou seja, **as 4 nunca
+destrancaram nada** — o bcrypt dizia «sim» contra um hash que o serviço não usa.
+
+Canal por conta, medido e não presumido:
+
+| Banda | Contas | Canal | Resultado |
+|---|---|---|---|
+| GoTrue-listada | 1 `@bfr-admin.test` + 3 `@bfr.test` | `PUT /auth/v1/admin/users/:id` | HTTP 200 ×4 |
+| linha-fantasma | 4 `@test.local` | `UPDATE auth.users SET encrypted_password=<bcrypt novo>` | 1 linha ×4, e a visibilidade no GoTrue **não mudou** (404→404, portão) |
+
+Prova por `bcrypt.compare` em cada alvo: a senha vazada **deixa** de destrancar, a nova **destranca**.
+Depois, sobre o corpus inteiro: **0 combinações vivas**, pelos dois instrumentos
+(`seg-rotacao-8.mjs` [6] e `seg-p1-senha-viva.mjs --com-disco`). Re-medido neste passe, já com o
+predicado corrigido: o corpus do disco são **6 senhas reais** (md5 `1425d5d3160a` len 13,
+`3eceecd4c712` len 14, `bd43650e6ab5` len 13, `ecc4208a7778` len 9, `480341a0aa25` len 12,
+`c0f4701d388c` len 12) × 17 hashes → todas `destranca 0`, `TOTAL … que funcionam hoje: 0`,
+com 9 contas sem hash bcrypt (OAuth) entretanto registadas.
+
+**As sessões morreram com a rotação — medido, não assumido.** Antes 10 sessões + 10 refresh tokens
+(1 `@bfr-admin.test` + 3×3 `@bfr.test`); depois, nos alvos: **sessões 0, refresh 0**. O PUT do Admin
+API apaga as linhas, não só marca `revoked`. Project-wide sobram **2 sessões e 2 refresh vivos**, os
+dois de contas reais `@gmail.com` OAuth — **não se tocaram** (`contas @gmail.com intactas: 9`).
+Isto fecha a Escada B do censo do histórico empurrado: os 9 refresh tokens reutilizáveis dos 309
+blobs de `origin/main` deixaram de valer alguma coisa. O que o push leva consigo a partir de agora é
+só o **texto** das senhas (inúteis) e os ficheiros de sessão obsoletos.
+
+Armadilha de instrumento nova: o `seg-p1-senha-viva.mjs` tinha o guarda de cegueira **antes** do
+passeio pelo disco, e como o tracking ficou sem senha nenhuma (2a6a351) ele saía com «INSTRUMENTO
+CEGO» sem nunca comparar o disco — cegueira produzida pelo próprio conserto. O guarda passou a
+avaliar o corpus que vai ser comparado.
+
+Duas correções no `seg-rotacao-8.mjs` depois da escrita, para o próximo ciclo não destruir a prova:
+o diário do preflight passou a escrever `evidence/p1-rotacao-8-preflight.json` (antes partilhava o
+ficheiro com o da rotação, e um preflight apagaria a evidência), e o campo ambíguo `http` do diário
+passou a ser `escrita` + `gotrue_http`. No diário que está aqui, `http: 200` nas 4 `@test.local` é a
+confirmação do `UPDATE` (1 linha), **não** visibilidade no GoTrue — essa era 404, medida antes e
+depois pelo portão.
+
+Terceira armadilha, esta de **autorreferência do instrumento**: o padrão de colheita
+`password\s*[:=]\s*["']…["']` casa SQL/JS interpolado, e a linha do próprio `seg-rotacao-8.mjs`
+(`set encrypted_password='${hash}'`) meteu no corpus o literal `${hash}` (len 7). O portão
+pre-commit leu-o como «senha conhecida» e **bloqueou o script que continha o seu próprio
+placeholder**; o diário registou `senhasColhidas: 7` quando as senhas reais eram 6. Confirmado por
+md5 do literal na linha (`649457759e97`), não por olho. Os três colhedores (`seg-precommit-gate.mjs`,
+`seg-p1-senha-viva.mjs`, `seg-rotacao-8.mjs`) passaram a descartar tudo o que contenha `${`: um
+placeholder de código não é credencial. Consequência que volta a partir deste commit — o tracking
+passa a ter `seg-rotacao-8.mjs` com esse literal dentro, e só continua a dar **0** por causa do
+predicado; sem ele, o portão bloquearia o próprio guarda.
 
 ## Em aberto depois deste passe
 
-1. **Rodar a senha das 8 combinações que ainda destroem conta hoje** — a régua é
-   `seg-p1-senha-viva.mjs --com-disco` e o número subiu de 3 para 8 nesta passada: as 3 `@bfr.test`
-   do S20 (os 9 refresh tokens) + 4 `@test.local` deixadas pelo S19 (0 sessões) + 1
-   `981fcbb0…@bfr-admin.test` com 1 sessão viva. Escrita em `auth`, precisa de OK. As 9 `@gmail.com`
-   são OAuth-only e não se tocam.
-2. **Revogar o GitHub PAT** — Prioridade 0; o URL limpo já está aplicado, falta só a revogação e
+1. **Revogar o GitHub PAT** — Prioridade 0; o URL limpo já está aplicado, falta só a revogação e
    o substituto no credential manager. Humana (não há sessão do GitHub no browser).
-3. **Decisão do CSP** — uma das três rotas, ou aceitar o risco escrito.
-4. **Sessão em localStorage** — item de arquitetura, não estava no plano.
-5. Push de `8a93164` + `3f9e056` — não feito; agora bloqueado por **falta de credencial**, não só
+2. **Decisão do CSP** — uma das três rotas, ou aceitar o risco escrito.
+3. **Sessão em localStorage** — item de arquitetura, não estava no plano.
+4. Push de `8a93164` + `3f9e056` — não feito; agora bloqueado por **falta de credencial**, não só
    pela revogação. Mede-se com o portão D.
+5. **As 4 linhas-fantasma continuam em `auth.users`** — com a hash rodada, mas invisíveis ao GoTrue
+   e sem sessão. Apagá-las é outra escrita, irreversível, e não tem OK.
 
-**Fechado neste passe:** `reset-supervisor-password.mjs` saiu do tracking (`git rm --cached`) e entrou
+**Fechado neste passe:** as **8 combinações senha-conta vivas foram rodadas** e a régua voltou a 0
+(seção acima); `reset-supervisor-password.mjs` saiu do tracking (`git rm --cached`) e entrou
 no `.gitignore` junto das irmãs de mint; a rotação do ficheiro foi **medida como N/A** (o `USER_ID`
 já não existe em `auth.users` e a senha destranca 0 contas), não presumida.
