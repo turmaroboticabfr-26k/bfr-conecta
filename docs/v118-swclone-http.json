@@ -1,0 +1,86 @@
+{
+  "ciclo": "V118-CLONE-HTTP",
+  "quando": "2026-11-08T20:09:42.976Z",
+  "host": "bfr-conecta.turmaroboticabfr.workers.dev",
+  "version_id": "8930aa19-e79f-4a8f-bb7c-6d05a2055db4",
+  "gates": [
+    {
+      "name": "sw_v4_200",
+      "ok": true,
+      "detail": "status 200"
+    },
+    {
+      "name": "sw_js_200",
+      "ok": true,
+      "detail": "status 200"
+    },
+    {
+      "name": "sw_iguais",
+      "ok": true,
+      "detail": "3fcbc3ad52f1a0491362506466c82596 vs 3fcbc3ad52f1a0491362506466c82596"
+    },
+    {
+      "name": "sw_corrigido_md5",
+      "ok": true,
+      "detail": "SW vivo == candidata corrigida (3fcbc3ad…)"
+    },
+    {
+      "name": "sw_nao_eh_mais_buggy",
+      "ok": true,
+      "detail": "SW vivo deixou de ser o buggy (7111e4fc…)"
+    },
+    {
+      "name": "sw_shell_sem_clone_zero",
+      "ok": true,
+      "detail": "sem clone = 0"
+    },
+    {
+      "name": "sw_dois_com_clone",
+      "ok": true,
+      "detail": "com clone (shell+generico) = 2"
+    },
+    {
+      "name": "sw_cache_v118",
+      "ok": true,
+      "detail": "CACHE v118"
+    },
+    {
+      "name": "shell_200",
+      "ok": true,
+      "detail": "status 200"
+    },
+    {
+      "name": "shell_intacto",
+      "ok": true,
+      "detail": "ae59d35346b685b2fbf9d18ade4fa5cd / 3489467 B"
+    }
+  ],
+  "escrita_no_banco": "zero",
+  "medidas": {
+    "sw_v4": {
+      "status": 200,
+      "bytes": 3586,
+      "md5": "3fcbc3ad52f1a0491362506466c82596",
+      "content_type": "application/javascript; charset=utf-8",
+      "cache_control": "max-age=0, no-cache, no-store"
+    },
+    "sw_js": {
+      "status": 200,
+      "bytes": 3586,
+      "md5": "3fcbc3ad52f1a0491362506466c82596"
+    },
+    "shell": {
+      "status": 200,
+      "bytes": 3489467,
+      "md5": "ae59d35346b685b2fbf9d18ade4fa5cd"
+    },
+    "sw_cache_put": {
+      "sem_clone": 0,
+      "com_clone": 2
+    },
+    "sw_cache_v118": true
+  },
+  "gates_total": 10,
+  "gates_ok": 10,
+  "verdict": "HTTP_VERDE"
+}

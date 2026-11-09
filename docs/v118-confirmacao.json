@@ -1,0 +1,50 @@
+{
+  "ciclo": "V118-CONF",
+  "quando": "2026-11-08",
+  "tipo": "somente-leitura (browser + curl; zero escrita no banco)",
+  "alvo": "https://bfr-conecta.turmaroboticabfr.workers.dev/",
+  "medidas": {
+    "http_shell": { "status": 200, "bytes": 3489467, "md5": "ae59d35346b685b2fbf9d18ade4fa5cd", "igual_app_index_local": true },
+    "boot_browser": { "appShell": true, "loginVisible": true, "bodyChars": 3097946, "scripts": 103, "viewport": { "w": 638, "h": 666 } },
+    "login_render": "OK — hero azul, logo, 'Bem-vindo de volta!', Google, 'Como Instalar', 'Ver horários das aulas' (docs/v118-confirmacao-login.png)",
+    "assets_publicos": { "manifest.json": 200, "bfr-app-logo.png": 200, "calendario-letivo-2026.pdf": 200, "horario-matutino-2026.pdf": 200, "horario-vespertino-2026.pdf": 200, "horario-matutino-2026.png": 200, "horario-vespertino-2026.png": 200 },
+    "console": [
+      { "nivel": "warn", "texto": "Service worker indisponível: Failed to update a ServiceWorker … sw-v4.js?v=45 … bad HTTP response code (500)" },
+      { "nivel": "error", "texto": "404 /cdn-cgi/rum — beacon RUM da Cloudflare, não é recurso do app" }
+    ],
+    "service_worker": {
+      "registro_ativo": "sw-v4.js?v=45 (sessão antiga, anterior à v118)",
+      "cache_keys": ["bfr-conecta-v117"],
+      "cache_sizes": { "bfr-conecta-v117": 8 },
+      "update": "FALHA — 500"
+    }
+  },
+  "achado": {
+    "id": "V118-SW-500",
+    "severidade": "alta (PWA/offline quebrado; shell funciona)",
+    "sintoma": "O HTML v118 registra serviceWorker em '/sw-v4.js?v=45', mas o worker v118 só roteia '/sw.js'. '/sw-v4.js' cai no fallback env.ASSETS.fetch e lança exceção → Cloudflare error 1101 → HTTP 500.",
+    "provas": [
+      "curl /sw-v4.js?v=45 → 500, corpo 'error code: 1101' (17 B)",
+      "curl /sw-v4.js (sem query) → 500",
+      "curl /sw.js → 200, 3578 B, CACHE='bfr-conecta-v118'",
+      "console do navegador: update do SW falha com 500; cache preso em bfr-conecta-v117",
+      "build-worker-v118.js:119 — rota apenas '/sw.js'; HTML (3 ocorrências) registra 'sw-v4.js?v=45'"
+    ],
+    "impacto": {
+      "visitante_novo": "registro do SW falha (URL 500) → sem cache offline/PWA; app funciona (shell 200) — inferido do 500 determinístico, não medido em perfil virgem",
+      "visitante_recorrente": "mantém SW antigo (v117) ativo; update 500; shell network-first do SW antigo ainda entrega a v118",
+      "banco": "nenhum — defeito de rota do Worker"
+    },
+    "causa_raiz": "build-worker-v118.js mudou a rota do SW para '/sw.js' sem alinhar o registro do HTML ('sw-v4.js?v=45'); deploy com zero assets torna o fallback lançador de exceção"
+  },
+  "candidata": {
+    "arquivo": "worker-deploy-v118-swfix/worker.mjs",
+    "mudanca": "linha 9: if (url.pathname === '/sw.js' || url.pathname === '/sw-v4.js')",
+    "portoes": "11/11 (worker-deploy-v118-swfix/portoes.json): diff 1 linha, HTML/SW embutidos intactos por md5, CACHE v118, node --check, fetch simulado /sw-v4.js?v=45→200 com SW v118, /sw.js→200, /→HTML byte-idêntico ao ar, assets intactos",
+    "publicada": false,
+    "publicacao": "AGUARDA OK EXPLÍCITO do usuário"
+  },
+  "reversao": "worker-deploy-v118/worker.mjs (md5 8886eba2a405705a42204504eb04b663) = build atualmente no ar",
+  "escrita_no_banco": "zero",
+  "contas_sinteticas": "nenhuma mintada"
+}

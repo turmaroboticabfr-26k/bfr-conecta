@@ -1,0 +1,44 @@
+{
+  "ciclo": "V118-CLONE-PUB",
+  "quando": "2026-11-08T20:09:01.448Z",
+  "autorizacao": "OK explícito do usuário: 'Publicar a candidata clone' (AskUserQuestion)",
+  "alvo": "https://bfr-conecta.turmaroboticabfr.workers.dev/",
+  "defeito": {
+    "id": "V118-SW-NAV",
+    "sintoma": "SW shell branch: await cache.put(event.request, response) consome o body; return response devolve body disturbed → navegação full-page ERR_FAILED / chrome-error://chromewebdata/",
+    "estado_anterior": "DORMENTE enquanto o registro do SW dava 500 (V118-SW-500); a publicação da correção de rota (c9235649, 19:26:11Z) ativou o SW e expôs o defeito",
+    "causa_raiz": "falta de response.clone() no ramo shell do SW; o ramo genérico já clonava corretamente"
+  },
+  "candidata": {
+    "diretorio": "worker-deploy-v118-swclone",
+    "worker_md5": "7a2e41f448e5d8c331f1bcc5eb029e9a",
+    "worker_bytes": 3614649,
+    "delta_vs_swfix": "+8 bytes (response.clone() no ramo shell)",
+    "sw_embutido_md5": "3fcbc3ad52f1a0491362506466c82596",
+    "sw_chars": 3583,
+    "cache": "bfr-conecta-v118",
+    "portoes": "16/16 PORTAO_VERDE (worker-deploy-v118-swclone/portoes.json)",
+    "bancada_ab": "3/3 AB_OK (docs/v118-swclone-bancada.json): ANTES bodyUsedBeforeRead:true/readOk:false; DEPOIS bodyUsedBeforeRead:false/readOk:true/bodyLen:53"
+  },
+  "publicacao": {
+    "comando": "env -u CLOUDFLARE_API_TOKEN -u CLOUDFLARE_API_KEY npx --yes wrangler@4.154.0 deploy (cwd worker-deploy-v118-swclone)",
+    "wrangler": "4.154.0",
+    "assets": "12 ficheiros lidos; 'No updated asset files to upload' — script+assets publicados juntos",
+    "upload": "3457.48 KiB / gzip 768.11 KiB",
+    "version_id": "8930aa19-e79f-4a8f-bb7c-6d05a2055db4",
+    "criada": "2026-11-08T20:09:01.448Z",
+    "log": "docs/v118-swclone-deploy.log"
+  },
+  "provas_vivas": {
+    "http": "10/10 HTTP_VERDE (docs/v118-swclone-http.json): /sw-v4.js?v=45 e /sw.js → 200 idênticos, md5 3fcbc3ad… (não é mais o buggy 7111e4fc…), semClone:0/comClone:2, CACHE v118; shell / → 200, ae59d353…/3489467 B intacto",
+    "browser": "NAVEGACAO_OK (docs/v118-swclone-browser.json): estado limpo → navigate / → appShell:true/loginVisible:true/controller sw-v4.js?v=45/cache v118/8; reload com SW ativo → mesmo estado saudável + SW servido com semClone:0/comClone:2; screenshot docs/v118-swclone-login.png"
+  },
+  "reversao": {
+    "para_swfix": "worker-deploy-v118-swfix/worker.mjs (md5 ba5e65ee6f52e8dc77850a3939186315) — restaura rota corrigida mas SW buggy (navegação ERR_FAILED volta); requer OK novo",
+    "para_v118_original": "worker-deploy-v118/worker.mjs (md5 8886eba2a405705a42204504eb04b663) — restaura 500 em sw-v4.js; requer OK novo"
+  },
+  "fonte_corrigida": "build-worker-v118.js:69 (cache.put(event.request, response.clone())) e :119 (rota '/sw.js' || '/sw-v4.js') — regeneração não reproduz nenhum dos dois defeitos",
+  "escrita_no_banco": "zero",
+  "contas_sinteticas": "nenhuma",
+  "veredito": "V118-SW-NAV CORRIGIDO E PUBLICADO — Service Worker / PWA offline APROVADO no ar"
+}

@@ -1,0 +1,55 @@
+{
+  "ciclo": "v118-swclone-bancada",
+  "data": "2026-11-08",
+  "metodo": "handler fetch do SW em sandbox vm; caches.put mock consome o corpo como o CacheStorage real; pedido navigate /",
+  "sw_src_md5": "7111e4fc3a4069b3df60bc3cfe76ff92",
+  "sw_fixed_md5": "3fcbc3ad52f1a0491362506466c82596",
+  "antes": {
+    "label": "ANTES",
+    "status": 200,
+    "bodyUsedBeforeRead": true,
+    "readOk": false,
+    "readErr": "TypeError: Body is unusable: Body has already been read"
+  },
+  "depois": {
+    "label": "DEPOIS",
+    "status": 200,
+    "bodyUsedBeforeRead": false,
+    "readOk": true,
+    "bodyLen": 53,
+    "bodySnippet": "<!doctype html><html><body>SHELL-DEPOIS<"
+  },
+  "gates_total": 3,
+  "gates_ok": 3,
+  "verdict": "AB_OK",
+  "gates": [
+    {
+      "name": "antes_corpo_consumido",
+      "ok": true,
+      "detail": {
+        "label": "ANTES",
+        "status": 200,
+        "bodyUsedBeforeRead": true,
+        "readOk": false,
+        "readErr": "TypeError: Body is unusable: Body has already been read"
+      }
+    },
+    {
+      "name": "depois_corpo_intacto",
+      "ok": true,
+      "detail": {
+        "label": "DEPOIS",
+        "status": 200,
+        "bodyUsedBeforeRead": false,
+        "readOk": true,
+        "bodyLen": 53,
+        "bodySnippet": "<!doctype html><html><body>SHELL-DEPOIS<"
+      }
+    },
+    {
+      "name": "depois_body_correto",
+      "ok": true,
+      "detail": "<!doctype html><html><body>SHELL-DEPOIS<"
+    }
+  ]
+}

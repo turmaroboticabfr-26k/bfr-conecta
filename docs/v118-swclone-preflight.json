@@ -1,0 +1,121 @@
+{
+  "ciclo": "V118-CLONE-PREFLIGHT",
+  "quando": "2026-11-08T20:08:34.456Z",
+  "host": "bfr-conecta.turmaroboticabfr.workers.dev",
+  "gates": [
+    {
+      "name": "vivo_sw_v4_200",
+      "ok": true,
+      "detail": "status 200"
+    },
+    {
+      "name": "vivo_sw_js_200",
+      "ok": true,
+      "detail": "status 200"
+    },
+    {
+      "name": "vivo_sw_iguais",
+      "ok": true,
+      "detail": "7111e4fc3a4069b3df60bc3cfe76ff92 vs 7111e4fc3a4069b3df60bc3cfe76ff92"
+    },
+    {
+      "name": "vivo_sw_eh_base_swfix",
+      "ok": true,
+      "detail": "SW vivo == conteúdo publicado pelo swfix (7111e4fc…)"
+    },
+    {
+      "name": "vivo_shell_200",
+      "ok": true,
+      "detail": "status 200"
+    },
+    {
+      "name": "vivo_shell_intacto",
+      "ok": true,
+      "detail": "ae59d35346b685b2fbf9d18ade4fa5cd / 3489467 B"
+    },
+    {
+      "name": "candidata_md5",
+      "ok": true,
+      "detail": "7a2e41f448e5d8c331f1bcc5eb029e9a"
+    },
+    {
+      "name": "candidata_bytes",
+      "ok": true,
+      "detail": "3614649 B"
+    },
+    {
+      "name": "sw_embutido_md5",
+      "ok": true,
+      "detail": "3fcbc3ad52f1a0491362506466c82596"
+    },
+    {
+      "name": "worker_rota_v4_presente",
+      "ok": true,
+      "detail": "rota sw-v4 no handler do worker"
+    },
+    {
+      "name": "sw_shell_sem_clone_zero",
+      "ok": true,
+      "detail": "sem clone = 0"
+    },
+    {
+      "name": "sw_dois_com_clone",
+      "ok": true,
+      "detail": "com clone (shell+generico) = 2"
+    },
+    {
+      "name": "sw_cache_v118",
+      "ok": true,
+      "detail": "CACHE v118"
+    },
+    {
+      "name": "toml_name",
+      "ok": true,
+      "detail": "name bfr-conecta"
+    },
+    {
+      "name": "toml_assets",
+      "ok": true,
+      "detail": "assets ./public"
+    },
+    {
+      "name": "public_12_ficheiros",
+      "ok": true,
+      "detail": "12 ficheiros"
+    }
+  ],
+  "escrita_no_banco": "zero",
+  "vivo": {
+    "sw_v4": {
+      "status": 200,
+      "bytes": 3578,
+      "md5": "7111e4fc3a4069b3df60bc3cfe76ff92"
+    },
+    "sw_js": {
+      "status": 200,
+      "bytes": 3578,
+      "md5": "7111e4fc3a4069b3df60bc3cfe76ff92"
+    },
+    "shell": {
+      "status": 200,
+      "bytes": 3489467,
+      "md5": "ae59d35346b685b2fbf9d18ade4fa5cd"
+    }
+  },
+  "candidata": {
+    "path": "worker-deploy-v118-swclone/worker.mjs",
+    "bytes": 3614649,
+    "md5": "7a2e41f448e5d8c331f1bcc5eb029e9a",
+    "sw_embutido": {
+      "chars": 3583,
+      "md5": "3fcbc3ad52f1a0491362506466c82596"
+    },
+    "sw_cache_put": {
+      "sem_clone": 0,
+      "com_clone": 2
+    }
+  },
+  "gates_total": 16,
+  "gates_ok": 16,
+  "verdict": "PORTAO_VERDE"
+}

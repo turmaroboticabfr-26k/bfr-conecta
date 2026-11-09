@@ -1,0 +1,40 @@
+{
+  "ciclo": "V118-CLONE-BROWSER",
+  "quando": "2026-11-08",
+  "tipo": "somente-leitura (browser; zero escrita no banco)",
+  "alvo": "https://bfr-conecta.turmaroboticabfr.workers.dev/",
+  "versao_publicada": "8930aa19-e79f-4a8f-bb7c-6d05a2055db4",
+  "worker_md5": "7a2e41f448e5d8c331f1bcc5eb029e9a",
+  "metodo": "browser-use MCP; estado limpo (unregister de todos os SWs + caches.clear) a partir de /manifest.json; navigate para /; reload com SW ativo controlando; waitForStableDom:false em todas as sondas",
+  "limpeza_inicial": {
+    "antes": { "active": "sw-v4.js?v=45", "cacheKeys": ["bfr-conecta-v118"] },
+    "depois": { "regsAfter": 0, "keysAfter": [] }
+  },
+  "navegacao_limpa": {
+    "url": "https://bfr-conecta.turmaroboticabfr.workers.dev/",
+    "readyState": "complete",
+    "title": "BFR Conecta | Escola Benício Ferreira Reis",
+    "bodyChars": 3097946,
+    "hasAppShell": true,
+    "loginVisible": true,
+    "controller": "https://bfr-conecta.turmaroboticabfr.workers.dev/sw-v4.js?v=45",
+    "regActive": "https://bfr-conecta.turmaroboticabfr.workers.dev/sw-v4.js?v=45",
+    "regWaiting": null,
+    "regInstalling": null,
+    "cacheKeys": ["bfr-conecta-v118"],
+    "cacheSizes": { "bfr-conecta-v118": 8 }
+  },
+  "reload_com_sw_ativo": {
+    "url": "https://bfr-conecta.turmaroboticabfr.workers.dev/",
+    "readyState": "complete",
+    "hasAppShell": true,
+    "loginVisible": true,
+    "controller": "https://bfr-conecta.turmaroboticabfr.workers.dev/sw-v4.js?v=45",
+    "swInfo": { "status": 200, "chars": 3583, "comClone": 2, "semClone": 0, "cacheV118": true }
+  },
+  "screenshot": "docs/v118-swclone-login.png — hero azul, logo BFR CONECTA, 'Bem-vindo de volta!', Continuar com Google, Como Instalar, Ver horários das aulas",
+  "veredito": "NAVEGACAO_OK — full-page navigation interceptada pelo SW ativo corrigido devolve body intacto e o app monta; sem ERR_FAILED / chrome-error://chromewebdata/",
+  "prova_do_defeito": "ANTES (bancada vm, docs/v118-swclone-bancada.json): cache.put(event.request, response) consumia o body → respondWith devolvia body disturbed → ERR_FAILED. DEPOIS: response.clone() preserva o body; reload com SW ativo mede appShell:true/loginVisible:true.",
+  "escrita_no_banco": "zero",
+  "contas_sinteticas": "nenhuma"
+}
