@@ -629,8 +629,8 @@ credencial, nao de contagem; nada foi pushado.
 §17 — O portao do indice tem dentes: uma linha estourou o tecto no mesmo ciclo em que a folga foi
 medida (09/11)
 
-A S16 deixou a folga do indice em 53 B e a regra escrita na memoria de P2/P3 e que «mexer no indice
-exige podar uma linha algures». Ao aplicar a regra da S16 ao proprio indice — trocar o numero de
+A seccao 16 desta mesma ficha deixou a folga do indice em 53 B e a regra escrita na memoria de P2/P3
+dizia que «mexer no indice exige podar uma linha algures». Ao aplicar a regra da seccao 16 ao proprio indice — trocar o numero de
 commits pelo comando — o auditor devolveu falha alta:
 
 $ node scripts/seg-fin-mem-indice.mjs
@@ -645,11 +645,11 @@ $ node scripts/seg-fin-mem-indice.mjs
 MEMORY.md: 24944 bytes (tecto 25000) | 99 linhas
 PORTAO DO INDICE OK                                       EXIT=0
 
-Tres coisas desta medicao:
+Quatro coisas desta medicao:
 
-1. Regra documentada no mesmo ficheiro nao e portao. A folga estava escrita, eu li-a, citei-a na S16
-   e estourei-a na mesma, no mesmo ciclo. So falha o que corre depois de cada edicao — por isso o
-   auditor tem de ser chamado DEPOIS de tocar no indice, nunca «a seguir, ja confiro».
+1. Regra documentada no mesmo ficheiro nao e portao. A folga estava escrita, eu li-a e citei-a na
+   seccao 16, e estourei-a na mesma, no mesmo ciclo. So falha o que corre depois de cada edicao — por
+   isso o auditor tem de ser chamado DEPOIS de tocar no indice, nunca «a seguir, ja confiro».
 2. O predicado certo e bytes, nao linhas. As 99 linhas nao mudaram; o que mudou foi o comprimento de
    duas delas. Um auditor de contagem de linhas teria dito verde enquanto o loader cortava a cauda.
 3. Uma edicao de memoria nao entra no repo, portanto nao envelhece a contagem de commits — e o
@@ -658,10 +658,11 @@ Tres coisas desta medicao:
    legibilidade. Sao ortogonais e os dois foram corridos aqui (corpus 6, 97 ficheiros, OK).
 4. Esta seccao apanhou-se a si mesma a mentir, e dessa vez pelo instrumento, nao pelo commit. Ao
    correr o auditor para escrever o veredito, a medicao era 24 944 B / folga 56 B; entre escrever a
-   lista de "tres coisas" e correr o auditor outra vez — porque a propria regra 1 manda correr — a
+   lista de "quatro coisas" e correr o auditor outra vez — porque a propria regra 1 manda correr — a
    folga ja era outra (33 B). O numero de 24 944 aqui em cima fica valido como historia do instante
    em que a falha foi consertada; nao fica valido como estado. Deixo o veredito em forma de comando
-   pela mesma razao da S16: a folga e o que o auditor imprime quando roda, nao o que esta escrito.
+   pela mesma razao da seccao 16: a folga e o que o auditor imprime quando roda, nao o que esta
+   escrito.
 
 veredito: indice verde por medicao ao fecho desta seccao (96 == 96, 0 partidos, bytes abaixo do tecto
 de 25 000 do loader); a regra de podar passa a valer como passo obrigatorio **depois de cada edicao**
