@@ -103,24 +103,79 @@ Nota de honestidade: a memória `bfr-repo-snapshot-v59` dizia «sem remote». É
 
 ### Portão pré-commit — para o próximo ciclo não voltar a fazer o P1
 
-`scripts/seg-precommit-gate.mjs` corre antes de cada commit e varre o que está prestes a entrar:
-PAT (`ghp_`/`github_pat_`/…), JWT com `role=service_role`, chave PEM e — por **md5 contra um corpus
-colhido dos próprios scripts de mint** — as senhas hardcoded das contas sintéticas. Nunca imprime
-um valor: só contagens, comprimentos e os md5 casados.
+`scripts/seg-precommit-gate.mjs` corre antes de cada commit e varre o que está prestes a entrar.
+Nunca imprime um valor: só contagens, comprimentos e os md5 casados.
 
-Os três controles positivos rodados 09/11, porque um portão sem controle é décor:
+O portão cobre três camadas e diz qual delas bateu:
+
+| Camada | O que é | O que o portão faz |
+|---|---|---|
+| **A — credencial de servidor** | PAT (`ghp_`/`github_pat_`/…), JWT com `role=service_role`, chave PEM | **BLOQUEIA**, exit 1 |
+| **B — segredo do utilizador** | senha hardcoded do corpus; token de sessão/refresh opaco; JWT cujo papel não é `anon` nem `service_role`; `Bearer <opaco>`; literal `*token*`/`*secret*`/`*credential*`/`*authorization*`/`*passw*` com forma de credencial | **BLOQUEIA**, exit 1 |
+| **C — chave pública de cliente** | JWT com `role=anon` | **conta** (`anon-JWT=n`), não bloqueia |
+
+A camada B foi acrescentada 09/11 porque a primeira versão só via A e as senhas do corpus: os
+tokens opacos — refresh tokens das contas sintéticas, `access_token` gravado nos diários — passavam
+todos. A cobertura de B vem de três sondas sobre o mesmo texto:
+
+1. **JSON estrutural**: percorre chaves e valores, marca o valor se o nome bater
+   `token|secret|credential|authorization|passw` **e** o valor tiver forma de credencial
+   (`^[A-Za-z0-9._~+/=-]{16,}$`).
+2. **Literal de código**: mesma regra sobre `nome: '…'` / `nome = "…"` em qualquer ficheiro.
+3. **Cabeçalho**: `Bearer <opaco>`, com os JWT `anon` já descontados para não contar a chave pública.
+
+As duas excepções medidas, que não são descuido:
+
+- `secretar[a-z]*` é riscado do nome antes de testar, porque `secretary_uid` **contém** `secret` e
+  dar-lhe fogo seria travar a casa toda. O corte é só letras, por isso `secretary_token` reduz a
+  `_token` e continua a bloquear. (`\b` depois de `secretary` **não** serve: `_` é caractere de
+  palavra, não há fronteira antes de `_uid`.)
+- A forma é obrigatória. Sem ela, `audit-publicacao-v115.json` dava `authorization` len 186 e
+  `credential` len 103 — prosa com espaços, não credenciais.
+
+Binários não são cobertos por scanner de texto e o portão diz isso em vez de dar OK: `.png`/`.pdf`/
+`.woff2`/… ou qualquer ficheiro com byte NUL nas primeiras 8 KiB saem `BINARIO <n> B — NAO COBERTO`
+e **BLOQUEIA**. A escape é humana e deliberada: `--ack-binario`, para quando a imagem foi vista à mão.
+Foi exactamente assim que as duas capturas do login (`docs/v118-*.png`) entraram no commit `0969781`
+depois de inspeccionadas, e não por um OK automático.
+
+Os controles positivos rodados 09/11, porque um portão sem controle é décor:
 
 | Controle | Resultado |
 |---|---|
 | `scripts/s20-behavioral.mjs` (senha conhecida no tip) | `senha-conhecida=1` → **BLOQUEIA**, exit 1 |
 | PAT sintético num ficheiro fora do repo | `PAT=1` → **BLOQUEIA**, exit 1 |
 | Ficheiro que não existe | `INEXISTENTE — FALHA ALTA` + `INSTRUMENTO CEGO`, exit 1 |
+| JSON com `refresh_token`, `access_token` e `tokens[]` | `tier-B=3` → **BLOQUEIA**, exit 1 |
+| Código com `REFRESH_TOKEN = '…'` e `Authorization: 'Bearer …'` | `tier-B=2` → **BLOQUEIA**, exit 1 |
+| Ficheiro com apenas a JWT `anon` | `tier-B=0 anon-JWT=1` → **OK**, exit 0 |
+| JWT `service_role` | `service_role-JWT=1` → **BLOQUEIA**, exit 1 |
+| PNG sem `--ack-binario` / com ela | exit 1 `NAO COBERTO` / exit 0 com `NOTA` |
+| Ficheiro só com nomes da casa (`secretary_uid`, `secretaria_*`) e um `secretary_token` | `tier-B=1`, e o único hit é `secretary_token` |
 
 A primeira versão do portão tinha **o corpus cego**: colhia as senhas das chaves `*pass*` dos
 `*-sessions.json`, onde `weak_password` é `null` — dava `0 senhas` e ainda assim `OK`. É a mesma
 família de falha do `not_after` NULL logo abaixo: a extracção não encontrou nada e o veredito
 positivo era a ausência do instrumento, não a ausência do segredo. Os dois modos de cegueira
-(corpus vazio e ficheiro ignorado em silêncio) passaram a sair com exit 1.
+(corpus vazio e ficheiro ignorado em silêncio) passaram a sair com exit 1, e o binário não coberto
+entrou na mesma família.
+
+### Varredura dos 445 ficheiros rastreados (09/11)
+
+Com o portão já em B, correu-o sobre **todo** o tracking para medir o ruído e o que sobra de real.
+Saída: 81 bloqueios, dos quais **79 binários** (33 PDF + 46 PNG) e **2 em texto**. Os dois são
+verdadeiros, não falsos positivos:
+
+- `docs/c2-fixtures.json` — `badge_token` com 36 caracteres (camada B). Fixture do ciclo C2; o
+  valor é de conta sintética já apagada, mas é segredo e entra no portão.
+- `reset-supervisor-password.mjs` — rastreado e **presente no tip empurrado**, com 1 senha hardcoded
+  de 7 caracteres. Confirmado por md5 contra as 3 contas S20 ainda vivas: **não corresponde a
+  nenhuma**, ou seja, não é a credencial de uma conta activa — mas é P1 da mesma classe dos 19
+  ficheiros do commit `80c951c` e ficou para trás. Tratar disto (tirar do tracking + rodar a senha)
+  é acção nova e precisa de OK explícito.
+
+Depois dos cortes de `secretary` e da exigência de forma, **zero falsos positivos em ficheiros de
+texto**.
 
 ---
 
@@ -319,6 +374,8 @@ node scripts/seg-p0-access-probe.mjs        # custo do push depois do URL limpo 
 node scripts/seg-p0-no-secret-in-docs.mjs   # portao: zero tokens por extenso nos registos e memorias
 
 node scripts/seg-precommit-gate.mjs --staged  # portao de aplicacao: nada de credencial no commit
+node scripts/seg-precommit-gate.mjs $(git ls-files)   # varredura dos 445 tracked (Saida=1: 79 binarios + 2 reais)
+node scripts/seg-precommit-gate.mjs docs/v118-swclone-login.png --ack-binario  # escape humana para binario visto
 ```
 
 ## Em aberto depois deste passe
