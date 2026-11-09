@@ -173,17 +173,22 @@ verdadeiros, não falsos positivos:
   nenhuma**, ou seja, não é a credencial de uma conta activa — mas é P1 da mesma classe dos 19
   ficheiros do commit `80c951c` e ficou para trás.
 
-**Item tratado (09/11):** o `git rm --cached` + a entrada no `.gitignore` foram feitos. A **rotação
-não tem alvo** e foi medida como N/A, não assumida:
+**Fechado (09/11):** `git rm --cached reset-supervisor-password.mjs` (mantém-se no disco, 1068 B
+inalterados) + entrada própria no `.gitignore` ao lado das irmãs de mint, em `2a6a351`. A varredura
+repetida depois do corte dá **444 ficheiros lidos, 80 bloqueios = 79 binários + 1 texto**
+(`docs/c2-fixtures.json`); antes eram 445 e 2. A rotação, essa, **não tem alvo** e foi medida como N/A:
 - o `USER_ID a6624c51-8b6e-41cd-b8d1-f227eacb2273` do script **não está** em `auth.users`
   (portão de controlo: a mesma consulta devolve **17** contas, logo o zero é facto e não instrumento cego);
 - `bcrypt.compare` da senha de 7 caracteres contra os 17 hashes vivos → **0 contas destrancadas**;
 - a senha escrita era literal de 7 caracteres num campo que devia levar hash bcrypt, ou seja o
-  script estava quebrado antes de quebrar a conta — e fica invisível ao portão a partir de agora.
+  script estava quebrado antes de quebrar a conta — e fica invisível ao portão a partir de agora;
+- corrida sem `--com-disco` depois do corte, o `seg-p1-senha-viva.mjs` sai com **INSTRUMENTO CEGO:
+  zero senhas colhidas** — que é precisamente o veredicto correcto: o tracking já não contém senha
+  em claro nenhuma, e o guarda de cegueira recusa-se a emitir «nada encontrado» sem instrumento.
 
 **Descoberta do mesmo passe — 8 combinações senha-conta que ainda funcionam hoje.** Colhidas com
-`seg-p1-senha-viva.mjs --com-disco`, que junta o tracking (1 senha) aos ficheiros ignorados do disco
-(7 senhas) e compara por bcrypt contra os hashes vivos:
+`seg-p1-senha-viva.mjs --com-disco`, que junta o tracking (1 senha, antes do corte) aos ficheiros
+ignorados do disco (7 senhas) e compara por bcrypt contra os hashes vivos:
 - `scripts/c7-gap-fix-prova.mjs` (len 9) → destranca 4 contas `@test.local` deixadas pelo S19
   (0 sessões) **+** `981fcbb0…@bfr-admin.test` com **1 sessão viva**;
 - `scripts/s20-behavioral.mjs` (len 12) → destranca as 3 contas `@bfr.test` do S20, **3 sessões cada**
