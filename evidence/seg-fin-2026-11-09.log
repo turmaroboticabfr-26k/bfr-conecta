@@ -1,0 +1,350 @@
+SEG-FIN — diário das re-medidas (2026-11-09, ~05:50Z)
+Ciclos SOMENTE-LEITURA. Zero escrita no banco, zero deploy, zero push.
+Regras: nenhum valor de segredo impresso; uuid só por prefixo de 8; md5 só por 12;
+URL do ar derivada de diário de publicação, nunca dactilografada.
+
+===============================================================================
+1) scripts/seg-p1-residuo-pos-rotacao.mjs — resíduo project-wide pós-rotação
+===============================================================================
+auth.sessions project-wide: 2 | auth.refresh_tokens: 10 (vivas 2)
+contas com sessão ou refresh token: 2
+   23aa58c7 | <17 chars>@gmail.com | refresh=4 vivas=1 sessões=1
+   4236bf9a | <16 chars>@gmail.com | refresh=6 vivas=1 sessões=1
+linhas-fantasma (SQL, GoTrue não lista): 4 de 17
+   d44be8ab | <13 chars>@test.local | hash=bcrypt | ultimo_login=NULL
+   66046b00 | <12 chars>@test.local | hash=bcrypt | ultimo_login=NULL
+   c2cb43eb | <15 chars>@test.local | hash=bcrypt | ultimo_login=NULL
+   341c2671 | <13 chars>@test.local | hash=bcrypt | ultimo_login=NULL
+contas com hash não-bcrypt (OAuth/vazio): 9
+
+===============================================================================
+2) scripts/seg-fin-censo-s20.mjs — as 3 contas S20 que sobreviveram
+===============================================================================
+s20-coordinator@bfr.test | id=635ac53e deleted_at=NULL ultimo_login=2026-11-08 13:58:39.247123+00 | refresh=0 (vivas 0) | sessões=0
+s20-director@bfr.test | id=0afd82b2 deleted_at=NULL ultimo_login=2026-11-08 13:58:36.489621+00 | refresh=0 (vivas 0) | sessões=0
+s20-supervisor@bfr.test | id=5d0821e0 deleted_at=NULL ultimo_login=2026-11-08 13:58:42.259038+00 | refresh=0 (vivas 0) | sessões=0
+s20-teacher@bfr.test | AUSENTE em auth.users
+
+===============================================================================
+3) scripts/seg-fin-cruzar-subs-vivas.mjs — os 12 sub vazados × estado actual
+   corpus = blobs ALCANÇÁVEIS de origin/main (não a árvore da ponta)
+===============================================================================
+s19-sessions.json (blob 2939ea19): +4 sub de JWT (total 4)
+s20-sessions.json (blob 6bbe5a50): +4 sub de JWT (total 8)
+c2-sessions.json (blob 92b75697): +4 sub de JWT (total 12)
+
+sessões vivas por conta: 2 conta(s) | refresh vivos: 2 conta(s)
+   23aa58c7 | sessoes=1 | vazado_no_historico=NAO
+   4236bf9a | sessoes=1 | vazado_no_historico=NAO
+   refresh 23aa58c7 | n=1 | vazado_no_historico=NAO
+   refresh 4236bf9a | n=1 | vazado_no_historico=NAO
+
+sub vazados com sessão viva HOJE: 0 de 12
+
+=== por sub vazado: existe em auth.users? quantas linhas de refresh? ===
+   0a1d4446 | usuario=NAO existe | refresh_total=0 vivas=0
+   0afd82b2 | usuario=existe | refresh_total=0 vivas=0
+   44d3f6d1 | usuario=NAO existe | refresh_total=0 vivas=0
+   45302f7e | usuario=NAO existe | refresh_total=0 vivas=0
+   47b9739c | usuario=NAO existe | refresh_total=0 vivas=0
+   5d0821e0 | usuario=existe | refresh_total=0 vivas=0
+   635ac53e | usuario=existe | refresh_total=0 vivas=0
+   665e64b6 | usuario=NAO existe | refresh_total=0 vivas=0
+   95bb010f | usuario=NAO existe | refresh_total=0 vivas=0
+   e2416a32 | usuario=NAO existe | refresh_total=0 vivas=0
+   e6495497 | usuario=NAO existe | refresh_total=0 vivas=0
+   f85b1894 | usuario=NAO existe | refresh_total=0 vivas=0
+
+subs com QUALQUER linha de refresh: 0 | com refresh NÃO revogado: 0
+
+===============================================================================
+4) scripts/seg-censo-ls-sessao.mjs — o LevelDB do perfil de Chrome do rig
+===============================================================================
+bytes lidos do LevelDB: 5352
+chaves sb-*-auth-token distintas: 1 -> sb-yyzqoxlkcvqpessypfjo-auth-token
+   sub=95bb010f role=authenticated exp=2026-11-08T21:42:25.000Z (vencido) jwt=eyJhbGciOiJF… len=818
+JWTs encontrados: 1 | distintos: 1
+presenca de "refresh_token" no blob: 1
+presenca de "access_token" no blob: 1
+
+cruzamento de 1 sub distintos com auth.users (17 linhas):
+   95bb010f | nao existe em auth.users
+
+===============================================================================
+5) scripts/p23-csp-live.mjs — CSP medida nos bytes PUBLICADOS + disco
+===============================================================================
+alvo derivado de audit-publicacao-v117.json: https://bfr-conecta.turmaroboticabfr.workers.dev
+
+headers HTTP (11 recebidos): content-security-policy, x-frame-options, x-content-type-options,
+referrer-policy, permissions-policy, strict-transport-security, cross-origin-opener-policy = AUSENTE.
+Único header de relevo: server: cloudflare.
+
+AR = DISCO, byte a byte:
+   bytes=3489467 md5=ae59d35346b6 (idênticos nos dois lados)
+   <script> total=108 (externo 5 / inline 103)
+   <style> blocos=49 | atributos style=""=286
+   atributos on*=0 | eval=0 | new Function=0 | innerHTML→<script>=0 | javascript:=0
+   meta CSP presente? SIM
+   script-src: 'self' 'unsafe-inline' https://bfr-conecta.turmaroboticabfr.workers.dev
+               https://cdn.jsdelivr.net https://static.cloudflareinsights.com https://www.gstatic.com
+
+Política <meta> completa (diréctivas presentes):
+   default-src 'self'; base-uri 'self'; object-src 'none'; script-src …; style-src 'self'
+   'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:;
+   img-src 'self' data: blob: https:; connect-src 'self' https://bfr-conecta.turmaroboticabfr.workers.dev
+   https://*.supabase.co wss://*.supabase.co https://cloudflareinsights.com
+   https://*.cloudflareinsights.com https://*.googleapis.com https://fcm.googleapis.com
+   https://api.open-meteo.com; worker-src 'self' blob:; manifest-src 'self';
+   form-action 'self' https://accounts.google.com https://*.supabase.co
+   → frame-ancestors: AUSENTE (um <meta> não pode transportá-la e não há header HTTP).
+
+Service Worker publicado:
+   /sw.js e /sw-v4.js?v=45: HTTP 200, 3583 B, md5=3fcbc3ad52f1 (mesmo corpo), cache-control=max-age=0, no-cache, no-store, header CSP=AUSENTE
+
+===============================================================================
+6) scripts/seg-fin-sw-shell.mjs — o SW guarda mesmo o shell em cache?
+===============================================================================
+rota de registo no shell: ${APP_ORIGIN}/sw-v4.js?v=45
+CACHE = 'bfr-conecta-v118' | SHELL_PATHS = {'/', '/index.html'}
+PRECACHE_PATHS = ['/', '/manifest.json', '/bfr-app-logo.png', '/lia-avatar.svg', '/lia-avatar.png',
+                  '/bfr-responsive-presentation.js?v=14', '/bfr-teacher-arrivals.js?v=2']
+fetch(): navegação para SHELL_PATHS é network-first com cache:'no-store'; o cache é só fallback.
+cache-control no SW: max-age=0, no-cache, no-store.
+shell no precache? SIM
+
+=== achado de repositório ===
+O SW sob tracking (app/sw-v4.js) tem CACHE = 'bfr-conecta-v60', 3585 B, md5=042670477d61.
+O SW servido pelo ar é bfr-conecta-v118, 3583 B, md5=3fcbc3ad52f1.
+→ o SW do repo está 58 versões desactualizado; uma reversão construída a partir dele
+  publicaria um nome de cache velho. Cópia do ar congelada em evidence/ar-sw-v4-2026-11-09.js.
+
+=== armadilhas de instrumento corrigidas neste passe ===
+1) A regex própria `content="([^"]*)"` para a meta CSP cortava a política no primeiro apóstrofo
+   de 'self'; devolvia «default-src » e script-src = null, o que parecia «CSP truncada».
+   Corrigido: extrair a tag <meta> inteira e só depois o atributo content.
+2) `git show origin/main:<ficheiro>` lê a ÁRVORE da ponta, não os blobs alcançáveis. Dizia
+   «c2-sessions.json ausente» e devolvia 8 sub em vez de 12. Corrigido para rev-list --objects
+   + cat-file, o mesmo corpus do censo de 09/11.
+3) Coexistem duas grafias do host no repo: a maioritária (24×) `…turmarobiticabfr.workers.dev`
+   NÃO resolve (curl 000); a que serve é `…turmaroboticabfr.workers.dev` (200, 3 489 467 B).
+   Os instrumentos novos derivam a URL do diário em vez de a escrever à mão.
+
+===============================================================================
+7) scripts/seg-p1-senha-viva.mjs --com-disco — a senha vazada ainda destranca alguma conta? (09/11 ~06:20Z, saida directa do comando)
+===============================================================================
+[PUSHED] zero senhas no tracking (desde 2a6a351) — o guarda de cegueira passa a olhar o corpus do disco
+[DISCO] senhas colhidas (tracking + ignorados): 6
+contas em auth.users: 17
+senha md5=1425d5d3160a len=13 [so-disco] (origem: create-supervisor-fresh.mjs) -> destranca 0
+senha md5=3eceecd4c712 len=14 [so-disco] (origem: criar-conta-supervisor-api.mjs) -> destranca 0
+senha md5=bd43650e6ab5 len=13 [so-disco] (origem: scripts\c7-2-jornada-jwt.mjs) -> destranca 0
+senha md5=ecc4208a7778 len=9 [so-disco] (origem: scripts\c7-gap-fix-prova.mjs) -> destranca 0
+senha md5=480341a0aa25 len=12 [so-disco] (origem: scripts\s20-behavioral.mjs) -> destranca 0
+senha md5=c0f4701d388c len=12 [so-disco] (origem: test-signup-login.mjs) -> destranca 0
+
+TOTAL de combinações senha-conta que funcionam hoje: 0
+contas sem hash bcrypt (OAuth ou sem senha): 9
+
+(9 contas sem hash bcrypt omitidas individualmente: todas @gmail.com, nenhumas entre os subs vazados)
+
+===============================================================================
+8) scripts/seg-fin-cruzar-s20-rotacao.mjs — contas nomeadas no historico x passe de rotacao (09/11 ~06:25Z)
+===============================================================================
+emails de teste nos blobs pushados: 8 | alvos do passe de rotação: 8
+
+email                              existe?  rotacionada?  canal      antiga destrava?
+c7-coordinator-9d2e4f@bfr-admin.test não        não           —          —
+c7-director-7a3b1c@bfr-admin.test  não        não           —          —
+c7-secretary-5f8a2b@bfr-admin.test não        não           —          —
+s20-coordinator@bfr.test           sim      sim          admin-put  não
+s20-director@bfr.test              sim      sim          admin-put  não
+s20-secretary@bfr.test             não        não           —          —
+s20-supervisor@bfr.test            sim      sim          admin-put  não
+supervisor.synthetic@bfr.test      não        não           —          —
+
+cobertas pela rotação: 3 | existem e NÃO foram rotacionadas: 0
+veredicto do passe de rotação: restantes=0 sessoesAlvos=0 refreshAlvos={"n":0,"vivas":0}
+
+===============================================================================
+9) scripts/seg-censo-chrome-profile.mjs — o .c2-chrome-profile como portador de sessao (09/11 ~06:35Z)
+===============================================================================
+=== Login Data ===
+ficheiro=40960 B | linhas de logins=0 | origens(distinct)=0
+
+=== Cookies (Network/Cookies) ===
+ficheiro=20480 B | cookies=0 + http_cookies=sem tabela | hosts(distinct)=0
+
+=== Local Storage (LevelDB) ===
+files=5 bytes=5758 | hosts vistas=1 | ocorrencias de sb-*-auth-token=2
+   https://bfr-conecta.turmaroboticabfr.workers.dev
+
+=== Historia ===
+ficheiro=204800 B | urls=1 | urls_distintas=1 (a tabela do Chrome 14x não tem coluna host; hosts = marcadores crus abaixo)
+
+=== lojas em espera de WAL (o SQLite read-only não vê o que está no -wal) ===
+   Login Data: main=40960 B wal=0 B shm=0 B
+   Network/Cookies: main=20480 B wal=0 B shm=0 B
+   History: main=204800 B wal=0 B shm=0 B
+   Web Data: main=157696 B wal=0 B shm=0 B
+   Favicons: main=24576 B wal=0 B shm=0 B
+   DIPS: main=4096 B wal=28896 B shm=0 B  <-- contagem acima é LIMITE INFERIOR
+
+=== bytes crus: hosts que aparecem nas lojas (só contagem de marcadores) ===
+   Login Data (40960 B lidos): nenhum marcador
+   Network/Cookies (20480 B lidos): nenhum marcador
+   History (204800 B lidos): workers.dev=17
+   Web Data (157696 B lidos): nenhum marcador
+   Favicons (24576 B lidos): workers.dev=4
+
+=== outras lojas ===
+   Web Data: 157696 B
+   Favicons: 24576 B
+   DIPS: 4096 B
+   Session Storage: 0 B
+   Sessions: 0 B
+   Local State: 13148 B | os_crypt.encrypted_key: presente (b64 len=392)
+
+veredito: 0 cookies e 0 logins; 1 URL no Historia (17 marcadores workers.dev); LevelDB com 1 host e 2 ocorrencias
+de sb-*-auth-token, esse JWT tem sub=95bb010f que NAO existe em auth.users (§4) e exp anterior. Nada de credencial
+de servidor. Os 196 MB sao sobretudo cache de pages, nao material de sessao.
+
+================ 10. REDACCAO DA MEMORIA DO P1 (09/11) ================
+$ node scripts/seg-fin-mem-redact.mjs --apply
+linha 1: - `criar-conta-supervisor-api.mjs` -> len=23 md5=01f080ed6d19
+linha 2: - `create-supervisor-fresh.mjs` -> len=23 md5=c7db59a3e605
+linha 3: - `recreate-supervisor-account.mjs` -> len=23 md5=01f080ed6d19
+linha 4: - `signup-supervisor.mjs` -> len=23 md5=01f080ed6d19
+linha 5: - `test-gap3-func.mjs` -> len=23 md5=f156bc532eb9
+linha 6: - `test-gap3-minimal.mjs` -> len=23 md5=f156bc532eb9
+linha 7: - `test-signup-login.mjs` -> len=23 md5=7c08b3934a38
+linha 8: - `scripts/c7-2-jornada-jwt.mjs` -> len=23 md5=a04d19126cfa
+linha 9: - `scripts/c7-gap-fix-prova.mjs` -> len=22 md5=2d130d69ddcb
+linha 10: - `scripts/gap3-deep-diagnostic.mjs` -> len=22 md5=2d130d69ddcb
+linha 11: - `scripts/gap3-definitive-test.mjs` -> len=22 md5=2d130d69ddcb
+linha 12: - `scripts/gap3-diagnostic.mjs` -> len=22 md5=2d130d69ddcb
+linha 13: - `scripts/gap3-final-test.mjs` -> len=22 md5=2d130d69ddcb
+linha 14: - `scripts/s20-behavioral.mjs` -> len=23 md5=f156bc532eb9
+
+senhas em claro encontradas no registo: 14
+aplicado: 14 redigidas; original em C:\Users\pcmac\AppData\Local\Temp\bfr-mem-redact-2026-11-09.md
+
+$ node scripts/seg-fin-mem-redact.mjs   (re-verificacao, espera-se INSTRUMENTO CEGO = veredicto positivo)
+linha 1: - `criar-conta-supervisor-api.mjs` -> len=23 md5=2063bbfe1d87
+linha 2: - `create-supervisor-fresh.mjs` -> len=23 md5=ea4bd9975f71
+linha 3: - `recreate-supervisor-account.mjs` -> len=23 md5=2063bbfe1d87
+linha 4: - `signup-supervisor.mjs` -> len=23 md5=2063bbfe1d87
+linha 5: - `test-gap3-func.mjs` -> len=23 md5=3edab3f1268b
+linha 6: - `test-gap3-minimal.mjs` -> len=23 md5=3edab3f1268b
+linha 7: - `test-signup-login.mjs` -> len=23 md5=53608c1d4537
+linha 8: - `scripts/c7-2-jornada-jwt.mjs` -> len=23 md5=6e42c0dcc51f
+linha 9: - `scripts/c7-gap-fix-prova.mjs` -> len=23 md5=546dfb69f8f7
+linha 10: - `scripts/gap3-deep-diagnostic.mjs` -> len=23 md5=546dfb69f8f7
+linha 11: - `scripts/gap3-definitive-test.mjs` -> len=23 md5=546dfb69f8f7
+linha 12: - `scripts/gap3-diagnostic.mjs` -> len=23 md5=546dfb69f8f7
+linha 13: - `scripts/gap3-final-test.mjs` -> len=23 md5=546dfb69f8f7
+linha 14: - `scripts/s20-behavioral.mjs` -> len=23 md5=3edab3f1268b
+
+senhas em claro encontradas no registo: 14
+dry-run: nada escrito. Use --apply.
+exit=
+
+============ 10b. CONFERENCIA DA REDACCAO E ANOTACAO DO ERRO (09/11) ============
+
+ANOTACAO AO BLOCO 10 (nao apagar; e registo autentico de uma sequencia errada):
+O bloco 10 correu `--apply` duas vezes. A segunda vez apanhou o texto que o
+proprio redactor escreve como substituto - `(md5 <hex> len=N)` - porque esse
+placeholder tem a mesma forma que a linha-colha (nome em backtick seguido de parentesis)
+e por isso casa no padrao.
+Ou seja: os 14 md5 do segundo bloco do 10 sao hash de PLACEHOLDER, nao de senha,
+e nao podem ser usados como corpus. O instrumento era nao-idempotente.
+Correccoes aplicadas:
+  1. o ficheiro restaurado a partir de C:\Users\pcmac\AppData\Local\Temp\bfr-mem-redact-2026-11-09.md
+     (que conservava o estado certo: 14 rotulos `md5 ... len=...` de senhas reais);
+  2. o redactor passou a ignorar linhas cujo valor ja casa com /^md5 [0-9a-f]{12} len=\d+$/;
+  3. o corpus real de senhas e o do bloco 7 (6 md5 distintos colhidos do disco),
+     nao o do bloco 10.
+
+$ node scripts/seg-fin-mem-redact.mjs     (re-verificacao depois da restauracao)
+    (ja redigida, ignorada: - `criar-conta-supervisor-api.mjs`)
+    (ja redigida, ignorada: - `create-supervisor-fresh.mjs`)
+    (ja redigida, ignorada: - `recreate-supervisor-account.mjs`)
+    (ja redigida, ignorada: - `signup-supervisor.mjs`)
+    (ja redigida, ignorada: - `test-gap3-func.mjs`)
+    (ja redigida, ignorada: - `test-gap3-minimal.mjs`)
+    (ja redigida, ignorada: - `test-signup-login.mjs`)
+    (ja redigida, ignorada: - `scripts/c7-2-jornada-jwt.mjs`)
+    (ja redigida, ignorada: - `scripts/c7-gap-fix-prova.mjs`)
+    (ja redigida, ignorada: - `scripts/gap3-deep-diagnostic.mjs`)
+    (ja redigida, ignorada: - `scripts/gap3-definitive-test.mjs`)
+    (ja redigida, ignorada: - `scripts/gap3-diagnostic.mjs`)
+    (ja redigida, ignorada: - `scripts/gap3-final-test.mjs`)
+    (ja redigida, ignorada: - `scripts/s20-behavioral.mjs`)
+  INSTRUMENTO CEGO: zero linhas de senha reconhecidas
+exit=1  <-- INSTRUMENTO CEGO aqui e o veredito positivo: nao sobra nenhuma linha de senha em claro.
+
+$ node scripts/seg-fin-mem-conferencia.mjs
+memoria do P1: 6 md5 distintos de senha redigida
+diario S7:     6 md5 distintos de senha colhida do disco
+so na memoria: 0 | so no diario: 0
+CONFERENCIA OK — o registo redigido e exactamente o corpus que o bcrypt comparou (0 destrancam)
+exit=0
+
+veredito: o registo redigido (6 md5) e exactamente o corpus que o bcrypt.compare do bloco 7
+testou contra as 17 hashes vivas; 0 destrancam. A redaccao nao inventou nem escondeu nenhuma senha.
+
+============ 11. PORTAO DE MEMORIA POR CORPUS E SEGUNDA EXPOSICAO (09/11) ============
+
+O portao P0-4 (`seg-p0-no-secret-in-docs.mjs`) so procura padroes de token do GitHub; nunca teria
+apanhado senha de conta sintetica. Ao escrever um portao para os registos FORA do repo mediu-se
+primeiro o predicado de FORMA (linha de lista com parentesis): 24 linhas casam, 10 sao valor e TODAS
+as 10 sao prosa de anotacao (caminhos, `GRANT ...`, "id (morto)"). Falso positivo a 100% - o mesmo
+genero de erro do `${hash}` do bloco 8. O portao passou a ser por CORPUS.
+
+CORRECCAO DE PROVENIENCIA (feita depois, ao reler o bloco): a primeira versao deste 11
+transcreveu so as re-passadas ja com o ficheiro redigido, por isso mostrava `exit=0` e
+`ocorrencias: 0` enquanto a prosa afirmava o achado. A 1a passada a preto-e-branco nao la estava.
+Recompus as saidas a partir do registo autentico da conversa; as quatro blocos abaixo estao
+agora na ordem em que correram, palavra por palavra.
+
+$ node scripts/seg-fin-mem-varredura.mjs      (portao por corpus, 1a passada -- ANTES da redaccao)
+corpus de senhas do disco: 6
+  bfr-supervisao-fase0-infraestrutura.md: senha md5=3eceecd4c712 len=14 aparece 1x
+ficheiros de memoria varridos: 97
+PORTAO DE MEMORIA FALHA — 1 ocorrencias de senha por extenso
+exit=1
+
+Achado real: uma senha do corpus (md5 3eceecd4c712 len=14, a mesma do registo do P1) estava por
+extenso em bfr-supervisao-fase0-infraestrutura.md:49, na forma `- **Password**: \`...\`` - que o
+redactor de FORMA nao apanhava. Segunda copia em claro fora do repo, outra vez sem nenhum gate.
+
+$ node scripts/seg-fin-mem-redact-por-corpus.mjs      (dry-run)
+bfr-supervisao-fase0-infraestrutura.md:49 -> len=14 md5=3eceecd4c712 (1x)
+
+ocorrencias de senha por extenso nos registos: 1
+dry-run: nada escrito. Use --apply.
+exit=0
+
+$ node scripts/seg-fin-mem-redact-por-corpus.mjs --apply
+bfr-supervisao-fase0-infraestrutura.md:49 -> len=14 md5=3eceecd4c712 (1x)
+
+ocorrencias de senha por extenso nos registos: 1
+aplicado: 1 ocorrencias redigidas em 1 ficheiro(s); copias em C:\Users\pcmac\AppData\Local\Temp\bfr-mem-redact-corpus-2026-11-09
+exit=0
+
+$ node scripts/seg-fin-mem-varredura.mjs      (re-passada, espera-se OK)
+corpus de senhas do disco: 6
+ficheiros de memoria varridos: 97
+PORTAO DE MEMORIA OK — nenhuma senha do corpus por extenso num registo fora do repo
+exit=0
+
+$ node scripts/seg-fin-mem-redact-por-corpus.mjs      (re-passada do dry-run, idempotencia)
+corpus de senhas do disco: 6
+
+ocorrencias de senha por extenso nos registos: 0
+nada a redigir (esperado depois de um --apply). seco.
+exit=0
+
+veredito: 97 ficheiros de memoria varridos, corpus de 6 senhas do disco, 1 ocorrencia por extenso
+na 1a passada -> 0 depois da redaccao, provada tambem pelo dry-run re-corrido (nao se auto-come).
+A forma da linha redigida confere-se sem ler o valor: `- **Password**: `(md5 3eceecd4c712 len=14)``.
+O portao de memoria AINDA NAO esta ligado ao `seg-precommit-gate.mjs`: corre so quando se lhe chama.

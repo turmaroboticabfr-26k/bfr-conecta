@@ -249,30 +249,48 @@ fora do texto da função. Nada a mudar.
 
 ## Prioridade 2-3 — CSP `unsafe-inline` — ABERTO, exige decisão de produto
 
-Medido nos bytes publicados (`scripts/p23-p3-measure.mjs`):
+Re-medido 09/11 nos **bytes publicados** (`scripts/p23-csp-live.mjs`, alvo derivado de
+`audit-publicacao-v117.json`; diário em `evidence/p23-csp-live.json` e
+`evidence/seg-fin-2026-11-09.log`). O `p23-p3-measure.mjs` lia o disco; medido agora nos dois
+lados, **disco e ar são byte-idênticos** (`3 489 467` B, md5 `ae59d35346b6`, 108 `<script>`,
+103 inline, 286 `style=""` nos dois), por isso as contagens antigas mantêm-se válidas.
+
+O que só se vê no ar:
+
+| Fato medido no ar | Valor |
+|---|---|
+| headers HTTP de segurança (7 testados: CSP, `x-frame-options`, `x-content-type-options`, `referrer-policy`, `permissions-policy`, `strict-transport-security`, `cross-origin-opener-policy`) | **AUSENTES nos 7** — o único header de relevo é `server: cloudflare` |
+| `frame-ancestors` | **AUSENTE** — não está no `<meta>` (um `<meta>` não pode transportá-la) nem como header → hoje **não há nenhuma protecção anti-cliquejacking declarada** |
+| `object-src` | `'none'` — já declarado e já efectivo, ao contrário do que este plano afirmava em §Recomendação |
+| `base-uri` | `'self'` — idem |
+| `form-action` | `'self' https://accounts.google.com https://*.supabase.co` |
+| política completa | `evidence/p23-csp-live.json` → `politicaMetaCompleta` |
 
 ```
-CSP vive num <meta http-equiv>, não como header HTTP do Worker
-script-src: 'self' 'unsafe-inline' https://…workers.dev https://cdn.jsdelivr.net
-            https://static.cloudflareinsights.com https://www.gstatic.com
+script-src: 'self' 'unsafe-inline' https://bfr-conecta.turmaroboticabfr.workers.dev
+            https://cdn.jsdelivr.net https://static.cloudflareinsights.com https://www.gstatic.com
 <script> total .............. 108   (5 externos, 103 inline)
 innerHTML que cria <script> ... 0
 eval()  ....................... 0
 new Function() ................ 0
+atributos on*= ................ 0
 <style> blocos ............... 49
 atributos style="" .......... 286
 ```
 
-O zero em `eval`/`new Function`/injeção de script é o que torna a opção viável: não há código
+O zero em `eval`/`new Function`/`on*`/injeção de script é o que torna a opção viável: não há código
 dinamicamente compilado que um `strict-dynamic` precise deixar passar.
 
 Custo real de cada rota:
 
 1. **Nonce do Worker** — o Worker serve o HTML, então pode gerar um nonce por request, injetá-lo
    em cada um dos 103 `<script>` e publicar `script-src 'nonce-…'` como header. É a única rota que
-   sobrevive a um deploy novo sem trabalho extra. Risks: o Service Worker guarda o shell em cache —
-   um HTML com nonce fixo no cache fica invalido em requests seguintes, o que pode partir o boot
-   offline. exige mexer no PRECACHE da v118.
+   sobrevive a um deploy novo sem trabalho extra. **O risco que este plano declarava estava
+   sobrestimado, e agora está medido** (`scripts/seg-fin-sw-shell.mjs`, corpo do SW em
+   `evidence/ar-sw-v4-2026-11-09.js`): o `fetch` do SW serve navegações do shell **network-first com
+   `cache:'no-store'`** e usa o cache apenas como fallback; e o `cache.put` grava o par
+   header+corpo juntos, logo um HTML replicado offline chega com o nonce com que foi gravado. O
+   `PRECACHE_PATHS` inclui `'/'`, mas esse é o caminho de fallback, não o caminho de boot normal.
 2. **Hash por script** — 103 hashes recalculados a **cada** bump de versão. O pipeline de candidata
    já é determinístico por md5, então dá para automatizar, mas um só byte mudado num script invalida
    o CSP inteiro. Frágil para o ritmo deste projeto.
@@ -284,9 +302,14 @@ Custo real de cada rota:
 `'unsafe-inline'` ou a reescrita de todos eles. Fechar `script-src` e deixar `style-src` aberto é
 ganho parcial honesto — dizer o contrário seria vender mais do que é.
 
-Recomendação: opção 1 (nonce no Worker) **ou** aceitar o risco documentado e fechar primeiro só
-`object-src`/`base-uri`/`frame-ancestors` como header HTTP, que um `<meta>` não cobre. Nenhuma
-delas apliquei — é alteração ao caminho de entrega publicado.
+Recomendação corrigida pela medição: o parágrafo anterior mandava fechar `object-src`/`base-uri`/
+`frame-ancestors` como header «que um `<meta>` não cobre». Medido: dos três, **só `frame-ancestors`
+escapa ao `<meta>`** — `object-src 'none'` e `base-uri 'self'` já estão declarados e já valem. O
+passo pequeno e independente do resto é, portanto, publicar **apenas** `frame-ancestors` (e os
+outros headers de relevo) como header HTTP do Worker; nada mais fica por decidir para o fechar.
+Nenhuma destas rotas apliquei — é alteração ao caminho de entrega publicado, e a escolha entre 1,
+2, 3 ou «só headers» é do dono.
+
 
 ## Prioridade 3-A — «credenciais para variáveis de ambiente» — FALSO POSITIVO
 
@@ -342,40 +365,54 @@ começasse por `eyJ`, e os reais são opacos de 12 caracteres. Corrigido o padr�
 | **C — chave pública de cliente** | `AIza…` do Firebase (11 caminhos), anon do Supabase (2) | não são segredo; a barreira é a allowlist de domínios |
 | **B′ — senha de conta sintética** | literais `password = '…'` | **4 senhas**, em `scripts/s20-behavioral.mjs`, `test-gap3-func.mjs`, `test-gap3-minimal.mjs` |
 
-### O que a camada B + B′ deixa em aberto
+### O que a camada B + B′ deixa em aberto — **FECHADO por medição em 09/11 (~05:50Z)**
 
-Medido em `auth.*` via canal de SQL (status 201, só leitura), cruzando os `sub` **extraídos dos
-próprios blobs pushados** (`scripts/seg-map-sub-state.mjs`, `scripts/seg-s20-session-detail.mjs`,
-`scripts/seg-password-radius.mjs`):
+Re-medido com o mesmo canal (`auth.*` via SQL, só leitura), cruzando os 12 `sub` extraídos dos
+**blobs alcançáveis** do `origin/main` (`scripts/seg-fin-cruzar-subs-vivas.mjs`; diário em
+`evidence/seg-fin-2026-11-09.log` §3):
 
-- Dos 12 `sub` vazados, **9 já não existem** em `auth.users` → esses tokens morreram com a conta.
-- **3 existem** e não estão soft-deleted: `s20-coordinator@bfr.test`, `s20-director@bfr.test`,
-  `s20-supervisor@bfr.test`. Cada uma tem 3 sessões e **3 refresh tokens com `revoked = false`**
-  → **9 credenciais de sessão reutilizáveis em contas vivas**, e a senha de todas as 4 contas S20
-  está no histórico.
-- Os 12 `access_token` estão vencidos (o mais recente expirou 08/11 21:42Z; medido em 09/11 ~03:00Z).
-- Os refresh tokens dos ficheiros **não estão truncados**: `min(length(token)) = max = 12` nas
-  20 linhas de `auth.refresh_tokens`.
+| Medição | 09/11 ~03:00Z (passe anterior) | 09/11 ~05:50Z (re-medido) |
+|---|---|---|
+| `sub` vazados com linha em `auth.refresh_tokens` | 9 linhas com `revoked = false` nas 3 contas S20 | **0 de 12** — nenhuma linha, revogada ou não |
+| Sessões das 3 contas S20 | 3 cada | **0 cada** (`scripts/seg-fin-censo-s20.mjs`) |
+| `auth.sessions` project-wide | — | **2**, ambas de contas `@gmail.com` reais que **não** estão entre os 12 `sub` vazados |
 
-### Ressalva de instrumento que invalida um dos portões
+Ou seja: a rotação de sessões das 8 combinações senha-conta (09/11, `evidence/p1-rotacao-8.json`)
+matou também as linhas das contas S20. **Não sobrou nenhuma credencial de sessão reutilizável do
+histórico pushado** — nem por token, nem por refresh, nem por conta.
 
-`auth.sessions.not_after` está **NULL nas 12 sessões do projeto** (e `tag` também; `refreshed_at`
-só tem 2 preenchidos). Portanto a leitura «0 sessões dentro da janela» foi uma **comparação com
-NULL**, não prova de expiração. Não existe no banco registo de validade para essas sessões; o único
-vencimento medido é o do JWT de acesso. Se o GoTrue ainda aceita um refresh dessas 9 linhas **não é
-determinável por leitura** — o teste decisivo é um `POST /token?grant_type=refresh_token`, que
-escreve em `auth` e roda token novo. Não executei.
+Isto também torna **inútil o teste decisivo** que o passe anterior declarava impossível em leitura:
+um `POST /token?grant_type=refresh_token` não tem o que reproduzir, porque as 9 linhas deixaram de
+existir. A ressalva do `auth.sessions.not_after` NULL continua verdadeira como facto de esquema
+(o GoTrue não grava validade nessas colunas), mas deixou de ser um portão em aberto: a pergunta
+«estas sessões estão vivas?» foi respondida por contagem directa, não por comparação com NULL.
 
-### Ação que fecha isto (exige OK)
+**A acção nº 1 («apagar as 3 contas S20, exige OK») deixa de existir** — o estado que ela visava
+evitar já não acontece. As contas S20 ficam como o que sempre foram: bancada de teste, sem sessão.
 
-1. `DELETE /admin/users/<id>` das 3 contas S20 sobreviventes (ou `PUT /admin/users/<id>` a mudar a
-   senha) — apaga as sessões e os 9 refresh tokens por cascade. É escrita em produção da mesma
-   bancada onde as contas são usadas por ciclos de teste, por isso precisa de OK novo.
-2. Reescrever o histórico pushado (o `git rm --cached` da ponta não tirou os blobs do remoto) ou
-   aceitar que os ficheiros de diário ficam legíveis para quem tem leitura do repo — são contas
-   sintéticas, mas a senha é a mesma das 4.
-3. Deixar de escrever a sessão crua em `*-sessions.json`: guardar só o `sub`, o `role` e o `exp`.
-   Nenhum ciclo seguinte precisa do token inteiro em disco.
+Do passe anterior mantém-se, e não é medição minha que fecha:
+
+1. Reescrever o histórico pushado (o `git rm --cached` da ponta não tirou os blobs do remoto) ou
+   aceitar que os ficheiros de diário ficam legíveis para quem tem leitura do repo. **A parte de
+   credencial utilizável já não existe, e está medida duas vezes**: (a) por `bcrypt.compare` sobre as
+   17 contas vivas — as 6 senhas do disco dão `destranca 0` e `TOTAL … que funcionam hoje: 0`
+   (`scripts/seg-p1-senha-viva.mjs --com-disco`, diário §7); (b) pelo cruze dos 8 e-mails de conta
+   nomeados nos blobs alcançáveis com o passe de rotação — **3 existem e as 3 foram rotacionadas
+   (`antigaDestrava=false`, canal `admin-put`)**; as outras 5 (`c7-coordinator/-director/-secretary`,
+   `s20-secretary`, `supervisor.synthetic`) já não existem em `auth.users`
+   (`scripts/seg-fin-cruzar-s20-rotacao.mjs`, diário §8; `existem e NÃO foram rotacionadas: 0`).
+   O que resta da camada B′ é a **divulgação em si**: que aquelas contas sintéticas existiram, com
+   que grafia de e-mail e com que padrão de senha. Fecha-se por reescrita do histórico ou por
+   aceitação explícita — escolha do dono, não medição.
+
+   *Correcção a este item, que estava escrito ao contrário no passe anterior:* dizia «um login novo
+   com essa senha voltaria a criar sessão». Falso — a rotação de 09/11 já trocou a senha das 3
+   contas S20 vivas pelo canal admin, pelo que o literal que ficou no histórico não autentica.
+
+2. Deixar de escrever a sessão crua em `*-sessions.json`: guardar só o `sub`, o `role` e o `exp`.
+   Nenhum ciclo seguinte precisa do token inteiro em disco. (É o que já fazem os instrumentos
+   novos deste passe — só imprimem prefixo de uuid, comprimento e md5.)
+
 
 ## Como reproduzir cada medição
 
@@ -410,6 +447,21 @@ node scripts/seg-rotacao-8.mjs                # preflight somente-leitura dos al
 node scripts/seg-rotacao-8.mjs --rodar        # A ESCRITA: roda a senha dos alvos e prova por bcrypt antes/depois
 node scripts/seg-p1-residuo-pos-rotacao.mjs   # resíduo project-wide de sessoes/refresh depois da rotação
 node scripts/seg-gate-hit.mjs scripts/X.mjs    # que linha do ficheiro casa com o corpus do portao (linha, len, md5)
+
+node scripts/p23-csp-live.mjs            # CSP medida nos bytes DO AR (derive a URL do diario, nao a digite)
+node scripts/seg-fin-sw-shell.mjs        # o SW publicado faz mesmo cache do shell? + nome do cache em uso
+node scripts/seg-fin-cruzar-subs-vivas.mjs  # os 12 sub extraidos dos blobs x auth.* vivo (so prefixo de uuid)
+node scripts/seg-fin-censo-s20.mjs       # sessoes/refresh das contas S20, um por um
+node scripts/seg-fin-cruzar-s20-rotacao.mjs # contas nomeadas nos blobs x passe de rotacao (canal, antiga destrava)
+node scripts/seg-censo-chrome-profile.mjs   # o que o .c2-chrome-profile guarda de sessao (so contagens)
+
+node scripts/seg-fin-mem-redact.mjs          # dry-run da redaccao da memoria do P1 (nunca imprime valores)
+node scripts/seg-fin-mem-redact.mjs --apply  # A ESCRITA: redige e congela original em %TEMP%
+node scripts/seg-fin-mem-conferencia.mjs     # portao: md5 da memoria == corpus do diario S7 (0/0)
+node scripts/seg-fin-mem-varredura.mjs       # portao por CORPUS: 97 registos fora do repo x 6 senhas
+node scripts/seg-fin-mem-varredura.mjs --ver # contexto mascarado (o valor sai por <VALOR>, nunca por extenso)
+node scripts/seg-fin-mem-redact-por-corpus.mjs        # dry-run: so ficheiro:linha, len e md5
+node scripts/seg-fin-mem-redact-por-corpus.mjs --apply  # A ESCRITA: redige e congela em %TEMP%\bfr-mem-redact-corpus-*
 ```
 
 ## P1 item 1 — rotação das 8 combinações vivas — **EXECUTADA 09/11**
@@ -474,18 +526,120 @@ placeholder de código não é credencial. Consequência que volta a partir dest
 passa a ter `seg-rotacao-8.mjs` com esse literal dentro, e só continua a dar **0** por causa do
 predicado; sem ele, o portão bloquearia o próprio guarda.
 
+## A memória do projecto era uma segunda cópia em claro das senhas — FECHADO 09/11
+
+Ao re-medir a camada B′ descobriu-se uma exposição que **nenhum portão do repo via**: o ficheiro de
+memória `bfr-security-remediation-p1.md` listava os 14 scripts com a **senha em claro ao lado do
+nome**, no formato `(md5 <hash> len=N)` que era a régua da época. Ou seja, fora do repo, fora do
+`seg-precommit-gate`, fora do censo dos 309 blobs de `origin/main` e fora do
+`seg-p0-no-secret-in-docs.mjs` — esse portão só procura padrões de *token do GitHub*
+(`ghp_`/`github_pat_`…), por isso nunca teria apanhado senhas de contas sintéticas.
+
+Redigido por `scripts/seg-fin-mem-redact.mjs`: cada linha `- \`ficheiro\` (senha)` passou a
+`- \`ficheiro\` (md5 <12hex> len=N)`, com o valor **nunca impresso** (só comprimento e md5), cópia
+original para `%TEMP%` antes de escrever, e `--apply` obrigatório. O instrumento agora ignora linhas
+cujos rótulos já têm a forma redigida, e aborta com `INSTRUMENTO CEGO` (exit 1) se não reconhecer
+nenhuma linha — nesse caso específico o exit 1 **é** o veredito positivo.
+
+**Armadilha nova, a de referência-própria do redactor:** a colheita é
+`` /^(\s*-\s*`[^`]+`)\s*\(([^()\n]+)\)\s*$/ `` — «linha de lista com nome em backtick seguida de
+parêntesis». O **placeholder** que o próprio script escreve tem exatamente essa forma, por isso
+casa no padrão. Um segundo `--apply` sobre o ficheiro já redigido voltou a «encontrar 14 senhas» e
+gravou hash-do-placeholder (comprimentos 22–23, quando as senhas reais medem 9–14). O diário §10
+registou essa sequência errada e mantém-se; o `10b` anota o que aconteceu. O ficheiro foi restaurado
+pela cópia de `%TEMP%` e o guarda de idempotência (linha 32) entrou.
+
+Conferência programática (`scripts/seg-fin-mem-conferencia.mjs`, diário §10b): os md5 do registo
+redigido são **exactamente** o corpus que o `bcrypt.compare` testou —
+
+```
+memoria do P1: 6 md5 distintos de senha redigida
+diario S7:     6 md5 distintos de senha colhida do disco
+so na memoria: 0 | so no diario: 0
+```
+
+Ou seja, a redacção não inventou nem escondeu nenhuma credencial: 6 senhas reais, 0 delas destrancam
+alguma coisa hoje. O que ficou no histórico empurrado continua a ser texto inútil.
+
+### O portão de memória: primeiro por FORMA, e a FORMA era 100 % falso positivo
+
+Escrever um portão para os registos **fora** do repo obrigou a medir o predicado antes de o fiar.
+O predicado de forma (linha de lista com parêntesis) casou **24 linhas em 97 ficheiros**, das quais
+10 tinham «valor» — e **todas as 10 eram prosa de anotação**: caminhos, `GRANT …`, «id (morto)».
+Falso positivo a 100 %, do mesmo género do `${hash}` do bloco 8. O portão passou a ser **por corpus**:
+colhe as senhas reais do disco com o predicado de `seg-p1-senha-viva.mjs`
+(`password\s*[:=]\s*["']…`, com o filtro `!s.includes('${')`) e procura esses literais.
+
+`scripts/seg-fin-mem-varredura.mjs` (diário §11) encontrou logo o que o portão de forma nunca veria:
+uma senha do corpus (`md5 3eceecd4c712 len=14`, a mesma já redigida no registo do P1) **por extenso**
+em `bfr-supervisao-fase0-infraestrutura.md:49`, na forma `- **Password**: \`…\`` — que o redactor de
+forma não apanhava, porque ali a senha está após dois-pontos, não num parêntesis. Segunda cópia em
+claro fora do repo, outra vez sem nenhum gate. Redigida por
+`scripts/seg-fin-mem-redact-por-corpus.mjs --apply` (cópias originais em
+`%TEMP%\bfr-mem-redact-corpus-2026-11-09\`); re-passada: `PORTAO DE MEMORIA OK`, 0 ocorrências, e o
+próprio dry-run re-corrido dá `nada a redigir` — o instrumento não se come a si próprio, ao contrário
+do redactor do §10.
+
+O portão de memória **ainda não está ligado** ao `seg-precommit-gate.mjs`: corre só quando se lhe
+chama. Prendas para quem o ligar: é fora do repo, por isso `--staged` não o vê, e o corpus vem do
+disco — se o disco for o do epílogo, o portão fica cego por construção e aborta com `INSTRUMENTO CEGO`.
+
 ## Em aberto depois deste passe
 
-1. **Revogar o GitHub PAT** — Prioridade 0; o URL limpo já está aplicado, falta só a revogação e
-   o substituto no credential manager. Humana (não há sessão do GitHub no browser).
-2. **Decisão do CSP** — uma das três rotas, ou aceitar o risco escrito.
-3. **Sessão em localStorage** — item de arquitetura, não estava no plano.
-4. Push de `8a93164` + `3f9e056` — não feito; agora bloqueado por **falta de credencial**, não só
-   pela revogação. Mede-se com o portão D.
-5. **As 4 linhas-fantasma continuam em `auth.users`** — com a hash rodada, mas invisíveis ao GoTrue
-   e sem sessão. Apagá-las é outra escrita, irreversível, e não tem OK.
+### Fechado por medição (09/11 ~05:50–06:30Z), sem escrever em nada
 
-**Fechado neste passe:** as **8 combinações senha-conta vivas foram rodadas** e a régua voltou a 0
-(seção acima); `reset-supervisor-password.mjs` saiu do tracking (`git rm --cached`) e entrou
-no `.gitignore` junto das irmãs de mint; a rotação do ficheiro foi **medida como N/A** (o `USER_ID`
-já não existe em `auth.users` e a senha destranca 0 contas), não presumida.
+- **Camada B (tokens de sessão nos blobs): morta.** 0 de 12 `sub` vazados têm linha em
+  `auth.refresh_tokens`; as 3 contas S20 têm 0 sessões cada.
+- **Camada B′ (senhas nos blobs): não autentica.** 6 senhas do disco × 17 hashes = 0; das 8 contas
+  nomeadas nos blobs, 3 existem e foram rotacionadas, 5 já não existem.
+- **`app/sw-v4.js` do repo vs SW servido: divergência medida** (repo `bfr-conecta-v60`,
+  md5 `042670477d61`; ar `bfr-conecta-v118`, md5 `3fcbc3ad52f1`), e a consequência para uma reversão
+  está registada em `evidence/seg-fin-2026-11-09.log` §5–6 com a cópia do ar congelada em
+  `evidence/ar-sw-v4-2026-11-09.js`.
+- **CSP nos bytes publicados: medida**, e o retrato é outro do que o plano assumia — zero cabeçalhos
+  HTTP de segurança, `object-src`/`base-uri` já efectivos no `<meta>`, `frame-ancestors` ausente
+  (secção P2-3 acima).
+- O teste decisivo que faltava (`POST /token?grant_type=refresh_token`) passou a ser **inútil**: não
+  há linha para reproduzir.
+- **A memória do projecto deixou de ser uma segunda cópia em claro** das 6 senhas: redigida para
+  `(md5 … len=…)` e conferida contra o corpus do §7, com diferença simétrica 0/0 (seção acima).
+  Este item não estava no plano — foi achado por medição, e é também a primeira vez que um registo
+  **fora do repo** aparece num portão de credenciais.
+- **Segunda exposição fora do repo, achada pelo portão novo e também redigida**: o portão por corpus
+  varre os 97 registos da memória contra as 6 senhas do disco e passou de `FALHA — 1 ocorrencias`
+  (exit 1) a `OK` (exit 0). O predicado de forma foi medido e rejeitado: 10/10 falsos positivos.
+
+### O que estruturalmente é do dono — escolhas, não medições
+
+1. **Revogar o GitHub PAT e emitir o substituto** — Prioridade 0; o URL limpo já está aplicado. Não
+   há sessão do GitHub no browser do rig, por isso a revogação, o fine-grained novo
+   (Contents:RW, `Only select repositories` → bfr-conecta) e a instalação no credential manager
+   continuam humanos. Enquanto isso, **12 commits locais não sobem** (`8a93164`…`d5e833d`); o custo
+   mede-se com o portão D de `seg-p0-access-probe.mjs`.
+2. **Decisão do CSP** — hoje não há nenhuma protecção declarada contra clickjacking. As rotas, com
+   o que cada uma custa:
+   - *só `frame-ancestors` como header HTTP do Worker* — o mínimo que fecha o buraco real; 1 linha no
+     `Worker`, sem tocar no `<meta>`, sem risco de quebrar `connect-src`;
+   - *política inteira como header HTTP* (+ `<meta>` a encolher) — mais limpo, mas é o diff grande e
+     exige re-medir o ar;
+   - *endurecer só o `<meta>`* — não consegue pôr `frame-ancestors`, logo não fecha o buraco;
+   - *aceitar o risco escrito* — também é uma decisão legítima, desde que registada.
+   Nenhuma foi aplicada por mim.
+3. **Sessão em `localStorage`** (access + refresh legáveis por XSS) — item de arquitetura do SDK,
+   não estava no plano; mexer nisso toca boot, Service Worker e re-login silencioso.
+4. **As 4 linhas-fantasma em `auth.users`** — hash rodada, invisíveis ao GoTrue, sem sessão.
+   Apagá-las é escrita irreversível e não tem OK.
+5. **As 2 sessões `@gmail.com` vivas** — são contas reais, não estão entre as vazadas, e não se
+   tocaram. Se alguma delas não deveria ter sessão activa, isso é inventário de contas, decisão sua.
+6. **`.c2-chrome-profile` (200 056 KB = 195 MB no disco de trabalho)** — censurado por contagens
+   (`scripts/seg-censo-chrome-profile.mjs`, diário §9; o JWT do LevelDB cruzado com o banco em §4):
+   **0 cookies, 0 logins**, 1 URL na História, 1 host no Local Storage com 2 ocorrências de
+   `sb-*-auth-token` cujo `sub` **não existe** em `auth.users` e cujo `exp` já passou. Não há
+   credencial de servidor lá dentro; os 195 MB são sobretudo cache de páginas, não material de
+   sessão. Eliminar é irreversível e o rig de teste ainda pode usá-lo, por isso fica como escolha,
+   não como limpeza automática.
+
+**Fechado nos passes anteriores:** as **8 combinações senha-conta vivas foram rodadas** e a régua
+voltou a 0 (seção acima); `reset-supervisor-password.mjs` saiu do tracking (`git rm --cached`) e
+entrou no `.gitignore` junto das irmãs de mint; a rotação do ficheiro foi **medida como N/A** (o
+`USER_ID` já não existe em `auth.users` e a senha destranca 0 contas), não presumida.
