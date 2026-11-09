@@ -714,3 +714,73 @@ veredito: contagem re-medida a 22 no momento da escrita (HEAD `794638e`, `origin
 comando junto da linha de memoria e alcance da regra alargado a qualquer commit local; indice e
 memoria verdes por medicao acima; nada foi pushado, continua sem hook, e o passo de credencial
 (revogar o PAT e correr `node scripts/seg-p0-install-credencial.mjs`) segue do lado do dono.
+
+## 19. Re-medicao da superficie, duas memorias velhas e o indice que estourou ao ser podado (09/11)
+
+Passada somente-leitura depois do commit `541a79f`. Nada publicado, nada empurrado, nenhuma linha
+de banco tocada.
+
+1) A superficie publicada re-medida, nao copiada do plano. `node scripts/p23-csp-live.mjs`
+   (alvo derivado de `audit-publicacao-v117.json`; diario em `evidence/p23-csp-live.json`):
+   ar e disco byte-identicos em todos os contadores — `3 489 467` B, md5 `ae59d35346b6`, 108
+   `<script>` (5 externos, 103 inline), 286 `style=""`. Nos 7 headers de seguranca testados:
+   **0 presentes**; `frame-ancestors` AUSENTE (um `<meta>` nao pode transporta-la). O `/sw.js` do
+   ar sao `3 583` B md5 `3fcbc3ad52f1`; o `app/sw-v4.js` rastreado sao `3 585` B md5
+   `042670477d61`, ultimo toque `672f619`. Nao e divergencia por resolver: sao dois contratos
+   diferentes (o snapshot com tags `v59`/`v60` congela; o ar corre a `v118`).
+
+2) O unicos bloqueio de texto que continua no tracking, provado outra vez:
+
+$ node scripts/seg-precommit-gate.mjs docs/c2-fixtures.json
+  docs/c2-fixtures.json: ... tier-B=1  chave "badge_token" len 36 @$.badge_token
+BLOQUEIA                                               EXIT=1
+
+   O portao da casa reprova um ficheiro que a casa mantem rastreado. E uma contradicao latente,
+   nao um falso positivo: o `badge_token` de 36 caracteres e de conta sintetica ja apagada, mas e
+   segredo. Os dois remedios (`git rm --cached` com padrao no `.gitignore`, como o P1 fez com o
+   `reset-supervisor-password.mjs`, ou redaccao do valor) mudam conteudo do repo. Ficam como
+   pergunta ao dono, nao como accao desta passada.
+
+3) Duas memorias contrariadas pela medicao, corrigidas no sitio:
+   - `bfr-s16-achado2-storage-aplicado.md` dizia «prova comportamental NAO rodada (exige conta
+     real de director com login Supabase Auth)». A premissa era falsa: contas mintadas pela
+     `POST /auth/v1/admin/users` autenticam e dao JWT de RLS normal, e o ciclo S19 rodou os
+     **22 portaes de storage** com tokens reais (`evidence/s19-diary.json`, 10 916 B; lib em
+     `scripts/s19-lib.mjs`, 3 822 B — os dois ficheiros conferidos no disco). O que sobra do
+     achado nao e pendencia de teste e triplo gap de **policy**.
+   - `bfr-repo-snapshot-v59.md` dizia «origin existe e esta empurrado» e fixava a dianteira em
+     `8a93164`+`3f9e056`. Desde 09/11 o URL esta limpo e a dianteira so existe como funcao do
+     instante: agora cita o comando `git rev-list --count origin/main..HEAD` em vez do numero.
+
+4) Instancia nova da entrada 16, no instrumento do indice: ao corrigir as duas linhas do
+   `MEMORY.md` eu cresci o ficheiro para `25 020` B e **o portao do indice falhou (exit 1)**
+   contra o tecto de 25 000. A edicao que descreve o orcamento estourou o orcamento — mesma
+   familia da contagem de commits, com o remedio ao contrario: aqui nao ha comando que valha,
+   ha de se escrever mais curto. Ja corrige no mesmo passe: `24 876` B, folga `124`, com as
+   duas correcoes mantidas (linha do snapshot 228 B, linha do achado 309 B).
+
+5) Armadilha registada sem a transformar em facto: o aviso de «ficheiro modificado» mostrou o
+   indice com duas linhas novas (`bfr-v115-para-v118-censo-pendencias.md`,
+   `bfr-t14-teste-mysql-por-convite.md`) que **nao existem no disco**. Medido logo depois:
+   `grep -c '^- \[' MEMORY.md` = 96, `grep` dos dois slugs = 0 ocorrencias, auditor = 96 entradas
+   / 96 topic files / 0 partidos, e os dois ficheiros nao estao no directorio. Registo a
+   discrepancia e as medicoes que a contradizem; nao afirmo que as linhas existiram: a
+   notificacao nao e evidencia de conteudo, o disco e o auditoro sao.
+
+Controlos re-corridos depois das edicoes de memoria, porque memoria editada e corpus novo:
+
+$ node scripts/seg-fin-mem-controles.mjs
+6/6 OK (artefactos temporarios apagados pelo proprio script)         EXIT=0
+
+$ node scripts/seg-fin-mem-indice.mjs
+MEMORY.md: 24876 bytes (tecto 25000, folga 124) | 99 linhas
+PORTAO DO INDICE OK                                        EXIT=0
+
+$ node scripts/seg-fin-mem-varredura.mjs
+corpus de senhas do disco: 6 | ficheiros de memoria varridos: 97
+PORTAO DE MEMORIA OK                                       EXIT=0
+
+veredito: superficie re-medida ao inves de repetida, duas memorias velhas postas de acordo com
+os factos, indice verde com folga de 124 B e o conflito `docs/c2-fixtures.json` × portao
+entregue como pergunta. Esta seccao vai ser commitada e por isso muda a contagem que o registo
+cita: re-contar depois, nao repetir o 23.
