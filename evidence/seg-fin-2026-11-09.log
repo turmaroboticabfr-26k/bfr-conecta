@@ -348,3 +348,78 @@ veredito: 97 ficheiros de memoria varridos, corpus de 6 senhas do disco, 1 ocorr
 na 1a passada -> 0 depois da redaccao, provada tambem pelo dry-run re-corrido (nao se auto-come).
 A forma da linha redigida confere-se sem ler o valor: `- **Password**: `(md5 3eceecd4c712 len=14)``.
 O portao de memoria AINDA NAO esta ligado ao `seg-precommit-gate.mjs`: corre so quando se lhe chama.
+
+===============================================================================
+12) ligacao da camada D (registos fora do repo) ao seg-precommit-gate.mjs (09/11 ~06:46Z)
+===============================================================================
+
+A ultima linha do bloco 11 estava certa quando foi escrita e deixou de estar neste passe. O que se
+seguiu foi a ligacao pedida: `camada D` dentro do gate, delegada no varredor proprio.
+
+Duas alteracoes de instrumento antes de medir:
+- o varredor tinha dois caminhos literais desta maquina (REPO e MEM). PASSARAM A DERIVADOS:
+  REPO = `new URL('..', import.meta.url)`, MEM = `os.homedir()/.qoder/projects/<slug>/memory` com o
+  slug derivado de `path.dirname(REPO)` (`:`/`\`/`/` -> `-`). O caminho derivado foi conferido byte a
+  byte contra o directorio real ANTES de qualquer edicao que confie nele. Fica `--mem-dir=` para teste.
+- dois modos de cegueira novos passam a falhar alto: directorio de registos inexistente e directorio
+  sem um unico `.md`. Somados ao corpus vazio que ja abortava.
+
+$ node scripts/seg-fin-mem-varredura.mjs      (sozinho, 0.222s)
+corpus de senhas do disco: 6
+ficheiros de memoria varridos: 97
+PORTAO DE MEMORIA OK — nenhuma senha do corpus por extenso num registo fora do repo
+exit=0
+
+$ node scripts/seg-precommit-gate.mjs scripts/seg-precommit-gate.mjs scripts/seg-fin-mem-varredura.mjs docs/remedicao-seguranca-P1-P3.md
+  scripts/seg-precommit-gate.mjs: PAT=0 service_role-JWT=0 PEM=0 senha-conhecida=0 tier-B=0 JWT-sessao=0 anon-JWT=0 OK
+  scripts/seg-fin-mem-varredura.mjs: PAT=0 service_role-JWT=0 PEM=0 senha-conhecida=0 tier-B=0 JWT-sessao=0 anon-JWT=0 OK
+  docs/remedicao-seguranca-P1-P3.md: PAT=0 service_role-JWT=0 PEM=0 senha-conhecida=0 tier-B=0 JWT-sessao=0 anon-JWT=0 OK
+senhas no corpus: 6 (comprimentos 9/12/12/13/13/14) | ficheiros lidos: 3/3 | binarios nao cobertos: 0
+camada D — registos fora do repo (memoria do projecto):
+corpus de senhas do disco: 6
+ficheiros de memoria varridos: 97
+PORTAO DE MEMORIA OK — nenhuma senha do corpus por extenso num registo fora do repo
+PORTAO PRE-COMMIT OK — zero credenciais nas camadas A, B, C e D
+exit=0
+
+CONTROLE NEGATIVO — um portao que nunca bloqueia nao e um portao. Semeou-se UMA senha do corpus num
+directorio de ensaio em %TEMP% (`bfr-camadaD-prova/prova-camada-d.md`), com o mesmo padrao do
+seg-p1-senha-viva.mjs; o plantador impress so `len` e os 12 hex, nunca o valor:
+
+$ node %TEMP%/bfr-camadaD-planta.mjs
+semeado len=13 md5=1425d5d3160a no corpus de 6
+
+$ node scripts/seg-precommit-gate.mjs scripts/seg-fin-mem-varredura.mjs --mem-dir=%TEMP%/bfr-camadaD-prova
+  scripts/seg-fin-mem-varredura.mjs: PAT=0 service_role-JWT=0 PEM=0 senha-conhecida=0 tier-B=0 JWT-sessao=0 anon-JWT=0 OK
+senhas no corpus: 6 (comprimentos 9/12/12/13/13/14) | ficheiros lidos: 1/1 | binarios nao cobertos: 0
+camada D — registos fora do repo (memoria do projecto):
+corpus de senhas do disco: 6
+  prova-camada-d.md: senha md5=1425d5d3160a len=13 aparece 1x
+ficheiros de memoria varridos: 1
+PORTAO DE MEMORIA FALHA — 1 ocorrencias de senha por extenso
+PORTAO PRE-COMMIT FALHA — ha segredo ou cobertura em falta
+exit=1
+
+Nota de instrumento: o md5 semeado neste passe (1425d5d3160a) e outro membro do corpus do que o
+passado antes da compactacao (bd43650e6ab5) — o plantador apanha o primeiro do Set e a ordem nao e
+estavel. O que se testava era o bloqueio, e ele deu nos dois passes.
+
+FALHA-ALTA nos dois modos novos de cegueira:
+
+$ node scripts/seg-fin-mem-varredura.mjs --mem-dir=%TEMP%/bfr-camadaD-naoexiste
+corpus de senhas do disco: 6
+INSTRUMENTO CEGO: nao ha registos em C:/Users/pcmac/AppData/Local/Temp/bfr-camadaD-naoexiste — a camada D nao cobre nada
+exit=1
+
+$ node scripts/seg-fin-mem-varredura.mjs --mem-dir=%TEMP%/bfr-camadaD-vazio
+corpus de senhas do disco: 6
+INSTRUMENTO CEGO: zero .md em C:/Users/pcmac/AppData/Local/Temp/bfr-camadaD-vazio
+exit=1
+
+$ rm -rf %TEMP%/bfr-camadaD-prova %TEMP%/bfr-camadaD-vazio %TEMP%/bfr-camadaD-planta.mjs
+0            # `ls %TEMP% | grep -ci camadaD` — nenhum rastro do artefacto com a senha por extenso
+
+veredito: camada D ligada e provada nos quatro comportamentos (verde, bloqueio semeado, e os dois
+cegos). O que a ligacao NAO muda: nao ha hook instalado (core.hooksPath vazio, .git/hooks so com
+.sample), portanto a camada D corre quando o portao e chamado, nao antes de cada commit. Instalado
+o hook, ela passa a correr sozinha; fica como decisao do dono, nao foi feita aqui.

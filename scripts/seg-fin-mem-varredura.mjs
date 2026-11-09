@@ -5,11 +5,18 @@
 // seg-p1-senha-viva.mjs e procura cada literal, por extenso, dentro de cada ficheiro de memoria.
 // Nunca imprime um valor: so md5 de 12 hex, comprimento e contagem de ocorrencias.
 import fs from 'node:fs';
+import os from 'node:os';
 import path from 'node:path';
 import crypto from 'node:crypto';
 
-const REPO = 'C:/Users/pcmac/Documents/Qoder/2026-10-13/28077d9a/bfr-conecta';
-const MEM = 'C:/Users/pcmac/.qoder/projects/C--Users-pcmac-Documents-Qoder-2026-10-13-28077d9a/memory';
+const REPO = new URL('..', import.meta.url).pathname.replace(/^\//, '').replace(/\/$/, '');
+// A memoria do projecto vive FORA do repo, em ~/.qoder/projects/<slug do workspace>/memory.
+// O slug deriva do path do repo (o nivel acima), nao de uma literal digitada: assim o portao
+// continua a apontar para o sitio certo quando a arvore muda de disco. Override: --mem-dir=.
+const argDir = process.argv.find((a) => a.startsWith('--mem-dir='));
+const MEM = argDir
+  ? argDir.slice('--mem-dir='.length)
+  : path.join(os.homedir(), '.qoder', 'projects', path.dirname(REPO).replace(/[:\\/]/g, '-'), 'memory');
 const RX = /password\s*[:=]\s*["']([^"'\n]{4,})["']/gi;
 const senhaReal = (s) => !s.includes('${');
 const md5 = (s) => crypto.createHash('md5').update(s).digest('hex').slice(0, 12);
@@ -30,7 +37,9 @@ walk(REPO, 3);
 if (!corpus.size) { console.log('INSTRUMENTO CEGO: zero senhas colhidas do disco — o portao nao prova nada'); process.exit(1); }
 console.log(`corpus de senhas do disco: ${corpus.size}`);
 
+if (!fs.existsSync(MEM)) { console.log(`INSTRUMENTO CEGO: nao ha registos em ${MEM} — a camada D nao cobre nada`); process.exit(1); }
 const ficheiros = fs.readdirSync(MEM).filter((f) => f.endsWith('.md')).sort();
+if (!ficheiros.length) { console.log(`INSTRUMENTO CEGO: zero .md em ${MEM}`); process.exit(1); }
 let total = 0;
 const acusadas = [];
 for (const f of ficheiros) {

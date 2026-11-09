@@ -5,6 +5,10 @@
 //   B  segredo de utilizador — senha hardcoded do corpus, token opaco em chave nomeada,
 //      JWT de sessao (role que nao e anon nem service_role), cabecalho Bearer com token
 //   C  chave publica de cliente — JWT role=anon: conta, nao bloqueia
+//   D  registos FORA do repo — a memoria do projecto (~/.qoder/projects/<slug>/memory): nenhum
+//      path staged a cobre, e foi la que apareceram 14 senhas em claro em 09/11. Delegada no
+//      seg-fin-mem-varredura.mjs para nao haver duas implementacoes a divergir; so o predicado
+//      por CORPUS e util ali (o por forma deu 10/10 falsos positivos, medido).
 // Binario nao escaneavel (PNG, PDF, zip) fica marcado NAO COBERTO e bloqueia ate o humano
 // passar --ack-binario depois de ver o ficheiro: dar OK sobre o que nao se leu foi o erro da
 // primeira versao deste portao (corpus vazio) e nao se quer que volte por outro caminho.
@@ -20,6 +24,7 @@ const GIT = (args) => execFileSync('git', args, { cwd: REPO, encoding: 'utf8' })
 
 const staged = process.argv.includes('--staged');
 const ackBin = process.argv.includes('--ack-binario');
+const memDir = process.argv.find((a) => a.startsWith('--mem-dir='));
 const files = staged
   ? GIT(['diff', '--cached', '--name-only', '--diff-filter=ACM']).split('\n').filter(Boolean)
   : process.argv.slice(2).filter((a) => !a.startsWith('--'));
@@ -136,5 +141,18 @@ for (const rel of files) {
 console.log(`senhas no corpus: ${senhasConhecidas.size} (comprimentos ${[...senhasConhecidas.values()].sort((a, b) => a - b).join('/')}) | ficheiros lidos: ${lidos}/${files.length} | binarios nao cobertos: ${naoCobertos}`);
 if (!lidos) { console.log('INSTRUMENTO CEGO: nenhum ficheiro foi lido'); process.exit(1); }
 if (naoCobertos && ackBin) console.log('NOTA: os binarios foram confirmados por humano (--ack-binario), nao por este portao.');
-console.log(falha ? 'PORTAO PRE-COMMIT FALHA — ha segredo ou cobertura em falta' : 'PORTAO PRE-COMMIT OK — zero credenciais nas camadas A, B e C');
+
+// Camada D: os registos fora do repo NAO estao em nenhum path staged, por isso o passeio acima
+// nao os ve. Delegada no varredor proprio — uma implementacao so, senao os predicados divergem.
+console.log('camada D — registos fora do repo (memoria do projecto):');
+try {
+  process.stdout.write(
+    execFileSync('node', [path.join(REPO, 'scripts', 'seg-fin-mem-varredura.mjs'), ...(memDir ? [memDir] : [])], { cwd: REPO, encoding: 'utf8' })
+  );
+} catch (e) {
+  process.stdout.write(String(e.stdout || ''));
+  if (e.stderr) process.stdout.write(String(e.stderr).trim() + '\n');
+  falha = 1;
+}
+console.log(falha ? 'PORTAO PRE-COMMIT FALHA — ha segredo ou cobertura em falta' : 'PORTAO PRE-COMMIT OK — zero credenciais nas camadas A, B, C e D');
 process.exit(falha);

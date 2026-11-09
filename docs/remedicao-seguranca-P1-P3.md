@@ -103,16 +103,20 @@ Nota de honestidade: a memória `bfr-repo-snapshot-v59` dizia «sem remote». É
 
 ### Portão pré-commit — para o próximo ciclo não voltar a fazer o P1
 
-`scripts/seg-precommit-gate.mjs` corre antes de cada commit e varre o que está prestes a entrar.
+`scripts/seg-precommit-gate.mjs` varre o que está prestes a entrar. Medido 09/11: **não há hook
+instalado** — `core.hooksPath` está vazio e `.git/hooks` só tem ficheiros `.sample`, por isso o portão
+corre **quando se lhe chama**, à mão, antes de cada `git commit`. Ligar o `pre-commit` ao repo é
+decisão do dono e não foi tomada aqui.
 Nunca imprime um valor: só contagens, comprimentos e os md5 casados.
 
-O portão cobre três camadas e diz qual delas bateu:
+O portão cobre quatro camadas e diz qual delas bateu:
 
 | Camada | O que é | O que o portão faz |
 |---|---|---|
 | **A — credencial de servidor** | PAT (`ghp_`/`github_pat_`/…), JWT com `role=service_role`, chave PEM | **BLOQUEIA**, exit 1 |
 | **B — segredo do utilizador** | senha hardcoded do corpus; token de sessão/refresh opaco; JWT cujo papel não é `anon` nem `service_role`; `Bearer <opaco>`; literal `*token*`/`*secret*`/`*credential*`/`*authorization*`/`*passw*` com forma de credencial | **BLOQUEIA**, exit 1 |
 | **C — chave pública de cliente** | JWT com `role=anon` | **conta** (`anon-JWT=n`), não bloqueia |
+| **D — registos fora do repo** | senha do corpus **por extenso** na memória do projecto (`~/.qoder/projects/<slug>/memory`), onde nenhum path staged chega | **BLOQUEIA**, exit 1 — delegada no `seg-fin-mem-varredura.mjs` |
 
 A camada B foi acrescentada 09/11 porque a primeira versão só via A e as senhas do corpus: os
 tokens opacos — refresh tokens das contas sintéticas, `access_token` gravado nos diários — passavam
@@ -138,6 +142,15 @@ Binários não são cobertos por scanner de texto e o portão diz isso em vez de
 e **BLOQUEIA**. A escape é humana e deliberada: `--ack-binario`, para quando a imagem foi vista à mão.
 Foi exactamente assim que as duas capturas do login (`docs/v118-*.png`) entraram no commit `0969781`
 depois de inspeccionadas, e não por um OK automático.
+
+A camada D foi ligada 09/11 e **não duplica o predicado**: o gate chama
+`execFileSync('node', ['scripts/seg-fin-mem-varredura.mjs'])` e repassa o stdout dele. Uma segunda
+implementação do mesmo teste divergiria da primeira — é o que aconteceu entre o redactor de forma do
+§10 e o varredor por corpus do §11, que olharam para o mesmo directório e viram coisas diferentes. Como os registos estão **fora** do repo, nenhum
+`--staged` os vê; o caminho da memória é derivado (`path.dirname(REPO)` → slug →
+`~/.qoder/projects/<slug>/memory`), conferido byte a byte contra o directório real, e há
+`--mem-dir=` para o Negative test. Se o directório não existe ou não tem um único `.md`, o varredor
+sai `INSTRUMENTO CEGO` com exit 1 — um portão sobre um corpus que não se leu não pode dar OK.
 
 Os controles positivos rodados 09/11, porque um portão sem controle é décor:
 
@@ -580,9 +593,37 @@ claro fora do repo, outra vez sem nenhum gate. Redigida por
 próprio dry-run re-corrido dá `nada a redigir` — o instrumento não se come a si próprio, ao contrário
 do redactor do §10.
 
-O portão de memória **ainda não está ligado** ao `seg-precommit-gate.mjs`: corre só quando se lhe
-chama. Prendas para quem o ligar: é fora do repo, por isso `--staged` não o vê, e o corpus vem do
-disco — se o disco for o do epílogo, o portão fica cego por construção e aborta com `INSTRUMENTO CEGO`.
+## A camada D ligada ao portão pré-commit (09/11, depois do bloco acima)
+
+As três prendas do parágrafo anterior foram as coisas que tiveram de ser resolvidas, e não razões
+para adiar:
+
+- **`--staged` não vê o que é fora do repo.** A camada D não passeia pelos paths staged: o gate chama
+  `execFileSync('node', ['scripts/seg-fin-mem-varredura.mjs'])` e repassa o stdout. Uma só
+  implementação do predicado — o erro original deste ciclo foi justamente ter um redactor de forma e
+  um varredor de corpus a olhar para o mesmo directório.
+- **O caminho da memória não é uma literal digitada.** Era
+  `C:/Users/pcmac/.qoder/projects/C--Users-pcmac-.../memory` fixo no código; passou a derivar
+  (`os.homedir()` + slug de `path.dirname(REPO)` com `:`/`\`/`/` → `-`), conferido byte a byte contra
+  o directório real antes de qualquer edição que confie nele. Continua a haver `--mem-dir=` para
+  teste.
+- **Corpus vazio já não dá OK.** Além do `INSTRUMENTO CEGO` do corpus, o varredor passou a abortar se
+  o directório não existe (`nao ha registos em <path>`) e se não tem um único `.md` — os dois modos de
+  cegueira de uma camada que se lê mas não cobre nada.
+
+Os quatro comportamentos medidos, com o `--mem-dir=` do controle negativo a apontar para um
+directório de ensaio em `%TEMP%` (a senha semeada nunca foi impressa: só `len` e os 12 hex do md5;
+o artefacto foi destruído no fim):
+
+| Comportamento | Veredito lido |
+|---|---|
+| varredor sozinho | `PORTAO DE MEMORIA OK` — corpus 6, 97 ficheiros `.md`, exit 0 |
+| gate com a camada D (3 ficheiros) | `camada D — registos fora do repo (memoria do projecto):` … `PORTAO PRE-COMMIT OK — zero credenciais nas camadas A, B, C e D`, exit 0 |
+| registo semeado com uma senha do corpus | `prova-camada-d.md: senha md5=1425d5d3160a len=13 aparece 1x` → `PORTAO DE MEMORIA FALHA — 1 ocorrencias` → `PORTAO PRE-COMMIT FALHA`, exit 1 |
+| `--mem-dir=` inexistente / directório sem `.md` | `INSTRUMENTO CEGO` nos dois casos, exit 1 |
+
+O que a ligação **não** muda: continua a não haver hook instalado, por isso a camada D corre quando
+o portão é chamado — ver «Portão pré-commit» acima.
 
 ## Em aberto depois deste passe
 
