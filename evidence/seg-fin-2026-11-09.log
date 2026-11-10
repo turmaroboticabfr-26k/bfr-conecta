@@ -981,3 +981,91 @@ continua a exigir `filter-repo` + force push, que nao se faz sem OK novo; agora 
 o valor la dentro nao abre nada. Contagem: este bloco e a seccao vao ser commitados, por isso
 `git rev-list --count origin/main..HEAD` muda — era 26 com `HEAD`=`b145a3a`, re-contar depois, nao
 repetir o numero.
+
+====================================================================================================
+§22 — Candidata CSP pronta, reconstruida dos bytes vivos (09/11)
+====================================================================================================
+
+1. O estado do ar, re-medido antes de tocar em qualquer ficheiro. GET / na URL publicada devolve
+   HTTP 200 com ZERO headers de seguranca, medido um a um por node fetch:
+
+   content-security-policy  => null
+   x-content-type-options    => null
+   strict-transport-security => null
+   referrer-policy           => null
+   x-frame-options           => null
+   permissions-policy        => null
+
+   sobram so content-type e cache-control max-age=0. A CSP existe APENAS como
+   <meta http-equiv="Content-Security-Policy"> dentro do HTML do shell. O item P2-3 nao e uma CSP
+   fraca — e um header ausente. E como o meta existe e o navegador ja o aplica, a primeira regra
+   da candidata ficou decidida por medicao: o header vai ESPELHAR o meta, caractere a caractere.
+   Nada de apertar (sem frame-ancestors novo), nada de alargar.
+
+2. A armadilha do pipe MSYS, registrada para nao voltar a morder. Uma passada de `curl -s URL |
+   node -e` (stdin) deu 3 489 471 B, md5 0febaca8b3120bb300e1cacd4cb63679 — 4 bytes a mais que o
+   valor estavel. node-fetch (duas vezes) e `curl -s -o ficheiro` dao 3 489 467 B,
+   md5 ae59d35346b685b2fbf9d18ade4fa5cd. O pipe acrescentou 4 bytes algures entre o curl e o stdin
+   do node. Regra nova: medicao de bytes do ar usa node fetch ou curl -o, nunca pipe para stdin.
+
+3. O achado que mudou o desenho: o worker.mjs deployed NAO tem copia em disco. O shell vivo
+   (3 489 467 B, md5 ae59d353…) e byte-identico ao snapshot ar-shell.html, mas NAO bate com
+   nenhum dos 6 directorios worker-deploy-* — todos embutem 3 613 659 B, md5 f306b607…, o shell
+   errado. O SW vivo (/sw-v4.js = /sw.js, 3 586 B, md5 3fcbc3ad…) e byte-identico a
+   evidence/ar-sw-v4-2026-11-09.js; o ar-sw-v4.js da raiz e uma versao mais antiga de 3 578 B.
+   Reconstruir a candidata de um worker-deploy-* seria publicar o shell errado. A candidata foi
+   montada dos bytes vivos medidos agora (HTML + SW), com os snapshots so como controle de
+   estabilidade.
+
+4. scripts/seg-csp-gerador.mjs monta worker-deploy-v118-csp/ — directorio NOVO, nada vivo
+   sobrescrito. Estrutura: const CSP extraida do meta do shell vivo (regex com EXATAMENTE 1
+   match), const SW e const HTML dos bytes vivos, handler igual ao do ar com 4 headers novos SO
+   na rota do shell: content-security-policy = CSP, x-content-type-options: nosniff,
+   referrer-policy: strict-origin-when-cross-origin e strict-transport-security:
+   max-age=31536000. As rotas /sw.js, /sw-v4.js e o fallback de assets ficam EXACTAMENTE como no
+   vivo. wrangler.toml copiado do worker-deploy-v118-swfix (name/account/main/assets inalterados).
+
+5. As tres decisoes de desenho, cada uma com o seu portao:
+   a. header == meta — portao compara o header da candidata com a string do meta do vivo; um
+      portao negativo prova que o meta NAO tem frame-ancestors, logo o header nao vai apertar
+      alem do que o navegador ja aplica hoje.
+   b. HSTS sem includeSubDomains — workers.dev e dominio partilhado; includeSubDomains obrigaria
+      outros *.workers.dev sob a mesma zona a HTTPS. Portao: regex na fonte da candidata.
+   c. headers so na rota do shell — SW e assets inalterados. Portao: 1 ocorrencia de
+      'content-security-policy' na fonte; /sw-v4.js da candidata sem o header.
+
+6. Os 21 portoes, corridos pelo proprio gerador:
+
+VERDE   shell vivo estavel em 2 fetches — bytes 3489467 md5 ae59d35346b685b2fbf9d18ade4fa5cd
+VERDE   shell vivo == ar-shell.html (snapshot em disco) — md5 disco ae59d35346b685b2fbf9d18ade4fa5cd
+VERDE   /index.html == shell — md5 ae59d35346b685b2fbf9d18ade4fa5cd
+VERDE   sw-v4 vivo == evidence/ar-sw-v4-2026-11-09.js — bytes 3586
+VERDE   /sw.js == /sw-v4.js no vivo
+VERDE   controle negativo: vivo NAO tem CSP header
+VERDE   meta CSP existe no shell vivo
+VERDE   meta CSP tem as directivas esperadas
+VERDE   meta CSP nao tem frame-ancestors (header nao vai apertar alem do meta)
+VERDE   candidata NAO contem includeSubDomains (workers.dev e dominio partilhado)
+VERDE   candidata tem o header CSP so na rota do shell (1 ocorrencia)
+VERDE   sintaxe node --check
+VERDE   candidata / == vivo / (bytes)
+VERDE   candidata /index.html == vivo
+VERDE   candidata /sw-v4.js == vivo
+VERDE   candidata /sw.js == vivo
+VERDE   candidata / tem CSP header == meta do vivo
+VERDE   candidata / tem nosniff + referrer + HSTS
+VERDE   candidata /sw-v4.js NAO tem CSP header (rotas de asset inalteradas)
+VERDE   candidata mantem 404 do fallback de assets
+VERDE   reversao: shell sem headers == vivo byte a byte
+21 portoes, 0 falhas.                                             EXIT=0
+
+7. A reversao como prova de linhagem. O gerador monta um modulo reverso (tira a const CSP e as 4
+   linhas de header), corre o handler e compara a resposta com o shell vivo BYTE A BYTE — verde.
+   E a promessa de que, se a publicacao causar problema, retirar os 4 headers devolve exatamente
+   o ar de hoje. O mesmo portao 4 do ponto 1 prova que o ar de hoje nao tem esses headers.
+
+veredito: candidata PRONTA em worker-deploy-v118-csp/ (worker.mjs 3 550 708 B + wrangler.toml +
+portoes.json), 21/21 portoes, zero publicacoes, zero escritas no banco. Publicar exige OK novo
+explicito; a cadeia de deploy (preflight + wrangler + prova HTTP + Chrome limpo) fica para esse
+OK. Contagem: esta seccao vai ser commitada e por isso muda a contagem que ela propria cita —
+era 27 com `HEAD`=`98b4eea`, re-contar depois, nao repetir o numero.

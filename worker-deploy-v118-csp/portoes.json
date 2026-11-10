@@ -1,0 +1,111 @@
+{
+  "em": "2026-11-10T04:21:14.837Z",
+  "url": "https://bfr-conecta.turmaroboticabfr.workers.dev",
+  "gates": [
+    {
+      "nome": "shell vivo estavel em 2 fetches",
+      "ok": true,
+      "detalhe": "bytes 3489467 md5 ae59d35346b685b2fbf9d18ade4fa5cd"
+    },
+    {
+      "nome": "shell vivo == ar-shell.html (snapshot em disco)",
+      "ok": true,
+      "detalhe": "md5 disco ae59d35346b685b2fbf9d18ade4fa5cd"
+    },
+    {
+      "nome": "/index.html == shell",
+      "ok": true,
+      "detalhe": "md5 ae59d35346b685b2fbf9d18ade4fa5cd"
+    },
+    {
+      "nome": "sw-v4 vivo == evidence/ar-sw-v4-2026-11-09.js",
+      "ok": true,
+      "detalhe": "bytes 3586"
+    },
+    {
+      "nome": "/sw.js == /sw-v4.js no vivo",
+      "ok": true,
+      "detalhe": ""
+    },
+    {
+      "nome": "controle negativo: vivo NAO tem CSP header",
+      "ok": true,
+      "detalhe": ""
+    },
+    {
+      "nome": "meta CSP existe no shell vivo",
+      "ok": true,
+      "detalhe": ""
+    },
+    {
+      "nome": "meta CSP tem as directivas esperadas",
+      "ok": true,
+      "detalhe": ""
+    },
+    {
+      "nome": "meta CSP nao tem frame-ancestors (header nao vai apertar alem do meta)",
+      "ok": true,
+      "detalhe": ""
+    },
+    {
+      "nome": "candidata NAO contem includeSubDomains (workers.dev e dominio partilhado)",
+      "ok": true,
+      "detalhe": ""
+    },
+    {
+      "nome": "candidata tem o header CSP so na rota do shell (1 ocorrencia)",
+      "ok": true,
+      "detalhe": ""
+    },
+    {
+      "nome": "sintaxe node --check",
+      "ok": true,
+      "detalhe": ""
+    },
+    {
+      "nome": "candidata / == vivo / (bytes)",
+      "ok": true,
+      "detalhe": ""
+    },
+    {
+      "nome": "candidata /index.html == vivo",
+      "ok": true,
+      "detalhe": ""
+    },
+    {
+      "nome": "candidata /sw-v4.js == vivo",
+      "ok": true,
+      "detalhe": ""
+    },
+    {
+      "nome": "candidata /sw.js == vivo",
+      "ok": true,
+      "detalhe": ""
+    },
+    {
+      "nome": "candidata / tem CSP header == meta do vivo",
+      "ok": true,
+      "detalhe": ""
+    },
+    {
+      "nome": "candidata / tem nosniff + referrer + HSTS",
+      "ok": true,
+      "detalhe": ""
+    },
+    {
+      "nome": "candidata /sw-v4.js NAO tem CSP header (rotas de asset inalteradas)",
+      "ok": true,
+      "detalhe": ""
+    },
+    {
+      "nome": "candidata mantem 404 do fallback de assets",
+      "ok": true,
+      "detalhe": ""
+    },
+    {
+      "nome": "reversao: shell sem headers == vivo byte a byte",
+      "ok": true,
+      "detalhe": ""
+    }
+  ]
+}
