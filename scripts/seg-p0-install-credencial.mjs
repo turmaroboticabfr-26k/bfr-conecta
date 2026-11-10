@@ -65,7 +65,8 @@ const url = roda(['config', '--get', 'remote.origin.url']).out.trim();
 if (!url) cego('o repo nao tem remote.origin.url');
 if (!url.startsWith('https://')) cego(`remoto nao e HTTPS (${mascara(url)}) — este instalador so cobre a cadeia HTTPS + GCM`);
 const u = new URL(url);
-if (u.username) cego('o URL do remoto traz credencial embutida — e o P0 outra vez; corre scripts/seg-p0-clean-remote.mjs primeiro');
+// username-only no URL e o remedio do GCM (10/11), nao e segredo; o P0 era user:PAT@.
+if (u.password) cego('o URL do remoto traz password embutida — e o P0 outra vez; corre scripts/seg-p0-clean-remote.mjs primeiro');
 const HOST = u.hostname;
 const OWNER = u.pathname.split('/').filter(Boolean)[0];
 if (!OWNER) cego(`nao ha dono no path do remoto (${mascara(url)}) — o username nao e derivavel`);
