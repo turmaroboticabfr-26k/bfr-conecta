@@ -1,0 +1,43 @@
+{
+  "ciclo": "V118-CSP-BROWSER",
+  "quando": "2026-11-10",
+  "tipo": "somente-leitura (browser; zero escrita no banco)",
+  "alvo": "https://bfr-conecta.turmaroboticabfr.workers.dev/",
+  "versao_publicada": "9c467d0e-d16a-4c20-9e69-50ec3b40f433",
+  "deployment": "56eb5868-2c33-45b4-85cb-55df01f95c69",
+  "metodo": "browser-use MCP; estado limpo (unregister de todos os SWs + caches.clear) a partir de /manifest.json; navigate para /; reload com SW ativo controlando; waitForStableDom:false em todas as sondas",
+  "limpeza_inicial": {
+    "antes": { "active": "sw-v4.js?v=45", "cacheKeys": ["bfr-conecta-v118"] },
+    "depois": { "regsAfter": 0, "keysAfter": [] }
+  },
+  "navegacao_limpa": {
+    "url": "https://bfr-conecta.turmaroboticabfr.workers.dev/",
+    "readyState": "complete",
+    "title": "BFR Conecta | Escola Benício Ferreira Reis",
+    "bodyChars": 3097946,
+    "hasAppShell": true,
+    "hasLogin": true,
+    "controller": "https://bfr-conecta.turmaroboticabfr.workers.dev/sw-v4.js?v=45",
+    "swState": "activated",
+    "cacheKeys": ["bfr-conecta-v118"],
+    "cacheSizes": { "bfr-conecta-v118": 8 }
+  },
+  "sonda_headers_in_page": {
+    "fetch_root": { "status": 200, "bytes": 3489467, "ms": 284, "csp_len": 742, "hsts": "max-age=31536000", "nosniff": "nosniff", "referrer": "strict-origin-when-cross-origin" },
+    "fetch_sw": { "status": 200, "bytes": 3586, "csp": null, "nosniff": null }
+  },
+  "reload_com_sw_ativo": {
+    "url": "https://bfr-conecta.turmaroboticabfr.workers.dev/",
+    "readyState": "complete",
+    "hasAppShell": true,
+    "loginVisible": true,
+    "loginText": "Bem-vindo de volta!",
+    "googleButton": true
+  },
+  "console": {
+    "violacoes_csp": 0,
+    "unico_erro": "Failed to load resource: 404 https://bfr-conecta.turmaroboticabfr.workers.dev/cdn-cgi/rum (ruido pre-existente)"
+  },
+  "nota_instrumento": "navegate_page preso a 60s (teto duro da ferramenta) enquanto o perfil do browser carregava registo SW antigo; resolvido pelo metodo da casa (unregister + caches.clear a partir de /manifest.json); a primeira navegacao pos-limpeza reportou ERR_ABORTED (-3) mas a pagina carregou de facto (titulo mudou, 14 pedidos 200)",
+  "veredito": "CSP_OK — shell monta byte-identico a prova v118 (bodyChars 3097946 == 3097946), SW v4 controla com cache v118, CSP de 742 chars presente na rota do shell e ausente nas rotas de SW/asset, zero violacoes CSP no console"
+}

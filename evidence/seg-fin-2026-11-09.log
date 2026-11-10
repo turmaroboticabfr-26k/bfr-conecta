@@ -1069,3 +1069,42 @@ portoes.json), 21/21 portoes, zero publicacoes, zero escritas no banco. Publicar
 explicito; a cadeia de deploy (preflight + wrangler + prova HTTP + Chrome limpo) fica para esse
 OK. Contagem: esta seccao vai ser commitada e por isso muda a contagem que ela propria cita —
 era 27 com `HEAD`=`98b4eea`, re-contar depois, nao repetir o numero.
+
+§23 — CSP PUBLICADA no ar e provada em HTTP + Chrome limpo (10/11)
+
+1. A cadeia do deploy (OK explicito «Publica a candidata CSP»; worker-deploy-v118-csp/):
+   - preflight fresco do gerador: 21/21 portoes VERDE (vivo == baseline, candidata == vivo + 4 headers);
+   - assets verificados antes do deploy: 12/12 byte-identicos ao vivo (14/14 VERDE);
+   - wrangler 4.158.0 via OAuth: SUCCESS, version 9c467d0e-d16a-4c20-9e69-50ec3b40f433,
+     deployment 56eb5868-2c33-45b4-85cb-55df01f95c69, 100 %, created 2026-11-10T06:19:36.191143Z,
+     "No updated asset files to upload" (12 assets byte-identicos);
+   - prova HTTP pos-deploy (seg-csp-posdeploy-prova.mjs): 14/14 VERDE — shell md5
+     ae59d35346b685b2fbf9d18ade4fa5cd / 3 489 467 B, CSP header == meta (742 == 742),
+     nosniff + referrer-policy + HSTS presentes na rota do shell, AUSENTES em /sw-v4.js e assets;
+   - assets re-verificados depois do deploy: 14/14 VERDE.
+
+2. A prova de Chrome limpo (docs/v118-csp-browser.json, metodo da casa a partir de /manifest.json):
+   - estado limpo: regsAfter 0, keysAfter [];
+   - navegacao: readyState complete, titulo "BFR Conecta | Escola Benicio Ferreira Reis",
+     bodyChars 3097946 (byte-identico a prova v118), appShell + login montados;
+   - SW v4 (?v=45) activated a controlar, cache bfr-conecta-v118 com 8 entradas;
+   - sonda in-page: fetch('/') 200 em 284 ms com CSP 742 + nosniff + HSTS max-age=31536000 +
+     referrer strict-origin-when-cross-origin; fetch('/sw-v4.js') 200 sem nenhum header;
+   - reload com SW a controlar: completo, shell monta, "Bem-vindo de volta!" visivel;
+   - console: 0 violacoes CSP; unico erro e o ruido pre-existente cdn-cgi/rum 404.
+
+3. Nota de instrumento. O navigate_page da ferramenta tem teto DURO de 60 s (o parametro timeout
+   e ignorado). Com o perfil do browser a carregar registo SW antigo, o commit do documento nao
+   terminava e o teto estourava repetidamente — asset navigation e fetch in-page funcionavam, so
+   a navegacao de documento pendia. O metodo da casa resolveu: unregister de todos os SWs +
+   caches.clear a partir de /manifest.json, e a navegacao seguinte completou. A ferramenta
+   reportou ERR_ABORTED (-3) nessa primeira navegacao mas a pagina carregou de facto (titulo
+   mudou, 14 pedidos 200). Sondagens com waitForStableDom:false, como sempre.
+
+4. Estado resultante: o ar tem agora CSP (742 chars, espelho exacto do <meta>), nosniff,
+   referrer-policy e HSTS na rota do shell; rotas de SW/asset inalteradas; P2-3 sai de
+   «candidata PRONTA» para PUBLICADA. Reversao: o portao 21 da candidata prova que retirar os
+   4 headers devolve o shell de hoje byte a byte.
+
+5. Contagem: era 28 com HEAD=efd7ddf e origin/main=80c951c ANTES deste commit; esta seccao
+   envelhece o numero — re-contar com o comando depois do commit, nao repetir o 28.
