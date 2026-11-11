@@ -98,11 +98,11 @@ memória depois das edições. Apagar a clone. O bundle fica como rollback até 
 
 - O GitHub guarda os commits antigos por SHA até GC (cached views podem continuar a renderizar);
   purga definitiva só via support do GitHub — decisão do dono, risco residual baixo (token morto).
-- Forks: verificar no dia via API com instrumento que lê `~/.gh-token` (padrão seg-p0-sonda),
-  nunca inline. `ls-remote` não mostra PRs.
+- Forks: **verificado 11/11** via API com `scripts/seg-p0-sonda-forks.mjs` (lê `~/.gh-token`,
+  nunca inline) — `GET /forks` 200, **forks: 0**. `ls-remote` não mostra PRs.
 - Outros clones: só este rig é conhecido; qualquer outro clone teria de ser re-clonado.
-- GC local no principal (`reflog expire` + `gc --prune=now`) é passo opcional de higiene final,
-  só depois do OK de fechamento — elimina a via de rollback por SHA (fica o bundle).
+- GC local no principal: **FEITO 11/11** sob «faz o GC local no repo principal» — via de rollback
+  por SHA eliminada localmente (`c1ca925` e o blob `f2bac991` fisicamente idos, censo 0, 52 commits).
 
 ## Não-objectivos
 
@@ -142,8 +142,12 @@ memória depois das edições. Apagar a clone. O bundle fica como rollback até 
 - Censo no principal: **CENSO_OK — 0 blobs** (423 blobs alcançados, 50 commits em `origin/main`).
 - Clone irmã `bfr-rewrite-badge` **apagada** (`ls` exit 2).
 - Bundle `bfr-badge-pre-rewrite-2026-11-10.bundle` (6 846 616 B) **guardado** fora do repo até
-  11/11; **apagado** sob «apaga o bundle de rollback» (medição + remoção confirmada). GC local
-  no principal só com OK.
+  11/11; **apagado** sob «apaga o bundle de rollback» (medição + remoção confirmada).
+- GC local no principal **FEITO 11/11** sob «faz o GC local no repo principal»: pré-medição
+  mostrou `c1ca925` (commit) e `f2bac991` (blob) vivos no reflog; `reflog expire --expire=now
+  --all` + `gc --prune=now` (exit 0) e pós-provas — `c1ca925` → "Not a valid object name", blob
+  → "could not get object info" (fisicamente idos); 52 commits, HEAD == origin/main == `d89c0db`,
+  árvore limpa; censo re-corrido **CENSO_OK — 0 blobs** (426 alcançados, 5 refs).
 
 ### Mapa old→new (marcos; os 36 commits do range mudaram todos)
 
