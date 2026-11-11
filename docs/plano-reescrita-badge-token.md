@@ -1,7 +1,7 @@
 # Plano de reescrita do histórico — blob `badge_token`
 
 **Estado: EXECUTADO 10/11 sob «autorizo, faz o force-push».** Force-push feito, repo principal
-realinhado, censo 0. Rollback: bundle guardado fora do repo até OK de fechamento.
+realinhado, censo 0. Rollback: bundle apagado 11/11 sob «apaga o bundle de rollback».
 
 ## Factos medidos (10/11, censo por valor)
 
@@ -141,8 +141,9 @@ memória depois das edições. Apagar a clone. O bundle fica como rollback até 
   `git reset --hard origin/main` (os 2 untracked deste ciclo preservados).
 - Censo no principal: **CENSO_OK — 0 blobs** (423 blobs alcançados, 50 commits em `origin/main`).
 - Clone irmã `bfr-rewrite-badge` **apagada** (`ls` exit 2).
-- Bundle `bfr-badge-pre-rewrite-2026-11-10.bundle` (6 846 616 B) **guardado** fora do repo;
-  apagar + GC local no principal só com OK de fechamento.
+- Bundle `bfr-badge-pre-rewrite-2026-11-10.bundle` (6 846 616 B) **guardado** fora do repo até
+  11/11; **apagado** sob «apaga o bundle de rollback» (medição + remoção confirmada). GC local
+  no principal só com OK.
 
 ### Mapa old→new (marcos; os 36 commits do range mudaram todos)
 
