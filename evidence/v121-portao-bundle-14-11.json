@@ -1,0 +1,192 @@
+{
+  "ciclo": "V121-PORTAO-BUNDLE",
+  "em": "2026-11-14T16:27:24.108Z",
+  "deploy": 0,
+  "ddl": 0,
+  "escrita_banco": 0,
+  "mint": 0,
+  "P0_preflight_verde_e_fresco": {
+    "passou": true,
+    "veredito": "V121_PREFLIGHT_OK",
+    "em": "2026-11-14T16:21:08.471Z"
+  },
+  "P0b_regua_da_candidata_bate_entre_preflight_e_diario": {
+    "passou": true,
+    "diario": {
+      "md5": "d418e7fc917f1fbb1437054b7b531f9b",
+      "bytes": 3489725
+    },
+    "preflight": {
+      "md5": "d418e7fc917f1fbb1437054b7b531f9b",
+      "bytes": 3489725,
+      "delta": 76
+    }
+  },
+  "disco": {
+    "bytes": 3551496,
+    "md5": "ca3668afcc72d487ddf131dde3d16c96"
+  },
+  "P1_worker_em_disco_igual_ao_esperado": {
+    "passou": true,
+    "bytes": 3551496,
+    "md5": "ca3668afcc72d487ddf131dde3d16c96"
+  },
+  "P1b_delta_sobre_a_base_do_404_e_76": {
+    "passou": true,
+    "esperado_delta": 76,
+    "medido": 76
+  },
+  "P2_base_do_bundle_e_o_worker_publicado_do_404": {
+    "passou": true,
+    "medido": {
+      "md5": "70ecf617866b422ac569e216e7cc1974",
+      "bytes": 3551420
+    },
+    "diario": {
+      "md5": "70ecf617866b422ac569e216e7cc1974",
+      "bytes": 3551420
+    }
+  },
+  "P3_embeds_localizados_no_bundle": {
+    "passou": true
+  },
+  "P4_embed_HTML_igual_a_candidata": {
+    "passou": true,
+    "md5": "d418e7fc917f1fbb1437054b7b531f9b",
+    "bytes": 3489725
+  },
+  "P5_embed_HTML_contem_o_par_do_diario_uma_vez": {
+    "passou": true,
+    "par": "education_supervisor:['Supervisão Educacional','Supervisor(a) de ensino']",
+    "ocorrencias": 1,
+    "na_shell_do_ar": 1
+  },
+  "P6_embed_SW_novo_mudou_apenas_a_etiqueta": {
+    "passou": true,
+    "md5": "c70f912c694fbc509273198e0accc83f",
+    "bytes": 3586,
+    "cache": "bfr-conecta-v121"
+  },
+  "P7_etiqueta_nova_ocorre_so_no_SW": {
+    "passou": true,
+    "nova_no_worker": 1,
+    "velha_no_worker": 0
+  },
+  "P8_fora_dos_embeds_byte_identico_a_base": {
+    "passou": true,
+    "prefixo": true,
+    "meio": true,
+    "cauda": true,
+    "cauda_md5": "07e40d74b2534bc269d303c0da1df178"
+  },
+  "P9_handler_do_404_intacto_no_bundle": {
+    "passou": true,
+    "request": 1,
+    "respostas": 2,
+    "sem_assets": 1
+  },
+  "P10_CSP_inalterado": {
+    "passou": true,
+    "bytes": 742,
+    "emissoes": 1
+  },
+  "P11_precache_alinhado_com_a_HTML_servida": {
+    "passou": true,
+    "caminhos": 2,
+    "desalinhados": []
+  },
+  "P12_assets_byte_iguais_a_base_do_404": {
+    "passou": true,
+    "total": 12,
+    "divergentes": []
+  },
+  "P13_assets_tambem_iguais_desde_a_v120": {
+    "passou": true,
+    "total": 12
+  },
+  "P14_wrangler_toml_identico": {
+    "passou": true,
+    "md5": "f82b42bdf2952fa7c261fd1343ef60b0"
+  },
+  "P15_nao_ha_index_html_no_bundle": {
+    "passou": true,
+    "public": 12
+  },
+  "P16_linhagem_reversa_em_disco": {
+    "passou": true,
+    "shell_v120": {
+      "md5": "a9a76d0e338c2a539135bccce23111b4",
+      "bytes": 3489649
+    },
+    "sw_v120": {
+      "md5": "289f1f1dc82a2eb2e091994916af3e97",
+      "bytes": 3586
+    }
+  },
+  "P17_reversao_disponivel": {
+    "passou": true,
+    "para_onde_volta": "worker-deploy-v120-404/",
+    "versao_anterior": "8cad1145-a975-4fd6-8a7b-2fd4e9a4209c"
+  },
+  "P18_esperado_json_coerente": {
+    "passou": true,
+    "workerMd5": "ca3668afcc72d487ddf131dde3d16c96",
+    "workerBytes": 3551496,
+    "swMd5": "c70f912c694fbc509273198e0accc83f",
+    "swBytes": 3586,
+    "htmlMd5": "d418e7fc917f1fbb1437054b7b531f9b",
+    "htmlBytes": 3489725,
+    "cacheLabel": "bfr-conecta-v121",
+    "baseWorkerMd5": "70ecf617866b422ac569e216e7cc1974",
+    "baseWorkerBytes": 3551420,
+    "baseShellMd5": "a9a76d0e338c2a539135bccce23111b4",
+    "baseShellBytes": 3489649,
+    "baseSwMd5": "289f1f1dc82a2eb2e091994916af3e97",
+    "baseSwBytes": 3586,
+    "deltaWorkerBytes": 76,
+    "precacheAlinhado": 0,
+    "assetsCopiados": 12,
+    "origemReguas": [
+      "evidence/v121-preflight-14-11.json",
+      "bfr-candidata-v121-rotulos-supervisor/portoes-v121-diary.json"
+    ],
+    "preflightEm": "2026-11-14T16:21:08.471Z",
+    "ok_literal": "publicar v121"
+  },
+  "P19_delta_vs_v120_medido": {
+    "passou": true,
+    "v120": 3550890,
+    "v121": 3551496,
+    "delta": 606,
+    "nota": "530 do handler 404 + 76 da shell v121"
+  },
+  "P20_dir_higienico": {
+    "passou": true,
+    "conteudo": [
+      "base-v120-shell.html",
+      "esperado-v121.json",
+      "public",
+      "sw-v120-embed.js",
+      "worker.mjs",
+      "wrangler.toml"
+    ]
+  },
+  "P21_worker_parseia": {
+    "passou": true,
+    "status": 0,
+    "stderr": ""
+  },
+  "falhas": [],
+  "veredito": "PORTAO_V121_VERDE",
+  "totais": {
+    "portoes": 24,
+    "vermelhos": 0
+  },
+  "resumo": {
+    "worker_md5": "ca3668afcc72d487ddf131dde3d16c96",
+    "worker_bytes": 3551496,
+    "sw_md5": "c70f912c694fbc509273198e0accc83f",
+    "html_md5": "d418e7fc917f1fbb1437054b7b531f9b",
+    "cache": "bfr-conecta-v121"
+  }
+}

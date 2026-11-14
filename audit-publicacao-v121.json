@@ -1,0 +1,480 @@
+{
+  "version": "v121",
+  "data": "2026-11-14",
+  "ok_literal": "publicar v121",
+  "escopo_do_ok": "somente este deploy do Worker bfr-conecta (shell v121 sobre a base v120-404); nao cobre DDL, escrita no banco, mint de contas, deploy de Edge Function nem git push",
+  "tarefa": "PEN-33 / RM-1.8 — o chip da conta logada leia o rotulo do education_supervisor em vez de cair em Responsavel",
+  "deploy": {
+    "worker": "bfr-conecta",
+    "conta": "turmaroboticabfr@gmail.com",
+    "version_id": "5ba82c35-7c46-42ea-9c1d-30573370f563",
+    "deployment_id": "cb0cea81-4380-4687-a911-f692643111cc",
+    "version_anterior": "9e921f95-52f8-494b-9e53-75eb6ad3eb72",
+    "deployment_created": "2026-11-14T16:29:17.530636Z",
+    "deployment_anterior_created": "2026-11-14T15:24:11.249638Z",
+    "percentual_trafego_novo": 100,
+    "wrangler": "4.154.0",
+    "cwd": "worker-deploy-v121",
+    "base_do_bundle": "worker-deploy-v120-404 (a v120-404 ja publicada, para levar o handler do 404 adiante)",
+    "url": "https://bfr-conecta.turmaroboticabfr.workers.dev",
+    "comando_da_url": "derivado de audit-publicacao-v120-404.json -> medicao.ar_depois.ar, nunca dactilografado",
+    "fonte_dos_numeros": "evidence/v121-deployments-list-14-11.json e evidence/v121-deployments-status-14-11.json, ambos stdout de `wrangler deployments list/status --json` gravado por redirecionamento, lidos por este script",
+    "stdout_do_deploy": "NAO persistido em ficheiro neste ciclo; o registo mecanico da publicacao e a lista de deployments do servidor mais os bytes servidos (evidence/v121-pos-deploy-http-14-11.json)",
+    "aviso_de_ferramenta": "wrangler 4.156+ quebra o upload de assets com o erro 100312; a versao continua fixada em 4.154.0"
+  },
+  "correcao": {
+    "pendencia": "PEN-33 / RM-1.8 (achado H5 da bancada §T de 13/11)",
+    "problema": "o mapa accountLabels nao tinha a chave education_supervisor; o getAccountLabel() caia no default e a conta logada de supervisao aparecia como Responsavel / parentView",
+    "causa": "a linha 10437 definia os rotulos dos papeis e o papel criado na Fase 0 nunca foi acrescentado ao mapa; roleSectionAccess (:9018) ja conhecia o papel, por isso a diferenca era so o rotulo",
+    "solucao": "um unico par acrescentado ao mapa: education_supervisor:['Supervisão Educacional','Supervisor(a) de ensino'] (linha 10437, +76 bytes na shell)",
+    "alcance_medido": "1 linha alterada das 28661 da shell; worker +76 bytes; SW muda apenas a etiqueta de cache; CSP, os 12 assets e o wrangler.toml byte-identicos",
+    "o_que_NAO_foi_alterado": "nenhum handler do Worker alem do embed; a base worker-deploy-v120-404 esta intacta no disco (70ecf617866b422ac569e216e7cc1974 (3551420 B)); 0 DDL, 0 escrita no banco, 0 mint, 0 Edge Function, 0 git push"
+  },
+  "md5": {
+    "worker-deploy-v121/worker.mjs_publicado": "ca3668afcc72d487ddf131dde3d16c96 (3551496 B)",
+    "worker-deploy-v120-404/worker.mjs_base": "70ecf617866b422ac569e216e7cc1974 (3551420 B)",
+    "wrangler_toml_base_e_publicado": "f82b42bdf2952fa7c261fd1343ef60b0 (175 B) — identico nos dois directorios",
+    "shell_antes": "a9a76d0e338c2a539135bccce23111b4 (3489649 B)",
+    "shell_depois": "d418e7fc917f1fbb1437054b7b531f9b (3489725 B)",
+    "sw_antes": "289f1f1dc82a2eb2e091994916af3e97 (3586 B), CACHE bfr-conecta-v120",
+    "sw_depois": "c70f912c694fbc509273198e0accc83f (3586 B), CACHE bfr-conecta-v121",
+    "candidata_offline": "d418e7fc917f1fbb1437054b7b531f9b (3489725 B)",
+    "corpo_do_404": "9e076f5885f5cc16a4b5aeb8de4adff5 (9 B)",
+    "assets": "12 ficheiros, byte-identicos a base do 404",
+    "emissao": "md5 e bytes recalculados do disco por este script; nada neste bloco foi copiado de um log"
+  },
+  "grafia_do_host": {
+    "host_publicado": "bfr-conecta.turmaroboticabfr.workers.dev",
+    "host_datilografado_na_prova": "bfr-conecta.turmarobiticabfr.workers.dev",
+    "o_que_aconteceu": "o diario de prova do cliente foi escrito com o host contendo uma vogal trocada; o verificador, que comparava byte a byte, deu vermelho e a diferenca so se viu pelos codigos das char",
+    "como_se_decidiu": "evidence/v121-sonda-dois-hosts-14-11.json mede os dois hosts por fetch: o do diario entrega a shell d418e7fc917f1fbb1437054b7b531f9b e o dactilografado da ENOTFOUND getaddrinfo ENOTFOUND bfr-conecta.turmarobiticabfr.workers.dev",
+    "armadilha_nova": "dns.resolve4 devolve ECONNREFUSED para qualquer host nesta maquina (o resolvedor directo esta bloqueado); nao serve de portao — o transporte provado e o fetch",
+    "correcao": "scripts/v121-corrige-grafia-diario.mjs substituiu por derivacao e gravou o bloco correcao_de_grafia_do_host no proprio diario; a historia nao foi apagada",
+    "ocorrencias_restantes_fora_do_bloco_de_correcao": 0,
+    "contexto_historico": "a mesma vogal ja tinha causado o falso alarme de 21/10 registado em ## B/## C da auditoria; a org do GitHub e turmarobiticabfr-26k, por isso um grep da string solta conta demais"
+  },
+  "medicao": {
+    "metodo": "as tabelas abaixo sao o digest {http, ct, bytes, md5} de cada sonda; os corpos crus ficam nos diarios de evidence",
+    "ar_antes": {
+      "em": "2026-11-14T16:28:42.156Z",
+      "veredito": "V121_PREDEPLOY_VERDE",
+      "total": {
+        "portoes": 6,
+        "vermelhos": 0
+      },
+      "ar": "https://bfr-conecta.turmaroboticabfr.workers.dev",
+      "rotas": {
+        "/": {
+          "http": 200,
+          "bytes": 3489649,
+          "md5": "a9a76d0e338c2a539135bccce23111b4",
+          "etiquetas": []
+        },
+        "/sw-v4.js": {
+          "http": 200,
+          "bytes": 3586,
+          "md5": "289f1f1dc82a2eb2e091994916af3e97",
+          "cache": [
+            "bfr-conecta-v120"
+          ]
+        },
+        "/firebase-messaging-sw.js": {
+          "caminho": "/firebase-messaging-sw.js",
+          "http": 404,
+          "bytes": 9,
+          "md5": "9e076f5885f5cc16a4b5aeb8de4adff5"
+        },
+        "/qualquer-rota-inexistente-zz": {
+          "caminho": "/qualquer-rota-inexistente-zz",
+          "http": 404,
+          "bytes": 9,
+          "md5": "9e076f5885f5cc16a4b5aeb8de4adff5"
+        },
+        "/favicon.ico": {
+          "caminho": "/favicon.ico",
+          "http": 404,
+          "bytes": 9,
+          "md5": "9e076f5885f5cc16a4b5aeb8de4adff5"
+        },
+        "/aluno": {
+          "caminho": "/aluno",
+          "http": 404,
+          "bytes": 9,
+          "md5": "9e076f5885f5cc16a4b5aeb8de4adff5"
+        },
+        "/rota-que-nao-existe-tampouco": {
+          "caminho": "/rota-que-nao-existe-tampouco",
+          "http": 404,
+          "bytes": 9,
+          "md5": "9e076f5885f5cc16a4b5aeb8de4adff5"
+        }
+      },
+      "versoes_do_diario": {
+        "version_id_do_diario_404": "9e921f95-52f8-494b-9e53-75eb6ad3eb72",
+        "version_anterior_do_diario_404": "8cad1145-a975-4fd6-8a7b-2fd4e9a4209c",
+        "shell": "a9a76d0e338c2a539135bccce23111b4",
+        "sw": "289f1f1dc82a2eb2e091994916af3e97"
+      }
+    },
+    "ar_depois": {
+      "em": "2026-11-14T16:31:21.339Z",
+      "veredito": "V121_HTTP_OK",
+      "total": {
+        "portoes": 11,
+        "vermelhos": 0,
+        "blocos_de_evidencia": 6
+      },
+      "ar": "https://bfr-conecta.turmaroboticabfr.workers.dev",
+      "rotas": {
+        "/": {
+          "http": 200,
+          "bytes": 3489725,
+          "md5": "d418e7fc917f1fbb1437054b7b531f9b",
+          "ocorrencias_do_par": 1,
+          "etiquetas": [],
+          "csp_igual_ao_404": true
+        },
+        "/sw-v4.js": {
+          "http": 200,
+          "bytes": 3586,
+          "md5": "c70f912c694fbc509273198e0accc83f",
+          "cache": [
+            "bfr-conecta-v121"
+          ],
+          "linha_cache": true,
+          "sobra_da_velha": 0
+        },
+        "/firebase-messaging-sw.js": {
+          "caminho": "/firebase-messaging-sw.js",
+          "http": 404,
+          "bytes": 9,
+          "md5": "9e076f5885f5cc16a4b5aeb8de4adff5",
+          "tipo": "text/plain; charset=utf-8"
+        },
+        "/qualquer-rota-inexistente-zz": {
+          "caminho": "/qualquer-rota-inexistente-zz",
+          "http": 404,
+          "bytes": 9,
+          "md5": "9e076f5885f5cc16a4b5aeb8de4adff5",
+          "tipo": "text/plain; charset=utf-8"
+        },
+        "/favicon.ico": {
+          "caminho": "/favicon.ico",
+          "http": 404,
+          "bytes": 9,
+          "md5": "9e076f5885f5cc16a4b5aeb8de4adff5",
+          "tipo": "text/plain; charset=utf-8"
+        },
+        "/aluno": {
+          "caminho": "/aluno",
+          "http": 404,
+          "bytes": 9,
+          "md5": "9e076f5885f5cc16a4b5aeb8de4adff5",
+          "tipo": "text/plain; charset=utf-8"
+        },
+        "/rota-que-nao-existe-tampouco": {
+          "caminho": "/rota-que-nao-existe-tampouco",
+          "http": 404,
+          "bytes": 9,
+          "md5": "9e076f5885f5cc16a4b5aeb8de4adff5",
+          "tipo": "text/plain; charset=utf-8"
+        }
+      },
+      "assets_servidos": {
+        "total": 12,
+        "desvios": []
+      },
+      "linhagem": {
+        "embed": {
+          "embed_html_md5": "d418e7fc917f1fbb1437054b7b531f9b",
+          "embed_html_bytes": 3489725,
+          "embed_sw_md5": "c70f912c694fbc509273198e0accc83f",
+          "worker_md5": "ca3668afcc72d487ddf131dde3d16c96",
+          "worker_bytes": 3551496,
+          "shell_servida_md5": "d418e7fc917f1fbb1437054b7b531f9b",
+          "sw_servido_md5": "c70f912c694fbc509273198e0accc83f"
+        },
+        "diff_contra_a_shell_publicada_antes": {
+          "linhas_antes": 28661,
+          "linhas_agora": 28661,
+          "alteradas": [
+            10437
+          ],
+          "diario": 10437,
+          "reversa_md5": "a9a76d0e338c2a539135bccce23111b4",
+          "reversa_bytes": 3489649,
+          "régua_antes": {
+            "md5": "a9a76d0e338c2a539135bccce23111b4",
+            "bytes": 3489649
+          }
+        }
+      }
+    },
+    "cliente": {
+      "em": "2026-11-14T13:35:00Z",
+      "veredito": "V121_CLIENTE_OK",
+      "total": {
+        "portoes_medidos": 6,
+        "vermelhos": 0,
+        "nao_tentados": 1
+      },
+      "camada": "2 — pagina real sob controlo do service worker (browser embutido)",
+      "sw_controlador": {
+        "controller": true,
+        "registrations": [
+          {
+            "scope": "https://bfr-conecta.turmaroboticabfr.workers.dev/",
+            "active_scriptURL": "https://bfr-conecta.turmaroboticabfr.workers.dev/sw-v4.js?v=45",
+            "waiting": false,
+            "installing": false
+          }
+        ]
+      },
+      "navegacao_real": {
+        "acao": "navigate_page com ignoreCache:true sobre a URL publicada",
+        "responseStatus": 200,
+        "appShell_presente": true,
+        "appShell_class": "app-shell",
+        "dom_vivo_bytes": 3512023,
+        "fonte_servida_bytes": 3489725,
+        "dom_vivo_tem_par_exato": 1,
+        "dom_vivo_accountLabels": 1,
+        "scripts_inline_no_dom": 98,
+        "texto_visivel_inicial": "A escola mais proxima de cada familia | Bem-vindo de volta! | Entre para gerenciar e fazer a diferenca!",
+        "logo_asset": "/bfr-app-logo.png presente no snapshot da acessibilidade"
+      },
+      "consola": {
+        "erros": 2,
+        "erros_detalhe": [
+          "Failed to load resource: 404 .../cdn-cgi/rum (x2)"
+        ],
+        "avaliacao": "ambos sao o beacon /cdn-cgi/rum da Cloudflare, pre-existente e fora do bundle; nenhum erro de aplicacao",
+        "erros_da_aplicacao": 0
+      },
+      "nao_forjavel": {
+        "prova_na_tela_do_chip": "NAO TENTADA — exigir-ia mintar uma conta education_supervisor real, e o OK «publicar v121» nao cobre mint nem escrita no banco",
+        "o_que_foi_provado_em_vez_disso": "a tabela accountLabels servida ao cliente contem a chave education_supervisor com os dois rotulos do diario do gerador, por medida no DOM vivo sob controlo do SW (C2 e C4)",
+        "captura_de_tela": "NAO FEITA — a superficie do Browser embutido nao deu viewport visivel (NATIVE_BROWSER_VIEWPORT_UNAVAILABLE); o snapshot estrutural foi usado em vez disso"
+      }
+    },
+    "candidata_offline": {
+      "em": "2026-11-14T16:21:08.471Z",
+      "veredito": "V121_PREFLIGHT_OK",
+      "total": {
+        "portoes": 25,
+        "vermelhos": 0
+      },
+      "origem": "bfr-candidata-v121-rotulos-supervisor/portoes-v121-diary.json",
+      "veredito_da_candidata": "ROTULOS_OK, 33 portoes em 13/11, nao contado nesta cadeia"
+    }
+  },
+  "portoes": {
+    "preflight": "25/0 VERDE - evidence/v121-preflight-14-11.json (V121_PREFLIGHT_OK)",
+    "portao_bundle": "24/0 VERDE - evidence/v121-portao-bundle-14-11.json (PORTAO_V121_VERDE)",
+    "predeploy_ao_vivo": "6/0 VERDE - evidence/v121-predeploy-live-14-11.json (V121_PREDEPLOY_VERDE)",
+    "http_pos_deploy": "11/0 VERDE - evidence/v121-pos-deploy-http-14-11.json (V121_HTTP_OK)",
+    "cliente": "6/0 VERDE + 1 NAO TENTADO - evidence/v121-prova-cliente-14-11.json (V121_CLIENTE_OK)",
+    "grafia": "portoes=0 — a sonda dos dois hosts e bloco de evidencia, nao portao; o portao esta no verificador do diario",
+    "deste_diario": "29/0",
+    "total_da_cadeia": 72,
+    "vermelhos": 0,
+    "nao_tentados": 1,
+    "falhas_deste_diario": {
+      "G1_url_vem_do_diario_da_v120_404": {
+        "valor": "https://bfr-conecta.turmaroboticabfr.workers.dev",
+        "esperado": "https://bfr-conecta.turmaroboticabfr.workers.dev",
+        "passou": true
+      },
+      "G2_a_versao_no_ar_e_a_deste_diario": {
+        "valor": "5ba82c35-7c46-42ea-9c1d-30573370f563",
+        "esperado": "5ba82c35-7c46-42ea-9c1d-30573370f563",
+        "passou": true
+      },
+      "G2b_a_lista_do_servidor_concorda_com_o_status": {
+        "valor": "5ba82c35-7c46-42ea-9c1d-30573370f563",
+        "esperado": "5ba82c35-7c46-42ea-9c1d-30573370f563",
+        "passou": true
+      },
+      "G3_a_versao_anterior_e_a_publicada_no_404": {
+        "valor": "9e921f95-52f8-494b-9e53-75eb6ad3eb72",
+        "esperado": "9e921f95-52f8-494b-9e53-75eb6ad3eb72",
+        "passou": true
+      },
+      "G4_o_que_foi_publicado_e_o_bundle_gateado": {
+        "valor": "ca3668afcc72d487ddf131dde3d16c96",
+        "esperado": "ca3668afcc72d487ddf131dde3d16c96",
+        "passou": true
+      },
+      "G5_base_do_404_inalterada_no_disco": {
+        "valor": "70ecf617866b422ac569e216e7cc1974",
+        "esperado": "70ecf617866b422ac569e216e7cc1974",
+        "passou": true
+      },
+      "G6_embed_html_igual_a_candidata_medida_no_disco": {
+        "valor": "d418e7fc917f1fbb1437054b7b531f9b",
+        "esperado": "d418e7fc917f1fbb1437054b7b531f9b",
+        "passou": true
+      },
+      "G6b_shell_servida_igual_ao_embed_do_worker": {
+        "valor": "d418e7fc917f1fbb1437054b7b531f9b",
+        "esperado": "d418e7fc917f1fbb1437054b7b531f9b",
+        "passou": true
+      },
+      "G7_delta_do_worker_bate_com_o_portao": {
+        "valor": 76,
+        "esperado": 76,
+        "passou": true
+      },
+      "G8_etiqueta_de_cache_mudou_no_ar": {
+        "valor": [
+          "bfr-conecta-v121",
+          0
+        ],
+        "esperado": [
+          "bfr-conecta-v121",
+          0
+        ],
+        "passou": true
+      },
+      "G8b_a_unica_mudanca_no_sw_e_a_etiqueta": {
+        "valor": {
+          "antes": 3586,
+          "depois": 3586,
+          "rotulo_no_sw_novo": 1
+        },
+        "esperado": {
+          "antes": 3586,
+          "depois": 3586,
+          "rotulo_no_sw_novo": 1
+        },
+        "passou": true
+      },
+      "G9_handler_do_404_permanece_no_ar": {
+        "valor": {
+          "caminhos": 5,
+          "desvios": 0
+        },
+        "esperado": {
+          "caminhos": 5,
+          "desvios": 0
+        },
+        "passou": true
+      },
+      "G9b_os_quatro_caminhos_de_antes_mudaram_de_status": {
+        "valor": 0,
+        "esperado": 0,
+        "passou": true
+      },
+      "G10_os_12_assets_nao_regridiram": {
+        "valor": {
+          "total": 12,
+          "desvios": 0,
+          "disco": true
+        },
+        "esperado": {
+          "total": 12,
+          "desvios": 0,
+          "disco": true
+        },
+        "passou": true
+      },
+      "G10b_wrangler_toml_identico_a_base": {
+        "valor": true,
+        "esperado": true,
+        "passou": true
+      },
+      "G11_uma_unica_linha_alterada_na_shell": {
+        "valor": [
+          10437
+        ],
+        "esperado": [
+          10437
+        ],
+        "passou": true
+      },
+      "G11b_o_numero_de_linhas_nao_mudou": {
+        "valor": 28661,
+        "esperado": 28661,
+        "passou": true
+      },
+      "G11c_o_par_de_rotulos_ocorre_uma_vez_na_shell_servida": {
+        "valor": 1,
+        "esperado": 1,
+        "passou": true
+      },
+      "G12_preflight_verde": {
+        "valor": "V121_PREFLIGHT_OK 25/0",
+        "esperado": "V121_PREFLIGHT_OK 25/0",
+        "passou": true
+      },
+      "G13_portao_bundle_verde": {
+        "valor": "PORTAO_V121_VERDE 24/0",
+        "esperado": "PORTAO_V121_VERDE 24/0",
+        "passou": true
+      },
+      "G14_predeploy_verde": {
+        "valor": "V121_PREDEPLOY_VERDE 6/0",
+        "esperado": "V121_PREDEPLOY_VERDE 6/0",
+        "passou": true
+      },
+      "G15_http_pos_deploy_verde": {
+        "valor": "V121_HTTP_OK 11/0",
+        "esperado": "V121_HTTP_OK 11/0",
+        "passou": true
+      },
+      "G16_cliente_verde_com_uma_nao_tentada": {
+        "valor": "V121_CLIENTE_OK 6/0 nao_tentados=1",
+        "esperado": "V121_CLIENTE_OK 6/0 nao_tentados=1",
+        "passou": true
+      },
+      "G17_a_grafia_foi_decidida_por_medicao": {
+        "valor": "V121_GRAFIA_DECIDIDA: serve o host do diario; o datilografado nao entrega a shell",
+        "esperado": "V121_GRAFIA_DECIDIDA: serve o host do diario; o datilografado nao entrega a shell",
+        "passou": true
+      },
+      "G17b_o_diario_do_cliente_sem_host_dactilografado": {
+        "valor": 0,
+        "esperado": 0,
+        "passou": true
+      },
+      "G18_nada_de_banco_ddl_mint_ou_edge": {
+        "valor": {
+          "preflight": 0,
+          "predeploy": 0,
+          "http": 0,
+          "cliente": 0
+        },
+        "esperado": {
+          "preflight": 0,
+          "predeploy": 0,
+          "http": 0,
+          "cliente": 0
+        },
+        "passou": true
+      },
+      "G19_a_reversao_existe_no_disco_na_regua_do_diario_404": {
+        "valor": "70ecf617866b422ac569e216e7cc1974 (3551420 B)",
+        "esperado": "70ecf617866b422ac569e216e7cc1974 (3551420 B)",
+        "passou": true
+      },
+      "G19b_a_base_de_reversao_tem_os_12_assets": {
+        "valor": 12,
+        "esperado": 12,
+        "passou": true
+      },
+      "G20_a_linha_da_v120_publicada_consta_na_cadeia": {
+        "valor": "8cad1145-a975-4fd6-8a7b-2fd4e9a4209c",
+        "esperado": "8cad1145-a975-4fd6-8a7b-2fd4e9a4209c",
+        "passou": true
+      }
+    }
+  },
+  "reversao": {
+    "como": "wrangler deploy a partir de worker-deploy-v120-404 (worker 3551420 B md5 70ecf617866b422ac569e216e7cc1974), que contem a shell a9a76d0e338c2a539135bccce23111b4 com a etiqueta bfr-conecta-v120",
+    "volta_para": "version_id 9e921f95-52f8-494b-9e53-75eb6ad3eb72 (a v120-404 de 14/11 15:24:11Z)",
+    "prova_de_linhagem": "os 12 assets e o wrangler.toml sao byte-identicos nos dois directorios; a shell do bundle novo menos o par de rotulos do accountLabels reproduce a shell publicada antes (a9a76d0e338c2a539135bccce23111b4)",
+    "exige": "OK literal novo do usuario"
+  },
+  "diario_de": "este ficheiro e gerado por scripts/v121-diario-publicacao.mjs a partir dos seis diarios de evidence, da lista de deployments do servidor e do disco; nao foi escrito a mao",
+  "qnd": "2026-11-14T16:49:43.446Z"
+}

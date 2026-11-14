@@ -1,0 +1,102 @@
+{
+  "ciclo": "V121-PROVA-CLIENTE",
+  "em": "2026-11-14T13:35:00Z",
+  "ok_literal": "publicar v121",
+  "escrita": 0,
+  "ddl": 0,
+  "mint": 0,
+  "deploy": 0,
+  "camada": "2 — pagina real sob controlo do service worker (browser embutido)",
+  "url": "https://bfr-conecta.turmaroboticabfr.workers.dev/",
+  "versao_publicada": "5ba82c35-7c46-42ea-9c1d-30573370f563",
+  "bundle": {
+    "diretorio": "worker-deploy-v121/",
+    "worker_md5": "ca3668afcc72d487ddf131dde3d16c96",
+    "worker_bytes": 3551496
+  },
+  "C1_controlador_do_sw": {
+    "controller": true,
+    "registrations": [
+      {
+        "scope": "https://bfr-conecta.turmaroboticabfr.workers.dev/",
+        "active_scriptURL": "https://bfr-conecta.turmaroboticabfr.workers.dev/sw-v4.js?v=45",
+        "waiting": false,
+        "installing": false
+      }
+    ]
+  },
+  "C2_shell_pelo_caminho_do_sw": {
+    "metodo": "fetch(location.href, {'Cache-Control':'no-cache'}) dentro da pagina controlada pelo SW",
+    "http": 200,
+    "bytes": 3489725,
+    "regua_esperada_bytes": 3489725,
+    "regua_esperada_md5": "d418e7fc917f1fbb1437054b7b531f9b",
+    "par_exacto_ocorrencias": 1,
+    "par_exacto": "education_supervisor:['Supervisao Educacional','Supervisor(a) de ensino'] (acentos reais no corpo medido)",
+    "ocorrencias_da_chave_simples": 2,
+    "nota_chave_2": "education_supervisor:[' ocorre 2 vezes e isso e esperado: :9018 roleSectionAccess (ja estava na v120) e :10437 accountLabels (o unico hunk da v121)",
+    "ocorrencias_de_const_accountLabels": 1,
+    "etiquetas_de_cache_no_corpo": []
+  },
+  "C3_sw_servido_pelo_cliente": {
+    "rota": "/sw-v4.js?v=45",
+    "bytes": 3586,
+    "regua_bytes": 3586,
+    "const_CACHE": "bfr-conecta-v121",
+    "etiquetas": [
+      "bfr-conecta-v121"
+    ],
+    "sobra_da_etiqueta_velha": 0,
+    "precache_paths": [
+      "/bfr-responsive-presentation.js?v=14",
+      "/bfr-teacher-arrivals.js?v=2"
+    ]
+  },
+  "C4_navegacao_real": {
+    "acao": "navigate_page com ignoreCache:true sobre a URL publicada",
+    "responseStatus": 200,
+    "appShell_presente": true,
+    "appShell_class": "app-shell",
+    "dom_vivo_bytes": 3512023,
+    "fonte_servida_bytes": 3489725,
+    "dom_vivo_tem_par_exato": 1,
+    "dom_vivo_accountLabels": 1,
+    "scripts_inline_no_dom": 98,
+    "texto_visivel_inicial": "A escola mais proxima de cada familia | Bem-vindo de volta! | Entre para gerenciar e fazer a diferenca!",
+    "logo_asset": "/bfr-app-logo.png presente no snapshot da acessibilidade"
+  },
+  "C5_consola": {
+    "erros": 2,
+    "erros_detalhe": [
+      "Failed to load resource: 404 .../cdn-cgi/rum (x2)"
+    ],
+    "avaliacao": "ambos sao o beacon /cdn-cgi/rum da Cloudflare, pre-existente e fora do bundle; nenhum erro de aplicacao",
+    "erros_da_aplicacao": 0
+  },
+  "C6_nao_forjavel_neste_OK": {
+    "prova_na_tela_do_chip": "NAO TENTADA — exigir-ia mintar uma conta education_supervisor real, e o OK «publicar v121» nao cobre mint nem escrita no banco",
+    "o_que_foi_provado_em_vez_disso": "a tabela accountLabels servida ao cliente contem a chave education_supervisor com os dois rotulos do diario do gerador, por medida no DOM vivo sob controlo do SW (C2 e C4)",
+    "captura_de_tela": "NAO FEITA — a superficie do Browser embutido nao deu viewport visivel (NATIVE_BROWSER_VIEWPORT_UNAVAILABLE); o snapshot estrutural foi usado em vez disso"
+  },
+  "veredito": "V121_CLIENTE_OK",
+  "totais": {
+    "portoes_medidos": 6,
+    "vermelhos": 0,
+    "nao_tentados": 1
+  },
+  "correcao_de_grafia_do_host": {
+    "qnd": "2026-11-14T16:40:06.732Z",
+    "o_que_estava": "https://bfr-conecta.turmarobiticabfr.workers.dev",
+    "o_que_ficou": "https://bfr-conecta.turmaroboticabfr.workers.dev",
+    "como_se_decidiu": "sonda de leitura nos dois hosts (evidence/v121-sonda-dois-hosts-14-11.json): o host do diario devolve a shell da v121 e o outro nao resolve",
+    "prova_de_que_a_medicao_nao_usou_o_host_errado": {
+      "argumento": "o host datilografado nao resolve (ENOTFOUND medido), logo nenhuma das chamadas que devolveu 200, bytes e DOM podera ter sido feita contra ele; o unico host que entrega a shell da v121 nesta maquina e o do diario",
+      "host_lido_no_browser": "bfr-conecta.turmaroboticabfr.workers.dev",
+      "host_lido_no_browser_porque": "location.host devolvido por evaluate_script depois do deploy; aqui so se escreve o hostname DERIVADO do diario, nunca um valor dactilografado"
+    },
+    "ocorrencias_substituidas": 3,
+    "ocorrencias_restantes": 0,
+    "origem_do_valor_novo": "derivado de audit-publicacao-v120-404.json (campo medicao.ar_depois.ar)",
+    "historico_aparentado": "docs/auditoria-bfr-conecta.md ja registou a mesma vogal como causa do falso alarme de 21/10 (linhas 1235-1372); as ocorrencias la sao o registo do erro, nao contaminação"
+  }
+}

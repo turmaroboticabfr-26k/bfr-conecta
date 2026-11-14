@@ -1,0 +1,300 @@
+{
+  "ciclo": "V121-PREFLIGHT",
+  "em": "2026-11-14T16:21:08.471Z",
+  "escrita": 0,
+  "ddl": 0,
+  "mint": 0,
+  "deploy": 0,
+  "reguas": {
+    "origem": [
+      "audit-publicacao-v120-404.json",
+      "portoes-v121-diary.json"
+    ],
+    "url": "https://bfr-conecta.turmaroboticabfr.workers.dev",
+    "ar": {
+      "worker": {
+        "md5": "70ecf617866b422ac569e216e7cc1974",
+        "bytes": 3551420
+      },
+      "shell": {
+        "md5": "a9a76d0e338c2a539135bccce23111b4",
+        "bytes": 3489649
+      },
+      "sw": {
+        "md5": "289f1f1dc82a2eb2e091994916af3e97",
+        "bytes": 3586
+      },
+      "cache": "bfr-conecta-v120",
+      "versao": "9e921f95-52f8-494b-9e53-75eb6ad3eb72"
+    },
+    "candidata": {
+      "md5": "d418e7fc917f1fbb1437054b7b531f9b",
+      "bytes": 3489725,
+      "delta": 76
+    },
+    "base": {
+      "md5": "a9a76d0e338c2a539135bccce23111b4",
+      "bytes": 3489649
+    },
+    "caminhos_404_no_diario": [
+      "/firebase-messaging-sw.js",
+      "/qualquer-rota-inexistente-zz",
+      "/favicon.ico",
+      "/aluno",
+      "/rota-que-nao-existe-tampouco"
+    ]
+  },
+  "G0_url_unica_e_diario_coerente": {
+    "passou": true,
+    "url": "https://bfr-conecta.turmaroboticabfr.workers.dev",
+    "cache": "bfr-conecta-v120",
+    "quarenta_e_quatro": 5,
+    "versao": "9e921f95-52f8-494b-9e53-75eb6ad3eb72"
+  },
+  "G0b_diario_da_candidata_verde_e_nao_publicada": {
+    "passou": true,
+    "verdict": "ROTULOS_OK",
+    "published": false
+  },
+  "ar": {
+    "http": 200,
+    "bytes": 3489649,
+    "md5": "a9a76d0e338c2a539135bccce23111b4",
+    "csp_igual_ao_diario": true,
+    "cache_label_no_corpo": 0
+  },
+  "G1_ar_bate_com_a_regua": {
+    "passou": true,
+    "esperado": {
+      "md5": "a9a76d0e338c2a539135bccce23111b4",
+      "bytes": 3489649
+    },
+    "medido": {
+      "md5": "a9a76d0e338c2a539135bccce23111b4",
+      "bytes": 3489649
+    }
+  },
+  "regressao_404": [
+    {
+      "caminho": "/firebase-messaging-sw.js",
+      "http": 404,
+      "bytes": 9,
+      "md5": "9e076f5885f5cc16a4b5aeb8de4adff5",
+      "tipo": "text/plain; charset=utf-8"
+    },
+    {
+      "caminho": "/qualquer-rota-inexistente-zz",
+      "http": 404,
+      "bytes": 9,
+      "md5": "9e076f5885f5cc16a4b5aeb8de4adff5",
+      "tipo": "text/plain; charset=utf-8"
+    },
+    {
+      "caminho": "/favicon.ico",
+      "http": 404,
+      "bytes": 9,
+      "md5": "9e076f5885f5cc16a4b5aeb8de4adff5",
+      "tipo": "text/plain; charset=utf-8"
+    },
+    {
+      "caminho": "/aluno",
+      "http": 404,
+      "bytes": 9,
+      "md5": "9e076f5885f5cc16a4b5aeb8de4adff5",
+      "tipo": "text/plain; charset=utf-8"
+    },
+    {
+      "caminho": "/rota-que-nao-existe-tampouco",
+      "http": 404,
+      "bytes": 9,
+      "md5": "9e076f5885f5cc16a4b5aeb8de4adff5",
+      "tipo": "text/plain; charset=utf-8"
+    }
+  ],
+  "G2_404_permanecem_404_com_o_mesmo_corpo": {
+    "passou": true,
+    "total": 5,
+    "esperado_md5_corpo": "9e076f5885f5cc16a4b5aeb8de4adff5",
+    "desvios": []
+  },
+  "candidata": {
+    "bytes": 3489725,
+    "md5": "d418e7fc917f1fbb1437054b7b531f9b",
+    "linhas": 28661
+  },
+  "G3_candidata_na_regua": {
+    "passou": true,
+    "bytes": 3489725,
+    "md5": "d418e7fc917f1fbb1437054b7b531f9b",
+    "linhas": 28661
+  },
+  "G4a_base_congelada_e_o_ar": {
+    "passou": true,
+    "base": {
+      "md5": "a9a76d0e338c2a539135bccce23111b4",
+      "bytes": 3489649
+    },
+    "ar": {
+      "md5": "a9a76d0e338c2a539135bccce23111b4",
+      "bytes": 3489649
+    }
+  },
+  "linhagem": {
+    "linhas_base": 28661,
+    "linhas_candidata": 28661,
+    "linhas_alteradas": [
+      10437
+    ],
+    "delta_bytes": 76,
+    "hunks": [
+      {
+        "id": "H1",
+        "line": 10437,
+        "tipo": "insert",
+        "rotulo_lido_0": "Supervisão Educacional",
+        "rotulo_lido_1": "Supervisor(a) de ensino"
+      }
+    ]
+  },
+  "G4b_uma_unica_linha_alterada_mesmo_total_de_linhas": {
+    "passou": true,
+    "linhas_alteradas": [
+      10437
+    ],
+    "bl": 28661,
+    "cl": 28661
+  },
+  "G4c_delta_bate_com_o_diario": {
+    "passou": true,
+    "medido": 76,
+    "diario": 76
+  },
+  "G4d_a_unica_mudanca_e_o_mapa_accountLabels": {
+    "passou": true,
+    "linha": 10437
+  },
+  "G4e_fora_dessa_linha_nada_mudou": {
+    "passou": true
+  },
+  "worker_base": {
+    "bytes": 3551420,
+    "md5": "70ecf617866b422ac569e216e7cc1974"
+  },
+  "G5a_worker_base_e_o_do_404": {
+    "passou": true,
+    "bytes": 3551420,
+    "md5": "70ecf617866b422ac569e216e7cc1974"
+  },
+  "G5b_embeds_localizados_no_worker_base": {
+    "passou": true
+  },
+  "embeds_base": {
+    "html_bytes": 3489649,
+    "html_md5": "a9a76d0e338c2a539135bccce23111b4",
+    "sw_bytes": 3586,
+    "sw_md5": "289f1f1dc82a2eb2e091994916af3e97"
+  },
+  "G5c_embed_HTML_igual_ao_ar": {
+    "passou": true,
+    "html_bytes": 3489649,
+    "html_md5": "a9a76d0e338c2a539135bccce23111b4",
+    "sw_bytes": 3586,
+    "sw_md5": "289f1f1dc82a2eb2e091994916af3e97"
+  },
+  "G5d_embed_SW_igual_ao_servido_e_so_com_a_etiqueta_da_ar": {
+    "passou": true,
+    "html_bytes": 3489649,
+    "html_md5": "a9a76d0e338c2a539135bccce23111b4",
+    "sw_bytes": 3586,
+    "sw_md5": "289f1f1dc82a2eb2e091994916af3e97"
+  },
+  "G5e_handler_do_404_presente_na_base": {
+    "passou": true,
+    "request_form": 1,
+    "string_form": false,
+    "respostas_404": 2,
+    "repasse_asset": 1,
+    "sem_assets": 1,
+    "definicao_NOFOUNDR": 1
+  },
+  "sw_servido": {
+    "http": 200,
+    "bytes": 3586,
+    "md5": "289f1f1dc82a2eb2e091994916af3e97",
+    "cache_label": [
+      "bfr-conecta-v120"
+    ]
+  },
+  "G5f_SW_servido_igual_ao_embed": {
+    "passou": true,
+    "http": 200,
+    "bytes": 3586,
+    "md5": "289f1f1dc82a2eb2e091994916af3e97",
+    "cache_label": [
+      "bfr-conecta-v120"
+    ]
+  },
+  "G6_assets_e_toml_byte_identicos_desde_a_v120": {
+    "passou": true,
+    "total": 12,
+    "divergentes": [],
+    "wrangler_toml_igual": true
+  },
+  "G7a_chave_nova_ocorre_acrescida_de_um": {
+    "passou": true,
+    "na_candidata": 2,
+    "na_base": 1,
+    "na_linha_do_hunk": 1
+  },
+  "G7b_rotulos_sao_os_lidos_pelo_gerador": {
+    "passou": true,
+    "linha": 10437,
+    "no_corpo": {
+      "aba": "Supervisão Educacional",
+      "papel": "Supervisor(a) de ensino"
+    },
+    "no_diario": {
+      "aba": "Supervisão Educacional",
+      "papel": "Supervisor(a) de ensino"
+    }
+  },
+  "G7b2_linha_do_hunk_bate_com_a_differenca": {
+    "passou": true,
+    "diff": 10437,
+    "diario": 10437
+  },
+  "G7b3_par_novo_e_do_accountLabels_e_a_ocorrencia_antiga_nao_se_toca": {
+    "passou": true,
+    "linhas_na_base": [
+      9018
+    ],
+    "linhas_na_candidata": [
+      9018,
+      10437
+    ],
+    "linha_nova": 10437
+  },
+  "G7c_candidata_nao_contem_etiqueta_de_cache": {
+    "passou": true
+  },
+  "G7d_saude_do_html": {
+    "passou": true,
+    "scripts_cand": 108,
+    "scripts_base": 108
+  },
+  "G8_destino_livre": {
+    "passou": true,
+    "existe": false
+  },
+  "G9_reversao_disponivel_em_disco": {
+    "passou": true,
+    "reversao_404_para": "8cad1145-a975-4fd6-8a7b-2fd4e9a4209c",
+    "origem": "worker-deploy-v120-404/"
+  },
+  "falhas": [],
+  "veredito": "V121_PREFLIGHT_OK",
+  "totais": {
+    "portoes": 25,
+    "vermelhos": 0
+  }
+}

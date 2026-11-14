@@ -1,0 +1,71 @@
+{
+  "qnd": "2026-11-14T16:38:56.434Z",
+  "script": "v121-sonda-dois-hosts.mjs",
+  "regua": {
+    "url_do_diario": "https://bfr-conecta.turmaroboticabfr.workers.dev",
+    "shell_md5": "d418e7fc917f1fbb1437054b7b531f9b",
+    "shell_bytes": 3489725,
+    "sw_md5": "c70f912c694fbc509273198e0accc83f",
+    "cache_label": "bfr-conecta-v121"
+  },
+  "com_o_do_diario": {
+    "url": "https://bfr-conecta.turmaroboticabfr.workers.dev",
+    "lookup": [
+      {
+        "address": "2606:4700:3037::ac43:b025",
+        "family": 6
+      },
+      {
+        "address": "2606:4700:3035::6815:301d",
+        "family": 6
+      },
+      {
+        "address": "104.21.48.29",
+        "family": 4
+      },
+      {
+        "address": "172.67.176.37",
+        "family": 4
+      }
+    ],
+    "raiz": {
+      "status": 200,
+      "bytes": 3489725,
+      "md5": "d418e7fc917f1fbb1437054b7b531f9b",
+      "tipo": "text/html; charset=utf-8",
+      "md5_igual_a_shell_v121": true,
+      "par_education_supervisor": 2,
+      "chave_accountLabels": 1,
+      "ms": 461
+    },
+    "sw-v4.js": {
+      "status": 200,
+      "bytes": 3586,
+      "md5": "c70f912c694fbc509273198e0accc83f",
+      "tipo": "application/javascript; charset=utf-8",
+      "etiqueta_cache": "bfr-conecta-v121",
+      "ms": 62
+    },
+    "rota-que-nao-existe-x": {
+      "status": 404,
+      "bytes": 9,
+      "md5": "9e076f5885f5cc16a4b5aeb8de4adff5",
+      "tipo": "text/plain; charset=utf-8",
+      "ms": 89
+    }
+  },
+  "com_i_datilografado": {
+    "url": "https://bfr-conecta.turmarobiticabfr.workers.dev",
+    "lookup_erro": "ENOTFOUND getaddrinfo ENOTFOUND bfr-conecta.turmarobiticabfr.workers.dev",
+    "raiz": {
+      "erro": "TypeError: ENOTFOUND"
+    },
+    "sw-v4.js": {
+      "erro": "TypeError: ENOTFOUND"
+    },
+    "rota-que-nao-existe-x": {
+      "erro": "TypeError: ENOTFOUND"
+    }
+  },
+  "veredito": "V121_GRAFIA_DECIDIDA: serve o host do diario; o datilografado nao entrega a shell"
+}

@@ -1,0 +1,157 @@
+{
+  "ciclo": "V121-PREDEPLOY-LIVE",
+  "em": "2026-11-14T16:28:42.156Z",
+  "escrita": 0,
+  "ddl": 0,
+  "mint": 0,
+  "deploy": 0,
+  "reguas": {
+    "origem": [
+      "audit-publicacao-v120-404.json",
+      "esperado-v121.json"
+    ],
+    "url": "https://bfr-conecta.turmaroboticabfr.workers.dev",
+    "ar_esperado_agora": {
+      "worker": {
+        "md5": "70ecf617866b422ac569e216e7cc1974",
+        "bytes": 3551420
+      },
+      "shell": {
+        "md5": "a9a76d0e338c2a539135bccce23111b4",
+        "bytes": 3489649
+      },
+      "sw": {
+        "md5": "289f1f1dc82a2eb2e091994916af3e97",
+        "bytes": 3586
+      },
+      "cache": "bfr-conecta-v120"
+    },
+    "bundle_pronto": {
+      "workerMd5": "ca3668afcc72d487ddf131dde3d16c96",
+      "workerBytes": 3551496,
+      "htmlMd5": "d418e7fc917f1fbb1437054b7b531f9b",
+      "swMd5": "c70f912c694fbc509273198e0accc83f",
+      "cacheLabel": "bfr-conecta-v121"
+    }
+  },
+  "ar_shell": {
+    "http": 200,
+    "bytes": 3489649,
+    "md5": "a9a76d0e338c2a539135bccce23111b4",
+    "csp_igual_ao_diario": true,
+    "etiquetas": []
+  },
+  "L1_ar_shell_ainda_a_v120_404": {
+    "passou": true,
+    "esperado": {
+      "md5": "a9a76d0e338c2a539135bccce23111b4",
+      "bytes": 3489649
+    },
+    "medido": {
+      "md5": "a9a76d0e338c2a539135bccce23111b4",
+      "bytes": 3489649
+    }
+  },
+  "ar_sw": {
+    "http": 200,
+    "bytes": 3586,
+    "md5": "289f1f1dc82a2eb2e091994916af3e97",
+    "cache": [
+      "bfr-conecta-v120"
+    ]
+  },
+  "L2_ar_sw_ainda_a_etiqueta_da_ar": {
+    "passou": true,
+    "esperado": {
+      "md5": "289f1f1dc82a2eb2e091994916af3e97",
+      "bytes": 3586,
+      "cache": "bfr-conecta-v120"
+    },
+    "medido": {
+      "http": 200,
+      "bytes": 3586,
+      "md5": "289f1f1dc82a2eb2e091994916af3e97",
+      "cache": [
+        "bfr-conecta-v120"
+      ]
+    }
+  },
+  "ar_404": [
+    {
+      "caminho": "/firebase-messaging-sw.js",
+      "http": 404,
+      "bytes": 9,
+      "md5": "9e076f5885f5cc16a4b5aeb8de4adff5"
+    },
+    {
+      "caminho": "/qualquer-rota-inexistente-zz",
+      "http": 404,
+      "bytes": 9,
+      "md5": "9e076f5885f5cc16a4b5aeb8de4adff5"
+    },
+    {
+      "caminho": "/favicon.ico",
+      "http": 404,
+      "bytes": 9,
+      "md5": "9e076f5885f5cc16a4b5aeb8de4adff5"
+    },
+    {
+      "caminho": "/aluno",
+      "http": 404,
+      "bytes": 9,
+      "md5": "9e076f5885f5cc16a4b5aeb8de4adff5"
+    },
+    {
+      "caminho": "/rota-que-nao-existe-tampouco",
+      "http": 404,
+      "bytes": 9,
+      "md5": "9e076f5885f5cc16a4b5aeb8de4adff5"
+    }
+  ],
+  "L3_quarenta_e_quatro_permanecem": {
+    "passou": true,
+    "total": 5,
+    "desvios": []
+  },
+  "bundle": {
+    "bytes": 3551496,
+    "md5": "ca3668afcc72d487ddf131dde3d16c96",
+    "delta_vs_base": 76
+  },
+  "L4a_bundle_em_disco_igual_ao_esperado": {
+    "passou": true,
+    "bytes": 3551496,
+    "md5": "ca3668afcc72d487ddf131dde3d16c96",
+    "delta_vs_base": 76
+  },
+  "L4b_base_do_404_inalterada_desde_o_preflight": {
+    "passou": true,
+    "esperado": {
+      "md5": "70ecf617866b422ac569e216e7cc1974",
+      "bytes": 3551420
+    },
+    "medido": {
+      "md5": "70ecf617866b422ac569e216e7cc1974",
+      "bytes": 3551420
+    }
+  },
+  "L5_nada_do_v121_no_ar_e_nada_do_v120_no_bundle_pronto": {
+    "passou": true,
+    "etiquetas_no_ar": [],
+    "sw_no_ar": [
+      "bfr-conecta-v120"
+    ]
+  },
+  "ar_antes_do_deploy": {
+    "version_id_do_diario_404": "9e921f95-52f8-494b-9e53-75eb6ad3eb72",
+    "version_anterior_do_diario_404": "8cad1145-a975-4fd6-8a7b-2fd4e9a4209c",
+    "shell": "a9a76d0e338c2a539135bccce23111b4",
+    "sw": "289f1f1dc82a2eb2e091994916af3e97"
+  },
+  "falhas": [],
+  "veredito": "V121_PREDEPLOY_VERDE",
+  "totais": {
+    "portoes": 6,
+    "vermelhos": 0
+  }
+}

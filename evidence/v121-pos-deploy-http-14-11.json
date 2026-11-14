@@ -1,0 +1,309 @@
+{
+  "ciclo": "V121-POS-DEPLOY-HTTP",
+  "em": "2026-11-14T16:31:21.339Z",
+  "escrita": 0,
+  "ddl": 0,
+  "mint": 0,
+  "deploy": 0,
+  "versao_id": "5ba82c35-7c46-42ea-9c1d-30573370f563",
+  "reguas": {
+    "origem": [
+      "audit-publicacao-v120-404.json",
+      "v121-preflight-14-11.json",
+      "portoes-v121-diary.json",
+      "esperado-v121.json"
+    ],
+    "url": "https://bfr-conecta.turmaroboticabfr.workers.dev",
+    "par_de_rotulos": "education_supervisor:['Supervisão Educacional','Supervisor(a) de ensino']",
+    "cache_velha": "bfr-conecta-v120",
+    "cache_nova": "bfr-conecta-v121",
+    "antes": {
+      "shell": {
+        "md5": "a9a76d0e338c2a539135bccce23111b4",
+        "bytes": 3489649
+      },
+      "sw": {
+        "md5": "289f1f1dc82a2eb2e091994916af3e97",
+        "bytes": 3586
+      },
+      "worker": {
+        "md5": "70ecf617866b422ac569e216e7cc1974",
+        "bytes": 3551420
+      }
+    },
+    "depois_esperado": {
+      "shell": {
+        "md5": "d418e7fc917f1fbb1437054b7b531f9b",
+        "bytes": 3489725
+      },
+      "sw": {
+        "md5": "c70f912c694fbc509273198e0accc83f",
+        "bytes": 3586
+      }
+    }
+  },
+  "A1_shell": {
+    "http": 200,
+    "bytes": 3489725,
+    "md5": "d418e7fc917f1fbb1437054b7b531f9b",
+    "ocorrencias_do_par": 1,
+    "etiquetas": [],
+    "csp_igual_ao_404": true
+  },
+  "A1_shell_servida_igual_a_candidata": {
+    "passou": true,
+    "http": 200,
+    "bytes": 3489725,
+    "md5": "d418e7fc917f1fbb1437054b7b531f9b",
+    "ocorrencias_do_par": 1,
+    "etiquetas": [],
+    "csp_igual_ao_404": true
+  },
+  "A1b_par_de_rotulos_no_corpo_servido_uma_sozinho": {
+    "passou": true,
+    "par": "education_supervisor:['Supervisão Educacional','Supervisor(a) de ensino']",
+    "medido": 1
+  },
+  "A1c_csp_inalterada_no_ar": {
+    "passou": true,
+    "header": "default-src 'self'; base-uri 'self'; object-src 'none'; script-src 'self' 'unsafe-inline' https://bfr-conecta.turmaroboticabfr.workers.dev https://cdn.jsdelivr.net https://static.cloudflareinsights.com https://www.gstatic.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: blob: https:; connect-src 'self' https://bfr-conecta.turmaroboticabfr.workers.dev https://*.supabase.co wss://*.supabase.co https://cloudflareinsights.com https://*.cloudflareinsights.com https://*.googleapis.com https://fcm.googleapis.com https://api.open-meteo.com; worker-src 'self' blob:; manifest-src 'self'; form-action 'self' https://accounts.google.com https://*.supabase.co"
+  },
+  "A2_sw": {
+    "http": 200,
+    "bytes": 3586,
+    "md5": "c70f912c694fbc509273198e0accc83f",
+    "cache": [
+      "bfr-conecta-v121"
+    ],
+    "linha_cache": true,
+    "sobra_da_velha": 0
+  },
+  "A2_sw_servido_com_a_etiqueta_nova_mesmos_bytes": {
+    "passou": true,
+    "http": 200,
+    "bytes": 3586,
+    "md5": "c70f912c694fbc509273198e0accc83f",
+    "cache": [
+      "bfr-conecta-v121"
+    ],
+    "linha_cache": true,
+    "sobra_da_velha": 0
+  },
+  "A3_404": [
+    {
+      "caminho": "/firebase-messaging-sw.js",
+      "http": 404,
+      "bytes": 9,
+      "md5": "9e076f5885f5cc16a4b5aeb8de4adff5",
+      "tipo": "text/plain; charset=utf-8"
+    },
+    {
+      "caminho": "/qualquer-rota-inexistente-zz",
+      "http": 404,
+      "bytes": 9,
+      "md5": "9e076f5885f5cc16a4b5aeb8de4adff5",
+      "tipo": "text/plain; charset=utf-8"
+    },
+    {
+      "caminho": "/favicon.ico",
+      "http": 404,
+      "bytes": 9,
+      "md5": "9e076f5885f5cc16a4b5aeb8de4adff5",
+      "tipo": "text/plain; charset=utf-8"
+    },
+    {
+      "caminho": "/aluno",
+      "http": 404,
+      "bytes": 9,
+      "md5": "9e076f5885f5cc16a4b5aeb8de4adff5",
+      "tipo": "text/plain; charset=utf-8"
+    },
+    {
+      "caminho": "/rota-que-nao-existe-tampouco",
+      "http": 404,
+      "bytes": 9,
+      "md5": "9e076f5885f5cc16a4b5aeb8de4adff5",
+      "tipo": "text/plain; charset=utf-8"
+    }
+  ],
+  "A3_404_permanecem_404_com_o_mesmo_corpo_text_plain": {
+    "passou": true,
+    "total": 5,
+    "desvios": []
+  },
+  "A4_assets": [
+    {
+      "ficheiro": "bfr-app-logo.png",
+      "http": 200,
+      "local_bytes": 448736,
+      "local_md5": "9578faf20083e3cb4d572af5ba10d6ed",
+      "servido_bytes": 448736,
+      "servido_md5": "9578faf20083e3cb4d572af5ba10d6ed"
+    },
+    {
+      "ficheiro": "bfr-responsive-presentation.js",
+      "http": 200,
+      "local_bytes": 51742,
+      "local_md5": "a83f77baba7453851b287080686c7afb",
+      "servido_bytes": 51742,
+      "servido_md5": "a83f77baba7453851b287080686c7afb"
+    },
+    {
+      "ficheiro": "bfr-teacher-arrivals.js",
+      "http": 200,
+      "local_bytes": 13975,
+      "local_md5": "dcb69a88c8f4e93a5f818233cf185300",
+      "servido_bytes": 13975,
+      "servido_md5": "dcb69a88c8f4e93a5f818233cf185300"
+    },
+    {
+      "ficheiro": "bfr-teacher-audit.js",
+      "http": 200,
+      "local_bytes": 3554,
+      "local_md5": "255a2cd46599a25584b89775a276ed68",
+      "servido_bytes": 3554,
+      "servido_md5": "255a2cd46599a25584b89775a276ed68"
+    },
+    {
+      "ficheiro": "calendario-letivo-2026.pdf",
+      "http": 200,
+      "local_bytes": 202349,
+      "local_md5": "14a6b82bfb212bf115fafdb546163f9f",
+      "servido_bytes": 202349,
+      "servido_md5": "14a6b82bfb212bf115fafdb546163f9f"
+    },
+    {
+      "ficheiro": "horario-matutino-2026.pdf",
+      "http": 200,
+      "local_bytes": 1477823,
+      "local_md5": "954621f29537a9be136c0bd9180e8aa3",
+      "servido_bytes": 1477823,
+      "servido_md5": "954621f29537a9be136c0bd9180e8aa3"
+    },
+    {
+      "ficheiro": "horario-matutino-2026.png",
+      "http": 200,
+      "local_bytes": 501591,
+      "local_md5": "5d181a1754a45046bc6907a4d9b420f6",
+      "servido_bytes": 501591,
+      "servido_md5": "5d181a1754a45046bc6907a4d9b420f6"
+    },
+    {
+      "ficheiro": "horario-vespertino-2026.pdf",
+      "http": 200,
+      "local_bytes": 1477823,
+      "local_md5": "954621f29537a9be136c0bd9180e8aa3",
+      "servido_bytes": 1477823,
+      "servido_md5": "954621f29537a9be136c0bd9180e8aa3"
+    },
+    {
+      "ficheiro": "horario-vespertino-2026.png",
+      "http": 200,
+      "local_bytes": 480258,
+      "local_md5": "58854bb4f3ce5e4dffcc7a1a34c31271",
+      "servido_bytes": 480258,
+      "servido_md5": "58854bb4f3ce5e4dffcc7a1a34c31271"
+    },
+    {
+      "ficheiro": "lia-avatar.png",
+      "http": 200,
+      "local_bytes": 1736466,
+      "local_md5": "87e5fc3c4f8bc68ed4535c5cf032c47c",
+      "servido_bytes": 1736466,
+      "servido_md5": "87e5fc3c4f8bc68ed4535c5cf032c47c"
+    },
+    {
+      "ficheiro": "lia-avatar.svg",
+      "http": 200,
+      "local_bytes": 352,
+      "local_md5": "fd080cd554c553567cb6cd82bbeff0de",
+      "servido_bytes": 352,
+      "servido_md5": "fd080cd554c553567cb6cd82bbeff0de"
+    },
+    {
+      "ficheiro": "manifest.json",
+      "http": 200,
+      "local_bytes": 484,
+      "local_md5": "68d155183c80e3e554466ce2415cb268",
+      "servido_bytes": 484,
+      "servido_md5": "68d155183c80e3e554466ce2415cb268"
+    }
+  ],
+  "A4_assets_locais_iguais_a_base_do_404": {
+    "passou": true,
+    "total": 12
+  },
+  "A4b_assets_servidos_batem_com_o_disco": {
+    "passou": true,
+    "total": 12,
+    "desvios": []
+  },
+  "A5_linhagem": {
+    "embed_html_md5": "d418e7fc917f1fbb1437054b7b531f9b",
+    "embed_html_bytes": 3489725,
+    "embed_sw_md5": "c70f912c694fbc509273198e0accc83f",
+    "worker_md5": "ca3668afcc72d487ddf131dde3d16c96",
+    "worker_bytes": 3551496,
+    "shell_servida_md5": "d418e7fc917f1fbb1437054b7b531f9b",
+    "sw_servido_md5": "c70f912c694fbc509273198e0accc83f"
+  },
+  "A5_cadeia_inteira_servida_igual_a_disco": {
+    "passou": true,
+    "embed_html_md5": "d418e7fc917f1fbb1437054b7b531f9b",
+    "embed_html_bytes": 3489725,
+    "embed_sw_md5": "c70f912c694fbc509273198e0accc83f",
+    "worker_md5": "ca3668afcc72d487ddf131dde3d16c96",
+    "worker_bytes": 3551496,
+    "shell_servida_md5": "d418e7fc917f1fbb1437054b7b531f9b",
+    "sw_servido_md5": "c70f912c694fbc509273198e0accc83f"
+  },
+  "A6_linhagem": {
+    "linhas_antes": 28661,
+    "linhas_agora": 28661,
+    "alteradas": [
+      10437
+    ],
+    "diario": 10437,
+    "reversa_md5": "a9a76d0e338c2a539135bccce23111b4",
+    "reversa_bytes": 3489649,
+    "régua_antes": {
+      "md5": "a9a76d0e338c2a539135bccce23111b4",
+      "bytes": 3489649
+    }
+  },
+  "A6a_reversao_em_disco_igual_a_shell_publicada_antes": {
+    "passou": true,
+    "linhas_antes": 28661,
+    "linhas_agora": 28661,
+    "alteradas": [
+      10437
+    ],
+    "diario": 10437,
+    "reversa_md5": "a9a76d0e338c2a539135bccce23111b4",
+    "reversa_bytes": 3489649,
+    "régua_antes": {
+      "md5": "a9a76d0e338c2a539135bccce23111b4",
+      "bytes": 3489649
+    }
+  },
+  "A6b_uma_unica_linha_diferente_da_shell_publicada_antes": {
+    "passou": true,
+    "linhas_antes": 28661,
+    "linhas_agora": 28661,
+    "alteradas": [
+      10437
+    ],
+    "diario": 10437
+  },
+  "A6c_a_linha_alterada_e_o_accountLabels": {
+    "passou": true,
+    "linha": 10437
+  },
+  "falhas": [],
+  "veredito": "V121_HTTP_OK",
+  "totais": {
+    "portoes": 11,
+    "blocos_de_evidencia": 6,
+    "vermelhos": 0
+  }
+}
