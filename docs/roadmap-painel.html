@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Painel de Acompanhamento — ROADMAP MASTER BFR CONECTA</title>
+<style>
+  :root{
+    --azul:#0B3D91; --azul2:#1565C0; --claro:#E3F2FD; --branco:#FFFFFF;
+    --verde:#2E7D32; --verdeC:#E8F5E9; --ambar:#F9A825; --ambarC:#FFF8E1;
+    --verm:#C62828; --vermC:#FFEBEE; --cinza:#546E7A; --borda:#D7E3F4;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{font-family:'Segoe UI',system-ui,Arial,sans-serif; background:#F4F8FD; color:#1A2B4A; padding:24px;}
+  .wrap{max-width:1180px; margin:0 auto;}
+  header{background:linear-gradient(120deg,var(--azul),var(--azul2)); color:#fff; border-radius:14px; padding:26px 30px; margin-bottom:20px;}
+  header h1{font-size:1.55rem; letter-spacing:.3px;}
+  header .sub{opacity:.9; margin-top:6px; font-size:.92rem;}
+  header .meta{display:flex; gap:18px; flex-wrap:wrap; margin-top:14px; font-size:.82rem;}
+  .meta span{background:rgba(255,255,255,.16); padding:4px 12px; border-radius:20px;}
+  .grid{display:grid; gap:16px;}
+  .g2{grid-template-columns:1fr 1fr;} .g3{grid-template-columns:1fr 1fr 1fr;}
+  @media(max-width:900px){.g2,.g3{grid-template-columns:1fr;}}
+  .card{background:#fff; border:1px solid var(--borda); border-radius:12px; padding:18px 20px;}
+  .card h2{font-size:1.02rem; color:var(--azul); margin-bottom:12px; border-left:4px solid var(--azul2); padding-left:10px;}
+  .big{font-size:2.6rem; font-weight:700; color:var(--azul); line-height:1;}
+  .big small{font-size:1rem; color:var(--cinza); font-weight:500;}
+  .sub2{color:var(--cinza); font-size:.85rem; margin-top:6px;}
+  .bar{background:var(--claro); border-radius:8px; height:14px; overflow:hidden; margin:6px 0 2px;}
+  .bar i{display:block; height:100%; background:linear-gradient(90deg,var(--azul),var(--azul2)); border-radius:8px;}
+  .bar.v i{background:linear-gradient(90deg,#2E7D32,#66BB6A);}
+  .row{display:flex; justify-content:space-between; font-size:.86rem; margin-bottom:10px;}
+  .row b{color:#1A2B4A;} .row span{color:var(--cinza);}
+  table{width:100%; border-collapse:collapse; font-size:.85rem;}
+  th{background:var(--claro); color:var(--azul); text-align:left; padding:8px 10px; border-bottom:2px solid var(--borda);}
+  td{padding:8px 10px; border-bottom:1px solid #EDF3FB;}
+  .tag{display:inline-block; padding:2px 10px; border-radius:12px; font-size:.78rem; font-weight:600;}
+  .tag.if{background:var(--verdeC); color:var(--verde);}
+  .tag.icp{background:var(--vermC); color:var(--verm);}
+  .tag.pi{background:var(--ambarC); color:#B26A00;}
+  .tag.nm{background:#EDE7F6; color:#5E35B1;}
+  .tag.nt{background:#E1F5FE; color:#0277BD;}
+  .tag.pf{background:#ECEFF1; color:#455A64;}
+  .kpis{display:flex; gap:12px; flex-wrap:wrap;}
+  .kpi{flex:1; min-width:120px; background:var(--claro); border-radius:10px; padding:12px; text-align:center;}
+  .kpi .n{font-size:1.5rem; font-weight:700; color:var(--azul);}
+  .kpi .l{font-size:.75rem; color:var(--cinza);}
+  .kpi.ok .n{color:var(--verde);}
+  .legend{display:flex; gap:14px; flex-wrap:wrap; font-size:.78rem; color:var(--cinza); margin-top:10px;}
+  .timeline{border-left:3px solid var(--azul2); margin-left:8px; padding-left:16px;}
+  .tl{position:relative; margin-bottom:12px; font-size:.86rem;}
+  .tl::before{content:''; position:absolute; left:-22px; top:4px; width:10px; height:10px; border-radius:50%; background:var(--azul2);}
+  .tl b{color:var(--azul);}
+  .dep{font-size:.84rem; color:#37474F;}
+  .dep li{margin:4px 0 4px 18px;}
+  footer{margin-top:18px; font-size:.78rem; color:var(--cinza); text-align:center;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <h1>Painel de Acompanhamento — ROADMAP MASTER BFR CONECTA</h1>
+  <div class="sub">Referência oficial de planejamento · documento completo em <b>docs/roadmap-master.md</b></div>
+  <div class="meta">
+    <span>Elaborado: 12/11/2026</span>
+    <span>Versão auditada: v119 no ar + SQL até 11/12</span>
+    <span>Fonte: inventário de 104 funcionalidades com evidência + censo read-only do banco (12/11 04:07Z)</span>
+    <span>URL pública: bfr-conecta.turmaroboticabfr.workers.dev</span>
+    <span>Suite mínima (RM-1.4): <b>RM14_SUITE_VERDE</b> · diário <code>evidence/rm14-suite.json</code></span>
+  </div>
+</header>
+
+<div class="grid g2">
+  <div class="card">
+    <h2>Progresso geral do projeto</h2>
+    <div class="big">88,5% <small>concluído</small></div>
+    <div class="sub2">92 de 104 funcionalidades IMPLEMENTADAS E FUNCIONANDO — todas com prova registrada (E2E, censo vivo ou matriz RLS).</div>
+    <div class="bar" style="margin-top:14px;"><i style="width:88.5%"></i></div>
+    <div class="legend">
+      <span><span class="tag if">IF</span> 92 (88,5%)</span>
+      <span><span class="tag icp">ICP</span> 3 (2,9%)</span>
+      <span><span class="tag pi">PI</span> 2 (1,9%)</span>
+      <span><span class="tag nm">NM</span> 3 (2,9%)</span>
+      <span><span class="tag nt">NT</span> 1 (1,0%)</span>
+      <span><span class="tag pf">PF</span> 3 (2,9%)</span>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>Saúde do sistema (censo vivo 12/11)</h2>
+    <div class="kpis">
+      <div class="kpi ok"><div class="n">0</div><div class="l">falhas críticas abertas</div></div>
+      <div class="kpi ok"><div class="n">176/176</div><div class="l">tabelas com RLS</div></div>
+      <div class="kpi ok"><div class="n">475/475</div><div class="l">policies com filtro</div></div>
+      <div class="kpi ok"><div class="n">0</div><div class="l">oráculos na superfície anon</div></div>
+      <div class="kpi"><div class="n">118</div><div class="l">versões publicadas</div></div>
+      <div class="kpi"><div class="n">75</div><div class="l">tabelas realtime</div></div>
+      <div class="kpi ok"><div class="n">30/31</div><div class="l">suite mínima boot+login+RLS (RM-1.4) — 0 vermelho, 1 amarelo = lacuna registrada</div></div>
+    </div>
+    <div class="sub2" style="margin-top:10px;">15 papéis no enum · 848 alunos · 9 buckets de storage · baseline de ciclo por contagem E md5 provada. <b>Dois achados da suite (12/11), ambos abertos como item próprio:</b> <b>RM14-A1/PEN-24</b> — nenhuma proteção anti-clique-jacketing nos bytes que chegam ao browser (sem <code>X-Frame-Options</code>, sem <code>frame-ancestors</code>) → RM-6.7; <b>RM14-A2/PEN-25</b> — 4 tabelas fechadas ao <code>anon</code> por <i>privilégio</i>, não por filtro RLS (fail-closed acidental) → RM-6.8. <b>Ressalva re-medida 12/11 (censo somente-leitura <code>scripts/seg-fin-censo-s20.mjs</code> → <code>evidence/seg-fin-censo-s20-20261112.txt</code>):</b> 3 das 4 contas <code>s20-*</code> ainda têm linha em <code>auth.users</code> com <code>deleted_at</code> nulo — cada uma com <b>0 refresh tokens e 0 sessões</b> (<code>s20-teacher</code> já não existe). Ou seja: não há sessão viva nenhuma, mas as linhas de identidade permanecem; removê-las exige OK novo.</div>
+  </div>
+</div>
+
+<div class="grid g2" style="margin-top:16px;">
+  <div class="card">
+    <h2>Progresso por módulo (concluídas / total)</h2>
+    <div id="modulos"></div>
+  </div>
+
+  <div class="card">
+    <h2>Pendências (33 itens · PEN-01…PEN-33)</h2>
+    <div class="kpis">
+      <div class="kpi"><div class="n">12</div><div class="l">prioridade ALTA</div></div>
+      <div class="kpi"><div class="n">11</div><div class="l">prioridade MÉDIA</div></div>
+      <div class="kpi"><div class="n">10</div><div class="l">prioridade BAIXA</div></div>
+    </div>
+    <table style="margin-top:12px;">
+      <tr><th>Prioritárias (top 11 — RM-1.1 saiu por decisão, não por implementação)</th><th>Fase</th></tr>
+      <tr><td>RM-1.5 — reparar a cadeia de push no cliente: SW com ouvintes <code>push</code>/<code>notificationclick</code> (PEN-26, achado RM13-A1 medido 12/11)</td><td>Fase 1</td></tr>
+      <tr><td>RM-1.6 — <b>FECHADA 13/11</b>: embed <code>sports_schools(name)</code> <b>PUBLICADO na v119</b> e <b>provado logado</b> — select extraído do ar com JWT real de <code>education_supervisor</code> → HTTP 200 <code>[]</code>, controle negativo <code>schools(name)</code> → 400 PGRST200, 0 erros de console; PEN-31 fechada (52 portões/0)</td><td>Fase 1</td></tr>
+      <tr><td>RM-1.7 — <b>FECHADA 13/11 pela v120</b> (PEN-32): o <code>setRole()</code> tinha 12 ramos e nenhum para <code>education_supervisor</code>; 3 linhas do roteador (:9902/:9926/:10145) deram o ramo e o contorno <code>setRole('secretary')</code> deixou de ser necessário no ar (125 portões/0)</td><td>Fase 1</td></tr>
+      <tr><td>RM-1.8 — <b>ABERTA 13/11</b> (PEN-33): <code>accountLabels</code> (:10437) não tem a chave <code>education_supervisor</code> e o chip da conta cai no fallback e diz «Responsável». <b>Candidata v121 PRONTA e NÃO publicada</b>: 1 linha (Δ +76 B), portões 33/0 <code>ROTULOS_OK</code>, bancada A/B v2 <b>60/0</b> <code>H45_BANCADA_V2_OK</code> — controle «Responsável» × candidata «Supervisor(a) de ensino» a 1280 <b>e</b> 390. O par H4 (item do menu escondido) foi medido e é <b>alarme falso</b>: <code>syncRoleNavigation</code> (:11386) reescreve o <code>hidden</code> depois do toggle :10425 e a bancada acha o item presente nas duas bandas e larguras (§T)</td><td>Fase 1</td></tr>
+      <tr><td>RM-6.9 — <code>worker.mjs:37</code> chama <code>ASSETS.fetch</code> com string: caminhos fora do bundle dão 500 em vez de 404 (PEN-27, RM13-A2)</td><td>Fase 6</td></tr>
+      <tr><td>RM-6.7 — anti-clique-jacketing: <code>frame-ancestors</code> + <code>X-Frame-Options</code> (PEN-24, insumo medido 12/11: 0 iframe inbound)</td><td>Fase 6</td></tr>
+      <tr><td>RM-6.8 — fail-closed por policy, não por privilégio (PEN-25; <b>candidata escrita 12/11 e NÃO aplicada</b>: 3 funções <code>SECURITY DEFINER</code> + 11 <code>ALTER POLICY</code> derivados do texto vivo, gerador verde 102/0)</td><td>Fase 6</td></tr>
+      <tr><td>RM-2.10 — fechar as 9 consultas ruins do ar: 6 engolidas por <code>request()</code>/<code>safeQuery()</code> (PEN-28/29/30, censo 12/11)</td><td>Fase 2</td></tr>
+      <tr><td>RM-3.2 — indicadores agregados da rede (Supervisão)</td><td>Fase 3</td></tr>
+      <tr><td>RM-3.3 — relatórios comparativos entre escolas</td><td>Fase 3</td></tr>
+      <tr><td>RM-6.2 — auditoria de segurança final (portão de higiene criado 12/11: <code>fin2-higiene-rm62.mjs</code> 12/0 · PEN-22 147 funções · PEN-23 6 views)</td><td>Fase 6</td></tr>
+    </table>
+  </div>
+</div>
+
+<div class="grid g2" style="margin-top:16px;">
+  <div class="card">
+    <h2>Dependências do roadmap</h2>
+    <ul class="dep">
+      <li><b>RM-3.1</b> (integração check-in×frequência) — <b>CANCELADO 12/11</b>: <b>RM-1.1</b> foi decidido como opção (a), frequência manual com evidência da portaria</li>
+      <li><b>RM-3.2</b> (indicadores da rede) depende de <b>RM-2.6</b> (gestão integrada como cenário único)</li>
+      <li><b>RM-3.3</b> (relatórios comparativos) depende de <b>RM-3.2</b></li>
+      <li><b>RM-3.5</b> (preferências de notificação) depende de <b>RM-3.4</b> (notificações automáticas)</li>
+      <li><b>RM-4.5</b> (otimização do boot) depende de <b>RM-4.1</b> (refactor dos 55 MutationObservers)</li>
+      <li><b>RM-5.2</b> (turnos/calendário) depende de <b>RM-5.1</b> (modo offline da portaria)</li>
+      <li><b>RM-5.6</b> (piloto push) depende de <b>RM-1.5</b> (reparo da cadeia de push no cliente) — RM-1.3 mediu 12/11 e achou a cadeia partida</li>
+      <li><b>RM-6.6</b> (implantação) depende de <b>RM-6.1…RM-6.5</b></li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h2>Histórico de evolução</h2>
+    <div class="timeline">
+      <div class="tl"><b>13/10</b> — início da auditoria contínua (164 telas × 10 larguras, 1.281 cliques com firewall)</div>
+      <div class="tl"><b>14–19/10</b> — correções de segurança (oráculo de suporte, views, revoke anon) e da trava do boot</div>
+      <div class="tl"><b>20–30/10</b> — módulos: professor (v59), aluno (v61), secretaria (v65), comunicação (v66–v70), Proteção Familiar (v84–v89)</div>
+      <div class="tl"><b>30/10–02/11</b> — portaria QR completa (v102–v106: RPC, metadados, modo contínuo, câmera)</div>
+      <div class="tl"><b>05–08/11</b> — Supervisão Educacional (v113–v115; S16–S20 com JWT real 21/21) + gestão administrativa (C7) + PWA (v118)</div>
+      <div class="tl"><b>10–12/11</b> — segurança P0–P3 (rotação de credenciais, CSP), transporte FECHADO (C2R 47/0), 42P17 resolvido</div>
+      <div class="tl"><b>12/11</b> — ROADMAP MASTER aprovado e <b>Fase 1 em execução</b>: RM-1.1 <b>FECHADO por decisão de produto (a)</b> (elo automático não existe; RM-3.1 cancelado), RM-1.2 (aprovação medida, 57 portões/0), RM-1.4 (<b>suite mínima boot+login+RLS verde, 30/1/0, controle negativo 21/31</b>) — com 2 achados novos registrados (RM14-A1/A2)</div>
+      <div class="tl"><b>12/11 (FIN-1/FIN-2, somente leitura)</b> — as 5 entradas de decisão de produto medidas nos bytes vivos (<code>FIN1_DECISOES_OK</code> 18/0, §12.1) e o censo de <b>248 pares <code>origem → select</code></b> do ar: 239 × HTTP 200 e <b>9 consultas ruins</b> atribuídas por catálogo e por sítio de emissão → PEN-28/29/30 + RM-2.10; a conferência por vaga no disco achou <b>1 regressão</b> (o embed <code>sports_schools(name)</code> desaparece entre a v115 e a v116) → PEN-31 + RM-1.6. Nada foi publicado nem alterado.</div>
+      <div class="tl"><b>12/11 (RM-6.2, portão de higiene)</b> — <code>scripts/fin2-higiene-rm62.mjs</code> criado e verde (<b>12 portões / 0 falhas</b>, somente leitura; pegada de catálogo <b>182 / ecf3403210b8…</b> igual antes e depois). Re-emite do <code>pg_catalog</code>: PEN-22 <b>147 funções</b> em <code>public</code>, EXECUTE a <code>anon</code> em <b>57</b>, a <code>public</code> em <b>56</b>, <b>0</b> com <code>proacl</code> nula; PEN-23 <b>6 views</b>, <b>1</b> com <code>security_invoker</code> e <b>5</b> de dono <code>postgres</code> sem ele; PEN-25 causa <b>medida</b> (<code>anon</code> sem EXECUTE em <code>"current_role"()</code>, <code>authenticated</code> com); PEN-29 × PEN-31 separados (<code>public.schools</code> <b>existe</b> como tabela → falta FK; as 3 do calendário/turno não existem em esquema nenhum); PEN-30 <code>created_at</code> fora das 13 colunas de <code>announcements</code>.</div>
+      <div class="tl"><b>12/11 (RM-6.8, candidata fail-closed por policy — ESCRITA, NÃO aplicada)</b> — peça 1 <code>scripts/rm68-recon-quals.mjs</code> (somente leitura, <b>7 portões / 0 falhas</b>) emite <code>evidence/rm68-recon-quals.json</code> com o texto vivo de <code>pg_policy</code>: <b>23 policies</b> nas 4 tabelas da PEN-25 (<code>grades</code> 5, <code>attendance</code> 8, <code>access_requests</code> 4, <code>occurrences</code> 6), das quais <b>11 de papel PUBLIC</b> — as únicas que um pedido <code>anon</code> chega a avaliar; as 12 de <code>authenticated</code> são filtradas pelo papel antes do qual e nunca levantam 42501. Peça 2 <code>scripts/rm68-gerador-candidata.mjs</code> (<b>102 portões / 0 falhas</b>) substitui só as chamadas privilegiadas por 3 funções próprias <code>SECURITY DEFINER</code> e emite <code>scripts/rm68-fail-closed-por-policy.sql</code> (<b>14.568 B</b>, md5 <code>85ccd0927153fbcca4389e9218f1111f</code>, determinístico em duas corridas). O gerador prova ida-e-volta: cada expressão nova, com os wrappers trocados de volta pelo texto do catálogo, sai <b>byte a byte igual</b>; <b>0</b> resíduos de <code>EXISTS</code>/<code>JOIN</code>; parênteses equilibrados; mesmo número de chamadas; <b>nenhum GRANT sobre tabela</b> no ficheiro (só 3 × EXECUTE). O arquivo declara «NÃO APLICADA» e traz DRY-RUN <code>BEGIN…ROLLBACK</code>, vereditos e a REVERSÃO byte-a-byte das 11 policies. <b>Nenhum DDL foi executado</b>; a equivalência comportamental por papel autenticado só é medível depois de aplicar.</div>
+      <div class="tl"><b>13/11 (RM-1.6 / PEN-31, OK «publicar v119»)</b> — o embed <code>sports_schools(name)</code> da Supervisão foi <b>reposto e PUBLICADO na v119</b>: 2 substituições no bundle (Δ +7 B), version <code>6aed50af-a8a1-4c2b-84ae-cb6eaec4770b</code>, wrangler 4.154.0, shell 3.489.467 B <code>ae59d353…</code> → 3.489.474 B <code>a1969cdf…</code>. Cadeia de portões <b>79 / 0 vermelhos</b> (preflight 20/0, candidata 15, bundle 14, HTTP 15/0, Chrome limpo 10/0, sonda do par 5/0). O censo de embeds foi <b>re-emitido sobre os bytes publicados</b>: 248 pares, HTTP 200 de 239 → <b>240</b>, ruínas de 9 → <b>8</b>, <b>0 novas</b> — a única que saiu é exatamente a do defeito (linha 23684). <b>Nenhuma DDL, nenhuma escrita em banco, nenhum deploy de Edge.</b> PEN-31 só fecha com a aba provada logado; reverter = reempurrar <code>worker-deploy-v118-csp</code> e exige OK novo.</div>
+      <div class="tl"><b>13/11 (S21, OK «Autorizo o mint via Auth Admin API») — PEN-31 FECHADA, PEN-32 ABERTA</b> — mint de <b>1</b> conta sintética <code>education_supervisor</code> pela Admin API, <b>login real</b> (200/200) e walkthrough autenticado da aba na <b>v119 viva</b>: o select extraído <b>dos bytes do ar</b> (linha 23684, com <code>sports_schools(name)</code>) devolve <b>HTTP 200 com corpo <code>[]</code></b> e o controle negativo com <code>schools(name)</code> reproduz <b>400 PGRST200</b>; o <b>navegador</b> emite o mesmo select → 200, 0 erros de console, aba em <b>466 ms</b>; PNGs das duas bandas com md5 (<code>709a1d5c…</code> sem aba / <code>9c23a0c8…</code> com aba). <b>Correção de registro:</b> o JWT de supervisor <b>lê</b> <code>sports_schools</code> — 200 com <b>3 das 6</b> linhas, exatamente as da sua escola; o S18 estava errado nesse ponto. <b>Achado novo (PEN-32, prioridade A):</b> o <code>setRole()</code> da linha 9901 tem <b>12 ramos</b> e <b>nenhum</b> mira <code>education_supervisor</code> — a conta real cai em <code>parentView</code> (5 itens de menu, aba ausente) e o <code>setupSecretaryView()</code> da linha 9948 é <b>código morto</b> porque vem depois do <code>return</code> do guard; <code>roleSectionAccess</code> e <code>viewIds</code> conhecem o papel, o roteador não. Total <b>52 portões / 0 vermelhos</b> (17+12+23). Escrita: <b>0 linhas de produto</b> — só o <code>UPDATE</code> do papel na linha que o próprio trigger do mint criou. Limpeza FK-safe: 215 FKs inventariadas, <b>6 tabelas byte-idênticas</b> à baseline por contagem <b>e</b> md5, conta removida (DELETE 200, GET 404, 0 sessões). Nada de código alterado; RM-1.7 criada e pede OK novo.</div>
+      <div class="tl"><b>13/11 (RM-1.7, OK «Autorizo, publica a v120»)</b> — <b>v120 PUBLICADA 06:49:57Z</b>: 3 linhas do roteador dando ramo a <code>education_supervisor</code>, <b>PEN-32 FECHADA</b>, cadeia <b>125 portões / 0 vermelhos</b> (candidata 28 + bancada A/B 43 + preflight 26 + HTTP 18 + Chrome limpo 10), shell 3.489.649 B <code>a9a76d0e…</code> (Δ +175 B, 28.661 linhas nos dois lados), linhagem reversa byte-a-byte até a v119, <code>CACHE=bfr-conecta-v120</code>. <b>0 DDL, 0 escrita em banco, 0 conta mintada.</b> O censo de embeds não foi re-emitido porque está provado que o multiconjunto das 488 strings <code>.select("…")</code> é idêntico nas duas bandas (497/497) — a régua da v119 vale. Reversão congelada em <code>worker-deploy-v119/</code>, pede OK novo.</div>
+      <div class="tl"><b>13/11 (H4/H5, §T — candidata v121 PRONTA, NÃO publicada)</b> — medição dos dois resíduos da v120: <b>H5 confirmado</b> (<code>accountLabels</code> :10437 sem a chave <code>education_supervisor</code> → o chip da conta diz «Responsável») e <b>H4 FALSO ALARME</b> (o toggle :10425 esconde o item Secretaria mas <code>syncRoleNavigation</code> roda <b>depois</b> e reescreve o <code>hidden</code> a partir de <code>roleSectionAccess</code>; a bancada vê o item no DOM, sem a classe e com caixa de layout nas duas bandas e nas duas larguras). Estática <code>h45-medicao.mjs</code> 18/0; <b>candidata v121</b> = 1 linha (3.489.725 B <code>d418e7fc…</code>, Δ +76 B), portões <b>33/0</b> <code>ROTULOS_OK</code> com <code>published:false</code>; bancada v1 50/6 (3 armadilhas do rig, registradas) e <b>v2 60/0</b> <code>H45_BANCADA_V2_OK</code> — rótulo «Supervisor(a) de ensino» na candidata × «Responsável» no controle a 1280 e 390, linha de nome idêntica nas duas bandas (prova de que <code>preferredDisplayName</code> não conhece papel), 0 escrita de tabela, 0 não-GET ao backend, RPCs provadas de leitura em <code>pg_proc</code>, baseline das 5 tabelas imutável por contagem <b>e</b> md5, 4 PNGs com md5. <b>PEN-33 + RM-1.8 abertas</b> (painel: 33 pendências, 45 tarefas, Fase 1 = 8). <b>0 publicação, 0 DDL, 0 escrita, 0 mint — o ar continua v120</b>; promover a v121 pede OK literal novo.</div>
+    </div>
+  </div>
+</div>
+
+<div class="card" style="margin-top:16px;">
+  <h2>Roadmap por fases — 45 tarefas (RM-x.y)</h2>
+  <table>
+    <tr><th>Fase</th><th>Tarefas</th><th>Foco</th><th>Estado</th></tr>
+    <tr><td><b>FASE 1</b></td><td>8</td><td>Correções críticas / validações residuais + 1 regressão medida 12/11</td><td><span class="tag icp">5 de 8 feitas (RM-1.1, RM-1.2, RM-1.4, RM-1.6, RM-1.7) · RM-1.6 <b>publicada 13/11 na v119 e provada logado — PEN-31 FECHADA</b> · RM-1.7 <b>FECHADA 13/11 pela v120</b> (3 linhas do roteador, 125 portões/0; o contorno <code>setRole('secretary')</code> deixou de ser necessário no ar) · RM-1.3 medida 12/11 com achado (cadeia partida no cliente) · reparo = RM-1.5 · <b>RM-1.8 aberta 13/11 (PEN-33): candidata v121 PRONTA e medida por bancada A/B 60/0, NÃO publicada</b> — o H4 do menu foi medido 13/11 e é <b>alarme falso</b> (§T)</span></td></tr>
+    <tr><td><b>FASE 2</b></td><td>10</td><td>Finalização dos módulos existentes (decisões de produto em lote)</td><td><span class="tag pf">Pendente · insumos das 5 decisões medidos 12/11 (§12.1) · PEN-28 entra como RM-2.10</span></td></tr>
+    <tr><td><b>FASE 3</b></td><td>5</td><td>Integração geral (supervisão multi-escola, notificações)</td><td><span class="tag pf">Pendente</span></td></tr>
+    <tr><td><b>FASE 4</b></td><td>6</td><td>Melhorias de experiência (observers, acessibilidade, boot)</td><td><span class="tag pf">Pendente</span></td></tr>
+    <tr><td><b>FASE 5</b></td><td>7</td><td>Novas funcionalidades (offline, hardware, dados)</td><td><span class="tag pf">Pendente</span></td></tr>
+    <tr><td><b>FASE 6</b></td><td>9</td><td>Homologação e produção (suite de produto, auditoria, anti-clique-jacketing, fail-closed por policy, rotas do Worker, implantação)</td><td><span class="tag pi">3 entradas novas 12/11 (RM-6.7, RM-6.8, RM-6.9) · RM-6.2 parcialmente feito: portão de higiene 12/0 · RM-6.8 candidata escrita 12/11 e NÃO aplicada (gerador 102/0)</span></td></tr>
+  </table>
+  <div class="sub2" style="margin-top:8px;">Cronograma sugerido: ~18 semanas por ordem de valor — F1 (sem 1–2) → F2 (sem 3–5) → F3 (sem 6–8) → F4 (sem 9–11) → F5 (sem 12–16) → F6 (sem 17–18).</div>
+</div>
+
+<footer>
+  Indicadores calculados do inventário da seção 5 de docs/roadmap-master.md (104 funcionalidades, cada uma com evidência registrada).
+  Etapa de diagnóstico <b>aprovada</b>; Fase 1 em execução desde 12/11. Até aqui a Fase 1 não escreveu nada no banco nem publicou versão: RM-1.1 (fechado por decisão de produto (a), sem DDL nem mudança de código), RM-1.4 somente leitura e o ciclo de contas sintéticas do RM-1.2 terminou com baseline restaurada (contagem E md5). <b>Nenhuma publicação de Worker, nenhum DDL e nenhuma limpeza de contas vivas sem OK novo.</b>
+</footer>
+</div>
+
+<script>
+const modulos = [
+  ['Autenticação',7,8],['Navegação',5,6],['Área do aluno',11,14],['Responsáveis',8,9],
+  ['Professor',8,9],['Coordenação',8,9],['Direção',6,7],['Secretaria',6,6],
+  ['Supervisão Educacional',5,6],['Transporte (monitor)',4,4],['Portaria',3,5],
+  ['AEE/Psicologia/Social',6,6],['Jogos Escolares',2,2],['Comunicação',4,4],
+  ['Desenvolvedor',3,3],['Segurança transversal',6,6]
+];
+const el = document.getElementById('modulos');
+for (const [nome, ok, tot] of modulos) {
+  const pct = Math.round(100*ok/tot);
+  const d = document.createElement('div');
+  d.style.marginBottom = '12px';
+  d.innerHTML = '<div class="row"><b>' + nome + '</b><span>' + ok + '/' + tot + ' (' + pct + '%)</span></div>' +
+    '<div class="bar' + (pct===100 ? ' v' : '') + '"><i style="width:' + pct + '%"></i></div>';
+  el.appendChild(d);
+}
+</script>
+</body>
+</html>

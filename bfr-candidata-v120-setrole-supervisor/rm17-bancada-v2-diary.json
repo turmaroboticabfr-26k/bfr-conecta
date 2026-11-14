@@ -1,0 +1,1591 @@
+{
+  "ciclo": "RM-17-BANCADA-v2",
+  "tarefa": "#1158 RM-1.7 / PEN-32",
+  "em": "2026-11-13T06:13:03.714Z",
+  "escopo": "bancada A/B offline; 0 deploy, 0 mint, 0 DDL, 0 INSERT; papel injetado so em memoria",
+  "revelacao": "o chrome e revelado por window.enterApp(role), funcao propria do app (:10405) chamada pelo boot real; o rig nao patcha classes",
+  "limitacao": "sem sessao real: todo tráfego supabase.co desta bancada e anonimo (sem JWT). A prova com JWT e da aba logada e a S21.",
+  "regua": {
+    "base_md5": "a1969cdf023042e7d2a91e7ed9333a05",
+    "candidate_md5": "a9a76d0e338c2a539135bccce23111b4",
+    "hunks": [
+      {
+        "id": "H1",
+        "line": 9902
+      },
+      {
+        "id": "H2",
+        "line": 9926
+      },
+      {
+        "id": "H3",
+        "line": 10145
+      }
+    ]
+  },
+  "bandas": {
+    "base": {
+      "nome": "controle v119 (shell do ar)",
+      "url": "http://127.0.0.1:8271/",
+      "md5_servido": "a1969cdf023042e7d2a91e7ed9333a05",
+      "bytes_servidos": 3489474,
+      "passos": {
+        "ms_login": 487,
+        "sw_controller": false,
+        "bloqueio": "instalado",
+        "gatilho": "clicado",
+        "ms_core": 338,
+        "modules": "pronto",
+        "ms_runtime": 0,
+        "setRole_sup": "sem retorno",
+        "enterApp": "sem retorno",
+        "ms_chrome": 130,
+        "setRole_sec": "sem retorno",
+        "setRole_sup2": "sem retorno",
+        "clique_aba": "clicado"
+      },
+      "s0": {
+        "tipo_setRole": "undefined",
+        "tipo_enterApp": "undefined",
+        "papel_currentProfile": null,
+        "activeView": null,
+        "runtime_papel": null,
+        "runtime_activeView": null,
+        "tem_runtime": false,
+        "appshell_ready": false,
+        "login_hidden": false,
+        "views_visiveis": [
+          "parentView"
+        ],
+        "secretaryView_hidden": true,
+        "central_visivel": false,
+        "aba_supervisao_no_dom": false,
+        "aba_supervisao_visivel": false,
+        "aba_supervisao_ativa": null,
+        "sec_body_len": 0,
+        "sec_body_ini": null,
+        "abas_no_dom": [],
+        "menu_visivel": [],
+        "item_secretaria_visivel": false,
+        "supervisao_no_menu": false,
+        "chip_conta": "Responsável · 1 aluno",
+        "breadcrumb": "Hoje",
+        "escritas_bloqueadas": []
+      },
+      "s1": {
+        "tipo_setRole": "function",
+        "tipo_enterApp": "function",
+        "papel_currentProfile": null,
+        "activeView": "parent",
+        "runtime_papel": null,
+        "runtime_activeView": "parent",
+        "tem_runtime": true,
+        "appshell_ready": false,
+        "login_hidden": false,
+        "views_visiveis": [
+          "parentView"
+        ],
+        "secretaryView_hidden": true,
+        "central_visivel": false,
+        "aba_supervisao_no_dom": false,
+        "aba_supervisao_visivel": false,
+        "aba_supervisao_ativa": null,
+        "sec_body_len": 0,
+        "sec_body_ini": null,
+        "abas_no_dom": [],
+        "menu_visivel": [],
+        "item_secretaria_visivel": false,
+        "supervisao_no_menu": false,
+        "chip_conta": "Responsável · 1 aluno",
+        "breadcrumb": "Hoje",
+        "escritas_bloqueadas": []
+      },
+      "injecao": {
+        "escrito": true,
+        "leitura": "education_supervisor",
+        "usuario": "rm17-bancada-sintetica"
+      },
+      "s2": {
+        "tipo_setRole": "function",
+        "tipo_enterApp": "function",
+        "papel_currentProfile": "education_supervisor",
+        "activeView": "parent",
+        "runtime_papel": "education_supervisor",
+        "runtime_activeView": "parent",
+        "tem_runtime": true,
+        "appshell_ready": false,
+        "login_hidden": false,
+        "views_visiveis": [
+          "parentView"
+        ],
+        "secretaryView_hidden": true,
+        "central_visivel": false,
+        "aba_supervisao_no_dom": false,
+        "aba_supervisao_visivel": false,
+        "aba_supervisao_ativa": null,
+        "sec_body_len": 0,
+        "sec_body_ini": null,
+        "abas_no_dom": [],
+        "menu_visivel": [],
+        "item_secretaria_visivel": false,
+        "supervisao_no_menu": false,
+        "chip_conta": "Responsável · 1 aluno",
+        "breadcrumb": "Hoje",
+        "escritas_bloqueadas": []
+      },
+      "s3": {
+        "tipo_setRole": "function",
+        "tipo_enterApp": "function",
+        "papel_currentProfile": "education_supervisor",
+        "activeView": "parent",
+        "runtime_papel": "education_supervisor",
+        "runtime_activeView": "parent",
+        "tem_runtime": true,
+        "appshell_ready": true,
+        "login_hidden": true,
+        "views_visiveis": [
+          "parentView"
+        ],
+        "secretaryView_hidden": true,
+        "central_visivel": false,
+        "aba_supervisao_no_dom": false,
+        "aba_supervisao_visivel": false,
+        "aba_supervisao_ativa": null,
+        "sec_body_len": 0,
+        "sec_body_ini": null,
+        "abas_no_dom": [],
+        "menu_visivel": [
+          "inicio",
+          "chat-interno",
+          "notificacoes",
+          "conteudos",
+          "jogos-escolares"
+        ],
+        "item_secretaria_visivel": false,
+        "supervisao_no_menu": false,
+        "chip_conta": "Responsável",
+        "breadcrumb": "Hoje",
+        "escritas_bloqueadas": [
+          "fetch POST https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/rpc/list_current_month_birthdays",
+          "fetch POST https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/rpc/bfr_list_staff_birthdays"
+        ]
+      },
+      "s4": {
+        "tipo_setRole": "function",
+        "tipo_enterApp": "function",
+        "papel_currentProfile": "education_supervisor",
+        "activeView": "secretary",
+        "runtime_papel": "education_supervisor",
+        "runtime_activeView": "secretary",
+        "tem_runtime": true,
+        "appshell_ready": true,
+        "login_hidden": true,
+        "views_visiveis": [
+          "secretaryView"
+        ],
+        "secretaryView_hidden": false,
+        "central_visivel": true,
+        "aba_supervisao_no_dom": true,
+        "aba_supervisao_visivel": true,
+        "aba_supervisao_ativa": false,
+        "sec_body_len": 1463,
+        "sec_body_ini": "Ação necessáriaPrecisa de atençãoItens derivados dos protocolos e registros autorizados.acesso parcial✓Nenhuma prioridade calculável abertaOs dados disponíveis ",
+        "abas_no_dom": [
+          "overview",
+          "tasks",
+          "students",
+          "enrollments",
+          "documents",
+          "requests",
+          "agenda",
+          "professionals",
+          "classes",
+          "communications",
+          "reports",
+          "supervisao",
+          "search"
+        ],
+        "menu_visivel": [
+          "inicio",
+          "chat-interno",
+          "notificacoes",
+          "conteudos",
+          "jogos-escolares",
+          "comunicados",
+          "secretaria",
+          "jogos-escolares"
+        ],
+        "item_secretaria_visivel": true,
+        "supervisao_no_menu": false,
+        "chip_conta": "Responsável",
+        "breadcrumb": "Início",
+        "escritas_bloqueadas": [
+          "fetch POST https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/rpc/list_current_month_birthdays",
+          "fetch POST https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/rpc/bfr_list_staff_birthdays"
+        ]
+      },
+      "s5": {
+        "tipo_setRole": "function",
+        "tipo_enterApp": "function",
+        "papel_currentProfile": "education_supervisor",
+        "activeView": "secretary",
+        "runtime_papel": "education_supervisor",
+        "runtime_activeView": "secretary",
+        "tem_runtime": true,
+        "appshell_ready": true,
+        "login_hidden": true,
+        "views_visiveis": [
+          "secretaryView"
+        ],
+        "secretaryView_hidden": false,
+        "central_visivel": true,
+        "aba_supervisao_no_dom": true,
+        "aba_supervisao_visivel": true,
+        "aba_supervisao_ativa": false,
+        "sec_body_len": 1463,
+        "sec_body_ini": "Ação necessáriaPrecisa de atençãoItens derivados dos protocolos e registros autorizados.acesso parcial✓Nenhuma prioridade calculável abertaOs dados disponíveis ",
+        "abas_no_dom": [
+          "overview",
+          "tasks",
+          "students",
+          "enrollments",
+          "documents",
+          "requests",
+          "agenda",
+          "professionals",
+          "classes",
+          "communications",
+          "reports",
+          "supervisao",
+          "search"
+        ],
+        "menu_visivel": [
+          "inicio",
+          "chat-interno",
+          "notificacoes",
+          "conteudos",
+          "jogos-escolares",
+          "comunicados",
+          "secretaria",
+          "jogos-escolares"
+        ],
+        "item_secretaria_visivel": true,
+        "supervisao_no_menu": false,
+        "chip_conta": "Responsável",
+        "breadcrumb": "Início",
+        "escritas_bloqueadas": [
+          "fetch POST https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/rpc/list_current_month_birthdays",
+          "fetch POST https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/rpc/bfr_list_staff_birthdays"
+        ]
+      },
+      "s6": {
+        "tipo_setRole": "function",
+        "tipo_enterApp": "function",
+        "papel_currentProfile": "education_supervisor",
+        "activeView": "secretary",
+        "runtime_papel": "education_supervisor",
+        "runtime_activeView": "secretary",
+        "tem_runtime": true,
+        "appshell_ready": true,
+        "login_hidden": true,
+        "views_visiveis": [
+          "secretaryView"
+        ],
+        "secretaryView_hidden": false,
+        "central_visivel": true,
+        "aba_supervisao_no_dom": true,
+        "aba_supervisao_visivel": true,
+        "aba_supervisao_ativa": true,
+        "sec_body_len": 563,
+        "sec_body_ini": "Supervisão EducacionalSolicitações de SupervisãoProcessos de supervisão enviados pelas escolas. A Secretaria acompanha indicadores, prazos e planos de ação.0 re",
+        "abas_no_dom": [
+          "overview",
+          "tasks",
+          "students",
+          "enrollments",
+          "documents",
+          "requests",
+          "agenda",
+          "professionals",
+          "classes",
+          "communications",
+          "reports",
+          "supervisao",
+          "search"
+        ],
+        "menu_visivel": [
+          "inicio",
+          "chat-interno",
+          "notificacoes",
+          "conteudos",
+          "jogos-escolares",
+          "comunicados",
+          "secretaria",
+          "jogos-escolares"
+        ],
+        "item_secretaria_visivel": true,
+        "supervisao_no_menu": false,
+        "chip_conta": "Responsável",
+        "breadcrumb": "Início",
+        "escritas_bloqueadas": [
+          "fetch POST https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/rpc/list_current_month_birthdays",
+          "fetch POST https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/rpc/bfr_list_staff_birthdays"
+        ]
+      },
+      "pedidos_supervisao": [
+        {
+          "metodo": "OPTIONS",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/supervision_requests",
+          "status": 200
+        },
+        {
+          "metodo": "GET",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/supervision_requests",
+          "status": 401
+        }
+      ],
+      "pedidos_supervisao_status": [
+        "OPTIONS supervision_requests 200",
+        "GET supervision_requests 401"
+      ],
+      "escritas_bloqueadas_total": [
+        "fetch POST https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/rpc/list_current_month_birthdays",
+        "fetch POST https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/rpc/bfr_list_staff_birthdays"
+      ],
+      "capturas": {
+        "apos_enterApp": {
+          "ficheiro": "rm17v2--base-apos-enterapp.png",
+          "bytes": 250013,
+          "md5": "07241b68ece534a32cf8df2bec74469e"
+        },
+        "final": {
+          "ficheiro": "rm17v2--base-final.png",
+          "bytes": 250013,
+          "md5": "07241b68ece534a32cf8df2bec74469e"
+        }
+      },
+      "rede": [
+        {
+          "metodo": "OPTIONS",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/bfr_coordination_threads",
+          "status": 200
+        },
+        {
+          "metodo": "OPTIONS",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/guardian_students",
+          "status": 200
+        },
+        {
+          "metodo": "GET",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/bfr_coordination_threads",
+          "status": 200
+        },
+        {
+          "metodo": "GET",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/guardian_students",
+          "status": 400
+        },
+        {
+          "metodo": "OPTIONS",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/notification_preferences",
+          "status": 200
+        },
+        {
+          "metodo": "OPTIONS",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/announcements",
+          "status": 200
+        },
+        {
+          "metodo": "OPTIONS",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/school_events",
+          "status": 200
+        },
+        {
+          "metodo": "GET",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/notification_preferences",
+          "status": 400
+        },
+        {
+          "metodo": "GET",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/announcements",
+          "status": 200
+        },
+        {
+          "metodo": "GET",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/school_events",
+          "status": 200
+        },
+        {
+          "metodo": "OPTIONS",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/school_notification_reads",
+          "status": 200
+        },
+        {
+          "metodo": "GET",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/school_notification_reads",
+          "status": 400
+        },
+        {
+          "metodo": "OPTIONS",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/internal_chat_room_members",
+          "status": 200
+        },
+        {
+          "metodo": "OPTIONS",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/classes",
+          "status": 200
+        },
+        {
+          "metodo": "OPTIONS",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/school_activities",
+          "status": 200
+        },
+        {
+          "metodo": "OPTIONS",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/profiles",
+          "status": 200
+        },
+        {
+          "metodo": "OPTIONS",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/announcements",
+          "status": 200
+        },
+        {
+          "metodo": "OPTIONS",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/secretary_requests",
+          "status": 200
+        },
+        {
+          "metodo": "OPTIONS",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/project_photos",
+          "status": 200
+        },
+        {
+          "metodo": "OPTIONS",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/school_events",
+          "status": 200
+        },
+        {
+          "metodo": "OPTIONS",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/students",
+          "status": 200
+        },
+        {
+          "metodo": "OPTIONS",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/bfr_teacher_directory",
+          "status": 200
+        },
+        {
+          "metodo": "OPTIONS",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/classes",
+          "status": 200
+        },
+        {
+          "metodo": "OPTIONS",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/school_meetings",
+          "status": 200
+        },
+        {
+          "metodo": "OPTIONS",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/school_events",
+          "status": 200
+        },
+        {
+          "metodo": "OPTIONS",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/grades",
+          "status": 200
+        },
+        {
+          "metodo": "OPTIONS",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/secretary_profile_change_requests",
+          "status": 200
+        },
+        {
+          "metodo": "OPTIONS",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/student_school_profiles",
+          "status": 200
+        },
+        {
+          "metodo": "OPTIONS",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/attendance",
+          "status": 200
+        },
+        {
+          "metodo": "OPTIONS",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/schools",
+          "status": 200
+        },
+        {
+          "metodo": "OPTIONS",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/school_documents",
+          "status": 200
+        },
+        {
+          "metodo": "OPTIONS",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/projects",
+          "status": 200
+        },
+        {
+          "metodo": "OPTIONS",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/learning_action_plans",
+          "status": 200
+        },
+        {
+          "metodo": "OPTIONS",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/announcements",
+          "status": 200
+        },
+        {
+          "metodo": "OPTIONS",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/supervision_requests",
+          "status": 200
+        },
+        {
+          "metodo": "OPTIONS",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/school_activities",
+          "status": 200
+        },
+        {
+          "metodo": "GET",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/bfr_coordination_threads",
+          "status": 200
+        },
+        {
+          "metodo": "GET",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/internal_chat_room_members",
+          "status": 400
+        },
+        {
+          "metodo": "GET",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/classes",
+          "status": 200
+        },
+        {
+          "metodo": "GET",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/bfr_teacher_directory",
+          "status": 200
+        },
+        {
+          "metodo": "GET",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/school_activities",
+          "status": 200
+        },
+        {
+          "metodo": "GET",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/profiles",
+          "status": 200
+        },
+        {
+          "metodo": "GET",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/announcements",
+          "status": 200
+        },
+        {
+          "metodo": "GET",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/project_photos",
+          "status": 200
+        },
+        {
+          "metodo": "GET",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/attendance",
+          "status": 401
+        },
+        {
+          "metodo": "GET",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/school_meetings",
+          "status": 200
+        },
+        {
+          "metodo": "GET",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/secretary_requests",
+          "status": 200
+        },
+        {
+          "metodo": "GET",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/grades",
+          "status": 401
+        },
+        {
+          "metodo": "GET",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/announcements",
+          "status": 200
+        },
+        {
+          "metodo": "GET",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/school_events",
+          "status": 200
+        },
+        {
+          "metodo": "GET",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/secretary_profile_change_requests",
+          "status": 200
+        },
+        {
+          "metodo": "GET",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/school_events",
+          "status": 200
+        },
+        {
+          "metodo": "GET",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/students",
+          "status": 200
+        },
+        {
+          "metodo": "GET",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/schools",
+          "status": 401
+        },
+        {
+          "metodo": "GET",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/projects",
+          "status": 200
+        },
+        {
+          "metodo": "GET",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/student_school_profiles",
+          "status": 200
+        },
+        {
+          "metodo": "GET",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/learning_action_plans",
+          "status": 200
+        },
+        {
+          "metodo": "GET",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/supervision_requests",
+          "status": 401
+        },
+        {
+          "metodo": "GET",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/classes",
+          "status": 200
+        },
+        {
+          "metodo": "GET",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/school_activities",
+          "status": 200
+        },
+        {
+          "metodo": "GET",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/school_documents",
+          "status": 200
+        },
+        {
+          "metodo": "OPTIONS",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/project_results",
+          "status": 200
+        },
+        {
+          "metodo": "GET",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/project_results",
+          "status": 200
+        }
+      ],
+      "erros_console": [],
+      "excecoes": [],
+      "log_erros": [
+        "Failed to load resource: the server responded with a status of 404 (Not Found)",
+        "Manifest fetch from http://127.0.0.1:8271/manifest.json failed, code 404",
+        "Failed to load resource: the server responded with a status of 404 (Not Found)",
+        "Failed to load resource: the server responded with a status of 404 (Not Found)",
+        "A bad HTTP response code (404) was received when fetching the script.",
+        "Failed to load resource: the server responded with a status of 404 (Not Found)",
+        "Failed to load resource: the server responded with a status of 404 (Not Found)",
+        "Failed to load resource: the server responded with a status of 404 (Not Found)",
+        "Failed to load resource: the server responded with a status of 404 (Not Found)",
+        "Failed to load resource: the server responded with a status of 404 (Not Found)"
+      ]
+    },
+    "cand": {
+      "nome": "candidata v120",
+      "url": "http://127.0.0.1:8272/",
+      "md5_servido": "a9a76d0e338c2a539135bccce23111b4",
+      "bytes_servidos": 3489649,
+      "passos": {
+        "ms_login": 345,
+        "sw_controller": false,
+        "bloqueio": "instalado",
+        "gatilho": "clicado",
+        "ms_core": 2,
+        "modules": "pronto",
+        "ms_runtime": 1,
+        "setRole_sup": "sem retorno",
+        "enterApp": "sem retorno",
+        "ms_chrome": 73,
+        "setRole_sec": "sem retorno",
+        "setRole_sup2": "sem retorno",
+        "clique_aba": "clicado"
+      },
+      "s0": {
+        "tipo_setRole": "undefined",
+        "tipo_enterApp": "undefined",
+        "papel_currentProfile": null,
+        "activeView": null,
+        "runtime_papel": null,
+        "runtime_activeView": null,
+        "tem_runtime": false,
+        "appshell_ready": false,
+        "login_hidden": false,
+        "views_visiveis": [
+          "parentView"
+        ],
+        "secretaryView_hidden": true,
+        "central_visivel": false,
+        "aba_supervisao_no_dom": false,
+        "aba_supervisao_visivel": false,
+        "aba_supervisao_ativa": null,
+        "sec_body_len": 0,
+        "sec_body_ini": null,
+        "abas_no_dom": [],
+        "menu_visivel": [],
+        "item_secretaria_visivel": false,
+        "supervisao_no_menu": false,
+        "chip_conta": "Responsável · 1 aluno",
+        "breadcrumb": "Hoje",
+        "escritas_bloqueadas": []
+      },
+      "s1": {
+        "tipo_setRole": "function",
+        "tipo_enterApp": "function",
+        "papel_currentProfile": null,
+        "activeView": "parent",
+        "runtime_papel": null,
+        "runtime_activeView": "parent",
+        "tem_runtime": true,
+        "appshell_ready": false,
+        "login_hidden": false,
+        "views_visiveis": [
+          "parentView"
+        ],
+        "secretaryView_hidden": true,
+        "central_visivel": false,
+        "aba_supervisao_no_dom": false,
+        "aba_supervisao_visivel": false,
+        "aba_supervisao_ativa": null,
+        "sec_body_len": 0,
+        "sec_body_ini": null,
+        "abas_no_dom": [],
+        "menu_visivel": [],
+        "item_secretaria_visivel": false,
+        "supervisao_no_menu": false,
+        "chip_conta": "Responsável · 1 aluno",
+        "breadcrumb": "Hoje",
+        "escritas_bloqueadas": []
+      },
+      "injecao": {
+        "escrito": true,
+        "leitura": "education_supervisor",
+        "usuario": "rm17-bancada-sintetica"
+      },
+      "s2": {
+        "tipo_setRole": "function",
+        "tipo_enterApp": "function",
+        "papel_currentProfile": "education_supervisor",
+        "activeView": "education_supervisor",
+        "runtime_papel": "education_supervisor",
+        "runtime_activeView": "education_supervisor",
+        "tem_runtime": true,
+        "appshell_ready": false,
+        "login_hidden": false,
+        "views_visiveis": [
+          "secretaryView"
+        ],
+        "secretaryView_hidden": false,
+        "central_visivel": false,
+        "aba_supervisao_no_dom": true,
+        "aba_supervisao_visivel": false,
+        "aba_supervisao_ativa": false,
+        "sec_body_len": 1463,
+        "sec_body_ini": "Ação necessáriaPrecisa de atençãoItens derivados dos protocolos e registros autorizados.acesso parcial✓Nenhuma prioridade calculável abertaOs dados disponíveis ",
+        "abas_no_dom": [
+          "overview",
+          "tasks",
+          "students",
+          "enrollments",
+          "documents",
+          "requests",
+          "agenda",
+          "professionals",
+          "classes",
+          "communications",
+          "reports",
+          "supervisao",
+          "search"
+        ],
+        "menu_visivel": [],
+        "item_secretaria_visivel": false,
+        "supervisao_no_menu": false,
+        "chip_conta": "Responsável · 1 aluno",
+        "breadcrumb": "Início",
+        "escritas_bloqueadas": []
+      },
+      "s3": {
+        "tipo_setRole": "function",
+        "tipo_enterApp": "function",
+        "papel_currentProfile": "education_supervisor",
+        "activeView": "education_supervisor",
+        "runtime_papel": "education_supervisor",
+        "runtime_activeView": "education_supervisor",
+        "tem_runtime": true,
+        "appshell_ready": true,
+        "login_hidden": true,
+        "views_visiveis": [
+          "secretaryView"
+        ],
+        "secretaryView_hidden": false,
+        "central_visivel": true,
+        "aba_supervisao_no_dom": true,
+        "aba_supervisao_visivel": true,
+        "aba_supervisao_ativa": false,
+        "sec_body_len": 1463,
+        "sec_body_ini": "Ação necessáriaPrecisa de atençãoItens derivados dos protocolos e registros autorizados.acesso parcial✓Nenhuma prioridade calculável abertaOs dados disponíveis ",
+        "abas_no_dom": [
+          "overview",
+          "tasks",
+          "students",
+          "enrollments",
+          "documents",
+          "requests",
+          "agenda",
+          "professionals",
+          "classes",
+          "communications",
+          "reports",
+          "supervisao",
+          "search"
+        ],
+        "menu_visivel": [
+          "inicio",
+          "chat-interno",
+          "notificacoes",
+          "conteudos",
+          "jogos-escolares",
+          "comunicados",
+          "secretaria",
+          "jogos-escolares"
+        ],
+        "item_secretaria_visivel": true,
+        "supervisao_no_menu": false,
+        "chip_conta": "Responsável",
+        "breadcrumb": "Início",
+        "escritas_bloqueadas": []
+      },
+      "s4": {
+        "tipo_setRole": "function",
+        "tipo_enterApp": "function",
+        "papel_currentProfile": "education_supervisor",
+        "activeView": "secretary",
+        "runtime_papel": "education_supervisor",
+        "runtime_activeView": "secretary",
+        "tem_runtime": true,
+        "appshell_ready": true,
+        "login_hidden": true,
+        "views_visiveis": [
+          "secretaryView"
+        ],
+        "secretaryView_hidden": false,
+        "central_visivel": true,
+        "aba_supervisao_no_dom": true,
+        "aba_supervisao_visivel": true,
+        "aba_supervisao_ativa": false,
+        "sec_body_len": 1463,
+        "sec_body_ini": "Ação necessáriaPrecisa de atençãoItens derivados dos protocolos e registros autorizados.acesso parcial✓Nenhuma prioridade calculável abertaOs dados disponíveis ",
+        "abas_no_dom": [
+          "overview",
+          "tasks",
+          "students",
+          "enrollments",
+          "documents",
+          "requests",
+          "agenda",
+          "professionals",
+          "classes",
+          "communications",
+          "reports",
+          "supervisao",
+          "search"
+        ],
+        "menu_visivel": [
+          "inicio",
+          "chat-interno",
+          "notificacoes",
+          "conteudos",
+          "jogos-escolares",
+          "comunicados",
+          "secretaria",
+          "jogos-escolares"
+        ],
+        "item_secretaria_visivel": true,
+        "supervisao_no_menu": false,
+        "chip_conta": "Responsável",
+        "breadcrumb": "Início",
+        "escritas_bloqueadas": []
+      },
+      "s5": {
+        "tipo_setRole": "function",
+        "tipo_enterApp": "function",
+        "papel_currentProfile": "education_supervisor",
+        "activeView": "education_supervisor",
+        "runtime_papel": "education_supervisor",
+        "runtime_activeView": "education_supervisor",
+        "tem_runtime": true,
+        "appshell_ready": true,
+        "login_hidden": true,
+        "views_visiveis": [
+          "secretaryView"
+        ],
+        "secretaryView_hidden": false,
+        "central_visivel": true,
+        "aba_supervisao_no_dom": true,
+        "aba_supervisao_visivel": true,
+        "aba_supervisao_ativa": false,
+        "sec_body_len": 1463,
+        "sec_body_ini": "Ação necessáriaPrecisa de atençãoItens derivados dos protocolos e registros autorizados.acesso parcial✓Nenhuma prioridade calculável abertaOs dados disponíveis ",
+        "abas_no_dom": [
+          "overview",
+          "tasks",
+          "students",
+          "enrollments",
+          "documents",
+          "requests",
+          "agenda",
+          "professionals",
+          "classes",
+          "communications",
+          "reports",
+          "supervisao",
+          "search"
+        ],
+        "menu_visivel": [
+          "inicio",
+          "chat-interno",
+          "notificacoes",
+          "conteudos",
+          "jogos-escolares",
+          "comunicados",
+          "secretaria",
+          "jogos-escolares"
+        ],
+        "item_secretaria_visivel": true,
+        "supervisao_no_menu": false,
+        "chip_conta": "Responsável",
+        "breadcrumb": "Início",
+        "escritas_bloqueadas": []
+      },
+      "s6": {
+        "tipo_setRole": "function",
+        "tipo_enterApp": "function",
+        "papel_currentProfile": "education_supervisor",
+        "activeView": "education_supervisor",
+        "runtime_papel": "education_supervisor",
+        "runtime_activeView": "education_supervisor",
+        "tem_runtime": true,
+        "appshell_ready": true,
+        "login_hidden": true,
+        "views_visiveis": [
+          "secretaryView"
+        ],
+        "secretaryView_hidden": false,
+        "central_visivel": true,
+        "aba_supervisao_no_dom": true,
+        "aba_supervisao_visivel": true,
+        "aba_supervisao_ativa": true,
+        "sec_body_len": 563,
+        "sec_body_ini": "Supervisão EducacionalSolicitações de SupervisãoProcessos de supervisão enviados pelas escolas. A Secretaria acompanha indicadores, prazos e planos de ação.0 re",
+        "abas_no_dom": [
+          "overview",
+          "tasks",
+          "students",
+          "enrollments",
+          "documents",
+          "requests",
+          "agenda",
+          "professionals",
+          "classes",
+          "communications",
+          "reports",
+          "supervisao",
+          "search"
+        ],
+        "menu_visivel": [
+          "inicio",
+          "chat-interno",
+          "notificacoes",
+          "conteudos",
+          "jogos-escolares",
+          "comunicados",
+          "secretaria",
+          "jogos-escolares"
+        ],
+        "item_secretaria_visivel": true,
+        "supervisao_no_menu": false,
+        "chip_conta": "Responsável",
+        "breadcrumb": "Início",
+        "escritas_bloqueadas": []
+      },
+      "pedidos_supervisao": [
+        {
+          "metodo": "OPTIONS",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/supervision_requests",
+          "status": 200
+        },
+        {
+          "metodo": "GET",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/supervision_requests",
+          "status": 401
+        }
+      ],
+      "pedidos_supervisao_status": [
+        "OPTIONS supervision_requests 200",
+        "GET supervision_requests 401"
+      ],
+      "escritas_bloqueadas_total": [],
+      "capturas": {
+        "apos_enterApp": {
+          "ficheiro": "rm17v2--cand-apos-enterapp.png",
+          "bytes": 250013,
+          "md5": "07241b68ece534a32cf8df2bec74469e"
+        },
+        "final": {
+          "ficheiro": "rm17v2--cand-final.png",
+          "bytes": 250013,
+          "md5": "07241b68ece534a32cf8df2bec74469e"
+        }
+      },
+      "rede": [
+        {
+          "metodo": "OPTIONS",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/classes",
+          "status": 200
+        },
+        {
+          "metodo": "OPTIONS",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/projects",
+          "status": 200
+        },
+        {
+          "metodo": "OPTIONS",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/profiles",
+          "status": 200
+        },
+        {
+          "metodo": "OPTIONS",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/announcements",
+          "status": 200
+        },
+        {
+          "metodo": "OPTIONS",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/students",
+          "status": 200
+        },
+        {
+          "metodo": "OPTIONS",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/project_photos",
+          "status": 200
+        },
+        {
+          "metodo": "OPTIONS",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/school_activities",
+          "status": 200
+        },
+        {
+          "metodo": "OPTIONS",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/school_events",
+          "status": 200
+        },
+        {
+          "metodo": "OPTIONS",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/classes",
+          "status": 200
+        },
+        {
+          "metodo": "OPTIONS",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/announcements",
+          "status": 200
+        },
+        {
+          "metodo": "OPTIONS",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/school_meetings",
+          "status": 200
+        },
+        {
+          "metodo": "OPTIONS",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/bfr_teacher_directory",
+          "status": 200
+        },
+        {
+          "metodo": "OPTIONS",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/grades",
+          "status": 200
+        },
+        {
+          "metodo": "OPTIONS",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/school_documents",
+          "status": 200
+        },
+        {
+          "metodo": "OPTIONS",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/school_activities",
+          "status": 200
+        },
+        {
+          "metodo": "OPTIONS",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/attendance",
+          "status": 200
+        },
+        {
+          "metodo": "OPTIONS",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/secretary_requests",
+          "status": 200
+        },
+        {
+          "metodo": "OPTIONS",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/schools",
+          "status": 200
+        },
+        {
+          "metodo": "OPTIONS",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/school_events",
+          "status": 200
+        },
+        {
+          "metodo": "OPTIONS",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/student_school_profiles",
+          "status": 200
+        },
+        {
+          "metodo": "OPTIONS",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/bfr_coordination_threads",
+          "status": 200
+        },
+        {
+          "metodo": "OPTIONS",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/supervision_requests",
+          "status": 200
+        },
+        {
+          "metodo": "OPTIONS",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/secretary_profile_change_requests",
+          "status": 200
+        },
+        {
+          "metodo": "OPTIONS",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/learning_action_plans",
+          "status": 200
+        },
+        {
+          "metodo": "OPTIONS",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/announcements",
+          "status": 200
+        },
+        {
+          "metodo": "OPTIONS",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/school_events",
+          "status": 200
+        },
+        {
+          "metodo": "GET",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/classes",
+          "status": 200
+        },
+        {
+          "metodo": "GET",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/projects",
+          "status": 200
+        },
+        {
+          "metodo": "GET",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/profiles",
+          "status": 200
+        },
+        {
+          "metodo": "GET",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/announcements",
+          "status": 200
+        },
+        {
+          "metodo": "GET",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/students",
+          "status": 200
+        },
+        {
+          "metodo": "GET",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/school_activities",
+          "status": 200
+        },
+        {
+          "metodo": "GET",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/school_documents",
+          "status": 200
+        },
+        {
+          "metodo": "GET",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/school_events",
+          "status": 200
+        },
+        {
+          "metodo": "GET",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/attendance",
+          "status": 401
+        },
+        {
+          "metodo": "GET",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/project_photos",
+          "status": 200
+        },
+        {
+          "metodo": "GET",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/announcements",
+          "status": 200
+        },
+        {
+          "metodo": "GET",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/school_activities",
+          "status": 200
+        },
+        {
+          "metodo": "GET",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/learning_action_plans",
+          "status": 200
+        },
+        {
+          "metodo": "GET",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/bfr_coordination_threads",
+          "status": 200
+        },
+        {
+          "metodo": "GET",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/announcements",
+          "status": 200
+        },
+        {
+          "metodo": "GET",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/secretary_profile_change_requests",
+          "status": 200
+        },
+        {
+          "metodo": "GET",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/schools",
+          "status": 401
+        },
+        {
+          "metodo": "GET",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/grades",
+          "status": 401
+        },
+        {
+          "metodo": "GET",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/bfr_teacher_directory",
+          "status": 200
+        },
+        {
+          "metodo": "GET",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/secretary_requests",
+          "status": 200
+        },
+        {
+          "metodo": "GET",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/classes",
+          "status": 200
+        },
+        {
+          "metodo": "GET",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/student_school_profiles",
+          "status": 200
+        },
+        {
+          "metodo": "GET",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/school_meetings",
+          "status": 200
+        },
+        {
+          "metodo": "GET",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/supervision_requests",
+          "status": 401
+        },
+        {
+          "metodo": "OPTIONS",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/project_results",
+          "status": 200
+        },
+        {
+          "metodo": "GET",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/school_events",
+          "status": 200
+        },
+        {
+          "metodo": "GET",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/school_events",
+          "status": 200
+        },
+        {
+          "metodo": "OPTIONS",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/school_notification_reads",
+          "status": 200
+        },
+        {
+          "metodo": "GET",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/project_results",
+          "status": 200
+        },
+        {
+          "metodo": "GET",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/school_notification_reads",
+          "status": 400
+        },
+        {
+          "metodo": "OPTIONS",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/notification_preferences",
+          "status": 200
+        },
+        {
+          "metodo": "OPTIONS",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/school_events",
+          "status": 200
+        },
+        {
+          "metodo": "GET",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/announcements",
+          "status": 200
+        },
+        {
+          "metodo": "GET",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/notification_preferences",
+          "status": 400
+        },
+        {
+          "metodo": "GET",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/school_events",
+          "status": 200
+        },
+        {
+          "metodo": "OPTIONS",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/internal_chat_room_members",
+          "status": 200
+        },
+        {
+          "metodo": "OPTIONS",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/school_events",
+          "status": 200
+        },
+        {
+          "metodo": "GET",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/announcements",
+          "status": 200
+        },
+        {
+          "metodo": "GET",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/school_events",
+          "status": 200
+        },
+        {
+          "metodo": "GET",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/internal_chat_room_members",
+          "status": 400
+        },
+        {
+          "metodo": "OPTIONS",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/school_events",
+          "status": 200
+        },
+        {
+          "metodo": "GET",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/announcements",
+          "status": 200
+        },
+        {
+          "metodo": "GET",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/school_events",
+          "status": 200
+        }
+      ],
+      "erros_console": [],
+      "excecoes": [],
+      "log_erros": [
+        "Failed to load resource: the server responded with a status of 404 (Not Found)",
+        "Failed to load resource: the server responded with a status of 404 (Not Found)",
+        "Manifest fetch from http://127.0.0.1:8272/manifest.json failed, code 404",
+        "A bad HTTP response code (404) was received when fetching the script.",
+        "Failed to load resource: the server responded with a status of 404 (Not Found)",
+        "Failed to load resource: the server responded with a status of 404 (Not Found)",
+        "Failed to load resource: the server responded with a status of 404 (Not Found)",
+        "Failed to load resource: the server responded with a status of 404 (Not Found)",
+        "Failed to load resource: the server responded with a status of 404 (Not Found)",
+        "Failed to load resource: the server responded with a status of 404 (Not Found)"
+      ]
+    }
+  },
+  "diferencial": {
+    "activeView": {
+      "base": "parent",
+      "cand": "education_supervisor"
+    },
+    "secretaryView_hidden": {
+      "base": true,
+      "cand": false
+    },
+    "central_visivel": {
+      "base": false,
+      "cand": true
+    },
+    "aba_supervisao_no_dom": {
+      "base": false,
+      "cand": true
+    },
+    "aba_supervisao_visivel": {
+      "base": false,
+      "cand": true
+    },
+    "views_visiveis": {
+      "base": [
+        "parentView"
+      ],
+      "cand": [
+        "secretaryView"
+      ]
+    },
+    "abas_no_dom": {
+      "base": [],
+      "cand": [
+        "overview",
+        "tasks",
+        "students",
+        "enrollments",
+        "documents",
+        "requests",
+        "agenda",
+        "professionals",
+        "classes",
+        "communications",
+        "reports",
+        "supervisao",
+        "search"
+      ]
+    },
+    "sec_body_len": {
+      "base": 0,
+      "cand": 563
+    }
+  },
+  "decisao_h4_h5": {
+    "nota": "H4 (:10425 toggle do item Secretaria do menu) e H5 (:10437 accountLabels sem a chave education_supervisor) NAO entraram na v120. Medido aqui com o chrome revelado pelo enterApp.",
+    "menu_visivel": {
+      "base": [
+        "inicio",
+        "chat-interno",
+        "notificacoes",
+        "conteudos",
+        "jogos-escolares"
+      ],
+      "cand": [
+        "inicio",
+        "chat-interno",
+        "notificacoes",
+        "conteudos",
+        "jogos-escolares",
+        "comunicados",
+        "secretaria",
+        "jogos-escolares"
+      ]
+    },
+    "item_secretaria_visivel": {
+      "base": false,
+      "cand": true
+    },
+    "supervisao_no_menu": {
+      "base": false,
+      "cand": false
+    },
+    "chip_conta": {
+      "base": "Responsável",
+      "cand": "Responsável"
+    },
+    "runtime_papel": {
+      "base": "education_supervisor",
+      "cand": "education_supervisor"
+    },
+    "rede_anonima_cand": [
+      {
+        "metodo": "OPTIONS",
+        "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/classes",
+        "status": 200
+      },
+      {
+        "metodo": "OPTIONS",
+        "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/projects",
+        "status": 200
+      },
+      {
+        "metodo": "OPTIONS",
+        "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/profiles",
+        "status": 200
+      },
+      {
+        "metodo": "OPTIONS",
+        "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/announcements",
+        "status": 200
+      },
+      {
+        "metodo": "OPTIONS",
+        "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/students",
+        "status": 200
+      },
+      {
+        "metodo": "OPTIONS",
+        "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/project_photos",
+        "status": 200
+      },
+      {
+        "metodo": "OPTIONS",
+        "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/school_activities",
+        "status": 200
+      },
+      {
+        "metodo": "OPTIONS",
+        "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/school_events",
+        "status": 200
+      },
+      {
+        "metodo": "OPTIONS",
+        "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/classes",
+        "status": 200
+      },
+      {
+        "metodo": "OPTIONS",
+        "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/announcements",
+        "status": 200
+      },
+      {
+        "metodo": "OPTIONS",
+        "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/school_meetings",
+        "status": 200
+      },
+      {
+        "metodo": "OPTIONS",
+        "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/bfr_teacher_directory",
+        "status": 200
+      },
+      {
+        "metodo": "OPTIONS",
+        "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/grades",
+        "status": 200
+      },
+      {
+        "metodo": "OPTIONS",
+        "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/school_documents",
+        "status": 200
+      }
+    ],
+    "pedidos_supervisao_cand": [
+      "OPTIONS supervision_requests 200",
+      "GET supervision_requests 401"
+    ]
+  },
+  "veredito": "RM17_BANCADA_V2_2_FALHAS",
+  "portoes": 39,
+  "falhas": [
+    "base 0 escrita bloqueada pelo rig (so GET anonimo ao backend) | dado=[\"fetch POST https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/rpc/list_current_month_birthdays\",\"fetch POST https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/rpc/bfr_list_staff_birthdays\"] | esperado=[]",
+    "0 pedidos nao-GET ao backend nas duas bandas | dado=[\"fetch POST https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/rpc/list_current_month_birthdays\",\"fetch POST https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/rpc/bfr_list_staff_birthdays\"] | esperado=[]"
+  ],
+  "interrompida": "veredito=RM17_BANCADA_V2_2_FALHAS portoes=39"
+}

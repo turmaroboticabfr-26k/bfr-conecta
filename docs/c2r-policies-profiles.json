@@ -1,0 +1,370 @@
+{
+  "em": "2026-11-12T00:56:33.548Z",
+  "tipo": "policies-profiles-full",
+  "profile_policies": [
+    {
+      "polname": "director_dashboard_read_profiles",
+      "cmd": "select",
+      "papeis": [
+        "authenticated"
+      ],
+      "using_": "((\"current_role\"())::text = 'director'::text)",
+      "with_check": "(sem with_check)"
+    },
+    {
+      "polname": "profiles_chat_staff_directory_read",
+      "cmd": "select",
+      "papeis": [
+        "authenticated"
+      ],
+      "using_": "(internal_chat_is_staff() AND (role = ANY (ARRAY['pedagogical'::account_role, 'aee'::account_role, 'coordinator'::account_role, 'director'::account_role, 'secretary'::account_role, 'developer'::account_role])))",
+      "with_check": "(sem with_check)"
+    },
+    {
+      "polname": "profiles_hide_test_accounts",
+      "cmd": "select",
+      "papeis": [
+        "authenticated"
+      ],
+      "using_": "((id = auth.uid()) OR ((email !~~ '%@bfr-conecta.test'::text) AND (email !~~ 'bfr.qa.email.%'::text)))",
+      "with_check": "(sem with_check)"
+    },
+    {
+      "polname": "profiles_read",
+      "cmd": "select",
+      "papeis": [
+        "authenticated"
+      ],
+      "using_": "((id = auth.uid()) OR is_developer() OR (EXISTS ( SELECT 1\n   FROM ((staff_schools ss_target\n     JOIN profiles p_caller ON ((p_caller.id = auth.uid())))\n     JOIN staff_schools ss_caller ON ((ss_caller.profile_id = p_caller.id)))\n  WHERE ((ss_target.profile_id = profiles.id) AND (ss_caller.school_id = ss_target.school_id)))) OR (EXISTS ( SELECT 1\n   FROM (((profiles p_caller\n     JOIN staff_schools ss_caller ON ((ss_caller.profile_id = p_caller.id)))\n     JOIN students st ON ((st.school_id = ss_caller.school_id)))\n     JOIN profiles p_student ON ((p_student.id = profiles.id)))\n  WHERE ((p_caller.id = auth.uid()) AND (st.student_profile_id = p_student.id)))) OR (EXISTS ( SELECT 1\n   FROM (((profiles p_caller\n     JOIN staff_schools ss_caller ON ((ss_caller.profile_id = p_caller.id)))\n     JOIN guardian_students gs ON ((gs.profile_id = profiles.id)))\n     JOIN students st ON ((st.id = gs.student_id)))\n  WHERE ((p_caller.id = auth.uid()) AND (ss_caller.school_id = st.school_id)))))",
+      "with_check": "(sem with_check)"
+    },
+    {
+      "polname": "profiles_staff_update",
+      "cmd": "update",
+      "papeis": [
+        "authenticated"
+      ],
+      "using_": "is_developer()",
+      "with_check": "is_developer()"
+    },
+    {
+      "polname": "profiles_update_self",
+      "cmd": "update",
+      "papeis": [
+        "authenticated"
+      ],
+      "using_": "(id = auth.uid())",
+      "with_check": "(id = auth.uid())"
+    }
+  ],
+  "censo_citacoes": [
+    {
+      "tabela": "aee_student_profiles",
+      "policies": 1,
+      "citam_profiles": 1,
+      "citam_staff_schools": 0
+    },
+    {
+      "tabela": "attendance",
+      "policies": 1,
+      "citam_profiles": 1,
+      "citam_staff_schools": 0
+    },
+    {
+      "tabela": "classes",
+      "policies": 1,
+      "citam_profiles": 1,
+      "citam_staff_schools": 0
+    },
+    {
+      "tabela": "director_routine_items",
+      "policies": 4,
+      "citam_profiles": 4,
+      "citam_staff_schools": 0
+    },
+    {
+      "tabela": "gate_badges",
+      "policies": 1,
+      "citam_profiles": 1,
+      "citam_staff_schools": 1
+    },
+    {
+      "tabela": "gate_checkins",
+      "policies": 1,
+      "citam_profiles": 1,
+      "citam_staff_schools": 0
+    },
+    {
+      "tabela": "gate_entry_alerts",
+      "policies": 1,
+      "citam_profiles": 1,
+      "citam_staff_schools": 0
+    },
+    {
+      "tabela": "internal_chat_room_members",
+      "policies": 1,
+      "citam_profiles": 1,
+      "citam_staff_schools": 0
+    },
+    {
+      "tabela": "learning_indicator_settings",
+      "policies": 1,
+      "citam_profiles": 1,
+      "citam_staff_schools": 0
+    },
+    {
+      "tabela": "learning_interventions",
+      "policies": 1,
+      "citam_profiles": 1,
+      "citam_staff_schools": 0
+    },
+    {
+      "tabela": "learning_skills",
+      "policies": 1,
+      "citam_profiles": 1,
+      "citam_staff_schools": 0
+    },
+    {
+      "tabela": "occurrences",
+      "policies": 4,
+      "citam_profiles": 4,
+      "citam_staff_schools": 2
+    },
+    {
+      "tabela": "profiles",
+      "policies": 1,
+      "citam_profiles": 1,
+      "citam_staff_schools": 1
+    },
+    {
+      "tabela": "school_documents",
+      "policies": 4,
+      "citam_profiles": 4,
+      "citam_staff_schools": 0
+    },
+    {
+      "tabela": "school_events",
+      "policies": 1,
+      "citam_profiles": 1,
+      "citam_staff_schools": 0
+    },
+    {
+      "tabela": "school_poll_responses",
+      "policies": 1,
+      "citam_profiles": 1,
+      "citam_staff_schools": 0
+    },
+    {
+      "tabela": "school_polls",
+      "policies": 2,
+      "citam_profiles": 2,
+      "citam_staff_schools": 0
+    },
+    {
+      "tabela": "school_program_contents",
+      "policies": 2,
+      "citam_profiles": 2,
+      "citam_staff_schools": 0
+    },
+    {
+      "tabela": "school_videos",
+      "policies": 2,
+      "citam_profiles": 2,
+      "citam_staff_schools": 0
+    },
+    {
+      "tabela": "secretary_profile_change_requests",
+      "policies": 2,
+      "citam_profiles": 2,
+      "citam_staff_schools": 0
+    },
+    {
+      "tabela": "secretary_request_attachments",
+      "policies": 2,
+      "citam_profiles": 2,
+      "citam_staff_schools": 0
+    },
+    {
+      "tabela": "secretary_request_events",
+      "policies": 2,
+      "citam_profiles": 2,
+      "citam_staff_schools": 0
+    },
+    {
+      "tabela": "secretary_request_messages",
+      "policies": 2,
+      "citam_profiles": 2,
+      "citam_staff_schools": 0
+    },
+    {
+      "tabela": "secretary_requests",
+      "policies": 3,
+      "citam_profiles": 3,
+      "citam_staff_schools": 0
+    },
+    {
+      "tabela": "sports_schools",
+      "policies": 1,
+      "citam_profiles": 1,
+      "citam_staff_schools": 0
+    },
+    {
+      "tabela": "staff_schools",
+      "policies": 5,
+      "citam_profiles": 5,
+      "citam_staff_schools": 0
+    },
+    {
+      "tabela": "storage.objects",
+      "policies": 13,
+      "citam_profiles": 13,
+      "citam_staff_schools": 0
+    },
+    {
+      "tabela": "student_achievements",
+      "policies": 2,
+      "citam_profiles": 2,
+      "citam_staff_schools": 0
+    },
+    {
+      "tabela": "student_game_sessions",
+      "policies": 1,
+      "citam_profiles": 1,
+      "citam_staff_schools": 0
+    },
+    {
+      "tabela": "student_programs",
+      "policies": 1,
+      "citam_profiles": 1,
+      "citam_staff_schools": 0
+    },
+    {
+      "tabela": "student_school_profiles",
+      "policies": 2,
+      "citam_profiles": 2,
+      "citam_staff_schools": 0
+    },
+    {
+      "tabela": "students",
+      "policies": 2,
+      "citam_profiles": 2,
+      "citam_staff_schools": 0
+    },
+    {
+      "tabela": "supervision_action_plans",
+      "policies": 3,
+      "citam_profiles": 3,
+      "citam_staff_schools": 0
+    },
+    {
+      "tabela": "supervision_alerts",
+      "policies": 3,
+      "citam_profiles": 3,
+      "citam_staff_schools": 0
+    },
+    {
+      "tabela": "supervision_audit",
+      "policies": 2,
+      "citam_profiles": 2,
+      "citam_staff_schools": 0
+    },
+    {
+      "tabela": "supervision_requests",
+      "policies": 9,
+      "citam_profiles": 9,
+      "citam_staff_schools": 6
+    },
+    {
+      "tabela": "supervision_response_attachments",
+      "policies": 4,
+      "citam_profiles": 4,
+      "citam_staff_schools": 0
+    },
+    {
+      "tabela": "supervision_responses",
+      "policies": 3,
+      "citam_profiles": 3,
+      "citam_staff_schools": 2
+    }
+  ],
+  "politicas_de_students": [
+    {
+      "polname": "guardian_students_monitor_read",
+      "cmd": "select",
+      "using_": "is_monitor()",
+      "with_check": "(sem with_check)"
+    },
+    {
+      "polname": "guardian_students_read",
+      "cmd": "select",
+      "using_": "((profile_id = auth.uid()) OR ((\"current_role\"())::text = ANY (ARRAY['aee'::text, 'developer'::text])))",
+      "with_check": "(sem with_check)"
+    },
+    {
+      "polname": "guardian_students_staff_delete",
+      "cmd": "delete",
+      "using_": "((\"current_role\"())::text = 'developer'::text)",
+      "with_check": "(sem with_check)"
+    },
+    {
+      "polname": "guardian_students_staff_insert",
+      "cmd": "insert",
+      "using_": "(sem using)",
+      "with_check": "((\"current_role\"())::text = 'developer'::text)"
+    },
+    {
+      "polname": "guardian_students_staff_update",
+      "cmd": "update",
+      "using_": "((\"current_role\"())::text = 'developer'::text)",
+      "with_check": "((\"current_role\"())::text = 'developer'::text)"
+    },
+    {
+      "polname": "bfr_students_directory_insert",
+      "cmd": "insert",
+      "using_": "(sem using)",
+      "with_check": "bfr_can_manage_student_directory()"
+    },
+    {
+      "polname": "bfr_students_directory_update",
+      "cmd": "update",
+      "using_": "bfr_can_manage_student_directory()",
+      "with_check": "bfr_can_manage_student_directory()"
+    },
+    {
+      "polname": "director_dashboard_read_students",
+      "cmd": "select",
+      "using_": "((\"current_role\"())::text = 'director'::text)",
+      "with_check": "(sem with_check)"
+    },
+    {
+      "polname": "staff manage student records",
+      "cmd": "all",
+      "using_": "(EXISTS ( SELECT 1\n   FROM profiles p\n  WHERE ((p.id = auth.uid()) AND (p.role = ANY (ARRAY['coordinator'::account_role, 'developer'::account_role])))))",
+      "with_check": "(EXISTS ( SELECT 1\n   FROM profiles p\n  WHERE ((p.id = auth.uid()) AND (p.role = ANY (ARRAY['coordinator'::account_role, 'developer'::account_role])))))"
+    },
+    {
+      "polname": "students_monitor_read",
+      "cmd": "select",
+      "using_": "is_monitor()",
+      "with_check": "(sem with_check)"
+    },
+    {
+      "polname": "students_read",
+      "cmd": "select",
+      "using_": "((((\"current_role\"())::text = 'aee'::text) AND (EXISTS ( SELECT 1\n   FROM aee_student_roster r\n  WHERE ((r.student_id = students.id) AND r.active)))) OR ((\"current_role\"())::text = 'developer'::text) OR (((\"current_role\"())::text = 'pedagogical'::text) AND bfr_pedagogical_can_manage_student(id)) OR (EXISTS ( SELECT 1\n   FROM guardian_students gs\n  WHERE ((gs.student_id = students.id) AND (gs.profile_id = auth.uid())))))",
+      "with_check": "(sem with_check)"
+    },
+    {
+      "polname": "students_select_secretary",
+      "cmd": "select",
+      "using_": "(EXISTS ( SELECT 1\n   FROM profiles p\n  WHERE ((p.id = auth.uid()) AND (p.role = 'secretary'::account_role))))",
+      "with_check": "(sem with_check)"
+    },
+    {
+      "polname": "students_supervisor_read",
+      "cmd": "select",
+      "using_": "bfr_is_education_supervisor()",
+      "with_check": "(sem with_check)"
+    }
+  ]
+}

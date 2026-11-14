@@ -1,0 +1,209 @@
+{
+  "em": "2026-11-12T22:56:41.587Z",
+  "tarefa": "RM-1.3 marcas de push no shell",
+  "shell": "app/index.html",
+  "bytes": 3489467,
+  "linhas_no_arquivo": 28661,
+  "marcas": {
+    "serviceWorker_register": {
+      "total": 3,
+      "amostras": [
+        {
+          "linha": 9188,
+          "col": 74,
+          "texto": "o autorizada.'; try { const registration = await navigator.serviceWorker.register(`${APP_ORIGIN}/sw-v4.js?v=45`); const token = await (await getFirebaseMessaging()).getToken({ vapidKey:FIREBASE_V"
+        },
+        {
+          "linha": 12290,
+          "col": 54,
+          "texto": "ntains('ready')) location.reload(); }, { once:true }); navigator.serviceWorker.register(`${window.location.origin}/sw-v4.js?v=45`, { updateViaCache:'none' }) .then(registration => registration.update())"
+        },
+        {
+          "linha": 19543,
+          "col": 586,
+          "texto": "); const messaging = window.firebase.messaging(app); const registration = await navigator.serviceWorker.register(`${location.origin}/sw-v4.js?v=45`); const token = await messaging.getToken({vapidKey:'BKbTyS0EvWLN1bRla21K"
+        }
+      ]
+    },
+    "getToken": {
+      "total": 2,
+      "amostras": [
+        {
+          "linha": 9189,
+          "col": 177,
+          "texto": "ORIGIN}/sw-v4.js?v=45`); const token = await (await getFirebaseMessaging()).getToken({ vapidKey:FIREBASE_VAPID_KEY, serviceWorkerRegistration:registration }); if (!token) return 'Não foi possível criar o dispositi"
+        },
+        {
+          "linha": 19543,
+          "col": 676,
+          "texto": "serviceWorker.register(`${location.origin}/sw-v4.js?v=45`); const token = await messaging.getToken({vapidKey:'BKbTyS0EvWLN1bRla21Kck43NX2MycXI5YUjKPcZENDz0yYa59mckUJRUCUlwKZuos4gXzP56hpwG82E5dt57gk',serviceWorkerRegistra"
+        }
+      ]
+    },
+    "Notification_requestPermission": {
+      "total": 2,
+      "amostras": [
+        {
+          "linha": 9185,
+          "col": 134,
+          "texto": "mission; if (permission === 'default' && requestPermission) permission = await Notification.requestPermission(); if (permission !== 'granted') return 'Permissão de notificações não autorizada.'; try { "
+        },
+        {
+          "linha": 19541,
+          "col": 93,
+          "texto": " try { const permission = Notification.permission === 'granted' ? 'granted' : await Notification.requestPermission(); if (permission !== 'granted') return toast('A permissão de notificações não foi concedida.', true); aw"
+        }
+      ]
+    },
+    "new_Notification": {
+      "total": 3,
+      "amostras": [
+        {
+          "linha": 11185,
+          "col": 267,
+          "texto": "ification' in window && Notification.permission === 'granted') freshItems.forEach(item => new Notification(item.title, { body:item.body })); renderGrowthNotifications(); } async function loadGrowthCalendar() { "
+        },
+        {
+          "linha": 19289,
+          "col": 1641,
+          "texto": "{item.name || 'Alguém'} chamou sua atenção.`); if (Notification.permission === 'granted') new Notification('BFR Conecta', { body: `${item.name || 'Alguém'} chamou sua atenção.` }); } }).on('presence', { event: 'sync' }, "
+        },
+        {
+          "linha": 19545,
+          "col": 872,
+          "texto": "y}`); if (document.visibilityState === 'hidden' && Notification.permission === 'granted') new Notification(title,{body,data:{url:payload.data?.url || '/'}}); loadNotifications(true); }); } toast('Push ativado neste dispo"
+        }
+      ]
+    },
+    "pushManager_subscribe": {
+      "total": 0,
+      "amostras": []
+    },
+    "push_subscriptions": {
+      "total": 2,
+      "amostras": [
+        {
+          "linha": 9191,
+          "col": 139,
+          "texto": " criar o dispositivo de push.'; const { error } = await supabaseClient.from('push_subscriptions').upsert({ profile_id:currentUser.id, endpoint:`fcm:${token}`, fcm_token:token, p256dh:'firebase', auth:'firebase', user_age"
+        },
+        {
+          "linha": 19544,
+          "col": 584,
+          "texto": "new Error('Dispositivo não gerou token de push.'); const {error} = await db().from('push_subscriptions').upsert({profile_id:user().id,endpoint:`fcm:${token}`,fcm_token:token,p256dh:'firebase',auth:'firebase',user_agent:n"
+        }
+      ]
+    },
+    "firebase": {
+      "total": 40,
+      "amostras": [
+        {
+          "linha": 5180,
+          "col": 64,
+          "texto": "Type:'pkce' } }) || null; window.BFR_SUPABASE_CLIENT = supabaseClient; const FIREBASE_CONFIG = { apiKey:'AIzaSyBkgqc-EiLWOVPq6COdyillXtrR6L5kz_U', authDomain:'bfr-conecta-notificacoes-62bbc.firebaseapp.com', projectId:'b"
+        },
+        {
+          "linha": 5180,
+          "col": 177,
+          "texto": "Key:'AIzaSyBkgqc-EiLWOVPq6COdyillXtrR6L5kz_U', authDomain:'bfr-conecta-notificacoes-62bbc.firebaseapp.com', projectId:'bfr-conecta-notificacoes-62bbc', storageBucket:'bfr-conecta-notificacoes-62bbc.firebasestorage.app', "
+        },
+        {
+          "linha": 5180,
+          "col": 285,
+          "texto": "projectId:'bfr-conecta-notificacoes-62bbc', storageBucket:'bfr-conecta-notificacoes-62bbc.firebasestorage.app', messagingSenderId:'218029592367', appId:'1:218029592367:web:d7858ad8450088a1ff1bda' }; const FIREBASE_VAPID_"
+        },
+        {
+          "linha": 5181,
+          "col": 355,
+          "texto": "enderId:'218029592367', appId:'1:218029592367:web:d7858ad8450088a1ff1bda' }; const FIREBASE_VAPID_KEY = 'BKbTyS0EvWLN1bRla21Kck43NX2MycXI5YUjKPcZENDz0yYa59mckUJRUCUlwKZuos4gXzP56hpwG82E5dt57gk'; let firebaseMessaging = n"
+        },
+        {
+          "linha": 5182,
+          "col": 136,
+          "texto": "N1bRla21Kck43NX2MycXI5YUjKPcZENDz0yYa59mckUJRUCUlwKZuos4gXzP56hpwG82E5dt57gk'; let firebaseMessaging = null; const deferredScriptLoads = new Map(); function loadExternalScript(src, globalName) { if (globalNa"
+        },
+        {
+          "linha": 9172,
+          "col": 39,
+          "texto": ":'profile_id' }); return error || null; } async function getFirebaseMessaging() { if (firebaseMessaging) return firebaseMessaging; if (!window.firebase) await loadExternalScript('https:/"
+        },
+        {
+          "linha": 9173,
+          "col": 66,
+          "texto": "ror || null; } async function getFirebaseMessaging() { if (firebaseMessaging) return firebaseMessaging; if (!window.firebase) await loadExternalScript('https://www.gstatic.com/firebasejs/10.14.1/fi"
+        },
+        {
+          "linha": 9173,
+          "col": 92,
+          "texto": " async function getFirebaseMessaging() { if (firebaseMessaging) return firebaseMessaging; if (!window.firebase) await loadExternalScript('https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js','fir"
+        },
+        {
+          "linha": 9174,
+          "col": 85,
+          "texto": "() { if (firebaseMessaging) return firebaseMessaging; if (!window.firebase) await loadExternalScript('https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js','firebase'); if (!window.firebase?."
+        },
+        {
+          "linha": 9174,
+          "col": 145,
+          "texto": "ging; if (!window.firebase) await loadExternalScript('https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js','firebase'); if (!window.firebase?.messaging) await loadExternalScript('https://www.gstatic.com"
+        },
+        {
+          "linha": 9174,
+          "col": 164,
+          "texto": "f (!window.firebase) await loadExternalScript('https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js','firebase'); if (!window.firebase?.messaging) await loadExternalScript('https://www.gstatic.com/firebasejs"
+        },
+        {
+          "linha": 9174,
+          "col": 189,
+          "texto": "t loadExternalScript('https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js','firebase'); if (!window.firebase?.messaging) await loadExternalScript('https://www.gstatic.com/firebasejs/10.14.1/firebase-messagi"
+        },
+        {
+          "linha": 9175,
+          "col": 164,
+          "texto": "tatic.com/firebasejs/10.14.1/firebase-app-compat.js','firebase'); if (!window.firebase?.messaging) await loadExternalScript('https://www.gstatic.com/firebasejs/10.14.1/firebase-messaging-compat.js','firebase'); if (!"
+        },
+        {
+          "linha": 9175,
+          "col": 235,
+          "texto": " if (!window.firebase?.messaging) await loadExternalScript('https://www.gstatic.com/firebasejs/10.14.1/firebase-messaging-compat.js','firebase'); if (!window.firebase?.messaging) throw new Error('O serviço de push não ca"
+        }
+      ]
+    },
+    "vapid": {
+      "total": 4,
+      "amostras": [
+        {
+          "linha": 5181,
+          "col": 364,
+          "texto": "218029592367', appId:'1:218029592367:web:d7858ad8450088a1ff1bda' }; const FIREBASE_VAPID_KEY = 'BKbTyS0EvWLN1bRla21Kck43NX2MycXI5YUjKPcZENDz0yYa59mckUJRUCUlwKZuos4gXzP56hpwG82E5dt57gk'; let firebaseMessaging = null; con"
+        },
+        {
+          "linha": 9189,
+          "col": 188,
+          "texto": "v4.js?v=45`); const token = await (await getFirebaseMessaging()).getToken({ vapidKey:FIREBASE_VAPID_KEY, serviceWorkerRegistration:registration }); if (!token) return 'Não foi possível criar o dispositivo de push."
+        },
+        {
+          "linha": 9189,
+          "col": 206,
+          "texto": " const token = await (await getFirebaseMessaging()).getToken({ vapidKey:FIREBASE_VAPID_KEY, serviceWorkerRegistration:registration }); if (!token) return 'Não foi possível criar o dispositivo de push.'; co"
+        },
+        {
+          "linha": 19543,
+          "col": 686,
+          "texto": "ker.register(`${location.origin}/sw-v4.js?v=45`); const token = await messaging.getToken({vapidKey:'BKbTyS0EvWLN1bRla21Kck43NX2MycXI5YUjKPcZENDz0yYa59mckUJRUCUlwKZuos4gXzP56hpwG82E5dt57gk',serviceWorkerRegistration:regis"
+        }
+      ]
+    }
+  },
+  "rota_notifications": [],
+  "sws_registrados": [
+    "${APP_ORIGIN}/sw-v4.js?v=45",
+    "${window.location.origin}/sw-v4.js?v=45",
+    "${location.origin}/sw-v4.js?v=45"
+  ],
+  "fcm": {
+    "menciona_sw_fcm": 0,
+    "menciona_messaging_v8": 2,
+    "chave_api_key_proxima": 4
+  }
+}

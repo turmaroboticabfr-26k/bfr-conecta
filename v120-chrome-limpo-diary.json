@@ -1,0 +1,73 @@
+{
+  "etapa": "V120-4 prova no Chrome limpo (camada cliente)",
+  "executadoEm": "2026-11-13",
+  "alvo": "https://bfr-conecta.turmaroboticabfr.workers.dev/",
+  "origemMedicao": "navegador interno via CDP; sondas re-executadas nesta sessao, nada dactilografado de memoria",
+  "estadoInicial": {
+    "limpeza": "unregister de todos os service workers + delete de todas as caches antes do boot frio",
+    "motivo": "a v119 deixara bfr-conecta-v119 na máquina; sem apagar, o shell servido seria o antigo"
+  },
+  "portoes": [
+    {
+      "id": "chrome_cache_unica_v120",
+      "ok": true,
+      "medido": "caches.keys() = [bfr-conecta-v120]",
+      "observacao": "nenhum bfr-conecta-v119 restante"
+    },
+    {
+      "id": "chrome_sw_ativo_sem_waiting",
+      "ok": true,
+      "medido": "active = /sw-v4.js?v=45, state = activated, waiting = null, scope = raiz"
+    },
+    {
+      "id": "chrome_cache_entradas",
+      "ok": true,
+      "medido": "bfr-conecta-v120 tem 8 entradas: /, /manifest.json, /bfr-app-logo.png, /lia-avatar.svg, /lia-avatar.png, /bfr-responsive-presentation.js?v=14, /bfr-teacher-audit.js?v=1, /bfr-teacher-arrivals.js?v=2"
+    },
+    {
+      "id": "chrome_shell_em_cache_com_token_novo",
+      "ok": true,
+      "medido": "entrada / = 3489649 bytes (arrayBuffer+TextDecoder, nao txt.length UTF-16); h1,h2,h3 do roteador = 1 cada; tokens velhos = 0; school_id,sports_schools(name) = 1, school_id,schools(name) = 0",
+      "observacao": "os 3489649 bytes coincidem com a candidata gateada (md5 a9a76d0e338c2a539135bccce23111b4 provado no diario HTTP)"
+    },
+    {
+      "id": "chrome_documento_vivo_token_novo",
+      "ok": true,
+      "medido": "documentElement.innerHTML = 3494380 chars; h1,h2,h3 presentes no documento vivo; velhos = 0",
+      "baselineAnterior": "v119 media 3494205 chars; +175 = exatamente o delta das 3 substituicoes do roteador"
+    },
+    {
+      "id": "chrome_fetch_root_200_com_headers",
+      "ok": true,
+      "medido": "status 200, 3489649 bytes, content-security-policy 742 chars, x-content-type-options nosniff, strict-transport-security max-age=31536000"
+    },
+    {
+      "id": "chrome_recarga_sob_controle_do_sw",
+      "ok": true,
+      "medido": "controlled = true; navigation entry: transferSize 3489949, encodedBodySize 3489649, duration 391 ms (servido pelo SW, documento comitou; 3489949 = 3489649 + 300 de overhead, mesmo padrao da v119)"
+    },
+    {
+      "id": "chrome_console_sem_excecao",
+      "ok": true,
+      "medido": "1 entrada no console: 404 de /cdn-cgi/rum (beacon Cloudflare, pre-existente a v120); nenhuma excecao JS, nenhum PGRST200"
+    },
+    {
+      "id": "chrome_rede_sem_400",
+      "ok": true,
+      "medido": "list_network_requests (document, xhr, fetch, preservados incluidos) = 10 pedidos; 200 x 9, 404 x 1 (POST /cdn-cgi/rum), 400 x 0, nenhum PGRST200",
+      "observacao": "zero PGRST200 no trafego de boot"
+    },
+    {
+      "id": "chrome_titulo_do_shell",
+      "ok": true,
+      "medido": "BFR Conecta | Escola Benicio Ferreira Reis"
+    }
+  ],
+  "vermelhos": 0,
+  "verdes": 10,
+  "veredito": "CHROME_LIMPO_VERDE",
+  "limites": [
+    "Esta prova e de shell + service worker + trafego de boot. Nao abre a aba Supervisao autenticado e nao dispara a query de supervision_requests no front; a prova da consulta em si e a comportamental S18 (200 com sports_schools, 400 com schools) e a medicao HTTP do token.",
+    "Nenhum dado de banco foi lido ou escrito nesta etapa; nenhuma DDL; nenhum outro deploy."
+  ]
+}

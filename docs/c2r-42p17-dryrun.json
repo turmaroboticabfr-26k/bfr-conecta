@@ -1,0 +1,312 @@
+{
+  "em": "2026-11-12T01:13:46.408Z",
+  "n_ciclo": 7,
+  "tabelas": [
+    "director_routine_items",
+    "gate_badges",
+    "gate_checkins",
+    "guardian_students",
+    "occurrences",
+    "profiles",
+    "school_documents",
+    "staff_schools",
+    "students",
+    "supervision_requests",
+    "storage.objects"
+  ],
+  "baseline": {
+    "classes": 27,
+    "md5_vivo": "2b2f0bc665eb17d92667b704b7d9bf2e",
+    "profiles": 17,
+    "students": 848,
+    "fn_oraculo": 0,
+    "contas_vivas": 0,
+    "gate_checkins": 193,
+    "staff_schools": 2,
+    "route_incidents": 0,
+    "student_messages": 1,
+    "gate_entry_alerts": 1,
+    "guardian_students": 1
+  },
+  "j": {
+    "rb": [
+      {
+        "chk": "<nulo>",
+        "qual": "((id = auth.uid()) OR is_developer() OR (EXISTS ( SELECT 1\n   FROM ((staff_schools ss_target\n     JOIN profiles p_caller ON ((p_caller.id = auth.uid())))\n     JOIN staff_schools ss_caller ON ((ss_caller.profile_id = p_caller.id)))\n  WHERE ((ss_target.profile_id = profiles.id) AND (ss_caller.school_id = ss_target.school_id)))) OR (EXISTS ( SELECT 1\n   FROM (((profiles p_caller\n     JOIN staff_schools ss_caller ON ((ss_caller.profile_id = p_caller.id)))\n     JOIN students st ON ((st.school_id = ss_caller.school_id)))\n     JOIN profiles p_student ON ((p_student.id = profiles.id)))\n  WHERE ((p_caller.id = auth.uid()) AND (st.student_profile_id = p_student.id)))) OR (EXISTS ( SELECT 1\n   FROM (((profiles p_caller\n     JOIN staff_schools ss_caller ON ((ss_caller.profile_id = p_caller.id)))\n     JOIN guardian_students gs ON ((gs.profile_id = profiles.id)))\n     JOIN students st ON ((st.id = gs.student_id)))\n  WHERE ((p_caller.id = auth.uid()) AND (ss_caller.school_id = st.school_id)))))",
+        "chave": "public.profiles.profiles_read"
+      },
+      {
+        "chk": "<nulo>",
+        "qual": "(EXISTS ( SELECT 1\n   FROM profiles p\n  WHERE ((p.id = auth.uid()) AND (p.role = 'developer'::account_role))))",
+        "chave": "public.staff_schools.staff_schools_developer_delete"
+      },
+      {
+        "chk": "(EXISTS ( SELECT 1\n   FROM profiles p\n  WHERE ((p.id = auth.uid()) AND (p.role = 'developer'::account_role))))",
+        "qual": "<nulo>",
+        "chave": "public.staff_schools.staff_schools_developer_insert"
+      },
+      {
+        "chk": "<nulo>",
+        "qual": "(EXISTS ( SELECT 1\n   FROM profiles p\n  WHERE ((p.id = auth.uid()) AND (p.role = 'developer'::account_role))))",
+        "chave": "public.staff_schools.staff_schools_developer_read"
+      },
+      {
+        "chk": "(EXISTS ( SELECT 1\n   FROM profiles p\n  WHERE ((p.id = auth.uid()) AND (p.role = 'developer'::account_role))))",
+        "qual": "(EXISTS ( SELECT 1\n   FROM profiles p\n  WHERE ((p.id = auth.uid()) AND (p.role = 'developer'::account_role))))",
+        "chave": "public.staff_schools.staff_schools_developer_update"
+      },
+      {
+        "chk": "((profile_id = auth.uid()) AND (EXISTS ( SELECT 1\n   FROM profiles p\n  WHERE ((p.id = auth.uid()) AND (p.role = ANY (ARRAY['director'::account_role, 'coordinator'::account_role, 'secretary'::account_role]))))))",
+        "qual": "<nulo>",
+        "chave": "public.staff_schools.staff_schools_own_insert"
+      },
+      {
+        "chk": "<nulo>",
+        "qual": "(profile_id = auth.uid())",
+        "chave": "public.staff_schools.staff_schools_own_read"
+      }
+    ],
+    "n_rb": 7,
+    "antes": [
+      {
+        "chk": "<nulo>",
+        "qual": "((id = auth.uid()) OR is_developer() OR (EXISTS ( SELECT 1\n   FROM ((staff_schools ss_target\n     JOIN profiles p_caller ON ((p_caller.id = auth.uid())))\n     JOIN staff_schools ss_caller ON ((ss_caller.profile_id = p_caller.id)))\n  WHERE ((ss_target.profile_id = profiles.id) AND (ss_caller.school_id = ss_target.school_id)))) OR (EXISTS ( SELECT 1\n   FROM (((profiles p_caller\n     JOIN staff_schools ss_caller ON ((ss_caller.profile_id = p_caller.id)))\n     JOIN students st ON ((st.school_id = ss_caller.school_id)))\n     JOIN profiles p_student ON ((p_student.id = profiles.id)))\n  WHERE ((p_caller.id = auth.uid()) AND (st.student_profile_id = p_student.id)))) OR (EXISTS ( SELECT 1\n   FROM (((profiles p_caller\n     JOIN staff_schools ss_caller ON ((ss_caller.profile_id = p_caller.id)))\n     JOIN guardian_students gs ON ((gs.profile_id = profiles.id)))\n     JOIN students st ON ((st.id = gs.student_id)))\n  WHERE ((p_caller.id = auth.uid()) AND (ss_caller.school_id = st.school_id)))))",
+        "chave": "public.profiles.profiles_read"
+      },
+      {
+        "chk": "<nulo>",
+        "qual": "(EXISTS ( SELECT 1\n   FROM profiles p\n  WHERE ((p.id = auth.uid()) AND (p.role = 'developer'::account_role))))",
+        "chave": "public.staff_schools.staff_schools_developer_delete"
+      },
+      {
+        "chk": "(EXISTS ( SELECT 1\n   FROM profiles p\n  WHERE ((p.id = auth.uid()) AND (p.role = 'developer'::account_role))))",
+        "qual": "<nulo>",
+        "chave": "public.staff_schools.staff_schools_developer_insert"
+      },
+      {
+        "chk": "<nulo>",
+        "qual": "(EXISTS ( SELECT 1\n   FROM profiles p\n  WHERE ((p.id = auth.uid()) AND (p.role = 'developer'::account_role))))",
+        "chave": "public.staff_schools.staff_schools_developer_read"
+      },
+      {
+        "chk": "(EXISTS ( SELECT 1\n   FROM profiles p\n  WHERE ((p.id = auth.uid()) AND (p.role = 'developer'::account_role))))",
+        "qual": "(EXISTS ( SELECT 1\n   FROM profiles p\n  WHERE ((p.id = auth.uid()) AND (p.role = 'developer'::account_role))))",
+        "chave": "public.staff_schools.staff_schools_developer_update"
+      },
+      {
+        "chk": "((profile_id = auth.uid()) AND (EXISTS ( SELECT 1\n   FROM profiles p\n  WHERE ((p.id = auth.uid()) AND (p.role = ANY (ARRAY['director'::account_role, 'coordinator'::account_role, 'secretary'::account_role]))))))",
+        "qual": "<nulo>",
+        "chave": "public.staff_schools.staff_schools_own_insert"
+      },
+      {
+        "chk": "<nulo>",
+        "qual": "(profile_id = auth.uid())",
+        "chave": "public.staff_schools.staff_schools_own_read"
+      }
+    ],
+    "md5_rb": "2b2f0bc665eb17d92667b704b7d9bf2e",
+    "sondas": [
+      {
+        "res": "ERRO 42P17 infinite recursion detected in policy for relation \"profiles\"",
+        "fase": "antes",
+        "nome": "director_routine_items"
+      },
+      {
+        "res": "ERRO 42P17 infinite recursion detected in policy for relation \"profiles\"",
+        "fase": "antes",
+        "nome": "gate_badges"
+      },
+      {
+        "res": "ERRO 42P17 infinite recursion detected in policy for relation \"profiles\"",
+        "fase": "antes",
+        "nome": "gate_checkins"
+      },
+      {
+        "res": "VERDE",
+        "fase": "antes",
+        "nome": "guardian_students"
+      },
+      {
+        "res": "ERRO 42501 new row violates row-level security policy for table \"gate_checkins\"",
+        "fase": "antes",
+        "nome": "INSERT gate_checkins"
+      },
+      {
+        "res": "ERRO 42P17 infinite recursion detected in policy for relation \"profiles\"",
+        "fase": "antes",
+        "nome": "occurrences"
+      },
+      {
+        "res": "ERRO 42P17 infinite recursion detected in policy for relation \"profiles\"",
+        "fase": "antes",
+        "nome": "profiles"
+      },
+      {
+        "res": "ERRO 42P17 infinite recursion detected in policy for relation \"profiles\"",
+        "fase": "antes",
+        "nome": "school_documents"
+      },
+      {
+        "res": "ERRO 42P17 infinite recursion detected in policy for relation \"staff_schools\"",
+        "fase": "antes",
+        "nome": "staff_schools"
+      },
+      {
+        "res": "ERRO 42P17 infinite recursion detected in policy for relation \"profiles\"",
+        "fase": "antes",
+        "nome": "storage.objects"
+      },
+      {
+        "res": "ERRO 42P17 infinite recursion detected in policy for relation \"profiles\"",
+        "fase": "antes",
+        "nome": "students"
+      },
+      {
+        "res": "ERRO 42P17 infinite recursion detected in policy for relation \"staff_schools\"",
+        "fase": "antes",
+        "nome": "supervision_requests"
+      },
+      {
+        "res": "VERDE",
+        "fase": "cand",
+        "nome": "director_routine_items"
+      },
+      {
+        "res": "VERDE",
+        "fase": "cand",
+        "nome": "gate_badges"
+      },
+      {
+        "res": "VERDE",
+        "fase": "cand",
+        "nome": "gate_checkins"
+      },
+      {
+        "res": "VERDE",
+        "fase": "cand",
+        "nome": "guardian_students"
+      },
+      {
+        "res": "ERRO 42501 new row violates row-level security policy for table \"gate_checkins\"",
+        "fase": "cand",
+        "nome": "INSERT gate_checkins"
+      },
+      {
+        "res": "VERDE",
+        "fase": "cand",
+        "nome": "occurrences"
+      },
+      {
+        "res": "VERDE",
+        "fase": "cand",
+        "nome": "profiles"
+      },
+      {
+        "res": "VERDE",
+        "fase": "cand",
+        "nome": "school_documents"
+      },
+      {
+        "res": "VERDE",
+        "fase": "cand",
+        "nome": "staff_schools"
+      },
+      {
+        "res": "VERDE",
+        "fase": "cand",
+        "nome": "storage.objects"
+      },
+      {
+        "res": "VERDE",
+        "fase": "cand",
+        "nome": "students"
+      },
+      {
+        "res": "VERDE",
+        "fase": "cand",
+        "nome": "supervision_requests"
+      },
+      {
+        "res": "0",
+        "fase": "cat",
+        "nome": "fn_oraculo"
+      },
+      {
+        "res": "1",
+        "fase": "cat_cand",
+        "nome": "fn_oraculo"
+      },
+      {
+        "res": "0",
+        "fase": "cat_rb",
+        "nome": "fn_oraculo"
+      }
+    ],
+    "n_antes": 7,
+    "md5_cand": "90b8e43cca313a4c7cdf3dc0bcb0b8f4",
+    "oraculos": [
+      {
+        "val": "true",
+        "nome": "is_developer",
+        "caller": "dev"
+      },
+      {
+        "val": "false",
+        "nome": "is_developer",
+        "caller": "staffA"
+      },
+      {
+        "val": "false",
+        "nome": "ve_dev_sem_vinculo",
+        "caller": "staffA"
+      },
+      {
+        "val": "true",
+        "nome": "ve_perfil_aluno_da_escola",
+        "caller": "staffA"
+      },
+      {
+        "val": "true",
+        "nome": "ve_responsavel_do_aluno",
+        "caller": "staffA"
+      },
+      {
+        "val": "true",
+        "nome": "ve_staff_da_mesma_escola",
+        "caller": "staffA"
+      },
+      {
+        "val": "false",
+        "nome": "ve_staff_de_outra_escola",
+        "caller": "staffA"
+      },
+      {
+        "val": "false",
+        "nome": "ve_perfil_aluno_da_alpha",
+        "caller": "staffB"
+      },
+      {
+        "val": "true",
+        "nome": "ve_staff_da_mesma_escola",
+        "caller": "staffB"
+      }
+    ],
+    "md5_antes": "2b2f0bc665eb17d92667b704b7d9bf2e"
+  },
+  "pos": {
+    "classes": 27,
+    "md5_vivo": "2b2f0bc665eb17d92667b704b7d9bf2e",
+    "profiles": 17,
+    "students": 848,
+    "fn_oraculo": 0,
+    "contas_vivas": 0,
+    "gate_checkins": 193,
+    "staff_schools": 2,
+    "route_incidents": 0,
+    "student_messages": 1,
+    "gate_entry_alerts": 1,
+    "guardian_students": 1
+  },
+  "portoes": 32,
+  "falhas": []
+}

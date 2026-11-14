@@ -1,0 +1,36 @@
+{
+  "item": "RM-1.4",
+  "em": "2026-11-12T21:46:13.083Z",
+  "alvo": "https://bfr-conecta.turmaroboticabfr.workers.dev",
+  "alvo_derivado_de": "rm14-suite-2026-11-12T21-18-39-584Z.json",
+  "cache_publicada_no_sw": "bfr-conecta-v118",
+  "sw_rota": "/sw-v4.js?v=45",
+  "sw_bytes": 3583,
+  "portoes": 31,
+  "falhas": [],
+  "lacunas_registradas": [
+    "RM14-A1 · boot.anticlickjacking_deny_or_sameorigin | X-Frame-Options=ausente · frame-ancestors(header ou meta)=false · CSP=default-src 'self'; base-uri 'self'; object-src 'none'; script-src 'self' 'unsaf"
+  ],
+  "amostra_anon": {
+    "tentadas": 11,
+    "recusadas_por_privilegio": [
+      "grades → permission denied for function current_role",
+      "attendance → permission denied for function current_role",
+      "access_requests → permission denied for function is_developer",
+      "occurrences → permission denied for table staff_schools"
+    ]
+  },
+  "rls_no_catalogo": {
+    "alcancaveis": 168,
+    "sem_rls": 0,
+    "sem_force": 168
+  },
+  "funcoes_com_execute_anon": 57,
+  "vistas": {
+    "total": 6,
+    "definer_alcanceis_por_anon": 0,
+    "definer_alcanceis_por_authenticated": "sports_public_athletes,sports_public_match_events,sports_public_matches,sports_public_schools,sports_public_teams"
+  },
+  "desfecho": "RM14_SUITE_VERDE",
+  "escrita_no_banco": "nenhuma — a suite é somente leitura (SELECT de catálogo + HTTP GET + uma recusa de login)"
+}

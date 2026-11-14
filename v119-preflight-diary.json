@@ -1,0 +1,146 @@
+{
+  "kind": "v119-preflight-deploy",
+  "ts": "2026-11-13T03:44:49.947Z",
+  "target": "https://bfr-conecta.turmaroboticabfr.workers.dev",
+  "published": false,
+  "expected": {
+    "arHtmlMd5": "ae59d35346b685b2fbf9d18ade4fa5cd",
+    "arHtmlBytes": 3489467,
+    "arSwMd5": "3fcbc3ad52f1a0491362506466c82596",
+    "arSwBytes": 3586,
+    "workerMd5": "c41eef045d0110124e55d28304a99898",
+    "workerBytes": 3550715,
+    "candMd5": "a1969cdf023042e7d2a91e7ed9333a05",
+    "candBytes": 3489474,
+    "swV119Md5": "46dfdebbecd3da5f0794f85276179b76"
+  },
+  "air": {
+    "htmlBytes": 3489467,
+    "htmlMd5": "ae59d35346b685b2fbf9d18ade4fa5cd",
+    "swBytes": 3586,
+    "swMd5": "3fcbc3ad52f1a0491362506466c82596",
+    "swCacheLabel": "bfr-conecta-v118",
+    "headers": {
+      "alt-svc": "h3=\":443\"; ma=86400",
+      "cache-control": "max-age=0, no-cache, no-store",
+      "cf-ray": "a59ac78a2ff21188-GIG",
+      "connection": "keep-alive",
+      "content-encoding": "br",
+      "content-security-policy": "default-src 'self'; base-uri 'self'; object-src 'none'; script-src 'self' 'unsafe-inline' https://bfr-conecta.turmaroboticabfr.workers.dev https://cdn.jsdelivr.net https://static.cloudflareinsights.com https://www.gstatic.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: blob: https:; connect-src 'self' https://bfr-conecta.turmaroboticabfr.workers.dev https://*.supabase.co wss://*.supabase.co https://cloudflareinsights.com https://*.cloudflareinsights.com https://*.googleapis.com https://fcm.googleapis.com https://api.open-meteo.com; worker-src 'self' blob:; manifest-src 'self'; form-action 'self' https://accounts.google.com https://*.supabase.co",
+      "content-type": "text/html; charset=utf-8",
+      "date": "Fri, 13 Nov 2026 03:44:42 GMT",
+      "nel": "{\"report_to\":\"cf-nel\",\"success_fraction\":0.0,\"max_age\":604800}",
+      "referrer-policy": "strict-origin-when-cross-origin",
+      "report-to": "{\"group\":\"cf-nel\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://a.nel.cloudflare.com/report/v4?s=fTlbc7zY6YC0DerLwM8zMlVqb0s3lEsYBXZgTTQ86ni3UQ5ku1NWUoocb93EnwXkGdQ%2Bo5r%2FZ4CdfKOMjwGGRzCACxDrmgoflgJ87EMZ3Iabyyt7E6ESHqsfdb%2Ff8JZtAho223yMiTWcLMB%2B0IDW7FFoFkJFdR4PV97FNSjDog4BNx2EP0v8\"}]}",
+      "server": "cloudflare",
+      "strict-transport-security": "max-age=31536000",
+      "transfer-encoding": "chunked",
+      "x-content-type-options": "nosniff"
+    }
+  },
+  "gates": [
+    {
+      "name": "ar_http_200",
+      "ok": true,
+      "detail": "GET / -> 200"
+    },
+    {
+      "name": "ar_html_baseline",
+      "ok": true,
+      "detail": "ar 3489467 B md5 ae59d35346b685b2fbf9d18ade4fa5cd | esperado 3489467 B md5 ae59d35346b685b2fbf9d18ade4fa5cd"
+    },
+    {
+      "name": "ar_token_velho_presente",
+      "ok": true,
+      "detail": "velho=1 novo=0 (a regressao PEN-31 continua no ar)"
+    },
+    {
+      "name": "ar_sw_baseline",
+      "ok": true,
+      "detail": "/sw-v4.js 3586 B md5 3fcbc3ad52f1a0491362506466c82596 CACHE=bfr-conecta-v118"
+    },
+    {
+      "name": "ar_sw_legua_identica",
+      "ok": true,
+      "detail": "/sw.js 3586 B md5 3fcbc3ad52f1a0491362506466c82596"
+    },
+    {
+      "name": "ar_csp_so_no_shell",
+      "ok": true,
+      "detail": "shell tem [content-security-policy, x-content-type-options, referrer-policy, strict-transport-security]; /sw-v4.js tem [nenhum]"
+    },
+    {
+      "name": "ar_csp_header_e_meta_alinhados",
+      "ok": true,
+      "detail": "header 742 chars, meta 742 chars, igual apos unescape=true, conjunto de directivas identico=true"
+    },
+    {
+      "name": "worker_intacto",
+      "ok": true,
+      "detail": "worker-deploy-v119/worker.mjs 3550715 B md5 c41eef045d0110124e55d28304a99898 | esperado 3550715 B md5 c41eef045d0110124e55d28304a99898"
+    },
+    {
+      "name": "candidata_intacta",
+      "ok": true,
+      "detail": "index.html candidata 3489474 B md5 a1969cdf023042e7d2a91e7ed9333a05"
+    },
+    {
+      "name": "embeds_localizados",
+      "ok": true,
+      "detail": "HTML base@4446 novo@4446; SW base@759 novo@759"
+    },
+    {
+      "name": "html_embutido_igual_candidata",
+      "ok": true,
+      "detail": "embutido 3489474 B md5 a1969cdf023042e7d2a91e7ed9333a05 == candidata texto=true"
+    },
+    {
+      "name": "html_embutido_igual_ar_reverso",
+      "ok": true,
+      "detail": "HTML embutido no worker-base (-csp) == ar servido agora: true"
+    },
+    {
+      "name": "tokens_do_html_embutido",
+      "ok": true,
+      "detail": "novo=1 velho=0"
+    },
+    {
+      "name": "sw_embutido_v119",
+      "ok": true,
+      "detail": "SW embutido 3586 B md5 46dfdebbecd3da5f0794f85276179b76 CACHE=bfr-conecta-v119"
+    },
+    {
+      "name": "sw_so_mudou_etiqueta",
+      "ok": true,
+      "detail": "ocorrencias da etiqueta v119=1; revertido o label bate com o SW do ar=true"
+    },
+    {
+      "name": "segmentos_localizados",
+      "ok": true,
+      "detail": "ordem no worker: const SW = \" -> const HTML = (base igual=true)"
+    },
+    {
+      "name": "fora_dos_embeds_byte_identico",
+      "ok": true,
+      "detail": "prefijo 759 chars, meio 2 chars, cauda 1177 chars — iguais ao worker publicado nos tres: true/true/true"
+    },
+    {
+      "name": "spawns_de_csp_preservados",
+      "ok": true,
+      "detail": "ocorrencias de \"Content-Security-Policy\": base 2, v119 2 (meta + header)"
+    },
+    {
+      "name": "wrangler_toml_identico",
+      "ok": true,
+      "detail": "175 B md5 f82b42bdf2952fa7c261fd1343ef60b0 (base f82b42bdf2952fa7c261fd1343ef60b0)"
+    },
+    {
+      "name": "assets_12_byte_identico",
+      "ok": true,
+      "detail": "base 12 ficheiros, v119 12, divergentes=0"
+    }
+  ],
+  "total": 20,
+  "ruins": 0,
+  "veredito": "PREFLIGHT_VERDE"
+}

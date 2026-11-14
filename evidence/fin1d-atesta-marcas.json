@@ -1,0 +1,382 @@
+{
+  "em": "2026-11-13T01:25:44.823Z",
+  "tarefa": "FIN-1d atestar marcadores do censo",
+  "metodo": "somente leitura, substring fixa",
+  "literais_html_decodificados": [
+    {
+      "dir": "worker-deploy-v115",
+      "bytes": 3488135,
+      "md5": "aba67956e2952f9f27e217004d028d74"
+    },
+    {
+      "dir": "worker-deploy-v116",
+      "bytes": 3488759,
+      "md5": "b72c85e866c35229c51cb852c8ab7c8f"
+    },
+    {
+      "dir": "worker-deploy-v117",
+      "bytes": 3489890,
+      "md5": "03c2fbbfe6ac7dbe3a00b0bdac5da445"
+    },
+    {
+      "dir": "worker-deploy-v118-csp",
+      "bytes": 3489467,
+      "md5": "ae59d35346b685b2fbf9d18ade4fa5cd"
+    }
+  ],
+  "falhas_de_decodificacao": [
+    {
+      "dir": "worker-deploy-v118",
+      "motivo": "JSON.parse falhou",
+      "delimitador": "\"",
+      "bytes_linha": 3592408,
+      "cabe": "\"<!doctype html>\\n<html lang=\\\"pt-BR\\\"><head><meta charset=\\\"utf-8\\\"><meta name=\\\"viewport",
+      "cauda": "width:0}\\n}\\n</style>\\n</body></html>\\n\""
+    },
+    {
+      "dir": "worker-deploy-v118-swclone",
+      "motivo": "JSON.parse falhou",
+      "delimitador": "\"",
+      "bytes_linha": 3592408,
+      "cabe": "\"<!doctype html>\\n<html lang=\\\"pt-BR\\\"><head><meta charset=\\\"utf-8\\\"><meta name=\\\"viewport",
+      "cauda": "width:0}\\n}\\n</style>\\n</body></html>\\n\""
+    },
+    {
+      "dir": "worker-deploy-v118-swfix",
+      "motivo": "JSON.parse falhou",
+      "delimitador": "\"",
+      "bytes_linha": 3592408,
+      "cabe": "\"<!doctype html>\\n<html lang=\\\"pt-BR\\\"><head><meta charset=\\\"utf-8\\\"><meta name=\\\"viewport",
+      "cauda": "width:0}\\n}\\n</style>\\n</body></html>\\n\""
+    }
+  ],
+  "fontes_varridas": 32,
+  "marcas": [
+    {
+      "marcador": "loadSchoolContent",
+      "fontes_com_marcador": 0,
+      "atestado_em_disco": false,
+      "exemplos": []
+    },
+    {
+      "marcador": "schoolContent.loading",
+      "fontes_com_marcador": 0,
+      "atestado_em_disco": false,
+      "exemplos": []
+    },
+    {
+      "marcador": "displayName(",
+      "fontes_com_marcador": 0,
+      "atestado_em_disco": false,
+      "exemplos": []
+    },
+    {
+      "marcador": "custom_display_name",
+      "fontes_com_marcador": 0,
+      "atestado_em_disco": false,
+      "exemplos": []
+    },
+    {
+      "marcador": "partialMsg",
+      "fontes_com_marcador": 0,
+      "atestado_em_disco": false,
+      "exemplos": []
+    },
+    {
+      "marcador": "if (state.loading) return;",
+      "fontes_com_marcador": 0,
+      "atestado_em_disco": false,
+      "exemplos": []
+    },
+    {
+      "marcador": "!state.loaded || !state.linked",
+      "fontes_com_marcador": 11,
+      "atestado_em_disco": true,
+      "exemplos": [
+        {
+          "fonte": "worker-deploy-v115/worker.mjs :: const HTML",
+          "ocorrencias": 1
+        },
+        {
+          "fonte": "worker-deploy-v116/worker.mjs :: const HTML",
+          "ocorrencias": 1
+        },
+        {
+          "fonte": "worker-deploy-v117/worker.mjs :: const HTML",
+          "ocorrencias": 1
+        },
+        {
+          "fonte": "worker-deploy-v118-csp/worker.mjs :: const HTML",
+          "ocorrencias": 1
+        },
+        {
+          "fonte": "ar-shell.html",
+          "ocorrencias": 1
+        },
+        {
+          "fonte": "_v115-ar-live.html",
+          "ocorrencias": 1
+        },
+        {
+          "fonte": "bfr-v115-src/index.html",
+          "ocorrencias": 1
+        },
+        {
+          "fonte": "bfr-v116-src/index.html",
+          "ocorrencias": 1
+        },
+        {
+          "fonte": "bfr-candidata-v114-supervisao/index.html",
+          "ocorrencias": 1
+        },
+        {
+          "fonte": "bfr-candidata-v115-supervisao-embed/index.html",
+          "ocorrencias": 1
+        },
+        {
+          "fonte": "app/index.html",
+          "ocorrencias": 1
+        }
+      ]
+    },
+    {
+      "marcador": "sports_schools(name)",
+      "fontes_com_marcador": 7,
+      "atestado_em_disco": true,
+      "exemplos": [
+        {
+          "fonte": "worker-deploy-v115/worker.mjs :: const HTML",
+          "ocorrencias": 1
+        },
+        {
+          "fonte": "bfr-v115-src/index.html",
+          "ocorrencias": 1
+        },
+        {
+          "fonte": "bfr-candidata-v115-supervisao-embed/confere-bundle-v115.mjs",
+          "ocorrencias": 2
+        },
+        {
+          "fonte": "bfr-candidata-v115-supervisao-embed/index.html",
+          "ocorrencias": 1
+        },
+        {
+          "fonte": "bfr-candidata-v115-supervisao-embed/portoes-v115.mjs",
+          "ocorrencias": 3
+        },
+        {
+          "fonte": "bfr-candidata-v115-supervisao-embed/prova-http-v115.mjs",
+          "ocorrencias": 2
+        },
+        {
+          "fonte": "bfr-candidata-v115-supervisao-embed/reconfer-ar-v115.mjs",
+          "ocorrencias": 2
+        }
+      ]
+    },
+    {
+      "marcador": "bindTrigger",
+      "fontes_com_marcador": 11,
+      "atestado_em_disco": true,
+      "exemplos": [
+        {
+          "fonte": "worker-deploy-v115/worker.mjs :: const HTML",
+          "ocorrencias": 3
+        },
+        {
+          "fonte": "worker-deploy-v116/worker.mjs :: const HTML",
+          "ocorrencias": 4
+        },
+        {
+          "fonte": "worker-deploy-v117/worker.mjs :: const HTML",
+          "ocorrencias": 4
+        },
+        {
+          "fonte": "worker-deploy-v118-csp/worker.mjs :: const HTML",
+          "ocorrencias": 4
+        },
+        {
+          "fonte": "ar-shell.html",
+          "ocorrencias": 4
+        },
+        {
+          "fonte": "_v115-ar-live.html",
+          "ocorrencias": 3
+        },
+        {
+          "fonte": "bfr-v115-src/index.html",
+          "ocorrencias": 3
+        },
+        {
+          "fonte": "bfr-v116-src/index.html",
+          "ocorrencias": 4
+        },
+        {
+          "fonte": "bfr-candidata-v114-supervisao/index.html",
+          "ocorrencias": 3
+        },
+        {
+          "fonte": "bfr-candidata-v115-supervisao-embed/index.html",
+          "ocorrencias": 3
+        },
+        {
+          "fonte": "app/index.html",
+          "ocorrencias": 4
+        }
+      ]
+    },
+    {
+      "marcador": "dispatchEvent(new MouseEvent(",
+      "fontes_com_marcador": 6,
+      "atestado_em_disco": true,
+      "exemplos": [
+        {
+          "fonte": "worker-deploy-v116/worker.mjs :: const HTML",
+          "ocorrencias": 2
+        },
+        {
+          "fonte": "worker-deploy-v117/worker.mjs :: const HTML",
+          "ocorrencias": 2
+        },
+        {
+          "fonte": "worker-deploy-v118-csp/worker.mjs :: const HTML",
+          "ocorrencias": 2
+        },
+        {
+          "fonte": "ar-shell.html",
+          "ocorrencias": 2
+        },
+        {
+          "fonte": "bfr-v116-src/index.html",
+          "ocorrencias": 2
+        },
+        {
+          "fonte": "app/index.html",
+          "ocorrencias": 2
+        }
+      ]
+    },
+    {
+      "marcador": "bfr:app-ready",
+      "fontes_com_marcador": 23,
+      "atestado_em_disco": true,
+      "exemplos": [
+        {
+          "fonte": "worker-deploy-v115/worker.mjs :: const HTML",
+          "ocorrencias": 34
+        },
+        {
+          "fonte": "worker-deploy-v116/worker.mjs :: const HTML",
+          "ocorrencias": 34
+        },
+        {
+          "fonte": "worker-deploy-v117/worker.mjs :: const HTML",
+          "ocorrencias": 34
+        },
+        {
+          "fonte": "worker-deploy-v118-csp/worker.mjs :: const HTML",
+          "ocorrencias": 34
+        },
+        {
+          "fonte": "ar-shell.html",
+          "ocorrencias": 34
+        },
+        {
+          "fonte": "_v115-ar-live.html",
+          "ocorrencias": 34
+        },
+        {
+          "fonte": "bfr-v115-src/bfr-responsive-presentation.js",
+          "ocorrencias": 1
+        },
+        {
+          "fonte": "bfr-v115-src/bfr-teacher-arrivals.js",
+          "ocorrencias": 1
+        },
+        {
+          "fonte": "bfr-v115-src/bfr-teacher-audit.js",
+          "ocorrencias": 1
+        },
+        {
+          "fonte": "bfr-v115-src/index.html",
+          "ocorrencias": 34
+        },
+        {
+          "fonte": "bfr-v116-src/bfr-responsive-presentation.js",
+          "ocorrencias": 1
+        },
+        {
+          "fonte": "bfr-v116-src/bfr-teacher-arrivals.js",
+          "ocorrencias": 1
+        }
+      ]
+    },
+    {
+      "marcador": "escola-historia",
+      "fontes_com_marcador": 11,
+      "atestado_em_disco": true,
+      "exemplos": [
+        {
+          "fonte": "worker-deploy-v115/worker.mjs :: const HTML",
+          "ocorrencias": 12
+        },
+        {
+          "fonte": "worker-deploy-v116/worker.mjs :: const HTML",
+          "ocorrencias": 12
+        },
+        {
+          "fonte": "worker-deploy-v117/worker.mjs :: const HTML",
+          "ocorrencias": 12
+        },
+        {
+          "fonte": "worker-deploy-v118-csp/worker.mjs :: const HTML",
+          "ocorrencias": 12
+        },
+        {
+          "fonte": "ar-shell.html",
+          "ocorrencias": 12
+        },
+        {
+          "fonte": "_v115-ar-live.html",
+          "ocorrencias": 12
+        },
+        {
+          "fonte": "bfr-v115-src/index.html",
+          "ocorrencias": 12
+        },
+        {
+          "fonte": "bfr-v116-src/index.html",
+          "ocorrencias": 12
+        },
+        {
+          "fonte": "bfr-candidata-v114-supervisao/index.html",
+          "ocorrencias": 12
+        },
+        {
+          "fonte": "bfr-candidata-v115-supervisao-embed/index.html",
+          "ocorrencias": 12
+        },
+        {
+          "fonte": "app/index.html",
+          "ocorrencias": 12
+        }
+      ]
+    }
+  ],
+  "diarios_com_marcador": [
+    {
+      "arquivo": "./audit-publicacao-v117.json",
+      "bytes": 866,
+      "marcadores": [
+        "bindTrigger"
+      ]
+    },
+    {
+      "arquivo": "./confere-bundle-v116-diary.json",
+      "bytes": 1394,
+      "marcadores": [
+        "bindTrigger"
+      ]
+    }
+  ]
+}

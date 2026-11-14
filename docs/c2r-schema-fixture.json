@@ -1,0 +1,110 @@
+{
+  "escolas": [
+    {
+      "id": "559acff1-e4df-42bc-aea4-2d96b8b5b11b",
+      "name": "Escola Alpha"
+    },
+    {
+      "id": "2efafbdc-12f4-4e63-a58e-2e50ca5479e2",
+      "name": "Escola Beta"
+    },
+    {
+      "id": "75a15897-e987-408b-af1c-eace66b0a70d",
+      "name": "Escola Gamma"
+    },
+    {
+      "id": "08ebef62-2193-4520-ab44-c044160d565f",
+      "name": "Escola Municipal Alpha"
+    },
+    {
+      "id": "0f51bc67-9987-483d-aba0-f138b2b7580e",
+      "name": "Escola Municipal Beta"
+    },
+    {
+      "id": "f4ab6309-8c41-4456-a3e2-14f3fe2ad9d3",
+      "name": "Escola Municipal Gamma"
+    }
+  ],
+  "n_escolas": 6,
+  "col_guardian": [
+    "profile_id",
+    "student_id",
+    "relationship",
+    "linked_by",
+    "linked_at"
+  ],
+  "col_profiles": [
+    "id",
+    "email",
+    "full_name",
+    "role",
+    "created_at",
+    "phone",
+    "birth_date",
+    "display_name_custom",
+    "photo_path"
+  ],
+  "contas_vivas": 0,
+  "gate_checkins_n": 193,
+  "fk_staff_schools": [
+    {
+      "col": "profile_id",
+      "ref": "profiles",
+      "refcol": "id"
+    },
+    {
+      "col": "school_id",
+      "ref": "sports_schools",
+      "refcol": "id"
+    }
+  ],
+  "alunos_com_perfil": 0,
+  "col_gate_checkins": [
+    "id",
+    "student_id",
+    "class_id",
+    "gatekeeper_id",
+    "direction",
+    "checked_at",
+    "source",
+    "entry_status",
+    "restriction_reason",
+    "guardian_present",
+    "guardian_confirmed_by",
+    "guardian_confirmed_at",
+    "school_date",
+    "intake_source",
+    "target_shift",
+    "exception_reason"
+  ],
+  "col_staff_schools": [
+    "id",
+    "profile_id",
+    "school_id",
+    "role",
+    "created_at",
+    "updated_at"
+  ],
+  "route_incidents_n": 0,
+  "student_messages_n": 1,
+  "gate_entry_alerts_n": 1,
+  "staff_schools_linhas": [
+    {
+      "id": "29aba9ad-b97a-4eb0-a1ec-0dfc8241c7a4",
+      "role": "director",
+      "school_id": "08ebef62-2193-4520-ab44-c044160d565f",
+      "created_at": "2026-11-07T01:09:49.675464+00:00",
+      "profile_id": "cc005f8c-fa2c-414f-8b04-73e828ec8216",
+      "updated_at": "2026-11-07T01:09:49.675464+00:00"
+    },
+    {
+      "id": "e9b0e04f-2d2e-4515-99aa-2d69094a0533",
+      "role": "secretary",
+      "school_id": "08ebef62-2193-4520-ab44-c044160d565f",
+      "created_at": "2026-11-07T01:09:49.675464+00:00",
+      "profile_id": "50205728-72c0-49a5-b519-afccdcc24fea",
+      "updated_at": "2026-11-07T01:09:49.675464+00:00"
+    }
+  ],
+  "profiles_tem_student_profile_id": 0
+}

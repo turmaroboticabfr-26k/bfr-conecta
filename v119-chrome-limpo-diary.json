@@ -1,0 +1,73 @@
+{
+  "etapa": "V119-3 prova no Chrome limpo (camada cliente)",
+  "executadoEm": "2026-11-13",
+  "alvo": "https://bfr-conecta.turmaroboticabfr.workers.dev/",
+  "origemMedicao": "navegador interno via CDP; sondas re-executadas nesta sessao, nada dactilografado de memoria",
+  "estadoInicial": {
+    "limpeza": "unregister de todos os service workers + delete de todas as caches antes do boot frio",
+    "motivo": "a v118 deixara bfr-conecta-v118 na máquina; sem apagar, o shell servido seria o antigo"
+  },
+  "portoes": [
+    {
+      "id": "chrome_cache_unica_v119",
+      "ok": true,
+      "medido": "caches.keys() = [bfr-conecta-v119]",
+      "observacao": "nenhum bfr-conecta-v118 restante"
+    },
+    {
+      "id": "chrome_sw_ativo_sem_waiting",
+      "ok": true,
+      "medido": "active = /sw-v4.js?v=45, state = activated, waiting = null, scope = raiz"
+    },
+    {
+      "id": "chrome_cache_entradas",
+      "ok": true,
+      "medido": "bfr-conecta-v119 tem 8 entradas"
+    },
+    {
+      "id": "chrome_shell_em_cache_com_token_novo",
+      "ok": true,
+      "medido": "entrada / = 3489474 bytes; school_id,sports_schools(name) = 1; school_id,schools(name) = 0",
+      "observacao": "os 3489474 bytes coincidem com a candidata gateada (md5 a1969cdf023042e7d2a91e7ed9333a05 provado no diario HTTP)"
+    },
+    {
+      "id": "chrome_documento_vivo_token_novo",
+      "ok": true,
+      "medido": "documentElement.innerHTML: novo = 1, velho = 0; body innerHTML = 3097953 chars",
+      "baselineAnterior": "v118 media 3097946 chars; +7 = exatamente o delta das 2 substituicoes"
+    },
+    {
+      "id": "chrome_fetch_root_200_com_headers",
+      "ok": true,
+      "medido": "status 200, 3489474 bytes, content-security-policy presente, x-content-type-options nosniff, strict-transport-security max-age=31536000"
+    },
+    {
+      "id": "chrome_recarga_sob_controle_do_sw",
+      "ok": true,
+      "medido": "performance.getEntriesByType('resource') do /: duration 332 ms, encodedBodySize 3489474, transferSize 3489774 (servido pelo SW, documento comitou)"
+    },
+    {
+      "id": "chrome_console_sem_excecao",
+      "ok": true,
+      "medido": "1 entrada no console: 404 de /cdn-cgi/rum (beacon Cloudflare, pre-existente a v119); nenhuma excecao JS, nenhum PGRST200"
+    },
+    {
+      "id": "chrome_rede_sem_400",
+      "ok": true,
+      "medido": "list_network_requests (document, xhr, fetch, preservados incluidos) = 8 pedidos; 200 x 5, 404 x 3 (todos /cdn-cgi/rum), 400 x 0, 1 pending do boot anterior ao commit",
+      "observacao": "zero PGRST200 no trafego de boot"
+    },
+    {
+      "id": "chrome_titulo_do_shell",
+      "ok": true,
+      "medido": "BFR Conecta | Escola Benicio Ferreira Reis"
+    }
+  ],
+  "vermelhos": 0,
+  "verdes": 10,
+  "veredito": "CHROME_LIMPO_VERDE",
+  "limites": [
+    "Esta prova e de shell + service worker + trafego de boot. Nao abre a aba Supervisao autenticado e nao dispara a query de supervision_requests no front; a prova da consulta em si e a comportamental S18 (200 com sports_schools, 400 com schools) e a medicao HTTP do token.",
+    "Nenhum dado de banco foi lido ou escrito nesta etapa; nenhuma DDL; nenhum outro deploy."
+  ]
+}

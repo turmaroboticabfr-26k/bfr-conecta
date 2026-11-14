@@ -1,0 +1,31 @@
+== set_profile_role
+CREATE OR REPLACE FUNCTION public.set_profile_role(target_profile_id uuid, target_role account_role, target_full_name text DEFAULT NULL::text)
+ RETURNS boolean
+ LANGUAGE plpgsql
+ SECURITY DEFINER
+ SET search_path TO 'public'
+AS $function$ begin if not public.is_developer() then raise exception 'Apenas um administrador developer pode alterar cargos'; end if; update public.profiles set role = target_role, full_name = case when nullif(trim(target_full_name), '') is null then full_name else trim(target_full_name) end where id = target_profile_id; if not found then raise exception 'Conta não encontrada'; end if; return true; end; $function$
+
+== ACL: [{"proname":"set_profile_role","proacl":"{postgres=X/postgres,authenticated=X/postgres,service_role=X/postgres,supabase_admin=X/postgres}"}]
+== access_requests cols: ["id","email","requested_role","approved_role","status","reviewed_by","created_at","reviewed_at"]
+
+== profiles policy: director_dashboard_read_profiles (SELECT)
+
+== profiles policy: profiles_chat_staff_directory_read (SELECT)
+
+== profiles policy: profiles_hide_test_accounts (SELECT)
+
+== profiles policy: profiles_read (SELECT)
+
+== profiles policy: profiles_staff_update (UPDATE)
+
+== profiles policy: profiles_update_self (UPDATE)
+   director_dashboard_read_profiles: (("current_role"())::text = 'director'::text)
+   profiles_chat_staff_directory_read: (internal_chat_is_staff() AND (role = ANY (ARRAY['pedagogical'::account_role, 'aee'::account_role, 'coordinator'::account_role, 'director'::account_role, 'secretary'::account_role, 'developer'::account_role])))
+   profiles_hide_test_accounts: ((id = auth.uid()) OR ((email !~~ '%@bfr-conecta.test'::text) AND (email !~~ 'bfr.qa.email.%'::text)))
+   profiles_read: ((id = auth.uid()) OR is_developer() OR bfr_profile_in_my_schools(id))
+   profiles_staff_update: is_developer()
+   profiles_update_self: (id = auth.uid())
+
+== access_requests policies: ["access_requests_insert","access_requests_manage","access_requests_read","access_requests_staff_insert"]
+== contas @bfr-conecta.test vivas em profiles: [ { n: 4 } ]

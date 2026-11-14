@@ -48,3 +48,23 @@ sql/criar-conta-supervisor-completa.sql
 
 # Documentação com credenciais
 GUIA-CRIAR-CONTA-SUPERVISOR.md
+
+# 13/11 — varredura antes do commit das candidatas v119/v120/v121: os padroes
+# acima estao todos em portugues e o ciclo C2R/S19 nomeou a mesma coisa em
+# ingles, entao nada casava. s19-status.json traz 5 JWTs (access+refresh) e os
+# dois c2r-*.json trazem as senhas das contas mintadas.
+*-accounts.json
+s19-status.json
+docs/c2r-jornada.json
+
+# Scripts com literal de credencial embutido — mesma classe da seccao acima.
+# rm14-* tem senha hardcoded, mas e da conta-sonda INEXISTENTE (portao negativo
+# da suite); fica fora por criterio, nao por risco medido. O resultado da suite
+# esta nos diarios JSON, que estes padroes nao atingem.
+scripts/c2r-jornada.mjs
+scripts/rm14-recon.mjs
+scripts/rm14-suite.mjs
+
+# Sobra de execucao: nunca entraram no indice (0 .err rastreados).
+*.err
+err.log

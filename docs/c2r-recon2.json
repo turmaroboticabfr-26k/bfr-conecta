@@ -1,0 +1,170 @@
+{
+  "ciclo": "C2-R",
+  "em": "2026-11-12T00:21:18.576Z",
+  "tipo": "recon2-read-only",
+  "funcoes_fixture": [
+    {
+      "proname": "handle_new_user",
+      "args": "",
+      "prosecdef": true,
+      "dono": "postgres",
+      "corpo": "CREATE OR REPLACE FUNCTION public.handle_new_user()\n RETURNS trigger\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO 'public'\nAS $function$\r\n                                                                                                                                                                                       declare\r\n                                                                                                                                                                                         assigned_role public.account_role;\r\n                                                                                                                                                                                         begin\r\n                                                                                                                                                                                           select ar.approved_role into assigned_role\r\n                                                                                                                                                                                               from public.access_requests ar\r\n                                                                                                                                                                                                  where lower(ar.email) = lower(coalesce(new.email, ''))\r\n                                                                                                                                                                                                       and ar.status = 'approved'\r\n                                                                                                                                                                                                            and ar.approved_role is not null\r\n                                                                                                                                                                                                               order by ar.reviewed_at desc nulls last, ar.created_at desc\r\n                                                                                                                                                                                                                  limit 1;\r\n                                                                                                                                                                                                                    insert into public.profiles(id, email, full_name, role)\r\n                                                                                                                                                                                                                      values(new.id, coalesce(new.email, ''), coalesce(new.raw_user_meta_data->>'full_name', ''), coalesce(assigned_role, 'parent'))\r\n                                                                                                                                                                                                                        on conflict(id) do update set email = excluded.email;\r\n                                                                                                                                                                                                                          return new;\r\n                                                                                                                                                                                                                          end;\r\n                                                                                                                                                                                                                          $function$\n"
+    },
+    {
+      "proname": "is_monitor",
+      "args": "",
+      "prosecdef": true,
+      "dono": "postgres",
+      "corpo": "CREATE OR REPLACE FUNCTION public.is_monitor()\n RETURNS boolean\n LANGUAGE sql\n STABLE SECURITY DEFINER\n SET search_path TO ''\nAS $function$ select coalesce(public.current_role() in ('monitor','developer'), false) $function$\n"
+    }
+  ],
+  "profiles_colunas": [
+    {
+      "column_name": "id",
+      "data_type": "uuid",
+      "is_nullable": "NO"
+    },
+    {
+      "column_name": "email",
+      "data_type": "text",
+      "is_nullable": "NO"
+    },
+    {
+      "column_name": "full_name",
+      "data_type": "text",
+      "is_nullable": "YES"
+    },
+    {
+      "column_name": "role",
+      "data_type": "USER-DEFINED",
+      "is_nullable": "NO"
+    },
+    {
+      "column_name": "created_at",
+      "data_type": "timestamp with time zone",
+      "is_nullable": "NO"
+    },
+    {
+      "column_name": "phone",
+      "data_type": "text",
+      "is_nullable": "YES"
+    },
+    {
+      "column_name": "birth_date",
+      "data_type": "date",
+      "is_nullable": "YES"
+    },
+    {
+      "column_name": "display_name_custom",
+      "data_type": "text",
+      "is_nullable": "YES"
+    },
+    {
+      "column_name": "photo_path",
+      "data_type": "text",
+      "is_nullable": "YES"
+    }
+  ],
+  "guardian_students_colunas": [
+    {
+      "column_name": "profile_id",
+      "data_type": "uuid",
+      "is_nullable": "NO"
+    },
+    {
+      "column_name": "student_id",
+      "data_type": "uuid",
+      "is_nullable": "NO"
+    },
+    {
+      "column_name": "relationship",
+      "data_type": "text",
+      "is_nullable": "NO"
+    },
+    {
+      "column_name": "linked_by",
+      "data_type": "uuid",
+      "is_nullable": "YES"
+    },
+    {
+      "column_name": "linked_at",
+      "data_type": "timestamp with time zone",
+      "is_nullable": "YES"
+    }
+  ],
+  "classes_colunas": [
+    {
+      "column_name": "id",
+      "data_type": "uuid",
+      "is_nullable": "NO"
+    },
+    {
+      "column_name": "year",
+      "data_type": "smallint",
+      "is_nullable": "NO"
+    },
+    {
+      "column_name": "class_code",
+      "data_type": "text",
+      "is_nullable": "NO"
+    },
+    {
+      "column_name": "shift",
+      "data_type": "text",
+      "is_nullable": "NO"
+    },
+    {
+      "column_name": "school_id",
+      "data_type": "uuid",
+      "is_nullable": "NO"
+    }
+  ],
+  "students_colunas": [
+    {
+      "column_name": "id",
+      "data_type": "uuid",
+      "is_nullable": "NO"
+    },
+    {
+      "column_name": "official_name",
+      "data_type": "text",
+      "is_nullable": "NO"
+    },
+    {
+      "column_name": "observation",
+      "data_type": "text",
+      "is_nullable": "YES"
+    },
+    {
+      "column_name": "class_id",
+      "data_type": "uuid",
+      "is_nullable": "NO"
+    },
+    {
+      "column_name": "active",
+      "data_type": "boolean",
+      "is_nullable": "NO"
+    },
+    {
+      "column_name": "created_at",
+      "data_type": "timestamp with time zone",
+      "is_nullable": "NO"
+    },
+    {
+      "column_name": "student_profile_id",
+      "data_type": "uuid",
+      "is_nullable": "YES"
+    },
+    {
+      "column_name": "school_id",
+      "data_type": "uuid",
+      "is_nullable": "NO"
+    }
+  ],
+  "route_incidents_acl": [
+    {
+      "relname": "route_incidents",
+      "relacl": "{postgres=arwdDxtm/postgres,anon=rm/postgres,authenticated=arwdDxtm/postgres,service_role=arwdDxtm/postgres}"
+    }
+  ]
+}

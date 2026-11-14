@@ -1,0 +1,10 @@
+{
+  "em": "2026-11-12T00:23:26.087Z",
+  "current_role": "CREATE OR REPLACE FUNCTION public.\"current_role\"()\n RETURNS account_role\n LANGUAGE sql\n STABLE SECURITY DEFINER\n SET search_path TO ''\nAS $function$ select role from public.profiles where id = auth.uid() $function$\n",
+  "classes_school_fk": [
+    {
+      "conname": "fk_classes_school",
+      "def": "FOREIGN KEY (school_id) REFERENCES schools(id)"
+    }
+  ]
+}

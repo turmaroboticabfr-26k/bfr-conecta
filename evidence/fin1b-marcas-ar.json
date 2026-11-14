@@ -1,0 +1,234 @@
+{
+  "em": "2026-11-13T01:21:07.809Z",
+  "tarefa": "FIN-1b marcas publicadas no ar",
+  "metodo": "somente leitura",
+  "ar": {
+    "http": 200,
+    "bytes": 3489467,
+    "md5": "ae59d35346b685b2fbf9d18ade4fa5cd"
+  },
+  "marcas": {
+    "v107 item 85 (Escola/dock lêem announcements e school_events)": {
+      "medido": [
+        {
+          "nome": "def loadSchoolContent",
+          "ocorrências": 0
+        },
+        {
+          "nome": "guarda de voo schoolContent",
+          "ocorrências": 0
+        },
+        {
+          "nome": "renderHomeDock",
+          "ocorrências": 3
+        },
+        {
+          "nome": "from('announcements')",
+          "ocorrências": 14
+        }
+      ],
+      "ausentes": [
+        "def loadSchoolContent",
+        "guarda de voo schoolContent"
+      ]
+    },
+    "v108 item 86 (nome derivado igual ao shell)": {
+      "medido": [
+        {
+          "nome": "displayName",
+          "ocorrências": 8
+        },
+        {
+          "nome": "custom_display_name",
+          "ocorrências": 0
+        }
+      ],
+      "ausentes": [
+        "custom_display_name"
+      ]
+    },
+    "v109 item 91 (Meu Espaço não apaga painel carregado)": {
+      "medido": [
+        {
+          "nome": "partialMsg",
+          "ocorrências": 0
+        },
+        {
+          "nome": "guarda do pintor de erro",
+          "ocorrências": 1
+        },
+        {
+          "nome": "guarda de voo load()",
+          "ocorrências": 0
+        }
+      ],
+      "ausentes": [
+        "partialMsg",
+        "guarda de voo load()"
+      ]
+    },
+    "v105 item 84 (escola-historia)": {
+      "medido": [
+        {
+          "nome": "escola-historia",
+          "ocorrências": 12
+        }
+      ],
+      "ausentes": []
+    },
+    "v114/v115 Supervisão (embed pela FK certa)": {
+      "medido": [
+        {
+          "nome": "supervision_requests",
+          "ocorrências": 1
+        },
+        {
+          "nome": "sports_schools(name)",
+          "ocorrências": 0
+        },
+        {
+          "nome": "schools(name)",
+          "ocorrências": 1
+        }
+      ],
+      "ausentes": [
+        "sports_schools(name)"
+      ]
+    },
+    "v116 botões mobile": {
+      "medido": [
+        {
+          "nome": "bindTrigger",
+          "ocorrências": 4
+        },
+        {
+          "nome": "dispatchEvent(new MouseEvent('click'))",
+          "ocorrências": 2
+        }
+      ],
+      "ausentes": []
+    },
+    "v117/v118 modal de horários + SW": {
+      "medido": [
+        {
+          "nome": "modal de horários",
+          "ocorrências": 0
+        },
+        {
+          "nome": "fecharModal",
+          "ocorrências": 0
+        }
+      ],
+      "ausentes": [
+        "modal de horários",
+        "fecharModal"
+      ]
+    },
+    "item 77 chrome mobile no app-ready": {
+      "medido": [
+        {
+          "nome": "bfr:app-ready",
+          "ocorrências": 34
+        },
+        {
+          "nome": "pintaSozinho",
+          "ocorrências": 0
+        }
+      ],
+      "ausentes": [
+        "pintaSozinho"
+      ]
+    }
+  },
+  "linhagem_html": [
+    {
+      "dir": "worker-deploy-v115",
+      "consts": [
+        "HTML",
+        "SW"
+      ],
+      "literal_HTML_encontrado": true,
+      "md5_literal": null,
+      "md5_literal_igual_ao_servido": null,
+      "bytes_literal_decodificado": null
+    },
+    {
+      "dir": "worker-deploy-v116",
+      "consts": [
+        "HTML",
+        "SW"
+      ],
+      "literal_HTML_encontrado": true,
+      "md5_literal": null,
+      "md5_literal_igual_ao_servido": null,
+      "bytes_literal_decodificado": null
+    },
+    {
+      "dir": "worker-deploy-v117",
+      "consts": [
+        "HTML",
+        "SW"
+      ],
+      "literal_HTML_encontrado": true,
+      "md5_literal": null,
+      "md5_literal_igual_ao_servido": null,
+      "bytes_literal_decodificado": null
+    },
+    {
+      "dir": "worker-deploy-v118",
+      "consts": [
+        "HTML",
+        "SW"
+      ],
+      "literal_HTML_encontrado": true,
+      "md5_literal": null,
+      "md5_literal_igual_ao_servido": null,
+      "bytes_literal_decodificado": null
+    },
+    {
+      "dir": "worker-deploy-v118-csp",
+      "consts": [
+        "CSP",
+        "SW",
+        "HTML"
+      ],
+      "literal_HTML_encontrado": true,
+      "md5_literal": null,
+      "md5_literal_igual_ao_servido": null,
+      "bytes_literal_decodificado": null
+    },
+    {
+      "dir": "worker-deploy-v118-swclone",
+      "consts": [
+        "HTML",
+        "SW"
+      ],
+      "literal_HTML_encontrado": true,
+      "md5_literal": null,
+      "md5_literal_igual_ao_servido": null,
+      "bytes_literal_decodificado": null
+    },
+    {
+      "dir": "worker-deploy-v118-swfix",
+      "consts": [
+        "HTML",
+        "SW"
+      ],
+      "literal_HTML_encontrado": true,
+      "md5_literal": null,
+      "md5_literal_igual_ao_servido": null,
+      "bytes_literal_decodificado": null
+    }
+  ],
+  "total": {
+    "com_marca": 10,
+    "sem_marca": 15,
+    "grupos_inteiros": 2,
+    "com_falta": 6
+  },
+  "disco_ar_shell_html": {
+    "bytes": 3489467,
+    "md5": "ae59d35346b685b2fbf9d18ade4fa5cd",
+    "igual_ao_ar": true
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "bytes": 3489474,
+  "funcs": [
+    {
+      "ainda": "function setRole(",
+      "linha": 9901,
+      "caracteres": 35,
+      "corpo": "function setRole(role, options = {}"
+    },
+    {
+      "ainda": "function activeView(",
+      "linha": 18736,
+      "caracteres": 269,
+      "corpo": "function activeView() { const active = runtime()?.activeView || (role() === 'pedagogical' ? 'teacher' : role() === 'developer' ? 'admin' : role()); return document.getElementById(viewIds[active]) || document.querySelector('#appShell .content:not(.hidden)'); }"
+    },
+    {
+      "ainda": "function setupSecretaryView(",
+      "linha": 6814,
+      "caracteres": 174,
+      "corpo": "function setupSecretaryView() { ensureSecretaryViews(); if (secretaryView?.querySelector('[data-secretary-staff-list]')) setupSecretaryStaff(); else setupSecretaryFamily(); }"
+    }
+  ]
+}

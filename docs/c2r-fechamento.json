@@ -1,0 +1,43 @@
+{
+  "em": "2026-11-12T00:57:06.861Z",
+  "tipo": "fechamento-transitivo",
+  "funcoes_de_policy": [],
+  "rte_relevantes": [
+    {
+      "tabela": "gate_badges",
+      "polname": "gate_badges_staff_manage",
+      "using_": "(is_developer() OR (EXISTS ( SELECT 1\n   FROM ((profiles p\n     JOIN staff_schools ss ON ((ss.profile_id = p.id)))\n     JOIN students st ON ((st.school_id = ss.school_id)))\n  WHERE ((p.id = auth.uid()) AND (st.id = gate_badges.student_id)))))"
+    },
+    {
+      "tabela": "students",
+      "polname": "staff manage student records",
+      "using_": "(EXISTS ( SELECT 1\n   FROM profiles p\n  WHERE ((p.id = auth.uid()) AND (p.role = ANY (ARRAY['coordinator'::account_role, 'developer'::account_role])))))"
+    },
+    {
+      "tabela": "students",
+      "polname": "students_select_secretary",
+      "using_": "(EXISTS ( SELECT 1\n   FROM profiles p\n  WHERE ((p.id = auth.uid()) AND (p.role = 'secretary'::account_role))))"
+    }
+  ],
+  "colunas_students": [
+    {
+      "column_name": "id",
+      "data_type": "uuid"
+    },
+    {
+      "column_name": "school_id",
+      "data_type": "uuid"
+    },
+    {
+      "column_name": "student_profile_id",
+      "data_type": "uuid"
+    }
+  ],
+  "escopo_vivo": [
+    {
+      "staff_schools_linhas": 2,
+      "alunos_com_perfil": 0,
+      "profiles_total": 17
+    }
+  ]
+}

@@ -1,0 +1,51 @@
+{
+  "em": "2026-11-13T03:56:43.438Z",
+  "tarefa": "V119-4 sonda do embed da Supervizacao nos bytes publicados",
+  "portoes": [
+    {
+      "name": "pares_supervision_extraidos",
+      "ok": true,
+      "detail": "1 par(es) no ar a1969cdf023042e7d2a91e7ed9333a05"
+    },
+    {
+      "name": "par_publicado_devolve_200",
+      "ok": true,
+      "detail": "sports_schools(name) -> HTTP 200"
+    },
+    {
+      "name": "par_antigo_nao_aparece_na_extracao",
+      "ok": true,
+      "detail": "0 pares com schools(name) nu"
+    },
+    {
+      "name": "nenhuma_sonda_de_supervision_falha",
+      "ok": true,
+      "detail": "sondas=1 falhas=0 []"
+    },
+    {
+      "name": "censo_pos_v119_sem_ruina_na_supervision",
+      "ok": true,
+      "detail": "censo: 8 ruins no total, 0 em supervision_requests"
+    }
+  ],
+  "extracao": {
+    "em": "2026-11-13T03:54:59.265Z",
+    "ar": {
+      "http": 200,
+      "bytes": 3489474,
+      "md5": "a1969cdf023042e7d2a91e7ed9333a05"
+    },
+    "total_pares": 248
+  },
+  "sondas": [
+    {
+      "select": "id,indicator,motive,description,questions,deadline_at,priority,status,created_by,closed_by,closed_at,created_at,updated_at,school_id,sports_schools(name)",
+      "http": 200,
+      "code": null,
+      "corpo": "[]"
+    }
+  ],
+  "total": 5,
+  "ruins": 0,
+  "veredito": "V119_SONDA_VERDE"
+}

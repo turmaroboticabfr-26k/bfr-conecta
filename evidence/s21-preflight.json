@@ -1,0 +1,156 @@
+{
+  "ciclo": "S21-PREFLIGHT",
+  "em": "2026-11-13T04:36:26.133Z",
+  "escrita": 0,
+  "ddl": 0,
+  "ar": {
+    "http": 200,
+    "bytes": 3489474,
+    "md5": "a1969cdf023042e7d2a91e7ed9333a05",
+    "esperado_md5": "a1969cdf023042e7d2a91e7ed9333a05",
+    "esperado_bytes": 3489474,
+    "ok": true
+  },
+  "embed": {
+    "no_ar": 1,
+    "partida_no_ar": 0,
+    "cache_v119": false,
+    "cache_v118": false
+  },
+  "auth_users": {
+    "n": 21,
+    "md5": "851788b00e597242b977fba64041251e"
+  },
+  "public_profiles": {
+    "n": 21,
+    "md5": "ca94399791ab7c1399d8df27c3c28fac"
+  },
+  "public_sports_schools": {
+    "n": 6,
+    "md5": "e336897faf29ba27722e44e680a4b4ae"
+  },
+  "public_staff_schools": {
+    "n": 2,
+    "md5": "21a2ebcb5dd815170c95fa13c2a9e115"
+  },
+  "public_supervision_requests": {
+    "n": 0,
+    "md5": "empty"
+  },
+  "public_supervision_audit": {
+    "n": 33,
+    "md5": "871ab2250caff1c474a749fd23eb5da8"
+  },
+  "solicitações_existentes": [],
+  "policies_sports_schools": [
+    {
+      "polname": "sports_schools_manage",
+      "polcmd": "*",
+      "qual": "sports_role_allowed(ARRAY['developer'::text, 'director'::text, 'coordinator'::text])",
+      "veri": "sports_role_allowed(ARRAY['developer'::text, 'director'::text, 'coordinator'::text])"
+    },
+    {
+      "polname": "sports_schools_read",
+      "polcmd": "r",
+      "qual": "sports_role_allowed(ARRAY['developer'::text, 'director'::text, 'coordinator'::text, 'secretary'::text])",
+      "veri": null
+    },
+    {
+      "polname": "sports_schools_staff_read",
+      "polcmd": "r",
+      "qual": "((EXISTS ( SELECT 1\n   FROM profiles p\n  WHERE ((p.id = auth.uid()) AND (p.role = ANY (ARRAY['secretary'::account_role, 'director'::account_role, 'coordinator'::account_role, 'developer'::account_role, 'education_supervisor'::account_role]))))) OR bfr_is_education_supervisor())",
+      "veri": null
+    }
+  ],
+  "policies_sports_schools_texto": [
+    {
+      "polname": "sports_schools_staff_read",
+      "polcmd": "r",
+      "qual": "((EXISTS ( SELECT 1\n   FROM profiles p\n  WHERE ((p.id = auth.uid()) AND (p.role = ANY (ARRAY['secretary'::account_role, 'director'::account_role, 'coordinator'::account_role, 'developer'::account_role, 'education_supervisor'::account_role]))))) OR bfr_is_education_supervisor())",
+      "veri": null
+    }
+  ],
+  "policies_sports_schools_sem_supervisor": [
+    {
+      "polname": "sports_schools_manage",
+      "polcmd": "*",
+      "qual": "sports_role_allowed(ARRAY['developer'::text, 'director'::text, 'coordinator'::text])",
+      "veri": "sports_role_allowed(ARRAY['developer'::text, 'director'::text, 'coordinator'::text])"
+    },
+    {
+      "polname": "sports_schools_read",
+      "polcmd": "r",
+      "qual": "sports_role_allowed(ARRAY['developer'::text, 'director'::text, 'coordinator'::text, 'secretary'::text])",
+      "veri": null
+    }
+  ],
+  "policies_supervision_requests": [
+    {
+      "polname": "supervision_requests_coordinator_update",
+      "polcmd": "w",
+      "qual": "(EXISTS ( SELECT 1\n   FROM (profiles p\n     JOIN staff_schools ss ON ((ss.profile_id = p.id)))\n  WHERE ((p.id = auth.uid()) AND (ss.school_id = supervision_requests.school_id) AND (p.role = 'coordinator'::account_role))))"
+    },
+    {
+      "polname": "supervision_requests_developer_insert",
+      "polcmd": "a",
+      "qual": null
+    },
+    {
+      "polname": "supervision_requests_developer_read",
+      "polcmd": "r",
+      "qual": "(EXISTS ( SELECT 1\n   FROM profiles p\n  WHERE ((p.id = auth.uid()) AND (p.role = 'developer'::account_role))))"
+    },
+    {
+      "polname": "supervision_requests_developer_update",
+      "polcmd": "w",
+      "qual": "(EXISTS ( SELECT 1\n   FROM profiles p\n  WHERE ((p.id = auth.uid()) AND (p.role = 'developer'::account_role))))"
+    },
+    {
+      "polname": "supervision_requests_director_read",
+      "polcmd": "r",
+      "qual": "(EXISTS ( SELECT 1\n   FROM (profiles p\n     JOIN staff_schools ss ON ((ss.profile_id = p.id)))\n  WHERE ((p.id = auth.uid()) AND (p.role = 'director'::account_role) AND (ss.school_id = supervision_requests.school_id))))"
+    },
+    {
+      "polname": "supervision_requests_director_update",
+      "polcmd": "w",
+      "qual": "(EXISTS ( SELECT 1\n   FROM (profiles p\n     JOIN staff_schools ss ON ((ss.profile_id = p.id)))\n  WHERE ((p.id = auth.uid()) AND (ss.school_id = supervision_requests.school_id) AND (p.role = 'director'::account_role))))"
+    },
+    {
+      "polname": "supervision_requests_secretary_update",
+      "polcmd": "w",
+      "qual": "(EXISTS ( SELECT 1\n   FROM (staff_schools ss\n     JOIN profiles p ON ((p.id = ss.profile_id)))\n  WHERE ((p.id = auth.uid()) AND (ss.school_id = supervision_requests.school_id) AND (p.role = 'secretary'::account_role))))"
+    },
+    {
+      "polname": "supervision_requests_staff_insert",
+      "polcmd": "a",
+      "qual": null
+    },
+    {
+      "polname": "supervision_requests_staff_read",
+      "polcmd": "r",
+      "qual": "(EXISTS ( SELECT 1\n   FROM (staff_schools ss\n     JOIN profiles p ON ((p.id = ss.profile_id)))\n  WHERE ((p.id = auth.uid()) AND (ss.school_id = supervision_requests.school_id) AND (p.role = ANY (ARRAY['secretary'::account_role, 'director'::account_role, 'coordinator'::account_role])))))"
+    },
+    {
+      "polname": "supervision_requests_supervisor_insert",
+      "polcmd": "a",
+      "qual": null
+    },
+    {
+      "polname": "supervision_requests_supervisor_read",
+      "polcmd": "r",
+      "qual": "bfr_is_education_supervisor()"
+    },
+    {
+      "polname": "supervision_requests_supervisor_update",
+      "polcmd": "w",
+      "qual": "bfr_is_education_supervisor()"
+    }
+  ],
+  "consultas_supervisao": [
+    {
+      "origem": "from",
+      "tabela": "supervision_requests",
+      "select": "'id,indicator,motive,description,questions,deadline_at,priority,status,created_by,closed_by,closed_at,created_at,updated_at,school_id,sports_schools(name)"
+    }
+  ]
+}

@@ -1,0 +1,67 @@
+{
+  "version": "v119",
+  "data": "2026-11-13",
+  "ok_literal": "publicar v119",
+  "escopo_do_ok": "somente este deploy do Worker bfr-conecta; nenhuma DDL, nenhuma escrita em banco, nenhum deploy de Edge",
+  "deploy": {
+    "worker": "bfr-conecta",
+    "conta": "turmaroboticabfr@gmail.com",
+    "version_id": "6aed50af-a8a1-4c2b-84ae-cb6eaec4770b",
+    "version_anterior": "9c467d0e-d16a-4c20-9e69-50ec3b40f433",
+    "deployment_created": "2026-11-13T03:45:52.507Z",
+    "percentual_trafego_novo": 100,
+    "assets_reenviados": 0,
+    "wrangler": "4.154.0",
+    "cwd": "worker-deploy-v119",
+    "url": "https://bfr-conecta.turmaroboticabfr.workers.dev"
+  },
+  "correcao": {
+    "pendencia": "PEN-31 / RM-1.6",
+    "problema": "A aba Supervisão consultava supervision_requests com o embed school_id,schools(name) e recebia HTTP 400 PGRST200; o nome da escola nunca aparecia",
+    "causa": "a FK viva e supervision_requests_school_id_fkey -> sports_schools; o embed correto foi publicado na v115 e desfeito pela v116",
+    "solucao": "duas substituicoes no bundle: school_id,schools(name) -> school_id,sports_schools(name) (1 ocorrencia, linha 23684) e a etiqueta CACHE bfr-conecta-v118 -> bfr-conecta-v119 (1 ocorrencia). Delta +7 bytes",
+    "regra_alvo_derivada_de": "evidence/fin1f-item91-e-schools.json e evidence/fin2a-censo-embeds-v118.json (par extraido dos bytes do ar, nao dactilografado)"
+  },
+  "md5": {
+    "worker_deploy_v119/worker.mjs": "c41eef045d0110124e55d28304a99898 (3550715 B)",
+    "worker_deploy_v118_csp/worker.mjs_reversao": "ae115858d263a02bb777cc474ce17297 (3550708 B)",
+    "shell_antes": "ae59d35346b685b2fbf9d18ade4fa5cd (3489467 B)",
+    "shell_depois": "a1969cdf023042e7d2a91e7ed9333a05 (3489474 B)",
+    "sw_antes": "3fcbc3ad52f1a0491362506466c82596 (3586 B, CACHE bfr-conecta-v118)",
+    "sw_depois": "46dfdebbecd3da5f0794f85276179b76 (3586 B, CACHE bfr-conecta-v119)",
+    "wrangler_toml": "f82b42bdf2952fa7c261fd1343ef60b0 (175 B, identico ao publicado antes)"
+  },
+  "portoes": {
+    "preflight_pre_deploy": "20/0 VERDE - v119-preflight-diary.json (PREFLIGHT_VERDE)",
+    "http_pos_deploy": "15/0 VERDE - v119-postdeploy-http-diary.json (V119_HTTP_VERDE)",
+    "chrome_limpo": "10/0 VERDE - v119-chrome-limpo-diary.json (CHROME_LIMPO_VERDE)",
+    "sonda_do_par_publicado": "5/0 VERDE - evidence/v119-sonda-supervision.json (V119_SONDA_VERDE)",
+    "candidata": "15/15 - bfr-candidata-v119-supervisao-embed/portoes-v119-diary.json",
+    "bundle": "14/14 - worker-deploy-v119/worker-v119-diary.json",
+    "total_da_cadeia": 79,
+    "vermelhos": 0
+  },
+  "censo_de_embeds_reemitido": {
+    "script": "scripts/fin2a-censo-embeds.mjs sondar",
+    "ar": "3489474 B md5 a1969cdf023042e7d2a91e7ed9333a05",
+    "pares_distintos": 248,
+    "tabelas_distintas": 100,
+    "http_200_antes": 239,
+    "http_200_depois": 240,
+    "ruins_antes": 9,
+    "ruins_depois": 8,
+    "unica_ruina_que_saiu": "supervision_requests @@ ...school_id,schools(name) ## PGRST200 (linha 23684)",
+    "novas_ruins": 0,
+    "critario_de_aceite_rm16": "ATENDIDO - o censo re-emitido sobre os bytes publicados nao tem PGRST200 em supervision_requests",
+    "baseline_preservada": "evidence/fin2a-censo-embeds-v118.json e evidence/fin2a-extracao-v118.json"
+  },
+  "o_que_nao_foi_provado": [
+    "a aba Supervisao aberta logada na v119 com o nome da escola pintando na tela (prova comportamental autenticada); o que esta provado e o par de embed no PostgREST (HTTP 200), o censo re-emitido e o boot sem PGRST200",
+    "nenhuma DDL, nenhuma escrita em banco, nenhum deploy de Edge nesta passada"
+  ],
+  "reversao": {
+    "como": "wrangler deploy a partir de worker-deploy-v118-csp (worker 3550708 B md5 ae115858d263a02bb777cc474ce17297, ja conferido no disco no portao reversao_pronta_na_disco)",
+    "exige": "OK literal novo do usuario",
+    "prova_de_linhagem": "revertido 1 token no shell publicado -> 3489467 B md5 ae59d35346b685b2fbf9d18ade4fa5cd, identico ao ar anterior ao deploy"
+  }
+}

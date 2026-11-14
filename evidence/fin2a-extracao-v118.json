@@ -1,0 +1,1605 @@
+{
+  "em": "2026-11-13T01:30:18.978Z",
+  "ar": {
+    "http": 200,
+    "bytes": 3489467,
+    "md5": "ae59d35346b685b2fbf9d18ade4fa5cd"
+  },
+  "censo": {
+    "pares_distintos": 248,
+    "com_embed": 38,
+    "tabelas_distintas": 100,
+    "por_tabela": {
+      "support_professionals": 2,
+      "support_requests": 8,
+      "students": 13,
+      "profiles": 6,
+      "bfr_specialized_audit_log": 1,
+      "psychology_returns": 1,
+      "support_services": 2,
+      "bfr_teacher_directory": 3,
+      "classes": 3,
+      "grades": 12,
+      "attendance": 6,
+      "school_activities": 10,
+      "gate_entry_alerts": 3,
+      "entry_restrictions": 2,
+      "guardian_students": 5,
+      "student_messages": 5,
+      "student_school_profiles": 9,
+      "gate_badges": 3,
+      "secretary_requests": 6,
+      "secretary_request_events": 2,
+      "school_documents": 4,
+      "secretary_request_messages": 1,
+      "announcements": 5,
+      "school_events": 5,
+      "gate_checkins": 4,
+      "projects": 2,
+      "bfr_lesson_attendance": 3,
+      "occurrences": 2,
+      "student_game_sessions": 1,
+      "student_programs": 1,
+      "access_requests": 1,
+      "notification_preferences": 1,
+      "project_results": 2,
+      "project_photos": 1,
+      "school_polls": 1,
+      "school_notification_reads": 1,
+      "student_achievements": 2,
+      "bfr_schedule_versions": 1,
+      "bfr_schedule_entries": 5,
+      "student_reading_levels": 3,
+      "aee_student_roster": 5,
+      "aee_student_links": 2,
+      "support_appointments": 1,
+      "support_messages": 2,
+      "director_routine_items": 1,
+      "school_meetings": 4,
+      "aee_plans": 4,
+      "aee_sessions": 5,
+      "bfr_school_shift_settings": 2,
+      "bfr_school_calendar_days": 1,
+      "bfr_school_calendar_month_targets": 1,
+      "internal_chat_presence": 2,
+      "internal_chat_messages": 3,
+      "internal_chat_threads": 2,
+      "bfr_teacher_class_subjects": 1,
+      "bfr_grade_audit": 1,
+      "school_videos": 1,
+      "bfr_coordination_threads": 1,
+      "bfr_coordination_messages": 1,
+      "internal_chat_room_members": 3,
+      "internal_chat_message_reactions": 1,
+      "sports_public_matches": 3,
+      "route_incidents": 3,
+      "sports_public_match_events": 1,
+      "sports_match_statistics": 1,
+      "sports_public_athletes": 1,
+      "sports_match_followers": 2,
+      "sports_championships": 1,
+      "sports_public_schools": 1,
+      "sports_public_teams": 1,
+      "sports_standings": 1,
+      "announcement_recipients": 1,
+      "school_meeting_recipients": 1,
+      "aee_progress": 3,
+      "aee_activities": 1,
+      "aee_goals": 1,
+      "aee_attendance": 1,
+      "aee_activity_recommendations": 1,
+      "aee_messages": 2,
+      "aee_adaptations": 3,
+      "aee_resources": 3,
+      "aee_materials": 3,
+      "psychology_articulations": 3,
+      "support_plans": 1,
+      "support_follow_ups": 1,
+      "aee_plan_reviews": 1,
+      "secretary_profile_change_requests": 1,
+      "supervision_requests": 1,
+      "schools": 1,
+      "learning_action_plans": 2,
+      "psychology_meetings": 1,
+      "psychology_preventive_actions": 1,
+      "learning_action_items": 1,
+      "learning_teacher_actions": 1,
+      "learning_assessments": 1,
+      "learning_assessment_results": 1,
+      "learning_external_results": 1,
+      "learning_student_progress": 1,
+      "learning_indicator_settings": 1,
+      "learning_skills": 1
+    }
+  },
+  "pares": [
+    {
+      "de": "support_professionals",
+      "select": "id,profile_id,full_name,profession,area,active",
+      "ocorrencias": 2,
+      "primeira_linha": 103
+    },
+    {
+      "de": "support_requests",
+      "select": "id,student_id,requester_id,source,demand_origin,context_area,subject_scope,context_observation,reason,description,priority,status,next_action,next_action_on,assigned_to,shared_with_team,shared_with_family,professional_id,created_at,updated_at,students(official_name,classes(year,class_code))",
+      "ocorrencias": 1,
+      "primeira_linha": 109
+    },
+    {
+      "de": "students",
+      "select": "id,official_name,class_id,classes(year,class_code)",
+      "ocorrencias": 10,
+      "primeira_linha": 113
+    },
+    {
+      "de": "profiles",
+      "select": "id,full_name,role",
+      "ocorrencias": 3,
+      "primeira_linha": 124
+    },
+    {
+      "de": "bfr_specialized_audit_log",
+      "select": "id,table_name,action,row_id,student_id,actor_id,changed_at",
+      "ocorrencias": 3,
+      "primeira_linha": 125
+    },
+    {
+      "de": "psychology_returns",
+      "select": "id,referral_id,request_id,student_id,professional_id,received_on,status,summary_private,next_step,shared_with_family,shared_with_teacher,shared_with_team,created_at,updated_at",
+      "ocorrencias": 1,
+      "primeira_linha": 267
+    },
+    {
+      "de": "support_services",
+      "select": "id,name,active,sort_order",
+      "ocorrencias": 1,
+      "primeira_linha": 305
+    },
+    {
+      "de": "support_requests",
+      "select": "id,service_id",
+      "ocorrencias": 1,
+      "primeira_linha": 309
+    },
+    {
+      "de": "bfr_teacher_directory",
+      "select": "id,source_name,display_name,profile_id",
+      "ocorrencias": 4,
+      "primeira_linha": 1230
+    },
+    {
+      "de": "profiles",
+      "select": "id,full_name,email,role",
+      "ocorrencias": 14,
+      "primeira_linha": 1231
+    },
+    {
+      "de": "profiles",
+      "select": "id",
+      "ocorrencias": 7,
+      "primeira_linha": 1466
+    },
+    {
+      "de": "classes",
+      "select": "id,year,class_code,shift",
+      "ocorrencias": 19,
+      "primeira_linha": 1562
+    },
+    {
+      "de": "students",
+      "select": "id,official_name,class_id,active,classes(id,year,class_code,shift)",
+      "ocorrencias": 2,
+      "primeira_linha": 1572
+    },
+    {
+      "de": "grades",
+      "select": "student_id,subject,assessment,score,term,created_at",
+      "ocorrencias": 8,
+      "primeira_linha": 1605
+    },
+    {
+      "de": "attendance",
+      "select": "student_id,attendance_date,status",
+      "ocorrencias": 15,
+      "primeira_linha": 1606
+    },
+    {
+      "de": "students",
+      "select": "id,official_name,class_id",
+      "ocorrencias": 10,
+      "primeira_linha": 5589
+    },
+    {
+      "de": "school_activities",
+      "select": "id,title,subject,description,due_date,published_at,class_id,classes(year,class_code)",
+      "ocorrencias": 2,
+      "primeira_linha": 5589
+    },
+    {
+      "de": "students",
+      "select": "official_name,class_id",
+      "ocorrencias": 1,
+      "primeira_linha": 5669
+    },
+    {
+      "de": "classes",
+      "select": "id,year,class_code",
+      "ocorrencias": 9,
+      "primeira_linha": 5726
+    },
+    {
+      "de": "gate_entry_alerts",
+      "select": "id,student_id,reason,created_at,acknowledged_at,resolved_at,students(official_name)",
+      "ocorrencias": 3,
+      "primeira_linha": 5758
+    },
+    {
+      "de": "entry_restrictions",
+      "select": "id,student_id,reason,created_at,students(official_name,classes(year,class_code))",
+      "ocorrencias": 2,
+      "primeira_linha": 5796
+    },
+    {
+      "de": "profiles",
+      "select": "id,full_name,email",
+      "ocorrencias": 3,
+      "primeira_linha": 5888
+    },
+    {
+      "de": "guardian_students",
+      "select": "profile_id,student_id,profiles(full_name,email),students(official_name,classes(year,class_code))",
+      "ocorrencias": 1,
+      "primeira_linha": 5890
+    },
+    {
+      "de": "guardian_students",
+      "select": "profile_id",
+      "ocorrencias": 1,
+      "primeira_linha": 5950
+    },
+    {
+      "de": "student_messages",
+      "select": "body,created_at",
+      "ocorrencias": 1,
+      "primeira_linha": 5968
+    },
+    {
+      "de": "student_school_profiles",
+      "select": "student_id,birth_date,photo_path,address_line,guardian_name,guardian_phone,emergency_contact,inclusion_needs,inclusion_plan,inclusion_observations,updated_at",
+      "ocorrencias": 1,
+      "primeira_linha": 5984
+    },
+    {
+      "de": "student_school_profiles",
+      "select": "student_id,birth_date,photo_path,address_line,guardian_name,guardian_phone,emergency_contact,inclusion_needs,inclusion_plan,inclusion_observations",
+      "ocorrencias": 1,
+      "primeira_linha": 5985
+    },
+    {
+      "de": "gate_badges",
+      "select": "student_id,badge_token,active",
+      "ocorrencias": 2,
+      "primeira_linha": 6256
+    },
+    {
+      "de": "secretary_requests",
+      "select": "id,protocol,requester_id,student_id,request_type,description,purpose,details,receiving_method,status,deadline_at,admin_note,created_at,updated_at,students(official_name,classes(year,class_code))",
+      "ocorrencias": 4,
+      "primeira_linha": 6618
+    },
+    {
+      "de": "secretary_requests",
+      "select": "id,requester_id,student_id,request_type,description,status,admin_note,created_at,updated_at,students(official_name,classes(year,class_code))",
+      "ocorrencias": 2,
+      "primeira_linha": 6619
+    },
+    {
+      "de": "secretary_request_events",
+      "select": "id,request_id,status,note,created_at",
+      "ocorrencias": 3,
+      "primeira_linha": 6622
+    },
+    {
+      "de": "school_documents",
+      "select": "id,title,category,description,storage_path,student_id,request_id,recipient_id,published,created_at",
+      "ocorrencias": 5,
+      "primeira_linha": 6625
+    },
+    {
+      "de": "school_documents",
+      "select": "id,title,category,description,storage_path,created_at",
+      "ocorrencias": 3,
+      "primeira_linha": 6626
+    },
+    {
+      "de": "secretary_request_messages",
+      "select": "id,request_id,sender_id,recipient_id,body,created_at,read_at",
+      "ocorrencias": 1,
+      "primeira_linha": 6628
+    },
+    {
+      "de": "students",
+      "select": "id,official_name,class_id,active",
+      "ocorrencias": 8,
+      "primeira_linha": 6966
+    },
+    {
+      "de": "bfr_teacher_directory",
+      "select": "id",
+      "ocorrencias": 1,
+      "primeira_linha": 6968
+    },
+    {
+      "de": "school_activities",
+      "select": "id,title,subject,description,due_date,published_at,class_id",
+      "ocorrencias": 2,
+      "primeira_linha": 6969
+    },
+    {
+      "de": "announcements",
+      "select": "id,title,body,published_at,important",
+      "ocorrencias": 4,
+      "primeira_linha": 6970
+    },
+    {
+      "de": "school_events",
+      "select": "title,description,starts_at,location",
+      "ocorrencias": 5,
+      "primeira_linha": 6971
+    },
+    {
+      "de": "grades",
+      "select": "student_id,subject,score,term,created_at",
+      "ocorrencias": 2,
+      "primeira_linha": 6973
+    },
+    {
+      "de": "gate_checkins",
+      "select": "id,student_id,direction,checked_at,entry_status,restriction_reason,guardian_present,guardian_confirmed_at,students(official_name),classes(year,class_code)",
+      "ocorrencias": 1,
+      "primeira_linha": 7213
+    },
+    {
+      "de": "student_school_profiles",
+      "select": "photo_path",
+      "ocorrencias": 2,
+      "primeira_linha": 7224
+    },
+    {
+      "de": "school_activities",
+      "select": "id,title,subject,description,due_date,published_at,published_by,class_id",
+      "ocorrencias": 4,
+      "primeira_linha": 7512
+    },
+    {
+      "de": "school_events",
+      "select": "id,title,description,starts_at,location",
+      "ocorrencias": 4,
+      "primeira_linha": 7513
+    },
+    {
+      "de": "projects",
+      "select": "id,slug,title,summary,published",
+      "ocorrencias": 3,
+      "primeira_linha": 7514
+    },
+    {
+      "de": "announcements",
+      "select": "id,title,body,message_type,status,published_at,scheduled_at,important",
+      "ocorrencias": 5,
+      "primeira_linha": 7515
+    },
+    {
+      "de": "gate_checkins",
+      "select": "id,student_id,direction,checked_at,entry_status,restriction_reason",
+      "ocorrencias": 2,
+      "primeira_linha": 7550
+    },
+    {
+      "de": "bfr_lesson_attendance",
+      "select": "student_id,lesson_date,status,source",
+      "ocorrencias": 1,
+      "primeira_linha": 7552
+    },
+    {
+      "de": "gate_entry_alerts",
+      "select": "id,student_id,reason,created_at,acknowledged_at,resolved_at",
+      "ocorrencias": 2,
+      "primeira_linha": 7553
+    },
+    {
+      "de": "occurrences",
+      "select": "id,student_id,title,description,occurred_at,acknowledged_at",
+      "ocorrencias": 6,
+      "primeira_linha": 7554
+    },
+    {
+      "de": "student_game_sessions",
+      "select": "subject,score,total,points,completed_at",
+      "ocorrencias": 2,
+      "primeira_linha": 7737
+    },
+    {
+      "de": "school_activities",
+      "select": "id,title,subject,description,due_date,attachment_path,attachment_name,published_at,class_id,classes(year,class_code)",
+      "ocorrencias": 2,
+      "primeira_linha": 7876
+    },
+    {
+      "de": "school_activities",
+      "select": "id",
+      "ocorrencias": 2,
+      "primeira_linha": 7907
+    },
+    {
+      "de": "students",
+      "select": "id",
+      "ocorrencias": 5,
+      "primeira_linha": 8284
+    },
+    {
+      "de": "classes",
+      "select": "id",
+      "ocorrencias": 3,
+      "primeira_linha": 8285
+    },
+    {
+      "de": "student_school_profiles",
+      "select": "student_id,birth_date,photo_path,address_line,guardian_name,filiation_1,filiation_2,guardian_cpf_hash,guardian_phone,emergency_contact,inclusion_needs,inclusion_plan,inclusion_observations,updated_at",
+      "ocorrencias": 1,
+      "primeira_linha": 8480
+    },
+    {
+      "de": "student_school_profiles",
+      "select": "student_id,birth_date,photo_path,address_line,guardian_name,filiation_1,filiation_2,guardian_cpf_hash,guardian_phone,emergency_contact,inclusion_needs,inclusion_plan,inclusion_observations",
+      "ocorrencias": 1,
+      "primeira_linha": 8481
+    },
+    {
+      "de": "student_programs",
+      "select": "program_slug,participation_status,notes",
+      "ocorrencias": 1,
+      "primeira_linha": 8482
+    },
+    {
+      "de": "students",
+      "select": "id,official_name,class_id,active,classes(year,class_code)",
+      "ocorrencias": 3,
+      "primeira_linha": 8494
+    },
+    {
+      "de": "student_school_profiles",
+      "select": "student_id,photo_path",
+      "ocorrencias": 4,
+      "primeira_linha": 8536
+    },
+    {
+      "de": "student_school_profiles",
+      "select": "student_id,filiation_1,filiation_2",
+      "ocorrencias": 1,
+      "primeira_linha": 8865
+    },
+    {
+      "de": "access_requests",
+      "select": "id",
+      "ocorrencias": 2,
+      "primeira_linha": 9056
+    },
+    {
+      "de": "notification_preferences",
+      "select": "email_enabled,whatsapp_enabled,push_enabled",
+      "ocorrencias": 1,
+      "primeira_linha": 9161
+    },
+    {
+      "de": "gate_checkins",
+      "select": "id,student_id,direction,checked_at,entry_status,restriction_reason,guardian_present,guardian_confirmed_at",
+      "ocorrencias": 1,
+      "primeira_linha": 9525
+    },
+    {
+      "de": "project_results",
+      "select": "id,project_id,level,position,student_id,class_id,winner_name,class_label,note,theme,photo_path",
+      "ocorrencias": 2,
+      "primeira_linha": 9801
+    },
+    {
+      "de": "project_results",
+      "select": "id,project_id,position,student_id,class_id,winner_name,class_label,note",
+      "ocorrencias": 1,
+      "primeira_linha": 9803
+    },
+    {
+      "de": "projects",
+      "select": "id,slug,title,summary,information,published",
+      "ocorrencias": 1,
+      "primeira_linha": 9813
+    },
+    {
+      "de": "project_photos",
+      "select": "id,project_id,storage_path,caption,display_order,created_at",
+      "ocorrencias": 1,
+      "primeira_linha": 9814
+    },
+    {
+      "de": "school_polls",
+      "select": "id",
+      "ocorrencias": 1,
+      "primeira_linha": 10283
+    },
+    {
+      "de": "students",
+      "select": "official_name",
+      "ocorrencias": 1,
+      "primeira_linha": 10487
+    },
+    {
+      "de": "guardian_students",
+      "select": "student_id",
+      "ocorrencias": 5,
+      "primeira_linha": 10557
+    },
+    {
+      "de": "profiles",
+      "select": "role,full_name,email,phone,display_name_custom",
+      "ocorrencias": 1,
+      "primeira_linha": 10580
+    },
+    {
+      "de": "students",
+      "select": "id,official_name",
+      "ocorrencias": 4,
+      "primeira_linha": 10948
+    },
+    {
+      "de": "grades",
+      "select": "student_id,subject,assessment,score,term",
+      "ocorrencias": 1,
+      "primeira_linha": 10949
+    },
+    {
+      "de": "student_messages",
+      "select": "id,student_id,sender_id,recipient_id,category,body,created_at",
+      "ocorrencias": 3,
+      "primeira_linha": 11074
+    },
+    {
+      "de": "announcements",
+      "select": "id,title,body,published_at",
+      "ocorrencias": 2,
+      "primeira_linha": 11165
+    },
+    {
+      "de": "grades",
+      "select": "student_id,subject,score,created_at",
+      "ocorrencias": 2,
+      "primeira_linha": 11168
+    },
+    {
+      "de": "occurrences",
+      "select": "id,title,description,occurred_at",
+      "ocorrencias": 2,
+      "primeira_linha": 11168
+    },
+    {
+      "de": "student_messages",
+      "select": "id,body,created_at",
+      "ocorrencias": 2,
+      "primeira_linha": 11168
+    },
+    {
+      "de": "school_notification_reads",
+      "select": "notification_key",
+      "ocorrencias": 1,
+      "primeira_linha": 11181
+    },
+    {
+      "de": "school_events",
+      "select": "title,description,starts_at,location,event_type",
+      "ocorrencias": 1,
+      "primeira_linha": 11191
+    },
+    {
+      "de": "school_activities",
+      "select": "id,title,description,due_date,subject",
+      "ocorrencias": 2,
+      "primeira_linha": 11192
+    },
+    {
+      "de": "secretary_requests",
+      "select": "id,requester_id,student_id,request_type,description,status,created_at,students(official_name)",
+      "ocorrencias": 1,
+      "primeira_linha": 11290
+    },
+    {
+      "de": "secretary_requests",
+      "select": "id,student_id,request_type,description,status,created_at",
+      "ocorrencias": 1,
+      "primeira_linha": 11290
+    },
+    {
+      "de": "student_achievements",
+      "select": "id,student_id,title,description,icon,awarded_at,students(official_name)",
+      "ocorrencias": 1,
+      "primeira_linha": 11326
+    },
+    {
+      "de": "grades",
+      "select": "student_id,score",
+      "ocorrencias": 1,
+      "primeira_linha": 11354
+    },
+    {
+      "de": "attendance",
+      "select": "student_id,status",
+      "ocorrencias": 1,
+      "primeira_linha": 11355
+    },
+    {
+      "de": "attendance",
+      "select": "status",
+      "ocorrencias": 1,
+      "primeira_linha": 11365
+    },
+    {
+      "de": "grades",
+      "select": "score",
+      "ocorrencias": 1,
+      "primeira_linha": 11366
+    },
+    {
+      "de": "bfr_schedule_versions",
+      "select": "id",
+      "ocorrencias": 4,
+      "primeira_linha": 11561
+    },
+    {
+      "de": "bfr_schedule_entries",
+      "select": "shift,weekday,period,grade_label,class_id,subject_name,start_time,end_time,source_status,bfr_teacher_directory(display_name)",
+      "ocorrencias": 1,
+      "primeira_linha": 11569
+    },
+    {
+      "de": "student_reading_levels",
+      "select": "student_id,level,note,updated_at",
+      "ocorrencias": 1,
+      "primeira_linha": 12988
+    },
+    {
+      "de": "student_reading_levels",
+      "select": "student_id,assist_progress,assist_seconds,assist_updated_at",
+      "ocorrencias": 1,
+      "primeira_linha": 13017
+    },
+    {
+      "de": "aee_student_roster",
+      "select": "id,student_id,year,class_code,observation,students(official_name)",
+      "ocorrencias": 1,
+      "primeira_linha": 13121
+    },
+    {
+      "de": "attendance",
+      "select": "student_id",
+      "ocorrencias": 1,
+      "primeira_linha": 13147
+    },
+    {
+      "de": "aee_student_links",
+      "select": "student_id",
+      "ocorrencias": 1,
+      "primeira_linha": 13148
+    },
+    {
+      "de": "student_reading_levels",
+      "select": "level",
+      "ocorrencias": 1,
+      "primeira_linha": 13149
+    },
+    {
+      "de": "secretary_requests",
+      "select": "status",
+      "ocorrencias": 1,
+      "primeira_linha": 13150
+    },
+    {
+      "de": "gate_entry_alerts",
+      "select": "id",
+      "ocorrencias": 1,
+      "primeira_linha": 13151
+    },
+    {
+      "de": "support_services",
+      "select": "id,name,icon,description,active,sort_order",
+      "ocorrencias": 1,
+      "primeira_linha": 13228
+    },
+    {
+      "de": "support_professionals",
+      "select": "id,profile_id,full_name,profession,area,description,formation,schedule,location,audience,can_receive_requests,active",
+      "ocorrencias": 1,
+      "primeira_linha": 13230
+    },
+    {
+      "de": "support_requests",
+      "select": "id,student_id,requester_id,source,service_id,professional_id,reason,description,priority,status,created_at,updated_at",
+      "ocorrencias": 1,
+      "primeira_linha": 13241
+    },
+    {
+      "de": "support_appointments",
+      "select": "id,request_id,student_id,professional_id,starts_at,status,location,created_at",
+      "ocorrencias": 1,
+      "primeira_linha": 13245
+    },
+    {
+      "de": "support_messages",
+      "select": "id,request_id,student_id,sender_id,recipient_id,body,created_at",
+      "ocorrencias": 1,
+      "primeira_linha": 13248
+    },
+    {
+      "de": "school_documents",
+      "select": "id,title,category,description,published",
+      "ocorrencias": 1,
+      "primeira_linha": 13503
+    },
+    {
+      "de": "school_activities",
+      "select": "id,title,subject,description,due_date,class_id,classes(year,class_code)",
+      "ocorrencias": 1,
+      "primeira_linha": 13521
+    },
+    {
+      "de": "school_documents",
+      "select": "id,title,category,description,storage_path,published,created_at",
+      "ocorrencias": 3,
+      "primeira_linha": 13744
+    },
+    {
+      "de": "students",
+      "select": "id,class_id,active",
+      "ocorrencias": 1,
+      "primeira_linha": 14078
+    },
+    {
+      "de": "bfr_lesson_attendance",
+      "select": "student_id,lesson_date,status",
+      "ocorrencias": 1,
+      "primeira_linha": 14080
+    },
+    {
+      "de": "grades",
+      "select": "student_id,subject,assessment,score,created_at",
+      "ocorrencias": 1,
+      "primeira_linha": 14081
+    },
+    {
+      "de": "director_routine_items",
+      "select": "id,owner_id,title,details,item_type,priority,due_date,due_time,is_done,completed_at,created_at,updated_at",
+      "ocorrencias": 1,
+      "primeira_linha": 14219
+    },
+    {
+      "de": "profiles",
+      "select": "id,photo_path",
+      "ocorrencias": 1,
+      "primeira_linha": 14385
+    },
+    {
+      "de": "bfr_schedule_entries",
+      "select": "shift,weekday,period,grade_label,class_id,subject_name,start_time,end_time,teacher_id,source_status",
+      "ocorrencias": 2,
+      "primeira_linha": 15062
+    },
+    {
+      "de": "grades",
+      "select": "id,student_id,subject,assessment,score,term,created_at,entered_by",
+      "ocorrencias": 2,
+      "primeira_linha": 15065
+    },
+    {
+      "de": "school_meetings",
+      "select": "id,title,starts_at,location,status",
+      "ocorrencias": 4,
+      "primeira_linha": 15069
+    },
+    {
+      "de": "bfr_teacher_directory",
+      "select": "id,display_name,profile_id",
+      "ocorrencias": 2,
+      "primeira_linha": 15072
+    },
+    {
+      "de": "aee_student_roster",
+      "select": "student_id",
+      "ocorrencias": 3,
+      "primeira_linha": 15074
+    },
+    {
+      "de": "aee_plans",
+      "select": "id",
+      "ocorrencias": 2,
+      "primeira_linha": 15075
+    },
+    {
+      "de": "aee_sessions",
+      "select": "id",
+      "ocorrencias": 2,
+      "primeira_linha": 15076
+    },
+    {
+      "de": "support_requests",
+      "select": "id",
+      "ocorrencias": 2,
+      "primeira_linha": 15077
+    },
+    {
+      "de": "bfr_school_shift_settings",
+      "select": "school_year,shift,entry_opens_at,class_starts_at,shift_closes_at,active_weekdays,late_grace_minutes,confirmed_by,confirmed_at,updated_at",
+      "ocorrencias": 1,
+      "primeira_linha": 15089
+    },
+    {
+      "de": "bfr_school_calendar_days",
+      "select": "school_year,school_date,calendar_status,label,source_status,confirmed_at",
+      "ocorrencias": 2,
+      "primeira_linha": 15090
+    },
+    {
+      "de": "bfr_school_calendar_month_targets",
+      "select": "school_year,month,expected_school_days",
+      "ocorrencias": 1,
+      "primeira_linha": 15091
+    },
+    {
+      "de": "internal_chat_presence",
+      "select": "profile_id,status",
+      "ocorrencias": 1,
+      "primeira_linha": 16268
+    },
+    {
+      "de": "internal_chat_messages",
+      "select": "id,room_id,sender_id,body,attachment_path,attachment_name,attachment_type,reply_to_id,deleted_at,created_at",
+      "ocorrencias": 2,
+      "primeira_linha": 16286
+    },
+    {
+      "de": "internal_chat_threads",
+      "select": "id,kind,title,created_by,updated_at",
+      "ocorrencias": 2,
+      "primeira_linha": 16295
+    },
+    {
+      "de": "aee_student_roster",
+      "select": "id,year,class_code,observation,students(official_name)",
+      "ocorrencias": 1,
+      "primeira_linha": 16574
+    },
+    {
+      "de": "students",
+      "select": "id,class_id",
+      "ocorrencias": 1,
+      "primeira_linha": 16823
+    },
+    {
+      "de": "bfr_schedule_entries",
+      "select": "class_id,subject_name,bfr_teacher_directory(display_name)",
+      "ocorrencias": 1,
+      "primeira_linha": 16831
+    },
+    {
+      "de": "bfr_schedule_entries",
+      "select": "id,shift,weekday,period,grade_label,class_id,subject_name,start_time,end_time,teacher_id,bfr_teacher_directory!inner(display_name,profile_id)",
+      "ocorrencias": 1,
+      "primeira_linha": 17292
+    },
+    {
+      "de": "bfr_teacher_class_subjects",
+      "select": "class_id,subject",
+      "ocorrencias": 1,
+      "primeira_linha": 17352
+    },
+    {
+      "de": "grades",
+      "select": "id,score",
+      "ocorrencias": 1,
+      "primeira_linha": 17748
+    },
+    {
+      "de": "bfr_grade_audit",
+      "select": "id,old_score,new_score,reason,changed_at",
+      "ocorrencias": 1,
+      "primeira_linha": 17761
+    },
+    {
+      "de": "school_videos",
+      "select": "id,title,description,subject,video_url,duration_seconds,thumbnail_url",
+      "ocorrencias": 1,
+      "primeira_linha": 18894
+    },
+    {
+      "de": "bfr_coordination_threads",
+      "select": "id,subject,category,status,guardian_id,created_at,updated_at",
+      "ocorrencias": 1,
+      "primeira_linha": 18934
+    },
+    {
+      "de": "bfr_coordination_messages",
+      "select": "id,sender_id,body,created_at",
+      "ocorrencias": 1,
+      "primeira_linha": 18948
+    },
+    {
+      "de": "internal_chat_room_members",
+      "select": "room_id,profile_id,last_read_at",
+      "ocorrencias": 2,
+      "primeira_linha": 19226
+    },
+    {
+      "de": "internal_chat_messages",
+      "select": "id,room_id,sender_id,body,created_at,deleted_at",
+      "ocorrencias": 1,
+      "primeira_linha": 19227
+    },
+    {
+      "de": "internal_chat_presence",
+      "select": "profile_id,status,last_seen_at",
+      "ocorrencias": 1,
+      "primeira_linha": 19228
+    },
+    {
+      "de": "internal_chat_message_reactions",
+      "select": "message_id,profile_id,emoji",
+      "ocorrencias": 1,
+      "primeira_linha": 19229
+    },
+    {
+      "de": "internal_chat_room_members",
+      "select": "profile_id",
+      "ocorrencias": 2,
+      "primeira_linha": 19315
+    },
+    {
+      "de": "internal_chat_threads",
+      "select": "id",
+      "ocorrencias": 1,
+      "primeira_linha": 19317
+    },
+    {
+      "de": "internal_chat_room_members",
+      "select": "room_id,last_read_at",
+      "ocorrencias": 1,
+      "primeira_linha": 19326
+    },
+    {
+      "de": "internal_chat_messages",
+      "select": "room_id,sender_id,created_at",
+      "ocorrencias": 1,
+      "primeira_linha": 19330
+    },
+    {
+      "de": "student_school_profiles",
+      "select": "student_id,guardian_name,guardian_phone",
+      "ocorrencias": 5,
+      "primeira_linha": 19413
+    },
+    {
+      "de": "guardian_students",
+      "select": "student_id,profiles(full_name,phone)",
+      "ocorrencias": 2,
+      "primeira_linha": 19415
+    },
+    {
+      "de": "sports_public_matches",
+      "select": "id,sport,home_score,away_score,home_team_id,away_team_id,status,scheduled_at,venue",
+      "ocorrencias": 1,
+      "primeira_linha": 19507
+    },
+    {
+      "de": "attendance",
+      "select": "status,attendance_date",
+      "ocorrencias": 1,
+      "primeira_linha": 19557
+    },
+    {
+      "de": "grades",
+      "select": "score,subject,created_at",
+      "ocorrencias": 1,
+      "primeira_linha": 19557
+    },
+    {
+      "de": "announcements",
+      "select": "id,published_at",
+      "ocorrencias": 1,
+      "primeira_linha": 19557
+    },
+    {
+      "de": "school_activities",
+      "select": "id,due_date",
+      "ocorrencias": 1,
+      "primeira_linha": 19557
+    },
+    {
+      "de": "sports_public_matches",
+      "select": "status,scheduled_at",
+      "ocorrencias": 1,
+      "primeira_linha": 19557
+    },
+    {
+      "de": "route_incidents",
+      "select": "id,student_id,class_id,incident_type,description,occurred_at,created_at,notification_status,students(official_name),classes(year,class_code)",
+      "ocorrencias": 1,
+      "primeira_linha": 20287
+    },
+    {
+      "de": "gate_badges",
+      "select": "student_id,active",
+      "ocorrencias": 2,
+      "primeira_linha": 20297
+    },
+    {
+      "de": "route_incidents",
+      "select": "id,student_id,class_id,occurred_at,created_at,students(official_name),classes(year,class_code)",
+      "ocorrencias": 1,
+      "primeira_linha": 20319
+    },
+    {
+      "de": "student_school_profiles",
+      "select": "student_id,photo_path,updated_at",
+      "ocorrencias": 1,
+      "primeira_linha": 20780
+    },
+    {
+      "de": "grades",
+      "select": "id,subject,assessment,score,term,created_at",
+      "ocorrencias": 1,
+      "primeira_linha": 20849
+    },
+    {
+      "de": "attendance",
+      "select": "attendance_date,status",
+      "ocorrencias": 1,
+      "primeira_linha": 20850
+    },
+    {
+      "de": "student_messages",
+      "select": "id,body,category,created_at",
+      "ocorrencias": 1,
+      "primeira_linha": 20853
+    },
+    {
+      "de": "student_achievements",
+      "select": "*",
+      "ocorrencias": 1,
+      "primeira_linha": 20855
+    },
+    {
+      "de": "sports_public_match_events",
+      "select": "id,match_id,team_id,athlete_id,event_type,points,period,clock_seconds,description,created_at",
+      "ocorrencias": 1,
+      "primeira_linha": 21597
+    },
+    {
+      "de": "sports_match_statistics",
+      "select": "id,match_id,team_id,athlete_id,metric,value",
+      "ocorrencias": 1,
+      "primeira_linha": 21597
+    },
+    {
+      "de": "sports_public_athletes",
+      "select": "id,team_id,name,jersey_number,position,status",
+      "ocorrencias": 1,
+      "primeira_linha": 21597
+    },
+    {
+      "de": "sports_match_followers",
+      "select": "id",
+      "ocorrencias": 1,
+      "primeira_linha": 21633
+    },
+    {
+      "de": "sports_championships",
+      "select": "id,name,edition,starts_on,ends_on,status,modalities,categories",
+      "ocorrencias": 1,
+      "primeira_linha": 21646
+    },
+    {
+      "de": "sports_public_schools",
+      "select": "id,name,city,logo_url",
+      "ocorrencias": 1,
+      "primeira_linha": 21647
+    },
+    {
+      "de": "sports_public_teams",
+      "select": "id,school_id,school_name,name,sport,category,gender,crest_url,active",
+      "ocorrencias": 1,
+      "primeira_linha": 21648
+    },
+    {
+      "de": "sports_public_matches",
+      "select": "id,championship_id,sport,category,gender,home_team_id,away_team_id,scheduled_at,venue,phase,status,home_score,away_score,period,clock_seconds,started_at,finished_at",
+      "ocorrencias": 1,
+      "primeira_linha": 21649
+    },
+    {
+      "de": "sports_standings",
+      "select": "id,championship_id,team_id,played,wins,draws,losses,points_for,points_against,points",
+      "ocorrencias": 1,
+      "primeira_linha": 21650
+    },
+    {
+      "de": "sports_match_followers",
+      "select": "match_id",
+      "ocorrencias": 1,
+      "primeira_linha": 21665
+    },
+    {
+      "de": "announcements",
+      "select": "id,title,body,message_type,status,published_at,scheduled_at,created_at,important,meeting_id",
+      "ocorrencias": 1,
+      "primeira_linha": 21911
+    },
+    {
+      "de": "announcement_recipients",
+      "select": "announcement_id,recipient_id,read_at,confirmed_at,notification_status",
+      "ocorrencias": 1,
+      "primeira_linha": 21912
+    },
+    {
+      "de": "school_meetings",
+      "select": "id,title,starts_at,location,description,status,reminder_enabled,reminder_days,reminder_time,created_at",
+      "ocorrencias": 1,
+      "primeira_linha": 21927
+    },
+    {
+      "de": "school_meeting_recipients",
+      "select": "meeting_id,recipient_id",
+      "ocorrencias": 1,
+      "primeira_linha": 21928
+    },
+    {
+      "de": "school_meetings",
+      "select": "id,title,starts_at,location,description,notes,status,reminder_enabled,reminder_days,reminder_time",
+      "ocorrencias": 1,
+      "primeira_linha": 21940
+    },
+    {
+      "de": "guardian_students",
+      "select": "student_id,profile_id,profiles(full_name,phone,email)",
+      "ocorrencias": 2,
+      "primeira_linha": 22515
+    },
+    {
+      "de": "aee_student_roster",
+      "select": "id,student_id,year,class_code,observation,active,students(id,official_name,class_id,classes(year,class_code))",
+      "ocorrencias": 1,
+      "primeira_linha": 22864
+    },
+    {
+      "de": "aee_student_links",
+      "select": "id,teacher_id,student_id,status,created_at,archived_at",
+      "ocorrencias": 1,
+      "primeira_linha": 22878
+    },
+    {
+      "de": "aee_sessions",
+      "select": "id,student_id,teacher_id,scheduled_at,duration_minutes,status,focus,next_steps",
+      "ocorrencias": 1,
+      "primeira_linha": 22890
+    },
+    {
+      "de": "aee_plans",
+      "select": "id,student_id,title,next_review_on,status",
+      "ocorrencias": 1,
+      "primeira_linha": 22891
+    },
+    {
+      "de": "aee_progress",
+      "select": "id,student_id,goal_id,recorded_on,area,evidence,next_step,shared_with_family",
+      "ocorrencias": 1,
+      "primeira_linha": 22892
+    },
+    {
+      "de": "support_requests",
+      "select": "id,student_id,requester_id,source,demand_origin,reason,description,priority,status,next_action,next_action_on,subject_scope,context_area,created_at,updated_at,students(official_name)",
+      "ocorrencias": 1,
+      "primeira_linha": 22901
+    },
+    {
+      "de": "aee_activities",
+      "select": "id,title,area,objective,instructions,accessibility_adaptations,materials,grade_band,is_template",
+      "ocorrencias": 1,
+      "primeira_linha": 22913
+    },
+    {
+      "de": "aee_plans",
+      "select": "id,student_id,created_by,title,summary,strengths,accessibility_profile,next_review_on,status,created_at,updated_at",
+      "ocorrencias": 1,
+      "primeira_linha": 22923
+    },
+    {
+      "de": "aee_goals",
+      "select": "id,plan_id,student_id,area,description,baseline,target,measure,status,target_date,created_at,updated_at",
+      "ocorrencias": 1,
+      "primeira_linha": 22924
+    },
+    {
+      "de": "aee_sessions",
+      "select": "id,student_id,teacher_id,scheduled_at,duration_minutes,status,focus,private_observation,next_steps,family_shared,created_at,updated_at",
+      "ocorrencias": 1,
+      "primeira_linha": 22925
+    },
+    {
+      "de": "aee_attendance",
+      "select": "id,session_id,student_id,teacher_id,attendance_date,status,note,created_at",
+      "ocorrencias": 1,
+      "primeira_linha": 22926
+    },
+    {
+      "de": "aee_progress",
+      "select": "id,student_id,teacher_id,goal_id,recorded_on,area,evidence,rating,next_step,shared_with_family,created_at",
+      "ocorrencias": 1,
+      "primeira_linha": 22927
+    },
+    {
+      "de": "aee_activity_recommendations",
+      "select": "id,activity_id,student_id,teacher_id,source,review_status,rationale,assigned_on,created_at,updated_at",
+      "ocorrencias": 1,
+      "primeira_linha": 22928
+    },
+    {
+      "de": "aee_messages",
+      "select": "id,student_id,sender_id,recipient_id,audience,subject,body,internal,created_at,read_at",
+      "ocorrencias": 1,
+      "primeira_linha": 22929
+    },
+    {
+      "de": "aee_adaptations",
+      "select": "id,student_id,plan_id,teacher_id,created_by,title,guidance,audience,shared_with_teacher,shared_with_family,status,created_at,updated_at",
+      "ocorrencias": 1,
+      "primeira_linha": 22930
+    },
+    {
+      "de": "aee_resources",
+      "select": "id,student_id,teacher_id,created_by,title,resource_type,objective,context,notes,shared_with_teacher,shared_with_family,created_at,updated_at",
+      "ocorrencias": 1,
+      "primeira_linha": 22931
+    },
+    {
+      "de": "aee_materials",
+      "select": "id,student_id,teacher_id,created_by,title,category,description,link_url,storage_path,shared_with_teacher,shared_with_family,created_at,updated_at",
+      "ocorrencias": 1,
+      "primeira_linha": 22932
+    },
+    {
+      "de": "psychology_articulations",
+      "select": "id,student_id,purpose,guidance,occurred_on,next_action",
+      "ocorrencias": 1,
+      "primeira_linha": 22933
+    },
+    {
+      "de": "support_requests",
+      "select": "id,student_id,requester_id,professional_id,reason,priority,status,created_at,updated_at,students(official_name)",
+      "ocorrencias": 1,
+      "primeira_linha": 23392
+    },
+    {
+      "de": "support_plans",
+      "select": "id,student_id,request_id,objective,strategies,actions,professionals,due_date,progress,next_review,status,is_private,updated_at",
+      "ocorrencias": 1,
+      "primeira_linha": 23393
+    },
+    {
+      "de": "support_follow_ups",
+      "select": "id,request_id,appointment_id,student_id,professional_id,type,observation,guidance,next_action,return_date,status,is_private,created_at",
+      "ocorrencias": 1,
+      "primeira_linha": 23394
+    },
+    {
+      "de": "support_messages",
+      "select": "id,request_id,student_id,sender_id,recipient_id,body,read_at,created_at",
+      "ocorrencias": 1,
+      "primeira_linha": 23395
+    },
+    {
+      "de": "aee_plan_reviews",
+      "select": "id,plan_id,student_id,created_by,review_date,review_type,summary,decisions,next_review_on,shared_with_family,created_at",
+      "ocorrencias": 1,
+      "primeira_linha": 23573
+    },
+    {
+      "de": "school_activities",
+      "select": "id,title,subject,due_date,published_at,class_id,published_by",
+      "ocorrencias": 1,
+      "primeira_linha": 23679
+    },
+    {
+      "de": "secretary_profile_change_requests",
+      "select": "id,requester_id,student_id,requested_changes,status,created_at,updated_at",
+      "ocorrencias": 1,
+      "primeira_linha": 23682
+    },
+    {
+      "de": "supervision_requests",
+      "select": "id,indicator,motive,description,questions,deadline_at,priority,status,created_by,closed_by,closed_at,created_at,updated_at,school_id,schools(name)",
+      "ocorrencias": 1,
+      "primeira_linha": 23684
+    },
+    {
+      "de": "schools",
+      "select": "id,name,active",
+      "ocorrencias": 1,
+      "primeira_linha": 23685
+    },
+    {
+      "de": "learning_action_plans",
+      "select": "id,name,school_year,start_date,end_date,responsible_id,diagnostic_source,problem,evidence,skill_name,descriptor,current_percent,interim_goal,final_goal,students_affected,status,created_at,updated_at",
+      "ocorrencias": 1,
+      "primeira_linha": 23686
+    },
+    {
+      "de": "secretary_request_events",
+      "select": "id,request_id,status,note,created_at,created_by",
+      "ocorrencias": 1,
+      "primeira_linha": 23690
+    },
+    {
+      "de": "aee_plans",
+      "select": "student_id,status",
+      "ocorrencias": 1,
+      "primeira_linha": 24033
+    },
+    {
+      "de": "aee_sessions",
+      "select": "student_id,status",
+      "ocorrencias": 1,
+      "primeira_linha": 24034
+    },
+    {
+      "de": "support_requests",
+      "select": "student_id,status",
+      "ocorrencias": 1,
+      "primeira_linha": 24035
+    },
+    {
+      "de": "students",
+      "select": "id,official_name,class_id,active,classes(year,class_code,shift)",
+      "ocorrencias": 3,
+      "primeira_linha": 25174
+    },
+    {
+      "de": "route_incidents",
+      "select": "id,student_id,class_id,monitor_id,incident_type,description,occurred_at,created_at,notification_status,notified_at",
+      "ocorrencias": 1,
+      "primeira_linha": 25177
+    },
+    {
+      "de": "student_messages",
+      "select": "id,student_id,body,created_at,sender_id,recipient_id,category",
+      "ocorrencias": 1,
+      "primeira_linha": 25180
+    },
+    {
+      "de": "school_events",
+      "select": "id,title,starts_at,location",
+      "ocorrencias": 1,
+      "primeira_linha": 25181
+    },
+    {
+      "de": "students",
+      "select": "id,official_name,class_id,classes(year,class_code,shift)",
+      "ocorrencias": 1,
+      "primeira_linha": 25565
+    },
+    {
+      "de": "gate_badges",
+      "select": "badge_token,active",
+      "ocorrencias": 1,
+      "primeira_linha": 25632
+    },
+    {
+      "de": "gate_checkins",
+      "select": "id,student_id,direction,checked_at,entry_status,restriction_reason,guardian_present,guardian_confirmed_at,students(official_name),classes(year,class_code,shift)",
+      "ocorrencias": 1,
+      "primeira_linha": 25778
+    },
+    {
+      "de": "entry_restrictions",
+      "select": "id,student_id,reason,created_at,active,students(official_name,classes(year,class_code))",
+      "ocorrencias": 1,
+      "primeira_linha": 25789
+    },
+    {
+      "de": "bfr_school_shift_settings",
+      "select": "school_year,shift,entry_opens_at,class_starts_at,shift_closes_at,active_weekdays,late_grace_minutes,confirmed_at",
+      "ocorrencias": 1,
+      "primeira_linha": 25790
+    },
+    {
+      "de": "support_requests",
+      "select": "id,student_id,requester_id,source,demand_origin,context_area,context_frequency,subject_scope,context_observation,reason,description,priority,status,next_action,next_action_on,assigned_to,shared_with_team,shared_with_family,professional_id,created_at,updated_at,students(official_name,classes(year,class_code))",
+      "ocorrencias": 1,
+      "primeira_linha": 26221
+    },
+    {
+      "de": "psychology_meetings",
+      "select": "*",
+      "ocorrencias": 2,
+      "primeira_linha": 26234
+    },
+    {
+      "de": "psychology_preventive_actions",
+      "select": "*",
+      "ocorrencias": 2,
+      "primeira_linha": 26235
+    },
+    {
+      "de": "psychology_articulations",
+      "select": "*",
+      "ocorrencias": 2,
+      "primeira_linha": 26236
+    },
+    {
+      "de": "aee_student_roster",
+      "select": "student_id,year,class_code",
+      "ocorrencias": 1,
+      "primeira_linha": 26503
+    },
+    {
+      "de": "aee_progress",
+      "select": "student_id,recorded_on,area,evidence,next_step",
+      "ocorrencias": 1,
+      "primeira_linha": 26504
+    },
+    {
+      "de": "aee_adaptations",
+      "select": "student_id,title,guidance,updated_at",
+      "ocorrencias": 1,
+      "primeira_linha": 26505
+    },
+    {
+      "de": "aee_resources",
+      "select": "student_id,title,resource_type,objective,updated_at",
+      "ocorrencias": 1,
+      "primeira_linha": 26506
+    },
+    {
+      "de": "aee_materials",
+      "select": "student_id,title,category,description,link_url,updated_at",
+      "ocorrencias": 1,
+      "primeira_linha": 26507
+    },
+    {
+      "de": "aee_sessions",
+      "select": "student_id,scheduled_at,status,focus",
+      "ocorrencias": 1,
+      "primeira_linha": 26508
+    },
+    {
+      "de": "aee_messages",
+      "select": "student_id,subject,body,created_at",
+      "ocorrencias": 1,
+      "primeira_linha": 26509
+    },
+    {
+      "de": "aee_adaptations",
+      "select": "student_id,title,guidance,updated_at,students(official_name)",
+      "ocorrencias": 1,
+      "primeira_linha": 26540
+    },
+    {
+      "de": "aee_resources",
+      "select": "student_id,title,resource_type,objective,updated_at,students(official_name)",
+      "ocorrencias": 1,
+      "primeira_linha": 26541
+    },
+    {
+      "de": "aee_materials",
+      "select": "student_id,title,category,description,link_url,updated_at,students(official_name)",
+      "ocorrencias": 1,
+      "primeira_linha": 26542
+    },
+    {
+      "de": "psychology_articulations",
+      "select": "student_id,purpose,guidance,occurred_on,teacher_id,students(official_name)",
+      "ocorrencias": 1,
+      "primeira_linha": 26543
+    },
+    {
+      "de": "grades",
+      "select": "student_id,subject,assessment,score,term,created_at,entered_by",
+      "ocorrencias": 1,
+      "primeira_linha": 26921
+    },
+    {
+      "de": "school_events",
+      "select": "id,title,description,location,starts_at",
+      "ocorrencias": 1,
+      "primeira_linha": 26923
+    },
+    {
+      "de": "school_meetings",
+      "select": "id,title,description,notes,location,starts_at,status",
+      "ocorrencias": 1,
+      "primeira_linha": 26924
+    },
+    {
+      "de": "secretary_requests",
+      "select": "id,requester_id,student_id,request_type,description,status,admin_note,created_at",
+      "ocorrencias": 1,
+      "primeira_linha": 26926
+    },
+    {
+      "de": "bfr_schedule_entries",
+      "select": "class_id,teacher_id,subject_name,bfr_teacher_directory(display_name,profile_id)",
+      "ocorrencias": 1,
+      "primeira_linha": 26931
+    },
+    {
+      "de": "bfr_lesson_attendance",
+      "select": "student_id,lesson_date,status,class_id,source",
+      "ocorrencias": 1,
+      "primeira_linha": 26934
+    },
+    {
+      "de": "learning_action_plans",
+      "select": "*",
+      "ocorrencias": 1,
+      "primeira_linha": 27763
+    },
+    {
+      "de": "learning_action_items",
+      "select": "*",
+      "ocorrencias": 1,
+      "primeira_linha": 27764
+    },
+    {
+      "de": "learning_teacher_actions",
+      "select": "*",
+      "ocorrencias": 1,
+      "primeira_linha": 27765
+    },
+    {
+      "de": "learning_assessments",
+      "select": "*",
+      "ocorrencias": 1,
+      "primeira_linha": 27766
+    },
+    {
+      "de": "learning_assessment_results",
+      "select": "*",
+      "ocorrencias": 1,
+      "primeira_linha": 27767
+    },
+    {
+      "de": "learning_external_results",
+      "select": "*",
+      "ocorrencias": 1,
+      "primeira_linha": 27768
+    },
+    {
+      "de": "learning_student_progress",
+      "select": "*",
+      "ocorrencias": 1,
+      "primeira_linha": 27769
+    },
+    {
+      "de": "learning_indicator_settings",
+      "select": "*",
+      "ocorrencias": 1,
+      "primeira_linha": 27770
+    },
+    {
+      "de": "learning_skills",
+      "select": "id,name,subject_name,descriptor",
+      "ocorrencias": 1,
+      "primeira_linha": 27774
+    },
+    {
+      "de": "school_activities",
+      "select": "id,title,subject,due_date,published_at,class_id",
+      "ocorrencias": 1,
+      "primeira_linha": 27777
+    }
+  ]
+}

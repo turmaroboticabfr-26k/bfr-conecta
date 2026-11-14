@@ -1,0 +1,472 @@
+{
+  "ciclo": "H4/H5-1-MEDICAO",
+  "tarefa": "#1166 (RM-1.7, resíduos da v120)",
+  "em": "2026-11-13T18:46:11.488Z",
+  "escopo": "somente leitura; 0 deploy, 0 mint, 0 DDL, 0 INSERT; nenhuma candidata alterada",
+  "origem_dos_alvos": {
+    "url_ar": "https://bfr-conecta.turmaroboticabfr.workers.dev",
+    "shell_depois_publicado": {
+      "md5": "a9a76d0e338c2a539135bccce23111b4",
+      "bytes": 3489649
+    },
+    "regua_candidata": {
+      "candidate_md5": "a9a76d0e338c2a539135bccce23111b4",
+      "candidate_bytes": 3489649,
+      "hunks": [
+        {
+          "id": "H1",
+          "line": 9902
+        },
+        {
+          "id": "H2",
+          "line": 9926
+        },
+        {
+          "id": "H3",
+          "line": 10145
+        }
+      ]
+    }
+  },
+  "bytes": {
+    "ar": {
+      "bytes": 3489649,
+      "md5": "a9a76d0e338c2a539135bccce23111b4",
+      "arquivo": "C:/Users/pcmac/Documents/Qoder/2026-10-13/28077d9a/bfr-conecta/evidence/h45-ar-v120-shell.html"
+    },
+    "candidata_v120": {
+      "bytes": 3489649,
+      "md5": "a9a76d0e338c2a539135bccce23111b4",
+      "linhas": 28661
+    }
+  },
+  "h5": {
+    "linha_accountLabels": 10437,
+    "linha_uso": 10438,
+    "linha_pintura": 10440,
+    "chaves_no_mapa": [
+      "developer",
+      "director",
+      "pedagogical",
+      "aee",
+      "psychology",
+      "social_work",
+      "sports_operator",
+      "monitor",
+      "gatekeeper",
+      "secretary",
+      "student",
+      "parent"
+    ],
+    "total_chaves": 12,
+    "rotulo_parent_2o_elemento": "Responsável",
+    "tem_chave_education_supervisor": false,
+    "linha_uso_texto": "const account = accountLabels[role] || accountLabels.parent;",
+    "fallback_e_parent": true,
+    "texto_pintado": "document.querySelector('.mini-person span:not([style])').textContent = account[1];",
+    "o_segundo_elemento_e_o_que_aparece": true,
+    "conta_pintura_account1": 1,
+    "conta_pintura_account0": 0,
+    "rotulo_oficial_do_app": {
+      "linha": 9001,
+      "rotulo": "Supervisor(a) de ensino"
+    },
+    "linha_profileRoleOptions": 8987,
+    "linha_nome_pintado_no_chip": 10439,
+    "nome_do_chip_vem_de": "preferredDisplayName :10316-10321",
+    "nome_do_chip_ignora_papel": true
+  },
+  "h4": {
+    "linha_toggle": 10425,
+    "toggle_texto": "document.querySelector('[data-section=\"secretaria\"]')?.classList.toggle('hidden', !['parent','secretary','developer'].includes(role));",
+    "toggle_aceita_supervisor": false,
+    "linha_syncRoleNavigation_chamada": 10434,
+    "linha_syncRoleNavigation_def": 11383,
+    "sync_roda_depois_do_toggle": true,
+    "query_do_nav": {
+      "linha": 11386,
+      "texto": "document.querySelectorAll('.sidebar .nav-item[data-section],.mobile-more-option[data-section]').forEach(item => item.classList.toggle('hidden', !allowed.includes(item.dataset.section)));"
+    },
+    "linha_roleSectionAccess": 9004,
+    "access_education_supervisor": {
+      "linha": 9018,
+      "secoes": [
+        "inicio",
+        "secretaria",
+        "comunicados",
+        "escola-historia",
+        "notificacoes",
+        "conteudos",
+        "comunicacao",
+        "chat-interno",
+        "coordenacao-chat",
+        "jogos-escolares",
+        "fotos",
+        "supervisao"
+      ]
+    },
+    "access_contem_secretaria": true
+  },
+  "bancada_v3": {
+    "veredito": "RM17_BANCADA_V3_OK",
+    "portoes": 43,
+    "falhas": [],
+    "viewport": {
+      "largura": 1280,
+      "altura": 900,
+      "fonte": "flag do chrome no script da bancada"
+    },
+    "telas": {
+      "base": {
+        "nome": "controle v119 (shell do ar)",
+        "md5_servido": "a1969cdf023042e7d2a91e7ed9333a05",
+        "bytes_servidos": 3489474,
+        "passos": [
+          {
+            "passo": "s0",
+            "activeView": null,
+            "runtime_papel": null,
+            "item_secretaria_visivel": false,
+            "supervisao_no_menu": false,
+            "aba_supervisao_visivel": false,
+            "aba_supervisao_ativa": null,
+            "chip_conta": "Responsável · 1 aluno",
+            "menu_visivel": [],
+            "secretaryView_hidden": true
+          },
+          {
+            "passo": "s1",
+            "activeView": "parent",
+            "runtime_papel": null,
+            "item_secretaria_visivel": false,
+            "supervisao_no_menu": false,
+            "aba_supervisao_visivel": false,
+            "aba_supervisao_ativa": null,
+            "chip_conta": "Responsável · 1 aluno",
+            "menu_visivel": [],
+            "secretaryView_hidden": true
+          },
+          {
+            "passo": "s2",
+            "activeView": "parent",
+            "runtime_papel": "education_supervisor",
+            "item_secretaria_visivel": false,
+            "supervisao_no_menu": false,
+            "aba_supervisao_visivel": false,
+            "aba_supervisao_ativa": null,
+            "chip_conta": "Responsável · 1 aluno",
+            "menu_visivel": [],
+            "secretaryView_hidden": true
+          },
+          {
+            "passo": "s3",
+            "activeView": "parent",
+            "runtime_papel": "education_supervisor",
+            "item_secretaria_visivel": false,
+            "supervisao_no_menu": false,
+            "aba_supervisao_visivel": false,
+            "aba_supervisao_ativa": null,
+            "chip_conta": "Responsável",
+            "menu_visivel": [
+              "inicio",
+              "chat-interno",
+              "notificacoes",
+              "conteudos",
+              "jogos-escolares"
+            ],
+            "secretaryView_hidden": true
+          },
+          {
+            "passo": "s4",
+            "activeView": "secretary",
+            "runtime_papel": "education_supervisor",
+            "item_secretaria_visivel": true,
+            "supervisao_no_menu": false,
+            "aba_supervisao_visivel": true,
+            "aba_supervisao_ativa": false,
+            "chip_conta": "Responsável",
+            "menu_visivel": [
+              "inicio",
+              "chat-interno",
+              "notificacoes",
+              "conteudos",
+              "jogos-escolares",
+              "comunicados",
+              "secretaria",
+              "jogos-escolares"
+            ],
+            "secretaryView_hidden": false
+          },
+          {
+            "passo": "s5",
+            "activeView": "secretary",
+            "runtime_papel": "education_supervisor",
+            "item_secretaria_visivel": true,
+            "supervisao_no_menu": false,
+            "aba_supervisao_visivel": true,
+            "aba_supervisao_ativa": false,
+            "chip_conta": "Responsável",
+            "menu_visivel": [
+              "inicio",
+              "chat-interno",
+              "notificacoes",
+              "conteudos",
+              "jogos-escolares",
+              "comunicados",
+              "secretaria",
+              "jogos-escolares"
+            ],
+            "secretaryView_hidden": false
+          },
+          {
+            "passo": "s6",
+            "activeView": "secretary",
+            "runtime_papel": "education_supervisor",
+            "item_secretaria_visivel": true,
+            "supervisao_no_menu": false,
+            "aba_supervisao_visivel": true,
+            "aba_supervisao_ativa": true,
+            "chip_conta": "Responsável",
+            "menu_visivel": [
+              "inicio",
+              "chat-interno",
+              "notificacoes",
+              "conteudos",
+              "jogos-escolares",
+              "comunicados",
+              "secretaria",
+              "jogos-escolares"
+            ],
+            "secretaryView_hidden": false
+          }
+        ]
+      },
+      "cand": {
+        "nome": "candidata v120",
+        "md5_servido": "a9a76d0e338c2a539135bccce23111b4",
+        "bytes_servidos": 3489649,
+        "passos": [
+          {
+            "passo": "s0",
+            "activeView": null,
+            "runtime_papel": null,
+            "item_secretaria_visivel": false,
+            "supervisao_no_menu": false,
+            "aba_supervisao_visivel": false,
+            "aba_supervisao_ativa": null,
+            "chip_conta": "Responsável · 1 aluno",
+            "menu_visivel": [],
+            "secretaryView_hidden": true
+          },
+          {
+            "passo": "s1",
+            "activeView": "parent",
+            "runtime_papel": null,
+            "item_secretaria_visivel": false,
+            "supervisao_no_menu": false,
+            "aba_supervisao_visivel": false,
+            "aba_supervisao_ativa": null,
+            "chip_conta": "Responsável · 1 aluno",
+            "menu_visivel": [],
+            "secretaryView_hidden": true
+          },
+          {
+            "passo": "s2",
+            "activeView": "education_supervisor",
+            "runtime_papel": "education_supervisor",
+            "item_secretaria_visivel": false,
+            "supervisao_no_menu": false,
+            "aba_supervisao_visivel": false,
+            "aba_supervisao_ativa": false,
+            "chip_conta": "Responsável · 1 aluno",
+            "menu_visivel": [],
+            "secretaryView_hidden": false
+          },
+          {
+            "passo": "s3",
+            "activeView": "education_supervisor",
+            "runtime_papel": "education_supervisor",
+            "item_secretaria_visivel": true,
+            "supervisao_no_menu": false,
+            "aba_supervisao_visivel": true,
+            "aba_supervisao_ativa": false,
+            "chip_conta": "Responsável",
+            "menu_visivel": [
+              "inicio",
+              "chat-interno",
+              "notificacoes",
+              "conteudos",
+              "jogos-escolares",
+              "comunicados",
+              "secretaria",
+              "jogos-escolares"
+            ],
+            "secretaryView_hidden": false
+          },
+          {
+            "passo": "s4",
+            "activeView": "secretary",
+            "runtime_papel": "education_supervisor",
+            "item_secretaria_visivel": true,
+            "supervisao_no_menu": false,
+            "aba_supervisao_visivel": true,
+            "aba_supervisao_ativa": false,
+            "chip_conta": "Responsável",
+            "menu_visivel": [
+              "inicio",
+              "chat-interno",
+              "notificacoes",
+              "conteudos",
+              "jogos-escolares",
+              "comunicados",
+              "secretaria",
+              "jogos-escolares"
+            ],
+            "secretaryView_hidden": false
+          },
+          {
+            "passo": "s5",
+            "activeView": "education_supervisor",
+            "runtime_papel": "education_supervisor",
+            "item_secretaria_visivel": true,
+            "supervisao_no_menu": false,
+            "aba_supervisao_visivel": true,
+            "aba_supervisao_ativa": false,
+            "chip_conta": "Responsável",
+            "menu_visivel": [
+              "inicio",
+              "chat-interno",
+              "notificacoes",
+              "conteudos",
+              "jogos-escolares",
+              "comunicados",
+              "secretaria",
+              "jogos-escolares"
+            ],
+            "secretaryView_hidden": false
+          },
+          {
+            "passo": "s6",
+            "activeView": "education_supervisor",
+            "runtime_papel": "education_supervisor",
+            "item_secretaria_visivel": true,
+            "supervisao_no_menu": false,
+            "aba_supervisao_visivel": true,
+            "aba_supervisao_ativa": true,
+            "chip_conta": "Responsável",
+            "menu_visivel": [
+              "inicio",
+              "chat-interno",
+              "notificacoes",
+              "conteudos",
+              "jogos-escolares",
+              "comunicados",
+              "secretaria",
+              "jogos-escolares"
+            ],
+            "secretaryView_hidden": false
+          }
+        ]
+      }
+    }
+  },
+  "conclusoes": {
+    "H5": "CONFIRMADO. O mapa accountLabels tem as chaves medidas acima e nenhuma para education_supervisor; a linha de uso cai no fallback parent (Família BFR / Responsável) e é o 2º elemento do par que o app pinta no chip. O diário da bancada v3 mostra chip_conta = \"Responsável\" em todos os passos da banda candidata, com o papel real injetado.",
+    "H4": "FALSO ALARME na banda medida (desktop 1280x900). O toggle :10425 realmente esconde o item para o papel, mas syncRoleNavigation é chamada depois no mesmo bloco síncrono e re-escreve a visibilidade de todos os .nav-item[data-section] a partir de roleSectionAccess[role], que inclui secretaria para education_supervisor. A bancada mede item_secretaria_visivel = true com runtime_papel = education_supervisor.",
+    "H4_limite": "A bancada v3 gravou só a banda desktop (--window-size derivado do script). O menu mobile (.mobile-more-option[data-section], coberto pela mesma query do sync) nunca foi medido com o papel — precisa da bancada nova com as duas bandas."
+  },
+  "portoes": [
+    {
+      "nome": "ar_bate_regua_candidata",
+      "ok": true,
+      "detail": "ar a9a76d0e338c2a539135bccce23111b4 == regua a9a76d0e338c2a539135bccce23111b4"
+    },
+    {
+      "nome": "ar_bate_publicado",
+      "ok": true,
+      "detail": "ar 3489649 B a9a76d0e338c2a539135bccce23111b4"
+    },
+    {
+      "nome": "ar_bate_candidata_disco",
+      "ok": true,
+      "detail": "candidata 3489649 B a9a76d0e338c2a539135bccce23111b4 linhas 28661"
+    },
+    {
+      "nome": "h5_mapa_tem_12_chaves",
+      "ok": true,
+      "detail": "developer,director,pedagogical,aee,psychology,social_work,sports_operator,monitor,gatekeeper,secretary,student,parent"
+    },
+    {
+      "nome": "h5_sem_chave_do_papel",
+      "ok": true,
+      "detail": "education_supervisor no mapa: false"
+    },
+    {
+      "nome": "h5_fallback_parent",
+      "ok": true,
+      "detail": "const account = accountLabels[role] || accountLabels.parent;"
+    },
+    {
+      "nome": "h5_so_account1_e_pintado",
+      "ok": true,
+      "detail": "account[1] x1 | account[0] x0"
+    },
+    {
+      "nome": "h5_rotulo_do_app_existe",
+      "ok": true,
+      "detail": ":9001 Supervisor(a) de ensino"
+    },
+    {
+      "nome": "h5_nome_do_chip_nao_depende_do_papel",
+      "ok": true,
+      "detail": "preferredDisplayName :10316-10321 le apenas display_name_custom+full_name+user_metadata+email; nao menciona accountLabels nem role; strong pintado em :10439"
+    },
+    {
+      "nome": "h4_toggle_esconde_o_papel",
+      "ok": true,
+      "detail": "document.querySelector('[data-section=\"secretaria\"]')?.classList.toggle('hidden', !['parent','secretary','developer'].includes(role));"
+    },
+    {
+      "nome": "h4_sync_roda_depois",
+      "ok": true,
+      "detail": "toggle :10425 < sync chamada :10434"
+    },
+    {
+      "nome": "h4_sync_cobre_o_menu",
+      "ok": true,
+      "detail": ":11386 document.querySelectorAll('.sidebar .nav-item[data-section],.mobile-more-option[data-section]').forEach(item => item.classList.toggle('hidde"
+    },
+    {
+      "nome": "h4_access_do_papel_tem_secretaria",
+      "ok": true,
+      "detail": ":9018 [inicio,secretaria,comunicados,escola-historia,notificacoes,conteudos,comunicacao,chat-interno,coordenacao-chat,jogos-escolares,fotos,supervisao]"
+    },
+    {
+      "nome": "bancada_cand_md5_igual_ar",
+      "ok": true,
+      "detail": "a9a76d0e338c2a539135bccce23111b4 em 3489649 B"
+    },
+    {
+      "nome": "bancada_h4_vermelho_na_tela",
+      "ok": true,
+      "detail": "s3 item_secretaria_visivel=true papel=education_supervisor"
+    },
+    {
+      "nome": "bancada_h5_confirmado_na_tela",
+      "ok": true,
+      "detail": "chip medido = \"Responsável · 1 aluno | \" | \"Responsável · 1 aluno | \" | \"Responsável · 1 aluno | \" | \"Responsável | \" | \"Responsável | \" | \"Responsável | \" | \"Responsável\" | esperado pelo fallback = \"Responsável\" | rotulo do papel no app = \"Supervisor(a) de ensino\""
+    },
+    {
+      "nome": "bancada_sem_falha",
+      "ok": true,
+      "detail": "RM17_BANCADA_V3_OK portoes=43"
+    },
+    {
+      "nome": "viewport_so_um",
+      "ok": true,
+      "detail": "1280x900"
+    }
+  ],
+  "veredito": "H45_MEDICAO_OK",
+  "falhas": []
+}

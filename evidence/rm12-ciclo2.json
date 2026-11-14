@@ -1,0 +1,34 @@
+{
+  "ciclo": "RM-1.2 pass2",
+  "em": "2026-11-12T20:42:34.764Z",
+  "portoes": 56,
+  "contas": [
+    {
+      "rotulo": "app",
+      "uid": "f6fe4fbd-f13b-4260-a92f-761de24ebf0b",
+      "email": "rm12-app-dd5ed2@bfr-admin.test"
+    },
+    {
+      "rotulo": "dev",
+      "uid": "a5c58b04-d438-415f-937c-83e2a8d5d31c",
+      "email": "rm12-dev-877baf@bfr-conecta.test"
+    },
+    {
+      "rotulo": "ctl",
+      "uid": "13b6b4bc-8558-4430-8bbf-e716e2fe554a",
+      "email": "rm12-ctl-6571f0@bfr-conecta.test"
+    },
+    {
+      "rotulo": "pre",
+      "uid": "74325d04-e6fe-438c-b469-981d3d5b4c16",
+      "email": "rm12-pre-e77aeb@bfr-admin.test"
+    }
+  ],
+  "fixture": [
+    "ac1343d6-c90d-4ab8-905e-18b28658bd04",
+    "13cc0fc9-8018-4ae7-bb92-26cd56690c48"
+  ],
+  "falhas": [
+    "default da coluna role = 'parent' | dado=\"'pending'::account_role\" | esperado=\"'parent'::account_role\""
+  ]
+}

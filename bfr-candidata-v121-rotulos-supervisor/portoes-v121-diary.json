@@ -1,0 +1,192 @@
+{
+  "ciclo": "v121-rotulos-supervisor",
+  "data": "2026-11-13",
+  "tarefa": "#1167 H4/H5-2",
+  "base": "candidata v120 congelada == shell publicado",
+  "base_md5": "a9a76d0e338c2a539135bccce23111b4",
+  "base_bytes": 3489649,
+  "candidate_md5": "d418e7fc917f1fbb1437054b7b531f9b",
+  "candidate_bytes": 3489725,
+  "candidate_delta_bytes": 76,
+  "hunks": [
+    {
+      "id": "H1",
+      "line": 10437,
+      "tipo": "insert",
+      "rotulo_lido_0": "Supervisão Educacional",
+      "rotulo_lido_1": "Supervisor(a) de ensino"
+    }
+  ],
+  "h4": "MEDIDO COMO FALSO ALARME na v120 (syncRoleNavigation :10434 re-escreve o menu depois do toggle :10425); nenhuma linha de menu alterada aqui",
+  "escopo": "candidata + portoes; PUBLICACAO NAO autorizada; 0 deploy, 0 DDL, 0 escrita, 0 mint",
+  "medicao_que_origina": "evidence/h45-medicao-diary.json",
+  "gates": [
+    {
+      "name": "cand_md5",
+      "ok": true,
+      "detail": "d418e7fc917f1fbb1437054b7b531f9b"
+    },
+    {
+      "name": "cand_bytes",
+      "ok": true,
+      "detail": "3489725 B (base 3489649 + hunk 75 + 1 espaço)"
+    },
+    {
+      "name": "base_eq_ruler_v120",
+      "ok": true,
+      "detail": "base md5 a9a76d0e338c2a539135bccce23111b4"
+    },
+    {
+      "name": "base_eq_ar_publicado",
+      "ok": true,
+      "detail": "ar 3489649 B a9a76d0e338c2a539135bccce23111b4 == disco da v120 == publicado a9a76d0e338c2a539135bccce23111b4 (3489649 B)"
+    },
+    {
+      "name": "reverse_frag_unique",
+      "ok": true,
+      "detail": "fragmento com o espaço ocorre 1x, sem espaço 1x"
+    },
+    {
+      "name": "reverse_byte_identical",
+      "ok": true,
+      "detail": "revertida === base byte a byte: true"
+    },
+    {
+      "name": "reverse_md5",
+      "ok": true,
+      "detail": "revertida md5 a9a76d0e338c2a539135bccce23111b4 == a9a76d0e338c2a539135bccce23111b4"
+    },
+    {
+      "name": "h_new_unique",
+      "ok": true,
+      "detail": "token novo ocorrencias 1"
+    },
+    {
+      "name": "h_old_anchor_preserved",
+      "ok": true,
+      "detail": " ancora do secretary continua la (1x) — o hunk e um insert, nao um replace"
+    },
+    {
+      "name": "linha_velha_gone",
+      "ok": true,
+      "detail": "linha antiga do mapa ocorre 0x"
+    },
+    {
+      "name": "chave_do_papel_unica",
+      "ok": true,
+      "detail": "chave no mapa: 1x"
+    },
+    {
+      "name": "diff_only_1_line",
+      "ok": true,
+      "detail": "linhas alteradas [10437] esperado [10437]"
+    },
+    {
+      "name": "line_count_same",
+      "ok": true,
+      "detail": "candidata 28661 == base 28661 == 28661"
+    },
+    {
+      "name": "mapa_chaves_mais_uma",
+      "ok": true,
+      "detail": "chaves 12 -> 13"
+    },
+    {
+      "name": "mapa_sem_reordenacao",
+      "ok": true,
+      "detail": "inserido na posicao 10: obtida [developer,director,pedagogical,aee,psychology,social_work,sports_operator,monitor,gatekeeper,secretary,education_supervisor,student,parent]"
+    },
+    {
+      "name": "par_novo_bate_medicao",
+      "ok": true,
+      "detail": "pares lidos [\"Supervisão Educacional\",\"Supervisor(a) de ensino\"] esperados [\"Supervisão Educacional\",\"Supervisor(a) de ensino\"]"
+    },
+    {
+      "name": "vocabulo_ja_existe_0",
+      "ok": true,
+      "detail": "'Supervisão Educacional' base 1x -> candidata 2x"
+    },
+    {
+      "name": "vocabulo_ja_existe_1",
+      "ok": true,
+      "detail": "'Supervisor(a) de ensino' base 1x -> candidata 2x"
+    },
+    {
+      "name": "fallback_pai_intacto",
+      "ok": true,
+      "detail": "linha de uso ocorre 1x"
+    },
+    {
+      "name": "pinta_account1_intacta",
+      "ok": true,
+      "detail": "account[1] x1 | account[0] x0"
+    },
+    {
+      "name": "nome_do_chip_intacto",
+      "ok": true,
+      "detail": "data-account-display-name base 3 -> candidata 3"
+    },
+    {
+      "name": "papel_ocorrencias_mais_1",
+      "ok": true,
+      "detail": "'education_supervisor' base 16 -> candidata 17"
+    },
+    {
+      "name": "roleSectionAccess_intacto",
+      "ok": true,
+      "detail": "mapa de secoes :9018 byte a byte igual"
+    },
+    {
+      "name": "pen32_tres_hunks_vivos",
+      "ok": true,
+      "detail": "hunks da v120 presentes: 1/1/1"
+    },
+    {
+      "name": "guard_setrole_intacto",
+      "ok": true,
+      "detail": ":9902 linha do guard byte a byte igual a v120, 15 ocorrencias de \"role === '\", cauda admin/developer intacta"
+    },
+    {
+      "name": "embed_v119_vive",
+      "ok": true,
+      "detail": "sports_schools(name) ocorrencias 1"
+    },
+    {
+      "name": "modulo_allowed_inalterado",
+      "ok": true,
+      "detail": "allowed() do modulo intacta ocorrencias 1"
+    },
+    {
+      "name": "todos_scripts_classicos_parseiam",
+      "ok": true,
+      "detail": "parseados 19, pulados 84, total de tags 103 (base 103); falhas nenhuma"
+    },
+    {
+      "name": "modulo_secretary_central_syntax",
+      "ok": true,
+      "detail": "vm.Script parseou 65515 chars"
+    },
+    {
+      "name": "script_tag_balance_preserved",
+      "ok": true,
+      "detail": "candidata open/close 108/103 == base 108/103"
+    },
+    {
+      "name": "csp_meta_intacta",
+      "ok": true,
+      "detail": "meta CSP identica, 795 chars"
+    },
+    {
+      "name": "boot_router_intacto",
+      "ok": true,
+      "detail": "roteador de boot :10443 nao foi tocado"
+    },
+    {
+      "name": "hunk_sem_valor_invalido",
+      "ok": true,
+      "detail": "fragmento: education_supervisor:['Supervisão Educacional','Supervisor(a) de ensino'],"
+    }
+  ],
+  "verdict": "ROTULOS_OK",
+  "published": false
+}

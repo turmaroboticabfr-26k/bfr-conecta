@@ -1,0 +1,207 @@
+{
+  "ciclo": "C2-R",
+  "em": "2026-11-12T01:15:33.894Z",
+  "tipo": "recon-read-only",
+  "student_messages_colunas": [
+    {
+      "column_name": "id",
+      "data_type": "uuid",
+      "column_default": "gen_random_uuid()",
+      "is_nullable": "NO"
+    },
+    {
+      "column_name": "student_id",
+      "data_type": "uuid",
+      "column_default": null,
+      "is_nullable": "NO"
+    },
+    {
+      "column_name": "sender_id",
+      "data_type": "uuid",
+      "column_default": null,
+      "is_nullable": "NO"
+    },
+    {
+      "column_name": "recipient_id",
+      "data_type": "uuid",
+      "column_default": null,
+      "is_nullable": "YES"
+    },
+    {
+      "column_name": "category",
+      "data_type": "text",
+      "column_default": null,
+      "is_nullable": "NO"
+    },
+    {
+      "column_name": "body",
+      "data_type": "text",
+      "column_default": null,
+      "is_nullable": "NO"
+    },
+    {
+      "column_name": "created_at",
+      "data_type": "timestamp with time zone",
+      "column_default": "now()",
+      "is_nullable": "NO"
+    },
+    {
+      "column_name": "read_at",
+      "data_type": "timestamp with time zone",
+      "column_default": null,
+      "is_nullable": "YES"
+    }
+  ],
+  "check_constraints": [
+    {
+      "tabela": "route_incidents",
+      "conname": "route_incidents_class_id_fkey",
+      "def": "FOREIGN KEY (class_id) REFERENCES classes(id) ON DELETE RESTRICT"
+    },
+    {
+      "tabela": "route_incidents",
+      "conname": "route_incidents_monitor_id_fkey",
+      "def": "FOREIGN KEY (monitor_id) REFERENCES profiles(id) ON DELETE RESTRICT"
+    },
+    {
+      "tabela": "route_incidents",
+      "conname": "route_incidents_notification_status_check",
+      "def": "CHECK ((notification_status = ANY (ARRAY['sent'::text, 'pending_guardian'::text])))"
+    },
+    {
+      "tabela": "route_incidents",
+      "conname": "route_incidents_pkey",
+      "def": "PRIMARY KEY (id)"
+    },
+    {
+      "tabela": "route_incidents",
+      "conname": "route_incidents_student_id_fkey",
+      "def": "FOREIGN KEY (student_id) REFERENCES students(id) ON DELETE CASCADE"
+    },
+    {
+      "tabela": "student_messages",
+      "conname": "student_messages_category_check",
+      "def": "CHECK ((category = ANY (ARRAY['food'::text, 'medicine'::text, 'general'::text, 'trip_authorization'::text])))"
+    },
+    {
+      "tabela": "student_messages",
+      "conname": "student_messages_pkey",
+      "def": "PRIMARY KEY (id)"
+    },
+    {
+      "tabela": "student_messages",
+      "conname": "student_messages_recipient_id_fkey",
+      "def": "FOREIGN KEY (recipient_id) REFERENCES profiles(id)"
+    },
+    {
+      "tabela": "student_messages",
+      "conname": "student_messages_sender_id_fkey",
+      "def": "FOREIGN KEY (sender_id) REFERENCES profiles(id)"
+    },
+    {
+      "tabela": "student_messages",
+      "conname": "student_messages_student_id_fkey",
+      "def": "FOREIGN KEY (student_id) REFERENCES students(id) ON DELETE CASCADE"
+    }
+  ],
+  "triggers_transporte": [
+    {
+      "tabela": "route_incidents",
+      "tgname": "trg_route_incidents_notify_guardian",
+      "tgenabled": "O",
+      "def": "CREATE TRIGGER trg_route_incidents_notify_guardian AFTER INSERT ON public.route_incidents FOR EACH ROW WHEN ((new.notification_status = 'pending_guardian'::text)) EXECUTE FUNCTION bfr_notify_guardian_on_route_incident()"
+    }
+  ],
+  "gate_checkins_policies_escrita": [],
+  "funcao_register_gate_checkin": [
+    {
+      "proname": "is_gatekeeper",
+      "prosecdef": true,
+      "dono": "postgres",
+      "args": "",
+      "corpo": "CREATE OR REPLACE FUNCTION public.is_gatekeeper()\n RETURNS boolean\n LANGUAGE sql\n STABLE SECURITY DEFINER\n SET search_path TO ''\nAS $function$ select coalesce(public.current_role() in ('gatekeeper','developer'),false) $function$\n",
+      "proacl": "(16388,16388,EXECUTE,f);(16388,16485,EXECUTE,f);(16388,16486,EXECUTE,f)"
+    },
+    {
+      "proname": "register_gate_checkin",
+      "prosecdef": true,
+      "dono": "postgres",
+      "args": "target_badge_token uuid, gate_direction text, visual_confirmation boolean, intake_source text, target_shift text, exception_reason text",
+      "corpo": "CREATE OR REPLACE FUNCTION public.register_gate_checkin(target_badge_token uuid, gate_direction text DEFAULT 'entry'::text, visual_confirmation boolean DEFAULT false, intake_source text DEFAULT NULL::text, target_shift text DEFAULT NULL::text, exception_reason text DEFAULT NULL::text)\n RETURNS TABLE(checkin_id uuid, student_id uuid, official_name text, class_label text, direction text, checked_at timestamp with time zone, entry_status text, entry_allowed boolean, restriction_reason text, alert_id uuid, photo_path text)\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare badge_student uuid; badge_class uuid; existing_checkin public.gate_checkins; restriction_id uuid; restriction_reason_value text; new_alert_id uuid; profile_photo_path text;\nbegin\nif not public.is_gatekeeper() then raise exception 'Acesso restrito ao porteiro'; end if;\nif gate_direction not in ('entry','exit') then raise exception 'Sentido inválido'; end if;\nselect gb.student_id,s.class_id into badge_student,badge_class from public.gate_badges gb join public.students s on s.id=gb.student_id where gb.badge_token=target_badge_token and gb.active=true and s.active=true;\nif badge_student is null then raise exception 'Crachá não encontrado ou inativo'; end if;\nselect er.id,er.reason into restriction_id,restriction_reason_value from public.entry_restrictions er where er.student_id=badge_student and er.active=true order by er.created_at desc limit 1;\nselect ssp.photo_path into profile_photo_path from public.student_school_profiles ssp where ssp.student_id=badge_student;\nif not visual_confirmation then\nreturn query select null::uuid,s.id,s.official_name,concat(c.year,'º ano ',c.class_code),gate_direction,now(),'pending_visual'::text,false,restriction_reason_value,null::uuid,profile_photo_path from public.students s join public.classes c on c.id=s.class_id where s.id=badge_student;\nreturn;\nend if;\nselect gc.* into existing_checkin from public.gate_checkins gc where gc.student_id=badge_student and gc.direction=gate_direction and gc.checked_at>now()-interval '2 minutes' order by gc.checked_at desc limit 1;\nif existing_checkin.id is null then\nif gate_direction='entry' and restriction_id is not null then\ninsert into public.gate_checkins(student_id,class_id,gatekeeper_id,direction,source,entry_status,restriction_reason,intake_source,target_shift,exception_reason) values(badge_student,badge_class,auth.uid(),gate_direction,case when lower(btrim(coalesce(intake_source,'')))='manual' then 'manual' else 'qr' end,'blocked',restriction_reason_value,intake_source,target_shift,exception_reason) returning * into existing_checkin;\ninsert into public.gate_entry_alerts(checkin_id,student_id,gatekeeper_id,restriction_id,reason) values(existing_checkin.id,badge_student,auth.uid(),restriction_id,restriction_reason_value) returning id into new_alert_id;\nelse\ninsert into public.gate_checkins(student_id,class_id,gatekeeper_id,direction,source,intake_source,target_shift,exception_reason) values(badge_student,badge_class,auth.uid(),gate_direction,case when lower(btrim(coalesce(intake_source,'')))='manual' then 'manual' else 'qr' end,intake_source,target_shift,exception_reason) returning * into existing_checkin;\nend if;\nelsif existing_checkin.entry_status='blocked' then\nselect gea.id into new_alert_id from public.gate_entry_alerts gea where gea.checkin_id=existing_checkin.id order by gea.created_at desc limit 1;\nend if;\nreturn query select existing_checkin.id,s.id,s.official_name,concat(c.year,'º ano ',c.class_code),existing_checkin.direction,existing_checkin.checked_at,existing_checkin.entry_status,existing_checkin.entry_status<>'blocked',existing_checkin.restriction_reason,new_alert_id,profile_photo_path from public.students s join public.classes c on c.id=existing_checkin.class_id where s.id=existing_checkin.student_id;\nend;\n$function$\n",
+      "proacl": "(16388,16388,EXECUTE,f);(16388,16485,EXECUTE,f);(16388,16486,EXECUTE,f)"
+    }
+  ],
+  "colunas_aluno_turma": [
+    {
+      "table_name": "classes",
+      "column_name": "class_code",
+      "data_type": "text"
+    },
+    {
+      "table_name": "classes",
+      "column_name": "id",
+      "data_type": "uuid"
+    },
+    {
+      "table_name": "classes",
+      "column_name": "school_id",
+      "data_type": "uuid"
+    },
+    {
+      "table_name": "classes",
+      "column_name": "year",
+      "data_type": "smallint"
+    },
+    {
+      "table_name": "students",
+      "column_name": "class_id",
+      "data_type": "uuid"
+    },
+    {
+      "table_name": "students",
+      "column_name": "id",
+      "data_type": "uuid"
+    },
+    {
+      "table_name": "students",
+      "column_name": "official_name",
+      "data_type": "text"
+    }
+  ],
+  "funcoes_que_citam_status": [
+    {
+      "proname": "bfr_notify_guardian_on_route_incident",
+      "args": ""
+    },
+    {
+      "proname": "bfr_pf_notify_location",
+      "args": ""
+    }
+  ],
+  "baseline": [
+    {
+      "t": "route_incidents",
+      "n": 0,
+      "h": null,
+      "expr": "md5(string_agg(id::text||notification_status||coalesce(notified_at::text,''),'' order by id::text))"
+    },
+    {
+      "t": "student_messages",
+      "n": 1,
+      "h": "d87bebaa885a3783d4efbd05e65a9d64",
+      "expr": "md5(string_agg(id::text||category||coalesce(body,''),'' order by id::text))"
+    },
+    {
+      "t": "gate_checkins",
+      "n": 193,
+      "h": "f8a7bcaa3583a92f5f4b4c81c5075766",
+      "expr": "md5(string_agg(id::text||coalesce(intake_source,''),'' order by id::text))"
+    },
+    {
+      "t": "gate_entry_alerts",
+      "n": 1,
+      "h": "d5240a17c3218146afad7d3c9f3def9c",
+      "expr": "md5(string_agg(id::text,'' order by id::text))"
+    }
+  ]
+}

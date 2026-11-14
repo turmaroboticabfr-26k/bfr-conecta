@@ -1,0 +1,118 @@
+{
+  "kind": "v119-postdeploy-http",
+  "ts": "2026-11-13T03:47:30.244Z",
+  "url": "https://bfr-conecta.turmaroboticabfr.workers.dev",
+  "published": true,
+  "version_id": "6aed50af-a8a1-4c2b-84ae-cb6eaec4770b",
+  "deployment_created": "2026-11-13T03:45:52.507Z",
+  "previous_version_id": "9c467d0e-d16a-4c20-9e69-50ec3b40f433",
+  "assets_reuploaded": 0,
+  "wrangler": "4.154.0",
+  "shell": {
+    "status": 200,
+    "bytes": 3489474,
+    "md5": "a1969cdf023042e7d2a91e7ed9333a05"
+  },
+  "sw": {
+    "bytes": 3586,
+    "md5": "46dfdebbecd3da5f0794f85276179b76",
+    "cache": "bfr-conecta-v119"
+  },
+  "headers": {
+    "alt-svc": "h3=\":443\"; ma=86400",
+    "cache-control": "max-age=0, no-cache, no-store",
+    "cf-ray": "a59acb51f8a915fa-GIG",
+    "connection": "keep-alive",
+    "content-encoding": "br",
+    "content-security-policy": "default-src 'self'; base-uri 'self'; object-src 'none'; script-src 'self' 'unsafe-inline' https://bfr-conecta.turmaroboticabfr.workers.dev https://cdn.jsdelivr.net https://static.cloudflareinsights.com https://www.gstatic.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: blob: https:; connect-src 'self' https://bfr-conecta.turmaroboticabfr.workers.dev https://*.supabase.co wss://*.supabase.co https://cloudflareinsights.com https://*.cloudflareinsights.com https://*.googleapis.com https://fcm.googleapis.com https://api.open-meteo.com; worker-src 'self' blob:; manifest-src 'self'; form-action 'self' https://accounts.google.com https://*.supabase.co",
+    "content-type": "text/html; charset=utf-8",
+    "date": "Fri, 13 Nov 2026 03:47:17 GMT",
+    "nel": "{\"report_to\":\"cf-nel\",\"success_fraction\":0.0,\"max_age\":604800}",
+    "referrer-policy": "strict-origin-when-cross-origin",
+    "report-to": "{\"group\":\"cf-nel\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://a.nel.cloudflare.com/report/v4?s=pwucJjKH7dZxdDvmEjMk8QxV8b8NQ8OQ2Zzsm%2FCa2VLqMxA1SRS2PKqSb%2BtoOof23FcDw7a2X0l4BQJL1l7mwgi3LPljviYh6w3GXgk5VXN9PhZ7vT52aW8gCceqLdo03m1MES7UYiVkzK13SRv%2FKg8LfRIt8ZCm1d5mwP%2FKhFrR2pLdmf02\"}]}",
+    "server": "cloudflare",
+    "strict-transport-security": "max-age=31536000",
+    "transfer-encoding": "chunked",
+    "x-content-type-options": "nosniff"
+  },
+  "gates": [
+    {
+      "name": "http_shell_200",
+      "ok": true,
+      "detail": "status 200"
+    },
+    {
+      "name": "http_shell_md5_candidata",
+      "ok": true,
+      "detail": "ar 3489474 B md5 a1969cdf023042e7d2a91e7ed9333a05 | esperado 3489474 B md5 a1969cdf023042e7d2a91e7ed9333a05"
+    },
+    {
+      "name": "http_token_novo_servido",
+      "ok": true,
+      "detail": "sports_schools(name)=1 (escolha 1), velho=0 (escolha 0) — PEN-31"
+    },
+    {
+      "name": "http_linhagem_reversa_igual_baseline",
+      "ok": true,
+      "detail": "revertido 1 token -> 3489467 B md5 ae59d35346b685b2fbf9d18ade4fa5cd | baseline em disco 3489467 B md5 ae59d35346b685b2fbf9d18ade4fa5cd | esperado 3489467 B md5 ae59d35346b685b2fbf9d18ade4fa5cd"
+    },
+    {
+      "name": "http_candidata_igual_disco",
+      "ok": true,
+      "detail": "ar == bfr-candidata-v119-supervisao-embed/index.html (3489474 B md5 a1969cdf023042e7d2a91e7ed9333a05): true"
+    },
+    {
+      "name": "http_headers_no_shell",
+      "ok": true,
+      "detail": "presentes [content-security-policy, x-content-type-options, referrer-policy, strict-transport-security]"
+    },
+    {
+      "name": "http_hsts_sem_includesubdomains",
+      "ok": true,
+      "detail": "strict-transport-security = max-age=31536000"
+    },
+    {
+      "name": "http_csp_header_igual_meta",
+      "ok": true,
+      "detail": "header 742 chars, meta 742 chars, iguais=true"
+    },
+    {
+      "name": "http_sw__sw_v4_js",
+      "ok": true,
+      "detail": "/sw-v4.js 200 3586 B md5 46dfdebbecd3da5f0794f85276179b76 CACHE=bfr-conecta-v119"
+    },
+    {
+      "name": "http_sw__sw_v4_js_sem_headers",
+      "ok": true,
+      "detail": "/sw-v4.js headers de seguranca: [nenhum]"
+    },
+    {
+      "name": "http_sw__sw_js",
+      "ok": true,
+      "detail": "/sw.js 200 3586 B md5 46dfdebbecd3da5f0794f85276179b76 CACHE=bfr-conecta-v119"
+    },
+    {
+      "name": "http_sw__sw_js_sem_headers",
+      "ok": true,
+      "detail": "/sw.js headers de seguranca: [nenhum]"
+    },
+    {
+      "name": "http_assets_censo_12",
+      "ok": true,
+      "detail": "12 ficheiros em public/"
+    },
+    {
+      "name": "http_assets_byte_identico_e_sem_headers",
+      "ok": true,
+      "detail": "12/12 servidos byte-identicos ao disco, nenhum com header de seguranca"
+    },
+    {
+      "name": "reversao_pronta_na_disco",
+      "ok": true,
+      "detail": "worker-deploy-v118-csp/worker.mjs 3550708 B md5 ae115858d263a02bb777cc474ce17297 (version anterior 9c467d0e-d16a-4c20-9e69-50ec3b40f433)"
+    }
+  ],
+  "total": 15,
+  "ruins": 0,
+  "veredito": "V119_HTTP_VERDE"
+}

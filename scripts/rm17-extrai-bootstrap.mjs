@@ -1,0 +1,12 @@
+import fs from 'node:fs';
+const p = 'C:/Users/pcmac/Documents/Qoder/2026-10-13/28077d9a/bfr-conecta/bfr-candidata-v120-setrole-supervisor/index.html';
+const s = fs.readFileSync(p, 'utf8');
+const open = '<script id="bfr-login-bootstrap">';
+const a = s.indexOf(open);
+const end = s.indexOf('<\/script>', a);
+const code = s.slice(a + open.length, s.indexOf('</script>', a));
+const out = 'C:/Users/pcmac/Documents/Qoder/2026-10-13/28077d9a/bfr-conecta/evidence/rm17-login-bootstrap.js';
+fs.writeFileSync(out, `// extraido dos bytes da candidata v120 a partir do char ${a}\n` + code);
+console.log(`bloco ${open} em char ${a}, corpo ${code.length} chars gravado em ${out}`);
+console.log('--- linhas---');
+console.log(code.split('\n').length);

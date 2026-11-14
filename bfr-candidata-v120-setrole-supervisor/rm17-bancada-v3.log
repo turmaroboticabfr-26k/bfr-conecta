@@ -1,0 +1,51 @@
+
+=== controle v119 (shell do ar)  http://127.0.0.1:8271/
+VERDE  base bytes servidos == regua dos portoes
+VERDE  base core ainda nao reanimado antes do gatilho
+VERDE  base tela de login visivel antes do boot
+VERDE  base bloqueio de escrita nao-GET instalado
+VERDE  base gatilho benigno presente
+VERDE  base roteador reanimado (window.setRole e funcao)
+VERDE  base enterApp do proprio app acessivel
+VERDE  base runtime exposto apos os modulos deferred
+VERDE  base papel injetado lido de volta na mesma binding do roteador
+VERDE  base chrome revelado pelo enterApp do app (appShell ready + login hidden)
+VERDE  base 0 escrita de TABELA tentada (POST/PATCH/DELETE a /rest/v1/<tabela>)
+VERDE  base CONTROLE POSITIVO do rig: setRole('secretary') e aceito
+  s3 base: {"tipo_setRole":"function","tipo_enterApp":"function","papel_currentProfile":"education_supervisor","activeView":"parent","runtime_papel":"education_supervisor","runtime_activeView":"parent","tem_runtime":true,"appshell_ready":true,"login_hidden":true,"views_visiveis":["parentView"],"secretaryView_hidden":true,"central_visivel":false,"aba_supervisao_no_dom":false,"aba_supervisao_visivel":false,"aba_supervisao_ativa":null,"sec_body_len":0,"sec_body_ini":null,"abas_no_dom":[],"menu_visivel":["inicio","chat-interno","notificacoes","conteudos","jogos-escolares"],"item_secretaria_visivel":false,"supervisao_no_menu":false,"chip_conta":"Responsável","breadcrumb":"Hoje","escritas_bloqueadas":[],"rpc_bloqueadas":["rpc POST https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/rpc/lis
+
+=== candidata v120  http://127.0.0.1:8272/
+VERDE  cand bytes servidos == regua dos portoes
+VERDE  cand core ainda nao reanimado antes do gatilho
+VERDE  cand tela de login visivel antes do boot
+VERDE  cand bloqueio de escrita nao-GET instalado
+VERDE  cand gatilho benigno presente
+VERDE  cand roteador reanimado (window.setRole e funcao)
+VERDE  cand enterApp do proprio app acessivel
+VERDE  cand runtime exposto apos os modulos deferred
+VERDE  cand papel injetado lido de volta na mesma binding do roteador
+VERDE  cand chrome revelado pelo enterApp do app (appShell ready + login hidden)
+VERDE  cand 0 escrita de TABELA tentada (POST/PATCH/DELETE a /rest/v1/<tabela>)
+VERDE  cand CONTROLE POSITIVO do rig: setRole('secretary') e aceito
+  s3 cand: {"tipo_setRole":"function","tipo_enterApp":"function","papel_currentProfile":"education_supervisor","activeView":"education_supervisor","runtime_papel":"education_supervisor","runtime_activeView":"education_supervisor","tem_runtime":true,"appshell_ready":true,"login_hidden":true,"views_visiveis":["secretaryView"],"secretaryView_hidden":false,"central_visivel":true,"aba_supervisao_no_dom":true,"aba_supervisao_visivel":true,"aba_supervisao_ativa":false,"sec_body_len":1463,"sec_body_ini":"Ação necessáriaPrecisa de atençãoItens derivados dos protocolos e registros autorizados.acesso parcial✓Nenhuma prioridade calculável abertaOs dados disponíveis ","abas_no_dom":["overview","tasks","students","enrollments","documents","requests","agenda","professionals","classes","communica
+VERDE  base activeView segue parent depois de setRole + enterApp
+VERDE  base secretaryView segue hidden
+VERDE  base aba Supervisao ausente do DOM
+VERDE  base central da Secretaria sem caixa de layout
+VERDE  cand activeView assenta em education_supervisor
+VERDE  cand runtime_activeView concorda com o roteador
+VERDE  cand secretaryView deixa de estar hidden
+VERDE  cand views visiveis incluem secretaryView
+VERDE  cand aba Supervisao presente no DOM
+VERDE  cand central da Secretaria VISIVEL com chrome revelado
+VERDE  cand aba Supervisao VISIVEL (caixa de layout)
+VERDE  cand painel da Supervisão pinta apos clique na aba
+VERDE  cand 0 excecoes nao tratadas
+VERDE  base 0 excecoes nao tratadas
+VERDE  0 escrita de TABELA tentada ao backend nas duas bandas
+VERDE  0 pedido nao-GET chegou ao backend (rede CDP nas duas bandas)
+VERDE  todo POST /rpc/ barrado existe no catalogo pg_proc
+VERDE  todo POST /rpc/ barrado e FUNCAO DE LEITURA (sem INSERT/UPDATE/DELETE no corpo)
+VERDE  baseline das 5 tabelas imutavel (contagem E md5, antes x depois)
+
+veredito=RM17_BANCADA_V3_OK portoes=43  (portoes=43 falhas=0)

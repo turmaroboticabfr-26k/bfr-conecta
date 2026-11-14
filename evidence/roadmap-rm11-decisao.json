@@ -1,0 +1,35 @@
+{
+  "tarefa": "RM-1.1",
+  "em": "2026-11-12",
+  "metodo": "Decisão de produto registrada pelo dono do produto na conversa. Nenhum comando de escrita foi executado: banco, políticas, publicação de versão e front seguem intactos.",
+  "decisao_verbatim": "Opção a — fecha RM-1.1 e cancela RM-3.1",
+  "opcao_escolhida": "a) manter registro manual da frequência pelo professor, com a evidência da portaria visível na mesma tela",
+  "o_que_fecha": {
+    "RM-1.1": "critério de conclusão «E2E provado OU decisão de produto registrada» cumprido pela segunda cláusula; prova read-only em evidence/roadmap-rm11-veredito.json"
+  },
+  "o_que_cancela": {
+    "RM-3.1": "integração automática check-in→frequência — não será construída; a linha permanece na tabela da Fase 3 marcada CANCELADO para o histórico",
+    "PEN-14": "fechada por decisão, não por implementação"
+  },
+  "o_que_muda_no_codigo": "nada — o caminho escolhido já é o vivo (escrita manual do professor em index.html:8131 e :18572, ponte de leitura bfr_teacher_lesson_gate_evidence na coluna «Portaria · evidência», index.html:18406/18454)",
+  "o_que_nao_se_faz": [
+    "nenhum DDL (trigger ou função que escreva attendance a partir de gate_checkins)",
+    "nenhuma policy nova",
+    "nenhuma publicação de versão do Worker",
+    "nenhuma escrita em dado real"
+  ],
+  "residuo_conhecido": "a frequência continua atrasando em relação ao registro de entrada e o vínculo entre os dois é de confiança do professor, não do sistema; discrepâncias entre gate_checkins e attendance seguem visíveis na coluna de evidência e não são corrigidas automaticamente",
+  "reabre_se": "a Direção pedir preenchimento automático (opção b: 1 clique, só front) ou elo automático (opção c: exige DDL, policies e OK novo)",
+  "registros_alterados": [
+    "docs/roadmap-master.md:320",
+    "docs/roadmap-master.md:357",
+    "docs/roadmap-master.md:555",
+    "docs/roadmap-master.md:577",
+    "docs/roadmap-master.md:600",
+    "docs/roadmap-master.md:654",
+    "docs/roadmap-master.md:756",
+    "docs/roadmap-painel.html:122",
+    "docs/roadmap-painel.html:134",
+    "docs/roadmap-painel.html:154"
+  ]
+}

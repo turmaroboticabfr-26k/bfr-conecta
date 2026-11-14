@@ -1,0 +1,94 @@
+{
+  "item": "RM-1.2 / A.06 / PEN-13",
+  "titulo": "Aprovação administrativa de contas",
+  "em": "2026-11-12T20:50:00Z",
+  "veredito": "FECHADO COM ACHADO — a aprovação real existe e foi medida; o estado 'pending' é inalcançável",
+  "status_anterior": "NECESSITA DE TESTES",
+  "status_novo": "IMPLEMENTADO COM PROBLEMAS",
+  "ciclos": [
+    {
+      "pass": 1,
+      "script": "scripts/roadmap-rm12-ciclo.mjs",
+      "evidencia": "evidence/rm12-ciclo-pass1.json",
+      "portoes": 39,
+      "falhas": 5,
+      "desfecho": "RM12_CICLO_PAROU",
+      "causa_das_falhas": "expectações do instrumento erradas (assumiu policies permissivas OR-ed e que o mint nasce pending); nenhuma escrita permanente ficou no banco",
+      "baseline_restaurada": true
+    },
+    {
+      "pass": 2,
+      "script": "scripts/roadmap-rm12-ciclo3.mjs",
+      "evidencia": "evidence/rm12-ciclo2.json",
+      "portoes": 56,
+      "falhas": 1,
+      "desfecho": "RM12_CICLO2_PAROU",
+      "causa_das_falhas": "o default da coluna profiles.role é 'pending'::account_role, não 'parent' — o schema ESPERA pending; é o trigger que sobrepõe",
+      "baseline_restaurada": true
+    },
+    {
+      "pass": 3,
+      "script": "scripts/roadmap-rm12-ciclo3.mjs",
+      "evidencia": "evidence/rm12-ciclo3.json",
+      "portoes": 57,
+      "falhas": 0,
+      "desfecho": "RM12_CICLO3_OK",
+      "contas_sinteticas": 4,
+      "dominios": { "visivel_ao_painel": "@bfr-admin.test", "oculto_pela_policy": "@bfr-conecta.test" },
+      "baseline_restaurada": true,
+      "provas_por_contagem_e_md5": ["profiles", "access_requests"]
+    }
+  ],
+  "o_que_foi_medido": {
+    "caminho_B_painel_contas_e_cargos": "POST /rest/v1/rpc/set_profile_role com JWT real de developer → HTTP 200 e true; role parent→pedagogical; a mesma conta passa a ver o directório de staff (oráculo SQL coincide)",
+    "caminho_A_pre_cadastro": "developer INSERT approved em access_requests (approved_role = requested_role) ANTES da conta existir → 201; ao 1º login handle_new_user lê approved_role e o perfil nasce monitor",
+    "auto_solicitacao": "solicitante insere o próprio e-mail como pending (201); developer PATCH → approved (200); o próprio solicitante lê approved",
+    "listagem_do_painel": "GET /rest/v1/profiles?select=id,full_name,email,role&order=full_name.asc (index.html:9081) devolve exatamente o oráculo SQL (não-ocultas + a própria) e inclui a conta aprovada",
+    "negativos": [
+      "conta não-developer chama set_profile_role em si mesma → 4xx com o guard 'Apenas um administrador developer pode alterar cargos' e nada muda (medido com 2 contas)",
+      "approved_role ≠ requested_role → barrado e nada fica no banco",
+      "solicitação por e-mail alheio → barrada",
+      "conta de controlo no domínio oculto NÃO aparece na lista do painel"
+    ]
+  },
+  "achados": [
+    {
+      "id": "RM12-A1",
+      "titulo": "Nada escreve role='pending'",
+      "detalhe": "profiles.role tem default 'pending'::account_role, NOT NULL, e o CHECK profiles_role_allowed aceita pending; mas o único INSERT em profiles é handle_new_user, que escreve coalesce(assigned_role,'parent'). Nenhuma função, trigger ou chamadas do cliente atribuem pending. 0 contas vivas com role pending no censo 12/11.",
+      "consequencia": "Os portões pending da UI (index.html:9002 rótulo 'Aguardando aprovação', :9349, :10601) e o filtro value!=='pending' (:9048) são inalcançáveis em contas reais. O semiestado de aprovação 'pending→papel' não existe; o que existe é nascer parent (ou o papel pré-aprovado) e ser promovido depois.",
+      "tipo": "produto (divergência schema × escritor), não defeito de segurança"
+    },
+    {
+      "id": "RM12-A2",
+      "titulo": "profiles_hide_test_accounts é RESTRICTIVE e vale também para o developer",
+      "detalhe": "polpermissive=false sobre (email !~~ '%@bfr-conecta.test' AND email !~~ 'bfr.qa.email.%'), com escape id = auth.uid(). Como policies restrictivas são AND-ed sobre as permissivas, contas de teste nesse domínio ficam invisíveis ao painel 'Contas e cargos', inclusive para o developer.",
+      "consequencia": "Provar a listagem do painel exige conta em domínio visível (@bfr-admin.test / @bfr.test). É também a razão pela qual as 4 contas s20-*.test continuam vivas sem aparecer em nenhuma varredura de UI.",
+      "tipo": "instrumento de medição + fato de produto"
+    },
+    {
+      "id": "RM12-A3",
+      "titulo": "Existe um terceiro caminho de atribuição de papel, self-service",
+      "detalhe": "complete_family_registration (SECURITY DEFINER, authenticated) faz update public.profiles set role = requested_role, mas validado: requested_role in ('parent','student'), guard current_role() in ('pending','parent','student') e exigência de corresponder a students+student_school_profiles por nome/data de nascimento/responsável (ou filiation_1/2) e guardian_cpf_hash.",
+      "consequencia": "Sem escalonamento: um responsável nunca se promove a papel administrativo. A promoção administrativa real fica só em set_profile_role (developer) e na pré-aprovação via access_requests.",
+      "tipo": "positivo de segurança"
+    }
+  ],
+  "criterio_do_item": {
+    "criterio": "Aprovação real medida na UI + baseline restaurada",
+    "baseline_restaurada": "OK — contagem E md5 de profiles e access_requests idênticas ao pré (4 portões VERDE)",
+    "medida_na_ui": "PARCIAL por desenho: as chamadas HTTP exatas do painel foram medidas com JWT real (caminho A, caminho B e a query de listagem). O clique na tela 'Contas e cargos' com conta real de developer continua por medir, limitado por (a) o domínio de teste ficar oculto pelo policy restrictivo e (b) nenhuma conta real de developer estar disponível a este agente."
+  },
+  "pendencias_abertas_para_o_dono": [
+    "4 contas sintéticas s20-*.test (secretary/director/coordinator/education_supervisor) continuam vivas, com sessões ativas, e são invisíveis ao painel por RM12-A2 — aguardam instrução de remoção",
+    "1 access_request real em status pending desde 2026-09-02 (PII não reproduzida aqui) — aguarda decisão; este agente não aprova solicitações reais sem OK novo"
+  ],
+  "arquivos": [
+    "evidence/roadmap-rm12-recon.json",
+    "evidence/rm12-baseline-pass1.json",
+    "evidence/roadmap-rm12-baseline.json",
+    "evidence/rm12-ciclo-pass1.json",
+    "evidence/rm12-ciclo2.json",
+    "evidence/rm12-ciclo3.json"
+  ]
+}

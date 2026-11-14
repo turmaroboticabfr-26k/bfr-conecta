@@ -1,0 +1,24 @@
+{
+  "tarefa": "RM-1.1 — Provar/decidir o elo check-in→frequência (FLUXO 1)",
+  "em": "2026-11-12T00:00:00Z",
+  "metodo": "Somente leitura: catálogo SQL (triggers, funções, policies, publication realtime) + leitura do index.html publicado (v118)",
+  "veredito": "ELO AUTOMATICO NAO EXISTE — nem no banco, nem no front. O que existe é ponte de LEITURA (evidência) para o professor marcar manualmente.",
+  "evidencia_banco": {
+    "triggers_sobre_gate_checkins_e_attendance": 0,
+    "funcao_que_escreve_attendance_a_partir_de_checkin": "nenhuma",
+    "register_gate_checkin": "escreve apenas gate_checkins (+gate_entry_alerts se restrição)",
+    "confirm_guardian_entry": "escreve apenas gate_checkins + gate_entry_alerts",
+    "bfr_teacher_lesson_gate_evidence": "STABLE, somente SELECT: devolve check-ins do dia/turma para a tela do professor (portão: bfr_can_manage_lesson_attendance + ano da grade)",
+    "bfr_supervision_frequencia": "agregado read-only: presenças/ausências (attendance) e checkins entrada/saída lado a lado por mês/turma",
+    "realtime": "attendance, gate_checkins, aee_attendance e bfr_lesson_attendance estão na publication — mas não há ponte de escrita entre tabelas"
+  },
+  "evidencia_front": {
+    "escrita_attendance_unica": "index.html:8131 — from('attendance').upsert(...) na tela de lançamento do PROFESSOR (manual)",
+    "escrita_lesson_attendance": "index.html:18572 — from('bfr_lesson_attendance').upsert(...) (manual)",
+    "leitura_attendance": "index.html:1606 e 6972 — somente SELECT",
+    "ponte_evidencia": "index.html:18406 loadLessonGateEvidence() → rpc bfr_teacher_lesson_gate_evidence → coluna 'Portaria · evidência' na tabela de frequência (index.html:18454)",
+    "insercao_a_partir_de_checkin": "nenhuma trilha de código"
+  },
+  "decisao_pendente": "Produto: (a) manter manual com evidência (status quo), (b) preencher presentes da portaria com 1 clique, (c) automático (RM-3.1)",
+  "evidencias": ["evidence/roadmap-rm11-elo.json", "evidence/roadmap-rm11-elo-funcoes.json"]
+}

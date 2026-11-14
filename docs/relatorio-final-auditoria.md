@@ -441,6 +441,7 @@ A auditoria foi contínua e iterativa: cada defeito encontrado foi atribuído po
 | 7 | Direção | Overlay executivo esconde painéis legados | Decisão de produto |
 | 8 | Crachá físico | Teste com crachá QR impresso real | Requer hardware físico |
 | 9 | Câmera real | Teste com câmera de dispositivo real | Requer dispositivo físico |
+| 10 | `gate_checkins` sem policy de escrita | O POST direto de qualquer papel é recusado por desenho; o caminho sancionado é a RPC `register_gate_checkin` (200 provado 11/12). **Hoje o código visto é 500/42P17, não 403** — ver H.4, linha 1. | Decisão de desenho mantida; o 500 é defeito, não o desenho |
 
 ### H.2 Dívidas técnicas (não bloqueiam uso)
 
@@ -455,10 +456,18 @@ A auditoria foi contínua e iterativa: cada defeito encontrado foi atribuído po
 
 | # | Item | Motivo |
 |---|---|---|
-| 1 | Transporte completo (Cenário 2) | Parcialmente coberto no BU-P; monitor→entrada→saída medido, mas notificação→responsável não provada ponta a ponta |
+| 1 | Transporte completo (Cenário 2) | **FECHADO na perna que faltava (11/12).** Monitor→ocorrência→notificação→responsável provado ponta a ponta com JWT real (`scripts/c2r-jornada.mjs` → `docs/c2r-jornada.json`, 47 portões / 1 falha, `BASELINE_RESTAURADA` por contagem e md5): o trigger `trg_route_incidents_notify_guardian` escreve `notification_status=sent` + `notified_at`, nasce **1** `student_messages` (`category=general`, destinatário = responsável, remetente = monitor, corpo do fluxo legado), o `parent` lê a mensagem pela API, e a ocorrência que já nasce `sent` não duplica. A perna entrada/saída continua pelo caminho sancionado (RPC). Resta hardware físico (H.1 linhas 8/9) e o 500 da H.4 linha 1 |
 | 2 | Gestão administrativa integrada (Cenário 7) | Parcialmente coberto; Direção/Coordenação/Secretaria medidas individualmente, sincronização cruzada não provada como cenário único |
 | 3 | Conta real de professor com vínculo vivo | Módulos de notas exigem `bfr_teacher_directory` + `bfr_teacher_class_subjects` + entry na grade publicada |
 | 4 | Push em dispositivo físico | Edge v23 funcional, FCM responde, mas entrega em aparelho real não medida |
+
+### H.4 Banco — 42P17 RESOLVIDO (ciclo C2-R, 11/11→11/12)
+
+| # | Item | Descrição | Estado |
+|---|---|---|---|
+| 1 | **42P17 — ciclo de policies em `profiles`** | O grafo `policy de R → RTE de R'` tinha ciclos (`profiles_read → staff_schools → profiles` e `profiles_read → students → profiles`), introduzidos pelo P2-1 (08/11) e pelo Achado 1 da S16 (06–07/11). Como o PostgreSQL expande as policies das RTEs dentro do qual, **todo plano que tocasse as policies de `profiles` abortava** para papel autenticado — incluindo a primeira query do boot. Sondas vivas 11/12 antes da aplicação (`scripts/c2r-probe-42p17.mjs` → `docs/c2r-probe-42p17.json`, `em 2026-11-12T01:24:12Z`): **5 de 6 abortavam** (P1/P2/P3/P6 → `profiles`, P4 → `staff_schools`; só P5 `guardian_students` VERDE). Efeito colateral medido: o POST direto em `gate_checkins` dava **500/42P17** em vez do 403 de desenho. | **FECHADO 11/12 — candidata aplicada.** `sql/c2r-42p17-candidate.sql` aplicada via `scripts/c2r-42p17-apply.mjs --apply` (HTTP 201, `docs/c2r-42p17-apply.json`): pós-aplicação `md5_vivo == md5_cand == 9 0 b 8 e 4 3 c c a 3 1 3 a 4 c 7 c d f 3 d c 0 b c b 0 b 8 f 4` (≠ `md5_antes` `2 b 2 f 0 b c 6…`); função `public.bfr_profile_in_my_schools(uuid)` no catálogo (owner `postgres`, `prosecdef=true`, `publico_executa=0`, ACL sem `anon`/`PUBLIC`); 7 policies com papéis `authenticated` e comandos corretos. **Sondas 6/6 VERDE** (P1–P6, incluindo P3 que agora dá 42501 — o 403 de desenho, não mais 500). **Jornada comportamental `C2R_JORNADA_OK` 47/0** com `BASELINE_RESTAURADA` por contagem E md5 nas 4 tabelas (`route_incidents` 0, `student_messages` 1, `gate_checkins` 193, `gate_entry_alerts` 1), 0 contas sintéticas vivas. Reversão pronta: `sql/c2r-42p17-rollback.sql`. |
+| 2 | Escopo do P2-1 nunca restringiu `profiles` | `profiles` tem **4 policies de SELECT** + 2 de UPDATE. Sendo as SELECT permissivas (OR), a `profiles_hide_test_accounts` — `(id = auth.uid()) OR (email NOT LIKE '%@bfr-conecta.test' AND email NOT LIKE 'bfr.qa.email.%')` — vale para **toda conta real**, pelo que o estreitamento por escola do P2-1 dentro de `profiles_read` não altera a contagem de linhas visíveis de ninguém. | **REGISTRADO como método.** O efeito de escopo prova-se pelo oráculo booleano `bfr_profile_in_my_schools` (9 oráculos verdes no dry-run da linha 1), não por contagem de linhas. Fonte: `docs/c2r-policies-profiles.json`. |
+| 3 | DDL aplicado sem arquivo candidato em disco | As 6 policies de `staff_schools` do Achado 1 da S16 e o `profiles_read` do P2-1 foram aplicados inline (06–08/11) e não têm candidata nem reversão em `sql/`; o texto de registro era só o deparse vivo. | **REGISTRADO e CORRIGIDO 11/12:** o deparse vivo das 6 policies está agora transcrito em `sql/c2r-42p17-rollback.sql` e o censo das 7 em `docs/c2r-policies-ciclo.json`; a equivalência é provada por md5 no dry-run, não por memória. |
 
 ---
 

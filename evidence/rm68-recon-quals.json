@@ -1,0 +1,326 @@
+{
+  "em": "2026-11-13T02:13:35.747Z",
+  "tarefa": "FIN-3 — recon somente-leitura das quals da PEN-25 para a candidata RM-6.8",
+  "metodos": "SELECT de pg_policies / pg_get_expr / pg_proc; nenhuma escrita",
+  "pegada_antes": {
+    "total": 182,
+    "hash": "ecf3403210b8091209cb8584a4f1da51"
+  },
+  "policies": [
+    {
+      "schemaname": "public",
+      "tablename": "access_requests",
+      "policyname": "access_requests_insert",
+      "permissive": true,
+      "cmd": "INSERT",
+      "qual": null,
+      "with_check": "((lower(email) = lower((auth.jwt() ->> 'email'::text))) AND (requested_role = ANY (ARRAY['parent'::account_role, 'student'::account_role, 'pedagogical'::account_role, 'monitor'::account_role, 'gatekeeper'::account_role])) AND (approved_role IS NULL) AND (status = 'pending'::request_status) AND (reviewed_by IS NULL) AND (reviewed_at IS NULL))",
+      "roles": "authenticated"
+    },
+    {
+      "schemaname": "public",
+      "tablename": "access_requests",
+      "policyname": "access_requests_manage",
+      "permissive": true,
+      "cmd": "ALL",
+      "qual": "is_developer()",
+      "with_check": "(is_developer() AND (requested_role = ANY (enum_range(NULL::account_role))) AND ((approved_role IS NULL) OR (approved_role = requested_role)) AND (status = ANY (ARRAY['pending'::request_status, 'approved'::request_status, 'rejected'::request_status])))",
+      "roles": null
+    },
+    {
+      "schemaname": "public",
+      "tablename": "access_requests",
+      "policyname": "access_requests_read",
+      "permissive": true,
+      "cmd": "SELECT",
+      "qual": "(is_developer() OR (lower(email) = lower((auth.jwt() ->> 'email'::text))))",
+      "with_check": null,
+      "roles": "authenticated"
+    },
+    {
+      "schemaname": "public",
+      "tablename": "access_requests",
+      "policyname": "access_requests_staff_insert",
+      "permissive": true,
+      "cmd": "INSERT",
+      "qual": null,
+      "with_check": "(is_developer() AND (requested_role = ANY (enum_range(NULL::account_role))) AND (((approved_role IS NULL) AND (status = 'pending'::request_status)) OR ((approved_role = requested_role) AND (status = 'approved'::request_status))))",
+      "roles": null
+    },
+    {
+      "schemaname": "public",
+      "tablename": "attendance",
+      "policyname": "attendance_family_read",
+      "permissive": true,
+      "cmd": "SELECT",
+      "qual": "(EXISTS ( SELECT 1\n   FROM guardian_students gs\n  WHERE ((gs.student_id = attendance.student_id) AND (gs.profile_id = auth.uid()))))",
+      "with_check": null,
+      "roles": "authenticated"
+    },
+    {
+      "schemaname": "public",
+      "tablename": "attendance",
+      "policyname": "attendance_staff_delete",
+      "permissive": true,
+      "cmd": "DELETE",
+      "qual": "(bfr_staff_can_manage_student_scope(student_id) AND ((\"current_role\"())::text <> 'secretary'::text))",
+      "with_check": null,
+      "roles": null
+    },
+    {
+      "schemaname": "public",
+      "tablename": "attendance",
+      "policyname": "attendance_staff_insert",
+      "permissive": true,
+      "cmd": "INSERT",
+      "qual": null,
+      "with_check": "(bfr_staff_can_manage_student_scope(student_id) AND ((\"current_role\"())::text <> 'secretary'::text) AND (((\"current_role\"())::text <> 'pedagogical'::text) OR (entered_by = auth.uid())))",
+      "roles": null
+    },
+    {
+      "schemaname": "public",
+      "tablename": "attendance",
+      "policyname": "attendance_staff_select",
+      "permissive": true,
+      "cmd": "SELECT",
+      "qual": "(bfr_staff_can_manage_student_scope(student_id) AND ((\"current_role\"())::text <> 'secretary'::text))",
+      "with_check": null,
+      "roles": null
+    },
+    {
+      "schemaname": "public",
+      "tablename": "attendance",
+      "policyname": "attendance_staff_update",
+      "permissive": true,
+      "cmd": "UPDATE",
+      "qual": "(bfr_staff_can_manage_student_scope(student_id) AND ((\"current_role\"())::text <> 'secretary'::text))",
+      "with_check": "(bfr_staff_can_manage_student_scope(student_id) AND ((\"current_role\"())::text <> 'secretary'::text))",
+      "roles": null
+    },
+    {
+      "schemaname": "public",
+      "tablename": "attendance",
+      "policyname": "attendance_supervisor_read",
+      "permissive": true,
+      "cmd": "SELECT",
+      "qual": "bfr_is_education_supervisor()",
+      "with_check": null,
+      "roles": "authenticated"
+    },
+    {
+      "schemaname": "public",
+      "tablename": "attendance",
+      "policyname": "coordinators read attendance",
+      "permissive": true,
+      "cmd": "SELECT",
+      "qual": "(EXISTS ( SELECT 1\n   FROM profiles p\n  WHERE ((p.id = auth.uid()) AND (p.role = ANY (ARRAY['coordinator'::account_role, 'developer'::account_role])))))",
+      "with_check": null,
+      "roles": "authenticated"
+    },
+    {
+      "schemaname": "public",
+      "tablename": "attendance",
+      "policyname": "director_dashboard_read_attendance",
+      "permissive": true,
+      "cmd": "SELECT",
+      "qual": "((\"current_role\"())::text = 'director'::text)",
+      "with_check": null,
+      "roles": "authenticated"
+    },
+    {
+      "schemaname": "public",
+      "tablename": "grades",
+      "policyname": "grades_family_read",
+      "permissive": true,
+      "cmd": "SELECT",
+      "qual": "(EXISTS ( SELECT 1\n   FROM guardian_students gs\n  WHERE ((gs.student_id = grades.student_id) AND (gs.profile_id = auth.uid()))))",
+      "with_check": null,
+      "roles": "authenticated"
+    },
+    {
+      "schemaname": "public",
+      "tablename": "grades",
+      "policyname": "grades_staff_delete",
+      "permissive": true,
+      "cmd": "DELETE",
+      "qual": "(bfr_staff_can_manage_student_scope(student_id, subject) AND ((\"current_role\"())::text <> 'secretary'::text))",
+      "with_check": null,
+      "roles": null
+    },
+    {
+      "schemaname": "public",
+      "tablename": "grades",
+      "policyname": "grades_staff_insert",
+      "permissive": true,
+      "cmd": "INSERT",
+      "qual": null,
+      "with_check": "(bfr_staff_can_manage_student_scope(student_id, subject) AND ((\"current_role\"())::text <> 'secretary'::text) AND (((\"current_role\"())::text <> 'pedagogical'::text) OR (entered_by = auth.uid())))",
+      "roles": null
+    },
+    {
+      "schemaname": "public",
+      "tablename": "grades",
+      "policyname": "grades_staff_select",
+      "permissive": true,
+      "cmd": "SELECT",
+      "qual": "(bfr_staff_can_manage_student_scope(student_id, subject) AND ((\"current_role\"())::text <> 'secretary'::text))",
+      "with_check": null,
+      "roles": null
+    },
+    {
+      "schemaname": "public",
+      "tablename": "grades",
+      "policyname": "grades_supervisor_read",
+      "permissive": true,
+      "cmd": "SELECT",
+      "qual": "bfr_is_education_supervisor()",
+      "with_check": null,
+      "roles": "authenticated"
+    },
+    {
+      "schemaname": "public",
+      "tablename": "occurrences",
+      "policyname": "occurrences_coordinator_insert",
+      "permissive": true,
+      "cmd": "INSERT",
+      "qual": null,
+      "with_check": "(EXISTS ( SELECT 1\n   FROM profiles p\n  WHERE ((p.id = auth.uid()) AND (p.role = 'coordinator'::account_role))))",
+      "roles": "authenticated"
+    },
+    {
+      "schemaname": "public",
+      "tablename": "occurrences",
+      "policyname": "occurrences_coordinator_select",
+      "permissive": true,
+      "cmd": "SELECT",
+      "qual": "(EXISTS ( SELECT 1\n   FROM profiles p\n  WHERE ((p.id = auth.uid()) AND (p.role = 'coordinator'::account_role))))",
+      "with_check": null,
+      "roles": "authenticated"
+    },
+    {
+      "schemaname": "public",
+      "tablename": "occurrences",
+      "policyname": "occurrences_director_select",
+      "permissive": true,
+      "cmd": "SELECT",
+      "qual": "(EXISTS ( SELECT 1\n   FROM ((profiles p\n     JOIN staff_schools ss ON ((ss.profile_id = p.id)))\n     JOIN students st ON ((st.school_id = ss.school_id)))\n  WHERE ((p.id = auth.uid()) AND (p.role = 'director'::account_role) AND (st.id = occurrences.student_id))))",
+      "with_check": null,
+      "roles": null
+    },
+    {
+      "schemaname": "public",
+      "tablename": "occurrences",
+      "policyname": "occurrences_director_update",
+      "permissive": true,
+      "cmd": "UPDATE",
+      "qual": "(EXISTS ( SELECT 1\n   FROM ((profiles p\n     JOIN staff_schools ss ON ((ss.profile_id = p.id)))\n     JOIN students st ON ((st.school_id = ss.school_id)))\n  WHERE ((p.id = auth.uid()) AND (p.role = 'director'::account_role) AND (st.id = occurrences.student_id))))",
+      "with_check": "(EXISTS ( SELECT 1\n   FROM ((profiles p\n     JOIN staff_schools ss ON ((ss.profile_id = p.id)))\n     JOIN students st ON ((st.school_id = ss.school_id)))\n  WHERE ((p.id = auth.uid()) AND (p.role = 'director'::account_role) AND (st.id = occurrences.student_id))))",
+      "roles": null
+    },
+    {
+      "schemaname": "public",
+      "tablename": "occurrences",
+      "policyname": "occurrences_family_read",
+      "permissive": true,
+      "cmd": "SELECT",
+      "qual": "(EXISTS ( SELECT 1\n   FROM guardian_students gs\n  WHERE ((gs.student_id = occurrences.student_id) AND (gs.profile_id = auth.uid()))))",
+      "with_check": null,
+      "roles": "authenticated"
+    },
+    {
+      "schemaname": "public",
+      "tablename": "occurrences",
+      "policyname": "occurrences_staff_manage",
+      "permissive": true,
+      "cmd": "ALL",
+      "qual": "is_staff()",
+      "with_check": "is_staff()",
+      "roles": "authenticated"
+    }
+  ],
+  "funcoes": [
+    {
+      "nome": "bfr_staff_can_manage_student_scope",
+      "dono": "postgres",
+      "security_definer": true,
+      "argumentos": "p_student_id uuid, p_subject text DEFAULT NULL::text",
+      "anon_execute": true,
+      "authenticated_execute": true,
+      "corpo": "CREATE OR REPLACE FUNCTION public.bfr_staff_can_manage_student_scope(p_student_id uuid, p_subject text DEFAULT NULL::text)\n RETURNS boolean\n LANGUAGE sql\n STABLE SECURITY DEFINER\n SET search_path TO 'public'\nAS $function$\n  select (\n    (\n      public.bfr_is_schedule_manager()\n      and public.current_role()::text <> 'pedagogical'\n    )\n    or (\n      public.current_role()::text = 'pedagogical'\n      and public.bfr_pedagogical_can_manage_student(p_student_id, p_subject)\n    )\n    or (\n      public.is_aee()\n      and public.bfr_teacher_can_manage_student(p_student_id, p_subject)\n    )\n  )\n$function$\n"
+    },
+    {
+      "nome": "current_role",
+      "dono": "postgres",
+      "security_definer": true,
+      "argumentos": "",
+      "anon_execute": false,
+      "authenticated_execute": true,
+      "corpo": "CREATE OR REPLACE FUNCTION public.\"current_role\"()\n RETURNS account_role\n LANGUAGE sql\n STABLE SECURITY DEFINER\n SET search_path TO ''\nAS $function$ select role from public.profiles where id = auth.uid() $function$\n"
+    },
+    {
+      "nome": "is_developer",
+      "dono": "postgres",
+      "security_definer": true,
+      "argumentos": "",
+      "anon_execute": false,
+      "authenticated_execute": true,
+      "corpo": "CREATE OR REPLACE FUNCTION public.is_developer()\n RETURNS boolean\n LANGUAGE sql\n STABLE SECURITY DEFINER\n SET search_path TO ''\nAS $function$ select coalesce(public.current_role() = 'developer', false) $function$\n"
+    },
+    {
+      "nome": "is_staff",
+      "dono": "postgres",
+      "security_definer": true,
+      "argumentos": "",
+      "anon_execute": false,
+      "authenticated_execute": true,
+      "corpo": "CREATE OR REPLACE FUNCTION public.is_staff()\n RETURNS boolean\n LANGUAGE sql\n STABLE SECURITY DEFINER\n SET search_path TO ''\nAS $function$\r\n                  select coalesce(public.current_role() in ('pedagogical','aee','developer'), false)\r\n                  $function$\n"
+    }
+  ],
+  "select_em_staff_schools": [
+    {
+      "anon_select": false,
+      "auth_select": true
+    }
+  ],
+  "resumo": {
+    "grades": [
+      "SELECT:grades_family_read",
+      "DELETE:grades_staff_delete",
+      "INSERT:grades_staff_insert",
+      "SELECT:grades_staff_select",
+      "SELECT:grades_supervisor_read"
+    ],
+    "attendance": [
+      "SELECT:attendance_family_read",
+      "DELETE:attendance_staff_delete",
+      "INSERT:attendance_staff_insert",
+      "SELECT:attendance_staff_select",
+      "UPDATE:attendance_staff_update",
+      "SELECT:attendance_supervisor_read",
+      "SELECT:coordinators read attendance",
+      "SELECT:director_dashboard_read_attendance"
+    ],
+    "access_requests": [
+      "INSERT:access_requests_insert",
+      "ALL:access_requests_manage",
+      "SELECT:access_requests_read",
+      "INSERT:access_requests_staff_insert"
+    ],
+    "occurrences": [
+      "INSERT:occurrences_coordinator_insert",
+      "SELECT:occurrences_coordinator_select",
+      "SELECT:occurrences_director_select",
+      "UPDATE:occurrences_director_update",
+      "SELECT:occurrences_family_read",
+      "ALL:occurrences_staff_manage"
+    ]
+  },
+  "pegada_depois": {
+    "total": 182,
+    "hash": "ecf3403210b8091209cb8584a4f1da51"
+  },
+  "portoes": {
+    "portoes": 7,
+    "falhas": []
+  }
+}

@@ -1,0 +1,275 @@
+{
+  "ciclo": "S21-3d",
+  "em": "2026-11-13T04:48:20.320Z",
+  "url": "https://bfr-conecta.turmaroboticabfr.workers.dev/",
+  "stages": {
+    "ms_ready": 1762,
+    "A_papel_real": {
+      "papel": "education_supervisor",
+      "views_visiveis": [
+        "parentView"
+      ],
+      "menu_visivel": [
+        "inicio",
+        "chat-interno",
+        "notificacoes",
+        "conteudos",
+        "jogos-escolares"
+      ],
+      "secretaria_visivel": false,
+      "aba_supervisao_no_dom": false,
+      "items_data_section_unicos": 45,
+      "tem_secao_supervisao_no_menu": false
+    },
+    "A_captura": {
+      "caminho": "s21--A-papel-real-v119.png",
+      "bytes_ficheiro": 225116,
+      "md5": "709a1d5cfffb7def9c9df8994035f737"
+    },
+    "setRole_retorno": "chamado",
+    "B_ms_ate_aba": 466,
+    "B_pintura": {
+      "aba_visivel": true,
+      "lista_presente": false,
+      "linhas": null,
+      "texto": "SECRETARIA · OPERAÇÃO ESCOLAR DIÁRIA Central da Secretaria Receba, localize, confira, execute, registre e acompanhe os processos administrativos autorizados da escola. Atualizar dados Conversar com a LIA Período Hoje Esta semana Este mês Ano letivo 2026 Busca rápida Última atualização carregando Abrir busca Meu dia Pendências Alunos Matrículas Documentos Solicitações Agenda Profissionais Turmas Comunicação Relatórios Supervisão Busca global Alunos ativos — cadastro oficial Matrículas ativas — st"
+    },
+    "B_respostas": [
+      {
+        "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/supervision_requests?select=id,indicator,motive,description,questions,deadline_at,priority,status,created_by,closed_by,closed_at,created_at,updated_at,school_id,sports_schools(name)&order=created_at.desc&limit=200",
+        "status": 200,
+        "corpo": "[]"
+      }
+    ],
+    "B_captura": {
+      "caminho": "s21--B-aba-supervisao-v119-logado.png",
+      "bytes_ficheiro": 230157,
+      "md5": "9c23a0c8104b46b9d29b5317c4c3ee58"
+    },
+    "erros_console": {
+      "bruto": 0,
+      "relevantes": []
+    },
+    "redes_resto": [
+      {
+        "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/bfr_coordination_threads?select=id,subject,category,status,guardian_id,created_at,updated_at&order=updated_at.d",
+        "status": 200
+      },
+      {
+        "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/school_notification_reads?select=notification_key&profile_id=eq.0e772187-9202-41e7-b474-8f2fe4014776&limit=200",
+        "status": 200
+      },
+      {
+        "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/school_notification_reads?select=notification_key&profile_id=eq.0e772187-9202-41e7-b474-8f2fe4014776&limit=200",
+        "status": 200
+      },
+      {
+        "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/bfr_coordination_threads?select=id,subject,category,status,guardian_id,created_at,updated_at&order=updated_at.d",
+        "status": 200
+      },
+      {
+        "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/internal_chat_room_members?select=room_id,last_read_at&profile_id=eq.0e772187-9202-41e7-b474-8f2fe4014776",
+        "status": 200
+      },
+      {
+        "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/classes?select=id,year,class_code&order=year.asc,class_code.asc",
+        "status": 200
+      },
+      {
+        "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/school_activities?select=id,title,subject,description,due_date,attachment_path,attachment_name,published_at,cla",
+        "status": 200
+      },
+      {
+        "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/projects?select=id,slug,title,summary,information,published&published=eq.true&order=title.asc",
+        "status": 200
+      },
+      {
+        "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/project_photos?select=id,project_id,storage_path,caption,display_order,created_at&order=created_at.desc",
+        "status": 200
+      },
+      {
+        "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/announcements?select=id,title,body,published_at,important&order=published_at.desc&limit=5",
+        "status": 200
+      },
+      {
+        "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/school_events?select=title,description,starts_at,location&starts_at=gte.2026-11-13T04:48:23.624Z&order=starts_a",
+        "status": 200
+      },
+      {
+        "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/internal_chat_room_members?select=room_id,last_read_at&profile_id=eq.0e772187-9202-41e7-b474-8f2fe4014776",
+        "status": 200
+      },
+      {
+        "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/bfr_coordination_threads?select=id,subject,category,status,guardian_id,created_at,updated_at&order=updated_at.d",
+        "status": 200
+      },
+      {
+        "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/secretary_requests?select=id,protocol,requester_id,student_id,request_type,description,purpose,details,receivin",
+        "status": 200
+      },
+      {
+        "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/classes?select=id,year,class_code,shift&order=year.asc,class_code.asc&limit=300",
+        "status": 200
+      },
+      {
+        "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/profiles?select=id,full_name,email,role&limit=700",
+        "status": 200
+      },
+      {
+        "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/announcements?select=id,title,body,message_type,status,published_at,scheduled_at,important&order=published_at.d",
+        "status": 200
+      },
+      {
+        "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/school_documents?select=id,title,category,description,storage_path,student_id,request_id,recipient_id,published",
+        "status": 200
+      },
+      {
+        "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/school_events?select=id,title,description,starts_at,location&starts_at=gte.2026-11-13T04:48:23.957Z&order=start",
+        "status": 200
+      },
+      {
+        "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/students?select=id,official_name,class_id,active&active=eq.true&order=official_name.asc&limit=1500",
+        "status": 200
+      },
+      {
+        "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/bfr_teacher_directory?select=id,source_name,display_name,profile_id&order=source_name.asc&limit=500",
+        "status": 200
+      },
+      {
+        "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/attendance?select=student_id,attendance_date,status&order=attendance_date.desc&limit=4000",
+        "status": 200
+      },
+      {
+        "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/grades?select=student_id,subject,score,term,created_at&order=created_at.desc&limit=3000",
+        "status": 200
+      },
+      {
+        "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/school_activities?select=id,title,subject,due_date,published_at,class_id,published_by&order=published_at.desc&l",
+        "status": 200
+      },
+      {
+        "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/school_meetings?select=id,title,starts_at,location,status&starts_at=gte.2026-11-13T04:48:23.957Z&order=starts_a",
+        "status": 200
+      },
+      {
+        "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/secretary_profile_change_requests?select=id,requester_id,student_id,requested_changes,status,created_at,updated",
+        "status": 200
+      },
+      {
+        "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/student_school_profiles?select=student_id,guardian_name,guardian_phone&limit=1500",
+        "status": 200
+      },
+      {
+        "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/schools?select=id,name,active&order=name.asc&limit=50",
+        "status": 200
+      },
+      {
+        "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/learning_action_plans?select=id,name,school_year,start_date,end_date,responsible_id,diagnostic_source,problem,e",
+        "status": 200
+      },
+      {
+        "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/projects?select=id,slug,title,summary,information,published&published=eq.true&order=title.asc",
+        "status": 200
+      },
+      {
+        "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/school_activities?select=id,title,subject,description,due_date,attachment_path,attachment_name,published_at,cla",
+        "status": 200
+      },
+      {
+        "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/classes?select=id,year,class_code&order=year.asc,class_code.asc",
+        "status": 200
+      },
+      {
+        "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/announcements?select=id,title,body,published_at,important&order=published_at.desc&limit=5",
+        "status": 200
+      },
+      {
+        "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/project_photos?select=id,project_id,storage_path,caption,display_order,created_at&order=created_at.desc",
+        "status": 200
+      },
+      {
+        "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/school_activities?select=id,title,subject,due_date,published_at,class_id,published_by&order=published_at.desc&l",
+        "status": 200
+      },
+      {
+        "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/school_meetings?select=id,title,starts_at,location,status&starts_at=gte.2026-11-13T04:48:23.957Z&order=starts_a",
+        "status": 200
+      },
+      {
+        "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/school_events?select=title,description,starts_at,location&starts_at=gte.2026-11-13T04:48:23.624Z&order=starts_a",
+        "status": 200
+      },
+      {
+        "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/schools?select=id,name,active&order=name.asc&limit=50",
+        "status": 200
+      },
+      {
+        "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/learning_action_plans?select=id,name,school_year,start_date,end_date,responsible_id,diagnostic_source,problem,e",
+        "status": 200
+      },
+      {
+        "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/project_results?select=id,project_id,level,position,student_id,class_id,winner_name,class_label,note,theme,phot",
+        "status": 200
+      },
+      {
+        "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/grades?select=student_id,subject,score,term,created_at&order=created_at.desc&limit=3000",
+        "status": 200
+      },
+      {
+        "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/students?select=id,official_name,class_id,active&active=eq.true&order=official_name.asc&limit=1500",
+        "status": 200
+      },
+      {
+        "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/school_documents?select=id,title,category,description,storage_path,student_id,request_id,recipient_id,published",
+        "status": 200
+      },
+      {
+        "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/classes?select=id,year,class_code,shift&order=year.asc,class_code.asc&limit=300",
+        "status": 200
+      },
+      {
+        "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/announcements?select=id,title,body,message_type,status,published_at,scheduled_at,important&order=published_at.d",
+        "status": 200
+      },
+      {
+        "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/profiles?select=id,full_name,email,role&limit=700",
+        "status": 200
+      },
+      {
+        "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/secretary_requests?select=id,protocol,requester_id,student_id,request_type,description,purpose,details,receivin",
+        "status": 200
+      },
+      {
+        "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/school_events?select=id,title,description,starts_at,location&starts_at=gte.2026-11-13T04:48:23.957Z&order=start",
+        "status": 200
+      },
+      {
+        "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/attendance?select=student_id,attendance_date,status&order=attendance_date.desc&limit=4000",
+        "status": 200
+      },
+      {
+        "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/secretary_profile_change_requests?select=id,requester_id,student_id,requested_changes,status,created_at,updated",
+        "status": 200
+      },
+      {
+        "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/project_results?select=id,project_id,level,position,student_id,class_id,winner_name,class_label,note,theme,phot",
+        "status": 200
+      },
+      {
+        "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/student_school_profiles?select=student_id,guardian_name,guardian_phone&limit=1500",
+        "status": 200
+      },
+      {
+        "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/internal_chat_room_members?select=room_id,last_read_at&profile_id=eq.0e772187-9202-41e7-b474-8f2fe4014776",
+        "status": 200
+      }
+    ]
+  },
+  "portoes": 12,
+  "falhas": [],
+  "veredito": "S21_ABA_LOGADA_OK",
+  "regua": {
+    "shell_md5_esperado": "a1969cdf023042e7d2a91e7ed9333a05",
+    "shell_bytes_esperado": 3489474
+  }
+}

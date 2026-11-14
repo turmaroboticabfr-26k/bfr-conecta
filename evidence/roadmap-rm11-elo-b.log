@@ -1,0 +1,192 @@
+== bfr_teacher_lesson_gate_evidence (1)
+CREATE OR REPLACE FUNCTION public.bfr_teacher_lesson_gate_evidence(target_class uuid, target_date date, target_schedule_entry uuid)
+ RETURNS TABLE(student_id uuid, checked_at timestamp with time zone, entry_status text)
+ LANGUAGE plpgsql
+ STABLE SECURITY DEFINER
+ SET search_path TO ''
+AS $function$
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  declare v_subject text; v_day text; v_school_year smallint;
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  begin
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    v_day:=case extract(isodow from target_date)::int
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        when 1 then 'segunda' when 2 then 'terca' when 3 then 'quarta'
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            when 4 then 'quinta' when 5 then 'sexta' when 6 then 'sabado' else 'domingo' end;
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              select e.subject_name,v.school_year into v_subject,v_school_year
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  from public.bfr_schedule_entries e
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      join public.bfr_schedule_versions v on v.id=e.version_id and v.status='published'
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          where e.id=target_schedule_entry and e.class_id=target_class and e.weekday=v_day;
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            if v_subject is null or not public.bfr_can_manage_lesson_attendance(target_class,v_subject,target_schedule_entry) then
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                raise exception 'Acesso restrito à aula autorizada';
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  end if;
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    if extract(year from target_date)::smallint<>v_school_year then raise exception 'Ano incompatível com a grade publicada'; end if;
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      return query
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          select gc.student_id,gc.checked_at,gc.entry_status
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              from public.gate_checkins gc
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  join public.students s on s.id=gc.student_id and s.class_id=target_class and s.active
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      where gc.class_id=target_class
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            and coalesce(gc.school_date,(gc.checked_at at time zone 'America/Maceio')::date)=target_date
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  and gc.direction='entry' and gc.entry_status in ('allowed','guardian_present')
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      order by gc.checked_at;
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      end $function$
+
+== bfr_supervision_frequencia (1)
+CREATE OR REPLACE FUNCTION public.bfr_supervision_frequencia(p_mes date DEFAULT NULL::date, p_class_id uuid DEFAULT NULL::uuid)
+ RETURNS TABLE(ano smallint, turma text, mes text, n_alunos integer, presencas integer, ausencias integer, outros integer, checkins_entrada integer, checkins_saida integer, pct_presenca numeric, pct_ausencia numeric)
+ LANGUAGE plpgsql
+ SECURITY DEFINER
+ SET search_path TO 'public'
+AS $function$
+begin
+  if not exists (select 1 from public.profiles p
+    where p.id = auth.uid() and p.role in ('secretary'::public.account_role,
+      'developer'::public.account_role,'director'::public.account_role)) then
+    raise exception 'permissão negada' using errcode = '42501';
+  end if;
+  return query
+  with att as (
+    select s.class_id, date_trunc('month', a.attendance_date)::date as mes,
+           count(*) filter (where a.status = 'present')::int as presencas,
+           count(*) filter (where a.status = 'absent')::int as ausencias,
+           count(*) filter (where a.status not in ('present','absent'))::int as outros
+    from public.attendance a
+    join public.students s on s.id = a.student_id
+    where (p_mes is null or date_trunc('month', a.attendance_date)::date = date_trunc('month', p_mes)::date)
+      and (p_class_id is null or s.class_id = p_class_id)
+    group by s.class_id, date_trunc('month', a.attendance_date)::date
+  ), chk as (
+    select s.class_id, date_trunc('month', g.checked_at)::date as mes,
+           count(*) filter (where g.direction = 'entry')::int as entrada,
+           count(*) filter (where g.direction = 'exit')::int as saida
+    from public.gate_checkins g
+    join public.students s on s.id = g.student_id
+    where (p_mes is null or date_trunc('month', g.checked_at)::date = date_trunc('month', p_mes)::date)
+      and (p_class_id is null or s.class_id = p_class_id)
+    group by s.class_id, date_trunc('month', g.checked_at)::date
+  )
+  select c.year, c.class_code, to_char(m.mes, 'YYYY-MM'),
+         (select count(*)::int from public.students s2 where s2.class_id = c.id and s2.active),
+         m.presencas, m.ausencias, m.outros, m.entrada, m.saida,
+         round(100.0 * m.presencas / nullif(m.presencas + m.ausencias, 0), 1),
+         round(100.0 * m.ausencias / nullif(m.presencas + m.ausencias, 0), 1)
+  from public.classes c
+  left join (
+    select coalesce(att.class_id, chk.class_id) as class_id, coalesce(att.mes, chk.mes) as mes,
+           coalesce(att.presencas, 0) as presencas, coalesce(att.ausencias, 0) as ausencias,
+           coalesce(att.outros, 0) as outros,
+           coalesce(chk.entrada, 0) as entrada, coalesce(chk.saida, 0) as saida
+    from att full join chk on chk.class_id = att.class_id and chk.mes = att.mes
+  ) m on m.class_id = c.id
+  where (p_class_id is null or c.id = p_class_id)
+  order by c.year, c.class_code, 3;
+end $function$
+
+== bfr_supervision_comparativo (1)
+CREATE OR REPLACE FUNCTION public.bfr_supervision_comparativo(p_school_year integer DEFAULT NULL::integer, p_term smallint DEFAULT NULL::smallint, p_subject text DEFAULT NULL::text)
+ RETURNS TABLE(ano smallint, turma text, n_alunos integer, n_avaliacoes integer, media numeric, pct_critico numeric, pct_atencao numeric, pct_desenvolvimento numeric, pct_adequado numeric, presencas integer, ausencias integer, pct_presenca numeric, pct_ausencia numeric)
+ LANGUAGE plpgsql
+ SECURITY DEFINER
+ SET search_path TO 'public'
+AS $function$
+declare
+  v_crit numeric; v_aten numeric; v_dev numeric;
+begin
+  if not exists (select 1 from public.profiles p
+    where p.id = auth.uid() and p.role in ('secretary'::public.account_role,
+      'developer'::public.account_role,'director'::public.account_role)) then
+    raise exception 'permissão negada' using errcode = '42501';
+  end if;
+  select critical_max, attention_max, development_max into v_crit, v_aten, v_dev
+  from public.learning_indicator_settings
+  where school_year = coalesce(p_school_year,
+    (select max(school_year) from public.learning_indicator_settings))
+  order by school_year desc limit 1;
+  if v_crit is null then v_crit := 49; v_aten := 69; v_dev := 79; end if;
+  return query
+  with medias as (
+    select g.student_id, g.subject, g.term, avg(g.score) as media
+    from public.grades g
+    join public.students s on s.id = g.student_id
+    where (p_subject is null or g.subject = p_subject)
+      and (p_term is null or g.term = p_term)
+      and (p_school_year is null or exists (
+        select 1 from public.classes cc where cc.id = s.class_id and cc.year = p_school_year))
+    group by g.student_id, g.subject, g.term
+  ), med_turma as (
+    select s.class_id,
+           count(distinct m.student_id)::int as n_av,
+           count(*)::int as n_avaliacoes,
+           round(avg(m.media)::numeric, 2) as media,
+           count(*) filter (where m.media < v_crit)::int as n_crit,
+           count(*) filter (where m.media >= v_crit and m.media < v_aten)::int as n_aten,
+           count(*) filter (where m.media >= v_aten and m.media < v_dev)::int as n_dev,
+           count(*) filter (where m.media >= v_dev)::int as n_adeq
+    from medias m
+    join public.students s on s.id = m.student_id
+    group by s.class_id
+  ), att_turma as (
+    select s.class_id,
+           count(*) filter (where a.status = 'present')::int as presencas,
+           count(*) filter (where a.status = 'absent')::int as ausencias
+    from public.attendance a
+    join public.students s on s.id = a.student_id
+    group by s.class_id
+  )
+  select c.year, c.class_code,
+         (select count(*)::int from public.students s2 where s2.class_id = c.id and s2.active),
+         coalesce(mt.n_avaliacoes, 0), coalesce(mt.media, 0),
+         round(100.0 * coalesce(mt.n_crit, 0) / nullif(mt.n_av, 0), 1),
+         round(100.0 * coalesce(mt.n_aten, 0) / nullif(mt.n_av, 0), 1),
+         round(100.0 * coalesce(mt.n_dev, 0) / nullif(mt.n_av, 0), 1),
+         round(100.0 * coalesce(mt.n_adeq, 0) / nullif(mt.n_av, 0), 1),
+         coalesce(at.presencas, 0), coalesce(at.ausencias, 0),
+         round(100.0 * coalesce(at.presencas, 0) / nullif(coalesce(at.presencas, 0) + coalesce(at.ausencias, 0), 0), 1),
+         round(100.0 * coalesce(at.ausencias, 0) / nullif(coalesce(at.presencas, 0) + coalesce(at.ausencias, 0), 0), 1)
+  from public.classes c
+  left join med_turma mt on mt.class_id = c.id
+  left join att_turma at on at.class_id = c.id
+  where (p_school_year is null or c.year = p_school_year)
+  order by c.year, c.class_code;
+end $function$
+
+== confirm_guardian_entry (1)
+CREATE OR REPLACE FUNCTION public.confirm_guardian_entry(target_checkin uuid)
+ RETURNS TABLE(checkin_id uuid, student_id uuid, official_name text, class_label text, direction text, checked_at timestamp with time zone, entry_status text, guardian_confirmed_at timestamp with time zone)
+ LANGUAGE plpgsql
+ SECURITY DEFINER
+ SET search_path TO ''
+AS $function$ begin if not public.is_gatekeeper() then raise exception 'Acesso restrito ao porteiro'; end if; update public.gate_checkins as gc set entry_status = 'guardian_present', guardian_present = true, guardian_confirmed_by = auth.uid(), guardian_confirmed_at = now() where gc.id = target_checkin and gc.entry_status = 'blocked'; if not found then raise exception 'A entrada já foi liberada ou não foi encontrada'; end if; update public.gate_entry_alerts as gea set acknowledged_at = coalesce(gea.acknowledged_at, now()), acknowledged_by = coalesce(gea.acknowledged_by, auth.uid()), resolved_at = now(), resolved_by = auth.uid() where gea.checkin_id = target_checkin; return query select gc.id, s.id, s.official_name, concat(c.year, 'º ano ', c.class_code), gc.direction, gc.checked_at, gc.entry_status, gc.guardian_confirmed_at from public.gate_checkins as gc join public.students as s on s.id = gc.student_id join public.classes as c on c.id = gc.class_id where gc.id = target_checkin; end; $function$
+
+== register_gate_checkin (1)
+CREATE OR REPLACE FUNCTION public.register_gate_checkin(target_badge_token uuid, gate_direction text DEFAULT 'entry'::text, visual_confirmation boolean DEFAULT false, intake_source text DEFAULT NULL::text, target_shift text DEFAULT NULL::text, exception_reason text DEFAULT NULL::text)
+ RETURNS TABLE(checkin_id uuid, student_id uuid, official_name text, class_label text, direction text, checked_at timestamp with time zone, entry_status text, entry_allowed boolean, restriction_reason text, alert_id uuid, photo_path text)
+ LANGUAGE plpgsql
+ SECURITY DEFINER
+ SET search_path TO ''
+AS $function$
+declare badge_student uuid; badge_class uuid; existing_checkin public.gate_checkins; restriction_id uuid; restriction_reason_value text; new_alert_id uuid; profile_photo_path text;
+begin
+if not public.is_gatekeeper() then raise exception 'Acesso restrito ao porteiro'; end if;
+if gate_direction not in ('entry','exit') then raise exception 'Sentido inválido'; end if;
+select gb.student_id,s.class_id into badge_student,badge_class from public.gate_badges gb join public.students s on s.id=gb.student_id where gb.badge_token=target_badge_token and gb.active=true and s.active=true;
+if badge_student is null then raise exception 'Crachá não encontrado ou inativo'; end if;
+select er.id,er.reason into restriction_id,restriction_reason_value from public.entry_restrictions er where er.student_id=badge_student and er.active=true order by er.created_at desc limit 1;
+select ssp.photo_path into profile_photo_path from public.student_school_profiles ssp where ssp.student_id=badge_student;
+if not visual_confirmation then
+return query select null::uuid,s.id,s.official_name,concat(c.year,'º ano ',c.class_code),gate_direction,now(),'pending_visual'::text,false,restriction_reason_value,null::uuid,profile_photo_path from public.students s join public.classes c on c.id=s.class_id where s.id=badge_student;
+return;
+end if;
+select gc.* into existing_checkin from public.gate_checkins gc where gc.student_id=badge_student and gc.direction=gate_direction and gc.checked_at>now()-interval '2 minutes' order by gc.checked_at desc limit 1;
+if existing_checkin.id is null then
+if gate_direction='entry' and restriction_id is not null then
+insert into public.gate_checkins(student_id,class_id,gatekeeper_id,direction,source,entry_status,restriction_reason,intake_source,target_shift,exception_reason) values(badge_student,badge_class,auth.uid(),gate_direction,case when lower(btrim(coalesce(intake_source,'')))='manual' then 'manual' else 'qr' end,'blocked',restriction_reason_value,intake_source,target_shift,exception_reason) returning * into existing_checkin;
+insert into public.gate_entry_alerts(checkin_id,student_id,gatekeeper_id,restriction_id,reason) values(existing_checkin.id,badge_student,auth.uid(),restriction_id,restriction_reason_value) returning id into new_alert_id;
+else
+insert into public.gate_checkins(student_id,class_id,gatekeeper_id,direction,source,intake_source,target_shift,exception_reason) values(badge_student,badge_class,auth.uid(),gate_direction,case when lower(btrim(coalesce(intake_source,'')))='manual' then 'manual' else 'qr' end,intake_source,target_shift,exception_reason) returning * into existing_checkin;
+end if;
+elsif existing_checkin.entry_status='blocked' then
+select gea.id into new_alert_id from public.gate_entry_alerts gea where gea.checkin_id=existing_checkin.id order by gea.created_at desc limit 1;
+end if;
+return query select existing_checkin.id,s.id,s.official_name,concat(c.year,'º ano ',c.class_code),existing_checkin.direction,existing_checkin.checked_at,existing_checkin.entry_status,existing_checkin.entry_status<>'blocked',existing_checkin.restriction_reason,new_alert_id,profile_photo_path from public.students s join public.classes c on c.id=existing_checkin.class_id where s.id=existing_checkin.student_id;
+end;
+$function$
+
+== realtime: [{"pubname":"supabase_realtime","tablename":"aee_attendance"},{"pubname":"supabase_realtime","tablename":"attendance"},{"pubname":"supabase_realtime","tablename":"bfr_lesson_attendance"},{"pubname":"supabase_realtime","tablename":"gate_checkins"}]

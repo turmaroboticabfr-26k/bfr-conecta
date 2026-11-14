@@ -1,0 +1,110 @@
+[
+  {
+    "nome": "tabelas_attend_checkin",
+    "ok": true,
+    "linhas": [
+      {
+        "relname": "aee_attendance",
+        "relkind": "r"
+      },
+      {
+        "relname": "attendance",
+        "relkind": "r"
+      },
+      {
+        "relname": "bfr_lesson_attendance",
+        "relkind": "r"
+      },
+      {
+        "relname": "bfr_lesson_attendance_audit",
+        "relkind": "r"
+      },
+      {
+        "relname": "gate_checkins",
+        "relkind": "r"
+      }
+    ]
+  },
+  {
+    "nome": "triggers_sobre_alvos",
+    "ok": true,
+    "linhas": []
+  },
+  {
+    "nome": "funcoes_citando_checkin_ou_attendance",
+    "ok": true,
+    "linhas": [
+      {
+        "proname": "bfr_audit_lesson_attendance_change",
+        "assinatura": "bfr_audit_lesson_attendance_change()",
+        "cita_gc": "",
+        "cita_att": "cita attendance"
+      },
+      {
+        "proname": "bfr_supervision_comparativo",
+        "assinatura": "bfr_supervision_comparativo(integer,smallint,text)",
+        "cita_gc": "",
+        "cita_att": "cita attendance"
+      },
+      {
+        "proname": "bfr_supervision_frequencia",
+        "assinatura": "bfr_supervision_frequencia(date,uuid)",
+        "cita_gc": "cita gate_checkins",
+        "cita_att": "cita attendance"
+      },
+      {
+        "proname": "bfr_teacher_context",
+        "assinatura": "bfr_teacher_context()",
+        "cita_gc": "",
+        "cita_att": "cita attendance"
+      },
+      {
+        "proname": "bfr_teacher_lesson_gate_evidence",
+        "assinatura": "bfr_teacher_lesson_gate_evidence(uuid,date,uuid)",
+        "cita_gc": "cita gate_checkins",
+        "cita_att": "cita attendance"
+      },
+      {
+        "proname": "confirm_guardian_entry",
+        "assinatura": "confirm_guardian_entry(uuid)",
+        "cita_gc": "cita gate_checkins",
+        "cita_att": ""
+      },
+      {
+        "proname": "register_gate_checkin",
+        "assinatura": "register_gate_checkin(uuid,text,boolean,text,text,text)",
+        "cita_gc": "cita gate_checkins",
+        "cita_att": ""
+      }
+    ]
+  },
+  {
+    "nome": "policies_citando_checkin",
+    "ok": true,
+    "linhas": [
+      {
+        "tablename": "gate_checkins",
+        "policyname": "gate_checkins_family_read",
+        "cmd": "SELECT",
+        "qual": "(EXISTS ( SELECT 1\n   FROM guardian_students gs\n  WHERE ((gs.student_id = gate_checkins.student_id) AND (gs.profile_id = auth.uid()))))",
+        "with_check": null
+      }
+    ]
+  },
+  {
+    "nome": "funcao_registra_attendance",
+    "ok": true,
+    "linhas": [
+      {
+        "proname": "bfr_audit_lesson_attendance_change",
+        "assinatura": "bfr_audit_lesson_attendance_change()",
+        "prosrc": "\r\n                                                                                                                                                                                                                                                                                                                                                                                                    begin\r\n                                                                                                                                                                                                                                                                                                                                                                                                      if tg_op='INSERT' and new.source='coordinator_override' then\r\n                                                                                                                                                                                                                                                                                                                                                                                                          insert into public.bfr_lesson_attendance_audit\r\n                                                                                                                                                                                                                                                                                                                                                                                                                (lesson_attendance_id,class_id,student_id,schedule_entry_id,lesson_date,period,subject,\r\n                                                                                                                                                                                                                                                                                                                                                                                                                       old_status,new_status,old_source,new_source,reason,changed_by)\r\n                                                                                                                                                                                                                                                                                                                                                                                                                           values\r\n                                                                                                                                                                                                                                                                                                                                                                                                                                 (new.id,new.class_id,new.student_id,new.schedule_entry_id,new.lesson_date,new.period,new.subject,\r\n                                                                                                                                                                                                                                                                                                                                                                                                                                        'unrecorded',new.status,'none',new.source,btrim(new.manual_reason),auth.uid());\r\n                                                                                                                                                                                                                                                                                                                                                                                                                                          elsif tg_op='UPDATE' and (new.status is distinct from old.status or new.source is distinct from old.source\r\n                                                                                                                                                                                                                                                                                                                                                                                                                                              or new.manual_reason is distinct from old.manual_reason) then\r\n                                                                                                                                                                                                                                                                                                                                                                                                                                                  insert into public.bfr_lesson_attendance_audit\r\n                                                                                                                                                                                                                                                                                                                                                                                                                                                        (lesson_attendance_id,class_id,student_id,schedule_entry_id,lesson_date,period,subject,\r\n                                                                                                                                                                                                                                                                                                                                                                                                                                                               old_status,new_status,old_source,new_source,reason,changed_by)\r\n                                                                                                                                                                                                                                                                                                                                                                                                                                                                   values\r\n                                                                                                                                                                                                                                                                                                                                                                                                                                                                         (new.id,new.class_id,new.student_id,new.schedule_entry_id,new.lesson_date,new.period,new.subject,\r\n                                                                                                                                                                                                                                                                                                                                                                                                                                                                                old.status,new.status,old.source,new.source,btrim(new.manual_reason),auth.uid());\r\n                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  end if;\r\n                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    return new;\r\n                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    end "
+      }
+    ]
+  },
+  {
+    "nome": "attendance_no_realtime",
+    "ok": false,
+    "erro": "Error: sql HTTP 400: {\"message\":\"Failed to run sql query: ERROR:  42P01: relation \\\"supabase_realtime.publication_tables\\\" does not exist\\nLINE 2:   select table_name from supabase_realtime.publication_tables\\n                                 ^\\n\"}"
+  }
+]

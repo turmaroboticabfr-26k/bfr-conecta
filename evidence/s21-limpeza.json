@@ -1,0 +1,119 @@
+{
+  "ciclo": "S21-L",
+  "started": "2026-11-13T04:51:20.431Z",
+  "stages": {
+    "insumos": {
+      "uid": "0e772187-9202-41e7-b474-8f2fe4014776",
+      "email": "s21-supervisor-147b3c@bfr-conecta.test",
+      "baseline_keys": [
+        "auth.users",
+        "public.profiles",
+        "public.sports_schools",
+        "public.staff_schools",
+        "public.supervision_requests",
+        "public.supervision_audit"
+      ]
+    },
+    "fks": {
+      "total": 215
+    },
+    "dependentes": [
+      {
+        "tabela": "auth.identities",
+        "coluna": "user_id",
+        "destino": "auth.users",
+        "n": 1
+      },
+      {
+        "tabela": "auth.sessions",
+        "coluna": "user_id",
+        "destino": "auth.users",
+        "n": 1
+      },
+      {
+        "tabela": "profiles",
+        "coluna": "id",
+        "destino": "auth.users",
+        "n": 1
+      }
+    ],
+    "sessoes_antes": 1,
+    "perfil_antes": {
+      "papel": "education_supervisor"
+    },
+    "removidas": [
+      {
+        "tabela": "auth.identities",
+        "n": 1,
+        "como": "DELETE explícito"
+      },
+      {
+        "tabela": "auth.sessions",
+        "n": 1,
+        "como": "DELETE explícito"
+      },
+      {
+        "tabela": "profiles",
+        "n": 1,
+        "como": "DELETE explícito"
+      },
+      {
+        "tabela": "public.profiles",
+        "n": 0,
+        "como": "DELETE explícito (antes do utilizador)"
+      }
+    ],
+    "delete_usuario": {
+      "status": 200,
+      "corpo": "{}"
+    },
+    "baseline_depois": {
+      "auth.users": {
+        "n": 21,
+        "md5": "851788b00e597242b977fba64041251e"
+      },
+      "public.profiles": {
+        "n": 21,
+        "md5": "ca94399791ab7c1399d8df27c3c28fac"
+      },
+      "public.sports_schools": {
+        "n": 6,
+        "md5": "e336897faf29ba27722e44e680a4b4ae"
+      },
+      "public.staff_schools": {
+        "n": 2,
+        "md5": "21a2ebcb5dd815170c95fa13c2a9e115"
+      },
+      "public.supervision_requests": {
+        "n": 0,
+        "md5": "empty"
+      },
+      "public.supervision_audit": {
+        "n": 33,
+        "md5": "871ab2250caff1c474a749fd23eb5da8"
+      }
+    },
+    "perfis_chrome": [
+      {
+        "pasta": ".s21-chrome-profile",
+        "existia": true,
+        "removido": true,
+        "bytes_entrada": 0
+      },
+      {
+        "pasta": ".s21-chrome-profile-b",
+        "existia": true,
+        "removido": true,
+        "bytes_entrada": 0
+      },
+      {
+        "pasta": ".s21-chrome-profile-c",
+        "existia": true,
+        "removido": true,
+        "bytes_entrada": 0
+      }
+    ]
+  },
+  "falhas": [],
+  "veredito": "S21_L_LIMPO"
+}

@@ -1,0 +1,93 @@
+{
+  "em": "2026-11-12T00:56:04.426Z",
+  "tipo": "policies-ciclo-read-only",
+  "policies": [
+    {
+      "polname": "profiles_read",
+      "tabela": "profiles",
+      "cmd": "select",
+      "papeis": [
+        "authenticated"
+      ],
+      "using_": "((id = auth.uid()) OR is_developer() OR (EXISTS ( SELECT 1\n   FROM ((staff_schools ss_target\n     JOIN profiles p_caller ON ((p_caller.id = auth.uid())))\n     JOIN staff_schools ss_caller ON ((ss_caller.profile_id = p_caller.id)))\n  WHERE ((ss_target.profile_id = profiles.id) AND (ss_caller.school_id = ss_target.school_id)))) OR (EXISTS ( SELECT 1\n   FROM (((profiles p_caller\n     JOIN staff_schools ss_caller ON ((ss_caller.profile_id = p_caller.id)))\n     JOIN students st ON ((st.school_id = ss_caller.school_id)))\n     JOIN profiles p_student ON ((p_student.id = profiles.id)))\n  WHERE ((p_caller.id = auth.uid()) AND (st.student_profile_id = p_student.id)))) OR (EXISTS ( SELECT 1\n   FROM (((profiles p_caller\n     JOIN staff_schools ss_caller ON ((ss_caller.profile_id = p_caller.id)))\n     JOIN guardian_students gs ON ((gs.profile_id = profiles.id)))\n     JOIN students st ON ((st.id = gs.student_id)))\n  WHERE ((p_caller.id = auth.uid()) AND (ss_caller.school_id = st.school_id)))))",
+      "with_check": "(sem with_check)"
+    },
+    {
+      "polname": "staff_schools_developer_delete",
+      "tabela": "staff_schools",
+      "cmd": "delete",
+      "papeis": [
+        "authenticated"
+      ],
+      "using_": "(EXISTS ( SELECT 1\n   FROM profiles p\n  WHERE ((p.id = auth.uid()) AND (p.role = 'developer'::account_role))))",
+      "with_check": "(sem with_check)"
+    },
+    {
+      "polname": "staff_schools_developer_insert",
+      "tabela": "staff_schools",
+      "cmd": "insert",
+      "papeis": [
+        "authenticated"
+      ],
+      "using_": "(sem using)",
+      "with_check": "(EXISTS ( SELECT 1\n   FROM profiles p\n  WHERE ((p.id = auth.uid()) AND (p.role = 'developer'::account_role))))"
+    },
+    {
+      "polname": "staff_schools_developer_read",
+      "tabela": "staff_schools",
+      "cmd": "select",
+      "papeis": [
+        "authenticated"
+      ],
+      "using_": "(EXISTS ( SELECT 1\n   FROM profiles p\n  WHERE ((p.id = auth.uid()) AND (p.role = 'developer'::account_role))))",
+      "with_check": "(sem with_check)"
+    },
+    {
+      "polname": "staff_schools_developer_update",
+      "tabela": "staff_schools",
+      "cmd": "update",
+      "papeis": [
+        "authenticated"
+      ],
+      "using_": "(EXISTS ( SELECT 1\n   FROM profiles p\n  WHERE ((p.id = auth.uid()) AND (p.role = 'developer'::account_role))))",
+      "with_check": "(EXISTS ( SELECT 1\n   FROM profiles p\n  WHERE ((p.id = auth.uid()) AND (p.role = 'developer'::account_role))))"
+    },
+    {
+      "polname": "staff_schools_own_insert",
+      "tabela": "staff_schools",
+      "cmd": "insert",
+      "papeis": [
+        "authenticated"
+      ],
+      "using_": "(sem using)",
+      "with_check": "((profile_id = auth.uid()) AND (EXISTS ( SELECT 1\n   FROM profiles p\n  WHERE ((p.id = auth.uid()) AND (p.role = ANY (ARRAY['director'::account_role, 'coordinator'::account_role, 'secretary'::account_role]))))))"
+    },
+    {
+      "polname": "staff_schools_own_read",
+      "tabela": "staff_schools",
+      "cmd": "select",
+      "papeis": [
+        "authenticated"
+      ],
+      "using_": "(profile_id = auth.uid())",
+      "with_check": "(sem with_check)"
+    }
+  ],
+  "rls_ligado": [
+    {
+      "tabela": "profiles",
+      "rls": true,
+      "force": false
+    },
+    {
+      "tabela": "staff_schools",
+      "rls": true,
+      "force": false
+    }
+  ],
+  "total_policies": [
+    {
+      "n": 12
+    }
+  ]
+}

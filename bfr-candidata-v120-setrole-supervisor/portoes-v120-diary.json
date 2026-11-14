@@ -1,0 +1,170 @@
+{
+  "ciclo": "v120-setrole-supervisor",
+  "data": "2026-11-13",
+  "tarefa": "#1158 RM-1.7 / PEN-32",
+  "base": "candidata v119 congelada == shell publicado",
+  "base_md5": "a1969cdf023042e7d2a91e7ed9333a05",
+  "base_bytes": 3489474,
+  "candidate_md5": "a9a76d0e338c2a539135bccce23111b4",
+  "candidate_bytes": 3489649,
+  "candidate_delta_bytes": 175,
+  "hunks": [
+    {
+      "id": "H1",
+      "line": 9902
+    },
+    {
+      "id": "H2",
+      "line": 9926
+    },
+    {
+      "id": "H3",
+      "line": 10145
+    }
+  ],
+  "escopo": "candidata + portoes + bancada A/B offline; PUBLICACAO NAO autorizada",
+  "gates": [
+    {
+      "name": "cand_md5",
+      "ok": true,
+      "detail": "a9a76d0e338c2a539135bccce23111b4"
+    },
+    {
+      "name": "cand_bytes",
+      "ok": true,
+      "detail": "3489649 B (base 3489474 + 175)"
+    },
+    {
+      "name": "base_eq_ruler",
+      "ok": true,
+      "detail": "base md5 a1969cdf023042e7d2a91e7ed9333a05"
+    },
+    {
+      "name": "reverse_lineage",
+      "ok": true,
+      "detail": "revertida md5 a1969cdf023042e7d2a91e7ed9333a05 == base a1969cdf023042e7d2a91e7ed9333a05"
+    },
+    {
+      "name": "reverse_byte_identical",
+      "ok": true,
+      "detail": "revertida === base byte a byte"
+    },
+    {
+      "name": "reverse_bytes",
+      "ok": true,
+      "detail": "3489474 B"
+    },
+    {
+      "name": "H1_new_unique",
+      "ok": true,
+      "detail": "H1: token novo ocorrencias 1"
+    },
+    {
+      "name": "H1_old_gone",
+      "ok": true,
+      "detail": "H1: token velho ocorrencias 0"
+    },
+    {
+      "name": "H2_new_unique",
+      "ok": true,
+      "detail": "H2: token novo ocorrencias 1"
+    },
+    {
+      "name": "H2_old_gone",
+      "ok": true,
+      "detail": "H2: token velho ocorrencias 0"
+    },
+    {
+      "name": "H3_new_unique",
+      "ok": true,
+      "detail": "H3: token novo ocorrencias 1"
+    },
+    {
+      "name": "H3_old_gone",
+      "ok": true,
+      "detail": "H3: token velho ocorrencias 0"
+    },
+    {
+      "name": "diff_only_3_lines",
+      "ok": true,
+      "detail": "linhas alteradas [9902,9926,10145]"
+    },
+    {
+      "name": "line_count_same",
+      "ok": true,
+      "detail": "candidata 28661 == base 28661 == 28661"
+    },
+    {
+      "name": "guard_branch_plus_one",
+      "ok": true,
+      "detail": "ramos do guard 14 -> 15"
+    },
+    {
+      "name": "guard_tail_still_admin",
+      "ok": true,
+      "detail": "cauda admin/developer intacta; guard comprimento 1125 -> 1229"
+    },
+    {
+      "name": "new_ramo_allows",
+      "ok": true,
+      "detail": "ramo novo permite ['education_supervisor','developer']"
+    },
+    {
+      "name": "papel_ocorrencias_mais_4",
+      "ok": true,
+      "detail": "'education_supervisor' ocorrencias base 12 -> candidata 16"
+    },
+    {
+      "name": "setup_secretary_pelo_papel",
+      "ok": true,
+      "detail": "chamada :9948 intacta (agora alcancavel) ocorrencias 1"
+    },
+    {
+      "name": "roleSectionAccess_intacto",
+      "ok": true,
+      "detail": "mapa de secoes do papel nao foi tocado (ocorrencias 1)"
+    },
+    {
+      "name": "viewIds_do_papel_intacto",
+      "ok": true,
+      "detail": "viewIds :18733 intacto (ocorrencias 1)"
+    },
+    {
+      "name": "modulo_allowed_inalterado",
+      "ok": true,
+      "detail": "allowed() do modulo intacta ocorrencias 1"
+    },
+    {
+      "name": "embed_v119_vive",
+      "ok": true,
+      "detail": "sports_schools(name) ocorrencias 1 (conserto da v119 preservado)"
+    },
+    {
+      "name": "todos_scripts_classicos_parseiam",
+      "ok": true,
+      "detail": "parseados 19, pulados 84, total de tags 103 (base 103); falhas nenhuma"
+    },
+    {
+      "name": "modulo_secretary_central_syntax",
+      "ok": true,
+      "detail": "vm.Script parseou 65515 chars"
+    },
+    {
+      "name": "script_tag_balance_preserved",
+      "ok": true,
+      "detail": "candidata open/close 108/103 == base 108/103"
+    },
+    {
+      "name": "csp_meta_intacta",
+      "ok": true,
+      "detail": "meta CSP identica, 795 chars"
+    },
+    {
+      "name": "boot_router_intacto",
+      "ok": true,
+      "detail": "roteador de boot :10443 nao foi tocado"
+    }
+  ],
+  "verdict": "PORTOES_OK",
+  "published": false
+}

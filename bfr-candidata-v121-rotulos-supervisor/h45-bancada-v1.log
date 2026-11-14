@@ -1,0 +1,60 @@
+
+=== controle v120 (shell do ar)  http://127.0.0.1:8281/
+VERDE  base bytes servidos == regua dos portoes
+  desktop base: {"innerWidth":1280,"innerHeight":900,"dpr":1,"papel_currentProfile":"education_supervisor","activeView":"education_supervisor","tipo_enterApp":"function","runtime_papel":"education_supervisor","runtime_activeView":"education_supervisor","appshell_ready":true,"login_hidden":true,"secretaryView_hidden":false,"chip_conta":"Responsável","chip_nome":"Bancada","sidebar_no_dom":["inicio","aprender","evoluir","escola","fotos","meu-espaco","chat-interno","notificacoes","conteudos","relatorios","jogos-escolares","resultados-aprendizagem","professor-inicio","professor-turmas","professor-atividades","professor-avaliacoes","professor-frequencia","professor-agenda","professor-biblioteca","professor-comuni
+  mobile  base: {"innerWidth":390,"innerHeight":842,"dpr":1,"papel_currentProfile":"education_supervisor","activeView":"education_supervisor","tipo_enterApp":"function","runtime_papel":"education_supervisor","runtime_activeView":"education_supervisor","appshell_ready":true,"login_hidden":true,"secretaryView_hidden":false,"chip_conta":"Responsável","chip_nome":"Bancada","sidebar_no_dom":["inicio","aprender","evoluir","escola","fotos","meu-espaco","chat-interno","notificacoes","conteudos","relatorios","jogos-escolares","resultados-aprendizagem","professor-inicio","professor-turmas","professor-atividades","professor-avaliacoes","professor-frequencia","professor-agenda","professor-biblioteca","professor-comunic
+
+=== candidata v121  http://127.0.0.1:8282/
+VERDE  cand bytes servidos == regua dos portoes
+  desktop cand: {"innerWidth":1280,"innerHeight":900,"dpr":1,"papel_currentProfile":"education_supervisor","activeView":"education_supervisor","tipo_enterApp":"function","runtime_papel":"education_supervisor","runtime_activeView":"education_supervisor","appshell_ready":true,"login_hidden":true,"secretaryView_hidden":false,"chip_conta":"Supervisor(a) de ensino","chip_nome":"Bancada","sidebar_no_dom":["inicio","aprender","evoluir","escola","fotos","meu-espaco","chat-interno","notificacoes","conteudos","relatorios","jogos-escolares","resultados-aprendizagem","professor-inicio","professor-turmas","professor-atividades","professor-avaliacoes","professor-frequencia","professor-agenda","professor-biblioteca","prof
+  mobile  cand: {"innerWidth":390,"innerHeight":842,"dpr":1,"papel_currentProfile":"education_supervisor","activeView":"education_supervisor","tipo_enterApp":"function","runtime_papel":"education_supervisor","runtime_activeView":"education_supervisor","appshell_ready":true,"login_hidden":true,"secretaryView_hidden":false,"chip_conta":"Supervisor(a) de ensino","chip_nome":"Bancada","sidebar_no_dom":["inicio","aprender","evoluir","escola","fotos","meu-espaco","chat-interno","notificacoes","conteudos","relatorios","jogos-escolares","resultados-aprendizagem","professor-inicio","professor-turmas","professor-atividades","professor-avaliacoes","professor-frequencia","professor-agenda","professor-biblioteca","profe
+VERDE  base/desktop papel injetado lido de volta
+VERDE  base/desktop chrome revelado pelo enterApp do app
+VERDE  base/desktop 0 escrita de TABELA tentada
+VERDE  base/mobile papel injetado lido de volta
+VERDE  base/mobile chrome revelado pelo enterApp do app
+VERDE  base/mobile 0 escrita de TABELA tentada
+VERDE  cand/desktop papel injetado lido de volta
+VERDE  cand/desktop chrome revelado pelo enterApp do app
+VERDE  cand/desktop 0 escrita de TABELA tentada
+VERDE  cand/mobile papel injetado lido de volta
+VERDE  cand/mobile chrome revelado pelo enterApp do app
+VERDE  cand/mobile 0 escrita de TABELA tentada
+VERDE  desktop roda a 1280 (viewport registrada pela pagina)
+VERDE  mobile roda a 390 (viewport registrada pela pagina)
+VERDE  controle desktop chip cai no fallback do parent
+VERDE  candidata desktop chip le o rotulo do papel
+VERDE  candidata desktop chip nao contem 'Responsavel'
+VERMELHO  as duas bandas desktop mantem a linha de nome do chip (independente do papel)  dado=["Bancada","Bancada"]
+VERDE  controle mobile chip cai no fallback do parent
+VERDE  candidata mobile chip le o rotulo do papel
+VERDE  candidata mobile chip nao contem 'Responsavel'
+VERMELHO  as duas bandas mobile mantem a linha de nome do chip (independente do papel)  dado=["Bancada","Bancada"]
+VERDE  mesma sessao 390 (sem recarregar) candidata ja pinta o rotulo novo
+VERDE  base/desktop item Secretaria do sidebar VISIVEL para o supervisor (H4 falso alarme)
+VERDE  base/desktop Secretaria esta na lista de itens visiveis
+VERDE  cand/desktop item Secretaria do sidebar VISIVEL para o supervisor (H4 falso alarme)
+VERDE  cand/desktop Secretaria esta na lista de itens visiveis
+VERMELHO  base/mobile item Secretaria do sidebar VISIVEL para o supervisor (H4 falso alarme)  dado=false
+VERMELHO  base/mobile Secretaria esta na lista de itens visiveis  dado=false
+VERMELHO  cand/mobile item Secretaria do sidebar VISIVEL para o supervisor (H4 falso alarme)  dado=false
+VERMELHO  cand/mobile Secretaria esta na lista de itens visiveis  dado=false
+VERDE  gaveta mobile: controle e candidata mostram o item Secretaria
+VERDE  gaveta mobile: o botao do proprio app abre a gaveta na candidata
+VERDE  base/desktop activeView assenta em education_supervisor (PEN-32)
+VERDE  base/desktop secretaryView deixa de estar hidden
+VERDE  cand/desktop activeView assenta em education_supervisor (PEN-32)
+VERDE  cand/desktop secretaryView deixa de estar hidden
+VERDE  base/mobile activeView assenta em education_supervisor (PEN-32)
+VERDE  base/mobile secretaryView deixa de estar hidden
+VERDE  cand/mobile activeView assenta em education_supervisor (PEN-32)
+VERDE  cand/mobile secretaryView deixa de estar hidden
+VERDE  candidata nao muda nada alem do chip: menu identico ao controle nas duas bandas
+VERDE  0 escrita de TABELA tentada ao backend nas duas bandas
+VERDE  0 pedido nao-GET chegou ao backend (rede CDP)
+VERDE  todo POST /rpc/ barrado existe no catalogo pg_proc
+VERDE  todo POST /rpc/ barrado e FUNCAO DE LEITURA (sem DML no corpo)
+VERDE  baseline das 5 tabelas imutavel (contagem E md5, antes x depois)
+VERDE  0 excecoes nao tratadas na candidata
+
+veredito=H45_BANCADA_V1_6_FALHAS portoes=50  (portoes=50 falhas=6)

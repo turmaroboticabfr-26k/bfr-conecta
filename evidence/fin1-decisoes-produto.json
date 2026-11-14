@@ -1,0 +1,592 @@
+{
+  "em": "2026-11-13T01:50:09.977Z",
+  "tarefa": "FIN-1 (re-emitido) decisões de produto + insumo RM-6.7 — só marcadores atestados",
+  "metodo": "somente leitura (GET HTTP + SELECT de catálogo; 0 escrita, 0 DDL, 0 deploy)",
+  "ar": "https://bfr-conecta.turmaroboticabfr.workers.dev",
+  "substitui": "evidence/fin1-decisoes-produto-ANTERIOR-marcas-nao-atestandes.json",
+  "motivo_da_reemissao": "6 marcadores dactilografados sem atestação em disco (ver fin1d-atesta-marcas.json)",
+  "total": {
+    "ok": 18,
+    "falha": 0
+  },
+  "ar_medido": {
+    "http": 200,
+    "bytes": 3489467,
+    "md5": "ae59d35346b685b2fbf9d18ade4fa5cd",
+    "sw": {
+      "http": 200,
+      "bytes": 3586,
+      "md5": "3fcbc3ad52f1a0491362506466c82596"
+    },
+    "cache_derivado": "bfr-conecta-v118",
+    "versoes_no_sw": [
+      "bfr-conecta-v118"
+    ],
+    "ar_shell_html": {
+      "bytes": 3489467,
+      "md5": "ae59d35346b685b2fbf9d18ade4fa5cd"
+    },
+    "igual_ao_ar_shell": true
+  },
+  "linhagem_disco": {
+    "vagas_encontradas": [
+      "worker-deploy-v115",
+      "worker-deploy-v116",
+      "worker-deploy-v117",
+      "worker-deploy-v118",
+      "worker-deploy-v118-csp",
+      "worker-deploy-v118-swclone",
+      "worker-deploy-v118-swfix"
+    ],
+    "decodificadas": [
+      "worker-deploy-v115",
+      "worker-deploy-v116",
+      "worker-deploy-v117",
+      "worker-deploy-v118-csp"
+    ],
+    "falhas_de_decodificacao": [
+      {
+        "dir": "worker-deploy-v118",
+        "motivo": "Bad escaped character in JSON at position 229 (line 1 column 230)"
+      },
+      {
+        "dir": "worker-deploy-v118-swclone",
+        "motivo": "Bad escaped character in JSON at position 229 (line 1 column 230)"
+      },
+      {
+        "dir": "worker-deploy-v118-swfix",
+        "motivo": "Bad escaped character in JSON at position 229 (line 1 column 230)"
+      }
+    ],
+    "md5_de_cada_um": {
+      "worker-deploy-v115": "3470624 B aba67956e2952f9f27e217004d028d74",
+      "worker-deploy-v116": "3471248 B b72c85e866c35229c51cb852c8ab7c8f",
+      "worker-deploy-v117": "3472379 B 03c2fbbfe6ac7dbe3a00b0bdac5da445",
+      "worker-deploy-v118-csp": "3471956 B ae59d35346b685b2fbf9d18ade4fa5cd"
+    },
+    "igual_ao_ar": {
+      "worker-deploy-v115": false,
+      "worker-deploy-v116": false,
+      "worker-deploy-v117": false,
+      "worker-deploy-v118-csp": true
+    }
+  },
+  "atestacao": {
+    "rm22_classe": {
+      "literal": "bfr-exec-legacy-hidden",
+      "no_ar": 7,
+      "no_disco": 28,
+      "atestado": true
+    },
+    "rm22_escape": {
+      "literal": "data-exec-revealed",
+      "no_ar": 5,
+      "no_disco": 20,
+      "atestado": true
+    },
+    "rm23_texto": {
+      "literal": "Marcar em análise",
+      "no_ar": 4,
+      "no_disco": 16,
+      "atestado": true
+    },
+    "rm23_modulo_morto": {
+      "literal": "deferred-disabled",
+      "no_ar": 5,
+      "no_disco": 20,
+      "atestado": true
+    },
+    "rm23_modulo_plain": {
+      "literal": "type=\"text/plain\"",
+      "no_ar": 84,
+      "no_disco": 336,
+      "atestado": true
+    },
+    "rm24_official_name": {
+      "literal": "official_name",
+      "no_ar": 464,
+      "no_disco": 1856,
+      "atestado": true
+    },
+    "rm24_preferred": {
+      "literal": "preferredDisplayName",
+      "no_ar": 13,
+      "no_disco": 52,
+      "atestado": true
+    },
+    "rm24_custom": {
+      "literal": "display_name_custom",
+      "no_ar": 14,
+      "no_disco": 56,
+      "atestado": true
+    },
+    "rm24_hero": {
+      "literal": "bfr-student-hero",
+      "no_ar": 8,
+      "no_disco": 32,
+      "atestado": true
+    },
+    "rm24_displayName": {
+      "literal": "displayName",
+      "no_ar": 8,
+      "no_disco": 32,
+      "atestado": true
+    },
+    "rm25_dock": {
+      "literal": "renderHomeDock",
+      "no_ar": 3,
+      "no_disco": 12,
+      "atestado": true
+    },
+    "rm25_announcements": {
+      "literal": "from('announcements')",
+      "no_ar": 14,
+      "no_disco": 56,
+      "atestado": true
+    },
+    "rm25_aluno_modulo": {
+      "literal": "BFRStudentSpace",
+      "no_ar": 5,
+      "no_disco": 20,
+      "atestado": true
+    },
+    "rm12a1_pending": {
+      "literal": "'pending'",
+      "no_ar": 53,
+      "no_disco": 212,
+      "atestado": true
+    }
+  },
+  "marcadores_nao_atestandes_banidos": [
+    "loadSchoolContent",
+    "schoolContent.loading",
+    "displayName(",
+    "custom_display_name",
+    "partialMsg",
+    "if (state.loading) return;"
+  ],
+  "marcadores_nao_atestandes_banidos_ok": {
+    "loadSchoolContent": {
+      "no_ar": 0,
+      "no_disco": 0
+    },
+    "schoolContent.loading": {
+      "no_ar": 0,
+      "no_disco": 0
+    },
+    "displayName(": {
+      "no_ar": 0,
+      "no_disco": 0
+    },
+    "custom_display_name": {
+      "no_ar": 0,
+      "no_disco": 0
+    },
+    "partialMsg": {
+      "no_ar": 0,
+      "no_disco": 0
+    },
+    "if (state.loading) return;": {
+      "no_ar": 0,
+      "no_disco": 0
+    }
+  },
+  "rm67": {
+    "csp_header": "default-src 'self'; base-uri 'self'; object-src 'none'; script-src 'self' 'unsafe-inline' https://bfr-conecta.turmaroboticabfr.workers.dev https://cdn.jsdelivr.net https://static.cloudflareinsights.com https://www.gstatic.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: blob: https:; connect-src 'self' https://bfr-conecta.turmaroboticabfr.workers.dev https://*.supabase.co wss://*.supabase.co https://cloudflareinsights.com https://*.cloudflareinsights.com https://*.googleapis.com https://fcm.googleapis.com https://api.open-meteo.com; worker-src 'self' blob:; manifest-src 'self'; form-action 'self' https://accounts.google.com https://*.supabase.co",
+    "frame_ancestors_no_header": false,
+    "x_frame_options": null,
+    "frame_ancestors_no_texto": 0,
+    "iframe_estatico": 1,
+    "iframe_criado_por_js": 1,
+    "window_open": 13,
+    "postMessage": 0,
+    "origens_externas_em_src": [
+      "cdn.jsdelivr.net",
+      "static.cloudflareinsights.com"
+    ],
+    "contextos_iframe": [
+      {
+        "offset": 2419305,
+        "linha_html": 20615,
+        "antes": "''}>150%</option></select></label></div>",
+        "depois": "<iframe class=\"bfr-book-frame\" title=\"${esc(book.title)}\" src=\"${esc(`${url}#page=${page}&zoom=${zoom}`)}\" allow=\"fullscreen\"></iframe>` : `<div class=\"bfr-book-audio-panel\"><div class=\"bfr-book-audio-copy\"><strong>🎧 ${esc(book.title)}</strong><span>${esc(book.author || 'Audiobook da Biblioteca Dig"
+      },
+      {
+        "offset": 751656,
+        "linha_html": 6488,
+        "antes": "n; }⏎            const frame = document.",
+        "depois": "createElement('iframe');⏎            frame.style.cssText = 'position:fixed;right:0;bottom:0;width:1px;height:1px;border:0;opacity:0';⏎            document.body.appendChild(frame);⏎            frame.onload = () => { frame.contentWindow.focus(); frame.contentWindow.print(); setTimeout(() => frame.remo"
+      }
+    ],
+    "document_write_em_janela": 3
+  },
+  "rm22": {
+    "regras_css_com_display_none": 3,
+    "ocorrencias_classe": 7,
+    "escape_data_exec_revealed": 5,
+    "toggle_por_js": 2,
+    "seletores_hospedeiros": [],
+    "amostra_css": [
+      {
+        "offset": 1189122,
+        "linha_html": 10131,
+        "antes": " os filhos diretos da view do papel com ",
+        "depois": ".bfr-exec-legacy-hidden{display:none!important} e reaplica a classe a cada render. A rota revela o painel com data-exec-revealed (a op F2 tira ele da seleção do executivo) e o re-esconde quando a pessoa sai de horarios, "
+      },
+      {
+        "offset": 3321621,
+        "linha_html": 27327,
+        "antes": "ortant}#directorView.bfr-executive-host>",
+        "depois": ".bfr-exec-legacy-hidden{display:none!important}.bfr-exec-quick{display:flex;align-items:center;gap:7px;flex-wrap:wrap;margin-top:12px;padding:10px;border:1px solid #dbe5f1;border-radius:11px;background:#fff}.bfr-exec-qui"
+      },
+      {
+        "offset": 3326412,
+        "linha_html": 27328,
+        "antes": "ow-warning{background:#fffaf5!important}",
+        "depois": ".bfr-exec-legacy-hidden{display:none!important}.bfr-exec-lia-minimized #liaFab{right:16px!important;bottom:16px!important;width:42px!important;min-height:42px!important;padding:5px!important;gap:0!important;border-radius"
+      }
+    ],
+    "amostra_escape": [
+      {
+        "offset": 1189232,
+        "linha_html": 10131,
+        "antes": "cada render. A rota revela o painel com ",
+        "depois": "data-exec-revealed (a op F2 tira ele da seleção do executivo) e o re-esconde quando a pessoa sai de horarios, para nao deixar um quadro morto empurrando a tela lá embaixo - que é justamente a reclamaç"
+      },
+      {
+        "offset": 1487301,
+        "linha_html": 12904,
+        "antes": " bfr-birthday-panel\" data-bfr-birthdays ",
+        "depois": "data-exec-revealed=\"true\"><div class=\"bfr-birthday-hero\"><div><span class=\"bfr-birthday-kicker\"><i aria-hidden=\"true\"></i> Comunidade BFR</span><h2><span aria-hidden=\"true\">🎉</span> Aniversariantes d"
+      },
+      {
+        "offset": 1490791,
+        "linha_html": 12922,
+        "antes": "bfr-birthdays data-bfr-birthday-compact ",
+        "depois": "data-exec-revealed=\"true\"><div class=\"bfr-coord-birthday-head\"><div><span class=\"bfr-coordination-label\">Informação secundária</span><h2>🎂 Aniversariantes</h2><span class=\"bfr-coord-birthday-period\">"
+      }
+    ]
+  },
+  "rm23": {
+    "ocorrencias_texto": 4,
+    "offset_primeiro": 105191,
+    "linha_html": 596,
+    "modulos_text_plain": 80,
+    "modulos_deferred_disabled": 5,
+    "ids_mortos": [
+      "bfr-coordination-ux",
+      "(sem id)",
+      "bfr-core-runtime",
+      "bfr-motion-runtime",
+      "bfr-lia-runtime",
+      "bfr-product-enhancements",
+      "bfr-support-runtime",
+      "bfr-platform-shell",
+      "bfr-reading-integration",
+      "bfr-unified-library-catalog",
+      "bfr-lia-official-identity",
+      "bfr-direction-command-runtime",
+      "bfr-director-routine-runtime",
+      "bfr-global-scroll-bridge",
+      "bfr-agenda-copy",
+      "bfr-lia-logo-asset",
+      "bfr-parent-weather-order",
+      "bfr-coordination-command",
+      "bfr-parent-refinement",
+      "bfr-parent-navigation-v2",
+      "bfr-parent-dashboard-v3",
+      "bfr-internal-chat",
+      "bfr-audit-hardening",
+      "bfr-core-fallbacks",
+      "bfr-mobile-a11y",
+      "bfr-parent-teachers-script",
+      "bfr-lia-image-avatar",
+      "bfr-aee-pdi-entry",
+      "bfr-final-published-asset-fix",
+      "bfr-coordination-dashboard-v3",
+      "bfr-coordination-density-v4",
+      "bfr-coordination-realtime-v2",
+      "bfr-coordination-central",
+      "bfr-coordination-collapsible",
+      "bfr-results-learning-module",
+      "bfr-deferred-module-bootstrap",
+      "bfr-direction-action-fallback",
+      "bfr-direction-retry-fallback"
+    ],
+    "bloco_envolvente": {
+      "abre": 76812,
+      "tag": "<script id=\"bfr-coordination-ux\" type=\"text/plain\" data-bfr-auth-deferred data-bfr-critical-roles=\"coordinator,developer\">",
+      "modulo_morto": true,
+      "id": "bfr-coordination-ux",
+      "roles": "coordinator,developer"
+    },
+    "contexto": [
+      {
+        "offset": 105191,
+        "linha_html": 596,
+        "antes": "ord-ack-occurrence=\"${escape(item.id)}\">",
+        "depois": "Marcar em análise</button>`:'<span>Em acompanhamento</span>'}</div></article>`;}).join(''):emptyState('✓ Nenhuma ocorrência pendente nos registros consultados.');⏎     const gateList=g.rows.length?g.r"
+      },
+      {
+        "offset": 106069,
+        "linha_html": 597,
+        "antes": "ta-coord-ack-alert=\"${escape(item.id)}\">",
+        "depois": "Marcar em análise</button>`:'<span>Resolvido / em análise</span>'}</div></article>`;}).join(''):emptyState('✓ Nenhum alerta de entrada pendente.');⏎    body.innerHTML=`<section class=\"bfr-coord-panel\""
+      },
+      {
+        "offset": 1833524,
+        "linha_html": 15240,
+        "antes": "oord-ack-${item.kind}=\"${esc(item.id)}\">",
+        "depois": "Marcar em análise</button>` : ''}</div></article>`; }).join('') : empty('Nenhum alerta ou ocorrência corresponde aos filtros atuais.')}</div></section><section class=\"bfr-coord-panel\"><div class=\"bfr-"
+      },
+      {
+        "offset": 2882609,
+        "linha_html": 24237,
+        "antes": "oord-ack-${item.kind}=\"${esc(item.id)}\">",
+        "depois": "Marcar em análise</button>` : ''}</div></article>`; }).join('') : empty('Nenhum alerta ou ocorrência corresponde aos filtros atuais.')}</div></section><section class=\"bfr-coord-panel\"><div class=\"bfr-"
+      }
+    ]
+  },
+  "rm24": {
+    "oficial_name_no_ar": 464,
+    "displayName_no_ar": 8,
+    "preferredDisplayName_no_ar": 13,
+    "display_name_custom_no_ar": 14,
+    "hero_marca_no_ar": 8,
+    "applyIdentity_tamanho": 882,
+    "applyIdentity_lê_official_name": true,
+    "applyIdentity_lê_preferredDisplayName": false,
+    "applyIdentity_primeiras_3_linhas": "function applyIdentity() {⏎    if (!isStudent() || !state.student) return;⏎    const name = state.student.official_name || 'Aluno';⏎    const url = state.photoUrl;⏎    document.querySelectorAll('.bfr-student-avatar,.bfr-student-today-avatar,.mini-person .avatar.small,.top-actions > .avatar.small').f",
+    "hero_contem_eyebrow": 0,
+    "hero_texts": [
+      "Como está a escola hoje?"
+    ]
+  },
+  "rm25": {
+    "carregadores_no_ar": 19,
+    "com_guarda_state_loading": 11,
+    "com_guarda_state_loaded": 4,
+    "sem_nenhuma_guarda": 7,
+    "seteam_state_error": 6,
+    "seteam_state_errors": 8,
+    "catch_silencioso_bloco": 2,
+    "catch_silencioso_arrow": 7,
+    "renderHomeDock": 3,
+    "from_announcements": 14,
+    "modulo_aluno_state_loading": 139,
+    "carregador_do_aluno": {
+      "linha_html": 20828,
+      "assinatura": "async function load(force = false) ",
+      "tamanho_chars": 3490,
+      "guarda_state_loading": false,
+      "guarda_state_loaded": true,
+      "seta_state_error": true,
+      "seta_state_errors": false,
+      "tem_try": true,
+      "tem_catch": true,
+      "cabeca": "async function load(force = false) {⏎    const current = user(); const client = db();⏎    if (!isStudent() || !current || !client) return;⏎    if (!force && state.loaded && state.userId === current.id) return render();⏎    Object.assign(state, { userId:current.id, loading:true, loaded:false, linked:false, error:'', errors:[], student:null, photoPath:'', photoUrl:'', grades:[], attendance:[], activities:[], events:[],"
+    },
+    "corpo_do_aluno_cabeca": null,
+    "carregador_do_aluno_offset": 2442324,
+    "carregador_do_aluno_cabeca": "async function load(force = false) {⏎    const current = user(); const client = db();⏎    if (!isStudent() || !current || !client) return;⏎    if (!force && state.loaded && state.userId === current.id) return render();⏎    Object.assign(state, { userId:current.id, loading:true, loaded:false, linked:false, error:'', err",
+    "aluno_trata_erros_de_query": 2
+  },
+  "rm12a1_front": {
+    "pending_literal": 66,
+    "atribuicoes_role_pending": 0,
+    "atribuicoes_role_pending_multilinha": 0,
+    "caminho_signup_sdk": 0,
+    "caminho_signup_http": 0,
+    "rpc_de_cadastro": [
+      "register_gate_checkin",
+      "complete_family_registration",
+      "register_gate_checkin_v2"
+    ],
+    "contexto": [
+      {
+        "offset": 25126,
+        "linha_html": 75,
+        "antes": "alizar status da demanda\"><option value=",
+        "depois": "\"pending\" ${item.status === 'pending' ? 'selected' : ''}>Nova</option><option value=\"in_review\" ${item.status === 'in_review' ? 'selected' : ''}>Em análise</opt"
+      },
+      {
+        "offset": 25154,
+        "linha_html": 75,
+        "antes": "ption value=\"pending\" ${item.status === ",
+        "depois": "'pending' ? 'selected' : ''}>Nova</option><option value=\"in_review\" ${item.status === 'in_review' ? 'selected' : ''}>Em análise</option><option value=\"scheduled"
+      },
+      {
+        "offset": 46693,
+        "linha_html": 143,
+        "antes": "m(),priority:form.priority.value,status:",
+        "depois": "'pending',context_area:form.context_area.value.trim() || null,subject_scope:scopeValue,context_observation:form.context_observation.value.trim() || null,next_ac"
+      },
+      {
+        "offset": 71171,
+        "linha_html": 326,
+        "antes": "\">Todos os status</option><option value=",
+        "depois": "\"pending\">Nova</option><option value=\"in_review\">Em análise</option><option value=\"scheduled\">Agendada</option><option value=\"in_follow_up\">Em acompanhamento</o"
+      },
+      {
+        "offset": 74164,
+        "linha_html": 336,
+        "antes": "m(),priority:form.priority.value,status:",
+        "depois": "'pending',context_area:form.context_area.value.trim() || null,subject_scope:scope,context_observation:form.context_observation.value.trim() || null,next_action_"
+      },
+      {
+        "offset": 623312,
+        "linha_html": 5267,
+        "antes": "span><strong data-secretary-staff-count=",
+        "depois": "\"pending\">0</strong><small>Recebidas ou em análise</small></div><div class=\"secretary-stat\"><span>Aguardando responsável</span><strong data-secretary-staff-coun"
+      }
+    ]
+  },
+  "achados": {
+    "RM67": {
+      "medido": {
+        "frame_ancestors_no_header": false,
+        "frame_ancestors_no_shell": 0,
+        "x_frame_options": null,
+        "iframes_inbound": 0,
+        "iframes_outbound": 2,
+        "postMessage": 0
+      },
+      "leitura": "Os 2 iframes do shell são SAÍDA (visor de obra `bfr-book-frame` e iframe 1×1 do print). Nada no app recebe enquadramento: 0 postMessage, 0 iframe inbound, 0 referência a frame-ancestors. Logo SAMEORIGIN × DENY não quebra nenhum fluxo existente; DENY é a escolha com menos superfície. As 13 janelas de window.open usam document.write/blur próprios (same-origin opener), imunes à diretiva."
+    },
+    "RM22": {
+      "leitura": "O overlay executivo esconde os painéis legados por 3 regras `display:none!important` e o escape é `data-exec-revealed` (5 ocorrências, 2 toggles por JS). Decisão de produto: manter o overlay com escape por rota, ou expor os painéis legados por padrão.`"
+    },
+    "RM23": {
+      "leitura": "«Marcar em análise» existe 4× no ar, mas o bloco que o emite é `<script id=bfr-coordination-ux type=\"text/plain\">` — MÓDULO MORTO (80 scripts text/plain no shell). Decisão: reativar o módulo de UX da coordenação ou remover os 4 textos órfãos.`"
+    },
+    "RM24": {
+      "leitura": "O hero do aluno é pintado por applyIdentity(), que lê state.student.official_name (464 usos de official_name no ar). O caminho de nome preferido (preferredDisplayName 13 / display_name_custom 14) alimenta a saudação do topo e o perfil, NÃO o espaço do aluno. Decisão: o hero deve obedecer ao nome preferido (paridade com a saudação) ou ao oficial?"
+    },
+    "RM25": {
+      "leitura": "19 carregadores load() no ar: 11 têm guarda de voo por state.loading, 4 por state.loaded e 7 não têm nenhuma. O carregador do ALUNO tem guarda por state.loaded (não por state.loading) e trata 2 erros de query atribuindo state.error; o painel troca \"carregando\" por \"erro + Tentar novamente\" — não é silencioso. O silêncio medido está em outro lugar: 2 catch de bloco vazio + 7 .catch(() => {}) vazio."
+    },
+    "RM12A1_front": {
+      "leitura": "Nada no cliente escreve role=\"pending\" (0 atribuições; auth.signUp 0; /auth/v1/signup 0). As 66 ocorrências de pending são estados de portaria/check-in e labels. As RPCs de cadastro chamadas pelo ar: register_gate_checkin, complete_family_registration, register_gate_checkin_v2. O pending do cadastro, se existir, nasce no banco (RPC/trigger), não no front."
+    },
+    "fin2_referencias": {
+      "consulta_ruins": "evidence/fin2b-ruins-catalogo.json",
+      "atribuicao_dos_erros": "evidence/fin2c-atribuicao-ruins.json",
+      "resumo": "9 formas de consulta do ar falham no PostgREST (239/248 HTTP 200); 12 sítios de emissão: 6 engolidas por request()/safeQuery(), 4 pegas no catch do próprio load(), 2 propagam sem catch."
+    }
+  },
+  "veredito": "FIN1_DECISOES_OK",
+  "gates": [
+    {
+      "nome": "ar_http_200",
+      "dado": 200,
+      "esperado": 200,
+      "passou": true
+    },
+    {
+      "nome": "shell_maior_que_3MB",
+      "dado": true,
+      "esperado": true,
+      "passou": true
+    },
+    {
+      "nome": "shell_identico_ao_ar_shell_html",
+      "dado": true,
+      "esperado": true,
+      "passou": true
+    },
+    {
+      "nome": "sw_http_200",
+      "dado": 200,
+      "esperado": 200,
+      "passou": true
+    },
+    {
+      "nome": "cache_derivado_existe",
+      "dado": true,
+      "esperado": true,
+      "passou": true
+    },
+    {
+      "nome": "uma_só_versão_de_cache_no_sw",
+      "dado": 1,
+      "esperado": 1,
+      "passou": true
+    },
+    {
+      "nome": "versões_iguais_ao_derivado",
+      "dado": [
+        "bfr-conecta-v118"
+      ],
+      "esperado": [
+        "bfr-conecta-v118"
+      ],
+      "passou": true
+    },
+    {
+      "nome": "linhagem_html_decodificada",
+      "dado": 7,
+      "esperado": 7,
+      "passou": true
+    },
+    {
+      "nome": "pelo_menos_uma_vaga_decodificada",
+      "dado": true,
+      "esperado": true,
+      "passou": true
+    },
+    {
+      "nome": "todo_marcador_usado_está_atestado",
+      "dado": [],
+      "esperado": [],
+      "passou": true
+    },
+    {
+      "nome": "rm23_offset_dentro_do_shell",
+      "dado": true,
+      "esperado": true,
+      "passou": true
+    },
+    {
+      "nome": "rm24_applyIdentity_extraido_do_ar",
+      "dado": true,
+      "esperado": true,
+      "passou": true
+    },
+    {
+      "nome": "rm25_um_carregador_por_assinatura",
+      "dado": 19,
+      "esperado": 19,
+      "passou": true
+    },
+    {
+      "nome": "rm25_guardas_somam_no_maximo_os_carregadores",
+      "dado": true,
+      "esperado": true,
+      "passou": true
+    },
+    {
+      "nome": "rm25_carregador_do_aluno_localizado",
+      "dado": true,
+      "esperado": true,
+      "passou": true
+    },
+    {
+      "nome": "rm67_iframes_todos_com_contexto_lido",
+      "dado": 2,
+      "esperado": 2,
+      "passou": true
+    },
+    {
+      "nome": "rm67_sonda_de_ausencia_consistente",
+      "dado": 0,
+      "esperado": 0,
+      "passou": true
+    },
+    {
+      "nome": "rm12a1_contagens_de_acordo_com_o_ar",
+      "dado": true,
+      "esperado": true,
+      "passou": true
+    }
+  ]
+}

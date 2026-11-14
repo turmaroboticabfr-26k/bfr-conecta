@@ -1,0 +1,113 @@
+{
+  "em": "2026-11-13T01:26:46.075Z",
+  "tarefa": "FIN-1e ler o código do ar em torno dos hits medidos",
+  "metodo": "somente leitura",
+  "ar": {
+    "http": 200,
+    "bytes": 3489467,
+    "md5": "ae59d35346b685b2fbf9d18ade4fa5cd",
+    "mesma_do_ar_shell": true
+  },
+  "pintor_item91": {
+    "alvo": "!state.loaded || !state.linked",
+    "hits": 1,
+    "posicoes_utf16": [
+      2455403
+    ],
+    "trecho": [
+      {
+        "linha_html": 20895,
+        "contexto": "ns\" aria-pressed=\"${state.prefs.notifications}\"><i></i></button></div><p class=\"bfr-student-note\">Notas, frequência, atividades e comunicados são carregados da base escolar e podem mudar quando a equipe fizer novos lançamentos.</p></section></div>`;\n  }\n\n  function render() {\n    const host = root(); if (!host || !isStudent()) return;\n    styles();\n    identityStyles();\n    if (state.loading) { host.innerHTML = loadingMarkup(); return; }\n    if (state.error) { host.innerHTML = `<div class=\"bfr-student-space\"><div class=\"bfr-student-error\">${esc(state.error)}</div><button type=\"button\" class=\"bfr-student-button primary\" data-student-refresh>Tentar novamente</button></div>`; return; }\n    if (!state.loaded || !state.linked) { host.innerHTML = `<div class=\"bfr-student-space\"><section class=\"bfr-student-hero\"><div><div class=\"eyebrow\">Área do aluno</div><h1>Meu Espaço</h1><p>Seu painel pessoal ficará disponível assim que a escola concluir o vínculo do seu cadastro.</p></div></section>${empty('Ainda não encontramos um aluno vinculado a esta conta. Fale com a secretaria para conferir seu cadastro.')}</div>`; return; }\n     host.innerHTML = shellMarkup();\n     applyIdentity();\n  }\n\n  function open(force = false) {\n    if (!isStudent()) return false;\n    // open() → syncNavigation → navigateToSection('meu-espaco') → BFRPlatform.open → open().\n    // Sem guarda, reentrar no próprio espa"
+      }
+    ]
+  },
+  "guarda_de_voo": {
+    "ocorrencias_state_loading": 139,
+    "trechos": [
+      {
+        "linha_html": 100,
+        "contexto": "o ou com retorno previsto.</p></div></div>${attention()}</section></section>`;\n    return overviewMarkup();\n  }\n  async function load(force = false) {\n    const client = db();\n    if (!client || !user() || !allowed() || state.loading || (!force && state.loaded)) return;\n    state.loading = true; state.errors = []; render();\n    try {\n      const own = await query(client.from('support_professionals').select('id,profile_id,full_name,profe"
+      },
+      {
+        "linha_html": 101,
+        "contexto": "}</section></section>`;\n    return overviewMarkup();\n  }\n  async function load(force = false) {\n    const client = db();\n    if (!client || !user() || !allowed() || state.loading || (!force && state.loaded)) return;\n    state.loading = true; state.errors = []; render();\n    try {\n      const own = await query(client.from('support_professionals').select('id,profile_id,full_name,profession,area,active').eq('profile_id', user().id).eq('act"
+      },
+      {
+        "linha_html": 108,
+        "contexto": "n || roleLabel();\n      if (own.error && role() !== 'developer') state.errors.push('vínculo profissional');\n      const all = role() === 'developer' || Boolean(state.professional);\n      if (!all) { state.loaded = true; state.loading = false; render(); return; }\n       let requestQuery = client.from('support_requests').select('id,student_id,requester_id,source,demand_origin,context_area,subject_scope,context_observation,reason,descripti"
+      },
+      {
+        "linha_html": 131,
+        "contexto": "s.some(item => item.id === state.selectedRequest) ? state.selectedRequest : state.requests[0]?.id || '';\n    } catch (error) { state.errors.push(error?.message || 'carregamento interrompido'); }\n    state.loaded = true; state.loading = false; render();\n  }\n  async function updateRequest(select) {\n    const request = state.requests.find(item => item.id === select.dataset.mpUpdateStatus); if (!request || !db()) return;\n    let update = db"
+      },
+      {
+        "linha_html": 194,
+        "contexto": "</small></article>`).join('');\n    root.querySelectorAll('[data-mp-tab]').forEach(button => button.classList.toggle('is-active', button.dataset.mpTab === state.tab));\n    root.querySelector('[data-mp-body]').innerHTML = state.loading && !state.loaded ? `<section class=\"bfr-mp-panel\">${empty('Carregando registros autorizados...')}</section>` : bodyMarkup();\n  }\n  function bind() {\n    const root = view(); if (!root || root.dataset.mpBoun"
+      },
+      {
+        "linha_html": 217,
+        "contexto": "pende de confirmação humana.'}; }\n  function ensure() { syncMobileNav(); if (!allowed()) return; const root = view(); if (!root) return; root.classList.remove('hidden'); styles(); render(); bind(); if (!state.loaded && !state.loading) load(); subscribe(); }\n  window.BFRMultiprofessionalCentral = {ensure,load,state};\n  window.BFR_MULTIPROFESSIONAL_LIA_CONTEXT = liaContext;\n  const previousLia = window.BFR_COORDINATION_LIA_CONTEXT;\n  wind"
+      },
+      {
+        "linha_html": 1552,
+        "contexto": "udent-class]').value = state.classId;\n    host.querySelector('[data-dev-student-status]').value = state.status;\n    host.querySelector('[data-dev-student-search]').value = state.query;\n    if (count) count.textContent = state.loading ? 'Buscando...' : `${state.students.length} resultado(s)`;\n    if (list) list.innerHTML = state.loading && !state.students.length ? '<div class=\"bfr-dev-student-loading\">Buscando alunos...</div>' : state.er"
+      },
+      {
+        "linha_html": 1553,
+        "contexto": "status;\n    host.querySelector('[data-dev-student-search]').value = state.query;\n    if (count) count.textContent = state.loading ? 'Buscando...' : `${state.students.length} resultado(s)`;\n    if (list) list.innerHTML = state.loading && !state.students.length ? '<div class=\"bfr-dev-student-loading\">Buscando alunos...</div>' : state.error ? `<div class=\"bfr-dev-student-alert\">${esc(state.error)}<br><button type=\"button\" class=\"text-butto"
+      },
+      {
+        "linha_html": 1569,
+        "contexto": ").limit(300);\n    if (!result.error) state.classes = result.data || [];\n  }\n\n  async function loadStudents(append = false) {\n     if (!await verifyDeveloper()) return;\n    const requestToken = ++studentRequestToken;\n    state.loading = true; state.error = ''; if (!append) state.page = 0;\n    render();\n    await loadClasses();\n    let request = db().from('students').select('id,official_name,class_id,active,classes(id,year,class_code,shif"
+      },
+      {
+        "linha_html": 1576,
+        "contexto": "'active', state.status === 'active');\n     if (state.year !== 'all') {\n       const yearClassIds = state.classes.filter(item => String(item.year) === state.year).map(item => item.id);\n        if (!yearClassIds.length) { state.loading = false; state.loaded = true; state.students = []; state.hasMore = false; render(); restoreScrollPosition(); return; }\n       request = request.in('class_id', yearClassIds);\n     }\n     if (state.classId !="
+      },
+      {
+        "linha_html": 1587,
+        "contexto": "t = uuid ? request.eq('id', query) : request.ilike('official_name', `%${query.replace(/[%_]/g, char => `\\\\${char}`)}%`);\n     }\n    const result = await request;\n    if (requestToken !== studentRequestToken) return;\n    state.loading = false; state.loaded = true;\n     if (result.error) { state.error = 'Não foi possível buscar os alunos.'; if (!append) state.students = []; state.hasMore = false; render(); restoreScrollPosition(); return;"
+      },
+      {
+        "linha_html": 1685,
+        "contexto": "or ? anchor.after(host) : admin.prepend(host)); }\n    const isNewHost = state.host !== host;\n    state.host = host;\n    if (!isNewHost) return;\n     bind(); render(); if (state.loaded) restoreScrollPosition(); else if (!state.loading) loadStudents();\n  }\n\n  function start() { ensure(); window.addEventListener('bfr:app-ready', ensure); window.addEventListener('bfr:navigation', ensure); window.addEventListener('bfr:role-change', ensure); "
+      }
+    ]
+  },
+  "banner_parcial": {
+    "padroes": [
+      {
+        "padrao": "partial",
+        "ocorrencias": 7
+      },
+      {
+        "padrao": "parcial",
+        "ocorrencias": 24
+      },
+      {
+        "padrao": "state.error",
+        "ocorrencias": 184
+      },
+      {
+        "padrao": "bfr-student-error",
+        "ocorrencias": 4
+      },
+      {
+        "padrao": "renderSpace",
+        "ocorrencias": 3
+      }
+    ]
+  },
+  "query_escolas": {
+    "ocorrencias_schools_paren": 1,
+    "trechos": [
+      {
+        "linha_html": 23684,
+        "contexto": "udent_id,guardian_name,guardian_phone').limit(1500)),\n      safeQuery('supervisão',client.from('supervision_requests').select('id,indicator,motive,description,questions,deadline_at,priority,status,created_by,closed_by,closed_at,created_at,updated_at,school_id,schools(name)').order('created_at',{ascending:false}).limit(200)),\n      safeQuery('escolas',client.from('schools').select('id,name,active').order('name').limit(50)),\n      safeQuery('planos de ação',client.from('learning_action_plans').select('id,name,school_"
+      }
+    ],
+    "Sports": null,
+    "sports_prefixadas": 0,
+    "nu_sem_prefixo": 1
+  }
+}

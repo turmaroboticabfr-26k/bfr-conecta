@@ -1,0 +1,1418 @@
+{
+  "em": "2026-11-13T02:09:03.222Z",
+  "tarefa": "FIN-2 — portão de higiene RM-6.2 sobre o catálogo (PEN-22, PEN-23) + vereditos PEN-29/30/31",
+  "metodo": "somente leitura (SELECT de pg_catalog/information_schema); pegada de catálogo antes == depois",
+  "origem": [
+    "evidence/fin2b-ruins-catalogo.json",
+    "evidence/rm14-censo-views.json"
+  ],
+  "pegada_antes": {
+    "total": 182,
+    "hash": "ecf3403210b8091209cb8584a4f1da51"
+  },
+  "pen22_funcoes": [
+    {
+      "nome": "acknowledge_occurrence",
+      "dono": "postgres",
+      "anon_execute": false,
+      "public_execute": false,
+      "authenticated_execute": true,
+      "proacl": "postgres=X/postgres|authenticated=X/postgres|service_role=X/postgres"
+    },
+    {
+      "nome": "aee_can_access_student",
+      "dono": "postgres",
+      "anon_execute": true,
+      "public_execute": true,
+      "authenticated_execute": true,
+      "proacl": "=X/postgres|postgres=X/postgres|authenticated=X/postgres|service_role=X/postgres"
+    },
+    {
+      "nome": "aee_can_write_student",
+      "dono": "postgres",
+      "anon_execute": true,
+      "public_execute": true,
+      "authenticated_execute": true,
+      "proacl": "=X/postgres|postgres=X/postgres|anon=X/postgres|authenticated=X/postgres|service_role=X/postgres"
+    },
+    {
+      "nome": "aee_game_can_access_student",
+      "dono": "postgres",
+      "anon_execute": true,
+      "public_execute": true,
+      "authenticated_execute": true,
+      "proacl": "=X/postgres|postgres=X/postgres|anon=X/postgres|authenticated=X/postgres|service_role=X/postgres"
+    },
+    {
+      "nome": "aee_profile_staff",
+      "dono": "postgres",
+      "anon_execute": false,
+      "public_execute": false,
+      "authenticated_execute": true,
+      "proacl": "postgres=X/postgres|authenticated=X/postgres|service_role=X/postgres"
+    },
+    {
+      "nome": "bfr_audit_lesson_attendance_change",
+      "dono": "postgres",
+      "anon_execute": true,
+      "public_execute": true,
+      "authenticated_execute": true,
+      "proacl": "=X/postgres|postgres=X/postgres|anon=X/postgres|authenticated=X/postgres|service_role=X/postgres"
+    },
+    {
+      "nome": "bfr_boletim_componente",
+      "dono": "postgres",
+      "anon_execute": false,
+      "public_execute": false,
+      "authenticated_execute": true,
+      "proacl": "postgres=X/postgres|authenticated=X/postgres|service_role=X/postgres"
+    },
+    {
+      "nome": "bfr_can_access_literacy_student",
+      "dono": "postgres",
+      "anon_execute": true,
+      "public_execute": true,
+      "authenticated_execute": true,
+      "proacl": "=X/postgres|postgres=X/postgres|authenticated=X/postgres|service_role=X/postgres"
+    },
+    {
+      "nome": "bfr_can_link_student_account",
+      "dono": "postgres",
+      "anon_execute": false,
+      "public_execute": false,
+      "authenticated_execute": true,
+      "proacl": "postgres=X/postgres|authenticated=X/postgres|service_role=X/postgres"
+    },
+    {
+      "nome": "bfr_can_manage_communications",
+      "dono": "postgres",
+      "anon_execute": true,
+      "public_execute": true,
+      "authenticated_execute": true,
+      "proacl": "=X/postgres|postgres=X/postgres|anon=X/postgres|authenticated=X/postgres|service_role=X/postgres"
+    },
+    {
+      "nome": "bfr_can_manage_lesson_attendance",
+      "dono": "postgres",
+      "anon_execute": false,
+      "public_execute": false,
+      "authenticated_execute": true,
+      "proacl": "postgres=X/postgres|authenticated=X/postgres|service_role=X/postgres"
+    },
+    {
+      "nome": "bfr_can_manage_student_directory",
+      "dono": "postgres",
+      "anon_execute": true,
+      "public_execute": true,
+      "authenticated_execute": true,
+      "proacl": "=X/postgres|postgres=X/postgres|anon=X/postgres|authenticated=X/postgres|service_role=X/postgres"
+    },
+    {
+      "nome": "bfr_can_view_student_birthdays",
+      "dono": "postgres",
+      "anon_execute": false,
+      "public_execute": false,
+      "authenticated_execute": true,
+      "proacl": "postgres=X/postgres|authenticated=X/postgres|service_role=X/postgres"
+    },
+    {
+      "nome": "bfr_chat_can_access_message",
+      "dono": "postgres",
+      "anon_execute": false,
+      "public_execute": false,
+      "authenticated_execute": true,
+      "proacl": "postgres=X/postgres|authenticated=X/postgres|service_role=X/postgres"
+    },
+    {
+      "nome": "bfr_chat_is_moderator",
+      "dono": "postgres",
+      "anon_execute": false,
+      "public_execute": false,
+      "authenticated_execute": true,
+      "proacl": "postgres=X/postgres|authenticated=X/postgres|service_role=X/postgres"
+    },
+    {
+      "nome": "bfr_chat_thread_is_empty",
+      "dono": "postgres",
+      "anon_execute": false,
+      "public_execute": false,
+      "authenticated_execute": true,
+      "proacl": "postgres=X/postgres|authenticated=X/postgres|service_role=X/postgres"
+    },
+    {
+      "nome": "bfr_collab_add_notification",
+      "dono": "postgres",
+      "anon_execute": false,
+      "public_execute": false,
+      "authenticated_execute": false,
+      "proacl": "postgres=X/postgres|service_role=X/postgres"
+    },
+    {
+      "nome": "bfr_collab_can_profile",
+      "dono": "postgres",
+      "anon_execute": true,
+      "public_execute": true,
+      "authenticated_execute": true,
+      "proacl": "=X/postgres|postgres=X/postgres|authenticated=X/postgres|service_role=X/postgres"
+    },
+    {
+      "nome": "bfr_collab_can_project",
+      "dono": "postgres",
+      "anon_execute": true,
+      "public_execute": true,
+      "authenticated_execute": true,
+      "proacl": "=X/postgres|postgres=X/postgres|authenticated=X/postgres|service_role=X/postgres"
+    },
+    {
+      "nome": "bfr_collab_can_task",
+      "dono": "postgres",
+      "anon_execute": true,
+      "public_execute": true,
+      "authenticated_execute": true,
+      "proacl": "=X/postgres|postgres=X/postgres|authenticated=X/postgres|service_role=X/postgres"
+    },
+    {
+      "nome": "bfr_collab_comment_notification_trigger",
+      "dono": "postgres",
+      "anon_execute": true,
+      "public_execute": true,
+      "authenticated_execute": true,
+      "proacl": "=X/postgres|postgres=X/postgres|authenticated=X/postgres|service_role=X/postgres"
+    },
+    {
+      "nome": "bfr_collab_is_manager",
+      "dono": "postgres",
+      "anon_execute": true,
+      "public_execute": true,
+      "authenticated_execute": true,
+      "proacl": "=X/postgres|postgres=X/postgres|authenticated=X/postgres|service_role=X/postgres"
+    },
+    {
+      "nome": "bfr_collab_is_staff",
+      "dono": "postgres",
+      "anon_execute": true,
+      "public_execute": true,
+      "authenticated_execute": true,
+      "proacl": "=X/postgres|postgres=X/postgres|authenticated=X/postgres|service_role=X/postgres"
+    },
+    {
+      "nome": "bfr_collab_member_notification_trigger",
+      "dono": "postgres",
+      "anon_execute": true,
+      "public_execute": true,
+      "authenticated_execute": true,
+      "proacl": "=X/postgres|postgres=X/postgres|authenticated=X/postgres|service_role=X/postgres"
+    },
+    {
+      "nome": "bfr_collab_task_notification_trigger",
+      "dono": "postgres",
+      "anon_execute": true,
+      "public_execute": true,
+      "authenticated_execute": true,
+      "proacl": "=X/postgres|postgres=X/postgres|authenticated=X/postgres|service_role=X/postgres"
+    },
+    {
+      "nome": "bfr_correct_grade",
+      "dono": "postgres",
+      "anon_execute": false,
+      "public_execute": false,
+      "authenticated_execute": true,
+      "proacl": "postgres=X/postgres|authenticated=X/postgres|service_role=X/postgres"
+    },
+    {
+      "nome": "bfr_create_school_meeting",
+      "dono": "postgres",
+      "anon_execute": false,
+      "public_execute": false,
+      "authenticated_execute": true,
+      "proacl": "postgres=X/postgres|authenticated=X/postgres|service_role=X/postgres|authenticator=X/postgres|dashboard_user=X/postgres|pgbouncer=X/postgres|supabase_admin=X/postgres|supabase_auth_admin=X/postgres|supabase_etl_admin=X/postgres|supabase_functions_admin=X/postgres|supabase_privileged_role=X/postgres|supabase_read_only_user=X/postgres|supabase_realtime_admin=X/postgres|supabase_replication_admin=X/postgres|supabase_storage_admin=X/postgres"
+    },
+    {
+      "nome": "bfr_create_student_pairing_code",
+      "dono": "postgres",
+      "anon_execute": false,
+      "public_execute": false,
+      "authenticated_execute": true,
+      "proacl": "postgres=X/postgres|authenticated=X/postgres|service_role=X/postgres"
+    },
+    {
+      "nome": "bfr_create_targeted_announcement",
+      "dono": "postgres",
+      "anon_execute": false,
+      "public_execute": false,
+      "authenticated_execute": true,
+      "proacl": "postgres=X/postgres|authenticated=X/postgres|service_role=X/postgres|authenticator=X/postgres|dashboard_user=X/postgres|pgbouncer=X/postgres|supabase_admin=X/postgres|supabase_auth_admin=X/postgres|supabase_etl_admin=X/postgres|supabase_functions_admin=X/postgres|supabase_privileged_role=X/postgres|supabase_read_only_user=X/postgres|supabase_realtime_admin=X/postgres|supabase_replication_admin=X/postgres|supabase_storage_admin=X/postgres"
+    },
+    {
+      "nome": "bfr_current_school_year",
+      "dono": "postgres",
+      "anon_execute": false,
+      "public_execute": false,
+      "authenticated_execute": true,
+      "proacl": "postgres=X/postgres|authenticated=X/postgres|service_role=X/postgres"
+    },
+    {
+      "nome": "bfr_current_teacher_id",
+      "dono": "postgres",
+      "anon_execute": true,
+      "public_execute": true,
+      "authenticated_execute": true,
+      "proacl": "=X/postgres|postgres=X/postgres|authenticated=X/postgres|service_role=X/postgres"
+    },
+    {
+      "nome": "bfr_family_can_view_aee",
+      "dono": "postgres",
+      "anon_execute": true,
+      "public_execute": true,
+      "authenticated_execute": true,
+      "proacl": "=X/postgres|postgres=X/postgres|anon=X/postgres|authenticated=X/postgres|service_role=X/postgres"
+    },
+    {
+      "nome": "bfr_forward_staff_message",
+      "dono": "postgres",
+      "anon_execute": false,
+      "public_execute": false,
+      "authenticated_execute": true,
+      "proacl": "postgres=X/postgres|authenticated=X/postgres|service_role=X/postgres"
+    },
+    {
+      "nome": "bfr_get_family_location",
+      "dono": "postgres",
+      "anon_execute": false,
+      "public_execute": false,
+      "authenticated_execute": true,
+      "proacl": "postgres=X/postgres|authenticated=X/postgres|service_role=X/postgres"
+    },
+    {
+      "nome": "bfr_get_student_photo_path",
+      "dono": "postgres",
+      "anon_execute": true,
+      "public_execute": false,
+      "authenticated_execute": true,
+      "proacl": "postgres=X/postgres|anon=X/postgres|authenticated=X/postgres|service_role=X/postgres"
+    },
+    {
+      "nome": "bfr_grading_rule_complete",
+      "dono": "postgres",
+      "anon_execute": false,
+      "public_execute": false,
+      "authenticated_execute": true,
+      "proacl": "postgres=X/postgres|authenticated=X/postgres|service_role=X/postgres"
+    },
+    {
+      "nome": "bfr_grading_rules_for",
+      "dono": "postgres",
+      "anon_execute": false,
+      "public_execute": false,
+      "authenticated_execute": true,
+      "proacl": "postgres=X/postgres|authenticated=X/postgres|service_role=X/postgres"
+    },
+    {
+      "nome": "bfr_guardian_unlink_student",
+      "dono": "postgres",
+      "anon_execute": false,
+      "public_execute": false,
+      "authenticated_execute": true,
+      "proacl": "postgres=X/postgres|authenticated=X/postgres|service_role=X/postgres"
+    },
+    {
+      "nome": "bfr_has_specialized_permission",
+      "dono": "postgres",
+      "anon_execute": true,
+      "public_execute": true,
+      "authenticated_execute": true,
+      "proacl": "=X/postgres|postgres=X/postgres|anon=X/postgres|authenticated=X/postgres|service_role=X/postgres"
+    },
+    {
+      "nome": "bfr_is_coordinator",
+      "dono": "postgres",
+      "anon_execute": false,
+      "public_execute": false,
+      "authenticated_execute": true,
+      "proacl": "postgres=X/postgres|authenticated=X/postgres|service_role=X/postgres"
+    },
+    {
+      "nome": "bfr_is_education_supervisor",
+      "dono": "postgres",
+      "anon_execute": false,
+      "public_execute": false,
+      "authenticated_execute": true,
+      "proacl": "postgres=X/postgres|authenticated=X/postgres|service_role=X/postgres"
+    },
+    {
+      "nome": "bfr_is_instagram_admin",
+      "dono": "postgres",
+      "anon_execute": false,
+      "public_execute": false,
+      "authenticated_execute": true,
+      "proacl": "postgres=X/postgres|authenticated=X/postgres|service_role=X/postgres"
+    },
+    {
+      "nome": "bfr_is_schedule_manager",
+      "dono": "postgres",
+      "anon_execute": true,
+      "public_execute": true,
+      "authenticated_execute": true,
+      "proacl": "=X/postgres|postgres=X/postgres|authenticated=X/postgres|service_role=X/postgres"
+    },
+    {
+      "nome": "bfr_is_staff",
+      "dono": "postgres",
+      "anon_execute": false,
+      "public_execute": false,
+      "authenticated_execute": true,
+      "proacl": "postgres=X/postgres|authenticated=X/postgres|service_role=X/postgres"
+    },
+    {
+      "nome": "bfr_learning_is_manager",
+      "dono": "postgres",
+      "anon_execute": true,
+      "public_execute": true,
+      "authenticated_execute": true,
+      "proacl": "=X/postgres|postgres=X/postgres|anon=X/postgres|authenticated=X/postgres|service_role=X/postgres"
+    },
+    {
+      "nome": "bfr_link_panel_data",
+      "dono": "postgres",
+      "anon_execute": false,
+      "public_execute": false,
+      "authenticated_execute": true,
+      "proacl": "postgres=X/postgres|authenticated=X/postgres|service_role=X/postgres"
+    },
+    {
+      "nome": "bfr_link_student_account",
+      "dono": "postgres",
+      "anon_execute": false,
+      "public_execute": false,
+      "authenticated_execute": true,
+      "proacl": "postgres=X/postgres|authenticated=X/postgres|service_role=X/postgres"
+    },
+    {
+      "nome": "bfr_list_staff_birthdays",
+      "dono": "postgres",
+      "anon_execute": false,
+      "public_execute": false,
+      "authenticated_execute": true,
+      "proacl": "postgres=X/postgres|authenticated=X/postgres|service_role=X/postgres"
+    },
+    {
+      "nome": "bfr_literacy_staff",
+      "dono": "postgres",
+      "anon_execute": true,
+      "public_execute": true,
+      "authenticated_execute": true,
+      "proacl": "=X/postgres|postgres=X/postgres|authenticated=X/postgres|service_role=X/postgres"
+    },
+    {
+      "nome": "bfr_log_schedule_change",
+      "dono": "postgres",
+      "anon_execute": false,
+      "public_execute": false,
+      "authenticated_execute": true,
+      "proacl": "postgres=X/postgres|authenticated=X/postgres|service_role=X/postgres|authenticator=X/postgres|dashboard_user=X/postgres|pgbouncer=X/postgres|supabase_admin=X/postgres|supabase_auth_admin=X/postgres|supabase_etl_admin=X/postgres|supabase_functions_admin=X/postgres|supabase_privileged_role=X/postgres|supabase_read_only_user=X/postgres|supabase_realtime_admin=X/postgres|supabase_replication_admin=X/postgres|supabase_storage_admin=X/postgres"
+    },
+    {
+      "nome": "bfr_mark_announcement_read",
+      "dono": "postgres",
+      "anon_execute": false,
+      "public_execute": false,
+      "authenticated_execute": true,
+      "proacl": "postgres=X/postgres|authenticated=X/postgres|service_role=X/postgres|authenticator=X/postgres|dashboard_user=X/postgres|pgbouncer=X/postgres|supabase_admin=X/postgres|supabase_auth_admin=X/postgres|supabase_etl_admin=X/postgres|supabase_functions_admin=X/postgres|supabase_privileged_role=X/postgres|supabase_read_only_user=X/postgres|supabase_realtime_admin=X/postgres|supabase_replication_admin=X/postgres|supabase_storage_admin=X/postgres"
+    },
+    {
+      "nome": "bfr_my_student_pairing",
+      "dono": "postgres",
+      "anon_execute": false,
+      "public_execute": false,
+      "authenticated_execute": true,
+      "proacl": "postgres=X/postgres|authenticated=X/postgres|service_role=X/postgres"
+    },
+    {
+      "nome": "bfr_notify_guardian_on_route_incident",
+      "dono": "postgres",
+      "anon_execute": false,
+      "public_execute": false,
+      "authenticated_execute": false,
+      "proacl": "postgres=X/postgres|service_role=X/postgres"
+    },
+    {
+      "nome": "bfr_pedagogical_can_manage_student",
+      "dono": "postgres",
+      "anon_execute": true,
+      "public_execute": true,
+      "authenticated_execute": true,
+      "proacl": "=X/postgres|postgres=X/postgres|anon=X/postgres|authenticated=X/postgres|service_role=X/postgres"
+    },
+    {
+      "nome": "bfr_pf_notify_location",
+      "dono": "postgres",
+      "anon_execute": false,
+      "public_execute": false,
+      "authenticated_execute": false,
+      "proacl": "postgres=X/postgres|service_role=X/postgres"
+    },
+    {
+      "nome": "bfr_prevent_duplicate_grade",
+      "dono": "postgres",
+      "anon_execute": true,
+      "public_execute": true,
+      "authenticated_execute": true,
+      "proacl": "=X/postgres|postgres=X/postgres|anon=X/postgres|authenticated=X/postgres|service_role=X/postgres"
+    },
+    {
+      "nome": "bfr_process_meeting_reminders",
+      "dono": "postgres",
+      "anon_execute": false,
+      "public_execute": false,
+      "authenticated_execute": true,
+      "proacl": "postgres=X/postgres|authenticated=X/postgres|service_role=X/postgres|authenticator=X/postgres|dashboard_user=X/postgres|pgbouncer=X/postgres|supabase_admin=X/postgres|supabase_auth_admin=X/postgres|supabase_etl_admin=X/postgres|supabase_functions_admin=X/postgres|supabase_privileged_role=X/postgres|supabase_read_only_user=X/postgres|supabase_realtime_admin=X/postgres|supabase_replication_admin=X/postgres|supabase_storage_admin=X/postgres"
+    },
+    {
+      "nome": "bfr_profile_in_my_schools",
+      "dono": "postgres",
+      "anon_execute": false,
+      "public_execute": false,
+      "authenticated_execute": true,
+      "proacl": "postgres=X/postgres|service_role=X/postgres|authenticated=X/postgres"
+    },
+    {
+      "nome": "bfr_psychology_active_professional",
+      "dono": "postgres",
+      "anon_execute": true,
+      "public_execute": true,
+      "authenticated_execute": true,
+      "proacl": "=X/postgres|postgres=X/postgres|anon=X/postgres|authenticated=X/postgres|service_role=X/postgres"
+    },
+    {
+      "nome": "bfr_psychology_can_write",
+      "dono": "postgres",
+      "anon_execute": true,
+      "public_execute": true,
+      "authenticated_execute": true,
+      "proacl": "=X/postgres|postgres=X/postgres|anon=X/postgres|authenticated=X/postgres|service_role=X/postgres"
+    },
+    {
+      "nome": "bfr_psychology_record_access",
+      "dono": "postgres",
+      "anon_execute": true,
+      "public_execute": true,
+      "authenticated_execute": true,
+      "proacl": "=X/postgres|postgres=X/postgres|anon=X/postgres|authenticated=X/postgres|service_role=X/postgres"
+    },
+    {
+      "nome": "bfr_psychology_schedule_guard",
+      "dono": "postgres",
+      "anon_execute": true,
+      "public_execute": true,
+      "authenticated_execute": true,
+      "proacl": "=X/postgres|postgres=X/postgres|anon=X/postgres|authenticated=X/postgres|service_role=X/postgres"
+    },
+    {
+      "nome": "bfr_publish_scheduled_communications",
+      "dono": "postgres",
+      "anon_execute": false,
+      "public_execute": false,
+      "authenticated_execute": true,
+      "proacl": "postgres=X/postgres|authenticated=X/postgres|service_role=X/postgres|authenticator=X/postgres|dashboard_user=X/postgres|pgbouncer=X/postgres|supabase_admin=X/postgres|supabase_auth_admin=X/postgres|supabase_etl_admin=X/postgres|supabase_functions_admin=X/postgres|supabase_privileged_role=X/postgres|supabase_read_only_user=X/postgres|supabase_realtime_admin=X/postgres|supabase_replication_admin=X/postgres|supabase_storage_admin=X/postgres"
+    },
+    {
+      "nome": "bfr_reading_editor",
+      "dono": "postgres",
+      "anon_execute": false,
+      "public_execute": false,
+      "authenticated_execute": true,
+      "proacl": "postgres=X/postgres|authenticated=X/postgres|service_role=X/postgres"
+    },
+    {
+      "nome": "bfr_reading_staff",
+      "dono": "postgres",
+      "anon_execute": false,
+      "public_execute": false,
+      "authenticated_execute": true,
+      "proacl": "postgres=X/postgres|authenticated=X/postgres|service_role=X/postgres"
+    },
+    {
+      "nome": "bfr_redeem_student_pairing_code",
+      "dono": "postgres",
+      "anon_execute": false,
+      "public_execute": false,
+      "authenticated_execute": true,
+      "proacl": "postgres=X/postgres|authenticated=X/postgres|service_role=X/postgres"
+    },
+    {
+      "nome": "bfr_report_location",
+      "dono": "postgres",
+      "anon_execute": false,
+      "public_execute": false,
+      "authenticated_execute": true,
+      "proacl": "postgres=X/postgres|authenticated=X/postgres|service_role=X/postgres"
+    },
+    {
+      "nome": "bfr_resolve_communication_recipients",
+      "dono": "postgres",
+      "anon_execute": false,
+      "public_execute": false,
+      "authenticated_execute": true,
+      "proacl": "postgres=X/postgres|authenticated=X/postgres|service_role=X/postgres|authenticator=X/postgres|dashboard_user=X/postgres|pgbouncer=X/postgres|supabase_admin=X/postgres|supabase_auth_admin=X/postgres|supabase_etl_admin=X/postgres|supabase_functions_admin=X/postgres|supabase_privileged_role=X/postgres|supabase_read_only_user=X/postgres|supabase_realtime_admin=X/postgres|supabase_replication_admin=X/postgres|supabase_storage_admin=X/postgres"
+    },
+    {
+      "nome": "bfr_school_staff_ids",
+      "dono": "postgres",
+      "anon_execute": false,
+      "public_execute": false,
+      "authenticated_execute": true,
+      "proacl": "postgres=X/postgres|authenticated=X/postgres|service_role=X/postgres"
+    },
+    {
+      "nome": "bfr_set_location_sharing",
+      "dono": "postgres",
+      "anon_execute": false,
+      "public_execute": false,
+      "authenticated_execute": true,
+      "proacl": "postgres=X/postgres|authenticated=X/postgres|service_role=X/postgres"
+    },
+    {
+      "nome": "bfr_set_staff_birthday",
+      "dono": "postgres",
+      "anon_execute": false,
+      "public_execute": false,
+      "authenticated_execute": true,
+      "proacl": "postgres=X/postgres|authenticated=X/postgres|service_role=X/postgres"
+    },
+    {
+      "nome": "bfr_specialized_audit_trigger",
+      "dono": "postgres",
+      "anon_execute": true,
+      "public_execute": true,
+      "authenticated_execute": true,
+      "proacl": "=X/postgres|postgres=X/postgres|anon=X/postgres|authenticated=X/postgres|service_role=X/postgres"
+    },
+    {
+      "nome": "bfr_staff_audit_trigger",
+      "dono": "postgres",
+      "anon_execute": true,
+      "public_execute": true,
+      "authenticated_execute": true,
+      "proacl": "=X/postgres|postgres=X/postgres|authenticated=X/postgres|service_role=X/postgres"
+    },
+    {
+      "nome": "bfr_staff_can_access_channel",
+      "dono": "postgres",
+      "anon_execute": true,
+      "public_execute": true,
+      "authenticated_execute": true,
+      "proacl": "=X/postgres|postgres=X/postgres|authenticated=X/postgres|service_role=X/postgres"
+    },
+    {
+      "nome": "bfr_staff_can_manage_channel",
+      "dono": "postgres",
+      "anon_execute": true,
+      "public_execute": true,
+      "authenticated_execute": true,
+      "proacl": "=X/postgres|postgres=X/postgres|authenticated=X/postgres|service_role=X/postgres"
+    },
+    {
+      "nome": "bfr_staff_can_manage_student_scope",
+      "dono": "postgres",
+      "anon_execute": true,
+      "public_execute": true,
+      "authenticated_execute": true,
+      "proacl": "=X/postgres|postgres=X/postgres|anon=X/postgres|authenticated=X/postgres|service_role=X/postgres"
+    },
+    {
+      "nome": "bfr_staff_can_message_recipient",
+      "dono": "postgres",
+      "anon_execute": true,
+      "public_execute": true,
+      "authenticated_execute": true,
+      "proacl": "=X/postgres|postgres=X/postgres|authenticated=X/postgres|service_role=X/postgres"
+    },
+    {
+      "nome": "bfr_staff_can_read_message",
+      "dono": "postgres",
+      "anon_execute": true,
+      "public_execute": true,
+      "authenticated_execute": true,
+      "proacl": "=X/postgres|postgres=X/postgres|authenticated=X/postgres|service_role=X/postgres"
+    },
+    {
+      "nome": "bfr_staff_is_manager",
+      "dono": "postgres",
+      "anon_execute": true,
+      "public_execute": true,
+      "authenticated_execute": true,
+      "proacl": "=X/postgres|postgres=X/postgres|authenticated=X/postgres|service_role=X/postgres"
+    },
+    {
+      "nome": "bfr_staff_message_id_from_storage_path",
+      "dono": "postgres",
+      "anon_execute": false,
+      "public_execute": false,
+      "authenticated_execute": true,
+      "proacl": "postgres=X/postgres|authenticated=X/postgres|service_role=X/postgres|authenticator=X/postgres|dashboard_user=X/postgres|pgbouncer=X/postgres|supabase_admin=X/postgres|supabase_auth_admin=X/postgres|supabase_etl_admin=X/postgres|supabase_functions_admin=X/postgres|supabase_privileged_role=X/postgres|supabase_read_only_user=X/postgres|supabase_realtime_admin=X/postgres|supabase_replication_admin=X/postgres|supabase_storage_admin=X/postgres"
+    },
+    {
+      "nome": "bfr_staff_role",
+      "dono": "postgres",
+      "anon_execute": true,
+      "public_execute": true,
+      "authenticated_execute": true,
+      "proacl": "=X/postgres|postgres=X/postgres|authenticated=X/postgres|service_role=X/postgres"
+    },
+    {
+      "nome": "bfr_student_unlink_account",
+      "dono": "postgres",
+      "anon_execute": false,
+      "public_execute": false,
+      "authenticated_execute": true,
+      "proacl": "postgres=X/postgres|authenticated=X/postgres|service_role=X/postgres"
+    },
+    {
+      "nome": "bfr_subject_matches",
+      "dono": "postgres",
+      "anon_execute": true,
+      "public_execute": true,
+      "authenticated_execute": true,
+      "proacl": "=X/postgres|postgres=X/postgres|anon=X/postgres|authenticated=X/postgres|service_role=X/postgres"
+    },
+    {
+      "nome": "bfr_supervision_alertas_recalcular",
+      "dono": "postgres",
+      "anon_execute": false,
+      "public_execute": false,
+      "authenticated_execute": true,
+      "proacl": "postgres=X/postgres|service_role=X/postgres|authenticated=X/postgres"
+    },
+    {
+      "nome": "bfr_supervision_audit_log",
+      "dono": "postgres",
+      "anon_execute": false,
+      "public_execute": false,
+      "authenticated_execute": false,
+      "proacl": "postgres=X/postgres|service_role=X/postgres"
+    },
+    {
+      "nome": "bfr_supervision_comparativo",
+      "dono": "postgres",
+      "anon_execute": false,
+      "public_execute": false,
+      "authenticated_execute": true,
+      "proacl": "postgres=X/postgres|service_role=X/postgres|authenticated=X/postgres"
+    },
+    {
+      "nome": "bfr_supervision_desempenho",
+      "dono": "postgres",
+      "anon_execute": false,
+      "public_execute": false,
+      "authenticated_execute": true,
+      "proacl": "postgres=X/postgres|service_role=X/postgres|authenticated=X/postgres"
+    },
+    {
+      "nome": "bfr_supervision_frequencia",
+      "dono": "postgres",
+      "anon_execute": false,
+      "public_execute": false,
+      "authenticated_execute": true,
+      "proacl": "postgres=X/postgres|service_role=X/postgres|authenticated=X/postgres"
+    },
+    {
+      "nome": "bfr_supervision_prazos_vencidos",
+      "dono": "postgres",
+      "anon_execute": false,
+      "public_execute": false,
+      "authenticated_execute": true,
+      "proacl": "postgres=X/postgres|service_role=X/postgres|authenticated=X/postgres"
+    },
+    {
+      "nome": "bfr_supervision_response_notify",
+      "dono": "postgres",
+      "anon_execute": false,
+      "public_execute": false,
+      "authenticated_execute": false,
+      "proacl": "postgres=X/postgres|service_role=X/postgres"
+    },
+    {
+      "nome": "bfr_supervisor_can_access_school",
+      "dono": "postgres",
+      "anon_execute": false,
+      "public_execute": false,
+      "authenticated_execute": true,
+      "proacl": "postgres=X/postgres|authenticated=X/postgres|service_role=X/postgres"
+    },
+    {
+      "nome": "bfr_support_assigned_professional",
+      "dono": "postgres",
+      "anon_execute": false,
+      "public_execute": false,
+      "authenticated_execute": true,
+      "proacl": "postgres=X/postgres|authenticated=X/postgres|service_role=X/postgres"
+    },
+    {
+      "nome": "bfr_support_detail_access",
+      "dono": "postgres",
+      "anon_execute": true,
+      "public_execute": true,
+      "authenticated_execute": true,
+      "proacl": "=X/postgres|postgres=X/postgres|anon=X/postgres|authenticated=X/postgres|service_role=X/postgres"
+    },
+    {
+      "nome": "bfr_support_guardian",
+      "dono": "postgres",
+      "anon_execute": false,
+      "public_execute": false,
+      "authenticated_execute": true,
+      "proacl": "postgres=X/postgres|authenticated=X/postgres|service_role=X/postgres"
+    },
+    {
+      "nome": "bfr_support_manager",
+      "dono": "postgres",
+      "anon_execute": false,
+      "public_execute": false,
+      "authenticated_execute": true,
+      "proacl": "postgres=X/postgres|authenticated=X/postgres|service_role=X/postgres"
+    },
+    {
+      "nome": "bfr_support_professional",
+      "dono": "postgres",
+      "anon_execute": false,
+      "public_execute": false,
+      "authenticated_execute": true,
+      "proacl": "postgres=X/postgres|authenticated=X/postgres|service_role=X/postgres"
+    },
+    {
+      "nome": "bfr_support_request_access",
+      "dono": "postgres",
+      "anon_execute": true,
+      "public_execute": true,
+      "authenticated_execute": true,
+      "proacl": "=X/postgres|postgres=X/postgres|anon=X/postgres|authenticated=X/postgres|service_role=X/postgres"
+    },
+    {
+      "nome": "bfr_support_request_create_access",
+      "dono": "postgres",
+      "anon_execute": true,
+      "public_execute": true,
+      "authenticated_execute": true,
+      "proacl": "=X/postgres|postgres=X/postgres|anon=X/postgres|authenticated=X/postgres|service_role=X/postgres"
+    },
+    {
+      "nome": "bfr_support_request_matches",
+      "dono": "postgres",
+      "anon_execute": false,
+      "public_execute": false,
+      "authenticated_execute": true,
+      "proacl": "postgres=X/postgres|authenticated=X/postgres|service_role=X/postgres"
+    },
+    {
+      "nome": "bfr_support_request_scope_guard",
+      "dono": "postgres",
+      "anon_execute": true,
+      "public_execute": true,
+      "authenticated_execute": true,
+      "proacl": "=X/postgres|postgres=X/postgres|anon=X/postgres|authenticated=X/postgres|service_role=X/postgres"
+    },
+    {
+      "nome": "bfr_support_request_staff",
+      "dono": "postgres",
+      "anon_execute": false,
+      "public_execute": false,
+      "authenticated_execute": true,
+      "proacl": "postgres=X/postgres|authenticated=X/postgres|service_role=X/postgres"
+    },
+    {
+      "nome": "bfr_support_staff",
+      "dono": "postgres",
+      "anon_execute": false,
+      "public_execute": false,
+      "authenticated_execute": true,
+      "proacl": "postgres=X/postgres|authenticated=X/postgres|service_role=X/postgres"
+    },
+    {
+      "nome": "bfr_teacher_can_manage_class_subject",
+      "dono": "postgres",
+      "anon_execute": true,
+      "public_execute": true,
+      "authenticated_execute": true,
+      "proacl": "=X/postgres|postgres=X/postgres|authenticated=X/postgres|service_role=X/postgres"
+    },
+    {
+      "nome": "bfr_teacher_can_manage_student",
+      "dono": "postgres",
+      "anon_execute": true,
+      "public_execute": true,
+      "authenticated_execute": true,
+      "proacl": "=X/postgres|postgres=X/postgres|authenticated=X/postgres|service_role=X/postgres"
+    },
+    {
+      "nome": "bfr_teacher_context",
+      "dono": "postgres",
+      "anon_execute": false,
+      "public_execute": false,
+      "authenticated_execute": true,
+      "proacl": "postgres=X/postgres|authenticated=X/postgres|service_role=X/postgres"
+    },
+    {
+      "nome": "bfr_teacher_lesson_gate_evidence",
+      "dono": "postgres",
+      "anon_execute": false,
+      "public_execute": false,
+      "authenticated_execute": true,
+      "proacl": "postgres=X/postgres|authenticated=X/postgres|service_role=X/postgres"
+    },
+    {
+      "nome": "bfr_team_can_access_student",
+      "dono": "postgres",
+      "anon_execute": false,
+      "public_execute": false,
+      "authenticated_execute": true,
+      "proacl": "postgres=X/postgres|authenticated=X/postgres|service_role=X/postgres"
+    },
+    {
+      "nome": "bfr_term_average",
+      "dono": "postgres",
+      "anon_execute": false,
+      "public_execute": false,
+      "authenticated_execute": true,
+      "proacl": "postgres=X/postgres|authenticated=X/postgres|service_role=X/postgres"
+    },
+    {
+      "nome": "bfr_term_unclassified",
+      "dono": "postgres",
+      "anon_execute": false,
+      "public_execute": false,
+      "authenticated_execute": true,
+      "proacl": "postgres=X/postgres|authenticated=X/postgres|service_role=X/postgres"
+    },
+    {
+      "nome": "bfr_touch_updated_at",
+      "dono": "postgres",
+      "anon_execute": true,
+      "public_execute": true,
+      "authenticated_execute": true,
+      "proacl": "=X/postgres|postgres=X/postgres|anon=X/postgres|authenticated=X/postgres|service_role=X/postgres"
+    },
+    {
+      "nome": "bfr_unlink_student_account",
+      "dono": "postgres",
+      "anon_execute": false,
+      "public_execute": false,
+      "authenticated_execute": true,
+      "proacl": "postgres=X/postgres|authenticated=X/postgres|service_role=X/postgres"
+    },
+    {
+      "nome": "bfr_update_school_meeting",
+      "dono": "postgres",
+      "anon_execute": false,
+      "public_execute": false,
+      "authenticated_execute": true,
+      "proacl": "postgres=X/postgres|authenticated=X/postgres|service_role=X/postgres|authenticator=X/postgres|dashboard_user=X/postgres|pgbouncer=X/postgres|supabase_admin=X/postgres|supabase_auth_admin=X/postgres|supabase_etl_admin=X/postgres|supabase_functions_admin=X/postgres|supabase_privileged_role=X/postgres|supabase_read_only_user=X/postgres|supabase_realtime_admin=X/postgres|supabase_replication_admin=X/postgres|supabase_storage_admin=X/postgres"
+    },
+    {
+      "nome": "bfr_validate_lesson_attendance",
+      "dono": "postgres",
+      "anon_execute": true,
+      "public_execute": true,
+      "authenticated_execute": true,
+      "proacl": "=X/postgres|postgres=X/postgres|anon=X/postgres|authenticated=X/postgres|service_role=X/postgres"
+    },
+    {
+      "nome": "choose_initial_role",
+      "dono": "postgres",
+      "anon_execute": false,
+      "public_execute": false,
+      "authenticated_execute": true,
+      "proacl": "postgres=X/postgres|authenticated=X/postgres|service_role=X/postgres"
+    },
+    {
+      "nome": "complete_family_registration",
+      "dono": "postgres",
+      "anon_execute": false,
+      "public_execute": false,
+      "authenticated_execute": true,
+      "proacl": "postgres=X/postgres|authenticated=X/postgres|service_role=X/postgres"
+    },
+    {
+      "nome": "complete_guardian_registration",
+      "dono": "postgres",
+      "anon_execute": false,
+      "public_execute": false,
+      "authenticated_execute": false,
+      "proacl": "postgres=X/postgres|service_role=X/postgres"
+    },
+    {
+      "nome": "confirm_guardian_entry",
+      "dono": "postgres",
+      "anon_execute": false,
+      "public_execute": false,
+      "authenticated_execute": true,
+      "proacl": "postgres=X/postgres|authenticated=X/postgres|service_role=X/postgres"
+    },
+    {
+      "nome": "current_role",
+      "dono": "postgres",
+      "anon_execute": false,
+      "public_execute": false,
+      "authenticated_execute": true,
+      "proacl": "postgres=X/postgres|authenticated=X/postgres|service_role=X/postgres"
+    },
+    {
+      "nome": "enforce_bfr_avatar_uniform",
+      "dono": "postgres",
+      "anon_execute": true,
+      "public_execute": true,
+      "authenticated_execute": true,
+      "proacl": "=X/postgres|postgres=X/postgres|anon=X/postgres|authenticated=X/postgres|service_role=X/postgres"
+    },
+    {
+      "nome": "family_cpf_is_valid",
+      "dono": "postgres",
+      "anon_execute": true,
+      "public_execute": true,
+      "authenticated_execute": true,
+      "proacl": "=X/postgres|postgres=X/postgres|anon=X/postgres|authenticated=X/postgres|service_role=X/postgres"
+    },
+    {
+      "nome": "family_normalize_cpf",
+      "dono": "postgres",
+      "anon_execute": true,
+      "public_execute": true,
+      "authenticated_execute": true,
+      "proacl": "=X/postgres|postgres=X/postgres|anon=X/postgres|authenticated=X/postgres|service_role=X/postgres"
+    },
+    {
+      "nome": "family_normalize_name",
+      "dono": "postgres",
+      "anon_execute": true,
+      "public_execute": true,
+      "authenticated_execute": true,
+      "proacl": "=X/postgres|postgres=X/postgres|anon=X/postgres|authenticated=X/postgres|service_role=X/postgres"
+    },
+    {
+      "nome": "get_student_guardians",
+      "dono": "postgres",
+      "anon_execute": false,
+      "public_execute": false,
+      "authenticated_execute": true,
+      "proacl": "postgres=X/postgres|authenticated=X/postgres|service_role=X/postgres"
+    },
+    {
+      "nome": "handle_new_user",
+      "dono": "postgres",
+      "anon_execute": false,
+      "public_execute": false,
+      "authenticated_execute": false,
+      "proacl": "postgres=X/postgres|service_role=X/postgres"
+    },
+    {
+      "nome": "internal_chat_can_access_room",
+      "dono": "postgres",
+      "anon_execute": true,
+      "public_execute": true,
+      "authenticated_execute": true,
+      "proacl": "=X/postgres|postgres=X/postgres|authenticated=X/postgres|service_role=X/postgres"
+    },
+    {
+      "nome": "internal_chat_is_staff",
+      "dono": "postgres",
+      "anon_execute": true,
+      "public_execute": true,
+      "authenticated_execute": true,
+      "proacl": "=X/postgres|postgres=X/postgres|authenticated=X/postgres|service_role=X/postgres"
+    },
+    {
+      "nome": "is_aee",
+      "dono": "postgres",
+      "anon_execute": true,
+      "public_execute": true,
+      "authenticated_execute": true,
+      "proacl": "=X/postgres|postgres=X/postgres|authenticated=X/postgres|service_role=X/postgres"
+    },
+    {
+      "nome": "is_aee_manager",
+      "dono": "postgres",
+      "anon_execute": true,
+      "public_execute": true,
+      "authenticated_execute": true,
+      "proacl": "=X/postgres|postgres=X/postgres|authenticated=X/postgres|service_role=X/postgres"
+    },
+    {
+      "nome": "is_approved",
+      "dono": "postgres",
+      "anon_execute": false,
+      "public_execute": false,
+      "authenticated_execute": true,
+      "proacl": "postgres=X/postgres|authenticated=X/postgres|service_role=X/postgres"
+    },
+    {
+      "nome": "is_developer",
+      "dono": "postgres",
+      "anon_execute": false,
+      "public_execute": false,
+      "authenticated_execute": true,
+      "proacl": "postgres=X/postgres|authenticated=X/postgres|service_role=X/postgres"
+    },
+    {
+      "nome": "is_gatekeeper",
+      "dono": "postgres",
+      "anon_execute": false,
+      "public_execute": false,
+      "authenticated_execute": true,
+      "proacl": "postgres=X/postgres|authenticated=X/postgres|service_role=X/postgres"
+    },
+    {
+      "nome": "is_monitor",
+      "dono": "postgres",
+      "anon_execute": false,
+      "public_execute": false,
+      "authenticated_execute": true,
+      "proacl": "postgres=X/postgres|authenticated=X/postgres|service_role=X/postgres"
+    },
+    {
+      "nome": "is_staff",
+      "dono": "postgres",
+      "anon_execute": false,
+      "public_execute": false,
+      "authenticated_execute": true,
+      "proacl": "postgres=X/postgres|authenticated=X/postgres|service_role=X/postgres"
+    },
+    {
+      "nome": "list_classes_for_registration",
+      "dono": "postgres",
+      "anon_execute": false,
+      "public_execute": false,
+      "authenticated_execute": false,
+      "proacl": "postgres=X/postgres|service_role=X/postgres"
+    },
+    {
+      "nome": "list_current_month_birthdays",
+      "dono": "postgres",
+      "anon_execute": false,
+      "public_execute": false,
+      "authenticated_execute": true,
+      "proacl": "postgres=X/postgres|authenticated=X/postgres|service_role=X/postgres"
+    },
+    {
+      "nome": "register_gate_checkin",
+      "dono": "postgres",
+      "anon_execute": false,
+      "public_execute": false,
+      "authenticated_execute": true,
+      "proacl": "postgres=X/postgres|authenticated=X/postgres|service_role=X/postgres"
+    },
+    {
+      "nome": "schools_updated_at",
+      "dono": "postgres",
+      "anon_execute": true,
+      "public_execute": true,
+      "authenticated_execute": true,
+      "proacl": "=X/postgres|postgres=X/postgres|anon=X/postgres|authenticated=X/postgres|service_role=X/postgres"
+    },
+    {
+      "nome": "search_family_students",
+      "dono": "postgres",
+      "anon_execute": false,
+      "public_execute": false,
+      "authenticated_execute": true,
+      "proacl": "postgres=X/postgres|authenticated=X/postgres|service_role=X/postgres"
+    },
+    {
+      "nome": "search_students_for_registration",
+      "dono": "postgres",
+      "anon_execute": false,
+      "public_execute": false,
+      "authenticated_execute": false,
+      "proacl": "postgres=X/postgres|service_role=X/postgres"
+    },
+    {
+      "nome": "search_students_for_registration_by_class",
+      "dono": "postgres",
+      "anon_execute": false,
+      "public_execute": false,
+      "authenticated_execute": false,
+      "proacl": "postgres=X/postgres|service_role=X/postgres"
+    },
+    {
+      "nome": "set_profile_role",
+      "dono": "postgres",
+      "anon_execute": false,
+      "public_execute": false,
+      "authenticated_execute": true,
+      "proacl": "postgres=X/postgres|authenticated=X/postgres|service_role=X/postgres|supabase_admin=X/postgres"
+    },
+    {
+      "nome": "sports_rebuild_standings",
+      "dono": "postgres",
+      "anon_execute": false,
+      "public_execute": false,
+      "authenticated_execute": true,
+      "proacl": "postgres=X/postgres|authenticated=X/postgres|service_role=X/postgres"
+    },
+    {
+      "nome": "sports_record_event",
+      "dono": "postgres",
+      "anon_execute": false,
+      "public_execute": false,
+      "authenticated_execute": true,
+      "proacl": "postgres=X/postgres|authenticated=X/postgres|service_role=X/postgres"
+    },
+    {
+      "nome": "sports_role_allowed",
+      "dono": "postgres",
+      "anon_execute": true,
+      "public_execute": true,
+      "authenticated_execute": true,
+      "proacl": "=X/postgres|postgres=X/postgres|authenticated=X/postgres|service_role=X/postgres"
+    },
+    {
+      "nome": "sports_set_match_status",
+      "dono": "postgres",
+      "anon_execute": false,
+      "public_execute": false,
+      "authenticated_execute": true,
+      "proacl": "postgres=X/postgres|authenticated=X/postgres|service_role=X/postgres"
+    },
+    {
+      "nome": "sports_touch_updated_at",
+      "dono": "postgres",
+      "anon_execute": true,
+      "public_execute": true,
+      "authenticated_execute": true,
+      "proacl": "=X/postgres|postgres=X/postgres|anon=X/postgres|authenticated=X/postgres|service_role=X/postgres"
+    },
+    {
+      "nome": "staff_schools_updated_at",
+      "dono": "postgres",
+      "anon_execute": false,
+      "public_execute": false,
+      "authenticated_execute": true,
+      "proacl": "postgres=X/postgres|service_role=X/postgres|authenticated=X/postgres"
+    }
+  ],
+  "pen22": {
+    "total_funcoes": 147,
+    "com_execute_anon": 57,
+    "com_execute_public": 56,
+    "sem_execute_anon": 90,
+    "anon_nulas": 0,
+    "nomes_com_execute_anon": [
+      "aee_can_access_student",
+      "aee_can_write_student",
+      "aee_game_can_access_student",
+      "bfr_audit_lesson_attendance_change",
+      "bfr_can_access_literacy_student",
+      "bfr_can_manage_communications",
+      "bfr_can_manage_student_directory",
+      "bfr_collab_can_profile",
+      "bfr_collab_can_project",
+      "bfr_collab_can_task",
+      "bfr_collab_comment_notification_trigger",
+      "bfr_collab_is_manager",
+      "bfr_collab_is_staff",
+      "bfr_collab_member_notification_trigger",
+      "bfr_collab_task_notification_trigger",
+      "bfr_current_teacher_id",
+      "bfr_family_can_view_aee",
+      "bfr_get_student_photo_path",
+      "bfr_has_specialized_permission",
+      "bfr_is_schedule_manager",
+      "bfr_learning_is_manager",
+      "bfr_literacy_staff",
+      "bfr_pedagogical_can_manage_student",
+      "bfr_prevent_duplicate_grade",
+      "bfr_psychology_active_professional",
+      "bfr_psychology_can_write",
+      "bfr_psychology_record_access",
+      "bfr_psychology_schedule_guard",
+      "bfr_specialized_audit_trigger",
+      "bfr_staff_audit_trigger",
+      "bfr_staff_can_access_channel",
+      "bfr_staff_can_manage_channel",
+      "bfr_staff_can_manage_student_scope",
+      "bfr_staff_can_message_recipient",
+      "bfr_staff_can_read_message",
+      "bfr_staff_is_manager",
+      "bfr_staff_role",
+      "bfr_subject_matches",
+      "bfr_support_detail_access",
+      "bfr_support_request_access",
+      "bfr_support_request_create_access",
+      "bfr_support_request_scope_guard",
+      "bfr_teacher_can_manage_class_subject",
+      "bfr_teacher_can_manage_student",
+      "bfr_touch_updated_at",
+      "bfr_validate_lesson_attendance",
+      "enforce_bfr_avatar_uniform",
+      "family_cpf_is_valid",
+      "family_normalize_cpf",
+      "family_normalize_name",
+      "internal_chat_can_access_room",
+      "internal_chat_is_staff",
+      "is_aee",
+      "is_aee_manager",
+      "schools_updated_at",
+      "sports_role_allowed",
+      "sports_touch_updated_at"
+    ]
+  },
+  "pen25_causa": [
+    {
+      "anon_execute": false,
+      "authenticated_execute": true
+    }
+  ],
+  "pen23_views": [
+    {
+      "nome": "sports_public_athletes",
+      "dono": "postgres",
+      "reloptions": "",
+      "security_invoker": false
+    },
+    {
+      "nome": "sports_public_match_events",
+      "dono": "postgres",
+      "reloptions": "",
+      "security_invoker": false
+    },
+    {
+      "nome": "sports_public_matches",
+      "dono": "postgres",
+      "reloptions": "",
+      "security_invoker": false
+    },
+    {
+      "nome": "sports_public_schools",
+      "dono": "postgres",
+      "reloptions": "",
+      "security_invoker": false
+    },
+    {
+      "nome": "sports_public_teams",
+      "dono": "postgres",
+      "reloptions": "",
+      "security_invoker": false
+    },
+    {
+      "nome": "support_professionals_directory",
+      "dono": "postgres",
+      "reloptions": "security_invoker=true",
+      "security_invoker": true
+    }
+  ],
+  "pen23": {
+    "total_views": 6,
+    "com_security_invoker": [
+      "support_professionals_directory"
+    ],
+    "sem_security_invoker": [
+      "sports_public_athletes",
+      "sports_public_match_events",
+      "sports_public_matches",
+      "sports_public_schools",
+      "sports_public_teams"
+    ],
+    "bypassrls_dono": [
+      "sports_public_athletes(postgres)",
+      "sports_public_match_events(postgres)",
+      "sports_public_matches(postgres)",
+      "sports_public_schools(postgres)",
+      "sports_public_teams(postgres)"
+    ]
+  },
+  "referencias": [
+    {
+      "esquema": "public",
+      "relacao": "schools",
+      "tipo": "r"
+    },
+    {
+      "esquema": "public",
+      "relacao": "sports_schools",
+      "tipo": "r"
+    }
+  ],
+  "perguntas_abertas": {
+    "tabela_pen29_ausente_em_todo_o_catalogo": [
+      {
+        "bfr_school_calendar_days": []
+      },
+      {
+        "bfr_school_calendar_month_targets": []
+      },
+      {
+        "bfr_school_shift_settings": []
+      }
+    ],
+    "public_schools_existe": "SIM → public.r",
+    "sports_schools_existe": "SIM → public.r"
+  },
+  "fks_supervision": [
+    {
+      "fk": "supervision_requests_closed_by_fkey",
+      "coluna_local": "closed_by",
+      "esquema_alvo": "public",
+      "relacao_alvo": "profiles"
+    },
+    {
+      "fk": "supervision_requests_created_by_fkey",
+      "coluna_local": "created_by",
+      "esquema_alvo": "public",
+      "relacao_alvo": "profiles"
+    },
+    {
+      "fk": "supervision_requests_school_id_fkey",
+      "coluna_local": "school_id",
+      "esquema_alvo": "public",
+      "relacao_alvo": "sports_schools"
+    }
+  ],
+  "fks_pen31": [
+    "supervision_requests_closed_by_fkey: closed_by → public.profiles",
+    "supervision_requests_created_by_fkey: created_by → public.profiles",
+    "supervision_requests_school_id_fkey: school_id → public.sports_schools"
+  ],
+  "colunas_announcements": [
+    "id",
+    "title",
+    "body",
+    "published_by",
+    "published_at",
+    "important",
+    "message_type",
+    "audience_mode",
+    "scheduled_at",
+    "status",
+    "requires_confirmation",
+    "updated_at",
+    "meeting_id"
+  ],
+  "pen30": {
+    "created_at_presente": false,
+    "publicadas_e_atualizadas": [
+      "published_at",
+      "updated_at"
+    ],
+    "colunas": [
+      "id",
+      "title",
+      "body",
+      "published_by",
+      "published_at",
+      "important",
+      "message_type",
+      "audience_mode",
+      "scheduled_at",
+      "status",
+      "requires_confirmation",
+      "updated_at",
+      "meeting_id"
+    ]
+  },
+  "pegada_depois": {
+    "total": 182,
+    "hash": "ecf3403210b8091209cb8584a4f1da51"
+  },
+  "portoes": {
+    "portoes": 12,
+    "falhas": []
+  }
+}

@@ -1,0 +1,89 @@
+{
+  "ciclo": "C2-R",
+  "itens": "sql/c2r-42p17-candidate.sql",
+  "em": "2026-11-12T01:42:58.776Z",
+  "modo": "APPLY",
+  "arquivo": {
+    "caminho": "C:/Users/pcmac/Documents/Qoder/2026-10-13/28077d9a/bfr-conecta/sql/c2r-42p17-candidate.sql",
+    "bytes": 5223,
+    "md5": "b47008ee8a863fe12053e00fa905cfa3"
+  },
+  "esperado": {
+    "md5_antes": "2b2f0bc665eb17d92667b704b7d9bf2e",
+    "md5_cand": "90b8e43cca313a4c7cdf3dc0bcb0b8f4",
+    "md5_rb": "2b2f0bc665eb17d92667b704b7d9bf2e"
+  },
+  "antes": {
+    "md5_vivo": "2b2f0bc665eb17d92667b704b7d9bf2e",
+    "policies": 7,
+    "funcao_existe": 0,
+    "dados": {
+      "profiles": 17,
+      "staff_schools": 2,
+      "students": 848,
+      "guardian_students": 1
+    }
+  },
+  "aplicacao": {
+    "status": 201
+  },
+  "depois": {
+    "md5_vivo": "90b8e43cca313a4c7cdf3dc0bcb0b8f4",
+    "policies": 7,
+    "censo": [
+      {
+        "policy": "public.profiles.profiles_read",
+        "comando": "r",
+        "papeis": "authenticated"
+      },
+      {
+        "policy": "public.staff_schools.staff_schools_developer_delete",
+        "comando": "d",
+        "papeis": "authenticated"
+      },
+      {
+        "policy": "public.staff_schools.staff_schools_developer_insert",
+        "comando": "a",
+        "papeis": "authenticated"
+      },
+      {
+        "policy": "public.staff_schools.staff_schools_developer_read",
+        "comando": "r",
+        "papeis": "authenticated"
+      },
+      {
+        "policy": "public.staff_schools.staff_schools_developer_update",
+        "comando": "w",
+        "papeis": "authenticated"
+      },
+      {
+        "policy": "public.staff_schools.staff_schools_own_insert",
+        "comando": "a",
+        "papeis": "authenticated"
+      },
+      {
+        "policy": "public.staff_schools.staff_schools_own_read",
+        "comando": "r",
+        "papeis": "authenticated"
+      }
+    ],
+    "funcao": [
+      {
+        "definer": true,
+        "dono": "postgres",
+        "volatilidade": "s",
+        "publico_executa": 0,
+        "quem_pode_chamar": "",
+        "acl_crua": "{postgres=X/postgres,service_role=X/postgres,authenticated=X/postgres}"
+      }
+    ],
+    "dados": {
+      "profiles": 17,
+      "staff_schools": 2,
+      "students": 848,
+      "guardian_students": 1
+    }
+  },
+  "pos_conferencia": [],
+  "resultado": "APLICADO_OK"
+}

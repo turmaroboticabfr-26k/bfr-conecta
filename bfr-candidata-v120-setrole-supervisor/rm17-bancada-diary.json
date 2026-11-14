@@ -1,0 +1,1773 @@
+{
+  "ciclo": "RM-17-BANCADA",
+  "tarefa": "#1158 RM-1.7 / PEN-32",
+  "em": "2026-11-13T06:05:18.254Z",
+  "escopo": "bancada A/B offline; 0 deploy, 0 mint, 0 DDL, 0 INSERT; papel injetado so em memoria",
+  "limitacao": "sem sessao real: todo tráfego supabase.co desta bancada e anonimo (sem JWT). A prova com JWT e da aba logada e a S21.",
+  "regua": {
+    "base_md5": "a1969cdf023042e7d2a91e7ed9333a05",
+    "candidate_md5": "a9a76d0e338c2a539135bccce23111b4",
+    "hunks": [
+      {
+        "id": "H1",
+        "line": 9902
+      },
+      {
+        "id": "H2",
+        "line": 9926
+      },
+      {
+        "id": "H3",
+        "line": 10145
+      }
+    ]
+  },
+  "bandas": {
+    "base": {
+      "nome": "controle v119 (shell do ar)",
+      "url": "http://127.0.0.1:8261/",
+      "md5_servido": "a1969cdf023042e7d2a91e7ed9333a05",
+      "bytes_servidos": 3489474,
+      "passos": {
+        "ms_login": 460,
+        "sw_controller": false,
+        "gatilho": "clicado",
+        "ms_core": 391,
+        "modules": "pronto",
+        "ms_runtime": 1,
+        "setRole_sup": "ok",
+        "setRole_sec": "ok",
+        "setRole_sup2": "ok"
+      },
+      "s0": {
+        "tipo_setRole": "undefined",
+        "tipo_currentProfile": "undefined",
+        "papel_currentProfile": null,
+        "activeView": null,
+        "runtime_papel": null,
+        "runtime_activeView": null,
+        "tem_runtime": false,
+        "views_visiveis": [
+          "parentView"
+        ],
+        "secretaryView_hidden": true,
+        "central_visivel": false,
+        "aba_supervisao_no_dom": false,
+        "aba_supervisao_visivel": false,
+        "sec_body_len": 0,
+        "menu_visivel": [],
+        "item_secretaria_visivel": false,
+        "supervisao_no_menu": false,
+        "chip_conta": "Responsável · 1 aluno",
+        "login_visivel": true
+      },
+      "s1": {
+        "tipo_setRole": "function",
+        "tipo_currentProfile": "object",
+        "papel_currentProfile": null,
+        "activeView": "parent",
+        "runtime_papel": null,
+        "runtime_activeView": "parent",
+        "tem_runtime": true,
+        "views_visiveis": [
+          "parentView"
+        ],
+        "secretaryView_hidden": true,
+        "central_visivel": false,
+        "aba_supervisao_no_dom": false,
+        "aba_supervisao_visivel": false,
+        "sec_body_len": 0,
+        "menu_visivel": [],
+        "item_secretaria_visivel": false,
+        "supervisao_no_menu": false,
+        "chip_conta": "Responsável · 1 aluno",
+        "login_visivel": true
+      },
+      "injecao": {
+        "escrito": true,
+        "leitura": "education_supervisor",
+        "currentUser": "ok"
+      },
+      "s2": {
+        "tipo_setRole": "function",
+        "tipo_currentProfile": "object",
+        "papel_currentProfile": "education_supervisor",
+        "activeView": "parent",
+        "runtime_papel": "education_supervisor",
+        "runtime_activeView": "parent",
+        "tem_runtime": true,
+        "views_visiveis": [
+          "parentView"
+        ],
+        "secretaryView_hidden": true,
+        "central_visivel": false,
+        "aba_supervisao_no_dom": false,
+        "aba_supervisao_visivel": false,
+        "sec_body_len": 0,
+        "menu_visivel": [],
+        "item_secretaria_visivel": false,
+        "supervisao_no_menu": false,
+        "chip_conta": "Responsável · 1 aluno",
+        "login_visivel": true
+      },
+      "s3": {
+        "tipo_setRole": "function",
+        "tipo_currentProfile": "object",
+        "papel_currentProfile": "education_supervisor",
+        "activeView": "parent",
+        "runtime_papel": "education_supervisor",
+        "runtime_activeView": "parent",
+        "tem_runtime": true,
+        "views_visiveis": [
+          "parentView"
+        ],
+        "secretaryView_hidden": true,
+        "central_visivel": false,
+        "aba_supervisao_no_dom": false,
+        "aba_supervisao_visivel": false,
+        "sec_body_len": 0,
+        "menu_visivel": [],
+        "item_secretaria_visivel": false,
+        "supervisao_no_menu": false,
+        "chip_conta": "Responsável · 1 aluno",
+        "login_visivel": true
+      },
+      "s4": {
+        "tipo_setRole": "function",
+        "tipo_currentProfile": "object",
+        "papel_currentProfile": "education_supervisor",
+        "activeView": "secretary",
+        "runtime_papel": "education_supervisor",
+        "runtime_activeView": "secretary",
+        "tem_runtime": true,
+        "views_visiveis": [
+          "secretaryView"
+        ],
+        "secretaryView_hidden": false,
+        "central_visivel": false,
+        "aba_supervisao_no_dom": true,
+        "aba_supervisao_visivel": false,
+        "sec_body_len": 1463,
+        "menu_visivel": [],
+        "item_secretaria_visivel": false,
+        "supervisao_no_menu": false,
+        "chip_conta": "Responsável · 1 aluno",
+        "login_visivel": true
+      },
+      "s5": {
+        "tipo_setRole": "function",
+        "tipo_currentProfile": "object",
+        "papel_currentProfile": "education_supervisor",
+        "activeView": "secretary",
+        "runtime_papel": "education_supervisor",
+        "runtime_activeView": "secretary",
+        "tem_runtime": true,
+        "views_visiveis": [
+          "secretaryView"
+        ],
+        "secretaryView_hidden": false,
+        "central_visivel": false,
+        "aba_supervisao_no_dom": true,
+        "aba_supervisao_visivel": false,
+        "sec_body_len": 1463,
+        "menu_visivel": [],
+        "item_secretaria_visivel": false,
+        "supervisao_no_menu": false,
+        "chip_conta": "Responsável · 1 aluno",
+        "login_visivel": true
+      },
+      "capturas": {
+        "apos_setRole_sup": {
+          "ficheiro": "rm17--base-apos-setrole-education-supervisor.png",
+          "bytes": 280468,
+          "md5": "5eb1d906a0621f57c66c590dee2bbc05"
+        },
+        "final": {
+          "ficheiro": "rm17--base-final.png",
+          "bytes": 280263,
+          "md5": "f4c7cc50994826fa0eca1e4f2a1ace59"
+        }
+      },
+      "rede": [
+        {
+          "metodo": "OPTIONS",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/bfr_coordination_threads",
+          "status": 200
+        },
+        {
+          "metodo": "OPTIONS",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/guardian_students",
+          "status": 200
+        },
+        {
+          "metodo": "GET",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/guardian_students",
+          "status": 400
+        },
+        {
+          "metodo": "GET",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/bfr_coordination_threads",
+          "status": 200
+        },
+        {
+          "metodo": "OPTIONS",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/classes",
+          "status": 200
+        },
+        {
+          "metodo": "OPTIONS",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/internal_chat_room_members",
+          "status": 200
+        },
+        {
+          "metodo": "OPTIONS",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/school_activities",
+          "status": 200
+        },
+        {
+          "metodo": "OPTIONS",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/secretary_requests",
+          "status": 200
+        },
+        {
+          "metodo": "OPTIONS",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/bfr_teacher_directory",
+          "status": 200
+        },
+        {
+          "metodo": "OPTIONS",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/classes",
+          "status": 200
+        },
+        {
+          "metodo": "OPTIONS",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/profiles",
+          "status": 200
+        },
+        {
+          "metodo": "OPTIONS",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/school_activities",
+          "status": 200
+        },
+        {
+          "metodo": "OPTIONS",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/projects",
+          "status": 200
+        },
+        {
+          "metodo": "OPTIONS",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/students",
+          "status": 200
+        },
+        {
+          "metodo": "OPTIONS",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/attendance",
+          "status": 200
+        },
+        {
+          "metodo": "OPTIONS",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/school_events",
+          "status": 200
+        },
+        {
+          "metodo": "OPTIONS",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/schools",
+          "status": 200
+        },
+        {
+          "metodo": "OPTIONS",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/learning_action_plans",
+          "status": 200
+        },
+        {
+          "metodo": "OPTIONS",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/student_school_profiles",
+          "status": 200
+        },
+        {
+          "metodo": "OPTIONS",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/school_documents",
+          "status": 200
+        },
+        {
+          "metodo": "OPTIONS",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/announcements",
+          "status": 200
+        },
+        {
+          "metodo": "OPTIONS",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/school_meetings",
+          "status": 200
+        },
+        {
+          "metodo": "OPTIONS",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/grades",
+          "status": 200
+        },
+        {
+          "metodo": "OPTIONS",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/school_events",
+          "status": 200
+        },
+        {
+          "metodo": "OPTIONS",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/announcements",
+          "status": 200
+        },
+        {
+          "metodo": "OPTIONS",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/announcements",
+          "status": 200
+        },
+        {
+          "metodo": "OPTIONS",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/school_events",
+          "status": 200
+        },
+        {
+          "metodo": "OPTIONS",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/supervision_requests",
+          "status": 200
+        },
+        {
+          "metodo": "OPTIONS",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/project_photos",
+          "status": 200
+        },
+        {
+          "metodo": "OPTIONS",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/secretary_profile_change_requests",
+          "status": 200
+        },
+        {
+          "metodo": "GET",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/bfr_coordination_threads",
+          "status": 200
+        },
+        {
+          "metodo": "GET",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/classes",
+          "status": 200
+        },
+        {
+          "metodo": "GET",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/internal_chat_room_members",
+          "status": 400
+        },
+        {
+          "metodo": "GET",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/school_activities",
+          "status": 200
+        },
+        {
+          "metodo": "GET",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/school_activities",
+          "status": 200
+        },
+        {
+          "metodo": "GET",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/announcements",
+          "status": 200
+        },
+        {
+          "metodo": "GET",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/school_events",
+          "status": 200
+        },
+        {
+          "metodo": "GET",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/secretary_profile_change_requests",
+          "status": 200
+        },
+        {
+          "metodo": "GET",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/grades",
+          "status": 401
+        },
+        {
+          "metodo": "GET",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/learning_action_plans",
+          "status": 200
+        },
+        {
+          "metodo": "GET",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/school_events",
+          "status": 200
+        },
+        {
+          "metodo": "GET",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/announcements",
+          "status": 200
+        },
+        {
+          "metodo": "GET",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/school_meetings",
+          "status": 200
+        },
+        {
+          "metodo": "GET",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/project_photos",
+          "status": 200
+        },
+        {
+          "metodo": "GET",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/school_documents",
+          "status": 200
+        },
+        {
+          "metodo": "GET",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/announcements",
+          "status": 200
+        },
+        {
+          "metodo": "GET",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/profiles",
+          "status": 200
+        },
+        {
+          "metodo": "GET",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/school_events",
+          "status": 200
+        },
+        {
+          "metodo": "GET",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/projects",
+          "status": 200
+        },
+        {
+          "metodo": "GET",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/student_school_profiles",
+          "status": 200
+        },
+        {
+          "metodo": "GET",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/classes",
+          "status": 200
+        },
+        {
+          "metodo": "GET",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/students",
+          "status": 200
+        },
+        {
+          "metodo": "GET",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/attendance",
+          "status": 401
+        },
+        {
+          "metodo": "GET",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/bfr_teacher_directory",
+          "status": 200
+        },
+        {
+          "metodo": "GET",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/schools",
+          "status": 401
+        },
+        {
+          "metodo": "GET",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/supervision_requests",
+          "status": 401
+        },
+        {
+          "metodo": "GET",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/secretary_requests",
+          "status": 200
+        },
+        {
+          "metodo": "OPTIONS",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/school_notification_reads",
+          "status": 200
+        },
+        {
+          "metodo": "OPTIONS",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/project_results",
+          "status": 200
+        },
+        {
+          "metodo": "GET",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/project_results",
+          "status": 200
+        },
+        {
+          "metodo": "GET",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/school_notification_reads",
+          "status": 400
+        }
+      ],
+      "rede_apos_gatilho": [
+        {
+          "metodo": "OPTIONS",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/bfr_coordination_threads",
+          "status": 200
+        },
+        {
+          "metodo": "OPTIONS",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/guardian_students",
+          "status": 200
+        },
+        {
+          "metodo": "GET",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/guardian_students",
+          "status": 400
+        },
+        {
+          "metodo": "GET",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/bfr_coordination_threads",
+          "status": 200
+        },
+        {
+          "metodo": "OPTIONS",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/classes",
+          "status": 200
+        },
+        {
+          "metodo": "OPTIONS",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/internal_chat_room_members",
+          "status": 200
+        },
+        {
+          "metodo": "OPTIONS",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/school_activities",
+          "status": 200
+        },
+        {
+          "metodo": "OPTIONS",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/secretary_requests",
+          "status": 200
+        },
+        {
+          "metodo": "OPTIONS",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/bfr_teacher_directory",
+          "status": 200
+        },
+        {
+          "metodo": "OPTIONS",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/classes",
+          "status": 200
+        },
+        {
+          "metodo": "OPTIONS",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/profiles",
+          "status": 200
+        },
+        {
+          "metodo": "OPTIONS",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/school_activities",
+          "status": 200
+        },
+        {
+          "metodo": "OPTIONS",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/projects",
+          "status": 200
+        },
+        {
+          "metodo": "OPTIONS",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/students",
+          "status": 200
+        },
+        {
+          "metodo": "OPTIONS",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/attendance",
+          "status": 200
+        },
+        {
+          "metodo": "OPTIONS",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/school_events",
+          "status": 200
+        },
+        {
+          "metodo": "OPTIONS",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/schools",
+          "status": 200
+        },
+        {
+          "metodo": "OPTIONS",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/learning_action_plans",
+          "status": 200
+        },
+        {
+          "metodo": "OPTIONS",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/student_school_profiles",
+          "status": 200
+        },
+        {
+          "metodo": "OPTIONS",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/school_documents",
+          "status": 200
+        },
+        {
+          "metodo": "OPTIONS",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/announcements",
+          "status": 200
+        },
+        {
+          "metodo": "OPTIONS",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/school_meetings",
+          "status": 200
+        },
+        {
+          "metodo": "OPTIONS",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/grades",
+          "status": 200
+        },
+        {
+          "metodo": "OPTIONS",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/school_events",
+          "status": 200
+        },
+        {
+          "metodo": "OPTIONS",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/announcements",
+          "status": 200
+        },
+        {
+          "metodo": "OPTIONS",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/announcements",
+          "status": 200
+        },
+        {
+          "metodo": "OPTIONS",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/school_events",
+          "status": 200
+        },
+        {
+          "metodo": "OPTIONS",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/supervision_requests",
+          "status": 200
+        },
+        {
+          "metodo": "OPTIONS",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/project_photos",
+          "status": 200
+        },
+        {
+          "metodo": "OPTIONS",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/secretary_profile_change_requests",
+          "status": 200
+        },
+        {
+          "metodo": "GET",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/bfr_coordination_threads",
+          "status": 200
+        },
+        {
+          "metodo": "GET",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/classes",
+          "status": 200
+        },
+        {
+          "metodo": "GET",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/internal_chat_room_members",
+          "status": 400
+        },
+        {
+          "metodo": "GET",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/school_activities",
+          "status": 200
+        },
+        {
+          "metodo": "GET",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/school_activities",
+          "status": 200
+        },
+        {
+          "metodo": "GET",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/announcements",
+          "status": 200
+        },
+        {
+          "metodo": "GET",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/school_events",
+          "status": 200
+        },
+        {
+          "metodo": "GET",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/secretary_profile_change_requests",
+          "status": 200
+        },
+        {
+          "metodo": "GET",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/grades",
+          "status": 401
+        },
+        {
+          "metodo": "GET",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/learning_action_plans",
+          "status": 200
+        },
+        {
+          "metodo": "GET",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/school_events",
+          "status": 200
+        },
+        {
+          "metodo": "GET",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/announcements",
+          "status": 200
+        },
+        {
+          "metodo": "GET",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/school_meetings",
+          "status": 200
+        },
+        {
+          "metodo": "GET",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/project_photos",
+          "status": 200
+        },
+        {
+          "metodo": "GET",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/school_documents",
+          "status": 200
+        },
+        {
+          "metodo": "GET",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/announcements",
+          "status": 200
+        },
+        {
+          "metodo": "GET",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/profiles",
+          "status": 200
+        },
+        {
+          "metodo": "GET",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/school_events",
+          "status": 200
+        },
+        {
+          "metodo": "GET",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/projects",
+          "status": 200
+        },
+        {
+          "metodo": "GET",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/student_school_profiles",
+          "status": 200
+        },
+        {
+          "metodo": "GET",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/classes",
+          "status": 200
+        },
+        {
+          "metodo": "GET",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/students",
+          "status": 200
+        },
+        {
+          "metodo": "GET",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/attendance",
+          "status": 401
+        },
+        {
+          "metodo": "GET",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/bfr_teacher_directory",
+          "status": 200
+        },
+        {
+          "metodo": "GET",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/schools",
+          "status": 401
+        },
+        {
+          "metodo": "GET",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/supervision_requests",
+          "status": 401
+        },
+        {
+          "metodo": "GET",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/secretary_requests",
+          "status": 200
+        },
+        {
+          "metodo": "OPTIONS",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/school_notification_reads",
+          "status": 200
+        },
+        {
+          "metodo": "OPTIONS",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/project_results",
+          "status": 200
+        },
+        {
+          "metodo": "GET",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/project_results",
+          "status": 200
+        },
+        {
+          "metodo": "GET",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/school_notification_reads",
+          "status": 400
+        }
+      ],
+      "erros_console": [],
+      "excecoes": [],
+      "log_erros": [
+        "Failed to load resource: the server responded with a status of 404 (Not Found)",
+        "Manifest fetch from http://127.0.0.1:8261/manifest.json failed, code 404",
+        "Failed to load resource: the server responded with a status of 404 (Not Found)",
+        "Failed to load resource: the server responded with a status of 404 (Not Found)",
+        "A bad HTTP response code (404) was received when fetching the script.",
+        "Failed to load resource: the server responded with a status of 404 (Not Found)",
+        "Failed to load resource: the server responded with a status of 404 (Not Found)",
+        "Failed to load resource: the server responded with a status of 404 (Not Found)",
+        "Failed to load resource: the server responded with a status of 404 (Not Found)",
+        "Failed to load resource: the server responded with a status of 404 (Not Found)",
+        "Failed to load resource: the server responded with a status of 404 (Not Found)",
+        "Failed to load resource: the server responded with a status of 404 (Not Found)",
+        "Manifest fetch from http://127.0.0.1:8261/manifest.json failed, code 404",
+        "Failed to load resource: the server responded with a status of 404 (Not Found)",
+        "Failed to load resource: the server responded with a status of 404 (Not Found)",
+        "Failed to load resource: the server responded with a status of 404 (Not Found)",
+        "Failed to load resource: the server responded with a status of 404 (Not Found)",
+        "Failed to load resource: the server responded with a status of 404 (Not Found)",
+        "Failed to load resource: the server responded with a status of 404 (Not Found)",
+        "Failed to load resource: the server responded with a status of 404 (Not Found)"
+      ]
+    },
+    "cand": {
+      "nome": "candidata v120",
+      "url": "http://127.0.0.1:8262/",
+      "md5_servido": "a9a76d0e338c2a539135bccce23111b4",
+      "bytes_servidos": 3489649,
+      "passos": {
+        "ms_login": 343,
+        "sw_controller": false,
+        "gatilho": "clicado",
+        "ms_core": 8,
+        "modules": "pronto",
+        "ms_runtime": 2,
+        "setRole_sup": "ok",
+        "setRole_sec": "ok",
+        "setRole_sup2": "ok"
+      },
+      "s0": {
+        "tipo_setRole": "undefined",
+        "tipo_currentProfile": "undefined",
+        "papel_currentProfile": null,
+        "activeView": null,
+        "runtime_papel": null,
+        "runtime_activeView": null,
+        "tem_runtime": false,
+        "views_visiveis": [
+          "parentView"
+        ],
+        "secretaryView_hidden": true,
+        "central_visivel": false,
+        "aba_supervisao_no_dom": false,
+        "aba_supervisao_visivel": false,
+        "sec_body_len": 0,
+        "menu_visivel": [],
+        "item_secretaria_visivel": false,
+        "supervisao_no_menu": false,
+        "chip_conta": "Responsável · 1 aluno",
+        "login_visivel": true
+      },
+      "s1": {
+        "tipo_setRole": "function",
+        "tipo_currentProfile": "object",
+        "papel_currentProfile": null,
+        "activeView": "parent",
+        "runtime_papel": null,
+        "runtime_activeView": "parent",
+        "tem_runtime": true,
+        "views_visiveis": [
+          "parentView"
+        ],
+        "secretaryView_hidden": true,
+        "central_visivel": false,
+        "aba_supervisao_no_dom": false,
+        "aba_supervisao_visivel": false,
+        "sec_body_len": 0,
+        "menu_visivel": [],
+        "item_secretaria_visivel": false,
+        "supervisao_no_menu": false,
+        "chip_conta": "Responsável · 1 aluno",
+        "login_visivel": true
+      },
+      "injecao": {
+        "escrito": true,
+        "leitura": "education_supervisor",
+        "currentUser": "ok"
+      },
+      "s2": {
+        "tipo_setRole": "function",
+        "tipo_currentProfile": "object",
+        "papel_currentProfile": "education_supervisor",
+        "activeView": "parent",
+        "runtime_papel": "education_supervisor",
+        "runtime_activeView": "parent",
+        "tem_runtime": true,
+        "views_visiveis": [
+          "parentView"
+        ],
+        "secretaryView_hidden": true,
+        "central_visivel": false,
+        "aba_supervisao_no_dom": false,
+        "aba_supervisao_visivel": false,
+        "sec_body_len": 0,
+        "menu_visivel": [],
+        "item_secretaria_visivel": false,
+        "supervisao_no_menu": false,
+        "chip_conta": "Responsável · 1 aluno",
+        "login_visivel": true
+      },
+      "s3": {
+        "tipo_setRole": "function",
+        "tipo_currentProfile": "object",
+        "papel_currentProfile": "education_supervisor",
+        "activeView": "education_supervisor",
+        "runtime_papel": "education_supervisor",
+        "runtime_activeView": "education_supervisor",
+        "tem_runtime": true,
+        "views_visiveis": [
+          "secretaryView"
+        ],
+        "secretaryView_hidden": false,
+        "central_visivel": false,
+        "aba_supervisao_no_dom": true,
+        "aba_supervisao_visivel": false,
+        "sec_body_len": 1463,
+        "menu_visivel": [],
+        "item_secretaria_visivel": false,
+        "supervisao_no_menu": false,
+        "chip_conta": "Responsável · 1 aluno",
+        "login_visivel": true
+      },
+      "s4": {
+        "tipo_setRole": "function",
+        "tipo_currentProfile": "object",
+        "papel_currentProfile": "education_supervisor",
+        "activeView": "secretary",
+        "runtime_papel": "education_supervisor",
+        "runtime_activeView": "secretary",
+        "tem_runtime": true,
+        "views_visiveis": [
+          "secretaryView"
+        ],
+        "secretaryView_hidden": false,
+        "central_visivel": false,
+        "aba_supervisao_no_dom": true,
+        "aba_supervisao_visivel": false,
+        "sec_body_len": 1463,
+        "menu_visivel": [],
+        "item_secretaria_visivel": false,
+        "supervisao_no_menu": false,
+        "chip_conta": "Responsável · 1 aluno",
+        "login_visivel": true
+      },
+      "s5": {
+        "tipo_setRole": "function",
+        "tipo_currentProfile": "object",
+        "papel_currentProfile": "education_supervisor",
+        "activeView": "education_supervisor",
+        "runtime_papel": "education_supervisor",
+        "runtime_activeView": "education_supervisor",
+        "tem_runtime": true,
+        "views_visiveis": [
+          "secretaryView"
+        ],
+        "secretaryView_hidden": false,
+        "central_visivel": false,
+        "aba_supervisao_no_dom": true,
+        "aba_supervisao_visivel": false,
+        "sec_body_len": 1463,
+        "menu_visivel": [],
+        "item_secretaria_visivel": false,
+        "supervisao_no_menu": false,
+        "chip_conta": "Responsável · 1 aluno",
+        "login_visivel": true
+      },
+      "capturas": {
+        "apos_setRole_sup": {
+          "ficheiro": "rm17--cand-apos-setrole-education-supervisor.png",
+          "bytes": 280696,
+          "md5": "0ee485bfd461f7fbf9dc2b59b002f2a8"
+        },
+        "final": {
+          "ficheiro": "rm17--cand-final.png",
+          "bytes": 280505,
+          "md5": "a289d372ba9afa4accac346920d2375f"
+        }
+      },
+      "rede": [
+        {
+          "metodo": "OPTIONS",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/classes",
+          "status": 200
+        },
+        {
+          "metodo": "OPTIONS",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/project_photos",
+          "status": 200
+        },
+        {
+          "metodo": "OPTIONS",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/school_activities",
+          "status": 200
+        },
+        {
+          "metodo": "OPTIONS",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/projects",
+          "status": 200
+        },
+        {
+          "metodo": "OPTIONS",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/school_events",
+          "status": 200
+        },
+        {
+          "metodo": "OPTIONS",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/school_events",
+          "status": 200
+        },
+        {
+          "metodo": "OPTIONS",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/profiles",
+          "status": 200
+        },
+        {
+          "metodo": "OPTIONS",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/classes",
+          "status": 200
+        },
+        {
+          "metodo": "OPTIONS",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/attendance",
+          "status": 200
+        },
+        {
+          "metodo": "OPTIONS",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/secretary_profile_change_requests",
+          "status": 200
+        },
+        {
+          "metodo": "OPTIONS",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/secretary_requests",
+          "status": 200
+        },
+        {
+          "metodo": "OPTIONS",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/announcements",
+          "status": 200
+        },
+        {
+          "metodo": "OPTIONS",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/bfr_coordination_threads",
+          "status": 200
+        },
+        {
+          "metodo": "OPTIONS",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/students",
+          "status": 200
+        },
+        {
+          "metodo": "OPTIONS",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/announcements",
+          "status": 200
+        },
+        {
+          "metodo": "OPTIONS",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/grades",
+          "status": 200
+        },
+        {
+          "metodo": "OPTIONS",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/learning_action_plans",
+          "status": 200
+        },
+        {
+          "metodo": "OPTIONS",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/bfr_teacher_directory",
+          "status": 200
+        },
+        {
+          "metodo": "OPTIONS",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/school_meetings",
+          "status": 200
+        },
+        {
+          "metodo": "OPTIONS",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/school_activities",
+          "status": 200
+        },
+        {
+          "metodo": "OPTIONS",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/student_school_profiles",
+          "status": 200
+        },
+        {
+          "metodo": "OPTIONS",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/schools",
+          "status": 200
+        },
+        {
+          "metodo": "OPTIONS",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/supervision_requests",
+          "status": 200
+        },
+        {
+          "metodo": "OPTIONS",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/announcements",
+          "status": 200
+        },
+        {
+          "metodo": "OPTIONS",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/school_events",
+          "status": 200
+        },
+        {
+          "metodo": "OPTIONS",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/school_documents",
+          "status": 200
+        },
+        {
+          "metodo": "GET",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/classes",
+          "status": 200
+        },
+        {
+          "metodo": "GET",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/projects",
+          "status": 200
+        },
+        {
+          "metodo": "GET",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/profiles",
+          "status": 200
+        },
+        {
+          "metodo": "GET",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/school_activities",
+          "status": 200
+        },
+        {
+          "metodo": "GET",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/supervision_requests",
+          "status": 401
+        },
+        {
+          "metodo": "GET",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/attendance",
+          "status": 401
+        },
+        {
+          "metodo": "GET",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/schools",
+          "status": 401
+        },
+        {
+          "metodo": "GET",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/student_school_profiles",
+          "status": 200
+        },
+        {
+          "metodo": "GET",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/school_documents",
+          "status": 200
+        },
+        {
+          "metodo": "GET",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/bfr_coordination_threads",
+          "status": 200
+        },
+        {
+          "metodo": "GET",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/secretary_requests",
+          "status": 200
+        },
+        {
+          "metodo": "GET",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/announcements",
+          "status": 200
+        },
+        {
+          "metodo": "GET",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/school_activities",
+          "status": 200
+        },
+        {
+          "metodo": "GET",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/school_events",
+          "status": 200
+        },
+        {
+          "metodo": "GET",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/project_photos",
+          "status": 200
+        },
+        {
+          "metodo": "GET",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/school_events",
+          "status": 200
+        },
+        {
+          "metodo": "GET",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/school_meetings",
+          "status": 200
+        },
+        {
+          "metodo": "GET",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/announcements",
+          "status": 200
+        },
+        {
+          "metodo": "GET",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/grades",
+          "status": 401
+        },
+        {
+          "metodo": "GET",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/announcements",
+          "status": 200
+        },
+        {
+          "metodo": "GET",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/classes",
+          "status": 200
+        },
+        {
+          "metodo": "GET",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/students",
+          "status": 200
+        },
+        {
+          "metodo": "GET",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/secretary_profile_change_requests",
+          "status": 200
+        },
+        {
+          "metodo": "GET",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/school_events",
+          "status": 200
+        },
+        {
+          "metodo": "GET",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/bfr_teacher_directory",
+          "status": 200
+        },
+        {
+          "metodo": "GET",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/learning_action_plans",
+          "status": 200
+        },
+        {
+          "metodo": "OPTIONS",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/project_results",
+          "status": 200
+        },
+        {
+          "metodo": "OPTIONS",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/school_notification_reads",
+          "status": 200
+        },
+        {
+          "metodo": "GET",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/school_notification_reads",
+          "status": 400
+        },
+        {
+          "metodo": "GET",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/project_results",
+          "status": 200
+        },
+        {
+          "metodo": "OPTIONS",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/internal_chat_room_members",
+          "status": 200
+        },
+        {
+          "metodo": "OPTIONS",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/school_events",
+          "status": 200
+        },
+        {
+          "metodo": "GET",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/announcements",
+          "status": 200
+        },
+        {
+          "metodo": "GET",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/internal_chat_room_members",
+          "status": 400
+        },
+        {
+          "metodo": "GET",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/school_events",
+          "status": 200
+        },
+        {
+          "metodo": "OPTIONS",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/school_events",
+          "status": 200
+        },
+        {
+          "metodo": "GET",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/announcements",
+          "status": 200
+        },
+        {
+          "metodo": "GET",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/school_events",
+          "status": 200
+        }
+      ],
+      "rede_apos_gatilho": [
+        {
+          "metodo": "OPTIONS",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/classes",
+          "status": 200
+        },
+        {
+          "metodo": "OPTIONS",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/project_photos",
+          "status": 200
+        },
+        {
+          "metodo": "OPTIONS",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/school_activities",
+          "status": 200
+        },
+        {
+          "metodo": "OPTIONS",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/projects",
+          "status": 200
+        },
+        {
+          "metodo": "OPTIONS",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/school_events",
+          "status": 200
+        },
+        {
+          "metodo": "OPTIONS",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/school_events",
+          "status": 200
+        },
+        {
+          "metodo": "OPTIONS",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/profiles",
+          "status": 200
+        },
+        {
+          "metodo": "OPTIONS",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/classes",
+          "status": 200
+        },
+        {
+          "metodo": "OPTIONS",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/attendance",
+          "status": 200
+        },
+        {
+          "metodo": "OPTIONS",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/secretary_profile_change_requests",
+          "status": 200
+        },
+        {
+          "metodo": "OPTIONS",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/secretary_requests",
+          "status": 200
+        },
+        {
+          "metodo": "OPTIONS",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/announcements",
+          "status": 200
+        },
+        {
+          "metodo": "OPTIONS",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/bfr_coordination_threads",
+          "status": 200
+        },
+        {
+          "metodo": "OPTIONS",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/students",
+          "status": 200
+        },
+        {
+          "metodo": "OPTIONS",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/announcements",
+          "status": 200
+        },
+        {
+          "metodo": "OPTIONS",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/grades",
+          "status": 200
+        },
+        {
+          "metodo": "OPTIONS",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/learning_action_plans",
+          "status": 200
+        },
+        {
+          "metodo": "OPTIONS",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/bfr_teacher_directory",
+          "status": 200
+        },
+        {
+          "metodo": "OPTIONS",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/school_meetings",
+          "status": 200
+        },
+        {
+          "metodo": "OPTIONS",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/school_activities",
+          "status": 200
+        },
+        {
+          "metodo": "OPTIONS",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/student_school_profiles",
+          "status": 200
+        },
+        {
+          "metodo": "OPTIONS",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/schools",
+          "status": 200
+        },
+        {
+          "metodo": "OPTIONS",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/supervision_requests",
+          "status": 200
+        },
+        {
+          "metodo": "OPTIONS",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/announcements",
+          "status": 200
+        },
+        {
+          "metodo": "OPTIONS",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/school_events",
+          "status": 200
+        },
+        {
+          "metodo": "OPTIONS",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/school_documents",
+          "status": 200
+        },
+        {
+          "metodo": "GET",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/classes",
+          "status": 200
+        },
+        {
+          "metodo": "GET",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/projects",
+          "status": 200
+        },
+        {
+          "metodo": "GET",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/profiles",
+          "status": 200
+        },
+        {
+          "metodo": "GET",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/school_activities",
+          "status": 200
+        },
+        {
+          "metodo": "GET",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/supervision_requests",
+          "status": 401
+        },
+        {
+          "metodo": "GET",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/attendance",
+          "status": 401
+        },
+        {
+          "metodo": "GET",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/schools",
+          "status": 401
+        },
+        {
+          "metodo": "GET",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/student_school_profiles",
+          "status": 200
+        },
+        {
+          "metodo": "GET",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/school_documents",
+          "status": 200
+        },
+        {
+          "metodo": "GET",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/bfr_coordination_threads",
+          "status": 200
+        },
+        {
+          "metodo": "GET",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/secretary_requests",
+          "status": 200
+        },
+        {
+          "metodo": "GET",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/announcements",
+          "status": 200
+        },
+        {
+          "metodo": "GET",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/school_activities",
+          "status": 200
+        },
+        {
+          "metodo": "GET",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/school_events",
+          "status": 200
+        },
+        {
+          "metodo": "GET",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/project_photos",
+          "status": 200
+        },
+        {
+          "metodo": "GET",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/school_events",
+          "status": 200
+        },
+        {
+          "metodo": "GET",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/school_meetings",
+          "status": 200
+        },
+        {
+          "metodo": "GET",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/announcements",
+          "status": 200
+        },
+        {
+          "metodo": "GET",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/grades",
+          "status": 401
+        },
+        {
+          "metodo": "GET",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/announcements",
+          "status": 200
+        },
+        {
+          "metodo": "GET",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/classes",
+          "status": 200
+        },
+        {
+          "metodo": "GET",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/students",
+          "status": 200
+        },
+        {
+          "metodo": "GET",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/secretary_profile_change_requests",
+          "status": 200
+        },
+        {
+          "metodo": "GET",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/school_events",
+          "status": 200
+        },
+        {
+          "metodo": "GET",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/bfr_teacher_directory",
+          "status": 200
+        },
+        {
+          "metodo": "GET",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/learning_action_plans",
+          "status": 200
+        },
+        {
+          "metodo": "OPTIONS",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/project_results",
+          "status": 200
+        },
+        {
+          "metodo": "OPTIONS",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/school_notification_reads",
+          "status": 200
+        },
+        {
+          "metodo": "GET",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/school_notification_reads",
+          "status": 400
+        },
+        {
+          "metodo": "GET",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/project_results",
+          "status": 200
+        },
+        {
+          "metodo": "OPTIONS",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/internal_chat_room_members",
+          "status": 200
+        },
+        {
+          "metodo": "OPTIONS",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/school_events",
+          "status": 200
+        },
+        {
+          "metodo": "GET",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/announcements",
+          "status": 200
+        },
+        {
+          "metodo": "GET",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/internal_chat_room_members",
+          "status": 400
+        },
+        {
+          "metodo": "GET",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/school_events",
+          "status": 200
+        },
+        {
+          "metodo": "OPTIONS",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/school_events",
+          "status": 200
+        },
+        {
+          "metodo": "GET",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/announcements",
+          "status": 200
+        },
+        {
+          "metodo": "GET",
+          "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/school_events",
+          "status": 200
+        }
+      ],
+      "erros_console": [],
+      "excecoes": [],
+      "log_erros": [
+        "Failed to load resource: the server responded with a status of 404 (Not Found)",
+        "Failed to load resource: the server responded with a status of 404 (Not Found)",
+        "Manifest fetch from http://127.0.0.1:8262/manifest.json failed, code 404",
+        "Failed to load resource: the server responded with a status of 404 (Not Found)",
+        "A bad HTTP response code (404) was received when fetching the script.",
+        "Failed to load resource: the server responded with a status of 404 (Not Found)",
+        "Failed to load resource: the server responded with a status of 404 (Not Found)",
+        "Failed to load resource: the server responded with a status of 404 (Not Found)",
+        "Failed to load resource: the server responded with a status of 404 (Not Found)",
+        "Failed to load resource: the server responded with a status of 404 (Not Found)",
+        "Failed to load resource: the server responded with a status of 404 (Not Found)",
+        "Manifest fetch from http://127.0.0.1:8262/manifest.json failed, code 404",
+        "Failed to load resource: the server responded with a status of 404 (Not Found)",
+        "Failed to load resource: the server responded with a status of 404 (Not Found)",
+        "Failed to load resource: the server responded with a status of 404 (Not Found)",
+        "Failed to load resource: the server responded with a status of 404 (Not Found)",
+        "Failed to load resource: the server responded with a status of 404 (Not Found)",
+        "Failed to load resource: the server responded with a status of 404 (Not Found)",
+        "Failed to load resource: the server responded with a status of 404 (Not Found)",
+        "Failed to load resource: the server responded with a status of 404 (Not Found)"
+      ]
+    }
+  },
+  "diferencial": {
+    "activeView": {
+      "base": "parent",
+      "cand": "education_supervisor"
+    },
+    "secretaryView_hidden": {
+      "base": true,
+      "cand": false
+    },
+    "aba_supervisao_no_dom": {
+      "base": false,
+      "cand": true
+    },
+    "views_visiveis": {
+      "base": [
+        "parentView"
+      ],
+      "cand": [
+        "secretaryView"
+      ]
+    }
+  },
+  "decisao_h4_h5": {
+    "menu_visivel": {
+      "base": [],
+      "cand": []
+    },
+    "item_secretaria_visivel": {
+      "base": false,
+      "cand": false
+    },
+    "supervisao_no_menu": {
+      "base": false,
+      "cand": false
+    },
+    "chip_conta": {
+      "base": "Responsável · 1 aluno",
+      "cand": "Responsável · 1 aluno"
+    },
+    "rede_anonima_cand": [
+      {
+        "metodo": "OPTIONS",
+        "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/classes",
+        "status": 200
+      },
+      {
+        "metodo": "OPTIONS",
+        "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/project_photos",
+        "status": 200
+      },
+      {
+        "metodo": "OPTIONS",
+        "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/school_activities",
+        "status": 200
+      },
+      {
+        "metodo": "OPTIONS",
+        "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/projects",
+        "status": 200
+      },
+      {
+        "metodo": "OPTIONS",
+        "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/school_events",
+        "status": 200
+      },
+      {
+        "metodo": "OPTIONS",
+        "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/school_events",
+        "status": 200
+      },
+      {
+        "metodo": "OPTIONS",
+        "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/profiles",
+        "status": 200
+      },
+      {
+        "metodo": "OPTIONS",
+        "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/classes",
+        "status": 200
+      },
+      {
+        "metodo": "OPTIONS",
+        "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/attendance",
+        "status": 200
+      },
+      {
+        "metodo": "OPTIONS",
+        "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/secretary_profile_change_requests",
+        "status": 200
+      },
+      {
+        "metodo": "OPTIONS",
+        "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/secretary_requests",
+        "status": 200
+      },
+      {
+        "metodo": "OPTIONS",
+        "url": "https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/announcements",
+        "status": 200
+      }
+    ]
+  },
+  "veredito": "RM17_BANCADA_1_FALHAS",
+  "portoes": 27,
+  "falhas": [
+    "cand central da Secretaria visivel | dado=false | esperado=true"
+  ],
+  "interrompida": "veredito=RM17_BANCADA_1_FALHAS portoes=27"
+}

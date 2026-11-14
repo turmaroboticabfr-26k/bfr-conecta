@@ -1,0 +1,180 @@
+{
+  "kind": "v120-preflight-deploy",
+  "ts": "2026-11-13T06:49:18.890Z",
+  "target": "https://bfr-conecta.turmaroboticabfr.workers.dev",
+  "published": false,
+  "expected": {
+    "workerMd5": "bc1f88ebed10660e56eac3f983159bad",
+    "workerBytes": 3550890,
+    "swMd5": "289f1f1dc82a2eb2e091994916af3e97",
+    "swBytes": 3586,
+    "htmlMd5": "a9a76d0e338c2a539135bccce23111b4",
+    "htmlBytes": 3489649,
+    "cacheLabel": "bfr-conecta-v120",
+    "baseWorkerMd5": "c41eef045d0110124e55d28304a99898",
+    "baseWorkerBytes": 3550715,
+    "arHtmlMd5": "a1969cdf023042e7d2a91e7ed9333a05",
+    "arHtmlBytes": 3489474,
+    "arSwMd5": "46dfdebbecd3da5f0794f85276179b76",
+    "arSwBytes": 3586
+  },
+  "air": {
+    "htmlBytes": 3489474,
+    "htmlMd5": "a1969cdf023042e7d2a91e7ed9333a05",
+    "swBytes": 3586,
+    "swMd5": "46dfdebbecd3da5f0794f85276179b76",
+    "swCacheLabel": "bfr-conecta-v119",
+    "headers": {
+      "alt-svc": "h3=\":443\"; ma=86400",
+      "cache-control": "max-age=0, no-cache, no-store",
+      "cf-ray": "a59bd5be2de1210d-GIG",
+      "connection": "keep-alive",
+      "content-encoding": "br",
+      "content-security-policy": "default-src 'self'; base-uri 'self'; object-src 'none'; script-src 'self' 'unsafe-inline' https://bfr-conecta.turmaroboticabfr.workers.dev https://cdn.jsdelivr.net https://static.cloudflareinsights.com https://www.gstatic.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: blob: https:; connect-src 'self' https://bfr-conecta.turmaroboticabfr.workers.dev https://*.supabase.co wss://*.supabase.co https://cloudflareinsights.com https://*.cloudflareinsights.com https://*.googleapis.com https://fcm.googleapis.com https://api.open-meteo.com; worker-src 'self' blob:; manifest-src 'self'; form-action 'self' https://accounts.google.com https://*.supabase.co",
+      "content-type": "text/html; charset=utf-8",
+      "date": "Fri, 13 Nov 2026 06:49:10 GMT",
+      "nel": "{\"report_to\":\"cf-nel\",\"success_fraction\":0.0,\"max_age\":604800}",
+      "referrer-policy": "strict-origin-when-cross-origin",
+      "report-to": "{\"group\":\"cf-nel\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://a.nel.cloudflare.com/report/v4?s=szCYDJERGWYppii1tW25qjbAaqYSf5OB93z5%2B6xIiAIsEFrv258bXrBh3q7KgvGSY6wHfX9VKgc5rk8mj4Xi8F0sJdMg281hKHgRPdRDAVqWs5OGKBWCXhCRX9n79qH0dJ1qtvtBte%2FPXFfX7uq2g8G2eXKeN0LKsC7hYXIQdyg3xoXUkv4s\"}]}",
+      "server": "cloudflare",
+      "strict-transport-security": "max-age=31536000",
+      "transfer-encoding": "chunked",
+      "x-content-type-options": "nosniff"
+    }
+  },
+  "gates": [
+    {
+      "name": "ar_http_200",
+      "ok": true,
+      "detail": "GET / -> 200"
+    },
+    {
+      "name": "ar_html_regua_v119",
+      "ok": true,
+      "detail": "ar 3489474 B md5 a1969cdf023042e7d2a91e7ed9333a05 | regua 3489474 B md5 a1969cdf023042e7d2a91e7ed9333a05"
+    },
+    {
+      "name": "ar_token_pen31_regra_v119",
+      "ok": true,
+      "detail": "novo=1 velho=0 (PEN-31 continua corrigida no ar)"
+    },
+    {
+      "name": "ar_sw_regua_v119",
+      "ok": true,
+      "detail": "/sw-v4.js 3586 B md5 46dfdebbecd3da5f0794f85276179b76 CACHE=bfr-conecta-v119"
+    },
+    {
+      "name": "ar_sw_legada_identica",
+      "ok": true,
+      "detail": "/sw.js 3586 B md5 46dfdebbecd3da5f0794f85276179b76"
+    },
+    {
+      "name": "ar_csp_so_no_shell",
+      "ok": true,
+      "detail": "shell tem [content-security-policy, x-content-type-options, referrer-policy, strict-transport-security]; /sw-v4.js tem [nenhum]"
+    },
+    {
+      "name": "ar_csp_header_e_meta_alinhados",
+      "ok": true,
+      "detail": "header 742 chars, meta 742 chars, conjunto de directivas identico=true"
+    },
+    {
+      "name": "worker_v119_intacto",
+      "ok": true,
+      "detail": "worker-deploy-v119 3550715 B md5 c41eef045d0110124e55d28304a99898 (publicado no ar)"
+    },
+    {
+      "name": "worker_v120_intacto",
+      "ok": true,
+      "detail": "worker-deploy-v120/worker.mjs 3550890 B md5 bc1f88ebed10660e56eac3f983159bad | esperado 3550890 B md5 bc1f88ebed10660e56eac3f983159bad"
+    },
+    {
+      "name": "candidata_intacta",
+      "ok": true,
+      "detail": "candidata v120 3489649 B md5 a9a76d0e338c2a539135bccce23111b4"
+    },
+    {
+      "name": "embeds_localizados",
+      "ok": true,
+      "detail": "HTML base@4446 novo@4446; SW base@759 novo@759"
+    },
+    {
+      "name": "html_embutido_igual_candidata",
+      "ok": true,
+      "detail": "embutido v120 3489649 B md5 a9a76d0e338c2a539135bccce23111b4 == candidata texto=true"
+    },
+    {
+      "name": "html_embutido_do_base_igual_ar",
+      "ok": true,
+      "detail": "HTML embutido no worker v119 == ar servido agora: true"
+    },
+    {
+      "name": "tokens_do_html_embutido",
+      "ok": true,
+      "detail": "novo=1 velho=0 (PEN-31 preservada na v120)"
+    },
+    {
+      "name": "hunk_H1",
+      "ok": true,
+      "detail": "embutido v120: novo=1 velho=0 | embutido v119: novo=0 velho=1"
+    },
+    {
+      "name": "hunk_H2",
+      "ok": true,
+      "detail": "embutido v120: novo=1 velho=0 | embutido v119: novo=0 velho=1"
+    },
+    {
+      "name": "hunk_H3",
+      "ok": true,
+      "detail": "embutido v120: novo=1 velho=0 | embutido v119: novo=0 velho=1"
+    },
+    {
+      "name": "linhagem_reversa_dos_3_hunks",
+      "ok": true,
+      "detail": "v120 - 3 hunks (inverso) == v119 embutido: true"
+    },
+    {
+      "name": "sw_embutido_v120",
+      "ok": true,
+      "detail": "SW embutido 3586 B md5 289f1f1dc82a2eb2e091994916af3e97 CACHE=bfr-conecta-v120"
+    },
+    {
+      "name": "sw_so_mudou_etiqueta",
+      "ok": true,
+      "detail": "etiqueta v120=1, v119=0; revertido o label bate com o SW do ar=true"
+    },
+    {
+      "name": "segmentos_localizados",
+      "ok": true,
+      "detail": "ordem no worker: const SW = \" -> const HTML = (base igual=true)"
+    },
+    {
+      "name": "fora_dos_embeds_byte_identico",
+      "ok": true,
+      "detail": "prefijo 759 chars, meio 2 chars, cauda 1177 chars — iguais ao worker publicado nos tres: true/true/true"
+    },
+    {
+      "name": "spawns_de_csp_preservados",
+      "ok": true,
+      "detail": "ocorrencias de \"Content-Security-Policy\": v119 2, v120 2 (meta + header)"
+    },
+    {
+      "name": "wrangler_toml_identico",
+      "ok": true,
+      "detail": "175 B md5 f82b42bdf2952fa7c261fd1343ef60b0 (v119 f82b42bdf2952fa7c261fd1343ef60b0)"
+    },
+    {
+      "name": "assets_12_byte_identico",
+      "ok": true,
+      "detail": "v119 12 ficheiros, v120 12, divergentes=0"
+    },
+    {
+      "name": "reversao_pronta_na_disco",
+      "ok": true,
+      "detail": "worker-deploy-v119 pronto para redeploy (reversao) 3550715 B md5 c41eef045d0110124e55d28304a99898"
+    }
+  ],
+  "total": 26,
+  "ruins": 0,
+  "veredito": "PREFLIGHT_VERDE"
+}

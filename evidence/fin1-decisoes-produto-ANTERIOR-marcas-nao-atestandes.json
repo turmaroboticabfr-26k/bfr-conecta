@@ -1,0 +1,180 @@
+{
+  "em": "2026-11-13T01:19:59.556Z",
+  "tarefa": "FIN-1 decisões de produto + insumo RM-6.7",
+  "metodo": "somente leitura (0 escrita, 0 DDL, 0 deploy)",
+  "ar": "https://bfr-conecta.turmaroboticabfr.workers.dev",
+  "total": {
+    "ok": 7,
+    "falha": 1
+  },
+  "ar_medido": {
+    "http": 200,
+    "bytes": 3489467,
+    "md5": "ae59d35346b685b2fbf9d18ade4fa5cd",
+    "sw": {
+      "http": 200,
+      "bytes": 3586,
+      "md5": "3fcbc3ad52f1a0491362506466c82596"
+    },
+    "cache_derivado": "bfr-conecta-v118",
+    "versoes_no_sw": [
+      "bfr-conecta-v118"
+    ]
+  },
+  "rm67": {
+    "csp_header": "default-src 'self'; base-uri 'self'; object-src 'none'; script-src 'self' 'unsafe-inline' https://bfr-conecta.turmaroboticabfr.workers.dev https://cdn.jsdelivr.net https://static.cloudflareinsights.com https://www.gstatic.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: blob: https:; connect-src 'self' https://bfr-conecta.turmaroboticabfr.workers.dev https://*.supabase.co wss://*.supabase.co https://cloudflareinsights.com https://*.cloudflareinsights.com https://*.googleapis.com https://fcm.googleapis.com https://api.open-meteo.com; worker-src 'self' blob:; manifest-src 'self'; form-action 'self' https://accounts.google.com https://*.supabase.co",
+    "frame_ancestors_no_header": false,
+    "x_frame_options": null,
+    "iframe_estatico": 1,
+    "iframe_criado_por_js": 1,
+    "window_open": 13,
+    "frame_ancestors_no_texto": 0,
+    "origens_externas_em_src": [
+      "cdn.jsdelivr.net",
+      "static.cloudflareinsights.com"
+    ]
+  },
+  "rm22": {
+    "regras_css_com_display_none": 3,
+    "occurrences_classe": 7,
+    "escape_data_exec_revealed": 5,
+    "toggle_por_js": 2,
+    "amostra_css": [
+      {
+        "offset": 1189122,
+        "antes": " os filhos diretos da view do papel com ",
+        "depois": ".bfr-exec-legacy-hidden{display:none!important} e reaplica a classe a cada render. A rota revela o painel com data-exec-revealed (a op F2 tira ele da seleção do executivo) e o re-esconde quando a pess"
+      },
+      {
+        "offset": 3321621,
+        "antes": "ortant}#directorView.bfr-executive-host>",
+        "depois": ".bfr-exec-legacy-hidden{display:none!important}.bfr-exec-quick{display:flex;align-items:center;gap:7px;flex-wrap:wrap;margin-top:12px;padding:10px;border:1px solid #dbe5f1;border-radius:11px;backgroun"
+      }
+    ],
+    "amostra_escape": [
+      {
+        "offset": 1189232,
+        "antes": "cada render. A rota revela o painel com ",
+        "depois": "data-exec-revealed (a op F2 tira ele da seleção do executivo) e o re-esconde quando a pessoa sai de horarios, para nao deixar um quadro morto empurrando a tela lá embaixo - que é justamente a reclamaç"
+      },
+      {
+        "offset": 1487301,
+        "antes": " bfr-birthday-panel\" data-bfr-birthdays ",
+        "depois": "data-exec-revealed=\"true\"><div class=\"bfr-birthday-hero\"><div><span class=\"bfr-birthday-kicker\"><i aria-hidden=\"true\"></i> Comunidade BFR</span><h2><span aria-hidden=\"true\">🎉</span> Aniversariantes d"
+      }
+    ]
+  },
+  "rm23": {
+    "ocorrencias_texto": 4,
+    "offset_primeiro": 105191,
+    "bloco_envolvente": {
+      "abre": 76812,
+      "tag": "<script id=\"bfr-coordination-ux\" type=\"text/plain\" data-bfr-auth-deferred data-bfr-critical-roles=\"coordinator,developer\">",
+      "modulo_morto": true
+    },
+    "modulos_mortos_no_shell": 5,
+    "contexto": [
+      {
+        "offset": 105191,
+        "antes": "ord-ack-occurrence=\"${escape(item.id)}\">",
+        "depois": "Marcar em análise</button>`:'<span>Em acompanhamento</span>'}</div></article>`;}).join(''):emptyState('✓ Nenhuma ocorrência pendente nos registros consultados.');\n     const gateList=g.rows.length?g.r"
+      },
+      {
+        "offset": 106069,
+        "antes": "ta-coord-ack-alert=\"${escape(item.id)}\">",
+        "depois": "Marcar em análise</button>`:'<span>Resolvido / em análise</span>'}</div></article>`;}).join(''):emptyState('✓ Nenhum alerta de entrada pendente.');\n    body.innerHTML=`<section class=\"bfr-coord-panel\""
+      },
+      {
+        "offset": 1833524,
+        "antes": "oord-ack-${item.kind}=\"${esc(item.id)}\">",
+        "depois": "Marcar em análise</button>` : ''}</div></article>`; }).join('') : empty('Nenhum alerta ou ocorrência corresponde aos filtros atuais.')}</div></section><section class=\"bfr-coord-panel\"><div class=\"bfr-"
+      }
+    ]
+  },
+  "rm24": {
+    "official_name": 464,
+    "displayName_fn": 0,
+    "hero_marca": 8,
+    "contexto_official_name": [
+      {
+        "offset": 4581,
+        "antes": "t studentName = item => item?.students?.",
+        "depois": "official_name || state.students.find(row => row.id === item?.student_id)?.official_name || (item?.subject_scope === 'group' ? 'Grupo ou turma' : item?.subject_s"
+      },
+      {
+        "offset": 4655,
+        "antes": "nd(row => row.id === item?.student_id)?.",
+        "depois": "official_name || (item?.subject_scope === 'group' ? 'Grupo ou turma' : item?.subject_scope === 'institutional' ? 'Ação institucional' : 'Estudante vinculado');\n"
+      },
+      {
+        "offset": 13194,
+        "antes": "tion value=\"${esc(item.id)}\">${esc(item.",
+        "depois": "official_name)} · ${esc(item.classes ? `${item.classes.year}º ${item.classes.class_code}` : 'turma não informada')}</option>`).join('')}`; }\n  function formStat"
+      },
+      {
+        "offset": 27993,
+        "antes": "dents.filter(item => !search || `${item.",
+        "depois": "official_name} ${item.classes?.class_code || ''}`.toLocaleLowerCase('pt-BR').includes(search)).slice(0, 90); const selected = state.selectedStudent ? state.stud"
+      }
+    ]
+  },
+  "rm25": {
+    "loadSchoolContent": 0,
+    "renderHomeDock": 3,
+    "catch_vazio_bloco_ou_arrow": 9,
+    "carregador_ancora_offset": -1,
+    "contexto": []
+  },
+  "rm12a1_front": {
+    "pending_literal": 66,
+    "contexto": [],
+    "signup_rpc": 0
+  },
+  "portoes": {
+    "shell_200": {
+      "valor": 200,
+      "esperado": 200,
+      "passou": true
+    },
+    "shell_bytes_maiores_que_3MB": {
+      "valor": true,
+      "esperado": true,
+      "passou": true
+    },
+    "sw_200": {
+      "valor": 200,
+      "esperado": 200,
+      "passou": true
+    },
+    "cache_derivado_existe": {
+      "valor": true,
+      "esperado": true,
+      "passou": true
+    },
+    "uma_só_versão_de_cache_no_sw": {
+      "valor": 1,
+      "esperado": 1,
+      "passou": true
+    },
+    "versoes_iguais_ao_derivado": {
+      "valor": [
+        "bfr-conecta-v118"
+      ],
+      "esperado": [
+        "bfr-conecta-v118"
+      ],
+      "passou": true
+    },
+    "rm23_offset_dentro_do_shell": {
+      "valor": true,
+      "esperado": true,
+      "passou": true
+    },
+    "rm25_carregador_encontrado": {
+      "valor": false,
+      "esperado": true,
+      "passou": false
+    }
+  },
+  "veredito": "FIN1_DECISOES_VERMELHO"
+}

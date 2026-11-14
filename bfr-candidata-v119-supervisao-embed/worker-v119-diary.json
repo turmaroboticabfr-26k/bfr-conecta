@@ -1,0 +1,88 @@
+{
+  "cycle": "v119-worker-bundle",
+  "date": "2026-11-13",
+  "base_bundle": "worker-deploy-v118-csp (identificado como o worker publicado: SW do ar md5 3fcbc3ad e header CSP)",
+  "base_worker_md5": "ae115858d263a02bb777cc474ce17297",
+  "worker_md5": "c41eef045d0110124e55d28304a99898",
+  "worker_bytes": 3550715,
+  "html_md5": "a1969cdf023042e7d2a91e7ed9333a05",
+  "html_bytes": 3489474,
+  "sw_md5": "46dfdebbecd3da5f0794f85276179b76",
+  "sw_bytes": 3586,
+  "cache_label": "bfr-conecta-v119",
+  "fix": "linha 23684 school_id,schools(name) -> school_id,sports_schools(name)",
+  "gates": [
+    {
+      "name": "worker_delta_7",
+      "ok": true,
+      "detail": "worker 3550708 -> 3550715 B (+7)"
+    },
+    {
+      "name": "worker_md5",
+      "ok": true,
+      "detail": "base ae115858d263a02bb777cc474ce17297 | v119 c41eef045d0110124e55d28304a99898"
+    },
+    {
+      "name": "html_equal_candidata",
+      "ok": true,
+      "detail": "HTML embutido 3489474 B md5 a1969cdf023042e7d2a91e7ed9333a05 == candidata md5 a1969cdf023042e7d2a91e7ed9333a05"
+    },
+    {
+      "name": "html_tokens",
+      "ok": true,
+      "detail": "sports_schools(name)=1, velho=0"
+    },
+    {
+      "name": "sw_so_mudou_etiqueta",
+      "ok": true,
+      "detail": "SW 3586 B md5 3fcbc3ad52f1a0491362506466c82596 -> 3586 B md5 46dfdebbecd3da5f0794f85276179b76 (mesmo tamanho, so a etiqueta)"
+    },
+    {
+      "name": "cache_label_v119",
+      "ok": true,
+      "detail": "CACHE='bfr-conecta-v119' presente; resquicio v118 = 0"
+    },
+    {
+      "name": "rotas_identicas",
+      "ok": true,
+      "detail": "cauda de rotas 1177 chars byte a byte"
+    },
+    {
+      "name": "csp_const_identica",
+      "ok": true,
+      "detail": "CSP 742 chars inalterada"
+    },
+    {
+      "name": "csp_header_na_resposta",
+      "ok": true,
+      "detail": "emissao do header presente (1x)"
+    },
+    {
+      "name": "assets_12_identicos",
+      "ok": true,
+      "detail": "12 arquivos, divergentes = 0"
+    },
+    {
+      "name": "wrangler_identico",
+      "ok": true,
+      "detail": "wrangler.toml copiado sem edicao"
+    },
+    {
+      "name": "precache_query_alinhada",
+      "ok": true,
+      "detail": "2 entradas com ?v=: /bfr-responsive-presentation.js?v=14 , /bfr-teacher-arrivals.js?v=2 | desalinhadas = 0"
+    },
+    {
+      "name": "ar_ainda_base",
+      "ok": true,
+      "detail": "HTTP 200 3489467 B md5 ae59d35346b685b2fbf9d18ade4fa5cd (candidata nao publicada)"
+    },
+    {
+      "name": "ar_sw_ainda_v118",
+      "ok": true,
+      "detail": "SW do ar HTTP 200 3586 B md5 3fcbc3ad52f1a0491362506466c82596"
+    }
+  ],
+  "verdict": "BUNDLE_OK",
+  "published": false
+}

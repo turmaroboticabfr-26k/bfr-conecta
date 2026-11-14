@@ -1,0 +1,74 @@
+{
+  "ciclo": "S21",
+  "started": "2026-11-13T04:39:05.014Z",
+  "email": "s21-supervisor-147b3c@bfr-conecta.test",
+  "stages": {
+    "baseline": {
+      "em": "2026-11-13T04:39:19.772Z",
+      "tabelas": {
+        "auth.users": {
+          "n": 21,
+          "md5": "851788b00e597242b977fba64041251e"
+        },
+        "public.profiles": {
+          "n": 21,
+          "md5": "ca94399791ab7c1399d8df27c3c28fac"
+        },
+        "public.sports_schools": {
+          "n": 6,
+          "md5": "e336897faf29ba27722e44e680a4b4ae"
+        },
+        "public.staff_schools": {
+          "n": 2,
+          "md5": "21a2ebcb5dd815170c95fa13c2a9e115"
+        },
+        "public.supervision_requests": {
+          "n": 0,
+          "md5": "empty"
+        },
+        "public.supervision_audit": {
+          "n": 33,
+          "md5": "871ab2250caff1c474a749fd23eb5da8"
+        }
+      }
+    },
+    "mint": {
+      "em": "2026-11-13T04:39:22.093Z",
+      "uid": "0e772187-9202-41e7-b474-8f2fe4014776",
+      "http_mint": 200,
+      "http_login": 200,
+      "exp": 1794548356
+    },
+    "perfil": {
+      "criado_pelo_trigger": "parent",
+      "depois": "education_supervisor"
+    },
+    "prova": {
+      "em": "2026-11-13T04:39:27.956Z",
+      "select_extraido_do_ar": "id,indicator,motive,description,questions,deadline_at,priority,status,created_by,closed_by,closed_at,created_at,updated_at,school_id,sports_schools(name)",
+      "boa": {
+        "http": 200,
+        "corpo": "[]"
+      },
+      "partida": {
+        "http": 400,
+        "corpo": "{\"code\":\"PGRST200\",\"details\":\"Searched for a foreign key relationship between 'supervision_requests' and 'schools' in the schema 'public', but no matches were found.\",\"hint\":\"Perhaps you meant 'sports_schools' instead of 'schools'.\",\"message\":\"Could not find a relationship between 'supervision_reque"
+      },
+      "service_role": {
+        "http": 200,
+        "corpo": "[]"
+      },
+      "sports_schools_jwt": {
+        "http": 200,
+        "corpo": "[{\"id\":\"08ebef62-2193-4520-ab44-c044160d565f\",\"name\":\"Escola Municipal Alpha\"}, \n {\"id\":\"0f51bc67-9987-483d-aba0-f138b2b7580e\",\"name\":\"Escola Municipal Beta\"}, \n {\"id\":\"f4ab6309-8c41-4456-a3e2-14f3fe2ad9d3\",\"name\":\"Escola Municipal Gamma\"}]"
+      }
+    },
+    "session": {
+      "arquivo": "s21-session.json",
+      "nota": "tokens só em ficheiro; apagado na limpeza"
+    }
+  },
+  "escritas_em_tabelas_de_produto": 0,
+  "portoes_parciais": 17,
+  "falhas_parciais": []
+}

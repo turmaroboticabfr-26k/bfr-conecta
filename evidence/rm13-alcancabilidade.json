@@ -1,0 +1,201 @@
+{
+  "em": "2026-11-12T23:00:08.683Z",
+  "tarefa": "RM-1.3 alcançabilidade dos caminhos de push",
+  "shell": "app/index.html",
+  "linhas": 28661,
+  "blocos_script": 106,
+  "funcs": {
+    "enablePush": {
+      "def_linha": 19537,
+      "def_classe": "adiado",
+      "def_id": "",
+      "def_attrs": "type=\"text/plain\" data-bfr-deferred=\"bfr-portal-upgrades.js\"",
+      "chamadas": 0,
+      "chamada_morta": 0,
+      "chamada_adiada": 0,
+      "chamada_imediata": 0,
+      "amostras": []
+    },
+    "registerPushSubscription": {
+      "def_linha": 9181,
+      "def_classe": "imediato",
+      "def_id": "bfr-inline-module-bootstrap",
+      "def_attrs": "id=\"bfr-inline-module-bootstrap\"",
+      "chamadas": 3,
+      "chamada_morta": 0,
+      "chamada_adiada": 0,
+      "chamada_imediata": 3,
+      "amostras": [
+        {
+          "linha": 9198,
+          "classe": "imediato",
+          "bloco_id": "bfr-inline-module-bootstrap",
+          "texto": "if (preferences.pushAlerts && 'Notification' in window && Notification.permission === 'granted') registerPushSubscription(false);"
+        },
+        {
+          "linha": 9276,
+          "classe": "imediato",
+          "bloco_id": "bfr-inline-module-bootstrap",
+          "texto": "const pushStatus = next.pushAlerts ? await registerPushSubscription(true) : '';"
+        },
+        {
+          "linha": 11508,
+          "classe": "imediato",
+          "bloco_id": "bfr-inline-module-bootstrap",
+          "texto": "if (event.target.closest('[data-enable-browser-alerts]')) { registerPushSubscription(true).then(message => { document.querySelector('[data-growth-notification-status]').t"
+        }
+      ]
+    },
+    "syncPushSubscription": {
+      "def_linha": 9196,
+      "def_classe": "imediato",
+      "def_id": "bfr-inline-module-bootstrap",
+      "def_attrs": "id=\"bfr-inline-module-bootstrap\"",
+      "chamadas": 2,
+      "chamada_morta": 0,
+      "chamada_adiada": 0,
+      "chamada_imediata": 2,
+      "amostras": [
+        {
+          "linha": 10544,
+          "classe": "imediato",
+          "bloco_id": "bfr-inline-module-bootstrap",
+          "texto": "syncPushSubscription();"
+        },
+        {
+          "linha": 10615,
+          "classe": "imediato",
+          "bloco_id": "bfr-inline-module-bootstrap",
+          "texto": "syncPushSubscription();"
+        }
+      ]
+    },
+    "getFirebaseMessaging": {
+      "def_linha": 9172,
+      "def_classe": "imediato",
+      "def_id": "bfr-inline-module-bootstrap",
+      "def_attrs": "id=\"bfr-inline-module-bootstrap\"",
+      "chamadas": 1,
+      "chamada_morta": 0,
+      "chamada_adiada": 0,
+      "chamada_imediata": 1,
+      "amostras": [
+        {
+          "linha": 9189,
+          "classe": "imediato",
+          "bloco_id": "bfr-inline-module-bootstrap",
+          "texto": "const token = await (await getFirebaseMessaging()).getToken({ vapidKey:FIREBASE_VAPID_KEY, serviceWorkerRegistration:registration });"
+        }
+      ]
+    },
+    "loadPushScripts": {
+      "def_linha": 19531,
+      "def_classe": "adiado",
+      "def_id": "",
+      "def_attrs": "type=\"text/plain\" data-bfr-deferred=\"bfr-portal-upgrades.js\"",
+      "chamadas": 1,
+      "chamada_morta": 0,
+      "chamada_adiada": 1,
+      "chamada_imediata": 0,
+      "amostras": [
+        {
+          "linha": 19542,
+          "classe": "adiado",
+          "bloco_id": "",
+          "texto": "await loadPushScripts(); const config = {apiKey:'AIzaSyBkgqc-EiLWOVPq6COdyillXtrR6L5kz_U',authDomain:'bfr-conecta-notificacoes-62bbc.firebaseapp.com',projectId:'bfr-conec"
+        }
+      ]
+    }
+  },
+  "por_classe": {
+    "imediato": 21,
+    "adiado": 76,
+    "externo": 5,
+    "morto": 4
+  },
+  "mortos": [
+    {
+      "id": "bfr-coordination-command",
+      "linhas": "14849-15683"
+    },
+    {
+      "id": "bfr-coordination-dashboard-v3",
+      "linhas": "19641-19730"
+    },
+    {
+      "id": "bfr-coordination-density-v4",
+      "linhas": "19731-19821"
+    },
+    {
+      "id": "bfr-coordination-realtime-v2",
+      "linhas": "19822-19846"
+    }
+  ],
+  "ativadores": [
+    {
+      "linha": 5199,
+      "dentro_de": "5174-null (adiado)",
+      "texto": "const script = document.createElement('script');"
+    },
+    {
+      "linha": 6364,
+      "dentro_de": "5174-null (adiado)",
+      "texto": "if (!badgeExportQrPromise) badgeExportQrPromise = new Promise((resolve, reject) => { const original = window.QRCode; if (typeof original === 'function') return resolve(original); const script = document.createElement('sc"
+    },
+    {
+      "linha": 6481,
+      "dentro_de": "6481-11618 (imediato)",
+      "texto": "const html = `<!doctype html><html><head><meta charset=\"utf-8\"><title>${escapeHtml(card?.dataset.badgeName || 'Crachá')}</title><style>@page{size:54mm 86mm;margin:0}html,body{margin:0;width:54mm;height:86mm;background:#f"
+    },
+    {
+      "linha": 11638,
+      "dentro_de": "11619-11720 (imediato)",
+      "texto": "const script = document.createElement('script');"
+    },
+    {
+      "linha": 11670,
+      "dentro_de": "11619-11720 (imediato)",
+      "texto": "try { await executeDeferred(node); } catch (error) { console.warn('BFR application module failed', node.id || node.dataset.bfrDeferred || 'anonymous', error); }"
+    },
+    {
+      "linha": 19532,
+      "dentro_de": "19444-19605 (adiado)",
+      "texto": "const append = src => new Promise((resolve,reject) => { const current = document.querySelector(`script[src=\"${src}\"]`); if (current) return resolve(); const script = document.createElement('script'); script.src = src; sc"
+    },
+    {
+      "linha": 20349,
+      "dentro_de": "20216-20447 (adiado)",
+      "texto": "const script = document.createElement('script');"
+    },
+    {
+      "linha": 25304,
+      "dentro_de": "25218-25471 (adiado)",
+      "texto": "const script = document.createElement('script');"
+    },
+    {
+      "linha": 25535,
+      "dentro_de": "25472-26146 (adiado)",
+      "texto": "const script = document.createElement('script');"
+    },
+    {
+      "linha": 27964,
+      "dentro_de": "27956-27977 (adiado)",
+      "texto": "const script = document.createElement('script');"
+    }
+  ],
+  "controles_push": [
+    "async function registerPushSubscription(requestPermission = true) {",
+    "function syncPushSubscription() {",
+    "&& 'Notification' in window && Notification.permission === 'granted') registerPushSubscription(false);",
+    "const pushStatus = next.pushAlerts ? await registerPushSubscription(true) : '';",
+    "syncPushSubscription();",
+    "syncPushSubscription();",
+    "if (event.target.closest('[data-enable-browser-alerts]')) { registerPushSubscription(true).then(message => { document.querySelector('[data-growth-noti",
+    "Ativar push</button>'); view.querySelector('[data-upgrade-refresh]')?.addEventLis",
+    "; view.querySelector('[data-upgrade-push]')?.addEventListener('click',enablePush); loadNotifications(); }",
+    "async function enablePush() {",
+    "if (!user() || !db()) return toast('Entre na sua conta para ativar notificações.', true);",
+    "Como ativar notificações?</summary><p>Abra Notificações, toque em “Ativar push” e permita",
+    "ndow.BFRPortalUpgrades = {open:openView,loadNotifications,loadReports,enablePush,state};"
+  ]
+}

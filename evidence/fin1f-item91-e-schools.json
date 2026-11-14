@@ -1,0 +1,398 @@
+{
+  "em": "2026-11-13T01:28:55.489Z",
+  "tarefa": "FIN-1f item 91 no ar + relação schools x sports_schools",
+  "metodo": "somente leitura (GET HTTP, SELECT de catálogo, GET PostgREST)",
+  "ar": {
+    "http": 200,
+    "bytes": 3489467,
+    "md5": "ae59d35346b685b2fbf9d18ade4fa5cd",
+    "igual_ao_ar_shell": true
+  },
+  "item91": {
+    "loads": [
+      {
+        "linha_html": 98,
+        "async": true,
+        "assinatura": "function load(force = false) {",
+        "E1_guarda_state_loading_no_topo": false,
+        "primeiros_300": "function load(force = false) {⏎    const client = db();⏎    if (!client || !user() || !allowed() || state.loading || (!force && state.loaded)) return;⏎    state.loading = true; state.errors = []; render();⏎    try {⏎      const own = await query(client.from('support_professionals').select('id,profil",
+        "tamanho_chars": 4798
+      },
+      {
+        "linha_html": 13521,
+        "async": true,
+        "assinatura": "function load(){state.loading=true;state.error='';render();const items=[],c=db();if(c&&typeof currentUser!=='undefined'&",
+        "E1_guarda_state_loading_no_topo": false,
+        "primeiros_300": "function load(){state.loading=true;state.error='';render();const items=[],c=db();if(c&&typeof currentUser!=='undefined'&&currentUser){try{const result=await c.from('school_activities').select('id,title,subject,description,due_date,class_id,classes(year,class_code)').order('published_at',{ascending:f",
+        "tamanho_chars": 1180
+      },
+      {
+        "linha_html": 13739,
+        "async": true,
+        "assinatura": "function load() {",
+        "E1_guarda_state_loading_no_topo": false,
+        "primeiros_300": "function load() {⏎        if (state.loading || state.loaded) return;⏎        state.loading = true; render();⏎        const client = db(); let rows = [];⏎        if (client && typeof currentUser !== 'undefined' && currentUser) {⏎          let query = client.from('school_documents').select('id,title,c",
+        "tamanho_chars": 1006
+      },
+      {
+        "linha_html": 14216,
+        "async": true,
+        "assinatura": "function load(panel) {",
+        "E1_guarda_state_loading_no_topo": false,
+        "primeiros_300": "function load(panel) {⏎      if (!db() || !user() || !allowedRoles.includes(role())) return;⏎      state.loading = true; state.error = ''; render(panel);⏎      const result = await db().from('director_routine_items').select('id,owner_id,title,details,item_type,priority,due_date,due_time,is_done,comp",
+        "tamanho_chars": 807
+      },
+      {
+        "linha_html": 15046,
+        "async": true,
+        "assinatura": "function load(force = false) {",
+        "E1_guarda_state_loading_no_topo": false,
+        "primeiros_300": "function load(force = false) {⏎    const client = db();⏎    if (state.loading && !force) return;⏎    if (!client || !allowed()) {⏎      state.loaded = true; state.loading = false; state.errors = ['autenticação']; render(); return;⏎    }⏎    state.loading = true; state.errors = []; state.errorDetails",
+        "tamanho_chars": 5744
+      },
+      {
+        "linha_html": 19405,
+        "async": true,
+        "assinatura": "function load() {",
+        "E1_guarda_state_loading_no_topo": false,
+        "primeiros_300": "function load() {⏎    const db = client();⏎    const current = user();⏎    if (!db || !current || !ROLES.includes(profile()?.role)) return;⏎    if (state.loading || state.loadedFor === current.id) { render(); return; }⏎    state.loading = true;⏎    const [{ data:students }, { data:profiles }, { data",
+        "tamanho_chars": 1488
+      },
+      {
+        "linha_html": 19721,
+        "async": true,
+        "assinatura": "function load(force = false) { if (window.BFRCoordinatorData?.refresh) await window.BFRCoordinatorData.refresh(force); r",
+        "E1_guarda_state_loading_no_topo": false,
+        "primeiros_300": "function load(force = false) { if (window.BFRCoordinatorData?.refresh) await window.BFRCoordinatorData.refresh(force); render(); }",
+        "tamanho_chars": 130
+      },
+      {
+        "linha_html": 20068,
+        "async": true,
+        "assinatura": "function load() {",
+        "E1_guarda_state_loading_no_topo": false,
+        "primeiros_300": "function load() {⏎     const token = ++state.loadToken;⏎     if (!allowed()) { state.loading = false; state.error = 'Acesso restrito à administração escolar.'; render(); return; }⏎    const client = db();⏎    if (!client) { state.loading = false; state.error = 'Não foi possível carregar as turmas e ",
+        "tamanho_chars": 2741
+      },
+      {
+        "linha_html": 20828,
+        "async": true,
+        "assinatura": "function load(force = false) {",
+        "E1_guarda_state_loading_no_topo": false,
+        "primeiros_300": "function load(force = false) {⏎    const current = user(); const client = db();⏎    if (!isStudent() || !current || !client) return;⏎    if (!force && state.loaded && state.userId === current.id) return render();⏎    Object.assign(state, { userId:current.id, loading:true, loaded:false, linked:false,",
+        "tamanho_chars": 3484
+      },
+      {
+        "linha_html": 21058,
+        "async": true,
+        "assinatura": "function load(target, force = false) {",
+        "E1_guarda_state_loading_no_topo": false,
+        "primeiros_300": "function load(target, force = false) {⏎    normalizeVisibility();⏎    const now = Date.now();⏎    if (!force && state.retryAt && now < state.retryAt) {⏎      if (state.current) getTargets().forEach(item => paint(item, state.current, { stale: true }));⏎      else getTargets().forEach(paintError);⏎   ",
+        "tamanho_chars": 1583
+      },
+      {
+        "linha_html": 21333,
+        "async": true,
+        "assinatura": "function load() {",
+        "E1_guarda_state_loading_no_topo": false,
+        "primeiros_300": "function load() {⏎    const db = client();⏎    const current = user();⏎    if (!db || !current || !ROLES.includes(profile()?.role)) return;⏎    if (state.loading || state.loadedFor === current.id) { render(); return; }⏎    state.loading = true;⏎    const [{ data:students }, { data:profiles }, { data",
+        "tamanho_chars": 1488
+      },
+      {
+        "linha_html": 22508,
+        "async": true,
+        "assinatura": "function load(force = false) {",
+        "E1_guarda_state_loading_no_topo": false,
+        "primeiros_300": "function load(force = false) {⏎    const client = db();⏎    if (!client || !user() || !managerRoles.has(role()) || (state.loading && !force)) return;⏎    state.loading = true; state.error = ''; state.flash = ''; render();⏎    const [students, occurrences, links, schoolProfiles] = await Promise.all([",
+        "tamanho_chars": 1645
+      },
+      {
+        "linha_html": 23666,
+        "async": true,
+        "assinatura": "function load(force = false) {",
+        "E1_guarda_state_loading_no_topo": false,
+        "primeiros_300": "function load(force = false) {⏎    const client = db(); if (!client || !allowed() || (state.loading && !force)) return;⏎    state.loading = true; state.errors = []; render();⏎    const [requests,profiles,students,classes,teachers,documents,announcements,schoolEvents,meetings,activities,attendance,gr",
+        "tamanho_chars": 4167
+      },
+      {
+        "linha_html": 23986,
+        "async": true,
+        "assinatura": "function load(force = false) {",
+        "E1_guarda_state_loading_no_topo": false,
+        "primeiros_300": "function load(force = false) {⏎    const client = db();⏎    if (state.loading && !force) return;⏎    if (!client || !allowed()) {⏎      state.loaded = true; state.loading = false; state.errors = ['autenticação']; render(); return;⏎    }⏎    const generation = ++state.loadGeneration;⏎    state.loadin",
+        "tamanho_chars": 6825
+      },
+      {
+        "linha_html": 25173,
+        "async": true,
+        "assinatura": "function load(force=false){const client=db();if(!client||!allowed()||(state.loading&&!force))return;state.loading=true;s",
+        "E1_guarda_state_loading_no_topo": false,
+        "primeiros_300": "function load(force=false){const client=db();if(!client||!allowed()||(state.loading&&!force))return;state.loading=true;state.errors=[];render();const monitorId=user()?.id;const [students,classes,occurrences,routeIncidents,gateAlerts,restrictions,messages,events,meetings]=await Promise.all([⏎    safe",
+        "tamanho_chars": 2196
+      },
+      {
+        "linha_html": 25773,
+        "async": true,
+        "assinatura": "function load(force = false) {",
+        "E1_guarda_state_loading_no_topo": false,
+        "primeiros_300": "function load(force = false) {⏎    const client = db();⏎    if (!client || !allowed() || (state.loading && !force)) return;⏎    if (state.camera||api().getState?.()?.scanning) { await api().stop?.(); state.camera=false; }⏎    state.loading = true; state.errors = []; render();⏎    const checkinsQuery",
+        "tamanho_chars": 2548
+      },
+      {
+        "linha_html": 26205,
+        "async": true,
+        "assinatura": "function load(force = false) {",
+        "E1_guarda_state_loading_no_topo": false,
+        "primeiros_300": "function load(force = false) {⏎    const client = db();⏎    if (!client || !user() || !allowed() || state.loading) return;⏎    const query = (request, label) => {⏎      let timer;⏎      const timeout = new Promise(resolve => {⏎        timer = setTimeout(() => resolve({data:[], error:new Error(`${lab",
+        "tamanho_chars": 6880
+      },
+      {
+        "linha_html": 26586,
+        "async": false,
+        "assinatura": "function load() { styles(); loadFamily(); loadTeacher(); loadCoordination(); }",
+        "E1_guarda_state_loading_no_topo": false,
+        "primeiros_300": "function load() { styles(); loadFamily(); loadTeacher(); loadCoordination(); }",
+        "tamanho_chars": 78
+      },
+      {
+        "linha_html": 27755,
+        "async": true,
+        "assinatura": "function load(force = false) {",
+        "E1_guarda_state_loading_no_topo": false,
+        "primeiros_300": "function load(force = false) {⏎    const client = db(); const account = user();⏎    if (!client || !account || !allowed()) return;⏎    if (state.userId !== account.id) { state.userId = account.id; state.loaded = false; }⏎    if (isStudent()) return loadStudent(force);⏎    if (state.loading || (!forc",
+        "tamanho_chars": 4669
+      }
+    ],
+    "pintor": {
+      "linhas_state_error_nu": [
+        14207,
+        20023,
+        20894,
+        21483
+      ],
+      "trecho_state_error_nu": [
+        "if (state.error) { list.innerHTML = `<div class=\"bfr-routine-empty\">${esc(state.error)}</div>`; return; }⏎      if (!items.length) { list.innerHTML = '<div class=\"bfr-routine-empty\"><strong>Nenhum item salvo ainda.</strong><br>Use o formulário para registrar a",
+        "if (state.error) { list.innerHTML = `<div class=\"bfr-spm-empty\">${esc(state.error)}<br><button type=\"button\" data-spm-retry>Tentar novamente</button></div>`; return; }⏎    const rows = currentStudents();⏎    const current = state.selected?.id;⏎    list.innerHT",
+        "if (state.error) { host.innerHTML = `<div class=\"bfr-student-space\"><div class=\"bfr-student-error\">${esc(state.error)}</div><button type=\"button\" class=\"bfr-student-button primary\" data-student-refresh>Tentar novamente</button></div>`; return; }⏎    if (!state",
+        "if (state.error) { host.innerHTML = `<div class=\"bfr-games-error\">⚠️ ${esc(state.error)}<br><button type=\"button\" class=\"text-button\" data-games-retry>Tentar novamente</button></div>`; return; }⏎    const live = state.matches.filter(item => ['live','paused','h"
+      ],
+      "linhas_state_error_e_condicao": [
+        22983
+      ]
+    },
+    "contadores": {
+      "if (state.error) {": 4,
+      "if (state.error &&": 1,
+      "partialMsg": 0,
+      "state.loading": 139,
+      "if (state.loading) return;": 0,
+      "if (state.loading) {": 4,
+      "!state.loaded || !state.linked": 1,
+      "bfr-student-error": 4,
+      "data-student-refresh": 3
+    }
+  },
+  "catalogo": {
+    "relacoes": [
+      {
+        "esquema": "public",
+        "relacao": "schools",
+        "tipo": "r"
+      },
+      {
+        "esquema": "public",
+        "relacao": "sports_schools",
+        "tipo": "r"
+      },
+      {
+        "esquema": "public",
+        "relacao": "staff_schools",
+        "tipo": "r"
+      },
+      {
+        "esquema": "public",
+        "relacao": "supervision_requests",
+        "tipo": "r"
+      }
+    ],
+    "fks_para_schools_ou_sports": [
+      {
+        "de_onde": "public.classes",
+        "fk": "fk_classes_school",
+        "como_para": "schools",
+        "colunas_locais": "school_id"
+      },
+      {
+        "de_onde": "public.students",
+        "fk": "fk_students_school",
+        "como_para": "schools",
+        "colunas_locais": "school_id"
+      },
+      {
+        "de_onde": "public.sports_teams",
+        "fk": "sports_teams_school_id_fkey",
+        "como_para": "sports_schools",
+        "colunas_locais": "school_id"
+      },
+      {
+        "de_onde": "public.staff_schools",
+        "fk": "staff_schools_school_id_fkey",
+        "como_para": "sports_schools",
+        "colunas_locais": "school_id"
+      },
+      {
+        "de_onde": "public.supervision_requests",
+        "fk": "supervision_requests_school_id_fkey",
+        "como_para": "sports_schools",
+        "colunas_locais": "school_id"
+      }
+    ],
+    "colunas_de_supervision_requests": [
+      {
+        "coluna": "id",
+        "tipo": "uuid",
+        "attnum": 1
+      },
+      {
+        "coluna": "indicator",
+        "tipo": "text",
+        "attnum": 3
+      },
+      {
+        "coluna": "motive",
+        "tipo": "text",
+        "attnum": 4
+      },
+      {
+        "coluna": "description",
+        "tipo": "text",
+        "attnum": 5
+      },
+      {
+        "coluna": "questions",
+        "tipo": "jsonb",
+        "attnum": 6
+      },
+      {
+        "coluna": "deadline_at",
+        "tipo": "timestamp with time zone",
+        "attnum": 7
+      },
+      {
+        "coluna": "priority",
+        "tipo": "text",
+        "attnum": 8
+      },
+      {
+        "coluna": "status",
+        "tipo": "text",
+        "attnum": 9
+      },
+      {
+        "coluna": "created_by",
+        "tipo": "uuid",
+        "attnum": 10
+      },
+      {
+        "coluna": "closed_by",
+        "tipo": "uuid",
+        "attnum": 11
+      },
+      {
+        "coluna": "closed_at",
+        "tipo": "timestamp with time zone",
+        "attnum": 12
+      },
+      {
+        "coluna": "created_at",
+        "tipo": "timestamp with time zone",
+        "attnum": 13
+      },
+      {
+        "coluna": "updated_at",
+        "tipo": "timestamp with time zone",
+        "attnum": 14
+      },
+      {
+        "coluna": "school_id",
+        "tipo": "uuid",
+        "attnum": 15
+      }
+    ]
+  },
+  "postgrest": {
+    "embed_ar_schools": {
+      "status": 400,
+      "code": "PGRST200",
+      "message": "Could not find a relationship between 'supervision_requests' and 'schools' in the schema cache",
+      "e_lista": false,
+      "e_lista_len": null
+    },
+    "embed_v115_sports": {
+      "status": 200,
+      "code": null,
+      "message": null,
+      "e_lista": true,
+      "e_lista_len": 0
+    },
+    "schools_direto": {
+      "status": 200,
+      "code": null,
+      "message": null,
+      "e_lista": true,
+      "e_lista_len": 3
+    },
+    "sports_schools_direto": {
+      "status": 200,
+      "code": null,
+      "message": null,
+      "e_lista": true,
+      "e_lista_len": 3
+    }
+  },
+  "veredito": {
+    "gates": [
+      {
+        "nome": "ar_md5_estavel",
+        "dado": "ae59d35346b685b2fbf9d18ade4fa5cd",
+        "esperado": "ae59d35346b685b2fbf9d18ade4fa5cd",
+        "ok": true
+      },
+      {
+        "nome": "schools_existe_como_relacao",
+        "dado": [
+          "schools:r",
+          "sports_schools:r",
+          "staff_schools:r",
+          "supervision_requests:r"
+        ],
+        "esperado": [
+          "schools:r",
+          "sports_schools:r",
+          "staff_schools:r",
+          "supervision_requests:r"
+        ],
+        "ok": true
+      },
+      {
+        "nome": "embed_ar_escola_nu_status",
+        "dado": 400,
+        "esperado": 200,
+        "ok": false
+      },
+      {
+        "nome": "embed_v115_status",
+        "dado": 200,
+        "esperado": 200,
+        "ok": true
+      },
+      {
+        "nome": "escola_nu_nao_e_PGRST202",
+        "dado": false,
+        "esperado": false,
+        "ok": true
+      }
+    ],
+    "falhas": 1
+  }
+}

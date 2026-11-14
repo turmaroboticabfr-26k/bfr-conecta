@@ -1,0 +1,40 @@
+{
+  "em": "2026-11-13T02:28:08.104Z",
+  "origem": "evidence/rm68-recon-quals.json",
+  "medicao_origem_em": "2026-11-13T02:13:35.747Z",
+  "ficheiro": "scripts/rm68-fail-closed-por-policy.sql",
+  "bytes": 14568,
+  "aplicada": false,
+  "policies_public": [
+    "access_requests/ALL/access_requests_manage",
+    "access_requests/INSERT/access_requests_staff_insert",
+    "attendance/DELETE/attendance_staff_delete",
+    "attendance/INSERT/attendance_staff_insert",
+    "attendance/SELECT/attendance_staff_select",
+    "attendance/UPDATE/attendance_staff_update",
+    "grades/DELETE/grades_staff_delete",
+    "grades/INSERT/grades_staff_insert",
+    "grades/SELECT/grades_staff_select",
+    "occurrences/SELECT/occurrences_director_select",
+    "occurrences/UPDATE/occurrences_director_update"
+  ],
+  "tocadas": [
+    "access_requests/ALL",
+    "access_requests/INSERT",
+    "attendance/DELETE",
+    "attendance/INSERT",
+    "attendance/SELECT",
+    "attendance/UPDATE",
+    "grades/DELETE",
+    "grades/INSERT",
+    "grades/SELECT",
+    "occurrences/SELECT",
+    "occurrences/UPDATE"
+  ],
+  "exists_director": "EXISTS ( SELECT 1\n   FROM ((profiles p\n     JOIN staff_schools ss ON ((ss.profile_id = p.id)))\n     JOIN students st ON ((st.school_id = ss.school_id)))\n  WHERE ((p.id = auth.uid()) AND (p.role = 'director'::account_role) AND (st.id = occurrences.student_id)))",
+  "corpo_funcao_director": "EXISTS ( SELECT 1\n   FROM ((profiles p\n     JOIN staff_schools ss ON ((ss.profile_id = p.id)))\n     JOIN students st ON ((st.school_id = ss.school_id)))\n  WHERE ((p.id = auth.uid()) AND (p.role = 'director'::account_role) AND (st.id = p_student_id)))",
+  "portoes": {
+    "portoes": 102,
+    "falhas": []
+  }
+}

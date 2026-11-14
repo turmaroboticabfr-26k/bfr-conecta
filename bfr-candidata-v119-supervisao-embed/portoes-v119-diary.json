@@ -1,0 +1,91 @@
+{
+  "cycle": "v119-supervisao-embed",
+  "date": "2026-11-13",
+  "base": "ar v118-csp (medido 13/11)",
+  "live_md5": "ae59d35346b685b2fbf9d18ade4fa5cd",
+  "live_bytes": 3489467,
+  "candidate_md5": "a1969cdf023042e7d2a91e7ed9333a05",
+  "candidate_bytes": 3489474,
+  "fix": "linha 23684 school_id,schools(name) -> school_id,sports_schools(name)",
+  "defect": "PEN-31 / RM-1.6: embed 400 PGRST200 no ar (FK supervision_requests.school_id -> sports_schools)",
+  "evidence_source": "evidence/fin1f-item91-e-schools.json (postgrest.embed_ar_schools 400 / embed_v115_sports 200)",
+  "gates": [
+    {
+      "name": "cand_md5",
+      "ok": true,
+      "detail": "a1969cdf023042e7d2a91e7ed9333a05"
+    },
+    {
+      "name": "cand_size",
+      "ok": true,
+      "detail": "3489474 bytes (ar 3489467 + 7)"
+    },
+    {
+      "name": "base_eq_live",
+      "ok": true,
+      "detail": "base md5 ae59d35346b685b2fbf9d18ade4fa5cd"
+    },
+    {
+      "name": "reverse_lineage",
+      "ok": true,
+      "detail": "reverted md5 ae59d35346b685b2fbf9d18ade4fa5cd == ar ae59d35346b685b2fbf9d18ade4fa5cd"
+    },
+    {
+      "name": "reverse_byte_identical",
+      "ok": true,
+      "detail": "reverted === base byte a byte"
+    },
+    {
+      "name": "new_token_unique",
+      "ok": true,
+      "detail": "sports_schools(name) ocorrencias = 1"
+    },
+    {
+      "name": "old_token_gone",
+      "ok": true,
+      "detail": "school_id,schools(name) ocorrencias = 0"
+    },
+    {
+      "name": "one_line_diff",
+      "ok": true,
+      "detail": "linhas alteradas = [23684]"
+    },
+    {
+      "name": "line_count_same",
+      "ok": true,
+      "detail": "candidata 28661 linhas == base 28661 linhas"
+    },
+    {
+      "name": "supervision_line_shape",
+      "ok": true,
+      "detail": "insercao unica em char 206; comprimento 272 -> 279"
+    },
+    {
+      "name": "linha_23685_intacta",
+      "ok": true,
+      "detail": "23685 inalterada:       safeQuery('escolas',client.from('schools').select('id,..."
+    },
+    {
+      "name": "module_syntax",
+      "ok": true,
+      "detail": "vm.Script parseou 65515 chars"
+    },
+    {
+      "name": "script_tag_balance_preserved",
+      "ok": true,
+      "detail": "candidata open/close 108/103 == base 108/103"
+    },
+    {
+      "name": "csp_meta_intacta",
+      "ok": true,
+      "detail": "comprimento do meta CSP 795 chars"
+    },
+    {
+      "name": "select_fields_count_same",
+      "ok": true,
+      "detail": "campos solicitados 15 -> 15"
+    }
+  ],
+  "verdict": "PORTOES_OK",
+  "published": false
+}

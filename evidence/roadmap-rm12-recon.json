@@ -1,0 +1,116 @@
+{
+  "set_profile_role": [
+    {
+      "def": "CREATE OR REPLACE FUNCTION public.set_profile_role(target_profile_id uuid, target_role account_role, target_full_name text DEFAULT NULL::text)\n RETURNS boolean\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO 'public'\nAS $function$ begin if not public.is_developer() then raise exception 'Apenas um administrador developer pode alterar cargos'; end if; update public.profiles set role = target_role, full_name = case when nullif(trim(target_full_name), '') is null then full_name else trim(target_full_name) end where id = target_profile_id; if not found then raise exception 'Conta não encontrada'; end if; return true; end; $function$\n"
+    }
+  ],
+  "acl": [
+    {
+      "proname": "set_profile_role",
+      "proacl": "{postgres=X/postgres,authenticated=X/postgres,service_role=X/postgres,supabase_admin=X/postgres}"
+    }
+  ],
+  "access_requests": [
+    {
+      "column_name": "id",
+      "data_type": "uuid"
+    },
+    {
+      "column_name": "email",
+      "data_type": "text"
+    },
+    {
+      "column_name": "requested_role",
+      "data_type": "USER-DEFINED"
+    },
+    {
+      "column_name": "approved_role",
+      "data_type": "USER-DEFINED"
+    },
+    {
+      "column_name": "status",
+      "data_type": "USER-DEFINED"
+    },
+    {
+      "column_name": "reviewed_by",
+      "data_type": "uuid"
+    },
+    {
+      "column_name": "created_at",
+      "data_type": "timestamp with time zone"
+    },
+    {
+      "column_name": "reviewed_at",
+      "data_type": "timestamp with time zone"
+    }
+  ],
+  "policies_profiles": [
+    {
+      "policyname": "director_dashboard_read_profiles",
+      "cmd": "SELECT",
+      "qual": "((\"current_role\"())::text = 'director'::text)",
+      "with_check": null
+    },
+    {
+      "policyname": "profiles_chat_staff_directory_read",
+      "cmd": "SELECT",
+      "qual": "(internal_chat_is_staff() AND (role = ANY (ARRAY['pedagogical'::account_role, 'aee'::account_role, 'coordinator'::account_role, 'director'::account_role, 'secretary'::account_role, 'developer'::account_role])))",
+      "with_check": null
+    },
+    {
+      "policyname": "profiles_hide_test_accounts",
+      "cmd": "SELECT",
+      "qual": "((id = auth.uid()) OR ((email !~~ '%@bfr-conecta.test'::text) AND (email !~~ 'bfr.qa.email.%'::text)))",
+      "with_check": null
+    },
+    {
+      "policyname": "profiles_read",
+      "cmd": "SELECT",
+      "qual": "((id = auth.uid()) OR is_developer() OR bfr_profile_in_my_schools(id))",
+      "with_check": null
+    },
+    {
+      "policyname": "profiles_staff_update",
+      "cmd": "UPDATE",
+      "qual": "is_developer()",
+      "with_check": "is_developer()"
+    },
+    {
+      "policyname": "profiles_update_self",
+      "cmd": "UPDATE",
+      "qual": "(id = auth.uid())",
+      "with_check": "(id = auth.uid())"
+    }
+  ],
+  "policies_access_requests": [
+    {
+      "policyname": "access_requests_insert",
+      "cmd": "INSERT",
+      "qual": null,
+      "with_check": "((lower(email) = lower((auth.jwt() ->> 'email'::text))) AND (requested_role = ANY (ARRAY['parent'::account_role, 'student'::account_role, 'pedagogical'::account_role, 'monitor'::account_role, 'gatekeeper'::account_role])) AND (approved_role IS NULL) AND (status = 'pending'::request_status) AND (reviewed_by IS NULL) AND (reviewed_at IS NULL))"
+    },
+    {
+      "policyname": "access_requests_manage",
+      "cmd": "ALL",
+      "qual": "is_developer()",
+      "with_check": "(is_developer() AND (requested_role = ANY (enum_range(NULL::account_role))) AND ((approved_role IS NULL) OR (approved_role = requested_role)) AND (status = ANY (ARRAY['pending'::request_status, 'approved'::request_status, 'rejected'::request_status])))"
+    },
+    {
+      "policyname": "access_requests_read",
+      "cmd": "SELECT",
+      "qual": "(is_developer() OR (lower(email) = lower((auth.jwt() ->> 'email'::text))))",
+      "with_check": null
+    },
+    {
+      "policyname": "access_requests_staff_insert",
+      "cmd": "INSERT",
+      "qual": null,
+      "with_check": "(is_developer() AND (requested_role = ANY (enum_range(NULL::account_role))) AND (((approved_role IS NULL) AND (status = 'pending'::request_status)) OR ((approved_role = requested_role) AND (status = 'approved'::request_status))))"
+    }
+  ],
+  "test_contas_vivas": [
+    {
+      "n": 4
+    }
+  ]
+}

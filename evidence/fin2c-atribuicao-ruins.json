@@ -1,0 +1,247 @@
+{
+  "em": "2026-11-13T01:40:14.001Z",
+  "tarefa": "FIN-2c atribuir as consultas ruins do ar ao código que as emite",
+  "metodo": "somente leitura",
+  "ar_shell": {
+    "bytes": 3489467,
+    "md5": "ae59d35346b685b2fbf9d18ade4fa5cd",
+    "igual_ao_ar": true
+  },
+  "itens": [
+    {
+      "de": "guardian_students",
+      "select": "profile_id,student_id,profiles(full_name,email),students(official_name,classes(year,class_code))",
+      "http": 300,
+      "code": "PGRST201",
+      "mensagem": "Could not embed because more than one relationship was found for 'guardian_students' and 'profiles'",
+      "ocorrencias_no_ar": 1,
+      "emissores": [
+        {
+          "linha_html": 5890,
+          "envolvente": "loadStudentLinks",
+          "embrulho": null,
+          "rotulo": null,
+          "erro_para_em": "propaga_sem_catch",
+          "trata_erro": false,
+          "trecho": "upabaseClient.from('students').select('id,official_name,class_id,classes(year,class_code)').eq('active',true).order('official_name'), supabaseClient.from('guardian_students').select('profile_id,student_id,profiles(full_name,email),students(official_name,classes(year,class_code))').order('student_id') ]); studentLinkState.loading = false; studentLinkState.loaded = true; studentLinkState.profiles = profiles"
+        }
+      ]
+    },
+    {
+      "de": "bfr_school_shift_settings",
+      "select": "school_year,shift,entry_opens_at,class_starts_at,shift_closes_at,active_weekdays,late_grace_minutes,confirmed_by,confirmed_at,updated_at",
+      "http": 404,
+      "code": "PGRST205",
+      "mensagem": "Could not find the table 'public.bfr_school_shift_settings' in the schema cache",
+      "ocorrencias_no_ar": 1,
+      "emissores": [
+        {
+          "linha_html": 15089,
+          "envolvente": "load",
+          "embrulho": "request",
+          "rotulo": "configuração de turnos",
+          "erro_para_em": "engolido_pelo_involuco",
+          "trata_erro": true,
+          "trecho": "essions, referrals:supportRequests }; const [gateSettings,calendarDays,calendarTargets] = await Promise.all([ request('configuração de turnos',client.from('bfr_school_shift_settings').select('school_year,shift,entry_opens_at,class_starts_at,shift_closes_at,active_weekdays,late_grace_minutes,confirmed_by,confirmed_at,updated_at').eq('school_year',schoolYear).order('shift')), request('calendário letivo',client.from('bfr_school_calendar_days'"
+        }
+      ]
+    },
+    {
+      "de": "bfr_school_calendar_days",
+      "select": "school_year,school_date,calendar_status,label,source_status,confirmed_at",
+      "http": 404,
+      "code": "PGRST205",
+      "mensagem": "Could not find the table 'public.bfr_school_calendar_days' in the schema cache",
+      "ocorrencias_no_ar": 2,
+      "emissores": [
+        {
+          "linha_html": 15090,
+          "envolvente": "load",
+          "embrulho": "request",
+          "rotulo": "calendário letivo",
+          "erro_para_em": "engolido_pelo_involuco",
+          "trata_erro": true,
+          "trecho": "active_weekdays,late_grace_minutes,confirmed_by,confirmed_at,updated_at').eq('school_year',schoolYear).order('shift')), request('calendário letivo',client.from('bfr_school_calendar_days').select('school_year,school_date,calendar_status,label,source_status,confirmed_at').eq('school_year',schoolYear).order('school_date')), request('metas do calendário',client.from('bfr_school_calendar_month_targets').select('school_year,month,expected_school_days"
+        },
+        {
+          "linha_html": 25791,
+          "envolvente": "load",
+          "embrulho": "safeQuery",
+          "rotulo": "calendário letivo",
+          "erro_para_em": "engolido_pelo_involuco",
+          "trata_erro": false,
+          "trecho": "at,active_weekdays,late_grace_minutes,confirmed_at').eq('school_year',Number(dateKey().slice(0,4))).order('shift')), safeQuery('calendário letivo', client.from('bfr_school_calendar_days').select('school_year,school_date,calendar_status,label,source_status,confirmed_at').eq('school_year',Number(dateKey().slice(0,4))).eq('school_date',dateKey()).limit(1)) ]); Object.assign(state, { students, classes, checkins, alerts, restrictions, shiftSetting"
+        }
+      ]
+    },
+    {
+      "de": "bfr_school_calendar_month_targets",
+      "select": "school_year,month,expected_school_days",
+      "http": 404,
+      "code": "PGRST205",
+      "mensagem": "Could not find the table 'public.bfr_school_calendar_month_targets' in the schema cache",
+      "ocorrencias_no_ar": 1,
+      "emissores": [
+        {
+          "linha_html": 15091,
+          "envolvente": "load",
+          "embrulho": "request",
+          "rotulo": "metas do calendário",
+          "erro_para_em": "engolido_pelo_involuco",
+          "trata_erro": true,
+          "trecho": "ar,school_date,calendar_status,label,source_status,confirmed_at').eq('school_year',schoolYear).order('school_date')), request('metas do calendário',client.from('bfr_school_calendar_month_targets').select('school_year,month,expected_school_days').eq('school_year',schoolYear).order('month')) ]); state.gateSettings = gateSettings; state.calendarDays = calendarDays; state.calendarTargets = calendarTargets; state.errors = [...new Set([...(base"
+        }
+      ]
+    },
+    {
+      "de": "guardian_students",
+      "select": "student_id,profiles(full_name,phone)",
+      "http": 300,
+      "code": "PGRST201",
+      "mensagem": "Could not embed because more than one relationship was found for 'guardian_students' and 'profiles'",
+      "ocorrencias_no_ar": 2,
+      "emissores": [
+        {
+          "linha_html": 19415,
+          "envolvente": "load",
+          "embrulho": null,
+          "rotulo": null,
+          "erro_para_em": "catch_na_funcao",
+          "trata_erro": false,
+          "trecho": ".select('student_id,guardian_name,guardian_phone').limit(500), db.from('classes').select('id,year,class_code').order('year').order('class_code'), db.from('guardian_students').select('student_id,profiles(full_name,phone)').limit(500) ]); const profileByStudent = new Map((profiles || []).map(item => [item.student_id, item])); const accountByStudent = new Map((links || []).map(item => { const account = Array.isArray(item.profiles) ? it"
+        },
+        {
+          "linha_html": 21343,
+          "envolvente": "load",
+          "embrulho": null,
+          "rotulo": null,
+          "erro_para_em": "catch_na_funcao",
+          "trata_erro": false,
+          "trecho": ".select('student_id,guardian_name,guardian_phone').limit(500), db.from('classes').select('id,year,class_code').order('year').order('class_code'), db.from('guardian_students').select('student_id,profiles(full_name,phone)').limit(500) ]); const profileByStudent = new Map((profiles || []).map(item => [item.student_id, item])); const accountByStudent = new Map((links || []).map(item => { const account = Array.isArray(item.profiles) ? it"
+        }
+      ]
+    },
+    {
+      "de": "announcements",
+      "select": "id,title,body,message_type,status,published_at,scheduled_at,created_at,important,meeting_id",
+      "http": 400,
+      "code": "42703",
+      "mensagem": "column announcements.created_at does not exist",
+      "ocorrencias_no_ar": 1,
+      "emissores": [
+        {
+          "linha_html": 21911,
+          "envolvente": "loadHistory",
+          "embrulho": null,
+          "rotulo": null,
+          "erro_para_em": "propaga_sem_catch",
+          "trata_erro": false,
+          "trecho": "tor('[data-communication-history]'); const client = db(); if (!host || !client) return; const [announcements, recipients] = await Promise.all([ client.from('announcements').select('id,title,body,message_type,status,published_at,scheduled_at,created_at,important,meeting_id').order('created_at',{ascending:false}).limit(100), client.from('announcement_recipients').select('announcement_id,recipient_id,read_at,confirmed_at,notification_status')."
+        }
+      ]
+    },
+    {
+      "de": "guardian_students",
+      "select": "student_id,profile_id,profiles(full_name,phone,email)",
+      "http": 300,
+      "code": "PGRST201",
+      "mensagem": "Could not embed because more than one relationship was found for 'guardian_students' and 'profiles'",
+      "ocorrencias_no_ar": 2,
+      "emissores": [
+        {
+          "linha_html": 22515,
+          "envolvente": "load",
+          "embrulho": null,
+          "rotulo": null,
+          "erro_para_em": "catch_na_funcao",
+          "trata_erro": false,
+          "trecho": "client.from('occurrences').select('id,student_id,title,description,occurred_at,acknowledged_at').order('occurred_at',{ascending:false}).limit(300), client.from('guardian_students').select('student_id,profile_id,profiles(full_name,phone,email)').limit(1000), client.from('student_school_profiles').select('student_id,guardian_name,guardian_phone').limit(800) ]); state.students = students.data || []; state.occurrences = occurrences.data"
+        },
+        {
+          "linha_html": 26932,
+          "envolvente": "loadData",
+          "embrulho": null,
+          "rotulo": null,
+          "erro_para_em": "catch_na_funcao",
+          "trata_erro": true,
+          "trecho": " run(db().from('bfr_schedule_entries').select('class_id,teacher_id,subject_name,bfr_teacher_directory(display_name,profile_id)').limit(2000)), run(db().from('guardian_students').select('student_id,profile_id,profiles(full_name,phone,email)').limit(2000)), run(db().from('student_school_profiles').select('student_id,guardian_name,guardian_phone').limit(2000)), run(db().from('bfr_lesson_attendance').select('student_id,lesson_date,stat"
+        }
+      ]
+    },
+    {
+      "de": "supervision_requests",
+      "select": "id,indicator,motive,description,questions,deadline_at,priority,status,created_by,closed_by,closed_at,created_at,updated_at,school_id,schools(name)",
+      "http": 400,
+      "code": "PGRST200",
+      "mensagem": "Could not find a relationship between 'supervision_requests' and 'schools' in the schema cache",
+      "ocorrencias_no_ar": 1,
+      "emissores": [
+        {
+          "linha_html": 23684,
+          "envolvente": "load",
+          "embrulho": "safeQuery",
+          "rotulo": "supervisão",
+          "erro_para_em": "engolido_pelo_involuco",
+          "trata_erro": false,
+          "trecho": "contatos autorizados',client.from('student_school_profiles').select('student_id,guardian_name,guardian_phone').limit(1500)), safeQuery('supervisão',client.from('supervision_requests').select('id,indicator,motive,description,questions,deadline_at,priority,status,created_by,closed_by,closed_at,created_at,updated_at,school_id,schools(name)').order('created_at',{ascending:false}).limit(200)), safeQuery('escolas',client.from('schools').select('id,na"
+        }
+      ]
+    },
+    {
+      "de": "bfr_school_shift_settings",
+      "select": "school_year,shift,entry_opens_at,class_starts_at,shift_closes_at,active_weekdays,late_grace_minutes,confirmed_at",
+      "http": 404,
+      "code": "PGRST205",
+      "mensagem": "Could not find the table 'public.bfr_school_shift_settings' in the schema cache",
+      "ocorrencias_no_ar": 1,
+      "emissores": [
+        {
+          "linha_html": 25790,
+          "envolvente": "load",
+          "embrulho": "safeQuery",
+          "rotulo": "configuração de turnos",
+          "erro_para_em": "engolido_pelo_involuco",
+          "trata_erro": false,
+          "trecho": "cial_name,classes(year,class_code))').eq('active', true).order('created_at', { ascending:false }).limit(100)), safeQuery('configuração de turnos', client.from('bfr_school_shift_settings').select('school_year,shift,entry_opens_at,class_starts_at,shift_closes_at,active_weekdays,late_grace_minutes,confirmed_at').eq('school_year',Number(dateKey().slice(0,4))).order('shift')), safeQuery('calendário letivo', client.from('bfr_school_calendar_days').s"
+        }
+      ]
+    }
+  ],
+  "embrulhos": {
+    "request": {
+      "bytes": 548,
+      "tem_catch": true,
+      "tem_throw": false,
+      "devolve_null": false
+    },
+    "safeQuery": {
+      "bytes": 177,
+      "tem_catch": true,
+      "tem_throw": false,
+      "devolve_null": false
+    }
+  },
+  "veredito": {
+    "emissas": 12,
+    "por_classe": {
+      "propaga_sem_catch": 2,
+      "engolido_pelo_involuco": 6,
+      "catch_na_funcao": 4
+    },
+    "por_code": {
+      "42703": 1,
+      "PGRST201": 5,
+      "PGRST205": 5,
+      "PGRST200": 1
+    },
+    "silenciosas": 6,
+    "portoes": {
+      "total": 8,
+      "falhas": []
+    }
+  },
+  "portoes": {
+    "total": 8,
+    "falhas": []
+  }
+}

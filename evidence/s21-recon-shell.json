@@ -1,0 +1,109 @@
+{
+  "em": "2026-11-13T04:37:55.912Z",
+  "http": 200,
+  "bytes": 3489474,
+  "contagens": {
+    "education_supervisor": 12,
+    "supervision_requests": 1,
+    "sports_schools(name)": 1,
+    "data-sec-tab=\"supervisao\"": 1,
+    "data-role-section=\"secretaria\"": 0,
+    "setRole(": 15
+  },
+  "roleSectionAccess": [
+    {
+      "pos": 1068930,
+      "texto": "nsino'], ['pending','Aguardando aprovação'] ]; const roleSectionAccess = { parent:['inicio','aprender','evoluir','escola','meu-espaco','notificacoes','conteudos','escola-historia','notas','agenda','atividades','comunicados','secretaria','ocorrencias','coordenacao-chat','jogos-escolares'], student:['inicio','aprender','evoluir','escola','meu-espaco','notificacoes','conteudos','escola-historia','notas','agenda','atividades','horarios','jogos','jogos-escolares','videos-aprender','com"
+    },
+    {
+      "pos": 1177600,
+      "texto": "View === 'teacher' && section.startsWith('professor-')) { if (!roleSectionAccess.teacher.includes(section)) return false; persistNavigationState(section); return setProfessionalTeacherSection(section); } const allowedSections = roleSectionAccess[activeView] || []; if (['aprender','evoluir','escola','meu-espaco'].includes(section) && typeof window.BFRPlatform?.open === 'function') { if (!allowedSections.includes(section)) "
+    },
+    {
+      "pos": 1177830,
+      "texto": "acherSection(section); } const allowedSections = roleSectionAccess[activeView] || []; if (['aprender','evoluir','escola','meu-espaco'].includes(section) && typeof window.BFRPlatform?.open === 'function') { if (!allowedSections.includes(section)) return false; const opened = window.BFRPlatform.open(section); if (opened === false) return false; persistNavigationState(section); return true; "
+    },
+    {
+      "pos": 1319239,
+      "texto": " : role; const allowed = viewRole === 'admin' ? [...new Set([...roleSectionAccess.admin, 'psychology', 'multiprofissional'])] : (roleSectionAccess[viewRole] || roleSectionAccess.parent); document.querySelectorAll('.sidebar .nav-item[data-section],.mobile-more-option[data-section]').forEach(item => item.classList.toggle('hidden', !allowed.includes(item.dataset.section))); document.querySelector('[data-mobile-more]')?.classList.remove('hidden'); const active = document.querySelector('.si"
+    },
+    {
+      "pos": 1319304,
+      "texto": "...new Set([...roleSectionAccess.admin, 'psychology', 'multiprofissional'])] : (roleSectionAccess[viewRole] || roleSectionAccess.parent); document.querySelectorAll('.sidebar .nav-item[data-section],.mobile-more-option[data-section]').forEach(item => item.classList.toggle('hidden', !allowed.includes(item.dataset.section))); document.querySelector('[data-mobile-more]')?.classList.remove('hidden'); const active = document.querySelector('.sidebar .nav-item[data-section].active'); if (active?.clas"
+    },
+    {
+      "pos": 1319335,
+      "texto": "s.admin, 'psychology', 'multiprofissional'])] : (roleSectionAccess[viewRole] || roleSectionAccess.parent); document.querySelectorAll('.sidebar .nav-item[data-section],.mobile-more-option[data-section]').forEach(item => item.classList.toggle('hidden', !allowed.includes(item.dataset.section))); document.querySelector('[data-mobile-more]')?.classList.remove('hidden'); const active = document.querySelector('.sidebar .nav-item[data-section].active'); if (active?.classList.contains('hidden')) { doc"
+    },
+    {
+      "pos": 2035313,
+      "texto": "iveView; }, get activeSection() { return activeSection; }, get roleSectionAccess() { return roleSectionAccess; }, navigate: section => navigateToSection(section), syncNavigation: section => navigateToSection(section), setRole: role => setRole(role), refresh: () => { updateLiveClock(); } }; if (typeof loadProfessionalTeacherData === 'function') { const legacyTeacherLoader = loadProfessionalTeacherData; loadProfessionalTeacherData = async force => currentProfile"
+    },
+    {
+      "pos": 2035342,
+      "texto": "veSection() { return activeSection; }, get roleSectionAccess() { return roleSectionAccess; }, navigate: section => navigateToSection(section), syncNavigation: section => navigateToSection(section), setRole: role => setRole(role), refresh: () => { updateLiveClock(); } }; if (typeof loadProfessionalTeacherData === 'function') { const legacyTeacherLoader = loadProfessionalTeacherData; loadProfessionalTeacherData = async force => currentProfile?.role === 'pedagogical' && t"
+    }
+  ],
+  "marco_supervisao": [
+    {
+      "pos": 2795131,
+      "texto": "tab=\"professionals\">Profissionais</button><button type=\"button\" data-sec-tab=\"classes\">Turmas</button><button type=\"button\" data-sec-tab=\"communications\">Comunicação</button><button type=\"button\" data-sec-tab=\"reports\">Relatórios</button><button type=\"button\" data-sec-tab=\"supervisao\">Supervisão</button><button type=\"button\" data-sec-tab=\"search\">Busca global</button></nav><section class=\"bfr-secretary-metrics\" data-sec-metrics></section><main data-sec-body></main></div>`; } const metric = (label,value,note,tab,t"
+    }
+  ],
+  "supervisor_no_acesso": [
+    {
+      "pos": 791628,
+      "texto": " } function ensureSecretaryViews() { if (!secretaryView || !currentProfile) return; const staff = currentProfile.role === 'secretary' || currentProfile.role === 'education_supervisor' || (currentProfile.role === 'developer' && activeView === 'secretary'); if (staff && !secretaryView.querySelector('[data-secretary-staff-list]')) secretaryView.innerHTML = secretaryStaffMarkup(); if (!staff && !secre"
+    },
+    {
+      "pos": 1068809,
+      "texto": "fessor(a) do AEE'], ['psychology','Psicologia escolar'], ['social_work','Assistente social'], ['sports_operator','Operador(a) de placar'], ['education_supervisor','Supervisor(a) de ensino'], ['pending','Aguardando aprovação'] ]; const roleSectionAccess = { parent:['inicio','aprender','evoluir','escola','meu-espaco','notificacoes','conteudos','escola-historia"
+    },
+    {
+      "pos": 1071663,
+      "texto": "io','psychology','chat-interno'], multiprofessional:['inicio','multiprofissional','chat-interno'], sports_operator:['inicio','notificacoes','conteudos','jogos-escolares'], education_supervisor:['inicio','secretaria','comunicados','escola-historia','notificacoes','conteudos','comunicacao','chat-interno','coordenacao-chat','jogos-escolares','fotos','supervisao'] }; const roleManagementState = { profiles:[], teacher"
+    },
+    {
+      "pos": 1167262,
+      "texto": " role === 'monitor' ? ['monitor','developer'].includes(currentProfile?.role) : role === 'gatekeeper' ? ['gatekeeper','developer'].includes(currentProfile?.role) : role === 'secretary' ? ['secretary','education_supervisor','developer'].includes(currentProfile?.role) : role === 'psychology' ? ['psychology','developer'].includes(currentProfile?.role) : role === 'multiprofessional' ? ['social_work','developer'].includes(currentProfile?.role) : role === 'aee' ?"
+    },
+    {
+      "pos": 1171726,
+      "texto": "' && typeof window.BFRMultiprofessionalCentral?.ensure === 'function') window.BFRMultiprofessionalCentral.ensure(); if (role === 'secretary') setupSecretaryView(); if (role === 'education_supervisor') setupSecretaryView(); if (role === 'parent') setupParentRealtime(true); if (role === 'director' && !directorView.innerHTML) { directorView.innerHTML = '<section class=\"director-welcome teacher-welcome\"><d"
+    },
+    {
+      "pos": 1187820,
+      "texto": "o', secretaria:'.secretary-hero', experiencias:'[data-experience-panel]', notas:'[data-secretary-request-list]', agenda:'[data-secretary-request-list]', comunicados:'.secretary-hero' }, education_supervisor: { inicio:'.secretary-hero', secretaria:'.secretary-hero', experiencias:'[data-experience-panel]', notas:'[data-secretary-request-list]', agenda:'[data-secretary-request-list]', comunicados:'.secretary-hero', supervisao:'.secretary-hero' }"
+    },
+    {
+      "pos": 1454369,
+      "texto": "rred> (() => { const liaAvatarPath = window.BFR_LIA_AVATAR_PATH || 'lia-avatar.png'; const staffRoles = ['pedagogical','aee','coordinator','developer','director','secretary','education_supervisor']; const managerRoles = ['coordinator','developer','director']; const readingLabels = { reads:'Lê com autonomia', difficulty:'Lê com dificuldade', not_yet:'Ainda não lê' }; const esc = value => String(value ?? '')."
+    },
+    {
+      "pos": 1531562,
+      "texto": "nst supportRoles = ['parent','student','pedagogical','aee','coordinator','developer','secretary']; const staffRoles = ['pedagogical','aee','coordinator','developer','director','secretary','education_supervisor']; const managerRoles = ['coordinator','developer','director']; const fallbackServices = [ {name:'Psicopedagogia',icon:'📚',description:'Apoio relacionado aos processos de aprendizagem e desenvolvimento escolar.'"
+    },
+    {
+      "pos": 2163234,
+      "texto": "alue || '').normalize('NFD').replace(/[\\u0300-\\u036f]/g, '').toLocaleLowerCase('pt-BR').replace(/[^a-z0-9]+/g, ' ').trim(); const staffRoles = ['coordinator', 'director', 'developer', 'secretary', 'education_supervisor']; const viewIds = { parent: 'parentView', student: 'studentView', teacher: 'teacherView', admin: 'adminView', director: 'directorView', coordinator: 'coordinatorView', monitor: 'monitorView', gatekeeper: 'gatekeeperView', se"
+    },
+    {
+      "pos": 2163540,
+      "texto": "acherView', admin: 'adminView', director: 'directorView', coordinator: 'coordinatorView', monitor: 'monitorView', gatekeeper: 'gatekeeperView', secretary: 'secretaryView', aee: 'aeeView', education_supervisor: 'secretaryView' }; function activeView() { const active = runtime()?.activeView || (role() === 'pedagogical' ? 'teacher' : role() === 'developer' ? 'admin' : role()); return document.getElementById(viewIds[active]) || documen"
+    },
+    {
+      "pos": 2773422,
+      "texto": " || null; const user = () => window.BFR_CURRENT_USER || runtime().user || null; const role = () => runtime().activeView || profile()?.role || ''; const allowed = () => ['secretary','developer','education_supervisor'].includes(profile()?.role) && ['secretary','education_supervisor'].includes(role()); const esc = value => String(value ?? '').replace(/[&<>'\"]/g, char => ({ '&':'&amp;', '<':'&lt;', '>':'&gt;', \"'\":'&#39;', '\"':'&quot;' }[char])); con"
+    },
+    {
+      "pos": 2773488,
+      "texto": ").user || null; const role = () => runtime().activeView || profile()?.role || ''; const allowed = () => ['secretary','developer','education_supervisor'].includes(profile()?.role) && ['secretary','education_supervisor'].includes(role()); const esc = value => String(value ?? '').replace(/[&<>'\"]/g, char => ({ '&':'&amp;', '<':'&lt;', '>':'&gt;', \"'\":'&#39;', '\"':'&quot;' }[char])); const lower = value => String(value || '').toLocaleLowerCase('pt-BR')"
+    }
+  ],
+  "query_da_aba": [
+    {
+      "pos": 2782089,
+      "texto": ",client.from('grades').select('student_id,subject,score,term,created_at').order('created_at',{ascending:false}).limit(3000)), safeQuery('atualizações cadastrais',client.from('secretary_profile_change_requests').select('id,requester_id,student_id,requested_changes,status,created_at,updated_at').order('created_at',{ascending:false}).limit(200)), safeQuery('contatos autorizados',client.from('student_school_profiles').select('student_id,guardian_name,guardian_phone').limit(1500)), safeQuery('supervisão',client.from('supervision_requests').select('id,indicator,motive,description,questions,deadline_at,priority,status,created_by,closed_by,closed_at,created_at,updated_at,school_id,sports_schools(name)').order('created_at',{ascending:false}).limit(200)), safeQuery('escolas',client.from('schools').select('id,name,active').order('name').limit(50)), safeQuery('planos de ação',client.from('learning_action_plans').select('id,name,"
+    }
+  ]
+}

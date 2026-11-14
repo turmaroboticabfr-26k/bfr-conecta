@@ -1,0 +1,94 @@
+{
+  "linha": 9901,
+  "chars": 9225,
+  "ramos": [
+    {
+      "ramo": "parent",
+      "permite": [
+        "parent",
+        "developer"
+      ]
+    },
+    {
+      "ramo": "teacher",
+      "permite": [
+        "pedagogical",
+        "developer"
+      ]
+    },
+    {
+      "ramo": "coordinator",
+      "permite": [
+        "coordinator",
+        "developer"
+      ]
+    },
+    {
+      "ramo": "student",
+      "permite": [
+        "student",
+        "developer"
+      ]
+    },
+    {
+      "ramo": "monitor",
+      "permite": [
+        "monitor",
+        "developer"
+      ]
+    },
+    {
+      "ramo": "gatekeeper",
+      "permite": [
+        "gatekeeper",
+        "developer"
+      ]
+    },
+    {
+      "ramo": "secretary",
+      "permite": [
+        "secretary",
+        "education_supervisor",
+        "developer"
+      ]
+    },
+    {
+      "ramo": "psychology",
+      "permite": [
+        "psychology",
+        "developer"
+      ]
+    },
+    {
+      "ramo": "multiprofessional",
+      "permite": [
+        "social_work",
+        "developer"
+      ]
+    },
+    {
+      "ramo": "aee",
+      "permite": [
+        "aee",
+        "coordinator",
+        "director",
+        "developer"
+      ]
+    },
+    {
+      "ramo": "director",
+      "permite": [
+        "director",
+        "developer"
+      ]
+    },
+    {
+      "ramo": "sports_operator",
+      "permite": [
+        "sports_operator",
+        "developer"
+      ]
+    }
+  ],
+  "cauda": "const allowed = role === 'parent' ? ['parent','developer'].includes(currentProfile?.role) : role === 'teacher' ? ['pedagogical','developer'].includes(currentProfile?.role) : role === 'coordinator' ? ['coordinator','developer'].includes(currentProfile?.role) : role === 'student' ? ['student','developer'].includes(currentProfile?.role) : role === 'monitor' ? ['monitor','developer'].includes(currentProfile?.role) : role === 'gatekeeper' ? ['gatekeeper','developer'].includes(currentProfile?.role) : role === 'secretary' ? ['secretary','education_supervisor','developer'].includes(currentProfile?.role) : role === 'psychology' ? ['psychology','developer'].includes(currentProfile?.role) : role === 'multiprofessional' ? ['social_work','developer'].includes(currentProfile?.role) : role === 'aee' ? ['aee','coordinator','director','developer'].includes(currentProfile?.role) : role === 'director' ? ['director','developer'].includes(currentProfile?.role) : role === 'sports_operator' ? ['sports_operator','developer'].includes(currentProfile?.role) : role === 'admin' && currentProfile?.role === 'developer';\n          if (!allowed) return;\n           if (role === 'social_work') role = 'multiprofessional';\n         if (role === 'parent' && !parentDataState.loaded) clearParentDemoView();\n          const previousView = activeView;\n           activeView = role;\n           window.dispatchEvent(new CustomEvent('bfr:role-change', { detail: { role } }));\n         appShell.classList.toggle('teacher-mode', role === 'teacher');\n          document.querySelector('[data-teacher-nav]')?.classList.toggle('hidden', role !== 'teacher');\n          document.querySelector('.admin-badge-shortcut')?.classList.toggle('hidden', currentProfile?.role !== 'developer');\n       roleButtons.forEach(button => button.classList.toggle('active', button.dataset.role === role));\n       document.querySelectorAll('[data-preview-role]').forEach(button => button.classList.toggle('active', button.dataset.previewRole === role));\n         parentView.classList.toggle('hidden', role !== 'parent');\n         coordinatorView.classList.toggle('hidden', role !== 'coordinator');\n         teacherView.classList.toggle('hidden', role !== 'teacher');\n        studentView.classList.toggle('hidden', role !== 'student');\n           adminView.classList.toggle('hidden', role !== 'admin');\n           directorView.classList.toggle('hidden', role !== 'director');\n          monitorView.classList.toggle('hidden', role !== 'monitor');\n            gatekeeperView.classList.toggle('hidden', role !== 'gatekeeper');\n             aeeView.classList.toggle('hidden', role !== 'aee');\n              psychologyView?.classList.toggle('hidden', role !== 'psychology');\n             multiprofessionalView?.classList.toggle('hidden', role !== 'multiprofessional');\n             resultsLearningView?.classList.add('hidden');\n            secretaryView.classList.toggle('hidden', role !== 'secretary');\n             internalChatView?.classList.add('hidden');\n             healthyFoodView.classList.add('hidden');\n            readingLibraryView.classList.add('hidden');\n             document.querySelectorAll('#appShell #platformLearnView,#appShell #platformEvolveView,#appShell #platformSchoolView,#appShell #platformSpaceView').forEach(view => view.classList.add('hidden'));\n            if (role === 'coordinator' && !coordinatorView.querySelector('.coordinator-welcome')) { coordinatorView.innerHTML = currentSchoolYearMarkup(coordinatorAdminMarkup); setupCoordinatorView(); }\n             if (role === 'coordinator') window.bfrCoordinationCommand?.enhance();\n             if (role === 'teacher' && !teacherView.innerHTML) {\n          teacherView.innerHTML = teacherProfessionalMarkup;\n           const classPanel = teacherView.querySelector('.student-table')?.closest('.panel');\n            if (classPanel) { classPanel.id = 'academicPanel'; classPanel.innerHTML = currentSchoolYearMarkup(academicMarkup); }\n            setupProfessionalTeacherView();\n             setupAcademicPanel();\n             clearTeacherDemoView();\n          }\n           if (role === 'student' && !studentView.querySelector('.welcome')) { studentView.innerHTML = currentSchoolYearMarkup(studentMarkup); setupStudentRealtime(); }\n          if (role === 'monitor' && !monitorView.innerHTML) { monitorView.innerHTML = monitorMarkup; setupMonitorView(); }\n           if (role === 'gatekeeper' && !gatekeeperView.innerHTML) { gatekeeperView.innerHTML = gatekeeperMarkup; setupGatekeeperView(); }\n             if (role === 'aee' && typeof window.setupAeeModule === 'function') window.setupAeeModule();\n            if (role === 'psychology' && typeof window.BFRPsychologyCentral?.ensure === 'function') window.BFRPsychologyCentral.ensure();\n            if (role === 'multiprofessional' && typeof window.BFRMultiprofessionalCentral?.ensure === 'function') window.BFRMultiprofessionalCentral.ensure();\n           if (role === 'secretary') setupSecretaryView();\n           if (role === 'education_supervisor') setupSecretaryView();\n           if (role === 'parent') setupParentRealtime(true);\n          if (role === 'director' && !directorView.innerHTML) {\n            directorView.innerHTML = '<section class=\"director-welcome teacher-welcome\"><div><div class=\"eyebrow\">Direção escolar · visão estratégica</div><h1>Painel da direção.</h1><p>Acompanhe os indicadores essenciais da escola e as prioridades de gestão.</p></div><div class=\"date-chip\">● &nbsp; DIREÇÃO ESCOLAR</div></section>';\n          }\n          if (role === 'admin' && !adminView.querySelector('.teacher-welcome')) {\n           adminView.innerHTML = currentSchoolYearMarkup(adminMarkup);\n          const accessMetric = adminView.querySelector('#adminRequestCount')?.closest('.metric-card');\n          if (accessMetric) {\n            accessMetric.querySelector('.metric-head span').textContent = 'Contas com acesso';\n            accessMetric.querySelector('.metric-value strong').id = 'adminAccountCount';\n            accessMetric.querySelector('.metric-value span').textContent = 'ativas';\n            accessMetric.querySelector('.metric-foot').textContent = 'Entrada automática com permissões';\n          }\n          adminView.querySelectorAll('.project p').forEach(text => { if (text.textContent.includes('Revise pedidos')) text.textContent = 'Consulte as contas e permissões da escola'; });\n          adminView.insertAdjacentHTML('beforeend', developerMarkup);\n           adminView.insertAdjacentHTML('beforeend', gatekeeperRegistrationMarkup + coordinationRestrictionMarkup);\n            adminView.insertAdjacentHTML('beforeend', publishingMarkup);\n             setupAdminView();\n             setTimeout(() => {\n               setupGatekeeperRegistration();\n               setupEntryRestrictions();\n               setupStudentLinks();\n               setupPublishing();\n             }, 0);\n        }\n           if (role === 'admin') setTimeout(() => setupProjects(), 180);\n            if (role !== 'admin' && role !== 'parent') {\n              ensureScheduleViews();\n              setupScheduleViews();\n              ensureLearningViews();\n              setupBadgeViews();\n              setupGames();\n              setupRouteNotifications();\n              if (role !== 'coordinator') {\n                setupSchoolActivities();\n                setupGateCoordination();\n                setupGateEntryAlerts();\n                setupProjects();\n                setupExperiences();\n                setupLiveContent();\n              }\n            }\n          updateLiveClock();\n          syncRoleNavigation(role);\n          if (role === 'sports_operator') { const abrirJogosDoBoot = (tentativa) => { if (activeView !== 'sports_operator') return; if (typeof window.BFRSchoolGames?.open === 'function') { if (activeSection === 'inicio') { window.BFRSchoolGames.open(); syncActiveNavigation('jogos-escolares'); persistNavigationState('jogos-escolares'); } else if (activeSection === 'jogos-escolares') window.BFRSchoolGames.open(); return; } if (tentativa < 40) setTimeout(() => abrirJogosDoBoot(tentativa + 1), 120); }; abrirJogosDoBoot(0); }\n          setTimeout(setupGrowthFeatures, 0);\n                 document.querySelector('.breadcrumb b').textContent = { parent:'Hoje', teacher:'Minha turma', coordinator:'Coordenação escolar', student:'Meu painel', admin:'Administração', director:'Direção escolar', monitor:'Monitor escolar', gatekeeper:'Portaria QR', secretary:'Secretaria digital', aee:'Atendimento Educacional Especializado', psychology:'Central da Psicologia', multiprofessional:'Central multiprofissional', sports_operator:'Jogos escolares' }[role];\n               const savedNavigation = options.restoreNavigation ? readNavigationState() : null;\n               const canRestoreSavedNavigation = savedNavigation?.role === role && savedNavigation?.section;\n                if (previousView !== role && !canRestoreSavedNavigation) {\n                  navigationHistory = [];\n                  syncActiveNavigation('inicio');\n                  persistNavigationState('inicio');\n                  navigateToSection('inicio');\n               } else restoreNavigationState();\n      }"
+}

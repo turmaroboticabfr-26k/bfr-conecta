@@ -1,0 +1,28 @@
+{
+  "ciclo": "RM-1.2",
+  "em": "2026-11-12T20:34:43.038Z",
+  "portoes": 39,
+  "contas": [
+    {
+      "rotulo": "applicant",
+      "uid": "d3433748-7146-4c62-9719-22ab1ad45619",
+      "email": "rm12-applicant-663b2d@bfr-conecta.test"
+    },
+    {
+      "rotulo": "developer",
+      "uid": "bcf8a7e1-a929-41b3-a507-48d40d49a466",
+      "email": "rm12-developer-4e7764@bfr-conecta.test"
+    }
+  ],
+  "fixture": [
+    "c9199511-20fc-478f-b0a3-c0176b8f3264",
+    "6fa997dc-61d0-4075-9655-293d80979df6"
+  ],
+  "falhas": [
+    "profile do solicitante role = pending (default da coluna) | dado=\"parent\" | esperado=\"pending\"",
+    "e a tentativa não mudou nada (role segue pending) | dado=\"parent\" | esperado=\"pending\"",
+    "developer enxerga todas as linhas vivas | dado=18 | esperado=23",
+    "a linha do solicitante está na lista do painel | dado=false | esperado=true",
+    "linhas visíveis = oráculo SQL dos 6 papéis do directório | dado=13 | esperado=17"
+  ]
+}

@@ -1,0 +1,71 @@
+{
+  "bytes": 3489474,
+  "ocorrencias": [
+    {
+      "linha": 6810,
+      "contexto": "dSecretaryStaff(); } function ensureSecretaryViews() { if (!secretaryView || !currentProfile) return; const staff = currentProfile.role === 'secretary' || currentProfile.role === 'education_supervisor' || (currentProfile.role === 'developer' && activeView === 'secretary'); if (staff && !secretaryView.querySelector('[data-secretary-staff-list]')) secretaryView.innerHTML = secretaryStaffM"
+    },
+    {
+      "linha": 9001,
+      "contexto": " ['aee','Professor(a) do AEE'], ['psychology','Psicologia escolar'], ['social_work','Assistente social'], ['sports_operator','Operador(a) de placar'], ['education_supervisor','Supervisor(a) de ensino'], ['pending','Aguardando aprovação'] ]; const roleSectionAccess = { parent:['inicio','aprender','evoluir','escola','meu-espaco','no"
+    },
+    {
+      "linha": 9018,
+      "contexto": " psychology:['inicio','psychology','chat-interno'], multiprofessional:['inicio','multiprofissional','chat-interno'], sports_operator:['inicio','notificacoes','conteudos','jogos-escolares'], education_supervisor:['inicio','secretaria','comunicados','escola-historia','notificacoes','conteudos','comunicacao','chat-interno','coordenacao-chat','jogos-escolares','fotos','supervisao'] }; const role"
+    },
+    {
+      "linha": 9902,
+      "contexto": "rentProfile?.role) : role === 'monitor' ? ['monitor','developer'].includes(currentProfile?.role) : role === 'gatekeeper' ? ['gatekeeper','developer'].includes(currentProfile?.role) : role === 'secretary' ? ['secretary','education_supervisor','developer'].includes(currentProfile?.role) : role === 'psychology' ? ['psychology','developer'].includes(currentProfile?.role) : role === 'multiprofessional' ? ['social_work','developer'].includes("
+    },
+    {
+      "linha": 9948,
+      "contexto": "= 'multiprofessional' && typeof window.BFRMultiprofessionalCentral?.ensure === 'function') window.BFRMultiprofessionalCentral.ensure(); if (role === 'secretary') setupSecretaryView(); if (role === 'education_supervisor') setupSecretaryView(); if (role === 'parent') setupParentRealtime(true); if (role === 'director' && !directorView.innerHTML) { directorView.innerHTML = '<section cla"
+    },
+    {
+      "linha": 10125,
+      "contexto": "icio:'.secretary-hero', secretaria:'.secretary-hero', experiencias:'[data-experience-panel]', notas:'[data-secretary-request-list]', agenda:'[data-secretary-request-list]', comunicados:'.secretary-hero' }, education_supervisor: { inicio:'.secretary-hero', secretaria:'.secretary-hero', experiencias:'[data-experience-panel]', notas:'[data-secretary-request-list]', agenda:'[data-secretary-request-list]', comunicados:'.secreta"
+    },
+    {
+      "linha": 12715,
+      "contexto": "\" data-bfr-auth-deferred> (() => { const liaAvatarPath = window.BFR_LIA_AVATAR_PATH || 'lia-avatar.png'; const staffRoles = ['pedagogical','aee','coordinator','developer','director','secretary','education_supervisor']; const managerRoles = ['coordinator','developer','director']; const readingLabels = { reads:'Lê com autonomia', difficulty:'Lê com dificuldade', not_yet:'Ainda não lê' }; c"
+    },
+    {
+      "linha": 13189,
+      "contexto": "() => { const supportRoles = ['parent','student','pedagogical','aee','coordinator','developer','secretary']; const staffRoles = ['pedagogical','aee','coordinator','developer','director','secretary','education_supervisor']; const managerRoles = ['coordinator','developer','director']; const fallbackServices = [ {name:'Psicopedagogia',icon:'📚',description:'Apoio relacionado aos processos de "
+    },
+    {
+      "linha": 18728,
+      "contexto": " = value => String(value || '').normalize('NFD').replace(/[\\u0300-\\u036f]/g, '').toLocaleLowerCase('pt-BR').replace(/[^a-z0-9]+/g, ' ').trim(); const staffRoles = ['coordinator', 'director', 'developer', 'secretary', 'education_supervisor']; const viewIds = { parent: 'parentView', student: 'studentView', teacher: 'teacherView', admin: 'adminView', director: 'directorView', coordinator: 'coordinatorView', monitor: 'monito"
+    },
+    {
+      "linha": 18733,
+      "contexto": "tView', teacher: 'teacherView', admin: 'adminView', director: 'directorView', coordinator: 'coordinatorView', monitor: 'monitorView', gatekeeper: 'gatekeeperView', secretary: 'secretaryView', aee: 'aeeView', education_supervisor: 'secretaryView' }; function activeView() { const active = runtime()?.activeView || (role() === 'pedagogical' ? 'teacher' : role() === 'developer' ? 'admin' : role()); return document.ge"
+    },
+    {
+      "linha": 23632,
+      "contexto": "|| runtime().profile || null; const user = () => window.BFR_CURRENT_USER || runtime().user || null; const role = () => runtime().activeView || profile()?.role || ''; const allowed = () => ['secretary','developer','education_supervisor'].includes(profile()?.role) && ['secretary','education_supervisor'].includes(role()); const esc = value => String(value ?? '').replace(/[&<>'\"]/g, char => ({ '&':'&amp;', '<':'&lt;', '>':'&gt;', \"'"
+    },
+    {
+      "linha": 23632,
+      "contexto": "ENT_USER || runtime().user || null; const role = () => runtime().activeView || profile()?.role || ''; const allowed = () => ['secretary','developer','education_supervisor'].includes(profile()?.role) && ['secretary','education_supervisor'].includes(role()); const esc = value => String(value ?? '').replace(/[&<>'\"]/g, char => ({ '&':'&amp;', '<':'&lt;', '>':'&gt;', \"'\":'&#39;', '\"':'&quot;' }[char])); const lower = value => String"
+    }
+  ],
+  "roteador": [
+    {
+      "ancora": "viewIds",
+      "linha": 18729,
+      "contexto": "viewIds = { parent: 'parentView', student: 'studentView', teacher: 'teacherView', admin: 'adminView', director: 'directorView', coordinator: 'coordinatorView', monitor: 'monitorView', gatekeeper: 'gatekeeperView', secretary: 'secretaryView', aee: 'aeeView', education_supervisor: 'secretaryView' }; function activeView() { const active = runtime()?.activeView || (role() === 'pedagogical' ? 'teacher' : role() === 'developer' ? 'admin' : role()); return document.getElementById(viewIds[active]) || document.querySelector('#appShell .content:not(.hidden)'); } function injectStyle() { if (document.getElementById('bfr-platform-evolution-style')) return; const"
+    },
+    {
+      "ancora": "function setRole",
+      "linha": 9901,
+      "contexto": "function setRole(role, options = {}) { const allowed = role === 'parent' ? ['parent','developer'].includes(currentProfile?.role) : role === 'teacher' ? ['pedagogical','developer'].includes(currentProfile?.role) : role === 'coordinator' ? ['coordinator','developer'].includes(currentProfile?.role) : role === 'student' ? ['student','developer'].includes(currentProfile?.role) : role === 'monitor' ? ['monitor','developer'].includes(currentProfile?.role) : role === 'gatekeeper' ? ['gatekeeper','developer'].includes(currentProfile?.role) : role === 'secretary' ? ['secretary','education_supervisor','developer'].includes(currentProfile?.role) : role === 'psychology' ? ['psychology',"
+    },
+    {
+      "ancora": "roleSectionAccess[",
+      "linha": 10034,
+      "contexto": "roleSectionAccess[activeView] || []; if (['aprender','evoluir','escola','meu-espaco'].includes(section) && typeof window.BFRPlatform?.open === 'function') { if (!allowedSections.includes(section)) return false; const opened = window.BFRPlatform.open(section); if (opened === false) return false; persistNavigationState(section); return true; } if (section === 'aee' && ['aee','coordinator','director','developer'].includes(currentProfile?.role) && activeView !== 'aee') { setRole('aee'); return navigateToSection('aee'); } if (section === 'psychology"
+    }
+  ],
+  "applyRole": []
+}

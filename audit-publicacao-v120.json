@@ -1,0 +1,81 @@
+{
+  "version": "v120",
+  "data": "2026-11-13",
+  "ok_literal": "Autorizo, publica a v120",
+  "escopo_do_ok": "somente este deploy do Worker bfr-conecta; nenhuma DDL, nenhuma escrita em banco, nenhum deploy de Edge",
+  "deploy": {
+    "worker": "bfr-conecta",
+    "conta": "turmaroboticabfr@gmail.com",
+    "version_id": "8cad1145-a975-4fd6-8a7b-2fd4e9a4209c",
+    "version_anterior": "6aed50af-a8a1-4c2b-84ae-cb6eaec4770b",
+    "deployment_created": "2026-11-13T06:49:57.555Z",
+    "version_created": "2026-11-13T06:49:55.978Z",
+    "percentual_trafego_novo": 100,
+    "assets_reenviados": 0,
+    "wrangler": "4.154.0",
+    "cwd": "worker-deploy-v120",
+    "url": "https://bfr-conecta.turmaroboticabfr.workers.dev",
+    "stdout": "Uploaded bfr-conecta (16.50 sec) | Deployed bfr-conecta triggers (2.48 sec) | Total Upload 3458.61 KiB (gzip 768.30 KiB)",
+    "fonte_dos_numeros_do_deploy": "stdout do wrangler deploy na conversa + `npx --yes wrangler@4.154.0 deployments status` (somente leitura) re-emitido depois; em 4.154.0 `deployments view` foi renomeado para `deployments status`",
+    "comando_da_url": "derivado de audit-publicacao-v119.json -> deploy.url, nunca dactilografado"
+  },
+  "correcao": {
+    "pendencia": "PEN-32 / RM-1.7 (achado R.4 do ciclo S21)",
+    "problema": "o guard `allowed` do setRole() tinha 12 ramos e não alcançava `education_supervisor`; uma conta de supervisora de educação autenticada caía na parentView e a aba Supervisão Educacional só aparecia pelo contorno setRole('secretary')",
+    "causa": "a cadeia de ternários do :9902 cobria parent/student/secretary/coordinator/director/education_manager/sports_operator/admin/developer mas nunca o papel criado na Fase 0; viewIds (:10145) e o toggle do secretaryView (:9926) também não conheciam o papel",
+    "solucao": "3 hunks só no roteador, sobre a v119 congelada: H1 :9902 insere o ramo `role === 'education_supervisor' ? ['education_supervisor','developer'].includes(currentProfile?.role)` antes da cauda admin/developer (guard passa de 14 para 15 ramos, cauda intacta); H2 :9926 `secretaryView.classList.toggle('hidden', role !== 'secretary' && role !== 'education_supervisor')`; H3 :10145 `education_supervisor:secretaryView` ao lado de `secretary:secretaryView`. Delta +175 bytes, 28.661 linhas nos dois lados, exatamente 3 linhas alteradas [9902, 9926, 10145]",
+    "regra_alvo_derivada_de": "os 3 hunks lidos de bfr-candidata-v120-setrole-supervisor/gera-v120.mjs sobre a v119 congelada; nada foi dactilografado do ar",
+    "o_que_NAO_foi_alterado": "viewIds.education_supervisor (:18733), `if (role === 'education_supervisor') setupSecretaryView()` (:9948, antes código morto) e o allowed() do módulo (:23632) — a candidata só liga o que já existia. H4 (:10425 item do menu) e H5 (:10437 accountLabels) entraram na medição mas NÃO na v120, decisão registrada em rm17-bancada-v3-diary.json -> decisao_h4_h5"
+  },
+  "md5": {
+    "worker_deploy_v120/worker.mjs": "bc1f88ebed10660e56eac3f983159bad (3550890 B)",
+    "worker_deploy_v119/worker.mjs_reversao": "c41eef045d0110124e55d28304a99898 (3550715 B)",
+    "shell_antes": "a1969cdf023042e7d2a91e7ed9333a05 (3489474 B)",
+    "shell_depois": "a9a76d0e338c2a539135bccce23111b4 (3489649 B)",
+    "sw_antes": "46dfdebbecd3da5f0794f85276179b76 (3586 B, CACHE bfr-conecta-v119)",
+    "sw_depois": "289f1f1dc82a2eb2e091994916af3e97 (3586 B, CACHE bfr-conecta-v120)",
+    "wrangler_toml": "f82b42bdf2952fa7c261fd1343ef60b0 (175 B, identico ao publicado antes)",
+    "emissao": "md5sum + stat -c%s re-emitidos no disco antes de escrever este registro; o md5 do shell_depois tambem foi conferido contra os bytes servidos no portao http_shell_md5_candidata"
+  },
+  "portoes": {
+    "candidata": "28/0 VERDE - bfr-candidata-v120-setrole-supervisor/portoes-v120-diary.json (PORTOES_OK)",
+    "bancada_ab_v3": "43/0 VERDE - bfr-candidata-v120-setrole-supervisor/rm17-bancada-v3-diary.json (RM17_BANCADA_V3_OK)",
+    "preflight_pre_deploy": "26/0 VERDE - v120-preflight-diary.json (PREFLIGHT_VERDE)",
+    "http_pos_deploy": "18/0 VERDE - v120-postdeploy-http-diary.json (V120_HTTP_VERDE)",
+    "chrome_limpo": "10/0 VERDE - v120-chrome-limpo-diary.json (CHROME_LIMPO_VERDE)",
+    "total_da_cadeia": 125,
+    "vermelhos": 0,
+    "fora_da_contagem": "rm17-bancada (27/1) e rm17-bancada-v2 (39/2): os vermelhos eram do rig, nao do app — v1 media chrome nunca revelado; v2 contava qualquer nao-GET como escrita e o supabase-js chama funcoes de LEITURA por POST /rest/v1/rpc/. A v3 nao afrouxou o predicado: separou POST /rpc/ de POST/PATCH/DELETE /rest/v1/<tabela> e provou no catalogo (rm17-probe-rpc-volatile.mjs) que bfr_list_staff_birthdays e list_current_month_birthdays sao funcoes de leitura"
+  },
+  "prova_da_bancada_offline": {
+    "como": "dois node:http locais servindo byte-a-byte os dois arquivos (controle v119 :8271, candidata v120 :8272) para chrome headless próprio via CDP 9366; papel injetado so em memoria na binding currentProfile/currentUser e chrome revelado por window.enterApp(role), funcao do proprio app (:10405)",
+    "controle_v119": "activeView=parent, views_visiveis=[parentView], secretaryView_hidden=true, aba_supervisao_no_dom=false, abas_no_dom=[]",
+    "candidata_v120": "activeView=education_supervisor, views_visiveis=[secretaryView], secretaryView_hidden=false, central_visivel=true, aba_supervisao_no_dom=true, 13 abas com supervisao, sec_body_len=563 apos o clique na aba",
+    "baseline_imutavel_contagem_e_md5": "supervision_requests 0 empty | supervision_audit 33 2b952f290e8498d4a070fc121b9989d9 | profiles 21 d822d5898f2ba8b2bcc797dcd9446abc | staff_schools 2 dffefa7a98b8916b89129505879e62f0 | sports_schools 6 9aab822dee1e37da6c69e9b5b8e09e20 (antes x depois, nas duas bandas)",
+    "escrita_barrada": "0 escrita de tabela; 0 nao-GET chegou ao backend na rede do CDP; trafego supabase.co anonimo e so GET"
+  },
+  "prova_pos_deploy": {
+    "linhagem_reversa": "servido - 3 hunks -> 3489474 B md5 a1969cdf023042e7d2a91e7ed9333a05 == worker-deploy-v120/base-v119-shell.html; portao http_linhagem_reversa_3_hunks",
+    "hunks_no_ar": "H1/H2/H3 cada um novo=1 velho=0 nos bytes servidos",
+    "pen_31_preservada": "school_id,sports_schools(name)=1 e school_id,schools(name)=0 no ar — a regressao da v116 continua consertada",
+    "headers": "CSP do header == CSP da meta (742 chars), x-content-type-options nosniff, referrer-policy strict-origin-when-cross-origin, HSTS max-age=31536000 sem includeSubDomains; so no shell, os 12 assets e o SW seguem sem header",
+    "chrome_limpo": "cache unica bfr-conecta-v120, SW /sw-v4.js?v=45 activated sem waiting, 8 entradas em cache, shell em cache 3489649 B com os 3 tokens novos e zero velhos, 0 excecao, 1 x 404 em /cdn-cgi/rum, 0 x 400 e nenhum PGRST200 no trafego"
+  },
+  "censo_de_embeds": {
+    "re_emitido": false,
+    "motivo_medido": "a linha de diferenca entre as duas bandas tem exatamente 3 posicoes [9902, 9926, 10145] e o multiconjunto das 488 strings `.select(\"...\")` e IDENTICO byte a byte nas duas bandas (contagem de `.select(` 497/497, `sports_schools(name)` 1/1, `school_id,schools(name)` 0/0). Logo o censo da v119 (248 pares, 240x200, 8 ruins, 0 novas) vale para a v120 sem re-emitir; a emissao seria a mesma medição sobre os mesmos pares",
+    "baseline_preservada": "evidence/fin2a-censo-embeds-v118.json re-emitido 13/11 sobre a v119 em docs/auditoria-bfr-conecta.md (secao FIN)"
+  },
+  "o_que_nao_foi_provado": [
+    "a aba Supervisao aberta por uma conta REAL de education_supervisor no ar v120, clicando na aba e pintando dados reais: a cadeia autenticada de 52 portoes/0 da S21 foi medida na v119 com o contorno setRole('secretary') e a bancada da v120 e offline com papel injetado em memoria, sem JWT. O clique na aba na bancada emite OPTIONS supervision_requests 200 + GET 401, que e o esperado de bancada sem sessao",
+    "o rotulo da conta e o item do menu: chip_conta continua «Responsavel» e supervisao_no_menu segue false nas duas bandas, porque H4 (:10425) e H5 (:10437 accountLabels, sem a chave education_supervisor) nao entraram na v120. A v120 conserta o ROTEADOR, nao o rotulo da conta nem o item do menu — PEN nova/produto",
+    "paineis com dados reais: na bancada e no chrome limpo os paineis pintam [] ou 401 anonimo",
+    "nenhuma DDL, nenhuma escrita em banco, nenhum deploy de Edge nesta passada"
+  ],
+  "reversao": {
+    "como": "wrangler deploy a partir de worker-deploy-v119 (worker 3550715 B md5 c41eef045d0110124e55d28304a99898, conferido no disco no portao reversao_pronta_na_disco do diario HTTP)",
+    "volta_para": "version_id anterior 6aed50af-a8a1-4c2b-84ae-cb6eaec4770b",
+    "exige": "OK literal novo do usuario",
+    "prova_de_linhagem": "revertido os 3 hunks no shell servido -> 3489474 B md5 a1969cdf023042e7d2a91e7ed9333a05, identico ao ar anterior ao deploy"
+  }
+}

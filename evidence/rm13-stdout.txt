@@ -1,0 +1,53 @@
+rotas fixas:
+  /                              200 text/html; charset=u  3489467B erroCF=false titulo="BFR Conecta | Escola Benício Ferreira Reis"
+  /index.html                    200 text/html; charset=u  3489467B erroCF=false titulo="BFR Conecta | Escola Benício Ferreira Reis"
+  /sw-v4.js                      200 application/javascri     3586B erroCF=false titulo=""
+  /sw.js                         200 application/javascri     3586B erroCF=false titulo=""
+  /firebase-messaging-sw.js      500 text/html; charset=U     4720B erroCF=true titulo="Worker threw exception | bfr-conecta.turmaroboticabfr.workers.dev | Cloudflare"
+  /manifest.webmanifest          500 text/html; charset=U     4720B erroCF=true titulo="Worker threw exception | bfr-conecta.turmaroboticabfr.workers.dev | Cloudflare"
+  /manifest.json                 200 application/json          484B erroCF=false titulo=""
+  /favicon.ico                   500 text/html; charset=U     4720B erroCF=true titulo="Worker threw exception | bfr-conecta.turmaroboticabfr.workers.dev | Cloudflare"
+  /robots.txt                    500 text/html; charset=U     4720B erroCF=true titulo="Worker threw exception | bfr-conecta.turmaroboticabfr.workers.dev | Cloudflare"
+  /sitemap.xml                   500 text/html; charset=U     4720B erroCF=true titulo="Worker threw exception | bfr-conecta.turmaroboticabfr.workers.dev | Cloudflare"
+  /?notifications=1              200 text/html; charset=u  3489467B erroCF=false titulo="BFR Conecta | Escola Benício Ferreira Reis"
+  /aluno                         500 text/html; charset=U     4720B erroCF=true titulo="Worker threw exception | bfr-conecta.turmaroboticabfr.workers.dev | Cloudflare"
+  /coordenacao                   500 text/html; charset=U     4720B erroCF=true titulo="Worker threw exception | bfr-conecta.turmaroboticabfr.workers.dev | Cloudflare"
+  /qualquer-rota-inexistente-zz  500 text/html; charset=U     4720B erroCF=true titulo="Worker threw exception | bfr-conecta.turmaroboticabfr.workers.dev | Cloudflare"
+
+bundle em disco (12): /bfr-app-logo.png /bfr-responsive-presentation.js /bfr-teacher-arrivals.js /bfr-teacher-audit.js /calendario-letivo-2026.pdf /horario-matutino-2026.pdf /horario-matutino-2026.png /horario-vespertino-2026.pdf /horario-vespertino-2026.png /lia-avatar.png /lia-avatar.svg /manifest.json
+bundle medido no ar: 200=12/12 byte-idêntico=12/12
+
+referências únicas no HTML=5 medidas(novas)=0 200=0 404=0 500=0 outros=0
+links de manifest no HTML: ["' blob:; manifest-src '","\"manifest\"","\"manifest.json\"","'Proíbe manifestações religiosas'"]
+as que dao 500 (0): 
+fora do bundle (0): 
+
+linhagem em disco: 7 diretorios; com_rota_fcm=[] com_handler_push=[]
+fetch por string em 4/7 diretorios: worker-deploy-v118 worker-deploy-v118-csp worker-deploy-v118-swclone worker-deploy-v118-swfix
+
+sw servido: {"http":200,"bytes":3586,"md5":"3fcbc3ad52f1a0491362506466c82596","ct":"application/javascript; charset=utf-8","handler_push":0,"notificationclick":0,"showNotification":0,"palavra_push":0,"importScripts":0,"addEventListener":3,"listeners":["addEventListener('install'","addEventListener('activate'","addEventListener('fetch'"],"firebase":0}
+sw em disco (app/sw-v4.js): md5=042670477d613d3044b4e4298a891db4 bytes=3585
+
+marcas de push no shell SERVIDO: {"bytes":3489467,"firebase_messaging_sw":0,"serviceWorker_register":3,"pushManager_subscribe":0,"Notification_requestPermission":2,"new_Notification":3,"getToken_fcm":2,"registra_sw_v4_v45":3,"palavra_push":289,"subscriptions_url":2}
+marcas no shell DA BANCADA   : {"bytes":3489467,"firebase_messaging_sw":0,"serviceWorker_register":3,"pushManager_subscribe":0,"Notification_requestPermission":2,"new_Notification":3,"getToken_fcm":2,"registra_sw_v4_v45":3,"palavra_push":289,"subscriptions_url":2}
+shell servado == bancada? true
+descartadas como template (25): /npm/@supabase/supabase-js@2.50.0/dist/umd/supabase.min.js /horario-matutino-2026.pdf /horario-vespertino-2026.pdf /ebenicioferreirareis/ /$%7Bdigits%7D /${escapeHtml(url)} /npm/qrcodejs@1.0.0/qrcode.min.js /${canvas.toDataURL(
+manifest: {"tem_icons":1,"start_url":"/","scope":"/"}
+
+portoes: 8 verde / 6 vermelho de 14
+  OK    R1_shell_200  valor=200 esperado=200
+  OK    R2_sw_200  valor=200 esperado=200
+  OK    R3_manifest_json_200  valor=200 esperado=200
+  FALHA R4_rota_fcm_existe  valor=500 esperado=200
+  FALHA R5_rota_inexistente_e_404_nao_500  valor=500 esperado=404
+  OK    R6_erro_cf_detectado_no_corpo  valor=true esperado=true
+  OK    R7_bundle_do_disco_servido_no_ar  valor=12 esperado=12
+  OK    R8_bytes_do_ar_iguais_ao_disco  valor=12 esperado=12
+  FALHA S1_sw_servido_tem_handler_push  valor="nao" esperado="tem"
+  FALHA S2_sw_servido_tem_notificationclick  valor="nao" esperado="tem"
+  FALHA S3_rota_fcm_devolve_js  valor="html" esperado="js"
+  OK    M1_shell_servido_e_o_da_bancada  valor=true esperado=true
+  OK    M2_shell_tem_caminho_de_push  valor="tem" esperado="tem"
+  FALHA M3_shell_aponta_sw_de_fcm  valor="nao" esperado="tem"
+
+RM13_CADEIA_PARTIDA
