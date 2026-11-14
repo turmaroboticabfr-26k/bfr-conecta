@@ -741,6 +741,60 @@ normalizado.
   pelo Git Credential Manager (`credential.helper = manager`). A derivação são três passos de shell —
   extrair o campo antes do `@`, extrair o primeiro segmento do caminho depois do host, comparar os
   md5 — e não um ficheiro novo no repo.
+- **Estado final do remote, re-medido 14/11 ao fim da tarde — e o bullet acima passa a descrever
+  o passado.** A URL já não leva userinfo nenhum: `userinfo_no_url=0`, `url_contem_ghp=false`,
+  `credential_username` presente, e `~/.github-pat` já não existe
+  (`github_pat_guardado_existe=false`). Quem ler o bullet de cima a partir de agora tem de saber
+  isto: ele mediu a URL *com* o campo; o campo foi retirado mais tarde no mesmo dia, logo o
+  `md5_userinfo` que lá se lê **não é reprodutível** contra o `origin` actual.
+- **A prova de vida da chave não passou pelo push, e tinha de não passar.** Ordem medida:
+  `git credential fill` com o username → `FILL_exit=0`, `TOKEN_len=93 prefixo4=gith`;
+  `GET /user` → `200` com o mesmo login da org; `GET /repos/<org>/bfr-conecta` → `200`,
+  `private=false push=true admin=true`; **só depois**
+  `GIT_TERMINAL_PROMPT=0 GCM_INTERACTIVE=never git push --dry-run origin main` → exit 0,
+  `Everything up-to-date`. A razão da ordem é uma regra que este ciclo estabeleceu: **um `git push`
+  falhado faz o git apagar a credencial que usou** (erase automático no 401), por isso sondar
+  autenticação com push real queima a chave. E o repo é público — `ls-remote` verde não prova
+  autenticação nenhuma.
+- **Inventário da loja de credenciais, por contagem e sem valores.** `cmdkey //list` tem
+  exactamente dois alvos `git:` para o github: o host-only `git:https://github.com` e o
+  por-utilizador `git:https://turmaroboticabfr-26k@github.com`. **Não há alvo nenhum com a grafia
+  `…rob…itic…`.** Era essa a única prova que a hipótese itic×otic precisava de ter contra si.
+- **Correcção datada, 14/11 ao fim da tarde: a hipótese itic×otic aplicada à autenticação não
+  reproduz, e foi invenção minha.** Medidos os três identificadores — org do URL,
+  `credential.username` e `login` devolvido pelo GitHub — os três valem o mesmo: `len=20`,
+  `md5=21a729130b2b…`, `USERNAME_IGUAL_ORG=true`, `LOGIN_IGUAL_ORG=true`. A grafia diferente nunca
+  esteve no config nem no URL: estava na minha frase. O `exit=128 campos=0` de uma hora anterior
+  **ficou sem causa atribuída**, de propósito — não vou dar-lhe uma causa que não medi. O que sei
+  é o estado de agora, provado nos dois bullets acima.
+- **E um 404 que esteve para servir de prova não era prova.** A primeira versão do
+  `remote-estado2.mjs` construía `OUTRA_GRAFIA=turmarobabfr-26kiticabfr-26k` — 28 caracteres, ou
+  seja, *cola* os dois nomes em vez de trocar a grafia — e o `GET /repos/<essa string>` deu 404,
+  que não significa nada porque ninguém escreveu esse caminho. A ausência da grafia alternativa
+  prova-se pelo inventário da loja e pela igualdade dos três identificadores, não por um pedido a
+  um URL fabricado. Fica o registo do defeito para que ninguém volte a ler um 404 auto-infligido
+  como evidência sobre o mundo.
+- **Portão re-contado depois dos 5 commits locais deste dia:** `node scripts/portao-indice.mjs`
+  (sem argumentos) → `indice_arquivos=839 lidos=699 pulados_bin_ou_grande=140`,
+  `senha_literal=2 jwt=2 token_de_url=0 portadores=3`, `PORTAO_INDICE_VERDE`, com os mesmos 3
+  portadores e os mesmos comprimentos das `EXCECOES` (`427,427`, `10`, `10`). O delta contra os
+  `783/650/133` do bullet acima não é deriva nem contagem lembrada: **56 ficheiros adicionados**
+  nos 5 commits entre `c93e1c2` e o tip
+  (`git diff --name-only --diff-filter=A c93e1c2..HEAD | wc -l` → 56), e
+  `git ls-tree -r --name-only c93e1c2 | wc -l` → 783, que é precisamente o número antigo.
+- **Os 9 instrumentos `scripts/remote-*.mjs` do ciclo, e o que se fez com cada um.** Os 9 passam o
+  portão em modo controle (`senha=[]`, um a um) e nenhum leva forma de token: procurados por
+  `git…{20,}`, `gh[pousr]_…{20,}`, `github_pat_…{20,}` e hex-40 → 0 ocorrências nos 9; e o md5 da
+  chave viva, que foi impresso na conversa mas nunca guardado, não aparece em **nenhum** ficheiro
+  do repo. Cinco entram no índice (`remote-forma`, `remote-classifica`, `remote-alcance`,
+  `remote-estado`, `remote-estado2`) — este diário nomeia instrumentos, e um instrumento nomeado
+  mas fora do repo é exactamente o defeito de que o bullet do `seg-hash-vivo` se queixa. Quatro
+  ficam **fora do índice e em disco**: `remote-guarda`, `remote-deposita` e `remote-desfaz` são os
+  três passos de uma acção rejeitada (copiar o campo do URL para `~/.github-pat` e depositá-lo na
+  loja como `x-access-token`) — pô-los no índice seria fixar no repo, para quem clone, a ferramenta
+  com que se fez o que este ciclo concluiu que não se faz; e `remote-prova` faz `push --dry-run` **sem**
+  a pré-condição do `/user` 200, ou seja, é o instrumento que viola a regra do erase-on-401 — ficou
+  substituído pelo `remote-estado2`, que a cumpre.
 
 ### Fechado por medição (09/11 ~05:50–06:30Z), sem escrever em nada
 
@@ -784,6 +838,11 @@ normalizado.
    credencial mede-se com o portão D de `seg-p0-access-probe.mjs`. Enquanto isso, os **commits
    locais não sobem** — à última medição eram 19 (`8a93164`…`b4131b6`); re-contar com
    `git rev-list --count origin/main..HEAD`, porque cada commit local muda este número.
+   **Re-contado 14/11 ao fim da tarde: 0**, com `tip_local=23ba651` e `tip_remoto=23ba651` — o
+   histórico subiu todo sob o OK literal «fazer git push», e os «19» de cima passam a ser a medição
+   de 11/11, não o estado. O que nesta alínea continua por medir é a **revogação do PAT velho**:
+   nada neste diário a prova, e a única prova possível (`GET /user` com o valor velho) exige a
+   chave que este ciclo se recusou a guardar.
 2. **Decisão do CSP** — hoje não há nenhuma protecção declarada contra clickjacking. As rotas, com
    o que cada uma custa:
    - *só `frame-ancestors` como header HTTP do Worker* — o mínimo que fecha o buraco real; 1 linha no
