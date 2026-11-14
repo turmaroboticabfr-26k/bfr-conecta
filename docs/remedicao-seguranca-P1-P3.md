@@ -3,7 +3,21 @@
 Estado em 09/11/2026 (P0) / 08/11/2026 (P1–P3). Antes deste ficheiro, o plano só existia na
 conversa; nada em disco descrevia o que era P1/P2/P3. Este documento é a régua.
 
+**Actualizado 14/11** — as secções abaixo preservam o texto do dia em que cada medição foi corrida;
+o que mudou desde então está em «Em aberto depois deste passe» (fim do ficheiro), onde o P0 aparece
+fechado, o P2-3 publicado e o resíduo do P1 des-rastreado. Os hashes de commit citados no corpo são
+anteriores à reescrita de história de 10/11 e **já não existem como objetos**; verifiar-se proveniência
+com `git log --diff-filter=A -- <caminho>`, nunca com o hash lembrado.
+
 ## Prioridade 0 — token do GitHub no `.git/config` — 2 de 3 passos APLICADOS 09/11
+
+> **FECHADO 10/11 e conferido por git em 14/11.** O terceiro passo (credencial nova sem o valor
+> pelo chat, `bfr-conecta-push-rw`, Contents Read and write, depois rodado por Regenerate após leak
+> num snapshot) foi executado, e o que resta disto é verificável sem nenhuma chave:
+> `git merge-base --is-ancestor 7faed65 origin/main` → **SIM** (o histórico empurrado é posterior à
+> limpeza do URL), e `git ls-files scripts/ | grep -c '^scripts/seg-p0'` → **15** instrumentos do P0
+> no índice. O valor do token nunca foi escrito em disco: a rotação não tem registo em ficheiro de
+> propósito, porque copiar um URL com credencial criaria uma segunda credencial.
 
 O URL do remote `origin` tinha um **GitHub Personal Access Token clássico embutido em texto puro**,
 no formato `https://user:ghp_…@github.com/…`. Varredura completa das cópias
@@ -269,6 +283,17 @@ Medido no catálogo em 08/11 (`scripts/p2-2-verify.mjs`):
 fora do texto da função. Nada a mudar.
 
 ## Prioridade 2-3 — CSP `unsafe-inline` — ABERTO, exige decisão de produto
+
+> **PARCIALMENTE FECHADO — publicada 10/11, conferida em disco a 14/11.** O que estava em cima
+> («AUSENTES nos 7» headers) deixou de ser o estado do ar: a rota do shell passou a levar CSP
+> espelhada do `<meta>` caractere a caractere mais `nosniff`, `referrer-policy` e HSTS. A prova é
+> `docs/v118-csp-browser.json` — `quando 2026-11-10`, versão `9c467d0e-d16a-4c20-9e69-50ec3b40f433`,
+> deployment `56eb5868-2c33-45b4-85cb-55df01f95c69`, veredito `CSP_OK` com `bodyChars 3097946 ==
+> 3097946` e CSP de 742 caracteres presente na rota do shell e ausente nas rotas de SW/assets —
+> e `worker-deploy-v118-csp/portoes.json`, que hoje mede **21 portões, 21 verdes**.
+> Continua **em aberto a única parte que é decisão de produto**: `frame-ancestors` não foi acrescentada
+> (o `<meta>` não a transporta e o header foi deliberadamente um espelho, para não apertar além do
+> que o navegador já aplica), e `unsafe-inline` permanece nos 103 blocos.
 
 Re-medido 09/11 nos **bytes publicados** (`scripts/p23-csp-live.mjs`, alvo derivado de
 `audit-publicacao-v117.json`; diário em `evidence/p23-csp-live.json` e
@@ -658,7 +683,49 @@ normalizado.
 
 ## Em aberto depois deste passe
 
+### Estado re-contado a 14/11, a partir dos artefactos e não deste ficheiro
+
+- **P0 — FECHADO.** Ver o bloco no topo da secção Prioridade 0; a prova não precisa de chave
+  (`git merge-base --is-ancestor 7faed65 origin/main` → SIM).
+- **P2-3 — publicado 10/11** (CSP em header + `nosniff`/`referrer-policy`/HSTS só na rota do shell).
+  `frame-ancestors` e o `unsafe-inline` dos 103 blocos **continuam decisão de produto em aberto**.
+- **Resíduo do P1 des-rastreado 14/11.** Sete ficheiros rastreados carregavam `chave`/`senha`
+  literal de conta sintética: `docs/c2-accounts.json`, `docs/c7-accounts.json`,
+  `evidence/s19-accounts.json`, `docs/c2-diary.json`, `evidence/s19-diary.json`,
+  `scripts/c2-mint.mjs`, `scripts/s19-mint.mjs`. Saíram do índice (`git rm --cached`) com regra no
+  `.gitignore` e **permanecem em disco**. A lista não foi lembrada — foi medida por classe
+  (`scripts/classe-credencial.mjs`, `scripts/varre-classes-fortes.mjs`), e os 3 resíduos do portão
+  foram dispensados por instrumento estrutural (`scripts/claims-do-jwt.mjs` mostra URLs assinadas
+  de storage expiradas sem `role` nem `email`; `scripts/caminhos-das-chaves.mjs` mostra que o
+  `chave` de 10 caracteres é nome de coluna, não senha).
+- **Portão novo, e é a régua daqui em diante:** `node scripts/portao-indice.mjs` lê o **índice**
+  (`git show :caminho`) e devolve `PORTAO_INDICE_VERDE`; no instante de 14/11 deu
+  `indice_arquivos=783 lidos=650 pulados_bin_ou_grande=133`. Quem re-contar depois de outro commit
+  local obtém outro número — o valor é do comando, não deste parágrafo. Correcção 14/11: o modo de
+  controle **não** leva o prefixo `--control` que o comentário do script anuncia — com ele dá
+  `ENOENT ... \--control`. São caminhos soltos: `node scripts/portao-indice.mjs
+  docs/remedicao-seguranca-P1-P3.md`, e releem o **disco** com os mesmos padrões, para que o verde
+  não signifique cegueira. Isto importa porque o portão normal lê o **índice**: uma edição ainda não
+  *staged* é invisível para ele, logo `PORTAO_INDICE_VERDE` não prova o que está no meu editor.
+- **Isto não é purga.** `git rm --cached` limpa só o tip: os blobs dos 7 continuam no histórico, e
+  reescrever história voltou a não ser autorizado. O pedido ao GitHub
+  (`docs/support-github-purga-shas.md`) fala de outro valor.
+- **Efeito colateral medido da reescrita de 10/11:** os hashes de commit citados no corpo deste
+  ficheiro e nas memórias **já não existem como objetos** (`git cat-file -t c1ca925`, `5385066`,
+  `0782736`, `80c951c`, `ae91856` → todos inexistentes). A proveniência re-derive-se por caminho,
+  não por memória: `git log --diff-filter=A -- scripts/seg-p0-install-credencial.mjs` devolve
+  `b515235`, e `… scripts/seg-p0-sonda-classico.mjs` devolve `1bc875e`.
+
 ### Fechado por medição (09/11 ~05:50–06:30Z), sem escrever em nada
+
+- **Fronteira do corpus re-medida 14/11.** O `seg-fin-mem-varredura.mjs` passou a contar **8**
+  literais no disco onde a §7 comparou **6** — e os dois números não se contrariam, porque o
+  `seg-corpus-disco-7.mjs` mostra quais são os 2 extras: `md5 4742563a93bf len=21`
+  (`scripts/rm14-recon.mjs:60`) e `md5 a7a14a85f03a len=26` (`scripts/rm14-suite.mjs:99`). Ambos
+  são a **credencial falsa** do RM-1.4, enviada a um e-mail de sonda sem conta (`recusa de login`,
+  `docs/roadmap-master.md:513`), logo sem hash bcrypt para comparar. O assert «6 × 17 hashes = 0»
+  cobre todo o corpus autenticável: não ficou senha real por testar. Instrumento de leitura pura,
+  nunca imprime valor.
 
 - **Camada B (tokens de sessão nos blobs): morta.** 0 de 12 `sub` vazados têm linha em
   `auth.refresh_tokens`; as 3 contas S20 têm 0 sessões cada.
