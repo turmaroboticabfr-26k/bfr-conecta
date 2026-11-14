@@ -1,0 +1,55 @@
+{
+  "em": "2026-11-14T15:40:00.000Z",
+  "tarefa": "RM-6.9 / PEN-27 — prova no cliente (Chrome limpo) depois do deploy da candidata do 404",
+  "metodo": "somente leitura: navegador real da URL publicada, evaluate_script com waitForStableDom:false e list_console_messages; 0 escrita, 0 DDL, 0 mint",
+  "ar": "https://bfr-conecta.turmaroboticabfr.workers.dev",
+  "origem_dos_valores": "saídas literais de mcp__browser-use__evaluate_script e list_console_messages nesta conversa, 14/11, depois do deploy 9e921f95-52f8-494b-9e53-75eb6ad3eb72",
+  "boot": {
+    "url": "https://bfr-conecta.turmaroboticabfr.workers.dev/",
+    "title": "BFR Conecta | Escola Benício Ferreira Reis",
+    "ready": "complete",
+    "duracaoMs": 1168,
+    "temAppShell": true,
+    "appShellDisplay": "none",
+    "nota_appShellDisplay": "none é a banda de login: appShell só monta dentro de enterApp(); a tela visível é a de entrada",
+    "h1": "A escola mais próxima de cada família.",
+    "navItems": 57,
+    "bodyInnerHtml_len": 3098128,
+    "texto_visivel": "A escola mais próxima de cada família. Notas, frequência, agenda, comunicados e tudo o que importa para acompanhar a vida escolar. Bem-vindo de volta! Entre para gerenciar e fazer",
+    "botao_de_login_presente": true,
+    "serviceWorker": {
+      "active": "https://bfr-conecta.turmaroboticabfr.workers.dev/sw-v4.js?v=45",
+      "waiting": null,
+      "controller": true
+    }
+  },
+  "console": {
+    "erros": 1,
+    "lista": ["Failed to load resource: the server responded with a status of 404 (https://bfr-conecta.turmaroboticabfr.workers.dev/cdn-cgi/rum)"],
+    "nota": "o beacon do Cloudflare RUM cai fora do bundle e passa por esta mesma cadeia; antes do deploy ele produzia 500 no console do cliente, agora 404",
+    "nenhum_500_no_console": true,
+    "excecoes_de_js": 0
+  },
+  "probes_no_mesmo_contexto_com_sw_controlando": {
+    "/": { "http": 200, "ct": "text/html; charset=utf-8", "bytes": 3489649 },
+    "/sw-v4.js?v=<epoch>": { "http": 200, "bytes": 3586 },
+    "/um-caminho-que-nao-existe-zz": { "http": 404, "ct": "text/plain; charset=utf-8", "bytes": 9, "corpo": "Not found" },
+    "/firebase-messaging-sw.js": { "http": 404, "ct": "text/plain; charset=utf-8", "bytes": 9, "corpo": "Not found" },
+    "/aluno": { "http": 404, "ct": "text/plain; charset=utf-8", "bytes": 9, "corpo": "Not found" }
+  },
+  "portoes": {
+    "C1_shell_monta_no_navegador": { "valor": [true, 57, 3098128], "esperado": "appShell no DOM, navItems > 0, body montado", "passou": true },
+    "C2_zero_500_no_console": { "valor": 0, "esperado": 0, "passou": true },
+    "C3_caminho_desconhecido_404_com_sw": { "valor": "404 text/plain; charset=utf-8 9 B Not found", "esperado": "404 text/plain; charset=utf-8 9 B Not found", "passou": true },
+    "C4_rota_fcm_404_com_sw": { "valor": "404 text/plain; charset=utf-8 9 B Not found", "esperado": "404 text/plain; charset=utf-8 9 B Not found", "passou": true },
+    "C5_deep_link_aluno_404_com_sw": { "valor": "404 text/plain; charset=utf-8 9 B Not found", "esperado": "404 text/plain; charset=utf-8 9 B Not found", "passou": true },
+    "C6_shell_e_sw_inalterados_no_navegador": { "valor": [3489649, 3586], "esperado": [3489649, 3586], "passou": true }
+  },
+  "total": { "verde": 6, "vermelho": 0 },
+  "veredito": "RM69_CHROME_LIMPO_VERDE",
+  "o_que_NAO_prova": [
+    "não prova entrega de push em aparelho: o ouvinte `push` continua ausente do `/sw-v4.js?v=45` registrado — RM-1.5, tarefa #1144",
+    "não prova nenhuma tela autenticada: a banda medida é a de login, sem sessão",
+    "não decide se `/aluno` deveria servir o shell: RM-6.9 só troca o 500 pelo 404; deep-link SPA é decisão de produto"
+  ]
+}

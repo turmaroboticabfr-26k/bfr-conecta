@@ -1,0 +1,58 @@
+{
+  "em": "2026-11-14T15:39:59.160Z",
+  "tarefa": "PEN-34 — deep link de SPA: o 404 publicado do RM-6.9 atinge um caminho que o app usa?",
+  "metodo": "shell servido lido de https://bfr-conecta.turmaroboticabfr.workers.dev (URL derivada de audit-publicacao-v120-404.json, nunca dactilografada) + 4 sondas GET a caminhos de rota interna; contagens por regex no corpo servido, sem interpretar nada",
+  "diario_de_origem": "audit-publicacao-v120-404.json",
+  "versao_esperada_no_ar": "9e921f95-52f8-494b-9e53-75eb6ad3eb72",
+  "shell": {
+    "bytes": 3489649,
+    "md5": "a9a76d0e338c2a539135bccce23111b4"
+  },
+  "rotas_internas_sondadas": {
+    "/aluno": {
+      "http": 404,
+      "ct": "text/plain; charset=utf-8",
+      "bytes": 9,
+      "md5": "9e076f5885f5cc16a4b5aeb8de4adff5"
+    },
+    "/coordenacao": {
+      "http": 404,
+      "ct": "text/plain; charset=utf-8",
+      "bytes": 9,
+      "md5": "9e076f5885f5cc16a4b5aeb8de4adff5"
+    },
+    "/direcao": {
+      "http": 404,
+      "ct": "text/plain; charset=utf-8",
+      "bytes": 9,
+      "md5": "9e076f5885f5cc16a4b5aeb8de4adff5"
+    },
+    "/professor": {
+      "http": 404,
+      "ct": "text/plain; charset=utf-8",
+      "bytes": 9,
+      "md5": "9e076f5885f5cc16a4b5aeb8de4adff5"
+    }
+  },
+  "marcas_no_shell": {
+    "location_pathname": 5,
+    "location_hash": 9,
+    "pushState": 0,
+    "replaceState": 4,
+    "popstate": 1,
+    "href_com_hash": 3,
+    "data_route": 0,
+    "nav_item": 68,
+    "addEventListener_click_delegado": 231,
+    "setRoute_por_string": 0,
+    "rota_aluno_string": 14,
+    "rota_coordenacao_string": 12,
+    "caminho_absoluto_no_html": 0
+  },
+  "exemplos_caminhos_em_href_ou_src": [],
+  "leitura": {
+    "porque_faz_a_diferenca": "se o app navega por estado interno e não por caminho de URL, o 404 do RM-6.9 só é visível em URLs partilhadas/escritas à mão e a PEN-34 é de produto (escolha de design), não de regressão",
+    "o_que_esta_provado_aqui": "apenas o que o shell faz hoje com o caminho do URL — medido por contagem, não por execução de navegação",
+    "o_que_NAO_prova": "não prova que abrir /aluno a partir de um link interno exista como fluxo; não corre nenhuma navegação autenticada; não mede o comportamento do SW diante de um deep link (isso exige o browser)"
+  }
+}

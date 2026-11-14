@@ -1,0 +1,648 @@
+{
+  "version": "v120-404",
+  "data": "2026-11-14",
+  "ok_literal": "publicar a candidata v120-404",
+  "escopo_do_ok": "somente este deploy do Worker bfr-conecta; não cobre publicar a candidata de cliente v121, nem aplicar o SQL do RM-6.8, nem o reparo RM-1.5 do push",
+  "tarefa": "RM-6.9 / PEN-27 — caminhos fora do bundle devem dar 404, não 500",
+  "deploy": {
+    "worker": "bfr-conecta",
+    "conta": "turmaroboticabfr@gmail.com",
+    "version_id": "9e921f95-52f8-494b-9e53-75eb6ad3eb72",
+    "version_anterior": "8cad1145-a975-4fd6-8a7b-2fd4e9a4209c",
+    "deployment_created": "2026-11-14T15:24:11.249Z",
+    "version_created": "2026-11-14T15:24:09.723Z",
+    "percentual_trafego_novo": 100,
+    "wrangler": "4.154.0",
+    "cwd": "worker-deploy-v120-404",
+    "url": "https://bfr-conecta.turmaroboticabfr.workers.dev",
+    "stdout": "Uploaded bfr-conecta | No updated asset files to upload | Deployed bfr-conecta triggers",
+    "fonte_dos_numeros": "stdout do wrangler deploy na conversa + `npx --yes wrangler@4.154.0 deployments status` (somente leitura) re-emitido em 14/11 antes de escrever este diário",
+    "comando_da_url": "derivado de audit-publicacao-v120.json -> deploy.url, nunca dactilografado",
+    "aviso_de_ferramenta": "wrangler 4.156+ quebra o upload de assets com o erro 100312; a versão continua fixada em 4.154.0 e resolvida do cache do npx"
+  },
+  "correcao": {
+    "pendencia": "PEN-27 / RM-6.9 (achado RM13-A2 da medição de 12/11)",
+    "problema": "todo caminho que não estava nas 4 rotas fixas nem nos 12 assets do bundle respondia 500 com 4.720 B de HTML do erro do Cloudflare, em vez de 404",
+    "causa": "o handler passava STRING (`assetUrl`) ao `env.ASSETS.fetch()`; o runtime recusa (`The first argument to ASSETS.fetch must be a Request or URL object`) e a exceção escapava antes do fallback, virando 1101/500",
+    "solucao": "o bloco de 304 B (md5 775f010c27cc1454de652c5ebafa39e3) passou a chamar `await env.ASSETS.fetch(request)` com o Request e, se o asset devolver 404, a responder `new Response(\"Not found\", { status: 404, headers: NOFOUNDR })` com text/plain e nosniff/HSTS/no-store; sem ASSETS ligado, o mesmo 404",
+    "alcance_medido": "delta de 530 bytes no worker.mjs, exatamente 5 linhas alteradas; CSP, HTML e SW byte-identicos ao v120 (P5/P5b/P5c do diário da candidata) e os 12 assets idênticos ao diretório base (G7)",
+    "o_que_NAO_foi_alterado": "nenhum byte do shell (a9a76d0e338c2a539135bccce23111b4…) nem do service worker (289f1f1dc82a2eb2e091994916af3e97…); nenhuma rota de API; o `/firebase-messaging-sw.js` continua a não existir — criar a rota é decisão do RM-1.5, não daqui"
+  },
+  "md5": {
+    "worker-deploy-v120/worker.mjs_base": "bc1f88ebed10660e56eac3f983159bad (3550890 B)",
+    "worker-deploy-v120-404/worker.mjs_publicado": "70ecf617866b422ac569e216e7cc1974 (3551420 B)",
+    "wrangler_toml_base": "f82b42bdf2952fa7c261fd1343ef60b0 (175 B)",
+    "wrangler_toml_publicado": "f82b42bdf2952fa7c261fd1343ef60b0 (175 B)",
+    "shell_antes_e_depois": "a9a76d0e338c2a539135bccce23111b4 (3489649 B) — inalterado",
+    "sw_antes_e_depois": "289f1f1dc82a2eb2e091994916af3e97 (3586 B, CACHE bfr-conecta-v120) — inalterado",
+    "manifest_json": "68d155183c80e3e554466ce2415cb268 (484 B)",
+    "corpo_do_404": "9e076f5885f5cc16a4b5aeb8de4adff5 (9 B \"Not found\")",
+    "emissao": "md5 e bytes recalculados do disco por este script, e os md5 servidos vindos dos diários rm69-antes/rm69-depois, re-emitidos em 14/11"
+  },
+  "medicao": {
+    "metodo": "as tabelas abaixo são o digest {http, ct, bytes, md5, csp} de cada sonda; o corpo_response cru só vive nos diários de origem (evidence/rm69-antes-14-11.json e -depois-14-11.json), que juntos pesam 14 MB porque duas sondas servem o shell de 3489649 B — duplicá-los aqui seria copiar evidência, não medi-la",
+    "ar_antes": {
+      "em": "2026-11-14T15:23:36.013Z",
+      "veredito": "RM69_ANTES_MEDIDO",
+      "total": {
+        "verde": 9,
+        "vermelho": 0
+      },
+      "ar": "https://bfr-conecta.turmaroboticabfr.workers.dev",
+      "rotas": {
+        "/": {
+          "http": 200,
+          "ct": "text/html; charset=utf-8",
+          "bytes": 3489649,
+          "md5": "a9a76d0e338c2a539135bccce23111b4",
+          "csp": "default-src 'self'; base-uri 'self'; object-src 'none'; script-src 'self' 'unsafe-inline' https://bfr-conecta.turmaroboticabfr.workers.dev https://cdn.jsdelivr.net https://static.cloudflareinsights.com https://www.gstatic.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: blob: https:; connect-src 'self' https://bfr-conecta.turmaroboticabfr.workers.dev https://*.supabase.co wss://*.supabase.co https://cloudflareinsights.com https://*.cloudflareinsights.com https://*.googleapis.com https://fcm.googleapis.com https://api.open-meteo.com; worker-src 'self' blob:; manifest-src 'self'; form-action 'self' https://accounts.google.com https://*.supabase.co"
+        },
+        "/index.html": {
+          "http": 200,
+          "ct": "text/html; charset=utf-8",
+          "bytes": 3489649,
+          "md5": "a9a76d0e338c2a539135bccce23111b4",
+          "csp": "default-src 'self'; base-uri 'self'; object-src 'none'; script-src 'self' 'unsafe-inline' https://bfr-conecta.turmaroboticabfr.workers.dev https://cdn.jsdelivr.net https://static.cloudflareinsights.com https://www.gstatic.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: blob: https:; connect-src 'self' https://bfr-conecta.turmaroboticabfr.workers.dev https://*.supabase.co wss://*.supabase.co https://cloudflareinsights.com https://*.cloudflareinsights.com https://*.googleapis.com https://fcm.googleapis.com https://api.open-meteo.com; worker-src 'self' blob:; manifest-src 'self'; form-action 'self' https://accounts.google.com https://*.supabase.co"
+        },
+        "/sw-v4.js": {
+          "http": 200,
+          "ct": "application/javascript; charset=utf-8",
+          "bytes": 3586,
+          "md5": "289f1f1dc82a2eb2e091994916af3e97",
+          "csp": ""
+        },
+        "/firebase-messaging-sw.js": {
+          "http": 500,
+          "ct": "text/html; charset=UTF-8",
+          "bytes": 4720,
+          "md5": "953dbe91b955d7452d49646040683d2c",
+          "csp": ""
+        },
+        "/qualquer-rota-inexistente-zz": {
+          "http": 500,
+          "ct": "text/html; charset=UTF-8",
+          "bytes": 4720,
+          "md5": "ee77a4a489dde364178e5c285e27ba74",
+          "csp": ""
+        },
+        "/manifest.json": {
+          "http": 200,
+          "ct": "application/json",
+          "bytes": 484,
+          "md5": "68d155183c80e3e554466ce2415cb268",
+          "csp": ""
+        },
+        "/favicon.ico": {
+          "http": 500,
+          "ct": "text/html; charset=UTF-8",
+          "bytes": 4720,
+          "md5": "cb80ece38885657f6701376e7df1577d",
+          "csp": ""
+        },
+        "/aluno": {
+          "http": 500,
+          "ct": "text/html; charset=UTF-8",
+          "bytes": 4720,
+          "md5": "151ab700c9c8fb25fa2182dfa658ce79",
+          "csp": ""
+        },
+        "/rota-que-nao-existe-tampouco": {
+          "http": 500,
+          "ct": "text/html; charset=UTF-8",
+          "bytes": 4720,
+          "md5": "8a007f08a1560ac593df9f153594f23a",
+          "csp": ""
+        }
+      }
+    },
+    "ar_depois": {
+      "em": "2026-11-14T15:24:24.301Z",
+      "veredito": "RM69_DEPOIS_VERDE",
+      "total": {
+        "verde": 9,
+        "vermelho": 0
+      },
+      "ar": "https://bfr-conecta.turmaroboticabfr.workers.dev",
+      "rotas": {
+        "/": {
+          "http": 200,
+          "ct": "text/html; charset=utf-8",
+          "bytes": 3489649,
+          "md5": "a9a76d0e338c2a539135bccce23111b4",
+          "csp": "default-src 'self'; base-uri 'self'; object-src 'none'; script-src 'self' 'unsafe-inline' https://bfr-conecta.turmaroboticabfr.workers.dev https://cdn.jsdelivr.net https://static.cloudflareinsights.com https://www.gstatic.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: blob: https:; connect-src 'self' https://bfr-conecta.turmaroboticabfr.workers.dev https://*.supabase.co wss://*.supabase.co https://cloudflareinsights.com https://*.cloudflareinsights.com https://*.googleapis.com https://fcm.googleapis.com https://api.open-meteo.com; worker-src 'self' blob:; manifest-src 'self'; form-action 'self' https://accounts.google.com https://*.supabase.co"
+        },
+        "/index.html": {
+          "http": 200,
+          "ct": "text/html; charset=utf-8",
+          "bytes": 3489649,
+          "md5": "a9a76d0e338c2a539135bccce23111b4",
+          "csp": "default-src 'self'; base-uri 'self'; object-src 'none'; script-src 'self' 'unsafe-inline' https://bfr-conecta.turmaroboticabfr.workers.dev https://cdn.jsdelivr.net https://static.cloudflareinsights.com https://www.gstatic.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: blob: https:; connect-src 'self' https://bfr-conecta.turmaroboticabfr.workers.dev https://*.supabase.co wss://*.supabase.co https://cloudflareinsights.com https://*.cloudflareinsights.com https://*.googleapis.com https://fcm.googleapis.com https://api.open-meteo.com; worker-src 'self' blob:; manifest-src 'self'; form-action 'self' https://accounts.google.com https://*.supabase.co"
+        },
+        "/sw-v4.js": {
+          "http": 200,
+          "ct": "application/javascript; charset=utf-8",
+          "bytes": 3586,
+          "md5": "289f1f1dc82a2eb2e091994916af3e97",
+          "csp": ""
+        },
+        "/firebase-messaging-sw.js": {
+          "http": 404,
+          "ct": "text/plain; charset=utf-8",
+          "bytes": 9,
+          "md5": "9e076f5885f5cc16a4b5aeb8de4adff5",
+          "csp": ""
+        },
+        "/qualquer-rota-inexistente-zz": {
+          "http": 404,
+          "ct": "text/plain; charset=utf-8",
+          "bytes": 9,
+          "md5": "9e076f5885f5cc16a4b5aeb8de4adff5",
+          "csp": ""
+        },
+        "/manifest.json": {
+          "http": 200,
+          "ct": "application/json",
+          "bytes": 484,
+          "md5": "68d155183c80e3e554466ce2415cb268",
+          "csp": ""
+        },
+        "/favicon.ico": {
+          "http": 404,
+          "ct": "text/plain; charset=utf-8",
+          "bytes": 9,
+          "md5": "9e076f5885f5cc16a4b5aeb8de4adff5",
+          "csp": ""
+        },
+        "/aluno": {
+          "http": 404,
+          "ct": "text/plain; charset=utf-8",
+          "bytes": 9,
+          "md5": "9e076f5885f5cc16a4b5aeb8de4adff5",
+          "csp": ""
+        },
+        "/rota-que-nao-existe-tampouco": {
+          "http": 404,
+          "ct": "text/plain; charset=utf-8",
+          "bytes": 9,
+          "md5": "9e076f5885f5cc16a4b5aeb8de4adff5",
+          "csp": ""
+        }
+      }
+    },
+    "delta_por_rota": [
+      {
+        "rota": "/",
+        "antes": "200 text/html; charset=utf-8 3489649 B",
+        "depois": "200 text/html; charset=utf-8 3489649 B",
+        "mudou": false
+      },
+      {
+        "rota": "/index.html",
+        "antes": "200 text/html; charset=utf-8 3489649 B",
+        "depois": "200 text/html; charset=utf-8 3489649 B",
+        "mudou": false
+      },
+      {
+        "rota": "/sw-v4.js",
+        "antes": "200 application/javascript; charset=utf-8 3586 B",
+        "depois": "200 application/javascript; charset=utf-8 3586 B",
+        "mudou": false
+      },
+      {
+        "rota": "/firebase-messaging-sw.js",
+        "antes": "500 text/html; charset=UTF-8 4720 B",
+        "depois": "404 text/plain; charset=utf-8 9 B",
+        "mudou": true
+      },
+      {
+        "rota": "/qualquer-rota-inexistente-zz",
+        "antes": "500 text/html; charset=UTF-8 4720 B",
+        "depois": "404 text/plain; charset=utf-8 9 B",
+        "mudou": true
+      },
+      {
+        "rota": "/manifest.json",
+        "antes": "200 application/json 484 B",
+        "depois": "200 application/json 484 B",
+        "mudou": false
+      },
+      {
+        "rota": "/favicon.ico",
+        "antes": "500 text/html; charset=UTF-8 4720 B",
+        "depois": "404 text/plain; charset=utf-8 9 B",
+        "mudou": true
+      },
+      {
+        "rota": "/aluno",
+        "antes": "500 text/html; charset=UTF-8 4720 B",
+        "depois": "404 text/plain; charset=utf-8 9 B",
+        "mudou": true
+      },
+      {
+        "rota": "/rota-que-nao-existe-tampouco",
+        "antes": "500 text/html; charset=UTF-8 4720 B",
+        "depois": "404 text/plain; charset=utf-8 9 B",
+        "mudou": true
+      }
+    ],
+    "candidata_offline": {
+      "em": "2026-11-14T07:32:23.131Z",
+      "veredito": "RM69_CANDIDATA_PRONTA_NAO_PUBLICADA",
+      "total": {
+        "ok": 22,
+        "falha": 0
+      },
+      "censo": {
+        "controle": {
+          "/": {
+            "http": 200,
+            "ct": "text/html; charset=utf-8",
+            "lanca": false,
+            "pedidos": []
+          },
+          "/index.html": {
+            "http": 200,
+            "ct": "text/html; charset=utf-8",
+            "lanca": false,
+            "pedidos": []
+          },
+          "/sw.js": {
+            "http": 200,
+            "ct": "application/javascript; charset=utf-8",
+            "lanca": false,
+            "pedidos": []
+          },
+          "/sw-v4.js": {
+            "http": 200,
+            "ct": "application/javascript; charset=utf-8",
+            "lanca": false,
+            "pedidos": []
+          },
+          "/manifest.json": {
+            "http": null,
+            "ct": "",
+            "lanca": true,
+            "erro": "TypeError: Invalid arguments: The first argument to ASSETS.fetch must be a Request or URL object.",
+            "pedidos": []
+          },
+          "/favicon.ico": {
+            "http": null,
+            "ct": "",
+            "lanca": true,
+            "erro": "TypeError: Invalid arguments: The first argument to ASSETS.fetch must be a Request or URL object.",
+            "pedidos": []
+          },
+          "/aluno": {
+            "http": null,
+            "ct": "",
+            "lanca": true,
+            "erro": "TypeError: Invalid arguments: The first argument to ASSETS.fetch must be a Request or URL object.",
+            "pedidos": []
+          },
+          "/coordenacao": {
+            "http": null,
+            "ct": "",
+            "lanca": true,
+            "erro": "TypeError: Invalid arguments: The first argument to ASSETS.fetch must be a Request or URL object.",
+            "pedidos": []
+          },
+          "/robots.txt": {
+            "http": null,
+            "ct": "",
+            "lanca": true,
+            "erro": "TypeError: Invalid arguments: The first argument to ASSETS.fetch must be a Request or URL object.",
+            "pedidos": []
+          },
+          "/sitemap.xml": {
+            "http": null,
+            "ct": "",
+            "lanca": true,
+            "erro": "TypeError: Invalid arguments: The first argument to ASSETS.fetch must be a Request or URL object.",
+            "pedidos": []
+          },
+          "/manifest.webmanifest": {
+            "http": null,
+            "ct": "",
+            "lanca": true,
+            "erro": "TypeError: Invalid arguments: The first argument to ASSETS.fetch must be a Request or URL object.",
+            "pedidos": []
+          },
+          "/qualquer-rota-inexistente-zz": {
+            "http": null,
+            "ct": "",
+            "lanca": true,
+            "erro": "TypeError: Invalid arguments: The first argument to ASSETS.fetch must be a Request or URL object.",
+            "pedidos": []
+          }
+        },
+        "candidata": {
+          "/": {
+            "http": 200,
+            "ct": "text/html; charset=utf-8",
+            "lanca": false,
+            "pedidos": []
+          },
+          "/index.html": {
+            "http": 200,
+            "ct": "text/html; charset=utf-8",
+            "lanca": false,
+            "pedidos": []
+          },
+          "/sw.js": {
+            "http": 200,
+            "ct": "application/javascript; charset=utf-8",
+            "lanca": false,
+            "pedidos": []
+          },
+          "/sw-v4.js": {
+            "http": 200,
+            "ct": "application/javascript; charset=utf-8",
+            "lanca": false,
+            "pedidos": []
+          },
+          "/manifest.json": {
+            "http": 200,
+            "ct": "application/octet-stream",
+            "lanca": false,
+            "pedidos": [
+              "/manifest.json"
+            ]
+          },
+          "/favicon.ico": {
+            "http": 404,
+            "ct": "text/plain; charset=utf-8",
+            "lanca": false,
+            "pedidos": [
+              "/favicon.ico"
+            ]
+          },
+          "/aluno": {
+            "http": 404,
+            "ct": "text/plain; charset=utf-8",
+            "lanca": false,
+            "pedidos": [
+              "/aluno"
+            ]
+          },
+          "/coordenacao": {
+            "http": 404,
+            "ct": "text/plain; charset=utf-8",
+            "lanca": false,
+            "pedidos": [
+              "/coordenacao"
+            ]
+          },
+          "/robots.txt": {
+            "http": 404,
+            "ct": "text/plain; charset=utf-8",
+            "lanca": false,
+            "pedidos": [
+              "/robots.txt"
+            ]
+          },
+          "/sitemap.xml": {
+            "http": 404,
+            "ct": "text/plain; charset=utf-8",
+            "lanca": false,
+            "pedidos": [
+              "/sitemap.xml"
+            ]
+          },
+          "/manifest.webmanifest": {
+            "http": 404,
+            "ct": "text/plain; charset=utf-8",
+            "lanca": false,
+            "pedidos": [
+              "/manifest.webmanifest"
+            ]
+          },
+          "/qualquer-rota-inexistente-zz": {
+            "http": 404,
+            "ct": "text/plain; charset=utf-8",
+            "lanca": false,
+            "pedidos": [
+              "/qualquer-rota-inexistente-zz"
+            ]
+          }
+        }
+      },
+      "metodos": "node:http local com um mock de ASSETS.fetch que valida o tipo do argumento, como o runtime"
+    },
+    "chrome_limpo": {
+      "em": "2026-11-14T15:40:00.000Z",
+      "veredito": "RM69_CHROME_LIMPO_VERDE",
+      "total": {
+        "verde": 6,
+        "vermelho": 0
+      },
+      "boot": {
+        "url": "https://bfr-conecta.turmaroboticabfr.workers.dev/",
+        "title": "BFR Conecta | Escola Benício Ferreira Reis",
+        "ready": "complete",
+        "duracaoMs": 1168,
+        "temAppShell": true,
+        "appShellDisplay": "none",
+        "nota_appShellDisplay": "none é a banda de login: appShell só monta dentro de enterApp(); a tela visível é a de entrada",
+        "h1": "A escola mais próxima de cada família.",
+        "navItems": 57,
+        "bodyInnerHtml_len": 3098128,
+        "texto_visivel": "A escola mais próxima de cada família. Notas, frequência, agenda, comunicados e tudo o que importa para acompanhar a vida escolar. Bem-vindo de volta! Entre para gerenciar e fazer",
+        "botao_de_login_presente": true,
+        "serviceWorker": {
+          "active": "https://bfr-conecta.turmaroboticabfr.workers.dev/sw-v4.js?v=45",
+          "waiting": null,
+          "controller": true
+        }
+      },
+      "console": {
+        "erros": 1,
+        "lista": [
+          "Failed to load resource: the server responded with a status of 404 (https://bfr-conecta.turmaroboticabfr.workers.dev/cdn-cgi/rum)"
+        ],
+        "nota": "o beacon do Cloudflare RUM cai fora do bundle e passa por esta mesma cadeia; antes do deploy ele produzia 500 no console do cliente, agora 404",
+        "nenhum_500_no_console": true,
+        "excecoes_de_js": 0
+      },
+      "probes": {
+        "/": {
+          "http": 200,
+          "ct": "text/html; charset=utf-8",
+          "bytes": 3489649
+        },
+        "/sw-v4.js?v=<epoch>": {
+          "http": 200,
+          "bytes": 3586
+        },
+        "/um-caminho-que-nao-existe-zz": {
+          "http": 404,
+          "ct": "text/plain; charset=utf-8",
+          "bytes": 9,
+          "corpo": "Not found"
+        },
+        "/firebase-messaging-sw.js": {
+          "http": 404,
+          "ct": "text/plain; charset=utf-8",
+          "bytes": 9,
+          "corpo": "Not found"
+        },
+        "/aluno": {
+          "http": 404,
+          "ct": "text/plain; charset=utf-8",
+          "bytes": 9,
+          "corpo": "Not found"
+        }
+      }
+    }
+  },
+  "portoes": {
+    "candidata_offline": "22/0 VERDE - evidence/rm69-candidata-14-11.json (RM69_CANDIDATA_PRONTA_NAO_PUBLICADA)",
+    "http_antes": "9/0 VERDE - evidence/rm69-antes-14-11.json (RM69_ANTES_MEDIDO)",
+    "http_depois": "9/0 VERDE - evidence/rm69-depois-14-11.json (RM69_DEPOIS_VERDE)",
+    "chrome_limpo": "6/0 VERDE - evidence/rm69-chrome-limpo-14-11.json (RM69_CHROME_LIMPO_VERDE)",
+    "deste_diario": "19/0",
+    "total_da_cadeia": 65,
+    "vermelhos": 0,
+    "falhas_deste_diario": {
+      "G1_url_vem_do_diario_v120": {
+        "valor": "https://bfr-conecta.turmaroboticabfr.workers.dev",
+        "esperado": "https://bfr-conecta.turmaroboticabfr.workers.dev",
+        "passou": true
+      },
+      "G2_anterior_e_a_v120_publicada": {
+        "valor": "8cad1145-a975-4fd6-8a7b-2fd4e9a4209c",
+        "esperado": "8cad1145-a975-4fd6-8a7b-2fd4e9a4209c",
+        "passou": true
+      },
+      "G3_o_que_foi_publicado_e_a_candidata_gateada": {
+        "valor": "70ecf617866b422ac569e216e7cc1974",
+        "esperado": "70ecf617866b422ac569e216e7cc1974",
+        "passou": true
+      },
+      "G4_base_inalterada_no_disco": {
+        "valor": "bc1f88ebed10660e56eac3f983159bad",
+        "esperado": "bc1f88ebed10660e56eac3f983159bad",
+        "passou": true
+      },
+      "G5_delta_de_bytes_bate_com_o_portao": {
+        "valor": 530,
+        "esperado": 530,
+        "passou": true
+      },
+      "G6_wrangler_toml_identico": {
+        "valor": "f82b42bdf2952fa7c261fd1343ef60b0",
+        "esperado": "f82b42bdf2952fa7c261fd1343ef60b0",
+        "passou": true
+      },
+      "G7_assets_identicos_a_base": {
+        "valor": true,
+        "esperado": true,
+        "passou": true
+      },
+      "G8_antes_medido_verde": {
+        "valor": "RM69_ANTES_MEDIDO 9/0",
+        "esperado": "RM69_ANTES_MEDIDO 9/0",
+        "passou": true
+      },
+      "G9_depois_verde": {
+        "valor": "RM69_DEPOIS_VERDE 9/0",
+        "esperado": "RM69_DEPOIS_VERDE 9/0",
+        "passou": true
+      },
+      "G10_candidata_22_0": {
+        "valor": "RM69_CANDIDATA_PRONTA_NAO_PUBLICADA 22/0",
+        "esperado": "RM69_CANDIDATA_PRONTA_NAO_PUBLICADA 22/0",
+        "passou": true
+      },
+      "G11_chrome_limpo_6_0": {
+        "valor": "RM69_CHROME_LIMPO_VERDE 6/0",
+        "esperado": "RM69_CHROME_LIMPO_VERDE 6/0",
+        "passou": true
+      },
+      "G12_shell_igual_ao_da_v120": {
+        "valor": [
+          "a9a76d0e338c2a539135bccce23111b4",
+          "a9a76d0e338c2a539135bccce23111b4"
+        ],
+        "esperado": [
+          "a9a76d0e338c2a539135bccce23111b4",
+          "a9a76d0e338c2a539135bccce23111b4"
+        ],
+        "passou": true
+      },
+      "G13_sw_igual_ao_da_v120": {
+        "valor": [
+          "289f1f1dc82a2eb2e091994916af3e97",
+          "289f1f1dc82a2eb2e091994916af3e97"
+        ],
+        "esperado": [
+          "289f1f1dc82a2eb2e091994916af3e97",
+          "289f1f1dc82a2eb2e091994916af3e97"
+        ],
+        "passou": true
+      },
+      "G14_os_500_de_antes_viraram_404": {
+        "valor": [
+          "/firebase-messaging-sw.js=404",
+          "/qualquer-rota-inexistente-zz=404",
+          "/favicon.ico=404",
+          "/aluno=404",
+          "/rota-que-nao-existe-tampouco=404"
+        ],
+        "esperado": [
+          "/firebase-messaging-sw.js=404",
+          "/qualquer-rota-inexistente-zz=404",
+          "/favicon.ico=404",
+          "/aluno=404",
+          "/rota-que-nao-existe-tampouco=404"
+        ],
+        "passou": true
+      },
+      "G14b_sao_cinco_caminhos_fora_do_bundle": {
+        "valor": 5,
+        "esperado": 5,
+        "passou": true
+      },
+      "G15_404_e_text_plain_de_9_bytes": {
+        "valor": [
+          "text/plain; charset=utf-8 9 B"
+        ],
+        "esperado": [
+          "text/plain; charset=utf-8 9 B"
+        ],
+        "passou": true
+      },
+      "G15b_corpo_do_404_e_a_string_do_codigo": {
+        "valor": [
+          "9e076f5885f5cc16a4b5aeb8de4adff5"
+        ],
+        "esperado": [
+          "9e076f5885f5cc16a4b5aeb8de4adff5"
+        ],
+        "passou": true
+      },
+      "G16_nenhum_asset_regrediu": {
+        "valor": 0,
+        "esperado": 0,
+        "passou": true
+      },
+      "G17_console_do_cliente_sem_500": {
+        "valor": true,
+        "esperado": true,
+        "passou": true
+      }
+    }
+  },
+  "o_que_NAO_foi_provado": [
+    "push exibido no aparelho: o `/sw-v4.js?v=45` registrado continua sem ouvinte `push` nem `notificationclick` (RM13-A1). RM-6.9 só trocou o 500 pelo 404 na rota; o conserto do recetor é o RM-1.5, tarefa #1144, e precisa de OK próprio",
+    "nenhuma conta autenticada foi usada: a prova de cliente é a banda de login",
+    "deep link SPA: `/aluno` agora dá 404 em vez de servir o shell — é o comportamento correto de um caminho fora do bundle, mas significa que o Worker não faz fallback de rota para o cliente; decisão de produto registrada como PEN nova",
+    "0 DDL, 0 escrita em banco, 0 mint, 0 deploy de EdgeFunction nesta passada"
+  ],
+  "reversao": {
+    "como": "wrangler deploy a partir de worker-deploy-v120 (worker 3550890 B md5 bc1f88ebed10660e56eac3f983159bad), que continua intacto no disco",
+    "volta_para": "version_id 8cad1145-a975-4fd6-8a7b-2fd4e9a4209c (a v120 de 13/11 06:49:57Z)",
+    "prova_de_linhagem": "o único ficheiro alterado é worker.mjs; os 12 assets e o wrangler.toml são byte-idênticos nos dois diretórios (G6/G7), logo reverter não move asset nenhum",
+    "exige": "OK literal novo do usuário"
+  },
+  "diario_de": "este ficheiro é gerado por scripts/rm69-diario-publicacao.mjs a partir de audit-publicacao-v120.json e dos quatro diários evidence/rm69-*.json"
+}
