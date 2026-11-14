@@ -781,7 +781,11 @@ normalizado.
   `783/650/133` do bullet acima não é deriva nem contagem lembrada: **56 ficheiros adicionados**
   nos 5 commits entre `c93e1c2` e o tip
   (`git diff --name-only --diff-filter=A c93e1c2..HEAD | wc -l` → 56), e
-  `git ls-tree -r --name-only c93e1c2 | wc -l` → 783, que é precisamente o número antigo.
+  `git ls-tree -r --name-only c93e1c2 | wc -l` → 783, que é precisamente o número antigo. Com os
+  cinco instrumentos já no índice a mesma régua dá `844/704/140`: `+5` ficheiros, `+5` lidos,
+  `pulados` e os 3 portadores intactos. É o número do comando, outra vez, e é também a prova de que
+  o verde não vem de o portão ter ficado cego para os ficheiros novos — os 9 instrumentos foram
+  varridos um a um pelo modo de controle **antes** de entrarem, e pelo varrimento normal depois.
 - **Os 9 instrumentos `scripts/remote-*.mjs` do ciclo, e o que se fez com cada um.** Os 9 passam o
   portão em modo controle (`senha=[]`, um a um) e nenhum leva forma de token: procurados por
   `git…{20,}`, `gh[pousr]_…{20,}`, `github_pat_…{20,}` e hex-40 → 0 ocorrências nos 9; e o md5 da
