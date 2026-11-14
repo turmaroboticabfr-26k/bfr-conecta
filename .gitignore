@@ -68,3 +68,26 @@ scripts/rm14-suite.mjs
 # Sobra de execucao: nunca entraram no indice (0 .err rastreados).
 *.err
 err.log
+
+# 14/11 — triagem por CLASSE dos 785 ficheiros rastreados (scripts/classe-credencial.mjs
+# + scripts/varre-classes-fortes.mjs). Nada por memoria: os 5 nomes que a nota antiga
+# apontava (c7-fixtures, c7-2-resumo-jornada, s19-fixtures, e2e2-fixture,
+# pf-throttle-fixture) dao 0 ocorrencias de qualquer classe. Os 7 portadores reais sao
+# estes, e cada um carrega senha literal de conta sintetica no campo `chave`:
+#   docs/c2-accounts.json 4 (7,10,6,7)   docs/c7-accounts.json 3 (8,11,9)
+#   evidence/s19-accounts.json 4 (9,8,11,10)  <- os tres ja cobertos por *-accounts.json
+#   docs/c2-diary.json 4   evidence/s19-diary.json 4 (+1 URL assinada, expirada)
+#   scripts/c2-mint.mjs 4  scripts/s19-mint.mjs 4
+# Os diarios e os mint vao por ficheiro: *-diary.json atingiria 30 diarios de portoes
+# sem credencial alguma, e *-mint.mjs casaria com f0-8-mint-supervisor.mjs e
+# scripts/s20-contas-mint.mjs, que medem 0 porque lem a credencial de fora.
+docs/c2-diary.json
+evidence/s19-diary.json
+scripts/c2-mint.mjs
+scripts/s19-mint.mjs
+# Falsos positivos medidos, ficam rastreados: chave=identificador `schema.tabela.coluna`
+# (docs/c2r-42p17-dryrun.json, 14x), chave=rotulo de hunk SQL (pf-throttle-*.json/.mjs),
+# MD5_URL_TOKEN=prefixo md5 de 8 hex (scripts/seg-p0-access-probe.mjs), `…` de prosa
+# (remedicao-P1-P3.md :171/:387), placeholder ${} (seg-p1/seg-rotacao-8/seg-precommit-gate),
+# sb_publishable_* / Firebase apiKey / VAPID = chaves publicas ja no bundle publicado
+# (20 ficheiros) e os 3 tokens de URL assinada do e2e4/s19, todos com expiracao passada.
