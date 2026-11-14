@@ -1,0 +1,248 @@
+{
+  "em": "2026-11-14T07:14:10.275Z",
+  "tarefa": "RM-1.5/RM-6.9 passo 0 — estado vivo das rotas",
+  "metodo": "somente leitura: 0 escrita, 0 DDL, 0 deploy",
+  "diario_de_origem": "audit-publicacao-v120.json",
+  "versao_esperada": "v120",
+  "ar": "https://bfr-conecta.turmaroboticabfr.workers.dev",
+  "regua_local": {
+    "worker_dir": "worker-deploy-v120",
+    "worker_md5": "bc1f88ebed10660e56eac3f983159bad",
+    "shell_bytes": 3489649,
+    "shell_md5": "a9a76d0e338c2a539135bccce23111b4",
+    "sw_bytes": 3586,
+    "sw_md5": "289f1f1dc82a2eb2e091994916af3e97",
+    "shell_no_diario": "a9a76d0e338c2a539135bccce23111b4 (3489649 B)",
+    "sw_no_diario": "289f1f1dc82a2eb2e091994916af3e97 (3586 B, CACHE bfr-conecta-v120)"
+  },
+  "rotas": {
+    "/": {
+      "http": 200,
+      "ct": "text/html; charset=utf-8",
+      "bytes": 3489649,
+      "md5": "a9a76d0e338c2a539135bccce23111b4",
+      "csp_presente": "sim",
+      "trecho": "<!doctype html> <html lang=\"pt-BR\"><head><meta charset=\"utf-8\"><meta name=\"viewp"
+    },
+    "/index.html": {
+      "http": 200,
+      "ct": "text/html; charset=utf-8",
+      "bytes": 3489649,
+      "md5": "a9a76d0e338c2a539135bccce23111b4",
+      "csp_presente": "sim",
+      "trecho": "<!doctype html> <html lang=\"pt-BR\"><head><meta charset=\"utf-8\"><meta name=\"viewp"
+    },
+    "/sw-v4.js": {
+      "http": 200,
+      "ct": "application/javascript; charset=utf-8",
+      "bytes": 3586,
+      "md5": "289f1f1dc82a2eb2e091994916af3e97",
+      "csp_presente": "nao",
+      "trecho": "const CACHE = 'bfr-conecta-v120'; const CACHE_PREFIX = 'bfr-conecta-'; const SHE"
+    },
+    "/firebase-messaging-sw.js": {
+      "http": 500,
+      "ct": "text/html; charset=UTF-8",
+      "bytes": 4720,
+      "md5": "9f7df27c4369a334ad27a6235819dd11",
+      "csp_presente": "nao",
+      "trecho": "<!DOCTYPE html> <!--[if lt IE 7]> <html class=\"no-js ie6 oldie\" lang=\"en-US\"> <!"
+    },
+    "/qualquer-rota-inexistente-zz": {
+      "http": 500,
+      "ct": "text/html; charset=UTF-8",
+      "bytes": 4720,
+      "md5": "8d6d6ce837b41bdafaa68bfa30412532",
+      "csp_presente": "nao",
+      "trecho": "<!DOCTYPE html> <!--[if lt IE 7]> <html class=\"no-js ie6 oldie\" lang=\"en-US\"> <!"
+    },
+    "/manifest.json": {
+      "http": 200,
+      "ct": "application/json",
+      "bytes": 484,
+      "md5": "68d155183c80e3e554466ce2415cb268",
+      "csp_presente": "nao",
+      "trecho": "{ \"name\": \"BFR Conecta\", \"short_name\": \"BFR Conecta\", \"description\": \"Port"
+    },
+    "/favicon.ico": {
+      "http": 500,
+      "ct": "text/html; charset=UTF-8",
+      "bytes": 4720,
+      "md5": "1ef33bf40676c332f2c02ab086db2666",
+      "csp_presente": "nao",
+      "trecho": "<!DOCTYPE html> <!--[if lt IE 7]> <html class=\"no-js ie6 oldie\" lang=\"en-US\"> <!"
+    },
+    "/aluno": {
+      "http": 500,
+      "ct": "text/html; charset=UTF-8",
+      "bytes": 4720,
+      "md5": "92b35323aede8447f55d40141c7549e3",
+      "csp_presente": "nao",
+      "trecho": "<!DOCTYPE html> <!--[if lt IE 7]> <html class=\"no-js ie6 oldie\" lang=\"en-US\"> <!"
+    }
+  },
+  "sw_servido": {
+    "http": 200,
+    "bytes": 3586,
+    "md5": "289f1f1dc82a2eb2e091994916af3e97",
+    "identico_a_regua": true,
+    "listeners": [
+      "addEventListener('install'",
+      "addEventListener('activate'",
+      "addEventListener('fetch'"
+    ],
+    "handler_push": 0,
+    "notificationclick": 0,
+    "showNotification": 0,
+    "importScripts": 0,
+    "firebase": 0,
+    "cache": "bfr-conecta-v120"
+  },
+  "shell_servido": {
+    "http": 200,
+    "bytes": 3489649,
+    "md5": "a9a76d0e338c2a539135bccce23111b4",
+    "identico_a_regua": true,
+    "csp_identico_a_regua": "sim",
+    "firebase_messaging_sw": 0,
+    "serviceWorker_register": 3,
+    "registra_sw_v4_v45": 3,
+    "getToken_fcm": 2,
+    "pushManager": 0,
+    "Notification_requestPermission": 2,
+    "subscriptions_url": 2
+  },
+  "linhagem": [
+    {
+      "dir": "worker-deploy-v115",
+      "bytes": 3548193,
+      "md5": "9d6606ffa01e469bd0104cbbc638371e",
+      "assets_fetch_por_string": false,
+      "rota_fcm_literal": 0
+    },
+    {
+      "dir": "worker-deploy-v116",
+      "bytes": 3548826,
+      "md5": "d662dda38586b5545c2cb7591fb8347d",
+      "assets_fetch_por_string": false,
+      "rota_fcm_literal": 0
+    },
+    {
+      "dir": "worker-deploy-v117",
+      "bytes": 3549984,
+      "md5": "5e3f394b125496ab3cabf9a4279d47d8",
+      "assets_fetch_por_string": false,
+      "rota_fcm_literal": 0
+    },
+    {
+      "dir": "worker-deploy-v118",
+      "bytes": 3614609,
+      "md5": "8886eba2a405705a42204504eb04b663",
+      "assets_fetch_por_string": true,
+      "rota_fcm_literal": 0
+    },
+    {
+      "dir": "worker-deploy-v118-csp",
+      "bytes": 3550708,
+      "md5": "ae115858d263a02bb777cc474ce17297",
+      "assets_fetch_por_string": true,
+      "rota_fcm_literal": 0
+    },
+    {
+      "dir": "worker-deploy-v118-swclone",
+      "bytes": 3614649,
+      "md5": "7a2e41f448e5d8c331f1bcc5eb029e9a",
+      "assets_fetch_por_string": true,
+      "rota_fcm_literal": 0
+    },
+    {
+      "dir": "worker-deploy-v118-swfix",
+      "bytes": 3614641,
+      "md5": "ba5e65ee6f52e8dc77850a3939186315",
+      "assets_fetch_por_string": true,
+      "rota_fcm_literal": 0
+    },
+    {
+      "dir": "worker-deploy-v119",
+      "bytes": 3550715,
+      "md5": "c41eef045d0110124e55d28304a99898",
+      "assets_fetch_por_string": true,
+      "rota_fcm_literal": 0
+    },
+    {
+      "dir": "worker-deploy-v120",
+      "bytes": 3550890,
+      "md5": "bc1f88ebed10660e56eac3f983159bad",
+      "assets_fetch_por_string": true,
+      "rota_fcm_literal": 0
+    }
+  ],
+  "linhagem_resumo": {
+    "com_fetch_por_string": [
+      "worker-deploy-v118",
+      "worker-deploy-v118-csp",
+      "worker-deploy-v118-swclone",
+      "worker-deploy-v118-swfix",
+      "worker-deploy-v119",
+      "worker-deploy-v120"
+    ],
+    "sem_fetch_por_string": [
+      "worker-deploy-v115",
+      "worker-deploy-v116",
+      "worker-deploy-v117"
+    ]
+  },
+  "candidatas_em_disco": [
+    {
+      "caminho": "bfr-candidata-v121-rotulos-supervisor/index.html",
+      "nota": "v121 (PEN-33/RM-1.8), NÃO publicada",
+      "existe": true,
+      "bytes": 3489725,
+      "md5": "d418e7fc917f1fbb1437054b7b531f9b"
+    },
+    {
+      "caminho": "scripts/rm68-fail-closed-por-policy.sql",
+      "nota": "RM-6.8 fail-closed, NÃO aplicada",
+      "existe": true,
+      "bytes": 14568,
+      "md5": "85ccd0927153fbcca4389e9218f1111f"
+    }
+  ],
+  "portoes": {
+    "A1_ar_e_a_versao_do_diario": {
+      "valor": true,
+      "esperado": true,
+      "passou": true
+    },
+    "A2_sw_servido_igual_ao_worker": {
+      "valor": true,
+      "esperado": true,
+      "passou": true
+    },
+    "A3_rota_inexistente_da_404_nao_500": {
+      "valor": 500,
+      "esperado": 404,
+      "passou": false
+    },
+    "A4_rota_fcm_devolve_js": {
+      "valor": false,
+      "esperado": true,
+      "passou": false
+    },
+    "A5_sw_tem_handler_push": {
+      "valor": false,
+      "esperado": true,
+      "passou": false
+    },
+    "A6_shell_aponta_sw_de_fcm": {
+      "valor": false,
+      "esperado": true,
+      "passou": false
+    }
+  },
+  "total": {
+    "verde": 2,
+    "vermelho": 4
+  },
+  "veredito": "RM15_ESTADO_COM_FALHAS"
+}

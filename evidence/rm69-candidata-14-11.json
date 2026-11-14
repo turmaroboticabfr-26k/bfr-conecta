@@ -1,0 +1,378 @@
+{
+  "em": "2026-11-14T07:32:23.131Z",
+  "tarefa": "RM-6.9 candidata do 404",
+  "metodo": "geração local + portão comportamental offline",
+  "base": "worker-deploy-v120",
+  "candidata": "worker-deploy-v120-404",
+  "publicado": false,
+  "portoes": {
+    "P1_base_e_a_do_diario": {
+      "valor": "bc1f88ebed10660e56eac3f983159bad",
+      "esperado": "bc1f88ebed10660e56eac3f983159bad",
+      "passou": true
+    },
+    "P2_bloco_alvo_e_o_lido_na_base": {
+      "valor": {
+        "md5": "775f010c27cc1454de652c5ebafa39e3",
+        "bytes": 304,
+        "igual": true
+      },
+      "esperado": {
+        "md5": "775f010c27cc1454de652c5ebafa39e3",
+        "bytes": 304,
+        "igual": true
+      },
+      "passou": true
+    },
+    "P2b_ancora_da_injecao": {
+      "valor": [
+        7,
+        "export default {",
+        1
+      ],
+      "esperado": [
+        7,
+        "export default {",
+        1
+      ],
+      "passou": true
+    },
+    "P3_reversao_byte_identica_a_base": {
+      "valor": "bc1f88ebed10660e56eac3f983159bad",
+      "esperado": "bc1f88ebed10660e56eac3f983159bad",
+      "passou": true
+    },
+    "P4_candidata_so_muda_os_dois_pontos": {
+      "valor": 5,
+      "esperado": 5,
+      "passou": true
+    },
+    "P4b_disco_igual_as_linhas_gateadas": {
+      "valor": {
+        "md5": "4f518f321c71b33935743daf9875469a",
+        "bytes": 3634158,
+        "igual": true
+      },
+      "esperado": {
+        "md5": "4f518f321c71b33935743daf9875469a",
+        "bytes": 3634158,
+        "igual": true
+      },
+      "passou": true
+    },
+    "P5_CSP_inalterado_na_candidata": {
+      "valor": "545ffee3eab51b292477f21553007bec",
+      "esperado": "545ffee3eab51b292477f21553007bec",
+      "passou": true
+    },
+    "P5_SW_inalterado_na_candidata": {
+      "valor": "289f1f1dc82a2eb2e091994916af3e97",
+      "esperado": "289f1f1dc82a2eb2e091994916af3e97",
+      "passou": true
+    },
+    "P5_HTML_inalterado_na_candidata": {
+      "valor": "a9a76d0e338c2a539135bccce23111b4",
+      "esperado": "a9a76d0e338c2a539135bccce23111b4",
+      "passou": true
+    },
+    "P6_HTML_da_candidata_e_o_shell_do_ar": {
+      "valor": [
+        "a9a76d0e338c2a539135bccce23111b4",
+        3489649
+      ],
+      "esperado": [
+        "a9a76d0e338c2a539135bccce23111b4",
+        3489649
+      ],
+      "passou": true
+    },
+    "P6b_SW_da_candidata_e_o_sw_do_ar": {
+      "valor": [
+        "289f1f1dc82a2eb2e091994916af3e97",
+        3586
+      ],
+      "esperado": [
+        "289f1f1dc82a2eb2e091994916af3e97",
+        3586
+      ],
+      "passou": true
+    },
+    "P7_assets_da_candidata_byte_iguais_a_base": {
+      "valor": [
+        12,
+        true
+      ],
+      "esperado": [
+        12,
+        true
+      ],
+      "passou": true
+    },
+    "P8_controle_reproduz_a_falha_da_base": {
+      "valor": [
+        8,
+        true,
+        true
+      ],
+      "esperado": [
+        8,
+        true,
+        true
+      ],
+      "passou": true
+    },
+    "P9_candidata_nunca_lanca": {
+      "valor": [],
+      "esperado": [],
+      "passou": true
+    },
+    "P10_caminhos_desconhecidos_dao_404": {
+      "valor": [
+        0,
+        []
+      ],
+      "esperado": [
+        0,
+        []
+      ],
+      "passou": true
+    },
+    "P11_asset_conhecido_passa_200": {
+      "valor": 200,
+      "esperado": 200,
+      "passou": true
+    },
+    "P12_rotas_fixas_intactas": {
+      "valor": [
+        200,
+        200,
+        200,
+        200
+      ],
+      "esperado": [
+        200,
+        200,
+        200,
+        200
+      ],
+      "passou": true
+    },
+    "P13_shell_e_sw_da_candidata_sao_os_do_ar": {
+      "valor": [
+        "545ffee3eab51b292477f21553007bec",
+        "application/javascript; charset=utf-8"
+      ],
+      "esperado": [
+        "545ffee3eab51b292477f21553007bec",
+        "application/javascript; charset=utf-8"
+      ],
+      "passou": true
+    },
+    "P14_rota_fcm_nao_e_decidida_aqui": {
+      "valor": 0,
+      "esperado": 0,
+      "passou": true
+    },
+    "P15_handler_push_nao_e_escrito_aqui": {
+      "valor": 0,
+      "esperado": 0,
+      "passou": true
+    },
+    "P16_string_asets_fetch_desapareceu": {
+      "valor": false,
+      "esperado": false,
+      "passou": true
+    },
+    "P17_asSETS_fetch_com_Request": {
+      "valor": true,
+      "esperado": true,
+      "passou": true
+    }
+  },
+  "total": {
+    "ok": 22,
+    "falha": 0
+  },
+  "censo": {
+    "controle": {
+      "/": {
+        "http": 200,
+        "ct": "text/html; charset=utf-8",
+        "lanca": false,
+        "pedidos": []
+      },
+      "/index.html": {
+        "http": 200,
+        "ct": "text/html; charset=utf-8",
+        "lanca": false,
+        "pedidos": []
+      },
+      "/sw.js": {
+        "http": 200,
+        "ct": "application/javascript; charset=utf-8",
+        "lanca": false,
+        "pedidos": []
+      },
+      "/sw-v4.js": {
+        "http": 200,
+        "ct": "application/javascript; charset=utf-8",
+        "lanca": false,
+        "pedidos": []
+      },
+      "/manifest.json": {
+        "http": null,
+        "ct": "",
+        "lanca": true,
+        "erro": "TypeError: Invalid arguments: The first argument to ASSETS.fetch must be a Request or URL object.",
+        "pedidos": []
+      },
+      "/favicon.ico": {
+        "http": null,
+        "ct": "",
+        "lanca": true,
+        "erro": "TypeError: Invalid arguments: The first argument to ASSETS.fetch must be a Request or URL object.",
+        "pedidos": []
+      },
+      "/aluno": {
+        "http": null,
+        "ct": "",
+        "lanca": true,
+        "erro": "TypeError: Invalid arguments: The first argument to ASSETS.fetch must be a Request or URL object.",
+        "pedidos": []
+      },
+      "/coordenacao": {
+        "http": null,
+        "ct": "",
+        "lanca": true,
+        "erro": "TypeError: Invalid arguments: The first argument to ASSETS.fetch must be a Request or URL object.",
+        "pedidos": []
+      },
+      "/robots.txt": {
+        "http": null,
+        "ct": "",
+        "lanca": true,
+        "erro": "TypeError: Invalid arguments: The first argument to ASSETS.fetch must be a Request or URL object.",
+        "pedidos": []
+      },
+      "/sitemap.xml": {
+        "http": null,
+        "ct": "",
+        "lanca": true,
+        "erro": "TypeError: Invalid arguments: The first argument to ASSETS.fetch must be a Request or URL object.",
+        "pedidos": []
+      },
+      "/manifest.webmanifest": {
+        "http": null,
+        "ct": "",
+        "lanca": true,
+        "erro": "TypeError: Invalid arguments: The first argument to ASSETS.fetch must be a Request or URL object.",
+        "pedidos": []
+      },
+      "/qualquer-rota-inexistente-zz": {
+        "http": null,
+        "ct": "",
+        "lanca": true,
+        "erro": "TypeError: Invalid arguments: The first argument to ASSETS.fetch must be a Request or URL object.",
+        "pedidos": []
+      }
+    },
+    "candidata": {
+      "/": {
+        "http": 200,
+        "ct": "text/html; charset=utf-8",
+        "lanca": false,
+        "pedidos": []
+      },
+      "/index.html": {
+        "http": 200,
+        "ct": "text/html; charset=utf-8",
+        "lanca": false,
+        "pedidos": []
+      },
+      "/sw.js": {
+        "http": 200,
+        "ct": "application/javascript; charset=utf-8",
+        "lanca": false,
+        "pedidos": []
+      },
+      "/sw-v4.js": {
+        "http": 200,
+        "ct": "application/javascript; charset=utf-8",
+        "lanca": false,
+        "pedidos": []
+      },
+      "/manifest.json": {
+        "http": 200,
+        "ct": "application/octet-stream",
+        "lanca": false,
+        "pedidos": [
+          "/manifest.json"
+        ]
+      },
+      "/favicon.ico": {
+        "http": 404,
+        "ct": "text/plain; charset=utf-8",
+        "lanca": false,
+        "pedidos": [
+          "/favicon.ico"
+        ]
+      },
+      "/aluno": {
+        "http": 404,
+        "ct": "text/plain; charset=utf-8",
+        "lanca": false,
+        "pedidos": [
+          "/aluno"
+        ]
+      },
+      "/coordenacao": {
+        "http": 404,
+        "ct": "text/plain; charset=utf-8",
+        "lanca": false,
+        "pedidos": [
+          "/coordenacao"
+        ]
+      },
+      "/robots.txt": {
+        "http": 404,
+        "ct": "text/plain; charset=utf-8",
+        "lanca": false,
+        "pedidos": [
+          "/robots.txt"
+        ]
+      },
+      "/sitemap.xml": {
+        "http": 404,
+        "ct": "text/plain; charset=utf-8",
+        "lanca": false,
+        "pedidos": [
+          "/sitemap.xml"
+        ]
+      },
+      "/manifest.webmanifest": {
+        "http": 404,
+        "ct": "text/plain; charset=utf-8",
+        "lanca": false,
+        "pedidos": [
+          "/manifest.webmanifest"
+        ]
+      },
+      "/qualquer-rota-inexistente-zz": {
+        "http": 404,
+        "ct": "text/plain; charset=utf-8",
+        "lanca": false,
+        "pedidos": [
+          "/qualquer-rota-inexistente-zz"
+        ]
+      }
+    }
+  },
+  "ficheiros": {
+    "candidata_worker_bytes": 3551420,
+    "candidata_worker_md5": "70ecf617866b422ac569e216e7cc1974",
+    "base_worker_md5": "bc1f88ebed10660e56eac3f983159bad",
+    "delta_bytes": 530,
+    "assets": 12
+  },
+  "veredito": "RM69_CANDIDATA_PRONTA_NAO_PUBLICADA"
+}

@@ -1,0 +1,233 @@
+{
+  "em": "2026-11-14T07:21:49.360Z",
+  "ar": "https://bfr-conecta.turmaroboticabfr.workers.dev",
+  "shell_bytes": 3489649,
+  "shell_md5": "a9a76d0e338c2a539135bccce23111b4",
+  "chaves_de_config": {
+    "apiKey": {
+      "ocorrencias": 2,
+      "tipo": "config",
+      "len_valor": 39,
+      "prefixo": null,
+      "valor_impresso": "NAO (mascarado por forma)"
+    },
+    "authDomain": {
+      "ocorrencias": 2,
+      "tipo": "config",
+      "len_valor": 46,
+      "prefixo": null,
+      "valor_impresso": "NAO (mascarado por forma)"
+    },
+    "projectId": {
+      "ocorrencias": 2,
+      "tipo": "config",
+      "len_valor": 30,
+      "prefixo": null,
+      "valor_impresso": "NAO (mascarado por forma)"
+    },
+    "storageBucket": {
+      "ocorrencias": 2,
+      "tipo": "config",
+      "len_valor": 50,
+      "prefixo": null,
+      "valor_impresso": "NAO (mascarado por forma)"
+    },
+    "messagingSenderId": {
+      "ocorrencias": 2,
+      "tipo": "config",
+      "len_valor": 12,
+      "prefixo": null,
+      "valor_impresso": "NAO (mascarado por forma)"
+    },
+    "appId": {
+      "ocorrencias": 2,
+      "tipo": "config",
+      "len_valor": 41,
+      "prefixo": null,
+      "valor_impresso": "NAO (mascarado por forma)"
+    },
+    "measurementId": {
+      "ocorrencias": 0
+    },
+    "databaseURL": {
+      "ocorrencias": 0
+    }
+  },
+  "chamadas": {
+    "getToken": [
+      "icações não autorizada.'; try { const registration = await navigator.serviceWorker.register(`${APP_ORIGIN}/sw-v4.js?v=45`); const token = await (await <VALOR:len=20>()).getToken({ vapidKey:FIREBASE_VAPID_KEY, <VALOR:len=25>:registration }); if (!token) return 'Não foi possível criar o dispositivo de push.'; const { error } = await supabaseClient.from('push_subscriptions').upsert({ profile_id:currentUser.id, endpoint:`fcm:${token}`, fcm_token:token, p256dh:'",
+      ".firebase.initializeApp(config,'bfrPush'); const messaging = window.firebase.messaging(app); const registration = await navigator.serviceWorker.register(`${location.origin}/sw-v4.js?v=45`); const token = await messaging.getToken({vapidKey:'<VALOR:len=87>',<VALOR:len=25>:registration}); if (!token) throw new Error('Dispositivo não gerou token de push.'); const {error} = await db().from('push_subscriptions').upsert({profile_id:user().id,endpoint:`fcm:${toke"
+    ],
+    "getToken_sem_registro": false,
+    "getToken_com_serviceWorkerRegistration": true,
+    "initializeApp": [
+      "s?.find(item => item.name === 'bfrPush') || window.firebase.initializeApp(FIREBASE_CONFIG, 'bfrPush'); firebaseMessaging = window.firebase.messaging(app); return firebaseMessaging; } async function <VALOR:len=24>(requestPerm",
+      "s?.find(item => item.name === 'bfrPush') || window.firebase.initializeApp(config,'bfrPush'); const messaging = window.firebase.messaging(app); const registration = await navigator.serviceWorker.register(`${location.origin}/sw-v4.js?v=45`); const token = await messaging.getT"
+    ],
+    "getMessaging": [],
+    "serviceWorker_register": [
+      "d') return 'Permissão de notificações não autorizada.'; try { const registration = await navigator.serviceWorker.register(`${APP_ORIGIN}/sw-v4.js?v=45`); const token = await (await <VALOR:len=20>()).getToken({ vapidKey:FIREBASE_VAPID_KEY, <VALOR:len=25>:registration }); if (!to",
+      "getElementById('appShell')?.classList.contains('ready')) location.reload(); }, { once:true }); navigator.serviceWorker.register(`${window.location.origin}/sw-v4.js?v=45`, { updateViaCache:'none' }) .then(registration => registration.update()) .catch(error => console.warn('Service worker indisponível:'",
+      ".firebase.initializeApp(config,'bfrPush'); const messaging = window.firebase.messaging(app); const registration = await navigator.serviceWorker.register(`${location.origin}/sw-v4.js?v=45`); const token = await messaging.getToken({vapidKey:'<VALOR:len=87>',<VALOR:len=24>"
+    ],
+    "onMessage": [
+      "if (!window.__bfrForegroundPush) { window.__bfrForegroundPush = true; messaging.onMessage(payload => { const notification = payload.notification || payload.data || {}; const title = notification.title || 'BFR Conecta'; const body = notification.body "
+    ],
+    "importScripts": 0,
+    "script_src_firebase": [
+      "' https://bfr-conecta.turmaroboticabfr.workers.dev https://cdn.jsdelivr.net https://static",
+      "' https://fonts.gstatic.com data:; img-src '",
+      "\"https://www.gstatic.com\"",
+      "\"https://fonts.gstatic.com\"",
+      "' } }) || null;\n       window.BFR_SUPABASE_CLIENT = supabaseClient;\n      const FIREBASE_C",
+      "'<VALOR:len=30>.firebaseapp.com'",
+      "'<VALOR:len=30>.firebasestorage.app'",
+      "' };\n       const FIREBASE_VAPID_KEY = '",
+      "';\n       let firebaseMessaging = null;\n       const deferredScriptLoads = new Map();\n    ",
+      "' });\n           return error || null;\n         }\n          async function <VALOR:len=20>("
+    ]
+  },
+  "perguntas": {
+    "vapid_vapidKey": {
+      "ocorrencias": 2,
+      "contexto": [
+        "wait <VALOR:len=20>()).getToken({ vapidKey:FIREBASE_VAPID_KEY, <VALOR:len=25>:registration }); if (!token) return 'Não foi possível criar o dispositivo de push.'; const { error } = await supabaseClient.from('push_subscriptions').upsert({ profile_id:currentUser.id, endpoint:`fcm:${token}`, fcm_token:token, p256dh:'firebase', auth:'firebase', user_agent:navigator.userAgent, last_seen_at:new Date().toISOS",
+        "const token = await messaging.getToken({vapidKey:'<VALOR:len=87>',<VALOR:len=25>:registration}); if (!token) throw new Error('Dispositivo não gerou token de push.'); const {error} = await db().from('push_subscriptions').upsert({profile_id:user().id,endpoint:`fcm:${token}`,fcm_token:token,p256dh:'firebase',auth:'firebase',user_agent:navigator.userAgent,last"
+      ]
+    },
+    "vapid_applicationVapidKey": {
+      "ocorrencias": 0
+    },
+    "vapid_vapid_key": {
+      "ocorrencias": 0
+    },
+    "vapid_VAPID": {
+      "ocorrencias": 0
+    },
+    "hosts_esternos_no_shell": [
+      "http://schemas.openxmlformats.org",
+      "https://...",
+      "https://accounts.google.com",
+      "https://api.open-meteo.com",
+      "https://bfr-conecta-escola-2026-r7m4q2.pages.bu.app",
+      "https://bfr-conecta.turmaroboticabfr.workers.dev",
+      "https://cdn.jsdelivr.net",
+      "https://cloudflareinsights.com",
+      "https://escol.as",
+      "https://fcm.googleapis.com",
+      "https://fonts.googleapis.com",
+      "https://fonts.gstatic.com",
+      "https://qedu.org.br",
+      "https://static.cloudflareinsights.com",
+      "https://wa.me",
+      "https://www.cadaminuto.com.br",
+      "https://www.gstatic.com",
+      "https://www.instagram.com",
+      "https://www.limoeirodeanadia.al.gov.br",
+      "https://yyzqoxlkcvqpessypfjo.supabase.co"
+    ],
+    "pushManager_no_shell": 0,
+    "notificationclick_no_shell": 0,
+    "notificationclick_no_sw": 0,
+    "onNotificationClick_no_shell": 0
+  },
+  "csp": {
+    "do_worker": "default-src 'self'; base-uri 'self'; object-src 'none'; script-src 'self' 'unsafe-inline' https://bfr-conecta.turmaroboticabfr.workers.dev https://cdn.jsdelivr.net https://static.cloudflareinsights.com https://www.gstatic.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: blob: https:; connect-src 'self' https://bfr-conecta.turmaroboticabfr.workers.dev https://*.supabase.co wss://*.supabase.co https://cloudflareinsights.com https://*.cloudflareinsights.com https://*.googleapis.com https://fcm.googleapis.com https://api.open-meteo.com; worker-src 'self' blob:; manifest-src 'self'; form-action 'self' https://accounts.google.com https://*.supabase.co",
+    "da_meta_no_shell": "<meta http-equiv=\"Content-Security-Policy\" content=\"default-src 'self'; base-uri 'self'; object-src 'none'; script-src 'self' 'unsafe-inline' https://bfr-conecta.turmaroboticabfr.workers.dev https://cdn.jsdelivr.net https://static.cloudflareinsights.com https://www.gstatic.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: blob: https:; connect-src 'self' https://bfr-conecta.turmaroboticabfr.workers.dev https://*.supabase.co wss://*.supabase.co https://cloudflareinsights.com https://*.cloudflareinsights.com https://*.googleapis.com https://fcm.googleapis.com https://api.open-meteo.com; worker-src 'self' blob:; manifest-src 'self'; form-action 'self' https://accounts.google.com https://*.supabase.co\">",
+    "regras": [
+      {
+        "rotulo": "header do Worker",
+        "lido": true,
+        "script_src": "herda/tem",
+        "worker_src": "presente",
+        "gstatic_em_script_src": true,
+        "gstatic_em_worker_src": false,
+        "jsdelivr_em_script_src": true,
+        "directives": [
+          "default-src",
+          "base-uri",
+          "object-src",
+          "script-src",
+          "style-src",
+          "font-src",
+          "img-src",
+          "connect-src",
+          "worker-src",
+          "manifest-src",
+          "form-action"
+        ]
+      },
+      {
+        "rotulo": "<meta> do shell",
+        "lido": true,
+        "script_src": "ausente",
+        "worker_src": "ausente (cai em default-src)",
+        "gstatic_em_script_src": false,
+        "gstatic_em_worker_src": false,
+        "jsdelivr_em_script_src": false,
+        "directives": [
+          "default-src"
+        ]
+      }
+    ]
+  },
+  "resposta": {
+    "sw_registrado_pelo_shell": [
+      "serviceWorker.register(`<ORIGEM>/sw-v4.js?v=45"
+    ],
+    "getToken_recebe_registration": true,
+    "sw_servido_md5": "289f1f1dc82a2eb2e091994916af3e97",
+    "sw_servido_bytes": 3586,
+    "sw_servido_listeners": [
+      "addEventListener('install'",
+      "addEventListener('activate'",
+      "addEventListener('fetch'"
+    ],
+    "sw_servido_push": 0,
+    "sw_servido_importScripts": 0,
+    "sw_servido_showNotification": 0
+  },
+  "sdk_fcm": {
+    "scripts_externos": [
+      "bfr-responsive-presentation.js?v=14",
+      "bfr-teacher-arrivals.js?v=2",
+      "bfr-teacher-audit.js?v=1",
+      "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.50.0/dist/umd/supabase.min.js",
+      "https://static.cloudflareinsights.com/beacon.min.js/v31edd6df95cf4e85bb4c19e7a9bdbcba1788362987495"
+    ],
+    "scripts_firebase": [],
+    "hosts_de_script": [
+      "https://cdn.jsdelivr.net",
+      "https://static.cloudflareinsights.com"
+    ]
+  },
+  "firebase_fonte": {
+    "window_firebase": 11,
+    "defer_by": 15,
+    "firebasejs_url": [
+      "firebasejs/10.14.1/firebase-app-compat.js",
+      "firebasejs/10.14.1/firebase-messaging-compat.js"
+    ],
+    "gstatic_urls": [
+      "https://www.gstatic.com;",
+      "https://www.gstatic.com",
+      "https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js",
+      "https://www.gstatic.com/firebasejs/10.14.1/firebase-messaging-compat.js"
+    ],
+    "atribuicao_window_firebase": [],
+    "dynamic_import": [],
+    "createElement_script": 9,
+    "janela_definicao": [],
+    "janela_gstatic": [
+      "fault-src 'self'; base-uri 'self'; object-src 'none'; script-src 'self' 'unsafe-inline' https://bfr-conecta.turmaroboticabfr.workers.dev https://cdn.jsdelivr.net https://static.cloudflareinsights.com https://www.gstatic.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: blob: https:; connect-src 'self' https://bfr-conecta.turmaroboticabfr.workers.dev https://*.supabase.co wss://*.supabase.co h",
+      "login-form,.login-layout,.school-symbol-wrap{background-image:none!important}</style><link rel=\"preconnect\" href=\"https://<VALOR:len=20>.supabase.co\" crossorigin=\"\"><link rel=\"preconnect\" href=\"https://www.gstatic.com\" crossorigin=\"anonymous\"><link rel=\"preconnect\" href=\"https://fonts.googleapis.com\" crossorigin=\"\"><link rel=\"preconnect\" href=\"https://fonts.gstatic.com\" crossorigin=\"anonymous\"><style id=\"<VALOR:len=25>\"> #<VALOR:len=20>,#bfrReportsVi",
+      "rn error || null; } async function <VALOR:len=20>() { if (firebaseMessaging) return firebaseMessaging; if (!window.firebase) await loadExternalScript('https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js','firebase'); if (!window.firebase?.messaging) await loadExternalScript('https://www.gstatic.com/firebasejs/10.14.1/<VALOR:len=25>.js','firebase'); if (!window.firebase?.messaging) t",
+      " if (!window.firebase) await loadExternalScript('https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js','firebase'); if (!window.firebase?.messaging) await loadExternalScript('https://www.gstatic.com/firebasejs/10.14.1/<VALOR:len=25>.js','firebase'); if (!window.firebase?.messaging) throw new Error('O serviço de push não carregou.'); const app = window.firebase.apps?.find(item => item.name === 'bfrPush') || window.firebas",
+      "(); const script = document.createElement('script'); script.src = src; script.onload = resolve; script.onerror = reject; document.head.appendChild(script); }); if (!window.firebase) await append('https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js'); if (!window.firebase?.messaging) await append('https://www.gstatic.com/firebasejs/10.14.1/<VALOR:len=25>.js'); } async function enablePush() { if (!user() || !db()) return toast('Entre na su"
+    ],
+    "janela_carregamento": [],
+    "deferredScriptLoads": 5,
+    "scriptLoaders_map": [],
+    "janela_loaders": []
+  }
+}
