@@ -715,6 +715,32 @@ normalizado.
   `0782736`, `80c951c`, `ae91856` → todos inexistentes). A proveniência re-derive-se por caminho,
   não por memória: `git log --diff-filter=A -- scripts/seg-p0-install-credencial.mjs` devolve
   `b515235`, e `… scripts/seg-p0-sonda-classico.mjs` devolve `1bc875e`.
+- **O instrumento que guarda a alegação acima tem nome, e tinha limite — registados 14/11.** É
+  `scripts/seg-hash-vivo.mjs` (leitura pura: extrai `\b[0-9a-f]{7,40}\b` do texto, pergunta com
+  `git cat-file -t` se cada token ainda é objeto e separa vivos de mortos). Até aqui **nenhum
+  `docs/*.md` o citava**
+  — `grep -rn "seg-hash-vivo" docs/*.md` dava zero ocorrências, pelo que a alegação existia sem
+  instrumento apontado; e o script **só lê `argv[2]`**: passar-lhe um segundo caminho é ignorado em
+  silêncio, sem aviso nem `exit` diferente. Medido 14/11 sobre este ficheiro:
+  `tokens=34 objetos_vivos=3 nao_existem=31`, com os vivos a serem exactamente os três que a
+  re-derivação por caminho devolve (`1bc875e`, `7faed65`, `b515235`). Os 5 commits nomeados no
+  bullet acima continuam todos mortos. Logo: **um caminho por execução**, e quem quiser o retrato do
+  roadmap corre o script outra vez com esse caminho.
+- **Os mortos não são todos commits, e o comprimento não decide.** Contada por classe a mesma lista
+  de 31 (medido 14/11 sobre a versão **commitada** deste ficheiro — os três bullets que agora se lêem
+  aqui acrescentam tokens, por isso quem re-contar obtém outro número): **15** têm 12 hex, **11** têm
+  7 e **5** têm 8. Mais de
+  metade (16 de 31) tem *forma* de commit curto e nem por isso é commit — é precisamente o aviso no
+  cabeçalho do script, que por isso imprime a vizinhança de cada token morto
+  (`"<palavras>→<palavras>"`) e deixa a decisão marcada a quem lê, em vez de a deduzir do
+  comprimento. A saída é informativa e o `exit` é 0; o instrumento não julga, enumera.
+- **O userinfo do `origin` é login, não segredo — liquidado 14/11 por forma.** A URL do remote traz
+  20 caracteres antes do `@`; comparados por md5 (nunca impressos) com o nome do dono que está no
+  caminho, batem certo: `md5_userinfo=21a729130b2b md5_dono=21a729130b2b dono_len=20`, com
+  `eh_prefixo_pat=false` e `eh_hex40=false`. Não há token embutido no remote e a autenticação vai
+  pelo Git Credential Manager (`credential.helper = manager`). A derivação são três passos de shell —
+  extrair o campo antes do `@`, extrair o primeiro segmento do caminho depois do host, comparar os
+  md5 — e não um ficheiro novo no repo.
 
 ### Fechado por medição (09/11 ~05:50–06:30Z), sem escrever em nada
 
