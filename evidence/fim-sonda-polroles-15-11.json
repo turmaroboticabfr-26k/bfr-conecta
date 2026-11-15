@@ -1,0 +1,63 @@
+{
+  "em": "2026-11-15T07:32:19.331Z",
+  "tarefa": "FIM-1/§AC — forma de polroles para papel PUBLIC neste build (armadilha de predicado)",
+  "autorizacao": "somente leitura: 0 DDL, 0 mint, 0 deploy, 0 escrita",
+  "tabelas": [
+    "grades",
+    "attendance",
+    "access_requests",
+    "occurrences"
+  ],
+  "policies_no_conjunto": 23,
+  "PUBLIC_por_cardinality_0": 0,
+  "PUBLIC_por_polroles_null": 0,
+  "PUBLIC_por_oid_0_qualquer": 11,
+  "estados_distintos": [
+    {
+      "estado": "null=false n=1 oid_0=false texto={16485}",
+      "n": 12
+    },
+    {
+      "estado": "null=false n=1 oid_0=true texto={0}",
+      "n": 11
+    }
+  ],
+  "oids_nos_polroles": [
+    {
+      "oid": 16485,
+      "rolname": "authenticated",
+      "policies": 12
+    },
+    {
+      "oid": null,
+      "rolname": "(sem pg_roles)",
+      "policies": 11
+    }
+  ],
+  "contagem_pelo_predicado_velho_cardinality_0": 0,
+  "contagem_pelo_predicado_novo_oid_0": 11,
+  "supervision_audit_por_conta": [
+    {
+      "conta": "s17-secretary",
+      "papel": "secretary",
+      "n": 4
+    },
+    {
+      "conta": "CONTA_REAL",
+      "papel": "director",
+      "n": 3
+    },
+    {
+      "conta": "s17-coordinator",
+      "papel": "coordinator",
+      "n": 1
+    },
+    {
+      "conta": "s17-director",
+      "papel": "director",
+      "n": 1
+    }
+  ],
+  "soma_audit": 9,
+  "policies_md5": "ff5c006383c7c0d26144273843f3b2de"
+}

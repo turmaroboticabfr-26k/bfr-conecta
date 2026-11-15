@@ -1,0 +1,20 @@
+RM68_PUBLICAS  artefacto=11 vivo=0  igual=NAO
+  md5 texto: antes=9bb10bb0b54d39caddd9fcac849b6397  vivo=d41d8cd98f00b204e9800998ecf8427e
+  DIFF access_requests|access_requests_manage|ALL|bfr_rls_is_developer()|(bfr_rls_is_developer() AND (requested_role = ANY (enum_range(NULL::account_role))) AND ((appr
+  DIFF access_requests|access_requests_staff_insert|INSERT||(bfr_rls_is_developer() AND (requested_role = ANY (enum_range(NULL::account_role))) AND (((approved_role IS
+  DIFF attendance|attendance_staff_delete|DELETE|(bfr_staff_can_manage_student_scope(student_id) AND ((bfr_rls_session_role())::text <> 'secretary'::text))|
+  DIFF attendance|attendance_staff_insert|INSERT||(bfr_staff_can_manage_student_scope(student_id) AND ((bfr_rls_session_role())::text <> 'secretary'::text) AND (((bfr_
+  DIFF attendance|attendance_staff_select|SELECT|(bfr_staff_can_manage_student_scope(student_id) AND ((bfr_rls_session_role())::text <> 'secretary'::text))|
+  DIFF attendance|attendance_staff_update|UPDATE|(bfr_staff_can_manage_student_scope(student_id) AND ((bfr_rls_session_role())::text <> 'secretary'::text))|(bfr_staff_
+  DIFF grades|grades_staff_delete|DELETE|(bfr_staff_can_manage_student_scope(student_id, subject) AND ((bfr_rls_session_role())::text <> 'secretary'::text))|
+  DIFF grades|grades_staff_insert|INSERT||(bfr_staff_can_manage_student_scope(student_id, subject) AND ((bfr_rls_session_role())::text <> 'secretary'::text) AND (((bfr
+  DIFF grades|grades_staff_select|SELECT|(bfr_staff_can_manage_student_scope(student_id, subject) AND ((bfr_rls_session_role())::text <> 'secretary'::text))|
+  DIFF occurrences|occurrences_director_select|SELECT|bfr_rls_director_manages_student(student_id)|
+RM13_PUSH      subs=0 utilizadores=undefined vista_mais_recente=-
+CONTAGENS      grades=112 attendance=25 access_requests=12 occurrences=0
+VISTAS         5 sports_public_*  anon_select_true=0  dono_bypass_true=5
+CONTAS_TEST    coordinator=1 developer=1 director=1 secretary=1
+PRIVILEGIOS    funções=7 staff_schools_anon_select=false falhas=0
+CONTAS_VIVAS   s17=4  supervision_audit=9
+FIM_RECON_AMARELO — divergência face ao artefacto de 15/11
+Escrito C:/Users/pcmac/Documents/Qoder/2026-10-13/28077d9a/bfr-conecta/evidence/fim-ciclo-recon-15-11.json

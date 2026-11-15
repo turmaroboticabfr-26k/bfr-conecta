@@ -1,0 +1,195 @@
+{
+  "em": "2026-11-15T07:19:20.147Z",
+  "tarefa": "FIM-1 — recon somente-leitura das duas pendências abertas (11 PUBLIC do RM-6.8 + push em aparelho físico)",
+  "autorizacao": "nenhuma escrita: 0 DDL, 0 mint, 0 deploy, 0 envio, 0 git push",
+  "rm68_publicas": {
+    "artefacto_antes": "evidence/rm68-recon-depois-15-11.json",
+    "em_do_artefacto": "2026-11-15T03:11:34.819Z",
+    "publicas_no_artefacto": 11,
+    "publicas_vivas": 0,
+    "texto_md5_artefacto": "9bb10bb0b54d39caddd9fcac849b6397",
+    "texto_md5_vivo": "d41d8cd98f00b204e9800998ecf8427e",
+    "igual": false,
+    "diferencas": [
+      "access_requests|access_requests_manage|ALL|bfr_rls_is_developer()|(bfr_rls_is_developer() AND (requested_role = ANY (enum_range(NULL::account_role))) AND ((approved_role IS NULL) OR (approved_role = requested_role)) AND (status = ANY (ARRAY['pending'::request_status, 'approved'::request_status, 'rejected'::request_status])))",
+      "access_requests|access_requests_staff_insert|INSERT||(bfr_rls_is_developer() AND (requested_role = ANY (enum_range(NULL::account_role))) AND (((approved_role IS NULL) AND (status = 'pending'::request_status)) OR ((approved_role = requested_role) AND (status = 'approved'::request_status))))",
+      "attendance|attendance_staff_delete|DELETE|(bfr_staff_can_manage_student_scope(student_id) AND ((bfr_rls_session_role())::text <> 'secretary'::text))|",
+      "attendance|attendance_staff_insert|INSERT||(bfr_staff_can_manage_student_scope(student_id) AND ((bfr_rls_session_role())::text <> 'secretary'::text) AND (((bfr_rls_session_role())::text <> 'pedagogical'::text) OR (entered_by = auth.uid())))",
+      "attendance|attendance_staff_select|SELECT|(bfr_staff_can_manage_student_scope(student_id) AND ((bfr_rls_session_role())::text <> 'secretary'::text))|",
+      "attendance|attendance_staff_update|UPDATE|(bfr_staff_can_manage_student_scope(student_id) AND ((bfr_rls_session_role())::text <> 'secretary'::text))|(bfr_staff_can_manage_student_scope(student_id) AND ((bfr_rls_session_role())::text <> 'secretary'::text))",
+      "grades|grades_staff_delete|DELETE|(bfr_staff_can_manage_student_scope(student_id, subject) AND ((bfr_rls_session_role())::text <> 'secretary'::text))|",
+      "grades|grades_staff_insert|INSERT||(bfr_staff_can_manage_student_scope(student_id, subject) AND ((bfr_rls_session_role())::text <> 'secretary'::text) AND (((bfr_rls_session_role())::text <> 'pedagogical'::text) OR (entered_by = auth.uid())))",
+      "grades|grades_staff_select|SELECT|(bfr_staff_can_manage_student_scope(student_id, subject) AND ((bfr_rls_session_role())::text <> 'secretary'::text))|",
+      "occurrences|occurrences_director_select|SELECT|bfr_rls_director_manages_student(student_id)|",
+      "occurrences|occurrences_director_update|UPDATE|bfr_rls_director_manages_student(student_id)|bfr_rls_director_manages_student(student_id)"
+    ]
+  },
+  "rm68_privilegios": {
+    "funcoes": [
+      {
+        "nome": "bfr_rls_director_manages_student",
+        "dono": "postgres",
+        "security_definer": "true",
+        "anon_execute": "true",
+        "auth_execute": "true"
+      },
+      {
+        "nome": "bfr_rls_is_developer",
+        "dono": "postgres",
+        "security_definer": "true",
+        "anon_execute": "true",
+        "auth_execute": "true"
+      },
+      {
+        "nome": "bfr_rls_session_role",
+        "dono": "postgres",
+        "security_definer": "true",
+        "anon_execute": "true",
+        "auth_execute": "true"
+      },
+      {
+        "nome": "bfr_staff_can_manage_student_scope",
+        "dono": "postgres",
+        "security_definer": "true",
+        "anon_execute": "true",
+        "auth_execute": "true"
+      },
+      {
+        "nome": "current_role",
+        "dono": "postgres",
+        "security_definer": "true",
+        "anon_execute": "false",
+        "auth_execute": "true"
+      },
+      {
+        "nome": "is_developer",
+        "dono": "postgres",
+        "security_definer": "true",
+        "anon_execute": "false",
+        "auth_execute": "true"
+      },
+      {
+        "nome": "is_staff",
+        "dono": "postgres",
+        "security_definer": "true",
+        "anon_execute": "false",
+        "auth_execute": "true"
+      }
+    ],
+    "staff_schools_anon_select": "false",
+    "falhas": []
+  },
+  "contagens_exatas": {
+    "grades": 112,
+    "attendance": 25,
+    "access_requests": 12,
+    "occurrences": 0
+  },
+  "rm13_aparelho": {
+    "subs_totais": 0,
+    "donos_distintos": 0,
+    "criada_mais_recente": "-",
+    "vista_mais_recente": "-",
+    "coluna_dono": "profile_id",
+    "colunas": [
+      "auth",
+      "created_at",
+      "endpoint",
+      "fcm_token",
+      "id",
+      "last_seen_at",
+      "p256dh",
+      "profile_id",
+      "user_agent"
+    ]
+  },
+  "contas_test_local_vivas": [
+    {
+      "lote": "s17",
+      "n": 4
+    }
+  ],
+  "supervision_audit_residuo": 9,
+  "perfis_test_local_por_papel": [
+    {
+      "papel": "coordinator",
+      "n": 1
+    },
+    {
+      "papel": "developer",
+      "n": 1
+    },
+    {
+      "papel": "director",
+      "n": 1
+    },
+    {
+      "papel": "secretary",
+      "n": 1
+    }
+  ],
+  "vistas_sports_public": [
+    {
+      "nome": "sports_public_athletes",
+      "dono": "postgres",
+      "dono_bypass": "true",
+      "anon_select": "false",
+      "auth_select": "true",
+      "modo": "sem-opcao"
+    },
+    {
+      "nome": "sports_public_match_events",
+      "dono": "postgres",
+      "dono_bypass": "true",
+      "anon_select": "false",
+      "auth_select": "true",
+      "modo": "sem-opcao"
+    },
+    {
+      "nome": "sports_public_matches",
+      "dono": "postgres",
+      "dono_bypass": "true",
+      "anon_select": "false",
+      "auth_select": "true",
+      "modo": "sem-opcao"
+    },
+    {
+      "nome": "sports_public_schools",
+      "dono": "postgres",
+      "dono_bypass": "true",
+      "anon_select": "false",
+      "auth_select": "true",
+      "modo": "sem-opcao"
+    },
+    {
+      "nome": "sports_public_teams",
+      "dono": "postgres",
+      "dono_bypass": "true",
+      "anon_select": "false",
+      "auth_select": "true",
+      "modo": "sem-opcao"
+    }
+  ],
+  "contagens_pg_class": [
+    {
+      "t": "access_requests",
+      "estimativa": "-1"
+    },
+    {
+      "t": "attendance",
+      "estimativa": "25"
+    },
+    {
+      "t": "grades",
+      "estimativa": "112"
+    },
+    {
+      "t": "occurrences",
+      "estimativa": "0"
+    },
+    {
+      "t": "push_subscriptions",
+      "estimativa": "-1"
+    }
+  ]
+}
