@@ -1,0 +1,55 @@
+{
+  "ciclo": "RM-1.8",
+  "ok_literal": "executar #1190 mint do chip supervisor de ensino",
+  "started": "2026-11-15T05:03:30.552Z",
+  "email": "rm18-supervisor-5159b3@bfr-conecta.test",
+  "stages": {
+    "baseline": {
+      "em": "2026-11-15T05:03:45.529Z",
+      "tabelas": {
+        "auth.users": {
+          "n": 21,
+          "md5": "35c1adfd2b308f6c7b894bba0a923e14"
+        },
+        "public.profiles": {
+          "n": 21,
+          "md5": "ca94399791ab7c1399d8df27c3c28fac"
+        },
+        "public.sports_schools": {
+          "n": 6,
+          "md5": "e336897faf29ba27722e44e680a4b4ae"
+        },
+        "public.staff_schools": {
+          "n": 2,
+          "md5": "21a2ebcb5dd815170c95fa13c2a9e115"
+        },
+        "public.supervision_requests": {
+          "n": 0,
+          "md5": "empty"
+        },
+        "public.supervision_audit": {
+          "n": 33,
+          "md5": "871ab2250caff1c474a749fd23eb5da8"
+        }
+      }
+    },
+    "mint": {
+      "em": "2026-11-15T05:03:48.207Z",
+      "uid": "143716c5-4063-4759-922d-90d925d5018c",
+      "http_mint": 200,
+      "http_login": 200,
+      "exp": 1794722624
+    },
+    "perfil": {
+      "criado_pelo_trigger": "parent",
+      "depois": "education_supervisor"
+    },
+    "session": {
+      "arquivo": "rm18-session.json",
+      "nota": "tokens só em ficheiro; apagado na limpeza"
+    }
+  },
+  "escritas_em_tabelas_de_produto": 0,
+  "portoes_parciais": 7,
+  "falhas_parciais": []
+}

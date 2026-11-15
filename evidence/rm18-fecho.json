@@ -1,0 +1,51 @@
+{
+  "ciclo": "RM-1.8-FECHO",
+  "ok_literal": "executar #1190 mint do chip supervisor de ensino",
+  "gerado_em": "2026-11-15T05:22:21.237Z",
+  "nota_geracao": "Artefacto novo de consolidação — NÃO sobrescreve rm18-diary.json nem os diários de etapa; cada etapa abaixo é lida dos seus diários em disco.",
+  "etapas": [
+    {
+      "etapa": "baseline_e_mint",
+      "diario": "evidence/rm18-diary.json",
+      "em": "2026-11-15T05:03:45.529Z",
+      "portoes": 7,
+      "falhas": 0,
+      "resumo": "baseline de 6 tabelas por contagem E md5 (supervision_requests 0; supervision_audit 33) e mint: POST /auth/v1/admin/users 200, login por password 200, uid 143716c5-4063-4759-922d-90d925d5018c, perfil criado pelo trigger como parent e depois UPDATE para education_supervisor (medido, porque é o que o app vê) — os 7 portões são os portoes_parciais do diário, que cobre as duas etapas"
+    },
+    {
+      "etapa": "prova_do_chip",
+      "diario": "evidence/rm18-navegador-b.json",
+      "em": "2026-11-15T05:14:27.513Z",
+      "portoes": 7,
+      "falhas": 0,
+      "veredito": "RM18_CHIP_OK",
+      "resumo": "Chrome real (CDP) com JWT real no localStorage, sem setRole; chip .mini-person span:not([style]) = «Supervisor(a) de ensino», nome [data-account-display-name] = «RM18», papel da sessão education_supervisor, secretaryView visível, 0 erros de console, captura rm18--chip-supervisor-b.png 196907 B md5 e345d93c1ea3b9f252b9a3dc7d8ef479"
+    },
+    {
+      "etapa": "limpeza",
+      "diario": "evidence/rm18-limpeza.json",
+      "em": "2026-11-15T05:14:42.410Z",
+      "portoes": 23,
+      "falhas": 0,
+      "veredito": "RM18_L_LIMPO",
+      "resumo": "FK-safe: auth.identities/auth.sessions/profiles removidos antes; DELETE /auth/v1/admin/users 200; GET 404; 0 sessões vivas; baseline restaurada 6/6 por contagem E md5; rm18-session.json e .rm18-chrome-profile removidos do disco"
+    }
+  ],
+  "nota_pass1": "evidence/rm18-navegador.json (passada 1, NÃO regravada): RM18_NAVEGADOR_PAROU com 1 vermelho DO INSTRUMENTO — o predicado assumia 2 spans em .mini-person e tomava o último; o span único já media «Supervisor(a) de ensino». O predicado foi corrigido dos bytes do bundle vivo (pinta account[1] no span:not([style]) de .mini-person) e a passada 2 deu 7/7.",
+  "totais": {
+    "portoes_soma": 37,
+    "vermelhos": 0,
+    "ddl": 0,
+    "escrita_em_tabela_de_produto": 0,
+    "mint_autorizado": 1,
+    "deploy": 0,
+    "edge_function": 0,
+    "git_push": 0
+  },
+  "veredito": "RM18_CICLO_OK",
+  "fechamentos": {
+    "roadmap": "RM-1.8 FECHADA 15/11 — a cláusula que faltava (chip visto numa sessão real de education_supervisor) foi provada por mint autorizado + navegador real + limpeza FK-safe; a v121 (publicada 14/11) carregava a chave, este ciclo provou a sessão.",
+    "auditoria": "## AA.",
+    "conta": "143716c5-4063-4759-922d-90d925d5018c removida (GET 404); 0 contas sintéticas vivas deste ciclo"
+  }
+}
