@@ -1,0 +1,117 @@
+{
+  "em": "2026-11-15T01:08:40.717Z",
+  "verdict": "V122_SW_ESTRUTURAL_OK",
+  "published": false,
+  "base": {
+    "workerMd5": "ca3668afcc72d487ddf131dde3d16c96",
+    "workerBytes": 3551496,
+    "swMd5": "c70f912c694fbc509273198e0accc83f",
+    "swBytes": 3586
+  },
+  "candidata": {
+    "swMd5": "439a1c50db4be98b7fdb7f6abc69dad1",
+    "swBytes": 5064,
+    "deltaBytes": 1478
+  },
+  "hunk": {
+    "bytes": 1478,
+    "rotulos": [
+      "RM-1.5",
+      "sem importScripts",
+      "label v121->v122"
+    ]
+  },
+  "portoes": [
+    {
+      "nome": "base_sw_md5_e_o_da_v121",
+      "valor": "c70f912c694fbc509273198e0accc83f",
+      "esperado": "c70f912c694fbc509273198e0accc83f",
+      "ok": true
+    },
+    {
+      "nome": "base_sw_bytes",
+      "valor": 3586,
+      "esperado": 3586,
+      "ok": true
+    },
+    {
+      "nome": "base_sw_etiqueta_v121",
+      "valor": 1,
+      "esperado": 1,
+      "ok": true
+    },
+    {
+      "nome": "base_sw_sem_ouvintes_push",
+      "valor": 0,
+      "esperado": 0,
+      "ok": true
+    },
+    {
+      "nome": "base_sw_sem_ouvintes_notificationclick",
+      "valor": 0,
+      "esperado": 0,
+      "ok": true
+    },
+    {
+      "nome": "nova_sw_etiqueta_v122",
+      "valor": 1,
+      "esperado": 1,
+      "ok": true
+    },
+    {
+      "nome": "nova_sw_sem_etiqueta_v121",
+      "valor": 0,
+      "esperado": 0,
+      "ok": true
+    },
+    {
+      "nome": "nova_sw_um_ouvinte_push",
+      "valor": 1,
+      "esperado": 1,
+      "ok": true
+    },
+    {
+      "nome": "nova_sw_um_ouvinte_notificationclick",
+      "valor": 1,
+      "esperado": 1,
+      "ok": true
+    },
+    {
+      "nome": "nova_sw_sem_chamada_importScripts",
+      "valor": 0,
+      "esperado": 0,
+      "ok": true
+    },
+    {
+      "nome": "nova_sw_showNotification_uma",
+      "valor": 1,
+      "esperado": 1,
+      "ok": true
+    },
+    {
+      "nome": "nova_sw_openWindow_uma",
+      "valor": 1,
+      "esperado": 1,
+      "ok": true
+    },
+    {
+      "nome": "hunk_so_acrescenta",
+      "valor": true,
+      "esperado": true,
+      "ok": true
+    },
+    {
+      "nome": "fetch_install_activate_intactos",
+      "valor": true,
+      "esperado": true,
+      "ok": true
+    },
+    {
+      "nome": "sintaxe_sw_novo",
+      "valor": 0,
+      "esperado": 0,
+      "ok": true
+    }
+  ],
+  "bancada": "pendente (scripts/rm15-bancada-push.mjs)"
+}

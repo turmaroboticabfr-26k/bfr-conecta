@@ -1,34 +1,34 @@
 {
-  "em": "2026-11-14T07:14:10.275Z",
+  "em": "2026-11-15T01:04:54.615Z",
   "tarefa": "RM-1.5/RM-6.9 passo 0 — estado vivo das rotas",
   "metodo": "somente leitura: 0 escrita, 0 DDL, 0 deploy",
-  "diario_de_origem": "audit-publicacao-v120.json",
-  "versao_esperada": "v120",
+  "diario_de_origem": "audit-publicacao-v121.json",
+  "versao_esperada": "v121",
   "ar": "https://bfr-conecta.turmaroboticabfr.workers.dev",
   "regua_local": {
-    "worker_dir": "worker-deploy-v120",
-    "worker_md5": "bc1f88ebed10660e56eac3f983159bad",
-    "shell_bytes": 3489649,
-    "shell_md5": "a9a76d0e338c2a539135bccce23111b4",
+    "worker_dir": "worker-deploy-v121",
+    "worker_md5": "ca3668afcc72d487ddf131dde3d16c96",
+    "shell_bytes": 3489725,
+    "shell_md5": "d418e7fc917f1fbb1437054b7b531f9b",
     "sw_bytes": 3586,
-    "sw_md5": "289f1f1dc82a2eb2e091994916af3e97",
-    "shell_no_diario": "a9a76d0e338c2a539135bccce23111b4 (3489649 B)",
-    "sw_no_diario": "289f1f1dc82a2eb2e091994916af3e97 (3586 B, CACHE bfr-conecta-v120)"
+    "sw_md5": "c70f912c694fbc509273198e0accc83f",
+    "shell_no_diario": "d418e7fc917f1fbb1437054b7b531f9b (3489725 B)",
+    "sw_no_diario": "c70f912c694fbc509273198e0accc83f (3586 B), CACHE bfr-conecta-v121"
   },
   "rotas": {
     "/": {
       "http": 200,
       "ct": "text/html; charset=utf-8",
-      "bytes": 3489649,
-      "md5": "a9a76d0e338c2a539135bccce23111b4",
+      "bytes": 3489725,
+      "md5": "d418e7fc917f1fbb1437054b7b531f9b",
       "csp_presente": "sim",
       "trecho": "<!doctype html> <html lang=\"pt-BR\"><head><meta charset=\"utf-8\"><meta name=\"viewp"
     },
     "/index.html": {
       "http": 200,
       "ct": "text/html; charset=utf-8",
-      "bytes": 3489649,
-      "md5": "a9a76d0e338c2a539135bccce23111b4",
+      "bytes": 3489725,
+      "md5": "d418e7fc917f1fbb1437054b7b531f9b",
       "csp_presente": "sim",
       "trecho": "<!doctype html> <html lang=\"pt-BR\"><head><meta charset=\"utf-8\"><meta name=\"viewp"
     },
@@ -36,25 +36,25 @@
       "http": 200,
       "ct": "application/javascript; charset=utf-8",
       "bytes": 3586,
-      "md5": "289f1f1dc82a2eb2e091994916af3e97",
+      "md5": "c70f912c694fbc509273198e0accc83f",
       "csp_presente": "nao",
-      "trecho": "const CACHE = 'bfr-conecta-v120'; const CACHE_PREFIX = 'bfr-conecta-'; const SHE"
+      "trecho": "const CACHE = 'bfr-conecta-v121'; const CACHE_PREFIX = 'bfr-conecta-'; const SHE"
     },
     "/firebase-messaging-sw.js": {
-      "http": 500,
-      "ct": "text/html; charset=UTF-8",
-      "bytes": 4720,
-      "md5": "9f7df27c4369a334ad27a6235819dd11",
+      "http": 404,
+      "ct": "text/plain; charset=utf-8",
+      "bytes": 9,
+      "md5": "9e076f5885f5cc16a4b5aeb8de4adff5",
       "csp_presente": "nao",
-      "trecho": "<!DOCTYPE html> <!--[if lt IE 7]> <html class=\"no-js ie6 oldie\" lang=\"en-US\"> <!"
+      "trecho": "Not found"
     },
     "/qualquer-rota-inexistente-zz": {
-      "http": 500,
-      "ct": "text/html; charset=UTF-8",
-      "bytes": 4720,
-      "md5": "8d6d6ce837b41bdafaa68bfa30412532",
+      "http": 404,
+      "ct": "text/plain; charset=utf-8",
+      "bytes": 9,
+      "md5": "9e076f5885f5cc16a4b5aeb8de4adff5",
       "csp_presente": "nao",
-      "trecho": "<!DOCTYPE html> <!--[if lt IE 7]> <html class=\"no-js ie6 oldie\" lang=\"en-US\"> <!"
+      "trecho": "Not found"
     },
     "/manifest.json": {
       "http": 200,
@@ -65,26 +65,26 @@
       "trecho": "{ \"name\": \"BFR Conecta\", \"short_name\": \"BFR Conecta\", \"description\": \"Port"
     },
     "/favicon.ico": {
-      "http": 500,
-      "ct": "text/html; charset=UTF-8",
-      "bytes": 4720,
-      "md5": "1ef33bf40676c332f2c02ab086db2666",
+      "http": 404,
+      "ct": "text/plain; charset=utf-8",
+      "bytes": 9,
+      "md5": "9e076f5885f5cc16a4b5aeb8de4adff5",
       "csp_presente": "nao",
-      "trecho": "<!DOCTYPE html> <!--[if lt IE 7]> <html class=\"no-js ie6 oldie\" lang=\"en-US\"> <!"
+      "trecho": "Not found"
     },
     "/aluno": {
-      "http": 500,
-      "ct": "text/html; charset=UTF-8",
-      "bytes": 4720,
-      "md5": "92b35323aede8447f55d40141c7549e3",
+      "http": 404,
+      "ct": "text/plain; charset=utf-8",
+      "bytes": 9,
+      "md5": "9e076f5885f5cc16a4b5aeb8de4adff5",
       "csp_presente": "nao",
-      "trecho": "<!DOCTYPE html> <!--[if lt IE 7]> <html class=\"no-js ie6 oldie\" lang=\"en-US\"> <!"
+      "trecho": "Not found"
     }
   },
   "sw_servido": {
     "http": 200,
     "bytes": 3586,
-    "md5": "289f1f1dc82a2eb2e091994916af3e97",
+    "md5": "c70f912c694fbc509273198e0accc83f",
     "identico_a_regua": true,
     "listeners": [
       "addEventListener('install'",
@@ -96,12 +96,12 @@
     "showNotification": 0,
     "importScripts": 0,
     "firebase": 0,
-    "cache": "bfr-conecta-v120"
+    "cache": "bfr-conecta-v121"
   },
   "shell_servido": {
     "http": 200,
-    "bytes": 3489649,
-    "md5": "a9a76d0e338c2a539135bccce23111b4",
+    "bytes": 3489725,
+    "md5": "d418e7fc917f1fbb1437054b7b531f9b",
     "identico_a_regua": true,
     "csp_identico_a_regua": "sim",
     "firebase_messaging_sw": 0,
@@ -175,6 +175,20 @@
       "md5": "bc1f88ebed10660e56eac3f983159bad",
       "assets_fetch_por_string": true,
       "rota_fcm_literal": 0
+    },
+    {
+      "dir": "worker-deploy-v120-404",
+      "bytes": 3551420,
+      "md5": "70ecf617866b422ac569e216e7cc1974",
+      "assets_fetch_por_string": false,
+      "rota_fcm_literal": 0
+    },
+    {
+      "dir": "worker-deploy-v121",
+      "bytes": 3551496,
+      "md5": "ca3668afcc72d487ddf131dde3d16c96",
+      "assets_fetch_por_string": false,
+      "rota_fcm_literal": 0
     }
   ],
   "linhagem_resumo": {
@@ -189,7 +203,9 @@
     "sem_fetch_por_string": [
       "worker-deploy-v115",
       "worker-deploy-v116",
-      "worker-deploy-v117"
+      "worker-deploy-v117",
+      "worker-deploy-v120-404",
+      "worker-deploy-v121"
     ]
   },
   "candidatas_em_disco": [
@@ -220,9 +236,9 @@
       "passou": true
     },
     "A3_rota_inexistente_da_404_nao_500": {
-      "valor": 500,
+      "valor": 404,
       "esperado": 404,
-      "passou": false
+      "passou": true
     },
     "A4_rota_fcm_devolve_js": {
       "valor": false,
@@ -241,8 +257,8 @@
     }
   },
   "total": {
-    "verde": 2,
-    "vermelho": 4
+    "verde": 3,
+    "vermelho": 3
   },
   "veredito": "RM15_ESTADO_COM_FALHAS"
 }

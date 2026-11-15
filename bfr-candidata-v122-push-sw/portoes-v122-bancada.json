@@ -1,0 +1,203 @@
+{
+  "em": "2026-11-15T01:08:40.845Z",
+  "verdict": "V122_BANCADA_OK",
+  "published": false,
+  "metodo": "new Function com scope sintetico (self/caches/Response/fetch/URL); PushEvent/NotificationClickEvent fabricados; offline, sem rede nem banco",
+  "controle": {
+    "base": "sw v121 (md5 c70f912c694fbc509273198e0accc83f)",
+    "payload": "fcm completo",
+    "showNotification": 0
+  },
+  "casos": {
+    "T1": "payload FCM completo com fcm_options.link -> titulo/body/icon/data.url",
+    "T2": "data.title/body diretos -> titulo do data, link default /",
+    "T3": "data nao-JSON -> titulo default BFR Conecta, body vazio",
+    "T4": "event.data null -> titulo default",
+    "T5": "notificationclick sem clientes -> openWindow(link)",
+    "T6": "notificationclick sem data -> openWindow(/)",
+    "T7": "notificationclick com cliente -> navigate+focus e SEM openWindow"
+  },
+  "candidata": {
+    "showNotification_total": 4,
+    "opened": [
+      "/comunicados",
+      "/"
+    ]
+  },
+  "portoes": [
+    {
+      "nome": "candidata_md5_e_o_do_diario",
+      "valor": "439a1c50db4be98b7fdb7f6abc69dad1",
+      "esperado": "439a1c50db4be98b7fdb7f6abc69dad1",
+      "ok": true
+    },
+    {
+      "nome": "candidata_bytes",
+      "valor": 5064,
+      "esperado": 5064,
+      "ok": true
+    },
+    {
+      "nome": "reversa_e_a_base_v121",
+      "valor": "c70f912c694fbc509273198e0accc83f",
+      "esperado": "c70f912c694fbc509273198e0accc83f",
+      "ok": true
+    },
+    {
+      "nome": "base_v121_sem_ouvinte_push",
+      "valor": 0,
+      "esperado": 0,
+      "ok": true
+    },
+    {
+      "nome": "candidata_um_ouvinte_push",
+      "valor": 1,
+      "esperado": 1,
+      "ok": true
+    },
+    {
+      "nome": "candidata_um_ouvinte_notificationclick",
+      "valor": 1,
+      "esperado": 1,
+      "ok": true
+    },
+    {
+      "nome": "candidata_sem_chamada_importScripts",
+      "valor": 0,
+      "esperado": 0,
+      "ok": true
+    },
+    {
+      "nome": "candidata_uma_showNotification",
+      "valor": 1,
+      "esperado": 1,
+      "ok": true
+    },
+    {
+      "nome": "candidata_um_openWindow",
+      "valor": 1,
+      "esperado": 1,
+      "ok": true
+    },
+    {
+      "nome": "candidata_etiqueta_v122",
+      "valor": 1,
+      "esperado": 1,
+      "ok": true
+    },
+    {
+      "nome": "candidata_sem_etiqueta_v121",
+      "valor": 0,
+      "esperado": 0,
+      "ok": true
+    },
+    {
+      "nome": "T0_controle_base_sem_showNotification",
+      "valor": 0,
+      "esperado": 0,
+      "ok": true
+    },
+    {
+      "nome": "T1_showNotification_uma",
+      "valor": 1,
+      "esperado": 1,
+      "ok": true
+    },
+    {
+      "nome": "T1_titulo",
+      "valor": "Aviso da escola",
+      "esperado": "Aviso da escola",
+      "ok": true
+    },
+    {
+      "nome": "T1_body",
+      "valor": "Reuniao amanha as 8h",
+      "esperado": "Reuniao amanha as 8h",
+      "ok": true
+    },
+    {
+      "nome": "T1_icon",
+      "valor": "/bfr-app-logo.png",
+      "esperado": "/bfr-app-logo.png",
+      "ok": true
+    },
+    {
+      "nome": "T1_data_url_e_o_link",
+      "valor": "/comunicados",
+      "esperado": "/comunicados",
+      "ok": true
+    },
+    {
+      "nome": "T2_titulo_do_data",
+      "valor": "Direto",
+      "esperado": "Direto",
+      "ok": true
+    },
+    {
+      "nome": "T2_body_do_data",
+      "valor": "corpo direto",
+      "esperado": "corpo direto",
+      "ok": true
+    },
+    {
+      "nome": "T2_data_url_default",
+      "valor": "/",
+      "esperado": "/",
+      "ok": true
+    },
+    {
+      "nome": "T3_titulo_default",
+      "valor": "BFR Conecta",
+      "esperado": "BFR Conecta",
+      "ok": true
+    },
+    {
+      "nome": "T3_body_vazio",
+      "valor": "",
+      "esperado": "",
+      "ok": true
+    },
+    {
+      "nome": "T4_titulo_default",
+      "valor": "BFR Conecta",
+      "esperado": "BFR Conecta",
+      "ok": true
+    },
+    {
+      "nome": "T5_openWindow_com_link",
+      "valor": "/comunicados",
+      "esperado": "/comunicados",
+      "ok": true
+    },
+    {
+      "nome": "T5_close_chamado",
+      "valor": 1,
+      "esperado": 1,
+      "ok": true
+    },
+    {
+      "nome": "T6_openWindow_default",
+      "valor": "/",
+      "esperado": "/",
+      "ok": true
+    },
+    {
+      "nome": "T7_navigate_no_cliente",
+      "valor": "/direcao",
+      "esperado": "/direcao",
+      "ok": true
+    },
+    {
+      "nome": "T7_focus_chamado",
+      "valor": 1,
+      "esperado": 1,
+      "ok": true
+    },
+    {
+      "nome": "T7_sem_openWindow",
+      "valor": 2,
+      "esperado": 2,
+      "ok": true
+    }
+  ]
+}
