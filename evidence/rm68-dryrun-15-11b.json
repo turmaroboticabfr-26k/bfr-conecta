@@ -1,0 +1,31 @@
+{
+  "em": "2026-11-15T02:42:03.275Z",
+  "tarefa": "RM-6.8 / #1189 — ensaio transacional do fluxo derivado, com rollback",
+  "escrita_persistida": false,
+  "ensaio": {
+    "bytes": 9174,
+    "statements_antes_da_sonda": 21,
+    "md5": "291e9bf1981e58416740d35d366c5087"
+  },
+  "antes": {
+    "pegada": {
+      "total": 182,
+      "hash": "ecf3403210b8091209cb8584a4f1da51"
+    },
+    "contagens": {
+      "grades": 112,
+      "attendance": 25,
+      "access_requests": 12,
+      "occurrences": 0
+    },
+    "public_sem_privilegio": 0,
+    "wrappers": []
+  },
+  "ensaio_falhou": "sql HTTP 400: {\"message\":\"Failed to run sql query: ERROR:  42601: syntax error at or near \\\"ROLLBACK\\\"\\nLINE 164: ROLLBACK;\\n          ^\\n\"}",
+  "portoes": {
+    "portoes": 15,
+    "falhas": [
+      "ensaio_nao_rebenta | dado=\"sql HTTP 400: {\\\"message\\\":\\\"Failed to run sql query: ERROR:  42601: syntax error at or near \\\\\\\"ROLLBACK\\\\\\\"\\\\nLINE 164: ROLLBACK;\\\\n          ^\\\\n\\\"}\" | esperado=\"sem_erro\""
+    ]
+  }
+}

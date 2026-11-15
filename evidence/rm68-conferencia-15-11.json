@@ -1,0 +1,159 @@
+{
+  "em": "2026-11-15T03:08:08.290Z",
+  "tarefa": "RM-6.8 / #1189 — conferência somente-leitura do estado aplicado (instrumento corrigido + não-vacuidade)",
+  "escrita_no_banco": false,
+  "falha_registrada_no_aplicador": {
+    "portao": "depois_14_predicados_batem_com_o_ficheiro",
+    "motivo": "comparava o texto do ficheiro com o pg_get_expr; o deparse tira qualificadores auto-resolvidos e por vezes um par exterior",
+    "substituido_por": "depois_14_clausulas_pareadas_por_nome_e_tipo + controlo_de_nao_vacuidade"
+  },
+  "clausulas": {
+    "pareadas": 14,
+    "classes": {
+      "so_qualificador": 11,
+      "so_parenteses_externos": 3
+    },
+    "byte_iguais_sem_normalizar": 0,
+    "detalhes": [
+      {
+        "politica": "access_requests_manage",
+        "clausula": "USING",
+        "ficheiro": "public.bfr_rls_is_developer()",
+        "catalogo": "bfr_rls_is_developer()",
+        "classe": "so_qualificador"
+      },
+      {
+        "politica": "access_requests_manage",
+        "clausula": "WITH CHECK",
+        "ficheiro": "(public.bfr_rls_is_developer() AND (requested_role = ANY (enum_range(NULL::account_role))) AND ((approved_role IS NULL) OR (approved_role = requested_role)) AND (status = ANY (ARRAY['pending'::request_status, 'approved'::request_status, 'rejected'::request_status])))",
+        "catalogo": "(bfr_rls_is_developer() AND (requested_role = ANY (enum_range(NULL::account_role))) AND ((approved_role IS NULL) OR (approved_role = requested_role)) AND (status = ANY (ARRAY['pending'::request_status, 'approved'::request_status, 'rejected'::request_status])))",
+        "classe": "so_qualificador"
+      },
+      {
+        "politica": "access_requests_staff_insert",
+        "clausula": "WITH CHECK",
+        "ficheiro": "(public.bfr_rls_is_developer() AND (requested_role = ANY (enum_range(NULL::account_role))) AND (((approved_role IS NULL) AND (status = 'pending'::request_status)) OR ((approved_role = requested_role) AND (status = 'approved'::request_status))))",
+        "catalogo": "(bfr_rls_is_developer() AND (requested_role = ANY (enum_range(NULL::account_role))) AND (((approved_role IS NULL) AND (status = 'pending'::request_status)) OR ((approved_role = requested_role) AND (status = 'approved'::request_status))))",
+        "classe": "so_qualificador"
+      },
+      {
+        "politica": "attendance_staff_delete",
+        "clausula": "USING",
+        "ficheiro": "(bfr_staff_can_manage_student_scope(student_id) AND ((public.bfr_rls_session_role())::text <> 'secretary'::text))",
+        "catalogo": "(bfr_staff_can_manage_student_scope(student_id) AND ((bfr_rls_session_role())::text <> 'secretary'::text))",
+        "classe": "so_qualificador"
+      },
+      {
+        "politica": "attendance_staff_insert",
+        "clausula": "WITH CHECK",
+        "ficheiro": "(bfr_staff_can_manage_student_scope(student_id) AND ((public.bfr_rls_session_role())::text <> 'secretary'::text) AND (((public.bfr_rls_session_role())::text <> 'pedagogical'::text) OR (entered_by = auth.uid())))",
+        "catalogo": "(bfr_staff_can_manage_student_scope(student_id) AND ((bfr_rls_session_role())::text <> 'secretary'::text) AND (((bfr_rls_session_role())::text <> 'pedagogical'::text) OR (entered_by = auth.uid())))",
+        "classe": "so_qualificador"
+      },
+      {
+        "politica": "attendance_staff_select",
+        "clausula": "USING",
+        "ficheiro": "(bfr_staff_can_manage_student_scope(student_id) AND ((public.bfr_rls_session_role())::text <> 'secretary'::text))",
+        "catalogo": "(bfr_staff_can_manage_student_scope(student_id) AND ((bfr_rls_session_role())::text <> 'secretary'::text))",
+        "classe": "so_qualificador"
+      },
+      {
+        "politica": "attendance_staff_update",
+        "clausula": "USING",
+        "ficheiro": "(bfr_staff_can_manage_student_scope(student_id) AND ((public.bfr_rls_session_role())::text <> 'secretary'::text))",
+        "catalogo": "(bfr_staff_can_manage_student_scope(student_id) AND ((bfr_rls_session_role())::text <> 'secretary'::text))",
+        "classe": "so_qualificador"
+      },
+      {
+        "politica": "attendance_staff_update",
+        "clausula": "WITH CHECK",
+        "ficheiro": "(bfr_staff_can_manage_student_scope(student_id) AND ((public.bfr_rls_session_role())::text <> 'secretary'::text))",
+        "catalogo": "(bfr_staff_can_manage_student_scope(student_id) AND ((bfr_rls_session_role())::text <> 'secretary'::text))",
+        "classe": "so_qualificador"
+      },
+      {
+        "politica": "grades_staff_delete",
+        "clausula": "USING",
+        "ficheiro": "(bfr_staff_can_manage_student_scope(student_id, subject) AND ((public.bfr_rls_session_role())::text <> 'secretary'::text))",
+        "catalogo": "(bfr_staff_can_manage_student_scope(student_id, subject) AND ((bfr_rls_session_role())::text <> 'secretary'::text))",
+        "classe": "so_qualificador"
+      },
+      {
+        "politica": "grades_staff_insert",
+        "clausula": "WITH CHECK",
+        "ficheiro": "(bfr_staff_can_manage_student_scope(student_id, subject) AND ((public.bfr_rls_session_role())::text <> 'secretary'::text) AND (((public.bfr_rls_session_role())::text <> 'pedagogical'::text) OR (entered_by = auth.uid())))",
+        "catalogo": "(bfr_staff_can_manage_student_scope(student_id, subject) AND ((bfr_rls_session_role())::text <> 'secretary'::text) AND (((bfr_rls_session_role())::text <> 'pedagogical'::text) OR (entered_by = auth.uid())))",
+        "classe": "so_qualificador"
+      },
+      {
+        "politica": "grades_staff_select",
+        "clausula": "USING",
+        "ficheiro": "(bfr_staff_can_manage_student_scope(student_id, subject) AND ((public.bfr_rls_session_role())::text <> 'secretary'::text))",
+        "catalogo": "(bfr_staff_can_manage_student_scope(student_id, subject) AND ((bfr_rls_session_role())::text <> 'secretary'::text))",
+        "classe": "so_qualificador"
+      },
+      {
+        "politica": "occurrences_director_select",
+        "clausula": "USING",
+        "ficheiro": "(public.bfr_rls_director_manages_student(occurrences.student_id))",
+        "catalogo": "bfr_rls_director_manages_student(student_id)",
+        "classe": "so_parenteses_externos"
+      },
+      {
+        "politica": "occurrences_director_update",
+        "clausula": "USING",
+        "ficheiro": "(public.bfr_rls_director_manages_student(occurrences.student_id))",
+        "catalogo": "bfr_rls_director_manages_student(student_id)",
+        "classe": "so_parenteses_externos"
+      },
+      {
+        "politica": "occurrences_director_update",
+        "clausula": "WITH CHECK",
+        "ficheiro": "(public.bfr_rls_director_manages_student(occurrences.student_id))",
+        "catalogo": "bfr_rls_director_manages_student(student_id)",
+        "classe": "so_parenteses_externos"
+      }
+    ]
+  },
+  "controlo_negativo": {
+    "perturbacoes": 42,
+    "nao_detectadas": []
+  },
+  "conferido": {
+    "pegada": {
+      "total": 182,
+      "hash": "ecf3403210b8091209cb8584a4f1da51"
+    },
+    "public_sem_privilegio": 11,
+    "total_polisticas": 23,
+    "publicas": 11,
+    "wrappers": [
+      "bfr_rls_director_manages_student",
+      "bfr_rls_is_developer",
+      "bfr_rls_session_role"
+    ],
+    "contagens": {
+      "grades": 112,
+      "attendance": 25,
+      "access_requests": 12,
+      "occurrences": 0
+    },
+    "cmd_publicas": [
+      "access_requests_manage:ALL",
+      "access_requests_staff_insert:INSERT",
+      "attendance_staff_delete:DELETE",
+      "attendance_staff_insert:INSERT",
+      "attendance_staff_select:SELECT",
+      "attendance_staff_update:UPDATE",
+      "grades_staff_delete:DELETE",
+      "grades_staff_insert:INSERT",
+      "grades_staff_select:SELECT",
+      "occurrences_director_select:SELECT",
+      "occurrences_director_update:UPDATE"
+    ]
+  },
+  "portoes": {
+    "portoes": 44,
+    "falhas": []
+  }
+}

@@ -1,8 +1,16 @@
 // FIN-3 (peça 1) — RM-6.8 SOMENTE LEITURA: deita para disco o texto VIVO das policies das 4 tabelas da
 // PEN-25 e das funções que elas chamam. A candidata SQL é derivada daqui; nada neste ficheiro escreve.
 // Artefacto: evidence/rm68-recon-quals.json
-import { writeFileSync } from "node:fs";
+// ARMADILHA MEDIDA 15/11 — este script gravava sempre no MESMO caminho e sem defesa. O registo da
+// candidata (`rm68-candidata-portoes.json`) cita `origem = evidence/rm68-recon-quals.json` com
+// `medicao_origem_em = 2026-11-13T02:13:35.747Z`: re-emiti-lo por cima apagava a medição que prova de
+// onde a candidata saiu. Agora o destino é argumento e um ficheiro existente nunca se sobrepõe — a
+// régua do ciclo fica intacta e a medição nova vai para um caminho datado.
+import { existsSync, writeFileSync } from "node:fs";
 import { sql, criarGates } from "./c2-lib.mjs";
+
+const SAIDA = process.argv[2] || "evidence/rm68-recon-quals.json";
+if (existsSync(SAIDA)) { console.log(`VERMELHO  já existe ${SAIDA} — não sobreponho artefactos`); process.exit(1); }
 
 const g = criarGates();
 const alvos = ["grades", "attendance", "access_requests", "occurrences"];
@@ -69,7 +77,7 @@ const depois = await pegada();
 g.gate("nao_escrita_pegada_de_catalogo_igual", depois, antes);
 out.pegada_depois = depois;
 out.portoes = g.resumo();
-writeFileSync("evidence/rm68-recon-quals.json", JSON.stringify(out, null, 2) + "\n");
+writeFileSync(SAIDA, JSON.stringify(out, null, 2) + "\n");
 
 const { portoes, falhas } = g.resumo();
 for (const f of falhas) console.log("VERMELHO  " + f);
@@ -78,6 +86,6 @@ for (const p of out.policies) console.log(`  ${p.tablename} | ${p.cmd} | ${p.pol
 console.log(`funcoes: ${out.funcoes.map((f) => `${f.nome}(anon_exec=${f.anon_execute} definer=${f.security_definer})`).join(" ")}`);
 console.log(`staff_schools SELECT: anon=${out.select_em_staff_schools[0].anon_select} auth=${out.select_em_staff_schools[0].auth_select}`);
 console.log(`pegada catálogo antes=${antes.total}/${antes.hash.slice(0, 12)} depois=${depois.total}/${depois.hash.slice(0, 12)}`);
-if (falhas.length === 0) { console.log(`RM68_RECON_VERDE ${portoes} portões / 0 falhas · artefacto evidence/rm68-recon-quals.json`); process.exit(0); }
+if (falhas.length === 0) { console.log(`RM68_RECON_VERDE ${portoes} portões / 0 falhas · artefacto ${SAIDA}`); process.exit(0); }
 console.log(`RM68_RECON_VERMELHA ${falhas.length} falha(s) de ${portoes} portões`);
 process.exit(1);

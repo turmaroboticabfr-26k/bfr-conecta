@@ -1,0 +1,262 @@
+{
+  "em": "2026-11-15T02:30:04.211Z",
+  "tarefa": "RM-6.8 / #1189 — preflight somente-leitura + derivação do fluxo executável",
+  "metodos": "parse local da candidata; SELECT de pg_policy/pg_proc/pg_class/has_*_privilege; nenhuma escrita",
+  "escrita_no_banco": false,
+  "achado_executabilidade": {
+    "descricao": "a candidata de 12/11 não é um fluxo executável: os ALTER POLICY não têem ';' e colapsam em poucos statements quando enviados como estão; a derivación acrescenta só o terminator",
+    "dryrun_grupos_sem_ponto_e_virgula": 1,
+    "reversao_grupos_sem_ponto_e_virgula": 0,
+    "alter_policy_no_dryrun": 11
+  },
+  "polisticas_vivas": {
+    "total": 23,
+    "public": 11
+  },
+  "paridade": [
+    {
+      "policy": "access_requests_manage",
+      "no_catalogo": [
+        true,
+        true
+      ],
+      "no_ficheiro": [
+        true,
+        true
+      ]
+    },
+    {
+      "policy": "access_requests_staff_insert",
+      "no_catalogo": [
+        false,
+        true
+      ],
+      "no_ficheiro": [
+        false,
+        true
+      ]
+    },
+    {
+      "policy": "attendance_staff_delete",
+      "no_catalogo": [
+        true,
+        false
+      ],
+      "no_ficheiro": [
+        true,
+        false
+      ]
+    },
+    {
+      "policy": "attendance_staff_insert",
+      "no_catalogo": [
+        false,
+        true
+      ],
+      "no_ficheiro": [
+        false,
+        true
+      ]
+    },
+    {
+      "policy": "attendance_staff_select",
+      "no_catalogo": [
+        true,
+        false
+      ],
+      "no_ficheiro": [
+        true,
+        false
+      ]
+    },
+    {
+      "policy": "attendance_staff_update",
+      "no_catalogo": [
+        true,
+        true
+      ],
+      "no_ficheiro": [
+        true,
+        true
+      ]
+    },
+    {
+      "policy": "grades_staff_delete",
+      "no_catalogo": [
+        true,
+        false
+      ],
+      "no_ficheiro": [
+        true,
+        false
+      ]
+    },
+    {
+      "policy": "grades_staff_insert",
+      "no_catalogo": [
+        false,
+        true
+      ],
+      "no_ficheiro": [
+        false,
+        true
+      ]
+    },
+    {
+      "policy": "grades_staff_select",
+      "no_catalogo": [
+        true,
+        false
+      ],
+      "no_ficheiro": [
+        true,
+        false
+      ]
+    },
+    {
+      "policy": "occurrences_director_select",
+      "no_catalogo": [
+        true,
+        false
+      ],
+      "no_ficheiro": [
+        true,
+        false
+      ]
+    },
+    {
+      "policy": "occurrences_director_update",
+      "no_catalogo": [
+        true,
+        true
+      ],
+      "no_ficheiro": [
+        true,
+        true
+      ]
+    }
+  ],
+  "reversao_clausula_a_clausula": [
+    {
+      "alvo": "public.\"access_requests_manage\"",
+      "tipo": "USING",
+      "igual_ao_vivo": true,
+      "forma": 0
+    },
+    {
+      "alvo": "public.\"access_requests_manage\"",
+      "tipo": "WITH CHECK",
+      "igual_ao_vivo": true,
+      "forma": 0
+    },
+    {
+      "alvo": "public.\"access_requests_staff_insert\"",
+      "tipo": "WITH CHECK",
+      "igual_ao_vivo": true,
+      "forma": 0
+    },
+    {
+      "alvo": "public.\"attendance_staff_delete\"",
+      "tipo": "USING",
+      "igual_ao_vivo": true,
+      "forma": 0
+    },
+    {
+      "alvo": "public.\"attendance_staff_insert\"",
+      "tipo": "WITH CHECK",
+      "igual_ao_vivo": true,
+      "forma": 0
+    },
+    {
+      "alvo": "public.\"attendance_staff_select\"",
+      "tipo": "USING",
+      "igual_ao_vivo": true,
+      "forma": 0
+    },
+    {
+      "alvo": "public.\"attendance_staff_update\"",
+      "tipo": "USING",
+      "igual_ao_vivo": true,
+      "forma": 0
+    },
+    {
+      "alvo": "public.\"attendance_staff_update\"",
+      "tipo": "WITH CHECK",
+      "igual_ao_vivo": true,
+      "forma": 0
+    },
+    {
+      "alvo": "public.\"grades_staff_delete\"",
+      "tipo": "USING",
+      "igual_ao_vivo": true,
+      "forma": 0
+    },
+    {
+      "alvo": "public.\"grades_staff_insert\"",
+      "tipo": "WITH CHECK",
+      "igual_ao_vivo": true,
+      "forma": 0
+    },
+    {
+      "alvo": "public.\"grades_staff_select\"",
+      "tipo": "USING",
+      "igual_ao_vivo": true,
+      "forma": 0
+    },
+    {
+      "alvo": "public.\"occurrences_director_select\"",
+      "tipo": "USING",
+      "igual_ao_vivo": true,
+      "forma": 0
+    },
+    {
+      "alvo": "public.\"occurrences_director_update\"",
+      "tipo": "USING",
+      "igual_ao_vivo": true,
+      "forma": 0
+    },
+    {
+      "alvo": "public.\"occurrences_director_update\"",
+      "tipo": "WITH CHECK",
+      "igual_ao_vivo": true,
+      "forma": 0
+    }
+  ],
+  "pegada": {
+    "total": 182,
+    "hash": "ecf3403210b8091209cb8584a4f1da51"
+  },
+  "contagens_baseline": {
+    "grades": 112,
+    "attendance": 25,
+    "access_requests": 12,
+    "occurrences": 0
+  },
+  "anon_hoje": {
+    "current_role_execute": false,
+    "is_developer_execute": false,
+    "staff_schools_select": false
+  },
+  "derivados": {
+    "aplicacao": {
+      "ficheiro": "scripts/rm68-aplicacao-15-11.sql",
+      "statements": 22,
+      "bytes": 5848,
+      "md5": "82e082bc70b7b67e00730827b6b0d274"
+    },
+    "reversao": {
+      "ficheiro": "scripts/rm68-reversao-15-11.sql",
+      "statements": 18,
+      "bytes": 4080,
+      "md5": "b0becab45855f4fb6aebe1614baf309d"
+    }
+  },
+  "pegada_depois": {
+    "total": 182,
+    "hash": "ecf3403210b8091209cb8584a4f1da51"
+  },
+  "portoes": {
+    "portoes": 46,
+    "falhas": []
+  }
+}

@@ -1,0 +1,70 @@
+{
+  "em": "2026-11-15T02:54:56.881Z",
+  "tarefa": "RM-6.8 / #1189 — aplicar o fail-closed por policy (3 wrappers + 11 ALTER POLICY PUBLIC)",
+  "ok_nomeado": "Aplicar o RM-6.8",
+  "escrita_persistida": true,
+  "resposta_canal": [],
+  "depois": {
+    "pegada": {
+      "total": 182,
+      "hash": "ecf3403210b8091209cb8584a4f1da51"
+    },
+    "public_sem_privilegio": 11,
+    "wrappers": [
+      {
+        "nome": "bfr_rls_director_manages_student",
+        "dono": "postgres",
+        "definer": true,
+        "args": "p_student_id uuid",
+        "config": [
+          "search_path=public, pg_temp"
+        ],
+        "anon_exec": true,
+        "auth_exec": true,
+        "publico_exec": false
+      },
+      {
+        "nome": "bfr_rls_is_developer",
+        "dono": "postgres",
+        "definer": true,
+        "args": "",
+        "config": [
+          "search_path=public, pg_temp"
+        ],
+        "anon_exec": true,
+        "auth_exec": true,
+        "publico_exec": false
+      },
+      {
+        "nome": "bfr_rls_session_role",
+        "dono": "postgres",
+        "definer": true,
+        "args": "",
+        "config": [
+          "search_path=public, pg_temp"
+        ],
+        "anon_exec": true,
+        "auth_exec": true,
+        "publico_exec": false
+      }
+    ],
+    "total_polisticas": 23,
+    "public_polisticas": 11,
+    "contagens": {
+      "grades": 112,
+      "attendance": 25,
+      "access_requests": 12,
+      "occurrences": 0
+    }
+  },
+  "clausulas": {
+    "novas_ficheiro": 14,
+    "vivas_catalogo": 14
+  },
+  "portoes": {
+    "portoes": 52,
+    "falhas": [
+      "depois_14_predicados_batem_com_o_ficheiro | dado=[\"(bfr_rls_is_developer() AND (requested_role = ANY (enum_range(NULL::account_role))) AND (((approved_role IS NULL) AND (status = 'pending'::request_status)) OR ((approved_role = requested_role) AND (status = 'approved'::request_status))))\",\"(bfr_rls_is_developer() AND (requested_role = ANY (enum_range(NULL::account_role))) AND ((approved_role IS NULL) OR (approved_role = requested_role)) AND (status = ANY (ARRAY['pending'::request_status, 'approved'::request_status, 'rejected'::request_status])))\",\"(bfr_staff_can_manage_student_scope(student_id) AND ((bfr_rls_session_role())::text <> 'secretary'::text) AND (((bfr_rls_session_role())::text <> 'pedagogical'::text) OR (entered_by = auth.uid())))\",\"(bfr_staff_can_manage_student_scope(student_id) AND ((bfr_rls_session_role())::text <> 'secretary'::text))\",\"(bfr_staff_can_manage_student_scope(student_id) AND ((bfr_rls_session_role())::text <> 'secretary'::text))\",\"(bfr_staff_can_manage_student_scope(student_id) AND ((bfr_rls_session_role())::text <> 'secretary'::text))\",\"(bfr_staff_can_manage_student_scope(student_id) AND ((bfr_rls_session_role())::text <> 'secretary'::text))\",\"(bfr_staff_can_manage_student_scope(student_id, subject) AND ((bfr_rls_session_role())::text <> 'secretary'::text) AND (((bfr_rls_session_role())::text <> 'pedagogical'::text) OR (entered_by = auth.uid())))\",\"(bfr_staff_can_manage_student_scope(student_id, subject) AND ((bfr_rls_session_role())::text <> 'secretary'::text))\",\"(bfr_staff_can_manage_student_scope(student_id, subject) AND ((bfr_rls_session_role())::text <> 'secretary'::text))\",\"bfr_rls_director_manages_student(student_id)\",\"bfr_rls_director_manages_student(student_id)\",\"bfr_rls_director_manages_student(student_id)\",\"bfr_rls_is_developer()\"] | esperado=[\"(bfr_staff_can_manage_student_scope(student_id) AND ((public.bfr_rls_session_role())::text <> 'secretary'::text) AND (((public.bfr_rls_session_role())::text <> 'pedagogical'::text) OR (entered_by = auth.uid())))\",\"(bfr_staff_can_manage_student_scope(student_id) AND ((public.bfr_rls_session_role())::text <> 'secretary'::text))\",\"(bfr_staff_can_manage_student_scope(student_id) AND ((public.bfr_rls_session_role())::text <> 'secretary'::text))\",\"(bfr_staff_can_manage_student_scope(student_id) AND ((public.bfr_rls_session_role())::text <> 'secretary'::text))\",\"(bfr_staff_can_manage_student_scope(student_id) AND ((public.bfr_rls_session_role())::text <> 'secretary'::text))\",\"(bfr_staff_can_manage_student_scope(student_id, subject) AND ((public.bfr_rls_session_role())::text <> 'secretary'::text) AND (((public.bfr_rls_session_role())::text <> 'pedagogical'::text) OR (entered_by = auth.uid())))\",\"(bfr_staff_can_manage_student_scope(student_id, subject) AND ((public.bfr_rls_session_role())::text <> 'secretary'::text))\",\"(bfr_staff_can_manage_student_scope(student_id, subject) AND ((public.bfr_rls_session_role())::text <> 'secretary'::text))\",\"(public.bfr_rls_director_manages_student(occurrences.student_id))\",\"(public.bfr_rls_director_manages_student(occurrences.student_id))\",\"(public.bfr_rls_director_manages_student(occurrences.student_id))\",\"(public.bfr_rls_is_developer() AND (requested_role = ANY (enum_range(NULL::account_role))) AND (((approved_role IS NULL) AND (status = 'pending'::request_status)) OR ((approved_role = requested_role) AND (status = 'approved'::request_status))))\",\"(public.bfr_rls_is_developer() AND (requested_role = ANY (enum_range(NULL::account_role))) AND ((approved_role IS NULL) OR (approved_role = requested_role)) AND (status = ANY (ARRAY['pending'::request_status, 'approved'::request_status, 'rejected'::request_status])))\",\"public.bfr_rls_is_developer()\"]"
+    ]
+  }
+}

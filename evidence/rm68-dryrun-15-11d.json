@@ -1,0 +1,89 @@
+{
+  "em": "2026-11-15T02:49:40.050Z",
+  "tarefa": "RM-6.8 / #1189 — ensaio transacional do fluxo derivado, com rollback",
+  "escrita_persistida": false,
+  "ensaio": {
+    "bytes": 9121,
+    "statements_antes_da_sonda": 21,
+    "md5": "dfda1b4777a42ce6b1173c1dca939286"
+  },
+  "antes": {
+    "pegada": {
+      "total": 182,
+      "hash": "ecf3403210b8091209cb8584a4f1da51"
+    },
+    "contagens": {
+      "grades": 112,
+      "attendance": 25,
+      "access_requests": 12,
+      "occurrences": 0
+    },
+    "public_sem_privilegio": 0,
+    "wrappers": []
+  },
+  "dentro": {
+    "pegada": {
+      "total": 182,
+      "hash": "ecf3403210b8091209cb8584a4f1da51"
+    },
+    "public_sem_privilegio": 11,
+    "wrappers": [
+      {
+        "nome": "bfr_rls_director_manages_student",
+        "dono": "postgres",
+        "definer": true,
+        "args": "p_student_id uuid",
+        "config": [
+          "search_path=public, pg_temp"
+        ],
+        "anon_exec": true,
+        "auth_exec": true,
+        "publico_exec": false
+      },
+      {
+        "nome": "bfr_rls_is_developer",
+        "dono": "postgres",
+        "definer": true,
+        "args": "",
+        "config": [
+          "search_path=public, pg_temp"
+        ],
+        "anon_exec": true,
+        "auth_exec": true,
+        "publico_exec": false
+      },
+      {
+        "nome": "bfr_rls_session_role",
+        "dono": "postgres",
+        "definer": true,
+        "args": "",
+        "config": [
+          "search_path=public, pg_temp"
+        ],
+        "anon_exec": true,
+        "auth_exec": true,
+        "publico_exec": false
+      }
+    ],
+    "total_polisticas": 23,
+    "public_polisticas": 11
+  },
+  "depois": {
+    "pegada": {
+      "total": 182,
+      "hash": "ecf3403210b8091209cb8584a4f1da51"
+    },
+    "public_sem_privilegio": 0,
+    "wrappers": [],
+    "contagens": {
+      "grades": 112,
+      "attendance": 25,
+      "access_requests": 12,
+      "occurrences": 0
+    }
+  },
+  "portoes": {
+    "portoes": 54,
+    "falhas": []
+  }
+}
