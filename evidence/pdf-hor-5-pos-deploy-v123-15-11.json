@@ -1,0 +1,274 @@
+{
+  "ciclo": "PDF-HOR-5-POS-DEPLOY",
+  "em": "2026-11-15T04:00:30.911Z",
+  "escrita": 0,
+  "ddl": 0,
+  "mint": 0,
+  "deploy": 0,
+  "reguas": {
+    "origem": [
+      "worker-deploy-v123-pdfs/esperado-v123.json",
+      "evidence/pdf-hor-3-preflight-v123-15-11.json",
+      "audit-publicacao-v121.json",
+      "evidence/pdf-hor-sonda-15-11.json"
+    ],
+    "url": "https://bfr-conecta.turmaroboticabfr.workers.dev",
+    "miudo_falso": {
+      "md5": "954621f29537a9be136c0bd9180e8aa3",
+      "bytes": 1477823,
+      "origem": "evidence/pdf-hor-sonda-15-11.json"
+    },
+    "calendario_esperado": {
+      "md5": "14a6b82bfb212bf115fafdb546163f9f",
+      "bytes": 202349
+    },
+    "shell_antes": {
+      "md5": "d418e7fc917f1fbb1437054b7b531f9b",
+      "bytes": 3489725
+    },
+    "substituidos": [
+      {
+        "arquivo": "horario-matutino-2026.pdf",
+        "md5Antigo": "954621f29537a9be136c0bd9180e8aa3",
+        "bytesAntigo": 1477823,
+        "md5Novo": "85cffd0ad3bd8d78166a3993e17a962c",
+        "bytesNovo": 521385,
+        "paginas": 1,
+        "imagens": 1
+      },
+      {
+        "arquivo": "horario-vespertino-2026.pdf",
+        "md5Antigo": "954621f29537a9be136c0bd9180e8aa3",
+        "bytesAntigo": 1477823,
+        "md5Novo": "745d6edd9e11d74216939bca68d30b35",
+        "bytesNovo": 498802,
+        "paginas": 1,
+        "imagens": 1
+      }
+    ],
+    "versao_deploy": "299eadd0-2b57-4149-a9ab-bb2f253f0649"
+  },
+  "shell": {
+    "caminho": "/",
+    "http": 200,
+    "bytes": 3489725,
+    "md5": "d418e7fc917f1fbb1437054b7b531f9b",
+    "magica": "<!doctyp",
+    "content_type": "text/html; charset=utf-8",
+    "cache_status": null,
+    "csp": true,
+    "paginas": 0,
+    "imagens": 0
+  },
+  "sw": {
+    "http": 200,
+    "bytes": 5064,
+    "md5": "7ff5afde0342b6b4d85cd2f9d6fd1b0f",
+    "magica": "const CA",
+    "content_type": "application/javascript; charset=utf-8"
+  },
+  "caminhos_pdf_na_shell": [
+    ".pdf",
+    "horario-matutino-2026.pdf",
+    "horario-vespertino-2026.pdf",
+    "calendario-letivo-2026.pdf",
+    "meta.pdf",
+    "previous.pdf",
+    "book.pdf",
+    "item.pdf",
+    "saved.pdf",
+    "form.elements.pdf",
+    "aee-30-atividades-tea.pdf",
+    "aee-geografia-adaptado.pdf",
+    "aee-ciencias-adaptado-parte-1.pdf",
+    "aee-ciencias-adaptado-parte-2.pdf",
+    "aee-alfabeto-cotonete.pdf",
+    "aee-coletanea-nea-1-periodo.pdf",
+    "aee-coletanea-nea-2-periodo.pdf",
+    "aee-coletanea-nea-maternal-1.pdf",
+    "aee-coletanea-nea-maternal-2.pdf",
+    "aee-apostila-a-ao-z.pdf",
+    "aee-aprendendo-com-alegria.pdf",
+    "aee-letra-cursiva.pdf",
+    "aee-ensino-religioso.pdf",
+    "aee-interpretacao-texto-2-ano.pdf",
+    "aee-simulado-2-saeb-9q-mt.pdf",
+    "aee-simulado-saeb-5-ano-matematica-2025.pdf",
+    "aee-simulado-saeb-12q-lp.pdf",
+    "aee-simulado-saeb-14q-mt.pdf",
+    "boletins-bfr-conecta.pdf"
+  ],
+  "tentativas_de_propagacao": 1,
+  "pdfs_no_ar": [
+    {
+      "caminho": "/horario-matutino-2026.pdf",
+      "http": 200,
+      "bytes": 521385,
+      "md5": "85cffd0ad3bd8d78166a3993e17a962c",
+      "magica": "%PDF-1.4",
+      "content_type": "application/pdf",
+      "cache_status": "MISS",
+      "csp": false,
+      "paginas": 1,
+      "imagens": 1
+    },
+    {
+      "caminho": "/horario-vespertino-2026.pdf",
+      "http": 200,
+      "bytes": 498802,
+      "md5": "745d6edd9e11d74216939bca68d30b35",
+      "magica": "%PDF-1.4",
+      "content_type": "application/pdf",
+      "cache_status": "MISS",
+      "csp": false,
+      "paginas": 1,
+      "imagens": 1
+    },
+    {
+      "caminho": "/calendario-letivo-2026.pdf",
+      "http": 200,
+      "bytes": 202349,
+      "md5": "14a6b82bfb212bf115fafdb546163f9f",
+      "magica": "%PDF-1.7",
+      "content_type": "application/pdf",
+      "cache_status": "HIT",
+      "csp": false,
+      "paginas": 0,
+      "imagens": 0
+    }
+  ],
+  "assets_ar_vs_disco": [
+    {
+      "arquivo": "bfr-app-logo.png",
+      "md5_disco": "9578faf20083e3cb4d572af5ba10d6ed",
+      "bytes_disco": 448736,
+      "md5_ar": "9578faf20083e3cb4d572af5ba10d6ed",
+      "bytes_ar": 448736,
+      "http": 200
+    },
+    {
+      "arquivo": "bfr-responsive-presentation.js",
+      "md5_disco": "a83f77baba7453851b287080686c7afb",
+      "bytes_disco": 51742,
+      "md5_ar": "a83f77baba7453851b287080686c7afb",
+      "bytes_ar": 51742,
+      "http": 200
+    },
+    {
+      "arquivo": "bfr-teacher-arrivals.js",
+      "md5_disco": "dcb69a88c8f4e93a5f818233cf185300",
+      "bytes_disco": 13975,
+      "md5_ar": "dcb69a88c8f4e93a5f818233cf185300",
+      "bytes_ar": 13975,
+      "http": 200
+    },
+    {
+      "arquivo": "bfr-teacher-audit.js",
+      "md5_disco": "255a2cd46599a25584b89775a276ed68",
+      "bytes_disco": 3554,
+      "md5_ar": "255a2cd46599a25584b89775a276ed68",
+      "bytes_ar": 3554,
+      "http": 200
+    },
+    {
+      "arquivo": "calendario-letivo-2026.pdf",
+      "md5_disco": "14a6b82bfb212bf115fafdb546163f9f",
+      "bytes_disco": 202349,
+      "md5_ar": "14a6b82bfb212bf115fafdb546163f9f",
+      "bytes_ar": 202349,
+      "http": 200
+    },
+    {
+      "arquivo": "horario-matutino-2026.pdf",
+      "md5_disco": "85cffd0ad3bd8d78166a3993e17a962c",
+      "bytes_disco": 521385,
+      "md5_ar": "85cffd0ad3bd8d78166a3993e17a962c",
+      "bytes_ar": 521385,
+      "http": 200
+    },
+    {
+      "arquivo": "horario-matutino-2026.png",
+      "md5_disco": "5d181a1754a45046bc6907a4d9b420f6",
+      "bytes_disco": 501591,
+      "md5_ar": "5d181a1754a45046bc6907a4d9b420f6",
+      "bytes_ar": 501591,
+      "http": 200
+    },
+    {
+      "arquivo": "horario-vespertino-2026.pdf",
+      "md5_disco": "745d6edd9e11d74216939bca68d30b35",
+      "bytes_disco": 498802,
+      "md5_ar": "745d6edd9e11d74216939bca68d30b35",
+      "bytes_ar": 498802,
+      "http": 200
+    },
+    {
+      "arquivo": "horario-vespertino-2026.png",
+      "md5_disco": "58854bb4f3ce5e4dffcc7a1a34c31271",
+      "bytes_disco": 480258,
+      "md5_ar": "58854bb4f3ce5e4dffcc7a1a34c31271",
+      "bytes_ar": 480258,
+      "http": 200
+    },
+    {
+      "arquivo": "lia-avatar.png",
+      "md5_disco": "87e5fc3c4f8bc68ed4535c5cf032c47c",
+      "bytes_disco": 1736466,
+      "md5_ar": "87e5fc3c4f8bc68ed4535c5cf032c47c",
+      "bytes_ar": 1736466,
+      "http": 200
+    },
+    {
+      "arquivo": "lia-avatar.svg",
+      "md5_disco": "fd080cd554c553567cb6cd82bbeff0de",
+      "bytes_disco": 352,
+      "md5_ar": "fd080cd554c553567cb6cd82bbeff0de",
+      "bytes_ar": 352,
+      "http": 200
+    },
+    {
+      "arquivo": "manifest.json",
+      "md5_disco": "68d155183c80e3e554466ce2415cb268",
+      "bytes_disco": 484,
+      "md5_ar": "68d155183c80e3e554466ce2415cb268",
+      "bytes_ar": 484,
+      "http": 200
+    }
+  ],
+  "regressao_404": [
+    {
+      "caminho": "/firebase-messaging-sw.js",
+      "http": 404,
+      "bytes": 9,
+      "md5": "9e076f5885f5cc16a4b5aeb8de4adff5"
+    },
+    {
+      "caminho": "/qualquer-rota-inexistente-zz",
+      "http": 404,
+      "bytes": 9,
+      "md5": "9e076f5885f5cc16a4b5aeb8de4adff5"
+    },
+    {
+      "caminho": "/favicon.ico",
+      "http": 404,
+      "bytes": 9,
+      "md5": "9e076f5885f5cc16a4b5aeb8de4adff5"
+    },
+    {
+      "caminho": "/aluno",
+      "http": 404,
+      "bytes": 9,
+      "md5": "9e076f5885f5cc16a4b5aeb8de4adff5"
+    },
+    {
+      "caminho": "/rota-que-nao-existe-tampouco",
+      "http": 404,
+      "bytes": 9,
+      "md5": "9e076f5885f5cc16a4b5aeb8de4adff5"
+    }
+  ],
+  "portoes": 14,
+  "vermelhos": 0,
+  "falhas": [],
+  "veredito": "PDF_HOR_5_PROVA_OK"
+}

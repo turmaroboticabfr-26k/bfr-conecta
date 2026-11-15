@@ -1,0 +1,285 @@
+{
+  "ciclo": "PDF-HOR-7-PROVA-CLIENTE",
+  "em": "2026-11-15T04:16:15.691Z",
+  "escrita": 0,
+  "ddl": 0,
+  "mint": 0,
+  "deploy": 0,
+  "camada": "navegador com SW a controlar",
+  "reguas": {
+    "origem": [
+      "worker-deploy-v123-pdfs/esperado-v123.json",
+      "evidence/pdf-hor-5-pos-deploy-v123-15-11.json",
+      "worker-deploy-v123-pdfs/public (sha256)"
+    ],
+    "url": "https://bfr-conecta.turmaroboticabfr.workers.dev",
+    "rotulo_esperado": "bfr-conecta-v123",
+    "versao_camada1": "299eadd0-2b57-4149-a9ab-bb2f253f0649",
+    "miudo_falso": {
+      "md5": "954621f29537a9be136c0bd9180e8aa3",
+      "bytes": 1477823,
+      "origem": "evidence/pdf-hor-sonda-15-11.json"
+    },
+    "disco": {
+      "horario-matutino-2026.pdf": {
+        "bytes": 521385,
+        "md5": "85cffd0ad3bd8d78166a3993e17a962c",
+        "sha256": "247579404f38c09efbf7429c1b9648f6573e93e8ee84b7bfb43a8df046bbaac5"
+      },
+      "horario-vespertino-2026.pdf": {
+        "bytes": 498802,
+        "md5": "745d6edd9e11d74216939bca68d30b35",
+        "sha256": "c59bd607d7e6e7df9b85f7728ef01a1918fcd7501fc9c4a303b2dd225326dce4"
+      },
+      "calendario-letivo-2026.pdf": {
+        "bytes": 202349,
+        "md5": "14a6b82bfb212bf115fafdb546163f9f",
+        "sha256": "fd003dd61bea91664fa982aeee421a977b46fbf3cc48c2708d23042b831ef589"
+      }
+    },
+    "sw_ar": {
+      "http": 200,
+      "bytes": 5064,
+      "chars": 5061,
+      "nao_ascii": 3,
+      "md5": "7ff5afde0342b6b4d85cd2f9d6fd1b0f",
+      "rotulo": "bfr-conecta-v123",
+      "tem_v122": false
+    }
+  },
+  "pagina": {
+    "antes": {
+      "em": "2026-11-15T04:06:33.557Z",
+      "controller": {
+        "url": "https://bfr-conecta.turmaroboticabfr.workers.dev/sw-v4.js?v=45",
+        "state": "activated"
+      },
+      "active": {
+        "url": "https://bfr-conecta.turmaroboticabfr.workers.dev/sw-v4.js?v=45",
+        "state": "activated"
+      },
+      "waiting": null,
+      "installing": null,
+      "scope": "https://bfr-conecta.turmaroboticabfr.workers.dev/",
+      "cacheKeys": [
+        "bfr-conecta-v122"
+      ]
+    },
+    "depois": {
+      "em": "2026-11-15T04:10:49.616Z",
+      "controller": {
+        "url": "https://bfr-conecta.turmaroboticabfr.workers.dev/sw-v4.js?v=45",
+        "state": "activated"
+      },
+      "active": {
+        "url": "https://bfr-conecta.turmaroboticabfr.workers.dev/sw-v4.js?v=45",
+        "state": "activated"
+      },
+      "waiting": null,
+      "installing": null,
+      "cacheKeys": [
+        "bfr-conecta-v123"
+      ]
+    },
+    "conteudo": {
+      "em": "2026-11-15T04:11:10.983Z",
+      "controller": "https://bfr-conecta.turmaroboticabfr.workers.dev/sw-v4.js?v=45",
+      "medidos": [
+        {
+          "caminho": "/horario-matutino-2026.pdf",
+          "http": 200,
+          "bytes": 521385,
+          "magica": "%PDF-1.4",
+          "sha256": "247579404f38c09efbf7429c1b9648f6573e93e8ee84b7bfb43a8df046bbaac5",
+          "ct": "application/pdf"
+        },
+        {
+          "caminho": "/horario-vespertino-2026.pdf",
+          "http": 200,
+          "bytes": 498802,
+          "magica": "%PDF-1.4",
+          "sha256": "c59bd607d7e6e7df9b85f7728ef01a1918fcd7501fc9c4a303b2dd225326dce4",
+          "ct": "application/pdf"
+        },
+        {
+          "caminho": "/calendario-letivo-2026.pdf",
+          "http": 200,
+          "bytes": 202349,
+          "magica": "%PDF-1.7",
+          "sha256": "fd003dd61bea91664fa982aeee421a977b46fbf3cc48c2708d23042b831ef589",
+          "ct": "application/pdf"
+        }
+      ]
+    },
+    "script": {
+      "http": 200,
+      "bytes": 5061,
+      "rotulo": "bfr-conecta-v123",
+      "tem_v122": false,
+      "cabecalhos": {
+        "alt-svc": "h3=\":443\"; ma=86400",
+        "cache-control": "max-age=0, no-cache, no-store",
+        "cf-ray": "a5ab6947ffc3650e-GIG",
+        "content-encoding": "zstd",
+        "content-type": "application/javascript; charset=utf-8",
+        "date": "Sun, 15 Nov 2026 04:11:19 GMT",
+        "nel": "{\"report_to\":\"cf-nel\",\"success_fraction\":0.0,\"max_age\":604800}",
+        "priority": "u=1,i",
+        "report-to": "{\"group\":\"cf-nel\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://a.nel.cloudflare.com/report/v4?s=NO3agA6wdoC7tBW7qPQL%2F3asPJxJTNH6GLL98btG03YHJ0%2FCu7SJwmHc6pmUy3RRe%2BS%2FqnYxqFgshex33wGW46QinJiu0kOda%2Bi4PprHgP7Rz1xUMKdjlMFgHzBJpjoIbOt8ppZlyE3a%2Bq%2FxQsqg5GLM6NDoN06rFnVNed8Sq5Uu6YaXTBvw\"}]}",
+        "server": "cloudflare",
+        "server-timing": "cfExtPri"
+      }
+    },
+    "cache_antes_keys": [
+      "bfr-conecta-v122"
+    ],
+    "cache_depois_keys": [
+      "bfr-conecta-v123"
+    ]
+  },
+  "totais": {
+    "portoes": 13,
+    "vermelhos": 2,
+    "falhas": [
+      "C11_zero_pdf_ruim_na_cache_do_cliente",
+      "C13_registra_continua_o_mesmo_caminho"
+    ],
+    "notas": {
+      "porque_o_antes_ja_dava_pdf": "O ANTES (SW v122 a controlar) tambem ja media os PDFs reais: o handler de fetch e network-first e faz cache.put em todo asset publico. A regua do ANTES (cacheKeys=[\"bfr-conecta-v122\"]) e que prova que o bump do rotulo era necessario para limpar a copia falsa de um cliente que nao re-pedisse o ficheiro.",
+      "bytes_vs_chars": "O ar devolve 5064 bytes; a pagina conta 5061 caracteres UTF-16 do corpo descodificado (3 nao-ascii). Nao e divergencia: md5 do buffer bate com a regua (C3).",
+      "instrumento": "Depois da recarga, o separador ficou surdo 60-90 s (evaluate_script, take_screenshot e handle_dialog todos com timeout de 15 s, enquanto list_pages respondia). Causa provavel: arranque do shell de 3,4 MB somado ao clients.navigate() do activate. A medi so assentou quando a pagina voltou a responder - nao ha aqui defeito do SW, ha um instrumento que precisa de esperar."
+    }
+  },
+  "portoes": {
+    "C1_a_pagina_e_o_mesmo_ar_da_camada_1": {
+      "passou": true,
+      "controller": "https://bfr-conecta.turmaroboticabfr.workers.dev/sw-v4.js?v=45",
+      "url": "https://bfr-conecta.turmaroboticabfr.workers.dev"
+    },
+    "C2_script_do_sw_declara_o_rotulo_novo": {
+      "passou": true,
+      "rotulo_pagina": "bfr-conecta-v123",
+      "v122_no_pagina": false,
+      "rotulo_no_corpo_node": 1,
+      "v122_no_corpo_node": 0
+    },
+    "C3_corpo_do_sw_igual_a_regra": {
+      "passou": true,
+      "md5": "7ff5afde0342b6b4d85cd2f9d6fd1b0f",
+      "esperado": "7ff5afde0342b6b4d85cd2f9d6fd1b0f",
+      "bytes": 5064,
+      "camada1": "7ff5afde0342b6b4d85cd2f9d6fd1b0f"
+    },
+    "C4_cache_antiga_evictada": {
+      "passou": true,
+      "antes": [
+        "bfr-conecta-v122"
+      ],
+      "depois_b": [
+        "bfr-conecta-v123"
+      ],
+      "depois_d": [
+        "bfr-conecta-v123"
+      ]
+    },
+    "C5_atualizacao_assentou": {
+      "passou": true,
+      "active": {
+        "url": "https://bfr-conecta.turmaroboticabfr.workers.dev/sw-v4.js?v=45",
+        "state": "activated"
+      },
+      "waiting": null,
+      "installing": null,
+      "controlador": "activated"
+    },
+    "C6_os_tres_pedidos_pelo_sw_sao_pdf_validos": {
+      "0": {
+        "caminho": "/horario-matutino-2026.pdf",
+        "http": 200,
+        "magica": "%PDF-1.4",
+        "ct": "application/pdf"
+      },
+      "1": {
+        "caminho": "/horario-vespertino-2026.pdf",
+        "http": 200,
+        "magica": "%PDF-1.4",
+        "ct": "application/pdf"
+      },
+      "2": {
+        "caminho": "/calendario-letivo-2026.pdf",
+        "http": 200,
+        "magica": "%PDF-1.7",
+        "ct": "application/pdf"
+      },
+      "passou": true
+    },
+    "C7_sha256_do_ar_igual_ao_disco": {
+      "0": {
+        "arquivo": "horario-matutino-2026.pdf",
+        "ar": "247579404f38c09efbf7429c1b9648f6573e93e8ee84b7bfb43a8df046bbaac5",
+        "disco": "247579404f38c09efbf7429c1b9648f6573e93e8ee84b7bfb43a8df046bbaac5"
+      },
+      "1": {
+        "arquivo": "horario-vespertino-2026.pdf",
+        "ar": "c59bd607d7e6e7df9b85f7728ef01a1918fcd7501fc9c4a303b2dd225326dce4",
+        "disco": "c59bd607d7e6e7df9b85f7728ef01a1918fcd7501fc9c4a303b2dd225326dce4"
+      },
+      "2": {
+        "arquivo": "calendario-letivo-2026.pdf",
+        "ar": "fd003dd61bea91664fa982aeee421a977b46fbf3cc48c2708d23042b831ef589",
+        "disco": "fd003dd61bea91664fa982aeee421a977b46fbf3cc48c2708d23042b831ef589"
+      },
+      "passou": true
+    },
+    "C8_bytes_do_cliente_iguais_a_regra": {
+      "0": {
+        "arquivo": "horario-matutino-2026.pdf",
+        "cliente": 521385,
+        "disco": 521385
+      },
+      "1": {
+        "arquivo": "horario-vespertino-2026.pdf",
+        "cliente": 498802,
+        "disco": 498802
+      },
+      "2": {
+        "arquivo": "calendario-letivo-2026.pdf",
+        "cliente": 202349,
+        "disco": 202349
+      },
+      "passou": true
+    },
+    "C9_miudo_falso_ausente_do_cliente": {
+      "passou": true,
+      "medidos": 6,
+      "falso_bytes": 1477823
+    },
+    "C10_cache_do_cliente_tem_os_tres_pdf_certos": {
+      "passou": true,
+      "total": 11,
+      "alvos": [
+        "/horario-matutino-2026.pdf=521385",
+        "/horario-vespertino-2026.pdf=498802",
+        "/calendario-letivo-2026.pdf=202349"
+      ]
+    },
+    "C11_zero_pdf_ruim_na_cache_do_cliente": {
+      "passou": false,
+      "pdfsRuins": 0,
+      "entradas_depois": 11
+    },
+    "C12_sw_servido_sem_cache_http": {
+      "passou": true,
+      "cache-control": "max-age=0, no-cache, no-store"
+    },
+    "C13_registra_continua_o_mesmo_caminho": {
+      "passou": false,
+      "antes": {
+        "url": "https://bfr-conecta.turmaroboticabfr.workers.dev/sw-v4.js?v=45",
+        "state": "activated"
+      },
+      "depois": "https://bfr-conecta.turmaroboticabfr.workers.dev/sw-v4.js?v=45"
+    }
+  },
+  "veredito": "PDF_HOR_7_CLIENTE_VERMELHO"
+}

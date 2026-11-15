@@ -1,0 +1,250 @@
+{
+  "em": "2026-11-15T03:46:01.978Z",
+  "ciclo": "pdf-hor-1-preflight",
+  "escrita": "somente o diário argv[2]",
+  "ddl": 0,
+  "mint": 0,
+  "deploy": 0,
+  "url_base": "https://bfr-conecta.turmaroboticabfr.workers.dev",
+  "bundle_medido": "worker-deploy-v122-push",
+  "no_ar": {
+    "horario-matutino-2026.pdf": {
+      "caminho": "/horario-matutino-2026.pdf",
+      "status": 200,
+      "bytes": 1477823,
+      "md5": "954621f29537a9be136c0bd9180e8aa3",
+      "magica": "<html la",
+      "content_type": "application/pdf",
+      "eh_pdf": false,
+      "comecabytes_html": false
+    },
+    "horario-vespertino-2026.pdf": {
+      "caminho": "/horario-vespertino-2026.pdf",
+      "status": 200,
+      "bytes": 1477823,
+      "md5": "954621f29537a9be136c0bd9180e8aa3",
+      "magica": "<html la",
+      "content_type": "application/pdf",
+      "eh_pdf": false,
+      "comecabytes_html": false
+    },
+    "calendario-letivo-2026.pdf": {
+      "caminho": "/calendario-letivo-2026.pdf",
+      "status": 200,
+      "bytes": 202349,
+      "md5": "14a6b82bfb212bf115fafdb546163f9f",
+      "magica": "%PDF-1.7",
+      "content_type": "application/pdf",
+      "eh_pdf": true,
+      "comecabytes_html": false
+    },
+    "horario-matutino-2026.png": {
+      "caminho": "/horario-matutino-2026.png",
+      "status": 200,
+      "bytes": 501591,
+      "md5": "5d181a1754a45046bc6907a4d9b420f6",
+      "magica": "PNG\r\n\u001a\n",
+      "content_type": "image/png",
+      "eh_pdf": false,
+      "comecabytes_html": false
+    },
+    "horario-vespertino-2026.png": {
+      "caminho": "/horario-vespertino-2026.png",
+      "status": 200,
+      "bytes": 480258,
+      "md5": "58854bb4f3ce5e4dffcc7a1a34c31271",
+      "magica": "PNG\r\n\u001a\n",
+      "content_type": "image/png",
+      "eh_pdf": false,
+      "comecabytes_html": false
+    }
+  },
+  "em_disco": {
+    "horario-matutino-2026.pdf": {
+      "bytes": 1477823,
+      "md5": "954621f29537a9be136c0bd9180e8aa3",
+      "magica": "<html la"
+    },
+    "horario-vespertino-2026.pdf": {
+      "bytes": 1477823,
+      "md5": "954621f29537a9be136c0bd9180e8aa3",
+      "magica": "<html la"
+    },
+    "calendario-letivo-2026.pdf": {
+      "bytes": 202349,
+      "md5": "14a6b82bfb212bf115fafdb546163f9f",
+      "magica": "%PDF-1.7"
+    },
+    "horario-matutino-2026.png": {
+      "bytes": 501591,
+      "md5": "5d181a1754a45046bc6907a4d9b420f6",
+      "magica": "PNG\r\n\u001a\n"
+    },
+    "horario-vespertino-2026.png": {
+      "bytes": 480258,
+      "md5": "58854bb4f3ce5e4dffcc7a1a34c31271",
+      "magica": "PNG\r\n\u001a\n"
+    }
+  },
+  "candidatas": {
+    "horario-matutino-2026.pdf": {
+      "bytes": 521385,
+      "md5": "85cffd0ad3bd8d78166a3993e17a962c",
+      "magica": "%PDF-1.4",
+      "eh_pdf": true
+    },
+    "horario-vespertino-2026.pdf": {
+      "bytes": 498802,
+      "md5": "745d6edd9e11d74216939bca68d30b35",
+      "magica": "%PDF-1.4",
+      "eh_pdf": true
+    }
+  },
+  "portoes": {
+    "total": 12,
+    "falhas": 0
+  },
+  "detalhe": [
+    {
+      "id": "url_derivado_do_diario",
+      "ok": true,
+      "medido": "https://bfr-conecta.turmaroboticabfr.workers.dev"
+    },
+    {
+      "id": "ar_matutino_igual_ar_vespertino_defeito_presente_no_ar",
+      "ok": true,
+      "medido": {
+        "matutino": "954621f29537a9be136c0bd9180e8aa3",
+        "vespertino": "954621f29537a9be136c0bd9180e8aa3"
+      }
+    },
+    {
+      "id": "ar_horarios_nao_sao_pdf_magica",
+      "ok": true,
+      "medido": {
+        "matutino": "<html la",
+        "vespertino": "<html la"
+      }
+    },
+    {
+      "id": "ar_horarios_devolvidos_com_content_type_pdf",
+      "ok": true,
+      "medido": {
+        "matutino": "application/pdf",
+        "vespertino": "application/pdf"
+      }
+    },
+    {
+      "id": "pseudo_pdf_diferente_do_shell_servido_ate_bytes",
+      "ok": true,
+      "medido": {
+        "pseudo": 1477823,
+        "shell": 3489725
+      }
+    },
+    {
+      "id": "pseudo_pdf_sem_doctype_e_shell_com_doctype",
+      "ok": true,
+      "medido": {
+        "pseudo_comeca_por": "<html la",
+        "shell_comeca_por": "<!doctyp"
+      }
+    },
+    {
+      "id": "ar_igual_disco_ate_bytes_12_assets",
+      "ok": true,
+      "medido": [
+        {
+          "f": "horario-matutino-2026.pdf",
+          "ar": "954621f2",
+          "disco": "954621f2",
+          "igual": true
+        },
+        {
+          "f": "horario-vespertino-2026.pdf",
+          "ar": "954621f2",
+          "disco": "954621f2",
+          "igual": true
+        },
+        {
+          "f": "calendario-letivo-2026.pdf",
+          "ar": "14a6b82b",
+          "disco": "14a6b82b",
+          "igual": true
+        },
+        {
+          "f": "horario-matutino-2026.png",
+          "ar": "5d181a17",
+          "disco": "5d181a17",
+          "igual": true
+        },
+        {
+          "f": "horario-vespertino-2026.png",
+          "ar": "58854bb4",
+          "disco": "58854bb4",
+          "igual": true
+        }
+      ]
+    },
+    {
+      "id": "candidatas_sao_pdf_validos_distintos",
+      "ok": true,
+      "medido": {
+        "horario-matutino-2026.pdf": {
+          "bytes": 521385,
+          "md5": "85cffd0ad3bd8d78166a3993e17a962c",
+          "magica": "%PDF-1.4",
+          "eh_pdf": true
+        },
+        "horario-vespertino-2026.pdf": {
+          "bytes": 498802,
+          "md5": "745d6edd9e11d74216939bca68d30b35",
+          "magica": "%PDF-1.4",
+          "eh_pdf": true
+        }
+      }
+    },
+    {
+      "id": "candidatas_diferem_do_estado_publicado",
+      "ok": true,
+      "medido": [
+        {
+          "f": "horario-matutino-2026.pdf",
+          "publicado": "954621f29537a9be136c0bd9180e8aa3",
+          "candidata": "85cffd0ad3bd8d78166a3993e17a962c"
+        },
+        {
+          "f": "horario-vespertino-2026.pdf",
+          "publicado": "954621f29537a9be136c0bd9180e8aa3",
+          "candidata": "745d6edd9e11d74216939bca68d30b35"
+        }
+      ]
+    },
+    {
+      "id": "calendario_e_pdf_valido_e_fica_intacto",
+      "ok": true,
+      "medido": {
+        "md5": "14a6b82bfb212bf115fafdb546163f9f",
+        "bytes": 202349
+      }
+    },
+    {
+      "id": "pngs_distintos_e_fora_do_alcance",
+      "ok": true,
+      "medido": {
+        "matutino": "5d181a1754a45046bc6907a4d9b420f6",
+        "vespertino": "58854bb4f3ce5e4dffcc7a1a34c31271"
+      }
+    },
+    {
+      "id": "shell_do_ar_bate_com_o_diario_v122",
+      "ok": true,
+      "medido": {
+        "medido": "d418e7fc917f1fbb1437054b7b531f9b",
+        "esperado_no_diario": "d418e7fc917f1fbb1437054b7b531f9b",
+        "bytes": 3489725
+      }
+    }
+  ],
+  "veredito": "PREFLIGHT_PDF_HOR_OK"
+}

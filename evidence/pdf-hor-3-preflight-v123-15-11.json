@@ -1,0 +1,205 @@
+{
+  "ciclo": "PDF-HOR-3-PREFLIGHT-V123",
+  "em": "2026-11-15T03:55:45.179Z",
+  "escrita": 0,
+  "ddl": 0,
+  "mint": 0,
+  "deploy": 0,
+  "origem": "evidence/v122-pos-deploy-http-15-11.json",
+  "ar_antes": {
+    "url": "https://bfr-conecta.turmaroboticabfr.workers.dev",
+    "shell": {
+      "caminho": "/",
+      "http": 200,
+      "bytes": 3489725,
+      "md5": "d418e7fc917f1fbb1437054b7b531f9b",
+      "magica": "<!doctyp",
+      "content_type": "text/html; charset=utf-8",
+      "cache_status": null
+    },
+    "sw": {
+      "caminho": "/sw-v4.js?v=45",
+      "http": 200,
+      "bytes": 5064,
+      "md5": "439a1c50db4be98b7fdb7f6abc69dad1",
+      "magica": "const CA",
+      "content_type": "application/javascript; charset=utf-8",
+      "cache_status": null
+    },
+    "matutino": {
+      "caminho": "/horario-matutino-2026.pdf",
+      "http": 200,
+      "bytes": 1477823,
+      "md5": "954621f29537a9be136c0bd9180e8aa3",
+      "magica": "<html la",
+      "content_type": "application/pdf",
+      "cache_status": "HIT"
+    },
+    "vespertino": {
+      "caminho": "/horario-vespertino-2026.pdf",
+      "http": 200,
+      "bytes": 1477823,
+      "md5": "954621f29537a9be136c0bd9180e8aa3",
+      "magica": "<html la",
+      "content_type": "application/pdf",
+      "cache_status": "HIT"
+    },
+    "calendario": {
+      "caminho": "/calendario-letivo-2026.pdf",
+      "http": 200,
+      "bytes": 202349,
+      "md5": "14a6b82bfb212bf115fafdb546163f9f",
+      "magica": "%PDF-1.7",
+      "content_type": "application/pdf",
+      "cache_status": "HIT"
+    }
+  },
+  "A1_shell_no_ar_igual_a_v122": {
+    "passou": true,
+    "medido": {
+      "http": 200,
+      "md5": "d418e7fc917f1fbb1437054b7b531f9b",
+      "bytes": 3489725
+    },
+    "diario": {
+      "http": 200,
+      "bytes": 3489725,
+      "md5": "d418e7fc917f1fbb1437054b7b531f9b",
+      "csp": "default-src 'self'; base-uri 'self'; object-src 'none'; script-src 'self' 'unsafe-inline' https://bfr-conecta.turmaroboticabfr.workers.dev https://cdn.jsdelivr.net https://static.cloudflareinsights.com https://www.gstatic.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: blob: https:; connect-src 'self' https://bfr-conecta.turmaroboticabfr.workers.dev https://*.supabase.co wss://*.supabase.co https://cloudflareinsights.com https://*.cloudflareinsights.com https://*.googleapis.com https://fcm.googleapis.com https://api.open-meteo.com; worker-src 'self' blob:; manifest-src 'self'; form-action 'self' https://accounts.google.com https://*.supabase.co",
+      "csp_igual_a_404_de_d121": true
+    }
+  },
+  "A2_sw_no_ar_ainda_v122": {
+    "passou": true,
+    "medido": {
+      "md5": "439a1c50db4be98b7fdb7f6abc69dad1",
+      "bytes": 5064
+    },
+    "esperado_base": {
+      "md5": "439a1c50db4be98b7fdb7f6abc69dad1",
+      "bytes": 5064
+    },
+    "content_type": "application/javascript; charset=utf-8"
+  },
+  "A2b_sw_no_ar_sem_a_etiqueta_nova": {
+    "passou": true,
+    "rotulo_no_ar": "bfr-conecta-v122",
+    "esperado_antes": "bfr-conecta-v122",
+    "novo": "bfr-conecta-v123"
+  },
+  "A3_defeito_presente_no_ar": {
+    "passou": true,
+    "matutino": {
+      "md5": "954621f29537a9be136c0bd9180e8aa3",
+      "bytes": 1477823,
+      "magica": "<html la"
+    },
+    "vespertino": {
+      "md5": "954621f29537a9be136c0bd9180e8aa3",
+      "magica": "<html la"
+    },
+    "diario": {
+      "caminho": "worker-deploy-v122-push/public/horario-matutino-2026.pdf",
+      "bytes": 1477823,
+      "md5": "954621f29537a9be136c0bd9180e8aa3",
+      "magica": "<html la"
+    }
+  },
+  "A4_servido_como_pdf_mas_nao_e_pdf": {
+    "passou": true,
+    "content_type_matutino": "application/pdf",
+    "content_type_vespertino": "application/pdf",
+    "magica_matutino": "<html la"
+  },
+  "A5_calendario_inalterado_e_pdf_real": {
+    "passou": true,
+    "medido": {
+      "md5": "14a6b82bfb212bf115fafdb546163f9f",
+      "bytes": 202349,
+      "magica": "%PDF-1.7"
+    },
+    "diario": {
+      "caminho": "worker-deploy-v122-push/public/calendario-letivo-2026.pdf",
+      "bytes": 202349,
+      "md5": "14a6b82bfb212bf115fafdb546163f9f",
+      "magica": "%PDF-1.7"
+    }
+  },
+  "D1_worker_novo_igual_ao_esperado": {
+    "passou": true,
+    "medido": {
+      "md5": "7044c8c02368fbc2a99edc1b366e2326",
+      "bytes": 3553006
+    },
+    "esperado": {
+      "md5": "7044c8c02368fbc2a99edc1b366e2326",
+      "bytes": 3553006
+    }
+  },
+  "D2_etiqueta_unica_e_nova_no_worker": {
+    "passou": true,
+    "v123": 1,
+    "v122": 0
+  },
+  "D3_montagem_verde": {
+    "passou": true,
+    "portoes": 13,
+    "vermelhos": []
+  },
+  "D4_html_nao_muda_entre_v122_e_v123": {
+    "passou": true,
+    "md5": "d418e7fc917f1fbb1437054b7b531f9b",
+    "bytes": 3489725
+  },
+  "D5_delta_do_worker_zero": {
+    "passou": true,
+    "medido": 0
+  },
+  "D6_tres_pdfs_com_magic_no_bundle": {
+    "passou": true,
+    "horario-matutino-2026.pdf": {
+      "cabecalho": "%PDF-1.4",
+      "bytes": 521385
+    },
+    "horario-vespertino-2026.pdf": {
+      "cabecalho": "%PDF-1.4",
+      "bytes": 498802
+    },
+    "calendario-letivo-2026.pdf": {
+      "cabecalho": "%PDF-1.7",
+      "bytes": 202349
+    }
+  },
+  "D7_matutino_diferente_do_vespertino_no_bundle": {
+    "passou": true,
+    "matutino": "85cffd0ad3bd8d78166a3993e17a962c",
+    "vespertino": "745d6edd9e11d74216939bca68d30b35"
+  },
+  "D8_nenhum_asset_do_bundle_e_o_miudo_falso": {
+    "passou": true,
+    "total": 12,
+    "falso": "954621f29537a9be136c0bd9180e8aa3"
+  },
+  "D9_linhagem_da_substituicao_provada": {
+    "passou": true,
+    "substituidos": [
+      "horario-matutino-2026.pdf: 954621f29537a9be136c0bd9180e8aa3 -> 85cffd0ad3bd8d78166a3993e17a962c",
+      "horario-vespertino-2026.pdf: 954621f29537a9be136c0bd9180e8aa3 -> 745d6edd9e11d74216939bca68d30b35"
+    ]
+  },
+  "D10_wrangler_aponta_para_o_mesmo_worker": {
+    "passou": true,
+    "toml": "name = \"bfr-conecta\" main = \"worker.mjs\" compatibility_date = \"2024-01-01\" account_id = \"37f5c136a13cbd8f884b94b927da0bbd\" [assets] binding = \"ASSETS\" directory = \"./public\" "
+  },
+  "D11_sw_reverso_disponivel": {
+    "passou": true,
+    "ficheiro": "sw-v122-embed.js",
+    "md5": "439a1c50db4be98b7fdb7f6abc69dad1"
+  },
+  "falhas": [],
+  "veredito": "PREFLIGHT_V123_OK",
+  "totais": {
+    "portoes": 17,
+    "vermelhos": 0
+  }
+}

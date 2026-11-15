@@ -1,0 +1,138 @@
+{
+  "ciclo": "PDF-HOR-9-REGUA-CICLO",
+  "em": "2026-11-15T04:25:44.096Z",
+  "escrita_em_banco": 0,
+  "deploy": 0,
+  "mint": 0,
+  "ok_literal": "substituir os PDFs de horario",
+  "origem": "todos os números abaixo vêm destes cinco diários; nenhum foi escrito de memória",
+  "linhas": [
+    {
+      "diário": "evidence/pdf-hor-1-preflight-15-11.json",
+      "nome": "PDF-HOR-1 preflight da candidata",
+      "em": "2026-11-15T03:46:01.978Z",
+      "veredito": "PREFLIGHT_PDF_HOR_OK",
+      "portoes": 12,
+      "vermelhos": 0,
+      "falhas": null
+    },
+    {
+      "diário": "worker-deploy-v123-pdfs/esperado-v123.json",
+      "nome": "gerador do bundle v123",
+      "portoes": 13,
+      "vermelhos": 0,
+      "falhas": null
+    },
+    {
+      "diário": "evidence/pdf-hor-3-preflight-v123-15-11.json",
+      "nome": "PDF-HOR-3 preflight do bundle",
+      "em": "2026-11-15T03:55:45.179Z",
+      "veredito": "PREFLIGHT_V123_OK",
+      "portoes": 17,
+      "vermelhos": 0,
+      "falhas": []
+    },
+    {
+      "diário": "evidence/pdf-hor-5-pos-deploy-v123-15-11.json",
+      "nome": "PDF-HOR-5 camada 1 (Worker)",
+      "em": "2026-11-15T04:00:30.911Z",
+      "veredito": "PDF_HOR_5_PROVA_OK",
+      "portoes": 14,
+      "vermelhos": 0,
+      "falhas": []
+    },
+    {
+      "diário": "evidence/pdf-hor-7-prova-cliente-v2-15-11.json",
+      "nome": "PDF-HOR-7 camada 2 (navegador)",
+      "em": "2026-11-15T04:17:13.164Z",
+      "veredito": "PDF_HOR_7_CLIENTE_OK",
+      "portoes": 13,
+      "vermelhos": 0,
+      "falhas": []
+    }
+  ],
+  "soma": {
+    "portoes": 69,
+    "vermelhos": 0
+  },
+  "candidata": {
+    "diário": "bfr-candidata-v122-horarios-pdf/portoes-horarios-pdf-diary.json",
+    "em": "2026-11-15T01:03:36.698Z",
+    "porta_ok": true,
+    "nao_sobrescreve": true,
+    "alvos": [
+      {
+        "png": "horario-matutino-2026.png",
+        "pngMd5": "5d181a1754a45046bc6907a4d9b420f6",
+        "pngBytes": 501591,
+        "pdf": "horario-matutino-2026.pdf",
+        "pdfMd5": "85cffd0ad3bd8d78166a3993e17a962c",
+        "pdfBytes": 521385,
+        "width": 1686,
+        "height": 1194,
+        "roundTrip": "OK"
+      },
+      {
+        "png": "horario-vespertino-2026.png",
+        "pngMd5": "58854bb4f3ce5e4dffcc7a1a34c31271",
+        "pngBytes": 480258,
+        "pdf": "horario-vespertino-2026.pdf",
+        "pdfMd5": "745d6edd9e11d74216939bca68d30b35",
+        "pdfBytes": 498802,
+        "width": 1686,
+        "height": 1194,
+        "roundTrip": "OK"
+      }
+    ]
+  },
+  "deploy_stdout": {
+    "diário": "evidence/pdf-hor-4-deploy-v123-stdout-15-11.txt",
+    "em_mtime": "2026-11-15T03:56:16.918Z",
+    "version_id": "299eadd0-2b57-4149-a9ab-bb2f253f0649",
+    "upload": {
+      "reenviados": 2,
+      "ja_enviados": 10
+    }
+  },
+  "ar": {
+    "url": "https://bfr-conecta.turmaroboticabfr.workers.dev",
+    "versao": "299eadd0-2b57-4149-a9ab-bb2f253f0649",
+    "rotulo": "bfr-conecta-v123",
+    "tentativas_de_propagacao": 1
+  },
+  "disco": {
+    "worker_md5": "7044c8c02368fbc2a99edc1b366e2326",
+    "worker_bytes": 3553006,
+    "igual_a_regra": true,
+    "sw_reversao_md5": "439a1c50db4be98b7fdb7f6abc69dad1",
+    "sw_reversao_bytes": 5064,
+    "assets": 12
+  },
+  "cliente": {
+    "cache_antes": [
+      "bfr-conecta-v122"
+    ],
+    "cache_depois": [
+      "bfr-conecta-v123"
+    ],
+    "veredito_camada1": "PDF_HOR_5_PROVA_OK",
+    "veredito_camada2": "PDF_HOR_7_CLIENTE_OK"
+  },
+  "miudo_falso": {
+    "citado_em_V_11_d": "98b33ea011b64103c67c28bc220c299c",
+    "medido_neste_ciclo": {
+      "md5": "954621f29537a9be136c0bd9180e8aa3",
+      "bytes": 1477823,
+      "origem": "evidence/pdf-hor-sonda-15-11.json"
+    },
+    "medido_em_dois_diarios": [
+      {
+        "matutino": "954621f29537a9be136c0bd9180e8aa3",
+        "vespertino": "954621f29537a9be136c0bd9180e8aa3"
+      },
+      null
+    ],
+    "varredura_de_causa": "evidence/pdf-hor-8-causa-md5-15-11.json"
+  },
+  "veredito": "PDF_HOR_9_REGUA_OK"
+}
