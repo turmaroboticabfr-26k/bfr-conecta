@@ -1,0 +1,99 @@
+{
+  "em": "2026-11-15T08:07:46.890Z",
+  "tarefa": "AD/§AD — re-leitura dos números da §AC pelos caminhos aninhados correctos (a 1.ª passada leu o topo)",
+  "autorizacao": "somente leitura: 0 DDL, 0 escrita, 0 mint, 0 deploy, 0 publicacao, 0 git push",
+  "caminho_lido_na_1_passada": {
+    "run1_publicas_vivas": "(inexistente no topo)",
+    "run1_texto_md5_vivo": "(inexistente no topo)",
+    "run2_publicas_vivas": "(inexistente no topo)",
+    "run2_falhas_topo": "(inexistente no topo)",
+    "run2_rm68_privilegios_tipo": "object",
+    "run2_rm68_privilegios_length": "(inexistente no topo)",
+    "nota": "undefined = o campo nao existe no topo; o script antigo caía no `?? []` e devolvia vazio"
+  },
+  "aninhado_real": {
+    "run1_rm68_publicas": {
+      "artefacto_antes": "evidence/rm68-recon-depois-15-11.json",
+      "em_do_artefacto": "2026-11-15T03:11:34.819Z",
+      "publicas_no_artefacto": 11,
+      "publicas_vivas": 0,
+      "texto_md5_artefacto": "9bb10bb0b54d39caddd9fcac849b6397",
+      "texto_md5_vivo": "d41d8cd98f00b204e9800998ecf8427e",
+      "igual": false,
+      "diferencas": [
+        "access_requests|access_requests_manage|ALL|bfr_rls_is_developer()|(bfr_rls_is_developer() AND (requested_role = ANY (enum_range(NULL::account_role))) AND ((approved_role IS NULL) OR (approved_role = requested_role)) AND (status = ANY (ARRAY['pending'::request_status, 'approved'::request_status, 'rejected'::request_status])))",
+        "access_requests|access_requests_staff_insert|INSERT||(bfr_rls_is_developer() AND (requested_role = ANY (enum_range(NULL::account_role))) AND (((approved_role IS NULL) AND (status = 'pending'::request_status)) OR ((approved_role = requested_role) AND (status = 'approved'::request_status))))",
+        "attendance|attendance_staff_delete|DELETE|(bfr_staff_can_manage_student_scope(student_id) AND ((bfr_rls_session_role())::text <> 'secretary'::text))|",
+        "attendance|attendance_staff_insert|INSERT||(bfr_staff_can_manage_student_scope(student_id) AND ((bfr_rls_session_role())::text <> 'secretary'::text) AND (((bfr_rls_session_role())::text <> 'pedagogical'::text) OR (entered_by = auth.uid())))",
+        "attendance|attendance_staff_select|SELECT|(bfr_staff_can_manage_student_scope(student_id) AND ((bfr_rls_session_role())::text <> 'secretary'::text))|",
+        "attendance|attendance_staff_update|UPDATE|(bfr_staff_can_manage_student_scope(student_id) AND ((bfr_rls_session_role())::text <> 'secretary'::text))|(bfr_staff_can_manage_student_scope(student_id) AND ((bfr_rls_session_role())::text <> 'secretary'::text))",
+        "grades|grades_staff_delete|DELETE|(bfr_staff_can_manage_student_scope(student_id, subject) AND ((bfr_rls_session_role())::text <> 'secretary'::text))|",
+        "grades|grades_staff_insert|INSERT||(bfr_staff_can_manage_student_scope(student_id, subject) AND ((bfr_rls_session_role())::text <> 'secretary'::text) AND (((bfr_rls_session_role())::text <> 'pedagogical'::text) OR (entered_by = auth.uid())))",
+        "grades|grades_staff_select|SELECT|(bfr_staff_can_manage_student_scope(student_id, subject) AND ((bfr_rls_session_role())::text <> 'secretary'::text))|",
+        "occurrences|occurrences_director_select|SELECT|bfr_rls_director_manages_student(student_id)|",
+        "occurrences|occurrences_director_update|UPDATE|bfr_rls_director_manages_student(student_id)|bfr_rls_director_manages_student(student_id)"
+      ]
+    },
+    "run2_rm68_publicas": {
+      "artefacto_antes": "evidence/rm68-recon-depois-15-11.json",
+      "em_do_artefacto": "2026-11-15T03:11:34.819Z",
+      "publicas_no_artefacto": 11,
+      "publicas_vivas": 11,
+      "texto_md5_artefacto": "9bb10bb0b54d39caddd9fcac849b6397",
+      "texto_md5_vivo": "9bb10bb0b54d39caddd9fcac849b6397",
+      "igual": true,
+      "diferencas": []
+    },
+    "run2_privilegios_falhas": [],
+    "run2_staff_schools_anon_select": "false"
+  },
+  "assercoes": {
+    "run1_em": "2026-11-15T07:19:20.147Z",
+    "run2_em": "2026-11-15T07:22:41.012Z",
+    "publicas_vivas": 11,
+    "publicas_no_artefacto": 11,
+    "igual": true,
+    "diferencas_n": 0,
+    "texto_md5_igual": true,
+    "md5": "9bb10bb0b54d39caddd9fcac849b6397",
+    "privilegios_falhas_n": 0,
+    "subs_totais": 0,
+    "donos_distintos": 0,
+    "coluna_dono": "profile_id",
+    "grades": 112,
+    "attendance": 25,
+    "access_requests": 12,
+    "occurrences": 0,
+    "contas_s17": [
+      {
+        "lote": "s17",
+        "n": 4
+      }
+    ],
+    "supervision_audit_residuo": 9,
+    "vistas_n": 5,
+    "vistas_anon_false": true,
+    "vistas_auth_true": true,
+    "vistas_modo": [
+      "sem-opcao"
+    ],
+    "sonda_oid_0": 11,
+    "sonda_cardinality_0": 0,
+    "sonda_polroles_null": 0,
+    "sonda_md5": "ff5c006383c7c0d26144273843f3b2de"
+  },
+  "veredito": {
+    "publicas_11": true,
+    "md5_byte_identico": true,
+    "privilegios_sem_falha": true,
+    "push_0": true,
+    "censos": true,
+    "vistas_5_fechadas_para_anon": true,
+    "tudo": true
+  },
+  "hashes": {
+    "ficheiro_run1": "5d050b7f716c609668f67c6c9bfc75e7",
+    "ficheiro_run2": "f9c3caac7d8da2cbe87a7f34db02087a",
+    "ficheiro_sonda": "89d66258128569c65a4c0a66ba59be53"
+  }
+}
