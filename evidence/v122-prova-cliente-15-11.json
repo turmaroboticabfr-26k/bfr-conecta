@@ -1,0 +1,51 @@
+{
+  "ciclo": "V122-PROVA-CLIENTE",
+  "em": "2026-11-15T01:37:46.104Z",
+  "como_o_em_foi_obtido": "mtime deste arquivo lido por fs.statSync — o momento em que a prova foi gravada; o valor anterior (2026-11-14T00:00:00.000Z) era uma meia-noite inventada e foi corrigido",
+  "escrita": 0,
+  "ddl": 0,
+  "mint": 0,
+  "deploy": 0,
+  "metodo": "Chrome real via browser-use; navegacao + reload; leitura de navigator.serviceWorker e fetch do SW no contexto da pagina",
+  "url": "https://bfr-conecta.turmaroboticabfr.workers.dev/",
+  "antes_de_a_reload": {
+    "observacao": "primeira navegacao apos deploy: registration.active ja aponta o SW v122, mas controller ainda null (SW acaba de assumir a escopo nesta carga)",
+    "regs": 1,
+    "active_scriptURL": "https://bfr-conecta.turmaroboticabfr.workers.dev/sw-v4.js?v=45",
+    "active_state": "activated",
+    "controller": null
+  },
+  "depois_do_reload": {
+    "controller_scriptURL": "https://bfr-conecta.turmaroboticabfr.workers.dev/sw-v4.js?v=45",
+    "controller_state": "activated",
+    "active_scriptURL": "https://bfr-conecta.turmaroboticabfr.workers.dev/sw-v4.js?v=45",
+    "active_state": "activated",
+    "prova": "navigator.serviceWorker.controller NON-NULL e aponta /sw-v4.js => o SW v122 CONTROLA o cliente apos reload"
+  },
+  "sw_servido_no_cliente": {
+    "cache": "bfr-conecta-v122",
+    "push_listener": 1,
+    "notificationclick_listener": 1,
+    "showNotification": 1,
+    "openWindow": 1,
+    "importScripts_chamada": 0,
+    "nota_regex": "a regex frouxa importScripts\\s*\\( deu 1 por casar o COMENTARIO '...sem importScripts (a CSP worker-src...'; o ficheiro nao tem nenhuma CHAMADA importScripts(",
+    "bytes_text_no_cliente": 5061
+  },
+  "shell_render": {
+    "appShell_presente": true,
+    "nav_items": 57,
+    "title": "BFR Conecta | Escola Benício Ferreira Reis"
+  },
+  "portoes": [
+    { "nome": "C1_sw_registration_ativa_v122", "esperado": "active /sw-v4.js?v=45 state activated", "ok": true },
+    { "nome": "C2_sw_controla_cliente_apos_reload", "esperado": "navigator.serviceWorker.controller non-null", "ok": true },
+    { "nome": "C3_sw_cache_v122", "esperado": "bfr-conecta-v122", "ok": true },
+    { "nome": "C4_sw_tem_ouvinte_push", "esperado": 1, "ok": true },
+    { "nome": "C5_sw_tem_ouvinte_notificationclick", "esperado": 1, "ok": true },
+    { "nome": "C6_sw_sem_chamada_importScripts", "esperado": 0, "ok": true },
+    { "nome": "C7_shell_rende_no_cliente", "esperado": "appShell + 57 nav-items", "ok": true }
+  ],
+  "veredito": "V122_PROVA_CLIENTE_OK",
+  "totais": { "portoes": 7, "vermelhos": 0 }
+}

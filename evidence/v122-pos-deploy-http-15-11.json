@@ -1,0 +1,165 @@
+{
+  "ciclo": "V122-POS-DEPLOY",
+  "em": "2026-11-15T01:32:30.042Z",
+  "escrita": 0,
+  "ddl": 0,
+  "mint": 0,
+  "deploy": 0,
+  "reguas": {
+    "url": "https://bfr-conecta.turmaroboticabfr.workers.dev"
+  },
+  "A1_shell": {
+    "http": 200,
+    "bytes": 3489725,
+    "md5": "d418e7fc917f1fbb1437054b7b531f9b",
+    "csp": "default-src 'self'; base-uri 'self'; object-src 'none'; script-src 'self' 'unsafe-inline' https://bfr-conecta.turmaroboticabfr.workers.dev https://cdn.jsdelivr.net https://static.cloudflareinsights.com https://www.gstatic.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: blob: https:; connect-src 'self' https://bfr-conecta.turmaroboticabfr.workers.dev https://*.supabase.co wss://*.supabase.co https://cloudflareinsights.com https://*.cloudflareinsights.com https://*.googleapis.com https://fcm.googleapis.com https://api.open-meteo.com; worker-src 'self' blob:; manifest-src 'self'; form-action 'self' https://accounts.google.com https://*.supabase.co",
+    "csp_igual_a_404_de_d121": true
+  },
+  "A1_shell_inalterada_v121": {
+    "passou": true,
+    "esperado": {
+      "md5": "d418e7fc917f1fbb1437054b7b531f9b",
+      "bytes": 3489725
+    },
+    "medido": {
+      "md5": "d418e7fc917f1fbb1437054b7b531f9b",
+      "bytes": 3489725
+    }
+  },
+  "A1b_csp_presente_na_shell": {
+    "passou": true,
+    "csp_presente": true,
+    "bytes_csp": 742
+  },
+  "A2_sw": {
+    "http": 200,
+    "bytes": 5064,
+    "md5": "439a1c50db4be98b7fdb7f6abc69dad1",
+    "cache": [
+      "bfr-conecta-v122"
+    ],
+    "push": 1,
+    "nc": 1,
+    "show": 1,
+    "open": 1,
+    "importScripts": 0
+  },
+  "A2_sw_md5_igual_a_candidata": {
+    "passou": true,
+    "esperado": {
+      "md5": "439a1c50db4be98b7fdb7f6abc69dad1",
+      "bytes": 5064
+    },
+    "medido": {
+      "md5": "439a1c50db4be98b7fdb7f6abc69dad1",
+      "bytes": 5064
+    }
+  },
+  "A2b_sw_tem_push": {
+    "passou": true,
+    "push": 1
+  },
+  "A2c_sw_tem_notificationclick": {
+    "passou": true,
+    "nc": 1
+  },
+  "A2d_sw_chama_showNotification": {
+    "passou": true,
+    "show": 1
+  },
+  "A2e_sw_chama_openWindow": {
+    "passou": true,
+    "open": 1
+  },
+  "A2f_sw_sem_chamada_importScripts": {
+    "passou": true,
+    "importScripts": 0
+  },
+  "A2g_sw_etiqueta_cache_v122": {
+    "passou": true,
+    "cache": [
+      "bfr-conecta-v122"
+    ]
+  },
+  "A2h_sw_diferencial_do_antes": {
+    "passou": true,
+    "antes": "c70f912c694fbc509273198e0accc83f",
+    "depois": "439a1c50db4be98b7fdb7f6abc69dad1"
+  },
+  "A3_404": [
+    {
+      "caminho": "/firebase-messaging-sw.js",
+      "http": 404,
+      "bytes": 9,
+      "md5": "9e076f5885f5cc16a4b5aeb8de4adff5"
+    },
+    {
+      "caminho": "/qualquer-rota-inexistente-zz",
+      "http": 404,
+      "bytes": 9,
+      "md5": "9e076f5885f5cc16a4b5aeb8de4adff5"
+    },
+    {
+      "caminho": "/favicon.ico",
+      "http": 404,
+      "bytes": 9,
+      "md5": "9e076f5885f5cc16a4b5aeb8de4adff5"
+    },
+    {
+      "caminho": "/aluno",
+      "http": 404,
+      "bytes": 9,
+      "md5": "9e076f5885f5cc16a4b5aeb8de4adff5"
+    },
+    {
+      "caminho": "/rota-que-nao-existe-tampouco",
+      "http": 404,
+      "bytes": 9,
+      "md5": "9e076f5885f5cc16a4b5aeb8de4adff5"
+    }
+  ],
+  "A3_404_permanecem": {
+    "passou": true,
+    "total": 5,
+    "desvios": []
+  },
+  "A4_firebase": {
+    "http": 404,
+    "bytes": 9,
+    "md5": "9e076f5885f5cc16a4b5aeb8de4adff5"
+  },
+  "A4_firebase_sw_ainda_404": {
+    "passou": true,
+    "http": 404,
+    "bytes": 9,
+    "md5": "9e076f5885f5cc16a4b5aeb8de4adff5"
+  },
+  "A5_assets": {
+    "total": 12,
+    "desvios": []
+  },
+  "A5_assets_batem_com_o_disco": {
+    "passou": true,
+    "total": 12,
+    "desvios": []
+  },
+  "A6_servidor": {
+    "version_id": "470ae29b-1499-4903-acdc-a50d7a044dba",
+    "deployment_id": "cf932d97-d0b1-459e-ae2e-58a91290b4df",
+    "author": "turmaroboticabfr@gmail.com",
+    "percentage": 100
+  },
+  "A6_version_no_servidor": {
+    "passou": true,
+    "version_id": "470ae29b-1499-4903-acdc-a50d7a044dba",
+    "deployment_id": "cf932d97-d0b1-459e-ae2e-58a91290b4df",
+    "author": "turmaroboticabfr@gmail.com",
+    "percentage": 100
+  },
+  "falhas": [],
+  "veredito": "V122_HTTP_OK",
+  "totais": {
+    "portoes": 14,
+    "vermelhos": 0
+  }
+}

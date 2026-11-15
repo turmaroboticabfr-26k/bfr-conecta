@@ -1,0 +1,255 @@
+{
+  "ciclo": "V122-PREFLIGHT",
+  "em": "2026-11-15T01:29:42.973Z",
+  "escrita": 0,
+  "ddl": 0,
+  "mint": 0,
+  "deploy": 0,
+  "reguas": {
+    "origem": [
+      "audit-publicacao-v121.json",
+      "worker-deploy-v122-push/esperado-v122.json"
+    ],
+    "url": "https://bfr-conecta.turmaroboticabfr.workers.dev",
+    "ar_v121": {
+      "worker": {
+        "md5": "ca3668afcc72d487ddf131dde3d16c96",
+        "bytes": 3551496
+      },
+      "shell": {
+        "md5": "d418e7fc917f1fbb1437054b7b531f9b",
+        "bytes": 3489725
+      },
+      "sw": {
+        "md5": "c70f912c694fbc509273198e0accc83f",
+        "bytes": 3586
+      },
+      "versao": "5ba82c35-7c46-42ea-9c1d-30573370f563"
+    },
+    "candidata_v122": {
+      "worker": {
+        "md5": "72fde1efea0747eb2f5ba589e669a43a",
+        "bytes": 3553006
+      },
+      "sw": {
+        "md5": "439a1c50db4be98b7fdb7f6abc69dad1",
+        "bytes": 5064
+      },
+      "html": {
+        "md5": "d418e7fc917f1fbb1437054b7b531f9b",
+        "bytes": 3489725
+      },
+      "cache": "bfr-conecta-v122",
+      "delta": 1510
+    },
+    "caminhos_404_no_diario": [
+      "/firebase-messaging-sw.js",
+      "/qualquer-rota-inexistente-zz",
+      "/favicon.ico",
+      "/aluno",
+      "/rota-que-nao-existe-tampouco"
+    ]
+  },
+  "G0_url_unica_e_diario_coerente": {
+    "passou": true,
+    "url": "https://bfr-conecta.turmaroboticabfr.workers.dev",
+    "cache_ar": "bfr-conecta-v121",
+    "quarenta_e_quatro": 5,
+    "versao": "5ba82c35-7c46-42ea-9c1d-30573370f563"
+  },
+  "G0b_esperado_v122_pede_ok_literal": {
+    "passou": true,
+    "ok_literal": "publicar v122"
+  },
+  "worker": {
+    "bytes": 3553006,
+    "md5": "72fde1efea0747eb2f5ba589e669a43a"
+  },
+  "D1_worker_igual_ao_esperado": {
+    "passou": true,
+    "bytes": 3553006,
+    "md5": "72fde1efea0747eb2f5ba589e669a43a"
+  },
+  "D2a_embeds_localizados": {
+    "passou": true
+  },
+  "embed_sw": {
+    "bytes": 5064,
+    "md5": "439a1c50db4be98b7fdb7f6abc69dad1"
+  },
+  "D2_embed_sw_igual_a_candidata": {
+    "passou": true,
+    "bytes": 5064,
+    "md5": "439a1c50db4be98b7fdb7f6abc69dad1"
+  },
+  "D3a_sw_tem_ouvinte_push": {
+    "passou": true,
+    "push": 1
+  },
+  "D3b_sw_tem_ouvinte_notificationclick": {
+    "passou": true,
+    "nc": 1
+  },
+  "D3c_sw_chama_showNotification": {
+    "passou": true,
+    "showNotification": 1
+  },
+  "D3d_sw_chama_openWindow": {
+    "passou": true,
+    "openWindow": 1
+  },
+  "D3e_sw_sem_chamada_importScripts": {
+    "passou": true,
+    "importScripts_chamada": 0,
+    "importScripts_palavra": 1
+  },
+  "D3f_sw_etiqueta_cache_sozinha_v122": {
+    "passou": true,
+    "rotulos": [
+      "bfr-conecta-v122"
+    ]
+  },
+  "embed_html": {
+    "bytes": 3489725,
+    "md5": "d418e7fc917f1fbb1437054b7b531f9b"
+  },
+  "D4_embed_html_igual_a_shell_v121_no_ar": {
+    "passou": true,
+    "bytes": 3489725,
+    "md5": "d418e7fc917f1fbb1437054b7b531f9b"
+  },
+  "worker_base": {
+    "bytes": 3551496,
+    "md5": "ca3668afcc72d487ddf131dde3d16c96"
+  },
+  "D5_base_e_a_v121_publicada": {
+    "passou": true,
+    "base": {
+      "bytes": 3551496,
+      "md5": "ca3668afcc72d487ddf131dde3d16c96"
+    },
+    "esperado": "ca3668afcc72d487ddf131dde3d16c96"
+  },
+  "D6_delta_do_worker_bate": {
+    "passou": true,
+    "medido": 1510,
+    "esperado": 1510
+  },
+  "D7_handler_do_404_intacto": {
+    "passou": true,
+    "request_form": 1,
+    "respostas_404": 2,
+    "repasse_asset": 1,
+    "sem_assets": 1,
+    "definicao_NOFOUNDR": 1
+  },
+  "D8_assets_e_toml_identicos_a_v121": {
+    "passou": true,
+    "total": 12,
+    "desvios": [],
+    "toml": true
+  },
+  "D9_sw_reversa_igual_a_base_v121": {
+    "passou": true,
+    "reversa": {
+      "md5": "c70f912c694fbc509273198e0accc83f",
+      "bytes": 3586
+    },
+    "base": {
+      "md5": "c70f912c694fbc509273198e0accc83f",
+      "bytes": 3586
+    }
+  },
+  "D10a_diario_candidata_verde_nao_publicada": {
+    "passou": true,
+    "verdict": "V122_SW_ESTRUTURAL_OK",
+    "published": false,
+    "portoes": 15,
+    "vermelhos": 0
+  },
+  "D10b_bancada_verde": {
+    "passou": true,
+    "verdict": "V122_BANCADA_OK",
+    "portoes": 29,
+    "vermelhos": 0
+  },
+  "D10c_candidata_sw_disk_igual_a_esperada": {
+    "passou": true,
+    "sw_disco": "439a1c50db4be98b7fdb7f6abc69dad1"
+  },
+  "ar_shell": {
+    "http": 200,
+    "bytes": 3489725,
+    "md5": "d418e7fc917f1fbb1437054b7b531f9b"
+  },
+  "A1_ar_ainda_v121": {
+    "passou": true,
+    "http": 200,
+    "bytes": 3489725,
+    "md5": "d418e7fc917f1fbb1437054b7b531f9b"
+  },
+  "ar_sw": {
+    "http": 200,
+    "bytes": 3586,
+    "md5": "c70f912c694fbc509273198e0accc83f",
+    "cache": [
+      "bfr-conecta-v121"
+    ],
+    "push": 0,
+    "nc": 0
+  },
+  "A2_sw_ar_ainda_v121_sem_push": {
+    "passou": true,
+    "http": 200,
+    "bytes": 3586,
+    "md5": "c70f912c694fbc509273198e0accc83f",
+    "cache": [
+      "bfr-conecta-v121"
+    ],
+    "push": 0,
+    "nc": 0
+  },
+  "regressao_404": [
+    {
+      "caminho": "/firebase-messaging-sw.js",
+      "http": 404,
+      "bytes": 9,
+      "md5": "9e076f5885f5cc16a4b5aeb8de4adff5"
+    },
+    {
+      "caminho": "/qualquer-rota-inexistente-zz",
+      "http": 404,
+      "bytes": 9,
+      "md5": "9e076f5885f5cc16a4b5aeb8de4adff5"
+    },
+    {
+      "caminho": "/favicon.ico",
+      "http": 404,
+      "bytes": 9,
+      "md5": "9e076f5885f5cc16a4b5aeb8de4adff5"
+    },
+    {
+      "caminho": "/aluno",
+      "http": 404,
+      "bytes": 9,
+      "md5": "9e076f5885f5cc16a4b5aeb8de4adff5"
+    },
+    {
+      "caminho": "/rota-que-nao-existe-tampouco",
+      "http": 404,
+      "bytes": 9,
+      "md5": "9e076f5885f5cc16a4b5aeb8de4adff5"
+    }
+  ],
+  "A3_404_permanecem": {
+    "passou": true,
+    "total": 5,
+    "desvios": []
+  },
+  "falhas": [],
+  "veredito": "V122_PREFLIGHT_OK",
+  "totais": {
+    "portoes": 23,
+    "vermelhos": 0
+  }
+}

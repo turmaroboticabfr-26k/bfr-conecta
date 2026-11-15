@@ -1,0 +1,168 @@
+{
+  "ciclo": "RM15-POS-V122",
+  "em": "2026-11-15T01:46:45.388Z",
+  "ar": "https://bfr-conecta.turmaroboticabfr.workers.dev",
+  "origem_das_reguas": "audit-publicacao-v122.json (deploy.url, md5.sw_depois, md5.shell_depois, md5.corpo_do_404)",
+  "escrita": 0,
+  "ddl": 0,
+  "mint": 0,
+  "deploy": 0,
+  "metodo": "fetch com cache-control: no-cache e URL de cache-bust; md5 dos BYTES; texto lido so quando o content-type anuncia texto",
+  "portoes": {
+    "S1_sw_tem_ouvinte_push": {
+      "esperado": 1,
+      "valor": 1,
+      "passou": true
+    },
+    "S2_sw_tem_ouvinte_notificationclick": {
+      "esperado": 1,
+      "valor": 1,
+      "passou": true
+    },
+    "S3_sw_chama_showNotification": {
+      "esperado": 1,
+      "valor": 1,
+      "passou": true
+    },
+    "S4_sw_chama_clients_openWindow": {
+      "esperado": 1,
+      "valor": 1,
+      "passou": true
+    },
+    "S5_sw_sem_chamada_importScripts": {
+      "esperado": 0,
+      "valor": 0,
+      "passou": true
+    },
+    "S6_sw_etiqueta_cache_igual_a_do_diario": {
+      "esperado": [
+        "bfr-conecta-v122"
+      ],
+      "valor": [
+        "bfr-conecta-v122"
+      ],
+      "passou": true
+    },
+    "S7_sw_do_ar_igual_ao_publicado_no_diario": {
+      "esperado": {
+        "md5": "439a1c50db4be98b7fdb7f6abc69dad1",
+        "bytes": 5064
+      },
+      "valor": {
+        "md5": "439a1c50db4be98b7fdb7f6abc69dad1",
+        "bytes": 5064
+      },
+      "passou": true
+    },
+    "M1_shell_do_ar_igual_ao_diario": {
+      "esperado": {
+        "md5": "d418e7fc917f1fbb1437054b7b531f9b",
+        "bytes": 3489725
+      },
+      "valor": {
+        "md5": "d418e7fc917f1fbb1437054b7b531f9b",
+        "bytes": 3489725
+      },
+      "passou": true
+    },
+    "M2_shell_registra_o_sw_medido": {
+      "esperado": 1,
+      "valor": 1,
+      "passou": true
+    },
+    "M3_shell_nao_registra_sw_de_fcm": {
+      "esperado": 0,
+      "valor": 0,
+      "passou": true
+    },
+    "M4_o_shell_ainda_pedir_token_de_push": {
+      "esperado": 1,
+      "valor": 1,
+      "passou": true
+    },
+    "R1_rota_fora_do_bundle_continua_404": {
+      "esperado": 404,
+      "valor": 404,
+      "passou": true
+    },
+    "R2_corpo_do_404_igual_ao_diario": {
+      "esperado": {
+        "md5": "9e076f5885f5cc16a4b5aeb8de4adff5",
+        "bytes": 9
+      },
+      "valor": {
+        "md5": "9e076f5885f5cc16a4b5aeb8de4adff5",
+        "bytes": 9
+      },
+      "passou": true
+    },
+    "R3_rota_fcm_da_404_por_decisao_pen34a": {
+      "esperado": 404,
+      "valor": 404,
+      "passou": true
+    },
+    "R4_nenhuma_pagina_de_excecao_da_cloudflare": {
+      "esperado": false,
+      "valor": false,
+      "passou": true
+    }
+  },
+  "sw_servido": {
+    "http": 200,
+    "bytes": 5064,
+    "md5": "439a1c50db4be98b7fdb7f6abc69dad1",
+    "ct": "application/javascript; charset=utf-8",
+    "cache": [
+      "bfr-conecta-v122"
+    ],
+    "handler_push": 1,
+    "notificationclick": 1,
+    "showNotification": 1,
+    "openWindow": 1,
+    "importScripts_chamada": 0,
+    "importScripts_palavra_texto_cru": 1,
+    "importScripts_chamada_texto_cru": 1,
+    "listeners": [
+      "addEventListener('install'",
+      "addEventListener('activate'",
+      "addEventListener('fetch'",
+      "addEventListener('push'",
+      "addEventListener('notificationclick'"
+    ]
+  },
+  "shell_servida": {
+    "http": 200,
+    "bytes": 3489725,
+    "md5": "d418e7fc917f1fbb1437054b7b531f9b",
+    "registracoes_sw_v4": 3,
+    "registracoes_fcm": 0,
+    "getToken": 2,
+    "palavra_firebase_messaging_sw": 0
+  },
+  "regressao": {
+    "rota_inexistente": {
+      "http": 404,
+      "bytes": 9,
+      "md5": "9e076f5885f5cc16a4b5aeb8de4adff5",
+      "ct": "text/plain; charset=utf-8"
+    },
+    "firebase_messaging_sw": {
+      "http": 404,
+      "bytes": 9,
+      "md5": "9e076f5885f5cc16a4b5aeb8de4adff5",
+      "ct": "text/plain; charset=utf-8"
+    },
+    "pagina_de_excecao_cf": false
+  },
+  "manifest_medido": {
+    "icons": 1,
+    "start_url": "/",
+    "scope": "/",
+    "display": "standalone"
+  },
+  "veredito": "RM15_POS_V122_VERDE",
+  "totais": {
+    "portoes": 15,
+    "vermelhos": 0
+  }
+}
