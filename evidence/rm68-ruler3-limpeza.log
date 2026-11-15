@@ -1,0 +1,56 @@
+Contas s20-* encontradas: 4
+  s20-coordinator@bfr.test  635ac53e-7eef-4539-91b6-d4e41a38b7e1
+  s20-director@bfr.test  0afd82b2-b140-4aaf-8af0-fc7647348d25
+  s20-secretary@bfr.test  2b9550a7-42a3-4822-93a6-47e53499b598
+  s20-supervisor@bfr.test  5d0821e0-6893-48b0-94b1-90b9cfcdc052
+DELETE s20-coordinator@bfr.test: HTTP 500 {"code":"23503","message":"update or delete on table \"profiles\" violates foreign key constraint \"supervision_audit_pr
+file:///C:/Users/pcmac/Documents/Qoder/2026-10-13/28077d9a/bfr-conecta/scripts/rm68-ruler3-limpeza.mjs:38
+  if (![200, 404].includes(r.status)) throw new Error(`Falha ao apagar ${u.email}: HTTP ${r.status}`);
+                                            ^
+
+Error: Falha ao apagar s20-coordinator@bfr.test: HTTP 500
+    at file:///C:/Users/pcmac/Documents/Qoder/2026-10-13/28077d9a/bfr-conecta/scripts/rm68-ruler3-limpeza.mjs:38:45
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+
+Node.js v24.18.1
+Contas s20-* encontradas: 4
+  s20-coordinator@bfr.test  635ac53e-7eef-4539-91b6-d4e41a38b7e1
+  s20-director@bfr.test  0afd82b2-b140-4aaf-8af0-fc7647348d25
+  s20-secretary@bfr.test  2b9550a7-42a3-4822-93a6-47e53499b598
+  s20-supervisor@bfr.test  5d0821e0-6893-48b0-94b1-90b9cfcdc052
+Linhas supervision_audit dessas contas: 24
+file:///C:/Users/pcmac/Documents/Qoder/2026-10-13/28077d9a/bfr-conecta/scripts/rm68-ruler3-limpeza.mjs:38
+  console.log(`DELETE supervision_audit: ${del.count ?? 'ok'}`);
+                                               ^
+
+TypeError: Cannot read properties of undefined (reading 'count')
+    at file:///C:/Users/pcmac/Documents/Qoder/2026-10-13/28077d9a/bfr-conecta/scripts/rm68-ruler3-limpeza.mjs:38:48
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+
+Node.js v24.18.1
+Contas s20-* encontradas: 4
+  s20-coordinator@bfr.test  635ac53e-7eef-4539-91b6-d4e41a38b7e1
+  s20-director@bfr.test  0afd82b2-b140-4aaf-8af0-fc7647348d25
+  s20-secretary@bfr.test  2b9550a7-42a3-4822-93a6-47e53499b598
+  s20-supervisor@bfr.test  5d0821e0-6893-48b0-94b1-90b9cfcdc052
+Linhas supervision_audit dessas contas: 0
+DELETE supervision_audit → restam 0 linha(s)
+DELETE s20-coordinator@bfr.test: HTTP 200 {}
+DELETE s20-director@bfr.test: HTTP 200 {}
+DELETE s20-secretary@bfr.test: HTTP 200 {}
+DELETE s20-supervisor@bfr.test: HTTP 200 {}
+Remanescentes após limpeza: 0
+Escolas %S20 remanescentes: 0
+LIMPEZA_OK
+Contas s20-* encontradas: 3
+  s20-coordinator@bfr.test  aa9772b5-e523-4115-88c2-2d889a2e96b5
+  s20-director@bfr.test  b2a43306-1d3b-4811-bb2b-f5963d890b67
+  s20-supervisor@bfr.test  2c63444a-85a6-4fc3-a48b-ed19e135b4b9
+Linhas supervision_audit dessas contas: 8
+DELETE supervision_audit → restam 0 linha(s)
+DELETE s20-coordinator@bfr.test: HTTP 200 {}
+DELETE s20-director@bfr.test: HTTP 200 {}
+DELETE s20-supervisor@bfr.test: HTTP 200 {}
+Remanescentes após limpeza: 0
+Escolas %S20 remanescentes: 0
+LIMPEZA_OK

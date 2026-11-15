@@ -1,0 +1,28 @@
+diff --git a/scripts/s20-behavioral.mjs b/scripts/s20-behavioral-ruler3.mjs
+index 8facc55..1964d39 100644
+--- a/scripts/s20-behavioral.mjs
++++ b/scripts/s20-behavioral-ruler3.mjs
+@@ -2,6 +2,8 @@
+ // Lote A: supervision_responses (4 gaps)
+ // Lote B: sports_schools + supervision_requests (2 gaps)
+ // Lote C: storage.objects (3 gaps)
++// Variante RULER3 (15/11): degrau 3 da régua do RM-6.8 — diário e sessões em
++// caminhos próprios para não sobrescrever os artefactos do S20 de 08/11.
+ 
+ import { readFileSync, writeFileSync, existsSync } from 'node:fs';
+ import { randomUUID } from 'node:crypto';
+@@ -9,8 +11,12 @@ import { randomUUID } from 'node:crypto';
+ const REF = 'yyzqoxlkcvqpessypfjo';
+ const HOST = `https://${REF}.supabase.co`;
+ const DIR = 'C:/Users/pcmac/Documents/Qoder/2026-10-13/28077d9a/bfr-conecta';
+-const SESSIONS = `${DIR}/s20-sessions.json`;
+-const DIARY = `${DIR}/evidence/s20-diary.json`;
++const SESSIONS = `${DIR}/s20-ruler3-sessions.json`;
++const DIARY = `${DIR}/evidence/s20-ruler3-diary.json`;
++
++if (existsSync(DIARY)) {
++  throw new Error(`Diário ${DIARY} já existe — guard de não-sobreposição; resolva antes de re-correr.`);
++}
+ 
+ const serviceKey = readFileSync('C:/Users/pcmac/.supabase-service-role', 'utf8').trim();
+ const sqlToken = readFileSync('C:/Users/pcmac/.supabase-pat', 'utf8').trim();

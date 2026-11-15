@@ -1,0 +1,81 @@
+=== S20 — PROVA BEHAVIORAL DAS 9 POLICIES ===
+
+[0] Pre-limpeza de runs anteriores...
+    Pre-limpeza completa
+
+[1] Mintando 4 contas sintéticas...
+    4 contas mintadas:
+
+      secretary: uid 0e2fe118...
+      director: uid b2a43306...
+      coordinator: uid aa9772b5...
+      supervisor: uid 2c63444a...
+
+[2] Fixture: escolas + vínculos staff_schools...
+    Criando 3 escolas sintéticas...
+    Alpha: 0d2fdd3d-ac74-4902-a156-690d8a4ca750
+    Beta: 07d870e2-939a-4c08-8499-743b393d8a4b
+    Gamma: 3c31013d-b622-4d40-b49d-afe31518d9d6
+
+    Criando vínculos staff_schools...
+    3 vínculos criados (secretary→Alpha, director→Alpha, coordinator→Beta)
+
+[3] Fixture: supervision_requests...
+    Request Alpha: b9c8cbc2-26da-4c34-b8a3-7703fe7670e6
+    Request Beta: 7a40d653-fa71-49a1-8ea6-8afd3684655b
+
+[4] LOTE A: supervision_responses (4 gaps)
+
+  Gap 1: supervisor_read
+VERDE  supervisor GET supervision_responses
+  Gap 2: supervisor_insert
+VERDE  supervisor POST supervision_responses
+  Gap 3: staff_insert (school filter)
+VERDE  director POST response → Alpha (own school)
+VERDE  director POST response → Beta (other school)
+  Gap 4: staff_read (school filter)
+VERDE  director GET supervision_responses
+VERDE  director vê só responses da escola própria
+
+[5] LOTE B: sports_schools + supervision_requests (2 gaps)
+
+  Gap 5: sports_schools_staff_read
+VERDE  supervisor GET sports_schools
+VERDE  supervisor vê escolas (dados)
+  Gap 6: supervision_requests_director_update
+VERDE  director PATCH request → Alpha (own school) status
+VERDE  director PATCH request → Alpha (own school) rows
+VERDE  director PATCH request → Beta (other school) status
+VERDE  director PATCH request → Beta (other school) 0 rows
+  Gap 7: supervision_requests_coordinator_update
+VERDE  coordinator PATCH request → Beta (own school) status
+VERDE  coordinator PATCH request → Beta (own school) rows
+VERDE  coordinator PATCH request → Alpha (other school) status
+VERDE  coordinator PATCH request → Alpha (other school) 0 rows
+
+[6] LOTE C: storage.objects (3 gaps)
+
+  Criando fixture de storage...
+    director POST storage: status=200, body={"Key":"secretary-attachments/supervision/7f6e7fd5-c01a-4982-a6fc-21601d5c2765/b2a43306-1d3b-4811-bb2b-f5963d890b67/test.txt","Id":"2cdc6ad6-f0c4-44cf-91cb-eaf209eba7f7","version":"dc077c02-0c89-4b03-
+VERDE  director POST storage object
+    verify GET (director): status=200
+    Storage path: supervision/7f6e7fd5-c01a-4982-a6fc-21601d5c2765/b2a43306-1d3b-4811-bb2b-f5963d890b67/test.txt
+
+  Gap 8: bfr_supervision_attachments_select
+    supervisor GET storage: status=200, contentType=text/plain
+VERDE  supervisor GET storage object
+  Gap 9: bfr_supervision_attachments_insert
+VERDE  secretary POST storage object
+  Gap 10 (bônus): bfr_supervision_attachments_delete
+VERDE  coordinator DELETE storage object
+
+[7] Limpeza FK-safe...
+    Limpeza completa (fixture + contas)
+
+[8] RESUMO
+
+    Portões: 20
+    Falhas: 0
+
+=== S20 FECHADO COM SUCESSO ===
+

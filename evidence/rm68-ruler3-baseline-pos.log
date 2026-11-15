@@ -1,0 +1,12 @@
+file:///C:/Users/pcmac/Documents/Qoder/2026-10-13/28077d9a/bfr-conecta/scripts/rm68-ruler3-baseline.mjs:46
+  if (!r.ok) throw new Error(`sql HTTP ${r.status}: ${t.slice(0, 400)}`);
+                   ^
+
+Error: sql HTTP 500: {"message":"Failed to check user auth status"}
+    at sql (file:///C:/Users/pcmac/Documents/Qoder/2026-10-13/28077d9a/bfr-conecta/scripts/rm68-ruler3-baseline.mjs:46:20)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async capturar (file:///C:/Users/pcmac/Documents/Qoder/2026-10-13/28077d9a/bfr-conecta/scripts/rm68-ruler3-baseline.mjs:55:17)
+    at async file:///C:/Users/pcmac/Documents/Qoder/2026-10-13/28077d9a/bfr-conecta/scripts/rm68-ruler3-baseline.mjs:66:15
+
+Node.js v24.18.1
+Assertion failed: !(handle->flags & UV_HANDLE_CLOSING), file src\win\async.c, line 94

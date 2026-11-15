@@ -91,3 +91,13 @@ scripts/s19-mint.mjs
 # (remedicao-P1-P3.md :171/:387), placeholder ${} (seg-p1/seg-rotacao-8/seg-precommit-gate),
 # sb_publishable_* / Firebase apiKey / VAPID = chaves publicas ja no bundle publicado
 # (20 ficheiros) e os 3 tokens de URL assinada do e2e4/s19, todos com expiracao passada.
+
+# 15/11 degrau 3 — o `seg-precommit-gate.mjs --staged` bloqueou o instrumento com
+# `senha-conhecida=1`: a variante ruler3 traz o mesmo literal de senha sintetica do irmao
+# :41. A classe esta medida, nao lembrada: `git grep -lE "password *= *['\"][^\"'$]{6,}['\"]" HEAD`
+# devolve 0 ficheiros rastreados, e dos 5 ficheiros em disco com o literal 4 ja estao
+# ignorados (test-gap3-func, test-gap3-minimal, scripts/s20-behavioral.mjs) ou sao o
+# scanner que nomeia o literal (scripts/seg-pushed-history-scan.mjs). O instrumento fica
+# fora; o que se pode refazer entra como prova: evidence/rm68-ruler3-instrumento.patch
+# (2 hunks, +8/-2, 0 ocorrencias da senha) aplicado sobre scripts/s20-behavioral.mjs.
+scripts/s20-behavioral-ruler3.mjs
