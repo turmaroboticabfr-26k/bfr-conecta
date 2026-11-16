@@ -1,0 +1,850 @@
+{
+  "em": "2026-11-16T03:48:14.321Z",
+  "autorizacao": "somente leitura: 0 DDL, 0 escrita, 0 mint",
+  "policies_4_tabelas": [
+    {
+      "tabela": "access_requests",
+      "politica": "access_requests_insert",
+      "cmd": "a",
+      "permissive": "true",
+      "roles": "authenticated",
+      "using_": null,
+      "with_check": "((lower(email) = lower((auth.jwt() ->> 'email'::text))) AND (requested_role = ANY (ARRAY['parent'::account_role, 'student'::account_role, 'pedagogical'::account_role, 'monitor'::account_role, 'gatekeeper'::account_role])) AND (approved_role IS NULL) AND (status = 'pending'::request_status) AND (reviewed_by IS NULL) AND (reviewed_at IS NULL))"
+    },
+    {
+      "tabela": "access_requests",
+      "politica": "access_requests_manage",
+      "cmd": "*",
+      "permissive": "true",
+      "roles": "(public)",
+      "using_": "bfr_rls_is_developer()",
+      "with_check": "(bfr_rls_is_developer() AND (requested_role = ANY (enum_range(NULL::account_role))) AND ((approved_role IS NULL) OR (approved_role = requested_role)) AND (status = ANY (ARRAY['pending'::request_status, 'approved'::request_status, 'rejected'::request_status])))"
+    },
+    {
+      "tabela": "access_requests",
+      "politica": "access_requests_read",
+      "cmd": "r",
+      "permissive": "true",
+      "roles": "authenticated",
+      "using_": "(is_developer() OR (lower(email) = lower((auth.jwt() ->> 'email'::text))))",
+      "with_check": null
+    },
+    {
+      "tabela": "access_requests",
+      "politica": "access_requests_staff_insert",
+      "cmd": "a",
+      "permissive": "true",
+      "roles": "(public)",
+      "using_": null,
+      "with_check": "(bfr_rls_is_developer() AND (requested_role = ANY (enum_range(NULL::account_role))) AND (((approved_role IS NULL) AND (status = 'pending'::request_status)) OR ((approved_role = requested_role) AND (status = 'approved'::request_status))))"
+    },
+    {
+      "tabela": "attendance",
+      "politica": "attendance_family_read",
+      "cmd": "r",
+      "permissive": "true",
+      "roles": "authenticated",
+      "using_": "(EXISTS ( SELECT 1\n   FROM guardian_students gs\n  WHERE ((gs.student_id = attendance.student_id) AND (gs.profile_id = auth.uid()))))",
+      "with_check": null
+    },
+    {
+      "tabela": "attendance",
+      "politica": "attendance_staff_delete",
+      "cmd": "d",
+      "permissive": "true",
+      "roles": "(public)",
+      "using_": "(bfr_staff_can_manage_student_scope(student_id) AND ((bfr_rls_session_role())::text <> 'secretary'::text))",
+      "with_check": null
+    },
+    {
+      "tabela": "attendance",
+      "politica": "attendance_staff_insert",
+      "cmd": "a",
+      "permissive": "true",
+      "roles": "(public)",
+      "using_": null,
+      "with_check": "(bfr_staff_can_manage_student_scope(student_id) AND ((bfr_rls_session_role())::text <> 'secretary'::text) AND (((bfr_rls_session_role())::text <> 'pedagogical'::text) OR (entered_by = auth.uid())))"
+    },
+    {
+      "tabela": "attendance",
+      "politica": "attendance_staff_select",
+      "cmd": "r",
+      "permissive": "true",
+      "roles": "(public)",
+      "using_": "(bfr_staff_can_manage_student_scope(student_id) AND ((bfr_rls_session_role())::text <> 'secretary'::text))",
+      "with_check": null
+    },
+    {
+      "tabela": "attendance",
+      "politica": "attendance_staff_update",
+      "cmd": "w",
+      "permissive": "true",
+      "roles": "(public)",
+      "using_": "(bfr_staff_can_manage_student_scope(student_id) AND ((bfr_rls_session_role())::text <> 'secretary'::text))",
+      "with_check": "(bfr_staff_can_manage_student_scope(student_id) AND ((bfr_rls_session_role())::text <> 'secretary'::text))"
+    },
+    {
+      "tabela": "attendance",
+      "politica": "attendance_supervisor_read",
+      "cmd": "r",
+      "permissive": "true",
+      "roles": "authenticated",
+      "using_": "bfr_is_education_supervisor()",
+      "with_check": null
+    },
+    {
+      "tabela": "attendance",
+      "politica": "coordinators read attendance",
+      "cmd": "r",
+      "permissive": "true",
+      "roles": "authenticated",
+      "using_": "(EXISTS ( SELECT 1\n   FROM profiles p\n  WHERE ((p.id = auth.uid()) AND (p.role = ANY (ARRAY['coordinator'::account_role, 'developer'::account_role])))))",
+      "with_check": null
+    },
+    {
+      "tabela": "attendance",
+      "politica": "director_dashboard_read_attendance",
+      "cmd": "r",
+      "permissive": "true",
+      "roles": "authenticated",
+      "using_": "((\"current_role\"())::text = 'director'::text)",
+      "with_check": null
+    },
+    {
+      "tabela": "grades",
+      "politica": "grades_family_read",
+      "cmd": "r",
+      "permissive": "true",
+      "roles": "authenticated",
+      "using_": "(EXISTS ( SELECT 1\n   FROM guardian_students gs\n  WHERE ((gs.student_id = grades.student_id) AND (gs.profile_id = auth.uid()))))",
+      "with_check": null
+    },
+    {
+      "tabela": "grades",
+      "politica": "grades_staff_delete",
+      "cmd": "d",
+      "permissive": "true",
+      "roles": "(public)",
+      "using_": "(bfr_staff_can_manage_student_scope(student_id, subject) AND ((bfr_rls_session_role())::text <> 'secretary'::text))",
+      "with_check": null
+    },
+    {
+      "tabela": "grades",
+      "politica": "grades_staff_insert",
+      "cmd": "a",
+      "permissive": "true",
+      "roles": "(public)",
+      "using_": null,
+      "with_check": "(bfr_staff_can_manage_student_scope(student_id, subject) AND ((bfr_rls_session_role())::text <> 'secretary'::text) AND (((bfr_rls_session_role())::text <> 'pedagogical'::text) OR (entered_by = auth.uid())))"
+    },
+    {
+      "tabela": "grades",
+      "politica": "grades_staff_select",
+      "cmd": "r",
+      "permissive": "true",
+      "roles": "(public)",
+      "using_": "(bfr_staff_can_manage_student_scope(student_id, subject) AND ((bfr_rls_session_role())::text <> 'secretary'::text))",
+      "with_check": null
+    },
+    {
+      "tabela": "grades",
+      "politica": "grades_supervisor_read",
+      "cmd": "r",
+      "permissive": "true",
+      "roles": "authenticated",
+      "using_": "bfr_is_education_supervisor()",
+      "with_check": null
+    },
+    {
+      "tabela": "occurrences",
+      "politica": "occurrences_coordinator_insert",
+      "cmd": "a",
+      "permissive": "true",
+      "roles": "authenticated",
+      "using_": null,
+      "with_check": "(EXISTS ( SELECT 1\n   FROM profiles p\n  WHERE ((p.id = auth.uid()) AND (p.role = 'coordinator'::account_role))))"
+    },
+    {
+      "tabela": "occurrences",
+      "politica": "occurrences_coordinator_select",
+      "cmd": "r",
+      "permissive": "true",
+      "roles": "authenticated",
+      "using_": "(EXISTS ( SELECT 1\n   FROM profiles p\n  WHERE ((p.id = auth.uid()) AND (p.role = 'coordinator'::account_role))))",
+      "with_check": null
+    },
+    {
+      "tabela": "occurrences",
+      "politica": "occurrences_director_select",
+      "cmd": "r",
+      "permissive": "true",
+      "roles": "(public)",
+      "using_": "bfr_rls_director_manages_student(student_id)",
+      "with_check": null
+    },
+    {
+      "tabela": "occurrences",
+      "politica": "occurrences_director_update",
+      "cmd": "w",
+      "permissive": "true",
+      "roles": "(public)",
+      "using_": "bfr_rls_director_manages_student(student_id)",
+      "with_check": "bfr_rls_director_manages_student(student_id)"
+    },
+    {
+      "tabela": "occurrences",
+      "politica": "occurrences_family_read",
+      "cmd": "r",
+      "permissive": "true",
+      "roles": "authenticated",
+      "using_": "(EXISTS ( SELECT 1\n   FROM guardian_students gs\n  WHERE ((gs.student_id = occurrences.student_id) AND (gs.profile_id = auth.uid()))))",
+      "with_check": null
+    },
+    {
+      "tabela": "occurrences",
+      "politica": "occurrences_staff_manage",
+      "cmd": "*",
+      "permissive": "true",
+      "roles": "authenticated",
+      "using_": "is_staff()",
+      "with_check": "is_staff()"
+    }
+  ],
+  "funcoes": [
+    {
+      "nome": "bfr_is_schedule_manager",
+      "args": "",
+      "def": "CREATE OR REPLACE FUNCTION public.bfr_is_schedule_manager()\n RETURNS boolean\n LANGUAGE sql\n STABLE SECURITY DEFINER\n SET search_path TO 'public'\nAS $function$\n  select coalesce(public.current_role()::text in ('developer','coordinator','director','secretary'),false)\n$function$\n"
+    },
+    {
+      "nome": "bfr_rls_director_manages_student",
+      "args": "p_student_id uuid",
+      "def": "CREATE OR REPLACE FUNCTION public.bfr_rls_director_manages_student(p_student_id uuid)\n RETURNS boolean\n LANGUAGE sql\n STABLE SECURITY DEFINER\n SET search_path TO 'public', 'pg_temp'\nAS $function$\n  -- Corpo = o EXISTS vivo de occurrences_director_select (lido do catálogo), só com\n  -- occurrences.student_id trocado pelo parâmetro. O SELECT em staff_schools passa a ser feito pelo\n  -- dono da função, por isso a policy deixa de precisar de privilégio sobre ela.\n  select EXISTS ( SELECT 1\n   FROM ((profiles p\n     JOIN staff_schools ss ON ((ss.profile_id = p.id)))\n     JOIN students st ON ((st.school_id = ss.school_id)))\n  WHERE ((p.id = auth.uid()) AND (p.role = 'director'::account_role) AND (st.id = p_student_id)))\n$function$\n"
+    },
+    {
+      "nome": "bfr_rls_is_developer",
+      "args": "",
+      "def": "CREATE OR REPLACE FUNCTION public.bfr_rls_is_developer()\n RETURNS boolean\n LANGUAGE sql\n STABLE SECURITY DEFINER\n SET search_path TO 'public', 'pg_temp'\nAS $function$\n  -- Delega na função viva: a resposta é a mesma; o que muda é que quem chama o wrapper não precisa de\n  -- privilégio nenhum sobre a função interior.\n  select coalesce(public.is_developer(), false)\n$function$\n"
+    },
+    {
+      "nome": "bfr_rls_session_role",
+      "args": "",
+      "def": "CREATE OR REPLACE FUNCTION public.bfr_rls_session_role()\n RETURNS account_role\n LANGUAGE sql\n STABLE SECURITY DEFINER\n SET search_path TO 'public', 'pg_temp'\nAS $function$\n  -- Responde o mesmo que public.\"current_role\"() (que já é SECURITY DEFINER e faz exactamente isto):\n  -- para o anon, auth.uid() é NULL → 0 linhas → NULL, e a qualificação fica falsa por lógica própria\n  -- em vez de por 42501.\n  select role from public.profiles where id = auth.uid()\n$function$\n"
+    },
+    {
+      "nome": "bfr_staff_can_manage_student_scope",
+      "args": "p_student_id uuid, p_subject text",
+      "def": "CREATE OR REPLACE FUNCTION public.bfr_staff_can_manage_student_scope(p_student_id uuid, p_subject text DEFAULT NULL::text)\n RETURNS boolean\n LANGUAGE sql\n STABLE SECURITY DEFINER\n SET search_path TO 'public'\nAS $function$\n  select (\n    (\n      public.bfr_is_schedule_manager()\n      and public.current_role()::text <> 'pedagogical'\n    )\n    or (\n      public.current_role()::text = 'pedagogical'\n      and public.bfr_pedagogical_can_manage_student(p_student_id, p_subject)\n    )\n    or (\n      public.is_aee()\n      and public.bfr_teacher_can_manage_student(p_student_id, p_subject)\n    )\n  )\n$function$\n"
+    },
+    {
+      "nome": "current_role",
+      "args": "",
+      "def": "CREATE OR REPLACE FUNCTION public.\"current_role\"()\n RETURNS account_role\n LANGUAGE sql\n STABLE SECURITY DEFINER\n SET search_path TO ''\nAS $function$ select role from public.profiles where id = auth.uid() $function$\n"
+    },
+    {
+      "nome": "is_developer",
+      "args": "",
+      "def": "CREATE OR REPLACE FUNCTION public.is_developer()\n RETURNS boolean\n LANGUAGE sql\n STABLE SECURITY DEFINER\n SET search_path TO ''\nAS $function$ select coalesce(public.current_role() = 'developer', false) $function$\n"
+    },
+    {
+      "nome": "is_staff",
+      "args": "",
+      "def": "CREATE OR REPLACE FUNCTION public.is_staff()\n RETURNS boolean\n LANGUAGE sql\n STABLE SECURITY DEFINER\n SET search_path TO ''\nAS $function$\r\n                  select coalesce(public.current_role() in ('pedagogical','aee','developer'), false)\r\n                  $function$\n"
+    },
+    {
+      "nome": "sports_role_allowed",
+      "args": "allowed_roles text[]",
+      "def": "CREATE OR REPLACE FUNCTION public.sports_role_allowed(allowed_roles text[])\n RETURNS boolean\n LANGUAGE sql\n STABLE SECURITY DEFINER\n SET search_path TO 'public'\nAS $function$\n  select exists (\n    select 1 from public.profiles\n     where id = auth.uid() and role::text = any(allowed_roles)\n  );\n$function$\n"
+    }
+  ],
+  "colunas": [
+    {
+      "table_name": "access_requests",
+      "column_name": "id",
+      "data_type": "uuid",
+      "is_nullable": "NO",
+      "column_default": "gen_random_uuid()"
+    },
+    {
+      "table_name": "access_requests",
+      "column_name": "email",
+      "data_type": "text",
+      "is_nullable": "NO",
+      "column_default": null
+    },
+    {
+      "table_name": "access_requests",
+      "column_name": "requested_role",
+      "data_type": "USER-DEFINED",
+      "is_nullable": "NO",
+      "column_default": null
+    },
+    {
+      "table_name": "access_requests",
+      "column_name": "approved_role",
+      "data_type": "USER-DEFINED",
+      "is_nullable": "YES",
+      "column_default": null
+    },
+    {
+      "table_name": "access_requests",
+      "column_name": "status",
+      "data_type": "USER-DEFINED",
+      "is_nullable": "NO",
+      "column_default": "'pending'::request_status"
+    },
+    {
+      "table_name": "access_requests",
+      "column_name": "reviewed_by",
+      "data_type": "uuid",
+      "is_nullable": "YES",
+      "column_default": null
+    },
+    {
+      "table_name": "access_requests",
+      "column_name": "created_at",
+      "data_type": "timestamp with time zone",
+      "is_nullable": "NO",
+      "column_default": "now()"
+    },
+    {
+      "table_name": "access_requests",
+      "column_name": "reviewed_at",
+      "data_type": "timestamp with time zone",
+      "is_nullable": "YES",
+      "column_default": null
+    },
+    {
+      "table_name": "attendance",
+      "column_name": "id",
+      "data_type": "uuid",
+      "is_nullable": "NO",
+      "column_default": "gen_random_uuid()"
+    },
+    {
+      "table_name": "attendance",
+      "column_name": "student_id",
+      "data_type": "uuid",
+      "is_nullable": "NO",
+      "column_default": null
+    },
+    {
+      "table_name": "attendance",
+      "column_name": "attendance_date",
+      "data_type": "date",
+      "is_nullable": "NO",
+      "column_default": null
+    },
+    {
+      "table_name": "attendance",
+      "column_name": "status",
+      "data_type": "text",
+      "is_nullable": "NO",
+      "column_default": null
+    },
+    {
+      "table_name": "attendance",
+      "column_name": "entered_by",
+      "data_type": "uuid",
+      "is_nullable": "YES",
+      "column_default": null
+    },
+    {
+      "table_name": "grades",
+      "column_name": "id",
+      "data_type": "uuid",
+      "is_nullable": "NO",
+      "column_default": "gen_random_uuid()"
+    },
+    {
+      "table_name": "grades",
+      "column_name": "student_id",
+      "data_type": "uuid",
+      "is_nullable": "NO",
+      "column_default": null
+    },
+    {
+      "table_name": "grades",
+      "column_name": "subject",
+      "data_type": "text",
+      "is_nullable": "NO",
+      "column_default": null
+    },
+    {
+      "table_name": "grades",
+      "column_name": "assessment",
+      "data_type": "text",
+      "is_nullable": "NO",
+      "column_default": null
+    },
+    {
+      "table_name": "grades",
+      "column_name": "score",
+      "data_type": "numeric",
+      "is_nullable": "NO",
+      "column_default": null
+    },
+    {
+      "table_name": "grades",
+      "column_name": "term",
+      "data_type": "smallint",
+      "is_nullable": "NO",
+      "column_default": null
+    },
+    {
+      "table_name": "grades",
+      "column_name": "entered_by",
+      "data_type": "uuid",
+      "is_nullable": "YES",
+      "column_default": null
+    },
+    {
+      "table_name": "grades",
+      "column_name": "created_at",
+      "data_type": "timestamp with time zone",
+      "is_nullable": "NO",
+      "column_default": "now()"
+    },
+    {
+      "table_name": "grades",
+      "column_name": "category",
+      "data_type": "text",
+      "is_nullable": "YES",
+      "column_default": null
+    },
+    {
+      "table_name": "occurrences",
+      "column_name": "id",
+      "data_type": "uuid",
+      "is_nullable": "NO",
+      "column_default": "gen_random_uuid()"
+    },
+    {
+      "table_name": "occurrences",
+      "column_name": "student_id",
+      "data_type": "uuid",
+      "is_nullable": "NO",
+      "column_default": null
+    },
+    {
+      "table_name": "occurrences",
+      "column_name": "title",
+      "data_type": "text",
+      "is_nullable": "NO",
+      "column_default": null
+    },
+    {
+      "table_name": "occurrences",
+      "column_name": "description",
+      "data_type": "text",
+      "is_nullable": "NO",
+      "column_default": null
+    },
+    {
+      "table_name": "occurrences",
+      "column_name": "occurred_at",
+      "data_type": "timestamp with time zone",
+      "is_nullable": "NO",
+      "column_default": "now()"
+    },
+    {
+      "table_name": "occurrences",
+      "column_name": "created_by",
+      "data_type": "uuid",
+      "is_nullable": "YES",
+      "column_default": null
+    },
+    {
+      "table_name": "occurrences",
+      "column_name": "acknowledged_at",
+      "data_type": "timestamp with time zone",
+      "is_nullable": "YES",
+      "column_default": null
+    },
+    {
+      "table_name": "profiles",
+      "column_name": "id",
+      "data_type": "uuid",
+      "is_nullable": "NO",
+      "column_default": null
+    },
+    {
+      "table_name": "profiles",
+      "column_name": "email",
+      "data_type": "text",
+      "is_nullable": "NO",
+      "column_default": null
+    },
+    {
+      "table_name": "profiles",
+      "column_name": "full_name",
+      "data_type": "text",
+      "is_nullable": "YES",
+      "column_default": null
+    },
+    {
+      "table_name": "profiles",
+      "column_name": "role",
+      "data_type": "USER-DEFINED",
+      "is_nullable": "NO",
+      "column_default": "'pending'::account_role"
+    },
+    {
+      "table_name": "profiles",
+      "column_name": "created_at",
+      "data_type": "timestamp with time zone",
+      "is_nullable": "NO",
+      "column_default": "now()"
+    },
+    {
+      "table_name": "profiles",
+      "column_name": "phone",
+      "data_type": "text",
+      "is_nullable": "YES",
+      "column_default": null
+    },
+    {
+      "table_name": "profiles",
+      "column_name": "birth_date",
+      "data_type": "date",
+      "is_nullable": "YES",
+      "column_default": null
+    },
+    {
+      "table_name": "profiles",
+      "column_name": "display_name_custom",
+      "data_type": "text",
+      "is_nullable": "YES",
+      "column_default": null
+    },
+    {
+      "table_name": "profiles",
+      "column_name": "photo_path",
+      "data_type": "text",
+      "is_nullable": "YES",
+      "column_default": null
+    },
+    {
+      "table_name": "sports_schools",
+      "column_name": "id",
+      "data_type": "uuid",
+      "is_nullable": "NO",
+      "column_default": "gen_random_uuid()"
+    },
+    {
+      "table_name": "sports_schools",
+      "column_name": "name",
+      "data_type": "text",
+      "is_nullable": "NO",
+      "column_default": null
+    },
+    {
+      "table_name": "sports_schools",
+      "column_name": "city",
+      "data_type": "text",
+      "is_nullable": "YES",
+      "column_default": null
+    },
+    {
+      "table_name": "sports_schools",
+      "column_name": "logo_url",
+      "data_type": "text",
+      "is_nullable": "YES",
+      "column_default": null
+    },
+    {
+      "table_name": "sports_schools",
+      "column_name": "contact_name",
+      "data_type": "text",
+      "is_nullable": "YES",
+      "column_default": null
+    },
+    {
+      "table_name": "sports_schools",
+      "column_name": "contact_email",
+      "data_type": "text",
+      "is_nullable": "YES",
+      "column_default": null
+    },
+    {
+      "table_name": "sports_schools",
+      "column_name": "contact_phone",
+      "data_type": "text",
+      "is_nullable": "YES",
+      "column_default": null
+    },
+    {
+      "table_name": "sports_schools",
+      "column_name": "created_by",
+      "data_type": "uuid",
+      "is_nullable": "YES",
+      "column_default": null
+    },
+    {
+      "table_name": "sports_schools",
+      "column_name": "created_at",
+      "data_type": "timestamp with time zone",
+      "is_nullable": "NO",
+      "column_default": "now()"
+    },
+    {
+      "table_name": "sports_schools",
+      "column_name": "updated_at",
+      "data_type": "timestamp with time zone",
+      "is_nullable": "NO",
+      "column_default": "now()"
+    },
+    {
+      "table_name": "staff_schools",
+      "column_name": "id",
+      "data_type": "uuid",
+      "is_nullable": "NO",
+      "column_default": "gen_random_uuid()"
+    },
+    {
+      "table_name": "staff_schools",
+      "column_name": "profile_id",
+      "data_type": "uuid",
+      "is_nullable": "NO",
+      "column_default": null
+    },
+    {
+      "table_name": "staff_schools",
+      "column_name": "school_id",
+      "data_type": "uuid",
+      "is_nullable": "NO",
+      "column_default": null
+    },
+    {
+      "table_name": "staff_schools",
+      "column_name": "role",
+      "data_type": "text",
+      "is_nullable": "NO",
+      "column_default": null
+    },
+    {
+      "table_name": "staff_schools",
+      "column_name": "created_at",
+      "data_type": "timestamp with time zone",
+      "is_nullable": "NO",
+      "column_default": "now()"
+    },
+    {
+      "table_name": "staff_schools",
+      "column_name": "updated_at",
+      "data_type": "timestamp with time zone",
+      "is_nullable": "NO",
+      "column_default": "now()"
+    },
+    {
+      "table_name": "students",
+      "column_name": "id",
+      "data_type": "uuid",
+      "is_nullable": "NO",
+      "column_default": "gen_random_uuid()"
+    },
+    {
+      "table_name": "students",
+      "column_name": "official_name",
+      "data_type": "text",
+      "is_nullable": "NO",
+      "column_default": null
+    },
+    {
+      "table_name": "students",
+      "column_name": "observation",
+      "data_type": "text",
+      "is_nullable": "YES",
+      "column_default": null
+    },
+    {
+      "table_name": "students",
+      "column_name": "class_id",
+      "data_type": "uuid",
+      "is_nullable": "NO",
+      "column_default": null
+    },
+    {
+      "table_name": "students",
+      "column_name": "active",
+      "data_type": "boolean",
+      "is_nullable": "NO",
+      "column_default": "true"
+    },
+    {
+      "table_name": "students",
+      "column_name": "created_at",
+      "data_type": "timestamp with time zone",
+      "is_nullable": "NO",
+      "column_default": "now()"
+    },
+    {
+      "table_name": "students",
+      "column_name": "student_profile_id",
+      "data_type": "uuid",
+      "is_nullable": "YES",
+      "column_default": null
+    },
+    {
+      "table_name": "students",
+      "column_name": "school_id",
+      "data_type": "uuid",
+      "is_nullable": "NO",
+      "column_default": null
+    }
+  ],
+  "fks": [
+    {
+      "table_name": "access_requests",
+      "column_name": "reviewed_by",
+      "ref_tabela": "profiles",
+      "ref_coluna": "id"
+    },
+    {
+      "table_name": "attendance",
+      "column_name": "entered_by",
+      "ref_tabela": "profiles",
+      "ref_coluna": "id"
+    },
+    {
+      "table_name": "attendance",
+      "column_name": "student_id",
+      "ref_tabela": "students",
+      "ref_coluna": "id"
+    },
+    {
+      "table_name": "grades",
+      "column_name": "entered_by",
+      "ref_tabela": "profiles",
+      "ref_coluna": "id"
+    },
+    {
+      "table_name": "grades",
+      "column_name": "student_id",
+      "ref_tabela": "students",
+      "ref_coluna": "id"
+    },
+    {
+      "table_name": "occurrences",
+      "column_name": "created_by",
+      "ref_tabela": "profiles",
+      "ref_coluna": "id"
+    },
+    {
+      "table_name": "occurrences",
+      "column_name": "student_id",
+      "ref_tabela": "students",
+      "ref_coluna": "id"
+    },
+    {
+      "table_name": "staff_schools",
+      "column_name": "profile_id",
+      "ref_tabela": "profiles",
+      "ref_coluna": "id"
+    },
+    {
+      "table_name": "staff_schools",
+      "column_name": "school_id",
+      "ref_tabela": "sports_schools",
+      "ref_coluna": "id"
+    },
+    {
+      "table_name": "students",
+      "column_name": "class_id",
+      "ref_tabela": "classes",
+      "ref_coluna": "id"
+    },
+    {
+      "table_name": "students",
+      "column_name": "school_id",
+      "ref_tabela": "schools",
+      "ref_coluna": "id"
+    },
+    {
+      "table_name": "students",
+      "column_name": "student_profile_id",
+      "ref_tabela": "profiles",
+      "ref_coluna": "id"
+    }
+  ],
+  "grants_4_tabelas": [
+    {
+      "relname": "access_requests",
+      "papel": "anon",
+      "sel": true,
+      "ins": true,
+      "upd": true,
+      "del": true
+    },
+    {
+      "relname": "access_requests",
+      "papel": "authenticated",
+      "sel": true,
+      "ins": true,
+      "upd": true,
+      "del": true
+    },
+    {
+      "relname": "attendance",
+      "papel": "anon",
+      "sel": true,
+      "ins": true,
+      "upd": true,
+      "del": true
+    },
+    {
+      "relname": "attendance",
+      "papel": "authenticated",
+      "sel": true,
+      "ins": true,
+      "upd": true,
+      "del": true
+    },
+    {
+      "relname": "grades",
+      "papel": "anon",
+      "sel": true,
+      "ins": true,
+      "upd": true,
+      "del": true
+    },
+    {
+      "relname": "grades",
+      "papel": "authenticated",
+      "sel": true,
+      "ins": true,
+      "upd": true,
+      "del": true
+    },
+    {
+      "relname": "occurrences",
+      "papel": "anon",
+      "sel": true,
+      "ins": false,
+      "upd": false,
+      "del": false
+    },
+    {
+      "relname": "occurrences",
+      "papel": "authenticated",
+      "sel": true,
+      "ins": true,
+      "upd": true,
+      "del": true
+    }
+  ],
+  "contagens": [
+    {
+      "contagens": {
+        "grades": 112,
+        "attendance": 25,
+        "access_requests": 12,
+        "occurrences": 0,
+        "students": 848,
+        "profiles": 13,
+        "staff_schools": 2,
+        "sports_schools": 6
+      }
+    }
+  ]
+}

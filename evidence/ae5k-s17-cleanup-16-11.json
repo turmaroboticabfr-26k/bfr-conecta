@@ -1,0 +1,26 @@
+{
+  "em": "2026-11-16T04:30:45.496Z",
+  "ok_nomeado": "(d) Limpar resíduo — seleção do usuário, 16/11",
+  "escopo": "4 contas s17-*@test.local + 9 linhas supervision_audit (6 s17 + 3 da conta real pc.maceedo@gmail.com)",
+  "contas_apagadas": [
+    "s17-coordinator@test.local",
+    "s17-developer@test.local",
+    "s17-director@test.local",
+    "s17-secretary@test.local"
+  ],
+  "linhas_audit_apagadas": 9,
+  "perfil_real_intocado": true,
+  "baseline_pre": "C:/Users/pcmac/Documents/Qoder/2026-10-13/28077d9a/bfr-conecta/evidence/ae5k-s17-baseline-pre-16-11.json",
+  "baseline_pos": "C:/Users/pcmac/Documents/Qoder/2026-10-13/28077d9a/bfr-conecta/evidence/ae5k-s17-baseline-pos-16-11.json",
+  "deltas_esperados": {
+    "auth.users": "13→9",
+    "public.profiles": "13→9",
+    "supervision_audit": "9→0"
+  },
+  "portoes": 17,
+  "falhas": [
+    "auth s17 = 0 após limpeza | dado=4 | esperado=0",
+    "auth.users: 13 → 9 | dado=[13,13] | esperado=[13,9]"
+  ],
+  "veredito": "AE5K_S17_CLEANUP_VERMELHO"
+}

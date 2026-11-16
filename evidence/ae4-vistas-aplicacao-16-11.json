@@ -1,0 +1,112 @@
+{
+  "em": "2026-11-16T03:46:05.896Z",
+  "ok_nomeado": "(b) DDL das 5 vistas — seleção do usuário, 16/11",
+  "tarefa": "fechar as 5 vistas sports_public_* com security_invoker=true",
+  "aplicacao_md5": "cc05221043dfe59e40d3b6f058f063de",
+  "antes": [
+    {
+      "relname": "sports_public_athletes",
+      "modo": "sem-opcao",
+      "anon_sel": "false",
+      "auth_sel": "true",
+      "def": " SELECT id,\n    team_id,\n    name,\n    jersey_number,\n    \"position\",\n    status\n   FROM sports_athletes\n  WHERE sports_role_allowed(ARRAY['developer'::text, 'director'::text, 'coordinator'::text, 'secretary'::text, 'pedagogical'::text, 'aee'::text]);"
+    },
+    {
+      "relname": "sports_public_match_events",
+      "modo": "sem-opcao",
+      "anon_sel": "false",
+      "auth_sel": "true",
+      "def": " SELECT id,\n    match_id,\n    team_id,\n    athlete_id,\n    event_type,\n    points,\n    period,\n    clock_seconds,\n    description,\n    created_at\n   FROM sports_match_events\n  WHERE sports_role_allowed(ARRAY['developer'::text, 'director'::text, 'coordinator'::text]);"
+    },
+    {
+      "relname": "sports_public_matches",
+      "modo": "sem-opcao",
+      "anon_sel": "false",
+      "auth_sel": "true",
+      "def": " SELECT id,\n    championship_id,\n    sport,\n    category,\n    gender,\n    home_team_id,\n    away_team_id,\n    scheduled_at,\n    venue,\n    phase,\n    status,\n    home_score,\n    away_score,\n    period,\n    clock_seconds,\n    started_at,\n    finished_at\n   FROM sports_matches\n  WHERE sports_role_allowed(ARRAY['developer'::text, 'director'::text, 'coordinator'::text, 'secretary'::text, 'pedagogical'::text, 'aee'::text]);"
+    },
+    {
+      "relname": "sports_public_schools",
+      "modo": "sem-opcao",
+      "anon_sel": "false",
+      "auth_sel": "true",
+      "def": " SELECT id,\n    name,\n    city,\n    logo_url\n   FROM sports_schools\n  WHERE sports_role_allowed(ARRAY['developer'::text, 'director'::text, 'coordinator'::text, 'secretary'::text]);"
+    },
+    {
+      "relname": "sports_public_teams",
+      "modo": "sem-opcao",
+      "anon_sel": "false",
+      "auth_sel": "true",
+      "def": " SELECT t.id,\n    t.school_id,\n    s.name AS school_name,\n    t.name,\n    t.sport,\n    t.category,\n    t.gender,\n    t.crest_url,\n    t.active\n   FROM (sports_teams t\n     JOIN sports_schools s ON ((s.id = t.school_id)))\n  WHERE (bfr_is_schedule_manager() OR is_staff());"
+    }
+  ],
+  "depois": [
+    {
+      "relname": "sports_public_athletes",
+      "modo": "invoker",
+      "anon_sel": "false",
+      "auth_sel": "true",
+      "def": " SELECT id,\n    team_id,\n    name,\n    jersey_number,\n    \"position\",\n    status\n   FROM sports_athletes\n  WHERE sports_role_allowed(ARRAY['developer'::text, 'director'::text, 'coordinator'::text, 'secretary'::text, 'pedagogical'::text, 'aee'::text]);"
+    },
+    {
+      "relname": "sports_public_match_events",
+      "modo": "invoker",
+      "anon_sel": "false",
+      "auth_sel": "true",
+      "def": " SELECT id,\n    match_id,\n    team_id,\n    athlete_id,\n    event_type,\n    points,\n    period,\n    clock_seconds,\n    description,\n    created_at\n   FROM sports_match_events\n  WHERE sports_role_allowed(ARRAY['developer'::text, 'director'::text, 'coordinator'::text]);"
+    },
+    {
+      "relname": "sports_public_matches",
+      "modo": "invoker",
+      "anon_sel": "false",
+      "auth_sel": "true",
+      "def": " SELECT id,\n    championship_id,\n    sport,\n    category,\n    gender,\n    home_team_id,\n    away_team_id,\n    scheduled_at,\n    venue,\n    phase,\n    status,\n    home_score,\n    away_score,\n    period,\n    clock_seconds,\n    started_at,\n    finished_at\n   FROM sports_matches\n  WHERE sports_role_allowed(ARRAY['developer'::text, 'director'::text, 'coordinator'::text, 'secretary'::text, 'pedagogical'::text, 'aee'::text]);"
+    },
+    {
+      "relname": "sports_public_schools",
+      "modo": "invoker",
+      "anon_sel": "false",
+      "auth_sel": "true",
+      "def": " SELECT id,\n    name,\n    city,\n    logo_url\n   FROM sports_schools\n  WHERE sports_role_allowed(ARRAY['developer'::text, 'director'::text, 'coordinator'::text, 'secretary'::text]);"
+    },
+    {
+      "relname": "sports_public_teams",
+      "modo": "invoker",
+      "anon_sel": "false",
+      "auth_sel": "true",
+      "def": " SELECT t.id,\n    t.school_id,\n    s.name AS school_name,\n    t.name,\n    t.sport,\n    t.category,\n    t.gender,\n    t.crest_url,\n    t.active\n   FROM (sports_teams t\n     JOIN sports_schools s ON ((s.id = t.school_id)))\n  WHERE (bfr_is_schedule_manager() OR is_staff());"
+    }
+  ],
+  "contagens": [
+    {
+      "view": "sports_public_athletes",
+      "postgres": 0,
+      "authenticated": 0
+    },
+    {
+      "view": "sports_public_match_events",
+      "postgres": 0,
+      "authenticated": 0
+    },
+    {
+      "view": "sports_public_matches",
+      "postgres": 0,
+      "authenticated": 0
+    },
+    {
+      "view": "sports_public_schools",
+      "postgres": 0,
+      "authenticated": 0
+    },
+    {
+      "view": "sports_public_teams",
+      "postgres": 0,
+      "authenticated": 0
+    }
+  ],
+  "portoes": {
+    "n": 13,
+    "falhas": []
+  },
+  "veredito": "AE4_APLICACAO_VERDE"
+}

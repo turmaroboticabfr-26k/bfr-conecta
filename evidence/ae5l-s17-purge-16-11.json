@@ -1,0 +1,19 @@
+{
+  "em": "2026-11-16T04:34:37.497Z",
+  "ok_nomeado": "(d) Limpar resíduo — seleção do usuário, 16/11 (follow-up do ae5k)",
+  "escopo": "purge físico de 4 linhas auth.users s17-*@test.local invisíveis à Admin API (instance_id NULL)",
+  "diagnostico": "Admin API lista e DELETE não alcançam linhas com instance_id NULL; o DELETE retorna 200 sem apagar. Purge via SQL (Management API) — mesmo escopo autorizado.",
+  "linhas_apagadas": 4,
+  "filhos_cascateados": {
+    "identities": 0,
+    "sessions": 0,
+    "refresh_tokens": 0,
+    "mfa_factors": 0,
+    "one_time_tokens": 0
+  },
+  "baseline_pre": "C:/Users/pcmac/Documents/Qoder/2026-10-13/28077d9a/bfr-conecta/evidence/ae5l-s17-baseline-pre-16-11.json",
+  "baseline_pos": "C:/Users/pcmac/Documents/Qoder/2026-10-13/28077d9a/bfr-conecta/evidence/ae5l-s17-baseline-pos-16-11.json",
+  "portoes": 12,
+  "falhas": [],
+  "veredito": "AE5L_S17_PURGE_VERDE"
+}

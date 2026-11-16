@@ -1,0 +1,939 @@
+{
+  "em": "2026-11-16T04:02:43.573Z",
+  "requester_perfil": [
+    {
+      "id": "ef318170-22ab-463d-a14b-0271fcebf335",
+      "email": "gameral2027@gmail.com",
+      "role": "aee"
+    }
+  ],
+  "fk_profiles_para_auth": [
+    {
+      "conname": "profiles_id_fkey",
+      "def": "FOREIGN KEY (id) REFERENCES auth.users(id) ON DELETE CASCADE"
+    }
+  ],
+  "triggers_auth_users": [
+    {
+      "tgname": "on_auth_user_created",
+      "def": "CREATE TRIGGER on_auth_user_created AFTER INSERT ON auth.users FOR EACH ROW EXECUTE FUNCTION handle_new_user()"
+    }
+  ],
+  "fks_que_apontam_para_profiles": [
+    {
+      "tabela": "access_requests",
+      "conname": "access_requests_reviewed_by_fkey",
+      "def": "FOREIGN KEY (reviewed_by) REFERENCES profiles(id)"
+    },
+    {
+      "tabela": "aee_activities",
+      "conname": "aee_activities_created_by_fkey",
+      "def": "FOREIGN KEY (created_by) REFERENCES profiles(id)"
+    },
+    {
+      "tabela": "aee_activity_recommendations",
+      "conname": "aee_activity_recommendations_teacher_id_fkey",
+      "def": "FOREIGN KEY (teacher_id) REFERENCES profiles(id)"
+    },
+    {
+      "tabela": "aee_adaptations",
+      "conname": "aee_adaptations_created_by_fkey",
+      "def": "FOREIGN KEY (created_by) REFERENCES profiles(id)"
+    },
+    {
+      "tabela": "aee_adaptations",
+      "conname": "aee_adaptations_teacher_id_fkey",
+      "def": "FOREIGN KEY (teacher_id) REFERENCES profiles(id)"
+    },
+    {
+      "tabela": "aee_attendance",
+      "conname": "aee_attendance_teacher_id_fkey",
+      "def": "FOREIGN KEY (teacher_id) REFERENCES profiles(id)"
+    },
+    {
+      "tabela": "aee_game_assignments",
+      "conname": "aee_game_assignments_assigned_by_fkey",
+      "def": "FOREIGN KEY (assigned_by) REFERENCES profiles(id)"
+    },
+    {
+      "tabela": "aee_game_assignments",
+      "conname": "aee_game_assignments_teacher_id_fkey",
+      "def": "FOREIGN KEY (teacher_id) REFERENCES profiles(id)"
+    },
+    {
+      "tabela": "aee_game_catalog",
+      "conname": "aee_game_catalog_created_by_fkey",
+      "def": "FOREIGN KEY (created_by) REFERENCES profiles(id)"
+    },
+    {
+      "tabela": "aee_game_favorites",
+      "conname": "aee_game_favorites_profile_id_fkey",
+      "def": "FOREIGN KEY (profile_id) REFERENCES profiles(id) ON DELETE CASCADE"
+    },
+    {
+      "tabela": "aee_game_sessions",
+      "conname": "aee_game_sessions_profile_id_fkey",
+      "def": "FOREIGN KEY (profile_id) REFERENCES profiles(id)"
+    },
+    {
+      "tabela": "aee_materials",
+      "conname": "aee_materials_created_by_fkey",
+      "def": "FOREIGN KEY (created_by) REFERENCES profiles(id)"
+    },
+    {
+      "tabela": "aee_materials",
+      "conname": "aee_materials_teacher_id_fkey",
+      "def": "FOREIGN KEY (teacher_id) REFERENCES profiles(id)"
+    },
+    {
+      "tabela": "aee_messages",
+      "conname": "aee_messages_sender_id_fkey",
+      "def": "FOREIGN KEY (sender_id) REFERENCES profiles(id)"
+    },
+    {
+      "tabela": "aee_messages",
+      "conname": "aee_messages_recipient_id_fkey",
+      "def": "FOREIGN KEY (recipient_id) REFERENCES profiles(id)"
+    },
+    {
+      "tabela": "aee_plan_reviews",
+      "conname": "aee_plan_reviews_created_by_fkey",
+      "def": "FOREIGN KEY (created_by) REFERENCES profiles(id)"
+    },
+    {
+      "tabela": "aee_plans",
+      "conname": "aee_plans_updated_by_fkey",
+      "def": "FOREIGN KEY (updated_by) REFERENCES profiles(id)"
+    },
+    {
+      "tabela": "aee_plans",
+      "conname": "aee_plans_created_by_fkey",
+      "def": "FOREIGN KEY (created_by) REFERENCES profiles(id)"
+    },
+    {
+      "tabela": "aee_progress",
+      "conname": "aee_progress_teacher_id_fkey",
+      "def": "FOREIGN KEY (teacher_id) REFERENCES profiles(id)"
+    },
+    {
+      "tabela": "aee_resources",
+      "conname": "aee_resources_created_by_fkey",
+      "def": "FOREIGN KEY (created_by) REFERENCES profiles(id)"
+    },
+    {
+      "tabela": "aee_resources",
+      "conname": "aee_resources_teacher_id_fkey",
+      "def": "FOREIGN KEY (teacher_id) REFERENCES profiles(id)"
+    },
+    {
+      "tabela": "aee_sessions",
+      "conname": "aee_sessions_teacher_id_fkey",
+      "def": "FOREIGN KEY (teacher_id) REFERENCES profiles(id)"
+    },
+    {
+      "tabela": "aee_student_links",
+      "conname": "aee_student_links_teacher_id_fkey",
+      "def": "FOREIGN KEY (teacher_id) REFERENCES profiles(id) ON DELETE CASCADE"
+    },
+    {
+      "tabela": "aee_student_profiles",
+      "conname": "aee_student_profiles_updated_by_fkey",
+      "def": "FOREIGN KEY (updated_by) REFERENCES profiles(id)"
+    },
+    {
+      "tabela": "announcement_reads",
+      "conname": "announcement_reads_profile_id_fkey",
+      "def": "FOREIGN KEY (profile_id) REFERENCES profiles(id) ON DELETE CASCADE"
+    },
+    {
+      "tabela": "announcement_recipients",
+      "conname": "announcement_recipients_recipient_id_fkey",
+      "def": "FOREIGN KEY (recipient_id) REFERENCES profiles(id) ON DELETE CASCADE"
+    },
+    {
+      "tabela": "announcements",
+      "conname": "announcements_published_by_fkey",
+      "def": "FOREIGN KEY (published_by) REFERENCES profiles(id)"
+    },
+    {
+      "tabela": "attendance",
+      "conname": "attendance_entered_by_fkey",
+      "def": "FOREIGN KEY (entered_by) REFERENCES profiles(id)"
+    },
+    {
+      "tabela": "bfr_coordination_messages",
+      "conname": "bfr_coordination_messages_sender_id_fkey",
+      "def": "FOREIGN KEY (sender_id) REFERENCES profiles(id) ON DELETE CASCADE"
+    },
+    {
+      "tabela": "bfr_coordination_threads",
+      "conname": "bfr_coordination_threads_assigned_to_fkey",
+      "def": "FOREIGN KEY (assigned_to) REFERENCES profiles(id) ON DELETE SET NULL"
+    },
+    {
+      "tabela": "bfr_coordination_threads",
+      "conname": "bfr_coordination_threads_guardian_id_fkey",
+      "def": "FOREIGN KEY (guardian_id) REFERENCES profiles(id) ON DELETE CASCADE"
+    },
+    {
+      "tabela": "bfr_grade_audit",
+      "conname": "bfr_grade_audit_changed_by_fkey",
+      "def": "FOREIGN KEY (changed_by) REFERENCES profiles(id) ON DELETE SET NULL"
+    },
+    {
+      "tabela": "bfr_grading_rules",
+      "conname": "bfr_grading_rules_updated_by_fkey",
+      "def": "FOREIGN KEY (updated_by) REFERENCES profiles(id) ON DELETE SET NULL"
+    },
+    {
+      "tabela": "bfr_lesson_attendance",
+      "conname": "bfr_lesson_attendance_entered_by_fkey",
+      "def": "FOREIGN KEY (entered_by) REFERENCES profiles(id) ON DELETE RESTRICT"
+    },
+    {
+      "tabela": "bfr_lesson_attendance",
+      "conname": "bfr_lesson_attendance_updated_by_fkey",
+      "def": "FOREIGN KEY (updated_by) REFERENCES profiles(id) ON DELETE RESTRICT"
+    },
+    {
+      "tabela": "bfr_lesson_attendance_audit",
+      "conname": "bfr_lesson_attendance_audit_changed_by_fkey",
+      "def": "FOREIGN KEY (changed_by) REFERENCES profiles(id) ON DELETE RESTRICT"
+    },
+    {
+      "tabela": "bfr_schedule_changes",
+      "conname": "bfr_schedule_changes_changed_by_fkey",
+      "def": "FOREIGN KEY (changed_by) REFERENCES profiles(id) ON DELETE SET NULL"
+    },
+    {
+      "tabela": "bfr_schedule_import_runs",
+      "conname": "bfr_schedule_import_runs_started_by_fkey",
+      "def": "FOREIGN KEY (started_by) REFERENCES profiles(id) ON DELETE SET NULL"
+    },
+    {
+      "tabela": "bfr_schedule_versions",
+      "conname": "bfr_schedule_versions_published_by_fkey",
+      "def": "FOREIGN KEY (published_by) REFERENCES profiles(id) ON DELETE SET NULL"
+    },
+    {
+      "tabela": "bfr_schedule_versions",
+      "conname": "bfr_schedule_versions_imported_by_fkey",
+      "def": "FOREIGN KEY (imported_by) REFERENCES profiles(id) ON DELETE SET NULL"
+    },
+    {
+      "tabela": "bfr_teacher_class_subjects",
+      "conname": "bfr_teacher_class_subjects_profile_id_fkey",
+      "def": "FOREIGN KEY (profile_id) REFERENCES profiles(id) ON DELETE CASCADE"
+    },
+    {
+      "tabela": "bfr_teacher_content",
+      "conname": "bfr_teacher_content_profile_id_fkey",
+      "def": "FOREIGN KEY (profile_id) REFERENCES profiles(id) ON DELETE CASCADE"
+    },
+    {
+      "tabela": "bfr_teacher_diary",
+      "conname": "bfr_teacher_diary_profile_id_fkey",
+      "def": "FOREIGN KEY (profile_id) REFERENCES profiles(id) ON DELETE CASCADE"
+    },
+    {
+      "tabela": "bfr_teacher_directory",
+      "conname": "bfr_teacher_directory_profile_id_fkey",
+      "def": "FOREIGN KEY (profile_id) REFERENCES profiles(id) ON DELETE SET NULL"
+    },
+    {
+      "tabela": "bfr_teacher_events",
+      "conname": "bfr_teacher_events_profile_id_fkey",
+      "def": "FOREIGN KEY (profile_id) REFERENCES profiles(id) ON DELETE CASCADE"
+    },
+    {
+      "tabela": "bfr_teacher_plans",
+      "conname": "bfr_teacher_plans_profile_id_fkey",
+      "def": "FOREIGN KEY (profile_id) REFERENCES profiles(id) ON DELETE CASCADE"
+    },
+    {
+      "tabela": "collaboration_notifications",
+      "conname": "collaboration_notifications_actor_id_fkey",
+      "def": "FOREIGN KEY (actor_id) REFERENCES profiles(id) ON DELETE SET NULL"
+    },
+    {
+      "tabela": "collaboration_notifications",
+      "conname": "collaboration_notifications_recipient_id_fkey",
+      "def": "FOREIGN KEY (recipient_id) REFERENCES profiles(id) ON DELETE CASCADE"
+    },
+    {
+      "tabela": "collaboration_project_members",
+      "conname": "collaboration_project_members_added_by_fkey",
+      "def": "FOREIGN KEY (added_by) REFERENCES profiles(id) ON DELETE SET NULL"
+    },
+    {
+      "tabela": "collaboration_project_members",
+      "conname": "collaboration_project_members_profile_id_fkey",
+      "def": "FOREIGN KEY (profile_id) REFERENCES profiles(id) ON DELETE CASCADE"
+    },
+    {
+      "tabela": "collaboration_project_stages",
+      "conname": "collaboration_project_stages_completed_by_fkey",
+      "def": "FOREIGN KEY (completed_by) REFERENCES profiles(id) ON DELETE SET NULL"
+    },
+    {
+      "tabela": "collaboration_projects",
+      "conname": "collaboration_projects_created_by_fkey",
+      "def": "FOREIGN KEY (created_by) REFERENCES profiles(id) ON DELETE RESTRICT"
+    },
+    {
+      "tabela": "collaboration_projects",
+      "conname": "collaboration_projects_owner_id_fkey",
+      "def": "FOREIGN KEY (owner_id) REFERENCES profiles(id) ON DELETE RESTRICT"
+    },
+    {
+      "tabela": "collaboration_task_attachments",
+      "conname": "collaboration_task_attachments_uploaded_by_fkey",
+      "def": "FOREIGN KEY (uploaded_by) REFERENCES profiles(id) ON DELETE RESTRICT"
+    },
+    {
+      "tabela": "collaboration_task_comments",
+      "conname": "collaboration_task_comments_author_id_fkey",
+      "def": "FOREIGN KEY (author_id) REFERENCES profiles(id) ON DELETE RESTRICT"
+    },
+    {
+      "tabela": "collaboration_task_members",
+      "conname": "collaboration_task_members_profile_id_fkey",
+      "def": "FOREIGN KEY (profile_id) REFERENCES profiles(id) ON DELETE CASCADE"
+    },
+    {
+      "tabela": "collaboration_task_members",
+      "conname": "collaboration_task_members_added_by_fkey",
+      "def": "FOREIGN KEY (added_by) REFERENCES profiles(id) ON DELETE SET NULL"
+    },
+    {
+      "tabela": "collaboration_tasks",
+      "conname": "collaboration_tasks_owner_id_fkey",
+      "def": "FOREIGN KEY (owner_id) REFERENCES profiles(id) ON DELETE RESTRICT"
+    },
+    {
+      "tabela": "collaboration_tasks",
+      "conname": "collaboration_tasks_completed_by_fkey",
+      "def": "FOREIGN KEY (completed_by) REFERENCES profiles(id) ON DELETE SET NULL"
+    },
+    {
+      "tabela": "collaboration_tasks",
+      "conname": "collaboration_tasks_updated_by_fkey",
+      "def": "FOREIGN KEY (updated_by) REFERENCES profiles(id) ON DELETE SET NULL"
+    },
+    {
+      "tabela": "collaboration_tasks",
+      "conname": "collaboration_tasks_created_by_fkey",
+      "def": "FOREIGN KEY (created_by) REFERENCES profiles(id) ON DELETE RESTRICT"
+    },
+    {
+      "tabela": "entry_restrictions",
+      "conname": "entry_restrictions_created_by_fkey",
+      "def": "FOREIGN KEY (created_by) REFERENCES profiles(id) ON DELETE RESTRICT"
+    },
+    {
+      "tabela": "entry_restrictions",
+      "conname": "entry_restrictions_resolved_by_fkey",
+      "def": "FOREIGN KEY (resolved_by) REFERENCES profiles(id)"
+    },
+    {
+      "tabela": "gate_checkins",
+      "conname": "gate_checkins_gatekeeper_id_fkey",
+      "def": "FOREIGN KEY (gatekeeper_id) REFERENCES profiles(id) ON DELETE RESTRICT"
+    },
+    {
+      "tabela": "gate_checkins",
+      "conname": "gate_checkins_guardian_confirmed_by_fkey",
+      "def": "FOREIGN KEY (guardian_confirmed_by) REFERENCES profiles(id)"
+    },
+    {
+      "tabela": "gate_entry_alerts",
+      "conname": "gate_entry_alerts_acknowledged_by_fkey",
+      "def": "FOREIGN KEY (acknowledged_by) REFERENCES profiles(id)"
+    },
+    {
+      "tabela": "gate_entry_alerts",
+      "conname": "gate_entry_alerts_gatekeeper_id_fkey",
+      "def": "FOREIGN KEY (gatekeeper_id) REFERENCES profiles(id) ON DELETE RESTRICT"
+    },
+    {
+      "tabela": "gate_entry_alerts",
+      "conname": "gate_entry_alerts_resolved_by_fkey",
+      "def": "FOREIGN KEY (resolved_by) REFERENCES profiles(id)"
+    },
+    {
+      "tabela": "gate_messages",
+      "conname": "gate_messages_sender_id_fkey",
+      "def": "FOREIGN KEY (sender_id) REFERENCES profiles(id)"
+    },
+    {
+      "tabela": "grades",
+      "conname": "grades_entered_by_fkey",
+      "def": "FOREIGN KEY (entered_by) REFERENCES profiles(id)"
+    },
+    {
+      "tabela": "guardian_students",
+      "conname": "guardian_students_linked_by_fkey",
+      "def": "FOREIGN KEY (linked_by) REFERENCES profiles(id) ON DELETE SET NULL"
+    },
+    {
+      "tabela": "guardian_students",
+      "conname": "guardian_students_profile_id_fkey",
+      "def": "FOREIGN KEY (profile_id) REFERENCES profiles(id) ON DELETE CASCADE"
+    },
+    {
+      "tabela": "instagram_accounts",
+      "conname": "instagram_accounts_created_by_fkey",
+      "def": "FOREIGN KEY (created_by) REFERENCES profiles(id) ON DELETE SET NULL"
+    },
+    {
+      "tabela": "instagram_posts",
+      "conname": "instagram_posts_reviewed_by_fkey",
+      "def": "FOREIGN KEY (reviewed_by) REFERENCES profiles(id) ON DELETE SET NULL"
+    },
+    {
+      "tabela": "internal_chat_message_reactions",
+      "conname": "internal_chat_message_reactions_profile_id_fkey",
+      "def": "FOREIGN KEY (profile_id) REFERENCES profiles(id) ON DELETE CASCADE"
+    },
+    {
+      "tabela": "internal_chat_message_reports",
+      "conname": "internal_chat_message_reports_reviewed_by_fkey",
+      "def": "FOREIGN KEY (reviewed_by) REFERENCES profiles(id) ON DELETE SET NULL"
+    },
+    {
+      "tabela": "internal_chat_message_reports",
+      "conname": "internal_chat_message_reports_reporter_id_fkey",
+      "def": "FOREIGN KEY (reporter_id) REFERENCES profiles(id) ON DELETE CASCADE"
+    },
+    {
+      "tabela": "internal_chat_messages",
+      "conname": "internal_chat_messages_sender_id_fkey",
+      "def": "FOREIGN KEY (sender_id) REFERENCES profiles(id) ON DELETE RESTRICT"
+    },
+    {
+      "tabela": "internal_chat_presence",
+      "conname": "internal_chat_presence_profile_id_fkey",
+      "def": "FOREIGN KEY (profile_id) REFERENCES profiles(id) ON DELETE CASCADE"
+    },
+    {
+      "tabela": "internal_chat_room_members",
+      "conname": "internal_chat_room_members_profile_id_fkey",
+      "def": "FOREIGN KEY (profile_id) REFERENCES profiles(id) ON DELETE CASCADE"
+    },
+    {
+      "tabela": "learning_action_items",
+      "conname": "learning_action_items_created_by_fkey",
+      "def": "FOREIGN KEY (created_by) REFERENCES profiles(id)"
+    },
+    {
+      "tabela": "learning_action_plans",
+      "conname": "learning_action_plans_responsible_id_fkey",
+      "def": "FOREIGN KEY (responsible_id) REFERENCES profiles(id)"
+    },
+    {
+      "tabela": "learning_action_plans",
+      "conname": "learning_action_plans_created_by_fkey",
+      "def": "FOREIGN KEY (created_by) REFERENCES profiles(id)"
+    },
+    {
+      "tabela": "learning_action_plans",
+      "conname": "learning_action_plans_approved_by_fkey",
+      "def": "FOREIGN KEY (approved_by) REFERENCES profiles(id)"
+    },
+    {
+      "tabela": "learning_assessment_results",
+      "conname": "learning_assessment_results_recorded_by_fkey",
+      "def": "FOREIGN KEY (recorded_by) REFERENCES profiles(id)"
+    },
+    {
+      "tabela": "learning_assessments",
+      "conname": "learning_assessments_created_by_fkey",
+      "def": "FOREIGN KEY (created_by) REFERENCES profiles(id)"
+    },
+    {
+      "tabela": "learning_evidence",
+      "conname": "learning_evidence_created_by_fkey",
+      "def": "FOREIGN KEY (created_by) REFERENCES profiles(id)"
+    },
+    {
+      "tabela": "learning_external_results",
+      "conname": "learning_external_results_imported_by_fkey",
+      "def": "FOREIGN KEY (imported_by) REFERENCES profiles(id)"
+    },
+    {
+      "tabela": "learning_goals",
+      "conname": "learning_goals_created_by_fkey",
+      "def": "FOREIGN KEY (created_by) REFERENCES profiles(id)"
+    },
+    {
+      "tabela": "learning_goals",
+      "conname": "learning_goals_teacher_id_fkey",
+      "def": "FOREIGN KEY (teacher_id) REFERENCES profiles(id)"
+    },
+    {
+      "tabela": "learning_indicator_settings",
+      "conname": "learning_indicator_settings_updated_by_fkey",
+      "def": "FOREIGN KEY (updated_by) REFERENCES profiles(id)"
+    },
+    {
+      "tabela": "learning_interventions",
+      "conname": "learning_interventions_created_by_fkey",
+      "def": "FOREIGN KEY (created_by) REFERENCES profiles(id)"
+    },
+    {
+      "tabela": "learning_meeting_actions",
+      "conname": "learning_meeting_actions_responsible_id_fkey",
+      "def": "FOREIGN KEY (responsible_id) REFERENCES profiles(id)"
+    },
+    {
+      "tabela": "learning_meetings",
+      "conname": "learning_meetings_created_by_fkey",
+      "def": "FOREIGN KEY (created_by) REFERENCES profiles(id)"
+    },
+    {
+      "tabela": "learning_notifications",
+      "conname": "learning_notifications_profile_id_fkey",
+      "def": "FOREIGN KEY (profile_id) REFERENCES profiles(id)"
+    },
+    {
+      "tabela": "learning_pedagogical_reports",
+      "conname": "learning_pedagogical_reports_generated_by_fkey",
+      "def": "FOREIGN KEY (generated_by) REFERENCES profiles(id)"
+    },
+    {
+      "tabela": "learning_skills",
+      "conname": "learning_skills_created_by_fkey",
+      "def": "FOREIGN KEY (created_by) REFERENCES profiles(id)"
+    },
+    {
+      "tabela": "learning_student_progress",
+      "conname": "learning_student_progress_recorded_by_fkey",
+      "def": "FOREIGN KEY (recorded_by) REFERENCES profiles(id)"
+    },
+    {
+      "tabela": "learning_subjects",
+      "conname": "learning_subjects_created_by_fkey",
+      "def": "FOREIGN KEY (created_by) REFERENCES profiles(id)"
+    },
+    {
+      "tabela": "learning_teacher_actions",
+      "conname": "learning_teacher_actions_teacher_id_fkey",
+      "def": "FOREIGN KEY (teacher_id) REFERENCES profiles(id)"
+    },
+    {
+      "tabela": "learning_teacher_actions",
+      "conname": "learning_teacher_actions_assigned_by_fkey",
+      "def": "FOREIGN KEY (assigned_by) REFERENCES profiles(id)"
+    },
+    {
+      "tabela": "literacy_activity_attempts",
+      "conname": "literacy_activity_attempts_profile_id_fkey",
+      "def": "FOREIGN KEY (profile_id) REFERENCES profiles(id) ON DELETE RESTRICT"
+    },
+    {
+      "tabela": "literacy_progress",
+      "conname": "literacy_progress_updated_by_fkey",
+      "def": "FOREIGN KEY (updated_by) REFERENCES profiles(id) ON DELETE SET NULL"
+    },
+    {
+      "tabela": "meeting_notifications",
+      "conname": "meeting_notifications_recipient_id_fkey",
+      "def": "FOREIGN KEY (recipient_id) REFERENCES profiles(id) ON DELETE CASCADE"
+    },
+    {
+      "tabela": "occurrences",
+      "conname": "occurrences_created_by_fkey",
+      "def": "FOREIGN KEY (created_by) REFERENCES profiles(id)"
+    },
+    {
+      "tabela": "photos",
+      "conname": "photos_uploaded_by_fkey",
+      "def": "FOREIGN KEY (uploaded_by) REFERENCES profiles(id)"
+    },
+    {
+      "tabela": "poll_votes",
+      "conname": "poll_votes_profile_id_fkey",
+      "def": "FOREIGN KEY (profile_id) REFERENCES profiles(id) ON DELETE CASCADE"
+    },
+    {
+      "tabela": "polls",
+      "conname": "polls_created_by_fkey",
+      "def": "FOREIGN KEY (created_by) REFERENCES profiles(id)"
+    },
+    {
+      "tabela": "project_photos",
+      "conname": "project_photos_uploaded_by_fkey",
+      "def": "FOREIGN KEY (uploaded_by) REFERENCES profiles(id)"
+    },
+    {
+      "tabela": "project_results",
+      "conname": "project_results_updated_by_fkey",
+      "def": "FOREIGN KEY (updated_by) REFERENCES profiles(id)"
+    },
+    {
+      "tabela": "projects",
+      "conname": "projects_created_by_fkey",
+      "def": "FOREIGN KEY (created_by) REFERENCES profiles(id)"
+    },
+    {
+      "tabela": "psychology_articulations",
+      "conname": "psychology_articulations_created_by_fkey",
+      "def": "FOREIGN KEY (created_by) REFERENCES profiles(id)"
+    },
+    {
+      "tabela": "psychology_articulations",
+      "conname": "psychology_articulations_teacher_id_fkey",
+      "def": "FOREIGN KEY (teacher_id) REFERENCES profiles(id)"
+    },
+    {
+      "tabela": "psychology_meetings",
+      "conname": "psychology_meetings_created_by_fkey",
+      "def": "FOREIGN KEY (created_by) REFERENCES profiles(id)"
+    },
+    {
+      "tabela": "psychology_preventive_actions",
+      "conname": "psychology_preventive_actions_created_by_fkey",
+      "def": "FOREIGN KEY (created_by) REFERENCES profiles(id)"
+    },
+    {
+      "tabela": "psychology_referrals",
+      "conname": "psychology_referrals_created_by_fkey",
+      "def": "FOREIGN KEY (created_by) REFERENCES profiles(id)"
+    },
+    {
+      "tabela": "psychology_referrals",
+      "conname": "psychology_referrals_responsible_id_fkey",
+      "def": "FOREIGN KEY (responsible_id) REFERENCES profiles(id)"
+    },
+    {
+      "tabela": "psychology_returns",
+      "conname": "psychology_returns_reviewed_by_fkey",
+      "def": "FOREIGN KEY (reviewed_by) REFERENCES profiles(id)"
+    },
+    {
+      "tabela": "psychology_returns",
+      "conname": "psychology_returns_created_by_fkey",
+      "def": "FOREIGN KEY (created_by) REFERENCES profiles(id)"
+    },
+    {
+      "tabela": "push_notify_throttle",
+      "conname": "push_notify_throttle_profile_id_fkey",
+      "def": "FOREIGN KEY (profile_id) REFERENCES profiles(id) ON DELETE CASCADE"
+    },
+    {
+      "tabela": "route_incidents",
+      "conname": "route_incidents_monitor_id_fkey",
+      "def": "FOREIGN KEY (monitor_id) REFERENCES profiles(id) ON DELETE RESTRICT"
+    },
+    {
+      "tabela": "school_activities",
+      "conname": "school_activities_published_by_fkey",
+      "def": "FOREIGN KEY (published_by) REFERENCES profiles(id) ON DELETE RESTRICT"
+    },
+    {
+      "tabela": "school_meeting_recipients",
+      "conname": "school_meeting_recipients_recipient_id_fkey",
+      "def": "FOREIGN KEY (recipient_id) REFERENCES profiles(id) ON DELETE CASCADE"
+    },
+    {
+      "tabela": "school_meetings",
+      "conname": "school_meetings_created_by_fkey",
+      "def": "FOREIGN KEY (created_by) REFERENCES profiles(id)"
+    },
+    {
+      "tabela": "school_videos",
+      "conname": "school_videos_created_by_fkey",
+      "def": "FOREIGN KEY (created_by) REFERENCES profiles(id) ON DELETE RESTRICT"
+    },
+    {
+      "tabela": "sports_athletes",
+      "conname": "sports_athletes_created_by_fkey",
+      "def": "FOREIGN KEY (created_by) REFERENCES profiles(id) ON DELETE SET NULL"
+    },
+    {
+      "tabela": "sports_audit_log",
+      "conname": "sports_audit_log_created_by_fkey",
+      "def": "FOREIGN KEY (created_by) REFERENCES profiles(id) ON DELETE SET NULL"
+    },
+    {
+      "tabela": "sports_championships",
+      "conname": "sports_championships_created_by_fkey",
+      "def": "FOREIGN KEY (created_by) REFERENCES profiles(id) ON DELETE SET NULL"
+    },
+    {
+      "tabela": "sports_match_events",
+      "conname": "sports_match_events_created_by_fkey",
+      "def": "FOREIGN KEY (created_by) REFERENCES profiles(id) ON DELETE SET NULL"
+    },
+    {
+      "tabela": "sports_match_followers",
+      "conname": "sports_match_followers_profile_id_fkey",
+      "def": "FOREIGN KEY (profile_id) REFERENCES profiles(id) ON DELETE CASCADE"
+    },
+    {
+      "tabela": "sports_matches",
+      "conname": "sports_matches_updated_by_fkey",
+      "def": "FOREIGN KEY (updated_by) REFERENCES profiles(id) ON DELETE SET NULL"
+    },
+    {
+      "tabela": "sports_matches",
+      "conname": "sports_matches_created_by_fkey",
+      "def": "FOREIGN KEY (created_by) REFERENCES profiles(id) ON DELETE SET NULL"
+    },
+    {
+      "tabela": "sports_schools",
+      "conname": "sports_schools_created_by_fkey",
+      "def": "FOREIGN KEY (created_by) REFERENCES profiles(id) ON DELETE SET NULL"
+    },
+    {
+      "tabela": "sports_teams",
+      "conname": "sports_teams_created_by_fkey",
+      "def": "FOREIGN KEY (created_by) REFERENCES profiles(id) ON DELETE SET NULL"
+    },
+    {
+      "tabela": "staff_announcement_reads",
+      "conname": "staff_announcement_reads_profile_id_fkey",
+      "def": "FOREIGN KEY (profile_id) REFERENCES profiles(id) ON DELETE CASCADE"
+    },
+    {
+      "tabela": "staff_announcements",
+      "conname": "staff_announcements_published_by_fkey",
+      "def": "FOREIGN KEY (published_by) REFERENCES profiles(id) ON DELETE RESTRICT"
+    },
+    {
+      "tabela": "staff_channel_members",
+      "conname": "staff_channel_members_added_by_fkey",
+      "def": "FOREIGN KEY (added_by) REFERENCES profiles(id) ON DELETE SET NULL"
+    },
+    {
+      "tabela": "staff_channel_members",
+      "conname": "staff_channel_members_profile_id_fkey",
+      "def": "FOREIGN KEY (profile_id) REFERENCES profiles(id) ON DELETE CASCADE"
+    },
+    {
+      "tabela": "staff_channels",
+      "conname": "staff_channels_created_by_fkey",
+      "def": "FOREIGN KEY (created_by) REFERENCES profiles(id) ON DELETE SET NULL"
+    },
+    {
+      "tabela": "staff_channels",
+      "conname": "staff_channels_archived_by_fkey",
+      "def": "FOREIGN KEY (archived_by) REFERENCES profiles(id) ON DELETE SET NULL"
+    },
+    {
+      "tabela": "staff_message_attachments",
+      "conname": "staff_message_attachments_uploaded_by_fkey",
+      "def": "FOREIGN KEY (uploaded_by) REFERENCES profiles(id) ON DELETE RESTRICT"
+    },
+    {
+      "tabela": "staff_message_forwards",
+      "conname": "staff_message_forwards_forwarded_by_fkey",
+      "def": "FOREIGN KEY (forwarded_by) REFERENCES profiles(id) ON DELETE RESTRICT"
+    },
+    {
+      "tabela": "staff_message_reads",
+      "conname": "staff_message_reads_profile_id_fkey",
+      "def": "FOREIGN KEY (profile_id) REFERENCES profiles(id) ON DELETE CASCADE"
+    },
+    {
+      "tabela": "staff_messages",
+      "conname": "staff_messages_sender_id_fkey",
+      "def": "FOREIGN KEY (sender_id) REFERENCES profiles(id) ON DELETE RESTRICT"
+    },
+    {
+      "tabela": "staff_messages",
+      "conname": "staff_messages_recipient_id_fkey",
+      "def": "FOREIGN KEY (recipient_id) REFERENCES profiles(id) ON DELETE RESTRICT"
+    },
+    {
+      "tabela": "staff_presence",
+      "conname": "staff_presence_profile_id_fkey",
+      "def": "FOREIGN KEY (profile_id) REFERENCES profiles(id) ON DELETE CASCADE"
+    },
+    {
+      "tabela": "staff_schools",
+      "conname": "staff_schools_profile_id_fkey",
+      "def": "FOREIGN KEY (profile_id) REFERENCES profiles(id) ON DELETE CASCADE"
+    },
+    {
+      "tabela": "staff_security_audit",
+      "conname": "staff_security_audit_actor_id_fkey",
+      "def": "FOREIGN KEY (actor_id) REFERENCES profiles(id) ON DELETE SET NULL"
+    },
+    {
+      "tabela": "student_avatar_configs",
+      "conname": "student_avatar_configs_profile_id_fkey",
+      "def": "FOREIGN KEY (profile_id) REFERENCES profiles(id) ON DELETE CASCADE"
+    },
+    {
+      "tabela": "student_avatar_configs",
+      "conname": "student_avatar_configs_updated_by_fkey",
+      "def": "FOREIGN KEY (updated_by) REFERENCES profiles(id)"
+    },
+    {
+      "tabela": "student_game_sessions",
+      "conname": "student_game_sessions_profile_id_fkey",
+      "def": "FOREIGN KEY (profile_id) REFERENCES profiles(id) ON DELETE CASCADE"
+    },
+    {
+      "tabela": "student_location_consent_log",
+      "conname": "student_location_consent_log_by_profile_id_fkey",
+      "def": "FOREIGN KEY (by_profile_id) REFERENCES profiles(id) ON DELETE CASCADE"
+    },
+    {
+      "tabela": "student_location_consent_log",
+      "conname": "student_location_consent_log_profile_id_fkey",
+      "def": "FOREIGN KEY (profile_id) REFERENCES profiles(id) ON DELETE CASCADE"
+    },
+    {
+      "tabela": "student_location_report_throttle",
+      "conname": "student_location_report_throttle_profile_id_fkey",
+      "def": "FOREIGN KEY (profile_id) REFERENCES profiles(id) ON DELETE CASCADE"
+    },
+    {
+      "tabela": "student_location_sharing",
+      "conname": "student_location_sharing_profile_id_fkey",
+      "def": "FOREIGN KEY (profile_id) REFERENCES profiles(id) ON DELETE CASCADE"
+    },
+    {
+      "tabela": "student_locations",
+      "conname": "student_locations_reported_by_profile_id_fkey",
+      "def": "FOREIGN KEY (reported_by_profile_id) REFERENCES profiles(id) ON DELETE SET NULL"
+    },
+    {
+      "tabela": "student_messages",
+      "conname": "student_messages_recipient_id_fkey",
+      "def": "FOREIGN KEY (recipient_id) REFERENCES profiles(id)"
+    },
+    {
+      "tabela": "student_messages",
+      "conname": "student_messages_sender_id_fkey",
+      "def": "FOREIGN KEY (sender_id) REFERENCES profiles(id)"
+    },
+    {
+      "tabela": "student_pairing_attempts",
+      "conname": "student_pairing_attempts_profile_id_fkey",
+      "def": "FOREIGN KEY (profile_id) REFERENCES profiles(id) ON DELETE CASCADE"
+    },
+    {
+      "tabela": "student_pairing_codes",
+      "conname": "student_pairing_codes_used_by_profile_id_fkey",
+      "def": "FOREIGN KEY (used_by_profile_id) REFERENCES profiles(id) ON DELETE SET NULL"
+    },
+    {
+      "tabela": "student_pairing_codes",
+      "conname": "student_pairing_codes_guardian_profile_id_fkey",
+      "def": "FOREIGN KEY (guardian_profile_id) REFERENCES profiles(id) ON DELETE CASCADE"
+    },
+    {
+      "tabela": "student_reading_levels",
+      "conname": "student_reading_levels_updated_by_fkey",
+      "def": "FOREIGN KEY (updated_by) REFERENCES profiles(id)"
+    },
+    {
+      "tabela": "students",
+      "conname": "students_student_profile_id_fkey",
+      "def": "FOREIGN KEY (student_profile_id) REFERENCES profiles(id) ON DELETE SET NULL"
+    },
+    {
+      "tabela": "supervision_action_plans",
+      "conname": "supervision_action_plans_responsible_id_fkey",
+      "def": "FOREIGN KEY (responsible_id) REFERENCES profiles(id)"
+    },
+    {
+      "tabela": "supervision_action_plans",
+      "conname": "supervision_action_plans_created_by_fkey",
+      "def": "FOREIGN KEY (created_by) REFERENCES profiles(id)"
+    },
+    {
+      "tabela": "supervision_alerts",
+      "conname": "supervision_alerts_acknowledged_by_fkey",
+      "def": "FOREIGN KEY (acknowledged_by) REFERENCES profiles(id)"
+    },
+    {
+      "tabela": "supervision_audit",
+      "conname": "supervision_audit_profile_id_fkey",
+      "def": "FOREIGN KEY (profile_id) REFERENCES profiles(id)"
+    },
+    {
+      "tabela": "supervision_requests",
+      "conname": "supervision_requests_created_by_fkey",
+      "def": "FOREIGN KEY (created_by) REFERENCES profiles(id)"
+    },
+    {
+      "tabela": "supervision_requests",
+      "conname": "supervision_requests_closed_by_fkey",
+      "def": "FOREIGN KEY (closed_by) REFERENCES profiles(id)"
+    },
+    {
+      "tabela": "supervision_response_attachments",
+      "conname": "supervision_response_attachments_created_by_fkey",
+      "def": "FOREIGN KEY (created_by) REFERENCES profiles(id)"
+    },
+    {
+      "tabela": "supervision_responses",
+      "conname": "supervision_responses_responsible_id_fkey",
+      "def": "FOREIGN KEY (responsible_id) REFERENCES profiles(id)"
+    },
+    {
+      "tabela": "supervision_responses",
+      "conname": "supervision_responses_created_by_fkey",
+      "def": "FOREIGN KEY (created_by) REFERENCES profiles(id)"
+    },
+    {
+      "tabela": "support_appointments",
+      "conname": "support_appointments_updated_by_fkey",
+      "def": "FOREIGN KEY (updated_by) REFERENCES profiles(id)"
+    },
+    {
+      "tabela": "support_appointments",
+      "conname": "support_appointments_created_by_fkey",
+      "def": "FOREIGN KEY (created_by) REFERENCES profiles(id)"
+    },
+    {
+      "tabela": "support_follow_ups",
+      "conname": "support_follow_ups_created_by_fkey",
+      "def": "FOREIGN KEY (created_by) REFERENCES profiles(id)"
+    },
+    {
+      "tabela": "support_messages",
+      "conname": "support_messages_recipient_id_fkey",
+      "def": "FOREIGN KEY (recipient_id) REFERENCES profiles(id)"
+    },
+    {
+      "tabela": "support_messages",
+      "conname": "support_messages_sender_id_fkey",
+      "def": "FOREIGN KEY (sender_id) REFERENCES profiles(id)"
+    },
+    {
+      "tabela": "support_plans",
+      "conname": "support_plans_created_by_fkey",
+      "def": "FOREIGN KEY (created_by) REFERENCES profiles(id)"
+    },
+    {
+      "tabela": "support_professionals",
+      "conname": "support_professionals_profile_id_fkey",
+      "def": "FOREIGN KEY (profile_id) REFERENCES profiles(id) ON DELETE SET NULL"
+    },
+    {
+      "tabela": "support_professionals",
+      "conname": "support_professionals_created_by_fkey",
+      "def": "FOREIGN KEY (created_by) REFERENCES profiles(id)"
+    },
+    {
+      "tabela": "support_requests",
+      "conname": "support_requests_requester_id_fkey",
+      "def": "FOREIGN KEY (requester_id) REFERENCES profiles(id)"
+    },
+    {
+      "tabela": "support_requests",
+      "conname": "support_requests_assigned_to_fkey",
+      "def": "FOREIGN KEY (assigned_to) REFERENCES profiles(id)"
+    },
+    {
+      "tabela": "support_services",
+      "conname": "support_services_created_by_fkey",
+      "def": "FOREIGN KEY (created_by) REFERENCES profiles(id)"
+    }
+  ]
+}

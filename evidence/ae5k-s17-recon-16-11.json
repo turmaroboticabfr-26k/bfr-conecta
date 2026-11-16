@@ -1,0 +1,1207 @@
+{
+  "em": "2026-11-16T04:23:43.451Z",
+  "autorizacao": "somente leitura",
+  "auth_s17": [
+    {
+      "id": "c2cb43eb-d1e6-4ba2-896c-639bb6370c76",
+      "email": "s17-coordinator@test.local"
+    },
+    {
+      "id": "341c2671-0b93-4639-85cf-fbaad72582ba",
+      "email": "s17-developer@test.local"
+    },
+    {
+      "id": "66046b00-af4b-4b1c-b094-dcaa5a6624b2",
+      "email": "s17-director@test.local"
+    },
+    {
+      "id": "d44be8ab-3ce9-47fc-8c0c-5278ebd72028",
+      "email": "s17-secretary@test.local"
+    }
+  ],
+  "supervision_audit": [
+    {
+      "id": "dbb04269-3132-471d-894e-950b8ae8af81",
+      "profile_id": "cc005f8c-fa2c-414f-8b04-73e828ec8216",
+      "email": "pc.maceedo@gmail.com",
+      "action": "INSERT",
+      "criado": "2026-11-07 01:39:13.870088+00"
+    },
+    {
+      "id": "bffaa452-9ae2-4407-b6fb-ad51242d94ea",
+      "profile_id": "cc005f8c-fa2c-414f-8b04-73e828ec8216",
+      "email": "pc.maceedo@gmail.com",
+      "action": "INSERT",
+      "criado": "2026-11-07 01:39:28.516551+00"
+    },
+    {
+      "id": "35a94c3f-61b9-4115-93f6-4e9d0670879d",
+      "profile_id": "cc005f8c-fa2c-414f-8b04-73e828ec8216",
+      "email": "pc.maceedo@gmail.com",
+      "action": "UPDATE",
+      "criado": "2026-11-07 01:39:28.516551+00"
+    },
+    {
+      "id": "1e6316ae-0420-46b2-abb1-55a41c41a100",
+      "profile_id": "d44be8ab-3ce9-47fc-8c0c-5278ebd72028",
+      "email": "s17-secretary@test.local",
+      "action": "INSERT",
+      "criado": "2026-11-07 02:27:18.360241+00"
+    },
+    {
+      "id": "217b0d4e-842a-42a7-b26b-4430f8124459",
+      "profile_id": "66046b00-af4b-4b1c-b094-dcaa5a6624b2",
+      "email": "s17-director@test.local",
+      "action": "INSERT",
+      "criado": "2026-11-07 02:27:34.977735+00"
+    },
+    {
+      "id": "0ad27468-4f9f-48db-b572-3642fce8b39b",
+      "profile_id": "d44be8ab-3ce9-47fc-8c0c-5278ebd72028",
+      "email": "s17-secretary@test.local",
+      "action": "UPDATE",
+      "criado": "2026-11-07 02:27:34.977735+00"
+    },
+    {
+      "id": "7fcf4977-68d5-42b3-b9aa-9b8502e7be9c",
+      "profile_id": "d44be8ab-3ce9-47fc-8c0c-5278ebd72028",
+      "email": "s17-secretary@test.local",
+      "action": "UPDATE",
+      "criado": "2026-11-07 02:27:45.069788+00"
+    },
+    {
+      "id": "454f429b-7dd4-4a54-a2e8-7113e5564562",
+      "profile_id": "d44be8ab-3ce9-47fc-8c0c-5278ebd72028",
+      "email": "s17-secretary@test.local",
+      "action": "INSERT",
+      "criado": "2026-11-07 02:28:18.512799+00"
+    },
+    {
+      "id": "36e988c0-3cb4-4bb8-86b5-42a07600d481",
+      "profile_id": "c2cb43eb-d1e6-4ba2-896c-639bb6370c76",
+      "email": "s17-coordinator@test.local",
+      "action": "INSERT",
+      "criado": "2026-11-07 02:28:45.173789+00"
+    }
+  ],
+  "fks_para_profiles": [
+    {
+      "tabela": "access_requests",
+      "coluna": "reviewed_by",
+      "conname": "access_requests_reviewed_by_fkey"
+    },
+    {
+      "tabela": "aee_activities",
+      "coluna": "created_by",
+      "conname": "aee_activities_created_by_fkey"
+    },
+    {
+      "tabela": "aee_activity_recommendations",
+      "coluna": "teacher_id",
+      "conname": "aee_activity_recommendations_teacher_id_fkey"
+    },
+    {
+      "tabela": "aee_adaptations",
+      "coluna": "created_by",
+      "conname": "aee_adaptations_created_by_fkey"
+    },
+    {
+      "tabela": "aee_adaptations",
+      "coluna": "teacher_id",
+      "conname": "aee_adaptations_teacher_id_fkey"
+    },
+    {
+      "tabela": "aee_attendance",
+      "coluna": "teacher_id",
+      "conname": "aee_attendance_teacher_id_fkey"
+    },
+    {
+      "tabela": "aee_game_assignments",
+      "coluna": "assigned_by",
+      "conname": "aee_game_assignments_assigned_by_fkey"
+    },
+    {
+      "tabela": "aee_game_assignments",
+      "coluna": "teacher_id",
+      "conname": "aee_game_assignments_teacher_id_fkey"
+    },
+    {
+      "tabela": "aee_game_catalog",
+      "coluna": "created_by",
+      "conname": "aee_game_catalog_created_by_fkey"
+    },
+    {
+      "tabela": "aee_game_favorites",
+      "coluna": "profile_id",
+      "conname": "aee_game_favorites_profile_id_fkey"
+    },
+    {
+      "tabela": "aee_game_sessions",
+      "coluna": "profile_id",
+      "conname": "aee_game_sessions_profile_id_fkey"
+    },
+    {
+      "tabela": "aee_materials",
+      "coluna": "created_by",
+      "conname": "aee_materials_created_by_fkey"
+    },
+    {
+      "tabela": "aee_materials",
+      "coluna": "teacher_id",
+      "conname": "aee_materials_teacher_id_fkey"
+    },
+    {
+      "tabela": "aee_messages",
+      "coluna": "sender_id",
+      "conname": "aee_messages_sender_id_fkey"
+    },
+    {
+      "tabela": "aee_messages",
+      "coluna": "recipient_id",
+      "conname": "aee_messages_recipient_id_fkey"
+    },
+    {
+      "tabela": "aee_plan_reviews",
+      "coluna": "created_by",
+      "conname": "aee_plan_reviews_created_by_fkey"
+    },
+    {
+      "tabela": "aee_plans",
+      "coluna": "updated_by",
+      "conname": "aee_plans_updated_by_fkey"
+    },
+    {
+      "tabela": "aee_plans",
+      "coluna": "created_by",
+      "conname": "aee_plans_created_by_fkey"
+    },
+    {
+      "tabela": "aee_progress",
+      "coluna": "teacher_id",
+      "conname": "aee_progress_teacher_id_fkey"
+    },
+    {
+      "tabela": "aee_resources",
+      "coluna": "created_by",
+      "conname": "aee_resources_created_by_fkey"
+    },
+    {
+      "tabela": "aee_resources",
+      "coluna": "teacher_id",
+      "conname": "aee_resources_teacher_id_fkey"
+    },
+    {
+      "tabela": "aee_sessions",
+      "coluna": "teacher_id",
+      "conname": "aee_sessions_teacher_id_fkey"
+    },
+    {
+      "tabela": "aee_student_links",
+      "coluna": "teacher_id",
+      "conname": "aee_student_links_teacher_id_fkey"
+    },
+    {
+      "tabela": "aee_student_profiles",
+      "coluna": "updated_by",
+      "conname": "aee_student_profiles_updated_by_fkey"
+    },
+    {
+      "tabela": "announcement_reads",
+      "coluna": "profile_id",
+      "conname": "announcement_reads_profile_id_fkey"
+    },
+    {
+      "tabela": "announcement_recipients",
+      "coluna": "recipient_id",
+      "conname": "announcement_recipients_recipient_id_fkey"
+    },
+    {
+      "tabela": "announcements",
+      "coluna": "published_by",
+      "conname": "announcements_published_by_fkey"
+    },
+    {
+      "tabela": "attendance",
+      "coluna": "entered_by",
+      "conname": "attendance_entered_by_fkey"
+    },
+    {
+      "tabela": "bfr_coordination_messages",
+      "coluna": "sender_id",
+      "conname": "bfr_coordination_messages_sender_id_fkey"
+    },
+    {
+      "tabela": "bfr_coordination_threads",
+      "coluna": "assigned_to",
+      "conname": "bfr_coordination_threads_assigned_to_fkey"
+    },
+    {
+      "tabela": "bfr_coordination_threads",
+      "coluna": "guardian_id",
+      "conname": "bfr_coordination_threads_guardian_id_fkey"
+    },
+    {
+      "tabela": "bfr_grade_audit",
+      "coluna": "changed_by",
+      "conname": "bfr_grade_audit_changed_by_fkey"
+    },
+    {
+      "tabela": "bfr_grading_rules",
+      "coluna": "updated_by",
+      "conname": "bfr_grading_rules_updated_by_fkey"
+    },
+    {
+      "tabela": "bfr_lesson_attendance",
+      "coluna": "entered_by",
+      "conname": "bfr_lesson_attendance_entered_by_fkey"
+    },
+    {
+      "tabela": "bfr_lesson_attendance",
+      "coluna": "updated_by",
+      "conname": "bfr_lesson_attendance_updated_by_fkey"
+    },
+    {
+      "tabela": "bfr_lesson_attendance_audit",
+      "coluna": "changed_by",
+      "conname": "bfr_lesson_attendance_audit_changed_by_fkey"
+    },
+    {
+      "tabela": "bfr_schedule_changes",
+      "coluna": "changed_by",
+      "conname": "bfr_schedule_changes_changed_by_fkey"
+    },
+    {
+      "tabela": "bfr_schedule_import_runs",
+      "coluna": "started_by",
+      "conname": "bfr_schedule_import_runs_started_by_fkey"
+    },
+    {
+      "tabela": "bfr_schedule_versions",
+      "coluna": "published_by",
+      "conname": "bfr_schedule_versions_published_by_fkey"
+    },
+    {
+      "tabela": "bfr_schedule_versions",
+      "coluna": "imported_by",
+      "conname": "bfr_schedule_versions_imported_by_fkey"
+    },
+    {
+      "tabela": "bfr_teacher_class_subjects",
+      "coluna": "profile_id",
+      "conname": "bfr_teacher_class_subjects_profile_id_fkey"
+    },
+    {
+      "tabela": "bfr_teacher_content",
+      "coluna": "profile_id",
+      "conname": "bfr_teacher_content_profile_id_fkey"
+    },
+    {
+      "tabela": "bfr_teacher_diary",
+      "coluna": "profile_id",
+      "conname": "bfr_teacher_diary_profile_id_fkey"
+    },
+    {
+      "tabela": "bfr_teacher_directory",
+      "coluna": "profile_id",
+      "conname": "bfr_teacher_directory_profile_id_fkey"
+    },
+    {
+      "tabela": "bfr_teacher_events",
+      "coluna": "profile_id",
+      "conname": "bfr_teacher_events_profile_id_fkey"
+    },
+    {
+      "tabela": "bfr_teacher_plans",
+      "coluna": "profile_id",
+      "conname": "bfr_teacher_plans_profile_id_fkey"
+    },
+    {
+      "tabela": "collaboration_notifications",
+      "coluna": "actor_id",
+      "conname": "collaboration_notifications_actor_id_fkey"
+    },
+    {
+      "tabela": "collaboration_notifications",
+      "coluna": "recipient_id",
+      "conname": "collaboration_notifications_recipient_id_fkey"
+    },
+    {
+      "tabela": "collaboration_project_members",
+      "coluna": "added_by",
+      "conname": "collaboration_project_members_added_by_fkey"
+    },
+    {
+      "tabela": "collaboration_project_members",
+      "coluna": "profile_id",
+      "conname": "collaboration_project_members_profile_id_fkey"
+    },
+    {
+      "tabela": "collaboration_project_stages",
+      "coluna": "completed_by",
+      "conname": "collaboration_project_stages_completed_by_fkey"
+    },
+    {
+      "tabela": "collaboration_projects",
+      "coluna": "created_by",
+      "conname": "collaboration_projects_created_by_fkey"
+    },
+    {
+      "tabela": "collaboration_projects",
+      "coluna": "owner_id",
+      "conname": "collaboration_projects_owner_id_fkey"
+    },
+    {
+      "tabela": "collaboration_task_attachments",
+      "coluna": "uploaded_by",
+      "conname": "collaboration_task_attachments_uploaded_by_fkey"
+    },
+    {
+      "tabela": "collaboration_task_comments",
+      "coluna": "author_id",
+      "conname": "collaboration_task_comments_author_id_fkey"
+    },
+    {
+      "tabela": "collaboration_task_members",
+      "coluna": "profile_id",
+      "conname": "collaboration_task_members_profile_id_fkey"
+    },
+    {
+      "tabela": "collaboration_task_members",
+      "coluna": "added_by",
+      "conname": "collaboration_task_members_added_by_fkey"
+    },
+    {
+      "tabela": "collaboration_tasks",
+      "coluna": "owner_id",
+      "conname": "collaboration_tasks_owner_id_fkey"
+    },
+    {
+      "tabela": "collaboration_tasks",
+      "coluna": "completed_by",
+      "conname": "collaboration_tasks_completed_by_fkey"
+    },
+    {
+      "tabela": "collaboration_tasks",
+      "coluna": "updated_by",
+      "conname": "collaboration_tasks_updated_by_fkey"
+    },
+    {
+      "tabela": "collaboration_tasks",
+      "coluna": "created_by",
+      "conname": "collaboration_tasks_created_by_fkey"
+    },
+    {
+      "tabela": "entry_restrictions",
+      "coluna": "created_by",
+      "conname": "entry_restrictions_created_by_fkey"
+    },
+    {
+      "tabela": "entry_restrictions",
+      "coluna": "resolved_by",
+      "conname": "entry_restrictions_resolved_by_fkey"
+    },
+    {
+      "tabela": "gate_checkins",
+      "coluna": "gatekeeper_id",
+      "conname": "gate_checkins_gatekeeper_id_fkey"
+    },
+    {
+      "tabela": "gate_checkins",
+      "coluna": "guardian_confirmed_by",
+      "conname": "gate_checkins_guardian_confirmed_by_fkey"
+    },
+    {
+      "tabela": "gate_entry_alerts",
+      "coluna": "acknowledged_by",
+      "conname": "gate_entry_alerts_acknowledged_by_fkey"
+    },
+    {
+      "tabela": "gate_entry_alerts",
+      "coluna": "gatekeeper_id",
+      "conname": "gate_entry_alerts_gatekeeper_id_fkey"
+    },
+    {
+      "tabela": "gate_entry_alerts",
+      "coluna": "resolved_by",
+      "conname": "gate_entry_alerts_resolved_by_fkey"
+    },
+    {
+      "tabela": "gate_messages",
+      "coluna": "sender_id",
+      "conname": "gate_messages_sender_id_fkey"
+    },
+    {
+      "tabela": "grades",
+      "coluna": "entered_by",
+      "conname": "grades_entered_by_fkey"
+    },
+    {
+      "tabela": "guardian_students",
+      "coluna": "linked_by",
+      "conname": "guardian_students_linked_by_fkey"
+    },
+    {
+      "tabela": "guardian_students",
+      "coluna": "profile_id",
+      "conname": "guardian_students_profile_id_fkey"
+    },
+    {
+      "tabela": "instagram_accounts",
+      "coluna": "created_by",
+      "conname": "instagram_accounts_created_by_fkey"
+    },
+    {
+      "tabela": "instagram_posts",
+      "coluna": "reviewed_by",
+      "conname": "instagram_posts_reviewed_by_fkey"
+    },
+    {
+      "tabela": "internal_chat_message_reactions",
+      "coluna": "profile_id",
+      "conname": "internal_chat_message_reactions_profile_id_fkey"
+    },
+    {
+      "tabela": "internal_chat_message_reports",
+      "coluna": "reviewed_by",
+      "conname": "internal_chat_message_reports_reviewed_by_fkey"
+    },
+    {
+      "tabela": "internal_chat_message_reports",
+      "coluna": "reporter_id",
+      "conname": "internal_chat_message_reports_reporter_id_fkey"
+    },
+    {
+      "tabela": "internal_chat_messages",
+      "coluna": "sender_id",
+      "conname": "internal_chat_messages_sender_id_fkey"
+    },
+    {
+      "tabela": "internal_chat_presence",
+      "coluna": "profile_id",
+      "conname": "internal_chat_presence_profile_id_fkey"
+    },
+    {
+      "tabela": "internal_chat_room_members",
+      "coluna": "profile_id",
+      "conname": "internal_chat_room_members_profile_id_fkey"
+    },
+    {
+      "tabela": "learning_action_items",
+      "coluna": "created_by",
+      "conname": "learning_action_items_created_by_fkey"
+    },
+    {
+      "tabela": "learning_action_plans",
+      "coluna": "responsible_id",
+      "conname": "learning_action_plans_responsible_id_fkey"
+    },
+    {
+      "tabela": "learning_action_plans",
+      "coluna": "created_by",
+      "conname": "learning_action_plans_created_by_fkey"
+    },
+    {
+      "tabela": "learning_action_plans",
+      "coluna": "approved_by",
+      "conname": "learning_action_plans_approved_by_fkey"
+    },
+    {
+      "tabela": "learning_assessment_results",
+      "coluna": "recorded_by",
+      "conname": "learning_assessment_results_recorded_by_fkey"
+    },
+    {
+      "tabela": "learning_assessments",
+      "coluna": "created_by",
+      "conname": "learning_assessments_created_by_fkey"
+    },
+    {
+      "tabela": "learning_evidence",
+      "coluna": "created_by",
+      "conname": "learning_evidence_created_by_fkey"
+    },
+    {
+      "tabela": "learning_external_results",
+      "coluna": "imported_by",
+      "conname": "learning_external_results_imported_by_fkey"
+    },
+    {
+      "tabela": "learning_goals",
+      "coluna": "created_by",
+      "conname": "learning_goals_created_by_fkey"
+    },
+    {
+      "tabela": "learning_goals",
+      "coluna": "teacher_id",
+      "conname": "learning_goals_teacher_id_fkey"
+    },
+    {
+      "tabela": "learning_indicator_settings",
+      "coluna": "updated_by",
+      "conname": "learning_indicator_settings_updated_by_fkey"
+    },
+    {
+      "tabela": "learning_interventions",
+      "coluna": "created_by",
+      "conname": "learning_interventions_created_by_fkey"
+    },
+    {
+      "tabela": "learning_meeting_actions",
+      "coluna": "responsible_id",
+      "conname": "learning_meeting_actions_responsible_id_fkey"
+    },
+    {
+      "tabela": "learning_meetings",
+      "coluna": "created_by",
+      "conname": "learning_meetings_created_by_fkey"
+    },
+    {
+      "tabela": "learning_notifications",
+      "coluna": "profile_id",
+      "conname": "learning_notifications_profile_id_fkey"
+    },
+    {
+      "tabela": "learning_pedagogical_reports",
+      "coluna": "generated_by",
+      "conname": "learning_pedagogical_reports_generated_by_fkey"
+    },
+    {
+      "tabela": "learning_skills",
+      "coluna": "created_by",
+      "conname": "learning_skills_created_by_fkey"
+    },
+    {
+      "tabela": "learning_student_progress",
+      "coluna": "recorded_by",
+      "conname": "learning_student_progress_recorded_by_fkey"
+    },
+    {
+      "tabela": "learning_subjects",
+      "coluna": "created_by",
+      "conname": "learning_subjects_created_by_fkey"
+    },
+    {
+      "tabela": "learning_teacher_actions",
+      "coluna": "teacher_id",
+      "conname": "learning_teacher_actions_teacher_id_fkey"
+    },
+    {
+      "tabela": "learning_teacher_actions",
+      "coluna": "assigned_by",
+      "conname": "learning_teacher_actions_assigned_by_fkey"
+    },
+    {
+      "tabela": "literacy_activity_attempts",
+      "coluna": "profile_id",
+      "conname": "literacy_activity_attempts_profile_id_fkey"
+    },
+    {
+      "tabela": "literacy_progress",
+      "coluna": "updated_by",
+      "conname": "literacy_progress_updated_by_fkey"
+    },
+    {
+      "tabela": "meeting_notifications",
+      "coluna": "recipient_id",
+      "conname": "meeting_notifications_recipient_id_fkey"
+    },
+    {
+      "tabela": "occurrences",
+      "coluna": "created_by",
+      "conname": "occurrences_created_by_fkey"
+    },
+    {
+      "tabela": "photos",
+      "coluna": "uploaded_by",
+      "conname": "photos_uploaded_by_fkey"
+    },
+    {
+      "tabela": "poll_votes",
+      "coluna": "profile_id",
+      "conname": "poll_votes_profile_id_fkey"
+    },
+    {
+      "tabela": "polls",
+      "coluna": "created_by",
+      "conname": "polls_created_by_fkey"
+    },
+    {
+      "tabela": "project_photos",
+      "coluna": "uploaded_by",
+      "conname": "project_photos_uploaded_by_fkey"
+    },
+    {
+      "tabela": "project_results",
+      "coluna": "updated_by",
+      "conname": "project_results_updated_by_fkey"
+    },
+    {
+      "tabela": "projects",
+      "coluna": "created_by",
+      "conname": "projects_created_by_fkey"
+    },
+    {
+      "tabela": "psychology_articulations",
+      "coluna": "created_by",
+      "conname": "psychology_articulations_created_by_fkey"
+    },
+    {
+      "tabela": "psychology_articulations",
+      "coluna": "teacher_id",
+      "conname": "psychology_articulations_teacher_id_fkey"
+    },
+    {
+      "tabela": "psychology_meetings",
+      "coluna": "created_by",
+      "conname": "psychology_meetings_created_by_fkey"
+    },
+    {
+      "tabela": "psychology_preventive_actions",
+      "coluna": "created_by",
+      "conname": "psychology_preventive_actions_created_by_fkey"
+    },
+    {
+      "tabela": "psychology_referrals",
+      "coluna": "created_by",
+      "conname": "psychology_referrals_created_by_fkey"
+    },
+    {
+      "tabela": "psychology_referrals",
+      "coluna": "responsible_id",
+      "conname": "psychology_referrals_responsible_id_fkey"
+    },
+    {
+      "tabela": "psychology_returns",
+      "coluna": "reviewed_by",
+      "conname": "psychology_returns_reviewed_by_fkey"
+    },
+    {
+      "tabela": "psychology_returns",
+      "coluna": "created_by",
+      "conname": "psychology_returns_created_by_fkey"
+    },
+    {
+      "tabela": "push_notify_throttle",
+      "coluna": "profile_id",
+      "conname": "push_notify_throttle_profile_id_fkey"
+    },
+    {
+      "tabela": "route_incidents",
+      "coluna": "monitor_id",
+      "conname": "route_incidents_monitor_id_fkey"
+    },
+    {
+      "tabela": "school_activities",
+      "coluna": "published_by",
+      "conname": "school_activities_published_by_fkey"
+    },
+    {
+      "tabela": "school_meeting_recipients",
+      "coluna": "recipient_id",
+      "conname": "school_meeting_recipients_recipient_id_fkey"
+    },
+    {
+      "tabela": "school_meetings",
+      "coluna": "created_by",
+      "conname": "school_meetings_created_by_fkey"
+    },
+    {
+      "tabela": "school_videos",
+      "coluna": "created_by",
+      "conname": "school_videos_created_by_fkey"
+    },
+    {
+      "tabela": "sports_athletes",
+      "coluna": "created_by",
+      "conname": "sports_athletes_created_by_fkey"
+    },
+    {
+      "tabela": "sports_audit_log",
+      "coluna": "created_by",
+      "conname": "sports_audit_log_created_by_fkey"
+    },
+    {
+      "tabela": "sports_championships",
+      "coluna": "created_by",
+      "conname": "sports_championships_created_by_fkey"
+    },
+    {
+      "tabela": "sports_match_events",
+      "coluna": "created_by",
+      "conname": "sports_match_events_created_by_fkey"
+    },
+    {
+      "tabela": "sports_match_followers",
+      "coluna": "profile_id",
+      "conname": "sports_match_followers_profile_id_fkey"
+    },
+    {
+      "tabela": "sports_matches",
+      "coluna": "updated_by",
+      "conname": "sports_matches_updated_by_fkey"
+    },
+    {
+      "tabela": "sports_matches",
+      "coluna": "created_by",
+      "conname": "sports_matches_created_by_fkey"
+    },
+    {
+      "tabela": "sports_schools",
+      "coluna": "created_by",
+      "conname": "sports_schools_created_by_fkey"
+    },
+    {
+      "tabela": "sports_teams",
+      "coluna": "created_by",
+      "conname": "sports_teams_created_by_fkey"
+    },
+    {
+      "tabela": "staff_announcement_reads",
+      "coluna": "profile_id",
+      "conname": "staff_announcement_reads_profile_id_fkey"
+    },
+    {
+      "tabela": "staff_announcements",
+      "coluna": "published_by",
+      "conname": "staff_announcements_published_by_fkey"
+    },
+    {
+      "tabela": "staff_channel_members",
+      "coluna": "added_by",
+      "conname": "staff_channel_members_added_by_fkey"
+    },
+    {
+      "tabela": "staff_channel_members",
+      "coluna": "profile_id",
+      "conname": "staff_channel_members_profile_id_fkey"
+    },
+    {
+      "tabela": "staff_channels",
+      "coluna": "created_by",
+      "conname": "staff_channels_created_by_fkey"
+    },
+    {
+      "tabela": "staff_channels",
+      "coluna": "archived_by",
+      "conname": "staff_channels_archived_by_fkey"
+    },
+    {
+      "tabela": "staff_message_attachments",
+      "coluna": "uploaded_by",
+      "conname": "staff_message_attachments_uploaded_by_fkey"
+    },
+    {
+      "tabela": "staff_message_forwards",
+      "coluna": "forwarded_by",
+      "conname": "staff_message_forwards_forwarded_by_fkey"
+    },
+    {
+      "tabela": "staff_message_reads",
+      "coluna": "profile_id",
+      "conname": "staff_message_reads_profile_id_fkey"
+    },
+    {
+      "tabela": "staff_messages",
+      "coluna": "sender_id",
+      "conname": "staff_messages_sender_id_fkey"
+    },
+    {
+      "tabela": "staff_messages",
+      "coluna": "recipient_id",
+      "conname": "staff_messages_recipient_id_fkey"
+    },
+    {
+      "tabela": "staff_presence",
+      "coluna": "profile_id",
+      "conname": "staff_presence_profile_id_fkey"
+    },
+    {
+      "tabela": "staff_schools",
+      "coluna": "profile_id",
+      "conname": "staff_schools_profile_id_fkey"
+    },
+    {
+      "tabela": "staff_security_audit",
+      "coluna": "actor_id",
+      "conname": "staff_security_audit_actor_id_fkey"
+    },
+    {
+      "tabela": "student_avatar_configs",
+      "coluna": "profile_id",
+      "conname": "student_avatar_configs_profile_id_fkey"
+    },
+    {
+      "tabela": "student_avatar_configs",
+      "coluna": "updated_by",
+      "conname": "student_avatar_configs_updated_by_fkey"
+    },
+    {
+      "tabela": "student_game_sessions",
+      "coluna": "profile_id",
+      "conname": "student_game_sessions_profile_id_fkey"
+    },
+    {
+      "tabela": "student_location_consent_log",
+      "coluna": "by_profile_id",
+      "conname": "student_location_consent_log_by_profile_id_fkey"
+    },
+    {
+      "tabela": "student_location_consent_log",
+      "coluna": "profile_id",
+      "conname": "student_location_consent_log_profile_id_fkey"
+    },
+    {
+      "tabela": "student_location_report_throttle",
+      "coluna": "profile_id",
+      "conname": "student_location_report_throttle_profile_id_fkey"
+    },
+    {
+      "tabela": "student_location_sharing",
+      "coluna": "profile_id",
+      "conname": "student_location_sharing_profile_id_fkey"
+    },
+    {
+      "tabela": "student_locations",
+      "coluna": "reported_by_profile_id",
+      "conname": "student_locations_reported_by_profile_id_fkey"
+    },
+    {
+      "tabela": "student_messages",
+      "coluna": "recipient_id",
+      "conname": "student_messages_recipient_id_fkey"
+    },
+    {
+      "tabela": "student_messages",
+      "coluna": "sender_id",
+      "conname": "student_messages_sender_id_fkey"
+    },
+    {
+      "tabela": "student_pairing_attempts",
+      "coluna": "profile_id",
+      "conname": "student_pairing_attempts_profile_id_fkey"
+    },
+    {
+      "tabela": "student_pairing_codes",
+      "coluna": "used_by_profile_id",
+      "conname": "student_pairing_codes_used_by_profile_id_fkey"
+    },
+    {
+      "tabela": "student_pairing_codes",
+      "coluna": "guardian_profile_id",
+      "conname": "student_pairing_codes_guardian_profile_id_fkey"
+    },
+    {
+      "tabela": "student_reading_levels",
+      "coluna": "updated_by",
+      "conname": "student_reading_levels_updated_by_fkey"
+    },
+    {
+      "tabela": "students",
+      "coluna": "student_profile_id",
+      "conname": "students_student_profile_id_fkey"
+    },
+    {
+      "tabela": "supervision_action_plans",
+      "coluna": "responsible_id",
+      "conname": "supervision_action_plans_responsible_id_fkey"
+    },
+    {
+      "tabela": "supervision_action_plans",
+      "coluna": "created_by",
+      "conname": "supervision_action_plans_created_by_fkey"
+    },
+    {
+      "tabela": "supervision_alerts",
+      "coluna": "acknowledged_by",
+      "conname": "supervision_alerts_acknowledged_by_fkey"
+    },
+    {
+      "tabela": "supervision_audit",
+      "coluna": "profile_id",
+      "conname": "supervision_audit_profile_id_fkey"
+    },
+    {
+      "tabela": "supervision_requests",
+      "coluna": "created_by",
+      "conname": "supervision_requests_created_by_fkey"
+    },
+    {
+      "tabela": "supervision_requests",
+      "coluna": "closed_by",
+      "conname": "supervision_requests_closed_by_fkey"
+    },
+    {
+      "tabela": "supervision_response_attachments",
+      "coluna": "created_by",
+      "conname": "supervision_response_attachments_created_by_fkey"
+    },
+    {
+      "tabela": "supervision_responses",
+      "coluna": "responsible_id",
+      "conname": "supervision_responses_responsible_id_fkey"
+    },
+    {
+      "tabela": "supervision_responses",
+      "coluna": "created_by",
+      "conname": "supervision_responses_created_by_fkey"
+    },
+    {
+      "tabela": "support_appointments",
+      "coluna": "updated_by",
+      "conname": "support_appointments_updated_by_fkey"
+    },
+    {
+      "tabela": "support_appointments",
+      "coluna": "created_by",
+      "conname": "support_appointments_created_by_fkey"
+    },
+    {
+      "tabela": "support_follow_ups",
+      "coluna": "created_by",
+      "conname": "support_follow_ups_created_by_fkey"
+    },
+    {
+      "tabela": "support_messages",
+      "coluna": "recipient_id",
+      "conname": "support_messages_recipient_id_fkey"
+    },
+    {
+      "tabela": "support_messages",
+      "coluna": "sender_id",
+      "conname": "support_messages_sender_id_fkey"
+    },
+    {
+      "tabela": "support_plans",
+      "coluna": "created_by",
+      "conname": "support_plans_created_by_fkey"
+    },
+    {
+      "tabela": "support_professionals",
+      "coluna": "profile_id",
+      "conname": "support_professionals_profile_id_fkey"
+    },
+    {
+      "tabela": "support_professionals",
+      "coluna": "created_by",
+      "conname": "support_professionals_created_by_fkey"
+    },
+    {
+      "tabela": "support_requests",
+      "coluna": "requester_id",
+      "conname": "support_requests_requester_id_fkey"
+    },
+    {
+      "tabela": "support_requests",
+      "coluna": "assigned_to",
+      "conname": "support_requests_assigned_to_fkey"
+    },
+    {
+      "tabela": "support_services",
+      "coluna": "created_by",
+      "conname": "support_services_created_by_fkey"
+    }
+  ],
+  "perfis_s17_esperados": [
+    {
+      "id": "c2cb43eb-d1e6-4ba2-896c-639bb6370c76",
+      "email": "s17-coordinator@test.local"
+    },
+    {
+      "id": "341c2671-0b93-4639-85cf-fbaad72582ba",
+      "email": "s17-developer@test.local"
+    },
+    {
+      "id": "66046b00-af4b-4b1c-b094-dcaa5a6624b2",
+      "email": "s17-director@test.local"
+    },
+    {
+      "id": "d44be8ab-3ce9-47fc-8c0c-5278ebd72028",
+      "email": "s17-secretary@test.local"
+    }
+  ],
+  "referencias": {
+    "access_requests.reviewed_by": 0,
+    "aee_activities.created_by": 0,
+    "aee_activity_recommendations.teacher_id": 0,
+    "aee_adaptations.created_by": 0,
+    "aee_adaptations.teacher_id": 0,
+    "aee_attendance.teacher_id": 0,
+    "aee_game_assignments.assigned_by": 0,
+    "aee_game_assignments.teacher_id": 0,
+    "aee_game_catalog.created_by": 0,
+    "aee_game_favorites.profile_id": 0,
+    "aee_game_sessions.profile_id": 0,
+    "aee_materials.created_by": 0,
+    "aee_materials.teacher_id": 0,
+    "aee_messages.sender_id": 0,
+    "aee_messages.recipient_id": 0,
+    "aee_plan_reviews.created_by": 0,
+    "aee_plans.updated_by": 0,
+    "aee_plans.created_by": 0,
+    "aee_progress.teacher_id": 0,
+    "aee_resources.created_by": 0,
+    "aee_resources.teacher_id": 0,
+    "aee_sessions.teacher_id": 0,
+    "aee_student_links.teacher_id": 0,
+    "aee_student_profiles.updated_by": 0,
+    "announcement_reads.profile_id": 0,
+    "announcement_recipients.recipient_id": 0,
+    "announcements.published_by": 0,
+    "attendance.entered_by": 0,
+    "bfr_coordination_messages.sender_id": 0,
+    "bfr_coordination_threads.assigned_to": 0,
+    "bfr_coordination_threads.guardian_id": 0,
+    "bfr_grade_audit.changed_by": 0,
+    "bfr_grading_rules.updated_by": 0,
+    "bfr_lesson_attendance.entered_by": 0,
+    "bfr_lesson_attendance.updated_by": 0,
+    "bfr_lesson_attendance_audit.changed_by": 0,
+    "bfr_schedule_changes.changed_by": 0,
+    "bfr_schedule_import_runs.started_by": 0,
+    "bfr_schedule_versions.published_by": 0,
+    "bfr_schedule_versions.imported_by": 0,
+    "bfr_teacher_class_subjects.profile_id": 0,
+    "bfr_teacher_content.profile_id": 0,
+    "bfr_teacher_diary.profile_id": 0,
+    "bfr_teacher_directory.profile_id": 0,
+    "bfr_teacher_events.profile_id": 0,
+    "bfr_teacher_plans.profile_id": 0,
+    "collaboration_notifications.actor_id": 0,
+    "collaboration_notifications.recipient_id": 0,
+    "collaboration_project_members.added_by": 0,
+    "collaboration_project_members.profile_id": 0,
+    "collaboration_project_stages.completed_by": 0,
+    "collaboration_projects.created_by": 0,
+    "collaboration_projects.owner_id": 0,
+    "collaboration_task_attachments.uploaded_by": 0,
+    "collaboration_task_comments.author_id": 0,
+    "collaboration_task_members.profile_id": 0,
+    "collaboration_task_members.added_by": 0,
+    "collaboration_tasks.owner_id": 0,
+    "collaboration_tasks.completed_by": 0,
+    "collaboration_tasks.updated_by": 0,
+    "collaboration_tasks.created_by": 0,
+    "entry_restrictions.created_by": 0,
+    "entry_restrictions.resolved_by": 0,
+    "gate_checkins.gatekeeper_id": 0,
+    "gate_checkins.guardian_confirmed_by": 0,
+    "gate_entry_alerts.acknowledged_by": 0,
+    "gate_entry_alerts.gatekeeper_id": 0,
+    "gate_entry_alerts.resolved_by": 0,
+    "gate_messages.sender_id": 0,
+    "grades.entered_by": 0,
+    "guardian_students.linked_by": 0,
+    "guardian_students.profile_id": 0,
+    "instagram_accounts.created_by": 0,
+    "instagram_posts.reviewed_by": 0,
+    "internal_chat_message_reactions.profile_id": 0,
+    "internal_chat_message_reports.reviewed_by": 0,
+    "internal_chat_message_reports.reporter_id": 0,
+    "internal_chat_messages.sender_id": 0,
+    "internal_chat_presence.profile_id": 0,
+    "internal_chat_room_members.profile_id": 0,
+    "learning_action_items.created_by": 0,
+    "learning_action_plans.responsible_id": 0,
+    "learning_action_plans.created_by": 0,
+    "learning_action_plans.approved_by": 0,
+    "learning_assessment_results.recorded_by": 0,
+    "learning_assessments.created_by": 0,
+    "learning_evidence.created_by": 0,
+    "learning_external_results.imported_by": 0,
+    "learning_goals.created_by": 0,
+    "learning_goals.teacher_id": 0,
+    "learning_indicator_settings.updated_by": 0,
+    "learning_interventions.created_by": 0,
+    "learning_meeting_actions.responsible_id": 0,
+    "learning_meetings.created_by": 0,
+    "learning_notifications.profile_id": 0,
+    "learning_pedagogical_reports.generated_by": 0,
+    "learning_skills.created_by": 0,
+    "learning_student_progress.recorded_by": 0,
+    "learning_subjects.created_by": 0,
+    "learning_teacher_actions.teacher_id": 0,
+    "learning_teacher_actions.assigned_by": 0,
+    "literacy_activity_attempts.profile_id": 0,
+    "literacy_progress.updated_by": 0,
+    "meeting_notifications.recipient_id": 0,
+    "occurrences.created_by": 0,
+    "photos.uploaded_by": 0,
+    "poll_votes.profile_id": 0,
+    "polls.created_by": 0,
+    "project_photos.uploaded_by": 0,
+    "project_results.updated_by": 0,
+    "projects.created_by": 0,
+    "psychology_articulations.created_by": 0,
+    "psychology_articulations.teacher_id": 0,
+    "psychology_meetings.created_by": 0,
+    "psychology_preventive_actions.created_by": 0,
+    "psychology_referrals.created_by": 0,
+    "psychology_referrals.responsible_id": 0,
+    "psychology_returns.reviewed_by": 0,
+    "psychology_returns.created_by": 0,
+    "push_notify_throttle.profile_id": 0,
+    "route_incidents.monitor_id": 0,
+    "school_activities.published_by": 0,
+    "school_meeting_recipients.recipient_id": 0,
+    "school_meetings.created_by": 0,
+    "school_videos.created_by": 0,
+    "sports_athletes.created_by": 0,
+    "sports_audit_log.created_by": 0,
+    "sports_championships.created_by": 0,
+    "sports_match_events.created_by": 0,
+    "sports_match_followers.profile_id": 0,
+    "sports_matches.updated_by": 0,
+    "sports_matches.created_by": 0,
+    "sports_schools.created_by": 0,
+    "sports_teams.created_by": 0,
+    "staff_announcement_reads.profile_id": 0,
+    "staff_announcements.published_by": 0,
+    "staff_channel_members.added_by": 0,
+    "staff_channel_members.profile_id": 0,
+    "staff_channels.created_by": 0,
+    "staff_channels.archived_by": 0,
+    "staff_message_attachments.uploaded_by": 0,
+    "staff_message_forwards.forwarded_by": 0,
+    "staff_message_reads.profile_id": 0,
+    "staff_messages.sender_id": 0,
+    "staff_messages.recipient_id": 0,
+    "staff_presence.profile_id": 0,
+    "staff_schools.profile_id": 0,
+    "staff_security_audit.actor_id": 0,
+    "student_avatar_configs.profile_id": 0,
+    "student_avatar_configs.updated_by": 0,
+    "student_game_sessions.profile_id": 0,
+    "student_location_consent_log.by_profile_id": 0,
+    "student_location_consent_log.profile_id": 0,
+    "student_location_report_throttle.profile_id": 0,
+    "student_location_sharing.profile_id": 0,
+    "student_locations.reported_by_profile_id": 0,
+    "student_messages.recipient_id": 0,
+    "student_messages.sender_id": 0,
+    "student_pairing_attempts.profile_id": 0,
+    "student_pairing_codes.used_by_profile_id": 0,
+    "student_pairing_codes.guardian_profile_id": 0,
+    "student_reading_levels.updated_by": 0,
+    "students.student_profile_id": 0,
+    "supervision_action_plans.responsible_id": 0,
+    "supervision_action_plans.created_by": 0,
+    "supervision_alerts.acknowledged_by": 0,
+    "supervision_audit.profile_id": 6,
+    "supervision_requests.created_by": 0,
+    "supervision_requests.closed_by": 0,
+    "supervision_response_attachments.created_by": 0,
+    "supervision_responses.responsible_id": 0,
+    "supervision_responses.created_by": 0,
+    "support_appointments.updated_by": 0,
+    "support_appointments.created_by": 0,
+    "support_follow_ups.created_by": 0,
+    "support_messages.recipient_id": 0,
+    "support_messages.sender_id": 0,
+    "support_plans.created_by": 0,
+    "support_professionals.profile_id": 0,
+    "support_professionals.created_by": 0,
+    "support_requests.requester_id": 0,
+    "support_requests.assigned_to": 0,
+    "support_services.created_by": 0
+  }
+}

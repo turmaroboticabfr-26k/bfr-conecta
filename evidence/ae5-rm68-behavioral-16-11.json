@@ -1,0 +1,93 @@
+{
+  "em": "2026-11-16T04:20:30.241Z",
+  "ok_nomeado": "(a) Mint + s20-behavioral — seleção do usuário, 16/11",
+  "escopo": "11 policies PUBLIC do RM-6.8 + 5 vistas sports_public_* fechadas (invoker)",
+  "contas_mintadas": [
+    "ae5-director@bfr.test",
+    "ae5-secretary@bfr.test",
+    "ae5-pedagogical@bfr.test",
+    "ae5-student@bfr.test"
+  ],
+  "senha_gerada_por_execucao": true,
+  "sessoes": "C:/Users/pcmac/.qoder/tmp/ae5-sessions-1794802710260.json",
+  "counts0": {
+    "grades": 112,
+    "attendance": 25,
+    "access_requests": 12,
+    "occurrences": 0,
+    "sports_schools": 6
+  },
+  "ids_fixture": {
+    "grades": [
+      "a7df091c-2d86-40d2-8104-5ac6e9a57eaa",
+      "4ee3682e-72c9-44c3-842b-f0a0c2b72c6a",
+      "ac4a7646-a0f1-4a57-b7e4-b67b73f7f048",
+      "3fb3a08a-6f6d-4f9a-9893-a98140a87dad",
+      "aa915e40-6546-4be1-82a8-0dbbe8a9664e"
+    ],
+    "attendance": [
+      "916e48c7-5893-48ef-b152-4aa4b490cfbc",
+      "8c387d12-3205-4ad6-822d-cfbb2736a3c5",
+      "1f2b8da7-f1a7-421e-bb08-74c6baafde7f",
+      "62fca128-92bb-4b36-8129-71d9c20ba073"
+    ],
+    "occurrences": [
+      "0df2f87b-b3e3-42f7-98e1-e769c777ed22",
+      "39670e44-6ef1-46fe-84aa-dc6bd6ce5139",
+      "26f69967-796f-4ea0-82d0-06b9b5a164cb"
+    ],
+    "access_requests": [
+      "fd4e2ef7-776d-46db-bd57-15f838cfb08f"
+    ],
+    "students": [
+      "bc390deb-00fa-415c-a3a0-cadd04d02268",
+      "4c353d8e-6339-4d16-b254-c3e9a26552be"
+    ],
+    "classes": [
+      "22eafed9-6401-48cf-8620-928fa9192c07",
+      "be27faaf-dbc0-43de-a014-7f9c7bb49d64"
+    ],
+    "staff_schools": [
+      "d289f804-30b5-4766-8254-34d7d32a9800",
+      "c9e22be2-dee8-4fa2-abff-c320557a6b21"
+    ],
+    "teacher_class_subjects": [
+      "54783e33-9bdf-4f71-bc6c-18175c1a9481"
+    ],
+    "schools": [
+      "90a62aba-94dc-470b-82ae-1d69808d472a",
+      "3f87e144-2c90-4499-a30c-5494e211866e"
+    ],
+    "sports_schools": [
+      "90a62aba-94dc-470b-82ae-1d69808d472a",
+      "3f87e144-2c90-4499-a30c-5494e211866e"
+    ],
+    "profiles": [
+      "00095075-de61-4ba3-b035-da78231f3e60",
+      "939e667f-fdf1-4bce-8e2f-72e48b84dfe3",
+      "b5a1a65b-6ae1-4069-a46b-f2a4d2e96e7c",
+      "8d165251-2c07-4c72-a151-907c7b6734dc"
+    ]
+  },
+  "limites_honestos": [
+    "ramo POSITIVO de access_requests_manage/staff_insert exige papel developer (5.ª conta, fora do OK); coberto pela conferência de texto 44/0",
+    "delta de linhas do fecho das vistas é inobservável onde a tabela-base está vazia; excepção medida: sports_public_schools",
+    "occurrences reais = 0: equivalência do wrapper do director provada com fixture (TRUE em occA, FALSE em occB)"
+  ],
+  "achados_behaviorais": [
+    "grades NÃO tem policy de UPDATE no conjunto PUBLIC do RM-6.8 (só insert/select/delete): PATCH de QUALQUER papel é 200 com 0 linhas (default deny) — atualização de nota só por via privilegiada",
+    "trigger bfr_prevent_duplicate_grade (BEFORE INSERT OR UPDATE) dispara ANTES do RLS: POST duplicado devolve 409 mesmo para papel que o RLS negaria (G6b, student)",
+    "attendance tem UNIQUE (student_id, attendance_date) avaliado DEPOIS do RLS: papel negado vê 403 (A7), papel permitido em duplicata vê 409 (prova de ordem de avaliação)"
+  ],
+  "pegada_pre": {
+    "total": 182,
+    "hash": "ecf3403210b8091209cb8584a4f1da51"
+  },
+  "pegada_pos": {
+    "total": 182,
+    "hash": "ecf3403210b8091209cb8584a4f1da51"
+  },
+  "portoes": 123,
+  "falhas": [],
+  "veredito": "AE5_BEHAVIORAL_VERDE"
+}

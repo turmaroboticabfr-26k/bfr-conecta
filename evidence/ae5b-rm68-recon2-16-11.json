@@ -1,0 +1,332 @@
+{
+  "em": "2026-11-16T03:49:08.569Z",
+  "autorizacao": "somente leitura",
+  "funcoes": [
+    {
+      "nome": "bfr_is_education_supervisor",
+      "args": "",
+      "def": "CREATE OR REPLACE FUNCTION public.bfr_is_education_supervisor()\n RETURNS boolean\n LANGUAGE sql\n STABLE SECURITY DEFINER\n SET search_path TO 'public'\nAS $function$\n  SELECT COALESCE(\n    (SELECT true FROM public.profiles \n     WHERE id = auth.uid() AND role = 'education_supervisor'::account_role),\n    false\n  );\n$function$\n"
+    },
+    {
+      "nome": "bfr_is_schedule_manager",
+      "args": "",
+      "def": "CREATE OR REPLACE FUNCTION public.bfr_is_schedule_manager()\n RETURNS boolean\n LANGUAGE sql\n STABLE SECURITY DEFINER\n SET search_path TO 'public'\nAS $function$\n  select coalesce(public.current_role()::text in ('developer','coordinator','director','secretary'),false)\n$function$\n"
+    },
+    {
+      "nome": "bfr_pedagogical_can_manage_student",
+      "args": "p_student_id uuid, p_subject text",
+      "def": "CREATE OR REPLACE FUNCTION public.bfr_pedagogical_can_manage_student(p_student_id uuid, p_subject text DEFAULT NULL::text)\n RETURNS boolean\n LANGUAGE sql\n STABLE SECURITY DEFINER\n SET search_path TO 'public'\nAS $function$\n  select exists (\n    select 1\n    from public.students s\n    join public.bfr_teacher_class_subjects link\n      on link.class_id = s.class_id\n     and link.profile_id = auth.uid()\n     and link.active\n    where s.id = p_student_id\n      and s.active\n      and (\n        p_subject is null\n        or public.bfr_subject_matches(link.subject, p_subject)\n      )\n  )\n$function$\n"
+    },
+    {
+      "nome": "bfr_teacher_can_manage_student",
+      "args": "p_student_id uuid, p_subject text",
+      "def": "CREATE OR REPLACE FUNCTION public.bfr_teacher_can_manage_student(p_student_id uuid, p_subject text DEFAULT NULL::text)\n RETURNS boolean\n LANGUAGE sql\n STABLE SECURITY DEFINER\n SET search_path TO 'public'\nAS $function$\n  select exists (\n    select 1 from public.students s\n    join public.bfr_schedule_entries e on e.class_id=s.class_id\n    join public.bfr_schedule_versions v on v.id=e.version_id and v.status='published'\n    join public.bfr_teacher_directory t on t.id=e.teacher_id and t.profile_id=auth.uid() and t.active\n    where s.id=p_student_id and s.active\n      and (p_subject is null or public.bfr_subject_matches(e.subject_name,p_subject))\n  )\n$function$\n"
+    },
+    {
+      "nome": "is_aee",
+      "args": "",
+      "def": "CREATE OR REPLACE FUNCTION public.is_aee()\n RETURNS boolean\n LANGUAGE sql\n STABLE SECURITY DEFINER\n SET search_path TO ''\nAS $function$\r\n                    select coalesce(public.current_role() = 'aee', false)\r\n                    $function$\n"
+    }
+  ],
+  "colunas": [
+    {
+      "table_name": "classes",
+      "column_name": "id",
+      "data_type": "uuid",
+      "is_nullable": "NO",
+      "column_default": "gen_random_uuid()"
+    },
+    {
+      "table_name": "classes",
+      "column_name": "year",
+      "data_type": "smallint",
+      "is_nullable": "NO",
+      "column_default": null
+    },
+    {
+      "table_name": "classes",
+      "column_name": "class_code",
+      "data_type": "text",
+      "is_nullable": "NO",
+      "column_default": null
+    },
+    {
+      "table_name": "classes",
+      "column_name": "shift",
+      "data_type": "text",
+      "is_nullable": "NO",
+      "column_default": null
+    },
+    {
+      "table_name": "classes",
+      "column_name": "school_id",
+      "data_type": "uuid",
+      "is_nullable": "NO",
+      "column_default": null
+    },
+    {
+      "table_name": "guardian_students",
+      "column_name": "profile_id",
+      "data_type": "uuid",
+      "is_nullable": "NO",
+      "column_default": null
+    },
+    {
+      "table_name": "guardian_students",
+      "column_name": "student_id",
+      "data_type": "uuid",
+      "is_nullable": "NO",
+      "column_default": null
+    },
+    {
+      "table_name": "guardian_students",
+      "column_name": "relationship",
+      "data_type": "text",
+      "is_nullable": "NO",
+      "column_default": "'responsável'::text"
+    },
+    {
+      "table_name": "guardian_students",
+      "column_name": "linked_by",
+      "data_type": "uuid",
+      "is_nullable": "YES",
+      "column_default": null
+    },
+    {
+      "table_name": "guardian_students",
+      "column_name": "linked_at",
+      "data_type": "timestamp with time zone",
+      "is_nullable": "YES",
+      "column_default": null
+    },
+    {
+      "table_name": "schools",
+      "column_name": "id",
+      "data_type": "uuid",
+      "is_nullable": "NO",
+      "column_default": "gen_random_uuid()"
+    },
+    {
+      "table_name": "schools",
+      "column_name": "name",
+      "data_type": "text",
+      "is_nullable": "NO",
+      "column_default": null
+    },
+    {
+      "table_name": "schools",
+      "column_name": "code",
+      "data_type": "text",
+      "is_nullable": "YES",
+      "column_default": null
+    },
+    {
+      "table_name": "schools",
+      "column_name": "address_line",
+      "data_type": "text",
+      "is_nullable": "YES",
+      "column_default": null
+    },
+    {
+      "table_name": "schools",
+      "column_name": "city",
+      "data_type": "text",
+      "is_nullable": "YES",
+      "column_default": null
+    },
+    {
+      "table_name": "schools",
+      "column_name": "state",
+      "data_type": "text",
+      "is_nullable": "YES",
+      "column_default": null
+    },
+    {
+      "table_name": "schools",
+      "column_name": "phase",
+      "data_type": "text",
+      "is_nullable": "YES",
+      "column_default": null
+    },
+    {
+      "table_name": "schools",
+      "column_name": "active",
+      "data_type": "boolean",
+      "is_nullable": "NO",
+      "column_default": "true"
+    },
+    {
+      "table_name": "schools",
+      "column_name": "created_at",
+      "data_type": "timestamp with time zone",
+      "is_nullable": "NO",
+      "column_default": "now()"
+    },
+    {
+      "table_name": "schools",
+      "column_name": "updated_at",
+      "data_type": "timestamp with time zone",
+      "is_nullable": "NO",
+      "column_default": "now()"
+    }
+  ],
+  "fks": [
+    {
+      "table_name": "classes",
+      "column_name": "school_id",
+      "ref_tabela": "schools",
+      "ref_coluna": "id"
+    },
+    {
+      "table_name": "guardian_students",
+      "column_name": "linked_by",
+      "ref_tabela": "profiles",
+      "ref_coluna": "id"
+    },
+    {
+      "table_name": "guardian_students",
+      "column_name": "profile_id",
+      "ref_tabela": "profiles",
+      "ref_coluna": "id"
+    },
+    {
+      "table_name": "guardian_students",
+      "column_name": "student_id",
+      "ref_tabela": "students",
+      "ref_coluna": "id"
+    }
+  ],
+  "grants_vistas_e_bases": [
+    {
+      "relname": "sports_athletes",
+      "papel": "anon",
+      "sel": true
+    },
+    {
+      "relname": "sports_athletes",
+      "papel": "authenticated",
+      "sel": true
+    },
+    {
+      "relname": "sports_match_events",
+      "papel": "anon",
+      "sel": true
+    },
+    {
+      "relname": "sports_match_events",
+      "papel": "authenticated",
+      "sel": true
+    },
+    {
+      "relname": "sports_matches",
+      "papel": "anon",
+      "sel": true
+    },
+    {
+      "relname": "sports_matches",
+      "papel": "authenticated",
+      "sel": true
+    },
+    {
+      "relname": "sports_public_athletes",
+      "papel": "anon",
+      "sel": false
+    },
+    {
+      "relname": "sports_public_athletes",
+      "papel": "authenticated",
+      "sel": true
+    },
+    {
+      "relname": "sports_public_match_events",
+      "papel": "anon",
+      "sel": false
+    },
+    {
+      "relname": "sports_public_match_events",
+      "papel": "authenticated",
+      "sel": true
+    },
+    {
+      "relname": "sports_public_matches",
+      "papel": "anon",
+      "sel": false
+    },
+    {
+      "relname": "sports_public_matches",
+      "papel": "authenticated",
+      "sel": true
+    },
+    {
+      "relname": "sports_public_schools",
+      "papel": "anon",
+      "sel": false
+    },
+    {
+      "relname": "sports_public_schools",
+      "papel": "authenticated",
+      "sel": true
+    },
+    {
+      "relname": "sports_public_teams",
+      "papel": "anon",
+      "sel": false
+    },
+    {
+      "relname": "sports_public_teams",
+      "papel": "authenticated",
+      "sel": true
+    },
+    {
+      "relname": "sports_schools",
+      "papel": "anon",
+      "sel": true
+    },
+    {
+      "relname": "sports_schools",
+      "papel": "authenticated",
+      "sel": true
+    },
+    {
+      "relname": "sports_teams",
+      "papel": "anon",
+      "sel": true
+    },
+    {
+      "relname": "sports_teams",
+      "papel": "authenticated",
+      "sel": true
+    }
+  ],
+  "modos_vistas": [
+    {
+      "relname": "sports_public_athletes",
+      "modo": "invoker"
+    },
+    {
+      "relname": "sports_public_match_events",
+      "modo": "invoker"
+    },
+    {
+      "relname": "sports_public_matches",
+      "modo": "invoker"
+    },
+    {
+      "relname": "sports_public_schools",
+      "modo": "invoker"
+    },
+    {
+      "relname": "sports_public_teams",
+      "modo": "invoker"
+    }
+  ],
+  "contagens": [
+    {
+      "contagens": {
+        "classes": 27,
+        "schools": 6,
+        "guardian_students": 1
+      }
+    }
+  ]
+}

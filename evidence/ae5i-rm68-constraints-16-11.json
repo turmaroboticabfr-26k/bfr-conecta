@@ -1,0 +1,85 @@
+{
+  "em": "2026-11-16T04:15:17.523Z",
+  "autorizacao": "somente leitura",
+  "constraints": [
+    {
+      "tabela": "attendance",
+      "conname": "attendance_entered_by_fkey",
+      "contype": "f",
+      "def": "FOREIGN KEY (entered_by) REFERENCES profiles(id)"
+    },
+    {
+      "tabela": "attendance",
+      "conname": "attendance_pkey",
+      "contype": "p",
+      "def": "PRIMARY KEY (id)"
+    },
+    {
+      "tabela": "attendance",
+      "conname": "attendance_status_check",
+      "contype": "c",
+      "def": "CHECK ((status = ANY (ARRAY['present'::text, 'absent'::text, 'late'::text, 'justified'::text])))"
+    },
+    {
+      "tabela": "attendance",
+      "conname": "attendance_student_id_attendance_date_key",
+      "contype": "u",
+      "def": "UNIQUE (student_id, attendance_date)"
+    },
+    {
+      "tabela": "attendance",
+      "conname": "attendance_student_id_fkey",
+      "contype": "f",
+      "def": "FOREIGN KEY (student_id) REFERENCES students(id) ON DELETE CASCADE"
+    },
+    {
+      "tabela": "grades",
+      "conname": "grades_category_check",
+      "contype": "c",
+      "def": "CHECK (((category IS NULL) OR (category = ANY (ARRAY['comportamento'::text, 'atividades'::text, 'prova'::text, 'trabalho'::text]))))"
+    },
+    {
+      "tabela": "grades",
+      "conname": "grades_entered_by_fkey",
+      "contype": "f",
+      "def": "FOREIGN KEY (entered_by) REFERENCES profiles(id)"
+    },
+    {
+      "tabela": "grades",
+      "conname": "grades_pkey",
+      "contype": "p",
+      "def": "PRIMARY KEY (id)"
+    },
+    {
+      "tabela": "grades",
+      "conname": "grades_score_check",
+      "contype": "c",
+      "def": "CHECK (((score >= (0)::numeric) AND (score <= (10)::numeric)))"
+    },
+    {
+      "tabela": "grades",
+      "conname": "grades_student_id_fkey",
+      "contype": "f",
+      "def": "FOREIGN KEY (student_id) REFERENCES students(id) ON DELETE CASCADE"
+    },
+    {
+      "tabela": "grades",
+      "conname": "grades_term_bimestre_check",
+      "contype": "c",
+      "def": "CHECK (((term >= 1) AND (term <= 4)))"
+    },
+    {
+      "tabela": "grades",
+      "conname": "grades_term_check",
+      "contype": "c",
+      "def": "CHECK (((term >= 1) AND (term <= 4)))"
+    }
+  ],
+  "triggers": [
+    {
+      "tabela": "grades",
+      "tgname": "bfr_prevent_duplicate_grade",
+      "def": "CREATE TRIGGER bfr_prevent_duplicate_grade BEFORE INSERT OR UPDATE ON public.grades FOR EACH ROW EXECUTE FUNCTION bfr_prevent_duplicate_grade()"
+    }
+  ]
+}

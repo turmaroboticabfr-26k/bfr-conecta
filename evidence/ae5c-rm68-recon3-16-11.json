@@ -1,0 +1,85 @@
+{
+  "em": "2026-11-16T03:51:07.614Z",
+  "autorizacao": "somente leitura",
+  "funcoes": [
+    {
+      "nome": "bfr_subject_matches",
+      "args": "p_schedule_subject text, p_requested_subject text",
+      "def": "CREATE OR REPLACE FUNCTION public.bfr_subject_matches(p_schedule_subject text, p_requested_subject text)\n RETURNS boolean\n LANGUAGE sql\n IMMUTABLE\nAS $function$\n  select lower(trim(coalesce(p_schedule_subject,'')))=lower(trim(coalesce(p_requested_subject,'')))\n    or (lower(trim(p_schedule_subject))='português' and lower(trim(p_requested_subject))='língua portuguesa')\n    or (lower(trim(p_schedule_subject))='inglês' and lower(trim(p_requested_subject))='língua inglesa')\n    or (lower(trim(p_schedule_subject))='artes' and lower(trim(p_requested_subject))='arte')\n$function$\n"
+    }
+  ],
+  "objetos": [
+    {
+      "relname": "bfr_schedule_entries",
+      "kind": "r",
+      "dono": "postgres",
+      "rls": true,
+      "forca_rls": false
+    },
+    {
+      "relname": "bfr_schedule_versions",
+      "kind": "r",
+      "dono": "postgres",
+      "rls": true,
+      "forca_rls": false
+    },
+    {
+      "relname": "bfr_teacher_class_subjects",
+      "kind": "r",
+      "dono": "postgres",
+      "rls": true,
+      "forca_rls": false
+    },
+    {
+      "relname": "bfr_teacher_directory",
+      "kind": "r",
+      "dono": "postgres",
+      "rls": true,
+      "forca_rls": false
+    }
+  ],
+  "colunas": [
+    {
+      "table_name": "bfr_teacher_class_subjects",
+      "column_name": "id",
+      "data_type": "uuid",
+      "is_nullable": "NO",
+      "column_default": "gen_random_uuid()"
+    },
+    {
+      "table_name": "bfr_teacher_class_subjects",
+      "column_name": "profile_id",
+      "data_type": "uuid",
+      "is_nullable": "NO",
+      "column_default": null
+    },
+    {
+      "table_name": "bfr_teacher_class_subjects",
+      "column_name": "class_id",
+      "data_type": "uuid",
+      "is_nullable": "NO",
+      "column_default": null
+    },
+    {
+      "table_name": "bfr_teacher_class_subjects",
+      "column_name": "subject",
+      "data_type": "text",
+      "is_nullable": "NO",
+      "column_default": null
+    },
+    {
+      "table_name": "bfr_teacher_class_subjects",
+      "column_name": "active",
+      "data_type": "boolean",
+      "is_nullable": "NO",
+      "column_default": "true"
+    },
+    {
+      "table_name": "bfr_teacher_class_subjects",
+      "column_name": "created_at",
+      "data_type": "timestamp with time zone",
+      "is_nullable": "NO",
+      "column_default": "now()"
+    }
+  ]
+}

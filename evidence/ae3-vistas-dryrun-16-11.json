@@ -1,0 +1,74 @@
+{
+  "em": "2026-11-16T03:44:14.367Z",
+  "autorizacao": "dry-run: DDL dentro de transação com ROLLBACK; nada persiste",
+  "aplicacao_md5": "cc05221043dfe59e40d3b6f058f063de",
+  "aplicacao_bytes": 2650,
+  "antes": [
+    {
+      "relname": "sports_public_athletes",
+      "modo": "sem-opcao"
+    },
+    {
+      "relname": "sports_public_match_events",
+      "modo": "sem-opcao"
+    },
+    {
+      "relname": "sports_public_matches",
+      "modo": "sem-opcao"
+    },
+    {
+      "relname": "sports_public_schools",
+      "modo": "sem-opcao"
+    },
+    {
+      "relname": "sports_public_teams",
+      "modo": "sem-opcao"
+    }
+  ],
+  "dentro_da_transacao": [
+    {
+      "relname": "sports_public_athletes",
+      "modo": "invoker"
+    },
+    {
+      "relname": "sports_public_match_events",
+      "modo": "invoker"
+    },
+    {
+      "relname": "sports_public_matches",
+      "modo": "invoker"
+    },
+    {
+      "relname": "sports_public_schools",
+      "modo": "invoker"
+    },
+    {
+      "relname": "sports_public_teams",
+      "modo": "invoker"
+    }
+  ],
+  "depois_do_rollback": [
+    {
+      "relname": "sports_public_athletes",
+      "modo": "sem-opcao"
+    },
+    {
+      "relname": "sports_public_match_events",
+      "modo": "sem-opcao"
+    },
+    {
+      "relname": "sports_public_matches",
+      "modo": "sem-opcao"
+    },
+    {
+      "relname": "sports_public_schools",
+      "modo": "sem-opcao"
+    },
+    {
+      "relname": "sports_public_teams",
+      "modo": "sem-opcao"
+    }
+  ],
+  "escrita_persistida": true,
+  "veredito": "AE3_DRYRUN_VERDE"
+}

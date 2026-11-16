@@ -1,0 +1,217 @@
+{
+  "em": "2026-11-16T03:41:49.839Z",
+  "autorizacao": "leitura: 0 DDL, 0 escrita, 0 mint, 0 deploy, 0 git push",
+  "vistas": [
+    {
+      "relname": "sports_public_athletes",
+      "def": " SELECT id,\n    team_id,\n    name,\n    jersey_number,\n    \"position\",\n    status\n   FROM sports_athletes\n  WHERE sports_role_allowed(ARRAY['developer'::text, 'director'::text, 'coordinator'::text, 'secretary'::text, 'pedagogical'::text, 'aee'::text]);",
+      "anon_sel": "false",
+      "auth_sel": "true",
+      "modo": "sem-opcao",
+      "base": "public.sports_public_athletes"
+    },
+    {
+      "relname": "sports_public_match_events",
+      "def": " SELECT id,\n    match_id,\n    team_id,\n    athlete_id,\n    event_type,\n    points,\n    period,\n    clock_seconds,\n    description,\n    created_at\n   FROM sports_match_events\n  WHERE sports_role_allowed(ARRAY['developer'::text, 'director'::text, 'coordinator'::text]);",
+      "anon_sel": "false",
+      "auth_sel": "true",
+      "modo": "sem-opcao",
+      "base": "public.sports_public_match_events"
+    },
+    {
+      "relname": "sports_public_matches",
+      "def": " SELECT id,\n    championship_id,\n    sport,\n    category,\n    gender,\n    home_team_id,\n    away_team_id,\n    scheduled_at,\n    venue,\n    phase,\n    status,\n    home_score,\n    away_score,\n    period,\n    clock_seconds,\n    started_at,\n    finished_at\n   FROM sports_matches\n  WHERE sports_role_allowed(ARRAY['developer'::text, 'director'::text, 'coordinator'::text, 'secretary'::text, 'pedagogical'::text, 'aee'::text]);",
+      "anon_sel": "false",
+      "auth_sel": "true",
+      "modo": "sem-opcao",
+      "base": "public.sports_public_matches"
+    },
+    {
+      "relname": "sports_public_schools",
+      "def": " SELECT id,\n    name,\n    city,\n    logo_url\n   FROM sports_schools\n  WHERE sports_role_allowed(ARRAY['developer'::text, 'director'::text, 'coordinator'::text, 'secretary'::text]);",
+      "anon_sel": "false",
+      "auth_sel": "true",
+      "modo": "sem-opcao",
+      "base": "public.sports_public_schools"
+    },
+    {
+      "relname": "sports_public_teams",
+      "def": " SELECT t.id,\n    t.school_id,\n    s.name AS school_name,\n    t.name,\n    t.sport,\n    t.category,\n    t.gender,\n    t.crest_url,\n    t.active\n   FROM (sports_teams t\n     JOIN sports_schools s ON ((s.id = t.school_id)))\n  WHERE (bfr_is_schedule_manager() OR is_staff());",
+      "anon_sel": "false",
+      "auth_sel": "true",
+      "modo": "sem-opcao",
+      "base": "public.sports_public_teams"
+    }
+  ],
+  "base_policies": [
+    {
+      "tablename": "sports_athletes",
+      "policyname": "sports_athletes_manage",
+      "cmd": "ALL",
+      "permissive": "PERMISSIVE",
+      "roles": "{authenticated}",
+      "using_": "sports_role_allowed(ARRAY['developer'::text, 'director'::text, 'coordinator'::text])",
+      "with_check": "sports_role_allowed(ARRAY['developer'::text, 'director'::text, 'coordinator'::text])"
+    },
+    {
+      "tablename": "sports_athletes",
+      "policyname": "sports_athletes_read",
+      "cmd": "SELECT",
+      "permissive": "PERMISSIVE",
+      "roles": "{authenticated}",
+      "using_": "sports_role_allowed(ARRAY['developer'::text, 'director'::text, 'coordinator'::text, 'secretary'::text, 'pedagogical'::text, 'aee'::text, 'sports_operator'::text])",
+      "with_check": ""
+    },
+    {
+      "tablename": "sports_match_events",
+      "policyname": "sports_match_events_read",
+      "cmd": "SELECT",
+      "permissive": "PERMISSIVE",
+      "roles": "{authenticated}",
+      "using_": "sports_role_allowed(ARRAY['developer'::text, 'director'::text, 'coordinator'::text, 'sports_operator'::text])",
+      "with_check": ""
+    },
+    {
+      "tablename": "sports_matches",
+      "policyname": "sports_matches_delete",
+      "cmd": "DELETE",
+      "permissive": "PERMISSIVE",
+      "roles": "{authenticated}",
+      "using_": "sports_role_allowed(ARRAY['developer'::text, 'director'::text])",
+      "with_check": ""
+    },
+    {
+      "tablename": "sports_matches",
+      "policyname": "sports_matches_manage",
+      "cmd": "INSERT",
+      "permissive": "PERMISSIVE",
+      "roles": "{authenticated}",
+      "using_": "",
+      "with_check": "sports_role_allowed(ARRAY['developer'::text, 'director'::text, 'coordinator'::text])"
+    },
+    {
+      "tablename": "sports_matches",
+      "policyname": "sports_matches_read",
+      "cmd": "SELECT",
+      "permissive": "PERMISSIVE",
+      "roles": "{authenticated}",
+      "using_": "sports_role_allowed(ARRAY['developer'::text, 'director'::text, 'coordinator'::text, 'secretary'::text, 'pedagogical'::text, 'aee'::text, 'sports_operator'::text])",
+      "with_check": ""
+    },
+    {
+      "tablename": "sports_matches",
+      "policyname": "sports_matches_update",
+      "cmd": "UPDATE",
+      "permissive": "PERMISSIVE",
+      "roles": "{authenticated}",
+      "using_": "sports_role_allowed(ARRAY['developer'::text, 'director'::text, 'coordinator'::text])",
+      "with_check": "sports_role_allowed(ARRAY['developer'::text, 'director'::text, 'coordinator'::text])"
+    },
+    {
+      "tablename": "sports_schools",
+      "policyname": "sports_schools_manage",
+      "cmd": "ALL",
+      "permissive": "PERMISSIVE",
+      "roles": "{authenticated}",
+      "using_": "sports_role_allowed(ARRAY['developer'::text, 'director'::text, 'coordinator'::text])",
+      "with_check": "sports_role_allowed(ARRAY['developer'::text, 'director'::text, 'coordinator'::text])"
+    },
+    {
+      "tablename": "sports_schools",
+      "policyname": "sports_schools_read",
+      "cmd": "SELECT",
+      "permissive": "PERMISSIVE",
+      "roles": "{authenticated}",
+      "using_": "sports_role_allowed(ARRAY['developer'::text, 'director'::text, 'coordinator'::text, 'secretary'::text])",
+      "with_check": ""
+    },
+    {
+      "tablename": "sports_schools",
+      "policyname": "sports_schools_staff_read",
+      "cmd": "SELECT",
+      "permissive": "PERMISSIVE",
+      "roles": "{authenticated}",
+      "using_": "((EXISTS ( SELECT 1\n   FROM profiles p\n  WHERE ((p.id = auth.uid()) AND (p.role = ANY (ARRAY['secretary'::account_role, 'director'::account_role, 'coordinator'::account_role, 'developer'::account_role, 'education_supervisor'::account_role]))))) OR bfr_is_education_supervisor())",
+      "with_check": ""
+    },
+    {
+      "tablename": "sports_teams",
+      "policyname": "sports_teams_manage",
+      "cmd": "ALL",
+      "permissive": "PERMISSIVE",
+      "roles": "{authenticated}",
+      "using_": "sports_role_allowed(ARRAY['developer'::text, 'director'::text, 'coordinator'::text])",
+      "with_check": "sports_role_allowed(ARRAY['developer'::text, 'director'::text, 'coordinator'::text])"
+    },
+    {
+      "tablename": "sports_teams",
+      "policyname": "sports_teams_read",
+      "cmd": "SELECT",
+      "permissive": "PERMISSIVE",
+      "roles": "{authenticated}",
+      "using_": "(bfr_is_schedule_manager() OR is_staff())",
+      "with_check": ""
+    }
+  ],
+  "base_grants": [
+    {
+      "relname": "sports_athletes",
+      "anon_sel": "true",
+      "auth_sel": "true"
+    },
+    {
+      "relname": "sports_match_events",
+      "anon_sel": "true",
+      "auth_sel": "true"
+    },
+    {
+      "relname": "sports_matches",
+      "anon_sel": "true",
+      "auth_sel": "true"
+    },
+    {
+      "relname": "sports_schools",
+      "anon_sel": "true",
+      "auth_sel": "true"
+    },
+    {
+      "relname": "sports_teams",
+      "anon_sel": "true",
+      "auth_sel": "true"
+    }
+  ],
+  "contagens": [
+    {
+      "view": "sports_public_athletes",
+      "postgres": 0,
+      "authenticated": 0
+    },
+    {
+      "view": "sports_public_match_events",
+      "postgres": 0,
+      "authenticated": 0
+    },
+    {
+      "view": "sports_public_matches",
+      "postgres": 0,
+      "authenticated": 0
+    },
+    {
+      "view": "sports_public_schools",
+      "postgres": 0,
+      "authenticated": 0
+    },
+    {
+      "view": "sports_public_teams",
+      "postgres": 0,
+      "authenticated": 0
+    }
+  ],
+  "tabelas_base_nomes": [
+    "public.sports_public_athletes",
+    "public.sports_public_match_events",
+    "public.sports_public_matches",
+    "public.sports_public_schools",
+    "public.sports_public_teams"
+  ]
+}

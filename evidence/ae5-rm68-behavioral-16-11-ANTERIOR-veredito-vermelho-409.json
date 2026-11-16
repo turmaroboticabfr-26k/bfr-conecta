@@ -1,0 +1,94 @@
+{
+  "em": "2026-11-16T04:10:54.820Z",
+  "ok_nomeado": "(a) Mint + s20-behavioral — seleção do usuário, 16/11",
+  "escopo": "11 policies PUBLIC do RM-6.8 + 5 vistas sports_public_* fechadas (invoker)",
+  "contas_mintadas": [
+    "ae5-director@bfr.test",
+    "ae5-secretary@bfr.test",
+    "ae5-pedagogical@bfr.test",
+    "ae5-student@bfr.test"
+  ],
+  "senha_gerada_por_execucao": true,
+  "sessoes": "C:/Users/pcmac/.qoder/tmp/ae5-sessions-1794802134693.json",
+  "counts0": {
+    "grades": 112,
+    "attendance": 25,
+    "access_requests": 12,
+    "occurrences": 0,
+    "sports_schools": 6
+  },
+  "ids_fixture": {
+    "grades": [
+      "19fc69fa-3944-4efd-bdac-d8836e3206fe",
+      "6d29c115-9d5f-4bcd-88dc-31b06ceaaf3b",
+      "1d0fa5a0-c5ec-4705-829a-55c62bc2b90e",
+      "91cada12-7ab0-4ec5-b0fd-01699a0826e2",
+      "c8ac0ce7-67d8-4bed-b2d1-b0fe5e01ca43"
+    ],
+    "attendance": [
+      "70b41a3a-dbe8-46dc-adf5-869de82eff90",
+      "07e20d0e-ab0d-420d-bb0b-5edce008f6c1"
+    ],
+    "occurrences": [
+      "5f262f16-c3ad-4458-88b6-89219c7f44db",
+      "51ce5072-9408-474e-9a08-8de86d2282c9",
+      "025c4217-54a6-4616-931b-4f1e600ec1d5"
+    ],
+    "access_requests": [
+      "283471fb-6bf7-4d83-8f31-b88aaed531e8"
+    ],
+    "students": [
+      "40acc47f-a621-4472-b6ba-234ea018718f",
+      "d62c2d9b-b498-44d3-8481-a8f3d7278143"
+    ],
+    "classes": [
+      "331af9e2-3326-462a-97b1-dca72ba8a824",
+      "79b348ed-947e-4962-bbdb-81f966b97c72"
+    ],
+    "staff_schools": [
+      "75ab6966-7494-477a-a96c-f2987946cc00",
+      "8667e455-30da-4015-8bf2-4807c63b934f"
+    ],
+    "teacher_class_subjects": [
+      "d2966a6e-cbde-489e-b46a-e04c6ef719b6"
+    ],
+    "schools": [
+      "1880b484-e9be-45fc-b3ec-24cacb39ea20",
+      "319d6dce-c0df-4c04-a78b-71f3e6e92f03"
+    ],
+    "sports_schools": [
+      "1880b484-e9be-45fc-b3ec-24cacb39ea20",
+      "319d6dce-c0df-4c04-a78b-71f3e6e92f03"
+    ],
+    "profiles": [
+      "421f8223-1a0c-408c-91bb-a472560bd742",
+      "5355cdbe-2b4b-46aa-976a-0dafd2f45fb4",
+      "7b8569f7-fadf-4392-ad9f-8e1b8a17decd",
+      "8247379e-2e95-4273-8103-b05d7c641d3c"
+    ]
+  },
+  "limites_honestos": [
+    "ramo POSITIVO de access_requests_manage/staff_insert exige papel developer (5.ª conta, fora do OK); coberto pela conferência de texto 44/0",
+    "delta de linhas do fecho das vistas é inobservável onde a tabela-base está vazia; excepção medida: sports_public_schools",
+    "occurrences reais = 0: equivalência do wrapper do director provada com fixture (TRUE em occA, FALSE em occB)"
+  ],
+  "pegada_pre": {
+    "total": 182,
+    "hash": "ecf3403210b8091209cb8584a4f1da51"
+  },
+  "pegada_pos": {
+    "total": 182,
+    "hash": "ecf3403210b8091209cb8584a4f1da51"
+  },
+  "portoes": 122,
+  "falhas": [
+    "G7 pedagogical POST com entered_by alheio: 403 | dado=409 | esperado=403",
+    "G8 secretary POST nota: 403 | dado=409 | esperado=403",
+    "G9 student POST nota: 403 | dado=409 | esperado=403",
+    "G12 pedagogical PATCH matematica: 200 com 1 linha | dado=[200,0] | esperado=[200,1]",
+    "G14 director PATCH nota: 200 com 1 linha | dado=[200,0] | esperado=[200,1]",
+    "A5 director POST presença: 201 | dado=409 | esperado=201",
+    "A6 pedagogical POST presença (entered_by=próprio): 201 | dado=409 | esperado=201"
+  ],
+  "veredito": "AE5_BEHAVIORAL_VERMELHO"
+}
