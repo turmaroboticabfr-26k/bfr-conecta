@@ -47,12 +47,31 @@ for (const f of fich.concat(readdirSync(EV).filter((x) => /^ah2-varredura-.*\.js
 }
 const ROTULOS = { parent: 'Responsável', student: 'Aluno', pedagogical: 'Professor', coordinator: 'Coordenação', secretary: 'Secretaria', aee: 'AEE', director: 'Direção', psychology: 'Psicologia', social_work: 'Serviço social', sports_operator: 'Operador desportivo', education_supervisor: 'Supervisão de ensino', monitor: 'Monitor', gatekeeper: 'Portaria', developer: 'Developer', pending: 'Conta pendente' };
 
+// Duas leituras novas de disco entram nesta linha, porque a frase antiga — «declarada no bundle mas sem
+// button[data-section]» — afirmava uma ausência universal que as bytes servidas e o browser desmentiram
+// (§AI.29): `comunicacao`/`fotos`/`jogos-escolares` TÊM botão no bundle e `resultados-aprendizagem` estava
+// dentro da gaveta. A classe do censo é lida com a sua régua nomeada (por papel, a 390 px), não emprestada.
+const CENSO_PP = (() => { try { return JSON.parse(readFileSync(`${EV}/ah2-sonda-portas-por-papel-pp5.json`, 'utf8')); } catch { return null; } })();
+const NO_AR = (() => { try { return JSON.parse(readFileSync(`${EV}/ah2-confere-portas-17-11.json`, 'utf8')); } catch { return null; } })();
+const classe_censo = (papel, rota) => CENSO_PP?.['papéis']?.[papel]?.rotas?.[rota]?.classe || null;
 const linha = (c, papel, banda, seccao) => {
   if (!c) return { res: 'NÃO TESTADA', prob: `sem artefacto da régua válida para ${papel}/${banda}`, corr: 'correr a varredura desta banda' };
   if (c.b.erro_boot) return { res: 'NÃO ABRIU', prob: c.b.erro_boot, corr: 'por classificar' };
   const m = (c.b.peca || {})[seccao];
   if (!m) {
-    if ((c.b.sem_botao || []).includes(seccao)) return { res: 'SEM BOTÃO', prob: `declarada no bundle mas sem button[data-section]`, corr: 'por decidir: retirar do mapa ou ligar o botão' };
+    if ((c.b.sem_botao || []).includes(seccao)) {
+      const cl = classe_censo(papel, seccao);
+      if (!cl) return { res: 'SEM BOTÃO', prob: 'sem button[data-section] no varrimento deste papel (sem censo por papel para esta linha)', corr: 'correr o censo desta rota/papel' };
+      const ar = NO_AR?.no_ar_por_rota?.[seccao] || null;
+      const tem_no_bundle = !!ar && (ar.data_section > 0 || ar.botao > 0);
+      const prova = `sem botão no DOM deste papel — classe medida no browser a 390 px: ${cl}` + (ar ? `; bundle: ${ar.data_section}× data-section, ${ar.botao}× botão` : '');
+      const corr = cl === 'ITEM_NA_GAVETA' ? 'linha do INSTRUMENTO: a porta está na gaveta'
+        : cl === 'ITEM_MAS_ESCONDIDO_POR_CLASSE' ? 'o produto esconde a porta (`.hidden`): confirmar se o gate do papel é pretendido'
+        : cl === 'ITEM_VISIVEL_MAS_GAVETA_NAO_O_COPIOU' ? 'porta visível fora dos selectores do `drawerItems()`: decidir se entra na gaveta'
+        : tem_no_bundle ? 'o bundle tem a porta e este papel não a vê: decidir se é gate pretendido'
+        : 'o bundle nunca monta esta rota: retirar do mapa ou criar a vista';
+      return { res: 'SEM BOTÃO', prob: prova, corr };
+    }
     if ((c.b.medicoes_perdidas || []).some((x) => String(x).startsWith(seccao))) return { res: 'NÃO TESTADA', prob: 'browser não respondeu durante a medição', corr: 'repetir a banda' };
     return { res: 'NÃO TESTADA', prob: 'a seção não foi percorrida nesta corrida', corr: 'repetir a banda' };
   }

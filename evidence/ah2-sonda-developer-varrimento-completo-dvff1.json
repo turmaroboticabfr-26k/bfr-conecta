@@ -1,0 +1,157 @@
+{
+  "ciclo": "AH-DV-VARRIMENTO-COMPLETO",
+  "em": "2026-11-17T15:03:36.122Z",
+  "papel": "developer",
+  "largura": 390,
+  "origem_da_ordem": "ah2-mobile2-m5-developer-4.json",
+  "ordem": [
+    "monitor",
+    "gate",
+    "psychology"
+  ],
+  "filtro": [
+    "monitor",
+    "gate",
+    "psychology"
+  ],
+  "md5_shell": "d418e7fc917f1fbb1437054b7b531f9b",
+  "passos": [
+    {
+      "rota": "monitor",
+      "coberto_por": null,
+      "saida_que_funcionou": "Escape",
+      "gaveta": "abriu_a_toque",
+      "estava_na_gaveta": true,
+      "tocado": true,
+      "sem_caixa": [
+        "monitor=311x48",
+        "gate=311x48",
+        "psychology=311x48"
+      ],
+      "ms": 1354,
+      "papeis": {
+        "sessao": "developer",
+        "view": "admin",
+        "ativa": "monitor"
+      },
+      "sumiram": [],
+      "ainda_la": [
+        "monitor",
+        "gate",
+        "psychology"
+      ],
+      "itens": 26,
+      "html_links": 11142
+    },
+    {
+      "rota": "gate",
+      "coberto_por": null,
+      "saida_que_funcionou": null,
+      "gaveta": "abriu_a_toque",
+      "estava_na_gaveta": true,
+      "tocado": true,
+      "sem_caixa": [
+        "monitor=311x48",
+        "gate=311x48",
+        "psychology=311x48"
+      ],
+      "ms": 1180,
+      "papeis": {
+        "sessao": "developer",
+        "view": "admin",
+        "ativa": "gate"
+      },
+      "sumiram": [],
+      "ainda_la": [
+        "monitor",
+        "gate",
+        "psychology"
+      ],
+      "itens": 26,
+      "html_links": 11142
+    },
+    {
+      "rota": "psychology",
+      "coberto_por": null,
+      "saida_que_funcionou": null,
+      "gaveta": "abriu_a_toque",
+      "estava_na_gaveta": true,
+      "tocado": true,
+      "sem_caixa": [
+        "monitor=NAO_EXISTE",
+        "gate=NAO_EXISTE",
+        "psychology=311x48"
+      ],
+      "ms": 1245,
+      "papeis": {
+        "sessao": "developer",
+        "view": "psychology",
+        "ativa": "psychology"
+      },
+      "sumiram": [
+        "monitor",
+        "gate"
+      ],
+      "ainda_la": [
+        "psychology"
+      ],
+      "itens": 8,
+      "html_links": 7348
+    }
+  ],
+  "saidas_usadas": [
+    {
+      "motivo": "monitor:div#bfrMobileDrawer z1500 compobfr-mobile-drawer is-open",
+      "saida": "Escape"
+    }
+  ],
+  "veredito": "varrimento FILTRADO a monitor/gate/psychology, começando no `view` em que as portas existem: monitor=tocada, ativa=monitor; gate=tocada, ativa=gate; psychology=tocada, ativa=psychology",
+  "ms_ready": 1944,
+  "papel_inicial": "developer",
+  "modal_inicial": "preferredNameModal",
+  "ms_barra": 427,
+  "gaveta_aberta": true,
+  "censo_antes": {
+    "aberta": true,
+    "papeis": {
+      "sessao": "developer",
+      "view": "admin",
+      "ativa": "inicio"
+    },
+    "itens": [
+      "inicio",
+      "fotos",
+      "chat-interno",
+      "notificacoes",
+      "conteudos",
+      "relatorios",
+      "jogos-escolares",
+      "comunicacao",
+      "resultados-aprendizagem",
+      "notas",
+      "agenda",
+      "atividades",
+      "horarios",
+      "jogos",
+      "comunicados",
+      "ocorrencias",
+      "coordenacao",
+      "monitor",
+      "gate",
+      "administracao",
+      "cadastro-alunos",
+      "direcao",
+      "apoio",
+      "aee",
+      "psychology",
+      "multiprofissional"
+    ],
+    "sem_caixa": [
+      "monitor=311x48",
+      "gate=311x48",
+      "psychology=311x48"
+    ],
+    "html_links": 11142
+  },
+  "em_fim": "2026-11-17T15:03:48.163Z"
+}

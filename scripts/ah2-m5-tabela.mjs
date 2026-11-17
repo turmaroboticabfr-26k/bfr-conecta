@@ -18,6 +18,9 @@ if (!fich.length) throw new Error('ABORTA: sem artefactos ah2-mobile2-' + PREFIX
 // visto[papel][rota][largura] = {estado, ...prova}; portas[papel][largura] = rotas que a navegação oferece
 const visto = {}; const portas = {}; const larguras_boas = {}; const bloqueadas = {}; const declaradas = {};
 const coerente = (b) => !!b.censo && b.censo.barra_existe !== false && (b.censo.barra || []).some((x) => x.w > 0 && x.h > 0) && (b.abertas || 0) > 0;
+// A frase abaixo é uma afirmação UNIVERSAL e por isso só pode aparecer numa linha universal; o `pp5`
+// (§AI.29) mediu uma porta «que não existe em parte nenhuma» dentro da gaveta do professor.
+const PROVA_SEM_ROTA = 'concedida no mapa do papel, sem botão em parte nenhuma da navegação';
 for (const f of fich) {
   const j = JSON.parse(readFileSync(`${DIR}/evidence/${f}`, 'utf8'));
   if (j.ciclo !== 'AH-7b-MOBILE' || (SO_PAPEL && j.papel !== SO_PAPEL)) continue;
@@ -31,7 +34,7 @@ for (const f of fich) {
     const rs = [...new Set([...(b.censo.barra || []), ...(b.censo.gaveta || [])].map((x) => x.route).filter((r) => r && r !== 'more'))];
     portas[p][L] = new Set(rs);
     const semrota = (b.declaradas_sem_rota || []);
-    for (const s of semrota) { const c = (visto[p][s] = visto[p][s] || {}); c[L] = { estado: 'sem_rota', prova: 'concedida no mapa do papel, sem botão em parte nenhuma da navegação' }; }
+    for (const s of semrota) { const c = (visto[p][s] = visto[p][s] || {}); c[L] = { estado: 'sem_rota', prova: PROVA_SEM_ROTA }; }
     for (const r of rs) if (!semrota.includes(r) && !b.seccoes[r]) { const c = (visto[p][r] = visto[p][r] || {}); c[L] = { estado: 'por_tocar', prova: 'porta existe, varredura não chegou a tocá-la nesta largura' }; }
     for (const [rota, v] of Object.entries(b.seccoes || {})) {
       const c = (visto[p][rota] = visto[p][rota] || {});
@@ -72,7 +75,11 @@ for (const p of Object.keys(visto).sort()) {
     const em = (e) => LARGURAS.filter((w) => c[w] && c[w].estado === e);
     const ok = em('ok'), vazio = em('vazio'), inalc = em('inalc'), sumiu = em('sumiu'), semrota = em('sem_rota'), semefeito = em('sem_efeito'), portocar = em('por_tocar');
     const sem_medir = LARGURAS.filter((w) => !c[w]);
-    const provas = [...new Set(LARGURAS.map((w) => c[w] && c[w].estado !== 'ok' && c[w].prova).filter(Boolean))];
+    // `sem_rota` conta CORRIDAS em que a rota não apareceu no censo, não ausências (§AI.29: o censo
+    // `pp5` achou a porta `resultados-aprendizagem` na gaveta do professor, e a linha dizia «sem botão em
+    // parte nenhuma da navegação» ao lado de 5/6 larguras medidas). A frase universal só se mantém quando
+    // é universal; senão diz em quantas larguras aconteceu.
+    const provas = [...new Set(LARGURAS.map((w) => c[w] && c[w].estado !== 'ok' && c[w].prova).filter(Boolean))].map((x) => x === PROVA_SEM_ROTA && semrota.length < LARGURAS.length ? `sem porta contada no censo em ${semrota.length} das larguras corridas` : x);
     let res;
     if (ok.length === 6) res = 'OK';
     else if (ok.length) res = `PARCIAL (${ok.length}/6 larguras)`;
@@ -92,7 +99,7 @@ console.log('| --- | --- | --- | --- | --- |');
 for (const l of linhas) console.log(`| ${l.rota} | ${l.papel} | ${l.res} | ${l.prob} |  |`);
 const n = (e) => linhas.filter((l) => l.res.startsWith(e)).length;
 console.log(`\n_${linhas.length} linhas · OK absoluto ${n('OK')} · PARCIAL ${n('PARCIAL')} · FALHA ${n('FALHA')} · PENDENTE DE CAUSA ${n('PENDENTE')} · MESMA PORTA ${n('MESMA PORTA')} · NAO TESTADA ${n('NAO TESTADA')}_`);
-console.log('_Legenda: «FALHA — inalcansavel» é medida no alvo (invisível, fora do ecrã ou tapado por outro elemento). «PENDENTE DE CAUSA» é o caso em que a porta aparece no censo da gaveta mas o elemento já não existe na hora do toque. **A hipótese que esteve escrita aqui — de que a causa era o `renderDrawer()` a reconstruir a lista sem a entrada (bfr-responsive-presentation.js:184), logo defeito do instrumento — está refutada por medida (3 corridas com o `developer` a 390 px, §AI.27): a lista manteve as 26 entradas em todos os toques válidos, inclusive nos que a hipótese apontava, e o `setRole` nunca saiu da vista `admin`.** O que as corridas puseram no lugar é outro facto medido: a partir de `fotos` fica `#bfrStudentPhotoManager` (z-index 12000) por cima do «Mais» e a gaveta não reabre — o que trava o varrimento mas produz `gaveta_nao_abriu`/`tapado`, não `sem_botao`. A causa do `sem_botao` do `developer` fica NÃO PROVADA, com o espaço de causas reduzido, e não conta como defeito assinado nem como defeito do instrumento. «MESMA PORTA — id alias do mapa» não é um verde emprestado nem um vermelho: o mapa do papel dá duas entradas à mesma secção (ex. `conteudos` e `professor-conteudos`), a navegação só tem botão para uma, e a regra de alias é a mesma que o instrumento aplica em `declaradas_sem_rota` (ah2-mobile2.mjs:357) — a linha aponta para a porta onde a secção foi medida e fica fora da contagem de NÃO TESTADA porque não há aqui funcionalidade por testar._');
+console.log('_Legenda: «FALHA — inalcansavel» é medida no alvo (invisível, fora do ecrã ou tapado por outro elemento). «PENDENTE DE CAUSA» é o caso em que a porta aparece no censo da gaveta mas o elemento já não existe na hora do toque. **A hipótese que esteve escrita aqui — de que a causa era o `renderDrawer()` a reconstruir a lista sem a entrada (bfr-responsive-presentation.js:184), logo defeito do instrumento — está refutada por medida (3 corridas com o `developer` a 390 px, §AI.27): a lista manteve as 26 entradas em todos os toques válidos, inclusive nos que a hipótese apontava, e o `setRole` nunca saiu da vista `admin`.** O que as corridas puseram no lugar é outro facto medido: a partir de `fotos` fica `#bfrStudentPhotoManager` (z-index 12000) por cima do «Mais» e a gaveta não reabre — o que trava o varrimento mas produz `gaveta_nao_abriu`/`tapado`, não `sem_botao`. A causa do `sem_botao` do `developer` está medida desde §AI.28 e é de ORDEM DO VARRIMENTO, não do produto: a sonda `dvfc2`, a percorrer a mesma ordem do artefacto com a gaveta aberta passo a passo, viu as 26 entradas intactas até ao toque 20 (`coordenacao`), que troca `activeView` de `admin` para `coordinator` e faz `monitor`/`gate`/`psychology` saírem do DOM (26 → 19 itens; `aee` ainda aperta para 14) — os três passos seguintes registaram `tocado:false` porque o nó já não lá estava. A sonda `dvff1`, que toca essas três portas numa sessão onde o `view` ainda é o inicial, abriu as três (`ativa=monitor`, `ativa=gate`, `ativa=psychology`). O rótulo da célula mantém-se `PENDENTE DE CAUSA` porque a grelha grava o **estado** sem a razão (`seccoes.monitor = {nao_tocavel:"sem_botao", detalhe:null}`, `diagnostico_gaveta=[]`) e esta tabela imprime o estado da célula; o que passa a haver é causa atribuída e reprodutível por cima dele. «MESMA PORTA — id alias do mapa» não é um verde emprestado nem um vermelho: o mapa do papel dá duas entradas à mesma secção (ex. `conteudos` e `professor-conteudos`), a navegação só tem botão para uma, e a regra de alias é a mesma que o instrumento aplica em `declaradas_sem_rota` (ah2-mobile2.mjs:357) — a linha aponta para a porta onde a secção foi medida e fica fora da contagem de NÃO TESTADA porque não há aqui funcionalidade por testar._');
 console.log('_Larguras com banda coerente por papel: ' + Object.keys(larguras_boas).sort().map((p) => p + '=' + [...larguras_boas[p]].sort((a, b) => a - b).join(',')).join(' | ') + '_');
 // Uma travagem registada numa execução não apaga a medição de outra: `director@430` foi cortado pela praga
 // numa corrida e medido noutra, e listá-lo como «celula travada» faria o relatório dizer que uma célula está

@@ -13,7 +13,7 @@ teto de 25 s. Artefactos anteriores a esta régua foram arquivados com `-ANTERIO
 - células ABRE: **765** · com défice: **120** · NÃO TESTADA: **0**
 - bandas com artefacto válido: **75 de 75** (papel × largura; as 5 larguras são 390 e 1280 da varredura original mais 1366/1440/1920 do §6 do briefing)
 - telemóvel (§5, 15 perfis × 6 larguras): **79 de 90 células medidas** e **11 NÃO TESTADA**, cada uma com a causa escrita pelo instrumento: conta em análise: barreira de pendência, sem shell nem navegação (estado do produto) × 6 · shell ready sem #bfrMobileBottomNav após rechegar × 5. Nenhuma é buraco de campanha: relançar não muda o estado do produto. Fonte: `ah2-m5-consolidado-consol-r11.json`
-- **Reclassificação medida, e é do instrumento não do produto**: as células «painel vazio» do `apoio` foram sondadas no tempo (8 corridas com série preenchida — aee@375: 3001 c aos 1073 ms · aee@390: 3001 c aos 1177 ms · coordinator@390: 3434 c aos 1603 ms · developer@320: 3434 c aos 2657 ms · developer@390: 3434 c aos 3325 ms · secretary@320: 3001 c aos 4712 ms · secretary@390: 3001 c aos 1082 ms · student@320: 2791 c aos 1067 ms). O `#supportView` fica visível com caixa antes de ter texto, e o `MEDIR` do provador sai quando a contagem se repete duas vezes (600 ms × 2, ≈1,8 s): por isso a grelha mediu 0 c onde há 2791-3434. Nas larguras sondadas (320/375/390) o vermelho do `apoio` é defeito de medição; nas outras é suspeita pela mesma prédica, não verde provado.
+- **Reclassificação medida, e é do instrumento não do produto**: as células «painel vazio» do `apoio` foram sondadas no tempo (11 corridas com série preenchida — aee@375: 3001 c aos 1073 ms · aee@390: 3001 c aos 1177 ms · secretary@360: 3001 c aos 1125 ms · developer@414: 3434 c aos 2132 ms · secretary@430: 3001 c aos 1057 ms · coordinator@390: 3434 c aos 1603 ms · developer@320: 3434 c aos 2657 ms · developer@390: 3434 c aos 3325 ms · secretary@320: 3001 c aos 4712 ms · secretary@390: 3001 c aos 1082 ms · student@320: 2791 c aos 1067 ms). O `#supportView` fica visível com caixa antes de ter texto, e o `MEDIR` do provador sai quando a contagem se repete duas vezes (600 ms × 2, ≈1,8 s): por isso a grelha mediu 0 c onde há 2791-3434. Nas larguras sondadas (320/360/375/390/414/430) o vermelho do `apoio` é defeito de medição; nas outras é suspeita pela mesma prédica, não verde provado.
 - **Confirmação medida, e é do produto**: a mesma sonda com o painel por parâmetro foi corrida nas células `chat-interno` que estavam em dúvida (2 corridas — education_supervisor@320 `internalChatView` aberto (activeSection=chat-interno) e a 0 em 50 amostras ≈26 s, 0 pedidos à base, html máximo 49 bytes · education_supervisor@390 `internalChatView` aberto (activeSection=chat-interno) e a 0 em 50 amostras ≈26 s, 0 pedidos à base, html máximo 49 bytes). Ao contrário do `apoio`, aqui o painel abre — `activeSection` fica na rota tocada e o contentor tem caixa — e mesmo assim não produz texto, sem exceção lançada e sem pedido à base na janela. Não é a janela de assentamento: é o render a não produzir conteúdo para este papel, e a linha FALHA da grelha mantém-se, agora com a causa lida em browser e não só no código.
 - **E a régua desktop confirma, medida na própria régua**: o rodapé da tabela desktop dizia «estas linhas NÃO foram sondadas», e o re-teste foi corrido com clique de rato confiável e emulação desktop (`deviceScaleFactor:1, mobile:false`, as mesmas alturas do instrumento da grelha), porque uma leitura a 390 px não se pode assinar por uma a 1366. 3 corridas — education_supervisor@1366 `internalChatView` aberto (activeSection=chat-interno) e a 0 em 50 amostras ≈26 s, 0 pedidos à base, html máximo 49 bytes · education_supervisor@1440 `internalChatView` aberto (activeSection=chat-interno) e a 0 em 50 amostras ≈26 s, 0 pedidos à base, html máximo 49 bytes · education_supervisor@1920 `internalChatView` aberto (activeSection=chat-interno) e a 0 em 50 amostras ≈26 s, 0 pedidos à base, html máximo 49 bytes. O painel abre na banda em que a grelha o mediu vazio e não produz texto: a linha FALHA do §6 deixa de ser lista de re-teste e passa a defeito com causa medida nas três larguras.
 - o que falta para a amostra estar completa: nada — **esta linha conta apenas as células perfil×largura da régua desktop**, e as NÃO TESTADA dela são 0. A tabela de funcionalidade tem duas outras contas, em duas réguas que não se somam: 11 CÉLULAS papel×largura por medir no consolidado do §5 (`ah2-m5-consolidado-consol-r11.json`) e 25 LINHAS papel×rota de 195 na tabela linha a linha (`scripts/ah2-m5-tabela.mjs`, lidas do rodapé dela). Uma linha da tabela agrega as seis larguras, pelo que 11 células e 25 linhas não são a mesma grandeza nem a mesma pergunta.
@@ -252,11 +252,11 @@ escreve em dados reais, publica para a escola, ou corre DDL.
 | conteudos | parent @ 1366 px | ABRE (bfrContentHubView, 1021 car., 1825ms) | 14 alvos < 44px; 3 textos < 11px | por classificar com a evidência |
 | conteudos | parent @ 1440 px | ABRE (bfrContentHubView, 1021 car., 1825ms) | 14 alvos < 44px; 3 textos < 11px | por classificar com a evidência |
 | conteudos | parent @ 1920 px | ABRE (bfrContentHubView, 1021 car., 1825ms) | 14 alvos < 44px; 3 textos < 11px | por classificar com a evidência |
-| escola-historia | parent @ 390 px | SEM BOTÃO | declarada no bundle mas sem button[data-section] | por decidir: retirar do mapa ou ligar o botão |
-| escola-historia | parent @ 1280 px | SEM BOTÃO | declarada no bundle mas sem button[data-section] | por decidir: retirar do mapa ou ligar o botão |
-| escola-historia | parent @ 1366 px | SEM BOTÃO | declarada no bundle mas sem button[data-section] | por decidir: retirar do mapa ou ligar o botão |
-| escola-historia | parent @ 1440 px | SEM BOTÃO | declarada no bundle mas sem button[data-section] | por decidir: retirar do mapa ou ligar o botão |
-| escola-historia | parent @ 1920 px | SEM BOTÃO | declarada no bundle mas sem button[data-section] | por decidir: retirar do mapa ou ligar o botão |
+| escola-historia | parent @ 390 px | SEM BOTÃO | sem botão no DOM deste papel — classe medida no browser a 390 px: SEM_ITEM_EM_NENHUM_SELECTOR; bundle: 0× data-section, 0× botão | o bundle nunca monta esta rota: retirar do mapa ou criar a vista |
+| escola-historia | parent @ 1280 px | SEM BOTÃO | sem botão no DOM deste papel — classe medida no browser a 390 px: SEM_ITEM_EM_NENHUM_SELECTOR; bundle: 0× data-section, 0× botão | o bundle nunca monta esta rota: retirar do mapa ou criar a vista |
+| escola-historia | parent @ 1366 px | SEM BOTÃO | sem botão no DOM deste papel — classe medida no browser a 390 px: SEM_ITEM_EM_NENHUM_SELECTOR; bundle: 0× data-section, 0× botão | o bundle nunca monta esta rota: retirar do mapa ou criar a vista |
+| escola-historia | parent @ 1440 px | SEM BOTÃO | sem botão no DOM deste papel — classe medida no browser a 390 px: SEM_ITEM_EM_NENHUM_SELECTOR; bundle: 0× data-section, 0× botão | o bundle nunca monta esta rota: retirar do mapa ou criar a vista |
+| escola-historia | parent @ 1920 px | SEM BOTÃO | sem botão no DOM deste papel — classe medida no browser a 390 px: SEM_ITEM_EM_NENHUM_SELECTOR; bundle: 0× data-section, 0× botão | o bundle nunca monta esta rota: retirar do mapa ou criar a vista |
 | notas | parent @ 390 px | ABRE (parentView, 1161 car., 1816ms) | 1 textos < 11px | por classificar com a evidência |
 | notas | parent @ 1280 px | ABRE (parentView, 1161 car., 1825ms) | 1 alvos < 44px; 2 textos < 11px | por classificar com a evidência |
 | notas | parent @ 1366 px | ABRE (parentView, 1161 car., 1831ms) | 1 alvos < 44px; 2 textos < 11px | por classificar com a evidência |
@@ -287,11 +287,11 @@ escreve em dados reais, publica para a escola, ou corre DDL.
 | ocorrencias | parent @ 1366 px | ABRE (parentView, 1126 car., 1820ms) | 1 alvos < 44px; 2 textos < 11px | por classificar com a evidência |
 | ocorrencias | parent @ 1440 px | ABRE (parentView, 1126 car., 1830ms) | 1 alvos < 44px; 2 textos < 11px | por classificar com a evidência |
 | ocorrencias | parent @ 1920 px | ABRE (parentView, 1126 car., 1827ms) | 1 alvos < 44px; 2 textos < 11px | por classificar com a evidência |
-| coordenacao-chat | parent @ 390 px | SEM BOTÃO | declarada no bundle mas sem button[data-section] | por decidir: retirar do mapa ou ligar o botão |
-| coordenacao-chat | parent @ 1280 px | SEM BOTÃO | declarada no bundle mas sem button[data-section] | por decidir: retirar do mapa ou ligar o botão |
-| coordenacao-chat | parent @ 1366 px | SEM BOTÃO | declarada no bundle mas sem button[data-section] | por decidir: retirar do mapa ou ligar o botão |
-| coordenacao-chat | parent @ 1440 px | SEM BOTÃO | declarada no bundle mas sem button[data-section] | por decidir: retirar do mapa ou ligar o botão |
-| coordenacao-chat | parent @ 1920 px | SEM BOTÃO | declarada no bundle mas sem button[data-section] | por decidir: retirar do mapa ou ligar o botão |
+| coordenacao-chat | parent @ 390 px | SEM BOTÃO | sem botão no DOM deste papel — classe medida no browser a 390 px: SEM_ITEM_EM_NENHUM_SELECTOR; bundle: 0× data-section, 0× botão | o bundle nunca monta esta rota: retirar do mapa ou criar a vista |
+| coordenacao-chat | parent @ 1280 px | SEM BOTÃO | sem botão no DOM deste papel — classe medida no browser a 390 px: SEM_ITEM_EM_NENHUM_SELECTOR; bundle: 0× data-section, 0× botão | o bundle nunca monta esta rota: retirar do mapa ou criar a vista |
+| coordenacao-chat | parent @ 1366 px | SEM BOTÃO | sem botão no DOM deste papel — classe medida no browser a 390 px: SEM_ITEM_EM_NENHUM_SELECTOR; bundle: 0× data-section, 0× botão | o bundle nunca monta esta rota: retirar do mapa ou criar a vista |
+| coordenacao-chat | parent @ 1440 px | SEM BOTÃO | sem botão no DOM deste papel — classe medida no browser a 390 px: SEM_ITEM_EM_NENHUM_SELECTOR; bundle: 0× data-section, 0× botão | o bundle nunca monta esta rota: retirar do mapa ou criar a vista |
+| coordenacao-chat | parent @ 1920 px | SEM BOTÃO | sem botão no DOM deste papel — classe medida no browser a 390 px: SEM_ITEM_EM_NENHUM_SELECTOR; bundle: 0× data-section, 0× botão | o bundle nunca monta esta rota: retirar do mapa ou criar a vista |
 | jogos-escolares | parent @ 390 px | ABRE (schoolGamesView, 865 car., 1814ms) | — | — |
 | jogos-escolares | parent @ 1280 px | ABRE (schoolGamesView, 865 car., 1827ms) | 8 alvos < 44px | por classificar com a evidência |
 | jogos-escolares | parent @ 1366 px | ABRE (schoolGamesView, 865 car., 1829ms) | 8 alvos < 44px | por classificar com a evidência |
@@ -339,11 +339,11 @@ Larguras com artefacto válido: 390 + 1280 + 1366 + 1440 + 1920 · ficheiros: `a
 | conteudos | student @ 1366 px | ABRE (bfrContentHubView, 1021 car., 1817ms) | 14 alvos < 44px; 3 textos < 11px | por classificar com a evidência |
 | conteudos | student @ 1440 px | ABRE (bfrContentHubView, 1021 car., 1818ms) | 14 alvos < 44px; 3 textos < 11px | por classificar com a evidência |
 | conteudos | student @ 1920 px | ABRE (bfrContentHubView, 1021 car., 1835ms) | 14 alvos < 44px; 3 textos < 11px | por classificar com a evidência |
-| escola-historia | student @ 390 px | SEM BOTÃO | declarada no bundle mas sem button[data-section] | por decidir: retirar do mapa ou ligar o botão |
-| escola-historia | student @ 1280 px | SEM BOTÃO | declarada no bundle mas sem button[data-section] | por decidir: retirar do mapa ou ligar o botão |
-| escola-historia | student @ 1366 px | SEM BOTÃO | declarada no bundle mas sem button[data-section] | por decidir: retirar do mapa ou ligar o botão |
-| escola-historia | student @ 1440 px | SEM BOTÃO | declarada no bundle mas sem button[data-section] | por decidir: retirar do mapa ou ligar o botão |
-| escola-historia | student @ 1920 px | SEM BOTÃO | declarada no bundle mas sem button[data-section] | por decidir: retirar do mapa ou ligar o botão |
+| escola-historia | student @ 390 px | SEM BOTÃO | sem botão no DOM deste papel — classe medida no browser a 390 px: SEM_ITEM_EM_NENHUM_SELECTOR; bundle: 0× data-section, 0× botão | o bundle nunca monta esta rota: retirar do mapa ou criar a vista |
+| escola-historia | student @ 1280 px | SEM BOTÃO | sem botão no DOM deste papel — classe medida no browser a 390 px: SEM_ITEM_EM_NENHUM_SELECTOR; bundle: 0× data-section, 0× botão | o bundle nunca monta esta rota: retirar do mapa ou criar a vista |
+| escola-historia | student @ 1366 px | SEM BOTÃO | sem botão no DOM deste papel — classe medida no browser a 390 px: SEM_ITEM_EM_NENHUM_SELECTOR; bundle: 0× data-section, 0× botão | o bundle nunca monta esta rota: retirar do mapa ou criar a vista |
+| escola-historia | student @ 1440 px | SEM BOTÃO | sem botão no DOM deste papel — classe medida no browser a 390 px: SEM_ITEM_EM_NENHUM_SELECTOR; bundle: 0× data-section, 0× botão | o bundle nunca monta esta rota: retirar do mapa ou criar a vista |
+| escola-historia | student @ 1920 px | SEM BOTÃO | sem botão no DOM deste papel — classe medida no browser a 390 px: SEM_ITEM_EM_NENHUM_SELECTOR; bundle: 0× data-section, 0× botão | o bundle nunca monta esta rota: retirar do mapa ou criar a vista |
 | notas | student @ 390 px | ABRE (studentView, 11158 car., 1838ms) | 6 textos < 11px; 11 elementos cortados | por classificar com a evidência |
 | notas | student @ 1280 px | ABRE (studentView, 11158 car., 1822ms) | 39 alvos < 44px; 6 textos < 11px; 9 elementos cortados | por classificar com a evidência |
 | notas | student @ 1366 px | ABRE (studentView, 11165 car., 1815ms) | 39 alvos < 44px; 6 textos < 11px; 9 elementos cortados | por classificar com a evidência |
@@ -374,11 +374,11 @@ Larguras com artefacto válido: 390 + 1280 + 1366 + 1440 + 1920 · ficheiros: `a
 | jogos-escolares | student @ 1366 px | ABRE (schoolGamesView, 865 car., 1824ms) | 8 alvos < 44px | por classificar com a evidência |
 | jogos-escolares | student @ 1440 px | ABRE (schoolGamesView, 865 car., 1821ms) | 8 alvos < 44px | por classificar com a evidência |
 | jogos-escolares | student @ 1920 px | ABRE (schoolGamesView, 865 car., 1822ms) | 8 alvos < 44px | por classificar com a evidência |
-| videos-aprender | student @ 390 px | SEM BOTÃO | declarada no bundle mas sem button[data-section] | por decidir: retirar do mapa ou ligar o botão |
-| videos-aprender | student @ 1280 px | SEM BOTÃO | declarada no bundle mas sem button[data-section] | por decidir: retirar do mapa ou ligar o botão |
-| videos-aprender | student @ 1366 px | SEM BOTÃO | declarada no bundle mas sem button[data-section] | por decidir: retirar do mapa ou ligar o botão |
-| videos-aprender | student @ 1440 px | SEM BOTÃO | declarada no bundle mas sem button[data-section] | por decidir: retirar do mapa ou ligar o botão |
-| videos-aprender | student @ 1920 px | SEM BOTÃO | declarada no bundle mas sem button[data-section] | por decidir: retirar do mapa ou ligar o botão |
+| videos-aprender | student @ 390 px | SEM BOTÃO | sem botão no DOM deste papel — classe medida no browser a 390 px: SEM_ITEM_EM_NENHUM_SELECTOR; bundle: 0× data-section, 0× botão | o bundle nunca monta esta rota: retirar do mapa ou criar a vista |
+| videos-aprender | student @ 1280 px | SEM BOTÃO | sem botão no DOM deste papel — classe medida no browser a 390 px: SEM_ITEM_EM_NENHUM_SELECTOR; bundle: 0× data-section, 0× botão | o bundle nunca monta esta rota: retirar do mapa ou criar a vista |
+| videos-aprender | student @ 1366 px | SEM BOTÃO | sem botão no DOM deste papel — classe medida no browser a 390 px: SEM_ITEM_EM_NENHUM_SELECTOR; bundle: 0× data-section, 0× botão | o bundle nunca monta esta rota: retirar do mapa ou criar a vista |
+| videos-aprender | student @ 1440 px | SEM BOTÃO | sem botão no DOM deste papel — classe medida no browser a 390 px: SEM_ITEM_EM_NENHUM_SELECTOR; bundle: 0× data-section, 0× botão | o bundle nunca monta esta rota: retirar do mapa ou criar a vista |
+| videos-aprender | student @ 1920 px | SEM BOTÃO | sem botão no DOM deste papel — classe medida no browser a 390 px: SEM_ITEM_EM_NENHUM_SELECTOR; bundle: 0× data-section, 0× botão | o bundle nunca monta esta rota: retirar do mapa ou criar a vista |
 | comunicados | student @ 390 px | ABRE (studentView, 11158 car., 1820ms) | 6 textos < 11px; 11 elementos cortados | por classificar com a evidência |
 | comunicados | student @ 1280 px | ABRE (studentView, 11158 car., 1831ms) | 39 alvos < 44px; 6 textos < 11px; 9 elementos cortados | por classificar com a evidência |
 | comunicados | student @ 1366 px | ABRE (studentView, 11165 car., 1811ms) | 39 alvos < 44px; 6 textos < 11px; 9 elementos cortados | por classificar com a evidência |
@@ -436,11 +436,11 @@ Larguras com artefacto válido: 390 + 1280 + 1366 + 1440 + 1920 · ficheiros: `a
 | professor-agenda | pedagogical @ 1366 px | ABRE (teacherView, 977 car., 1817ms) | 5 alvos < 44px; 2 textos < 11px | por classificar com a evidência |
 | professor-agenda | pedagogical @ 1440 px | ABRE (teacherView, 977 car., 1816ms) | 5 alvos < 44px; 2 textos < 11px | por classificar com a evidência |
 | professor-agenda | pedagogical @ 1920 px | ABRE (teacherView, 975 car., 1819ms) | 5 alvos < 44px; 2 textos < 11px | por classificar com a evidência |
-| professor-agenda-hoje | pedagogical @ 390 px | SEM BOTÃO | declarada no bundle mas sem button[data-section] | por decidir: retirar do mapa ou ligar o botão |
-| professor-agenda-hoje | pedagogical @ 1280 px | SEM BOTÃO | declarada no bundle mas sem button[data-section] | por decidir: retirar do mapa ou ligar o botão |
-| professor-agenda-hoje | pedagogical @ 1366 px | SEM BOTÃO | declarada no bundle mas sem button[data-section] | por decidir: retirar do mapa ou ligar o botão |
-| professor-agenda-hoje | pedagogical @ 1440 px | SEM BOTÃO | declarada no bundle mas sem button[data-section] | por decidir: retirar do mapa ou ligar o botão |
-| professor-agenda-hoje | pedagogical @ 1920 px | SEM BOTÃO | declarada no bundle mas sem button[data-section] | por decidir: retirar do mapa ou ligar o botão |
+| professor-agenda-hoje | pedagogical @ 390 px | SEM BOTÃO | sem botão no DOM deste papel — classe medida no browser a 390 px: SEM_ITEM_EM_NENHUM_SELECTOR; bundle: 0× data-section, 0× botão | o bundle nunca monta esta rota: retirar do mapa ou criar a vista |
+| professor-agenda-hoje | pedagogical @ 1280 px | SEM BOTÃO | sem botão no DOM deste papel — classe medida no browser a 390 px: SEM_ITEM_EM_NENHUM_SELECTOR; bundle: 0× data-section, 0× botão | o bundle nunca monta esta rota: retirar do mapa ou criar a vista |
+| professor-agenda-hoje | pedagogical @ 1366 px | SEM BOTÃO | sem botão no DOM deste papel — classe medida no browser a 390 px: SEM_ITEM_EM_NENHUM_SELECTOR; bundle: 0× data-section, 0× botão | o bundle nunca monta esta rota: retirar do mapa ou criar a vista |
+| professor-agenda-hoje | pedagogical @ 1440 px | SEM BOTÃO | sem botão no DOM deste papel — classe medida no browser a 390 px: SEM_ITEM_EM_NENHUM_SELECTOR; bundle: 0× data-section, 0× botão | o bundle nunca monta esta rota: retirar do mapa ou criar a vista |
+| professor-agenda-hoje | pedagogical @ 1920 px | SEM BOTÃO | sem botão no DOM deste papel — classe medida no browser a 390 px: SEM_ITEM_EM_NENHUM_SELECTOR; bundle: 0× data-section, 0× botão | o bundle nunca monta esta rota: retirar do mapa ou criar a vista |
 | professor-biblioteca | pedagogical @ 390 px | ABRE (teacherView, 828 car., 1812ms) | 2 textos < 11px | por classificar com a evidência |
 | professor-biblioteca | pedagogical @ 1280 px | ABRE (teacherView, 828 car., 1837ms) | 5 alvos < 44px; 2 textos < 11px | por classificar com a evidência |
 | professor-biblioteca | pedagogical @ 1366 px | ABRE (teacherView, 828 car., 1840ms) | 5 alvos < 44px; 2 textos < 11px | por classificar com a evidência |
@@ -491,11 +491,11 @@ Larguras com artefacto válido: 390 + 1280 + 1366 + 1440 + 1920 · ficheiros: `a
 | professor-notificacoes | pedagogical @ 1366 px | ABRE (teacherView, 877 car., 1823ms) | 5 alvos < 44px; 2 textos < 11px | por classificar com a evidência |
 | professor-notificacoes | pedagogical @ 1440 px | ABRE (teacherView, 877 car., 1830ms) | 5 alvos < 44px; 2 textos < 11px | por classificar com a evidência |
 | professor-notificacoes | pedagogical @ 1920 px | ABRE (teacherView, 875 car., 1829ms) | 5 alvos < 44px; 2 textos < 11px | por classificar com a evidência |
-| escola-historia | pedagogical @ 390 px | SEM BOTÃO | declarada no bundle mas sem button[data-section] | por decidir: retirar do mapa ou ligar o botão |
-| escola-historia | pedagogical @ 1280 px | SEM BOTÃO | declarada no bundle mas sem button[data-section] | por decidir: retirar do mapa ou ligar o botão |
-| escola-historia | pedagogical @ 1366 px | SEM BOTÃO | declarada no bundle mas sem button[data-section] | por decidir: retirar do mapa ou ligar o botão |
-| escola-historia | pedagogical @ 1440 px | SEM BOTÃO | declarada no bundle mas sem button[data-section] | por decidir: retirar do mapa ou ligar o botão |
-| escola-historia | pedagogical @ 1920 px | SEM BOTÃO | declarada no bundle mas sem button[data-section] | por decidir: retirar do mapa ou ligar o botão |
+| escola-historia | pedagogical @ 390 px | SEM BOTÃO | sem botão no DOM deste papel — classe medida no browser a 390 px: SEM_ITEM_EM_NENHUM_SELECTOR; bundle: 0× data-section, 0× botão | o bundle nunca monta esta rota: retirar do mapa ou criar a vista |
+| escola-historia | pedagogical @ 1280 px | SEM BOTÃO | sem botão no DOM deste papel — classe medida no browser a 390 px: SEM_ITEM_EM_NENHUM_SELECTOR; bundle: 0× data-section, 0× botão | o bundle nunca monta esta rota: retirar do mapa ou criar a vista |
+| escola-historia | pedagogical @ 1366 px | SEM BOTÃO | sem botão no DOM deste papel — classe medida no browser a 390 px: SEM_ITEM_EM_NENHUM_SELECTOR; bundle: 0× data-section, 0× botão | o bundle nunca monta esta rota: retirar do mapa ou criar a vista |
+| escola-historia | pedagogical @ 1440 px | SEM BOTÃO | sem botão no DOM deste papel — classe medida no browser a 390 px: SEM_ITEM_EM_NENHUM_SELECTOR; bundle: 0× data-section, 0× botão | o bundle nunca monta esta rota: retirar do mapa ou criar a vista |
+| escola-historia | pedagogical @ 1920 px | SEM BOTÃO | sem botão no DOM deste papel — classe medida no browser a 390 px: SEM_ITEM_EM_NENHUM_SELECTOR; bundle: 0× data-section, 0× botão | o bundle nunca monta esta rota: retirar do mapa ou criar a vista |
 | notificacoes | pedagogical @ 390 px | ABRE (bfrNotificationsView, 400 car., 1821ms) | — | — |
 | notificacoes | pedagogical @ 1280 px | ABRE (bfrNotificationsView, 400 car., 1833ms) | 3 alvos < 44px | por classificar com a evidência |
 | notificacoes | pedagogical @ 1366 px | ABRE (bfrNotificationsView, 400 car., 2430ms) | 3 alvos < 44px | por classificar com a evidência |
@@ -558,11 +558,11 @@ Larguras com artefacto válido: 390 + 1280 + 1366 + 1440 + 1920 · ficheiros: `a
 | atividades | coordinator @ 1366 px | ABRE (activityCenterView, 1011 car., 1845ms) | 15 alvos < 44px | por classificar com a evidência |
 | atividades | coordinator @ 1440 px | ABRE (activityCenterView, 1011 car., 1827ms) | 15 alvos < 44px | por classificar com a evidência |
 | atividades | coordinator @ 1920 px | ABRE (activityCenterView, 1011 car., 1844ms) | 15 alvos < 44px | por classificar com a evidência |
-| escola-historia | coordinator @ 390 px | SEM BOTÃO | declarada no bundle mas sem button[data-section] | por decidir: retirar do mapa ou ligar o botão |
-| escola-historia | coordinator @ 1280 px | SEM BOTÃO | declarada no bundle mas sem button[data-section] | por decidir: retirar do mapa ou ligar o botão |
-| escola-historia | coordinator @ 1366 px | SEM BOTÃO | declarada no bundle mas sem button[data-section] | por decidir: retirar do mapa ou ligar o botão |
-| escola-historia | coordinator @ 1440 px | SEM BOTÃO | declarada no bundle mas sem button[data-section] | por decidir: retirar do mapa ou ligar o botão |
-| escola-historia | coordinator @ 1920 px | SEM BOTÃO | declarada no bundle mas sem button[data-section] | por decidir: retirar do mapa ou ligar o botão |
+| escola-historia | coordinator @ 390 px | SEM BOTÃO | sem botão no DOM deste papel — classe medida no browser a 390 px: SEM_ITEM_EM_NENHUM_SELECTOR; bundle: 0× data-section, 0× botão | o bundle nunca monta esta rota: retirar do mapa ou criar a vista |
+| escola-historia | coordinator @ 1280 px | SEM BOTÃO | sem botão no DOM deste papel — classe medida no browser a 390 px: SEM_ITEM_EM_NENHUM_SELECTOR; bundle: 0× data-section, 0× botão | o bundle nunca monta esta rota: retirar do mapa ou criar a vista |
+| escola-historia | coordinator @ 1366 px | SEM BOTÃO | sem botão no DOM deste papel — classe medida no browser a 390 px: SEM_ITEM_EM_NENHUM_SELECTOR; bundle: 0× data-section, 0× botão | o bundle nunca monta esta rota: retirar do mapa ou criar a vista |
+| escola-historia | coordinator @ 1440 px | SEM BOTÃO | sem botão no DOM deste papel — classe medida no browser a 390 px: SEM_ITEM_EM_NENHUM_SELECTOR; bundle: 0× data-section, 0× botão | o bundle nunca monta esta rota: retirar do mapa ou criar a vista |
+| escola-historia | coordinator @ 1920 px | SEM BOTÃO | sem botão no DOM deste papel — classe medida no browser a 390 px: SEM_ITEM_EM_NENHUM_SELECTOR; bundle: 0× data-section, 0× botão | o bundle nunca monta esta rota: retirar do mapa ou criar a vista |
 | notificacoes | coordinator @ 390 px | ABRE (bfrNotificationsView, 400 car., 1854ms) | — | — |
 | notificacoes | coordinator @ 1280 px | ABRE (bfrNotificationsView, 400 car., 1831ms) | 3 alvos < 44px | por classificar com a evidência |
 | notificacoes | coordinator @ 1366 px | ABRE (bfrNotificationsView, 400 car., 1829ms) | 3 alvos < 44px | por classificar com a evidência |
@@ -593,11 +593,11 @@ Larguras com artefacto válido: 390 + 1280 + 1366 + 1440 + 1920 · ficheiros: `a
 | chat-interno | coordinator @ 1366 px | ABRE (internalChatView, 465 car., 1828ms) | 10 alvos < 44px | por classificar com a evidência |
 | chat-interno | coordinator @ 1440 px | ABRE (internalChatView, 465 car., 1864ms) | 10 alvos < 44px | por classificar com a evidência |
 | chat-interno | coordinator @ 1920 px | ABRE (internalChatView, 465 car., 1865ms) | 10 alvos < 44px | por classificar com a evidência |
-| coordenacao-chat | coordinator @ 390 px | SEM BOTÃO | declarada no bundle mas sem button[data-section] | por decidir: retirar do mapa ou ligar o botão |
-| coordenacao-chat | coordinator @ 1280 px | SEM BOTÃO | declarada no bundle mas sem button[data-section] | por decidir: retirar do mapa ou ligar o botão |
-| coordenacao-chat | coordinator @ 1366 px | SEM BOTÃO | declarada no bundle mas sem button[data-section] | por decidir: retirar do mapa ou ligar o botão |
-| coordenacao-chat | coordinator @ 1440 px | SEM BOTÃO | declarada no bundle mas sem button[data-section] | por decidir: retirar do mapa ou ligar o botão |
-| coordenacao-chat | coordinator @ 1920 px | SEM BOTÃO | declarada no bundle mas sem button[data-section] | por decidir: retirar do mapa ou ligar o botão |
+| coordenacao-chat | coordinator @ 390 px | SEM BOTÃO | sem botão no DOM deste papel — classe medida no browser a 390 px: SEM_ITEM_EM_NENHUM_SELECTOR; bundle: 0× data-section, 0× botão | o bundle nunca monta esta rota: retirar do mapa ou criar a vista |
+| coordenacao-chat | coordinator @ 1280 px | SEM BOTÃO | sem botão no DOM deste papel — classe medida no browser a 390 px: SEM_ITEM_EM_NENHUM_SELECTOR; bundle: 0× data-section, 0× botão | o bundle nunca monta esta rota: retirar do mapa ou criar a vista |
+| coordenacao-chat | coordinator @ 1366 px | SEM BOTÃO | sem botão no DOM deste papel — classe medida no browser a 390 px: SEM_ITEM_EM_NENHUM_SELECTOR; bundle: 0× data-section, 0× botão | o bundle nunca monta esta rota: retirar do mapa ou criar a vista |
+| coordenacao-chat | coordinator @ 1440 px | SEM BOTÃO | sem botão no DOM deste papel — classe medida no browser a 390 px: SEM_ITEM_EM_NENHUM_SELECTOR; bundle: 0× data-section, 0× botão | o bundle nunca monta esta rota: retirar do mapa ou criar a vista |
+| coordenacao-chat | coordinator @ 1920 px | SEM BOTÃO | sem botão no DOM deste papel — classe medida no browser a 390 px: SEM_ITEM_EM_NENHUM_SELECTOR; bundle: 0× data-section, 0× botão | o bundle nunca monta esta rota: retirar do mapa ou criar a vista |
 | jogos-escolares | coordinator @ 390 px | ABRE (schoolGamesView, 220 car., 1848ms) | — | — |
 | jogos-escolares | coordinator @ 1280 px | ABRE (schoolGamesView, 220 car., 1824ms) | 2 alvos < 44px | por classificar com a evidência |
 | jogos-escolares | coordinator @ 1366 px | ABRE (schoolGamesView, 220 car., 1845ms) | 2 alvos < 44px | por classificar com a evidência |
@@ -635,11 +635,11 @@ Larguras com artefacto válido: 390 + 1280 + 1366 + 1440 + 1920 · ficheiros: `a
 | comunicados | secretary @ 1366 px | ABRE (secretaryView, 56627 car., 1821ms) | 529 alvos < 44px; 6 elementos cortados | por classificar com a evidência |
 | comunicados | secretary @ 1440 px | ABRE (secretaryView, 56621 car., 1820ms) | 529 alvos < 44px; 5 elementos cortados | por classificar com a evidência |
 | comunicados | secretary @ 1920 px | ABRE (secretaryView, 56629 car., 1826ms) | 530 alvos < 44px; 4 elementos cortados | por classificar com a evidência |
-| escola-historia | secretary @ 390 px | SEM BOTÃO | declarada no bundle mas sem button[data-section] | por decidir: retirar do mapa ou ligar o botão |
-| escola-historia | secretary @ 1280 px | SEM BOTÃO | declarada no bundle mas sem button[data-section] | por decidir: retirar do mapa ou ligar o botão |
-| escola-historia | secretary @ 1366 px | SEM BOTÃO | declarada no bundle mas sem button[data-section] | por decidir: retirar do mapa ou ligar o botão |
-| escola-historia | secretary @ 1440 px | SEM BOTÃO | declarada no bundle mas sem button[data-section] | por decidir: retirar do mapa ou ligar o botão |
-| escola-historia | secretary @ 1920 px | SEM BOTÃO | declarada no bundle mas sem button[data-section] | por decidir: retirar do mapa ou ligar o botão |
+| escola-historia | secretary @ 390 px | SEM BOTÃO | sem botão no DOM deste papel — classe medida no browser a 390 px: SEM_ITEM_EM_NENHUM_SELECTOR; bundle: 0× data-section, 0× botão | o bundle nunca monta esta rota: retirar do mapa ou criar a vista |
+| escola-historia | secretary @ 1280 px | SEM BOTÃO | sem botão no DOM deste papel — classe medida no browser a 390 px: SEM_ITEM_EM_NENHUM_SELECTOR; bundle: 0× data-section, 0× botão | o bundle nunca monta esta rota: retirar do mapa ou criar a vista |
+| escola-historia | secretary @ 1366 px | SEM BOTÃO | sem botão no DOM deste papel — classe medida no browser a 390 px: SEM_ITEM_EM_NENHUM_SELECTOR; bundle: 0× data-section, 0× botão | o bundle nunca monta esta rota: retirar do mapa ou criar a vista |
+| escola-historia | secretary @ 1440 px | SEM BOTÃO | sem botão no DOM deste papel — classe medida no browser a 390 px: SEM_ITEM_EM_NENHUM_SELECTOR; bundle: 0× data-section, 0× botão | o bundle nunca monta esta rota: retirar do mapa ou criar a vista |
+| escola-historia | secretary @ 1920 px | SEM BOTÃO | sem botão no DOM deste papel — classe medida no browser a 390 px: SEM_ITEM_EM_NENHUM_SELECTOR; bundle: 0× data-section, 0× botão | o bundle nunca monta esta rota: retirar do mapa ou criar a vista |
 | notificacoes | secretary @ 390 px | ABRE (bfrNotificationsView, 400 car., 1852ms) | — | — |
 | notificacoes | secretary @ 1280 px | ABRE (bfrNotificationsView, 400 car., 1847ms) | 3 alvos < 44px | por classificar com a evidência |
 | notificacoes | secretary @ 1366 px | ABRE (bfrNotificationsView, 400 car., 1815ms) | 3 alvos < 44px | por classificar com a evidência |
@@ -660,11 +660,11 @@ Larguras com artefacto válido: 390 + 1280 + 1366 + 1440 + 1920 · ficheiros: `a
 | chat-interno | secretary @ 1366 px | ABRE (internalChatView, 738 car., 1816ms) | 11 alvos < 44px; 7 textos < 11px | por classificar com a evidência |
 | chat-interno | secretary @ 1440 px | ABRE (internalChatView, 738 car., 2424ms) | 11 alvos < 44px; 7 textos < 11px | por classificar com a evidência |
 | chat-interno | secretary @ 1920 px | ABRE (internalChatView, 738 car., 1831ms) | 11 alvos < 44px; 7 textos < 11px | por classificar com a evidência |
-| coordenacao-chat | secretary @ 390 px | SEM BOTÃO | declarada no bundle mas sem button[data-section] | por decidir: retirar do mapa ou ligar o botão |
-| coordenacao-chat | secretary @ 1280 px | SEM BOTÃO | declarada no bundle mas sem button[data-section] | por decidir: retirar do mapa ou ligar o botão |
-| coordenacao-chat | secretary @ 1366 px | SEM BOTÃO | declarada no bundle mas sem button[data-section] | por decidir: retirar do mapa ou ligar o botão |
-| coordenacao-chat | secretary @ 1440 px | SEM BOTÃO | declarada no bundle mas sem button[data-section] | por decidir: retirar do mapa ou ligar o botão |
-| coordenacao-chat | secretary @ 1920 px | SEM BOTÃO | declarada no bundle mas sem button[data-section] | por decidir: retirar do mapa ou ligar o botão |
+| coordenacao-chat | secretary @ 390 px | SEM BOTÃO | sem botão no DOM deste papel — classe medida no browser a 390 px: SEM_ITEM_EM_NENHUM_SELECTOR; bundle: 0× data-section, 0× botão | o bundle nunca monta esta rota: retirar do mapa ou criar a vista |
+| coordenacao-chat | secretary @ 1280 px | SEM BOTÃO | sem botão no DOM deste papel — classe medida no browser a 390 px: SEM_ITEM_EM_NENHUM_SELECTOR; bundle: 0× data-section, 0× botão | o bundle nunca monta esta rota: retirar do mapa ou criar a vista |
+| coordenacao-chat | secretary @ 1366 px | SEM BOTÃO | sem botão no DOM deste papel — classe medida no browser a 390 px: SEM_ITEM_EM_NENHUM_SELECTOR; bundle: 0× data-section, 0× botão | o bundle nunca monta esta rota: retirar do mapa ou criar a vista |
+| coordenacao-chat | secretary @ 1440 px | SEM BOTÃO | sem botão no DOM deste papel — classe medida no browser a 390 px: SEM_ITEM_EM_NENHUM_SELECTOR; bundle: 0× data-section, 0× botão | o bundle nunca monta esta rota: retirar do mapa ou criar a vista |
+| coordenacao-chat | secretary @ 1920 px | SEM BOTÃO | sem botão no DOM deste papel — classe medida no browser a 390 px: SEM_ITEM_EM_NENHUM_SELECTOR; bundle: 0× data-section, 0× botão | o bundle nunca monta esta rota: retirar do mapa ou criar a vista |
 | jogos-escolares | secretary @ 390 px | ABRE (schoolGamesView, 865 car., 1827ms) | — | — |
 | jogos-escolares | secretary @ 1280 px | ABRE (schoolGamesView, 865 car., 1848ms) | 8 alvos < 44px | por classificar com a evidência |
 | jogos-escolares | secretary @ 1366 px | ABRE (schoolGamesView, 865 car., 1824ms) | 8 alvos < 44px | por classificar com a evidência |
@@ -707,11 +707,11 @@ Larguras com artefacto válido: 390 + 1280 + 1366 + 1440 + 1920 · ficheiros: `a
 | comunicados | aee @ 1366 px | ABRE (aeeView, 6465 car., 1835ms) | 74 alvos < 44px; 4 elementos cortados | por classificar com a evidência |
 | comunicados | aee @ 1440 px | ABRE (aeeView, 6459 car., 1812ms) | 74 alvos < 44px; 4 elementos cortados | por classificar com a evidência |
 | comunicados | aee @ 1920 px | ABRE (aeeView, 6467 car., 1810ms) | 74 alvos < 44px; 4 elementos cortados | por classificar com a evidência |
-| escola-historia | aee @ 390 px | SEM BOTÃO | declarada no bundle mas sem button[data-section] | por decidir: retirar do mapa ou ligar o botão |
-| escola-historia | aee @ 1280 px | SEM BOTÃO | declarada no bundle mas sem button[data-section] | por decidir: retirar do mapa ou ligar o botão |
-| escola-historia | aee @ 1366 px | SEM BOTÃO | declarada no bundle mas sem button[data-section] | por decidir: retirar do mapa ou ligar o botão |
-| escola-historia | aee @ 1440 px | SEM BOTÃO | declarada no bundle mas sem button[data-section] | por decidir: retirar do mapa ou ligar o botão |
-| escola-historia | aee @ 1920 px | SEM BOTÃO | declarada no bundle mas sem button[data-section] | por decidir: retirar do mapa ou ligar o botão |
+| escola-historia | aee @ 390 px | SEM BOTÃO | sem botão no DOM deste papel — classe medida no browser a 390 px: SEM_ITEM_EM_NENHUM_SELECTOR; bundle: 0× data-section, 0× botão | o bundle nunca monta esta rota: retirar do mapa ou criar a vista |
+| escola-historia | aee @ 1280 px | SEM BOTÃO | sem botão no DOM deste papel — classe medida no browser a 390 px: SEM_ITEM_EM_NENHUM_SELECTOR; bundle: 0× data-section, 0× botão | o bundle nunca monta esta rota: retirar do mapa ou criar a vista |
+| escola-historia | aee @ 1366 px | SEM BOTÃO | sem botão no DOM deste papel — classe medida no browser a 390 px: SEM_ITEM_EM_NENHUM_SELECTOR; bundle: 0× data-section, 0× botão | o bundle nunca monta esta rota: retirar do mapa ou criar a vista |
+| escola-historia | aee @ 1440 px | SEM BOTÃO | sem botão no DOM deste papel — classe medida no browser a 390 px: SEM_ITEM_EM_NENHUM_SELECTOR; bundle: 0× data-section, 0× botão | o bundle nunca monta esta rota: retirar do mapa ou criar a vista |
+| escola-historia | aee @ 1920 px | SEM BOTÃO | sem botão no DOM deste papel — classe medida no browser a 390 px: SEM_ITEM_EM_NENHUM_SELECTOR; bundle: 0× data-section, 0× botão | o bundle nunca monta esta rota: retirar do mapa ou criar a vista |
 | notificacoes | aee @ 390 px | ABRE (bfrNotificationsView, 400 car., 1836ms) | — | — |
 | notificacoes | aee @ 1280 px | ABRE (bfrNotificationsView, 400 car., 1811ms) | 3 alvos < 44px | por classificar com a evidência |
 | notificacoes | aee @ 1366 px | ABRE (bfrNotificationsView, 400 car., 1824ms) | 3 alvos < 44px | por classificar com a evidência |
@@ -764,11 +764,11 @@ Larguras com artefacto válido: 390 + 1280 + 1366 + 1440 + 1920 · ficheiros: `a
 | coordenacao | director @ 1366 px | ABRE (directorView, 6072 car., 1820ms) | 37 alvos < 44px; 12 textos < 11px | por classificar com a evidência |
 | coordenacao | director @ 1440 px | ABRE (directorView, 6072 car., 1837ms) | 37 alvos < 44px; 12 textos < 11px | por classificar com a evidência |
 | coordenacao | director @ 1920 px | ABRE (directorView, 6072 car., 1829ms) | 37 alvos < 44px; 12 textos < 11px; 3 elementos cortados | por classificar com a evidência |
-| escola-historia | director @ 390 px | SEM BOTÃO | declarada no bundle mas sem button[data-section] | por decidir: retirar do mapa ou ligar o botão |
-| escola-historia | director @ 1280 px | SEM BOTÃO | declarada no bundle mas sem button[data-section] | por decidir: retirar do mapa ou ligar o botão |
-| escola-historia | director @ 1366 px | SEM BOTÃO | declarada no bundle mas sem button[data-section] | por decidir: retirar do mapa ou ligar o botão |
-| escola-historia | director @ 1440 px | SEM BOTÃO | declarada no bundle mas sem button[data-section] | por decidir: retirar do mapa ou ligar o botão |
-| escola-historia | director @ 1920 px | SEM BOTÃO | declarada no bundle mas sem button[data-section] | por decidir: retirar do mapa ou ligar o botão |
+| escola-historia | director @ 390 px | SEM BOTÃO | sem botão no DOM deste papel — classe medida no browser a 390 px: SEM_ITEM_EM_NENHUM_SELECTOR; bundle: 0× data-section, 0× botão | o bundle nunca monta esta rota: retirar do mapa ou criar a vista |
+| escola-historia | director @ 1280 px | SEM BOTÃO | sem botão no DOM deste papel — classe medida no browser a 390 px: SEM_ITEM_EM_NENHUM_SELECTOR; bundle: 0× data-section, 0× botão | o bundle nunca monta esta rota: retirar do mapa ou criar a vista |
+| escola-historia | director @ 1366 px | SEM BOTÃO | sem botão no DOM deste papel — classe medida no browser a 390 px: SEM_ITEM_EM_NENHUM_SELECTOR; bundle: 0× data-section, 0× botão | o bundle nunca monta esta rota: retirar do mapa ou criar a vista |
+| escola-historia | director @ 1440 px | SEM BOTÃO | sem botão no DOM deste papel — classe medida no browser a 390 px: SEM_ITEM_EM_NENHUM_SELECTOR; bundle: 0× data-section, 0× botão | o bundle nunca monta esta rota: retirar do mapa ou criar a vista |
+| escola-historia | director @ 1920 px | SEM BOTÃO | sem botão no DOM deste papel — classe medida no browser a 390 px: SEM_ITEM_EM_NENHUM_SELECTOR; bundle: 0× data-section, 0× botão | o bundle nunca monta esta rota: retirar do mapa ou criar a vista |
 | notificacoes | director @ 390 px | ABRE (bfrNotificationsView, 400 car., 1814ms) | — | — |
 | notificacoes | director @ 1280 px | ABRE (bfrNotificationsView, 400 car., 1830ms) | 3 alvos < 44px | por classificar com a evidência |
 | notificacoes | director @ 1366 px | ABRE (bfrNotificationsView, 400 car., 1829ms) | 3 alvos < 44px | por classificar com a evidência |
@@ -789,11 +789,11 @@ Larguras com artefacto válido: 390 + 1280 + 1366 + 1440 + 1920 · ficheiros: `a
 | chat-interno | director @ 1366 px | ABRE (internalChatView, 738 car., 1841ms) | 11 alvos < 44px; 7 textos < 11px | por classificar com a evidência |
 | chat-interno | director @ 1440 px | ABRE (internalChatView, 738 car., 1832ms) | 11 alvos < 44px; 7 textos < 11px | por classificar com a evidência |
 | chat-interno | director @ 1920 px | ABRE (internalChatView, 738 car., 1832ms) | 11 alvos < 44px; 7 textos < 11px | por classificar com a evidência |
-| coordenacao-chat | director @ 390 px | SEM BOTÃO | declarada no bundle mas sem button[data-section] | por decidir: retirar do mapa ou ligar o botão |
-| coordenacao-chat | director @ 1280 px | SEM BOTÃO | declarada no bundle mas sem button[data-section] | por decidir: retirar do mapa ou ligar o botão |
-| coordenacao-chat | director @ 1366 px | SEM BOTÃO | declarada no bundle mas sem button[data-section] | por decidir: retirar do mapa ou ligar o botão |
-| coordenacao-chat | director @ 1440 px | SEM BOTÃO | declarada no bundle mas sem button[data-section] | por decidir: retirar do mapa ou ligar o botão |
-| coordenacao-chat | director @ 1920 px | SEM BOTÃO | declarada no bundle mas sem button[data-section] | por decidir: retirar do mapa ou ligar o botão |
+| coordenacao-chat | director @ 390 px | SEM BOTÃO | sem botão no DOM deste papel — classe medida no browser a 390 px: SEM_ITEM_EM_NENHUM_SELECTOR; bundle: 0× data-section, 0× botão | o bundle nunca monta esta rota: retirar do mapa ou criar a vista |
+| coordenacao-chat | director @ 1280 px | SEM BOTÃO | sem botão no DOM deste papel — classe medida no browser a 390 px: SEM_ITEM_EM_NENHUM_SELECTOR; bundle: 0× data-section, 0× botão | o bundle nunca monta esta rota: retirar do mapa ou criar a vista |
+| coordenacao-chat | director @ 1366 px | SEM BOTÃO | sem botão no DOM deste papel — classe medida no browser a 390 px: SEM_ITEM_EM_NENHUM_SELECTOR; bundle: 0× data-section, 0× botão | o bundle nunca monta esta rota: retirar do mapa ou criar a vista |
+| coordenacao-chat | director @ 1440 px | SEM BOTÃO | sem botão no DOM deste papel — classe medida no browser a 390 px: SEM_ITEM_EM_NENHUM_SELECTOR; bundle: 0× data-section, 0× botão | o bundle nunca monta esta rota: retirar do mapa ou criar a vista |
+| coordenacao-chat | director @ 1920 px | SEM BOTÃO | sem botão no DOM deste papel — classe medida no browser a 390 px: SEM_ITEM_EM_NENHUM_SELECTOR; bundle: 0× data-section, 0× botão | o bundle nunca monta esta rota: retirar do mapa ou criar a vista |
 | jogos-escolares | director @ 390 px | ABRE (schoolGamesView, 1093 car., 1821ms) | — | — |
 | jogos-escolares | director @ 1280 px | ABRE (schoolGamesView, 1093 car., 1818ms) | 13 alvos < 44px | por classificar com a evidência |
 | jogos-escolares | director @ 1366 px | ABRE (schoolGamesView, 1093 car., 1830ms) | 13 alvos < 44px | por classificar com a evidência |
@@ -907,11 +907,11 @@ Larguras com artefacto válido: 390 + 1280 + 1366 + 1440 + 1920 · ficheiros: `a
 | comunicados | education_supervisor @ 1366 px | ABRE (secretaryView, 3136 car., 1809ms) | 26 alvos < 44px; 6 elementos cortados | por classificar com a evidência |
 | comunicados | education_supervisor @ 1440 px | ABRE (secretaryView, 3130 car., 1820ms) | 26 alvos < 44px; 5 elementos cortados | por classificar com a evidência |
 | comunicados | education_supervisor @ 1920 px | ABRE (secretaryView, 3138 car., 1827ms) | 27 alvos < 44px; 4 elementos cortados | por classificar com a evidência |
-| escola-historia | education_supervisor @ 390 px | SEM BOTÃO | declarada no bundle mas sem button[data-section] | por decidir: retirar do mapa ou ligar o botão |
-| escola-historia | education_supervisor @ 1280 px | SEM BOTÃO | declarada no bundle mas sem button[data-section] | por decidir: retirar do mapa ou ligar o botão |
-| escola-historia | education_supervisor @ 1366 px | SEM BOTÃO | declarada no bundle mas sem button[data-section] | por decidir: retirar do mapa ou ligar o botão |
-| escola-historia | education_supervisor @ 1440 px | SEM BOTÃO | declarada no bundle mas sem button[data-section] | por decidir: retirar do mapa ou ligar o botão |
-| escola-historia | education_supervisor @ 1920 px | SEM BOTÃO | declarada no bundle mas sem button[data-section] | por decidir: retirar do mapa ou ligar o botão |
+| escola-historia | education_supervisor @ 390 px | SEM BOTÃO | sem botão no DOM deste papel — classe medida no browser a 390 px: SEM_ITEM_EM_NENHUM_SELECTOR; bundle: 0× data-section, 0× botão | o bundle nunca monta esta rota: retirar do mapa ou criar a vista |
+| escola-historia | education_supervisor @ 1280 px | SEM BOTÃO | sem botão no DOM deste papel — classe medida no browser a 390 px: SEM_ITEM_EM_NENHUM_SELECTOR; bundle: 0× data-section, 0× botão | o bundle nunca monta esta rota: retirar do mapa ou criar a vista |
+| escola-historia | education_supervisor @ 1366 px | SEM BOTÃO | sem botão no DOM deste papel — classe medida no browser a 390 px: SEM_ITEM_EM_NENHUM_SELECTOR; bundle: 0× data-section, 0× botão | o bundle nunca monta esta rota: retirar do mapa ou criar a vista |
+| escola-historia | education_supervisor @ 1440 px | SEM BOTÃO | sem botão no DOM deste papel — classe medida no browser a 390 px: SEM_ITEM_EM_NENHUM_SELECTOR; bundle: 0× data-section, 0× botão | o bundle nunca monta esta rota: retirar do mapa ou criar a vista |
+| escola-historia | education_supervisor @ 1920 px | SEM BOTÃO | sem botão no DOM deste papel — classe medida no browser a 390 px: SEM_ITEM_EM_NENHUM_SELECTOR; bundle: 0× data-section, 0× botão | o bundle nunca monta esta rota: retirar do mapa ou criar a vista |
 | notificacoes | education_supervisor @ 390 px | ABRE (bfrNotificationsView, 343 car., 1810ms) | — | — |
 | notificacoes | education_supervisor @ 1280 px | ABRE (bfrNotificationsView, 343 car., 1823ms) | 2 alvos < 44px | por classificar com a evidência |
 | notificacoes | education_supervisor @ 1366 px | ABRE (bfrNotificationsView, 343 car., 1811ms) | 2 alvos < 44px | por classificar com a evidência |
@@ -922,21 +922,21 @@ Larguras com artefacto válido: 390 + 1280 + 1366 + 1440 + 1920 · ficheiros: `a
 | conteudos | education_supervisor @ 1366 px | ABRE (bfrContentHubView, 1021 car., 1830ms) | 14 alvos < 44px; 3 textos < 11px | por classificar com a evidência |
 | conteudos | education_supervisor @ 1440 px | ABRE (bfrContentHubView, 1021 car., 1824ms) | 14 alvos < 44px; 3 textos < 11px | por classificar com a evidência |
 | conteudos | education_supervisor @ 1920 px | ABRE (bfrContentHubView, 1021 car., 1807ms) | 14 alvos < 44px; 3 textos < 11px | por classificar com a evidência |
-| comunicacao | education_supervisor @ 390 px | SEM BOTÃO | declarada no bundle mas sem button[data-section] | por decidir: retirar do mapa ou ligar o botão |
-| comunicacao | education_supervisor @ 1280 px | SEM BOTÃO | declarada no bundle mas sem button[data-section] | por decidir: retirar do mapa ou ligar o botão |
-| comunicacao | education_supervisor @ 1366 px | SEM BOTÃO | declarada no bundle mas sem button[data-section] | por decidir: retirar do mapa ou ligar o botão |
-| comunicacao | education_supervisor @ 1440 px | SEM BOTÃO | declarada no bundle mas sem button[data-section] | por decidir: retirar do mapa ou ligar o botão |
-| comunicacao | education_supervisor @ 1920 px | SEM BOTÃO | declarada no bundle mas sem button[data-section] | por decidir: retirar do mapa ou ligar o botão |
+| comunicacao | education_supervisor @ 390 px | SEM BOTÃO | sem botão no DOM deste papel — classe medida no browser a 390 px: SEM_ITEM_EM_NENHUM_SELECTOR; bundle: 1× data-section, 4× botão | o bundle tem a porta e este papel não a vê: decidir se é gate pretendido |
+| comunicacao | education_supervisor @ 1280 px | SEM BOTÃO | sem botão no DOM deste papel — classe medida no browser a 390 px: SEM_ITEM_EM_NENHUM_SELECTOR; bundle: 1× data-section, 4× botão | o bundle tem a porta e este papel não a vê: decidir se é gate pretendido |
+| comunicacao | education_supervisor @ 1366 px | SEM BOTÃO | sem botão no DOM deste papel — classe medida no browser a 390 px: SEM_ITEM_EM_NENHUM_SELECTOR; bundle: 1× data-section, 4× botão | o bundle tem a porta e este papel não a vê: decidir se é gate pretendido |
+| comunicacao | education_supervisor @ 1440 px | SEM BOTÃO | sem botão no DOM deste papel — classe medida no browser a 390 px: SEM_ITEM_EM_NENHUM_SELECTOR; bundle: 1× data-section, 4× botão | o bundle tem a porta e este papel não a vê: decidir se é gate pretendido |
+| comunicacao | education_supervisor @ 1920 px | SEM BOTÃO | sem botão no DOM deste papel — classe medida no browser a 390 px: SEM_ITEM_EM_NENHUM_SELECTOR; bundle: 1× data-section, 4× botão | o bundle tem a porta e este papel não a vê: decidir se é gate pretendido |
 | chat-interno | education_supervisor @ 390 px | PAINEL VAZIO | abriu sem caracteres | por classificar |
 | chat-interno | education_supervisor @ 1280 px | PAINEL VAZIO | abriu sem caracteres | por classificar |
 | chat-interno | education_supervisor @ 1366 px | PAINEL VAZIO | abriu sem caracteres | por classificar |
 | chat-interno | education_supervisor @ 1440 px | PAINEL VAZIO | abriu sem caracteres | por classificar |
 | chat-interno | education_supervisor @ 1920 px | PAINEL VAZIO | abriu sem caracteres | por classificar |
-| coordenacao-chat | education_supervisor @ 390 px | SEM BOTÃO | declarada no bundle mas sem button[data-section] | por decidir: retirar do mapa ou ligar o botão |
-| coordenacao-chat | education_supervisor @ 1280 px | SEM BOTÃO | declarada no bundle mas sem button[data-section] | por decidir: retirar do mapa ou ligar o botão |
-| coordenacao-chat | education_supervisor @ 1366 px | SEM BOTÃO | declarada no bundle mas sem button[data-section] | por decidir: retirar do mapa ou ligar o botão |
-| coordenacao-chat | education_supervisor @ 1440 px | SEM BOTÃO | declarada no bundle mas sem button[data-section] | por decidir: retirar do mapa ou ligar o botão |
-| coordenacao-chat | education_supervisor @ 1920 px | SEM BOTÃO | declarada no bundle mas sem button[data-section] | por decidir: retirar do mapa ou ligar o botão |
+| coordenacao-chat | education_supervisor @ 390 px | SEM BOTÃO | sem botão no DOM deste papel — classe medida no browser a 390 px: SEM_ITEM_EM_NENHUM_SELECTOR; bundle: 0× data-section, 0× botão | o bundle nunca monta esta rota: retirar do mapa ou criar a vista |
+| coordenacao-chat | education_supervisor @ 1280 px | SEM BOTÃO | sem botão no DOM deste papel — classe medida no browser a 390 px: SEM_ITEM_EM_NENHUM_SELECTOR; bundle: 0× data-section, 0× botão | o bundle nunca monta esta rota: retirar do mapa ou criar a vista |
+| coordenacao-chat | education_supervisor @ 1366 px | SEM BOTÃO | sem botão no DOM deste papel — classe medida no browser a 390 px: SEM_ITEM_EM_NENHUM_SELECTOR; bundle: 0× data-section, 0× botão | o bundle nunca monta esta rota: retirar do mapa ou criar a vista |
+| coordenacao-chat | education_supervisor @ 1440 px | SEM BOTÃO | sem botão no DOM deste papel — classe medida no browser a 390 px: SEM_ITEM_EM_NENHUM_SELECTOR; bundle: 0× data-section, 0× botão | o bundle nunca monta esta rota: retirar do mapa ou criar a vista |
+| coordenacao-chat | education_supervisor @ 1920 px | SEM BOTÃO | sem botão no DOM deste papel — classe medida no browser a 390 px: SEM_ITEM_EM_NENHUM_SELECTOR; bundle: 0× data-section, 0× botão | o bundle nunca monta esta rota: retirar do mapa ou criar a vista |
 | jogos-escolares | education_supervisor @ 390 px | ABRE (schoolGamesView, 865 car., 1821ms) | — | — |
 | jogos-escolares | education_supervisor @ 1280 px | ABRE (schoolGamesView, 865 car., 1830ms) | 8 alvos < 44px | por classificar com a evidência |
 | jogos-escolares | education_supervisor @ 1366 px | ABRE (schoolGamesView, 865 car., 1840ms) | 8 alvos < 44px | por classificar com a evidência |
@@ -947,11 +947,11 @@ Larguras com artefacto válido: 390 + 1280 + 1366 + 1440 + 1920 · ficheiros: `a
 | fotos | education_supervisor @ 1366 px | ABRE (schoolGamesView, 865 car., 1818ms) | 8 alvos < 44px; o app declara seção «jogos-escolares» | por classificar com a evidência |
 | fotos | education_supervisor @ 1440 px | ABRE (schoolGamesView, 865 car., 1818ms) | 8 alvos < 44px; o app declara seção «jogos-escolares» | por classificar com a evidência |
 | fotos | education_supervisor @ 1920 px | ABRE (schoolGamesView, 865 car., 1819ms) | 8 alvos < 44px; o app declara seção «jogos-escolares» | por classificar com a evidência |
-| supervisao | education_supervisor @ 390 px | SEM BOTÃO | declarada no bundle mas sem button[data-section] | por decidir: retirar do mapa ou ligar o botão |
-| supervisao | education_supervisor @ 1280 px | SEM BOTÃO | declarada no bundle mas sem button[data-section] | por decidir: retirar do mapa ou ligar o botão |
-| supervisao | education_supervisor @ 1366 px | SEM BOTÃO | declarada no bundle mas sem button[data-section] | por decidir: retirar do mapa ou ligar o botão |
-| supervisao | education_supervisor @ 1440 px | SEM BOTÃO | declarada no bundle mas sem button[data-section] | por decidir: retirar do mapa ou ligar o botão |
-| supervisao | education_supervisor @ 1920 px | SEM BOTÃO | declarada no bundle mas sem button[data-section] | por decidir: retirar do mapa ou ligar o botão |
+| supervisao | education_supervisor @ 390 px | SEM BOTÃO | sem botão no DOM deste papel — classe medida no browser a 390 px: SEM_ITEM_EM_NENHUM_SELECTOR; bundle: 0× data-section, 0× botão | o bundle nunca monta esta rota: retirar do mapa ou criar a vista |
+| supervisao | education_supervisor @ 1280 px | SEM BOTÃO | sem botão no DOM deste papel — classe medida no browser a 390 px: SEM_ITEM_EM_NENHUM_SELECTOR; bundle: 0× data-section, 0× botão | o bundle nunca monta esta rota: retirar do mapa ou criar a vista |
+| supervisao | education_supervisor @ 1366 px | SEM BOTÃO | sem botão no DOM deste papel — classe medida no browser a 390 px: SEM_ITEM_EM_NENHUM_SELECTOR; bundle: 0× data-section, 0× botão | o bundle nunca monta esta rota: retirar do mapa ou criar a vista |
+| supervisao | education_supervisor @ 1440 px | SEM BOTÃO | sem botão no DOM deste papel — classe medida no browser a 390 px: SEM_ITEM_EM_NENHUM_SELECTOR; bundle: 0× data-section, 0× botão | o bundle nunca monta esta rota: retirar do mapa ou criar a vista |
+| supervisao | education_supervisor @ 1920 px | SEM BOTÃO | sem botão no DOM deste papel — classe medida no browser a 390 px: SEM_ITEM_EM_NENHUM_SELECTOR; bundle: 0× data-section, 0× botão | o bundle nunca monta esta rota: retirar do mapa ou criar a vista |
 
 Larguras com artefacto válido: 390 + 1280 + 1366 + 1440 + 1920 · ficheiros: `ah2-varredura-17-11-edsup390.json`, `ah2-varredura-17-11-edsup1280.json`, `ah2-varredura-17-11-1366g3.json`, `ah2-varredura-17-11-1440g4.json`, `ah2-varredura-17-11-1920g4.json`
 
@@ -979,11 +979,11 @@ Larguras com artefacto válido: 390 + 1280 + 1366 + 1440 + 1920 · ficheiros: `a
 | horarios | monitor @ 1366 px | ABRE (monitorView, 7769 car., 2523ms) | 42 alvos < 44px; 1 textos < 11px; 5 elementos cortados | por classificar com a evidência |
 | horarios | monitor @ 1440 px | ABRE (monitorView, 7763 car., 2451ms) | 42 alvos < 44px; 1 textos < 11px; 5 elementos cortados | por classificar com a evidência |
 | horarios | monitor @ 1920 px | ABRE (monitorView, 7771 car., 2546ms) | 42 alvos < 44px; 1 textos < 11px; 5 elementos cortados | por classificar com a evidência |
-| escola-historia | monitor @ 390 px | SEM BOTÃO | declarada no bundle mas sem button[data-section] | por decidir: retirar do mapa ou ligar o botão |
-| escola-historia | monitor @ 1280 px | SEM BOTÃO | declarada no bundle mas sem button[data-section] | por decidir: retirar do mapa ou ligar o botão |
-| escola-historia | monitor @ 1366 px | SEM BOTÃO | declarada no bundle mas sem button[data-section] | por decidir: retirar do mapa ou ligar o botão |
-| escola-historia | monitor @ 1440 px | SEM BOTÃO | declarada no bundle mas sem button[data-section] | por decidir: retirar do mapa ou ligar o botão |
-| escola-historia | monitor @ 1920 px | SEM BOTÃO | declarada no bundle mas sem button[data-section] | por decidir: retirar do mapa ou ligar o botão |
+| escola-historia | monitor @ 390 px | SEM BOTÃO | sem button[data-section] no varrimento deste papel (sem censo por papel para esta linha) | correr o censo desta rota/papel |
+| escola-historia | monitor @ 1280 px | SEM BOTÃO | sem button[data-section] no varrimento deste papel (sem censo por papel para esta linha) | correr o censo desta rota/papel |
+| escola-historia | monitor @ 1366 px | SEM BOTÃO | sem button[data-section] no varrimento deste papel (sem censo por papel para esta linha) | correr o censo desta rota/papel |
+| escola-historia | monitor @ 1440 px | SEM BOTÃO | sem button[data-section] no varrimento deste papel (sem censo por papel para esta linha) | correr o censo desta rota/papel |
+| escola-historia | monitor @ 1920 px | SEM BOTÃO | sem button[data-section] no varrimento deste papel (sem censo por papel para esta linha) | correr o censo desta rota/papel |
 | notificacoes | monitor @ 390 px | ABRE (bfrNotificationsView, 347 car., 2669ms) | — | — |
 | notificacoes | monitor @ 1280 px | ABRE (bfrNotificationsView, 400 car., 3246ms) | 3 alvos < 44px | por classificar com a evidência |
 | notificacoes | monitor @ 1366 px | ABRE (bfrNotificationsView, 400 car., 3925ms) | 3 alvos < 44px | por classificar com a evidência |
@@ -1026,11 +1026,11 @@ Larguras com artefacto válido: 390 + 1280 + 1366 + 1440 + 1920 · ficheiros: `a
 | comunicados | gatekeeper @ 1366 px | ABRE (gatekeeperView, 1318 car., 1818ms) | 9 alvos < 44px; 3 elementos cortados | por classificar com a evidência |
 | comunicados | gatekeeper @ 1440 px | ABRE (gatekeeperView, 1312 car., 1825ms) | 9 alvos < 44px; 3 elementos cortados | por classificar com a evidência |
 | comunicados | gatekeeper @ 1920 px | ABRE (gatekeeperView, 1320 car., 1808ms) | 9 alvos < 44px; 3 elementos cortados | por classificar com a evidência |
-| escola-historia | gatekeeper @ 390 px | SEM BOTÃO | declarada no bundle mas sem button[data-section] | por decidir: retirar do mapa ou ligar o botão |
-| escola-historia | gatekeeper @ 1280 px | SEM BOTÃO | declarada no bundle mas sem button[data-section] | por decidir: retirar do mapa ou ligar o botão |
-| escola-historia | gatekeeper @ 1366 px | SEM BOTÃO | declarada no bundle mas sem button[data-section] | por decidir: retirar do mapa ou ligar o botão |
-| escola-historia | gatekeeper @ 1440 px | SEM BOTÃO | declarada no bundle mas sem button[data-section] | por decidir: retirar do mapa ou ligar o botão |
-| escola-historia | gatekeeper @ 1920 px | SEM BOTÃO | declarada no bundle mas sem button[data-section] | por decidir: retirar do mapa ou ligar o botão |
+| escola-historia | gatekeeper @ 390 px | SEM BOTÃO | sem botão no DOM deste papel — classe medida no browser a 390 px: SEM_ITEM_EM_NENHUM_SELECTOR; bundle: 0× data-section, 0× botão | o bundle nunca monta esta rota: retirar do mapa ou criar a vista |
+| escola-historia | gatekeeper @ 1280 px | SEM BOTÃO | sem botão no DOM deste papel — classe medida no browser a 390 px: SEM_ITEM_EM_NENHUM_SELECTOR; bundle: 0× data-section, 0× botão | o bundle nunca monta esta rota: retirar do mapa ou criar a vista |
+| escola-historia | gatekeeper @ 1366 px | SEM BOTÃO | sem botão no DOM deste papel — classe medida no browser a 390 px: SEM_ITEM_EM_NENHUM_SELECTOR; bundle: 0× data-section, 0× botão | o bundle nunca monta esta rota: retirar do mapa ou criar a vista |
+| escola-historia | gatekeeper @ 1440 px | SEM BOTÃO | sem botão no DOM deste papel — classe medida no browser a 390 px: SEM_ITEM_EM_NENHUM_SELECTOR; bundle: 0× data-section, 0× botão | o bundle nunca monta esta rota: retirar do mapa ou criar a vista |
+| escola-historia | gatekeeper @ 1920 px | SEM BOTÃO | sem botão no DOM deste papel — classe medida no browser a 390 px: SEM_ITEM_EM_NENHUM_SELECTOR; bundle: 0× data-section, 0× botão | o bundle nunca monta esta rota: retirar do mapa ou criar a vista |
 | notificacoes | gatekeeper @ 390 px | ABRE (bfrNotificationsView, 400 car., 1824ms) | — | — |
 | notificacoes | gatekeeper @ 1280 px | ABRE (bfrNotificationsView, 400 car., 1822ms) | 3 alvos < 44px | por classificar com a evidência |
 | notificacoes | gatekeeper @ 1366 px | ABRE (bfrNotificationsView, 400 car., 1825ms) | 3 alvos < 44px | por classificar com a evidência |
@@ -1058,11 +1058,11 @@ Larguras com artefacto válido: 390 + 1280 + 1366 + 1440 + 1920 · ficheiros: `a
 | inicio | developer @ 1366 px | ABRE (adminView, 147334 car., 4877ms) | 309 alvos < 44px; 58 textos < 11px; 64 elementos cortados | por classificar com a evidência |
 | inicio | developer @ 1440 px | ABRE (adminView, 147360 car., 4952ms) | 310 alvos < 44px; 59 textos < 11px; 44 elementos cortados | por classificar com a evidência |
 | inicio | developer @ 1920 px | ABRE (adminView, 147328 car., 5001ms) | 309 alvos < 44px; 58 textos < 11px; 24 elementos cortados | por classificar com a evidência |
-| escola-historia | developer @ 390 px | SEM BOTÃO | declarada no bundle mas sem button[data-section] | por decidir: retirar do mapa ou ligar o botão |
-| escola-historia | developer @ 1280 px | SEM BOTÃO | declarada no bundle mas sem button[data-section] | por decidir: retirar do mapa ou ligar o botão |
-| escola-historia | developer @ 1366 px | SEM BOTÃO | declarada no bundle mas sem button[data-section] | por decidir: retirar do mapa ou ligar o botão |
-| escola-historia | developer @ 1440 px | SEM BOTÃO | declarada no bundle mas sem button[data-section] | por decidir: retirar do mapa ou ligar o botão |
-| escola-historia | developer @ 1920 px | SEM BOTÃO | declarada no bundle mas sem button[data-section] | por decidir: retirar do mapa ou ligar o botão |
+| escola-historia | developer @ 390 px | SEM BOTÃO | sem botão no DOM deste papel — classe medida no browser a 390 px: SEM_ITEM_EM_NENHUM_SELECTOR; bundle: 0× data-section, 0× botão | o bundle nunca monta esta rota: retirar do mapa ou criar a vista |
+| escola-historia | developer @ 1280 px | SEM BOTÃO | sem botão no DOM deste papel — classe medida no browser a 390 px: SEM_ITEM_EM_NENHUM_SELECTOR; bundle: 0× data-section, 0× botão | o bundle nunca monta esta rota: retirar do mapa ou criar a vista |
+| escola-historia | developer @ 1366 px | SEM BOTÃO | sem botão no DOM deste papel — classe medida no browser a 390 px: SEM_ITEM_EM_NENHUM_SELECTOR; bundle: 0× data-section, 0× botão | o bundle nunca monta esta rota: retirar do mapa ou criar a vista |
+| escola-historia | developer @ 1440 px | SEM BOTÃO | sem botão no DOM deste papel — classe medida no browser a 390 px: SEM_ITEM_EM_NENHUM_SELECTOR; bundle: 0× data-section, 0× botão | o bundle nunca monta esta rota: retirar do mapa ou criar a vista |
+| escola-historia | developer @ 1920 px | SEM BOTÃO | sem botão no DOM deste papel — classe medida no browser a 390 px: SEM_ITEM_EM_NENHUM_SELECTOR; bundle: 0× data-section, 0× botão | o bundle nunca monta esta rota: retirar do mapa ou criar a vista |
 | chat-interno | developer @ 390 px | ABRE (internalChatView, 279 car., 1825ms) | — | — |
 | chat-interno | developer @ 1280 px | ABRE (internalChatView, 738 car., 1867ms) | 11 alvos < 44px; 7 textos < 11px | por classificar com a evidência |
 | chat-interno | developer @ 1366 px | ABRE (internalChatView, 738 car., 1843ms) | 11 alvos < 44px; 7 textos < 11px | por classificar com a evidência |
@@ -1108,11 +1108,11 @@ Larguras com artefacto válido: 390 + 1280 + 1366 + 1440 + 1920 · ficheiros: `a
 | jogos-escolares | developer @ 1366 px | ABRE (schoolGamesView, 1093 car., 1820ms) | 13 alvos < 44px | por classificar com a evidência |
 | jogos-escolares | developer @ 1440 px | ABRE (schoolGamesView, 1093 car., 1836ms) | 13 alvos < 44px | por classificar com a evidência |
 | jogos-escolares | developer @ 1920 px | ABRE (schoolGamesView, 1093 car., 1825ms) | 13 alvos < 44px | por classificar com a evidência |
-| videos-aprender | developer @ 390 px | SEM BOTÃO | declarada no bundle mas sem button[data-section] | por decidir: retirar do mapa ou ligar o botão |
-| videos-aprender | developer @ 1280 px | SEM BOTÃO | declarada no bundle mas sem button[data-section] | por decidir: retirar do mapa ou ligar o botão |
-| videos-aprender | developer @ 1366 px | SEM BOTÃO | declarada no bundle mas sem button[data-section] | por decidir: retirar do mapa ou ligar o botão |
-| videos-aprender | developer @ 1440 px | SEM BOTÃO | declarada no bundle mas sem button[data-section] | por decidir: retirar do mapa ou ligar o botão |
-| videos-aprender | developer @ 1920 px | SEM BOTÃO | declarada no bundle mas sem button[data-section] | por decidir: retirar do mapa ou ligar o botão |
+| videos-aprender | developer @ 390 px | SEM BOTÃO | sem botão no DOM deste papel — classe medida no browser a 390 px: SEM_ITEM_EM_NENHUM_SELECTOR; bundle: 0× data-section, 0× botão | o bundle nunca monta esta rota: retirar do mapa ou criar a vista |
+| videos-aprender | developer @ 1280 px | SEM BOTÃO | sem botão no DOM deste papel — classe medida no browser a 390 px: SEM_ITEM_EM_NENHUM_SELECTOR; bundle: 0× data-section, 0× botão | o bundle nunca monta esta rota: retirar do mapa ou criar a vista |
+| videos-aprender | developer @ 1366 px | SEM BOTÃO | sem botão no DOM deste papel — classe medida no browser a 390 px: SEM_ITEM_EM_NENHUM_SELECTOR; bundle: 0× data-section, 0× botão | o bundle nunca monta esta rota: retirar do mapa ou criar a vista |
+| videos-aprender | developer @ 1440 px | SEM BOTÃO | sem botão no DOM deste papel — classe medida no browser a 390 px: SEM_ITEM_EM_NENHUM_SELECTOR; bundle: 0× data-section, 0× botão | o bundle nunca monta esta rota: retirar do mapa ou criar a vista |
+| videos-aprender | developer @ 1920 px | SEM BOTÃO | sem botão no DOM deste papel — classe medida no browser a 390 px: SEM_ITEM_EM_NENHUM_SELECTOR; bundle: 0× data-section, 0× botão | o bundle nunca monta esta rota: retirar do mapa ou criar a vista |
 | comunicados | developer @ 390 px | ABRE (adminView, 151614 car., 1829ms) | 1 alvos < 44px; 70 textos < 11px; 46 elementos cortados | por classificar com a evidência |
 | comunicados | developer @ 1280 px | ABRE (adminView, 151608 car., 1836ms) | 328 alvos < 44px; 70 textos < 11px; 90 elementos cortados | por classificar com a evidência |
 | comunicados | developer @ 1366 px | ABRE (adminView, 151615 car., 1831ms) | 328 alvos < 44px; 70 textos < 11px; 64 elementos cortados | por classificar com a evidência |
@@ -1143,11 +1143,11 @@ Larguras com artefacto válido: 390 + 1280 + 1366 + 1440 + 1920 · ficheiros: `a
 | administracao | developer @ 1366 px | ABRE (adminView, 204971 car., 1882ms) | 831 alvos < 44px; 70 textos < 11px; 64 elementos cortados | por classificar com a evidência |
 | administracao | developer @ 1440 px | ABRE (adminView, 205007 car., 1837ms) | 832 alvos < 44px; 71 textos < 11px; 44 elementos cortados | por classificar com a evidência |
 | administracao | developer @ 1920 px | ABRE (adminView, 204965 car., 1846ms) | 831 alvos < 44px; 70 textos < 11px; 26 elementos cortados | por classificar com a evidência |
-| admin-crachas | developer @ 390 px | SEM BOTÃO | declarada no bundle mas sem button[data-section] | por decidir: retirar do mapa ou ligar o botão |
-| admin-crachas | developer @ 1280 px | SEM BOTÃO | declarada no bundle mas sem button[data-section] | por decidir: retirar do mapa ou ligar o botão |
-| admin-crachas | developer @ 1366 px | SEM BOTÃO | declarada no bundle mas sem button[data-section] | por decidir: retirar do mapa ou ligar o botão |
-| admin-crachas | developer @ 1440 px | SEM BOTÃO | declarada no bundle mas sem button[data-section] | por decidir: retirar do mapa ou ligar o botão |
-| admin-crachas | developer @ 1920 px | SEM BOTÃO | declarada no bundle mas sem button[data-section] | por decidir: retirar do mapa ou ligar o botão |
+| admin-crachas | developer @ 390 px | SEM BOTÃO | sem botão no DOM deste papel — classe medida no browser a 390 px: SEM_ITEM_EM_NENHUM_SELECTOR; bundle: 0× data-section, 0× botão | o bundle nunca monta esta rota: retirar do mapa ou criar a vista |
+| admin-crachas | developer @ 1280 px | SEM BOTÃO | sem botão no DOM deste papel — classe medida no browser a 390 px: SEM_ITEM_EM_NENHUM_SELECTOR; bundle: 0× data-section, 0× botão | o bundle nunca monta esta rota: retirar do mapa ou criar a vista |
+| admin-crachas | developer @ 1366 px | SEM BOTÃO | sem botão no DOM deste papel — classe medida no browser a 390 px: SEM_ITEM_EM_NENHUM_SELECTOR; bundle: 0× data-section, 0× botão | o bundle nunca monta esta rota: retirar do mapa ou criar a vista |
+| admin-crachas | developer @ 1440 px | SEM BOTÃO | sem botão no DOM deste papel — classe medida no browser a 390 px: SEM_ITEM_EM_NENHUM_SELECTOR; bundle: 0× data-section, 0× botão | o bundle nunca monta esta rota: retirar do mapa ou criar a vista |
+| admin-crachas | developer @ 1920 px | SEM BOTÃO | sem botão no DOM deste papel — classe medida no browser a 390 px: SEM_ITEM_EM_NENHUM_SELECTOR; bundle: 0× data-section, 0× botão | o bundle nunca monta esta rota: retirar do mapa ou criar a vista |
 | cadastro-alunos | developer @ 390 px | ABRE (adminView, 283029 car., 1885ms) | 505 alvos < 44px; 70 textos < 11px; 55 elementos cortados | por classificar com a evidência |
 | cadastro-alunos | developer @ 1280 px | ABRE (adminView, 283022 car., 2054ms) | 860 alvos < 44px; 70 textos < 11px; 97 elementos cortados | por classificar com a evidência |
 | cadastro-alunos | developer @ 1366 px | ABRE (adminView, 283029 car., 1979ms) | 860 alvos < 44px; 70 textos < 11px; 71 elementos cortados | por classificar com a evidência |
@@ -1173,11 +1173,11 @@ Larguras com artefacto válido: 390 + 1280 + 1366 + 1440 + 1920 · ficheiros: `a
 | comunicacao | developer @ 1366 px | ABRE (bfrCommunicationView, 1094 car., 1857ms) | 22 alvos < 44px; 1 textos < 11px | por classificar com a evidência |
 | comunicacao | developer @ 1440 px | ABRE (bfrCommunicationView, 1094 car., 1834ms) | 22 alvos < 44px; 1 textos < 11px | por classificar com a evidência |
 | comunicacao | developer @ 1920 px | ABRE (bfrCommunicationView, 1094 car., 1853ms) | 22 alvos < 44px; 1 textos < 11px | por classificar com a evidência |
-| coordenacao-chat | developer @ 390 px | SEM BOTÃO | declarada no bundle mas sem button[data-section] | por decidir: retirar do mapa ou ligar o botão |
-| coordenacao-chat | developer @ 1280 px | SEM BOTÃO | declarada no bundle mas sem button[data-section] | por decidir: retirar do mapa ou ligar o botão |
-| coordenacao-chat | developer @ 1366 px | SEM BOTÃO | declarada no bundle mas sem button[data-section] | por decidir: retirar do mapa ou ligar o botão |
-| coordenacao-chat | developer @ 1440 px | SEM BOTÃO | declarada no bundle mas sem button[data-section] | por decidir: retirar do mapa ou ligar o botão |
-| coordenacao-chat | developer @ 1920 px | SEM BOTÃO | declarada no bundle mas sem button[data-section] | por decidir: retirar do mapa ou ligar o botão |
+| coordenacao-chat | developer @ 390 px | SEM BOTÃO | sem botão no DOM deste papel — classe medida no browser a 390 px: SEM_ITEM_EM_NENHUM_SELECTOR; bundle: 0× data-section, 0× botão | o bundle nunca monta esta rota: retirar do mapa ou criar a vista |
+| coordenacao-chat | developer @ 1280 px | SEM BOTÃO | sem botão no DOM deste papel — classe medida no browser a 390 px: SEM_ITEM_EM_NENHUM_SELECTOR; bundle: 0× data-section, 0× botão | o bundle nunca monta esta rota: retirar do mapa ou criar a vista |
+| coordenacao-chat | developer @ 1366 px | SEM BOTÃO | sem botão no DOM deste papel — classe medida no browser a 390 px: SEM_ITEM_EM_NENHUM_SELECTOR; bundle: 0× data-section, 0× botão | o bundle nunca monta esta rota: retirar do mapa ou criar a vista |
+| coordenacao-chat | developer @ 1440 px | SEM BOTÃO | sem botão no DOM deste papel — classe medida no browser a 390 px: SEM_ITEM_EM_NENHUM_SELECTOR; bundle: 0× data-section, 0× botão | o bundle nunca monta esta rota: retirar do mapa ou criar a vista |
+| coordenacao-chat | developer @ 1920 px | SEM BOTÃO | sem botão no DOM deste papel — classe medida no browser a 390 px: SEM_ITEM_EM_NENHUM_SELECTOR; bundle: 0× data-section, 0× botão | o bundle nunca monta esta rota: retirar do mapa ou criar a vista |
 | resultados-aprendizagem | developer @ 390 px | ABRE (resultsLearningView, 588 car., 1814ms) | 1 elementos cortados | por classificar com a evidência |
 | resultados-aprendizagem | developer @ 1280 px | ABRE (resultsLearningView, 588 car., 1841ms) | 17 alvos < 44px | por classificar com a evidência |
 | resultados-aprendizagem | developer @ 1366 px | ABRE (resultsLearningView, 588 car., 1836ms) | 17 alvos < 44px | por classificar com a evidência |
