@@ -1,0 +1,114 @@
+{
+  "ciclo": "AH-CLIVES-FIXTURA-VISIVEL",
+  "autoriza": "Aceitaçao «todos» de 17/11 para AG-6b (RM-1.2), com fixtura criada e apagada por este programa",
+  "em": "2026-11-17T15:53:30.728Z",
+  "rotulo": "fv3",
+  "largura": 1280,
+  "stages": {
+    "politica": {
+      "polname": "profiles_hide_test_accounts",
+      "relname": "profiles",
+      "tipo": "RESTRITIVA",
+      "using_": "((id = auth.uid()) OR ((email !~~ '%@bfr-conecta.test'::text) AND (email !~~ 'bfr.qa.email.%'::text)))"
+    },
+    "baseline": {
+      "profiles_n": 24,
+      "auth_n": 24,
+      "md5_tabela": "4fc2b92d3a7900fe147d437eee3b4888",
+      "md5_papel": "08847d440d7d347a1da90dd231aa8d9e"
+    },
+    "fissura": {
+      "id": "9aecdb75",
+      "email": "ah2f-rm12-77fb9a@bfr-conecta.midicao",
+      "papel_ao_criar": "parent",
+      "perfil_linhas": 1
+    },
+    "baseline_com_fissura": {
+      "md5_papel": "19607334f3e991962cd31a3c35191714",
+      "profiles_n": 25
+    },
+    "visibilidade_rls": {
+      "fixtura_fora_do_dominio": {
+        "http": 200,
+        "linhas": 1,
+        "range": "0-0/*"
+      },
+      "irma_test_do_ciclo": {
+        "http": 200,
+        "linhas": 0,
+        "range": "*/*"
+      },
+      "content_range_antes": "24 perfis no banco"
+    },
+    "painel": {
+      "linhas": 11,
+      "alvo_presente": true,
+      "caixa": {
+        "x": 941,
+        "y": 4438,
+        "w": 220,
+        "h": 40
+      },
+      "valor": "parent",
+      "opcoes": [
+        "parent",
+        "student",
+        "pedagogical",
+        "coordinator",
+        "monitor",
+        "gatekeeper",
+        "developer",
+        "director",
+        "secretary",
+        "aee",
+        "psychology",
+        "social_work",
+        "sports_operator",
+        "education_supervisor",
+        "pending"
+      ],
+      "developer_na_lista": true,
+      "developer_desabilitado": true
+    },
+    "caixa_na_vista": {
+      "rolar": {
+        "scrollY_da_janela": 0,
+        "role_painel_scrollTop": -1
+      },
+      "caixa": {
+        "x": 941,
+        "y": 402,
+        "w": 220,
+        "h": 40,
+        "viewport": {
+          "w": 1262,
+          "h": 804
+        },
+        "no_ponto": {
+          "tag": "DIV",
+          "eh_o_select": false,
+          "classe": "modal"
+        }
+      },
+      "antes_desta_correcao": {
+        "x": 941,
+        "y": 4438,
+        "w": 220,
+        "h": 40
+      }
+    },
+    "limpeza": {
+      "motivo": "select fora da vista ou tapado — tocar nele seria falso",
+      "delete_auth_http": 200,
+      "perfil_apos_delete_auth": 0,
+      "apagada_por_sql": false,
+      "linhas_restantes_da_fissura": 0
+    }
+  },
+  "portoes": 13,
+  "falhas": [
+    "o ponto a clicar pertence ao próprio select e não a um elemento sobreposto | dado=false | esperado=true"
+  ],
+  "veredito": "PAROU: select fora da vista ou tapado — tocar nele seria falso",
+  "em_fim": "2026-11-17T15:54:03.478Z"
+}

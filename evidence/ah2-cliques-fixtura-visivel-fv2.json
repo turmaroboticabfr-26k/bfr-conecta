@@ -1,0 +1,144 @@
+{
+  "ciclo": "AH-CLIVES-FIXTURA-VISIVEL",
+  "autoriza": "Aceitaçao «todos» de 17/11 para AG-6b (RM-1.2), com fixtura criada e apagada por este programa",
+  "em": "2026-11-17T15:50:40.865Z",
+  "rotulo": "fv2",
+  "largura": 1280,
+  "stages": {
+    "politica": {
+      "polname": "profiles_hide_test_accounts",
+      "relname": "profiles",
+      "tipo": "RESTRITIVA",
+      "using_": "((id = auth.uid()) OR ((email !~~ '%@bfr-conecta.test'::text) AND (email !~~ 'bfr.qa.email.%'::text)))"
+    },
+    "baseline": {
+      "profiles_n": 24,
+      "auth_n": 24,
+      "md5_tabela": "4fc2b92d3a7900fe147d437eee3b4888",
+      "md5_papel": "08847d440d7d347a1da90dd231aa8d9e"
+    },
+    "fissura": {
+      "id": "b30ec1da",
+      "email": "ah2f-rm12-9187bc@bfr-conecta.midicao",
+      "papel_ao_criar": "parent",
+      "perfil_linhas": 1
+    },
+    "baseline_com_fissura": {
+      "md5_papel": "4c6a580cd4e9103fe9054d1d1f038f41",
+      "profiles_n": 25
+    },
+    "visibilidade_rls": {
+      "fixtura_fora_do_dominio": {
+        "http": 200,
+        "linhas": 1,
+        "range": "0-0/*"
+      },
+      "irma_test_do_ciclo": {
+        "http": 200,
+        "linhas": 0,
+        "range": "*/*"
+      },
+      "content_range_antes": "24 perfis no banco"
+    },
+    "painel": {
+      "linhas": 11,
+      "alvo_presente": true,
+      "caixa": {
+        "x": 941,
+        "y": -1852,
+        "w": 220,
+        "h": 40
+      },
+      "valor": "parent",
+      "opcoes": [
+        "parent",
+        "student",
+        "pedagogical",
+        "coordinator",
+        "monitor",
+        "gatekeeper",
+        "developer",
+        "director",
+        "secretary",
+        "aee",
+        "psychology",
+        "social_work",
+        "sports_operator",
+        "education_supervisor",
+        "pending"
+      ],
+      "developer_na_lista": true,
+      "developer_desabilitado": true
+    },
+    "plano": {
+      "de": "parent",
+      "para": "student",
+      "tecla_ida": "ArrowDown",
+      "opcoes": [
+        "parent",
+        "student",
+        "pedagogical",
+        "coordinator",
+        "monitor",
+        "gatekeeper",
+        "developer",
+        "director",
+        "secretary",
+        "aee",
+        "psychology",
+        "social_work",
+        "sports_operator",
+        "education_supervisor",
+        "pending"
+      ]
+    },
+    "depois_do_clique": {
+      "rpcs": [],
+      "valor_no_select": "parent",
+      "status_do_painel": "",
+      "ms_do_keydown_ao_primeiro_rpc": null,
+      "ms_da_sessao_ao_keydown": 504
+    },
+    "papel_no_ar": "parent",
+    "depois_do_restauro": {
+      "rpcs": [],
+      "valor_no_select": "parent"
+    },
+    "limpeza": {
+      "motivo": "fim normal",
+      "delete_auth_http": 200,
+      "perfil_apos_delete_auth": 0,
+      "apagada_por_sql": false,
+      "linhas_restantes_da_fissura": 0
+    },
+    "depois_da_limpeza": {
+      "profiles_n": 24,
+      "auth_n": 24,
+      "md5_tabela": "4fc2b92d3a7900fe147d437eee3b4888",
+      "md5_papel": "08847d440d7d347a1da90dd231aa8d9e",
+      "igual_antes": [
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    "higiene": {
+      "bytes": 3827,
+      "padroes_procurados": 5,
+      "occurrenncias": 0,
+      "nomes_que_fugiram": []
+    }
+  },
+  "portoes": 27,
+  "falhas": [
+    "o rato deu foco no select da fixtura | dado=false | esperado=true",
+    "o clique emitiu exatamente 1 pedido a rpc/set_profile_role | dado=0 | esperado=1",
+    "o corpo do pedido é o do app (target_profile_id = fixtura, target_role string) | dado=[false,false] | esperado=[true,true]",
+    "o rpc só aparece depois do keydown (não fui eu a chamar a função) | dado=false | esperado=true",
+    "a tecla mudou o select para o papel seguinte da lista | dado=\"parent\" | esperado=\"student\"",
+    "o ar confirmou o papel novo em public.profiles | dado=\"parent\" | esperado=\"student\"",
+    "reverter pelo clique emitiu 1 rpc | dado=0 | esperado=1"
+  ],
+  "em_fim": "2026-11-17T15:51:27.972Z"
+}

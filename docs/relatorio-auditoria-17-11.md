@@ -146,7 +146,7 @@ exatamente o que a varredura mede: painel com o id certo, 0 caracteres, 0 erros 
 
 | Verificação | Resultado | Onde |
 |---|---|---|
-| RM-1.2 · clique real de developer no painel «Contas e cargos» | CORRIDA COM BLOQUEIO | `ah2-cliques-17-11-17-11.json` · o painel abriu com sessão real e a linha do próprio developer vem desabilitada; a escrita não aconteceu porque a conta-alvo é sintética e a política RESTRITIVA `profiles_hide_test_accounts` esconde-a do developer (10 de 24 perfis visíveis) — precisa de decisão, ver §notas |
+| RM-1.2 · clique real de developer no painel «Contas e cargos» | SEM_FALHAS | `ah2-cliques-fixtura-visivel-fv5.json` · escrita provada por rato+teclado reais numa fixtura fora do domínio escondido, revertida pelo mesmo caminho e apagada no fim, com a base de volta ao byte-a-byte; a linha do próprio developer chega desabilitada (sem autopromoção) e as contas `@bfr-conecta.test` continuam invisíveis ao developer (10 de 24) — foi isso que bloqueou o instrumento anterior, `scripts/ah2-cliques.mjs` |
 | RM-2.7 · vistas do professor com vínculo real | AH2_PROFESSOR_POPULADO | `ah2-professor-17-11-17-11b.json` · 0 falhas declaradas |
 | §5 · telemóvel a toque nas larguras do briefing (320/360/375/390/414/430 × 15 perfis) | 79/90 celulas medidas · 7 classes de defeito · 11 por medir | `ah2-m5-consolidado-consol-r11.json` · 7 classes de defeito · 11 NÃO TESTADA com causa · md5 d418e7fc917f1fbb1437054b7b531f9b · tabela linha a linha em `scripts/ah2-m5-tabela.mjs` |
 | §6 · causa da demora do clique em Home | sem veredito no ficheiro | `ah2-home-causa-17-11.json` · 0 falhas declaradas |
@@ -193,23 +193,25 @@ a correção é DDL, está preparada em `scripts/ah2-ddl-calendario-candidata.sq
 
 ## Bloqueios que precisam de decisão do utilizador
 
-Nada disto é «falta de tempo»: são três pontos em que continuar exige autorização porque o passo seguinte
-escreve em dados reais, publica para a escola, ou corre DDL.
+Nada disto é «falta de tempo»: são dois pontos em que continuar exige autorização porque o passo seguinte
+publica para a escola ou corre DDL.
 
-1. **RM-1.2 (clique real a mudar um cargo).** A política RESTRITIVA `profiles_hide_test_accounts` esconde
-   do developer qualquer conta `%@bfr-conecta.test`: a sessão de developer vê 10 dos 24 perfis
-   (`content-range: 0-9/10`, provado em `evidence/ah2-sonda-limite-17-11e.json`), e as minhas contas de
-   teste estão todas fora dessa janela. Para fechar o teste é preciso **(a)** mudar o cargo de uma conta
-   real e reverter, ou **(b)** criar uma conta sintética fora do domínio escondido — que passaria a ser
-   visível no painel da escola — e apagá-la no fim. Não escolho por ti porque as duas alternativas tocam
-   no que a primeira protegia.
-2. **Item 35 (Aniversários da secretaria)** e o **calendário/turnos em falta** pedem DDL. As três relações
+1. **Item 35 (Aniversários da secretaria)** e o **calendário/turnos em falta** pedem DDL. As três relações
    nunca existiram (`404 PGRST205`, ver a secção de rede acima) e a candidata está escrita em
    `scripts/ah2-ddl-calendario-candidata.sql` com reversão em `scripts/ah2-ddl-calendario-reversao.sql`;
    não foi aplicada.
-3. **Publicar v124 / v125 / v126.** As candidatas estão prontas em disco com os portões delas; nenhuma está
+2. **Publicar v124 / v125 / v126.** As candidatas estão prontas em disco com os portões delas; nenhuma está
    no ar (`worker ≠ base` na tabela das candidatas). Publicar é um ato à parte, e «finalize tudo» não é
    autorização para ele.
+
+**O terceiro que estava nesta lista deixou de ser bloqueio: o RM-1.2.** A escolha entre (a) mudar o cargo de
+uma conta real e (b) criar uma fixtura fora do domínio escondido foi exercida como **(b)**, por
+`scripts/ah2-cliques-fixtura-visivel.mjs` — a fixtura (`@bfr-conecta.midicao`) apareceu no painel com a
+sessão real de developer, o rato e o teclado chamaram `rpc/set_profile_role` **uma** vez com o corpo do app,
+o cargo foi revertido pelo mesmo caminho e a conta foi apagada no fim com a base de volta ao byte-a-byte. O
+que a alternativa (a) protegia mantém-se: **nenhuma conta real foi tocada**, e as `@bfr-conecta.test`
+continuam invisíveis ao developer (10 dos 24 perfis, `evidence/ah2-sonda-limite-17-11e.json`) — era isso que
+bloqueava o instrumento antigo, não um defeito do painel.
 
 ## Funcionalidade × perfil
 

@@ -1,0 +1,208 @@
+{
+  "ciclo": "AH-CLIVES-FIXTURA-VISIVEL",
+  "autoriza": "Aceitaçao «todos» de 17/11 para AG-6b (RM-1.2), com fixtura criada e apagada por este programa",
+  "em": "2026-11-17T15:56:59.964Z",
+  "rotulo": "fv5",
+  "largura": 1280,
+  "stages": {
+    "politica": {
+      "polname": "profiles_hide_test_accounts",
+      "relname": "profiles",
+      "tipo": "RESTRITIVA",
+      "using_": "((id = auth.uid()) OR ((email !~~ '%@bfr-conecta.test'::text) AND (email !~~ 'bfr.qa.email.%'::text)))"
+    },
+    "baseline": {
+      "profiles_n": 24,
+      "auth_n": 24,
+      "md5_tabela": "4fc2b92d3a7900fe147d437eee3b4888",
+      "md5_papel": "08847d440d7d347a1da90dd231aa8d9e"
+    },
+    "fissura": {
+      "id": "000ea7a4",
+      "email": "ah2f-rm12-5fdc6d@bfr-conecta.midicao",
+      "papel_ao_criar": "parent",
+      "perfil_linhas": 1
+    },
+    "baseline_com_fissura": {
+      "md5_papel": "0c65240df3aa4893e1e9688c51ea6c6c",
+      "profiles_n": 25
+    },
+    "visibilidade_rls": {
+      "fixtura_fora_do_dominio": {
+        "http": 200,
+        "linhas": 1,
+        "range": "0-0/*"
+      },
+      "irma_test_do_ciclo": {
+        "http": 200,
+        "linhas": 0,
+        "range": "*/*"
+      },
+      "content_range_antes": "24 perfis no banco"
+    },
+    "modal_inicial": {
+      "existe": true,
+      "id": "preferredNameModal",
+      "x": 880,
+      "y": 264,
+      "w": 25,
+      "h": 33
+    },
+    "modal_depois_do_toque": null,
+    "painel": {
+      "linhas": 11,
+      "alvo_presente": true,
+      "caixa": {
+        "x": 941,
+        "y": 442,
+        "w": 220,
+        "h": 36
+      },
+      "valor": "parent",
+      "opcoes": [
+        "parent",
+        "student",
+        "pedagogical",
+        "coordinator",
+        "monitor",
+        "gatekeeper",
+        "developer",
+        "director",
+        "secretary",
+        "aee",
+        "psychology",
+        "social_work",
+        "sports_operator",
+        "education_supervisor",
+        "pending"
+      ],
+      "developer_na_lista": true,
+      "developer_desabilitado": true
+    },
+    "caixa_na_vista": {
+      "rolar": {
+        "scrollY_da_janela": 0,
+        "role_painel_scrollTop": -1
+      },
+      "caixa": {
+        "x": 941,
+        "y": 402,
+        "w": 220,
+        "h": 40,
+        "viewport": {
+          "w": 1262,
+          "h": 804
+        },
+        "no_ponto": {
+          "tag": "SELECT",
+          "eh_o_select": true,
+          "classe": ""
+        }
+      },
+      "antes_desta_correcao": {
+        "x": 941,
+        "y": 442,
+        "w": 220,
+        "h": 36
+      }
+    },
+    "plano": {
+      "de": "parent",
+      "para": "student",
+      "tecla_ida": "ArrowDown",
+      "opcoes": [
+        "parent",
+        "student",
+        "pedagogical",
+        "coordinator",
+        "monitor",
+        "gatekeeper",
+        "developer",
+        "director",
+        "secretary",
+        "aee",
+        "psychology",
+        "social_work",
+        "sports_operator",
+        "education_supervisor",
+        "pending"
+      ]
+    },
+    "depois_do_clique": {
+      "focado": true,
+      "t_keydown": 1794931045052,
+      "valor": "student",
+      "status_do_painel": "",
+      "status_da_linha": "Cargo atual: Aluno",
+      "rpcs": [
+        {
+          "quando": 1794931045752,
+          "metodo": "POST",
+          "corpo": "{\"target_profile_id\":\"000ea7a4-8af7-4196-b759-e2ed6e2cbd7e\",\"target_role\":\"student\",\"target_full_name\":null}"
+        },
+        {
+          "quando": 1794931045753,
+          "metodo": "OPTIONS",
+          "corpo": null
+        }
+      ],
+      "posts": 1,
+      "cors": [
+        "OPTIONS"
+      ],
+      "ms_do_keydown_ao_primeiro_post": 700
+    },
+    "papel_no_ar": "student",
+    "depois_do_restauro": {
+      "focado": true,
+      "t_keydown": 1794931050434,
+      "valor": "parent",
+      "status_do_painel": "",
+      "status_da_linha": "Cargo atual: Responsável",
+      "rpcs": [
+        {
+          "quando": 1794931051087,
+          "metodo": "POST",
+          "corpo": "{\"target_profile_id\":\"000ea7a4-8af7-4196-b759-e2ed6e2cbd7e\",\"target_role\":\"parent\",\"target_full_name\":null}"
+        },
+        {
+          "quando": 1794931051088,
+          "metodo": "OPTIONS",
+          "corpo": null
+        }
+      ],
+      "posts": 1,
+      "cors": [
+        "OPTIONS"
+      ]
+    },
+    "limpeza": {
+      "motivo": "fim normal",
+      "delete_auth_http": 200,
+      "perfil_apos_delete_auth": 0,
+      "apagada_por_sql": false,
+      "linhas_restantes_da_fissura": 0
+    },
+    "depois_da_limpeza": {
+      "profiles_n": 24,
+      "auth_n": 24,
+      "md5_tabela": "4fc2b92d3a7900fe147d437eee3b4888",
+      "md5_papel": "08847d440d7d347a1da90dd231aa8d9e",
+      "igual_antes": [
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    "higiene": {
+      "bytes": 4859,
+      "padroes_procurados": 5,
+      "occurrenncias": 0,
+      "nomes_que_fugiram": []
+    }
+  },
+  "portoes": 30,
+  "falhas": [],
+  "em_fim": "2026-11-17T15:57:45.407Z"
+}

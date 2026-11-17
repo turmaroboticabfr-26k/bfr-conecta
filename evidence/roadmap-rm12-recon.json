@@ -92,8 +92,8 @@
     {
       "policyname": "access_requests_manage",
       "cmd": "ALL",
-      "qual": "is_developer()",
-      "with_check": "(is_developer() AND (requested_role = ANY (enum_range(NULL::account_role))) AND ((approved_role IS NULL) OR (approved_role = requested_role)) AND (status = ANY (ARRAY['pending'::request_status, 'approved'::request_status, 'rejected'::request_status])))"
+      "qual": "bfr_rls_is_developer()",
+      "with_check": "(bfr_rls_is_developer() AND (requested_role = ANY (enum_range(NULL::account_role))) AND ((approved_role IS NULL) OR (approved_role = requested_role)) AND (status = ANY (ARRAY['pending'::request_status, 'approved'::request_status, 'rejected'::request_status])))"
     },
     {
       "policyname": "access_requests_read",
@@ -105,12 +105,12 @@
       "policyname": "access_requests_staff_insert",
       "cmd": "INSERT",
       "qual": null,
-      "with_check": "(is_developer() AND (requested_role = ANY (enum_range(NULL::account_role))) AND (((approved_role IS NULL) AND (status = 'pending'::request_status)) OR ((approved_role = requested_role) AND (status = 'approved'::request_status))))"
+      "with_check": "(bfr_rls_is_developer() AND (requested_role = ANY (enum_range(NULL::account_role))) AND (((approved_role IS NULL) AND (status = 'pending'::request_status)) OR ((approved_role = requested_role) AND (status = 'approved'::request_status))))"
     }
   ],
   "test_contas_vivas": [
     {
-      "n": 4
+      "n": 15
     }
   ]
 }

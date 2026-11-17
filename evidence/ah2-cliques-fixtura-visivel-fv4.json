@@ -1,0 +1,193 @@
+{
+  "ciclo": "AH-CLIVES-FIXTURA-VISIVEL",
+  "autoriza": "Aceitaçao «todos» de 17/11 para AG-6b (RM-1.2), com fixtura criada e apagada por este programa",
+  "em": "2026-11-17T15:54:52.551Z",
+  "rotulo": "fv4",
+  "largura": 1280,
+  "stages": {
+    "politica": {
+      "polname": "profiles_hide_test_accounts",
+      "relname": "profiles",
+      "tipo": "RESTRITIVA",
+      "using_": "((id = auth.uid()) OR ((email !~~ '%@bfr-conecta.test'::text) AND (email !~~ 'bfr.qa.email.%'::text)))"
+    },
+    "baseline": {
+      "profiles_n": 24,
+      "auth_n": 24,
+      "md5_tabela": "4fc2b92d3a7900fe147d437eee3b4888",
+      "md5_papel": "08847d440d7d347a1da90dd231aa8d9e"
+    },
+    "fissura": {
+      "id": "36921c74",
+      "email": "ah2f-rm12-5eef1d@bfr-conecta.midicao",
+      "papel_ao_criar": "parent",
+      "perfil_linhas": 1
+    },
+    "baseline_com_fissura": {
+      "md5_papel": "e9c4c27f6105b72d9db310efaf95654c",
+      "profiles_n": 25
+    },
+    "visibilidade_rls": {
+      "fixtura_fora_do_dominio": {
+        "http": 200,
+        "linhas": 1,
+        "range": "0-0/*"
+      },
+      "irma_test_do_ciclo": {
+        "http": 200,
+        "linhas": 0,
+        "range": "*/*"
+      },
+      "content_range_antes": "24 perfis no banco"
+    },
+    "modal_inicial": {
+      "existe": true,
+      "id": "preferredNameModal",
+      "x": 878,
+      "y": 269,
+      "w": 25,
+      "h": 33
+    },
+    "modal_depois_do_toque": null,
+    "painel": {
+      "linhas": 11,
+      "alvo_presente": true,
+      "caixa": {
+        "x": 941,
+        "y": 444,
+        "w": 220,
+        "h": 40
+      },
+      "valor": "parent",
+      "opcoes": [
+        "parent",
+        "student",
+        "pedagogical",
+        "coordinator",
+        "monitor",
+        "gatekeeper",
+        "developer",
+        "director",
+        "secretary",
+        "aee",
+        "psychology",
+        "social_work",
+        "sports_operator",
+        "education_supervisor",
+        "pending"
+      ],
+      "developer_na_lista": true,
+      "developer_desabilitado": true
+    },
+    "caixa_na_vista": {
+      "rolar": {
+        "scrollY_da_janela": 0,
+        "role_painel_scrollTop": -1
+      },
+      "caixa": {
+        "x": 941,
+        "y": 402,
+        "w": 220,
+        "h": 40,
+        "viewport": {
+          "w": 1262,
+          "h": 804
+        },
+        "no_ponto": {
+          "tag": "SELECT",
+          "eh_o_select": true,
+          "classe": ""
+        }
+      },
+      "antes_desta_correcao": {
+        "x": 941,
+        "y": 444,
+        "w": 220,
+        "h": 40
+      }
+    },
+    "plano": {
+      "de": "parent",
+      "para": "student",
+      "tecla_ida": "ArrowDown",
+      "opcoes": [
+        "parent",
+        "student",
+        "pedagogical",
+        "coordinator",
+        "monitor",
+        "gatekeeper",
+        "developer",
+        "director",
+        "secretary",
+        "aee",
+        "psychology",
+        "social_work",
+        "sports_operator",
+        "education_supervisor",
+        "pending"
+      ]
+    },
+    "depois_do_clique": {
+      "rpcs": [],
+      "valor_no_select": "parent",
+      "status_do_painel": "",
+      "ms_do_keydown_ao_primeiro_rpc": null,
+      "ms_da_sessao_ao_keydown": 765
+    },
+    "papel_no_ar": "parent",
+    "depois_do_restauro": {
+      "rpcs": [
+        {
+          "quando": 1794930923556,
+          "metodo": "POST",
+          "corpo": "{\"target_profile_id\":\"36921c74-2ac5-427b-b671-8215116b90f8\",\"target_role\":\"student\",\"target_full_name\":null}"
+        },
+        {
+          "quando": 1794930923557,
+          "metodo": "OPTIONS",
+          "corpo": null
+        }
+      ],
+      "valor_no_select": "student"
+    },
+    "limpeza": {
+      "motivo": "fim normal",
+      "delete_auth_http": 200,
+      "perfil_apos_delete_auth": 0,
+      "apagada_por_sql": false,
+      "linhas_restantes_da_fissura": 0
+    },
+    "depois_da_limpeza": {
+      "profiles_n": 24,
+      "auth_n": 24,
+      "md5_tabela": "4fc2b92d3a7900fe147d437eee3b4888",
+      "md5_papel": "08847d440d7d347a1da90dd231aa8d9e",
+      "igual_antes": [
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    "higiene": {
+      "bytes": 5158,
+      "padroes_procurados": 5,
+      "occurrenncias": 0,
+      "nomes_que_fugiram": []
+    }
+  },
+  "portoes": 30,
+  "falhas": [
+    "o clique emitiu exatamente 1 pedido a rpc/set_profile_role | dado=0 | esperado=1",
+    "o corpo do pedido é o do app (target_profile_id = fixtura, target_role string) | dado=[false,false] | esperado=[true,true]",
+    "o rpc só aparece depois do keydown (não fui eu a chamar a função) | dado=false | esperado=true",
+    "a tecla mudou o select para o papel seguinte da lista | dado=\"parent\" | esperado=\"student\"",
+    "o ar confirmou o papel novo em public.profiles | dado=\"parent\" | esperado=\"student\"",
+    "reverter pelo clique emitiu 1 rpc | dado=2 | esperado=1",
+    "o select voltou ao papel original | dado=\"student\" | esperado=\"parent\"",
+    "public.profiles.role da fixtura voltou ao original | dado=\"student\" | esperado=\"parent\"",
+    "papel+nome da tabela byte-a-byte como estavam com a fixtura no papel original (md5) | dado=\"5b043705b70e959e4d7d18f7eec8e82d\" | esperado=\"e9c4c27f6105b72d9db310efaf95654c\""
+  ],
+  "em_fim": "2026-11-17T15:55:39.671Z"
+}
