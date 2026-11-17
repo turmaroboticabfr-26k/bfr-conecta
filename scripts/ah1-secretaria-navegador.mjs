@@ -95,6 +95,10 @@ out.stages.ms_ready = await waitFor(`document.getElementById('appShell')?.classL
 console.log('[n] ready em ' + out.stages.ms_ready + ' ms');
 out.stages.papel = await evalJS(`window.BFR_CURRENT_PROFILE?.role ?? null`);
 gate('papel real da sessão = secretary', out.stages.papel, 'secretary');
+// A banda era declarada (`largura: 390` no topo do artefacto) sem nunca ter sido medida. Passa a haver
+// portão: se o clientWidth não for 390, as contagens de toque e de fontes são de outra largura.
+out.stages.janela = await evalJS(`({ innerWidth: window.innerWidth, innerHeight: window.innerHeight, clientWidth: document.documentElement.clientWidth, clientHeight: document.documentElement.clientHeight, devicePixelRatio: window.devicePixelRatio })`);
+gate('largura real da janela de layout = 390 (documentElement.clientWidth)', out.stages.janela.clientWidth, 390);
 
 // ═══ recon do menu: botões [data-section] visíveis e o estado do «Mais» ═══
 out.stages.recon_menu = await evalJS(`(() => {
@@ -167,7 +171,26 @@ const MEDIR = `(async () => {
     fonte_menor_11: folhas.length,
     fontes_amostra: folhas.slice(0, 12).map(f => ({ tag: f.tagName, cls: (f.className || '').toString().slice(0, 40), texto: (f.textContent || '').trim().slice(0, 30), px: parseFloat(getComputedStyle(f).fontSize) })),
     cortados: cortados.length,
-    estouro_body: document.body.scrollWidth > window.innerWidth + 1 || document.body.scrollHeight > window.innerHeight + 1,
+    // Identidade dos nós cortados: caixa + qual eixo transborda + a regra de overflow. Vai sem textContent,
+    // porque os contentores da secretaria têm nomes de alunos e o artefacto entra no git.
+    cortados_amostra: cortados.slice(0, 8).map(e => {
+      const r = e.getBoundingClientRect(), cs = getComputedStyle(e);
+      return {
+        no: e.tagName + (e.id ? '#' + e.id : '') + (typeof e.className === 'string' && e.className ? '.' + e.className.trim().split(/\\s+/).slice(0, 2).join('.') : ''),
+        caixa: [Math.round(r.width), Math.round(r.height)],
+        scroll: [e.scrollWidth, e.scrollHeight],
+        cliente: [e.clientWidth, e.clientHeight],
+        transborda: [e.scrollWidth > e.clientWidth + 1, e.scrollHeight > e.clientHeight + 1],
+        overflow: [cs.overflowX, cs.overflowY],
+      };
+    }),
+    // Uma cláusula por eixo, e contra a régua que vale a banda: documentElement.clientWidth/clientHeight.
+    // Medido 17/11: window.innerWidth dilata-se até à largura do conteúdo transbordante (fixture com filho
+    // de 1400 px deu innerWidth 1400 e clientWidth 390), pelo que a comparação antiga com innerWidth nunca
+    // podia dar true. Ver §AI.32 e evidence/ah1-sonda-janela-app-17-11.json.
+    reguas: { innerWidth: window.innerWidth, innerHeight: window.innerHeight, clientWidth: document.documentElement.clientWidth, clientHeight: document.documentElement.clientHeight },
+    estouro_horizontal: document.body.scrollWidth > document.documentElement.clientWidth + 1,
+    estouro_vertical: document.body.scrollHeight > document.documentElement.clientHeight + 1,
   };
 })()`;
 const abrirPorAPI = async (secao) => {

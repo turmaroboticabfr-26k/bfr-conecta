@@ -1,0 +1,114 @@
+{
+  "programa": "scripts/ah1-predicado-fixture.mjs",
+  "em": "2026-11-17T17:09:50.762Z",
+  "viewport": {
+    "innerWidth": 1400,
+    "innerHeight": 2872
+  },
+  "precondition": {
+    "janela_assentou": true,
+    "tentativas": 1,
+    "regua": {
+      "innerWidth": 1400,
+      "innerHeight": 2872,
+      "clientWidth": 390,
+      "clientHeight": 800
+    }
+  },
+  "o_que_prova": "três coisas, todas por construção: (1) com a régua certa (documentElement.clientWidth/clientHeight) os dois eixos separam o que o CSS declara; (2) a amostra dos cortados distingue nó cortado (overflow:hidden) de contentor rolável (auto), o que a contagem sozinha não dizia; (3) o campo como era no ciclo AH-1 (innerWidth, duas cláusulas juntas) diz false numa página que transborda 1010 px por fora da janela",
+  "o_que_NAO_prova": "nada sobre o bfr-conecta: nenhuma rota, nenhum painel real, nenhuma sessão. Os valores novos no ar só saem de uma passagem com mint e OK próprios; o `cortados=3` do artefacto de 17/11 continua sem identidade conhecida; e os `estouro_h`/`largura` já gravados pelas passadas mobile ficam desprovados de força probatória, não refutados — o predicado não podia detectar o que procurava.",
+  "casos": {
+    "reguas": {
+      "innerWidth": 1400,
+      "innerHeight": 2872,
+      "clientWidth": 390,
+      "clientHeight": 800
+    },
+    "desde_body": [
+      {
+        "no": "DIV#so_vertical",
+        "transborda": [
+          false,
+          true
+        ],
+        "overflow": [
+          "auto",
+          "auto"
+        ]
+      },
+      {
+        "no": "DIV#so_horizontal",
+        "transborda": [
+          true,
+          false
+        ],
+        "overflow": [
+          "auto",
+          "auto"
+        ]
+      },
+      {
+        "no": "DIV#rolavel_legitimo",
+        "transborda": [
+          false,
+          true
+        ],
+        "overflow": [
+          "auto",
+          "auto"
+        ]
+      },
+      {
+        "no": "DIV#cortado_de_verdade",
+        "transborda": [
+          true,
+          false
+        ],
+        "overflow": [
+          "hidden",
+          "hidden"
+        ]
+      }
+    ],
+    "dentro_de_so_vertical": [],
+    "corpo": {
+      "cortados": 4,
+      "scroll_body": [
+        1400,
+        2540
+      ],
+      "estouro_horizontal": true,
+      "estouro_vertical": true,
+      "estouro_body_ANTIGO": false
+    },
+    "scroll": [
+      1400,
+      2540
+    ]
+  },
+  "caso_so_scroll_vertical": {
+    "construcao": "empurrador de 1400 px reduzido a 100 %; fica só a altura do body acima da janela",
+    "medido": {
+      "reguas": {
+        "innerWidth": 390,
+        "innerHeight": 800,
+        "clientWidth": 390,
+        "clientHeight": 800
+      },
+      "scroll_body": [
+        390,
+        2540
+      ],
+      "estouro_horizontal": false,
+      "estouro_vertical": true
+    }
+  },
+  "expectativas_lidas_do_css": {
+    "largura_janela": 1400,
+    "altura_janela": 2872,
+    "corpo": "#so_vertical 120/600 em Y · #so_horizontal 200/900 em X · #cortado_de_verdade 200/300 em X com overflow:hidden · #rolavel_legitimo 100/40×40 linhas em Y com overflow:auto · #limpo sem transbordo"
+  },
+  "veredito": "AH1_PREDICADO_OK",
+  "portoes": 15,
+  "falhas": []
+}

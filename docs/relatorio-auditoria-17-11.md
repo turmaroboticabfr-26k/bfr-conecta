@@ -98,13 +98,14 @@ teto de 25 s. Artefactos anteriores a esta régua foram arquivados com `-ANTERIO
 | pending | 1440 px | 431 ms | 0 | — | 0 | 0 | 36 | 0 | `ah2-varredura-17-11-1440g1.json` |
 | pending | 1920 px | 1650 ms | 0 | — | 0 | 0 | 36 | 0 | `ah2-varredura-17-11-1920g1.json` |
 
-## Défices por classe (as 120 células com défice são 5 famílias, não 120 problemas)
+## Défices por classe (as 120 células com défice são 6 famílias, não 120 problemas)
 
 | Classe do défice | Medições afetadas | Quota |
 |---|---|---|
 | alvo com menos de 44 px | 635 | 82 % das 770 medições |
 | texto com menos de 11 px | 433 | 56 % das 770 medições |
 | elemento cortado pelo painel | 392 | 51 % das 770 medições |
+| estouro horizontal | 0 | NÃO AVALIÁVEL com os artefactos em disco: todos os diários anteriores a 17/11 correm a régua degenerada, pelo que 0 células `true` não prova ausência nem presença de estouro. Re-corrida autenticada pendente (mint + OK). |
 | seção declarada sem botão de menu | 115 | 15 % das 770 medições |
 | painel que abre sem caracteres | 5 | 1 % das 770 medições |
 

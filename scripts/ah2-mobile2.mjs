@@ -118,7 +118,7 @@ const RET = (sel) => `(() => { const b = document.querySelector(${JSON.stringify
   b.scrollIntoView({ block: 'center', inline: 'center' });
   const r = b.getBoundingClientRect(); const x = Math.round(r.x + r.width / 2), y = Math.round(r.y + r.height / 2);
   if (!r.width || !r.height) return { invisivel: true };
-  if (x < 0 || y < 0 || x > innerWidth || y > innerHeight) return { fora_do_ecra: { x, y, vw: innerWidth, vh: innerHeight } };
+  if (x < 0 || y < 0 || x > document.documentElement.clientWidth || y > document.documentElement.clientHeight) return { fora_do_ecra: { x, y, vw: document.documentElement.clientWidth, vh: document.documentElement.clientHeight } };
   const topo = document.elementFromPoint(x, y);
   if (!(topo === b || b.contains(topo))) return { tapado: { x, y, topo: topo ? topo.tagName.toLowerCase() + '.' + String(topo.className || '').split(/\\s+/)[0] : null } };
   return { x, y, w: Math.round(r.width), h: Math.round(r.height) }; })()`;
@@ -142,7 +142,7 @@ const CENSO = `(() => {
   return { presentation: app?.getAttribute('data-presentation') || null, body_mobile: document.body.classList.contains('bfr-mobile-presentation'),
     barra_existe: !!nav, barra: bot.map(cx), gaveta_existe: !!dr, gaveta_aberta: !!dr?.classList.contains('is-open'),
     gaveta: dr ? Array.from(dr.querySelectorAll('[data-bfr-drawer-route]')).map(cx) : [], hamb: !!document.querySelector('[data-bfr-open-drawer]'),
-    sidebar_caixa: !!document.querySelector('#appShell .sidebar')?.offsetWidth, vw: innerWidth, vh: innerHeight };
+    sidebar_caixa: !!document.querySelector('#appShell .sidebar')?.offsetWidth, vw: document.documentElement.clientWidth, vh: innerHeight };
 })()`;
 // Régua do painel visível mais populoso (a mesma da varredura), com o assentamento de 2 amostras × 600 ms.
 const MEDIR = `(async () => {
@@ -156,7 +156,9 @@ const MEDIR = `(async () => {
   const taps = ctl.filter(c => { const r = c.getBoundingClientRect(); return Math.min(r.width, r.height) < 44; });
   const folhas = el ? Array.from(el.querySelectorAll('*')).filter(f => { const d = Array.from(f.childNodes).filter(n => n.nodeType === 3).map(n => n.textContent.trim()).join('').trim(); if (!d) return false; const fs = parseFloat(cs(f).fontSize); return fs > 0 && fs < 11 && f.getBoundingClientRect().width > 0; }) : [];
   return { painel: alvo, ms, assentou: est >= 2, controles: ctl.length, tap: taps.length, fonte: folhas.length,
-    estouro_h: (document.body?.scrollWidth || 0) > window.innerWidth + 1, largura: window.innerWidth,
+    // §AI.32: innerWidth dilata-se até ao conteúdo transbordante neste chrome, pelo que a comparação
+    // contra ele não tem positivo possível; clientWidth é a régua que vale a banda pedida.
+    estouro_h: (document.body?.scrollWidth || 0) > (document.documentElement?.clientWidth || 0) + 1, largura: document.documentElement?.clientWidth || window.innerWidth,
     seccao_ativa: window.BFR_APP_RUNTIME?.activeSection ?? null, view_apos: window.BFR_APP_RUNTIME?.activeView ?? null };
 })()`;
 
@@ -175,7 +177,7 @@ const DIALOGO = `(() => { const id = (e) => e ? e.tagName.toLowerCase() + (e.id 
   while (e && e !== document.body) { const cs = getComputedStyle(e); if (cs.position === 'fixed' && parseInt(cs.zIndex || '0', 10) >= 1000 && !e.classList.contains('bfr-mobile-drawer')) { culpado = e; break; } e = e.parentElement; }
   if (!culpado) return { tapa_barra: true, tapadas: tapadas.length, total: alvos.length, culpado_elemento: id(document.elementFromPoint(c0.x, c0.y)), saida: null };
   const cs = getComputedStyle(culpado); const ra = culpado.getBoundingClientRect();
-  const cand = Array.from(culpado.querySelectorAll('button, [role="button"], a')).map((b) => { const c = centro(b); const r = b.getBoundingClientRect(); const no_ecra = c.x >= 0 && c.y >= 0 && c.x <= innerWidth && c.y <= innerHeight;
+  const cand = Array.from(culpado.querySelectorAll('button, [role="button"], a')).map((b) => { const c = centro(b); const r = b.getBoundingClientRect(); const no_ecra = c.x >= 0 && c.y >= 0 && c.x <= document.documentElement.clientWidth && c.y <= innerHeight;
     const t = no_ecra ? document.elementFromPoint(c.x, c.y) : null;
     return { rot: ((b.textContent || '').trim().replace(/\\s+/g, ' ').slice(0, 24) || b.getAttribute('aria-label') || b.getAttribute('title') || ''), aria: b.getAttribute('aria-label'), el: id(b), w: Math.round(r.width), h: Math.round(r.height), x: c.x, y: c.y, no_ecra, livre: t === b || b.contains(t), visivel: !!(b.offsetWidth || b.offsetHeight) && r.width > 0 && r.height > 0 }; });
   const s = cand.find((c) => c.visivel && c.no_ecra && c.livre && /voltar|fechar|sair|close|×|✕|início|inicio/i.test(c.rot + ' ' + (c.aria || '') + ' ' + c.el));

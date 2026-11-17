@@ -111,7 +111,9 @@ const MEDIR = `(async () => {
   const taps = ctl.filter(c => { const r = c.getBoundingClientRect(); return Math.min(r.width, r.height) < 44; });
   const folhas = el ? Array.from(el.querySelectorAll('*')).filter(f => { const d = Array.from(f.childNodes).filter(n => n.nodeType === 3).map(n => n.textContent.trim()).join('').trim(); if (!d) return false; const fs = parseFloat(cs(f).fontSize); return fs > 0 && fs < 11 && f.getBoundingClientRect().width > 0; }) : [];
   return { painel: alvo, ms, assentou: est >= 2, controles: ctl.length, tap: taps.length, fonte: folhas.length,
-    estouro_h: (document.body?.scrollWidth || 0) > window.innerWidth + 1, largura: window.innerWidth,
+    // §AI.32: innerWidth dilata-se até ao conteúdo transbordante neste chrome, pelo que a comparação
+    // contra ele não tem positivo possível; clientWidth é a régua que vale a banda pedida.
+    estouro_h: (document.body?.scrollWidth || 0) > (document.documentElement?.clientWidth || 0) + 1, largura: document.documentElement?.clientWidth || window.innerWidth,
     seccao_ativa: window.BFR_APP_RUNTIME?.activeSection ?? null, view_apos: window.BFR_APP_RUNTIME?.activeView ?? null };
 })()`;
 

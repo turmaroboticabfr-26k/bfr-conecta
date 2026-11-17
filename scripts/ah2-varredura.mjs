@@ -174,7 +174,8 @@ const MEDIR = `(async () => {
   const nao_estabilizou = estavel < 2;
   const alvo = caracteresDe(); const el = alvo.id ? document.getElementById(alvo.id) : null;
   const REGUA = { seccao_ativa: window.BFR_APP_RUNTIME?.activeSection ?? null, papel_apos: window.BFR_CURRENT_PROFILE?.role ?? null, view_apos: window.BFR_APP_RUNTIME?.activeView ?? null, nao_estabilizou, botao_attivo: (document.querySelector('button[data-section].active, .nav-item.active, [data-section][aria-current="page"]')?.dataset || {}).section ?? null };
-  const estouro = (document.body?.scrollWidth || 0) > window.innerWidth + 1;
+  // §AI.32: innerWidth dilata-se até ao conteúdo transbordante neste chrome; clientWidth é a banda.
+  const estouro = (document.body?.scrollWidth || 0) > (document.documentElement?.clientWidth || 0) + 1;
   if (!el) return { painel: alvo, ms, controles: 0, nos: 0, tap: 0, fonte: 0, cortados: 0, estouro_h: estouro, ...REGUA };
   const ctl = Array.from(el.querySelectorAll('button, input, select, textarea, a, [role="button"]')).filter(c => { const r = c.getBoundingClientRect(); return r.width > 0 && r.height > 0; });
   const taps = ctl.filter(c => { const r = c.getBoundingClientRect(); return Math.min(r.width, r.height) < 44; });

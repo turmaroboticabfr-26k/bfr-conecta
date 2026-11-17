@@ -183,8 +183,17 @@ const NOME_CLASSE = {
   estouro: 'estouro horizontal', nao_assenta: 'conteúdo sem assentar em 6 s', sem_botao: 'seção declarada sem botão de menu',
   declarada_a_mais: 'botão no menu fora do mapa declarado', painel_vazio: 'painel que abre sem caracteres',
 };
-const LINHA_CLASSE = (k) => `| ${NOME_CLASSE[k]} | ${classe[k].size} | ${Math.round((classe[k].size / Math.max(1, em_cada_classe.size)) * 100)} % das ${em_cada_classe.size} medições |`;
-const linhasClasses = Object.keys(classe).filter((k) => classe[k].size).map(LINHA_CLASSE);
+// A terceira coluna tem de dizer de onde vem o número. Uma classe com conjunto vazio pode significar duas
+// coisas — «medido e não existe» ou «não pode ser medida com os artefactos que tenho» — e sem esta nota a
+// segunda lê-se como a primeira. É o caso exacto do `estouro_h`: 0 `true` em 2 460 células, porque a
+// comparação era contra `window.innerWidth`, que neste chrome se dilata até ao conteúdo (§AI.32, PEN-35).
+const NOTA_CLASSE = {
+  estouro: 'NÃO AVALIÁVEL com os artefactos em disco: todos os diários anteriores a 17/11 correm a régua degenerada, pelo que 0 células `true` não prova ausência nem presença de estouro. Re-corrida autenticada pendente (mint + OK).',
+};
+const LINHA_CLASSE = (k) => `| ${NOME_CLASSE[k]} | ${classe[k].size} | ${NOTA_CLASSE[k] || Math.round((classe[k].size / Math.max(1, em_cada_classe.size)) * 100) + ' % das ' + em_cada_classe.size + ' medições'} |`;
+// `estouro` sai sempre, verde ou não: suprimi-la quando o conjunto é vazio era exatamente transformar
+// «não sei» em «não existe», o que o §14 proíbe.
+const linhasClasses = Object.keys(classe).filter((k) => classe[k].size || NOTA_CLASSE[k]).map(LINHA_CLASSE);
 
 const seg = [];
 const contagens = { ABRE: 0, deficit: 0, nao_testada: 0 };

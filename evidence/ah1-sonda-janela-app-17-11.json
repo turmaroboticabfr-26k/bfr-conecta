@@ -1,0 +1,141 @@
+{
+  "programa": "scripts/ah1-sonda-janela-app.mjs",
+  "em": "2026-11-17T17:07:22.140Z",
+  "url": "https://bfr-conecta.turmaroboticabfr.workers.dev/",
+  "ordem_cdp": "Emulation.setDeviceMetricsOverride → Page.navigate (a do ah2-mobile2.mjs:212-216), deviceScaleFactor 2",
+  "o_que_prova": "qual régua devolve a largura pedida numa página real do app, e se body.scrollWidth ultrapassa essa régua",
+  "o_que_NAO_prova": "nada autenticado: sem sessão, os painéis não montam — por isso o valor das réguas DENTRO de uma vista de papel real continua por medir, e o que isto decide é o instrumento, não a tela",
+  "por_largura": {
+    "320": {
+      "ms_ate_montar": 250,
+      "sem_relayout": {
+        "window_innerWidth": 320,
+        "window_innerHeight": 800,
+        "doc_clientWidth": 320,
+        "doc_clientHeight": 800,
+        "visualViewport_width": 320,
+        "visualViewport_scale": 1,
+        "body_scrollWidth": 320,
+        "body_scrollHeight": 896,
+        "screen_width": 320,
+        "appShell_ready": false,
+        "login_visivel": true
+      },
+      "com_relayout": {
+        "window_innerWidth": 320,
+        "window_innerHeight": 800,
+        "doc_clientWidth": 320,
+        "doc_clientHeight": 800,
+        "visualViewport_width": 320,
+        "visualViewport_scale": 1,
+        "body_scrollWidth": 320,
+        "body_scrollHeight": 894,
+        "screen_width": 320,
+        "appShell_ready": false,
+        "login_visivel": true
+      },
+      "reguas_iguais_a_largura_pedida": [
+        "window_innerWidth",
+        "doc_clientWidth",
+        "visualViewport_width",
+        "body_scrollWidth",
+        "screen_width"
+      ]
+    },
+    "390": {
+      "ms_ate_montar": 500,
+      "sem_relayout": {
+        "window_innerWidth": 390,
+        "window_innerHeight": 800,
+        "doc_clientWidth": 390,
+        "doc_clientHeight": 800,
+        "visualViewport_width": 390,
+        "visualViewport_scale": 1,
+        "body_scrollWidth": 390,
+        "body_scrollHeight": 875,
+        "screen_width": 390,
+        "appShell_ready": false,
+        "login_visivel": true
+      },
+      "com_relayout": {
+        "window_innerWidth": 390,
+        "window_innerHeight": 800,
+        "doc_clientWidth": 390,
+        "doc_clientHeight": 800,
+        "visualViewport_width": 390,
+        "visualViewport_scale": 1,
+        "body_scrollWidth": 390,
+        "body_scrollHeight": 875,
+        "screen_width": 390,
+        "appShell_ready": false,
+        "login_visivel": true
+      },
+      "reguas_iguais_a_largura_pedida": [
+        "window_innerWidth",
+        "doc_clientWidth",
+        "visualViewport_width",
+        "body_scrollWidth",
+        "screen_width"
+      ]
+    },
+    "430": {
+      "ms_ate_montar": 250,
+      "sem_relayout": {
+        "window_innerWidth": 430,
+        "window_innerHeight": 800,
+        "doc_clientWidth": 430,
+        "doc_clientHeight": 800,
+        "visualViewport_width": 430,
+        "visualViewport_scale": 1,
+        "body_scrollWidth": 430,
+        "body_scrollHeight": 866,
+        "screen_width": 430,
+        "appShell_ready": false,
+        "login_visivel": true
+      },
+      "com_relayout": {
+        "window_innerWidth": 430,
+        "window_innerHeight": 800,
+        "doc_clientWidth": 430,
+        "doc_clientHeight": 800,
+        "visualViewport_width": 430,
+        "visualViewport_scale": 1,
+        "body_scrollWidth": 430,
+        "body_scrollHeight": 866,
+        "screen_width": 430,
+        "appShell_ready": false,
+        "login_visivel": true
+      },
+      "reguas_iguais_a_largura_pedida": [
+        "window_innerWidth",
+        "doc_clientWidth",
+        "visualViewport_width",
+        "body_scrollWidth",
+        "screen_width"
+      ]
+    }
+  },
+  "veredito": {
+    "regua_do_ar_com_relayout": [
+      "window_innerWidth",
+      "doc_clientWidth",
+      "visualViewport_width",
+      "body_scrollWidth",
+      "screen_width"
+    ],
+    "window_innerWidth_igual_ao_pedido": [
+      [
+        "320",
+        true
+      ],
+      [
+        "390",
+        true
+      ],
+      [
+        "430",
+        true
+      ]
+    ]
+  }
+}

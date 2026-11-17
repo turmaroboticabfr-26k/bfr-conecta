@@ -1,0 +1,91 @@
+{
+  "programa": "scripts/ah1-predicado-fixture.mjs",
+  "em": "2026-11-17T17:00:50.370Z",
+  "viewport": {
+    "innerWidth": 1400,
+    "innerHeight": 2872
+  },
+  "o_que_prova": "que estouro_horizontal / estouro_vertical separam os eixos que o CSS declara (e que o antigo estouro_body os juntava num só), e que a `cortados_amostra` distingue contentor rolável (`overflow:auto`) de nó cortado (`overflow:hidden`) — o que a contagem sozinha não dizia",
+  "o_que_NAO_prova": "nada sobre o bfr-conecta: nenhuma rota, nenhum painel real, nenhuma sessão. Os valores novos no ar só saem de uma passagem com mint e OK próprios; e o `cortados=3` do artefacto de 17/11 continua sem identidade conhecida.",
+  "casos": {
+    "desde_body": [
+      {
+        "no": "DIV#so_vertical",
+        "transborda": [
+          false,
+          true
+        ],
+        "overflow": [
+          "auto",
+          "auto"
+        ]
+      },
+      {
+        "no": "DIV#so_horizontal",
+        "transborda": [
+          true,
+          false
+        ],
+        "overflow": [
+          "auto",
+          "auto"
+        ]
+      },
+      {
+        "no": "DIV#rolavel_legitimo",
+        "transborda": [
+          false,
+          true
+        ],
+        "overflow": [
+          "auto",
+          "auto"
+        ]
+      },
+      {
+        "no": "DIV#cortado_de_verdade",
+        "transborda": [
+          true,
+          false
+        ],
+        "overflow": [
+          "hidden",
+          "hidden"
+        ]
+      }
+    ],
+    "dentro_de_so_vertical": [],
+    "corpo": {
+      "cortados": 4,
+      "estouro_horizontal": false,
+      "estouro_vertical": false,
+      "estouro_body_ANTIGO": false
+    },
+    "scroll": [
+      1400,
+      2540
+    ]
+  },
+  "caso_so_scroll_vertical": {
+    "construcao": "empurrador de 1400 px reduzido a 100 %; ficam só os 2 020 px de altura",
+    "medido": {
+      "estouro_horizontal": false,
+      "estouro_vertical": true,
+      "estouro_body_ANTIGO": true
+    }
+  },
+  "expectativas_lidas_do_css": {
+    "largura_janela": 1400,
+    "altura_janela": 2872,
+    "corpo": "#so_vertical 120/600 em Y · #so_horizontal 200/900 em X · #cortado_de_verdade 200/300 em X com overflow:hidden · #rolavel_legitimo 100/40×40 linhas em Y com overflow:auto · #limpo sem transbordo"
+  },
+  "veredito": "AH1_PREDICADO_VERMELHO",
+  "portoes": 13,
+  "falhas": [
+    "viewport aplicado (390×800) | dado=[1400,2872] | esperado=[390,800]",
+    "os 4 nós com transbordo próprio são apanhados, e #limpo fica fora | dado=[\"DIV#cortado_de_verdade\",\"DIV#rolavel_legitimo\",\"DIV#so_horizontal\",\"DIV#so_vertical\"] | esperado=[\"#cortado_de_verdade\",\"#rolavel_legitimo\",\"#so_horizontal\",\"#so_vertical\"]",
+    "a amostra distingue overflow:hidden de overflow:auto (o que a contagem não dizia) | dado={\"cortado\":[\"hidden\",\"hidden\"],\"rolavel\":[\"auto\",\"auto\"]} | esperado={\"cortado\":[\"hidden\",\"hidden\"],\"rolavel\":[\"visible\",\"auto\"]}",
+    "body: estouro_horizontal = true (div de 1400 px > 390) | dado=false | esperado=true",
+    "body: estouro_vertical = true (2 020 px > 800) | dado=false | esperado=true"
+  ]
+}
