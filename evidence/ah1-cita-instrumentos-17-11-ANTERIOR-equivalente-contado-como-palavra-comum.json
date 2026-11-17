@@ -1,0 +1,136 @@
+{
+ "programa": "scripts/ah1-cita-instrumentos.mjs",
+ "em": "2026-11-17T23:13:56.604Z",
+ "o_que_prova": "cada caminho scripts/… , evidence/… e docs/… citado nos quatro documentos aponta para um ficheiro que existe no repositório; e quantas frases usam a palavra «equivalente» em vez de um nome versionado",
+ "o_que_NAO_prova": "que o instrumento citado produza o que a frase diz — só prova a existência do caminho. As contagens são por **linha** (primeira batida por padrão numa linha), não por ocorrência: uma linha com dois caminhos conta uma. E a classe POSSIVEL_GRALHA_DE_NOME é semelhança de bigramos (Dice >= 0.6), não prova de identidade.",
+ "documentos": [
+  "docs/auditoria-bfr-conecta.md",
+  "docs/roadmap-master.md",
+  "docs/roadmap-painel.html",
+  "docs/relatorio-professor-v59-2026-10-22.md"
+ ],
+ "por_documento": [
+  {
+   "doc": "docs/auditoria-bfr-conecta.md",
+   "citacoes": 307,
+   "ausentes": 5
+  },
+  {
+   "doc": "docs/roadmap-master.md",
+   "citacoes": 78,
+   "ausentes": 0
+  },
+  {
+   "doc": "docs/roadmap-painel.html",
+   "citacoes": 10,
+   "ausentes": 0
+  },
+  {
+   "doc": "docs/relatorio-professor-v59-2026-10-22.md",
+   "citacoes": 1,
+   "ausentes": 0
+  }
+ ],
+ "veredito": {
+  "citacoes": 396,
+  "caminhos_distintos": 238,
+  "ausentes_distintos": 5,
+  "aproximadas_equivalente": 4,
+  "estado": "CITACAS_COM_PONTA_SOLTA"
+ },
+ "ausentes": [
+  {
+   "caminho": "scripts/ah2-m5-nav-vs-marcador.mjs",
+   "citado_em": [
+    "docs/auditoria-bfr-conecta.md:4134"
+   ],
+   "commits_no_git": 0,
+   "ultimo_commit": null,
+   "em_disco": false,
+   "parecidos": [
+    "scripts/ah2-m5-marcador-vs-mapa.mjs#0.83",
+    "scripts/ah2-m5-consolidador.mjs#0.60"
+   ],
+   "classe": "POSSIVEL_GRALHA_DE_NOME"
+  },
+  {
+   "caminho": "scripts/fim-sonda-polroles.mjs",
+   "citado_em": [
+    "docs/auditoria-bfr-conecta.md:3923",
+    "docs/auditoria-bfr-conecta.md:3925"
+   ],
+   "commits_no_git": 0,
+   "ultimo_commit": null,
+   "em_disco": false,
+   "parecidos": [
+    "scripts/fim-sonda-polroles-b.mjs#0.93",
+    "scripts/fim-sonda-polroles-ANTERIOR-emite-PII.mjs#0.67"
+   ],
+   "classe": "POSSIVEL_GRALHA_DE_NOME"
+  },
+  {
+   "caminho": "scripts/pdf-hor-3-preflight.mjs",
+   "citado_em": [
+    "docs/auditoria-bfr-conecta.md:3821"
+   ],
+   "commits_no_git": 0,
+   "ultimo_commit": null,
+   "em_disco": false,
+   "parecidos": [
+    "scripts/pdf-hor-1-preflight.mjs#0.91",
+    "scripts/pdf-hor-3-preflight-v123.mjs#0.86"
+   ],
+   "classe": "POSSIVEL_GRALHA_DE_NOME"
+  },
+  {
+   "caminho": "scripts/rm68-dryrun-15-11d.mjs",
+   "citado_em": [
+    "docs/auditoria-bfr-conecta.md:3773"
+   ],
+   "commits_no_git": 0,
+   "ultimo_commit": null,
+   "em_disco": false,
+   "parecidos": [
+    "scripts/rm68-dryrun-15-11.mjs#0.95",
+    "scripts/p2-1-dryrun.mjs#0.63"
+   ],
+   "classe": "POSSIVEL_GRALHA_DE_NOME"
+  },
+  {
+   "caminho": "scripts/verifica-posicoes.mjs",
+   "citado_em": [
+    "docs/auditoria-bfr-conecta.md:4356"
+   ],
+   "commits_no_git": 0,
+   "ultimo_commit": null,
+   "em_disco": false,
+   "parecidos": [
+    "scripts/s19-contas-verifica.mjs#0.57",
+    "scripts/seg-csp-assets-verifica.mjs#0.49"
+   ],
+   "classe": "SONDA_DE_SESSAO_JAMAIS_VERSIONADA"
+  }
+ ],
+ "aproximadas": [
+  {
+   "doc": "docs/auditoria-bfr-conecta.md",
+   "linha": 671,
+   "recorte": "   Conferência lateral feita na mesma passada, para não deixar dúvida onde havia só suspeita: `family_cpf_is_valid` **não** está quebrada. T"
+  },
+  {
+   "doc": "docs/auditoria-bfr-conecta.md",
+   "linha": 4093,
+   "recorte": "**AI.14 — o desktop do §6 está fechado e é a parte da auditoria que fecha primeiro.** Os 55 artefactos `ah2-varredura-*.json` têm o shape `s"
+  },
+  {
+   "doc": "docs/auditoria-bfr-conecta.md",
+   "linha": 4356,
+   "recorte": "1. **A pergunta media-se por GET, não por memória.** Shell servido hoje: **3 489 725 bytes**, md5 `d418e7fc917f1fbb1437054b7b531f9b` — a mes"
+  },
+  {
+   "doc": "docs/auditoria-bfr-conecta.md",
+   "linha": 4370,
+   "recorte": "8. **Pegada do fecho desta passada** (medida por `md5sum` às 22:36Z, depois de **todas** as edições desta passada nos cinco ficheiros que **"
+  }
+ ]
+}

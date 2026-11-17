@@ -145,7 +145,7 @@ g.gate("depois_14_clausulas_pareadas_por_nome_e_tipo",
 g.gate("toda_a_clausula_tem_causa_de_deparse_conhecida",
   clausulas.filter((c) => c.classe === "OUTRO" || c.classe === "POLITICA_AUSENTE" || c.catalogo === null)
     .map((c) => `${c.politica}/${c.clausula}`), []);
-// Quantas NÃO batiam cruas: é a量 da armadilha 15/11-d, registada como facto, não como portão — se
+// Quantas NÃO batiam cruas: é a conta da armadilha 15/11-d, registada como facto, não como portão — se
 // alguém reescrever o ficheiro para bater com o deparse, este número sobe e o portão de cima continua verde.
 g.gate("pareamento_cobre_as_11_public_e_os_14_predicados",
   [publicas.length, clausulas.filter((c) => c.clausula === "USING").length, clausulas.filter((c) => c.clausula === "WITH CHECK").length],

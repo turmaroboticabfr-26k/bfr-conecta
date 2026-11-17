@@ -1,0 +1,238 @@
+{
+ "programa": "scripts/ah1-rotulos-posicoes.mjs",
+ "em": "2026-11-17T23:27:20.892Z",
+ "o_que_prova": "os números de posição citados em §AI.34 ponto 1 foram re-batidos nesta passada sobre `bfr-candidata-v121-rotulos-supervisor/index.html`, e esse ficheiro é byte-idêntico à shell servida que o diário `ah1-rotulos-secretaria-17-11.json` mediu (mesmo comprimento, mesmo md5); contagem e primeira linha de cada um dos sete rótulos, e as três contagens de cada uma das duas barras de sub-abas (ocorrências, distintos, primeira linha), batem com o diário linha a linha — com o **atributo lido do diário**, não dactilografado neste script",
+ "o_que_NAO_prova": "que a shell servida continua esse bytes **agora** — a comparação é disco × diário, não disco × rede; correr este instrumento não substitui um GET. Não prova nada sobre cliques: a sub-aba Supervisão nunca foi exercida com sessão (PEN-36).",
+ "arquivos": {
+  "candidatas": "bfr-candidata-v121-rotulos-supervisor/index.html",
+  "diario_de_referencia": "evidence/ah1-rotulos-secretaria-17-11.json",
+  "bytes": 3489725,
+  "md5": "d418e7fc917f1fbb1437054b7b531f9b",
+  "linhas": 28661
+ },
+ "esperado_de_referencia": {
+  "Secretaria": {
+   "ocorrencias_no_shell": 76,
+   "primeira_linha": 3772
+  },
+  "Secretaria digital": {
+   "ocorrencias_no_shell": 5,
+   "primeira_linha": 5266
+  },
+  "Secretaria de Educação": {
+   "ocorrencias_no_shell": 3,
+   "primeira_linha": 7086
+  },
+  "Centro de Gestão da Educação": {
+   "ocorrencias_no_shell": 2,
+   "primeira_linha": 6817
+  },
+  "Atendimento da escola": {
+   "ocorrencias_no_shell": 2,
+   "primeira_linha": 5266
+  },
+  "Supervisão Educacional": {
+   "ocorrencias_no_shell": 2,
+   "primeira_linha": 10437
+  },
+  "Supervisão": {
+   "ocorrencias_no_shell": 5,
+   "primeira_linha": 30
+  }
+ },
+ "medido_agora": {
+  "Secretaria": {
+   "n": 76,
+   "primeira": 3772
+  },
+  "Secretaria digital": {
+   "n": 5,
+   "primeira": 5266
+  },
+  "Secretaria de Educação": {
+   "n": 3,
+   "primeira": 7086
+  },
+  "Centro de Gestão da Educação": {
+   "n": 2,
+   "primeira": 6817
+  },
+  "Atendimento da escola": {
+   "n": 2,
+   "primeira": 5266
+  },
+  "Supervisão Educacional": {
+   "n": 2,
+   "primeira": 10437
+  },
+  "Supervisão": {
+   "n": 5,
+   "primeira": 30
+  }
+ },
+ "unidades_das_duas_barras": {
+  "data-sec-tab": {
+   "ocorrencias_do_atributo": 13,
+   "botoes_com_rotulo": 13,
+   "mencoes_sem_rotulo": 0,
+   "distintos": 13
+  },
+  "data-secretary-tab": {
+   "ocorrencias_do_atributo": 33,
+   "botoes_com_rotulo": 23,
+   "mencoes_sem_rotulo": 10,
+   "distintos": 15
+  }
+ },
+ "portoes": [
+  {
+   "nome": "candidata_byte_identica_a_servida__bytes",
+   "esperado": 3489725,
+   "medido": 3489725,
+   "igual": true
+  },
+  {
+   "nome": "candidata_byte_identica_a_servida__md5",
+   "esperado": "d418e7fc917f1fbb1437054b7b531f9b",
+   "medido": "d418e7fc917f1fbb1437054b7b531f9b",
+   "igual": true
+  },
+  {
+   "nome": "contagem__Secretaria",
+   "esperado": 76,
+   "medido": 76,
+   "igual": true
+  },
+  {
+   "nome": "primeira_linha__Secretaria",
+   "esperado": 3772,
+   "medido": 3772,
+   "igual": true
+  },
+  {
+   "nome": "contagem__Secretaria digital",
+   "esperado": 5,
+   "medido": 5,
+   "igual": true
+  },
+  {
+   "nome": "primeira_linha__Secretaria digital",
+   "esperado": 5266,
+   "medido": 5266,
+   "igual": true
+  },
+  {
+   "nome": "contagem__Secretaria de Educação",
+   "esperado": 3,
+   "medido": 3,
+   "igual": true
+  },
+  {
+   "nome": "primeira_linha__Secretaria de Educação",
+   "esperado": 7086,
+   "medido": 7086,
+   "igual": true
+  },
+  {
+   "nome": "contagem__Centro de Gestão da Educação",
+   "esperado": 2,
+   "medido": 2,
+   "igual": true
+  },
+  {
+   "nome": "primeira_linha__Centro de Gestão da Educação",
+   "esperado": 6817,
+   "medido": 6817,
+   "igual": true
+  },
+  {
+   "nome": "contagem__Atendimento da escola",
+   "esperado": 2,
+   "medido": 2,
+   "igual": true
+  },
+  {
+   "nome": "primeira_linha__Atendimento da escola",
+   "esperado": 5266,
+   "medido": 5266,
+   "igual": true
+  },
+  {
+   "nome": "contagem__Supervisão Educacional",
+   "esperado": 2,
+   "medido": 2,
+   "igual": true
+  },
+  {
+   "nome": "primeira_linha__Supervisão Educacional",
+   "esperado": 10437,
+   "medido": 10437,
+   "igual": true
+  },
+  {
+   "nome": "contagem__Supervisão",
+   "esperado": 5,
+   "medido": 5,
+   "igual": true
+  },
+  {
+   "nome": "primeira_linha__Supervisão",
+   "esperado": 30,
+   "medido": 30,
+   "igual": true
+  },
+  {
+   "nome": "modulo_secretaria__data-sec-tab__botoes_com_rotulo",
+   "esperado": 13,
+   "medido": 13,
+   "igual": true
+  },
+  {
+   "nome": "modulo_secretaria__data-sec-tab__distintos",
+   "esperado": 13,
+   "medido": 13,
+   "igual": true
+  },
+  {
+   "nome": "modulo_secretaria__data-sec-tab__primeira_linha",
+   "esperado": 23708,
+   "medido": 23708,
+   "igual": true
+  },
+  {
+   "nome": "modulo_secretaria__data-sec-tab__valores_na_ordem",
+   "esperado": "overview,tasks,students,enrollments,documents,requests,agenda,professionals,classes,communications,reports,supervisao,search",
+   "medido": "overview,tasks,students,enrollments,documents,requests,agenda,professionals,classes,communications,reports,supervisao,search",
+   "igual": true
+  },
+  {
+   "nome": "workspace_rede__data-secretary-tab__botoes_com_rotulo",
+   "esperado": 23,
+   "medido": 23,
+   "igual": true
+  },
+  {
+   "nome": "workspace_rede__data-secretary-tab__distintos",
+   "esperado": 15,
+   "medido": 15,
+   "igual": true
+  },
+  {
+   "nome": "workspace_rede__data-secretary-tab__primeira_linha",
+   "esperado": 6818,
+   "medido": 6818,
+   "igual": true
+  },
+  {
+   "nome": "workspace_rede__data-secretary-tab__valores_na_ordem",
+   "esperado": "overview,schools,requests,communications,reports,notifications,search,requests,overview,schools,students,professionals,classes,enrollments,communications,calendar,notifications,indicators,reports,documents,administration,notifications,requests",
+   "medido": "overview,schools,requests,communications,reports,notifications,search,requests,overview,schools,students,professionals,classes,enrollments,communications,calendar,notifications,indicators,reports,documents,administration,notifications,requests",
+   "igual": true
+  }
+ ],
+ "veredito": {
+  "portoes": 24,
+  "vermelhos": 0,
+  "estado": "POSICOES_REBATIDAS_OK"
+ }
+}

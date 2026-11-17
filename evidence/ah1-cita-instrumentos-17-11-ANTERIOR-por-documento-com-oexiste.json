@@ -1,0 +1,96 @@
+{
+ "programa": "scripts/ah1-cita-instrumentos.mjs",
+ "em": "2026-11-17T23:12:21.878Z",
+ "o_que_prova": "cada caminho scripts/… , evidence/… e docs/… citado nos quatro documentos aponta para um ficheiro que existe no repositório, e quantas citações usam a palavra «equivalente» em vez de um nome versionado",
+ "o_que_NAO_prova": "que o instrumento citado produza o que a frase diz — só prova a existência do caminho; e as contagens são por **linha** (primeira batida da linha), não por ocorrência: uma linha com dois caminhos conta uma",
+ "documentos": [
+  "docs/auditoria-bfr-conecta.md",
+  "docs/roadmap-master.md",
+  "docs/roadmap-painel.html",
+  "docs/relatorio-professor-v59-2026-10-22.md"
+ ],
+ "por_documento": [
+  {
+   "doc": "docs/auditoria-bfr-conecta.md",
+   "citacoes": 307,
+   "ausentes": 216
+  },
+  {
+   "doc": "docs/roadmap-master.md",
+   "citacoes": 78,
+   "ausentes": 56
+  },
+  {
+   "doc": "docs/roadmap-painel.html",
+   "citacoes": 10,
+   "ausentes": 8
+  },
+  {
+   "doc": "docs/relatorio-professor-v59-2026-10-22.md",
+   "citacoes": 1,
+   "ausentes": 1
+  }
+ ],
+ "veredito": {
+  "citacoes": 396,
+  "caminhos_distintos": 238,
+  "ausentes_distintos": 5,
+  "aproximadas_equivalente": 4,
+  "estado": "CITACAS_COM_PONTA_SOLTA"
+ },
+ "ausentes": [
+  {
+   "caminho": "scripts/ah2-m5-nav-vs-marcador.mjs",
+   "citado_em": [
+    "docs/auditoria-bfr-conecta.md:4134"
+   ]
+  },
+  {
+   "caminho": "scripts/fim-sonda-polroles.mjs",
+   "citado_em": [
+    "docs/auditoria-bfr-conecta.md:3923",
+    "docs/auditoria-bfr-conecta.md:3925"
+   ]
+  },
+  {
+   "caminho": "scripts/pdf-hor-3-preflight.mjs",
+   "citado_em": [
+    "docs/auditoria-bfr-conecta.md:3821"
+   ]
+  },
+  {
+   "caminho": "scripts/rm68-dryrun-15-11d.mjs",
+   "citado_em": [
+    "docs/auditoria-bfr-conecta.md:3773"
+   ]
+  },
+  {
+   "caminho": "scripts/verifica-posicoes.mjs",
+   "citado_em": [
+    "docs/auditoria-bfr-conecta.md:4356"
+   ]
+  }
+ ],
+ "aproximadas": [
+  {
+   "doc": "docs/auditoria-bfr-conecta.md",
+   "linha": 671,
+   "recorte": "   Conferência lateral feita na mesma passada, para não deixar dúvida onde havia só suspeita: `family_cpf_is_valid` **nã"
+  },
+  {
+   "doc": "docs/auditoria-bfr-conecta.md",
+   "linha": 4093,
+   "recorte": "**AI.14 — o desktop do §6 está fechado e é a parte da auditoria que fecha primeiro.** Os 55 artefactos `ah2-varredura-*."
+  },
+  {
+   "doc": "docs/auditoria-bfr-conecta.md",
+   "linha": 4356,
+   "recorte": "1. **A pergunta media-se por GET, não por memória.** Shell servido hoje: **3 489 725 bytes**, md5 `d418e7fc917f1fbb14370"
+  },
+  {
+   "doc": "docs/auditoria-bfr-conecta.md",
+   "linha": 4370,
+   "recorte": "8. **Pegada do fecho desta passada** (medida por `md5sum` às 22:36Z, depois de **todas** as edições desta passada nos ci"
+  }
+ ]
+}

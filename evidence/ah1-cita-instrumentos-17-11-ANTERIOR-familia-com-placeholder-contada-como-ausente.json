@@ -1,0 +1,262 @@
+{
+ "programa": "scripts/ah1-cita-instrumentos.mjs",
+ "em": "2026-11-17T23:16:05.238Z",
+ "o_que_prova": "cada caminho scripts/… , evidence/… e docs/… citado nos quatro documentos aponta para um ficheiro que existe no repositório; classifica os ausentes por causa medida (história no git, espelho de saída, qualificação prévia em prosa) e conta as citações que apontam para uma sonda de sessão com a palavra «equivalente»",
+ "o_que_NAO_prova": "que o instrumento citado produza o que a frase diz além da existência do caminho (o espelho de saída prova que um script versionado escreve o artefacto citado na mesma linha, não que os números da frase saíram dele). As contagens são por **linha** (primeira batida por padrão), não por ocorrência. POSSIVEL_GRALHA_DE_NOME_SEM_PROVA é semelhança de bigramos (Dice >= 0.6), não identidade.",
+ "documentos": [
+  "docs/auditoria-bfr-conecta.md",
+  "docs/roadmap-master.md",
+  "docs/roadmap-painel.html",
+  "docs/relatorio-professor-v59-2026-10-22.md"
+ ],
+ "por_documento": [
+  {
+   "doc": "docs/auditoria-bfr-conecta.md",
+   "citacoes": 317,
+   "ausentes": 11
+  },
+  {
+   "doc": "docs/roadmap-master.md",
+   "citacoes": 78,
+   "ausentes": 0
+  },
+  {
+   "doc": "docs/roadmap-painel.html",
+   "citacoes": 10,
+   "ausentes": 0
+  },
+  {
+   "doc": "docs/relatorio-professor-v59-2026-10-22.md",
+   "citacoes": 1,
+   "ausentes": 0
+  }
+ ],
+ "veredito": {
+  "citacoes": 406,
+  "caminhos_distintos": 247,
+  "ausentes_distintos": 11,
+  "ausentes_ja_qualificadas_em_prosa": 2,
+  "pontas_soltas": 9,
+  "aproximadas_instrumento_equivalente": 2,
+  "estado": "CITACAS_COM_PONTA_SOLTA"
+ },
+ "ausentes": [
+  {
+   "caminho": "evidence/ah2-mobile2-m5-",
+   "citado_em": [
+    "docs/auditoria-bfr-conecta.md:4065"
+   ],
+   "commits_no_git": 0,
+   "ultimo_commit": null,
+   "em_disco": false,
+   "artefactos_na_mesma_linha": [],
+   "produzidos_por": [],
+   "parecidos": [
+    "scripts/ah2-mobile2.mjs#0.86",
+    "scripts/ah2-mobile.mjs#0.81"
+   ],
+   "janela_qualificada": false,
+   "classe": "POSSIVEL_GRALHA_DE_NOME_SEM_PROVA"
+  },
+  {
+   "caminho": "evidence/ah2-mobile2-m5-developer-1",
+   "citado_em": [
+    "docs/auditoria-bfr-conecta.md:4089"
+   ],
+   "commits_no_git": 0,
+   "ultimo_commit": null,
+   "em_disco": false,
+   "artefactos_na_mesma_linha": [],
+   "produzidos_por": [],
+   "parecidos": [
+    "scripts/ah2-m5-direcao-developer.mjs#0.67",
+    "scripts/ah2-mobile2.mjs#0.62"
+   ],
+   "janela_qualificada": false,
+   "classe": "POSSIVEL_GRALHA_DE_NOME_SEM_PROVA"
+  },
+  {
+   "caminho": "evidence/ah2-sonda-apoio-tempo-",
+   "citado_em": [
+    "docs/auditoria-bfr-conecta.md:4161",
+    "docs/auditoria-bfr-conecta.md:4197"
+   ],
+   "commits_no_git": 0,
+   "ultimo_commit": null,
+   "em_disco": false,
+   "artefactos_na_mesma_linha": [],
+   "produzidos_por": [],
+   "parecidos": [
+    "scripts/ah2-sonda-apoio-tempo.mjs#0.95",
+    "scripts/ah2-sonda-apoio-razao.mjs#0.76"
+   ],
+   "janela_qualificada": false,
+   "classe": "POSSIVEL_GRALHA_DE_NOME_SEM_PROVA"
+  },
+  {
+   "caminho": "evidence/ah2-sonda-painel-tempo-eds",
+   "citado_em": [
+    "docs/auditoria-bfr-conecta.md:4208"
+   ],
+   "commits_no_git": 0,
+   "ultimo_commit": null,
+   "em_disco": false,
+   "artefactos_na_mesma_linha": [],
+   "produzidos_por": [],
+   "parecidos": [
+    "scripts/ah2-sonda-painel-tempo.mjs#0.84",
+    "scripts/ah2-sonda-painel-cargos.mjs#0.63"
+   ],
+   "janela_qualificada": false,
+   "classe": "POSSIVEL_GRALHA_DE_NOME_SEM_PROVA"
+  },
+  {
+   "caminho": "evidence/fim-",
+   "citado_em": [
+    "docs/auditoria-bfr-conecta.md:3923"
+   ],
+   "commits_no_git": 0,
+   "ultimo_commit": null,
+   "em_disco": false,
+   "artefactos_na_mesma_linha": [],
+   "produzidos_por": [],
+   "parecidos": [
+    "scripts/fim-ac-numeros.mjs#0.30",
+    "scripts/fim-ciclo-recon.mjs#0.29"
+   ],
+   "janela_qualificada": true,
+   "classe": "CITACAO_JA_QUALIFICADA_EM_PROSA"
+  },
+  {
+   "caminho": "evidence/rm17v3--",
+   "citado_em": [
+    "docs/auditoria-bfr-conecta.md:3572"
+   ],
+   "commits_no_git": 0,
+   "ultimo_commit": null,
+   "em_disco": false,
+   "artefactos_na_mesma_linha": [],
+   "produzidos_por": [],
+   "parecidos": [
+    "scripts/rm13-sonda-ar-sw.mjs#0.24",
+    "scripts/rm13-sonda-rotas.mjs#0.23"
+   ],
+   "janela_qualificada": false,
+   "classe": "SONDA_DE_SESSAO_JAMAIS_VERSIONADA"
+  },
+  {
+   "caminho": "scripts/ah2-m5-nav-vs-marcador.mjs",
+   "citado_em": [
+    "docs/auditoria-bfr-conecta.md:4134"
+   ],
+   "commits_no_git": 0,
+   "ultimo_commit": null,
+   "em_disco": false,
+   "artefactos_na_mesma_linha": [],
+   "produzidos_por": [],
+   "parecidos": [
+    "scripts/ah2-m5-marcador-vs-mapa.mjs#0.83",
+    "scripts/ah2-m5-consolidador.mjs#0.60"
+   ],
+   "janela_qualificada": true,
+   "classe": "CITACAO_JA_QUALIFICADA_EM_PROSA"
+  },
+  {
+   "caminho": "scripts/fim-sonda-polroles.mjs",
+   "citado_em": [
+    "docs/auditoria-bfr-conecta.md:3923",
+    "docs/auditoria-bfr-conecta.md:3925"
+   ],
+   "commits_no_git": 0,
+   "ultimo_commit": null,
+   "em_disco": false,
+   "artefactos_na_mesma_linha": [
+    "evidence/fim-ac-numeros-d-15-11.json"
+   ],
+   "produzidos_por": [
+    "scripts/fim-ac-numeros-d.mjs"
+   ],
+   "parecidos": [
+    "scripts/fim-sonda-polroles-b.mjs#0.93",
+    "scripts/fim-sonda-polroles-ANTERIOR-emite-PII.mjs#0.67"
+   ],
+   "janela_qualificada": true,
+   "classe": "GRALHA_DE_NOME_PROVADA_POR_ESPELHO_DE_SAIDA"
+  },
+  {
+   "caminho": "scripts/pdf-hor-3-preflight.mjs",
+   "citado_em": [
+    "docs/auditoria-bfr-conecta.md:3821"
+   ],
+   "commits_no_git": 0,
+   "ultimo_commit": null,
+   "em_disco": false,
+   "artefactos_na_mesma_linha": [
+    "evidence/pdf-hor-3-preflight-v123-15-11.json"
+   ],
+   "produzidos_por": [
+    "scripts/pdf-hor-3-preflight-v123.mjs",
+    "scripts/pdf-hor-5-pos-deploy.mjs",
+    "scripts/pdf-hor-9-regua-ciclo.mjs"
+   ],
+   "parecidos": [
+    "scripts/pdf-hor-1-preflight.mjs#0.91",
+    "scripts/pdf-hor-3-preflight-v123.mjs#0.86"
+   ],
+   "janela_qualificada": false,
+   "classe": "GRALHA_DE_NOME_PROVADA_POR_ESPELHO_DE_SAIDA"
+  },
+  {
+   "caminho": "scripts/rm68-dryrun-15-11d.mjs",
+   "citado_em": [
+    "docs/auditoria-bfr-conecta.md:3773"
+   ],
+   "commits_no_git": 0,
+   "ultimo_commit": null,
+   "em_disco": false,
+   "artefactos_na_mesma_linha": [
+    "evidence/rm68-dryrun-15-11d.json"
+   ],
+   "produzidos_por": [
+    "scripts/rm68-aplicar-15-11.mjs",
+    "scripts/rm68-conferencia-15-11.mjs",
+    "scripts/rm68-dryrun-15-11.mjs"
+   ],
+   "parecidos": [
+    "scripts/rm68-dryrun-15-11.mjs#0.95",
+    "scripts/p2-1-dryrun.mjs#0.63"
+   ],
+   "janela_qualificada": false,
+   "classe": "GRALHA_DE_NOME_PROVADA_POR_ESPELHO_DE_SAIDA"
+  },
+  {
+   "caminho": "scripts/verifica-posicoes.mjs",
+   "citado_em": [
+    "docs/auditoria-bfr-conecta.md:4356"
+   ],
+   "commits_no_git": 0,
+   "ultimo_commit": null,
+   "em_disco": false,
+   "artefactos_na_mesma_linha": [],
+   "produzidos_por": [],
+   "parecidos": [
+    "scripts/s19-contas-verifica.mjs#0.57",
+    "scripts/seg-csp-assets-verifica.mjs#0.49"
+   ],
+   "janela_qualificada": false,
+   "classe": "SONDA_DE_SESSAO_JAMAIS_VERSIONADA"
+  }
+ ],
+ "aproximadas": [
+  {
+   "doc": "docs/auditoria-bfr-conecta.md",
+   "linha": 4356,
+   "recorte": "odas foram re-batidas nesta passada por `scripts/verifica-posicoes.mjs`-equivalente, não copiadas da sonda anterior."
+  },
+  {
+   "doc": "docs/auditoria-bfr-conecta.md",
+   "linha": 4370,
+   "recorte": "lida. A prédica honesta fica no script (`scripts/varre-escritas`-equivalente, faixas acima, com as duas de grego a exigir lista própria), não no número reproduz"
+  }
+ ]
+}
