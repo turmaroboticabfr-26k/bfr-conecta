@@ -1,0 +1,20 @@
+{
+  "em": "2026-11-17T02:59:41.038Z",
+  "tarefa": "AG-4 — candidata PEN-30 (announcements.created_at não existe), sem publicar",
+  "base_dir": "worker-deploy-v123-pdfs",
+  "base_md5": "7044c8c02368fbc2a99edc1b366e2326",
+  "candidata_dir": "bfr-candidata-v125-announcement-created-at",
+  "candidata_md5": "7d5fbbe71971f51dac77264eebb9cca7",
+  "delta_bytes": 8,
+  "substituicoes": [
+    {
+      "motivo": "PEN-30 — o select de loadHistory() pede announcements.created_at, que não está nas 13 colunas do catálogo; o erro vai para o innerHTML do histórico",
+      "de": ".from('announcements').select('id,title,body,message_type,status,published_at,scheduled_at,created_at,important,meeting_id').order('created_at',{ascending:false}).limit(100)",
+      "para": ".from('announcements').select('id,title,body,message_type,status,published_at,scheduled_at,important,meeting_id').order('published_at',{ascending:false,nullsFirst:false}).limit(100)"
+    }
+  ],
+  "ordem_dos_portoes": "chave única → substituição → vizinhos intactos → colunas pelo catálogo → reversibilidade → autocontrole",
+  "publicado": false,
+  "portoes": 18,
+  "falhas": []
+}

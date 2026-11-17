@@ -1,0 +1,168 @@
+{
+  "em": "2026-11-17T02:44:26.104Z",
+  "tarefa": "AG-4 peça 1 — PEN-30 medida no código e no ar (somente leitura)",
+  "origem_worker_md5": "7044c8c02368fbc2a99edc1b366e2326",
+  "selects_announcements": [
+    {
+      "offset": 850847,
+      "select": "id,title,subject,description,due_date,published_at,class_id",
+      "pede_created_at": false,
+      "ordem": "published_at",
+      "trecho": "at,class_id').order('published_at',{ascending:false}).limit(100)),\\n secretaryNetworkFetch(supabaseClient.from('announcements').select('id,title,body,published_at,important').order('published_at',{ascending:false}).limit(50)),\\n secretaryNetworkFetch(supabaseClient.from('school_events').select('titl"
+    },
+    {
+      "offset": 952375,
+      "select": "id,slug,title,summary,published",
+      "pede_created_at": false,
+      "ordem": "published_at",
+      "trecho": ",slug,title,summary,published').eq('published',true).order('title')),\\n coordinatorQuery(supabaseClient.from('announcements').select('id,title,body,message_type,status,published_at,scheduled_at,important').order('published_at',{ascending:false}).limit(12))\\n ]);\\n coordinatorState.activities = a"
+    },
+    {
+      "offset": 1136102,
+      "select": null,
+      "pede_created_at": false,
+      "ordem": "published_at",
+      "trecho": "nts, error: announcementsError }, { data: events, error: eventsError }] = await Promise.all([\\n supabaseClient.from('announcements').select('id,title,body,published_at,important').order('published_at',{ascending:false}).limit(5),\\n supabaseClient.from('school_events').select('title,description,start"
+    },
+    {
+      "offset": 1137186,
+      "select": null,
+      "pede_created_at": false,
+      "ordem": null,
+      "trecho": "nouncementPublishStatus');\\n const data = new FormData(form);\\n const { error } = await supabaseClient.from('announcements').insert({ title:data.get('title').trim(), body:data.get('body').trim(), important:data.has('important'), published_by:currentUser.id });\\n status.textContent = error ? 'Não foi"
+    },
+    {
+      "offset": 1319403,
+      "select": null,
+      "pede_created_at": false,
+      "ordem": "published_at",
+      "trecho": "owthState.studentIds = ids;\\n const linked = ids.length;\\n const requests = [\\n supabaseClient.from('announcements').select('id,title,body,published_at').order('published_at',{ascending:false}).limit(6),\\n supabaseClient.from('school_events').select('title,description,starts_at,location').gte('start"
+    },
+    {
+      "offset": 1845623,
+      "select": "id,title,description,starts_at,location",
+      "pede_created_at": false,
+      "ordem": "published_at",
+      "trecho": "`${today()}T00:00:00`).order('starts_at').limit(200)),\\n request('comunicados', shared('announcements') || client.from('announcements').select('id,title,body,message_type,status,published_at,scheduled_at,important').order('published_at',{ascending:false}).limit(200)),\\n request('reuniões', client.fr"
+    },
+    {
+      "offset": 2118017,
+      "select": null,
+      "pede_created_at": false,
+      "ordem": "published_at",
+      "trecho": ".innerHTML = '<div class=\\\"teacher-pro-empty\\\">Lendo comunicados da escola...</div>';\\n const result = await client().from('announcements').select('id,title,body,published_at,important').eq('status', 'published').order('published_at', { ascending: false }).limit(8);\\n if (result.error) { host.datase"
+    },
+    {
+      "offset": 2326247,
+      "select": null,
+      "pede_created_at": false,
+      "ordem": "published_at",
+      "trecho": "tate.notificationLoading = true;\\n try {\\n const ids = await linkedStudentIds();\\n const requests = [client.from('announcements').select('id,title,body,published_at').order('published_at',{ascending:false}).limit(8),client.from('school_events').select('title,description,starts_at,location').gte('sta"
+    },
+    {
+      "offset": 2336878,
+      "select": "score,subject,created_at",
+      "pede_created_at": true,
+      "ordem": null,
+      "trecho": "(4000),client.from('grades').select('score,subject,created_at').gte('created_at',since.toISOString()).limit(3000),client.from('announcements').select('id,published_at').gte('published_at',since.toISOString()).limit(200),client.from('school_activities').select('id,due_date').gte('due_date',isoDay())."
+    },
+    {
+      "offset": 2490137,
+      "select": "title,description,starts_at,location",
+      "pede_created_at": false,
+      "ordem": "published_at",
+      "trecho": "ocation').gte('starts_at', new Date().toISOString()).order('starts_at').limit(8)),\\n rows('announcements', client.from('announcements').select('id,title,body,published_at,important').eq('status','published').eq('audience_mode','all').order('published_at', { ascending:false }).limit(8)),\\n rows('mess"
+    },
+    {
+      "offset": 2621452,
+      "select": null,
+      "pede_created_at": false,
+      "ordem": "created_at",
+      "trecho": " client = db(); if (!host || !client) return;\\n const [announcements, recipients] = await Promise.all([\\n client.from('announcements').select('id,title,body,message_type,status,published_at,scheduled_at,created_at,important,meeting_id').order('created_at',{ascending:false}).limit(100),\\n client.from"
+    },
+    {
+      "offset": 2831791,
+      "select": "id,title,category,description,storage_path,student_id,request_id,recipient_id,published,created_at",
+      "pede_created_at": true,
+      "ordem": "published_at",
+      "trecho": "pient_id,published,created_at').order('created_at',{ascending:false}).limit(300)),\\n safeQuery('comunicados',client.from('announcements').select('id,title,body,message_type,status,published_at,scheduled_at,important').order('published_at',{ascending:false}).limit(100)),\\n safeQuery('eventos',client."
+    },
+    {
+      "offset": 2908998,
+      "select": "id,title,description,starts_at,location",
+      "pede_created_at": false,
+      "ordem": "published_at",
+      "trecho": "`${today()}T00:00:00`).order('starts_at').limit(200)),\\n request('comunicados', shared('announcements') || client.from('announcements').select('id,title,body,message_type,status,published_at,scheduled_at,important').order('published_at',{ascending:false}).limit(200)),\\n request('reuniões', client.fr"
+    },
+    {
+      "offset": 3313321,
+      "select": "id,title,description,notes,location,starts_at,status",
+      "pede_created_at": false,
+      "ordem": "published_at",
+      "trecho": "location,starts_at,status').gte('starts_at', new Date().toISOString()).order('starts_at').limit(60)),\\n run(db().from('announcements').select('id,title,body,message_type,status,published_at,scheduled_at,important').order('published_at', { ascending:false }).limit(60)),\\n run(db().from('secretary_req"
+    }
+  ],
+  "com_created_at": [
+    2336878,
+    2831791
+  ],
+  "urls_announcements": [],
+  "urls_que_pedem_created_at": [],
+  "consumos_possiveis_created_at": 101,
+  "colunas_catalogo": [
+    "id",
+    "title",
+    "body",
+    "published_by",
+    "published_at",
+    "important",
+    "message_type",
+    "audience_mode",
+    "scheduled_at",
+    "status",
+    "requires_confirmation",
+    "updated_at",
+    "meeting_id"
+  ],
+  "tem_created_at": false,
+  "candidatas_de_data": [
+    "published_at",
+    "scheduled_at",
+    "updated_at"
+  ],
+  "identidade": {
+    "shell_status": 200,
+    "shell_bytes": 3472213,
+    "shell_md5": "d418e7fc917f1fbb1437054b7b531f9b",
+    "host": "yyzqoxlkcvqpessypfjo",
+    "chave_anon": null
+  },
+  "no_ar": {
+    "defeituoso": {
+      "qs": "select=id%2Ctitle%2Ccreated_at",
+      "status": 401,
+      "code": "",
+      "message": "Invalid API key",
+      "linhas": null,
+      "corpo": "{\"message\":\"Invalid API key\",\"hint\":\"Double check your Supabase `anon` or `service_role` API key.\"}"
+    },
+    "corrigido_alias": {
+      "qs": "select=id%2Ctitle%2Cpublished_at%20as%20created_at",
+      "status": 401,
+      "code": "",
+      "message": "Invalid API key",
+      "linhas": null,
+      "corpo": "{\"message\":\"Invalid API key\",\"hint\":\"Double check your Supabase `anon` or `service_role` API key.\"}"
+    },
+    "corrigido_sem_alias": {
+      "qs": "select=id%2Ctitle%2Cpublished_at",
+      "status": 401,
+      "code": "",
+      "message": "Invalid API key",
+      "linhas": null,
+      "corpo": "{\"message\":\"Invalid API key\",\"hint\":\"Double check your Supabase `anon` or `service_role` API key.\"}"
+    },
+    "nota": "os três são GET de leitura contra o PostgREST vivo; o \"corrigido\" prova que a substituição devolve 200 e que o alias preserva o nome do campo que o JS consome"
+  },
+  "veredito": "PEN30_INESPERADA"
+}

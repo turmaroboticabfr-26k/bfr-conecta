@@ -1,0 +1,78 @@
+{
+  "em": "2026-11-17T03:02:01.366Z",
+  "tarefa": "AG-4 peça 3 — emissão do handler: base v123 × candidata v125, sem deploy",
+  "metodo": "import do worker + env.ASSETS falso; o que se compara é a string servida",
+  "emissao": {
+    "base_v123": {
+      "/": {
+        "status": 200,
+        "bytes": 3472213,
+        "md5": "d418e7fc917f1fbb1437054b7b531f9b",
+        "bug": 1,
+        "fix": 0,
+        "cabecalhos": {
+          "cache-control": "max-age=0, no-cache, no-store",
+          "content-security-policy": "default-src 'self'; base-uri 'self'; object-src 'none'; script-src 'self' 'unsafe-inline' https://bfr-conecta.turmaroboticabfr.workers.dev https://cdn.jsdelivr.net https://static.cloudflareinsights.com https://www.gstatic.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: blob: https:; connect-src 'self' https://bfr-conecta.turmaroboticabfr.workers.dev https://*.supabase.co wss://*.supabase.co https://cloudflareinsights.com https://*.cloudflareinsights.com https://*.googleapis.com https://fcm.googleapis.com https://api.open-meteo.com; worker-src 'self' blob:; manifest-src 'self'; form-action 'self' https://accounts.google.com https://*.supabase.co",
+          "content-type": "text/html; charset=utf-8",
+          "referrer-policy": "strict-origin-when-cross-origin",
+          "strict-transport-security": "max-age=31536000",
+          "x-content-type-options": "nosniff"
+        }
+      },
+      "/index.html": {
+        "status": 200,
+        "bytes": 3472213,
+        "md5": "d418e7fc917f1fbb1437054b7b531f9b",
+        "bug": 1,
+        "fix": 0,
+        "cabecalhos": {
+          "cache-control": "max-age=0, no-cache, no-store",
+          "content-security-policy": "default-src 'self'; base-uri 'self'; object-src 'none'; script-src 'self' 'unsafe-inline' https://bfr-conecta.turmaroboticabfr.workers.dev https://cdn.jsdelivr.net https://static.cloudflareinsights.com https://www.gstatic.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: blob: https:; connect-src 'self' https://bfr-conecta.turmaroboticabfr.workers.dev https://*.supabase.co wss://*.supabase.co https://cloudflareinsights.com https://*.cloudflareinsights.com https://*.googleapis.com https://fcm.googleapis.com https://api.open-meteo.com; worker-src 'self' blob:; manifest-src 'self'; form-action 'self' https://accounts.google.com https://*.supabase.co",
+          "content-type": "text/html; charset=utf-8",
+          "referrer-policy": "strict-origin-when-cross-origin",
+          "strict-transport-security": "max-age=31536000",
+          "x-content-type-options": "nosniff"
+        }
+      }
+    },
+    "candidata_v125": {
+      "/": {
+        "status": 200,
+        "bytes": 3472221,
+        "md5": "7db798c86c129a8e1f9a9ad16d65edd1",
+        "bug": 0,
+        "fix": 1,
+        "cabecalhos": {
+          "cache-control": "max-age=0, no-cache, no-store",
+          "content-security-policy": "default-src 'self'; base-uri 'self'; object-src 'none'; script-src 'self' 'unsafe-inline' https://bfr-conecta.turmaroboticabfr.workers.dev https://cdn.jsdelivr.net https://static.cloudflareinsights.com https://www.gstatic.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: blob: https:; connect-src 'self' https://bfr-conecta.turmaroboticabfr.workers.dev https://*.supabase.co wss://*.supabase.co https://cloudflareinsights.com https://*.cloudflareinsights.com https://*.googleapis.com https://fcm.googleapis.com https://api.open-meteo.com; worker-src 'self' blob:; manifest-src 'self'; form-action 'self' https://accounts.google.com https://*.supabase.co",
+          "content-type": "text/html; charset=utf-8",
+          "referrer-policy": "strict-origin-when-cross-origin",
+          "strict-transport-security": "max-age=31536000",
+          "x-content-type-options": "nosniff"
+        }
+      },
+      "/index.html": {
+        "status": 200,
+        "bytes": 3472221,
+        "md5": "7db798c86c129a8e1f9a9ad16d65edd1",
+        "bug": 0,
+        "fix": 1,
+        "cabecalhos": {
+          "cache-control": "max-age=0, no-cache, no-store",
+          "content-security-policy": "default-src 'self'; base-uri 'self'; object-src 'none'; script-src 'self' 'unsafe-inline' https://bfr-conecta.turmaroboticabfr.workers.dev https://cdn.jsdelivr.net https://static.cloudflareinsights.com https://www.gstatic.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: blob: https:; connect-src 'self' https://bfr-conecta.turmaroboticabfr.workers.dev https://*.supabase.co wss://*.supabase.co https://cloudflareinsights.com https://*.cloudflareinsights.com https://*.googleapis.com https://fcm.googleapis.com https://api.open-meteo.com; worker-src 'self' blob:; manifest-src 'self'; form-action 'self' https://accounts.google.com https://*.supabase.co",
+          "content-type": "text/html; charset=utf-8",
+          "referrer-policy": "strict-origin-when-cross-origin",
+          "strict-transport-security": "max-age=31536000",
+          "x-content-type-options": "nosniff"
+        }
+      }
+    }
+  },
+  "controle_negativo": {
+    "ficheiro": "C:\\Users\\pcmac\\AppData\\Local\\Temp\\ag4-pen30-mutante-negativo-17-11.mjs",
+    "bytes": 3472213,
+    "md5": "d418e7fc917f1fbb1437054b7b531f9b",
+    "bug": 1,
+    "fix": 0
+  }
+}

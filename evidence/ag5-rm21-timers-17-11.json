@@ -1,0 +1,427 @@
+{
+  "em": "2026-11-17T03:04:40.272Z",
+  "alvo": "worker-deploy-v123-pdfs/worker.mjs",
+  "md5": "7044c8c02368fbc2a99edc1b366e2326",
+  "metodo": "extração por profundidade de parênteses (a peça 1 usou regex não-gulosa até ao primeiro ) e por isso deitou fora o que interessava)",
+  "total": 40,
+  "com_ms": 39,
+  "sem_ms_reconhecido": [
+    {
+      "offset": 2528734,
+      "corpo": "setInterval(() => load(), 15 * 60 * 1000)"
+    }
+  ],
+  "escrevem_dom": 5,
+  "consultam": 0,
+  "do_menu": 5,
+  "por_ms": {
+    "250": 1,
+    "500": 2,
+    "800": 1,
+    "900": 2,
+    "1000": 2,
+    "1200": 12,
+    "1600": 1,
+    "1800": 2,
+    "2200": 1,
+    "5000": 3,
+    "6000": 1,
+    "15000": 3,
+    "30000": 2,
+    "60000": 4,
+    "120000": 1,
+    "900000": 1,
+    "null": 1
+  },
+  "periodos_ao_menu_com_escrita_dom": [
+    {
+      "offset": 1607205,
+      "ms": 1200,
+      "corpo": "setInterval(()=>{tries++;if(typeof currentProfile!=='undefined'&&typeof currentUser!=='undefined'&&currentUser){setupSupportNav();if(!supportView()?.classList.contains('hidden')){supportStyles();ensureSupportSearch();}}if(tries>180)clearInterval(timer);},1200)"
+    },
+    {
+      "offset": 3299322,
+      "ms": 900,
+      "corpo": "setInterval(() => { if (document.getElementById('appShell')?.classList.contains('ready')) syncNavigationA11y(); }, 900)"
+    }
+  ],
+  "periodos_ao_menu_sem_escrita": [
+    {
+      "offset": 1562477,
+      "ms": 1200,
+      "corpo": "setInterval(() => { tries++; if (appReady() && db() && user()) { injectStyles(); setupDirectionNav(); const view = activeView(); const isAdminShell = view?.id === 'adminView'; if (!isAdminShell) { ensureDirectionPanel(); ensureBirthdays(); ensureReadingPanel()"
+    },
+    {
+      "offset": 1950803,
+      "ms": 500,
+      "corpo": "setInterval(syncPlatformNavigation, 500)"
+    },
+    {
+      "offset": 2425499,
+      "ms": 1200,
+      "corpo": "setInterval(syncNav, 1200)"
+    }
+  ],
+  "sites": [
+    {
+      "offset": 7740,
+      "ms": 500,
+      "corpo": "setInterval(function(){if(document.readyState!==\\\"loading\\\"){clearInterval(__w);__release();return;}var c=document.getElementsByTagName(\\\"*\\\").length;if(c===__n&&++__s>16){clearInterval(__w);__release();}else{__s=0;}__n=c;},500)",
+      "escreve_dom": false,
+      "escreve_estado": false,
+      "consulta": false,
+      "menu": false
+    },
+    {
+      "offset": 232667,
+      "ms": 1200,
+      "corpo": "setInterval(sync, 1200)",
+      "escreve_dom": false,
+      "escreve_estado": false,
+      "consulta": false,
+      "menu": false
+    },
+    {
+      "offset": 655789,
+      "ms": 5000,
+      "corpo": "setInterval(() => {\\n if (token === generation && (channel?.state !== 'joined' || !supabaseClient.realtime?.conn)) scheduleRetry();\\n }, 5000)",
+      "escreve_dom": false,
+      "escreve_estado": false,
+      "consulta": false,
+      "menu": false
+    },
+    {
+      "offset": 656641,
+      "ms": 6000,
+      "corpo": "setInterval(() => {\\n const realtime = supabaseClient?.realtime;\\n if (!realtime || realtime.conn || window.__BFR_RECOVERY_ACTIVE) return;\\n window.__BFR_RECOVERY_ACTIVE = true;\\n realtime.connect?.();\\n [...registry].forEach((item,index) => setTimeout(item.fo",
+      "escreve_dom": false,
+      "escreve_estado": false,
+      "consulta": false,
+      "menu": false
+    },
+    {
+      "offset": 697305,
+      "ms": 60000,
+      "corpo": "setInterval(updateLiveClock, 60000)",
+      "escreve_dom": false,
+      "escreve_estado": false,
+      "consulta": false,
+      "menu": false
+    },
+    {
+      "offset": 699989,
+      "ms": 900000,
+      "corpo": "setInterval(loadWeather, 900000)",
+      "escreve_dom": false,
+      "escreve_estado": false,
+      "consulta": false,
+      "menu": false
+    },
+    {
+      "offset": 712264,
+      "ms": 5000,
+      "corpo": "setInterval(() => loadGateAlerts(true), 5000)",
+      "escreve_dom": false,
+      "escreve_estado": false,
+      "consulta": false,
+      "menu": false
+    },
+    {
+      "offset": 932804,
+      "ms": 15000,
+      "corpo": "setInterval(() => loadGateCheckins(true), 15000)",
+      "escreve_dom": false,
+      "escreve_estado": false,
+      "consulta": false,
+      "menu": false
+    },
+    {
+      "offset": 1134921,
+      "ms": 60000,
+      "corpo": "setInterval(() => { if (document.visibilityState !== 'hidden') { setupLiveContent(); loadSchoolActivities(true); } }, 60000)",
+      "escreve_dom": false,
+      "escreve_estado": false,
+      "consulta": false,
+      "menu": false
+    },
+    {
+      "offset": 1156406,
+      "ms": 15000,
+      "corpo": "setInterval(() => { if (document.visibilityState !== 'hidden') loadParentGateCheckins(true); }, 15000)",
+      "escreve_dom": false,
+      "escreve_estado": false,
+      "consulta": false,
+      "menu": false
+    },
+    {
+      "offset": 1167058,
+      "ms": 15000,
+      "corpo": "setInterval(updateScheduleNow, 15000)",
+      "escreve_dom": false,
+      "escreve_estado": false,
+      "consulta": false,
+      "menu": false
+    },
+    {
+      "offset": 1352935,
+      "ms": 60000,
+      "corpo": "setInterval(() => { if (growthState.loaded) loadGrowthNotifications(); if (growthState.calendarLoaded) loadGrowthCalendar(); if (growthState.messagesLoaded) loadGrowthMessages(); if (growthState.requestsLoaded) loadGrowthRequests(); }, 60000)",
+      "escreve_dom": false,
+      "escreve_estado": false,
+      "consulta": false,
+      "menu": false
+    },
+    {
+      "offset": 1562477,
+      "ms": 1200,
+      "corpo": "setInterval(() => { tries++; if (appReady() && db() && user()) { injectStyles(); setupDirectionNav(); const view = activeView(); const isAdminShell = view?.id === 'adminView'; if (!isAdminShell) { ensureDirectionPanel(); ensureBirthdays(); ensureReadingPanel()",
+      "escreve_dom": false,
+      "escreve_estado": false,
+      "consulta": false,
+      "menu": true
+    },
+    {
+      "offset": 1607205,
+      "ms": 1200,
+      "corpo": "setInterval(()=>{tries++;if(typeof currentProfile!=='undefined'&&typeof currentUser!=='undefined'&&currentUser){setupSupportNav();if(!supportView()?.classList.contains('hidden')){supportStyles();ensureSupportSearch();}}if(tries>180)clearInterval(timer);},1200)",
+      "escreve_dom": true,
+      "escreve_estado": false,
+      "consulta": false,
+      "menu": true
+    },
+    {
+      "offset": 1802347,
+      "ms": 1200,
+      "corpo": "setInterval(() => { tries++; ensure(); if (tries > 180) clearInterval(timer); }, 1200)",
+      "escreve_dom": false,
+      "escreve_estado": false,
+      "consulta": false,
+      "menu": false
+    },
+    {
+      "offset": 1950803,
+      "ms": 500,
+      "corpo": "setInterval(syncPlatformNavigation, 500)",
+      "escreve_dom": false,
+      "escreve_estado": false,
+      "consulta": false,
+      "menu": true
+    },
+    {
+      "offset": 1993657,
+      "ms": 1200,
+      "corpo": "setInterval(() => { installFamilyDocumentLoader(); }, 1200)",
+      "escreve_dom": false,
+      "escreve_estado": false,
+      "consulta": false,
+      "menu": false
+    },
+    {
+      "offset": 1993813,
+      "ms": 1200,
+      "corpo": "setInterval(ensure, 1200)",
+      "escreve_dom": false,
+      "escreve_estado": false,
+      "consulta": false,
+      "menu": false
+    },
+    {
+      "offset": 2016892,
+      "ms": 60000,
+      "corpo": "setInterval(() => { if (allowed()) loadPresence(); }, 60000)",
+      "escreve_dom": false,
+      "escreve_estado": false,
+      "consulta": false,
+      "menu": false
+    },
+    {
+      "offset": 2069010,
+      "ms": 1000,
+      "corpo": "setInterval(() => { ensurePanel(); loadTeachers(); if (++attempts > 120) clearInterval(timer); }, 1000)",
+      "escreve_dom": false,
+      "escreve_estado": false,
+      "consulta": false,
+      "menu": false
+    },
+    {
+      "offset": 2230811,
+      "ms": 900,
+      "corpo": "setInterval(sync, 900)",
+      "escreve_dom": false,
+      "escreve_estado": false,
+      "consulta": false,
+      "menu": false
+    },
+    {
+      "offset": 2238889,
+      "ms": 1200,
+      "corpo": "setInterval(ensure, 1200)",
+      "escreve_dom": false,
+      "escreve_estado": false,
+      "consulta": false,
+      "menu": false
+    },
+    {
+      "offset": 2284594,
+      "ms": 30000,
+      "corpo": "setInterval(() => loadPresence(), 30000)",
+      "escreve_dom": false,
+      "escreve_estado": false,
+      "consulta": false,
+      "menu": false
+    },
+    {
+      "offset": 2376877,
+      "ms": 30000,
+      "corpo": "setInterval(() => { const current = root()?.querySelector('[data-bfr-coordination-dashboard]'); if (current) { current.querySelector('[data-coord-clock]').textContent = clock(); } },30000)",
+      "escreve_dom": true,
+      "escreve_estado": false,
+      "consulta": false,
+      "menu": false
+    },
+    {
+      "offset": 2425499,
+      "ms": 1200,
+      "corpo": "setInterval(syncNav, 1200)",
+      "escreve_dom": false,
+      "escreve_estado": false,
+      "consulta": false,
+      "menu": true
+    },
+    {
+      "offset": 2528734,
+      "ms": null,
+      "corpo": "setInterval(() => load(), 15 * 60 * 1000)",
+      "escreve_dom": false,
+      "escreve_estado": false,
+      "consulta": false,
+      "menu": false
+    },
+    {
+      "offset": 2536619,
+      "ms": 1200,
+      "corpo": "setInterval(ensure, 1200)",
+      "escreve_dom": false,
+      "escreve_estado": false,
+      "consulta": false,
+      "menu": false
+    },
+    {
+      "offset": 2597694,
+      "ms": 120000,
+      "corpo": "setInterval(() => { if (state.view && !state.view.classList.contains('hidden') && document.visibilityState === 'visible' && !state.selectedMatchId) loadData(); }, 120000)",
+      "escreve_dom": true,
+      "escreve_estado": false,
+      "consulta": false,
+      "menu": false
+    },
+    {
+      "offset": 2656745,
+      "ms": 1600,
+      "corpo": "setInterval(sync, 1600)",
+      "escreve_dom": false,
+      "escreve_estado": false,
+      "consulta": false,
+      "menu": false
+    },
+    {
+      "offset": 2675433,
+      "ms": 1200,
+      "corpo": "setInterval(boot, 1200)",
+      "escreve_dom": false,
+      "escreve_estado": false,
+      "consulta": false,
+      "menu": false
+    },
+    {
+      "offset": 2890455,
+      "ms": 1800,
+      "corpo": "setInterval(()=>{if(allowed())ensure();},1800)",
+      "escreve_dom": false,
+      "escreve_estado": false,
+      "consulta": false,
+      "menu": false
+    },
+    {
+      "offset": 3078941,
+      "ms": 1800,
+      "corpo": "setInterval(()=>{if(allowed())ensure()},1800)",
+      "escreve_dom": false,
+      "escreve_estado": false,
+      "consulta": false,
+      "menu": false
+    },
+    {
+      "offset": 3183827,
+      "ms": 5000,
+      "corpo": "setInterval(async()=>{\\n if(!allowed()||!state.view)return;\\n if(dateKey()!==state.schoolDate){if(state.camera){await api().stop?.();state.camera=false;}state.pending=null;await load(true);return;}\\n const key=gateContextKey();\\n if(key===state.lastContextKey)",
+      "escreve_dom": false,
+      "escreve_estado": true,
+      "consulta": false,
+      "menu": false
+    },
+    {
+      "offset": 3285903,
+      "ms": 2200,
+      "corpo": "setInterval(load, 2200)",
+      "escreve_dom": false,
+      "escreve_estado": false,
+      "consulta": false,
+      "menu": false
+    },
+    {
+      "offset": 3299322,
+      "ms": 900,
+      "corpo": "setInterval(() => { if (document.getElementById('appShell')?.classList.contains('ready')) syncNavigationA11y(); }, 900)",
+      "escreve_dom": true,
+      "escreve_estado": false,
+      "consulta": false,
+      "menu": true
+    },
+    {
+      "offset": 3299446,
+      "ms": 1200,
+      "corpo": "setInterval(() => { if (document.getElementById('appShell')?.classList.contains('ready')) positionLia(); }, 1200)",
+      "escreve_dom": true,
+      "escreve_estado": false,
+      "consulta": false,
+      "menu": false
+    },
+    {
+      "offset": 3401275,
+      "ms": 1000,
+      "corpo": "setInterval(() => {\\n tries += 1;\\n setup();\\n if ((state.loaded && state.rendered) || tries > 180) clearInterval(timer);\\n }, 1000)",
+      "escreve_dom": false,
+      "escreve_estado": false,
+      "consulta": false,
+      "menu": false
+    },
+    {
+      "offset": 3497403,
+      "ms": 1200,
+      "corpo": "setInterval(sync, 1200)",
+      "escreve_dom": false,
+      "escreve_estado": false,
+      "consulta": false,
+      "menu": false
+    },
+    {
+      "offset": 3508118,
+      "ms": 250,
+      "corpo": "setInterval(sync, 250)",
+      "escreve_dom": false,
+      "escreve_estado": false,
+      "consulta": false,
+      "menu": false
+    },
+    {
+      "offset": 3529884,
+      "ms": 800,
+      "corpo": "setInterval(function () {\\n tries++;\\n const panel = document.getElementById('bfrDirectionPanel');\\n if (panel) {\\n auditDirectionKpis();\\n patchDecisionArea();\\n patchNoteForm();\\n clearInterval(poll);\\n return;\\n }\\n if (tries >= maxWait) clearInterval(poll)",
+      "escreve_dom": false,
+      "escreve_estado": false,
+      "consulta": false,
+      "menu": false
+    }
+  ]
+}

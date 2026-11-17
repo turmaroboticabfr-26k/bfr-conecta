@@ -2,9 +2,15 @@
 // digitar nenhum nome a partir da memória: as 3 tabelas ausentes, as colunas de `announcements` e os
 // nomes das FKs vêm de `evidence/fin2b-ruins-catalogo.json`; as 6 vistas vêm de `evidence/rm14-censo-views.json`.
 // Uma SELECT de pg_catalog por veredito, e a pegada do catálogo no início e no fim prova que nada foi escrito.
-// Artefacto: evidence/fin2-higiene-rm62.json
-import { readFileSync, writeFileSync } from "node:fs";
+// Artefacto: por argumento — `node scripts/fin2-higiene-rm62.mjs evidence/fin2-higiene-rm62-<data>.json`.
+// ARMADILHA MEDIDA 16/11 (achados AF1-e/AF1-f de §AF) — este script gravava sempre no mesmo caminho e
+// sem defesa, e a corrida de re-emissão sobrepor-se-ia à régua de 12/11 que o roadmap cita. Agora o
+// destino é argumento e um ficheiro existente nunca se sobrepõe, igual ao `rm68-recon-quals.mjs` de 15/11.
+import { existsSync, readFileSync, writeFileSync } from "node:fs";
 import { sql, criarGates } from "./c2-lib.mjs";
+
+const SAIDA = process.argv[2] || "evidence/fin2-higiene-rm62.json";
+if (existsSync(SAIDA)) { console.log(`VERMELHO  já existe ${SAIDA} — não sobreponho artefactos; re-emita para um caminho datado`); process.exit(1); }
 
 const g = criarGates();
 const fin2b = JSON.parse(readFileSync("evidence/fin2b-ruins-catalogo.json", "utf8"));
@@ -89,7 +95,20 @@ out.pen23 = {
 const nomesCenso = censoViews.linhas.map((v) => v.nome).sort();
 g.gate("pen23_mesmos_nomes_do_censo_rm14", out.pen23_views.map((v) => v.nome).sort(), nomesCenso);
 g.gate("pen23_total_views_bate_com_documento", out.pen23.total_views, 6);
-g.gate("pen23_unica_com_security_invoker", out.pen23.com_security_invoker, ["support_professionals_directory"]);
+// CORRIGIDO 16/11 (achado AF1-e) — a asserção antiga era `com_security_invoker == ["support_..."]`,
+// i.e. pedia que a PEN-23 continuasse aberta. §AE.2 fechou as 5 vistas `sports_public_*` para invoker
+// em 16/11 e a corrida de re-emissão deu VERMELHO por causa disso. A propriedade que se quer guardar é
+// «0 vistas sem security_invoker» + «as 6 com, conferidas por nome contra o censo rm14»: strengthening.
+g.gate("pen23_nenhuma_view_sem_security_invoker", out.pen23.sem_security_invoker, []);
+g.gate("pen23_todas_as_views_do_censo_com_security_invoker", out.pen23.com_security_invoker.slice().sort(), nomesCenso);
+{
+  // AUTOCONTROLE: um portão que não morde num valor trocado não é um portão. Não passa pelo `g.gate`
+  // para não imprimir um VERMELHO que não é falha — imprime a sua própria linha e assina o resultado.
+  const esperadoTrocado = nomesCenso.concat("vista_inexistente_neste_catalogo");
+  const mordeu = JSON.stringify(out.pen23.com_security_invoker.slice().sort()) !== JSON.stringify(esperadoTrocado);
+  console.log(`AUTOCONTROLE  pen23 comparado a uma expectativa trocada → ${mordeu ? "MORDE" : "NÃO MORDE (portão morto)"}`);
+  g.gate("pen23_autocobranca_mordeu", mordeu, true);
+}
 
 // ── PEN-29 + a pergunta aberta do PEN-31: existe uma relação chamada `schools`? ──
 // Varredura em TODOS os esquemas, não só `public`: se existir fora do `public` não é alcançável pelo
@@ -153,7 +172,7 @@ console.log(`pegada catálogo antes=${antes.total}/${antes.hash.slice(0, 12)} de
 g.gate("nao_escrita_pegada_de_catalogo_igual", depois, antes);
 out.pegada_depois = depois;
 out.portoes = g.resumo();
-writeFileSync("evidence/fin2-higiene-rm62.json", JSON.stringify(out, null, 2) + "\n");
+writeFileSync(SAIDA, JSON.stringify(out, null, 2) + "\n");
 
 const { portoes, falhas } = g.resumo();
 for (const f of falhas) console.log("VERMELHO  " + f);
@@ -161,6 +180,6 @@ console.log(`pen22: ${out.pen22.total_funcoes} funções · EXECUTE a anon em ${
 console.log(`pen23: ${out.pen23.total_views} views · security_invoker em ${out.pen23.com_security_invoker.length} · definer/BYPASSRLS em ${out.pen23.sem_security_invoker.length}`);
 console.log(`escolas: public.schools = ${out.perguntas_abertas.public_schools_existe} · sports_schools = ${out.perguntas_abertas.sports_schools_existe}`);
 console.log(`FKs de supervision_requests: ${out.fks_pen31.join(" · ") || "nenhuma"}`);
-if (falhas.length === 0) { console.log(`FIN2_HIGIENE_VERDE ${portoes} portões / 0 falhas · artefacto evidence/fin2-higiene-rm62.json`); process.exit(0); }
+if (falhas.length === 0) { console.log(`FIN2_HIGIENE_VERDE ${portoes} portões / 0 falhas · artefacto ${SAIDA}`); process.exit(0); }
 console.log(`FIN2_HIGIENE_VERMELHA ${falhas.length} falha(s) de ${portoes} portões`);
 process.exit(1);

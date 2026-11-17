@@ -1,0 +1,87 @@
+{
+  "em": "2026-11-17T03:05:21.388Z",
+  "tarefa": "AG-5 peça 3 — o que os callbacks periódicos do menu realmente escrevem",
+  "metodo": "resolução do corpo por contagem de chaves no mesmo bundle",
+  "alvos": {
+    "syncNav": {
+      "encontrada": true,
+      "chars": 367,
+      "escreve_dom": true,
+      "redesenha": false,
+      "consultas": 0,
+      "amostra": "{\\n document.querySelectorAll('.bfr-platform-nav').forEach(host => navButton(host));\\n document.querySelectorAll('.mobile-more-grid').forEach(host => navButton(host, true));\\n const canView = allowed("
+    },
+    "syncPlatformNavigation": {
+      "encontrada": true,
+      "chars": 440,
+      "escreve_dom": false,
+      "redesenha": false,
+      "consultas": 0,
+      "amostra": "{\\n const areaByView = {platformLearnView:'aprender',platformEvolveView:'evoluir',platformSchoolView:'escola',platformSpaceView:'meu-espaco'};\\n const visible = document.querySelector('#appShell .cont"
+    },
+    "syncNavigationA11y": {
+      "encontrada": true,
+      "chars": 1426,
+      "escreve_dom": true,
+      "redesenha": false,
+      "consultas": 0,
+      "amostra": "{\\n document.querySelectorAll('.nav-item[data-section]').forEach(item => {\\n item.setAttribute('aria-current', item.classList.contains('active') ? 'page' : 'false');\\n });\\n const gamesView = document"
+    },
+    "setupSupervisorNav": {
+      "encontrada": false,
+      "chars": 0,
+      "escreve_dom": false,
+      "redesenha": false,
+      "consultas": 0,
+      "amostra": null
+    },
+    "injectStyles": {
+      "encontrada": true,
+      "chars": 8122,
+      "escreve_dom": true,
+      "redesenha": false,
+      "consultas": 0,
+      "amostra": "{\\n if (document.getElementById('bfr-product-enhancements-style')) return;\\n const style = document.createElement('style'); style.id = 'bfr-product-enhancements-style';\\n style.textContent = `\\n .bfr-"
+    },
+    "setupDirectionNav": {
+      "encontrada": true,
+      "chars": 1478,
+      "escreve_dom": true,
+      "redesenha": true,
+      "consultas": 0,
+      "amostra": "{\\n const nav = document.querySelector('[data-direction-nav]'); if (!nav) return;\\n const visible = ['developer','director'].includes(role()); nav.classList.toggle('hidden',!visible); if (!visible || "
+    },
+    "appReady": {
+      "encontrada": false,
+      "chars": 0,
+      "escreve_dom": false,
+      "redesenha": false,
+      "consultas": 0,
+      "amostra": null
+    }
+  },
+  "timers": [
+    {
+      "offset": 2425499,
+      "ms": 1200,
+      "callback": "syncNav",
+      "escreve_dom": true,
+      "redesenha": false
+    },
+    {
+      "offset": 1950803,
+      "ms": 500,
+      "callback": "syncPlatformNavigation",
+      "escreve_dom": false,
+      "redesenha": false
+    },
+    {
+      "offset": 3299322,
+      "ms": 900,
+      "callback": "syncNavigationA11y",
+      "escreve_dom": true,
+      "redesenha": false
+    }
+  ],
+  "veredito_rma21": "PERIODICO_COM_ESCRITA: 2 dos 3 timers do menu escrevem no DOM — a aceitação «0 escritas periódicas residuais» NÃO se verifica nos bytes publicados"
+}

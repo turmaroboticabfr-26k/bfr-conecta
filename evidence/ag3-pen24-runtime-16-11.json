@@ -1,0 +1,127 @@
+{
+  "em": "2026-11-17T02:39:48.358Z",
+  "tarefa": "AG-3 peça 2 — emissão real do handler (base v123 × candidata v124), sem deploy",
+  "metodos": "import do worker + env.ASSETS falso; nada toca a rede",
+  "base_v123": {
+    "shell": {
+      "status": 200,
+      "headers": {
+        "cache-control": "max-age=0, no-cache, no-store",
+        "content-security-policy": "default-src 'self'; base-uri 'self'; object-src 'none'; script-src 'self' 'unsafe-inline' https://bfr-conecta.turmaroboticabfr.workers.dev https://cdn.jsdelivr.net https://static.cloudflareinsights.com https://www.gstatic.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: blob: https:; connect-src 'self' https://bfr-conecta.turmaroboticabfr.workers.dev https://*.supabase.co wss://*.supabase.co https://cloudflareinsights.com https://*.cloudflareinsights.com https://*.googleapis.com https://fcm.googleapis.com https://api.open-meteo.com; worker-src 'self' blob:; manifest-src 'self'; form-action 'self' https://accounts.google.com https://*.supabase.co",
+        "content-type": "text/html; charset=utf-8",
+        "referrer-policy": "strict-origin-when-cross-origin",
+        "strict-transport-security": "max-age=31536000",
+        "x-content-type-options": "nosniff"
+      },
+      "bytes": 3489725
+    },
+    "asset": {
+      "status": 200,
+      "headers": {
+        "cache-control": "public, max-age=0, must-revalidate",
+        "content-type": "application/pdf"
+      },
+      "bytes": 41
+    },
+    "sw": {
+      "status": 200,
+      "headers": {
+        "cache-control": "max-age=0, no-cache, no-store",
+        "content-type": "application/javascript; charset=utf-8"
+      },
+      "bytes": 5064
+    },
+    "nao": {
+      "status": 404,
+      "headers": {
+        "cache-control": "max-age=0, no-cache, no-store",
+        "content-type": "text/plain; charset=utf-8",
+        "referrer-policy": "strict-origin-when-cross-origin",
+        "strict-transport-security": "max-age=31536000",
+        "x-content-type-options": "nosniff"
+      },
+      "bytes": 9
+    },
+    "assets_pedidos": [
+      "/horario-matutino-2026.pdf",
+      "/nao-existe.txt"
+    ]
+  },
+  "candidata_v124": {
+    "shell": {
+      "status": 200,
+      "headers": {
+        "cache-control": "max-age=0, no-cache, no-store",
+        "content-security-policy": "default-src 'self'; base-uri 'self'; object-src 'none'; script-src 'self' 'unsafe-inline' https://bfr-conecta.turmaroboticabfr.workers.dev https://cdn.jsdelivr.net https://static.cloudflareinsights.com https://www.gstatic.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: blob: https:; connect-src 'self' https://bfr-conecta.turmaroboticabfr.workers.dev https://*.supabase.co wss://*.supabase.co https://cloudflareinsights.com https://*.cloudflareinsights.com https://*.googleapis.com https://fcm.googleapis.com https://api.open-meteo.com; worker-src 'self' blob:; manifest-src 'self'; form-action 'self' https://accounts.google.com https://*.supabase.co; frame-ancestors 'self'",
+        "content-type": "text/html; charset=utf-8",
+        "referrer-policy": "strict-origin-when-cross-origin",
+        "strict-transport-security": "max-age=31536000",
+        "x-content-type-options": "nosniff",
+        "x-frame-options": "SAMEORIGIN"
+      },
+      "bytes": 3489725
+    },
+    "asset": {
+      "status": 200,
+      "headers": {
+        "cache-control": "public, max-age=0, must-revalidate",
+        "content-security-policy": "frame-ancestors 'self'; base-uri 'self'; form-action 'self'",
+        "content-type": "application/pdf",
+        "x-frame-options": "SAMEORIGIN"
+      },
+      "bytes": 41
+    },
+    "sw": {
+      "status": 200,
+      "headers": {
+        "cache-control": "max-age=0, no-cache, no-store",
+        "content-type": "application/javascript; charset=utf-8"
+      },
+      "bytes": 5064
+    },
+    "nao": {
+      "status": 404,
+      "headers": {
+        "cache-control": "max-age=0, no-cache, no-store",
+        "content-type": "text/plain; charset=utf-8",
+        "referrer-policy": "strict-origin-when-cross-origin",
+        "strict-transport-security": "max-age=31536000",
+        "x-content-type-options": "nosniff"
+      },
+      "bytes": 9
+    },
+    "assets_pedidos": [
+      "/horario-matutino-2026.pdf",
+      "/nao-existe.txt"
+    ]
+  },
+  "controle_negativo": {
+    "shell_mutante": {
+      "status": 200,
+      "headers": {
+        "cache-control": "max-age=0, no-cache, no-store",
+        "content-security-policy": "default-src 'self'; base-uri 'self'; object-src 'none'; script-src 'self' 'unsafe-inline' https://bfr-conecta.turmaroboticabfr.workers.dev https://cdn.jsdelivr.net https://static.cloudflareinsights.com https://www.gstatic.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: blob: https:; connect-src 'self' https://bfr-conecta.turmaroboticabfr.workers.dev https://*.supabase.co wss://*.supabase.co https://cloudflareinsights.com https://*.cloudflareinsights.com https://*.googleapis.com https://fcm.googleapis.com https://api.open-meteo.com; worker-src 'self' blob:; manifest-src 'self'; form-action 'self' https://accounts.google.com https://*.supabase.co; frame-ancestors 'self'",
+        "content-type": "text/html; charset=utf-8",
+        "referrer-policy": "strict-origin-when-cross-origin",
+        "strict-transport-security": "max-age=31536000",
+        "x-content-type-options": "nosniff"
+      },
+      "bytes": 3489725
+    },
+    "asset_mutante": {
+      "status": 200,
+      "headers": {
+        "cache-control": "public, max-age=0, must-revalidate",
+        "content-security-policy": "frame-ancestors 'self'; base-uri 'self'; form-action 'self'",
+        "content-type": "application/pdf",
+        "x-frame-options": "SAMEORIGIN"
+      },
+      "bytes": 41
+    },
+    "prova": "a linha do XFO retirada devolve cabeçalho ausente ⇒ asserições 4/5 são comparações reais"
+  },
+  "portoes": {
+    "portoes": 15,
+    "falhas": []
+  }
+}

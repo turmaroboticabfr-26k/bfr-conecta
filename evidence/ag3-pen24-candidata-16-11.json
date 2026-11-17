@@ -1,0 +1,36 @@
+{
+  "em": "2026-11-17T02:38:13.752Z",
+  "tarefa": "AG-3 — candidata v124 anti-clique-jacketing (PEN-24 / RM-6.7), ESCRITA E NÃO PUBLICADA",
+  "base": {
+    "diretorio": "worker-deploy-v123-pdfs",
+    "worker_md5": "7044c8c02368fbc2a99edc1b366e2326",
+    "bytes": 3553006
+  },
+  "candidata": {
+    "diretorio": "bfr-candidata-v124-anticliquejacking",
+    "worker_md5": "bd2b2d6c13336aa6e4dce36e8d6a974e",
+    "bytes": 3553590
+  },
+  "trocas": [
+    "csp_com_frame_ancestors",
+    "xfo_no_shell",
+    "assets_protegidos",
+    "frame_guard_definido"
+  ],
+  "delta_bytes": 584,
+  "insumos_medidos": {
+    "shell_ao_vivo": "CSP sem frame-ancestors, X-Frame-Options ausente (medido no ar 16/11)",
+    "pdf_ao_vivo": "/horario-matutino-2026.pdf 200 sem content-security-policy e sem x-frame-options",
+    "manifest_ao_vivo": "/manifest.json 200 sem os dois cabeçalhos",
+    "porque_self_e_nao_none": "printDocument() usa iframe srcdoc (herda a origem do pai) quando window.open é bloqueado; o shell tem 13 window.open e 0 postMessage",
+    "meta_csp_nao_basta": "a especificação ignora frame-ancestors dentro de <meta http-equiv>: só o cabeçalho vale"
+  },
+  "publicacao": {
+    "publicada": false,
+    "nota": "nenhum deploy; promover isto pede OK literal novo e a cadeia de preflight/HTTP/Chrome dos ciclos de publicação"
+  },
+  "portoes": {
+    "portoes": 13,
+    "falhas": []
+  }
+}
