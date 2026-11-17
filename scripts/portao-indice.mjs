@@ -27,6 +27,10 @@ const EXCECOES = [
     arquivo: 'scripts/pf-throttle-gera.mjs', classe: 'senha', n: 1, comprimentos: '10',
     motivo: 'chave: nome de coluna da tabela (student_id), escrito pelo gerador — nao senha de conta.',
   },
+  {
+    arquivo: 'scripts/ah2-sonda-rest.mjs', classe: 'senha', n: 1, comprimentos: '14',
+    motivo: 'o casado e o literal «bytes servidos» no campo origem_chave: e a etiqueta de procedencia da anon key (de onde o programa a leu), nao a chave. Provado por comparacao de hash com as candidaturas de rotulo, e o valor nao contem pontos nem e JWT. O padrao apanhou-o so porque o nome do campo acaba em «chave».',
+  },
 ];
 
 const lista = execFileSync('git', ['ls-files', '-z'], { encoding: 'utf8' }).split('\0').filter(Boolean);

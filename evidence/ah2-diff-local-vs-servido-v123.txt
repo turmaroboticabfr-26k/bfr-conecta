@@ -1,0 +1,23 @@
+local  app/index.html md5: ae59d35346b685b2fbf9d18ade4fa5cd
+servido live-shell.html md5: d418e7fc917f1fbb1437054b7b531f9b
+bytes: local 3489467 | servido 3489725
+linhas: local 28660 | servido 28660
+
+=== diff -u (local -> servido) ===
+--- /dev/fd/63	2026-11-17 06:51:26.000000000 -0300
++++ /dev/fd/62	2026-11-17 06:51:26.000000000 -0300
+@@ -9899,7 +9899,7 @@
+-                  const allowed = role === 'parent' ? ['parent','developer'].includes(currentProfile?.role) : role === 'teacher' ? ['pedagogical','developer'].includes(currentProfile?.role) : role === 'coordinator' ? ['coordinator','developer'].includes(currentProfile?.role) : role === 'student' ? 
++                  const allowed = role === 'parent' ? ['parent','developer'].includes(currentProfile?.role) : role === 'teacher' ? ['pedagogical','developer'].includes(currentProfile?.role) : role === 'coordinator' ? ['coordinator','developer'].includes(currentProfile?.role) : role === 'student' ? 
+@@ -9923,7 +9923,7 @@
+-            secretaryView.classList.toggle('hidden', role !== 'secretary');
++            secretaryView.classList.toggle('hidden', role !== 'secretary' && role !== 'education_supervisor');
+@@ -10142,7 +10142,7 @@
+-             const view = { parent:parentView, teacher:teacherView, coordinator:coordinatorView, student:studentView, admin:adminView, director:directorView, monitor:monitorView, gatekeeper:gatekeeperView, secretary:secretaryView, aee:aeeView, psychology:psychologyView, multiprofessional:multiprofe
++             const view = { parent:parentView, teacher:teacherView, coordinator:coordinatorView, student:studentView, admin:adminView, director:directorView, monitor:monitorView, gatekeeper:gatekeeperView, secretary:secretaryView, education_supervisor:secretaryView, aee:aeeView, psychology:psycholo
+@@ -10434,7 +10434,7 @@
+-          const accountLabels = { developer:['Administrador','Acesso total'], director:['Direção escolar','Visão estratégica'], pedagogical:['Equipe pedagógica','Lançamentos escolares'], aee:['Professor(a) do AEE','Atendimento especializado'], psychology:['Psicologia escolar','Central da Psic
++          const accountLabels = { developer:['Administrador','Acesso total'], director:['Direção escolar','Visão estratégica'], pedagogical:['Equipe pedagógica','Lançamentos escolares'], aee:['Professor(a) do AEE','Atendimento especializado'], psychology:['Psicologia escolar','Central da Psic
+@@ -23681,7 +23681,7 @@
+-      safeQuery('supervisão',client.from('supervision_requests').select('id,indicator,motive,description,questions,deadline_at,priority,status,created_by,closed_by,closed_at,created_at,updated_at,school_id,schools(name)').order('created_at',{ascending:false}).limit(200)),
++      safeQuery('supervisão',client.from('supervision_requests').select('id,indicator,motive,description,questions,deadline_at,priority,status,created_by,closed_by,closed_at,created_at,updated_at,school_id,sports_schools(name)').order('created_at',{ascending:false}).limit(200)),
