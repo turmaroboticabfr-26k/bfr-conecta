@@ -101,3 +101,20 @@ scripts/s19-mint.mjs
 # fora; o que se pode refazer entra como prova: evidence/rm68-ruler3-instrumento.patch
 # (2 hunks, +8/-2, 0 ocorrencias da senha) aplicado sobre scripts/s20-behavioral.mjs.
 scripts/s20-behavioral-ruler3.mjs
+
+# 17/11 item 3 de «todos» — os dois diretórios que estavam pendentes de sorte. Classificados por
+# caminho espelhado, não por memória (`scripts/ah2-classifica-dirs-ANTERIOR-casador-por-nome.mjs` dá a 1.ª passada por
+# nome; `scripts/ah2-classifica-dirs-espelhado.mjs` refaz a régua exigindo o MESMO resto de caminho
+# num irmão versionado, que é o que impede um homónimo doutro ramo do repositório contar como prova):
+#   bfr-candidata-v126-...-ANTERIOR-.../  16 ficheiros · 8 024 342 B · 16 iguais / 0 diferem / 0 únicos
+#     — todos byte-a-byte iguais a `bfr-candidata-v126-a11y-secretaria/<mesmo caminho>`.
+#   worker-deploy-v120-404/public/        12 ficheiros · 6 395 153 B · 12 iguais / 0 diferem / 0 únicos
+#     — todos iguais a `worker-deploy-v120/public/<mesmo caminho>`.
+# Ou seja: 0 bytes que o índice já não tenha. O que é único neles é o NOME do diretório — a candidata
+# do §AH cujo PORTÃO de inserção saiu mal formulado (não o bundle), e a árvore da candidata RM-6.9
+# publicada 14/11, cujo `public/` a AD.10/AF.13 deixaram fora do índice como «caminho de reversão».
+# `docs/auditoria-bfr-conecta.md`, não em cópias de 14 MB. Regra por caminho exato de caso, sem
+# wildcard, para não engolir uma futura candidata homónima. NADA FOI APAGADO DO DISCO: as duas árvores
+# continuam lá, só não entram no snapshot nem no portão que o lê.
+/bfr-candidata-v126-a11y-secretaria-ANTERIOR-portao-insercao-mal-formulado/
+/worker-deploy-v120-404/public/
