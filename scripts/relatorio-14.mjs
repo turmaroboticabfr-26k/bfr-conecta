@@ -237,14 +237,31 @@ const m5_causas = m5 ? [...new Set((m5.nao_testadas || []).map((s) => s.split(' 
 // A sonda de tempo do `apoio` reclassificou uma classe inteira da tabela mobile, e o relatório tem de dizer
 // isso com os números dela, não com a minha memória.
 const sondas = readdirSync(EV).filter((f) => /^ah2-sonda-apoio-tempo-.*\.json$/.test(f)).sort();
-const sonda_lida = [];
+const sonda_lida = [], larguras_sondadas = new Set();
 for (const f of sondas) {
   let j; try { j = JSON.parse(readFileSync(`${EV}/${f}`, 'utf8')); } catch { continue; }
   const p = (j.serie || []).find((x) => x && typeof x.c === 'number' && x.c > 0);
+  larguras_sondadas.add(j.largura);
   if (p) sonda_lida.push(`${j.papel}@${j.largura}: ${p.c} c aos ${p.t_ms_apos_toque} ms`);
 }
 const sonda_texto = sonda_lida.length
-  ? `\n- **Reclassificação medida, e é do instrumento não do produto**: as células «painel vazio» do \`apoio\` foram sondadas no tempo (${sonda_lida.length} corridas com série preenchida — ${sonda_lida.join(' · ')}). O \`#supportView\` fica visível com caixa antes de ter texto, e o \`MEDIR\` do provador sai quando a contagem se repete duas vezes (600 ms × 2, ≈1,8 s): por isso a grelha mediu 0 c onde há 3001-3434. Nas larguras sondadas o vermelho do \`apoio\` é defeito de medição; nas outras é suspeita pela mesma prédica, não verde provado. As \`chat-interno\` a 0 têm a mesma assinatura de tempo (~1,8 s) e **não** foram sondadas.`
+  ? `\n- **Reclassificação medida, e é do instrumento não do produto**: as células «painel vazio» do \`apoio\` foram sondadas no tempo (${sonda_lida.length} corridas com série preenchida — ${sonda_lida.join(' · ')}). O \`#supportView\` fica visível com caixa antes de ter texto, e o \`MEDIR\` do provador sai quando a contagem se repete duas vezes (600 ms × 2, ≈1,8 s): por isso a grelha mediu 0 c onde há 2791-3434. Nas larguras sondadas (${[...larguras_sondadas].sort((a, b) => a - b).join('/')}) o vermelho do \`apoio\` é defeito de medição; nas outras é suspeita pela mesma prédica, não verde provado.`
+  : '';
+// A segunda metade da pergunta foi respondida pela sonda com o id do painel parametrizado, e a resposta é
+// a contrária: aqui o painel ABRE e não enche, portanto o FALHA fica de pé — com causa medida.
+const sondas_p = readdirSync(EV).filter((f) => /^ah2-sonda-painel-tempo-.*\.json$/.test(f)).sort();
+const painel_lida = [];
+for (const f of sondas_p) {
+  let j; try { j = JSON.parse(readFileSync(`${EV}/${f}`, 'utf8')); } catch { continue; }
+  const s = j.serie || [];
+  const p = s.find((x) => x && typeof x.c === 'number' && x.c > 0);
+  const abriu = s.some((x) => x.ativa === j.rota && x.visivel === true);
+  const base = (j.rede_janela || []).filter((r) => !/open-meteo/.test(r.u || '')).length;
+  if (!p && abriu) painel_lida.push(`${j.papel}@${j.largura} \`${j.painel}\` aberto (activeSection=${j.rota}) e a 0 em ${s.length} amostras ≈${Math.round((s[s.length - 1]?.t_ms_apos_toque || 0) / 1000)} s, ${base} pedidos à base, html máximo ${Math.max(0, ...s.map((x) => x.html || 0))} bytes`);
+  else if (p) painel_lida.push(`${j.papel}@${j.largura} \`${j.painel}\` enche ${p.c} c aos ${p.t_ms_apos_toque} ms`);
+}
+const painel_texto = painel_lida.length
+  ? `\n- **Confirmação medida, e é do produto**: a mesma sonda com o painel por parâmetro foi corrida nas células \`chat-interno\` que estavam em dúvida (${painel_lida.length} corridas — ${painel_lida.join(' · ')}). Ao contrário do \`apoio\`, aqui o painel abre — \`activeSection\` fica na rota tocada e o contentor tem caixa — e mesmo assim não produz texto, sem exceção lançada e sem pedido à base na janela. Não é a janela de assentamento: é o render a não produzir conteúdo para este papel, e a linha FALHA da grelha mantém-se, agora com a causa lida em browser e não só no código.`
   : '';
 const m5_texto = m5
   ? `**${m5.celulas_medidas} de ${m5.total_celulas} células medidas** e **${(m5.nao_testadas || []).length} NÃO TESTADA**, cada uma com a causa escrita pelo instrumento: ${m5_causas.join(' · ')}. Nenhuma é buraco de campanha: relançar não muda o estado do produto. Fonte: \`${m5f}\``
@@ -264,7 +281,7 @@ teto de 25 s. Artefactos anteriores a esta régua foram arquivados com \`-ANTERI
 
 - células ABRE: **${contagens.ABRE}** · com défice: **${contagens.deficit}** · NÃO TESTADA: **${contagens.nao_testada}**
 - bandas com artefacto válido: **${celula.size} de ${PAPEIS.length * 5}** (papel × largura; as 5 larguras são 390 e 1280 da varredura original mais 1366/1440/1920 do §6 do briefing)
-- telemóvel (§5, 15 perfis × 6 larguras): ${m5_texto}${sonda_texto}
+- telemóvel (§5, 15 perfis × 6 larguras): ${m5_texto}${sonda_texto}${painel_texto}
 - o que falta para a amostra estar completa: ${PAPEIS.flatMap((p) => ['390', '1280', '1366', '1440', '1920'].filter((b) => !celula.has(p + '/' + b)).map((b) => p + '/' + b)).join(', ') || 'nada'} — **esta linha conta apenas as células perfil×largura da régua desktop**; a tabela de funcionalidade tem as suas NÃO TESTADA noutro sítio, e são ${contagens.nao_testada} nesta régua e ${(m5 && m5.nao_testadas ? m5.nao_testadas.length : 0)} na grelha mobile do §5.
 
 ## Bandas corridas (o que cada artefacto diz do arranque)

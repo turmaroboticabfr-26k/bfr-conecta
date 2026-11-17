@@ -96,11 +96,30 @@ if (trav_ma_medida.length) console.log('_Travadas numa execução e medidas nout
 // corrida, e a sonda lê a série `0,0,…,cheio`. Os números vêm dos artefactos da sonda no disco — se não
 // houver artefacto legível, esta linha não sai e a tabela fica com o FALHA tal como foi medido.
 const sondas = readdirSync(`${DIR}/evidence`).filter((f) => /^ah2-sonda-apoio-tempo-.*\.json$/.test(f)).sort();
-const lidos = [];
+const lidos = [], larguras_sondadas = new Set();
 for (const f of sondas) {
   let j; try { j = JSON.parse(readFileSync(`${DIR}/evidence/${f}`, 'utf8')); } catch { continue; }
   const p = (j.serie || []).find((x) => x && typeof x.c === 'number' && x.c > 0);
+  larguras_sondadas.add(j.largura);
   if (p && typeof p.t_ms_apos_toque === 'number') lidos.push(`${j.papel}@${j.largura} enche ${p.c} c aos ${p.t_ms_apos_toque} ms${(j.erros_janela || []).length ? ' COM exceção' : ' sem exceção'}`);
   else if ((j.serie || []).length) lidos.push(`${j.papel}@${j.largura} permanece a 0 em ${j.serie.length} amostras`);
 }
-if (lidos.length) console.log('_Reclassificação medida do «FALHA — painel vazio» do `apoio`: a sonda de tempo `ah2-sonda-apoio-tempo.mjs` foi corrida e o painel ENCHE nos papéis sondados — ' + lidos.join(' · ') + '. A prédica de assentamento do `MEDIR` (ah2-mobile2.mjs:152-153: amostras de 600 ms até duas contagens iguais, ≈1,8 s) apanha o `#supportView` visível mas ainda sem `innerHTML`, e é por isso que o provador da grelha devolve 0 c com ~1,8 s; nas larguras sondadas isto é defeito de instrumento, não porta fechada do produto, e nas não sondadas é suspeita pela mesma prédica. As demais linhas FALHA desta tabela não têm sonda e mantêm-se como medidas._');
+if (lidos.length) console.log('_Reclassificação medida do «FALHA — painel vazio» do `apoio`: a sonda de tempo `ah2-sonda-apoio-tempo.mjs` foi corrida e o painel ENCHE nos papéis/larguras sondados — ' + lidos.join(' · ') + `. Larguras com sonda corrida: ${[...larguras_sondadas].sort((a, b) => a - b).join(', ')}. A prédica de assentamento do \`MEDIR\` (ah2-mobile2.mjs:152-153: amostras de 600 ms até duas contagens iguais, ≈1,8 s) apanha o \`#supportView\` visível mas ainda sem \`innerHTML\`, e é por isso que o provador da grelha devolve 0 c com ~1,8 s; nas larguras sondadas isto é defeito de instrumento, não porta fechada do produto, e nas não sondadas é suspeita pela mesma prédica. As demais linhas FALHA desta tabela não têm sonda e mantêm-se como medidas._`);
+// A sonda parametrizada por painel (`ah2-sonda-painel-tempo.mjs`) foi escrita para a pergunta contrária:
+// e se o 0 NÃO for janela? Aqui a confirmação só pode ser lida com três condições em simultâneo — o painel
+// abriu (`ativa` == rota pedida e `visivel` true), e mesmo assim nunca encheu, sem exceção e sem pedido à
+// base. Quando as três se verificam, o FALHA da tabela CONFIRMA-SE e não se reclassifica.
+const sondas_p = readdirSync(`${DIR}/evidence`).filter((f) => /^ah2-sonda-painel-tempo-.*\.json$/.test(f)).sort();
+const confirm = [], abriu_mas = [];
+for (const f of sondas_p) {
+  let j; try { j = JSON.parse(readFileSync(`${DIR}/evidence/${f}`, 'utf8')); } catch { continue; }
+  const s = j.serie || [];
+  const p = s.find((x) => x && typeof x.c === 'number' && x.c > 0);
+  const abriu = s.some((x) => x.ativa === j.rota && x.visivel === true);
+  const rede_base = (j.rede_janela || []).filter((r) => !/open-meteo/.test(r.u || ''));
+  if (!p && abriu && !(j.erros_janela || []).length) confirm.push(`${j.papel}@${j.largura} painel \`${j.painel}\` abre (activeSection=${j.rota}, visível) e permanece a 0 em ${s.length} amostras de 500 ms (${(s.length / 2).toFixed(0)} s), sem exceção e com ${rede_base.length} pedido(s) à base na janela, o maior html=${Math.max(0, ...s.map((x) => x.html || 0))} bytes`);
+  else if (p && abriu) abriu_mas.push(`${j.papel}@${j.largura} enche ${p.c} c aos ${p.t_ms_apos_toque} ms`);
+  else if (!abriu) abriu_mas.push(`${j.papel}@${j.largura} NON ABRE (activeSection=${[...new Set(s.map((x) => x.ativa))].join('/') || '-'} — leitura 0 não é do painel fechado`);
+}
+if (confirm.length) console.log('_Confirmação medida do «FALHA — painel vazio» de outras rotas: a sonda com o id do painel parametrizado foi corrida e, ao contrário do `apoio`, aqui o painel ABRE e NÃO ENCHE — ' + confirm.join(' · ') + '. Não é a janela de assentamento do `MEDIR`: é o render a não produzir conteúdo para este papel, e a linha FALHA da tabela mantém-se, agora com causa medida em browser._');
+if (abriu_mas.length) console.log('_Outras leituras da sonda de painel: ' + abriu_mas.join(' · ') + '_');
