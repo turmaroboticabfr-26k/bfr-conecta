@@ -1,0 +1,48 @@
+{
+  "em": "2026-11-17T03:25:53.060Z",
+  "tarefa": "AG-4 peça 1B — PEN-30 reproduzida no ar (autorizada 17/11, só leitura)",
+  "alvo": {
+    "url": "https://bfr-conecta.turmaroboticabfr.workers.dev/",
+    "shell_status": 200,
+    "shell_bytes": 3472213,
+    "shell_md5": "d418e7fc917f1fbb1437054b7b531f9b",
+    "host": "yyzqoxlkcvqpessypfjo",
+    "chave_anon": "sb_publish…(46 B)"
+  },
+  "nota": "chave anon lida dos bytes servidos e nunca escrita por extenso; Prefer: tx=rollback em tudo",
+  "probes": {
+    "defeituoso": {
+      "status": 400,
+      "code": "42703",
+      "message": "column announcements.created_at does not exist",
+      "hint": "Perhaps you meant to reference the column \"announcements.updated_at\".",
+      "linhas": null
+    },
+    "corrigido": {
+      "status": 200,
+      "code": "",
+      "message": "",
+      "hint": "",
+      "linhas": 0
+    },
+    "corrigido_sem_ordem": {
+      "status": 200,
+      "code": "",
+      "message": "",
+      "hint": "",
+      "linhas": 0
+    },
+    "controle_negativo_coluna_fantasma": {
+      "status": 400,
+      "code": "42703",
+      "message": "column announcements.coluna_que_nao_existe_xyz does not exist",
+      "hint": "",
+      "linhas": null
+    }
+  },
+  "veredito": "PEN30_REPRODUZIDA_E_CORRIGIVEL_NO_AR",
+  "portoes": {
+    "portoes": 7,
+    "falhas": []
+  }
+}

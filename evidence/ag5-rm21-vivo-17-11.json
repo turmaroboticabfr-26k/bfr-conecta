@@ -1,0 +1,52 @@
+{
+  "em": "2026-11-17T03:40:00Z",
+  "tarefa": "AG-5 peça 4 — RM-2.1 censo vivo, estado anónimo (autorizada 17/11, só leituras, sem mint)",
+  "alvo": {
+    "url": "https://bfr-conecta.turmaroboticabfr.workers.dev/",
+    "shell_md5_verificado": "d418e7fc917f1fbb1437054b7b531f9b",
+    "titulo": "BFR Conecta | Escola Benício Ferreira Reis",
+    "readyState": "complete",
+    "bodyChildren": 127,
+    "navLike": 130,
+    "hasAppShell": true,
+    "loginVisivel": false,
+    "formVisivel": true
+  },
+  "janelas_mutation_observer": [
+    {
+      "quando": "16/11",
+      "duracao_s": 8,
+      "mutacoes": 0,
+      "nota": "página carregada via /index.html após timeout no /"
+    },
+    {
+      "quando": "17/11",
+      "duracao_s": 12.1,
+      "mutacoes": 0,
+      "nota": "recarga provada por marcador window.__marcador apagado; observer em documentElement, subtree+childList+attributes+characterData"
+    }
+  ],
+  "rede_durante_janela": {
+    "requests": [
+      { "metodo": "GET", "url": "https://bfr-conecta.turmaroboticabfr.workers.dev/bfr-app-logo.png", "status": 200, "tipo": "image" },
+      { "metodo": "GET", "url": "https://bfr-conecta.turmaroboticabfr.workers.dev/lia-avatar.png", "status": 200, "tipo": "image" }
+    ],
+    "xhr_ou_fetch": 0,
+    "websocket": 0,
+    "nota": "nenhum polling de rede na janela"
+  },
+  "console": [
+    { "nivel": "error", "texto": "Failed to load resource: 404 (https://bfr-conecta.turmaroboticabfr.workers.dev/cdn-cgi/rum?:0)", "nota": "beacon RUM da Cloudflare, infraestrutura, não código do app" }
+  ],
+  "tentativas_init_script": {
+    "navegacao_com_initScript_para_contar_setInterval_pre_boot": "timeout do driver 2× (60s e 45s); recarga simples sem initScript funcionou — o wrapper pré-boot não pôde ser instalado",
+    "consequencia": "a contagem VIVA dos setInterval registados ao boot continua por medir; vale a contagem estática (40 setInterval, 3 do menu, 2 com escrita no DOM)"
+  },
+  "interpretacao": {
+    "estatico": "os 3 timers do menu armam-se com guarda appReady() && db() && user(): registados ao boot, só escrevem com sessão",
+    "vivo_anonimo": "0 mutações em 2 janelas independentes (8s e 12,1s), 0 xhr/fetch, só 2 imagens estáticas — coerente com a guarda: sem user() os timers não escrevem",
+    "limite_honesto": "a aceitação do RM-2.1 pede censo vivo com 0 escritas periódicas residuais NO MENU; o menu está atrás de login, por isso o censo anónimo não a fecha — falta a sessão autenticada, que é AG-6 e exige mint, NÃO autorizado"
+  },
+  "veredito": "RM21_VIVO_ANONIMO_MEDIDO · aceitação do menu continua por provar · publicado=false · mint=false",
+  "portoes_do_censo": { "janelas_com_zero_mutacoes": 2, "esperado": 2 }
+}
