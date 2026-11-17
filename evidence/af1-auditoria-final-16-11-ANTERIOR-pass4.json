@@ -1,0 +1,2159 @@
+{
+  "em": "2026-11-17T01:50:54.922Z",
+  "autorizacao": "somente leitura: 0 DDL, 0 mint, 0 INSERT/UPDATE/DELETE, 0 deploy, 0 git push; RPC anon sempre com Prefer: tx=rollback",
+  "escopo": "RM-6.2 cláusulas em falta: superfície anon por chamada, re-censo de storage, RLS sobre a versão em produção",
+  "alvo": {
+    "url": "https://bfr-conecta.turmaroboticabfr.workers.dev",
+    "fonte_do_url": "rm18-navegador-b.json",
+    "bytes": 3472213,
+    "md5_shell_servida": "d418e7fc917f1fbb1437054b7b531f9b",
+    "md5_reguada_pelo_deploy": "d418e7fc917f1fbb1437054b7b531f9b",
+    "régua_de": "v122-pos-deploy-http-15-11.json",
+    "etiqueta_cache_no_shell": null,
+    "chave_anon": "sb_publish…(46 B)",
+    "cabecalhos": {
+      "alt-svc": "h3=\":443\"; ma=86400",
+      "cache-control": "max-age=0, no-cache, no-store",
+      "cf-ray": "a5bb1534c8b51944-GIG",
+      "connection": "keep-alive",
+      "content-encoding": "br",
+      "content-security-policy": "default-src 'self'; base-uri 'self'; object-src 'none'; script-src 'self' 'unsafe-inline' https://bfr-conecta.turmaroboticabfr.workers.dev https://cdn.jsdelivr.net https://static.cloudflareinsights.com https://www.gstatic.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: blob: https:; connect-src 'self' https://bfr-conecta.turmaroboticabfr.workers.dev https://*.supabase.co wss://*.supabase.co https://cloudflareinsights.com https://*.cloudflareinsights.com https://*.googleapis.com https://fcm.googleapis.com https://api.open-meteo.com; worker-src 'self' blob:; manifest-src 'self'; form-action 'self' https://accounts.google.com https://*.supabase.co",
+      "content-type": "text/html; charset=utf-8",
+      "date": "Tue, 17 Nov 2026 01:50:08 GMT",
+      "nel": "{\"report_to\":\"cf-nel\",\"success_fraction\":0.0,\"max_age\":604800}",
+      "referrer-policy": "strict-origin-when-cross-origin",
+      "report-to": "{\"group\":\"cf-nel\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://a.nel.cloudflare.com/report/v4?s=9hBp%2Bfm1BuUehQ33Xwa3ztID9p9vRzI19Vn5ASOQ3xmn7BiTyJZWACjMh1psuL%2F1pbSK51%2B5Thkw3FIXupe1G369RdjcVs%2FLWv26eAWy9LeRY6yVZ8HveZax4ZadATZV7Di5yVyvsmTvnWFWCZ%2BnkjCQtGiORfUwNvNVRNANuexQfqa2T2VC\"}]}",
+      "server": "cloudflare",
+      "strict-transport-security": "max-age=31536000",
+      "transfer-encoding": "chunked",
+      "x-content-type-options": "nosniff"
+    }
+  },
+  "cabecalhos_ar": {
+    "tem_content_security_policy": true,
+    "csp_com_frame_ancestors": false,
+    "x_frame_options": null,
+    "strict_transport_security": "max-age=31536000",
+    "x_content_type_options": "nosniff",
+    "referrer_policy": "strict-origin-when-cross-origin",
+    "permissions_policy": null
+  },
+  "rls_no_ar": {
+    "leituras": [
+      {
+        "tabela": "grades",
+        "status": 200,
+        "linhas": 0,
+        "corpo": ""
+      },
+      {
+        "tabela": "attendance",
+        "status": 200,
+        "linhas": 0,
+        "corpo": ""
+      },
+      {
+        "tabela": "access_requests",
+        "status": 200,
+        "linhas": 0,
+        "corpo": ""
+      },
+      {
+        "tabela": "occurrences",
+        "status": 200,
+        "linhas": 0,
+        "corpo": ""
+      },
+      {
+        "tabela": "staff_schools",
+        "status": 401,
+        "linhas": null,
+        "corpo": "{\"code\":\"42501\",\"details\":null,\"hint\":\"Grant the required privileges to the current role with: GRANT SELECT ON public.staff_schools TO anon;"
+      },
+      {
+        "tabela": "sports_public_athletes",
+        "status": 401,
+        "linhas": null,
+        "corpo": "{\"code\":\"42501\",\"details\":null,\"hint\":null,\"message\":\"permission denied for view sports_public_athletes\"}"
+      },
+      {
+        "tabela": "sports_public_match_events",
+        "status": 401,
+        "linhas": null,
+        "corpo": "{\"code\":\"42501\",\"details\":null,\"hint\":null,\"message\":\"permission denied for view sports_public_match_events\"}"
+      },
+      {
+        "tabela": "sports_public_matches",
+        "status": 401,
+        "linhas": null,
+        "corpo": "{\"code\":\"42501\",\"details\":null,\"hint\":null,\"message\":\"permission denied for view sports_public_matches\"}"
+      },
+      {
+        "tabela": "sports_public_schools",
+        "status": 401,
+        "linhas": null,
+        "corpo": "{\"code\":\"42501\",\"details\":null,\"hint\":null,\"message\":\"permission denied for view sports_public_schools\"}"
+      },
+      {
+        "tabela": "sports_public_teams",
+        "status": 401,
+        "linhas": null,
+        "corpo": "{\"code\":\"42501\",\"details\":null,\"hint\":null,\"message\":\"permission denied for view sports_public_teams\"}"
+      }
+    ],
+    "vazam_anon": [],
+    "sem_priviligio_42501": [
+      "staff_schools",
+      "sports_public_athletes",
+      "sports_public_match_events",
+      "sports_public_matches",
+      "sports_public_schools",
+      "sports_public_teams"
+    ],
+    "com_priviligio_filtrado_0_linhas": [
+      "grades",
+      "attendance",
+      "access_requests",
+      "occurrences"
+    ],
+    "policies_4_tabelas": 23,
+    "publicas_11": [
+      "access_requests/access_requests_manage",
+      "access_requests/access_requests_staff_insert",
+      "attendance/attendance_staff_delete",
+      "attendance/attendance_staff_insert",
+      "attendance/attendance_staff_select",
+      "attendance/attendance_staff_update",
+      "grades/grades_staff_delete",
+      "grades/grades_staff_insert",
+      "grades/grades_staff_select",
+      "occurrences/occurrences_director_select",
+      "occurrences/occurrences_director_update"
+    ],
+    "assinaturas_publicas": [
+      "access_requests|access_requests_manage|*|bfr_rls_is_developer()|(bfr_rls_is_developer() AND (requested_role = ANY (enum_range(NULL::account_role))) AND ((approved_role IS NULL) OR (approved_role = requested_role)) AND (status = ANY (ARRAY['pending'::request_status, 'approved'::request_status, 'rejected'::request_status])))",
+      "access_requests|access_requests_staff_insert|a||(bfr_rls_is_developer() AND (requested_role = ANY (enum_range(NULL::account_role))) AND (((approved_role IS NULL) AND (status = 'pending'::request_status)) OR ((approved_role = requested_role) AND (status = 'approved'::request_status))))",
+      "attendance|attendance_staff_delete|d|(bfr_staff_can_manage_student_scope(student_id) AND ((bfr_rls_session_role())::text <> 'secretary'::text))|",
+      "attendance|attendance_staff_insert|a||(bfr_staff_can_manage_student_scope(student_id) AND ((bfr_rls_session_role())::text <> 'secretary'::text) AND (((bfr_rls_session_role())::text <> 'pedagogical'::text) OR (entered_by = auth.uid())))",
+      "attendance|attendance_staff_select|r|(bfr_staff_can_manage_student_scope(student_id) AND ((bfr_rls_session_role())::text <> 'secretary'::text))|",
+      "attendance|attendance_staff_update|w|(bfr_staff_can_manage_student_scope(student_id) AND ((bfr_rls_session_role())::text <> 'secretary'::text))|(bfr_staff_can_manage_student_scope(student_id) AND ((bfr_rls_session_role())::text <> 'secretary'::text))",
+      "grades|grades_staff_delete|d|(bfr_staff_can_manage_student_scope(student_id, subject) AND ((bfr_rls_session_role())::text <> 'secretary'::text))|",
+      "grades|grades_staff_insert|a||(bfr_staff_can_manage_student_scope(student_id, subject) AND ((bfr_rls_session_role())::text <> 'secretary'::text) AND (((bfr_rls_session_role())::text <> 'pedagogical'::text) OR (entered_by = auth.uid())))",
+      "grades|grades_staff_select|r|(bfr_staff_can_manage_student_scope(student_id, subject) AND ((bfr_rls_session_role())::text <> 'secretary'::text))|",
+      "occurrences|occurrences_director_select|r|bfr_rls_director_manages_student(student_id)|",
+      "occurrences|occurrences_director_update|w|bfr_rls_director_manages_student(student_id)|bfr_rls_director_manages_student(student_id)"
+    ],
+    "chamadas_das_quals_public": {
+      "existentes": [
+        "bfr_rls_director_manages_student(anon=true,auth=true)",
+        "bfr_rls_is_developer(anon=true,auth=true)",
+        "bfr_rls_session_role(anon=true,auth=true)",
+        "bfr_staff_can_manage_student_scope(anon=true,auth=true)"
+      ],
+      "violacoes": [
+        "bfr_staff_can_manage_student_scope"
+      ],
+      "porPolitica": [
+        {
+          "politica": "access_requests/access_requests_manage",
+          "funcao": "bfr_rls_is_developer",
+          "anon_execute": true,
+          "auth_execute": true,
+          "wrapper": true
+        },
+        {
+          "politica": "access_requests/access_requests_staff_insert",
+          "funcao": "bfr_rls_is_developer",
+          "anon_execute": true,
+          "auth_execute": true,
+          "wrapper": true
+        },
+        {
+          "politica": "attendance/attendance_staff_delete",
+          "funcao": "bfr_staff_can_manage_student_scope",
+          "anon_execute": true,
+          "auth_execute": true,
+          "wrapper": false
+        },
+        {
+          "politica": "attendance/attendance_staff_delete",
+          "funcao": "bfr_rls_session_role",
+          "anon_execute": true,
+          "auth_execute": true,
+          "wrapper": true
+        },
+        {
+          "politica": "attendance/attendance_staff_insert",
+          "funcao": "bfr_staff_can_manage_student_scope",
+          "anon_execute": true,
+          "auth_execute": true,
+          "wrapper": false
+        },
+        {
+          "politica": "attendance/attendance_staff_insert",
+          "funcao": "bfr_rls_session_role",
+          "anon_execute": true,
+          "auth_execute": true,
+          "wrapper": true
+        },
+        {
+          "politica": "attendance/attendance_staff_select",
+          "funcao": "bfr_staff_can_manage_student_scope",
+          "anon_execute": true,
+          "auth_execute": true,
+          "wrapper": false
+        },
+        {
+          "politica": "attendance/attendance_staff_select",
+          "funcao": "bfr_rls_session_role",
+          "anon_execute": true,
+          "auth_execute": true,
+          "wrapper": true
+        },
+        {
+          "politica": "attendance/attendance_staff_update",
+          "funcao": "bfr_staff_can_manage_student_scope",
+          "anon_execute": true,
+          "auth_execute": true,
+          "wrapper": false
+        },
+        {
+          "politica": "attendance/attendance_staff_update",
+          "funcao": "bfr_rls_session_role",
+          "anon_execute": true,
+          "auth_execute": true,
+          "wrapper": true
+        },
+        {
+          "politica": "grades/grades_staff_delete",
+          "funcao": "bfr_staff_can_manage_student_scope",
+          "anon_execute": true,
+          "auth_execute": true,
+          "wrapper": false
+        },
+        {
+          "politica": "grades/grades_staff_delete",
+          "funcao": "bfr_rls_session_role",
+          "anon_execute": true,
+          "auth_execute": true,
+          "wrapper": true
+        },
+        {
+          "politica": "grades/grades_staff_insert",
+          "funcao": "bfr_staff_can_manage_student_scope",
+          "anon_execute": true,
+          "auth_execute": true,
+          "wrapper": false
+        },
+        {
+          "politica": "grades/grades_staff_insert",
+          "funcao": "bfr_rls_session_role",
+          "anon_execute": true,
+          "auth_execute": true,
+          "wrapper": true
+        },
+        {
+          "politica": "grades/grades_staff_select",
+          "funcao": "bfr_staff_can_manage_student_scope",
+          "anon_execute": true,
+          "auth_execute": true,
+          "wrapper": false
+        },
+        {
+          "politica": "grades/grades_staff_select",
+          "funcao": "bfr_rls_session_role",
+          "anon_execute": true,
+          "auth_execute": true,
+          "wrapper": true
+        },
+        {
+          "politica": "occurrences/occurrences_director_select",
+          "funcao": "bfr_rls_director_manages_student",
+          "anon_execute": true,
+          "auth_execute": true,
+          "wrapper": true
+        },
+        {
+          "politica": "occurrences/occurrences_director_update",
+          "funcao": "bfr_rls_director_manages_student",
+          "anon_execute": true,
+          "auth_execute": true,
+          "wrapper": true
+        }
+      ]
+    },
+    "quals_que_citam_legado": [],
+    "staff_schools_anon_select": false
+  },
+  "superficie_anon": {
+    "total_com_execute": 60,
+    "chamadas": [
+      {
+        "nome": "bfr_can_manage_communications",
+        "definidor": true,
+        "status": 200,
+        "code": "",
+        "mensagem": "false",
+        "corpo_bytes": 5,
+        "devolve_linhas": null
+      },
+      {
+        "nome": "bfr_can_manage_student_directory",
+        "definidor": true,
+        "status": 200,
+        "code": "",
+        "mensagem": "false",
+        "corpo_bytes": 5,
+        "devolve_linhas": null
+      },
+      {
+        "nome": "bfr_collab_comment_notification_trigger",
+        "definidor": true,
+        "status": 404,
+        "code": "PGRST202",
+        "mensagem": "Could not find the function public.bfr_collab_comment_notification_trigger without paramet",
+        "corpo_bytes": 426,
+        "devolve_linhas": null
+      },
+      {
+        "nome": "bfr_collab_is_manager",
+        "definidor": true,
+        "status": 200,
+        "code": "",
+        "mensagem": "false",
+        "corpo_bytes": 5,
+        "devolve_linhas": null
+      },
+      {
+        "nome": "bfr_collab_is_staff",
+        "definidor": true,
+        "status": 200,
+        "code": "",
+        "mensagem": "false",
+        "corpo_bytes": 5,
+        "devolve_linhas": null
+      },
+      {
+        "nome": "bfr_collab_member_notification_trigger",
+        "definidor": true,
+        "status": 404,
+        "code": "PGRST202",
+        "mensagem": "Could not find the function public.bfr_collab_member_notification_trigger without paramete",
+        "corpo_bytes": 424,
+        "devolve_linhas": null
+      },
+      {
+        "nome": "bfr_collab_task_notification_trigger",
+        "definidor": true,
+        "status": 404,
+        "code": "PGRST202",
+        "mensagem": "Could not find the function public.bfr_collab_task_notification_trigger without parameters",
+        "corpo_bytes": 420,
+        "devolve_linhas": null
+      },
+      {
+        "nome": "bfr_current_teacher_id",
+        "definidor": true,
+        "status": 200,
+        "code": "",
+        "mensagem": "null",
+        "corpo_bytes": 4,
+        "devolve_linhas": null
+      },
+      {
+        "nome": "bfr_is_schedule_manager",
+        "definidor": true,
+        "status": 200,
+        "code": "",
+        "mensagem": "false",
+        "corpo_bytes": 5,
+        "devolve_linhas": null
+      },
+      {
+        "nome": "bfr_learning_is_manager",
+        "definidor": true,
+        "status": 200,
+        "code": "",
+        "mensagem": "false",
+        "corpo_bytes": 5,
+        "devolve_linhas": null
+      },
+      {
+        "nome": "bfr_literacy_staff",
+        "definidor": true,
+        "status": 200,
+        "code": "",
+        "mensagem": "false",
+        "corpo_bytes": 5,
+        "devolve_linhas": null
+      },
+      {
+        "nome": "bfr_prevent_duplicate_grade",
+        "definidor": true,
+        "status": 404,
+        "code": "PGRST202",
+        "mensagem": "Could not find the function public.bfr_prevent_duplicate_grade without parameters in the s",
+        "corpo_bytes": 392,
+        "devolve_linhas": null
+      },
+      {
+        "nome": "bfr_psychology_schedule_guard",
+        "definidor": true,
+        "status": 404,
+        "code": "PGRST202",
+        "mensagem": "Could not find the function public.bfr_psychology_schedule_guard without parameters in the",
+        "corpo_bytes": 403,
+        "devolve_linhas": null
+      },
+      {
+        "nome": "bfr_rls_is_developer",
+        "definidor": true,
+        "status": 200,
+        "code": "",
+        "mensagem": "false",
+        "corpo_bytes": 5,
+        "devolve_linhas": null
+      },
+      {
+        "nome": "bfr_rls_session_role",
+        "definidor": true,
+        "status": 200,
+        "code": "",
+        "mensagem": "null",
+        "corpo_bytes": 4,
+        "devolve_linhas": null
+      },
+      {
+        "nome": "bfr_staff_is_manager",
+        "definidor": true,
+        "status": 200,
+        "code": "",
+        "mensagem": "false",
+        "corpo_bytes": 5,
+        "devolve_linhas": null
+      },
+      {
+        "nome": "bfr_staff_role",
+        "definidor": true,
+        "status": 200,
+        "code": "",
+        "mensagem": "\"\"",
+        "corpo_bytes": 2,
+        "devolve_linhas": null
+      },
+      {
+        "nome": "bfr_support_request_scope_guard",
+        "definidor": true,
+        "status": 404,
+        "code": "PGRST202",
+        "mensagem": "Could not find the function public.bfr_support_request_scope_guard without parameters in t",
+        "corpo_bytes": 408,
+        "devolve_linhas": null
+      },
+      {
+        "nome": "bfr_touch_updated_at",
+        "definidor": false,
+        "status": 404,
+        "code": "PGRST202",
+        "mensagem": "Could not find the function public.bfr_touch_updated_at without parameters in the schema c",
+        "corpo_bytes": 380,
+        "devolve_linhas": null
+      },
+      {
+        "nome": "bfr_validate_lesson_attendance",
+        "definidor": true,
+        "status": 404,
+        "code": "PGRST202",
+        "mensagem": "Could not find the function public.bfr_validate_lesson_attendance without parameters in th",
+        "corpo_bytes": 413,
+        "devolve_linhas": null
+      },
+      {
+        "nome": "enforce_bfr_avatar_uniform",
+        "definidor": true,
+        "status": 404,
+        "code": "PGRST202",
+        "mensagem": "Could not find the function public.enforce_bfr_avatar_uniform without parameters in the sc",
+        "corpo_bytes": 391,
+        "devolve_linhas": null
+      },
+      {
+        "nome": "internal_chat_is_staff",
+        "definidor": true,
+        "status": 200,
+        "code": "",
+        "mensagem": "false",
+        "corpo_bytes": 5,
+        "devolve_linhas": null
+      },
+      {
+        "nome": "is_aee",
+        "definidor": true,
+        "status": 200,
+        "code": "",
+        "mensagem": "false",
+        "corpo_bytes": 5,
+        "devolve_linhas": null
+      },
+      {
+        "nome": "is_aee_manager",
+        "definidor": true,
+        "status": 200,
+        "code": "",
+        "mensagem": "false",
+        "corpo_bytes": 5,
+        "devolve_linhas": null
+      },
+      {
+        "nome": "schools_updated_at",
+        "definidor": true,
+        "status": 404,
+        "code": "PGRST202",
+        "mensagem": "Could not find the function public.schools_updated_at without parameters in the schema cac",
+        "corpo_bytes": 380,
+        "devolve_linhas": null
+      },
+      {
+        "nome": "sports_touch_updated_at",
+        "definidor": false,
+        "status": 404,
+        "code": "PGRST202",
+        "mensagem": "Could not find the function public.sports_touch_updated_at without parameters in the schem",
+        "corpo_bytes": 386,
+        "devolve_linhas": null
+      }
+    ],
+    "respondem_2xx": 15,
+    "secdef_chamadas": 24,
+    "excluidas_por_escrita_ou_ddl": [
+      "bfr_audit_lesson_attendance_change",
+      "bfr_specialized_audit_trigger",
+      "bfr_staff_audit_trigger"
+    ],
+    "excluidas_por_argumentos": [
+      "aee_can_access_student/1",
+      "aee_can_write_student/1",
+      "aee_game_can_access_student/1",
+      "bfr_can_access_literacy_student/1",
+      "bfr_collab_can_profile/1",
+      "bfr_collab_can_project/1",
+      "bfr_collab_can_task/1",
+      "bfr_family_can_view_aee/1",
+      "bfr_get_student_photo_path/1",
+      "bfr_has_specialized_permission/1",
+      "bfr_pedagogical_can_manage_student/2",
+      "bfr_psychology_active_professional/1",
+      "bfr_psychology_can_write/1",
+      "bfr_psychology_record_access/5",
+      "bfr_rls_director_manages_student/1",
+      "bfr_staff_can_access_channel/1",
+      "bfr_staff_can_manage_channel/1",
+      "bfr_staff_can_manage_student_scope/2",
+      "bfr_staff_can_message_recipient/1",
+      "bfr_staff_can_read_message/1",
+      "bfr_subject_matches/2",
+      "bfr_support_detail_access/4",
+      "bfr_support_request_access/3",
+      "bfr_support_request_create_access/1",
+      "bfr_teacher_can_manage_class_subject/2",
+      "bfr_teacher_can_manage_student/2",
+      "family_cpf_is_valid/1",
+      "family_normalize_cpf/1",
+      "family_normalize_name/1",
+      "internal_chat_can_access_room/1",
+      "sports_role_allowed/1"
+    ],
+    "nao_funcoes": [],
+    "wrappers_com_execute": [
+      "bfr_rls_session_role",
+      "bfr_rls_is_developer",
+      "bfr_rls_director_manages_student"
+    ],
+    "legadas_por_nome": [
+      {
+        "nome": "bfr_rls_director_manages_student",
+        "existencias": 1,
+        "anon_execute": true
+      },
+      {
+        "nome": "bfr_rls_is_developer",
+        "existencias": 1,
+        "anon_execute": true
+      },
+      {
+        "nome": "bfr_rls_session_role",
+        "existencias": 1,
+        "anon_execute": true
+      },
+      {
+        "nome": "current_role",
+        "existencias": 1,
+        "anon_execute": false
+      },
+      {
+        "nome": "is_developer",
+        "existencias": 1,
+        "anon_execute": false
+      },
+      {
+        "nome": "is_staff",
+        "existencias": 1,
+        "anon_execute": false
+      }
+    ],
+    "classificadas": [
+      {
+        "nome": "aee_can_access_student",
+        "n_args": 1,
+        "tipo": "f",
+        "definidor": true,
+        "dml": false,
+        "ddl": false,
+        "chamada": "nao"
+      },
+      {
+        "nome": "aee_can_write_student",
+        "n_args": 1,
+        "tipo": "f",
+        "definidor": true,
+        "dml": false,
+        "ddl": false,
+        "chamada": "nao"
+      },
+      {
+        "nome": "aee_game_can_access_student",
+        "n_args": 1,
+        "tipo": "f",
+        "definidor": true,
+        "dml": false,
+        "ddl": false,
+        "chamada": "nao"
+      },
+      {
+        "nome": "bfr_audit_lesson_attendance_change",
+        "n_args": 0,
+        "tipo": "f",
+        "definidor": true,
+        "dml": true,
+        "ddl": false,
+        "chamada": "nao"
+      },
+      {
+        "nome": "bfr_can_access_literacy_student",
+        "n_args": 1,
+        "tipo": "f",
+        "definidor": true,
+        "dml": false,
+        "ddl": false,
+        "chamada": "nao"
+      },
+      {
+        "nome": "bfr_can_manage_communications",
+        "n_args": 0,
+        "tipo": "f",
+        "definidor": true,
+        "dml": false,
+        "ddl": false,
+        "chamada": "sim"
+      },
+      {
+        "nome": "bfr_can_manage_student_directory",
+        "n_args": 0,
+        "tipo": "f",
+        "definidor": true,
+        "dml": false,
+        "ddl": false,
+        "chamada": "sim"
+      },
+      {
+        "nome": "bfr_collab_can_profile",
+        "n_args": 1,
+        "tipo": "f",
+        "definidor": true,
+        "dml": false,
+        "ddl": false,
+        "chamada": "nao"
+      },
+      {
+        "nome": "bfr_collab_can_project",
+        "n_args": 1,
+        "tipo": "f",
+        "definidor": true,
+        "dml": false,
+        "ddl": false,
+        "chamada": "nao"
+      },
+      {
+        "nome": "bfr_collab_can_task",
+        "n_args": 1,
+        "tipo": "f",
+        "definidor": true,
+        "dml": false,
+        "ddl": false,
+        "chamada": "nao"
+      },
+      {
+        "nome": "bfr_collab_comment_notification_trigger",
+        "n_args": 0,
+        "tipo": "f",
+        "definidor": true,
+        "dml": false,
+        "ddl": false,
+        "chamada": "sim"
+      },
+      {
+        "nome": "bfr_collab_is_manager",
+        "n_args": 0,
+        "tipo": "f",
+        "definidor": true,
+        "dml": false,
+        "ddl": false,
+        "chamada": "sim"
+      },
+      {
+        "nome": "bfr_collab_is_staff",
+        "n_args": 0,
+        "tipo": "f",
+        "definidor": true,
+        "dml": false,
+        "ddl": false,
+        "chamada": "sim"
+      },
+      {
+        "nome": "bfr_collab_member_notification_trigger",
+        "n_args": 0,
+        "tipo": "f",
+        "definidor": true,
+        "dml": false,
+        "ddl": false,
+        "chamada": "sim"
+      },
+      {
+        "nome": "bfr_collab_task_notification_trigger",
+        "n_args": 0,
+        "tipo": "f",
+        "definidor": true,
+        "dml": false,
+        "ddl": false,
+        "chamada": "sim"
+      },
+      {
+        "nome": "bfr_current_teacher_id",
+        "n_args": 0,
+        "tipo": "f",
+        "definidor": true,
+        "dml": false,
+        "ddl": false,
+        "chamada": "sim"
+      },
+      {
+        "nome": "bfr_family_can_view_aee",
+        "n_args": 1,
+        "tipo": "f",
+        "definidor": true,
+        "dml": false,
+        "ddl": false,
+        "chamada": "nao"
+      },
+      {
+        "nome": "bfr_get_student_photo_path",
+        "n_args": 1,
+        "tipo": "f",
+        "definidor": true,
+        "dml": false,
+        "ddl": false,
+        "chamada": "nao"
+      },
+      {
+        "nome": "bfr_has_specialized_permission",
+        "n_args": 1,
+        "tipo": "f",
+        "definidor": true,
+        "dml": false,
+        "ddl": false,
+        "chamada": "nao"
+      },
+      {
+        "nome": "bfr_is_schedule_manager",
+        "n_args": 0,
+        "tipo": "f",
+        "definidor": true,
+        "dml": false,
+        "ddl": false,
+        "chamada": "sim"
+      },
+      {
+        "nome": "bfr_learning_is_manager",
+        "n_args": 0,
+        "tipo": "f",
+        "definidor": true,
+        "dml": false,
+        "ddl": false,
+        "chamada": "sim"
+      },
+      {
+        "nome": "bfr_literacy_staff",
+        "n_args": 0,
+        "tipo": "f",
+        "definidor": true,
+        "dml": false,
+        "ddl": false,
+        "chamada": "sim"
+      },
+      {
+        "nome": "bfr_pedagogical_can_manage_student",
+        "n_args": 2,
+        "tipo": "f",
+        "definidor": true,
+        "dml": false,
+        "ddl": false,
+        "chamada": "nao"
+      },
+      {
+        "nome": "bfr_prevent_duplicate_grade",
+        "n_args": 0,
+        "tipo": "f",
+        "definidor": true,
+        "dml": false,
+        "ddl": false,
+        "chamada": "sim"
+      },
+      {
+        "nome": "bfr_psychology_active_professional",
+        "n_args": 1,
+        "tipo": "f",
+        "definidor": true,
+        "dml": false,
+        "ddl": false,
+        "chamada": "nao"
+      },
+      {
+        "nome": "bfr_psychology_can_write",
+        "n_args": 1,
+        "tipo": "f",
+        "definidor": true,
+        "dml": false,
+        "ddl": false,
+        "chamada": "nao"
+      },
+      {
+        "nome": "bfr_psychology_record_access",
+        "n_args": 5,
+        "tipo": "f",
+        "definidor": true,
+        "dml": false,
+        "ddl": false,
+        "chamada": "nao"
+      },
+      {
+        "nome": "bfr_psychology_schedule_guard",
+        "n_args": 0,
+        "tipo": "f",
+        "definidor": true,
+        "dml": false,
+        "ddl": false,
+        "chamada": "sim"
+      },
+      {
+        "nome": "bfr_rls_director_manages_student",
+        "n_args": 1,
+        "tipo": "f",
+        "definidor": true,
+        "dml": false,
+        "ddl": false,
+        "chamada": "nao"
+      },
+      {
+        "nome": "bfr_rls_is_developer",
+        "n_args": 0,
+        "tipo": "f",
+        "definidor": true,
+        "dml": false,
+        "ddl": false,
+        "chamada": "sim"
+      },
+      {
+        "nome": "bfr_rls_session_role",
+        "n_args": 0,
+        "tipo": "f",
+        "definidor": true,
+        "dml": false,
+        "ddl": false,
+        "chamada": "sim"
+      },
+      {
+        "nome": "bfr_specialized_audit_trigger",
+        "n_args": 0,
+        "tipo": "f",
+        "definidor": true,
+        "dml": true,
+        "ddl": false,
+        "chamada": "nao"
+      },
+      {
+        "nome": "bfr_staff_audit_trigger",
+        "n_args": 0,
+        "tipo": "f",
+        "definidor": true,
+        "dml": true,
+        "ddl": false,
+        "chamada": "nao"
+      },
+      {
+        "nome": "bfr_staff_can_access_channel",
+        "n_args": 1,
+        "tipo": "f",
+        "definidor": true,
+        "dml": false,
+        "ddl": false,
+        "chamada": "nao"
+      },
+      {
+        "nome": "bfr_staff_can_manage_channel",
+        "n_args": 1,
+        "tipo": "f",
+        "definidor": true,
+        "dml": false,
+        "ddl": false,
+        "chamada": "nao"
+      },
+      {
+        "nome": "bfr_staff_can_manage_student_scope",
+        "n_args": 2,
+        "tipo": "f",
+        "definidor": true,
+        "dml": false,
+        "ddl": false,
+        "chamada": "nao"
+      },
+      {
+        "nome": "bfr_staff_can_message_recipient",
+        "n_args": 1,
+        "tipo": "f",
+        "definidor": true,
+        "dml": false,
+        "ddl": false,
+        "chamada": "nao"
+      },
+      {
+        "nome": "bfr_staff_can_read_message",
+        "n_args": 1,
+        "tipo": "f",
+        "definidor": true,
+        "dml": false,
+        "ddl": false,
+        "chamada": "nao"
+      },
+      {
+        "nome": "bfr_staff_is_manager",
+        "n_args": 0,
+        "tipo": "f",
+        "definidor": true,
+        "dml": false,
+        "ddl": false,
+        "chamada": "sim"
+      },
+      {
+        "nome": "bfr_staff_role",
+        "n_args": 0,
+        "tipo": "f",
+        "definidor": true,
+        "dml": false,
+        "ddl": false,
+        "chamada": "sim"
+      },
+      {
+        "nome": "bfr_subject_matches",
+        "n_args": 2,
+        "tipo": "f",
+        "definidor": false,
+        "dml": false,
+        "ddl": false,
+        "chamada": "nao"
+      },
+      {
+        "nome": "bfr_support_detail_access",
+        "n_args": 4,
+        "tipo": "f",
+        "definidor": true,
+        "dml": false,
+        "ddl": false,
+        "chamada": "nao"
+      },
+      {
+        "nome": "bfr_support_request_access",
+        "n_args": 3,
+        "tipo": "f",
+        "definidor": true,
+        "dml": false,
+        "ddl": false,
+        "chamada": "nao"
+      },
+      {
+        "nome": "bfr_support_request_create_access",
+        "n_args": 1,
+        "tipo": "f",
+        "definidor": true,
+        "dml": false,
+        "ddl": false,
+        "chamada": "nao"
+      },
+      {
+        "nome": "bfr_support_request_scope_guard",
+        "n_args": 0,
+        "tipo": "f",
+        "definidor": true,
+        "dml": false,
+        "ddl": false,
+        "chamada": "sim"
+      },
+      {
+        "nome": "bfr_teacher_can_manage_class_subject",
+        "n_args": 2,
+        "tipo": "f",
+        "definidor": true,
+        "dml": false,
+        "ddl": false,
+        "chamada": "nao"
+      },
+      {
+        "nome": "bfr_teacher_can_manage_student",
+        "n_args": 2,
+        "tipo": "f",
+        "definidor": true,
+        "dml": false,
+        "ddl": false,
+        "chamada": "nao"
+      },
+      {
+        "nome": "bfr_touch_updated_at",
+        "n_args": 0,
+        "tipo": "f",
+        "definidor": false,
+        "dml": false,
+        "ddl": false,
+        "chamada": "sim"
+      },
+      {
+        "nome": "bfr_validate_lesson_attendance",
+        "n_args": 0,
+        "tipo": "f",
+        "definidor": true,
+        "dml": false,
+        "ddl": false,
+        "chamada": "sim"
+      },
+      {
+        "nome": "enforce_bfr_avatar_uniform",
+        "n_args": 0,
+        "tipo": "f",
+        "definidor": true,
+        "dml": false,
+        "ddl": false,
+        "chamada": "sim"
+      },
+      {
+        "nome": "family_cpf_is_valid",
+        "n_args": 1,
+        "tipo": "f",
+        "definidor": false,
+        "dml": false,
+        "ddl": false,
+        "chamada": "nao"
+      },
+      {
+        "nome": "family_normalize_cpf",
+        "n_args": 1,
+        "tipo": "f",
+        "definidor": false,
+        "dml": false,
+        "ddl": false,
+        "chamada": "nao"
+      },
+      {
+        "nome": "family_normalize_name",
+        "n_args": 1,
+        "tipo": "f",
+        "definidor": false,
+        "dml": false,
+        "ddl": false,
+        "chamada": "nao"
+      },
+      {
+        "nome": "internal_chat_can_access_room",
+        "n_args": 1,
+        "tipo": "f",
+        "definidor": true,
+        "dml": false,
+        "ddl": false,
+        "chamada": "nao"
+      },
+      {
+        "nome": "internal_chat_is_staff",
+        "n_args": 0,
+        "tipo": "f",
+        "definidor": true,
+        "dml": false,
+        "ddl": false,
+        "chamada": "sim"
+      },
+      {
+        "nome": "is_aee",
+        "n_args": 0,
+        "tipo": "f",
+        "definidor": true,
+        "dml": false,
+        "ddl": false,
+        "chamada": "sim"
+      },
+      {
+        "nome": "is_aee_manager",
+        "n_args": 0,
+        "tipo": "f",
+        "definidor": true,
+        "dml": false,
+        "ddl": false,
+        "chamada": "sim"
+      },
+      {
+        "nome": "schools_updated_at",
+        "n_args": 0,
+        "tipo": "f",
+        "definidor": true,
+        "dml": false,
+        "ddl": false,
+        "chamada": "sim"
+      },
+      {
+        "nome": "sports_role_allowed",
+        "n_args": 1,
+        "tipo": "f",
+        "definidor": true,
+        "dml": false,
+        "ddl": false,
+        "chamada": "nao"
+      },
+      {
+        "nome": "sports_touch_updated_at",
+        "n_args": 0,
+        "tipo": "f",
+        "definidor": false,
+        "dml": false,
+        "ddl": false,
+        "chamada": "sim"
+      }
+    ]
+  },
+  "storage": {
+    "buckets": [
+      {
+        "id": "activity-media",
+        "name": "activity-media",
+        "public": false,
+        "file_size_limit": 20971520,
+        "mime": "{application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document,application/vnd.ms-powerpoint,application/vnd.openxmlformats-officedocument.presentationml.presentation,application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,image/jpeg,image/png,image/webp}"
+      },
+      {
+        "id": "collaboration-files",
+        "name": "collaboration-files",
+        "public": false,
+        "file_size_limit": 20971520,
+        "mime": "{application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document,application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,image/jpeg,image/png,image/webp,text/plain}"
+      },
+      {
+        "id": "internal-chat-media",
+        "name": "internal-chat-media",
+        "public": false,
+        "file_size_limit": 10485760,
+        "mime": "{application/pdf,image/jpeg,image/png,image/webp,text/plain,application/vnd.openxmlformats-officedocument.wordprocessingml.document,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet}"
+      },
+      {
+        "id": "learning-evidence",
+        "name": "learning-evidence",
+        "public": false,
+        "file_size_limit": null,
+        "mime": null
+      },
+      {
+        "id": "project-media",
+        "name": "project-media",
+        "public": false,
+        "file_size_limit": 10485760,
+        "mime": "{image/jpeg,image/png,image/webp,image/gif}"
+      },
+      {
+        "id": "school-documents",
+        "name": "school-documents",
+        "public": false,
+        "file_size_limit": 26214400,
+        "mime": "{application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document,application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,image/jpeg,image/png,image/webp}"
+      },
+      {
+        "id": "secretary-attachments",
+        "name": "secretary-attachments",
+        "public": false,
+        "file_size_limit": 10485760,
+        "mime": "{application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document,application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,image/jpeg,image/png,image/webp,text/plain}"
+      },
+      {
+        "id": "staff-files",
+        "name": "staff-files",
+        "public": false,
+        "file_size_limit": 20971520,
+        "mime": "{application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document,application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,image/jpeg,image/png,image/webp,text/plain}"
+      },
+      {
+        "id": "student-photos",
+        "name": "student-photos",
+        "public": false,
+        "file_size_limit": 5242880,
+        "mime": "{image/jpeg,image/png,image/webp}"
+      }
+    ],
+    "politicas": [
+      {
+        "tabela": "objects",
+        "politica": "activity_media_read",
+        "cmd": "r",
+        "roles": "authenticated",
+        "public_": false,
+        "permissive": "true",
+        "using_": "((bucket_id = 'activity-media'::text) AND (is_staff() OR (EXISTS ( SELECT 1\n   FROM school_activities a\n  WHERE ((a.attachment_path = objects.name) AND is_approved())))))",
+        "with_check": ""
+      },
+      {
+        "tabela": "objects",
+        "politica": "activity_media_staff_delete",
+        "cmd": "d",
+        "roles": "authenticated",
+        "public_": false,
+        "permissive": "true",
+        "using_": "((bucket_id = 'activity-media'::text) AND is_staff() AND (split_part(name, '/'::text, 1) = (auth.uid())::text))",
+        "with_check": ""
+      },
+      {
+        "tabela": "objects",
+        "politica": "activity_media_staff_insert",
+        "cmd": "a",
+        "roles": "authenticated",
+        "public_": false,
+        "permissive": "true",
+        "using_": "",
+        "with_check": "((bucket_id = 'activity-media'::text) AND is_staff() AND (split_part(name, '/'::text, 1) = (auth.uid())::text))"
+      },
+      {
+        "tabela": "objects",
+        "politica": "activity_media_staff_update",
+        "cmd": "w",
+        "roles": "authenticated",
+        "public_": false,
+        "permissive": "true",
+        "using_": "((bucket_id = 'activity-media'::text) AND is_staff() AND (split_part(name, '/'::text, 1) = (auth.uid())::text))",
+        "with_check": "((bucket_id = 'activity-media'::text) AND is_staff() AND (split_part(name, '/'::text, 1) = (auth.uid())::text))"
+      },
+      {
+        "tabela": "objects",
+        "politica": "admins delete school documents",
+        "cmd": "d",
+        "roles": "authenticated",
+        "public_": false,
+        "permissive": "true",
+        "using_": "((bucket_id = 'school-documents'::text) AND (EXISTS ( SELECT 1\n   FROM profiles p\n  WHERE ((p.id = auth.uid()) AND (p.role = 'developer'::account_role)))))",
+        "with_check": ""
+      },
+      {
+        "tabela": "objects",
+        "politica": "admins replace school documents",
+        "cmd": "w",
+        "roles": "authenticated",
+        "public_": false,
+        "permissive": "true",
+        "using_": "((bucket_id = 'school-documents'::text) AND (EXISTS ( SELECT 1\n   FROM profiles p\n  WHERE ((p.id = auth.uid()) AND (p.role = 'developer'::account_role)))))",
+        "with_check": ""
+      },
+      {
+        "tabela": "objects",
+        "politica": "admins upload school documents",
+        "cmd": "a",
+        "roles": "authenticated",
+        "public_": false,
+        "permissive": "true",
+        "using_": "",
+        "with_check": "((bucket_id = 'school-documents'::text) AND (EXISTS ( SELECT 1\n   FROM profiles p\n  WHERE ((p.id = auth.uid()) AND (p.role = 'developer'::account_role)))))"
+      },
+      {
+        "tabela": "objects",
+        "politica": "authorized staff read student photos",
+        "cmd": "r",
+        "roles": "authenticated",
+        "public_": false,
+        "permissive": "true",
+        "using_": "((bucket_id = 'student-photos'::text) AND (EXISTS ( SELECT 1\n   FROM profiles p\n  WHERE ((p.id = auth.uid()) AND (p.role = ANY (ARRAY['gatekeeper'::account_role, 'coordinator'::account_role, 'pedagogical'::account_role, 'developer'::account_role]))))))",
+        "with_check": ""
+      },
+      {
+        "tabela": "objects",
+        "politica": "bfr_internal_chat_media_delete",
+        "cmd": "d",
+        "roles": "authenticated",
+        "public_": false,
+        "permissive": "true",
+        "using_": "((bucket_id = 'internal-chat-media'::text) AND (split_part(name, '/'::text, 1) = (auth.uid())::text))",
+        "with_check": ""
+      },
+      {
+        "tabela": "objects",
+        "politica": "bfr_internal_chat_media_insert",
+        "cmd": "a",
+        "roles": "authenticated",
+        "public_": false,
+        "permissive": "true",
+        "using_": "",
+        "with_check": "((bucket_id = 'internal-chat-media'::text) AND internal_chat_is_staff() AND (split_part(name, '/'::text, 1) = (auth.uid())::text))"
+      },
+      {
+        "tabela": "objects",
+        "politica": "bfr_internal_chat_media_select",
+        "cmd": "r",
+        "roles": "authenticated",
+        "public_": false,
+        "permissive": "true",
+        "using_": "((bucket_id = 'internal-chat-media'::text) AND (EXISTS ( SELECT 1\n   FROM internal_chat_messages m\n  WHERE ((m.attachment_path = objects.name) AND internal_chat_can_access_room(m.room_id)))))",
+        "with_check": ""
+      },
+      {
+        "tabela": "objects",
+        "politica": "bfr_internal_chat_media_update",
+        "cmd": "w",
+        "roles": "authenticated",
+        "public_": false,
+        "permissive": "true",
+        "using_": "((bucket_id = 'internal-chat-media'::text) AND (split_part(name, '/'::text, 1) = (auth.uid())::text))",
+        "with_check": "((bucket_id = 'internal-chat-media'::text) AND (split_part(name, '/'::text, 1) = (auth.uid())::text))"
+      },
+      {
+        "tabela": "objects",
+        "politica": "bfr_project_media_delete",
+        "cmd": "d",
+        "roles": "authenticated",
+        "public_": false,
+        "permissive": "true",
+        "using_": "((bucket_id = 'project-media'::text) AND is_staff() AND (split_part(name, '/'::text, 1) = (auth.uid())::text))",
+        "with_check": ""
+      },
+      {
+        "tabela": "objects",
+        "politica": "bfr_project_media_insert",
+        "cmd": "a",
+        "roles": "authenticated",
+        "public_": false,
+        "permissive": "true",
+        "using_": "",
+        "with_check": "((bucket_id = 'project-media'::text) AND is_staff() AND (split_part(name, '/'::text, 1) = (auth.uid())::text))"
+      },
+      {
+        "tabela": "objects",
+        "politica": "bfr_project_media_select",
+        "cmd": "r",
+        "roles": "authenticated",
+        "public_": false,
+        "permissive": "true",
+        "using_": "((bucket_id = 'project-media'::text) AND (is_staff() OR (EXISTS ( SELECT 1\n   FROM (project_photos pp\n     JOIN projects p ON ((p.id = pp.project_id)))\n  WHERE ((pp.storage_path = objects.name) AND p.published AND is_approved())))))",
+        "with_check": ""
+      },
+      {
+        "tabela": "objects",
+        "politica": "bfr_project_media_update",
+        "cmd": "w",
+        "roles": "authenticated",
+        "public_": false,
+        "permissive": "true",
+        "using_": "((bucket_id = 'project-media'::text) AND is_staff() AND (split_part(name, '/'::text, 1) = (auth.uid())::text))",
+        "with_check": "((bucket_id = 'project-media'::text) AND is_staff() AND (split_part(name, '/'::text, 1) = (auth.uid())::text))"
+      },
+      {
+        "tabela": "objects",
+        "politica": "bfr_school_documents_delete",
+        "cmd": "d",
+        "roles": "authenticated",
+        "public_": false,
+        "permissive": "true",
+        "using_": "((bucket_id = 'school-documents'::text) AND ((\"current_role\"())::text = ANY (ARRAY['director'::text, 'coordinator'::text, 'pedagogical'::text, 'secretary'::text, 'developer'::text])) AND ((split_part(name, '/'::text, 1) = (auth.uid())::text) OR (name ~ '^requests/[0-9a-fA-F-]{36}/'::text) OR (name ~ '^library/books/'::text)))",
+        "with_check": ""
+      },
+      {
+        "tabela": "objects",
+        "politica": "bfr_school_documents_insert",
+        "cmd": "a",
+        "roles": "authenticated",
+        "public_": false,
+        "permissive": "true",
+        "using_": "",
+        "with_check": "((bucket_id = 'school-documents'::text) AND ((\"current_role\"())::text = ANY (ARRAY['director'::text, 'coordinator'::text, 'pedagogical'::text, 'secretary'::text, 'developer'::text])) AND ((name ~ '^requests/[0-9a-fA-F-]{36}/'::text) OR (name ~ '^library/books/'::text) OR (split_part(name, '/'::text,"
+      },
+      {
+        "tabela": "objects",
+        "politica": "bfr_school_documents_select",
+        "cmd": "r",
+        "roles": "authenticated",
+        "public_": false,
+        "permissive": "true",
+        "using_": "((bucket_id = 'school-documents'::text) AND ((EXISTS ( SELECT 1\n   FROM school_documents d\n  WHERE ((d.storage_path = objects.name) AND ((d.published AND is_approved()) OR (EXISTS ( SELECT 1\n           FROM secretary_requests r\n          WHERE ((r.id = d.request_id) AND (r.requester_id = auth.uid())))) OR (EXISTS ( SELECT 1\n           FROM guardian_students g\n          WHERE ((g.profile_id = auth.",
+        "with_check": ""
+      },
+      {
+        "tabela": "objects",
+        "politica": "bfr_school_documents_update",
+        "cmd": "w",
+        "roles": "authenticated",
+        "public_": false,
+        "permissive": "true",
+        "using_": "((bucket_id = 'school-documents'::text) AND ((\"current_role\"())::text = ANY (ARRAY['director'::text, 'coordinator'::text, 'pedagogical'::text, 'secretary'::text, 'developer'::text])) AND ((split_part(name, '/'::text, 1) = (auth.uid())::text) OR (name ~ '^requests/[0-9a-fA-F-]{36}/'::text) OR (name ~ '^library/books/'::text)))",
+        "with_check": "((bucket_id = 'school-documents'::text) AND ((\"current_role\"())::text = ANY (ARRAY['director'::text, 'coordinator'::text, 'pedagogical'::text, 'secretary'::text, 'developer'::text])))"
+      },
+      {
+        "tabela": "objects",
+        "politica": "bfr_secretary_attachments_delete",
+        "cmd": "d",
+        "roles": "authenticated",
+        "public_": false,
+        "permissive": "true",
+        "using_": "((bucket_id = 'secretary-attachments'::text) AND ((split_part(name, '/'::text, 1) = (auth.uid())::text) OR ((\"current_role\"())::text = ANY (ARRAY['director'::text, 'secretary'::text, 'pedagogical'::text, 'developer'::text]))) AND (EXISTS ( SELECT 1\n   FROM secretary_requests r\n  WHERE ((r.id)::text = split_part(objects.name, '/'::text, 2)))))",
+        "with_check": ""
+      },
+      {
+        "tabela": "objects",
+        "politica": "bfr_secretary_attachments_insert",
+        "cmd": "a",
+        "roles": "authenticated",
+        "public_": false,
+        "permissive": "true",
+        "using_": "",
+        "with_check": "((bucket_id = 'secretary-attachments'::text) AND (((name ~ '^[0-9a-fA-F-]{36}/[0-9a-fA-F-]{36}/'::text) AND (split_part(name, '/'::text, 1) = (auth.uid())::text) AND (EXISTS ( SELECT 1\n   FROM secretary_requests r\n  WHERE (((r.id)::text = split_part(objects.name, '/'::text, 2)) AND (r.requester_id ="
+      },
+      {
+        "tabela": "objects",
+        "politica": "bfr_secretary_attachments_select",
+        "cmd": "r",
+        "roles": "authenticated",
+        "public_": false,
+        "permissive": "true",
+        "using_": "((bucket_id = 'secretary-attachments'::text) AND (name ~ '^(requests|[0-9a-fA-F-]{36})/[0-9a-fA-F-]{36}/'::text) AND (EXISTS ( SELECT 1\n   FROM secretary_requests r\n  WHERE (((r.id)::text = split_part(objects.name, '/'::text, 2)) AND ((r.requester_id = auth.uid()) OR ((\"current_role\"())::text = ANY (ARRAY['director'::text, 'secretary'::text, 'pedagogical'::text, 'developer'::text])))))))",
+        "with_check": ""
+      },
+      {
+        "tabela": "objects",
+        "politica": "bfr_secretary_attachments_update",
+        "cmd": "w",
+        "roles": "authenticated",
+        "public_": false,
+        "permissive": "true",
+        "using_": "((bucket_id = 'secretary-attachments'::text) AND ((split_part(name, '/'::text, 1) = (auth.uid())::text) OR ((\"current_role\"())::text = ANY (ARRAY['director'::text, 'secretary'::text, 'pedagogical'::text, 'developer'::text]))) AND (EXISTS ( SELECT 1\n   FROM secretary_requests r\n  WHERE ((r.id)::text = split_part(objects.name, '/'::text, 2)))))",
+        "with_check": "((bucket_id = 'secretary-attachments'::text) AND ((split_part(name, '/'::text, 1) = (auth.uid())::text) OR ((\"current_role\"())::text = ANY (ARRAY['director'::text, 'secretary'::text, 'pedagogical'::text, 'developer'::text]))))"
+      },
+      {
+        "tabela": "objects",
+        "politica": "bfr_student_photos_delete",
+        "cmd": "d",
+        "roles": "authenticated",
+        "public_": false,
+        "permissive": "true",
+        "using_": "((bucket_id = 'student-photos'::text) AND bfr_can_manage_student_directory() AND (split_part(name, '/'::text, 1) = (auth.uid())::text))",
+        "with_check": ""
+      },
+      {
+        "tabela": "objects",
+        "politica": "bfr_student_photos_insert",
+        "cmd": "a",
+        "roles": "authenticated",
+        "public_": false,
+        "permissive": "true",
+        "using_": "",
+        "with_check": "((bucket_id = 'student-photos'::text) AND bfr_can_manage_student_directory() AND (split_part(name, '/'::text, 1) = (auth.uid())::text))"
+      },
+      {
+        "tabela": "objects",
+        "politica": "bfr_student_photos_update",
+        "cmd": "w",
+        "roles": "authenticated",
+        "public_": false,
+        "permissive": "true",
+        "using_": "((bucket_id = 'student-photos'::text) AND bfr_can_manage_student_directory() AND (split_part(name, '/'::text, 1) = (auth.uid())::text))",
+        "with_check": "((bucket_id = 'student-photos'::text) AND bfr_can_manage_student_directory() AND (split_part(name, '/'::text, 1) = (auth.uid())::text))"
+      },
+      {
+        "tabela": "objects",
+        "politica": "bfr_supervision_attachments_delete",
+        "cmd": "d",
+        "roles": "authenticated",
+        "public_": false,
+        "permissive": "true",
+        "using_": "((bucket_id = 'secretary-attachments'::text) AND (name ~ '^supervision/[0-9a-fA-F-]{36}/'::text) AND ((split_part(name, '/'::text, 3) = (auth.uid())::text) OR (EXISTS ( SELECT 1\n   FROM profiles p\n  WHERE ((p.id = auth.uid()) AND (p.role = ANY (ARRAY['developer'::account_role, 'director'::account_role, 'coordinator'::account_role])))))))",
+        "with_check": ""
+      },
+      {
+        "tabela": "objects",
+        "politica": "bfr_supervision_attachments_insert",
+        "cmd": "a",
+        "roles": "authenticated",
+        "public_": false,
+        "permissive": "true",
+        "using_": "",
+        "with_check": "((bucket_id = 'secretary-attachments'::text) AND (name ~ '^supervision/[0-9a-fA-F-]{36}/[0-9a-fA-F-]{36}/'::text) AND (split_part(name, '/'::text, 1) = 'supervision'::text) AND (EXISTS ( SELECT 1\n   FROM profiles p\n  WHERE ((p.id = auth.uid()) AND (p.role = ANY (ARRAY['secretary'::account_role, 'dir"
+      },
+      {
+        "tabela": "objects",
+        "politica": "bfr_supervision_attachments_select",
+        "cmd": "r",
+        "roles": "authenticated",
+        "public_": false,
+        "permissive": "true",
+        "using_": "((bucket_id = 'secretary-attachments'::text) AND (name ~ '^supervision/[0-9a-fA-F-]{36}/'::text) AND (EXISTS ( SELECT 1\n   FROM supervision_response_attachments a\n  WHERE (a.storage_path = objects.name))) AND (EXISTS ( SELECT 1\n   FROM profiles p\n  WHERE ((p.id = auth.uid()) AND (p.role = ANY (ARRAY['secretary'::account_role, 'developer'::account_role, 'director'::account_role, 'coordinator'::acco",
+        "with_check": ""
+      },
+      {
+        "tabela": "objects",
+        "politica": "bfr_supervision_attachments_update",
+        "cmd": "w",
+        "roles": "authenticated",
+        "public_": false,
+        "permissive": "true",
+        "using_": "((bucket_id = 'secretary-attachments'::text) AND (name ~ '^supervision/[0-9a-fA-F-]{36}/'::text) AND ((split_part(name, '/'::text, 3) = (auth.uid())::text) OR (EXISTS ( SELECT 1\n   FROM profiles p\n  WHERE ((p.id = auth.uid()) AND (p.role = ANY (ARRAY['developer'::account_role, 'director'::account_role])))))))",
+        "with_check": "((bucket_id = 'secretary-attachments'::text) AND (name ~ '^supervision/[0-9a-fA-F-]{36}/'::text))"
+      },
+      {
+        "tabela": "objects",
+        "politica": "collaboration_files_delete",
+        "cmd": "d",
+        "roles": "authenticated",
+        "public_": false,
+        "permissive": "true",
+        "using_": "((bucket_id = 'collaboration-files'::text) AND ((owner_id = (auth.uid())::text) OR bfr_collab_is_manager()))",
+        "with_check": ""
+      },
+      {
+        "tabela": "objects",
+        "politica": "collaboration_files_insert",
+        "cmd": "a",
+        "roles": "authenticated",
+        "public_": false,
+        "permissive": "true",
+        "using_": "",
+        "with_check": "((bucket_id = 'collaboration-files'::text) AND (owner_id = (auth.uid())::text) AND bfr_collab_can_task(((storage.foldername(name))[1])::uuid))"
+      },
+      {
+        "tabela": "objects",
+        "politica": "collaboration_files_read",
+        "cmd": "r",
+        "roles": "authenticated",
+        "public_": false,
+        "permissive": "true",
+        "using_": "((bucket_id = 'collaboration-files'::text) AND bfr_collab_can_task(((storage.foldername(name))[1])::uuid))",
+        "with_check": ""
+      },
+      {
+        "tabela": "objects",
+        "politica": "learning evidence files read",
+        "cmd": "r",
+        "roles": "(public)",
+        "public_": true,
+        "permissive": "true",
+        "using_": "((bucket_id = 'learning-evidence'::text) AND (bfr_learning_is_manager() OR (owner_id = (auth.uid())::text)))",
+        "with_check": ""
+      },
+      {
+        "tabela": "objects",
+        "politica": "learning evidence files update",
+        "cmd": "w",
+        "roles": "(public)",
+        "public_": true,
+        "permissive": "true",
+        "using_": "((bucket_id = 'learning-evidence'::text) AND (owner_id = (auth.uid())::text))",
+        "with_check": "((bucket_id = 'learning-evidence'::text) AND (owner_id = (auth.uid())::text))"
+      },
+      {
+        "tabela": "objects",
+        "politica": "learning evidence files upload",
+        "cmd": "a",
+        "roles": "(public)",
+        "public_": true,
+        "permissive": "true",
+        "using_": "",
+        "with_check": "((bucket_id = 'learning-evidence'::text) AND (owner_id = (auth.uid())::text))"
+      },
+      {
+        "tabela": "objects",
+        "politica": "linked students read own photo",
+        "cmd": "r",
+        "roles": "authenticated",
+        "public_": false,
+        "permissive": "true",
+        "using_": "((bucket_id = 'student-photos'::text) AND (EXISTS ( SELECT 1\n   FROM guardian_students link\n  WHERE ((link.profile_id = auth.uid()) AND (objects.name ~~ (('%/'::text || (link.student_id)::text) || '/%'::text))))))",
+        "with_check": ""
+      },
+      {
+        "tabela": "objects",
+        "politica": "participants download school documents",
+        "cmd": "r",
+        "roles": "authenticated",
+        "public_": false,
+        "permissive": "true",
+        "using_": "((bucket_id = 'school-documents'::text) AND (EXISTS ( SELECT 1\n   FROM school_documents d\n  WHERE ((d.storage_path = objects.name) AND ((d.published AND (EXISTS ( SELECT 1\n           FROM profiles p\n          WHERE ((p.id = auth.uid()) AND (p.role = ANY (ARRAY['parent'::account_role, 'student'::account_role, 'secretary'::account_role, 'pedagogical'::account_role, 'monitor'::account_role, 'gatekeep",
+        "with_check": ""
+      },
+      {
+        "tabela": "objects",
+        "politica": "school community read library files",
+        "cmd": "r",
+        "roles": "authenticated",
+        "public_": false,
+        "permissive": "true",
+        "using_": "((bucket_id = 'school-documents'::text) AND (EXISTS ( SELECT 1\n   FROM school_documents d\n  WHERE ((d.storage_path = objects.name) AND (d.category ~~ 'Biblioteca%'::text) AND (d.published = true)))) AND (EXISTS ( SELECT 1\n   FROM profiles p\n  WHERE ((p.id = auth.uid()) AND (p.role = ANY (ARRAY['parent'::account_role, 'student'::account_role, 'director'::account_role, 'coordinator'::account_role, '",
+        "with_check": ""
+      },
+      {
+        "tabela": "objects",
+        "politica": "school team delete library files",
+        "cmd": "d",
+        "roles": "authenticated",
+        "public_": false,
+        "permissive": "true",
+        "using_": "((bucket_id = 'school-documents'::text) AND (name ~~ ((auth.uid())::text || '/%'::text)) AND (EXISTS ( SELECT 1\n   FROM profiles p\n  WHERE ((p.id = auth.uid()) AND (p.role = ANY (ARRAY['director'::account_role, 'coordinator'::account_role, 'pedagogical'::account_role, 'secretary'::account_role, 'developer'::account_role]))))))",
+        "with_check": ""
+      },
+      {
+        "tabela": "objects",
+        "politica": "school team update library files",
+        "cmd": "w",
+        "roles": "authenticated",
+        "public_": false,
+        "permissive": "true",
+        "using_": "((bucket_id = 'school-documents'::text) AND (name ~~ ((auth.uid())::text || '/%'::text)) AND (EXISTS ( SELECT 1\n   FROM profiles p\n  WHERE ((p.id = auth.uid()) AND (p.role = ANY (ARRAY['director'::account_role, 'coordinator'::account_role, 'pedagogical'::account_role, 'secretary'::account_role, 'developer'::account_role]))))))",
+        "with_check": "((bucket_id = 'school-documents'::text) AND (name ~~ ((auth.uid())::text || '/%'::text)) AND (EXISTS ( SELECT 1\n   FROM profiles p\n  WHERE ((p.id = auth.uid()) AND (p.role = ANY (ARRAY['director'::account_role, 'coordinator'::account_role, 'pedagogical'::account_role, 'secretary'::account_role, 'dev"
+      },
+      {
+        "tabela": "objects",
+        "politica": "school team upload library files",
+        "cmd": "a",
+        "roles": "authenticated",
+        "public_": false,
+        "permissive": "true",
+        "using_": "",
+        "with_check": "((bucket_id = 'school-documents'::text) AND (name ~~ ((auth.uid())::text || '/%'::text)) AND (EXISTS ( SELECT 1\n   FROM profiles p\n  WHERE ((p.id = auth.uid()) AND (p.role = ANY (ARRAY['director'::account_role, 'coordinator'::account_role, 'pedagogical'::account_role, 'secretary'::account_role, 'dev"
+      },
+      {
+        "tabela": "objects",
+        "politica": "staff_files_delete",
+        "cmd": "d",
+        "roles": "authenticated",
+        "public_": false,
+        "permissive": "true",
+        "using_": "((bucket_id = 'staff-files'::text) AND ((owner_id = (auth.uid())::text) OR bfr_staff_is_manager()))",
+        "with_check": ""
+      },
+      {
+        "tabela": "objects",
+        "politica": "staff_files_insert",
+        "cmd": "a",
+        "roles": "authenticated",
+        "public_": false,
+        "permissive": "true",
+        "using_": "",
+        "with_check": "((bucket_id = 'staff-files'::text) AND (owner_id = (auth.uid())::text) AND bfr_staff_can_read_message(bfr_staff_message_id_from_storage_path(name)) AND (((metadata ->> 'size'::text) IS NULL) OR (((metadata ->> 'size'::text) ~ '^[0-9]+$'::text) AND (((metadata ->> 'size'::text))::bigint <= 10485760))"
+      },
+      {
+        "tabela": "objects",
+        "politica": "staff_files_photo_delete",
+        "cmd": "d",
+        "roles": "authenticated",
+        "public_": false,
+        "permissive": "true",
+        "using_": "((bucket_id = 'staff-files'::text) AND (name = ((auth.uid())::text || '/photo.jpg'::text)))",
+        "with_check": ""
+      },
+      {
+        "tabela": "objects",
+        "politica": "staff_files_photo_insert",
+        "cmd": "a",
+        "roles": "authenticated",
+        "public_": false,
+        "permissive": "true",
+        "using_": "",
+        "with_check": "((bucket_id = 'staff-files'::text) AND is_staff() AND (name = ((auth.uid())::text || '/photo.jpg'::text)))"
+      },
+      {
+        "tabela": "objects",
+        "politica": "staff_files_photo_select",
+        "cmd": "r",
+        "roles": "authenticated",
+        "public_": false,
+        "permissive": "true",
+        "using_": "((bucket_id = 'staff-files'::text) AND internal_chat_is_staff() AND (name ~~ '%/photo.jpg'::text))",
+        "with_check": ""
+      },
+      {
+        "tabela": "objects",
+        "politica": "staff_files_photo_update",
+        "cmd": "w",
+        "roles": "authenticated",
+        "public_": false,
+        "permissive": "true",
+        "using_": "((bucket_id = 'staff-files'::text) AND (name = ((auth.uid())::text || '/photo.jpg'::text)))",
+        "with_check": "((bucket_id = 'staff-files'::text) AND (name = ((auth.uid())::text || '/photo.jpg'::text)))"
+      },
+      {
+        "tabela": "objects",
+        "politica": "staff_files_read",
+        "cmd": "r",
+        "roles": "authenticated",
+        "public_": false,
+        "permissive": "true",
+        "using_": "((bucket_id = 'staff-files'::text) AND bfr_staff_can_read_message(bfr_staff_message_id_from_storage_path(name)))",
+        "with_check": ""
+      }
+    ],
+    "publicas_storage": [
+      "objects/learning evidence files read",
+      "objects/learning evidence files update",
+      "objects/learning evidence files upload"
+    ],
+    "chamadas_das_policies_storage": {
+      "existentes": [
+        "bfr_can_manage_student_directory(anon=true,auth=true)",
+        "bfr_collab_can_task(anon=true,auth=true)",
+        "bfr_collab_is_manager(anon=true,auth=true)",
+        "bfr_learning_is_manager(anon=true,auth=true)",
+        "bfr_staff_can_read_message(anon=true,auth=true)",
+        "bfr_staff_is_manager(anon=true,auth=true)",
+        "bfr_staff_message_id_from_storage_path(anon=false,auth=true)",
+        "internal_chat_can_access_room(anon=true,auth=true)",
+        "internal_chat_is_staff(anon=true,auth=true)",
+        "is_approved(anon=false,auth=true)",
+        "is_staff(anon=false,auth=true)"
+      ],
+      "violacoes": [
+        "bfr_can_manage_student_directory",
+        "bfr_collab_can_task",
+        "bfr_collab_is_manager",
+        "bfr_learning_is_manager",
+        "bfr_staff_can_read_message",
+        "bfr_staff_is_manager",
+        "internal_chat_can_access_room",
+        "internal_chat_is_staff"
+      ],
+      "porPolitica": [
+        {
+          "politica": "objects/activity_media_read",
+          "funcao": "is_staff",
+          "anon_execute": false,
+          "auth_execute": true,
+          "wrapper": false
+        },
+        {
+          "politica": "objects/activity_media_read",
+          "funcao": "is_approved",
+          "anon_execute": false,
+          "auth_execute": true,
+          "wrapper": false
+        },
+        {
+          "politica": "objects/activity_media_staff_delete",
+          "funcao": "is_staff",
+          "anon_execute": false,
+          "auth_execute": true,
+          "wrapper": false
+        },
+        {
+          "politica": "objects/activity_media_staff_insert",
+          "funcao": "is_staff",
+          "anon_execute": false,
+          "auth_execute": true,
+          "wrapper": false
+        },
+        {
+          "politica": "objects/activity_media_staff_update",
+          "funcao": "is_staff",
+          "anon_execute": false,
+          "auth_execute": true,
+          "wrapper": false
+        },
+        {
+          "politica": "objects/bfr_internal_chat_media_insert",
+          "funcao": "internal_chat_is_staff",
+          "anon_execute": true,
+          "auth_execute": true,
+          "wrapper": false
+        },
+        {
+          "politica": "objects/bfr_internal_chat_media_select",
+          "funcao": "internal_chat_can_access_room",
+          "anon_execute": true,
+          "auth_execute": true,
+          "wrapper": false
+        },
+        {
+          "politica": "objects/bfr_project_media_delete",
+          "funcao": "is_staff",
+          "anon_execute": false,
+          "auth_execute": true,
+          "wrapper": false
+        },
+        {
+          "politica": "objects/bfr_project_media_insert",
+          "funcao": "is_staff",
+          "anon_execute": false,
+          "auth_execute": true,
+          "wrapper": false
+        },
+        {
+          "politica": "objects/bfr_project_media_select",
+          "funcao": "is_staff",
+          "anon_execute": false,
+          "auth_execute": true,
+          "wrapper": false
+        },
+        {
+          "politica": "objects/bfr_project_media_select",
+          "funcao": "is_approved",
+          "anon_execute": false,
+          "auth_execute": true,
+          "wrapper": false
+        },
+        {
+          "politica": "objects/bfr_project_media_update",
+          "funcao": "is_staff",
+          "anon_execute": false,
+          "auth_execute": true,
+          "wrapper": false
+        },
+        {
+          "politica": "objects/bfr_school_documents_select",
+          "funcao": "is_approved",
+          "anon_execute": false,
+          "auth_execute": true,
+          "wrapper": false
+        },
+        {
+          "politica": "objects/bfr_student_photos_delete",
+          "funcao": "bfr_can_manage_student_directory",
+          "anon_execute": true,
+          "auth_execute": true,
+          "wrapper": false
+        },
+        {
+          "politica": "objects/bfr_student_photos_insert",
+          "funcao": "bfr_can_manage_student_directory",
+          "anon_execute": true,
+          "auth_execute": true,
+          "wrapper": false
+        },
+        {
+          "politica": "objects/bfr_student_photos_update",
+          "funcao": "bfr_can_manage_student_directory",
+          "anon_execute": true,
+          "auth_execute": true,
+          "wrapper": false
+        },
+        {
+          "politica": "objects/collaboration_files_delete",
+          "funcao": "bfr_collab_is_manager",
+          "anon_execute": true,
+          "auth_execute": true,
+          "wrapper": false
+        },
+        {
+          "politica": "objects/collaboration_files_insert",
+          "funcao": "bfr_collab_can_task",
+          "anon_execute": true,
+          "auth_execute": true,
+          "wrapper": false
+        },
+        {
+          "politica": "objects/collaboration_files_read",
+          "funcao": "bfr_collab_can_task",
+          "anon_execute": true,
+          "auth_execute": true,
+          "wrapper": false
+        },
+        {
+          "politica": "objects/learning evidence files read",
+          "funcao": "bfr_learning_is_manager",
+          "anon_execute": true,
+          "auth_execute": true,
+          "wrapper": false
+        },
+        {
+          "politica": "objects/staff_files_delete",
+          "funcao": "bfr_staff_is_manager",
+          "anon_execute": true,
+          "auth_execute": true,
+          "wrapper": false
+        },
+        {
+          "politica": "objects/staff_files_insert",
+          "funcao": "bfr_staff_can_read_message",
+          "anon_execute": true,
+          "auth_execute": true,
+          "wrapper": false
+        },
+        {
+          "politica": "objects/staff_files_insert",
+          "funcao": "bfr_staff_message_id_from_storage_path",
+          "anon_execute": false,
+          "auth_execute": true,
+          "wrapper": false
+        },
+        {
+          "politica": "objects/staff_files_photo_insert",
+          "funcao": "is_staff",
+          "anon_execute": false,
+          "auth_execute": true,
+          "wrapper": false
+        },
+        {
+          "politica": "objects/staff_files_photo_select",
+          "funcao": "internal_chat_is_staff",
+          "anon_execute": true,
+          "auth_execute": true,
+          "wrapper": false
+        },
+        {
+          "politica": "objects/staff_files_read",
+          "funcao": "bfr_staff_can_read_message",
+          "anon_execute": true,
+          "auth_execute": true,
+          "wrapper": false
+        },
+        {
+          "politica": "objects/staff_files_read",
+          "funcao": "bfr_staff_message_id_from_storage_path",
+          "anon_execute": false,
+          "auth_execute": true,
+          "wrapper": false
+        }
+      ]
+    },
+    "objectos_por_bucket": [
+      {
+        "bucket_id": "internal-chat-media",
+        "n": 2
+      },
+      {
+        "bucket_id": "project-media",
+        "n": 32
+      },
+      {
+        "bucket_id": "school-documents",
+        "n": 311
+      },
+      {
+        "bucket_id": "secretary-attachments",
+        "n": 5
+      },
+      {
+        "bucket_id": "student-photos",
+        "n": 179
+      }
+    ],
+    "tabelas": [
+      {
+        "nome": "bucket_lifecycle_states",
+        "rls": true,
+        "forcada": false,
+        "anon_sel": false,
+        "anon_ins": false,
+        "anon_upd": false,
+        "anon_del": false,
+        "n_policies": 0
+      },
+      {
+        "nome": "buckets",
+        "rls": true,
+        "forcada": false,
+        "anon_sel": true,
+        "anon_ins": true,
+        "anon_upd": true,
+        "anon_del": true,
+        "n_policies": 0
+      },
+      {
+        "nome": "buckets_analytics",
+        "rls": true,
+        "forcada": false,
+        "anon_sel": true,
+        "anon_ins": true,
+        "anon_upd": true,
+        "anon_del": true,
+        "n_policies": 0
+      },
+      {
+        "nome": "buckets_vectors",
+        "rls": true,
+        "forcada": false,
+        "anon_sel": true,
+        "anon_ins": false,
+        "anon_upd": false,
+        "anon_del": false,
+        "n_policies": 0
+      },
+      {
+        "nome": "lifecycle_abandoned_artifacts",
+        "rls": true,
+        "forcada": false,
+        "anon_sel": false,
+        "anon_ins": false,
+        "anon_upd": false,
+        "anon_del": false,
+        "n_policies": 0
+      },
+      {
+        "nome": "migrations",
+        "rls": true,
+        "forcada": false,
+        "anon_sel": false,
+        "anon_ins": false,
+        "anon_upd": false,
+        "anon_del": false,
+        "n_policies": 0
+      },
+      {
+        "nome": "objects",
+        "rls": true,
+        "forcada": false,
+        "anon_sel": true,
+        "anon_ins": true,
+        "anon_upd": true,
+        "anon_del": true,
+        "n_policies": 50
+      },
+      {
+        "nome": "s3_multipart_uploads",
+        "rls": true,
+        "forcada": false,
+        "anon_sel": true,
+        "anon_ins": false,
+        "anon_upd": false,
+        "anon_del": false,
+        "n_policies": 0
+      },
+      {
+        "nome": "s3_multipart_uploads_parts",
+        "rls": true,
+        "forcada": false,
+        "anon_sel": true,
+        "anon_ins": false,
+        "anon_upd": false,
+        "anon_del": false,
+        "n_policies": 0
+      },
+      {
+        "nome": "vector_indexes",
+        "rls": true,
+        "forcada": false,
+        "anon_sel": true,
+        "anon_ins": false,
+        "anon_upd": false,
+        "anon_del": false,
+        "n_policies": 0
+      }
+    ],
+    "buckets_publicos": [],
+    "privados_sem_policy": [],
+    "sondas_rota_publica": [
+      {
+        "bucket": "activity-media",
+        "public_flag": false,
+        "status": 400,
+        "corpo": "{\"statusCode\":\"404\",\"error\":\"Bucket not found\",\"message\":\"Bucket not f"
+      },
+      {
+        "bucket": "collaboration-files",
+        "public_flag": false,
+        "status": 400,
+        "corpo": "{\"statusCode\":\"404\",\"error\":\"Bucket not found\",\"message\":\"Bucket not f"
+      },
+      {
+        "bucket": "internal-chat-media",
+        "public_flag": false,
+        "status": 400,
+        "corpo": "{\"statusCode\":\"404\",\"error\":\"Bucket not found\",\"message\":\"Bucket not f"
+      },
+      {
+        "bucket": "learning-evidence",
+        "public_flag": false,
+        "status": 400,
+        "corpo": "{\"statusCode\":\"404\",\"error\":\"Bucket not found\",\"message\":\"Bucket not f"
+      },
+      {
+        "bucket": "project-media",
+        "public_flag": false,
+        "status": 400,
+        "corpo": "{\"statusCode\":\"404\",\"error\":\"Bucket not found\",\"message\":\"Bucket not f"
+      },
+      {
+        "bucket": "school-documents",
+        "public_flag": false,
+        "status": 400,
+        "corpo": "{\"statusCode\":\"404\",\"error\":\"Bucket not found\",\"message\":\"Bucket not f"
+      },
+      {
+        "bucket": "secretary-attachments",
+        "public_flag": false,
+        "status": 400,
+        "corpo": "{\"statusCode\":\"404\",\"error\":\"Bucket not found\",\"message\":\"Bucket not f"
+      },
+      {
+        "bucket": "staff-files",
+        "public_flag": false,
+        "status": 400,
+        "corpo": "{\"statusCode\":\"404\",\"error\":\"Bucket not found\",\"message\":\"Bucket not f"
+      },
+      {
+        "bucket": "student-photos",
+        "public_flag": false,
+        "status": 400,
+        "corpo": "{\"statusCode\":\"404\",\"error\":\"Bucket not found\",\"message\":\"Bucket not f"
+      }
+    ],
+    "anon_visivel_em_storage": [
+      {
+        "t": "buckets",
+        "visiveis": 0
+      },
+      {
+        "t": "objects",
+        "visiveis": 0
+      },
+      {
+        "t": "buckets_analytics",
+        "visiveis": 0
+      }
+    ]
+  },
+  "armadilhas_de_metodo": [
+    "polroles: PUBLIC neste build é {0} (OID 0), não array vazio nem NULL — cardinality()=0 daria 0 PUBLIC contra os 11 reais (já registado em evidence/fim-sonda-polroles-15-11.json).",
+    "pg_get_functiondef devolve o cabeçalho CREATE OR REPLACE FUNCTION: qualquer regex de escrita batia nas 60; a classificação é feita sobre prosrc e cruzada com ~* em SQL.",
+    "audit-publicacao-v59/v60.json registam o host de OUTUBRO; a régua da versão em produção é v121-pos-deploy-http-14-11.json, e a shell servida bate byte a byte com ela.",
+    "o 401 do PostgREST para pedido anónimo é o erro postgres 42501 (permissão negada), não falha de chave: as vistas e staff_schools recusam SELECT a anon por esse caminho."
+  ],
+  "baseline_pre_ref": "evidence/af1-baseline-pre-16-11.json",
+  "baseline_pos_ref": "evidence/af1-baseline-pos-16-11.json",
+  "pegada_pre": {
+    "total": 550,
+    "hash": "7507bc3f80e9f0945144d6d8c73fcdc7",
+    "espaco": "pg_class de public+storage, inclui índices e toast: 3.º espaço de hash, NÃO comparável aos 182 de rm68-lib nem ao censo ad2"
+  },
+  "pegada_pos": {
+    "total": 550,
+    "hash": "7507bc3f80e9f0945144d6d8c73fcdc7",
+    "espaco": "pg_class de public+storage, inclui índices e toast: 3.º espaço de hash, NÃO comparável aos 182 de rm68-lib nem ao censo ad2"
+  },
+  "portoes": 29,
+  "falhas": [
+    "PEN-25 no ar: nenhuma qual PUBLIC chama função que o anon possa executar (fora dos 3 wrappers) | dado=[\"bfr_staff_can_manage_student_scope\"] | esperado=[]",
+    "PEN-25 no ar: as chamadas privilegiadas fora dos wrappers continuam todas sem EXECUTE a anon | dado=[\"attendance/attendance_staff_delete/bfr_staff_can_manage_student_scope\",\"attendance/attendance_staff_insert/bfr_staff_can_manage_student_scope\",\"attendance/attendance_staff_select/bfr_staff_can_manage_student_scope\",\"attendance/attendance_staff_update/bfr_staff_can_manage_student_scope\",\"grades/grades_staff_delete/bfr_staff_can_manage_student_scope\",\"grades/grades_staff_insert/bfr_staff_can_manage_student_scope\",\"grades/grades_staff_select/bfr_staff_can_manage_student_scope\"] | esperado=[]",
+    "storage: nenhuma policy de storage chama função que o anon possa executar (fora dos wrappers fail-closed) | dado=[\"bfr_can_manage_student_directory\",\"bfr_collab_can_task\",\"bfr_collab_is_manager\",\"bfr_learning_is_manager\",\"bfr_staff_can_read_message\",\"bfr_staff_is_manager\",\"internal_chat_can_access_room\",\"internal_chat_is_staff\"] | esperado=[]",
+    "storage: o anon não tem privilégio de escrita em nenhuma tabela do esquema | dado=[\"buckets\",\"buckets_analytics\",\"objects\"] | esperado=[]"
+  ],
+  "veredito": "AF1_AUDITORIA_FINAL_VERMELHO"
+}
