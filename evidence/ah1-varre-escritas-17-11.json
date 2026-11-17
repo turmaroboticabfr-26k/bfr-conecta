@@ -1,7 +1,7 @@
 {
  "programa": "scripts/ah1-varre-escritas.mjs",
- "em": "2026-11-17T23:38:56.152Z",
- "o_que_prova": "nenhum dos 468 caminhos versionados em docs/ e scripts/ contém glifo das sete famílias varridas fora da lista de permitidos declarados; a contagem por família fica no diário, inclusive quando é zero — uma família com conjunto vazio imprime-se com o zero, suprimi-la transformaria «não sei» em «não existe»",
+ "em": "2026-11-17T23:45:01.152Z",
+ "o_que_prova": "nenhum dos 471 caminhos versionados em docs/ e scripts/ contém glifo das sete famílias varridas fora da lista de permitidos declarados; a contagem por família fica no diário, inclusive quando é zero — uma família com conjunto vazio imprime-se com o zero, suprimi-la transformaria «não sei» em «não existe»",
  "o_que_NAO_prova": "que o texto esteja certo — a varredura só sabe de **escrita**, não de conteúdo. Não varre o índice do git (`git show :caminho`), varre a árvore de trabalho: um ficheiro modificado e ainda não gravado não é medido. Há famílias fora desta lista (arménio, copta, tailandês, devanágari) que continuariam invisíveis.",
  "escopo": "git ls-files docs scripts, filtrado por extensão de texto",
  "familias": [
@@ -53,10 +53,10 @@
   }
  ],
  "veredito": {
-  "arquivos_varridos": 468,
+  "arquivos_varridos": 471,
   "por_familia": {
    "cirilico": 0,
-   "grego": 53,
+   "grego": 55,
    "kana": 0,
    "hangul": 0,
    "han": 0,
@@ -70,7 +70,7 @@
    ]
   },
   "permitidos_batidos": {
-   "grego": 53
+   "grego": 55
   },
   "ofensores": 0,
   "estado": "ESCRITAS_OK"

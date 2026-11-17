@@ -1,6 +1,6 @@
 {
  "programa": "scripts/ah1-cita-instrumentos.mjs",
- "em": "2026-11-17T23:38:56.952Z",
+ "em": "2026-11-17T23:45:00.578Z",
  "o_que_prova": "cada caminho scripts/… , evidence/… e docs/… citado nos quatro documentos aponta para um ficheiro que existe no repositório; classifica os ausentes por causa medida (história no git, espelho de saída, qualificação prévia em prosa) e conta as citações que apontam para uma sonda de sessão com a palavra «equivalente»",
  "o_que_NAO_prova": "que o instrumento citado produza o que a frase diz além da existência do caminho (o espelho de saída prova que um script versionado escreve o artefacto citado na mesma linha, não que os números da frase saíram dele). As contagens são por **linha** (primeira batida por padrão), não por ocorrência. POSSIVEL_GRALHA_DE_NOME_SEM_PROVA é semelhança de bigramos (Dice >= 0.6), não identidade. PREFIXO_DE_FAMILIA_COM_PLACEHOLDER prova que existe >= 1 caminho versionado começando pelo prefixo capturado, não que o ficheiro concreto que a frase tinha em mente exista — a capturadora corta no placeholder (`…-<largura>.json`) e por isso a classe depende de o token não ter extensão.",
  "documentos": [
@@ -12,7 +12,7 @@
  "por_documento": [
   {
    "doc": "docs/auditoria-bfr-conecta.md",
-   "citacoes": 340,
+   "citacoes": 342,
    "ausentes": 10
   },
   {
@@ -32,8 +32,8 @@
   }
  ],
  "veredito": {
-  "citacoes": 429,
-  "caminhos_distintos": 253,
+  "citacoes": 431,
+  "caminhos_distintos": 255,
   "ausentes_distintos": 10,
   "por_classe": {
    "PREFIXO_DE_FAMILIA_COM_PLACEHOLDER": 6,
