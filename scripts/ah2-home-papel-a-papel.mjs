@@ -37,7 +37,7 @@ for (const f of fich) {
   }
 }
 const CHAVES_HOME = ['inicio', 'professor-inicio'];
-const procura = (peca) => { for (const c of CHAVES_HOME) if (peca && peca[c]) return { chave: c, ...peca[c] }; return null; };
+const procura = (peca) => { for (const c of CHAVES_HOME) if (peca && peca[c]) return { rota_home: c, ...peca[c] }; return null; };
 const mediana = (a) => { const s = a.filter((x) => typeof x === 'number').sort((x, y) => x - y); return s.length ? s[Math.floor(s.length / 2)] : null; };
 const linhas = [];
 for (const p of [...new Set(Object.keys(melhor).map((k) => k.split('@')[0]))].sort()) {
@@ -46,8 +46,8 @@ for (const p of [...new Set(Object.keys(melhor).map((k) => k.split('@')[0]))].so
     const e = melhor[`${p}@${b}`];
     if (!e) { por_banda[b] = null; continue; }
     const pc = procura(e.d.peca);
-    if (!pc) { por_banda[b] = { sem_leitura: true, chaves: Object.keys(e.d.peca || {}).slice(0, 6) }; continue; }
-    por_banda[b] = { chave: pc.chave, ms: pc.ms, painel: pc.painel, assentou: !pc.nao_estabilizou, controles: pc.controles, estouro: !!pc.estouro_h };
+    if (!pc) { por_banda[b] = { sem_leitura: true, amostra_de_rotas: Object.keys(e.d.peca || {}).slice(0, 6) }; continue; }
+    por_banda[b] = { rota_home: pc.rota_home, ms: pc.ms, painel: pc.painel, assentou: !pc.nao_estabilizou, controles: pc.controles, estouro: !!pc.estouro_h };
     ms.push(pc.ms);
   }
   const med = mediana(ms);
