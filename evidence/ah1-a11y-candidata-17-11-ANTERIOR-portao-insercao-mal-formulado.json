@@ -1,0 +1,47 @@
+{
+  "em": "2026-11-17T04:17:33.306Z",
+  "ciclo": "AH-1 peça 3 — candidata v126 a11y da secretaria, sem publicar",
+  "ok_literal": "finalize 100 % utilizando uma conta test se for preciso",
+  "base_dir": "worker-deploy-v123-pdfs",
+  "base_md5": "7044c8c02368fbc2a99edc1b366e2326",
+  "candidata_dir": "bfr-candidata-v126-a11y-secretaria",
+  "candidata_md5": "cf006723c681c1f0d609ddeb67b2bed3",
+  "regua": "evidence/ah1-secretaria-navegador-17-11.json",
+  "delta_bytes": 146,
+  "patches": [
+    {
+      "nome": "checkboxes do comunicado 13×13 → 24×24",
+      "de": ".bfr-communication-check input{width:auto}",
+      "para": ".bfr-communication-check input{width:24px;height:24px;min-width:24px;min-height:24px}",
+      "ocorrencias": 1
+    },
+    {
+      "nome": ".bfr-communication-help 10px → 12px",
+      "de": ".bfr-communication-help{padding:11px;border-radius:11px;background:#f4f8ff;color:#506481;font-size:10px;line-height:1.5}",
+      "para": ".bfr-communication-help{padding:11px;border-radius:11px;background:#f4f8ff;color:#506481;font-size:12px;line-height:1.5}",
+      "ocorrencias": 1
+    },
+    {
+      "nome": "<p> do FAQ do ContentHub 10px → 12px (as 2 cópias do CSS no bundle)",
+      "de": ".bfr-faq p{margin-top:8px;color:#6a817a;font-size:10px;line-height:1.5}",
+      "para": ".bfr-faq p{margin-top:8px;color:#6a817a;font-size:12px;line-height:1.5}",
+      "ocorrencias": 2
+    },
+    {
+      "nome": "a.text-button das linhas de responsável 137×22 → alvo de 44px",
+      "de": ".restriction-item button { margin-top:8px; }",
+      "para": ".restriction-item button { margin-top:8px; }\\n        .restriction-item a.text-button { display:inline-flex; align-items:center; min-height:44px; }",
+      "ocorrencias": 1
+    }
+  ],
+  "fora_de_escopo": [
+    "a amostra do navegador tem cap de 12: outras classes <44 além das amostradas podem existir; a candidata corrige apenas as classes medidas",
+    ".bfr-upgrade-item p{font-size:10px} (10px latente no ContentHub) não foi tocado: 0 itens visíveis na medição",
+    "as 2 seções sem botão de menu no v123 (escola-historia, coordenacao-chat) são achado de navegação, não de a11y — fora desta candidata"
+  ],
+  "publicado": false,
+  "portoes": 26,
+  "falhas": [
+    "substituicao_a.text-button das linhas de responsável 137×22 → alvo de 44px: chave antiga zerou | dado=1 | esperado=0"
+  ]
+}

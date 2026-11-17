@@ -1,0 +1,27 @@
+{
+  "em": "2026-11-17T04:19:25.017Z",
+  "ciclo": "AH-1 peça 4 — bancada A/B offline da candidata v126",
+  "metodo": "import offline dos dois workers + fetch local do shell + comparação com a régua publicada; 0 rede, 0 banco",
+  "regua": {
+    "ficheiro": "worker-deploy-v123-pdfs/esperado-v123.json",
+    "htmlMd5": "d418e7fc917f1fbb1437054b7b531f9b",
+    "htmlBytes": 3489725
+  },
+  "base": {
+    "dir": "worker-deploy-v123-pdfs",
+    "html_md5": "d418e7fc917f1fbb1437054b7b531f9b",
+    "html_bytes": 3489725
+  },
+  "candidata": {
+    "dir": "bfr-candidata-v126-a11y-secretaria",
+    "html_md5": "2b4da68ed8f6f86866d3017801ce6a8a",
+    "html_bytes": 3489870
+  },
+  "delta_html_bytes": 145,
+  "publicado": false,
+  "portoes": 23,
+  "falhas": [
+    "B: regra nova presente (1×): a.text-button das linhas de responsável 13 | dado=0 | esperado=1",
+    "B reversível ao md5 do A (HTML servido) | dado=\"3d4c768d8955a3550e9eda12e30ee293\" | esperado=\"d418e7fc917f1fbb1437054b7b531f9b\""
+  ]
+}
