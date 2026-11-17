@@ -1,0 +1,684 @@
+{
+  "ciclo": "AH-6-HOME-PAPEL-A-PAPEL",
+  "em": "2026-11-17T10:21:56.131Z",
+  "larguras": [
+    "1366",
+    "1440",
+    "1920"
+  ],
+  "md5_shell": [
+    "d418e7fc917f1fbb1437054b7b531f9b"
+  ],
+  "piso_do_amostrador_ms": 1820,
+  "nota_piso": "MEDIR dorme 600 ms e exige 2 amostras estáveis: 1820 é o valor mínimo possível, não uma medição de tempo real. Para tempo real ver ah2-home-causa-17-11.json (pintura/estável por clique).",
+  "correlacao": {
+    "n": 14,
+    "ms_contra_controles": 0.674,
+    "ms_contra_erros_rede": 0.084,
+    "leitura": "o tempo do Home segue a quantidade de controlos pintados, não os erros de rede: é render/re-construção"
+  },
+  "pares": [
+    {
+      "papel": "developer",
+      "ms": 5001,
+      "controles": 375,
+      "erros_rede": 1
+    },
+    {
+      "papel": "coordinator",
+      "ms": 4983,
+      "controles": 55,
+      "erros_rede": 1
+    },
+    {
+      "papel": "aee",
+      "ms": 3671,
+      "controles": 74,
+      "erros_rede": 2
+    },
+    {
+      "papel": "monitor",
+      "ms": 3511,
+      "controles": 46,
+      "erros_rede": 1
+    },
+    {
+      "papel": "gatekeeper",
+      "ms": 3049,
+      "controles": 26,
+      "erros_rede": 5
+    },
+    {
+      "papel": "pedagogical",
+      "ms": 3033,
+      "controles": 3,
+      "erros_rede": 1
+    },
+    {
+      "papel": "education_supervisor",
+      "ms": 2460,
+      "controles": 42,
+      "erros_rede": 1
+    },
+    {
+      "papel": "sports_operator",
+      "ms": 2452,
+      "controles": 13,
+      "erros_rede": 1
+    },
+    {
+      "papel": "director",
+      "ms": 2448,
+      "controles": 23,
+      "erros_rede": 1
+    },
+    {
+      "papel": "secretary",
+      "ms": 2440,
+      "controles": 42,
+      "erros_rede": 1
+    },
+    {
+      "papel": "psychology",
+      "ms": 2430,
+      "controles": 18,
+      "erros_rede": 1
+    },
+    {
+      "papel": "student",
+      "ms": 1829,
+      "controles": 10,
+      "erros_rede": 1
+    },
+    {
+      "papel": "social_work",
+      "ms": 1822,
+      "controles": 15,
+      "erros_rede": 1
+    },
+    {
+      "papel": "parent",
+      "ms": 1820,
+      "controles": 15,
+      "erros_rede": 1
+    }
+  ],
+  "causa_ja_fechada_para": "coordinator",
+  "linhas": [
+    {
+      "papel": "developer",
+      "mediana_ms": 5001,
+      "max_ms": 6141,
+      "bandas": {
+        "1366": {
+          "chave": "inicio",
+          "ms": 4877,
+          "painel": {
+            "id": "adminView",
+            "c": 147334
+          },
+          "assentou": true,
+          "controles": 375,
+          "estouro": false
+        },
+        "1440": {
+          "chave": "inicio",
+          "ms": 6141,
+          "painel": {
+            "id": "adminView",
+            "c": 147354
+          },
+          "assentou": false,
+          "controles": 375,
+          "estouro": false
+        },
+        "1920": {
+          "chave": "inicio",
+          "ms": 5001,
+          "painel": {
+            "id": "adminView",
+            "c": 147328
+          },
+          "assentou": true,
+          "controles": 375,
+          "estouro": false
+        }
+      },
+      "leitura": "platô acima de 5 s — a vista não cabe no teto de 6 s com margem"
+    },
+    {
+      "papel": "coordinator",
+      "mediana_ms": 4983,
+      "max_ms": 5572,
+      "bandas": {
+        "1366": {
+          "chave": "inicio",
+          "ms": 4983,
+          "painel": {
+            "id": "coordinatorView",
+            "c": 5267
+          },
+          "assentou": true,
+          "controles": 55,
+          "estouro": false
+        },
+        "1440": {
+          "chave": "inicio",
+          "ms": 4982,
+          "painel": {
+            "id": "coordinatorView",
+            "c": 5261
+          },
+          "assentou": true,
+          "controles": 55,
+          "estouro": false
+        },
+        "1920": {
+          "chave": "inicio",
+          "ms": 5572,
+          "painel": {
+            "id": "coordinatorView",
+            "c": 5269
+          },
+          "assentou": true,
+          "controles": 55,
+          "estouro": false
+        }
+      },
+      "leitura": "platô acima de 5 s — a vista não cabe no teto de 6 s com margem"
+    },
+    {
+      "papel": "aee",
+      "mediana_ms": 3671,
+      "max_ms": 3672,
+      "bandas": {
+        "1366": {
+          "chave": "inicio",
+          "ms": 3671,
+          "painel": {
+            "id": "aeeView",
+            "c": 6465
+          },
+          "assentou": true,
+          "controles": 74,
+          "estouro": false
+        },
+        "1440": {
+          "chave": "inicio",
+          "ms": 3672,
+          "painel": {
+            "id": "aeeView",
+            "c": 6459
+          },
+          "assentou": true,
+          "controles": 74,
+          "estouro": false
+        },
+        "1920": {
+          "chave": "inicio",
+          "ms": 3647,
+          "painel": {
+            "id": "aeeView",
+            "c": 6467
+          },
+          "assentou": true,
+          "controles": 74,
+          "estouro": false
+        }
+      },
+      "leitura": "platô intermediário, re-construção visível"
+    },
+    {
+      "papel": "monitor",
+      "mediana_ms": 3511,
+      "max_ms": 3515,
+      "bandas": {
+        "1366": {
+          "chave": "inicio",
+          "ms": 3515,
+          "painel": {
+            "id": "monitorView",
+            "c": 7769
+          },
+          "assentou": true,
+          "controles": 46,
+          "estouro": false
+        },
+        "1440": {
+          "chave": "inicio",
+          "ms": 3392,
+          "painel": {
+            "id": "monitorView",
+            "c": 7763
+          },
+          "assentou": true,
+          "controles": 46,
+          "estouro": false
+        },
+        "1920": {
+          "chave": "inicio",
+          "ms": 3511,
+          "painel": {
+            "id": "monitorView",
+            "c": 7771
+          },
+          "assentou": true,
+          "controles": 46,
+          "estouro": false
+        }
+      },
+      "leitura": "platô intermediário, re-construção visível"
+    },
+    {
+      "papel": "gatekeeper",
+      "mediana_ms": 3049,
+      "max_ms": 3052,
+      "bandas": {
+        "1366": {
+          "chave": "inicio",
+          "ms": 2458,
+          "painel": {
+            "id": "gatekeeperView",
+            "c": 1703
+          },
+          "assentou": true,
+          "controles": 26,
+          "estouro": false
+        },
+        "1440": {
+          "chave": "inicio",
+          "ms": 3049,
+          "painel": {
+            "id": "gatekeeperView",
+            "c": 1703
+          },
+          "assentou": true,
+          "controles": 26,
+          "estouro": false
+        },
+        "1920": {
+          "chave": "inicio",
+          "ms": 3052,
+          "painel": {
+            "id": "gatekeeperView",
+            "c": 1703
+          },
+          "assentou": true,
+          "controles": 26,
+          "estouro": false
+        }
+      },
+      "leitura": "platô intermediário, re-construção visível"
+    },
+    {
+      "papel": "pedagogical",
+      "mediana_ms": 3033,
+      "max_ms": 3038,
+      "bandas": {
+        "1366": {
+          "chave": "professor-inicio",
+          "ms": 3033,
+          "painel": {
+            "id": "teacherView",
+            "c": 626
+          },
+          "assentou": true,
+          "controles": 3,
+          "estouro": false
+        },
+        "1440": {
+          "chave": "professor-inicio",
+          "ms": 3038,
+          "painel": {
+            "id": "teacherView",
+            "c": 626
+          },
+          "assentou": true,
+          "controles": 3,
+          "estouro": false
+        },
+        "1920": {
+          "chave": "professor-inicio",
+          "ms": 1825,
+          "painel": {
+            "id": "teacherView",
+            "c": 468
+          },
+          "assentou": true,
+          "controles": 3,
+          "estouro": false
+        }
+      },
+      "leitura": "platô intermediário, re-construção visível"
+    },
+    {
+      "papel": "education_supervisor",
+      "mediana_ms": 2460,
+      "max_ms": 3043,
+      "bandas": {
+        "1366": {
+          "chave": "inicio",
+          "ms": 2425,
+          "painel": {
+            "id": "secretaryView",
+            "c": 3136
+          },
+          "assentou": true,
+          "controles": 42,
+          "estouro": false
+        },
+        "1440": {
+          "chave": "inicio",
+          "ms": 3043,
+          "painel": {
+            "id": "secretaryView",
+            "c": 3130
+          },
+          "assentou": true,
+          "controles": 42,
+          "estouro": false
+        },
+        "1920": {
+          "chave": "inicio",
+          "ms": 2460,
+          "painel": {
+            "id": "secretaryView",
+            "c": 3138
+          },
+          "assentou": true,
+          "controles": 42,
+          "estouro": false
+        }
+      },
+      "leitura": "platô intermediário, re-construção visível"
+    },
+    {
+      "papel": "sports_operator",
+      "mediana_ms": 2452,
+      "max_ms": 2461,
+      "bandas": {
+        "1366": {
+          "chave": "inicio",
+          "ms": 1827,
+          "painel": {
+            "id": "schoolGamesView",
+            "c": 1219
+          },
+          "assentou": true,
+          "controles": 13,
+          "estouro": false
+        },
+        "1440": {
+          "chave": "inicio",
+          "ms": 2452,
+          "painel": {
+            "id": "schoolGamesView",
+            "c": 1207
+          },
+          "assentou": true,
+          "controles": 13,
+          "estouro": false
+        },
+        "1920": {
+          "chave": "inicio",
+          "ms": 2461,
+          "painel": {
+            "id": "schoolGamesView",
+            "c": 1208
+          },
+          "assentou": true,
+          "controles": 13,
+          "estouro": false
+        }
+      },
+      "leitura": "platô intermediário, re-construção visível"
+    },
+    {
+      "papel": "director",
+      "mediana_ms": 2448,
+      "max_ms": 2463,
+      "bandas": {
+        "1366": {
+          "chave": "inicio",
+          "ms": 2463,
+          "painel": {
+            "id": "directorView",
+            "c": 340
+          },
+          "assentou": true,
+          "controles": 23,
+          "estouro": false
+        },
+        "1440": {
+          "chave": "inicio",
+          "ms": 2448,
+          "painel": {
+            "id": "directorView",
+            "c": 340
+          },
+          "assentou": true,
+          "controles": 23,
+          "estouro": false
+        },
+        "1920": {
+          "chave": "inicio",
+          "ms": 2436,
+          "painel": {
+            "id": "directorView",
+            "c": 340
+          },
+          "assentou": true,
+          "controles": 23,
+          "estouro": false
+        }
+      },
+      "leitura": "platô intermediário, re-construção visível"
+    },
+    {
+      "papel": "secretary",
+      "mediana_ms": 2440,
+      "max_ms": 2442,
+      "bandas": {
+        "1366": {
+          "chave": "inicio",
+          "ms": 1840,
+          "painel": {
+            "id": "secretaryView",
+            "c": 3271
+          },
+          "assentou": true,
+          "controles": 42,
+          "estouro": false
+        },
+        "1440": {
+          "chave": "inicio",
+          "ms": 2440,
+          "painel": {
+            "id": "secretaryView",
+            "c": 3265
+          },
+          "assentou": true,
+          "controles": 42,
+          "estouro": false
+        },
+        "1920": {
+          "chave": "inicio",
+          "ms": 2442,
+          "painel": {
+            "id": "secretaryView",
+            "c": 3273
+          },
+          "assentou": true,
+          "controles": 42,
+          "estouro": false
+        }
+      },
+      "leitura": "platô intermediário, re-construção visível"
+    },
+    {
+      "papel": "psychology",
+      "mediana_ms": 2430,
+      "max_ms": 2431,
+      "bandas": {
+        "1366": {
+          "chave": "inicio",
+          "ms": 2430,
+          "painel": {
+            "id": "psychologyView",
+            "c": 921
+          },
+          "assentou": true,
+          "controles": 18,
+          "estouro": false
+        },
+        "1440": {
+          "chave": "inicio",
+          "ms": 1814,
+          "painel": {
+            "id": "psychologyView",
+            "c": 895
+          },
+          "assentou": true,
+          "controles": 18,
+          "estouro": false
+        },
+        "1920": {
+          "chave": "inicio",
+          "ms": 2431,
+          "painel": {
+            "id": "psychologyView",
+            "c": 903
+          },
+          "assentou": true,
+          "controles": 18,
+          "estouro": false
+        }
+      },
+      "leitura": "platô intermediário, re-construção visível"
+    },
+    {
+      "papel": "student",
+      "mediana_ms": 1829,
+      "max_ms": 1850,
+      "bandas": {
+        "1366": {
+          "chave": "inicio",
+          "ms": 1850,
+          "painel": {
+            "id": "studentView",
+            "c": 1281
+          },
+          "assentou": true,
+          "controles": 10,
+          "estouro": false
+        },
+        "1440": {
+          "chave": "inicio",
+          "ms": 1829,
+          "painel": {
+            "id": "studentView",
+            "c": 1281
+          },
+          "assentou": true,
+          "controles": 10,
+          "estouro": false
+        },
+        "1920": {
+          "chave": "inicio",
+          "ms": 1819,
+          "painel": {
+            "id": "studentView",
+            "c": 1281
+          },
+          "assentou": true,
+          "controles": 10,
+          "estouro": false
+        }
+      },
+      "leitura": "assentou à 1.ª verificação (piso do amostrador)"
+    },
+    {
+      "papel": "social_work",
+      "mediana_ms": 1822,
+      "max_ms": 1834,
+      "bandas": {
+        "1366": {
+          "chave": "inicio",
+          "ms": 1834,
+          "painel": {
+            "id": "multiprofessionalView",
+            "c": 921
+          },
+          "assentou": true,
+          "controles": 15,
+          "estouro": false
+        },
+        "1440": {
+          "chave": "inicio",
+          "ms": 1822,
+          "painel": {
+            "id": "multiprofessionalView",
+            "c": 915
+          },
+          "assentou": true,
+          "controles": 15,
+          "estouro": false
+        },
+        "1920": {
+          "chave": "inicio",
+          "ms": 1820,
+          "painel": {
+            "id": "multiprofessionalView",
+            "c": 923
+          },
+          "assentou": true,
+          "controles": 15,
+          "estouro": false
+        }
+      },
+      "leitura": "assentou à 1.ª verificação (piso do amostrador)"
+    },
+    {
+      "papel": "parent",
+      "mediana_ms": 1820,
+      "max_ms": 1831,
+      "bandas": {
+        "1366": {
+          "chave": "inicio",
+          "ms": 1820,
+          "painel": {
+            "id": "parentView",
+            "c": 1161
+          },
+          "assentou": true,
+          "controles": 15,
+          "estouro": false
+        },
+        "1440": {
+          "chave": "inicio",
+          "ms": 1820,
+          "painel": {
+            "id": "parentView",
+            "c": 1161
+          },
+          "assentou": true,
+          "controles": 15,
+          "estouro": false
+        },
+        "1920": {
+          "chave": "inicio",
+          "ms": 1831,
+          "painel": {
+            "id": "parentView",
+            "c": 1161
+          },
+          "assentou": true,
+          "controles": 15,
+          "estouro": false
+        }
+      },
+      "leitura": "assentou à 1.ª verificação (piso do amostrador)"
+    }
+  ],
+  "veredito": "14/14 perfis com leitura de Home · mediana global 2460 ms · pior developer 5001 ms · sem_leitura nenhum"
+}
