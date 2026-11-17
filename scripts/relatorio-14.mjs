@@ -413,7 +413,8 @@ continuam invisíveis ao developer (10 dos 24 perfis, \`evidence/ah2-sonda-limit
 bloqueava o instrumento antigo, não um defeito do painel.
 
 **E fechou o item 3 do «todos»: a sorte dos dois diretórios que estavam por versionar.** Medida por caminho
-espelhado (\`scripts/ah2-classifica-dirs-espelhado.mjs\`), a candidata \`…-ANTERIOR-portao-insercao-mal-formulado/\`
+espelhado (\`scripts/ah2-classifica-dirs-espelhado.mjs\` → \`evidence/ah2-classifica-dirs-espelhado-17-11.json\`,
+veredito \`SEM_BYTES_UNICAS\`), a candidata \`…-ANTERIOR-portao-insercao-mal-formulado/\`
 tem **16/16** ficheiros byte-idênticos aos da candidata versionada e o \`worker-deploy-v120-404/public/\` tem
 **12/12** idênticos aos de \`worker-deploy-v120/public/\` — **0 bytes únicas em 14 419 495 B**. Ficam fora do
 snapshot por duas regras de caminho exato no \`.gitignore\`, provadas com \`git check-ignore -v\` e com controle
