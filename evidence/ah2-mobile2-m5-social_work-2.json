@@ -1,0 +1,736 @@
+{
+  "ciclo": "AH-7b-MOBILE",
+  "em": "2026-11-17T10:28:03.287Z",
+  "papel": "social_work",
+  "larguras": [
+    390,
+    414,
+    430
+  ],
+  "altura": 720,
+  "url": "https://bfr-conecta.turmaroboticabfr.workers.dev/",
+  "md5_shell": "d418e7fc917f1fbb1437054b7b531f9b",
+  "contas": {
+    "id": "04d52df9"
+  },
+  "markup": "toque em #bfrMobileBottomNav button[data-bfr-mobile-route] e #bfrMobileDrawer [data-bfr-drawer-route]; a barra do desktop está display:none abaixo de 800px por decisão do app (bfr-responsive-presentation.js:233)",
+  "declaradas": [
+    "inicio",
+    "multiprofissional",
+    "chat-interno"
+  ],
+  "bandas": {
+    "390": {
+      "width": 390,
+      "ms_ready": 745,
+      "erro_boot": null,
+      "censo": {
+        "presentation": "mobile",
+        "body_mobile": true,
+        "barra_existe": true,
+        "barra": [
+          {
+            "rot": "🏠Início",
+            "route": "inicio",
+            "w": 91,
+            "h": 61,
+            "y": 654,
+            "x": 10
+          },
+          {
+            "rot": "🧭Equipe de apoi",
+            "route": "multiprofissional",
+            "w": 91,
+            "h": 61,
+            "y": 654,
+            "x": 103
+          },
+          {
+            "rot": "💬Chat interno",
+            "route": "chat-interno",
+            "w": 91,
+            "h": 61,
+            "y": 654,
+            "x": 196
+          },
+          {
+            "rot": "⋯Mais",
+            "route": "more",
+            "w": 91,
+            "h": 61,
+            "y": 654,
+            "x": 289
+          }
+        ],
+        "gaveta_existe": true,
+        "gaveta_aberta": false,
+        "gaveta": [
+          {
+            "rot": "🏠Início",
+            "route": "inicio",
+            "w": 311,
+            "h": 48,
+            "y": 310,
+            "x": -334
+          },
+          {
+            "rot": "💬Chat interno",
+            "route": "chat-interno",
+            "w": 311,
+            "h": 48,
+            "y": 362,
+            "x": -334
+          },
+          {
+            "rot": "🔔Notificações",
+            "route": "notificacoes",
+            "w": 311,
+            "h": 48,
+            "y": 414,
+            "x": -334
+          },
+          {
+            "rot": "📚Conteúdos",
+            "route": "conteudos",
+            "w": 311,
+            "h": 48,
+            "y": 466,
+            "x": -334
+          },
+          {
+            "rot": "🧭Central Multip",
+            "route": "multiprofissional",
+            "w": 311,
+            "h": 48,
+            "y": 518,
+            "x": -334
+          }
+        ],
+        "hamb": true,
+        "sidebar_caixa": false,
+        "vw": 390,
+        "vh": 720
+      },
+      "modal": {
+        "id": "preferredNameModal",
+        "texto": "× PRIMEIRO ACESSO Como você quer ser chamado? Esse nome aparece apenas"
+      },
+      "modal_fechou_a_toque": true,
+      "gaveta_aberta_a_toque": true,
+      "seccoes": {
+        "inicio": {
+          "painel": {
+            "id": "multiprofessionalView",
+            "c": 917
+          },
+          "ms": 1834,
+          "assentou": true,
+          "controles": 15,
+          "tap": 0,
+          "fonte": 0,
+          "estouro_h": false,
+          "largura": 390,
+          "seccao_ativa": "inicio",
+          "view_apos": "multiprofessional",
+          "toque": {
+            "x": 56,
+            "y": 685,
+            "w": 91,
+            "h": 61
+          },
+          "antes": "inicio",
+          "via": "barra"
+        },
+        "multiprofissional": {
+          "painel": {
+            "id": "multiprofessionalView",
+            "c": 917
+          },
+          "ms": 1822,
+          "assentou": true,
+          "controles": 15,
+          "tap": 0,
+          "fonte": 0,
+          "estouro_h": false,
+          "largura": 390,
+          "seccao_ativa": "multiprofissional",
+          "view_apos": "multiprofessional",
+          "toque": {
+            "x": 149,
+            "y": 685,
+            "w": 91,
+            "h": 61
+          },
+          "antes": "inicio",
+          "via": "barra"
+        },
+        "chat-interno": {
+          "painel": {
+            "id": "internalChatView",
+            "c": 381
+          },
+          "ms": 1826,
+          "assentou": true,
+          "controles": 4,
+          "tap": 0,
+          "fonte": 0,
+          "estouro_h": false,
+          "largura": 390,
+          "seccao_ativa": "chat-interno",
+          "view_apos": "multiprofessional",
+          "toque": {
+            "x": 242,
+            "y": 685,
+            "w": 91,
+            "h": 61
+          },
+          "antes": "multiprofissional",
+          "via": "barra"
+        },
+        "notificacoes": {
+          "painel": {
+            "id": "bfrNotificationsView",
+            "c": 445
+          },
+          "ms": 1829,
+          "assentou": true,
+          "controles": 2,
+          "tap": 0,
+          "fonte": 0,
+          "estouro_h": false,
+          "largura": 390,
+          "seccao_ativa": "inicio",
+          "view_apos": "multiprofessional",
+          "toque": {
+            "x": 172,
+            "y": 360,
+            "w": 311,
+            "h": 48
+          },
+          "antes": "chat-interno",
+          "via": "gaveta"
+        },
+        "conteudos": {
+          "painel": {
+            "id": "bfrContentHubView",
+            "c": 1123
+          },
+          "ms": 1824,
+          "assentou": true,
+          "controles": 14,
+          "tap": 0,
+          "fonte": 3,
+          "estouro_h": false,
+          "largura": 390,
+          "seccao_ativa": "inicio",
+          "view_apos": "multiprofessional",
+          "toque": {
+            "x": 172,
+            "y": 360,
+            "w": 311,
+            "h": 48
+          },
+          "antes": "inicio",
+          "via": "gaveta"
+        }
+      },
+      "abertas": 5,
+      "vazias": [],
+      "nao_assentaram": [],
+      "estouro": [],
+      "tap_miudo": 0,
+      "fonte_miuda": 3,
+      "declaradas_sem_rota": [],
+      "rotas_fora_do_mapa": [
+        "notificacoes",
+        "conteudos"
+      ],
+      "inalcancaveis": [],
+      "sem_efeito": [
+        "conteudos:inicio"
+      ],
+      "erros": [],
+      "diagnostico_gaveta": [],
+      "dialogos_sem_saida": [],
+      "dialogos_miudos": []
+    },
+    "414": {
+      "width": 414,
+      "ms_ready": 402,
+      "erro_boot": null,
+      "censo": {
+        "presentation": "mobile",
+        "body_mobile": true,
+        "barra_existe": true,
+        "barra": [
+          {
+            "rot": "🏠Início",
+            "route": "inicio",
+            "w": 97,
+            "h": 61,
+            "y": 654,
+            "x": 10
+          },
+          {
+            "rot": "🧭Equipe de apoi",
+            "route": "multiprofissional",
+            "w": 97,
+            "h": 61,
+            "y": 654,
+            "x": 109
+          },
+          {
+            "rot": "💬Chat interno",
+            "route": "chat-interno",
+            "w": 97,
+            "h": 61,
+            "y": 654,
+            "x": 208
+          },
+          {
+            "rot": "⋯Mais",
+            "route": "more",
+            "w": 97,
+            "h": 61,
+            "y": 654,
+            "x": 307
+          }
+        ],
+        "gaveta_existe": true,
+        "gaveta_aberta": false,
+        "gaveta": [
+          {
+            "rot": "🏠Início",
+            "route": "inicio",
+            "w": 328,
+            "h": 48,
+            "y": 310,
+            "x": -351
+          },
+          {
+            "rot": "💬Chat interno",
+            "route": "chat-interno",
+            "w": 328,
+            "h": 48,
+            "y": 362,
+            "x": -351
+          },
+          {
+            "rot": "🔔Notificações",
+            "route": "notificacoes",
+            "w": 328,
+            "h": 48,
+            "y": 414,
+            "x": -351
+          },
+          {
+            "rot": "📚Conteúdos",
+            "route": "conteudos",
+            "w": 328,
+            "h": 48,
+            "y": 466,
+            "x": -351
+          },
+          {
+            "rot": "🧭Central Multip",
+            "route": "multiprofissional",
+            "w": 328,
+            "h": 48,
+            "y": 518,
+            "x": -351
+          }
+        ],
+        "hamb": true,
+        "sidebar_caixa": false,
+        "vw": 414,
+        "vh": 720
+      },
+      "modal": null,
+      "modal_fechou_a_toque": true,
+      "gaveta_aberta_a_toque": true,
+      "seccoes": {
+        "inicio": {
+          "painel": {
+            "id": "multiprofessionalView",
+            "c": 917
+          },
+          "ms": 1830,
+          "assentou": true,
+          "controles": 15,
+          "tap": 0,
+          "fonte": 0,
+          "estouro_h": false,
+          "largura": 414,
+          "seccao_ativa": "inicio",
+          "view_apos": "multiprofessional",
+          "toque": {
+            "x": 59,
+            "y": 685,
+            "w": 97,
+            "h": 61
+          },
+          "antes": "inicio",
+          "via": "barra"
+        },
+        "multiprofissional": {
+          "painel": {
+            "id": "multiprofessionalView",
+            "c": 917
+          },
+          "ms": 1821,
+          "assentou": true,
+          "controles": 15,
+          "tap": 0,
+          "fonte": 0,
+          "estouro_h": false,
+          "largura": 414,
+          "seccao_ativa": "multiprofissional",
+          "view_apos": "multiprofessional",
+          "toque": {
+            "x": 158,
+            "y": 685,
+            "w": 97,
+            "h": 61
+          },
+          "antes": "inicio",
+          "via": "barra"
+        },
+        "chat-interno": {
+          "painel": {
+            "id": "internalChatView",
+            "c": 381
+          },
+          "ms": 1824,
+          "assentou": true,
+          "controles": 4,
+          "tap": 0,
+          "fonte": 0,
+          "estouro_h": false,
+          "largura": 414,
+          "seccao_ativa": "chat-interno",
+          "view_apos": "multiprofessional",
+          "toque": {
+            "x": 257,
+            "y": 685,
+            "w": 97,
+            "h": 61
+          },
+          "antes": "multiprofissional",
+          "via": "barra"
+        },
+        "notificacoes": {
+          "painel": {
+            "id": "bfrNotificationsView",
+            "c": 445
+          },
+          "ms": 1819,
+          "assentou": true,
+          "controles": 2,
+          "tap": 0,
+          "fonte": 0,
+          "estouro_h": false,
+          "largura": 414,
+          "seccao_ativa": "inicio",
+          "view_apos": "multiprofessional",
+          "toque": {
+            "x": 180,
+            "y": 360,
+            "w": 328,
+            "h": 48
+          },
+          "antes": "chat-interno",
+          "via": "gaveta"
+        },
+        "conteudos": {
+          "painel": {
+            "id": "bfrContentHubView",
+            "c": 1123
+          },
+          "ms": 1829,
+          "assentou": true,
+          "controles": 14,
+          "tap": 0,
+          "fonte": 3,
+          "estouro_h": false,
+          "largura": 414,
+          "seccao_ativa": "inicio",
+          "view_apos": "multiprofessional",
+          "toque": {
+            "x": 180,
+            "y": 360,
+            "w": 328,
+            "h": 48
+          },
+          "antes": "inicio",
+          "via": "gaveta"
+        }
+      },
+      "abertas": 5,
+      "vazias": [],
+      "nao_assentaram": [],
+      "estouro": [],
+      "tap_miudo": 0,
+      "fonte_miuda": 3,
+      "declaradas_sem_rota": [],
+      "rotas_fora_do_mapa": [
+        "notificacoes",
+        "conteudos"
+      ],
+      "inalcancaveis": [],
+      "sem_efeito": [
+        "conteudos:inicio"
+      ],
+      "erros": [],
+      "diagnostico_gaveta": [],
+      "dialogos_sem_saida": [],
+      "dialogos_miudos": []
+    },
+    "430": {
+      "width": 430,
+      "ms_ready": 388,
+      "erro_boot": null,
+      "censo": {
+        "presentation": "mobile",
+        "body_mobile": true,
+        "barra_existe": true,
+        "barra": [
+          {
+            "rot": "🏠Início",
+            "route": "inicio",
+            "w": 101,
+            "h": 61,
+            "y": 654,
+            "x": 10
+          },
+          {
+            "rot": "🧭Equipe de apoi",
+            "route": "multiprofissional",
+            "w": 101,
+            "h": 61,
+            "y": 654,
+            "x": 113
+          },
+          {
+            "rot": "💬Chat interno",
+            "route": "chat-interno",
+            "w": 101,
+            "h": 61,
+            "y": 654,
+            "x": 216
+          },
+          {
+            "rot": "⋯Mais",
+            "route": "more",
+            "w": 101,
+            "h": 61,
+            "y": 654,
+            "x": 319
+          }
+        ],
+        "gaveta_existe": true,
+        "gaveta_aberta": false,
+        "gaveta": [
+          {
+            "rot": "🏠Início",
+            "route": "inicio",
+            "w": 328,
+            "h": 48,
+            "y": 310,
+            "x": -351
+          },
+          {
+            "rot": "💬Chat interno",
+            "route": "chat-interno",
+            "w": 328,
+            "h": 48,
+            "y": 362,
+            "x": -351
+          },
+          {
+            "rot": "🔔Notificações",
+            "route": "notificacoes",
+            "w": 328,
+            "h": 48,
+            "y": 414,
+            "x": -351
+          },
+          {
+            "rot": "📚Conteúdos",
+            "route": "conteudos",
+            "w": 328,
+            "h": 48,
+            "y": 466,
+            "x": -351
+          },
+          {
+            "rot": "🧭Central Multip",
+            "route": "multiprofissional",
+            "w": 328,
+            "h": 48,
+            "y": 518,
+            "x": -351
+          }
+        ],
+        "hamb": true,
+        "sidebar_caixa": false,
+        "vw": 430,
+        "vh": 720
+      },
+      "modal": null,
+      "modal_fechou_a_toque": true,
+      "gaveta_aberta_a_toque": true,
+      "seccoes": {
+        "inicio": {
+          "painel": {
+            "id": "multiprofessionalView",
+            "c": 917
+          },
+          "ms": 1824,
+          "assentou": true,
+          "controles": 15,
+          "tap": 0,
+          "fonte": 0,
+          "estouro_h": false,
+          "largura": 430,
+          "seccao_ativa": "inicio",
+          "view_apos": "multiprofessional",
+          "toque": {
+            "x": 61,
+            "y": 685,
+            "w": 101,
+            "h": 61
+          },
+          "antes": "inicio",
+          "via": "barra"
+        },
+        "multiprofissional": {
+          "painel": {
+            "id": "multiprofessionalView",
+            "c": 917
+          },
+          "ms": 1826,
+          "assentou": true,
+          "controles": 15,
+          "tap": 0,
+          "fonte": 0,
+          "estouro_h": false,
+          "largura": 430,
+          "seccao_ativa": "multiprofissional",
+          "view_apos": "multiprofessional",
+          "toque": {
+            "x": 164,
+            "y": 685,
+            "w": 101,
+            "h": 61
+          },
+          "antes": "inicio",
+          "via": "barra"
+        },
+        "chat-interno": {
+          "painel": {
+            "id": "internalChatView",
+            "c": 381
+          },
+          "ms": 3040,
+          "assentou": true,
+          "controles": 4,
+          "tap": 0,
+          "fonte": 0,
+          "estouro_h": false,
+          "largura": 430,
+          "seccao_ativa": "chat-interno",
+          "view_apos": "multiprofessional",
+          "toque": {
+            "x": 267,
+            "y": 685,
+            "w": 101,
+            "h": 61
+          },
+          "antes": "multiprofissional",
+          "via": "barra"
+        },
+        "notificacoes": {
+          "painel": {
+            "id": "bfrNotificationsView",
+            "c": 445
+          },
+          "ms": 1830,
+          "assentou": true,
+          "controles": 2,
+          "tap": 0,
+          "fonte": 0,
+          "estouro_h": false,
+          "largura": 430,
+          "seccao_ativa": "inicio",
+          "view_apos": "multiprofessional",
+          "toque": {
+            "x": 180,
+            "y": 360,
+            "w": 328,
+            "h": 48
+          },
+          "antes": "chat-interno",
+          "via": "gaveta"
+        },
+        "conteudos": {
+          "painel": {
+            "id": "bfrContentHubView",
+            "c": 1123
+          },
+          "ms": 1818,
+          "assentou": true,
+          "controles": 14,
+          "tap": 0,
+          "fonte": 3,
+          "estouro_h": false,
+          "largura": 430,
+          "seccao_ativa": "inicio",
+          "view_apos": "multiprofessional",
+          "toque": {
+            "x": 180,
+            "y": 360,
+            "w": 328,
+            "h": 48
+          },
+          "antes": "inicio",
+          "via": "gaveta"
+        }
+      },
+      "abertas": 5,
+      "vazias": [],
+      "nao_assentaram": [],
+      "estouro": [],
+      "tap_miudo": 0,
+      "fonte_miuda": 3,
+      "declaradas_sem_rota": [],
+      "rotas_fora_do_mapa": [
+        "notificacoes",
+        "conteudos"
+      ],
+      "inalcancaveis": [],
+      "sem_efeito": [
+        "conteudos:inicio"
+      ],
+      "erros": [],
+      "diagnostico_gaveta": [],
+      "dialogos_sem_saida": [],
+      "dialogos_miudos": []
+    }
+  },
+  "portoes": 48,
+  "falhas": [
+    "390px: 0 toques que não mudaram a seção ativa | dado=[\"conteudos:inicio\"] | esperado=[]",
+    "390px: 0 links de navegação fora do mapa do papel | dado=[\"notificacoes\",\"conteudos\"] | esperado=[]",
+    "414px: 0 toques que não mudaram a seção ativa | dado=[\"conteudos:inicio\"] | esperado=[]",
+    "414px: 0 links de navegação fora do mapa do papel | dado=[\"notificacoes\",\"conteudos\"] | esperado=[]",
+    "430px: 0 toques que não mudaram a seção ativa | dado=[\"conteudos:inicio\"] | esperado=[]",
+    "430px: 0 links de navegação fora do mapa do papel | dado=[\"notificacoes\",\"conteudos\"] | esperado=[]"
+  ],
+  "medido": {
+    "larguras": 3,
+    "rotas_tocadas": 15,
+    "incompleto": 0
+  },
+  "veredito": "AH7b_MOBILE_COM_DEFEITOS",
+  "diagnostico": "a barra de baixo tem 4 rotas e a gaveta 5; toque real abriu 15 painéis nas 3 larguras; alvos <44px na barra: 390px=0, 414px=0, 430px=0"
+}

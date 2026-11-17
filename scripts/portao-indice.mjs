@@ -31,6 +31,19 @@ const EXCECOES = [
     arquivo: 'scripts/ah2-sonda-rest.mjs', classe: 'senha', n: 1, comprimentos: '14',
     motivo: 'o casado e o literal «bytes servidos» no campo origem_chave: e a etiqueta de procedencia da anon key (de onde o programa a leu), nao a chave. Provado por comparacao de hash com as candidaturas de rotulo, e o valor nao contem pontos nem e JWT. O padrao apanhou-o so porque o nome do campo acaba em «chave».',
   },
+  // As duas entradas abaixo sao o mesmo casamento medido nos artefactos que o programa escreve, e a
+  // classificacao nao vem da memoria: vem de `scripts/ah2-prova-classe-sonda-rest.mjs` (igualdade de hash
+  // com o literal, sem imprimir valor). Os comprimentos copiam-se da saida `medido` do proprio portao.
+  // O caso analogo do artefacto do Home NAO esta aqui de proposito: esse campo tinha o nome ambiguo
+  // `chave`, e a decisao registada em 26e220d foi renomear para `rota_home` e re-gerar (v3), nao excepcionar.
+  {
+    arquivo: 'evidence/ah2-sonda-rest-17-11.json', classe: 'senha', n: 1, comprimentos: '14',
+    motivo: 'campo origem_chave do artefacto escrito por scripts/ah2-sonda-rest.mjs: hash igual ao do mesmo literal ja excepcionado no programa — etiqueta de procedencia, nao credencial.',
+  },
+  {
+    arquivo: 'evidence/ah2-sonda-rest-17-11b.json', classe: 'senha', n: 1, comprimentos: '14',
+    motivo: 'segunda corrida do mesmo programa: origem_chave com hash igual ao mesmo literal — mesma classe, mesma medida. Re-gerar o artefacto custaria uma corrida de browser, e o programa que o escreve ja tem esta excecao assinada: e a mesma classe em dois sitios.',
+  },
 ];
 
 const lista = execFileSync('git', ['ls-files', '-z'], { encoding: 'utf8' }).split('\0').filter(Boolean);
@@ -86,4 +99,9 @@ for (const [k, m] of medido) console.log(`  medido ${k} n=${m.n} comprimentos=${
 for (const e of EXCECOES) console.log(`  excecao ${e.arquivo}|${e.classe} :: ${e.motivo}`);
 for (const [k, m] of naoCobertas) console.log(`  NAO_COBERTA ${k} n=${m.n} comprimentos=${m.comprimentos}`);
 for (const e of malCobertas) console.log(`  EXCECAO_VELHA ${e.arquivo}|${e.classe}`);
-console.log(naoCobertas.length === 0 && malCobertas.length === 0 ? 'PORTAO_INDICE_VERDE' : 'PORTAO_INDICE_VERMELHO');
+const verde = naoCobertas.length === 0 && malCobertas.length === 0;
+console.log(verde ? 'PORTAO_INDICE_VERDE' : 'PORTAO_INDICE_VERMELHO');
+// O veredito tem de se ver no código de saída: um portão que imprime VERMELHO e sai 0 é lido como verde por
+// qualquer `&&` ou CI, e é exactamente assim que um índice com credencial passa. A saída 0 fica reservada
+// ao caminho `--control`, que é uma pergunta de leitura, não um veredicto.
+process.exit(verde ? 0 : 1);

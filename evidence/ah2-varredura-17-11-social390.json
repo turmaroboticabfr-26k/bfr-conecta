@@ -1,0 +1,167 @@
+{
+  "ciclo": "AH-2-V",
+  "em": "2026-11-17T07:09:03.826Z",
+  "tetos": {
+    "boot_s": 75,
+    "estabilizacao_ms": 6000,
+    "cdp_timeout_ms": 25000,
+    "praga_s": 470,
+    "watchdog_s": 560
+  },
+  "papeis": [
+    "social_work"
+  ],
+  "bandas": [
+    "390"
+  ],
+  "url": "https://bfr-conecta.turmaroboticabfr.workers.dev/",
+  "md5_shell": "d418e7fc917f1fbb1437054b7b531f9b",
+  "mapa_declarado": {
+    "parent": 16,
+    "student": 19,
+    "teacher": 22,
+    "coordinator": 18,
+    "admin": 26,
+    "director": 15,
+    "monitor": 8,
+    "gatekeeper": 8,
+    "secretary": 11,
+    "aee": 10,
+    "psychology": 3,
+    "multiprofessional": 3,
+    "sports_operator": 4,
+    "education_supervisor": 12
+  },
+  "traducao_lida_do_bundle": "viewRole = role === 'developer' ? 'admin' : role === 'pedagogical' ? 'teacher' : role === 'psychology' ? 'psychology' : role === 'social_work' ? 'multiprofessional' : role;",
+  "stages": {
+    "social_work": {
+      "390": {
+        "nav": {
+          "tentativas": 1,
+          "ms": 120,
+          "ok": true
+        },
+        "ms_ready": 841,
+        "erro_boot": null,
+        "estado": {
+          "entrou": true,
+          "aviso_pendencia": false,
+          "login_visivel": false,
+          "nav_visiveis": 0
+        },
+        "papel_da_sessao": "social_work",
+        "botoes_no_dom": 36,
+        "peca": {
+          "inicio": {
+            "painel": {
+              "id": "multiprofessionalView",
+              "c": 937
+            },
+            "ms": 2450,
+            "controles": 15,
+            "nos": 108,
+            "tap": 0,
+            "fonte": 0,
+            "cortados": 3,
+            "estouro_h": false,
+            "seccao_ativa": "inicio",
+            "papel_apos": "social_work",
+            "view_apos": "multiprofessional",
+            "nao_estabilizou": false,
+            "botao_attivo": "inicio",
+            "view_antes": "multiprofessional"
+          },
+          "multiprofissional": {
+            "painel": {
+              "id": "multiprofessionalView",
+              "c": 937
+            },
+            "ms": 1816,
+            "controles": 15,
+            "nos": 108,
+            "tap": 0,
+            "fonte": 0,
+            "cortados": 3,
+            "estouro_h": false,
+            "seccao_ativa": "multiprofissional",
+            "papel_apos": "social_work",
+            "view_apos": "multiprofessional",
+            "nao_estabilizou": false,
+            "botao_attivo": null,
+            "view_antes": "multiprofessional"
+          },
+          "chat-interno": {
+            "painel": {
+              "id": "internalChatView",
+              "c": 379
+            },
+            "ms": 1817,
+            "controles": 4,
+            "nos": 179,
+            "tap": 0,
+            "fonte": 0,
+            "cortados": 2,
+            "estouro_h": false,
+            "seccao_ativa": "chat-interno",
+            "papel_apos": "social_work",
+            "view_apos": "multiprofessional",
+            "nao_estabilizou": false,
+            "botao_attivo": "chat-interno",
+            "view_antes": "multiprofessional"
+          }
+        },
+        "sem_botao": [],
+        "erros_console": [],
+        "erros_brutos": 0,
+        "log_rede_erros": 2,
+        "log_rede_amostra": [
+          {
+            "fonte": "network",
+            "texto": "Failed to load resource: the server responded with a status of 404 ()",
+            "url": "/cdn-cgi/rum"
+          },
+          {
+            "fonte": "network",
+            "texto": "Failed to load resource: the server responded with a status of 404 ()",
+            "url": "/cdn-cgi/rum"
+          }
+        ],
+        "falhas_api_rede": [],
+        "erros_brutos_amostra": [],
+        "n_erros": 0,
+        "painel_vazio": [],
+        "estouro": [],
+        "tap_total": 0,
+        "fonte_total": 0,
+        "abertas": 3,
+        "instaveis": [],
+        "ms_max": 2450,
+        "ms_de_inicio": 2450,
+        "seg_banda": 7.7
+      },
+      "declaradas": 3,
+      "secoes": [
+        "inicio",
+        "multiprofissional",
+        "chat-interno"
+      ],
+      "injecao_390": {
+        "expira_em_s": 3597,
+        "acesso_md5_8": "f832da30"
+      }
+    }
+  },
+  "portoes": 14,
+  "falhas": [],
+  "medido": {
+    "papeis": 1,
+    "bandas": 1,
+    "banda_nomes": [
+      "390"
+    ],
+    "paineis_abertos": 3,
+    "secoes_sem_botao": {},
+    "completa": true
+  },
+  "veredito": "AH2_VARREDURA_LIMPA"
+}

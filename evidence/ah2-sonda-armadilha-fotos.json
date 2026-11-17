@@ -1,0 +1,892 @@
+{
+  "ciclo": "AH-7c-ARMADILHA",
+  "em": "2026-11-17T09:13:41.911Z",
+  "papel": "coordinator",
+  "largura": 390,
+  "rota": "fotos",
+  "url": "https://bfr-conecta.turmaroboticabfr.workers.dev/",
+  "md5_shell": "d418e7fc917f1fbb1437054b7b531f9b",
+  "passos": [
+    {
+      "o": "boot",
+      "e": {
+        "ativa": "inicio",
+        "gaveta_aberta": false,
+        "manager": {
+          "existe": false
+        },
+        "controlos": [],
+        "barra": [
+          {
+            "n": "barra:inicio",
+            "livre": false,
+            "topo": "p.publish-status",
+            "culpado": "div#preferredNameModal.modal z=1300"
+          },
+          {
+            "n": "barra:coordenacao",
+            "livre": false,
+            "topo": "p.publish-status",
+            "culpado": "div#preferredNameModal.modal z=1300"
+          },
+          {
+            "n": "barra:horarios",
+            "livre": false,
+            "topo": "p.publish-status",
+            "culpado": "div#preferredNameModal.modal z=1300"
+          },
+          {
+            "n": "barra:ocorrencias",
+            "livre": false,
+            "topo": "p.publish-status",
+            "culpado": "div#preferredNameModal.modal z=1300"
+          },
+          {
+            "n": "barra:more",
+            "livre": false,
+            "topo": "p.publish-status",
+            "culpado": "div#preferredNameModal.modal z=1300"
+          },
+          {
+            "n": "hamburguer",
+            "livre": false,
+            "topo": "div#preferredNameModal.modal",
+            "culpado": "div#preferredNameModal.modal z=1300"
+          }
+        ]
+      }
+    },
+    {
+      "o": "modal",
+      "tocavel": true,
+      "e": {
+        "ativa": "inicio",
+        "gaveta_aberta": false,
+        "manager": {
+          "existe": false
+        },
+        "controlos": [],
+        "barra": [
+          {
+            "n": "barra:inicio",
+            "livre": true,
+            "topo": "span.bfr-mobile-icon",
+            "culpado": "nav#bfrMobileBottomNav.bfr-mobile-bottom-nav z=1200"
+          },
+          {
+            "n": "barra:coordenacao",
+            "livre": true,
+            "topo": "span.bfr-mobile-icon",
+            "culpado": "nav#bfrMobileBottomNav.bfr-mobile-bottom-nav z=1200"
+          },
+          {
+            "n": "barra:horarios",
+            "livre": true,
+            "topo": "span.bfr-mobile-icon",
+            "culpado": "nav#bfrMobileBottomNav.bfr-mobile-bottom-nav z=1200"
+          },
+          {
+            "n": "barra:ocorrencias",
+            "livre": true,
+            "topo": "span.bfr-mobile-icon",
+            "culpado": "nav#bfrMobileBottomNav.bfr-mobile-bottom-nav z=1200"
+          },
+          {
+            "n": "barra:more",
+            "livre": true,
+            "topo": "span.bfr-mobile-icon",
+            "culpado": "nav#bfrMobileBottomNav.bfr-mobile-bottom-nav z=1200"
+          },
+          {
+            "n": "hamburguer",
+            "livre": true,
+            "topo": "button.bfr-mobile-menu-button",
+            "culpado": null
+          }
+        ]
+      }
+    },
+    {
+      "o": "dentro_da_rota",
+      "via": "gaveta",
+      "alvo_do_toque": null,
+      "e": {
+        "ativa": "fotos",
+        "gaveta_aberta": false,
+        "manager": {
+          "existe": true,
+          "pos": "fixed",
+          "z": "12000",
+          "disp": "grid",
+          "vis": "visible",
+          "caixa": {
+            "x": 0,
+            "y": 0,
+            "w": 390,
+            "h": 720
+          }
+        },
+        "controlos": [
+          {
+            "txt": "Fechar",
+            "aria": "Fechar cadastro de fotos",
+            "title": null,
+            "classe": "bfr-spm-close",
+            "caixa": {
+              "x": 306,
+              "y": 24,
+              "w": 60,
+              "h": 32
+            },
+            "visivel": true,
+            "no_ecra": true,
+            "livre": true
+          },
+          {
+            "txt": "Todos",
+            "aria": null,
+            "title": null,
+            "classe": "bfr-spm-filter",
+            "caixa": {
+              "x": 29,
+              "y": 305,
+              "w": 51,
+              "h": 29
+            },
+            "visivel": true,
+            "no_ecra": true,
+            "livre": true
+          },
+          {
+            "txt": "Com foto",
+            "aria": null,
+            "title": null,
+            "classe": "bfr-spm-filter",
+            "caixa": {
+              "x": 86,
+              "y": 305,
+              "w": 67,
+              "h": 29
+            },
+            "visivel": true,
+            "no_ecra": true,
+            "livre": true
+          },
+          {
+            "txt": "Sem foto",
+            "aria": null,
+            "title": null,
+            "classe": "bfr-spm-filter",
+            "caixa": {
+              "x": 159,
+              "y": 305,
+              "w": 66,
+              "h": 29
+            },
+            "visivel": true,
+            "no_ecra": true,
+            "livre": true
+          },
+          {
+            "txt": "Cadastro rápido",
+            "aria": null,
+            "title": null,
+            "classe": "bfr-spm-filter",
+            "caixa": {
+              "x": 231,
+              "y": 305,
+              "w": 102,
+              "h": 29
+            },
+            "visivel": true,
+            "no_ecra": true,
+            "livre": true
+          },
+          {
+            "txt": "AVAGATHA VITÓRIA DOS S",
+            "aria": null,
+            "title": null,
+            "classe": "bfr-spm-row",
+            "caixa": {
+              "x": 25,
+              "y": 395,
+              "w": 340,
+              "h": 83
+            },
+            "visivel": true,
+            "no_ecra": true,
+            "livre": true
+          },
+          {
+            "txt": "ÁVÁKILAH VÍCTÓRIA DE A",
+            "aria": null,
+            "title": null,
+            "classe": "bfr-spm-row",
+            "caixa": {
+              "x": 25,
+              "y": 478,
+              "w": 340,
+              "h": 83
+            },
+            "visivel": true,
+            "no_ecra": true,
+            "livre": true
+          },
+          {
+            "txt": "ACANA CECILIA DE NOVAE",
+            "aria": null,
+            "title": null,
+            "classe": "bfr-spm-row",
+            "caixa": {
+              "x": 25,
+              "y": 561,
+              "w": 340,
+              "h": 83
+            },
+            "visivel": true,
+            "no_ecra": true,
+            "livre": false
+          },
+          {
+            "txt": "ACARTHUR CARLOS DA SIL",
+            "aria": null,
+            "title": null,
+            "classe": "bfr-spm-row",
+            "caixa": {
+              "x": 25,
+              "y": 644,
+              "w": 340,
+              "h": 69
+            },
+            "visivel": true,
+            "no_ecra": true,
+            "livre": false
+          },
+          {
+            "txt": "ARTHUR VINÍCIUS SOUZA ",
+            "aria": null,
+            "title": null,
+            "classe": "bfr-spm-row",
+            "caixa": {
+              "x": 25,
+              "y": 713,
+              "w": 340,
+              "h": 83
+            },
+            "visivel": true,
+            "no_ecra": false,
+            "livre": false
+          },
+          {
+            "txt": "AYARTHUR YGOR DE OLIVE",
+            "aria": null,
+            "title": null,
+            "classe": "bfr-spm-row",
+            "caixa": {
+              "x": 25,
+              "y": 796,
+              "w": 340,
+              "h": 83
+            },
+            "visivel": true,
+            "no_ecra": false,
+            "livre": false
+          },
+          {
+            "txt": "CMCLÉCYA MARIA CASSIAN",
+            "aria": null,
+            "title": null,
+            "classe": "bfr-spm-row",
+            "caixa": {
+              "x": 25,
+              "y": 879,
+              "w": 340,
+              "h": 83
+            },
+            "visivel": true,
+            "no_ecra": false,
+            "livre": false
+          },
+          {
+            "txt": "DDDANIEL DAVID COSTA D",
+            "aria": null,
+            "title": null,
+            "classe": "bfr-spm-row",
+            "caixa": {
+              "x": 25,
+              "y": 962,
+              "w": 340,
+              "h": 83
+            },
+            "visivel": true,
+            "no_ecra": false,
+            "livre": false
+          },
+          {
+            "txt": "DMDAVI MOURA DE OLIVEI",
+            "aria": null,
+            "title": null,
+            "classe": "bfr-spm-row",
+            "caixa": {
+              "x": 25,
+              "y": 1045,
+              "w": 340,
+              "h": 69
+            },
+            "visivel": true,
+            "no_ecra": false,
+            "livre": false
+          },
+          {
+            "txt": "DAVID SILVA SANTOS6º a",
+            "aria": null,
+            "title": null,
+            "classe": "bfr-spm-row",
+            "caixa": {
+              "x": 25,
+              "y": 1114,
+              "w": 340,
+              "h": 69
+            },
+            "visivel": true,
+            "no_ecra": false,
+            "livre": false
+          },
+          {
+            "txt": "FAFELIPE AURELIO DOS S",
+            "aria": null,
+            "title": null,
+            "classe": "bfr-spm-row",
+            "caixa": {
+              "x": 25,
+              "y": 1183,
+              "w": 340,
+              "h": 83
+            },
+            "visivel": true,
+            "no_ecra": false,
+            "livre": false
+          },
+          {
+            "txt": "GVGABRIELA VILELA DE L",
+            "aria": null,
+            "title": null,
+            "classe": "bfr-spm-row",
+            "caixa": {
+              "x": 25,
+              "y": 1266,
+              "w": 340,
+              "h": 69
+            },
+            "visivel": true,
+            "no_ecra": false,
+            "livre": false
+          },
+          {
+            "txt": "GABRYEL ILARIO SANTOS ",
+            "aria": null,
+            "title": null,
+            "classe": "bfr-spm-row",
+            "caixa": {
+              "x": 25,
+              "y": 1335,
+              "w": 340,
+              "h": 83
+            },
+            "visivel": true,
+            "no_ecra": false,
+            "livre": false
+          },
+          {
+            "txt": "GVGRAZIELA VALENTIM DA",
+            "aria": null,
+            "title": null,
+            "classe": "bfr-spm-row",
+            "caixa": {
+              "x": 25,
+              "y": 1418,
+              "w": 340,
+              "h": 69
+            },
+            "visivel": true,
+            "no_ecra": false,
+            "livre": false
+          },
+          {
+            "txt": "GBGUILHERME BARBOSA BE",
+            "aria": null,
+            "title": null,
+            "classe": "bfr-spm-row",
+            "caixa": {
+              "x": 25,
+              "y": 1487,
+              "w": 340,
+              "h": 83
+            },
+            "visivel": true,
+            "no_ecra": false,
+            "livre": false
+          },
+          {
+            "txt": "GVGUILHERME VINÍCIUS S",
+            "aria": null,
+            "title": null,
+            "classe": "bfr-spm-row",
+            "caixa": {
+              "x": 25,
+              "y": 1570,
+              "w": 340,
+              "h": 83
+            },
+            "visivel": true,
+            "no_ecra": false,
+            "livre": false
+          },
+          {
+            "txt": "IGIRIA GABRIELLA FARIA",
+            "aria": null,
+            "title": null,
+            "classe": "bfr-spm-row",
+            "caixa": {
+              "x": 25,
+              "y": 1653,
+              "w": 340,
+              "h": 83
+            },
+            "visivel": true,
+            "no_ecra": false,
+            "livre": false
+          },
+          {
+            "txt": "JMJOSÉ MATHEUS PEREIRA",
+            "aria": null,
+            "title": null,
+            "classe": "bfr-spm-row",
+            "caixa": {
+              "x": 25,
+              "y": 1736,
+              "w": 340,
+              "h": 83
+            },
+            "visivel": true,
+            "no_ecra": false,
+            "livre": false
+          },
+          {
+            "txt": "JVJOSÉ VICENTE SILVA F",
+            "aria": null,
+            "title": null,
+            "classe": "bfr-spm-row",
+            "caixa": {
+              "x": 25,
+              "y": 1819,
+              "w": 340,
+              "h": 69
+            },
+            "visivel": true,
+            "no_ecra": false,
+            "livre": false
+          },
+          {
+            "txt": "JWJOSÉ WANDERSON DA SI",
+            "aria": null,
+            "title": null,
+            "classe": "bfr-spm-row",
+            "caixa": {
+              "x": 25,
+              "y": 1888,
+              "w": 340,
+              "h": 69
+            },
+            "visivel": true,
+            "no_ecra": false,
+            "livre": false
+          },
+          {
+            "txt": "KLKAIKY LEVY ALVES SAN",
+            "aria": null,
+            "title": null,
+            "classe": "bfr-spm-row",
+            "caixa": {
+              "x": 25,
+              "y": 1957,
+              "w": 340,
+              "h": 69
+            },
+            "visivel": true,
+            "no_ecra": false,
+            "livre": false
+          },
+          {
+            "txt": "KDKEVYN DAVY ALVES SAN",
+            "aria": null,
+            "title": null,
+            "classe": "bfr-spm-row",
+            "caixa": {
+              "x": 25,
+              "y": 2026,
+              "w": 340,
+              "h": 69
+            },
+            "visivel": true,
+            "no_ecra": false,
+            "livre": false
+          },
+          {
+            "txt": "LILAVÍNIA ISABELLY SIL",
+            "aria": null,
+            "title": null,
+            "classe": "bfr-spm-row",
+            "caixa": {
+              "x": 25,
+              "y": 2095,
+              "w": 340,
+              "h": 83
+            },
+            "visivel": true,
+            "no_ecra": false,
+            "livre": false
+          },
+          {
+            "txt": "LUIZ HENRIQUE RAMIRO P",
+            "aria": null,
+            "title": null,
+            "classe": "bfr-spm-row",
+            "caixa": {
+              "x": 25,
+              "y": 2178,
+              "w": 340,
+              "h": 83
+            },
+            "visivel": true,
+            "no_ecra": false,
+            "livre": false
+          },
+          {
+            "txt": "LOLUIZ OTÁVIO DA SILVA",
+            "aria": null,
+            "title": null,
+            "classe": "bfr-spm-row",
+            "caixa": {
+              "x": 25,
+              "y": 2261,
+              "w": 340,
+              "h": 83
+            },
+            "visivel": true,
+            "no_ecra": false,
+            "livre": false
+          },
+          {
+            "txt": "MAMARIA ANDRESSA FERRE",
+            "aria": null,
+            "title": null,
+            "classe": "bfr-spm-row",
+            "caixa": {
+              "x": 25,
+              "y": 2344,
+              "w": 340,
+              "h": 83
+            },
+            "visivel": true,
+            "no_ecra": false,
+            "livre": false
+          },
+          {
+            "txt": "MARIA CECILIA LIMA DA ",
+            "aria": null,
+            "title": null,
+            "classe": "bfr-spm-row",
+            "caixa": {
+              "x": 25,
+              "y": 2427,
+              "w": 340,
+              "h": 69
+            },
+            "visivel": true,
+            "no_ecra": false,
+            "livre": false
+          },
+          {
+            "txt": "MCMARIA CICERA DE SOUZ",
+            "aria": null,
+            "title": null,
+            "classe": "bfr-spm-row",
+            "caixa": {
+              "x": 25,
+              "y": 2496,
+              "w": 340,
+              "h": 83
+            },
+            "visivel": true,
+            "no_ecra": false,
+            "livre": false
+          },
+          {
+            "txt": "MEMARIA EDUARDA MATIAS",
+            "aria": null,
+            "title": null,
+            "classe": "bfr-spm-row",
+            "caixa": {
+              "x": 25,
+              "y": 2579,
+              "w": 340,
+              "h": 83
+            },
+            "visivel": true,
+            "no_ecra": false,
+            "livre": false
+          },
+          {
+            "txt": "MSMARIA SOPHIA SILVA S",
+            "aria": null,
+            "title": null,
+            "classe": "bfr-spm-row",
+            "caixa": {
+              "x": 25,
+              "y": 2662,
+              "w": 340,
+              "h": 83
+            },
+            "visivel": true,
+            "no_ecra": false,
+            "livre": false
+          },
+          {
+            "txt": "MVMARIA VALENTINA SANT",
+            "aria": null,
+            "title": null,
+            "classe": "bfr-spm-row",
+            "caixa": {
+              "x": 25,
+              "y": 2745,
+              "w": 340,
+              "h": 83
+            },
+            "visivel": true,
+            "no_ecra": false,
+            "livre": false
+          },
+          {
+            "txt": "MYMARIA YASMIN ORTINO ",
+            "aria": null,
+            "title": null,
+            "classe": "bfr-spm-row",
+            "caixa": {
+              "x": 25,
+              "y": 2828,
+              "w": 340,
+              "h": 83
+            },
+            "visivel": true,
+            "no_ecra": false,
+            "livre": false
+          },
+          {
+            "txt": "MCMILENA CAMILLY MOREI",
+            "aria": null,
+            "title": null,
+            "classe": "bfr-spm-row",
+            "caixa": {
+              "x": 25,
+              "y": 2911,
+              "w": 340,
+              "h": 83
+            },
+            "visivel": true,
+            "no_ecra": false,
+            "livre": false
+          },
+          {
+            "txt": "MVMIRIELLE VICTÓRIA DE",
+            "aria": null,
+            "title": null,
+            "classe": "bfr-spm-row",
+            "caixa": {
+              "x": 25,
+              "y": 2994,
+              "w": 340,
+              "h": 83
+            },
+            "visivel": true,
+            "no_ecra": false,
+            "livre": false
+          },
+          {
+            "txt": "NSNATALIA SILVA DE FAR",
+            "aria": null,
+            "title": null,
+            "classe": "bfr-spm-row",
+            "caixa": {
+              "x": 25,
+              "y": 3077,
+              "w": 340,
+              "h": 69
+            },
+            "visivel": true,
+            "no_ecra": false,
+            "livre": false
+          }
+        ],
+        "barra": [
+          {
+            "n": "barra:inicio",
+            "livre": false,
+            "topo": "section.bfr-spm-detail",
+            "culpado": "div#bfrStudentPhotoManager.bfr-spm-backdrop z=12000"
+          },
+          {
+            "n": "barra:coordenacao",
+            "livre": false,
+            "topo": "section.bfr-spm-detail",
+            "culpado": "div#bfrStudentPhotoManager.bfr-spm-backdrop z=12000"
+          },
+          {
+            "n": "barra:horarios",
+            "livre": false,
+            "topo": "section.bfr-spm-detail",
+            "culpado": "div#bfrStudentPhotoManager.bfr-spm-backdrop z=12000"
+          },
+          {
+            "n": "barra:ocorrencias",
+            "livre": false,
+            "topo": "section.bfr-spm-detail",
+            "culpado": "div#bfrStudentPhotoManager.bfr-spm-backdrop z=12000"
+          },
+          {
+            "n": "barra:more",
+            "livre": false,
+            "topo": "section.bfr-spm-detail",
+            "culpado": "div#bfrStudentPhotoManager.bfr-spm-backdrop z=12000"
+          },
+          {
+            "n": "hamburguer",
+            "livre": false,
+            "topo": "div.eyebrow",
+            "culpado": "div#bfrStudentPhotoManager.bfr-spm-backdrop z=12000"
+          }
+        ]
+      }
+    },
+    {
+      "o": "depois_da_saida",
+      "toque": {
+        "x": 336,
+        "y": 40
+      },
+      "e": {
+        "ativa": "inicio",
+        "gaveta_aberta": false,
+        "manager": {
+          "existe": false
+        },
+        "controlos": [],
+        "barra": [
+          {
+            "n": "barra:inicio",
+            "livre": true,
+            "topo": "span.bfr-mobile-icon",
+            "culpado": "nav#bfrMobileBottomNav.bfr-mobile-bottom-nav z=1200"
+          },
+          {
+            "n": "barra:coordenacao",
+            "livre": true,
+            "topo": "span.bfr-mobile-icon",
+            "culpado": "nav#bfrMobileBottomNav.bfr-mobile-bottom-nav z=1200"
+          },
+          {
+            "n": "barra:horarios",
+            "livre": true,
+            "topo": "span.bfr-mobile-icon",
+            "culpado": "nav#bfrMobileBottomNav.bfr-mobile-bottom-nav z=1200"
+          },
+          {
+            "n": "barra:ocorrencias",
+            "livre": true,
+            "topo": "span.bfr-mobile-icon",
+            "culpado": "nav#bfrMobileBottomNav.bfr-mobile-bottom-nav z=1200"
+          },
+          {
+            "n": "barra:more",
+            "livre": true,
+            "topo": "span.bfr-mobile-icon",
+            "culpado": "nav#bfrMobileBottomNav.bfr-mobile-bottom-nav z=1200"
+          },
+          {
+            "n": "hamburguer",
+            "livre": true,
+            "topo": "button.bfr-mobile-menu-button",
+            "culpado": null
+          }
+        ]
+      }
+    },
+    {
+      "o": "barra_inicio_apertada",
+      "e": {
+        "ativa": "inicio",
+        "gaveta_aberta": false,
+        "manager": {
+          "existe": false
+        },
+        "controlos": [],
+        "barra": [
+          {
+            "n": "barra:inicio",
+            "livre": true,
+            "topo": "span.bfr-mobile-icon",
+            "culpado": "nav#bfrMobileBottomNav.bfr-mobile-bottom-nav z=1200"
+          },
+          {
+            "n": "barra:coordenacao",
+            "livre": true,
+            "topo": "span.bfr-mobile-icon",
+            "culpado": "nav#bfrMobileBottomNav.bfr-mobile-bottom-nav z=1200"
+          },
+          {
+            "n": "barra:horarios",
+            "livre": true,
+            "topo": "span.bfr-mobile-icon",
+            "culpado": "nav#bfrMobileBottomNav.bfr-mobile-bottom-nav z=1200"
+          },
+          {
+            "n": "barra:ocorrencias",
+            "livre": true,
+            "topo": "span.bfr-mobile-icon",
+            "culpado": "nav#bfrMobileBottomNav.bfr-mobile-bottom-nav z=1200"
+          },
+          {
+            "n": "barra:more",
+            "livre": true,
+            "topo": "span.bfr-mobile-icon",
+            "culpado": "nav#bfrMobileBottomNav.bfr-mobile-bottom-nav z=1200"
+          },
+          {
+            "n": "hamburguer",
+            "livre": true,
+            "topo": "button.bfr-mobile-menu-button",
+            "culpado": null
+          }
+        ]
+      }
+    }
+  ],
+  "entrada_efectiva": true,
+  "saida_oferecida": {
+    "txt": "Fechar",
+    "aria": "Fechar cadastro de fotos",
+    "title": null,
+    "classe": "bfr-spm-close",
+    "caixa": {
+      "x": 306,
+      "y": 24,
+      "w": 60,
+      "h": 32
+    },
+    "visivel": true,
+    "no_ecra": true,
+    "livre": true
+  },
+  "barra_inicio_tocavel_agora": "sim",
+  "veredito": "SAIDA_EXISTE_A_NAVEGACAO_NAO_FICA_PRESA"
+}

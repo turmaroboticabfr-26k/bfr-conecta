@@ -1,0 +1,74 @@
+{
+  "ciclo": "AH-7b-MOBILE",
+  "em": "2026-11-17T09:30:12.585Z",
+  "papel": "pending",
+  "larguras": [
+    320,
+    360,
+    375,
+    390,
+    414,
+    430
+  ],
+  "altura": 720,
+  "url": "https://bfr-conecta.turmaroboticabfr.workers.dev/",
+  "md5_shell": "d418e7fc917f1fbb1437054b7b531f9b",
+  "contas": {
+    "id": "3d2329ed"
+  },
+  "markup": "toque em #bfrMobileBottomNav button[data-bfr-mobile-route] e #bfrMobileDrawer [data-bfr-drawer-route]; a barra do desktop está display:none abaixo de 800px por decisão do app (bfr-responsive-presentation.js:233)",
+  "declaradas": [],
+  "bandas": {
+    "320": {
+      "width": 320,
+      "ms_ready": null,
+      "censo": {
+        "presentation": null,
+        "body_mobile": false,
+        "barra_existe": false,
+        "barra": [],
+        "gaveta_existe": false,
+        "gaveta_aberta": false,
+        "gaveta": [],
+        "hamb": false,
+        "sidebar_caixa": false,
+        "vw": 320,
+        "vh": 720
+      },
+      "modal": null,
+      "modal_fechou_a_toque": true,
+      "gaveta_aberta_a_toque": false,
+      "seccoes": {},
+      "abertas": 0,
+      "vazias": [],
+      "nao_assentaram": [],
+      "estouro": [],
+      "tap_miudo": 0,
+      "fonte_miuda": 0,
+      "declaradas_sem_rota": [],
+      "rotas_fora_do_mapa": [],
+      "inalcancaveis": [],
+      "sem_efeito": [],
+      "erros": [],
+      "diagnostico_gaveta": [
+        {
+          "o": "mais_nao_tocavel",
+          "sel": "[data-bfr-open-drawer]",
+          "r": null,
+          "ativa": null,
+          "geo": null
+        }
+      ],
+      "dialogos_sem_saida": [],
+      "dialogos_miudos": []
+    }
+  },
+  "portoes": 16,
+  "falhas": [
+    "320px: o boot abriu no shell do papel | dado=\"waitFor: document.getElementById('appShell')?.classList.contains('ready') && window.BFR_CURRENT_PROFILE?.role \" | esperado=null",
+    "320px: a app declarou-se em apresentação mobile | dado={\"presentation\":null,\"body_mobile\":false,\"sidebar_escondida\":true} | esperado={\"presentation\":\"mobile\",\"body_mobile\":true,\"sidebar_escondida\":true}",
+    "320px: a barra inferior tem botões com caixa | dado=false | esperado=true",
+    "320px: a gaveta abre com um toque real | dado=false | esperado=true",
+    "320px: chegou ao shell e abriu seções a toque | dado=false | esperado=true"
+  ]
+}

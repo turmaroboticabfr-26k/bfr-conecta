@@ -1,0 +1,162 @@
+{
+  "ciclo": "AH-2-V",
+  "em": "2026-11-17T07:08:09.079Z",
+  "tetos": {
+    "boot_s": 75,
+    "estabilizacao_ms": 6000,
+    "cdp_timeout_ms": 25000,
+    "praga_s": 470,
+    "watchdog_s": 560
+  },
+  "papeis": [
+    "psychology"
+  ],
+  "bandas": [
+    "1280"
+  ],
+  "url": "https://bfr-conecta.turmaroboticabfr.workers.dev/",
+  "md5_shell": "d418e7fc917f1fbb1437054b7b531f9b",
+  "mapa_declarado": {
+    "parent": 16,
+    "student": 19,
+    "teacher": 22,
+    "coordinator": 18,
+    "admin": 26,
+    "director": 15,
+    "monitor": 8,
+    "gatekeeper": 8,
+    "secretary": 11,
+    "aee": 10,
+    "psychology": 3,
+    "multiprofessional": 3,
+    "sports_operator": 4,
+    "education_supervisor": 12
+  },
+  "traducao_lida_do_bundle": "viewRole = role === 'developer' ? 'admin' : role === 'pedagogical' ? 'teacher' : role === 'psychology' ? 'psychology' : role === 'social_work' ? 'multiprofessional' : role;",
+  "stages": {
+    "psychology": {
+      "1280": {
+        "nav": {
+          "tentativas": 1,
+          "ms": 78,
+          "ok": true
+        },
+        "ms_ready": 839,
+        "erro_boot": null,
+        "estado": {
+          "entrou": true,
+          "aviso_pendencia": false,
+          "login_visivel": false,
+          "nav_visiveis": 4
+        },
+        "papel_da_sessao": "psychology",
+        "botoes_no_dom": 36,
+        "peca": {
+          "inicio": {
+            "painel": {
+              "id": "psychologyView",
+              "c": 917
+            },
+            "ms": 2435,
+            "controles": 18,
+            "nos": 109,
+            "tap": 18,
+            "fonte": 1,
+            "cortados": 4,
+            "estouro_h": false,
+            "seccao_ativa": "inicio",
+            "papel_apos": "psychology",
+            "view_apos": "psychology",
+            "nao_estabilizou": false,
+            "botao_attivo": "inicio",
+            "view_antes": null
+          },
+          "psychology": {
+            "painel": {
+              "id": "psychologyView",
+              "c": 917
+            },
+            "ms": 1841,
+            "controles": 18,
+            "nos": 109,
+            "tap": 18,
+            "fonte": 1,
+            "cortados": 4,
+            "estouro_h": false,
+            "seccao_ativa": "psychology",
+            "papel_apos": "psychology",
+            "view_apos": "psychology",
+            "nao_estabilizou": false,
+            "botao_attivo": null,
+            "view_antes": "psychology"
+          },
+          "chat-interno": {
+            "painel": {
+              "id": "internalChatView",
+              "c": 838
+            },
+            "ms": 1827,
+            "controles": 18,
+            "nos": 179,
+            "tap": 11,
+            "fonte": 7,
+            "cortados": 3,
+            "estouro_h": false,
+            "seccao_ativa": "chat-interno",
+            "papel_apos": "psychology",
+            "view_apos": "psychology",
+            "nao_estabilizou": false,
+            "botao_attivo": "chat-interno",
+            "view_antes": "psychology"
+          }
+        },
+        "sem_botao": [],
+        "erros_console": [],
+        "erros_brutos": 0,
+        "log_rede_erros": 1,
+        "log_rede_amostra": [
+          {
+            "fonte": "network",
+            "texto": "Failed to load resource: the server responded with a status of 404 ()",
+            "url": "/cdn-cgi/rum"
+          }
+        ],
+        "falhas_api_rede": [],
+        "erros_brutos_amostra": [],
+        "n_erros": 0,
+        "painel_vazio": [],
+        "estouro": [],
+        "tap_total": 47,
+        "fonte_total": 9,
+        "abertas": 3,
+        "instaveis": [],
+        "ms_max": 2435,
+        "ms_de_inicio": 2435,
+        "seg_banda": 7.5
+      },
+      "declaradas": 3,
+      "secoes": [
+        "inicio",
+        "psychology",
+        "chat-interno"
+      ],
+      "injecao_1280": {
+        "expira_em_s": 3597,
+        "acesso_md5_8": "403bb1f3"
+      }
+    }
+  },
+  "portoes": 14,
+  "falhas": [],
+  "medido": {
+    "papeis": 1,
+    "bandas": 1,
+    "banda_nomes": [
+      "1280"
+    ],
+    "paineis_abertos": 3,
+    "secoes_sem_botao": {},
+    "completa": true
+  },
+  "veredito": "AH2_VARREDURA_LIMPA"
+}

@@ -1,0 +1,71 @@
+VERDE  o ar varrido é a v123 da régua
+VERDE  mapa declarado lido do bundle tem as 14 chaves
+VERDE  a tradução de rótulos está no bundle (developer/pedagogical/social_work)
+VERDE  secretary declarado = as 11 do ciclo AH-1 (duas fontes batem)
+VERDE  todas as seções declaradas são rótulos não vazios
+  monitor/1920/inicio: monitorView 7771c ctl=46 tap<42 fonte<1 3511ms
+  monitor/1920/monitor: monitorView 7771c ctl=46 tap<42 fonte<1 2347ms
+  monitor/1920/ocorrencias: monitorView 7771c ctl=46 tap<42 fonte<1 2500ms
+  monitor/1920/horarios: monitorView 7771c ctl=46 tap<42 fonte<1 2546ms
+  monitor/1920/notificacoes: bfrNotificationsView 400c ctl=3 tap<3 fonte<0 2478ms
+  monitor/1920/conteudos: bfrContentHubView 1021c ctl=14 tap<14 fonte<3 2563ms
+  monitor/1920/jogos-escolares: schoolGamesView 220c ctl=2 tap<2 fonte<0 2781ms
+VERDE  monitor/1920: sessão do papel reconhecida
+VERDE  monitor/1920: 0 erros de console de aplicação
+VERDE  monitor/1920: 0 medições perdidas por navegação
+VERDE  monitor/1920: 0 falhas de rede em /auth/ ou /rest/
+VERDE  monitor/1920: entrou no shell
+VERDE  monitor/1920: 0 painéis vazios entre as 7 seções abertas
+VERDE  monitor/1920: 0 estouro horizontal
+VERDE  monitor/1920: toda a troca de persona foi desfeita pela API do app
+VERDE  monitor/1920: 0 seções cujo conteúdo não assenta em 6 s
+  gatekeeper/1920/inicio: gatekeeperView 1703c ctl=26 tap<11 fonte<4 3052ms
+  gatekeeper/1920/gate: gatekeeperView 1703c ctl=26 tap<11 fonte<4 1821ms
+  gatekeeper/1920/horarios: gatekeeperView 1320c ctl=9 tap<9 fonte<0 1828ms
+  gatekeeper/1920/comunicados: gatekeeperView 1320c ctl=9 tap<9 fonte<0 1808ms
+  gatekeeper/1920/notificacoes: bfrNotificationsView 400c ctl=3 tap<3 fonte<0 1829ms
+  gatekeeper/1920/conteudos: bfrContentHubView 1021c ctl=14 tap<14 fonte<3 1813ms
+  gatekeeper/1920/jogos-escolares: schoolGamesView 865c ctl=8 tap<8 fonte<0 1828ms
+VERDE  gatekeeper/1920: sessão do papel reconhecida
+VERDE  gatekeeper/1920: 0 erros de console de aplicação
+VERDE  gatekeeper/1920: 0 medições perdidas por navegação
+VERMELHO  gatekeeper/1920: 0 falhas de rede em /auth/ ou /rest/
+VERDE  gatekeeper/1920: entrou no shell
+VERDE  gatekeeper/1920: 0 painéis vazios entre as 7 seções abertas
+VERDE  gatekeeper/1920: 0 estouro horizontal
+VERDE  gatekeeper/1920: toda a troca de persona foi desfeita pela API do app
+VERDE  gatekeeper/1920: 0 seções cujo conteúdo não assenta em 6 s
+  coordinator/1920/inicio: coordinatorView 5269c ctl=55 tap<29 fonte<7 5572ms
+  coordinator/1920/coordenacao: coordinatorView 58625c ctl=558 tap<532 fonte<7 2447ms
+  coordinator/1920/horarios: coordinatorView 56159c ctl=520 tap<515 fonte<7 1840ms
+  coordinator/1920/cadastro-alunos: coordinatorView 88547c ctl=522 tap<517 fonte<855 1857ms
+  coordinator/1920/comunicados: coordinatorView 56159c ctl=520 tap<515 fonte<7 1846ms
+  coordinator/1920/ocorrencias: coordinatorView 56159c ctl=520 tap<515 fonte<7 1828ms
+  coordinator/1920/atividades: activityCenterView 1011c ctl=19 tap<15 fonte<0 1844ms
+  coordinator/1920/notificacoes: bfrNotificationsView 400c ctl=3 tap<3 fonte<0 1820ms
+  coordinator/1920/conteudos: bfrContentHubView 1021c ctl=14 tap<14 fonte<3 1830ms
+  coordinator/1920/relatorios: bfrReportsView 852c ctl=4 tap<4 fonte<1 3053ms
+  coordinator/1920/comunicacao: bfrCommunicationView 1716c ctl=58 tap<57 fonte<1 1822ms
+  coordinator/1920/fotos: bfrCommunicationView 1716c ctl=58 tap<57 fonte<1 1829ms
+  coordinator/1920/chat-interno: internalChatView 465c ctl=11 tap<10 fonte<0 1865ms
+  coordinator/1920/jogos-escolares: schoolGamesView 220c ctl=2 tap<2 fonte<0 1825ms
+  coordinator/1920/aee: aeeView 6163c ctl=71 tap<71 fonte<0 1823ms
+  coordinator/1920/resultados-aprendizagem: resultsLearningView 588c ctl=17 tap<17 fonte<0 1821ms
+VERDE  coordinator/1920: sessão do papel reconhecida
+VERDE  coordinator/1920: 0 erros de console de aplicação
+VERDE  coordinator/1920: 0 medições perdidas por navegação
+VERDE  coordinator/1920: 0 falhas de rede em /auth/ ou /rest/
+VERDE  coordinator/1920: entrou no shell
+VERDE  coordinator/1920: 0 painéis vazios entre as 16 seções abertas
+VERDE  coordinator/1920: 0 estouro horizontal
+VERDE  coordinator/1920: toda a troca de persona foi desfeita pela API do app
+VERDE  coordinator/1920: 0 seções cujo conteúdo não assenta em 6 s
+file:///C:/Users/pcmac/Documents/Qoder/2026-10-13/28077d9a/bfr-conecta/scripts/ah2-varredura.mjs:81
+  throw new Error(`refresh ${p} falhou 5x (último: ${ultimo})`);
+        ^
+
+Error: refresh secretary falhou 5x (último: The operation was aborted due to timeout)
+    at renova (file:///C:/Users/pcmac/Documents/Qoder/2026-10-13/28077d9a/bfr-conecta/scripts/ah2-varredura.mjs:81:9)
+    at async file:///C:/Users/pcmac/Documents/Qoder/2026-10-13/28077d9a/bfr-conecta/scripts/ah2-varredura.mjs:213:20
+
+Node.js v24.18.1

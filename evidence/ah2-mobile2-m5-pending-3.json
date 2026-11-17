@@ -1,0 +1,38 @@
+{
+  "ciclo": "AH-7b-MOBILE",
+  "em": "2026-11-17T10:51:22.765Z",
+  "papel": "pending",
+  "larguras": [
+    360,
+    375,
+    390,
+    414,
+    430
+  ],
+  "altura": 720,
+  "url": "https://bfr-conecta.turmaroboticabfr.workers.dev/",
+  "md5_shell": "d418e7fc917f1fbb1437054b7b531f9b",
+  "contas": {
+    "id": "3d2329ed"
+  },
+  "markup": "toque em #bfrMobileBottomNav button[data-bfr-mobile-route] e #bfrMobileDrawer [data-bfr-drawer-route]; a barra do desktop está display:none abaixo de 800px por decisão do app (bfr-responsive-presentation.js:233)",
+  "declaradas": [],
+  "bandas": {},
+  "bloqueadas": [
+    {
+      "largura": 360,
+      "causa": "conta em análise: barreira de pendência, sem shell nem navegação (estado do produto)",
+      "estado": {
+        "entrou": false,
+        "aviso_pendencia": true,
+        "login_visivel": true,
+        "texto": "A escola mais próxima de cada família. Notas, frequência, agenda, comunicados e tudo o que"
+      },
+      "erro_boot": "waitFor: document.getElementById('appShell')?.classList.contains('ready') && window.BFR_CURRENT_PROFILE?.role "
+    }
+  ],
+  "portoes": 1,
+  "falhas": [
+    "360px: o boot abriu no shell do papel | dado=\"waitFor: document.getElementById('appShell')?.classList.contains('ready') && window.BFR_CURRENT_PROFILE?.role \" | esperado=null"
+  ]
+}

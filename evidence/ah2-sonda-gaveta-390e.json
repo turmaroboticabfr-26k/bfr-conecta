@@ -1,0 +1,499 @@
+{
+  "ciclo": "AH-7b-SONDA-GAVETA",
+  "em": "2026-11-17T08:46:53.663Z",
+  "papel": "coordinator",
+  "largura": 390,
+  "altura": 720,
+  "passos": [
+    {
+      "o": "estado_inicial",
+      "e": {
+        "drawer": {
+          "cls": "bfr-mobile-drawer",
+          "w": 390,
+          "h": 720,
+          "x": 0,
+          "y": 0,
+          "disp": "block",
+          "vis": "hidden",
+          "pe": "none",
+          "z": "1500",
+          "inert": true,
+          "aria": "true"
+        },
+        "mais": {
+          "cls": "",
+          "w": 72,
+          "h": 61,
+          "x": 308,
+          "y": 654,
+          "disp": "grid",
+          "vis": "visible",
+          "pe": "auto",
+          "z": "auto",
+          "inert": false,
+          "aria": null
+        },
+        "mais_centro": {
+          "x": 344,
+          "y": 685
+        },
+        "mais_em_cima": "p.publish-status",
+        "hamb": {
+          "cls": "bfr-mobile-menu-button",
+          "w": 44,
+          "h": 44,
+          "x": 14,
+          "y": 8,
+          "disp": "grid",
+          "vis": "visible",
+          "pe": "auto",
+          "z": "auto",
+          "inert": false,
+          "aria": null
+        },
+        "clicks_vistos": [],
+        "body_open": false
+      }
+    },
+    {
+      "o": "fechar_modal_a_toque",
+      "alvo": {
+        "id": "preferredNameModal",
+        "x": 347,
+        "y": 371
+      },
+      "e": {
+        "drawer": {
+          "cls": "bfr-mobile-drawer",
+          "w": 390,
+          "h": 720,
+          "x": 0,
+          "y": 0,
+          "disp": "block",
+          "vis": "hidden",
+          "pe": "none",
+          "z": "1500",
+          "inert": true,
+          "aria": "true"
+        },
+        "mais": {
+          "cls": "",
+          "w": 72,
+          "h": 61,
+          "x": 308,
+          "y": 654,
+          "disp": "grid",
+          "vis": "visible",
+          "pe": "auto",
+          "z": "auto",
+          "inert": false,
+          "aria": null
+        },
+        "mais_centro": {
+          "x": 344,
+          "y": 685
+        },
+        "mais_em_cima": "span.bfr-mobile-icon",
+        "hamb": {
+          "cls": "bfr-mobile-menu-button",
+          "w": 44,
+          "h": 44,
+          "x": 14,
+          "y": 8,
+          "disp": "grid",
+          "vis": "visible",
+          "pe": "auto",
+          "z": "auto",
+          "inert": false,
+          "aria": null
+        },
+        "clicks_vistos": [
+          "button.modal-close|more=false|hamb=false"
+        ],
+        "body_open": false
+      }
+    },
+    {
+      "o": "duplo touch+mouse (como estava)",
+      "alvo": {
+        "x": 344,
+        "y": 685
+      },
+      "e": {
+        "drawer": {
+          "cls": "bfr-mobile-drawer",
+          "w": 390,
+          "h": 720,
+          "x": 0,
+          "y": 0,
+          "disp": "block",
+          "vis": "hidden",
+          "pe": "none",
+          "z": "1500",
+          "inert": true,
+          "aria": "true"
+        },
+        "mais": {
+          "cls": "",
+          "w": 72,
+          "h": 61,
+          "x": 308,
+          "y": 654,
+          "disp": "grid",
+          "vis": "visible",
+          "pe": "auto",
+          "z": "auto",
+          "inert": false,
+          "aria": null
+        },
+        "mais_centro": {
+          "x": 344,
+          "y": 685
+        },
+        "mais_em_cima": "span.bfr-mobile-icon",
+        "hamb": {
+          "cls": "bfr-mobile-menu-button",
+          "w": 44,
+          "h": 44,
+          "x": 14,
+          "y": 8,
+          "disp": "grid",
+          "vis": "visible",
+          "pe": "auto",
+          "z": "auto",
+          "inert": false,
+          "aria": null
+        },
+        "clicks_vistos": [],
+        "body_open": false
+      }
+    },
+    {
+      "o": "só toque",
+      "alvo": {
+        "x": 344,
+        "y": 685
+      },
+      "e": {
+        "drawer": {
+          "cls": "bfr-mobile-drawer is-open",
+          "w": 390,
+          "h": 720,
+          "x": 0,
+          "y": 0,
+          "disp": "block",
+          "vis": "visible",
+          "pe": "auto",
+          "z": "1500",
+          "inert": false,
+          "aria": "false"
+        },
+        "mais": {
+          "cls": "",
+          "w": 72,
+          "h": 61,
+          "x": 308,
+          "y": 654,
+          "disp": "grid",
+          "vis": "visible",
+          "pe": "auto",
+          "z": "auto",
+          "inert": false,
+          "aria": null
+        },
+        "mais_centro": {
+          "x": 344,
+          "y": 685
+        },
+        "mais_em_cima": "button.bfr-mobile-drawer-backdrop",
+        "hamb": {
+          "cls": "bfr-mobile-menu-button",
+          "w": 44,
+          "h": 44,
+          "x": 14,
+          "y": 8,
+          "disp": "grid",
+          "vis": "visible",
+          "pe": "auto",
+          "z": "auto",
+          "inert": false,
+          "aria": null
+        },
+        "clicks_vistos": [],
+        "body_open": true
+      }
+    },
+    {
+      "o": "só mouse",
+      "alvo": {
+        "x": 344,
+        "y": 685
+      },
+      "e": {
+        "drawer": {
+          "cls": "bfr-mobile-drawer is-open",
+          "w": 390,
+          "h": 720,
+          "x": 0,
+          "y": 0,
+          "disp": "block",
+          "vis": "visible",
+          "pe": "auto",
+          "z": "1500",
+          "inert": false,
+          "aria": "false"
+        },
+        "mais": {
+          "cls": "",
+          "w": 72,
+          "h": 61,
+          "x": 308,
+          "y": 654,
+          "disp": "grid",
+          "vis": "visible",
+          "pe": "auto",
+          "z": "auto",
+          "inert": false,
+          "aria": null
+        },
+        "mais_centro": {
+          "x": 344,
+          "y": 685
+        },
+        "mais_em_cima": "button.bfr-mobile-drawer-backdrop",
+        "hamb": {
+          "cls": "bfr-mobile-menu-button",
+          "w": 44,
+          "h": 44,
+          "x": 14,
+          "y": 8,
+          "disp": "grid",
+          "vis": "visible",
+          "pe": "auto",
+          "z": "auto",
+          "inert": false,
+          "aria": null
+        },
+        "clicks_vistos": [],
+        "body_open": true
+      }
+    },
+    {
+      "o": "toque_no_mais",
+      "alvo": {
+        "x": 344,
+        "y": 685
+      },
+      "e": {
+        "drawer": {
+          "cls": "bfr-mobile-drawer",
+          "w": 390,
+          "h": 720,
+          "x": 0,
+          "y": 0,
+          "disp": "block",
+          "vis": "hidden",
+          "pe": "none",
+          "z": "1500",
+          "inert": true,
+          "aria": "true"
+        },
+        "mais": {
+          "cls": "",
+          "w": 72,
+          "h": 61,
+          "x": 308,
+          "y": 654,
+          "disp": "grid",
+          "vis": "visible",
+          "pe": "auto",
+          "z": "auto",
+          "inert": false,
+          "aria": null
+        },
+        "mais_centro": {
+          "x": 344,
+          "y": 685
+        },
+        "mais_em_cima": "span.bfr-mobile-icon",
+        "hamb": {
+          "cls": "bfr-mobile-menu-button",
+          "w": 44,
+          "h": 44,
+          "x": 14,
+          "y": 8,
+          "disp": "grid",
+          "vis": "visible",
+          "pe": "auto",
+          "z": "auto",
+          "inert": false,
+          "aria": null
+        },
+        "clicks_vistos": [],
+        "body_open": false
+      }
+    },
+    {
+      "o": "toque_no_mais_2a_vez_toggle",
+      "alvo": {
+        "x": 344,
+        "y": 685
+      },
+      "e": {
+        "drawer": {
+          "cls": "bfr-mobile-drawer is-open",
+          "w": 390,
+          "h": 720,
+          "x": 0,
+          "y": 0,
+          "disp": "block",
+          "vis": "visible",
+          "pe": "auto",
+          "z": "1500",
+          "inert": false,
+          "aria": "false"
+        },
+        "mais": {
+          "cls": "",
+          "w": 72,
+          "h": 61,
+          "x": 308,
+          "y": 654,
+          "disp": "grid",
+          "vis": "visible",
+          "pe": "auto",
+          "z": "auto",
+          "inert": false,
+          "aria": null
+        },
+        "mais_centro": {
+          "x": 344,
+          "y": 685
+        },
+        "mais_em_cima": "button.bfr-mobile-drawer-backdrop",
+        "hamb": {
+          "cls": "bfr-mobile-menu-button",
+          "w": 44,
+          "h": 44,
+          "x": 14,
+          "y": 8,
+          "disp": "grid",
+          "vis": "visible",
+          "pe": "auto",
+          "z": "auto",
+          "inert": false,
+          "aria": null
+        },
+        "clicks_vistos": [],
+        "body_open": true
+      }
+    },
+    {
+      "o": "element_click_no_mais",
+      "e": {
+        "drawer": {
+          "cls": "bfr-mobile-drawer",
+          "w": 390,
+          "h": 720,
+          "x": 0,
+          "y": 0,
+          "disp": "block",
+          "vis": "hidden",
+          "pe": "none",
+          "z": "1500",
+          "inert": true,
+          "aria": "true"
+        },
+        "mais": {
+          "cls": "",
+          "w": 72,
+          "h": 61,
+          "x": 308,
+          "y": 654,
+          "disp": "grid",
+          "vis": "visible",
+          "pe": "auto",
+          "z": "auto",
+          "inert": false,
+          "aria": null
+        },
+        "mais_centro": {
+          "x": 344,
+          "y": 685
+        },
+        "mais_em_cima": "span.bfr-mobile-icon",
+        "hamb": {
+          "cls": "bfr-mobile-menu-button",
+          "w": 44,
+          "h": 44,
+          "x": 14,
+          "y": 8,
+          "disp": "grid",
+          "vis": "visible",
+          "pe": "auto",
+          "z": "auto",
+          "inert": false,
+          "aria": null
+        },
+        "clicks_vistos": [],
+        "body_open": false
+      }
+    },
+    {
+      "o": "toque_no_hamburguer",
+      "alvo": {
+        "x": 36,
+        "y": 30
+      },
+      "e": {
+        "drawer": {
+          "cls": "bfr-mobile-drawer is-open",
+          "w": 390,
+          "h": 720,
+          "x": 0,
+          "y": 0,
+          "disp": "block",
+          "vis": "visible",
+          "pe": "auto",
+          "z": "1500",
+          "inert": false,
+          "aria": "false"
+        },
+        "mais": {
+          "cls": "",
+          "w": 72,
+          "h": 61,
+          "x": 308,
+          "y": 654,
+          "disp": "grid",
+          "vis": "visible",
+          "pe": "auto",
+          "z": "auto",
+          "inert": false,
+          "aria": null
+        },
+        "mais_centro": {
+          "x": 344,
+          "y": 685
+        },
+        "mais_em_cima": "button.bfr-mobile-drawer-backdrop",
+        "hamb": {
+          "cls": "bfr-mobile-menu-button",
+          "w": 44,
+          "h": 44,
+          "x": 14,
+          "y": 8,
+          "disp": "grid",
+          "vis": "visible",
+          "pe": "auto",
+          "z": "auto",
+          "inert": false,
+          "aria": null
+        },
+        "clicks_vistos": [],
+        "body_open": true
+      }
+    }
+  ]
+}

@@ -1,0 +1,175 @@
+{
+  "ciclo": "AH-2-V",
+  "em": "2026-11-17T05:17:20.049Z",
+  "papeis": [
+    "pending",
+    "secretary"
+  ],
+  "bandas": [
+    "390",
+    "1280"
+  ],
+  "url": "https://bfr-conecta.turmaroboticabfr.workers.dev/",
+  "md5_shell": "d418e7fc917f1fbb1437054b7b531f9b",
+  "stages": {
+    "pending": {
+      "390": {
+        "ms_ready": 1271,
+        "erro_boot": null,
+        "entrou": false,
+        "aviso_pendencia": true,
+        "login_visivel": true,
+        "papel_da_sessao": "pending",
+        "botoes_no_dom": 36,
+        "botoes_de_menu": [],
+        "secoes": {},
+        "erros_console_relevantes": [],
+        "n_erros": 0,
+        "painel_vazio": [],
+        "estouro": [],
+        "tap_total": 0,
+        "fonte_total": 0
+      },
+      "1280": {
+        "ms_ready": 432,
+        "erro_boot": null,
+        "entrou": false,
+        "aviso_pendencia": true,
+        "login_visivel": true,
+        "papel_da_sessao": "pending",
+        "botoes_no_dom": 36,
+        "botoes_de_menu": [],
+        "secoes": {},
+        "erros_console_relevantes": [],
+        "n_erros": 0,
+        "painel_vazio": [],
+        "estouro": [],
+        "tap_total": 0,
+        "fonte_total": 0
+      }
+    },
+    "secretary": {
+      "390": {
+        "ms_ready": 476,
+        "erro_boot": null,
+        "entrou": true,
+        "aviso_pendencia": false,
+        "login_visivel": false,
+        "papel_da_sessao": "secretary",
+        "botoes_no_dom": 36,
+        "botoes_de_menu": [],
+        "secoes": {},
+        "erros_console_relevantes": [],
+        "n_erros": 0,
+        "painel_vazio": [],
+        "estouro": [],
+        "tap_total": 0,
+        "fonte_total": 0
+      },
+      "1280": {
+        "ms_ready": 474,
+        "erro_boot": null,
+        "entrou": true,
+        "aviso_pendencia": false,
+        "login_visivel": false,
+        "papel_da_sessao": "secretary",
+        "botoes_no_dom": 36,
+        "botoes_de_menu": [
+          "inicio",
+          "chat-interno",
+          "notificacoes",
+          "conteudos",
+          "jogos-escolares"
+        ],
+        "secoes": {
+          "inicio": {
+            "painel": {
+              "id": "secretaryView",
+              "c": 3265
+            },
+            "ms": 3087,
+            "controles": 42,
+            "nos": 6720,
+            "tap": 25,
+            "fonte": 0,
+            "cortados": 6,
+            "estouro_h": false,
+            "achou_botao": true
+          },
+          "chat-interno": {
+            "painel": {
+              "id": "internalChatView",
+              "c": 738
+            },
+            "ms": 1842,
+            "controles": 18,
+            "nos": 122,
+            "tap": 11,
+            "fonte": 7,
+            "cortados": 0,
+            "estouro_h": false,
+            "achou_botao": true
+          },
+          "notificacoes": {
+            "painel": {
+              "id": "bfrNotificationsView",
+              "c": 400
+            },
+            "ms": 1837,
+            "controles": 3,
+            "nos": 26,
+            "tap": 3,
+            "fonte": 0,
+            "cortados": 0,
+            "estouro_h": false,
+            "achou_botao": true
+          },
+          "conteudos": {
+            "painel": {
+              "id": "bfrContentHubView",
+              "c": 1021
+            },
+            "ms": 1833,
+            "controles": 14,
+            "nos": 68,
+            "tap": 14,
+            "fonte": 3,
+            "cortados": 0,
+            "estouro_h": false,
+            "achou_botao": true
+          },
+          "jogos-escolares": {
+            "painel": {
+              "id": "schoolGamesView",
+              "c": 865
+            },
+            "ms": 1834,
+            "controles": 8,
+            "nos": 79,
+            "tap": 8,
+            "fonte": 0,
+            "cortados": 0,
+            "estouro_h": false,
+            "achou_botao": true
+          }
+        },
+        "erros_console_relevantes": [],
+        "n_erros": 0,
+        "painel_vazio": [],
+        "estouro": [],
+        "tap_total": 61,
+        "fonte_total": 10
+      }
+    }
+  },
+  "portoes": 20,
+  "falhas": [
+    "secretary/390: entrou no shell com menu próprio | dado=false | esperado=true"
+  ],
+  "medido": {
+    "paineis_abertos": 5,
+    "bandas": 2,
+    "papeis": 2
+  },
+  "veredito": "AH2_VARREDURA_COM_DEFEITOS"
+}

@@ -1,0 +1,63 @@
+{
+  "ciclo": "AH-M5-HOME-LARGAS",
+  "em": "2026-11-17T11:34:40.600Z",
+  "rotulo": "v1",
+  "o_que_testa": "se o `inicio` acima dos 6 s é uma propriedade do papel developer ou da banda larga: conta por banda, com o número de papéis e quais falharam.",
+  "ficheiros_lidos": 43,
+  "bandas_lidas": 300,
+  "tetos": [
+    6000
+  ],
+  "md5_shell": [
+    "d418e7fc917f1fbb1437054b7b531f9b"
+  ],
+  "por_banda_larga": {
+    "1366": {
+      "bandas": 15,
+      "papéis": 15,
+      "com_inicio_medido": 13,
+      "inicio_acima_do_teto": [],
+      "qualquer_seccao_acima_do_teto": [],
+      "mediana_ms_inicio": 2430,
+      "max_ms_inicio": 4983
+    },
+    "1440": {
+      "bandas": 15,
+      "papéis": 15,
+      "com_inicio_medido": 13,
+      "inicio_acima_do_teto": [
+        "developer=6141"
+      ],
+      "qualquer_seccao_acima_do_teto": [
+        "developer: inicio=6141"
+      ],
+      "mediana_ms_inicio": 2452,
+      "max_ms_inicio": 6141
+    },
+    "1920": {
+      "bandas": 15,
+      "papéis": 15,
+      "com_inicio_medido": 13,
+      "inicio_acima_do_teto": [],
+      "qualquer_seccao_acima_do_teto": [],
+      "mediana_ms_inicio": 2460,
+      "max_ms_inicio": 5572
+    }
+  },
+  "developer_1440": [
+    {
+      "ficheiro": "ah2-varredura-17-11-1440g1.json",
+      "papel": "developer",
+      "banda": 1440,
+      "md5_shell": "d418e7fc917f1fbb1437054b7b531f9b",
+      "ms_ready": 2056,
+      "ms_inicio": 6141,
+      "painel_inicio": "adminView#147354",
+      "seccoes_medidas": 24,
+      "acima_do_teto": [
+        "inicio=6141"
+      ],
+      "teto": 6000
+    }
+  ]
+}

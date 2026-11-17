@@ -1,0 +1,272 @@
+{
+  "ciclo": "AH-2-V",
+  "em": "2026-11-17T06:59:04.369Z",
+  "tetos": {
+    "boot_s": 75,
+    "estabilizacao_ms": 6000,
+    "cdp_timeout_ms": 25000,
+    "praga_s": 470,
+    "watchdog_s": 560
+  },
+  "papeis": [
+    "gatekeeper"
+  ],
+  "bandas": [
+    "1280"
+  ],
+  "url": "https://bfr-conecta.turmaroboticabfr.workers.dev/",
+  "md5_shell": "d418e7fc917f1fbb1437054b7b531f9b",
+  "mapa_declarado": {
+    "parent": 16,
+    "student": 19,
+    "teacher": 22,
+    "coordinator": 18,
+    "admin": 26,
+    "director": 15,
+    "monitor": 8,
+    "gatekeeper": 8,
+    "secretary": 11,
+    "aee": 10,
+    "psychology": 3,
+    "multiprofessional": 3,
+    "sports_operator": 4,
+    "education_supervisor": 12
+  },
+  "traducao_lida_do_bundle": "viewRole = role === 'developer' ? 'admin' : role === 'pedagogical' ? 'teacher' : role === 'psychology' ? 'psychology' : role === 'social_work' ? 'multiprofessional' : role;",
+  "stages": {
+    "gatekeeper": {
+      "1280": {
+        "nav": {
+          "tentativas": 1,
+          "ms": 146,
+          "ok": true
+        },
+        "ms_ready": 553,
+        "erro_boot": null,
+        "estado": {
+          "entrou": true,
+          "aviso_pendencia": false,
+          "login_visivel": false,
+          "nav_visiveis": 4
+        },
+        "papel_da_sessao": "gatekeeper",
+        "botoes_no_dom": 36,
+        "peca": {
+          "inicio": {
+            "painel": {
+              "id": "gatekeeperView",
+              "c": 1703
+            },
+            "ms": 3042,
+            "controles": 26,
+            "nos": 1126,
+            "tap": 11,
+            "fonte": 4,
+            "cortados": 1,
+            "estouro_h": false,
+            "seccao_ativa": "inicio",
+            "papel_apos": "gatekeeper",
+            "view_apos": "gatekeeper",
+            "nao_estabilizou": false,
+            "botao_attivo": "inicio",
+            "view_antes": null
+          },
+          "gate": {
+            "painel": {
+              "id": "gatekeeperView",
+              "c": 1703
+            },
+            "ms": 1823,
+            "controles": 26,
+            "nos": 1126,
+            "tap": 11,
+            "fonte": 4,
+            "cortados": 1,
+            "estouro_h": false,
+            "seccao_ativa": "gate",
+            "papel_apos": "gatekeeper",
+            "view_apos": "gatekeeper",
+            "nao_estabilizou": false,
+            "botao_attivo": null,
+            "view_antes": "gatekeeper"
+          },
+          "horarios": {
+            "painel": {
+              "id": "gatekeeperView",
+              "c": 1311
+            },
+            "ms": 1821,
+            "controles": 9,
+            "nos": 1126,
+            "tap": 9,
+            "fonte": 0,
+            "cortados": 3,
+            "estouro_h": false,
+            "seccao_ativa": "horarios",
+            "papel_apos": "gatekeeper",
+            "view_apos": "gatekeeper",
+            "nao_estabilizou": false,
+            "botao_attivo": null,
+            "view_antes": "gatekeeper"
+          },
+          "comunicados": {
+            "painel": {
+              "id": "gatekeeperView",
+              "c": 1311
+            },
+            "ms": 1824,
+            "controles": 9,
+            "nos": 1126,
+            "tap": 9,
+            "fonte": 0,
+            "cortados": 3,
+            "estouro_h": false,
+            "seccao_ativa": "comunicados",
+            "papel_apos": "gatekeeper",
+            "view_apos": "gatekeeper",
+            "nao_estabilizou": false,
+            "botao_attivo": "comunicados",
+            "view_antes": "gatekeeper"
+          },
+          "notificacoes": {
+            "painel": {
+              "id": "bfrNotificationsView",
+              "c": 400
+            },
+            "ms": 1822,
+            "controles": 3,
+            "nos": 26,
+            "tap": 3,
+            "fonte": 0,
+            "cortados": 0,
+            "estouro_h": false,
+            "seccao_ativa": "notificacoes",
+            "papel_apos": "gatekeeper",
+            "view_apos": "gatekeeper",
+            "nao_estabilizou": false,
+            "botao_attivo": "notificacoes",
+            "view_antes": "gatekeeper"
+          },
+          "conteudos": {
+            "painel": {
+              "id": "bfrContentHubView",
+              "c": 1021
+            },
+            "ms": 1822,
+            "controles": 14,
+            "nos": 68,
+            "tap": 14,
+            "fonte": 3,
+            "cortados": 0,
+            "estouro_h": false,
+            "seccao_ativa": "conteudos",
+            "papel_apos": "gatekeeper",
+            "view_apos": "gatekeeper",
+            "nao_estabilizou": false,
+            "botao_attivo": "conteudos",
+            "view_antes": "gatekeeper"
+          },
+          "jogos-escolares": {
+            "painel": {
+              "id": "schoolGamesView",
+              "c": 865
+            },
+            "ms": 1827,
+            "controles": 8,
+            "nos": 79,
+            "tap": 8,
+            "fonte": 0,
+            "cortados": 0,
+            "estouro_h": false,
+            "seccao_ativa": "jogos-escolares",
+            "papel_apos": "gatekeeper",
+            "view_apos": "gatekeeper",
+            "nao_estabilizou": false,
+            "botao_attivo": null,
+            "view_antes": "gatekeeper"
+          }
+        },
+        "sem_botao": [
+          "escola-historia"
+        ],
+        "erros_console": [],
+        "erros_brutos": 0,
+        "log_rede_erros": 3,
+        "log_rede_amostra": [
+          {
+            "fonte": "network",
+            "texto": "Failed to load resource: the server responded with a status of 404 ()",
+            "url": "/cdn-cgi/rum"
+          },
+          {
+            "fonte": "network",
+            "texto": "Failed to load resource: the server responded with a status of 404 ()",
+            "url": "/rest/v1/bfr_school_calendar_days"
+          },
+          {
+            "fonte": "network",
+            "texto": "Failed to load resource: the server responded with a status of 404 ()",
+            "url": "/rest/v1/bfr_school_shift_settings"
+          }
+        ],
+        "falhas_api_rede": [
+          {
+            "fonte": "network",
+            "texto": "Failed to load resource: the server responded with a status of 404 ()",
+            "url": "/rest/v1/bfr_school_calendar_days"
+          },
+          {
+            "fonte": "network",
+            "texto": "Failed to load resource: the server responded with a status of 404 ()",
+            "url": "/rest/v1/bfr_school_shift_settings"
+          }
+        ],
+        "erros_brutos_amostra": [],
+        "n_erros": 0,
+        "painel_vazio": [],
+        "estouro": [],
+        "tap_total": 65,
+        "fonte_total": 11,
+        "abertas": 7,
+        "instaveis": [],
+        "ms_max": 3042,
+        "ms_de_inicio": 3042,
+        "seg_banda": 15.5
+      },
+      "declaradas": 8,
+      "secoes": [
+        "inicio",
+        "gate",
+        "horarios",
+        "comunicados",
+        "escola-historia",
+        "notificacoes",
+        "conteudos",
+        "jogos-escolares"
+      ],
+      "injecao_1280": {
+        "expira_em_s": 3597,
+        "acesso_md5_8": "0f1dee1e"
+      }
+    }
+  },
+  "portoes": 14,
+  "falhas": [
+    "gatekeeper/1280: 0 falhas de rede em /auth/ ou /rest/ | dado=[{\"fonte\":\"network\",\"texto\":\"Failed to load resource: the server responded with a status of 404 ()\",\"url\":\"/rest/v1/bfr_school_calendar_days\"},{\"fonte\":\"network\",\"texto\":\"Failed to load resource: the server responded with a status of 404 ()\",\"url\":\"/rest/v1/bfr_school_shift_settings\"}] | esperado=[]"
+  ],
+  "medido": {
+    "papeis": 1,
+    "bandas": 1,
+    "banda_nomes": [
+      "1280"
+    ],
+    "paineis_abertos": 7,
+    "secoes_sem_botao": {
+      "gatekeeper": [
+        "escola-historia"
+      ]
+    },
+    "completa": true
+  },
+  "veredito": "AH2_VARREDURA_COM_DEFEITOS"
+}

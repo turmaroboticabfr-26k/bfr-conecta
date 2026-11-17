@@ -1,0 +1,67 @@
+{
+  "ciclo": "AH-2-LIMITE",
+  "em": "2026-11-17T07:20:02.262Z",
+  "notas": "GET only; 0 escrita",
+  "pedidos": {
+    "service_role": {
+      "http": 200,
+      "linhas": 24,
+      "total_declarado": "0-23/24",
+      "erro": null
+    },
+    "anon": {
+      "http": 200,
+      "linhas": 0,
+      "total_declarado": "*/0",
+      "erro": null
+    },
+    "authenticated_developer": {
+      "http": 200,
+      "linhas": 10,
+      "total_declarado": "0-9/10",
+      "erro": null
+    }
+  },
+  "project": {
+    "http": 200,
+    "relevantes": {}
+  },
+  "politicas_rls_profiles": [
+    {
+      "polname": "director_dashboard_read_profiles",
+      "polcmd": "r",
+      "using_": "((\"current_role\"())::text = 'director'::text)",
+      "check_": null
+    },
+    {
+      "polname": "profiles_chat_staff_directory_read",
+      "polcmd": "r",
+      "using_": "(internal_chat_is_staff() AND (role = ANY (ARRAY['pedagogical'::account_role, 'aee'::account_role, 'coordinator'::account_role, 'director'::account_role, 'secretary'::account_role, 'developer'::account_role])))",
+      "check_": null
+    },
+    {
+      "polname": "profiles_hide_test_accounts",
+      "polcmd": "r",
+      "using_": "((id = auth.uid()) OR ((email !~~ '%@bfr-conecta.test'::text) AND (email !~~ 'bfr.qa.email.%'::text)))",
+      "check_": null
+    },
+    {
+      "polname": "profiles_read",
+      "polcmd": "r",
+      "using_": "((id = auth.uid()) OR is_developer() OR bfr_profile_in_my_schools(id))",
+      "check_": null
+    },
+    {
+      "polname": "profiles_staff_update",
+      "polcmd": "w",
+      "using_": "is_developer()",
+      "check_": "is_developer()"
+    },
+    {
+      "polname": "profiles_update_self",
+      "polcmd": "w",
+      "using_": "(id = auth.uid())",
+      "check_": "(id = auth.uid())"
+    }
+  ]
+}

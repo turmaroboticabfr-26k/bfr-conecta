@@ -1,0 +1,1158 @@
+{
+  "em": "2026-11-17T04:53:58.040Z",
+  "predicado": "email like 'ah2-%@bfr-conecta.test'",
+  "stages": {
+    "dependentes_antes": [
+      {
+        "tabela": "guardian_students",
+        "coluna": "profile_id",
+        "linhas_na_classe": 0,
+        "acao": "apagar"
+      },
+      {
+        "tabela": "access_requests",
+        "coluna": "reviewed_by",
+        "linhas_na_classe": 0,
+        "acao": "apagar"
+      },
+      {
+        "tabela": "grades",
+        "coluna": "entered_by",
+        "linhas_na_classe": 0,
+        "acao": "apagar"
+      },
+      {
+        "tabela": "attendance",
+        "coluna": "entered_by",
+        "linhas_na_classe": 0,
+        "acao": "apagar"
+      },
+      {
+        "tabela": "announcements",
+        "coluna": "published_by",
+        "linhas_na_classe": 0,
+        "acao": "apagar"
+      },
+      {
+        "tabela": "occurrences",
+        "coluna": "created_by",
+        "linhas_na_classe": 0,
+        "acao": "apagar"
+      },
+      {
+        "tabela": "projects",
+        "coluna": "created_by",
+        "linhas_na_classe": 0,
+        "acao": "apagar"
+      },
+      {
+        "tabela": "project_photos",
+        "coluna": "uploaded_by",
+        "linhas_na_classe": 0,
+        "acao": "apagar"
+      },
+      {
+        "tabela": "student_messages",
+        "coluna": "sender_id",
+        "linhas_na_classe": 0,
+        "acao": "apagar"
+      },
+      {
+        "tabela": "student_messages",
+        "coluna": "recipient_id",
+        "linhas_na_classe": 0,
+        "acao": "apagar"
+      },
+      {
+        "tabela": "gate_messages",
+        "coluna": "sender_id",
+        "linhas_na_classe": 0,
+        "acao": "apagar"
+      },
+      {
+        "tabela": "polls",
+        "coluna": "created_by",
+        "linhas_na_classe": 0,
+        "acao": "apagar"
+      },
+      {
+        "tabela": "poll_votes",
+        "coluna": "profile_id",
+        "linhas_na_classe": 0,
+        "acao": "apagar"
+      },
+      {
+        "tabela": "photos",
+        "coluna": "uploaded_by",
+        "linhas_na_classe": 0,
+        "acao": "apagar"
+      },
+      {
+        "tabela": "project_results",
+        "coluna": "updated_by",
+        "linhas_na_classe": 0,
+        "acao": "apagar"
+      },
+      {
+        "tabela": "route_incidents",
+        "coluna": "monitor_id",
+        "linhas_na_classe": 0,
+        "acao": "apagar"
+      },
+      {
+        "tabela": "school_activities",
+        "coluna": "published_by",
+        "linhas_na_classe": 0,
+        "acao": "apagar"
+      },
+      {
+        "tabela": "internal_chat_room_members",
+        "coluna": "profile_id",
+        "linhas_na_classe": 0,
+        "acao": "apagar"
+      },
+      {
+        "tabela": "gate_checkins",
+        "coluna": "gatekeeper_id",
+        "linhas_na_classe": 0,
+        "acao": "apagar"
+      },
+      {
+        "tabela": "internal_chat_messages",
+        "coluna": "sender_id",
+        "linhas_na_classe": 0,
+        "acao": "apagar"
+      },
+      {
+        "tabela": "internal_chat_presence",
+        "coluna": "profile_id",
+        "linhas_na_classe": 0,
+        "acao": "apagar"
+      },
+      {
+        "tabela": "instagram_accounts",
+        "coluna": "created_by",
+        "linhas_na_classe": 0,
+        "acao": "apagar"
+      },
+      {
+        "tabela": "announcement_reads",
+        "coluna": "profile_id",
+        "linhas_na_classe": 0,
+        "acao": "apagar"
+      },
+      {
+        "tabela": "gate_checkins",
+        "coluna": "guardian_confirmed_by",
+        "linhas_na_classe": 0,
+        "acao": "apagar"
+      },
+      {
+        "tabela": "entry_restrictions",
+        "coluna": "created_by",
+        "linhas_na_classe": 0,
+        "acao": "apagar"
+      },
+      {
+        "tabela": "entry_restrictions",
+        "coluna": "resolved_by",
+        "linhas_na_classe": 0,
+        "acao": "apagar"
+      },
+      {
+        "tabela": "gate_entry_alerts",
+        "coluna": "gatekeeper_id",
+        "linhas_na_classe": 0,
+        "acao": "apagar"
+      },
+      {
+        "tabela": "gate_entry_alerts",
+        "coluna": "acknowledged_by",
+        "linhas_na_classe": 0,
+        "acao": "apagar"
+      },
+      {
+        "tabela": "gate_entry_alerts",
+        "coluna": "resolved_by",
+        "linhas_na_classe": 0,
+        "acao": "apagar"
+      },
+      {
+        "tabela": "instagram_posts",
+        "coluna": "reviewed_by",
+        "linhas_na_classe": 0,
+        "acao": "apagar"
+      },
+      {
+        "tabela": "sports_match_events",
+        "coluna": "created_by",
+        "linhas_na_classe": 0,
+        "acao": "apagar"
+      },
+      {
+        "tabela": "support_appointments",
+        "coluna": "created_by",
+        "linhas_na_classe": 0,
+        "acao": "apagar"
+      },
+      {
+        "tabela": "support_appointments",
+        "coluna": "updated_by",
+        "linhas_na_classe": 0,
+        "acao": "apagar"
+      },
+      {
+        "tabela": "bfr_teacher_directory",
+        "coluna": "profile_id",
+        "linhas_na_classe": 0,
+        "acao": "desligar"
+      },
+      {
+        "tabela": "bfr_schedule_versions",
+        "coluna": "imported_by",
+        "linhas_na_classe": 0,
+        "acao": "apagar"
+      },
+      {
+        "tabela": "bfr_schedule_versions",
+        "coluna": "published_by",
+        "linhas_na_classe": 0,
+        "acao": "apagar"
+      },
+      {
+        "tabela": "aee_student_links",
+        "coluna": "teacher_id",
+        "linhas_na_classe": 0,
+        "acao": "apagar"
+      },
+      {
+        "tabela": "aee_plans",
+        "coluna": "created_by",
+        "linhas_na_classe": 0,
+        "acao": "apagar"
+      },
+      {
+        "tabela": "aee_plans",
+        "coluna": "updated_by",
+        "linhas_na_classe": 0,
+        "acao": "apagar"
+      },
+      {
+        "tabela": "aee_progress",
+        "coluna": "teacher_id",
+        "linhas_na_classe": 0,
+        "acao": "apagar"
+      },
+      {
+        "tabela": "aee_sessions",
+        "coluna": "teacher_id",
+        "linhas_na_classe": 0,
+        "acao": "apagar"
+      },
+      {
+        "tabela": "aee_activities",
+        "coluna": "created_by",
+        "linhas_na_classe": 0,
+        "acao": "apagar"
+      },
+      {
+        "tabela": "aee_activity_recommendations",
+        "coluna": "teacher_id",
+        "linhas_na_classe": 0,
+        "acao": "apagar"
+      },
+      {
+        "tabela": "support_follow_ups",
+        "coluna": "created_by",
+        "linhas_na_classe": 0,
+        "acao": "apagar"
+      },
+      {
+        "tabela": "aee_attendance",
+        "coluna": "teacher_id",
+        "linhas_na_classe": 0,
+        "acao": "apagar"
+      },
+      {
+        "tabela": "aee_messages",
+        "coluna": "sender_id",
+        "linhas_na_classe": 0,
+        "acao": "apagar"
+      },
+      {
+        "tabela": "aee_messages",
+        "coluna": "recipient_id",
+        "linhas_na_classe": 0,
+        "acao": "apagar"
+      },
+      {
+        "tabela": "bfr_schedule_import_runs",
+        "coluna": "started_by",
+        "linhas_na_classe": 0,
+        "acao": "apagar"
+      },
+      {
+        "tabela": "aee_student_profiles",
+        "coluna": "updated_by",
+        "linhas_na_classe": 0,
+        "acao": "apagar"
+      },
+      {
+        "tabela": "student_reading_levels",
+        "coluna": "updated_by",
+        "linhas_na_classe": 0,
+        "acao": "apagar"
+      },
+      {
+        "tabela": "support_services",
+        "coluna": "created_by",
+        "linhas_na_classe": 0,
+        "acao": "apagar"
+      },
+      {
+        "tabela": "support_professionals",
+        "coluna": "profile_id",
+        "linhas_na_classe": 0,
+        "acao": "apagar"
+      },
+      {
+        "tabela": "support_professionals",
+        "coluna": "created_by",
+        "linhas_na_classe": 0,
+        "acao": "apagar"
+      },
+      {
+        "tabela": "support_requests",
+        "coluna": "requester_id",
+        "linhas_na_classe": 0,
+        "acao": "apagar"
+      },
+      {
+        "tabela": "support_plans",
+        "coluna": "created_by",
+        "linhas_na_classe": 0,
+        "acao": "apagar"
+      },
+      {
+        "tabela": "support_messages",
+        "coluna": "sender_id",
+        "linhas_na_classe": 0,
+        "acao": "apagar"
+      },
+      {
+        "tabela": "support_messages",
+        "coluna": "recipient_id",
+        "linhas_na_classe": 0,
+        "acao": "apagar"
+      },
+      {
+        "tabela": "bfr_grade_audit",
+        "coluna": "changed_by",
+        "linhas_na_classe": 0,
+        "acao": "apagar"
+      },
+      {
+        "tabela": "staff_channel_members",
+        "coluna": "added_by",
+        "linhas_na_classe": 0,
+        "acao": "apagar"
+      },
+      {
+        "tabela": "student_game_sessions",
+        "coluna": "profile_id",
+        "linhas_na_classe": 0,
+        "acao": "apagar"
+      },
+      {
+        "tabela": "bfr_schedule_changes",
+        "coluna": "changed_by",
+        "linhas_na_classe": 0,
+        "acao": "apagar"
+      },
+      {
+        "tabela": "bfr_teacher_class_subjects",
+        "coluna": "profile_id",
+        "linhas_na_classe": 0,
+        "acao": "apagar"
+      },
+      {
+        "tabela": "bfr_teacher_content",
+        "coluna": "profile_id",
+        "linhas_na_classe": 0,
+        "acao": "apagar"
+      },
+      {
+        "tabela": "bfr_teacher_diary",
+        "coluna": "profile_id",
+        "linhas_na_classe": 0,
+        "acao": "apagar"
+      },
+      {
+        "tabela": "staff_channel_members",
+        "coluna": "profile_id",
+        "linhas_na_classe": 0,
+        "acao": "apagar"
+      },
+      {
+        "tabela": "bfr_teacher_plans",
+        "coluna": "profile_id",
+        "linhas_na_classe": 0,
+        "acao": "apagar"
+      },
+      {
+        "tabela": "bfr_teacher_events",
+        "coluna": "profile_id",
+        "linhas_na_classe": 0,
+        "acao": "apagar"
+      },
+      {
+        "tabela": "literacy_progress",
+        "coluna": "updated_by",
+        "linhas_na_classe": 0,
+        "acao": "apagar"
+      },
+      {
+        "tabela": "literacy_activity_attempts",
+        "coluna": "profile_id",
+        "linhas_na_classe": 0,
+        "acao": "apagar"
+      },
+      {
+        "tabela": "staff_messages",
+        "coluna": "sender_id",
+        "linhas_na_classe": 0,
+        "acao": "apagar"
+      },
+      {
+        "tabela": "staff_messages",
+        "coluna": "recipient_id",
+        "linhas_na_classe": 0,
+        "acao": "apagar"
+      },
+      {
+        "tabela": "staff_message_reads",
+        "coluna": "profile_id",
+        "linhas_na_classe": 0,
+        "acao": "apagar"
+      },
+      {
+        "tabela": "staff_presence",
+        "coluna": "profile_id",
+        "linhas_na_classe": 0,
+        "acao": "apagar"
+      },
+      {
+        "tabela": "staff_announcements",
+        "coluna": "published_by",
+        "linhas_na_classe": 0,
+        "acao": "apagar"
+      },
+      {
+        "tabela": "staff_announcement_reads",
+        "coluna": "profile_id",
+        "linhas_na_classe": 0,
+        "acao": "apagar"
+      },
+      {
+        "tabela": "school_videos",
+        "coluna": "created_by",
+        "linhas_na_classe": 0,
+        "acao": "apagar"
+      },
+      {
+        "tabela": "bfr_coordination_threads",
+        "coluna": "guardian_id",
+        "linhas_na_classe": 0,
+        "acao": "apagar"
+      },
+      {
+        "tabela": "bfr_coordination_threads",
+        "coluna": "assigned_to",
+        "linhas_na_classe": 0,
+        "acao": "apagar"
+      },
+      {
+        "tabela": "bfr_coordination_messages",
+        "coluna": "sender_id",
+        "linhas_na_classe": 0,
+        "acao": "apagar"
+      },
+      {
+        "tabela": "learning_indicator_settings",
+        "coluna": "updated_by",
+        "linhas_na_classe": 0,
+        "acao": "apagar"
+      },
+      {
+        "tabela": "learning_subjects",
+        "coluna": "created_by",
+        "linhas_na_classe": 0,
+        "acao": "apagar"
+      },
+      {
+        "tabela": "learning_skills",
+        "coluna": "created_by",
+        "linhas_na_classe": 0,
+        "acao": "apagar"
+      },
+      {
+        "tabela": "learning_action_plans",
+        "coluna": "responsible_id",
+        "linhas_na_classe": 0,
+        "acao": "apagar"
+      },
+      {
+        "tabela": "learning_action_plans",
+        "coluna": "created_by",
+        "linhas_na_classe": 0,
+        "acao": "apagar"
+      },
+      {
+        "tabela": "learning_action_plans",
+        "coluna": "approved_by",
+        "linhas_na_classe": 0,
+        "acao": "apagar"
+      },
+      {
+        "tabela": "collaboration_projects",
+        "coluna": "owner_id",
+        "linhas_na_classe": 0,
+        "acao": "apagar"
+      },
+      {
+        "tabela": "collaboration_projects",
+        "coluna": "created_by",
+        "linhas_na_classe": 0,
+        "acao": "apagar"
+      },
+      {
+        "tabela": "collaboration_project_members",
+        "coluna": "profile_id",
+        "linhas_na_classe": 0,
+        "acao": "apagar"
+      },
+      {
+        "tabela": "collaboration_project_members",
+        "coluna": "added_by",
+        "linhas_na_classe": 0,
+        "acao": "apagar"
+      },
+      {
+        "tabela": "collaboration_project_stages",
+        "coluna": "completed_by",
+        "linhas_na_classe": 0,
+        "acao": "apagar"
+      },
+      {
+        "tabela": "collaboration_tasks",
+        "coluna": "owner_id",
+        "linhas_na_classe": 0,
+        "acao": "apagar"
+      },
+      {
+        "tabela": "collaboration_tasks",
+        "coluna": "created_by",
+        "linhas_na_classe": 0,
+        "acao": "apagar"
+      },
+      {
+        "tabela": "collaboration_tasks",
+        "coluna": "updated_by",
+        "linhas_na_classe": 0,
+        "acao": "apagar"
+      },
+      {
+        "tabela": "collaboration_tasks",
+        "coluna": "completed_by",
+        "linhas_na_classe": 0,
+        "acao": "apagar"
+      },
+      {
+        "tabela": "collaboration_task_members",
+        "coluna": "profile_id",
+        "linhas_na_classe": 0,
+        "acao": "apagar"
+      },
+      {
+        "tabela": "collaboration_task_members",
+        "coluna": "added_by",
+        "linhas_na_classe": 0,
+        "acao": "apagar"
+      },
+      {
+        "tabela": "collaboration_task_comments",
+        "coluna": "author_id",
+        "linhas_na_classe": 0,
+        "acao": "apagar"
+      },
+      {
+        "tabela": "collaboration_task_attachments",
+        "coluna": "uploaded_by",
+        "linhas_na_classe": 0,
+        "acao": "apagar"
+      },
+      {
+        "tabela": "collaboration_notifications",
+        "coluna": "recipient_id",
+        "linhas_na_classe": 0,
+        "acao": "apagar"
+      },
+      {
+        "tabela": "collaboration_notifications",
+        "coluna": "actor_id",
+        "linhas_na_classe": 0,
+        "acao": "apagar"
+      },
+      {
+        "tabela": "staff_channels",
+        "coluna": "created_by",
+        "linhas_na_classe": 0,
+        "acao": "apagar"
+      },
+      {
+        "tabela": "staff_channels",
+        "coluna": "archived_by",
+        "linhas_na_classe": 0,
+        "acao": "apagar"
+      },
+      {
+        "tabela": "staff_message_attachments",
+        "coluna": "uploaded_by",
+        "linhas_na_classe": 0,
+        "acao": "apagar"
+      },
+      {
+        "tabela": "staff_message_forwards",
+        "coluna": "forwarded_by",
+        "linhas_na_classe": 0,
+        "acao": "apagar"
+      },
+      {
+        "tabela": "staff_security_audit",
+        "coluna": "actor_id",
+        "linhas_na_classe": 0,
+        "acao": "apagar"
+      },
+      {
+        "tabela": "learning_action_items",
+        "coluna": "created_by",
+        "linhas_na_classe": 0,
+        "acao": "apagar"
+      },
+      {
+        "tabela": "student_location_report_throttle",
+        "coluna": "profile_id",
+        "linhas_na_classe": 0,
+        "acao": "apagar"
+      },
+      {
+        "tabela": "internal_chat_message_reactions",
+        "coluna": "profile_id",
+        "linhas_na_classe": 0,
+        "acao": "apagar"
+      },
+      {
+        "tabela": "internal_chat_message_reports",
+        "coluna": "reporter_id",
+        "linhas_na_classe": 0,
+        "acao": "apagar"
+      },
+      {
+        "tabela": "internal_chat_message_reports",
+        "coluna": "reviewed_by",
+        "linhas_na_classe": 0,
+        "acao": "apagar"
+      },
+      {
+        "tabela": "learning_teacher_actions",
+        "coluna": "teacher_id",
+        "linhas_na_classe": 0,
+        "acao": "apagar"
+      },
+      {
+        "tabela": "learning_teacher_actions",
+        "coluna": "assigned_by",
+        "linhas_na_classe": 0,
+        "acao": "apagar"
+      },
+      {
+        "tabela": "sports_championships",
+        "coluna": "created_by",
+        "linhas_na_classe": 0,
+        "acao": "apagar"
+      },
+      {
+        "tabela": "sports_schools",
+        "coluna": "created_by",
+        "linhas_na_classe": 0,
+        "acao": "apagar"
+      },
+      {
+        "tabela": "sports_teams",
+        "coluna": "created_by",
+        "linhas_na_classe": 0,
+        "acao": "apagar"
+      },
+      {
+        "tabela": "sports_athletes",
+        "coluna": "created_by",
+        "linhas_na_classe": 0,
+        "acao": "apagar"
+      },
+      {
+        "tabela": "sports_matches",
+        "coluna": "created_by",
+        "linhas_na_classe": 0,
+        "acao": "apagar"
+      },
+      {
+        "tabela": "sports_matches",
+        "coluna": "updated_by",
+        "linhas_na_classe": 0,
+        "acao": "apagar"
+      },
+      {
+        "tabela": "sports_match_followers",
+        "coluna": "profile_id",
+        "linhas_na_classe": 0,
+        "acao": "apagar"
+      },
+      {
+        "tabela": "sports_audit_log",
+        "coluna": "created_by",
+        "linhas_na_classe": 0,
+        "acao": "apagar"
+      },
+      {
+        "tabela": "learning_evidence",
+        "coluna": "created_by",
+        "linhas_na_classe": 0,
+        "acao": "apagar"
+      },
+      {
+        "tabela": "learning_assessments",
+        "coluna": "created_by",
+        "linhas_na_classe": 0,
+        "acao": "apagar"
+      },
+      {
+        "tabela": "school_meetings",
+        "coluna": "created_by",
+        "linhas_na_classe": 0,
+        "acao": "apagar"
+      },
+      {
+        "tabela": "announcement_recipients",
+        "coluna": "recipient_id",
+        "linhas_na_classe": 0,
+        "acao": "apagar"
+      },
+      {
+        "tabela": "school_meeting_recipients",
+        "coluna": "recipient_id",
+        "linhas_na_classe": 0,
+        "acao": "apagar"
+      },
+      {
+        "tabela": "meeting_notifications",
+        "coluna": "recipient_id",
+        "linhas_na_classe": 0,
+        "acao": "apagar"
+      },
+      {
+        "tabela": "learning_assessment_results",
+        "coluna": "recorded_by",
+        "linhas_na_classe": 0,
+        "acao": "apagar"
+      },
+      {
+        "tabela": "student_avatar_configs",
+        "coluna": "profile_id",
+        "linhas_na_classe": 0,
+        "acao": "apagar"
+      },
+      {
+        "tabela": "student_avatar_configs",
+        "coluna": "updated_by",
+        "linhas_na_classe": 0,
+        "acao": "apagar"
+      },
+      {
+        "tabela": "learning_external_results",
+        "coluna": "imported_by",
+        "linhas_na_classe": 0,
+        "acao": "apagar"
+      },
+      {
+        "tabela": "learning_student_progress",
+        "coluna": "recorded_by",
+        "linhas_na_classe": 0,
+        "acao": "apagar"
+      },
+      {
+        "tabela": "learning_goals",
+        "coluna": "teacher_id",
+        "linhas_na_classe": 0,
+        "acao": "apagar"
+      },
+      {
+        "tabela": "learning_goals",
+        "coluna": "created_by",
+        "linhas_na_classe": 0,
+        "acao": "apagar"
+      },
+      {
+        "tabela": "learning_interventions",
+        "coluna": "created_by",
+        "linhas_na_classe": 0,
+        "acao": "apagar"
+      },
+      {
+        "tabela": "learning_meetings",
+        "coluna": "created_by",
+        "linhas_na_classe": 0,
+        "acao": "apagar"
+      },
+      {
+        "tabela": "learning_meeting_actions",
+        "coluna": "responsible_id",
+        "linhas_na_classe": 0,
+        "acao": "apagar"
+      },
+      {
+        "tabela": "learning_notifications",
+        "coluna": "profile_id",
+        "linhas_na_classe": 0,
+        "acao": "apagar"
+      },
+      {
+        "tabela": "learning_pedagogical_reports",
+        "coluna": "generated_by",
+        "linhas_na_classe": 0,
+        "acao": "apagar"
+      },
+      {
+        "tabela": "bfr_lesson_attendance",
+        "coluna": "entered_by",
+        "linhas_na_classe": 0,
+        "acao": "apagar"
+      },
+      {
+        "tabela": "bfr_lesson_attendance",
+        "coluna": "updated_by",
+        "linhas_na_classe": 0,
+        "acao": "apagar"
+      },
+      {
+        "tabela": "bfr_lesson_attendance_audit",
+        "coluna": "changed_by",
+        "linhas_na_classe": 0,
+        "acao": "apagar"
+      },
+      {
+        "tabela": "staff_schools",
+        "coluna": "profile_id",
+        "linhas_na_classe": 3,
+        "acao": "apagar"
+      },
+      {
+        "tabela": "aee_adaptations",
+        "coluna": "teacher_id",
+        "linhas_na_classe": 0,
+        "acao": "apagar"
+      },
+      {
+        "tabela": "aee_adaptations",
+        "coluna": "created_by",
+        "linhas_na_classe": 0,
+        "acao": "apagar"
+      },
+      {
+        "tabela": "aee_resources",
+        "coluna": "teacher_id",
+        "linhas_na_classe": 0,
+        "acao": "apagar"
+      },
+      {
+        "tabela": "aee_resources",
+        "coluna": "created_by",
+        "linhas_na_classe": 0,
+        "acao": "apagar"
+      },
+      {
+        "tabela": "aee_materials",
+        "coluna": "teacher_id",
+        "linhas_na_classe": 0,
+        "acao": "apagar"
+      },
+      {
+        "tabela": "aee_materials",
+        "coluna": "created_by",
+        "linhas_na_classe": 0,
+        "acao": "apagar"
+      },
+      {
+        "tabela": "psychology_referrals",
+        "coluna": "created_by",
+        "linhas_na_classe": 0,
+        "acao": "apagar"
+      },
+      {
+        "tabela": "psychology_returns",
+        "coluna": "created_by",
+        "linhas_na_classe": 0,
+        "acao": "apagar"
+      },
+      {
+        "tabela": "psychology_meetings",
+        "coluna": "created_by",
+        "linhas_na_classe": 0,
+        "acao": "apagar"
+      },
+      {
+        "tabela": "aee_plan_reviews",
+        "coluna": "created_by",
+        "linhas_na_classe": 0,
+        "acao": "apagar"
+      },
+      {
+        "tabela": "support_requests",
+        "coluna": "assigned_to",
+        "linhas_na_classe": 0,
+        "acao": "apagar"
+      },
+      {
+        "tabela": "psychology_referrals",
+        "coluna": "responsible_id",
+        "linhas_na_classe": 0,
+        "acao": "apagar"
+      },
+      {
+        "tabela": "psychology_returns",
+        "coluna": "reviewed_by",
+        "linhas_na_classe": 0,
+        "acao": "apagar"
+      },
+      {
+        "tabela": "psychology_preventive_actions",
+        "coluna": "created_by",
+        "linhas_na_classe": 0,
+        "acao": "apagar"
+      },
+      {
+        "tabela": "psychology_articulations",
+        "coluna": "created_by",
+        "linhas_na_classe": 0,
+        "acao": "apagar"
+      },
+      {
+        "tabela": "psychology_articulations",
+        "coluna": "teacher_id",
+        "linhas_na_classe": 0,
+        "acao": "apagar"
+      },
+      {
+        "tabela": "aee_game_catalog",
+        "coluna": "created_by",
+        "linhas_na_classe": 0,
+        "acao": "apagar"
+      },
+      {
+        "tabela": "aee_game_assignments",
+        "coluna": "teacher_id",
+        "linhas_na_classe": 0,
+        "acao": "apagar"
+      },
+      {
+        "tabela": "aee_game_assignments",
+        "coluna": "assigned_by",
+        "linhas_na_classe": 0,
+        "acao": "apagar"
+      },
+      {
+        "tabela": "aee_game_sessions",
+        "coluna": "profile_id",
+        "linhas_na_classe": 0,
+        "acao": "apagar"
+      },
+      {
+        "tabela": "aee_game_favorites",
+        "coluna": "profile_id",
+        "linhas_na_classe": 0,
+        "acao": "apagar"
+      },
+      {
+        "tabela": "student_pairing_codes",
+        "coluna": "guardian_profile_id",
+        "linhas_na_classe": 0,
+        "acao": "apagar"
+      },
+      {
+        "tabela": "student_pairing_codes",
+        "coluna": "used_by_profile_id",
+        "linhas_na_classe": 0,
+        "acao": "apagar"
+      },
+      {
+        "tabela": "student_pairing_attempts",
+        "coluna": "profile_id",
+        "linhas_na_classe": 0,
+        "acao": "apagar"
+      },
+      {
+        "tabela": "student_locations",
+        "coluna": "reported_by_profile_id",
+        "linhas_na_classe": 0,
+        "acao": "apagar"
+      },
+      {
+        "tabela": "students",
+        "coluna": "student_profile_id",
+        "linhas_na_classe": 0,
+        "acao": "apagar"
+      },
+      {
+        "tabela": "supervision_requests",
+        "coluna": "created_by",
+        "linhas_na_classe": 0,
+        "acao": "apagar"
+      },
+      {
+        "tabela": "supervision_requests",
+        "coluna": "closed_by",
+        "linhas_na_classe": 0,
+        "acao": "apagar"
+      },
+      {
+        "tabela": "supervision_responses",
+        "coluna": "responsible_id",
+        "linhas_na_classe": 0,
+        "acao": "apagar"
+      },
+      {
+        "tabela": "supervision_responses",
+        "coluna": "created_by",
+        "linhas_na_classe": 0,
+        "acao": "apagar"
+      },
+      {
+        "tabela": "supervision_response_attachments",
+        "coluna": "created_by",
+        "linhas_na_classe": 0,
+        "acao": "apagar"
+      },
+      {
+        "tabela": "supervision_action_plans",
+        "coluna": "responsible_id",
+        "linhas_na_classe": 0,
+        "acao": "apagar"
+      },
+      {
+        "tabela": "supervision_action_plans",
+        "coluna": "created_by",
+        "linhas_na_classe": 0,
+        "acao": "apagar"
+      },
+      {
+        "tabela": "push_notify_throttle",
+        "coluna": "profile_id",
+        "linhas_na_classe": 0,
+        "acao": "apagar"
+      },
+      {
+        "tabela": "supervision_alerts",
+        "coluna": "acknowledged_by",
+        "linhas_na_classe": 0,
+        "acao": "apagar"
+      },
+      {
+        "tabela": "supervision_audit",
+        "coluna": "profile_id",
+        "linhas_na_classe": 0,
+        "acao": "apagar"
+      },
+      {
+        "tabela": "student_location_sharing",
+        "coluna": "profile_id",
+        "linhas_na_classe": 0,
+        "acao": "apagar"
+      },
+      {
+        "tabela": "student_location_consent_log",
+        "coluna": "profile_id",
+        "linhas_na_classe": 0,
+        "acao": "apagar"
+      },
+      {
+        "tabela": "student_location_consent_log",
+        "coluna": "by_profile_id",
+        "linhas_na_classe": 0,
+        "acao": "apagar"
+      },
+      {
+        "tabela": "guardian_students",
+        "coluna": "linked_by",
+        "linhas_na_classe": 0,
+        "acao": "apagar"
+      },
+      {
+        "tabela": "bfr_grading_rules",
+        "coluna": "updated_by",
+        "linhas_na_classe": 0,
+        "acao": "apagar"
+      }
+    ],
+    "depois": {
+      "users": 9,
+      "profiles": 9,
+      "staff": 2,
+      "directory": 35
+    },
+    "md5_depois": {
+      "profiles": "7f58c883fd0632f6ffcdb27f5efa6d5c",
+      "staff": "21a2ebcb5dd815170c95fa13c2a9e115",
+      "directory": "9c623c240cf830c73399649a5f1bf7ca"
+    },
+    "users_restantes": [
+      {
+        "email": "galeradenarnia@gmail.com",
+        "role": "student"
+      },
+      {
+        "email": "raullgomees@gmail.com",
+        "role": "pedagogical"
+      },
+      {
+        "email": "turmaroboticabfr@gmail.com",
+        "role": "developer"
+      },
+      {
+        "email": "turmarotobicabfr@gmail.com",
+        "role": "developer"
+      },
+      {
+        "email": "raullgomees56@gmail.com",
+        "role": "monitor"
+      },
+      {
+        "email": "maxsuellsillva26k@gmail.com",
+        "role": "gatekeeper"
+      },
+      {
+        "email": "daleexcursoes@gmail.com",
+        "role": "secretary"
+      },
+      {
+        "email": "gameral2027@gmail.com",
+        "role": "aee"
+      },
+      {
+        "email": "pc.maceedo@gmail.com",
+        "role": "director"
+      }
+    ]
+  },
+  "portoes": 9,
+  "falhas": [],
+  "veredito": "AH2_DESMONTADO"
+}

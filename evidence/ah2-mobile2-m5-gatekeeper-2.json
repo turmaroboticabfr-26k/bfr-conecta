@@ -1,0 +1,1539 @@
+{
+  "ciclo": "AH-7b-MOBILE",
+  "em": "2026-11-17T10:48:23.854Z",
+  "papel": "gatekeeper",
+  "larguras": [
+    360,
+    375,
+    390,
+    414,
+    430
+  ],
+  "altura": 720,
+  "url": "https://bfr-conecta.turmaroboticabfr.workers.dev/",
+  "md5_shell": "d418e7fc917f1fbb1437054b7b531f9b",
+  "contas": {
+    "id": "422d584b"
+  },
+  "markup": "toque em #bfrMobileBottomNav button[data-bfr-mobile-route] e #bfrMobileDrawer [data-bfr-drawer-route]; a barra do desktop está display:none abaixo de 800px por decisão do app (bfr-responsive-presentation.js:233)",
+  "declaradas": [
+    "inicio",
+    "gate",
+    "horarios",
+    "comunicados",
+    "escola-historia",
+    "notificacoes",
+    "conteudos",
+    "jogos-escolares"
+  ],
+  "bandas": {
+    "360": {
+      "width": 360,
+      "ms_ready": 389,
+      "erro_boot": null,
+      "censo": {
+        "presentation": "mobile",
+        "body_mobile": true,
+        "barra_existe": true,
+        "barra": [
+          {
+            "rot": "🏠Início",
+            "route": "inicio",
+            "w": 69,
+            "h": 61,
+            "y": 654,
+            "x": 5
+          },
+          {
+            "rot": "▣Portaria",
+            "route": "gate",
+            "w": 69,
+            "h": 61,
+            "y": 654,
+            "x": 75
+          },
+          {
+            "rot": "🕐Horários",
+            "route": "horarios",
+            "w": 69,
+            "h": 61,
+            "y": 654,
+            "x": 145
+          },
+          {
+            "rot": "📣Avisos",
+            "route": "comunicados",
+            "w": 69,
+            "h": 61,
+            "y": 654,
+            "x": 216
+          },
+          {
+            "rot": "⋯Mais",
+            "route": "more",
+            "w": 69,
+            "h": 61,
+            "y": 654,
+            "x": 286
+          }
+        ],
+        "gaveta_existe": true,
+        "gaveta_aberta": false,
+        "gaveta": [
+          {
+            "rot": "🏠Início",
+            "route": "inicio",
+            "w": 285,
+            "h": 48,
+            "y": 310,
+            "x": -307
+          },
+          {
+            "rot": "🔔Notificações",
+            "route": "notificacoes",
+            "w": 285,
+            "h": 48,
+            "y": 362,
+            "x": -307
+          },
+          {
+            "rot": "📚Conteúdos",
+            "route": "conteudos",
+            "w": 285,
+            "h": 48,
+            "y": 414,
+            "x": -307
+          },
+          {
+            "rot": "🏆Jogos Escolare",
+            "route": "jogos-escolares",
+            "w": 285,
+            "h": 48,
+            "y": 466,
+            "x": -307
+          },
+          {
+            "rot": "◫Horários",
+            "route": "horarios",
+            "w": 285,
+            "h": 48,
+            "y": 518,
+            "x": -307
+          },
+          {
+            "rot": "▤Avisos",
+            "route": "comunicados",
+            "w": 285,
+            "h": 48,
+            "y": 570,
+            "x": -307
+          },
+          {
+            "rot": "▣Portaria QR",
+            "route": "gate",
+            "w": 285,
+            "h": 48,
+            "y": 622,
+            "x": -307
+          }
+        ],
+        "hamb": true,
+        "sidebar_caixa": false,
+        "vw": 360,
+        "vh": 720
+      },
+      "modal": {
+        "id": "preferredNameModal",
+        "texto": "× PRIMEIRO ACESSO Como você quer ser chamado? Esse nome aparece apenas"
+      },
+      "modal_fechou_a_toque": true,
+      "gaveta_aberta_a_toque": true,
+      "seccoes": {
+        "inicio": {
+          "painel": {
+            "id": "gatekeeperView",
+            "c": 1433
+          },
+          "ms": 1827,
+          "assentou": true,
+          "controles": 24,
+          "tap": 1,
+          "fonte": 3,
+          "estouro_h": false,
+          "largura": 360,
+          "seccao_ativa": "inicio",
+          "view_apos": "gatekeeper",
+          "toque": {
+            "x": 40,
+            "y": 685,
+            "w": 69,
+            "h": 61
+          },
+          "antes": "inicio",
+          "via": "barra"
+        },
+        "gate": {
+          "painel": {
+            "id": "gatekeeperView",
+            "c": 1433
+          },
+          "ms": 1827,
+          "assentou": true,
+          "controles": 24,
+          "tap": 1,
+          "fonte": 3,
+          "estouro_h": false,
+          "largura": 360,
+          "seccao_ativa": "gate",
+          "view_apos": "gatekeeper",
+          "toque": {
+            "x": 110,
+            "y": 685,
+            "w": 69,
+            "h": 61
+          },
+          "antes": "inicio",
+          "via": "barra"
+        },
+        "horarios": {
+          "painel": {
+            "id": "gatekeeperView",
+            "c": 1324
+          },
+          "ms": 1828,
+          "assentou": true,
+          "controles": 9,
+          "tap": 0,
+          "fonte": 0,
+          "estouro_h": false,
+          "largura": 360,
+          "seccao_ativa": "horarios",
+          "view_apos": "gatekeeper",
+          "toque": {
+            "x": 180,
+            "y": 685,
+            "w": 69,
+            "h": 61
+          },
+          "antes": "gate",
+          "via": "barra"
+        },
+        "comunicados": {
+          "painel": {
+            "id": "gatekeeperView",
+            "c": 1324
+          },
+          "ms": 1822,
+          "assentou": true,
+          "controles": 9,
+          "tap": 0,
+          "fonte": 0,
+          "estouro_h": false,
+          "largura": 360,
+          "seccao_ativa": "comunicados",
+          "view_apos": "gatekeeper",
+          "toque": {
+            "x": 250,
+            "y": 685,
+            "w": 69,
+            "h": 61
+          },
+          "antes": "horarios",
+          "via": "barra"
+        },
+        "notificacoes": {
+          "painel": {
+            "id": "bfrNotificationsView",
+            "c": 400
+          },
+          "ms": 1841,
+          "assentou": true,
+          "controles": 3,
+          "tap": 0,
+          "fonte": 0,
+          "estouro_h": false,
+          "largura": 360,
+          "seccao_ativa": "notificacoes",
+          "view_apos": "gatekeeper",
+          "toque": {
+            "x": 158,
+            "y": 360,
+            "w": 285,
+            "h": 48
+          },
+          "antes": "comunicados",
+          "via": "gaveta"
+        },
+        "conteudos": {
+          "painel": {
+            "id": "bfrContentHubView",
+            "c": 1021
+          },
+          "ms": 1832,
+          "assentou": true,
+          "controles": 14,
+          "tap": 0,
+          "fonte": 3,
+          "estouro_h": false,
+          "largura": 360,
+          "seccao_ativa": "conteudos",
+          "view_apos": "gatekeeper",
+          "toque": {
+            "x": 158,
+            "y": 360,
+            "w": 285,
+            "h": 48
+          },
+          "antes": "notificacoes",
+          "via": "gaveta"
+        },
+        "jogos-escolares": {
+          "painel": {
+            "id": "schoolGamesView",
+            "c": 865
+          },
+          "ms": 1833,
+          "assentou": true,
+          "controles": 8,
+          "tap": 0,
+          "fonte": 0,
+          "estouro_h": false,
+          "largura": 360,
+          "seccao_ativa": "jogos-escolares",
+          "view_apos": "gatekeeper",
+          "toque": {
+            "x": 158,
+            "y": 360,
+            "w": 285,
+            "h": 48
+          },
+          "antes": "conteudos",
+          "via": "gaveta"
+        }
+      },
+      "abertas": 7,
+      "vazias": [],
+      "nao_assentaram": [],
+      "estouro": [],
+      "tap_miudo": 2,
+      "fonte_miuda": 9,
+      "declaradas_sem_rota": [
+        "escola-historia"
+      ],
+      "rotas_fora_do_mapa": [],
+      "inalcancaveis": [],
+      "sem_efeito": [],
+      "erros": [],
+      "diagnostico_gaveta": [],
+      "dialogos_sem_saida": [],
+      "dialogos_miudos": []
+    },
+    "375": {
+      "width": 375,
+      "ms_ready": 393,
+      "erro_boot": null,
+      "censo": {
+        "presentation": "mobile",
+        "body_mobile": true,
+        "barra_existe": true,
+        "barra": [
+          {
+            "rot": "🏠Início",
+            "route": "inicio",
+            "w": 69,
+            "h": 61,
+            "y": 654,
+            "x": 10
+          },
+          {
+            "rot": "▣Portaria",
+            "route": "gate",
+            "w": 69,
+            "h": 61,
+            "y": 654,
+            "x": 81
+          },
+          {
+            "rot": "🕐Horários",
+            "route": "horarios",
+            "w": 69,
+            "h": 61,
+            "y": 654,
+            "x": 153
+          },
+          {
+            "rot": "📣Avisos",
+            "route": "comunicados",
+            "w": 69,
+            "h": 61,
+            "y": 654,
+            "x": 224
+          },
+          {
+            "rot": "⋯Mais",
+            "route": "more",
+            "w": 69,
+            "h": 61,
+            "y": 654,
+            "x": 296
+          }
+        ],
+        "gaveta_existe": true,
+        "gaveta_aberta": false,
+        "gaveta": [
+          {
+            "rot": "🏠Início",
+            "route": "inicio",
+            "w": 298,
+            "h": 48,
+            "y": 310,
+            "x": -321
+          },
+          {
+            "rot": "🔔Notificações",
+            "route": "notificacoes",
+            "w": 298,
+            "h": 48,
+            "y": 362,
+            "x": -321
+          },
+          {
+            "rot": "📚Conteúdos",
+            "route": "conteudos",
+            "w": 298,
+            "h": 48,
+            "y": 414,
+            "x": -321
+          },
+          {
+            "rot": "🏆Jogos Escolare",
+            "route": "jogos-escolares",
+            "w": 298,
+            "h": 48,
+            "y": 466,
+            "x": -321
+          },
+          {
+            "rot": "◫Horários",
+            "route": "horarios",
+            "w": 298,
+            "h": 48,
+            "y": 518,
+            "x": -321
+          },
+          {
+            "rot": "▤Avisos",
+            "route": "comunicados",
+            "w": 298,
+            "h": 48,
+            "y": 570,
+            "x": -321
+          },
+          {
+            "rot": "▣Portaria QR",
+            "route": "gate",
+            "w": 298,
+            "h": 48,
+            "y": 622,
+            "x": -321
+          }
+        ],
+        "hamb": true,
+        "sidebar_caixa": false,
+        "vw": 375,
+        "vh": 720
+      },
+      "modal": null,
+      "modal_fechou_a_toque": true,
+      "gaveta_aberta_a_toque": true,
+      "seccoes": {
+        "inicio": {
+          "painel": {
+            "id": "gatekeeperView",
+            "c": 1433
+          },
+          "ms": 1807,
+          "assentou": true,
+          "controles": 24,
+          "tap": 1,
+          "fonte": 3,
+          "estouro_h": false,
+          "largura": 375,
+          "seccao_ativa": "inicio",
+          "view_apos": "gatekeeper",
+          "toque": {
+            "x": 45,
+            "y": 685,
+            "w": 69,
+            "h": 61
+          },
+          "antes": "jogos-escolares",
+          "via": "barra"
+        },
+        "gate": {
+          "painel": {
+            "id": "gatekeeperView",
+            "c": 1433
+          },
+          "ms": 1812,
+          "assentou": true,
+          "controles": 24,
+          "tap": 1,
+          "fonte": 3,
+          "estouro_h": false,
+          "largura": 375,
+          "seccao_ativa": "gate",
+          "view_apos": "gatekeeper",
+          "toque": {
+            "x": 116,
+            "y": 685,
+            "w": 69,
+            "h": 61
+          },
+          "antes": "inicio",
+          "via": "barra"
+        },
+        "horarios": {
+          "painel": {
+            "id": "gatekeeperView",
+            "c": 1324
+          },
+          "ms": 1815,
+          "assentou": true,
+          "controles": 9,
+          "tap": 0,
+          "fonte": 0,
+          "estouro_h": false,
+          "largura": 375,
+          "seccao_ativa": "horarios",
+          "view_apos": "gatekeeper",
+          "toque": {
+            "x": 187,
+            "y": 685,
+            "w": 69,
+            "h": 61
+          },
+          "antes": "gate",
+          "via": "barra"
+        },
+        "comunicados": {
+          "painel": {
+            "id": "gatekeeperView",
+            "c": 1324
+          },
+          "ms": 1823,
+          "assentou": true,
+          "controles": 9,
+          "tap": 0,
+          "fonte": 0,
+          "estouro_h": false,
+          "largura": 375,
+          "seccao_ativa": "comunicados",
+          "view_apos": "gatekeeper",
+          "toque": {
+            "x": 259,
+            "y": 685,
+            "w": 69,
+            "h": 61
+          },
+          "antes": "horarios",
+          "via": "barra"
+        },
+        "notificacoes": {
+          "painel": {
+            "id": "bfrNotificationsView",
+            "c": 400
+          },
+          "ms": 1821,
+          "assentou": true,
+          "controles": 3,
+          "tap": 0,
+          "fonte": 0,
+          "estouro_h": false,
+          "largura": 375,
+          "seccao_ativa": "notificacoes",
+          "view_apos": "gatekeeper",
+          "toque": {
+            "x": 165,
+            "y": 360,
+            "w": 298,
+            "h": 48
+          },
+          "antes": "comunicados",
+          "via": "gaveta"
+        },
+        "conteudos": {
+          "painel": {
+            "id": "bfrContentHubView",
+            "c": 1021
+          },
+          "ms": 1818,
+          "assentou": true,
+          "controles": 14,
+          "tap": 0,
+          "fonte": 3,
+          "estouro_h": false,
+          "largura": 375,
+          "seccao_ativa": "conteudos",
+          "view_apos": "gatekeeper",
+          "toque": {
+            "x": 165,
+            "y": 360,
+            "w": 298,
+            "h": 48
+          },
+          "antes": "notificacoes",
+          "via": "gaveta"
+        },
+        "jogos-escolares": {
+          "painel": {
+            "id": "schoolGamesView",
+            "c": 865
+          },
+          "ms": 1830,
+          "assentou": true,
+          "controles": 8,
+          "tap": 0,
+          "fonte": 0,
+          "estouro_h": false,
+          "largura": 375,
+          "seccao_ativa": "jogos-escolares",
+          "view_apos": "gatekeeper",
+          "toque": {
+            "x": 165,
+            "y": 360,
+            "w": 298,
+            "h": 48
+          },
+          "antes": "conteudos",
+          "via": "gaveta"
+        }
+      },
+      "abertas": 7,
+      "vazias": [],
+      "nao_assentaram": [],
+      "estouro": [],
+      "tap_miudo": 2,
+      "fonte_miuda": 9,
+      "declaradas_sem_rota": [
+        "escola-historia"
+      ],
+      "rotas_fora_do_mapa": [],
+      "inalcancaveis": [],
+      "sem_efeito": [],
+      "erros": [],
+      "diagnostico_gaveta": [],
+      "dialogos_sem_saida": [],
+      "dialogos_miudos": []
+    },
+    "390": {
+      "width": 390,
+      "ms_ready": 381,
+      "erro_boot": null,
+      "censo": {
+        "presentation": "mobile",
+        "body_mobile": true,
+        "barra_existe": true,
+        "barra": [
+          {
+            "rot": "🏠Início",
+            "route": "inicio",
+            "w": 72,
+            "h": 61,
+            "y": 654,
+            "x": 10
+          },
+          {
+            "rot": "▣Portaria",
+            "route": "gate",
+            "w": 72,
+            "h": 61,
+            "y": 654,
+            "x": 84
+          },
+          {
+            "rot": "🕐Horários",
+            "route": "horarios",
+            "w": 72,
+            "h": 61,
+            "y": 654,
+            "x": 159
+          },
+          {
+            "rot": "📣Avisos",
+            "route": "comunicados",
+            "w": 72,
+            "h": 61,
+            "y": 654,
+            "x": 233
+          },
+          {
+            "rot": "⋯Mais",
+            "route": "more",
+            "w": 72,
+            "h": 61,
+            "y": 654,
+            "x": 308
+          }
+        ],
+        "gaveta_existe": true,
+        "gaveta_aberta": false,
+        "gaveta": [
+          {
+            "rot": "🏠Início",
+            "route": "inicio",
+            "w": 311,
+            "h": 48,
+            "y": 310,
+            "x": -334
+          },
+          {
+            "rot": "🔔Notificações",
+            "route": "notificacoes",
+            "w": 311,
+            "h": 48,
+            "y": 362,
+            "x": -334
+          },
+          {
+            "rot": "📚Conteúdos",
+            "route": "conteudos",
+            "w": 311,
+            "h": 48,
+            "y": 414,
+            "x": -334
+          },
+          {
+            "rot": "🏆Jogos Escolare",
+            "route": "jogos-escolares",
+            "w": 311,
+            "h": 48,
+            "y": 466,
+            "x": -334
+          },
+          {
+            "rot": "◫Horários",
+            "route": "horarios",
+            "w": 311,
+            "h": 48,
+            "y": 518,
+            "x": -334
+          },
+          {
+            "rot": "▤Avisos",
+            "route": "comunicados",
+            "w": 311,
+            "h": 48,
+            "y": 570,
+            "x": -334
+          },
+          {
+            "rot": "▣Portaria QR",
+            "route": "gate",
+            "w": 311,
+            "h": 48,
+            "y": 622,
+            "x": -334
+          }
+        ],
+        "hamb": true,
+        "sidebar_caixa": false,
+        "vw": 390,
+        "vh": 720
+      },
+      "modal": null,
+      "modal_fechou_a_toque": true,
+      "gaveta_aberta_a_toque": true,
+      "seccoes": {
+        "inicio": {
+          "painel": {
+            "id": "gatekeeperView",
+            "c": 1433
+          },
+          "ms": 1805,
+          "assentou": true,
+          "controles": 24,
+          "tap": 1,
+          "fonte": 3,
+          "estouro_h": false,
+          "largura": 390,
+          "seccao_ativa": "inicio",
+          "view_apos": "gatekeeper",
+          "toque": {
+            "x": 46,
+            "y": 685,
+            "w": 72,
+            "h": 61
+          },
+          "antes": "jogos-escolares",
+          "via": "barra"
+        },
+        "gate": {
+          "painel": {
+            "id": "gatekeeperView",
+            "c": 1433
+          },
+          "ms": 1806,
+          "assentou": true,
+          "controles": 24,
+          "tap": 1,
+          "fonte": 3,
+          "estouro_h": false,
+          "largura": 390,
+          "seccao_ativa": "gate",
+          "view_apos": "gatekeeper",
+          "toque": {
+            "x": 121,
+            "y": 685,
+            "w": 72,
+            "h": 61
+          },
+          "antes": "inicio",
+          "via": "barra"
+        },
+        "horarios": {
+          "painel": {
+            "id": "gatekeeperView",
+            "c": 1324
+          },
+          "ms": 1814,
+          "assentou": true,
+          "controles": 9,
+          "tap": 0,
+          "fonte": 0,
+          "estouro_h": false,
+          "largura": 390,
+          "seccao_ativa": "horarios",
+          "view_apos": "gatekeeper",
+          "toque": {
+            "x": 195,
+            "y": 685,
+            "w": 72,
+            "h": 61
+          },
+          "antes": "gate",
+          "via": "barra"
+        },
+        "comunicados": {
+          "painel": {
+            "id": "gatekeeperView",
+            "c": 1324
+          },
+          "ms": 1826,
+          "assentou": true,
+          "controles": 9,
+          "tap": 0,
+          "fonte": 0,
+          "estouro_h": false,
+          "largura": 390,
+          "seccao_ativa": "comunicados",
+          "view_apos": "gatekeeper",
+          "toque": {
+            "x": 269,
+            "y": 685,
+            "w": 72,
+            "h": 61
+          },
+          "antes": "horarios",
+          "via": "barra"
+        },
+        "notificacoes": {
+          "painel": {
+            "id": "bfrNotificationsView",
+            "c": 400
+          },
+          "ms": 1823,
+          "assentou": true,
+          "controles": 3,
+          "tap": 0,
+          "fonte": 0,
+          "estouro_h": false,
+          "largura": 390,
+          "seccao_ativa": "notificacoes",
+          "view_apos": "gatekeeper",
+          "toque": {
+            "x": 172,
+            "y": 360,
+            "w": 311,
+            "h": 48
+          },
+          "antes": "comunicados",
+          "via": "gaveta"
+        },
+        "conteudos": {
+          "painel": {
+            "id": "bfrContentHubView",
+            "c": 1021
+          },
+          "ms": 1824,
+          "assentou": true,
+          "controles": 14,
+          "tap": 0,
+          "fonte": 3,
+          "estouro_h": false,
+          "largura": 390,
+          "seccao_ativa": "conteudos",
+          "view_apos": "gatekeeper",
+          "toque": {
+            "x": 172,
+            "y": 360,
+            "w": 311,
+            "h": 48
+          },
+          "antes": "notificacoes",
+          "via": "gaveta"
+        },
+        "jogos-escolares": {
+          "painel": {
+            "id": "schoolGamesView",
+            "c": 865
+          },
+          "ms": 1817,
+          "assentou": true,
+          "controles": 8,
+          "tap": 0,
+          "fonte": 0,
+          "estouro_h": false,
+          "largura": 390,
+          "seccao_ativa": "jogos-escolares",
+          "view_apos": "gatekeeper",
+          "toque": {
+            "x": 172,
+            "y": 360,
+            "w": 311,
+            "h": 48
+          },
+          "antes": "conteudos",
+          "via": "gaveta"
+        }
+      },
+      "abertas": 7,
+      "vazias": [],
+      "nao_assentaram": [],
+      "estouro": [],
+      "tap_miudo": 2,
+      "fonte_miuda": 9,
+      "declaradas_sem_rota": [
+        "escola-historia"
+      ],
+      "rotas_fora_do_mapa": [],
+      "inalcancaveis": [],
+      "sem_efeito": [],
+      "erros": [],
+      "diagnostico_gaveta": [],
+      "dialogos_sem_saida": [],
+      "dialogos_miudos": []
+    },
+    "414": {
+      "width": 414,
+      "ms_ready": 400,
+      "erro_boot": null,
+      "censo": {
+        "presentation": "mobile",
+        "body_mobile": true,
+        "barra_existe": true,
+        "barra": [
+          {
+            "rot": "🏠Início",
+            "route": "inicio",
+            "w": 77,
+            "h": 61,
+            "y": 654,
+            "x": 10
+          },
+          {
+            "rot": "▣Portaria",
+            "route": "gate",
+            "w": 77,
+            "h": 61,
+            "y": 654,
+            "x": 89
+          },
+          {
+            "rot": "🕐Horários",
+            "route": "horarios",
+            "w": 77,
+            "h": 61,
+            "y": 654,
+            "x": 168
+          },
+          {
+            "rot": "📣Avisos",
+            "route": "comunicados",
+            "w": 77,
+            "h": 61,
+            "y": 654,
+            "x": 248
+          },
+          {
+            "rot": "⋯Mais",
+            "route": "more",
+            "w": 77,
+            "h": 61,
+            "y": 654,
+            "x": 327
+          }
+        ],
+        "gaveta_existe": true,
+        "gaveta_aberta": false,
+        "gaveta": [
+          {
+            "rot": "🏠Início",
+            "route": "inicio",
+            "w": 328,
+            "h": 48,
+            "y": 310,
+            "x": -351
+          },
+          {
+            "rot": "🔔Notificações",
+            "route": "notificacoes",
+            "w": 328,
+            "h": 48,
+            "y": 362,
+            "x": -351
+          },
+          {
+            "rot": "📚Conteúdos",
+            "route": "conteudos",
+            "w": 328,
+            "h": 48,
+            "y": 414,
+            "x": -351
+          },
+          {
+            "rot": "🏆Jogos Escolare",
+            "route": "jogos-escolares",
+            "w": 328,
+            "h": 48,
+            "y": 466,
+            "x": -351
+          },
+          {
+            "rot": "◫Horários",
+            "route": "horarios",
+            "w": 328,
+            "h": 48,
+            "y": 518,
+            "x": -351
+          },
+          {
+            "rot": "▤Avisos",
+            "route": "comunicados",
+            "w": 328,
+            "h": 48,
+            "y": 570,
+            "x": -351
+          },
+          {
+            "rot": "▣Portaria QR",
+            "route": "gate",
+            "w": 328,
+            "h": 48,
+            "y": 622,
+            "x": -351
+          }
+        ],
+        "hamb": true,
+        "sidebar_caixa": false,
+        "vw": 414,
+        "vh": 720
+      },
+      "modal": null,
+      "modal_fechou_a_toque": true,
+      "gaveta_aberta_a_toque": true,
+      "seccoes": {
+        "inicio": {
+          "painel": {
+            "id": "gatekeeperView",
+            "c": 1433
+          },
+          "ms": 1806,
+          "assentou": true,
+          "controles": 24,
+          "tap": 1,
+          "fonte": 3,
+          "estouro_h": false,
+          "largura": 414,
+          "seccao_ativa": "inicio",
+          "view_apos": "gatekeeper",
+          "toque": {
+            "x": 49,
+            "y": 685,
+            "w": 77,
+            "h": 61
+          },
+          "antes": "jogos-escolares",
+          "via": "barra"
+        },
+        "gate": {
+          "painel": {
+            "id": "gatekeeperView",
+            "c": 1433
+          },
+          "ms": 1808,
+          "assentou": true,
+          "controles": 24,
+          "tap": 1,
+          "fonte": 3,
+          "estouro_h": false,
+          "largura": 414,
+          "seccao_ativa": "gate",
+          "view_apos": "gatekeeper",
+          "toque": {
+            "x": 128,
+            "y": 685,
+            "w": 77,
+            "h": 61
+          },
+          "antes": "inicio",
+          "via": "barra"
+        },
+        "horarios": {
+          "painel": {
+            "id": "gatekeeperView",
+            "c": 1324
+          },
+          "ms": 1827,
+          "assentou": true,
+          "controles": 9,
+          "tap": 0,
+          "fonte": 0,
+          "estouro_h": false,
+          "largura": 414,
+          "seccao_ativa": "horarios",
+          "view_apos": "gatekeeper",
+          "toque": {
+            "x": 207,
+            "y": 685,
+            "w": 77,
+            "h": 61
+          },
+          "antes": "gate",
+          "via": "barra"
+        },
+        "comunicados": {
+          "painel": {
+            "id": "gatekeeperView",
+            "c": 1324
+          },
+          "ms": 1831,
+          "assentou": true,
+          "controles": 9,
+          "tap": 0,
+          "fonte": 0,
+          "estouro_h": false,
+          "largura": 414,
+          "seccao_ativa": "comunicados",
+          "view_apos": "gatekeeper",
+          "toque": {
+            "x": 286,
+            "y": 685,
+            "w": 77,
+            "h": 61
+          },
+          "antes": "horarios",
+          "via": "barra"
+        },
+        "notificacoes": {
+          "painel": {
+            "id": "bfrNotificationsView",
+            "c": 400
+          },
+          "ms": 1814,
+          "assentou": true,
+          "controles": 3,
+          "tap": 0,
+          "fonte": 0,
+          "estouro_h": false,
+          "largura": 414,
+          "seccao_ativa": "notificacoes",
+          "view_apos": "gatekeeper",
+          "toque": {
+            "x": 180,
+            "y": 360,
+            "w": 328,
+            "h": 48
+          },
+          "antes": "comunicados",
+          "via": "gaveta"
+        },
+        "conteudos": {
+          "painel": {
+            "id": "bfrContentHubView",
+            "c": 1021
+          },
+          "ms": 1820,
+          "assentou": true,
+          "controles": 14,
+          "tap": 0,
+          "fonte": 3,
+          "estouro_h": false,
+          "largura": 414,
+          "seccao_ativa": "conteudos",
+          "view_apos": "gatekeeper",
+          "toque": {
+            "x": 180,
+            "y": 360,
+            "w": 328,
+            "h": 48
+          },
+          "antes": "notificacoes",
+          "via": "gaveta"
+        },
+        "jogos-escolares": {
+          "painel": {
+            "id": "schoolGamesView",
+            "c": 865
+          },
+          "ms": 1834,
+          "assentou": true,
+          "controles": 8,
+          "tap": 0,
+          "fonte": 0,
+          "estouro_h": false,
+          "largura": 414,
+          "seccao_ativa": "jogos-escolares",
+          "view_apos": "gatekeeper",
+          "toque": {
+            "x": 180,
+            "y": 360,
+            "w": 328,
+            "h": 48
+          },
+          "antes": "conteudos",
+          "via": "gaveta"
+        }
+      },
+      "abertas": 7,
+      "vazias": [],
+      "nao_assentaram": [],
+      "estouro": [],
+      "tap_miudo": 2,
+      "fonte_miuda": 9,
+      "declaradas_sem_rota": [
+        "escola-historia"
+      ],
+      "rotas_fora_do_mapa": [],
+      "inalcancaveis": [],
+      "sem_efeito": [],
+      "erros": [],
+      "diagnostico_gaveta": [],
+      "dialogos_sem_saida": [],
+      "dialogos_miudos": []
+    },
+    "430": {
+      "width": 430,
+      "ms_ready": 412,
+      "erro_boot": null,
+      "censo": {
+        "presentation": "mobile",
+        "body_mobile": true,
+        "barra_existe": true,
+        "barra": [
+          {
+            "rot": "🏠Início",
+            "route": "inicio",
+            "w": 80,
+            "h": 61,
+            "y": 654,
+            "x": 10
+          },
+          {
+            "rot": "▣Portaria",
+            "route": "gate",
+            "w": 80,
+            "h": 61,
+            "y": 654,
+            "x": 92
+          },
+          {
+            "rot": "🕐Horários",
+            "route": "horarios",
+            "w": 80,
+            "h": 61,
+            "y": 654,
+            "x": 175
+          },
+          {
+            "rot": "📣Avisos",
+            "route": "comunicados",
+            "w": 80,
+            "h": 61,
+            "y": 654,
+            "x": 257
+          },
+          {
+            "rot": "⋯Mais",
+            "route": "more",
+            "w": 80,
+            "h": 61,
+            "y": 654,
+            "x": 340
+          }
+        ],
+        "gaveta_existe": true,
+        "gaveta_aberta": false,
+        "gaveta": [
+          {
+            "rot": "🏠Início",
+            "route": "inicio",
+            "w": 328,
+            "h": 48,
+            "y": 310,
+            "x": -351
+          },
+          {
+            "rot": "🔔Notificações",
+            "route": "notificacoes",
+            "w": 328,
+            "h": 48,
+            "y": 362,
+            "x": -351
+          },
+          {
+            "rot": "📚Conteúdos",
+            "route": "conteudos",
+            "w": 328,
+            "h": 48,
+            "y": 414,
+            "x": -351
+          },
+          {
+            "rot": "🏆Jogos Escolare",
+            "route": "jogos-escolares",
+            "w": 328,
+            "h": 48,
+            "y": 466,
+            "x": -351
+          },
+          {
+            "rot": "◫Horários",
+            "route": "horarios",
+            "w": 328,
+            "h": 48,
+            "y": 518,
+            "x": -351
+          },
+          {
+            "rot": "▤Avisos",
+            "route": "comunicados",
+            "w": 328,
+            "h": 48,
+            "y": 570,
+            "x": -351
+          },
+          {
+            "rot": "▣Portaria QR",
+            "route": "gate",
+            "w": 328,
+            "h": 48,
+            "y": 622,
+            "x": -351
+          }
+        ],
+        "hamb": true,
+        "sidebar_caixa": false,
+        "vw": 430,
+        "vh": 720
+      },
+      "modal": null,
+      "modal_fechou_a_toque": true,
+      "gaveta_aberta_a_toque": true,
+      "seccoes": {
+        "inicio": {
+          "painel": {
+            "id": "gatekeeperView",
+            "c": 1433
+          },
+          "ms": 1817,
+          "assentou": true,
+          "controles": 24,
+          "tap": 1,
+          "fonte": 3,
+          "estouro_h": false,
+          "largura": 430,
+          "seccao_ativa": "inicio",
+          "view_apos": "gatekeeper",
+          "toque": {
+            "x": 50,
+            "y": 685,
+            "w": 80,
+            "h": 61
+          },
+          "antes": "jogos-escolares",
+          "via": "barra"
+        },
+        "gate": {
+          "painel": {
+            "id": "gatekeeperView",
+            "c": 1433
+          },
+          "ms": 1826,
+          "assentou": true,
+          "controles": 24,
+          "tap": 1,
+          "fonte": 3,
+          "estouro_h": false,
+          "largura": 430,
+          "seccao_ativa": "gate",
+          "view_apos": "gatekeeper",
+          "toque": {
+            "x": 133,
+            "y": 685,
+            "w": 80,
+            "h": 61
+          },
+          "antes": "inicio",
+          "via": "barra"
+        },
+        "horarios": {
+          "painel": {
+            "id": "gatekeeperView",
+            "c": 1324
+          },
+          "ms": 1829,
+          "assentou": true,
+          "controles": 9,
+          "tap": 0,
+          "fonte": 0,
+          "estouro_h": false,
+          "largura": 430,
+          "seccao_ativa": "horarios",
+          "view_apos": "gatekeeper",
+          "toque": {
+            "x": 215,
+            "y": 685,
+            "w": 80,
+            "h": 61
+          },
+          "antes": "gate",
+          "via": "barra"
+        },
+        "comunicados": {
+          "painel": {
+            "id": "gatekeeperView",
+            "c": 1324
+          },
+          "ms": 1818,
+          "assentou": true,
+          "controles": 9,
+          "tap": 0,
+          "fonte": 0,
+          "estouro_h": false,
+          "largura": 430,
+          "seccao_ativa": "comunicados",
+          "view_apos": "gatekeeper",
+          "toque": {
+            "x": 297,
+            "y": 685,
+            "w": 80,
+            "h": 61
+          },
+          "antes": "horarios",
+          "via": "barra"
+        },
+        "notificacoes": {
+          "painel": {
+            "id": "bfrNotificationsView",
+            "c": 400
+          },
+          "ms": 1815,
+          "assentou": true,
+          "controles": 3,
+          "tap": 0,
+          "fonte": 0,
+          "estouro_h": false,
+          "largura": 430,
+          "seccao_ativa": "notificacoes",
+          "view_apos": "gatekeeper",
+          "toque": {
+            "x": 180,
+            "y": 360,
+            "w": 328,
+            "h": 48
+          },
+          "antes": "comunicados",
+          "via": "gaveta"
+        },
+        "conteudos": {
+          "painel": {
+            "id": "bfrContentHubView",
+            "c": 1021
+          },
+          "ms": 1821,
+          "assentou": true,
+          "controles": 14,
+          "tap": 0,
+          "fonte": 3,
+          "estouro_h": false,
+          "largura": 430,
+          "seccao_ativa": "conteudos",
+          "view_apos": "gatekeeper",
+          "toque": {
+            "x": 180,
+            "y": 360,
+            "w": 328,
+            "h": 48
+          },
+          "antes": "notificacoes",
+          "via": "gaveta"
+        },
+        "jogos-escolares": {
+          "painel": {
+            "id": "schoolGamesView",
+            "c": 865
+          },
+          "ms": 1831,
+          "assentou": true,
+          "controles": 8,
+          "tap": 0,
+          "fonte": 0,
+          "estouro_h": false,
+          "largura": 430,
+          "seccao_ativa": "jogos-escolares",
+          "view_apos": "gatekeeper",
+          "toque": {
+            "x": 180,
+            "y": 360,
+            "w": 328,
+            "h": 48
+          },
+          "antes": "conteudos",
+          "via": "gaveta"
+        }
+      },
+      "abertas": 7,
+      "vazias": [],
+      "nao_assentaram": [],
+      "estouro": [],
+      "tap_miudo": 2,
+      "fonte_miuda": 9,
+      "declaradas_sem_rota": [
+        "escola-historia"
+      ],
+      "rotas_fora_do_mapa": [],
+      "inalcancaveis": [],
+      "sem_efeito": [],
+      "erros": [],
+      "diagnostico_gaveta": [],
+      "dialogos_sem_saida": [],
+      "dialogos_miudos": []
+    }
+  },
+  "portoes": 80,
+  "falhas": [
+    "360px: 0 seções do papel sem rota tocável | dado=[\"escola-historia\"] | esperado=[]",
+    "375px: 0 seções do papel sem rota tocável | dado=[\"escola-historia\"] | esperado=[]",
+    "390px: 0 seções do papel sem rota tocável | dado=[\"escola-historia\"] | esperado=[]",
+    "414px: 0 seções do papel sem rota tocável | dado=[\"escola-historia\"] | esperado=[]",
+    "430px: 0 seções do papel sem rota tocável | dado=[\"escola-historia\"] | esperado=[]"
+  ],
+  "medido": {
+    "larguras": 5,
+    "rotas_tocadas": 35,
+    "incompleto": 0
+  },
+  "veredito": "AH7b_MOBILE_COM_DEFEITOS",
+  "diagnostico": "a barra de baixo tem 5 rotas e a gaveta 7; toque real abriu 35 painéis nas 5 larguras; alvos <44px na barra: 360px=0, 375px=0, 390px=0, 414px=0, 430px=0"
+}

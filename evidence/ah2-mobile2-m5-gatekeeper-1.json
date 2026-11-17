@@ -1,0 +1,337 @@
+{
+  "ciclo": "AH-7b-MOBILE",
+  "em": "2026-11-17T10:39:08.448Z",
+  "papel": "gatekeeper",
+  "larguras": [
+    320,
+    360,
+    375,
+    390,
+    414,
+    430
+  ],
+  "altura": 720,
+  "url": "https://bfr-conecta.turmaroboticabfr.workers.dev/",
+  "md5_shell": "d418e7fc917f1fbb1437054b7b531f9b",
+  "contas": {
+    "id": "422d584b"
+  },
+  "markup": "toque em #bfrMobileBottomNav button[data-bfr-mobile-route] e #bfrMobileDrawer [data-bfr-drawer-route]; a barra do desktop está display:none abaixo de 800px por decisão do app (bfr-responsive-presentation.js:233)",
+  "declaradas": [
+    "inicio",
+    "gate",
+    "horarios",
+    "comunicados",
+    "escola-historia",
+    "notificacoes",
+    "conteudos",
+    "jogos-escolares"
+  ],
+  "bandas": {
+    "320": {
+      "width": 320,
+      "ms_ready": 393,
+      "erro_boot": null,
+      "censo": {
+        "presentation": "mobile",
+        "body_mobile": true,
+        "barra_existe": true,
+        "barra": [
+          {
+            "rot": "🏠Início",
+            "route": "inicio",
+            "w": 61,
+            "h": 61,
+            "y": 654,
+            "x": 5
+          },
+          {
+            "rot": "▣Portaria",
+            "route": "gate",
+            "w": 61,
+            "h": 61,
+            "y": 654,
+            "x": 67
+          },
+          {
+            "rot": "🕐Horários",
+            "route": "horarios",
+            "w": 61,
+            "h": 61,
+            "y": 654,
+            "x": 129
+          },
+          {
+            "rot": "📣Avisos",
+            "route": "comunicados",
+            "w": 61,
+            "h": 61,
+            "y": 654,
+            "x": 192
+          },
+          {
+            "rot": "⋯Mais",
+            "route": "more",
+            "w": 61,
+            "h": 61,
+            "y": 654,
+            "x": 254
+          }
+        ],
+        "gaveta_existe": true,
+        "gaveta_aberta": false,
+        "gaveta": [
+          {
+            "rot": "🏠Início",
+            "route": "inicio",
+            "w": 250,
+            "h": 48,
+            "y": 325,
+            "x": -271
+          },
+          {
+            "rot": "🔔Notificações",
+            "route": "notificacoes",
+            "w": 250,
+            "h": 48,
+            "y": 377,
+            "x": -271
+          },
+          {
+            "rot": "📚Conteúdos",
+            "route": "conteudos",
+            "w": 250,
+            "h": 48,
+            "y": 429,
+            "x": -271
+          },
+          {
+            "rot": "🏆Jogos Escolare",
+            "route": "jogos-escolares",
+            "w": 250,
+            "h": 48,
+            "y": 481,
+            "x": -271
+          },
+          {
+            "rot": "◫Horários",
+            "route": "horarios",
+            "w": 250,
+            "h": 48,
+            "y": 533,
+            "x": -271
+          },
+          {
+            "rot": "▤Avisos",
+            "route": "comunicados",
+            "w": 250,
+            "h": 48,
+            "y": 585,
+            "x": -271
+          },
+          {
+            "rot": "▣Portaria QR",
+            "route": "gate",
+            "w": 250,
+            "h": 48,
+            "y": 637,
+            "x": -271
+          }
+        ],
+        "hamb": true,
+        "sidebar_caixa": false,
+        "vw": 320,
+        "vh": 720
+      },
+      "modal": {
+        "id": "preferredNameModal",
+        "texto": "× PRIMEIRO ACESSO Como você quer ser chamado? Esse nome aparece apenas"
+      },
+      "modal_fechou_a_toque": true,
+      "gaveta_aberta_a_toque": true,
+      "seccoes": {
+        "inicio": {
+          "painel": {
+            "id": "gatekeeperView",
+            "c": 1433
+          },
+          "ms": 1824,
+          "assentou": true,
+          "controles": 24,
+          "tap": 1,
+          "fonte": 3,
+          "estouro_h": false,
+          "largura": 320,
+          "seccao_ativa": "inicio",
+          "view_apos": "gatekeeper",
+          "toque": {
+            "x": 36,
+            "y": 685,
+            "w": 61,
+            "h": 61
+          },
+          "antes": "inicio",
+          "via": "barra"
+        },
+        "gate": {
+          "painel": {
+            "id": "gatekeeperView",
+            "c": 1433
+          },
+          "ms": 1854,
+          "assentou": true,
+          "controles": 24,
+          "tap": 1,
+          "fonte": 3,
+          "estouro_h": false,
+          "largura": 320,
+          "seccao_ativa": "gate",
+          "view_apos": "gatekeeper",
+          "toque": {
+            "x": 98,
+            "y": 685,
+            "w": 61,
+            "h": 61
+          },
+          "antes": "inicio",
+          "via": "barra"
+        },
+        "horarios": {
+          "painel": {
+            "id": "gatekeeperView",
+            "c": 1324
+          },
+          "ms": 1827,
+          "assentou": true,
+          "controles": 9,
+          "tap": 0,
+          "fonte": 0,
+          "estouro_h": false,
+          "largura": 320,
+          "seccao_ativa": "horarios",
+          "view_apos": "gatekeeper",
+          "toque": {
+            "x": 160,
+            "y": 685,
+            "w": 61,
+            "h": 61
+          },
+          "antes": "gate",
+          "via": "barra"
+        },
+        "comunicados": {
+          "painel": {
+            "id": "gatekeeperView",
+            "c": 1324
+          },
+          "ms": 1837,
+          "assentou": true,
+          "controles": 9,
+          "tap": 0,
+          "fonte": 0,
+          "estouro_h": false,
+          "largura": 320,
+          "seccao_ativa": "comunicados",
+          "view_apos": "gatekeeper",
+          "toque": {
+            "x": 222,
+            "y": 685,
+            "w": 61,
+            "h": 61
+          },
+          "antes": "horarios",
+          "via": "barra"
+        },
+        "notificacoes": {
+          "painel": {
+            "id": "bfrNotificationsView",
+            "c": 400
+          },
+          "ms": 1834,
+          "assentou": true,
+          "controles": 3,
+          "tap": 0,
+          "fonte": 0,
+          "estouro_h": false,
+          "largura": 320,
+          "seccao_ativa": "notificacoes",
+          "view_apos": "gatekeeper",
+          "toque": {
+            "x": 141,
+            "y": 360,
+            "w": 250,
+            "h": 48
+          },
+          "antes": "comunicados",
+          "via": "gaveta"
+        },
+        "conteudos": {
+          "painel": {
+            "id": "bfrContentHubView",
+            "c": 1021
+          },
+          "ms": 1828,
+          "assentou": true,
+          "controles": 14,
+          "tap": 0,
+          "fonte": 3,
+          "estouro_h": false,
+          "largura": 320,
+          "seccao_ativa": "conteudos",
+          "view_apos": "gatekeeper",
+          "toque": {
+            "x": 141,
+            "y": 360,
+            "w": 250,
+            "h": 48
+          },
+          "antes": "notificacoes",
+          "via": "gaveta"
+        },
+        "jogos-escolares": {
+          "painel": {
+            "id": "schoolGamesView",
+            "c": 865
+          },
+          "ms": 2437,
+          "assentou": true,
+          "controles": 8,
+          "tap": 0,
+          "fonte": 0,
+          "estouro_h": false,
+          "largura": 320,
+          "seccao_ativa": "jogos-escolares",
+          "view_apos": "gatekeeper",
+          "toque": {
+            "x": 141,
+            "y": 360,
+            "w": 250,
+            "h": 48
+          },
+          "antes": "conteudos",
+          "via": "gaveta"
+        }
+      },
+      "abertas": 7,
+      "vazias": [],
+      "nao_assentaram": [],
+      "estouro": [],
+      "tap_miudo": 2,
+      "fonte_miuda": 9,
+      "declaradas_sem_rota": [
+        "escola-historia"
+      ],
+      "rotas_fora_do_mapa": [],
+      "inalcancaveis": [],
+      "sem_efeito": [],
+      "erros": [],
+      "diagnostico_gaveta": [],
+      "dialogos_sem_saida": [],
+      "dialogos_miudos": []
+    }
+  },
+  "portoes": 16,
+  "falhas": [
+    "320px: 0 seções do papel sem rota tocável | dado=[\"escola-historia\"] | esperado=[]"
+  ]
+}

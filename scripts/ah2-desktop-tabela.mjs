@@ -85,3 +85,9 @@ console.log(`\n_${linhas.length} linhas · OK ${resumo.OK} · PARCIAL ${resumo.P
 console.log(`_Larguras do §6: ${ALVO.join(' ')} (as corridas a 1280/390 existem em disco mas não entram aqui porque o briefing pede estas três)_`);
 const sem_banda = papais.flatMap((p) => ALVO.filter((b) => !celula[p]?.[b]).map((b) => p + '@' + b));
 console.log(`_Células sem nenhuma corrida desktop: ${sem_banda.length}` + (sem_banda.length ? ' — ' + sem_banda.slice(0, 40).join(' ') : '') + '_');
+// A sonda de tempo (ah2-sonda-apoio-tempo.mjs) provou que «0 caracteres medidos aos ~1,8 s» pode ser o
+// MEDIR a sair da amostragem antes do innerHTML, não o produto vazio. Nenhuma célula desktop foi sondada,
+// por isso nada aqui se reclassifica — mas as linhas com essa mesma assinatura são a lista de re-teste,
+// contada do texto que esta tabela já imprimiu, não da minha memória.
+const assinatura = linhas.filter((l) => /FALHA — painel vazio/.test(l) && /0c 1[5-9]\d\dms|0c 2[0-4]\d\dms/.test(l));
+if (assinatura.length) console.log(`_Assinatura «painel vazio com ~1,8-2,4 s de medição»: ${assinatura.length} linha(s) — ${assinatura.map((l) => l.split('|')[1].trim() + '/' + l.split('|')[2].trim()).join(', ')}. É a janela de assentamento do \`MEDIR\` (600 ms × 2 contagens iguais) e foi medida a encher no \`apoio\` do telemóvel (3001-3434 c entre 1082 e 3325 ms, sem exceção); estas linhas do desktop NÃO foram sondadas, portanto mantêm-se como medidas e entram como lista de re-teste com \`ah2-sonda-apoio-tempo.mjs\` trocando o id do painel._`);

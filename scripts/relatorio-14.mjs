@@ -4,7 +4,7 @@
 // motivo. Assim a frase «não invente resultados» deixa de depender da minha disciplina e passa a ser
 // estrutural. Regenerável: correr depois de cada ciclo.
 // Uso: node scripts/relatorio-14.mjs [caminho/para/relatorio.md]
-import { readFileSync, writeFileSync, readdirSync } from 'node:fs';
+import { readFileSync, writeFileSync, readdirSync, statSync } from 'node:fs';
 import { createHash } from 'node:crypto';
 const md5buf = (b) => createHash('md5').update(b).digest('hex');
 
@@ -196,16 +196,18 @@ for (const papel of PAPEIS) {
 // Os ciclos que não são varredura entram por prefixo de nome de ficheiro; o que não existir dizê-lo-á como NÃO TESTADO.
 // Prefixo e não nome exato, porque os rótulos mudam entre corridas (larguras, contas) e um relatório que
 // não encontra o seu próprio ficheiro diria «não testado» de uma coisa que foi medida.
+// Ordenar por NOME punha `…-r9.json` depois de `…-r11.json`: o «mais recente» tem de ser o mais recente no
+// disco, não o último no dicionário.
 const procura = (prefixo) => {
   const fs = readdirSync(EV).filter((x) => x.startsWith(prefixo) && x.endsWith('.json'));
   if (!fs.length) return null;
-  return fs.sort().slice(-1)[0];
+  return fs.map((x) => ({ x, m: statSync(`${EV}/${x}`).mtimeMs })).sort((a, b) => a.m - b.m).pop().x;
 };
 const extra = [
   ['RM-1.2 · clique real de developer no painel «Contas e cargos»', 'ah2-cliques-', 'scripts/ah2-cliques.mjs',
     'o painel abriu com sessão real e a linha do próprio developer vem desabilitada; a escrita não aconteceu porque a conta-alvo é sintética e a política RESTRITIVA `profiles_hide_test_accounts` esconde-a do developer (10 de 24 perfis visíveis) — precisa de decisão, ver §notas'],
   ['RM-2.7 · vistas do professor com vínculo real', 'ah2-professor-', 'scripts/ah2-professor.mjs', ''],
-  ['§5 · mobile a toque nas larguras do briefing', 'ah2-mobile-', 'scripts/ah2-mobile.mjs', ''],
+  ['§5 · telemóvel a toque nas larguras do briefing (320/360/375/390/414/430 × 15 perfis)', 'ah2-m5-consolidado-', 'scripts/ah2-mobile2.mjs + ah2-m5-driver.mjs', ''],
   ['§6 · causa da demora do clique em Home', 'ah2-home-causa-', 'scripts/ah2-home-causa.mjs', ''],
   ['§6 · censo de nós: vazamento ou troca depois de 12 cliques em Home', 'ah2-home-nodos-', 'scripts/ah2-home-nodos.mjs', ''],
 ];
@@ -214,6 +216,9 @@ const linhasExtra = extra.map(([nome, prefixo, script, nota]) => {
   if (!f) return `| ${nome} | NÃO TESTADA | instrumento \`(${script})\` pronto, ainda não corrido |`;
   const j = JSON.parse(readFileSync(`${EV}/${f}`, 'utf8'));
   const v = j.veredito || (j.falhas ? (j.falhas.length ? 'CORRIDA COM BLOQUEIO' : 'SEM_FALHAS') : 'sem veredito no ficheiro');
+  // O consolidador do §5 tem o veredicto no campo `veredito` e os buracos em `nao_testadas` com a causa
+  // escrita pelo instrumento; dizer-lhe «0 falhas declaradas» seria apagar 7 classes de defeito.
+  if (j.ciclo === 'AH-7b-M5-CONSOLIDADO') return `| ${nome} | ${v} | \`${f}\` · ${Object.keys(j.defeitos || {}).length} classes de defeito · ${(j.nao_testadas || []).length} NÃO TESTADA com causa · md5 ${j.md5_shell.join('/')} · tabela linha a linha em \`scripts/ah2-m5-tabela.mjs\` |`;
   return `| ${nome} | ${v} | \`${f}\`${nota ? ' · ' + nota : (j.falhas && j.falhas.length ? ' · ' + j.falhas.slice(0, 2).join(' · ') : ' · 0 falhas declaradas')}${j.diagnostico ? '<br>' + j.diagnostico : ''} |`;
 });
 // As três larguras desktop do §6 não têm ficheiro próprio: entram pela varredura, que já corre 390/1280.
@@ -223,7 +228,30 @@ const Desktop = ['1366', '1440', '1920'].map((ba) => ({ ba, n: [...celula.keys()
 const desktopFeito = Desktop.filter((d) => d.n > 0);
 linhasExtra.push(`| §6 · bandas desktop 1366/1440/1920 | ${desktopFeito.length ? 'CORRIDAS: ' + desktopFeito.map((d) => d.ba + ' px (' + d.n + ' perfis)').join(', ') : 'NÃO TESTADA'} | ${desktopFeito.length ? 'mesma régua da varredura, \`node scripts/ah2-varredura.mjs TODOS <rótulo> <banda>\`' : 'instrumento pronto (\`ah2-varredura.mjs\` aceita as bandas); falta correr a série'} |`);
 
+// O «nada falta» desta conta é só da régua desktop (papel × largura). A grelha do §5 tem as suas células
+// NÃO TESTADA noutro ficheiro, e omiti-las aqui faria o relatório anunciar amostra completa com 11 posições
+// por medir. As causas vêm gravadas no consolidador, não escritas por mim.
+const m5f = procura('ah2-m5-consolidado-');
+const m5 = m5f ? JSON.parse(readFileSync(`${EV}/${m5f}`, 'utf8')) : null;
+const m5_causas = m5 ? [...new Set((m5.nao_testadas || []).map((s) => s.split(' — ')[1] || 'sem causa gravada'))].map((c) => c + ' × ' + (m5.nao_testadas || []).filter((s) => (s.split(' — ')[1] || 'sem causa gravada') === c).length) : [];
+// A sonda de tempo do `apoio` reclassificou uma classe inteira da tabela mobile, e o relatório tem de dizer
+// isso com os números dela, não com a minha memória.
+const sondas = readdirSync(EV).filter((f) => /^ah2-sonda-apoio-tempo-.*\.json$/.test(f)).sort();
+const sonda_lida = [];
+for (const f of sondas) {
+  let j; try { j = JSON.parse(readFileSync(`${EV}/${f}`, 'utf8')); } catch { continue; }
+  const p = (j.serie || []).find((x) => x && typeof x.c === 'number' && x.c > 0);
+  if (p) sonda_lida.push(`${j.papel}@${j.largura}: ${p.c} c aos ${p.t_ms_apos_toque} ms`);
+}
+const sonda_texto = sonda_lida.length
+  ? `\n- **Reclassificação medida, e é do instrumento não do produto**: as células «painel vazio» do \`apoio\` foram sondadas no tempo (${sonda_lida.length} corridas com série preenchida — ${sonda_lida.join(' · ')}). O \`#supportView\` fica visível com caixa antes de ter texto, e o \`MEDIR\` do provador sai quando a contagem se repete duas vezes (600 ms × 2, ≈1,8 s): por isso a grelha mediu 0 c onde há 3001-3434. Nas larguras sondadas o vermelho do \`apoio\` é defeito de medição; nas outras é suspeita pela mesma prédica, não verde provado. As \`chat-interno\` a 0 têm a mesma assinatura de tempo (~1,8 s) e **não** foram sondadas.`
+  : '';
+const m5_texto = m5
+  ? `**${m5.celulas_medidas} de ${m5.total_celulas} células medidas** e **${(m5.nao_testadas || []).length} NÃO TESTADA**, cada uma com a causa escrita pelo instrumento: ${m5_causas.join(' · ')}. Nenhuma é buraco de campanha: relançar não muda o estado do produto. Fonte: \`${m5f}\``
+  : 'sem artefacto do consolidador (`scripts/ah2-m5-consolidador.mjs`)';
+
 const md = `# BFR Conecta — relatório do ciclo de 17/11/2026 (gerado)
+
 
 Gerado por \`node scripts/relatorio-14.mjs\`. **Não editar à mão**: cada célula vem de um artefacto em
 \`evidence/\`. Uma linha só conta como provada se existir o ficheiro que a mede; o resto diz NÃO TESTADA.
@@ -236,7 +264,8 @@ teto de 25 s. Artefactos anteriores a esta régua foram arquivados com \`-ANTERI
 
 - células ABRE: **${contagens.ABRE}** · com défice: **${contagens.deficit}** · NÃO TESTADA: **${contagens.nao_testada}**
 - bandas com artefacto válido: **${celula.size} de ${PAPEIS.length * 5}** (papel × largura; as 5 larguras são 390 e 1280 da varredura original mais 1366/1440/1920 do §6 do briefing)
-- o que falta para a amostra estar completa: ${PAPEIS.flatMap((p) => ['390', '1280'].filter((b) => !celula.has(p + '/' + b)).map((b) => p + '/' + b)).join(', ') || 'nada'}
+- telemóvel (§5, 15 perfis × 6 larguras): ${m5_texto}${sonda_texto}
+- o que falta para a amostra estar completa: ${PAPEIS.flatMap((p) => ['390', '1280', '1366', '1440', '1920'].filter((b) => !celula.has(p + '/' + b)).map((b) => p + '/' + b)).join(', ') || 'nada'} — **esta linha conta apenas as células perfil×largura da régua desktop**; a tabela de funcionalidade tem as suas NÃO TESTADA noutro sítio, e são ${contagens.nao_testada} nesta régua e ${(m5 && m5.nao_testadas ? m5.nao_testadas.length : 0)} na grelha mobile do §5.
 
 ## Bandas corridas (o que cada artefacto diz do arranque)
 
@@ -255,8 +284,8 @@ ${linhasClasses.join('\n') || '| — | 0 | — |'}
 Um clique pode abrir um painel com o identificador certo e 0 caracteres, ou abrir um painel enquanto o
 próprio app declara outra seção ativa. Os dois são defeitos funcionais e nenhum aparece como «não abriu».
 
-Causa do painel vazio de `chat-interno` no education_supervisor, lida dos bytes servidos (não é hipótese):
-o mapa de navegação dá `chat-interno` a este papel (\`app/index.html:9018\`), mas o módulo do chat decide
+Causa do painel vazio de \`chat-interno\` no education_supervisor, lida dos bytes servidos (não é hipótese):
+o mapa de navegação dá \`chat-interno\` a este papel (\`app/index.html:9018\`), mas o módulo do chat decide
 abrir só para \`STAFF_ROLES\` (\`:19143\` — \`pedagogical, aee, coordinator, director, secretary, psychology,
 social_work, developer\`) ou para as vistas \`teacher/coordinator/director/secretary/aee/multiprofessional/
 admin\` (\`:19153\`); \`education_supervisor\` não está em nenhuma das duas listas, por isso \`allowed()\` é

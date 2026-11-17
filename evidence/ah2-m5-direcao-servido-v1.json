@@ -1,0 +1,33 @@
+{
+  "ciclo": "AH-M5-DIRECAO-SERVIDO",
+  "em": "2026-11-17T11:25:18.015Z",
+  "md5_shell": "d418e7fc917f1fbb1437054b7b531f9b",
+  "bytes": 3472213,
+  "provas": [
+    {
+      "nome": "gate developer/director colado ao data-direction-nav",
+      "encontrado": true,
+      "offset": 1529092,
+      "trecho": "querySelector('[data-direction-nav]'); if (!nav) return; const visible = ['developer','director'].includes(role())"
+    },
+    {
+      "nome": "re-encaminhamento para administracao",
+      "encontrado": true,
+      "offset": 1529496,
+      "trecho": "document.querySelector('[data-section=\"administracao\"]')?.click()"
+    },
+    {
+      "nome": "alvo da injecção é adminView para não-director",
+      "encontrado": true,
+      "offset": 1528564,
+      "trecho": "role() === 'director' ? document.getElementById('directorView') : document.getElementById('adminView')"
+    },
+    {
+      "nome": "anchor .teacher-welcome da injecção",
+      "encontrado": true,
+      "offset": 1528849,
+      "trecho": "view.querySelector('.teacher-welcome')"
+    }
+  ],
+  "todas_no_servido": true
+}

@@ -1,0 +1,16 @@
+VERDE  o ar varrido é a v123 da régua
+VERDE  mapa declarado lido do bundle tem as 14 chaves
+VERDE  a tradução de rótulos está no bundle (developer/pedagogical/social_work)
+VERDE  secretary declarado = as 11 do ciclo AH-1 (duas fontes batem)
+VERDE  todas as seções declaradas são rótulos não vazios
+  (renova developer: 2.ª tentativa depois de «HTTP 504 corpo não-JSON: upstream request timeout»)
+file:///C:/Users/pcmac/Documents/Qoder/2026-10-13/28077d9a/bfr-conecta/scripts/ah2-varredura.mjs:115
+  const timer = setTimeout(() => { if (pending.delete(i)) rej(new Error('cdp_timeout ' + method + ' ' + ms + 'ms')); }, ms);
+                                                              ^
+
+Error: cdp_timeout Page.navigate 25000ms
+    at Timeout._onTimeout (file:///C:/Users/pcmac/Documents/Qoder/2026-10-13/28077d9a/bfr-conecta/scripts/ah2-varredura.mjs:115:63)
+    at listOnTimeout (node:internal/timers:605:17)
+    at process.processTimers (node:internal/timers:541:7)
+
+Node.js v24.18.1

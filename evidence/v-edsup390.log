@@ -1,0 +1,28 @@
+VERDE  o ar varrido é a v123 da régua
+VERDE  mapa declarado lido do bundle tem as 14 chaves
+VERDE  a tradução de rótulos está no bundle (developer/pedagogical/social_work)
+VERDE  secretary declarado = as 11 do ciclo AH-1 (duas fontes batem)
+VERDE  todas as seções declaradas são rótulos não vazios
+  education_supervisor/390/inicio: secretaryView 3130c ctl=42 tap<0 fonte<0 2496ms
+  education_supervisor/390/secretaria: secretaryView 3130c ctl=42 tap<0 fonte<0 1832ms
+  education_supervisor/390/comunicados: secretaryView 3130c ctl=42 tap<0 fonte<0 1817ms
+  education_supervisor/390/notificacoes: bfrNotificationsView 343c ctl=2 tap<0 fonte<0 1810ms
+  education_supervisor/390/conteudos: bfrContentHubView 1021c ctl=14 tap<0 fonte<3 1814ms
+  education_supervisor/390/chat-interno: PAINEL VAZIO ctl=0 tap<0 fonte<0 1821ms
+  education_supervisor/390/jogos-escolares: schoolGamesView 865c ctl=8 tap<0 fonte<0 1821ms
+  education_supervisor/390/fotos: schoolGamesView 865c ctl=8 tap<0 fonte<0 1819ms
+VERDE  education_supervisor/390: sessão do papel reconhecida
+VERDE  education_supervisor/390: 0 erros de console de aplicação
+VERDE  education_supervisor/390: 0 medições perdidas por navegação
+VERDE  education_supervisor/390: 0 falhas de rede em /auth/ ou /rest/
+VERDE  education_supervisor/390: entrou no shell
+VERMELHO  education_supervisor/390: 0 painéis vazios entre as 8 seções abertas
+VERDE  education_supervisor/390: 0 estouro horizontal
+VERDE  education_supervisor/390: toda a troca de persona foi desfeita pela API do app
+VERDE  education_supervisor/390: 0 seções cujo conteúdo não assenta em 6 s
+
+PORTÕES: 14  FALHAS: 1  painéis: 8  completa: true
+seções declaradas sem botão de menu: {"education_supervisor":["escola-historia","comunicacao","coordenacao-chat","supervisao"]}
+  VERMELHO: education_supervisor/390: 0 painéis vazios entre as 8 seções abertas | dado=["chat-interno"] | esperado=[]
+AH2_VARREDURA_COM_DEFEITOS (education_supervisor)
+PAROU: fecho normal

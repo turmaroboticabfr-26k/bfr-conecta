@@ -1,0 +1,21 @@
+boot: elementos=1342 paineis=0 heap=3.6MB
+#1: antes 19058el/6p(id_max=6) -> depois 19315el/11p(id_max=13) delta=257el 5p  pintura=252ms estavel=3976ms rede=12 heap=8.4MB
+#2: antes 19315el/11p(id_max=21) -> depois 19315el/11p(id_max=29) delta=0el 0p  pintura=394ms estavel=2231ms rede=0 heap=10.5MB
+#3: antes 19315el/11p(id_max=37) -> depois 19315el/11p(id_max=45) delta=0el 0p  pintura=451ms estavel=2305ms rede=0 heap=7.3MB
+#4: antes 19315el/11p(id_max=53) -> depois 19315el/11p(id_max=61) delta=0el 0p  pintura=360ms estavel=2226ms rede=0 heap=10.2MB
+#5: antes 19315el/11p(id_max=69) -> depois 19315el/11p(id_max=77) delta=0el 0p  pintura=342ms estavel=2217ms rede=0 heap=8.8MB
+#6: antes 19315el/11p(id_max=85) -> depois 19315el/11p(id_max=93) delta=0el 0p  pintura=427ms estavel=2309ms rede=0 heap=8MB
+#7: antes 19315el/11p(id_max=101) -> depois 19315el/11p(id_max=109) delta=0el 0p  pintura=446ms estavel=2334ms rede=0 heap=9.4MB
+#8: antes 19315el/11p(id_max=117) -> depois 19315el/11p(id_max=125) delta=0el 0p  pintura=427ms estavel=2290ms rede=0 heap=10.3MB
+#9: antes 19315el/11p(id_max=133) -> depois 19315el/11p(id_max=141) delta=0el 0p  pintura=314ms estavel=2154ms rede=0 heap=7.7MB
+#10: antes 19315el/11p(id_max=149) -> depois 19315el/11p(id_max=157) delta=0el 0p  pintura=342ms estavel=2168ms rede=0 heap=9.3MB
+#11: antes 19315el/11p(id_max=165) -> depois 19315el/11p(id_max=173) delta=0el 0p  pintura=398ms estavel=2252ms rede=0 heap=10.1MB
+#12: antes 19315el/11p(id_max=181) -> depois 19315el/11p(id_max=189) delta=0el 0p  pintura=421ms estavel=2273ms rede=0 heap=7.8MB
+file:///C:/Users/pcmac/Documents/Qoder/2026-10-13/28077d9a/bfr-conecta/scripts/ah2-home-nodos.mjs:166
+gate('a contagem de painéis NÃO cresce com o Home repetido (troca, não vazamento)', out.resumo.paneis.max <= out.resumo.paneis.primeiro + 2 ? 'troca' : 'vazamento', 'troca');
+                                                                                                      ^
+
+TypeError: Cannot read properties of undefined (reading 'max')
+    at file:///C:/Users/pcmac/Documents/Qoder/2026-10-13/28077d9a/bfr-conecta/scripts/ah2-home-nodos.mjs:166:103
+
+Node.js v24.18.1

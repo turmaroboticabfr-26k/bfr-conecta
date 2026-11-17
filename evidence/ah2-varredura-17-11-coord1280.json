@@ -1,0 +1,433 @@
+{
+  "ciclo": "AH-2-V",
+  "em": "2026-11-17T06:44:55.951Z",
+  "tetos": {
+    "boot_s": 75,
+    "estabilizacao_ms": 6000,
+    "cdp_timeout_ms": 25000,
+    "praga_s": 470,
+    "watchdog_s": 560
+  },
+  "papeis": [
+    "coordinator"
+  ],
+  "bandas": [
+    "1280"
+  ],
+  "url": "https://bfr-conecta.turmaroboticabfr.workers.dev/",
+  "md5_shell": "d418e7fc917f1fbb1437054b7b531f9b",
+  "mapa_declarado": {
+    "parent": 16,
+    "student": 19,
+    "teacher": 22,
+    "coordinator": 18,
+    "admin": 26,
+    "director": 15,
+    "monitor": 8,
+    "gatekeeper": 8,
+    "secretary": 11,
+    "aee": 10,
+    "psychology": 3,
+    "multiprofessional": 3,
+    "sports_operator": 4,
+    "education_supervisor": 12
+  },
+  "traducao_lida_do_bundle": "viewRole = role === 'developer' ? 'admin' : role === 'pedagogical' ? 'teacher' : role === 'psychology' ? 'psychology' : role === 'social_work' ? 'multiprofessional' : role;",
+  "stages": {
+    "coordinator": {
+      "1280": {
+        "ms_ready": 852,
+        "erro_boot": null,
+        "estado": {
+          "entrou": true,
+          "aviso_pendencia": false,
+          "login_visivel": false,
+          "nav_visiveis": 14
+        },
+        "papel_da_sessao": "coordinator",
+        "botoes_no_dom": 36,
+        "peca": {
+          "inicio": {
+            "painel": {
+              "id": "coordinatorView",
+              "c": 5261
+            },
+            "ms": 4978,
+            "controles": 55,
+            "nos": 15207,
+            "tap": 26,
+            "fonte": 7,
+            "cortados": 20,
+            "estouro_h": false,
+            "seccao_ativa": "inicio",
+            "papel_apos": "coordinator",
+            "view_apos": "coordinator",
+            "nao_estabilizou": false,
+            "botao_attivo": "inicio",
+            "view_antes": null
+          },
+          "coordenacao": {
+            "painel": {
+              "id": "coordinatorView",
+              "c": 58617
+            },
+            "ms": 2506,
+            "controles": 558,
+            "nos": 17752,
+            "tap": 529,
+            "fonte": 7,
+            "cortados": 20,
+            "estouro_h": false,
+            "seccao_ativa": "coordenacao",
+            "papel_apos": "coordinator",
+            "view_apos": "coordinator",
+            "nao_estabilizou": false,
+            "botao_attivo": null,
+            "view_antes": "coordinator"
+          },
+          "horarios": {
+            "painel": {
+              "id": "coordinatorView",
+              "c": 56151
+            },
+            "ms": 1830,
+            "controles": 520,
+            "nos": 17941,
+            "tap": 515,
+            "fonte": 7,
+            "cortados": 8,
+            "estouro_h": false,
+            "seccao_ativa": "horarios",
+            "papel_apos": "coordinator",
+            "view_apos": "coordinator",
+            "nao_estabilizou": false,
+            "botao_attivo": null,
+            "view_antes": "coordinator"
+          },
+          "cadastro-alunos": {
+            "painel": {
+              "id": "coordinatorView",
+              "c": 88539
+            },
+            "ms": 1854,
+            "controles": 522,
+            "nos": 17941,
+            "tap": 517,
+            "fonte": 855,
+            "cortados": 9,
+            "estouro_h": false,
+            "seccao_ativa": "cadastro-alunos",
+            "papel_apos": "coordinator",
+            "view_apos": "coordinator",
+            "nao_estabilizou": false,
+            "botao_attivo": null,
+            "view_antes": "coordinator"
+          },
+          "comunicados": {
+            "painel": {
+              "id": "coordinatorView",
+              "c": 56151
+            },
+            "ms": 1829,
+            "controles": 520,
+            "nos": 17941,
+            "tap": 515,
+            "fonte": 7,
+            "cortados": 8,
+            "estouro_h": false,
+            "seccao_ativa": "comunicados",
+            "papel_apos": "coordinator",
+            "view_apos": "coordinator",
+            "nao_estabilizou": false,
+            "botao_attivo": "comunicados",
+            "view_antes": "coordinator"
+          },
+          "ocorrencias": {
+            "painel": {
+              "id": "coordinatorView",
+              "c": 56151
+            },
+            "ms": 1846,
+            "controles": 520,
+            "nos": 17941,
+            "tap": 515,
+            "fonte": 7,
+            "cortados": 8,
+            "estouro_h": false,
+            "seccao_ativa": "ocorrencias",
+            "papel_apos": "coordinator",
+            "view_apos": "coordinator",
+            "nao_estabilizou": false,
+            "botao_attivo": null,
+            "view_antes": "coordinator"
+          },
+          "atividades": {
+            "painel": {
+              "id": "activityCenterView",
+              "c": 1011
+            },
+            "ms": 1840,
+            "controles": 19,
+            "nos": 96,
+            "tap": 15,
+            "fonte": 0,
+            "cortados": 0,
+            "estouro_h": false,
+            "seccao_ativa": "atividades",
+            "papel_apos": "coordinator",
+            "view_apos": "coordinator",
+            "nao_estabilizou": false,
+            "botao_attivo": null,
+            "view_antes": "coordinator"
+          },
+          "notificacoes": {
+            "painel": {
+              "id": "bfrNotificationsView",
+              "c": 400
+            },
+            "ms": 1831,
+            "controles": 3,
+            "nos": 26,
+            "tap": 3,
+            "fonte": 0,
+            "cortados": 0,
+            "estouro_h": false,
+            "seccao_ativa": "notificacoes",
+            "papel_apos": "coordinator",
+            "view_apos": "coordinator",
+            "nao_estabilizou": false,
+            "botao_attivo": null,
+            "view_antes": "coordinator"
+          },
+          "conteudos": {
+            "painel": {
+              "id": "bfrContentHubView",
+              "c": 1021
+            },
+            "ms": 1817,
+            "controles": 14,
+            "nos": 68,
+            "tap": 14,
+            "fonte": 3,
+            "cortados": 0,
+            "estouro_h": false,
+            "seccao_ativa": "conteudos",
+            "papel_apos": "coordinator",
+            "view_apos": "coordinator",
+            "nao_estabilizou": false,
+            "botao_attivo": null,
+            "view_antes": "coordinator"
+          },
+          "relatorios": {
+            "painel": {
+              "id": "bfrReportsView",
+              "c": 852
+            },
+            "ms": 3047,
+            "controles": 4,
+            "nos": 72,
+            "tap": 4,
+            "fonte": 1,
+            "cortados": 0,
+            "estouro_h": false,
+            "seccao_ativa": "relatorios",
+            "papel_apos": "coordinator",
+            "view_apos": "coordinator",
+            "nao_estabilizou": false,
+            "botao_attivo": null,
+            "view_antes": "coordinator"
+          },
+          "comunicacao": {
+            "painel": {
+              "id": "bfrCommunicationView",
+              "c": 1716
+            },
+            "ms": 1819,
+            "controles": 58,
+            "nos": 223,
+            "tap": 57,
+            "fonte": 1,
+            "cortados": 2,
+            "estouro_h": false,
+            "seccao_ativa": "comunicacao",
+            "papel_apos": "coordinator",
+            "view_apos": "coordinator",
+            "nao_estabilizou": false,
+            "botao_attivo": "comunicacao",
+            "view_antes": "coordinator"
+          },
+          "fotos": {
+            "painel": {
+              "id": "bfrCommunicationView",
+              "c": 1716
+            },
+            "ms": 1829,
+            "controles": 58,
+            "nos": 223,
+            "tap": 57,
+            "fonte": 1,
+            "cortados": 2,
+            "estouro_h": false,
+            "seccao_ativa": "fotos",
+            "papel_apos": "coordinator",
+            "view_apos": "coordinator",
+            "nao_estabilizou": false,
+            "botao_attivo": null,
+            "view_antes": "coordinator"
+          },
+          "chat-interno": {
+            "painel": {
+              "id": "internalChatView",
+              "c": 465
+            },
+            "ms": 1834,
+            "controles": 11,
+            "nos": 84,
+            "tap": 10,
+            "fonte": 0,
+            "cortados": 0,
+            "estouro_h": false,
+            "seccao_ativa": "chat-interno",
+            "papel_apos": "coordinator",
+            "view_apos": "coordinator",
+            "nao_estabilizou": false,
+            "botao_attivo": "chat-interno",
+            "view_antes": "coordinator"
+          },
+          "jogos-escolares": {
+            "painel": {
+              "id": "schoolGamesView",
+              "c": 220
+            },
+            "ms": 1824,
+            "controles": 2,
+            "nos": 11,
+            "tap": 2,
+            "fonte": 0,
+            "cortados": 0,
+            "estouro_h": false,
+            "seccao_ativa": "jogos-escolares",
+            "papel_apos": "coordinator",
+            "view_apos": "coordinator",
+            "nao_estabilizou": false,
+            "botao_attivo": null,
+            "view_antes": "coordinator"
+          },
+          "aee": {
+            "painel": {
+              "id": "aeeView",
+              "c": 6155
+            },
+            "ms": 1832,
+            "controles": 71,
+            "nos": 436,
+            "tap": 71,
+            "fonte": 0,
+            "cortados": 4,
+            "estouro_h": false,
+            "seccao_ativa": "aee",
+            "papel_apos": "coordinator",
+            "view_apos": "aee",
+            "nao_estabilizou": false,
+            "botao_attivo": "aee",
+            "view_antes": "coordinator",
+            "view_reposta": "coordinator"
+          },
+          "resultados-aprendizagem": {
+            "painel": {
+              "id": "resultsLearningView",
+              "c": 588
+            },
+            "ms": 1818,
+            "controles": 17,
+            "nos": 45,
+            "tap": 17,
+            "fonte": 0,
+            "cortados": 0,
+            "estouro_h": false,
+            "seccao_ativa": "resultados-aprendizagem",
+            "papel_apos": "coordinator",
+            "view_apos": "coordinator",
+            "nao_estabilizou": false,
+            "botao_attivo": "resultados-aprendizagem",
+            "view_antes": "coordinator"
+          }
+        },
+        "sem_botao": [
+          "escola-historia",
+          "coordenacao-chat"
+        ],
+        "trocas_de_persona": [
+          {
+            "secao": "aee",
+            "de": "coordinator",
+            "para": "aee",
+            "papel_apos": "coordinator"
+          }
+        ],
+        "erros_console": [],
+        "erros_brutos": 0,
+        "log_rede_erros": 1,
+        "log_rede_amostra": [
+          {
+            "fonte": "network",
+            "texto": "Failed to load resource: the server responded with a status of 404 ()",
+            "url": "/cdn-cgi/rum"
+          }
+        ],
+        "falhas_api_rede": [],
+        "erros_brutos_amostra": [],
+        "n_erros": 0,
+        "painel_vazio": [],
+        "estouro": [],
+        "tap_total": 2867,
+        "fonte_total": 896,
+        "abertas": 16,
+        "instaveis": [],
+        "ms_max": 4978,
+        "ms_de_inicio": 4978,
+        "seg_banda": 41.2
+      },
+      "declaradas": 18,
+      "secoes": [
+        "inicio",
+        "coordenacao",
+        "horarios",
+        "cadastro-alunos",
+        "comunicados",
+        "ocorrencias",
+        "atividades",
+        "escola-historia",
+        "notificacoes",
+        "conteudos",
+        "relatorios",
+        "comunicacao",
+        "fotos",
+        "chat-interno",
+        "coordenacao-chat",
+        "jogos-escolares",
+        "aee",
+        "resultados-aprendizagem"
+      ],
+      "injecao_1280": {
+        "expira_em_s": 3597,
+        "acesso_md5_8": "61ee0e75"
+      }
+    }
+  },
+  "portoes": 14,
+  "falhas": [],
+  "medido": {
+    "papeis": 1,
+    "bandas": 2,
+    "paineis_abertos": 16,
+    "secoes_sem_botao": {
+      "coordinator": [
+        "escola-historia",
+        "coordenacao-chat"
+      ]
+    },
+    "completa": true
+  },
+  "veredito": "AH2_VARREDURA_LIMPA"
+}

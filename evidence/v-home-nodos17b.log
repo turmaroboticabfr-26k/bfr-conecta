@@ -1,0 +1,26 @@
+boot: elementos=1342 paineis=0 heap=3.9MB
+#1: antes 19268el/10p(id_max=10) -> depois 19315el/11p(id_max=17) delta=47el 1p  pintura=344ms estavel=3422ms rede=10 heap=8.5MB
+#2: antes 19315el/11p(id_max=25) -> depois 19315el/11p(id_max=33) delta=0el 0p  pintura=330ms estavel=2161ms rede=0 heap=7.6MB
+#3: antes 19315el/11p(id_max=41) -> depois 19315el/11p(id_max=49) delta=0el 0p  pintura=412ms estavel=2258ms rede=0 heap=10.5MB
+#4: antes 19315el/11p(id_max=57) -> depois 19315el/11p(id_max=65) delta=0el 0p  pintura=295ms estavel=2137ms rede=0 heap=9.2MB
+#5: antes 19315el/11p(id_max=73) -> depois 19315el/11p(id_max=81) delta=0el 0p  pintura=297ms estavel=2133ms rede=0 heap=10.7MB
+#6: antes 19315el/11p(id_max=89) -> depois 19315el/11p(id_max=97) delta=0el 0p  pintura=304ms estavel=2139ms rede=0 heap=8.4MB
+#7: antes 19315el/11p(id_max=105) -> depois 19315el/11p(id_max=113) delta=0el 0p  pintura=283ms estavel=2123ms rede=0 heap=10.2MB
+#8: antes 19315el/11p(id_max=121) -> depois 19315el/11p(id_max=129) delta=0el 0p  pintura=271ms estavel=2105ms rede=0 heap=8.5MB
+#9: antes 19315el/11p(id_max=137) -> depois 19315el/11p(id_max=145) delta=0el 0p  pintura=314ms estavel=2147ms rede=0 heap=8.4MB
+#10: antes 19315el/11p(id_max=153) -> depois 19315el/11p(id_max=161) delta=0el 0p  pintura=445ms estavel=2280ms rede=0 heap=9.7MB
+#11: antes 19315el/11p(id_max=169) -> depois 19315el/11p(id_max=177) delta=0el 0p  pintura=296ms estavel=2161ms rede=0 heap=11MB
+#12: antes 19315el/11p(id_max=185) -> depois 19315el/11p(id_max=193) delta=0el 0p  pintura=331ms estavel=2160ms rede=0 heap=8.5MB
+VERDE  a contagem de painéis NÃO cresce com o Home repetido (troca, não vazamento)
+VERDE  o documento não ganha mais de 5 elementos por clique em Home
+VERDE  o contador de ids sobe mesmo com a contagem fixa (prova que é re-construção)
+VERDE  Home quente não pede rede (a demora não é espera de API)
+VERDE  mesmo sem rede, o platô de estabilização persiste (é re-render/CPU)
+VERDE  0 erros de console não-atribuídos
+
+RESUMO {"paineis":{"primeiro":11,"ultimo":11,"min":11,"max":11},"elementos":{"primeiro":19315,"ultimo":19315,"mediana_delta_por_clique":0,"max_delta_por_clique":47},"id_max":{"primeiro":17,"ultimo":193},"heap_mb":{"primeiro":8.5,"ultimo":8.5},"elementos_por_clique":0,"pintura_mediana_ms":309,"estavel_mediana_ms":2154,"rede_mediana":0,"nao_estabilizaram":[]}
+DIAGNOSTICO: TROCA: o platô de ~2 s vem de re-construir a vista de coordenação a cada clique (enhanceSection + observer), não de rede nem de DOM acumulado.
+
+PORTÕES: 6  FALHAS: 0
+AH2_HOME_NODOS_MEDIDO · ah2-home-nodos-17-11b.json
+PAROU: fecho normal

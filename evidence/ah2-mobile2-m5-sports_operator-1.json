@@ -1,0 +1,423 @@
+{
+  "ciclo": "AH-7b-MOBILE",
+  "em": "2026-11-17T09:44:21.739Z",
+  "papel": "sports_operator",
+  "larguras": [
+    320,
+    360,
+    375,
+    390,
+    414,
+    430
+  ],
+  "altura": 720,
+  "url": "https://bfr-conecta.turmaroboticabfr.workers.dev/",
+  "md5_shell": "d418e7fc917f1fbb1437054b7b531f9b",
+  "contas": {
+    "id": "2ea60576"
+  },
+  "markup": "toque em #bfrMobileBottomNav button[data-bfr-mobile-route] e #bfrMobileDrawer [data-bfr-drawer-route]; a barra do desktop está display:none abaixo de 800px por decisão do app (bfr-responsive-presentation.js:233)",
+  "declaradas": [
+    "inicio",
+    "notificacoes",
+    "conteudos",
+    "jogos-escolares"
+  ],
+  "bandas": {
+    "320": {
+      "width": 320,
+      "ms_ready": 1813,
+      "erro_boot": null,
+      "censo": {
+        "presentation": "mobile",
+        "body_mobile": true,
+        "barra_existe": true,
+        "barra": [
+          {
+            "rot": "🏠Início",
+            "route": "inicio",
+            "w": 77,
+            "h": 61,
+            "y": 654,
+            "x": 5
+          },
+          {
+            "rot": "🏆Jogos",
+            "route": "jogos-escolares",
+            "w": 77,
+            "h": 61,
+            "y": 654,
+            "x": 83
+          },
+          {
+            "rot": "🔔Avisos",
+            "route": "notificacoes",
+            "w": 77,
+            "h": 61,
+            "y": 654,
+            "x": 161
+          },
+          {
+            "rot": "⋯Mais",
+            "route": "more",
+            "w": 77,
+            "h": 61,
+            "y": 654,
+            "x": 238
+          }
+        ],
+        "gaveta_existe": true,
+        "gaveta_aberta": false,
+        "gaveta": [
+          {
+            "rot": "🏠Início",
+            "route": "inicio",
+            "w": 250,
+            "h": 48,
+            "y": 325,
+            "x": -271
+          },
+          {
+            "rot": "🔔Notificações",
+            "route": "notificacoes",
+            "w": 250,
+            "h": 48,
+            "y": 377,
+            "x": -271
+          },
+          {
+            "rot": "📚Conteúdos",
+            "route": "conteudos",
+            "w": 250,
+            "h": 48,
+            "y": 429,
+            "x": -271
+          },
+          {
+            "rot": "🏆Jogos Escolare",
+            "route": "jogos-escolares",
+            "w": 250,
+            "h": 48,
+            "y": 481,
+            "x": -271
+          }
+        ],
+        "hamb": true,
+        "sidebar_caixa": false,
+        "vw": 320,
+        "vh": 720
+      },
+      "modal": {
+        "id": "preferredNameModal",
+        "texto": "× PRIMEIRO ACESSO Como você quer ser chamado? Esse nome aparece apenas"
+      },
+      "modal_fechou_a_toque": true,
+      "gaveta_aberta_a_toque": true,
+      "seccoes": {
+        "inicio": {
+          "painel": {
+            "id": "schoolGamesView",
+            "c": 1208
+          },
+          "ms": 1818,
+          "assentou": true,
+          "controles": 13,
+          "tap": 0,
+          "fonte": 0,
+          "estouro_h": false,
+          "largura": 320,
+          "seccao_ativa": "inicio",
+          "view_apos": "sports_operator",
+          "toque": {
+            "x": 43,
+            "y": 685,
+            "w": 77,
+            "h": 61
+          },
+          "antes": "jogos-escolares",
+          "via": "barra"
+        },
+        "jogos-escolares": {
+          "painel": {
+            "id": "schoolGamesView",
+            "c": 1208
+          },
+          "ms": 1822,
+          "assentou": true,
+          "controles": 13,
+          "tap": 0,
+          "fonte": 0,
+          "estouro_h": false,
+          "largura": 320,
+          "seccao_ativa": "jogos-escolares",
+          "view_apos": "sports_operator",
+          "toque": {
+            "x": 121,
+            "y": 685,
+            "w": 77,
+            "h": 61
+          },
+          "antes": "inicio",
+          "via": "barra"
+        },
+        "notificacoes": {
+          "painel": {
+            "id": "bfrNotificationsView",
+            "c": 445
+          },
+          "ms": 1840,
+          "assentou": true,
+          "controles": 2,
+          "tap": 0,
+          "fonte": 0,
+          "estouro_h": false,
+          "largura": 320,
+          "seccao_ativa": "notificacoes",
+          "view_apos": "sports_operator",
+          "toque": {
+            "x": 199,
+            "y": 685,
+            "w": 77,
+            "h": 61
+          },
+          "antes": "jogos-escolares",
+          "via": "barra"
+        },
+        "conteudos": {
+          "painel": {
+            "id": "bfrContentHubView",
+            "c": 1123
+          },
+          "ms": 1835,
+          "assentou": true,
+          "controles": 14,
+          "tap": 0,
+          "fonte": 3,
+          "estouro_h": false,
+          "largura": 320,
+          "seccao_ativa": "conteudos",
+          "view_apos": "sports_operator",
+          "toque": {
+            "x": 141,
+            "y": 360,
+            "w": 250,
+            "h": 48
+          },
+          "antes": "notificacoes",
+          "via": "gaveta"
+        }
+      },
+      "abertas": 4,
+      "vazias": [],
+      "nao_assentaram": [],
+      "estouro": [],
+      "tap_miudo": 0,
+      "fonte_miuda": 3,
+      "declaradas_sem_rota": [],
+      "rotas_fora_do_mapa": [],
+      "inalcancaveis": [],
+      "sem_efeito": [],
+      "erros": [],
+      "diagnostico_gaveta": [],
+      "dialogos_sem_saida": [],
+      "dialogos_miudos": []
+    },
+    "360": {
+      "width": 360,
+      "ms_ready": 785,
+      "erro_boot": null,
+      "censo": {
+        "presentation": "mobile",
+        "body_mobile": true,
+        "barra_existe": true,
+        "barra": [
+          {
+            "rot": "🏠Início",
+            "route": "inicio",
+            "w": 87,
+            "h": 61,
+            "y": 654,
+            "x": 5
+          },
+          {
+            "rot": "🏆Jogos",
+            "route": "jogos-escolares",
+            "w": 87,
+            "h": 61,
+            "y": 654,
+            "x": 93
+          },
+          {
+            "rot": "🔔Avisos",
+            "route": "notificacoes",
+            "w": 87,
+            "h": 61,
+            "y": 654,
+            "x": 181
+          },
+          {
+            "rot": "⋯Mais",
+            "route": "more",
+            "w": 87,
+            "h": 61,
+            "y": 654,
+            "x": 268
+          }
+        ],
+        "gaveta_existe": true,
+        "gaveta_aberta": false,
+        "gaveta": [
+          {
+            "rot": "🏠Início",
+            "route": "inicio",
+            "w": 285,
+            "h": 48,
+            "y": 310,
+            "x": -307
+          },
+          {
+            "rot": "🔔Notificações",
+            "route": "notificacoes",
+            "w": 285,
+            "h": 48,
+            "y": 362,
+            "x": -307
+          },
+          {
+            "rot": "📚Conteúdos",
+            "route": "conteudos",
+            "w": 285,
+            "h": 48,
+            "y": 414,
+            "x": -307
+          },
+          {
+            "rot": "🏆Jogos Escolare",
+            "route": "jogos-escolares",
+            "w": 285,
+            "h": 48,
+            "y": 466,
+            "x": -307
+          }
+        ],
+        "hamb": true,
+        "sidebar_caixa": false,
+        "vw": 360,
+        "vh": 720
+      },
+      "modal": null,
+      "modal_fechou_a_toque": true,
+      "gaveta_aberta_a_toque": true,
+      "seccoes": {
+        "inicio": {
+          "painel": {
+            "id": "schoolGamesView",
+            "c": 335
+          },
+          "ms": 1821,
+          "assentou": true,
+          "controles": 2,
+          "tap": 0,
+          "fonte": 0,
+          "estouro_h": false,
+          "largura": 360,
+          "seccao_ativa": "inicio",
+          "view_apos": "sports_operator",
+          "toque": {
+            "x": 48,
+            "y": 685,
+            "w": 87,
+            "h": 61
+          },
+          "antes": "conteudos",
+          "via": "barra"
+        },
+        "jogos-escolares": {
+          "painel": {
+            "id": "schoolGamesView",
+            "c": 335
+          },
+          "ms": 1819,
+          "assentou": true,
+          "controles": 2,
+          "tap": 0,
+          "fonte": 0,
+          "estouro_h": false,
+          "largura": 360,
+          "seccao_ativa": "jogos-escolares",
+          "view_apos": "sports_operator",
+          "toque": {
+            "x": 136,
+            "y": 685,
+            "w": 87,
+            "h": 61
+          },
+          "antes": "inicio",
+          "via": "barra"
+        },
+        "notificacoes": {
+          "painel": {
+            "id": "bfrNotificationsView",
+            "c": 449
+          },
+          "ms": 1830,
+          "assentou": true,
+          "controles": 2,
+          "tap": 0,
+          "fonte": 0,
+          "estouro_h": false,
+          "largura": 360,
+          "seccao_ativa": "notificacoes",
+          "view_apos": "sports_operator",
+          "toque": {
+            "x": 224,
+            "y": 685,
+            "w": 87,
+            "h": 61
+          },
+          "antes": "jogos-escolares",
+          "via": "barra"
+        },
+        "conteudos": {
+          "painel": {
+            "id": "bfrContentHubView",
+            "c": 1123
+          },
+          "ms": 1832,
+          "assentou": true,
+          "controles": 14,
+          "tap": 0,
+          "fonte": 3,
+          "estouro_h": false,
+          "largura": 360,
+          "seccao_ativa": "conteudos",
+          "view_apos": "sports_operator",
+          "toque": {
+            "x": 158,
+            "y": 360,
+            "w": 285,
+            "h": 48
+          },
+          "antes": "notificacoes",
+          "via": "gaveta"
+        }
+      },
+      "abertas": 4,
+      "vazias": [],
+      "nao_assentaram": [],
+      "estouro": [],
+      "tap_miudo": 0,
+      "fonte_miuda": 3,
+      "declaradas_sem_rota": [],
+      "rotas_fora_do_mapa": [],
+      "inalcancaveis": [],
+      "sem_efeito": [],
+      "erros": [],
+      "diagnostico_gaveta": [],
+      "dialogos_sem_saida": [],
+      "dialogos_miudos": []
+    }
+  },
+  "portoes": 32,
+  "falhas": []
+}

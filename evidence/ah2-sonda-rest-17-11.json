@@ -1,0 +1,43 @@
+{
+  "ciclo": "AH-2-REST",
+  "em": "2026-11-17T07:07:01.933Z",
+  "origem_chave": "bytes servidos",
+  "anon_md5_8": "d80281df",
+  "resultados": [
+    {
+      "tabela": "bfr_school_shift_settings",
+      "http": 404,
+      "code": "PGRST205",
+      "message": "Could not find the table 'public.bfr_school_shift_settings' in the schema cache",
+      "detalhe": null,
+      "count": null,
+      "corpo_nao_json": null
+    },
+    {
+      "tabela": "bfr_school_calendar_days",
+      "http": 404,
+      "code": "PGRST205",
+      "message": "Could not find the table 'public.bfr_school_calendar_days' in the schema cache",
+      "detalhe": null,
+      "count": null,
+      "corpo_nao_json": null
+    },
+    {
+      "tabela": "bfr_school_calendar_month_targets",
+      "erro": "The operation was aborted due to timeout"
+    },
+    {
+      "tabela": "gate_checkins",
+      "erro": "The operation was aborted due to timeout"
+    },
+    {
+      "tabela": "students",
+      "http": 500,
+      "code": "57014",
+      "message": "canceling statement due to statement timeout",
+      "detalhe": null,
+      "count": null,
+      "corpo_nao_json": null
+    }
+  ]
+}

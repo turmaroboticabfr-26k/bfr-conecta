@@ -83,5 +83,24 @@ const n = (e) => linhas.filter((l) => l.res.startsWith(e)).length;
 console.log(`\n_${linhas.length} linhas · OK absoluto ${n('OK')} · PARCIAL ${n('PARCIAL')} · FALHA ${n('FALHA')} · PENDENTE DE CAUSA ${n('PENDENTE')} · NAO TESTADA ${n('NAO TESTADA')}_`);
 console.log('_Legenda: «FALHA — inalcansavel» é medida no alvo (invisível, fora do ecrã ou tapado por outro elemento). «PENDENTE DE CAUSA» é o caso em que a porta aparece no censo da gaveta mas o elemento já não existe na hora do toque — como o `renderDrawer` só reconstrói a lista quando o assinatura muda (bfr-responsive-presentation.js:184), a causa provável é o instrumento, não o produto, e por isso não conta como defeito assinado._');
 console.log('_Larguras com banda coerente por papel: ' + Object.keys(larguras_boas).sort().map((p) => p + '=' + [...larguras_boas[p]].sort((a, b) => a - b).join(',')).join(' | ') + '_');
+// Uma travagem registada numa execução não apaga a medição de outra: `director@430` foi cortado pela praga
+// numa corrida e medido noutra, e listá-lo como «celula travada» faria o relatório dizer que uma célula está
+// bloqueada quando a linha correspondente está verde. As duas listas separam-se, e a segunda fica visível
+// porque é ela que conta a história do `monitor`.
 const trav = Object.entries(bloqueadas).sort();
-if (trav.length) console.log('_Células travadas com causa: ' + trav.map(([k, v]) => k + ' [' + [...new Set(v)].join('; ') + ']').join(' | ') + '_');
+const trav_nunca = trav.filter(([k]) => { const [p, w] = k.split('@'); return !(larguras_boas[p] || new Set()).has(+w); });
+const trav_ma_medida = trav.filter(([k]) => { const [p, w] = k.split('@'); return (larguras_boas[p] || new Set()).has(+w); });
+if (trav_nunca.length) console.log('_Células travadas sem medição possível: ' + trav_nunca.map(([k, v]) => k + ' [' + [...new Set(v)].join('; ') + ']').join(' | ') + '_');
+if (trav_ma_medida.length) console.log('_Travadas numa execução e medidas noutra (a célula não é um bloqueio, é repetição): ' + trav_ma_medida.map(([k]) => k).join(', ') + '_');
+// A linha acima pode chamar «painel vazio» a um painel que enche: as células `apoio` têm sonda de tempo
+// corrida, e a sonda lê a série `0,0,…,cheio`. Os números vêm dos artefactos da sonda no disco — se não
+// houver artefacto legível, esta linha não sai e a tabela fica com o FALHA tal como foi medido.
+const sondas = readdirSync(`${DIR}/evidence`).filter((f) => /^ah2-sonda-apoio-tempo-.*\.json$/.test(f)).sort();
+const lidos = [];
+for (const f of sondas) {
+  let j; try { j = JSON.parse(readFileSync(`${DIR}/evidence/${f}`, 'utf8')); } catch { continue; }
+  const p = (j.serie || []).find((x) => x && typeof x.c === 'number' && x.c > 0);
+  if (p && typeof p.t_ms_apos_toque === 'number') lidos.push(`${j.papel}@${j.largura} enche ${p.c} c aos ${p.t_ms_apos_toque} ms${(j.erros_janela || []).length ? ' COM exceção' : ' sem exceção'}`);
+  else if ((j.serie || []).length) lidos.push(`${j.papel}@${j.largura} permanece a 0 em ${j.serie.length} amostras`);
+}
+if (lidos.length) console.log('_Reclassificação medida do «FALHA — painel vazio» do `apoio`: a sonda de tempo `ah2-sonda-apoio-tempo.mjs` foi corrida e o painel ENCHE nos papéis sondados — ' + lidos.join(' · ') + '. A prédica de assentamento do `MEDIR` (ah2-mobile2.mjs:152-153: amostras de 600 ms até duas contagens iguais, ≈1,8 s) apanha o `#supportView` visível mas ainda sem `innerHTML`, e é por isso que o provador da grelha devolve 0 c com ~1,8 s; nas larguras sondadas isto é defeito de instrumento, não porta fechada do produto, e nas não sondadas é suspeita pela mesma prédica. As demais linhas FALHA desta tabela não têm sonda e mantêm-se como medidas._');

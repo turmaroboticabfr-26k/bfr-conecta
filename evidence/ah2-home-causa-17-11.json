@@ -1,0 +1,404 @@
+{
+  "ciclo": "AH-6-HOME",
+  "em": "2026-11-17T07:28:21.537Z",
+  "papel": "coordinator",
+  "url": "https://bfr-conecta.turmaroboticabfr.workers.dev/",
+  "md5_shell": "d418e7fc917f1fbb1437054b7b531f9b",
+  "janela_ms": 6000,
+  "cliques": [
+    {
+      "de": "A_ja_no_inicio#1",
+      "antes": "inicio",
+      "seccao_apos_segura": "coordinatorView",
+      "t_pintura": 278,
+      "ms_estabilizou": true,
+      "t_estavel": 3415,
+      "cpu_ms": 304,
+      "longos": [
+        {
+          "t0": 2719,
+          "d": 178
+        },
+        {
+          "t0": 2899,
+          "d": 71
+        },
+        {
+          "t0": 3013,
+          "d": 55
+        }
+      ],
+      "n_longos": 3,
+      "n_mut": 59,
+      "top_mut": [
+        [
+          "coordinatorView",
+          46
+        ],
+        [
+          "appShell",
+          6
+        ],
+        [
+          "bfr-coord-panel-content-12",
+          3
+        ],
+        [
+          "mobileMoreMenu",
+          3
+        ],
+        [
+          "bfr-coord-panel-content-1",
+          1
+        ]
+      ],
+      "rede": [
+        {
+          "nome": "/rest/v1/rpc/bfr_list_staff_birthdays",
+          "ini": -218,
+          "dur": 125,
+          "tipo": "fetch"
+        },
+        {
+          "nome": "/rest/v1/profiles",
+          "ini": -91,
+          "dur": 130,
+          "tipo": "fetch"
+        },
+        {
+          "nome": "/rest/v1/student_reading_levels",
+          "ini": 322,
+          "dur": 292,
+          "tipo": "fetch"
+        },
+        {
+          "nome": "/rest/v1/student_reading_levels",
+          "ini": 615,
+          "dur": 312,
+          "tipo": "fetch"
+        },
+        {
+          "nome": "/rest/v1/student_reading_levels",
+          "ini": 930,
+          "dur": 266,
+          "tipo": "fetch"
+        },
+        {
+          "nome": "/rest/v1/student_reading_levels",
+          "ini": 1259,
+          "dur": 300,
+          "tipo": "fetch"
+        },
+        {
+          "nome": "/rest/v1/student_reading_levels",
+          "ini": 1561,
+          "dur": 274,
+          "tipo": "fetch"
+        },
+        {
+          "nome": "/rest/v1/student_reading_levels",
+          "ini": 1837,
+          "dur": 247,
+          "tipo": "fetch"
+        }
+      ],
+      "n_rede": 8,
+      "cenario": "A_ja_no_inicio",
+      "ronda": 1
+    },
+    {
+      "de": "B_de_coordenacao#1",
+      "antes": "coordenacao",
+      "seccao_apos_segura": "coordinatorView",
+      "t_pintura": 407,
+      "ms_estabilizou": true,
+      "t_estavel": 2271,
+      "cpu_ms": 484,
+      "longos": [
+        {
+          "t0": 8781,
+          "d": 204
+        },
+        {
+          "t0": 8987,
+          "d": 227
+        },
+        {
+          "t0": 9232,
+          "d": 53
+        }
+      ],
+      "n_longos": 3,
+      "n_mut": 40,
+      "top_mut": [
+        [
+          "coordinatorView",
+          29
+        ],
+        [
+          "appShell",
+          5
+        ],
+        [
+          "bfr-coord-panel-content-31",
+          3
+        ],
+        [
+          "mobileMoreMenu",
+          2
+        ],
+        [
+          "bfr-coord-panel-content-1",
+          1
+        ]
+      ],
+      "rede": [],
+      "n_rede": 0,
+      "cenario": "B_de_coordenacao",
+      "ronda": 1
+    },
+    {
+      "de": "C_volta_rapida#1",
+      "antes": "coordenacao",
+      "seccao_apos_segura": "coordinatorView",
+      "t_pintura": 721,
+      "ms_estabilizou": true,
+      "t_estavel": 2578,
+      "cpu_ms": 931,
+      "longos": [
+        {
+          "t0": 13437,
+          "d": 91
+        },
+        {
+          "t0": 13529,
+          "d": 411
+        },
+        {
+          "t0": 13943,
+          "d": 285
+        },
+        {
+          "t0": 14235,
+          "d": 79
+        },
+        {
+          "t0": 14344,
+          "d": 65
+        }
+      ],
+      "n_longos": 5,
+      "n_mut": 58,
+      "top_mut": [
+        [
+          "coordinatorView",
+          29
+        ],
+        [
+          "appShell",
+          5
+        ],
+        [
+          "bfr-coord-panel-content-47",
+          3
+        ],
+        [
+          "bfr-schedule-panel-1-morning",
+          3
+        ],
+        [
+          "bfr-schedule-panel-1-afternoon",
+          3
+        ],
+        [
+          "bfr-schedule-panel-2-morning",
+          3
+        ]
+      ],
+      "rede": [],
+      "n_rede": 0,
+      "cenario": "C_volta_rapida",
+      "ronda": 1
+    },
+    {
+      "de": "A_ja_no_inicio#2",
+      "antes": "inicio",
+      "seccao_apos_segura": "coordinatorView",
+      "t_pintura": 423,
+      "ms_estabilizou": true,
+      "t_estavel": 2273,
+      "cpu_ms": 424,
+      "longos": [
+        {
+          "t0": 19944,
+          "d": 184
+        },
+        {
+          "t0": 20130,
+          "d": 240
+        }
+      ],
+      "n_longos": 2,
+      "n_mut": 40,
+      "top_mut": [
+        [
+          "coordinatorView",
+          29
+        ],
+        [
+          "appShell",
+          5
+        ],
+        [
+          "bfr-coord-panel-content-63",
+          3
+        ],
+        [
+          "mobileMoreMenu",
+          2
+        ],
+        [
+          "bfr-coord-panel-content-1",
+          1
+        ]
+      ],
+      "rede": [],
+      "n_rede": 0,
+      "cenario": "A_ja_no_inicio",
+      "ronda": 2
+    },
+    {
+      "de": "B_de_coordenacao#2",
+      "antes": "coordenacao",
+      "seccao_apos_segura": "coordinatorView",
+      "t_pintura": 381,
+      "ms_estabilizou": true,
+      "t_estavel": 2231,
+      "cpu_ms": 438,
+      "longos": [
+        {
+          "t0": 24577,
+          "d": 195
+        },
+        {
+          "t0": 24775,
+          "d": 185
+        },
+        {
+          "t0": 24991,
+          "d": 58
+        }
+      ],
+      "n_longos": 3,
+      "n_mut": 40,
+      "top_mut": [
+        [
+          "coordinatorView",
+          29
+        ],
+        [
+          "appShell",
+          5
+        ],
+        [
+          "bfr-coord-panel-content-79",
+          3
+        ],
+        [
+          "mobileMoreMenu",
+          2
+        ],
+        [
+          "bfr-coord-panel-content-1",
+          1
+        ]
+      ],
+      "rede": [],
+      "n_rede": 0,
+      "cenario": "B_de_coordenacao",
+      "ronda": 2
+    },
+    {
+      "de": "C_volta_rapida#2",
+      "antes": "coordenacao",
+      "seccao_apos_segura": "coordinatorView",
+      "t_pintura": 342,
+      "ms_estabilizou": true,
+      "t_estavel": 2198,
+      "cpu_ms": 335,
+      "longos": [
+        {
+          "t0": 29124,
+          "d": 185
+        },
+        {
+          "t0": 29312,
+          "d": 150
+        }
+      ],
+      "n_longos": 2,
+      "n_mut": 58,
+      "top_mut": [
+        [
+          "coordinatorView",
+          29
+        ],
+        [
+          "appShell",
+          5
+        ],
+        [
+          "bfr-coord-panel-content-95",
+          3
+        ],
+        [
+          "bfr-schedule-panel-1-morning",
+          3
+        ],
+        [
+          "bfr-schedule-panel-1-afternoon",
+          3
+        ],
+        [
+          "bfr-schedule-panel-2-morning",
+          3
+        ]
+      ],
+      "rede": [],
+      "n_rede": 0,
+      "cenario": "C_volta_rapida",
+      "ronda": 2
+    }
+  ],
+  "contas": {
+    "id": "9cd0f42e"
+  },
+  "boot_ms": {
+    "fcp": 212,
+    "nav": 590
+  },
+  "resumo": {
+    "n": 6,
+    "pintura": {
+      "mediana": 407,
+      "max": 721
+    },
+    "estabilizou": {
+      "mediana": 2273,
+      "max": 3415
+    },
+    "cpu": {
+      "mediana": 438,
+      "max": 931
+    },
+    "mutacoes": {
+      "mediana": 58,
+      "max": 59
+    },
+    "pedidos_rede": {
+      "mediana": 0,
+      "max": 8
+    },
+    "nao_estabilizaram": []
+  }
+}

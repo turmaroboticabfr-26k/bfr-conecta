@@ -1,0 +1,565 @@
+{
+  "ciclo": "AH-7b-MOBILE",
+  "em": "2026-11-17T10:39:05.524Z",
+  "papel": "psychology",
+  "larguras": [
+    320,
+    360,
+    375,
+    390,
+    414,
+    430
+  ],
+  "altura": 720,
+  "url": "https://bfr-conecta.turmaroboticabfr.workers.dev/",
+  "md5_shell": "d418e7fc917f1fbb1437054b7b531f9b",
+  "contas": {
+    "id": "86923196"
+  },
+  "markup": "toque em #bfrMobileBottomNav button[data-bfr-mobile-route] e #bfrMobileDrawer [data-bfr-drawer-route]; a barra do desktop está display:none abaixo de 800px por decisão do app (bfr-responsive-presentation.js:233)",
+  "declaradas": [
+    "inicio",
+    "psychology",
+    "chat-interno"
+  ],
+  "bandas": {
+    "320": {
+      "width": 320,
+      "ms_ready": 444,
+      "erro_boot": null,
+      "censo": {
+        "presentation": "mobile",
+        "body_mobile": true,
+        "barra_existe": true,
+        "barra": [
+          {
+            "rot": "🏠Início",
+            "route": "inicio",
+            "w": 77,
+            "h": 61,
+            "y": 654,
+            "x": 5
+          },
+          {
+            "rot": "🧠Psicologia",
+            "route": "psychology",
+            "w": 77,
+            "h": 61,
+            "y": 654,
+            "x": 83
+          },
+          {
+            "rot": "💬Chat interno",
+            "route": "chat-interno",
+            "w": 77,
+            "h": 61,
+            "y": 654,
+            "x": 161
+          },
+          {
+            "rot": "⋯Mais",
+            "route": "more",
+            "w": 77,
+            "h": 61,
+            "y": 654,
+            "x": 238
+          }
+        ],
+        "gaveta_existe": true,
+        "gaveta_aberta": false,
+        "gaveta": [
+          {
+            "rot": "🏠Início",
+            "route": "inicio",
+            "w": 250,
+            "h": 48,
+            "y": 325,
+            "x": -271
+          },
+          {
+            "rot": "💬Chat interno",
+            "route": "chat-interno",
+            "w": 250,
+            "h": 48,
+            "y": 377,
+            "x": -271
+          },
+          {
+            "rot": "🔔Notificações",
+            "route": "notificacoes",
+            "w": 250,
+            "h": 48,
+            "y": 429,
+            "x": -271
+          },
+          {
+            "rot": "📚Conteúdos",
+            "route": "conteudos",
+            "w": 250,
+            "h": 48,
+            "y": 481,
+            "x": -271
+          },
+          {
+            "rot": "🧠Central da Psi",
+            "route": "psychology",
+            "w": 250,
+            "h": 48,
+            "y": 533,
+            "x": -271
+          },
+          {
+            "rot": "🧭Central Multip",
+            "route": "multiprofissional",
+            "w": 250,
+            "h": 48,
+            "y": 585,
+            "x": -271
+          }
+        ],
+        "hamb": true,
+        "sidebar_caixa": false,
+        "vw": 320,
+        "vh": 720
+      },
+      "modal": {
+        "id": "preferredNameModal",
+        "texto": "× PRIMEIRO ACESSO Como você quer ser chamado? Esse nome aparece apenas"
+      },
+      "modal_fechou_a_toque": true,
+      "gaveta_aberta_a_toque": true,
+      "seccoes": {
+        "inicio": {
+          "painel": {
+            "id": "psychologyView",
+            "c": 897
+          },
+          "ms": 1843,
+          "assentou": true,
+          "controles": 18,
+          "tap": 0,
+          "fonte": 1,
+          "estouro_h": false,
+          "largura": 320,
+          "seccao_ativa": "inicio",
+          "view_apos": "psychology",
+          "toque": {
+            "x": 43,
+            "y": 685,
+            "w": 77,
+            "h": 61
+          },
+          "antes": "inicio",
+          "via": "barra"
+        },
+        "psychology": {
+          "painel": {
+            "id": "psychologyView",
+            "c": 897
+          },
+          "ms": 1839,
+          "assentou": true,
+          "controles": 18,
+          "tap": 0,
+          "fonte": 1,
+          "estouro_h": false,
+          "largura": 320,
+          "seccao_ativa": "psychology",
+          "view_apos": "psychology",
+          "toque": {
+            "x": 121,
+            "y": 685,
+            "w": 77,
+            "h": 61
+          },
+          "antes": "inicio",
+          "via": "barra"
+        },
+        "chat-interno": {
+          "painel": {
+            "id": "internalChatView",
+            "c": 381
+          },
+          "ms": 1818,
+          "assentou": true,
+          "controles": 4,
+          "tap": 0,
+          "fonte": 0,
+          "estouro_h": false,
+          "largura": 320,
+          "seccao_ativa": "chat-interno",
+          "view_apos": "psychology",
+          "toque": {
+            "x": 199,
+            "y": 685,
+            "w": 77,
+            "h": 61
+          },
+          "antes": "psychology",
+          "via": "barra"
+        },
+        "notificacoes": {
+          "painel": {
+            "id": "bfrNotificationsView",
+            "c": 445
+          },
+          "ms": 1818,
+          "assentou": true,
+          "controles": 2,
+          "tap": 0,
+          "fonte": 0,
+          "estouro_h": false,
+          "largura": 320,
+          "seccao_ativa": "inicio",
+          "view_apos": "psychology",
+          "toque": {
+            "x": 141,
+            "y": 360,
+            "w": 250,
+            "h": 48
+          },
+          "antes": "chat-interno",
+          "via": "gaveta"
+        },
+        "conteudos": {
+          "painel": {
+            "id": "bfrContentHubView",
+            "c": 1123
+          },
+          "ms": 1823,
+          "assentou": true,
+          "controles": 14,
+          "tap": 0,
+          "fonte": 3,
+          "estouro_h": false,
+          "largura": 320,
+          "seccao_ativa": "inicio",
+          "view_apos": "psychology",
+          "toque": {
+            "x": 141,
+            "y": 360,
+            "w": 250,
+            "h": 48
+          },
+          "antes": "inicio",
+          "via": "gaveta"
+        },
+        "multiprofissional": {
+          "painel": {
+            "id": "bfrContentHubView",
+            "c": 1123
+          },
+          "ms": 1824,
+          "assentou": true,
+          "controles": 14,
+          "tap": 0,
+          "fonte": 3,
+          "estouro_h": false,
+          "largura": 320,
+          "seccao_ativa": "inicio",
+          "view_apos": "psychology",
+          "toque": {
+            "x": 141,
+            "y": 360,
+            "w": 250,
+            "h": 48
+          },
+          "antes": "inicio",
+          "via": "gaveta"
+        }
+      },
+      "abertas": 6,
+      "vazias": [],
+      "nao_assentaram": [],
+      "estouro": [],
+      "tap_miudo": 0,
+      "fonte_miuda": 8,
+      "declaradas_sem_rota": [],
+      "rotas_fora_do_mapa": [
+        "notificacoes",
+        "conteudos",
+        "multiprofissional"
+      ],
+      "inalcancaveis": [],
+      "sem_efeito": [
+        "conteudos:inicio",
+        "multiprofissional:inicio"
+      ],
+      "erros": [],
+      "diagnostico_gaveta": [],
+      "dialogos_sem_saida": [],
+      "dialogos_miudos": []
+    },
+    "360": {
+      "width": 360,
+      "ms_ready": 394,
+      "erro_boot": null,
+      "censo": {
+        "presentation": "mobile",
+        "body_mobile": true,
+        "barra_existe": true,
+        "barra": [
+          {
+            "rot": "🏠Início",
+            "route": "inicio",
+            "w": 87,
+            "h": 61,
+            "y": 654,
+            "x": 5
+          },
+          {
+            "rot": "🧠Psicologia",
+            "route": "psychology",
+            "w": 87,
+            "h": 61,
+            "y": 654,
+            "x": 93
+          },
+          {
+            "rot": "💬Chat interno",
+            "route": "chat-interno",
+            "w": 87,
+            "h": 61,
+            "y": 654,
+            "x": 181
+          },
+          {
+            "rot": "⋯Mais",
+            "route": "more",
+            "w": 87,
+            "h": 61,
+            "y": 654,
+            "x": 268
+          }
+        ],
+        "gaveta_existe": true,
+        "gaveta_aberta": false,
+        "gaveta": [
+          {
+            "rot": "🏠Início",
+            "route": "inicio",
+            "w": 285,
+            "h": 48,
+            "y": 310,
+            "x": -307
+          },
+          {
+            "rot": "💬Chat interno",
+            "route": "chat-interno",
+            "w": 285,
+            "h": 48,
+            "y": 362,
+            "x": -307
+          },
+          {
+            "rot": "🔔Notificações",
+            "route": "notificacoes",
+            "w": 285,
+            "h": 48,
+            "y": 414,
+            "x": -307
+          },
+          {
+            "rot": "📚Conteúdos",
+            "route": "conteudos",
+            "w": 285,
+            "h": 48,
+            "y": 466,
+            "x": -307
+          },
+          {
+            "rot": "🧠Central da Psi",
+            "route": "psychology",
+            "w": 285,
+            "h": 48,
+            "y": 518,
+            "x": -307
+          },
+          {
+            "rot": "🧭Central Multip",
+            "route": "multiprofissional",
+            "w": 285,
+            "h": 48,
+            "y": 570,
+            "x": -307
+          }
+        ],
+        "hamb": true,
+        "sidebar_caixa": false,
+        "vw": 360,
+        "vh": 720
+      },
+      "modal": null,
+      "modal_fechou_a_toque": true,
+      "gaveta_aberta_a_toque": true,
+      "seccoes": {
+        "inicio": {
+          "painel": {
+            "id": "psychologyView",
+            "c": 897
+          },
+          "ms": 1821,
+          "assentou": true,
+          "controles": 18,
+          "tap": 0,
+          "fonte": 1,
+          "estouro_h": false,
+          "largura": 360,
+          "seccao_ativa": "inicio",
+          "view_apos": "psychology",
+          "toque": {
+            "x": 48,
+            "y": 685,
+            "w": 87,
+            "h": 61
+          },
+          "antes": "inicio",
+          "via": "barra"
+        },
+        "psychology": {
+          "painel": {
+            "id": "psychologyView",
+            "c": 897
+          },
+          "ms": 1844,
+          "assentou": true,
+          "controles": 18,
+          "tap": 0,
+          "fonte": 1,
+          "estouro_h": false,
+          "largura": 360,
+          "seccao_ativa": "psychology",
+          "view_apos": "psychology",
+          "toque": {
+            "x": 136,
+            "y": 685,
+            "w": 87,
+            "h": 61
+          },
+          "antes": "inicio",
+          "via": "barra"
+        },
+        "chat-interno": {
+          "painel": {
+            "id": "internalChatView",
+            "c": 358
+          },
+          "ms": 1829,
+          "assentou": true,
+          "controles": 3,
+          "tap": 0,
+          "fonte": 0,
+          "estouro_h": false,
+          "largura": 360,
+          "seccao_ativa": "chat-interno",
+          "view_apos": "psychology",
+          "toque": {
+            "x": 224,
+            "y": 685,
+            "w": 87,
+            "h": 61
+          },
+          "antes": "psychology",
+          "via": "barra"
+        },
+        "notificacoes": {
+          "painel": {
+            "id": "bfrNotificationsView",
+            "c": 445
+          },
+          "ms": 1824,
+          "assentou": true,
+          "controles": 2,
+          "tap": 0,
+          "fonte": 0,
+          "estouro_h": false,
+          "largura": 360,
+          "seccao_ativa": "inicio",
+          "view_apos": "psychology",
+          "toque": {
+            "x": 158,
+            "y": 360,
+            "w": 285,
+            "h": 48
+          },
+          "antes": "chat-interno",
+          "via": "gaveta"
+        },
+        "conteudos": {
+          "painel": {
+            "id": "bfrContentHubView",
+            "c": 1123
+          },
+          "ms": 1829,
+          "assentou": true,
+          "controles": 14,
+          "tap": 0,
+          "fonte": 3,
+          "estouro_h": false,
+          "largura": 360,
+          "seccao_ativa": "inicio",
+          "view_apos": "psychology",
+          "toque": {
+            "x": 158,
+            "y": 360,
+            "w": 285,
+            "h": 48
+          },
+          "antes": "inicio",
+          "via": "gaveta"
+        },
+        "multiprofissional": {
+          "painel": {
+            "id": "bfrContentHubView",
+            "c": 1123
+          },
+          "ms": 1831,
+          "assentou": true,
+          "controles": 14,
+          "tap": 0,
+          "fonte": 3,
+          "estouro_h": false,
+          "largura": 360,
+          "seccao_ativa": "inicio",
+          "view_apos": "psychology",
+          "toque": {
+            "x": 158,
+            "y": 360,
+            "w": 285,
+            "h": 48
+          },
+          "antes": "inicio",
+          "via": "gaveta"
+        }
+      },
+      "abertas": 6,
+      "vazias": [],
+      "nao_assentaram": [],
+      "estouro": [],
+      "tap_miudo": 0,
+      "fonte_miuda": 8,
+      "declaradas_sem_rota": [],
+      "rotas_fora_do_mapa": [
+        "notificacoes",
+        "conteudos",
+        "multiprofissional"
+      ],
+      "inalcancaveis": [],
+      "sem_efeito": [
+        "conteudos:inicio",
+        "multiprofissional:inicio"
+      ],
+      "erros": [],
+      "diagnostico_gaveta": [],
+      "dialogos_sem_saida": [],
+      "dialogos_miudos": []
+    }
+  },
+  "portoes": 32,
+  "falhas": [
+    "320px: 0 toques que não mudaram a seção ativa | dado=[\"conteudos:inicio\",\"multiprofissional:inicio\"] | esperado=[]",
+    "320px: 0 links de navegação fora do mapa do papel | dado=[\"notificacoes\",\"conteudos\",\"multiprofissional\"] | esperado=[]",
+    "360px: 0 toques que não mudaram a seção ativa | dado=[\"conteudos:inicio\",\"multiprofissional:inicio\"] | esperado=[]",
+    "360px: 0 links de navegação fora do mapa do papel | dado=[\"notificacoes\",\"conteudos\",\"multiprofissional\"] | esperado=[]"
+  ]
+}

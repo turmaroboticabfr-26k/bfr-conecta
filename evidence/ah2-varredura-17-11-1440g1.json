@@ -1,0 +1,1892 @@
+{
+  "ciclo": "AH-2-V",
+  "em": "2026-11-17T07:58:37.715Z",
+  "tetos": {
+    "boot_s": 75,
+    "estabilizacao_ms": 6000,
+    "cdp_timeout_ms": 25000,
+    "praga_s": 470,
+    "watchdog_s": 560
+  },
+  "papeis": [
+    "pending",
+    "parent",
+    "student",
+    "pedagogical",
+    "developer"
+  ],
+  "bandas": [
+    "1440"
+  ],
+  "url": "https://bfr-conecta.turmaroboticabfr.workers.dev/",
+  "md5_shell": "d418e7fc917f1fbb1437054b7b531f9b",
+  "mapa_declarado": {
+    "parent": 16,
+    "student": 19,
+    "teacher": 22,
+    "coordinator": 18,
+    "admin": 26,
+    "director": 15,
+    "monitor": 8,
+    "gatekeeper": 8,
+    "secretary": 11,
+    "aee": 10,
+    "psychology": 3,
+    "multiprofessional": 3,
+    "sports_operator": 4,
+    "education_supervisor": 12
+  },
+  "traducao_lida_do_bundle": "viewRole = role === 'developer' ? 'admin' : role === 'pedagogical' ? 'teacher' : role === 'psychology' ? 'psychology' : role === 'social_work' ? 'multiprofessional' : role;",
+  "stages": {
+    "pending": {
+      "1440": {
+        "nav": {
+          "tentativas": 1,
+          "ms": 113,
+          "ok": true
+        },
+        "ms_ready": 431,
+        "erro_boot": null,
+        "estado": {
+          "entrou": false,
+          "aviso_pendencia": true,
+          "login_visivel": true,
+          "nav_visiveis": 0
+        },
+        "papel_da_sessao": "pending",
+        "botoes_no_dom": 36,
+        "peca": {},
+        "sem_botao": [],
+        "erros_console": [],
+        "erros_brutos": 0,
+        "log_rede_erros": 1,
+        "log_rede_amostra": [
+          {
+            "fonte": "network",
+            "texto": "Failed to load resource: the server responded with a status of 404 ()",
+            "url": "/cdn-cgi/rum"
+          }
+        ],
+        "falhas_api_rede": [],
+        "erros_brutos_amostra": [],
+        "n_erros": 0,
+        "painel_vazio": [],
+        "estouro": [],
+        "tap_total": 0,
+        "fonte_total": 0,
+        "abertas": 0,
+        "instaveis": [],
+        "ms_max": 0,
+        "ms_de_inicio": null,
+        "seg_banda": 1.1
+      },
+      "declaradas": 0,
+      "secoes": [],
+      "injecao_1440": {
+        "expira_em_s": 3598,
+        "acesso_md5_8": "1f8ded5e"
+      }
+    },
+    "parent": {
+      "1440": {
+        "nav": {
+          "tentativas": 1,
+          "ms": 96,
+          "ok": true
+        },
+        "ms_ready": 831,
+        "erro_boot": null,
+        "estado": {
+          "entrou": true,
+          "aviso_pendencia": false,
+          "login_visivel": false,
+          "nav_visiveis": 8
+        },
+        "papel_da_sessao": "parent",
+        "botoes_no_dom": 36,
+        "peca": {
+          "inicio": {
+            "painel": {
+              "id": "parentView",
+              "c": 1161
+            },
+            "ms": 1820,
+            "controles": 15,
+            "nos": 574,
+            "tap": 1,
+            "fonte": 2,
+            "cortados": 0,
+            "estouro_h": false,
+            "seccao_ativa": "inicio",
+            "papel_apos": "parent",
+            "view_apos": "parent",
+            "nao_estabilizou": false,
+            "botao_attivo": "inicio",
+            "view_antes": null
+          },
+          "aprender": {
+            "painel": {
+              "id": "platformLearnView",
+              "c": 279
+            },
+            "ms": 1818,
+            "controles": 6,
+            "nos": 25,
+            "tap": 6,
+            "fonte": 0,
+            "cortados": 7,
+            "estouro_h": false,
+            "seccao_ativa": "aprender",
+            "papel_apos": "parent",
+            "view_apos": "parent",
+            "nao_estabilizou": false,
+            "botao_attivo": "aprender",
+            "view_antes": "parent"
+          },
+          "evoluir": {
+            "painel": {
+              "id": "platformEvolveView",
+              "c": 270
+            },
+            "ms": 1819,
+            "controles": 4,
+            "nos": 21,
+            "tap": 4,
+            "fonte": 0,
+            "cortados": 5,
+            "estouro_h": false,
+            "seccao_ativa": "evoluir",
+            "papel_apos": "parent",
+            "view_apos": "parent",
+            "nao_estabilizou": false,
+            "botao_attivo": "evoluir",
+            "view_antes": "parent"
+          },
+          "escola": {
+            "painel": {
+              "id": "platformSchoolView",
+              "c": 306
+            },
+            "ms": 1824,
+            "controles": 6,
+            "nos": 25,
+            "tap": 6,
+            "fonte": 0,
+            "cortados": 7,
+            "estouro_h": false,
+            "seccao_ativa": "escola",
+            "papel_apos": "parent",
+            "view_apos": "parent",
+            "nao_estabilizou": false,
+            "botao_attivo": "escola",
+            "view_antes": "parent"
+          },
+          "meu-espaco": {
+            "painel": {
+              "id": "platformSpaceView",
+              "c": 332
+            },
+            "ms": 1821,
+            "controles": 8,
+            "nos": 29,
+            "tap": 1,
+            "fonte": 0,
+            "cortados": 9,
+            "estouro_h": false,
+            "seccao_ativa": "meu-espaco",
+            "papel_apos": "parent",
+            "view_apos": "parent",
+            "nao_estabilizou": false,
+            "botao_attivo": "meu-espaco",
+            "view_antes": "parent"
+          },
+          "notificacoes": {
+            "painel": {
+              "id": "bfrNotificationsView",
+              "c": 400
+            },
+            "ms": 1819,
+            "controles": 3,
+            "nos": 26,
+            "tap": 3,
+            "fonte": 0,
+            "cortados": 0,
+            "estouro_h": false,
+            "seccao_ativa": "notificacoes",
+            "papel_apos": "parent",
+            "view_apos": "parent",
+            "nao_estabilizou": false,
+            "botao_attivo": "notificacoes",
+            "view_antes": "parent"
+          },
+          "conteudos": {
+            "painel": {
+              "id": "bfrContentHubView",
+              "c": 1021
+            },
+            "ms": 1825,
+            "controles": 14,
+            "nos": 68,
+            "tap": 14,
+            "fonte": 3,
+            "cortados": 0,
+            "estouro_h": false,
+            "seccao_ativa": "conteudos",
+            "papel_apos": "parent",
+            "view_apos": "parent",
+            "nao_estabilizou": false,
+            "botao_attivo": "conteudos",
+            "view_antes": "parent"
+          },
+          "notas": {
+            "painel": {
+              "id": "parentView",
+              "c": 1161
+            },
+            "ms": 1823,
+            "controles": 15,
+            "nos": 574,
+            "tap": 1,
+            "fonte": 2,
+            "cortados": 0,
+            "estouro_h": false,
+            "seccao_ativa": "notas",
+            "papel_apos": "parent",
+            "view_apos": "parent",
+            "nao_estabilizou": false,
+            "botao_attivo": "notas",
+            "view_antes": "parent"
+          },
+          "agenda": {
+            "painel": {
+              "id": "parentView",
+              "c": 1161
+            },
+            "ms": 1830,
+            "controles": 15,
+            "nos": 574,
+            "tap": 1,
+            "fonte": 2,
+            "cortados": 0,
+            "estouro_h": false,
+            "seccao_ativa": "agenda",
+            "papel_apos": "parent",
+            "view_apos": "parent",
+            "nao_estabilizou": false,
+            "botao_attivo": "agenda",
+            "view_antes": "parent"
+          },
+          "atividades": {
+            "painel": {
+              "id": "activityCenterView",
+              "c": 1011
+            },
+            "ms": 1823,
+            "controles": 19,
+            "nos": 96,
+            "tap": 15,
+            "fonte": 0,
+            "cortados": 0,
+            "estouro_h": false,
+            "seccao_ativa": "atividades",
+            "papel_apos": "parent",
+            "view_apos": "parent",
+            "nao_estabilizou": false,
+            "botao_attivo": null,
+            "view_antes": "parent"
+          },
+          "comunicados": {
+            "painel": {
+              "id": "parentView",
+              "c": 1126
+            },
+            "ms": 1823,
+            "controles": 15,
+            "nos": 595,
+            "tap": 1,
+            "fonte": 2,
+            "cortados": 0,
+            "estouro_h": false,
+            "seccao_ativa": "comunicados",
+            "papel_apos": "parent",
+            "view_apos": "parent",
+            "nao_estabilizou": false,
+            "botao_attivo": "comunicados",
+            "view_antes": "parent"
+          },
+          "secretaria": {
+            "painel": {
+              "id": "secretaryView",
+              "c": 1359
+            },
+            "ms": 1822,
+            "controles": 10,
+            "nos": 185,
+            "tap": 9,
+            "fonte": 1,
+            "cortados": 1,
+            "estouro_h": false,
+            "seccao_ativa": "secretaria",
+            "papel_apos": "parent",
+            "view_apos": "parent",
+            "nao_estabilizou": false,
+            "botao_attivo": null,
+            "view_antes": "parent"
+          },
+          "ocorrencias": {
+            "painel": {
+              "id": "parentView",
+              "c": 1126
+            },
+            "ms": 1830,
+            "controles": 15,
+            "nos": 596,
+            "tap": 1,
+            "fonte": 2,
+            "cortados": 0,
+            "estouro_h": false,
+            "seccao_ativa": "ocorrencias",
+            "papel_apos": "parent",
+            "view_apos": "parent",
+            "nao_estabilizou": false,
+            "botao_attivo": null,
+            "view_antes": "parent"
+          },
+          "jogos-escolares": {
+            "painel": {
+              "id": "schoolGamesView",
+              "c": 865
+            },
+            "ms": 1825,
+            "controles": 8,
+            "nos": 79,
+            "tap": 8,
+            "fonte": 0,
+            "cortados": 0,
+            "estouro_h": false,
+            "seccao_ativa": "jogos-escolares",
+            "papel_apos": "parent",
+            "view_apos": "parent",
+            "nao_estabilizou": false,
+            "botao_attivo": null,
+            "view_antes": "parent"
+          }
+        },
+        "sem_botao": [
+          "escola-historia",
+          "coordenacao-chat"
+        ],
+        "erros_console": [],
+        "erros_brutos": 0,
+        "log_rede_erros": 1,
+        "log_rede_amostra": [
+          {
+            "fonte": "network",
+            "texto": "Failed to load resource: the server responded with a status of 404 ()",
+            "url": "/cdn-cgi/rum"
+          }
+        ],
+        "falhas_api_rede": [],
+        "erros_brutos_amostra": [],
+        "n_erros": 0,
+        "painel_vazio": [],
+        "estouro": [],
+        "tap_total": 71,
+        "fonte_total": 14,
+        "abertas": 14,
+        "instaveis": [],
+        "ms_max": 1830,
+        "ms_de_inicio": 1820,
+        "seg_banda": 27
+      },
+      "declaradas": 16,
+      "secoes": [
+        "inicio",
+        "aprender",
+        "evoluir",
+        "escola",
+        "meu-espaco",
+        "notificacoes",
+        "conteudos",
+        "escola-historia",
+        "notas",
+        "agenda",
+        "atividades",
+        "comunicados",
+        "secretaria",
+        "ocorrencias",
+        "coordenacao-chat",
+        "jogos-escolares"
+      ],
+      "injecao_1440": {
+        "expira_em_s": 3597,
+        "acesso_md5_8": "57ad4c5d"
+      }
+    },
+    "student": {
+      "1440": {
+        "nav": {
+          "tentativas": 1,
+          "ms": 156,
+          "ok": true
+        },
+        "ms_ready": 500,
+        "erro_boot": null,
+        "estado": {
+          "entrou": true,
+          "aviso_pendencia": false,
+          "login_visivel": false,
+          "nav_visiveis": 8
+        },
+        "papel_da_sessao": "student",
+        "botoes_no_dom": 36,
+        "peca": {
+          "inicio": {
+            "painel": {
+              "id": "studentView",
+              "c": 1281
+            },
+            "ms": 1829,
+            "controles": 10,
+            "nos": 1314,
+            "tap": 6,
+            "fonte": 0,
+            "cortados": 1,
+            "estouro_h": false,
+            "seccao_ativa": "inicio",
+            "papel_apos": "student",
+            "view_apos": "student",
+            "nao_estabilizou": false,
+            "botao_attivo": "inicio",
+            "view_antes": null
+          },
+          "aprender": {
+            "painel": {
+              "id": "platformLearnView",
+              "c": 1032
+            },
+            "ms": 1824,
+            "controles": 7,
+            "nos": 67,
+            "tap": 7,
+            "fonte": 8,
+            "cortados": 1,
+            "estouro_h": false,
+            "seccao_ativa": "aprender",
+            "papel_apos": "student",
+            "view_apos": "student",
+            "nao_estabilizou": false,
+            "botao_attivo": "aprender",
+            "view_antes": "student"
+          },
+          "evoluir": {
+            "painel": {
+              "id": "platformEvolveView",
+              "c": 1021
+            },
+            "ms": 1828,
+            "controles": 4,
+            "nos": 82,
+            "tap": 4,
+            "fonte": 18,
+            "cortados": 1,
+            "estouro_h": false,
+            "seccao_ativa": "evoluir",
+            "papel_apos": "student",
+            "view_apos": "student",
+            "nao_estabilizou": false,
+            "botao_attivo": "evoluir",
+            "view_antes": "student"
+          },
+          "escola": {
+            "painel": {
+              "id": "platformSchoolView",
+              "c": 723
+            },
+            "ms": 1823,
+            "controles": 14,
+            "nos": 42,
+            "tap": 14,
+            "fonte": 0,
+            "cortados": 1,
+            "estouro_h": false,
+            "seccao_ativa": "escola",
+            "papel_apos": "student",
+            "view_apos": "student",
+            "nao_estabilizou": false,
+            "botao_attivo": "escola",
+            "view_antes": "student"
+          },
+          "meu-espaco": {
+            "painel": {
+              "id": "platformSpaceView",
+              "c": 223
+            },
+            "ms": 1814,
+            "controles": 0,
+            "nos": 7,
+            "tap": 0,
+            "fonte": 1,
+            "cortados": 1,
+            "estouro_h": false,
+            "seccao_ativa": "meu-espaco",
+            "papel_apos": "student",
+            "view_apos": "student",
+            "nao_estabilizou": false,
+            "botao_attivo": "escola",
+            "view_antes": "student"
+          },
+          "notificacoes": {
+            "painel": {
+              "id": "bfrNotificationsView",
+              "c": 400
+            },
+            "ms": 1817,
+            "controles": 3,
+            "nos": 26,
+            "tap": 3,
+            "fonte": 0,
+            "cortados": 0,
+            "estouro_h": false,
+            "seccao_ativa": "notificacoes",
+            "papel_apos": "student",
+            "view_apos": "student",
+            "nao_estabilizou": false,
+            "botao_attivo": "notificacoes",
+            "view_antes": "student"
+          },
+          "conteudos": {
+            "painel": {
+              "id": "bfrContentHubView",
+              "c": 1021
+            },
+            "ms": 1818,
+            "controles": 14,
+            "nos": 68,
+            "tap": 14,
+            "fonte": 3,
+            "cortados": 0,
+            "estouro_h": false,
+            "seccao_ativa": "conteudos",
+            "papel_apos": "student",
+            "view_apos": "student",
+            "nao_estabilizou": false,
+            "botao_attivo": "conteudos",
+            "view_antes": "student"
+          },
+          "notas": {
+            "painel": {
+              "id": "studentView",
+              "c": 11164
+            },
+            "ms": 1823,
+            "controles": 51,
+            "nos": 1314,
+            "tap": 39,
+            "fonte": 6,
+            "cortados": 9,
+            "estouro_h": false,
+            "seccao_ativa": "notas",
+            "papel_apos": "student",
+            "view_apos": "student",
+            "nao_estabilizou": false,
+            "botao_attivo": "notas",
+            "view_antes": "student"
+          },
+          "agenda": {
+            "painel": {
+              "id": "studentView",
+              "c": 11164
+            },
+            "ms": 1832,
+            "controles": 51,
+            "nos": 1314,
+            "tap": 39,
+            "fonte": 6,
+            "cortados": 9,
+            "estouro_h": false,
+            "seccao_ativa": "agenda",
+            "papel_apos": "student",
+            "view_apos": "student",
+            "nao_estabilizou": false,
+            "botao_attivo": "agenda",
+            "view_antes": "student"
+          },
+          "atividades": {
+            "painel": {
+              "id": "activityCenterView",
+              "c": 1011
+            },
+            "ms": 1823,
+            "controles": 19,
+            "nos": 96,
+            "tap": 15,
+            "fonte": 0,
+            "cortados": 0,
+            "estouro_h": false,
+            "seccao_ativa": "atividades",
+            "papel_apos": "student",
+            "view_apos": "student",
+            "nao_estabilizou": false,
+            "botao_attivo": null,
+            "view_antes": "student"
+          },
+          "horarios": {
+            "painel": {
+              "id": "studentView",
+              "c": 11164
+            },
+            "ms": 1820,
+            "controles": 51,
+            "nos": 1314,
+            "tap": 39,
+            "fonte": 6,
+            "cortados": 9,
+            "estouro_h": false,
+            "seccao_ativa": "horarios",
+            "papel_apos": "student",
+            "view_apos": "student",
+            "nao_estabilizou": false,
+            "botao_attivo": null,
+            "view_antes": "student"
+          },
+          "jogos": {
+            "painel": {
+              "id": "studentView",
+              "c": 11164
+            },
+            "ms": 1818,
+            "controles": 51,
+            "nos": 1314,
+            "tap": 39,
+            "fonte": 6,
+            "cortados": 9,
+            "estouro_h": false,
+            "seccao_ativa": "jogos",
+            "papel_apos": "student",
+            "view_apos": "student",
+            "nao_estabilizou": false,
+            "botao_attivo": null,
+            "view_antes": "student"
+          },
+          "jogos-escolares": {
+            "painel": {
+              "id": "schoolGamesView",
+              "c": 865
+            },
+            "ms": 1821,
+            "controles": 8,
+            "nos": 79,
+            "tap": 8,
+            "fonte": 0,
+            "cortados": 0,
+            "estouro_h": false,
+            "seccao_ativa": "jogos-escolares",
+            "papel_apos": "student",
+            "view_apos": "student",
+            "nao_estabilizou": false,
+            "botao_attivo": null,
+            "view_antes": "student"
+          },
+          "comunicados": {
+            "painel": {
+              "id": "studentView",
+              "c": 11164
+            },
+            "ms": 1823,
+            "controles": 51,
+            "nos": 1314,
+            "tap": 39,
+            "fonte": 6,
+            "cortados": 9,
+            "estouro_h": false,
+            "seccao_ativa": "comunicados",
+            "papel_apos": "student",
+            "view_apos": "student",
+            "nao_estabilizou": false,
+            "botao_attivo": "jogos-escolares",
+            "view_antes": "student"
+          },
+          "biblioteca": {
+            "painel": {
+              "id": "readingLibraryView",
+              "c": 55706
+            },
+            "ms": 1838,
+            "controles": 702,
+            "nos": 6148,
+            "tap": 691,
+            "fonte": 4,
+            "cortados": 230,
+            "estouro_h": false,
+            "seccao_ativa": "biblioteca",
+            "papel_apos": "student",
+            "view_apos": "student",
+            "nao_estabilizou": false,
+            "botao_attivo": null,
+            "view_antes": "student"
+          },
+          "boletim": {
+            "painel": {
+              "id": "studentView",
+              "c": 11164
+            },
+            "ms": 1830,
+            "controles": 51,
+            "nos": 1314,
+            "tap": 39,
+            "fonte": 6,
+            "cortados": 9,
+            "estouro_h": false,
+            "seccao_ativa": "boletim",
+            "papel_apos": "student",
+            "view_apos": "student",
+            "nao_estabilizou": false,
+            "botao_attivo": null,
+            "view_antes": "student"
+          },
+          "resultados-aprendizagem": {
+            "painel": {
+              "id": "resultsLearningView",
+              "c": 445
+            },
+            "ms": 1828,
+            "controles": 2,
+            "nos": 21,
+            "tap": 2,
+            "fonte": 0,
+            "cortados": 0,
+            "estouro_h": false,
+            "seccao_ativa": "resultados-aprendizagem",
+            "papel_apos": "student",
+            "view_apos": "student",
+            "nao_estabilizou": false,
+            "botao_attivo": null,
+            "view_antes": "student"
+          }
+        },
+        "sem_botao": [
+          "escola-historia",
+          "videos-aprender"
+        ],
+        "erros_console": [],
+        "erros_brutos": 0,
+        "log_rede_erros": 1,
+        "log_rede_amostra": [
+          {
+            "fonte": "network",
+            "texto": "Failed to load resource: the server responded with a status of 404 ()",
+            "url": "/cdn-cgi/rum"
+          }
+        ],
+        "falhas_api_rede": [],
+        "erros_brutos_amostra": [],
+        "n_erros": 0,
+        "painel_vazio": [],
+        "estouro": [],
+        "tap_total": 998,
+        "fonte_total": 70,
+        "abertas": 17,
+        "instaveis": [],
+        "ms_max": 1838,
+        "ms_de_inicio": 1829,
+        "seg_banda": 32.9
+      },
+      "declaradas": 19,
+      "secoes": [
+        "inicio",
+        "aprender",
+        "evoluir",
+        "escola",
+        "meu-espaco",
+        "notificacoes",
+        "conteudos",
+        "escola-historia",
+        "notas",
+        "agenda",
+        "atividades",
+        "horarios",
+        "jogos",
+        "jogos-escolares",
+        "videos-aprender",
+        "comunicados",
+        "biblioteca",
+        "boletim",
+        "resultados-aprendizagem"
+      ],
+      "injecao_1440": {
+        "expira_em_s": 3597,
+        "acesso_md5_8": "3342dbf4"
+      }
+    },
+    "pedagogical": {
+      "1440": {
+        "nav": {
+          "tentativas": 1,
+          "ms": 125,
+          "ok": true
+        },
+        "ms_ready": 419,
+        "erro_boot": null,
+        "estado": {
+          "entrou": true,
+          "aviso_pendencia": false,
+          "login_visivel": false,
+          "nav_visiveis": 1
+        },
+        "papel_da_sessao": "pedagogical",
+        "botoes_no_dom": 36,
+        "peca": {
+          "professor-inicio": {
+            "painel": {
+              "id": "teacherView",
+              "c": 626
+            },
+            "ms": 3038,
+            "controles": 3,
+            "nos": 903,
+            "tap": 3,
+            "fonte": 2,
+            "cortados": 0,
+            "estouro_h": false,
+            "seccao_ativa": "professor-inicio",
+            "papel_apos": "pedagogical",
+            "view_apos": "teacher",
+            "nao_estabilizou": false,
+            "botao_attivo": "professor-inicio",
+            "view_antes": null
+          },
+          "professor-turmas": {
+            "painel": {
+              "id": "teacherView",
+              "c": 787
+            },
+            "ms": 1833,
+            "controles": 8,
+            "nos": 931,
+            "tap": 8,
+            "fonte": 2,
+            "cortados": 0,
+            "estouro_h": false,
+            "seccao_ativa": "professor-turmas",
+            "papel_apos": "pedagogical",
+            "view_apos": "teacher",
+            "nao_estabilizou": false,
+            "botao_attivo": "professor-turmas",
+            "view_antes": "teacher"
+          },
+          "professor-atividades": {
+            "painel": {
+              "id": "teacherView",
+              "c": 743
+            },
+            "ms": 1834,
+            "controles": 6,
+            "nos": 931,
+            "tap": 6,
+            "fonte": 2,
+            "cortados": 0,
+            "estouro_h": false,
+            "seccao_ativa": "professor-atividades",
+            "papel_apos": "pedagogical",
+            "view_apos": "teacher",
+            "nao_estabilizou": false,
+            "botao_attivo": "professor-atividades",
+            "view_antes": "teacher"
+          },
+          "professor-avaliacoes": {
+            "painel": {
+              "id": "teacherView",
+              "c": 752
+            },
+            "ms": 1825,
+            "controles": 6,
+            "nos": 931,
+            "tap": 6,
+            "fonte": 2,
+            "cortados": 0,
+            "estouro_h": false,
+            "seccao_ativa": "professor-avaliacoes",
+            "papel_apos": "pedagogical",
+            "view_apos": "teacher",
+            "nao_estabilizou": false,
+            "botao_attivo": null,
+            "view_antes": "teacher"
+          },
+          "professor-frequencia": {
+            "painel": {
+              "id": "teacherView",
+              "c": 1169
+            },
+            "ms": 1819,
+            "controles": 7,
+            "nos": 931,
+            "tap": 7,
+            "fonte": 2,
+            "cortados": 0,
+            "estouro_h": false,
+            "seccao_ativa": "professor-frequencia",
+            "papel_apos": "pedagogical",
+            "view_apos": "teacher",
+            "nao_estabilizou": false,
+            "botao_attivo": "professor-frequencia",
+            "view_antes": "teacher"
+          },
+          "professor-agenda": {
+            "painel": {
+              "id": "teacherView",
+              "c": 977
+            },
+            "ms": 1816,
+            "controles": 5,
+            "nos": 931,
+            "tap": 5,
+            "fonte": 2,
+            "cortados": 0,
+            "estouro_h": false,
+            "seccao_ativa": "professor-agenda",
+            "papel_apos": "pedagogical",
+            "view_apos": "teacher",
+            "nao_estabilizou": false,
+            "botao_attivo": null,
+            "view_antes": "teacher"
+          },
+          "professor-biblioteca": {
+            "painel": {
+              "id": "teacherView",
+              "c": 828
+            },
+            "ms": 1828,
+            "controles": 7,
+            "nos": 931,
+            "tap": 5,
+            "fonte": 2,
+            "cortados": 0,
+            "estouro_h": false,
+            "seccao_ativa": "professor-biblioteca",
+            "papel_apos": "pedagogical",
+            "view_apos": "teacher",
+            "nao_estabilizou": false,
+            "botao_attivo": null,
+            "view_antes": "teacher"
+          },
+          "professor-comunicacao": {
+            "painel": {
+              "id": "teacherView",
+              "c": 775
+            },
+            "ms": 1817,
+            "controles": 6,
+            "nos": 931,
+            "tap": 6,
+            "fonte": 2,
+            "cortados": 0,
+            "estouro_h": false,
+            "seccao_ativa": "professor-comunicacao",
+            "papel_apos": "pedagogical",
+            "view_apos": "teacher",
+            "nao_estabilizou": false,
+            "botao_attivo": null,
+            "view_antes": "teacher"
+          },
+          "chat-interno": {
+            "painel": {
+              "id": "internalChatView",
+              "c": 738
+            },
+            "ms": 1825,
+            "controles": 18,
+            "nos": 122,
+            "tap": 11,
+            "fonte": 7,
+            "cortados": 0,
+            "estouro_h": false,
+            "seccao_ativa": "chat-interno",
+            "papel_apos": "pedagogical",
+            "view_apos": "teacher",
+            "nao_estabilizou": false,
+            "botao_attivo": "chat-interno",
+            "view_antes": "teacher"
+          },
+          "professor-espaco": {
+            "painel": {
+              "id": "teacherView",
+              "c": 814
+            },
+            "ms": 1828,
+            "controles": 5,
+            "nos": 931,
+            "tap": 5,
+            "fonte": 2,
+            "cortados": 0,
+            "estouro_h": false,
+            "seccao_ativa": "professor-espaco",
+            "papel_apos": "pedagogical",
+            "view_apos": "teacher",
+            "nao_estabilizou": false,
+            "botao_attivo": "professor-espaco",
+            "view_antes": "teacher"
+          },
+          "professor-conteudos": {
+            "painel": {
+              "id": "teacherView",
+              "c": 997
+            },
+            "ms": 1833,
+            "controles": 11,
+            "nos": 931,
+            "tap": 9,
+            "fonte": 2,
+            "cortados": 0,
+            "estouro_h": false,
+            "seccao_ativa": "professor-conteudos",
+            "papel_apos": "pedagogical",
+            "view_apos": "teacher",
+            "nao_estabilizou": false,
+            "botao_attivo": "professor-conteudos",
+            "view_antes": "teacher"
+          },
+          "professor-diario": {
+            "painel": {
+              "id": "teacherView",
+              "c": 843
+            },
+            "ms": 1819,
+            "controles": 13,
+            "nos": 931,
+            "tap": 9,
+            "fonte": 2,
+            "cortados": 0,
+            "estouro_h": false,
+            "seccao_ativa": "professor-diario",
+            "papel_apos": "pedagogical",
+            "view_apos": "teacher",
+            "nao_estabilizou": false,
+            "botao_attivo": "professor-diario",
+            "view_antes": "teacher"
+          },
+          "professor-planejamento": {
+            "painel": {
+              "id": "teacherView",
+              "c": 952
+            },
+            "ms": 1816,
+            "controles": 15,
+            "nos": 931,
+            "tap": 11,
+            "fonte": 2,
+            "cortados": 0,
+            "estouro_h": false,
+            "seccao_ativa": "professor-planejamento",
+            "papel_apos": "pedagogical",
+            "view_apos": "teacher",
+            "nao_estabilizou": false,
+            "botao_attivo": "professor-planejamento",
+            "view_antes": "teacher"
+          },
+          "professor-relatorios": {
+            "painel": {
+              "id": "teacherView",
+              "c": 999
+            },
+            "ms": 1819,
+            "controles": 11,
+            "nos": 931,
+            "tap": 11,
+            "fonte": 2,
+            "cortados": 0,
+            "estouro_h": false,
+            "seccao_ativa": "professor-relatorios",
+            "papel_apos": "pedagogical",
+            "view_apos": "teacher",
+            "nao_estabilizou": false,
+            "botao_attivo": "professor-relatorios",
+            "view_antes": "teacher"
+          },
+          "professor-calendario": {
+            "painel": {
+              "id": "teacherView",
+              "c": 750
+            },
+            "ms": 1835,
+            "controles": 5,
+            "nos": 931,
+            "tap": 5,
+            "fonte": 2,
+            "cortados": 0,
+            "estouro_h": false,
+            "seccao_ativa": "professor-calendario",
+            "papel_apos": "pedagogical",
+            "view_apos": "teacher",
+            "nao_estabilizou": false,
+            "botao_attivo": "professor-calendario",
+            "view_antes": "teacher"
+          },
+          "professor-notificacoes": {
+            "painel": {
+              "id": "teacherView",
+              "c": 877
+            },
+            "ms": 1830,
+            "controles": 5,
+            "nos": 931,
+            "tap": 5,
+            "fonte": 2,
+            "cortados": 0,
+            "estouro_h": false,
+            "seccao_ativa": "professor-notificacoes",
+            "papel_apos": "pedagogical",
+            "view_apos": "teacher",
+            "nao_estabilizou": false,
+            "botao_attivo": "professor-notificacoes",
+            "view_antes": "teacher"
+          },
+          "notificacoes": {
+            "painel": {
+              "id": "bfrNotificationsView",
+              "c": 400
+            },
+            "ms": 1814,
+            "controles": 3,
+            "nos": 26,
+            "tap": 3,
+            "fonte": 0,
+            "cortados": 0,
+            "estouro_h": false,
+            "seccao_ativa": "notificacoes",
+            "papel_apos": "pedagogical",
+            "view_apos": "teacher",
+            "nao_estabilizou": false,
+            "botao_attivo": "notificacoes",
+            "view_antes": "teacher"
+          },
+          "conteudos": {
+            "painel": {
+              "id": "bfrContentHubView",
+              "c": 1021
+            },
+            "ms": 1818,
+            "controles": 14,
+            "nos": 68,
+            "tap": 14,
+            "fonte": 3,
+            "cortados": 0,
+            "estouro_h": false,
+            "seccao_ativa": "conteudos",
+            "papel_apos": "pedagogical",
+            "view_apos": "teacher",
+            "nao_estabilizou": false,
+            "botao_attivo": "conteudos",
+            "view_antes": "teacher"
+          },
+          "jogos-escolares": {
+            "painel": {
+              "id": "schoolGamesView",
+              "c": 865
+            },
+            "ms": 1830,
+            "controles": 8,
+            "nos": 79,
+            "tap": 8,
+            "fonte": 0,
+            "cortados": 0,
+            "estouro_h": false,
+            "seccao_ativa": "jogos-escolares",
+            "papel_apos": "pedagogical",
+            "view_apos": "teacher",
+            "nao_estabilizou": false,
+            "botao_attivo": null,
+            "view_antes": "teacher"
+          },
+          "resultados-aprendizagem": {
+            "painel": {
+              "id": "resultsLearningView",
+              "c": 926
+            },
+            "ms": 1834,
+            "controles": 7,
+            "nos": 53,
+            "tap": 7,
+            "fonte": 0,
+            "cortados": 0,
+            "estouro_h": false,
+            "seccao_ativa": "resultados-aprendizagem",
+            "papel_apos": "pedagogical",
+            "view_apos": "teacher",
+            "nao_estabilizou": false,
+            "botao_attivo": null,
+            "view_antes": "teacher"
+          }
+        },
+        "sem_botao": [
+          "professor-agenda-hoje",
+          "escola-historia"
+        ],
+        "erros_console": [],
+        "erros_brutos": 0,
+        "log_rede_erros": 1,
+        "log_rede_amostra": [
+          {
+            "fonte": "network",
+            "texto": "Failed to load resource: the server responded with a status of 404 ()",
+            "url": "/cdn-cgi/rum"
+          }
+        ],
+        "falhas_api_rede": [],
+        "erros_brutos_amostra": [],
+        "n_erros": 0,
+        "painel_vazio": [],
+        "estouro": [],
+        "tap_total": 144,
+        "fonte_total": 40,
+        "abertas": 20,
+        "instaveis": [],
+        "ms_max": 3038,
+        "ms_de_inicio": null,
+        "seg_banda": 39
+      },
+      "declaradas": 22,
+      "secoes": [
+        "professor-inicio",
+        "professor-turmas",
+        "professor-atividades",
+        "professor-avaliacoes",
+        "professor-frequencia",
+        "professor-agenda",
+        "professor-agenda-hoje",
+        "professor-biblioteca",
+        "professor-comunicacao",
+        "chat-interno",
+        "professor-espaco",
+        "professor-conteudos",
+        "professor-diario",
+        "professor-planejamento",
+        "professor-relatorios",
+        "professor-calendario",
+        "professor-notificacoes",
+        "escola-historia",
+        "notificacoes",
+        "conteudos",
+        "jogos-escolares",
+        "resultados-aprendizagem"
+      ],
+      "injecao_1440": {
+        "expira_em_s": 3597,
+        "acesso_md5_8": "015ee018"
+      }
+    },
+    "developer": {
+      "1440": {
+        "nav": {
+          "tentativas": 1,
+          "ms": 115,
+          "ok": true
+        },
+        "ms_ready": 2056,
+        "erro_boot": null,
+        "estado": {
+          "entrou": true,
+          "aviso_pendencia": false,
+          "login_visivel": false,
+          "nav_visiveis": 5
+        },
+        "papel_da_sessao": "developer",
+        "botoes_no_dom": 36,
+        "peca": {
+          "inicio": {
+            "painel": {
+              "id": "adminView",
+              "c": 147354
+            },
+            "ms": 6141,
+            "controles": 375,
+            "nos": 6251,
+            "tap": 309,
+            "fonte": 58,
+            "cortados": 44,
+            "estouro_h": false,
+            "seccao_ativa": "inicio",
+            "papel_apos": "developer",
+            "view_apos": "admin",
+            "nao_estabilizou": true,
+            "botao_attivo": "inicio",
+            "view_antes": null
+          },
+          "chat-interno": {
+            "painel": {
+              "id": "internalChatView",
+              "c": 738
+            },
+            "ms": 1829,
+            "controles": 18,
+            "nos": 122,
+            "tap": 11,
+            "fonte": 7,
+            "cortados": 0,
+            "estouro_h": false,
+            "seccao_ativa": "chat-interno",
+            "papel_apos": "developer",
+            "view_apos": "admin",
+            "nao_estabilizou": false,
+            "botao_attivo": "chat-interno",
+            "view_antes": "admin"
+          },
+          "notificacoes": {
+            "painel": {
+              "id": "bfrNotificationsView",
+              "c": 400
+            },
+            "ms": 1828,
+            "controles": 3,
+            "nos": 26,
+            "tap": 3,
+            "fonte": 0,
+            "cortados": 0,
+            "estouro_h": false,
+            "seccao_ativa": "notificacoes",
+            "papel_apos": "developer",
+            "view_apos": "admin",
+            "nao_estabilizou": false,
+            "botao_attivo": null,
+            "view_antes": "admin"
+          },
+          "conteudos": {
+            "painel": {
+              "id": "bfrContentHubView",
+              "c": 1021
+            },
+            "ms": 1831,
+            "controles": 14,
+            "nos": 68,
+            "tap": 14,
+            "fonte": 3,
+            "cortados": 0,
+            "estouro_h": false,
+            "seccao_ativa": "conteudos",
+            "papel_apos": "developer",
+            "view_apos": "admin",
+            "nao_estabilizou": false,
+            "botao_attivo": null,
+            "view_antes": "admin"
+          },
+          "notas": {
+            "painel": {
+              "id": "adminView",
+              "c": 150969
+            },
+            "ms": 1821,
+            "controles": 393,
+            "nos": 6706,
+            "tap": 325,
+            "fonte": 70,
+            "cortados": 44,
+            "estouro_h": false,
+            "seccao_ativa": "notas",
+            "papel_apos": "developer",
+            "view_apos": "admin",
+            "nao_estabilizou": false,
+            "botao_attivo": "notas",
+            "view_antes": "admin"
+          },
+          "agenda": {
+            "painel": {
+              "id": "adminView",
+              "c": 150969
+            },
+            "ms": 1821,
+            "controles": 393,
+            "nos": 6706,
+            "tap": 325,
+            "fonte": 70,
+            "cortados": 44,
+            "estouro_h": false,
+            "seccao_ativa": "agenda",
+            "papel_apos": "developer",
+            "view_apos": "admin",
+            "nao_estabilizou": false,
+            "botao_attivo": "agenda",
+            "view_antes": "admin"
+          },
+          "atividades": {
+            "painel": {
+              "id": "activityCenterView",
+              "c": 995
+            },
+            "ms": 1820,
+            "controles": 20,
+            "nos": 94,
+            "tap": 15,
+            "fonte": 0,
+            "cortados": 0,
+            "estouro_h": false,
+            "seccao_ativa": "atividades",
+            "papel_apos": "developer",
+            "view_apos": "admin",
+            "nao_estabilizou": false,
+            "botao_attivo": null,
+            "view_antes": "admin"
+          },
+          "horarios": {
+            "painel": {
+              "id": "adminView",
+              "c": 151608
+            },
+            "ms": 1821,
+            "controles": 396,
+            "nos": 6824,
+            "tap": 328,
+            "fonte": 70,
+            "cortados": 44,
+            "estouro_h": false,
+            "seccao_ativa": "horarios",
+            "papel_apos": "developer",
+            "view_apos": "admin",
+            "nao_estabilizou": false,
+            "botao_attivo": null,
+            "view_antes": "admin"
+          },
+          "jogos": {
+            "painel": {
+              "id": "adminView",
+              "c": 151608
+            },
+            "ms": 1831,
+            "controles": 396,
+            "nos": 6824,
+            "tap": 328,
+            "fonte": 70,
+            "cortados": 44,
+            "estouro_h": false,
+            "seccao_ativa": "jogos",
+            "papel_apos": "developer",
+            "view_apos": "admin",
+            "nao_estabilizou": false,
+            "botao_attivo": null,
+            "view_antes": "admin"
+          },
+          "jogos-escolares": {
+            "painel": {
+              "id": "schoolGamesView",
+              "c": 1093
+            },
+            "ms": 1839,
+            "controles": 13,
+            "nos": 90,
+            "tap": 13,
+            "fonte": 0,
+            "cortados": 0,
+            "estouro_h": false,
+            "seccao_ativa": "jogos-escolares",
+            "papel_apos": "developer",
+            "view_apos": "admin",
+            "nao_estabilizou": false,
+            "botao_attivo": null,
+            "view_antes": "admin"
+          },
+          "comunicados": {
+            "painel": {
+              "id": "adminView",
+              "c": 151608
+            },
+            "ms": 1838,
+            "controles": 396,
+            "nos": 6824,
+            "tap": 328,
+            "fonte": 70,
+            "cortados": 44,
+            "estouro_h": false,
+            "seccao_ativa": "comunicados",
+            "papel_apos": "developer",
+            "view_apos": "admin",
+            "nao_estabilizou": false,
+            "botao_attivo": "jogos-escolares",
+            "view_antes": "admin"
+          },
+          "ocorrencias": {
+            "painel": {
+              "id": "adminView",
+              "c": 151608
+            },
+            "ms": 1850,
+            "controles": 396,
+            "nos": 6824,
+            "tap": 328,
+            "fonte": 70,
+            "cortados": 44,
+            "estouro_h": false,
+            "seccao_ativa": "ocorrencias",
+            "papel_apos": "developer",
+            "view_apos": "admin",
+            "nao_estabilizou": false,
+            "botao_attivo": null,
+            "view_antes": "admin"
+          },
+          "coordenacao": {
+            "painel": {
+              "id": "coordinatorView",
+              "c": 5149
+            },
+            "ms": 4260,
+            "controles": 49,
+            "nos": 715,
+            "tap": 21,
+            "fonte": 7,
+            "cortados": 16,
+            "estouro_h": false,
+            "seccao_ativa": "coordenacao",
+            "papel_apos": "developer",
+            "view_apos": "coordinator",
+            "nao_estabilizou": false,
+            "botao_attivo": null,
+            "view_antes": "admin",
+            "view_reposta": "admin"
+          },
+          "monitor": {
+            "painel": {
+              "id": "adminView",
+              "c": 151608
+            },
+            "ms": 1836,
+            "controles": 396,
+            "nos": 6824,
+            "tap": 328,
+            "fonte": 70,
+            "cortados": 44,
+            "estouro_h": false,
+            "seccao_ativa": "monitor",
+            "papel_apos": "developer",
+            "view_apos": "admin",
+            "nao_estabilizou": false,
+            "botao_attivo": null,
+            "view_antes": "admin"
+          },
+          "gate": {
+            "painel": {
+              "id": "adminView",
+              "c": 151608
+            },
+            "ms": 1829,
+            "controles": 396,
+            "nos": 6824,
+            "tap": 328,
+            "fonte": 70,
+            "cortados": 44,
+            "estouro_h": false,
+            "seccao_ativa": "gate",
+            "papel_apos": "developer",
+            "view_apos": "admin",
+            "nao_estabilizou": false,
+            "botao_attivo": null,
+            "view_antes": "admin"
+          },
+          "administracao": {
+            "painel": {
+              "id": "adminView",
+              "c": 204964
+            },
+            "ms": 1850,
+            "controles": 899,
+            "nos": 9369,
+            "tap": 831,
+            "fonte": 70,
+            "cortados": 44,
+            "estouro_h": false,
+            "seccao_ativa": "administracao",
+            "papel_apos": "developer",
+            "view_apos": "admin",
+            "nao_estabilizou": false,
+            "botao_attivo": null,
+            "view_antes": "admin"
+          },
+          "cadastro-alunos": {
+            "painel": {
+              "id": "adminView",
+              "c": 283022
+            },
+            "ms": 1875,
+            "controles": 1779,
+            "nos": 15508,
+            "tap": 860,
+            "fonte": 70,
+            "cortados": 51,
+            "estouro_h": false,
+            "seccao_ativa": "cadastro-alunos",
+            "papel_apos": "developer",
+            "view_apos": "admin",
+            "nao_estabilizou": false,
+            "botao_attivo": null,
+            "view_antes": "admin"
+          },
+          "fotos": {
+            "painel": {
+              "id": "adminView",
+              "c": 283029
+            },
+            "ms": 1848,
+            "controles": 1779,
+            "nos": 15508,
+            "tap": 860,
+            "fonte": 70,
+            "cortados": 51,
+            "estouro_h": false,
+            "seccao_ativa": "fotos",
+            "papel_apos": "developer",
+            "view_apos": "admin",
+            "nao_estabilizou": false,
+            "botao_attivo": null,
+            "view_antes": "admin"
+          },
+          "aee": {
+            "painel": {
+              "id": "aeeView",
+              "c": 5236
+            },
+            "ms": 1829,
+            "controles": 54,
+            "nos": 377,
+            "tap": 54,
+            "fonte": 0,
+            "cortados": 3,
+            "estouro_h": false,
+            "seccao_ativa": "aee",
+            "papel_apos": "developer",
+            "view_apos": "aee",
+            "nao_estabilizou": false,
+            "botao_attivo": "jogos-escolares",
+            "view_antes": "admin",
+            "view_reposta": "admin"
+          },
+          "direcao": {
+            "painel": {
+              "id": "adminView",
+              "c": 280573
+            },
+            "ms": 1858,
+            "controles": 1714,
+            "nos": 15218,
+            "tap": 795,
+            "fonte": 70,
+            "cortados": 52,
+            "estouro_h": false,
+            "seccao_ativa": "administracao",
+            "papel_apos": "developer",
+            "view_apos": "admin",
+            "nao_estabilizou": false,
+            "botao_attivo": null,
+            "view_antes": "admin"
+          },
+          "comunicacao": {
+            "painel": {
+              "id": "bfrCommunicationView",
+              "c": 1094
+            },
+            "ms": 1827,
+            "controles": 23,
+            "nos": 104,
+            "tap": 22,
+            "fonte": 1,
+            "cortados": 0,
+            "estouro_h": false,
+            "seccao_ativa": "comunicacao",
+            "papel_apos": "developer",
+            "view_apos": "admin",
+            "nao_estabilizou": false,
+            "botao_attivo": "comunicacao",
+            "view_antes": "admin"
+          },
+          "resultados-aprendizagem": {
+            "painel": {
+              "id": "resultsLearningView",
+              "c": 588
+            },
+            "ms": 1820,
+            "controles": 17,
+            "nos": 45,
+            "tap": 17,
+            "fonte": 0,
+            "cortados": 0,
+            "estouro_h": false,
+            "seccao_ativa": "resultados-aprendizagem",
+            "papel_apos": "developer",
+            "view_apos": "admin",
+            "nao_estabilizou": false,
+            "botao_attivo": "resultados-aprendizagem",
+            "view_antes": "admin"
+          },
+          "psychology": {
+            "painel": {
+              "id": "psychologyView",
+              "c": 1142
+            },
+            "ms": 1836,
+            "controles": 18,
+            "nos": 135,
+            "tap": 18,
+            "fonte": 0,
+            "cortados": 4,
+            "estouro_h": false,
+            "seccao_ativa": "psychology",
+            "papel_apos": "developer",
+            "view_apos": "psychology",
+            "nao_estabilizou": false,
+            "botao_attivo": null,
+            "view_antes": "admin",
+            "view_reposta": "admin"
+          },
+          "multiprofissional": {
+            "painel": {
+              "id": "multiprofessionalView",
+              "c": 1199
+            },
+            "ms": 1821,
+            "controles": 15,
+            "nos": 134,
+            "tap": 15,
+            "fonte": 0,
+            "cortados": 4,
+            "estouro_h": false,
+            "seccao_ativa": "multiprofissional",
+            "papel_apos": "developer",
+            "view_apos": "multiprofessional",
+            "nao_estabilizou": false,
+            "botao_attivo": null,
+            "view_antes": "admin",
+            "view_reposta": "admin"
+          }
+        },
+        "sem_botao": [
+          "escola-historia",
+          "videos-aprender",
+          "admin-crachas",
+          "coordenacao-chat"
+        ],
+        "trocas_de_persona": [
+          {
+            "secao": "coordenacao",
+            "de": "admin",
+            "para": "coordinator",
+            "papel_apos": "developer"
+          },
+          {
+            "secao": "aee",
+            "de": "admin",
+            "para": "aee",
+            "papel_apos": "developer"
+          },
+          {
+            "secao": "psychology",
+            "de": "admin",
+            "para": "psychology",
+            "papel_apos": "developer"
+          },
+          {
+            "secao": "multiprofissional",
+            "de": "admin",
+            "para": "multiprofessional",
+            "papel_apos": "developer"
+          }
+        ],
+        "sem_navegacao": [
+          {
+            "secao": "direcao",
+            "ativa": "administracao",
+            "painel": "adminView"
+          }
+        ],
+        "erros_console": [],
+        "erros_brutos": 0,
+        "log_rede_erros": 1,
+        "log_rede_amostra": [
+          {
+            "fonte": "network",
+            "texto": "Failed to load resource: the server responded with a status of 404 ()",
+            "url": "/cdn-cgi/rum"
+          }
+        ],
+        "falhas_api_rede": [],
+        "erros_brutos_amostra": [],
+        "n_erros": 0,
+        "painel_vazio": [],
+        "estouro": [],
+        "tap_total": 6476,
+        "fonte_total": 916,
+        "abertas": 24,
+        "instaveis": [
+          "inicio@6141ms"
+        ],
+        "ms_max": 6141,
+        "ms_de_inicio": 6141,
+        "seg_banda": 66.4
+      },
+      "declaradas": 28,
+      "secoes": [
+        "inicio",
+        "escola-historia",
+        "chat-interno",
+        "notificacoes",
+        "conteudos",
+        "notas",
+        "agenda",
+        "atividades",
+        "horarios",
+        "jogos",
+        "jogos-escolares",
+        "videos-aprender",
+        "comunicados",
+        "ocorrencias",
+        "coordenacao",
+        "monitor",
+        "gate",
+        "administracao",
+        "admin-crachas",
+        "cadastro-alunos",
+        "fotos",
+        "aee",
+        "direcao",
+        "comunicacao",
+        "coordenacao-chat",
+        "resultados-aprendizagem",
+        "psychology",
+        "multiprofissional"
+      ],
+      "injecao_1440": {
+        "expira_em_s": 3597,
+        "acesso_md5_8": "4b49198a"
+      }
+    }
+  },
+  "portoes": 47,
+  "falhas": [
+    "developer/1440: 0 seções cujo conteúdo não assenta em 6 s | dado=[\"inicio@6141ms\"] | esperado=[]"
+  ],
+  "medido": {
+    "papeis": 5,
+    "bandas": 1,
+    "banda_nomes": [
+      "1440"
+    ],
+    "paineis_abertos": 75,
+    "secoes_sem_botao": {
+      "parent": [
+        "escola-historia",
+        "coordenacao-chat"
+      ],
+      "student": [
+        "escola-historia",
+        "videos-aprender"
+      ],
+      "pedagogical": [
+        "professor-agenda-hoje",
+        "escola-historia"
+      ],
+      "developer": [
+        "escola-historia",
+        "videos-aprender",
+        "admin-crachas",
+        "coordenacao-chat"
+      ]
+    },
+    "completa": true
+  },
+  "veredito": "AH2_VARREDURA_COM_DEFEITOS"
+}

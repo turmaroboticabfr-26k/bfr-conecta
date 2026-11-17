@@ -1,0 +1,126 @@
+{
+  "ciclo": "AH-2",
+  "autorizacao": "tranche «Ciclos com mint + browser» + «faca todos»; publicar/DDL/push NÃO autorizados",
+  "em": "2026-11-17T04:59:08.279Z",
+  "stages": {
+    "baseline_pre": {
+      "auth.users": {
+        "n": 9,
+        "md5": "1e30585f72591efb3f68fb3278363730"
+      },
+      "public.profiles": {
+        "n": 9,
+        "md5": "7f58c883fd0632f6ffcdb27f5efa6d5c"
+      },
+      "public.staff_schools": {
+        "n": 2,
+        "md5": "21a2ebcb5dd815170c95fa13c2a9e115"
+      },
+      "public.access_requests": {
+        "n": 12,
+        "md5": "35e02c40bcb4ed0ab7d8db66989e7200"
+      },
+      "public.bfr_teacher_directory": {
+        "n": 35,
+        "md5": "9c623c240cf830c73399649a5f1bf7ca"
+      },
+      "public.bfr_schedule_entries": {
+        "n": 594,
+        "md5": "bc9f7a1dccbdc1df6b0127df54ae0c93"
+      },
+      "public.supervision_audit": {
+        "n": 0,
+        "md5": "empty"
+      },
+      "public.supervision_requests": {
+        "n": 0,
+        "md5": "empty"
+      }
+    },
+    "rotulos": [
+      "pending",
+      "parent",
+      "student",
+      "pedagogical",
+      "developer",
+      "monitor",
+      "gatekeeper",
+      "coordinator",
+      "secretary",
+      "aee",
+      "director",
+      "psychology",
+      "social_work",
+      "sports_operator",
+      "education_supervisor"
+    ],
+    "fixtures": {
+      "staff_schools": [
+        {
+          "papel": "director",
+          "staff_schools_id": "2fa3f500-9ac2-4726-a592-f9430fdca653"
+        },
+        {
+          "papel": "coordinator",
+          "staff_schools_id": "72955b7e-894c-4efd-9d78-996beeee0a92"
+        },
+        {
+          "papel": "secretary",
+          "staff_schools_id": "581c4ae9-1b20-4dd3-8b78-1cef5193052a"
+        },
+        {
+          "papel": "education_supervisor",
+          "staff_schools_id": "d87d2761-2b98-4bab-9295-0f5fd887d26b"
+        }
+      ],
+      "professor": {
+        "directory_id": "681e6abc-4457-48b1-9c1e-70868b8b55d6",
+        "aulas": 30,
+        "turmas": 6,
+        "disciplinas": 1,
+        "profile_id_anterior": null,
+        "ligado_a": "1f5297d4-77e1-4089-9bb2-3ca1cb997317"
+      },
+      "alvo_de_troca_de_papel": {
+        "papel": "parent",
+        "id": "7ff919cb-88f3-4109-b933-1d0a71bb8fce"
+      }
+    },
+    "sessions": {
+      "arquivo": "ah2-sessions.json (fora do repositório)",
+      "nota": "tokens nunca entram no repositório"
+    }
+  },
+  "achado_papel_herdado": "on_auth_user_created dá role=parent a toda conta nova; nenhum rótulo nasce pending por trigger",
+  "achado_vocabulario_de_vinculo": {
+    "permitidos_por_check": [
+      "director",
+      "coordinator",
+      "secretary",
+      "education_supervisor"
+    ],
+    "papeis_sem_vocabulario_de_vinculo": [
+      "pending",
+      "parent",
+      "student",
+      "pedagogical",
+      "developer",
+      "monitor",
+      "gatekeeper",
+      "aee",
+      "psychology",
+      "social_work",
+      "sports_operator"
+    ]
+  },
+  "escritas_em_tabelas_de_produto": {
+    "auth_users": 15,
+    "profiles_role": 15,
+    "profiles_vinculo_staff": 4,
+    "teacher_directory_profile_id": 1,
+    "total_linhas_novas": 19,
+    "celulas_alteradas_em_linha_existente": 1
+  },
+  "portoes": 16,
+  "falhas": []
+}

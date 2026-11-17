@@ -1,0 +1,191 @@
+{
+  "ciclo": "AH-M5-DIRECAO-DEVELOPER",
+  "em": "2026-11-17T11:20:29.030Z",
+  "md5_shell": "d418e7fc917f1fbb1437054b7b531f9b",
+  "bytes": 3472213,
+  "mapa_admin": [
+    "inicio",
+    "escola-historia",
+    "chat-interno",
+    "notificacoes",
+    "conteudos",
+    "notas",
+    "agenda",
+    "atividades",
+    "horarios",
+    "jogos",
+    "jogos-escolares",
+    "videos-aprender",
+    "comunicados",
+    "ocorrencias",
+    "coordenacao",
+    "monitor",
+    "gate",
+    "administracao",
+    "admin-crachas",
+    "cadastro-alunos",
+    "fotos",
+    "aee",
+    "direcao",
+    "comunicacao",
+    "coordenacao-chat",
+    "resultados-aprendizagem"
+  ],
+  "mapa_director": [
+    "inicio",
+    "direcao",
+    "horarios",
+    "comunicados",
+    "coordenacao",
+    "escola-historia",
+    "notificacoes",
+    "conteudos",
+    "comunicacao",
+    "chat-interno",
+    "coordenacao-chat",
+    "jogos-escolares",
+    "fotos",
+    "aee",
+    "resultados-aprendizagem"
+  ],
+  "direcao_na_lista_admin": true,
+  "botoes_data_section": [
+    "administracao",
+    "aee",
+    "agenda",
+    "agenda-aluno",
+    "alimentacao",
+    "apoio",
+    "aprender",
+    "atividades",
+    "biblioteca",
+    "boletim",
+    "cadastro-alunos",
+    "chat-interno",
+    "comunicacao",
+    "comunicados",
+    "conteudos",
+    "coordenacao",
+    "cracha",
+    "direcao",
+    "escola",
+    "evoluir",
+    "experiencias",
+    "fotos",
+    "gate",
+    "horarios",
+    "inicio",
+    "jogos",
+    "jogos-escolares",
+    "meu-espaco",
+    "monitor",
+    "more",
+    "multiprofissional",
+    "mural",
+    "notas",
+    "noticias",
+    "notificacoes",
+    "ocorrencias",
+    "professor-agenda",
+    "professor-atividades",
+    "professor-avaliacoes",
+    "professor-biblioteca",
+    "professor-calendario",
+    "professor-comunicacao",
+    "professor-conteudos",
+    "professor-diario",
+    "professor-espaco",
+    "professor-frequencia",
+    "professor-inicio",
+    "professor-notificacoes",
+    "professor-planejamento",
+    "professor-relatorios",
+    "professor-turmas",
+    "psychology",
+    "relatorios",
+    "resultados-aprendizagem",
+    "secretaria"
+  ],
+  "ha_botao_direcao": true,
+  "ha_botao_administracao": true,
+  "syncActiveNavigation": "function syncActiveNavigation(section) {\n              document.querySelectorAll('.nav-item[data-section],.mobile-more-option[data-section]').forEach(item => { const active = item.dataset.section === section; item.classList.toggle('active', active); if (item.hasAttribute('aria-current')) item.setAttribute('aria-current', active ? 'page' : 'false'); });\n              const mobileMore = document.querySelector('[data-mobile-more]');\n              const mobileOption = [...document.querySelectorAll('#mobileMoreMenu .mobile-more-option[data-section]')].find(item => item.dataset.section === section && !item.classList.contains('hidden'));\n              mobileMore?.classList.toggle('active', Boolean(mobileOption));\n              mobileMore?.setAttribute('aria-expanded', String(Boolean(mobileOption && !document.getElementById('mobileMoreMenu')?.classList.contains('hidden'))));\n            }\n      ",
+  "ocorrencias_direcao": [
+    {
+      "offset": 347604,
+      "trecho": "--bfr-tile: #EDF1F7; --bfr-ink: #52637A; --bfr-glyph: var(--bfr-ic-gear); } html body #appShell.ready .sidebar .nav-item[data-section=\"direcao\"], html body #bfrMobileDrawer .bfr-mobile-drawer-link[data-bfr-drawer-route=\"direcao\"], html body #bfrMobileBottomNav [data-bfr-mobile-route=\"direcao\"] "
+    },
+    {
+      "offset": 347689,
+      "trecho": " body #appShell.ready .sidebar .nav-item[data-section=\"direcao\"], html body #bfrMobileDrawer .bfr-mobile-drawer-link[data-bfr-drawer-route=\"direcao\"], html body #bfrMobileBottomNav [data-bfr-mobile-route=\"direcao\"] { --bfr-tile: #E6EFFF; --bfr-ink: #1D4ED8; --bfr-glyph: var(--bfr-ic-shield); }"
+    },
+    {
+      "offset": 347754,
+      "trecho": " html body #bfrMobileDrawer .bfr-mobile-drawer-link[data-bfr-drawer-route=\"direcao\"], html body #bfrMobileBottomNav [data-bfr-mobile-route=\"direcao\"] { --bfr-tile: #E6EFFF; --bfr-ink: #1D4ED8; --bfr-glyph: var(--bfr-ic-shield); } html body #appShell.ready .sidebar .nav-item[data-section=\"apoi"
+    },
+    {
+      "offset": 361288,
+      "trecho": "omNav [data-bfr-mobile-route=\"cadastro-alunos\"] .bfr-mobile-icon, html body #bfrMobileDrawer .bfr-mobile-drawer-link[data-bfr-drawer-route=\"direcao\"] > .bfr-mobile-drawer-link-icon, html body #bfrMobileBottomNav [data-bfr-mobile-route=\"direcao\"] .bfr-mobile-icon, html body #bfrMobileDrawer .bfr-mobi"
+    },
+    {
+      "offset": 361384,
+      "trecho": "r-mobile-drawer-link[data-bfr-drawer-route=\"direcao\"] > .bfr-mobile-drawer-link-icon, html body #bfrMobileBottomNav [data-bfr-mobile-route=\"direcao\"] .bfr-mobile-icon, html body #bfrMobileDrawer .bfr-mobile-drawer-link[data-bfr-drawer-route=\"apoio\"] > .bfr-mobile-drawer-link-icon, html body #bfrMobi"
+    },
+    {
+      "offset": 384425,
+      "trecho": "s\"><span class=\"nav-icon\">♙</span>Cadastro de alunos</button><button class=\"nav-item hidden tap-target\" data-direction-nav=\"\" data-section=\"direcao\"><span class=\"nav-icon\">🏫</span>Direção escolar</button><button class=\"nav-item hidden tap-target\" data-support-nav=\"\" data-section=\"apoio\"><span class"
+    },
+    {
+      "offset": 1070523,
+      "trecho": "ideos-aprender','comunicados','ocorrencias','coordenacao','monitor','gate','administracao','admin-crachas','cadastro-alunos','fotos','aee','direcao','comunicacao','coordenacao-chat','resultados-aprendizagem'], director:['inicio','direcao','horarios','comunicados','coordenacao','esco"
+    },
+    {
+      "offset": 1070630,
+      "trecho": "'cadastro-alunos','fotos','aee','direcao','comunicacao','coordenacao-chat','resultados-aprendizagem'], director:['inicio','direcao','horarios','comunicados','coordenacao','escola-historia','notificacoes','conteudos','comunicacao','chat-interno','coordenacao-chat','jogos-escolares','"
+    },
+    {
+      "offset": 1187377,
+      "trecho": "e-coordination]', monitor:'[data-gate-coordination]', gate:'#gatekeeperRegistrationPanel', 'cadastro-alunos':'#adminStudentDirectoryPanel', direcao:'#bfrDirectionPanel' }, director: { inicio:'[data-direction-executive]', direcao:'[data-direction-executive]', horarios:'[data-schedule-p"
+    },
+    {
+      "offset": 1187473,
+      "trecho": "stro-alunos':'#adminStudentDirectoryPanel', direcao:'#bfrDirectionPanel' }, director: { inicio:'[data-direction-executive]', direcao:'[data-direction-executive]', horarios:'[data-schedule-panel]', experiencias:'[data-experience-panel]' }, gatekeeper: { inicio:'[data-gat"
+    },
+    {
+      "offset": 1193368,
+      "trecho": "cument.querySelector('.breadcrumb b').textContent = { inicio:'Início', administracao:'Administração', 'admin-crachas':'Crachás dos alunos', direcao:'Direção escolar', coordenacao:'Coordenação escolar', notas:'Notas e frequência', agenda:'Agenda', atividades:'Central de Atividades', horarios:'Horário"
+    },
+    {
+      "offset": 1233055,
+      "trecho": "| profile?.role === 'adm') profile = { ...profile, role:'developer' }; if (profile?.role === 'direction' || profile?.role === 'direcao') profile = { ...profile, role:'director' }; if (profile && selectedRole) sessionStorage.removeItem('bfr-login-role'); curr"
+    },
+    {
+      "offset": 2263536,
+      "trecho": ":document.getElementById('secretaryView') }[role]); }; const activeSections = { developer:['administracao','cadastro-alunos'], director:['direcao'], coordinator:['coordenacao','cadastro-alunos'], secretary:['secretaria'] }; const isDirectorySection = () => activeSections[profile()?.role]?.includ"
+    },
+    {
+      "offset": 2491730,
+      "trecho": ":document.getElementById('secretaryView') }[role]); }; const activeSections = { developer:['administracao','cadastro-alunos'], director:['direcao'], coordinator:['coordenacao','cadastro-alunos'], secretary:['secretaria'] }; const isDirectorySection = () => activeSections[profile()?.role]?.includ"
+    },
+    {
+      "offset": 2633339,
+      "trecho": "e = document.querySelector('[data-bfr-area-name]'); if (!current || !context || !name) return; const area = current.activeArea === 'direcao' || current.activeView === 'director' ? 'Direção escolar' : current.activeArea === 'administracao' ? 'Administração' : 'Portal escolar'; const displ"
+    },
+    {
+      "offset": 2636231,
+      "trecho": "-group]'); if (!group) return; const current = runtime(); const visible = managerRoles.has(role()) && (current?.activeArea === 'direcao' || current?.activeView === 'director' || current?.activeSection === 'direcao'); group.classList.toggle('is-visible', visible); group.querySelec"
+    },
+    {
+      "offset": 2636309,
+      "trecho": "sible = managerRoles.has(role()) && (current?.activeArea === 'direcao' || current?.activeView === 'director' || current?.activeSection === 'direcao'); group.classList.toggle('is-visible', visible); group.querySelectorAll('[data-direction-module]').forEach(button => button.classList.toggle('a"
+    },
+    {
+      "offset": 2647649,
+      "trecho": ".open?.(); else if (section === 'notificacoes') window.BFRPortalUpgrades?.open?.(section); current?.syncNavigation?.(section,{area:'direcao',module:section}); renderContext(); syncModuleNav(); return true; } function wrapRuntime() { const current = runtime(); if (!curren"
+    },
+    {
+      "offset": 3313144,
+      "trecho": "FF${rows.map(row => row.map(window.BFR_CSV_CELL).join(';')).join('\\n')}`; saveBlob(new Blob([csv], { type:'text/csv;charset=utf-8' }), 'direcao-acompanhamento-bfr.csv'); } function printExecutive(executive) { const printWindow = window.open('', '_blank', 'noopener,noreferrer'); if ("
+    }
+  ],
+  "n_ocorrencias_direcao": 19
+}

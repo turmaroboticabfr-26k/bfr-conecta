@@ -1,0 +1,32 @@
+{
+  "ciclo": "AH-2-LIMITE",
+  "em": "2026-11-17T07:19:37.128Z",
+  "notas": "GET only; 0 escrita",
+  "pedidos": {
+    "service_role": {
+      "http": 200,
+      "linhas": 24,
+      "total_declarado": "0-23/24",
+      "erro": null
+    },
+    "anon": {
+      "http": 200,
+      "linhas": 0,
+      "total_declarado": "*/0",
+      "erro": null
+    },
+    "authenticated_developer": {
+      "http": 200,
+      "linhas": 10,
+      "total_declarado": "0-9/10",
+      "erro": null
+    }
+  },
+  "project": {
+    "http": 200,
+    "relevantes": {}
+  },
+  "politicas_rls_profiles": {
+    "message": "Failed to run sql query: ERROR:  42P01: missing FROM-clause entry for table \"relnamespace\"\nLINE 1: select polname, polcmd, pg_get_expr(polqual, polrelid) as using_, pg_get_expr(polwithcheck, polrelid) as check_ from pg_policy join pg_class on pg_class.oid = polrelid join pg_namespace on pg_namespace.oid = relnamespace where relname = 'profiles' and relnamespace.nspname = 'public' order by polname\n                                                                                                                                                                                                                                                                    ^\n"
+  }
+}

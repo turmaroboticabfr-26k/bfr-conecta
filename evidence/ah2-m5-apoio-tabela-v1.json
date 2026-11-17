@@ -1,0 +1,120 @@
+{
+  "ciclo": "AH-M5-APOIO-TABELA",
+  "em": "2026-11-17T11:45:53.661Z",
+  "rotulo": "v1",
+  "leituras_de_apoio_lidas": 37,
+  "pergunta": "o painel de apoio está vazio POR PAPEL (gate de staff) ou por outra coisa qualquer?",
+  "nota": "`c` são caracteres do contentor MAIS POPULOSO visível — é por isso que coordinator@390 mostra resultsLearningView: o instrumento mediu o vizinho, não o apoio. A coluna `sempre_supportView` diz em que papéis essa confusão não acontece.",
+  "papeis": [
+    {
+      "papel": "aee",
+      "celulas": 4,
+      "zeros": 1,
+      "cheios": 3,
+      "por_largura": {
+        "320": "supportView=3001",
+        "360": "—",
+        "375": "supportView=0",
+        "390": "supportView=3001",
+        "414": "supportView=3001",
+        "430": "—"
+      },
+      "sempre_supportView": true,
+      "marcadores": [
+        "inicio"
+      ]
+    },
+    {
+      "papel": "coordinator",
+      "celulas": 6,
+      "zeros": 5,
+      "cheios": 1,
+      "por_largura": {
+        "320": "supportView=0",
+        "360": "supportView=0",
+        "375": "supportView=0",
+        "390": "resultsLearningView=1786",
+        "414": "supportView=0",
+        "430": "supportView=0"
+      },
+      "sempre_supportView": false,
+      "marcadores": [
+        "inicio",
+        "resultados-aprendizagem"
+      ]
+    },
+    {
+      "papel": "developer",
+      "celulas": 6,
+      "zeros": 6,
+      "cheios": 0,
+      "por_largura": {
+        "320": "supportView=0",
+        "360": "supportView=0",
+        "375": "supportView=0",
+        "390": "supportView=0",
+        "414": "supportView=0",
+        "430": "supportView=0"
+      },
+      "sempre_supportView": true,
+      "marcadores": [
+        "inicio"
+      ]
+    },
+    {
+      "papel": "parent",
+      "celulas": 6,
+      "zeros": 0,
+      "cheios": 6,
+      "por_largura": {
+        "320": "supportView=2791",
+        "360": "supportView=2791",
+        "375": "supportView=2791",
+        "390": "supportView=2791",
+        "414": "supportView=2791",
+        "430": "supportView=2791"
+      },
+      "sempre_supportView": true,
+      "marcadores": [
+        "inicio"
+      ]
+    },
+    {
+      "papel": "secretary",
+      "celulas": 6,
+      "zeros": 6,
+      "cheios": 0,
+      "por_largura": {
+        "320": "supportView=0",
+        "360": "supportView=0",
+        "375": "supportView=0",
+        "390": "supportView=0",
+        "414": "supportView=0",
+        "430": "supportView=0"
+      },
+      "sempre_supportView": true,
+      "marcadores": [
+        "inicio"
+      ]
+    },
+    {
+      "papel": "student",
+      "celulas": 6,
+      "zeros": 1,
+      "cheios": 5,
+      "por_largura": {
+        "320": "supportView=0",
+        "360": "supportView=2791",
+        "375": "supportView=2791",
+        "390": "supportView=2791",
+        "414": "supportView=2791",
+        "430": "supportView=2791"
+      },
+      "sempre_supportView": true,
+      "marcadores": [
+        "inicio"
+      ]
+    }
+  ],
+  "leitura": "nem todos os papéis de staff dão 0: developer, secretary dão 0 em TODAS as larguras corridas, e aee (1 zeros / 3 cheios), coordinator (5 zeros / 1 cheios), student (1 zeros / 5 cheios) têm as duas coisas na mesma célula de papel — logo a causa não pode ser uma regra de papel, e as duas candidatas que sobram (tempo de render vs caminho do toque) só se separam com uma sonda de browser a amostrar no tempo."
+}

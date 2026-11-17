@@ -1,0 +1,36 @@
+{
+  "ciclo": "AH-2-C",
+  "Aceitaçao": "RM-1.2 — clique com conta real de developer",
+  "em": "2026-11-17T07:13:55.764Z",
+  "developer": "49753880",
+  "alvo": {
+    "id": "7ff919cb",
+    "papel_antes": null
+  },
+  "stages": {
+    "baseline_profiles": {
+      "md5_antes": "4fc2b92d3a7900fe147d437eee3b4888",
+      "papel_do_alvo": "parent"
+    },
+    "boot": {
+      "papel": "developer",
+      "nome": "AH2 developer Sintética (apagar)"
+    },
+    "painel": {
+      "painel": true,
+      "linhas": 10,
+      "alvo_na_lista": false,
+      "select_box": null,
+      "valor_no_select": null,
+      "opcoes": [],
+      "linha_do_developer_desabilitada": true,
+      "linha_do_developer_presente": true,
+      "indices": null
+    }
+  },
+  "falhas": [
+    "a conta-alvo tem linha própria na lista do painel | dado=false | esperado=true",
+    "o select da conta-alvo está habilitado e mede >0 | dado=null | esperado=true"
+  ],
+  "portoes": 6
+}
