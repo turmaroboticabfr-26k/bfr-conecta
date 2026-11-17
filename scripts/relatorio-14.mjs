@@ -5,6 +5,7 @@
 // estrutural. Regenerável: correr depois de cada ciclo.
 // Uso: node scripts/relatorio-14.mjs [caminho/para/relatorio.md]
 import { readFileSync, writeFileSync, readdirSync, statSync } from 'node:fs';
+import { execFileSync } from 'node:child_process';
 import { createHash } from 'node:crypto';
 const md5buf = (b) => createHash('md5').update(b).digest('hex');
 
@@ -234,6 +235,17 @@ linhasExtra.push(`| §6 · bandas desktop 1366/1440/1920 | ${desktopFeito.length
 const m5f = procura('ah2-m5-consolidado-');
 const m5 = m5f ? JSON.parse(readFileSync(`${EV}/${m5f}`, 'utf8')) : null;
 const m5_causas = m5 ? [...new Set((m5.nao_testadas || []).map((s) => s.split(' — ')[1] || 'sem causa gravada'))].map((c) => c + ' × ' + (m5.nao_testadas || []).filter((s) => (s.split(' — ')[1] || 'sem causa gravada') === c).length) : [];
+// O consolidado conta CÉLULAS papel×largura (de 90); a tabela linha a linha conta LINHAS papel×rota, e as
+// NÃO TESTADA dela são outra grandeza. A cláusula do «Estado da amostra» punha «0 nesta régua» ao lado de
+// «11 na grelha mobile» como se fosse a mesma medida contada em dois sítios, por isso o total de linhas passa
+// a ler-se do rodapé do próprio `ah2-m5-tabela.mjs`: um segundo leitor não pode divergir do gerador da tabela
+// que ele resume.
+let m5_linhas = null;
+try {
+  const t = execFileSync(process.execPath, [`${DIR}/scripts/ah2-m5-tabela.mjs`, 'm5'], { encoding: 'utf8', maxBuffer: 64e6 });
+  const r = t.match(/_(\d+) linhas · .*?NAO TESTADA (\d+)_/);
+  if (r) m5_linhas = { n: +r[1], nt: +r[2] };
+} catch {}
 // A sonda de tempo do `apoio` reclassificou uma classe inteira da tabela mobile, e o relatório tem de dizer
 // isso com os números dela, não com a minha memória.
 const sondas = readdirSync(EV).filter((f) => /^ah2-sonda-apoio-tempo-.*\.json$/.test(f)).sort();
@@ -250,18 +262,25 @@ const sonda_texto = sonda_lida.length
 // A segunda metade da pergunta foi respondida pela sonda com o id do painel parametrizado, e a resposta é
 // a contrária: aqui o painel ABRE e não enche, portanto o FALHA fica de pé — com causa medida.
 const sondas_p = readdirSync(EV).filter((f) => /^ah2-sonda-painel-tempo-.*\.json$/.test(f)).sort();
-const painel_lida = [];
+const painel_lida = [], painel_desk = [];
 for (const f of sondas_p) {
   let j; try { j = JSON.parse(readFileSync(`${EV}/${f}`, 'utf8')); } catch { continue; }
   const s = j.serie || [];
   const p = s.find((x) => x && typeof x.c === 'number' && x.c > 0);
   const abriu = s.some((x) => x.ativa === j.rota && x.visivel === true);
   const base = (j.rede_janela || []).filter((r) => !/open-meteo/.test(r.u || '')).length;
-  if (!p && abriu) painel_lida.push(`${j.papel}@${j.largura} \`${j.painel}\` aberto (activeSection=${j.rota}) e a 0 em ${s.length} amostras ≈${Math.round((s[s.length - 1]?.t_ms_apos_toque || 0) / 1000)} s, ${base} pedidos à base, html máximo ${Math.max(0, ...s.map((x) => x.html || 0))} bytes`);
-  else if (p) painel_lida.push(`${j.papel}@${j.largura} \`${j.painel}\` enche ${p.c} c aos ${p.t_ms_apos_toque} ms`);
+  // A régua muda a leitura: as corridas `regexa:'desktop'` clicam com rato confiável sob emulação desktop e
+  // respondem à tabela do §6, não à grelha de telemóvel. Misturá-las na mesma frase daria um número certo
+  // dentro de uma pergunta errada.
+  const alvo = j.regexa === 'desktop' ? painel_desk : painel_lida;
+  if (!p && abriu) alvo.push(`${j.papel}@${j.largura} \`${j.painel}\` aberto (activeSection=${j.rota}) e a 0 em ${s.length} amostras ≈${Math.round((s[s.length - 1]?.t_ms_apos_toque || 0) / 1000)} s, ${base} pedidos à base, html máximo ${Math.max(0, ...s.map((x) => x.html || 0))} bytes`);
+  else if (p) alvo.push(`${j.papel}@${j.largura} \`${j.painel}\` enche ${p.c} c aos ${p.t_ms_apos_toque} ms`);
 }
 const painel_texto = painel_lida.length
   ? `\n- **Confirmação medida, e é do produto**: a mesma sonda com o painel por parâmetro foi corrida nas células \`chat-interno\` que estavam em dúvida (${painel_lida.length} corridas — ${painel_lida.join(' · ')}). Ao contrário do \`apoio\`, aqui o painel abre — \`activeSection\` fica na rota tocada e o contentor tem caixa — e mesmo assim não produz texto, sem exceção lançada e sem pedido à base na janela. Não é a janela de assentamento: é o render a não produzir conteúdo para este papel, e a linha FALHA da grelha mantém-se, agora com a causa lida em browser e não só no código.`
+  : '';
+const desk_texto = painel_desk.length
+  ? `\n- **E a régua desktop confirma, medida na própria régua**: o rodapé da tabela desktop dizia «estas linhas NÃO foram sondadas», e o re-teste foi corrido com clique de rato confiável e emulação desktop (\`deviceScaleFactor:1, mobile:false\`, as mesmas alturas do instrumento da grelha), porque uma leitura a 390 px não se pode assinar por uma a 1366. ${painel_desk.length} corridas — ${painel_desk.join(' · ')}. O painel abre na banda em que a grelha o mediu vazio e não produz texto: a linha FALHA do §6 deixa de ser lista de re-teste e passa a defeito com causa medida nas três larguras.`
   : '';
 const m5_texto = m5
   ? `**${m5.celulas_medidas} de ${m5.total_celulas} células medidas** e **${(m5.nao_testadas || []).length} NÃO TESTADA**, cada uma com a causa escrita pelo instrumento: ${m5_causas.join(' · ')}. Nenhuma é buraco de campanha: relançar não muda o estado do produto. Fonte: \`${m5f}\``
@@ -281,8 +300,8 @@ teto de 25 s. Artefactos anteriores a esta régua foram arquivados com \`-ANTERI
 
 - células ABRE: **${contagens.ABRE}** · com défice: **${contagens.deficit}** · NÃO TESTADA: **${contagens.nao_testada}**
 - bandas com artefacto válido: **${celula.size} de ${PAPEIS.length * 5}** (papel × largura; as 5 larguras são 390 e 1280 da varredura original mais 1366/1440/1920 do §6 do briefing)
-- telemóvel (§5, 15 perfis × 6 larguras): ${m5_texto}${sonda_texto}${painel_texto}
-- o que falta para a amostra estar completa: ${PAPEIS.flatMap((p) => ['390', '1280', '1366', '1440', '1920'].filter((b) => !celula.has(p + '/' + b)).map((b) => p + '/' + b)).join(', ') || 'nada'} — **esta linha conta apenas as células perfil×largura da régua desktop**; a tabela de funcionalidade tem as suas NÃO TESTADA noutro sítio, e são ${contagens.nao_testada} nesta régua e ${(m5 && m5.nao_testadas ? m5.nao_testadas.length : 0)} na grelha mobile do §5.
+- telemóvel (§5, 15 perfis × 6 larguras): ${m5_texto}${sonda_texto}${painel_texto}${desk_texto}
+- o que falta para a amostra estar completa: ${PAPEIS.flatMap((p) => ['390', '1280', '1366', '1440', '1920'].filter((b) => !celula.has(p + '/' + b)).map((b) => p + '/' + b)).join(', ') || 'nada'} — **esta linha conta apenas as células perfil×largura da régua desktop**, e as NÃO TESTADA dela são ${contagens.nao_testada}. A tabela de funcionalidade tem duas outras contas, em duas réguas que não se somam: ${(m5 && m5.nao_testadas ? m5.nao_testadas.length : 0)} CÉLULAS papel×largura por medir no consolidado do §5 (\`${m5f}\`) e ${m5_linhas ? `${m5_linhas.nt} LINHAS papel×rota de ${m5_linhas.n}` : 'as LINHAS papel×rota do'} na tabela linha a linha (\`scripts/ah2-m5-tabela.mjs\`, lidas do rodapé dela).${m5_linhas ? ` Uma linha da tabela agrega as seis larguras, pelo que ${(m5 && m5.nao_testadas ? m5.nao_testadas.length : 0)} células e ${m5_linhas.nt} linhas não são a mesma grandeza nem a mesma pergunta.` : ''}
 
 ## Bandas corridas (o que cada artefacto diz do arranque)
 

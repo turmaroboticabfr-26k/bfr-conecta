@@ -54,6 +54,16 @@ for (const f of fich) {
   }
 }
 const linhas = [];
+// O mapa de acessos do papel traz por vezes dois ids para a mesma secção (`conteudos` e
+// `professor-conteudos`), e o instrumento já trata isso: `declaradas_sem_rota` (ah2-mobile2.mjs:357) só
+// lista um id como «sem porta» quando NENHUMA porta batida dele deriva por prefixo/sufixo. Aqui, porém, o
+// conjunto de linhas vem de `declaradas` e o id alias nunca teve célula, o que produzia a frase falsa
+// «sem medição coerente em 320/…/430» para um papel medido nas seis larguras. A correção herda a
+// IDENTIDADE, nunca o resultado: a linha passa a apontar para a porta onde a secção foi medida e não
+// recebe verde próprio.
+const portas_em = {};
+for (const [p, por_l] of Object.entries(portas)) portas_em[p] = new Set([...Object.values(por_l).flatMap((s) => [...s])]);
+const alias_em = (p, s) => [...(portas_em[p] || [])].filter((r) => r !== s && (r.endsWith(':' + s) || r.endsWith('-' + s) || r.startsWith(s + '-'))).sort();
 for (const p of Object.keys(visto).sort()) {
   const boas = [...(larguras_boas[p] || [])];
   const rotas = new Set([...Object.keys(visto[p]), ...(declaradas[p] || [])]);
@@ -72,16 +82,17 @@ for (const p of Object.keys(visto).sort()) {
     else if (sumiu.length) res = `PENDENTE DE CAUSA — porta listada, ausente ao toque (${sumiu.length}/6)`;
     else if (semefeito.length) res = 'FALHA — toque sem efeito';
     else if (portocar.length) res = `PARCIAL (porta existe, ${portocar.length}/6 por tocar)`;
+    else if (sem_medir.length === 6 && alias_em(p, rota).length) res = 'MESMA PORTA — id alias do mapa';
     else res = 'NAO TESTADA';
-    linhas.push({ rota, papel: p, res, prob: [...provas, sem_medir.length ? `sem medição coerente em ${sem_medir.join('/')}` : null].filter(Boolean).join(' · ') });
+    linhas.push({ rota, papel: p, res, prob: [...provas, sem_medir.length && res !== 'MESMA PORTA — id alias do mapa' ? `sem medição coerente em ${sem_medir.join('/')}` : null, res === 'MESMA PORTA — id alias do mapa' ? `sem porta com este id; a secção é servida por ${alias_em(p, rota).map((x) => `\`${x}\``).join(' e ')}, medida na linha dessa porta` : null].filter(Boolean).join(' · ') });
   }
 }
 console.log('| Funcionalidade | Perfil | Resultado | Problema | Correção |');
 console.log('| --- | --- | --- | --- | --- |');
 for (const l of linhas) console.log(`| ${l.rota} | ${l.papel} | ${l.res} | ${l.prob} |  |`);
 const n = (e) => linhas.filter((l) => l.res.startsWith(e)).length;
-console.log(`\n_${linhas.length} linhas · OK absoluto ${n('OK')} · PARCIAL ${n('PARCIAL')} · FALHA ${n('FALHA')} · PENDENTE DE CAUSA ${n('PENDENTE')} · NAO TESTADA ${n('NAO TESTADA')}_`);
-console.log('_Legenda: «FALHA — inalcansavel» é medida no alvo (invisível, fora do ecrã ou tapado por outro elemento). «PENDENTE DE CAUSA» é o caso em que a porta aparece no censo da gaveta mas o elemento já não existe na hora do toque — como o `renderDrawer` só reconstrói a lista quando o assinatura muda (bfr-responsive-presentation.js:184), a causa provável é o instrumento, não o produto, e por isso não conta como defeito assinado._');
+console.log(`\n_${linhas.length} linhas · OK absoluto ${n('OK')} · PARCIAL ${n('PARCIAL')} · FALHA ${n('FALHA')} · PENDENTE DE CAUSA ${n('PENDENTE')} · MESMA PORTA ${n('MESMA PORTA')} · NAO TESTADA ${n('NAO TESTADA')}_`);
+console.log('_Legenda: «FALHA — inalcansavel» é medida no alvo (invisível, fora do ecrã ou tapado por outro elemento). «PENDENTE DE CAUSA» é o caso em que a porta aparece no censo da gaveta mas o elemento já não existe na hora do toque. **A hipótese que esteve escrita aqui — de que a causa era o `renderDrawer()` a reconstruir a lista sem a entrada (bfr-responsive-presentation.js:184), logo defeito do instrumento — está refutada por medida (3 corridas com o `developer` a 390 px, §AI.27): a lista manteve as 26 entradas em todos os toques válidos, inclusive nos que a hipótese apontava, e o `setRole` nunca saiu da vista `admin`.** O que as corridas puseram no lugar é outro facto medido: a partir de `fotos` fica `#bfrStudentPhotoManager` (z-index 12000) por cima do «Mais» e a gaveta não reabre — o que trava o varrimento mas produz `gaveta_nao_abriu`/`tapado`, não `sem_botao`. A causa do `sem_botao` do `developer` fica NÃO PROVADA, com o espaço de causas reduzido, e não conta como defeito assinado nem como defeito do instrumento. «MESMA PORTA — id alias do mapa» não é um verde emprestado nem um vermelho: o mapa do papel dá duas entradas à mesma secção (ex. `conteudos` e `professor-conteudos`), a navegação só tem botão para uma, e a regra de alias é a mesma que o instrumento aplica em `declaradas_sem_rota` (ah2-mobile2.mjs:357) — a linha aponta para a porta onde a secção foi medida e fica fora da contagem de NÃO TESTADA porque não há aqui funcionalidade por testar._');
 console.log('_Larguras com banda coerente por papel: ' + Object.keys(larguras_boas).sort().map((p) => p + '=' + [...larguras_boas[p]].sort((a, b) => a - b).join(',')).join(' | ') + '_');
 // Uma travagem registada numa execução não apaga a medição de outra: `director@430` foi cortado pela praga
 // numa corrida e medido noutra, e listá-lo como «celula travada» faria o relatório dizer que uma célula está
@@ -113,6 +124,10 @@ const sondas_p = readdirSync(`${DIR}/evidence`).filter((f) => /^ah2-sonda-painel
 const confirm = [], abriu_mas = [];
 for (const f of sondas_p) {
   let j; try { j = JSON.parse(readFileSync(`${DIR}/evidence/${f}`, 'utf8')); } catch { continue; }
+  // As corridas com `regexa: 'desktop'` são da outra régua (clique de rato, emulação desktop) e pertencem ao
+  // rodapé da tabela desktop — listar uma leitura a 1920 px dentro da grelha de telemóvel seria uma mentira de
+  // contexto, mesmo com o número certo.
+  if (j.regexa === 'desktop') continue;
   const s = j.serie || [];
   const p = s.find((x) => x && typeof x.c === 'number' && x.c > 0);
   const abriu = s.some((x) => x.ativa === j.rota && x.visivel === true);

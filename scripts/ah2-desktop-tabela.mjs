@@ -86,8 +86,31 @@ console.log(`_Larguras do §6: ${ALVO.join(' ')} (as corridas a 1280/390 existem
 const sem_banda = papais.flatMap((p) => ALVO.filter((b) => !celula[p]?.[b]).map((b) => p + '@' + b));
 console.log(`_Células sem nenhuma corrida desktop: ${sem_banda.length}` + (sem_banda.length ? ' — ' + sem_banda.slice(0, 40).join(' ') : '') + '_');
 // A sonda de tempo (ah2-sonda-apoio-tempo.mjs) provou que «0 caracteres medidos aos ~1,8 s» pode ser o
-// MEDIR a sair da amostragem antes do innerHTML, não o produto vazio. Nenhuma célula desktop foi sondada,
-// por isso nada aqui se reclassifica — mas as linhas com essa mesma assinatura são a lista de re-teste,
-// contada do texto que esta tabela já imprimiu, não da minha memória.
+// MEDIR a sair da amostragem antes do innerHTML, não o produto vazio. As linhas com essa assinatura eram a
+// lista de re-teste — e o re-teste foi corrido: `ah2-sonda-painel-desktop.mjs` mede o painel por parâmetro
+// com a EMULAÇÃO DA RÉGUA DESKTOP (deviceScaleFactor 1, mobile:false, clique de rato), porque uma leitura a
+// 390 px não se pode assinar por uma a 1366. O que se imprime aqui é lido dos artefactos, não da memória:
+// se a sonda encheu, a linha é reclassificada; se abriu e ficou a 0, é confirmação; se não abriu, diz que a
+// leitura não é do painel.
+const sondas_d = readdirSync(`${DIR}/evidence`).filter((f) => /^ah2-sonda-painel-tempo-.*\.json$/.test(f))
+  .map((f) => { try { return JSON.parse(readFileSync(`${DIR}/evidence/${f}`, 'utf8')); } catch { return null; } })
+  .filter((j) => j && j.regexa === 'desktop');
+const por_celula = {};
+for (const j of sondas_d) {
+  const s = j.serie || [];
+  if (!s.length) continue;
+  const enche = s.find((x) => x && x.c > 0);
+  const abriu = s.some((x) => x.ativa === j.rota && x.visivel === true);
+  const base = (j.rede_janela || []).filter((r) => !/open-meteo/.test(r.u || '')).length;
+  const k = `${j.rota}/${j.papel}`;
+  const txt = enche ? `${j.largura}px ENCHE ${enche.c}c aos ${enche.t_ms_apos_toque} ms`
+    : abriu ? `${j.largura}px ABRE (activeSection=${j.rota}, visível) e fica a 0 em ${s.length} amostras de 500 ms (~${Math.round(s[s.length - 1].t_ms_apos_toque / 1000)} s), html máx ${Math.max(0, ...s.map((x) => x.html || 0))} bytes, ${base} pedido(s) à base, ${(j.erros_janela || []).length} exceção(ões)`
+      : `${j.largura}px NÃO ABRE (activeSection=${[...new Set(s.map((x) => x.ativa))].join('/') || '-'} — a leitura 0 não é do painel)`;
+  (por_celula[k] = por_celula[k] || []).push(txt);
+}
 const assinatura = linhas.filter((l) => /FALHA — painel vazio/.test(l) && /0c 1[5-9]\d\dms|0c 2[0-4]\d\dms/.test(l));
-if (assinatura.length) console.log(`_Assinatura «painel vazio com ~1,8-2,4 s de medição»: ${assinatura.length} linha(s) — ${assinatura.map((l) => l.split('|')[1].trim() + '/' + l.split('|')[2].trim()).join(', ')}. É a janela de assentamento do \`MEDIR\` (600 ms × 2 contagens iguais) e foi medida a encher no \`apoio\` do telemóvel (3001-3434 c entre 1082 e 3325 ms, sem exceção); estas linhas do desktop NÃO foram sondadas, portanto mantêm-se como medidas e entram como lista de re-teste com \`ah2-sonda-apoio-tempo.mjs\` trocando o id do painel._`);
+const ja_sondada = (l) => !!por_celula[`${l.split('|')[1].trim()}/${l.split('|')[2].trim()}`];
+const sonda_txt = (l) => (por_celula[`${l.split('|')[1].trim()}/${l.split('|')[2].trim()}`] || []).join(' · ');
+const ainda_por_sondar = assinatura.filter((l) => !ja_sondada(l));
+if (assinatura.filter(ja_sondada).length) console.log(`_Assinatura «painel vazio com ~1,8-2,4 s de medição» JÁ SONDADA na régua desktop (${assinatura.filter(ja_sondada).length} de ${assinatura.length} linha(s)): ${assinatura.filter(ja_sondada).map((l) => l.split('|')[1].trim() + '/' + l.split('|')[2].trim() + ' — ' + sonda_txt(l)).join(' | ')}. O painel abre por clique de rato confiável no mesmo botão que a grelha toca e não produz texto, sem exceção e sem pedido à base: não é a janela do \`MEDIR\`, é o render deste papel, e a linha FALHA mantém-se agora com causa medida na banda em que foi medida._`);
+if (ainda_por_sondar.length) console.log(`_Assinatura «painel vazio com ~1,8-2,4 s de medição» por sondar: ${ainda_por_sondar.length} linha(s) — ${ainda_por_sondar.map((l) => l.split('|')[1].trim() + '/' + l.split('|')[2].trim()).join(', ')}. Estas mantêm-se como medidas e são a lista de re-teste com \`ah2-sonda-painel-desktop.mjs\`._`);
