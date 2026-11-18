@@ -1,0 +1,185 @@
+{
+  "programa": "scripts/sm6-medir-embeds.mjs",
+  "em": "2026-11-18T02:40:47.741Z",
+  "papel": "education_supervisor",
+  "payload": "scripts/sm6-modulo-municipal.txt",
+  "payload_md5": "79b542c7c3cc0ccc3f07e206cf1a2aab",
+  "escrita_no_banco": false,
+  "metodo": "GET rest/v1/<tabela>?select=<cols>&limit=1 com o access token da conta test",
+  "o_que_prova": "que cada select emitido pelo payload foi pedido ao backend com uma sessão autenticada e com que resposta HTTP ele voltou; é a única régua que sabe o que o PostgREST considera ambíguo.",
+  "o_que_NAO_prova": "que as colunas existem fora dos pares medidos, nem que os valores são correctos; limit=1 não percorre a tabela.",
+  "selects": [
+    {
+      "chave": "schools :: id,name,code,city,state,phase,active",
+      "md5": "ce07d00e",
+      "tabela": "schools",
+      "embeds": [],
+      "http": 206,
+      "n": 1,
+      "total": 6,
+      "mensagem": null
+    },
+    {
+      "chave": "students :: id,official_name,active,class_id,school_id,classes(year,class_code,shift),schools(name,city)",
+      "md5": "1f6788a3",
+      "tabela": "students",
+      "embeds": [
+        "classes",
+        "schools"
+      ],
+      "http": 206,
+      "n": 1,
+      "total": 848,
+      "mensagem": null
+    },
+    {
+      "chave": "classes :: id,year,class_code,shift,school_id,schools(name)",
+      "md5": "9b964cb0",
+      "tabela": "classes",
+      "embeds": [
+        "schools"
+      ],
+      "http": 206,
+      "n": 1,
+      "total": 27,
+      "mensagem": null
+    },
+    {
+      "chave": "supervision_requests :: id,indicator,motive,priority,status,deadline_at,created_at,closed_at,school_id,sports_schools(name)",
+      "md5": "01175ac7",
+      "tabela": "supervision_requests",
+      "embeds": [
+        "sports_schools"
+      ],
+      "http": 200,
+      "n": 0,
+      "total": 0,
+      "mensagem": null
+    },
+    {
+      "chave": "bfr_lesson_attendance :: id,class_id,student_id,lesson_date,period,status,students(school_id)",
+      "md5": "09aefd86",
+      "tabela": "bfr_lesson_attendance",
+      "embeds": [
+        "students"
+      ],
+      "http": 200,
+      "n": 0,
+      "total": 0,
+      "mensagem": null
+    },
+    {
+      "chave": "staff_schools :: id,role,school_id,profile_id,profiles(full_name)",
+      "md5": "9c1d485c",
+      "tabela": "staff_schools",
+      "embeds": [
+        "profiles"
+      ],
+      "http": 200,
+      "n": 1,
+      "total": 1,
+      "mensagem": null
+    },
+    {
+      "chave": "schools :: id,name,code,city,state,phase,active,address_line",
+      "md5": "efbea2ea",
+      "tabela": "schools",
+      "embeds": [],
+      "http": 206,
+      "n": 1,
+      "total": 6,
+      "mensagem": null
+    },
+    {
+      "chave": "staff_schools :: id,role,school_id,profile_id,profiles(full_name,email,role)",
+      "md5": "ab16b78f",
+      "tabela": "staff_schools",
+      "embeds": [
+        "profiles"
+      ],
+      "http": 200,
+      "n": 1,
+      "total": 1,
+      "mensagem": null
+    },
+    {
+      "chave": "grades :: id,student_id,subject,assessment,score,term,category,students(official_name,school_id,class_id,classes(year,class_code,shift))",
+      "md5": "9efd6e7f",
+      "tabela": "grades",
+      "embeds": [
+        "students"
+      ],
+      "http": 206,
+      "n": 1,
+      "total": 112,
+      "mensagem": null
+    },
+    {
+      "chave": "bfr_lesson_attendance :: id,class_id,student_id,lesson_date,period,subject,shift,status,source,students(official_name,school_id)",
+      "md5": "282dd47b",
+      "tabela": "bfr_lesson_attendance",
+      "embeds": [
+        "students"
+      ],
+      "http": 200,
+      "n": 0,
+      "total": 0,
+      "mensagem": null
+    },
+    {
+      "chave": "supervision_alerts :: id,kind,title,body,entity_type,entity_id,acknowledged_by,acknowledged_at",
+      "md5": "5b9075cf",
+      "tabela": "supervision_alerts",
+      "embeds": [],
+      "http": 200,
+      "n": 0,
+      "total": 0,
+      "mensagem": null
+    },
+    {
+      "chave": "supervision_requests :: id,indicator,motive,description,priority,status,deadline_at,created_at,updated_at,closed_at,created_by,closed_by,school_id,sports_schools(name,city)",
+      "md5": "fe36f9e2",
+      "tabela": "supervision_requests",
+      "embeds": [
+        "sports_schools"
+      ],
+      "http": 200,
+      "n": 0,
+      "total": 0,
+      "mensagem": null
+    },
+    {
+      "chave": "supervision_responses :: id,request_id,round,justification,measures_taken,responsible_name,deadline_at,created_at",
+      "md5": "34be5dda",
+      "tabela": "supervision_responses",
+      "embeds": [],
+      "http": 200,
+      "n": 0,
+      "total": 0,
+      "mensagem": null
+    },
+    {
+      "chave": "announcements :: id,title,body,important,message_type,audience_mode,status,published_at,requires_confirmation,scheduled_at,profiles!announcements_published_by_fkey(full_name)",
+      "md5": "7e39a404",
+      "tabela": "announcements",
+      "embeds": [
+        "profiles"
+      ],
+      "http": 200,
+      "n": 0,
+      "total": 0,
+      "mensagem": null
+    },
+    {
+      "chave": "school_documents :: id,title,category,description,storage_path,published,created_at,updated_at,document_type",
+      "md5": "70c26d58",
+      "tabela": "school_documents",
+      "embeds": [],
+      "http": 200,
+      "n": 0,
+      "total": 0,
+      "mensagem": null
+    }
+  ],
+  "recusados": []
+}

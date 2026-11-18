@@ -1,0 +1,329 @@
+{
+ "programa": "scripts/ah1-cita-instrumentos.mjs",
+ "em": "2026-11-18T03:42:28.754Z",
+ "o_que_prova": "cada caminho scripts/… , evidence/… e docs/… citado nos quatro documentos aponta para um ficheiro que existe no repositório; classifica os ausentes por causa medida (história no git, espelho de saída, qualificação prévia em prosa) e conta as citações que apontam para uma sonda de sessão com a palavra «equivalente»",
+ "o_que_NAO_prova": "que o instrumento citado produza o que a frase diz além da existência do caminho (o espelho de saída prova que um script versionado escreve o artefacto citado na mesma linha, não que os números da frase saíram dele). As contagens são por **linha** (primeira batida por padrão), não por ocorrência. POSSIVEL_GRALHA_DE_NOME_SEM_PROVA é semelhança de bigramos (Dice >= 0.6), não identidade. PREFIXO_DE_FAMILIA_COM_PLACEHOLDER prova que existe >= 1 caminho versionado começando pelo prefixo capturado, não que o ficheiro concreto que a frase tinha em mente exista — a capturadora corta no placeholder (`…-<largura>.json`) e por isso a classe depende de o token não ter extensão.",
+ "documentos": [
+  "docs/auditoria-bfr-conecta.md",
+  "docs/roadmap-master.md",
+  "docs/roadmap-painel.html",
+  "docs/relatorio-professor-v59-2026-10-22.md"
+ ],
+ "por_documento": [
+  {
+   "doc": "docs/auditoria-bfr-conecta.md",
+   "citacoes": 375,
+   "ausentes": 11
+  },
+  {
+   "doc": "docs/roadmap-master.md",
+   "citacoes": 78,
+   "ausentes": 0
+  },
+  {
+   "doc": "docs/roadmap-painel.html",
+   "citacoes": 10,
+   "ausentes": 0
+  },
+  {
+   "doc": "docs/relatorio-professor-v59-2026-10-22.md",
+   "citacoes": 1,
+   "ausentes": 0
+  }
+ ],
+ "veredito": {
+  "citacoes": 464,
+  "caminhos_distintos": 279,
+  "ausentes_distintos": 11,
+  "por_classe": {
+   "PREFIXO_DE_FAMILIA_COM_PLACEHOLDER": 6,
+   "CITACAO_JA_QUALIFICADA_EM_PROSA": 5
+  },
+  "ausentes_ja_qualificadas_em_prosa": 5,
+  "prefixos_de_familia": 6,
+  "pontas_soltas": 0,
+  "aproximadas_instrumento_equivalente": 0,
+  "estado": "CITACAS_OK"
+ },
+ "ausentes": [
+  {
+   "caminho": "evidence/ah2-mobile2-m5-",
+   "citado_em": [
+    "docs/auditoria-bfr-conecta.md:4069"
+   ],
+   "commits_no_git": 0,
+   "ultimo_commit": null,
+   "em_disco": false,
+   "familia_versionada": 49,
+   "exemplos_de_familia": [
+    "evidence/ah2-mobile2-m5-aee-1.json",
+    "evidence/ah2-mobile2-m5-aee-2.json",
+    "evidence/ah2-mobile2-m5-aee-3.json"
+   ],
+   "artefactos_na_mesma_linha": [],
+   "produzidos_por": [],
+   "espelhos": [],
+   "parecidos": [
+    "scripts/ah2-mobile2.mjs#0.86",
+    "scripts/ah2-mobile.mjs#0.81"
+   ],
+   "janela_qualificada": false,
+   "qualificada_por_nome": false,
+   "classe": "PREFIXO_DE_FAMILIA_COM_PLACEHOLDER"
+  },
+  {
+   "caminho": "evidence/ah2-mobile2-m5-developer-1",
+   "citado_em": [
+    "docs/auditoria-bfr-conecta.md:4093"
+   ],
+   "commits_no_git": 0,
+   "ultimo_commit": null,
+   "em_disco": false,
+   "familia_versionada": 1,
+   "exemplos_de_familia": [
+    "evidence/ah2-mobile2-m5-developer-1.json"
+   ],
+   "artefactos_na_mesma_linha": [],
+   "produzidos_por": [],
+   "espelhos": [],
+   "parecidos": [
+    "scripts/ah2-m5-direcao-developer.mjs#0.67",
+    "scripts/ah2-mobile2.mjs#0.62"
+   ],
+   "janela_qualificada": false,
+   "qualificada_por_nome": false,
+   "classe": "PREFIXO_DE_FAMILIA_COM_PLACEHOLDER"
+  },
+  {
+   "caminho": "evidence/ah2-sonda-apoio-tempo-",
+   "citado_em": [
+    "docs/auditoria-bfr-conecta.md:4165",
+    "docs/auditoria-bfr-conecta.md:4201"
+   ],
+   "commits_no_git": 0,
+   "ultimo_commit": null,
+   "em_disco": false,
+   "familia_versionada": 14,
+   "exemplos_de_familia": [
+    "evidence/ah2-sonda-apoio-tempo-aee375.json",
+    "evidence/ah2-sonda-apoio-tempo-aee390.json",
+    "evidence/ah2-sonda-apoio-tempo-apo360.json"
+   ],
+   "artefactos_na_mesma_linha": [],
+   "produzidos_por": [],
+   "espelhos": [],
+   "parecidos": [
+    "scripts/ah2-sonda-apoio-tempo.mjs#0.95",
+    "scripts/ah2-sonda-apoio-razao.mjs#0.76"
+   ],
+   "janela_qualificada": false,
+   "qualificada_por_nome": false,
+   "classe": "PREFIXO_DE_FAMILIA_COM_PLACEHOLDER"
+  },
+  {
+   "caminho": "evidence/ah2-sonda-painel-tempo-eds",
+   "citado_em": [
+    "docs/auditoria-bfr-conecta.md:4212"
+   ],
+   "commits_no_git": 0,
+   "ultimo_commit": null,
+   "em_disco": false,
+   "familia_versionada": 5,
+   "exemplos_de_familia": [
+    "evidence/ah2-sonda-painel-tempo-eds1366.json",
+    "evidence/ah2-sonda-painel-tempo-eds1440.json",
+    "evidence/ah2-sonda-painel-tempo-eds1920.json"
+   ],
+   "artefactos_na_mesma_linha": [],
+   "produzidos_por": [],
+   "espelhos": [],
+   "parecidos": [
+    "scripts/ah2-sonda-painel-tempo.mjs#0.84",
+    "scripts/ah2-sonda-painel-cargos.mjs#0.63"
+   ],
+   "janela_qualificada": false,
+   "qualificada_por_nome": false,
+   "classe": "PREFIXO_DE_FAMILIA_COM_PLACEHOLDER"
+  },
+  {
+   "caminho": "evidence/fim-",
+   "citado_em": [
+    "docs/auditoria-bfr-conecta.md:3927"
+   ],
+   "commits_no_git": 0,
+   "ultimo_commit": null,
+   "em_disco": false,
+   "familia_versionada": 9,
+   "exemplos_de_familia": [
+    "evidence/fim-ac-numeros-b-ANTERIOR-hashes-invalidos-15-11.json",
+    "evidence/fim-ac-numeros-c-ANTERIOR-md5-com-stringify-15-11.json",
+    "evidence/fim-ac-numeros-d-15-11.json"
+   ],
+   "artefactos_na_mesma_linha": [],
+   "produzidos_por": [],
+   "espelhos": [],
+   "parecidos": [
+    "scripts/fim-ac-numeros.mjs#0.30",
+    "scripts/fim-ciclo-recon.mjs#0.29"
+   ],
+   "janela_qualificada": true,
+   "qualificada_por_nome": true,
+   "classe": "PREFIXO_DE_FAMILIA_COM_PLACEHOLDER"
+  },
+  {
+   "caminho": "evidence/rm17v3--",
+   "citado_em": [
+    "docs/auditoria-bfr-conecta.md:3572"
+   ],
+   "commits_no_git": 0,
+   "ultimo_commit": null,
+   "em_disco": false,
+   "familia_versionada": 4,
+   "exemplos_de_familia": [
+    "evidence/rm17v3--base-apos-enterapp.png",
+    "evidence/rm17v3--base-final.png",
+    "evidence/rm17v3--cand-apos-enterapp.png"
+   ],
+   "artefactos_na_mesma_linha": [],
+   "produzidos_por": [],
+   "espelhos": [],
+   "parecidos": [
+    "scripts/rm13-sonda-ar-sw.mjs#0.24",
+    "scripts/rm13-sonda-rotas.mjs#0.23"
+   ],
+   "janela_qualificada": false,
+   "qualificada_por_nome": false,
+   "classe": "PREFIXO_DE_FAMILIA_COM_PLACEHOLDER"
+  },
+  {
+   "caminho": "scripts/ah2-m5-nav-vs-marcador.mjs",
+   "citado_em": [
+    "docs/auditoria-bfr-conecta.md:4138"
+   ],
+   "commits_no_git": 0,
+   "ultimo_commit": null,
+   "em_disco": false,
+   "familia_versionada": 0,
+   "exemplos_de_familia": [],
+   "artefactos_na_mesma_linha": [],
+   "produzidos_por": [],
+   "espelhos": [],
+   "parecidos": [
+    "scripts/ah2-m5-marcador-vs-mapa.mjs#0.83",
+    "scripts/ah2-m5-consolidador.mjs#0.60"
+   ],
+   "janela_qualificada": true,
+   "qualificada_por_nome": false,
+   "classe": "CITACAO_JA_QUALIFICADA_EM_PROSA"
+  },
+  {
+   "caminho": "scripts/fim-sonda-polroles.mjs",
+   "citado_em": [
+    "docs/auditoria-bfr-conecta.md:3927",
+    "docs/auditoria-bfr-conecta.md:3929",
+    "docs/auditoria-bfr-conecta.md:4393"
+   ],
+   "commits_no_git": 0,
+   "ultimo_commit": null,
+   "em_disco": false,
+   "familia_versionada": 0,
+   "exemplos_de_familia": [],
+   "artefactos_na_mesma_linha": [
+    "evidence/fim-ac-numeros-d-15-11.json"
+   ],
+   "produzidos_por": [
+    "scripts/fim-ac-numeros-d.mjs(variavel@12)"
+   ],
+   "espelhos": [
+    "scripts/fim-ac-numeros-d.mjs escreve evidence/fim-ac-numeros-d-15-11.json por variavel na linha 12"
+   ],
+   "parecidos": [
+    "scripts/fim-sonda-polroles-b.mjs#0.93",
+    "scripts/fim-sonda-polroles-ANTERIOR-emite-PII.mjs#0.67"
+   ],
+   "janela_qualificada": true,
+   "qualificada_por_nome": true,
+   "classe": "CITACAO_JA_QUALIFICADA_EM_PROSA"
+  },
+  {
+   "caminho": "scripts/pdf-hor-3-preflight.mjs",
+   "citado_em": [
+    "docs/auditoria-bfr-conecta.md:3823",
+    "docs/auditoria-bfr-conecta.md:3825",
+    "docs/auditoria-bfr-conecta.md:4392"
+   ],
+   "commits_no_git": 0,
+   "ultimo_commit": null,
+   "em_disco": false,
+   "familia_versionada": 0,
+   "exemplos_de_familia": [],
+   "artefactos_na_mesma_linha": [
+    "evidence/pdf-hor-3-preflight-v123-15-11.json"
+   ],
+   "produzidos_por": [
+    "scripts/pdf-hor-3-preflight-v123.mjs(variavel@11)"
+   ],
+   "espelhos": [
+    "scripts/pdf-hor-3-preflight-v123.mjs escreve evidence/pdf-hor-3-preflight-v123-15-11.json por variavel na linha 11"
+   ],
+   "parecidos": [
+    "scripts/pdf-hor-1-preflight.mjs#0.91",
+    "scripts/pdf-hor-3-preflight-v123.mjs#0.86"
+   ],
+   "janela_qualificada": true,
+   "qualificada_por_nome": true,
+   "classe": "CITACAO_JA_QUALIFICADA_EM_PROSA"
+  },
+  {
+   "caminho": "scripts/rm68-dryrun-15-11d.mjs",
+   "citado_em": [
+    "docs/auditoria-bfr-conecta.md:3773",
+    "docs/auditoria-bfr-conecta.md:3775",
+    "docs/auditoria-bfr-conecta.md:4391"
+   ],
+   "commits_no_git": 0,
+   "ultimo_commit": null,
+   "em_disco": false,
+   "familia_versionada": 0,
+   "exemplos_de_familia": [],
+   "artefactos_na_mesma_linha": [
+    "evidence/rm68-dryrun-15-11d.json"
+   ],
+   "produzidos_por": [
+    "scripts/rm68-dryrun-15-11.mjs(variavel@20)"
+   ],
+   "espelhos": [
+    "scripts/rm68-dryrun-15-11.mjs escreve evidence/rm68-dryrun-15-11d.json por variavel na linha 20"
+   ],
+   "parecidos": [
+    "scripts/rm68-dryrun-15-11.mjs#0.95",
+    "scripts/p2-1-dryrun.mjs#0.63"
+   ],
+   "janela_qualificada": true,
+   "qualificada_por_nome": true,
+   "classe": "CITACAO_JA_QUALIFICADA_EM_PROSA"
+  },
+  {
+   "caminho": "scripts/sm11-medir-conjunto-de-escrita.mjs",
+   "citado_em": [
+    "docs/auditoria-bfr-conecta.md:4483"
+   ],
+   "commits_no_git": 0,
+   "ultimo_commit": null,
+   "em_disco": false,
+   "familia_versionada": 0,
+   "exemplos_de_familia": [],
+   "artefactos_na_mesma_linha": [],
+   "produzidos_por": [],
+   "espelhos": [],
+   "parecidos": [
+    "scripts/ah1-varre-escritas.mjs#0.44",
+    "scripts/sm1-inventario-rede.mjs#0.44"
+   ],
+   "janela_qualificada": true,
+   "qualificada_por_nome": false,
+   "classe": "CITACAO_JA_QUALIFICADA_EM_PROSA"
+  }
+ ],
+ "aproximadas": []
+}

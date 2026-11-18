@@ -20,8 +20,13 @@ const BASE = `${DIR}/bfr-candidata-v121-rotulos-supervisor/index.html`;
 const BASE_MD5 = 'd418e7fc917f1fbb1437054b7b531f9b';
 const PAYLOAD = `${DIR}/scripts/sm6-modulo-municipal.txt`;
 const PONTE = `${DIR}/evidence/sm6-colunas-e-vinculos-17-11.json`;
-const DESTINO = `${DIR}/bfr-candidata-v127-secretaria-municipal/index.html`;
-const OUT = `${DIR}/evidence/sm6-candidata-municipal-17-11.json`;
+const V = process.env.SM6_V || '127';
+const DESTINO = `${DIR}/bfr-candidata-v${V}-secretaria-municipal/index.html`;
+const OUT = `${DIR}/evidence/sm6-candidata-municipal-v${V}-17-11.json`;
+// O aborta-se-existe do ARTEFACTO tem de vir antes de qualquer escrita: estava no fim do script, depois
+// do writeFileSync(DESTINO), e assim uma corrida com OUT colado deixava uma candidata em disco SEM
+// certidão nenhuma. Uma corrida por rótulo, certificado por uma corrida.
+if (existsSync(OUT)) { console.log('VERMELHO  já existe ' + OUT + ' — correr com SM6_V noutro número'); process.exit(1); }
 
 const bloqueios = [];
 const md5 = (b) => createHash('md5').update(b).digest('hex');
@@ -89,11 +94,15 @@ const separar = (s) => { const out = []; let prof = 0, atual = '';
 const confereTokens = (tabela, cols, prefixo) => {
   const problemas = [];
   for (const token of separar(cols)) {
-    const emb = /^([a-z_][a-z0-9_]*)\((.*)\)$/.exec(token);
+    const emb = /^([a-z_][a-z0-9_]*)(?:!([a-z_][a-z0-9_]*))?\((.*)\)$/.exec(token);
     if (emb) {
-      const [, rel, interior] = emb;
+      const [, rel, hint, interior] = emb;
       if (!COLUNAS[rel]) { problemas.push(`${tabela}.${rel}: embutido para tabela não medida`); continue; }
-      if (!FKS.includes(`${tabela}->${rel}`)) problemas.push(`${tabela}->${rel}: embutido sem foreign key no catálogo (o PostgREST recusa)`);
+      // A direcção da FK continua a ser régua estática; a AMBIGUIDADE não é. Modelo meu de caminhos
+      // (directa + via junção) acusou `students→classes` (9 junções, o backend aceita) e deixou passar
+      // `announcements→profiles` (2 junções, o backend recusa com HTTP 300). O que vale é a resposta
+      // medida select a select em evidence/sm6-selects-medidos-17-11.json, abaixo.
+      if (!FKS.includes(`${tabela}->${rel}`) && !FKS.includes(`${rel}->${tabela}`)) problemas.push(`${tabela}->${rel}: embutido sem foreign key no catálogo (o PostgREST recusa)`);
       problemas.push(...confereTokens(rel, interior, `${prefixo}${tabela}.${rel}/`));
       continue;
     }
@@ -115,14 +124,67 @@ const confereSuperficie = (src) => {
 const superficie = confereSuperficie(codigo);
 for (const p of superficie) bloqueios.push('superfície: ' + p);
 
+// ── régua 2b: cada select do payload tem de estar MEDIDO contra o backend e ter voltado < 300 ─────
+// O catálogo de colunas prova que os nomes existem; não prova que o PostgREST aceita o pedido. O
+// embed ambíguo vive exactamente nesse vão, por isso a régua lê a resposta real, select a select.
+// O nome do catálogo leva a pegada do texto medido: correr sem SM6_MEIDOS passa a exigir o ficheiro
+// medido contra ESTE produtor, em vez de apanhar o último que ficou no disco. A «lista lembrada» era
+// exactamente o defeito que deixou passar um select recusado.
+const MEIDOS = process.env.SM6_MEIDOS || `${DIR}/evidence/sm6-selects-medidos-${md5(readFileSync(PAYLOAD, 'utf8')).slice(0, 8)}.json`;
+const FIXURA_OFENSORA = `${DIR}/evidence/sm6-selects-medidos-ANTERIOR-embed-ambiguo-17-11.json`;
+const medeChave = (porChave, tabela, cols) => {
+  const r = porChave.get(`${tabela} :: ${cols}`);
+  if (!r) return `select não medido contra o backend: ${tabela} :: ${cols}`.slice(0, 160);
+  if (r.http >= 300) return `select recusado pelo backend (http ${r.http}): ${tabela} :: ${String(r.mensagem || '').slice(0, 130)}`;
+  return null;
+};
+let autotesteSelectsMedidos = null;
+let selectsMedidos = null;
+if (!existsSync(MEIDOS)) bloqueios.push(`selects medidos: sem catálogo em ${MEIDOS.replace(`${DIR}/`, '')} — rode scripts/sm6-medir-embeds.mjs; sem ele o portão não sabe o que o backend recusa`);
+else {
+  selectsMedidos = JSON.parse(readFileSync(MEIDOS, 'utf8'));
+  // Vínculo de identidade: o catálogo só vale para o texto com que foi medido. Mede-se o ficheiro
+  // BRUTO do produtor — o mesmo bytes que `sm6-medir-embeds.mjs` lê — e não o `codigo` sem comentários,
+  // porque esse é outra coisa e as duas pegadas nunca bateriam. Sem esta linha, a régua 2b aceitaria um
+  // ficheiro velho porque as chaves antigas ainda lá estão: é como o embed ambíguo sobreviveria a uma
+  // correção não medida.
+  const pegadaDoPayload = md5(payload);
+  autotesteSelectsMedidos = { catalogo: MEIDOS.replace(`${DIR}/`, ''), catalogo_md5_8: md5(readFileSync(MEIDOS)).slice(0, 8), payload_medido: selectsMedidos.payload || null, payload_md5_no_catalogo: selectsMedidos.payload_md5 || null, payload_md5_agora: pegadaDoPayload };
+  if (!selectsMedidos.payload_md5) bloqueios.push(`selects medidos: o catálogo ${MEIDOS.replace(`${DIR}/`, '')} não regista a pegada do payload — re-medir com scripts/sm6-medir-embeds.mjs`);
+  else if (selectsMedidos.payload_md5 !== pegadaDoPayload) bloqueios.push(`selects medidos: catálogo medido noutro texto do produtor (lá ${selectsMedidos.payload_md5.slice(0, 8)} ≠ agora ${pegadaDoPayload.slice(0, 8)}) — re-medir antes de confiar na régua 2b`);
+  const porChave = new Map((selectsMedidos.selects || []).map((s) => [s.chave, s]));
+  const chavesDoPayload = [...new Set([...codigo.matchAll(/from\('([a-z_][a-z0-9_]*)'\)\s*\.select\('([^']+)'\)/g)].map((m) => `${m[1]} :: ${m[2]}`))];
+  for (const chave of chavesDoPayload) {
+    const veredicto = medeChave(porChave, ...chave.split(' :: '));
+    if (veredicto) bloqueios.push('selects medidos: ' + veredicto);
+  }
+  // FIXTURE: a régua tem de separar o recusado do aceito numa medição REAL guardada, não numa
+  // re-implementação minha do que o PostgREST pensa. Sem ficheiro ofensor, o verde de 2b não vale.
+  if (!existsSync(FIXURA_OFENSORA)) bloqueios.push(`selects medidos: sem fixture ofensora em ${FIXURA_OFENSORA.replace(`${DIR}/`, '')} — a régua 2b não tem vermelho demonstrado`);
+  else {
+    const fx = JSON.parse(readFileSync(FIXURA_OFENSORA, 'utf8'));
+    const recus = (fx.selects || []).filter((s) => s.http >= 300);
+    const aceite = (fx.selects || []).filter((s) => s.http < 300);
+    const porFx = new Map((fx.selects || []).map((s) => [s.chave, s]));
+    const acusou = recus.length > 0 && recus.every((s) => medeChave(porFx, ...s.chave.split(' :: ')));
+    const poupou = aceite.length > 0 && aceite.every((s) => medeChave(porFx, ...s.chave.split(' :: ')) === null);
+    autotesteSelectsMedidos = { ...(autotesteSelectsMedidos || {}), recusados_na_fixture: recus.length, aceitos_na_fixture: aceite.length, acusou_os_recusados: acusou, poupou_os_aceitos: poupou };
+    if (!acusou) bloqueios.push(`AUTOTESTE selects medidos: nenhum dos ${recus.length} recusados foi acusado — a régua está cega`);
+    if (!poupou) bloqueios.push('AUTOTESTE selects medidos: acusou um select que o backend aceitou — falso positivo, a régua cortaria candidatas boas');
+  }
+}
+
 // FIXTURE da régua 2: três ofensas têm de ser acusadas (coluna adivinhada, tabela não medida, embutido
 // sem FK no catálogo) e o caso correto (grade→students, FK medida) não pode ser acusado. Sem o disparo
-// demonstrado, o verde do payload seria apenas a minha ignorância sobre o PostgREST.
+// demonstrado, o verde do payload seria apenas a minha ignorância sobre o PostgREST. A ambiguidade do
+// embed não está aqui de propósito: um modelo meu de «caminhos» acusou students→classes (que o backend
+// aceita) e poupou announcements→profiles (que o backend recusa) — essa ofensa vive na régua 2b.
 const FIXTURE2 = [
   "x.from('students').select('id,nope_inventado')",
   "x.from('tabela_fantasma').select('id')",
   "x.from('students').select('id,staff_schools(role)')",
-  "x.from('grades').select('id,students(official_name,classes(class_code))')"
+  "x.from('grades').select('id,students(official_name,classes(class_code))')",
+  "x.from('announcements').select('id,profiles!announcements_published_by_fkey(full_name)')"
 ].join(';');
 const fx2 = confereSuperficie(FIXTURE2);
 const autotesteSuperficie = {
@@ -130,14 +192,15 @@ const autotesteSuperficie = {
   esperados: 3,
   casos_acusados: { coluna: fx2.some((p) => p.includes('students.nope_inventado')), tabela: fx2.some((p) => p.includes('tabela_fantasma')), embutido_sem_fk: fx2.some((p) => p.includes('students->staff_schools')) },
   // O 4.º caso é o teste da recursão: duas FKs verdadeiras aninhadas (grades→students→classes) não podem
-  // gerar queixa nenhuma; se gerarem, a régua está a tratar `classes(...)` como coluna.
-  caso_correto_nao_acusado: !fx2.some((p) => p.includes('grades') || p.includes('classes'))
+  // gerar queixa nenhuma; se gerarem, a régua está a tratar `classes(...)` como coluna. O 5.º prova que o
+  // hint de FK continua a ser parseado como embutido e não como coluna inventada.
+  caso_correto_nao_acusado: !fx2.some((p) => p.includes('grades') || p.includes('classes')) && !fx2.some((p) => p.includes('profiles'))
 };
 for (const [nome, disparou] of Object.entries(autotesteSuperficie.casos_acusados)) {
   if (!disparou) bloqueios.push(`AUTOTESTE superfície: «${nome}» não foi acusado — a régua está cega e o verde do payload não vale nada`);
 }
 if (!autotesteSuperficie.caso_correto_nao_acusado) bloqueios.push(`AUTOTESTE superfície: acusou a cadeia correta grades→students→classes, cujas duas FKs estão medidas — falso positivo (${JSON.stringify(fx2)})`);
-if (fx2.length !== 3) bloqueios.push(`AUTOTESTE superfície: fixture com ${fx2.length} problemas, esperado 3 — a régua mudou de forma`);
+if (fx2.length !== autotesteSuperficie.esperados) bloqueios.push(`AUTOTESTE superfície: fixture com ${fx2.length} problemas, esperado ${autotesteSuperficie.esperados} — a régua mudou de forma`);
 
 // ── régua 3: aba declarada ⇒ carregador + renderizador ─────────────────────
 const tabsDeclaradas = [...codigo.matchAll(/\['([a-z]+)',\s*'[^']+?',\s*'[^']*'\]/g)].map((m) => m[1]);
@@ -251,7 +314,7 @@ for (const [nome, ok] of Object.entries(paridade)) if (!ok) bloqueios.push(`inje
 const escreveu = !bloqueios.length;
 if (escreveu) {
   if (existsSync(DESTINO)) { console.log('VERMELHO  já existe ' + DESTINO + ' — correr com outro nome'); process.exit(1); }
-  mkdirSync(`${DIR}/bfr-candidata-v127-secretaria-municipal`, { recursive: true });
+  mkdirSync(`${DIR}/bfr-candidata-v${V}-secretaria-municipal`, { recursive: true });
   writeFileSync(DESTINO, saida);
 }
 const bufSaida = escreveu ? readFileSync(DESTINO) : Buffer.alloc(0);
@@ -276,7 +339,7 @@ const diario = {
   escrita_no_banco: false,
   origem: 'bfr-candidata-v121-rotulos-supervisor/index.html', origem_md5_medido: BASE_MD5, origem_md5_agora: baseMedido,
   modulo_fonte: 'scripts/sm6-modulo-municipal.txt', modulo_bytes: Buffer.byteLength(payload),
-  destino: 'bfr-candidata-v127-secretaria-municipal/index.html',
+  destino: `bfr-candidata-v${V}-secretaria-municipal/index.html`,
   o_que_prova: 'que o payload é sintaticamente válido; que cada tabela, coluna e embutido que ele pede existem no catálogo medido (31 foreign keys, 16 tabelas); que as 10 abas do menu têm carregador e renderizador; que cada atributo de ação emitido tem manipulador e vice-versa; e que a injeção deixou o prefixo e o sufixo do documento byte a byte idênticos à base, com o marcador do módulo a aparecer exatamente uma vez antes do último </body>.',
   o_que_NAO_prova: 'nada disto abre a página. A aba abrir, carregar e permitir as operações autorizadas só se prova com navegador autenticado por perfil — o que exige OK (§10 do briefing). Sem sessão, a régua mais forte possível é estática: nomes, manipuladores e estrutura.',
   ancora: contasAncora,
@@ -289,7 +352,6 @@ const diario = {
   dados_nao_escritos: 'nenhum valor numético está no código: todos os cartões e tabelas vêm de chamadas ao cliente Supabase do próprio bundle (BFR_APP_RUNTIME.client), e o painel imprime o escopo efetivo devolvido em vez de um total de rede inventado.',
   saida: verifSaida, bloqueios, veredito: escreveu ? 'CANDIDATA_ESCRITA_SEM_PUBLICAR' : 'CANDIDATA_BLOQUEADA'
 };
-if (existsSync(OUT)) { console.log('VERMELHO  já existe ' + OUT + ' — correr com outro nome'); process.exit(1); }
 writeFileSync(OUT, JSON.stringify(diario, null, 1) + '\n');
 console.log(diario.veredito);
 console.log('ÂNCORAS', JSON.stringify(contasAncora));

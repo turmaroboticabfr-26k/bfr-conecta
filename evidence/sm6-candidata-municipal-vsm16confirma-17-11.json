@@ -1,0 +1,127 @@
+{
+ "programa": "scripts/sm6-candidata-municipal.mjs",
+ "em": "2026-11-18T03:30:05.506Z",
+ "publicacao": false,
+ "escrita_no_banco": false,
+ "origem": "bfr-candidata-v121-rotulos-supervisor/index.html",
+ "origem_md5_medido": "d418e7fc917f1fbb1437054b7b531f9b",
+ "origem_md5_agora": "d418e7fc917f1fbb1437054b7b531f9b",
+ "modulo_fonte": "scripts/sm6-modulo-municipal.txt",
+ "modulo_bytes": 57068,
+ "destino": "bfr-candidata-vsm16confirma-secretaria-municipal/index.html",
+ "o_que_prova": "que o payload é sintaticamente válido; que cada tabela, coluna e embutido que ele pede existem no catálogo medido (31 foreign keys, 16 tabelas); que as 10 abas do menu têm carregador e renderizador; que cada atributo de ação emitido tem manipulador e vice-versa; e que a injeção deixou o prefixo e o sufixo do documento byte a byte idênticos à base, com o marcador do módulo a aparecer exatamente uma vez antes do último </body>.",
+ "o_que_NAO_prova": "nada disto abre a página. A aba abrir, carregar e permitir as operações autorizadas só se prova com navegador autenticado por perfil — o que exige OK (§10 do briefing). Sem sessão, a régua mais forte possível é estática: nomes, manipuladores e estrutura.",
+ "ancora": {
+  "id=\"appShell\"": 1,
+  "window.BFR_APP_RUNTIME": 59,
+  "get client()": 2,
+  "roleSectionAccess": 8,
+  ".bfr-platform-nav": 86,
+  ".mobile-more-grid": 17,
+  "data-section=\"secretaria\"": 5
+ },
+ "ocorrencias_body_na_base": 6,
+ "posicao_da_ultima": 3472198,
+ "paridade_da_injecao": {
+  "prefixo_identico": true,
+  "sufixo_identico": true,
+  "marcador_uma_vez": true,
+  "depois_de_ultimo_body": true
+ },
+ "mapa_de_papeis": {
+  "chaves": [
+   "parent",
+   "student",
+   "teacher",
+   "coordinator",
+   "admin",
+   "director",
+   "monitor",
+   "gatekeeper",
+   "secretary",
+   "aee",
+   "psychology",
+   "multiprofessional",
+   "sports_operator",
+   "education_supervisor"
+  ],
+  "registados": [
+   "admin",
+   "education_supervisor"
+  ],
+  "seletor_nav": ".sidebar .nav-item[data-section],.mobile-more-option[data-section]"
+ },
+ "sintaxe": {
+  "ok": true,
+  "erro": ""
+ },
+ "abas": [
+  "painel",
+  "escolas",
+  "alunos",
+  "profissionais",
+  "pedagogico",
+  "frequencia",
+  "processos",
+  "comunicacao",
+  "infraestrutura",
+  "relatorios"
+ ],
+ "chaves_carregadores": [
+  "painel",
+  "escolas",
+  "alunos",
+  "profissionais",
+  "pedagogico",
+  "frequencia",
+  "processos",
+  "comunicacao",
+  "infraestrutura",
+  "relatorios"
+ ],
+ "chaves_render": [
+  "painel",
+  "escolas",
+  "alunos",
+  "profissionais",
+  "pedagogico",
+  "frequencia",
+  "processos",
+  "comunicacao",
+  "infraestrutura",
+  "relatorios"
+ ],
+ "autoteste_superficie": {
+  "problemas_no_fixture": 3,
+  "esperados": 3,
+  "casos_acusados": {
+   "coluna": true,
+   "tabela": true,
+   "embutido_sem_fk": true
+  },
+  "caso_correto_nao_acusado": true
+ },
+ "autoteste_abas": {
+  "ofensor": "abafantasma",
+  "acusado": true,
+  "falsos_positivos": [],
+  "contadas": 10
+ },
+ "problemas_de_superficie_encontrados_no_payload": 0,
+ "dados_nao_escritos": "nenhum valor numético está no código: todos os cartões e tabelas vêm de chamadas ao cliente Supabase do próprio bundle (BFR_APP_RUNTIME.client), e o painel imprime o escopo efetivo devolvido em vez de um total de rede inventado.",
+ "saida": {
+  "existe": true,
+  "bytes": 3546964,
+  "md5": "d9570a25ff1a846ad930239ad13721f5",
+  "delta_vs_base": 57239,
+  "prefixo_igual_a_base": true,
+  "sufixo_igual_a_base": true,
+  "ocultas_secretaria_municipal": 1,
+  "script_injetado": 1,
+  "ocorrencias_body_na_saida": 6,
+  "insere_se_apos_o_ultimo_body": true,
+  "base_inalterada": true
+ },
+ "bloqueios": [],
+ "veredito": "CANDIDATA_ESCRITA_SEM_PUBLICAR"
+}

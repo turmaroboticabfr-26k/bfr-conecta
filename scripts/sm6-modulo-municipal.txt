@@ -163,8 +163,12 @@
       '#bfrMunicipalView .mun-btn.p{background:var(--mun);color:#fff}',
       '#bfrMunicipalView .mun-btn[disabled]{opacity:.45;cursor:not-allowed}',
       '#bfrMunicipalView .mun-rowbtn{border:0;background:none;color:var(--mun-2);font:inherit;font-size:13px;font-weight:600;text-decoration:underline;cursor:pointer;padding:0}',
-      '@media (max-width:900px){#bfrMunicipalView .mun-shell{grid-template-columns:1fr}#bfrMunicipalView .mun-side{position:static;grid-auto-flow:column;grid-auto-columns:minmax(150px,auto);overflow-x:auto;padding:6px}#bfrMunicipalView{padding:12px 10px 32px}}',
-      '@media (max-width:430px){#bfrMunicipalView .mun-cards{grid-template-columns:repeat(auto-fit,minmax(140px,1fr))}#bfrMunicipalView .mun-head h2{font-size:19px}}',
+      // `overflow-x:auto` numa grelha não chega para ser o scroller: o item tem `min-width:auto` por
+      // omissão, a barra de dez abas esticava o documento para 1 500 px e em 390 px as abas de índice
+      // 3 em diante ficavam com x > largura — fora da janela, e o scroll horizontal do componente não
+      // existia para lá as levar. A régua é a do briefing §6/§8: desktop E mobile, sem tela em branco.
+      '@media (max-width:900px){#bfrMunicipalView{padding:12px 10px 32px;min-width:0;max-width:100%}#bfrMunicipalView .mun-shell{grid-template-columns:minmax(0,1fr);min-width:0}#bfrMunicipalView .mun-side{position:sticky;top:6px;grid-auto-flow:row;grid-template-columns:repeat(auto-fit,minmax(104px,1fr));grid-auto-columns:auto;min-width:0;max-width:100%;overflow:visible;padding:6px}}',
+      '@media (max-width:430px){#bfrMunicipalView .mun-cards{grid-template-columns:repeat(auto-fit,minmax(140px,1fr))}#bfrMunicipalView .mun-head h2{font-size:19px}#bfrMunicipalView .mun-side{grid-template-columns:repeat(auto-fit,minmax(96px,1fr))}}',
       '@media print{#bfrMunicipalView .mun-side,#bfrMunicipalView .mun-filters,#bfrMunicipalView .mun-btn{display:none!important}#bfrMunicipalView{background:#fff}}'
     ].join('\n');
     const tag = document.createElement('style');
@@ -232,7 +236,7 @@
       const mov = await ler('processos_mov', (from) => from('supervision_responses').select('id,request_id,round,justification,measures_taken,responsible_name,deadline_at,created_at').order('round').limit(2000));
       return { pedidos, mov };
     },
-    comunicacao: () => ler('comunicados_todo', (from) => from('announcements').select('id,title,body,important,message_type,audience_mode,status,published_at,requires_confirmation,scheduled_at,profiles(full_name)').order('published_at', { ascending: false }).limit(300)),
+    comunicacao: () => ler('comunicados_todo', (from) => from('announcements').select('id,title,body,important,message_type,audience_mode,status,published_at,requires_confirmation,scheduled_at,profiles!announcements_published_by_fkey(full_name)').order('published_at', { ascending: false }).limit(300)),
     infraestrutura: () => ler('infra_todo', (from) => from('school_documents').select('id,title,category,description,storage_path,published,created_at,updated_at,document_type').order('created_at', { ascending: false }).limit(600)),
     relatorios: async () => ({ escolas: await ler('escolas_todo', (from) => from('schools').select('id,name,code,city,state,phase,active').order('name')),
       alunos: await ler('alunos_todo', (from) => from('students').select('id,official_name,active,class_id,school_id,classes(year,class_code,shift),schools(name,city)').order('official_name').limit(1500)),
@@ -576,12 +580,30 @@
       : (map[view] || map.parent || []);
     return { apto: permitido.includes(SECT), por: 'papel=' + papel + ' viewRole=' + view + ' no mapa=' + permitido.includes(SECT) };
   }
+  // §5/§6 medidos a 18/11: um papel que não tem chave em `roleSectionAccess` (o `secretary` real é o
+  // caso) não é escondido pelo shell, porque o shell não tem lista nenhuma para ele — e a entrada
+  // municipal ficava visível, levando a um clique que abre apenas a faixa de negação. Esconder aqui é
+  // apresentação; a decisão continua em `aptoParaSessao()` e na sonda do backend, e nenhum dos dois
+  // depende desta visibilidade. O intervalo não tem tecto: o seletor de papel do shell volta a desenhar
+  // a sidebar a cada troca, e um caputo deixaria a entrada reaparecer depois dele.
+  function aplicarVisibilidade() {
+    const veredito = aptoParaSessao();
+    for (const b of document.querySelectorAll('[data-bfr-municipal-nav]')) {
+      b.classList.toggle('hidden', !veredito.apto);
+      b.style.display = veredito.apto ? '' : 'none';
+      b.dataset.munApto = veredito.apto ? 'sim' : 'nao';
+    }
+    const raiz = document.getElementById(VIEW_ID);
+    if (raiz) raiz.dataset.munApto = veredito.apto ? 'sim' : 'nao';
+    return veredito;
+  }
   const tentativas = { registos: 0, limite: 50 };
   function garantir() {
     if (!document.querySelector('#appShell main')) return false;
     registar(); estilo();
     const vistaOk = !!document.getElementById(VIEW_ID);
     const navOk = !!document.querySelector('.sidebar [data-bfr-municipal-nav]');
+    if (vistaOk && navOk) aplicarVisibilidade();
     return vistaOk && navOk;
   }
   function tentar() {
@@ -600,16 +622,13 @@
       tentativas.registos++;
       const pronto = garantir();
       if (pronto || tentativas.registos >= tentativas.limite) clearInterval(ciclo);
-      if (pronto) {
-        const raiz = document.getElementById(VIEW_ID);
-        const veredito = aptoParaSessao();
-        if (raiz) raiz.dataset.munApto = veredito.apto ? 'sim' : 'nao';
-      }
+      if (pronto) aplicarVisibilidade();
     }, 400);
     setTimeout(() => clearInterval(ciclo), 30000);
+    const vigilia = setInterval(() => { if (garantir()) aplicarVisibilidade(); }, 600);
     sondarBackend();
   }
   const timer = setInterval(() => tentar(), 250);
   setTimeout(() => clearInterval(timer), 30000);
-  window.BFR_MUNICIPAL = { abrir, registar, garantir, aptoParaSessao, sondarBackend, sonda, estado, cache, SECT, PAPEIS_MUNICIPAIS };
+  window.BFR_MUNICIPAL = { abrir, registar, garantir, aptoParaSessao, aplicarVisibilidade, sondarBackend, sonda, estado, cache, SECT, PAPEIS_MUNICIPAIS };
 })();

@@ -1,0 +1,79 @@
+{
+ "programa": "scripts/ah1-varre-escritas.mjs",
+ "em": "2026-11-18T03:39:37.658Z",
+ "o_que_prova": "nenhum dos 489 caminhos versionados em docs/ e scripts/ contém glifo das sete famílias varridas fora da lista de permitidos declarados; a contagem por família fica no diário, inclusive quando é zero — uma família com conjunto vazio imprime-se com o zero, suprimi-la transformaria «não sei» em «não existe»",
+ "o_que_NAO_prova": "que o texto esteja certo — a varredura só sabe de **escrita**, não de conteúdo. Não varre o índice do git (`git show :caminho`), varre a árvore de trabalho: um ficheiro modificado e ainda não gravado não é medido. Há famílias fora desta lista (arménio, copta, tailandês, devanágari) que continuariam invisíveis.",
+ "escopo": "git ls-files docs scripts, filtrado por extensão de texto",
+ "familias": [
+  {
+   "familia": "cirilico",
+   "faixas": [
+    "U+400–U+4FF",
+    "U+500–U+52F"
+   ]
+  },
+  {
+   "familia": "grego",
+   "faixas": [
+    "U+370–U+3FF",
+    "U+1F00–U+1FFF"
+   ]
+  },
+  {
+   "familia": "kana",
+   "faixas": [
+    "U+3040–U+30FF"
+   ]
+  },
+  {
+   "familia": "hangul",
+   "faixas": [
+    "U+1100–U+11FF",
+    "U+AC00–U+D7AF"
+   ]
+  },
+  {
+   "familia": "han",
+   "faixas": [
+    "U+3400–U+4DBF",
+    "U+4E00–U+9FFF"
+   ]
+  },
+  {
+   "familia": "hebraico",
+   "faixas": [
+    "U+590–U+5FF"
+   ]
+  },
+  {
+   "familia": "arabe",
+   "faixas": [
+    "U+600–U+6FF"
+   ]
+  }
+ ],
+ "veredito": {
+  "arquivos_varridos": 489,
+  "por_familia": {
+   "cirilico": 0,
+   "grego": 55,
+   "kana": 0,
+   "hangul": 0,
+   "han": 0,
+   "hebraico": 0,
+   "arabe": 0
+  },
+  "permitidos_declarados": {
+   "grego": [
+    "U+394 (DELTA de soma em tabela de portões)",
+    "U+3A3 (SIGMA de total em tabela de portões)"
+   ]
+  },
+  "permitidos_batidos": {
+   "grego": 55
+  },
+  "ofensores": 0,
+  "estado": "ESCRITAS_OK"
+ },
+ "ofensores": []
+}

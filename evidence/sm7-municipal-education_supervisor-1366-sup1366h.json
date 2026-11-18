@@ -1,0 +1,659 @@
+{
+  "ciclo": "SM-7-N",
+  "programa": "scripts/sm7-navegador-municipal.mjs",
+  "em": "2026-11-18T01:49:41.497Z",
+  "publicacao": false,
+  "ddl_aplicada": false,
+  "escrita_no_banco": false,
+  "papel": "education_supervisor",
+  "url_servida": "http://127.0.0.1:8929/index.html",
+  "largura": 1366,
+  "banda_alto": 900,
+  "mobile": false,
+  "candidata_md5": "44ad07f8478f2e70be8e052f8f272a14",
+  "candidata_caracteres": 3527189,
+  "candidata_bytes": 3545225,
+  "o_que_prova": "a candidata escrita é a que o browser executa: boot real com conta test, clique real no botão «Secretaria Municipal», as 10 abas abertas por clique, e as operações (filtro, detalhe, export, PDF) medidas pelo que o backend devolve.",
+  "o_que_NAO_prova": "o app publicado (continua a ser o ar de sempre); o comportamento de utilizadores reais em dispositivo físico; o que o DDL SM4 mudaria no escopo, porque nada foi aplicado.",
+  "stages": {
+    "injecao": {
+      "expira_em_s": 3597,
+      "acesso_md5_8": "54466e33"
+    },
+    "navegacao": {
+      "ok": true
+    },
+    "ms_ready": 850,
+    "erro_boot": null,
+    "janela": {
+      "innerWidth": 1366,
+      "clientWidth": 1366,
+      "dpr": 1
+    },
+    "papel_real": "education_supervisor",
+    "mapa_papel": {
+      "papel": "education_supervisor",
+      "tem_chave": false,
+      "declarado": 0
+    },
+    "ms_registo_municipal": 831,
+    "erro_registo_municipal": null,
+    "modulo": {
+      "runtime_presente": true,
+      "versao_constante": "secretaria-municipal",
+      "papeis_municipais": [
+        "admin",
+        "education_supervisor"
+      ],
+      "apto_para_sessao": {
+        "apto": true,
+        "por": "papel=education_supervisor viewRole=education_supervisor no mapa=true"
+      },
+      "vista_no_dom": true,
+      "botao_nav": [
+        {
+          "classe": "nav-item tap-target",
+          "texto": "🏛Secretaria Municipal",
+          "na_sidebar": true,
+          "no_drawer": false,
+          "visivel": true,
+          "rect": {
+            "w": 192,
+            "h": 56
+          }
+        },
+        {
+          "classe": "mobile-more-option tap-target",
+          "texto": "🏛Secretaria Municipal",
+          "na_sidebar": false,
+          "no_drawer": true,
+          "visivel": false,
+          "rect": {
+            "w": 0,
+            "h": 0
+          }
+        }
+      ],
+      "aria_atual_antes": "sim"
+    },
+    "modal_antes_do_clique": {
+      "n": 1,
+      "modais": [
+        {
+          "id": "preferredNameModal",
+          "dataset": "",
+          "texto": "× PRIMEIRO ACESSO Como você quer ser chamado? Esse nome aparece apenas nas saudações e na sua experiência no BFR Conecta. O nome oficial do cadastro escolar con",
+          "fechaveis": 1,
+          "rotulos_fecho": [
+            "×",
+            "Agora não",
+            "Salvar e continuar"
+          ],
+          "cobre_a_janela": true
+        }
+      ]
+    },
+    "fecho_do_modal": {
+      "clique": {
+        "ok": true,
+        "x": 932,
+        "y": 312,
+        "w": 25,
+        "h": 33,
+        "visivel": true,
+        "no_alvo": true,
+        "por_cima": "BUTTON.modal-close"
+      },
+      "alvo": {
+        "x": 932,
+        "y": 312,
+        "rotulo": "×"
+      }
+    },
+    "modal_depois_do_fecho": 0,
+    "gaveta": null,
+    "clique_nav": {
+      "ok": true,
+      "x": 110,
+      "y": 450,
+      "w": 192,
+      "h": 56,
+      "visivel": true,
+      "no_alvo": true,
+      "por_cima": "BUTTON.nav-item tap-target"
+    },
+    "ms_construcao_da_vista": 11,
+    "vista_nao_construiu": false,
+    "depois_do_clique": {
+      "vista_existe": true,
+      "oculta": false,
+      "munApto": "sim",
+      "routed_by": "bundle",
+      "built_flag": "1",
+      "contentor_no_dom": 1,
+      "contentor_global": 1,
+      "gatilho_do_registro": true,
+      "aba_do_estado": "painel",
+      "html_cabeca": "<div class=\"mun-head\"><div><div class=\"mun-sub\">Gestão municipal da educação</div><h2>Secretaria Municipal de Educação</h2><div class=\"mun-id\">Rede municipal de ensino · sessão: AH",
+      "titulo_aba": "▦Painel executivo",
+      "tabs_no_dom": 10,
+      "chars": 436,
+      "faixa_negacao": false
+    },
+    "apto_depois_do_boot": {
+      "apto": true,
+      "por": "papel=education_supervisor viewRole=education_supervisor no mapa=true"
+    },
+    "instrumento_contadores": {
+      "ok": true,
+      "singleton_do_client": true,
+      "onde": "prototipo"
+    },
+    "cache_limpo_antes_das_abas": {
+      "ok": true,
+      "x": 1141,
+      "y": 450,
+      "w": 139,
+      "h": 37,
+      "visivel": true,
+      "no_alvo": true,
+      "por_cima": "BUTTON.mun-btn"
+    },
+    "abas": {
+      "painel": {
+        "clique": {
+          "ok": true,
+          "x": 371,
+          "y": 450,
+          "w": 220,
+          "h": 35,
+          "visivel": true,
+          "no_alvo": true,
+          "por_cima": "BUTTON.mun-tab"
+        },
+        "assentou": true,
+        "ms_assentamento": 510,
+        "chars": 1003,
+        "linhas": 0,
+        "cabecalhos": 0,
+        "botoes": 0,
+        "campos_filtro": 0,
+        "cartoes": 7,
+        "faixas": [
+          "Sem predicado municipal no banco: Could not find the function public.bfr_is_municipal_authority without parame",
+          "Erro do backend: Cannot read properties of undefined (reading 'from')"
+        ],
+        "vazia": true,
+        "assinatura": "1003:272894881",
+        "aba_do_estado": "painel",
+        "tab_ativa": "painel",
+        "chamadas_novas": 5,
+        "tabelas_pedidas": [],
+        "rpc_novo": []
+      },
+      "escolas": {
+        "clique": {
+          "ok": true,
+          "x": 371,
+          "y": 450,
+          "w": 220,
+          "h": 35,
+          "visivel": true,
+          "no_alvo": true,
+          "por_cima": "BUTTON.mun-tab"
+        },
+        "assentou": true,
+        "ms_assentamento": 517,
+        "chars": 1266,
+        "linhas": 6,
+        "cabecalhos": 7,
+        "botoes": 6,
+        "campos_filtro": 2,
+        "cartoes": 0,
+        "faixas": [
+          "Sem predicado municipal no banco: Could not find the function public.bfr_is_municipal_authority without parame"
+        ],
+        "vazia": false,
+        "assinatura": "1258:2168361245",
+        "aba_do_estado": "escolas",
+        "tab_ativa": "escolas",
+        "chamadas_novas": 0,
+        "tabelas_pedidas": [],
+        "rpc_novo": []
+      },
+      "alunos": {
+        "clique": {
+          "ok": true,
+          "x": 371,
+          "y": 450,
+          "w": 220,
+          "h": 37,
+          "visivel": true,
+          "no_alvo": true,
+          "por_cima": "BUTTON.mun-tab"
+        },
+        "assentou": true,
+        "ms_assentamento": 516,
+        "chars": 890,
+        "linhas": 1,
+        "cabecalhos": 7,
+        "botoes": 1,
+        "campos_filtro": 2,
+        "cartoes": 0,
+        "faixas": [
+          "Erro anterior nesta seção: Cannot read properties of undefined (reading 'from')",
+          "Sem predicado municipal no banco: Could not find the function public.bfr_is_municipal_authority without parame",
+          "Erro do backend: Cannot read properties of undefined (reading 'from')"
+        ],
+        "vazia": true,
+        "assinatura": "887:601499313",
+        "aba_do_estado": "alunos",
+        "tab_ativa": "alunos",
+        "chamadas_novas": 1,
+        "tabelas_pedidas": [],
+        "rpc_novo": []
+      },
+      "profissionais": {
+        "clique": {
+          "ok": true,
+          "x": 371,
+          "y": 450,
+          "w": 220,
+          "h": 37,
+          "visivel": true,
+          "no_alvo": true,
+          "por_cima": "BUTTON.mun-tab"
+        },
+        "assentou": true,
+        "ms_assentamento": 515,
+        "chars": 1042,
+        "linhas": 1,
+        "cabecalhos": 5,
+        "botoes": 0,
+        "campos_filtro": 0,
+        "cartoes": 3,
+        "faixas": [
+          "Erro anterior nesta seção: Cannot read properties of undefined (reading 'from')",
+          "Sem predicado municipal no banco: Could not find the function public.bfr_is_municipal_authority without parame",
+          "Erro do backend: Cannot read properties of undefined (reading 'from')"
+        ],
+        "vazia": true,
+        "assinatura": "1039:448650133",
+        "aba_do_estado": "profissionais",
+        "tab_ativa": "profissionais",
+        "chamadas_novas": 1,
+        "tabelas_pedidas": [],
+        "rpc_novo": []
+      },
+      "pedagogico": {
+        "clique": {
+          "ok": true,
+          "x": 371,
+          "y": 450,
+          "w": 220,
+          "h": 52,
+          "visivel": true,
+          "no_alvo": true,
+          "por_cima": "BUTTON.mun-tab"
+        },
+        "assentou": true,
+        "ms_assentamento": 530,
+        "chars": 768,
+        "linhas": 0,
+        "cabecalhos": 0,
+        "botoes": 0,
+        "campos_filtro": 0,
+        "cartoes": 0,
+        "faixas": [
+          "Erro anterior nesta seção: Cannot read properties of undefined (reading 'from')",
+          "Sem predicado municipal no banco: Could not find the function public.bfr_is_municipal_authority without parame",
+          "Erro do backend: Cannot read properties of undefined (reading 'from')"
+        ],
+        "vazia": true,
+        "assinatura": "766:3800386024",
+        "aba_do_estado": "pedagogico",
+        "tab_ativa": "pedagogico",
+        "chamadas_novas": 1,
+        "tabelas_pedidas": [],
+        "rpc_novo": []
+      },
+      "frequencia": {
+        "clique": {
+          "ok": true,
+          "x": 371,
+          "y": 450,
+          "w": 220,
+          "h": 35,
+          "visivel": true,
+          "no_alvo": true,
+          "por_cima": "BUTTON.mun-tab"
+        },
+        "assentou": true,
+        "ms_assentamento": 528,
+        "chars": 1032,
+        "linhas": 0,
+        "cabecalhos": 0,
+        "botoes": 0,
+        "campos_filtro": 0,
+        "cartoes": 3,
+        "faixas": [
+          "Erro anterior nesta seção: Cannot read properties of undefined (reading 'from')",
+          "Sem predicado municipal no banco: Could not find the function public.bfr_is_municipal_authority without parame",
+          "Nenhum aluno é classificado como evadido aqui. §4.6 do briefing: falta não é evasão. A situação de acompanhame",
+          "Erro do backend: Cannot read properties of undefined (reading 'from')"
+        ],
+        "vazia": true,
+        "assinatura": "1032:4013613900",
+        "aba_do_estado": "frequencia",
+        "tab_ativa": "frequencia",
+        "chamadas_novas": 2,
+        "tabelas_pedidas": [],
+        "rpc_novo": []
+      },
+      "processos": {
+        "clique": {
+          "ok": true,
+          "x": 371,
+          "y": 450,
+          "w": 220,
+          "h": 37,
+          "visivel": true,
+          "no_alvo": true,
+          "por_cima": "BUTTON.mun-tab"
+        },
+        "assentou": true,
+        "ms_assentamento": 521,
+        "chars": 684,
+        "linhas": 0,
+        "cabecalhos": 0,
+        "botoes": 0,
+        "campos_filtro": 0,
+        "cartoes": 3,
+        "faixas": [
+          "Sem predicado municipal no banco: Could not find the function public.bfr_is_municipal_authority without parame"
+        ],
+        "vazia": true,
+        "assinatura": "684:3629892288",
+        "aba_do_estado": "processos",
+        "tab_ativa": "processos",
+        "chamadas_novas": 2,
+        "tabelas_pedidas": [],
+        "rpc_novo": []
+      },
+      "comunicacao": {
+        "clique": {
+          "ok": true,
+          "x": 371,
+          "y": 450,
+          "w": 220,
+          "h": 37,
+          "visivel": true,
+          "no_alvo": true,
+          "por_cima": "BUTTON.mun-tab"
+        },
+        "assentou": true,
+        "ms_assentamento": 520,
+        "chars": 903,
+        "linhas": 0,
+        "cabecalhos": 0,
+        "botoes": 0,
+        "campos_filtro": 0,
+        "cartoes": 4,
+        "faixas": [
+          "Erro anterior nesta seção: Cannot read properties of undefined (reading 'from')",
+          "Sem predicado municipal no banco: Could not find the function public.bfr_is_municipal_authority without parame"
+        ],
+        "vazia": true,
+        "assinatura": "902:1051059587",
+        "aba_do_estado": "comunicacao",
+        "tab_ativa": "comunicacao",
+        "chamadas_novas": 1,
+        "tabelas_pedidas": [],
+        "rpc_novo": []
+      },
+      "infraestrutura": {
+        "clique": {
+          "ok": true,
+          "x": 371,
+          "y": 455,
+          "w": 220,
+          "h": 37,
+          "visivel": true,
+          "no_alvo": true,
+          "por_cima": "BUTTON.mun-tab"
+        },
+        "assentou": true,
+        "ms_assentamento": 515,
+        "chars": 918,
+        "linhas": 0,
+        "cabecalhos": 0,
+        "botoes": 0,
+        "campos_filtro": 0,
+        "cartoes": 0,
+        "faixas": [
+          "Erro anterior nesta seção: Cannot read properties of undefined (reading 'from')",
+          "Sem predicado municipal no banco: Could not find the function public.bfr_is_municipal_authority without parame",
+          "Esta secção não tem superfície de dados no banco. O inventário de 17/11 (`evidence/sm1-inventario-rede-17-11b."
+        ],
+        "vazia": true,
+        "assinatura": "918:3627902740",
+        "aba_do_estado": "infraestrutura",
+        "tab_ativa": "infraestrutura",
+        "chamadas_novas": 1,
+        "tabelas_pedidas": [],
+        "rpc_novo": []
+      },
+      "relatorios": {
+        "clique": {
+          "ok": true,
+          "x": 371,
+          "y": 488,
+          "w": 220,
+          "h": 35,
+          "visivel": true,
+          "no_alvo": true,
+          "por_cima": "BUTTON.mun-tab"
+        },
+        "assentou": true,
+        "ms_assentamento": 515,
+        "chars": 1218,
+        "linhas": 6,
+        "cabecalhos": 5,
+        "botoes": 3,
+        "campos_filtro": 0,
+        "cartoes": 0,
+        "faixas": [
+          "Sem predicado municipal no banco: Could not find the function public.bfr_is_municipal_authority without parame"
+        ],
+        "vazia": false,
+        "assinatura": "1217:1145858325",
+        "aba_do_estado": "relatorios",
+        "tab_ativa": "relatorios",
+        "chamadas_novas": 2,
+        "tabelas_pedidas": [],
+        "rpc_novo": []
+      }
+    },
+    "sonda": {
+      "feita": true,
+      "executavel": false,
+      "nota": "o predicado ainda não existe no banco: a aba depende por agora do mapa de papéis do bundle",
+      "erro": "Could not find the function public.bfr_is_municipal_authority without parameters in the schema cache"
+    },
+    "faixa_escopo": [
+      "Sem predicado municipal no banco: Could not find the function public.bfr_is_municipal_authority without parameters in the schema cache. Hoje a aba é governada pelo mapa de papéis do bundle; o controle de acesso de servid"
+    ],
+    "erros_do_modulo": [
+      {
+        "familia": "escolas",
+        "erro": "Cannot read properties of undefined (reading 'from')"
+      },
+      {
+        "familia": "alunos",
+        "erro": "Cannot read properties of undefined (reading 'from')"
+      },
+      {
+        "familia": "turmas",
+        "erro": "Cannot read properties of undefined (reading 'from')"
+      },
+      {
+        "familia": "processos",
+        "erro": "Cannot read properties of undefined (reading 'from')"
+      },
+      {
+        "familia": "freq",
+        "erro": "Cannot read properties of undefined (reading 'from')"
+      },
+      {
+        "familia": "profissionais",
+        "erro": "Cannot read properties of undefined (reading 'from')"
+      },
+      {
+        "familia": "alunos",
+        "erro": "Cannot read properties of undefined (reading 'from')"
+      },
+      {
+        "familia": "alunos",
+        "erro": "Cannot read properties of undefined (reading 'from')"
+      },
+      {
+        "familia": "profissionais",
+        "erro": "Cannot read properties of undefined (reading 'from')"
+      },
+      {
+        "familia": "notas",
+        "erro": "Cannot read properties of undefined (reading 'from')"
+      },
+      {
+        "familia": "pedagogico",
+        "erro": "Cannot read properties of undefined (reading 'from')"
+      },
+      {
+        "familia": "alerts",
+        "erro": "Cannot read properties of undefined (reading 'from')"
+      },
+      {
+        "familia": "frequencia",
+        "erro": "Cannot read properties of undefined (reading 'from')"
+      },
+      {
+        "familia": "processos",
+        "erro": "Cannot read properties of undefined (reading 'from')"
+      },
+      {
+        "familia": "comunicados",
+        "erro": "Cannot read properties of undefined (reading 'from')"
+      },
+      {
+        "familia": "comunicacao",
+        "erro": "Cannot read properties of undefined (reading 'from')"
+      },
+      {
+        "familia": "infra",
+        "erro": "Cannot read properties of undefined (reading 'from')"
+      },
+      {
+        "familia": "infraestrutura",
+        "erro": "Cannot read properties of undefined (reading 'from')"
+      }
+    ],
+    "causa_do_erro_from": {
+      "ok": false,
+      "mensagem": "Cannot read properties of undefined (reading 'from')",
+      "pilha": [
+        "TypeError: Cannot read properties of undefined (reading 'from')",
+        "at Object.from (https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.50.0/dist/umd/supabase.min.js:7:111980)",
+        "at s.from (<anonymous>:8:79)",
+        "at <anonymous>:5:27",
+        "at <anonymous>:8:3"
+      ]
+    },
+    "operacoes": {
+      "escolas_antes": {
+        "contentor": true,
+        "linhas": 6,
+        "primeiro_nome": "Escola Alpha"
+      },
+      "filtro_busca": {
+        "ok": true,
+        "digitado": "Esco"
+      },
+      "escolas_depois_filtro": {
+        "contentor": true,
+        "linhas": 6
+      },
+      "filtro_limpo": {
+        "ok": true
+      },
+      "detalhe": {
+        "ok": true,
+        "tem_volta": false,
+        "h3": ""
+      },
+      "volta": {
+        "ok": true,
+        "linhas": 0
+      },
+      "exports": {
+        "botoes": [
+          "censo",
+          "alunos"
+        ],
+        "n": 2
+      },
+      "print": {
+        "ok": true
+      },
+      "contadores_finais": {
+        "de": [
+          "schools",
+          "students",
+          "classes",
+          "supervision_requests",
+          "bfr_lesson_attendance",
+          "staff_schools",
+          "grades",
+          "supervision_alerts",
+          "supervision_responses",
+          "announcements",
+          "school_documents"
+        ],
+        "n_de": 30,
+        "rpc": [],
+        "n_rpc": 0,
+        "downloads": [
+          "bfr-municipal-censo-2026-11-18.csv",
+          "bfr-municipal-alunos-2026-11-18.csv"
+        ],
+        "blobs": [
+          {
+            "tipo": "text/csv;charset=utf-8",
+            "bytes": 734
+          },
+          {
+            "tipo": "text/csv;charset=utf-8",
+            "bytes": 3
+          }
+        ],
+        "prints": 1
+      }
+    },
+    "console_erros": [],
+    "recursos_404": {
+      "n": 141,
+      "nomes": [
+        "manifest.json",
+        "bfr-app-logo.png",
+        "sw-v4.js",
+        "bfr-responsive-presentation.js",
+        "bfr-teacher-arrivals.js",
+        "bfr-teacher-audit.js",
+        "lia-avatar.png",
+        "cdn-cgi/rum"
+      ]
+    },
+    "portoes": 3
+  },
+  "veredito": "SM7_MUNICIPAL_FUNCIONANDO",
+  "falhas": []
+}
