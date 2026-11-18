@@ -1,0 +1,8 @@
+artefacto de referência: portoes=31, falhas=0, alcancaveis=168
+POSITIVO_OK  artefacto honesto → exit=0 · AUDITORIA_VERDE — todas as cifras amarradas às suas linhas batem com os artefactos
+MORDEU   rls_no_catalogo.alcancaveis 168→167  exit=1 · DIVERGE  §11 tabelas alcançáveis com RLS     documento diz 168 · artefacto impõe 167 | AUDITORIA_VERMELHA 1 divergência(s) · esperado vermelho em §11
+MORDEU   portoes 31→30                        exit=1 · DIVERGE  §15 portões da suite                documento diz 31 · artefacto impõe 30 | DIVERGE  §15 verde da suite                  documento diz 30 · artefacto impõe 29 | DIVERGE  §11 estado do veredicto             30/1/0 ≠ 29/1/0 | DIVERGE  painel suite                        âncora não encontrada no documento | AUDITORIA_VERMELHA 4 divergência(s) · esperado vermelho em §15 portões
+MORDEU   falhas []→[x]                        exit=1 · DIVERGE  §15 verde da suite                  documento diz 30 · artefacto impõe 29 | DIVERGE  §15 vermelho da suite               documento diz 0 · artefacto impõe 1 | DIVERGE  §11 estado do veredicto             30/1/0 ≠ 29/1/1 | DIVERGE  painel suite                        documento diz 30 · artefacto impõe 29 | AUDITORIA_VERMELHA 4 divergência(s) · esperado vermelho em §15 vermelho
+
+CONTROLE_NEGATIVO_OK positivo verde · 3/3 artefactos corrompidos foram pegados
+node_exit=0

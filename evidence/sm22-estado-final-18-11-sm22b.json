@@ -1,0 +1,130 @@
+{
+  "em": "2026-11-18T19:09:13.780Z",
+  "metodo": "so leitura do INDICE (git show) + re-corrida de scripts ja versionados; zero rede; zero escrita no banco; nenhum segredo impresso",
+  "commit": {
+    "hash": "18aa544",
+    "assunto": "§SM.22: «resolva todas as pendências» executado como medição — 21 peças, 24 portões verdes, ledger de 37 PEN",
+    "a_falta_de_origin": 1,
+    "arvore_suja_em_frente": 0
+  },
+  "excecao_dos_quatro_chave": {
+    "veredito": "EXCECAO_PROVADA_POR_HASH",
+    "pool_de_rotulos": 36,
+    "vencedores": 4,
+    "chaves_de_sessao_comparadas": 19,
+    "regua_discrimina_fixture": true,
+    "padrao_identico_ao_do_portao": true,
+    "md5_das_quatro_fichas": [
+      "ea7efb355c1768409148575c08dac721"
+    ],
+    "artefacto": "evidence/sm22-prova-excecao-chave-18-11.json"
+  },
+  "cadeia_e_e_corta_o_portao": {
+    "ficheiro": "C:/Users/pcmac/Documents/Qoder/2026-10-13/28077d9a/bfr-conecta/evidence/sm22-captura-portao-indice-nao-correu-so-node-exit-18-11-sm22b.txt",
+    "bytes": 12,
+    "md5_original": "95c9e09150610253faa62e5ae79113d4",
+    "md5_copia": "95c9e09150610253faa62e5ae79113d4",
+    "linhas_no_ficheiro": 1,
+    "tem_veredicto_do_portao": false,
+    "o_que_prova": "um ficheiro de portao com `node_exit=` e nenhuma linha de veredicto nao e um vermelho: e a prova de que o programa nunca foi executado"
+  },
+  "verificador_deixou_de_ser_portador": {
+    "casamentos_no_fonte_commitado": 0,
+    "casamentos_do_fixture_em_runtime": true,
+    "perda_assumida": "a captura do vermelho original (`NAO_COBERTA scripts/sm22-verifica-excecao-chave.mjs senha n=1 comprimentos=20`) foi sobrescrita por um re-correr meu com o mesmo nome de ficheiro (.g-sm22-indice3.txt); nao existe evidencia em disco dessa linha, e o confisso e a evidencia"
+  },
+  "estado_do_documento": {
+    "linhas_pen": 37,
+    "prioridades": {
+      "A": 13,
+      "M": 13,
+      "B": 11
+    },
+    "linhas_fora_de_forma": 0,
+    "adenda_no_corpo": false,
+    "painelCabecalho": "37",
+    "documentos": {
+      "docs/auditoria-bfr-conecta.md": {
+        "bytes": 1080792,
+        "md5": "babf4e07cca030cc29d1c1c6c591acc2"
+      },
+      "docs/roadmap-master.md": {
+        "bytes": 196266,
+        "md5": "2ecec012b8aae940547f220ccd9d21df"
+      },
+      "docs/roadmap-painel.html": {
+        "bytes": 31630,
+        "md5": "ad1794bb12b008a58386da54f2416b15"
+      }
+    }
+  },
+  "portoes": [
+    {
+      "nome": "prova_da_excecao_verde",
+      "verde": true,
+      "detalhe": "EXCECAO_PROVADA_POR_HASH"
+    },
+    {
+      "nome": "os_quatro_tem_um_casamento_de_15",
+      "verde": true,
+      "detalhe": "4 de 4"
+    },
+    {
+      "nome": "um_solo_valor_em_circulacao",
+      "verde": true,
+      "detalhe": "[\"ea7efb355c1768409148575c08dac721\"]"
+    },
+    {
+      "nome": "regua_do_portao_e_a_regua_da_prova",
+      "verde": true,
+      "detalhe": "os regex divergiram"
+    },
+    {
+      "nome": "a_captura_copiada_e_byte_identica",
+      "verde": true,
+      "detalhe": "copia divergiu do original"
+    },
+    {
+      "nome": "a_captura_nao_tem_veredicto",
+      "verde": true,
+      "detalhe": "entao o portao correu e a tese esta errada"
+    },
+    {
+      "nome": "a_captura_so_tem_o_codigo_do_contador",
+      "verde": true,
+      "detalhe": "1 linhas"
+    },
+    {
+      "nome": "o_verificador_commitado_nao_e_portador",
+      "verde": true,
+      "detalhe": "0 casamentos"
+    },
+    {
+      "nome": "as_exceccoes_estam_no_portao_commitado",
+      "verde": true,
+      "detalhe": "nem as 4 exceccoes estao no indice"
+    },
+    {
+      "nome": "ledger_de_37_no_indice",
+      "verde": true,
+      "detalhe": "37 linhas · painel 37"
+    },
+    {
+      "nome": "prioridades_somam_o_ledger_sem_chave_de_prosa",
+      "verde": true,
+      "detalhe": "{\"A\":13,\"M\":13,\"B\":11} · fora de forma 0"
+    },
+    {
+      "nome": "nada_publicado_nada_aplicado",
+      "verde": true,
+      "detalhe": "1 commit(es) por push"
+    },
+    {
+      "nome": "arvore_limpa_a_frente_do_indice",
+      "verde": true,
+      "detalhe": "0 ficheiros modificados nao commitados"
+    }
+  ],
+  "veredito": "FECHO_MEDIDO",
+  "falhas": []
+}

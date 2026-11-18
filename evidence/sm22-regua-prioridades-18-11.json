@@ -1,0 +1,163 @@
+{
+  "em": "2026-11-18T19:09:52.887Z",
+  "metodo": "leitura do INDICE (git show :docs/roadmap-master.md) + re-corrida de scripts/ah1-cuenta-pen.mjs como filho; zero rede; zero escrita no banco; nenhum segredo impresso",
+  "commit": "18aa544",
+  "ledger_no_indice": {
+    "linhas": 37,
+    "unicas": 37,
+    "maior": 37,
+    "prioridades_A_M_B": {
+      "A": 13,
+      "M": 13,
+      "B": 11
+    },
+    "soma": 37,
+    "fora_de_forma": 0
+  },
+  "leitor_versionado": {
+    "linhas": 37,
+    "A": 13,
+    "M": 13,
+    "B": 11,
+    "soma": 37
+  },
+  "disco_contra_indice": {
+    "md5_disco": "2ecec012b8aae940547f220ccd9d21df",
+    "md5_indice": "2ecec012b8aae940547f220ccd9d21df"
+  },
+  "divergente": [
+    {
+      "linha": "| PEN-33",
+      "pela_regua_crua": "accountLabels.parent` → cai no **fallbac",
+      "pela_regua_do_produtor": "M",
+      "colunas_cruas": 8,
+      "colunas_boas": 5,
+      "pipes_escapados_na_linha": 3
+    }
+  ],
+  "regua_crua_sobre_o_ledger": {
+    "chaves_fora_de_A_M_B": 1,
+    "A": 13,
+    "M": 12,
+    "B": 11
+  },
+  "regua_boa_no_crua_no_fixture": {
+    "escapado_aceito": true,
+    "cruo_rejeitado": true,
+    "crua_parte_o_escapado": true
+  },
+  "anterior_preservado": {
+    "ficheiro": "evidence/sm22-estado-final-18-11-ANTERIOR-a-regua-de-prioridades-partia-pipes-escapados-e-somava-a-chave-de-prosa.json",
+    "prioridades": {
+      "M": 12,
+      "B": 11,
+      "A": 13,
+      "accountLabels.parent` → cai no **fallback do `parent`**, e a :10440 pinta no chip o **2º** elemento do par (`account[1]`), cujo valor no fallback é «Responsável» (1 uso de `account[1]`, 0 de `account[0]`). O rótulo que o app já dá ao papel existe noutro sítio — `profileRoleOptions` :8987, linha :9001, **`Supervisor(a) de ensino`** — e é de lá que a candidata tira o valor. Não é regressão da v120: é chave que nunca entrou no mapa": 1
+    },
+    "soma_das_chaves": 37,
+    "chaves_fora_de_A_M_B": 1,
+    "portao_no_fecho": "prioridades_somam_37"
+  },
+  "fecho_recorrido_com_a_regua_corrigida": {
+    "ficheiro": "evidence/sm22-estado-final-18-11-sm22b.json",
+    "linhas": 37,
+    "prioridades": {
+      "A": 13,
+      "M": 13,
+      "B": 11
+    },
+    "linhas_fora_de_forma": 0,
+    "veredito": "FECHO_MEDIDO",
+    "portoes_verdes": 13,
+    "portoes": 13
+  },
+  "portoes": [
+    {
+      "nome": "uma_sozinha_linha_diverge",
+      "verde": true,
+      "detalhe": "1 linhas divergem"
+    },
+    {
+      "nome": "a_divergente_e_pen33",
+      "verde": true,
+      "detalhe": "[\"| PEN-33\"]"
+    },
+    {
+      "nome": "a_regua_crua_le_prosa_onde_e_a_letra",
+      "verde": true,
+      "detalhe": "{\"linha\":\"| PEN-33\",\"pela_regua_crua\":\"accountLabels.parent` → cai no **fallbac\",\"pela_regua_do_produtor\":\"M\",\"colunas_cruas\":8,\"colunas_boas\":5,\"pipes_escapados_na_linha\":3}"
+    },
+    {
+      "nome": "a_regua_crua_ganha_uma_coluna_por_pipe_escapado",
+      "verde": true,
+      "detalhe": "{\"cruas\":8,\"boas\":5,\"escapados\":3}"
+    },
+    {
+      "nome": "todas_as_linhas_tem_cinco_celulas_sob_a_predica",
+      "verde": true,
+      "detalhe": "37 de 37"
+    },
+    {
+      "nome": "nenhuma_linha_fora_de_forma",
+      "verde": true,
+      "detalhe": ""
+    },
+    {
+      "nome": "a_soma_das_boas_bate_com_as_linhas",
+      "verde": true,
+      "detalhe": "37 contra 37"
+    },
+    {
+      "nome": "bate_com_o_leitor_versionado",
+      "verde": true,
+      "detalhe": "{\"leitor\":{\"linhas\":37,\"A\":13,\"M\":13,\"B\":11,\"soma\":37},\"boas\":{\"A\":13,\"M\":13,\"B\":11},\"rows\":37}"
+    },
+    {
+      "nome": "indice_e_disco_sao_os_mesmos_bytes",
+      "verde": true,
+      "detalhe": "2ecec012b8aae940547f220ccd9d21df vs 2ecec012b8aae940547f220ccd9d21df"
+    },
+    {
+      "nome": "a_regua_boa_aceita_pipe_escapado",
+      "verde": true,
+      "detalhe": "{\"c\":{\"A\":0,\"M\":1,\"B\":0},\"fora\":[],\"soma\":1}"
+    },
+    {
+      "nome": "a_regua_boa_rejeita_pipe_cruo",
+      "verde": true,
+      "detalhe": "{\"c\":{\"A\":0,\"M\":0,\"B\":0},\"fora\":[\"ROTULO-DE-TESTE colunas=6\"],\"soma\":0}"
+    },
+    {
+      "nome": "a_regua_crua_parte_a_linha_escapada",
+      "verde": true,
+      "detalhe": "{\"X\":1}"
+    },
+    {
+      "nome": "o_anterior_tinha_a_chave_de_prosa",
+      "verde": true,
+      "detalhe": "{\"M\":12,\"fora\":[\"accountLabels.parent` → cai no\"],\"valor\":1}"
+    },
+    {
+      "nome": "o_anterior_somava_37_apesar_do_defeito",
+      "verde": true,
+      "detalhe": "37 · A 13 · B 11"
+    },
+    {
+      "nome": "o_defeito_foi_preservado_e_nao_sobrescrito",
+      "verde": true,
+      "detalhe": "o canónico ainda existe ou o ANTERIOR falta"
+    },
+    {
+      "nome": "o_anterior_registrou_o_portao_verde_defeituoso",
+      "verde": true,
+      "detalhe": "[\"prova_da_excecao_verde\",\"os_quatro_tem_um_casamento_de_15\",\"um_solo_valor_em_circulacao\",\"regua_do_portao_e_a_regua_da_prova\",\"a_captura_copiada_e_byte_identica\",\"a_captura_nao_tem_veredicto\",\"a_captura_so_tem_o_codigo_do_contador\",\"o_verificador_commitado_nao_e_portador\",\"as_exceccoes_estam_no_portao_commitado\",\"ledger_de_37_no_indice\",\"prioridades_somam_37\",\"nada_publicado_nada_aplicado\",\"arvore_limpa_a_frente_do_indice\"]"
+    },
+    {
+      "nome": "o_fecho_recorrido_com_a_regua_do_produtor_so_tem_A_M_B",
+      "verde": true,
+      "detalhe": "{\"prio\":{\"A\":13,\"M\":13,\"B\":11},\"fora\":0,\"veredito\":\"FECHO_MEDIDO\"}"
+    }
+  ],
+  "veredito": "REGUA_CORRIGIDA_E_PROVADA",
+  "falhas": []
+}
