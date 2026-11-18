@@ -1,0 +1,68 @@
+{
+  "ciclo": "V133-PREFLIGHT",
+  "em": "2026-11-18T05:20:50.402Z",
+  "escrita": 0,
+  "ddl": 0,
+  "mint": 0,
+  "deploy": 0,
+  "origem": "C:/Users/pcmac/Documents/Qoder/2026-10-13/28077d9a/bfr-conecta/evidence/v122-pos-deploy-http-15-11.json",
+  "url": "https://bfr-conecta.turmaroboticabfr.workers.dev",
+  "portoes": {
+    "A1_shell_no_ar_e_a_v123_base": {
+      "passou": true,
+      "medido": {
+        "http": 200,
+        "md5": "d418e7fc917f1fbb1437054b7b531f9b",
+        "bytes": 3489725
+      },
+      "esperado": {
+        "md5": "d418e7fc917f1fbb1437054b7b531f9b",
+        "bytes": 3489725
+      }
+    },
+    "A2_sw_no_ar_e_a_v123": {
+      "passou": true,
+      "medido": {
+        "md5": "7ff5afde0342b6b4d85cd2f9d6fd1b0f",
+        "bytes": 5064,
+        "rotulo": "bfr-conecta-v123"
+      },
+      "esperado": {
+        "md5": "7ff5afde0342b6b4d85cd2f9d6fd1b0f",
+        "bytes": 5064,
+        "rotulo": "bfr-conecta-v123"
+      }
+    },
+    "A3_csp_da_shell_permite_supabase": {
+      "passou": true,
+      "csp_presente": "default-src 'self'; base-uri 'self'; object-src 'none'; script-src 'self' 'unsafe-inline' https://bfr-conecta.turmarobot..."
+    },
+    "A4_rota_inexistente_da_404": {
+      "passou": true,
+      "http": 404,
+      "bytes": 9,
+      "md5": "9e076f5885f5cc16a4b5aeb8de4adff5"
+    },
+    "A4b_firebase_messaging_sw_ainda_404": {
+      "passou": true,
+      "http": 404
+    },
+    "A5_12_assets_no_ar_batem_com_o_esperado_v123": {
+      "passou": true,
+      "total": 12,
+      "desvios": []
+    },
+    "A6_versao_no_servidor_e_a_v123": {
+      "passou": true,
+      "lista_mais_nova": "299eadd0-2b57-4149-a9ab-bb2f253f0649",
+      "status": "299eadd0-2b57-4149-a9ab-bb2f253f0649",
+      "trafego": 100,
+      "em": "2026-11-15T03:56:09.809368Z"
+    }
+  },
+  "total": {
+    "ok": 7,
+    "falha": 0
+  },
+  "veredito": "V133_PREFLIGHT_OK"
+}

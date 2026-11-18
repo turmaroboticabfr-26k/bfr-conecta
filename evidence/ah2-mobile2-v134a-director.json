@@ -1,0 +1,695 @@
+{
+  "ciclo": "AH-7b-MOBILE",
+  "em": "2026-11-18T06:57:03.912Z",
+  "papel": "director",
+  "larguras": [
+    390
+  ],
+  "altura": 720,
+  "url": "https://bfr-conecta.turmaroboticabfr.workers.dev/",
+  "md5_shell": "b272fd4f3a737c518e888250ab8167f1",
+  "contas": {
+    "id": "b5be4883"
+  },
+  "markup": "toque em #bfrMobileBottomNav button[data-bfr-mobile-route] e #bfrMobileDrawer [data-bfr-drawer-route]; a barra do desktop está display:none abaixo de 800px por decisão do app (bfr-responsive-presentation.js:233)",
+  "declaradas": [
+    "inicio",
+    "direcao",
+    "horarios",
+    "comunicados",
+    "coordenacao",
+    "escola-historia",
+    "notificacoes",
+    "conteudos",
+    "comunicacao",
+    "chat-interno",
+    "coordenacao-chat",
+    "jogos-escolares",
+    "fotos",
+    "aee",
+    "resultados-aprendizagem"
+  ],
+  "bandas": {
+    "390": {
+      "width": 390,
+      "ms_ready": 490,
+      "erro_boot": null,
+      "censo": {
+        "presentation": "mobile",
+        "body_mobile": true,
+        "barra_existe": true,
+        "barra": [
+          {
+            "rot": "🏠Hoje",
+            "route": "director:overview",
+            "w": 72,
+            "h": 61,
+            "y": 654,
+            "x": 10
+          },
+          {
+            "rot": "📈Frequência",
+            "route": "director:pedagogical",
+            "w": 72,
+            "h": 61,
+            "y": 654,
+            "x": 84
+          },
+          {
+            "rot": "🎓Alunos",
+            "route": "director:students",
+            "w": 72,
+            "h": 61,
+            "y": 654,
+            "x": 159
+          },
+          {
+            "rot": "💬Comunicação",
+            "route": "director:communication",
+            "w": 72,
+            "h": 61,
+            "y": 654,
+            "x": 233
+          },
+          {
+            "rot": "⋯Mais",
+            "route": "more",
+            "w": 72,
+            "h": 61,
+            "y": 654,
+            "x": 308
+          }
+        ],
+        "gaveta_existe": true,
+        "gaveta_aberta": false,
+        "gaveta": [
+          {
+            "rot": "🏠Início",
+            "route": "inicio",
+            "w": 311,
+            "h": 48,
+            "y": 310,
+            "x": -334
+          },
+          {
+            "rot": "📷Fotos dos alun",
+            "route": "fotos",
+            "w": 311,
+            "h": 48,
+            "y": 362,
+            "x": -334
+          },
+          {
+            "rot": "💬Chat interno",
+            "route": "chat-interno",
+            "w": 311,
+            "h": 48,
+            "y": 414,
+            "x": -334
+          },
+          {
+            "rot": "🔔Notificações",
+            "route": "notificacoes",
+            "w": 311,
+            "h": 48,
+            "y": 466,
+            "x": -334
+          },
+          {
+            "rot": "📚Conteúdos",
+            "route": "conteudos",
+            "w": 311,
+            "h": 48,
+            "y": 518,
+            "x": -334
+          },
+          {
+            "rot": "🧾Relatórios",
+            "route": "relatorios",
+            "w": 311,
+            "h": 48,
+            "y": 570,
+            "x": -334
+          },
+          {
+            "rot": "🏆Jogos Escolare",
+            "route": "jogos-escolares",
+            "w": 311,
+            "h": 48,
+            "y": 622,
+            "x": -334
+          },
+          {
+            "rot": "📢Comunicação",
+            "route": "comunicacao",
+            "w": 311,
+            "h": 48,
+            "y": 674,
+            "x": -334
+          },
+          {
+            "rot": "📊Resultados e a",
+            "route": "resultados-aprendizagem",
+            "w": 311,
+            "h": 48,
+            "y": 726,
+            "x": -334
+          },
+          {
+            "rot": "◫Horários",
+            "route": "horarios",
+            "w": 311,
+            "h": 48,
+            "y": 778,
+            "x": -334
+          },
+          {
+            "rot": "▤Avisos",
+            "route": "comunicados",
+            "w": 311,
+            "h": 48,
+            "y": 830,
+            "x": -334
+          },
+          {
+            "rot": "◈Coordenação esc",
+            "route": "coordenacao",
+            "w": 311,
+            "h": 48,
+            "y": 882,
+            "x": -334
+          },
+          {
+            "rot": "🏫Direção escola",
+            "route": "direcao",
+            "w": 311,
+            "h": 48,
+            "y": 934,
+            "x": -334
+          },
+          {
+            "rot": "🧩AEE",
+            "route": "aee",
+            "w": 311,
+            "h": 48,
+            "y": 986,
+            "x": -334
+          }
+        ],
+        "hamb": true,
+        "sidebar_caixa": false,
+        "vw": 390,
+        "vh": 720
+      },
+      "modal": {
+        "id": "preferredNameModal",
+        "texto": "× PRIMEIRO ACESSO Como você quer ser chamado? Esse nome aparece apenas"
+      },
+      "modal_fechou_a_toque": true,
+      "gaveta_aberta_a_toque": true,
+      "dialogos": [
+        {
+          "rota": "fotos",
+          "tapa_barra": true,
+          "tapadas": 5,
+          "total": 5,
+          "culpado": "div#bfrStudentPhotoManager.bfr-spm-backdrop",
+          "z": "12000",
+          "caixa": {
+            "w": 390,
+            "h": 720
+          },
+          "controles": 45,
+          "saida": {
+            "rot": "Fechar",
+            "aria": "Fechar cadastro de fotos",
+            "el": "button.bfr-spm-close",
+            "x": 336,
+            "y": 40,
+            "w": 60,
+            "h": 32,
+            "alvo_miudo": true
+          },
+          "fechou_a_toque": true
+        }
+      ],
+      "seccoes": {
+        "director:overview": {
+          "painel": {
+            "id": "directorView",
+            "c": 340
+          },
+          "ms": 1841,
+          "assentou": true,
+          "controles": 23,
+          "tap": 0,
+          "fonte": 0,
+          "estouro_h": false,
+          "largura": 390,
+          "seccao_ativa": "direcao",
+          "view_apos": "director",
+          "toque": {
+            "x": 46,
+            "y": 685,
+            "w": 72,
+            "h": 61
+          },
+          "antes": "inicio",
+          "via": "barra"
+        },
+        "director:pedagogical": {
+          "painel": {
+            "id": "directorView",
+            "c": 12461
+          },
+          "ms": 3748,
+          "assentou": true,
+          "controles": 98,
+          "tap": 0,
+          "fonte": 12,
+          "estouro_h": false,
+          "largura": 390,
+          "seccao_ativa": "direcao",
+          "view_apos": "director",
+          "toque": {
+            "x": 121,
+            "y": 685,
+            "w": 72,
+            "h": 61
+          },
+          "antes": "direcao",
+          "via": "barra"
+        },
+        "director:students": {
+          "painel": {
+            "id": "directorView",
+            "c": 13432
+          },
+          "ms": 1954,
+          "assentou": true,
+          "controles": 145,
+          "tap": 0,
+          "fonte": 12,
+          "estouro_h": false,
+          "largura": 390,
+          "seccao_ativa": "direcao",
+          "view_apos": "director",
+          "toque": {
+            "x": 195,
+            "y": 685,
+            "w": 72,
+            "h": 61
+          },
+          "antes": "direcao",
+          "via": "barra"
+        },
+        "director:communication": {
+          "painel": {
+            "id": "bfrCommunicationView",
+            "c": 1811
+          },
+          "ms": 1834,
+          "assentou": true,
+          "controles": 60,
+          "tap": 48,
+          "fonte": 1,
+          "estouro_h": false,
+          "largura": 390,
+          "seccao_ativa": "comunicacao",
+          "view_apos": "director",
+          "toque": {
+            "x": 269,
+            "y": 685,
+            "w": 72,
+            "h": 61
+          },
+          "antes": "direcao",
+          "via": "barra"
+        },
+        "inicio": {
+          "painel": {
+            "id": "directorView",
+            "c": 13432
+          },
+          "ms": 1861,
+          "assentou": true,
+          "controles": 145,
+          "tap": 0,
+          "fonte": 12,
+          "estouro_h": false,
+          "largura": 390,
+          "seccao_ativa": "inicio",
+          "view_apos": "director",
+          "toque": {
+            "x": 172,
+            "y": 334,
+            "w": 311,
+            "h": 48
+          },
+          "antes": "comunicacao",
+          "via": "gaveta"
+        },
+        "fotos": {
+          "painel": {
+            "id": "directorView",
+            "c": 13432
+          },
+          "ms": 1900,
+          "assentou": true,
+          "controles": 145,
+          "tap": 0,
+          "fonte": 12,
+          "estouro_h": false,
+          "largura": 390,
+          "seccao_ativa": "fotos",
+          "view_apos": "director",
+          "toque": {
+            "x": 172,
+            "y": 360,
+            "w": 311,
+            "h": 48
+          },
+          "antes": "inicio",
+          "via": "gaveta"
+        },
+        "chat-interno": {
+          "painel": {
+            "id": "internalChatView",
+            "c": 279
+          },
+          "ms": 1879,
+          "assentou": true,
+          "controles": 4,
+          "tap": 0,
+          "fonte": 0,
+          "estouro_h": false,
+          "largura": 390,
+          "seccao_ativa": "chat-interno",
+          "view_apos": "director",
+          "toque": {
+            "x": 172,
+            "y": 360,
+            "w": 311,
+            "h": 48
+          },
+          "antes": "inicio",
+          "via": "gaveta"
+        },
+        "notificacoes": {
+          "painel": {
+            "id": "bfrNotificationsView",
+            "c": 400
+          },
+          "ms": 1843,
+          "assentou": true,
+          "controles": 3,
+          "tap": 0,
+          "fonte": 0,
+          "estouro_h": false,
+          "largura": 390,
+          "seccao_ativa": "notificacoes",
+          "view_apos": "director",
+          "toque": {
+            "x": 172,
+            "y": 360,
+            "w": 311,
+            "h": 48
+          },
+          "antes": "chat-interno",
+          "via": "gaveta"
+        },
+        "conteudos": {
+          "painel": {
+            "id": "bfrContentHubView",
+            "c": 1021
+          },
+          "ms": 1846,
+          "assentou": true,
+          "controles": 14,
+          "tap": 0,
+          "fonte": 3,
+          "estouro_h": false,
+          "largura": 390,
+          "seccao_ativa": "conteudos",
+          "view_apos": "director",
+          "toque": {
+            "x": 172,
+            "y": 360,
+            "w": 311,
+            "h": 48
+          },
+          "antes": "notificacoes",
+          "via": "gaveta"
+        },
+        "relatorios": {
+          "painel": {
+            "id": "bfrReportsView",
+            "c": 852
+          },
+          "ms": 2477,
+          "assentou": true,
+          "controles": 4,
+          "tap": 0,
+          "fonte": 1,
+          "estouro_h": false,
+          "largura": 390,
+          "seccao_ativa": "inicio",
+          "view_apos": "director",
+          "toque": {
+            "x": 172,
+            "y": 360,
+            "w": 311,
+            "h": 48
+          },
+          "antes": "conteudos",
+          "via": "gaveta"
+        },
+        "jogos-escolares": {
+          "painel": {
+            "id": "schoolGamesView",
+            "c": 1093
+          },
+          "ms": 1835,
+          "assentou": true,
+          "controles": 13,
+          "tap": 0,
+          "fonte": 0,
+          "estouro_h": false,
+          "largura": 390,
+          "seccao_ativa": "jogos-escolares",
+          "view_apos": "director",
+          "toque": {
+            "x": 172,
+            "y": 360,
+            "w": 311,
+            "h": 48
+          },
+          "antes": "inicio",
+          "via": "gaveta"
+        },
+        "comunicacao": {
+          "painel": {
+            "id": "bfrCommunicationView",
+            "c": 1811
+          },
+          "ms": 1832,
+          "assentou": true,
+          "controles": 60,
+          "tap": 48,
+          "fonte": 1,
+          "estouro_h": false,
+          "largura": 390,
+          "seccao_ativa": "comunicacao",
+          "view_apos": "director",
+          "toque": {
+            "x": 172,
+            "y": 360,
+            "w": 311,
+            "h": 48
+          },
+          "antes": "jogos-escolares",
+          "via": "gaveta"
+        },
+        "resultados-aprendizagem": {
+          "painel": {
+            "id": "resultsLearningView",
+            "c": 1786
+          },
+          "ms": 2446,
+          "assentou": true,
+          "controles": 18,
+          "tap": 0,
+          "fonte": 0,
+          "estouro_h": false,
+          "largura": 390,
+          "seccao_ativa": "resultados-aprendizagem",
+          "view_apos": "director",
+          "toque": {
+            "x": 172,
+            "y": 360,
+            "w": 311,
+            "h": 48
+          },
+          "antes": "comunicacao",
+          "via": "gaveta"
+        },
+        "horarios": {
+          "painel": {
+            "id": "directorView",
+            "c": 14075
+          },
+          "ms": 1845,
+          "assentou": true,
+          "controles": 148,
+          "tap": 0,
+          "fonte": 12,
+          "estouro_h": false,
+          "largura": 390,
+          "seccao_ativa": "horarios",
+          "view_apos": "director",
+          "toque": {
+            "x": 172,
+            "y": 360,
+            "w": 311,
+            "h": 48
+          },
+          "antes": "resultados-aprendizagem",
+          "via": "gaveta"
+        },
+        "comunicados": {
+          "painel": {
+            "id": "directorView",
+            "c": 13432
+          },
+          "ms": 1855,
+          "assentou": true,
+          "controles": 145,
+          "tap": 0,
+          "fonte": 12,
+          "estouro_h": false,
+          "largura": 390,
+          "seccao_ativa": "comunicados",
+          "view_apos": "director",
+          "toque": {
+            "x": 172,
+            "y": 360,
+            "w": 311,
+            "h": 48
+          },
+          "antes": "horarios",
+          "via": "gaveta"
+        },
+        "coordenacao": {
+          "painel": {
+            "id": "directorView",
+            "c": 13432
+          },
+          "ms": 1868,
+          "assentou": true,
+          "controles": 145,
+          "tap": 0,
+          "fonte": 12,
+          "estouro_h": false,
+          "largura": 390,
+          "seccao_ativa": "coordenacao",
+          "view_apos": "director",
+          "toque": {
+            "x": 172,
+            "y": 360,
+            "w": 311,
+            "h": 48
+          },
+          "antes": "comunicados",
+          "via": "gaveta"
+        },
+        "direcao": {
+          "painel": {
+            "id": "directorView",
+            "c": 13432
+          },
+          "ms": 2450,
+          "assentou": true,
+          "controles": 145,
+          "tap": 0,
+          "fonte": 12,
+          "estouro_h": false,
+          "largura": 390,
+          "seccao_ativa": "direcao",
+          "view_apos": "director",
+          "toque": {
+            "x": 172,
+            "y": 360,
+            "w": 311,
+            "h": 48
+          },
+          "antes": "coordenacao",
+          "via": "gaveta"
+        },
+        "aee": {
+          "painel": {
+            "id": "aeeView",
+            "c": 8745
+          },
+          "ms": 3067,
+          "assentou": true,
+          "controles": 109,
+          "tap": 0,
+          "fonte": 0,
+          "estouro_h": false,
+          "largura": 390,
+          "seccao_ativa": "aee",
+          "view_apos": "aee",
+          "toque": {
+            "x": 172,
+            "y": 360,
+            "w": 311,
+            "h": 48
+          },
+          "antes": "direcao",
+          "via": "gaveta"
+        }
+      },
+      "abertas": 18,
+      "vazias": [],
+      "nao_assentaram": [],
+      "estouro": [],
+      "tap_miudo": 96,
+      "fonte_miuda": 102,
+      "declaradas_sem_rota": [
+        "escola-historia",
+        "coordenacao-chat"
+      ],
+      "rotas_fora_do_mapa": [
+        "director:overview",
+        "director:pedagogical",
+        "director:students",
+        "director:communication",
+        "relatorios"
+      ],
+      "inalcancaveis": [],
+      "sem_efeito": [
+        "director:pedagogical:direcao",
+        "director:students:direcao"
+      ],
+      "erros": [],
+      "diagnostico_gaveta": [],
+      "dialogos_sem_saida": [],
+      "dialogos_miudos": [
+        "fotos:60x32"
+      ]
+    }
+  },
+  "portoes": 16,
+  "falhas": [
+    "390px: 0 toques que não mudaram a seção ativa | dado=[\"director:pedagogical:direcao\",\"director:students:direcao\"] | esperado=[]",
+    "390px: 0 seções do papel sem rota tocável | dado=[\"escola-historia\",\"coordenacao-chat\"] | esperado=[]",
+    "390px: 0 links de navegação fora do mapa do papel | dado=[\"director:overview\",\"director:pedagogical\",\"director:students\",\"director:communication\",\"relatorios\"] | esperado=[]"
+  ],
+  "medido": {
+    "larguras": 1,
+    "rotas_tocadas": 18,
+    "incompleto": 0
+  },
+  "veredito": "AH7b_MOBILE_COM_DEFEITOS",
+  "diagnostico": "a barra de baixo tem 5 rotas e a gaveta 14; toque real abriu 18 painéis nas 1 larguras; alvos <44px na barra: 390px=0"
+}

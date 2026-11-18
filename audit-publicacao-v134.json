@@ -1,0 +1,467 @@
+{
+  "version": "v134",
+  "data": "2026-11-18",
+  "ok_literal": "Corrigir com v134",
+  "nota_do_ok": "opcao selecionada na pergunta de remediacao; a propria opcao declarava «gerador/preflight/deploy/pos-deploy novos e re-varredura» e «precisa de OK literal para o novo deploy e push». Nao cobre DDL, escrita no banco, mint de contas nem outros deploys.",
+  "escopo_do_ok": "somente este deploy do Worker bfr-conecta (shell v134) e o git push deste fecho",
+  "tarefa": "retirar da shell publicada o bloco <style id=\"bfr-mobile-nav-sm8-fix\"> que violava o contrato mobile da app, conservando o MÓDULO 2 municipal e o fix JS da gaveta",
+  "deploy": {
+    "worker": "bfr-conecta",
+    "conta": "turmaroboticabfr@gmail.com",
+    "version_id": "8600fc3d-022f-4c4a-a179-2728f6fca916",
+    "deployment_id": "84599683-08c5-46d1-9109-860e52f35e81",
+    "version_anterior_v133": "de82cec5-6422-47ce-b34b-a499fd2a2a17",
+    "version_anterior2_v123": "299eadd0-2b57-4149-a9ab-bb2f253f0649",
+    "deployment_created": "2026-11-18T06:24:00.01873Z",
+    "percentual_trafego_novo": 100,
+    "wrangler": "4.154.0 (fixada: 4.156+ quebra o upload de assets com o erro 100312)",
+    "cwd": "worker-deploy-v134-sidebar",
+    "base_do_bundle": "worker-deploy-v123-pdfs (a base de embeds nunca mudou; o ar estava na v133 de82cec5)",
+    "url": "https://bfr-conecta.turmaroboticabfr.workers.dev",
+    "comando_da_url": "derivado de evidence/v133-pos-deploy-18-11.json -> url, nunca dactilografado",
+    "fonte_dos_numeros": "evidence/v134-deployments-list/status-depois-18-11.json (redirecionamento de `wrangler deployments list/status --json`) e evidence/v134-deploy-stdout-18-11.txt",
+    "estado_antes_deste_deploy": {
+      "versao": "de82cec5-6422-47ce-b34b-a499fd2a2a17",
+      "percentual": 100,
+      "em": "2026-11-18T05:21:18.754477Z"
+    }
+  },
+  "correcao": {
+    "o_que_a_v133_quebrou": "o bloco sm8-fix pedia `#appShell.ready .sidebar{display:flex!important}` dentro da shell; o asset bfr-responsive-presentation.js pedia `#appShell.ready>.sidebar{display:none!important}` (linha 236, tambem 364); as duas regras tem a MESMA especificidade (1,2,0) e as duas sao !important, por isso o empate decide-se pela ordem do documento — o estilo do asset e anexado ao <head> em runtime (bfr-responsive-presentation.js:382 `document.head.append(style)`) e o bloco da shell vive no <body> (a tag de abertura comeca no caractere 3450060 / byte 3467402 da shell v133, e o </head> fecha no caractere 372399 / byte 373699): o bloco fica depois e ganhou, ressuscitando a barra do desktop em <=800 px contra a decisao da propria app. As quatro posicoes sao medidas por este script com `indexOf` nas duas unidades (esta shell tem 3548904 bytes mas 3530845 caracteres, por isso a unidade e sempre nomeada)",
+    "prova_do_empate": "A/B medido no mesmo instrumento e na mesma largura, sem mais nenhum byte alterado na shell: os true da v133 estao contados em evidence/v133-tabela-varredura-18-11.json e a corrida da v134 em evidence/v134-tabela-varredura-18-11.json; o portao G15 deste diario e que diz se a promessa se cumpriu, com o valor medido copiado do consolidado",
+    "posicao_medida_da_ofensora": {
+      "bloco": {
+        "em_caracteres": 3450060,
+        "em_bytes": 3467402
+      },
+      "head_fecha": {
+        "em_caracteres": 372399,
+        "em_bytes": 373699
+      },
+      "nota": "indexOf corrido por este script sobre a candidata v133; -1 diria «o marcador nao esta la», por isso o portao G13f exige as duas presencas e a ordem nas duas unidades",
+      "fixture_negativo_shell_v134": {
+        "bloco": {
+          "em_caracteres": -1,
+          "em_bytes": -1
+        },
+        "head": {
+          "em_caracteres": 372399,
+          "em_bytes": 373699
+        },
+        "predicado_daria_vermelho": true
+      }
+    },
+    "porque_a_v133_o_fazia": "resposta a uma sonda errada: o sm7 media [data-mobile-more]/#mobileMoreMenu, que e markup do desktop; a barra do telefone e #bfrMobileBottomNav/[data-bfr-mobile-route] com o «Mais» dentro da gaveta #bfrMobileDrawer — a armadilha ja documentada no cabecalho do instrumento ah2-mobile2",
+    "o_que_a_v134_faz": "corte de um unico bloco <style> por marcador e fecho </style>: 2058 B removidos (9b475d7ddad749a2423caf337784bf11 (2058 B)), 9 regras, 0 alteracao em qualquer outro byte (C6/C7 do gerador da candidata)",
+    "conservado": {
+      "safe_area_fix": "bfr-mobile-nav-safe-area-fix permanece (1 ocorrencia)",
+      "gaveta_js": "fecharGaveta (2) — o reparo do is-open/hidden",
+      "municipal": "data-bfr-municipal-nav (3), bfrMunicipalView (50), mun-tab (8)",
+      "sw": "sw-v4.js?v=45 (3) e a etiqueta de cache bfr-conecta-v134"
+    },
+    "alcance_medido": "shell b272fd4f3a737c518e888250ab8167f1 (3546846 B); SW 36ef6aeba9954ec3aa4a11230bf811dd (5064 B) com CACHE bfr-conecta-v134; worker f0de99f6ab5584d10e3b4484663f5090 (3611114 B); 12 assets e wrangler.toml byte-identicos a base v123",
+    "o_que_NAO_foi_alterado": "a base worker-deploy-v123-pdfs esta intacta no disco (7044c8c02368fbc2a99edc1b366e2326 (3553006 B)); CSP, handler do 404, 12 assets e wrangler.toml intocados; 0 DDL, 0 escrita no banco, 0 mint, 0 Edge Function"
+  },
+  "md5": {
+    "worker-deploy-v134-sidebar/worker.mjs_publicado": "f0de99f6ab5584d10e3b4484663f5090 (3611114 B)",
+    "worker-deploy-v123-pdfs/worker.mjs_base": "7044c8c02368fbc2a99edc1b366e2326 (3553006 B)",
+    "shell_antes_v133": "2afd253b0bafa0eea956a74fde5f92cc (3548904 B)",
+    "shell_depois_v134": "b272fd4f3a737c518e888250ab8167f1 (3546846 B)",
+    "delta_shell_bytes": -2058,
+    "delta_worker_bytes_vs_base_v123": 58108,
+    "sw_antes_v133": "4467196508a6defbd799d1d6cbe96616 (5064 B), CACHE bfr-conecta-v133",
+    "sw_depois_v134": "36ef6aeba9954ec3aa4a11230bf811dd (5064 B), CACHE bfr-conecta-v134",
+    "assets": "12 ficheiros byte-identicos a base v123 (nao reenviados: «No updated asset files to upload»)",
+    "emissao": "md5 e bytes recalculados do disco por este script; nada neste bloco foi copiado de um log"
+  },
+  "medicao": {
+    "gerador_do_bundle": {
+      "em": "2026-11-18T06:19:25.878Z",
+      "veredito": "V134_BUNDLE_OK 23/0",
+      "total": "23/0",
+      "dir": "worker-deploy-v134-sidebar"
+    },
+    "preflight_no_ar": {
+      "em": "2026-11-18T06:22:58.659Z",
+      "veredito": "V134_PREFLIGHT_OK",
+      "total": "14/0",
+      "url": "https://bfr-conecta.turmaroboticabfr.workers.dev",
+      "prova_de_que_a_ofensora_estava_no_ar": 1,
+      "shell_antes_no_ar": {
+        "bytes": 3548904,
+        "md5": "2afd253b0bafa0eea956a74fde5f92cc"
+      },
+      "texto_antes_igual_a_candidata_v133_versionada": true
+    },
+    "stdout_do_deploy": {
+      "version_id": "8600fc3d-022f-4c4a-a179-2728f6fca916",
+      "bytes_no_stdout": "3517.38"
+    },
+    "pos_deploy": {
+      "em": "2026-11-18T06:25:50.866Z",
+      "veredito": "V134_POS_DEPLOY_OK",
+      "total": "13/0",
+      "rotulo_sw_no_ar": "bfr-conecta-v134",
+      "ocorrencias_do_bloco_ofensor_na_shell_servida": 0,
+      "versoes_na_cadeia": {
+        "v134": "8600fc3d-022f-4c4a-a179-2728f6fca916",
+        "v133": "de82cec5-6422-47ce-b34b-a499fd2a2a17",
+        "v123": "299eadd0-2b57-4149-a9ab-bb2f253f0649"
+      }
+    },
+    "varredura_mobile_390": {
+      "em": "2026-11-18T07:04:19.165Z",
+      "veredito": "AH7b_V134_PROMESSA_CUMPRIDA_COM_DEFEITOS_PRE_EXISTENTES",
+      "promessa": {
+        "esperado": "sidebar_caixa=false na banda 390 de cada papel medido (nem true, nem oco)",
+        "cumprida": true,
+        "papeis_que_ainda_mostram_a_sidebar": [],
+        "papeis_sem_valor_medido": []
+      },
+      "totais": {
+        "papeis": 15,
+        "coerentes": 1,
+        "faltas": 2,
+        "vermelhos": 12,
+        "bandas_medidas": 13,
+        "da_2a_tentativa": 0,
+        "sidebar_caixa_true": 0,
+        "sidebar_caixa_false": 13,
+        "sidebar_caixa_indefinida": 0,
+        "gaveta_aberta_a_toque": 13,
+        "bloqueados": 2
+      },
+      "shells_medidas": [
+        "b272fd4f3a737c518e888250ab8167f1"
+      ]
+    },
+    "tabela_da_varredura": {
+      "em": "2026-11-18T07:05:52.612Z",
+      "veredito": "V134_CONTRATO_MOBILE_RESTAURADO",
+      "contagens": {
+        "papeis_na_lista": 15,
+        "com_banda_390": 13,
+        "sem_banda_390": 2,
+        "sem_artefacto": 0,
+        "sidebar_caixa_false": 13,
+        "sidebar_caixa_true": 0,
+        "contrato_mobile_restaurado": 13,
+        "gaveta_aberta_a_toque": 13
+      },
+      "novas": 0,
+      "preexistentes": 29,
+      "papeis_sem_banda_390": [
+        "monitor:sem_banda",
+        "pending:sem_banda"
+      ]
+    }
+  },
+  "portoes": {
+    "gerador": "23/0 - evidence/v134-gera-bundle-18-11.json (V134_BUNDLE_OK 23/0)",
+    "preflight": "14/0 - evidence/v134-preflight-18-11.json (V134_PREFLIGHT_OK)",
+    "pos_deploy": "13/0 - evidence/v134-pos-deploy-18-11.json (V134_POS_DEPLOY_OK)",
+    "varredura_mobile": "1/15 coerentes, 2 faltas, 12 vermelhos - AH7b_V134_PROMESSA_CUMPRIDA_COM_DEFEITOS_PRE_EXISTENTES",
+    "deste_diario": "27/0",
+    "total_da_cadeia": 51,
+    "vermelhos": 12,
+    "falhas_deste_diario": {
+      "G1_url_vem_do_diario_da_v133": {
+        "valor": "https://bfr-conecta.turmaroboticabfr.workers.dev",
+        "esperado": "https://bfr-conecta.turmaroboticabfr.workers.dev",
+        "passou": true
+      },
+      "G2_a_versao_no_ar_e_a_deste_diario": {
+        "valor": "8600fc3d-022f-4c4a-a179-2728f6fca916",
+        "esperado": "8600fc3d-022f-4c4a-a179-2728f6fca916",
+        "passou": true
+      },
+      "G2b_a_lista_do_servidor_concorda_com_o_status": {
+        "valor": "8600fc3d-022f-4c4a-a179-2728f6fca916",
+        "esperado": "8600fc3d-022f-4c4a-a179-2728f6fca916",
+        "passou": true
+      },
+      "G3_a_versao_anterior_e_a_v133_e_a_precedente_a_v123": {
+        "valor": {
+          "anterior": "de82cec5-6422-47ce-b34b-a499fd2a2a17",
+          "anterior2": "299eadd0-2b57-4149-a9ab-bb2f253f0649",
+          "antes_deste_deploy": "de82cec5-6422-47ce-b34b-a499fd2a2a17"
+        },
+        "esperado": {
+          "anterior": "de82cec5-6422-47ce-b34b-a499fd2a2a17",
+          "anterior2": "299eadd0-2b57-4149-a9ab-bb2f253f0649",
+          "antes_deste_deploy": "de82cec5-6422-47ce-b34b-a499fd2a2a17"
+        },
+        "passou": true
+      },
+      "G4_o_que_foi_publicado_e_o_bundle_gateado": {
+        "valor": {
+          "md5": "f0de99f6ab5584d10e3b4484663f5090",
+          "bytes": 3611114
+        },
+        "esperado": {
+          "md5": "f0de99f6ab5584d10e3b4484663f5090",
+          "bytes": 3611114
+        },
+        "passou": true
+      },
+      "G5_base_v123_inalterada_no_disco": {
+        "valor": {
+          "md5": "7044c8c02368fbc2a99edc1b366e2326",
+          "bytes": 3553006
+        },
+        "esperado": {
+          "md5": "7044c8c02368fbc2a99edc1b366e2326",
+          "bytes": 3553006
+        },
+        "passou": true
+      },
+      "G6_shell_servida_no_ar_igual_a_candidata_v134": {
+        "valor": {
+          "md5": "b272fd4f3a737c518e888250ab8167f1",
+          "bytes": 3546846
+        },
+        "esperado": {
+          "md5": "b272fd4f3a737c518e888250ab8167f1",
+          "bytes": 3546846
+        },
+        "passou": true
+      },
+      "G7_sw_servido_no_ar_igual_ao_embed": {
+        "valor": {
+          "md5": "36ef6aeba9954ec3aa4a11230bf811dd",
+          "rotulo": "bfr-conecta-v134"
+        },
+        "esperado": {
+          "md5": "36ef6aeba9954ec3aa4a11230bf811dd",
+          "rotulo": "bfr-conecta-v134"
+        },
+        "passou": true
+      },
+      "G8_delta_da_shell_igual_ao_bloco_removido": {
+        "valor": -2058,
+        "esperado": -2058,
+        "passou": true
+      },
+      "G9_csp_intacta_com_supabase_no_ar": {
+        "valor": true,
+        "esperado": true,
+        "passou": true
+      },
+      "G10_os_12_assets_nao_regridiram": {
+        "valor": {
+          "total": 12,
+          "desvios": 0
+        },
+        "esperado": {
+          "total": 12,
+          "desvios": 0
+        },
+        "passou": true
+      },
+      "G11_handler_do_404_permanece_no_ar": {
+        "valor": 404,
+        "esperado": 404,
+        "passou": true
+      },
+      "G12_preflight_verde": {
+        "valor": "V134_PREFLIGHT_OK 14/0",
+        "esperado": "V134_PREFLIGHT_OK 14/0",
+        "passou": true
+      },
+      "G13_pos_deploy_verde": {
+        "valor": "V134_POS_DEPLOY_OK 13/0",
+        "esperado": "V134_POS_DEPLOY_OK 13/0",
+        "passou": true
+      },
+      "G13b_o_bloco_ofensor_nao_esta_nos_bytes_servidos": {
+        "valor": {
+          "ocorrencias": 0,
+          "passou": true
+        },
+        "esperado": {
+          "ocorrencias": 0,
+          "passou": true
+        },
+        "passou": true
+      },
+      "G13c_a_regra_de_esconder_a_sidebar_esta_no_asset_servido": {
+        "valor": true,
+        "esperado": true,
+        "passou": true
+      },
+      "G13d_a_ofensora_estava_na_shell_servida_antes": {
+        "valor": 1,
+        "esperado": 1,
+        "passou": true
+      },
+      "G13e_o_texto_medido_pelo_preflight_e_a_candidata_v133_versionada": {
+        "valor": {
+          "igual": true,
+          "md5": "2afd253b0bafa0eea956a74fde5f92cc"
+        },
+        "esperado": {
+          "igual": true,
+          "md5": "2afd253b0bafa0eea956a74fde5f92cc"
+        },
+        "passou": true
+      },
+      "G13f_a_ofensora_fica_depois_do_head_nas_duas_unidades": {
+        "valor": {
+          "bloco_presente": true,
+          "head_presente": true,
+          "depois_do_head_em_caracteres": true,
+          "depois_do_head_em_bytes": true
+        },
+        "esperado": {
+          "bloco_presente": true,
+          "head_presente": true,
+          "depois_do_head_em_caracteres": true,
+          "depois_do_head_em_bytes": true
+        },
+        "passou": true
+      },
+      "G13g_a_regua_de_ordem_dispara_no_fixture_negativo": {
+        "valor": true,
+        "esperado": true,
+        "passou": true
+      },
+      "G14_gerador_verde": {
+        "valor": {
+          "ok": 23,
+          "falha": 0
+        },
+        "esperado": {
+          "ok": 23,
+          "falha": 0
+        },
+        "passou": true
+      },
+      "G15_promessa_sidebar_escondida_em_todas_as_bandas": {
+        "valor": {
+          "cumprida": true,
+          "papeis_com_sidebar": []
+        },
+        "esperado": {
+          "cumprida": true,
+          "papeis_com_sidebar": []
+        },
+        "passou": true
+      },
+      "G15b_a_shell_medida_na_varredura_e_a_publicada": {
+        "valor": [
+          "b272fd4f3a737c518e888250ab8167f1"
+        ],
+        "esperado": [
+          "b272fd4f3a737c518e888250ab8167f1"
+        ],
+        "passou": true
+      },
+      "G15c_nenhuma_falha_nova_contra_as_linhas_de_base_m5": {
+        "valor": 0,
+        "esperado": 0,
+        "passou": true
+      },
+      "G15d_a_gaveta_abre_a_toque_em_todas_as_bandas_medidas": {
+        "valor": 13,
+        "esperado": 13,
+        "passou": true
+      },
+      "G16_nada_de_banco_ddl_mint_ou_edge": {
+        "valor": {
+          "preflight": 0,
+          "pos": 0,
+          "gerador": 0
+        },
+        "esperado": {
+          "preflight": 0,
+          "pos": 0,
+          "gerador": 0
+        },
+        "passou": true
+      },
+      "G17_a_base_de_reversao_tem_os_12_assets": {
+        "valor": 12,
+        "esperado": 12,
+        "passou": true
+      }
+    }
+  },
+  "nao_fechado_por_este_ciclo": {
+    "defeitos_de_conteudo_preexistentes": {
+      "total_de_falhas_preexistentes": 29,
+      "papeis": [
+        "director:3",
+        "gatekeeper:1",
+        "coordinator:3",
+        "psychology:2",
+        "monitor:2",
+        "pending:1",
+        "parent:2",
+        "student:2",
+        "pedagogical:1",
+        "developer:3",
+        "secretary:3",
+        "aee:2",
+        "social_work:2",
+        "education_supervisor:2"
+      ],
+      "nota": "ja atribuidos em §AI/§AH (grants mortos escola-historia e coordenacao-chat, link apoio sem mapa, chat-interno vazia, tempo de assentamento)"
+    },
+    "cobertura_de_varredura": {
+      "veredito": "AH7b_V134_PROMESSA_CUMPRIDA_COM_DEFEITOS_PRE_EXISTENTES",
+      "coerentes": 1,
+      "vermelhos": 12,
+      "faltas": 2,
+      "nota": "a prédica de cobertura do m5 mantem-se a mesma; bandas sem artefacto contam como FALTA, nao como verde"
+    },
+    "papeis_sem_banda_390": [
+      {
+        "papel": "pending",
+        "artefactos": [
+          "ah2-mobile2-v134a-pending.json",
+          "ah2-mobile2-v134b-pending.json"
+        ],
+        "causa_lida_no_artefacto": "conta em análise: barreira de pendência, sem shell nem navegação (estado do produto)",
+        "estado": {
+          "entrou": false,
+          "aviso_pendencia": true,
+          "login_visivel": true,
+          "texto": "A escola mais próxima de cada família. Notas, frequência, agenda, comunicados e tudo o que"
+        },
+        "censo": null
+      },
+      {
+        "papel": "monitor",
+        "artefactos": [
+          "ah2-mobile2-v134a-monitor.json",
+          "ah2-mobile2-v134b-monitor.json"
+        ],
+        "causa_lida_no_artefacto": "shell ready sem #bfrMobileBottomNav após rechegar — módulo de apresentação mobile não montou a barra",
+        "estado": null,
+        "censo": {
+          "presentation": null,
+          "barra_existe": false
+        }
+      }
+    ],
+    "leitura_dos_dois_bloqueios": "nenhum dos dois e deste ciclo, e nenhum e corrida perdida: cada um tem artefacto escrito nas duas tentativas (v134a e v134b) e a causa vem do campo `bloqueadas` do proprio instrumento. pending e estado do produto (conta em analise, sem shell nem navegacao); monitor e um defeito real e pre-existente — a shell fica ready mas o modulo de apresentacao nao monta a barra de baixo. Contado a partir do campo `papel` de todos os artefactos em evidence: monitor tem 9 artefactos e pending 10, e 0 deles mediram a banda 390 — nao e por isso uma regressao da v133 para a v134.",
+    "tentativa_de_varredura": {
+      "rondas": [
+        "v134a",
+        "v134b"
+      ],
+      "porque_a_2a_existe": "os dois papeis sem banda na 1.ª tentativa foram re-corridos com instrumento, largura e predica identicos; a 2.ª tentativa confirmou o bloqueio em vez de o levantar",
+      "papeis_a_sair_da_2a_tentativa": []
+    },
+    "condutor_m6": "o condutor ah2-m6-driver-v134.mjs filtra o stdout do filho e por isso dois lançamentos (B e E) pareceram silenciosos quando o filho estava pendurado no cronometro; as corridas dos 7 papeis em falta foram feitas chamando o filho directamente com o stdout todo redirecionado para evidence/.m6-v134-{d,f,g,h,i}-*.txt — os artefactos sao os mesmos do condutor"
+  },
+  "veredito": "V134_DIARIO_OK 27/0",
+  "reversao": {
+    "como_v133": "wrangler deploy a partir de worker-deploy-v133-municipal (worker 27d095957bf68ec7163a91e9a6436697 (3613208 B), shell 2afd253b0bafa0eea956a74fde5f92cc (3548904 B), CACHE bfr-conecta-v133) — traz de volta o bloco ofensor",
+    "como_v123": "wrangler deploy a partir de worker-deploy-v123-pdfs (worker 7044c8c02368fbc2a99edc1b366e2326 (3553006 B), shell d418e7fc917f1fbb1437054b7b531f9b (3489725 B), CACHE bfr-conecta-v123) — tira o modulo municipal inteiro",
+    "prova_de_linhagem": "os 12 assets e o wrangler.toml sao byte-identicos nos tres directorios; cada esperado-vXXX.json foi re-extraido e conferido byte a byte pelo respectivo gerador",
+    "exige": "OK literal novo do utilizador para qualquer reversao"
+  },
+  "diario_de": "este ficheiro e gerado por scripts/v134-diario-publicacao.mjs a partir dos diarios de evidence, das listas de deployments do servidor e do disco; nao foi escrito a mao",
+  "qnd": "2026-11-18T07:16:18.453Z"
+}

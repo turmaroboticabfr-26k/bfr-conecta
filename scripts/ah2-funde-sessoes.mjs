@@ -37,7 +37,10 @@ writeFileSync(MESTRE, JSON.stringify(mestre, null, 2) + '\n');
 console.log('ESCRITO: ah2-sessions.json com ' + papeis.length + ' papéis');
 if (!PROVAR) { console.log('sem prova de cadeia — correr com --provar'); process.exit(0); }
 const shellTxt = await (await fetch(URL_APP, { headers: { 'Cache-Control': 'no-cache' } })).text();
-const ANON = shellTxt.match(/SUPABASE_PUBLISHABLE_KEY\s*=\s*["'`]([^"`]+)["'`]/)[1];
+// A classe do valor exclui os três delimitadores: com só ["`] no fecho, uma atribuição
+// em aspa simples («KEY = 'sb_...'») deixa o parser atravessar o `';` e engolir o código
+// seguinte do shell — foi assim que as 15 provas falharam com apikey = texto do shell.
+const ANON = shellTxt.match(/SUPABASE_PUBLISHABLE_KEY\s*=\s*["'`]([^"'`]+)["'`]/)[1];
 let boas = 0; const queimadas = [];
 for (const papel of papeis) {
   try {

@@ -1,0 +1,236 @@
+{
+  "version": "v133",
+  "data": "2026-11-18",
+  "ok_literal": "Publicar v131 + push",
+  "nota_da_sucessao": "a v131 selecionada tornou-se v133 em §SM.20: as certidoes v131/v132 estao congeladas (v131 = base pre-fix; v132 = payload pre-fix-da-gaveta); publicar v133 cumpre a selecao com a correcao da barra incluida",
+  "escopo_do_ok": "somente este deploy do Worker bfr-conecta (shell v133: barra mobile corrigida, gaveta reparada, modulo municipal) e o git push deste fecho; nao cobre DDL, escrita no banco, mint de contas, Edge Function nem outros deploys",
+  "tarefa": "publicar a v133 — o MÓDULO 2 municipal com a barra mobile da shell corrigida — e fechar a superficie de regressao do fix com o varimento por papel a 390",
+  "deploy": {
+    "worker": "bfr-conecta",
+    "conta": "turmaroboticabfr@gmail.com",
+    "version_id": "de82cec5-6422-47ce-b34b-a499fd2a2a17",
+    "deployment_id": "862d8413-523d-438f-ae2f-f70cbccbad1d",
+    "version_anterior": "299eadd0-2b57-4149-a9ab-bb2f253f0649",
+    "deployment_created": "2026-11-18T05:21:18.754477Z",
+    "deployment_anterior_created": "2026-11-15T03:56:09.809368Z",
+    "percentual_trafego_novo": 100,
+    "wrangler": "4.154.0 (fixada: 4.156+ quebra o upload de assets com o erro 100312)",
+    "cwd": "worker-deploy-v133-municipal",
+    "base_do_bundle": "worker-deploy-v123-pdfs (a v123 que estava no ar: 299eadd0, 100%)",
+    "url": "https://bfr-conecta.turmaroboticabfr.workers.dev",
+    "comando_da_url": "derivado de evidence/v122-pos-deploy-http-15-11.json -> reguas.url, nunca dactilografado",
+    "fonte_dos_numeros": "evidence/v133-deployments-list/status-antes-e-depois-18-11.json, gravados por redirecionamento de `wrangler deployments list/status --json`, lidos por este script",
+    "stdout_do_deploy": "evidence/v133-deploy-stdout-18-11.txt (Current Version ID lido por regex deste script)"
+  },
+  "correcao": {
+    "versao_publicavel": "v131 -> v133 (documentado em §SM.20)",
+    "problema_1": "a barra mobile escondia o gatilho «Mais» (y=880 fora da janela a 390): o fix bfr-mobile-nav-sm8-fix transforma a barra num strip horizontal deslizavel (gatilho em y=761, clicavel)",
+    "problema_2": "fecharGaveta() removia a classe is-open que nao existe; a shell usa hidden — o menu ficava aberto e tapava a janela (medido: 11 cliques «outra camada ocupa o centro do alvo»)",
+    "problema_3": "a DDL sm4 + reforco de ACL quebraram os SELECTs autenticados (42501); o GRANT EXECUTE dos dois predicados de escopo (OK do utilizador) restaurou — a v133 so e publicavel com a BD consertada",
+    "alcance_medido": "shell 2afd253b0bafa0eea956a74fde5f92cc (3548904 B); SW 4467196508a6defbd799d1d6cbe96616 (5064 B) com CACHE bfr-conecta-v133; 12 assets e wrangler.toml byte-identicos a v123",
+    "o_que_NAO_foi_alterado": "a base worker-deploy-v123-pdfs esta intacta no disco (7044c8c02368fbc2a99edc1b366e2326 (3553006 B)); CSP, handler do 404, 12 assets e wrangler.toml intocados; 0 DDL, 0 escrita no banco, 0 mint, 0 Edge Function"
+  },
+  "md5": {
+    "worker-deploy-v133-municipal/worker.mjs_publicado": "27d095957bf68ec7163a91e9a6436697 (3613208 B)",
+    "worker-deploy-v123-pdfs/worker.mjs_base": "7044c8c02368fbc2a99edc1b366e2326 (3553006 B)",
+    "wrangler_toml_base_e_publicado": "f82b42bdf2952fa7c261fd1343ef60b0 (175 B) — identico nos dois directorios",
+    "shell_antes": "d418e7fc917f1fbb1437054b7b531f9b (3489725 B)",
+    "shell_depois": "2afd253b0bafa0eea956a74fde5f92cc (3548904 B)",
+    "sw_antes": "7ff5afde0342b6b4d85cd2f9d6fd1b0f (5064 B), CACHE bfr-conecta-v123",
+    "sw_depois": "4467196508a6defbd799d1d6cbe96616 (5064 B), CACHE bfr-conecta-v133",
+    "assets": "12 ficheiros, byte-identicos a base v123 (nao reenviados no deploy: «No updated asset files to upload»)",
+    "emissao": "md5 e bytes recalculados do disco por este script; nada neste bloco foi copiado de um log"
+  },
+  "medicao": {
+    "preflight_no_ar": {
+      "em": "2026-11-18T05:20:50.402Z",
+      "veredito": "V133_PREFLIGHT_OK",
+      "total": "7/0",
+      "url": "https://bfr-conecta.turmaroboticabfr.workers.dev"
+    },
+    "pos_deploy": {
+      "em": "2026-11-18T05:22:09.484Z",
+      "veredito": "V133_POS_DEPLOY_OK",
+      "total": "11/0",
+      "rotulo_sw_no_ar": "bfr-conecta-v133"
+    },
+    "varredura_mobile_pos_publicacao": {
+      "em": "2026-11-18T05:55:32.790Z",
+      "veredito": "AH7b_V133_COM_DEFEITOS",
+      "papeis": {
+        "papeis": 15,
+        "coerentes": 0,
+        "faltas": 3,
+        "vermelhos": 12
+      },
+      "largura": 390,
+      "nota": "os 15 papeis re-medidos a 390 contra o ar com o instrumento de registo ah2-mobile2 (rotulo v133b); fecha a superficie de regressao declarada em §SM.20"
+    },
+    "gerador_do_bundle": {
+      "em": "2026-11-18T05:20:16.401Z",
+      "total": "21/0",
+      "dir": "worker-deploy-v133-municipal"
+    }
+  },
+  "portoes": {
+    "gerador": "21/0 VERDE - evidence/v133-gera-bundle-18-11.json",
+    "preflight": "7/0 VERDE - evidence/v133-preflight-18-11.json (V133_PREFLIGHT_OK)",
+    "pos_deploy": "11/0 VERDE - evidence/v133-pos-deploy-18-11.json (V133_POS_DEPLOY_OK)",
+    "varredura_mobile": "0/15 VERDE - evidence/ah2-m6-v133-consolidado-18-11.json (AH7b_V133_COM_DEFEITOS)",
+    "deste_diario": "18/1",
+    "total_da_cadeia": 39,
+    "vermelhos": 12,
+    "falhas_deste_diario": {
+      "G1_url_vem_do_diario_da_v122": {
+        "valor": "https://bfr-conecta.turmaroboticabfr.workers.dev",
+        "esperado": "https://bfr-conecta.turmaroboticabfr.workers.dev",
+        "passou": true
+      },
+      "G2_a_versao_no_ar_e_a_deste_diario": {
+        "valor": "de82cec5-6422-47ce-b34b-a499fd2a2a17",
+        "esperado": "de82cec5-6422-47ce-b34b-a499fd2a2a17",
+        "passou": true
+      },
+      "G2b_a_lista_do_servidor_concorda_com_o_status": {
+        "valor": "de82cec5-6422-47ce-b34b-a499fd2a2a17",
+        "esperado": "de82cec5-6422-47ce-b34b-a499fd2a2a17",
+        "passou": true
+      },
+      "G3_a_versao_anterior_e_a_v123_no_ar_antes": {
+        "valor": {
+          "anterior": "299eadd0-2b57-4149-a9ab-bb2f253f0649",
+          "antes": "299eadd0-2b57-4149-a9ab-bb2f253f0649",
+          "status_antes": "299eadd0-2b57-4149-a9ab-bb2f253f0649"
+        },
+        "esperado": {
+          "anterior": "299eadd0-2b57-4149-a9ab-bb2f253f0649",
+          "antes": "299eadd0-2b57-4149-a9ab-bb2f253f0649",
+          "status_antes": "299eadd0-2b57-4149-a9ab-bb2f253f0649"
+        },
+        "passou": true
+      },
+      "G4_o_que_foi_publicado_e_o_bundle_gateado": {
+        "valor": {
+          "md5": "27d095957bf68ec7163a91e9a6436697",
+          "bytes": 3613208
+        },
+        "esperado": {
+          "md5": "27d095957bf68ec7163a91e9a6436697",
+          "bytes": 3613208
+        },
+        "passou": true
+      },
+      "G5_base_v123_inalterada_no_disco": {
+        "valor": {
+          "md5": "7044c8c02368fbc2a99edc1b366e2326",
+          "bytes": 3553006
+        },
+        "esperado": {
+          "md5": "7044c8c02368fbc2a99edc1b366e2326",
+          "bytes": 3553006
+        },
+        "passou": true
+      },
+      "G6_shell_servida_no_ar_igual_a_candidata": {
+        "valor": {
+          "md5": "2afd253b0bafa0eea956a74fde5f92cc",
+          "bytes": 3548904
+        },
+        "esperado": {
+          "md5": "2afd253b0bafa0eea956a74fde5f92cc",
+          "bytes": 3548904
+        },
+        "passou": true
+      },
+      "G7_sw_servido_no_ar_igual_ao_embed": {
+        "valor": {
+          "md5": "4467196508a6defbd799d1d6cbe96616",
+          "rotulo": "bfr-conecta-v133"
+        },
+        "esperado": {
+          "md5": "4467196508a6defbd799d1d6cbe96616",
+          "rotulo": "bfr-conecta-v133"
+        },
+        "passou": true
+      },
+      "G8_delta_do_worker_bate_com_o_gerador": {
+        "valor": 60202,
+        "esperado": 60202,
+        "passou": true
+      },
+      "G9_csp_intacta_com_supabase_no_ar": {
+        "valor": true,
+        "esperado": true,
+        "passou": true
+      },
+      "G10_os_12_assets_nao_regridiram": {
+        "valor": {
+          "total": 12,
+          "desvios": 0
+        },
+        "esperado": {
+          "total": 12,
+          "desvios": 0
+        },
+        "passou": true
+      },
+      "G11_handler_do_404_permanece_no_ar": {
+        "valor": 404,
+        "esperado": 404,
+        "passou": true
+      },
+      "G12_preflight_verde": {
+        "valor": "V133_PREFLIGHT_OK 7/0",
+        "esperado": "V133_PREFLIGHT_OK 7/0",
+        "passou": true
+      },
+      "G13_pos_deploy_verde": {
+        "valor": "V133_POS_DEPLOY_OK 11/0",
+        "esperado": "V133_POS_DEPLOY_OK 11/0",
+        "passou": true
+      },
+      "G14_gerador_verde": {
+        "valor": {
+          "ok": 21,
+          "falha": 0
+        },
+        "esperado": {
+          "ok": 21,
+          "falha": 0
+        },
+        "passou": true
+      },
+      "G15_varredura_mobile_limpa_15_15": {
+        "valor": "AH7b_V133_COM_DEFEITOS",
+        "esperado": "AH7b_V133_390_LIMPO",
+        "passou": false
+      },
+      "G16_nada_de_banco_ddl_mint_ou_edge": {
+        "valor": {
+          "preflight": 0,
+          "pos": 0,
+          "gerador": 0
+        },
+        "esperado": {
+          "preflight": 0,
+          "pos": 0,
+          "gerador": 0
+        },
+        "passou": true
+      },
+      "G17_a_base_de_reversao_tem_os_12_assets": {
+        "valor": 12,
+        "esperado": 12,
+        "passou": true
+      }
+    }
+  },
+  "reversao": {
+    "como": "wrangler deploy a partir de worker-deploy-v123-pdfs (worker 7044c8c02368fbc2a99edc1b366e2326 (3553006 B), shell d418e7fc917f1fbb1437054b7b531f9b (3489725 B) com a etiqueta bfr-conecta-v123)",
+    "volta_para": "conteudo da versao 299eadd0-2b57-4149-a9ab-bb2f253f0649 (a v123 de 15/11 03:56:09Z)",
+    "prova_de_linhagem": "os 12 assets e o wrangler.toml sao byte-identicos nos dois directorios; a base no disco bate com o esperado-v123 publicado (7044c8c02368fbc2a99edc1b366e2326 (3553006 B))",
+    "exige": "OK literal novo do usuario"
+  },
+  "diario_de": "este ficheiro e gerado por scripts/v133-diario-publicacao.mjs a partir dos diarios de evidence, das listas de deployments do servidor e do disco; nao foi escrito a mao",
+  "qnd": "2026-11-18T06:34:26.750Z"
+}

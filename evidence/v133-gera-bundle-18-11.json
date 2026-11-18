@@ -1,0 +1,143 @@
+{
+  "em": "2026-11-18T05:20:16.401Z",
+  "gerador": "scripts/v133-gera-bundle.mjs",
+  "publicado": false,
+  "base": "worker-deploy-v123-pdfs (a versao no ar: deployment 299eadd0 de 15/11 03:56:09Z, lido de evidence/v133-deployments-status-antes-18-11.json)",
+  "candidata": "bfr-candidata-v133-secretaria-municipal/index.html",
+  "ok_literal": "Publicar v131 + push",
+  "nota_ok_literal": "a v131 selecionada tornou-se v133 em §SM.20 porque as certidoes v131/v132 estao congeladas; publicar v133 cumpre a selecao com a correcao da barra incluida",
+  "portoes": {
+    "S1_base_worker_e_o_publicado_v123": {
+      "passou": true
+    },
+    "S2_embed_html_da_base_e_a_shell_v123": {
+      "passou": true
+    },
+    "S3_embed_sw_da_base_tem_etiqueta_v123_uma_vez": {
+      "passou": true
+    },
+    "S3b_sw_da_base_sem_etiqueta_v133": {
+      "passou": true
+    },
+    "S4_candidata_v133_e_a_gateada": {
+      "passou": true,
+      "medido": "2afd253b0bafa0eea956a74fde5f92cc (3548904 B)"
+    },
+    "S5_candidata_regista_sw_v4_com_v45": {
+      "passou": true,
+      "ocorrencias": 3
+    },
+    "S5b_candidata_sem_a_etiqueta_de_cache_antiga": {
+      "passou": true
+    },
+    "S6_sw_novo_com_etiqueta_v133_uma_vez": {
+      "passou": true
+    },
+    "S6b_sw_novo_sem_etiqueta_v123": {
+      "passou": true
+    },
+    "S6c_so_a_etiqueta_mudou_no_sw": {
+      "passou": true,
+      "bytes_antes": 5064,
+      "bytes_depois": 5064
+    },
+    "S7_worker_novo_compila": {
+      "passou": true,
+      "erro": null
+    },
+    "S8_embed_novo_re-extraido_bate_com_a_candidata": {
+      "passou": true
+    },
+    "S8b_embed_novo_e_json_stringify_da_candidata": {
+      "passou": true
+    },
+    "S9_sw_embutido_re-extraido_bate_com_o_novo": {
+      "passou": true
+    },
+    "S10_um_unico_embed_de_cada": {
+      "passou": true
+    },
+    "S11_csp_intacta_e_permite_supabase": {
+      "passou": true
+    },
+    "S12_12_assets_copiados_byte_a_byte": {
+      "passou": true,
+      "total": 12,
+      "lista": [
+        "bfr-app-logo.png",
+        "bfr-responsive-presentation.js",
+        "bfr-teacher-arrivals.js",
+        "bfr-teacher-audit.js",
+        "calendario-letivo-2026.pdf",
+        "horario-matutino-2026.pdf",
+        "horario-matutino-2026.png",
+        "horario-vespertino-2026.pdf",
+        "horario-vespertino-2026.png",
+        "lia-avatar.png",
+        "lia-avatar.svg",
+        "manifest.json"
+      ]
+    },
+    "S13_wrangler_toml_identico": {
+      "passou": true
+    },
+    "S13b_worker_do_dir_bate_com_o_desta_corrida": {
+      "passou": true
+    },
+    "S13c_dir_ja_existia_ou_foi_escrito_agora": {
+      "passou": true
+    },
+    "S14_regua_do_delta_consistente": {
+      "passou": true
+    }
+  },
+  "total": {
+    "ok": 21,
+    "falha": 0
+  },
+  "md5": {
+    "workerMd5": "27d095957bf68ec7163a91e9a6436697 (3613208 B)",
+    "workerBytes": 3613208,
+    "swMd5": "4467196508a6defbd799d1d6cbe96616 (5064 B)",
+    "swBytes": 5064,
+    "htmlMd5": "2afd253b0bafa0eea956a74fde5f92cc (3548904 B)",
+    "htmlBytes": 3548904,
+    "cacheLabel": "bfr-conecta-v133 (bfr-conecta-v133 B)",
+    "baseWorkerMd5": "7044c8c02368fbc2a99edc1b366e2326 (3553006 B)",
+    "baseWorkerBytes": 3553006,
+    "baseSwMd5": "7ff5afde0342b6b4d85cd2f9d6fd1b0f (5064 B)",
+    "baseSwBytes": 5064,
+    "baseHtmlMd5": "d418e7fc917f1fbb1437054b7b531f9b (3489725 B)",
+    "baseHtmlBytes": 3489725,
+    "deltaWorkerBytes": 60202,
+    "precacheAlinhado": 0,
+    "assetsCopiados": 12,
+    "ok_literal": "Publicar v131 + push (Publicar v131 + push B)",
+    "origemReguas": "worker-deploy-v123-pdfs/esperado-v123.json,C:/Users/pcmac/Documents/Qoder/2026-10-13/28077d9a/bfr-conecta/bfr-candidata-v133-secretaria-municipal/index.html,evidence/v133-deployments-list-antes-18-11.json,evidence/v133-deployments-status-antes-18-11.json (worker-deploy-v123-pdfs/esperado-v123.json,C:/Users/pcmac/Documents/Qoder/2026-10-13/28077d9a/bfr-conecta/bfr-candidata-v133-secretaria-municipal/index.html,evidence/v133-deployments-list-antes-18-11.json,evidence/v133-deployments-status-antes-18-11.json B)"
+  },
+  "esperado": {
+    "workerMd5": "27d095957bf68ec7163a91e9a6436697",
+    "workerBytes": 3613208,
+    "swMd5": "4467196508a6defbd799d1d6cbe96616",
+    "swBytes": 5064,
+    "htmlMd5": "2afd253b0bafa0eea956a74fde5f92cc",
+    "htmlBytes": 3548904,
+    "cacheLabel": "bfr-conecta-v133",
+    "baseWorkerMd5": "7044c8c02368fbc2a99edc1b366e2326",
+    "baseWorkerBytes": 3553006,
+    "baseSwMd5": "7ff5afde0342b6b4d85cd2f9d6fd1b0f",
+    "baseSwBytes": 5064,
+    "baseHtmlMd5": "d418e7fc917f1fbb1437054b7b531f9b",
+    "baseHtmlBytes": 3489725,
+    "deltaWorkerBytes": 60202,
+    "precacheAlinhado": 0,
+    "assetsCopiados": 12,
+    "ok_literal": "Publicar v131 + push",
+    "origemReguas": [
+      "worker-deploy-v123-pdfs/esperado-v123.json",
+      "C:/Users/pcmac/Documents/Qoder/2026-10-13/28077d9a/bfr-conecta/bfr-candidata-v133-secretaria-municipal/index.html",
+      "evidence/v133-deployments-list-antes-18-11.json",
+      "evidence/v133-deployments-status-antes-18-11.json"
+    ]
+  }
+}

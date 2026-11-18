@@ -1,0 +1,92 @@
+{
+  "ciclo": "AH-7b-M6-V133-SWEEP",
+  "em": "2026-11-18T05:37:53.382Z",
+  "largura": 390,
+  "papeis": [
+    {
+      "papel": "gatekeeper",
+      "coerente": false,
+      "abertas": 7,
+      "estouro": 0,
+      "rotas_barra": 5,
+      "rotas_gaveta": 7,
+      "falhas": [
+        "390px: a app declarou-se em apresentação mobile | dado={\"presentation\":null,\"body_mobile\":false,\"sidebar_escondida\":false} | esperado={\"presentation\":\"mobile\",\"body_mobile\":true,\"sidebar_escondida\":true}",
+        "390px: a barra inferior tem botões com caixa | dado=false | esperado=true",
+        "390px: 0 seções do papel sem rota tocável | dado=[\"escola-historia\"] | esperado=[]"
+      ],
+      "artefacto": "ah2-mobile2-v133b-gatekeeper.json"
+    },
+    {
+      "papel": "coordinator",
+      "coerente": false,
+      "abertas": 17,
+      "estouro": 0,
+      "rotas_barra": 5,
+      "rotas_gaveta": 17,
+      "falhas": [
+        "390px: a app declarou-se em apresentação mobile | dado={\"presentation\":null,\"body_mobile\":false,\"sidebar_escondida\":false} | esperado={\"presentation\":\"mobile\",\"body_mobile\":true,\"sidebar_escondida\":true}",
+        "390px: a barra inferior tem botões com caixa | dado=false | esperado=true",
+        "390px: 0 seções do papel sem rota tocável | dado=[\"escola-historia\",\"coordenacao-chat\"] | esperado=[]",
+        "390px: 0 links de navegação fora do mapa do papel | dado=[\"apoio\"] | esperado=[]",
+        "390px: 0 painéis vazios entre as 17 abertas | dado=[\"apoio\"] | esperado=[]"
+      ],
+      "artefacto": "ah2-mobile2-v133b-coordinator.json"
+    },
+    {
+      "papel": "director",
+      "coerente": false,
+      "abertas": 18,
+      "estouro": 0,
+      "rotas_barra": 5,
+      "rotas_gaveta": 14,
+      "falhas": [
+        "390px: a app declarou-se em apresentação mobile | dado={\"presentation\":\"mobile\",\"body_mobile\":true,\"sidebar_escondida\":false} | esperado={\"presentation\":\"mobile\",\"body_mobile\":true,\"sidebar_escondida\":true}",
+        "390px: 0 toques que não mudaram a seção ativa | dado=[\"director:pedagogical:direcao\",\"director:students:direcao\"] | esperado=[]",
+        "390px: 0 seções do papel sem rota tocável | dado=[\"escola-historia\",\"coordenacao-chat\"] | esperado=[]",
+        "390px: 0 links de navegação fora do mapa do papel | dado=[\"director:overview\",\"director:pedagogical\",\"director:students\",\"director:communication\",\"relatorios\"] | esperado=[]"
+      ],
+      "artefacto": "ah2-mobile2-v133b-director.json"
+    },
+    {
+      "papel": "psychology",
+      "coerente": false,
+      "abertas": 6,
+      "estouro": 0,
+      "rotas_barra": 4,
+      "rotas_gaveta": 6,
+      "falhas": [
+        "390px: a app declarou-se em apresentação mobile | dado={\"presentation\":\"mobile\",\"body_mobile\":true,\"sidebar_escondida\":false} | esperado={\"presentation\":\"mobile\",\"body_mobile\":true,\"sidebar_escondida\":true}",
+        "390px: 0 toques que não mudaram a seção ativa | dado=[\"conteudos:inicio\",\"multiprofissional:inicio\"] | esperado=[]",
+        "390px: 0 links de navegação fora do mapa do papel | dado=[\"notificacoes\",\"conteudos\",\"multiprofissional\"] | esperado=[]"
+      ],
+      "artefacto": "ah2-mobile2-v133b-psychology.json"
+    }
+  ],
+  "faltas": [
+    "pending:sem_banda_390",
+    "parent",
+    "student",
+    "pedagogical",
+    "developer",
+    "monitor:sem_banda_390",
+    "secretary",
+    "aee",
+    "social_work",
+    "sports_operator",
+    "education_supervisor"
+  ],
+  "vermelhos": [
+    "gatekeeper",
+    "coordinator",
+    "director",
+    "psychology"
+  ],
+  "totais": {
+    "papeis": 15,
+    "coerentes": 0,
+    "faltas": 11,
+    "vermelhos": 4
+  },
+  "veredito": "AH7b_V133_COM_DEFEITOS"
+}

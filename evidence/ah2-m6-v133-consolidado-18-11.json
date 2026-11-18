@@ -1,0 +1,207 @@
+{
+  "ciclo": "AH-7b-M6-V133-SWEEP",
+  "em": "2026-11-18T05:55:32.790Z",
+  "largura": 390,
+  "papeis": [
+    {
+      "papel": "parent",
+      "coerente": false,
+      "abertas": 15,
+      "estouro": 0,
+      "rotas_barra": 5,
+      "rotas_gaveta": 15,
+      "falhas": [
+        "390px: a app declarou-se em apresentação mobile | dado={\"presentation\":null,\"body_mobile\":false,\"sidebar_escondida\":false} | esperado={\"presentation\":\"mobile\",\"body_mobile\":true,\"sidebar_escondida\":true}",
+        "390px: a barra inferior tem botões com caixa | dado=false | esperado=true",
+        "390px: 0 seções do papel sem rota tocável | dado=[\"escola-historia\",\"coordenacao-chat\"] | esperado=[]",
+        "390px: 0 links de navegação fora do mapa do papel | dado=[\"apoio\"] | esperado=[]"
+      ],
+      "artefacto": "ah2-mobile2-v133b-parent.json"
+    },
+    {
+      "papel": "student",
+      "coerente": false,
+      "abertas": 16,
+      "estouro": 0,
+      "rotas_barra": 5,
+      "rotas_gaveta": 16,
+      "falhas": [
+        "390px: a app declarou-se em apresentação mobile | dado={\"presentation\":\"mobile\",\"body_mobile\":true,\"sidebar_escondida\":false} | esperado={\"presentation\":\"mobile\",\"body_mobile\":true,\"sidebar_escondida\":true}",
+        "390px: 0 seções do papel sem rota tocável | dado=[\"escola-historia\",\"videos-aprender\",\"resultados-aprendizagem\"] | esperado=[]"
+      ],
+      "artefacto": "ah2-mobile2-v133b-student.json"
+    },
+    {
+      "papel": "pedagogical",
+      "coerente": false,
+      "abertas": 17,
+      "estouro": 0,
+      "rotas_barra": 4,
+      "rotas_gaveta": 17,
+      "falhas": [
+        "390px: a app declarou-se em apresentação mobile | dado={\"presentation\":null,\"body_mobile\":false,\"sidebar_escondida\":false} | esperado={\"presentation\":\"mobile\",\"body_mobile\":true,\"sidebar_escondida\":true}",
+        "390px: a barra inferior tem botões com caixa | dado=false | esperado=true",
+        "390px: 0 seções do papel sem rota tocável | dado=[\"professor-agenda-hoje\",\"escola-historia\",\"jogos-escolares\"] | esperado=[]"
+      ],
+      "artefacto": "ah2-mobile2-v133b-pedagogical.json"
+    },
+    {
+      "papel": "developer",
+      "coerente": false,
+      "abertas": 18,
+      "estouro": 0,
+      "rotas_barra": 5,
+      "rotas_gaveta": 21,
+      "falhas": [
+        "390px: a app declarou-se em apresentação mobile | dado={\"presentation\":null,\"body_mobile\":false,\"sidebar_escondida\":false} | esperado={\"presentation\":\"mobile\",\"body_mobile\":true,\"sidebar_escondida\":true}",
+        "390px: a barra inferior tem botões com caixa | dado=false | esperado=true",
+        "390px: 0 seções do papel sem rota tocável | dado=[\"escola-historia\",\"videos-aprender\",\"admin-crachas\",\"fotos\",\"comunicacao\",\"coordenacao-chat\",\"resultados-aprendizagem\"] | esperado=[]",
+        "390px: 0 rotas que não abriram painel | dado=[\"monitor:sem_botao\",\"gate:sem_botao\",\"psychology:sem_botao\"] | esperado=[]",
+        "390px: 0 seções cujo conteúdo não assenta em 6 s | dado=[\"inicio@6023\"] | esperado=[]"
+      ],
+      "artefacto": "ah2-mobile2-v133b-developer.json"
+    },
+    {
+      "papel": "gatekeeper",
+      "coerente": false,
+      "abertas": 7,
+      "estouro": 0,
+      "rotas_barra": 5,
+      "rotas_gaveta": 7,
+      "falhas": [
+        "390px: a app declarou-se em apresentação mobile | dado={\"presentation\":null,\"body_mobile\":false,\"sidebar_escondida\":false} | esperado={\"presentation\":\"mobile\",\"body_mobile\":true,\"sidebar_escondida\":true}",
+        "390px: a barra inferior tem botões com caixa | dado=false | esperado=true",
+        "390px: 0 seções do papel sem rota tocável | dado=[\"escola-historia\"] | esperado=[]"
+      ],
+      "artefacto": "ah2-mobile2-v133b-gatekeeper.json"
+    },
+    {
+      "papel": "coordinator",
+      "coerente": false,
+      "abertas": 17,
+      "estouro": 0,
+      "rotas_barra": 5,
+      "rotas_gaveta": 17,
+      "falhas": [
+        "390px: a app declarou-se em apresentação mobile | dado={\"presentation\":null,\"body_mobile\":false,\"sidebar_escondida\":false} | esperado={\"presentation\":\"mobile\",\"body_mobile\":true,\"sidebar_escondida\":true}",
+        "390px: a barra inferior tem botões com caixa | dado=false | esperado=true",
+        "390px: 0 seções do papel sem rota tocável | dado=[\"escola-historia\",\"coordenacao-chat\"] | esperado=[]",
+        "390px: 0 links de navegação fora do mapa do papel | dado=[\"apoio\"] | esperado=[]",
+        "390px: 0 painéis vazios entre as 17 abertas | dado=[\"apoio\"] | esperado=[]"
+      ],
+      "artefacto": "ah2-mobile2-v133b-coordinator.json"
+    },
+    {
+      "papel": "secretary",
+      "coerente": false,
+      "abertas": 11,
+      "estouro": 0,
+      "rotas_barra": 5,
+      "rotas_gaveta": 11,
+      "falhas": [
+        "390px: a app declarou-se em apresentação mobile | dado={\"presentation\":\"mobile\",\"body_mobile\":true,\"sidebar_escondida\":false} | esperado={\"presentation\":\"mobile\",\"body_mobile\":true,\"sidebar_escondida\":true}",
+        "390px: 0 seções do papel sem rota tocável | dado=[\"escola-historia\",\"coordenacao-chat\"] | esperado=[]",
+        "390px: 0 links de navegação fora do mapa do papel | dado=[\"relatorios\",\"apoio\"] | esperado=[]",
+        "390px: 0 painéis vazios entre as 11 abertas | dado=[\"apoio\"] | esperado=[]"
+      ],
+      "artefacto": "ah2-mobile2-v133b-secretary.json"
+    },
+    {
+      "papel": "aee",
+      "coerente": false,
+      "abertas": 10,
+      "estouro": 0,
+      "rotas_barra": 5,
+      "rotas_gaveta": 10,
+      "falhas": [
+        "390px: a app declarou-se em apresentação mobile | dado={\"presentation\":\"mobile\",\"body_mobile\":true,\"sidebar_escondida\":false} | esperado={\"presentation\":\"mobile\",\"body_mobile\":true,\"sidebar_escondida\":true}",
+        "390px: 0 seções do papel sem rota tocável | dado=[\"escola-historia\"] | esperado=[]",
+        "390px: 0 links de navegação fora do mapa do papel | dado=[\"apoio\"] | esperado=[]"
+      ],
+      "artefacto": "ah2-mobile2-v133b-aee.json"
+    },
+    {
+      "papel": "director",
+      "coerente": false,
+      "abertas": 18,
+      "estouro": 0,
+      "rotas_barra": 5,
+      "rotas_gaveta": 14,
+      "falhas": [
+        "390px: a app declarou-se em apresentação mobile | dado={\"presentation\":\"mobile\",\"body_mobile\":true,\"sidebar_escondida\":false} | esperado={\"presentation\":\"mobile\",\"body_mobile\":true,\"sidebar_escondida\":true}",
+        "390px: 0 toques que não mudaram a seção ativa | dado=[\"director:pedagogical:direcao\",\"director:students:direcao\"] | esperado=[]",
+        "390px: 0 seções do papel sem rota tocável | dado=[\"escola-historia\",\"coordenacao-chat\"] | esperado=[]",
+        "390px: 0 links de navegação fora do mapa do papel | dado=[\"director:overview\",\"director:pedagogical\",\"director:students\",\"director:communication\",\"relatorios\"] | esperado=[]"
+      ],
+      "artefacto": "ah2-mobile2-v133b-director.json"
+    },
+    {
+      "papel": "psychology",
+      "coerente": false,
+      "abertas": 6,
+      "estouro": 0,
+      "rotas_barra": 4,
+      "rotas_gaveta": 6,
+      "falhas": [
+        "390px: a app declarou-se em apresentação mobile | dado={\"presentation\":\"mobile\",\"body_mobile\":true,\"sidebar_escondida\":false} | esperado={\"presentation\":\"mobile\",\"body_mobile\":true,\"sidebar_escondida\":true}",
+        "390px: 0 toques que não mudaram a seção ativa | dado=[\"conteudos:inicio\",\"multiprofissional:inicio\"] | esperado=[]",
+        "390px: 0 links de navegação fora do mapa do papel | dado=[\"notificacoes\",\"conteudos\",\"multiprofissional\"] | esperado=[]"
+      ],
+      "artefacto": "ah2-mobile2-v133b-psychology.json"
+    },
+    {
+      "papel": "sports_operator",
+      "coerente": false,
+      "abertas": 4,
+      "estouro": 0,
+      "rotas_barra": 4,
+      "rotas_gaveta": 4,
+      "falhas": [
+        "390px: a app declarou-se em apresentação mobile | dado={\"presentation\":null,\"body_mobile\":false,\"sidebar_escondida\":false} | esperado={\"presentation\":\"mobile\",\"body_mobile\":true,\"sidebar_escondida\":true}",
+        "390px: a barra inferior tem botões com caixa | dado=false | esperado=true"
+      ],
+      "artefacto": "ah2-mobile2-v133b-sports_operator.json"
+    },
+    {
+      "papel": "education_supervisor",
+      "coerente": false,
+      "abertas": 8,
+      "estouro": 0,
+      "rotas_barra": 5,
+      "rotas_gaveta": 8,
+      "falhas": [
+        "390px: a app declarou-se em apresentação mobile | dado={\"presentation\":null,\"body_mobile\":false,\"sidebar_escondida\":false} | esperado={\"presentation\":\"mobile\",\"body_mobile\":true,\"sidebar_escondida\":true}",
+        "390px: a barra inferior tem botões com caixa | dado=false | esperado=true",
+        "390px: 0 seções do papel sem rota tocável | dado=[\"escola-historia\",\"comunicacao\",\"coordenacao-chat\",\"fotos\",\"supervisao\"] | esperado=[]",
+        "390px: 0 painéis vazios entre as 8 abertas | dado=[\"chat-interno\"] | esperado=[]"
+      ],
+      "artefacto": "ah2-mobile2-v133b-education_supervisor.json"
+    }
+  ],
+  "faltas": [
+    "pending:sem_banda_390",
+    "monitor:sem_banda_390",
+    "social_work:sem_banda_390"
+  ],
+  "vermelhos": [
+    "parent",
+    "student",
+    "pedagogical",
+    "developer",
+    "gatekeeper",
+    "coordinator",
+    "secretary",
+    "aee",
+    "director",
+    "psychology",
+    "sports_operator",
+    "education_supervisor"
+  ],
+  "totais": {
+    "papeis": 15,
+    "coerentes": 0,
+    "faltas": 3,
+    "vermelhos": 12
+  },
+  "veredito": "AH7b_V133_COM_DEFEITOS"
+}

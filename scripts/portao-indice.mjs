@@ -57,6 +57,17 @@ const EXCECOES = [
     arquivo: 'evidence/sm7-municipal-education_supervisor-390-sm8bar390.json', classe: 'senha', n: 4, comprimentos: '24,11,14,9',
     motivo: 'chaves de CACHE do modulo (alunos_* com o filtro ja redigido pelo instrumento, turmas_todo, processos_todo, freq_todo) registadas pelo estagio cache_do_modulo do instrumento sm7 ja commitado. A classe e igual em todas as corridas sm7; os artefactos v133 nao casam (n=0 medido), porque so esta corrida — a do defeito da gaveta — produziu estas entradas.',
   },
+  // 18/11 (§SM.21): a certidao da candidata v134. O precedente 26e220d (renomear o campo ambiguo e
+  // re-gerar) NAO se aplica aqui: a certidao e o registo do instante de construcao de uma candidata ja
+  // publicada, e o seu md5 e lido por scripts/v134-diario-publicacao.mjs (portao G8) e citado em
+  // §SM.21 — re-escreve-la depois do deploy seria editar evidencia a posteriori. Excepcao com prova de
+  // igualdade de hash, como nas entradas ah2/sm10/sm7; a prova vive em
+  // scripts/v134-verifica-excecao-certidao.mjs, que alem do mais afirma que o seu regex e byte a byte o
+  // deste portao (compara source e flags com a linha `const SENHA`), por isso nao pode divergir em silencio.
+  {
+    arquivo: 'bfr-candidata-v134-sidebar-escondida/portoes-v134-candidata.json', classe: 'senha', n: 4, comprimentos: '12,22,7,16',
+    motivo: 'os 4 valores sao os NOMES das agulhas do array `chaves` de scripts/v134-gera-candidata.mjs:33, gravados no campo `preservado_por_chave` como {chave, antes, depois} de contagens de ocorrencias na shell — a lista tem 6 nomes e 2 ficam fora da janela 6..24, que e porque n=4 e nao 6 (medido). Nenhum e chave de registo de sessao, nenhum contem ponto, nenhum e JWT: igualdade de hash provada por scripts/v134-verifica-excecao-certidao.mjs. O padrao casou so porque o nome do campo e `chave`.',
+  },
 ];
 
 const lista = execFileSync('git', ['ls-files', '-z'], { encoding: 'utf8' }).split('\0').filter(Boolean);

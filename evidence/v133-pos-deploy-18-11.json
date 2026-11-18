@@ -1,0 +1,119 @@
+{
+  "ciclo": "V133-POS-DEPLOY",
+  "em": "2026-11-18T05:22:09.484Z",
+  "escrita": 0,
+  "ddl": 0,
+  "mint": 0,
+  "origem": "C:/Users/pcmac/Documents/Qoder/2026-10-13/28077d9a/bfr-conecta/evidence/v122-pos-deploy-http-15-11.json",
+  "url": "https://bfr-conecta.turmaroboticabfr.workers.dev",
+  "portoes": {
+    "B1_shell_no_ar_e_a_candidata_v133": {
+      "passou": true,
+      "medido": {
+        "http": 200,
+        "md5": "2afd253b0bafa0eea956a74fde5f92cc",
+        "bytes": 3548904
+      },
+      "esperado": {
+        "md5": "2afd253b0bafa0eea956a74fde5f92cc",
+        "bytes": 3548904
+      }
+    },
+    "B2_sw_no_ar_e_o_novo_com_etiqueta_v133": {
+      "passou": true,
+      "medido": {
+        "md5": "4467196508a6defbd799d1d6cbe96616",
+        "bytes": 5064,
+        "rotulo": "bfr-conecta-v133"
+      },
+      "esperado": {
+        "md5": "4467196508a6defbd799d1d6cbe96616",
+        "bytes": 5064,
+        "rotulo": "bfr-conecta-v133"
+      }
+    },
+    "B3_csp_no_ar_intacta_com_supabase": {
+      "passou": true,
+      "ok": true
+    },
+    "B4_rota_inexistente_da_404_ainda": {
+      "passou": true,
+      "http": 404,
+      "bytes": 9,
+      "md5": "9e076f5885f5cc16a4b5aeb8de4adff5"
+    },
+    "B4b_firebase_messaging_sw_ainda_404": {
+      "passou": true,
+      "http": 404
+    },
+    "B5_shell_servida_tem_o_modulo_municipal": {
+      "passou": true,
+      "marcadores": [
+        "mun-tab"
+      ]
+    },
+    "B5b_shell_servida_tem_o_fix_da_barra": {
+      "passou": true
+    },
+    "B5c_shell_servida_tem_a_gaveta_reparada": {
+      "passou": true
+    },
+    "B6_12_assets_no_ar_identicos_a_v123": {
+      "passou": true,
+      "total": 12,
+      "desvios": []
+    },
+    "B7_servidor_concorda_com_o_deploy": {
+      "passou": true,
+      "lista": "de82cec5-6422-47ce-b34b-a499fd2a2a17",
+      "status": "de82cec5-6422-47ce-b34b-a499fd2a2a17",
+      "stdout": "de82cec5-6422-47ce-b34b-a499fd2a2a17",
+      "trafego": 100,
+      "em": "2026-11-18T05:21:18.754477Z"
+    },
+    "B7b_versao_anterior_e_a_v123": {
+      "0": "2",
+      "1": "9",
+      "2": "9",
+      "3": "e",
+      "4": "a",
+      "5": "d",
+      "6": "d",
+      "7": "0",
+      "8": "-",
+      "9": "2",
+      "10": "b",
+      "11": "5",
+      "12": "7",
+      "13": "-",
+      "14": "4",
+      "15": "1",
+      "16": "4",
+      "17": "9",
+      "18": "-",
+      "19": "a",
+      "20": "9",
+      "21": "a",
+      "22": "b",
+      "23": "-",
+      "24": "b",
+      "25": "b",
+      "26": "2",
+      "27": "f",
+      "28": "2",
+      "29": "5",
+      "30": "3",
+      "31": "f",
+      "32": "0",
+      "33": "6",
+      "34": "4",
+      "35": "9",
+      "passou": true
+    }
+  },
+  "total": {
+    "ok": 11,
+    "falha": 0
+  },
+  "veredito": "V133_POS_DEPLOY_OK"
+}

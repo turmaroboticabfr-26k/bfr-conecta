@@ -118,3 +118,30 @@ scripts/s20-behavioral-ruler3.mjs
 # continuam lá, só não entram no snapshot nem no portão que o lê.
 /bfr-candidata-v126-a11y-secretaria-ANTERIOR-portao-insercao-mal-formulado/
 /worker-deploy-v120-404/public/
+
+# 18/11 fecho da v134 — a mesma régua do bloco acima, reaplicada aos três caminhos que este ciclo
+# deixou no disco. Medido por `node` com md5 por ficheiro e caminho espelhado (nunca por nome):
+#   worker-deploy-v133-municipal/public/  12 ficheiros · 4 459 694 B · 12 iguais / 0 diferem / 0 unicos
+#   worker-deploy-v134-sidebar/public/    12 ficheiros · 4 459 694 B · 12 iguais / 0 diferem / 0 unicos
+#     — os dois `public/` sao byte-a-byte iguais a `worker-deploy-v123-pdfs/public/<mesmo caminho>`,
+#       que ja esta no indice; e e precisamente a predica dos geradores (S12_12_assets_copiados_byte_a_byte,
+#       igual na v133 e na v134), provada outra vez no ar pelo portao C9_12_assets_no_ar_identico_a_base_v123.
+#     O que e unico nestes dois directorios e o worker.mjs, o esperado-vXXX.json e o wrangler.toml —
+#     esses entram no commit; a copia de 8 919 388 B de assets nao entra no snapshot nem no portao.
+#   bfr-candidata-v128-SEM-CERTIDAO-deixado-de-lado/  1 ficheiro · 3 545 257 B · md5 3f57504754a6808247e37b339b96b59b
+#     — igual a `bfr-candidata-v129-secretaria-municipal/index.html` (versionado), que e a sucessora
+#       documentada com certidao. O nome diz o que e: a candidata de 128 ficou sem o portao de
+#       publicacao; o conteudo dela ja vive no indice sob o caminho de 129. NADA FOI APAGADO DO DISCO.
+/worker-deploy-v133-municipal/public/
+/worker-deploy-v134-sidebar/public/
+/bfr-candidata-v128-SEM-CERTIDAO-deixado-de-lado/
+
+# 18/11 — o preflight da v134 mediu a shell que estava no ar e gravou-lhe o TEXTO integral dentro do
+# artefacto: 3 612 643 B dos quais 3 548 904 sao o corpo de `medido_antes.shell.texto`. Medido por md5
+# neste fecho: esse texto e byte-a-byte o mesmo de `bfr-candidata-v133-secretaria-municipal/index.html`
+# (2afd253b0bafa0eea956a74fde5f92cc nos dois), ja versionado — seria a quarta copia do mesmo corpo no
+# indice. O que o artefacto PROVA passa para `audit-publicacao-v134.json`, que e pequeno e re-geravel:
+# os portoes G13d (1 ocorrencia da ofensora na shell servida antes do deploy) e G13e (identidade do
+# texto medido com a candidata versionada), lidos do proprio artefacto por esse script. NADA FOI
+# APAGADO DO DISCO: o ficheiro continua la, com o texto, para quem o quiser voltar a abrir.
+/evidence/v134-preflight-18-11.json
