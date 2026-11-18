@@ -1,0 +1,1106 @@
+{
+  "em": "2026-11-18T18:26:11.519Z",
+  "metodo": "leitura dos artefactos desta tranche; zero rede; zero escrita; nenhum segredo. Cada cifra traz o ficheiro de origem",
+  "identidade_do_shell": {
+    "por_peca": {
+      "peca1_vivo": "b272fd4f3a737c518e888250ab8167f1",
+      "peca10_polaridade": "b272fd4f3a737c518e888250ab8167f1",
+      "peca2_estrutura": "b272fd4f3a737c518e888250ab8167f1",
+      "peca19_conferencia": "b272fd4f3a737c518e888250ab8167f1",
+      "peca20_topo_da_escada": "b272fd4f3a737c518e888250ab8167f1"
+    },
+    "unicas": [
+      "b272fd4f3a737c518e888250ab8167f1"
+    ],
+    "bytes_no_ar": 3546846,
+    "candidata_em_disco": {
+      "md5": "b272fd4f3a737c518e888250ab8167f1",
+      "bytes": 3546846
+    }
+  },
+  "artefactos_lidos": {
+    "higiene18": {
+      "bytes": 53666,
+      "md5": "a683a82c57f51cecd3a07111242a7107"
+    },
+    "higiene12": {
+      "bytes": 49583,
+      "md5": "beca9849843db77cdd0ee82f78c0e507"
+    },
+    "viewMun": {
+      "bytes": 10315,
+      "md5": "a7bad376c9385633983c94f5a2e81d5b"
+    },
+    "swServido": {
+      "bytes": 2662,
+      "md5": "23127fef335e22fda7ea580d076bf9c8"
+    },
+    "vivo": {
+      "bytes": 3457,
+      "md5": "7e9afc733e755883628b97f5b079b27e"
+    },
+    "estrutura": {
+      "bytes": 4375,
+      "md5": "2ddd59be37fa6fd8647ddac8ac501753"
+    },
+    "polaridade": {
+      "bytes": 2894,
+      "md5": "c0d51a12003e24c07d993f26f7ff0cf2"
+    },
+    "conf1": {
+      "bytes": 23954,
+      "md5": "a5a5740a76c2c5036586b3491dc5d581"
+    },
+    "confFinal": {
+      "bytes": 36477,
+      "md5": "ce49eed19566028278760cd7b4114a5f"
+    },
+    "emitidas": {
+      "bytes": 5108,
+      "md5": "46b634214c55d8e81ab86983725fc6cf"
+    },
+    "nomes29": {
+      "bytes": 2514,
+      "md5": "b0bcb99fd258521037c7e6e98c5f1789"
+    },
+    "rotas": {
+      "bytes": 3984,
+      "md5": "364f069f662b5aadeb8a4fa3cd6d7027"
+    },
+    "arbitra": {
+      "bytes": 2430,
+      "md5": "fe0c6e260cec1168d079464efc98b1d5"
+    },
+    "delta": {
+      "bytes": 7060,
+      "md5": "55a1b84151540d3e58a4196140ee3475"
+    },
+    "escada": {
+      "bytes": 5312,
+      "md5": "84bcaacb9bf8f9245dcc8687a1cc2950"
+    },
+    "motivo": {
+      "bytes": 19869,
+      "md5": "5083ff313f967d228c60a2ea19602759"
+    },
+    "rpc": {
+      "bytes": 54447,
+      "md5": "4704260bb5f5e200d2be1cd5ee5d92f5"
+    }
+  },
+  "portoes": [
+    {
+      "nome": "identidade_do_shell_unica",
+      "verde": true,
+      "detalhe": "md5 diferentes: {\"peca1_vivo\":\"b272fd4f3a737c518e888250ab8167f1\",\"peca10_polaridade\":\"b272fd4f3a737c518e888250ab8167f1\",\"peca2_estrutura\":\"b272fd4f3a737c518e888250ab8167f1\",\"peca19_conferencia\":\"b272fd4f3a737c518e888250ab8167f1\",\"peca20_topo_da_escada\":\"b272fd4f3a737c518e888250ab8167f1\"}"
+    },
+    {
+      "nome": "pen22_diff_bate_com_a_lista_de_novas",
+      "verde": true,
+      "detalhe": "65 - 57 != 8 nomes"
+    },
+    {
+      "nome": "pen23_views_somam",
+      "verde": true,
+      "detalhe": "6+1 != 7"
+    },
+    {
+      "nome": "pen23_censo_igual_entre_as_tres_pecas",
+      "verde": true,
+      "detalhe": "17(higiene)=7 06(view)=7 20(motivo)=7"
+    },
+    {
+      "nome": "pen26_sw_tem_os_dois_ouvintes_e_o_negativo_empurra",
+      "verde": true,
+      "detalhe": "{\"corpo\":\"mesma regua sobre um SW sintetico sem push nem notificationclick\",\"ouvintes\":{\"install\":true,\"activate\":true,\"fetch\":true,\"push\":false,\"notificationclick\":false},\"empurra_dois_para_false\":true}"
+    },
+    {
+      "nome": "pen26_md5_igual_entre_os_dois_caminhos",
+      "verde": true,
+      "detalhe": "md5 dos caminhos differentes"
+    },
+    {
+      "nome": "pen28_nove_formas_somam_os_status",
+      "verde": true,
+      "detalhe": "9 != 9"
+    },
+    {
+      "nome": "pen28_emitidas_mais_nao_emitidas_dao_nove",
+      "verde": true,
+      "detalhe": "{\"emitidas_no_ar_hoje\":8,\"nao_emitidas_mas_ainda_falsas_no_catalogo\":1,\"re_sonda_de_hoje_coincide_com_a_de_12_11\":true}"
+    },
+    {
+      "nome": "pen29_nomes_exatos_zero",
+      "verde": true,
+      "detalhe": "{\"shift_settings\":{\"com_esse_nome_exato\":0},\"calendar_days\":{\"com_esse_nome_exato\":0},\"month_targets\":{\"com_esse_nome_exato\":0}}"
+    },
+    {
+      "nome": "pen29_rotas_404_e_controles_nao",
+      "verde": true,
+      "detalhe": "{\"profiles\":{\"status\":200,\"linhas\":0},\"schools\":{\"status\":401,\"linhas\":null}}"
+    },
+    {
+      "nome": "pen30_um_sitio_de_quatorze",
+      "verde": true,
+      "detalhe": "{\"sitios_from_announcements\":14,\"pedem_created_at\":1,\"marcador_no_ar\":1}"
+    },
+    {
+      "nome": "pen31_reguas_convergem_e_nao_nomeiam_supervision",
+      "verde": true,
+      "detalhe": "{\"em\":\"2026-11-18T18:11:40.627Z\",\"metodo\":\"GET do shell; indices exatos do grupo `select` (bandeira d); zero escrita\",\"n_pares_from_select\":683,\"n_supervision_requests\":3,\"n_classes\":33,\"supervision_requests\":[{\"de\":\"supervision_requests\",\"select\":\"id,indicator,motive,description,questions,deadline_"
+    },
+    {
+      "nome": "pen32_a_regua_do_portao_discrimina",
+      "verde": true,
+      "detalhe": "escada do portao nao discrimina"
+    },
+    {
+      "nome": "pen33_chaves_igual_valores",
+      "verde": true,
+      "detalhe": "{\"corpo_bytes\":742,\"chaves\":[\"developer\",\"director\",\"pedagogical\",\"aee\",\"psychology\",\"social_work\",\"sports_operator\",\"monitor\",\"gatekeeper\",\"secretary\",\"education_supervisor\",\"student\",\"parent\"],\"n_po"
+    },
+    {
+      "nome": "pen33_fixture_da_peca13_explicado",
+      "verde": true,
+      "detalhe": "{\"n_peca13\":12,\"n_regra_certa\":13,\"chaves_que_a_peca13_perdia\":[\"aee\"],\"a_causa_e_o_minimo_de_letras\":true,\"a_hipotese_do_delimitador_reproduzia_algo\":false}"
+    },
+    {
+      "nome": "pen37_duas_reguas_de_policies_batem",
+      "verde": true,
+      "detalhe": "via SQL e via JS dao contagens diferentes"
+    },
+    {
+      "nome": "pen37_fixture_nao_cego",
+      "verde": true,
+      "detalhe": "{\"bfr_rls_session_role\":10,\"bfr_rls_is_developer\":3,\"bfr_rls_director_manages_student\":3}"
+    },
+    {
+      "nome": "pen37_um_marcador_discrimina_na_polaridade",
+      "verde": true,
+      "detalhe": "nenhum marcador discrimina entre v119 e o ar"
+    },
+    {
+      "nome": "nenhum_campo_undefined",
+      "verde": true,
+      "detalhe": "cifras vazias em: "
+    },
+    {
+      "nome": "pen27_censo_de_geracoes_em_disco",
+      "verde": true,
+      "detalhe": "11"
+    },
+    {
+      "nome": "pen37_lista_de_nove_e_oito_tem_anon",
+      "verde": true,
+      "detalhe": "{\"total\":9,\"anon\":8}"
+    },
+    {
+      "nome": "pen37_dentro_mais_fora_igual_anon_executaveis",
+      "verde": false,
+      "detalhe": "7+2 != 8"
+    }
+  ],
+  "veredito": "VERMELHO: 1",
+  "falhas": [
+    "pen37_dentro_mais_fora_igual_anon_executaveis: 7+2 != 8"
+  ],
+  "linhas": {
+    "PEN_22": {
+      "hoje_18_11": {
+        "total_funcoes": 158,
+        "com_execute_anon": 65,
+        "com_execute_public": 61,
+        "sem_execute_anon": 93,
+        "anon_nulas": 0,
+        "nomes_com_execute_anon": [
+          "aee_can_access_student",
+          "aee_can_write_student",
+          "aee_game_can_access_student",
+          "bfr_audit_lesson_attendance_change",
+          "bfr_can_access_literacy_student",
+          "bfr_can_manage_communications",
+          "bfr_can_manage_student_directory",
+          "bfr_collab_can_profile",
+          "bfr_collab_can_project",
+          "bfr_collab_can_task",
+          "bfr_collab_comment_notification_trigger",
+          "bfr_collab_is_manager",
+          "bfr_collab_is_staff",
+          "bfr_collab_member_notification_trigger",
+          "bfr_collab_task_notification_trigger",
+          "bfr_current_teacher_id",
+          "bfr_family_can_view_aee",
+          "bfr_get_student_photo_path",
+          "bfr_has_municipal_grant",
+          "bfr_has_specialized_permission",
+          "bfr_is_municipal_authority",
+          "bfr_is_platform_admin",
+          "bfr_is_schedule_manager",
+          "bfr_learning_is_manager",
+          "bfr_literacy_staff",
+          "bfr_municipal_network_totals",
+          "bfr_municipalities_visible",
+          "bfr_pedagogical_can_manage_student",
+          "bfr_prevent_duplicate_grade",
+          "bfr_psychology_active_professional",
+          "bfr_psychology_can_write",
+          "bfr_psychology_record_access",
+          "bfr_psychology_schedule_guard",
+          "bfr_rls_director_manages_student",
+          "bfr_rls_is_developer",
+          "bfr_rls_session_role",
+          "bfr_specialized_audit_trigger",
+          "bfr_staff_audit_trigger",
+          "bfr_staff_can_access_channel",
+          "bfr_staff_can_manage_channel",
+          "bfr_staff_can_manage_student_scope",
+          "bfr_staff_can_message_recipient",
+          "bfr_staff_can_read_message",
+          "bfr_staff_is_manager",
+          "bfr_staff_role",
+          "bfr_subject_matches",
+          "bfr_support_detail_access",
+          "bfr_support_request_access",
+          "bfr_support_request_create_access",
+          "bfr_support_request_scope_guard",
+          "bfr_teacher_can_manage_class_subject",
+          "bfr_teacher_can_manage_student",
+          "bfr_touch_updated_at",
+          "bfr_validate_lesson_attendance",
+          "enforce_bfr_avatar_uniform",
+          "family_cpf_is_valid",
+          "family_normalize_cpf",
+          "family_normalize_name",
+          "internal_chat_can_access_room",
+          "internal_chat_is_staff",
+          "is_aee",
+          "is_aee_manager",
+          "schools_updated_at",
+          "sports_role_allowed",
+          "sports_touch_updated_at"
+        ]
+      },
+      "em_12_11": {
+        "total_funcoes": 147,
+        "com_execute_anon": 57,
+        "com_execute_public": 56
+      },
+      "novas_com_anon_execute": [
+        "bfr_has_municipal_grant",
+        "bfr_is_municipal_authority",
+        "bfr_is_platform_admin",
+        "bfr_municipal_network_totals",
+        "bfr_municipalities_visible",
+        "bfr_rls_director_manages_student",
+        "bfr_rls_is_developer",
+        "bfr_rls_session_role"
+      ],
+      "origem": [
+        "evidence/sm22-higiene-catalogo-18-11.json",
+        "evidence/fin2-higiene-rm62.json",
+        "evidence/sm22-varre-view-municipal-18-11.json"
+      ]
+    },
+    "PEN_23": {
+      "hoje": {
+        "total_views": 7,
+        "com_invoker": [
+          "sports_public_athletes",
+          "sports_public_match_events",
+          "sports_public_matches",
+          "sports_public_schools",
+          "sports_public_teams",
+          "support_professionals_directory"
+        ],
+        "sem_invoker": [
+          "bfr_municipal_school_stats"
+        ],
+        "dono": [
+          "bfr_municipal_school_stats(postgres)"
+        ]
+      },
+      "em_12_11": {
+        "total_views": 6,
+        "com_invoker": [
+          "support_professionals_directory"
+        ],
+        "sem_invoker": [
+          "sports_public_athletes",
+          "sports_public_match_events",
+          "sports_public_matches",
+          "sports_public_schools",
+          "sports_public_teams"
+        ]
+      },
+      "vista_municipal": {
+        "nome": "bfr_municipal_school_stats",
+        "dono": "postgres",
+        "opcoes": null
+      },
+      "probe_anon_na_vista": {
+        "status": 401,
+        "linhas": null,
+        "colunas": null,
+        "erro": "42501 permission denied for function bfr_school_in_municipal_scope"
+      },
+      "origem": [
+        "evidence/sm22-higiene-catalogo-18-11.json",
+        "evidence/fin2-higiene-rm62.json",
+        "evidence/sm22-varre-view-municipal-18-11.json"
+      ]
+    },
+    "PEN_24_cabecalhos_no_ar_hoje": {
+      "shell": {
+        "x_frame_options": null,
+        "cdp_frame_ancestors": null,
+        "permissions_policy": null,
+        "coop": null,
+        "csp_presente": true
+      },
+      "manifest": {
+        "x_frame_options": null,
+        "cdp_frame_ancestors": null,
+        "permissions_policy": null,
+        "coop": null,
+        "csp_presente": false
+      },
+      "sw": {
+        "x_frame_options": null,
+        "cdp_frame_ancestors": null,
+        "permissions_policy": null,
+        "coop": null,
+        "csp_presente": false
+      }
+    },
+    "PEN_26": {
+      "brutos_no_shell": [
+        "${APP_ORIGIN}/sw-v4.js?v=45",
+        "${window.location.origin}/sw-v4.js?v=45",
+        "${location.origin}/sw-v4.js?v=45"
+      ],
+      "resolvidos": [
+        "/sw-v4.js?v=45",
+        "/sw-v4.js"
+      ],
+      "servidos": [
+        {
+          "caminho": "/sw-v4.js?v=45",
+          "status": 200,
+          "bytes": 5064,
+          "md5": "36ef6aeba9954ec3aa4a11230bf811dd",
+          "ouvintes": {
+            "install": true,
+            "activate": true,
+            "fetch": true,
+            "push": true,
+            "notificationclick": true
+          }
+        },
+        {
+          "caminho": "/sw-v4.js",
+          "status": 200,
+          "bytes": 5064,
+          "md5": "36ef6aeba9954ec3aa4a11230bf811dd",
+          "ouvintes": {
+            "install": true,
+            "activate": true,
+            "fetch": true,
+            "push": true,
+            "notificationclick": true
+          }
+        }
+      ],
+      "controlo_negativo": {
+        "corpo": "mesma regua sobre um SW sintetico sem push nem notificationclick",
+        "ouvintes": {
+          "install": true,
+          "activate": true,
+          "fetch": true,
+          "push": false,
+          "notificationclick": false
+        },
+        "empurra_dois_para_false": true
+      },
+      "veredito": "PELO MENOS UM SW SERVIDO TEM push E notificationclick — medido nos bytes, nao por transitividade de md5",
+      "origem": [
+        "evidence/sm22-varre-sw-servido-18-11.json"
+      ]
+    },
+    "PEN_27": {
+      "status_fora_do_bundle": 404,
+      "geracoes_em_disco": 11,
+      "geracoes_com_a_forma_string": [
+        "worker-deploy-v118",
+        "worker-deploy-v119",
+        "worker-deploy-v120"
+      ],
+      "por_geracao": {
+        "worker-deploy-v115": {
+          "pedido_request": 1,
+          "passado_string": 0,
+          "passado_url_pathname": 0
+        },
+        "worker-deploy-v116": {
+          "pedido_request": 1,
+          "passado_string": 0,
+          "passado_url_pathname": 0
+        },
+        "worker-deploy-v117": {
+          "pedido_request": 1,
+          "passado_string": 0,
+          "passado_url_pathname": 0
+        },
+        "worker-deploy-v118": {
+          "pedido_request": 1,
+          "passado_string": 1,
+          "passado_url_pathname": 0
+        },
+        "worker-deploy-v119": {
+          "pedido_request": 1,
+          "passado_string": 1,
+          "passado_url_pathname": 0
+        },
+        "worker-deploy-v120": {
+          "pedido_request": 1,
+          "passado_string": 1,
+          "passado_url_pathname": 0
+        },
+        "worker-deploy-v121": {
+          "pedido_request": 1,
+          "passado_string": 0,
+          "passado_url_pathname": 0
+        },
+        "worker-deploy-v122-push": {
+          "pedido_request": 1,
+          "passado_string": 0,
+          "passado_url_pathname": 0
+        },
+        "worker-deploy-v123-pdfs": {
+          "pedido_request": 1,
+          "passado_string": 0,
+          "passado_url_pathname": 0
+        },
+        "worker-deploy-v133-municipal": {
+          "pedido_request": 1,
+          "passado_string": 0,
+          "passado_url_pathname": 0
+        },
+        "worker-deploy-v134-sidebar": {
+          "pedido_request": 1,
+          "passado_string": 0,
+          "passado_url_pathname": 0
+        }
+      },
+      "origem": [
+        "evidence/sm22-conferencia-cifras-18-11.json"
+      ]
+    },
+    "PEN_28": {
+      "por_status": {
+        "300": 3,
+        "400": 2,
+        "404": 4
+      },
+      "n_formas": 9,
+      "formas": [
+        "guardian_students→profiles:PGRST201",
+        "bfr_school_shift_settings:PGRST205",
+        "bfr_school_calendar_days:PGRST205",
+        "bfr_school_calendar_month_targets:PGRST205",
+        "guardian_students→profiles:PGRST201",
+        "announcements:42703",
+        "guardian_students→profiles:PGRST201",
+        "supervision_requests→schools:PGRST200",
+        "bfr_school_shift_settings:PGRST205"
+      ],
+      "emitidas_no_ar_hoje": 8,
+      "nao_emitidas_mas_ainda_falsas": 1,
+      "re_sonda_coincide_com_12_11": true,
+      "origem": [
+        "evidence/sm22-rotas-pen29-e-pen28-18-11.json",
+        "evidence/sm22-formas-emitidas-no-ar-18-11d.json"
+      ]
+    },
+    "PEN_29": {
+      "nomes_exatos": {
+        "shift_settings": {
+          "com_esse_nome_exato": 0
+        },
+        "calendar_days": {
+          "com_esse_nome_exato": 0
+        },
+        "month_targets": {
+          "com_esse_nome_exato": 0
+        }
+      },
+      "pareadas_por_semelhanca": {
+        "shift_settings": [],
+        "calendar_days": [],
+        "month_targets": []
+      },
+      "rotas": {
+        "bfr_school_shift_settings": {
+          "status": 404,
+          "codigo": "PGRST205",
+          "mensagem": "Could not find the table 'public.bfr_school_shift_settings' in the schema cache",
+          "linhas": null
+        },
+        "bfr_school_calendar_days": {
+          "status": 404,
+          "codigo": "PGRST205",
+          "mensagem": "Could not find the table 'public.bfr_school_calendar_days' in the schema cache",
+          "linhas": null
+        },
+        "bfr_school_calendar_month_targets": {
+          "status": 404,
+          "codigo": "PGRST205",
+          "mensagem": "Could not find the table 'public.bfr_school_calendar_month_targets' in the schema cache",
+          "linhas": null
+        }
+      },
+      "contraprova": {
+        "profiles": {
+          "status": 200,
+          "linhas": 0
+        },
+        "schools": {
+          "status": 401,
+          "linhas": null
+        }
+      },
+      "ocorrências_no_bundle": {
+        "shift_settings": 3,
+        "calendar_days": 3,
+        "month_targets": 1
+      },
+      "origem": [
+        "evidence/sm22-nomes-tabelas-pen29-18-11.json",
+        "evidence/sm22-rotas-pen29-e-pen28-18-11.json"
+      ]
+    },
+    "PEN_30": {
+      "sitios_from_announcements": 14,
+      "pedem_created_at": 1,
+      "marcador_no_ar": 1
+    },
+    "PEN_31": {
+      "regua_das_posicoes": [
+        "classes"
+      ],
+      "regua_dos_pares": [
+        "classes"
+      ],
+      "cega_includes_supervision": 2,
+      "com_fronteira_supervision": 0,
+      "as_duas_reguas_dizem_o_mesmo": true,
+      "fks_e_arbitragem_da_peca19": {
+        "resumo": {
+          "emitidas_no_ar_hoje": 8,
+          "nao_emitidas_mas_ainda_falsas_no_catalogo": 1,
+          "re_sonda_de_hoje_coincide_com_a_de_12_11": true
+        },
+        "por_status": {
+          "300": 3,
+          "400": 2,
+          "404": 4
+        },
+        "formas": [
+          "guardian_students|PGRST201|emitida=true|re_sonda=PGRST201",
+          "bfr_school_shift_settings|PGRST205|emitida=true|re_sonda=PGRST205",
+          "bfr_school_calendar_days|PGRST205|emitida=true|re_sonda=PGRST205",
+          "bfr_school_calendar_month_targets|PGRST205|emitida=true|re_sonda=PGRST205",
+          "guardian_students|PGRST201|emitida=true|re_sonda=PGRST201",
+          "announcements|42703|emitida=true|re_sonda=42703",
+          "guardian_students|PGRST201|emitida=true|re_sonda=PGRST201",
+          "supervision_requests|PGRST200|emitida=false|re_sonda=PGRST200",
+          "bfr_school_shift_settings|PGRST205|emitida=true|re_sonda=PGRST205"
+        ],
+        "guardian_students_emitidas": {
+          "guardian_students_emitidas": 3
+        },
+        "pen31_no_ar": {
+          "sports_schools_name_com_fronteira": 2,
+          "schools_name_com_fronteira": 2,
+          "schools_name_por_substring": 4
+        },
+        "regua_soma_bate_com_substring": true,
+        "nao_emitida": [
+          "supervision_requests|PGRST200"
+        ],
+        "arbitragem": {
+          "n_pares": 683,
+          "n_supervision_requests": 3,
+          "n_classes": 33,
+          "as_duas_reguas_dizem_o_mesmo": true,
+          "selects_supervision": [
+            "pdated_at,school_id,sports_schools(name)",
+            "closed_at,school_id,sports_schools(name)",
+            "d_by,school_id,sports_schools(name,city)"
+          ],
+          "regua_das_posicoes": [
+            "classes"
+          ],
+          "regua_dos_pares": [
+            "classes"
+          ],
+          "regua_cega_vs_fronteira": {
+            "includes_supervision": 2,
+            "com_fronteira_supervision": 0
+          },
+          "occurs": [
+            3488814,
+            3492709
+          ],
+          "contexto": [
+            "3488814 dentro_de [\"classes@3488755\"]",
+            "3492709 dentro_de [\"classes@3492650\"]"
+          ],
+          "fks_de_classes_para_schools": [
+            {
+              "de": "classes",
+              "para": "schools",
+              "conname": "fk_classes_school"
+            }
+          ],
+          "tabela_schools_existe": true
+        },
+        "caminhos_fk_hoje": {
+          "guardian_students -> profiles": {
+            "idas": 2,
+            "voltas": 0,
+            "total": 2,
+            "fks_idas": [
+              "guardian_students_linked_by_fkey(linked_by)",
+              "guardian_students_profile_id_fkey(profile_id)"
+            ],
+            "fks_voltas": []
+          },
+          "guardian_students -> students": {
+            "idas": 1,
+            "voltas": 0,
+            "total": 1,
+            "fks_idas": [
+              "guardian_students_student_id_fkey(student_id)"
+            ],
+            "fks_voltas": []
+          },
+          "supervision_requests -> schools": {
+            "idas": 0,
+            "voltas": 0,
+            "total": 0,
+            "fks_idas": [],
+            "fks_voltas": []
+          },
+          "supervision_requests -> sports_schools": {
+            "idas": 1,
+            "voltas": 0,
+            "total": 1,
+            "fks_idas": [
+              "supervision_requests_school_id_fkey(school_id)"
+            ],
+            "fks_voltas": []
+          },
+          "supervision_requests -> profiles": {
+            "idas": 2,
+            "voltas": 0,
+            "total": 2,
+            "fks_idas": [
+              "supervision_requests_closed_by_fkey(closed_by)",
+              "supervision_requests_created_by_fkey(created_by)"
+            ],
+            "fks_voltas": []
+          },
+          "students -> profiles": {
+            "idas": 1,
+            "voltas": 0,
+            "total": 1,
+            "fks_idas": [
+              "students_student_profile_id_fkey(student_profile_id)"
+            ],
+            "fks_voltas": []
+          }
+        }
+      },
+      "regua_do_PEN31_no_ar": {
+        "sports_schools_name_com_fronteira": 2,
+        "schools_name_com_fronteira": 2,
+        "schools_name_por_substring": 4
+      },
+      "origem": [
+        "evidence/sm22-arbitra-schools-name-18-11b.json",
+        "evidence/sm22-formas-emitidas-no-ar-18-11d.json"
+      ]
+    },
+    "PEN_32": {
+      "portao_por_geracao": [
+        {
+          "geracao": "v114",
+          "corpo_bytes": 9209,
+          "portao_de_edsup": false,
+          "perfis_permitidos": null,
+          "condicao_de_secretaryView": " role !== 'secretary'"
+        },
+        {
+          "geracao": "v119",
+          "corpo_bytes": 9209,
+          "portao_de_edsup": false,
+          "perfis_permitidos": null,
+          "condicao_de_secretaryView": " role !== 'secretary'"
+        },
+        {
+          "geracao": "v120",
+          "corpo_bytes": 9348,
+          "portao_de_edsup": true,
+          "perfis_permitidos": [
+            "education_supervisor",
+            "developer"
+          ],
+          "condicao_de_secretaryView": " role !== 'secretary' && role !== 'education_supervisor'"
+        },
+        {
+          "geracao": "v121",
+          "corpo_bytes": 9348,
+          "portao_de_edsup": true,
+          "perfis_permitidos": [
+            "education_supervisor",
+            "developer"
+          ],
+          "condicao_de_secretaryView": " role !== 'secretary' && role !== 'education_supervisor'"
+        },
+        {
+          "geracao": "v134",
+          "corpo_bytes": 9348,
+          "portao_de_edsup": true,
+          "perfis_permitidos": [
+            "education_supervisor",
+            "developer"
+          ],
+          "condicao_de_secretaryView": " role !== 'secretary' && role !== 'education_supervisor'"
+        }
+      ],
+      "regua_discrimina": true,
+      "escala": {
+        "ficheiro_v119_bytes": 3489474,
+        "ficheiro_v120_bytes": 3489649,
+        "delta_ficheiro": 175,
+        "corpo_v119_bytes": 9209,
+        "corpo_v120_bytes": 9348,
+        "delta_corpo": 139,
+        "todo_o_delta_do_ficheiro_esta_dentro_do_corpo": false
+      },
+      "o_que_mexeu_fora_de_setRole": {
+        "offset_no_ficheiro": 1167785,
+        "bloco_antes_bytes": 23885,
+        "bloco_depois_bytes": 24060,
+        "resto_fora_do_corpo_bytes": 36,
+        "dentro_de_setRole": false,
+        "linhas_só_no_bloco_depois": [
+          "education_supervisor' ? ['education_supervisor','developer'].includes(currentProfile?.role) : role === 'admin' && currentProfile?.role === 'developer';",
+          "secretaryView.classList.toggle('hidden', role !== 'secretary' && role !== 'education_supervisor');",
+          "const view = { parent:parentView, teacher:teacherView, coordinator:coordinatorView, student:studentView, admin:adminView, director:directorView, monitor:monitor"
+        ]
+      },
+      "corpo_bytes_hoje": 9348,
+      "primeira_geracao_com_chave": "v114-supervisao",
+      "origem": [
+        "evidence/sm22-delta-setrole-e-formato-labels-18-11b.json",
+        "evidence/sm22-varre-estrutura-18-11b.json",
+        "evidence/sm22-escada-proveniencia-32-33-18-11.json"
+      ]
+    },
+    "PEN_33": {
+      "chaves": [
+        "developer",
+        "director",
+        "pedagogical",
+        "aee",
+        "psychology",
+        "social_work",
+        "sports_operator",
+        "monitor",
+        "gatekeeper",
+        "secretary",
+        "education_supervisor",
+        "student",
+        "parent"
+      ],
+      "n_chaves": 13,
+      "n_valores": 13,
+      "rotulo": "Supervisão Educacional | Supervisor(a) de ensino",
+      "fixtures": {
+        "n_peca13": 12,
+        "n_regra_certa": 13,
+        "chaves_que_a_peca13_perdia": [
+          "aee"
+        ],
+        "a_causa_e_o_minimo_de_letras": true,
+        "a_hipotese_do_delimitador_reproduzia_algo": false
+      },
+      "primeira_geracao_com_par": "v121-rotulos-supervisor",
+      "ocorrencias_de_Responsavel": 47,
+      "origem": [
+        "evidence/sm22-delta-setrole-e-formato-labels-18-11b.json",
+        "evidence/sm22-varre-estrutura-18-11b.json"
+      ]
+    },
+    "PEN_34_no_ar_hoje": {
+      "/aluno": 404,
+      "/coordenacao": 404,
+      "/direcao": 404,
+      "/professor": 404
+    },
+    "PEN_37_nova": {
+      "total_policies_public": 489,
+      "n_funcoes_com_anon_execute": 8,
+      "total_da_lista": 9,
+      "dentro_das_policies": [
+        "bfr_is_municipal_authority",
+        "bfr_is_platform_admin",
+        "bfr_municipalities_visible",
+        "bfr_rls_director_manages_student",
+        "bfr_rls_is_developer",
+        "bfr_rls_session_role",
+        "bfr_school_in_municipal_scope"
+      ],
+      "fora_das_policies": [
+        "bfr_has_municipal_grant",
+        "bfr_municipal_network_totals"
+      ],
+      "revoke_seguro": [
+        "bfr_has_municipal_grant",
+        "bfr_municipal_network_totals"
+      ],
+      "motivo_por_funcao": {
+        "bfr_has_municipal_grant": {
+          "anon_execute": true,
+          "em_policy": false,
+          "em_view_com_invoker": false,
+          "rpc_no_bundle": 0,
+          "em_view": 0,
+          "preciso_para_anon": false,
+          "motivo": "NENHUMA das tres vias — o grant a anon nao e necessario a nada do que foi medido"
+        },
+        "bfr_is_municipal_authority": {
+          "anon_execute": true,
+          "em_policy": true,
+          "em_view_com_invoker": false,
+          "rpc_no_bundle": 1,
+          "em_view": 0,
+          "preciso_para_anon": true,
+          "motivo": "predicado de policy"
+        },
+        "bfr_is_platform_admin": {
+          "anon_execute": true,
+          "em_policy": true,
+          "em_view_com_invoker": false,
+          "rpc_no_bundle": 0,
+          "em_view": 1,
+          "preciso_para_anon": true,
+          "motivo": "predicado de policy"
+        },
+        "bfr_municipal_network_totals": {
+          "anon_execute": true,
+          "em_policy": false,
+          "em_view_com_invoker": false,
+          "rpc_no_bundle": 0,
+          "em_view": 0,
+          "preciso_para_anon": false,
+          "motivo": "NENHUMA das tres vias — o grant a anon nao e necessario a nada do que foi medido"
+        },
+        "bfr_municipalities_visible": {
+          "anon_execute": true,
+          "em_policy": true,
+          "em_view_com_invoker": false,
+          "rpc_no_bundle": 0,
+          "em_view": 0,
+          "preciso_para_anon": true,
+          "motivo": "predicado de policy"
+        },
+        "bfr_rls_director_manages_student": {
+          "anon_execute": true,
+          "em_policy": true,
+          "em_view_com_invoker": false,
+          "rpc_no_bundle": 0,
+          "em_view": 0,
+          "preciso_para_anon": true,
+          "motivo": "predicado de policy"
+        },
+        "bfr_rls_is_developer": {
+          "anon_execute": true,
+          "em_policy": true,
+          "em_view_com_invoker": false,
+          "rpc_no_bundle": 0,
+          "em_view": 0,
+          "preciso_para_anon": true,
+          "motivo": "predicado de policy"
+        },
+        "bfr_rls_session_role": {
+          "anon_execute": true,
+          "em_policy": true,
+          "em_view_com_invoker": false,
+          "rpc_no_bundle": 0,
+          "em_view": 0,
+          "preciso_para_anon": true,
+          "motivo": "predicado de policy"
+        },
+        "bfr_school_in_municipal_scope": {
+          "anon_execute": false,
+          "em_policy": true,
+          "em_view_com_invoker": false,
+          "rpc_no_bundle": 0,
+          "em_view": 1,
+          "preciso_para_anon": true,
+          "motivo": "predicado de policy"
+        }
+      },
+      "fixture": {
+        "esperados_dentro_das_policies": [
+          "bfr_rls_session_role",
+          "bfr_rls_is_developer",
+          "bfr_rls_director_manages_student"
+        ],
+        "medidos": {
+          "bfr_rls_session_role": 10,
+          "bfr_rls_is_developer": 3,
+          "bfr_rls_director_manages_student": 3
+        },
+        "discriminate": true
+      },
+      "duas_reguas_batem": true,
+      "bundle": {
+        "chamadas_rpc_no_shell": 32,
+        "nomes_rpc_no_shell": [
+          "get_student_guardians",
+          "register_gate_checkin",
+          "confirm_guardian_entry",
+          "list_current_month_birthdays",
+          "set_profile_role",
+          "acknowledge_occurrence",
+          "complete_family_registration",
+          "choose_initial_role",
+          "bfr_list_staff_birthdays",
+          "bfr_set_staff_birthday",
+          "correct_gate_attendance",
+          "bfr_confirm_school_calendar",
+          "bfr_teacher_context",
+          "bfr_teacher_lesson_gate_evidence",
+          "bfr_correct_grade",
+          "bfr_get_student_photo_path",
+          "sports_set_match_status",
+          "sports_rebuild_standings",
+          "sports_record_event",
+          "bfr_resolve_communication_recipients",
+          "bfr_create_school_meeting",
+          "bfr_create_targeted_announcement",
+          "bfr_update_school_meeting",
+          "register_gate_checkin_v2",
+          "bfr_is_municipal_authority"
+        ],
+        "chamadas_por_funcao": {
+          "bfr_has_municipal_grant": 0,
+          "bfr_is_municipal_authority": 1,
+          "bfr_is_platform_admin": 0,
+          "bfr_municipal_network_totals": 0,
+          "bfr_municipalities_visible": 0,
+          "bfr_rls_director_manages_student": 0,
+          "bfr_rls_is_developer": 0,
+          "bfr_rls_session_role": 0,
+          "bfr_school_in_municipal_scope": 0
+        }
+      },
+      "probe_anon_de_hoje_da_funcao": [
+        {
+          "nome": "bfr_municipal_network_totals",
+          "tipo_declarado": "TABLE(schools integer, students integer, classes integer, municipalities integer)",
+          "status": 200,
+          "forma": "array",
+          "linhas": 1,
+          "colunas": [
+            "schools",
+            "students",
+            "classes",
+            "municipalities"
+          ],
+          "code": null,
+          "bytes_resposta": 59
+        }
+      ],
+      "origem": [
+        "evidence/sm22-motivo-do-grant-anon-18-11b.json",
+        "evidence/sm22-varre-rpc-anon-18-11.json"
+      ]
+    },
+    "marcadores_de_polaridade": {
+      "pen32_setrole_conhece_supervisor": {
+        "nome": "pen32_setrole_conhece_supervisor",
+        "polaridade": "CORRECAO",
+        "no_ar": 1,
+        "na_base_v133": 1,
+        "na_base_v119": 1,
+        "discrimina": false,
+        "poder_de_fogo": true,
+        "veredito": "NAO_PROBATARIO_POR_ESTA_REGUA (1 no ar e 1 na v119: contar o mesmo nos dois corpus nao prova correcao alguma)"
+      },
+      "pen33_accountLabels_com_chave_supervisor": {
+        "nome": "pen33_accountLabels_com_chave_supervisor",
+        "polaridade": "CORRECAO",
+        "no_ar": 1,
+        "na_base_v133": 1,
+        "na_base_v119": 0,
+        "discrimina": true,
+        "poder_de_fogo": true,
+        "veredito": "FECHO_PROVADO_POR_REGUA (1 no ar, 0 na v119)"
+      },
+      "pen33_responsavel_como_rotulo_unico": {
+        "nome": "pen33_responsavel_como_rotulo_unico",
+        "polaridade": "DEFEITO",
+        "no_ar": 1,
+        "na_base_v133": 1,
+        "na_base_v119": 1,
+        "discrimina": false,
+        "poder_de_fogo": true,
+        "veredito": "NAO_PROBATARIO_POR_ESTA_REGUA (1 no ar e 1 na v119: a regua nao muda entre o corpus antes e depois)"
+      },
+      "pen26_registro_sw_em_template": {
+        "nome": "pen26_registro_sw_em_template",
+        "polaridade": "CORRECAO",
+        "no_ar": 3,
+        "na_base_v133": 3,
+        "na_base_v119": 3,
+        "discrimina": false,
+        "poder_de_fogo": true,
+        "veredito": "NAO_PROBATARIO_POR_ESTA_REGUA (3 no ar e 3 na v119: contar o mesmo nos dois corpus nao prova correcao alguma)"
+      },
+      "pen26_registro_sw_com_aspas_da_peca1": {
+        "nome": "pen26_registro_sw_com_aspas_da_peca1",
+        "polaridade": "CONTROLE_DA_CEGUEIRA",
+        "no_ar": 0,
+        "na_base_v133": 0,
+        "na_base_v119": 0,
+        "discrimina": false,
+        "poder_de_fogo": false,
+        "veredito": "a regex da peca 1 da v134=0 e v133=0 e v119=0 — zero nos tres confirma a cegueira, nao a ausencia do registo"
+      },
+      "pen26_sw_tem_ouvinte_push": {
+        "nome": "pen26_sw_tem_ouvinte_push",
+        "polaridade": "CORRECAO",
+        "no_ar": 0,
+        "na_base_v133": 0,
+        "na_base_v119": 0,
+        "discrimina": false,
+        "poder_de_fogo": false,
+        "veredito": "NAO_PROBATARIO_POR_ESTA_REGUA (0 no ar e 0 na v119: contar o mesmo nos dois corpus nao prova correcao alguma)"
+      },
+      "pen19_navButton_no_corpo_do_intervalo": {
+        "nome": "pen19_navButton_no_corpo_do_intervalo",
+        "polaridade": "DEFEITO",
+        "no_ar": 0,
+        "na_base_v133": 0,
+        "na_base_v119": 0,
+        "discrimina": false,
+        "poder_de_fogo": false,
+        "veredito": "NAO_PROBATARIO_POR_ESTA_REGUA (0 no ar e 0 na v119: a regua nao muda entre o corpus antes e depois)"
+      }
+    }
+  }
+}

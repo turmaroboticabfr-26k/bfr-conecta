@@ -1,0 +1,53 @@
+{
+  "em": "2026-11-18T17:31:55.941Z",
+  "metodo": "SELECTs de catalogo e de auth/public; zero escrita; so hashes de id, datas e nomes de chave de metadata",
+  "gatilhos_qualificados": [
+    {
+      "tabela": "auth.users",
+      "nome": "on_auth_user_created",
+      "em_insercao": true,
+      "funcao": "handle_new_user",
+      "definer": true,
+      "anon_execute": false
+    }
+  ],
+  "regua_corrigida": "a peca 7 usava relname sozinho e nunca casava auth.users; aqui a chave e nspname.relname",
+  "pending": {
+    "linhas": [
+      {
+        "id_hash": "36976a32cb65d7ba80f713f1d6643ae0",
+        "criado": "2026-11-17",
+        "auth_criado": "2026-11-17",
+        "chaves_raw_app_meta_data": "provider,providers",
+        "role_em_raw_app_meta_data": false,
+        "chaves_raw_user_meta_data": "email_verified",
+        "role_em_raw_user_meta_data": false,
+        "pedidos_por_email": 0
+      },
+      {
+        "id_hash": "4badcb5781d30e4bb642872b6b54215a",
+        "criado": "2026-11-18",
+        "auth_criado": "2026-11-18",
+        "chaves_raw_app_meta_data": "provider,providers",
+        "role_em_raw_app_meta_data": false,
+        "chaves_raw_user_meta_data": "email_verified",
+        "role_em_raw_user_meta_data": false,
+        "pedidos_por_email": 0
+      }
+    ],
+    "total": 2,
+    "colunas_de_metadata_lidas_do_catalogo": [
+      "raw_app_meta_data",
+      "raw_user_meta_data"
+    ],
+    "colunas_onde_role_nunca_aparece": [
+      "raw_app_meta_data",
+      "raw_user_meta_data"
+    ],
+    "sem_role_em_qualquer_metadata": 2,
+    "criado_mesmo_dia_que_auth": 2,
+    "access_requests_tem_coluna_email": true
+  },
+  "fora_do_default": 26,
+  "leitura": "default da coluna profiles.role = pending; handle_new_user NAO menciona pending (peca 7); entao uma conta criada sem role nos metadados fica pending por DEFAULT da coluna"
+}

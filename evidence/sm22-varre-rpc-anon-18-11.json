@@ -1,0 +1,1624 @@
+{
+  "em": "2026-11-18T17:28:40.652Z",
+  "metodo": "SELECTs de catalogo + POST /rpc so de funcoes estaveis/imutaveis de zero argumentos, como anon; zero escrita; chave anon jamais gravada",
+  "pen28_fk": {
+    "constraintenvolvidos": [
+      {
+        "nome": "access_requests_reviewed_by_fkey",
+        "esquema": "public",
+        "de": "access_requests",
+        "para": "profiles",
+        "definicao": "FOREIGN KEY (reviewed_by) REFERENCES profiles(id)"
+      },
+      {
+        "nome": "aee_activities_created_by_fkey",
+        "esquema": "public",
+        "de": "aee_activities",
+        "para": "profiles",
+        "definicao": "FOREIGN KEY (created_by) REFERENCES profiles(id)"
+      },
+      {
+        "nome": "aee_activity_recommendations_teacher_id_fkey",
+        "esquema": "public",
+        "de": "aee_activity_recommendations",
+        "para": "profiles",
+        "definicao": "FOREIGN KEY (teacher_id) REFERENCES profiles(id)"
+      },
+      {
+        "nome": "aee_adaptations_created_by_fkey",
+        "esquema": "public",
+        "de": "aee_adaptations",
+        "para": "profiles",
+        "definicao": "FOREIGN KEY (created_by) REFERENCES profiles(id)"
+      },
+      {
+        "nome": "aee_adaptations_teacher_id_fkey",
+        "esquema": "public",
+        "de": "aee_adaptations",
+        "para": "profiles",
+        "definicao": "FOREIGN KEY (teacher_id) REFERENCES profiles(id)"
+      },
+      {
+        "nome": "aee_attendance_teacher_id_fkey",
+        "esquema": "public",
+        "de": "aee_attendance",
+        "para": "profiles",
+        "definicao": "FOREIGN KEY (teacher_id) REFERENCES profiles(id)"
+      },
+      {
+        "nome": "aee_game_assignments_assigned_by_fkey",
+        "esquema": "public",
+        "de": "aee_game_assignments",
+        "para": "profiles",
+        "definicao": "FOREIGN KEY (assigned_by) REFERENCES profiles(id)"
+      },
+      {
+        "nome": "aee_game_assignments_teacher_id_fkey",
+        "esquema": "public",
+        "de": "aee_game_assignments",
+        "para": "profiles",
+        "definicao": "FOREIGN KEY (teacher_id) REFERENCES profiles(id)"
+      },
+      {
+        "nome": "aee_game_catalog_created_by_fkey",
+        "esquema": "public",
+        "de": "aee_game_catalog",
+        "para": "profiles",
+        "definicao": "FOREIGN KEY (created_by) REFERENCES profiles(id)"
+      },
+      {
+        "nome": "aee_game_favorites_profile_id_fkey",
+        "esquema": "public",
+        "de": "aee_game_favorites",
+        "para": "profiles",
+        "definicao": "FOREIGN KEY (profile_id) REFERENCES profiles(id) ON DELETE CASCADE"
+      },
+      {
+        "nome": "aee_game_sessions_profile_id_fkey",
+        "esquema": "public",
+        "de": "aee_game_sessions",
+        "para": "profiles",
+        "definicao": "FOREIGN KEY (profile_id) REFERENCES profiles(id)"
+      },
+      {
+        "nome": "aee_materials_created_by_fkey",
+        "esquema": "public",
+        "de": "aee_materials",
+        "para": "profiles",
+        "definicao": "FOREIGN KEY (created_by) REFERENCES profiles(id)"
+      },
+      {
+        "nome": "aee_materials_teacher_id_fkey",
+        "esquema": "public",
+        "de": "aee_materials",
+        "para": "profiles",
+        "definicao": "FOREIGN KEY (teacher_id) REFERENCES profiles(id)"
+      },
+      {
+        "nome": "aee_messages_recipient_id_fkey",
+        "esquema": "public",
+        "de": "aee_messages",
+        "para": "profiles",
+        "definicao": "FOREIGN KEY (recipient_id) REFERENCES profiles(id)"
+      },
+      {
+        "nome": "aee_messages_sender_id_fkey",
+        "esquema": "public",
+        "de": "aee_messages",
+        "para": "profiles",
+        "definicao": "FOREIGN KEY (sender_id) REFERENCES profiles(id)"
+      },
+      {
+        "nome": "aee_plan_reviews_created_by_fkey",
+        "esquema": "public",
+        "de": "aee_plan_reviews",
+        "para": "profiles",
+        "definicao": "FOREIGN KEY (created_by) REFERENCES profiles(id)"
+      },
+      {
+        "nome": "aee_plans_created_by_fkey",
+        "esquema": "public",
+        "de": "aee_plans",
+        "para": "profiles",
+        "definicao": "FOREIGN KEY (created_by) REFERENCES profiles(id)"
+      },
+      {
+        "nome": "aee_plans_updated_by_fkey",
+        "esquema": "public",
+        "de": "aee_plans",
+        "para": "profiles",
+        "definicao": "FOREIGN KEY (updated_by) REFERENCES profiles(id)"
+      },
+      {
+        "nome": "aee_progress_teacher_id_fkey",
+        "esquema": "public",
+        "de": "aee_progress",
+        "para": "profiles",
+        "definicao": "FOREIGN KEY (teacher_id) REFERENCES profiles(id)"
+      },
+      {
+        "nome": "aee_resources_created_by_fkey",
+        "esquema": "public",
+        "de": "aee_resources",
+        "para": "profiles",
+        "definicao": "FOREIGN KEY (created_by) REFERENCES profiles(id)"
+      },
+      {
+        "nome": "aee_resources_teacher_id_fkey",
+        "esquema": "public",
+        "de": "aee_resources",
+        "para": "profiles",
+        "definicao": "FOREIGN KEY (teacher_id) REFERENCES profiles(id)"
+      },
+      {
+        "nome": "aee_sessions_teacher_id_fkey",
+        "esquema": "public",
+        "de": "aee_sessions",
+        "para": "profiles",
+        "definicao": "FOREIGN KEY (teacher_id) REFERENCES profiles(id)"
+      },
+      {
+        "nome": "aee_student_links_teacher_id_fkey",
+        "esquema": "public",
+        "de": "aee_student_links",
+        "para": "profiles",
+        "definicao": "FOREIGN KEY (teacher_id) REFERENCES profiles(id) ON DELETE CASCADE"
+      },
+      {
+        "nome": "aee_student_profiles_updated_by_fkey",
+        "esquema": "public",
+        "de": "aee_student_profiles",
+        "para": "profiles",
+        "definicao": "FOREIGN KEY (updated_by) REFERENCES profiles(id)"
+      },
+      {
+        "nome": "announcement_reads_profile_id_fkey",
+        "esquema": "public",
+        "de": "announcement_reads",
+        "para": "profiles",
+        "definicao": "FOREIGN KEY (profile_id) REFERENCES profiles(id) ON DELETE CASCADE"
+      },
+      {
+        "nome": "announcement_recipients_recipient_id_fkey",
+        "esquema": "public",
+        "de": "announcement_recipients",
+        "para": "profiles",
+        "definicao": "FOREIGN KEY (recipient_id) REFERENCES profiles(id) ON DELETE CASCADE"
+      },
+      {
+        "nome": "announcements_published_by_fkey",
+        "esquema": "public",
+        "de": "announcements",
+        "para": "profiles",
+        "definicao": "FOREIGN KEY (published_by) REFERENCES profiles(id)"
+      },
+      {
+        "nome": "attendance_entered_by_fkey",
+        "esquema": "public",
+        "de": "attendance",
+        "para": "profiles",
+        "definicao": "FOREIGN KEY (entered_by) REFERENCES profiles(id)"
+      },
+      {
+        "nome": "bfr_coordination_messages_sender_id_fkey",
+        "esquema": "public",
+        "de": "bfr_coordination_messages",
+        "para": "profiles",
+        "definicao": "FOREIGN KEY (sender_id) REFERENCES profiles(id) ON DELETE CASCADE"
+      },
+      {
+        "nome": "bfr_coordination_threads_assigned_to_fkey",
+        "esquema": "public",
+        "de": "bfr_coordination_threads",
+        "para": "profiles",
+        "definicao": "FOREIGN KEY (assigned_to) REFERENCES profiles(id) ON DELETE SET NULL"
+      },
+      {
+        "nome": "bfr_coordination_threads_guardian_id_fkey",
+        "esquema": "public",
+        "de": "bfr_coordination_threads",
+        "para": "profiles",
+        "definicao": "FOREIGN KEY (guardian_id) REFERENCES profiles(id) ON DELETE CASCADE"
+      },
+      {
+        "nome": "bfr_grade_audit_changed_by_fkey",
+        "esquema": "public",
+        "de": "bfr_grade_audit",
+        "para": "profiles",
+        "definicao": "FOREIGN KEY (changed_by) REFERENCES profiles(id) ON DELETE SET NULL"
+      },
+      {
+        "nome": "bfr_grading_rules_updated_by_fkey",
+        "esquema": "public",
+        "de": "bfr_grading_rules",
+        "para": "profiles",
+        "definicao": "FOREIGN KEY (updated_by) REFERENCES profiles(id) ON DELETE SET NULL"
+      },
+      {
+        "nome": "bfr_lesson_attendance_entered_by_fkey",
+        "esquema": "public",
+        "de": "bfr_lesson_attendance",
+        "para": "profiles",
+        "definicao": "FOREIGN KEY (entered_by) REFERENCES profiles(id) ON DELETE RESTRICT"
+      },
+      {
+        "nome": "bfr_lesson_attendance_updated_by_fkey",
+        "esquema": "public",
+        "de": "bfr_lesson_attendance",
+        "para": "profiles",
+        "definicao": "FOREIGN KEY (updated_by) REFERENCES profiles(id) ON DELETE RESTRICT"
+      },
+      {
+        "nome": "bfr_lesson_attendance_audit_changed_by_fkey",
+        "esquema": "public",
+        "de": "bfr_lesson_attendance_audit",
+        "para": "profiles",
+        "definicao": "FOREIGN KEY (changed_by) REFERENCES profiles(id) ON DELETE RESTRICT"
+      },
+      {
+        "nome": "bfr_municipal_access_grants_granted_by_fkey",
+        "esquema": "public",
+        "de": "bfr_municipal_access_grants",
+        "para": "profiles",
+        "definicao": "FOREIGN KEY (granted_by) REFERENCES profiles(id)"
+      },
+      {
+        "nome": "bfr_municipal_access_grants_profile_id_fkey",
+        "esquema": "public",
+        "de": "bfr_municipal_access_grants",
+        "para": "profiles",
+        "definicao": "FOREIGN KEY (profile_id) REFERENCES profiles(id) ON DELETE CASCADE"
+      },
+      {
+        "nome": "bfr_municipal_access_grants_revoked_by_fkey",
+        "esquema": "public",
+        "de": "bfr_municipal_access_grants",
+        "para": "profiles",
+        "definicao": "FOREIGN KEY (revoked_by) REFERENCES profiles(id)"
+      },
+      {
+        "nome": "bfr_municipal_audit_actor_fkey",
+        "esquema": "public",
+        "de": "bfr_municipal_audit",
+        "para": "profiles",
+        "definicao": "FOREIGN KEY (actor) REFERENCES profiles(id)"
+      },
+      {
+        "nome": "bfr_schedule_changes_changed_by_fkey",
+        "esquema": "public",
+        "de": "bfr_schedule_changes",
+        "para": "profiles",
+        "definicao": "FOREIGN KEY (changed_by) REFERENCES profiles(id) ON DELETE SET NULL"
+      },
+      {
+        "nome": "bfr_schedule_import_runs_started_by_fkey",
+        "esquema": "public",
+        "de": "bfr_schedule_import_runs",
+        "para": "profiles",
+        "definicao": "FOREIGN KEY (started_by) REFERENCES profiles(id) ON DELETE SET NULL"
+      },
+      {
+        "nome": "bfr_schedule_versions_imported_by_fkey",
+        "esquema": "public",
+        "de": "bfr_schedule_versions",
+        "para": "profiles",
+        "definicao": "FOREIGN KEY (imported_by) REFERENCES profiles(id) ON DELETE SET NULL"
+      },
+      {
+        "nome": "bfr_schedule_versions_published_by_fkey",
+        "esquema": "public",
+        "de": "bfr_schedule_versions",
+        "para": "profiles",
+        "definicao": "FOREIGN KEY (published_by) REFERENCES profiles(id) ON DELETE SET NULL"
+      },
+      {
+        "nome": "bfr_school_key_map_confirmed_by_fkey",
+        "esquema": "public",
+        "de": "bfr_school_key_map",
+        "para": "profiles",
+        "definicao": "FOREIGN KEY (confirmed_by) REFERENCES profiles(id)"
+      },
+      {
+        "nome": "bfr_teacher_class_subjects_profile_id_fkey",
+        "esquema": "public",
+        "de": "bfr_teacher_class_subjects",
+        "para": "profiles",
+        "definicao": "FOREIGN KEY (profile_id) REFERENCES profiles(id) ON DELETE CASCADE"
+      },
+      {
+        "nome": "bfr_teacher_content_profile_id_fkey",
+        "esquema": "public",
+        "de": "bfr_teacher_content",
+        "para": "profiles",
+        "definicao": "FOREIGN KEY (profile_id) REFERENCES profiles(id) ON DELETE CASCADE"
+      },
+      {
+        "nome": "bfr_teacher_diary_profile_id_fkey",
+        "esquema": "public",
+        "de": "bfr_teacher_diary",
+        "para": "profiles",
+        "definicao": "FOREIGN KEY (profile_id) REFERENCES profiles(id) ON DELETE CASCADE"
+      },
+      {
+        "nome": "bfr_teacher_directory_profile_id_fkey",
+        "esquema": "public",
+        "de": "bfr_teacher_directory",
+        "para": "profiles",
+        "definicao": "FOREIGN KEY (profile_id) REFERENCES profiles(id) ON DELETE SET NULL"
+      },
+      {
+        "nome": "bfr_teacher_events_profile_id_fkey",
+        "esquema": "public",
+        "de": "bfr_teacher_events",
+        "para": "profiles",
+        "definicao": "FOREIGN KEY (profile_id) REFERENCES profiles(id) ON DELETE CASCADE"
+      },
+      {
+        "nome": "bfr_teacher_plans_profile_id_fkey",
+        "esquema": "public",
+        "de": "bfr_teacher_plans",
+        "para": "profiles",
+        "definicao": "FOREIGN KEY (profile_id) REFERENCES profiles(id) ON DELETE CASCADE"
+      },
+      {
+        "nome": "collaboration_notifications_actor_id_fkey",
+        "esquema": "public",
+        "de": "collaboration_notifications",
+        "para": "profiles",
+        "definicao": "FOREIGN KEY (actor_id) REFERENCES profiles(id) ON DELETE SET NULL"
+      },
+      {
+        "nome": "collaboration_notifications_recipient_id_fkey",
+        "esquema": "public",
+        "de": "collaboration_notifications",
+        "para": "profiles",
+        "definicao": "FOREIGN KEY (recipient_id) REFERENCES profiles(id) ON DELETE CASCADE"
+      },
+      {
+        "nome": "collaboration_project_members_added_by_fkey",
+        "esquema": "public",
+        "de": "collaboration_project_members",
+        "para": "profiles",
+        "definicao": "FOREIGN KEY (added_by) REFERENCES profiles(id) ON DELETE SET NULL"
+      },
+      {
+        "nome": "collaboration_project_members_profile_id_fkey",
+        "esquema": "public",
+        "de": "collaboration_project_members",
+        "para": "profiles",
+        "definicao": "FOREIGN KEY (profile_id) REFERENCES profiles(id) ON DELETE CASCADE"
+      },
+      {
+        "nome": "collaboration_project_stages_completed_by_fkey",
+        "esquema": "public",
+        "de": "collaboration_project_stages",
+        "para": "profiles",
+        "definicao": "FOREIGN KEY (completed_by) REFERENCES profiles(id) ON DELETE SET NULL"
+      },
+      {
+        "nome": "collaboration_projects_created_by_fkey",
+        "esquema": "public",
+        "de": "collaboration_projects",
+        "para": "profiles",
+        "definicao": "FOREIGN KEY (created_by) REFERENCES profiles(id) ON DELETE RESTRICT"
+      },
+      {
+        "nome": "collaboration_projects_owner_id_fkey",
+        "esquema": "public",
+        "de": "collaboration_projects",
+        "para": "profiles",
+        "definicao": "FOREIGN KEY (owner_id) REFERENCES profiles(id) ON DELETE RESTRICT"
+      },
+      {
+        "nome": "collaboration_task_attachments_uploaded_by_fkey",
+        "esquema": "public",
+        "de": "collaboration_task_attachments",
+        "para": "profiles",
+        "definicao": "FOREIGN KEY (uploaded_by) REFERENCES profiles(id) ON DELETE RESTRICT"
+      },
+      {
+        "nome": "collaboration_task_comments_author_id_fkey",
+        "esquema": "public",
+        "de": "collaboration_task_comments",
+        "para": "profiles",
+        "definicao": "FOREIGN KEY (author_id) REFERENCES profiles(id) ON DELETE RESTRICT"
+      },
+      {
+        "nome": "collaboration_task_members_added_by_fkey",
+        "esquema": "public",
+        "de": "collaboration_task_members",
+        "para": "profiles",
+        "definicao": "FOREIGN KEY (added_by) REFERENCES profiles(id) ON DELETE SET NULL"
+      },
+      {
+        "nome": "collaboration_task_members_profile_id_fkey",
+        "esquema": "public",
+        "de": "collaboration_task_members",
+        "para": "profiles",
+        "definicao": "FOREIGN KEY (profile_id) REFERENCES profiles(id) ON DELETE CASCADE"
+      },
+      {
+        "nome": "collaboration_tasks_completed_by_fkey",
+        "esquema": "public",
+        "de": "collaboration_tasks",
+        "para": "profiles",
+        "definicao": "FOREIGN KEY (completed_by) REFERENCES profiles(id) ON DELETE SET NULL"
+      },
+      {
+        "nome": "collaboration_tasks_created_by_fkey",
+        "esquema": "public",
+        "de": "collaboration_tasks",
+        "para": "profiles",
+        "definicao": "FOREIGN KEY (created_by) REFERENCES profiles(id) ON DELETE RESTRICT"
+      },
+      {
+        "nome": "collaboration_tasks_owner_id_fkey",
+        "esquema": "public",
+        "de": "collaboration_tasks",
+        "para": "profiles",
+        "definicao": "FOREIGN KEY (owner_id) REFERENCES profiles(id) ON DELETE RESTRICT"
+      },
+      {
+        "nome": "collaboration_tasks_updated_by_fkey",
+        "esquema": "public",
+        "de": "collaboration_tasks",
+        "para": "profiles",
+        "definicao": "FOREIGN KEY (updated_by) REFERENCES profiles(id) ON DELETE SET NULL"
+      },
+      {
+        "nome": "entry_restrictions_created_by_fkey",
+        "esquema": "public",
+        "de": "entry_restrictions",
+        "para": "profiles",
+        "definicao": "FOREIGN KEY (created_by) REFERENCES profiles(id) ON DELETE RESTRICT"
+      },
+      {
+        "nome": "entry_restrictions_resolved_by_fkey",
+        "esquema": "public",
+        "de": "entry_restrictions",
+        "para": "profiles",
+        "definicao": "FOREIGN KEY (resolved_by) REFERENCES profiles(id)"
+      },
+      {
+        "nome": "gate_checkins_gatekeeper_id_fkey",
+        "esquema": "public",
+        "de": "gate_checkins",
+        "para": "profiles",
+        "definicao": "FOREIGN KEY (gatekeeper_id) REFERENCES profiles(id) ON DELETE RESTRICT"
+      },
+      {
+        "nome": "gate_checkins_guardian_confirmed_by_fkey",
+        "esquema": "public",
+        "de": "gate_checkins",
+        "para": "profiles",
+        "definicao": "FOREIGN KEY (guardian_confirmed_by) REFERENCES profiles(id)"
+      },
+      {
+        "nome": "gate_entry_alerts_acknowledged_by_fkey",
+        "esquema": "public",
+        "de": "gate_entry_alerts",
+        "para": "profiles",
+        "definicao": "FOREIGN KEY (acknowledged_by) REFERENCES profiles(id)"
+      },
+      {
+        "nome": "gate_entry_alerts_gatekeeper_id_fkey",
+        "esquema": "public",
+        "de": "gate_entry_alerts",
+        "para": "profiles",
+        "definicao": "FOREIGN KEY (gatekeeper_id) REFERENCES profiles(id) ON DELETE RESTRICT"
+      },
+      {
+        "nome": "gate_entry_alerts_resolved_by_fkey",
+        "esquema": "public",
+        "de": "gate_entry_alerts",
+        "para": "profiles",
+        "definicao": "FOREIGN KEY (resolved_by) REFERENCES profiles(id)"
+      },
+      {
+        "nome": "gate_messages_sender_id_fkey",
+        "esquema": "public",
+        "de": "gate_messages",
+        "para": "profiles",
+        "definicao": "FOREIGN KEY (sender_id) REFERENCES profiles(id)"
+      },
+      {
+        "nome": "grades_entered_by_fkey",
+        "esquema": "public",
+        "de": "grades",
+        "para": "profiles",
+        "definicao": "FOREIGN KEY (entered_by) REFERENCES profiles(id)"
+      },
+      {
+        "nome": "guardian_students_linked_by_fkey",
+        "esquema": "public",
+        "de": "guardian_students",
+        "para": "profiles",
+        "definicao": "FOREIGN KEY (linked_by) REFERENCES profiles(id) ON DELETE SET NULL"
+      },
+      {
+        "nome": "guardian_students_profile_id_fkey",
+        "esquema": "public",
+        "de": "guardian_students",
+        "para": "profiles",
+        "definicao": "FOREIGN KEY (profile_id) REFERENCES profiles(id) ON DELETE CASCADE"
+      },
+      {
+        "nome": "guardian_students_student_id_fkey",
+        "esquema": "public",
+        "de": "guardian_students",
+        "para": "students",
+        "definicao": "FOREIGN KEY (student_id) REFERENCES students(id) ON DELETE CASCADE"
+      },
+      {
+        "nome": "instagram_accounts_created_by_fkey",
+        "esquema": "public",
+        "de": "instagram_accounts",
+        "para": "profiles",
+        "definicao": "FOREIGN KEY (created_by) REFERENCES profiles(id) ON DELETE SET NULL"
+      },
+      {
+        "nome": "instagram_posts_reviewed_by_fkey",
+        "esquema": "public",
+        "de": "instagram_posts",
+        "para": "profiles",
+        "definicao": "FOREIGN KEY (reviewed_by) REFERENCES profiles(id) ON DELETE SET NULL"
+      },
+      {
+        "nome": "internal_chat_message_reactions_profile_id_fkey",
+        "esquema": "public",
+        "de": "internal_chat_message_reactions",
+        "para": "profiles",
+        "definicao": "FOREIGN KEY (profile_id) REFERENCES profiles(id) ON DELETE CASCADE"
+      },
+      {
+        "nome": "internal_chat_message_reports_reporter_id_fkey",
+        "esquema": "public",
+        "de": "internal_chat_message_reports",
+        "para": "profiles",
+        "definicao": "FOREIGN KEY (reporter_id) REFERENCES profiles(id) ON DELETE CASCADE"
+      },
+      {
+        "nome": "internal_chat_message_reports_reviewed_by_fkey",
+        "esquema": "public",
+        "de": "internal_chat_message_reports",
+        "para": "profiles",
+        "definicao": "FOREIGN KEY (reviewed_by) REFERENCES profiles(id) ON DELETE SET NULL"
+      },
+      {
+        "nome": "internal_chat_messages_sender_id_fkey",
+        "esquema": "public",
+        "de": "internal_chat_messages",
+        "para": "profiles",
+        "definicao": "FOREIGN KEY (sender_id) REFERENCES profiles(id) ON DELETE RESTRICT"
+      },
+      {
+        "nome": "internal_chat_presence_profile_id_fkey",
+        "esquema": "public",
+        "de": "internal_chat_presence",
+        "para": "profiles",
+        "definicao": "FOREIGN KEY (profile_id) REFERENCES profiles(id) ON DELETE CASCADE"
+      },
+      {
+        "nome": "internal_chat_room_members_profile_id_fkey",
+        "esquema": "public",
+        "de": "internal_chat_room_members",
+        "para": "profiles",
+        "definicao": "FOREIGN KEY (profile_id) REFERENCES profiles(id) ON DELETE CASCADE"
+      },
+      {
+        "nome": "learning_action_items_created_by_fkey",
+        "esquema": "public",
+        "de": "learning_action_items",
+        "para": "profiles",
+        "definicao": "FOREIGN KEY (created_by) REFERENCES profiles(id)"
+      },
+      {
+        "nome": "learning_action_plans_approved_by_fkey",
+        "esquema": "public",
+        "de": "learning_action_plans",
+        "para": "profiles",
+        "definicao": "FOREIGN KEY (approved_by) REFERENCES profiles(id)"
+      },
+      {
+        "nome": "learning_action_plans_created_by_fkey",
+        "esquema": "public",
+        "de": "learning_action_plans",
+        "para": "profiles",
+        "definicao": "FOREIGN KEY (created_by) REFERENCES profiles(id)"
+      },
+      {
+        "nome": "learning_action_plans_responsible_id_fkey",
+        "esquema": "public",
+        "de": "learning_action_plans",
+        "para": "profiles",
+        "definicao": "FOREIGN KEY (responsible_id) REFERENCES profiles(id)"
+      },
+      {
+        "nome": "learning_assessment_results_recorded_by_fkey",
+        "esquema": "public",
+        "de": "learning_assessment_results",
+        "para": "profiles",
+        "definicao": "FOREIGN KEY (recorded_by) REFERENCES profiles(id)"
+      },
+      {
+        "nome": "learning_assessments_created_by_fkey",
+        "esquema": "public",
+        "de": "learning_assessments",
+        "para": "profiles",
+        "definicao": "FOREIGN KEY (created_by) REFERENCES profiles(id)"
+      },
+      {
+        "nome": "learning_evidence_created_by_fkey",
+        "esquema": "public",
+        "de": "learning_evidence",
+        "para": "profiles",
+        "definicao": "FOREIGN KEY (created_by) REFERENCES profiles(id)"
+      },
+      {
+        "nome": "learning_external_results_imported_by_fkey",
+        "esquema": "public",
+        "de": "learning_external_results",
+        "para": "profiles",
+        "definicao": "FOREIGN KEY (imported_by) REFERENCES profiles(id)"
+      },
+      {
+        "nome": "learning_goals_created_by_fkey",
+        "esquema": "public",
+        "de": "learning_goals",
+        "para": "profiles",
+        "definicao": "FOREIGN KEY (created_by) REFERENCES profiles(id)"
+      },
+      {
+        "nome": "learning_goals_teacher_id_fkey",
+        "esquema": "public",
+        "de": "learning_goals",
+        "para": "profiles",
+        "definicao": "FOREIGN KEY (teacher_id) REFERENCES profiles(id)"
+      },
+      {
+        "nome": "learning_indicator_settings_updated_by_fkey",
+        "esquema": "public",
+        "de": "learning_indicator_settings",
+        "para": "profiles",
+        "definicao": "FOREIGN KEY (updated_by) REFERENCES profiles(id)"
+      },
+      {
+        "nome": "learning_interventions_created_by_fkey",
+        "esquema": "public",
+        "de": "learning_interventions",
+        "para": "profiles",
+        "definicao": "FOREIGN KEY (created_by) REFERENCES profiles(id)"
+      },
+      {
+        "nome": "learning_meeting_actions_responsible_id_fkey",
+        "esquema": "public",
+        "de": "learning_meeting_actions",
+        "para": "profiles",
+        "definicao": "FOREIGN KEY (responsible_id) REFERENCES profiles(id)"
+      },
+      {
+        "nome": "learning_meetings_created_by_fkey",
+        "esquema": "public",
+        "de": "learning_meetings",
+        "para": "profiles",
+        "definicao": "FOREIGN KEY (created_by) REFERENCES profiles(id)"
+      },
+      {
+        "nome": "learning_notifications_profile_id_fkey",
+        "esquema": "public",
+        "de": "learning_notifications",
+        "para": "profiles",
+        "definicao": "FOREIGN KEY (profile_id) REFERENCES profiles(id)"
+      },
+      {
+        "nome": "learning_pedagogical_reports_generated_by_fkey",
+        "esquema": "public",
+        "de": "learning_pedagogical_reports",
+        "para": "profiles",
+        "definicao": "FOREIGN KEY (generated_by) REFERENCES profiles(id)"
+      },
+      {
+        "nome": "learning_skills_created_by_fkey",
+        "esquema": "public",
+        "de": "learning_skills",
+        "para": "profiles",
+        "definicao": "FOREIGN KEY (created_by) REFERENCES profiles(id)"
+      },
+      {
+        "nome": "learning_student_progress_recorded_by_fkey",
+        "esquema": "public",
+        "de": "learning_student_progress",
+        "para": "profiles",
+        "definicao": "FOREIGN KEY (recorded_by) REFERENCES profiles(id)"
+      },
+      {
+        "nome": "learning_subjects_created_by_fkey",
+        "esquema": "public",
+        "de": "learning_subjects",
+        "para": "profiles",
+        "definicao": "FOREIGN KEY (created_by) REFERENCES profiles(id)"
+      },
+      {
+        "nome": "learning_teacher_actions_assigned_by_fkey",
+        "esquema": "public",
+        "de": "learning_teacher_actions",
+        "para": "profiles",
+        "definicao": "FOREIGN KEY (assigned_by) REFERENCES profiles(id)"
+      },
+      {
+        "nome": "learning_teacher_actions_teacher_id_fkey",
+        "esquema": "public",
+        "de": "learning_teacher_actions",
+        "para": "profiles",
+        "definicao": "FOREIGN KEY (teacher_id) REFERENCES profiles(id)"
+      },
+      {
+        "nome": "literacy_activity_attempts_profile_id_fkey",
+        "esquema": "public",
+        "de": "literacy_activity_attempts",
+        "para": "profiles",
+        "definicao": "FOREIGN KEY (profile_id) REFERENCES profiles(id) ON DELETE RESTRICT"
+      },
+      {
+        "nome": "literacy_progress_updated_by_fkey",
+        "esquema": "public",
+        "de": "literacy_progress",
+        "para": "profiles",
+        "definicao": "FOREIGN KEY (updated_by) REFERENCES profiles(id) ON DELETE SET NULL"
+      },
+      {
+        "nome": "meeting_notifications_recipient_id_fkey",
+        "esquema": "public",
+        "de": "meeting_notifications",
+        "para": "profiles",
+        "definicao": "FOREIGN KEY (recipient_id) REFERENCES profiles(id) ON DELETE CASCADE"
+      },
+      {
+        "nome": "occurrences_created_by_fkey",
+        "esquema": "public",
+        "de": "occurrences",
+        "para": "profiles",
+        "definicao": "FOREIGN KEY (created_by) REFERENCES profiles(id)"
+      },
+      {
+        "nome": "photos_uploaded_by_fkey",
+        "esquema": "public",
+        "de": "photos",
+        "para": "profiles",
+        "definicao": "FOREIGN KEY (uploaded_by) REFERENCES profiles(id)"
+      },
+      {
+        "nome": "poll_votes_profile_id_fkey",
+        "esquema": "public",
+        "de": "poll_votes",
+        "para": "profiles",
+        "definicao": "FOREIGN KEY (profile_id) REFERENCES profiles(id) ON DELETE CASCADE"
+      },
+      {
+        "nome": "polls_created_by_fkey",
+        "esquema": "public",
+        "de": "polls",
+        "para": "profiles",
+        "definicao": "FOREIGN KEY (created_by) REFERENCES profiles(id)"
+      },
+      {
+        "nome": "profiles_id_fkey",
+        "esquema": "public",
+        "de": "profiles",
+        "para": "auth.users",
+        "definicao": "FOREIGN KEY (id) REFERENCES auth.users(id) ON DELETE CASCADE"
+      },
+      {
+        "nome": "project_photos_uploaded_by_fkey",
+        "esquema": "public",
+        "de": "project_photos",
+        "para": "profiles",
+        "definicao": "FOREIGN KEY (uploaded_by) REFERENCES profiles(id)"
+      },
+      {
+        "nome": "project_results_updated_by_fkey",
+        "esquema": "public",
+        "de": "project_results",
+        "para": "profiles",
+        "definicao": "FOREIGN KEY (updated_by) REFERENCES profiles(id)"
+      },
+      {
+        "nome": "projects_created_by_fkey",
+        "esquema": "public",
+        "de": "projects",
+        "para": "profiles",
+        "definicao": "FOREIGN KEY (created_by) REFERENCES profiles(id)"
+      },
+      {
+        "nome": "psychology_articulations_created_by_fkey",
+        "esquema": "public",
+        "de": "psychology_articulations",
+        "para": "profiles",
+        "definicao": "FOREIGN KEY (created_by) REFERENCES profiles(id)"
+      },
+      {
+        "nome": "psychology_articulations_teacher_id_fkey",
+        "esquema": "public",
+        "de": "psychology_articulations",
+        "para": "profiles",
+        "definicao": "FOREIGN KEY (teacher_id) REFERENCES profiles(id)"
+      },
+      {
+        "nome": "psychology_meetings_created_by_fkey",
+        "esquema": "public",
+        "de": "psychology_meetings",
+        "para": "profiles",
+        "definicao": "FOREIGN KEY (created_by) REFERENCES profiles(id)"
+      },
+      {
+        "nome": "psychology_preventive_actions_created_by_fkey",
+        "esquema": "public",
+        "de": "psychology_preventive_actions",
+        "para": "profiles",
+        "definicao": "FOREIGN KEY (created_by) REFERENCES profiles(id)"
+      },
+      {
+        "nome": "psychology_referrals_created_by_fkey",
+        "esquema": "public",
+        "de": "psychology_referrals",
+        "para": "profiles",
+        "definicao": "FOREIGN KEY (created_by) REFERENCES profiles(id)"
+      },
+      {
+        "nome": "psychology_referrals_responsible_id_fkey",
+        "esquema": "public",
+        "de": "psychology_referrals",
+        "para": "profiles",
+        "definicao": "FOREIGN KEY (responsible_id) REFERENCES profiles(id)"
+      },
+      {
+        "nome": "psychology_returns_created_by_fkey",
+        "esquema": "public",
+        "de": "psychology_returns",
+        "para": "profiles",
+        "definicao": "FOREIGN KEY (created_by) REFERENCES profiles(id)"
+      },
+      {
+        "nome": "psychology_returns_reviewed_by_fkey",
+        "esquema": "public",
+        "de": "psychology_returns",
+        "para": "profiles",
+        "definicao": "FOREIGN KEY (reviewed_by) REFERENCES profiles(id)"
+      },
+      {
+        "nome": "push_notify_throttle_profile_id_fkey",
+        "esquema": "public",
+        "de": "push_notify_throttle",
+        "para": "profiles",
+        "definicao": "FOREIGN KEY (profile_id) REFERENCES profiles(id) ON DELETE CASCADE"
+      },
+      {
+        "nome": "route_incidents_monitor_id_fkey",
+        "esquema": "public",
+        "de": "route_incidents",
+        "para": "profiles",
+        "definicao": "FOREIGN KEY (monitor_id) REFERENCES profiles(id) ON DELETE RESTRICT"
+      },
+      {
+        "nome": "school_activities_published_by_fkey",
+        "esquema": "public",
+        "de": "school_activities",
+        "para": "profiles",
+        "definicao": "FOREIGN KEY (published_by) REFERENCES profiles(id) ON DELETE RESTRICT"
+      },
+      {
+        "nome": "school_meeting_recipients_recipient_id_fkey",
+        "esquema": "public",
+        "de": "school_meeting_recipients",
+        "para": "profiles",
+        "definicao": "FOREIGN KEY (recipient_id) REFERENCES profiles(id) ON DELETE CASCADE"
+      },
+      {
+        "nome": "school_meetings_created_by_fkey",
+        "esquema": "public",
+        "de": "school_meetings",
+        "para": "profiles",
+        "definicao": "FOREIGN KEY (created_by) REFERENCES profiles(id)"
+      },
+      {
+        "nome": "school_videos_created_by_fkey",
+        "esquema": "public",
+        "de": "school_videos",
+        "para": "profiles",
+        "definicao": "FOREIGN KEY (created_by) REFERENCES profiles(id) ON DELETE RESTRICT"
+      },
+      {
+        "nome": "sports_athletes_created_by_fkey",
+        "esquema": "public",
+        "de": "sports_athletes",
+        "para": "profiles",
+        "definicao": "FOREIGN KEY (created_by) REFERENCES profiles(id) ON DELETE SET NULL"
+      },
+      {
+        "nome": "sports_audit_log_created_by_fkey",
+        "esquema": "public",
+        "de": "sports_audit_log",
+        "para": "profiles",
+        "definicao": "FOREIGN KEY (created_by) REFERENCES profiles(id) ON DELETE SET NULL"
+      },
+      {
+        "nome": "sports_championships_created_by_fkey",
+        "esquema": "public",
+        "de": "sports_championships",
+        "para": "profiles",
+        "definicao": "FOREIGN KEY (created_by) REFERENCES profiles(id) ON DELETE SET NULL"
+      },
+      {
+        "nome": "sports_match_events_created_by_fkey",
+        "esquema": "public",
+        "de": "sports_match_events",
+        "para": "profiles",
+        "definicao": "FOREIGN KEY (created_by) REFERENCES profiles(id) ON DELETE SET NULL"
+      },
+      {
+        "nome": "sports_match_followers_profile_id_fkey",
+        "esquema": "public",
+        "de": "sports_match_followers",
+        "para": "profiles",
+        "definicao": "FOREIGN KEY (profile_id) REFERENCES profiles(id) ON DELETE CASCADE"
+      },
+      {
+        "nome": "sports_matches_created_by_fkey",
+        "esquema": "public",
+        "de": "sports_matches",
+        "para": "profiles",
+        "definicao": "FOREIGN KEY (created_by) REFERENCES profiles(id) ON DELETE SET NULL"
+      },
+      {
+        "nome": "sports_matches_updated_by_fkey",
+        "esquema": "public",
+        "de": "sports_matches",
+        "para": "profiles",
+        "definicao": "FOREIGN KEY (updated_by) REFERENCES profiles(id) ON DELETE SET NULL"
+      },
+      {
+        "nome": "sports_schools_created_by_fkey",
+        "esquema": "public",
+        "de": "sports_schools",
+        "para": "profiles",
+        "definicao": "FOREIGN KEY (created_by) REFERENCES profiles(id) ON DELETE SET NULL"
+      },
+      {
+        "nome": "sports_teams_created_by_fkey",
+        "esquema": "public",
+        "de": "sports_teams",
+        "para": "profiles",
+        "definicao": "FOREIGN KEY (created_by) REFERENCES profiles(id) ON DELETE SET NULL"
+      },
+      {
+        "nome": "staff_announcement_reads_profile_id_fkey",
+        "esquema": "public",
+        "de": "staff_announcement_reads",
+        "para": "profiles",
+        "definicao": "FOREIGN KEY (profile_id) REFERENCES profiles(id) ON DELETE CASCADE"
+      },
+      {
+        "nome": "staff_announcements_published_by_fkey",
+        "esquema": "public",
+        "de": "staff_announcements",
+        "para": "profiles",
+        "definicao": "FOREIGN KEY (published_by) REFERENCES profiles(id) ON DELETE RESTRICT"
+      },
+      {
+        "nome": "staff_channel_members_added_by_fkey",
+        "esquema": "public",
+        "de": "staff_channel_members",
+        "para": "profiles",
+        "definicao": "FOREIGN KEY (added_by) REFERENCES profiles(id) ON DELETE SET NULL"
+      },
+      {
+        "nome": "staff_channel_members_profile_id_fkey",
+        "esquema": "public",
+        "de": "staff_channel_members",
+        "para": "profiles",
+        "definicao": "FOREIGN KEY (profile_id) REFERENCES profiles(id) ON DELETE CASCADE"
+      },
+      {
+        "nome": "staff_channels_archived_by_fkey",
+        "esquema": "public",
+        "de": "staff_channels",
+        "para": "profiles",
+        "definicao": "FOREIGN KEY (archived_by) REFERENCES profiles(id) ON DELETE SET NULL"
+      },
+      {
+        "nome": "staff_channels_created_by_fkey",
+        "esquema": "public",
+        "de": "staff_channels",
+        "para": "profiles",
+        "definicao": "FOREIGN KEY (created_by) REFERENCES profiles(id) ON DELETE SET NULL"
+      },
+      {
+        "nome": "staff_message_attachments_uploaded_by_fkey",
+        "esquema": "public",
+        "de": "staff_message_attachments",
+        "para": "profiles",
+        "definicao": "FOREIGN KEY (uploaded_by) REFERENCES profiles(id) ON DELETE RESTRICT"
+      },
+      {
+        "nome": "staff_message_forwards_forwarded_by_fkey",
+        "esquema": "public",
+        "de": "staff_message_forwards",
+        "para": "profiles",
+        "definicao": "FOREIGN KEY (forwarded_by) REFERENCES profiles(id) ON DELETE RESTRICT"
+      },
+      {
+        "nome": "staff_message_reads_profile_id_fkey",
+        "esquema": "public",
+        "de": "staff_message_reads",
+        "para": "profiles",
+        "definicao": "FOREIGN KEY (profile_id) REFERENCES profiles(id) ON DELETE CASCADE"
+      },
+      {
+        "nome": "staff_messages_recipient_id_fkey",
+        "esquema": "public",
+        "de": "staff_messages",
+        "para": "profiles",
+        "definicao": "FOREIGN KEY (recipient_id) REFERENCES profiles(id) ON DELETE RESTRICT"
+      },
+      {
+        "nome": "staff_messages_sender_id_fkey",
+        "esquema": "public",
+        "de": "staff_messages",
+        "para": "profiles",
+        "definicao": "FOREIGN KEY (sender_id) REFERENCES profiles(id) ON DELETE RESTRICT"
+      },
+      {
+        "nome": "staff_presence_profile_id_fkey",
+        "esquema": "public",
+        "de": "staff_presence",
+        "para": "profiles",
+        "definicao": "FOREIGN KEY (profile_id) REFERENCES profiles(id) ON DELETE CASCADE"
+      },
+      {
+        "nome": "staff_schools_profile_id_fkey",
+        "esquema": "public",
+        "de": "staff_schools",
+        "para": "profiles",
+        "definicao": "FOREIGN KEY (profile_id) REFERENCES profiles(id) ON DELETE CASCADE"
+      },
+      {
+        "nome": "staff_security_audit_actor_id_fkey",
+        "esquema": "public",
+        "de": "staff_security_audit",
+        "para": "profiles",
+        "definicao": "FOREIGN KEY (actor_id) REFERENCES profiles(id) ON DELETE SET NULL"
+      },
+      {
+        "nome": "student_avatar_configs_profile_id_fkey",
+        "esquema": "public",
+        "de": "student_avatar_configs",
+        "para": "profiles",
+        "definicao": "FOREIGN KEY (profile_id) REFERENCES profiles(id) ON DELETE CASCADE"
+      },
+      {
+        "nome": "student_avatar_configs_updated_by_fkey",
+        "esquema": "public",
+        "de": "student_avatar_configs",
+        "para": "profiles",
+        "definicao": "FOREIGN KEY (updated_by) REFERENCES profiles(id)"
+      },
+      {
+        "nome": "student_game_sessions_profile_id_fkey",
+        "esquema": "public",
+        "de": "student_game_sessions",
+        "para": "profiles",
+        "definicao": "FOREIGN KEY (profile_id) REFERENCES profiles(id) ON DELETE CASCADE"
+      },
+      {
+        "nome": "student_location_consent_log_by_profile_id_fkey",
+        "esquema": "public",
+        "de": "student_location_consent_log",
+        "para": "profiles",
+        "definicao": "FOREIGN KEY (by_profile_id) REFERENCES profiles(id) ON DELETE CASCADE"
+      },
+      {
+        "nome": "student_location_consent_log_profile_id_fkey",
+        "esquema": "public",
+        "de": "student_location_consent_log",
+        "para": "profiles",
+        "definicao": "FOREIGN KEY (profile_id) REFERENCES profiles(id) ON DELETE CASCADE"
+      },
+      {
+        "nome": "student_location_report_throttle_profile_id_fkey",
+        "esquema": "public",
+        "de": "student_location_report_throttle",
+        "para": "profiles",
+        "definicao": "FOREIGN KEY (profile_id) REFERENCES profiles(id) ON DELETE CASCADE"
+      },
+      {
+        "nome": "student_location_sharing_profile_id_fkey",
+        "esquema": "public",
+        "de": "student_location_sharing",
+        "para": "profiles",
+        "definicao": "FOREIGN KEY (profile_id) REFERENCES profiles(id) ON DELETE CASCADE"
+      },
+      {
+        "nome": "student_locations_reported_by_profile_id_fkey",
+        "esquema": "public",
+        "de": "student_locations",
+        "para": "profiles",
+        "definicao": "FOREIGN KEY (reported_by_profile_id) REFERENCES profiles(id) ON DELETE SET NULL"
+      },
+      {
+        "nome": "student_messages_recipient_id_fkey",
+        "esquema": "public",
+        "de": "student_messages",
+        "para": "profiles",
+        "definicao": "FOREIGN KEY (recipient_id) REFERENCES profiles(id)"
+      },
+      {
+        "nome": "student_messages_sender_id_fkey",
+        "esquema": "public",
+        "de": "student_messages",
+        "para": "profiles",
+        "definicao": "FOREIGN KEY (sender_id) REFERENCES profiles(id)"
+      },
+      {
+        "nome": "student_pairing_attempts_profile_id_fkey",
+        "esquema": "public",
+        "de": "student_pairing_attempts",
+        "para": "profiles",
+        "definicao": "FOREIGN KEY (profile_id) REFERENCES profiles(id) ON DELETE CASCADE"
+      },
+      {
+        "nome": "student_pairing_codes_guardian_profile_id_fkey",
+        "esquema": "public",
+        "de": "student_pairing_codes",
+        "para": "profiles",
+        "definicao": "FOREIGN KEY (guardian_profile_id) REFERENCES profiles(id) ON DELETE CASCADE"
+      },
+      {
+        "nome": "student_pairing_codes_used_by_profile_id_fkey",
+        "esquema": "public",
+        "de": "student_pairing_codes",
+        "para": "profiles",
+        "definicao": "FOREIGN KEY (used_by_profile_id) REFERENCES profiles(id) ON DELETE SET NULL"
+      },
+      {
+        "nome": "student_reading_levels_updated_by_fkey",
+        "esquema": "public",
+        "de": "student_reading_levels",
+        "para": "profiles",
+        "definicao": "FOREIGN KEY (updated_by) REFERENCES profiles(id)"
+      },
+      {
+        "nome": "students_student_profile_id_fkey",
+        "esquema": "public",
+        "de": "students",
+        "para": "profiles",
+        "definicao": "FOREIGN KEY (student_profile_id) REFERENCES profiles(id) ON DELETE SET NULL"
+      },
+      {
+        "nome": "supervision_action_plans_created_by_fkey",
+        "esquema": "public",
+        "de": "supervision_action_plans",
+        "para": "profiles",
+        "definicao": "FOREIGN KEY (created_by) REFERENCES profiles(id)"
+      },
+      {
+        "nome": "supervision_action_plans_responsible_id_fkey",
+        "esquema": "public",
+        "de": "supervision_action_plans",
+        "para": "profiles",
+        "definicao": "FOREIGN KEY (responsible_id) REFERENCES profiles(id)"
+      },
+      {
+        "nome": "supervision_alerts_acknowledged_by_fkey",
+        "esquema": "public",
+        "de": "supervision_alerts",
+        "para": "profiles",
+        "definicao": "FOREIGN KEY (acknowledged_by) REFERENCES profiles(id)"
+      },
+      {
+        "nome": "supervision_audit_profile_id_fkey",
+        "esquema": "public",
+        "de": "supervision_audit",
+        "para": "profiles",
+        "definicao": "FOREIGN KEY (profile_id) REFERENCES profiles(id)"
+      },
+      {
+        "nome": "supervision_requests_closed_by_fkey",
+        "esquema": "public",
+        "de": "supervision_requests",
+        "para": "profiles",
+        "definicao": "FOREIGN KEY (closed_by) REFERENCES profiles(id)"
+      },
+      {
+        "nome": "supervision_requests_created_by_fkey",
+        "esquema": "public",
+        "de": "supervision_requests",
+        "para": "profiles",
+        "definicao": "FOREIGN KEY (created_by) REFERENCES profiles(id)"
+      },
+      {
+        "nome": "supervision_response_attachments_created_by_fkey",
+        "esquema": "public",
+        "de": "supervision_response_attachments",
+        "para": "profiles",
+        "definicao": "FOREIGN KEY (created_by) REFERENCES profiles(id)"
+      },
+      {
+        "nome": "supervision_responses_created_by_fkey",
+        "esquema": "public",
+        "de": "supervision_responses",
+        "para": "profiles",
+        "definicao": "FOREIGN KEY (created_by) REFERENCES profiles(id)"
+      },
+      {
+        "nome": "supervision_responses_responsible_id_fkey",
+        "esquema": "public",
+        "de": "supervision_responses",
+        "para": "profiles",
+        "definicao": "FOREIGN KEY (responsible_id) REFERENCES profiles(id)"
+      },
+      {
+        "nome": "support_appointments_created_by_fkey",
+        "esquema": "public",
+        "de": "support_appointments",
+        "para": "profiles",
+        "definicao": "FOREIGN KEY (created_by) REFERENCES profiles(id)"
+      },
+      {
+        "nome": "support_appointments_updated_by_fkey",
+        "esquema": "public",
+        "de": "support_appointments",
+        "para": "profiles",
+        "definicao": "FOREIGN KEY (updated_by) REFERENCES profiles(id)"
+      },
+      {
+        "nome": "support_follow_ups_created_by_fkey",
+        "esquema": "public",
+        "de": "support_follow_ups",
+        "para": "profiles",
+        "definicao": "FOREIGN KEY (created_by) REFERENCES profiles(id)"
+      },
+      {
+        "nome": "support_messages_recipient_id_fkey",
+        "esquema": "public",
+        "de": "support_messages",
+        "para": "profiles",
+        "definicao": "FOREIGN KEY (recipient_id) REFERENCES profiles(id)"
+      },
+      {
+        "nome": "support_messages_sender_id_fkey",
+        "esquema": "public",
+        "de": "support_messages",
+        "para": "profiles",
+        "definicao": "FOREIGN KEY (sender_id) REFERENCES profiles(id)"
+      },
+      {
+        "nome": "support_plans_created_by_fkey",
+        "esquema": "public",
+        "de": "support_plans",
+        "para": "profiles",
+        "definicao": "FOREIGN KEY (created_by) REFERENCES profiles(id)"
+      },
+      {
+        "nome": "support_professionals_created_by_fkey",
+        "esquema": "public",
+        "de": "support_professionals",
+        "para": "profiles",
+        "definicao": "FOREIGN KEY (created_by) REFERENCES profiles(id)"
+      },
+      {
+        "nome": "support_professionals_profile_id_fkey",
+        "esquema": "public",
+        "de": "support_professionals",
+        "para": "profiles",
+        "definicao": "FOREIGN KEY (profile_id) REFERENCES profiles(id) ON DELETE SET NULL"
+      },
+      {
+        "nome": "support_requests_assigned_to_fkey",
+        "esquema": "public",
+        "de": "support_requests",
+        "para": "profiles",
+        "definicao": "FOREIGN KEY (assigned_to) REFERENCES profiles(id)"
+      },
+      {
+        "nome": "support_requests_requester_id_fkey",
+        "esquema": "public",
+        "de": "support_requests",
+        "para": "profiles",
+        "definicao": "FOREIGN KEY (requester_id) REFERENCES profiles(id)"
+      },
+      {
+        "nome": "support_services_created_by_fkey",
+        "esquema": "public",
+        "de": "support_services",
+        "para": "profiles",
+        "definicao": "FOREIGN KEY (created_by) REFERENCES profiles(id)"
+      }
+    ],
+    "total_de_fk_para_guardian_students": 0,
+    "total_de_fk_para_profiles": 0,
+    "fixture_regua": [
+      {
+        "de": "access_requests",
+        "saida_de_uma_fk": 1
+      },
+      {
+        "de": "aee_activities",
+        "saida_de_uma_fk": 1
+      },
+      {
+        "de": "aee_activity_recommendations",
+        "saida_de_uma_fk": 3
+      },
+      {
+        "de": "aee_adaptations",
+        "saida_de_uma_fk": 4
+      },
+      {
+        "de": "aee_attendance",
+        "saida_de_uma_fk": 3
+      }
+    ],
+    "nota": "se 0/0 e o PostgREST diz PGRST201, a ambiguidade nao vem de FK direto entre as duas — ve-se em constraintenvolvidos o que existe"
+  },
+  "pen22_rpc_anon": {
+    "formas": [
+      {
+        "nome": "bfr_has_municipal_grant",
+        "definer": true,
+        "volatil": "s",
+        "argumentos": 1,
+        "resultado": "boolean",
+        "anon": true,
+        "auth": true,
+        "corpo_bytes": 436,
+        "escrita_no_corpo": false
+      },
+      {
+        "nome": "bfr_is_municipal_authority",
+        "definer": true,
+        "volatil": "s",
+        "argumentos": 0,
+        "resultado": "boolean",
+        "anon": true,
+        "auth": true,
+        "corpo_bytes": 713,
+        "escrita_no_corpo": false
+      },
+      {
+        "nome": "bfr_is_platform_admin",
+        "definer": true,
+        "volatil": "s",
+        "argumentos": 0,
+        "resultado": "boolean",
+        "anon": true,
+        "auth": true,
+        "corpo_bytes": 308,
+        "escrita_no_corpo": false
+      },
+      {
+        "nome": "bfr_municipal_network_totals",
+        "definer": true,
+        "volatil": "s",
+        "argumentos": 0,
+        "resultado": "TABLE(schools integer, students integer, classes integer, municipalities integer)",
+        "anon": true,
+        "auth": true,
+        "corpo_bytes": 652,
+        "escrita_no_corpo": false
+      },
+      {
+        "nome": "bfr_municipalities_visible",
+        "definer": true,
+        "volatil": "s",
+        "argumentos": 1,
+        "resultado": "boolean",
+        "anon": true,
+        "auth": true,
+        "corpo_bytes": 343,
+        "escrita_no_corpo": false
+      },
+      {
+        "nome": "bfr_rls_director_manages_student",
+        "definer": true,
+        "volatil": "s",
+        "argumentos": 1,
+        "resultado": "boolean",
+        "anon": true,
+        "auth": true,
+        "corpo_bytes": 735,
+        "escrita_no_corpo": false
+      },
+      {
+        "nome": "bfr_rls_is_developer",
+        "definer": true,
+        "volatil": "s",
+        "argumentos": 0,
+        "resultado": "boolean",
+        "anon": true,
+        "auth": true,
+        "corpo_bytes": 377,
+        "escrita_no_corpo": false
+      },
+      {
+        "nome": "bfr_rls_session_role",
+        "definer": true,
+        "volatil": "s",
+        "argumentos": 0,
+        "resultado": "account_role",
+        "anon": true,
+        "auth": true,
+        "corpo_bytes": 470,
+        "escrita_no_corpo": false
+      },
+      {
+        "nome": "bfr_school_in_municipal_scope",
+        "definer": true,
+        "volatil": "s",
+        "argumentos": 1,
+        "resultado": "boolean",
+        "anon": false,
+        "auth": true,
+        "corpo_bytes": 801,
+        "escrita_no_corpo": false
+      }
+    ],
+    "chamaveis_sem_argumentos": [
+      "bfr_is_municipal_authority",
+      "bfr_is_platform_admin",
+      "bfr_municipal_network_totals",
+      "bfr_rls_is_developer",
+      "bfr_rls_session_role"
+    ],
+    "nao_chamadas_porEsta_sonda": [
+      "bfr_has_municipal_grant(args=1,volatil=s,resultado=boolean,escrita_no_corpo=false)",
+      "bfr_municipalities_visible(args=1,volatil=s,resultado=boolean,escrita_no_corpo=false)",
+      "bfr_rls_director_manages_student(args=1,volatil=s,resultado=boolean,escrita_no_corpo=false)"
+    ],
+    "chamadas": [
+      {
+        "nome": "bfr_is_municipal_authority",
+        "tipo_declarado": "boolean",
+        "status": 200,
+        "forma": "escalar",
+        "linhas": null,
+        "colunas": null,
+        "code": null,
+        "bytes_resposta": 5
+      },
+      {
+        "nome": "bfr_is_platform_admin",
+        "tipo_declarado": "boolean",
+        "status": 200,
+        "forma": "escalar",
+        "linhas": null,
+        "colunas": null,
+        "code": null,
+        "bytes_resposta": 5
+      },
+      {
+        "nome": "bfr_municipal_network_totals",
+        "tipo_declarado": "TABLE(schools integer, students integer, classes integer, municipalities integer)",
+        "status": 200,
+        "forma": "array",
+        "linhas": 1,
+        "colunas": [
+          "schools",
+          "students",
+          "classes",
+          "municipalities"
+        ],
+        "code": null,
+        "bytes_resposta": 59
+      },
+      {
+        "nome": "bfr_rls_is_developer",
+        "tipo_declarado": "boolean",
+        "status": 200,
+        "forma": "escalar",
+        "linhas": null,
+        "colunas": null,
+        "code": null,
+        "bytes_resposta": 5
+      },
+      {
+        "nome": "bfr_rls_session_role",
+        "tipo_declarado": "account_role",
+        "status": 200,
+        "forma": "escalar",
+        "linhas": null,
+        "colunas": null,
+        "code": null,
+        "bytes_resposta": 4
+      }
+    ],
+    "http_200": 5,
+    "regua_de_escrita": "POST de RPC so com provolatile em (i,s) e 0 argumentos; nenhuma funcao volatile foi tocada"
+  },
+  "pen13_pending": {
+    "distribuicao": [
+      {
+        "papel": "secretary",
+        "linhas": 4
+      },
+      {
+        "papel": "developer",
+        "linhas": 3
+      },
+      {
+        "papel": "aee",
+        "linhas": 2
+      },
+      {
+        "papel": "coordinator",
+        "linhas": 2
+      },
+      {
+        "papel": "director",
+        "linhas": 2
+      },
+      {
+        "papel": "gatekeeper",
+        "linhas": 2
+      },
+      {
+        "papel": "monitor",
+        "linhas": 2
+      },
+      {
+        "papel": "pedagogical",
+        "linhas": 2
+      },
+      {
+        "papel": "pending",
+        "linhas": 2
+      },
+      {
+        "papel": "student",
+        "linhas": 2
+      },
+      {
+        "papel": "education_supervisor",
+        "linhas": 1
+      },
+      {
+        "papel": "parent",
+        "linhas": 1
+      },
+      {
+        "papel": "psychology",
+        "linhas": 1
+      },
+      {
+        "papel": "social_work",
+        "linhas": 1
+      },
+      {
+        "papel": "sports_operator",
+        "linhas": 1
+      }
+    ],
+    "total": 28,
+    "linhas": [
+      {
+        "id_hash": "36976a32cb65d7ba80f713f1d6643ae0",
+        "criado": "2026-11-17",
+        "auth_users": 1
+      },
+      {
+        "id_hash": "4badcb5781d30e4bb642872b6b54215a",
+        "criado": "2026-11-18",
+        "auth_users": 1
+      }
+    ],
+    "fila_access_requests": [
+      {
+        "estado": "approved",
+        "linhas": 11
+      },
+      {
+        "estado": "pending",
+        "linhas": 1
+      }
+    ]
+  }
+}

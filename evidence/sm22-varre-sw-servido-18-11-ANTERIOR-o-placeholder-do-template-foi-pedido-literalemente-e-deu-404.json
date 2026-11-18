@@ -1,0 +1,124 @@
+{
+  "em": "2026-11-18T17:43:28.673Z",
+  "metodo": "GET do shell e de cada caminho de SW que o proprio shell anuncia; nenhuma escrita; nenhum segredo lido",
+  "caminho_extrato_do_shell": [
+    "${APP_ORIGIN}/sw-v4.js",
+    "${window.location.origin}/sw-v4.js",
+    "${location.origin}/sw-v4.js"
+  ],
+  "controlo_negativo": {
+    "corpo": "mesma regua sobre um SW sintetico sem push nem notificationclick",
+    "ouvintes": {
+      "install": true,
+      "activate": true,
+      "fetch": true,
+      "push": false,
+      "notificationclick": false
+    },
+    "empurra_dois_para_false": true
+  },
+  "sw_servidos": [
+    {
+      "caminho_no_shell": "${APP_ORIGIN}/sw-v4.js",
+      "url_medida": "https://bfr-conecta.turmaroboticabfr.workers.dev/$%7BAPP_ORIGIN%7D/sw-v4.js",
+      "status": 404,
+      "bytes": 9,
+      "md5": "9e076f5885f5cc16a4b5aeb8de4adff5",
+      "ouvintes": {
+        "install": false,
+        "activate": false,
+        "fetch": false,
+        "push": false,
+        "notificationclick": false
+      },
+      "contagem_de_addEventListener": 0
+    },
+    {
+      "caminho_no_shell": "${window.location.origin}/sw-v4.js",
+      "url_medida": "https://bfr-conecta.turmaroboticabfr.workers.dev/$%7Bwindow.location.origin%7D/sw-v4.js",
+      "status": 404,
+      "bytes": 9,
+      "md5": "9e076f5885f5cc16a4b5aeb8de4adff5",
+      "ouvintes": {
+        "install": false,
+        "activate": false,
+        "fetch": false,
+        "push": false,
+        "notificationclick": false
+      },
+      "contagem_de_addEventListener": 0
+    },
+    {
+      "caminho_no_shell": "${location.origin}/sw-v4.js",
+      "url_medida": "https://bfr-conecta.turmaroboticabfr.workers.dev/$%7Blocation.origin%7D/sw-v4.js",
+      "status": 404,
+      "bytes": 9,
+      "md5": "9e076f5885f5cc16a4b5aeb8de4adff5",
+      "ouvintes": {
+        "install": false,
+        "activate": false,
+        "fetch": false,
+        "push": false,
+        "notificationclick": false
+      },
+      "contagem_de_addEventListener": 0
+    }
+  ],
+  "confrontacao": [
+    {
+      "caminho": "${APP_ORIGIN}/sw-v4.js",
+      "md5_servido_vs_md5_medido_no_ar_peca1": {
+        "servido": "9e076f5885f5cc16a4b5aeb8de4adff5",
+        "peca1": "36ef6aeba9954ec3aa4a11230bf811dd",
+        "iguais": false
+      },
+      "md5_servido_vs_esperado_v134": {
+        "servido": "9e076f5885f5cc16a4b5aeb8de4adff5",
+        "esperado": "36ef6aeba9954ec3aa4a11230bf811dd",
+        "iguais": false
+      },
+      "bytes_servido_vs_peca1": {
+        "servido": 9,
+        "peca1": 5064,
+        "iguais": false
+      }
+    },
+    {
+      "caminho": "${window.location.origin}/sw-v4.js",
+      "md5_servido_vs_md5_medido_no_ar_peca1": {
+        "servido": "9e076f5885f5cc16a4b5aeb8de4adff5",
+        "peca1": "36ef6aeba9954ec3aa4a11230bf811dd",
+        "iguais": false
+      },
+      "md5_servido_vs_esperado_v134": {
+        "servido": "9e076f5885f5cc16a4b5aeb8de4adff5",
+        "esperado": "36ef6aeba9954ec3aa4a11230bf811dd",
+        "iguais": false
+      },
+      "bytes_servido_vs_peca1": {
+        "servido": 9,
+        "peca1": 5064,
+        "iguais": false
+      }
+    },
+    {
+      "caminho": "${location.origin}/sw-v4.js",
+      "md5_servido_vs_md5_medido_no_ar_peca1": {
+        "servido": "9e076f5885f5cc16a4b5aeb8de4adff5",
+        "peca1": "36ef6aeba9954ec3aa4a11230bf811dd",
+        "iguais": false
+      },
+      "md5_servido_vs_esperado_v134": {
+        "servido": "9e076f5885f5cc16a4b5aeb8de4adff5",
+        "esperado": "36ef6aeba9954ec3aa4a11230bf811dd",
+        "iguais": false
+      },
+      "bytes_servido_vs_peca1": {
+        "servido": 9,
+        "peca1": 5064,
+        "iguais": false
+      }
+    }
+  ],
+  "veredito_sw": "NENHUM SW SERVIDO TEM OS DOIS OUVINTES"
+}

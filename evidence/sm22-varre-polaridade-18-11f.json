@@ -1,0 +1,83 @@
+{
+  "em": "2026-11-18T18:12:34.942Z",
+  "metodo": "GET do shell + duas bases locais; nenhuma escrita; polaridade declarada por marcador antes de qualquer veredito",
+  "identidade": {
+    "ar_md5": "b272fd4f3a737c518e888250ab8167f1",
+    "ar_bytes": 3546846,
+    "base_v133_md5": "2afd253b0bafa0eea956a74fde5f92cc",
+    "base_v119_md5": "a1969cdf023042e7d2a91e7ed9333a05"
+  },
+  "defeito_confessado": "a peca 1 nao declarava polaridade: treatava todo o marcador como assinatura de defeito",
+  "marcadores": [
+    {
+      "nome": "pen32_setrole_conhece_supervisor",
+      "polaridade": "CORRECAO",
+      "no_ar": 1,
+      "na_base_v133": 1,
+      "na_base_v119": 1,
+      "discrimina": false,
+      "poder_de_fogo": true,
+      "veredito": "NAO_PROBATARIO_POR_ESTA_REGUA (1 no ar e 1 na v119: contar o mesmo nos dois corpus nao prova correcao alguma)"
+    },
+    {
+      "nome": "pen33_accountLabels_com_chave_supervisor",
+      "polaridade": "CORRECAO",
+      "no_ar": 1,
+      "na_base_v133": 1,
+      "na_base_v119": 0,
+      "discrimina": true,
+      "poder_de_fogo": true,
+      "veredito": "FECHO_PROVADO_POR_REGUA (1 no ar, 0 na v119)"
+    },
+    {
+      "nome": "pen33_responsavel_como_rotulo_unico",
+      "polaridade": "DEFEITO",
+      "no_ar": 1,
+      "na_base_v133": 1,
+      "na_base_v119": 1,
+      "discrimina": false,
+      "poder_de_fogo": true,
+      "veredito": "NAO_PROBATARIO_POR_ESTA_REGUA (1 no ar e 1 na v119: a regua nao muda entre o corpus antes e depois)"
+    },
+    {
+      "nome": "pen26_registro_sw_em_template",
+      "polaridade": "CORRECAO",
+      "no_ar": 3,
+      "na_base_v133": 3,
+      "na_base_v119": 3,
+      "discrimina": false,
+      "poder_de_fogo": true,
+      "veredito": "NAO_PROBATARIO_POR_ESTA_REGUA (3 no ar e 3 na v119: contar o mesmo nos dois corpus nao prova correcao alguma)"
+    },
+    {
+      "nome": "pen26_registro_sw_com_aspas_da_peca1",
+      "polaridade": "CONTROLE_DA_CEGUEIRA",
+      "no_ar": 0,
+      "na_base_v133": 0,
+      "na_base_v119": 0,
+      "discrimina": false,
+      "poder_de_fogo": false,
+      "veredito": "a regex da peca 1 da v134=0 e v133=0 e v119=0 — zero nos tres confirma a cegueira, nao a ausencia do registo"
+    },
+    {
+      "nome": "pen26_sw_tem_ouvinte_push",
+      "polaridade": "CORRECAO",
+      "no_ar": 0,
+      "na_base_v133": 0,
+      "na_base_v119": 0,
+      "discrimina": false,
+      "poder_de_fogo": false,
+      "veredito": "NAO_PROBATARIO_POR_ESTA_REGUA (0 no ar e 0 na v119: contar o mesmo nos dois corpus nao prova correcao alguma)"
+    },
+    {
+      "nome": "pen19_navButton_no_corpo_do_intervalo",
+      "polaridade": "DEFEITO",
+      "no_ar": 0,
+      "na_base_v133": 0,
+      "na_base_v119": 0,
+      "discrimina": false,
+      "poder_de_fogo": false,
+      "veredito": "NAO_PROBATARIO_POR_ESTA_REGUA (0 no ar e 0 na v119: a regua nao muda entre o corpus antes e depois)"
+    }
+  ]
+}

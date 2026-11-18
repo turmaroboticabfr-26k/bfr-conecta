@@ -1,0 +1,63 @@
+{
+  "em": "2026-11-18T18:00:21.949Z",
+  "metodo": "GET do shell + fixture da regex + pg_constraint; nenhuma escrita",
+  "fixture": {
+    "texto": "A?select=schools(name)&B?select=sports_schools(name)&C=schools(name",
+    "esperado_1": 1,
+    "medido": 1
+  },
+  "contagens": {
+    "schools_name_com_fronteira": 2,
+    "sports_schools_name_com_fronteira": 2,
+    "schools_name_por_substring": 4
+  },
+  "ocorrencias": [
+    {
+      "offset_bytes": 3506483,
+      "origem_mais_proxima": "classes",
+      "origens_na_janela": [
+        "schools",
+        "students",
+        "classes"
+      ],
+      "trecho": "0)); const turmas = await ler('turmas_todo', (from) => from('classes').select('id,year,class_code,shift,school_id,schools(name)').order('year')); const processos = awai"
+    },
+    {
+      "offset_bytes": 3510378,
+      "origem_mais_proxima": "classes",
+      "origens_na_janela": [
+        "school_documents",
+        "schools",
+        "students",
+        "classes"
+      ],
+      "trecho": "mit(1500)), turmas: await ler('turmas_todo', (from) => from('classes').select('id,year,class_code,shift,school_id,schools(name)').order('year')) }) }; //─ 5. desenho. "
+    }
+  ],
+  "origens": [
+    "classes"
+  ],
+  "fks_das_origens_para_schools": [
+    {
+      "de": "classes",
+      "para": "schools",
+      "conname": "fk_classes_school"
+    }
+  ],
+  "fks_para_schools_em_todas_as_tabelas": [
+    {
+      "de": "bfr_school_key_map",
+      "fks_para_schools": 1
+    },
+    {
+      "de": "classes",
+      "fks_para_schools": 1
+    },
+    {
+      "de": "students",
+      "fks_para_schools": 1
+    }
+  ],
+  "tabela_schools_existe": true,
+  "leitura": "as 2 chamadas tem origem em tabela(s) COM FK para public.schools — sao consultas validas, nao o PEN-31"
+}

@@ -1,0 +1,217 @@
+{
+  "em": "2026-11-18T17:30:22.307Z",
+  "metodo": "SELECTs de catalogo; zero chamada RPC nesta peca; zero escrita; corpo de funcao lido só em resumo (bytes e expressoes que mencionam pending)",
+  "pen28_caminhos_fk": {
+    "total_fk_public": 424,
+    "pares": {
+      "guardian_students -> profiles": {
+        "idas": 2,
+        "voltas": 0,
+        "total": 2,
+        "fks_idas": [
+          "guardian_students_linked_by_fkey(linked_by)",
+          "guardian_students_profile_id_fkey(profile_id)"
+        ],
+        "fks_voltas": []
+      },
+      "guardian_students -> students": {
+        "idas": 1,
+        "voltas": 0,
+        "total": 1,
+        "fks_idas": [
+          "guardian_students_student_id_fkey(student_id)"
+        ],
+        "fks_voltas": []
+      },
+      "supervision_requests -> schools": {
+        "idas": 0,
+        "voltas": 0,
+        "total": 0,
+        "fks_idas": [],
+        "fks_voltas": []
+      },
+      "supervision_requests -> sports_schools": {
+        "idas": 1,
+        "voltas": 0,
+        "total": 1,
+        "fks_idas": [
+          "supervision_requests_school_id_fkey(school_id)"
+        ],
+        "fks_voltas": []
+      },
+      "supervision_requests -> profiles": {
+        "idas": 2,
+        "voltas": 0,
+        "total": 2,
+        "fks_idas": [
+          "supervision_requests_closed_by_fkey(closed_by)",
+          "supervision_requests_created_by_fkey(created_by)"
+        ],
+        "fks_voltas": []
+      },
+      "students -> profiles": {
+        "idas": 1,
+        "voltas": 0,
+        "total": 1,
+        "fks_idas": [
+          "students_student_profile_id_fkey(student_profile_id)"
+        ],
+        "fks_voltas": []
+      }
+    },
+    "fixture": {
+      "pares_com_um_caminho": [
+        "guardian_students -> students",
+        "supervision_requests -> sports_schools",
+        "students -> profiles"
+      ],
+      "pares_com_mais_de_um": [
+        "guardian_students -> profiles",
+        "supervision_requests -> profiles"
+      ]
+    },
+    "corrigido": "a peca 5 comparava com prefixo public.; cast(oid as regclass)::text devolve o nome despido",
+    "tabelas_com_duas_ou_mais_fks_para_profiles": [
+      "aee_adaptations",
+      "aee_game_assignments",
+      "aee_materials",
+      "aee_messages",
+      "aee_plans",
+      "aee_resources",
+      "bfr_coordination_threads",
+      "bfr_lesson_attendance",
+      "bfr_municipal_access_grants",
+      "bfr_schedule_versions",
+      "collaboration_notifications",
+      "collaboration_project_members",
+      "collaboration_projects",
+      "collaboration_task_members",
+      "collaboration_tasks",
+      "entry_restrictions",
+      "gate_checkins",
+      "gate_entry_alerts",
+      "guardian_students",
+      "internal_chat_message_reports",
+      "learning_action_plans",
+      "learning_goals",
+      "learning_teacher_actions",
+      "psychology_articulations",
+      "psychology_referrals",
+      "psychology_returns",
+      "sports_matches",
+      "staff_channel_members",
+      "staff_channels",
+      "staff_messages",
+      "student_avatar_configs",
+      "student_location_consent_log",
+      "student_messages",
+      "student_pairing_codes",
+      "supervision_action_plans",
+      "supervision_requests",
+      "supervision_responses",
+      "support_appointments",
+      "support_messages",
+      "support_professionals",
+      "support_requests"
+    ]
+  },
+  "pen22_rpc": {
+    "funcoes_com_anon_execute": 65,
+    "chamaveis_sem_argumentos": [
+      "is_aee",
+      "is_aee_manager",
+      "bfr_staff_role",
+      "bfr_literacy_staff",
+      "bfr_staff_is_manager",
+      "bfr_collab_is_staff",
+      "bfr_collab_is_manager",
+      "internal_chat_is_staff",
+      "bfr_is_schedule_manager",
+      "bfr_current_teacher_id",
+      "bfr_can_manage_communications",
+      "bfr_can_manage_student_directory",
+      "bfr_learning_is_manager",
+      "bfr_rls_session_role",
+      "bfr_rls_is_developer",
+      "bfr_is_platform_admin",
+      "bfr_is_municipal_authority",
+      "bfr_municipal_network_totals"
+    ],
+    "n_chamaveis_sem_argumentos": 18,
+    "devolvem_tabela": [
+      "bfr_municipal_network_totals"
+    ],
+    "n_devolvem_tabela": 1,
+    "municipais": [
+      {
+        "nome": "bfr_has_municipal_grant",
+        "argumentos": 1,
+        "resultado": "boolean",
+        "definer": true,
+        "bytes_corpo": 436,
+        "corpo_referencia_guarda_de_sessao": true,
+        "guarda_especifica": [
+          "bfr_has_municipal_grant",
+          "auth.uid()"
+        ],
+        "escrita_no_corpo": false
+      },
+      {
+        "nome": "bfr_is_municipal_authority",
+        "argumentos": 0,
+        "resultado": "boolean",
+        "definer": true,
+        "bytes_corpo": 713,
+        "corpo_referencia_guarda_de_sessao": true,
+        "guarda_especifica": [
+          "bfr_is_municipal_authority",
+          "bfr_has_municipal_grant",
+          "auth.uid()"
+        ],
+        "escrita_no_corpo": false
+      },
+      {
+        "nome": "bfr_municipalities_visible",
+        "argumentos": 1,
+        "resultado": "boolean",
+        "definer": true,
+        "bytes_corpo": 343,
+        "corpo_referencia_guarda_de_sessao": false,
+        "guarda_especifica": [],
+        "escrita_no_corpo": false
+      },
+      {
+        "nome": "bfr_municipal_network_totals",
+        "argumentos": 0,
+        "resultado": "TABLE(schools integer, students integer, classes integer, municipalities integer)",
+        "definer": true,
+        "bytes_corpo": 652,
+        "corpo_referencia_guarda_de_sessao": false,
+        "guarda_especifica": [],
+        "escrita_no_corpo": false
+      }
+    ]
+  },
+  "pen13_causa": {
+    "default_prole": [
+      {
+        "coluna": "role",
+        "default": "'pending'::account_role",
+        "tipo": "USER-DEFINED"
+      }
+    ],
+    "gatilhos": [],
+    "handle_new_user": [
+      {
+        "esquema_de_facto": "handle_new_user",
+        "definer": true,
+        "anon_execute": false,
+        "bytes_corpo": 3977,
+        "escreve_role": true,
+        "menciona_pending": false,
+        "expressoes_pending": [],
+        "coalesce_de_metadata": true
+      }
+    ]
+  }
+}

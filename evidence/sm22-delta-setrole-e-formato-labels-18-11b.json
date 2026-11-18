@@ -1,0 +1,134 @@
+{
+  "em": "2026-11-18T18:07:23.222Z",
+  "metodo": "extraccao por chavetas sobre as geracoes locais; duas contagens independentes de accountLabels; zero rede; zero escrita",
+  "correcao_de_regua": "a peca 13 dava 12 chaves num mapa de 13; a causa medida e o minimo de letras do padrao ([a-z][a-z_]{3,26} nao admite `aee`), nao o delimitador — ver `fixtures`, que tambem registra que a hipotese do delimitador nao reproduzia o defeito",
+  "pen33_accountLabels": {
+    "corpo_bytes": 742,
+    "chaves": [
+      "developer",
+      "director",
+      "pedagogical",
+      "aee",
+      "psychology",
+      "social_work",
+      "sports_operator",
+      "monitor",
+      "gatekeeper",
+      "secretary",
+      "education_supervisor",
+      "student",
+      "parent"
+    ],
+    "n_por_chaves": 13,
+    "n_por_valores": 13,
+    "batem": true,
+    "tem_aee": true,
+    "tem_education_supervisor": true,
+    "rotulo_education_supervisor": "Supervisão Educacional | Supervisor(a) de ensino",
+    "todos_os_rotulos": {
+      "developer": "Administrador | Acesso total",
+      "director": "Direção escolar | Visão estratégica",
+      "pedagogical": "Equipe pedagógica | Lançamentos escolares",
+      "aee": "Professor(a) do AEE | Atendimento especializado",
+      "psychology": "Psicologia escolar | Central da Psicologia",
+      "social_work": "Assistente social | Central multiprofissional",
+      "sports_operator": "Operador(a) de placar | Placar e jogos escolares",
+      "monitor": "Monitor escolar | Registro do percurso",
+      "gatekeeper": "Portaria escolar | Leitura de crachás",
+      "secretary": "Secretaria escolar | Atendimento e protocolos",
+      "education_supervisor": "Supervisão Educacional | Supervisor(a) de ensino",
+      "student": "Estudante | Acompanhamento pessoal",
+      "parent": "Família BFR | Responsável"
+    }
+  },
+  "fixtures": {
+    "n_peca13": 12,
+    "n_regra_certa": 13,
+    "chaves_que_a_peca13_perdia": [
+      "aee"
+    ],
+    "a_causa_e_o_minimo_de_letras": true,
+    "a_hipotese_do_delimitador_reproduzia_algo": false
+  },
+  "pen32_portao_por_geracao": [
+    {
+      "geracao": "v114",
+      "corpo_bytes": 9209,
+      "portao_de_edsup": false,
+      "perfis_permitidos": null,
+      "condicao_de_secretaryView": " role !== 'secretary'"
+    },
+    {
+      "geracao": "v119",
+      "corpo_bytes": 9209,
+      "portao_de_edsup": false,
+      "perfis_permitidos": null,
+      "condicao_de_secretaryView": " role !== 'secretary'"
+    },
+    {
+      "geracao": "v120",
+      "corpo_bytes": 9348,
+      "portao_de_edsup": true,
+      "perfis_permitidos": [
+        "education_supervisor",
+        "developer"
+      ],
+      "condicao_de_secretaryView": " role !== 'secretary' && role !== 'education_supervisor'"
+    },
+    {
+      "geracao": "v121",
+      "corpo_bytes": 9348,
+      "portao_de_edsup": true,
+      "perfis_permitidos": [
+        "education_supervisor",
+        "developer"
+      ],
+      "condicao_de_secretaryView": " role !== 'secretary' && role !== 'education_supervisor'"
+    },
+    {
+      "geracao": "v134",
+      "corpo_bytes": 9348,
+      "portao_de_edsup": true,
+      "perfis_permitidos": [
+        "education_supervisor",
+        "developer"
+      ],
+      "condicao_de_secretaryView": " role !== 'secretary' && role !== 'education_supervisor'"
+    }
+  ],
+  "pen32_a_regua_discrimina": true,
+  "pen32_escala_da_correcao": {
+    "ficheiro_v119_bytes": 3489474,
+    "ficheiro_v120_bytes": 3489649,
+    "delta_ficheiro": 175,
+    "corpo_v119_bytes": 9209,
+    "corpo_v120_bytes": 9348,
+    "delta_corpo": 139,
+    "todo_o_delta_do_ficheiro_esta_dentro_do_corpo": false
+  },
+  "pen32_delta_v119_para_v120": {
+    "offset_no_corpo": 1080,
+    "bytes_removidos": 1884,
+    "bytes_adicionados": 2023,
+    "linhas_somente_em_v119": [
+      "const allowed = role === 'parent' ? ['parent','developer'].includes(currentProfile?.role) : role === 'teacher' ? ['pedagogical','developer'].includes(currentProfile?.role) : role === 'coordinator' ? ['coordinator','developer'].includes(currentProfile?.role) : role === 'student' ? ['student','developer'].includes(currentProfile?.role) : role === 'monitor' ? ['monitor','developer'].includes(currentProfile?.role) : role === 'gatekeeper' ? ['gatekeeper','developer'].includes(currentProfile?.role) : role === 'secretary' ? ['secretary','education_supervisor','developer'].includes(currentProfile?.role) : role === 'psychology' ? ['psychology','developer'].includes(currentProfile?.role) : role === 'multiprofessional' ? ['social_work','developer'].includes(currentProfile?.role) : role === 'aee' ? ['aee','coordinator','director','developer'].includes(currentProfile?.role) : role === 'director' ? ['director','developer'].includes(currentProfile?.role) : role === 'sports_operator' ? ['sports_operator','developer'].includes(currentProfile?.role) : role === 'admin' && currentProfile?.role === 'developer';",
+      "secretaryView.classList.toggle('hidden', role !== 'secretary');"
+    ],
+    "linhas_somente_em_v120": [
+      "const allowed = role === 'parent' ? ['parent','developer'].includes(currentProfile?.role) : role === 'teacher' ? ['pedagogical','developer'].includes(currentProfile?.role) : role === 'coordinator' ? ['coordinator','developer'].includes(currentProfile?.role) : role === 'student' ? ['student','developer'].includes(currentProfile?.role) : role === 'monitor' ? ['monitor','developer'].includes(currentProfile?.role) : role === 'gatekeeper' ? ['gatekeeper','developer'].includes(currentProfile?.role) : role === 'secretary' ? ['secretary','education_supervisor','developer'].includes(currentProfile?.role) : role === 'psychology' ? ['psychology','developer'].includes(currentProfile?.role) : role === 'multiprofessional' ? ['social_work','developer'].includes(currentProfile?.role) : role === 'aee' ? ['aee','coordinator','director','developer'].includes(currentProfile?.role) : role === 'director' ? ['director','developer'].includes(currentProfile?.role) : role === 'sports_operator' ? ['sports_operator','developer'].includes(currentProfile?.role) : role === 'education_supervisor' ? ['education_supervisor','developer'].includes(currentProfile?.role) : role === 'admin' && currentProfile?.role === 'developer';",
+      "secretaryView.classList.toggle('hidden', role !== 'secretary' && role !== 'education_supervisor');"
+    ]
+  },
+  "pen32_o_que_a_v120_mexeu_fora_de_setRole": {
+    "offset_no_ficheiro": 1167785,
+    "bloco_antes_bytes": 23885,
+    "bloco_depois_bytes": 24060,
+    "resto_fora_do_corpo_bytes": 36,
+    "dentro_de_setRole": false,
+    "linhas_só_no_bloco_depois": [
+      "education_supervisor' ? ['education_supervisor','developer'].includes(currentProfile?.role) : role === 'admin' && currentProfile?.role === 'developer';",
+      "secretaryView.classList.toggle('hidden', role !== 'secretary' && role !== 'education_supervisor');",
+      "const view = { parent:parentView, teacher:teacherView, coordinator:coordinatorView, student:studentView, admin:adminView, director:directorView, monitor:monitor"
+    ]
+  }
+}

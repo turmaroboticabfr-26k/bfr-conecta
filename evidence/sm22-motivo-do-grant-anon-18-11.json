@@ -1,0 +1,177 @@
+{
+  "em": "2026-11-18T18:16:57.667Z",
+  "metodo": "pg_policy/pg_get_expr de `public` + GET do shell; zero escrita; zero segredo impresso",
+  "total_policies_public": 489,
+  "duas_reguas_batem": true,
+  "regua_discrimina_fixture": {
+    "esperados_dentro_das_policies": [
+      "bfr_rls_session_role",
+      "bfr_rls_is_developer",
+      "bfr_rls_director_manages_student"
+    ],
+    "medidos": {
+      "bfr_rls_session_role": 10,
+      "bfr_rls_is_developer": 3,
+      "bfr_rls_director_manages_student": 3
+    },
+    "discriminate": true
+  },
+  "dentro_das_policies": {
+    "bfr_is_municipal_authority": {
+      "policies_que_citam_na_via_js": 5,
+      "policies_que_citam_na_via_sql": 5,
+      "ocorrencias_no_texto_das_policies": 5,
+      "total_policies_public": 489
+    },
+    "bfr_is_platform_admin": {
+      "policies_que_citam_na_via_js": 8,
+      "policies_que_citam_na_via_sql": 8,
+      "ocorrencias_no_texto_das_policies": 11,
+      "total_policies_public": 489
+    },
+    "bfr_municipalities_visible": {
+      "policies_que_citam_na_via_js": 1,
+      "policies_que_citam_na_via_sql": 1,
+      "ocorrencias_no_texto_das_policies": 1,
+      "total_policies_public": 489
+    },
+    "bfr_rls_director_manages_student": {
+      "policies_que_citam_na_via_js": 2,
+      "policies_que_citam_na_via_sql": 2,
+      "ocorrencias_no_texto_das_policies": 3,
+      "total_policies_public": 489
+    },
+    "bfr_rls_is_developer": {
+      "policies_que_citam_na_via_js": 2,
+      "policies_que_citam_na_via_sql": 2,
+      "ocorrencias_no_texto_das_policies": 3,
+      "total_policies_public": 489
+    },
+    "bfr_rls_session_role": {
+      "policies_que_citam_na_via_js": 7,
+      "policies_que_citam_na_via_sql": 7,
+      "ocorrencias_no_texto_das_policies": 10,
+      "total_policies_public": 489
+    },
+    "bfr_school_in_municipal_scope": {
+      "policies_que_citam_na_via_js": 3,
+      "policies_que_citam_na_via_sql": 3,
+      "ocorrencias_no_texto_das_policies": 3,
+      "total_policies_public": 489
+    }
+  },
+  "fora_das_policies": {
+    "bfr_has_municipal_grant": {
+      "policies_que_citam_na_via_js": 0,
+      "policies_que_citam_na_via_sql": 0,
+      "ocorrencias_no_texto_das_policies": 0,
+      "total_policies_public": 489
+    },
+    "bfr_municipal_network_totals": {
+      "policies_que_citam_na_via_js": 0,
+      "policies_que_citam_na_via_sql": 0,
+      "ocorrencias_no_texto_das_policies": 0,
+      "total_policies_public": 489
+    }
+  },
+  "probe_anon_ja_medido_na_peca8": [
+    {
+      "nome": "bfr_is_municipal_authority",
+      "tipo_declarado": "boolean",
+      "status": 200,
+      "forma": "escalar",
+      "linhas": null,
+      "colunas": null,
+      "code": null,
+      "bytes_resposta": 5
+    },
+    {
+      "nome": "bfr_is_platform_admin",
+      "tipo_declarado": "boolean",
+      "status": 200,
+      "forma": "escalar",
+      "linhas": null,
+      "colunas": null,
+      "code": null,
+      "bytes_resposta": 5
+    },
+    {
+      "nome": "bfr_municipal_network_totals",
+      "tipo_declarado": "TABLE(schools integer, students integer, classes integer, municipalities integer)",
+      "status": 200,
+      "forma": "array",
+      "linhas": 1,
+      "colunas": [
+        "schools",
+        "students",
+        "classes",
+        "municipalities"
+      ],
+      "code": null,
+      "bytes_resposta": 59
+    },
+    {
+      "nome": "bfr_rls_is_developer",
+      "tipo_declarado": "boolean",
+      "status": 200,
+      "forma": "escalar",
+      "linhas": null,
+      "colunas": null,
+      "code": null,
+      "bytes_resposta": 5
+    },
+    {
+      "nome": "bfr_rls_session_role",
+      "tipo_declarado": "account_role",
+      "status": 200,
+      "forma": "escalar",
+      "linhas": null,
+      "colunas": null,
+      "code": null,
+      "bytes_resposta": 4
+    }
+  ],
+  "bundle": {
+    "chamadas_rpc_no_shell": 32,
+    "nomes_rpc_no_shell": [
+      "get_student_guardians",
+      "register_gate_checkin",
+      "confirm_guardian_entry",
+      "list_current_month_birthdays",
+      "set_profile_role",
+      "acknowledge_occurrence",
+      "complete_family_registration",
+      "choose_initial_role",
+      "bfr_list_staff_birthdays",
+      "bfr_set_staff_birthday",
+      "correct_gate_attendance",
+      "bfr_confirm_school_calendar",
+      "bfr_teacher_context",
+      "bfr_teacher_lesson_gate_evidence",
+      "bfr_correct_grade",
+      "bfr_get_student_photo_path",
+      "sports_set_match_status",
+      "sports_rebuild_standings",
+      "sports_record_event",
+      "bfr_resolve_communication_recipients",
+      "bfr_create_school_meeting",
+      "bfr_create_targeted_announcement",
+      "bfr_update_school_meeting",
+      "register_gate_checkin_v2",
+      "bfr_is_municipal_authority"
+    ],
+    "chamadas_por_funcao": {
+      "bfr_has_municipal_grant": 0,
+      "bfr_is_municipal_authority": 1,
+      "bfr_is_platform_admin": 0,
+      "bfr_municipal_network_totals": 0,
+      "bfr_municipalities_visible": 0,
+      "bfr_rls_director_manages_student": 0,
+      "bfr_rls_is_developer": 0,
+      "bfr_rls_session_role": 0,
+      "bfr_school_in_municipal_scope": 0
+    }
+  },
+  "n_com_anon_execute": 8,
+  "leitura": "das 9 funcoes desta lista, 8 tem EXECUTE a anon; dessas, 6 tambem sao citadas em policies de public (REVOKE a anon partiria a RLS, foi o que o sm10 ensinou) e 2 nao aparecem em nenhuma policy"
+}

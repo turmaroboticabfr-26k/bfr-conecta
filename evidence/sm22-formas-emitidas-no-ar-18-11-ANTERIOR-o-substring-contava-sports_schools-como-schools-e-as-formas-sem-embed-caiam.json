@@ -1,0 +1,152 @@
+{
+  "em": "2026-11-18T17:57:57.095Z",
+  "metodo": "GET do shell servido + procura literal da origem e do embed; nenhuma escrita; nenhum segredo",
+  "shell_caracteres": 3528787,
+  "nove_formas_do_censo_v118": [
+    {
+      "de": "guardian_students",
+      "select_censo_v118": "profile_id,student_id,profiles(full_name,email),students(official_name,classes(year,class_code))",
+      "code_v118": "PGRST201",
+      "chamadas_from_no_ar": 13,
+      "embeds": [
+        {
+          "embed": "profiles(full_name,email)",
+          "ocorrencias_no_shell": 1
+        },
+        {
+          "embed": "classes(year,class_code)",
+          "ocorrencias_no_shell": 42
+        }
+      ],
+      "emitida_no_ar_hoje": true,
+      "re_sonda_de_hoje": {
+        "status": 300,
+        "code": "PGRST201"
+      }
+    },
+    {
+      "de": "bfr_school_shift_settings",
+      "select_censo_v118": "school_year,shift,entry_opens_at,class_starts_at,shift_closes_at,active_weekdays,late_grace_minutes,confirmed_by,confirmed_at,updated_at",
+      "code_v118": "PGRST205",
+      "chamadas_from_no_ar": 3,
+      "embeds": [],
+      "emitida_no_ar_hoje": false,
+      "re_sonda_de_hoje": {
+        "status": 404,
+        "code": "PGRST205"
+      }
+    },
+    {
+      "de": "bfr_school_calendar_days",
+      "select_censo_v118": "school_year,school_date,calendar_status,label,source_status,confirmed_at",
+      "code_v118": "PGRST205",
+      "chamadas_from_no_ar": 3,
+      "embeds": [],
+      "emitida_no_ar_hoje": false,
+      "re_sonda_de_hoje": {
+        "status": 404,
+        "code": "PGRST205"
+      }
+    },
+    {
+      "de": "bfr_school_calendar_month_targets",
+      "select_censo_v118": "school_year,month,expected_school_days",
+      "code_v118": "PGRST205",
+      "chamadas_from_no_ar": 1,
+      "embeds": [],
+      "emitida_no_ar_hoje": false,
+      "re_sonda_de_hoje": {
+        "status": 404,
+        "code": "PGRST205"
+      }
+    },
+    {
+      "de": "guardian_students",
+      "select_censo_v118": "student_id,profiles(full_name,phone)",
+      "code_v118": "PGRST201",
+      "chamadas_from_no_ar": 13,
+      "embeds": [
+        {
+          "embed": "profiles(full_name,phone)",
+          "ocorrencias_no_shell": 2
+        }
+      ],
+      "emitida_no_ar_hoje": true,
+      "re_sonda_de_hoje": {
+        "status": 300,
+        "code": "PGRST201"
+      }
+    },
+    {
+      "de": "announcements",
+      "select_censo_v118": "id,title,body,message_type,status,published_at,scheduled_at,created_at,important,meeting_id",
+      "code_v118": "42703",
+      "chamadas_from_no_ar": 15,
+      "embeds": [],
+      "emitida_no_ar_hoje": false,
+      "re_sonda_de_hoje": {
+        "status": 400,
+        "code": "42703"
+      }
+    },
+    {
+      "de": "guardian_students",
+      "select_censo_v118": "student_id,profile_id,profiles(full_name,phone,email)",
+      "code_v118": "PGRST201",
+      "chamadas_from_no_ar": 13,
+      "embeds": [
+        {
+          "embed": "profiles(full_name,phone,email)",
+          "ocorrencias_no_shell": 2
+        }
+      ],
+      "emitida_no_ar_hoje": true,
+      "re_sonda_de_hoje": {
+        "status": 300,
+        "code": "PGRST201"
+      }
+    },
+    {
+      "de": "supervision_requests",
+      "select_censo_v118": "id,indicator,motive,description,questions,deadline_at,priority,status,created_by,closed_by,closed_at,created_at,updated_at,school_id,schools(name)",
+      "code_v118": "PGRST200",
+      "chamadas_from_no_ar": 3,
+      "embeds": [
+        {
+          "embed": "schools(name)",
+          "ocorrencias_no_shell": 4
+        }
+      ],
+      "emitida_no_ar_hoje": true,
+      "re_sonda_de_hoje": {
+        "status": 400,
+        "code": "PGRST200"
+      }
+    },
+    {
+      "de": "bfr_school_shift_settings",
+      "select_censo_v118": "school_year,shift,entry_opens_at,class_starts_at,shift_closes_at,active_weekdays,late_grace_minutes,confirmed_at",
+      "code_v118": "PGRST205",
+      "chamadas_from_no_ar": 3,
+      "embeds": [],
+      "emitida_no_ar_hoje": false,
+      "re_sonda_de_hoje": {
+        "status": 404,
+        "code": "PGRST205"
+      }
+    }
+  ],
+  "resumo": {
+    "emitidas_no_ar_hoje": 4,
+    "nao_emitidas_mas_ainda_falsas_no_catalogo": 5,
+    "re_sonda_de_hoje_coincide_com_a_de_12_11": true
+  },
+  "regua_do_PEN31_no_ar": {
+    "sports_schools_name": 2,
+    "schools_name": 4
+  },
+  "contagem_guardian_students_emitida": {
+    "guardian_students_profiles": 3
+  },
+  "leitura": "das 9 formas falhadas do censo da v118, 4 sao emitidas pelo shell servido hoje; as restantes continuam falsas no catalogo mas ja nao saem do ar"
+}

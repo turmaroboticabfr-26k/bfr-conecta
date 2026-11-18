@@ -1,0 +1,39 @@
+{
+  "em": "2026-11-18T17:47:01.887Z",
+  "metodo": "extraccao de corpo por chavetas + diff de prefixo/sufixo comuns; leitura local; zero rede",
+  "pen32_delta_v119_para_v120": {
+    "offset_no_corpo": 1080,
+    "bytes_removidos": 1884,
+    "bytes_adicionados": 2023,
+    "removido": "admin' && currentProfile?.role === 'developer';\n          if (!allowed) return;\n           if (role === 'social_work') role = 'multiprofessional';\n         if (role === 'parent' && !parentDataState.loaded) clearParentDemoView();\n          const previousView = activeView;\n           activeView = role;\n           window.dispatchEvent(new CustomEvent('bfr:role-change', { detail: { role } }));\n         appShell.classList.toggle('teacher-mode', role === 'teacher');\n          document.querySelector('[data-teacher-nav]')?.classList.toggle('hidden', role !== 'teacher');\n          document.querySelector('.admin-badge-shortcut')?.classList.toggle('hidden', currentProfile?.role !== 'developer');\n       roleButtons.forEach(button => button.classList.toggle('active', button.dataset.role === role));\n       document.querySelectorAll('[data-preview-role]').forEach(button => button.classList.toggle('active', button.dataset.previewRole === role));\n         parentView.classList.toggle('hidden', role !== 'parent');\n         coordinatorView.classList.toggle('hidden', role !== 'coordinator');\n         teacherView.classList.toggle('hidden', role !== 'teacher');\n        studentView.classList.toggle('hidden', role !== 'student');\n           adminView.classList.toggle('hidden', role !== 'admin');\n           directorView.classList.toggle('hidden', role !== 'director');\n          monitorView.classList.toggle('hidden', role !== 'monitor');\n            gatekeeperView.classList.toggle('hidden', role !== 'gatekeeper');\n             aeeView.classList.toggle('hidden', role !== 'aee');\n              psychologyView?.classList.toggle('hidden', role !== 'psychology');\n             multiprofessionalView?.classList.toggle('hidden', role !== 'multiprofessional');\n             resultsLearningView?.classList.add('hidden');\n            secretaryView.classList.toggle('hidden', role !== 'secretary",
+    "adicionado": "education_supervisor' ? ['education_supervisor','developer'].includes(currentProfile?.role) : role === 'admin' && currentProfile?.role === 'developer';\n          if (!allowed) return;\n           if (role === 'social_work') role = 'multiprofessional';\n         if (role === 'parent' && !parentDataState.loaded) clearParentDemoView();\n          const previousView = activeView;\n           activeView = role;\n           window.dispatchEvent(new CustomEvent('bfr:role-change', { detail: { role } }));\n         appShell.classList.toggle('teacher-mode', role === 'teacher');\n          document.querySelector('[data-teacher-nav]')?.classList.toggle('hidden', role !== 'teacher');\n          document.querySelector('.admin-badge-shortcut')?.classList.toggle('hidden', currentProfile?.role !== 'developer');\n       roleButtons.forEach(button => button.classList.toggle('active', button.dataset.role === role));\n       document.querySelectorAll('[data-preview-role]').forEach(button => button.classList.toggle('active', button.dataset.previewRole === role));\n         parentView.classList.toggle('hidden', role !== 'parent');\n         coordinatorView.classList.toggle('hidden', role !== 'coordinator');\n         teacherView.classList.toggle('hidden', role !== 'teacher');\n        studentView.classList.toggle('hidden', role !== 'student');\n           adminView.classList.toggle('hidden', role !== 'admin');\n           directorView.classList.toggle('hidden', role !== 'director');\n          monitorView.classList.toggle('hidden', role !== 'monitor');\n            gatekeeperView.classList.toggle('hidden', role !== 'gatekeeper');\n             aeeView.classList.toggle('hidden', role !== 'aee');\n              psychologyView?.classList.toggle('hidden', role !== 'psychology');\n             multiprofessionalView?.classList.toggle('hidden', role !== 'multiprofessional');\n             resultsLearningView?.classList.add('hidden');\n            secretaryView.classList.toggle('hidden', role !== 'secretary' && role !== 'education_supervisor",
+    "contexto_antes": "ts_operator' ? ['sports_operator','developer'].includes(currentProfile?.role) : role === 'admin' && currentProfile?.role === 'developer';\n          if (!allowed) return;\n          ",
+    "contexto_depois": "ts_operator' ? ['sports_operator','developer'].includes(currentProfile?.role) : role === 'education_supervisor' ? ['education_supervisor','developer'].includes(currentProfile?.role",
+    "corpo_bytes": {
+      "v119": 9209,
+      "v120": 9348,
+      "v134": 9348
+    },
+    "o_delta_e_igual_entre_v120_e_v134": true
+  },
+  "pen33_formato_de_accountLabels_na_v134": {
+    "corpo_bytes": 742,
+    "chaves": [
+      "developer",
+      "director",
+      "pedagogical",
+      "psychology",
+      "social_work",
+      "sports_operator",
+      "monitor",
+      "gatekeeper",
+      "secretary",
+      "education_supervisor",
+      "student",
+      "parent"
+    ],
+    "n_chaves": 12,
+    "tem_education_supervisor": true,
+    "primeiros_700": "{ developer:['Administrador','Acesso total'], director:['Direção escolar','Visão estratégica'], pedagogical:['Equipe pedagógica','Lançamentos escolares'], aee:['Professor(a) do AEE','Atendimento especializado'], psychology:['Psicologia escolar','Central da Psicologia'], social_work:['Assistente social','Central multiprofissional'], sports_operator:['Operador(a) de placar','Placar e jogos escolares'], monitor:['Monitor escolar','Registro do percurso'], gatekeeper:['Portaria escolar','Leitura de crachás'], secretary:['Secretaria escolar','Atendimento e protocolos'], education_supervisor:['Supervisão Educacional','Supervisor(a) de ensino'], student:['Estudante','Acompanhamento pessoal'], parent"
+  }
+}

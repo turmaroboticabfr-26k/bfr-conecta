@@ -68,6 +68,34 @@ const EXCECOES = [
     arquivo: 'bfr-candidata-v134-sidebar-escondida/portoes-v134-candidata.json', classe: 'senha', n: 4, comprimentos: '12,22,7,16',
     motivo: 'os 4 valores sao os NOMES das agulhas do array `chaves` de scripts/v134-gera-candidata.mjs:33, gravados no campo `preservado_por_chave` como {chave, antes, depois} de contagens de ocorrencias na shell — a lista tem 6 nomes e 2 ficam fora da janela 6..24, que e porque n=4 e nao 6 (medido). Nenhum e chave de registo de sessao, nenhum contem ponto, nenhum e JWT: igualdade de hash provada por scripts/v134-verifica-excecao-certidao.mjs. O padrao casou so porque o nome do campo e `chave`.',
   },
+  // 18/11 (§SM.22, peca 21 e peca 15): o campo `primeira_geracao_com_chave` (pecas 21/19) e o seu irmao
+  // `primeira_com_setRole_chave` (peca 15) dao UM casamento cada, comprimento 15 — o padrao casou porque o
+  // NOME do campo acaba em «chave», igual ao caso ja assinado de scripts/ah2-sonda-rest.mjs. O valor e o
+  // rotulo da geracao `v114-supervisao` (md5 ea7efb355c1768409148575c08dac721), lido de `degraus[].geracao`
+  // da escada e do diretorio bfr-candidata-v114-supervisao; a prova por igualdade de hash vive em
+  // scripts/sm22-verifica-excecao-chave.mjs, que compara tambem o seu regex com este (source+flags) e
+  // falsifica com um fixture: um literal de senha falso da mesma janela casa no padrao e NAO esta no pool.
+  // O precedente 26e220d (renomear o campo e re-gerar) nao se aplica aqui: os quatro artefactos citam-se
+  // entre si por caminho exato (a peca 21 le a escada; a peca 19 cita a escada) e dois deles sao corridas
+  // VERMELHAS historicas — renomear deixaria citacoes pendentes em evidencia ja medida e reescreveria o
+  // registo de um vermelho. Fica registado que o irmao do mesmo campo ja se chama
+  // `primeira_com_accountLabels_par`: numa futura corrida e esse o nome a usar, nao «chave».
+  {
+    arquivo: 'evidence/sm22-escada-proveniencia-32-33-18-11.json', classe: 'senha', n: 1, comprimentos: '15',
+    motivo: 'campo primeira_com_setRole_chave: o valor e o rotulo de geracao v114-supervisao (md5 ea7efb355c1768409148575c08dac721), que existe como diretorio na arvore e como elemento de degraus[].geracao do proprio artefacto; nenhum e chave de sessao (19 comparadas), nenhum contem ponto, nenhum comeca por eyJ.',
+  },
+  {
+    arquivo: 'evidence/sm22-cifras-das-linhas-do-ledger-18-11b.json', classe: 'senha', n: 1, comprimentos: '15',
+    motivo: 'campo PEN_32.primeira_geracao_com_chave: hash igual ao do rotulo de geracao ja excepcionado na escada — a peca 21 copia o valor, nao o produz.',
+  },
+  {
+    arquivo: 'evidence/sm22-cifras-das-linhas-do-ledger-18-11-ANTERIOR-o-caminho-do-PEN34-estava-errado-e-escrevia-undefined.json', classe: 'senha', n: 1, comprimentos: '15',
+    motivo: 'mesmo campo, mesma classe, no registo da corrida vermelha historica (o undefined do PEN-34): um ANTERIOR nao se re-gera, porque re-gerar apagaria o vermelho que ele prova.',
+  },
+  {
+    arquivo: 'evidence/sm22-cifras-das-linhas-do-ledger-18-11b-ANTERIOR-o-portao-somava-a-lista-inteira-9-contra-os-8-anon.json', classe: 'senha', n: 1, comprimentos: '15',
+    motivo: 'mesmo campo, mesma classe, na segunda corrida vermelha (o portao que somava 9 contra os 8 anon): identico por hash ao rotulo de geracao, e tambem historico.',
+  },
 ];
 
 const lista = execFileSync('git', ['ls-files', '-z'], { encoding: 'utf8' }).split('\0').filter(Boolean);

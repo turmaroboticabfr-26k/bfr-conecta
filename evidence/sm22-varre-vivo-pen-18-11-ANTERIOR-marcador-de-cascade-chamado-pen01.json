@@ -1,0 +1,128 @@
+{
+  "em": "2026-11-18T17:05:51.712Z",
+  "origem_url": "audit-publicacao-v134.json (campo https://*.workers.dev)",
+  "url": "https://bfr-conecta.turmaroboticabfr.workers.dev",
+  "identidade": {
+    "shell_md5": "b272fd4f3a737c518e888250ab8167f1",
+    "shell_bytes": 3546846,
+    "esperada_da_candidata_v134": "b272fd4f3a737c518e888250ab8167f1",
+    "igual_a_candidata_publicada": true,
+    "base_local_v133_bytes": 3548904
+  },
+  "pen24_cabecalhos": {
+    "shell": {
+      "x_frame_options": null,
+      "cdp_frame_ancestors": null,
+      "permissions_policy": null,
+      "coop": null,
+      "csp_presente": true
+    },
+    "manifest": {
+      "x_frame_options": null,
+      "cdp_frame_ancestors": null,
+      "permissions_policy": null,
+      "coop": null,
+      "csp_presente": false
+    },
+    "sw": {
+      "x_frame_options": null,
+      "cdp_frame_ancestors": null,
+      "permissions_policy": null,
+      "coop": null,
+      "csp_presente": false
+    }
+  },
+  "pen27_fora_do_bundle": {
+    "caminho": "/fora-do-bundle-sm22.js",
+    "status": 404
+  },
+  "pen34_rotas_internas": {
+    "/aluno": 404,
+    "/coordenacao": 404,
+    "/direcao": 404,
+    "/professor": 404
+  },
+  "pen26_sw": {
+    "caminho": "/sw-v4.js",
+    "status": 200,
+    "bytes": 5064,
+    "md5": "36ef6aeba9954ec3aa4a11230bf811dd",
+    "tem_push": true,
+    "tem_notificationclick": true
+  },
+  "marcadores": {
+    "pen30_select_created_at_do_announcements": {
+      "no_ar": 1,
+      "na_base_v133": 1,
+      "discrimina": false,
+      "poder_de_fogo": true
+    },
+    "pen29_tabela_shift_settings": {
+      "no_ar": 3,
+      "na_base_v133": 3,
+      "discrimina": false,
+      "poder_de_fogo": true
+    },
+    "pen29_tabela_calendar_days": {
+      "no_ar": 3,
+      "na_base_v133": 3,
+      "discrimina": false,
+      "poder_de_fogo": true
+    },
+    "pen29_tabela_month_targets": {
+      "no_ar": 1,
+      "na_base_v133": 1,
+      "discrimina": false,
+      "poder_de_fogo": true
+    },
+    "pen32_setrole_conhece_supervisor": {
+      "no_ar": 1,
+      "na_base_v133": 1,
+      "discrimina": false,
+      "poder_de_fogo": true
+    },
+    "pen33_accountLabels_sem_fallback": {
+      "no_ar": 1,
+      "na_base_v133": 1,
+      "discrimina": false,
+      "poder_de_fogo": true
+    },
+    "pen18_MutationObserver": {
+      "no_ar": 56,
+      "na_base_v133": 56,
+      "discrimina": false,
+      "poder_de_fogo": true
+    },
+    "pen19_escritor_periodico_navButton": {
+      "no_ar": 0,
+      "na_base_v133": 0,
+      "discrimina": false,
+      "poder_de_fogo": false
+    },
+    "pen26_registro_sw_v4": {
+      "no_ar": 0,
+      "na_base_v133": 0,
+      "discrimina": false,
+      "poder_de_fogo": false
+    },
+    "pen01_sidebar_display_flex_em_body": {
+      "no_ar": 0,
+      "na_base_v133": 1,
+      "discrimina": true,
+      "poder_de_fogo": true
+    }
+  },
+  "veredito": {
+    "PEN-24": "CONTINUA_AUSENTE",
+    "PEN-27": "FECHADA_NO_AR (404)",
+    "PEN-29": "CONTINUA_NO_AR (7 mencoes)",
+    "PEN-30": "CONTINUA_NO_AR (1)",
+    "PEN-32": "CONTINUA_NO_AR (1)",
+    "PEN-33": "CONTINUA_NO_AR (1)",
+    "PEN-19": "SONDA_CEGA_INDETERMINADA",
+    "PEN-34": "/aluno=404 /coordenacao=404 /direcao=404 /professor=404",
+    "PEN-26": "sw-v4.js status=200 push=true notifclick=true",
+    "PEN-01": "bloco_sidebar_flex_em_body ar=0 base_v133=1",
+    "PEN-18": "MutationObserver ar=56 base_v133=56"
+  }
+}

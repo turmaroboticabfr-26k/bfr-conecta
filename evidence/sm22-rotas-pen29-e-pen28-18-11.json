@@ -1,0 +1,144 @@
+{
+  "em": "2026-11-18T17:56:19.099Z",
+  "metodo": "GET anon de tres rotas PostgREST + duas rotas de controlo; nenhuma escrita; chave lida dos bytes servidos e jamais gravada",
+  "pen29_rotas_pedidas_pelo_bundle": {
+    "bfr_school_shift_settings": {
+      "status": 404,
+      "codigo": "PGRST205",
+      "mensagem": "Could not find the table 'public.bfr_school_shift_settings' in the schema cache",
+      "linhas": null
+    },
+    "bfr_school_calendar_days": {
+      "status": 404,
+      "codigo": "PGRST205",
+      "mensagem": "Could not find the table 'public.bfr_school_calendar_days' in the schema cache",
+      "linhas": null
+    },
+    "bfr_school_calendar_month_targets": {
+      "status": 404,
+      "codigo": "PGRST205",
+      "mensagem": "Could not find the table 'public.bfr_school_calendar_month_targets' in the schema cache",
+      "linhas": null
+    }
+  },
+  "contraprova_rotas_vivas": {
+    "profiles": {
+      "status": 200,
+      "linhas": 0
+    },
+    "schools": {
+      "status": 401,
+      "linhas": null
+    }
+  },
+  "pen28_detalle_dos_nove_estados": {
+    "por_status": {
+      "300": 3,
+      "400": 2,
+      "404": 4
+    },
+    "formas": [
+      "guardian_students→profiles:PGRST201",
+      "bfr_school_shift_settings:PGRST205",
+      "bfr_school_calendar_days:PGRST205",
+      "bfr_school_calendar_month_targets:PGRST205",
+      "guardian_students→profiles:PGRST201",
+      "announcements:42703",
+      "guardian_students→profiles:PGRST201",
+      "supervision_requests→schools:PGRST200",
+      "bfr_school_shift_settings:PGRST205"
+    ],
+    "caminhos_fk": {
+      "guardian_students -> profiles": {
+        "idas": 2,
+        "voltas": 0,
+        "total": 2,
+        "fks_idas": [
+          "guardian_students_linked_by_fkey(linked_by)",
+          "guardian_students_profile_id_fkey(profile_id)"
+        ],
+        "fks_voltas": []
+      },
+      "guardian_students -> students": {
+        "idas": 1,
+        "voltas": 0,
+        "total": 1,
+        "fks_idas": [
+          "guardian_students_student_id_fkey(student_id)"
+        ],
+        "fks_voltas": []
+      },
+      "supervision_requests -> schools": {
+        "idas": 0,
+        "voltas": 0,
+        "total": 0,
+        "fks_idas": [],
+        "fks_voltas": []
+      },
+      "supervision_requests -> sports_schools": {
+        "idas": 1,
+        "voltas": 0,
+        "total": 1,
+        "fks_idas": [
+          "supervision_requests_school_id_fkey(school_id)"
+        ],
+        "fks_voltas": []
+      },
+      "supervision_requests -> profiles": {
+        "idas": 2,
+        "voltas": 0,
+        "total": 2,
+        "fks_idas": [
+          "supervision_requests_closed_by_fkey(closed_by)",
+          "supervision_requests_created_by_fkey(created_by)"
+        ],
+        "fks_voltas": []
+      },
+      "students -> profiles": {
+        "idas": 1,
+        "voltas": 0,
+        "total": 1,
+        "fks_idas": [
+          "students_student_profile_id_fkey(student_profile_id)"
+        ],
+        "fks_voltas": []
+      }
+    },
+    "fixture": {
+      "pares_com_um_caminho": [
+        "guardian_students -> students",
+        "supervision_requests -> sports_schools",
+        "students -> profiles"
+      ],
+      "pares_com_mais_de_um": [
+        "guardian_students -> profiles",
+        "supervision_requests -> profiles"
+      ]
+    },
+    "tabelas_com_muitas_fks_para_profiles": 41
+  },
+  "pen28_por_casa": {
+    "guardian_students→profiles": [
+      "PGRST201",
+      "PGRST201",
+      "PGRST201"
+    ],
+    "bfr_school_shift_settings": [
+      "PGRST205",
+      "PGRST205"
+    ],
+    "bfr_school_calendar_days": [
+      "PGRST205"
+    ],
+    "bfr_school_calendar_month_targets": [
+      "PGRST205"
+    ],
+    "announcements": [
+      "42703"
+    ],
+    "supervision_requests→schools": [
+      "PGRST200"
+    ]
+  },
+  "leitura": "bfr_school_shift_settings: HTTP 404 PGRST205 · bfr_school_calendar_days: HTTP 404 PGRST205 · bfr_school_calendar_month_targets: HTTP 404 PGRST205"
+}

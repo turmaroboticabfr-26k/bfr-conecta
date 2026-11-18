@@ -1,0 +1,75 @@
+{
+  "em": "2026-11-18T18:11:40.627Z",
+  "metodo": "GET do shell; indices exatos do grupo `select` (bandeira d); zero escrita",
+  "n_pares_from_select": 683,
+  "n_supervision_requests": 3,
+  "n_classes": 33,
+  "supervision_requests": [
+    {
+      "de": "supervision_requests",
+      "select": "id,indicator,motive,description,questions,deadline_at,priority,status,created_by,closed_by,closed_at,created_at,updated_at,school_id,sports_schools(name)",
+      "offset": 2782169,
+      "select_inicio": 2782206,
+      "select_fim": 2782359
+    },
+    {
+      "de": "supervision_requests",
+      "select": "id,indicator,motive,priority,status,deadline_at,created_at,closed_at,school_id,sports_schools(name)",
+      "offset": 3488908,
+      "select_inicio": 3488945,
+      "select_fim": 3489044
+    },
+    {
+      "de": "supervision_requests",
+      "select": "id,indicator,motive,description,priority,status,deadline_at,created_at,updated_at,closed_at,created_by,closed_by,school_id,sports_schools(name,city)",
+      "offset": 3491209,
+      "select_inicio": 3491246,
+      "select_fim": 3491394
+    }
+  ],
+  "classes_com_schools": [
+    {
+      "de": "classes",
+      "select": "id,year,class_code,shift,school_id,schools(name)",
+      "offset": 3488755,
+      "select_inicio": 3488779,
+      "select_fim": 3488827
+    },
+    {
+      "de": "classes",
+      "select": "id,year,class_code,shift,school_id,schools(name)",
+      "offset": 3492650,
+      "select_inicio": 3492674,
+      "select_fim": 3492722
+    }
+  ],
+  "posicoes_schools_name": [
+    3488814,
+    3492709
+  ],
+  "contexto_de_cada": [
+    {
+      "offset": 3488814,
+      "dentro_do_select_de": [
+        "classes@3488755"
+      ],
+      "trecho": "city)').order('official_name').limit(1500)); const turmas = await ler('turmas_todo', (from) => from('classes').select('id,year,class_code,shift,school_id,schools(name)').order('year')); co"
+    },
+    {
+      "offset": 3492709,
+      "dentro_do_select_de": [
+        "classes@3492650"
+      ],
+      "trecho": "s(name,city)').order('official_name').limit(1500)), turmas: await ler('turmas_todo', (from) => from('classes').select('id,year,class_code,shift,school_id,schools(name)').order('year')) }) }; "
+    }
+  ],
+  "regua_das_posicoes": [
+    "classes"
+  ],
+  "regua_dos_pares": [
+    "classes"
+  ],
+  "regua_cega_includes_supervision": 2,
+  "regua_com_fronteira_supervision": 0,
+  "as_duas_reguas_dizem_o_mesmo": true
+}

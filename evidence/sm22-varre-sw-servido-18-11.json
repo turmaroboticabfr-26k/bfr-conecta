@@ -1,0 +1,95 @@
+{
+  "em": "2026-11-18T17:45:09.857Z",
+  "metodo": "GET do shell e de cada caminho de SW que o proprio shell anuncia, com e sem query; nenhuma escrita; nenhum segredo lido",
+  "brutos_no_shell": [
+    "${APP_ORIGIN}/sw-v4.js?v=45",
+    "${window.location.origin}/sw-v4.js?v=45",
+    "${location.origin}/sw-v4.js?v=45"
+  ],
+  "resolvidos": [
+    "/sw-v4.js?v=45",
+    "/sw-v4.js"
+  ],
+  "controlo_negativo": {
+    "corpo": "mesma regua sobre um SW sintetico sem push nem notificationclick",
+    "ouvintes": {
+      "install": true,
+      "activate": true,
+      "fetch": true,
+      "push": false,
+      "notificationclick": false
+    },
+    "empurra_dois_para_false": true
+  },
+  "sw_servidos": [
+    {
+      "caminho": "/sw-v4.js?v=45",
+      "url_medida": "https://bfr-conecta.turmaroboticabfr.workers.dev/sw-v4.js?v=45",
+      "status": 200,
+      "bytes": 5064,
+      "md5": "36ef6aeba9954ec3aa4a11230bf811dd",
+      "ouvintes": {
+        "install": true,
+        "activate": true,
+        "fetch": true,
+        "push": true,
+        "notificationclick": true
+      },
+      "addEventListener_contados": 5
+    },
+    {
+      "caminho": "/sw-v4.js",
+      "url_medida": "https://bfr-conecta.turmaroboticabfr.workers.dev/sw-v4.js",
+      "status": 200,
+      "bytes": 5064,
+      "md5": "36ef6aeba9954ec3aa4a11230bf811dd",
+      "ouvintes": {
+        "install": true,
+        "activate": true,
+        "fetch": true,
+        "push": true,
+        "notificationclick": true
+      },
+      "addEventListener_contados": 5
+    }
+  ],
+  "confrontacao": [
+    {
+      "caminho": "/sw-v4.js?v=45",
+      "vs_peca1_md5": {
+        "servido": "36ef6aeba9954ec3aa4a11230bf811dd",
+        "peca1": "36ef6aeba9954ec3aa4a11230bf811dd",
+        "iguais": true
+      },
+      "vs_peca1_bytes": {
+        "servido": 5064,
+        "peca1": 5064,
+        "iguais": true
+      },
+      "vs_esperado_v134_md5": {
+        "servido": "36ef6aeba9954ec3aa4a11230bf811dd",
+        "esperado": "36ef6aeba9954ec3aa4a11230bf811dd",
+        "iguais": true
+      }
+    },
+    {
+      "caminho": "/sw-v4.js",
+      "vs_peca1_md5": {
+        "servido": "36ef6aeba9954ec3aa4a11230bf811dd",
+        "peca1": "36ef6aeba9954ec3aa4a11230bf811dd",
+        "iguais": true
+      },
+      "vs_peca1_bytes": {
+        "servido": 5064,
+        "peca1": 5064,
+        "iguais": true
+      },
+      "vs_esperado_v134_md5": {
+        "servido": "36ef6aeba9954ec3aa4a11230bf811dd",
+        "esperado": "36ef6aeba9954ec3aa4a11230bf811dd",
+        "iguais": true
+      }
+    }
+  ],
+  "veredito_sw": "PELO MENOS UM SW SERVIDO TEM push E notificationclick — medido nos bytes, nao por transitividade de md5"
+}

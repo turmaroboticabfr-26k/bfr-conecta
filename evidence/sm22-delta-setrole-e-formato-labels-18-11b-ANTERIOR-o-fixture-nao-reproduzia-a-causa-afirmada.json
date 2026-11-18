@@ -1,0 +1,118 @@
+{
+  "em": "2026-11-18T17:49:19.839Z",
+  "metodo": "extraccao por chavetas sobre as geracoes locais; duas contagens independentes de accountLabels; zero rede; zero escrita",
+  "correcao_de_regua": "a peca 13 contava chaves so depois de { ou , e perdia as que vao depois de ] — dava 12 num mapa de 13",
+  "pen33_accountLabels": {
+    "corpo_bytes": 742,
+    "chaves": [
+      "developer",
+      "director",
+      "pedagogical",
+      "aee",
+      "psychology",
+      "social_work",
+      "sports_operator",
+      "monitor",
+      "gatekeeper",
+      "secretary",
+      "education_supervisor",
+      "student",
+      "parent"
+    ],
+    "n_por_chaves": 13,
+    "n_por_valores": 13,
+    "batem": true,
+    "tem_aee": true,
+    "tem_education_supervisor": true,
+    "rotulo_education_supervisor": "Supervisão Educacional | Supervisor(a) de ensino",
+    "todos_os_rotulos": {
+      "developer": "Administrador | Acesso total",
+      "director": "Direção escolar | Visão estratégica",
+      "pedagogical": "Equipe pedagógica | Lançamentos escolares",
+      "aee": "Professor(a) do AEE | Atendimento especializado",
+      "psychology": "Psicologia escolar | Central da Psicologia",
+      "social_work": "Assistente social | Central multiprofissional",
+      "sports_operator": "Operador(a) de placar | Placar e jogos escolares",
+      "monitor": "Monitor escolar | Registro do percurso",
+      "gatekeeper": "Portaria escolar | Leitura de crachás",
+      "secretary": "Secretaria escolar | Atendimento e protocolos",
+      "education_supervisor": "Supervisão Educacional | Supervisor(a) de ensino",
+      "student": "Estudante | Acompanhamento pessoal",
+      "parent": "Família BFR | Responsável"
+    }
+  },
+  "fixtures": {
+    "a_regra_antiga_perdia_aee": false,
+    "n_com_a_regra_antiga": 13,
+    "n_com_a_regra_certa": 13
+  },
+  "pen32_portao_por_geracao": [
+    {
+      "geracao": "v114",
+      "corpo_bytes": 9209,
+      "portao_de_edsup": false,
+      "perfis_permitidos": null,
+      "condicao_de_secretaryView": " role !== 'secretary'"
+    },
+    {
+      "geracao": "v119",
+      "corpo_bytes": 9209,
+      "portao_de_edsup": false,
+      "perfis_permitidos": null,
+      "condicao_de_secretaryView": " role !== 'secretary'"
+    },
+    {
+      "geracao": "v120",
+      "corpo_bytes": 9348,
+      "portao_de_edsup": true,
+      "perfis_permitidos": [
+        "education_supervisor",
+        "developer"
+      ],
+      "condicao_de_secretaryView": " role !== 'secretary' && role !== 'education_supervisor'"
+    },
+    {
+      "geracao": "v121",
+      "corpo_bytes": 9348,
+      "portao_de_edsup": true,
+      "perfis_permitidos": [
+        "education_supervisor",
+        "developer"
+      ],
+      "condicao_de_secretaryView": " role !== 'secretary' && role !== 'education_supervisor'"
+    },
+    {
+      "geracao": "v134",
+      "corpo_bytes": 9348,
+      "portao_de_edsup": true,
+      "perfis_permitidos": [
+        "education_supervisor",
+        "developer"
+      ],
+      "condicao_de_secretaryView": " role !== 'secretary' && role !== 'education_supervisor'"
+    }
+  ],
+  "pen32_a_regua_discrimina": true,
+  "pen32_escala_da_correcao": {
+    "ficheiro_v119_bytes": 3489474,
+    "ficheiro_v120_bytes": 3489649,
+    "delta_ficheiro": 175,
+    "corpo_v119_bytes": 9209,
+    "corpo_v120_bytes": 9348,
+    "delta_corpo": 139,
+    "todo_o_delta_do_ficheiro_esta_dentro_do_corpo": false
+  },
+  "pen32_delta_v119_para_v120": {
+    "offset_no_corpo": 1080,
+    "bytes_removidos": 1884,
+    "bytes_adicionados": 2023,
+    "linhas_somente_em_v119": [
+      "const allowed = role === 'parent' ? ['parent','developer'].includes(currentProfile?.role) : role === 'teacher' ? ['pedagogical','developer'].includes(currentProfile?.role) : role === 'coordinator' ? ['coordinator','developer'].includes(currentProfile?.role) : role === 'student' ? ['student','developer'].includes(currentProfile?.role) : role === 'monitor' ? ['monitor','developer'].includes(currentProfile?.role) : role === 'gatekeeper' ? ['gatekeeper','developer'].includes(currentProfile?.role) : role === 'secretary' ? ['secretary','education_supervisor','developer'].includes(currentProfile?.role) : role === 'psychology' ? ['psychology','developer'].includes(currentProfile?.role) : role === 'multiprofessional' ? ['social_work','developer'].includes(currentProfile?.role) : role === 'aee' ? ['aee','coordinator','director','developer'].includes(currentProfile?.role) : role === 'director' ? ['director','developer'].includes(currentProfile?.role) : role === 'sports_operator' ? ['sports_operator','developer'].includes(currentProfile?.role) : role === 'admin' && currentProfile?.role === 'developer';",
+      "secretaryView.classList.toggle('hidden', role !== 'secretary');"
+    ],
+    "linhas_somente_em_v120": [
+      "const allowed = role === 'parent' ? ['parent','developer'].includes(currentProfile?.role) : role === 'teacher' ? ['pedagogical','developer'].includes(currentProfile?.role) : role === 'coordinator' ? ['coordinator','developer'].includes(currentProfile?.role) : role === 'student' ? ['student','developer'].includes(currentProfile?.role) : role === 'monitor' ? ['monitor','developer'].includes(currentProfile?.role) : role === 'gatekeeper' ? ['gatekeeper','developer'].includes(currentProfile?.role) : role === 'secretary' ? ['secretary','education_supervisor','developer'].includes(currentProfile?.role) : role === 'psychology' ? ['psychology','developer'].includes(currentProfile?.role) : role === 'multiprofessional' ? ['social_work','developer'].includes(currentProfile?.role) : role === 'aee' ? ['aee','coordinator','director','developer'].includes(currentProfile?.role) : role === 'director' ? ['director','developer'].includes(currentProfile?.role) : role === 'sports_operator' ? ['sports_operator','developer'].includes(currentProfile?.role) : role === 'education_supervisor' ? ['education_supervisor','developer'].includes(currentProfile?.role) : role === 'admin' && currentProfile?.role === 'developer';",
+      "secretaryView.classList.toggle('hidden', role !== 'secretary' && role !== 'education_supervisor');"
+    ]
+  }
+}

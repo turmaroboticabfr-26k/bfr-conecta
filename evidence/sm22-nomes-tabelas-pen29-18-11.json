@@ -1,0 +1,73 @@
+{
+  "em": "2026-11-18T17:53:04.237Z",
+  "metodo": "SELECTs de pg_catalog + count(*) por tabela + leitura do bundle local; zero escrita; zero rede publica",
+  "termos": [
+    "shift_settings",
+    "calendar_days",
+    "month_targets"
+  ],
+  "pareadas_por_semelhanca": {
+    "shift_settings": [],
+    "calendar_days": [],
+    "month_targets": []
+  },
+  "contagens_reais": {},
+  "dono_e_rls": [],
+  "contexto_no_bundle_v134": {
+    "shift_settings": {
+      "ocorrencias": 3,
+      "trechos": [
+        {
+          "offset_bytes": 1821355,
+          "trecho": "all([ request('configuração de turnos',client.from('bfr_school_shift_settings').select('school_year,shift,entry_opens_at,class_starts"
+        },
+        {
+          "offset_bytes": 1861148,
+          "trecho": "'; render(); return; } const result=await client.from('bfr_school_shift_settings').upsert(rows,{onConflict:'school_year,shift'}); st"
+        },
+        {
+          "offset_bytes": 3093309,
+          "trecho": "), safeQuery('configuração de turnos', client.from('bfr_school_shift_settings').select('school_year,shift,entry_opens_at,class_starts"
+        }
+      ]
+    },
+    "calendar_days": {
+      "ocorrencias": 3,
+      "trechos": [
+        {
+          "offset_bytes": 1821624,
+          "trecho": "('shift')), request('calendário letivo',client.from('bfr_school_calendar_days').select('school_year,school_date,calendar_status,label,"
+        },
+        {
+          "offset_bytes": 1861869,
+          "trecho": "Date().toISOString()}; const result=await client.from('bfr_school_calendar_days').upsert(payload,{onConflict:'school_year,school_date'})"
+        },
+        {
+          "offset_bytes": 3093575,
+          "trecho": "hift')), safeQuery('calendário letivo', client.from('bfr_school_calendar_days').select('school_year,school_date,calendar_status,label,"
+        }
+      ]
+    },
+    "month_targets": {
+      "ocorrencias": 1,
+      "trechos": [
+        {
+          "offset_bytes": 1821845,
+          "trecho": " request('metas do calendário',client.from('bfr_school_calendar_month_targets').select('school_year,month,expected_school_days').eq('s"
+        }
+      ]
+    }
+  },
+  "nomes_exatos": {
+    "shift_settings": {
+      "com_esse_nome_exato": 0
+    },
+    "calendar_days": {
+      "com_esse_nome_exato": 0
+    },
+    "month_targets": {
+      "com_esse_nome_exato": 0
+    }
+  },
+  "leitura": "nenhuma tabela publica contem nenhum dos tres termos — os contadores da peca 2 casavam em texto que nao e nome de tabela"
+}

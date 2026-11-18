@@ -1,0 +1,371 @@
+{
+  "em": "2026-11-18T17:26:12.832Z",
+  "metodo": "SELECTs de catalogo + GETs anon; zero escrita; chave anon lida dos bytes servidos e jamais gravada",
+  "pen23_escopo": {
+    "predicados": [
+      "bfr_school_in_municipal_scope",
+      "bfr_has_municipal_grant",
+      "bfr_is_municipal_authority",
+      "bfr_is_platform_admin",
+      "bfr_municipal_network_totals",
+      "bfr_municipalities_visible",
+      "bfr_rls_director_manages_student",
+      "bfr_rls_is_developer",
+      "bfr_rls_session_role"
+    ],
+    "por_nome": {
+      "bfr_has_municipal_grant": [
+        {
+          "dono": "postgres",
+          "definer": true,
+          "anon": true,
+          "auth": true
+        }
+      ],
+      "bfr_is_municipal_authority": [
+        {
+          "dono": "postgres",
+          "definer": true,
+          "anon": true,
+          "auth": true
+        }
+      ],
+      "bfr_is_platform_admin": [
+        {
+          "dono": "postgres",
+          "definer": true,
+          "anon": true,
+          "auth": true
+        }
+      ],
+      "bfr_municipal_network_totals": [
+        {
+          "dono": "postgres",
+          "definer": true,
+          "anon": true,
+          "auth": true
+        }
+      ],
+      "bfr_municipalities_visible": [
+        {
+          "dono": "postgres",
+          "definer": true,
+          "anon": true,
+          "auth": true
+        }
+      ],
+      "bfr_rls_director_manages_student": [
+        {
+          "dono": "postgres",
+          "definer": true,
+          "anon": true,
+          "auth": true
+        }
+      ],
+      "bfr_rls_is_developer": [
+        {
+          "dono": "postgres",
+          "definer": true,
+          "anon": true,
+          "auth": true
+        }
+      ],
+      "bfr_rls_session_role": [
+        {
+          "dono": "postgres",
+          "definer": true,
+          "anon": true,
+          "auth": true
+        }
+      ],
+      "bfr_school_in_municipal_scope": [
+        {
+          "dono": "postgres",
+          "definer": true,
+          "anon": false,
+          "auth": true
+        }
+      ]
+    },
+    "sem_execute_a_anon": [
+      "bfr_school_in_municipal_scope"
+    ],
+    "com_execute_a_anon": [
+      "bfr_has_municipal_grant",
+      "bfr_is_municipal_authority",
+      "bfr_is_platform_admin",
+      "bfr_municipal_network_totals",
+      "bfr_municipalities_visible",
+      "bfr_rls_director_manages_student",
+      "bfr_rls_is_developer",
+      "bfr_rls_session_role"
+    ],
+    "a_vista": {
+      "nome": "bfr_municipal_school_stats",
+      "dono": "postgres",
+      "opcoes": null,
+      "rls": false,
+      "rls_force": false,
+      "definicao_bytes": 652
+    },
+    "tabelas_por_debaixo": [
+      "students",
+      "classes",
+      "bfr_school_key_map",
+      "staff_schools",
+      "schools"
+    ],
+    "tipos_das_tabelas": {
+      "bfr_school_key_map": "r",
+      "classes": "r",
+      "schools": "r",
+      "staff_schools": "r",
+      "students": "r"
+    },
+    "rls_das_tabelas": [
+      {
+        "nome": "bfr_school_key_map",
+        "dono": "postgres",
+        "rls": true,
+        "rls_force": false
+      },
+      {
+        "nome": "classes",
+        "dono": "postgres",
+        "rls": true,
+        "rls_force": false
+      },
+      {
+        "nome": "schools",
+        "dono": "postgres",
+        "rls": true,
+        "rls_force": false
+      },
+      {
+        "nome": "staff_schools",
+        "dono": "postgres",
+        "rls": true,
+        "rls_force": false
+      },
+      {
+        "nome": "students",
+        "dono": "postgres",
+        "rls": true,
+        "rls_force": false
+      }
+    ],
+    "leitura": "a barreira do anon nesta vista e um privilegio em falta (42501 numa predicate), nao security_invoker nem RLS da vista"
+  },
+  "pen28": {
+    "origem": "evidence/fin2a-censo-embeds-v118.json · sonda.ruins (v118, 248 pares, 9 falhas)",
+    "formas": [
+      {
+        "de": "guardian_students",
+        "alvo_embed": "profiles",
+        "code_esperado": "PGRST201",
+        "status": 300,
+        "code": "PGRST201",
+        "linhas": null,
+        "mensagem": "Could not embed because more than one relationship was found for 'guardian_students' and 'profiles'"
+      },
+      {
+        "de": "bfr_school_shift_settings",
+        "alvo_embed": null,
+        "code_esperado": "PGRST205",
+        "status": 404,
+        "code": "PGRST205",
+        "linhas": null,
+        "mensagem": "Could not find the table 'public.bfr_school_shift_settings' in the schema cache"
+      },
+      {
+        "de": "bfr_school_calendar_days",
+        "alvo_embed": null,
+        "code_esperado": "PGRST205",
+        "status": 404,
+        "code": "PGRST205",
+        "linhas": null,
+        "mensagem": "Could not find the table 'public.bfr_school_calendar_days' in the schema cache"
+      },
+      {
+        "de": "bfr_school_calendar_month_targets",
+        "alvo_embed": null,
+        "code_esperado": "PGRST205",
+        "status": 404,
+        "code": "PGRST205",
+        "linhas": null,
+        "mensagem": "Could not find the table 'public.bfr_school_calendar_month_targets' in the schema cache"
+      },
+      {
+        "de": "guardian_students",
+        "alvo_embed": "profiles",
+        "code_esperado": "PGRST201",
+        "status": 300,
+        "code": "PGRST201",
+        "linhas": null,
+        "mensagem": "Could not embed because more than one relationship was found for 'guardian_students' and 'profiles'"
+      },
+      {
+        "de": "announcements",
+        "alvo_embed": null,
+        "code_esperado": "42703",
+        "status": 400,
+        "code": "42703",
+        "linhas": null,
+        "mensagem": "column announcements.created_at does not exist"
+      },
+      {
+        "de": "guardian_students",
+        "alvo_embed": "profiles",
+        "code_esperado": "PGRST201",
+        "status": 300,
+        "code": "PGRST201",
+        "linhas": null,
+        "mensagem": "Could not embed because more than one relationship was found for 'guardian_students' and 'profiles'"
+      },
+      {
+        "de": "supervision_requests",
+        "alvo_embed": "schools",
+        "code_esperado": "PGRST200",
+        "status": 400,
+        "code": "PGRST200",
+        "linhas": null,
+        "mensagem": "Could not find a relationship between 'supervision_requests' and 'schools' in the schema cache"
+      },
+      {
+        "de": "bfr_school_shift_settings",
+        "alvo_embed": null,
+        "code_esperado": "PGRST205",
+        "status": 404,
+        "code": "PGRST205",
+        "linhas": null,
+        "mensagem": "Could not find the table 'public.bfr_school_shift_settings' in the schema cache"
+      }
+    ],
+    "por_status": {
+      "300": 3,
+      "400": 2,
+      "404": 4
+    },
+    "continuam_pgrst201": [
+      "guardian_students -> profiles",
+      "guardian_students -> profiles",
+      "guardian_students -> profiles"
+    ],
+    "caminhos_fk": {
+      "guardian_students -> profiles": {
+        "idas": 0,
+        "voltas": 0,
+        "total": 0
+      },
+      "supervision_requests -> schools": {
+        "idas": 0,
+        "voltas": 0,
+        "total": 0
+      }
+    },
+    "pares_ambiguos_por_catalogo": [],
+    "fixture_regua": {
+      "pares_de_fk_com_um_solo_caminho": 323,
+      "total_pares_de_fk": 371
+    },
+    "tabela_fantasma_ainda_fantasma": [
+      {
+        "nome": "bfr_school_shift_settings",
+        "relacoes": 0
+      },
+      {
+        "nome": "bfr_school_calendar_days",
+        "relacoes": 0
+      },
+      {
+        "nome": "bfr_school_calendar_month_targets",
+        "relacoes": 0
+      }
+    ]
+  },
+  "pen13": {
+    "colunas_de_papel": [
+      {
+        "tabela": "access_requests",
+        "coluna": "status",
+        "tipo": "USER-DEFINED",
+        "nulavel": "NO",
+        "default": "'pending'::request_status"
+      },
+      {
+        "tabela": "profiles",
+        "coluna": "role",
+        "tipo": "USER-DEFINED",
+        "nulavel": "NO",
+        "default": "'pending'::account_role"
+      }
+    ],
+    "distribuicao_profiles": [
+      {
+        "papel": "secretary",
+        "linhas": 4
+      },
+      {
+        "papel": "developer",
+        "linhas": 3
+      },
+      {
+        "papel": "aee",
+        "linhas": 2
+      },
+      {
+        "papel": "coordinator",
+        "linhas": 2
+      },
+      {
+        "papel": "director",
+        "linhas": 2
+      },
+      {
+        "papel": "gatekeeper",
+        "linhas": 2
+      },
+      {
+        "papel": "monitor",
+        "linhas": 2
+      },
+      {
+        "papel": "pedagogical",
+        "linhas": 2
+      },
+      {
+        "papel": "pending",
+        "linhas": 2
+      },
+      {
+        "papel": "student",
+        "linhas": 2
+      },
+      {
+        "papel": "education_supervisor",
+        "linhas": 1
+      },
+      {
+        "papel": "parent",
+        "linhas": 1
+      },
+      {
+        "papel": "psychology",
+        "linhas": 1
+      },
+      {
+        "papel": "social_work",
+        "linhas": 1
+      },
+      {
+        "papel": "sports_operator",
+        "linhas": 1
+      }
+    ],
+    "total_profiles": 28,
+    "soma_por_papel": 28,
+    "regulacao_bate": true,
+    "linhas_em_pending": 2,
+    "pending_no_censo": true
+  }
+}
