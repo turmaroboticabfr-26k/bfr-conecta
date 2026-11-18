@@ -1,0 +1,24 @@
+{
+ "programa": "scripts/sm5-colunas-reais-para-ui.mjs",
+ "em": "2026-11-18T00:32:14.657Z",
+ "escrita_no_banco": false,
+ "o_que_prova": "as colunas existentes em cada tabela que a interface municipal vai ler, e as tabelas do plano municipal que NÃO existem no catálogo (ausentes)",
+ "o_que_NAO_prova": "quais dessas colunas o papel do utilizador efetivamente recebe — isso é RLS e exige chamada autenticada",
+ "ausentes": [],
+ "por_tabela": {
+  "announcements": "id, title, body, published_by, published_at, important, message_type, audience_mode, scheduled_at, status, requires_confirmation, updated_at, meeting_id",
+  "attendance": "id, student_id, attendance_date, status, entered_by",
+  "bfr_lesson_attendance": "id, class_id, student_id, schedule_entry_id, lesson_date, period, subject, shift, status, source, entered_by, updated_by, manual_reason, created_at, updated_at",
+  "classes": "id, year, class_code, shift, school_id",
+  "grades": "id, student_id, subject, assessment, score, term, entered_by, created_at, category",
+  "profiles": "id, email, full_name, role, created_at, phone, birth_date, display_name_custom, photo_path",
+  "school_documents": "id, title, category, description, storage_path, published, created_by, created_at, updated_at, student_id, request_id, recipient_id, document_type",
+  "schools": "id, name, code, address_line, city, state, phase, active, created_at, updated_at",
+  "student_school_profiles": "student_id, birth_date, photo_path, address_line, guardian_name, guardian_phone, emergency_contact, inclusion_needs, inclusion_plan, inclusion_observations, updated_by, created_at, updated_at, guardian_cpf_hash, filiation_1, filiation_2",
+  "students": "id, official_name, observation, class_id, active, created_at, student_profile_id, school_id",
+  "supervision_action_plans": "id, request_id, title, indicator, baseline_value, baseline_period, target_value, current_value, status, responsible_id, created_by, created_at, updated_at",
+  "supervision_alerts": "id, kind, title, body, entity_type, entity_id, dedupe_key, created_at, acknowledged_by, acknowledged_at",
+  "supervision_requests": "id, indicator, motive, description, questions, deadline_at, priority, status, created_by, closed_by, closed_at, created_at, updated_at, school_id",
+  "supervision_responses": "id, request_id, round, justification, measures_taken, measures_planned, responsible_name, responsible_id, deadline_at, created_by, created_at"
+ }
+}

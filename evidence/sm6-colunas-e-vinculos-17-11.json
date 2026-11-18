@@ -1,0 +1,481 @@
+{
+ "programa": "scripts/sm6-colunas-vinculos.mjs",
+ "em": "2026-11-18T00:40:58.259Z",
+ "escrita_no_banco": false,
+ "o_que_prova": "as colunas existentes (com tipo) de cada tabela que o MÓDULO 2 lê e o mapa completo de foreign keys na direção origem->destino, mais o autoteste da prédica de embutido contra três pares falsos e quatro verdadeiros.",
+ "o_que_NAO_prova": "que o PostgREST aceita o request: a FK do catálogo é condição necessária, não suficiente (o expose/relação exposta também conta). A prova final é correr a UI com sessão, o que depende de OK.",
+ "tabelas": [
+  "schools",
+  "sports_schools",
+  "students",
+  "student_school_profiles",
+  "classes",
+  "grades",
+  "attendance",
+  "bfr_lesson_attendance",
+  "staff_schools",
+  "supervision_requests",
+  "supervision_responses",
+  "supervision_alerts",
+  "supervision_action_plans",
+  "announcements",
+  "school_documents",
+  "profiles"
+ ],
+ "colunas": {
+  "schools": [
+   "id:uuid",
+   "name:text",
+   "code:text",
+   "address_line:text",
+   "city:text",
+   "state:text",
+   "phase:text",
+   "active:boolean",
+   "created_at:timestamp with time zone",
+   "updated_at:timestamp with time zone"
+  ],
+  "sports_schools": [
+   "id:uuid",
+   "name:text",
+   "city:text",
+   "logo_url:text",
+   "contact_name:text",
+   "contact_email:text",
+   "contact_phone:text",
+   "created_by:uuid",
+   "created_at:timestamp with time zone",
+   "updated_at:timestamp with time zone"
+  ],
+  "students": [
+   "id:uuid",
+   "official_name:text",
+   "observation:text",
+   "class_id:uuid",
+   "active:boolean",
+   "created_at:timestamp with time zone",
+   "student_profile_id:uuid",
+   "school_id:uuid"
+  ],
+  "student_school_profiles": [
+   "student_id:uuid",
+   "birth_date:date",
+   "photo_path:text",
+   "address_line:text",
+   "guardian_name:text",
+   "guardian_phone:text",
+   "emergency_contact:text",
+   "inclusion_needs:text",
+   "inclusion_plan:text",
+   "inclusion_observations:text",
+   "updated_by:uuid",
+   "created_at:timestamp with time zone",
+   "updated_at:timestamp with time zone",
+   "guardian_cpf_hash:text",
+   "filiation_1:text",
+   "filiation_2:text"
+  ],
+  "classes": [
+   "id:uuid",
+   "year:smallint",
+   "class_code:text",
+   "shift:text",
+   "school_id:uuid"
+  ],
+  "grades": [
+   "id:uuid",
+   "student_id:uuid",
+   "subject:text",
+   "assessment:text",
+   "score:numeric",
+   "term:smallint",
+   "entered_by:uuid",
+   "created_at:timestamp with time zone",
+   "category:text"
+  ],
+  "attendance": [
+   "id:uuid",
+   "student_id:uuid",
+   "attendance_date:date",
+   "status:text",
+   "entered_by:uuid"
+  ],
+  "bfr_lesson_attendance": [
+   "id:uuid",
+   "class_id:uuid",
+   "student_id:uuid",
+   "schedule_entry_id:uuid",
+   "lesson_date:date",
+   "period:smallint",
+   "subject:text",
+   "shift:text",
+   "status:text",
+   "source:text",
+   "entered_by:uuid",
+   "updated_by:uuid",
+   "manual_reason:text",
+   "created_at:timestamp with time zone",
+   "updated_at:timestamp with time zone"
+  ],
+  "staff_schools": [
+   "id:uuid",
+   "profile_id:uuid",
+   "school_id:uuid",
+   "role:text",
+   "created_at:timestamp with time zone",
+   "updated_at:timestamp with time zone"
+  ],
+  "supervision_requests": [
+   "id:uuid",
+   "indicator:text",
+   "motive:text",
+   "description:text",
+   "questions:jsonb",
+   "deadline_at:timestamp with time zone",
+   "priority:text",
+   "status:text",
+   "created_by:uuid",
+   "closed_by:uuid",
+   "closed_at:timestamp with time zone",
+   "created_at:timestamp with time zone",
+   "updated_at:timestamp with time zone",
+   "school_id:uuid"
+  ],
+  "supervision_responses": [
+   "id:uuid",
+   "request_id:uuid",
+   "round:smallint",
+   "justification:text",
+   "measures_taken:text",
+   "measures_planned:text",
+   "responsible_name:text",
+   "responsible_id:uuid",
+   "deadline_at:timestamp with time zone",
+   "created_by:uuid",
+   "created_at:timestamp with time zone"
+  ],
+  "supervision_alerts": [
+   "id:uuid",
+   "kind:text",
+   "title:text",
+   "body:text",
+   "entity_type:text",
+   "entity_id:uuid",
+   "dedupe_key:text",
+   "created_at:timestamp with time zone",
+   "acknowledged_by:uuid",
+   "acknowledged_at:timestamp with time zone"
+  ],
+  "supervision_action_plans": [
+   "id:uuid",
+   "request_id:uuid",
+   "title:text",
+   "indicator:text",
+   "baseline_value:numeric",
+   "baseline_period:text",
+   "target_value:numeric",
+   "current_value:numeric",
+   "status:text",
+   "responsible_id:uuid",
+   "created_by:uuid",
+   "created_at:timestamp with time zone",
+   "updated_at:timestamp with time zone"
+  ],
+  "announcements": [
+   "id:uuid",
+   "title:text",
+   "body:text",
+   "published_by:uuid",
+   "published_at:timestamp with time zone",
+   "important:boolean",
+   "message_type:text",
+   "audience_mode:text",
+   "scheduled_at:timestamp with time zone",
+   "status:text",
+   "requires_confirmation:boolean",
+   "updated_at:timestamp with time zone",
+   "meeting_id:uuid"
+  ],
+  "school_documents": [
+   "id:uuid",
+   "title:text",
+   "category:text",
+   "description:text",
+   "storage_path:text",
+   "published:boolean",
+   "created_by:uuid",
+   "created_at:timestamp with time zone",
+   "updated_at:timestamp with time zone",
+   "student_id:uuid",
+   "request_id:uuid",
+   "recipient_id:uuid",
+   "document_type:text"
+  ],
+  "profiles": [
+   "id:uuid",
+   "email:text",
+   "full_name:text",
+   "role:USER-DEFINED",
+   "created_at:timestamp with time zone",
+   "phone:text",
+   "birth_date:date",
+   "display_name_custom:text",
+   "photo_path:text"
+  ]
+ },
+ "foreign_keys": [
+  {
+   "de": "announcements",
+   "coluna": "meeting_id",
+   "para": "school_meetings",
+   "coluna_par": "id",
+   "nome": "announcements_meeting_id_fkey"
+  },
+  {
+   "de": "announcements",
+   "coluna": "published_by",
+   "para": "profiles",
+   "coluna_par": "id",
+   "nome": "announcements_published_by_fkey"
+  },
+  {
+   "de": "attendance",
+   "coluna": "entered_by",
+   "para": "profiles",
+   "coluna_par": "id",
+   "nome": "attendance_entered_by_fkey"
+  },
+  {
+   "de": "attendance",
+   "coluna": "student_id",
+   "para": "students",
+   "coluna_par": "id",
+   "nome": "attendance_student_id_fkey"
+  },
+  {
+   "de": "bfr_lesson_attendance",
+   "coluna": "class_id",
+   "para": "classes",
+   "coluna_par": "id",
+   "nome": "bfr_lesson_attendance_class_id_fkey"
+  },
+  {
+   "de": "bfr_lesson_attendance",
+   "coluna": "entered_by",
+   "para": "profiles",
+   "coluna_par": "id",
+   "nome": "bfr_lesson_attendance_entered_by_fkey"
+  },
+  {
+   "de": "bfr_lesson_attendance",
+   "coluna": "schedule_entry_id",
+   "para": "bfr_schedule_entries",
+   "coluna_par": "id",
+   "nome": "bfr_lesson_attendance_schedule_entry_id_fkey"
+  },
+  {
+   "de": "bfr_lesson_attendance",
+   "coluna": "student_id",
+   "para": "students",
+   "coluna_par": "id",
+   "nome": "bfr_lesson_attendance_student_id_fkey"
+  },
+  {
+   "de": "bfr_lesson_attendance",
+   "coluna": "updated_by",
+   "para": "profiles",
+   "coluna_par": "id",
+   "nome": "bfr_lesson_attendance_updated_by_fkey"
+  },
+  {
+   "de": "classes",
+   "coluna": "school_id",
+   "para": "schools",
+   "coluna_par": "id",
+   "nome": "fk_classes_school"
+  },
+  {
+   "de": "grades",
+   "coluna": "entered_by",
+   "para": "profiles",
+   "coluna_par": "id",
+   "nome": "grades_entered_by_fkey"
+  },
+  {
+   "de": "grades",
+   "coluna": "student_id",
+   "para": "students",
+   "coluna_par": "id",
+   "nome": "grades_student_id_fkey"
+  },
+  {
+   "de": "school_documents",
+   "coluna": "request_id",
+   "para": "secretary_requests",
+   "coluna_par": "id",
+   "nome": "school_documents_request_id_fkey"
+  },
+  {
+   "de": "school_documents",
+   "coluna": "student_id",
+   "para": "students",
+   "coluna_par": "id",
+   "nome": "school_documents_student_id_fkey"
+  },
+  {
+   "de": "sports_schools",
+   "coluna": "created_by",
+   "para": "profiles",
+   "coluna_par": "id",
+   "nome": "sports_schools_created_by_fkey"
+  },
+  {
+   "de": "staff_schools",
+   "coluna": "profile_id",
+   "para": "profiles",
+   "coluna_par": "id",
+   "nome": "staff_schools_profile_id_fkey"
+  },
+  {
+   "de": "staff_schools",
+   "coluna": "school_id",
+   "para": "sports_schools",
+   "coluna_par": "id",
+   "nome": "staff_schools_school_id_fkey"
+  },
+  {
+   "de": "student_school_profiles",
+   "coluna": "student_id",
+   "para": "students",
+   "coluna_par": "id",
+   "nome": "student_school_profiles_student_id_fkey"
+  },
+  {
+   "de": "students",
+   "coluna": "class_id",
+   "para": "classes",
+   "coluna_par": "id",
+   "nome": "students_class_id_fkey"
+  },
+  {
+   "de": "students",
+   "coluna": "school_id",
+   "para": "schools",
+   "coluna_par": "id",
+   "nome": "fk_students_school"
+  },
+  {
+   "de": "students",
+   "coluna": "student_profile_id",
+   "para": "profiles",
+   "coluna_par": "id",
+   "nome": "students_student_profile_id_fkey"
+  },
+  {
+   "de": "supervision_action_plans",
+   "coluna": "created_by",
+   "para": "profiles",
+   "coluna_par": "id",
+   "nome": "supervision_action_plans_created_by_fkey"
+  },
+  {
+   "de": "supervision_action_plans",
+   "coluna": "request_id",
+   "para": "supervision_requests",
+   "coluna_par": "id",
+   "nome": "supervision_action_plans_request_id_fkey"
+  },
+  {
+   "de": "supervision_action_plans",
+   "coluna": "responsible_id",
+   "para": "profiles",
+   "coluna_par": "id",
+   "nome": "supervision_action_plans_responsible_id_fkey"
+  },
+  {
+   "de": "supervision_alerts",
+   "coluna": "acknowledged_by",
+   "para": "profiles",
+   "coluna_par": "id",
+   "nome": "supervision_alerts_acknowledged_by_fkey"
+  },
+  {
+   "de": "supervision_requests",
+   "coluna": "closed_by",
+   "para": "profiles",
+   "coluna_par": "id",
+   "nome": "supervision_requests_closed_by_fkey"
+  },
+  {
+   "de": "supervision_requests",
+   "coluna": "created_by",
+   "para": "profiles",
+   "coluna_par": "id",
+   "nome": "supervision_requests_created_by_fkey"
+  },
+  {
+   "de": "supervision_requests",
+   "coluna": "school_id",
+   "para": "sports_schools",
+   "coluna_par": "id",
+   "nome": "supervision_requests_school_id_fkey"
+  },
+  {
+   "de": "supervision_responses",
+   "coluna": "created_by",
+   "para": "profiles",
+   "coluna_par": "id",
+   "nome": "supervision_responses_created_by_fkey"
+  },
+  {
+   "de": "supervision_responses",
+   "coluna": "request_id",
+   "para": "supervision_requests",
+   "coluna_par": "id",
+   "nome": "supervision_responses_request_id_fkey"
+  },
+  {
+   "de": "supervision_responses",
+   "coluna": "responsible_id",
+   "para": "profiles",
+   "coluna_par": "id",
+   "nome": "supervision_responses_responsible_id_fkey"
+  }
+ ],
+ "autoteste_da_prédica": {
+  "negativos": [
+   {
+    "par": "students->staff_schools",
+    "aceita": false
+   },
+   {
+    "par": "announcements->students",
+    "aceita": false
+   },
+   {
+    "par": "school_documents->schools",
+    "aceita": false
+   }
+  ],
+  "positivos": [
+   {
+    "par": "supervision_requests->sports_schools",
+    "aceita": true
+   },
+   {
+    "par": "students->schools",
+    "aceita": true
+   },
+   {
+    "par": "grades->students",
+    "aceita": true
+   },
+   {
+    "par": "staff_schools->profiles",
+    "aceita": true
+   }
+  ]
+ },
+ "bloqueios": [],
+ "veredito": "COLUNAS_E_VINCULOS_OK"
+}

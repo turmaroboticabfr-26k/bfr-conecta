@@ -1,0 +1,26 @@
+{
+ "programa": "scripts/sm6-sonda-splice.mjs",
+ "em": "2026-11-18T01:00:14.113Z",
+ "escrita_no_banco": false,
+ "publicacao": false,
+ "o_que_prova": "que a candidata contém exatamente um <script data-bfr-municipal-module>, que o texto dentro dele compila com vm.Script, e que esse texto tem o mesmo md5 de scripts/sm6-modulo-municipal.txt — ou seja, a candidata é o módulo, não uma versão dele que se desfez no caminho.",
+ "o_que_NAO_prova": "que o browser executa o módulo: vm.Script é o parser do Node, não o do chrome, e nada aqui cria DOM, sessão ou clique. O teste de abrir/carregar/renderizar por papel continua a pedir OK.",
+ "candidata": "bfr-candidata-v127-secretaria-municipal/index.html",
+ "candidata_bytes": 3545225,
+ "candidata_md5": "44ad07f8478f2e70be8e052f8f272a14",
+ "fonte_bytes": 55329,
+ "fonte_md5": "d8a1377c765b10f5a5fa34806dc49886",
+ "recorte_bytes": 55329,
+ "recorte_md5": "d8a1377c765b10f5a5fa34806dc49886",
+ "compilado": {
+  "ok": true,
+  "erro": ""
+ },
+ "distancia_do_marcador_ao_ultimo_body_na_saida": 54861,
+ "autoteste_de_igualdade": {
+  "detetou_diferenca": true,
+  "nao_compile_ou_mudou": true
+ },
+ "bloqueios": [],
+ "veredito": "SPLICE_OK"
+}
