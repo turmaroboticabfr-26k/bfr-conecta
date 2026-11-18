@@ -1,0 +1,94 @@
+{
+ "programa": "sm10-sonda-rls-escopo-18-11",
+ "em": "2026-11-18T04:53:43.766Z",
+ "natureza": "SOMENTE_LEITURA",
+ "escrita_no_banco": false,
+ "instrumento_md5": "4c8de615b2b88edc61863294bb06369c",
+ "controlo": {
+  "service_role_select_students": 200,
+  "escola_sonda": "08ebef62-2193-4520-ab44-c044160d565f"
+ },
+ "utilizadores": {
+  "secretario_municipal": {
+   "select_students": 403,
+   "select_classes": 403,
+   "select_supervision_requests": 403,
+   "rpc_escopo": {
+    "status": 403,
+    "mensagem": "permission denied for function bfr_school_in_municipal_scope"
+   },
+   "vista_estatisticas": {
+    "status": 403,
+    "linhas": null
+   },
+   "sonda_autoridade": {
+    "status": 200,
+    "corpo": true
+   },
+   "sessao_viva": true
+  },
+  "pedagogical": {
+   "select_students": 403,
+   "select_classes": 403,
+   "select_supervision_requests": 403,
+   "rpc_escopo": {
+    "status": 403,
+    "mensagem": "permission denied for function bfr_school_in_municipal_scope"
+   },
+   "vista_estatisticas": {
+    "status": 403,
+    "linhas": null
+   },
+   "sonda_autoridade": {
+    "status": 200,
+    "corpo": false
+   },
+   "sessao_viva": true
+  },
+  "education_supervisor": {
+   "select_students": 403,
+   "select_classes": 403,
+   "select_supervision_requests": 403,
+   "rpc_escopo": {
+    "status": 403,
+    "mensagem": "permission denied for function bfr_school_in_municipal_scope"
+   },
+   "vista_estatisticas": {
+    "status": 403,
+    "linhas": null
+   },
+   "sonda_autoridade": {
+    "status": 200,
+    "corpo": true
+   },
+   "sessao_viva": true
+  },
+  "secretary": {
+   "select_students": 403,
+   "select_classes": 403,
+   "select_supervision_requests": 403,
+   "rpc_escopo": {
+    "status": 401,
+    "mensagem": "JWT expired"
+   },
+   "vista_estatisticas": {
+    "status": 401,
+    "linhas": null
+   },
+   "sonda_autoridade": {
+    "status": 401,
+    "corpo": {
+     "code": "PGRST303",
+     "details": null,
+     "hint": null,
+     "message": "JWT expired"
+    }
+   },
+   "sessao_viva": true
+  }
+ },
+ "veredito": "RLS_MUNICIPAL_QUEBRA_SELECTS_AUTENTICADOS",
+ "falhas": [
+  "SELECTs de tabelas com política municipal falharam para: secretario_municipal:403/403/403 pedagogical:403/403/403 education_supervisor:403/403/403 secretary:403/403/403"
+ ]
+}

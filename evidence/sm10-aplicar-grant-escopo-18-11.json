@@ -1,0 +1,42 @@
+{
+ "programa": "sm10-aplicar-grant-escopo-18-11",
+ "em": "2026-11-18T04:57:05.526Z",
+ "autorizacao": "OK literal do usuário de 18/11 («Aplicar agora»)",
+ "instrumento_md5": "47fa622570604eca08c855654761f047",
+ "preflight": [
+  {
+   "proname": "bfr_school_in_municipal_scope",
+   "acl": "{postgres=X/postgres,service_role=X/postgres}"
+  },
+  {
+   "proname": "bfr_school_in_own_school_scope",
+   "acl": "{postgres=X/postgres,service_role=X/postgres}"
+  }
+ ],
+ "aplicado": [
+  {
+   "stmt": "GRANT EXECUTE ON FUNCTION public.bfr_school_in_municipal_scope(uuid) TO authenticated",
+   "resultado": []
+  },
+  {
+   "stmt": "GRANT EXECUTE ON FUNCTION public.bfr_school_in_own_school_scope(uuid) TO authenticated",
+   "resultado": []
+  }
+ ],
+ "pos": [
+  {
+   "proname": "bfr_school_in_municipal_scope",
+   "acl": "{postgres=X/postgres,service_role=X/postgres,authenticated=X/postgres}"
+  },
+  {
+   "proname": "bfr_school_in_own_school_scope",
+   "acl": "{postgres=X/postgres,service_role=X/postgres,authenticated=X/postgres}"
+  }
+ ],
+ "sonda_authenticated": {
+  "students": "SEM_ERRO",
+  "vista": "SEM_ERRO"
+ },
+ "veredito": "GRANT_ESCopo_APLICADO_E_CONFERIDO",
+ "falhas": []
+}

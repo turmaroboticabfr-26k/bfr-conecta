@@ -1,0 +1,1526 @@
+{
+  "ciclo": "SM-7-N",
+  "programa": "scripts/sm7-navegador-municipal.mjs",
+  "em": "2026-11-18T04:46:22.551Z",
+  "instrumento_md5": "8a9fae5a4b5374de0288f6686aee2e3c",
+  "publicacao": false,
+  "ddl_aplicada": false,
+  "escrita_no_banco": false,
+  "papel": "education_supervisor",
+  "url_servida": "http://127.0.0.1:8913/index.html",
+  "largura": 390,
+  "banda_alto": 800,
+  "mobile": true,
+  "candidata_md5": "c7ec90130750b3c9588a911175783aad",
+  "candidata_caracteres": 3530961,
+  "candidata_bytes": 3549025,
+  "o_que_prova": "a candidata escrita é a que o browser executa: boot real com conta test, clique real no botão «Secretaria Municipal», as 10 abas abertas por clique, e as operações (filtro, detalhe, export, PDF) medidas pelo que o backend devolve.",
+  "o_que_NAO_prova": "o app publicado (continua a ser o ar de sempre); o comportamento de utilizadores reais em dispositivo físico; o que o DDL SM4 mudaria no escopo, porque nada foi aplicado.",
+  "stages": {
+    "injecao": {
+      "expira_em_s": 3597,
+      "acesso_md5_8": "92ead572"
+    },
+    "navegacao": {
+      "ok": true
+    },
+    "ms_ready": 1273,
+    "erro_boot": null,
+    "janela": {
+      "innerWidth": 390,
+      "clientWidth": 390,
+      "dpr": 1
+    },
+    "papel_real": "education_supervisor",
+    "mapa_papel": {
+      "papel": "education_supervisor",
+      "tem_chave": false,
+      "declarado": 0
+    },
+    "ms_registo_municipal": 842,
+    "erro_registo_municipal": null,
+    "modulo": {
+      "runtime_presente": true,
+      "versao_constante": "secretaria-municipal",
+      "papeis_municipais": [
+        "admin",
+        "education_supervisor"
+      ],
+      "apto_para_sessao": {
+        "apto": true,
+        "por": "papel=education_supervisor viewRole=education_supervisor no mapa=true"
+      },
+      "vista_no_dom": true,
+      "botao_nav": [
+        {
+          "classe": "nav-item tap-target",
+          "texto": "🏛Secretaria Municipal",
+          "na_sidebar": true,
+          "no_drawer": false,
+          "visivel": false,
+          "rect": {
+            "w": 0,
+            "h": 0
+          }
+        },
+        {
+          "classe": "mobile-more-option tap-target",
+          "texto": "🏛Secretaria Municipal",
+          "na_sidebar": false,
+          "no_drawer": true,
+          "visivel": false,
+          "rect": {
+            "w": 0,
+            "h": 0
+          }
+        }
+      ],
+      "aria_atual_antes": "sim",
+      "botao_nav_com_gaveta_aberta": [
+        {
+          "classe": "nav-item tap-target",
+          "texto": "🏛Secretaria Municipal",
+          "na_sidebar": true,
+          "no_drawer": false,
+          "visivel": false,
+          "rect": {
+            "w": 0,
+            "h": 0
+          }
+        },
+        {
+          "classe": "mobile-more-option tap-target",
+          "texto": "🏛Secretaria Municipal",
+          "na_sidebar": false,
+          "no_drawer": true,
+          "visivel": true,
+          "rect": {
+            "w": 156,
+            "h": 63
+          }
+        }
+      ]
+    },
+    "modal_antes_do_clique": {
+      "n": 1,
+      "modais": [
+        {
+          "id": "preferredNameModal",
+          "dataset": "",
+          "texto": "× PRIMEIRO ACESSO Como você quer ser chamado? Esse nome aparece apenas nas saudações e na sua experiência no BFR Conecta. O nome oficial do cadastro escolar con",
+          "fechaveis": 1,
+          "rotulos_fecho": [
+            "×",
+            "Agora não",
+            "Salvar e continuar"
+          ],
+          "cobre_a_janela": true
+        }
+      ]
+    },
+    "fecho_do_modal": {
+      "clique": {
+        "ok": true,
+        "x": 347,
+        "y": 451,
+        "w": 25,
+        "h": 33,
+        "visivel": true,
+        "no_alvo": true,
+        "na_janela": true,
+        "rect_estavel": true,
+        "amostras_da_espera": 3,
+        "ms_para_chegar_ao_alvo": 257,
+        "transborda_horizontal": false,
+        "scroll_width": 390,
+        "estilo": {
+          "pos": "absolute",
+          "top": "13px",
+          "bottom": "319.891px",
+          "offset_parent": "DIV.modal-card account-tool-"
+        },
+        "scroll": {
+          "alt": 3926,
+          "janela": 800,
+          "deslocavel": true,
+          "transbordado": 3126
+        },
+        "overflow_body": "visible",
+        "janela": {
+          "l": 390,
+          "a": 800
+        },
+        "por_cima": "BUTTON.modal-close",
+        "cadeia_de_quem_esta_por_cima": [
+          "BUTTON.modal-close",
+          "DIV.modal-card account-tool-ca",
+          "DIV.modal[fixed 0+800]",
+          "BODY.bfr-motion-ready",
+          "HTML."
+        ]
+      },
+      "alvo": {
+        "x": 347,
+        "y": 451,
+        "rotulo": "×"
+      }
+    },
+    "modal_depois_do_fecho": 0,
+    "gaveta": {
+      "antes": {
+        "gaveta_antes": "mobile-more-grid",
+        "tem_gatilho": true,
+        "gatilho_visivel": true
+      },
+      "clique_gatilho": {
+        "ok": true,
+        "x": 285,
+        "y": 761,
+        "w": 209,
+        "h": 54,
+        "visivel": true,
+        "no_alvo": true,
+        "na_janela": true,
+        "rect_estavel": true,
+        "amostras_da_espera": 3,
+        "ms_para_chegar_ao_alvo": 255,
+        "transborda_horizontal": false,
+        "scroll_width": 390,
+        "estilo": {
+          "pos": "relative",
+          "top": "0px",
+          "bottom": "0px",
+          "offset_parent": "ASIDE.sidebar"
+        },
+        "scroll": {
+          "alt": 3926,
+          "janela": 800,
+          "deslocavel": true,
+          "transbordado": 3126
+        },
+        "overflow_body": "visible",
+        "janela": {
+          "l": 390,
+          "a": 800
+        },
+        "por_cima": "SPAN.nav-icon",
+        "cadeia_de_quem_esta_por_cima": [
+          "SPAN.nav-icon",
+          "BUTTON.nav-item mobile-more-item ",
+          "NAV.nav-list bfr-platform-nav",
+          "ASIDE.sidebar[fixed 722+78]",
+          "DIV.app-shell ready"
+        ]
+      },
+      "depois": {
+        "classe_gaveta": "mobile-more-grid",
+        "opcao_visivel": true
+      }
+    },
+    "clique_nav": {
+      "ok": true,
+      "x": 111,
+      "y": 659,
+      "w": 159,
+      "h": 64,
+      "visivel": true,
+      "no_alvo": true,
+      "na_janela": true,
+      "rect_estavel": true,
+      "amostras_da_espera": 5,
+      "ms_para_chegar_ao_alvo": 504,
+      "transborda_horizontal": false,
+      "scroll_width": 390,
+      "estilo": {
+        "pos": "relative",
+        "top": "0px",
+        "bottom": "0px",
+        "offset_parent": "DIV.mobile-more-menu"
+      },
+      "scroll": {
+        "alt": 3926,
+        "janela": 800,
+        "deslocavel": true,
+        "transbordado": 3126
+      },
+      "overflow_body": "visible",
+      "janela": {
+        "l": 390,
+        "a": 800
+      },
+      "por_cima": "BUTTON.mobile-more-option tap-target",
+      "cadeia_de_quem_esta_por_cima": [
+        "BUTTON.mobile-more-option tap-tar",
+        "DIV.mobile-more-grid",
+        "DIV.mobile-more-menu[fixed 311+400]",
+        "DIV.app-shell ready",
+        "BODY.bfr-motion-ready"
+      ]
+    },
+    "ms_construcao_da_vista": 8,
+    "vista_nao_construiu": false,
+    "depois_do_clique": {
+      "vista_existe": true,
+      "oculta": false,
+      "munApto": "sim",
+      "routed_by": "bundle",
+      "built_flag": "1",
+      "contentor_no_dom": 1,
+      "contentor_global": 1,
+      "gatilho_do_registro": true,
+      "aba_do_estado": "painel",
+      "html_cabeca": "<div class=\"mun-head\"><div><div class=\"mun-sub\">Gestão municipal da educação</div><h2>Secretaria Municipal de Educação</h2><div class=\"mun-id\">Rede municipal de ensino · sessão: AH",
+      "titulo_aba": "▦Painel executivo",
+      "tabs_no_dom": 10,
+      "chars": 436,
+      "faixa_negacao": false
+    },
+    "apto_depois_do_boot": {
+      "apto": true,
+      "por": "papel=education_supervisor viewRole=education_supervisor no mapa=true"
+    },
+    "instrumento_contadores": {
+      "ok": true,
+      "singleton_do_client": true,
+      "onde": "prototipo",
+      "contador_na_instancia": true,
+      "this_preservado_apos_prova": true
+    },
+    "cache_limpo_antes_das_abas": {
+      "ok": false,
+      "motivo": "outra camada ocupa o centro do alvo depois de 3 s",
+      "sel": "[data-mun-cache]",
+      "x": 85,
+      "y": 400,
+      "w": 139,
+      "h": 44,
+      "visivel": true,
+      "no_alvo": false,
+      "na_janela": true,
+      "rect_estavel": false,
+      "amostras_da_espera": 24,
+      "ms_para_chegar_ao_alvo": 3011,
+      "transborda_horizontal": false,
+      "scroll_width": 390,
+      "estilo": {
+        "pos": "static",
+        "top": "auto",
+        "bottom": "auto",
+        "offset_parent": "DIV.content"
+      },
+      "scroll": {
+        "alt": 5372,
+        "janela": 800,
+        "deslocavel": true,
+        "transbordado": 4572
+      },
+      "overflow_body": "visible",
+      "janela": {
+        "l": 390,
+        "a": 800
+      },
+      "por_cima": "DIV.mobile-more-menu",
+      "cadeia_de_quem_esta_por_cima": [
+        "DIV.mobile-more-menu[fixed 311+400]",
+        "DIV.app-shell ready",
+        "BODY.bfr-motion-ready",
+        "HTML."
+      ]
+    },
+    "abas": {
+      "painel": {
+        "clique": {
+          "ok": false,
+          "motivo": "outra camada ocupa o centro do alvo depois de 3 s",
+          "sel": "[data-mun-tab=\"painel\"]",
+          "x": 79,
+          "y": 400,
+          "w": 114,
+          "h": 52,
+          "visivel": true,
+          "no_alvo": false,
+          "na_janela": true,
+          "rect_estavel": false,
+          "amostras_da_espera": 25,
+          "ms_para_chegar_ao_alvo": 3127,
+          "transborda_horizontal": false,
+          "scroll_width": 390,
+          "estilo": {
+            "pos": "static",
+            "top": "auto",
+            "bottom": "auto",
+            "offset_parent": "NAV.mun-side"
+          },
+          "scroll": {
+            "alt": 5372,
+            "janela": 800,
+            "deslocavel": true,
+            "transbordado": 4572
+          },
+          "overflow_body": "visible",
+          "janela": {
+            "l": 390,
+            "a": 800
+          },
+          "por_cima": "DIV.mobile-more-menu",
+          "cadeia_de_quem_esta_por_cima": [
+            "DIV.mobile-more-menu[fixed 311+400]",
+            "DIV.app-shell ready",
+            "BODY.bfr-motion-ready",
+            "HTML."
+          ]
+        },
+        "assentou": true,
+        "ms_assentamento": 510,
+        "ms_espera_carregamento": 3,
+        "carregamento_nao_assentou": false,
+        "chars": 753,
+        "linhas": 0,
+        "cabecalhos": 0,
+        "botoes": 0,
+        "campos_filtro": 0,
+        "cartoes": 7,
+        "faixas": [
+          "Erro do backend: permission denied for function bfr_school_in_municipal_scope"
+        ],
+        "vazia": true,
+        "assinatura": "753:2227034739",
+        "aba_do_estado": "painel",
+        "tab_ativa": "painel",
+        "chamadas_novas": 0,
+        "tabelas_pedidas": [],
+        "rpc_novo": []
+      },
+      "escolas": {
+        "clique": {
+          "ok": false,
+          "motivo": "outra camada ocupa o centro do alvo depois de 3 s",
+          "sel": "[data-mun-tab=\"escolas\"]",
+          "x": 195,
+          "y": 400,
+          "w": 114,
+          "h": 52,
+          "visivel": true,
+          "no_alvo": false,
+          "na_janela": true,
+          "rect_estavel": false,
+          "amostras_da_espera": 25,
+          "ms_para_chegar_ao_alvo": 3122,
+          "transborda_horizontal": false,
+          "scroll_width": 390,
+          "estilo": {
+            "pos": "static",
+            "top": "auto",
+            "bottom": "auto",
+            "offset_parent": "NAV.mun-side"
+          },
+          "scroll": {
+            "alt": 5372,
+            "janela": 800,
+            "deslocavel": true,
+            "transbordado": 4572
+          },
+          "overflow_body": "visible",
+          "janela": {
+            "l": 390,
+            "a": 800
+          },
+          "por_cima": "DIV.mobile-more-menu",
+          "cadeia_de_quem_esta_por_cima": [
+            "DIV.mobile-more-menu[fixed 311+400]",
+            "DIV.app-shell ready",
+            "BODY.bfr-motion-ready",
+            "HTML."
+          ]
+        },
+        "assentou": true,
+        "ms_assentamento": 510,
+        "ms_espera_carregamento": 3,
+        "carregamento_nao_assentou": false,
+        "chars": 753,
+        "linhas": 0,
+        "cabecalhos": 0,
+        "botoes": 0,
+        "campos_filtro": 0,
+        "cartoes": 7,
+        "faixas": [
+          "Erro do backend: permission denied for function bfr_school_in_municipal_scope"
+        ],
+        "vazia": true,
+        "assinatura": "753:2227034739",
+        "aba_do_estado": "painel",
+        "tab_ativa": "painel",
+        "chamadas_novas": 0,
+        "tabelas_pedidas": [],
+        "rpc_novo": []
+      },
+      "alunos": {
+        "clique": {
+          "ok": false,
+          "motivo": "outra camada ocupa o centro do alvo depois de 3 s",
+          "sel": "[data-mun-tab=\"alunos\"]",
+          "x": 311,
+          "y": 400,
+          "w": 114,
+          "h": 52,
+          "visivel": true,
+          "no_alvo": false,
+          "na_janela": true,
+          "rect_estavel": false,
+          "amostras_da_espera": 24,
+          "ms_para_chegar_ao_alvo": 3032,
+          "transborda_horizontal": false,
+          "scroll_width": 390,
+          "estilo": {
+            "pos": "static",
+            "top": "auto",
+            "bottom": "auto",
+            "offset_parent": "NAV.mun-side"
+          },
+          "scroll": {
+            "alt": 5372,
+            "janela": 800,
+            "deslocavel": true,
+            "transbordado": 4572
+          },
+          "overflow_body": "visible",
+          "janela": {
+            "l": 390,
+            "a": 800
+          },
+          "por_cima": "DIV.mobile-more-menu",
+          "cadeia_de_quem_esta_por_cima": [
+            "DIV.mobile-more-menu[fixed 311+400]",
+            "DIV.app-shell ready",
+            "BODY.bfr-motion-ready",
+            "HTML."
+          ]
+        },
+        "assentou": true,
+        "ms_assentamento": 517,
+        "ms_espera_carregamento": 1,
+        "carregamento_nao_assentou": false,
+        "chars": 753,
+        "linhas": 0,
+        "cabecalhos": 0,
+        "botoes": 0,
+        "campos_filtro": 0,
+        "cartoes": 7,
+        "faixas": [
+          "Erro do backend: permission denied for function bfr_school_in_municipal_scope"
+        ],
+        "vazia": true,
+        "assinatura": "753:2227034739",
+        "aba_do_estado": "painel",
+        "tab_ativa": "painel",
+        "chamadas_novas": 0,
+        "tabelas_pedidas": [],
+        "rpc_novo": []
+      },
+      "profissionais": {
+        "clique": {
+          "ok": false,
+          "motivo": "outra camada ocupa o centro do alvo depois de 3 s",
+          "sel": "[data-mun-tab=\"profissionais\"]",
+          "x": 79,
+          "y": 400,
+          "w": 114,
+          "h": 69,
+          "visivel": true,
+          "no_alvo": false,
+          "na_janela": true,
+          "rect_estavel": false,
+          "amostras_da_espera": 24,
+          "ms_para_chegar_ao_alvo": 3027,
+          "transborda_horizontal": false,
+          "scroll_width": 390,
+          "estilo": {
+            "pos": "static",
+            "top": "auto",
+            "bottom": "auto",
+            "offset_parent": "NAV.mun-side"
+          },
+          "scroll": {
+            "alt": 5372,
+            "janela": 800,
+            "deslocavel": true,
+            "transbordado": 4572
+          },
+          "overflow_body": "visible",
+          "janela": {
+            "l": 390,
+            "a": 800
+          },
+          "por_cima": "DIV.mobile-more-menu",
+          "cadeia_de_quem_esta_por_cima": [
+            "DIV.mobile-more-menu[fixed 311+400]",
+            "DIV.app-shell ready",
+            "BODY.bfr-motion-ready",
+            "HTML."
+          ]
+        },
+        "assentou": true,
+        "ms_assentamento": 511,
+        "ms_espera_carregamento": 1,
+        "carregamento_nao_assentou": false,
+        "chars": 753,
+        "linhas": 0,
+        "cabecalhos": 0,
+        "botoes": 0,
+        "campos_filtro": 0,
+        "cartoes": 7,
+        "faixas": [
+          "Erro do backend: permission denied for function bfr_school_in_municipal_scope"
+        ],
+        "vazia": true,
+        "assinatura": "753:2227034739",
+        "aba_do_estado": "painel",
+        "tab_ativa": "painel",
+        "chamadas_novas": 0,
+        "tabelas_pedidas": [],
+        "rpc_novo": []
+      },
+      "pedagogico": {
+        "clique": {
+          "ok": false,
+          "motivo": "outra camada ocupa o centro do alvo depois de 3 s",
+          "sel": "[data-mun-tab=\"pedagogico\"]",
+          "x": 195,
+          "y": 400,
+          "w": 114,
+          "h": 69,
+          "visivel": true,
+          "no_alvo": false,
+          "na_janela": true,
+          "rect_estavel": false,
+          "amostras_da_espera": 25,
+          "ms_para_chegar_ao_alvo": 3120,
+          "transborda_horizontal": false,
+          "scroll_width": 390,
+          "estilo": {
+            "pos": "static",
+            "top": "auto",
+            "bottom": "auto",
+            "offset_parent": "NAV.mun-side"
+          },
+          "scroll": {
+            "alt": 5372,
+            "janela": 800,
+            "deslocavel": true,
+            "transbordado": 4572
+          },
+          "overflow_body": "visible",
+          "janela": {
+            "l": 390,
+            "a": 800
+          },
+          "por_cima": "DIV.mobile-more-menu",
+          "cadeia_de_quem_esta_por_cima": [
+            "DIV.mobile-more-menu[fixed 311+400]",
+            "DIV.app-shell ready",
+            "BODY.bfr-motion-ready",
+            "HTML."
+          ]
+        },
+        "assentou": true,
+        "ms_assentamento": 519,
+        "ms_espera_carregamento": 2,
+        "carregamento_nao_assentou": false,
+        "chars": 753,
+        "linhas": 0,
+        "cabecalhos": 0,
+        "botoes": 0,
+        "campos_filtro": 0,
+        "cartoes": 7,
+        "faixas": [
+          "Erro do backend: permission denied for function bfr_school_in_municipal_scope"
+        ],
+        "vazia": true,
+        "assinatura": "753:2227034739",
+        "aba_do_estado": "painel",
+        "tab_ativa": "painel",
+        "chamadas_novas": 0,
+        "tabelas_pedidas": [],
+        "rpc_novo": []
+      },
+      "frequencia": {
+        "clique": {
+          "ok": false,
+          "motivo": "outra camada ocupa o centro do alvo depois de 3 s",
+          "sel": "[data-mun-tab=\"frequencia\"]",
+          "x": 311,
+          "y": 400,
+          "w": 114,
+          "h": 69,
+          "visivel": true,
+          "no_alvo": false,
+          "na_janela": true,
+          "rect_estavel": false,
+          "amostras_da_espera": 24,
+          "ms_para_chegar_ao_alvo": 3045,
+          "transborda_horizontal": false,
+          "scroll_width": 390,
+          "estilo": {
+            "pos": "static",
+            "top": "auto",
+            "bottom": "auto",
+            "offset_parent": "NAV.mun-side"
+          },
+          "scroll": {
+            "alt": 5372,
+            "janela": 800,
+            "deslocavel": true,
+            "transbordado": 4572
+          },
+          "overflow_body": "visible",
+          "janela": {
+            "l": 390,
+            "a": 800
+          },
+          "por_cima": "DIV.mobile-more-menu",
+          "cadeia_de_quem_esta_por_cima": [
+            "DIV.mobile-more-menu[fixed 311+400]",
+            "DIV.app-shell ready",
+            "BODY.bfr-motion-ready",
+            "HTML."
+          ]
+        },
+        "assentou": true,
+        "ms_assentamento": 519,
+        "ms_espera_carregamento": 1,
+        "carregamento_nao_assentou": false,
+        "chars": 753,
+        "linhas": 0,
+        "cabecalhos": 0,
+        "botoes": 0,
+        "campos_filtro": 0,
+        "cartoes": 7,
+        "faixas": [
+          "Erro do backend: permission denied for function bfr_school_in_municipal_scope"
+        ],
+        "vazia": true,
+        "assinatura": "753:2227034739",
+        "aba_do_estado": "painel",
+        "tab_ativa": "painel",
+        "chamadas_novas": 0,
+        "tabelas_pedidas": [],
+        "rpc_novo": []
+      },
+      "processos": {
+        "clique": {
+          "ok": false,
+          "motivo": "outra camada ocupa o centro do alvo depois de 3 s",
+          "sel": "[data-mun-tab=\"processos\"]",
+          "x": 79,
+          "y": 400,
+          "w": 114,
+          "h": 69,
+          "visivel": true,
+          "no_alvo": false,
+          "na_janela": true,
+          "rect_estavel": false,
+          "amostras_da_espera": 24,
+          "ms_para_chegar_ao_alvo": 3010,
+          "transborda_horizontal": false,
+          "scroll_width": 390,
+          "estilo": {
+            "pos": "static",
+            "top": "auto",
+            "bottom": "auto",
+            "offset_parent": "NAV.mun-side"
+          },
+          "scroll": {
+            "alt": 5372,
+            "janela": 800,
+            "deslocavel": true,
+            "transbordado": 4572
+          },
+          "overflow_body": "visible",
+          "janela": {
+            "l": 390,
+            "a": 800
+          },
+          "por_cima": "DIV.mobile-more-menu",
+          "cadeia_de_quem_esta_por_cima": [
+            "DIV.mobile-more-menu[fixed 311+400]",
+            "DIV.app-shell ready",
+            "BODY.bfr-motion-ready",
+            "HTML."
+          ]
+        },
+        "assentou": true,
+        "ms_assentamento": 510,
+        "ms_espera_carregamento": 2,
+        "carregamento_nao_assentou": false,
+        "chars": 753,
+        "linhas": 0,
+        "cabecalhos": 0,
+        "botoes": 0,
+        "campos_filtro": 0,
+        "cartoes": 7,
+        "faixas": [
+          "Erro do backend: permission denied for function bfr_school_in_municipal_scope"
+        ],
+        "vazia": true,
+        "assinatura": "753:2227034739",
+        "aba_do_estado": "painel",
+        "tab_ativa": "painel",
+        "chamadas_novas": 0,
+        "tabelas_pedidas": [],
+        "rpc_novo": []
+      },
+      "comunicacao": {
+        "clique": {
+          "ok": false,
+          "motivo": "outra camada ocupa o centro do alvo depois de 3 s",
+          "sel": "[data-mun-tab=\"comunicacao\"]",
+          "x": 195,
+          "y": 400,
+          "w": 114,
+          "h": 69,
+          "visivel": true,
+          "no_alvo": false,
+          "na_janela": true,
+          "rect_estavel": false,
+          "amostras_da_espera": 24,
+          "ms_para_chegar_ao_alvo": 3016,
+          "transborda_horizontal": false,
+          "scroll_width": 390,
+          "estilo": {
+            "pos": "static",
+            "top": "auto",
+            "bottom": "auto",
+            "offset_parent": "NAV.mun-side"
+          },
+          "scroll": {
+            "alt": 5372,
+            "janela": 800,
+            "deslocavel": true,
+            "transbordado": 4572
+          },
+          "overflow_body": "visible",
+          "janela": {
+            "l": 390,
+            "a": 800
+          },
+          "por_cima": "DIV.mobile-more-menu",
+          "cadeia_de_quem_esta_por_cima": [
+            "DIV.mobile-more-menu[fixed 311+400]",
+            "DIV.app-shell ready",
+            "BODY.bfr-motion-ready",
+            "HTML."
+          ]
+        },
+        "assentou": true,
+        "ms_assentamento": 518,
+        "ms_espera_carregamento": 1,
+        "carregamento_nao_assentou": false,
+        "chars": 753,
+        "linhas": 0,
+        "cabecalhos": 0,
+        "botoes": 0,
+        "campos_filtro": 0,
+        "cartoes": 7,
+        "faixas": [
+          "Erro do backend: permission denied for function bfr_school_in_municipal_scope"
+        ],
+        "vazia": true,
+        "assinatura": "753:2227034739",
+        "aba_do_estado": "painel",
+        "tab_ativa": "painel",
+        "chamadas_novas": 0,
+        "tabelas_pedidas": [],
+        "rpc_novo": []
+      },
+      "infraestrutura": {
+        "clique": {
+          "ok": false,
+          "motivo": "outra camada ocupa o centro do alvo depois de 3 s",
+          "sel": "[data-mun-tab=\"infraestrutura\"]",
+          "x": 311,
+          "y": 400,
+          "w": 114,
+          "h": 69,
+          "visivel": true,
+          "no_alvo": false,
+          "na_janela": true,
+          "rect_estavel": false,
+          "amostras_da_espera": 24,
+          "ms_para_chegar_ao_alvo": 3000,
+          "transborda_horizontal": false,
+          "scroll_width": 390,
+          "estilo": {
+            "pos": "static",
+            "top": "auto",
+            "bottom": "auto",
+            "offset_parent": "NAV.mun-side"
+          },
+          "scroll": {
+            "alt": 5372,
+            "janela": 800,
+            "deslocavel": true,
+            "transbordado": 4572
+          },
+          "overflow_body": "visible",
+          "janela": {
+            "l": 390,
+            "a": 800
+          },
+          "por_cima": "DIV.mobile-more-menu",
+          "cadeia_de_quem_esta_por_cima": [
+            "DIV.mobile-more-menu[fixed 311+400]",
+            "DIV.app-shell ready",
+            "BODY.bfr-motion-ready",
+            "HTML."
+          ]
+        },
+        "assentou": true,
+        "ms_assentamento": 514,
+        "ms_espera_carregamento": 1,
+        "carregamento_nao_assentou": false,
+        "chars": 753,
+        "linhas": 0,
+        "cabecalhos": 0,
+        "botoes": 0,
+        "campos_filtro": 0,
+        "cartoes": 7,
+        "faixas": [
+          "Erro do backend: permission denied for function bfr_school_in_municipal_scope"
+        ],
+        "vazia": true,
+        "assinatura": "753:2227034739",
+        "aba_do_estado": "painel",
+        "tab_ativa": "painel",
+        "chamadas_novas": 0,
+        "tabelas_pedidas": [],
+        "rpc_novo": []
+      },
+      "relatorios": {
+        "clique": {
+          "ok": false,
+          "motivo": "outra camada ocupa o centro do alvo depois de 3 s",
+          "sel": "[data-mun-tab=\"relatorios\"]",
+          "x": 79,
+          "y": 400,
+          "w": 114,
+          "h": 52,
+          "visivel": true,
+          "no_alvo": false,
+          "na_janela": true,
+          "rect_estavel": false,
+          "amostras_da_espera": 25,
+          "ms_para_chegar_ao_alvo": 3110,
+          "transborda_horizontal": false,
+          "scroll_width": 390,
+          "estilo": {
+            "pos": "static",
+            "top": "auto",
+            "bottom": "auto",
+            "offset_parent": "NAV.mun-side"
+          },
+          "scroll": {
+            "alt": 5372,
+            "janela": 800,
+            "deslocavel": true,
+            "transbordado": 4572
+          },
+          "overflow_body": "visible",
+          "janela": {
+            "l": 390,
+            "a": 800
+          },
+          "por_cima": "DIV.mobile-more-menu",
+          "cadeia_de_quem_esta_por_cima": [
+            "DIV.mobile-more-menu[fixed 311+400]",
+            "DIV.app-shell ready",
+            "BODY.bfr-motion-ready",
+            "HTML."
+          ]
+        },
+        "assentou": true,
+        "ms_assentamento": 513,
+        "ms_espera_carregamento": 2,
+        "carregamento_nao_assentou": false,
+        "chars": 753,
+        "linhas": 0,
+        "cabecalhos": 0,
+        "botoes": 0,
+        "campos_filtro": 0,
+        "cartoes": 7,
+        "faixas": [
+          "Erro do backend: permission denied for function bfr_school_in_municipal_scope"
+        ],
+        "vazia": true,
+        "assinatura": "753:2227034739",
+        "aba_do_estado": "painel",
+        "tab_ativa": "painel",
+        "chamadas_novas": 0,
+        "tabelas_pedidas": [],
+        "rpc_novo": []
+      }
+    },
+    "sonda": {
+      "feita": true,
+      "executavel": true,
+      "nota": "o backend respondeu true para esta sessão",
+      "erro": ""
+    },
+    "faixa_escopo": [
+      "Erro do backend: permission denied for function bfr_school_in_municipal_scope"
+    ],
+    "erros_do_modulo": [
+      {
+        "familia": "alunos",
+        "chave": "alunos_<filtro redigido>",
+        "erro": "permission denied for function bfr_school_in_municipal_scope"
+      },
+      {
+        "familia": "turmas",
+        "chave": "turmas_todo",
+        "erro": "permission denied for function bfr_school_in_municipal_scope"
+      },
+      {
+        "familia": "processos",
+        "chave": "processos_todo",
+        "erro": "permission denied for function bfr_school_in_municipal_scope"
+      },
+      {
+        "familia": "freq",
+        "chave": "freq_todo",
+        "erro": "permission denied for function bfr_school_in_municipal_scope"
+      }
+    ],
+    "causa_do_erro_from": {
+      "ok": true,
+      "n": 0,
+      "erro": "permission denied for function bfr_school_in_municipal_scope"
+    },
+    "sonda_por_tabela": {
+      "linhas": [
+        {
+          "tabela": "schools",
+          "ok": true,
+          "n": 1,
+          "erro": null
+        },
+        {
+          "tabela": "students",
+          "ok": true,
+          "n": 0,
+          "erro": "permission denied for function bfr_school_in_municipal_scope"
+        },
+        {
+          "tabela": "classes",
+          "ok": true,
+          "n": 0,
+          "erro": "permission denied for function bfr_school_in_municipal_scope"
+        },
+        {
+          "tabela": "staff_schools",
+          "ok": true,
+          "n": 1,
+          "erro": null
+        },
+        {
+          "tabela": "grades",
+          "ok": true,
+          "n": 1,
+          "erro": null
+        },
+        {
+          "tabela": "supervision_requests",
+          "ok": true,
+          "n": 0,
+          "erro": "permission denied for function bfr_school_in_municipal_scope"
+        },
+        {
+          "tabela": "announcements",
+          "ok": true,
+          "n": 0,
+          "erro": null
+        }
+      ],
+      "cliente": {
+        "construtor": null,
+        "tem_rest": "object",
+        "chaves": [
+          "supabaseUrl",
+          "supabaseKey",
+          "realtimeUrl",
+          "authUrl",
+          "storageUrl",
+          "functionsUrl",
+          "storageKey",
+          "headers",
+          "auth",
+          "fetch",
+          "realtime",
+          "rest",
+          "changedAccessToken",
+          "from"
+        ]
+      }
+    },
+    "cache_do_modulo": [
+      {
+        "familia": "escolas",
+        "linhas": 6,
+        "total": 6,
+        "tem_erro": false,
+        "escolas_distintas": 0
+      },
+      {
+        "familia": "alunos",
+        "linhas": 0,
+        "total": 0,
+        "tem_erro": true,
+        "escolas_distintas": 0
+      },
+      {
+        "familia": "turmas",
+        "linhas": 0,
+        "total": 0,
+        "tem_erro": true,
+        "escolas_distintas": 0
+      },
+      {
+        "familia": "processos",
+        "linhas": 0,
+        "total": 0,
+        "tem_erro": true,
+        "escolas_distintas": 0
+      },
+      {
+        "familia": "freq",
+        "linhas": 0,
+        "total": 0,
+        "tem_erro": true,
+        "escolas_distintas": 0
+      },
+      {
+        "familia": "profissionais",
+        "linhas": 1,
+        "total": 1,
+        "tem_erro": false,
+        "escolas_distintas": 1
+      }
+    ],
+    "operacoes": {
+      "navegacao_escolas": {
+        "tentativas": [
+          {
+            "toque": 1,
+            "clique": {
+              "ok": false,
+              "motivo": "outra camada ocupa o centro do alvo depois de 3 s",
+              "sel": "[data-mun-tab=\"escolas\"]",
+              "x": 195,
+              "y": 400,
+              "w": 114,
+              "h": 52,
+              "visivel": true,
+              "no_alvo": false,
+              "na_janela": true,
+              "rect_estavel": false,
+              "amostras_da_espera": 24,
+              "ms_para_chegar_ao_alvo": 3017,
+              "transborda_horizontal": false,
+              "scroll_width": 390,
+              "estilo": {
+                "pos": "static",
+                "top": "auto",
+                "bottom": "auto",
+                "offset_parent": "NAV.mun-side"
+              },
+              "scroll": {
+                "alt": 5372,
+                "janela": 800,
+                "deslocavel": true,
+                "transbordado": 4572
+              },
+              "overflow_body": "visible",
+              "janela": {
+                "l": 390,
+                "a": 800
+              },
+              "por_cima": "DIV.mobile-more-menu",
+              "cadeia_de_quem_esta_por_cima": [
+                "DIV.mobile-more-menu[fixed 311+400]",
+                "DIV.app-shell ready",
+                "BODY.bfr-motion-ready",
+                "HTML."
+              ]
+            },
+            "espera": {
+              "ms": null,
+              "nao_assentou": true,
+              "tab": "painel",
+              "contentor": true,
+              "botoes_export": 0
+            }
+          },
+          {
+            "toque": 2,
+            "clique": {
+              "ok": false,
+              "motivo": "outra camada ocupa o centro do alvo depois de 3 s",
+              "sel": "[data-mun-tab=\"escolas\"]",
+              "x": 195,
+              "y": 400,
+              "w": 114,
+              "h": 52,
+              "visivel": true,
+              "no_alvo": false,
+              "na_janela": true,
+              "rect_estavel": false,
+              "amostras_da_espera": 25,
+              "ms_para_chegar_ao_alvo": 3122,
+              "transborda_horizontal": false,
+              "scroll_width": 390,
+              "estilo": {
+                "pos": "static",
+                "top": "auto",
+                "bottom": "auto",
+                "offset_parent": "NAV.mun-side"
+              },
+              "scroll": {
+                "alt": 5372,
+                "janela": 800,
+                "deslocavel": true,
+                "transbordado": 4572
+              },
+              "overflow_body": "visible",
+              "janela": {
+                "l": 390,
+                "a": 800
+              },
+              "por_cima": "DIV.mobile-more-menu",
+              "cadeia_de_quem_esta_por_cima": [
+                "DIV.mobile-more-menu[fixed 311+400]",
+                "DIV.app-shell ready",
+                "BODY.bfr-motion-ready",
+                "HTML."
+              ]
+            },
+            "espera": {
+              "ms": null,
+              "nao_assentou": true,
+              "tab": "painel",
+              "contentor": true,
+              "botoes_export": 0
+            }
+          }
+        ],
+        "assentou": false
+      },
+      "escolas_sem_filtro": {
+        "linhas_reais": 0,
+        "nomes": [],
+        "banda_vazia": true,
+        "texto_banda": "Nenhuma linha de processo ou chamada devolvida por este acesso.",
+        "chars": 753
+      },
+      "filtro_inexistente": {
+        "sel": "#bfrMunicipalView [data-mun-filtro=\"busca\"]",
+        "pedido": "zzqqx-nada-assim",
+        "foco": {
+          "no_field": true
+        },
+        "ok": false,
+        "motivo": "sem campo no DOM",
+        "assentou_em_ms": 2,
+        "medido": {
+          "linhas_reais": 0,
+          "nomes": [],
+          "banda_vazia": true,
+          "texto_banda": "Nenhuma linha de processo ou chamada devolvida por este acesso.",
+          "chars": 753
+        }
+      },
+      "filtro_nome": {
+        "sel": "#bfrMunicipalView [data-mun-filtro=\"busca\"]",
+        "pedido": "",
+        "foco": {
+          "no_field": true
+        },
+        "ok": false,
+        "motivo": "sem campo no DOM",
+        "assentou_em_ms": null
+      },
+      "escolas_depois_filtro": {
+        "linhas_reais": 0,
+        "nomes": [],
+        "todas_contem_o_termo": false,
+        "menos_que_antes": false,
+        "banda_vazia": true
+      },
+      "filtro_limpo": {
+        "sel": "#bfrMunicipalView [data-mun-filtro=\"busca\"]",
+        "pedido": "",
+        "foco": {
+          "no_field": true
+        },
+        "ok": false,
+        "motivo": "sem campo no DOM",
+        "assentou_em_ms": 2
+      },
+      "escolas_depois_de_limpar": {
+        "linhas_reais": 0,
+        "nomes": [],
+        "banda_vazia": true,
+        "texto_banda": "Nenhuma linha de processo ou chamada devolvida por este acesso.",
+        "chars": 753
+      },
+      "escritas": [
+        {
+          "escrita": "filtro_inexistente",
+          "esperado": "zzqqx-nada-assim",
+          "obtido": null,
+          "foco": null,
+          "ok": false
+        },
+        {
+          "escrita": "filtro_nome",
+          "esperado": "",
+          "obtido": null,
+          "foco": null,
+          "ok": false
+        },
+        {
+          "escrita": "filtro_limpo",
+          "esperado": "",
+          "obtido": null,
+          "foco": null,
+          "ok": false
+        }
+      ],
+      "escritas_emErro": [
+        {
+          "escrita": "filtro_inexistente",
+          "esperado": "zzqqx-nada-assim",
+          "obtido": null,
+          "foco": null,
+          "ok": false
+        },
+        {
+          "escrita": "filtro_nome",
+          "esperado": "",
+          "obtido": null,
+          "foco": null,
+          "ok": false
+        },
+        {
+          "escrita": "filtro_limpo",
+          "esperado": "",
+          "obtido": null,
+          "foco": null,
+          "ok": false
+        }
+      ],
+      "detalhe": {
+        "clique": {
+          "ok": false,
+          "motivo": "sem elemento visível",
+          "sel": "[data-mun-escola]"
+        },
+        "assentou_em_ms": null,
+        "medido": {
+          "tem_volta": false,
+          "h3": "Situações reais registradas no banco",
+          "chars": 753,
+          "cartoes": 7,
+          "tabela": false
+        }
+      },
+      "volta": {
+        "clique": {
+          "ok": false,
+          "motivo": "sem elemento visível",
+          "sel": "[data-mun-volta]"
+        },
+        "assentou_em_ms": null,
+        "medido": {
+          "linhas_reais": 0,
+          "nomes": [],
+          "banda_vazia": true,
+          "texto_banda": "Nenhuma linha de processo ou chamada devolvida por este acesso.",
+          "chars": 753
+        }
+      },
+      "navegacao_relatorios": {
+        "tentativas": [
+          {
+            "toque": 1,
+            "clique": {
+              "ok": false,
+              "motivo": "outra camada ocupa o centro do alvo depois de 3 s",
+              "sel": "[data-mun-tab=\"relatorios\"]",
+              "x": 79,
+              "y": 400,
+              "w": 114,
+              "h": 52,
+              "visivel": true,
+              "no_alvo": false,
+              "na_janela": true,
+              "rect_estavel": false,
+              "amostras_da_espera": 24,
+              "ms_para_chegar_ao_alvo": 3017,
+              "transborda_horizontal": false,
+              "scroll_width": 390,
+              "estilo": {
+                "pos": "static",
+                "top": "auto",
+                "bottom": "auto",
+                "offset_parent": "NAV.mun-side"
+              },
+              "scroll": {
+                "alt": 5372,
+                "janela": 800,
+                "deslocavel": true,
+                "transbordado": 4572
+              },
+              "overflow_body": "visible",
+              "janela": {
+                "l": 390,
+                "a": 800
+              },
+              "por_cima": "DIV.mobile-more-menu",
+              "cadeia_de_quem_esta_por_cima": [
+                "DIV.mobile-more-menu[fixed 311+400]",
+                "DIV.app-shell ready",
+                "BODY.bfr-motion-ready",
+                "HTML."
+              ]
+            },
+            "espera": {
+              "ms": null,
+              "nao_assentou": true,
+              "tab": "painel",
+              "contentor": true,
+              "botoes_export": 0
+            }
+          },
+          {
+            "toque": 2,
+            "clique": {
+              "ok": false,
+              "motivo": "outra camada ocupa o centro do alvo depois de 3 s",
+              "sel": "[data-mun-tab=\"relatorios\"]",
+              "x": 79,
+              "y": 400,
+              "w": 114,
+              "h": 52,
+              "visivel": true,
+              "no_alvo": false,
+              "na_janela": true,
+              "rect_estavel": false,
+              "amostras_da_espera": 24,
+              "ms_para_chegar_ao_alvo": 3002,
+              "transborda_horizontal": false,
+              "scroll_width": 390,
+              "estilo": {
+                "pos": "static",
+                "top": "auto",
+                "bottom": "auto",
+                "offset_parent": "NAV.mun-side"
+              },
+              "scroll": {
+                "alt": 5372,
+                "janela": 800,
+                "deslocavel": true,
+                "transbordado": 4572
+              },
+              "overflow_body": "visible",
+              "janela": {
+                "l": 390,
+                "a": 800
+              },
+              "por_cima": "DIV.mobile-more-menu",
+              "cadeia_de_quem_esta_por_cima": [
+                "DIV.mobile-more-menu[fixed 311+400]",
+                "DIV.app-shell ready",
+                "BODY.bfr-motion-ready",
+                "HTML."
+              ]
+            },
+            "espera": {
+              "ms": null,
+              "nao_assentou": true,
+              "tab": "painel",
+              "contentor": true,
+              "botoes_export": 0
+            }
+          }
+        ],
+        "assentou": false
+      },
+      "exports": {
+        "botoes": [],
+        "n": 0
+      },
+      "print": {
+        "ok": true
+      },
+      "contadores_finais": {
+        "de_brutas": [
+          "schools",
+          "students",
+          "classes",
+          "supervision_requests",
+          "bfr_lesson_attendance",
+          "staff_schools",
+          "students",
+          "schools",
+          "students",
+          "classes",
+          "staff_schools",
+          "grades",
+          "supervision_requests",
+          "announcements",
+          "announcements",
+          "school_events",
+          "school_activities",
+          "announcements",
+          "school_events",
+          "school_notification_reads"
+        ],
+        "n_de": 20,
+        "rpc_brutas": [],
+        "n_rpc": 0,
+        "downloads": [],
+        "blobs": [],
+        "prints": 1,
+        "this_preservado": true
+      }
+    },
+    "console_erros": [],
+    "recursos_404": {
+      "n": 258,
+      "nomes": [
+        "manifest.json",
+        "bfr-app-logo.png",
+        "sw-v4.js",
+        "bfr-responsive-presentation.js",
+        "bfr-teacher-arrivals.js",
+        "bfr-teacher-audit.js",
+        "lia-avatar.png",
+        "cdn-cgi/rum"
+      ]
+    },
+    "portoes": 31
+  },
+  "veredito": "SM7_COM_DEFEITOS",
+  "falhas": [
+    "todo clique real aterrou no elemento pedido (sem camada por cima) | dado=[{\"clique\":\"cache\",\"motivo\":\"outra camada ocupa o centro do alvo depois de 3 s\",\"y\":400,\"por_cima\":\"DIV.mobile-more-menu\",\"cadeia\":[\"DIV.mobile-more-menu[fixed 311+400]\",\"DIV.app-shell ready\",\"BODY.bfr-motion-ready\",\"HTML.\"],\"janela\":{\"l\":390,\"a\":800}},{\"clique\":\"aba:painel\",\"motivo\":\"outra camada ocupa o centro do alvo depois de 3 s\",\"y\":400,\"por_cima\":\"DIV.mobile-more-menu\",\"cadeia\":[\"DIV.mobile-more-menu[fixed 311+400]\",\"DIV.app-shell ready\",\"BODY.bfr-motion-ready\",\"HTML.\"],\"janela\":{\"l\":390,\"a\":800}},{\"clique\":\"aba:escolas\",\"motivo\":\"outra camada ocupa o centro do alvo depois de 3 s\",\"y\":400,\"por_cima\":\"DIV.mobile-more-menu\",\"cadeia\":[\"DIV.mobile-more-menu[fixed 311+400]\",\"DIV.app-shell ready\",\"BODY.bfr-motion-ready\",\"HTML.\"],\"janela\":{\"l\":390,\"a\":800}},{\"clique\":\"aba:alunos\",\"motivo\":\"outra camada ocupa o centro do alvo depois de 3 s\",\"y\":400,\"por_cima\":\"DIV.mobile-more-menu\",\"cadeia\":[\"DIV.mobile-more-menu[fixed 311+400]\",\"DIV.app-shell ready\",\"BODY.bfr-motion-ready\",\"HTML.\"],\"janela\":{\"l\":390,\"a\":800}},{\"clique\":\"aba:profissionais\",\"motivo\":\"outra camada ocupa o centro do alvo depois de 3 s\",\"y\":400,\"por_cima\":\"DIV.mobile-more-menu\",\"cadeia\":[\"DIV.mobile-more-menu[fixed 311+400]\",\"DIV.app-shell ready\",\"BODY.bfr-motion-ready\",\"HTML.\"],\"janela\":{\"l\":390,\"a\":800}},{\"clique\":\"aba:pedagogico\",\"motivo\":\"outra camada ocupa o centro do alvo depois de 3 s\",\"y\":400,\"por_cima\":\"DIV.mobile-more-menu\",\"cadeia\":[\"DIV.mobile-more-menu[fixed 311+400]\",\"DIV.app-shell ready\",\"BODY.bfr-motion-ready\",\"HTML.\"],\"janela\":{\"l\":390,\"a\":800}},{\"clique\":\"aba:frequencia\",\"motivo\":\"outra camada ocupa o centro do alvo depois de 3 s\",\"y\":400,\"por_cima\":\"DIV.mobile-more-menu\",\"cadeia\":[\"DIV.mobile-more-menu[fixed 311+400]\",\"DIV.app-shell ready\",\"BODY.bfr-motion-ready\",\"HTML.\"],\"janela\":{\"l\":390,\"a\":800}},{\"clique\":\"aba:processos\",\"motivo\":\"outra camada ocupa o centro do alvo depois de 3 s\",\"y\":400,\"por_cima\":\"DIV.mobile-more-menu\",\"cadeia\":[\"DIV.mobile-more-menu[fixed 311+400]\",\"DIV.app-shell ready\",\"BODY.bfr-motion-ready\",\"HTML.\"],\"janela\":{\"l\":390,\"a\":800}},{\"clique\":\"aba:comunicacao\",\"motivo\":\"outra camada ocupa o centro do alvo depois de 3 s\",\"y\":400,\"por_cima\":\"DIV.mobile-more-menu\",\"cadeia\":[\"DIV.mobile-more-menu[fixed 311+400]\",\"DIV.app-shell ready\",\"BODY.bfr-motion-ready\",\"HTML.\"],\"janela\":{\"l\":390,\"a\":800}},{\"clique\":\"aba:infraestrutura\",\"motivo\":\"outra camada ocupa o centro do alvo depois de 3 s\",\"y\":400,\"por_cima\":\"DIV.mobile-more-menu\",\"cadeia\":[\"DIV.mobile-more-menu[fixed 311+400]\",\"DIV.app-shell ready\",\"BODY.bfr-motion-ready\",\"HTML.\"],\"janela\":{\"l\":390,\"a\":800}},{\"clique\":\"aba:relatorios\",\"motivo\":\"outra camada ocupa o centro do alvo depois de 3 s\",\"y\":400,\"por_cima\":\"DIV.mobile-more-menu\",\"cadeia\":[\"DIV.mobile-more-menu[fixed 311+400]\",\"DIV.app-shell ready\",\"BODY.bfr-motion-ready\",\"HTML.\"],\"janela\":{\"l\":390,\"a\":800}}] | esperado=[]",
+    "cada aba mostra a própria vista: estado.tab bate com a aba pedida | dado=[\"escolas\",\"alunos\",\"profissionais\",\"pedagogico\",\"frequencia\",\"processos\",\"comunicacao\",\"infraestrutura\",\"relatorios\"] | esperado=[]",
+    "as dez abas mostram conteúdos distintos | dado=1 | esperado=10",
+    "exportar produz pelo menos um ficheiro com bytes | dado=false | esperado=true",
+    "as abas das operações montaram-se depois do toque | dado=[\"navegacao_escolas\",\"navegacao_relatorios\"] | esperado=[]",
+    "o filtro com o nome real deixa só linhas que contêm esse nome | dado=false | esperado=true",
+    "o filtro com o nome real estreita a lista | dado=false | esperado=true",
+    "o detalhe da escola abre por clique real | dado=false | esperado=true",
+    "o detalhe mostra o nome da unidade e não uma faixa de erro | dado=false | esperado=true",
+    "a volta ao lista devolve linhas por clique real | dado=false | esperado=true",
+    "o teclado do instrumento chegou ao campo de busca (estado.busca do módulo bate o termo) | dado=[{\"escrita\":\"filtro_inexistente\",\"esperado\":\"zzqqx-nada-assim\",\"obtido\":null,\"foco\":null,\"ok\":false},{\"escrita\":\"filtro_nome\",\"esperado\":\"\",\"obtido\":null,\"foco\":null,\"ok\":false},{\"escrita\":\"filtro_limpo\",\"esperado\":\"\",\"obtido\":null,\"foco\":null,\"ok\":false}] | esperado=[]"
+  ]
+}

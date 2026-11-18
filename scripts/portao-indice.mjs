@@ -44,6 +44,19 @@ const EXCECOES = [
     arquivo: 'evidence/ah2-sonda-rest-17-11b.json', classe: 'senha', n: 1, comprimentos: '14',
     motivo: 'segunda corrida do mesmo programa: origem_chave com hash igual ao mesmo literal — mesma classe, mesma medida. Re-gerar o artefacto custaria uma corrida de browser, e o programa que o escreve ja tem esta excecao assinada: e a mesma classe em dois sitios.',
   },
+  // 18/11 (§SM.20): o precedente 26e220d renomeou o campo ambiguo `chave` porque a corrida era re-geravel.
+  // Aqui nao e: o veredito do sm10 e historico PRE-grant (o estado da BD ja mudou) e o do sm7 e a corrida
+  // que mediu o defeito da gaveta (ja corrigido). Renomear o campo quebraria o par instrumento/artefacto
+  // (o instrumento_md5 registado deixaria de existir) e re-gerar nao reproduziria a medida. Excepcao com
+  // prova de igualdade de hash, como nas entradas ah2 — a prova vive em scripts/sm20-verifica-excecoes.mjs.
+  {
+    arquivo: 'scripts/sm10-sonda-rls-escopo-18-11.mjs', classe: 'senha', n: 4, comprimentos: '20,11,20,9',
+    motivo: 'os 4 valores sao os rotulos de papel do enum (chaves do mapa de sessoes, exatamente as chaves de ah2-sessions.json e sm8-municipal-sessions.json fora do repo): igualdade de hash provada por sm20-verifica-excecoes.mjs. Nenhum token/password alguma vez inline neste programa.',
+  },
+  {
+    arquivo: 'evidence/sm7-municipal-education_supervisor-390-sm8bar390.json', classe: 'senha', n: 4, comprimentos: '24,11,14,9',
+    motivo: 'chaves de CACHE do modulo (alunos_* com o filtro ja redigido pelo instrumento, turmas_todo, processos_todo, freq_todo) registadas pelo estagio cache_do_modulo do instrumento sm7 ja commitado. A classe e igual em todas as corridas sm7; os artefactos v133 nao casam (n=0 medido), porque so esta corrida — a do defeito da gaveta — produziu estas entradas.',
+  },
 ];
 
 const lista = execFileSync('git', ['ls-files', '-z'], { encoding: 'utf8' }).split('\0').filter(Boolean);

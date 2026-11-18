@@ -28299,6 +28299,41 @@ html body #bfrMobileDrawer .bfr-mobile-drawer-link[data-bfr-drawer-logout] > .bf
       #appShell.ready .mobile-more-menu { z-index:1100 !important; bottom:calc(90px + env(safe-area-inset-bottom)) !important; max-height:calc(100svh - 112px - env(safe-area-inset-bottom)) !important; }
     }
   </style>
+  <style id="bfr-mobile-nav-sm8-fix">
+    @media (max-width:800px) {
+      #appShell.ready .sidebar > .bfr-menu-weather { display:none !important; }
+      #appShell.ready .sidebar > .nav-label { display:none !important; }
+      #appShell.ready .sidebar {
+        display:flex !important; flex-direction:row !important; flex-wrap:nowrap !important;
+        align-items:center !important; justify-content:flex-start !important; gap:6px !important;
+        overflow-x:auto !important; overflow-y:hidden !important;
+        -webkit-overflow-scrolling:touch;
+      }
+      #appShell.ready .sidebar::-webkit-scrollbar { display:none !important; }
+      #appShell.ready .sidebar > .nav-list.bfr-platform-nav {
+        display:flex !important; flex-direction:row !important; flex-wrap:nowrap !important;
+        flex:0 0 auto !important; width:auto !important; height:64px !important; min-height:64px !important;
+        align-items:center !important; justify-content:flex-start !important;
+        gap:5px !important; padding:0 !important; margin:0 !important;
+        overflow:visible !important; border:0 !important; background:transparent !important;
+      }
+      #appShell.ready .sidebar > nav.nav-list:last-of-type {
+        display:flex !important; flex-direction:row !important; flex-wrap:nowrap !important;
+        flex:0 0 auto !important; width:auto !important; height:64px !important;
+        align-items:center !important; justify-content:flex-start !important;
+        gap:5px !important; padding:0 !important; margin:0 !important;
+        overflow:visible !important;
+      }
+      #appShell.ready .sidebar .nav-item {
+        flex:0 0 auto !important; width:auto !important; min-width:64px !important;
+        height:54px !important; min-height:54px !important; max-height:54px !important;
+        white-space:nowrap !important; margin:0 !important;
+      }
+      #appShell.ready .sidebar > .nav-list.bfr-platform-nav .bfr-platform-more {
+        height:54px !important; min-height:54px !important; max-height:54px !important;
+      }
+    }
+  </style>
     <script src="bfr-responsive-presentation.js?v=14" defer></script>
     <style id="bfr-coordination-mobile-audit-fixes">
       @media (max-width:900px) {

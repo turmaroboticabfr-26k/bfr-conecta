@@ -68,13 +68,11 @@
   //    mostra pelo mapa. Aqui só se fecha a gaveta «Mais», se troca o conteúdo e se marca o item ativo.
   const NAV = '.sidebar .nav-item[data-section],.mobile-more-option[data-section]';
   function fecharGaveta() {
-    // O contentor fechado mantém os nós no DOM: sem re-verificar `is-open` a cada passo, a gaveta fica a
-    // tapar a vista e a medição diria «a aba não abre» quando é o recipiente que não fechou.
-    for (const painel of document.querySelectorAll('.mobile-more-grid')) {
-      const recipiente = painel.closest('[class*="more"]') || painel.parentElement;
-      for (const el of [painel, recipiente]) if (el && el.classList.contains('is-open')) el.classList.remove('is-open');
-      painel.setAttribute('aria-hidden', 'true');
-    }
+    // Medido 18/11 (sm7 390 sm8bar390): a gaveta «Mais» do shell fecha com `hidden` em #mobileMoreMenu
+    // (base linha 1014), não com `is-open`. O fecho anterior procurava `is-open`, nunca achava, e a
+    // gaveta ficava aberta a cobrir as abas internas do módulo.
+    const menu = document.getElementById('mobileMoreMenu');
+    if (menu) { menu.classList.add('hidden'); menu.setAttribute('aria-hidden', 'true'); }
     const gatilho = document.querySelector('[data-mobile-more]');
     if (gatilho && gatilho.getAttribute('aria-expanded') === 'true') gatilho.setAttribute('aria-expanded', 'false');
   }

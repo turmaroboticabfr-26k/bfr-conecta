@@ -17,12 +17,14 @@ import vm from 'node:vm';
 
 const DIR = 'C:/Users/pcmac/Documents/Qoder/2026-10-13/28077d9a/bfr-conecta';
 const BASE = `${DIR}/bfr-candidata-v121-rotulos-supervisor/index.html`;
-const BASE_MD5 = 'd418e7fc917f1fbb1437054b7b531f9b';
+// 18/11: fix da barra mobile (bfr-mobile-nav-sm8-fix, §SM.20) editou a base —
+// md5 medido depois do edit, na corrida que gerou v132.
+const BASE_MD5 = 'df7735c6f898650097f6deb3cc83a698';
 const PAYLOAD = `${DIR}/scripts/sm6-modulo-municipal.txt`;
 const PONTE = `${DIR}/evidence/sm6-colunas-e-vinculos-17-11.json`;
 const V = process.env.SM6_V || '127';
 const DESTINO = `${DIR}/bfr-candidata-v${V}-secretaria-municipal/index.html`;
-const OUT = `${DIR}/evidence/sm6-candidata-municipal-v${V}-17-11.json`;
+const OUT = process.env.SM6_OUT || `${DIR}/evidence/sm6-candidata-municipal-v${V}-17-11.json`;
 // O aborta-se-existe do ARTEFACTO tem de vir antes de qualquer escrita: estava no fim do script, depois
 // do writeFileSync(DESTINO), e assim uma corrida com OUT colado deixava uma candidata em disco SEM
 // certidão nenhuma. Uma corrida por rótulo, certificado por uma corrida.
