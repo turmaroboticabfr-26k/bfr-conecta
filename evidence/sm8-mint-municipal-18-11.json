@@ -1,0 +1,178 @@
+{
+  "ciclo": "SM-8",
+  "ok_literal": "Mintar contas em falta",
+  "started": "2026-11-18T04:30:48.744Z",
+  "escritas_em_tabelas_de_produto": 5,
+  "stages": {
+    "professor": {
+      "veredito": "CONTA_JA_EXISTE_NENHUM_MINT",
+      "perfis_pedagogical": 2,
+      "email_sessao": "ah2-pedagogical-e91330@bfr-conecta.test",
+      "nota": "teacher é o alias viewRole do enum; o enum não tem rótulo teacher (medido em SM.12)"
+    },
+    "baseline_pre": {
+      "em": "2026-11-18T04:31:11.349Z",
+      "tabelas": {
+        "auth.users": {
+          "n": 24,
+          "md5": "c2c16a2432c20daf4230d7a94902b512"
+        },
+        "public.profiles": {
+          "n": 24,
+          "md5": "4fc2b92d3a7900fe147d437eee3b4888"
+        },
+        "public.bfr_municipalities": {
+          "n": 0,
+          "md5": "empty"
+        },
+        "public.bfr_municipal_access_grants": {
+          "n": 0,
+          "md5": "empty"
+        },
+        "public.staff_schools": {
+          "n": 6,
+          "md5": "7a18565a3dd17353a7f6b48fdbfedcb5"
+        },
+        "public.schools": {
+          "n": 6,
+          "md5": "4cbc7aaae3f8aca3d4ae10d6a72987b8"
+        },
+        "public.students": {
+          "n": 848,
+          "md5": "b9fb0ab7b3117a1ebb1f46b0e5d3e096"
+        },
+        "public.bfr_school_key_map": {
+          "n": 6,
+          "md5": "fb49469cf44bf34832b1575715be837e"
+        }
+      }
+    },
+    "municipio": {
+      "id": "ef4647c2-80a8-466a-810d-2a1579c20a95",
+      "name": "Sao Paulo (SM8 fixture — apagar)",
+      "uf": "SP",
+      "nota": "fixture declarada — removida na limpeza SM-8-L"
+    },
+    "contas": [
+      {
+        "label": "secretario_municipal",
+        "id": "86e31850-eefb-4539-93e1-192ceceb6d12",
+        "email": "sm8-secretario_municipal-7ed48b@bfr-conecta.test",
+        "cargo_base": "secretary",
+        "papel_do_trigger": "parent",
+        "http_mint": 200,
+        "http_login": 200,
+        "rpc_antes": false
+      },
+      {
+        "label": "secretario_adjunto",
+        "id": "68075dee-13f4-4d8c-b74f-eceb14ce18d7",
+        "email": "sm8-secretario_adjunto-871fa2@bfr-conecta.test",
+        "cargo_base": "secretary",
+        "papel_do_trigger": "parent",
+        "http_mint": 200,
+        "http_login": 200,
+        "rpc_antes": false
+      },
+      {
+        "label": "gestor_autorizado",
+        "id": "6083a77c-bedc-4ff9-b75b-f08ff0d33fe1",
+        "email": "sm8-gestor_autorizado-bd08cd@bfr-conecta.test",
+        "cargo_base": "coordinator",
+        "papel_do_trigger": "parent",
+        "http_mint": 200,
+        "http_login": 200,
+        "rpc_antes": false
+      },
+      {
+        "label": "equipe_administrativa",
+        "id": "6936a45a-89ca-4917-b4a9-e7d47209aeae",
+        "email": "sm8-equipe_administrativa-b6b5b3@bfr-conecta.test",
+        "cargo_base": "pending",
+        "papel_do_trigger": "parent",
+        "http_mint": 200,
+        "http_login": 200,
+        "rpc_antes": false
+      }
+    ],
+    "grants": [
+      {
+        "id": "988ffed7-5206-4100-9756-7d0c9bf46bd1",
+        "label": "secretario_municipal",
+        "profile_id": "86e31850-eefb-4539-93e1-192ceceb6d12",
+        "municipality_id": "ef4647c2-80a8-466a-810d-2a1579c20a95",
+        "granted_by": "49753880-f7fc-4f0a-bbbb-c3883c37a29d"
+      },
+      {
+        "id": "d3439a15-71d2-4c66-af9b-fc6fa13abc09",
+        "label": "secretario_adjunto",
+        "profile_id": "68075dee-13f4-4d8c-b74f-eceb14ce18d7",
+        "municipality_id": "ef4647c2-80a8-466a-810d-2a1579c20a95",
+        "granted_by": "49753880-f7fc-4f0a-bbbb-c3883c37a29d"
+      },
+      {
+        "id": "ebf0287d-3e0b-4964-8f2a-1d5553311749",
+        "label": "gestor_autorizado",
+        "profile_id": "6083a77c-bedc-4ff9-b75b-f08ff0d33fe1",
+        "municipality_id": "ef4647c2-80a8-466a-810d-2a1579c20a95",
+        "granted_by": "49753880-f7fc-4f0a-bbbb-c3883c37a29d"
+      },
+      {
+        "id": "a206f198-6b79-4eca-b54e-8bba7ef8a731",
+        "label": "equipe_administrativa",
+        "profile_id": "6936a45a-89ca-4917-b4a9-e7d47209aeae",
+        "municipality_id": "ef4647c2-80a8-466a-810d-2a1579c20a95",
+        "granted_by": "49753880-f7fc-4f0a-bbbb-c3883c37a29d"
+      }
+    ],
+    "baseline_pos": {
+      "em": "2026-11-18T04:31:58.055Z",
+      "tabelas": {
+        "auth.users": 28,
+        "public.profiles": 28,
+        "public.bfr_municipalities": 1,
+        "public.bfr_municipal_access_grants": 4,
+        "public.staff_schools": 6,
+        "public.schools": 6,
+        "public.students": 848,
+        "public.bfr_school_key_map": 6
+      }
+    },
+    "session": {
+      "arquivo": "sm8-municipal-sessions.json",
+      "nota": "tokens só em ficheiro fora do repo; apagado na limpeza"
+    }
+  },
+  "portoes_parciais": 35,
+  "falhas_parciais": [],
+  "limpeza": {
+    "ordem": "apagar as 4 concessões por id → apagar o município por id → apagar os 4 auth.users por id (cascade) → apagar o ficheiro de sessões",
+    "grants": [
+      "988ffed7-5206-4100-9756-7d0c9bf46bd1",
+      "d3439a15-71d2-4c66-af9b-fc6fa13abc09",
+      "ebf0287d-3e0b-4964-8f2a-1d5553311749",
+      "a206f198-6b79-4eca-b54e-8bba7ef8a731"
+    ],
+    "municipio": "ef4647c2-80a8-466a-810d-2a1579c20a95",
+    "contas": [
+      {
+        "id": "86e31850-eefb-4539-93e1-192ceceb6d12",
+        "email": "sm8-secretario_municipal-7ed48b@bfr-conecta.test"
+      },
+      {
+        "id": "68075dee-13f4-4d8c-b74f-eceb14ce18d7",
+        "email": "sm8-secretario_adjunto-871fa2@bfr-conecta.test"
+      },
+      {
+        "id": "6083a77c-bedc-4ff9-b75b-f08ff0d33fe1",
+        "email": "sm8-gestor_autorizado-bd08cd@bfr-conecta.test"
+      },
+      {
+        "id": "6936a45a-89ca-4917-b4a9-e7d47209aeae",
+        "email": "sm8-equipe_administrativa-b6b5b3@bfr-conecta.test"
+      }
+    ],
+    "granted_by": "49753880-f7fc-4f0a-bbbb-c3883c37a29d"
+  },
+  "veredito": "MINT_OK_4_PERSONAS_MUNICIPAIS"
+}
