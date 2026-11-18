@@ -30,7 +30,7 @@ DROP POLICY IF EXISTS bfr_municipal_audit_write   ON public.bfr_municipal_audit;
 DROP POLICY IF EXISTS bfr_municipal_audit_read    ON public.bfr_municipal_audit;
 
 -- 2) o bloco H invertido (ver advertência no cabeçalho)
-ALTER POLICY public.supervision_requests_director_read ON public.supervision_requests TO PUBLIC;
+ALTER POLICY supervision_requests_director_read ON public.supervision_requests TO PUBLIC;
 
 -- 3) agregados: função que lê a vista, depois a vista
 DROP FUNCTION IF EXISTS public.bfr_municipal_network_totals();

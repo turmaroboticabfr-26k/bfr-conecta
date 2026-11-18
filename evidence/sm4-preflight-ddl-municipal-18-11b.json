@@ -1,0 +1,64 @@
+{
+ "programa": "scripts/sm4-preflight-ddl-municipal-18-11b.mjs",
+ "em": "2026-11-18T04:04:20.488Z",
+ "escrita_no_banco": false,
+ "candidata": "scripts/sm4-ddl-municipal-candidata.sql",
+ "reversao": "scripts/sm4-ddl-municipal-reversao.sql",
+ "o_que_prova": "que nenhum nome novo existe já, que todas as tabelas/colunas/política/enum referidos existem, quantos pares a ponte de chaves produziria (id igual, nome igual, sem par, ambíguo), que a ordem das sentenças do .sql satisfaz as dependências que o Postgres impõe, e que a reversão desfaz cada objeto e cada política que a candidata cria.",
+ "o_que_NAO_prova": "que a candidata corre: nada disto executa DDL. A ordem verificada é a de nomes, não a de privilégios de papel nem de timeouts; e o veredito é do instante em que foi tirado — qualquer aplicação de DDL entretanto torna-o velho.",
+ "ponte": {
+  "por_id": 3,
+  "por_nome": 3,
+  "sem_par": 0,
+  "nome_ambiguo": 0,
+  "escolas": 6,
+  "sports_escolas": 6,
+  "vinculos_com_par": 6
+ },
+ "alvo_bloco_H": [
+  {
+   "nome": "supervision_requests_director_read",
+   "e_public": true,
+   "tabela": "supervision_requests"
+  }
+ ],
+ "account_role_labels": [
+  "pending",
+  "parent",
+  "student",
+  "pedagogical",
+  "developer",
+  "monitor",
+  "gatekeeper",
+  "coordinator",
+  "secretary",
+  "aee",
+  "director",
+  "psychology",
+  "social_work",
+  "sports_operator",
+  "education_supervisor"
+ ],
+ "baselines": {
+  "schools": 6,
+  "sports_schools": 6,
+  "profiles": 24,
+  "students": 848,
+  "politicas_17_alvo": 86
+ },
+ "sentencas_na_candidata": 69,
+ "autoteste_da_regua_de_ordem": {
+  "problemas_esperados": 3,
+  "problemas_obtidos": 3,
+  "detalhes": [
+   "bfr_municipal_audit: usado na sentença 0, criado só na 1",
+   "bfr_is_municipal_authority: usado na sentença 2, criado só na 3",
+   "bfr_school_key_map: usado na sentença 4 sem definição no ficheiro"
+  ],
+  "citam_os_alvos": true,
+  "dispara": true
+ },
+ "nomes_novos_verificados": 21,
+ "bloqueios": [],
+ "veredito": "PREFLIGHT_OK_SE_APLICAR_NADA"
+}

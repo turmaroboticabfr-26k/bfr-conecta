@@ -1,0 +1,35 @@
+{
+ "programa": "scripts/sm4-aplicar-ddl-municipal-18-11.mjs",
+ "em": "2026-11-18T04:08:29.151Z",
+ "aplicado": true,
+ "candidata": "scripts/sm4-ddl-municipal-candidata.sql",
+ "candidata_md5": "d0e570308d92135440db68a74ba6135c",
+ "reversao": "scripts/sm4-ddl-municipal-reversao.sql",
+ "reversao_md5": "6ac3442720f4ee931137cff59c0376aa",
+ "preflight_usado": "C:/Users/pcmac/Documents/Qoder/2026-10-13/28077d9a/bfr-conecta/evidence/sm4-preflight-ddl-municipal-18-11c.json",
+ "conferencia": {
+  "objetos": {
+   "tabelas": 4,
+   "colunas": 4,
+   "funcoes": 8,
+   "indices": 4,
+   "vistas": 1
+  },
+  "baselines": {
+   "schools": 6,
+   "sports_schools": 6,
+   "profiles": 24,
+   "students": 848
+  },
+  "grants_linhas": 0,
+  "municipios_linhas": 0,
+  "bloco_H": {
+   "nome": "supervision_requests_director_read",
+   "e_public": false
+  }
+ },
+ "falhas": [
+  "baselines_nao_mexeram: {\"schools\":6,\"sports_schools\":6,\"profiles\":24,\"students\":848} != {\"schools\":6,\"sports_schools\":6,\"profiles\":24,\"students\":848,\"politicas_17_alvo\":86}"
+ ],
+ "veredito": "APLICADO_COM_CONFERENCIA_VERMELHA"
+}

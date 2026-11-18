@@ -1,0 +1,174 @@
+{
+ "programa": "scripts/sm4-acl-reforco-escopo-18-11.mjs",
+ "em": "2026-11-18T04:13:39.257Z",
+ "alvos": [
+  "bfr_school_in_municipal_scope(uuid)",
+  "bfr_school_in_own_school_scope(uuid)",
+  "bfr_municipal_municipalities()"
+ ],
+ "pre_acl": {
+  "bfr_municipal_municipalities": "{postgres=X/postgres,anon=X/postgres,authenticated=X/postgres,service_role=X/postgres}",
+  "bfr_school_in_municipal_scope": "{postgres=X/postgres,anon=X/postgres,authenticated=X/postgres,service_role=X/postgres}",
+  "bfr_school_in_own_school_scope": "{postgres=X/postgres,anon=X/postgres,authenticated=X/postgres,service_role=X/postgres}"
+ },
+ "pg_default_acl_medido": [
+  {
+   "papel": "postgres",
+   "tipo": "r",
+   "acl": "{postgres=arwdDxtm/postgres,anon=arwdDxtm/postgres,authenticated=arwdDxtm/postgres,service_role=arwdDxtm/postgres}"
+  },
+  {
+   "papel": "postgres",
+   "tipo": "f",
+   "acl": "{postgres=X/postgres,anon=X/postgres,authenticated=X/postgres,service_role=X/postgres}"
+  },
+  {
+   "papel": "postgres",
+   "tipo": "S",
+   "acl": "{postgres=rwU/postgres,anon=rwU/postgres,authenticated=rwU/postgres,service_role=rwU/postgres}"
+  },
+  {
+   "papel": "supabase_admin",
+   "tipo": "S",
+   "acl": "{postgres=rwU/supabase_admin,anon=rwU/supabase_admin,authenticated=rwU/supabase_admin,service_role=rwU/supabase_admin}"
+  },
+  {
+   "papel": "supabase_admin",
+   "tipo": "r",
+   "acl": "{postgres=arwdDxtm/supabase_admin,anon=arwdDxtm/supabase_admin,authenticated=arwdDxtm/supabase_admin,service_role=arwdDxtm/supabase_admin}"
+  },
+  {
+   "papel": "supabase_admin",
+   "tipo": "f",
+   "acl": "{postgres=X/supabase_admin,anon=X/supabase_admin,authenticated=X/supabase_admin,service_role=X/supabase_admin}"
+  },
+  {
+   "papel": "postgres",
+   "tipo": "r",
+   "acl": "{postgres=arwdDxtm/postgres,anon=arwdDxtm/postgres,authenticated=arwdDxtm/postgres,service_role=arwdDxtm/postgres}"
+  },
+  {
+   "papel": "postgres",
+   "tipo": "f",
+   "acl": "{postgres=X/postgres,anon=X/postgres,authenticated=X/postgres,service_role=X/postgres}"
+  },
+  {
+   "papel": "postgres",
+   "tipo": "S",
+   "acl": "{postgres=rwU/postgres,anon=rwU/postgres,authenticated=rwU/postgres,service_role=rwU/postgres}"
+  },
+  {
+   "papel": "supabase_auth_admin",
+   "tipo": "r",
+   "acl": "{postgres=arwdDxtm/supabase_auth_admin,dashboard_user=arwdDxtm/supabase_auth_admin}"
+  },
+  {
+   "papel": "supabase_auth_admin",
+   "tipo": "S",
+   "acl": "{postgres=rwU/supabase_auth_admin,dashboard_user=rwU/supabase_auth_admin}"
+  },
+  {
+   "papel": "supabase_auth_admin",
+   "tipo": "f",
+   "acl": "{postgres=X/supabase_auth_admin,dashboard_user=X/supabase_auth_admin}"
+  },
+  {
+   "papel": "supabase_admin",
+   "tipo": "S",
+   "acl": "{postgres=rwU/supabase_admin,anon=rwU/supabase_admin,authenticated=rwU/supabase_admin,service_role=rwU/supabase_admin}"
+  },
+  {
+   "papel": "supabase_admin",
+   "tipo": "r",
+   "acl": "{postgres=arwdDxtm/supabase_admin,anon=arwdDxtm/supabase_admin,authenticated=arwdDxtm/supabase_admin,service_role=arwdDxtm/supabase_admin}"
+  },
+  {
+   "papel": "supabase_admin",
+   "tipo": "f",
+   "acl": "{postgres=X/supabase_admin,anon=X/supabase_admin,authenticated=X/supabase_admin,service_role=X/supabase_admin}"
+  },
+  {
+   "papel": "supabase_admin",
+   "tipo": "r",
+   "acl": "{postgres=a*r*w*d*D*x*t*m*/supabase_admin}"
+  },
+  {
+   "papel": "supabase_admin",
+   "tipo": "f",
+   "acl": "{postgres=X*/supabase_admin}"
+  },
+  {
+   "papel": "supabase_admin",
+   "tipo": "S",
+   "acl": "{postgres=r*w*U*/supabase_admin}"
+  },
+  {
+   "papel": "supabase_admin",
+   "tipo": "r",
+   "acl": "{postgres=arwdDxtm/supabase_admin,anon=arwdDxtm/supabase_admin,authenticated=arwdDxtm/supabase_admin,service_role=arwdDxtm/supabase_admin}"
+  },
+  {
+   "papel": "supabase_admin",
+   "tipo": "f",
+   "acl": "{postgres=X/supabase_admin,anon=X/supabase_admin,authenticated=X/supabase_admin,service_role=X/supabase_admin}"
+  },
+  {
+   "papel": "supabase_admin",
+   "tipo": "S",
+   "acl": "{postgres=rwU/supabase_admin,anon=rwU/supabase_admin,authenticated=rwU/supabase_admin,service_role=rwU/supabase_admin}"
+  },
+  {
+   "papel": "supabase_admin",
+   "tipo": "S",
+   "acl": "{postgres=rwU/supabase_admin,dashboard_user=rwU/supabase_admin}"
+  },
+  {
+   "papel": "supabase_admin",
+   "tipo": "f",
+   "acl": "{postgres=X/supabase_admin,dashboard_user=X/supabase_admin}"
+  },
+  {
+   "papel": "supabase_admin",
+   "tipo": "S",
+   "acl": "{postgres=r*w*U*/supabase_admin}"
+  },
+  {
+   "papel": "supabase_admin",
+   "tipo": "r",
+   "acl": "{postgres=a*r*w*d*D*x*t*m*/supabase_admin}"
+  },
+  {
+   "papel": "supabase_admin",
+   "tipo": "f",
+   "acl": "{postgres=X*/supabase_admin}"
+  },
+  {
+   "papel": "supabase_admin",
+   "tipo": "r",
+   "acl": "{postgres=a*r*wdDxtm/supabase_admin,dashboard_user=arwdDxtm/supabase_admin}"
+  }
+ ],
+ "pos_privilegios": {
+  "anon_scope": false,
+  "anon_own": false,
+  "anon_munis": false,
+  "auth_scope": false,
+  "auth_own": false,
+  "auth_munis": false,
+  "sr_scope": true,
+  "sr_munis": true
+ },
+ "pos_acl": {
+  "bfr_municipal_municipalities": "{postgres=X/postgres,service_role=X/postgres}",
+  "bfr_school_in_municipal_scope": "{postgres=X/postgres,service_role=X/postgres}",
+  "bfr_school_in_own_school_scope": "{postgres=X/postgres,service_role=X/postgres}"
+ },
+ "o_que_prova": "que o REVOKE FROM PUBLIC da candidata tinha funcionado (não havia =X/postgres) mas que os default privileges da plataforma davam EXECUTE a anon/authenticated/service_role a toda função nova; que depois deste reforço anon e authenticated já não executam as três funções de escopo, que service_role mantém (backend de confiança), e que o shell cliente não chama nenhuma delas (medido: 4 chamadas a bfr_is_municipal_authority, que continua concedida de propósito).",
+ "o_que_NAO_prova": "que nenhuma outra função municipal herdou o mesmo default — só estas três foram medidas e fechadas; as restantes (authority, grant, totais, visível) são de interface e a candidata concede-as de propósito.",
+ "falhas": [
+  "pre_public_fechado_bfr_municipal_municipalities: true != false",
+  "pre_public_fechado_bfr_school_in_municipal_scope: true != false",
+  "pre_public_fechado_bfr_school_in_own_school_scope: true != false"
+ ],
+ "veredito": "REFORCO_VERMELHO"
+}

@@ -129,13 +129,13 @@ CREATE FUNCTION public.bfr_school_in_municipal_scope(p_school uuid)
 RETURNS boolean LANGUAGE sql STABLE SECURITY DEFINER SET search_path = 'public' AS $fn$
   SELECT COALESCE((SELECT true FROM public.schools s
                     WHERE s.id = p_school
-                      AND s.municipality_id = ANY (public.bfr_municipal_municipalities())), false)
+                      AND s.municipality_id = ANY (SELECT * FROM public.bfr_municipal_municipalities())), false)
       OR COALESCE((SELECT true
                      FROM public.bfr_school_key_map m
                      JOIN public.schools s ON s.id = m.school_id
                     WHERE m.sports_school_id = p_school
                       AND (m.matched_by = 'mesmo_id' OR m.confirmed_by IS NOT NULL)
-                      AND s.municipality_id = ANY (public.bfr_municipal_municipalities())), false);
+                      AND s.municipality_id = ANY (SELECT * FROM public.bfr_municipal_municipalities())), false);
 $fn$;
 
 -- Serve para as tabelas do espaço `sports_schools` (`staff_schools`, `supervision_requests`): responder
@@ -153,7 +153,7 @@ $fn$;
 
 CREATE FUNCTION public.bfr_municipalities_visible(p_id uuid)
 RETURNS boolean LANGUAGE sql STABLE SECURITY DEFINER SET search_path = 'public' AS $fn$
-  SELECT p_id = ANY (public.bfr_municipal_municipalities())
+  SELECT p_id = ANY (SELECT * FROM public.bfr_municipal_municipalities())
       OR public.bfr_is_platform_admin()
       OR public.bfr_is_education_supervisor();
 $fn$;
@@ -243,7 +243,7 @@ CREATE POLICY bfr_municipal_audit_read ON public.bfr_municipal_audit
 --    polroles = {0} = PUBLIC, ou seja vale para `anon`. Não há exploração provada — com `auth.uid()`
 --    NULL a qualificação `p.id = auth.uid()` devolve 0 linhas — mas a política era para diretores.
 --------------------------------------------------------------------------------
-ALTER POLICY public.supervision_requests_director_read ON public.supervision_requests TO authenticated;
+ALTER POLICY supervision_requests_director_read ON public.supervision_requests TO authenticated;
 
 --------------------------------------------------------------------------------
 -- I) AGREGADOS DO DASHBOARD (§4.1). Vistas depois das funções de escopo.

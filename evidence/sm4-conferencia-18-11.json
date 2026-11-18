@@ -1,0 +1,72 @@
+{
+ "programa": "scripts/sm4-conferir-ddl-municipal-18-11.mjs",
+ "em": "2026-11-18T04:15:04.107Z",
+ "escrita_no_banco": false,
+ "identidade_da_correcao": "conferência pós-facto da aplicação de 18/11 04:08Z; o vermelho do aplicador foi só do comparador de baselines (4 chaves vs 5), os valores medidos estavam certos; a corrida vermelha está preservada em evidence/sm4-aplicacao-18-11-ANTERIOR-comparador-vermelho.json. Adenda ACL: a 1.ª conferência mediu que os default privileges da plataforma davam EXECUTE a anon/authenticated/service_role nas três funções de escopo apesar do REVOKE FROM PUBLIC; o reforço scripts/sm4-acl-reforco-escopo-18-11.mjs fechou anon e authenticated (service_role mantém, backend de confiança); a corrida intermédia está preservada em evidence/sm4-conferencia-18-11-ANTERIOR-acl-antes-do-reforco.json.",
+ "candidata": "scripts/sm4-ddl-municipal-candidata.sql",
+ "candidata_md5": "d0e570308d92135440db68a74ba6135c",
+ "reversao_md5": "6ac3442720f4ee931137cff59c0376aa",
+ "preflight_usado": "C:/Users/pcmac/Documents/Qoder/2026-10-13/28077d9a/bfr-conecta/evidence/sm4-preflight-ddl-municipal-18-11c.json",
+ "politicas_da_candidata": 14,
+ "conferencia": {
+  "objetos": {
+   "tabelas": 4,
+   "colunas": 4,
+   "funcoes": 8,
+   "indices": 4,
+   "vistas": 1,
+   "rls_ativas": 4
+  },
+  "linhas": {
+   "schools": 6,
+   "sports_schools": 6,
+   "profiles": 24,
+   "students": 848,
+   "municipios": 0,
+   "grants": 0,
+   "audit": 0,
+   "ponte": 6
+  },
+  "ponte": {
+   "mesmo_id": 3,
+   "mesmo_nome": 3,
+   "confirmadas": 0
+  },
+  "escolas": {
+   "geo_preenchida": 0,
+   "ativas": 6,
+   "code_mec_preenchido": 0
+  },
+  "bloco_H": {
+   "nome": "supervision_requests_director_read",
+   "e_public": false
+  },
+  "politicas_17_alvo": 90,
+  "acl": {
+   "auth_autoridade": true,
+   "auth_grant": true,
+   "auth_totais": true,
+   "anon_scope": false,
+   "anon_own": false,
+   "anon_munis": false,
+   "auth_scope": false,
+   "auth_own": false,
+   "auth_munis": false,
+   "sr_scope": true,
+   "sr_munis": true
+  },
+  "vista": {
+   "n": 0
+  },
+  "totais": {
+   "schools": 0,
+   "students": 0,
+   "classes": 0,
+   "municipalities": 0
+  }
+ },
+ "o_que_prova": "que a aplicação de 18/11 deixou exatamente o que a candidata cria: 4 tabelas com RLS ativo, 4 colunas novas vazias, 8 funções, 4 índices, 1 vista, a ponte com os pares medidos no preflight (mesmo_id + mesmo_nome, nenhum confirmado), grants e municípios vazios, baselines de linhas intactas, bloco H sem PUBLIC, +4 políticas na lista ALVO17, ACLs de função como desenhado (anon e authenticated sem EXECUTE nas três de escopo após o reforço, service_role mantém), e a vista/agregado compiláveis respondendo vazio sem grant.",
+ "o_que_NAO_prova": "que um utilizador autenticado com grant vê linhas — isso é o teste de browser do MÓDULO 2 (tarefa própria), não uma conferência de catálogo; também não prova privilégios de GRANT sobre as tabelas novas além do que os catálogos consultados mostram.",
+ "falhas": [],
+ "veredito": "CONFERIDO_OK"
+}
