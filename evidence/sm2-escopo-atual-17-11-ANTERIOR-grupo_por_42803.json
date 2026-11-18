@@ -1,0 +1,289 @@
+{
+ "programa": "scripts/sm2-escopo-atual-17-11.mjs",
+ "em": "2026-11-18T00:09:02.816Z",
+ "escrita_no_banco": false,
+ "o_que_prova": "as chaves estrangeiras reais de `staff_schools`/`student_school_profiles`/`supervision_requests`/`secretary_requests`, o estado de RLS forçado e o nº de políticas por tabela alvo, e as expressões `using`/`with check` que hoje decidem se um papel lê uma só escola ou a rede inteira — com PUBLIC detectado pelo oid 0, não pelo nome",
+ "o_que_NAO_prova": "nada sobre a interface nem sobre o que o ar devolve para cada papel; isto é catálogo. Provar «o secretário municipal atravessa escolas» exige chamada autenticada, que não é deste instrumento.",
+ "resumo": {
+  "tabelas_alvo": 17,
+  "tabelas_com_rls_forcada": 17,
+  "tabelas_sem_rls": [],
+  "politicas_nas_alvo": 0,
+  "politicas_de_public": 0,
+  "politicas_que_citam_escola": 0,
+  "por_tabela": {
+   "access_requests": 4,
+   "announcements": 2,
+   "attendance": 8,
+   "classes": 7,
+   "grades": 5,
+   "profiles": 6,
+   "school_documents": 4,
+   "schools": 1,
+   "secretary_profile_change_requests": 3,
+   "secretary_requests": 4,
+   "staff_schools": 6,
+   "student_school_profiles": 5,
+   "students": 8,
+   "supervision_action_plans": 3,
+   "supervision_alerts": 3,
+   "supervision_requests": 12,
+   "supervision_responses": 5
+  },
+  "falhas": [
+   "politicas_das_tabelas_alvo: sql HTTP 400: {\"message\":\"Failed to run sql query: ERROR:  42803: column \\\"p.polrelid\\\" must appear in the GROUP BY clause or be used in an aggregate function\\nLINE 4:        pg_get_expr(p.polqual, p.polrelid) as using_expr,\\n                                      ^\\n\"}"
+  ]
+ },
+ "respostas": [
+  {
+   "nome": "fk_de_staff_schools",
+   "ok": true,
+   "linhas": 7,
+   "dados": [
+    {
+     "column_name": "student_id",
+     "tabela_referida": "students",
+     "coluna_referida": "id"
+    },
+    {
+     "column_name": "profile_id",
+     "tabela_referida": "profiles",
+     "coluna_referida": "id"
+    },
+    {
+     "column_name": "school_id",
+     "tabela_referida": "sports_schools",
+     "coluna_referida": "id"
+    },
+    {
+     "column_name": "student_id",
+     "tabela_referida": "students",
+     "coluna_referida": "id"
+    },
+    {
+     "column_name": "closed_by",
+     "tabela_referida": "profiles",
+     "coluna_referida": "id"
+    },
+    {
+     "column_name": "created_by",
+     "tabela_referida": "profiles",
+     "coluna_referida": "id"
+    },
+    {
+     "column_name": "school_id",
+     "tabela_referida": "sports_schools",
+     "coluna_referida": "id"
+    }
+   ]
+  },
+  {
+   "nome": "forma_de_student_school_profiles",
+   "ok": true,
+   "linhas": 16,
+   "dados": [
+    {
+     "column_name": "student_id",
+     "data_type": "uuid"
+    },
+    {
+     "column_name": "birth_date",
+     "data_type": "date"
+    },
+    {
+     "column_name": "photo_path",
+     "data_type": "text"
+    },
+    {
+     "column_name": "address_line",
+     "data_type": "text"
+    },
+    {
+     "column_name": "guardian_name",
+     "data_type": "text"
+    },
+    {
+     "column_name": "guardian_phone",
+     "data_type": "text"
+    },
+    {
+     "column_name": "emergency_contact",
+     "data_type": "text"
+    },
+    {
+     "column_name": "inclusion_needs",
+     "data_type": "text"
+    },
+    {
+     "column_name": "inclusion_plan",
+     "data_type": "text"
+    },
+    {
+     "column_name": "inclusion_observations",
+     "data_type": "text"
+    },
+    {
+     "column_name": "updated_by",
+     "data_type": "uuid"
+    },
+    {
+     "column_name": "created_at",
+     "data_type": "timestamp with time zone"
+    },
+    {
+     "column_name": "updated_at",
+     "data_type": "timestamp with time zone"
+    },
+    {
+     "column_name": "guardian_cpf_hash",
+     "data_type": "text"
+    },
+    {
+     "column_name": "filiation_1",
+     "data_type": "text"
+    },
+    {
+     "column_name": "filiation_2",
+     "data_type": "text"
+    }
+   ]
+  },
+  {
+   "nome": "politicas_das_tabelas_alvo",
+   "ok": false,
+   "erro": "sql HTTP 400: {\"message\":\"Failed to run sql query: ERROR:  42803: column \\\"p.polrelid\\\" must appear in the GROUP BY clause or be used in an aggregate function\\nLINE 4:        pg_get_expr(p.polqual, p.polrelid) as using_expr,\\n                                      ^\\n\"}"
+  },
+  {
+   "nome": "tabela_tem_rls",
+   "ok": true,
+   "linhas": 17,
+   "dados": [
+    {
+     "tabela": "access_requests",
+     "rls_forcada": true,
+     "regras": false,
+     "n_politicas": 4
+    },
+    {
+     "tabela": "announcements",
+     "rls_forcada": true,
+     "regras": false,
+     "n_politicas": 2
+    },
+    {
+     "tabela": "attendance",
+     "rls_forcada": true,
+     "regras": false,
+     "n_politicas": 8
+    },
+    {
+     "tabela": "classes",
+     "rls_forcada": true,
+     "regras": false,
+     "n_politicas": 7
+    },
+    {
+     "tabela": "grades",
+     "rls_forcada": true,
+     "regras": false,
+     "n_politicas": 5
+    },
+    {
+     "tabela": "profiles",
+     "rls_forcada": true,
+     "regras": false,
+     "n_politicas": 6
+    },
+    {
+     "tabela": "school_documents",
+     "rls_forcada": true,
+     "regras": false,
+     "n_politicas": 4
+    },
+    {
+     "tabela": "schools",
+     "rls_forcada": true,
+     "regras": false,
+     "n_politicas": 1
+    },
+    {
+     "tabela": "secretary_profile_change_requests",
+     "rls_forcada": true,
+     "regras": false,
+     "n_politicas": 3
+    },
+    {
+     "tabela": "secretary_requests",
+     "rls_forcada": true,
+     "regras": false,
+     "n_politicas": 4
+    },
+    {
+     "tabela": "staff_schools",
+     "rls_forcada": true,
+     "regras": false,
+     "n_politicas": 6
+    },
+    {
+     "tabela": "student_school_profiles",
+     "rls_forcada": true,
+     "regras": false,
+     "n_politicas": 5
+    },
+    {
+     "tabela": "students",
+     "rls_forcada": true,
+     "regras": false,
+     "n_politicas": 8
+    },
+    {
+     "tabela": "supervision_action_plans",
+     "rls_forcada": true,
+     "regras": false,
+     "n_politicas": 3
+    },
+    {
+     "tabela": "supervision_alerts",
+     "rls_forcada": true,
+     "regras": false,
+     "n_politicas": 3
+    },
+    {
+     "tabela": "supervision_requests",
+     "rls_forcada": true,
+     "regras": false,
+     "n_politicas": 12
+    },
+    {
+     "tabela": "supervision_responses",
+     "rls_forcada": true,
+     "regras": false,
+     "n_politicas": 5
+    }
+   ]
+  },
+  {
+   "nome": "views_e_suas_definicoes_alvo",
+   "ok": true,
+   "linhas": 4,
+   "dados": [
+    {
+     "view": "sports_public_athletes",
+     "colunas": "id, team_id, name, jersey_number, position, status"
+    },
+    {
+     "view": "sports_public_matches",
+     "colunas": "id, championship_id, sport, category, gender, home_team_id, away_team_id, scheduled_at, venue, phase, status, home_score, away_score, period, clock_seconds, started_at, finished_at"
+    },
+    {
+     "view": "sports_public_schools",
+     "colunas": "id, name, city, logo_url"
+    },
+    {
+     "view": "sports_public_teams",
+     "colunas": "id, school_id, school_name, name, sport, category, gender, crest_url, active"
+    }
+   ]
+  }
+ ]
+}

@@ -6,7 +6,12 @@ import path from 'node:path';
 import { execFileSync } from 'node:child_process';
 
 const RAIZ = path.resolve(import.meta.dirname, '..');
-const OUT = path.join(RAIZ, 'evidence/ah1-varre-escritas-17-11.json');
+// O nome por omissão é o da corrida de 17/11, já congelada como evidência. Uma varredura de fecho de
+// ciclo não pode sobrescrevê-la nem ter de a apagar, por isso o destino aceita `VARR_OUT` (caminho
+// absoluto ou relativo à raiz) mantendo o produtor identityicamente este script.
+const OUT = process.env.VARR_OUT
+  ? path.isAbsolute(process.env.VARR_OUT) ? process.env.VARR_OUT : path.join(RAIZ, process.env.VARR_OUT)
+  : path.join(RAIZ, 'evidence/ah1-varre-escritas-17-11.json');
 if (fs.existsSync(OUT)) throw new Error('ABORTA: ' + OUT + ' existe — correr com outro nome');
 
 // A primeira régua foi por codepoint (`cp >= 0x0400`, com lista de permitidos) e deu 562 ofensores no

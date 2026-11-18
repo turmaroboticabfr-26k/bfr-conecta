@@ -1,0 +1,416 @@
+{
+ "programa": "scripts/sm3-duas-escolas-e-supervisor-17-11.mjs",
+ "em": "2026-11-18T00:12:47.043Z",
+ "escrita_no_banco": false,
+ "o_que_prova": "se `schools.id` e `sports_schools.id` são o mesmo espaço de chaves (a sobreposição decide se o isolamento por escola do staff se aplica aos alunos); a abrangência real por papel contada de `profiles` x `staff_schools` numa única consulta; em qual das duas tabelas bate cada `staff_schools.school_id` existente; e o corpo SQL de `bfr_is_education_supervisor()` e companhia — isto é, o que hoje define «usuário municipal» no backend.",
+ "o_que_NAO_prova": "nada sobre a interface nem sobre o que cada papel vê no ecrã; substitui o campo `abrangencia_por_papel` de `evidence/sm1-inventario-rede-17-11b.json`, cujo join devolveu `vinculos = 0` contra uma tabela de 6 linhas.",
+ "resumo": {
+  "chave": {
+   "linhas_schools": 6,
+   "linhas_sports_schools": 6,
+   "ids_compartilhados": 3,
+   "so_em_schools": 3,
+   "so_em_sports_schools": 3,
+   "mesmo_espaco_de_ids": false
+  },
+  "abrangencia_por_papel": [
+   {
+    "papel": "aee",
+    "perfis": 2,
+    "vinculos_staff_schools": 0,
+    "escolas_distintas_no_vinculo": 0
+   },
+   {
+    "papel": "coordinator",
+    "perfis": 1,
+    "vinculos_staff_schools": 1,
+    "escolas_distintas_no_vinculo": 1
+   },
+   {
+    "papel": "developer",
+    "perfis": 3,
+    "vinculos_staff_schools": 0,
+    "escolas_distintas_no_vinculo": 0
+   },
+   {
+    "papel": "director",
+    "perfis": 2,
+    "vinculos_staff_schools": 2,
+    "escolas_distintas_no_vinculo": 1
+   },
+   {
+    "papel": "education_supervisor",
+    "perfis": 1,
+    "vinculos_staff_schools": 1,
+    "escolas_distintas_no_vinculo": 1
+   },
+   {
+    "papel": "gatekeeper",
+    "perfis": 2,
+    "vinculos_staff_schools": 0,
+    "escolas_distintas_no_vinculo": 0
+   },
+   {
+    "papel": "monitor",
+    "perfis": 2,
+    "vinculos_staff_schools": 0,
+    "escolas_distintas_no_vinculo": 0
+   },
+   {
+    "papel": "parent",
+    "perfis": 1,
+    "vinculos_staff_schools": 0,
+    "escolas_distintas_no_vinculo": 0
+   },
+   {
+    "papel": "pedagogical",
+    "perfis": 2,
+    "vinculos_staff_schools": 0,
+    "escolas_distintas_no_vinculo": 0
+   },
+   {
+    "papel": "pending",
+    "perfis": 1,
+    "vinculos_staff_schools": 0,
+    "escolas_distintas_no_vinculo": 0
+   },
+   {
+    "papel": "psychology",
+    "perfis": 1,
+    "vinculos_staff_schools": 0,
+    "escolas_distintas_no_vinculo": 0
+   },
+   {
+    "papel": "secretary",
+    "perfis": 2,
+    "vinculos_staff_schools": 2,
+    "escolas_distintas_no_vinculo": 1
+   },
+   {
+    "papel": "social_work",
+    "perfis": 1,
+    "vinculos_staff_schools": 0,
+    "escolas_distintas_no_vinculo": 0
+   },
+   {
+    "papel": "sports_operator",
+    "perfis": 1,
+    "vinculos_staff_schools": 0,
+    "escolas_distintas_no_vinculo": 0
+   },
+   {
+    "papel": "student",
+    "perfis": 2,
+    "vinculos_staff_schools": 0,
+    "escolas_distintas_no_vinculo": 0
+   }
+  ],
+  "vinculos_batendo": {
+   "em_schools": 6,
+   "em_sports_schools": 6,
+   "total": 6
+  },
+  "funcoes_encontradas": [
+   "bfr_is_education_supervisor",
+   "bfr_rls_is_developer",
+   "bfr_rls_session_role",
+   "current_role",
+   "is_developer"
+  ],
+  "supervisor_e_por_que": "CREATE OR REPLACE FUNCTION public.bfr_is_education_supervisor()\n RETURNS boolean\n LANGUAGE sql\n STABLE SECURITY DEFINER\n SET search_path TO 'public'\nAS $function$\n  SELECT COALESCE(\n    (SELECT true FROM public.profiles \n     WHERE id = auth.uid() AND role = 'education_supervisor'::account_role),\n    false\n  );\n$function$\n",
+  "falhas": []
+ },
+ "respostas": [
+  {
+   "nome": "ids_das_duas_tabelas_de_escola",
+   "ok": true,
+   "linhas": 1,
+   "dados": [
+    {
+     "linhas_schools": 6,
+     "linhas_sports_schools": 6,
+     "ids_compartilhados": 3,
+     "so_em_schools": 3,
+     "so_em_sports_schools": 3
+    }
+   ]
+  },
+  {
+   "nome": "nomes_e_cidades_lado_a_lado",
+   "ok": true,
+   "linhas": 6,
+   "dados": [
+    {
+     "id_schools": "07201ebb-3cde-411f-b5ce-fed8b27aa540",
+     "nome_schools": "Escola Alpha",
+     "cidade_schools": "São Paulo",
+     "id_sports": "559acff1-e4df-42bc-aea4-2d96b8b5b11b",
+     "nome_sports": "Escola Alpha",
+     "cidade_sports": "São Paulo",
+     "mesmo_id": false
+    },
+    {
+     "id_schools": "b0d73479-35b8-4a6b-a7e4-2377bee9493c",
+     "nome_schools": "Escola Beta",
+     "cidade_schools": "Rio de Janeiro",
+     "id_sports": "2efafbdc-12f4-4e63-a58e-2e50ca5479e2",
+     "nome_sports": "Escola Beta",
+     "cidade_sports": "Rio de Janeiro",
+     "mesmo_id": false
+    },
+    {
+     "id_schools": "8a29b3ce-3d9d-47d9-8891-3d45dcd1acfa",
+     "nome_schools": "Escola Gamma",
+     "cidade_schools": "Belo Horizonte",
+     "id_sports": "75a15897-e987-408b-af1c-eace66b0a70d",
+     "nome_sports": "Escola Gamma",
+     "cidade_sports": "Belo Horizonte",
+     "mesmo_id": false
+    },
+    {
+     "id_schools": "08ebef62-2193-4520-ab44-c044160d565f",
+     "nome_schools": "Escola Municipal Alpha",
+     "cidade_schools": "São Paulo",
+     "id_sports": "08ebef62-2193-4520-ab44-c044160d565f",
+     "nome_sports": "Escola Municipal Alpha",
+     "cidade_sports": "São Paulo",
+     "mesmo_id": true
+    },
+    {
+     "id_schools": "0f51bc67-9987-483d-aba0-f138b2b7580e",
+     "nome_schools": "Escola Municipal Beta",
+     "cidade_schools": "São Paulo",
+     "id_sports": "0f51bc67-9987-483d-aba0-f138b2b7580e",
+     "nome_sports": "Escola Municipal Beta",
+     "cidade_sports": "São Paulo",
+     "mesmo_id": true
+    },
+    {
+     "id_schools": "f4ab6309-8c41-4456-a3e2-14f3fe2ad9d3",
+     "nome_schools": "Escola Municipal Gamma",
+     "cidade_schools": "São Paulo",
+     "id_sports": "f4ab6309-8c41-4456-a3e2-14f3fe2ad9d3",
+     "nome_sports": "Escola Municipal Gamma",
+     "cidade_sports": "São Paulo",
+     "mesmo_id": true
+    }
+   ]
+  },
+  {
+   "nome": "abrangencia_real_por_papel",
+   "ok": true,
+   "linhas": 15,
+   "dados": [
+    {
+     "papel": "aee",
+     "perfis": 2,
+     "vinculos_staff_schools": 0,
+     "escolas_distintas_no_vinculo": 0
+    },
+    {
+     "papel": "coordinator",
+     "perfis": 1,
+     "vinculos_staff_schools": 1,
+     "escolas_distintas_no_vinculo": 1
+    },
+    {
+     "papel": "developer",
+     "perfis": 3,
+     "vinculos_staff_schools": 0,
+     "escolas_distintas_no_vinculo": 0
+    },
+    {
+     "papel": "director",
+     "perfis": 2,
+     "vinculos_staff_schools": 2,
+     "escolas_distintas_no_vinculo": 1
+    },
+    {
+     "papel": "education_supervisor",
+     "perfis": 1,
+     "vinculos_staff_schools": 1,
+     "escolas_distintas_no_vinculo": 1
+    },
+    {
+     "papel": "gatekeeper",
+     "perfis": 2,
+     "vinculos_staff_schools": 0,
+     "escolas_distintas_no_vinculo": 0
+    },
+    {
+     "papel": "monitor",
+     "perfis": 2,
+     "vinculos_staff_schools": 0,
+     "escolas_distintas_no_vinculo": 0
+    },
+    {
+     "papel": "parent",
+     "perfis": 1,
+     "vinculos_staff_schools": 0,
+     "escolas_distintas_no_vinculo": 0
+    },
+    {
+     "papel": "pedagogical",
+     "perfis": 2,
+     "vinculos_staff_schools": 0,
+     "escolas_distintas_no_vinculo": 0
+    },
+    {
+     "papel": "pending",
+     "perfis": 1,
+     "vinculos_staff_schools": 0,
+     "escolas_distintas_no_vinculo": 0
+    },
+    {
+     "papel": "psychology",
+     "perfis": 1,
+     "vinculos_staff_schools": 0,
+     "escolas_distintas_no_vinculo": 0
+    },
+    {
+     "papel": "secretary",
+     "perfis": 2,
+     "vinculos_staff_schools": 2,
+     "escolas_distintas_no_vinculo": 1
+    },
+    {
+     "papel": "social_work",
+     "perfis": 1,
+     "vinculos_staff_schools": 0,
+     "escolas_distintas_no_vinculo": 0
+    },
+    {
+     "papel": "sports_operator",
+     "perfis": 1,
+     "vinculos_staff_schools": 0,
+     "escolas_distintas_no_vinculo": 0
+    },
+    {
+     "papel": "student",
+     "perfis": 2,
+     "vinculos_staff_schools": 0,
+     "escolas_distintas_no_vinculo": 0
+    }
+   ]
+  },
+  {
+   "nome": "alunos_por_escola",
+   "ok": true,
+   "linhas": 6,
+   "dados": [
+    {
+     "escola": "Escola Municipal Alpha",
+     "cidade": "São Paulo",
+     "alunos": 848
+    },
+    {
+     "escola": "Escola Gamma",
+     "cidade": "Belo Horizonte",
+     "alunos": 0
+    },
+    {
+     "escola": "Escola Municipal Beta",
+     "cidade": "São Paulo",
+     "alunos": 0
+    },
+    {
+     "escola": "Escola Beta",
+     "cidade": "Rio de Janeiro",
+     "alunos": 0
+    },
+    {
+     "escola": "Escola Municipal Gamma",
+     "cidade": "São Paulo",
+     "alunos": 0
+    },
+    {
+     "escola": "Escola Alpha",
+     "cidade": "São Paulo",
+     "alunos": 0
+    }
+   ]
+  },
+  {
+   "nome": "quem_tem_vinculo_e_em_que_tabela",
+   "ok": true,
+   "linhas": 6,
+   "dados": [
+    {
+     "papel": "coordinator",
+     "id": "9cd0f42e-7676-48c3-8f0a-c43f2896e20d",
+     "full_name": "AH2 coordinator Sintética (apagar)",
+     "school_id": "08ebef62-2193-4520-ab44-c044160d565f",
+     "bate_com_schools": true,
+     "bate_com_sports_schools": true
+    },
+    {
+     "papel": "director",
+     "id": "b5be4883-f076-4706-b40c-6ab1e720baa7",
+     "full_name": "AH2 director Sintética (apagar)",
+     "school_id": "08ebef62-2193-4520-ab44-c044160d565f",
+     "bate_com_schools": true,
+     "bate_com_sports_schools": true
+    },
+    {
+     "papel": "director",
+     "id": "cc005f8c-fa2c-414f-8b04-73e828ec8216",
+     "full_name": "Raull Macedo",
+     "school_id": "08ebef62-2193-4520-ab44-c044160d565f",
+     "bate_com_schools": true,
+     "bate_com_sports_schools": true
+    },
+    {
+     "papel": "education_supervisor",
+     "id": "d7d45999-c21f-4322-8f94-46c6564ff728",
+     "full_name": "AH2 education_supervisor Sintética (apagar)",
+     "school_id": "08ebef62-2193-4520-ab44-c044160d565f",
+     "bate_com_schools": true,
+     "bate_com_sports_schools": true
+    },
+    {
+     "papel": "secretary",
+     "id": "50205728-72c0-49a5-b519-afccdcc24fea",
+     "full_name": "Dale Excursoes",
+     "school_id": "08ebef62-2193-4520-ab44-c044160d565f",
+     "bate_com_schools": true,
+     "bate_com_sports_schools": true
+    },
+    {
+     "papel": "secretary",
+     "id": "839e1f87-c596-4355-9f89-2ed97711349f",
+     "full_name": "AH2 secretary Sintética (apagar)",
+     "school_id": "08ebef62-2193-4520-ab44-c044160d565f",
+     "bate_com_schools": true,
+     "bate_com_sports_schools": true
+    }
+   ]
+  },
+  {
+   "nome": "corpo_das_funcoes_de_acesso",
+   "ok": true,
+   "linhas": 5,
+   "dados": [
+    {
+     "funcao": "bfr_is_education_supervisor",
+     "definicao": "CREATE OR REPLACE FUNCTION public.bfr_is_education_supervisor()\n RETURNS boolean\n LANGUAGE sql\n STABLE SECURITY DEFINER\n SET search_path TO 'public'\nAS $function$\n  SELECT COALESCE(\n    (SELECT true FROM public.profiles \n     WHERE id = auth.uid() AND role = 'education_supervisor'::account_role),\n    false\n  );\n$function$\n"
+    },
+    {
+     "funcao": "bfr_rls_is_developer",
+     "definicao": "CREATE OR REPLACE FUNCTION public.bfr_rls_is_developer()\n RETURNS boolean\n LANGUAGE sql\n STABLE SECURITY DEFINER\n SET search_path TO 'public', 'pg_temp'\nAS $function$\n  -- Delega na função viva: a resposta é a mesma; o que muda é que quem chama o wrapper não precisa de\n  -- privilégio nenhum sobre a função interior.\n  select coalesce(public.is_developer(), false)\n$function$\n"
+    },
+    {
+     "funcao": "bfr_rls_session_role",
+     "definicao": "CREATE OR REPLACE FUNCTION public.bfr_rls_session_role()\n RETURNS account_role\n LANGUAGE sql\n STABLE SECURITY DEFINER\n SET search_path TO 'public', 'pg_temp'\nAS $function$\n  -- Responde o mesmo que public.\"current_role\"() (que já é SECURITY DEFINER e faz exactamente isto):\n  -- para o anon, auth.uid() é NULL → 0 linhas → NULL, e a qualificação fica falsa por lógica própria\n  -- em vez de por 42501.\n  select role from public.profiles where id = auth.uid()\n$function$\n"
+    },
+    {
+     "funcao": "current_role",
+     "definicao": "CREATE OR REPLACE FUNCTION public.\"current_role\"()\n RETURNS account_role\n LANGUAGE sql\n STABLE SECURITY DEFINER\n SET search_path TO ''\nAS $function$ select role from public.profiles where id = auth.uid() $function$\n"
+    },
+    {
+     "funcao": "is_developer",
+     "definicao": "CREATE OR REPLACE FUNCTION public.is_developer()\n RETURNS boolean\n LANGUAGE sql\n STABLE SECURITY DEFINER\n SET search_path TO ''\nAS $function$ select coalesce(public.current_role() = 'developer', false) $function$\n"
+    }
+   ]
+  }
+ ]
+}

@@ -5,7 +5,12 @@ import path from 'node:path';
 import { execFileSync } from 'node:child_process';
 
 const RAIZ = path.resolve(import.meta.dirname, '..');
-const OUT = path.join(RAIZ, 'evidence/ah1-cita-instrumentos-17-11.json');
+// O nome por omissão é a corrida de 17/11, congelada como evidência: um censo de fecho de ciclo não pode
+// sobrescrevê-la nem apagar quem a produziu. `CITA_OUT` (absoluto ou relativo à raiz) permite nova corrida
+// mantendo este script como produtor do artefacto.
+const OUT = process.env.CITA_OUT
+  ? path.isAbsolute(process.env.CITA_OUT) ? process.env.CITA_OUT : path.join(RAIZ, process.env.CITA_OUT)
+  : path.join(RAIZ, 'evidence/ah1-cita-instrumentos-17-11.json');
 if (fs.existsSync(OUT)) throw new Error('ABORTA: ' + OUT + ' existe — correr com outro nome');
 
 const DOCUMENTOS = [

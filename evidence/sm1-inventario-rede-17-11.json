@@ -1,0 +1,321 @@
+{
+ "programa": "scripts/sm1-inventario-rede.mjs",
+ "em": "2026-11-18T00:05:43.393Z",
+ "escrita_no_banco": false,
+ "o_que_prova": "estado do catálogo que decide o desenho do módulo municipal: nº de escolas e alunos por escola, que tabelas já têm coluna de unidade, se existe alguma coluna de município/cidade/região/ano letivo, papéis presentes em `profiles` com contagem, a ABRANGÊNCIA por papel contada em `staff_schools` (perfis, vínculos, escolas distintas — sem nomes nem emails, por LGPD), e o censo de políticas RLS e funções `bfr_rls_*`",
+ "o_que_NAO_prova": "nada sobre a interface: este inventário é banco. Não prova nem desmente que uma aba abra, carregue ou tenha botão — para isso há outros instrumentos (`ah1-*`, `ah2-*`).",
+ "perguntas": [
+  "escolas",
+  "colunas_de_schools",
+  "tabelas_com_school_id",
+  "colunas_de_geografia_rede",
+  "alunos_por_escola",
+  "perfis_por_papel",
+  "staff_schools_colunas",
+  "abrangencia_por_papel",
+  "politicas_rls",
+  "funcoes_rls"
+ ],
+ "resumo": {
+  "escolas": {
+   "n": 6,
+   "n_active": 6
+  },
+  "tabelas_com_school_id": 6,
+  "colunas_de_geografia_rede": 7,
+  "politicas_rls": 0,
+  "funcoes_bfr_rls": [
+   "bfr_rls_director_manages_student",
+   "bfr_rls_is_developer",
+   "bfr_rls_session_role"
+  ],
+  "falhas_de_query": [
+   "abrangencia_por_papel: sql HTTP 400: {\"message\":\"Failed to run sql query: ERROR:  22P02: invalid input value for enum account_role: \\\"admin\\\"\\nLINE 6:                              where p.role in ('education_supervisor','secretary','director','coordinator','pedagogical','developer','admin')\\n                              ",
+   "politicas_rls: sql HTTP 400: {\"message\":\"Failed to run sql query: ERROR:  42703: column \\\"schemaname\\\" does not exist\\nLINE 6:                      where schemaname='public'\\n                                   ^\\n\"}"
+  ]
+ },
+ "respostas": [
+  {
+   "nome": "escolas",
+   "ok": true,
+   "linhas": 1,
+   "dados": [
+    {
+     "n": 6,
+     "n_active": 6
+    }
+   ]
+  },
+  {
+   "nome": "colunas_de_schools",
+   "ok": true,
+   "linhas": 10,
+   "dados": [
+    {
+     "column_name": "id",
+     "data_type": "uuid"
+    },
+    {
+     "column_name": "name",
+     "data_type": "text"
+    },
+    {
+     "column_name": "code",
+     "data_type": "text"
+    },
+    {
+     "column_name": "address_line",
+     "data_type": "text"
+    },
+    {
+     "column_name": "city",
+     "data_type": "text"
+    },
+    {
+     "column_name": "state",
+     "data_type": "text"
+    },
+    {
+     "column_name": "phase",
+     "data_type": "text"
+    },
+    {
+     "column_name": "active",
+     "data_type": "boolean"
+    },
+    {
+     "column_name": "created_at",
+     "data_type": "timestamp with time zone"
+    },
+    {
+     "column_name": "updated_at",
+     "data_type": "timestamp with time zone"
+    }
+   ]
+  },
+  {
+   "nome": "tabelas_com_school_id",
+   "ok": true,
+   "linhas": 6,
+   "dados": [
+    {
+     "table_name": "classes",
+     "n_cols": 1
+    },
+    {
+     "table_name": "sports_public_teams",
+     "n_cols": 1
+    },
+    {
+     "table_name": "sports_teams",
+     "n_cols": 1
+    },
+    {
+     "table_name": "staff_schools",
+     "n_cols": 1
+    },
+    {
+     "table_name": "students",
+     "n_cols": 1
+    },
+    {
+     "table_name": "supervision_requests",
+     "n_cols": 1
+    }
+   ]
+  },
+  {
+   "nome": "colunas_de_geografia_rede",
+   "ok": true,
+   "linhas": 7,
+   "dados": [
+    {
+     "table_name": "bfr_lesson_attendance",
+     "column_name": "shift"
+    },
+    {
+     "table_name": "bfr_schedule_entries",
+     "column_name": "shift"
+    },
+    {
+     "table_name": "classes",
+     "column_name": "shift"
+    },
+    {
+     "table_name": "gate_checkins",
+     "column_name": "target_shift"
+    },
+    {
+     "table_name": "schools",
+     "column_name": "city"
+    },
+    {
+     "table_name": "sports_public_schools",
+     "column_name": "city"
+    },
+    {
+     "table_name": "sports_schools",
+     "column_name": "city"
+    }
+   ]
+  },
+  {
+   "nome": "alunos_por_escola",
+   "ok": true,
+   "linhas": 6,
+   "dados": [
+    {
+     "escola": "Escola Municipal Alpha",
+     "alunos": 848
+    },
+    {
+     "escola": "Escola Alpha",
+     "alunos": 0
+    },
+    {
+     "escola": "Escola Beta",
+     "alunos": 0
+    },
+    {
+     "escola": "Escola Gamma",
+     "alunos": 0
+    },
+    {
+     "escola": "Escola Municipal Beta",
+     "alunos": 0
+    },
+    {
+     "escola": "Escola Municipal Gamma",
+     "alunos": 0
+    }
+   ]
+  },
+  {
+   "nome": "perfis_por_papel",
+   "ok": true,
+   "linhas": 15,
+   "dados": [
+    {
+     "role": "pending",
+     "n": 1
+    },
+    {
+     "role": "parent",
+     "n": 1
+    },
+    {
+     "role": "student",
+     "n": 2
+    },
+    {
+     "role": "pedagogical",
+     "n": 2
+    },
+    {
+     "role": "developer",
+     "n": 3
+    },
+    {
+     "role": "monitor",
+     "n": 2
+    },
+    {
+     "role": "gatekeeper",
+     "n": 2
+    },
+    {
+     "role": "coordinator",
+     "n": 1
+    },
+    {
+     "role": "secretary",
+     "n": 2
+    },
+    {
+     "role": "aee",
+     "n": 2
+    },
+    {
+     "role": "director",
+     "n": 2
+    },
+    {
+     "role": "psychology",
+     "n": 1
+    },
+    {
+     "role": "social_work",
+     "n": 1
+    },
+    {
+     "role": "sports_operator",
+     "n": 1
+    },
+    {
+     "role": "education_supervisor",
+     "n": 1
+    }
+   ]
+  },
+  {
+   "nome": "staff_schools_colunas",
+   "ok": true,
+   "linhas": 6,
+   "dados": [
+    {
+     "column_name": "id",
+     "data_type": "uuid"
+    },
+    {
+     "column_name": "profile_id",
+     "data_type": "uuid"
+    },
+    {
+     "column_name": "school_id",
+     "data_type": "uuid"
+    },
+    {
+     "column_name": "role",
+     "data_type": "text"
+    },
+    {
+     "column_name": "created_at",
+     "data_type": "timestamp with time zone"
+    },
+    {
+     "column_name": "updated_at",
+     "data_type": "timestamp with time zone"
+    }
+   ]
+  },
+  {
+   "nome": "abrangencia_por_papel",
+   "ok": false,
+   "erro": "sql HTTP 400: {\"message\":\"Failed to run sql query: ERROR:  22P02: invalid input value for enum account_role: \\\"admin\\\"\\nLINE 6:                              where p.role in ('education_supervisor','secretary','director','coordinator','pedagogical','developer','admin')\\n                              "
+  },
+  {
+   "nome": "politicas_rls",
+   "ok": false,
+   "erro": "sql HTTP 400: {\"message\":\"Failed to run sql query: ERROR:  42703: column \\\"schemaname\\\" does not exist\\nLINE 6:                      where schemaname='public'\\n                                   ^\\n\"}"
+  },
+  {
+   "nome": "funcoes_rls",
+   "ok": true,
+   "linhas": 3,
+   "dados": [
+    {
+     "nome": "bfr_rls_director_manages_student",
+     "argumentos": "p_student_id uuid"
+    },
+    {
+     "nome": "bfr_rls_is_developer",
+     "argumentos": ""
+    },
+    {
+     "nome": "bfr_rls_session_role",
+     "argumentos": ""
+    }
+   ]
+  }
+ ]
+}

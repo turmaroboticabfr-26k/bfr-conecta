@@ -1,0 +1,1274 @@
+{
+ "programa": "scripts/sm2-escopo-atual-17-11.mjs",
+ "em": "2026-11-18T00:10:43.892Z",
+ "escrita_no_banco": false,
+ "o_que_prova": "as chaves estrangeiras reais de `staff_schools`/`student_school_profiles`/`supervision_requests`/`secretary_requests`, o estado de RLS forçado e o nº de políticas por tabela alvo, e as expressões `using`/`with check` que hoje decidem se um papel lê uma só escola ou a rede inteira — com PUBLIC detectado pelo oid 0, não pelo nome",
+ "o_que_NAO_prova": "nada sobre a interface nem sobre o que o ar devolve para cada papel; isto é catálogo. Provar «o secretário municipal atravessa escolas» exige chamada autenticada, que não é deste instrumento.",
+ "resumo": {
+  "tabelas_alvo": 17,
+  "tabelas_com_rls_forcada": 17,
+  "tabelas_sem_rls": [],
+  "politicas_nas_alvo": 86,
+  "politicas_de_public": 10,
+  "politicas_que_citam_escola": 9,
+  "por_tabela": {
+   "access_requests": 4,
+   "announcements": 2,
+   "attendance": 8,
+   "classes": 7,
+   "grades": 5,
+   "profiles": 6,
+   "school_documents": 4,
+   "schools": 1,
+   "secretary_profile_change_requests": 3,
+   "secretary_requests": 4,
+   "staff_schools": 6,
+   "student_school_profiles": 5,
+   "students": 8,
+   "supervision_action_plans": 3,
+   "supervision_alerts": 3,
+   "supervision_requests": 12,
+   "supervision_responses": 5
+  },
+  "linhas_das_tabelas_de_escola": {
+   "schools": 6,
+   "sports_schools": 6,
+   "sports_public_schools": 0,
+   "staff_schools": 6,
+   "student_school_profiles": 848
+  },
+  "tabela_referida_pela_chave_school_id": [
+   "schools",
+   "sports_schools"
+  ],
+  "tabelas_que_referem_schools": [
+   "classes",
+   "students"
+  ],
+  "tabelas_que_referem_sports_schools": [
+   "sports_teams",
+   "staff_schools",
+   "supervision_requests"
+  ],
+  "falhas": []
+ },
+ "respostas": [
+  {
+   "nome": "fk_de_staff_schools",
+   "ok": true,
+   "linhas": 7,
+   "dados": [
+    {
+     "column_name": "student_id",
+     "tabela_referida": "students",
+     "coluna_referida": "id"
+    },
+    {
+     "column_name": "profile_id",
+     "tabela_referida": "profiles",
+     "coluna_referida": "id"
+    },
+    {
+     "column_name": "school_id",
+     "tabela_referida": "sports_schools",
+     "coluna_referida": "id"
+    },
+    {
+     "column_name": "student_id",
+     "tabela_referida": "students",
+     "coluna_referida": "id"
+    },
+    {
+     "column_name": "closed_by",
+     "tabela_referida": "profiles",
+     "coluna_referida": "id"
+    },
+    {
+     "column_name": "created_by",
+     "tabela_referida": "profiles",
+     "coluna_referida": "id"
+    },
+    {
+     "column_name": "school_id",
+     "tabela_referida": "sports_schools",
+     "coluna_referida": "id"
+    }
+   ]
+  },
+  {
+   "nome": "forma_de_student_school_profiles",
+   "ok": true,
+   "linhas": 16,
+   "dados": [
+    {
+     "column_name": "student_id",
+     "data_type": "uuid"
+    },
+    {
+     "column_name": "birth_date",
+     "data_type": "date"
+    },
+    {
+     "column_name": "photo_path",
+     "data_type": "text"
+    },
+    {
+     "column_name": "address_line",
+     "data_type": "text"
+    },
+    {
+     "column_name": "guardian_name",
+     "data_type": "text"
+    },
+    {
+     "column_name": "guardian_phone",
+     "data_type": "text"
+    },
+    {
+     "column_name": "emergency_contact",
+     "data_type": "text"
+    },
+    {
+     "column_name": "inclusion_needs",
+     "data_type": "text"
+    },
+    {
+     "column_name": "inclusion_plan",
+     "data_type": "text"
+    },
+    {
+     "column_name": "inclusion_observations",
+     "data_type": "text"
+    },
+    {
+     "column_name": "updated_by",
+     "data_type": "uuid"
+    },
+    {
+     "column_name": "created_at",
+     "data_type": "timestamp with time zone"
+    },
+    {
+     "column_name": "updated_at",
+     "data_type": "timestamp with time zone"
+    },
+    {
+     "column_name": "guardian_cpf_hash",
+     "data_type": "text"
+    },
+    {
+     "column_name": "filiation_1",
+     "data_type": "text"
+    },
+    {
+     "column_name": "filiation_2",
+     "data_type": "text"
+    }
+   ]
+  },
+  {
+   "nome": "politicas_das_tabelas_alvo",
+   "ok": true,
+   "linhas": 86,
+   "dados": [
+    {
+     "tabela": "access_requests",
+     "politica": "access_requests_insert",
+     "cmd": "a",
+     "para_public": false,
+     "papeis": "{authenticated}",
+     "using_expr": null,
+     "check_expr": "((lower(email) = lower((auth.jwt() ->> 'email'::text))) AND (requested_role = ANY (ARRAY['parent'::account_role, 'student'::account_role, 'pedagogical'::account_role, 'monitor'::account_role, 'gatekeeper'::account_role])) AND (approved_role IS NULL) AND (status = 'pending'::request_status) AND (reviewed_by IS NULL) AND (reviewed_at IS NULL))"
+    },
+    {
+     "tabela": "access_requests",
+     "politica": "access_requests_manage",
+     "cmd": "*",
+     "para_public": true,
+     "papeis": null,
+     "using_expr": "bfr_rls_is_developer()",
+     "check_expr": "(bfr_rls_is_developer() AND (requested_role = ANY (enum_range(NULL::account_role))) AND ((approved_role IS NULL) OR (approved_role = requested_role)) AND (status = ANY (ARRAY['pending'::request_status, 'approved'::request_status, 'rejected'::request_status])))"
+    },
+    {
+     "tabela": "access_requests",
+     "politica": "access_requests_read",
+     "cmd": "r",
+     "para_public": false,
+     "papeis": "{authenticated}",
+     "using_expr": "(is_developer() OR (lower(email) = lower((auth.jwt() ->> 'email'::text))))",
+     "check_expr": null
+    },
+    {
+     "tabela": "access_requests",
+     "politica": "access_requests_staff_insert",
+     "cmd": "a",
+     "para_public": true,
+     "papeis": null,
+     "using_expr": null,
+     "check_expr": "(bfr_rls_is_developer() AND (requested_role = ANY (enum_range(NULL::account_role))) AND (((approved_role IS NULL) AND (status = 'pending'::request_status)) OR ((approved_role = requested_role) AND (status = 'approved'::request_status))))"
+    },
+    {
+     "tabela": "announcements",
+     "politica": "announcements_read",
+     "cmd": "r",
+     "para_public": false,
+     "papeis": "{authenticated}",
+     "using_expr": "(((status = 'published'::text) AND (scheduled_at IS NULL) AND (audience_mode = 'all'::text) AND is_approved()) OR ((status = 'published'::text) AND (EXISTS ( SELECT 1\n   FROM announcement_recipients ar\n  WHERE ((ar.announcement_id = announcements.id) AND (ar.recipient_id = auth.uid()))))) OR bfr_can_manage_communications())",
+     "check_expr": null
+    },
+    {
+     "tabela": "announcements",
+     "politica": "announcements_staff_manage",
+     "cmd": "*",
+     "para_public": false,
+     "papeis": "{authenticated}",
+     "using_expr": "bfr_can_manage_communications()",
+     "check_expr": "(bfr_can_manage_communications() AND (COALESCE(audience_mode, 'all'::text) = 'all'::text))"
+    },
+    {
+     "tabela": "attendance",
+     "politica": "attendance_family_read",
+     "cmd": "r",
+     "para_public": false,
+     "papeis": "{authenticated}",
+     "using_expr": "(EXISTS ( SELECT 1\n   FROM guardian_students gs\n  WHERE ((gs.student_id = attendance.student_id) AND (gs.profile_id = auth.uid()))))",
+     "check_expr": null
+    },
+    {
+     "tabela": "attendance",
+     "politica": "attendance_staff_delete",
+     "cmd": "d",
+     "para_public": true,
+     "papeis": null,
+     "using_expr": "(bfr_staff_can_manage_student_scope(student_id) AND ((bfr_rls_session_role())::text <> 'secretary'::text))",
+     "check_expr": null
+    },
+    {
+     "tabela": "attendance",
+     "politica": "attendance_staff_insert",
+     "cmd": "a",
+     "para_public": true,
+     "papeis": null,
+     "using_expr": null,
+     "check_expr": "(bfr_staff_can_manage_student_scope(student_id) AND ((bfr_rls_session_role())::text <> 'secretary'::text) AND (((bfr_rls_session_role())::text <> 'pedagogical'::text) OR (entered_by = auth.uid())))"
+    },
+    {
+     "tabela": "attendance",
+     "politica": "attendance_staff_select",
+     "cmd": "r",
+     "para_public": true,
+     "papeis": null,
+     "using_expr": "(bfr_staff_can_manage_student_scope(student_id) AND ((bfr_rls_session_role())::text <> 'secretary'::text))",
+     "check_expr": null
+    },
+    {
+     "tabela": "attendance",
+     "politica": "attendance_staff_update",
+     "cmd": "w",
+     "para_public": true,
+     "papeis": null,
+     "using_expr": "(bfr_staff_can_manage_student_scope(student_id) AND ((bfr_rls_session_role())::text <> 'secretary'::text))",
+     "check_expr": "(bfr_staff_can_manage_student_scope(student_id) AND ((bfr_rls_session_role())::text <> 'secretary'::text))"
+    },
+    {
+     "tabela": "attendance",
+     "politica": "attendance_supervisor_read",
+     "cmd": "r",
+     "para_public": false,
+     "papeis": "{authenticated}",
+     "using_expr": "bfr_is_education_supervisor()",
+     "check_expr": null
+    },
+    {
+     "tabela": "attendance",
+     "politica": "coordinators read attendance",
+     "cmd": "r",
+     "para_public": false,
+     "papeis": "{authenticated}",
+     "using_expr": "(EXISTS ( SELECT 1\n   FROM profiles p\n  WHERE ((p.id = auth.uid()) AND (p.role = ANY (ARRAY['coordinator'::account_role, 'developer'::account_role])))))",
+     "check_expr": null
+    },
+    {
+     "tabela": "attendance",
+     "politica": "director_dashboard_read_attendance",
+     "cmd": "r",
+     "para_public": false,
+     "papeis": "{authenticated}",
+     "using_expr": "((\"current_role\"())::text = 'director'::text)",
+     "check_expr": null
+    },
+    {
+     "tabela": "classes",
+     "politica": "classes_family_read",
+     "cmd": "r",
+     "para_public": false,
+     "papeis": "{authenticated}",
+     "using_expr": "(EXISTS ( SELECT 1\n   FROM (students s\n     JOIN guardian_students gs ON ((gs.student_id = s.id)))\n  WHERE ((s.class_id = classes.id) AND (gs.profile_id = auth.uid()))))",
+     "check_expr": null
+    },
+    {
+     "tabela": "classes",
+     "politica": "classes_monitor_read",
+     "cmd": "r",
+     "para_public": false,
+     "papeis": "{authenticated}",
+     "using_expr": "is_monitor()",
+     "check_expr": null
+    },
+    {
+     "tabela": "classes",
+     "politica": "classes_read",
+     "cmd": "r",
+     "para_public": false,
+     "papeis": "{authenticated}",
+     "using_expr": "(((\"current_role\"())::text = ANY (ARRAY['aee'::text, 'developer'::text])) OR (((\"current_role\"())::text = 'pedagogical'::text) AND (EXISTS ( SELECT 1\n   FROM bfr_teacher_class_subjects t\n  WHERE ((t.profile_id = auth.uid()) AND (t.class_id = classes.id) AND t.active)))))",
+     "check_expr": null
+    },
+    {
+     "tabela": "classes",
+     "politica": "classes_select_secretary",
+     "cmd": "r",
+     "para_public": false,
+     "papeis": "{authenticated}",
+     "using_expr": "(EXISTS ( SELECT 1\n   FROM profiles p\n  WHERE ((p.id = auth.uid()) AND (p.role = 'secretary'::account_role))))",
+     "check_expr": null
+    },
+    {
+     "tabela": "classes",
+     "politica": "classes_supervisor_read",
+     "cmd": "r",
+     "para_public": false,
+     "papeis": "{authenticated}",
+     "using_expr": "bfr_is_education_supervisor()",
+     "check_expr": null
+    },
+    {
+     "tabela": "classes",
+     "politica": "coordinators read classes",
+     "cmd": "r",
+     "para_public": false,
+     "papeis": "{authenticated}",
+     "using_expr": "(((\"current_role\"())::text = ANY (ARRAY['coordinator'::text, 'developer'::text])) OR (((\"current_role\"())::text = 'pedagogical'::text) AND (EXISTS ( SELECT 1\n   FROM bfr_teacher_class_subjects t\n  WHERE ((t.profile_id = auth.uid()) AND (t.class_id = classes.id) AND t.active)))))",
+     "check_expr": null
+    },
+    {
+     "tabela": "classes",
+     "politica": "director_dashboard_read_classes",
+     "cmd": "r",
+     "para_public": false,
+     "papeis": "{authenticated}",
+     "using_expr": "((\"current_role\"())::text = 'director'::text)",
+     "check_expr": null
+    },
+    {
+     "tabela": "grades",
+     "politica": "grades_family_read",
+     "cmd": "r",
+     "para_public": false,
+     "papeis": "{authenticated}",
+     "using_expr": "(EXISTS ( SELECT 1\n   FROM guardian_students gs\n  WHERE ((gs.student_id = grades.student_id) AND (gs.profile_id = auth.uid()))))",
+     "check_expr": null
+    },
+    {
+     "tabela": "grades",
+     "politica": "grades_staff_delete",
+     "cmd": "d",
+     "para_public": true,
+     "papeis": null,
+     "using_expr": "(bfr_staff_can_manage_student_scope(student_id, subject) AND ((bfr_rls_session_role())::text <> 'secretary'::text))",
+     "check_expr": null
+    },
+    {
+     "tabela": "grades",
+     "politica": "grades_staff_insert",
+     "cmd": "a",
+     "para_public": true,
+     "papeis": null,
+     "using_expr": null,
+     "check_expr": "(bfr_staff_can_manage_student_scope(student_id, subject) AND ((bfr_rls_session_role())::text <> 'secretary'::text) AND (((bfr_rls_session_role())::text <> 'pedagogical'::text) OR (entered_by = auth.uid())))"
+    },
+    {
+     "tabela": "grades",
+     "politica": "grades_staff_select",
+     "cmd": "r",
+     "para_public": true,
+     "papeis": null,
+     "using_expr": "(bfr_staff_can_manage_student_scope(student_id, subject) AND ((bfr_rls_session_role())::text <> 'secretary'::text))",
+     "check_expr": null
+    },
+    {
+     "tabela": "grades",
+     "politica": "grades_supervisor_read",
+     "cmd": "r",
+     "para_public": false,
+     "papeis": "{authenticated}",
+     "using_expr": "bfr_is_education_supervisor()",
+     "check_expr": null
+    },
+    {
+     "tabela": "profiles",
+     "politica": "director_dashboard_read_profiles",
+     "cmd": "r",
+     "para_public": false,
+     "papeis": "{authenticated}",
+     "using_expr": "((\"current_role\"())::text = 'director'::text)",
+     "check_expr": null
+    },
+    {
+     "tabela": "profiles",
+     "politica": "profiles_chat_staff_directory_read",
+     "cmd": "r",
+     "para_public": false,
+     "papeis": "{authenticated}",
+     "using_expr": "(internal_chat_is_staff() AND (role = ANY (ARRAY['pedagogical'::account_role, 'aee'::account_role, 'coordinator'::account_role, 'director'::account_role, 'secretary'::account_role, 'developer'::account_role])))",
+     "check_expr": null
+    },
+    {
+     "tabela": "profiles",
+     "politica": "profiles_hide_test_accounts",
+     "cmd": "r",
+     "para_public": false,
+     "papeis": "{authenticated}",
+     "using_expr": "((id = auth.uid()) OR ((email !~~ '%@bfr-conecta.test'::text) AND (email !~~ 'bfr.qa.email.%'::text)))",
+     "check_expr": null
+    },
+    {
+     "tabela": "profiles",
+     "politica": "profiles_read",
+     "cmd": "r",
+     "para_public": false,
+     "papeis": "{authenticated}",
+     "using_expr": "((id = auth.uid()) OR is_developer() OR bfr_profile_in_my_schools(id))",
+     "check_expr": null
+    },
+    {
+     "tabela": "profiles",
+     "politica": "profiles_staff_update",
+     "cmd": "w",
+     "para_public": false,
+     "papeis": "{authenticated}",
+     "using_expr": "is_developer()",
+     "check_expr": "is_developer()"
+    },
+    {
+     "tabela": "profiles",
+     "politica": "profiles_update_self",
+     "cmd": "w",
+     "para_public": false,
+     "papeis": "{authenticated}",
+     "using_expr": "(id = auth.uid())",
+     "check_expr": "(id = auth.uid())"
+    },
+    {
+     "tabela": "school_documents",
+     "politica": "families read published school documents",
+     "cmd": "r",
+     "para_public": false,
+     "papeis": "{authenticated}",
+     "using_expr": "((published AND (EXISTS ( SELECT 1\n   FROM profiles p\n  WHERE ((p.id = auth.uid()) AND (p.role = ANY (ARRAY['parent'::account_role, 'student'::account_role, 'secretary'::account_role, 'pedagogical'::account_role, 'monitor'::account_role, 'gatekeeper'::account_role, 'developer'::account_role])))))) OR (recipient_id = auth.uid()) OR (EXISTS ( SELECT 1\n   FROM secretary_requests r\n  WHERE ((r.id = school_documents.request_id) AND (r.requester_id = auth.uid())))) OR (EXISTS ( SELECT 1\n   FROM guardian_students g\n  WHERE ((g.profile_id = auth.uid()) AND (g.student_id = school_documents.student_id)))))",
+     "check_expr": null
+    },
+    {
+     "tabela": "school_documents",
+     "politica": "school team manage library documents",
+     "cmd": "*",
+     "para_public": false,
+     "papeis": "{authenticated}",
+     "using_expr": "((category ~~ 'Biblioteca%'::text) AND (EXISTS ( SELECT 1\n   FROM profiles p\n  WHERE ((p.id = auth.uid()) AND (p.role = ANY (ARRAY['director'::account_role, 'coordinator'::account_role, 'pedagogical'::account_role, 'secretary'::account_role, 'developer'::account_role]))))))",
+     "check_expr": "((category ~~ 'Biblioteca%'::text) AND (EXISTS ( SELECT 1\n   FROM profiles p\n  WHERE ((p.id = auth.uid()) AND (p.role = ANY (ARRAY['director'::account_role, 'coordinator'::account_role, 'pedagogical'::account_role, 'secretary'::account_role, 'developer'::account_role]))))))"
+    },
+    {
+     "tabela": "school_documents",
+     "politica": "school team read library documents",
+     "cmd": "r",
+     "para_public": false,
+     "papeis": "{authenticated}",
+     "using_expr": "((category ~~ 'Biblioteca%'::text) AND (EXISTS ( SELECT 1\n   FROM profiles p\n  WHERE ((p.id = auth.uid()) AND (p.role = ANY (ARRAY['director'::account_role, 'coordinator'::account_role, 'pedagogical'::account_role, 'secretary'::account_role, 'developer'::account_role]))))))",
+     "check_expr": null
+    },
+    {
+     "tabela": "school_documents",
+     "politica": "secretary staff manage school documents",
+     "cmd": "*",
+     "para_public": false,
+     "papeis": "{authenticated}",
+     "using_expr": "(EXISTS ( SELECT 1\n   FROM profiles p\n  WHERE ((p.id = auth.uid()) AND (p.role = ANY (ARRAY['secretary'::account_role, 'developer'::account_role])))))",
+     "check_expr": "(EXISTS ( SELECT 1\n   FROM profiles p\n  WHERE ((p.id = auth.uid()) AND (p.role = ANY (ARRAY['secretary'::account_role, 'developer'::account_role])))))"
+    },
+    {
+     "tabela": "schools",
+     "politica": "schools_supervisor_read",
+     "cmd": "r",
+     "para_public": false,
+     "papeis": "{authenticated}",
+     "using_expr": "bfr_is_education_supervisor()",
+     "check_expr": null
+    },
+    {
+     "tabela": "secretary_profile_change_requests",
+     "politica": "requesters create profile change requests",
+     "cmd": "a",
+     "para_public": false,
+     "papeis": "{authenticated}",
+     "using_expr": null,
+     "check_expr": "((requester_id = auth.uid()) AND ((student_id IS NULL) OR (EXISTS ( SELECT 1\n   FROM guardian_students g\n  WHERE ((g.profile_id = auth.uid()) AND (g.student_id = secretary_profile_change_requests.student_id))))))"
+    },
+    {
+     "tabela": "secretary_profile_change_requests",
+     "politica": "requesters read profile change requests",
+     "cmd": "r",
+     "para_public": false,
+     "papeis": "{authenticated}",
+     "using_expr": "((requester_id = auth.uid()) OR (EXISTS ( SELECT 1\n   FROM profiles p\n  WHERE ((p.id = auth.uid()) AND (p.role = ANY (ARRAY['secretary'::account_role, 'pedagogical'::account_role, 'developer'::account_role]))))))",
+     "check_expr": null
+    },
+    {
+     "tabela": "secretary_profile_change_requests",
+     "politica": "staff manage profile change requests",
+     "cmd": "w",
+     "para_public": false,
+     "papeis": "{authenticated}",
+     "using_expr": "(EXISTS ( SELECT 1\n   FROM profiles p\n  WHERE ((p.id = auth.uid()) AND (p.role = ANY (ARRAY['secretary'::account_role, 'pedagogical'::account_role, 'developer'::account_role])))))",
+     "check_expr": "(EXISTS ( SELECT 1\n   FROM profiles p\n  WHERE ((p.id = auth.uid()) AND (p.role = ANY (ARRAY['secretary'::account_role, 'pedagogical'::account_role, 'developer'::account_role])))))"
+    },
+    {
+     "tabela": "secretary_requests",
+     "politica": "director_dashboard_read_requests",
+     "cmd": "r",
+     "para_public": false,
+     "papeis": "{authenticated}",
+     "using_expr": "((\"current_role\"())::text = 'director'::text)",
+     "check_expr": null
+    },
+    {
+     "tabela": "secretary_requests",
+     "politica": "families create own secretary requests",
+     "cmd": "a",
+     "para_public": false,
+     "papeis": "{authenticated}",
+     "using_expr": null,
+     "check_expr": "((requester_id = auth.uid()) AND (EXISTS ( SELECT 1\n   FROM profiles p\n  WHERE ((p.id = auth.uid()) AND (p.role = ANY (ARRAY['parent'::account_role, 'student'::account_role]))))) AND ((student_id IS NULL) OR (EXISTS ( SELECT 1\n   FROM guardian_students g\n  WHERE ((g.profile_id = auth.uid()) AND (g.student_id = secretary_requests.student_id))))))"
+    },
+    {
+     "tabela": "secretary_requests",
+     "politica": "requesters and staff read secretary requests",
+     "cmd": "r",
+     "para_public": false,
+     "papeis": "{authenticated}",
+     "using_expr": "((requester_id = auth.uid()) OR (EXISTS ( SELECT 1\n   FROM profiles p\n  WHERE ((p.id = auth.uid()) AND (p.role = ANY (ARRAY['secretary'::account_role, 'pedagogical'::account_role, 'developer'::account_role]))))))",
+     "check_expr": null
+    },
+    {
+     "tabela": "secretary_requests",
+     "politica": "secretary staff manage requests",
+     "cmd": "*",
+     "para_public": false,
+     "papeis": "{authenticated}",
+     "using_expr": "(EXISTS ( SELECT 1\n   FROM profiles p\n  WHERE ((p.id = auth.uid()) AND (p.role = ANY (ARRAY['secretary'::account_role, 'pedagogical'::account_role, 'developer'::account_role])))))",
+     "check_expr": "(EXISTS ( SELECT 1\n   FROM profiles p\n  WHERE ((p.id = auth.uid()) AND (p.role = ANY (ARRAY['secretary'::account_role, 'pedagogical'::account_role, 'developer'::account_role])))))"
+    },
+    {
+     "tabela": "staff_schools",
+     "politica": "staff_schools_developer_delete",
+     "cmd": "d",
+     "para_public": false,
+     "papeis": "{authenticated}",
+     "using_expr": "is_developer()",
+     "check_expr": null
+    },
+    {
+     "tabela": "staff_schools",
+     "politica": "staff_schools_developer_insert",
+     "cmd": "a",
+     "para_public": false,
+     "papeis": "{authenticated}",
+     "using_expr": null,
+     "check_expr": "is_developer()"
+    },
+    {
+     "tabela": "staff_schools",
+     "politica": "staff_schools_developer_read",
+     "cmd": "r",
+     "para_public": false,
+     "papeis": "{authenticated}",
+     "using_expr": "is_developer()",
+     "check_expr": null
+    },
+    {
+     "tabela": "staff_schools",
+     "politica": "staff_schools_developer_update",
+     "cmd": "w",
+     "para_public": false,
+     "papeis": "{authenticated}",
+     "using_expr": "is_developer()",
+     "check_expr": "is_developer()"
+    },
+    {
+     "tabela": "staff_schools",
+     "politica": "staff_schools_own_insert",
+     "cmd": "a",
+     "para_public": false,
+     "papeis": "{authenticated}",
+     "using_expr": null,
+     "check_expr": "((profile_id = auth.uid()) AND (\"current_role\"() = ANY (ARRAY['director'::account_role, 'coordinator'::account_role, 'secretary'::account_role])))"
+    },
+    {
+     "tabela": "staff_schools",
+     "politica": "staff_schools_own_read",
+     "cmd": "r",
+     "para_public": false,
+     "papeis": "{authenticated}",
+     "using_expr": "(profile_id = auth.uid())",
+     "check_expr": null
+    },
+    {
+     "tabela": "student_school_profiles",
+     "politica": "bfr_student_profiles_directory_insert",
+     "cmd": "a",
+     "para_public": false,
+     "papeis": "{authenticated}",
+     "using_expr": null,
+     "check_expr": "bfr_can_manage_student_directory()"
+    },
+    {
+     "tabela": "student_school_profiles",
+     "politica": "bfr_student_profiles_directory_update",
+     "cmd": "w",
+     "para_public": false,
+     "papeis": "{authenticated}",
+     "using_expr": "bfr_can_manage_student_directory()",
+     "check_expr": "bfr_can_manage_student_directory()"
+    },
+    {
+     "tabela": "student_school_profiles",
+     "politica": "staff manage student school profiles",
+     "cmd": "*",
+     "para_public": false,
+     "papeis": "{authenticated}",
+     "using_expr": "(EXISTS ( SELECT 1\n   FROM profiles p\n  WHERE ((p.id = auth.uid()) AND (p.role = ANY (ARRAY['coordinator'::account_role, 'pedagogical'::account_role, 'developer'::account_role])))))",
+     "check_expr": "(EXISTS ( SELECT 1\n   FROM profiles p\n  WHERE ((p.id = auth.uid()) AND (p.role = ANY (ARRAY['coordinator'::account_role, 'pedagogical'::account_role, 'developer'::account_role])))))"
+    },
+    {
+     "tabela": "student_school_profiles",
+     "politica": "student_school_profiles_select_secretary",
+     "cmd": "r",
+     "para_public": false,
+     "papeis": "{authenticated}",
+     "using_expr": "(EXISTS ( SELECT 1\n   FROM profiles p\n  WHERE ((p.id = auth.uid()) AND (p.role = 'secretary'::account_role))))",
+     "check_expr": null
+    },
+    {
+     "tabela": "student_school_profiles",
+     "politica": "student_school_profiles_supervisor_read",
+     "cmd": "r",
+     "para_public": false,
+     "papeis": "{authenticated}",
+     "using_expr": "bfr_is_education_supervisor()",
+     "check_expr": null
+    },
+    {
+     "tabela": "students",
+     "politica": "bfr_students_directory_insert",
+     "cmd": "a",
+     "para_public": false,
+     "papeis": "{authenticated}",
+     "using_expr": null,
+     "check_expr": "bfr_can_manage_student_directory()"
+    },
+    {
+     "tabela": "students",
+     "politica": "bfr_students_directory_update",
+     "cmd": "w",
+     "para_public": false,
+     "papeis": "{authenticated}",
+     "using_expr": "bfr_can_manage_student_directory()",
+     "check_expr": "bfr_can_manage_student_directory()"
+    },
+    {
+     "tabela": "students",
+     "politica": "director_dashboard_read_students",
+     "cmd": "r",
+     "para_public": false,
+     "papeis": "{authenticated}",
+     "using_expr": "((\"current_role\"())::text = 'director'::text)",
+     "check_expr": null
+    },
+    {
+     "tabela": "students",
+     "politica": "staff manage student records",
+     "cmd": "*",
+     "para_public": false,
+     "papeis": "{authenticated}",
+     "using_expr": "(EXISTS ( SELECT 1\n   FROM profiles p\n  WHERE ((p.id = auth.uid()) AND (p.role = ANY (ARRAY['coordinator'::account_role, 'developer'::account_role])))))",
+     "check_expr": "(EXISTS ( SELECT 1\n   FROM profiles p\n  WHERE ((p.id = auth.uid()) AND (p.role = ANY (ARRAY['coordinator'::account_role, 'developer'::account_role])))))"
+    },
+    {
+     "tabela": "students",
+     "politica": "students_monitor_read",
+     "cmd": "r",
+     "para_public": false,
+     "papeis": "{authenticated}",
+     "using_expr": "is_monitor()",
+     "check_expr": null
+    },
+    {
+     "tabela": "students",
+     "politica": "students_read",
+     "cmd": "r",
+     "para_public": false,
+     "papeis": "{authenticated}",
+     "using_expr": "((((\"current_role\"())::text = 'aee'::text) AND (EXISTS ( SELECT 1\n   FROM aee_student_roster r\n  WHERE ((r.student_id = students.id) AND r.active)))) OR ((\"current_role\"())::text = 'developer'::text) OR (((\"current_role\"())::text = 'pedagogical'::text) AND bfr_pedagogical_can_manage_student(id)) OR (EXISTS ( SELECT 1\n   FROM guardian_students gs\n  WHERE ((gs.student_id = students.id) AND (gs.profile_id = auth.uid())))))",
+     "check_expr": null
+    },
+    {
+     "tabela": "students",
+     "politica": "students_select_secretary",
+     "cmd": "r",
+     "para_public": false,
+     "papeis": "{authenticated}",
+     "using_expr": "(EXISTS ( SELECT 1\n   FROM profiles p\n  WHERE ((p.id = auth.uid()) AND (p.role = 'secretary'::account_role))))",
+     "check_expr": null
+    },
+    {
+     "tabela": "students",
+     "politica": "students_supervisor_read",
+     "cmd": "r",
+     "para_public": false,
+     "papeis": "{authenticated}",
+     "using_expr": "bfr_is_education_supervisor()",
+     "check_expr": null
+    },
+    {
+     "tabela": "supervision_action_plans",
+     "politica": "supervision_plans_secretary_insert",
+     "cmd": "a",
+     "para_public": false,
+     "papeis": "{authenticated}",
+     "using_expr": null,
+     "check_expr": "((created_by = auth.uid()) AND (EXISTS ( SELECT 1\n   FROM profiles p\n  WHERE ((p.id = auth.uid()) AND (p.role = ANY (ARRAY['secretary'::account_role, 'developer'::account_role]))))))"
+    },
+    {
+     "tabela": "supervision_action_plans",
+     "politica": "supervision_plans_secretary_update",
+     "cmd": "w",
+     "para_public": false,
+     "papeis": "{authenticated}",
+     "using_expr": "(EXISTS ( SELECT 1\n   FROM profiles p\n  WHERE ((p.id = auth.uid()) AND (p.role = ANY (ARRAY['secretary'::account_role, 'developer'::account_role])))))",
+     "check_expr": null
+    },
+    {
+     "tabela": "supervision_action_plans",
+     "politica": "supervision_plans_staff_read",
+     "cmd": "r",
+     "para_public": false,
+     "papeis": "{authenticated}",
+     "using_expr": "(EXISTS ( SELECT 1\n   FROM profiles p\n  WHERE ((p.id = auth.uid()) AND (p.role = ANY (ARRAY['secretary'::account_role, 'developer'::account_role, 'director'::account_role, 'coordinator'::account_role])))))",
+     "check_expr": null
+    },
+    {
+     "tabela": "supervision_alerts",
+     "politica": "supervision_alerts_developer_insert",
+     "cmd": "a",
+     "para_public": false,
+     "papeis": "{authenticated}",
+     "using_expr": null,
+     "check_expr": "(EXISTS ( SELECT 1\n   FROM profiles p\n  WHERE ((p.id = auth.uid()) AND (p.role = 'developer'::account_role))))"
+    },
+    {
+     "tabela": "supervision_alerts",
+     "politica": "supervision_alerts_staff_read",
+     "cmd": "r",
+     "para_public": false,
+     "papeis": "{authenticated}",
+     "using_expr": "(EXISTS ( SELECT 1\n   FROM profiles p\n  WHERE ((p.id = auth.uid()) AND (p.role = ANY (ARRAY['secretary'::account_role, 'developer'::account_role, 'director'::account_role, 'coordinator'::account_role])))))",
+     "check_expr": null
+    },
+    {
+     "tabela": "supervision_alerts",
+     "politica": "supervision_alerts_staff_update",
+     "cmd": "w",
+     "para_public": false,
+     "papeis": "{authenticated}",
+     "using_expr": "(EXISTS ( SELECT 1\n   FROM profiles p\n  WHERE ((p.id = auth.uid()) AND (p.role = ANY (ARRAY['secretary'::account_role, 'developer'::account_role])))))",
+     "check_expr": null
+    },
+    {
+     "tabela": "supervision_requests",
+     "politica": "supervision_requests_coordinator_update",
+     "cmd": "w",
+     "para_public": false,
+     "papeis": "{authenticated}",
+     "using_expr": "(EXISTS ( SELECT 1\n   FROM (profiles p\n     JOIN staff_schools ss ON ((ss.profile_id = p.id)))\n  WHERE ((p.id = auth.uid()) AND (ss.school_id = supervision_requests.school_id) AND (p.role = 'coordinator'::account_role))))",
+     "check_expr": null
+    },
+    {
+     "tabela": "supervision_requests",
+     "politica": "supervision_requests_developer_insert",
+     "cmd": "a",
+     "para_public": false,
+     "papeis": "{authenticated}",
+     "using_expr": null,
+     "check_expr": "(EXISTS ( SELECT 1\n   FROM profiles p\n  WHERE ((p.id = auth.uid()) AND (p.role = 'developer'::account_role))))"
+    },
+    {
+     "tabela": "supervision_requests",
+     "politica": "supervision_requests_developer_read",
+     "cmd": "r",
+     "para_public": false,
+     "papeis": "{authenticated}",
+     "using_expr": "(EXISTS ( SELECT 1\n   FROM profiles p\n  WHERE ((p.id = auth.uid()) AND (p.role = 'developer'::account_role))))",
+     "check_expr": null
+    },
+    {
+     "tabela": "supervision_requests",
+     "politica": "supervision_requests_developer_update",
+     "cmd": "w",
+     "para_public": false,
+     "papeis": "{authenticated}",
+     "using_expr": "(EXISTS ( SELECT 1\n   FROM profiles p\n  WHERE ((p.id = auth.uid()) AND (p.role = 'developer'::account_role))))",
+     "check_expr": null
+    },
+    {
+     "tabela": "supervision_requests",
+     "politica": "supervision_requests_director_read",
+     "cmd": "r",
+     "para_public": true,
+     "papeis": null,
+     "using_expr": "(EXISTS ( SELECT 1\n   FROM (profiles p\n     JOIN staff_schools ss ON ((ss.profile_id = p.id)))\n  WHERE ((p.id = auth.uid()) AND (p.role = 'director'::account_role) AND (ss.school_id = supervision_requests.school_id))))",
+     "check_expr": null
+    },
+    {
+     "tabela": "supervision_requests",
+     "politica": "supervision_requests_director_update",
+     "cmd": "w",
+     "para_public": false,
+     "papeis": "{authenticated}",
+     "using_expr": "(EXISTS ( SELECT 1\n   FROM (profiles p\n     JOIN staff_schools ss ON ((ss.profile_id = p.id)))\n  WHERE ((p.id = auth.uid()) AND (ss.school_id = supervision_requests.school_id) AND (p.role = 'director'::account_role))))",
+     "check_expr": null
+    },
+    {
+     "tabela": "supervision_requests",
+     "politica": "supervision_requests_secretary_update",
+     "cmd": "w",
+     "para_public": false,
+     "papeis": "{authenticated}",
+     "using_expr": "(EXISTS ( SELECT 1\n   FROM (staff_schools ss\n     JOIN profiles p ON ((p.id = ss.profile_id)))\n  WHERE ((p.id = auth.uid()) AND (ss.school_id = supervision_requests.school_id) AND (p.role = 'secretary'::account_role))))",
+     "check_expr": null
+    },
+    {
+     "tabela": "supervision_requests",
+     "politica": "supervision_requests_staff_insert",
+     "cmd": "a",
+     "para_public": false,
+     "papeis": "{authenticated}",
+     "using_expr": null,
+     "check_expr": "((created_by = auth.uid()) AND (EXISTS ( SELECT 1\n   FROM (staff_schools ss\n     JOIN profiles p ON ((p.id = ss.profile_id)))\n  WHERE ((p.id = auth.uid()) AND (ss.school_id = supervision_requests.school_id) AND (p.role = ANY (ARRAY['secretary'::account_role, 'director'::account_role, 'coordinator'::account_role]))))))"
+    },
+    {
+     "tabela": "supervision_requests",
+     "politica": "supervision_requests_staff_read",
+     "cmd": "r",
+     "para_public": false,
+     "papeis": "{authenticated}",
+     "using_expr": "(EXISTS ( SELECT 1\n   FROM (staff_schools ss\n     JOIN profiles p ON ((p.id = ss.profile_id)))\n  WHERE ((p.id = auth.uid()) AND (ss.school_id = supervision_requests.school_id) AND (p.role = ANY (ARRAY['secretary'::account_role, 'director'::account_role, 'coordinator'::account_role])))))",
+     "check_expr": null
+    },
+    {
+     "tabela": "supervision_requests",
+     "politica": "supervision_requests_supervisor_insert",
+     "cmd": "a",
+     "para_public": false,
+     "papeis": "{authenticated}",
+     "using_expr": null,
+     "check_expr": "bfr_is_education_supervisor()"
+    },
+    {
+     "tabela": "supervision_requests",
+     "politica": "supervision_requests_supervisor_read",
+     "cmd": "r",
+     "para_public": false,
+     "papeis": "{authenticated}",
+     "using_expr": "bfr_is_education_supervisor()",
+     "check_expr": null
+    },
+    {
+     "tabela": "supervision_requests",
+     "politica": "supervision_requests_supervisor_update",
+     "cmd": "w",
+     "para_public": false,
+     "papeis": "{authenticated}",
+     "using_expr": "bfr_is_education_supervisor()",
+     "check_expr": null
+    },
+    {
+     "tabela": "supervision_responses",
+     "politica": "supervision_responses_developer_update",
+     "cmd": "w",
+     "para_public": false,
+     "papeis": "{authenticated}",
+     "using_expr": "(EXISTS ( SELECT 1\n   FROM profiles p\n  WHERE ((p.id = auth.uid()) AND (p.role = 'developer'::account_role))))",
+     "check_expr": null
+    },
+    {
+     "tabela": "supervision_responses",
+     "politica": "supervision_responses_staff_insert",
+     "cmd": "a",
+     "para_public": false,
+     "papeis": "{authenticated}",
+     "using_expr": null,
+     "check_expr": "((created_by = auth.uid()) AND (EXISTS ( SELECT 1\n   FROM (profiles p\n     JOIN staff_schools ss ON ((ss.profile_id = p.id)))\n  WHERE ((p.id = auth.uid()) AND (ss.school_id = ( SELECT supervision_requests.school_id\n           FROM supervision_requests\n          WHERE (supervision_requests.id = supervision_responses.request_id))) AND (p.role = ANY (ARRAY['secretary'::account_role, 'director'::account_role, 'coordinator'::account_role]))))))"
+    },
+    {
+     "tabela": "supervision_responses",
+     "politica": "supervision_responses_staff_read",
+     "cmd": "r",
+     "para_public": false,
+     "papeis": "{authenticated}",
+     "using_expr": "(EXISTS ( SELECT 1\n   FROM (profiles p\n     JOIN staff_schools ss ON ((ss.profile_id = p.id)))\n  WHERE ((p.id = auth.uid()) AND (ss.school_id = ( SELECT supervision_requests.school_id\n           FROM supervision_requests\n          WHERE (supervision_requests.id = supervision_responses.request_id))) AND (p.role = ANY (ARRAY['secretary'::account_role, 'director'::account_role, 'coordinator'::account_role, 'developer'::account_role])))))",
+     "check_expr": null
+    },
+    {
+     "tabela": "supervision_responses",
+     "politica": "supervision_responses_supervisor_insert",
+     "cmd": "a",
+     "para_public": false,
+     "papeis": "{authenticated}",
+     "using_expr": null,
+     "check_expr": "(bfr_is_education_supervisor() AND (created_by = auth.uid()))"
+    },
+    {
+     "tabela": "supervision_responses",
+     "politica": "supervision_responses_supervisor_read",
+     "cmd": "r",
+     "para_public": false,
+     "papeis": "{authenticated}",
+     "using_expr": "bfr_is_education_supervisor()",
+     "check_expr": null
+    }
+   ]
+  },
+  {
+   "nome": "tabelas_de_escola",
+   "ok": true,
+   "linhas": 5,
+   "dados": [
+    {
+     "tabela": "schools",
+     "linhas": 6
+    },
+    {
+     "tabela": "sports_schools",
+     "linhas": 6
+    },
+    {
+     "tabela": "sports_public_schools",
+     "linhas": 0
+    },
+    {
+     "tabela": "staff_schools",
+     "linhas": 6
+    },
+    {
+     "tabela": "student_school_profiles",
+     "linhas": 848
+    }
+   ]
+  },
+  {
+   "nome": "colunas_das_tabelas_de_escola",
+   "ok": true,
+   "linhas": 24,
+   "dados": [
+    {
+     "table_name": "schools",
+     "column_name": "id",
+     "data_type": "uuid"
+    },
+    {
+     "table_name": "schools",
+     "column_name": "name",
+     "data_type": "text"
+    },
+    {
+     "table_name": "schools",
+     "column_name": "code",
+     "data_type": "text"
+    },
+    {
+     "table_name": "schools",
+     "column_name": "address_line",
+     "data_type": "text"
+    },
+    {
+     "table_name": "schools",
+     "column_name": "city",
+     "data_type": "text"
+    },
+    {
+     "table_name": "schools",
+     "column_name": "state",
+     "data_type": "text"
+    },
+    {
+     "table_name": "schools",
+     "column_name": "phase",
+     "data_type": "text"
+    },
+    {
+     "table_name": "schools",
+     "column_name": "active",
+     "data_type": "boolean"
+    },
+    {
+     "table_name": "schools",
+     "column_name": "created_at",
+     "data_type": "timestamp with time zone"
+    },
+    {
+     "table_name": "schools",
+     "column_name": "updated_at",
+     "data_type": "timestamp with time zone"
+    },
+    {
+     "table_name": "sports_public_schools",
+     "column_name": "id",
+     "data_type": "uuid"
+    },
+    {
+     "table_name": "sports_public_schools",
+     "column_name": "name",
+     "data_type": "text"
+    },
+    {
+     "table_name": "sports_public_schools",
+     "column_name": "city",
+     "data_type": "text"
+    },
+    {
+     "table_name": "sports_public_schools",
+     "column_name": "logo_url",
+     "data_type": "text"
+    },
+    {
+     "table_name": "sports_schools",
+     "column_name": "id",
+     "data_type": "uuid"
+    },
+    {
+     "table_name": "sports_schools",
+     "column_name": "name",
+     "data_type": "text"
+    },
+    {
+     "table_name": "sports_schools",
+     "column_name": "city",
+     "data_type": "text"
+    },
+    {
+     "table_name": "sports_schools",
+     "column_name": "logo_url",
+     "data_type": "text"
+    },
+    {
+     "table_name": "sports_schools",
+     "column_name": "contact_name",
+     "data_type": "text"
+    },
+    {
+     "table_name": "sports_schools",
+     "column_name": "contact_email",
+     "data_type": "text"
+    },
+    {
+     "table_name": "sports_schools",
+     "column_name": "contact_phone",
+     "data_type": "text"
+    },
+    {
+     "table_name": "sports_schools",
+     "column_name": "created_by",
+     "data_type": "uuid"
+    },
+    {
+     "table_name": "sports_schools",
+     "column_name": "created_at",
+     "data_type": "timestamp with time zone"
+    },
+    {
+     "table_name": "sports_schools",
+     "column_name": "updated_at",
+     "data_type": "timestamp with time zone"
+    }
+   ]
+  },
+  {
+   "nome": "a_chave_escola_aponta_para_onde",
+   "ok": true,
+   "linhas": 5,
+   "dados": [
+    {
+     "tabela": "classes",
+     "coluna": "school_id",
+     "referida": "schools",
+     "referida_coluna": "id"
+    },
+    {
+     "tabela": "students",
+     "coluna": "school_id",
+     "referida": "schools",
+     "referida_coluna": "id"
+    },
+    {
+     "tabela": "sports_teams",
+     "coluna": "school_id",
+     "referida": "sports_schools",
+     "referida_coluna": "id"
+    },
+    {
+     "tabela": "staff_schools",
+     "coluna": "school_id",
+     "referida": "sports_schools",
+     "referida_coluna": "id"
+    },
+    {
+     "tabela": "supervision_requests",
+     "coluna": "school_id",
+     "referida": "sports_schools",
+     "referida_coluna": "id"
+    }
+   ]
+  },
+  {
+   "nome": "tabela_tem_rls",
+   "ok": true,
+   "linhas": 17,
+   "dados": [
+    {
+     "tabela": "access_requests",
+     "rls_forcada": true,
+     "regras": false,
+     "n_politicas": 4
+    },
+    {
+     "tabela": "announcements",
+     "rls_forcada": true,
+     "regras": false,
+     "n_politicas": 2
+    },
+    {
+     "tabela": "attendance",
+     "rls_forcada": true,
+     "regras": false,
+     "n_politicas": 8
+    },
+    {
+     "tabela": "classes",
+     "rls_forcada": true,
+     "regras": false,
+     "n_politicas": 7
+    },
+    {
+     "tabela": "grades",
+     "rls_forcada": true,
+     "regras": false,
+     "n_politicas": 5
+    },
+    {
+     "tabela": "profiles",
+     "rls_forcada": true,
+     "regras": false,
+     "n_politicas": 6
+    },
+    {
+     "tabela": "school_documents",
+     "rls_forcada": true,
+     "regras": false,
+     "n_politicas": 4
+    },
+    {
+     "tabela": "schools",
+     "rls_forcada": true,
+     "regras": false,
+     "n_politicas": 1
+    },
+    {
+     "tabela": "secretary_profile_change_requests",
+     "rls_forcada": true,
+     "regras": false,
+     "n_politicas": 3
+    },
+    {
+     "tabela": "secretary_requests",
+     "rls_forcada": true,
+     "regras": false,
+     "n_politicas": 4
+    },
+    {
+     "tabela": "staff_schools",
+     "rls_forcada": true,
+     "regras": false,
+     "n_politicas": 6
+    },
+    {
+     "tabela": "student_school_profiles",
+     "rls_forcada": true,
+     "regras": false,
+     "n_politicas": 5
+    },
+    {
+     "tabela": "students",
+     "rls_forcada": true,
+     "regras": false,
+     "n_politicas": 8
+    },
+    {
+     "tabela": "supervision_action_plans",
+     "rls_forcada": true,
+     "regras": false,
+     "n_politicas": 3
+    },
+    {
+     "tabela": "supervision_alerts",
+     "rls_forcada": true,
+     "regras": false,
+     "n_politicas": 3
+    },
+    {
+     "tabela": "supervision_requests",
+     "rls_forcada": true,
+     "regras": false,
+     "n_politicas": 12
+    },
+    {
+     "tabela": "supervision_responses",
+     "rls_forcada": true,
+     "regras": false,
+     "n_politicas": 5
+    }
+   ]
+  },
+  {
+   "nome": "views_e_suas_definicoes_alvo",
+   "ok": true,
+   "linhas": 4,
+   "dados": [
+    {
+     "view": "sports_public_athletes",
+     "colunas": "id, team_id, name, jersey_number, position, status"
+    },
+    {
+     "view": "sports_public_matches",
+     "colunas": "id, championship_id, sport, category, gender, home_team_id, away_team_id, scheduled_at, venue, phase, status, home_score, away_score, period, clock_seconds, started_at, finished_at"
+    },
+    {
+     "view": "sports_public_schools",
+     "colunas": "id, name, city, logo_url"
+    },
+    {
+     "view": "sports_public_teams",
+     "colunas": "id, school_id, school_name, name, sport, category, gender, crest_url, active"
+    }
+   ]
+  }
+ ]
+}
