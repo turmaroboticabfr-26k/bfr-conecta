@@ -1,0 +1,424 @@
+{
+  "programa": "scripts/sm23-aplicar-calendario-18-11.mjs",
+  "em": "2026-11-18T20:10:40.631Z",
+  "aplicado": true,
+  "ok_nomeado": "selecao do utilizador 18/11: «DDL municipal + calendario» (ferramenta de escolha) — as tres pecas (a)(b)(c)",
+  "candidata": "scripts/ah2-ddl-calendario-candidata.sql",
+  "candidata_md5": "d021235736a06caaa6bff16310a89686",
+  "reversao": "scripts/ah2-ddl-calendario-reversao.sql",
+  "reversao_md5": "bfae0e279c7719ea7f66314fc74ab347",
+  "preflight_usado": "C:\\Users\\pcmac\\Documents\\Qoder\\2026-10-13\\28077d9a\\bfr-conecta\\evidence\\sm23-preflight-ddl-18-11.json",
+  "erro_aplicacao": null,
+  "cache_reload_espera_ms": 0,
+  "antes": {
+    "tabelas": 0,
+    "politicas": 0,
+    "rls_ligada_e_forcada": 0,
+    "grants_auth": 0,
+    "grants_service": 0,
+    "chaves_primarias": 0,
+    "indice_novo": 0,
+    "controle_schools": 1,
+    "colunas": 0
+  },
+  "depois": {
+    "tabelas": 3,
+    "politicas": 6,
+    "rls_ligada_e_forcada": 3,
+    "grants_auth": 12,
+    "grants_service": 21,
+    "chaves_primarias": 3,
+    "indice_novo": 1,
+    "controle_schools": 1,
+    "colunas": 25
+  },
+  "detalhe_por_tabela": [
+    {
+      "nome": "bfr_school_calendar_days",
+      "rls": true,
+      "forcada": true,
+      "priv_auth": "DELETE,INSERT,REFERENCES,SELECT,TRIGGER,TRUNCATE,UPDATE",
+      "colunas": 9,
+      "chaves": 1,
+      "indices": 2
+    },
+    {
+      "nome": "bfr_school_calendar_month_targets",
+      "rls": true,
+      "forcada": true,
+      "priv_auth": "DELETE,INSERT,REFERENCES,SELECT,TRIGGER,TRUNCATE,UPDATE",
+      "colunas": 5,
+      "chaves": 1,
+      "indices": 1
+    },
+    {
+      "nome": "bfr_school_shift_settings",
+      "rls": true,
+      "forcada": true,
+      "priv_auth": "DELETE,INSERT,REFERENCES,SELECT,TRIGGER,TRUNCATE,UPDATE",
+      "colunas": 11,
+      "chaves": 1,
+      "indices": 1
+    }
+  ],
+  "rest_anon": {
+    "bfr_school_shift_settings": {
+      "status": 200,
+      "code": null,
+      "bytes": 2
+    },
+    "bfr_school_calendar_days": {
+      "status": 200,
+      "code": null,
+      "bytes": 2
+    },
+    "bfr_school_calendar_month_targets": {
+      "status": 200,
+      "code": null,
+      "bytes": 2
+    },
+    "bfr_school_calendar_week_targets": {
+      "status": 404,
+      "code": "PGRST205",
+      "bytes": 213
+    }
+  },
+  "rest_por_sessao": {
+    "coordinator": {
+      "bfr_school_shift_settings": {
+        "status": 200,
+        "linhas": 0,
+        "code": null
+      },
+      "bfr_school_calendar_days": {
+        "status": 200,
+        "linhas": 0,
+        "code": null
+      },
+      "bfr_school_calendar_month_targets": {
+        "status": 200,
+        "linhas": 0,
+        "code": null
+      }
+    },
+    "student": {
+      "bfr_school_shift_settings": {
+        "status": 200,
+        "linhas": 0,
+        "code": null
+      },
+      "bfr_school_calendar_days": {
+        "status": 200,
+        "linhas": 0,
+        "code": null
+      },
+      "bfr_school_calendar_month_targets": {
+        "status": 200,
+        "linhas": 0,
+        "code": null
+      }
+    }
+  },
+  "baselines_antes": {
+    "schools": 6,
+    "students": 848,
+    "profiles": 28,
+    "announcements": 1,
+    "grants": 4,
+    "supervision_requests": 0
+  },
+  "baselines_depois": {
+    "schools": 6,
+    "students": 848,
+    "profiles": 28,
+    "announcements": 1,
+    "grants": 4
+  },
+  "portoes": [
+    {
+      "nome": "preflight_verde",
+      "verde": true,
+      "detalhe": "PREFLIGHT_DDL_VERDE"
+    },
+    {
+      "nome": "candidata_md5_igual_ao_preflight",
+      "verde": true,
+      "detalhe": "d021235736a06caaa6bff16310a89686"
+    },
+    {
+      "nome": "reversao_md5_igual_ao_preflight",
+      "verde": true,
+      "detalhe": "bfae0e279c7719ea7f66314fc74ab347"
+    },
+    {
+      "nome": "nomes_alvo_ainda_a_zero_agora",
+      "verde": true,
+      "detalhe": {
+        "tabelas": 0,
+        "politicas": 0,
+        "rls_ligada_e_forcada": 0,
+        "grants_auth": 0,
+        "grants_service": 0,
+        "chaves_primarias": 0,
+        "indice_novo": 0,
+        "controle_schools": 1,
+        "colunas": 0
+      }
+    },
+    {
+      "nome": "transacao_completa",
+      "verde": true,
+      "detalhe": {
+        "bytes": 8706
+      }
+    },
+    {
+      "nome": "nenhuma_setof_em_expressao_escalar",
+      "verde": true,
+      "detalhe": true
+    },
+    {
+      "nome": "alter_policy_sem_schema",
+      "verde": true,
+      "detalhe": true
+    },
+    {
+      "nome": "reversao_cobre_tabelas_e_politicas",
+      "verde": true,
+      "detalhe": true
+    },
+    {
+      "nome": "tabelas_as_tres",
+      "verde": true,
+      "detalhe": {
+        "tabelas": 3,
+        "politicas": 6,
+        "rls_ligada_e_forcada": 3,
+        "grants_auth": 12,
+        "grants_service": 21,
+        "chaves_primarias": 3,
+        "indice_novo": 1,
+        "controle_schools": 1,
+        "colunas": 25
+      }
+    },
+    {
+      "nome": "politicas_as_seis",
+      "verde": true,
+      "detalhe": {
+        "tabelas": 3,
+        "politicas": 6,
+        "rls_ligada_e_forcada": 3,
+        "grants_auth": 12,
+        "grants_service": 21,
+        "chaves_primarias": 3,
+        "indice_novo": 1,
+        "controle_schools": 1,
+        "colunas": 25
+      }
+    },
+    {
+      "nome": "rls_ligada_e_forcada_as_tres",
+      "verde": true,
+      "detalhe": {
+        "tabelas": 3,
+        "politicas": 6,
+        "rls_ligada_e_forcada": 3,
+        "grants_auth": 12,
+        "grants_service": 21,
+        "chaves_primarias": 3,
+        "indice_novo": 1,
+        "controle_schools": 1,
+        "colunas": 25
+      }
+    },
+    {
+      "nome": "grants_de_authenticated_12",
+      "verde": true,
+      "detalhe": {
+        "tabelas": 3,
+        "politicas": 6,
+        "rls_ligada_e_forcada": 3,
+        "grants_auth": 12,
+        "grants_service": 21,
+        "chaves_primarias": 3,
+        "indice_novo": 1,
+        "controle_schools": 1,
+        "colunas": 25
+      }
+    },
+    {
+      "nome": "chaves_primarias_as_tres",
+      "verde": true,
+      "detalhe": {
+        "tabelas": 3,
+        "politicas": 6,
+        "rls_ligada_e_forcada": 3,
+        "grants_auth": 12,
+        "grants_service": 21,
+        "chaves_primarias": 3,
+        "indice_novo": 1,
+        "controle_schools": 1,
+        "colunas": 25
+      }
+    },
+    {
+      "nome": "indice_novo_existe",
+      "verde": true,
+      "detalhe": {
+        "tabelas": 3,
+        "politicas": 6,
+        "rls_ligada_e_forcada": 3,
+        "grants_auth": 12,
+        "grants_service": 21,
+        "chaves_primarias": 3,
+        "indice_novo": 1,
+        "controle_schools": 1,
+        "colunas": 25
+      }
+    },
+    {
+      "nome": "priv_auth_sao_quatro_por_tabela",
+      "verde": false,
+      "detalhe": [
+        {
+          "nome": "bfr_school_calendar_days",
+          "rls": true,
+          "forcada": true,
+          "priv_auth": "DELETE,INSERT,REFERENCES,SELECT,TRIGGER,TRUNCATE,UPDATE",
+          "colunas": 9,
+          "chaves": 1,
+          "indices": 2
+        },
+        {
+          "nome": "bfr_school_calendar_month_targets",
+          "rls": true,
+          "forcada": true,
+          "priv_auth": "DELETE,INSERT,REFERENCES,SELECT,TRIGGER,TRUNCATE,UPDATE",
+          "colunas": 5,
+          "chaves": 1,
+          "indices": 1
+        },
+        {
+          "nome": "bfr_school_shift_settings",
+          "rls": true,
+          "forcada": true,
+          "priv_auth": "DELETE,INSERT,REFERENCES,SELECT,TRIGGER,TRUNCATE,UPDATE",
+          "colunas": 11,
+          "chaves": 1,
+          "indices": 1
+        }
+      ]
+    },
+    {
+      "nome": "baselines_intactas",
+      "verde": true,
+      "detalhe": {
+        "depois": {
+          "schools": 6,
+          "students": 848,
+          "profiles": 28,
+          "announcements": 1,
+          "grants": 4
+        },
+        "antes": {
+          "schools": 6,
+          "students": 848,
+          "profiles": 28,
+          "announcements": 1,
+          "grants": 4,
+          "supervision_requests": 0
+        }
+      }
+    },
+    {
+      "nome": "os_tres_nomes_deixaram_de_ser_404",
+      "verde": true,
+      "detalhe": {
+        "rest": {
+          "bfr_school_shift_settings": {
+            "status": 200,
+            "code": null,
+            "bytes": 2
+          },
+          "bfr_school_calendar_days": {
+            "status": 200,
+            "code": null,
+            "bytes": 2
+          },
+          "bfr_school_calendar_month_targets": {
+            "status": 200,
+            "code": null,
+            "bytes": 2
+          },
+          "bfr_school_calendar_week_targets": {
+            "status": 404,
+            "code": "PGRST205",
+            "bytes": 213
+          }
+        },
+        "espera_ms": 0
+      }
+    },
+    {
+      "nome": "controle_negativo_continua_404",
+      "verde": true,
+      "detalhe": {
+        "status": 404,
+        "code": "PGRST205",
+        "bytes": 213
+      }
+    },
+    {
+      "nome": "staff_le_com_sessao",
+      "verde": true,
+      "detalhe": {
+        "bfr_school_shift_settings": {
+          "status": 200,
+          "linhas": 0,
+          "code": null
+        },
+        "bfr_school_calendar_days": {
+          "status": 200,
+          "linhas": 0,
+          "code": null
+        },
+        "bfr_school_calendar_month_targets": {
+          "status": 200,
+          "linhas": 0,
+          "code": null
+        }
+      }
+    },
+    {
+      "nome": "aluno_nao_le_com_sessao",
+      "verde": true,
+      "detalhe": {
+        "bfr_school_shift_settings": {
+          "status": 200,
+          "linhas": 0,
+          "code": null
+        },
+        "bfr_school_calendar_days": {
+          "status": 200,
+          "linhas": 0,
+          "code": null
+        },
+        "bfr_school_calendar_month_targets": {
+          "status": 200,
+          "linhas": 0,
+          "code": null
+        }
+      }
+    },
+    {
+      "nome": "aplicacao_sem_erro",
+      "verde": true,
+      "detalhe": null
+    }
+  ],
+  "falhas": [
+    "priv_auth_sao_quatro_por_tabela: [{\"nome\":\"bfr_school_calendar_days\",\"rls\":true,\"forcada\":true,\"priv_auth\":\"DELETE,INSERT,REFERENCES,SELECT,TRIGGER,TRUNCATE,UPDATE\",\"colunas\":9,\"chaves\":1,\"indices\":2},{\"nome\":\"bfr_school_calendar_month_targets\",\"rls\":true,\"forcada\":true,\"p"
+  ],
+  "veredito": "ERRO_INTERMEDIARIO"
+}

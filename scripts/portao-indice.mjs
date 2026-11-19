@@ -96,6 +96,31 @@ const EXCECOES = [
     arquivo: 'evidence/sm22-cifras-das-linhas-do-ledger-18-11b-ANTERIOR-o-portao-somava-a-lista-inteira-9-contra-os-8-anon.json', classe: 'senha', n: 1, comprimentos: '15',
     motivo: 'mesmo campo, mesma classe, na segunda corrida vermelha (o portao que somava 9 contra os 8 anon): identico por hash ao rotulo de geracao, e tambem historico.',
   },
+  // 19/11 (§SM.23, fecho do grupo «DDL municipal + calendario»). Os quatro artefactos abaixo dao casamentos
+  // porque o NOME do campo acaba em «chave», nao porque o valor o seja. A prova nao e minha a olhar texto:
+  // `scripts/sm23-classifica-portadores-do-indice-19-11.mjs` compara cada valor com um CORPO INDEPENDENTE
+  // (a DDL versionada para as chaves primarias; o bundle versionado para os baldes de leitura) e exige que
+  // apareca la como token, aceitando listas separadas por virgula porque ha chaves primarias COMPOSTAS.
+  // Medido em `evidence/sm23-fecho-classificacao-dos-portadores-19-11.txt`: `sem_par_no_corpo=0` nos quatro,
+  // e o fixture plantado do proprio instrumento dispara (`a_plantada_dispara=true`), porque um verde que nao
+  // pode ser vermelho nao e um verde — a primeira versao desta peca comparava o valor com as strings do
+  // proprio artefacto e era verdadeiro por construcao. Os comprimentos copiam-se da saida `medido` deste portao.
+  {
+    arquivo: 'evidence/sm23-conferencia-calendario-18-11.json', classe: 'senha', n: 3, comprimentos: '24,18,18',
+    motivo: 'campo chaves_primarias[].chave, escrito por scripts/sm23-conferir-calendario-18-11.mjs a partir de pg_get_constraintdef: sao as COLUNAS da chave primaria das tres mesas do calendario (formas mascaradas `a_a,_a_a` e `a_a,_a`, i.e. chaves compostas), todas presentes como tokens na DDL versionada scripts/ah2-ddl-calendario-candidata.sql; nenhum com ponto, nenhum `eyJ`.',
+  },
+  {
+    arquivo: 'evidence/sm23-involucro-e-grafias-do-modulo-municipal-18-11.json', classe: 'senha', n: 19, comprimentos: '12,11,11,14,9,18,12,7,18,10,9,11,14,13,16,10,12,11,11',
+    motivo: 'campo chamadas_de_leitura_por_chave[].chave: os NOMBES dos baldes de leitura que o modulo municipal passa ao seu helper `ler(chave, build)`, extraidos do texto servido; os 19 aparecem como tokens no bundle versionado bfr-candidata-v134-sidebar-escondida/index.html (corpo de onde o involucre foi recortado). O nome do campo e que faz o padrao casar — mesmo caso ja assinado de scripts/ah2-sonda-rest.mjs.',
+  },
+  {
+    arquivo: 'evidence/sm23-involucro-e-grafias-do-modulo-municipal-18-11-ANTERIOR-fixture-com-rpc-pontuado-dos-lados.json', classe: 'senha', n: 19, comprimentos: '12,11,11,14,9,18,12,7,18,10,9,11,14,13,16,10,12,11,11',
+    motivo: 'mesmo campo, mesma classe, na corrida ANTERIOR preservada (o fixture que casava `rpc.` pontuado dos dois lados): re-gera-la apagaria o vermelho que ela prova, por isso o casamento fica assinado aqui e nao se renomeia.',
+  },
+  {
+    arquivo: 'evidence/sm23-involucro-e-grafias-do-modulo-municipal-18-11-ANTERIOR-detalhe-de-portao-com-o-corpo-inteiro-do-modulo.json', classe: 'senha', n: 19, comprimentos: '12,11,11,14,9,18,12,7,18,10,9,11,14,13,16,10,12,11,11',
+    motivo: 'mesmo campo, mesma classe, na outra ANTERIOR (a que despejava o corpo inteiro do modulo no detalhe do portao): os 19 valores estao la duas vezes — no registo e no corpo colado — e continuam a ser nomes de balde lidos do bundle, nao credenciais.',
+  },
 ];
 
 const lista = execFileSync('git', ['ls-files', '-z'], { encoding: 'utf8' }).split('\0').filter(Boolean);

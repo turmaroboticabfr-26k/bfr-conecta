@@ -1,0 +1,968 @@
+{
+  "programa": "scripts/sm23-formas-de-chamada-na-faixa-municipal-18-11.mjs",
+  "em": "2026-11-18T23:49:15.244Z",
+  "duracao_ms": 547,
+  "pergunta": "a aba municipal lê mesas por nome, e o vazio de `.from(` na faixa queria dizer alguma coisa?",
+  "metodo": "fetch dos bytes servidos; faixa = primeira à última âncora `bfrMunicipal` ± margem; contagem por índice de 16 grafias de acesso a dados, na faixa e no corpus; nomes de mesa extraídos da chamada; zero SQL",
+  "porque_existe": "as três corridas do leitor da aba ficaram vermelhas por prédicas minhas; a única linha que sobreviveu nelas (`from:[]` na faixa) é uma asserção sobre UMA grafia, não sobre leitura de dados",
+  "antecessores": [
+    "evidence/sm23-leitura-aba-municipal-18-11-ANTERIOR-janela-fixa-de-24kb-sobre-colhia-vizinhos.json",
+    "evidence/sm23-leitura-aba-municipal-18-11-ANTERIOR-exigia-marca-dentro-de-cada-corpo.json",
+    "evidence/sm23-leitura-aba-municipal-18-11-ANTERIOR-exigia-involucre-unico-e-corpos-de-40bytes.json"
+  ],
+  "servido": {
+    "url": "https://bfr-conecta.turmaroboticabfr.workers.dev",
+    "status": 200,
+    "bytes": 3546846,
+    "md5": "b272fd4f3a737c518e888250ab8167f1"
+  },
+  "faixa": {
+    "desde": 3457147,
+    "ate": 3528787,
+    "chars": 71640,
+    "ancoras": 54,
+    "margem": 16000
+  },
+  "controles": {
+    "positivo": {
+      "agulha": ".from(",
+      "no_corpus": 717,
+      "na_faixa": 0
+    },
+    "negativo": {
+      "agulha": ".from(nada_que_existe_nesta_app_zzz",
+      "no_corpus": 0
+    }
+  },
+  "por_grafia": [
+    {
+      "grafia": "from_aspa_simples",
+      "agulha": ".from('",
+      "ocorrencias_na_faixa": 0,
+      "ocorrencias_no_corpus": 700,
+      "exemplos_na_faixa": []
+    },
+    {
+      "grafia": "from_aspa_dupla",
+      "agulha": ".from(\"",
+      "ocorrencias_na_faixa": 0,
+      "ocorrencias_no_corpus": 0,
+      "exemplos_na_faixa": []
+    },
+    {
+      "grafia": "from_crase",
+      "agulha": ".from(`",
+      "ocorrencias_na_faixa": 0,
+      "ocorrencias_no_corpus": 0,
+      "exemplos_na_faixa": []
+    },
+    {
+      "grafia": "from_sem_argue",
+      "agulha": ".from(",
+      "ocorrencias_na_faixa": 0,
+      "ocorrencias_no_corpus": 717,
+      "exemplos_na_faixa": []
+    },
+    {
+      "grafia": "from_espacada",
+      "agulha": ".from (",
+      "ocorrencias_na_faixa": 0,
+      "ocorrencias_no_corpus": 0,
+      "exemplos_na_faixa": []
+    },
+    {
+      "grafia": "rpc",
+      "agulha": ".rpc(",
+      "ocorrencias_na_faixa": 1,
+      "ocorrencias_no_corpus": 32,
+      "exemplos_na_faixa": [
+        "ente'; return sonda; } try { const { data, error } = await c.rpc('bfr_is_municipal_authority'); sonda.feita = true; sonda.executavel = !error; s"
+      ]
+    },
+    {
+      "grafia": "insert",
+      "agulha": ".insert(",
+      "ocorrencias_na_faixa": 0,
+      "ocorrencias_no_corpus": 122,
+      "exemplos_na_faixa": []
+    },
+    {
+      "grafia": "update",
+      "agulha": ".update(",
+      "ocorrencias_na_faixa": 0,
+      "ocorrencias_no_corpus": 52,
+      "exemplos_na_faixa": []
+    },
+    {
+      "grafia": "delete",
+      "agulha": ".delete(",
+      "ocorrencias_na_faixa": 0,
+      "ocorrencias_no_corpus": 20,
+      "exemplos_na_faixa": []
+    },
+    {
+      "grafia": "upsert",
+      "agulha": ".upsert(",
+      "ocorrencias_na_faixa": 0,
+      "ocorrencias_no_corpus": 22,
+      "exemplos_na_faixa": []
+    },
+    {
+      "grafia": "select_chamada",
+      "agulha": ".select(",
+      "ocorrencias_na_faixa": 19,
+      "ocorrencias_no_corpus": 516,
+      "exemplos_na_faixa": [
+        " const escolas = await ler('escolas_todo', (from) => from('schools').select('id,name,code,city,state,phase,active').order('name')); const alunos = await",
+        " const alunos = await ler('alunos_todo', (from) => from('students').select('id,official_name,active,class_id,school_id,classes(year,class_code,shift),schools",
+        " const turmas = await ler('turmas_todo', (from) => from('classes').select('id,year,class_code,shift,school_id,schools(name)').order('year')); const pr",
+        "s = await ler('processos_todo', (from) => from('supervision_requests').select('id,indicator,motive,priority,status,deadline_at,created_at,closed_at,school_id,sp"
+      ]
+    },
+    {
+      "grafia": "single",
+      "agulha": ".single(",
+      "ocorrencias_na_faixa": 0,
+      "ocorrencias_no_corpus": 25,
+      "exemplos_na_faixa": []
+    },
+    {
+      "grafia": "maybeSingle",
+      "agulha": ".maybeSingle(",
+      "ocorrencias_na_faixa": 0,
+      "ocorrencias_no_corpus": 26,
+      "exemplos_na_faixa": []
+    },
+    {
+      "grafia": "rest_v1_directo",
+      "agulha": "/rest/v1/",
+      "ocorrencias_na_faixa": 0,
+      "ocorrencias_no_corpus": 0,
+      "exemplos_na_faixa": []
+    },
+    {
+      "grafia": "fetch_chamada",
+      "agulha": "fetch(",
+      "ocorrencias_na_faixa": 0,
+      "ocorrencias_no_corpus": 7,
+      "exemplos_na_faixa": []
+    },
+    {
+      "grafia": "count_exact",
+      "agulha": "count=exact",
+      "ocorrencias_na_faixa": 0,
+      "ocorrencias_no_corpus": 0,
+      "exemplos_na_faixa": []
+    }
+  ],
+  "mesas_nomeadas": {
+    "na_faixa": [
+      [
+        "schools",
+        3
+      ],
+      [
+        "students",
+        3
+      ],
+      [
+        "classes",
+        2
+      ],
+      [
+        "supervision_requests",
+        2
+      ],
+      [
+        "bfr_lesson_attendance",
+        2
+      ],
+      [
+        "staff_schools",
+        2
+      ],
+      [
+        "bfr_is_municipal_authority",
+        1
+      ],
+      [
+        "grades",
+        1
+      ],
+      [
+        "supervision_alerts",
+        1
+      ],
+      [
+        "supervision_responses",
+        1
+      ],
+      [
+        "announcements",
+        1
+      ],
+      [
+        "school_documents",
+        1
+      ]
+    ],
+    "no_corpus": [
+      [
+        "students",
+        60
+      ],
+      [
+        "id",
+        38
+      ],
+      [
+        "profiles",
+        33
+      ],
+      [
+        "classes",
+        33
+      ],
+      [
+        "grades",
+        26
+      ],
+      [
+        "student_school_profiles",
+        24
+      ],
+      [
+        "support_requests",
+        21
+      ],
+      [
+        "attendance",
+        21
+      ],
+      [
+        "school_activities",
+        21
+      ],
+      [
+        "school_documents",
+        21
+      ],
+      [
+        "student_messages",
+        17
+      ],
+      [
+        "secretary_requests",
+        17
+      ],
+      [
+        "occurrences",
+        16
+      ],
+      [
+        "announcements",
+        15
+      ],
+      [
+        "guardian_students",
+        13
+      ],
+      [
+        "school_events",
+        13
+      ],
+      [
+        "student_id",
+        12
+      ],
+      [
+        "internal_chat_room_members",
+        12
+      ],
+      [
+        "bfr_teacher_directory",
+        10
+      ],
+      [
+        "gate_entry_alerts",
+        9
+      ],
+      [
+        "project_results",
+        9
+      ],
+      [
+        "secretary_request_events",
+        8
+      ],
+      [
+        "internal_chat_messages",
+        8
+      ],
+      [
+        "route_incidents",
+        7
+      ],
+      [
+        "gate_badges",
+        7
+      ],
+      [
+        "aee_student_roster",
+        7
+      ],
+      [
+        "school_meetings",
+        7
+      ],
+      [
+        "aee_sessions",
+        7
+      ],
+      [
+        "support_messages",
+        6
+      ],
+      [
+        "bfr_lesson_attendance",
+        6
+      ],
+      [
+        "access_requests",
+        6
+      ],
+      [
+        "bfr_schedule_entries",
+        6
+      ],
+      [
+        "aee_student_links",
+        6
+      ],
+      [
+        "internal_chat_threads",
+        6
+      ],
+      [
+        "entry_restrictions",
+        5
+      ],
+      [
+        "gate_checkins",
+        5
+      ],
+      [
+        "projects",
+        5
+      ],
+      [
+        "director_routine_items",
+        5
+      ],
+      [
+        "aee_plans",
+        5
+      ],
+      [
+        "internal_chat_presence",
+        5
+      ],
+      [
+        "psychology_articulations",
+        5
+      ],
+      [
+        "support_professionals",
+        4
+      ],
+      [
+        "support_follow_ups",
+        4
+      ],
+      [
+        "support_plans",
+        4
+      ],
+      [
+        "support_appointments",
+        4
+      ],
+      [
+        "psychology_referrals",
+        4
+      ],
+      [
+        "secretary_request_messages",
+        4
+      ],
+      [
+        "bfr_schedule_versions",
+        4
+      ],
+      [
+        "student_reading_levels",
+        4
+      ],
+      [
+        "sports_match_followers",
+        4
+      ],
+      [
+        "aee_progress",
+        4
+      ],
+      [
+        "aee_adaptations",
+        4
+      ],
+      [
+        "aee_resources",
+        4
+      ],
+      [
+        "aee_materials",
+        4
+      ],
+      [
+        "schools",
+        4
+      ],
+      [
+        "bfr_specialized_audit_log",
+        3
+      ],
+      [
+        "psychology_returns",
+        3
+      ],
+      [
+        "support_services",
+        3
+      ],
+      [
+        "profile_id",
+        3
+      ],
+      [
+        "register_gate_checkin",
+        3
+      ],
+      [
+        "student_game_sessions",
+        3
+      ],
+      [
+        "student_programs",
+        3
+      ],
+      [
+        "notification_preferences",
+        3
+      ],
+      [
+        "project_photos",
+        3
+      ],
+      [
+        "school_notification_reads",
+        3
+      ],
+      [
+        "student_achievements",
+        3
+      ],
+      [
+        "bfr_school_shift_settings",
+        3
+      ],
+      [
+        "bfr_school_calendar_days",
+        3
+      ],
+      [
+        "learning_student_progress",
+        3
+      ],
+      [
+        "bfr_coordination_messages",
+        3
+      ],
+      [
+        "internal_chat_message_reactions",
+        3
+      ],
+      [
+        "sports_public_matches",
+        3
+      ],
+      [
+        "aee_messages",
+        3
+      ],
+      [
+        "supervision_requests",
+        3
+      ],
+      [
+        "learning_action_plans",
+        3
+      ],
+      [
+        "psychology_meetings",
+        3
+      ],
+      [
+        "psychology_preventive_actions",
+        3
+      ],
+      [
+        "learning_teacher_actions",
+        3
+      ],
+      [
+        "learning_indicator_settings",
+        3
+      ],
+      [
+        "secretary_request_attachments",
+        2
+      ],
+      [
+        "secretary_profile_change_requests",
+        2
+      ],
+      [
+        "photo_path",
+        2
+      ],
+      [
+        "list_current_month_birthdays",
+        2
+      ],
+      [
+        "staff_security_audit",
+        2
+      ],
+      [
+        "set_profile_role",
+        2
+      ],
+      [
+        "push_subscriptions",
+        2
+      ],
+      [
+        "status",
+        2
+      ],
+      [
+        "bfr_teacher_context",
+        2
+      ],
+      [
+        "bfr_coordination_threads",
+        2
+      ],
+      [
+        "sports_championships",
+        2
+      ],
+      [
+        "sports_set_match_status",
+        2
+      ],
+      [
+        "sports_record_event",
+        2
+      ],
+      [
+        "aee_activities",
+        2
+      ],
+      [
+        "aee_attendance",
+        2
+      ],
+      [
+        "aee_activity_recommendations",
+        2
+      ],
+      [
+        "aee_plan_reviews",
+        2
+      ],
+      [
+        "learning_action_items",
+        2
+      ],
+      [
+        "learning_assessments",
+        2
+      ],
+      [
+        "learning_assessment_results",
+        2
+      ],
+      [
+        "learning_external_results",
+        2
+      ],
+      [
+        "staff_schools",
+        2
+      ],
+      [
+        "get_student_guardians",
+        1
+      ],
+      [
+        "confirm_guardian_entry",
+        1
+      ],
+      [
+        "acknowledge_occurrence",
+        1
+      ],
+      [
+        "announcement_reads",
+        1
+      ],
+      [
+        "school_polls",
+        1
+      ],
+      [
+        "school_poll_responses",
+        1
+      ],
+      [
+        "official_name",
+        1
+      ],
+      [
+        "complete_family_registration",
+        1
+      ],
+      [
+        "choose_initial_role",
+        1
+      ],
+      [
+        "notification_key",
+        1
+      ],
+      [
+        "score",
+        1
+      ],
+      [
+        "bfr_list_staff_birthdays",
+        1
+      ],
+      [
+        "bfr_set_staff_birthday",
+        1
+      ],
+      [
+        "level",
+        1
+      ],
+      [
+        "bfr_school_calendar_month_targets",
+        1
+      ],
+      [
+        "correct_gate_attendance",
+        1
+      ],
+      [
+        "bfr_confirm_school_calendar",
+        1
+      ],
+      [
+        "bfr_teacher_class_subjects",
+        1
+      ],
+      [
+        "bfr_grade_audit",
+        1
+      ],
+      [
+        "bfr_teacher_lesson_gate_evidence",
+        1
+      ],
+      [
+        "bfr_correct_grade",
+        1
+      ],
+      [
+        "school_videos",
+        1
+      ],
+      [
+        "bfr_get_student_photo_path",
+        1
+      ],
+      [
+        "sports_schools",
+        1
+      ],
+      [
+        "sports_teams",
+        1
+      ],
+      [
+        "sports_athletes",
+        1
+      ],
+      [
+        "sports_matches",
+        1
+      ],
+      [
+        "sports_public_match_events",
+        1
+      ],
+      [
+        "sports_match_statistics",
+        1
+      ],
+      [
+        "sports_public_athletes",
+        1
+      ],
+      [
+        "sports_rebuild_standings",
+        1
+      ],
+      [
+        "sports_public_schools",
+        1
+      ],
+      [
+        "sports_public_teams",
+        1
+      ],
+      [
+        "sports_standings",
+        1
+      ],
+      [
+        "match_id",
+        1
+      ],
+      [
+        "bfr_resolve_communication_recipients",
+        1
+      ],
+      [
+        "bfr_create_school_meeting",
+        1
+      ],
+      [
+        "bfr_create_targeted_announcement",
+        1
+      ],
+      [
+        "announcement_recipients",
+        1
+      ],
+      [
+        "school_meeting_recipients",
+        1
+      ],
+      [
+        "bfr_update_school_meeting",
+        1
+      ],
+      [
+        "aee_goals",
+        1
+      ],
+      [
+        "register_gate_checkin_v2",
+        1
+      ],
+      [
+        "learning_skills",
+        1
+      ],
+      [
+        "learning_meetings",
+        1
+      ],
+      [
+        "learning_evidence",
+        1
+      ],
+      [
+        "bfr_is_municipal_authority",
+        1
+      ],
+      [
+        "supervision_alerts",
+        1
+      ],
+      [
+        "supervision_responses",
+        1
+      ]
+    ]
+  },
+  "superficies_ddl_como_rota_nomeada": {
+    "bfr_municipal_school_stats": 0,
+    "bfr_municipal_network_totals": 0,
+    "bfr_municipal_municipalities": 0,
+    "bfr_municipal_access_grants": 0,
+    "bfr_municipal_audit": 0,
+    "bfr_school_in_municipal_scope": 0,
+    "bfr_is_municipal_authority": 1
+  },
+  "portoes": [
+    {
+      "nome": "a_faixa_e_muito_menor_que_o_corpus",
+      "verde": true,
+      "detalhe": {
+        "chars_faixa": 71640,
+        "chars_corpus": 3528787,
+        "razao": 49
+      }
+    },
+    {
+      "nome": "o_censo_de_grafias_tem_positivo_no_corpus",
+      "verde": true,
+      "detalhe": {
+        "agulha": ".from(",
+        "no_corpus": 717,
+        "na_faixa": 0
+      }
+    },
+    {
+      "nome": "o_censo_de_grafias_nao_inventa_no_negativo",
+      "verde": true,
+      "detalhe": {
+        "agulha": ".from(nada_que_existe_nesta_app_zzz",
+        "no_corpus": 0
+      }
+    },
+    {
+      "nome": "toda_grafia_representada_com_o_seu_numero",
+      "verde": true,
+      "detalhe": {
+        "declaradas": 16,
+        "emitidas": 16
+      }
+    },
+    {
+      "nome": "nenhuma_das_sete_superficies_e_rota_nomeada_no_bundle",
+      "verde": true,
+      "detalhe": {
+        "como_rota": {
+          "bfr_municipal_school_stats": 0,
+          "bfr_municipal_network_totals": 0,
+          "bfr_municipal_municipalities": 0,
+          "bfr_municipal_access_grants": 0,
+          "bfr_municipal_audit": 0,
+          "bfr_school_in_municipal_scope": 0,
+          "bfr_is_municipal_authority": 1
+        },
+        "aviso": "a 7.ª, bfr_is_municipal_authority, É chamada por nome e está fora deste portão de propósito"
+      }
+    },
+    {
+      "nome": "o_gate_municipal_e_de_facto_uma_chamada_rpc_nomeada",
+      "verde": true,
+      "detalhe": 1
+    },
+    {
+      "nome": "a_faixa_declara_as_mesas_que_lê_por_nome",
+      "verde": true,
+      "detalhe": {
+        "mesas_na_faixa": [
+          [
+            "schools",
+            3
+          ],
+          [
+            "students",
+            3
+          ],
+          [
+            "classes",
+            2
+          ],
+          [
+            "supervision_requests",
+            2
+          ],
+          [
+            "bfr_lesson_attendance",
+            2
+          ],
+          [
+            "staff_schools",
+            2
+          ],
+          [
+            "bfr_is_municipal_authority",
+            1
+          ],
+          [
+            "grades",
+            1
+          ],
+          [
+            "supervision_alerts",
+            1
+          ],
+          [
+            "supervision_responses",
+            1
+          ],
+          [
+            "announcements",
+            1
+          ],
+          [
+            "school_documents",
+            1
+          ]
+        ]
+      }
+    },
+    {
+      "nome": "a_lista_de_mesas_da_faixa_e_subconjunto_da_lista_do_corpus",
+      "verde": true,
+      "detalhe": {
+        "na_faixa": [
+          "schools",
+          "students",
+          "classes",
+          "supervision_requests",
+          "bfr_lesson_attendance",
+          "staff_schools",
+          "bfr_is_municipal_authority",
+          "grades",
+          "supervision_alerts",
+          "supervision_responses",
+          "announcements",
+          "school_documents"
+        ],
+        "tamanho_corpus": 150
+      }
+    }
+  ],
+  "conclusao": {
+    "frases_que_esta_corrida_autoriza": [
+      "na faixa do módulo (71640 chars, 54 âncoras) as grafias de acesso a dados que disparam são [\"rpc×1\",\"select_chamada×19\"]",
+      "as mesas nomeadas dentro da faixa são [[\"schools\",3],[\"students\",3],[\"classes\",2],[\"supervision_requests\",2],[\"bfr_lesson_attendance\",2],[\"staff_schools\",2],[\"bfr_is_municipal_authority\",1],[\"grades\",1],[\"supervision_alerts\",1],[\"supervision_responses\",1],[\"announcements\",1],[\"school_documents\",1]]; no corpus inteiro são 150 nomes distintos",
+      "portanto «a aba não lê mesas» nunca foi o que `from:[]` queria dizer: o que se prova aqui é que NENHUM dos 6 nomes endurecidos pelo DDL aparece como rota nomeada em byte nenhum do bundle, por nenhuma das 16 grafias procuradas"
+    ],
+    "o_que_este_artefacto_nao_prova": [
+      "não prova o fluxo de dados da aba: chamadas construídas com variáveis (`from(t)`, um helper partilhado) não têm nome de mesa na grafo de chamada e só seriam apanhadas pelo nome da mesa — que, para os 6 nomes endurecidos, tem 0 ocorrências em texto solto no corpus (medida em sm23-conferencia-nomes-municipais-18-11.json)",
+      "não prova nada sobre a base: não correu SQL"
+    ]
+  },
+  "veredito": "GRAFIAS_CONFERIDAS",
+  "falhas": []
+}

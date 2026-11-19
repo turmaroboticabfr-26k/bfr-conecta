@@ -1,0 +1,321 @@
+{
+  "programa": "scripts/sm23-conferir-nomes-municipais-no-ar-18-11.mjs",
+  "em": "2026-11-18T23:43:13.851Z",
+  "duracao_ms": 3037,
+  "pergunta": "o DDL de 18/11 (vista→security_invoker, REVOKE dos agregados a anon) muda algum NÚMERO que a Secretaria Municipal pinta, ou só a superfície de acesso?",
+  "metodo": "fetch dos bytes servidos e contagem por índice de cada nome; zero SQL; nenhum segredo lido ou impresso; números alheios citados por campo de artefacto",
+  "alvo": {
+    "url": "https://bfr-conecta.turmaroboticabfr.workers.dev",
+    "status": 200,
+    "bytes": 3546846,
+    "md5": "b272fd4f3a737c518e888250ab8167f1"
+  },
+  "controles": {
+    "positivo": {
+      "agulha": ".from('schools')",
+      "ocorrencias": 1
+    },
+    "negativo": {
+      "agulha": "bfr_municipal_nome_que_nao_existe_na_base",
+      "ocorrencias": 0
+    }
+  },
+  "contagem_por_nome": {
+    "bfr_municipal_school_stats": 0,
+    "bfr_municipal_network_totals": 0,
+    "bfr_municipal_municipalities": 0,
+    "bfr_municipal_access_grants": 0,
+    "bfr_municipal_audit": 0,
+    "bfr_school_in_municipal_scope": 0,
+    "bfr_is_municipal_authority": 4,
+    ".from('schools')": 1,
+    "bfr_municipal_nome_que_nao_existe_na_base": 0
+  },
+  "estado_vivo": {
+    "vistas": [
+      {
+        "nome": "bfr_municipal_school_stats",
+        "modo": "invoker",
+        "reloptions": "{security_invoker=true}",
+        "bytes_definicao": 652
+      },
+      {
+        "nome": "sports_public_athletes",
+        "modo": "invoker",
+        "reloptions": "{security_invoker=true}",
+        "bytes_definicao": 251
+      }
+    ],
+    "funcoes": [
+      {
+        "nome": "bfr_has_municipal_grant",
+        "acl": "postgres=X/postgres | authenticated=X/postgres | service_role=X/postgres",
+        "anon_exec": false,
+        "auth_exec": true,
+        "definer": true,
+        "argumentos": "p_municipality uuid"
+      },
+      {
+        "nome": "bfr_is_municipal_authority",
+        "acl": "=X/postgres | postgres=X/postgres | anon=X/postgres | authenticated=X/postgres | service_role=X/postgres",
+        "anon_exec": true,
+        "auth_exec": true,
+        "definer": true,
+        "argumentos": ""
+      },
+      {
+        "nome": "bfr_municipal_municipalities",
+        "acl": "postgres=X/postgres | service_role=X/postgres",
+        "anon_exec": false,
+        "auth_exec": false,
+        "definer": true,
+        "argumentos": ""
+      },
+      {
+        "nome": "bfr_municipal_network_totals",
+        "acl": "postgres=X/postgres | authenticated=X/postgres | service_role=X/postgres",
+        "anon_exec": false,
+        "auth_exec": true,
+        "definer": true,
+        "argumentos": ""
+      }
+    ]
+  },
+  "ocorrencias_do_gate_municipal": [
+    {
+      "offset": 3477523,
+      "contexto": "o backend, em vez de assumir pelo papel local. Enquanto o DDL SM4 // não for aplicado, `bfr_is_municipal_authority()` não existe e a sonda devolve PGRST202 — e isso é // mostra"
+    },
+    {
+      "offset": 3477993,
+      "contexto": "rro = 'sem cliente'; return sonda; } try { const { data, error } = await c.rpc('bfr_is_municipal_authority'); sonda.feita = true; sonda.executavel = !error; sonda.e"
+    },
+    {
+      "offset": 3478633,
+      "contexto": "arn\"><strong>Sonda do backend pendente:</strong> ainda não foi possível perguntar a <code>bfr_is_municipal_authority()</code>.</div>'; if (sonda.executavel) return '<div class="
+    },
+    {
+      "offset": 3521383,
+      "contexto": "tinua a depender do que o backend autoriza — hoje pelo mapa de papéis, e depois por <code>bfr_is_municipal_authority()</code> quando o DDL SM4 for aplicado.</p></div>'; raiz."
+    }
+  ],
+  "citado": {
+    "aplicacao_view_funcoes": {
+      "ficheiro": "evidence/sm23-aplicacao-view-funcoes-18-11.json",
+      "veredito": "VF_APLICADO_E_CONFERIDO",
+      "espera_ms": null,
+      "anon_rpc_depois": null
+    },
+    "censo_municipios": {
+      "ficheiro": "evidence/sm23-censo-municipios-18-11.json",
+      "contagens": {
+        "municipios": 1,
+        "concessoes": 4,
+        "auditoria": 0,
+        "chaves_de_escola": 6,
+        "escolas": 6,
+        "escolas_com_municipio": 0
+      },
+      "municipios": [
+        {
+          "id": "ef4647c2-80a8-466a-810d-2a1579c20a95",
+          "nome": "Sao Paulo (SM8 fixture — apagar)"
+        }
+      ],
+      "concessionarios": [
+        {
+          "municipio_concedido": "ef4647c2-80a8-466a-810d-2a1579c20a95",
+          "existe_na_tabela_de_municipios": 1,
+          "escolas_desse_municipio": 0
+        }
+      ]
+    },
+    "causa_vista": {
+      "ficheiro": "evidence/sm23-causa-vista-18-11.json",
+      "mostra_a_linha_de_zero": false
+    }
+  },
+  "portoes": [
+    {
+      "nome": "regua_de_ausencia_dispara_no_controlo_positivo",
+      "verde": true,
+      "detalhe": {
+        "ocorrencias_de_from_schools": 1
+      }
+    },
+    {
+      "nome": "regua_nao_inventa_um_nome_que_nao_existe",
+      "verde": true,
+      "detalhe": {
+        "ocorrencias": 0
+      }
+    },
+    {
+      "nome": "o_andarilho_de_estrela_dispara_num_fixture_nao_zero",
+      "verde": true,
+      "detalhe": {
+        "fixture": [
+          6,
+          0
+        ]
+      }
+    },
+    {
+      "nome": "a_vista_endurecida_nao_e_nome_nenhum_do_bundle",
+      "verde": true,
+      "detalhe": {
+        "ocorrencias": 0
+      }
+    },
+    {
+      "nome": "os_agregados_revogados_a_anon_nao_sao_nomes_nenhum_do_bundle",
+      "verde": true,
+      "detalhe": {
+        "network_totals": 0,
+        "municipalities": 0
+      }
+    },
+    {
+      "nome": "o_catalogo_e_a_auditoria_municipais_tambem_nao_aparecem",
+      "verde": true,
+      "detalhe": {
+        "grants": 0,
+        "audit": 0,
+        "scope": 0
+      }
+    },
+    {
+      "nome": "o_gate_legitimo_do_modulo_esta_la_e_contado",
+      "verde": true,
+      "detalhe": {
+        "ocorrencias": 4,
+        "offsets": [
+          3477523,
+          3477993,
+          3478633,
+          3521383
+        ]
+      }
+    },
+    {
+      "nome": "nenhum_nome_endurecido_e_rota_de_dado_da_aba",
+      "verde": true,
+      "detalhe": [
+        "bfr_municipal_school_stats=0",
+        "bfr_municipal_network_totals=0",
+        "bfr_municipal_municipalities=0",
+        "bfr_municipal_access_grants=0",
+        "bfr_municipal_audit=0",
+        "bfr_school_in_municipal_scope=0"
+      ]
+    },
+    {
+      "nome": "o_aplicador_registrou_anon_sem_execucao_dos_dois_agregados",
+      "verde": true,
+      "detalhe": {
+        "rpc_totals": {
+          "status": 401,
+          "linhas": null,
+          "code": "42501",
+          "valores": null,
+          "mensagem": "permission denied for function bfr_municipal_network_totals",
+          "bytes": 115
+        },
+        "rpc_grant": {
+          "status": 401,
+          "linhas": null,
+          "code": "42501",
+          "valores": null,
+          "mensagem": "permission denied for function bfr_has_municipal_grant",
+          "bytes": 110
+        }
+      }
+    },
+    {
+      "nome": "o_censo_nomeia_a_causa_dos_zeros_escolas_sem_municipio",
+      "verde": true,
+      "detalhe": {
+        "municipios": 1,
+        "concessoes": 4,
+        "auditoria": 0,
+        "chaves_de_escola": 6,
+        "escolas": 6,
+        "escolas_com_municipio": 0
+      }
+    },
+    {
+      "nome": "a_vista_devolve_zero_linhas_a_todos_os_papeis_do_artefacto_de_causa",
+      "verde": false,
+      "detalhe": {
+        "lidos": 0,
+        "valores": []
+      }
+    },
+    {
+      "nome": "o_censo_de_vistas_devolve_tres_e_nao_a_agulha_negativa",
+      "verde": false,
+      "detalhe": {
+        "lidas": 2,
+        "nomes": [
+          "bfr_municipal_school_stats",
+          "sports_public_athletes"
+        ]
+      }
+    },
+    {
+      "nome": "no_instante_deste_censo_a_superficie_endurecida_e_invoker",
+      "verde": true,
+      "detalhe": [
+        "bfr_municipal_school_stats:invoker:{security_invoker=true}",
+        "sports_public_athletes:invoker:{security_invoker=true}"
+      ]
+    },
+    {
+      "nome": "a_regua_de_modo_emite_duas_rotulos_diferentes_no_mesmo_censo",
+      "verde": false,
+      "detalhe": {
+        "bfr_municipal_school_stats": "invoker",
+        "sports_public_athletes": "invoker"
+      }
+    },
+    {
+      "nome": "no_instante_deste_censo_anon_nao_executa_os_dois_agregados",
+      "verde": true,
+      "detalhe": [
+        "bfr_has_municipal_grant:anon=false:auth=true:postgres=X/postgres | authenticated=X/postgres | service_role=X/postgres",
+        "bfr_is_municipal_authority:anon=true:auth=true:=X/postgres | postgres=X/postgres | anon=X/postgres | authenticated=X/postgres | service_role=X/postgres",
+        "bfr_municipal_municipalities:anon=false:auth=false:postgres=X/postgres | service_role=X/postgres",
+        "bfr_municipal_network_totals:anon=false:auth=true:postgres=X/postgres | authenticated=X/postgres | service_role=X/postgres"
+      ]
+    },
+    {
+      "nome": "o_gate_legitimo_continua_executavel_pelo_token_do_utilizador",
+      "verde": true,
+      "detalhe": {
+        "nome": "bfr_is_municipal_authority",
+        "acl": "=X/postgres | postgres=X/postgres | anon=X/postgres | authenticated=X/postgres | service_role=X/postgres",
+        "anon_exec": true,
+        "auth_exec": true,
+        "definer": true,
+        "argumentos": ""
+      }
+    }
+  ],
+  "veredito": "VERMELHO: 3",
+  "falhas": [
+    "a_vista_devolve_zero_linhas_a_todos_os_papeis_do_artefacto_de_causa: {\"lidos\":0,\"valores\":[]}",
+    "o_censo_de_vistas_devolve_tres_e_nao_a_agulha_negativa: {\"lidas\":2,\"nomes\":[\"bfr_municipal_school_stats\",\"sports_public_athletes\"]}",
+    "a_regua_de_modo_emite_duas_rotulos_diferentes_no_mesmo_censo: {\"bfr_municipal_school_stats\":\"invoker\",\"sports_public_athletes\":\"invoker\"}"
+  ],
+  "conclusao": {
+    "frases_que_esta_corrida_autoriza": [
+      "nos 3546846 bytes servidos (md5 b272fd4f3a737c518e888250ab8167f1) os 6 nomes da superfície endurecida pelo DDL têm ZERO ocorrências; o gate legítimo `bfr_is_municipal_authority` tem 4",
+      "logo as peças (b) e (c) do OK de 18/11 não alteram nenhum número visível na aba: o que elas alteram é quem pode chamar essas rotas por fora do bundle, que está medido em sm23-aplicacao-view-funcoes-18-11.json",
+      "e os zeros da vista têm causa própria e anterior: {\"municipios\":1,\"concessoes\":4,\"auditoria\":0,\"chaves_de_escola\":6,\"escolas\":6,\"escolas_com_municipio\":0} — nenhuma escola carries município, pelo que `bfr_school_in_municipal_scope` não tem com que casar, seja o modo definer ou invoker"
+    ],
+    "o_que_este_artefacto_nao_prova": [
+      "não prova por onde vêm os números da aba: as três corridas anteriores a essa pergunta ficaram vermelhas por prédicas minhas e estão preservadas; a resposta precisaria de resolver as chamadas por corpo de função com o invólucro correto, que este bundle não expõe como unidade única",
+      "não prova que a vista está vazia em produção — isso está em sm23-causa-vista-18-11.json"
+    ]
+  }
+}

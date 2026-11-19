@@ -1,0 +1,750 @@
+{
+  "programa": "scripts/sm23-preflight-ddl-18-11.mjs",
+  "em": "2026-11-18T20:02:03.860Z",
+  "ok_nomeado": "selecao do utilizador 18/11: «DDL municipal + calendario» (ferramenta de escolha) — as tres pecas (a)(b)(c)",
+  "metodo": "SELECT de pg_catalog + has_*_privilege + GET/POST de leitura + bytes servidos do shell + leitura de disco; zero escrita; nenhuma chave impressa",
+  "commit": "65ffeca",
+  "url_servida": "https://bfr-conecta.turmaroboticabfr.workers.dev",
+  "shell_bytes": 3546846,
+  "shell_md5": "b272fd4f3a737c518e888250ab8167f1",
+  "candidatas_md5": {
+    "calendario_aplicacao": "d021235736a06caaa6bff16310a89686",
+    "calendario_reversao": "bfae0e279c7719ea7f66314fc74ab347",
+    "origem": "medidos neste preflight, lidos de scripts/ah2-ddl-calendario-*.sql"
+  },
+  "calendario": {
+    "medido": {
+      "tabelas": 0,
+      "politicas": 0,
+      "controle_schools": 1,
+      "controle_policy": 1,
+      "relacoes_public": 180
+    },
+    "pareadas_só_relacoes": [
+      {
+        "nome": "bfr_school_key_map",
+        "especie": "r"
+      }
+    ],
+    "pareadas_de_índices_e_constraints": [
+      "bfr_schedule_entries_version_id_shift_weekday_period_grade__key:i",
+      "bfr_school_key_map_pkey:i"
+    ],
+    "criadas_pelo_ddl_municipal_lidas_do_fonte": [
+      "bfr_municipalities",
+      "bfr_school_key_map",
+      "bfr_municipal_access_grants",
+      "bfr_municipal_audit"
+    ],
+    "pedidos_no_bundle": {
+      "bfr_school_shift_settings": 3,
+      "bfr_school_calendar_days": 3,
+      "bfr_school_calendar_month_targets": 1
+    },
+    "sonda_rest": [
+      {
+        "tabela": "bfr_school_shift_settings",
+        "status": 404,
+        "code": "PGRST205",
+        "bytes": 188
+      },
+      {
+        "tabela": "bfr_school_calendar_days",
+        "status": 404,
+        "code": "PGRST205",
+        "bytes": 190
+      },
+      {
+        "tabela": "bfr_school_calendar_month_targets",
+        "status": 404,
+        "code": "PGRST205",
+        "bytes": 199
+      }
+    ],
+    "controles": [
+      {
+        "tabela": "profiles",
+        "status": 200,
+        "linhas": 0,
+        "bytes": 2
+      },
+      {
+        "tabela": "gate_checkins",
+        "status": 200,
+        "linhas": 0,
+        "bytes": 2
+      },
+      {
+        "tabela": "schools",
+        "status": 401,
+        "linhas": null,
+        "bytes": 184
+      }
+    ],
+    "predicado": {
+      "assinatura": "bfr_rls_session_role()",
+      "definer": true,
+      "auth_execute": true,
+      "anon_execute": true
+    }
+  },
+  "vista": {
+    "censo": [
+      {
+        "nome": "bfr_municipal_school_stats",
+        "dono": "postgres",
+        "modo": "sem-opcao-null",
+        "reloptions": "NULL",
+        "anon_sel": true,
+        "auth_sel": true
+      },
+      {
+        "nome": "sports_public_athletes",
+        "dono": "postgres",
+        "modo": "invoker",
+        "reloptions": "{security_invoker=true}",
+        "anon_sel": false,
+        "auth_sel": true
+      },
+      {
+        "nome": "sports_public_match_events",
+        "dono": "postgres",
+        "modo": "invoker",
+        "reloptions": "{security_invoker=true}",
+        "anon_sel": false,
+        "auth_sel": true
+      },
+      {
+        "nome": "sports_public_matches",
+        "dono": "postgres",
+        "modo": "invoker",
+        "reloptions": "{security_invoker=true}",
+        "anon_sel": false,
+        "auth_sel": true
+      },
+      {
+        "nome": "sports_public_schools",
+        "dono": "postgres",
+        "modo": "invoker",
+        "reloptions": "{security_invoker=true}",
+        "anon_sel": false,
+        "auth_sel": true
+      },
+      {
+        "nome": "sports_public_teams",
+        "dono": "postgres",
+        "modo": "invoker",
+        "reloptions": "{security_invoker=true}",
+        "anon_sel": false,
+        "auth_sel": true
+      },
+      {
+        "nome": "support_professionals_directory",
+        "dono": "postgres",
+        "modo": "invoker",
+        "reloptions": "{security_invoker=true}",
+        "anon_sel": true,
+        "auth_sel": true
+      }
+    ],
+    "alvo": {
+      "nome": "bfr_municipal_school_stats",
+      "dono": "postgres",
+      "modo": "sem-opcao-null",
+      "reloptions": "NULL",
+      "anon_sel": true,
+      "auth_sel": true
+    },
+    "dono": "postgres",
+    "dono_bypassrls": true,
+    "em_policies": 0,
+    "definicao_md5": "af7a898df0af2401d80f289a0736dcd2",
+    "definicao_bytes": 652,
+    "leitura": [
+      {
+        "modo": "anon_http",
+        "status": 401,
+        "linhas": null,
+        "code": "42501",
+        "bytes": 116
+      },
+      {
+        "modo": "service_http",
+        "status": 200,
+        "linhas": 0,
+        "code": null
+      },
+      {
+        "modo": "set_local_role_anon",
+        "linhas": null,
+        "erro": "sql HTTP 400: {\"message\":\"Failed to run sql query: ERROR:  42501: permission denied for function bfr_school_in_municipal_scope\\n\"}"
+      },
+      {
+        "modo": "set_local_role_authenticated",
+        "linhas": 0,
+        "erro": null
+      }
+    ],
+    "leitura_por_sessao": [
+      {
+        "perfil": "secretary",
+        "erro": "token HTTP 400"
+      },
+      {
+        "perfil": "director",
+        "erro": "token HTTP 400"
+      },
+      {
+        "perfil": "coordinator",
+        "erro": "token HTTP 400"
+      },
+      {
+        "perfil": "supervisor",
+        "erro": "token HTTP 400"
+      }
+    ],
+    "uso_no_bundle": {
+      "nome_exato_no_shell": 0
+    }
+  },
+  "funcoes": {
+    "unidade_de_em_policies": "número de POLÍTICAS cujo texto contém o nome, não número de ocorrências dentro do texto",
+    "unidade_de_rpc_no_bundle": "ocorrências da forma literal `.rpc('NOME` nos bytes servidos",
+    "alvo": [
+      {
+        "nome": "bfr_has_municipal_grant",
+        "assinatura": "bfr_has_municipal_grant(uuid)",
+        "definer": true,
+        "volatil": "s",
+        "argumentos": 1,
+        "resultado": "boolean",
+        "anon_execute": true,
+        "auth_execute": true,
+        "em_policies_sql": 0,
+        "em_views_sql": 0
+      },
+      {
+        "nome": "bfr_municipal_network_totals",
+        "assinatura": "bfr_municipal_network_totals()",
+        "definer": true,
+        "volatil": "s",
+        "argumentos": 0,
+        "resultado": "TABLE(schools integer, students integer, classes integer, municipalities integer)",
+        "anon_execute": true,
+        "auth_execute": true,
+        "em_policies_sql": 0,
+        "em_views_sql": 0
+      }
+    ],
+    "fixtures": [
+      {
+        "nome": "bfr_is_municipal_authority",
+        "policies_sql": 5,
+        "policies_js": 5,
+        "views_sql": 0,
+        "rpc_no_bundle": 1
+      },
+      {
+        "nome": "bfr_rls_director_manages_student",
+        "policies_sql": 2,
+        "policies_js": 2,
+        "views_sql": 0,
+        "rpc_no_bundle": 0
+      },
+      {
+        "nome": "bfr_rls_is_developer",
+        "policies_sql": 2,
+        "policies_js": 2,
+        "views_sql": 0,
+        "rpc_no_bundle": 0
+      },
+      {
+        "nome": "bfr_rls_session_role",
+        "policies_sql": 7,
+        "policies_js": 7,
+        "views_sql": 0,
+        "rpc_no_bundle": 0
+      }
+    ],
+    "duas_reguas": [
+      {
+        "nome": "bfr_has_municipal_grant",
+        "policies_sql": 0,
+        "policies_js": 0,
+        "views_sql": 0,
+        "rpc_no_bundle": 0
+      },
+      {
+        "nome": "bfr_is_municipal_authority",
+        "policies_sql": 5,
+        "policies_js": 5,
+        "views_sql": 0,
+        "rpc_no_bundle": 1
+      },
+      {
+        "nome": "bfr_municipal_network_totals",
+        "policies_sql": 0,
+        "policies_js": 0,
+        "views_sql": 0,
+        "rpc_no_bundle": 0
+      },
+      {
+        "nome": "bfr_rls_director_manages_student",
+        "policies_sql": 2,
+        "policies_js": 2,
+        "views_sql": 0,
+        "rpc_no_bundle": 0
+      },
+      {
+        "nome": "bfr_rls_is_developer",
+        "policies_sql": 2,
+        "policies_js": 2,
+        "views_sql": 0,
+        "rpc_no_bundle": 0
+      },
+      {
+        "nome": "bfr_rls_session_role",
+        "policies_sql": 7,
+        "policies_js": 7,
+        "views_sql": 0,
+        "rpc_no_bundle": 0
+      }
+    ],
+    "probe": [
+      {
+        "nome": "bfr_has_municipal_grant",
+        "chamado": false,
+        "porque": "nao chamavel as cegas por anon"
+      },
+      {
+        "nome": "bfr_municipal_network_totals",
+        "status": 200,
+        "tipo": "array",
+        "linhas": 1,
+        "colunas": [
+          "schools",
+          "students",
+          "classes",
+          "municipalities"
+        ],
+        "code": null,
+        "bytes": 59,
+        "anon_execute": true
+      }
+    ]
+  },
+  "baselines": {
+    "schools": 6,
+    "students": 848,
+    "profiles": 28,
+    "announcements": 1,
+    "grants": 4,
+    "supervision_requests": 0
+  },
+  "relacoes_no_publico": 180,
+  "portoes": [
+    {
+      "nome": "regua_de_nomes_dispara_no_controle",
+      "verde": true,
+      "detalhe": {
+        "tabelas": 0,
+        "politicas": 0,
+        "controle_schools": 1,
+        "controle_policy": 1,
+        "relacoes_public": 180
+      }
+    },
+    {
+      "nome": "tabelas_calendario_ainda_0",
+      "verde": true,
+      "detalhe": {
+        "tabelas": 0,
+        "politicas": 0,
+        "controle_schools": 1,
+        "controle_policy": 1,
+        "relacoes_public": 180
+      }
+    },
+    {
+      "nome": "politicas_calendario_ainda_0",
+      "verde": true,
+      "detalhe": {
+        "tabelas": 0,
+        "politicas": 0,
+        "controle_schools": 1,
+        "controle_policy": 1,
+        "relacoes_public": 180
+      }
+    },
+    {
+      "nome": "nenhuma_relacao_pareada_além_do_ddl_municipal",
+      "verde": true,
+      "detalhe": {
+        "pareadas": [
+          "bfr_school_key_map:r"
+        ],
+        "criadas_pelo_sm4_lidas_do_fonte": [
+          "bfr_municipalities",
+          "bfr_school_key_map",
+          "bfr_municipal_access_grants",
+          "bfr_municipal_audit"
+        ],
+        "indices_e_constraints_fora_da_regua": [
+          "bfr_schedule_entries_version_id_shift_weekday_period_grade__key:i",
+          "bfr_school_key_map_pkey:i"
+        ]
+      }
+    },
+    {
+      "nome": "predico_existe_e_auth_tem_execute",
+      "verde": true,
+      "detalhe": [
+        {
+          "assinatura": "bfr_rls_session_role()",
+          "definer": true,
+          "auth_execute": true,
+          "anon_execute": true
+        }
+      ]
+    },
+    {
+      "nome": "bundle_pede_os_tres_nomes",
+      "verde": true,
+      "detalhe": {
+        "bfr_school_shift_settings": 3,
+        "bfr_school_calendar_days": 3,
+        "bfr_school_calendar_month_targets": 1
+      }
+    },
+    {
+      "nome": "os_tres_dao_404",
+      "verde": true,
+      "detalhe": [
+        {
+          "tabela": "bfr_school_shift_settings",
+          "status": 404,
+          "code": "PGRST205",
+          "bytes": 188
+        },
+        {
+          "tabela": "bfr_school_calendar_days",
+          "status": 404,
+          "code": "PGRST205",
+          "bytes": 190
+        },
+        {
+          "tabela": "bfr_school_calendar_month_targets",
+          "status": 404,
+          "code": "PGRST205",
+          "bytes": 199
+        }
+      ]
+    },
+    {
+      "nome": "controles_do_rest_nao_dao_404",
+      "verde": true,
+      "detalhe": [
+        {
+          "tabela": "profiles",
+          "status": 200,
+          "linhas": 0,
+          "bytes": 2
+        },
+        {
+          "tabela": "gate_checkins",
+          "status": 200,
+          "linhas": 0,
+          "bytes": 2
+        },
+        {
+          "tabela": "schools",
+          "status": 401,
+          "linhas": null,
+          "bytes": 184
+        }
+      ]
+    },
+    {
+      "nome": "vista_alvo_existe_e_ainda_nao_e_invoker",
+      "verde": true,
+      "detalhe": {
+        "nome": "bfr_municipal_school_stats",
+        "dono": "postgres",
+        "modo": "sem-opcao-null",
+        "reloptions": "NULL",
+        "anon_sel": true,
+        "auth_sel": true
+      }
+    },
+    {
+      "nome": "dono_da_vista_tem_bypassrls",
+      "verde": true,
+      "detalhe": {
+        "dono": "postgres",
+        "bypass": true
+      }
+    },
+    {
+      "nome": "vista_nao_e_usada_por_policy",
+      "verde": true,
+      "detalhe": {
+        "em_policies": 0
+      }
+    },
+    {
+      "nome": "censo_de_views_bate_com_o_diario_anterior",
+      "verde": true,
+      "detalhe": {
+        "hoje": [
+          "bfr_municipal_school_stats",
+          "sports_public_athletes",
+          "sports_public_match_events",
+          "sports_public_matches",
+          "sports_public_schools",
+          "sports_public_teams",
+          "support_professionals_directory"
+        ],
+        "anterior": [
+          "bfr_municipal_school_stats",
+          "sports_public_athletes",
+          "sports_public_match_events",
+          "sports_public_matches",
+          "sports_public_schools",
+          "sports_public_teams",
+          "support_professionals_directory"
+        ]
+      }
+    },
+    {
+      "nome": "so_a_municipal_esta_sem_invoker",
+      "verde": true,
+      "detalhe": [
+        "bfr_municipal_school_stats:sem-opcao-null",
+        "sports_public_athletes:invoker",
+        "sports_public_match_events:invoker",
+        "sports_public_matches:invoker",
+        "sports_public_schools:invoker",
+        "sports_public_teams:invoker",
+        "support_professionals_directory:invoker"
+      ]
+    },
+    {
+      "nome": "leitura_da_vista_registada_em_quatro_modos",
+      "verde": true,
+      "detalhe": [
+        {
+          "modo": "anon_http",
+          "status": 401,
+          "linhas": null,
+          "code": "42501",
+          "bytes": 116
+        },
+        {
+          "modo": "service_http",
+          "status": 200,
+          "linhas": 0,
+          "code": null
+        },
+        {
+          "modo": "set_local_role_anon",
+          "linhas": null,
+          "erro": "sql HTTP 400: {\"message\":\"Failed to run sql query: ERROR:  42501: permission denied for function bfr_school_in_municipal_scope\\n\"}"
+        },
+        {
+          "modo": "set_local_role_authenticated",
+          "linhas": 0,
+          "erro": null
+        }
+      ]
+    },
+    {
+      "nome": "leitura_por_sessao_registada_em_todas_as_contas_locais",
+      "verde": true,
+      "detalhe": [
+        {
+          "perfil": "secretary",
+          "erro": "token HTTP 400"
+        },
+        {
+          "perfil": "director",
+          "erro": "token HTTP 400"
+        },
+        {
+          "perfil": "coordinator",
+          "erro": "token HTTP 400"
+        },
+        {
+          "perfil": "supervisor",
+          "erro": "token HTTP 400"
+        }
+      ]
+    },
+    {
+      "nome": "as_duas_funcoes_existem_e_tem_execute_a_anon",
+      "verde": true,
+      "detalhe": [
+        "bfr_has_municipal_grant:true",
+        "bfr_is_municipal_authority:true",
+        "bfr_municipal_network_totals:true",
+        "bfr_rls_director_manages_student:true",
+        "bfr_rls_is_developer:true",
+        "bfr_rls_session_role:true"
+      ]
+    },
+    {
+      "nome": "as_duas_estao_fora_de_policies_e_rpc",
+      "verde": true,
+      "detalhe": [
+        {
+          "nome": "bfr_has_municipal_grant",
+          "policies_sql": 0,
+          "policies_js": 0,
+          "views_sql": 0,
+          "rpc_no_bundle": 0
+        },
+        {
+          "nome": "bfr_municipal_network_totals",
+          "policies_sql": 0,
+          "policies_js": 0,
+          "views_sql": 0,
+          "rpc_no_bundle": 0
+        }
+      ]
+    },
+    {
+      "nome": "fixtures_da_regua_de_policies_sao_nao_zero",
+      "verde": true,
+      "detalhe": [
+        {
+          "nome": "bfr_is_municipal_authority",
+          "policies_sql": 5,
+          "policies_js": 5,
+          "views_sql": 0,
+          "rpc_no_bundle": 1
+        },
+        {
+          "nome": "bfr_rls_director_manages_student",
+          "policies_sql": 2,
+          "policies_js": 2,
+          "views_sql": 0,
+          "rpc_no_bundle": 0
+        },
+        {
+          "nome": "bfr_rls_is_developer",
+          "policies_sql": 2,
+          "policies_js": 2,
+          "views_sql": 0,
+          "rpc_no_bundle": 0
+        },
+        {
+          "nome": "bfr_rls_session_role",
+          "policies_sql": 7,
+          "policies_js": 7,
+          "views_sql": 0,
+          "rpc_no_bundle": 0
+        }
+      ]
+    },
+    {
+      "nome": "as_duas_reguas_de_policy_batem",
+      "verde": true,
+      "detalhe": [
+        {
+          "nome": "bfr_has_municipal_grant",
+          "policies_sql": 0,
+          "policies_js": 0,
+          "views_sql": 0,
+          "rpc_no_bundle": 0
+        },
+        {
+          "nome": "bfr_is_municipal_authority",
+          "policies_sql": 5,
+          "policies_js": 5,
+          "views_sql": 0,
+          "rpc_no_bundle": 1
+        },
+        {
+          "nome": "bfr_municipal_network_totals",
+          "policies_sql": 0,
+          "policies_js": 0,
+          "views_sql": 0,
+          "rpc_no_bundle": 0
+        },
+        {
+          "nome": "bfr_rls_director_manages_student",
+          "policies_sql": 2,
+          "policies_js": 2,
+          "views_sql": 0,
+          "rpc_no_bundle": 0
+        },
+        {
+          "nome": "bfr_rls_is_developer",
+          "policies_sql": 2,
+          "policies_js": 2,
+          "views_sql": 0,
+          "rpc_no_bundle": 0
+        },
+        {
+          "nome": "bfr_rls_session_role",
+          "policies_sql": 7,
+          "policies_js": 7,
+          "views_sql": 0,
+          "rpc_no_bundle": 0
+        }
+      ]
+    },
+    {
+      "nome": "rpc_probe_registrado_ou_justificado",
+      "verde": true,
+      "detalhe": [
+        {
+          "nome": "bfr_has_municipal_grant",
+          "chamado": false,
+          "porque": "nao chamavel as cegas por anon"
+        },
+        {
+          "nome": "bfr_municipal_network_totals",
+          "status": 200,
+          "tipo": "array",
+          "linhas": 1,
+          "colunas": [
+            "schools",
+            "students",
+            "classes",
+            "municipalities"
+          ],
+          "code": null,
+          "bytes": 59,
+          "anon_execute": true
+        }
+      ]
+    },
+    {
+      "nome": "candidata_calendario_bem_formada",
+      "verde": true,
+      "detalhe": {
+        "bytes": 8706
+      }
+    },
+    {
+      "nome": "candidata_calendario_sem_srf_em_any_e_sem_schema_na_policy",
+      "verde": true,
+      "detalhe": true
+    },
+    {
+      "nome": "candidata_calendario_tem_reload_de_cache",
+      "verde": true,
+      "detalhe": true
+    },
+    {
+      "nome": "reversao_calendario_cobre_as_tres_tabelas_e_as_seis_politicas",
+      "verde": true,
+      "detalhe": {
+        "tabelas": 3,
+        "politicas": 6
+      }
+    }
+  ],
+  "veredito": "PREFLIGHT_DDL_VERDE",
+  "falhas": []
+}

@@ -1,0 +1,860 @@
+{
+  "programa": "scripts/sm23-sonda-com-sessao.mjs",
+  "fase": "antes",
+  "em": "2026-11-18T20:04:36.421Z",
+  "metodo": "GET/POST de leitura com access token de cada persona local; zero escrita; nenhuma credencial gravada (so uid, perfil, status, contagens)",
+  "url_servida": "https://bfr-conecta.turmaroboticabfr.workers.dev",
+  "shell_md5": "b272fd4f3a737c518e888250ab8167f1",
+  "has_grant_argumento_lido_do_catalogo": "bfr_has_municipal_grant(uuid)",
+  "has_grant_nome_do_argumento": "p_municipality",
+  "municipio_real_das_concessoes": {
+    "id": "ef4647c2-80a8-466a-810d-2a1579c20a95",
+    "concedidos": 4
+  },
+  "catalogo_no_instante": {
+    "tabelas_calendario": 0,
+    "vista_modo": "sem-opcao",
+    "anon_execute_das_duas": 2
+  },
+  "anon": {
+    "perfil": "anon",
+    "origem": "sem sessao",
+    "vista_municipal": {
+      "status": 401,
+      "linhas": null,
+      "colunas": null,
+      "code": "42501",
+      "valor": null,
+      "bytes": 116
+    },
+    "rpc_network_totals": {
+      "status": 200,
+      "linhas": 1,
+      "colunas": [
+        "schools",
+        "students",
+        "classes",
+        "municipalities"
+      ],
+      "code": null,
+      "valor": null,
+      "bytes": 59
+    },
+    "rpc_has_grant_sem_concessao": {
+      "status": 200,
+      "linhas": null,
+      "colunas": null,
+      "code": null,
+      "valor": null,
+      "bytes": 5
+    },
+    "calendario": {
+      "bfr_school_shift_settings": {
+        "status": 404,
+        "linhas": null,
+        "colunas": null,
+        "code": "PGRST205",
+        "valor": null,
+        "bytes": 188
+      },
+      "bfr_school_calendar_days": {
+        "status": 404,
+        "linhas": null,
+        "colunas": null,
+        "code": "PGRST205",
+        "valor": null,
+        "bytes": 190
+      },
+      "bfr_school_calendar_month_targets": {
+        "status": 404,
+        "linhas": null,
+        "colunas": null,
+        "code": "PGRST205",
+        "valor": null,
+        "bytes": 199
+      }
+    }
+  },
+  "por_persona": [
+    {
+      "perfil": "secretary",
+      "origem": "ah2-sessions",
+      "uid": "839e1f87-c596-4355-9f89-2ed97711349f",
+      "expira_em_epoch": 1794989159,
+      "viva_antes_do_get": false,
+      "vista_municipal": {
+        "status": 401,
+        "linhas": null,
+        "colunas": null,
+        "code": "PGRST303",
+        "valor": null,
+        "bytes": 70
+      },
+      "rpc_network_totals": {
+        "status": 401,
+        "linhas": null,
+        "colunas": null,
+        "code": "PGRST303",
+        "valor": null,
+        "bytes": 70
+      },
+      "rpc_has_grant_sem_concessao": {
+        "status": 401,
+        "linhas": null,
+        "colunas": null,
+        "code": "PGRST303",
+        "valor": null,
+        "bytes": 70
+      },
+      "rpc_has_grant_com_municipio_real": {
+        "status": 401,
+        "linhas": null,
+        "colunas": null,
+        "code": "PGRST303",
+        "valor": null,
+        "bytes": 70
+      },
+      "calendario": {
+        "bfr_school_shift_settings": {
+          "status": 401,
+          "linhas": null,
+          "colunas": null,
+          "code": "PGRST303",
+          "valor": null,
+          "bytes": 70
+        },
+        "bfr_school_calendar_days": {
+          "status": 401,
+          "linhas": null,
+          "colunas": null,
+          "code": "PGRST303",
+          "valor": null,
+          "bytes": 70
+        },
+        "bfr_school_calendar_month_targets": {
+          "status": 401,
+          "linhas": null,
+          "colunas": null,
+          "code": "PGRST303",
+          "valor": null,
+          "bytes": 70
+        }
+      }
+    },
+    {
+      "perfil": "coordinator",
+      "origem": "ah2-sessions",
+      "uid": "9cd0f42e-7676-48c3-8f0a-c43f2896e20d",
+      "expira_em_epoch": 1794989159,
+      "viva_antes_do_get": false,
+      "vista_municipal": {
+        "status": 401,
+        "linhas": null,
+        "colunas": null,
+        "code": "PGRST303",
+        "valor": null,
+        "bytes": 70
+      },
+      "rpc_network_totals": {
+        "status": 401,
+        "linhas": null,
+        "colunas": null,
+        "code": "PGRST303",
+        "valor": null,
+        "bytes": 70
+      },
+      "rpc_has_grant_sem_concessao": {
+        "status": 401,
+        "linhas": null,
+        "colunas": null,
+        "code": "PGRST303",
+        "valor": null,
+        "bytes": 70
+      },
+      "rpc_has_grant_com_municipio_real": {
+        "status": 401,
+        "linhas": null,
+        "colunas": null,
+        "code": "PGRST303",
+        "valor": null,
+        "bytes": 70
+      },
+      "calendario": {
+        "bfr_school_shift_settings": {
+          "status": 401,
+          "linhas": null,
+          "colunas": null,
+          "code": "PGRST303",
+          "valor": null,
+          "bytes": 70
+        },
+        "bfr_school_calendar_days": {
+          "status": 401,
+          "linhas": null,
+          "colunas": null,
+          "code": "PGRST303",
+          "valor": null,
+          "bytes": 70
+        },
+        "bfr_school_calendar_month_targets": {
+          "status": 401,
+          "linhas": null,
+          "colunas": null,
+          "code": "PGRST303",
+          "valor": null,
+          "bytes": 70
+        }
+      }
+    },
+    {
+      "perfil": "director",
+      "origem": "ah2-sessions",
+      "uid": "b5be4883-f076-4706-b40c-6ab1e720baa7",
+      "expira_em_epoch": 1794989160,
+      "viva_antes_do_get": false,
+      "vista_municipal": {
+        "status": 401,
+        "linhas": null,
+        "colunas": null,
+        "code": "PGRST303",
+        "valor": null,
+        "bytes": 70
+      },
+      "rpc_network_totals": {
+        "status": 401,
+        "linhas": null,
+        "colunas": null,
+        "code": "PGRST303",
+        "valor": null,
+        "bytes": 70
+      },
+      "rpc_has_grant_sem_concessao": {
+        "status": 401,
+        "linhas": null,
+        "colunas": null,
+        "code": "PGRST303",
+        "valor": null,
+        "bytes": 70
+      },
+      "rpc_has_grant_com_municipio_real": {
+        "status": 401,
+        "linhas": null,
+        "colunas": null,
+        "code": "PGRST303",
+        "valor": null,
+        "bytes": 70
+      },
+      "calendario": {
+        "bfr_school_shift_settings": {
+          "status": 401,
+          "linhas": null,
+          "colunas": null,
+          "code": "PGRST303",
+          "valor": null,
+          "bytes": 70
+        },
+        "bfr_school_calendar_days": {
+          "status": 401,
+          "linhas": null,
+          "colunas": null,
+          "code": "PGRST303",
+          "valor": null,
+          "bytes": 70
+        },
+        "bfr_school_calendar_month_targets": {
+          "status": 401,
+          "linhas": null,
+          "colunas": null,
+          "code": "PGRST303",
+          "valor": null,
+          "bytes": 70
+        }
+      }
+    },
+    {
+      "perfil": "developer",
+      "origem": "ah2-sessions",
+      "uid": "49753880-f7fc-4f0a-bbbb-c3883c37a29d",
+      "expira_em_epoch": 1794989157,
+      "viva_antes_do_get": false,
+      "vista_municipal": {
+        "status": 401,
+        "linhas": null,
+        "colunas": null,
+        "code": "PGRST303",
+        "valor": null,
+        "bytes": 70
+      },
+      "rpc_network_totals": {
+        "status": 401,
+        "linhas": null,
+        "colunas": null,
+        "code": "PGRST303",
+        "valor": null,
+        "bytes": 70
+      },
+      "rpc_has_grant_sem_concessao": {
+        "status": 401,
+        "linhas": null,
+        "colunas": null,
+        "code": "PGRST303",
+        "valor": null,
+        "bytes": 70
+      },
+      "rpc_has_grant_com_municipio_real": {
+        "status": 401,
+        "linhas": null,
+        "colunas": null,
+        "code": "PGRST303",
+        "valor": null,
+        "bytes": 70
+      },
+      "calendario": {
+        "bfr_school_shift_settings": {
+          "status": 401,
+          "linhas": null,
+          "colunas": null,
+          "code": "PGRST303",
+          "valor": null,
+          "bytes": 70
+        },
+        "bfr_school_calendar_days": {
+          "status": 401,
+          "linhas": null,
+          "colunas": null,
+          "code": "PGRST303",
+          "valor": null,
+          "bytes": 70
+        },
+        "bfr_school_calendar_month_targets": {
+          "status": 401,
+          "linhas": null,
+          "colunas": null,
+          "code": "PGRST303",
+          "valor": null,
+          "bytes": 70
+        }
+      }
+    },
+    {
+      "perfil": "monitor",
+      "origem": "ah2-sessions",
+      "uid": "101e9ade-c1e9-42bd-b487-fc5d78e54eb7",
+      "expira_em_epoch": 1794989158,
+      "viva_antes_do_get": false,
+      "vista_municipal": {
+        "status": 401,
+        "linhas": null,
+        "colunas": null,
+        "code": "PGRST303",
+        "valor": null,
+        "bytes": 70
+      },
+      "rpc_network_totals": {
+        "status": 401,
+        "linhas": null,
+        "colunas": null,
+        "code": "PGRST303",
+        "valor": null,
+        "bytes": 70
+      },
+      "rpc_has_grant_sem_concessao": {
+        "status": 401,
+        "linhas": null,
+        "colunas": null,
+        "code": "PGRST303",
+        "valor": null,
+        "bytes": 70
+      },
+      "rpc_has_grant_com_municipio_real": {
+        "status": 401,
+        "linhas": null,
+        "colunas": null,
+        "code": "PGRST303",
+        "valor": null,
+        "bytes": 70
+      },
+      "calendario": {
+        "bfr_school_shift_settings": {
+          "status": 401,
+          "linhas": null,
+          "colunas": null,
+          "code": "PGRST303",
+          "valor": null,
+          "bytes": 70
+        },
+        "bfr_school_calendar_days": {
+          "status": 401,
+          "linhas": null,
+          "colunas": null,
+          "code": "PGRST303",
+          "valor": null,
+          "bytes": 70
+        },
+        "bfr_school_calendar_month_targets": {
+          "status": 401,
+          "linhas": null,
+          "colunas": null,
+          "code": "PGRST303",
+          "valor": null,
+          "bytes": 70
+        }
+      }
+    },
+    {
+      "perfil": "education_supervisor",
+      "origem": "ah2-sessions",
+      "uid": "d7d45999-c21f-4322-8f94-46c6564ff728",
+      "expira_em_epoch": 1794989162,
+      "viva_antes_do_get": false,
+      "vista_municipal": {
+        "status": 401,
+        "linhas": null,
+        "colunas": null,
+        "code": "PGRST303",
+        "valor": null,
+        "bytes": 70
+      },
+      "rpc_network_totals": {
+        "status": 401,
+        "linhas": null,
+        "colunas": null,
+        "code": "PGRST303",
+        "valor": null,
+        "bytes": 70
+      },
+      "rpc_has_grant_sem_concessao": {
+        "status": 401,
+        "linhas": null,
+        "colunas": null,
+        "code": "PGRST303",
+        "valor": null,
+        "bytes": 70
+      },
+      "rpc_has_grant_com_municipio_real": {
+        "status": 401,
+        "linhas": null,
+        "colunas": null,
+        "code": "PGRST303",
+        "valor": null,
+        "bytes": 70
+      },
+      "calendario": {
+        "bfr_school_shift_settings": {
+          "status": 401,
+          "linhas": null,
+          "colunas": null,
+          "code": "PGRST303",
+          "valor": null,
+          "bytes": 70
+        },
+        "bfr_school_calendar_days": {
+          "status": 401,
+          "linhas": null,
+          "colunas": null,
+          "code": "PGRST303",
+          "valor": null,
+          "bytes": 70
+        },
+        "bfr_school_calendar_month_targets": {
+          "status": 401,
+          "linhas": null,
+          "colunas": null,
+          "code": "PGRST303",
+          "valor": null,
+          "bytes": 70
+        }
+      }
+    },
+    {
+      "perfil": "student",
+      "origem": "ah2-sessions",
+      "uid": "13f597b2-1f49-4336-8dfa-d85dc7c1bd97",
+      "expira_em_epoch": 1794989157,
+      "viva_antes_do_get": false,
+      "vista_municipal": {
+        "status": 401,
+        "linhas": null,
+        "colunas": null,
+        "code": "PGRST303",
+        "valor": null,
+        "bytes": 70
+      },
+      "rpc_network_totals": {
+        "status": 401,
+        "linhas": null,
+        "colunas": null,
+        "code": "PGRST303",
+        "valor": null,
+        "bytes": 70
+      },
+      "rpc_has_grant_sem_concessao": {
+        "status": 401,
+        "linhas": null,
+        "colunas": null,
+        "code": "PGRST303",
+        "valor": null,
+        "bytes": 70
+      },
+      "rpc_has_grant_com_municipio_real": {
+        "status": 401,
+        "linhas": null,
+        "colunas": null,
+        "code": "PGRST303",
+        "valor": null,
+        "bytes": 70
+      },
+      "calendario": {
+        "bfr_school_shift_settings": {
+          "status": 401,
+          "linhas": null,
+          "colunas": null,
+          "code": "PGRST303",
+          "valor": null,
+          "bytes": 70
+        },
+        "bfr_school_calendar_days": {
+          "status": 401,
+          "linhas": null,
+          "colunas": null,
+          "code": "PGRST303",
+          "valor": null,
+          "bytes": 70
+        },
+        "bfr_school_calendar_month_targets": {
+          "status": 401,
+          "linhas": null,
+          "colunas": null,
+          "code": "PGRST303",
+          "valor": null,
+          "bytes": 70
+        }
+      }
+    },
+    {
+      "perfil": "parent",
+      "origem": "ah2-sessions",
+      "uid": "7ff919cb-88f3-4109-b933-1d0a71bb8fce",
+      "expira_em_epoch": 1794989156,
+      "viva_antes_do_get": false,
+      "vista_municipal": {
+        "status": 401,
+        "linhas": null,
+        "colunas": null,
+        "code": "PGRST303",
+        "valor": null,
+        "bytes": 70
+      },
+      "rpc_network_totals": {
+        "status": 401,
+        "linhas": null,
+        "colunas": null,
+        "code": "PGRST303",
+        "valor": null,
+        "bytes": 70
+      },
+      "rpc_has_grant_sem_concessao": {
+        "status": 401,
+        "linhas": null,
+        "colunas": null,
+        "code": "PGRST303",
+        "valor": null,
+        "bytes": 70
+      },
+      "rpc_has_grant_com_municipio_real": {
+        "status": 401,
+        "linhas": null,
+        "colunas": null,
+        "code": "PGRST303",
+        "valor": null,
+        "bytes": 70
+      },
+      "calendario": {
+        "bfr_school_shift_settings": {
+          "status": 401,
+          "linhas": null,
+          "colunas": null,
+          "code": "PGRST303",
+          "valor": null,
+          "bytes": 70
+        },
+        "bfr_school_calendar_days": {
+          "status": 401,
+          "linhas": null,
+          "colunas": null,
+          "code": "PGRST303",
+          "valor": null,
+          "bytes": 70
+        },
+        "bfr_school_calendar_month_targets": {
+          "status": 401,
+          "linhas": null,
+          "colunas": null,
+          "code": "PGRST303",
+          "valor": null,
+          "bytes": 70
+        }
+      }
+    },
+    {
+      "perfil": "secretario_municipal",
+      "origem": "sm8-municipal-sessions",
+      "uid": "86e31850-eefb-4539-93e1-192ceceb6d12",
+      "expira_em_epoch": 1794979872,
+      "viva_antes_do_get": false,
+      "vista_municipal": {
+        "status": 401,
+        "linhas": null,
+        "colunas": null,
+        "code": "PGRST303",
+        "valor": null,
+        "bytes": 70
+      },
+      "rpc_network_totals": {
+        "status": 401,
+        "linhas": null,
+        "colunas": null,
+        "code": "PGRST303",
+        "valor": null,
+        "bytes": 70
+      },
+      "rpc_has_grant_sem_concessao": {
+        "status": 401,
+        "linhas": null,
+        "colunas": null,
+        "code": "PGRST303",
+        "valor": null,
+        "bytes": 70
+      },
+      "rpc_has_grant_com_municipio_real": {
+        "status": 401,
+        "linhas": null,
+        "colunas": null,
+        "code": "PGRST303",
+        "valor": null,
+        "bytes": 70
+      },
+      "calendario": {
+        "bfr_school_shift_settings": {
+          "status": 401,
+          "linhas": null,
+          "colunas": null,
+          "code": "PGRST303",
+          "valor": null,
+          "bytes": 70
+        },
+        "bfr_school_calendar_days": {
+          "status": 401,
+          "linhas": null,
+          "colunas": null,
+          "code": "PGRST303",
+          "valor": null,
+          "bytes": 70
+        },
+        "bfr_school_calendar_month_targets": {
+          "status": 401,
+          "linhas": null,
+          "colunas": null,
+          "code": "PGRST303",
+          "valor": null,
+          "bytes": 70
+        }
+      }
+    },
+    {
+      "perfil": "secretario_adjunto",
+      "origem": "sm8-municipal-sessions",
+      "uid": "68075dee-13f4-4d8c-b74f-eceb14ce18d7",
+      "expira_em_epoch": 1794979876,
+      "viva_antes_do_get": false,
+      "vista_municipal": {
+        "status": 401,
+        "linhas": null,
+        "colunas": null,
+        "code": "PGRST303",
+        "valor": null,
+        "bytes": 70
+      },
+      "rpc_network_totals": {
+        "status": 401,
+        "linhas": null,
+        "colunas": null,
+        "code": "PGRST303",
+        "valor": null,
+        "bytes": 70
+      },
+      "rpc_has_grant_sem_concessao": {
+        "status": 401,
+        "linhas": null,
+        "colunas": null,
+        "code": "PGRST303",
+        "valor": null,
+        "bytes": 70
+      },
+      "rpc_has_grant_com_municipio_real": {
+        "status": 401,
+        "linhas": null,
+        "colunas": null,
+        "code": "PGRST303",
+        "valor": null,
+        "bytes": 70
+      },
+      "calendario": {
+        "bfr_school_shift_settings": {
+          "status": 401,
+          "linhas": null,
+          "colunas": null,
+          "code": "PGRST303",
+          "valor": null,
+          "bytes": 70
+        },
+        "bfr_school_calendar_days": {
+          "status": 401,
+          "linhas": null,
+          "colunas": null,
+          "code": "PGRST303",
+          "valor": null,
+          "bytes": 70
+        },
+        "bfr_school_calendar_month_targets": {
+          "status": 401,
+          "linhas": null,
+          "colunas": null,
+          "code": "PGRST303",
+          "valor": null,
+          "bytes": 70
+        }
+      }
+    },
+    {
+      "perfil": "gestor_autorizado",
+      "origem": "sm8-municipal-sessions",
+      "uid": "6083a77c-bedc-4ff9-b75b-f08ff0d33fe1",
+      "expira_em_epoch": 1794979880,
+      "viva_antes_do_get": false,
+      "vista_municipal": {
+        "status": 401,
+        "linhas": null,
+        "colunas": null,
+        "code": "PGRST303",
+        "valor": null,
+        "bytes": 70
+      },
+      "rpc_network_totals": {
+        "status": 401,
+        "linhas": null,
+        "colunas": null,
+        "code": "PGRST303",
+        "valor": null,
+        "bytes": 70
+      },
+      "rpc_has_grant_sem_concessao": {
+        "status": 401,
+        "linhas": null,
+        "colunas": null,
+        "code": "PGRST303",
+        "valor": null,
+        "bytes": 70
+      },
+      "rpc_has_grant_com_municipio_real": {
+        "status": 401,
+        "linhas": null,
+        "colunas": null,
+        "code": "PGRST303",
+        "valor": null,
+        "bytes": 70
+      },
+      "calendario": {
+        "bfr_school_shift_settings": {
+          "status": 401,
+          "linhas": null,
+          "colunas": null,
+          "code": "PGRST303",
+          "valor": null,
+          "bytes": 70
+        },
+        "bfr_school_calendar_days": {
+          "status": 401,
+          "linhas": null,
+          "colunas": null,
+          "code": "PGRST303",
+          "valor": null,
+          "bytes": 70
+        },
+        "bfr_school_calendar_month_targets": {
+          "status": 401,
+          "linhas": null,
+          "colunas": null,
+          "code": "PGRST303",
+          "valor": null,
+          "bytes": 70
+        }
+      }
+    },
+    {
+      "perfil": "equipe_administrativa",
+      "origem": "sm8-municipal-sessions",
+      "uid": "6936a45a-89ca-4917-b4a9-e7d47209aeae",
+      "expira_em_epoch": 1794979884,
+      "viva_antes_do_get": false,
+      "vista_municipal": {
+        "status": 401,
+        "linhas": null,
+        "colunas": null,
+        "code": "PGRST303",
+        "valor": null,
+        "bytes": 70
+      },
+      "rpc_network_totals": {
+        "status": 401,
+        "linhas": null,
+        "colunas": null,
+        "code": "PGRST303",
+        "valor": null,
+        "bytes": 70
+      },
+      "rpc_has_grant_sem_concessao": {
+        "status": 401,
+        "linhas": null,
+        "colunas": null,
+        "code": "PGRST303",
+        "valor": null,
+        "bytes": 70
+      },
+      "rpc_has_grant_com_municipio_real": {
+        "status": 401,
+        "linhas": null,
+        "colunas": null,
+        "code": "PGRST303",
+        "valor": null,
+        "bytes": 70
+      },
+      "calendario": {
+        "bfr_school_shift_settings": {
+          "status": 401,
+          "linhas": null,
+          "colunas": null,
+          "code": "PGRST303",
+          "valor": null,
+          "bytes": 70
+        },
+        "bfr_school_calendar_days": {
+          "status": 401,
+          "linhas": null,
+          "colunas": null,
+          "code": "PGRST303",
+          "valor": null,
+          "bytes": 70
+        },
+        "bfr_school_calendar_month_targets": {
+          "status": 401,
+          "linhas": null,
+          "colunas": null,
+          "code": "PGRST303",
+          "valor": null,
+          "bytes": 70
+        }
+      }
+    }
+  ]
+}

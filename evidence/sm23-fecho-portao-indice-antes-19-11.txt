@@ -1,0 +1,37 @@
+indice_arquivos=1940 lidos=1758 pulados_bin_ou_grande=182
+senha_literal=81 jwt=2 token_de_url=0 portadores=17
+  medido bfr-candidata-v134-sidebar-escondida/portoes-v134-candidata.json|senha n=4 comprimentos=12,22,7,16
+  medido evidence/ah2-sonda-rest-17-11.json|senha n=1 comprimentos=14
+  medido evidence/ah2-sonda-rest-17-11b.json|senha n=1 comprimentos=14
+  medido evidence/e2e4-biblioteca.json|jwt n=2 comprimentos=427,427
+  medido evidence/pf-throttle-hunks.json|senha n=1 comprimentos=10
+  medido evidence/sm22-cifras-das-linhas-do-ledger-18-11-ANTERIOR-o-caminho-do-PEN34-estava-errado-e-escrevia-undefined.json|senha n=1 comprimentos=15
+  medido evidence/sm22-cifras-das-linhas-do-ledger-18-11b-ANTERIOR-o-portao-somava-a-lista-inteira-9-contra-os-8-anon.json|senha n=1 comprimentos=15
+  medido evidence/sm22-cifras-das-linhas-do-ledger-18-11b.json|senha n=1 comprimentos=15
+  medido evidence/sm22-escada-proveniencia-32-33-18-11.json|senha n=1 comprimentos=15
+  medido evidence/sm23-conferencia-calendario-18-11.json|senha n=3 comprimentos=24,18,18
+  medido evidence/sm23-involucro-e-grafias-do-modulo-municipal-18-11-ANTERIOR-detalhe-de-portao-com-o-corpo-inteiro-do-modulo.json|senha n=19 comprimentos=12,11,11,14,9,18,12,7,18,10,9,11,14,13,16,10,12,11,11
+  medido evidence/sm23-involucro-e-grafias-do-modulo-municipal-18-11-ANTERIOR-fixture-com-rpc-pontuado-dos-lados.json|senha n=19 comprimentos=12,11,11,14,9,18,12,7,18,10,9,11,14,13,16,10,12,11,11
+  medido evidence/sm23-involucro-e-grafias-do-modulo-municipal-18-11.json|senha n=19 comprimentos=12,11,11,14,9,18,12,7,18,10,9,11,14,13,16,10,12,11,11
+  medido evidence/sm7-municipal-education_supervisor-390-sm8bar390.json|senha n=4 comprimentos=24,11,14,9
+  medido scripts/ah2-sonda-rest.mjs|senha n=1 comprimentos=14
+  medido scripts/pf-throttle-gera.mjs|senha n=1 comprimentos=10
+  medido scripts/sm10-sonda-rls-escopo-18-11.mjs|senha n=4 comprimentos=20,11,20,9
+  excecao evidence/e2e4-biblioteca.json|jwt :: URL assinada de storage (mesma cadeia em ?token=): claims = exp,iat,scope,url, sem role nem email; iat 2026-10-22T23:02Z / exp 23:17Z, validade 15 min, expirada ha 3 semanas.
+  excecao evidence/pf-throttle-hunks.json|senha :: chave e irma de quando/janela/origem/escrita_da_posicao e tem o mesmo comprimento de hunks[].nome: e rotulo do hunk SQL, nao credencial.
+  excecao scripts/pf-throttle-gera.mjs|senha :: chave: nome de coluna da tabela (student_id), escrito pelo gerador — nao senha de conta.
+  excecao scripts/ah2-sonda-rest.mjs|senha :: o casado e o literal «bytes servidos» no campo origem_chave: e a etiqueta de procedencia da anon key (de onde o programa a leu), nao a chave. Provado por comparacao de hash com as candidaturas de rotulo, e o valor nao contem pontos nem e JWT. O padrao apanhou-o so porque o nome do campo acaba em «chave».
+  excecao evidence/ah2-sonda-rest-17-11.json|senha :: campo origem_chave do artefacto escrito por scripts/ah2-sonda-rest.mjs: hash igual ao do mesmo literal ja excepcionado no programa — etiqueta de procedencia, nao credencial.
+  excecao evidence/ah2-sonda-rest-17-11b.json|senha :: segunda corrida do mesmo programa: origem_chave com hash igual ao mesmo literal — mesma classe, mesma medida. Re-gerar o artefacto custaria uma corrida de browser, e o programa que o escreve ja tem esta excecao assinada: e a mesma classe em dois sitios.
+  excecao scripts/sm10-sonda-rls-escopo-18-11.mjs|senha :: os 4 valores sao os rotulos de papel do enum (chaves do mapa de sessoes, exatamente as chaves de ah2-sessions.json e sm8-municipal-sessions.json fora do repo): igualdade de hash provada por sm20-verifica-excecoes.mjs. Nenhum token/password alguma vez inline neste programa.
+  excecao evidence/sm7-municipal-education_supervisor-390-sm8bar390.json|senha :: chaves de CACHE do modulo (alunos_* com o filtro ja redigido pelo instrumento, turmas_todo, processos_todo, freq_todo) registadas pelo estagio cache_do_modulo do instrumento sm7 ja commitado. A classe e igual em todas as corridas sm7; os artefactos v133 nao casam (n=0 medido), porque so esta corrida — a do defeito da gaveta — produziu estas entradas.
+  excecao bfr-candidata-v134-sidebar-escondida/portoes-v134-candidata.json|senha :: os 4 valores sao os NOMES das agulhas do array `chaves` de scripts/v134-gera-candidata.mjs:33, gravados no campo `preservado_por_chave` como {chave, antes, depois} de contagens de ocorrencias na shell — a lista tem 6 nomes e 2 ficam fora da janela 6..24, que e porque n=4 e nao 6 (medido). Nenhum e chave de registo de sessao, nenhum contem ponto, nenhum e JWT: igualdade de hash provada por scripts/v134-verifica-excecao-certidao.mjs. O padrao casou so porque o nome do campo e `chave`.
+  excecao evidence/sm22-escada-proveniencia-32-33-18-11.json|senha :: campo primeira_com_setRole_chave: o valor e o rotulo de geracao v114-supervisao (md5 ea7efb355c1768409148575c08dac721), que existe como diretorio na arvore e como elemento de degraus[].geracao do proprio artefacto; nenhum e chave de sessao (19 comparadas), nenhum contem ponto, nenhum comeca por eyJ.
+  excecao evidence/sm22-cifras-das-linhas-do-ledger-18-11b.json|senha :: campo PEN_32.primeira_geracao_com_chave: hash igual ao do rotulo de geracao ja excepcionado na escada — a peca 21 copia o valor, nao o produz.
+  excecao evidence/sm22-cifras-das-linhas-do-ledger-18-11-ANTERIOR-o-caminho-do-PEN34-estava-errado-e-escrevia-undefined.json|senha :: mesmo campo, mesma classe, no registo da corrida vermelha historica (o undefined do PEN-34): um ANTERIOR nao se re-gera, porque re-gerar apagaria o vermelho que ele prova.
+  excecao evidence/sm22-cifras-das-linhas-do-ledger-18-11b-ANTERIOR-o-portao-somava-a-lista-inteira-9-contra-os-8-anon.json|senha :: mesmo campo, mesma classe, na segunda corrida vermelha (o portao que somava 9 contra os 8 anon): identico por hash ao rotulo de geracao, e tambem historico.
+  NAO_COBERTA evidence/sm23-conferencia-calendario-18-11.json|senha n=3 comprimentos=24,18,18
+  NAO_COBERTA evidence/sm23-involucro-e-grafias-do-modulo-municipal-18-11-ANTERIOR-detalhe-de-portao-com-o-corpo-inteiro-do-modulo.json|senha n=19 comprimentos=12,11,11,14,9,18,12,7,18,10,9,11,14,13,16,10,12,11,11
+  NAO_COBERTA evidence/sm23-involucro-e-grafias-do-modulo-municipal-18-11-ANTERIOR-fixture-com-rpc-pontuado-dos-lados.json|senha n=19 comprimentos=12,11,11,14,9,18,12,7,18,10,9,11,14,13,16,10,12,11,11
+  NAO_COBERTA evidence/sm23-involucro-e-grafias-do-modulo-municipal-18-11.json|senha n=19 comprimentos=12,11,11,14,9,18,12,7,18,10,9,11,14,13,16,10,12,11,11
+PORTAO_INDICE_VERMELHO

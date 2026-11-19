@@ -1,0 +1,521 @@
+{
+  "programa": "scripts/sm23-censo-pos-aplicacao-para-o-ledger-18-11.mjs",
+  "em": "2026-11-19T00:09:48.124Z",
+  "duracao_ms": 18370,
+  "pergunta": "que cifras o ledger e o §SM.23 podem citar depois das três peças do OK de 18/11, medidas hoje e não lembradas?",
+  "calendario": {
+    "mesas": [
+      {
+        "nome": "bfr_school_calendar_days",
+        "relkind": "r",
+        "rls": "true",
+        "forcada": "true"
+      },
+      {
+        "nome": "bfr_school_calendar_month_targets",
+        "relkind": "r",
+        "rls": "true",
+        "forcada": "true"
+      },
+      {
+        "nome": "bfr_school_shift_settings",
+        "relkind": "r",
+        "rls": "true",
+        "forcada": "true"
+      }
+    ],
+    "politicas": [
+      {
+        "mesa": "bfr_school_calendar_days",
+        "n": 2
+      },
+      {
+        "mesa": "bfr_school_calendar_month_targets",
+        "n": 2
+      },
+      {
+        "mesa": "bfr_school_shift_settings",
+        "n": 2
+      }
+    ],
+    "linhas_por_mesa": {
+      "bfr_school_shift_settings": 0,
+      "bfr_school_calendar_days": 0,
+      "bfr_school_calendar_month_targets": 0
+    }
+  },
+  "vistas": {
+    "total": 7,
+    "grelha_por_modo": [
+      {
+        "modo": "invoker",
+        "n": 7
+      },
+      {
+        "modo": "definer",
+        "n": 0
+      },
+      {
+        "modo": "sem-opcao",
+        "n": 0
+      }
+    ],
+    "sem_invoker": [],
+    "municipal": {
+      "nome": "bfr_municipal_school_stats",
+      "dono": "postgres",
+      "bypass": "true",
+      "modo": "invoker"
+    },
+    "def_md5": "af7a898df0af2401d80f289a0736dcd2",
+    "def_linhas": 18
+  },
+  "funcoes_do_escopo": [
+    {
+      "nome": "bfr_has_municipal_grant",
+      "anon_x": "false",
+      "auth_x": "true",
+      "svc_x": "true",
+      "acl": "acl-propria",
+      "definer": "true"
+    },
+    {
+      "nome": "bfr_is_municipal_authority",
+      "anon_x": "true",
+      "auth_x": "true",
+      "svc_x": "true",
+      "acl": "acl-propria",
+      "definer": "true"
+    },
+    {
+      "nome": "bfr_municipal_municipalities",
+      "anon_x": "false",
+      "auth_x": "false",
+      "svc_x": "true",
+      "acl": "acl-propria",
+      "definer": "true"
+    },
+    {
+      "nome": "bfr_municipal_network_totals",
+      "anon_x": "false",
+      "auth_x": "true",
+      "svc_x": "true",
+      "acl": "acl-propria",
+      "definer": "true"
+    },
+    {
+      "nome": "bfr_municipalities_visible",
+      "anon_x": "true",
+      "auth_x": "true",
+      "svc_x": "true",
+      "acl": "acl-propria",
+      "definer": "true"
+    },
+    {
+      "nome": "bfr_school_in_municipal_scope",
+      "anon_x": "false",
+      "auth_x": "true",
+      "svc_x": "true",
+      "acl": "acl-propria",
+      "definer": "true"
+    }
+  ],
+  "mesas_municipais": {
+    "nomes": [
+      "bfr_municipalities",
+      "bfr_municipal_access_grants",
+      "bfr_municipal_audit"
+    ],
+    "linhas": {
+      "bfr_municipalities": 1,
+      "bfr_municipal_access_grants": 4,
+      "bfr_municipal_audit": 0
+    }
+  },
+  "higiene_funcoes_public": {
+    "total": 158,
+    "anon_x": 63,
+    "public_x": 59,
+    "acl_nula": 0
+  },
+  "controlo_negativo": {
+    "agulha_que_existe": 6,
+    "agulha_que_nao_existe": 0
+  },
+  "fixture_da_regua": {
+    "sim": "true",
+    "outras_com_sim": 63,
+    "outras_com_nao": 95
+  },
+  "escopo_do_modulo_lido_dos_registos": {
+    "involucro_chars": 56408,
+    "ancora_dentro": 54,
+    "ancora_corpus": 54,
+    "from_ponto_no_involucro": 0,
+    "from_solto_no_involucro": 19,
+    "from_ponto_no_corpus": 717,
+    "rpc_no_involucro": 1,
+    "mesas_abertas": 12,
+    "leituras": 20,
+    "colunas_filtradas": [
+      "school_id"
+    ],
+    "leituras_que_filtram_municipio": [],
+    "familias": [
+      "municipalit_qualsquer_caixa=0",
+      "municipio_portugues=0",
+      "bfrMunicipal_marca_de_dom=54",
+      "mun_hifen_classe_css=170",
+      "city=13",
+      "estado_uf=49"
+    ]
+  },
+  "pegadas_dos_citados": [
+    {
+      "caminho": "evidence/sm23-aplicacao-calendario-18-11-VERMELHO.json",
+      "existe": true,
+      "bytes": 10279,
+      "md5": "01db5ecc8bcb4bcf47fdf8cd7b1bb589"
+    },
+    {
+      "caminho": "evidence/sm23-conferencia-calendario-18-11.json",
+      "existe": true,
+      "bytes": 24081,
+      "md5": "95f599b5046ab03d3a349864ce15ea95"
+    },
+    {
+      "caminho": "evidence/sm23-preflight-ddl-18-11.json",
+      "existe": true,
+      "bytes": 18785,
+      "md5": "1c85817dc78c42e272ac8d3eeda3cc64"
+    },
+    {
+      "caminho": "evidence/sm23-preflight-view-funcoes-18-11.json",
+      "existe": true,
+      "bytes": 18435,
+      "md5": "f79ee365c3588b0268d8807a0bea9841"
+    },
+    {
+      "caminho": "evidence/sm23-aplicacao-view-funcoes-18-11.json",
+      "existe": true,
+      "bytes": 16325,
+      "md5": "1cd3983b0fcfc1e7772dadca4a1d3db0"
+    },
+    {
+      "caminho": "evidence/sm23-causa-vista-18-11.json",
+      "existe": true,
+      "bytes": 7854,
+      "md5": "2204f5b5c877efd123b1676756a92d00"
+    },
+    {
+      "caminho": "evidence/sm23-causa-predicado-18-11.json",
+      "existe": true,
+      "bytes": 9978,
+      "md5": "0a0694866ebbfb3b93c873f7fd4913cd"
+    },
+    {
+      "caminho": "evidence/sm23-censo-municipios-18-11.json",
+      "existe": true,
+      "bytes": 4310,
+      "md5": "d515cf5f149e475d23609e1c3cbd5cdc"
+    },
+    {
+      "caminho": "evidence/sm23-conferencia-nomes-municipais-18-11.json",
+      "existe": true,
+      "bytes": 15837,
+      "md5": "3f4e325926b97cfdf87cbb50577344dc"
+    },
+    {
+      "caminho": "evidence/sm23-involucro-e-grafias-do-modulo-municipal-18-11.json",
+      "existe": true,
+      "bytes": 18996,
+      "md5": "52f5c780f6084711ac5d05e5a984e1c6"
+    },
+    {
+      "caminho": "evidence/sm23-escopo-aplicado-por-leitura-18-11.json",
+      "existe": true,
+      "bytes": 26794,
+      "md5": "1523c760ed1b7df40563d12ff457cee4"
+    },
+    {
+      "caminho": "evidence/sm23-sonda-com-sessao-antes-18-11.json",
+      "existe": true,
+      "bytes": 23118,
+      "md5": "2a77c8b89f774c547d23652ce62610a4"
+    },
+    {
+      "caminho": "evidence/sm23-sonda-com-sessao-depois-18-11.json",
+      "existe": true,
+      "bytes": 22294,
+      "md5": "01cb58fb9435f6d5cff78deeffe751a8"
+    },
+    {
+      "caminho": "scripts/ah2-ddl-calendario-candidata.sql",
+      "existe": true,
+      "bytes": 8706,
+      "md5": "d021235736a06caaa6bff16310a89686"
+    }
+  ],
+  "portoes": [
+    {
+      "nome": "as_tres_mesas_dizidas_em_PEN-29_existem_agora",
+      "verde": true,
+      "detalhe": {
+        "lidas": [
+          "bfr_school_calendar_days/r",
+          "bfr_school_calendar_month_targets/r",
+          "bfr_school_shift_settings/r"
+        ],
+        "esperadas": [
+          "bfr_school_shift_settings",
+          "bfr_school_calendar_days",
+          "bfr_school_calendar_month_targets"
+        ]
+      }
+    },
+    {
+      "nome": "as_tres_mesas_estao_vazias_e_isto_imprime_a_linha_zero",
+      "verde": true,
+      "detalhe": {
+        "linhas": {
+          "bfr_school_shift_settings": 0,
+          "bfr_school_calendar_days": 0,
+          "bfr_school_calendar_month_targets": 0
+        },
+        "predicate": "count(*) == 0 por mesa"
+      }
+    },
+    {
+      "nome": "a_rls_das_tres_mesas_esta_ligada_e_forcada",
+      "verde": true,
+      "detalhe": [
+        "bfr_school_calendar_days rls=true forcada=true",
+        "bfr_school_calendar_month_targets rls=true forcada=true",
+        "bfr_school_shift_settings rls=true forcada=true"
+      ]
+    },
+    {
+      "nome": "cada_mesa_do_calendario_tem_a_sua_politica_registada",
+      "verde": true,
+      "detalhe": [
+        {
+          "mesa": "bfr_school_calendar_days",
+          "n": 2
+        },
+        {
+          "mesa": "bfr_school_calendar_month_targets",
+          "n": 2
+        },
+        {
+          "mesa": "bfr_school_shift_settings",
+          "n": 2
+        }
+      ]
+    },
+    {
+      "nome": "a_vista_municipal_passou_a_correr_como_invocador",
+      "verde": true,
+      "detalhe": {
+        "nome": "bfr_municipal_school_stats",
+        "dono": "postgres",
+        "bypass": "true",
+        "modo": "invoker"
+      }
+    },
+    {
+      "nome": "a_definicao_da_vista_nao_mudou_sozinha",
+      "verde": true,
+      "detalhe": {
+        "def_md5": "af7a898df0af2401d80f289a0736dcd2",
+        "linhas_do_def": 18
+      }
+    },
+    {
+      "nome": "as_seis_funcoes_do_escopo_municipal_foram_lidas_por_papel",
+      "verde": true,
+      "detalhe": {
+        "lidas": [
+          "bfr_has_municipal_grant/anon=false/auth=true",
+          "bfr_is_municipal_authority/anon=true/auth=true",
+          "bfr_municipal_municipalities/anon=false/auth=false",
+          "bfr_municipal_network_totals/anon=false/auth=true",
+          "bfr_municipalities_visible/anon=true/auth=true",
+          "bfr_school_in_municipal_scope/anon=false/auth=true"
+        ],
+        "esperadas": [
+          "bfr_municipal_network_totals",
+          "bfr_has_municipal_grant",
+          "bfr_municipal_municipalities",
+          "bfr_is_municipal_authority",
+          "bfr_school_in_municipal_scope",
+          "bfr_municipalities_visible"
+        ]
+      }
+    },
+    {
+      "nome": "as_duas_funcoes_revogadas_a_anon_estao_revogadas_e_so_a_anon",
+      "verde": true,
+      "detalhe": [
+        "bfr_municipal_network_totals={\"nome\":\"bfr_municipal_network_totals\",\"anon_x\":\"false\",\"auth_x\":\"true\",\"svc_x\":\"true\",\"acl\":\"acl-propria\",\"definer\":\"true\"}",
+        "bfr_has_municipal_grant={\"nome\":\"bfr_has_municipal_grant\",\"anon_x\":\"false\",\"auth_x\":\"true\",\"svc_x\":\"true\",\"acl\":\"acl-propria\",\"definer\":\"true\"}"
+      ]
+    },
+    {
+      "nome": "o_gate_da_porta_continua_executavel_por_authenticated",
+      "verde": true,
+      "detalhe": {
+        "nome": "bfr_is_municipal_authority",
+        "anon_x": "true",
+        "auth_x": "true",
+        "svc_x": "true",
+        "acl": "acl-propria",
+        "definer": "true"
+      }
+    },
+    {
+      "nome": "as_tres_mesas_municipais_existem_e_imprimem_as_suas_linhas",
+      "verde": true,
+      "detalhe": {
+        "linhas": {
+          "bfr_municipalities": 1,
+          "bfr_municipal_access_grants": 4,
+          "bfr_municipal_audit": 0
+        },
+        "predicate": "count(*) por mesa, inclusive os zeros"
+      }
+    },
+    {
+      "nome": "a_regua_de_execute_sabe_dizer_sim_e_nao_no_mesmo_eixo",
+      "verde": true,
+      "detalhe": {
+        "fixture": {
+          "sim": "true",
+          "outras_com_sim": 63,
+          "outras_com_nao": 95
+        },
+        "anon_x_por_nome": [
+          "bfr_has_municipal_grant=false",
+          "bfr_is_municipal_authority=true",
+          "bfr_municipal_municipalities=false",
+          "bfr_municipal_network_totals=false",
+          "bfr_municipalities_visible=true",
+          "bfr_school_in_municipal_scope=false"
+        ]
+      }
+    },
+    {
+      "nome": "a_regua_nao_inventa_nada_no_controlo_negativo_e_dispara_no_positivo",
+      "verde": true,
+      "detalhe": {
+        "agulha_que_existe": 6,
+        "agulha_que_nao_existe": 0,
+        "linhas_por_nome_fantasma": 0
+      }
+    },
+    {
+      "nome": "a_grelha_de_modos_bate_com_o_censo_e_imprime_os_zeros",
+      "verde": true,
+      "detalhe": {
+        "total_vistas": 7,
+        "grelha": [
+          {
+            "modo": "invoker",
+            "n": 7
+          },
+          {
+            "modo": "definer",
+            "n": 0
+          },
+          {
+            "modo": "sem-opcao",
+            "n": 0
+          }
+        ]
+      }
+    },
+    {
+      "nome": "a_cifra_de_higiene_de_funcoes_sai_do_catalogo_de_hoje",
+      "verde": true,
+      "detalhe": {
+        "total": 158,
+        "anon_x": 63,
+        "public_x": 59,
+        "acl_nula": 0
+      }
+    },
+    {
+      "nome": "todo_artefacto_citado_no_documento_existe_com_pega_medida",
+      "verde": true,
+      "detalhe": []
+    },
+    {
+      "nome": "as_cifras_do_modulo_no_ar_foram_lidas_dos_registos_e_nao_dactilografadas",
+      "verde": true,
+      "detalhe": {
+        "involucro_chars": 56408,
+        "ancora_dentro": 54,
+        "ancora_corpus": 54,
+        "from_ponto_no_involucro": 0,
+        "from_solto_no_involucro": 19,
+        "from_ponto_no_corpus": 717,
+        "rpc_no_involucro": 1,
+        "mesas_abertas": 12,
+        "leituras": 20,
+        "colunas_filtradas": [
+          "school_id"
+        ],
+        "leituras_que_filtram_municipio": [],
+        "familias": [
+          "municipalit_qualsquer_caixa=0",
+          "municipio_portugues=0",
+          "bfrMunicipal_marca_de_dom=54",
+          "mun_hifen_classe_css=170",
+          "city=13",
+          "estado_uf=49"
+        ]
+      }
+    },
+    {
+      "nome": "nenhuma_leitura_do_modulo_filtra_por_municipio_e_isto_lido_do_artefacto",
+      "verde": true,
+      "detalhe": {
+        "involucro_chars": 56408,
+        "ancora_dentro": 54,
+        "ancora_corpus": 54,
+        "from_ponto_no_involucro": 0,
+        "from_solto_no_involucro": 19,
+        "from_ponto_no_corpus": 717,
+        "rpc_no_involucro": 1,
+        "mesas_abertas": 12,
+        "leituras": 20,
+        "colunas_filtradas": [
+          "school_id"
+        ],
+        "leituras_que_filtram_municipio": [],
+        "familias": [
+          "municipalit_qualsquer_caixa=0",
+          "municipio_portugues=0",
+          "bfrMunicipal_marca_de_dom=54",
+          "mun_hifen_classe_css=170",
+          "city=13",
+          "estado_uf=49"
+        ]
+      }
+    }
+  ],
+  "veredito": "CENSO_LEDGER_CONFERIDO",
+  "falhas": [],
+  "conclusao": {
+    "frases_que_esta_corrida_autoriza": [
+      "as 3 mesas nomeadas na PEN-29 existem no catálogo de hoje (bfr_school_shift_settings=0 linhas, bfr_school_calendar_days=0 linhas, bfr_school_calendar_month_targets=0 linhas) com RLS forçada e bfr_school_calendar_days:2, bfr_school_calendar_month_targets:2, bfr_school_shift_settings:2 policies — estrutura criada, conteúdo não",
+      "a vista bfr_municipal_school_stats corre como invoker; das 7 vistas de public, invoker=7 definer=0 sem-opcao=0 (a grelha imprime os zeros)",
+      "as duas funções que a PEN-37 nomeava já não são executáveis por anon (bfr_municipal_network_totals=false, bfr_has_municipal_grant=false) e continuam executáveis por authenticated; o gate da porta não foi tocado: o REVOKE tirou um agregado anónimo, não a autenticação",
+      "no ar de hoje o módulo abre 12 mesas em 20 leituras, o único filtro enviado ao servidor é [\"school_id\"] e as famílias de agulha dão [\"municipalit_qualsquer_caixa=0\",\"municipio_portugues=0\",\"bfrMunicipal_marca_de_dom=54\",\"mun_hifen_classe_css=170\",\"city=13\",\"estado_uf=49\"]"
+    ],
+    "o_que_este_artefacto_nao_prova": [
+      "não prova que as mesas do calendário devam ter linhas: diz que estão vazias, que é a diferença entre DDL aplicado e função exercida (conteúdo fica na RM-5.2)",
+      "não prova o que cada papel lê nas mesas: as contagens por papel estão em sm23-causa-vista-18-11.json e sm23-sonda-com-sessao-depois-18-11.json",
+      "não re-escreve o censo de privilégios por mesa (só o de funções), portanto não substitui o portão de higiene da PEN-22"
+    ]
+  }
+}

@@ -1,0 +1,809 @@
+{
+  "programa": "scripts/sm23-formas-de-chamada-no-modulo-municipal-18-11.mjs",
+  "em": "2026-11-18T23:52:46.357Z",
+  "duracao_ms": 1541,
+  "pergunta": "que mesas e que funções o módulo da Secretaria Municipal abre, e alguma delas é uma das seis superficies que o DDL de 18/11 endureceu?",
+  "metodo": "fetch + md5 contra a candidata versionada; invólucro = o `<script data-bfr-municipal-module>` declarado pelo produtor, não uma janela; contagem por verbo NAS DUAS grafias (.x( e x( ); nomes de mesa por regex que casa as duas; fixture positivo por grafo e controlo negativo; zero SQL",
+  "substitui": "evidence/sm23-formas-de-chamada-na-faixa-municipal-18-11-ANTERIOR-faixa-de-16kb-so-contava-a-grafia-com-ponto.json",
+  "antecessores": [
+    "evidence/sm23-leitura-aba-municipal-18-11-ANTERIOR-janela-fixa-de-24kb-sobre-colhia-vizinhos.json",
+    "evidence/sm23-leitura-aba-municipal-18-11-ANTERIOR-exigia-marca-dentro-de-cada-corpo.json",
+    "evidence/sm23-leitura-aba-municipal-18-11-ANTERIOR-exigia-involucre-unico-e-corpos-de-40bytes.json",
+    "evidence/sm23-formas-de-chamada-na-faixa-municipal-18-11-ANTERIOR-faixa-de-16kb-so-contava-a-grafia-com-ponto.json"
+  ],
+  "servido": {
+    "url": "https://bfr-conecta.turmaroboticabfr.workers.dev",
+    "status": 200,
+    "bytes": 3546846,
+    "md5": "b272fd4f3a737c518e888250ab8167f1"
+  },
+  "candidata_local": {
+    "ficheiro": "bfr-candidata-v134-sidebar-escondida/index.html",
+    "md5": "b272fd4f3a737c518e888250ab8167f1",
+    "identica_ao_servido": true
+  },
+  "involucro": {
+    "tag": "<script data-bfr-municipal-module=\"1\">",
+    "desde": 3472316,
+    "corpo_desde": 3472354,
+    "fim": 3528762,
+    "chars": 56408,
+    "fracao_do_corpus": 0.016,
+    "ancoras_bfrMunicipal_dentro": 54,
+    "ancoras_no_corpus": 54
+  },
+  "fixture_da_regua": {
+    "com_ponto_from": 1,
+    "solto_from": 1,
+    "com_ponto_rpc": 2,
+    "solto_rpc": 0,
+    "nomes": [
+      "fn_pontuada",
+      "fn_solta",
+      "mesa_de_escrita",
+      "mesa_pontuada",
+      "mesa_solta"
+    ]
+  },
+  "controle_negativo": {
+    "agulha": "from('mesa_que_nao_existe_nesta_base_zzz')",
+    "no_corpus": 0,
+    "no_involucro": 0
+  },
+  "grelha_de_grafias": {
+    "no_involucre": [
+      {
+        "eixo": "involucro",
+        "verbo": "from",
+        "grafo": "com_ponto",
+        "ocorrencias": 0
+      },
+      {
+        "eixo": "involucro",
+        "verbo": "from",
+        "grafo": "solto",
+        "ocorrencias": 19
+      },
+      {
+        "eixo": "involucro",
+        "verbo": "rpc",
+        "grafo": "com_ponto",
+        "ocorrencias": 1
+      },
+      {
+        "eixo": "involucro",
+        "verbo": "rpc",
+        "grafo": "solto",
+        "ocorrencias": 0
+      },
+      {
+        "eixo": "involucro",
+        "verbo": "insert",
+        "grafo": "com_ponto",
+        "ocorrencias": 0
+      },
+      {
+        "eixo": "involucro",
+        "verbo": "insert",
+        "grafo": "solto",
+        "ocorrencias": 0
+      },
+      {
+        "eixo": "involucro",
+        "verbo": "update",
+        "grafo": "com_ponto",
+        "ocorrencias": 0
+      },
+      {
+        "eixo": "involucro",
+        "verbo": "update",
+        "grafo": "solto",
+        "ocorrencias": 0
+      },
+      {
+        "eixo": "involucro",
+        "verbo": "delete",
+        "grafo": "com_ponto",
+        "ocorrencias": 0
+      },
+      {
+        "eixo": "involucro",
+        "verbo": "delete",
+        "grafo": "solto",
+        "ocorrencias": 0
+      },
+      {
+        "eixo": "involucro",
+        "verbo": "upsert",
+        "grafo": "com_ponto",
+        "ocorrencias": 0
+      },
+      {
+        "eixo": "involucro",
+        "verbo": "upsert",
+        "grafo": "solto",
+        "ocorrencias": 0
+      },
+      {
+        "eixo": "involucro",
+        "verbo": "select",
+        "grafo": "com_ponto",
+        "ocorrencias": 19
+      },
+      {
+        "eixo": "involucro",
+        "verbo": "select",
+        "grafo": "solto",
+        "ocorrencias": 0
+      },
+      {
+        "eixo": "involucro",
+        "verbo": "single",
+        "grafo": "com_ponto",
+        "ocorrencias": 0
+      },
+      {
+        "eixo": "involucro",
+        "verbo": "single",
+        "grafo": "solto",
+        "ocorrencias": 0
+      },
+      {
+        "eixo": "involucro",
+        "verbo": "maybeSingle",
+        "grafo": "com_ponto",
+        "ocorrencias": 0
+      },
+      {
+        "eixo": "involucro",
+        "verbo": "maybeSingle",
+        "grafo": "solto",
+        "ocorrencias": 0
+      },
+      {
+        "eixo": "involucro",
+        "verbo": "fetch",
+        "grafo": "solto",
+        "ocorrencias": 0
+      },
+      {
+        "eixo": "involucro",
+        "verbo": "rest_v1_literal",
+        "grafo": "url",
+        "ocorrencias": 0
+      }
+    ],
+    "no_corpus": [
+      {
+        "eixo": "corpus",
+        "verbo": "from",
+        "grafo": "com_ponto",
+        "ocorrencias": 717
+      },
+      {
+        "eixo": "corpus",
+        "verbo": "from",
+        "grafo": "solto",
+        "ocorrencias": 19
+      },
+      {
+        "eixo": "corpus",
+        "verbo": "rpc",
+        "grafo": "com_ponto",
+        "ocorrencias": 32
+      },
+      {
+        "eixo": "corpus",
+        "verbo": "rpc",
+        "grafo": "solto",
+        "ocorrencias": 0
+      },
+      {
+        "eixo": "corpus",
+        "verbo": "insert",
+        "grafo": "com_ponto",
+        "ocorrencias": 122
+      },
+      {
+        "eixo": "corpus",
+        "verbo": "insert",
+        "grafo": "solto",
+        "ocorrencias": 8
+      },
+      {
+        "eixo": "corpus",
+        "verbo": "update",
+        "grafo": "com_ponto",
+        "ocorrencias": 52
+      },
+      {
+        "eixo": "corpus",
+        "verbo": "update",
+        "grafo": "solto",
+        "ocorrencias": 0
+      },
+      {
+        "eixo": "corpus",
+        "verbo": "delete",
+        "grafo": "com_ponto",
+        "ocorrencias": 20
+      },
+      {
+        "eixo": "corpus",
+        "verbo": "delete",
+        "grafo": "solto",
+        "ocorrencias": 0
+      },
+      {
+        "eixo": "corpus",
+        "verbo": "upsert",
+        "grafo": "com_ponto",
+        "ocorrencias": 22
+      },
+      {
+        "eixo": "corpus",
+        "verbo": "upsert",
+        "grafo": "solto",
+        "ocorrencias": 0
+      },
+      {
+        "eixo": "corpus",
+        "verbo": "select",
+        "grafo": "com_ponto",
+        "ocorrencias": 516
+      },
+      {
+        "eixo": "corpus",
+        "verbo": "select",
+        "grafo": "solto",
+        "ocorrencias": 0
+      },
+      {
+        "eixo": "corpus",
+        "verbo": "single",
+        "grafo": "com_ponto",
+        "ocorrencias": 25
+      },
+      {
+        "eixo": "corpus",
+        "verbo": "single",
+        "grafo": "solto",
+        "ocorrencias": 0
+      },
+      {
+        "eixo": "corpus",
+        "verbo": "maybeSingle",
+        "grafo": "com_ponto",
+        "ocorrencias": 26
+      },
+      {
+        "eixo": "corpus",
+        "verbo": "maybeSingle",
+        "grafo": "solto",
+        "ocorrencias": 1
+      },
+      {
+        "eixo": "corpus",
+        "verbo": "fetch",
+        "grafo": "solto",
+        "ocorrencias": 7
+      },
+      {
+        "eixo": "corpus",
+        "verbo": "rest_v1_literal",
+        "grafo": "url",
+        "ocorrencias": 0
+      }
+    ]
+  },
+  "mesas_e_funcoes_nomeadas": {
+    "no_involucro": [
+      [
+        "schools",
+        3
+      ],
+      [
+        "students",
+        3
+      ],
+      [
+        "bfr_lesson_attendance",
+        2
+      ],
+      [
+        "classes",
+        2
+      ],
+      [
+        "staff_schools",
+        2
+      ],
+      [
+        "supervision_requests",
+        2
+      ],
+      [
+        "announcements",
+        1
+      ],
+      [
+        "bfr_is_municipal_authority",
+        1
+      ],
+      [
+        "grades",
+        1
+      ],
+      [
+        "school_documents",
+        1
+      ],
+      [
+        "supervision_alerts",
+        1
+      ],
+      [
+        "supervision_responses",
+        1
+      ]
+    ],
+    "no_corpus_distintas": 140
+  },
+  "chamadas_de_leitura_por_chave": [
+    {
+      "chave": "escolas_todo",
+      "offset": 3488377,
+      "mesa": "schools",
+      "janela_chars": 220
+    },
+    {
+      "chave": "alunos_todo",
+      "offset": 3488513,
+      "mesa": "students",
+      "janela_chars": 220
+    },
+    {
+      "chave": "turmas_todo",
+      "offset": 3488726,
+      "mesa": "classes",
+      "janela_chars": 220
+    },
+    {
+      "chave": "processos_todo",
+      "offset": 3488876,
+      "mesa": "supervision_requests",
+      "janela_chars": 220
+    },
+    {
+      "chave": "freq_todo",
+      "offset": 3489127,
+      "mesa": "bfr_lesson_attendance",
+      "janela_chars": 220
+    },
+    {
+      "chave": "profissionais_todo",
+      "offset": 3489354,
+      "mesa": "staff_schools",
+      "janela_chars": 220
+    },
+    {
+      "chave": "escolas_todo",
+      "offset": 3489598,
+      "mesa": "schools",
+      "janela_chars": 220
+    },
+    {
+      "chave": "alunos_",
+      "offset": 3489738,
+      "mesa": "students",
+      "janela_chars": 220
+    },
+    {
+      "chave": "profissionais_todo",
+      "offset": 3490194,
+      "mesa": "staff_schools",
+      "janela_chars": 220
+    },
+    {
+      "chave": "notas_todo",
+      "offset": 3490371,
+      "mesa": "grades",
+      "janela_chars": 220
+    },
+    {
+      "chave": "freq_todo",
+      "offset": 3490624,
+      "mesa": "bfr_lesson_attendance",
+      "janela_chars": 220
+    },
+    {
+      "chave": "alerts_todo",
+      "offset": 3490880,
+      "mesa": "supervision_alerts",
+      "janela_chars": 220
+    },
+    {
+      "chave": "processos_todo",
+      "offset": 3491177,
+      "mesa": "supervision_requests",
+      "janela_chars": 220
+    },
+    {
+      "chave": "processos_mov",
+      "offset": 3491476,
+      "mesa": "supervision_responses",
+      "janela_chars": 220
+    },
+    {
+      "chave": "comunicados_todo",
+      "offset": 3491726,
+      "mesa": "announcements",
+      "janela_chars": 220
+    },
+    {
+      "chave": "infra_todo",
+      "offset": 3492033,
+      "mesa": "school_documents",
+      "janela_chars": 220
+    },
+    {
+      "chave": "escolas_todo",
+      "offset": 3492286,
+      "mesa": "schools",
+      "janela_chars": 220
+    },
+    {
+      "chave": "alunos_todo",
+      "offset": 3492415,
+      "mesa": "students",
+      "janela_chars": 220
+    },
+    {
+      "chave": "turmas_todo",
+      "offset": 3492621,
+      "mesa": "classes",
+      "janela_chars": 220
+    }
+  ],
+  "helper_ler": {
+    "offset": 3487335,
+    "chars": 961,
+    "truncado": false,
+    "devolve_campos": [
+      "linhas",
+      "total",
+      "escolasDistintas",
+      "erro"
+    ]
+  },
+  "superficies_endurecidas_como_texto": {
+    "bfr_municipal_school_stats": {
+      "no_involucro": 0,
+      "no_corpus": 0
+    },
+    "bfr_municipal_network_totals": {
+      "no_involucro": 0,
+      "no_corpus": 0
+    },
+    "bfr_municipal_municipalities": {
+      "no_involucro": 0,
+      "no_corpus": 0
+    },
+    "bfr_municipal_access_grants": {
+      "no_involucro": 0,
+      "no_corpus": 0
+    },
+    "bfr_municipal_audit": {
+      "no_involucro": 0,
+      "no_corpus": 0
+    },
+    "bfr_school_in_municipal_scope": {
+      "no_involucro": 0,
+      "no_corpus": 0
+    },
+    "bfr_is_municipal_authority": {
+      "no_involucro": 4,
+      "no_corpus": 4
+    }
+  },
+  "portoes": [
+    {
+      "nome": "o_involucre_e_declarado_pelo_produtor_e_unico",
+      "verde": true,
+      "detalhe": {
+        "aberturas": 1,
+        "tags": [
+          "<script data-bfr-municipal-module=\"1\">"
+        ]
+      }
+    },
+    {
+      "nome": "o_involucre_contem_todas_as_ancoras_do_modulo",
+      "verde": true,
+      "detalhe": {
+        "ancoras_no_corpus": 54,
+        "dentro": "\n/* SM6 — MÓDULO 2 «Secretaria Municipal de Educação»: área distinta, navegação própria, dados reais.\n   Injetado por scripts/sm6-candidata-municipal.mjs na candidata; não toca em nenhum módulo existente.\n   Superfícies lidas: só tabelas e colunas medidas em evidence/sm5-colunas-reais-para-ui-17-11.json.\n   Regra de honestidade (§11.5 do briefing): nenhum número é escrito à mão — todo valor vem de uma\n   chamada, e cada cartão declara o ESCOPO EFETIVO que essa chamada devolveu (as políticas RLS de hoje\n   ainda não abrem a rede inteira: §SM.6). O DDL candidato em scripts/sm4-ddl-municipal-candidata.sql é\n   o que fecha essa diferença; enquanto ele não for aplicado, o painel diz-lhe, não o inventa. */\n(() => {\n  'use strict';\n  const SECT = 'secretaria-municipal';\n  const VIEW_ID = 'bfrMunicipalView';\n  const TABS = [\n    ['painel', 'Painel executivo', '▦'],\n    ['escolas', 'Escolas da rede', '⌂'],\n    ['alunos', 'Alunos da rede', '⚉'],\n    ['profissionais', 'Profissionais', '☷'],\n    ['pedagogico', 'Acompanhamento pedagógico', '✧'],\n    ['frequencia', 'Frequência e abandono', '◔'],\n    ['processos', 'Processos e protocolos', '⛁'],\n    ['comunicacao', 'Comunicação da rede', '✉'],\n    ['infraestrutura', 'Infraestrutura', '⚒'],\n    ['relatorios', 'Relatórios executivos', '⎙']\n  ];\n  const RT = () => window.BFR_APP_RUNTIME || {};\n  const client = () => { const c = RT().client; return c && typeof c.from === 'function' ? c : null; };\n  const estado = { tab: 'painel', cache: {}, carregando: {}, erros: {}, escola: '', busca: '', ano: '', turno: '' };\n\n  const esc = (v) => String(v == null ? '' : v).replace(/[&<>\"]/g, (ch) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '\"': '&quot;' }[ch]));\n  const data = (v) => (v ? new Date(v).toLocaleDateString('pt-BR') : '—');\n  const num = (v) => (v == null ? '—' : new Intl.NumberFormat('pt-BR').format(v));\n\n  //─ 1. registo. A visibilidade é dirigida pelo mapa do próprio bundle, medido na base:\n  //     `syncRoleNavigation(role)` calcula `viewRole` (developer→admin, pedagogical→teacher,\n  //     social_work→multiprofessional) e esconde tudo o que não estiver em `roleSectionAccess[viewRole]`,\n  //     através do seletor `.sidebar .nav-item[data-section]` e `.mobile-more-option[data-section]`.\n  //     Por isso o botão entra como `nav-item` DENTRO da sidebar (não em `.bfr-platform-nav`, que o mapa\n  //     não percorre) e o papel é registado nas chaves que existem — `admin` e `education_supervisor`,\n  //     nunca `secretary`: §5.377 diz que nenhum secretário escolar recebe acesso municipal de brinde.\n  const PAPEIS_MUNICIPAIS = ['admin', 'education_supervisor'];\n  const viewRoleDe = (role) => (role === 'developer' ? 'admin' : role === 'pedagogical' ? 'teacher'\n    : role === 'social_work' ? 'multiprofessional' : role);\n  function registar() {\n    const map = RT().roleSectionAccess;\n    if (map) for (const papel of PAPEIS_MUNICIPAIS) {\n      if (Array.isArray(map[papel]) && !map[papel].includes(SECT)) map[papel] = map[papel].concat(SECT);\n    }\n    const main = document.querySelector('#appShell main');\n    if (main && !document.getElementById(VIEW_ID)) {\n      main.insertAdjacentHTML('beforeend', '<div class=\"content hidden\" id=\"' + VIEW_ID + '\" data-upgrade-view=\"' + SECT + '\" data-bfr-municipal-root></div>');\n    }\n    const existente = document.querySelector('.sidebar .nav-item[data-section]');\n    const hosts = [];\n    if (existente && existente.parentElement) hosts.push({ host: existente.parentElement, classe: 'nav-item tap-target' });\n    for (const g of document.querySelectorAll('.mobile-more-grid')) hosts.push({ host: g, classe: 'mobile-more-option tap-target' });\n    for (const { host, classe } of hosts) {\n      if (host.querySelector('[data-bfr-municipal-nav]')) continue;\n      const b = document.createElement('button');\n      b.type = 'button';\n      b.className = classe;\n      b.dataset.section = SECT; b.dataset.bfrMunicipalNav = 'true';\n      b.setAttribute('aria-current', 'false');\n      b.innerHTML = '<span class=\"nav-icon\">🏛</span>Secretaria Municipal';\n      host.appendChild(b);\n    }\n  }\n\n  //─ 2. roteamento. A visibilidade do botão NÃO é decidida aqui: `syncRoleNavigation` já a esconde ou\n  //    mostra pelo mapa. Aqui só se fecha a gaveta «Mais», se troca o conteúdo e se marca o item ativo.\n  const NAV = '.sidebar .nav-item[data-section],.mobile-more-option[data-section]';\n  function fecharGaveta() {\n    // Medido 18/11 (sm7 390 sm8bar390): a gaveta «Mais» do shell fecha com `hidden` em #mobileMoreMenu\n    // (base linha 1014), não com `is-open`. O fecho anterior procurava `is-open`, nunca achava, e a\n    // gaveta ficava aberta a cobrir as abas internas do módulo.\n    const menu = document.getElementById('mobileMoreMenu');\n    if (menu) { menu.classList.add('hidden'); menu.setAttribute('aria-hidden', 'true'); }\n    const gatilho = document.querySelector('[data-mobile-more]');\n    if (gatilho && gatilho.getAttribute('aria-expanded') === 'true') gatilho.setAttribute('aria-expanded', 'false');\n  }\n  // A segunda metade do §5: perguntar ao backend, em vez de assumir pelo papel local. Enquanto o DDL SM4\n  // não for aplicado, `bfr_is_municipal_authority()` não existe e a sonda devolve PGRST202 — e isso é\n  // mostrado, não escondido, para que ninguém troque «a régua não respondeu» por «não há autorização».\n  const sonda = { feita: false, executavel: null, erro: '', nota: '' };\n  async function sondarBackend() {\n    const c = client();\n    if (!c) { sonda.feita = true; sonda.executavel = null; sonda.erro = 'sem cliente'; return sonda; }\n    try {\n      const { data, error } = await c.rpc('bfr_is_municipal_authority');\n      sonda.feita = true; sonda.executavel = !error; sonda.erro = error ? String(error.message || error.code) : '';\n      sonda.nota = error ? 'o predicado ainda não existe no banco: a aba depende por agora do mapa de papéis do bundle'\n        : 'o backend respondeu ' + JSON.stringify(data) + ' para esta sessão';\n    } catch (e) { sonda.feita = true; sonda.executavel = false; sonda.erro = String((e && e.message) || e); }\n    return sonda;\n  }\n  function faixaSonda() {\n    if (!sonda.feita) return '<div class=\"mun-warn\"><strong>Sonda do backend pendente:</strong> ainda não foi possível perguntar a <code>bfr_is_municipal_authority()</code>.</div>';\n    if (sonda.executavel) return '<div class=\"mun-ok\"><strong>Controle no backend confirmado:</strong> ' + esc(sonda.nota) + '</div>';\n    return '<div class=\"mun-warn\"><strong>Sem predicado municipal no banco:</strong> ' + esc(sonda.erro)\n      + '. Hoje a aba é governada pelo mapa de papéis do bundle; o controle de acesso de servidor (§5.381, §7.448) só passa a existir com <code>scripts/sm4-ddl-municipal-candidata.sql</code>, que ainda não foi aplicado.</div>';\n  }\n  function pintarSonda() {\n    const slot = document.querySelector('#' + VIEW_ID + ' [data-mun-sonda]');\n    if (slot) slot.outerHTML = '<div data-mun-sonda></div>' + faixaSonda();\n  }\n  function abrir() {\n    const rt = RT();\n    fecharGaveta();\n    let tratado = false;\n    try { tratado = typeof rt.navigate === 'function' ? rt.navigate(SECT) !== false : false; } catch (e) { tratado = false; }\n    document.querySelectorAll('#appShell .content').forEach((v) => { if (v.id !== VIEW_ID) v.classList.add('hidden'); });\n    const view = document.getElementById(VIEW_ID);\n    if (!view) return;\n    view.classList.remove('hidden');\n    document.querySelectorAll(NAV).forEach((i) => {\n      const meu = i.dataset.section === SECT;\n      i.classList.toggle('active', meu);\n      if (meu) i.setAttribute('aria-current', 'page'); else i.removeAttribute('aria-current');\n    });\n    view.dataset.municipalRoutedBy = tratado ? 'bundle' : 'proximo';\n    desenhar(view);\n    sondarBackend().then(pintarSonda);\n  }\n\n  //─ 3. estilo executivo próprio, sem tocar nas folhas do bundle.\n  function estilo() {\n    if (document.getElementById('bfrMunicipalStyle')) return;\n    const css = [\n      '#bfrMunicipalView{--mun:#1b3a5b;--mun-2:#0f2740;--mun-bg:#f4f6f9;padding:18px 16px 40px;background:var(--mun-bg);min-height:100%}',\n      '#bfrMunicipalView .mun-head{display:flex;flex-wrap:wrap;gap:10px;align-items:flex-end;justify-content:space-between;border-bottom:3px solid var(--mun);padding-bottom:12px;margin-bottom:14px}',\n      '#bfrMunicipalView .mun-head h2{margin:0;font-size:22px;color:var(--mun-2);letter-spacing:.2px}',\n      '#bfrMunicipalView .mun-head .mun-sub{font-size:12px;text-transform:uppercase;letter-spacing:1.4px;color:#5b6b7c;font-weight:700}',\n      '#bfrMunicipalView .mun-id{font-size:11px;color:#5b6b7c}',\n      '#bfrMunicipalView .mun-shell{display:grid;grid-template-columns:238px minmax(0,1fr);gap:16px;align-items:start}',\n      '#bfrMunicipalView .mun-side{position:sticky;top:8px;display:grid;gap:2px;background:#fff;border:1px solid #dbe3ea;border-radius:12px;padding:8px}',\n      '#bfrMunicipalView .mun-tab{display:flex;gap:8px;align-items:center;text-align:left;width:100%;padding:9px 10px;border:0;border-radius:8px;background:transparent;font:inherit;font-size:13.5px;color:#22384d;cursor:pointer}',\n      '#bfrMunicipalView .mun-tab:hover{background:#eef3f8}',\n      '#bfrMunicipalView .mun-tab[aria-current=\"page\"]{background:var(--mun);color:#fff;font-weight:600}',\n      '#bfrMunicipalView .mun-tab .i{width:16px;text-align:center;opacity:.85}',\n      '#bfrMunicipalView .mun-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(168px,1fr));gap:10px;margin-bottom:14px}',\n      '#bfrMunicipalView .mun-card{background:#fff;border:1px solid #dbe3ea;border-radius:12px;padding:12px 13px;box-shadow:0 1px 2px rgba(16,39,64,.05)}',\n      '#bfrMunicipalView .mun-card .k{font-size:11px;text-transform:uppercase;letter-spacing:.9px;color:#5b6b7c;font-weight:700}',\n      '#bfrMunicipalView .mun-card .v{font-size:26px;font-weight:700;color:var(--mun-2);line-height:1.15;margin:4px 0 2px;font-variant-numeric:tabular-nums}',\n      '#bfrMunicipalView .mun-card .s{font-size:11.5px;color:#6b7a89}',\n      '#bfrMunicipalView .mun-panel{background:#fff;border:1px solid #dbe3ea;border-radius:12px;padding:14px;margin-bottom:14px}',\n      '#bfrMunicipalView .mun-panel h3{margin:0 0 10px;font-size:15px;color:var(--mun-2)}',\n      '#bfrMunicipalView .mun-filters{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:12px}',\n      '#bfrMunicipalView .mun-filters input,#bfrMunicipalView .mun-filters select{padding:8px 10px;border:1px solid #c9d5e0;border-radius:8px;font:inherit;font-size:13px;background:#fff;min-width:0;flex:1 1 150px}',\n      '#bfrMunicipalView .mun-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;border:1px solid #e3eaf1;border-radius:10px}',\n      '#bfrMunicipalView table{border-collapse:collapse;width:100%;min-width:560px;font-size:13px}',\n      '#bfrMunicipalView th{background:#eef3f8;color:#22384d;text-align:left;font-weight:700;font-size:11.5px;text-transform:uppercase;letter-spacing:.6px;padding:9px 10px;position:sticky;top:0}',\n      '#bfrMunicipalView td{padding:9px 10px;border-top:1px solid #edf1f5;vertical-align:top}',\n      '#bfrMunicipalView tbody tr:nth-child(even){background:#fafcfe}',\n      '#bfrMunicipalView .mun-empty,#bfrMunicipalView .mun-warn{padding:12px;border-radius:10px;font-size:13px;line-height:1.5}',\n      '#bfrMunicipalView .mun-empty{background:#eef3f8;border:1px dashed #b9c9d8;color:#3c5063}',\n      '#bfrMunicipalView .mun-warn{background:#fff6e6;border:1px solid #f0c98a;color:#7a4c07;margin-bottom:12px}',\n      '#bfrMunicipalView .mun-ok{background:#eaf5ec;border:1px solid #9fc9a8;color:#1f5a2c;padding:12px;border-radius:10px;font-size:13px;line-height:1.5;margin-bottom:12px}',\n      '#bfrMunicipalView .mun-chip{display:inline-block;padding:2px 8px;border-radius:999px;background:#e6eef6;color:#22405c;font-size:11.5px;font-weight:600}',\n      '#bfrMunicipalView .mun-chip.off{background:#f3e2e2;color:#7a2e2e}',\n      '#bfrMunicipalView .mun-bar{height:7px;border-radius:4px;background:#e6eef6;overflow:hidden;margin-top:5px}',\n      '#bfrMunicipalView .mun-bar i{display:block;height:100%;background:var(--mun)}',\n      '#bfrMunicipalView .mun-btn{padding:9px 13px;border-radius:8px;border:1px solid var(--mun);background:#fff;color:var(--mun-2);font:inherit;font-size:13px;font-weight:600;cursor:pointer}',\n      '#bfrMunicipalView .mun-btn.p{background:var(--mun);color:#fff}',\n      '#bfrMunicipalView .mun-btn[disabled]{opacity:.45;cursor:not-allowed}',\n      '#bfrMunicipalView .mun-rowbtn{border:0;background:none;color:var(--mun-2);font:inherit;font-size:13px;font-weight:600;text-decoration:underline;cursor:pointer;padding:0}',\n      // `overflow-x:auto` numa grelha não chega para ser o scroller: o item tem `min-width:auto` por\n      // omissão, a barra de dez abas esticava o documento para 1 500 px e em 390 px as abas de índice\n      // 3 em diante ficavam com x > largura — fora da janela, e o scroll horizontal do componente não\n      // existia para lá as levar. A régua é a do briefing §6/§8: desktop E mobile, sem tela em branco.\n      '@media (max-width:900px){#bfrMunicipalView{padding:12px 10px 32px;min-width:0;max-width:100%}#bfrMunicipalView .mun-shell{grid-template-columns:minmax(0,1fr);min-width:0}#bfrMunicipalView .mun-side{position:sticky;top:6px;grid-auto-flow:row;grid-template-columns:repeat(auto-fit,minmax(104px,1fr));grid-auto-columns:auto;min-width:0;max-width:100%;overflow:visible;padding:6px}}',\n      '@media (max-width:430px){#bfrMunicipalView .mun-cards{grid-template-columns:repeat(auto-fit,minmax(140px,1fr))}#bfrMunicipalView .mun-head h2{font-size:19px}#bfrMunicipalView .mun-side{grid-template-columns:repeat(auto-fit,minmax(96px,1fr))}}',\n      '@media print{#bfrMunicipalView .mun-side,#bfrMunicipalView .mun-filters,#bfrMunicipalView .mun-btn{display:none!important}#bfrMunicipalView{background:#fff}}'\n    ].join('\\n');\n    const tag = document.createElement('style');\n    tag.id = 'bfrMunicipalStyle'; tag.textContent = css;\n    document.head.appendChild(tag);\n  }\n\n  //─ 4. dados. Cada carregador devolve {linhas, total, escolasDistintas, erro}: `escolasDistintas` é a\n  //    medida do ESCOPO EFETIVO que o backend deixou ver, e é impressa sempre que difere do pedido.\n  const cache = {};\n  // A escola duma linha pode estar na própria coluna, num embutido, ou um nível acima: as FKs medidas em\n  // evidence/sm6-colunas-e-vinculos-17-11.json mostram que `bfr_lesson_attendance` NÃO tem school_id —\n  // a escola só chega por `students.school_id` (e `supervision_requests.school_id` é chave de\n  // `sports_schools`, não de `schools`). Quem não sabe isto escreve um select que o backend recusa.\n  const escolaDe = (r) => (!r ? '' : r.school_id || (r.schools && r.schools.id) || (r.sports_schools && r.sports_schools.id)\n    || (r.students && r.students.school_id) || (r.classes && r.classes.school_id)\n    || (r.students && r.students.classes && r.students.classes.school_id) || '');\n  async function ler(chave, build) {\n    const c = client();\n    if (!c) return { linhas: [], total: 0, escolasDistintas: 0, erro: 'sem cliente Supabase (BFR_APP_RUNTIME.client)' };\n    if (cache[chave]) return cache[chave];\n    estado.carregando[chave] = true; desenharCabeca();\n    try {\n      const q = build(c.from.bind(c));\n      const { data: rows, error, count } = await q;\n      const linhas = Array.isArray(rows) ? rows : (rows ? [rows] : []);\n      const out = {\n        linhas, erro: error ? (error.message || error.code || 'erro') : '', total: count == null ? linhas.length : count,\n        escolasDistintas: new Set(linhas.map(escolaDe).filter(Boolean)).size\n      };\n      if (out.erro) estado.erros[chave] = out.erro;\n      cache[chave] = out; return out;\n    } catch (e) {\n      const out = { linhas: [], total: 0, escolasDistintas: 0, erro: String((e && e.message) || e) };\n      estado.erros[chave] = out.erro; return out;\n    } finally { estado.carregando[chave] = false; }\n  }\n\n  const CARREGADORES = {\n    painel: async () => {\n      const escolas = await ler('escolas_todo', (from) => from('schools').select('id,name,code,city,state,phase,active').order('name'));\n      const alunos = await ler('alunos_todo', (from) => from('students').select('id,official_name,active,class_id,school_id,classes(year,class_code,shift),schools(name,city)').order('official_name').limit(1500));\n      const turmas = await ler('turmas_todo', (from) => from('classes').select('id,year,class_code,shift,school_id,schools(name)').order('year'));\n      const processos = await ler('processos_todo', (from) => from('supervision_requests').select('id,indicator,motive,priority,status,deadline_at,created_at,closed_at,school_id,sports_schools(name)').order('created_at', { ascending: false }).limit(500));\n      const freq = await ler('freq_todo', (from) => from('bfr_lesson_attendance').select('id,class_id,student_id,lesson_date,period,status,students(school_id)').order('lesson_date', { ascending: false }).limit(2000));\n      const profissionais = await ler('profissionais_todo', (from) => from('staff_schools').select('id,role,school_id,profile_id,profiles(full_name)').order('role').limit(800));\n      return { escolas, alunos, turmas, processos, freq, profissionais };\n    },\n    escolas: () => ler('escolas_todo', (from) => from('schools').select('id,name,code,city,state,phase,active,address_line').order('name')),\n    alunos: () => ler('alunos_' + [estado.escola, estado.busca, estado.ano, estado.turno].join('|'), (from) => {\n      let q = from('students').select('id,official_name,active,class_id,school_id,classes(year,class_code,shift),schools(name,city)').order('official_name').limit(800);\n      if (estado.escola) q = q.eq('school_id', estado.escola);\n      if (estado.busca) q = q.ilike('official_name', '*' + estado.busca + '*');\n      return q;\n    }),\n    profissionais: () => ler('profissionais_todo', (from) => from('staff_schools').select('id,role,school_id,profile_id,profiles(full_name,email,role)').order('role').limit(800)),\n    pedagogico: () => ler('notas_todo', (from) => from('grades').select('id,student_id,subject,assessment,score,term,category,students(official_name,school_id,class_id,classes(year,class_code,shift))').limit(4000)),\n    frequencia: async () => {\n      const chamadas = await ler('freq_todo', (from) => from('bfr_lesson_attendance').select('id,class_id,student_id,lesson_date,period,subject,shift,status,source,students(official_name,school_id)').order('lesson_date', { ascending: false }).limit(3000));\n      const alertas = await ler('alerts_todo', (from) => from('supervision_alerts').select('id,kind,title,body,entity_type,entity_id,acknowledged_by,acknowledged_at').order('created_at', { ascending: false }).limit(500));\n      return { ...chamadas, alertas };\n    },\n    processos: async () => {\n      const pedidos = await ler('processos_todo', (from) => from('supervision_requests').select('id,indicator,motive,description,priority,status,deadline_at,created_at,updated_at,closed_at,created_by,closed_by,school_id,sports_schools(name,city)').order('created_at', { ascending: false }).limit(500));\n      const mov = await ler('processos_mov', (from) => from('supervision_responses').select('id,request_id,round,justification,measures_taken,responsible_name,deadline_at,created_at').order('round').limit(2000));\n      return { pedidos, mov };\n    },\n    comunicacao: () => ler('comunicados_todo', (from) => from('announcements').select('id,title,body,important,message_type,audience_mode,status,published_at,requires_confirmation,scheduled_at,profiles!announcements_published_by_fkey(full_name)').order('published_at', { ascending: false }).limit(300)),\n    infraestrutura: () => ler('infra_todo', (from) => from('school_documents').select('id,title,category,description,storage_path,published,created_at,updated_at,document_type').order('created_at', { ascending: false }).limit(600)),\n    relatorios: async () => ({ escolas: await ler('escolas_todo', (from) => from('schools').select('id,name,code,city,state,phase,active').order('name')),\n      alunos: await ler('alunos_todo', (from) => from('students').select('id,official_name,active,class_id,school_id,classes(year,class_code,shift),schools(name,city)').order('official_name').limit(1500)),\n      turmas: await ler('turmas_todo', (from) => from('classes').select('id,year,class_code,shift,school_id,schools(name)').order('year')) })\n  };\n\n  //─ 5. desenho.\n  function cabecalho() {\n    const p = RT().profile || {};\n    return '<div class=\"mun-head\"><div><div class=\"mun-sub\">Gestão municipal da educação</div><h2>Secretaria Municipal de Educação</h2>'\n      + '<div class=\"mun-id\">Rede municipal de ensino · sessão: ' + esc(p.full_name || p.email || '—') + ' · papel: ' + esc(p.role || '—') + '</div></div>'\n      + '<div class=\"mun-filters\" style=\"margin:0\"><button class=\"mun-btn\" data-mun-cache=\"1\">Recarregar dados</button><button class=\"mun-btn\" data-mun-print=\"1\">Imprimir / PDF</button></div></div>';\n  }\n  function lado() {\n    return '<nav class=\"mun-side\" aria-label=\"Secretaria Municipal\">' + TABS.map(([id, label, ic]) =>\n      '<button type=\"button\" class=\"mun-tab\" data-mun-tab=\"' + id + '\" aria-current=\"' + (estado.tab === id ? 'page' : 'false') + '\"><span class=\"i\">' + ic + '</span>' + label + '</button>').join('') + '</nav>';\n  }\n  // Erro primeiro: se o backend recusou, dizer isso vale mais do que qualquer contagem. O aviso de escopo\n  // só aparece com denominador, e o denominador tem de vir do mesmo espaço de chaves que a consulta.\n  const avisoEscopo = (r, pedido) => (!r ? '' : r.erro\n    ? '<div class=\"mun-warn\"><strong>Erro do backend:</strong> ' + esc(r.erro) + '</div>'\n    : (pedido && r.escolasDistintas > 0 && r.escolasDistintas < pedido\n      ? '<div class=\"mun-warn\"><strong>Escopo efetivo desta consulta:</strong> o backend devolveu linhas de ' + r.escolasDistintas + ' de ' + pedido + ' escolas. Isto é RLS, não filtro de tela: as políticas atuais ainda não abrem a rede inteira para este acesso (§SM.6). O DDL candidato <code>scripts/sm4-ddl-municipal-candidata.sql</code> é o que fecha a diferença.</div>'\n      : ''));\n\n  function cartao(k, v, s) { return '<div class=\"mun-card\"><div class=\"k\">' + k + '</div><div class=\"v\">' + v + '</div><div class=\"s\">' + (s || '') + '</div></div>'; }\n\n  function painel(d) {\n    const es = d.escolas.linhas || [];\n    const ativas = es.filter((s) => s.active !== false).length;\n    const al = d.alunos.linhas, tur = d.turmas.linhas, prof = d.profissionais.linhas;\n    const porCidade = {}; for (const s of es) porCidade[s.city || 'sem cidade'] = (porCidade[s.city || 'sem cidade'] || 0) + 1;\n    const porEscola = {}; for (const a of al) { const n = (a.schools && a.schools.name) || a.school_id || 'sem escola'; porEscola[n] = (porEscola[n] || 0) + 1; }\n    // `closed_at` é o que se mede; não adivinho a grafia do enum `status`. Os valores existentes de\n    // status saem como etiquetas, para o utilizador ver o que a base realmente guarda.\n    const semFechar = d.processos.linhas.filter((p) => !p.closed_at).length;\n    const situacoes = {}; for (const p of d.processos.linhas) situacoes[p.status || 'sem situação'] = (situacoes[p.status || 'sem situação'] || 0) + 1;\n    // O mesmo critério: a taxa de presença só é calculada se existir um valor de `status` que se\n    // reconheça como presença; senão o cartão mostra o que há, não uma percentagem inventada.\n    const rotulos = {}; for (const f of d.freq.linhas) { const s = String(f.status || 'sem situação'); rotulos[s] = (rotulos[s] || 0) + 1; }\n    const rotulosPres = Object.keys(rotulos).filter((s) => /pres/i.test(s));\n    const pres = d.freq.linhas.filter((f) => rotulosPres.includes(String(f.status || ''))).length;\n    const taxa = (d.freq.linhas.length && rotulosPres.length) ? Math.round((pres / d.freq.linhas.length) * 100) + '%' : '—';\n    const maxEs = Math.max(1, ...Object.values(porEscola));\n    return '<div class=\"mun-cards\">'\n      + cartao('Escolas cadastradas', num(es.length), Object.keys(porCidade).length + ' cidade(s): ' + esc(Object.keys(porCidade).join(', ')))\n      + cartao('Escolas em funcionamento', num(ativas), 'campo `active` de schools')\n      + cartao('Alunos visíveis ao acesso', num(al.length), 'linhas devolvidas por `students`')\n      + cartao('Turmas', num(tur.length), 'campos year/class_code/shift')\n      + cartao('Vínculos de equipe', num(prof.length), 'linhas de `staff_schools`')\n      + cartao('Processos sem encerramento', num(semFechar), d.processos.linhas.length + ' processos; `closed_at` vazio')\n      + cartao('Frequência registrada', taxa, rotulosPres.length ? rotulosPres.join(' / ') + ' sobre ' + d.freq.linhas.length + ' chamadas' : d.freq.linhas.length + ' chamadas sem valor de presença reconhecível')\n      + '</div>'\n      + '<div class=\"mun-panel\"><h3>Situações reais registradas no banco</h3><div class=\"mun-filters\">'\n      + Object.entries(situacoes).map(([k, v]) => '<span class=\"mun-chip\">processo: ' + esc(k) + ' · ' + v + '</span>').join(' ')\n      + Object.entries(rotulos).slice(0, 8).map(([k, v]) => '<span class=\"mun-chip\">chamada: ' + esc(k) + ' · ' + v + '</span>').join(' ')\n      + (!Object.keys(situacoes).length && !Object.keys(rotulos).length ? '<div class=\"mun-empty\">Nenhuma linha de processo ou chamada devolvida por este acesso.</div>' : '')\n      + '</div></div>'\n      + '<div class=\"mun-panel\"><h3>Matrículas por unidade escolar</h3>' + (Object.keys(porEscola).length\n        ? Object.entries(porEscola).sort((a, b) => b[1] - a[1]).map(([n, v]) => '<div style=\"margin-bottom:8px\"><div style=\"display:flex;justify-content:space-between;font-size:13px\"><span>' + esc(n) + '</span><b>' + num(v) + '</b></div><div class=\"mun-bar\"><i style=\"width:' + Math.round((v / maxEs) * 100) + '%\"></i></div></div>').join('')\n        : '<div class=\"mun-empty\">Nenhuma linha de aluno devolvida pelo backend para este acesso.</div>') + '</div>'\n      + avisoEscopo(d.alunos, es.length);\n  }\n\n  function escolas(d) {\n    const f = estado.fEscolaTipo || '';\n    let rows = d.linhas;\n    if (estado.busca) rows = rows.filter((r) => (r.name || '').toLowerCase().includes(estado.busca.toLowerCase()));\n    if (f) rows = rows.filter((r) => (f === 'ativas' ? r.active !== false : f === 'inativas' ? r.active === false : r.city === f));\n    const cidades = [...new Set(d.linhas.map((r) => r.city || '').filter(Boolean))];\n    return '<div class=\"mun-panel\"><h3>Escolas da rede municipal</h3>'\n      + '<div class=\"mun-filters\"><select data-mun-filtro=\"tipo\"><option value=\"\">Todas as situações</option><option value=\"ativas\"' + (f === 'ativas' ? ' selected' : '') + '>Em funcionamento</option><option value=\"inativas\"' + (f === 'inativas' ? ' selected' : '') + '>Desativadas</option>' + cidades.map((c) => '<option value=\"' + esc(c) + '\"' + (f === c ? ' selected' : '') + '>' + esc(c) + '</option>').join('') + '</select>'\n      + '<input data-mun-filtro=\"busca\" placeholder=\"Nome da escola\" value=\"' + esc(estado.busca) + '\"></div>'\n      + '<div class=\"mun-scroll\"><table><thead><tr><th>Escola</th><th>Código</th><th>Cidade / UF</th><th>Série·etapa</th><th>Situação</th><th>Alunos</th><th></th></tr></thead><tbody>'\n      + (rows.length ? rows.map((r) => '<tr><td><b>' + esc(r.name) + '</b><div class=\"s\" style=\"font-size:11.5px;color:#6b7a89\">' + esc(r.address_line || '') + '</div></td><td>' + esc(r.code || '—') + '</td><td>' + esc(r.city || '—') + ' / ' + esc(r.state || '—') + '</td><td>' + esc(r.phase || '—') + '</td><td><span class=\"mun-chip' + (r.active === false ? ' off' : '') + '\">' + (r.active === false ? 'desativada' : 'em funcionamento') + '</span></td><td>' + num(contaAlunos(r.id)) + '</td><td><button class=\"mun-rowbtn\" data-mun-escola=\"' + esc(r.id) + '\">abrir unidade</button></td></tr>').join('')\n        : '<tr><td colspan=\"7\"><div class=\"mun-empty\">Sem escolas devolvidas por este acesso.</div></td></tr>')\n      + '</tbody></table></div>'\n      + '<p class=\"s\" style=\"font-size:11.5px;color:#6b7a89\">Os filtros desta lista são locais ao que o backend já devolveu; não são o que protege os dados (§7.448). A contagem de alunos só aparece quando a lista de alunos foi carregada — um «0» sem esse carregamento seria uma suposição.</p></div>';\n  }\n  // null (e não 0) quando a lista de alunos ainda não foi lida: «não sei» e «não existe» são frases diferentes.\n  const contaAlunos = (id) => (cache.alunos_todo ? cache.alunos_todo.linhas.filter((a) => a.school_id === id).length : null);\n\n  function detalheEscola(id) {\n    const e = (cache.escolas_todo || { linhas: [] }).linhas.find((x) => x.id === id);\n    if (!e) return '<div class=\"mun-panel\"><div class=\"mun-empty\">Escola não está entre as devolvidas pelo backend.</div></div>';\n    const al = (cache.alunos_todo || { linhas: [] }).linhas.filter((a) => a.school_id === id);\n    const tu = (cache.turmas_todo || { linhas: [] }).linhas.filter((c) => c.school_id === id);\n    const pr = (cache.profissionais_todo || { linhas: [] }).linhas.filter((s) => s.school_id === id);\n    const porTurma = {}; for (const a of al) { const k = a.classes ? a.classes.year + 'º ' + (a.classes.class_code || '') + ' · ' + (a.classes.shift || 'sem turno') : 'sem turma'; porTurma[k] = (porTurma[k] || 0) + 1; }\n    return '<div class=\"mun-panel\"><h3>' + esc(e.name) + ' — resumo da unidade</h3>'\n      + '<div class=\"mun-cards\">' + cartao('Alunos', num(al.length), al.filter((a) => a.active !== false).length + ' com matrícula ativa')\n      + cartao('Turmas', num(tu.length), [...new Set(tu.map((t) => t.shift || 'sem turno'))].join(' · '))\n      + cartao('Vínculos de equipe', num(pr.length), [...new Set(pr.map((p) => p.role || 'sem papel'))].join(' · ')) + '</div>'\n      + '<div class=\"mun-scroll\"><table><thead><tr><th>Turma / ano / turno</th><th>Alunos</th></tr></thead><tbody>'\n      + (Object.keys(porTurma).length ? Object.entries(porTurma).map(([k, v]) => '<tr><td>' + esc(k) + '</td><td>' + num(v) + '</td></tr>').join('')\n        : '<tr><td colspan=\"2\"><div class=\"mun-empty\">Sem turmas com alunos devolvidos para esta unidade.</div></td></tr>')\n      + '</tbody></table></div><p><button class=\"mun-btn\" data-mun-volta=\"1\">Voltar à lista</button></p></div>';\n  }\n\n  function alunos(d) {\n    const escolasSel = [...new Set((cache.escolas_todo || { linhas: [] }).linhas.map((e) => e.id + '|' + e.name))];\n    if (estado.detalhe) return detalheEscola(estado.detalhe);\n    return '<div class=\"mun-panel\"><h3>Alunos da rede</h3>'\n      + '<div class=\"mun-filters\"><select data-mun-filtro=\"escola\"><option value=\"\">Todas as escolas</option>' + escolasSel.map((kv) => { const [id, n] = kv.split('|'); return '<option value=\"' + id + '\"' + (estado.escola === id ? ' selected' : '') + '>' + esc(n) + '</option>'; }).join('') + '</select>'\n      + '<input data-mun-filtro=\"busca\" placeholder=\"Nome do aluno\" value=\"' + esc(estado.busca) + '\">'\n      + '<button class=\"mun-btn p\" data-mun-recarregar=\"alunos\">aplicar</button></div>'\n      + '<div class=\"mun-scroll\"><table><thead><tr><th>Aluno</th><th>Matrícula (id)</th><th>Escola</th><th>Turma</th><th>Ano</th><th>Turno</th><th>Situação</th></tr></thead><tbody>'\n      + (d.linhas.length ? d.linhas.map((a) => '<tr><td><b>' + esc(a.official_name) + '</b></td><td style=\"font-size:11.5px\">' + esc(String(a.id).slice(0, 8)) + '</td><td>' + esc((a.schools && a.schools.name) || '—') + '</td><td>' + esc((a.classes && a.classes.class_code) || '—') + '</td><td>' + esc((a.classes && a.classes.year) || '—') + '</td><td>' + esc((a.classes && a.classes.shift) || '—') + '</td><td><span class=\"mun-chip' + (a.active === false ? ' off' : '') + '\">' + (a.active === false ? 'inativa' : 'ativa') + '</span></td></tr>').join('')\n        : '<tr><td colspan=\"7\"><div class=\"mun-empty\">Nenhum aluno devolvido por este acesso.</div></td></tr>')\n      + '</tbody></table></div>'\n      + '<p class=\"s\" style=\"font-size:11.5px;color:#6b7a89\">Dados pessoais exibidos: nome, vínculo e situação de matrícula. Documentos, responsáveis e localização ficam fora desta lista por opção de minimização (LGPD, §7.451).</p>'\n      + avisoEscopo(d, (cache.escolas_todo || { linhas: [] }).linhas.length) + '</div>';\n  }\n\n  function profissionais(d) {\n    const porPapel = {}; for (const p of d.linhas) porPapel[p.role || 'sem papel'] = (porPapel[p.role || 'sem papel'] || 0) + 1;\n    const porPerfil = {}; for (const p of d.linhas) { const k = p.profile_id || 'sem perfil'; (porPerfil[k] = porPerfil[k] || []).push(p.school_id); }\n    const multi = Object.entries(porPerfil).filter(([, v]) => new Set(v).size > 1);\n    const nomes = (p) => (p.profiles && p.profiles.full_name) || '—';\n    return '<div class=\"mun-panel\"><h3>Profissionais da rede</h3>'\n      + '<div class=\"mun-cards\">' + cartao('Vínculos', num(d.linhas.length), 'linhas de `staff_schools`')\n      + cartao('Pessoas distintas', num(Object.keys(porPerfil).length), '')\n      + cartao('Atuam em mais de uma unidade', num(multi.length), multi.length ? 'ver lista' : '') + '</div>'\n      + '<div class=\"mun-filters\">' + Object.entries(porPapel).map(([k, v]) => '<span class=\"mun-chip\">' + esc(k) + ': ' + v + '</span>').join(' ') + '</div>'\n      + '<div class=\"mun-scroll\"><table><thead><tr><th>Nome</th><th>Papel no vínculo</th><th>Papel da conta</th><th>Unidade (id de escola)</th><th>E-mail</th></tr></thead><tbody>'\n      + (d.linhas.length ? d.linhas.map((p) => '<tr><td>' + esc(nomes(p)) + '</td><td>' + esc(p.role || '—') + '</td><td>' + esc((p.profiles && p.profiles.role) || '—') + '</td><td style=\"font-size:11.5px\">' + esc(p.school_id ? String(p.school_id).slice(0, 8) : '—') + '</td><td>' + esc((p.profiles && p.profiles.email) || '—') + '</td></tr>').join('')\n        : '<tr><td colspan=\"5\"><div class=\"mun-empty\">Nenhum vínculo devolvido por este acesso.</div></td></tr>')\n      + '</tbody></table></div>'\n      + (multi.length ? '<p class=\"s\" style=\"font-size:12px;margin-top:10px\">Multi-unidade: ' + multi.map(([k]) => esc((d.linhas.find((p) => p.profile_id === k) || {}).profiles ? d.linhas.find((p) => p.profile_id === k).profiles.full_name : String(k).slice(0, 8))).join(', ') + '</p>' : '')\n      + '<p class=\"s\" style=\"font-size:11.5px;color:#6b7a89\">A coluna `role` de `staff_schools` aponta hoje para o espaço de chaves de `sports_schools` (§SM.4); sem o DDL da ponte, o nome da unidade não é juntável em todos os casos — por isso o id é impresso. Aqui o aviso de escopo não usa o censo de `schools` como denominador: os ids são de outra tabela e compará-los daria um número sem sentido.</p>'\n      + avisoEscopo(d) + '</div>';\n  }\n\n  function pedagogico(d) {\n    const termos = {}; const porDisciplina = {}; const porEscola = {};\n    for (const g of d.linhas) {\n      const t = g.term == null ? 'sem período' : String(g.term);\n      (termos[t] = termos[t] || []).push(Number(g.score));\n      const s = g.subject || 'sem disciplina';\n      (porDisciplina[s] = porDisciplina[s] || []).push(Number(g.score));\n      const es = (g.students && g.students.school_id) || 'sem escola';\n      (porEscola[es] = porEscola[es] || []).push(Number(g.score));\n    }\n    const med = (a) => (a.length ? a.reduce((x, y) => x + y, 0) / a.length : null);\n    const fmt = (v) => (v == null ? '—' : v.toFixed(2).replace('.', ','));\n    const linhasT = Object.keys(termos).sort().map((t) => '<tr><td>' + esc(t) + '</td><td>' + num(termos[t].length) + '</td><td><b>' + fmt(med(termos[t])) + '</b></td><td>' + fmt(Math.min(...termos[t])) + '</td><td>' + fmt(Math.max(...termos[t])) + '</td></tr>').join('');\n    const linhasD = Object.keys(porDisciplina).sort().map((s) => '<tr><td>' + esc(s) + '</td><td>' + num(porDisciplina[s].length) + '</td><td><b>' + fmt(med(porDisciplina[s])) + '</b></td></tr>').join('');\n    const nomeEscola = (id) => { const e = (cache.escolas_todo || { linhas: [] }).linhas.find((x) => x.id === id); return e ? e.name : (id === 'sem escola' ? id : String(id).slice(0, 8)); };\n    const linhasE = Object.keys(porEscola).sort((a, b) => med(porEscola[b]) - med(porEscola[a])).map((id) => '<tr><td>' + esc(nomeEscola(id)) + '</td><td>' + num(porEscola[id].length) + '</td><td><b>' + fmt(med(porEscola[id])) + '</b></td><td>' + fmt(Math.min(...porEscola[id])) + '</td></tr>').join('');\n    return '<div class=\"mun-panel\"><h3>Acompanhamento pedagógico — por período (campo `term` de grades)</h3>'\n      + (d.linhas.length ? '<div class=\"mun-scroll\"><table><thead><tr><th>Período</th><th>Avaliações</th><th>Média</th><th>Mín.</th><th>Máx.</th></tr></thead><tbody>' + linhasT + '</tbody></table></div>'\n        : '<div class=\"mun-empty\">Nenhuma nota devolvida por este acesso.</div>')\n      + (linhasD ? '<h3 style=\"margin-top:16px\">Por disciplina</h3><div class=\"mun-scroll\"><table><thead><tr><th>Disciplina</th><th>Registros</th><th>Média</th></tr></thead><tbody>' + linhasD + '</tbody></table></div>' : '')\n      + (linhasE ? '<h3 style=\"margin-top:16px\">Por unidade escolar (via aluno)</h3><div class=\"mun-scroll\"><table><thead><tr><th>Escola</th><th>Registros</th><th>Média</th><th>Mín.</th></tr></thead><tbody>' + linhasE + '</tbody></table></div><p class=\"s\" style=\"font-size:11.5px;color:#6b7a89\">A escola não está em `grades`: chega pelo caminho grades → students → school_id, que é a única FK medida para estas tabelas.</p>' : '')\n      + '<p class=\"s\" style=\"font-size:11.5px;color:#6b7a89\">Os quatro bimestres do §4.5 só aparecem se existirem lançamentos: a tabela `grades` devolve ' + num(d.linhas.length) + ' linhas com ' + Object.keys(termos).length + ' valor(es) de `term`. Nenhum período é inventado para preencher a escala.</p>'\n      + avisoEscopo(d, (cache.escolas_todo || { linhas: [] }).linhas.length) + '</div>';\n  }\n\n  function frequencia(d) {\n    // Os valores de `status` vêm do banco, não da minha cabeça: primeiro faço o censo dos rótulos, depois\n    // classifico como falta apenas os rótulos que literally contêm «falt». Se a base usar outra grafia, o\n    // painel mostra os rótulos medidos em vez de fingir uma percentagem.\n    const rotulos = {}; for (const f of d.linhas) { const s = String(f.status || 'sem situação'); rotulos[s] = (rotulos[s] || 0) + 1; }\n    const rotFalta = Object.keys(rotulos).filter((s) => /falt/i.test(s));\n    const porAluno = {};\n    for (const f of d.linhas) {\n      const k = f.student_id || 'sem aluno';\n      const o = (porAluno[k] = porAluno[k] || { nome: (f.students && f.students.official_name) || '—', total: 0, falta: 0, ultima: '' });\n      o.total++;\n      if (rotFalta.includes(String(f.status || ''))) o.falta++;\n      if (f.lesson_date && (!o.ultima || f.lesson_date > o.ultima)) o.ultima = f.lesson_date;\n    }\n    const list = Object.values(porAluno).filter((o) => o.total).sort((a, b) => (b.falta / b.total) - (a.falta / a.total));\n    const risco = list.filter((o) => o.total >= 4 && o.falta / o.total >= 0.25);\n    const alerts = d.alertas || { linhas: [], erro: 'não lido' };\n    return '<div class=\"mun-panel\"><h3>Frequência e risco de abandono</h3>'\n      + '<div class=\"mun-cards\">' + cartao('Chamadas registradas', num(d.linhas.length), 'bfr_lesson_attendance')\n      + cartao('Alunos com chamada', num(list.length), Object.keys(rotulos).length + ' valor(es) de status: ' + esc(Object.keys(rotulos).slice(0, 6).join(', ') || '—'))\n      + cartao('Acima de 25% de ausências', rotFalta.length ? num(risco.length) : '—', rotFalta.length ? 'rótulos tratados como ausência: ' + rotFalta.join(' / ') : 'nenhum rótulo de ausência na base — percentagem não calculável') + '</div>'\n      + '<div class=\"mun-warn\"><strong>Nenhum aluno é classificado como evadido aqui.</strong> §4.6 do briefing: falta não é evasão. A situação de acompanhamento vive em `supervision_alerts` — ' + num(alerts.linhas.length) + ' registro(s) devolvido(s) por este acesso' + (alerts.erro ? ' (leitura com erro: ' + esc(alerts.erro) + ')' : '') + ', e só se altera por decisão humana.</div>'\n      + (list.length ? '<div class=\"mun-scroll\"><table><thead><tr><th>Aluno</th><th>Chamadas</th><th>Faltas</th><th>%</th><th>Última data</th></tr></thead><tbody>'\n        + list.slice(0, 200).map((o) => '<tr><td>' + esc(o.nome) + '</td><td>' + num(o.total) + '</td><td>' + num(o.falta) + '</td><td>' + (o.total ? Math.round((o.falta / o.total) * 100) + '%' : '—') + '</td><td>' + data(o.ultima) + '</td></tr>').join('')\n        + '</tbody></table></div>' : '<div class=\"mun-empty\">Sem chamadas devolvidas por este acesso.</div>')\n      + avisoEscopo(d, (cache.escolas_todo || { linhas: [] }).linhas.length) + '</div>';\n  }\n\n  function processos(d) {\n    const mov = (d.mov && d.mov.linhas) || [];\n    const hist = (id) => mov.filter((m) => m.request_id === id);\n    const protocolo = (p) => 'PM-' + String(p.created_at || '').slice(0, 10).replace(/-/g, '') + '-' + String(p.id).slice(0, 6).toUpperCase();\n    return '<div class=\"mun-panel\"><h3>Processos, protocolos e prazos</h3>'\n      + '<div class=\"mun-cards\">' + cartao('Processos', num(d.pedidos.linhas.length), 'supervision_requests')\n      + cartao('Com prazo vencido', num(d.pedidos.linhas.filter((p) => p.deadline_at && !p.closed_at && new Date(p.deadline_at) < new Date()).length), 'sem closed_at')\n      + cartao('Movimentações', num(mov.length), 'supervision_responses') + '</div>'\n      + (d.pedidos.linhas.length ? '<div class=\"mun-scroll\"><table><thead><tr><th>Protocolo</th><th>Escola de origem</th><th>Tipo</th><th>Assunto</th><th>Situação</th><th>Prazo</th><th>Abertura</th><th>Movimentações</th></tr></thead><tbody>'\n        + d.pedidos.linhas.map((p) => '<tr><td><b>' + esc(protocolo(p)) + '</b></td><td>' + esc((p.sports_schools && p.sports_schools.name) || String(p.school_id || '').slice(0, 8) || '—') + '</td><td>' + esc(p.indicator || '—') + '</td><td>' + esc((p.motive || '').slice(0, 90)) + '</td><td><span class=\"mun-chip' + (p.closed_at ? ' off' : '') + '\">' + esc(p.status || (p.closed_at ? 'encerrado' : 'sem situação')) + '</span></td><td>' + data(p.deadline_at) + '</td><td>' + data(p.created_at) + '</td><td>' + num(hist(p.id).length) + (hist(p.id).length ? '<div style=\"font-size:11.5px;color:#6b7a89\">' + hist(p.id).slice(0, 3).map((m) => '· ' + esc((m.justification || m.measures_taken || '').slice(0, 60))).join('<br>') + '</div>' : '') + '</td></tr>').join('')\n        + '</tbody></table></div>'\n        : '<div class=\"mun-empty\">A superfície existe e as políticas de leitura do papel municipal também (§SM.6), mas `supervision_requests` não devolve nenhuma linha: hoje não há processos abertos. Isto não é um painel quebrado — é um painel vazio.</div>')\n      + '</div>';\n  }\n\n  function comunicacao(d) {\n    // «publicado» = tem `published_at`; não assumo a grafia do enum `status`.\n    const publicados = d.linhas.filter((a) => a.published_at);\n    return '<div class=\"mun-panel\"><h3>Comunicação com a rede</h3>'\n      + '<div class=\"mun-cards\">' + cartao('Comunicados', num(d.linhas.length), 'announcements')\n      + cartao('Publicados', num(publicados.length), 'com `published_at`')\n      + cartao('Urgentes', num(d.linhas.filter((a) => a.important).length), 'campo important')\n      + cartao('Exigem confirmação', num(d.linhas.filter((a) => a.requires_confirmation).length), 'campo requires_confirmation') + '</div>'\n      + (d.linhas.length ? '<div class=\"mun-scroll\"><table><thead><tr><th>Título</th><th>Destinatários</th><th>Tipo</th><th>Situação</th><th>Publicado em</th><th>Emitido por</th></tr></thead><tbody>'\n        + d.linhas.map((a) => '<tr><td><b>' + esc(a.title) + '</b><div style=\"font-size:11.5px;color:#6b7a89\">' + esc((a.body || '').replace(/\\s+/g, ' ').slice(0, 110)) + '</div></td><td>' + esc(a.audience_mode || '—') + '</td><td>' + esc(a.message_type || '—') + '</td><td><span class=\"mun-chip\">' + esc(a.status || '—') + '</span></td><td>' + data(a.published_at) + '</td><td>' + esc((a.profiles && a.profiles.full_name) || '—') + '</td></tr>').join('')\n        + '</tbody></table></div>' : '<div class=\"mun-empty\">Nenhum comunicado devolvido por este acesso.</div>')\n      + '<p class=\"s\" style=\"font-size:11.5px;color:#6b7a89\">Envio de comunicado para escolas selecionadas exige a noção de destinatário por unidade: `announcements.audience_mode` existe, mas não há coluna de escola nesta tabela (§SM.3), portanto o direcionamento por escola depende do mesmo DDL dos agrupamentos. A leitura do histórico já é real.</p>'\n      + '</div>';\n  }\n\n  function infraestrutura(d) {\n    return '<div class=\"mun-panel\"><h3>Infraestrutura escolar</h3>'\n      + '<div class=\"mun-warn\"><strong>Esta secção não tem superfície de dados no banco.</strong> O inventário de 17/11 (`evidence/sm1-inventario-rede-17-11b.json`) não encontra nenhuma tabela de estrutura física, salas, equipamentos ou solicitações de manutenção — e a candidata de DDL SM4 também não a cria, porque desenhá-la sem a escola dizer o que precisa seria o §11.5 (números fictícios) em forma de esquema. O que existe de real, abaixo, são documentos institucionais por escola.</div>'\n      + (d.linhas.length ? '<div class=\"mun-scroll\"><table><thead><tr><th>Título</th><th>Categoria</th><th>Tipo</th><th>Publicado</th><th>Emitido em</th></tr></thead><tbody>'\n        + d.linhas.map((x) => '<tr><td>' + esc(x.title) + '</td><td>' + esc(x.category || '—') + '</td><td>' + esc(x.document_type || '—') + '</td><td>' + (x.published ? 'sim' : 'não') + '</td><td>' + data(x.created_at) + '</td></tr>').join('')\n        + '</tbody></table></div>' : '<div class=\"mun-empty\">Nenhum documento devolvido por este acesso.</div>')\n      + '</div>';\n  }\n\n  function relatorios(d) {\n    const es = (d.escolas && d.escolas.linhas) || []; const al = (d.alunos && d.alunos.linhas) || []; const tu = (d.turmas && d.turmas.linhas) || [];\n    const emissor = (RT().profile || {}).full_name || '—';\n    const ref = new Date().toLocaleDateString('pt-BR');\n    return '<div class=\"mun-panel\" id=\"bfrMunicipalReport\"><h3>Relatórios executivos</h3>'\n      + '<div style=\"border:1px solid #dbe3ea;border-radius:10px;padding:12px;margin-bottom:12px;font-size:12.5px\">'\n      + '<div style=\"text-transform:uppercase;letter-spacing:1px;font-weight:700;color:#1b3a5b\">Prefeitura · Secretaria Municipal de Educação</div>'\n      + '<div>Censo interno da rede — período de referência: registros vigentes na data de emissão</div>'\n      + '<div>Emitido em ' + esc(ref) + ' · responsável pela geração: ' + esc(emissor) + ' · papel: ' + esc((RT().profile || {}).role || '—') + '</div></div>'\n      + '<div class=\"mun-filters\"><button class=\"mun-btn\" data-mun-export=\"censo\">Exportar censo (CSV)</button>'\n      + '<button class=\"mun-btn\" data-mun-export=\"alunos\">Exportar alunos (CSV)</button>'\n      + '<button class=\"mun-btn p\" data-mun-print=\"1\">Imprimir / PDF</button></div>'\n      + '<div class=\"mun-scroll\"><table><thead><tr><th>Escola</th><th>Cidade</th><th>Situação</th><th>Alunos visíveis</th><th>Turmas</th></tr></thead><tbody>'\n      + es.map((e) => '<tr><td>' + esc(e.name) + '</td><td>' + esc(e.city || '—') + '</td><td>' + (e.active === false ? 'desativada' : 'funcionando') + '</td><td>' + num(al.filter((a) => a.school_id === e.id).length) + '</td><td>' + num(tu.filter((t) => t.school_id === e.id).length) + '</td></tr>').join('')\n      + '</tbody></table></div>'\n      + '<p class=\"s\" style=\"font-size:11.5px;color:#6b7a89\">Os totais são contagens de linhas devolvidas pelo backend para este acesso — não «escolas × matrícula média». O cabeçalho institucional, o período de referência e a identificação do emissor são obrigatórios pelo §4.10 e estão acima.</p></div>';\n  }\n\n  const RENDER = { painel, escolas, alunos, profissionais, pedagogico, frequencia, processos, comunicacao, infraestrutura, relatorios };\n\n  function corpo(d) {\n    if (estado.detalhe && RENDER[estado.tab] === escolas) return detalheEscola(estado.detalhe);\n    const fn = RENDER[estado.tab];\n    if (!fn) return '<div class=\"mun-panel\"><div class=\"mun-empty\">Selecione uma seção.</div></div>';\n    if (estado.carregando[estado.tab]) return '<div class=\"mun-panel\"><div class=\"mun-empty\">Carregando dados reais…</div></div>';\n    if (!d) return '<div class=\"mun-panel\"><div class=\"mun-empty\">Sem dados carregados.</div></div>';\n    if (estado.tab === 'escolas' && d.linhas) return escolas(d);\n    return fn(d);\n  }\n\n  function desenharCabeca() {\n    const raiz = document.getElementById(VIEW_ID); if (!raiz) return;\n    const alvo = raiz.querySelector('[data-mun-conteudo]'); if (alvo) alvo.innerHTML = '<div class=\"mun-panel\"><div class=\"mun-empty\">Carregando dados reais…</div></div>';\n  }\n  async function desenhar(raiz) {\n    estilo();\n    const permissao = aptoParaSessao();\n    if (!permissao.apto) {\n      raiz.innerHTML = cabecalho() + '<div class=\"mun-panel\"><div class=\"mun-warn\"><strong>Acesso não concedido a esta área.</strong> ' + esc(permissao.por) + '.</div>'\n        + '<p style=\"font-size:13px\">Chegou aqui por um caminho direto, e não por um botão que o menu lhe mostra. Nada foi carregado: a lista de escolas, alunos e processos continua a depender do que o backend autoriza — hoje pelo mapa de papéis, e depois por <code>bfr_is_municipal_authority()</code> quando o DDL SM4 for aplicado.</p></div>';\n      raiz.dataset.munApto = 'nao';\n      return;\n    }\n    raiz.dataset.munApto = 'sim';\n    if (!raiz.dataset.munBuilt) {\n      raiz.dataset.munBuilt = '1';\n      raiz.innerHTML = cabecalho() + '<div class=\"mun-shell\">' + lado() + '<div data-mun-conteudo></div></div>';\n      ligarEventos(raiz);\n    } else {\n      raiz.querySelectorAll('[data-mun-tab]').forEach((b) => b.setAttribute('aria-current', b.dataset.munTab === estado.tab ? 'page' : 'false'));\n    }\n    const alvo = raiz.querySelector('[data-mun-conteudo]');\n    const carregador = CARREGADORES[estado.tab];\n    if (!carregador) { alvo.innerHTML = '<div class=\"mun-panel\"><div class=\"mun-empty\">Selecione uma seção.</div></div>'; return; }\n    alvo.innerHTML = '<div class=\"mun-panel\"><div class=\"mun-empty\">Carregando dados reais…</div></div>';\n    try {\n      const d = await carregador();\n      if (d && d.erro) estado.erros[estado.tab] = d.erro;\n      alvo.innerHTML = '<div data-mun-sonda></div>' + corpo(d);\n      pintarSonda();\n      if (estado.erros[estado.tab]) alvo.querySelector('[data-mun-sonda]').insertAdjacentHTML('afterend', '<div class=\"mun-warn\"><strong>Erro anterior nesta seção:</strong> ' + esc(estado.erros[estado.tab]) + '</div>');\n    } catch (e) {\n      alvo.innerHTML = '<div class=\"mun-panel\"><div class=\"mun-warn\"><strong>Falha ao carregar:</strong> ' + esc(String((e && e.message) || e)) + '</div></div>';\n    }\n  }\n\n  function csv(nome, rows) {\n    const cols = [...new Set(rows.flatMap((r) => Object.keys(r).filter((k) => typeof r[k] !== 'object' || r[k] === null)))];\n    const val = (v) => (v && typeof v === 'object' ? JSON.stringify(v) : String(v == null ? '' : v));\n    const corpo = [cols.join(';'), ...rows.map((r) => cols.map((c) => '\"' + val(r[c]).replace(/\"/g, '\"\"') + '\"').join(';'))].join('\\n');\n    const url = URL.createObjectURL(new Blob(['\\ufeff' + corpo], { type: 'text/csv;charset=utf-8' }));\n    const a = document.createElement('a'); a.href = url; a.download = 'bfr-municipal-' + nome + '-' + new Date().toISOString().slice(0, 10) + '.csv';\n    document.body.appendChild(a); a.click(); a.remove(); setTimeout(() => URL.revokeObjectURL(url), 4000);\n  }\n\n  function ligarEventos(raiz) {\n    raiz.addEventListener('click', (ev) => {\n      const tab = ev.target.closest('[data-mun-tab]');\n      if (tab) { estado.tab = tab.dataset.munTab; estado.detalhe = ''; desenhar(raiz); return; }\n      const escola = ev.target.closest('[data-mun-escola]');\n      if (escola) { estado.detalhe = escola.dataset.munEscola; desenhar(raiz); return; }\n      if (ev.target.closest('[data-mun-volta]')) { estado.detalhe = ''; desenhar(raiz); return; }\n      const rec = ev.target.closest('[data-mun-recarregar]');\n      if (rec) { delete cache['alunos_' + [estado.escola, estado.busca, estado.ano, estado.turno].join('|')]; desenhar(raiz); return; }\n      if (ev.target.closest('[data-mun-print]')) { window.print(); return; }\n      const exp = ev.target.closest('[data-mun-export]');\n      if (exp) {\n        const que = exp.dataset.munExport;\n        if (que === 'censo') csv('censo', (cache.escolas_todo || { linhas: [] }).linhas.map((e) => ({ ...e, alunos_visiveis: contaAlunos(e.id) })));\n        if (que === 'alunos') csv('alunos', (cache.alunos_todo || { linhas: [] }).linhas);\n        return;\n      }\n      const cacheLimpar = ev.target.closest('[data-mun-cache]');\n      if (cacheLimpar) { Object.keys(cache).forEach((k) => delete cache[k]); desenhar(raiz); }\n    });\n    raiz.addEventListener('change', (ev) => {\n      const f = ev.target.closest('[data-mun-filtro]'); if (!f) return;\n      const tipo = f.dataset.munFiltro;\n      if (tipo === 'escola') estado.escola = f.value;\n      if (tipo === 'busca') estado.busca = f.value;\n      if (tipo === 'tipo') estado.fEscolaTipo = f.value;\n      desenhar(raiz);\n    });\n  }\n\n  //─ 6. entrada. Espera o runtime do bundle; sem runtime, sem cliente, sem suposições.\n  let iniciado = false;\n  function aptoParaSessao() {\n    const rt = RT(); const papel = (rt.profile || {}).role || '';\n    if (!papel) return { apto: false, por: 'sem perfil carregado' };\n    const view = viewRoleDe(papel);\n    const map = rt.roleSectionAccess || {};\n    // A mesma regra do bundle, e não uma versão minha: `admin` recebe o mapa de admin + psicologia +\n    // multiprofissional; os restantes lêem `roleSectionAccess[viewRole]`, com `parent` por omissão.\n    const permitido = view === 'admin' ? [...new Set([...(map.admin || []), 'psychology', 'multiprofissional'])]\n      : (map[view] || map.parent || []);\n    return { apto: permitido.includes(SECT), por: 'papel=' + papel + ' viewRole=' + view + ' no mapa=' + permitido.includes(SECT) };\n  }\n  // §5/§6 medidos a 18/11: um papel que não tem chave em `roleSectionAccess` (o `secretary` real é o\n  // caso) não é escondido pelo shell, porque o shell não tem lista nenhuma para ele — e a entrada\n  // municipal ficava visível, levando a um clique que abre apenas a faixa de negação. Esconder aqui é\n  // apresentação; a decisão continua em `aptoParaSessao()` e na sonda do backend, e nenhum dos dois\n  // depende desta visibilidade. O intervalo não tem tecto: o seletor de papel do shell volta a desenhar\n  // a sidebar a cada troca, e um caputo deixaria a entrada reaparecer depois dele.\n  function aplicarVisibilidade() {\n    const veredito = aptoParaSessao();\n    for (const b of document.querySelectorAll('[data-bfr-municipal-nav]')) {\n      b.classList.toggle('hidden', !veredito.apto);\n      b.style.display = veredito.apto ? '' : 'none';\n      b.dataset.munApto = veredito.apto ? 'sim' : 'nao';\n    }\n    const raiz = document.getElementById(VIEW_ID);\n    if (raiz) raiz.dataset.munApto = veredito.apto ? 'sim' : 'nao';\n    return veredito;\n  }\n  const tentativas = { registos: 0, limite: 50 };\n  function garantir() {\n    if (!document.querySelector('#appShell main')) return false;\n    registar(); estilo();\n    const vistaOk = !!document.getElementById(VIEW_ID);\n    const navOk = !!document.querySelector('.sidebar [data-bfr-municipal-nav]');\n    if (vistaOk && navOk) aplicarVisibilidade();\n    return vistaOk && navOk;\n  }\n  function tentar() {\n    if (iniciado) return;\n    if (!RT().client) return;\n    iniciado = true;\n    document.addEventListener('click', (ev) => {\n      const nav = ev.target.closest('[data-section=\"' + SECT + '\"]');\n      if (!nav) return;\n      ev.preventDefault(); ev.stopImmediatePropagation();\n      abrir();\n    }, true);\n    // O shell desenha a sidebar dele próprio, e `hideLegacy()` passa por cima: por isso o registo é\n    // re-tentado até a vista E o botão existirem, e volta a tentar-se a cada navegação.\n    const ciclo = setInterval(() => {\n      tentativas.registos++;\n      const pronto = garantir();\n      if (pronto || tentativas.registos >= tentativas.limite) clearInterval(ciclo);\n      if (pronto) aplicarVisibilidade();\n    }, 400);\n    setTimeout(() => clearInterval(ciclo), 30000);\n    const vigilia = setInterval(() => { if (garantir()) aplicarVisibilidade(); }, 600);\n    sondarBackend();\n  }\n  const timer = setInterval(() => tentar(), 250);\n  setTimeout(() => clearInterval(timer), 30000);\n  window.BFR_MUNICIPAL = { abrir, registar, garantir, aptoParaSessao, aplicarVisibilidade, sondarBackend, sonda, estado, cache, SECT, PAPEIS_MUNICIPAIS };\n})();\n\n",
+        "margem": "zero — contenção exacta"
+      }
+    },
+    {
+      "nome": "o_involucre_e_uma_fracao_pequena_do_corpus",
+      "verde": true,
+      "detalhe": {
+        "chars_involucro": 56408,
+        "chars_corpus": 3528787
+      }
+    },
+    {
+      "nome": "a_pegada_servida_e_a_candidata_versionada",
+      "verde": true,
+      "detalhe": {
+        "md5_servido": "b272fd4f3a737c518e888250ab8167f1",
+        "md5_local": "b272fd4f3a737c518e888250ab8167f1"
+      }
+    },
+    {
+      "nome": "o_fixture_dispara_na_grafia_com_ponto",
+      "verde": false,
+      "detalhe": {
+        "com_ponto_from": 1,
+        "solto_from": 1,
+        "com_ponto_rpc": 2,
+        "solto_rpc": 0,
+        "nomes": [
+          "fn_pontuada",
+          "fn_solta",
+          "mesa_de_escrita",
+          "mesa_pontuada",
+          "mesa_solta"
+        ]
+      }
+    },
+    {
+      "nome": "o_fixture_dispara_na_grafia_solta",
+      "verde": false,
+      "detalhe": {
+        "com_ponto_from": 1,
+        "solto_from": 1,
+        "com_ponto_rpc": 2,
+        "solto_rpc": 0,
+        "nomes": [
+          "fn_pontuada",
+          "fn_solta",
+          "mesa_de_escrita",
+          "mesa_pontuada",
+          "mesa_solta"
+        ]
+      }
+    },
+    {
+      "nome": "o_fixture_extrai_os_cinco_nomes_das_duas_grafias",
+      "verde": true,
+      "detalhe": [
+        "fn_pontuada",
+        "fn_solta",
+        "mesa_de_escrita",
+        "mesa_pontuada",
+        "mesa_solta"
+      ]
+    },
+    {
+      "nome": "a_regua_nao_inventa_nada_no_controlo_negativo",
+      "verde": true,
+      "detalhe": {
+        "agulha": "from('mesa_que_nao_existe_nesta_base_zzz')",
+        "no_corpus": 0,
+        "no_involucro": 0
+      }
+    },
+    {
+      "nome": "o_modulo_tem_leituras_nomeadas_por_mesa",
+      "verde": true,
+      "detalhe": {
+        "nomes_no_inv": [
+          [
+            "schools",
+            3
+          ],
+          [
+            "students",
+            3
+          ],
+          [
+            "bfr_lesson_attendance",
+            2
+          ],
+          [
+            "classes",
+            2
+          ],
+          [
+            "staff_schools",
+            2
+          ],
+          [
+            "supervision_requests",
+            2
+          ],
+          [
+            "announcements",
+            1
+          ],
+          [
+            "bfr_is_municipal_authority",
+            1
+          ],
+          [
+            "grades",
+            1
+          ],
+          [
+            "school_documents",
+            1
+          ],
+          [
+            "supervision_alerts",
+            1
+          ],
+          [
+            "supervision_responses",
+            1
+          ]
+        ]
+      }
+    },
+    {
+      "nome": "nenhuma_das_seis_superficies_endurecidas_e_nome_do_modulo",
+      "verde": true,
+      "detalhe": {
+        "bfr_municipal_school_stats": {
+          "no_involucro": 0,
+          "no_corpus": 0
+        },
+        "bfr_municipal_network_totals": {
+          "no_involucro": 0,
+          "no_corpus": 0
+        },
+        "bfr_municipal_municipalities": {
+          "no_involucro": 0,
+          "no_corpus": 0
+        },
+        "bfr_municipal_access_grants": {
+          "no_involucro": 0,
+          "no_corpus": 0
+        },
+        "bfr_municipal_audit": {
+          "no_involucro": 0,
+          "no_corpus": 0
+        },
+        "bfr_school_in_municipal_scope": {
+          "no_involucro": 0,
+          "no_corpus": 0
+        },
+        "bfr_is_municipal_authority": {
+          "no_involucro": 4,
+          "no_corpus": 4
+        }
+      }
+    },
+    {
+      "nome": "o_gate_do_modulo_e_a_unica_fn_nomeada_no_involucre",
+      "verde": true,
+      "detalhe": {
+        "gate": {
+          "no_involucro": 4,
+          "no_corpus": 4
+        },
+        "nomes": [
+          [
+            "schools",
+            3
+          ],
+          [
+            "students",
+            3
+          ],
+          [
+            "bfr_lesson_attendance",
+            2
+          ],
+          [
+            "classes",
+            2
+          ],
+          [
+            "staff_schools",
+            2
+          ],
+          [
+            "supervision_requests",
+            2
+          ],
+          [
+            "announcements",
+            1
+          ],
+          [
+            "bfr_is_municipal_authority",
+            1
+          ],
+          [
+            "grades",
+            1
+          ],
+          [
+            "school_documents",
+            1
+          ],
+          [
+            "supervision_alerts",
+            1
+          ],
+          [
+            "supervision_responses",
+            1
+          ]
+        ]
+      }
+    },
+    {
+      "nome": "as_duas_grafias_de_from_estao_as_duas_no_registo",
+      "verde": true,
+      "detalhe": [
+        {
+          "eixo": "involucro",
+          "verbo": "from",
+          "grafo": "com_ponto",
+          "ocorrencias": 0
+        },
+        {
+          "eixo": "involucro",
+          "verbo": "from",
+          "grafo": "solto",
+          "ocorrencias": 19
+        }
+      ]
+    },
+    {
+      "nome": "o_helper_de_leitura_devolve_um_total_calculado_no_cliente",
+      "verde": true,
+      "detalhe": {
+        "definicaoLer": {
+          "chars": 961,
+          "truncado": false
+        },
+        "campos": [
+          "linhas",
+          "total",
+          "escolasDistintas",
+          "erro"
+        ]
+      }
+    },
+    {
+      "nome": "toda_a_grelha_de_grafias_foi_emitida_com_o_seu_numero",
+      "verde": true,
+      "detalhe": {
+        "linhas_involucro": 20,
+        "linhas_corpus": 20
+      }
+    }
+  ],
+  "conclusao": {
+    "frases_que_esta_corrida_autoriza": [
+      "o módulo tem invólucro próprio no ar — <script data-bfr-municipal-module=\"1\"> — com 56408 chars de 3546846 servidos, e as 54 âncoras bfrMunicipal estão todas dentro dele",
+      "as mesas e funções que ele abre por nome são [[\"schools\",3],[\"students\",3],[\"bfr_lesson_attendance\",2],[\"classes\",2],[\"staff_schools\",2],[\"supervision_requests\",2],[\"announcements\",1],[\"bfr_is_municipal_authority\",1],[\"grades\",1],[\"school_documents\",1],[\"supervision_alerts\",1],[\"supervision_responses\",1]] — nenhuma das seis superficies endurecidas pelo DDL aparece, em texto solto nem como rota",
+      "o módulo abre-as pelo seu próprio helper `ler(chave, build)` com `from('mesa')` SEM ponto (19 chamadas soltas contra 0 com ponto): foi por isto que a corrida anterior leu `from: 0` num módulo que lê 11 mesas",
+      "o `ler` devolve [\"linhas\",\"total\",\"escolasDistintas\",\"erro\"] — os números que a aba pinta são contados no cliente sobre essas mesas, pelo que endurecer a vista e os agregados não muda o que está na tela"
+    ],
+    "o_que_este_artefacto_nao_prova": [
+      "não prova quantas linhas cada uma dessas 11 mesas devolve a cada papel: isso é RLS por mesa e está medido noutros artefactos (sm23-causa-vista, sm23-causa-predicado)",
+      "não prova o que o utilizador vê no ecrã: prova o código servido. A passada autenticada clicando a aba é outro instrumento."
+    ]
+  },
+  "veredito": "VERMELHO: 2",
+  "falhas": [
+    "o_fixture_dispara_na_grafia_com_ponto: {\"com_ponto_from\":1,\"solto_from\":1,\"com_ponto_rpc\":2,\"solto_rpc\":0,\"nomes\":[\"fn_pontuada\",\"fn_solta\",\"mesa_de_escrita\",\"mesa_pontuada\",\"mesa_solta\"]}",
+    "o_fixture_dispara_na_grafia_solta: {\"com_ponto_from\":1,\"solto_from\":1,\"com_ponto_rpc\":2,\"solto_rpc\":0,\"nomes\":[\"fn_pontuada\",\"fn_solta\",\"mesa_de_escrita\",\"mesa_pontuada\",\"mesa_solta\"]}"
+  ]
+}

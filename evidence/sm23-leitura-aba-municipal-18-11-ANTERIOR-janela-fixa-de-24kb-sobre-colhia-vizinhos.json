@@ -1,0 +1,89 @@
+{
+  "programa": "scripts/sm23-leitura-aba-municipal-18-11.mjs",
+  "em": "2026-11-18T23:33:35.359Z",
+  "pergunta": "de onde vem o numero que a aba municipal pinta? (o backend municipal tem 0 referencias no bundle)",
+  "metodo": "varredura por indice de janelas em redor dos marcadores da aba, sobre os bytes SERVIDOS; nenhum acesso a base de dados",
+  "servido": {
+    "url": "https://bfr-conecta.turmaroboticabfr.workers.dev",
+    "bytes": 3546846,
+    "md5": "b272fd4f3a737c518e888250ab8167f1"
+  },
+  "candidata_local": {
+    "ficheiro": "C:\\Users\\pcmac\\Documents\\Qoder\\2026-10-13\\28077d9a\\bfr-conecta\\bfr-candidata-v134-sidebar-escondida\\index.html",
+    "bytes": 3546846,
+    "md5": "b272fd4f3a737c518e888250ab8167f1",
+    "mesma_que_a_servida": true
+  },
+  "md5_do_diario_v134": {
+    "worker-deploy-v134-sidebar/worker.mjs_publicado": "f0de99f6ab5584d10e3b4484663f5090 (3611114 B)",
+    "shell_depois_v134": "b272fd4f3a737c518e888250ab8167f1 (3546846 B)",
+    "sw_depois_v134": "36ef6aeba9954ec3aa4a11230bf811dd (5064 B), CACHE bfr-conecta-v134"
+  },
+  "marcadores": {
+    "MunicipalView": 50,
+    "municipalRoutedBy": 1,
+    "municipal-root": 1,
+    "MUNICIPAL": 1
+  },
+  "janelas_analisadas": 53,
+  "fontes_da_aba": {
+    "from": [],
+    "rpc": [
+      "bfr_is_municipal_authority"
+    ]
+  },
+  "nomes_municipais_de_backend": [
+    {
+      "nome": "bfr_municipal_school_stats",
+      "ocorrencias_no_ficheiro": 0,
+      "nas_janelas_da_aba": false
+    },
+    {
+      "nome": "bfr_municipal_network_totals",
+      "ocorrencias_no_ficheiro": 0,
+      "nas_janelas_da_aba": false
+    },
+    {
+      "nome": "bfr_municipal_municipalities",
+      "ocorrencias_no_ficheiro": 0,
+      "nas_janelas_da_aba": false
+    },
+    {
+      "nome": "bfr_municipal_access_grants",
+      "ocorrencias_no_ficheiro": 0,
+      "nas_janelas_da_aba": false
+    },
+    {
+      "nome": "bfr_municipal_audit",
+      "ocorrencias_no_ficheiro": 0,
+      "nas_janelas_da_aba": false
+    },
+    {
+      "nome": "bfr_school_in_municipal_scope",
+      "ocorrencias_no_ficheiro": 0,
+      "nas_janelas_da_aba": false
+    },
+    {
+      "nome": "bfr_is_municipal_authority",
+      "ocorrencias_no_ficheiro": 4,
+      "nas_janelas_da_aba": true
+    }
+  ],
+  "contexto_municipalRoutedBy": ".classList.add('hidden'); }); const view = document.getElementById(VIEW_ID); if (!view) return; view.classList.remove('hidden'); document.querySelectorAll(NAV).forEach((i) => { const meu = i.dataset.section === SECT; i.classList.toggle('active', meu); if (meu) i.setAttribute('aria-current', 'page'); else i.removeAttribute('aria-current'); }); view.dataset.municipalRoutedBy = tratado ? 'bundle' : 'proximo'; desenhar(view); sondarBackend().then(pintarSonda); } //─ 3. estilo executivo próprio, sem tocar nas folhas do bundle. function estilo() { if (document.getElementById('bfrMunicipalStyle')) return; const css = [ '#bfrMunicipalView{--mun:#1b3a5b;--mun-2:#0f2740;--mun-bg:#f4f6f9;padding:18px 16px 40px;background:var(--mun-bg);min-height:100%}', '#bfrMunicipalView .mun-head{display:flex;flex-wrap:wrap;gap:10px;align-items:flex-end;justify-content:space-between;border-bottom:3px solid var(--mun);padding-bottom:12px;margin-bottom:14px}', '#bfrMunicipalView .mun-head h2{margin:0;font-size:22px;color:var(--mun-2);letter-spacing:.2px}', '#bfrMunicipalView .mun-head .mun-sub{font-size:12px;text-transform:uppercase;letter-spacing:1.4px;color:#5b6b7c;font-weight:700}', '#bfrMunicipalView .mun",
+  "conclusao": {
+    "rotas_de_dados_da_aba": {
+      "from": [],
+      "rpc": [
+        "bfr_is_municipal_authority"
+      ]
+    },
+    "nomes_municipais_que_aparecem_no_bundle": [
+      "bfr_is_municipal_authority"
+    ],
+    "frases_que_esta_corrida_autoriza": [
+      "a aba municipal nao consulta 6 dos 7 nomes municipais de backend: zero ocorrencias em 3546846 bytes servidos",
+      "os unicos nomes municipais presentes no bundle sao: bfr_is_municipal_authority",
+      "logo o numero que a aba pinta vem das rotas listadas em fontes_da_aba, e a vista bfr_municipal_school_stats nao e uma delas — a vista vazia NAO e o que o utilizador ve vazio"
+    ]
+  }
+}

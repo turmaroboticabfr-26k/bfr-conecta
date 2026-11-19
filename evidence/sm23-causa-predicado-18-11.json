@@ -1,0 +1,231 @@
+{
+  "programa": "scripts/sm23-causa-predicado-18-11.mjs",
+  "em": "2026-11-18T23:27:56.493Z",
+  "pergunta": "o WHERE da vista é satisfeito por alguma escola, para alguém?",
+  "metodo": "pg_get_function_sqlbody + contagens de schools.municipality_id + bfr_municipal_access_grants + avaliação do predicado por escola como dono",
+  "leitura_anterior": {
+    "unidade": "total visível por papel (Content-Range)",
+    "linhas_da_causa": [
+      "developer            schools=0 classes=27 students=848 staff_school=6 bfr_school_k=42703 | VISTA=0 | rpc={\"schools\":6,\"students\":848,\"classes\":27,\"municipalities\":0}",
+      "secretario_municipal schools=6 classes=27 students=848 staff_school=0 bfr_school_k=42703 | VISTA=0 | rpc={\"schools\":0,\"students\":0,\"classes\":0,\"municipalities\":0}",
+      "gestor_autorizado    schools=6 classes=27 students=848 staff_school=0 bfr_school_k=42703 | VISTA=0 | rpc={\"schools\":0,\"students\":0,\"classes\":0,\"municipalities\":0}",
+      "secretary            schools=0 classes=27 students=848 staff_school=1 bfr_school_k=42703 | VISTA=0 | rpc={\"schools\":0,\"students\":0,\"classes\":0,\"municipalities\":0}",
+      "anon                schools=42501 classes=0 students=0 staff_school=42501 bfr_school_k=42703 | VISTA=401/42501"
+    ]
+  },
+  "funcoes": [
+    {
+      "nome": "bfr_has_municipal_grant",
+      "argumentos": "p_municipality uuid",
+      "definer": true,
+      "corpo": "CREATE OR REPLACE FUNCTION public.bfr_has_municipal_grant(p_municipality uuid)\n RETURNS boolean\n LANGUAGE sql\n STABLE SECURITY DEFINER\n SET search_path TO 'public'\nAS $function$\n  SELECT COALESCE((SELECT true FROM public.bfr_municipal_access_grants g\n                   WHERE g.profile_id = auth.uid() AND g.revoked_at IS NULL\n                     AND (p_municipality IS NULL OR g.municipality_id = p_municipality)), false);\n$function$\n"
+    },
+    {
+      "nome": "bfr_is_platform_admin",
+      "argumentos": "",
+      "definer": true,
+      "corpo": "CREATE OR REPLACE FUNCTION public.bfr_is_platform_admin()\n RETURNS boolean\n LANGUAGE sql\n STABLE SECURITY DEFINER\n SET search_path TO 'public'\nAS $function$\n  SELECT COALESCE((SELECT true FROM public.profiles\n                   WHERE id = auth.uid() AND role = 'developer'::account_role), false);\n$function$\n"
+    },
+    {
+      "nome": "bfr_municipal_municipalities",
+      "argumentos": "",
+      "definer": true,
+      "corpo": "CREATE OR REPLACE FUNCTION public.bfr_municipal_municipalities()\n RETURNS SETOF uuid\n LANGUAGE sql\n STABLE SECURITY DEFINER\n SET search_path TO 'public'\nAS $function$\n  SELECT municipality_id FROM public.bfr_municipal_access_grants\n  WHERE profile_id = auth.uid() AND revoked_at IS NULL;\n$function$\n"
+    },
+    {
+      "nome": "bfr_municipal_network_totals",
+      "argumentos": "",
+      "definer": true,
+      "corpo": "CREATE OR REPLACE FUNCTION public.bfr_municipal_network_totals()\n RETURNS TABLE(schools integer, students integer, classes integer, municipalities integer)\n LANGUAGE sql\n STABLE SECURITY DEFINER\n SET search_path TO 'public'\nAS $function$\n  SELECT (SELECT count(*)::int FROM public.bfr_municipal_school_stats),\n         (SELECT coalesce(sum(students_total), 0)::int FROM public.bfr_municipal_school_stats),\n         (SELECT coalesce(sum(classes_total), 0)::int FROM public.bfr_municipal_school_stats),\n         (SELECT count(DISTINCT municipality_id)::int FROM public.bfr_municipal_school_stats\n           WHERE municipality_id IS NOT NULL);\n$function$\n"
+    },
+    {
+      "nome": "bfr_school_in_municipal_scope",
+      "argumentos": "p_school uuid",
+      "definer": true,
+      "corpo": "CREATE OR REPLACE FUNCTION public.bfr_school_in_municipal_scope(p_school uuid)\n RETURNS boolean\n LANGUAGE sql\n STABLE SECURITY DEFINER\n SET search_path TO 'public'\nAS $function$\n  SELECT COALESCE((SELECT true FROM public.schools s\n                    WHERE s.id = p_school\n                      AND s.municipality_id = ANY (SELECT * FROM public.bfr_municipal_municipalities())), false)\n      OR COALESCE((SELECT true\n                     FROM public.bfr_school_key_map m\n                     JOIN public.schools s ON s.id = m.school_id\n                    WHERE m.sports_school_id = p_school\n                      AND (m.matched_by = 'mesmo_id' OR m.confirmed_by IS NOT NULL)\n                      AND s.municipality_id = ANY (SELECT * FROM public.bfr_municipal_municipalities())), false);\n$function$\n"
+    }
+  ],
+  "escolas": [
+    {
+      "total": 6,
+      "com_municipio": 0,
+      "sem_municipio": 6,
+      "municipios_distintos": 0
+    }
+  ],
+  "municipios_por_escola": [
+    {
+      "municipio": "NULL",
+      "escolas": 6
+    }
+  ],
+  "grants": [
+    {
+      "linhas": 4,
+      "municipios": 1,
+      "ativos": 4,
+      "municipios_lista": "ef4647c2-80a8-466a-810d-2a1579c20a95"
+    }
+  ],
+  "especies_de_municipality_id": [
+    {
+      "tabela": "bfr_municipal_access_grants",
+      "especie": "uuid"
+    },
+    {
+      "tabela": "schools",
+      "especie": "uuid"
+    }
+  ],
+  "colunas_de_bfr_school_key_map": [
+    {
+      "coluna": "school_id",
+      "tipo": "uuid"
+    },
+    {
+      "coluna": "sports_school_id",
+      "tipo": "uuid"
+    },
+    {
+      "coluna": "matched_by",
+      "tipo": "text"
+    },
+    {
+      "coluna": "confirmed_by",
+      "tipo": "uuid"
+    },
+    {
+      "coluna": "confirmed_at",
+      "tipo": "timestamp with time zone"
+    }
+  ],
+  "nota_sonda_anterior": "o 42703 em bfr_school_key_map foi erro do instrumento (pediu `id`, a tabela não tem essa coluna); as outras quatro colunas da mesma corrida são válidas",
+  "avaliacao_por_escola": [
+    {
+      "id": "07201ebb-3cde-411f-b5ce-fed8b27aa540",
+      "nome": "Escola Alpha",
+      "municipio": null,
+      "scope_sem_sessao": false,
+      "admin_sem_sessao": false
+    },
+    {
+      "id": "b0d73479-35b8-4a6b-a7e4-2377bee9493c",
+      "nome": "Escola Beta",
+      "municipio": null,
+      "scope_sem_sessao": false,
+      "admin_sem_sessao": false
+    },
+    {
+      "id": "8a29b3ce-3d9d-47d9-8891-3d45dcd1acfa",
+      "nome": "Escola Gamma",
+      "municipio": null,
+      "scope_sem_sessao": false,
+      "admin_sem_sessao": false
+    },
+    {
+      "id": "08ebef62-2193-4520-ab44-c044160d565f",
+      "nome": "Escola Municipal Alpha",
+      "municipio": null,
+      "scope_sem_sessao": false,
+      "admin_sem_sessao": false
+    },
+    {
+      "id": "0f51bc67-9987-483d-aba0-f138b2b7580e",
+      "nome": "Escola Municipal Beta",
+      "municipio": null,
+      "scope_sem_sessao": false,
+      "admin_sem_sessao": false
+    },
+    {
+      "id": "f4ab6309-8c41-4456-a3e2-14f3fe2ad9d3",
+      "nome": "Escola Municipal Gamma",
+      "municipio": null,
+      "scope_sem_sessao": false,
+      "admin_sem_sessao": false
+    }
+  ],
+  "colunas_de_grants": [
+    "id",
+    "profile_id",
+    "municipality_id",
+    "municipal_role",
+    "granted_by",
+    "granted_at",
+    "revoked_by",
+    "revoked_at"
+  ],
+  "coluna_de_perfil_escolhida": "profile_id",
+  "coluna_de_papel": "role",
+  "coluna_de_atividade_escolhida": "revoked_at",
+  "expressao_de_ativos": "revoked_at is null",
+  "dentro_de_sessao_forjada": [
+    {
+      "perfil": "86e31850-eefb-4539-93e1-192ceceb6d12",
+      "municipio_da_concessao": "ef4647c2-80a8-466a-810d-2a1579c20a95",
+      "papel": "secretary",
+      "claims": "{\"role\":\"authenticated\",\"aud\":\"authenticated\",\"sub\":\"86e31850-eefb-4539-93e1-192ceceb6d12\",\"app_metadata\":{\"role\":\"secretary\"},\"user_metadata\":{}}",
+      "resultado": {
+        "erro": "sql HTTP 400: {\"message\":\"Failed to run sql query: ERROR:  42501: permission denied for function bfr_municipal_municipalities\\n\"}"
+      }
+    },
+    {
+      "perfil": "68075dee-13f4-4d8c-b74f-eceb14ce18d7",
+      "municipio_da_concessao": "ef4647c2-80a8-466a-810d-2a1579c20a95",
+      "papel": "secretary",
+      "claims": "{\"role\":\"authenticated\",\"aud\":\"authenticated\",\"sub\":\"68075dee-13f4-4d8c-b74f-eceb14ce18d7\",\"app_metadata\":{\"role\":\"secretary\"},\"user_metadata\":{}}",
+      "resultado": {
+        "erro": "sql HTTP 400: {\"message\":\"Failed to run sql query: ERROR:  42501: permission denied for function bfr_municipal_municipalities\\n\"}"
+      }
+    },
+    {
+      "perfil": "6083a77c-bedc-4ff9-b75b-f08ff0d33fe1",
+      "municipio_da_concessao": "ef4647c2-80a8-466a-810d-2a1579c20a95",
+      "papel": "coordinator",
+      "claims": "{\"role\":\"authenticated\",\"aud\":\"authenticated\",\"sub\":\"6083a77c-bedc-4ff9-b75b-f08ff0d33fe1\",\"app_metadata\":{\"role\":\"coordinator\"},\"user_metadata\":{}}",
+      "resultado": {
+        "erro": "sql HTTP 400: {\"message\":\"Failed to run sql query: ERROR:  42501: permission denied for function bfr_municipal_municipalities\\n\"}"
+      }
+    }
+  ],
+  "escolas_por_municipio_concedido": [
+    {
+      "escola": "Escola Alpha",
+      "municipio": null,
+      "concessoes_desse_municipio": 0
+    },
+    {
+      "escola": "Escola Beta",
+      "municipio": null,
+      "concessoes_desse_municipio": 0
+    },
+    {
+      "escola": "Escola Gamma",
+      "municipio": null,
+      "concessoes_desse_municipio": 0
+    },
+    {
+      "escola": "Escola Municipal Alpha",
+      "municipio": null,
+      "concessoes_desse_municipio": 0
+    },
+    {
+      "escola": "Escola Municipal Beta",
+      "municipio": null,
+      "concessoes_desse_municipio": 0
+    },
+    {
+      "escola": "Escola Municipal Gamma",
+      "municipio": null,
+      "concessoes_desse_municipio": 0
+    }
+  ],
+  "conclusao": {
+    "escolas_sem_municipio": 6,
+    "grants_apontam_para": [
+      "ef4647c2-80a8-466a-810d-2a1579c20a95"
+    ],
+    "municipios_das_escolas": [],
+    "interseccao_grants_e_escolas": [],
+    "lido_com_cuidado": "se a intersecção for vazia, o WHERE devolve 0 linhas para QUALQUER papel, independentemente do security_invoker: o vazio é de DADOS (nenhuma escola marcada com o município concedido), não do modo da vista"
+  }
+}

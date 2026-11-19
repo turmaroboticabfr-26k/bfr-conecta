@@ -1,0 +1,617 @@
+{
+  "programa": "scripts/sm23-aplicar-view-funcoes-18-11.mjs",
+  "em": "2026-11-18T23:21:22.964Z",
+  "ok_nomeado": "selecao do utilizador 18/11: «DDL municipal + calendario» (ferramenta de escolha) — as tres pecas (a)(b)(c)",
+  "candidata": "scripts/sm23-ddl-view-funcoes-candidata.sql",
+  "candidata_md5": "4a596f88786e1730d9ca7949f4d50126",
+  "reversao": "scripts/sm23-ddl-view-funcoes-reversao.sql",
+  "reversao_md5": "697a493ea9835507490a001e5dd40f55",
+  "preflight_usado": "C:\\Users\\pcmac\\Documents\\Qoder\\2026-10-13\\28077d9a\\bfr-conecta\\evidence\\sm23-preflight-view-funcoes-18-11.json",
+  "preflight_md5": "f79ee365c3588b0268d8807a0bea9841",
+  "applied_statements": [
+    "BEGIN;",
+    "ALTER VIEW public.bfr_municipal_school_stats SET (security_invoker = true);",
+    "REVOKE EXECUTE ON FUNCTION public.bfr_municipal_network_totals() FROM PUBLIC, anon;",
+    "REVOKE EXECUTE ON FUNCTION public.bfr_has_municipal_grant(uuid) FROM PUBLIC, anon;",
+    "NOTIFY pgrst, 'reload schema';",
+    "COMMIT;"
+  ],
+  "espera_do_cache_ms": 1341,
+  "tentativas_de_espera": 1,
+  "leitura_do_registro": {
+    "oraculo_anonimo_antes": {
+      "status": 200,
+      "linhas": null,
+      "code": null,
+      "valores": false,
+      "bytes": 5
+    },
+    "totals_anonimos_antes": {
+      "status": 200,
+      "linhas": 1,
+      "code": null,
+      "valores": {
+        "schools": 0,
+        "students": 0,
+        "classes": 0,
+        "municipalities": 0
+      },
+      "bytes": 59
+    },
+    "vista_developer_antes": {
+      "status": 200,
+      "linhas": 6,
+      "code": null,
+      "valores": {
+        "school_id": "08ebef62-2193-4520-ab44-c044160d565f",
+        "school_name": "Escola Municipal Alpha"
+      },
+      "bytes": 536
+    }
+  },
+  "catalogo_antes": {
+    "modo": "sem-opcao-null",
+    "reloptions": null,
+    "def_md5": "af7a898df0af2401d80f289a0736dcd2",
+    "acl_vista": "postgres=arwdDxtm/postgres | anon=arwdDxtm/postgres | authenticated=arwdDxtm/postgres | service_role=arwdDxtm/postgres",
+    "acl_totals": "=X/postgres | postgres=X/postgres | anon=X/postgres | authenticated=X/postgres | service_role=X/postgres",
+    "acl_grant": "=X/postgres | postgres=X/postgres | anon=X/postgres | authenticated=X/postgres | service_role=X/postgres",
+    "anon_exec_totals": true,
+    "anon_exec_grant": true,
+    "auth_exec_totals": true,
+    "auth_exec_grant": true,
+    "svc_exec_totals": true
+  },
+  "catalogo_depois": {
+    "modo": "invoker",
+    "reloptions": "security_invoker=true",
+    "def_md5": "af7a898df0af2401d80f289a0736dcd2",
+    "acl_vista": "postgres=arwdDxtm/postgres | anon=arwdDxtm/postgres | authenticated=arwdDxtm/postgres | service_role=arwdDxtm/postgres",
+    "acl_totals": "postgres=X/postgres | authenticated=X/postgres | service_role=X/postgres",
+    "acl_grant": "postgres=X/postgres | authenticated=X/postgres | service_role=X/postgres",
+    "anon_exec_totals": false,
+    "anon_exec_grant": false,
+    "auth_exec_totals": true,
+    "auth_exec_grant": true,
+    "svc_exec_totals": true
+  },
+  "anon_depois": {
+    "rpc_totals": {
+      "status": 401,
+      "linhas": null,
+      "code": "42501",
+      "valores": null,
+      "mensagem": "permission denied for function bfr_municipal_network_totals",
+      "bytes": 115
+    },
+    "rpc_grant": {
+      "status": 401,
+      "linhas": null,
+      "code": "42501",
+      "valores": null,
+      "mensagem": "permission denied for function bfr_has_municipal_grant",
+      "bytes": 110
+    },
+    "vista": {
+      "status": 401,
+      "linhas": null,
+      "code": "42501",
+      "valores": null,
+      "mensagem": "permission denied for table schools",
+      "bytes": 184
+    },
+    "fixture_rota_inocua": {
+      "status": 200,
+      "linhas": 0,
+      "code": null,
+      "valores": [],
+      "mensagem": null,
+      "bytes": 2
+    }
+  },
+  "sessoes_depois": [
+    {
+      "persona": "developer",
+      "vista": {
+        "status": 200,
+        "linhas": 0,
+        "code": null,
+        "valores": [],
+        "mensagem": null,
+        "bytes": 2
+      },
+      "rpc_totals": {
+        "status": 200,
+        "linhas": 1,
+        "code": null,
+        "valores": {
+          "schools": 6,
+          "students": 848,
+          "classes": 27,
+          "municipalities": 0
+        },
+        "mensagem": null,
+        "bytes": 62
+      },
+      "rpc_grant": {
+        "status": 200,
+        "linhas": null,
+        "code": null,
+        "valores": false,
+        "mensagem": null,
+        "bytes": 5
+      }
+    },
+    {
+      "persona": "secretary",
+      "vista": {
+        "status": 200,
+        "linhas": 0,
+        "code": null,
+        "valores": [],
+        "mensagem": null,
+        "bytes": 2
+      },
+      "rpc_totals": {
+        "status": 200,
+        "linhas": 1,
+        "code": null,
+        "valores": {
+          "schools": 0,
+          "students": 0,
+          "classes": 0,
+          "municipalities": 0
+        },
+        "mensagem": null,
+        "bytes": 59
+      },
+      "rpc_grant": {
+        "status": 200,
+        "linhas": null,
+        "code": null,
+        "valores": false,
+        "mensagem": null,
+        "bytes": 5
+      }
+    },
+    {
+      "persona": "coordinator",
+      "vista": {
+        "status": 200,
+        "linhas": 0,
+        "code": null,
+        "valores": [],
+        "mensagem": null,
+        "bytes": 2
+      },
+      "rpc_totals": {
+        "status": 200,
+        "linhas": 1,
+        "code": null,
+        "valores": {
+          "schools": 0,
+          "students": 0,
+          "classes": 0,
+          "municipalities": 0
+        },
+        "mensagem": null,
+        "bytes": 59
+      },
+      "rpc_grant": {
+        "status": 200,
+        "linhas": null,
+        "code": null,
+        "valores": false,
+        "mensagem": null,
+        "bytes": 5
+      }
+    },
+    {
+      "persona": "secretario_municipal",
+      "vista": {
+        "status": 200,
+        "linhas": 0,
+        "code": null,
+        "valores": [],
+        "mensagem": null,
+        "bytes": 2
+      },
+      "rpc_totals": {
+        "status": 200,
+        "linhas": 1,
+        "code": null,
+        "valores": {
+          "schools": 0,
+          "students": 0,
+          "classes": 0,
+          "municipalities": 0
+        },
+        "mensagem": null,
+        "bytes": 59
+      },
+      "rpc_grant": {
+        "status": 200,
+        "linhas": null,
+        "code": null,
+        "valores": true,
+        "mensagem": null,
+        "bytes": 4
+      }
+    },
+    {
+      "persona": "gestor_autorizado",
+      "vista": {
+        "status": 200,
+        "linhas": 0,
+        "code": null,
+        "valores": [],
+        "mensagem": null,
+        "bytes": 2
+      },
+      "rpc_totals": {
+        "status": 200,
+        "linhas": 1,
+        "code": null,
+        "valores": {
+          "schools": 0,
+          "students": 0,
+          "classes": 0,
+          "municipalities": 0
+        },
+        "mensagem": null,
+        "bytes": 59
+      },
+      "rpc_grant": {
+        "status": 200,
+        "linhas": null,
+        "code": null,
+        "valores": true,
+        "mensagem": null,
+        "bytes": 4
+      }
+    },
+    {
+      "persona": "student",
+      "vista": {
+        "status": 200,
+        "linhas": 0,
+        "code": null,
+        "valores": [],
+        "mensagem": null,
+        "bytes": 2
+      },
+      "rpc_totals": {
+        "status": 200,
+        "linhas": 1,
+        "code": null,
+        "valores": {
+          "schools": 0,
+          "students": 0,
+          "classes": 0,
+          "municipalities": 0
+        },
+        "mensagem": null,
+        "bytes": 59
+      },
+      "rpc_grant": {
+        "status": 200,
+        "linhas": null,
+        "code": null,
+        "valores": false,
+        "mensagem": null,
+        "bytes": 5
+      }
+    }
+  ],
+  "diff_linhas_da_vista": {
+    "antes": {
+      "developer": 6,
+      "secretary": 0,
+      "coordinator": 0,
+      "secretario_municipal": 0,
+      "gestor_autorizado": 0,
+      "student": 0
+    },
+    "depois": {
+      "developer": 0,
+      "secretary": 0,
+      "coordinator": 0,
+      "secretario_municipal": 0,
+      "gestor_autorizado": 0,
+      "student": 0
+    },
+    "alargou": [],
+    "estreitou": [
+      "developer"
+    ]
+  },
+  "baselines_agora": {
+    "schools": 6,
+    "students": 848,
+    "profiles": 28,
+    "announcements": 1,
+    "grants": 4,
+    "supervision_requests": 0
+  },
+  "portoes": [
+    {
+      "nome": "preflight_existe_e_verde",
+      "verde": true,
+      "detalhe": "PREFLIGHT_VF_VERDE_SE_APLICAR_NADA"
+    },
+    {
+      "nome": "portoes_do_preflight_todos_verdes",
+      "verde": true,
+      "detalhe": []
+    },
+    {
+      "nome": "candidata_contem_a_peça_b_dry_runada",
+      "verde": true,
+      "detalhe": {
+        "no_preflight": "ALTER VIEW public.bfr_municipal_school_stats SET (security_invoker = true);",
+        "no_ficheiro": "ALTER VIEW public.bfr_municipal_school_stats SET (security_invoker = true);"
+      }
+    },
+    {
+      "nome": "candidata_contem_as_pecas_c_dry_runadas",
+      "verde": true,
+      "detalhe": {
+        "esperadas": [
+          "REVOKE EXECUTE ON FUNCTION public.bfr_municipal_network_totals() FROM PUBLIC, anon;",
+          "REVOKE EXECUTE ON FUNCTION public.bfr_has_municipal_grant(uuid) FROM PUBLIC, anon;"
+        ],
+        "no_ficheiro": [
+          "REVOKE EXECUTE ON FUNCTION public.bfr_municipal_network_totals() FROM PUBLIC, anon;",
+          "REVOKE EXECUTE ON FUNCTION public.bfr_has_municipal_grant(uuid) FROM PUBLIC, anon;"
+        ]
+      }
+    },
+    {
+      "nome": "sem_cascade",
+      "verde": true,
+      "detalhe": false
+    },
+    {
+      "nome": "reversao_repoe_o_estado_medido",
+      "verde": true,
+      "detalhe": {
+        "reversao": [
+          "ALTER VIEW public.bfr_municipal_school_stats RESET (security_invoker);",
+          "GRANT EXECUTE ON FUNCTION public.bfr_municipal_network_totals() TO PUBLIC, anon;",
+          "GRANT EXECUTE ON FUNCTION public.bfr_has_municipal_grant(uuid) TO PUBLIC, anon;"
+        ],
+        "planeado": {
+          "vista": "ALTER VIEW public.bfr_municipal_school_stats RESET (security_invoker); — RESET devolve reloptions a NULL, o estado medido antes; SET false deixaria {security_invoker=false} no catálogo",
+          "funcoes": [
+            "GRANT EXECUTE ON FUNCTION public.bfr_municipal_network_totals() TO PUBLIC, anon;",
+            "GRANT EXECUTE ON FUNCTION public.bfr_has_municipal_grant(uuid) TO PUBLIC, anon;"
+          ]
+        }
+      }
+    },
+    {
+      "nome": "transacao_completa",
+      "verde": true,
+      "detalhe": true
+    },
+    {
+      "nome": "nada_executavel_apos_commit",
+      "verde": true,
+      "detalhe": {
+        "cauda": ""
+      }
+    },
+    {
+      "nome": "estado_ainda_o_mesmo_do_preflight",
+      "verde": true,
+      "detalhe": {
+        "modo": "sem-opcao-null",
+        "reloptions": null,
+        "def_md5": "af7a898df0af2401d80f289a0736dcd2",
+        "acl_vista": "postgres=arwdDxtm/postgres | anon=arwdDxtm/postgres | authenticated=arwdDxtm/postgres | service_role=arwdDxtm/postgres",
+        "acl_totals": "=X/postgres | postgres=X/postgres | anon=X/postgres | authenticated=X/postgres | service_role=X/postgres",
+        "acl_grant": "=X/postgres | postgres=X/postgres | anon=X/postgres | authenticated=X/postgres | service_role=X/postgres",
+        "anon_exec_totals": true,
+        "anon_exec_grant": true,
+        "auth_exec_totals": true,
+        "auth_exec_grant": true,
+        "svc_exec_totals": true
+      }
+    },
+    {
+      "nome": "definicao_ainda_a_mesma_do_preflight",
+      "verde": true,
+      "detalhe": {
+        "agora": "af7a898df0af2401d80f289a0736dcd2",
+        "no_preflight": "af7a898df0af2401d80f289a0736dcd2",
+        "bytes_no_preflight": 652
+      }
+    },
+    {
+      "nome": "rota_anonima_ainda_aberta_antes",
+      "verde": true,
+      "detalhe": {
+        "totals": 200,
+        "grant": 200
+      }
+    },
+    {
+      "nome": "erro_de_aplicacao_nulo",
+      "verde": true,
+      "detalhe": null
+    },
+    {
+      "nome": "vista_agora_invoker",
+      "verde": true,
+      "detalhe": {
+        "modo": "invoker",
+        "reloptions": "security_invoker=true"
+      }
+    },
+    {
+      "nome": "definicao_byte_a_byte_inalterada",
+      "verde": true,
+      "detalhe": {
+        "antes": "af7a898df0af2401d80f289a0736dcd2",
+        "depois": "af7a898df0af2401d80f289a0736dcd2"
+      }
+    },
+    {
+      "nome": "acl_da_vista_inalterado",
+      "verde": true,
+      "detalhe": {
+        "antes": "postgres=arwdDxtm/postgres | anon=arwdDxtm/postgres | authenticated=arwdDxtm/postgres | service_role=arwdDxtm/postgres",
+        "depois": "postgres=arwdDxtm/postgres | anon=arwdDxtm/postgres | authenticated=arwdDxtm/postgres | service_role=arwdDxtm/postgres"
+      }
+    },
+    {
+      "nome": "anon_perdeu_o_execute_das_duas",
+      "verde": true,
+      "detalhe": {
+        "totals": false,
+        "grant": false
+      }
+    },
+    {
+      "nome": "nenhum_acl_tem_beneficiario_publico",
+      "verde": true,
+      "detalhe": {
+        "totals": "postgres=X/postgres | authenticated=X/postgres | service_role=X/postgres",
+        "grant": "postgres=X/postgres | authenticated=X/postgres | service_role=X/postgres"
+      }
+    },
+    {
+      "nome": "authenticated_e_service_role_conservam_o_execute",
+      "verde": true,
+      "detalhe": {
+        "auth_totals": true,
+        "auth_grant": true,
+        "svc_totals": true
+      }
+    },
+    {
+      "nome": "oraculo_anonimo_de_grants_agora_negado",
+      "verde": true,
+      "detalhe": {
+        "status": 401,
+        "linhas": null,
+        "code": "42501",
+        "valores": null,
+        "mensagem": "permission denied for function bfr_has_municipal_grant",
+        "bytes": 110
+      }
+    },
+    {
+      "nome": "totals_anonimos_agora_negados",
+      "verde": true,
+      "detalhe": {
+        "status": 401,
+        "linhas": null,
+        "code": "42501",
+        "valores": null,
+        "mensagem": "permission denied for function bfr_municipal_network_totals",
+        "bytes": 115
+      }
+    },
+    {
+      "nome": "cache_recarregou_dentro_do_teto",
+      "verde": true,
+      "detalhe": {
+        "espera_ms": 1341,
+        "tentativas": 1,
+        "status": 401
+      }
+    },
+    {
+      "nome": "anon_continua_sem_ler_a_vista",
+      "verde": true,
+      "detalhe": {
+        "status": 401,
+        "linhas": null,
+        "code": "42501",
+        "valores": null,
+        "mensagem": "permission denied for table schools",
+        "bytes": 184
+      }
+    },
+    {
+      "nome": "superficie_anonima_inocua_continua_a_funcionar",
+      "verde": true,
+      "detalhe": {
+        "status": 200,
+        "linhas": 0,
+        "code": null,
+        "valores": [],
+        "mensagem": null,
+        "bytes": 2
+      }
+    },
+    {
+      "nome": "nenhuma_sessao_passou_a_ver_mais_linhas",
+      "verde": true,
+      "detalhe": {
+        "alargou": [],
+        "linhasAntes": {
+          "developer": 6,
+          "secretary": 0,
+          "coordinator": 0,
+          "secretario_municipal": 0,
+          "gestor_autorizado": 0,
+          "student": 0
+        },
+        "linhasDepois": {
+          "developer": 0,
+          "secretary": 0,
+          "coordinator": 0,
+          "secretario_municipal": 0,
+          "gestor_autorizado": 0,
+          "student": 0
+        }
+      }
+    },
+    {
+      "nome": "developer_continua_a_poder_chamar_as_funcoes",
+      "verde": true,
+      "detalhe": {
+        "antes": {
+          "totals": 200,
+          "grant": 200
+        },
+        "depois": {
+          "totals": 200,
+          "grant": 200,
+          "mensagem": null
+        }
+      }
+    },
+    {
+      "nome": "pessoas_sem_sessao_puderam_ser_relidas",
+      "verde": true,
+      "detalhe": []
+    },
+    {
+      "nome": "baselines_nao_mexeram",
+      "verde": true,
+      "detalhe": {
+        "agora": {
+          "schools": 6,
+          "students": 848,
+          "profiles": 28,
+          "announcements": 1,
+          "grants": 4,
+          "supervision_requests": 0
+        },
+        "preflight": {
+          "schools": 6,
+          "students": 848,
+          "profiles": 28,
+          "announcements": 1,
+          "grants": 4,
+          "supervision_requests": 0
+        }
+      }
+    }
+  ],
+  "veredito": "VF_APLICADO_E_CONFERIDO",
+  "falhas": []
+}

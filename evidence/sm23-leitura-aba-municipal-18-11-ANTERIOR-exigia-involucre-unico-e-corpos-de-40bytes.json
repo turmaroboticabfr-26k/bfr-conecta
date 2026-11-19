@@ -1,0 +1,784 @@
+{
+  "programa": "scripts/sm23-leitura-aba-municipal-18-11.mjs",
+  "em": "2026-11-18T23:39:55.468Z",
+  "duracao_ms": 1536,
+  "pergunta": "a vista `bfr_municipal_school_stats` devolve 0 linhas a todos os papéis — é isso que o utilizador vê vazio na aba municipal?",
+  "metodo": "fetch dos bytes servidos; faixa do embed por âncoras `bfrMunicipal` ± margem; corpos por profundidade com teto; pertencer ao módulo é contenção no invólucro extraído, não marca no corpo; zero SQL",
+  "antecessores": [
+    "evidence/sm23-leitura-aba-municipal-18-11-ANTERIOR-janela-fixa-de-24kb-sobre-colhia-vizinhos.json",
+    "evidence/sm23-leitura-aba-municipal-18-11-ANTERIOR-exigia-marca-dentro-de-cada-corpo.json",
+    ".g-sm23-aba-mun-INTERROMPIDA-corpo-truncado-de-260kb-por-cabecalho.txt (fora do repositório, sessão)"
+  ],
+  "escala": {
+    "bytes_do_corpus": 3546846,
+    "chars_da_faixa": 71640,
+    "ancoras_bfrMunicipal": 54,
+    "margem_declarada": 16000,
+    "teto_corpo": 90000,
+    "cabecalhos_na_faixa": 71,
+    "corpos_nao_sobrepostos": 41,
+    "bytes_do_involucre": 71640,
+    "origem_do_involucre": "sem_involucre_extraido_a_faixa",
+    "nome_do_involucre": null,
+    "corpos_no_modulo": 41,
+    "corpos_fora_do_modulo_na_faixa": 0,
+    "corpos_que_citam_a_marca": 22
+  },
+  "servido": {
+    "url": "https://bfr-conecta.turmaroboticabfr.workers.dev",
+    "status": 200,
+    "bytes": 3546846,
+    "md5": "b272fd4f3a737c518e888250ab8167f1"
+  },
+  "candidata_local": {
+    "ficheiro": "bfr-candidata-v134-sidebar-escondida/index.html",
+    "bytes": 3546846,
+    "md5": "b272fd4f3a737c518e888250ab8167f1",
+    "identica_ao_servido": true
+  },
+  "nomes_municipais_de_backend": [
+    {
+      "nome": "bfr_municipal_school_stats",
+      "ocorrencias_no_corpus": 0,
+      "no_modulo": 0,
+      "dentro_de_corpo_do_modulo": 0,
+      "por_ocorrencia": []
+    },
+    {
+      "nome": "bfr_municipal_network_totals",
+      "ocorrencias_no_corpus": 0,
+      "no_modulo": 0,
+      "dentro_de_corpo_do_modulo": 0,
+      "por_ocorrencia": []
+    },
+    {
+      "nome": "bfr_municipal_municipalities",
+      "ocorrencias_no_corpus": 0,
+      "no_modulo": 0,
+      "dentro_de_corpo_do_modulo": 0,
+      "por_ocorrencia": []
+    },
+    {
+      "nome": "bfr_municipal_access_grants",
+      "ocorrencias_no_corpus": 0,
+      "no_modulo": 0,
+      "dentro_de_corpo_do_modulo": 0,
+      "por_ocorrencia": []
+    },
+    {
+      "nome": "bfr_municipal_audit",
+      "ocorrencias_no_corpus": 0,
+      "no_modulo": 0,
+      "dentro_de_corpo_do_modulo": 0,
+      "por_ocorrencia": []
+    },
+    {
+      "nome": "bfr_school_in_municipal_scope",
+      "ocorrencias_no_corpus": 0,
+      "no_modulo": 0,
+      "dentro_de_corpo_do_modulo": 0,
+      "por_ocorrencia": []
+    },
+    {
+      "nome": "bfr_is_municipal_authority",
+      "ocorrencias_no_corpus": 4,
+      "no_modulo": 4,
+      "dentro_de_corpo_do_modulo": 3,
+      "por_ocorrencia": [
+        {
+          "offset_global": 3477523,
+          "no_modulo": true,
+          "menor_corpo": null,
+          "municipal": false,
+          "nota": "resto_do_involucre_ou_topo"
+        },
+        {
+          "offset_global": 3477993,
+          "no_modulo": true,
+          "menor_corpo": "sondarBackend",
+          "bytes_menor_corpo": 661,
+          "municipal": false,
+          "do_modulo": true
+        },
+        {
+          "offset_global": 3478633,
+          "no_modulo": true,
+          "menor_corpo": "faixaSonda",
+          "bytes_menor_corpo": 663,
+          "municipal": true,
+          "do_modulo": true
+        },
+        {
+          "offset_global": 3521383,
+          "no_modulo": true,
+          "menor_corpo": "desenhar",
+          "bytes_menor_corpo": 2018,
+          "municipal": true,
+          "do_modulo": true
+        }
+      ]
+    }
+  ],
+  "rotas_do_modulo": {
+    "dos_corpos": {
+      "from": [],
+      "rpc": [
+        "bfr_is_municipal_authority"
+      ],
+      "select": [],
+      "url_rest": []
+    },
+    "do_resto_do_involucre": null
+  },
+  "rotas_em_toda_a_faixa_incluindo_codigo_de_topo": {
+    "from": [],
+    "rpc": [
+      "bfr_is_municipal_authority"
+    ]
+  },
+  "por_funcao": [
+    {
+      "nome": "patchWeatherCard",
+      "offset": 3460775,
+      "bytes_corpo": 1587,
+      "truncado": false,
+      "cita_marca_municipal": false,
+      "from": [],
+      "rpc": [],
+      "select": [],
+      "url_rest": []
+    },
+    {
+      "nome": "patchLiaPosition",
+      "offset": 3462429,
+      "bytes_corpo": 864,
+      "truncado": false,
+      "cita_marca_municipal": false,
+      "from": [],
+      "rpc": [],
+      "select": [],
+      "url_rest": []
+    },
+    {
+      "nome": "auditDirectionKpis",
+      "offset": 3463397,
+      "bytes_corpo": 1424,
+      "truncado": false,
+      "cita_marca_municipal": false,
+      "from": [],
+      "rpc": [],
+      "select": [],
+      "url_rest": []
+    },
+    {
+      "nome": "patchDecisionArea",
+      "offset": 3464908,
+      "bytes_corpo": 1299,
+      "truncado": false,
+      "cita_marca_municipal": false,
+      "from": [],
+      "rpc": [],
+      "select": [],
+      "url_rest": []
+    },
+    {
+      "nome": "patchNoteForm",
+      "offset": 3466266,
+      "bytes_corpo": 1339,
+      "truncado": false,
+      "cita_marca_municipal": false,
+      "from": [],
+      "rpc": [],
+      "select": [],
+      "url_rest": []
+    },
+    {
+      "nome": "patchDirectionButtons",
+      "offset": 3467698,
+      "bytes_corpo": 425,
+      "truncado": false,
+      "cita_marca_municipal": false,
+      "from": [],
+      "rpc": [],
+      "select": [],
+      "url_rest": []
+    },
+    {
+      "nome": "init",
+      "offset": 3468197,
+      "bytes_corpo": 1119,
+      "truncado": false,
+      "cita_marca_municipal": false,
+      "from": [],
+      "rpc": [],
+      "select": [],
+      "url_rest": []
+    },
+    {
+      "nome": "RT",
+      "offset": 3473698,
+      "bytes_corpo": 2,
+      "truncado": false,
+      "cita_marca_municipal": false,
+      "from": [],
+      "rpc": [],
+      "select": [],
+      "url_rest": []
+    },
+    {
+      "nome": "client",
+      "offset": 3473725,
+      "bytes_corpo": 79,
+      "truncado": false,
+      "cita_marca_municipal": false,
+      "from": [],
+      "rpc": [],
+      "select": [],
+      "url_rest": []
+    },
+    {
+      "nome": "esc",
+      "offset": 3474000,
+      "bytes_corpo": 57,
+      "truncado": false,
+      "cita_marca_municipal": false,
+      "from": [],
+      "rpc": [],
+      "select": [],
+      "url_rest": []
+    },
+    {
+      "nome": "registar",
+      "offset": 3475175,
+      "bytes_corpo": 1291,
+      "truncado": false,
+      "cita_marca_municipal": true,
+      "from": [],
+      "rpc": [],
+      "select": [],
+      "url_rest": []
+    },
+    {
+      "nome": "fecharGaveta",
+      "offset": 3476784,
+      "bytes_corpo": 612,
+      "truncado": false,
+      "cita_marca_municipal": false,
+      "from": [],
+      "rpc": [],
+      "select": [],
+      "url_rest": []
+    },
+    {
+      "nome": "sondarBackend",
+      "offset": 3477811,
+      "bytes_corpo": 661,
+      "truncado": false,
+      "cita_marca_municipal": false,
+      "from": [],
+      "rpc": [
+        "bfr_is_municipal_authority"
+      ],
+      "select": [],
+      "url_rest": []
+    },
+    {
+      "nome": "faixaSonda",
+      "offset": 3478494,
+      "bytes_corpo": 663,
+      "truncado": false,
+      "cita_marca_municipal": true,
+      "from": [],
+      "rpc": [],
+      "select": [],
+      "url_rest": []
+    },
+    {
+      "nome": "pintarSonda",
+      "offset": 3479175,
+      "bytes_corpo": 159,
+      "truncado": false,
+      "cita_marca_municipal": true,
+      "from": [],
+      "rpc": [],
+      "select": [],
+      "url_rest": []
+    },
+    {
+      "nome": "abrir",
+      "offset": 3479354,
+      "bytes_corpo": 800,
+      "truncado": false,
+      "cita_marca_municipal": false,
+      "from": [],
+      "rpc": [],
+      "select": [],
+      "url_rest": []
+    },
+    {
+      "nome": "estilo",
+      "offset": 3480243,
+      "bytes_corpo": 6146,
+      "truncado": false,
+      "cita_marca_municipal": true,
+      "from": [],
+      "rpc": [],
+      "select": [],
+      "url_rest": []
+    },
+    {
+      "nome": "ler",
+      "offset": 3487335,
+      "bytes_corpo": 961,
+      "truncado": false,
+      "cita_marca_municipal": false,
+      "from": [],
+      "rpc": [],
+      "select": [],
+      "url_rest": []
+    },
+    {
+      "nome": "cabecalho",
+      "offset": 3492790,
+      "bytes_corpo": 544,
+      "truncado": false,
+      "cita_marca_municipal": true,
+      "from": [],
+      "rpc": [],
+      "select": [],
+      "url_rest": []
+    },
+    {
+      "nome": "lado",
+      "offset": 3493341,
+      "bytes_corpo": 319,
+      "truncado": false,
+      "cita_marca_municipal": true,
+      "from": [],
+      "rpc": [],
+      "select": [],
+      "url_rest": []
+    },
+    {
+      "nome": "cartao",
+      "offset": 3494502,
+      "bytes_corpo": 140,
+      "truncado": false,
+      "cita_marca_municipal": true,
+      "from": [],
+      "rpc": [],
+      "select": [],
+      "url_rest": []
+    },
+    {
+      "nome": "painel",
+      "offset": 3494665,
+      "bytes_corpo": 3676,
+      "truncado": false,
+      "cita_marca_municipal": true,
+      "from": [],
+      "rpc": [],
+      "select": [],
+      "url_rest": []
+    },
+    {
+      "nome": "escolas",
+      "offset": 3498335,
+      "bytes_corpo": 2275,
+      "truncado": false,
+      "cita_marca_municipal": true,
+      "from": [],
+      "rpc": [],
+      "select": [],
+      "url_rest": []
+    },
+    {
+      "nome": "detalheEscola",
+      "offset": 3500853,
+      "bytes_corpo": 1704,
+      "truncado": false,
+      "cita_marca_municipal": true,
+      "from": [],
+      "rpc": [],
+      "select": [],
+      "url_rest": []
+    },
+    {
+      "nome": "alunos",
+      "offset": 3502569,
+      "bytes_corpo": 1966,
+      "truncado": false,
+      "cita_marca_municipal": true,
+      "from": [],
+      "rpc": [],
+      "select": [],
+      "url_rest": []
+    },
+    {
+      "nome": "profissionais",
+      "offset": 3504542,
+      "bytes_corpo": 2393,
+      "truncado": false,
+      "cita_marca_municipal": true,
+      "from": [],
+      "rpc": [],
+      "select": [],
+      "url_rest": []
+    },
+    {
+      "nome": "pedagogico",
+      "offset": 3506937,
+      "bytes_corpo": 3106,
+      "truncado": false,
+      "cita_marca_municipal": true,
+      "from": [],
+      "rpc": [],
+      "select": [],
+      "url_rest": []
+    },
+    {
+      "nome": "frequencia",
+      "offset": 3510041,
+      "bytes_corpo": 2845,
+      "truncado": false,
+      "cita_marca_municipal": true,
+      "from": [],
+      "rpc": [],
+      "select": [],
+      "url_rest": []
+    },
+    {
+      "nome": "processos",
+      "offset": 3512869,
+      "bytes_corpo": 2042,
+      "truncado": false,
+      "cita_marca_municipal": true,
+      "from": [],
+      "rpc": [],
+      "select": [],
+      "url_rest": []
+    },
+    {
+      "nome": "comunicacao",
+      "offset": 3514914,
+      "bytes_corpo": 1791,
+      "truncado": false,
+      "cita_marca_municipal": true,
+      "from": [],
+      "rpc": [],
+      "select": [],
+      "url_rest": []
+    },
+    {
+      "nome": "infraestrutura",
+      "offset": 3516708,
+      "bytes_corpo": 1145,
+      "truncado": false,
+      "cita_marca_municipal": true,
+      "from": [],
+      "rpc": [],
+      "select": [],
+      "url_rest": []
+    },
+    {
+      "nome": "relatorios",
+      "offset": 3517854,
+      "bytes_corpo": 2028,
+      "truncado": false,
+      "cita_marca_municipal": true,
+      "from": [],
+      "rpc": [],
+      "select": [],
+      "url_rest": []
+    },
+    {
+      "nome": "corpo",
+      "offset": 3520001,
+      "bytes_corpo": 558,
+      "truncado": false,
+      "cita_marca_municipal": true,
+      "from": [],
+      "rpc": [],
+      "select": [],
+      "url_rest": []
+    },
+    {
+      "nome": "desenharCabeca",
+      "offset": 3520585,
+      "bytes_corpo": 249,
+      "truncado": false,
+      "cita_marca_municipal": true,
+      "from": [],
+      "rpc": [],
+      "select": [],
+      "url_rest": []
+    },
+    {
+      "nome": "desenhar",
+      "offset": 3520865,
+      "bytes_corpo": 2018,
+      "truncado": false,
+      "cita_marca_municipal": true,
+      "from": [],
+      "rpc": [],
+      "select": [],
+      "url_rest": []
+    },
+    {
+      "nome": "csv",
+      "offset": 3522899,
+      "bytes_corpo": 729,
+      "truncado": false,
+      "cita_marca_municipal": false,
+      "from": [],
+      "rpc": [],
+      "select": [],
+      "url_rest": []
+    },
+    {
+      "nome": "ligarEventos",
+      "offset": 3523660,
+      "bytes_corpo": 1626,
+      "truncado": false,
+      "cita_marca_municipal": true,
+      "from": [],
+      "rpc": [],
+      "select": [],
+      "url_rest": []
+    },
+    {
+      "nome": "aptoParaSessao",
+      "offset": 3525428,
+      "bytes_corpo": 714,
+      "truncado": false,
+      "cita_marca_municipal": false,
+      "from": [],
+      "rpc": [],
+      "select": [],
+      "url_rest": []
+    },
+    {
+      "nome": "aplicarVisibilidade",
+      "offset": 3526766,
+      "bytes_corpo": 429,
+      "truncado": false,
+      "cita_marca_municipal": false,
+      "from": [],
+      "rpc": [],
+      "select": [],
+      "url_rest": []
+    },
+    {
+      "nome": "garantir",
+      "offset": 3527268,
+      "bytes_corpo": 311,
+      "truncado": false,
+      "cita_marca_municipal": false,
+      "from": [],
+      "rpc": [],
+      "select": [],
+      "url_rest": []
+    },
+    {
+      "nome": "tentar",
+      "offset": 3527600,
+      "bytes_corpo": 906,
+      "truncado": false,
+      "cita_marca_municipal": false,
+      "from": [],
+      "rpc": [],
+      "select": [],
+      "url_rest": []
+    }
+  ],
+  "por_fora_do_modulo": [],
+  "ocorrencias_da_vista_no_corpus": 0,
+  "portoes": [
+    {
+      "nome": "fixture_posivo_todas_as_chamadas_de_gate_municipal_caem_no_involucre",
+      "verde": true,
+      "detalhe": {
+        "nome": "bfr_is_municipal_authority",
+        "ocorrencias_no_corpus": 4,
+        "no_modulo": 4,
+        "dentro_de_corpo_do_modulo": 3,
+        "por_ocorrencia": [
+          {
+            "offset_global": 3477523,
+            "no_modulo": true,
+            "menor_corpo": null,
+            "municipal": false,
+            "nota": "resto_do_involucre_ou_topo"
+          },
+          {
+            "offset_global": 3477993,
+            "no_modulo": true,
+            "menor_corpo": "sondarBackend",
+            "bytes_menor_corpo": 661,
+            "municipal": false,
+            "do_modulo": true
+          },
+          {
+            "offset_global": 3478633,
+            "no_modulo": true,
+            "menor_corpo": "faixaSonda",
+            "bytes_menor_corpo": 663,
+            "municipal": true,
+            "do_modulo": true
+          },
+          {
+            "offset_global": 3521383,
+            "no_modulo": true,
+            "menor_corpo": "desenhar",
+            "bytes_menor_corpo": 2018,
+            "municipal": true,
+            "do_modulo": true
+          }
+        ]
+      }
+    },
+    {
+      "nome": "o_involucre_do_modulo_foi_extraido_nao_inventado",
+      "verde": false,
+      "detalhe": {
+        "origem": "sem_involucre_extraido_a_faixa",
+        "nome": null,
+        "bytes": 71640
+      }
+    },
+    {
+      "nome": "a_regua_extrai_corpos_com_bytes_positivos",
+      "verde": false,
+      "detalhe": [
+        "patchWeatherCard=1587",
+        "patchLiaPosition=864",
+        "auditDirectionKpis=1424",
+        "patchDecisionArea=1299",
+        "patchNoteForm=1339",
+        "patchDirectionButtons=425",
+        "init=1119",
+        "RT=2",
+        "client=79",
+        "esc=57",
+        "registar=1291",
+        "fecharGaveta=612",
+        "sondarBackend=661",
+        "faixaSonda=663",
+        "pintarSonda=159",
+        "abrir=800",
+        "estilo=6146",
+        "ler=961",
+        "cabecalho=544",
+        "lado=319",
+        "cartao=140",
+        "painel=3676",
+        "escolas=2275",
+        "detalheEscola=1704",
+        "alunos=1966",
+        "profissionais=2393",
+        "pedagogico=3106",
+        "frequencia=2845",
+        "processos=2042",
+        "comunicacao=1791",
+        "infraestrutura=1145",
+        "relatorios=2028",
+        "corpo=558",
+        "desenharCabeca=249",
+        "desenhar=2018",
+        "csv=729",
+        "ligarEventos=1626",
+        "aptoParaSessao=714",
+        "aplicarVisibilidade=429",
+        "garantir=311",
+        "tentar=906"
+      ]
+    },
+    {
+      "nome": "nenhum_corpo_bate_no_teto_de_profundidade",
+      "verde": true,
+      "detalhe": {
+        "teto": 90000,
+        "truncados": []
+      }
+    },
+    {
+      "nome": "o_modulo_nao_e_a_shell_toda",
+      "verde": false,
+      "detalhe": {
+        "bytes_modulo": 71640,
+        "bytes_corpus": 3546846,
+        "corpos_no_modulo": 41,
+        "funcoes_na_faixa": 41
+      }
+    },
+    {
+      "nome": "a_vista_de_backend_nao_aparece_em_byte_nenhum_servido",
+      "verde": true,
+      "detalhe": {
+        "ocorrencias": 0
+      }
+    },
+    {
+      "nome": "os_agregados_e_o_catalogo_municipal_de_backend_tem_zero_ocorrencias",
+      "verde": true,
+      "detalhe": [
+        "bfr_municipal_school_stats=0",
+        "bfr_municipal_network_totals=0",
+        "bfr_municipal_municipalities=0",
+        "bfr_municipal_access_grants=0",
+        "bfr_municipal_audit=0",
+        "bfr_school_in_municipal_scope=0",
+        "bfr_is_municipal_authority=4"
+      ]
+    },
+    {
+      "nome": "a_lista_de_rotas_do_modulo_nao_e_vazia",
+      "verde": true,
+      "detalhe": {
+        "dos_corpos": {
+          "from": [],
+          "rpc": [
+            "bfr_is_municipal_authority"
+          ]
+        },
+        "do_resto_do_involucre": null
+      }
+    },
+    {
+      "nome": "nenhuma_rota_do_modulo_e_nome_municipal_de_backend",
+      "verde": false,
+      "detalhe": {
+        "from": [],
+        "rpc": [
+          "bfr_is_municipal_authority"
+        ],
+        "topo": null
+      }
+    }
+  ],
+  "conclusao": {
+    "nomes_municipais_de_backend_presentes_no_bundle": [
+      "bfr_is_municipal_authority"
+    ],
+    "nomes_municipais_de_backend_ausentes_do_bundle": [
+      "bfr_municipal_school_stats",
+      "bfr_municipal_network_totals",
+      "bfr_municipal_municipalities",
+      "bfr_municipal_access_grants",
+      "bfr_municipal_audit",
+      "bfr_school_in_municipal_scope"
+    ],
+    "frases_que_esta_corrida_autoriza": [
+      "dos 7 nomes municipais de backend, 1 aparecem nos bytes servidos ([\"bfr_is_municipal_authority×4\"]) e 6 têm zero ocorrências em 3546846 bytes",
+      "a vista e os agregados que o DDL de 18/11 endureceu não são chamados por byte nenhum do bundle: o 0 que eles devolvem NÃO é o número que a aba pinta",
+      "as rotas dentro do invólucro do módulo são {\"from\":[],\"rpc\":[\"bfr_is_municipal_authority\"],\"resto_do_involucre\":null}"
+    ]
+  },
+  "veredito": "VERMELHO: 4",
+  "falhas": [
+    "o_involucre_do_modulo_foi_extraido_nao_inventado: {\"origem\":\"sem_involucre_extraido_a_faixa\",\"nome\":null,\"bytes\":71640}",
+    "a_regua_extrai_corpos_com_bytes_positivos: [\"patchWeatherCard=1587\",\"patchLiaPosition=864\",\"auditDirectionKpis=1424\",\"patchDecisionArea=1299\",\"patchNoteForm=1339\",\"patchDirectionButtons=425\",\"init=1119\",\"RT=2\",\"client=79\",\"esc=57\",\"registar=1291\",\"fecharGaveta=612\",\"sondarBackend=661\",\"faixaSonda=663\",",
+    "o_modulo_nao_e_a_shell_toda: {\"bytes_modulo\":71640,\"bytes_corpus\":3546846,\"corpos_no_modulo\":41,\"funcoes_na_faixa\":41}",
+    "nenhuma_rota_do_modulo_e_nome_municipal_de_backend: {\"from\":[],\"rpc\":[\"bfr_is_municipal_authority\"],\"topo\":null}"
+  ]
+}

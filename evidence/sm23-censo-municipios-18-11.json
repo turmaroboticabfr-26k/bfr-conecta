@@ -1,0 +1,138 @@
+{
+  "programa": "scripts/sm23-censo-municipios-18-11.mjs",
+  "em": "2026-11-18T23:31:06.725Z",
+  "pergunta": "o que falta para o escopo municipal ter linhas: DDL, ou dados?",
+  "metodo": "contagens e junções por ::text no canal SQL (dono, BYPASSRLS); nenhuma escrita",
+  "unidade": "linhas por mesa; `escolas_com_municipio` são ESCOLAS com municipality_id não nulo",
+  "lido_de": "evidence/sm23-causa-predicado-18-11.json",
+  "causa_anterior": {
+    "escolas_sem_municipio": 6,
+    "grants_apontam_para": [
+      "ef4647c2-80a8-466a-810d-2a1579c20a95"
+    ],
+    "municipios_das_escolas": [],
+    "interseccao_grants_e_escolas": [],
+    "lido_com_cuidado": "se a intersecção for vazia, o WHERE devolve 0 linhas para QUALQUER papel, independentemente do security_invoker: o vazio é de DADOS (nenhuma escola marcada com o município concedido), não do modo da vista"
+  },
+  "mesas": [
+    {
+      "tabela": "bfr_municipal_access_grants",
+      "municipios": 1,
+      "nada": 0
+    },
+    {
+      "tabela": "bfr_municipal_audit",
+      "municipios": 1,
+      "nada": 0
+    },
+    {
+      "tabela": "bfr_municipalities",
+      "municipios": 1,
+      "nada": 0
+    },
+    {
+      "tabela": "bfr_school_key_map",
+      "municipios": 1,
+      "nada": 0
+    }
+  ],
+  "contagens": {
+    "municipios": 1,
+    "concessoes": 4,
+    "auditoria": 0,
+    "chaves_de_escola": 6,
+    "escolas": 6,
+    "escolas_com_municipio": 0
+  },
+  "municipios": [
+    {
+      "id": "ef4647c2-80a8-466a-810d-2a1579c20a95",
+      "nome": "Sao Paulo (SM8 fixture — apagar)"
+    }
+  ],
+  "concessionarios": [
+    {
+      "municipio_concedido": "ef4647c2-80a8-466a-810d-2a1579c20a95",
+      "existe_na_tabela_de_municipios": 1,
+      "escolas_desse_municipio": 0
+    }
+  ],
+  "chaves_de_escola": {
+    "linhas": 6,
+    "com_matched_by": 6,
+    "com_confirmado_por": 0,
+    "com_escola_desportiva": 6
+  },
+  "funcoes_de_escopo": [
+    {
+      "nome": "bfr_is_municipal_authority",
+      "argumentos": "",
+      "acl": "=X/postgres | postgres=X/postgres | anon=X/postgres | authenticated=X/postgres | service_role=X/postgres",
+      "anon_exec": true,
+      "auth_exec": true,
+      "svc_exec": true,
+      "em_policies": 5,
+      "em_views": 0
+    },
+    {
+      "nome": "bfr_is_platform_admin",
+      "argumentos": "",
+      "acl": "=X/postgres | postgres=X/postgres | anon=X/postgres | authenticated=X/postgres | service_role=X/postgres",
+      "anon_exec": true,
+      "auth_exec": true,
+      "svc_exec": true,
+      "em_policies": 8,
+      "em_views": 1
+    },
+    {
+      "nome": "bfr_municipal_municipalities",
+      "argumentos": "",
+      "acl": "postgres=X/postgres | service_role=X/postgres",
+      "anon_exec": false,
+      "auth_exec": false,
+      "svc_exec": true,
+      "em_policies": 0,
+      "em_views": 0
+    },
+    {
+      "nome": "bfr_municipalities_visible",
+      "argumentos": "p_id uuid",
+      "acl": "=X/postgres | postgres=X/postgres | anon=X/postgres | authenticated=X/postgres | service_role=X/postgres",
+      "anon_exec": true,
+      "auth_exec": true,
+      "svc_exec": true,
+      "em_policies": 1,
+      "em_views": 0
+    },
+    {
+      "nome": "bfr_school_in_municipal_scope",
+      "argumentos": "p_school uuid",
+      "acl": "postgres=X/postgres | service_role=X/postgres | authenticated=X/postgres",
+      "anon_exec": false,
+      "auth_exec": true,
+      "svc_exec": true,
+      "em_policies": 3,
+      "em_views": 1
+    },
+    {
+      "nome": "bfr_school_in_own_school_scope",
+      "argumentos": "p_school uuid",
+      "acl": "postgres=X/postgres | service_role=X/postgres | authenticated=X/postgres",
+      "anon_exec": false,
+      "auth_exec": true,
+      "svc_exec": true,
+      "em_policies": 1,
+      "em_views": 0
+    }
+  ],
+  "conclusao": {
+    "escolas_sem_municipio": 6,
+    "municipios_registrados": 1,
+    "frases_que_esta_corrida_autoriza": [
+      "nenhuma das 6 escolas carries município: o predicado de escopo não tem com que casar",
+      "bfr_municipalities tem 1 linhas",
+      "nada disto é causado pelo `security_invoker=true`: o mesmo WHERE, avaliado sem sessão, já dava falso para todas as escolas"
+    ],
+    "o_que_a_escola_tem_de_decidir": "quais escolas pertencem a qual município (é dado, não política); só depois a vista municipal devolve linhas"
+  }
+}

@@ -1,0 +1,311 @@
+{
+  "programa": "scripts/sm23-causa-vista-18-11.mjs",
+  "em": "2026-11-18T23:25:00.605Z",
+  "pergunta": "o developer perdeu 6 linhas na vista por minha causa, ou por RLS que sempre existiu nas tabelas base?",
+  "metodo": "GET com Prefer: count=exact (total = o que a RLS do chamador deixa ver, não o limit)",
+  "unidade": "total de linhas visíveis POR PAPEL (Content-Range depois do «/»), não contagem global de tabela; `*` significa que o servidor não devolveu contagem — não é zero",
+  "hipotese_e_falsificacao": "se o mesmo papel vê 0 em `schools` direto, então a vista em invoker devolve o que a política manda; o «6 antes» era BYPASSRLS do dono da vista",
+  "estado_do_aplicador": {
+    "vista_modo": "invoker",
+    "def_md5": "af7a898df0af2401d80f289a0736dcd2",
+    "dif_vista_do_registro": {
+      "antes": {
+        "developer": 6,
+        "secretary": 0,
+        "coordinator": 0,
+        "secretario_municipal": 0,
+        "gestor_autorizado": 0,
+        "student": 0
+      },
+      "depois": {
+        "developer": 0,
+        "secretary": 0,
+        "coordinator": 0,
+        "secretario_municipal": 0,
+        "gestor_autorizado": 0,
+        "student": 0
+      },
+      "alargou": [],
+      "estreitou": [
+        "developer"
+      ]
+    }
+  },
+  "globais_esperadas": {
+    "schools": 6,
+    "students": 848,
+    "profiles": 28,
+    "announcements": 1,
+    "grants": 4,
+    "supervision_requests": 0
+  },
+  "porPersona": [
+    {
+      "persona": "developer",
+      "schools": {
+        "status": 200,
+        "linhas": 0,
+        "total_ou_estrela": null,
+        "code": null,
+        "bytes": 2
+      },
+      "classes": {
+        "status": 206,
+        "linhas": 1,
+        "total_ou_estrela": "27",
+        "code": null,
+        "bytes": 47
+      },
+      "students": {
+        "status": 206,
+        "linhas": 1,
+        "total_ou_estrela": "848",
+        "code": null,
+        "bytes": 47
+      },
+      "staff_schools": {
+        "status": 206,
+        "linhas": 1,
+        "total_ou_estrela": "6",
+        "code": null,
+        "bytes": 47
+      },
+      "bfr_school_key_map": {
+        "status": 400,
+        "linhas": null,
+        "total_ou_estrela": null,
+        "code": "42703",
+        "bytes": 99
+      },
+      "bfr_municipal_school_stats": {
+        "status": 200,
+        "linhas": 0,
+        "total_ou_estrela": null,
+        "code": null,
+        "bytes": 2
+      },
+      "rpc_totals": {
+        "status": 200,
+        "valores": {
+          "schools": 6,
+          "students": 848,
+          "classes": 27,
+          "municipalities": 0
+        }
+      }
+    },
+    {
+      "persona": "secretario_municipal",
+      "schools": {
+        "status": 206,
+        "linhas": 1,
+        "total_ou_estrela": "6",
+        "code": null,
+        "bytes": 47
+      },
+      "classes": {
+        "status": 206,
+        "linhas": 1,
+        "total_ou_estrela": "27",
+        "code": null,
+        "bytes": 47
+      },
+      "students": {
+        "status": 206,
+        "linhas": 1,
+        "total_ou_estrela": "848",
+        "code": null,
+        "bytes": 47
+      },
+      "staff_schools": {
+        "status": 200,
+        "linhas": 0,
+        "total_ou_estrela": null,
+        "code": null,
+        "bytes": 2
+      },
+      "bfr_school_key_map": {
+        "status": 400,
+        "linhas": null,
+        "total_ou_estrela": null,
+        "code": "42703",
+        "bytes": 99
+      },
+      "bfr_municipal_school_stats": {
+        "status": 200,
+        "linhas": 0,
+        "total_ou_estrela": null,
+        "code": null,
+        "bytes": 2
+      },
+      "rpc_totals": {
+        "status": 200,
+        "valores": {
+          "schools": 0,
+          "students": 0,
+          "classes": 0,
+          "municipalities": 0
+        }
+      }
+    },
+    {
+      "persona": "gestor_autorizado",
+      "schools": {
+        "status": 206,
+        "linhas": 1,
+        "total_ou_estrela": "6",
+        "code": null,
+        "bytes": 47
+      },
+      "classes": {
+        "status": 206,
+        "linhas": 1,
+        "total_ou_estrela": "27",
+        "code": null,
+        "bytes": 47
+      },
+      "students": {
+        "status": 206,
+        "linhas": 1,
+        "total_ou_estrela": "848",
+        "code": null,
+        "bytes": 47
+      },
+      "staff_schools": {
+        "status": 200,
+        "linhas": 0,
+        "total_ou_estrela": null,
+        "code": null,
+        "bytes": 2
+      },
+      "bfr_school_key_map": {
+        "status": 400,
+        "linhas": null,
+        "total_ou_estrela": null,
+        "code": "42703",
+        "bytes": 99
+      },
+      "bfr_municipal_school_stats": {
+        "status": 200,
+        "linhas": 0,
+        "total_ou_estrela": null,
+        "code": null,
+        "bytes": 2
+      },
+      "rpc_totals": {
+        "status": 200,
+        "valores": {
+          "schools": 0,
+          "students": 0,
+          "classes": 0,
+          "municipalities": 0
+        }
+      }
+    },
+    {
+      "persona": "secretary",
+      "schools": {
+        "status": 200,
+        "linhas": 0,
+        "total_ou_estrela": null,
+        "code": null,
+        "bytes": 2
+      },
+      "classes": {
+        "status": 206,
+        "linhas": 1,
+        "total_ou_estrela": "27",
+        "code": null,
+        "bytes": 47
+      },
+      "students": {
+        "status": 206,
+        "linhas": 1,
+        "total_ou_estrela": "848",
+        "code": null,
+        "bytes": 47
+      },
+      "staff_schools": {
+        "status": 200,
+        "linhas": 1,
+        "total_ou_estrela": "1",
+        "code": null,
+        "bytes": 47
+      },
+      "bfr_school_key_map": {
+        "status": 400,
+        "linhas": null,
+        "total_ou_estrela": null,
+        "code": "42703",
+        "bytes": 99
+      },
+      "bfr_municipal_school_stats": {
+        "status": 200,
+        "linhas": 0,
+        "total_ou_estrela": null,
+        "code": null,
+        "bytes": 2
+      },
+      "rpc_totals": {
+        "status": 200,
+        "valores": {
+          "schools": 0,
+          "students": 0,
+          "classes": 0,
+          "municipalities": 0
+        }
+      }
+    }
+  ],
+  "anon": {
+    "schools": {
+      "status": 401,
+      "linhas": null,
+      "total_ou_estrela": null,
+      "code": "42501",
+      "bytes": 184
+    },
+    "classes": {
+      "status": 200,
+      "linhas": 0,
+      "total_ou_estrela": null,
+      "code": null,
+      "bytes": 2
+    },
+    "students": {
+      "status": 200,
+      "linhas": 0,
+      "total_ou_estrela": null,
+      "code": null,
+      "bytes": 2
+    },
+    "staff_schools": {
+      "status": 401,
+      "linhas": null,
+      "total_ou_estrela": null,
+      "code": "42501",
+      "bytes": 196
+    },
+    "bfr_school_key_map": {
+      "status": 400,
+      "linhas": null,
+      "total_ou_estrela": null,
+      "code": "42703",
+      "bytes": 99
+    },
+    "bfr_municipal_school_stats": {
+      "status": 401,
+      "linhas": null,
+      "total_ou_estrela": null,
+      "code": "42501",
+      "bytes": 184
+    }
+  },
+  "leitura_humana": [
+    "developer            schools=0 classes=27 students=848 staff_school=6 bfr_school_k=42703 | VISTA=0 | rpc={\"schools\":6,\"students\":848,\"classes\":27,\"municipalities\":0}",
+    "secretario_municipal schools=6 classes=27 students=848 staff_school=0 bfr_school_k=42703 | VISTA=0 | rpc={\"schools\":0,\"students\":0,\"classes\":0,\"municipalities\":0}",
+    "gestor_autorizado    schools=6 classes=27 students=848 staff_school=0 bfr_school_k=42703 | VISTA=0 | rpc={\"schools\":0,\"students\":0,\"classes\":0,\"municipalities\":0}",
+    "secretary            schools=0 classes=27 students=848 staff_school=1 bfr_school_k=42703 | VISTA=0 | rpc={\"schools\":0,\"students\":0,\"classes\":0,\"municipalities\":0}",
+    "anon                schools=42501 classes=0 students=0 staff_school=42501 bfr_school_k=42703 | VISTA=401/42501"
+  ]
+}

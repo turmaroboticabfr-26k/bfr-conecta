@@ -1,0 +1,631 @@
+{
+  "programa": "scripts/sm23-escopo-aplicado-por-leitura-18-11.mjs",
+  "em": "2026-11-18T23:55:37.468Z",
+  "duracao_ms": 537,
+  "pergunta": "se nenhum nome municipal de backend está no bundle, onde é que o escopo «por município» da Secretaria Municipal é aplicado?",
+  "metodo": "fetch + md5 contra a candidata; invólucro declarado `data-bfr-municipal-module`; por leitura, separo FILTRO (.eq/.in/.gte/.lte/.like/.is/.or/.textSearch) de PROJECCÃO (1.º argumento do .select); mencões de `municipalit*` no corpo do módulo reportadas com contexto; fixture obrigatório por classe de régua; zero SQL",
+  "precedentes": [
+    "evidence/sm23-involucro-e-grafias-do-modulo-municipal-18-11.json",
+    "evidence/sm23-conferencia-nomes-municipais-18-11.json"
+  ],
+  "servido": {
+    "url": "https://bfr-conecta.turmaroboticabfr.workers.dev",
+    "status": 200,
+    "bytes": 3546846,
+    "md5": "b272fd4f3a737c518e888250ab8167f1"
+  },
+  "involucro": {
+    "tag": "<script data-bfr-municipal-module=\"1\">",
+    "desde": 3472316,
+    "corpo_desde": 3472354,
+    "fim": 3528762,
+    "chars": 56408
+  },
+  "fixture": {
+    "filtros": {
+      "eq": [
+        "municipality_id"
+      ],
+      "in": [
+        "estado"
+      ],
+      "gte": [
+        "created_at"
+      ],
+      "lte": [],
+      "like": [],
+      "is": [],
+      "or": [],
+      "textSearch": []
+    },
+    "projecoes": [
+      "id,municipality_id"
+    ],
+    "controle_negativo": {
+      "eq": [
+        "coluna_que_nao_existe_nesta_app_zzz"
+      ],
+      "in": [],
+      "gte": [],
+      "lte": [],
+      "like": [],
+      "is": [],
+      "or": [],
+      "textSearch": []
+    }
+  },
+  "colunas_de_municipio_procuradas": [
+    "municipality_id",
+    "municipio_id",
+    "municipality",
+    "municipio"
+  ],
+  "leituras": [
+    {
+      "mesa": "bfr_is_municipal_authority",
+      "offset": 3477988,
+      "chars_cadeia": 10419,
+      "filtros": {
+        "eq": [],
+        "in": [],
+        "gte": [],
+        "lte": [],
+        "like": [],
+        "is": [],
+        "or": [],
+        "textSearch": []
+      },
+      "colunas_filtradas": [],
+      "projecoes": []
+    },
+    {
+      "mesa": "schools",
+      "offset": 3488407,
+      "chars_cadeia": 135,
+      "filtros": {
+        "eq": [],
+        "in": [],
+        "gte": [],
+        "lte": [],
+        "like": [],
+        "is": [],
+        "or": [],
+        "textSearch": []
+      },
+      "colunas_filtradas": [],
+      "projecoes": [
+        "id,name,code,city,state,phase,active"
+      ]
+    },
+    {
+      "mesa": "students",
+      "offset": 3488542,
+      "chars_cadeia": 213,
+      "filtros": {
+        "eq": [],
+        "in": [],
+        "gte": [],
+        "lte": [],
+        "like": [],
+        "is": [],
+        "or": [],
+        "textSearch": []
+      },
+      "colunas_filtradas": [],
+      "projecoes": [
+        "id,official_name,active,class_id,school_id,classes(year,class_code,shift),schools(name,city)"
+      ]
+    },
+    {
+      "mesa": "classes",
+      "offset": 3488755,
+      "chars_cadeia": 153,
+      "filtros": {
+        "eq": [],
+        "in": [],
+        "gte": [],
+        "lte": [],
+        "like": [],
+        "is": [],
+        "or": [],
+        "textSearch": []
+      },
+      "colunas_filtradas": [],
+      "projecoes": [
+        "id,year,class_code,shift,school_id,schools(name)"
+      ]
+    },
+    {
+      "mesa": "supervision_requests",
+      "offset": 3488908,
+      "chars_cadeia": 246,
+      "filtros": {
+        "eq": [],
+        "in": [],
+        "gte": [],
+        "lte": [],
+        "like": [],
+        "is": [],
+        "or": [],
+        "textSearch": []
+      },
+      "colunas_filtradas": [],
+      "projecoes": [
+        "id,indicator,motive,priority,status,deadline_at,created_at,closed_at,school_id,sports_schools(name)"
+      ]
+    },
+    {
+      "mesa": "bfr_lesson_attendance",
+      "offset": 3489154,
+      "chars_cadeia": 236,
+      "filtros": {
+        "eq": [],
+        "in": [],
+        "gte": [],
+        "lte": [],
+        "like": [],
+        "is": [],
+        "or": [],
+        "textSearch": []
+      },
+      "colunas_filtradas": [],
+      "projecoes": [
+        "id,class_id,student_id,lesson_date,period,status,students(school_id)"
+      ]
+    },
+    {
+      "mesa": "staff_schools",
+      "offset": 3489390,
+      "chars_cadeia": 238,
+      "filtros": {
+        "eq": [],
+        "in": [],
+        "gte": [],
+        "lte": [],
+        "like": [],
+        "is": [],
+        "or": [],
+        "textSearch": []
+      },
+      "colunas_filtradas": [],
+      "projecoes": [
+        "id,role,school_id,profile_id,profiles(full_name)"
+      ]
+    },
+    {
+      "mesa": "schools",
+      "offset": 3489628,
+      "chars_cadeia": 219,
+      "filtros": {
+        "eq": [],
+        "in": [],
+        "gte": [],
+        "lte": [],
+        "like": [],
+        "is": [],
+        "or": [],
+        "textSearch": []
+      },
+      "colunas_filtradas": [],
+      "projecoes": [
+        "id,name,code,city,state,phase,active,address_line"
+      ]
+    },
+    {
+      "mesa": "students",
+      "offset": 3489847,
+      "chars_cadeia": 383,
+      "filtros": {
+        "eq": [
+          "school_id"
+        ],
+        "in": [],
+        "gte": [],
+        "lte": [],
+        "like": [],
+        "is": [],
+        "or": [],
+        "textSearch": []
+      },
+      "colunas_filtradas": [
+        "school_id"
+      ],
+      "projecoes": [
+        "id,official_name,active,class_id,school_id,classes(year,class_code,shift),schools(name,city)"
+      ]
+    },
+    {
+      "mesa": "staff_schools",
+      "offset": 3490230,
+      "chars_cadeia": 169,
+      "filtros": {
+        "eq": [],
+        "in": [],
+        "gte": [],
+        "lte": [],
+        "like": [],
+        "is": [],
+        "or": [],
+        "textSearch": []
+      },
+      "colunas_filtradas": [],
+      "projecoes": [
+        "id,role,school_id,profile_id,profiles(full_name,email,role)"
+      ]
+    },
+    {
+      "mesa": "grades",
+      "offset": 3490399,
+      "chars_cadeia": 252,
+      "filtros": {
+        "eq": [],
+        "in": [],
+        "gte": [],
+        "lte": [],
+        "like": [],
+        "is": [],
+        "or": [],
+        "textSearch": []
+      },
+      "colunas_filtradas": [],
+      "projecoes": [
+        "id,student_id,subject,assessment,score,term,category,students(official_name,school_id,class_id,classes(year,class_code,shift))"
+      ]
+    },
+    {
+      "mesa": "bfr_lesson_attendance",
+      "offset": 3490651,
+      "chars_cadeia": 258,
+      "filtros": {
+        "eq": [],
+        "in": [],
+        "gte": [],
+        "lte": [],
+        "like": [],
+        "is": [],
+        "or": [],
+        "textSearch": []
+      },
+      "colunas_filtradas": [],
+      "projecoes": [
+        "id,class_id,student_id,lesson_date,period,subject,shift,status,source,students(official_name,school_id)"
+      ]
+    },
+    {
+      "mesa": "supervision_alerts",
+      "offset": 3490909,
+      "chars_cadeia": 300,
+      "filtros": {
+        "eq": [],
+        "in": [],
+        "gte": [],
+        "lte": [],
+        "like": [],
+        "is": [],
+        "or": [],
+        "textSearch": []
+      },
+      "colunas_filtradas": [],
+      "projecoes": [
+        "id,kind,title,body,entity_type,entity_id,acknowledged_by,acknowledged_at"
+      ]
+    },
+    {
+      "mesa": "supervision_requests",
+      "offset": 3491209,
+      "chars_cadeia": 298,
+      "filtros": {
+        "eq": [],
+        "in": [],
+        "gte": [],
+        "lte": [],
+        "like": [],
+        "is": [],
+        "or": [],
+        "textSearch": []
+      },
+      "colunas_filtradas": [],
+      "projecoes": [
+        "id,indicator,motive,description,priority,status,deadline_at,created_at,updated_at,closed_at,created_by,closed_by,school_id,sports_schools(name,city)"
+      ]
+    },
+    {
+      "mesa": "supervision_responses",
+      "offset": 3491507,
+      "chars_cadeia": 253,
+      "filtros": {
+        "eq": [],
+        "in": [],
+        "gte": [],
+        "lte": [],
+        "like": [],
+        "is": [],
+        "or": [],
+        "textSearch": []
+      },
+      "colunas_filtradas": [],
+      "projecoes": [
+        "id,request_id,round,justification,measures_taken,responsible_name,deadline_at,created_at"
+      ]
+    },
+    {
+      "mesa": "announcements",
+      "offset": 3491760,
+      "chars_cadeia": 301,
+      "filtros": {
+        "eq": [],
+        "in": [],
+        "gte": [],
+        "lte": [],
+        "like": [],
+        "is": [],
+        "or": [],
+        "textSearch": []
+      },
+      "colunas_filtradas": [],
+      "projecoes": [
+        "id,title,body,important,message_type,audience_mode,status,published_at,requires_confirmation,scheduled_at,profiles!announcements_published_by_fkey(full_name)"
+      ]
+    },
+    {
+      "mesa": "school_documents",
+      "offset": 3492061,
+      "chars_cadeia": 255,
+      "filtros": {
+        "eq": [],
+        "in": [],
+        "gte": [],
+        "lte": [],
+        "like": [],
+        "is": [],
+        "or": [],
+        "textSearch": []
+      },
+      "colunas_filtradas": [],
+      "projecoes": [
+        "id,title,category,description,storage_path,published,created_at,updated_at,document_type"
+      ]
+    },
+    {
+      "mesa": "schools",
+      "offset": 3492316,
+      "chars_cadeia": 128,
+      "filtros": {
+        "eq": [],
+        "in": [],
+        "gte": [],
+        "lte": [],
+        "like": [],
+        "is": [],
+        "or": [],
+        "textSearch": []
+      },
+      "colunas_filtradas": [],
+      "projecoes": [
+        "id,name,code,city,state,phase,active"
+      ]
+    },
+    {
+      "mesa": "students",
+      "offset": 3492444,
+      "chars_cadeia": 206,
+      "filtros": {
+        "eq": [],
+        "in": [],
+        "gte": [],
+        "lte": [],
+        "like": [],
+        "is": [],
+        "or": [],
+        "textSearch": []
+      },
+      "colunas_filtradas": [],
+      "projecoes": [
+        "id,official_name,active,class_id,school_id,classes(year,class_code,shift),schools(name,city)"
+      ]
+    },
+    {
+      "mesa": "classes",
+      "offset": 3492650,
+      "chars_cadeia": 36112,
+      "filtros": {
+        "eq": [],
+        "in": [],
+        "gte": [],
+        "lte": [],
+        "like": [],
+        "is": [],
+        "or": [],
+        "textSearch": []
+      },
+      "colunas_filtradas": [],
+      "projecoes": [
+        "id,year,class_code,shift,school_id,schools(name)"
+      ]
+    }
+  ],
+  "resumo": {
+    "mesas_lidas": [
+      "announcements",
+      "bfr_is_municipal_authority",
+      "bfr_lesson_attendance",
+      "classes",
+      "grades",
+      "school_documents",
+      "schools",
+      "staff_schools",
+      "students",
+      "supervision_alerts",
+      "supervision_requests",
+      "supervision_responses"
+    ],
+    "colunas_filtradas_em_todas_as_leituras": [
+      "school_id"
+    ],
+    "leituras_que_filtram_por_municipio": [],
+    "leituras_que_projectam_municipio": []
+  },
+  "mencoes_de_municipio_no_involucre": [],
+  "portoes": [
+    {
+      "nome": "a_pegada_servida_e_a_candidata_versionada",
+      "verde": true,
+      "detalhe": {
+        "md5_servido": "b272fd4f3a737c518e888250ab8167f1",
+        "md5_local": "b272fd4f3a737c518e888250ab8167f1"
+      }
+    },
+    {
+      "nome": "o_involucre_e_o_mesmo_da_peca_6",
+      "verde": true,
+      "detalhe": {
+        "chars": 56408,
+        "desde": 3472316,
+        "fim": 3528762
+      }
+    },
+    {
+      "nome": "o_extractor_de_filtros_ve_um_eq_de_municipio_no_fixture",
+      "verde": true,
+      "detalhe": {
+        "eq": [
+          "municipality_id"
+        ],
+        "in": [
+          "estado"
+        ],
+        "gte": [
+          "created_at"
+        ],
+        "lte": [],
+        "like": [],
+        "is": [],
+        "or": [],
+        "textSearch": []
+      }
+    },
+    {
+      "nome": "o_extractor_de_filtros_ve_in_e_gte_no_fixture",
+      "verde": true,
+      "detalhe": {
+        "eq": [
+          "municipality_id"
+        ],
+        "in": [
+          "estado"
+        ],
+        "gte": [
+          "created_at"
+        ],
+        "lte": [],
+        "like": [],
+        "is": [],
+        "or": [],
+        "textSearch": []
+      }
+    },
+    {
+      "nome": "o_extractor_de_projecoes_nao_se_confunde_com_filtro",
+      "verde": true,
+      "detalhe": {
+        "fixProj": [
+          "id,municipality_id"
+        ],
+        "eq": [
+          "municipality_id"
+        ]
+      }
+    },
+    {
+      "nome": "a_regua_nao_inventa_filtros_no_controlo_negativo",
+      "verde": true,
+      "detalhe": {
+        "eq": [
+          "coluna_que_nao_existe_nesta_app_zzz"
+        ],
+        "in": [],
+        "gte": [],
+        "lte": [],
+        "like": [],
+        "is": [],
+        "or": [],
+        "textSearch": []
+      }
+    },
+    {
+      "nome": "cada_leitura_do_modulo_foi_medida_com_a_sua_cadeia",
+      "verde": true,
+      "detalhe": {
+        "leituras": 20,
+        "cadeias": [
+          "bfr_is_municipal_authority@10419",
+          "schools@135",
+          "students@213",
+          "classes@153",
+          "supervision_requests@246",
+          "bfr_lesson_attendance@236",
+          "staff_schools@238",
+          "schools@219",
+          "students@383",
+          "staff_schools@169",
+          "grades@252",
+          "bfr_lesson_attendance@258",
+          "supervision_alerts@300",
+          "supervision_requests@298",
+          "supervision_responses@253",
+          "announcements@301",
+          "school_documents@255",
+          "schools@128",
+          "students@206",
+          "classes@36112"
+        ]
+      }
+    },
+    {
+      "nome": "nenhuma_leitura_do_modulo_filha_no_servidor_por_municipio",
+      "verde": true,
+      "detalhe": {
+        "filtram_municipio": [],
+        "colunas_procuradas": [
+          "municipality_id",
+          "municipio_id",
+          "municipality",
+          "municipio"
+        ]
+      }
+    },
+    {
+      "nome": "toda_mencao_de_municipio_sai_com_contexto_legivel",
+      "verde": false,
+      "detalhe": {
+        "ocorrencias": 0,
+        "termos": [],
+        "leituras_que_projectam_municipio": []
+      }
+    },
+    {
+      "nome": "a_unica_funcao_de_backend_chamada_e_o_gate_de_autoridade",
+      "verde": true,
+      "detalhe": {
+        "funcoes": [
+          3477988
+        ]
+      }
+    }
+  ],
+  "conclusao": {
+    "frases_que_esta_corrida_autoriza": [
+      "as 20 leituras do módulo filtram por [\"school_id\"] — nenhuma por coluna de município ([])",
+      "o termo município aparece 0 vezes dentro do invólucro; as ocorrências vêm com contexto neste artefacto, para que a frase «o escopo está aplicado» possa ser lida em vez de acreditada",
+      "logo, para o que este módulo pinta, o que separa um município do outro NÃO é uma cláusula escrita no módulo municipal: ou vem da RLS das mesas que ele abre, ou não vem — e a RLS por papel está medida em sm23-causa-vista-18-11.json"
+    ],
+    "o_que_este_artefacto_nao_prova": [
+      "não prova o que a RLS deixa passar por mesa e por papel: é código servido, não consulta executada",
+      "não prova que nenhuma filtragem acontece mais tarde em JavaScript sobre dados já trazidos: prova apenas que as cadeias de leitura não pedem o filtro ao servidor. As menções de `municipalit*` com contexto ficam neste ficheiro para essa leitura."
+    ]
+  },
+  "veredito": "VERMELHO: 1",
+  "falhas": [
+    "toda_mencao_de_municipio_sai_com_contexto_legivel: {\"ocorrencias\":0,\"termos\":[],\"leituras_que_projectam_municipio\":[]}"
+  ]
+}

@@ -1,0 +1,808 @@
+{
+  "programa": "scripts/sm23-formas-de-chamada-no-modulo-municipal-18-11.mjs",
+  "em": "2026-11-18T23:54:19.925Z",
+  "duracao_ms": 612,
+  "pergunta": "que mesas e que funções o módulo da Secretaria Municipal abre, e alguma delas é uma das seis superficies que o DDL de 18/11 endureceu?",
+  "metodo": "fetch + md5 contra a candidata versionada; invólucro = o `<script data-bfr-municipal-module>` declarado pelo produtor, não uma janela; contagem por verbo NAS DUAS grafias (.x( e x( ); nomes de mesa por regex que casa as duas; fixture positivo por grafo e controlo negativo; zero SQL",
+  "substitui": "evidence/sm23-formas-de-chamada-na-faixa-municipal-18-11-ANTERIOR-faixa-de-16kb-so-contava-a-grafia-com-ponto.json",
+  "antecessores": [
+    "evidence/sm23-leitura-aba-municipal-18-11-ANTERIOR-janela-fixa-de-24kb-sobre-colhia-vizinhos.json",
+    "evidence/sm23-leitura-aba-municipal-18-11-ANTERIOR-exigia-marca-dentro-de-cada-corpo.json",
+    "evidence/sm23-leitura-aba-municipal-18-11-ANTERIOR-exigia-involucre-unico-e-corpos-de-40bytes.json",
+    "evidence/sm23-formas-de-chamada-na-faixa-municipal-18-11-ANTERIOR-faixa-de-16kb-so-contava-a-grafia-com-ponto.json",
+    "evidence/sm23-involucro-e-grafias-do-modulo-municipal-18-11-ANTERIOR-fixture-com-rpc-pontuado-dos-lados.json"
+  ],
+  "servido": {
+    "url": "https://bfr-conecta.turmaroboticabfr.workers.dev",
+    "status": 200,
+    "bytes": 3546846,
+    "md5": "b272fd4f3a737c518e888250ab8167f1"
+  },
+  "candidata_local": {
+    "ficheiro": "bfr-candidata-v134-sidebar-escondida/index.html",
+    "md5": "b272fd4f3a737c518e888250ab8167f1",
+    "identica_ao_servido": true
+  },
+  "involucro": {
+    "tag": "<script data-bfr-municipal-module=\"1\">",
+    "desde": 3472316,
+    "corpo_desde": 3472354,
+    "fim": 3528762,
+    "chars": 56408,
+    "fracao_do_corpus": 0.016,
+    "ancoras_bfrMunicipal_dentro": 54,
+    "ancoras_no_corpus": 54
+  },
+  "fixture_da_regua": {
+    "com_ponto_from": 1,
+    "solto_from": 1,
+    "com_ponto_rpc": 1,
+    "solto_rpc": 1,
+    "nomes": [
+      "fn_pontuada",
+      "fn_solta",
+      "mesa_de_escrita",
+      "mesa_pontuada",
+      "mesa_solta"
+    ]
+  },
+  "controle_negativo": {
+    "agulha": "from('mesa_que_nao_existe_nesta_base_zzz')",
+    "no_corpus": 0,
+    "no_involucro": 0
+  },
+  "grelha_de_grafias": {
+    "no_involucre": [
+      {
+        "eixo": "involucro",
+        "verbo": "from",
+        "grafo": "com_ponto",
+        "ocorrencias": 0
+      },
+      {
+        "eixo": "involucro",
+        "verbo": "from",
+        "grafo": "solto",
+        "ocorrencias": 19
+      },
+      {
+        "eixo": "involucro",
+        "verbo": "rpc",
+        "grafo": "com_ponto",
+        "ocorrencias": 1
+      },
+      {
+        "eixo": "involucro",
+        "verbo": "rpc",
+        "grafo": "solto",
+        "ocorrencias": 0
+      },
+      {
+        "eixo": "involucro",
+        "verbo": "insert",
+        "grafo": "com_ponto",
+        "ocorrencias": 0
+      },
+      {
+        "eixo": "involucro",
+        "verbo": "insert",
+        "grafo": "solto",
+        "ocorrencias": 0
+      },
+      {
+        "eixo": "involucro",
+        "verbo": "update",
+        "grafo": "com_ponto",
+        "ocorrencias": 0
+      },
+      {
+        "eixo": "involucro",
+        "verbo": "update",
+        "grafo": "solto",
+        "ocorrencias": 0
+      },
+      {
+        "eixo": "involucro",
+        "verbo": "delete",
+        "grafo": "com_ponto",
+        "ocorrencias": 0
+      },
+      {
+        "eixo": "involucro",
+        "verbo": "delete",
+        "grafo": "solto",
+        "ocorrencias": 0
+      },
+      {
+        "eixo": "involucro",
+        "verbo": "upsert",
+        "grafo": "com_ponto",
+        "ocorrencias": 0
+      },
+      {
+        "eixo": "involucro",
+        "verbo": "upsert",
+        "grafo": "solto",
+        "ocorrencias": 0
+      },
+      {
+        "eixo": "involucro",
+        "verbo": "select",
+        "grafo": "com_ponto",
+        "ocorrencias": 19
+      },
+      {
+        "eixo": "involucro",
+        "verbo": "select",
+        "grafo": "solto",
+        "ocorrencias": 0
+      },
+      {
+        "eixo": "involucro",
+        "verbo": "single",
+        "grafo": "com_ponto",
+        "ocorrencias": 0
+      },
+      {
+        "eixo": "involucro",
+        "verbo": "single",
+        "grafo": "solto",
+        "ocorrencias": 0
+      },
+      {
+        "eixo": "involucro",
+        "verbo": "maybeSingle",
+        "grafo": "com_ponto",
+        "ocorrencias": 0
+      },
+      {
+        "eixo": "involucro",
+        "verbo": "maybeSingle",
+        "grafo": "solto",
+        "ocorrencias": 0
+      },
+      {
+        "eixo": "involucro",
+        "verbo": "fetch",
+        "grafo": "solto",
+        "ocorrencias": 0
+      },
+      {
+        "eixo": "involucro",
+        "verbo": "rest_v1_literal",
+        "grafo": "url",
+        "ocorrencias": 0
+      }
+    ],
+    "no_corpus": [
+      {
+        "eixo": "corpus",
+        "verbo": "from",
+        "grafo": "com_ponto",
+        "ocorrencias": 717
+      },
+      {
+        "eixo": "corpus",
+        "verbo": "from",
+        "grafo": "solto",
+        "ocorrencias": 19
+      },
+      {
+        "eixo": "corpus",
+        "verbo": "rpc",
+        "grafo": "com_ponto",
+        "ocorrencias": 32
+      },
+      {
+        "eixo": "corpus",
+        "verbo": "rpc",
+        "grafo": "solto",
+        "ocorrencias": 0
+      },
+      {
+        "eixo": "corpus",
+        "verbo": "insert",
+        "grafo": "com_ponto",
+        "ocorrencias": 122
+      },
+      {
+        "eixo": "corpus",
+        "verbo": "insert",
+        "grafo": "solto",
+        "ocorrencias": 8
+      },
+      {
+        "eixo": "corpus",
+        "verbo": "update",
+        "grafo": "com_ponto",
+        "ocorrencias": 52
+      },
+      {
+        "eixo": "corpus",
+        "verbo": "update",
+        "grafo": "solto",
+        "ocorrencias": 0
+      },
+      {
+        "eixo": "corpus",
+        "verbo": "delete",
+        "grafo": "com_ponto",
+        "ocorrencias": 20
+      },
+      {
+        "eixo": "corpus",
+        "verbo": "delete",
+        "grafo": "solto",
+        "ocorrencias": 0
+      },
+      {
+        "eixo": "corpus",
+        "verbo": "upsert",
+        "grafo": "com_ponto",
+        "ocorrencias": 22
+      },
+      {
+        "eixo": "corpus",
+        "verbo": "upsert",
+        "grafo": "solto",
+        "ocorrencias": 0
+      },
+      {
+        "eixo": "corpus",
+        "verbo": "select",
+        "grafo": "com_ponto",
+        "ocorrencias": 516
+      },
+      {
+        "eixo": "corpus",
+        "verbo": "select",
+        "grafo": "solto",
+        "ocorrencias": 0
+      },
+      {
+        "eixo": "corpus",
+        "verbo": "single",
+        "grafo": "com_ponto",
+        "ocorrencias": 25
+      },
+      {
+        "eixo": "corpus",
+        "verbo": "single",
+        "grafo": "solto",
+        "ocorrencias": 0
+      },
+      {
+        "eixo": "corpus",
+        "verbo": "maybeSingle",
+        "grafo": "com_ponto",
+        "ocorrencias": 26
+      },
+      {
+        "eixo": "corpus",
+        "verbo": "maybeSingle",
+        "grafo": "solto",
+        "ocorrencias": 1
+      },
+      {
+        "eixo": "corpus",
+        "verbo": "fetch",
+        "grafo": "solto",
+        "ocorrencias": 7
+      },
+      {
+        "eixo": "corpus",
+        "verbo": "rest_v1_literal",
+        "grafo": "url",
+        "ocorrencias": 0
+      }
+    ]
+  },
+  "mesas_e_funcoes_nomeadas": {
+    "no_involucro": [
+      [
+        "schools",
+        3
+      ],
+      [
+        "students",
+        3
+      ],
+      [
+        "bfr_lesson_attendance",
+        2
+      ],
+      [
+        "classes",
+        2
+      ],
+      [
+        "staff_schools",
+        2
+      ],
+      [
+        "supervision_requests",
+        2
+      ],
+      [
+        "announcements",
+        1
+      ],
+      [
+        "bfr_is_municipal_authority",
+        1
+      ],
+      [
+        "grades",
+        1
+      ],
+      [
+        "school_documents",
+        1
+      ],
+      [
+        "supervision_alerts",
+        1
+      ],
+      [
+        "supervision_responses",
+        1
+      ]
+    ],
+    "no_corpus_distintas": 140
+  },
+  "chamadas_de_leitura_por_chave": [
+    {
+      "chave": "escolas_todo",
+      "offset": 3488377,
+      "mesa": "schools",
+      "janela_chars": 220
+    },
+    {
+      "chave": "alunos_todo",
+      "offset": 3488513,
+      "mesa": "students",
+      "janela_chars": 220
+    },
+    {
+      "chave": "turmas_todo",
+      "offset": 3488726,
+      "mesa": "classes",
+      "janela_chars": 220
+    },
+    {
+      "chave": "processos_todo",
+      "offset": 3488876,
+      "mesa": "supervision_requests",
+      "janela_chars": 220
+    },
+    {
+      "chave": "freq_todo",
+      "offset": 3489127,
+      "mesa": "bfr_lesson_attendance",
+      "janela_chars": 220
+    },
+    {
+      "chave": "profissionais_todo",
+      "offset": 3489354,
+      "mesa": "staff_schools",
+      "janela_chars": 220
+    },
+    {
+      "chave": "escolas_todo",
+      "offset": 3489598,
+      "mesa": "schools",
+      "janela_chars": 220
+    },
+    {
+      "chave": "alunos_",
+      "offset": 3489738,
+      "mesa": "students",
+      "janela_chars": 220
+    },
+    {
+      "chave": "profissionais_todo",
+      "offset": 3490194,
+      "mesa": "staff_schools",
+      "janela_chars": 220
+    },
+    {
+      "chave": "notas_todo",
+      "offset": 3490371,
+      "mesa": "grades",
+      "janela_chars": 220
+    },
+    {
+      "chave": "freq_todo",
+      "offset": 3490624,
+      "mesa": "bfr_lesson_attendance",
+      "janela_chars": 220
+    },
+    {
+      "chave": "alerts_todo",
+      "offset": 3490880,
+      "mesa": "supervision_alerts",
+      "janela_chars": 220
+    },
+    {
+      "chave": "processos_todo",
+      "offset": 3491177,
+      "mesa": "supervision_requests",
+      "janela_chars": 220
+    },
+    {
+      "chave": "processos_mov",
+      "offset": 3491476,
+      "mesa": "supervision_responses",
+      "janela_chars": 220
+    },
+    {
+      "chave": "comunicados_todo",
+      "offset": 3491726,
+      "mesa": "announcements",
+      "janela_chars": 220
+    },
+    {
+      "chave": "infra_todo",
+      "offset": 3492033,
+      "mesa": "school_documents",
+      "janela_chars": 220
+    },
+    {
+      "chave": "escolas_todo",
+      "offset": 3492286,
+      "mesa": "schools",
+      "janela_chars": 220
+    },
+    {
+      "chave": "alunos_todo",
+      "offset": 3492415,
+      "mesa": "students",
+      "janela_chars": 220
+    },
+    {
+      "chave": "turmas_todo",
+      "offset": 3492621,
+      "mesa": "classes",
+      "janela_chars": 220
+    }
+  ],
+  "helper_ler": {
+    "offset": 3487335,
+    "chars": 961,
+    "truncado": false,
+    "devolve_campos": [
+      "linhas",
+      "total",
+      "escolasDistintas",
+      "erro"
+    ]
+  },
+  "superficies_endurecidas_como_texto": {
+    "bfr_municipal_school_stats": {
+      "no_involucro": 0,
+      "no_corpus": 0
+    },
+    "bfr_municipal_network_totals": {
+      "no_involucro": 0,
+      "no_corpus": 0
+    },
+    "bfr_municipal_municipalities": {
+      "no_involucro": 0,
+      "no_corpus": 0
+    },
+    "bfr_municipal_access_grants": {
+      "no_involucro": 0,
+      "no_corpus": 0
+    },
+    "bfr_municipal_audit": {
+      "no_involucro": 0,
+      "no_corpus": 0
+    },
+    "bfr_school_in_municipal_scope": {
+      "no_involucro": 0,
+      "no_corpus": 0
+    },
+    "bfr_is_municipal_authority": {
+      "no_involucro": 4,
+      "no_corpus": 4
+    }
+  },
+  "portoes": [
+    {
+      "nome": "o_involucre_e_declarado_pelo_produtor_e_unico",
+      "verde": true,
+      "detalhe": {
+        "aberturas": 1,
+        "tags": [
+          "<script data-bfr-municipal-module=\"1\">"
+        ]
+      }
+    },
+    {
+      "nome": "o_involucre_contem_todas_as_ancoras_do_modulo",
+      "verde": true,
+      "detalhe": {
+        "ancoras_no_corpus": 54,
+        "ancoras_dentro": 54,
+        "chars_involucro": 56408,
+        "margem": "zero — contenção exacta"
+      }
+    },
+    {
+      "nome": "o_involucre_e_uma_fracao_pequena_do_corpus",
+      "verde": true,
+      "detalhe": {
+        "chars_involucro": 56408,
+        "chars_corpus": 3528787
+      }
+    },
+    {
+      "nome": "a_pegada_servida_e_a_candidata_versionada",
+      "verde": true,
+      "detalhe": {
+        "md5_servido": "b272fd4f3a737c518e888250ab8167f1",
+        "md5_local": "b272fd4f3a737c518e888250ab8167f1"
+      }
+    },
+    {
+      "nome": "o_fixture_dispara_na_grafia_com_ponto",
+      "verde": true,
+      "detalhe": {
+        "com_ponto_from": 1,
+        "solto_from": 1,
+        "com_ponto_rpc": 1,
+        "solto_rpc": 1,
+        "nomes": [
+          "fn_pontuada",
+          "fn_solta",
+          "mesa_de_escrita",
+          "mesa_pontuada",
+          "mesa_solta"
+        ]
+      }
+    },
+    {
+      "nome": "o_fixture_dispara_na_grafia_solta",
+      "verde": true,
+      "detalhe": {
+        "com_ponto_from": 1,
+        "solto_from": 1,
+        "com_ponto_rpc": 1,
+        "solto_rpc": 1,
+        "nomes": [
+          "fn_pontuada",
+          "fn_solta",
+          "mesa_de_escrita",
+          "mesa_pontuada",
+          "mesa_solta"
+        ]
+      }
+    },
+    {
+      "nome": "o_fixture_extrai_os_cinco_nomes_das_duas_grafias",
+      "verde": true,
+      "detalhe": [
+        "fn_pontuada",
+        "fn_solta",
+        "mesa_de_escrita",
+        "mesa_pontuada",
+        "mesa_solta"
+      ]
+    },
+    {
+      "nome": "a_regua_nao_inventa_nada_no_controlo_negativo",
+      "verde": true,
+      "detalhe": {
+        "agulha": "from('mesa_que_nao_existe_nesta_base_zzz')",
+        "no_corpus": 0,
+        "no_involucro": 0
+      }
+    },
+    {
+      "nome": "o_modulo_tem_leituras_nomeadas_por_mesa",
+      "verde": true,
+      "detalhe": {
+        "nomes_no_inv": [
+          [
+            "schools",
+            3
+          ],
+          [
+            "students",
+            3
+          ],
+          [
+            "bfr_lesson_attendance",
+            2
+          ],
+          [
+            "classes",
+            2
+          ],
+          [
+            "staff_schools",
+            2
+          ],
+          [
+            "supervision_requests",
+            2
+          ],
+          [
+            "announcements",
+            1
+          ],
+          [
+            "bfr_is_municipal_authority",
+            1
+          ],
+          [
+            "grades",
+            1
+          ],
+          [
+            "school_documents",
+            1
+          ],
+          [
+            "supervision_alerts",
+            1
+          ],
+          [
+            "supervision_responses",
+            1
+          ]
+        ]
+      }
+    },
+    {
+      "nome": "nenhuma_das_seis_superficies_endurecidas_e_nome_do_modulo",
+      "verde": true,
+      "detalhe": {
+        "bfr_municipal_school_stats": {
+          "no_involucro": 0,
+          "no_corpus": 0
+        },
+        "bfr_municipal_network_totals": {
+          "no_involucro": 0,
+          "no_corpus": 0
+        },
+        "bfr_municipal_municipalities": {
+          "no_involucro": 0,
+          "no_corpus": 0
+        },
+        "bfr_municipal_access_grants": {
+          "no_involucro": 0,
+          "no_corpus": 0
+        },
+        "bfr_municipal_audit": {
+          "no_involucro": 0,
+          "no_corpus": 0
+        },
+        "bfr_school_in_municipal_scope": {
+          "no_involucro": 0,
+          "no_corpus": 0
+        },
+        "bfr_is_municipal_authority": {
+          "no_involucro": 4,
+          "no_corpus": 4
+        }
+      }
+    },
+    {
+      "nome": "o_gate_do_modulo_e_a_unica_fn_nomeada_no_involucre",
+      "verde": true,
+      "detalhe": {
+        "gate": {
+          "no_involucro": 4,
+          "no_corpus": 4
+        },
+        "nomes": [
+          [
+            "schools",
+            3
+          ],
+          [
+            "students",
+            3
+          ],
+          [
+            "bfr_lesson_attendance",
+            2
+          ],
+          [
+            "classes",
+            2
+          ],
+          [
+            "staff_schools",
+            2
+          ],
+          [
+            "supervision_requests",
+            2
+          ],
+          [
+            "announcements",
+            1
+          ],
+          [
+            "bfr_is_municipal_authority",
+            1
+          ],
+          [
+            "grades",
+            1
+          ],
+          [
+            "school_documents",
+            1
+          ],
+          [
+            "supervision_alerts",
+            1
+          ],
+          [
+            "supervision_responses",
+            1
+          ]
+        ]
+      }
+    },
+    {
+      "nome": "as_duas_grafias_de_from_estao_as_duas_no_registo",
+      "verde": true,
+      "detalhe": [
+        {
+          "eixo": "involucro",
+          "verbo": "from",
+          "grafo": "com_ponto",
+          "ocorrencias": 0
+        },
+        {
+          "eixo": "involucro",
+          "verbo": "from",
+          "grafo": "solto",
+          "ocorrencias": 19
+        }
+      ]
+    },
+    {
+      "nome": "o_helper_de_leitura_devolve_um_total_calculado_no_cliente",
+      "verde": true,
+      "detalhe": {
+        "definicaoLer": {
+          "chars": 961,
+          "truncado": false
+        },
+        "campos": [
+          "linhas",
+          "total",
+          "escolasDistintas",
+          "erro"
+        ]
+      }
+    },
+    {
+      "nome": "toda_a_grelha_de_grafias_foi_emitida_com_o_seu_numero",
+      "verde": true,
+      "detalhe": {
+        "linhas_involucro": 20,
+        "linhas_corpus": 20
+      }
+    }
+  ],
+  "conclusao": {
+    "frases_que_esta_corrida_autoriza": [
+      "o módulo tem invólucro próprio no ar — <script data-bfr-municipal-module=\"1\"> — com 56408 chars de 3546846 servidos, e as 54 âncoras bfrMunicipal estão todas dentro dele",
+      "as mesas e funções que ele abre por nome são [[\"schools\",3],[\"students\",3],[\"bfr_lesson_attendance\",2],[\"classes\",2],[\"staff_schools\",2],[\"supervision_requests\",2],[\"announcements\",1],[\"bfr_is_municipal_authority\",1],[\"grades\",1],[\"school_documents\",1],[\"supervision_alerts\",1],[\"supervision_responses\",1]] — nenhuma das seis superficies endurecidas pelo DDL aparece, em texto solto nem como rota",
+      "o módulo abre-as pelo seu próprio helper `ler(chave, build)` com `from('mesa')` SEM ponto (19 chamadas soltas contra 0 com ponto): foi por isto que a corrida anterior leu `from: 0` num módulo que lê 11 mesas",
+      "o `ler` devolve [\"linhas\",\"total\",\"escolasDistintas\",\"erro\"] — os números que a aba pinta são contados no cliente sobre essas mesas, pelo que endurecer a vista e os agregados não muda o que está na tela"
+    ],
+    "o_que_este_artefacto_nao_prova": [
+      "não prova quantas linhas cada uma dessas 11 mesas devolve a cada papel: isso é RLS por mesa e está medido noutros artefactos (sm23-causa-vista, sm23-causa-predicado)",
+      "não prova o que o utilizador vê no ecrã: prova o código servido. A passada autenticada clicando a aba é outro instrumento."
+    ]
+  },
+  "veredito": "INVOLUCRO_E_GRAFIAS_CONFERIDOS",
+  "falhas": []
+}
