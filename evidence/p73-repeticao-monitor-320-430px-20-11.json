@@ -1,0 +1,58 @@
+{
+  "programa": "scripts/p73-repete-bloqueadas.mjs",
+  "em": "2026-11-20T00:36:45.104Z",
+  "papel": "monitor",
+  "ar": {
+    "url": "https://bfr-conecta.turmaroboticabfr.workers.dev/",
+    "md5": "9e236a23eed978cf7c2a2743d449b307"
+  },
+  "processos": 2,
+  "linha_do_predicado_no_condutor": 112,
+  "predicado": "const coerente = !!b.censo && b.censo.barra_existe !== false && (b.censo.barra || []).some((x) => x.w > 0 && x.h > 0) && (b.abertas || 0) > 0;",
+  "tentativas": [
+    {
+      "processo": 1,
+      "rotulo": "m5-monitor-rep1",
+      "decorrido_s": 28,
+      "exit": 0,
+      "md5_shell": "9e236a23eed978cf7c2a2743d449b307",
+      "ar_e_actual": true,
+      "celulas": {
+        "320": "BLOQUEADA",
+        "430": "COERENTE"
+      }
+    },
+    {
+      "processo": 2,
+      "rotulo": "m5-monitor-rep2",
+      "decorrido_s": 12,
+      "exit": 0,
+      "md5_shell": "9e236a23eed978cf7c2a2743d449b307",
+      "ar_e_actual": true,
+      "celulas": {
+        "320": "BLOQUEADA",
+        "430": "BLOQUEADA"
+      }
+    }
+  ],
+  "por_largura": {
+    "320": {
+      "estados": [
+        "BLOQUEADA",
+        "BLOQUEADA"
+      ],
+      "montou": 0,
+      "bloqueadas": 2,
+      "veredicto": "DETERMINISTA"
+    },
+    "430": {
+      "estados": [
+        "COERENTE",
+        "BLOQUEADA"
+      ],
+      "montou": 1,
+      "bloqueadas": 1,
+      "veredicto": "CORRIDAS"
+    }
+  }
+}

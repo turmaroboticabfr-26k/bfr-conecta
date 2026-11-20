@@ -1,0 +1,150 @@
+{
+  "programa": "scripts/p36-navegador-supervisao.mjs",
+  "em": "2026-11-19T17:39:04.251Z",
+  "url": "https://bfr-conecta.turmaroboticabfr.workers.dev/",
+  "metodo": "Chrome headless + CDP; sessao injetada no localStorage da origem; clique por Input.dispatchMouseEvent com hit-test elementFromPoint; contagens do DOM confrontadas com PostgREST na mesma pagina",
+  "preflight_ar": {
+    "md5": "9e236a23eed978cf7c2a2743d449b307",
+    "esperado_v136": "9e236a23eed978cf7c2a2743d449b307",
+    "bytes": 3547458,
+    "ocorrencias_do_sub_aba_na_shell": 1
+  },
+  "unidades": [
+    {
+      "perfil": "secretary",
+      "papel_no_perfil": "secretary",
+      "uid": "839e1f87-c596-4355-9f89-2ed97711349f",
+      "largura_declarada": 390,
+      "token_renovado": true,
+      "etapas": {
+        "ms_ready": 877,
+        "janela": {
+          "innerWidth": 390,
+          "clientWidth": 390,
+          "clientHeight": 900,
+          "dpr": 1
+        },
+        "mapa_do_papel": {
+          "runtime_exposto": false,
+          "entrada_no_mapa": null,
+          "tem_secretaria": null,
+          "tem_supervisao_secao": null
+        },
+        "botao_secao_secretaria": {
+          "presente": true,
+          "visivel": false,
+          "texto": "▥Secretaria de Educação"
+        },
+        "controlo_negativo": {
+          "antes": {
+            "central": false,
+            "sub_aba": false
+          },
+          "depois_de_chamada_direta_do_ensure": {
+            "central": false,
+            "sub_aba": false
+          },
+          "allow_perfil": true
+        },
+        "erros_console": {
+          "bruto": 0,
+          "relevantes": []
+        }
+      }
+    },
+    {
+      "perfil": "education_supervisor",
+      "papel_no_perfil": "education_supervisor",
+      "uid": "d7d45999-c21f-4322-8f94-46c6564ff728",
+      "largura_declarada": 390,
+      "token_renovado": true,
+      "etapas": {
+        "ms_ready": 902,
+        "janela": {
+          "innerWidth": 390,
+          "clientWidth": 390,
+          "clientHeight": 900,
+          "dpr": 1
+        },
+        "mapa_do_papel": {
+          "runtime_exposto": false,
+          "entrada_no_mapa": null,
+          "tem_secretaria": null,
+          "tem_supervisao_secao": null
+        },
+        "botao_secao_secretaria": {
+          "presente": true,
+          "visivel": false,
+          "texto": "▥Secretaria de Educação"
+        },
+        "controlo_negativo": {
+          "antes": {
+            "central": false,
+            "sub_aba": false
+          },
+          "depois_de_chamada_direta_do_ensure": {
+            "central": false,
+            "sub_aba": false
+          },
+          "allow_perfil": true
+        },
+        "erros_console": {
+          "bruto": 0,
+          "relevantes": []
+        }
+      }
+    },
+    {
+      "perfil": "director",
+      "papel_no_perfil": "director",
+      "uid": "b5be4883-f076-4706-b40c-6ab1e720baa7",
+      "largura_declarada": 390,
+      "token_renovado": true,
+      "etapas": {
+        "ms_ready": 950,
+        "janela": {
+          "innerWidth": 390,
+          "clientWidth": 390,
+          "clientHeight": 900,
+          "dpr": 1
+        },
+        "mapa_do_papel": {
+          "runtime_exposto": false,
+          "entrada_no_mapa": null,
+          "tem_secretaria": null,
+          "tem_supervisao_secao": null
+        },
+        "botao_secao_secretaria": {
+          "presente": true,
+          "visivel": false,
+          "texto": "▥Secretaria de Educação"
+        },
+        "controlo_negativo": {
+          "antes": {
+            "central": false,
+            "sub_aba": false
+          },
+          "depois_de_chamada_direta_do_ensure": {
+            "central": false,
+            "sub_aba": false
+          },
+          "allow_perfil": false
+        },
+        "erros_console": {
+          "bruto": 0,
+          "relevantes": []
+        }
+      }
+    }
+  ],
+  "portoes": 11,
+  "falhas": [
+    "secretary/390px · sem `secretaria` no mapa: nem a central nem o sub-aba aparecem mesmo por chamada direta ao ensure() | dado=[false,false,true] | esperado=[false,false,false]",
+    "education_supervisor/390px · sem `secretaria` no mapa: nem a central nem o sub-aba aparecem mesmo por chamada direta ao ensure() | dado=[false,false,true] | esperado=[false,false,false]"
+  ],
+  "veredito": "P36_BROWSER_COM_PORTOES_VERMELHOS 11/2",
+  "nao_gateado_aqui": {
+    "tap_menor_44_e_fonte_menor_11": "pertencem a PEN-35 (re-medicao de bandas, tarefa 73); aqui sao registados com amostra, sem limiar",
+    "bandas": "esta corrida corre a(s) largura(s) 390 declarada(s) e medida(s) por portao"
+  }
+}

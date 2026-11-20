@@ -45,7 +45,7 @@ const lista = [
 // de auth e usa-se o novo; nada disto é impresso. (A variante que falhou no preflight era outra: li o
 // ficheiro errado — `s20-sessions.json`, sessão de outubro — em vez dos dois ficheiros activos.)
 let papelPorUid = {};
-try { papelPorUid = Object.fromEntries((await sql(`select id::text as uid, account_role::text as papel from public.profiles`)).map((x) => [x.uid, x.papel])); }
+try { papelPorUid = Object.fromEntries((await sql(`select id::text as uid, role::text as papel from public.profiles`)).map((x) => [x.uid, x.papel])); }
 catch (e) { console.log('AVISO papel_no_perfil indisponivel: ' + String(e.message).slice(0, 120)); }
 const tokenVivo = async (p) => {
   if (Number(p.expira) * 1000 > Date.now() + 30_000) return { access: p.access, renovado: false };

@@ -1,0 +1,262 @@
+{
+  "ciclo": "V136-POS-DEPLOY",
+  "em": "2026-11-19T10:17:44.547Z",
+  "escrita": 0,
+  "ddl": 0,
+  "mint": 0,
+  "origem": "C:/Users/pcmac/Documents/Qoder/2026-10-13/28077d9a/bfr-conecta/evidence/v135-pos-deploy-19-11.json",
+  "url": "https://bfr-conecta.turmaroboticabfr.workers.dev",
+  "portoes": {
+    "C1_shell_no_ar_e_a_candidata_v136": {
+      "passou": true,
+      "medido": {
+        "http": 200,
+        "md5": "9e236a23eed978cf7c2a2743d449b307",
+        "bytes": 3547458
+      },
+      "esperado": {
+        "md5": "9e236a23eed978cf7c2a2743d449b307",
+        "bytes": 3547458
+      }
+    },
+    "C1b_a_shell_deixou_de_ser_a_v135": {
+      "passou": true,
+      "ar": "9e236a23eed978cf7c2a2743d449b307",
+      "v135": "b272fd4f3a737c518e888250ab8167f1",
+      "delta_bytes": 612
+    },
+    "C2_sw_no_ar_e_o_novo_com_etiqueta_v136": {
+      "passou": true,
+      "medido": {
+        "md5": "3b70da77e96cd4dc3a1ac7cba001c8a1",
+        "bytes": 5064,
+        "rotulo": "bfr-conecta-v136"
+      },
+      "esperado": {
+        "md5": "3b70da77e96cd4dc3a1ac7cba001c8a1",
+        "bytes": 5064,
+        "rotulo": "bfr-conecta-v136"
+      }
+    },
+    "C3_pen30_no_ar": {
+      "passou": true,
+      "novo": 1,
+      "velho": 0
+    },
+    "C4_nome_unico_no_ar": {
+      "passou": true,
+      "centro_gestao": 0,
+      "h1_nome": 3,
+      "secretaria_digital": 1,
+      "nav": 1,
+      "nota": "secretaria_digital=1 e o rotulo do PAPEL secretary no mapa de chips, preservado pela regra"
+    },
+    "C5_headers_da_v135_na_shell_do_ar": {
+      "passou": true,
+      "x_frame_options": "SAMEORIGIN",
+      "csp_frame_ancestors": true
+    },
+    "C6_csp_no_ar_intacta_com_supabase": {
+      "passou": true,
+      "ok": true
+    },
+    "C7_rota_inexistente_da_404_ainda": {
+      "passou": true,
+      "http": 404,
+      "bytes": 9,
+      "md5": "9e076f5885f5cc16a4b5aeb8de4adff5"
+    },
+    "C8_firebase_messaging_sw_ainda_404": {
+      "passou": true,
+      "http": 404
+    },
+    "C9_12_assets_identicos_a_base_v123": {
+      "passou": true,
+      "total": 12,
+      "desvios": []
+    },
+    "C10_os_12_assets_com_os_dois_headers": {
+      "passou": true,
+      "sem_headers": [],
+      "esperado": {
+        "xfo": "SAMEORIGIN",
+        "csp": "frame-ancestors 'self'; base-uri 'self'; form-action 'self'"
+      }
+    },
+    "C11_servidor_concorda_com_o_deploy": {
+      "passou": true,
+      "lista": "1598137c-ab84-4ca7-a5e3-ce621d06f255",
+      "status": "1598137c-ab84-4ca7-a5e3-ce621d06f255",
+      "stdout": "1598137c-ab84-4ca7-a5e3-ce621d06f255",
+      "trafego": 100,
+      "em": "2026-11-19T10:16:29.434532Z"
+    },
+    "C12_cadeia_de_reversao_na_lista": {
+      "passou": true,
+      "v135": "f5c157f2-7b46-447b-88a9-d05cff7c42d2",
+      "primeiro_v135": "f824a488-d7f1-4922-b005-4c11a810d401",
+      "nota": "devolver o ar a v135 ou a v134 e um `wrangler deploy` a partir do diretorio respectivo — cada um exige OK literal novo"
+    },
+    "C13_bytes_servidos_batem_com_a_regra_do_delta": {
+      "passou": true,
+      "v136_menos_v135": 612
+    },
+    "C14_sw_mesmos_bytes_etiqueta_diferente": {
+      "passou": true,
+      "bytes": 5064,
+      "v135_bytes": 5064,
+      "md5": "3b70da77e96cd4dc3a1ac7cba001c8a1",
+      "v135_md5": "53dcac1fcf5c10f76801608306c9ace3"
+    }
+  },
+  "total": {
+    "ok": 15,
+    "falha": 0
+  },
+  "medido": {
+    "shell": {
+      "caminho": "/",
+      "http": 200,
+      "bytes": 3547458,
+      "md5": "9e236a23eed978cf7c2a2743d449b307",
+      "content_type": "text/html; charset=utf-8",
+      "csp": "default-src 'self'; base-uri 'self'; object-src 'none'; script-src 'self' 'unsafe-inline' https://bfr-conecta.turmaroboticabfr.workers.dev https://cdn.jsdelivr.net https://static.cloudflareinsights.com https://www.gstatic.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: blob: https:; connect-src 'self' https://bfr-conecta.turmaroboticabfr.workers.dev https://*.supabase.co wss://*.supabase.co https://cloudflareinsights.com https://*.cloudflareinsights.com https://*.googleapis.com https://fcm.googleapis.com https://api.open-meteo.com; worker-src 'self' blob:; manifest-src 'self'; form-action 'self' https://accounts.google.com https://*.supabase.co; frame-ancestors 'self'",
+      "xfo": "SAMEORIGIN"
+    },
+    "sw": {
+      "caminho": "/sw-v4.js?v=45",
+      "http": 200,
+      "bytes": 5064,
+      "md5": "3b70da77e96cd4dc3a1ac7cba001c8a1",
+      "content_type": "application/javascript; charset=utf-8",
+      "csp": null,
+      "xfo": null
+    },
+    "notfound": {
+      "caminho": "/rota-inexistente-v136-pos",
+      "http": 404,
+      "bytes": 9,
+      "md5": "9e076f5885f5cc16a4b5aeb8de4adff5",
+      "texto": "Not found",
+      "content_type": "text/plain; charset=utf-8",
+      "csp": null,
+      "xfo": null
+    },
+    "firebase": {
+      "caminho": "/firebase-messaging-sw.js",
+      "http": 404,
+      "bytes": 9,
+      "md5": "9e076f5885f5cc16a4b5aeb8de4adff5",
+      "texto": "Not found",
+      "content_type": "text/plain; charset=utf-8",
+      "csp": null,
+      "xfo": null
+    },
+    "rotuloAr": "bfr-conecta-v136",
+    "contagens_na_shell": {
+      "pen30_novo": 1,
+      "pen30_velho": 0,
+      "centro_gestao": 0,
+      "secretaria_de_educacao": 52
+    },
+    "assets_vivos": [
+      {
+        "arquivo": "bfr-app-logo.png",
+        "http": 200,
+        "md5": "9578faf20083e3cb4d572af5ba10d6ed",
+        "bytes": 448736,
+        "xfo": "SAMEORIGIN",
+        "csp": "frame-ancestors 'self'; base-uri 'self'; form-action 'self'"
+      },
+      {
+        "arquivo": "bfr-responsive-presentation.js",
+        "http": 200,
+        "md5": "a83f77baba7453851b287080686c7afb",
+        "bytes": 51742,
+        "xfo": "SAMEORIGIN",
+        "csp": "frame-ancestors 'self'; base-uri 'self'; form-action 'self'"
+      },
+      {
+        "arquivo": "bfr-teacher-arrivals.js",
+        "http": 200,
+        "md5": "dcb69a88c8f4e93a5f818233cf185300",
+        "bytes": 13975,
+        "xfo": "SAMEORIGIN",
+        "csp": "frame-ancestors 'self'; base-uri 'self'; form-action 'self'"
+      },
+      {
+        "arquivo": "bfr-teacher-audit.js",
+        "http": 200,
+        "md5": "255a2cd46599a25584b89775a276ed68",
+        "bytes": 3554,
+        "xfo": "SAMEORIGIN",
+        "csp": "frame-ancestors 'self'; base-uri 'self'; form-action 'self'"
+      },
+      {
+        "arquivo": "calendario-letivo-2026.pdf",
+        "http": 200,
+        "md5": "14a6b82bfb212bf115fafdb546163f9f",
+        "bytes": 202349,
+        "xfo": "SAMEORIGIN",
+        "csp": "frame-ancestors 'self'; base-uri 'self'; form-action 'self'"
+      },
+      {
+        "arquivo": "horario-matutino-2026.pdf",
+        "http": 200,
+        "md5": "85cffd0ad3bd8d78166a3993e17a962c",
+        "bytes": 521385,
+        "xfo": "SAMEORIGIN",
+        "csp": "frame-ancestors 'self'; base-uri 'self'; form-action 'self'"
+      },
+      {
+        "arquivo": "horario-matutino-2026.png",
+        "http": 200,
+        "md5": "5d181a1754a45046bc6907a4d9b420f6",
+        "bytes": 501591,
+        "xfo": "SAMEORIGIN",
+        "csp": "frame-ancestors 'self'; base-uri 'self'; form-action 'self'"
+      },
+      {
+        "arquivo": "horario-vespertino-2026.pdf",
+        "http": 200,
+        "md5": "745d6edd9e11d74216939bca68d30b35",
+        "bytes": 498802,
+        "xfo": "SAMEORIGIN",
+        "csp": "frame-ancestors 'self'; base-uri 'self'; form-action 'self'"
+      },
+      {
+        "arquivo": "horario-vespertino-2026.png",
+        "http": 200,
+        "md5": "58854bb4f3ce5e4dffcc7a1a34c31271",
+        "bytes": 480258,
+        "xfo": "SAMEORIGIN",
+        "csp": "frame-ancestors 'self'; base-uri 'self'; form-action 'self'"
+      },
+      {
+        "arquivo": "lia-avatar.png",
+        "http": 200,
+        "md5": "87e5fc3c4f8bc68ed4535c5cf032c47c",
+        "bytes": 1736466,
+        "xfo": "SAMEORIGIN",
+        "csp": "frame-ancestors 'self'; base-uri 'self'; form-action 'self'"
+      },
+      {
+        "arquivo": "lia-avatar.svg",
+        "http": 200,
+        "md5": "fd080cd554c553567cb6cd82bbeff0de",
+        "bytes": 352,
+        "xfo": "SAMEORIGIN",
+        "csp": "frame-ancestors 'self'; base-uri 'self'; form-action 'self'"
+      },
+      {
+        "arquivo": "manifest.json",
+        "http": 200,
+        "md5": "68d155183c80e3e554466ce2415cb268",
+        "bytes": 484,
+        "xfo": "SAMEORIGIN",
+        "csp": "frame-ancestors 'self'; base-uri 'self'; form-action 'self'"
+      }
+    ]
+  },
+  "veredito": "V136_POS_DEPLOY_OK"
+}

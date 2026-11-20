@@ -1,0 +1,69 @@
+{
+  "programa": "scripts/p73-estouro-no-ar-atual.mjs",
+  "em": "2026-11-20T01:40:00.630Z",
+  "pergunta": "a coluna estouro_h do ar atual dá estouro em alguma célula? — a versão histórica comparava com innerWidth e por isso não podia dar",
+  "ar": {
+    "url": "https://bfr-conecta.turmaroboticabfr.workers.dev/",
+    "md5_esperado_de": "worker-deploy-v136-secretaria-de-educacao/esperado-v136.json",
+    "md5": "9e236a23eed978cf7c2a2743d449b307",
+    "igual_ao_servido": true
+  },
+  "leitura_do_produtor": {
+    "linha_onde_o_emissor_escreve_a_lista": 378,
+    "emissor": "b.estouro = Object.entries(mapa).filter(([, v]) => v.estouro_h).map(([k]) => k);",
+    "linha_do_portao_do_produtor": 411,
+    "portao": "gate(`${w}px: 0 estouro horizontal`, b.estouro, []);",
+    "larguras_do_condutor": [
+      320,
+      360,
+      375,
+      390,
+      414,
+      430
+    ],
+    "papeis_da_varredura": 15
+  },
+  "unidade": "celula = (papel × largura); um ficheiro que mede a mesma célula conta uma vez; lista VAZIA = medido sem estouro; chave AUSENTE = não medido (contado à parte, nunca somado ao verde)",
+  "fixture": {
+    "com_lista_nao_vazia_dao_estouro": true,
+    "lista_vazia_da_o_zero": true,
+    "chave_ausente_nao_conta_como_estouro": true
+  },
+  "ficheiros_m5_na_disco": 109,
+  "por_ar": {
+    "d418e7fc917f": {
+      "ficheiros": 49,
+      "papeis": 15,
+      "celulas_com_lista": 86,
+      "celulas_com_estouro": 0,
+      "celulas_sem_a_chave": 0,
+      "he_o_ar_atual": false
+    },
+    "9e236a23eed9": {
+      "ficheiros": 60,
+      "papeis": 15,
+      "celulas_com_lista": 81,
+      "celulas_com_estouro": 0,
+      "celulas_sem_a_chave": 0,
+      "he_o_ar_atual": true
+    }
+  },
+  "grelha_declarada_do_produtor": "15 papeis x 6 larguras = 90 celulas",
+  "cobertas_neste_ar": 80,
+  "distintas_sem_lista_de_estouro": 0,
+  "distintas_com_lista_vazia": 80,
+  "com_estouro": 0,
+  "rotas_em_estouro": {},
+  "ocorrencias_neste_ar": {
+    "ficheiros": 60,
+    "com_lista": 81,
+    "com_estouro": 0,
+    "sem_a_chave": 0
+  },
+  "veredito": "P35_COBERTURA_PARCIAL_DO_ESTOURO",
+  "larguras_fora_da_grelha_que_esta_peca_nao_cobre": [
+    "1280",
+    "1440",
+    "1920 — as bandas desktop continuam com os valores da passada de 17/11, re-medi-las é corrida própria"
+  ]
+}

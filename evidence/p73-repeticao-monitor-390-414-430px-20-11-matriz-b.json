@@ -1,0 +1,119 @@
+{
+  "programa": "scripts/p73-repete-bloqueadas.mjs",
+  "em": "2026-11-20T00:51:15.148Z",
+  "papel": "monitor",
+  "ar": {
+    "url": "https://bfr-conecta.turmaroboticabfr.workers.dev/",
+    "md5": "9e236a23eed978cf7c2a2743d449b307"
+  },
+  "processos": 2,
+  "uma_largura_por_processo": true,
+  "linha_do_predicado_no_condutor": 112,
+  "predicado": "const coerente = !!b.censo && b.censo.barra_existe !== false && (b.censo.barra || []).some((x) => x.w > 0 && x.h > 0) && (b.abertas || 0) > 0;",
+  "tentativas": [
+    {
+      "largura": 390,
+      "processo": 1,
+      "rotulo": "m5-monitor-rep1w390",
+      "decorrido_s": 8,
+      "exit": 0,
+      "md5_shell": "9e236a23eed978cf7c2a2743d449b307",
+      "ar_e_actual": true,
+      "estado": "BLOQUEADA",
+      "morreu_com_parcial": false,
+      "motivo_morte": null
+    },
+    {
+      "largura": 390,
+      "processo": 2,
+      "rotulo": "m5-monitor-rep2w390",
+      "decorrido_s": 8,
+      "exit": 0,
+      "md5_shell": "9e236a23eed978cf7c2a2743d449b307",
+      "ar_e_actual": true,
+      "estado": "BLOQUEADA",
+      "morreu_com_parcial": false,
+      "motivo_morte": null
+    },
+    {
+      "largura": 414,
+      "processo": 1,
+      "rotulo": "m5-monitor-rep1w414",
+      "decorrido_s": 7,
+      "exit": 0,
+      "md5_shell": "9e236a23eed978cf7c2a2743d449b307",
+      "ar_e_actual": true,
+      "estado": "BLOQUEADA",
+      "morreu_com_parcial": false,
+      "motivo_morte": null
+    },
+    {
+      "largura": 414,
+      "processo": 2,
+      "rotulo": "m5-monitor-rep2w414",
+      "decorrido_s": 7,
+      "exit": 0,
+      "md5_shell": "9e236a23eed978cf7c2a2743d449b307",
+      "ar_e_actual": true,
+      "estado": "BLOQUEADA",
+      "morreu_com_parcial": false,
+      "motivo_morte": null
+    },
+    {
+      "largura": 430,
+      "processo": 1,
+      "rotulo": "m5-monitor-rep1w430",
+      "decorrido_s": 8,
+      "exit": 0,
+      "md5_shell": "9e236a23eed978cf7c2a2743d449b307",
+      "ar_e_actual": true,
+      "estado": "BLOQUEADA",
+      "morreu_com_parcial": false,
+      "motivo_morte": null
+    },
+    {
+      "largura": 430,
+      "processo": 2,
+      "rotulo": "m5-monitor-rep2w430",
+      "decorrido_s": 8,
+      "exit": 0,
+      "md5_shell": "9e236a23eed978cf7c2a2743d449b307",
+      "ar_e_actual": true,
+      "estado": "BLOQUEADA",
+      "morreu_com_parcial": false,
+      "motivo_morte": null
+    }
+  ],
+  "por_largura": {
+    "390": {
+      "estados": [
+        "BLOQUEADA",
+        "BLOQUEADA"
+      ],
+      "processos": 2,
+      "montou": 0,
+      "bloqueadas": 2,
+      "veredicto": "DETERMINISTA"
+    },
+    "414": {
+      "estados": [
+        "BLOQUEADA",
+        "BLOQUEADA"
+      ],
+      "processos": 2,
+      "montou": 0,
+      "bloqueadas": 2,
+      "veredicto": "DETERMINISTA"
+    },
+    "430": {
+      "estados": [
+        "BLOQUEADA",
+        "BLOQUEADA"
+      ],
+      "processos": 2,
+      "montou": 0,
+      "bloqueadas": 2,
+      "veredicto": "DETERMINISTA"
+    }
+  }
+}

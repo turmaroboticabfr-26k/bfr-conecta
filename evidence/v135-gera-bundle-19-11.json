@@ -1,0 +1,148 @@
+{
+  "em": "2026-11-19T09:56:40.949Z",
+  "gerador": "scripts/v135-gera-bundle.mjs",
+  "publicado": false,
+  "base": "worker-deploy-v134-sidebar (a v134 publicada, 8600fc3d — evidence/v134-deploy-stdout-18-11.txt)",
+  "sucessora_de": "bfr-candidata-v124-anticliquejacking (nunca publicada; patch de headers re-aplicado sobre a base v134)",
+  "ok_literal": "Sim, publicar ambos (v124+v125 sobre a base v134)",
+  "nota_ok_literal": "pergunta de 18/11 «Publicar v124 + v125?» -> «Sim, publicar ambos». Ambito: este deploy do Worker e o deploy da v136; nada de DDL, escrita no banco, mint ou push",
+  "portoes": {
+    "S1_base_worker_e_o_publicado_v134": {
+      "passou": true
+    },
+    "S2_ancoras_da_base_nas_contagens_esperadas": {
+      "passou": true
+    },
+    "S3_embed_html_da_base_e_a_shell_v134": {
+      "passou": true
+    },
+    "S4_sw_da_base_com_etiqueta_v134_uma_vez": {
+      "passou": true
+    },
+    "S4b_sw_da_base_sem_etiqueta_v135": {
+      "passou": true
+    },
+    "S5_marcadores_novos_nas_contagens_esperadas": {
+      "passou": true
+    },
+    "S5b_delta_total_bate_com_a_soma_das_cinco_substituicoes": {
+      "passou": true,
+      "deltas": {
+        "csp_frame_ancestors": 24,
+        "const_frame_guard": 84,
+        "shell_x_frame_options": 43,
+        "asset_headers": 455,
+        "sw_etiqueta": 0
+      },
+      "delta_medido": 606
+    },
+    "S6_worker_novo_compila": {
+      "passou": true,
+      "erro": null
+    },
+    "S7_embed_html_nao_mudou": {
+      "passou": true
+    },
+    "S7b_embed_novo_e_json_stringify_da_shell_v134": {
+      "passou": true
+    },
+    "S8_sw_embutido_com_etiqueta_v135_uma_vez_e_v134_zero": {
+      "passou": true
+    },
+    "S9_csp_so_ganhou_frame_ancestors_e_mantem_supabase": {
+      "passou": true
+    },
+    "S10_um_unico_embed_de_cada": {
+      "passou": true
+    },
+    "S15_headers_arquivo_gateado_e_no_lugar": {
+      "passou": true,
+      "bytes": 118,
+      "md5": "6f1f82a390b0e6111e3b8aff7d6415b2"
+    },
+    "S11_12_assets_copiados_byte_a_byte": {
+      "passou": true,
+      "total": 12,
+      "lista": [
+        "bfr-app-logo.png",
+        "bfr-responsive-presentation.js",
+        "bfr-teacher-arrivals.js",
+        "bfr-teacher-audit.js",
+        "calendario-letivo-2026.pdf",
+        "horario-matutino-2026.pdf",
+        "horario-matutino-2026.png",
+        "horario-vespertino-2026.pdf",
+        "horario-vespertino-2026.png",
+        "lia-avatar.png",
+        "lia-avatar.svg",
+        "manifest.json"
+      ]
+    },
+    "S12_wrangler_toml_identico": {
+      "passou": true
+    },
+    "S13_worker_do_dir_bate_com_o_desta_corrida": {
+      "passou": true
+    },
+    "S13b_dir_ja_existia_ou_foi_escrito_agora": {
+      "passou": true
+    },
+    "S14_regua_do_delta_consistente": {
+      "passou": true
+    }
+  },
+  "total": {
+    "ok": 19,
+    "falha": 0
+  },
+  "md5": {
+    "workerMd5": "210875b75887b631ccd1a6134ebf3bb0 (3611720 B)",
+    "workerBytes": 3611720,
+    "swMd5": "53dcac1fcf5c10f76801608306c9ace3 (5064 B)",
+    "swBytes": 5064,
+    "htmlMd5": "b272fd4f3a737c518e888250ab8167f1 (3546846 B)",
+    "htmlBytes": 3546846,
+    "cacheLabel": "bfr-conecta-v135 (bfr-conecta-v135 B)",
+    "baseWorkerMd5": "f0de99f6ab5584d10e3b4484663f5090 (3611114 B)",
+    "baseWorkerBytes": 3611114,
+    "baseSwMd5": "36ef6aeba9954ec3aa4a11230bf811dd (5064 B)",
+    "baseSwBytes": 5064,
+    "baseHtmlMd5": "b272fd4f3a737c518e888250ab8167f1 (3546846 B)",
+    "baseHtmlBytes": 3546846,
+    "deltaWorkerBytes": 606,
+    "precacheAlinhado": 0,
+    "assetsCopiados": 12,
+    "headersMd5": "6f1f82a390b0e6111e3b8aff7d6415b2 (118 B)",
+    "headersBytes": 118,
+    "ok_literal": "Sim, publicar ambos (v124+v125 sobre a base v134) (Sim, publicar ambos (v124+v125 sobre a base v134) B)",
+    "origemReguas": "C:/Users/pcmac/Documents/Qoder/2026-10-13/28077d9a/bfr-conecta/worker-deploy-v134-sidebar/esperado-v134.json,evidence/v134-deploy-stdout-18-11.txt,public/_headers (mecanismo de headers dos assets) (C:/Users/pcmac/Documents/Qoder/2026-10-13/28077d9a/bfr-conecta/worker-deploy-v134-sidebar/esperado-v134.json,evidence/v134-deploy-stdout-18-11.txt,public/_headers (mecanismo de headers dos assets) B)"
+  },
+  "esperado": {
+    "workerMd5": "210875b75887b631ccd1a6134ebf3bb0",
+    "workerBytes": 3611720,
+    "swMd5": "53dcac1fcf5c10f76801608306c9ace3",
+    "swBytes": 5064,
+    "htmlMd5": "b272fd4f3a737c518e888250ab8167f1",
+    "htmlBytes": 3546846,
+    "cacheLabel": "bfr-conecta-v135",
+    "baseWorkerMd5": "f0de99f6ab5584d10e3b4484663f5090",
+    "baseWorkerBytes": 3611114,
+    "baseSwMd5": "36ef6aeba9954ec3aa4a11230bf811dd",
+    "baseSwBytes": 5064,
+    "baseHtmlMd5": "b272fd4f3a737c518e888250ab8167f1",
+    "baseHtmlBytes": 3546846,
+    "deltaWorkerBytes": 606,
+    "precacheAlinhado": 0,
+    "assetsCopiados": 12,
+    "headersMd5": "6f1f82a390b0e6111e3b8aff7d6415b2",
+    "headersBytes": 118,
+    "ok_literal": "Sim, publicar ambos (v124+v125 sobre a base v134)",
+    "origemReguas": [
+      "C:/Users/pcmac/Documents/Qoder/2026-10-13/28077d9a/bfr-conecta/worker-deploy-v134-sidebar/esperado-v134.json",
+      "evidence/v134-deploy-stdout-18-11.txt",
+      "public/_headers (mecanismo de headers dos assets)"
+    ]
+  },
+  "portoes_resumo": "19/0",
+  "veredito": "V135_BUNDLE_OK 19/0"
+}

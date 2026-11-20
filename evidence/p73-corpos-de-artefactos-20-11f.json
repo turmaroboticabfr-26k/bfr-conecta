@@ -1,0 +1,104 @@
+{
+  "programa": "scripts/p73-classifica-corpode-preflight.mjs",
+  "em": "2026-11-20T01:25:22.048Z",
+  "limite_bytes": 102400,
+  "corpus": {
+    "total_rastreados": 1966,
+    "acima_do_limite": 228,
+    "pegadas_distintas": 76,
+    "por_extensao": {
+      ".png": 29,
+      ".pdf": 4,
+      ".html": 15,
+      ".json": 5,
+      ".mjs": 18,
+      ".md": 4,
+      ".txt": 1
+    },
+    "metodo": "md5 dos bolbos em HEAD (git ls-tree -r HEAD --long + git cat-file blob), nao do disco",
+    "duas_formas_de_acerto": [
+      "md5 do render utf8 do corpo",
+      "md5/bytes declarados pelo pai do corpo (medicao do fio)"
+    ]
+  },
+  "artefactos": {
+    "evidence/v136-preflight-19-11.json": {
+      "bytes_no_disco": 4081039,
+      "md5_no_disco": "725a17a4ddc42c72c40f8a7c9e70b55c",
+      "no_indice": false,
+      "corpos_grandes": [
+        {
+          "chave": "medido_antes.shell.texto",
+          "bytes_do_render": 3546846,
+          "md5_do_render": "b272fd4f3a737c518e888250ab8167f1",
+          "pai_md5_declarado": "b272fd4f3a737c518e888250ab8167f1",
+          "pai_bytes_declarados": 3546846,
+          "pai_caminho": "/",
+          "pai_http": 200,
+          "acerto_direto": "bfr-candidata-v134-sidebar-escondida/index.html",
+          "acerto_por_declaracao": "bfr-candidata-v134-sidebar-escondida/index.html",
+          "ja_no_indice": true,
+          "porque": "md5 do render bate com bolbo rastreado"
+        },
+        {
+          "chave": "medido_antes.pdf.texto",
+          "bytes_do_render": 362632,
+          "md5_do_render": "99874ef2d1aab69cadd20873d45a63b2",
+          "pai_md5_declarado": "14a6b82bfb212bf115fafdb546163f9f",
+          "pai_bytes_declarados": 202349,
+          "pai_caminho": "/calendario-letivo-2026.pdf",
+          "pai_http": 200,
+          "acerto_direto": null,
+          "acerto_por_declaracao": "_v115-ar-assets/calendario-letivo-2026.pdf",
+          "ja_no_indice": true,
+          "porque": "o pai declara md5/bytes que batem com bolbo rastreado (o corpo e um render derivado)"
+        }
+      ],
+      "bytes_de_corpos": 3909478
+    },
+    "evidence/v136-preflight-19-11-ANTERIOR-B10-basehtml-igual-ao-ar.json": {
+      "bytes_no_disco": 4080931,
+      "md5_no_disco": "0e40af4a87cba84d311d84e50cf7c6c0",
+      "no_indice": false,
+      "corpos_grandes": [
+        {
+          "chave": "medido_antes.shell.texto",
+          "bytes_do_render": 3546846,
+          "md5_do_render": "b272fd4f3a737c518e888250ab8167f1",
+          "pai_md5_declarado": "b272fd4f3a737c518e888250ab8167f1",
+          "pai_bytes_declarados": 3546846,
+          "pai_caminho": "/",
+          "pai_http": 200,
+          "acerto_direto": "bfr-candidata-v134-sidebar-escondida/index.html",
+          "acerto_por_declaracao": "bfr-candidata-v134-sidebar-escondida/index.html",
+          "ja_no_indice": true,
+          "porque": "md5 do render bate com bolbo rastreado"
+        },
+        {
+          "chave": "medido_antes.pdf.texto",
+          "bytes_do_render": 362632,
+          "md5_do_render": "99874ef2d1aab69cadd20873d45a63b2",
+          "pai_md5_declarado": "14a6b82bfb212bf115fafdb546163f9f",
+          "pai_bytes_declarados": 202349,
+          "pai_caminho": "/calendario-letivo-2026.pdf",
+          "pai_http": 200,
+          "acerto_direto": null,
+          "acerto_por_declaracao": "_v115-ar-assets/calendario-letivo-2026.pdf",
+          "ja_no_indice": true,
+          "porque": "o pai declara md5/bytes que batem com bolbo rastreado (o corpo e um render derivado)"
+        }
+      ],
+      "bytes_de_corpos": 3909478
+    },
+    "evidence/v135-preflight-19-11.json": {
+      "bytes_no_disco": 7539,
+      "md5_no_disco": "c3206cc3609601e24008681a048dd9d5",
+      "no_indice": false,
+      "corpos_grandes": [],
+      "bytes_de_corpos": 0
+    }
+  },
+  "veredito": "TODOS_OS_CORPOS_JA_VERSIONADOS",
+  "bytes_unicos": 0,
+  "bytes_ja_cobertos": 7818956
+}

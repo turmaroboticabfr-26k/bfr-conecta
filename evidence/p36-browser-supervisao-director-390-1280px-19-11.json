@@ -1,0 +1,246 @@
+{
+  "programa": "scripts/p36-navegador-supervisao.mjs",
+  "versao_do_instrumento": "P36-B2",
+  "em": "2026-11-19T18:02:00.553Z",
+  "url": "https://bfr-conecta.turmaroboticabfr.workers.dev/",
+  "metodo": "Chrome headless + CDP; sessao injetada no localStorage da origem; clique de rato (Input.dispatchMouseEvent) com hit-test elementFromPoint por entrada; contagens do DOM confrontadas com PostgREST na mesma pagina; nenhuma dependencia de globais do bundle",
+  "preflight_ar": {
+    "md5": "9e236a23eed978cf7c2a2743d449b307",
+    "esperado_v136": "9e236a23eed978cf7c2a2743d449b307",
+    "bytes": 3547458,
+    "ocorrencias_do_sub_aba_na_shell": 1
+  },
+  "regua_lida_dos_bytes_servidos": {
+    "assinatura_permitida_do_allowed": "['secretary','education_supervisor'].includes(role())",
+    "lista_do_allowed": [
+      "secretary",
+      "developer",
+      "education_supervisor"
+    ],
+    "mapas": {
+      "director": [
+        "inicio",
+        "direcao",
+        "horarios",
+        "comunicados",
+        "coordenacao",
+        "escola-historia",
+        "notificacoes",
+        "conteudos",
+        "comunicacao",
+        "chat-interno",
+        "coordenacao-chat",
+        "jogos-escolares",
+        "fotos",
+        "aee",
+        "resultados-aprendizagem"
+      ]
+    }
+  },
+  "unidades": [
+    {
+      "perfil": "director",
+      "papel": "director",
+      "uid": "b5be4883-f076-4706-b40c-6ab1e720baa7",
+      "largura_declarada": 390,
+      "token_renovado": true,
+      "expectativa_da_regua": {
+        "secretaria_no_mapa_do_papel": false,
+        "esperado_positivo": false
+      },
+      "etapas": {
+        "ms_ready": 977,
+        "janela": {
+          "innerWidth": 390,
+          "clientWidth": 390,
+          "clientHeight": 900
+        },
+        "globais_do_bundle": {
+          "current_profile": "object",
+          "app_runtime": "undefined",
+          "secretary_central": "undefined",
+          "municipal": "undefined"
+        },
+        "entradas_antes": [
+          {
+            "sel": "#bfrMobileBottomNav [data-bfr-mobile-route=\"secretaria\"]",
+            "presente": false
+          },
+          {
+            "sel": "#bfrMobileDrawer .bfr-mobile-drawer-link[data-bfr-drawer-route=\"secretaria\"]",
+            "presente": false
+          },
+          {
+            "sel": "[data-mobile-more]",
+            "presente": true,
+            "visivel": false,
+            "rect": [
+              0,
+              0
+            ],
+            "centro": [
+              0,
+              0
+            ],
+            "dentro_da_janela": false,
+            "no_ponto": "MAIN",
+            "alvo_contem": false,
+            "texto": "⋯Mais"
+          },
+          {
+            "sel": "button[data-section=\"secretaria\"]:not([data-teacher-nav-tab])",
+            "presente": true,
+            "visivel": false,
+            "rect": [
+              0,
+              0
+            ],
+            "centro": [
+              0,
+              0
+            ],
+            "dentro_da_janela": false,
+            "no_ponto": "MAIN",
+            "alvo_contem": false,
+            "texto": "▥Secretaria de Educação"
+          }
+        ],
+        "abertura": {
+          "camada": "sintetico",
+          "escolhida": null,
+          "trilha": [
+            "[data-mobile-more] nao hit-testavel: {\"sel\":\"[data-mobile-more]\",\"presente\":true,\"visivel\":false,\"rect\":[0,0],\"centro\":[0,0],\"dentro_da_janela\":false,\"no_ponto\":\"MAIN\",\"alvo_contem\":false,\"texto\":\"⋯Mais\"}",
+            "sintetico porque nenhuma entrada estava hit-testavel: [[\"#bfrMobileBottomNav [data-bfr-mobile-route=\\\"secretaria\\\"]\",false,null,null],[\"#bfrMobileDrawer .bfr-mobile-drawer-link[data-bfr-drawer-route=\\\"secretaria\\\"]\",false,null,null],[\"[data-mobile-more]\",true,false,false],[\"button[data-section=\\\"secretaria\\\"]:not([data-teacher-nav-tab])\",true,false,false]]"
+          ]
+        },
+        "depois_da_abertura": {
+          "central": false,
+          "n_tabs": 0,
+          "activeSection": "inicio"
+        },
+        "controlo_negativo": {
+          "antes": {
+            "central": false,
+            "sub_aba": false,
+            "botao_secao": true
+          },
+          "tentativa_de_clique_na_seccao_havia_botao": true,
+          "depois": {
+            "central": false,
+            "sub_aba": false
+          }
+        },
+        "erros_console": {
+          "bruto": 0,
+          "relevantes": []
+        }
+      }
+    },
+    {
+      "perfil": "director",
+      "papel": "director",
+      "uid": "b5be4883-f076-4706-b40c-6ab1e720baa7",
+      "largura_declarada": 1280,
+      "token_renovado": true,
+      "expectativa_da_regua": {
+        "secretaria_no_mapa_do_papel": false,
+        "esperado_positivo": false
+      },
+      "etapas": {
+        "ms_ready": 935,
+        "janela": {
+          "innerWidth": 1280,
+          "clientWidth": 1280,
+          "clientHeight": 900
+        },
+        "globais_do_bundle": {
+          "current_profile": "object",
+          "app_runtime": "undefined",
+          "secretary_central": "undefined",
+          "municipal": "undefined"
+        },
+        "entradas_antes": [
+          {
+            "sel": "#bfrMobileBottomNav [data-bfr-mobile-route=\"secretaria\"]",
+            "presente": false
+          },
+          {
+            "sel": "#bfrMobileDrawer .bfr-mobile-drawer-link[data-bfr-drawer-route=\"secretaria\"]",
+            "presente": false
+          },
+          {
+            "sel": "[data-mobile-more]",
+            "presente": true,
+            "visivel": false,
+            "rect": [
+              0,
+              0
+            ],
+            "centro": [
+              0,
+              0
+            ],
+            "dentro_da_janela": false,
+            "no_ponto": "ASIDE.sidebar",
+            "alvo_contem": false,
+            "texto": "⋯Mais"
+          },
+          {
+            "sel": "button[data-section=\"secretaria\"]:not([data-teacher-nav-tab])",
+            "presente": true,
+            "visivel": false,
+            "rect": [
+              0,
+              0
+            ],
+            "centro": [
+              0,
+              0
+            ],
+            "dentro_da_janela": false,
+            "no_ponto": "ASIDE.sidebar",
+            "alvo_contem": false,
+            "texto": "▥Secretaria de Educação"
+          }
+        ],
+        "abertura": {
+          "camada": "sintetico",
+          "escolhida": null,
+          "trilha": [
+            "[data-mobile-more] nao hit-testavel: {\"sel\":\"[data-mobile-more]\",\"presente\":true,\"visivel\":false,\"rect\":[0,0],\"centro\":[0,0],\"dentro_da_janela\":false,\"no_ponto\":\"ASIDE.sidebar\",\"alvo_contem\":false,\"texto\":\"⋯Mais\"}",
+            "sintetico porque nenhuma entrada estava hit-testavel: [[\"#bfrMobileBottomNav [data-bfr-mobile-route=\\\"secretaria\\\"]\",false,null,null],[\"#bfrMobileDrawer .bfr-mobile-drawer-link[data-bfr-drawer-route=\\\"secretaria\\\"]\",false,null,null],[\"[data-mobile-more]\",true,false,false],[\"button[data-section=\\\"secretaria\\\"]:not([data-teacher-nav-tab])\",true,false,false]]"
+          ]
+        },
+        "depois_da_abertura": {
+          "central": false,
+          "n_tabs": 0,
+          "activeSection": "inicio"
+        },
+        "controlo_negativo": {
+          "antes": {
+            "central": false,
+            "sub_aba": false,
+            "botao_secao": true
+          },
+          "tentativa_de_clique_na_seccao_havia_botao": true,
+          "depois": {
+            "central": false,
+            "sub_aba": false
+          }
+        },
+        "erros_console": {
+          "bruto": 0,
+          "relevantes": []
+        }
+      }
+    }
+  ],
+  "portoes": 9,
+  "falhas": [],
+  "veredito": "P36B2_SUPERVISAO_MEDIDA 9/0",
+  "achado_sobre_globais": "Os tres globais que instrumentos antigos usavam (BFR_APP_RUNTIME, BFRSecretaryCentral, BFRMunicipalView) devolvem typeof=undefined no ar, com BFR_CURRENT_PROFILE presente. Este instrumento nao depende de nenhum deles: navega por DOM e clique de rato. Consequencia a verificar: as duas seccoes que o ciclo AH-1 abriu por BFR_APP_RUNTIME.navigate (escola-historia, coordenacao-chat) precisam de re-prova se esse caminho nao existia na versao servida.",
+  "nao_gateado_aqui": {
+    "tap_menor_44_e_fonte_menor_11": "pertencem a PEN-35 (tarefa 73, re-medicao de bandas); aqui sao registados com amostra, sem limiar",
+    "bandas": "larguras desta corrida: 390,1280, cada uma declarada E medida por portao"
+  }
+}

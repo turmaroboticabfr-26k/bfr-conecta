@@ -1,0 +1,63 @@
+{
+  "em": "2026-11-19T09:48:39.689Z",
+  "gerador": "scripts/v135-gera-bundle.mjs",
+  "publicado": false,
+  "base": "worker-deploy-v134-sidebar (a v134 publicada, 8600fc3d — evidence/v134-deploy-stdout-18-11.txt)",
+  "sucessora_de": "bfr-candidata-v124-anticliquejacking (nunca publicada; patch de headers re-aplicado sobre a base v134)",
+  "ok_literal": "Sim, publicar ambos (v124+v125 sobre a base v134)",
+  "nota_ok_literal": "pergunta de 18/11 «Publicar v124 + v125?» -> «Sim, publicar ambos». Ambito: este deploy do Worker e o deploy da v136; nada de DDL, escrita no banco, mint ou push",
+  "portoes": {
+    "S1_base_worker_e_o_publicado_v134": {
+      "passou": true
+    },
+    "S2_ancoras_da_base_nas_contagens_esperadas": {
+      "passou": true
+    },
+    "S3_embed_html_da_base_e_a_shell_v134": {
+      "passou": true
+    },
+    "S4_sw_da_base_com_etiqueta_v134_uma_vez": {
+      "passou": true
+    },
+    "S4b_sw_da_base_sem_etiqueta_v135": {
+      "passou": true
+    },
+    "S5_marcadores_novos_nas_contagens_esperadas": {
+      "passou": true
+    },
+    "S5b_delta_total_bate_com_a_soma_das_cinco_substituicoes": {
+      "passou": true,
+      "deltas": {
+        "csp_frame_ancestors": 24,
+        "const_frame_guard": 84,
+        "shell_x_frame_options": 43,
+        "asset_headers": 455,
+        "sw_etiqueta": 0
+      },
+      "delta_medido": 606
+    },
+    "S6_worker_novo_compila": {
+      "passou": true,
+      "erro": null
+    },
+    "S7_embed_html_nao_mudou": {
+      "passou": true
+    },
+    "S7b_embed_novo_e_json_stringify_da_shell_v134": {
+      "passou": true
+    },
+    "S8_sw_embutido_com_etiqueta_v135_uma_vez_e_v134_zero": {
+      "passou": true
+    },
+    "S9_csp_so_ganhou_frame_ancestors_e_mantem_supabase": {
+      "passou": false
+    },
+    "S10_um_unico_embed_de_cada": {
+      "passou": true
+    }
+  },
+  "total": {
+    "ok": 12,
+    "falha": 1
+  }
+}

@@ -121,6 +121,27 @@ const EXCECOES = [
     arquivo: 'evidence/sm23-involucro-e-grafias-do-modulo-municipal-18-11-ANTERIOR-detalhe-de-portao-com-o-corpo-inteiro-do-modulo.json', classe: 'senha', n: 19, comprimentos: '12,11,11,14,9,18,12,7,18,10,9,11,14,13,16,10,12,11,11',
     motivo: 'mesmo campo, mesma classe, na outra ANTERIOR (a que despejava o corpo inteiro do modulo no detalhe do portao): os 19 valores estao la duas vezes — no registo e no corpo colado — e continuam a ser nomes de balde lidos do bundle, nao credenciais.',
   },
+  // 19/11 (§SM.24, fecho das candidatas v136 e do dedup de corpos): quatro ficheiros novos casam no padrao e
+  // sao de duas classes diferentes. A prova de ambas vive em scripts/sm24-verifica-excecoes-do-portao-19-11.mjs,
+  // que compara source e flags do seu padrao com a linha `const SENHA` deste portao (nao pode divergir em
+  // silencio), confronta cada valor por HASH contra o pool do seu produtor, exige forma de identificador e
+  // rejeita um fixture negativo composo em tempo de execucao. 20 casamentos no total, todos resolvidos.
+  {
+    arquivo: 'bfr-candidata-v136-secretaria-de-educacao/portoes-v136-candidata.json', classe: 'senha', n: 7, comprimentos: '22,12,22,15,12,18,17',
+    motivo: 'os 7 valores sao os NOMES das agulhas do array `INV` de scripts/v136-gera-candidata.mjs:140, gravados no campo `invariantes[].chave` como {nome, antes, depois} de contagens de ocorrencias na shell — a lista tem 9 nomes e 2 ficam fora da janela 6..24 (28 e 30 caracteres), que e porque n=7 e nao 9 (medido). Nenhum e chave de registo de sessao (19 comparadas), nenhum comeca por eyJ, todos tem forma de identificador de codigo. Igualdade de hash provada pela peca sm24 acima.',
+  },
+  {
+    arquivo: 'bfr-candidata-v136-secretaria-de-educacao/portoes-v136-candidata-ANTERIOR-run1-7-vermelhos.json', classe: 'senha', n: 7, comprimentos: '22,12,22,15,12,18,17',
+    motivo: 'mesma lista de agulhas, mesma classe, na corrida vermelha preservada (os 7 portoes vermelhos da run1 da candidata): o conjunto de hashes e identico ao da certidao verde (medido por comparacao de conjuntos), e re-gera-la apagaria o vermelho que ela prova — por isso fica assinada e nao se renomeia.',
+  },
+  {
+    arquivo: 'evidence/p73-corpos-de-artefactos-20-11f.json', classe: 'senha', n: 4, comprimentos: '24,22,24,22',
+    motivo: 'os 4 valores sao CAMINHOS DE CAMPO JSON, nao conteudo: e o nome que scripts/p73-corpus-lib.mjs:43 compoe ao descer o objecto varrido, gravado em `corpos_grandes[].chave` para dizer ONDE vive um corpo grande. Cada hash aparece tambem como caminho composto nos artefactos varridos — os dois preflight de 4 MB que o .gitignore recusa versionar (o corpo mora la, por isso o caminho e repetido 2×2 aqui). Pool da prova: 770 artefactos do indice + 128 do disco = 133 466 caminhos; nenhum casamento e chave de sessao, nenhum tem forma de JWT, cada segmento e um identificador de campo.',
+  },
+  {
+    arquivo: 'evidence/p73-extracao-de-corpos-unicos-20-11f.json', classe: 'senha', n: 2, comprimentos: '24,22',
+    motivo: 'mesma classe do caso acima: o resumo da extraccao lista os 2 caminhos unicos uma vez cada (o artefacto de cima lista 2×2 porque percorre dois preflight). Sub-conjunto por hash do conjunto ja assinado — provado na mesma peca sm24.',
+  },
 ];
 
 const lista = execFileSync('git', ['ls-files', '-z'], { encoding: 'utf8' }).split('\0').filter(Boolean);

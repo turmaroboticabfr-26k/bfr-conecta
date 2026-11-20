@@ -1,0 +1,247 @@
+{
+  "ciclo": "V135-PREFLIGHT",
+  "em": "2026-11-19T09:52:19.183Z",
+  "escrita": 0,
+  "ddl": 0,
+  "mint": 0,
+  "deploy": 0,
+  "origem": "C:/Users/pcmac/Documents/Qoder/2026-10-13/28077d9a/bfr-conecta/evidence/v134-pos-deploy-18-11.json",
+  "url": "https://bfr-conecta.turmaroboticabfr.workers.dev",
+  "versao_esperada_no_ar": "8600fc3d-022f-4c4a-a179-2728f6fca916",
+  "portoes": {
+    "B1_shell_no_ar_e_a_v134": {
+      "passou": true,
+      "medido": {
+        "http": 200,
+        "md5": "b272fd4f3a737c518e888250ab8167f1",
+        "bytes": 3546846
+      },
+      "esperado_v134": {
+        "md5": "b272fd4f3a737c518e888250ab8167f1",
+        "bytes": 3546846
+      }
+    },
+    "B2_sw_no_ar_e_o_da_v134": {
+      "passou": true,
+      "medido": {
+        "md5": "36ef6aeba9954ec3aa4a11230bf811dd",
+        "bytes": 5064,
+        "rotulo": "bfr-conecta-v134"
+      },
+      "esperado": {
+        "md5": "36ef6aeba9954ec3aa4a11230bf811dd",
+        "bytes": 5064,
+        "rotulo": "bfr-conecta-v134"
+      }
+    },
+    "B3_a_shell_no_ar_ainda_nao_tem_os_headers": {
+      "passou": true,
+      "x_frame_no_ar": null,
+      "csp_com_frame_ancestors": false,
+      "nota": "prova de que o defeito do PEN-24 esta no ar antes do deploy; se os headers ja existissem, este preflight estaria a olhar para a versao errada"
+    },
+    "B4_o_pdf_no_ar_ainda_sai_sem_os_dois_headers": {
+      "passou": true,
+      "http": 200,
+      "md5": "14a6b82bfb212bf115fafdb546163f9f",
+      "x_frame": null,
+      "csp": null,
+      "nota": "o defeito medido pelo PEN-24: um PDF e um documento framavel e saia sem qualquer cabecalho de enquadramento"
+    },
+    "B5_csp_da_shell_permite_supabase": {
+      "passou": true,
+      "csp_presente": "default-src 'self'; base-uri 'self'; object-src 'none'; script-src 'self' 'unsafe-inline' https://bfr-conecta.turmarobot..."
+    },
+    "B6_rota_inexistente_da_404": {
+      "passou": true,
+      "http": 404,
+      "bytes": 9,
+      "md5": "9e076f5885f5cc16a4b5aeb8de4adff5"
+    },
+    "B7_firebase_messaging_sw_ainda_404": {
+      "passou": true,
+      "http": 404
+    },
+    "B8_12_assets_no_ar_batem_com_a_base": {
+      "passou": true,
+      "total": 12,
+      "desvios": []
+    },
+    "B9_versao_no_servidor_e_a_da_v134_a_100": {
+      "passou": true,
+      "status": "8600fc3d-022f-4c4a-a179-2728f6fca916",
+      "lista_mais_nova": "8600fc3d-022f-4c4a-a179-2728f6fca916",
+      "trafego": 100,
+      "em": "2026-11-18T06:24:00.01873Z"
+    },
+    "B10_worker_em_disco_bate_com_o_esperado_v135": {
+      "passou": true,
+      "medido": {
+        "md5": "210875b75887b631ccd1a6134ebf3bb0",
+        "bytes": 3611720
+      },
+      "esperado": {
+        "md5": "210875b75887b631ccd1a6134ebf3bb0",
+        "bytes": 3611720
+      }
+    },
+    "B11_marcadores_do_patch_em_disco": {
+      "passou": true,
+      "frame_ancestors": 2,
+      "frame_guard": 2,
+      "x_frame": 2,
+      "h_set": 1,
+      "etiqueta_v135": 1,
+      "etiqueta_v134": 0
+    },
+    "B12_portoes_do_gerador_v135_estao_todos_verdes": {
+      "passou": true,
+      "portoes": 18,
+      "detalhe": []
+    },
+    "B13_dir_do_deploy_tem_12_assets_e_toml": {
+      "passou": true,
+      "assets": 12
+    },
+    "B14_html_do_bundle_nao_mudou": {
+      "passou": true,
+      "v135": {
+        "md5": "b272fd4f3a737c518e888250ab8167f1",
+        "bytes": 3546846
+      },
+      "v134": {
+        "md5": "b272fd4f3a737c518e888250ab8167f1",
+        "bytes": 3546846
+      }
+    }
+  },
+  "total": {
+    "ok": 14,
+    "falha": 0
+  },
+  "medido_antes": {
+    "shell": {
+      "caminho": "/",
+      "http": 200,
+      "bytes": 3546846,
+      "md5": "b272fd4f3a737c518e888250ab8167f1",
+      "content_type": "text/html; charset=utf-8",
+      "csp": "default-src 'self'; base-uri 'self'; object-src 'none'; script-src 'self' 'unsafe-inline' https://bfr-conecta.turmaroboticabfr.workers.dev https://cdn.jsdelivr.net https://static.cloudflareinsights.com https://www.gstatic.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: blob: https:; connect-src 'self' https://bfr-conecta.turmaroboticabfr.workers.dev https://*.supabase.co wss://*.supabase.co https://cloudflareinsights.com https://*.cloudflareinsights.com https://*.googleapis.com https://fcm.googleapis.com https://api.open-meteo.com; worker-src 'self' blob:; manifest-src 'self'; form-action 'self' https://accounts.google.com https://*.supabase.co",
+      "x_frame": null
+    },
+    "sw": {
+      "caminho": "/sw-v4.js?v=45",
+      "http": 200,
+      "bytes": 5064,
+      "md5": "36ef6aeba9954ec3aa4a11230bf811dd",
+      "content_type": "application/javascript; charset=utf-8",
+      "csp": null,
+      "x_frame": null
+    },
+    "notfound": {
+      "caminho": "/rota-inexistente-v135-preflight",
+      "http": 404,
+      "bytes": 9,
+      "md5": "9e076f5885f5cc16a4b5aeb8de4adff5",
+      "texto": "Not found",
+      "content_type": "text/plain; charset=utf-8",
+      "csp": null,
+      "x_frame": null
+    },
+    "firebase": {
+      "caminho": "/firebase-messaging-sw.js",
+      "http": 404,
+      "bytes": 9,
+      "md5": "9e076f5885f5cc16a4b5aeb8de4adff5",
+      "texto": "Not found",
+      "content_type": "text/plain; charset=utf-8",
+      "csp": null,
+      "x_frame": null
+    },
+    "pdf": {
+      "caminho": "/calendario-letivo-2026.pdf",
+      "http": 200,
+      "bytes": 202349,
+      "md5": "14a6b82bfb212bf115fafdb546163f9f",
+      "content_type": "application/pdf",
+      "csp": null,
+      "x_frame": null
+    },
+    "rotuloAr": "bfr-conecta-v134",
+    "assets_vivos": [
+      {
+        "arquivo": "bfr-app-logo.png",
+        "http": 200,
+        "md5": "9578faf20083e3cb4d572af5ba10d6ed",
+        "bytes": 448736
+      },
+      {
+        "arquivo": "bfr-responsive-presentation.js",
+        "http": 200,
+        "md5": "a83f77baba7453851b287080686c7afb",
+        "bytes": 51742
+      },
+      {
+        "arquivo": "bfr-teacher-arrivals.js",
+        "http": 200,
+        "md5": "dcb69a88c8f4e93a5f818233cf185300",
+        "bytes": 13975
+      },
+      {
+        "arquivo": "bfr-teacher-audit.js",
+        "http": 200,
+        "md5": "255a2cd46599a25584b89775a276ed68",
+        "bytes": 3554
+      },
+      {
+        "arquivo": "calendario-letivo-2026.pdf",
+        "http": 200,
+        "md5": "14a6b82bfb212bf115fafdb546163f9f",
+        "bytes": 202349
+      },
+      {
+        "arquivo": "horario-matutino-2026.pdf",
+        "http": 200,
+        "md5": "85cffd0ad3bd8d78166a3993e17a962c",
+        "bytes": 521385
+      },
+      {
+        "arquivo": "horario-matutino-2026.png",
+        "http": 200,
+        "md5": "5d181a1754a45046bc6907a4d9b420f6",
+        "bytes": 501591
+      },
+      {
+        "arquivo": "horario-vespertino-2026.pdf",
+        "http": 200,
+        "md5": "745d6edd9e11d74216939bca68d30b35",
+        "bytes": 498802
+      },
+      {
+        "arquivo": "horario-vespertino-2026.png",
+        "http": 200,
+        "md5": "58854bb4f3ce5e4dffcc7a1a34c31271",
+        "bytes": 480258
+      },
+      {
+        "arquivo": "lia-avatar.png",
+        "http": 200,
+        "md5": "87e5fc3c4f8bc68ed4535c5cf032c47c",
+        "bytes": 1736466
+      },
+      {
+        "arquivo": "lia-avatar.svg",
+        "http": 200,
+        "md5": "fd080cd554c553567cb6cd82bbeff0de",
+        "bytes": 352
+      },
+      {
+        "arquivo": "manifest.json",
+        "http": 200,
+        "md5": "68d155183c80e3e554466ce2415cb268",
+        "bytes": 484
+      }
+    ]
+  },
+  "veredito": "V135_PREFLIGHT_OK"
+}

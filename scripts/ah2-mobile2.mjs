@@ -68,7 +68,27 @@ const renova = async () => {
 };
 
 const chrome = spawn('C:/Program Files/Google/Chrome/Application/chrome.exe', [`--remote-debugging-port=${PORT}`, `--user-data-dir=${PERFIL}`, '--headless=new', `--window-size=${LARGURAS[0]},${ALTURA}`, '--no-first-run', '--no-default-browser-check', '--disable-gpu', 'about:blank'], { stdio: 'ignore' });
-const abort = (c, m) => { try { spawn('taskkill', ['/pid', String(chrome.pid), '/t', '/f'], { stdio: 'ignore' }); } catch {} console.log('PAROU: ' + m); process.exit(c); };
+// O watchdog NÃO pode sair sem artefacto. Foi assim que a vaga 5 (sports_operator, education_supervisor, 511 s
+// cada) e o `m5-coordinator-9` (praga aos 229 s, watchdog aos 314 s) deixaram 0 células e 0 pistas: `abort()`
+// era só taskkill + exit. Escreve o parcial com `INTERROMPIDA` e `falha_em`; as bandas já medidas ficam lá, e
+// `out`/`falhas`/`portoes` podem ainda não existir (o abort da linha 82 dispara antes da declaração de `out`,
+// e um `const` em TDZ rebenta a corrida — por isso o try/catch, não por prudência estética).
+const abort = (c, m) => {
+  try { spawn('taskkill', ['/pid', String(chrome.pid), '/t', '/f'], { stdio: 'ignore' }); } catch {}
+  // `fecho normal` é a saída limpa: o artefacto bom já foi escrito logo acima, e re-escrevê-lo com
+  // `INTERROMPIDA`/`em_parcial` mentiria sobre a identidade da corrida — os leitores (e a matriz de repetição)
+  // usam `em_parcial` precisamente para separar «morreu a meio» de «acabou».
+  if (m === 'fecho normal') { console.log('PAROU: ' + m); process.exit(c); }
+  try { writeFileSync(OUT, JSON.stringify({ ...out, INTERROMPIDA: m, portoes, falhas: falhas.slice(), em_parcial: true }, null, 2) + '\n'); console.log('PARCIAL escrito em ' + OUT.split('/').pop()); }
+  catch (e) { try { writeFileSync(OUT, JSON.stringify({ ciclo: 'AH-7b-MOBILE', papel: PAPEL, larguras: LARGURAS, INTERROMPIDA: m, falha_em: String(e.message || e).slice(0, 120), em_parcial: true }, null, 2) + '\n'); } catch {} }
+  console.log('PAROU: ' + m); process.exit(c);
+};
+// Nenhum `await` do laço por largura tem try/catch próprio, e uma rejeição que escapa mata o processo ANTES de
+// chegar ao watchdog — foi precisamente assim que `m5-pending-13` (CDP `Page.navigate` sem ack) deixou 0
+// artefacto e 0 pista, o defeito que a vaga 5 tinha denunciado. Os dois fechos globais chamam o mesmo `abort`,
+// que escreve o parcial com `INTERROMPIDA` e sai com código não-zero.
+process.on('unhandledRejection', (e) => abort(7, 'unhandledRejection: ' + String(e?.message || e).slice(0, 170)));
+process.on('uncaughtException', (e) => abort(8, 'uncaughtException: ' + String(e?.message || e).slice(0, 170)));
 let aperta = false;
 // O condutor da grelha (§5) corre um processo por célula dentro de uma janela de shell limitada; sem isto
 // o processo-filho arrancado aos 400 s ultrapassaria a janela e seria morto sem escrever artefacto. Com
@@ -92,7 +112,21 @@ ws.onmessage = (ev) => {
   if (m.method === 'Runtime.consoleAPICalled' && ['error', 'warning'].includes(m.params.type)) consola.push((m.params.args || []).map((a) => a.value ?? a.description ?? a.type).join(' ').slice(0, 220));
   if (m.method === 'Log.entryAdded' && m.params.entry?.level === 'error') consola.push('[rede] ' + String(m.params.entry.text || '').slice(0, 200));
 };
-const send = (method, params = {}) => new Promise((res, rej) => { const i = ++seq; pend.set(i, { res, rej }); try { ws.send(JSON.stringify({ id: i, method, params })); } catch (e) { rej(e); } });
+// Chamada CDP sem resposta pendurava o processo para sempre: a promessa de `send` não tinha limite, o `waitFor`
+// faz `try { await E() } catch {}` e por isso nunca sairia do loop se o evaluate não regressasse (contexto
+// destruído por navegação). O teto é POR MÉTODO, porque as duas famílias têm naturezas de ack diferentes:
+// `Runtime.evaluate` é a chamada que o `waitFor` repete de 350 em 350 ms e a espera mais longa pedida à página
+// foi medida em 1 200 ms — 60 s é > 50x isso e não amacia régua nenhuma. `Page.navigate` não tem ack até a
+// navegação assentar; um 60 s igual ao do evaluate matou `m5-pending-13` no `navigate` da barreira de
+// pendência, sem banda escrita. Erro nomeado continua a ser o objectivo: o `abort` grava o parcial.
+const PRAZO_CDP = (method) => (method === 'Runtime.evaluate' ? 60000 : 150000);
+const send = (method, params = {}) => new Promise((res, rej) => {
+  const i = ++seq;
+  const prazo = PRAZO_CDP(method);
+  const temporizador = setTimeout(() => { if (pend.has(i)) { pend.delete(i); rej(new Error('CDP ' + method + ' sem resposta em ' + Math.round(prazo / 1000) + ' s (id ' + i + ')')); } }, prazo);
+  pend.set(i, { res: (v) => { clearTimeout(temporizador); res(v); }, rej: (e) => { clearTimeout(temporizador); rej(e); } });
+  try { ws.send(JSON.stringify({ id: i, method, params })); } catch (e) { clearTimeout(temporizador); rej(e); }
+});
 const E = async (expression) => { const r = await send('Runtime.evaluate', { expression, returnByValue: true, awaitPromise: true }); if (r.exceptionDetails) throw new Error('eval: ' + String(r.exceptionDetails.exception?.description || r.exceptionDetails.text).slice(0, 300)); return r.result?.value; };
 const waitFor = async (e, ms = 70000) => { const t0 = Date.now(); while (Date.now() - t0 < ms) { let v; try { v = await E(e); } catch {} if (v) return Date.now() - t0; await new Promise((r) => setTimeout(r, 350)); } throw new Error('waitFor: ' + e.slice(0, 110)); };
 const dorme = (ms) => new Promise((r) => setTimeout(r, ms));

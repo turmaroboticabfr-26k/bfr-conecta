@@ -1,0 +1,210 @@
+{
+  "programa": "scripts/p73-sonda-timer-piso.mjs",
+  "em": "2026-11-20T01:11:26.156Z",
+  "ar": {
+    "url": "https://bfr-conecta.turmaroboticabfr.workers.dev/",
+    "md5": "9e236a23eed978cf7c2a2743d449b307"
+  },
+  "modulo": {
+    "url": "https://bfr-conecta.turmaroboticabfr.workers.dev/bfr-responsive-presentation.js?v=14",
+    "md5_servido": "a83f77baba7453851b287080686c7afb",
+    "md5_repo": "a83f77baba7453851b287080686c7afb",
+    "iguais": true,
+    "piso_ms": 60,
+    "teto_ms": 250
+  },
+  "papel": "monitor",
+  "papel_de_controlo": "gatekeeper",
+  "larguras": [
+    320,
+    430
+  ],
+  "sessoes": {
+    "gatekeeper": {
+      "papel": "gatekeeper",
+      "gravado_em": "ah2-sessao-gatekeeper.json",
+      "gravado_fiel": true,
+      "renovou": false,
+      "access_comprimento": 823,
+      "refresh_comprimento": 12,
+      "expira_em_s": 2739
+    },
+    "monitor": {
+      "papel": "monitor",
+      "gravado_em": "ah2-sessao-monitor.json",
+      "gravado_fiel": true,
+      "renovou": false,
+      "access_comprimento": 819,
+      "refresh_comprimento": 12,
+      "expira_em_s": 2365
+    }
+  },
+  "leitura_do_codigo": {
+    "armador_do_timer": "schedule -> setTimeout(dispara, PISO)",
+    "cancelador": "clearTimeout no topo do schedule",
+    "outros_chamadores_de_schedule": [
+      "media change",
+      "resize",
+      "bfr:app-ready",
+      "bfr:role-change",
+      "bfr:navigation",
+      "MutationObserver do corpo"
+    ],
+    "atribuicao": "pilha do setTimeout com delay=PISO",
+    "ramo_que_nao_chama_createNav": "pintaSozinho -> paintHighlight"
+  },
+  "resultados": {
+    "320": {
+      "largura": 320,
+      "ms_ready": 841,
+      "patch": "ja_instalado",
+      "sem_toque": {
+        "nav_existe": false,
+        "botoes": 0,
+        "botoes_com_caixa": 0,
+        "corpo_mobile": false,
+        "shell_ready": true,
+        "papel": "monitor",
+        "armados_piso": 640,
+        "venceu_piso": 0,
+        "cancelados_piso": 639,
+        "outros_delays_do_modulo": 0,
+        "venceu_ultimo_ha_ms": null,
+        "armados_por_segundo": 175,
+        "sinistros": []
+      },
+      "dois_eventos": {
+        "nav_existe": false,
+        "botoes": 0,
+        "botoes_com_caixa": 0,
+        "corpo_mobile": false,
+        "shell_ready": true,
+        "papel": "monitor",
+        "armados_piso": 1156,
+        "venceu_piso": 0,
+        "cancelados_piso": 1155,
+        "outros_delays_do_modulo": 0,
+        "venceu_ultimo_ha_ms": null,
+        "armados_por_segundo": 187,
+        "sinistros": []
+      },
+      "sossego_5s": {
+        "nav_existe": false,
+        "botoes": 0,
+        "botoes_com_caixa": 0,
+        "corpo_mobile": false,
+        "shell_ready": true,
+        "papel": "monitor",
+        "armados_piso": 2361,
+        "venceu_piso": 0,
+        "cancelados_piso": 2360,
+        "outros_delays_do_modulo": 0,
+        "venceu_ultimo_ha_ms": null,
+        "armados_por_segundo": 199,
+        "sinistros": []
+      },
+      "veredicto": "ESTRELACAO_DO_TIMER_PROVADA_POR_PILHA"
+    },
+    "430": {
+      "largura": 430,
+      "ms_ready": 442,
+      "patch": "ja_instalado",
+      "sem_toque": {
+        "nav_existe": false,
+        "botoes": 0,
+        "botoes_com_caixa": 0,
+        "corpo_mobile": false,
+        "shell_ready": true,
+        "papel": "monitor",
+        "armados_piso": 596,
+        "venceu_piso": 0,
+        "cancelados_piso": 595,
+        "outros_delays_do_modulo": 0,
+        "venceu_ultimo_ha_ms": null,
+        "armados_por_segundo": 171,
+        "sinistros": []
+      },
+      "dois_eventos": {
+        "nav_existe": false,
+        "botoes": 0,
+        "botoes_com_caixa": 0,
+        "corpo_mobile": false,
+        "shell_ready": true,
+        "papel": "monitor",
+        "armados_piso": 1048,
+        "venceu_piso": 0,
+        "cancelados_piso": 1047,
+        "outros_delays_do_modulo": 0,
+        "venceu_ultimo_ha_ms": null,
+        "armados_por_segundo": 178,
+        "sinistros": []
+      },
+      "sossego_5s": {
+        "nav_existe": false,
+        "botoes": 0,
+        "botoes_com_caixa": 0,
+        "corpo_mobile": false,
+        "shell_ready": true,
+        "papel": "monitor",
+        "armados_piso": 2178,
+        "venceu_piso": 0,
+        "cancelados_piso": 2177,
+        "outros_delays_do_modulo": 0,
+        "venceu_ultimo_ha_ms": null,
+        "armados_por_segundo": 189,
+        "sinistros": []
+      },
+      "veredicto": "ESTRELACAO_DO_TIMER_PROVADA_POR_PILHA"
+    }
+  },
+  "controlo": {
+    "largura": 320,
+    "ms_ready": 1981,
+    "patch": "ja_instalado",
+    "sem_toque": {
+      "nav_existe": true,
+      "botoes": 5,
+      "botoes_com_caixa": 5,
+      "corpo_mobile": true,
+      "shell_ready": true,
+      "papel": "gatekeeper",
+      "armados_piso": 117,
+      "venceu_piso": 7,
+      "cancelados_piso": 109,
+      "outros_delays_do_modulo": 0,
+      "venceu_ultimo_ha_ms": 393,
+      "armados_por_segundo": 30,
+      "sinistros": []
+    },
+    "dois_eventos": {
+      "nav_existe": true,
+      "botoes": 5,
+      "botoes_com_caixa": 5,
+      "corpo_mobile": true,
+      "shell_ready": true,
+      "papel": "gatekeeper",
+      "armados_piso": 121,
+      "venceu_piso": 9,
+      "cancelados_piso": 112,
+      "outros_delays_do_modulo": 0,
+      "venceu_ultimo_ha_ms": 775,
+      "armados_por_segundo": 26,
+      "sinistros": []
+    },
+    "sossego_5s": {
+      "nav_existe": true,
+      "botoes": 5,
+      "botoes_com_caixa": 5,
+      "corpo_mobile": true,
+      "shell_ready": true,
+      "papel": "gatekeeper",
+      "armados_piso": 129,
+      "venceu_piso": 13,
+      "cancelados_piso": 116,
+      "outros_delays_do_modulo": 0,
+      "venceu_ultimo_ha_ms": 996,
+      "armados_por_segundo": 14,
+      "sinistros": []
+    }
+  }
+}

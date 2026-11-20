@@ -1,0 +1,191 @@
+{
+  "programa": "scripts/p73-sonda-starvacao-sync.mjs",
+  "em": "2026-11-20T01:01:37.747Z",
+  "ar": {
+    "url": "https://bfr-conecta.turmaroboticabfr.workers.dev/",
+    "md5": "9e236a23eed978cf7c2a2743d449b307"
+  },
+  "papel": "monitor",
+  "papel_de_controlo": "gatekeeper",
+  "larguras": [
+    320,
+    430
+  ],
+  "sessoes": {
+    "gatekeeper": {
+      "papel": "gatekeeper",
+      "gravado_em": "ah2-sessao-gatekeeper.json",
+      "gravado_fiel": true,
+      "renovou": false,
+      "access_comprimento": 823,
+      "refresh_comprimento": 12,
+      "expira_em_s": 3328
+    },
+    "monitor": {
+      "papel": "monitor",
+      "gravado_em": "ah2-sessao-monitor.json",
+      "gravado_fiel": true,
+      "renovou": false,
+      "access_comprimento": 819,
+      "refresh_comprimento": 12,
+      "expira_em_s": 2958
+    }
+  },
+  "leitura_do_codigo": {
+    "criadora_da_barra": "createNav, chamada apenas no corpo de sync",
+    "ramo_que_nao_chama_createNav": "pintaSozinho -> paintHighlight",
+    "janela_do_teto_ms": 250,
+    "piso_ms": 60
+  },
+  "resultados": {
+    "320": {
+      "largura": 320,
+      "ms_ready": 496,
+      "lotes_mutacao_pos_ready": 776,
+      "silencios_3s": {
+        "marcas": 611,
+        "silencios_n": 610,
+        "maior_silencio_ms": 58,
+        "silencios_ge_piso_n": 0,
+        "piso_ms": 60
+      },
+      "silencios_no_fim": {
+        "marcas": 1395,
+        "silencios_n": 1394,
+        "maior_silencio_ms": 87,
+        "silencios_ge_piso_n": 1,
+        "piso_ms": 60
+      },
+      "sem_toque": {
+        "nav_existe": false,
+        "botoes": 0,
+        "botoes_com_caixa": 0,
+        "corpo_mobile": false,
+        "shell_ready": true,
+        "papel": "monitor",
+        "lote_mutacao": 833,
+        "sinistros": []
+      },
+      "um_evento": {
+        "nav_existe": false,
+        "botoes": 0,
+        "botoes_com_caixa": 0,
+        "corpo_mobile": false,
+        "shell_ready": true,
+        "papel": "monitor",
+        "lote_mutacao": 1107,
+        "sinistros": []
+      },
+      "dois_eventos": {
+        "nav_existe": false,
+        "botoes": 0,
+        "botoes_com_caixa": 0,
+        "corpo_mobile": false,
+        "shell_ready": true,
+        "papel": "monitor",
+        "lote_mutacao": 1585,
+        "sinistros": []
+      },
+      "veredicto": "NAO_E_O_PISO_FALHOU_OUTRA_COISA"
+    },
+    "430": {
+      "largura": 430,
+      "ms_ready": 470,
+      "lotes_mutacao_pos_ready": 828,
+      "silencios_3s": {
+        "marcas": 665,
+        "silencios_n": 664,
+        "maior_silencio_ms": 51,
+        "silencios_ge_piso_n": 0,
+        "piso_ms": 60
+      },
+      "silencios_no_fim": {
+        "marcas": 1640,
+        "silencios_n": 1639,
+        "maior_silencio_ms": 51,
+        "silencios_ge_piso_n": 0,
+        "piso_ms": 60
+      },
+      "sem_toque": {
+        "nav_existe": false,
+        "botoes": 0,
+        "botoes_com_caixa": 0,
+        "corpo_mobile": false,
+        "shell_ready": true,
+        "papel": "monitor",
+        "lote_mutacao": 888,
+        "sinistros": []
+      },
+      "um_evento": {
+        "nav_existe": false,
+        "botoes": 0,
+        "botoes_com_caixa": 0,
+        "corpo_mobile": false,
+        "shell_ready": true,
+        "papel": "monitor",
+        "lote_mutacao": 1270,
+        "sinistros": []
+      },
+      "dois_eventos": {
+        "nav_existe": false,
+        "botoes": 0,
+        "botoes_com_caixa": 0,
+        "corpo_mobile": false,
+        "shell_ready": true,
+        "papel": "monitor",
+        "lote_mutacao": 1829,
+        "sinistros": []
+      },
+      "veredicto": "ESTRELACAO_PELO_PISO_NUNCA_HOUVE_SILENCIO"
+    }
+  },
+  "controlo": {
+    "largura": 320,
+    "ms_ready": 1964,
+    "lotes_mutacao_pos_ready": 264,
+    "silencios_3s": {
+      "marcas": 79,
+      "silencios_n": 78,
+      "maior_silencio_ms": 952,
+      "silencios_ge_piso_n": 5,
+      "piso_ms": 60
+    },
+    "silencios_no_fim": {
+      "marcas": 82,
+      "silencios_n": 81,
+      "maior_silencio_ms": 1193,
+      "silencios_ge_piso_n": 8,
+      "piso_ms": 60
+    },
+    "sem_toque": {
+      "nav_existe": true,
+      "botoes": 5,
+      "botoes_com_caixa": 5,
+      "corpo_mobile": true,
+      "shell_ready": true,
+      "papel": "gatekeeper",
+      "lote_mutacao": 264,
+      "sinistros": []
+    },
+    "um_evento": {
+      "nav_existe": true,
+      "botoes": 5,
+      "botoes_com_caixa": 5,
+      "corpo_mobile": true,
+      "shell_ready": true,
+      "papel": "gatekeeper",
+      "lote_mutacao": 272,
+      "sinistros": []
+    },
+    "dois_eventos": {
+      "nav_existe": true,
+      "botoes": 5,
+      "botoes_com_caixa": 5,
+      "corpo_mobile": true,
+      "shell_ready": true,
+      "papel": "gatekeeper",
+      "lote_mutacao": 279,
+      "sinistros": []
+    }
+  }
+}

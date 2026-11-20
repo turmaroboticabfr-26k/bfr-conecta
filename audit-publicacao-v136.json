@@ -1,0 +1,330 @@
+{
+  "version": "v136",
+  "data": "2026-11-19",
+  "ok_literal": "Sim, publicar ambos (v124+v125 sobre a base v134)",
+  "nota_do_ok": "opcao selecionada na pergunta de 18/11 «Publicar v124 + v125?»; o nome unico «Secretaria de Educação» foi a resposta a outra pergunta da mesma serie. Nao cobre DDL, escrita no banco, mint de contas, nem git push (o utilizador re-confirmou «Nao fazer push»).",
+  "escopo_do_ok": "publicar o patch anti-cliquejacking (PEN-24) re-aplicado sobre a base v134 como v135 (ja fechado no diario da v135), e o patch do created_at (PEN-30) + nome unico como v136; este diario cobre a v136",
+  "tarefa": "fazer os anuncios voltarem a ordenar por published_at (a coluna created_at nao existe na tabela announcements) e dar a superficie um nome unico: «Secretaria de Educação»",
+  "deploy": {
+    "worker": "bfr-conecta",
+    "conta": "turmaroboticabfr@gmail.com",
+    "version_id": "1598137c-ab84-4ca7-a5e3-ce621d06f255",
+    "deployment_id": "58ef359d-6366-4f8a-b5e4-3839063b0549",
+    "versao_anterior_v135": "f5c157f2-7b46-447b-88a9-d05cff7c42d2",
+    "versao_primeiro_v135": "f824a488-d7f1-4922-b005-4c11a810d401",
+    "deployment_created": "2026-11-19T10:16:29.434532Z",
+    "percentual_trafego_novo": 100,
+    "wrangler": "4.154.0 (fixada: 4.156+ quebra o upload de assets com o erro 100312)",
+    "cwd": "worker-deploy-v136-secretaria-de-educacao",
+    "base_do_bundle": "worker-deploy-v135-headers (a v135 publicada)",
+    "url": "https://bfr-conecta.turmaroboticabfr.workers.dev",
+    "comando_da_url": "derivado de evidence/v135-pos-deploy-19-11.json -> url, nunca dactilografado",
+    "fonte_dos_numeros": "evidence/v136-deployments-list/status-depois-19-11.json (redirecionamento de `wrangler deployments list/status --json`) e evidence/v136-deploy-stdout-19-11.txt",
+    "estado_antes_deste_ciclo": {
+      "versao": "f5c157f2-7b46-447b-88a9-d05cff7c42d2",
+      "percentual": 100,
+      "em": "2026-11-19T09:57:00.510908Z"
+    },
+    "assets_nao_reenviados": "«No updated asset files to upload» — os 12 assets sao byte-identicos aos da v135; o _headers tambem nao mudou"
+  },
+  "correcao": {
+    "pen30_o_que_mediu": "a consulta de anuncios ordenava por created_at, coluna que nao existe em announcements — a ordem ficava indefinida",
+    "pen30_o_patch_re_aplicado": "o mesmo par da velha v125: select sem created_at e order por published_at desc com nullsFirst:false (um unico sitio, gateado a disparar exactamente 1x no gerador da candidata)",
+    "nome_unico_regra": "renomeia o que NOMEIA o módulo; preserva rótulos do papel secretary, «Supervisão»/«Supervisão Educacional», prosa legal/institucional e o tipo de solicitação «Atendimento da escola»",
+    "nome_unico_antes_depois": {
+      "antes_na_shell_v134": {
+        "Secretaria de Educação": 3,
+        "Secretaria digital": 5,
+        "Centro de Gestão da Educação": 2,
+        "Atendimento da escola": 2,
+        "Supervisão Educacional": 2,
+        "Supervisão": 5,
+        "Secretaria": 82
+      },
+      "depois_na_candidata_v136": {
+        "Secretaria de Educação": 52,
+        "Centro de Gestão da Educação": 0,
+        "Secretaria digital": 1,
+        "Secretaria Digital": 0,
+        "Atendimento da escola": 2,
+        "Supervisão Educacional": 2,
+        "Supervisão": 5,
+        "Secretaria (ocorrencias totais)": 84
+      },
+      "nota": "«Secretaria» continua a aparecer como rotulo do PAPEL secretary em mapas/selectores/chips e em prosa como «a Secretaria de Educação»; os nomes da superficie (titulos, hero, nav, paineis) ficaram todos «Secretaria de Educação»"
+    },
+    "alcance_medido": "shell 9e236a23eed978cf7c2a2743d449b307 (3547458 B) (delta de 612 B vs v135: so texto); SW 3b70da77e96cd4dc3a1ac7cba001c8a1 (5064 B) com CACHE bfr-conecta-v136; worker f963b932af5b296e00584ae636ab8397 (3612332 B); 12 assets + _headers byte-identicos a v135",
+    "o_que_NAO_foi_alterado": "a base worker-deploy-v135-headers esta intacta no disco (210875b75887b631ccd1a6134ebf3bb0 (3611720 B)); CSP, FRAME_GUARD, NOFOUNDR e public/_headers byte-a-byte; wrangler.toml identico; 0 DDL, 0 escrita no banco, 0 mint, 0 Edge Function"
+  },
+  "md5": {
+    "worker-deploy-v136-secretaria-de-educacao/worker.mjs_publicado": "f963b932af5b296e00584ae636ab8397 (3612332 B)",
+    "worker-deploy-v135-headers/worker.mjs_base": "210875b75887b631ccd1a6134ebf3bb0 (3611720 B)",
+    "bfr-candidata-v136-secretaria-de-educacao/index.html": "9e236a23eed978cf7c2a2743d449b307 (3547458 B)",
+    "shell_antes_v135": "b272fd4f3a737c518e888250ab8167f1 (3546846 B)",
+    "shell_depois_v136": "9e236a23eed978cf7c2a2743d449b307 (3547458 B)",
+    "sw_antes_v135": "53dcac1fcf5c10f76801608306c9ace3 (5064 B), CACHE bfr-conecta-v135",
+    "sw_depois_v136": "3b70da77e96cd4dc3a1ac7cba001c8a1 (5064 B), CACHE bfr-conecta-v136",
+    "delta_worker_bytes_vs_v135": 612,
+    "_headers": "6f1f82a390b0e6111e3b8aff7d6415b2 (118 B)",
+    "assets": "12 ficheiros byte-identicos a base v123 (nao reenviados); o _headers e o 13.º ficheiro do public/",
+    "emissao": "md5 e bytes recalculados do disco por este script; nada neste bloco foi copiado de um log"
+  },
+  "medicao": {
+    "gerador_da_candidata": {
+      "em": "2026-11-19T10:12:06.946Z",
+      "veredito": "V136_CANDIDATA_OK 156/0",
+      "portoes": "156/0",
+      "substituicoes": 44,
+      "delta_bytes": 612
+    },
+    "gerador_do_bundle": {
+      "em": "2026-11-19T10:14:38.230Z",
+      "veredito": "V136_BUNDLE_OK 22/0",
+      "total": "22/0",
+      "dir": "worker-deploy-v136-secretaria-de-educacao"
+    },
+    "preflight_no_ar": {
+      "em": "2026-11-19T10:15:57.171Z",
+      "veredito": "V136_PREFLIGHT_OK",
+      "total": "15/0",
+      "url": "https://bfr-conecta.turmaroboticabfr.workers.dev",
+      "prova_de_que_os_defeitos_estavam_no_ar": {
+        "anuncios_por_created_at": 1,
+        "centro_de_gestao": 2
+      }
+    },
+    "stdout_do_deploy": {
+      "version_id": "1598137c-ab84-4ca7-a5e3-ce621d06f255",
+      "bytes_no_stdout": "3518.54"
+    },
+    "pos_deploy": {
+      "em": "2026-11-19T10:17:44.547Z",
+      "veredito": "V136_POS_DEPLOY_OK",
+      "total": "15/0",
+      "pen30_no_ar": {
+        "passou": true,
+        "novo": 1,
+        "velho": 0
+      },
+      "nome_unico_no_ar": {
+        "passou": true,
+        "centro_gestao": 0,
+        "h1_nome": 3,
+        "secretaria_digital": 1,
+        "nav": 1,
+        "nota": "secretaria_digital=1 e o rotulo do PAPEL secretary no mapa de chips, preservado pela regra"
+      },
+      "headers_intactos": {
+        "shell_x_frame": "SAMEORIGIN",
+        "assets_sem_headers": []
+      },
+      "rotulo_sw_no_ar": "bfr-conecta-v136",
+      "versoes_na_cadeia": {
+        "v136": "1598137c-ab84-4ca7-a5e3-ce621d06f255",
+        "v135": "f5c157f2-7b46-447b-88a9-d05cff7c42d2",
+        "primeiro_v135": "f824a488-d7f1-4922-b005-4c11a810d401"
+      }
+    }
+  },
+  "portoes": {
+    "candidata": "156/0 - bfr-candidata-v136-secretaria-de-educacao/portoes-v136-candidata.json (V136_CANDIDATA_OK 156/0)",
+    "gerador": "22/0 - evidence/v136-gera-bundle-19-11.json (V136_BUNDLE_OK 22/0)",
+    "preflight": "15/0 - evidence/v136-preflight-19-11.json (V136_PREFLIGHT_OK)",
+    "pos_deploy": "15/0 - evidence/v136-pos-deploy-19-11.json (V136_POS_DEPLOY_OK)",
+    "deste_diario": "18/0",
+    "total_da_cadeia": 208,
+    "vermelhos": 0,
+    "falhas_deste_diario": {
+      "G1_url_vem_do_diario_da_v135": {
+        "valor": "https://bfr-conecta.turmaroboticabfr.workers.dev",
+        "esperado": "https://bfr-conecta.turmaroboticabfr.workers.dev",
+        "passou": true
+      },
+      "G2_a_versao_no_ar_e_a_deste_diario": {
+        "valor": "1598137c-ab84-4ca7-a5e3-ce621d06f255",
+        "esperado": "1598137c-ab84-4ca7-a5e3-ce621d06f255",
+        "passou": true
+      },
+      "G2b_a_lista_do_servidor_concorda_com_o_status": {
+        "valor": "1598137c-ab84-4ca7-a5e3-ce621d06f255",
+        "esperado": "1598137c-ab84-4ca7-a5e3-ce621d06f255",
+        "passou": true
+      },
+      "G3_a_cadeia_de_reversao_na_lista": {
+        "valor": {
+          "v135": "f5c157f2-7b46-447b-88a9-d05cff7c42d2",
+          "primeiro_v135": "f824a488-d7f1-4922-b005-4c11a810d401"
+        },
+        "esperado": {
+          "v135": "f5c157f2-7b46-447b-88a9-d05cff7c42d2",
+          "primeiro_v135": "f824a488-d7f1-4922-b005-4c11a810d401"
+        },
+        "passou": true
+      },
+      "G4_o_que_foi_publicado_e_o_bundle_gateado": {
+        "valor": {
+          "md5": "f963b932af5b296e00584ae636ab8397",
+          "bytes": 3612332
+        },
+        "esperado": {
+          "md5": "f963b932af5b296e00584ae636ab8397",
+          "bytes": 3612332
+        },
+        "passou": true
+      },
+      "G5_base_v135_inalterada_no_disco": {
+        "valor": {
+          "md5": "210875b75887b631ccd1a6134ebf3bb0",
+          "bytes": 3611720
+        },
+        "esperado": {
+          "md5": "210875b75887b631ccd1a6134ebf3bb0",
+          "bytes": 3611720
+        },
+        "passou": true
+      },
+      "G6_shell_servida_no_ar_igual_a_candidata": {
+        "valor": {
+          "md5": "9e236a23eed978cf7c2a2743d449b307",
+          "bytes": 3547458
+        },
+        "esperado": {
+          "md5": "9e236a23eed978cf7c2a2743d449b307",
+          "bytes": 3547458
+        },
+        "passou": true
+      },
+      "G7_sw_servido_no_ar_igual_ao_embed": {
+        "valor": {
+          "md5": "3b70da77e96cd4dc3a1ac7cba001c8a1",
+          "rotulo": "bfr-conecta-v136"
+        },
+        "esperado": {
+          "md5": "3b70da77e96cd4dc3a1ac7cba001c8a1",
+          "rotulo": "bfr-conecta-v136"
+        },
+        "passou": true
+      },
+      "G8_pen30_no_ar": {
+        "valor": {
+          "novo": 1,
+          "velho": 0
+        },
+        "esperado": {
+          "novo": 1,
+          "velho": 0
+        },
+        "passou": true
+      },
+      "G9_nome_unico_no_ar": {
+        "valor": {
+          "centro_gestao": 0,
+          "h1_nome": 3,
+          "secretaria_digital": 1,
+          "nav": 1
+        },
+        "esperado": {
+          "centro_gestao": 0,
+          "h1_nome": 3,
+          "secretaria_digital": 1,
+          "nav": 1
+        },
+        "passou": true
+      },
+      "G10_headers_da_v135_continuam_na_shell": {
+        "valor": {
+          "x_frame": "SAMEORIGIN",
+          "frame_ancestors": true
+        },
+        "esperado": {
+          "x_frame": "SAMEORIGIN",
+          "frame_ancestors": true
+        },
+        "passou": true
+      },
+      "G11_os_12_assets_continuam_com_os_dois_headers": {
+        "valor": {
+          "sem_headers": 0,
+          "total": 12
+        },
+        "esperado": {
+          "sem_headers": 0,
+          "total": 12
+        },
+        "passou": true
+      },
+      "G12_handler_do_404_permanece_no_ar": {
+        "valor": 404,
+        "esperado": 404,
+        "passou": true
+      },
+      "G13_preflight_verde": {
+        "valor": "V136_PREFLIGHT_OK 15/0",
+        "esperado": "V136_PREFLIGHT_OK 15/0",
+        "passou": true
+      },
+      "G14_pos_deploy_verde": {
+        "valor": "V136_POS_DEPLOY_OK 15/0",
+        "esperado": "V136_POS_DEPLOY_OK 15/0",
+        "passou": true
+      },
+      "G15_geradores_verdes": {
+        "valor": {
+          "candidata": "156/0",
+          "bundle": {
+            "ok": 22,
+            "falha": 0
+          }
+        },
+        "esperado": {
+          "candidata": "156/0",
+          "bundle": {
+            "ok": 22,
+            "falha": 0
+          }
+        },
+        "passou": true
+      },
+      "G16_nada_de_banco_ddl_mint_ou_edge": {
+        "valor": {
+          "preflight": 0,
+          "pos": 0,
+          "gerador": 0,
+          "candidata": 0
+        },
+        "esperado": {
+          "preflight": 0,
+          "pos": 0,
+          "gerador": 0,
+          "candidata": 0
+        },
+        "passou": true
+      },
+      "G17_os_defeitos_foi_provados_antes_do_deploy": {
+        "valor": {
+          "anuncios_created_at": 1,
+          "centro_gestao": 2
+        },
+        "esperado": {
+          "anuncios_created_at": 1,
+          "centro_gestao": 2
+        },
+        "passou": true
+      }
+    }
+  },
+  "nao_fechado_por_este_ciclo": {
+    "pen35": "re-medição de bandas com a régua corrigida (documentElement.clientWidth) na versao publicada — tarefa separada do mesmo OK, sem deploy proprio",
+    "pen36": "mint das contas em falta + passada autenticada clicando a sub-aba data-sec-tab=\"supervisao\" — tarefa separada do mesmo OK, sem deploy proprio",
+    "nota_da_superficie": "a sub-aba «Supervisão» e os chips dos papeis (secretary / education_supervisor) ficaram como estavam: nomeiam outra funcao ou o cargo, nao o modulo"
+  },
+  "veredito": "V136_DIARIO_OK 18/0",
+  "reversao": {
+    "como_v135": "wrangler deploy a partir de worker-deploy-v135-headers (worker 210875b75887b631ccd1a6134ebf3bb0 (3611720 B), CACHE bfr-conecta-v135) — devolve o created_at e os 7 nomes",
+    "como_v134": "wrangler deploy a partir de worker-deploy-v134-sidebar (CACHE bfr-conecta-v134) — sem headers nos assets e com o created_at e os 7 nomes",
+    "prova_de_linhagem": "os 12 assets e o _headers sao byte-identicos nos tres directorios; cada esperado-vXXX.json foi re-extraido e conferido byte a byte pelo respectivo gerador",
+    "exige": "OK literal novo do utilizador para qualquer reversao"
+  },
+  "diario_de": "este ficheiro e gerado por scripts/v136-diario-publicacao.mjs a partir dos diarios de evidence, das listas de deployments do servidor e do disco; nao foi escrito a mao",
+  "qnd": "2026-11-19T10:19:13.543Z"
+}

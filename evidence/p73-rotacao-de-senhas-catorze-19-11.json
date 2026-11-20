@@ -1,0 +1,246 @@
+{
+  "programa": "scripts/p73-rotacao-de-senhas.mjs",
+  "em": "2026-11-19T22:12:42.378Z",
+  "ok_literal": "Redefinir senha das 14 contas (Recommended)",
+  "ar": {
+    "url": "https://bfr-conecta.turmaroboticabfr.workers.dev/",
+    "md5": "9e236a23eed978cf7c2a2743d449b307",
+    "esperado_de": "worker-deploy-v136-secretaria-de-educacao/esperado-v136.json"
+  },
+  "escrita": "auth apenas: PUT /auth/v1/admin/users/<uid> com password nova + POST grant_type=password. 0 tabelas de produto, 0 DDL, 0 publicacao.",
+  "ficheros_de_sessao_varridos": 46,
+  "papeis": {
+    "pending": {
+      "uid_prefixo": "3d2329ed",
+      "email_forma": "ah2-pending-<hex6>@bfr-conecta.test",
+      "senha": "rotacionada (comprimento=24, gravada fora do git)",
+      "rotacao_http": 200,
+      "login_http": 200,
+      "cadeia": {
+        "access_comprimento": 819,
+        "refresh_comprimento": 12,
+        "expira_em_s": 3597,
+        "token_type": "bearer"
+      },
+      "rotacao_codigo": "ok",
+      "escritura_provada": true,
+      "ok": true
+    },
+    "student": {
+      "uid_prefixo": "13f597b2",
+      "email_forma": "ah2-student-<hex6>@bfr-conecta.test",
+      "senha": "rotacionada (comprimento=24, gravada fora do git)",
+      "rotacao_http": 200,
+      "login_http": 200,
+      "cadeia": {
+        "access_comprimento": 819,
+        "refresh_comprimento": 12,
+        "expira_em_s": 3598,
+        "token_type": "bearer"
+      },
+      "rotacao_codigo": "ok",
+      "escritura_provada": true,
+      "ok": true
+    },
+    "pedagogical": {
+      "uid_prefixo": "1f5297d4",
+      "email_forma": "ah2-pedagogical-<hex6>@bfr-conecta.test",
+      "senha": "rotacionada (comprimento=24, gravada fora do git)",
+      "rotacao_http": 200,
+      "login_http": 200,
+      "cadeia": {
+        "access_comprimento": 824,
+        "refresh_comprimento": 12,
+        "expira_em_s": 3598,
+        "token_type": "bearer"
+      },
+      "rotacao_codigo": "ok",
+      "escritura_provada": true,
+      "ok": true
+    },
+    "developer": {
+      "uid_prefixo": "49753880",
+      "email_forma": "ah2-developer-<hex6>@bfr-conecta.test",
+      "senha": "rotacionada (comprimento=24, gravada fora do git)",
+      "rotacao_http": 200,
+      "login_http": 200,
+      "cadeia": {
+        "access_comprimento": 822,
+        "refresh_comprimento": 12,
+        "expira_em_s": 3597,
+        "token_type": "bearer"
+      },
+      "rotacao_codigo": "ok",
+      "escritura_provada": true,
+      "ok": true
+    },
+    "monitor": {
+      "uid_prefixo": "101e9ade",
+      "email_forma": "ah2-monitor-<hex6>@bfr-conecta.test",
+      "senha": "rotacionada (comprimento=24, gravada fora do git)",
+      "rotacao_http": 200,
+      "login_http": 200,
+      "cadeia": {
+        "access_comprimento": 819,
+        "refresh_comprimento": 12,
+        "expira_em_s": 3598,
+        "token_type": "bearer"
+      },
+      "rotacao_codigo": "ok",
+      "escritura_provada": true,
+      "ok": true
+    },
+    "gatekeeper": {
+      "uid_prefixo": "422d584b",
+      "email_forma": "ah2-gatekeeper-<hex6>@bfr-conecta.test",
+      "senha": "rotacionada (comprimento=24, gravada fora do git)",
+      "rotacao_http": 200,
+      "login_http": 200,
+      "cadeia": {
+        "access_comprimento": 823,
+        "refresh_comprimento": 12,
+        "expira_em_s": 3598,
+        "token_type": "bearer"
+      },
+      "rotacao_codigo": "ok",
+      "escritura_provada": true,
+      "ok": true
+    },
+    "coordinator": {
+      "uid_prefixo": "9cd0f42e",
+      "email_forma": "ah2-coordinator-<hex6>@bfr-conecta.test",
+      "senha": "rotacionada (comprimento=24, gravada fora do git)",
+      "rotacao_http": 200,
+      "login_http": 200,
+      "cadeia": {
+        "access_comprimento": 824,
+        "refresh_comprimento": 12,
+        "expira_em_s": 3597,
+        "token_type": "bearer"
+      },
+      "rotacao_codigo": "ok",
+      "escritura_provada": true,
+      "ok": true
+    },
+    "secretary": {
+      "uid_prefixo": "839e1f87",
+      "email_forma": "ah2-secretary-<hex6>@bfr-conecta.test",
+      "senha": "reutilizada da credencial gravada (comprimento=24) — nao roto de novo",
+      "rotacao_http": "nao_tocada",
+      "login_http": 200,
+      "cadeia": {
+        "access_comprimento": 822,
+        "refresh_comprimento": 12,
+        "expira_em_s": 3597,
+        "token_type": "bearer"
+      },
+      "escritura_provada": true,
+      "ok": true
+    },
+    "aee": {
+      "uid_prefixo": "c87d5c95",
+      "email_forma": "ah2-aee-<hex6>@bfr-conecta.test",
+      "senha": "rotacionada (comprimento=24, gravada fora do git)",
+      "rotacao_http": 200,
+      "login_http": 200,
+      "cadeia": {
+        "access_comprimento": 814,
+        "refresh_comprimento": 12,
+        "expira_em_s": 3598,
+        "token_type": "bearer"
+      },
+      "rotacao_codigo": "ok",
+      "escritura_provada": true,
+      "ok": true
+    },
+    "director": {
+      "uid_prefixo": "b5be4883",
+      "email_forma": "ah2-director-<hex6>@bfr-conecta.test",
+      "senha": "rotacionada (comprimento=24, gravada fora do git)",
+      "rotacao_http": 200,
+      "login_http": 200,
+      "cadeia": {
+        "access_comprimento": 820,
+        "refresh_comprimento": 12,
+        "expira_em_s": 3598,
+        "token_type": "bearer"
+      },
+      "rotacao_codigo": "ok",
+      "escritura_provada": true,
+      "ok": true
+    },
+    "psychology": {
+      "uid_prefixo": "86923196",
+      "email_forma": "ah2-psychology-<hex6>@bfr-conecta.test",
+      "senha": "rotacionada (comprimento=24, gravada fora do git)",
+      "rotacao_http": 200,
+      "login_http": 200,
+      "cadeia": {
+        "access_comprimento": 823,
+        "refresh_comprimento": 12,
+        "expira_em_s": 3597,
+        "token_type": "bearer"
+      },
+      "rotacao_codigo": "ok",
+      "escritura_provada": true,
+      "ok": true
+    },
+    "social_work": {
+      "uid_prefixo": "04d52df9",
+      "email_forma": "ah2-social_work-<hex6>@bfr-conecta.test",
+      "senha": "rotacionada (comprimento=24, gravada fora do git)",
+      "rotacao_http": 200,
+      "login_http": 200,
+      "cadeia": {
+        "access_comprimento": 824,
+        "refresh_comprimento": 12,
+        "expira_em_s": 3598,
+        "token_type": "bearer"
+      },
+      "rotacao_codigo": "ok",
+      "escritura_provada": true,
+      "ok": true
+    },
+    "sports_operator": {
+      "uid_prefixo": "2ea60576",
+      "email_forma": "ah2-sports_operator-<hex6>@bfr-conecta.test",
+      "senha": "rotacionada (comprimento=24, gravada fora do git)",
+      "rotacao_http": 200,
+      "login_http": 200,
+      "cadeia": {
+        "access_comprimento": 830,
+        "refresh_comprimento": 12,
+        "expira_em_s": 3598,
+        "token_type": "bearer"
+      },
+      "rotacao_codigo": "ok",
+      "escritura_provada": true,
+      "ok": true
+    },
+    "education_supervisor": {
+      "uid_prefixo": "d7d45999",
+      "email_forma": "ah2-education_supervisor-<hex6>@bfr-conecta.test",
+      "senha": "rotacionada (comprimento=24, gravada fora do git)",
+      "rotacao_http": 200,
+      "login_http": 200,
+      "cadeia": {
+        "access_comprimento": 836,
+        "refresh_comprimento": 12,
+        "expira_em_s": 3597,
+        "token_type": "bearer"
+      },
+      "rotacao_codigo": "ok",
+      "escritura_provada": true,
+      "ok": true
+    }
+  },
+  "resumo": {
+    "alvos": 14,
+    "recuperados": 14,
+    "falhas": 0,
+    "lista_falhas": [],
+    "tocados_sem_nada": [
+      "secretary"
+    ]
+  }
+}

@@ -1,0 +1,9 @@
+MODULO: https://bfr-conecta.turmaroboticabfr.workers.dev/bfr-responsive-presentation.js?v=14 md5 servido=repo=a83f77baba7453851b287080686c7afb PISO=60 ms TETO=250 ms · pilha atribui por nome de ficheiro = bfr-responsive-presentation
+CONTROLO gatekeeper@320: nav_existe=true armados=117 venceu=7 cancelados=109 outros_60ms=0 armados/s=30 · régua com dentes nos dois lados
+320  monitor      nav sem_toque=false apos_eventos=false apos_5s_sossego=false · timers do modulo: armados=1156 venceu=0 cancelados=1155 (fim: armados=2361 venceu=0 cancelados=2360 armados/s=199) corpo_mobile=false sinistros=[] -> ESTRELACAO_DO_TIMER_PROVADA_POR_PILHA
+430  monitor      nav sem_toque=false apos_eventos=false apos_5s_sossego=false · timers do modulo: armados=1048 venceu=0 cancelados=1047 (fim: armados=2178 venceu=0 cancelados=2177 armados/s=189) corpo_mobile=false sinistros=[] -> ESTRELACAO_DO_TIMER_PROVADA_POR_PILHA
+ESTRELACAO_DO_TIMER 0/VENCIDOS: 2/2 · MONTA_SO_QUANDO_SOSSEGA: 0/2
+P7T_CONCLUSA · a barra do monitor não existe porque o setTimeout(dispara, 60) do módulo é cancelado antes de vencer; em 320 o meu contador de lotes mostrou um silêncio porque `resize`/`bfr:navigation` também chamam schedule() sem escrever classe no corpo — a régua da pilha é a que quer dizer algo
+P7T_TIMER_MEDIDO · registo C:/Users/pcmac/Documents/Qoder/2026-10-13/28077d9a/bfr-conecta/evidence/p73-sonda-timer-piso-monitor-320-430px-20-11d.json
+PAROU: fecho normal
+node_exit=0

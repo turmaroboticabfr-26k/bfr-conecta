@@ -1,0 +1,537 @@
+{
+  "programa": "scripts/p36-navegador-supervisao.mjs",
+  "versao_do_instrumento": "P36-B2",
+  "em": "2026-11-19T17:55:25.229Z",
+  "url": "https://bfr-conecta.turmaroboticabfr.workers.dev/",
+  "metodo": "Chrome headless + CDP; sessao injetada no localStorage da origem; clique de rato (Input.dispatchMouseEvent) com hit-test elementFromPoint por entrada; contagens do DOM confrontadas com PostgREST na mesma pagina; nenhuma dependencia de globais do bundle",
+  "preflight_ar": {
+    "md5": "9e236a23eed978cf7c2a2743d449b307",
+    "esperado_v136": "9e236a23eed978cf7c2a2743d449b307",
+    "bytes": 3547458,
+    "ocorrencias_do_sub_aba_na_shell": 1
+  },
+  "regua_lida_dos_bytes_servidos": {
+    "assinatura_permitida_do_allowed": "['secretary','education_supervisor'].includes(role())",
+    "lista_do_allowed": [
+      "secretary",
+      "developer",
+      "education_supervisor"
+    ],
+    "mapas": {
+      "secretary": [
+        "inicio",
+        "secretaria",
+        "comunicados",
+        "escola-historia",
+        "notificacoes",
+        "conteudos",
+        "comunicacao",
+        "chat-interno",
+        "coordenacao-chat",
+        "jogos-escolares",
+        "fotos"
+      ]
+    }
+  },
+  "unidades": [
+    {
+      "perfil": "secretary",
+      "papel": "secretary",
+      "uid": "839e1f87-c596-4355-9f89-2ed97711349f",
+      "largura_declarada": 390,
+      "token_renovado": true,
+      "expectativa_da_regua": {
+        "secretaria_no_mapa_do_papel": true,
+        "esperado_positivo": true
+      },
+      "etapas": {
+        "ms_ready": 1378,
+        "janela": {
+          "innerWidth": 390,
+          "clientWidth": 390,
+          "clientHeight": 900
+        },
+        "globais_do_bundle": {
+          "current_profile": "object",
+          "app_runtime": "object",
+          "secretary_central": "undefined",
+          "municipal": "undefined"
+        },
+        "entradas_antes": [
+          {
+            "sel": "#bfrMobileBottomNav [data-bfr-mobile-route=\"secretaria\"]",
+            "presente": false
+          },
+          {
+            "sel": "#bfrMobileDrawer .bfr-mobile-drawer-link[data-bfr-drawer-route=\"secretaria\"]",
+            "presente": false
+          },
+          {
+            "sel": "[data-mobile-more]",
+            "presente": true,
+            "visivel": false,
+            "rect": [
+              0,
+              0
+            ],
+            "centro": [
+              0,
+              0
+            ],
+            "dentro_da_janela": false,
+            "no_ponto": "MAIN",
+            "alvo_contem": false,
+            "texto": "⋯Mais"
+          },
+          {
+            "sel": "button[data-section=\"secretaria\"]:not([data-teacher-nav-tab])",
+            "presente": true,
+            "visivel": false,
+            "rect": [
+              0,
+              0
+            ],
+            "centro": [
+              0,
+              0
+            ],
+            "dentro_da_janela": false,
+            "no_ponto": "MAIN",
+            "alvo_contem": false,
+            "texto": "▥Secretaria de Educação"
+          }
+        ],
+        "abertura": {
+          "camada": "sintetico",
+          "escolhida": null,
+          "trilha": [
+            "[data-mobile-more] nao hit-testavel: {\"sel\":\"[data-mobile-more]\",\"presente\":true,\"visivel\":false,\"rect\":[0,0],\"centro\":[0,0],\"dentro_da_janela\":false,\"no_ponto\":\"MAIN\",\"alvo_contem\":false,\"texto\":\"⋯Mais\"}",
+            "sintetico porque nenhuma entrada estava hit-testavel: [[\"#bfrMobileBottomNav [data-bfr-mobile-route=\\\"secretaria\\\"]\",false,null,null],[\"#bfrMobileDrawer .bfr-mobile-drawer-link[data-bfr-drawer-route=\\\"secretaria\\\"]\",false,null,null],[\"[data-mobile-more]\",true,false,false],[\"button[data-section=\\\"secretaria\\\"]:not([data-teacher-nav-tab])\",true,false,false]]"
+          ]
+        },
+        "depois_da_abertura": {
+          "central": true,
+          "n_tabs": 13,
+          "activeSection": "secretaria"
+        },
+        "sub_aba_antes": {
+          "sel": "[data-secretary-central] button[data-sec-tab=\"supervisao\"]",
+          "presente": true,
+          "visivel": true,
+          "rect": [
+            84,
+            44
+          ],
+          "centro": [
+            315,
+            653
+          ],
+          "dentro_da_janela": true,
+          "no_ponto": "BUTTON",
+          "alvo_contem": true,
+          "texto": "Supervisão"
+        },
+        "clique_sub_aba": {
+          "camada": "rato",
+          "no_ponto": "BUTTON",
+          "centro": [
+            315,
+            653
+          ]
+        },
+        "abas_ativas": {
+          "ativa": "overview",
+          "todas": [
+            "overview"
+          ]
+        },
+        "painel": {
+          "body": true,
+          "classe_do_painel": "bfr-secretary-grid",
+          "label": "Ação necessária",
+          "h2": "Precisa de atenção",
+          "chip": "dados reais",
+          "vazias": 2,
+          "texto_vazio": "Nenhum compromisso disponível para este período.",
+          "linhas_dom": 4,
+          "rotulos_das_linhas": [
+            {
+              "indicador": "1 atualização(ões) cadastral(is)",
+              "detalhe": "Pedidos enviados para conferência da Secretaria de Educação.",
+              "botao_abrir": false
+            },
+            {
+              "indicador": "Alunos e turmas",
+              "detalhe": "848 alunos ativos e 27 turmas consultados.",
+              "botao_abrir": false
+            },
+            {
+              "indicador": "Atualizações cadastrais",
+              "detalhe": "1 pedido(s) aguardando conferência.",
+              "botao_abrir": false
+            },
+            {
+              "indicador": "Documentos",
+              "detalhe": "226 registros carregados; 0 não publicados.",
+              "botao_abrir": false
+            }
+          ],
+          "metricas": [],
+          "opcoes_status": null,
+          "opcoes_escola": null,
+          "nomes_escolas": null,
+          "chars": 1521,
+          "controles": 13,
+          "tap_menor_44": 0,
+          "taps_amostra": [],
+          "fonte_menor_11": 0,
+          "fontes_amostra": [],
+          "cortados": 0,
+          "cortados_amostra": [],
+          "estouro_horizontal": false,
+          "reguas": {
+            "innerWidth": 390,
+            "body_scrollWidth": 390,
+            "clientWidth": 390
+          }
+        },
+        "api_na_pagina": {
+          "supervisao_http": 200,
+          "supervisao_linhas": 0,
+          "schools_http": 200,
+          "schools_linhas": 0,
+          "schools_visiveis": 0
+        },
+        "operacao_filtro": {
+          "aplicou": false
+        },
+        "operacao_busca": {
+          "presente": false
+        },
+        "operacao_escola": {
+          "presente": false
+        },
+        "capturas": {
+          "central": {
+            "ficheiro": "C:\\Users\\pcmac\\Documents\\Qoder\\2026-10-13\\28077d9a\\bfr-conecta\\evidence\\p36b2-secretary-390-central.png",
+            "bytes": 134991,
+            "md5": "284c8f71a51813eb64d7c892ea2a31a7"
+          },
+          "supervisao": {
+            "ficheiro": "C:\\Users\\pcmac\\Documents\\Qoder\\2026-10-13\\28077d9a\\bfr-conecta\\evidence\\p36b2-secretary-390-supervisao.png",
+            "bytes": 135179,
+            "md5": "8f44446bcaa6d0dc06e4830fecc9e2c2"
+          }
+        },
+        "erros_console": {
+          "bruto": 0,
+          "relevantes": []
+        }
+      }
+    },
+    {
+      "perfil": "secretary",
+      "papel": "secretary",
+      "uid": "839e1f87-c596-4355-9f89-2ed97711349f",
+      "largura_declarada": 1280,
+      "token_renovado": true,
+      "expectativa_da_regua": {
+        "secretaria_no_mapa_do_papel": true,
+        "esperado_positivo": true
+      },
+      "etapas": {
+        "ms_ready": 1215,
+        "janela": {
+          "innerWidth": 1280,
+          "clientWidth": 1280,
+          "clientHeight": 900
+        },
+        "globais_do_bundle": {
+          "current_profile": "object",
+          "app_runtime": "undefined",
+          "secretary_central": "undefined",
+          "municipal": "undefined"
+        },
+        "entradas_antes": [
+          {
+            "sel": "#bfrMobileBottomNav [data-bfr-mobile-route=\"secretaria\"]",
+            "presente": false
+          },
+          {
+            "sel": "#bfrMobileDrawer .bfr-mobile-drawer-link[data-bfr-drawer-route=\"secretaria\"]",
+            "presente": false
+          },
+          {
+            "sel": "[data-mobile-more]",
+            "presente": true,
+            "visivel": false,
+            "rect": [
+              0,
+              0
+            ],
+            "centro": [
+              0,
+              0
+            ],
+            "dentro_da_janela": false,
+            "no_ponto": "ASIDE.sidebar",
+            "alvo_contem": false,
+            "texto": "⋯Mais"
+          },
+          {
+            "sel": "button[data-section=\"secretaria\"]:not([data-teacher-nav-tab])",
+            "presente": true,
+            "visivel": false,
+            "rect": [
+              0,
+              0
+            ],
+            "centro": [
+              0,
+              0
+            ],
+            "dentro_da_janela": false,
+            "no_ponto": "ASIDE.sidebar",
+            "alvo_contem": false,
+            "texto": "▥Secretaria de Educação"
+          }
+        ],
+        "abertura": {
+          "camada": "sintetico",
+          "escolhida": null,
+          "trilha": [
+            "[data-mobile-more] nao hit-testavel: {\"sel\":\"[data-mobile-more]\",\"presente\":true,\"visivel\":false,\"rect\":[0,0],\"centro\":[0,0],\"dentro_da_janela\":false,\"no_ponto\":\"ASIDE.sidebar\",\"alvo_contem\":false,\"texto\":\"⋯Mais\"}",
+            "sintetico porque nenhuma entrada estava hit-testavel: [[\"#bfrMobileBottomNav [data-bfr-mobile-route=\\\"secretaria\\\"]\",false,null,null],[\"#bfrMobileDrawer .bfr-mobile-drawer-link[data-bfr-drawer-route=\\\"secretaria\\\"]\",false,null,null],[\"[data-mobile-more]\",true,false,false],[\"button[data-section=\\\"secretaria\\\"]:not([data-teacher-nav-tab])\",true,false,false]]"
+          ]
+        },
+        "depois_da_abertura": {
+          "central": true,
+          "n_tabs": 13,
+          "activeSection": "secretaria"
+        },
+        "sub_aba_antes": {
+          "sel": "[data-secretary-central] button[data-sec-tab=\"supervisao\"]",
+          "presente": true,
+          "visivel": true,
+          "rect": [
+            84,
+            32
+          ],
+          "centro": [
+            1185,
+            351
+          ],
+          "dentro_da_janela": true,
+          "no_ponto": "BUTTON",
+          "alvo_contem": true,
+          "texto": "Supervisão"
+        },
+        "clique_sub_aba": {
+          "camada": "rato",
+          "no_ponto": "BUTTON",
+          "centro": [
+            1185,
+            351
+          ]
+        },
+        "abas_ativas": {
+          "ativa": "supervisao",
+          "todas": [
+            "supervisao"
+          ]
+        },
+        "painel": {
+          "body": true,
+          "classe_do_painel": "bfr-secretary-panel",
+          "label": "Supervisão Educacional",
+          "h2": "Solicitações de Supervisão",
+          "chip": "0 registro(s)",
+          "vazias": 1,
+          "texto_vazio": "Nenhuma solicitação de supervisão corresponde aos filtros.",
+          "linhas_dom": 0,
+          "rotulos_das_linhas": [],
+          "metricas": [
+            {
+              "rotulo": "Pendentes",
+              "valor": "0"
+            },
+            {
+              "rotulo": "Em andamento",
+              "valor": "0"
+            },
+            {
+              "rotulo": "Prazo vencido",
+              "valor": "0"
+            },
+            {
+              "rotulo": "Concluídas",
+              "valor": "0"
+            }
+          ],
+          "opcoes_status": [
+            "all",
+            "Pendente de resposta",
+            "Respondida",
+            "Em análise pela Secretaria",
+            "Aguardando complementação",
+            "Plano de ação em andamento",
+            "Concluída",
+            "Prazo vencido"
+          ],
+          "opcoes_escola": [
+            "all"
+          ],
+          "nomes_escolas": [],
+          "chars": 603,
+          "controles": 3,
+          "tap_menor_44": 3,
+          "taps_amostra": [
+            {
+              "tag": "SELECT",
+              "cls": "",
+              "rect": [
+                161,
+                36
+              ],
+              "texto": "TodosPendente de res"
+            },
+            {
+              "tag": "SELECT",
+              "cls": "",
+              "rect": [
+                161,
+                36
+              ],
+              "texto": "Todas"
+            },
+            {
+              "tag": "INPUT",
+              "cls": "",
+              "rect": [
+                321,
+                35
+              ],
+              "texto": ""
+            }
+          ],
+          "fonte_menor_11": 4,
+          "fontes_amostra": [
+            {
+              "tag": "SPAN",
+              "px": 9,
+              "texto": "Pendentes"
+            },
+            {
+              "tag": "SPAN",
+              "px": 9,
+              "texto": "Em andamento"
+            },
+            {
+              "tag": "SPAN",
+              "px": 9,
+              "texto": "Prazo vencido"
+            },
+            {
+              "tag": "SPAN",
+              "px": 9,
+              "texto": "Concluídas"
+            }
+          ],
+          "cortados": 0,
+          "cortados_amostra": [],
+          "estouro_horizontal": false,
+          "reguas": {
+            "innerWidth": 1280,
+            "body_scrollWidth": 1280,
+            "clientWidth": 1280
+          }
+        },
+        "api_na_pagina": {
+          "supervisao_http": 200,
+          "supervisao_linhas": 0,
+          "schools_http": 200,
+          "schools_linhas": 0,
+          "schools_visiveis": 0
+        },
+        "operacao_filtro": {
+          "aplicou": true,
+          "antes": 0,
+          "depois_do_filtro": 0,
+          "vazia_depois_do_filtro": true,
+          "restaurado": 0
+        },
+        "operacao_busca": {
+          "presente": true,
+          "antes": {
+            "linhas": 0,
+            "chip": "0 registro(s)",
+            "placeholder": "Indicador, motivo ou escola",
+            "tipo": "search"
+          },
+          "durante": {
+            "linhas": 0,
+            "chip": "0 registro(s)"
+          },
+          "depois": {
+            "linhas": 0,
+            "chip": "0 registro(s)"
+          }
+        },
+        "operacao_escola": {
+          "presente": true,
+          "antes": {
+            "linhas": 0,
+            "opcoes": 1,
+            "valor": "all"
+          },
+          "durante": {
+            "linhas": 0,
+            "valor": "all",
+            "rotulo": null
+          },
+          "depois": {
+            "linhas": 0,
+            "opcoes": 1,
+            "valor": "all"
+          }
+        },
+        "capturas": {
+          "central": {
+            "ficheiro": "C:\\Users\\pcmac\\Documents\\Qoder\\2026-10-13\\28077d9a\\bfr-conecta\\evidence\\p36b2-secretary-1280-central.png",
+            "bytes": 305055,
+            "md5": "5c0dee090c8218f6dd9e29539d7bd9ac"
+          },
+          "supervisao": {
+            "ficheiro": "C:\\Users\\pcmac\\Documents\\Qoder\\2026-10-13\\28077d9a\\bfr-conecta\\evidence\\p36b2-secretary-1280-supervisao.png",
+            "bytes": 283533,
+            "md5": "7a5ea4826d4003e01f4c62b9416e57d3"
+          }
+        },
+        "erros_console": {
+          "bruto": 0,
+          "relevantes": []
+        }
+      }
+    }
+  ],
+  "portoes": 31,
+  "falhas": [
+    "a assinatura do allowed() do modulo esta nos bytes servidos (a regua dispara) | dado=3 | esperado=true",
+    "secretary/390px · a sub-aba ativa depois do clique e supervisao, e so ela | dado=[\"rato\",\"overview\",1] | esperado=[\"rato\",\"supervisao\",1]",
+    "secretary/390px · o painel assente e o do sub-aba | dado=[\"Ação necessária\",\"Precisa de atenção\"] | esperado=[\"Supervisão Educacional\",\"Solicitações de Supervisão\"]",
+    "secretary/390px · linhas do DOM = linhas que ESTA sessao le por PostgREST | dado=[4,0] | esperado=[0,0]",
+    "secretary/390px · o chip «N registro(s)» bate com o DOM | dado=\"dados reais\" | esperado=\"4 registro(s)\"",
+    "secretary/390px · a aula vazia printa com o predicado (empty === 0 linhas lidas) | dado=2 | esperado=1",
+    "secretary/390px · filtro de escola = escolas que esta sessao le (RLS, nao o censo do banco) | dado=-1 | esperado=0",
+    "secretary/390px · as 8 opcoes de status do sub-aba | dado=0 | esperado=8",
+    "secretary/390px · mexer o filtro nao parte o painel e voltar a all restaura | dado=[false,null] | esperado=[true,null]",
+    "secretary/390px · a caixa Buscar existe no sub-aba e escrever+limpar restaura linhas e chip | dado=[false,null,null] | esperado=[true,null,null]",
+    "secretary/390px · o filtro de escola aceita mudanca para uma escola real e volta a all intacto | dado=[false,null,null,null] | esperado=[true,\"all\",null,null]"
+  ],
+  "veredito": "P36B2_COM_PORTOES_VERMELHOS 31/11",
+  "achado_sobre_globais": "Os tres globais que instrumentos antigos usavam (BFR_APP_RUNTIME, BFRSecretaryCentral, BFRMunicipalView) devolvem typeof=undefined no ar, com BFR_CURRENT_PROFILE presente. Este instrumento nao depende de nenhum deles: navega por DOM e clique de rato. Consequencia a verificar: as duas seccoes que o ciclo AH-1 abriu por BFR_APP_RUNTIME.navigate (escola-historia, coordenacao-chat) precisam de re-prova se esse caminho nao existia na versao servida.",
+  "nao_gateado_aqui": {
+    "tap_menor_44_e_fonte_menor_11": "pertencem a PEN-35 (tarefa 73, re-medicao de bandas); aqui sao registados com amostra, sem limiar",
+    "bandas": "larguras desta corrida: 390,1280, cada uma declarada E medida por portao"
+  }
+}

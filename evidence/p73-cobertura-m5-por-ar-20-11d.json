@@ -1,0 +1,205 @@
+{
+  "programa": "scripts/p73-cobertura-v136.mjs",
+  "em": "2026-11-20T01:13:28.535Z",
+  "ar": {
+    "url": "https://bfr-conecta.turmaroboticabfr.workers.dev/",
+    "md5": "9e236a23eed978cf7c2a2743d449b307"
+  },
+  "grelha": "15 papeis × 6 larguras = 90 celulas",
+  "ler_do_condutor": {
+    "linha_larguras": 17,
+    "linha_papeis_da_varredura": 27,
+    "linha_do_predicado_de_coerencia": 112,
+    "predicado_do_condutor": "const coerente = !!b.censo && b.censo.barra_existe !== false && (b.censo.barra || []).some((x) => x.w > 0 && x.h > 0) && (b.abertas || 0) > 0;"
+  },
+  "ficheiros_m5_na_disco": 109,
+  "procedencia_das_celulas": {
+    "total_rotulos": 109,
+    "do_condutor": 91,
+    "da_repeticao_p73": 18,
+    "rotulos_da_repeticao": [
+      "monitor-rep1",
+      "monitor-rep1w320",
+      "monitor-rep1w360",
+      "monitor-rep1w375",
+      "monitor-rep1w390",
+      "monitor-rep1w414",
+      "monitor-rep1w430",
+      "monitor-rep2",
+      "monitor-rep2w320",
+      "monitor-rep2w360",
+      "monitor-rep2w375",
+      "monitor-rep2w390",
+      "monitor-rep2w414",
+      "monitor-rep2w430",
+      "secretary-rep1w360",
+      "secretary-rep1w375",
+      "secretary-rep2w360",
+      "secretary-rep2w375"
+    ],
+    "regra": "o leitor agrupa por (papel, largura) e a melhor tentativa ganha: uma celula que montou num processo de repeticao conta OK no ar atual"
+  },
+  "por_ar": {
+    "d418e7fc917f": {
+      "fich": 49,
+      "papeis": 15,
+      "celulas_sem_praga": 84,
+      "coerentes": 79,
+      "travadas_registadas": 11,
+      "he_o_ar_atual": false
+    },
+    "9e236a23eed9": {
+      "fich": 60,
+      "papeis": 15,
+      "celulas_sem_praga": 81,
+      "coerentes": 81,
+      "travadas_registadas": 28,
+      "he_o_ar_atual": true
+    }
+  },
+  "celulas_coerentes_no_ar_atual": 80,
+  "celulas_travadas_com_causa_no_ar_atual": 10,
+  "causas_de_trava": {
+    "monitor@320": "shell ready sem #bfrMobileBottomNav após rechegar — módulo de apresentação mobile não montou a barra",
+    "monitor@360": "shell ready sem #bfrMobileBottomNav após rechegar — módulo de apresentação mobile não montou a barra",
+    "monitor@375": "shell ready sem #bfrMobileBottomNav após rechegar — módulo de apresentação mobile não montou a barra",
+    "monitor@390": "shell ready sem #bfrMobileBottomNav após rechegar — módulo de apresentação mobile não montou a barra",
+    "monitor@414": "shell ready sem #bfrMobileBottomNav após rechegar — módulo de apresentação mobile não montou a barra",
+    "monitor@430": "shell ready sem #bfrMobileBottomNav após rechegar — módulo de apresentação mobile não montou a barra",
+    "pending@375": "conta em análise: barreira de pendência, sem shell nem navegação (estado do produto)",
+    "pending@390": "conta em análise: barreira de pendência, sem shell nem navegação (estado do produto)",
+    "pending@414": "conta em análise: barreira de pendência, sem shell nem navegação (estado do produto)",
+    "pending@430": "conta em análise: barreira de pendência, sem shell nem navegação (estado do produto)",
+    "pending@320": "conta em análise: barreira de pendência, sem shell nem navegação (estado do produto)",
+    "pending@360": "conta em análise: barreira de pendência, sem shell nem navegação (estado do produto)",
+    "secretary@360": "shell ready sem #bfrMobileBottomNav após rechegar — módulo de apresentação mobile não montou a barra",
+    "secretary@375": "shell ready sem #bfrMobileBottomNav após rechegar — módulo de apresentação mobile não montou a barra"
+  },
+  "total_celulas": 90,
+  "motivos": {
+    "travada_com_causa": 10,
+    "coerente": 80
+  },
+  "tabela": {
+    "pending": {
+      "320": "TRAVADA",
+      "360": "TRAVADA",
+      "375": "TRAVADA",
+      "390": "TRAVADA",
+      "414": "TRAVADA",
+      "430": "TRAVADA"
+    },
+    "parent": {
+      "320": "OK",
+      "360": "OK",
+      "375": "OK",
+      "390": "OK",
+      "414": "OK",
+      "430": "OK"
+    },
+    "student": {
+      "320": "OK",
+      "360": "OK",
+      "375": "OK",
+      "390": "OK",
+      "414": "OK",
+      "430": "OK"
+    },
+    "pedagogical": {
+      "320": "OK",
+      "360": "OK",
+      "375": "OK",
+      "390": "OK",
+      "414": "OK",
+      "430": "OK"
+    },
+    "developer": {
+      "320": "OK",
+      "360": "OK",
+      "375": "OK",
+      "390": "OK",
+      "414": "OK",
+      "430": "OK"
+    },
+    "monitor": {
+      "320": "TRAVADA",
+      "360": "OK",
+      "375": "TRAVADA",
+      "390": "TRAVADA",
+      "414": "TRAVADA",
+      "430": "OK"
+    },
+    "gatekeeper": {
+      "320": "OK",
+      "360": "OK",
+      "375": "OK",
+      "390": "OK",
+      "414": "OK",
+      "430": "OK"
+    },
+    "coordinator": {
+      "320": "OK",
+      "360": "OK",
+      "375": "OK",
+      "390": "OK",
+      "414": "OK",
+      "430": "OK"
+    },
+    "secretary": {
+      "320": "OK",
+      "360": "OK",
+      "375": "OK",
+      "390": "OK",
+      "414": "OK",
+      "430": "OK"
+    },
+    "aee": {
+      "320": "OK",
+      "360": "OK",
+      "375": "OK",
+      "390": "OK",
+      "414": "OK",
+      "430": "OK"
+    },
+    "director": {
+      "320": "OK",
+      "360": "OK",
+      "375": "OK",
+      "390": "OK",
+      "414": "OK",
+      "430": "OK"
+    },
+    "psychology": {
+      "320": "OK",
+      "360": "OK",
+      "375": "OK",
+      "390": "OK",
+      "414": "OK",
+      "430": "OK"
+    },
+    "social_work": {
+      "320": "OK",
+      "360": "OK",
+      "375": "OK",
+      "390": "OK",
+      "414": "OK",
+      "430": "OK"
+    },
+    "sports_operator": {
+      "320": "OK",
+      "360": "OK",
+      "375": "OK",
+      "390": "OK",
+      "414": "OK",
+      "430": "OK"
+    },
+    "education_supervisor": {
+      "320": "OK",
+      "360": "OK",
+      "375": "OK",
+      "390": "OK",
+      "414": "OK",
+      "430": "OK"
+    }
+  }
+}

@@ -26,10 +26,14 @@ for (const f of readdirSync(DIR).filter((x) => /^ah2-sessao-.*\.json$/.test(x)))
 const linhas = [];
 for (const papel of papeis) {
   const e = escolhidos[papel];
-  if (!e) { linhas.push(`  ${papel.padEnd(20)} só no mestre (${String(mestre[papel].refresh_token).slice(0, 10)}…)`); continue; }
+  // O resumo impresso vai para capturas em evidence/ (ficheiros versionados), por isso aqui só comprimento e
+  // validade: os 10 caracteres anteriores de uma cadeia de refresh são classe-credencial e um prefixo duma
+  // cadeia viva é suficiente para identificar qual registo está em que ficheiro — e a própria linha que descreve
+  // o defeito passa a ser portadora dele, logo não pode ser copiada para dentro do registo nem para o diário.
+  if (!e) { linhas.push(`  ${papel.padEnd(20)} só no mestre (cadeia_comprimento=${String(mestre[papel].refresh_token).length})`); continue; }
   const mudou = e.v.refresh_token !== mestre[papel].refresh_token;
   if (mudou) mestre[papel] = e.v;
-  linhas.push(`  ${papel.padEnd(20)} ${mudou ? 'FUNDIDO de ' + e.f.replace('ah2-sessao-', '').replace('.json', '') : 'igual ao mestre'} (${String(e.v.refresh_token).slice(0, 10)}… exp ${e.v.expires_at})`);
+  linhas.push(`  ${papel.padEnd(20)} ${mudou ? 'FUNDIDO de ' + e.f.replace('ah2-sessao-', '').replace('.json', '') : 'igual ao mestre'} (cadeia_comprimento=${String(e.v.refresh_token).length} exp ${e.v.expires_at})`);
 }
 console.log('PARES POR PAPEL:');
 console.log(linhas.join('\n'));

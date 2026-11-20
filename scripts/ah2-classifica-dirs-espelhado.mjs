@@ -17,7 +17,15 @@ const index = new Set(execFileSync('git', ['ls-files'], { encoding: 'utf8' }).sp
 const md5_index = (c) => { try { return md5b(execFileSync('git', ['show', `:${c}`], { encoding: 'buffer', maxBuffer: 64 * 1024 * 1024 })); } catch { return null; } };
 const IRMAOS = {
   'bfr-candidata-v126-a11y-secretaria-ANTERIOR-portao-insercao-mal-formulado': ['bfr-candidata-v126-a11y-secretaria'],
-  'worker-deploy-v120-404/public': ['worker-deploy-v120-404/public', 'worker-deploy-v120/public']
+  'worker-deploy-v120-404/public': ['worker-deploy-v120-404/public', 'worker-deploy-v120/public'],
+  // 20/11 — as duas árvores publicadas neste fecho. A base de assets é sempre a mesma (`worker-deploy-v123-pdfs/public`,
+  // 12 ficheiros rastreados): o que muda entre v123/v135/v136 é o `worker.mjs` e o `_headers`, esse o único
+  // ficheiro novo dentro de `public/`. Comparar com a base versionada é o que diz se há 8 MB de cópia ou 118 B.
+  'worker-deploy-v135-headers/public': ['worker-deploy-v123-pdfs/public'],
+  'worker-deploy-v136-secretaria-de-educacao/public': ['worker-deploy-v123-pdfs/public'],
+  // A candidata publicada: se o `index.html` batesse com um irmão versionado seria a N-ésima cópia de 3,5 MB;
+  // se difere, é o corpo do deploy e tem de entrar no índice.
+  'bfr-candidata-v136-secretaria-de-educacao': ['bfr-candidata-v134-sidebar-escondida', 'bfr-candidata-v129-secretaria-municipal']
 };
 const out = {
   programa: 'scripts/ah2-classifica-dirs-espelhado.mjs',

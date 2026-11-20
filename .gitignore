@@ -145,3 +145,33 @@ scripts/s20-behavioral-ruler3.mjs
 # texto medido com a candidata versionada), lidos do proprio artefacto por esse script. NADA FOI
 # APAGADO DO DISCO: o ficheiro continua la, com o texto, para quem o quiser voltar a abrir.
 /evidence/v134-preflight-18-11.json
+
+# 20/11 fecho da grelha m5 e das publicacoes v135/v136 — a mesma regla do bloco acima, reaplicada por medicao.
+# O corpus passou a ser partilhado por dois leitores (`scripts/p73-corpus-lib.mjs`: bolbos de
+# `git ls-tree -r HEAD --long` acima de 100 KB → 1 966 rastreados, 228 acima do limite, 76 pegadas) porque a
+# primeira versao desta regla casava apenas `*.html` e declarou «unico» o texto de um PDF ja versionado; o
+# vermelho fica como `evidence/ANTERIOR-p73-corpos-de-artefactos-20-11d-corpus-so-html.json` e o companion que
+# essa corrida escreveu a mais (471 KB de render de PDF) fica como `ANTERIOR-p73-corpo-unico-…json`.
+#   worker-deploy-v135-headers/public/                  13 ficheiros · 4 459 812 B · 12 iguais / 0 diferem / 1 unico
+#   worker-deploy-v136-secretaria-de-educacao/public/    idem · 12 iguais / 0 diferem / 1 unico
+#     — os 12 sao byte-a-byte iguais a `worker-deploy-v123-pdfs/public/<mesmo caminho>` (prova por caminho
+#       espelhado em `evidence/ah2-classifica-dirs-espelhado-20-11e.json`). O unico e `_headers` (118 B), e e
+#       precisamente a correcao publicada na v135: re-incluido por ficheiro, sem wildcard, porque `public/*`
+#       permite o re-include e `public/` nao.
+#   evidence/v136-preflight-19-11.json                                4 081 039 B · md5 725a17a4ddc42c72c40f8a7c9e70b55c
+#   evidence/v136-preflight-19-11-ANTERIOR-B10-basehtml-igual-ao-ar.json 4 080 931 B · md5 0e40af4a87cba84d311d84e50cf7c6c0
+#     — 0 bytes unicos nos dois (`evidence/p73-corpos-de-artefactos-20-11f.json`, confirmado por
+#       `evidence/p73-extracao-de-corpos-unicos-20-11f.json`): `medido_antes.shell.texto` (3 546 846 B,
+#       md5 b272fd4f3a737c518e888250ab8167f1) e igual a `bfr-candidata-v134-sidebar-escondida/index.html`;
+#       `medido_antes.pdf.texto` (362 632 B) e o render de `/calendario-letivo-2026.pdf`, cujo pai declara
+#       202 349 B / md5 14a6b82bfb212bf115fafdb546163f9f — os mesmos bytes de
+#       `_v115-ar-assets/calendario-letivo-2026.pdf`, ja no indice, e essa pegada tambem vive em
+#       `evidence/v136-pos-deploy-19-11.json` e em 20+ registos anteriores. O que estes artefactos provam
+#       (http, content-type, CSP, X-Frame-Options, os 15 portoes 15/0) esta em `audit-publicacao-v136.json`.
+# NADA FOI APAGADO DO DISCO: os quatro caminhos continuam la, com os bytes, para quem os quiser reabrir.
+/worker-deploy-v135-headers/public/*
+!/worker-deploy-v135-headers/public/_headers
+/worker-deploy-v136-secretaria-de-educacao/public/*
+!/worker-deploy-v136-secretaria-de-educacao/public/_headers
+/evidence/v136-preflight-19-11.json
+/evidence/v136-preflight-19-11-ANTERIOR-B10-basehtml-igual-ao-ar.json

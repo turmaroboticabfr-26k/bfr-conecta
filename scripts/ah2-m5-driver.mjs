@@ -5,6 +5,7 @@
 // Relançar é idempotente; a cobertura é medida no disco, não na memória. 0 escrita, 0 DDL, 0 deploy.
 // Uso: node scripts/ah2-m5-driver.mjs [orçamento_ms]
 import { readFileSync, readdirSync, existsSync, writeFileSync } from 'node:fs';
+import { createHash } from 'node:crypto';
 import { spawnSync } from 'node:child_process';
 
 const DIR = 'C:/Users/pcmac/Documents/Qoder/2026-10-13/28077d9a';
@@ -14,6 +15,11 @@ const BUDGET = parseInt(process.argv[2] || '520000', 10);
 const PEDIDO = (process.argv[3] || '').trim();
 const BASE_PORTA = parseInt(process.argv[4] || '9381', 10);
 const LARGURAS = [320, 360, 375, 390, 414, 430];
+// (medido nesta grelha) Os papéis pesados — developer, coordinator, secretary, com 24 seções e painéis de
+// ~1,9 s — custam ~200 s POR LARGURA, logo seis larguras nunca cabem no teto de 430 s dum filho: o watchdog
+// corta e a célula fica por medir. Este argumento corta a fileira em grupos; o condutor continua a ser a única
+// voz do rótulo e da cobertura, por isso relançar só mede o que falta, como antes.
+const MAX_POR_FILHO = Math.max(1, parseInt(process.argv[5] || '6', 10));
 // A fonte da verdade são os perfis que a varredura percorre — se lá mudar, aqui muda com ela.
 const src = readFileSync(`${DIR}/bfr-conecta/scripts/ah2-varredura.mjs`, 'utf8');
 const m = src.match(/const TODOS\s*=\s*\[([^\]]*)\]/);
@@ -38,6 +44,34 @@ const prepara_sessao = (papel) => {
 };
 
 const EV = `${DIR}/bfr-conecta/evidence`;
+const REPO = `${DIR}/bfr-conecta`;
+// (PEN-35) A cobertura só pode contar artefactos do ar QUE ESTÁ NO SERVIDOR AGORA. Os `ah2-mobile2-m5-*`
+// em disco mediram um ar anterior: sem esta cláusula o condutor leria 86 células já cobertas e declararia
+// «grelha completa» sem medir uma célula sequer — a régua que se move com o medido, em forma de ficheiro.
+// O URL vem do diário de publicação mais recente, o md5 esperado do `esperado-v*.json` desse mesmo deploy;
+// nada de números de versão dactilografados. A prova de que a cláusula tem dentes é a contagem por md5:
+// se a do ar atual e a do ar anterior coincidirem, o verde não quer dizer nada e isto aborta.
+const por_versao = (re) => readdirSync(REPO).filter((f) => re.test(f)).sort((a, b) => parseInt(/(\d+)/.exec(a)[1], 10) - parseInt(/(\d+)/.exec(b)[1], 10));
+const DIARIO = por_versao(/^audit-publicacao-v\d+\.json$/).slice(-1)[0];
+if (!DIARIO) throw new Error('ABORTA: nenhum audit-publicacao-v*.json em ' + REPO);
+const URL_APP = (/https:\/\/[a-z0-9.-]+\.workers\.dev/i.exec(readFileSync(`${REPO}/${DIARIO}`, 'utf8')) || [])[0] + '/';
+if (!/workers\.dev/.test(URL_APP)) throw new Error('ABORTA: sem URL de publicação em ' + DIARIO);
+const PASTA_DEPLOY = por_versao(/^worker-deploy-v\d+/).slice(-1)[0];
+if (!PASTA_DEPLOY) throw new Error('ABORTA: nenhum worker-deploy-v* em ' + REPO);
+const FICHEIRO_ESPERADO = readdirSync(`${REPO}/${PASTA_DEPLOY}`).filter((f) => /^esperado-v\d+\.json$/.test(f)).sort((a, b) => parseInt(/v(\d+)/.exec(a)[1], 10) - parseInt(/v(\d+)/.exec(b)[1], 10)).slice(-1)[0];
+if (!FICHEIRO_ESPERADO) throw new Error('ABORTA: sem esperado-v*.json em ' + PASTA_DEPLOY);
+const ESPERADO = JSON.parse(readFileSync(`${REPO}/${PASTA_DEPLOY}/${FICHEIRO_ESPERADO}`, 'utf8')).htmlMd5;
+const md5 = (b) => createHash('md5').update(Buffer.from(b)).digest('hex');
+const AR_TXT = await (await fetch(URL_APP, { headers: { 'cache-control': 'no-cache' } })).text();
+const AR_MD5 = md5(AR_TXT);
+if (AR_MD5 !== ESPERADO) throw new Error(`ABORTA: o ar servido (${AR_MD5}) não é o esperado do ${PASTA_DEPLOY}/${FICHEIRO_ESPERADO} (${ESPERADO})`);
+const celulas_de = (q) => { let n = 0; for (const f of readdirSync(EV)) { if (!/^ah2-mobile2-m5-.*\.json$/.test(f)) continue; let j; try { j = JSON.parse(readFileSync(`${EV}/${f}`, 'utf8')); } catch { continue; } if (j.ciclo !== 'AH-7b-MOBILE' || j.md5_shell !== q) continue; for (const [w, b] of Object.entries(j.bandas || {})) if (!b.pela_praga) n++; } return n; };
+const MD5_ANTERIOR = (() => { for (const f of readdirSync(EV).filter((x) => /^ah2-mobile2-m5-.*\.json$/.test(x)).sort()) { let j; try { j = JSON.parse(readFileSync(`${EV}/${f}`, 'utf8')); } catch { continue; } if (j.ciclo === 'AH-7b-MOBILE' && j.md5_shell && j.md5_shell !== AR_MD5) return j.md5_shell; } return null; })();
+const CELULAS_AR_ATUAL = celulas_de(AR_MD5);
+const CELULAS_AR_ANTERIOR = MD5_ANTERIOR ? celulas_de(MD5_ANTERIOR) : null;
+if (MD5_ANTERIOR && CELULAS_AR_ATUAL === CELULAS_AR_ANTERIOR) throw new Error('ABORTA: a cláusula de versão não discrimina (ar atual e anterior dão as mesmas ' + CELULAS_AR_ATUAL + ' células) — régua sem dentes');
+console.log(`AR: ${URL_APP} md5=${AR_MD5} (esperado de ${PASTA_DEPLOY}/${FICHEIRO_ESPERADO}) · celulas_m5 no ar atual=${CELULAS_AR_ATUAL} · no ar anterior ${MD5_ANTERIOR || '-'}=${CELULAS_AR_ANTERIOR ?? '-'}`);
+
 // Um condutor em paralelo não pode matar o browser dos outros: a limpeza é feita por PORTA, e só a porta
 // atribuída ao papel que este lançamento vai medir. Um Chrome órfão que escuta na porta faz o filho seguir
 // para um browser morto — foi assim que a célula `parent@360` ficou a meio.
@@ -70,6 +104,9 @@ const cobertura = (papel) => {
     let j; try { j = JSON.parse(readFileSync(`${EV}/${f}`, 'utf8')); } catch { continue; }
     if (j.ciclo !== 'AH-7b-MOBILE' || j.papel !== papel) continue;
     ficheiros.push(f);
+    // `tentativas` continua a contar TODOS os ficheiros do papel (é o número do rótulo, não a medida);
+    // a cobertura só aceita os do ar atual — é esta a cláusula que faltava.
+    if (j.md5_shell !== AR_MD5) continue;
     for (const [w, b] of Object.entries(j.bandas || {})) {
       if (b.pela_praga) continue;
       const coerente = !!b.censo && b.censo.barra_existe !== false && (b.censo.barra || []).some((x) => x.w > 0 && x.h > 0) && (b.abertas || 0) > 0;
@@ -84,9 +121,10 @@ const t0 = Date.now(); let corridos = 0;
 const resumo = [];
 for (const papel of ALVOS) {
   const { cobertas, bloqueadas, tentativas } = cobertura(papel);
-  const faltam = LARGURAS.filter((w) => !cobertas.has(w) && !bloqueadas.has(w));
-  resumo.push(`${papel}: ${cobertas.size}/6${bloqueadas.size ? ' + ' + bloqueadas.size + ' travada(s)' : ''}${faltam.length ? ' faltam ' + faltam.join('/') : ''}`);
-  if (!faltam.length) continue;
+  const por_medir = LARGURAS.filter((w) => !cobertas.has(w) && !bloqueadas.has(w));
+  const faltam = por_medir.slice(0, MAX_POR_FILHO);
+  resumo.push(`${papel}: ${cobertas.size}/6${bloqueadas.size ? ' + ' + bloqueadas.size + ' travada(s)' : ''}${por_medir.length ? ' faltam ' + por_medir.join('/') + (faltam.length < por_medir.length ? ' (destes, este filho leva ' + faltam.join('/') + ')' : '') : ''}`);
+  if (!por_medir.length) continue;
   // Cada filho recebe o tempo que resta (menos a margem de escrita) e fecha-se sozinho com o que mediu;
   // assim a janela de shell é usada toda e nenhuma célula é perdida por timeout externo sem artefacto.
   const restante = BUDGET - (Date.now() - t0) - 45000;
@@ -101,6 +139,13 @@ for (const papel of ALVOS) {
   prepara_sessao(papel);
   const r = spawnSync(process.execPath, [`${DIR}/bfr-conecta/scripts/ah2-mobile2.mjs`, papel, faltam.join(','), rotulo], { cwd: `${DIR}/bfr-conecta`, encoding: 'utf8', timeout: teto + 150000, maxBuffer: 40 * 1024 * 1024, env: { ...process.env, AH2_TETO_MS: String(teto), AH2_PORT: String(porta), AH2_SESSAO: ficheiro_sessao(papel) } });
   console.log('  par de ' + papel + ' guardado em ' + ficheiro_sessao(papel).split('/').pop() + ' (o mestre só é fundido no fim, a uma voz)');
+  // O filtro abaixo é para o meu olho; não pode ser a única cópia. `abort()` do filho (watchdog em
+  // ah2-mobile2.mjs:71) faz `process.exit` SEM escrever artefacto: quando um lançamento é cortado, o único
+  // registo que existe é o stdout do filho, e descartá-lo deixa o vermelho como anedota (vaga 5: sports_operator
+  // e education_supervisor, 511 s cada, 0 ficheiros, 0 pistas de onde penduraram).
+  const FICHEIRO_STDOUT = `${EV}/ah2-mobile2-${rotulo}-stdout.txt`;
+  writeFileSync(FICHEIRO_STDOUT, '=== ' + rotulo + ' :: ' + papel + ' @ ' + faltam.join(',') + ' (teto ' + Math.round(teto / 1000) + ' s, porta ' + porta + ', node_exit=' + r.status + (r.error ? ' erro=' + String(r.error.message).slice(0, 120) : '') + ')\n' + String(r.stdout || '') + '\n--- STDERR ---\n' + String(r.stderr || ''));
+  console.log('  stdout integral do filho em ' + FICHEIRO_STDOUT.split('/').pop() + ' (' + (r.stdout || '').split('\n').length + ' linhas, node_exit=' + r.status + ')');
   const linhas = String(r.stdout || '').split('\n');
   console.log(linhas.filter((l) => /^(PORTÕES|VERMELHO|[A-Z-]+ \(|  \d+px\/|PAROU:)/.test(l)).slice(-24).join('\n'));
   if (r.error) console.log('ERRO FILHO: ' + String(r.error.message).slice(0, 200));

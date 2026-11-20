@@ -1,0 +1,273 @@
+{
+  "version": "v135",
+  "data": "2026-11-19",
+  "ok_literal": "Sim, publicar ambos (v124+v125 sobre a base v134)",
+  "nota_do_ok": "opcao selecionada na pergunta de 18/11 «Publicar v124 + v125?». Nao cobre DDL, escrita no banco, mint de contas, nem git push (o utilizador re-confirmou «Nao fazer push»).",
+  "escopo_do_ok": "publicar o patch anti-cliquejacking (PEN-24) re-aplicado sobre a base v134 como v135, e o patch do created_at (PEN-30) + nome unico como v136; este diario cobre a v135",
+  "tarefa": "fazer os assets e a shell sairem com cabecalhos anti-enquadramento (X-Frame-Options + CSP com frame-ancestors), fechando o PEN-24 que mediu os assets sem cabecalho nenhum",
+  "deploy": {
+    "worker": "bfr-conecta",
+    "conta": "turmaroboticabfr@gmail.com",
+    "version_id": "f5c157f2-7b46-447b-88a9-d05cff7c42d2",
+    "deployment_id": "8ed19ff2-64c8-4c88-b858-3553a3d2215b",
+    "versao_intermedia_deste_ciclo": "f824a488-d7f1-4922-b005-4c11a810d401",
+    "versao_anterior_v134": "8600fc3d-022f-4c4a-a179-2728f6fca916",
+    "deployment_created": "2026-11-19T09:57:00.510908Z",
+    "percentual_trafego_novo": 100,
+    "wrangler": "4.154.0 (fixada: 4.156+ quebra o upload de assets com o erro 100312)",
+    "cwd": "worker-deploy-v135-headers",
+    "base_do_bundle": "worker-deploy-v134-sidebar (a v134 publicada)",
+    "url": "https://bfr-conecta.turmaroboticabfr.workers.dev",
+    "comando_da_url": "derivado de evidence/v134-pos-deploy-18-11.json -> url, nunca dactilografado",
+    "fonte_dos_numeros": "evidence/v135-deployments-list/status-depois-19-11.json (redirecionamento de `wrangler deployments list/status --json`) e evidence/v135-deploy-stdout-19-11.txt",
+    "estado_antes_deste_ciclo": {
+      "versao": "8600fc3d-022f-4c4a-a179-2728f6fca916",
+      "percentual": 100,
+      "em": "2026-11-18T06:24:00.01873Z"
+    },
+    "dois_deploys_porque": "o primeiro deploy (f824a488) subiu o worker com o patch v124 completo mas SEM o mecanismo que leva headers aos assets; o pos-deploy mediu 12/12 assets sem headers e provou que o worker nao e invocado para pedidos de asset — o Cloudflare serve os assets direto. O segundo deploy (este) acrescentou public/_headers, o mecanismo documentado para headers de assets"
+  },
+  "correcao": {
+    "o_que_o_pen24_mediu": "os assets (incluindo 4 PDF, documentos framaveis) saiam do Worker sem qualquer cabecalho de enquadramento",
+    "o_patch_re_aplicado": "o mesmo do velho bfr-candidata-v124-anticliquejacking, 4 sitios: (1) `frame-ancestors 'self'` acrescentado a CSP principal; (2) `const FRAME_GUARD`; (3) `x-frame-options: SAMEORIGIN` na resposta HTML da shell; (4) CSP=FRAME_GUARD + x-frame-options em cada asset que passasse pelo fallback ASSETS do worker",
+    "descoberta_medida_do_pos_deploy": "o sitio (4) nao dispara no ar: com [assets] no wrangler.toml e run_worker_first ausente, o worker NAO corre para pedidos de asset — o primeiro pos-deploy mediu 12/12 assets com x_frame=null e csp=null. O patch do velho v124, se tivesse sido publicado como estava, nao teria dado headers a nenhum asset",
+    "o_mecanismo_que_funciona": "public/_headers (documentado em developers.cloudflare.com/workers/static-assets/headers/): 6f1f82a390b0e6111e3b8aff7d6415b2 (118 B) com a regra /* -> X-Frame-Options: SAMEORIGIN + Content-Security-Policy: frame-ancestors 'self'; base-uri 'self'; form-action 'self'. Medido no ar: os 12 assets saem com os dois headers",
+    "alcance_medido": "shell b272fd4f3a737c518e888250ab8167f1 (3546846 B) (byte-identica a v134 — a v135 so muda headers); SW 53dcac1fcf5c10f76801608306c9ace3 (5064 B) com CACHE bfr-conecta-v135; worker 210875b75887b631ccd1a6134ebf3bb0 (3611720 B); 12 assets byte-identicos a base v123 + _headers novo",
+    "o_que_NAO_foi_alterado": "a base worker-deploy-v134-sidebar esta intacta no disco (f0de99f6ab5584d10e3b4484663f5090 (3611114 B)); wrangler.toml identico; 0 DDL, 0 escrita no banco, 0 mint, 0 Edge Function"
+  },
+  "md5": {
+    "worker-deploy-v135-headers/worker.mjs_publicado": "210875b75887b631ccd1a6134ebf3bb0 (3611720 B)",
+    "worker-deploy-v134-sidebar/worker.mjs_base": "f0de99f6ab5584d10e3b4484663f5090 (3611114 B)",
+    "worker-deploy-v135-headers/public/_headers": "6f1f82a390b0e6111e3b8aff7d6415b2 (118 B)",
+    "shell_igual_em_v134_e_v135": "b272fd4f3a737c518e888250ab8167f1 (3546846 B)",
+    "sw_antes_v134": "36ef6aeba9954ec3aa4a11230bf811dd (5064 B), CACHE bfr-conecta-v134",
+    "sw_depois_v135": "53dcac1fcf5c10f76801608306c9ace3 (5064 B), CACHE bfr-conecta-v135",
+    "delta_worker_bytes_vs_v134": 606,
+    "assets": "12 ficheiros byte-identicos a base v123 (nao reenviados: «No updated asset files to upload»); o _headers e o 13.º ficheiro do public/",
+    "emissao": "md5 e bytes recalculados do disco por este script; nada neste bloco foi copiado de um log"
+  },
+  "medicao": {
+    "gerador_do_bundle": {
+      "em": "2026-11-19T09:56:40.949Z",
+      "veredito": "V135_BUNDLE_OK 19/0",
+      "total": "19/0",
+      "dir": "worker-deploy-v135-headers"
+    },
+    "preflight_no_ar": {
+      "em": "2026-11-19T09:52:19.183Z",
+      "veredito": "V135_PREFLIGHT_OK",
+      "total": "14/0",
+      "url": "https://bfr-conecta.turmaroboticabfr.workers.dev",
+      "prova_de_que_o_defeito_estava_no_ar": {
+        "shell_sem_x_frame": null,
+        "pdf_sem_os_dois_headers": {
+          "x_frame": null,
+          "csp": null
+        }
+      }
+    },
+    "stdout_do_deploy": {
+      "version_id": "f5c157f2-7b46-447b-88a9-d05cff7c42d2",
+      "bytes_no_stdout": "3517.77"
+    },
+    "pos_deploy": {
+      "em": "2026-11-19T09:57:51.958Z",
+      "veredito": "V135_POS_DEPLOY_OK",
+      "total": "12/0",
+      "shell_com_headers": {
+        "x_frame": "SAMEORIGIN",
+        "csp_frame_ancestors": true
+      },
+      "assets_sem_headers": [],
+      "pdf_exemplo": {
+        "arquivo": "calendario-letivo-2026.pdf",
+        "x_frame": "SAMEORIGIN",
+        "csp": "frame-ancestors 'self'; base-uri 'self'; form-action 'self'"
+      },
+      "rotulo_sw_no_ar": "bfr-conecta-v135",
+      "versoes_na_cadeia": {
+        "v135": "f5c157f2-7b46-447b-88a9-d05cff7c42d2",
+        "v135_primeiro": "f824a488-d7f1-4922-b005-4c11a810d401",
+        "v134": "8600fc3d-022f-4c4a-a179-2728f6fca916"
+      }
+    }
+  },
+  "portoes": {
+    "gerador": "19/0 - evidence/v135-gera-bundle-19-11.json (V135_BUNDLE_OK 19/0)",
+    "preflight": "14/0 - evidence/v135-preflight-19-11.json (V135_PREFLIGHT_OK)",
+    "pos_deploy": "12/0 - evidence/v135-pos-deploy-19-11.json (V135_POS_DEPLOY_OK)",
+    "deste_diario": "17/1",
+    "total_da_cadeia": 45,
+    "vermelhos": 0,
+    "falhas_deste_diario": {
+      "G1_url_vem_do_diario_da_v134": {
+        "valor": "https://bfr-conecta.turmaroboticabfr.workers.dev",
+        "esperado": "https://bfr-conecta.turmaroboticabfr.workers.dev",
+        "passou": true
+      },
+      "G2_a_versao_no_ar_e_a_deste_diario": {
+        "valor": "f5c157f2-7b46-447b-88a9-d05cff7c42d2",
+        "esperado": "f5c157f2-7b46-447b-88a9-d05cff7c42d2",
+        "passou": true
+      },
+      "G2b_a_lista_do_servidor_concorda_com_o_status": {
+        "valor": "f5c157f2-7b46-447b-88a9-d05cff7c42d2",
+        "esperado": "f5c157f2-7b46-447b-88a9-d05cff7c42d2",
+        "passou": true
+      },
+      "G3_a_cadeia_de_reversao_na_lista": {
+        "valor": {
+          "intermediaria": "f824a488-d7f1-4922-b005-4c11a810d401",
+          "v134": "8600fc3d-022f-4c4a-a179-2728f6fca916"
+        },
+        "esperado": {
+          "intermediaria": "f824a488-d7f1-4922-b005-4c11a810d401",
+          "v134": "8600fc3d-022f-4c4a-a179-2728f6fca916"
+        },
+        "passou": true
+      },
+      "G4_o_que_foi_publicado_e_o_bundle_gateado": {
+        "valor": {
+          "md5": "210875b75887b631ccd1a6134ebf3bb0",
+          "bytes": 3611720
+        },
+        "esperado": {
+          "md5": "210875b75887b631ccd1a6134ebf3bb0",
+          "bytes": 3611720
+        },
+        "passou": true
+      },
+      "G5_base_v134_inalterada_no_disco": {
+        "valor": {
+          "md5": "f0de99f6ab5584d10e3b4484663f5090",
+          "bytes": 3611114
+        },
+        "esperado": {
+          "md5": "f0de99f6ab5584d10e3b4484663f5090",
+          "bytes": 3611114
+        },
+        "passou": true
+      },
+      "G6_shell_servida_no_ar_igual_a_v134": {
+        "valor": {
+          "md5": "b272fd4f3a737c518e888250ab8167f1",
+          "bytes": 3546846
+        },
+        "esperado": {
+          "md5": "b272fd4f3a737c518e888250ab8167f1",
+          "bytes": 3546846
+        },
+        "passou": true
+      },
+      "G7_sw_servido_no_ar_igual_ao_embed": {
+        "valor": {
+          "md5": "53dcac1fcf5c10f76801608306c9ace3",
+          "rotulo": "bfr-conecta-v135"
+        },
+        "esperado": {
+          "md5": "53dcac1fcf5c10f76801608306c9ace3",
+          "rotulo": "bfr-conecta-v135"
+        },
+        "passou": true
+      },
+      "G8_a_shell_no_ar_tem_os_dois_headers": {
+        "valor": {
+          "x_frame": "SAMEORIGIN",
+          "frame_ancestors": true
+        },
+        "esperado": {
+          "x_frame": "SAMEORIGIN",
+          "frame_ancestors": true
+        },
+        "passou": true
+      },
+      "G9_todos_os_12_assets_no_ar_tem_os_dois_headers": {
+        "valor": {
+          "sem_headers": 0,
+          "total": 12
+        },
+        "esperado": {
+          "sem_headers": 0,
+          "total": 12
+        },
+        "passou": true
+      },
+      "G10_o_pdf_exemplo_carrega_o_frame_guard": {
+        "valor": {
+          "arquivo": "calendario-letivo-2026.pdf",
+          "x_frame": "SAMEORIGIN",
+          "csp": "frame-ancestors 'self'; base-uri 'self'; form-action 'self'"
+        },
+        "esperado": {
+          "x_frame": "SAMEORIGIN",
+          "csp": "frame-ancestors 'self'; base-uri 'self'; form-action 'self'"
+        },
+        "passou": false
+      },
+      "G11_handler_do_404_permanece_no_ar": {
+        "valor": 404,
+        "esperado": 404,
+        "passou": true
+      },
+      "G12_preflight_verde": {
+        "valor": "V135_PREFLIGHT_OK 14/0",
+        "esperado": "V135_PREFLIGHT_OK 14/0",
+        "passou": true
+      },
+      "G13_pos_deploy_verde": {
+        "valor": "V135_POS_DEPLOY_OK 12/0",
+        "esperado": "V135_POS_DEPLOY_OK 12/0",
+        "passou": true
+      },
+      "G14_gerador_verde": {
+        "valor": {
+          "ok": 19,
+          "falha": 0
+        },
+        "esperado": {
+          "ok": 19,
+          "falha": 0
+        },
+        "passou": true
+      },
+      "G15_nada_de_banco_ddl_mint_ou_edge": {
+        "valor": {
+          "preflight": 0,
+          "pos": 0,
+          "gerador": 0
+        },
+        "esperado": {
+          "preflight": 0,
+          "pos": 0,
+          "gerador": 0
+        },
+        "passou": true
+      },
+      "G16_o_defeito_foi_provado_antes_do_deploy": {
+        "valor": {
+          "pdf_x_frame": null,
+          "pdf_csp": null
+        },
+        "esperado": {
+          "pdf_x_frame": null,
+          "pdf_csp": null
+        },
+        "passou": true
+      }
+    }
+  },
+  "nao_fechado_por_este_ciclo": {
+    "pen30_created_at": "fecha com a v136 (proxima publicacao do mesmo OK «publicar ambos»)",
+    "pen35_e_pen36": "re-medição de bandas e clique autenticado da sub-aba Supervisão — tarefas separadas do mesmo OK, sem deploy proprio",
+    "nota_sobre_o_primeiro_deploy": "f824a488 ficou na cadeia de versoes como degrau intermedio; reverter para ele devolve o estado sem headers nos assets — a reversao util e a v134 (8600fc3d)"
+  },
+  "veredito": "V135_DIARIO_COM_PORTOES_VERMELHOS 17/1",
+  "reversao": {
+    "como_v134": "wrangler deploy a partir de worker-deploy-v134-sidebar (worker f0de99f6ab5584d10e3b4484663f5090 (3611114 B), CACHE bfr-conecta-v134) — devolve o estado sem headers",
+    "como_v133": "wrangler deploy a partir de worker-deploy-v133-municipal (CACHE bfr-conecta-v133) — sem headers e com o bloco ofensor da sidebar",
+    "prova_de_linhagem": "os 12 assets sao byte-identicos nos tres directorios; cada esperado-vXXX.json foi re-extraido e conferido byte a byte pelo respectivo gerador",
+    "exige": "OK literal novo do utilizador para qualquer reversao"
+  },
+  "diario_de": "este ficheiro e gerado por scripts/v135-diario-publicacao.mjs a partir dos diarios de evidence, das listas de deployments do servidor e do disco; nao foi escrito a mao",
+  "qnd": "2026-11-19T09:58:53.526Z"
+}
