@@ -90,20 +90,33 @@ de destino já existir, pelo que `P73_SUF` é sempre um sufixo novo — não é 
 corrida apaga a evidência da anterior.
 
 *OK necessário:* nenhum — os quatro correm em leitura ou em modo de recusa.
-*Verde esperado:* `PACOTE_MUNICIPAL_OK 17/0` (stdout `evidence/pacote-municipal-stdout-pos-pacote-completo-no-indice-20-11.txt`,
-registo `evidence/pacote-municipal-pecas-20-11-pos-pacote-completo-no-indice.json`), `P73_MUNICIPAL_APLICA_SELFTESTE_OK 7/0`,
+*Verde esperado:* `PACOTE_MUNICIPAL_OK 17/0`, na corrida que já varre o corpus com o modo de reversão de §4:
+stdout `evidence/pacote-municipal-stdout-pos-modo-reversao-20-11.txt`, registo
+`evidence/pacote-municipal-pecas-20-11-pos-modo-reversao.json`. A corrida anterior,
+`evidence/pacote-municipal-pecas-20-11-pos-pacote-completo-no-indice.json` (stdout
+`evidence/pacote-municipal-stdout-pos-pacote-completo-no-indice-20-11.txt`), é a mesma régua sobre um corpus que
+ainda não conhecia as recusas de §4 e fica como história. O segundo verde é o do aplicador,
+`P73_MUNICIPAL_APLICA_SELFTESTE_OK 13/0` (desde 20/11 em corrida própria, stdout
+`evidence/p73-municipal-stdout-selfteste-aplicador-com-reversao-20-11.txt`, que é a corrida anterior mais os
+casos do modo de reversão de §4: os seis SQL em disco medidos um a um, as seis frases certificadas e o facto de
+`DROP FUNCTION` contar sem chumbar).
 `P73_MUNICIPAL_ETIQUETA_SELFTESTE_OK 6/0` e `P73_MUNICIPAL_ETIQUETA_LISTA 6 escolas, 0 etiquetadas, 1 municipios, 1 avisos de fixture` —
-estes três últimos na mesma corrida capturada em `evidence/p73-municipal-stdout-selftestes-e-lista-20-11.txt`,
-que traz também o `ABORTA` da guarda quando o sufixo se repetiu.
+estes dois últimos na mesma corrida capturada em `evidence/p73-municipal-stdout-selftestes-e-lista-20-11.txt`,
+que traz também o `ABORTA` da guarda quando o sufixo se repetiu. Aquele ficheiro continua a ser a prova da
+corrida em que foi versionado (`84aa3af`, 20/11) e por isso mostra `P73_MUNICIPAL_APLICA_SELFTESTE_OK 7/0`: é
+história, não o verde de hoje, e a razão de as duas capturas coabitarem é precisamente não re-escrever por cima
+duma evidência versionada.
 Desde 20/11 o corpus do portão são **dois** documentos, e não só este: `docs/bu-20-11/08-plano-de-prioridades.md`
 passou a ter um §11 que nomeia scripts e evidências deste pacote, e um corpus que não cresce com a prosa é o
 portão que varre metade das promessas e chama verde ao resto.
-O resto da primeira linha é o censo de peças medidas: cresce com o corpus que a prosa cita, por isso não se
-pinha aqui — piná-lo obrigaria a re-escrever esta frase a cada caminho acrescentado, e foi exactamente assim
-que a versão anterior deste parágrafo ficou ultrapassada (a corrida preservada em
+O censo de peças medidas vai no fim do veredicto e não nesta frase: cresce com o corpus que a prosa cita, por
+isso não se pinha aqui — piná-lo obrigaria a re-escrever esta frase a cada caminho acrescentado, e foi
+exactamente assim que a versão anterior deste parágrafo ficou ultrapassada (a corrida preservada em
 `evidence/pacote-municipal-pecas-20-11-ANTERIOR-a-prosa-do-runbook-pinhava-o-censo-de-pecas-medidas.json`
-media 29 e o corpus tinha crescido para 32). Os números `17`, `7`, `6` são função dos portões escritos nos
-instrumentos, não uma promessa sobre o mundo: ao treze original juntaram-se, por esta ordem e cada um com a sua
+media 29 e o corpus tinha crescido para 32). Os números dos vereditos são função dos portões escritos nos
+instrumentos, não uma promessa sobre o mundo, e é por isso que o censo de casos do aplicador não é escrito aqui:
+mudou em 20/11 com o modo de reversão, e uma soma nesta página envelhece no dia em que alguém acrescenta um caso
+ao `--selfteste`. Ao treze original de portões do pacote juntaram-se, por esta ordem e cada um com a sua
 falsificação na tabela abaixo, `cada_ficheiro_do_corpus_despe_pelo_menos_um_caminho` e
 `os_fantasmas_da_prosa_continuam_fantasmas_declarados`, depois `nenhum_caminho_citado_fica_fora_do_git` (§2.0.1)
 e por último `os_fora_do_indice_por_decisao_continuam_decididos`. O dígito de cada corrida lê-se no registo
@@ -219,8 +232,9 @@ novo**. Aqui ele corre e dá `LEITURA_IGUAL_SUCESSOR_SERVE` (`rename=84`, `NUMER
 confirmação de que o sucessor serve — e também de que o portão não o apanha, porque o corpus dele é a prosa dos
 dois documentos, não os `readFileSync` dos scripts. **FALTA-4:** ou o instrumento passa a apontar para o sucessor
 versionado, ou o v1 entra no índice e o substituto é retirado; as duas opções desfazem algo que já foi decidido,
-por isso pedem escolha explícita e não a minha. A numeração é a das pontas soltas deste runbook: FALTA-1 em §2.6,
-FALTA-2 em §4, FALTA-3 em §2.2, esta aqui.
+por isso pedem escolha explícita e não a minha. A numeração é a das pontas soltas deste runbook: FALTA-1 em §2.6
+(aberta — pede a peça de conferência pós-deploy da v137), FALTA-2 em §4 (fechada em 20/11, com as recusas
+medidas e o ciclo completo ainda por correr), FALTA-3 em §2.2, esta aqui.
 
 ### 2.1 · Preflight fresco da peça que se vai aplicar
 
@@ -361,11 +375,54 @@ depois de a candidata ter sido aplicada — provado legitimamente em
 
 ```
 node scripts/p73-pen41-preflight.mjs --reversao     # verde esperado só depois de aplicar
+node scripts/p73-municipal-aplica-ddl.mjs --peca PEN-41 --reverter --ok "REVERTER PEN-41 NO BANCO"
 ```
 
-Aplicar a reversão é escrita no banco e pede frase própria. **FALTA-2:** o aplicador não tem modo de reversão
-(`--peca PEN-41 --reverter`): hoje o SQL de reversão teria de ser enviado à mão. Não inventar um `psql` de
-fortuna: ou se escreve o modo, ou se declara que a reversão é manual.
+FALTA-2 está fechada em 20/11: o caminho executável existe, no mesmo aplicador, sob `--reverter`. Não é a
+aplicação com outra flag — são duas coisas que o desenho tinha de separar:
+
+* **um segundo portão de autorização.** A frase é `REVERTER <peca> NO BANCO`, uma por peça. Ela não aceita a de
+  aplicação e a de aplicação não aceita ela: aplicar e reverter são OKs distintos, nenhum arrasta o outro, e a
+  recusa diz por nome qual dos dois modos a pessoa tentou.
+* **a ordem invertida dos dois preflights.** O portão de entrada passa a ser o modo que descreve o estado que se
+  vai destruir, e o de saída o modo que descreve o estado limpo:
+
+| quando | preflight | o que o verde afirma |
+|---|---|---|
+| antes de escrever | `--reversao` | a peça está de facto aplicada — sem isto não há nada a desfazer, e é esta a única afirmação que torna a reversão não-nula |
+| depois de escrever | candidata (sem flag) | o estado vivo voltou ao de antes da candidata, ou seja: o SQL que correu foi o certificado e desfaz-se com o ficheiro certificado |
+
+O registo (`evidence/p73-municipal-reversao-PEN-XX-<stamp>.json`) traz os dois portões por **modo**
+(`preflight_candidata`, `preflight_reversao`) e a ordem em `sequencia`, com o papel de cada um, porque aplicar e
+reverter correm os mesmos dois modos por ordem oposta — um leitor não tem de decorar qual verde veio primeiro. A
+varredura de perigo é a mesma régua nos dois lados e corre sobre o SQL que o modo enviaria: `DROP FUNCTION` agora
+conta (`perigos.drop_function`) porque é o trabalho duma reversão, mas continua fora da lista de zeros, pelo que
+um `DELETE`/`TRUNCATE`/`DROP TABLE` escrito à mão num ficheiro de reversão chumba igual. Os `baselines` das cinco
+mesas de dados também se exigem inalterados nos dois modos — reverter DDL não é tocar em conteúdo.
+
+O que está medido, com a corrida na conversa: três recusas de reversão e uma de aplicação corridas hoje, stdout
+em `evidence/p73-municipal-reversao-stdout-recusas-20-11.txt` (cada secção com o seu `node_exit`; `2` em todas,
+porque recusa não é sucesso silencioso):
+
+* `evidence/p73-municipal-reversao-recusa-sem-ok.json` — `--reverter` sem frase: recusa antes de ler o banco.
+* `evidence/p73-municipal-reversao-recusa-frase-de-aplicacao.json` — a frase `APLICAR PEN-38 NO BANCO` em modo
+  reversão: recusa nomeando o modo a que a frase pertence.
+* `evidence/p73-municipal-aplica-ddl-recusa-frase-de-reversao.json` — o espelho: `REVERTER PEN-38 NO BANCO` sem
+  `--reverter` recusa, o que prova que não bastou trocar a tabela de frases de lugar.
+* `evidence/p73-municipal-reversao-recusa-precondicao-peca-nao-aplicada.json` — o caso forte: com a frase certa,
+  o preflight em modo reversão deu `P73_PEN38_PREFLIGHT_VERMELHO_2` contra o estado vivo e o aplicador recusou
+  **sem enviar SQL**, com `escrito_no_banco: false`. O registo dessa pré-condição é o
+  `evidence/p73-pen38-preflight-reversao-20-11e-rev20261120T204118Zr-VERMELHO.json` que ela cita.
+
+Estado vivo lido depois das quatro recusas: 0 funções das candidatas, 4 policies alvo, 0 escolas com município —
+nada mudou, que é a conferência de que «recusar» aqui quis mesmo dizer não escrever.
+
+O que **não** está medido, e não se pode escrever como provado: o ciclo completo aplicar → reverter conferido
+numa única corrida. Nunca correu, porque nenhuma das três peças foi aplicada, e o primeiro
+`p73-municipal-reversao-PEN-XX-<stamp>.json` só pode nascer depois de um `APLICAR PEN-XX NO BANCO` autorizado. O
+que o verde de hoje cobre é o caminho de recusa e as regras de estrutura dos ficheiros; a conferência de saída do
+modo reversão (`preflight` candidata verde **depois** de desfazer) é a parte que continua por medir, e é
+exactamente a que FALTA-2 existia para não ficar ao arbítrio de quem cola SQL.
 
 ## 5 · O que fica fora deste pacote (e porquê)
 

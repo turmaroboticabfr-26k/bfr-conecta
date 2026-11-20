@@ -1,0 +1,13 @@
+{
+  "programa": "scripts/p73-municipal-aplica-ddl.mjs",
+  "modo": "reversao",
+  "em": "2026-11-20T20:41:10.343Z",
+  "escrito_no_banco": false,
+  "aplicado": false,
+  "motivos_de_recusa": [
+    "--ok nao e a frase certificada deste modo; esperado exatamente \"REVERTER PEN-38 NO BANCO\"",
+    "a frase \"APLICAR PEN-38 NO BANCO\" pertence ao modo aplicacao desta peca: aplicar e reverter sao OKs distintos, um nao arrasta o outro",
+    "frases certificadas desta familia: [\"APLICAR PEN-38 NO BANCO\",\"REVERTER PEN-38 NO BANCO\",\"APLICAR PEN-39 NO BANCO\",\"REVERTER PEN-39 NO BANCO\",\"APLICAR PEN-41 NO BANCO\",\"REVERTER PEN-41 NO BANCO\"]"
+  ],
+  "aviso": "um «ok» solto, ou o OK de aplicação, nao autoriza desfazer DDL já aplicado"
+}

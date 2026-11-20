@@ -1,0 +1,20 @@
+### recusa a-sem-ok
+RECUSADO · reversao · ["falta --ok com a frase literal deste modo (REVERTER PEN-38 NO BANCO); sem frase, nada e escrito"]
+registo C:\Users\pcmac\Documents\Qoder\2026-10-13\28077d9a\bfr-conecta\evidence\p73-municipal-reversao-recusa-PEN-38-1795207270208.json
+exit_a=2
+
+### recusa b-frase-do-outro-modo
+RECUSADO · reversao · ["--ok nao e a frase certificada deste modo; esperado exatamente \"REVERTER PEN-38 NO BANCO\"","a frase \"APLICAR PEN-38 NO BANCO\" pertence ao modo aplicacao desta peca: aplicar e reverter sao OKs distintos, um nao arrasta o outro","frases certificadas desta familia: [\"APLICAR PEN-38 NO BANCO\",\"REVERTER PEN-38 NO BANCO\",\"APLICAR PEN-39 NO BANCO\",\"REVERTER PEN-39 NO BANCO\",\"APLICAR PEN-41 NO BANCO\",\"REVERTER PEN-41 NO BANCO\"]"]
+registo C:\Users\pcmac\Documents\Qoder\2026-10-13\28077d9a\bfr-conecta\evidence\p73-municipal-reversao-recusa-PEN-38-1795207270344.json
+exit_b=2
+
+### recusa c-aplicar-com-frase-de-reversao
+RECUSADO · aplicacao · ["--ok nao e a frase certificada deste modo; esperado exatamente \"APLICAR PEN-38 NO BANCO\"","a frase \"REVERTER PEN-38 NO BANCO\" pertence ao modo reversao desta peca: aplicar e reverter sao OKs distintos, um nao arrasta o outro","frases certificadas desta familia: [\"APLICAR PEN-38 NO BANCO\",\"REVERTER PEN-38 NO BANCO\",\"APLICAR PEN-39 NO BANCO\",\"REVERTER PEN-39 NO BANCO\",\"APLICAR PEN-41 NO BANCO\",\"REVERTER PEN-41 NO BANCO\"]"]
+registo C:\Users\pcmac\Documents\Qoder\2026-10-13\28077d9a\bfr-conecta\evidence\p73-municipal-aplica-ddl-recusa-PEN-38-1795207270472.json
+exit_c=2
+
+### recusa d-precondicao-peca-nao-aplicada
+RECUSADO · reversao · ["preflight em modo reversao nao deu verde: P73_PEN38_PREFLIGHT_VERMELHO_2","registo C:\\Users\\pcmac\\Documents\\Qoder\\2026-10-13\\28077d9a\\bfr-conecta\\evidence\\p73-pen38-preflight-reversao-20-11e-rev20261120T204118Zr-VERMELHO.json","o modo reversao so pode correr sobre uma peca aplicada: e o preflight em modo reversao que afirma isso contra o estado vivo, e ele nao afirmou"]
+registo C:\Users\pcmac\Documents\Qoder\2026-10-13\28077d9a\bfr-conecta\evidence\p73-municipal-reversao-recusa-PEN-38-1795207286035.json
+exit_d=2
+

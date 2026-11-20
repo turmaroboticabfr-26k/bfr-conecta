@@ -226,7 +226,7 @@ Peças novas, todas certificadas por corrida própria em 20/11:
 | Peça | Que faz | Estado medido |
 |---|---|---|
 | `scripts/p73-pen41-preflight.mjs` | mede as quatro policies de `students`/`classes` que hoje decidem só pelo cargo, e o delta exacto da candidata | `P73_PEN41_PREFLIGHT_VERDE_CANDIDATA 13/0` |
-| `scripts/p73-municipal-aplica-ddl.mjs` | o único caminho de aplicação das três peças (PEN-38/39/41), gated por frase literal, com preflight fresco e conferência de saída | `P73_MUNICIPAL_APLICA_SELFTESTE_OK 7/0`; quatro recusas gravadas (`evidence/p73-municipal-aplica-ddl-recusa-*.json`) |
+| `scripts/p73-municipal-aplica-ddl.mjs` | o único caminho de aplicação **e de reversão** das três peças (PEN-38/39/41): `--ok "APLICAR …"` escreve a candidata, `--reverter --ok "REVERTER …"` escreve a reversão; frase literal por peça **e por modo**, preflight fresco antes de tocar no banco e conferência de saída depois | `P73_MUNICIPAL_APLICA_SELFTESTE_OK 13/0` (`evidence/p73-municipal-stdout-selfteste-aplicador-com-reversao-20-11.txt`); recusas gravadas nas duas famílias, stdout `evidence/p73-municipal-reversao-stdout-recusas-20-11.txt`; o caso forte é `evidence/p73-municipal-reversao-recusa-precondicao-peca-nao-aplicada.json` — frase certa, pré-condição vermelha, `escrito_no_banco: false` |
 | `scripts/p73-municipal-etiqueta.mjs` | a porta de etiquetagem escola↔município e a folha de decisão, por RPC autenticado | `P73_MUNICIPAL_ETIQUETA_SELFTESTE_OK 6/0`; `…_LISTA 6 escolas, 0 etiquetadas, 1 municipios, 1 avisos de fixture`; três recusas em `evidence/p73-municipal-etiqueta-stdout-recusas-20-11.txt` |
 | `scripts/pacote-municipal-confere-pecas.mjs` | lê **este documento e o runbook**, mede cada caminho que a prosa cita, confere no catálogo que nada foi aplicado e exige que cada caminho citado esteja **no índice** e não apenas nesta máquina | `PACOTE_MUNICIPAL_OK 17/0` (`evidence/pacote-municipal-pecas-20-11-pos-pacote-completo-no-indice.json`); dentes provados por cinco falsificações na tabela de §2.0 do runbook, cada uma a nomear o portão que disparou, mais o vermelho honesto de §2.0.1 (seis peças da PEN-41 citadas e fora do git) |
 
@@ -242,12 +242,17 @@ Três linhas deste plano mudam de natureza por causa disto:
 - **A etiquetagem** entra como item novo e distinto: é escrita de dados pela porta nomeada do PEN-38 bloco C,
   exige sessão autenticada de admin de plataforma (`auth.uid()`), e hoje não há sessão neste posto de trabalho —
   `ah2-sessions.json` ausente, `c2-sessions.json` com 3 bytes. O ciclo de mint é OK próprio.
-- **FALTA-1 e FALTA-2**, nomeadas no runbook: não existe peça de conferência pós-deploy da v137 (o modelo é
-  `scripts/v136-pos-deploy.mjs`), e o aplicador não tem modo de reversão. Antes de qualquer «reverter» ou
-  «publicar», ou se escreve a peça, ou se declara o passo como manual.
+- **FALTA-1**, nomeada no runbook: não existe peça de conferência pós-deploy da v137 (o modelo é
+  `scripts/v136-pos-deploy.mjs`). Antes de qualquer «publicar», ou se escreve a peça, ou se declara o passo como
+  manual. **FALTA-2 fechou em 20/11**: o aplicador passou a ter modo de reversão (`--reverter`), com frase
+  própria por peça e por modo e a pré-condição no preflight em modo reversão. O que isto não cobre é o ciclo
+  completo aplicar → reverter conferido numa corrida: nenhuma peça foi aplicada, portanto a reversão está provada
+  como caminho que recusa quando não deve correr, não como caminho que já desfez alguma coisa.
 
 Réguas acrescentadas a este plano, na mesma família das dez de §8: uma frase literal por passo e a frase de um
-passo não autoriza o passo seguinte; o verde de um preflight vale no instante em que é tirado, por isso o
+passo não autoriza o passo seguinte — e desde o modo de reversão, uma frase por **modo**: o OK que autoriza
+escrever a candidata não autoriza desfazê-la, nem ao contrário, porque são duas escritas com consequências
+opostas; o verde de um preflight vale no instante em que é tirado, por isso o
 aplicador re-corre o preflight antes de escrever e compara o md5 do SQL com o que esse preflight certificou;
 uma classe com conjunto vazio imprime-se com o zero (`secretary` sem vínculo: 848/27 → 0/0, não omitido); e um
 portão que cita o censo do seu próprio corpus envelhece no dia em que a prosa acrescenta um caminho — por isso
