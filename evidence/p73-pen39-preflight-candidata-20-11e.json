@@ -1,0 +1,414 @@
+{
+  "programa": "scripts/p73-pen39-preflight.mjs",
+  "modo": "candidata",
+  "em": "2026-11-20T05:41:57.894Z",
+  "duracao_ms": 7199,
+  "pressuposto": "as duas funções novas ainda não existem; a vista e as suas colunas estão como o censo de hoje as mediu",
+  "funcoes": [],
+  "colunas": [
+    {
+      "tabela": "bfr_municipal_school_stats",
+      "coluna": "city",
+      "tipo": "text"
+    },
+    {
+      "tabela": "bfr_municipal_school_stats",
+      "coluna": "classes_total",
+      "tipo": "integer"
+    },
+    {
+      "tabela": "bfr_municipal_school_stats",
+      "coluna": "municipality_id",
+      "tipo": "uuid"
+    },
+    {
+      "tabela": "bfr_municipal_school_stats",
+      "coluna": "operating_status",
+      "tipo": "text"
+    },
+    {
+      "tabela": "bfr_municipal_school_stats",
+      "coluna": "school_id",
+      "tipo": "uuid"
+    },
+    {
+      "tabela": "bfr_municipal_school_stats",
+      "coluna": "school_name",
+      "tipo": "text"
+    },
+    {
+      "tabela": "bfr_municipal_school_stats",
+      "coluna": "staff_links_total",
+      "tipo": "integer"
+    },
+    {
+      "tabela": "bfr_municipal_school_stats",
+      "coluna": "students_total",
+      "tipo": "integer"
+    },
+    {
+      "tabela": "bfr_municipal_school_stats",
+      "coluna": "zone",
+      "tipo": "text"
+    },
+    {
+      "tabela": "bfr_municipalities",
+      "coluna": "id",
+      "tipo": "uuid"
+    },
+    {
+      "tabela": "bfr_municipalities",
+      "coluna": "name",
+      "tipo": "text"
+    },
+    {
+      "tabela": "bfr_municipalities",
+      "coluna": "uf",
+      "tipo": "character"
+    }
+  ],
+  "definicao_da_vista": {
+    "viva": {
+      "def_md5": "af7a898df0af2401d80f289a0736dcd2",
+      "def_chars": 652
+    },
+    "censo_md5": "af7a898df0af2401d80f289a0736dcd2",
+    "censo_chars": 652
+  },
+  "predicado_por_esta_via": {
+    "admin_por_esta_via": false
+  },
+  "numeros": {
+    "escolas": 6,
+    "escolas_sem_municipio": 6,
+    "municipios": 1,
+    "concessoes_ativas": 4,
+    "linhas_da_vista_por_esta_via": 0
+  },
+  "o_que_esta_via_nao_prova": "a candidata promete que o admin real recebe uma linha de bucket NULL com escolas=6. Isso depende do JWT do chamador (o WHERE da vista é o predicado de escopo) e só se mede por HTTP depois de aplicar; por isto este verde não afirma o número da saída, afirma que os pressupostos do CREATE FUNCTION existem.",
+  "estrutura": {
+    "candidata": {
+      "transaccao": 2,
+      "create_function": 2,
+      "drop_function": 0,
+      "grant_execute": 2,
+      "revoke": 2,
+      "comment_function": 2,
+      "create_view": 0,
+      "drop_policy": 0,
+      "insert_em_trilha": 0
+    },
+    "certificada_candidata": {
+      "transaccao": 2,
+      "create_function": 2,
+      "drop_function": 0,
+      "grant_execute": 2,
+      "revoke": 2,
+      "comment_function": 2,
+      "create_view": 0,
+      "drop_policy": 0,
+      "insert_em_trilha": 0
+    },
+    "reversao": {
+      "transaccao": 2,
+      "create_function": 0,
+      "drop_function": 2,
+      "grant_execute": 0,
+      "revoke": 0,
+      "comment_function": 0,
+      "create_view": 0,
+      "drop_policy": 0,
+      "insert_em_trilha": 0
+    },
+    "certificada_reversao": {
+      "transaccao": 2,
+      "create_function": 0,
+      "drop_function": 2,
+      "grant_execute": 0,
+      "revoke": 0,
+      "comment_function": 0,
+      "create_view": 0,
+      "drop_policy": 0,
+      "insert_em_trilha": 0
+    },
+    "fixture_que_dispara": {
+      "transaccao": 2,
+      "create_function": 1,
+      "drop_function": 0,
+      "grant_execute": 1,
+      "revoke": 1,
+      "comment_function": 1,
+      "create_view": 0,
+      "drop_policy": 1,
+      "insert_em_trilha": 0
+    }
+  },
+  "ficheiros": {
+    "candidata": {
+      "caminho": "scripts/p73-pen39-ddl-candidata.sql",
+      "bytes": 6784,
+      "md5": "b0c3f3a8600d70078698e7f39a33c741"
+    },
+    "reversao": {
+      "caminho": "scripts/p73-pen39-ddl-reversao.sql",
+      "bytes": 540,
+      "md5": "cd73aa70129a7e89a2b7a37df8d9261f"
+    }
+  },
+  "sonda_de_uso": {
+    "artefacto": "evidence/p73-pen39-sonda-uso-agregados-20-11e.json",
+    "veredito": "P73_PEN39_USO_OK 7/0",
+    "agregados_varridos": [
+      "bfr_municipal_network_totals",
+      "bfr_municipal_school_stats"
+    ],
+    "por_nome": [
+      {
+        "nome": "bfr_municipal_network_totals",
+        "ocorrencias_no_corpo": 0,
+        "chamadas_de_from_ou_rpc": false
+      },
+      {
+        "nome": "bfr_municipal_school_stats",
+        "ocorrencias_no_corpo": 0,
+        "chamadas_de_from_ou_rpc": false
+      }
+    ],
+    "frases": {
+      "frase_que_esta_corrida_autoriza": "no ar de hoje nenhum agregado municipal é chamado pelo módulo ([\"bfr_municipal_network_totals=0\",\"bfr_municipal_school_stats=0\"]): os números municipais só existem para quem chamar RPC por fora, e fechar a PEN-39 exige DDL E código de consumo",
+      "o_que_nao_prova": "não prova que nada no shell fora do invólucro chame estes nomes (a varredura é do corpo declarado); prova do lado de dentro do módulo."
+    }
+  },
+  "precedentes": [
+    "evidence/p73-politicas-municipais-20-11e.json",
+    "evidence/p73-pen38-alcance-por-concessao-20-11e.json",
+    "evidence/p73-pen39-sonda-uso-agregados-20-11e.json"
+  ],
+  "portoes": [
+    {
+      "nome": "estado_vivo_bate_com_o_que_este_modo_pressupoe",
+      "verde": true,
+      "detalhe": {
+        "modo": "candidata",
+        "esperado": {
+          "nenhuma_das_duas_funcoes_existe": true
+        },
+        "lido": []
+      }
+    },
+    {
+      "nome": "a_vista_expoe_as_colunas_que_as_funcoes_novas_seleccionam",
+      "verde": true,
+      "detalhe": {
+        "vistas": [
+          "city:text",
+          "classes_total:integer",
+          "municipality_id:uuid",
+          "operating_status:text",
+          "school_id:uuid",
+          "school_name:text",
+          "staff_links_total:integer",
+          "students_total:integer",
+          "zone:text"
+        ],
+        "faltam": []
+      }
+    },
+    {
+      "nome": "a_tabela_de_municipios_expoe_o_que_a_saida_pede",
+      "verde": true,
+      "detalhe": {
+        "lidas": [
+          "id:uuid",
+          "name:text",
+          "uf:character"
+        ],
+        "faltam": [],
+        "nota": "o bloco A escreve nome e uf por subselect; `uf` em falta partiria o CREATE FUNCTION a meio da transaccao"
+      }
+    },
+    {
+      "nome": "a_definicao_viva_da_vista_e_a_que_o_censo_de_hoje_guardou",
+      "verde": true,
+      "detalhe": {
+        "vista_viva_md5": "af7a898df0af2401d80f289a0736dcd2",
+        "vista_censo_md5": "af7a898df0af2401d80f289a0736dcd2",
+        "chars_viva": 652,
+        "chars_censo": 652,
+        "controlo_funcao_de_totais_md5": "4ffde76bdb1243f6b9b3ebe6f2f50716",
+        "nota": "o terceiro termo é o controlo: se o censo gravou o mesmo texto nos dois campos, esta régua deixou de distinguir vista de função"
+      }
+    },
+    {
+      "nome": "predicado_e_vista_comportam_se_coherentemente_por_esta_via",
+      "verde": true,
+      "detalhe": {
+        "admin_por_esta_via": false,
+        "linhas_da_vista_por_esta_via": 0,
+        "escolas": 6,
+        "erro": null,
+        "nota": "via PAT sem JWT de pedido: se o predicado diz que quem lê não é admin, a vista tem de dar 0; se diz que é, tem de dar a rede toda. Qualquer outra combinação é o predicado a ignorar-se a si mesmo"
+      }
+    },
+    {
+      "nome": "o_bucket_que_a_candidata_promete_distinguir_esta_medido_na_tabela",
+      "verde": true,
+      "detalhe": {
+        "agora": {
+          "escolas": 6,
+          "escolas_sem_municipio": 6
+        },
+        "do_artefacto_pen38": {
+          "schools": 6,
+          "escolas_com_municipio": 0
+        }
+      }
+    },
+    {
+      "nome": "os_numeros_batem_com_o_censo_de_policies_de_hoje",
+      "verde": true,
+      "detalhe": {
+        "agora": {
+          "escolas": 6,
+          "escolas_sem_municipio": 6,
+          "municipios": 1,
+          "concessoes_ativas": 4,
+          "linhas_da_vista_por_esta_via": 0
+        },
+        "censo": {
+          "network_totals_def": "CREATE OR REPLACE FUNCTION public.bfr_municipal_network_totals()\n RETURNS TABLE(schools integer, students integer, classes integer, municipalities integer)\n LANGUAGE sql\n STABLE SECURITY DEFINER\n SET search_path TO 'public'\nAS $function$\n  SELECT (SELECT count(*)::int FROM public.bfr_municipal_school_stats),\n         (SELECT coalesce(sum(students_total), 0)::int FROM public.bfr_municipal_school_stats),\n         (SELECT coalesce(sum(classes_total), 0)::int FROM public.bfr_municipal_school_stats),\n         (SELECT count(DISTINCT municipality_id)::int FROM public.bfr_municipal_school_stats\n           WHERE municipality_id IS NOT NULL);\n$function$\n",
+          "network_totals_def_md5": "4ffde76bdb1243f6b9b3ebe6f2f50716",
+          "school_stats_viewdef": " SELECT id AS school_id,\n    name AS school_name,\n    city,\n    zone,\n    operating_status,\n    municipality_id,\n    ( SELECT count(*)::integer AS count\n           FROM students st\n          WHERE st.school_id = s.id) AS students_total,\n    ( SELECT count(*)::integer AS count\n           FROM classes cl\n          WHERE cl.school_id = s.id) AS classes_total,\n    ( SELECT count(*)::integer AS count\n           FROM bfr_school_key_map m\n             JOIN staff_schools ss ON ss.school_id = m.sports_school_id\n          WHERE m.school_id = s.id) AS staff_links_total\n   FROM schools s\n  WHERE bfr_school_in_municipal_scope(id) OR bfr_is_platform_admin();",
+          "concessoes_ativas": 4,
+          "municipios_cadastrados": 1,
+          "escolas_com_municipality_id": 0
+        }
+      }
+    },
+    {
+      "nome": "nenhum_nome_da_candidata_e_consumido_pelo_modulo_servido_e_a_sonda_e_verde",
+      "verde": true,
+      "detalhe": {
+        "veredito_sonda": "P73_PEN39_USO_OK 7/0",
+        "nomes_da_candidata_pen39": [
+          {
+            "nome": "bfr_municipal_municipio_totais",
+            "no_ar": 0,
+            "existe_no_catalogo": false
+          },
+          {
+            "nome": "bfr_municipal_distribuicao_por_zona",
+            "no_ar": 0,
+            "existe_no_catalogo": false
+          }
+        ],
+        "chamada_no_corpo": [
+          "announcements",
+          "bfr_is_municipal_authority",
+          "bfr_lesson_attendance",
+          "classes",
+          "grades",
+          "school_documents",
+          "schools",
+          "staff_schools",
+          "students",
+          "supervision_alerts",
+          "supervision_requests",
+          "supervision_responses"
+        ]
+      }
+    },
+    {
+      "nome": "a_regua_de_estrutura_tem_fixture_que_dispara",
+      "verde": true,
+      "detalhe": {
+        "fixture": {
+          "transaccao": 2,
+          "create_function": 1,
+          "drop_function": 0,
+          "grant_execute": 1,
+          "revoke": 1,
+          "comment_function": 1,
+          "create_view": 0,
+          "drop_policy": 1,
+          "insert_em_trilha": 0
+        },
+        "esperava_no_fixture": {
+          "transaccao": 2,
+          "create_function": 1,
+          "drop_policy": 1,
+          "grant_execute": 1,
+          "revoke": 1,
+          "comment_function": 1
+        }
+      }
+    },
+    {
+      "nome": "a_estrutura_da_candidata_e_a_estrutura_da_reversao_sao_as_certificadas",
+      "verde": true,
+      "detalhe": {
+        "medida_candidata": {
+          "transaccao": 2,
+          "create_function": 2,
+          "drop_function": 0,
+          "grant_execute": 2,
+          "revoke": 2,
+          "comment_function": 2,
+          "create_view": 0,
+          "drop_policy": 0,
+          "insert_em_trilha": 0
+        },
+        "certificada_candidata": {
+          "transaccao": 2,
+          "create_function": 2,
+          "drop_function": 0,
+          "grant_execute": 2,
+          "revoke": 2,
+          "comment_function": 2,
+          "create_view": 0,
+          "drop_policy": 0,
+          "insert_em_trilha": 0
+        },
+        "medida_reversao": {
+          "transaccao": 2,
+          "create_function": 0,
+          "drop_function": 2,
+          "grant_execute": 0,
+          "revoke": 0,
+          "comment_function": 0,
+          "create_view": 0,
+          "drop_policy": 0,
+          "insert_em_trilha": 0
+        },
+        "certificada_reversao": {
+          "transaccao": 2,
+          "create_function": 0,
+          "drop_function": 2,
+          "grant_execute": 0,
+          "revoke": 0,
+          "comment_function": 0,
+          "create_view": 0,
+          "drop_policy": 0,
+          "insert_em_trilha": 0
+        }
+      }
+    },
+    {
+      "nome": "a_candidata_e_a_reversao_estao_em_disco_com_pegada",
+      "verde": true,
+      "detalhe": {
+        "candidata": {
+          "bytes": 6784,
+          "md5": "b0c3f3a8600d70078698e7f39a33c741"
+        },
+        "reversao": {
+          "bytes": 540,
+          "md5": "cd73aa70129a7e89a2b7a37df8d9261f"
+        }
+      }
+    }
+  ],
+  "falhas": [],
+  "o_que_este_verde_nao_autoriza": "nada. Aplicar o SQL pede OK literal novo, e publicar o código que consome os agregados pede outro.",
+  "veredito": "P73_PEN39_PREFLIGHT_VERDE_CANDIDATA 11/0"
+}

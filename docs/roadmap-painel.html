@@ -109,9 +109,9 @@
   </div>
 
   <div class="card">
-    <h2>Pendências (40 itens · PEN-01…PEN-40)</h2>
+    <h2>Pendências (41 itens · PEN-01…PEN-41; re-contadas 20/11 pelo <code>scripts/ah1-cuenta-pen.mjs</code>)</h2>
     <div class="kpis">
-      <div class="kpi"><div class="n">15</div><div class="l">prioridade ALTA</div></div>
+      <div class="kpi"><div class="n">16</div><div class="l">prioridade ALTA</div></div>
       <div class="kpi"><div class="n">14</div><div class="l">prioridade MÉDIA</div></div>
       <div class="kpi"><div class="n">11</div><div class="l">prioridade BAIXA</div></div>
     </div>
@@ -179,6 +179,16 @@
   <div class="tl"><b>20/11 (grid do §5 e PEN-35)</b> — grelha 15 papéis × 6 larguras = <b>90</b> células: <b>80</b> coerentes + <b>10</b> travadas com causa, <b>0</b> por medir, com proveniência declarada (91 rótulos do condutor + 18 de processos de repetição sobre 109 ficheiros, melhor tentativa ganha). Coluna <code>estouro_h</code> com <b>valor no ar</b>: <b>80</b> células conferidas no ar <code>9e236a23…</code>, <b>0</b> com lista de estouro, <b>0</b> sem a chave, e as 10 por cobrir são exatamente as 10 travadas — veredicto <code>P35_COBERTURA_PARCIAL_DO_ESTOURO</code>; bandas desktop <b>1280/1440/1920 continuam por re-medir</b>.</div>
   <div class="tl"><b>20/11 (PEN-40 criada)</b> — a barra mobile do <code>monitor</code> não monta porque o <code>clearTimeout</code> do topo do <code>schedule()</code> mata o <code>setTimeout(dispara, 60)</code> antes de vencer: <b>2 361 armados / 0 vencedores</b> a 320 px e <b>2 178 / 0</b> a 430 px (≈190 armamentos por segundo) contra <b>117/7</b> do controlo <code>gatekeeper</code>, que monta 5 botões. A hipótese da largura e a do silêncio do DOM foram falsificadas antes desta medição. Remédio é produto + publicação <b>v137</b> e <b>pede OK literal novo</b>.</div>
   <div class="tl"><b>Contas deste fecho:</b> 2 publicações (v135 e v136) ao abrigo de <b>um</b> OK literal, 1 rotação de senha de 14 contas (só autenticação, 0 escrita de produto), <b>0 DDL</b>, <b>0 Edge Function</b> e <b>0 <code>git push</code></b> — o <code>push</code> continua expressamente recusado («Não fazer push»).</div>
+</div>
+
+<div class="card" style="margin-top:16px;">
+  <h2>§SM.26 — fecho 20/11 (PEN-38 e PEN-39 medidas com candidata de DDL, PEN-40 provada em bancada A/B, PEN-41 criada)</h2>
+  <div class="sub2">Nada foi aplicado nem publicado: DDL, publicação, mint e <code>git push</code> continuam a pedir OK literal novo, cada um. Corpo com todas as pegadas em <code>docs/auditoria-bfr-conecta.md</code> §SM.26.</div>
+  <div class="tl"><b>20/11 (PEN-38, só leitura)</b> — o motivo exato está no catálogo: <code>schools_municipal_read</code> tem por qual <b>apenas</b> <code>bfr_is_municipal_authority()</code>, sem conjunção de escopo. Sonda com sessão em 8 papéis (<code>HEAD</code> + <code>Prefer: count=exact</code>, 0 corpos no fio): <b>5</b> papéis com autoridade municipal lêem <b>6/6</b> escolas com <code>escolas_com_municipio=0</code>, a concessão não filtra <b>nada</b>, e o <code>developer</code> lê <b>0</b> escolas enquanto o RPC definer lhe responde <code>schools=6</code> → <code>P73_PEN38_ALCANCE_OK 13/0</code>. Candidata + reversão + preflight <b>VERDE 10/0</b>, <b>não aplicados</b>.</div>
+  <div class="tl"><b>20/11 (PEN-39, só leitura)</b> — nenhum agregado municipal é chamado pelo módulo servido: <code>bfr_municipal_network_totals</code> e <code>bfr_municipal_school_stats</code> com <b>texto=0, chamada=0</b> nos 56 408 caracteres do invólucro <code>data-bfr-municipal-module</code> (<code>P73_PEN39_USO_OK 7/0</code>). Logo os números que um concedido vê hoje vêm das leituras diretas das mesas — é a PEN-41, não o agregado. Candidata <code>bfr_municipal_municipio_totais()</code> + <code>bfr_municipal_distribuicao_por_zona()</code> com preflight <b>VERDE 11/0</b>, <b>não aplicada</b>; fechar passa a ter duas metades (DDL <b>e</b> publicar o consumo).</div>
+  <div class="tl"><b>20/11 (PEN-40, bancada A/B)</b> — a candidata v137 monta a barra do <code>monitor</code> nas <b>6/6</b> larguras (5/5 botões com caixa) onde o módulo byte-idêntico ao ar <b>nunca</b> monta, inclusive a <b>375 px</b> com <code>venceu_piso=0</code>; controlo <code>gatekeeper@320</code> com 121 armados / 8 vencedores. Leitor <code>P73_BANCADA_PEN40_AB_VERDE</code>, <b>16 portões / 0 falhas</b>. <b>Prova ao nível da candidata</b>, não do ar.</div>
+  <div class="tl"><b>20/11 (PEN-41 criada)</b> — quatro policies de <code>students</code>/<code>classes</code> (<code>director_dashboard_read_students</code>, <code>students_select_secretary</code> e os dois homónimos de <code>classes</code>) decidem-se <b>só pelo cargo</b>: <code>director</code> e <code>secretary</code> lêem <b>848 alunos e 27 turmas</b> sem concessão, enquanto <code>equipe_administrativa</code> — autoridade municipal com concessão ativa — lê <b>0</b> alunos. O catálogo já sabe a forma certa (<code>students_municipal_read</code> usa <code>bfr_school_in_municipal_scope(school_id)</code>); apertar sem etiquetar escolas troca «lê tudo» por «não lê nada», por isso <b>não foi tocado</b> e pede OK literal.</div>
+  <div class="tl"><b>Contas deste fecho:</b> <b>0</b> publicações, <b>0</b> DDL aplicados, <b>0</b> mint, <b>0</b> escrita no banco, <b>0</b> <code>git push</code>; <b>1</b> linha nova no registro (PEN-41), <b>3</b> adendos (PEN-38, PEN-39, PEN-40) e <b>0</b> linhas fechadas.</div>
 </div>
 
 <div class="card" style="margin-top:16px;">

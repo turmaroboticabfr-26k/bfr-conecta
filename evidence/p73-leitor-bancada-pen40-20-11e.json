@@ -1,0 +1,239 @@
+{
+  "programa": "scripts/p73-leitor-bancada-pen40.mjs",
+  "em": "2026-11-20T05:18:24.427Z",
+  "pernas": {
+    "base": {
+      "bytes": 10574,
+      "md5": "a11782126efbb37968e42e1aaae86df1"
+    },
+    "candidata": {
+      "bytes": 11921,
+      "md5": "11d0e0c28d396b76b478946933aac84b"
+    }
+  },
+  "identidade_esperada": {
+    "html_md5": "9e236a23eed978cf7c2a2743d449b307",
+    "modulo_base_md5": "a83f77baba7453851b287080686c7afb",
+    "modulo_cand_md5": "b83b4c2666fc909d50a358b86b99de05"
+  },
+  "portoes": {
+    "esperado_e_portoes_disseram_o_mesmo_md5": {
+      "verde": true,
+      "detalhe": {
+        "esperado_module": "b83b4c2666fc909d50a358b86b99de05",
+        "portoes_saida": "b83b4c2666fc909d50a358b86b99de05",
+        "esperado_html": "9e236a23eed978cf7c2a2743d449b307"
+      }
+    },
+    "pernas_sem_interrupcao": {
+      "verde": true,
+      "detalhe": {
+        "base": null,
+        "candidata": null
+      }
+    },
+    "html_da_bancada_e_o_embed_v137": {
+      "verde": true,
+      "detalhe": {
+        "md5_bancada": "9e236a23eed978cf7c2a2743d449b307",
+        "md5_esperado_v137": "9e236a23eed978cf7c2a2743d449b307"
+      }
+    },
+    "modulo_base_e_o_do_repo": {
+      "verde": true,
+      "detalhe": {
+        "md5": "a83f77baba7453851b287080686c7afb",
+        "esperado": "a83f77baba7453851b287080686c7afb"
+      }
+    },
+    "modulo_candidata_e_a_saida_do_remendo": {
+      "verde": true,
+      "detalhe": {
+        "md5": "b83b4c2666fc909d50a358b86b99de05",
+        "esperado": "b83b4c2666fc909d50a358b86b99de05"
+      }
+    },
+    "cada_perna_serviu_o_modulo_que_declarou": {
+      "verde": true,
+      "detalhe": {
+        "base_leg": "a83f77baba7453851b287080686c7afb",
+        "candidata_leg": "b83b4c2666fc909d50a358b86b99de05"
+      }
+    },
+    "nenhuma_leitura_com_sinistro": {
+      "verde": true,
+      "detalhe": {
+        "por_largura": {
+          "320": [
+            0,
+            0
+          ],
+          "360": [
+            0,
+            0
+          ],
+          "375": [
+            0,
+            0
+          ],
+          "390": [
+            0,
+            0
+          ],
+          "414": [
+            0,
+            0
+          ],
+          "430": [
+            0,
+            0
+          ]
+        }
+      }
+    },
+    "base_reproduz_o_defeito_6_de_6": {
+      "verde": true,
+      "detalhe": {
+        "320": "NAO_MONTA",
+        "360": "NAO_MONTA",
+        "375": "NAO_MONTA",
+        "390": "NAO_MONTA",
+        "414": "NAO_MONTA",
+        "430": "NAO_MONTA"
+      }
+    },
+    "base_tambem_nao_monta_depois_de_5s_de_sossego": {
+      "verde": true,
+      "detalhe": {
+        "320": {
+          "sossego": false,
+          "eventos": false
+        },
+        "360": {
+          "sossego": false,
+          "eventos": false
+        },
+        "375": {
+          "sossego": false,
+          "eventos": false
+        },
+        "390": {
+          "sossego": false,
+          "eventos": false
+        },
+        "414": {
+          "sossego": false,
+          "eventos": false
+        },
+        "430": {
+          "sossego": false,
+          "eventos": false
+        }
+      }
+    },
+    "base_com_churn_do_monitor": {
+      "verde": true,
+      "detalhe": {
+        "320": 657,
+        "360": 1077,
+        "375": 906,
+        "390": 663,
+        "414": 1179,
+        "430": 1194
+      }
+    },
+    "candidata_com_churn_do_monitor": {
+      "verde": true,
+      "detalhe": {
+        "320": 495,
+        "360": 1013,
+        "375": 986,
+        "390": 1025,
+        "414": 979,
+        "430": 1094
+      }
+    },
+    "candidata_monta_6_de_6": {
+      "verde": true,
+      "detalhe": {
+        "320": "MONTA",
+        "360": "MONTA",
+        "375": "MONTA",
+        "390": "MONTA",
+        "414": "MONTA",
+        "430": "MONTA"
+      }
+    },
+    "candidata_com_botoes_com_caixa_6_de_6": {
+      "verde": true,
+      "detalhe": {
+        "320": 5,
+        "360": 5,
+        "375": 5,
+        "390": 5,
+        "414": 5,
+        "430": 5
+      }
+    },
+    "monta_mesmo_com_estrelacao_total": {
+      "verde": true,
+      "detalhe": {
+        "caso": {
+          "320": {
+            "venceu": 1,
+            "monta": true
+          },
+          "360": {
+            "venceu": 1,
+            "monta": true
+          },
+          "375": {
+            "venceu": 0,
+            "monta": true
+          },
+          "390": {
+            "venceu": 1,
+            "monta": true
+          },
+          "414": {
+            "venceu": 1,
+            "monta": true
+          },
+          "430": {
+            "venceu": 1,
+            "monta": true
+          }
+        }
+      }
+    },
+    "controlo_gatekeeper_monta_com_candidata": {
+      "verde": true,
+      "detalhe": {
+        "nav_existe": true,
+        "botoes": 5,
+        "venceu": 8
+      }
+    },
+    "sessoes_gravadas_fieis_e_sem_token": {
+      "verde": true,
+      "detalhe": {
+        "papeis": [
+          "monitor",
+          "gatekeeper"
+        ],
+        "campos": [
+          "papel",
+          "gravado_em",
+          "gravado_fiel",
+          "renovou",
+          "access_comprimento",
+          "refresh_comprimento",
+          "expira_em_s"
+        ]
+      }
+    }
+  },
+  "falhas": [],
+  "veredito": "P73_BANCADA_PEN40_AB_VERDE",
+  "leitura": "a candidata v137 monta a barra mobile do monitor nas 6 larguras (5/5 botões com caixa em todas) onde a base — byte-idêntica ao módulo servido no ar — nunca monta; e monta mesmo na largura com estrelação total (venceu=0). Prova ao nível da candidata; a re-corrida do ah2-mobile2 no AR continua a pedir a publicação, que pede OK literal."
+}

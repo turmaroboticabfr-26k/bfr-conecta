@@ -1,0 +1,14 @@
+SERVIDO 9e236a23eed978cf7c2a2743d449b307 3547458 B · INVOLUCRO 56408 chars
+AGREGADOS ["bfr_municipal_network_totals: texto=0 chamada=false","bfr_municipal_school_stats: texto=0 chamada=false"]
+CHAMADAS_NO_CORPO ["announcements","bfr_is_municipal_authority","bfr_lesson_attendance","classes","grades","school_documents","schools","staff_schools","students","supervision_alerts","supervision_requests","supervision_responses"]
+PEN39 [{"nome":"bfr_municipal_municipio_totais","no_ar":0,"existe_no_catalogo":false},{"nome":"bfr_municipal_distribuicao_por_zona","no_ar":0,"existe_no_catalogo":false}]
+CONCLUSAO no ar de hoje nenhum agregado municipal é chamado pelo módulo (["bfr_municipal_network_totals=0","bfr_municipal_school_stats=0"]): os números municipais só existem para quem chamar RPC por fora, e fechar a PEN-39 exige DDL E código de consumo
+  portao o_involucre_do_modulo_esta_presente_e_e_unico: VERDE
+  portao a_regua_de_chamada_ve_as_duas_agulhas_do_fixture: VERDE
+  portao a_regua_nao_inventa_em_texto_sem_agulha: VERDE
+  portao os_nomes_varridos_sao_os_do_catalogo_e_do_censo: VERDE
+  portao cada_nome_saida_com_o_seu_numero_inclusive_zero: VERDE
+  portao as_duas_funcoes_da_candidata_pen39_ainda_nao_estao_no_ar_nem_no_catalogo: VERDE
+  portao a_pegada_servida_e_a_shell_que_a_candidata_v137_estende: VERDE
+P73_PEN39_USO_OK 7/0 · 1912 ms · registo C:\Users\pcmac\Documents\Qoder\2026-10-13\28077d9a\bfr-conecta\evidence\p73-pen39-sonda-uso-agregados-20-11e.json
+node_exit=0

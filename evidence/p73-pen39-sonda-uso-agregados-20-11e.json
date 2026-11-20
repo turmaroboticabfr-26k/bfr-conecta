@@ -1,0 +1,245 @@
+{
+  "programa": "scripts/p73-pen39-sonda-uso-agregados.mjs",
+  "em": "2026-11-20T05:36:05.205Z",
+  "duracao_ms": 1912,
+  "pergunta": "os agregados municipais existentes são chamados pelo módulo servido na v136? se não são, a PEN-39 tem duas metades e uma delas é código por publicar.",
+  "metodo": "fetch + md5 do ar; invólucro `data-bfr-municipal-module` (único, senão aborta); nomes lidos do catálogo (pg_proc/pg_class), não da memória; contagem por nome no corpo e por `from()`/`rpc()`; fixture com duas agulhas e controlo negativo",
+  "servido": {
+    "url": "https://bfr-conecta.turmaroboticabfr.workers.dev",
+    "status": 200,
+    "bytes": 3547458,
+    "md5": "9e236a23eed978cf7c2a2743d449b307"
+  },
+  "involucro": {
+    "tag": "<script data-bfr-municipal-module=\"1\">",
+    "desde": 3472836,
+    "corpo_desde": 3472874,
+    "fim": 3529282,
+    "chars": 56408
+  },
+  "catalogo_municipal": [
+    {
+      "nome": "bfr_has_municipal_grant",
+      "tipo": "function"
+    },
+    {
+      "nome": "bfr_is_municipal_authority",
+      "tipo": "function"
+    },
+    {
+      "nome": "bfr_municipal_municipalities",
+      "tipo": "function"
+    },
+    {
+      "nome": "bfr_municipal_network_totals",
+      "tipo": "function"
+    },
+    {
+      "nome": "bfr_municipal_school_stats",
+      "tipo": "view"
+    },
+    {
+      "nome": "bfr_municipalities_visible",
+      "tipo": "function"
+    },
+    {
+      "nome": "bfr_school_in_municipal_scope",
+      "tipo": "function"
+    }
+  ],
+  "agregados_varridos": [
+    "bfr_municipal_network_totals",
+    "bfr_municipal_school_stats"
+  ],
+  "por_nome": [
+    {
+      "nome": "bfr_municipal_network_totals",
+      "ocorrencias_no_corpo": 0,
+      "chamadas_de_from_ou_rpc": false
+    },
+    {
+      "nome": "bfr_municipal_school_stats",
+      "ocorrencias_no_corpo": 0,
+      "chamadas_de_from_ou_rpc": false
+    }
+  ],
+  "nomes_da_candidata_pen39": [
+    {
+      "nome": "bfr_municipal_municipio_totais",
+      "no_ar": 0,
+      "existe_no_catalogo": false
+    },
+    {
+      "nome": "bfr_municipal_distribuicao_por_zona",
+      "no_ar": 0,
+      "existe_no_catalogo": false
+    }
+  ],
+  "chamadas_de_from_ou_rpc_no_corpo": [
+    "announcements",
+    "bfr_is_municipal_authority",
+    "bfr_lesson_attendance",
+    "classes",
+    "grades",
+    "school_documents",
+    "schools",
+    "staff_schools",
+    "students",
+    "supervision_alerts",
+    "supervision_requests",
+    "supervision_responses"
+  ],
+  "mesas_do_modulo_segundo_o_censo": [
+    "schools",
+    "students",
+    "classes",
+    "supervision_requests",
+    "bfr_lesson_attendance",
+    "staff_schools",
+    "grades",
+    "supervision_alerts",
+    "supervision_responses",
+    "announcements",
+    "school_documents"
+  ],
+  "fixture": {
+    "nomes": [
+      "mesa_sint",
+      "bfr_agregado_sint_totais",
+      "bfr_agregado_sint_stats"
+    ],
+    "chamadas": [
+      "mesa_sint",
+      "bfr_agregado_sint_totais"
+    ],
+    "contagens": [
+      {
+        "nome": "mesa_sint",
+        "total": 1,
+        "chamadas": 1
+      },
+      {
+        "nome": "bfr_agregado_sint_totais",
+        "total": 2,
+        "chamadas": 1
+      },
+      {
+        "nome": "bfr_agregado_sint_stats",
+        "total": 1,
+        "chamadas": 0
+      }
+    ]
+  },
+  "conclusao": {
+    "frase_que_esta_corrida_autoriza": "no ar de hoje nenhum agregado municipal é chamado pelo módulo ([\"bfr_municipal_network_totals=0\",\"bfr_municipal_school_stats=0\"]): os números municipais só existem para quem chamar RPC por fora, e fechar a PEN-39 exige DDL E código de consumo",
+    "o_que_nao_prova": "não prova que nada no shell fora do invólucro chame estes nomes (a varredura é do corpo declarado); prova do lado de dentro do módulo."
+  },
+  "portoes": [
+    {
+      "nome": "o_involucre_do_modulo_esta_presente_e_e_unico",
+      "verde": true,
+      "detalhe": {
+        "chars": 56408,
+        "desde": 3472874,
+        "fim": 3529282
+      }
+    },
+    {
+      "nome": "a_regua_de_chamada_ve_as_duas_agulhas_do_fixture",
+      "verde": true,
+      "detalhe": {
+        "fixChamadas": [
+          "mesa_sint",
+          "bfr_agregado_sint_totais"
+        ],
+        "fixContagens": [
+          {
+            "nome": "mesa_sint",
+            "total": 1,
+            "chamadas": 1
+          },
+          {
+            "nome": "bfr_agregado_sint_totais",
+            "total": 2,
+            "chamadas": 1
+          },
+          {
+            "nome": "bfr_agregado_sint_stats",
+            "total": 1,
+            "chamadas": 0
+          }
+        ]
+      }
+    },
+    {
+      "nome": "a_regua_nao_inventa_em_texto_sem_agulha",
+      "verde": true,
+      "detalhe": {
+        "controlo": "nome_que_nao_existe_nesta_app_zzz"
+      }
+    },
+    {
+      "nome": "os_nomes_varridos_sao_os_do_catalogo_e_do_censo",
+      "verde": true,
+      "detalhe": {
+        "agregados_lidos": [
+          "bfr_municipal_network_totals",
+          "bfr_municipal_school_stats"
+        ],
+        "catalogo": [
+          "bfr_has_municipal_grant:function",
+          "bfr_is_municipal_authority:function",
+          "bfr_municipal_municipalities:function",
+          "bfr_municipal_network_totals:function",
+          "bfr_municipal_school_stats:view",
+          "bfr_municipalities_visible:function",
+          "bfr_school_in_municipal_scope:function"
+        ],
+        "mesas": 11
+      }
+    },
+    {
+      "nome": "cada_nome_saida_com_o_seu_numero_inclusive_zero",
+      "verde": true,
+      "detalhe": [
+        {
+          "nome": "bfr_municipal_network_totals",
+          "ocorrencias_no_corpo": 0,
+          "chamadas_de_from_ou_rpc": false
+        },
+        {
+          "nome": "bfr_municipal_school_stats",
+          "ocorrencias_no_corpo": 0,
+          "chamadas_de_from_ou_rpc": false
+        }
+      ]
+    },
+    {
+      "nome": "as_duas_funcoes_da_candidata_pen39_ainda_nao_estao_no_ar_nem_no_catalogo",
+      "verde": true,
+      "detalhe": [
+        {
+          "nome": "bfr_municipal_municipio_totais",
+          "no_ar": 0,
+          "existe_no_catalogo": false
+        },
+        {
+          "nome": "bfr_municipal_distribuicao_por_zona",
+          "no_ar": 0,
+          "existe_no_catalogo": false
+        }
+      ]
+    },
+    {
+      "nome": "a_pegada_servida_e_a_shell_que_a_candidata_v137_estende",
+      "verde": true,
+      "detalhe": {
+        "servido": "9e236a23eed978cf7c2a2743d449b307",
+        "bytes": 3547458,
+        "esperado": "9e236a23eed978cf7c2a2743d449b307"
+      }
+    }
+  ],
+  "falhas": [],
+  "veredito": "P73_PEN39_USO_OK 7/0"
+}

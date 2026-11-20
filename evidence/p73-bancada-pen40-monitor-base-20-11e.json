@@ -1,0 +1,398 @@
+{
+  "programa": "scripts/p73-bancada-pen40-navexiste.mjs",
+  "em": "2026-11-20T04:45:37.301Z",
+  "modo": "base",
+  "bancada": {
+    "url": "http://127.0.0.1:9611/",
+    "sw": "ausente na bancada (404 — sem cache a interferir)",
+    "html": {
+      "path": "index.html",
+      "md5": "9e236a23eed978cf7c2a2743d449b307"
+    },
+    "modulos": {
+      "base": {
+        "origem": "app/bfr-responsive-presentation.js",
+        "md5": "a83f77baba7453851b287080686c7afb"
+      },
+      "candidata": {
+        "origem": "bfr-candidata-v137-remendo-pen40/bfr-responsive-presentation.js",
+        "md5": "b83b4c2666fc909d50a358b86b99de05"
+      },
+      "leg": "base",
+      "md5_leg": "a83f77baba7453851b287080686c7afb",
+      "selfcheck_servido_igual": true
+    }
+  },
+  "papel": "monitor",
+  "larguras": [
+    320,
+    360,
+    375,
+    390,
+    414,
+    430
+  ],
+  "piso_ms": 60,
+  "teto_ms": 250,
+  "sessoes": {
+    "monitor": {
+      "papel": "monitor",
+      "gravado_em": "ah2-sessao-monitor.json",
+      "gravado_fiel": true,
+      "renovou": false,
+      "access_comprimento": 819,
+      "refresh_comprimento": 12,
+      "expira_em_s": 2456
+    }
+  },
+  "legenda": {
+    "leitura": "nav_existe = #bfrMobileBottomNav presente; botoes_com_caixa = botões data-bfr-mobile-route com caixa de layout; contadores de timer via PATCH (delay=PISO e pilha a nomear o módulo)",
+    "veredicto": "MONTA / MONTA_SO_QUANDO_SOSSEGA / NAO_MONTA (sem_toque, depois 2 resize, depois 5 s de sossego)"
+  },
+  "resultados": {
+    "320": {
+      "largura": 320,
+      "ms_ready": 1239,
+      "patch": "ja_instalado",
+      "sem_toque": {
+        "nav_existe": false,
+        "botoes": 0,
+        "botoes_com_caixa": 0,
+        "corpo_mobile": false,
+        "shell_ready": true,
+        "papel": "monitor",
+        "armados_piso": 657,
+        "venceu_piso": 0,
+        "cancelados_piso": 656,
+        "outros_delays_do_modulo": 0,
+        "armados_por_segundo": 212,
+        "sinistros": []
+      },
+      "dois_eventos": {
+        "nav_existe": false,
+        "botoes": 0,
+        "botoes_com_caixa": 0,
+        "corpo_mobile": false,
+        "shell_ready": true,
+        "papel": "monitor",
+        "armados_piso": 1155,
+        "venceu_piso": 0,
+        "cancelados_piso": 1154,
+        "outros_delays_do_modulo": 0,
+        "armados_por_segundo": 202,
+        "sinistros": []
+      },
+      "sossego_5s": {
+        "nav_existe": false,
+        "botoes": 0,
+        "botoes_com_caixa": 0,
+        "corpo_mobile": false,
+        "shell_ready": true,
+        "papel": "monitor",
+        "armados_piso": 2478,
+        "venceu_piso": 0,
+        "cancelados_piso": 2477,
+        "outros_delays_do_modulo": 0,
+        "armados_por_segundo": 222,
+        "sinistros": []
+      },
+      "veredicto": "NAO_MONTA"
+    },
+    "360": {
+      "largura": 360,
+      "ms_ready": 445,
+      "patch": "ja_instalado",
+      "sem_toque": {
+        "nav_existe": false,
+        "botoes": 0,
+        "botoes_com_caixa": 0,
+        "corpo_mobile": false,
+        "shell_ready": true,
+        "papel": "monitor",
+        "armados_piso": 1077,
+        "venceu_piso": 1,
+        "cancelados_piso": 1075,
+        "outros_delays_do_modulo": 0,
+        "armados_por_segundo": 307,
+        "sinistros": []
+      },
+      "dois_eventos": {
+        "nav_existe": false,
+        "botoes": 0,
+        "botoes_com_caixa": 0,
+        "corpo_mobile": false,
+        "shell_ready": true,
+        "papel": "monitor",
+        "armados_piso": 1763,
+        "venceu_piso": 1,
+        "cancelados_piso": 1761,
+        "outros_delays_do_modulo": 0,
+        "armados_por_segundo": 307,
+        "sinistros": []
+      },
+      "sossego_5s": {
+        "nav_existe": false,
+        "botoes": 0,
+        "botoes_com_caixa": 0,
+        "corpo_mobile": false,
+        "shell_ready": true,
+        "papel": "monitor",
+        "armados_piso": 3453,
+        "venceu_piso": 1,
+        "cancelados_piso": 3451,
+        "outros_delays_do_modulo": 0,
+        "armados_por_segundo": 304,
+        "sinistros": []
+      },
+      "veredicto": "NAO_MONTA"
+    },
+    "375": {
+      "largura": 375,
+      "ms_ready": 759,
+      "patch": "ja_instalado",
+      "sem_toque": {
+        "nav_existe": false,
+        "botoes": 0,
+        "botoes_com_caixa": 0,
+        "corpo_mobile": false,
+        "shell_ready": true,
+        "papel": "monitor",
+        "armados_piso": 906,
+        "venceu_piso": 1,
+        "cancelados_piso": 904,
+        "outros_delays_do_modulo": 0,
+        "armados_por_segundo": 233,
+        "sinistros": []
+      },
+      "dois_eventos": {
+        "nav_existe": false,
+        "botoes": 0,
+        "botoes_com_caixa": 0,
+        "corpo_mobile": false,
+        "shell_ready": true,
+        "papel": "monitor",
+        "armados_piso": 1532,
+        "venceu_piso": 1,
+        "cancelados_piso": 1530,
+        "outros_delays_do_modulo": 0,
+        "armados_por_segundo": 248,
+        "sinistros": []
+      },
+      "sossego_5s": {
+        "nav_existe": false,
+        "botoes": 0,
+        "botoes_com_caixa": 0,
+        "corpo_mobile": false,
+        "shell_ready": true,
+        "papel": "monitor",
+        "armados_piso": 2886,
+        "venceu_piso": 1,
+        "cancelados_piso": 2884,
+        "outros_delays_do_modulo": 0,
+        "armados_por_segundo": 244,
+        "sinistros": []
+      },
+      "veredicto": "NAO_MONTA"
+    },
+    "390": {
+      "largura": 390,
+      "ms_ready": 823,
+      "patch": "ja_instalado",
+      "sem_toque": {
+        "nav_existe": false,
+        "botoes": 0,
+        "botoes_com_caixa": 0,
+        "corpo_mobile": false,
+        "shell_ready": true,
+        "papel": "monitor",
+        "armados_piso": 663,
+        "venceu_piso": 1,
+        "cancelados_piso": 661,
+        "outros_delays_do_modulo": 0,
+        "armados_por_segundo": 171,
+        "sinistros": []
+      },
+      "dois_eventos": {
+        "nav_existe": false,
+        "botoes": 0,
+        "botoes_com_caixa": 0,
+        "corpo_mobile": false,
+        "shell_ready": true,
+        "papel": "monitor",
+        "armados_piso": 1334,
+        "venceu_piso": 1,
+        "cancelados_piso": 1332,
+        "outros_delays_do_modulo": 0,
+        "armados_por_segundo": 213,
+        "sinistros": []
+      },
+      "sossego_5s": {
+        "nav_existe": false,
+        "botoes": 0,
+        "botoes_com_caixa": 0,
+        "corpo_mobile": false,
+        "shell_ready": true,
+        "papel": "monitor",
+        "armados_piso": 3117,
+        "venceu_piso": 1,
+        "cancelados_piso": 3115,
+        "outros_delays_do_modulo": 0,
+        "armados_por_segundo": 268,
+        "sinistros": []
+      },
+      "veredicto": "NAO_MONTA"
+    },
+    "414": {
+      "largura": 414,
+      "ms_ready": 416,
+      "patch": "ja_instalado",
+      "sem_toque": {
+        "nav_existe": false,
+        "botoes": 0,
+        "botoes_com_caixa": 0,
+        "corpo_mobile": false,
+        "shell_ready": true,
+        "papel": "monitor",
+        "armados_piso": 1179,
+        "venceu_piso": 1,
+        "cancelados_piso": 1177,
+        "outros_delays_do_modulo": 0,
+        "armados_por_segundo": 334,
+        "sinistros": []
+      },
+      "dois_eventos": {
+        "nav_existe": false,
+        "botoes": 0,
+        "botoes_com_caixa": 0,
+        "corpo_mobile": false,
+        "shell_ready": true,
+        "papel": "monitor",
+        "armados_piso": 1909,
+        "venceu_piso": 1,
+        "cancelados_piso": 1907,
+        "outros_delays_do_modulo": 0,
+        "armados_por_segundo": 333,
+        "sinistros": []
+      },
+      "sossego_5s": {
+        "nav_existe": false,
+        "botoes": 0,
+        "botoes_com_caixa": 0,
+        "corpo_mobile": false,
+        "shell_ready": true,
+        "papel": "monitor",
+        "armados_piso": 3739,
+        "venceu_piso": 1,
+        "cancelados_piso": 3737,
+        "outros_delays_do_modulo": 0,
+        "armados_por_segundo": 334,
+        "sinistros": []
+      },
+      "veredicto": "NAO_MONTA"
+    },
+    "430": {
+      "largura": 430,
+      "ms_ready": 398,
+      "patch": "ja_instalado",
+      "sem_toque": {
+        "nav_existe": false,
+        "botoes": 0,
+        "botoes_com_caixa": 0,
+        "corpo_mobile": false,
+        "shell_ready": true,
+        "papel": "monitor",
+        "armados_piso": 1194,
+        "venceu_piso": 1,
+        "cancelados_piso": 1192,
+        "outros_delays_do_modulo": 0,
+        "armados_por_segundo": 336,
+        "sinistros": []
+      },
+      "dois_eventos": {
+        "nav_existe": false,
+        "botoes": 0,
+        "botoes_com_caixa": 0,
+        "corpo_mobile": false,
+        "shell_ready": true,
+        "papel": "monitor",
+        "armados_piso": 1707,
+        "venceu_piso": 1,
+        "cancelados_piso": 1705,
+        "outros_delays_do_modulo": 0,
+        "armados_por_segundo": 275,
+        "sinistros": []
+      },
+      "sossego_5s": {
+        "nav_existe": false,
+        "botoes": 0,
+        "botoes_com_caixa": 0,
+        "corpo_mobile": false,
+        "shell_ready": true,
+        "papel": "monitor",
+        "armados_piso": 3100,
+        "venceu_piso": 1,
+        "cancelados_piso": 3098,
+        "outros_delays_do_modulo": 0,
+        "armados_por_segundo": 263,
+        "sinistros": []
+      },
+      "veredicto": "NAO_MONTA"
+    }
+  },
+  "resumo": {
+    "320": {
+      "veredicto": "NAO_MONTA",
+      "sem_toque": false,
+      "apos_eventos": false,
+      "apos_sossego": false,
+      "botoes_com_caixa": 0,
+      "venceu_piso": 0,
+      "cancelados_piso": 2477
+    },
+    "360": {
+      "veredicto": "NAO_MONTA",
+      "sem_toque": false,
+      "apos_eventos": false,
+      "apos_sossego": false,
+      "botoes_com_caixa": 0,
+      "venceu_piso": 1,
+      "cancelados_piso": 3451
+    },
+    "375": {
+      "veredicto": "NAO_MONTA",
+      "sem_toque": false,
+      "apos_eventos": false,
+      "apos_sossego": false,
+      "botoes_com_caixa": 0,
+      "venceu_piso": 1,
+      "cancelados_piso": 2884
+    },
+    "390": {
+      "veredicto": "NAO_MONTA",
+      "sem_toque": false,
+      "apos_eventos": false,
+      "apos_sossego": false,
+      "botoes_com_caixa": 0,
+      "venceu_piso": 1,
+      "cancelados_piso": 3115
+    },
+    "414": {
+      "veredicto": "NAO_MONTA",
+      "sem_toque": false,
+      "apos_eventos": false,
+      "apos_sossego": false,
+      "botoes_com_caixa": 0,
+      "venceu_piso": 1,
+      "cancelados_piso": 3737
+    },
+    "430": {
+      "veredicto": "NAO_MONTA",
+      "sem_toque": false,
+      "apos_eventos": false,
+      "apos_sossego": false,
+      "botoes_com_caixa": 0,
+      "venceu_piso": 1,
+      "cancelados_piso": 3098
+    }
+  }
+}
