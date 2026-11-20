@@ -1,0 +1,2689 @@
+{
+  "em": "2026-11-20T11:35:47.183Z",
+  "instrumento": "scripts/bu5-unidades-do-roadmap-20-11.mjs",
+  "ar": {
+    "caminho": "index.html",
+    "bytes": 3547458,
+    "md5": "9e236a23eed978cf7c2a2743d449b307"
+  },
+  "vocabulario": {
+    "portas_no_ar": 54,
+    "declaradas_no_documento": 72,
+    "estaticas": 71,
+    "por_literal": 5,
+    "identificadores_de_runtime": {
+      "section": null,
+      "SECTION": "resultados-aprendizagem",
+      "SECT": "secretaria-municipal"
+    }
+  },
+  "banco_medido_hoje": {
+    "tabelas_rls_ativa": 183,
+    "tabelas_com_politica": 177,
+    "politicas_lidas": 495,
+    "tabelas_total": 183
+  },
+  "mobile": {
+    "grelha": "15 papeis × 6 larguras = 90 celulas",
+    "motivos": {
+      "travada_com_causa": 13,
+      "por_medir": 7,
+      "coerente": 70
+    },
+    "causas": 13
+  },
+  "desktop": {
+    "total": 45,
+    "medida_web": 38,
+    "bloqueada": 7,
+    "falta": 0
+  },
+  "unidades": [
+    {
+      "grupo": "5.1",
+      "rotulo": "Autenticação e sessão",
+      "rotulo_do_registro": "Autenticação e sessão",
+      "itens": 8,
+      "codigos": {
+        "IF": 7,
+        "ICP": 1
+      },
+      "frac_implementado": 1,
+      "portas_proprias_no_ar": 0,
+      "portas_declaradas": 0,
+      "portas_fora_do_ar": [],
+      "papeis_com_porta_propria": [],
+      "regioes": 4,
+      "regioes_desativadas": [],
+      "regioes_diferidas": 1,
+      "tabelas_distintas": 0,
+      "rpcs": [],
+      "chars_regioes": 12117,
+      "rpcs_sao_todas_predicados_de_autorizacao": true,
+      "alcance_por_papel": [],
+      "banda_de_alcance": "só o papel de preview tem porta",
+      "banda_com_preview": "nenhum",
+      "papeis_efetivos_da_banda": [],
+      "leitura_maxima_efetiva": null,
+      "leitura_maxima_com_preview": null,
+      "mesas_da_unidade_fora_do_alcance_dos_papeis": [],
+      "mobile_celulas": 0,
+      "mobile_por_estado": {},
+      "desktop_celulas": [],
+      "regua_de_prova": "conteudo",
+      "prova_bateu": false,
+      "corridas": {
+        "conteudo": [
+          {
+            "ficheiro": "evidence/rm12-veredito.json",
+            "existe": true,
+            "classe": "sem_pegada_de_ar",
+            "campos": 0,
+            "data": "2026-11-12"
+          }
+        ],
+        "superficie": [
+          {
+            "ficheiro": "evidence/bu5-portas-do-ar-20-11.json",
+            "existe": true,
+            "classe": "no_ar_servido",
+            "campos": 1,
+            "data": "2026-11-20"
+          },
+          {
+            "ficheiro": "evidence/p73-cobertura-m5-por-ar-20-11.json",
+            "existe": true,
+            "classe": "no_ar_servido",
+            "campos": 1,
+            "data": "2026-11-20"
+          }
+        ],
+        "banco": [
+          {
+            "ficheiro": "evidence/bu2-censo-catalogo-20-11.json",
+            "existe": true,
+            "classe": "sem_pegada_de_ar",
+            "campos": 0,
+            "data": "2026-11-20"
+          }
+        ]
+      },
+      "contradicoes": [
+        {
+          "tipo": "defeito",
+          "registro": "A.06 IF",
+          "medido": "aprovação medida com clique real, mas o estado `pending` é inalcançável; o próprio veredicto reescreve o item como IMPLEMENTADO COM PROBLEMAS",
+          "artefacto": "evidence/rm12-veredito.json"
+        }
+      ],
+      "estado_pela_regra_degenerada_antes_de_3": "IMPLEMENTADO COM ERROS",
+      "estado_derivado": "IMPLEMENTADO COM ERROS"
+    },
+    {
+      "grupo": "5.2",
+      "rotulo": "Navegação e estrutura",
+      "rotulo_do_registro": "Navegação e estrutura",
+      "itens": 6,
+      "codigos": {
+        "IF": 5,
+        "ICP": 1
+      },
+      "frac_implementado": 1,
+      "portas_proprias_no_ar": 4,
+      "portas_declaradas": 4,
+      "portas_fora_do_ar": [],
+      "papeis_com_porta_propria": [
+        "aee",
+        "coordinator",
+        "developer",
+        "director",
+        "education_supervisor",
+        "gatekeeper",
+        "monitor",
+        "parent",
+        "psychology",
+        "secretary",
+        "social_work",
+        "sports_operator",
+        "student"
+      ],
+      "regioes": 7,
+      "regioes_desativadas": [],
+      "regioes_diferidas": 6,
+      "tabelas_distintas": 1,
+      "rpcs": [],
+      "chars_regioes": 90539,
+      "rpcs_sao_todas_predicados_de_autorizacao": true,
+      "alcance_por_papel": [
+        "aee:L78W55",
+        "coordinator:L133W101",
+        "developer:L165W144",
+        "director:L127W98",
+        "education_supervisor:L16W4",
+        "gatekeeper:L15W1",
+        "monitor:L17W4",
+        "parent:L17W3",
+        "psychology:L16W13",
+        "secretary:L72W53",
+        "social_work:L14W14",
+        "sports_operator:L3W0",
+        "student:L17W4"
+      ],
+      "banda_de_alcance": "L 3..133 · W 0..101 (12 papéis)",
+      "banda_com_preview": "L 3..165 · W 0..144",
+      "papeis_efetivos_da_banda": [
+        "aee",
+        "coordinator",
+        "director",
+        "education_supervisor",
+        "gatekeeper",
+        "monitor",
+        "parent",
+        "psychology",
+        "secretary",
+        "social_work",
+        "sports_operator",
+        "student"
+      ],
+      "leitura_maxima_efetiva": 133,
+      "leitura_maxima_com_preview": 165,
+      "mesas_da_unidade_fora_do_alcance_dos_papeis": [
+        "education_supervisor/aee_student_roster",
+        "gatekeeper/aee_student_roster",
+        "monitor/aee_student_roster",
+        "parent/aee_student_roster",
+        "psychology/aee_student_roster",
+        "secretary/aee_student_roster",
+        "social_work/aee_student_roster",
+        "sports_operator/aee_student_roster",
+        "student/aee_student_roster"
+      ],
+      "mobile_celulas": 78,
+      "mobile_por_estado": {
+        "OK": 64,
+        "por_medir": 6,
+        "TRAVADA": 8
+      },
+      "desktop_celulas": [
+        "aee@1280=MEDIDA_WEB",
+        "aee@1440=MEDIDA_WEB",
+        "aee@1920=MEDIDA_WEB",
+        "coordinator@1280=BLOQUEADA",
+        "coordinator@1440=MEDIDA_WEB",
+        "coordinator@1920=MEDIDA_WEB",
+        "developer@1280=MEDIDA_WEB",
+        "developer@1440=MEDIDA_WEB",
+        "developer@1920=MEDIDA_WEB",
+        "director@1280=MEDIDA_WEB",
+        "director@1440=MEDIDA_WEB",
+        "director@1920=MEDIDA_WEB",
+        "education_supervisor@1280=BLOQUEADA",
+        "education_supervisor@1440=MEDIDA_WEB",
+        "education_supervisor@1920=MEDIDA_WEB",
+        "gatekeeper@1280=MEDIDA_WEB",
+        "gatekeeper@1440=MEDIDA_WEB",
+        "gatekeeper@1920=MEDIDA_WEB",
+        "monitor@1280=BLOQUEADA",
+        "monitor@1440=MEDIDA_WEB",
+        "monitor@1920=BLOQUEADA",
+        "parent@1280=MEDIDA_WEB",
+        "parent@1440=MEDIDA_WEB",
+        "parent@1920=MEDIDA_WEB",
+        "psychology@1280=MEDIDA_WEB",
+        "psychology@1440=MEDIDA_WEB",
+        "psychology@1920=MEDIDA_WEB",
+        "secretary@1280=MEDIDA_WEB",
+        "secretary@1440=MEDIDA_WEB",
+        "secretary@1920=MEDIDA_WEB",
+        "social_work@1280=MEDIDA_WEB",
+        "social_work@1440=MEDIDA_WEB",
+        "social_work@1920=MEDIDA_WEB",
+        "sports_operator@1280=MEDIDA_WEB",
+        "sports_operator@1440=MEDIDA_WEB",
+        "sports_operator@1920=MEDIDA_WEB",
+        "student@1280=MEDIDA_WEB",
+        "student@1440=MEDIDA_WEB",
+        "student@1920=MEDIDA_WEB"
+      ],
+      "regua_de_prova": "conteudo",
+      "prova_bateu": false,
+      "corridas": {
+        "conteudo": [],
+        "superficie": [
+          {
+            "ficheiro": "evidence/bu5-portas-do-ar-20-11.json",
+            "existe": true,
+            "classe": "no_ar_servido",
+            "campos": 1,
+            "data": "2026-11-20"
+          },
+          {
+            "ficheiro": "evidence/p73-cobertura-m5-por-ar-20-11.json",
+            "existe": true,
+            "classe": "no_ar_servido",
+            "campos": 1,
+            "data": "2026-11-20"
+          },
+          {
+            "ficheiro": "evidence/sm25-cobertura-desktop-20-11.json",
+            "existe": true,
+            "classe": "no_ar_servido",
+            "campos": 1,
+            "data": "2026-11-20"
+          }
+        ],
+        "banco": []
+      },
+      "contradicoes": [
+        {
+          "tipo": "defeito",
+          "registro": "N.02 ICP (abarca quem?)",
+          "medido": "a barra mobile não montou em 6 de 6 larguras do papel `monitor` e em 5 de 6 do `pending`",
+          "artefacto": "evidence/p73-cobertura-m5-por-ar-20-11.json"
+        }
+      ],
+      "estado_pela_regra_degenerada_antes_de_3": "IMPLEMENTADO COM ERROS",
+      "estado_derivado": "IMPLEMENTADO COM ERROS"
+    },
+    {
+      "grupo": "5.3",
+      "rotulo": "Área do aluno",
+      "rotulo_do_registro": "Área do aluno",
+      "itens": 14,
+      "codigos": {
+        "IF": 11,
+        "PI": 1,
+        "NM": 2
+      },
+      "frac_implementado": 1,
+      "portas_proprias_no_ar": 12,
+      "portas_declaradas": 12,
+      "portas_fora_do_ar": [],
+      "papeis_com_porta_propria": [
+        "aee",
+        "coordinator",
+        "developer",
+        "director",
+        "gatekeeper",
+        "monitor",
+        "parent",
+        "pedagogical",
+        "secretary",
+        "student"
+      ],
+      "regioes": 8,
+      "regioes_desativadas": [],
+      "regioes_diferidas": 5,
+      "tabelas_distintas": 15,
+      "rpcs": [],
+      "chars_regioes": 155399,
+      "rpcs_sao_todas_predicados_de_autorizacao": true,
+      "alcance_por_papel": [
+        "aee:L78W55",
+        "coordinator:L133W101",
+        "developer:L165W144",
+        "director:L127W98",
+        "gatekeeper:L15W1",
+        "monitor:L17W4",
+        "parent:L17W3",
+        "pedagogical:L81W51",
+        "secretary:L72W53",
+        "student:L17W4"
+      ],
+      "banda_de_alcance": "L 15..133 · W 1..101 (9 papéis)",
+      "banda_com_preview": "L 15..165 · W 1..144",
+      "papeis_efetivos_da_banda": [
+        "aee",
+        "coordinator",
+        "director",
+        "gatekeeper",
+        "monitor",
+        "parent",
+        "pedagogical",
+        "secretary",
+        "student"
+      ],
+      "leitura_maxima_efetiva": 133,
+      "leitura_maxima_com_preview": 165,
+      "mesas_da_unidade_fora_do_alcance_dos_papeis": [
+        "aee/school_documents",
+        "aee/notification_preferences",
+        "aee/push_subscriptions",
+        "aee/school_notification_reads",
+        "aee/sports_public_matches",
+        "coordinator/guardian_students",
+        "coordinator/notification_preferences",
+        "coordinator/push_subscriptions",
+        "coordinator/school_events",
+        "coordinator/school_notification_reads",
+        "coordinator/sports_public_matches",
+        "developer/notification_preferences",
+        "developer/push_subscriptions",
+        "developer/school_notification_reads",
+        "developer/sports_public_matches",
+        "director/guardian_students",
+        "director/notification_preferences",
+        "director/push_subscriptions",
+        "director/school_events",
+        "director/school_notification_reads",
+        "director/sports_public_matches",
+        "gatekeeper/attendance",
+        "gatekeeper/grades",
+        "gatekeeper/guardian_students",
+        "gatekeeper/notification_preferences",
+        "gatekeeper/occurrences",
+        "gatekeeper/push_subscriptions",
+        "gatekeeper/school_notification_reads",
+        "gatekeeper/sports_public_matches",
+        "gatekeeper/student_messages",
+        "gatekeeper/students",
+        "gatekeeper/profiles",
+        "monitor/attendance",
+        "monitor/grades",
+        "monitor/notification_preferences",
+        "monitor/occurrences",
+        "monitor/push_subscriptions",
+        "monitor/school_notification_reads",
+        "monitor/sports_public_matches",
+        "monitor/profiles",
+        "parent/attendance",
+        "parent/grades",
+        "parent/guardian_students",
+        "parent/notification_preferences",
+        "parent/occurrences",
+        "parent/push_subscriptions",
+        "parent/school_notification_reads",
+        "parent/sports_public_matches",
+        "parent/student_messages",
+        "parent/students",
+        "parent/profiles",
+        "pedagogical/guardian_students",
+        "pedagogical/notification_preferences",
+        "pedagogical/push_subscriptions",
+        "pedagogical/school_notification_reads",
+        "pedagogical/sports_public_matches",
+        "secretary/guardian_students",
+        "secretary/notification_preferences",
+        "secretary/occurrences",
+        "secretary/push_subscriptions",
+        "secretary/school_notification_reads",
+        "secretary/sports_public_matches",
+        "secretary/student_messages",
+        "student/attendance",
+        "student/grades",
+        "student/guardian_students",
+        "student/notification_preferences",
+        "student/occurrences",
+        "student/push_subscriptions",
+        "student/school_notification_reads",
+        "student/sports_public_matches",
+        "student/student_messages",
+        "student/students",
+        "student/profiles"
+      ],
+      "mobile_celulas": 60,
+      "mobile_por_estado": {
+        "OK": 51,
+        "TRAVADA": 8,
+        "por_medir": 1
+      },
+      "desktop_celulas": [
+        "aee@1280=MEDIDA_WEB",
+        "aee@1440=MEDIDA_WEB",
+        "aee@1920=MEDIDA_WEB",
+        "coordinator@1280=BLOQUEADA",
+        "coordinator@1440=MEDIDA_WEB",
+        "coordinator@1920=MEDIDA_WEB",
+        "developer@1280=MEDIDA_WEB",
+        "developer@1440=MEDIDA_WEB",
+        "developer@1920=MEDIDA_WEB",
+        "director@1280=MEDIDA_WEB",
+        "director@1440=MEDIDA_WEB",
+        "director@1920=MEDIDA_WEB",
+        "gatekeeper@1280=MEDIDA_WEB",
+        "gatekeeper@1440=MEDIDA_WEB",
+        "gatekeeper@1920=MEDIDA_WEB",
+        "monitor@1280=BLOQUEADA",
+        "monitor@1440=MEDIDA_WEB",
+        "monitor@1920=BLOQUEADA",
+        "parent@1280=MEDIDA_WEB",
+        "parent@1440=MEDIDA_WEB",
+        "parent@1920=MEDIDA_WEB",
+        "pedagogical@1280=MEDIDA_WEB",
+        "pedagogical@1440=MEDIDA_WEB",
+        "pedagogical@1920=MEDIDA_WEB",
+        "secretary@1280=MEDIDA_WEB",
+        "secretary@1440=MEDIDA_WEB",
+        "secretary@1920=MEDIDA_WEB",
+        "student@1280=MEDIDA_WEB",
+        "student@1440=MEDIDA_WEB",
+        "student@1920=MEDIDA_WEB"
+      ],
+      "regua_de_prova": "conteudo",
+      "prova_bateu": false,
+      "corridas": {
+        "conteudo": [],
+        "superficie": [
+          {
+            "ficheiro": "evidence/bu5-portas-do-ar-20-11.json",
+            "existe": true,
+            "classe": "no_ar_servido",
+            "campos": 1,
+            "data": "2026-11-20"
+          },
+          {
+            "ficheiro": "evidence/p73-cobertura-m5-por-ar-20-11.json",
+            "existe": true,
+            "classe": "no_ar_servido",
+            "campos": 1,
+            "data": "2026-11-20"
+          }
+        ],
+        "banco": []
+      },
+      "contradicoes": [],
+      "estado_pela_regra_degenerada_antes_de_3": "PARCIALMENTE IMPLEMENTADO",
+      "estado_derivado": "PARCIALMENTE IMPLEMENTADO"
+    },
+    {
+      "grupo": "5.4",
+      "rotulo": "Responsáveis",
+      "rotulo_do_registro": "Responsáveis",
+      "itens": 9,
+      "codigos": {
+        "IF": 8,
+        "ICP": 1
+      },
+      "frac_implementado": 1,
+      "portas_proprias_no_ar": 7,
+      "portas_declaradas": 7,
+      "portas_fora_do_ar": [],
+      "papeis_com_porta_propria": [
+        "aee",
+        "coordinator",
+        "developer",
+        "education_supervisor",
+        "monitor",
+        "parent",
+        "secretary",
+        "student"
+      ],
+      "regioes": 8,
+      "regioes_desativadas": [],
+      "regioes_diferidas": 7,
+      "tabelas_distintas": 5,
+      "rpcs": [],
+      "chars_regioes": 76188,
+      "rpcs_sao_todas_predicados_de_autorizacao": true,
+      "alcance_por_papel": [
+        "aee:L78W55",
+        "coordinator:L133W101",
+        "developer:L165W144",
+        "education_supervisor:L16W4",
+        "monitor:L17W4",
+        "parent:L17W3",
+        "secretary:L72W53",
+        "student:L17W4"
+      ],
+      "banda_de_alcance": "L 16..133 · W 3..101 (7 papéis)",
+      "banda_com_preview": "L 16..165 · W 3..144",
+      "papeis_efetivos_da_banda": [
+        "aee",
+        "coordinator",
+        "education_supervisor",
+        "monitor",
+        "parent",
+        "secretary",
+        "student"
+      ],
+      "leitura_maxima_efetiva": 133,
+      "leitura_maxima_com_preview": 165,
+      "mesas_da_unidade_fora_do_alcance_dos_papeis": [
+        "aee/school_documents",
+        "aee/bfr_schedule_entries",
+        "aee/bfr_schedule_versions",
+        "education_supervisor/school_documents",
+        "education_supervisor/bfr_schedule_entries",
+        "education_supervisor/bfr_schedule_versions",
+        "monitor/bfr_schedule_entries",
+        "monitor/bfr_schedule_versions",
+        "parent/bfr_schedule_entries",
+        "parent/bfr_schedule_versions",
+        "parent/classes",
+        "parent/students",
+        "student/bfr_schedule_entries",
+        "student/bfr_schedule_versions",
+        "student/classes",
+        "student/students"
+      ],
+      "mobile_celulas": 48,
+      "mobile_por_estado": {
+        "OK": 37,
+        "por_medir": 3,
+        "TRAVADA": 8
+      },
+      "desktop_celulas": [
+        "aee@1280=MEDIDA_WEB",
+        "aee@1440=MEDIDA_WEB",
+        "aee@1920=MEDIDA_WEB",
+        "coordinator@1280=BLOQUEADA",
+        "coordinator@1440=MEDIDA_WEB",
+        "coordinator@1920=MEDIDA_WEB",
+        "developer@1280=MEDIDA_WEB",
+        "developer@1440=MEDIDA_WEB",
+        "developer@1920=MEDIDA_WEB",
+        "education_supervisor@1280=BLOQUEADA",
+        "education_supervisor@1440=MEDIDA_WEB",
+        "education_supervisor@1920=MEDIDA_WEB",
+        "monitor@1280=BLOQUEADA",
+        "monitor@1440=MEDIDA_WEB",
+        "monitor@1920=BLOQUEADA",
+        "parent@1280=MEDIDA_WEB",
+        "parent@1440=MEDIDA_WEB",
+        "parent@1920=MEDIDA_WEB",
+        "secretary@1280=MEDIDA_WEB",
+        "secretary@1440=MEDIDA_WEB",
+        "secretary@1920=MEDIDA_WEB",
+        "student@1280=MEDIDA_WEB",
+        "student@1440=MEDIDA_WEB",
+        "student@1920=MEDIDA_WEB"
+      ],
+      "regua_de_prova": "conteudo",
+      "prova_bateu": false,
+      "corridas": {
+        "conteudo": [],
+        "superficie": [
+          {
+            "ficheiro": "evidence/bu5-portas-do-ar-20-11.json",
+            "existe": true,
+            "classe": "no_ar_servido",
+            "campos": 1,
+            "data": "2026-11-20"
+          },
+          {
+            "ficheiro": "evidence/p73-cobertura-m5-por-ar-20-11.json",
+            "existe": true,
+            "classe": "no_ar_servido",
+            "campos": 1,
+            "data": "2026-11-20"
+          }
+        ],
+        "banco": [
+          {
+            "ficheiro": "evidence/bu2-censo-catalogo-20-11.json",
+            "existe": true,
+            "classe": "sem_pegada_de_ar",
+            "campos": 0,
+            "data": "2026-11-20"
+          }
+        ]
+      },
+      "contradicoes": [
+        {
+          "tipo": "prova_ausente",
+          "registro": "P.01 IF vínculo com alunos",
+          "medido": "existe 1 linha em `guardian_students`: a passada com conta real não é reprodutível com o parque de contas",
+          "artefacto": "evidence/bu2-censo-catalogo-20-11.json"
+        }
+      ],
+      "estado_pela_regra_degenerada_antes_de_3": "IMPLEMENTADO COM ERROS",
+      "estado_derivado": "IMPLEMENTADO COM ERROS"
+    },
+    {
+      "grupo": "5.5",
+      "rotulo": "Professor",
+      "rotulo_do_registro": "Professor",
+      "itens": 9,
+      "codigos": {
+        "IF": 8,
+        "NT": 1
+      },
+      "frac_implementado": 1,
+      "portas_proprias_no_ar": 16,
+      "portas_declaradas": 16,
+      "portas_fora_do_ar": [],
+      "papeis_com_porta_propria": [
+        "coordinator",
+        "developer",
+        "director",
+        "pedagogical",
+        "student"
+      ],
+      "regioes": 1,
+      "regioes_desativadas": [],
+      "regioes_diferidas": 1,
+      "tabelas_distintas": 0,
+      "rpcs": [],
+      "chars_regioes": 26838,
+      "rpcs_sao_todas_predicados_de_autorizacao": true,
+      "alcance_por_papel": [
+        "coordinator:L133W101",
+        "developer:L165W144",
+        "director:L127W98",
+        "pedagogical:L81W51",
+        "student:L17W4"
+      ],
+      "banda_de_alcance": "L 17..133 · W 4..101 (4 papéis)",
+      "banda_com_preview": "L 17..165 · W 4..144",
+      "papeis_efetivos_da_banda": [
+        "coordinator",
+        "director",
+        "pedagogical",
+        "student"
+      ],
+      "leitura_maxima_efetiva": 133,
+      "leitura_maxima_com_preview": 165,
+      "mesas_da_unidade_fora_do_alcance_dos_papeis": [],
+      "mobile_celulas": 30,
+      "mobile_por_estado": {
+        "OK": 30
+      },
+      "desktop_celulas": [
+        "coordinator@1280=BLOQUEADA",
+        "coordinator@1440=MEDIDA_WEB",
+        "coordinator@1920=MEDIDA_WEB",
+        "developer@1280=MEDIDA_WEB",
+        "developer@1440=MEDIDA_WEB",
+        "developer@1920=MEDIDA_WEB",
+        "director@1280=MEDIDA_WEB",
+        "director@1440=MEDIDA_WEB",
+        "director@1920=MEDIDA_WEB",
+        "pedagogical@1280=MEDIDA_WEB",
+        "pedagogical@1440=MEDIDA_WEB",
+        "pedagogical@1920=MEDIDA_WEB",
+        "student@1280=MEDIDA_WEB",
+        "student@1440=MEDIDA_WEB",
+        "student@1920=MEDIDA_WEB"
+      ],
+      "regua_de_prova": "conteudo",
+      "prova_bateu": false,
+      "corridas": {
+        "conteudo": [],
+        "superficie": [
+          {
+            "ficheiro": "evidence/bu5-portas-do-ar-20-11.json",
+            "existe": true,
+            "classe": "no_ar_servido",
+            "campos": 1,
+            "data": "2026-11-20"
+          },
+          {
+            "ficheiro": "evidence/p73-cobertura-m5-por-ar-20-11.json",
+            "existe": true,
+            "classe": "no_ar_servido",
+            "campos": 1,
+            "data": "2026-11-20"
+          }
+        ],
+        "banco": [
+          {
+            "ficheiro": "evidence/bu2c-caminhos-de-autorizacao-20-11c.json",
+            "existe": true,
+            "classe": "sem_pegada_de_ar",
+            "campos": 0,
+            "data": "2026-11-20"
+          }
+        ]
+      },
+      "contradicoes": [
+        {
+          "tipo": "defeito",
+          "registro": "T.05 IF diário de aula",
+          "medido": "o papel `pedagogical` não tem caminho de leitura nem de escrita em `bfr_teacher_diary`",
+          "artefacto": "evidence/bu2c-caminhos-de-autorizacao-20-11c.json"
+        }
+      ],
+      "estado_pela_regra_degenerada_antes_de_3": "IMPLEMENTADO, MAS NÃO TESTADO",
+      "estado_derivado": "IMPLEMENTADO COM ERROS"
+    },
+    {
+      "grupo": "5.6",
+      "rotulo": "Coordenação",
+      "rotulo_do_registro": "Coordenação",
+      "itens": 9,
+      "codigos": {
+        "IF": 8,
+        "PI": 1
+      },
+      "frac_implementado": 1,
+      "portas_proprias_no_ar": 11,
+      "portas_declaradas": 11,
+      "portas_fora_do_ar": [],
+      "papeis_com_porta_propria": [
+        "aee",
+        "coordinator",
+        "developer",
+        "director",
+        "education_supervisor",
+        "gatekeeper",
+        "monitor",
+        "parent",
+        "pedagogical",
+        "psychology",
+        "secretary",
+        "social_work",
+        "sports_operator",
+        "student"
+      ],
+      "regioes": 7,
+      "regioes_desativadas": [
+        "bfr-coordination-command",
+        "bfr-coordination-dashboard-v3",
+        "bfr-coordination-density-v4",
+        "bfr-coordination-realtime-v2"
+      ],
+      "regioes_diferidas": 7,
+      "tabelas_distintas": 18,
+      "rpcs": [
+        "bfr_confirm_school_calendar",
+        "correct_gate_attendance"
+      ],
+      "chars_regioes": 367250,
+      "rpcs_sao_todas_predicados_de_autorizacao": false,
+      "alcance_por_papel": [
+        "aee:L78W55",
+        "coordinator:L133W101",
+        "developer:L165W144",
+        "director:L127W98",
+        "education_supervisor:L16W4",
+        "gatekeeper:L15W1",
+        "monitor:L17W4",
+        "parent:L17W3",
+        "pedagogical:L81W51",
+        "psychology:L16W13",
+        "secretary:L72W53",
+        "social_work:L14W14",
+        "sports_operator:L3W0",
+        "student:L17W4"
+      ],
+      "banda_de_alcance": "L 3..133 · W 0..101 (13 papéis)",
+      "banda_com_preview": "L 3..165 · W 0..144",
+      "papeis_efetivos_da_banda": [
+        "aee",
+        "coordinator",
+        "director",
+        "education_supervisor",
+        "gatekeeper",
+        "monitor",
+        "parent",
+        "pedagogical",
+        "psychology",
+        "secretary",
+        "social_work",
+        "sports_operator",
+        "student"
+      ],
+      "leitura_maxima_efetiva": 133,
+      "leitura_maxima_com_preview": 165,
+      "mesas_da_unidade_fora_do_alcance_dos_papeis": [
+        "aee/bfr_schedule_entries",
+        "aee/bfr_schedule_versions",
+        "aee/school_meetings",
+        "aee/bfr_school_calendar_days",
+        "aee/bfr_school_calendar_month_targets",
+        "aee/bfr_school_shift_settings",
+        "coordinator/projects",
+        "coordinator/school_events",
+        "director/projects",
+        "director/school_events",
+        "education_supervisor/aee_plans",
+        "education_supervisor/aee_sessions",
+        "education_supervisor/aee_student_roster",
+        "education_supervisor/announcements",
+        "education_supervisor/bfr_schedule_entries",
+        "education_supervisor/bfr_schedule_versions",
+        "education_supervisor/bfr_teacher_directory",
+        "education_supervisor/occurrences",
+        "education_supervisor/profiles",
+        "education_supervisor/projects",
+        "education_supervisor/school_activities",
+        "education_supervisor/school_meetings",
+        "education_supervisor/support_requests",
+        "education_supervisor/bfr_school_calendar_days",
+        "education_supervisor/bfr_school_calendar_month_targets",
+        "education_supervisor/bfr_school_shift_settings",
+        "gatekeeper/aee_plans",
+        "gatekeeper/aee_sessions",
+        "gatekeeper/aee_student_roster",
+        "gatekeeper/bfr_schedule_entries",
+        "gatekeeper/bfr_schedule_versions",
+        "gatekeeper/bfr_teacher_directory",
+        "gatekeeper/grades",
+        "gatekeeper/occurrences",
+        "gatekeeper/profiles",
+        "gatekeeper/school_meetings",
+        "gatekeeper/support_requests",
+        "gatekeeper/bfr_school_calendar_days",
+        "gatekeeper/bfr_school_calendar_month_targets",
+        "gatekeeper/bfr_school_shift_settings",
+        "monitor/aee_plans",
+        "monitor/aee_sessions",
+        "monitor/aee_student_roster",
+        "monitor/bfr_schedule_entries",
+        "monitor/bfr_schedule_versions",
+        "monitor/bfr_teacher_directory",
+        "monitor/grades",
+        "monitor/occurrences",
+        "monitor/profiles",
+        "monitor/school_meetings",
+        "monitor/support_requests",
+        "monitor/bfr_school_calendar_days",
+        "monitor/bfr_school_calendar_month_targets",
+        "monitor/bfr_school_shift_settings",
+        "parent/aee_plans",
+        "parent/aee_sessions",
+        "parent/aee_student_roster",
+        "parent/bfr_schedule_entries",
+        "parent/bfr_schedule_versions",
+        "parent/bfr_teacher_directory",
+        "parent/grades",
+        "parent/occurrences",
+        "parent/profiles",
+        "parent/school_meetings",
+        "parent/support_requests",
+        "pedagogical/aee_plans",
+        "pedagogical/aee_sessions",
+        "pedagogical/aee_student_roster",
+        "pedagogical/bfr_schedule_entries",
+        "pedagogical/bfr_schedule_versions",
+        "pedagogical/bfr_school_calendar_days",
+        "pedagogical/bfr_school_calendar_month_targets",
+        "pedagogical/bfr_school_shift_settings",
+        "psychology/aee_plans",
+        "psychology/aee_sessions",
+        "psychology/aee_student_roster",
+        "psychology/announcements",
+        "psychology/bfr_schedule_entries",
+        "psychology/bfr_schedule_versions",
+        "psychology/bfr_teacher_directory",
+        "psychology/grades",
+        "psychology/occurrences",
+        "psychology/projects",
+        "psychology/school_activities",
+        "psychology/school_events",
+        "psychology/school_meetings",
+        "psychology/support_requests",
+        "psychology/bfr_school_calendar_days",
+        "psychology/bfr_school_calendar_month_targets",
+        "psychology/bfr_school_shift_settings",
+        "secretary/aee_plans",
+        "secretary/aee_sessions",
+        "secretary/aee_student_roster",
+        "secretary/occurrences",
+        "secretary/projects",
+        "secretary/support_requests",
+        "secretary/bfr_school_calendar_days",
+        "secretary/bfr_school_calendar_month_targets",
+        "secretary/bfr_school_shift_settings",
+        "social_work/aee_plans",
+        "social_work/aee_sessions",
+        "social_work/aee_student_roster",
+        "social_work/announcements",
+        "social_work/bfr_schedule_entries",
+        "social_work/bfr_schedule_versions",
+        "social_work/bfr_teacher_directory",
+        "social_work/grades",
+        "social_work/occurrences",
+        "social_work/projects",
+        "social_work/school_activities",
+        "social_work/school_events",
+        "social_work/school_meetings",
+        "social_work/bfr_school_calendar_days",
+        "social_work/bfr_school_calendar_month_targets",
+        "social_work/bfr_school_shift_settings",
+        "sports_operator/aee_plans",
+        "sports_operator/aee_sessions",
+        "sports_operator/aee_student_roster",
+        "sports_operator/announcements",
+        "sports_operator/bfr_schedule_entries",
+        "sports_operator/bfr_schedule_versions",
+        "sports_operator/bfr_teacher_directory",
+        "sports_operator/grades",
+        "sports_operator/occurrences",
+        "sports_operator/profiles",
+        "sports_operator/projects",
+        "sports_operator/school_activities",
+        "sports_operator/school_events",
+        "sports_operator/school_meetings",
+        "sports_operator/support_requests",
+        "sports_operator/bfr_school_calendar_days",
+        "sports_operator/bfr_school_calendar_month_targets",
+        "sports_operator/bfr_school_shift_settings",
+        "student/aee_plans",
+        "student/aee_sessions",
+        "student/aee_student_roster",
+        "student/bfr_schedule_entries",
+        "student/bfr_schedule_versions",
+        "student/bfr_teacher_directory",
+        "student/grades",
+        "student/occurrences",
+        "student/profiles",
+        "student/school_meetings",
+        "student/support_requests"
+      ],
+      "mobile_celulas": 84,
+      "mobile_por_estado": {
+        "OK": 70,
+        "por_medir": 6,
+        "TRAVADA": 8
+      },
+      "desktop_celulas": [
+        "aee@1280=MEDIDA_WEB",
+        "aee@1440=MEDIDA_WEB",
+        "aee@1920=MEDIDA_WEB",
+        "coordinator@1280=BLOQUEADA",
+        "coordinator@1440=MEDIDA_WEB",
+        "coordinator@1920=MEDIDA_WEB",
+        "developer@1280=MEDIDA_WEB",
+        "developer@1440=MEDIDA_WEB",
+        "developer@1920=MEDIDA_WEB",
+        "director@1280=MEDIDA_WEB",
+        "director@1440=MEDIDA_WEB",
+        "director@1920=MEDIDA_WEB",
+        "education_supervisor@1280=BLOQUEADA",
+        "education_supervisor@1440=MEDIDA_WEB",
+        "education_supervisor@1920=MEDIDA_WEB",
+        "gatekeeper@1280=MEDIDA_WEB",
+        "gatekeeper@1440=MEDIDA_WEB",
+        "gatekeeper@1920=MEDIDA_WEB",
+        "monitor@1280=BLOQUEADA",
+        "monitor@1440=MEDIDA_WEB",
+        "monitor@1920=BLOQUEADA",
+        "parent@1280=MEDIDA_WEB",
+        "parent@1440=MEDIDA_WEB",
+        "parent@1920=MEDIDA_WEB",
+        "pedagogical@1280=MEDIDA_WEB",
+        "pedagogical@1440=MEDIDA_WEB",
+        "pedagogical@1920=MEDIDA_WEB",
+        "psychology@1280=MEDIDA_WEB",
+        "psychology@1440=MEDIDA_WEB",
+        "psychology@1920=MEDIDA_WEB",
+        "secretary@1280=MEDIDA_WEB",
+        "secretary@1440=MEDIDA_WEB",
+        "secretary@1920=MEDIDA_WEB",
+        "social_work@1280=MEDIDA_WEB",
+        "social_work@1440=MEDIDA_WEB",
+        "social_work@1920=MEDIDA_WEB",
+        "sports_operator@1280=MEDIDA_WEB",
+        "sports_operator@1440=MEDIDA_WEB",
+        "sports_operator@1920=MEDIDA_WEB",
+        "student@1280=MEDIDA_WEB",
+        "student@1440=MEDIDA_WEB",
+        "student@1920=MEDIDA_WEB"
+      ],
+      "regua_de_prova": "conteudo",
+      "prova_bateu": false,
+      "corridas": {
+        "conteudo": [],
+        "superficie": [
+          {
+            "ficheiro": "evidence/bu5-portas-do-ar-20-11.json",
+            "existe": true,
+            "classe": "no_ar_servido",
+            "campos": 1,
+            "data": "2026-11-20"
+          },
+          {
+            "ficheiro": "evidence/p73-cobertura-m5-por-ar-20-11.json",
+            "existe": true,
+            "classe": "no_ar_servido",
+            "campos": 1,
+            "data": "2026-11-20"
+          }
+        ],
+        "banco": [
+          {
+            "ficheiro": "evidence/bu3-pegada-de-modulos-20-11e-VERMELHO-de-tres-rpcs-chamados-e-inexistentes.json",
+            "existe": true,
+            "classe": "no_ar_servido",
+            "campos": 2,
+            "data": "2026-11-20"
+          }
+        ]
+      },
+      "contradicoes": [
+        {
+          "tipo": "defeito",
+          "registro": "C.01 a C.09 IF/PI",
+          "medido": "4 regiões do papel estão desativadas no bundle vivo e 2 dos 3 RPCs que elas chamam não existem no catálogo",
+          "artefacto": "evidence/bu3-pegada-de-modulos-20-11e-VERMELHO-de-tres-rpcs-chamados-e-inexistentes.json"
+        }
+      ],
+      "estado_pela_regra_degenerada_antes_de_3": "PARCIALMENTE IMPLEMENTADO",
+      "estado_derivado": "IMPLEMENTADO COM ERROS"
+    },
+    {
+      "grupo": "5.7",
+      "rotulo": "Direção",
+      "rotulo_do_registro": "Direção",
+      "itens": 7,
+      "codigos": {
+        "IF": 6,
+        "NM": 1
+      },
+      "frac_implementado": 1,
+      "portas_proprias_no_ar": 9,
+      "portas_declaradas": 9,
+      "portas_fora_do_ar": [],
+      "papeis_com_porta_propria": [
+        "coordinator",
+        "developer",
+        "director",
+        "monitor",
+        "parent",
+        "secretary"
+      ],
+      "regioes": 7,
+      "regioes_desativadas": [],
+      "regioes_diferidas": 5,
+      "tabelas_distintas": 8,
+      "rpcs": [],
+      "chars_regioes": 75626,
+      "rpcs_sao_todas_predicados_de_autorizacao": true,
+      "alcance_por_papel": [
+        "coordinator:L133W101",
+        "developer:L165W144",
+        "director:L127W98",
+        "monitor:L17W4",
+        "parent:L17W3",
+        "secretary:L72W53"
+      ],
+      "banda_de_alcance": "L 17..133 · W 3..101 (5 papéis)",
+      "banda_com_preview": "L 17..165 · W 3..144",
+      "papeis_efetivos_da_banda": [
+        "coordinator",
+        "director",
+        "monitor",
+        "parent",
+        "secretary"
+      ],
+      "leitura_maxima_efetiva": 133,
+      "leitura_maxima_com_preview": 165,
+      "mesas_da_unidade_fora_do_alcance_dos_papeis": [
+        "coordinator/director_routine_items",
+        "monitor/attendance",
+        "monitor/bfr_lesson_attendance",
+        "monitor/grades",
+        "monitor/director_routine_items",
+        "monitor/bfr_teacher_directory",
+        "monitor/profiles",
+        "parent/attendance",
+        "parent/bfr_lesson_attendance",
+        "parent/classes",
+        "parent/grades",
+        "parent/students",
+        "parent/director_routine_items",
+        "parent/bfr_teacher_directory",
+        "parent/profiles",
+        "secretary/bfr_lesson_attendance",
+        "secretary/director_routine_items"
+      ],
+      "mobile_celulas": 36,
+      "mobile_por_estado": {
+        "OK": 27,
+        "TRAVADA": 8,
+        "por_medir": 1
+      },
+      "desktop_celulas": [
+        "coordinator@1280=BLOQUEADA",
+        "coordinator@1440=MEDIDA_WEB",
+        "coordinator@1920=MEDIDA_WEB",
+        "developer@1280=MEDIDA_WEB",
+        "developer@1440=MEDIDA_WEB",
+        "developer@1920=MEDIDA_WEB",
+        "director@1280=MEDIDA_WEB",
+        "director@1440=MEDIDA_WEB",
+        "director@1920=MEDIDA_WEB",
+        "monitor@1280=BLOQUEADA",
+        "monitor@1440=MEDIDA_WEB",
+        "monitor@1920=BLOQUEADA",
+        "parent@1280=MEDIDA_WEB",
+        "parent@1440=MEDIDA_WEB",
+        "parent@1920=MEDIDA_WEB",
+        "secretary@1280=MEDIDA_WEB",
+        "secretary@1440=MEDIDA_WEB",
+        "secretary@1920=MEDIDA_WEB"
+      ],
+      "regua_de_prova": "conteudo",
+      "prova_bateu": true,
+      "corridas": {
+        "conteudo": [
+          {
+            "ficheiro": "evidence/p36-browser-supervisao-director-390-1280px-19-11.json",
+            "existe": true,
+            "classe": "no_ar_servido",
+            "campos": 1,
+            "data": "2026-11-19"
+          }
+        ],
+        "superficie": [
+          {
+            "ficheiro": "evidence/bu5-portas-do-ar-20-11.json",
+            "existe": true,
+            "classe": "no_ar_servido",
+            "campos": 1,
+            "data": "2026-11-20"
+          },
+          {
+            "ficheiro": "evidence/p73-cobertura-m5-por-ar-20-11.json",
+            "existe": true,
+            "classe": "no_ar_servido",
+            "campos": 1,
+            "data": "2026-11-20"
+          }
+        ],
+        "banco": []
+      },
+      "contradicoes": [],
+      "estado_pela_regra_degenerada_antes_de_3": "PARCIALMENTE IMPLEMENTADO",
+      "estado_derivado": "PARCIALMENTE IMPLEMENTADO"
+    },
+    {
+      "grupo": "5.8",
+      "rotulo": "Secretaria Escolar",
+      "rotulo_do_registro": "Secretaria Escolar",
+      "itens": 6,
+      "codigos": {
+        "IF": 6
+      },
+      "frac_implementado": 1,
+      "portas_proprias_no_ar": 6,
+      "portas_declaradas": 6,
+      "portas_fora_do_ar": [],
+      "papeis_com_porta_propria": [
+        "aee",
+        "coordinator",
+        "developer",
+        "director",
+        "education_supervisor",
+        "parent",
+        "secretary",
+        "student"
+      ],
+      "regioes": 1,
+      "regioes_desativadas": [],
+      "regioes_diferidas": 1,
+      "tabelas_distintas": 18,
+      "rpcs": [],
+      "chars_regioes": 65623,
+      "rpcs_sao_todas_predicados_de_autorizacao": true,
+      "alcance_por_papel": [
+        "aee:L78W55",
+        "coordinator:L133W101",
+        "developer:L165W144",
+        "director:L127W98",
+        "education_supervisor:L16W4",
+        "parent:L17W3",
+        "secretary:L72W53",
+        "student:L17W4"
+      ],
+      "banda_de_alcance": "L 16..133 · W 3..101 (7 papéis)",
+      "banda_com_preview": "L 16..165 · W 3..144",
+      "papeis_efetivos_da_banda": [
+        "aee",
+        "coordinator",
+        "director",
+        "education_supervisor",
+        "parent",
+        "secretary",
+        "student"
+      ],
+      "leitura_maxima_efetiva": 133,
+      "leitura_maxima_com_preview": 165,
+      "mesas_da_unidade_fora_do_alcance_dos_papeis": [
+        "aee/learning_action_plans",
+        "aee/school_documents",
+        "aee/school_meetings",
+        "aee/schools",
+        "aee/secretary_profile_change_requests",
+        "aee/secretary_request_events",
+        "aee/secretary_requests",
+        "aee/student_school_profiles",
+        "aee/supervision_requests",
+        "coordinator/school_events",
+        "coordinator/schools",
+        "coordinator/secretary_profile_change_requests",
+        "coordinator/secretary_request_events",
+        "coordinator/secretary_requests",
+        "developer/schools",
+        "director/school_events",
+        "director/schools",
+        "director/secretary_profile_change_requests",
+        "director/secretary_request_events",
+        "education_supervisor/announcements",
+        "education_supervisor/bfr_teacher_directory",
+        "education_supervisor/profiles",
+        "education_supervisor/school_activities",
+        "education_supervisor/school_documents",
+        "education_supervisor/school_meetings",
+        "education_supervisor/secretary_profile_change_requests",
+        "education_supervisor/secretary_request_events",
+        "education_supervisor/secretary_requests",
+        "parent/attendance",
+        "parent/bfr_teacher_directory",
+        "parent/classes",
+        "parent/grades",
+        "parent/learning_action_plans",
+        "parent/profiles",
+        "parent/school_meetings",
+        "parent/schools",
+        "parent/secretary_profile_change_requests",
+        "parent/secretary_request_events",
+        "parent/student_school_profiles",
+        "parent/students",
+        "parent/supervision_requests",
+        "secretary/learning_action_plans",
+        "secretary/schools",
+        "student/attendance",
+        "student/bfr_teacher_directory",
+        "student/classes",
+        "student/grades",
+        "student/learning_action_plans",
+        "student/profiles",
+        "student/school_meetings",
+        "student/schools",
+        "student/secretary_profile_change_requests",
+        "student/secretary_request_events",
+        "student/student_school_profiles",
+        "student/students",
+        "student/supervision_requests"
+      ],
+      "mobile_celulas": 48,
+      "mobile_por_estado": {
+        "OK": 43,
+        "por_medir": 3,
+        "TRAVADA": 2
+      },
+      "desktop_celulas": [
+        "aee@1280=MEDIDA_WEB",
+        "aee@1440=MEDIDA_WEB",
+        "aee@1920=MEDIDA_WEB",
+        "coordinator@1280=BLOQUEADA",
+        "coordinator@1440=MEDIDA_WEB",
+        "coordinator@1920=MEDIDA_WEB",
+        "developer@1280=MEDIDA_WEB",
+        "developer@1440=MEDIDA_WEB",
+        "developer@1920=MEDIDA_WEB",
+        "director@1280=MEDIDA_WEB",
+        "director@1440=MEDIDA_WEB",
+        "director@1920=MEDIDA_WEB",
+        "education_supervisor@1280=BLOQUEADA",
+        "education_supervisor@1440=MEDIDA_WEB",
+        "education_supervisor@1920=MEDIDA_WEB",
+        "parent@1280=MEDIDA_WEB",
+        "parent@1440=MEDIDA_WEB",
+        "parent@1920=MEDIDA_WEB",
+        "secretary@1280=MEDIDA_WEB",
+        "secretary@1440=MEDIDA_WEB",
+        "secretary@1920=MEDIDA_WEB",
+        "student@1280=MEDIDA_WEB",
+        "student@1440=MEDIDA_WEB",
+        "student@1920=MEDIDA_WEB"
+      ],
+      "regua_de_prova": "conteudo",
+      "prova_bateu": true,
+      "corridas": {
+        "conteudo": [
+          {
+            "ficheiro": "evidence/p36-browser-supervisao-secretary-390-1280px-19-11.json",
+            "existe": true,
+            "classe": "no_ar_servido",
+            "campos": 5,
+            "data": "2026-11-19"
+          }
+        ],
+        "superficie": [
+          {
+            "ficheiro": "evidence/bu5-portas-do-ar-20-11.json",
+            "existe": true,
+            "classe": "no_ar_servido",
+            "campos": 1,
+            "data": "2026-11-20"
+          },
+          {
+            "ficheiro": "evidence/p73-cobertura-m5-por-ar-20-11.json",
+            "existe": true,
+            "classe": "no_ar_servido",
+            "campos": 1,
+            "data": "2026-11-20"
+          }
+        ],
+        "banco": []
+      },
+      "contradicoes": [],
+      "estado_pela_regra_degenerada_antes_de_3": "IMPLEMENTADO E TESTADO",
+      "estado_derivado": "IMPLEMENTADO E TESTADO"
+    },
+    {
+      "grupo": "5.9",
+      "rotulo": "Supervisão Educacional (Secretaria de Educação)",
+      "rotulo_do_registro": "Supervisão Educacional (Secretaria de Educação)",
+      "itens": 6,
+      "codigos": {
+        "IF": 5,
+        "PF": 1
+      },
+      "frac_implementado": 0.83,
+      "portas_proprias_no_ar": 2,
+      "portas_declaradas": 2,
+      "portas_fora_do_ar": [],
+      "papeis_com_porta_propria": [
+        "coordinator",
+        "developer",
+        "director",
+        "education_supervisor",
+        "parent",
+        "pedagogical",
+        "secretary",
+        "student"
+      ],
+      "regioes": 1,
+      "regioes_desativadas": [],
+      "regioes_diferidas": 1,
+      "tabelas_distintas": 18,
+      "rpcs": [
+        "bfr_teacher_context"
+      ],
+      "chars_regioes": 85249,
+      "rpcs_sao_todas_predicados_de_autorizacao": false,
+      "alcance_por_papel": [
+        "coordinator:L133W101",
+        "developer:L165W144",
+        "director:L127W98",
+        "education_supervisor:L16W4",
+        "parent:L17W3",
+        "pedagogical:L81W51",
+        "secretary:L72W53",
+        "student:L17W4"
+      ],
+      "banda_de_alcance": "L 16..133 · W 3..101 (7 papéis)",
+      "banda_com_preview": "L 16..165 · W 3..144",
+      "papeis_efetivos_da_banda": [
+        "coordinator",
+        "director",
+        "education_supervisor",
+        "parent",
+        "pedagogical",
+        "secretary",
+        "student"
+      ],
+      "leitura_maxima_efetiva": 133,
+      "leitura_maxima_com_preview": 165,
+      "mesas_da_unidade_fora_do_alcance_dos_papeis": [
+        "coordinator/guardian_students",
+        "director/guardian_students",
+        "education_supervisor/guardian_students",
+        "education_supervisor/learning_action_items",
+        "education_supervisor/learning_assessment_results",
+        "education_supervisor/learning_assessments",
+        "education_supervisor/learning_evidence",
+        "education_supervisor/learning_external_results",
+        "education_supervisor/learning_indicator_settings",
+        "education_supervisor/learning_meetings",
+        "education_supervisor/learning_skills",
+        "education_supervisor/learning_student_progress",
+        "education_supervisor/learning_teacher_actions",
+        "education_supervisor/profiles",
+        "education_supervisor/school_activities",
+        "parent/attendance",
+        "parent/classes",
+        "parent/grades",
+        "parent/guardian_students",
+        "parent/learning_action_items",
+        "parent/learning_action_plans",
+        "parent/learning_assessment_results",
+        "parent/learning_assessments",
+        "parent/learning_evidence",
+        "parent/learning_external_results",
+        "parent/learning_indicator_settings",
+        "parent/learning_meetings",
+        "parent/learning_skills",
+        "parent/learning_student_progress",
+        "parent/learning_teacher_actions",
+        "parent/profiles",
+        "parent/students",
+        "pedagogical/guardian_students",
+        "pedagogical/learning_action_items",
+        "pedagogical/learning_action_plans",
+        "pedagogical/learning_assessment_results",
+        "pedagogical/learning_assessments",
+        "pedagogical/learning_evidence",
+        "pedagogical/learning_external_results",
+        "pedagogical/learning_meetings",
+        "pedagogical/learning_student_progress",
+        "pedagogical/learning_teacher_actions",
+        "secretary/guardian_students",
+        "secretary/learning_action_items",
+        "secretary/learning_action_plans",
+        "secretary/learning_assessment_results",
+        "secretary/learning_assessments",
+        "secretary/learning_evidence",
+        "secretary/learning_external_results",
+        "secretary/learning_indicator_settings",
+        "secretary/learning_meetings",
+        "secretary/learning_skills",
+        "secretary/learning_student_progress",
+        "secretary/learning_teacher_actions",
+        "student/attendance",
+        "student/classes",
+        "student/grades",
+        "student/guardian_students",
+        "student/learning_action_items",
+        "student/learning_action_plans",
+        "student/learning_assessment_results",
+        "student/learning_assessments",
+        "student/learning_evidence",
+        "student/learning_external_results",
+        "student/learning_indicator_settings",
+        "student/learning_meetings",
+        "student/learning_skills",
+        "student/learning_student_progress",
+        "student/learning_teacher_actions",
+        "student/profiles",
+        "student/students"
+      ],
+      "mobile_celulas": 48,
+      "mobile_por_estado": {
+        "OK": 43,
+        "por_medir": 3,
+        "TRAVADA": 2
+      },
+      "desktop_celulas": [
+        "coordinator@1280=BLOQUEADA",
+        "coordinator@1440=MEDIDA_WEB",
+        "coordinator@1920=MEDIDA_WEB",
+        "developer@1280=MEDIDA_WEB",
+        "developer@1440=MEDIDA_WEB",
+        "developer@1920=MEDIDA_WEB",
+        "director@1280=MEDIDA_WEB",
+        "director@1440=MEDIDA_WEB",
+        "director@1920=MEDIDA_WEB",
+        "education_supervisor@1280=BLOQUEADA",
+        "education_supervisor@1440=MEDIDA_WEB",
+        "education_supervisor@1920=MEDIDA_WEB",
+        "parent@1280=MEDIDA_WEB",
+        "parent@1440=MEDIDA_WEB",
+        "parent@1920=MEDIDA_WEB",
+        "pedagogical@1280=MEDIDA_WEB",
+        "pedagogical@1440=MEDIDA_WEB",
+        "pedagogical@1920=MEDIDA_WEB",
+        "secretary@1280=MEDIDA_WEB",
+        "secretary@1440=MEDIDA_WEB",
+        "secretary@1920=MEDIDA_WEB",
+        "student@1280=MEDIDA_WEB",
+        "student@1440=MEDIDA_WEB",
+        "student@1920=MEDIDA_WEB"
+      ],
+      "regua_de_prova": "conteudo",
+      "prova_bateu": true,
+      "corridas": {
+        "conteudo": [
+          {
+            "ficheiro": "evidence/p36-browser-supervisao-education_supervisor-390-1280px-19-11.json",
+            "existe": true,
+            "classe": "no_ar_servido",
+            "campos": 5,
+            "data": "2026-11-19"
+          },
+          {
+            "ficheiro": "evidence/s21-diary.json",
+            "existe": true,
+            "classe": "noutro_ar",
+            "campos": 5,
+            "data": "2026-11-13"
+          }
+        ],
+        "superficie": [
+          {
+            "ficheiro": "evidence/bu5-portas-do-ar-20-11.json",
+            "existe": true,
+            "classe": "no_ar_servido",
+            "campos": 1,
+            "data": "2026-11-20"
+          },
+          {
+            "ficheiro": "evidence/p73-cobertura-m5-por-ar-20-11.json",
+            "existe": true,
+            "classe": "no_ar_servido",
+            "campos": 1,
+            "data": "2026-11-20"
+          }
+        ],
+        "banco": []
+      },
+      "contradicoes": [],
+      "estado_pela_regra_degenerada_antes_de_3": "NÃO IMPLEMENTADO",
+      "estado_derivado": "IMPLEMENTADO E TESTADO"
+    },
+    {
+      "grupo": "5.10",
+      "rotulo": "Monitor (transporte)",
+      "rotulo_do_registro": "Monitor (transporte)",
+      "itens": 4,
+      "codigos": {
+        "IF": 4
+      },
+      "frac_implementado": 1,
+      "portas_proprias_no_ar": 2,
+      "portas_declaradas": 2,
+      "portas_fora_do_ar": [],
+      "papeis_com_porta_propria": [
+        "coordinator",
+        "developer",
+        "monitor",
+        "parent"
+      ],
+      "regioes": 1,
+      "regioes_desativadas": [],
+      "regioes_diferidas": 1,
+      "tabelas_distintas": 9,
+      "rpcs": [],
+      "chars_regioes": 42224,
+      "rpcs_sao_todas_predicados_de_autorizacao": true,
+      "alcance_por_papel": [
+        "coordinator:L133W101",
+        "developer:L165W144",
+        "monitor:L17W4",
+        "parent:L17W3"
+      ],
+      "banda_de_alcance": "L 17..133 · W 3..101 (3 papéis)",
+      "banda_com_preview": "L 17..165 · W 3..144",
+      "papeis_efetivos_da_banda": [
+        "coordinator",
+        "monitor",
+        "parent"
+      ],
+      "leitura_maxima_efetiva": 133,
+      "leitura_maxima_com_preview": 165,
+      "mesas_da_unidade_fora_do_alcance_dos_papeis": [
+        "coordinator/entry_restrictions",
+        "coordinator/route_incidents",
+        "coordinator/school_events",
+        "monitor/entry_restrictions",
+        "monitor/occurrences",
+        "monitor/school_meetings",
+        "parent/classes",
+        "parent/entry_restrictions",
+        "parent/gate_entry_alerts",
+        "parent/occurrences",
+        "parent/route_incidents",
+        "parent/school_meetings",
+        "parent/student_messages",
+        "parent/students"
+      ],
+      "mobile_celulas": 24,
+      "mobile_por_estado": {
+        "OK": 18,
+        "TRAVADA": 6
+      },
+      "desktop_celulas": [
+        "coordinator@1280=BLOQUEADA",
+        "coordinator@1440=MEDIDA_WEB",
+        "coordinator@1920=MEDIDA_WEB",
+        "developer@1280=MEDIDA_WEB",
+        "developer@1440=MEDIDA_WEB",
+        "developer@1920=MEDIDA_WEB",
+        "monitor@1280=BLOQUEADA",
+        "monitor@1440=MEDIDA_WEB",
+        "monitor@1920=BLOQUEADA",
+        "parent@1280=MEDIDA_WEB",
+        "parent@1440=MEDIDA_WEB",
+        "parent@1920=MEDIDA_WEB"
+      ],
+      "regua_de_prova": "conteudo",
+      "prova_bateu": false,
+      "corridas": {
+        "conteudo": [
+          {
+            "ficheiro": "docs/c2r-diario.md",
+            "existe": true,
+            "classe": "sem_pegada_de_ar",
+            "campos": 0,
+            "data": null
+          }
+        ],
+        "superficie": [
+          {
+            "ficheiro": "evidence/bu5-portas-do-ar-20-11.json",
+            "existe": true,
+            "classe": "no_ar_servido",
+            "campos": 1,
+            "data": "2026-11-20"
+          },
+          {
+            "ficheiro": "evidence/p73-cobertura-m5-por-ar-20-11.json",
+            "existe": true,
+            "classe": "no_ar_servido",
+            "campos": 1,
+            "data": "2026-11-20"
+          }
+        ],
+        "banco": []
+      },
+      "contradicoes": [
+        {
+          "tipo": "defeito",
+          "registro": "M.01 a M.04 IF",
+          "medido": "as 6 larguras do papel `monitor` estão TRAVADAS (barra mobile não montou), logo nenhuma porta do monitor foi medida no ar actual",
+          "artefacto": "evidence/p73-cobertura-m5-por-ar-20-11.json"
+        }
+      ],
+      "estado_pela_regra_degenerada_antes_de_3": "IMPLEMENTADO E TESTADO",
+      "estado_derivado": "IMPLEMENTADO COM ERROS"
+    },
+    {
+      "grupo": "5.11",
+      "rotulo": "Porteiro",
+      "rotulo_do_registro": "Porteiro",
+      "itens": 5,
+      "codigos": {
+        "IF": 3,
+        "PF": 2
+      },
+      "frac_implementado": 0.6,
+      "portas_proprias_no_ar": 2,
+      "portas_declaradas": 2,
+      "portas_fora_do_ar": [],
+      "papeis_com_porta_propria": [
+        "aee",
+        "coordinator",
+        "developer",
+        "director",
+        "gatekeeper",
+        "monitor",
+        "student"
+      ],
+      "regioes": 1,
+      "regioes_desativadas": [],
+      "regioes_diferidas": 1,
+      "tabelas_distintas": 0,
+      "rpcs": [],
+      "chars_regioes": 2128,
+      "rpcs_sao_todas_predicados_de_autorizacao": true,
+      "alcance_por_papel": [
+        "aee:L78W55",
+        "coordinator:L133W101",
+        "developer:L165W144",
+        "director:L127W98",
+        "gatekeeper:L15W1",
+        "monitor:L17W4",
+        "student:L17W4"
+      ],
+      "banda_de_alcance": "L 15..133 · W 1..101 (6 papéis)",
+      "banda_com_preview": "L 15..165 · W 1..144",
+      "papeis_efetivos_da_banda": [
+        "aee",
+        "coordinator",
+        "director",
+        "gatekeeper",
+        "monitor",
+        "student"
+      ],
+      "leitura_maxima_efetiva": 133,
+      "leitura_maxima_com_preview": 165,
+      "mesas_da_unidade_fora_do_alcance_dos_papeis": [],
+      "mobile_celulas": 42,
+      "mobile_por_estado": {
+        "OK": 36,
+        "TRAVADA": 6
+      },
+      "desktop_celulas": [
+        "aee@1280=MEDIDA_WEB",
+        "aee@1440=MEDIDA_WEB",
+        "aee@1920=MEDIDA_WEB",
+        "coordinator@1280=BLOQUEADA",
+        "coordinator@1440=MEDIDA_WEB",
+        "coordinator@1920=MEDIDA_WEB",
+        "developer@1280=MEDIDA_WEB",
+        "developer@1440=MEDIDA_WEB",
+        "developer@1920=MEDIDA_WEB",
+        "director@1280=MEDIDA_WEB",
+        "director@1440=MEDIDA_WEB",
+        "director@1920=MEDIDA_WEB",
+        "gatekeeper@1280=MEDIDA_WEB",
+        "gatekeeper@1440=MEDIDA_WEB",
+        "gatekeeper@1920=MEDIDA_WEB",
+        "monitor@1280=BLOQUEADA",
+        "monitor@1440=MEDIDA_WEB",
+        "monitor@1920=BLOQUEADA",
+        "student@1280=MEDIDA_WEB",
+        "student@1440=MEDIDA_WEB",
+        "student@1920=MEDIDA_WEB"
+      ],
+      "regua_de_prova": "conteudo",
+      "prova_bateu": false,
+      "corridas": {
+        "conteudo": [
+          {
+            "ficheiro": "docs/c2r-diario.md",
+            "existe": true,
+            "classe": "sem_pegada_de_ar",
+            "campos": 0,
+            "data": null
+          }
+        ],
+        "superficie": [
+          {
+            "ficheiro": "evidence/bu5-portas-do-ar-20-11.json",
+            "existe": true,
+            "classe": "no_ar_servido",
+            "campos": 1,
+            "data": "2026-11-20"
+          },
+          {
+            "ficheiro": "evidence/p73-cobertura-m5-por-ar-20-11.json",
+            "existe": true,
+            "classe": "no_ar_servido",
+            "campos": 1,
+            "data": "2026-11-20"
+          }
+        ],
+        "banco": [
+          {
+            "ficheiro": "evidence/p73-rm52-estado-calendario-20-11.txt",
+            "existe": true,
+            "classe": "sem_pegada_de_ar",
+            "campos": 0,
+            "data": null
+          }
+        ]
+      },
+      "contradicoes": [
+        {
+          "tipo": "defeito",
+          "registro": "G.01 IF leitor QR, evidência T79/v102-v103",
+          "medido": "o destino servido chama `register_gate_checkin_v2`, que dá 0 em `pg_proc` e 404/PGRST202 pelo fio; calendário com `dia_letivo_confirmado:false`",
+          "artefacto": "evidence/p73-rm52-estado-calendario-20-11.txt"
+        },
+        {
+          "tipo": "prova_ausente",
+          "registro": "T79 E2E (§CR/§CV)",
+          "medido": "nenhum artefacto com o identificador T79 existe em `evidence/` nem `scripts/`; a citação só vive na prosa do registro",
+          "artefacto": "docs/roadmap-master.md"
+        }
+      ],
+      "estado_pela_regra_degenerada_antes_de_3": "NÃO IMPLEMENTADO",
+      "estado_derivado": "IMPLEMENTADO COM ERROS"
+    },
+    {
+      "grupo": "5.12",
+      "rotulo": "AEE / Psicologia / Serviço Social",
+      "rotulo_do_registro": "AEE / Psicologia / Serviço Social",
+      "itens": 6,
+      "codigos": {
+        "IF": 6
+      },
+      "frac_implementado": 1,
+      "portas_proprias_no_ar": 5,
+      "portas_declaradas": 5,
+      "portas_fora_do_ar": [],
+      "papeis_com_porta_propria": [
+        "aee",
+        "coordinator",
+        "developer",
+        "director",
+        "education_supervisor",
+        "parent",
+        "pedagogical",
+        "psychology",
+        "secretary",
+        "social_work",
+        "student"
+      ],
+      "regioes": 2,
+      "regioes_desativadas": [],
+      "regioes_diferidas": 2,
+      "tabelas_distintas": 8,
+      "rpcs": [],
+      "chars_regioes": 44387,
+      "rpcs_sao_todas_predicados_de_autorizacao": true,
+      "alcance_por_papel": [
+        "aee:L78W55",
+        "coordinator:L133W101",
+        "developer:L165W144",
+        "director:L127W98",
+        "education_supervisor:L16W4",
+        "parent:L17W3",
+        "pedagogical:L81W51",
+        "psychology:L16W13",
+        "secretary:L72W53",
+        "social_work:L14W14",
+        "student:L17W4"
+      ],
+      "banda_de_alcance": "L 14..133 · W 3..101 (10 papéis)",
+      "banda_com_preview": "L 14..165 · W 3..144",
+      "papeis_efetivos_da_banda": [
+        "aee",
+        "coordinator",
+        "director",
+        "education_supervisor",
+        "parent",
+        "pedagogical",
+        "psychology",
+        "secretary",
+        "social_work",
+        "student"
+      ],
+      "leitura_maxima_efetiva": 133,
+      "leitura_maxima_com_preview": 165,
+      "mesas_da_unidade_fora_do_alcance_dos_papeis": [
+        "aee/support_appointments",
+        "aee/support_messages",
+        "coordinator/support_messages",
+        "director/support_messages",
+        "education_supervisor/profiles",
+        "education_supervisor/support_appointments",
+        "education_supervisor/support_follow_ups",
+        "education_supervisor/support_messages",
+        "education_supervisor/support_professionals",
+        "education_supervisor/support_requests",
+        "education_supervisor/support_services",
+        "parent/profiles",
+        "parent/students",
+        "parent/support_appointments",
+        "parent/support_follow_ups",
+        "parent/support_messages",
+        "parent/support_requests",
+        "parent/support_services",
+        "pedagogical/support_follow_ups",
+        "pedagogical/support_messages",
+        "psychology/students",
+        "psychology/support_requests",
+        "psychology/support_services",
+        "secretary/support_appointments",
+        "secretary/support_follow_ups",
+        "secretary/support_messages",
+        "secretary/support_requests",
+        "social_work/students",
+        "social_work/support_professionals",
+        "social_work/support_services",
+        "student/profiles",
+        "student/students",
+        "student/support_appointments",
+        "student/support_follow_ups",
+        "student/support_messages",
+        "student/support_requests",
+        "student/support_services"
+      ],
+      "mobile_celulas": 66,
+      "mobile_por_estado": {
+        "OK": 61,
+        "por_medir": 3,
+        "TRAVADA": 2
+      },
+      "desktop_celulas": [
+        "aee@1280=MEDIDA_WEB",
+        "aee@1440=MEDIDA_WEB",
+        "aee@1920=MEDIDA_WEB",
+        "coordinator@1280=BLOQUEADA",
+        "coordinator@1440=MEDIDA_WEB",
+        "coordinator@1920=MEDIDA_WEB",
+        "developer@1280=MEDIDA_WEB",
+        "developer@1440=MEDIDA_WEB",
+        "developer@1920=MEDIDA_WEB",
+        "director@1280=MEDIDA_WEB",
+        "director@1440=MEDIDA_WEB",
+        "director@1920=MEDIDA_WEB",
+        "education_supervisor@1280=BLOQUEADA",
+        "education_supervisor@1440=MEDIDA_WEB",
+        "education_supervisor@1920=MEDIDA_WEB",
+        "parent@1280=MEDIDA_WEB",
+        "parent@1440=MEDIDA_WEB",
+        "parent@1920=MEDIDA_WEB",
+        "pedagogical@1280=MEDIDA_WEB",
+        "pedagogical@1440=MEDIDA_WEB",
+        "pedagogical@1920=MEDIDA_WEB",
+        "psychology@1280=MEDIDA_WEB",
+        "psychology@1440=MEDIDA_WEB",
+        "psychology@1920=MEDIDA_WEB",
+        "secretary@1280=MEDIDA_WEB",
+        "secretary@1440=MEDIDA_WEB",
+        "secretary@1920=MEDIDA_WEB",
+        "social_work@1280=MEDIDA_WEB",
+        "social_work@1440=MEDIDA_WEB",
+        "social_work@1920=MEDIDA_WEB",
+        "student@1280=MEDIDA_WEB",
+        "student@1440=MEDIDA_WEB",
+        "student@1920=MEDIDA_WEB"
+      ],
+      "regua_de_prova": "conteudo",
+      "prova_bateu": false,
+      "corridas": {
+        "conteudo": [],
+        "superficie": [
+          {
+            "ficheiro": "evidence/ah2-mobile2-m5-aee-1.json",
+            "existe": true,
+            "classe": "noutro_ar",
+            "campos": 1,
+            "data": "2026-11-17"
+          },
+          {
+            "ficheiro": "evidence/bu5-portas-do-ar-20-11.json",
+            "existe": true,
+            "classe": "no_ar_servido",
+            "campos": 1,
+            "data": "2026-11-20"
+          },
+          {
+            "ficheiro": "evidence/p73-cobertura-m5-por-ar-20-11.json",
+            "existe": true,
+            "classe": "no_ar_servido",
+            "campos": 1,
+            "data": "2026-11-20"
+          }
+        ],
+        "banco": []
+      },
+      "contradicoes": [
+        {
+          "tipo": "prova_ausente",
+          "registro": "A2.03 IF realtime 4 canais, evidência V71C/V71D",
+          "medido": "nenhum artefacto com esse identificador em `evidence/`; as ocorrências são 2 documentos de prosa e 1 lista de defeitos",
+          "artefacto": "docs/relatorio-final-auditoria.md"
+        }
+      ],
+      "estado_pela_regra_degenerada_antes_de_3": "IMPLEMENTADO E TESTADO",
+      "estado_derivado": "IMPLEMENTADO, MAS NÃO TESTADO"
+    },
+    {
+      "grupo": "5.13",
+      "rotulo": "Jogos Escolares",
+      "rotulo_do_registro": "Jogos Escolares",
+      "itens": 2,
+      "codigos": {
+        "IF": 2
+      },
+      "frac_implementado": 1,
+      "portas_proprias_no_ar": 2,
+      "portas_declaradas": 2,
+      "portas_fora_do_ar": [],
+      "papeis_com_porta_propria": [
+        "aee",
+        "coordinator",
+        "developer",
+        "director",
+        "education_supervisor",
+        "gatekeeper",
+        "monitor",
+        "parent",
+        "secretary",
+        "sports_operator",
+        "student"
+      ],
+      "regioes": 0,
+      "regioes_desativadas": [],
+      "regioes_diferidas": 0,
+      "tabelas_distintas": 0,
+      "rpcs": [],
+      "chars_regioes": 0,
+      "rpcs_sao_todas_predicados_de_autorizacao": true,
+      "alcance_por_papel": [
+        "aee:L78W55",
+        "coordinator:L133W101",
+        "developer:L165W144",
+        "director:L127W98",
+        "education_supervisor:L16W4",
+        "gatekeeper:L15W1",
+        "monitor:L17W4",
+        "parent:L17W3",
+        "secretary:L72W53",
+        "sports_operator:L3W0",
+        "student:L17W4"
+      ],
+      "banda_de_alcance": "L 3..133 · W 0..101 (10 papéis)",
+      "banda_com_preview": "L 3..165 · W 0..144",
+      "papeis_efetivos_da_banda": [
+        "aee",
+        "coordinator",
+        "director",
+        "education_supervisor",
+        "gatekeeper",
+        "monitor",
+        "parent",
+        "secretary",
+        "sports_operator",
+        "student"
+      ],
+      "leitura_maxima_efetiva": 133,
+      "leitura_maxima_com_preview": 165,
+      "mesas_da_unidade_fora_do_alcance_dos_papeis": [],
+      "mobile_celulas": 66,
+      "mobile_por_estado": {
+        "OK": 52,
+        "por_medir": 6,
+        "TRAVADA": 8
+      },
+      "desktop_celulas": [
+        "aee@1280=MEDIDA_WEB",
+        "aee@1440=MEDIDA_WEB",
+        "aee@1920=MEDIDA_WEB",
+        "coordinator@1280=BLOQUEADA",
+        "coordinator@1440=MEDIDA_WEB",
+        "coordinator@1920=MEDIDA_WEB",
+        "developer@1280=MEDIDA_WEB",
+        "developer@1440=MEDIDA_WEB",
+        "developer@1920=MEDIDA_WEB",
+        "director@1280=MEDIDA_WEB",
+        "director@1440=MEDIDA_WEB",
+        "director@1920=MEDIDA_WEB",
+        "education_supervisor@1280=BLOQUEADA",
+        "education_supervisor@1440=MEDIDA_WEB",
+        "education_supervisor@1920=MEDIDA_WEB",
+        "gatekeeper@1280=MEDIDA_WEB",
+        "gatekeeper@1440=MEDIDA_WEB",
+        "gatekeeper@1920=MEDIDA_WEB",
+        "monitor@1280=BLOQUEADA",
+        "monitor@1440=MEDIDA_WEB",
+        "monitor@1920=BLOQUEADA",
+        "parent@1280=MEDIDA_WEB",
+        "parent@1440=MEDIDA_WEB",
+        "parent@1920=MEDIDA_WEB",
+        "secretary@1280=MEDIDA_WEB",
+        "secretary@1440=MEDIDA_WEB",
+        "secretary@1920=MEDIDA_WEB",
+        "sports_operator@1280=MEDIDA_WEB",
+        "sports_operator@1440=MEDIDA_WEB",
+        "sports_operator@1920=MEDIDA_WEB",
+        "student@1280=MEDIDA_WEB",
+        "student@1440=MEDIDA_WEB",
+        "student@1920=MEDIDA_WEB"
+      ],
+      "regua_de_prova": "conteudo",
+      "prova_bateu": false,
+      "corridas": {
+        "conteudo": [],
+        "superficie": [
+          {
+            "ficheiro": "evidence/ah2-mobile2-m5-sports_operator-1.json",
+            "existe": true,
+            "classe": "noutro_ar",
+            "campos": 1,
+            "data": "2026-11-17"
+          },
+          {
+            "ficheiro": "evidence/ah2-mobile2-sm25-sports_operator-1280.json",
+            "existe": true,
+            "classe": "no_ar_servido",
+            "campos": 1,
+            "data": "2026-11-20"
+          },
+          {
+            "ficheiro": "evidence/bu5-portas-do-ar-20-11.json",
+            "existe": true,
+            "classe": "no_ar_servido",
+            "campos": 1,
+            "data": "2026-11-20"
+          }
+        ],
+        "banco": [
+          {
+            "ficheiro": "evidence/bu2c-caminhos-de-autorizacao-20-11c.json",
+            "existe": true,
+            "classe": "sem_pegada_de_ar",
+            "campos": 0,
+            "data": "2026-11-20"
+          }
+        ]
+      },
+      "contradicoes": [
+        {
+          "tipo": "defeito",
+          "registro": "SP.01 IF jogos escolares",
+          "medido": "`sports_operator` escreve 0 tabelas e lê 3; as 5 mesas de gestão dos jogos estão fora do papel",
+          "artefacto": "evidence/bu2c-caminhos-de-autorizacao-20-11c.json"
+        }
+      ],
+      "estado_pela_regra_degenerada_antes_de_3": "IMPLEMENTADO E TESTADO",
+      "estado_derivado": "IMPLEMENTADO COM ERROS"
+    },
+    {
+      "grupo": "5.14",
+      "rotulo": "Comunicação e plataforma",
+      "rotulo_do_registro": "Comunicação e plataforma",
+      "itens": 4,
+      "codigos": {
+        "IF": 4
+      },
+      "frac_implementado": 1,
+      "portas_proprias_no_ar": 3,
+      "portas_declaradas": 3,
+      "portas_fora_do_ar": [],
+      "papeis_com_porta_propria": [
+        "aee",
+        "coordinator",
+        "developer",
+        "director",
+        "education_supervisor",
+        "gatekeeper",
+        "parent",
+        "pedagogical",
+        "psychology",
+        "secretary",
+        "social_work",
+        "student"
+      ],
+      "regioes": 2,
+      "regioes_desativadas": [],
+      "regioes_diferidas": 2,
+      "tabelas_distintas": 6,
+      "rpcs": [],
+      "chars_regioes": 87935,
+      "rpcs_sao_todas_predicados_de_autorizacao": true,
+      "alcance_por_papel": [
+        "aee:L78W55",
+        "coordinator:L133W101",
+        "developer:L165W144",
+        "director:L127W98",
+        "education_supervisor:L16W4",
+        "gatekeeper:L15W1",
+        "parent:L17W3",
+        "pedagogical:L81W51",
+        "psychology:L16W13",
+        "secretary:L72W53",
+        "social_work:L14W14",
+        "student:L17W4"
+      ],
+      "banda_de_alcance": "L 14..133 · W 1..101 (11 papéis)",
+      "banda_com_preview": "L 14..165 · W 1..144",
+      "papeis_efetivos_da_banda": [
+        "aee",
+        "coordinator",
+        "director",
+        "education_supervisor",
+        "gatekeeper",
+        "parent",
+        "pedagogical",
+        "psychology",
+        "secretary",
+        "social_work",
+        "student"
+      ],
+      "leitura_maxima_efetiva": 133,
+      "leitura_maxima_com_preview": 165,
+      "mesas_da_unidade_fora_do_alcance_dos_papeis": [
+        "aee/internal_chat_message_reactions",
+        "coordinator/internal_chat_message_reactions",
+        "developer/internal_chat_message_reactions",
+        "director/internal_chat_message_reactions",
+        "education_supervisor/internal_chat_messages",
+        "education_supervisor/internal_chat_presence",
+        "education_supervisor/internal_chat_room_members",
+        "education_supervisor/internal_chat_threads",
+        "education_supervisor/profiles",
+        "education_supervisor/internal_chat_message_reactions",
+        "gatekeeper/internal_chat_messages",
+        "gatekeeper/internal_chat_presence",
+        "gatekeeper/internal_chat_room_members",
+        "gatekeeper/internal_chat_threads",
+        "gatekeeper/profiles",
+        "gatekeeper/internal_chat_message_reactions",
+        "parent/internal_chat_messages",
+        "parent/internal_chat_presence",
+        "parent/internal_chat_room_members",
+        "parent/internal_chat_threads",
+        "parent/profiles",
+        "parent/internal_chat_message_reactions",
+        "pedagogical/internal_chat_message_reactions",
+        "psychology/internal_chat_message_reactions",
+        "secretary/internal_chat_message_reactions",
+        "social_work/internal_chat_message_reactions",
+        "student/internal_chat_messages",
+        "student/internal_chat_presence",
+        "student/internal_chat_room_members",
+        "student/internal_chat_threads",
+        "student/profiles",
+        "student/internal_chat_message_reactions"
+      ],
+      "mobile_celulas": 72,
+      "mobile_por_estado": {
+        "OK": 67,
+        "por_medir": 3,
+        "TRAVADA": 2
+      },
+      "desktop_celulas": [
+        "aee@1280=MEDIDA_WEB",
+        "aee@1440=MEDIDA_WEB",
+        "aee@1920=MEDIDA_WEB",
+        "coordinator@1280=BLOQUEADA",
+        "coordinator@1440=MEDIDA_WEB",
+        "coordinator@1920=MEDIDA_WEB",
+        "developer@1280=MEDIDA_WEB",
+        "developer@1440=MEDIDA_WEB",
+        "developer@1920=MEDIDA_WEB",
+        "director@1280=MEDIDA_WEB",
+        "director@1440=MEDIDA_WEB",
+        "director@1920=MEDIDA_WEB",
+        "education_supervisor@1280=BLOQUEADA",
+        "education_supervisor@1440=MEDIDA_WEB",
+        "education_supervisor@1920=MEDIDA_WEB",
+        "gatekeeper@1280=MEDIDA_WEB",
+        "gatekeeper@1440=MEDIDA_WEB",
+        "gatekeeper@1920=MEDIDA_WEB",
+        "parent@1280=MEDIDA_WEB",
+        "parent@1440=MEDIDA_WEB",
+        "parent@1920=MEDIDA_WEB",
+        "pedagogical@1280=MEDIDA_WEB",
+        "pedagogical@1440=MEDIDA_WEB",
+        "pedagogical@1920=MEDIDA_WEB",
+        "psychology@1280=MEDIDA_WEB",
+        "psychology@1440=MEDIDA_WEB",
+        "psychology@1920=MEDIDA_WEB",
+        "secretary@1280=MEDIDA_WEB",
+        "secretary@1440=MEDIDA_WEB",
+        "secretary@1920=MEDIDA_WEB",
+        "social_work@1280=MEDIDA_WEB",
+        "social_work@1440=MEDIDA_WEB",
+        "social_work@1920=MEDIDA_WEB",
+        "student@1280=MEDIDA_WEB",
+        "student@1440=MEDIDA_WEB",
+        "student@1920=MEDIDA_WEB"
+      ],
+      "regua_de_prova": "conteudo",
+      "prova_bateu": false,
+      "corridas": {
+        "conteudo": [],
+        "superficie": [
+          {
+            "ficheiro": "evidence/bu5-portas-do-ar-20-11.json",
+            "existe": true,
+            "classe": "no_ar_servido",
+            "campos": 1,
+            "data": "2026-11-20"
+          },
+          {
+            "ficheiro": "evidence/p73-cobertura-m5-por-ar-20-11.json",
+            "existe": true,
+            "classe": "no_ar_servido",
+            "campos": 1,
+            "data": "2026-11-20"
+          }
+        ],
+        "banco": []
+      },
+      "contradicoes": [
+        {
+          "tipo": "defeito",
+          "registro": "CM.04 IF push/FCM/Edge",
+          "medido": "cadeia partida no recetor do service worker (`RM13_CADEIA_PARTIDA 8/14`), medida noutro ar",
+          "artefacto": "evidence/rm13-rotas.json"
+        }
+      ],
+      "estado_pela_regra_degenerada_antes_de_3": "IMPLEMENTADO E TESTADO",
+      "estado_derivado": "IMPLEMENTADO COM ERROS"
+    },
+    {
+      "grupo": "5.15",
+      "rotulo": "Desenvolvedor / equipe técnica",
+      "rotulo_do_registro": "Desenvolvedor / equipe técnica",
+      "itens": 3,
+      "codigos": {
+        "IF": 3
+      },
+      "frac_implementado": 1,
+      "portas_proprias_no_ar": 1,
+      "portas_declaradas": 1,
+      "portas_fora_do_ar": [],
+      "papeis_com_porta_propria": [
+        "developer"
+      ],
+      "regioes": 6,
+      "regioes_desativadas": [],
+      "regioes_diferidas": 6,
+      "tabelas_distintas": 16,
+      "rpcs": [
+        "bfr_list_staff_birthdays",
+        "bfr_set_staff_birthday",
+        "list_current_month_birthdays"
+      ],
+      "chars_regioes": 195019,
+      "rpcs_sao_todas_predicados_de_autorizacao": false,
+      "alcance_por_papel": [
+        "developer:L165W144"
+      ],
+      "banda_de_alcance": "só o papel de preview tem porta",
+      "banda_com_preview": "L 165..165 · W 144..144",
+      "papeis_efetivos_da_banda": [],
+      "leitura_maxima_efetiva": null,
+      "leitura_maxima_com_preview": 165,
+      "mesas_da_unidade_fora_do_alcance_dos_papeis": [],
+      "mobile_celulas": 6,
+      "mobile_por_estado": {
+        "OK": 6
+      },
+      "desktop_celulas": [
+        "developer@1280=MEDIDA_WEB",
+        "developer@1440=MEDIDA_WEB",
+        "developer@1920=MEDIDA_WEB"
+      ],
+      "regua_de_prova": "conteudo",
+      "prova_bateu": false,
+      "corridas": {
+        "conteudo": [],
+        "superficie": [
+          {
+            "ficheiro": "evidence/ah2-mobile2-m5-developer-11.json",
+            "existe": true,
+            "classe": "no_ar_servido",
+            "campos": 1,
+            "data": "2026-11-20"
+          },
+          {
+            "ficheiro": "evidence/ah2-mobile2-sm25-developer-1280.json",
+            "existe": true,
+            "classe": "no_ar_servido",
+            "campos": 1,
+            "data": "2026-11-20"
+          },
+          {
+            "ficheiro": "evidence/bu5-portas-do-ar-20-11.json",
+            "existe": true,
+            "classe": "no_ar_servido",
+            "campos": 1,
+            "data": "2026-11-20"
+          },
+          {
+            "ficheiro": "evidence/sm25-cobertura-desktop-20-11.json",
+            "existe": true,
+            "classe": "no_ar_servido",
+            "campos": 1,
+            "data": "2026-11-20"
+          }
+        ],
+        "banco": []
+      },
+      "contradicoes": [],
+      "estado_pela_regra_degenerada_antes_de_3": "IMPLEMENTADO E TESTADO",
+      "estado_derivado": "IMPLEMENTADO, MAS NÃO TESTADO"
+    },
+    {
+      "grupo": "5.16",
+      "rotulo": "Segurança transversal",
+      "rotulo_do_registro": "Segurança transversal",
+      "itens": 6,
+      "codigos": {
+        "IF": 6
+      },
+      "frac_implementado": 1,
+      "portas_proprias_no_ar": 0,
+      "portas_declaradas": 0,
+      "portas_fora_do_ar": [],
+      "papeis_com_porta_propria": [],
+      "regioes": 2,
+      "regioes_desativadas": [],
+      "regioes_diferidas": 2,
+      "tabelas_distintas": 0,
+      "rpcs": [],
+      "chars_regioes": 4236,
+      "rpcs_sao_todas_predicados_de_autorizacao": true,
+      "alcance_por_papel": [],
+      "banda_de_alcance": "só o papel de preview tem porta",
+      "banda_com_preview": "nenhum",
+      "papeis_efetivos_da_banda": [],
+      "leitura_maxima_efetiva": null,
+      "leitura_maxima_com_preview": null,
+      "mesas_da_unidade_fora_do_alcance_dos_papeis": [],
+      "mobile_celulas": 0,
+      "mobile_por_estado": {},
+      "desktop_celulas": [],
+      "regua_de_prova": "banco",
+      "prova_bateu": true,
+      "corridas": {
+        "conteudo": [],
+        "superficie": [],
+        "banco": [
+          {
+            "ficheiro": "evidence/bu2-censo-catalogo-20-11.json",
+            "existe": true,
+            "classe": "sem_pegada_de_ar",
+            "campos": 0,
+            "data": "2026-11-20"
+          },
+          {
+            "ficheiro": "evidence/bu2c-caminhos-de-autorizacao-20-11c.json",
+            "existe": true,
+            "classe": "sem_pegada_de_ar",
+            "campos": 0,
+            "data": "2026-11-20"
+          },
+          {
+            "ficheiro": "evidence/fin2-higiene-rm62.json",
+            "existe": true,
+            "classe": "sem_pegada_de_ar",
+            "campos": 0,
+            "data": "2026-11-13"
+          }
+        ]
+      },
+      "contradicoes": [
+        {
+          "tipo": "numero_desactualizado",
+          "registro": "SC.01 RLS em 176/176 · SC.02 475/475 policies",
+          "medido": "183/183 com RLS activo, 177 com política, 6 sem política nenhuma e 495 políticas lidas",
+          "artefacto": "evidence/bu4-digestao-para-documentacao-20-11.json"
+        }
+      ],
+      "estado_pela_regra_degenerada_antes_de_3": "IMPLEMENTADO E TESTADO",
+      "estado_derivado": "IMPLEMENTADO E TESTADO"
+    },
+    {
+      "grupo": "M2",
+      "rotulo": "Secretaria Municipal (módulo 2)",
+      "rotulo_do_registro": null,
+      "itens": 0,
+      "codigos": {},
+      "frac_implementado": 0,
+      "portas_proprias_no_ar": 1,
+      "portas_declaradas": 1,
+      "portas_fora_do_ar": [],
+      "papeis_com_porta_propria": [
+        "developer",
+        "education_supervisor"
+      ],
+      "regioes": 1,
+      "regioes_desativadas": [],
+      "regioes_diferidas": 0,
+      "tabelas_distintas": 0,
+      "rpcs": [
+        "bfr_is_municipal_authority"
+      ],
+      "chars_regioes": 56408,
+      "rpcs_sao_todas_predicados_de_autorizacao": true,
+      "alcance_por_papel": [
+        "developer:L165W144",
+        "education_supervisor:L16W4"
+      ],
+      "banda_de_alcance": "L 16..16 · W 4..4 (1 papéis)",
+      "banda_com_preview": "L 16..165 · W 4..144",
+      "papeis_efetivos_da_banda": [
+        "education_supervisor"
+      ],
+      "leitura_maxima_efetiva": 16,
+      "leitura_maxima_com_preview": 165,
+      "mesas_da_unidade_fora_do_alcance_dos_papeis": [],
+      "mobile_celulas": 12,
+      "mobile_por_estado": {
+        "OK": 10,
+        "por_medir": 2
+      },
+      "desktop_celulas": [
+        "developer@1280=MEDIDA_WEB",
+        "developer@1440=MEDIDA_WEB",
+        "developer@1920=MEDIDA_WEB",
+        "education_supervisor@1280=BLOQUEADA",
+        "education_supervisor@1440=MEDIDA_WEB",
+        "education_supervisor@1920=MEDIDA_WEB"
+      ],
+      "regua_de_prova": "banco",
+      "prova_bateu": true,
+      "corridas": {
+        "conteudo": [
+          {
+            "ficheiro": "docs/c7-2-resumo-jornada.json",
+            "existe": true,
+            "classe": "sem_pegada_de_ar",
+            "campos": 0,
+            "data": "2026-11-08"
+          }
+        ],
+        "superficie": [
+          {
+            "ficheiro": "evidence/bu5-portas-do-ar-20-11.json",
+            "existe": true,
+            "classe": "no_ar_servido",
+            "campos": 1,
+            "data": "2026-11-20"
+          }
+        ],
+        "banco": [
+          {
+            "ficheiro": "evidence/p73-politicas-municipais-20-11e.json",
+            "existe": true,
+            "classe": "sem_pegada_de_ar",
+            "campos": 0,
+            "data": "2026-11-20"
+          },
+          {
+            "ficheiro": "evidence/sm23-censo-municipios-18-11.json",
+            "existe": true,
+            "classe": "sem_pegada_de_ar",
+            "campos": 0,
+            "data": "2026-11-18"
+          }
+        ]
+      },
+      "contradicoes": [],
+      "estado_pela_regra_degenerada_antes_de_3": "IMPLEMENTADO E TESTADO",
+      "estado_derivado": "SOMENTE INTERFACE"
+    }
+  ],
+  "pen_no_ledger": 42,
+  "portoes": [
+    {
+      "nome": "o_md5_do_ar_e_o_mesmo_em_bu5_p73_e_sm25",
+      "verde": true,
+      "detalhe": "bu5=9e236a23eed978cf7c2a2743d449b307 p73=9e236a23eed978cf7c2a2743d449b307 sm25=9e236a23eed978cf7c2a2743d449b307 celulas_diferentes=0"
+    },
+    {
+      "nome": "a_falsificacao_do_portao_de_md5_dispara",
+      "verde": true,
+      "detalhe": "comparado com uma pegada inventada"
+    },
+    {
+      "nome": "a_grelha_do_registro_devolve_cinco_colunas_em_cada_item",
+      "verde": true,
+      "detalhe": "itens_lidos=104 linhas_com_pipe_escapado_no_documento=1 exemplo_de_split_ingenuo=nenhuma_linha_partida"
+    },
+    {
+      "nome": "o_numero_de_itens_confere_com_o_titulo_da_seccao_quatro_de_cinco",
+      "verde": true,
+      "detalhe": "lidos_do_corpo=104 declarados_no_titulo=104"
+    },
+    {
+      "nome": "os_rotulos_das_unidades_batem_com_os_titulos_do_registro",
+      "verde": true,
+      "detalhe": "M2:declarado=\"Secretaria Municipal (módulo 2)\" registro=\"null\""
+    },
+    {
+      "nome": "toda_porta_propria_de_unidade_existe_no_censo_de_portas_do_ar",
+      "verde": true,
+      "detalhe": "portas_declaradas_fora_do_ar=nenhuma | inventada_case? false"
+    },
+    {
+      "nome": "nenhuma_rota_medida_no_ar_fica_fora_do_vocabulario_das_unidades",
+      "verde": true,
+      "detalhe": "fora=nenhuma de 54"
+    },
+    {
+      "nome": "nenhuma_regiao_identificada_fica_sem_unidade",
+      "verde": true,
+      "detalhe": "nomes_inexistentes=nenhum sem_dono=nenhuma regioes=64 atribuidas=59 excecoes_declaradas=5"
+    },
+    {
+      "nome": "os_papeis_das_celulas_mobile_sao_os_do_enum_medido",
+      "verde": true,
+      "detalhe": "p73=15 bu5=15"
+    },
+    {
+      "nome": "as_celulas_de_p73_usam_so_o_vocabulario_declarado",
+      "verde": true,
+      "detalhe": "valores_vistos=[OK,TRAVADA,por_medir] permitidos=[OK,TRAVADA,por_medir]"
+    },
+    {
+      "nome": "o_vocabulario_de_celulas_rejeita_um_estado_inedito",
+      "verde": true,
+      "detalhe": "fixture_OK+inedito devolveu=[ESTADO_INEDITO]"
+    },
+    {
+      "nome": "o_classificador_de_pegada_distingue_ar_actual_de_outro_ar",
+      "verde": true,
+      "detalhe": "ar_actual=no_ar_servido outro_ar=noutro_ar classes_vistas=[no_ar_servido,noutro_ar,sem_pegada_de_ar]"
+    },
+    {
+      "nome": "os_caminhos_de_corrida_apontam_para_ficheiros_que_existem",
+      "verde": true,
+      "detalhe": "faltas=nenhuma de 55 corridas citadas"
+    },
+    {
+      "nome": "nenhuma_prova_de_conteudo_cita_sessao_de_papel_sem_porta_na_unidade",
+      "verde": true,
+      "detalhe": "fora_da_identidade=nenhuma | fixture_5.15_com_a_sessao_do_director_devolve=[director] | papel_lido_do_artefacto_secretary=secretary"
+    },
+    {
+      "nome": "as_contradicoes_tem_tipo_declarado_e_artefacto_no_disco",
+      "verde": true,
+      "detalhe": "entradas=12 defeito=8 prova_ausente=3 numero_desactualizado=1"
+    },
+    {
+      "nome": "nenhuma_unidade_com_item_implementado_recebe_NAO_IMPLEMENTADO",
+      "verde": true,
+      "detalhe": "diferencas_face_a_regra_antes_de_3=5.5:IMPLEMENTADO, MAS NÃO TESTADO>IMPLEMENTADO COM ERROS | 5.6:PARCIALMENTE IMPLEMENTADO>IMPLEMENTADO COM ERROS | 5.9:NÃO IMPLEMENTADO>IMPLEMENTADO E TESTADO | 5.10:IMPLEMENTADO E TESTADO>IMPLEMENTADO COM ERROS | 5.11:NÃO IMPLEMENTADO>IMPLEMENTADO COM ERROS | 5.12:IMPLEMENTADO E TESTADO>IMPLEMENTADO, MAS NÃO TESTADO | 5.13:IMPLEMENTADO E TESTADO>IMPLEMENTADO COM ERROS | 5.14:IMPLEMENTADO E TESTADO>IMPLEMENTADO COM ERROS | 5.15:IMPLEMENTADO E TESTADO>IMPLEMENTADO, MAS NÃO TESTADO | M2:IMPLEMENTADO E TESTADO>SOMENTE INTERFACE"
+    },
+    {
+      "nome": "a_regra_antes_de_3_era_degenerada_em_pelo_menos_uma_unidade",
+      "verde": true,
+      "detalhe": "5.9@frac0.83,5.11@frac0.6"
+    },
+    {
+      "nome": "nao_implementado_so_e_emitido_quando_o_registro_nao_afirma_codigo_nenhum",
+      "verde": true,
+      "detalhe": "unidades_sem_grupo_no_registro=M2=>SOMENTE INTERFACE | com_NAO_IMPLEMENTADO=nenhuma"
+    },
+    {
+      "nome": "so_interface_exige_caminho_de_dados_so_de_predicado_e_falsifica_numa_funcao_de_dados",
+      "verde": true,
+      "detalhe": "disparou_em=M2(bfr_is_municipal_authority) | helper=bfr_is_municipal_authority?true funcao_de_dados=register_gate_checkin_v2?false"
+    },
+    {
+      "nome": "as_linhas_do_ledger_pen_tem_cinco_colunas_e_prioridade_do_enum",
+      "verde": true,
+      "detalhe": "pen_lidas=42 prioridades={C:0,A:17,M:14,B:11}"
+    },
+    {
+      "nome": "a_numeracao_das_pen_nao_tem_lacunas",
+      "verde": true,
+      "detalhe": "maior_identificador=PEN-42 linhas=42"
+    },
+    {
+      "nome": "a_banda_de_alcance_exclui_o_papel_de_preview_e_a_exclusao_e_portante",
+      "verde": true,
+      "detalhe": "unidades_em_que_developer_tem_porta=15 de 17; leitura maxima muda em=15"
+    },
+    {
+      "nome": "o_alcance_de_banco_e_lido_para_todo_papel_que_tem_porta_propria",
+      "verde": true,
+      "detalhe": "papeis_sem_numero_de_matriz=nenhum"
+    },
+    {
+      "nome": "os_estados_derivados_nao_sao_todos_o_mesmo_valor",
+      "verde": true,
+      "detalhe": "distribuicao={\"IMPLEMENTADO COM ERROS\":9,\"PARCIALMENTE IMPLEMENTADO\":2,\"IMPLEMENTADO E TESTADO\":3,\"IMPLEMENTADO, MAS NÃO TESTADO\":2,\"SOMENTE INTERFACE\":1}"
+    },
+    {
+      "nome": "nenhuma_unidade_de_regua_banco_fica_sem_prova",
+      "verde": true,
+      "detalhe": "sem_prova_de_conteudo_no_ar=[5.1,5.2,5.3,5.4,5.5,5.6,5.10,5.11,5.12,5.13,5.14,5.15] de 15 unidades de conteudo"
+    }
+  ],
+  "veredito_final": "BU5U_VERDE 25/0"
+}

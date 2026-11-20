@@ -1,0 +1,88 @@
+# bu8-listas  em=2026-11-20T10:43:23.883Z
+V as_quatro_listas_particionam_as_unidades_sem_duplicar_nem_esquecer :: unidades=17 nas_listas=17 funcionando=3 com_erros=9 incompletas=4 ausentes=1 sem_lista=nenhuma duplicados=nenhum fixture_acrescentar_uma_copia_de_5.1=5.1
+V a_lista_e_funcao_do_estado_derivado_e_recusa_estado_desconhecido :: estados_lidos=IMPLEMENTADO COM ERROS | PARCIALMENTE IMPLEMENTADO | IMPLEMENTADO E TESTADO | IMPLEMENTADO, MAS NÃO TESTADO | SOMENTE INTERFACE rotulos_no_mapa=7 rotulos_do_briefing=7 fora_dos_sete=nenhum repetidos_no_mapa=nenhum fixture_estado_inedito_fica_fora=[ESTADO_QUE_A_BU5_NUNCA_PRODUZ]
+V cada_saida_tem_causa_textual_e_o_artefacto_que_a_nomeia_existe_em_disco :: contradicoes=12 defeito=8 prova_ausente=3 numero_desactualizado=1 sem_causa=nenhum artefactos_em_falta=nenhum
+V toda_saida_de_funcionando_tem_prova_que_bateu_na_sua_propria_regua :: funcionando=5.8(conteudo,bate),5.9(conteudo,bate),5.16(banco,bate) sem_prova=nenhuma fixture_conteudo_so_noutro_ar=false fixture_banco_sem_pegada=true fixture_banco_ficheiro_em_falta=false fixture_regua_desconhecida=false
+LACUNA_DE_PROVA_POR_REGUA 12 de 17 :: 5.1:conteudo,5.2:conteudo,5.3:conteudo,5.4:conteudo,5.5:conteudo,5.6:conteudo,5.10:conteudo,5.11:conteudo,5.12:conteudo,5.13:conteudo,5.14:conteudo,5.15:conteudo | contagem da falta, nao um portao
+V uma_saida_de_funcionando_nao_pode_ao_mesmo_tempo_ter_saida_de_defeito :: funcionando_com_defeito=nenhum ausentes=M2:SOMENTE INTERFACE
+V os_erros_de_produto_separam_se_dos_estados_de_produto_por_causa_textual :: causas=13 barra_defeito=8[monitor@320,monitor@360,monitor@375,monitor@390,monitor@414,monitor@430,secretary@360,secretary@375] pendencia_estado_de_produto=5[pending@375,pending@390,pending@414,pending@320,pending@360] outras=nenhuma
+V as_ausencias_de_prova_sao_numeradas_e_cada_uma_tem_o_medido_que_a_nomeia :: ausencias=20 web=3 mobile_por_medir=7 lacunas_de_censo=10 ids_duplicados=nenhum
+V as_incompletas_dividem_se_entre_parciais_e_sem_teste :: incompletas=5.3=PARCIALMENTE IMPLEMENTADO | 5.7=PARCIALMENTE IMPLEMENTADO | 5.12=IMPLEMENTADO, MAS NÃO TESTADO | 5.15=IMPLEMENTADO, MAS NÃO TESTADO | um PARCIAL e um MAS NAO TESTADO sao coisas diferentes: o primeiro tem funcionalidade que falta, o segundo tem funcionalidade sem prova
+V nenhuma_linha_de_tabela_emitada_fica_fora_da_grelha_do_seu_cabecalho :: tabelas=7 linhas_de_tabela=68 fora_da_grelha=nenhuma fixture_cinco_colunas_na_grelha_de_seis_dispara=true
+BU8_VERDE 9/0
+distribuicao={"funcionando":3,"com_erros":9,"incompletas":4,"ausentes":1} contradicoes=12 ausencias_de_prova=20
+### ## 1. A FUNCIONAR (IMPLEMENTADO E TESTADO)
+| Unidade | Rótulo | Estado derivado | Régua de prova | Prova bateu | Saídas de defeito |
+|---|---|---|---|---|---|
+| 5.8 | Secretaria Escolar | IMPLEMENTADO E TESTADO | conteudo | sim | 0 |
+| 5.9 | Supervisão Educacional (Secretaria de Educação) | IMPLEMENTADO E TESTADO | conteudo | sim | 0 |
+| 5.16 | Segurança transversal | IMPLEMENTADO E TESTADO | banco | sim | 0 |
+### ## 2. COM ERROS
+| Unidade | Rótulo | Estado derivado | Régua de prova | Prova bateu | Saídas de defeito |
+|---|---|---|---|---|---|
+| 5.1 | Autenticação e sessão | IMPLEMENTADO COM ERROS | conteudo | NAO | 1 |
+| 5.2 | Navegação e estrutura | IMPLEMENTADO COM ERROS | conteudo | NAO | 1 |
+| 5.4 | Responsáveis | IMPLEMENTADO COM ERROS | conteudo | NAO | 0 |
+| 5.5 | Professor | IMPLEMENTADO COM ERROS | conteudo | NAO | 1 |
+| 5.6 | Coordenação | IMPLEMENTADO COM ERROS | conteudo | NAO | 1 |
+| 5.10 | Monitor (transporte) | IMPLEMENTADO COM ERROS | conteudo | NAO | 1 |
+| 5.11 | Porteiro | IMPLEMENTADO COM ERROS | conteudo | NAO | 1 |
+| 5.13 | Jogos Escolares | IMPLEMENTADO COM ERROS | conteudo | NAO | 1 |
+| 5.14 | Comunicação e plataforma | IMPLEMENTADO COM ERROS | conteudo | NAO | 1 |
+### ## 3. INCOMPLETAS
+| Unidade | Rótulo | Estado derivado | Régua de prova | Prova bateu | Saídas de defeito |
+|---|---|---|---|---|---|
+| 5.3 | Área do aluno | PARCIALMENTE IMPLEMENTADO | conteudo | NAO | 0 |
+| 5.7 | Direção | PARCIALMENTE IMPLEMENTADO | conteudo | sim | 0 |
+| 5.12 | AEE / Psicologia / Serviço Social | IMPLEMENTADO, MAS NÃO TESTADO | conteudo | NAO | 0 |
+| 5.15 | Desenvolvedor / equipe técnica | IMPLEMENTADO, MAS NÃO TESTADO | conteudo | NAO | 0 |
+### ## 4. AUSENTES
+| Unidade | Rótulo | Estado derivado | Régua de prova | Prova bateu | Saídas de defeito |
+|---|---|---|---|---|---|
+| M2 | Secretaria Municipal (módulo 2) | SOMENTE INTERFACE | banco | sim | 0 |
+## Saídas registradas pela BU-5 (12)
+| Tipo | Unidade | Registro citado | Medido | Artefacto |
+|---|---|---|---|---|
+| defeito | 5.1 | A.06 IF | aprovação medida com clique real, mas o estado `pending` é inalcançável; o próprio veredicto reescreve o item como IMPLEMENTADO COM PROBLEMAS | evidence/rm12-veredito.json |
+| defeito | 5.2 | N.02 ICP (abarca quem?) | a barra mobile não montou em 6 de 6 larguras do papel `monitor` e em 5 de 6 do `pending` | evidence/p73-cobertura-m5-por-ar-20-11.json |
+| prova_ausente | 5.4 | P.01 IF vínculo com alunos | existe 1 linha em `guardian_students`: a passada com conta real não é reprodutível com o parque de contas | evidence/bu2-censo-catalogo-20-11.json |
+| defeito | 5.5 | T.05 IF diário de aula | o papel `pedagogical` não tem caminho de leitura nem de escrita em `bfr_teacher_diary` | evidence/bu2c-caminhos-de-autorizacao-20-11c.json |
+| defeito | 5.6 | C.01 a C.09 IF/PI | 4 regiões do papel estão desativadas no bundle vivo e 2 dos 3 RPCs que elas chamam não existem no catálogo | evidence/bu3-pegada-de-modulos-20-11e-VERMELHO-de-tres-rpcs-chamados-e-inexistentes.json |
+| defeito | 5.10 | M.01 a M.04 IF | as 6 larguras do papel `monitor` estão TRAVADAS (barra mobile não montou), logo nenhuma porta do monitor foi medida no ar actual | evidence/p73-cobertura-m5-por-ar-20-11.json |
+| defeito | 5.11 | G.01 IF leitor QR, evidência T79/v102-v103 | o destino servido chama `register_gate_checkin_v2`, que dá 0 em `pg_proc` e 404/PGRST202 pelo fio; calendário com `dia_letivo_confirmado:false` | evidence/p73-rm52-estado-calendario-20-11.txt |
+| prova_ausente | 5.11 | T79 E2E (§CR/§CV) | nenhum artefacto com o identificador T79 existe em `evidence/` nem `scripts/`; a citação só vive na prosa do registro | docs/roadmap-master.md |
+| prova_ausente | 5.12 | A2.03 IF realtime 4 canais, evidência V71C/V71D | nenhum artefacto com esse identificador em `evidence/`; as ocorrências são 2 documentos de prosa e 1 lista de defeitos | docs/relatorio-final-auditoria.md |
+| defeito | 5.13 | SP.01 IF jogos escolares | `sports_operator` escreve 0 tabelas e lê 3; as 5 mesas de gestão dos jogos estão fora do papel | evidence/bu2c-caminhos-de-autorizacao-20-11c.json |
+| defeito | 5.14 | CM.04 IF push/FCM/Edge | cadeia partida no recetor do service worker (`RM13_CADEIA_PARTIDA 8/14`), medida noutro ar | evidence/rm13-rotas.json |
+| numero_desactualizado | 5.16 | SC.01 RLS em 176/176 · SC.02 475/475 policies | 183/183 com RLS activo, 177 com política, 6 sem política nenhuma e 495 políticas lidas | evidence/bu4-digestao-para-documentacao-20-11.json |
+## Ausências de prova (numeradas)
+| ID | Onde | O que falta | Medido que o nomeia | O que exige |
+|---|---|---|---|---|
+| FALTA-W1 | web | nenhum painel foi aberto em nenhuma célula web | abertas_soma=0 em 45 celulas | passada autenticada com clique no container de navegação real do desktop |
+| FALTA-W2 | web | as entradas contadas na barra web não têm geometria | entradas_com_geometria=nenhuma de 177 rotulos_lidos_das_45_celulas | régua de hit-teste (elementFromPoint) sobre o alvo desktop, não sobre #bfrMobileBottomNav |
+| FALTA-W3 | web | o instrumento de browser não conhece o container de navegação do desktop (`bfr-single-home-navigation` presente no bundle servido) | aparece_em_ah2-mobile2.mjs=false | novo selector lido do bundle, nunca dactilografado |
+| MED-POR-pending@430 | mobile | célula pending@430 sem medida | estado lido do p73: por_medir | lançar browser nessa célula |
+| MED-POR-secretary@430 | mobile | célula secretary@430 sem medida | estado lido do p73: por_medir | lançar browser nessa célula |
+| MED-POR-sports_operator@390 | mobile | célula sports_operator@390 sem medida | estado lido do p73: por_medir | lançar browser nessa célula |
+| MED-POR-sports_operator@414 | mobile | célula sports_operator@414 sem medida | estado lido do p73: por_medir | lançar browser nessa célula |
+| MED-POR-sports_operator@430 | mobile | célula sports_operator@430 sem medida | estado lido do p73: por_medir | lançar browser nessa célula |
+| MED-POR-education_supervisor@414 | mobile | célula education_supervisor@414 sem medida | estado lido do p73: por_medir | lançar browser nessa célula |
+| MED-POR-education_supervisor@430 | mobile | célula education_supervisor@430 sem medida | estado lido do p73: por_medir | lançar browser nessa célula |
+| CENSO-pending@320 | mobile | censo de portas não tem o que contar em pending@320 | estado TRAVADA | chegar a shell montado (mesmo defeito/estado já listado) |
+| CENSO-pending@360 | mobile | censo de portas não tem o que contar em pending@360 | estado TRAVADA | chegar a shell montado (mesmo defeito/estado já listado) |
+| CENSO-pending@375 | mobile | censo de portas não tem o que contar em pending@375 | estado TRAVADA | chegar a shell montado (mesmo defeito/estado já listado) |
+| CENSO-pending@390 | mobile | censo de portas não tem o que contar em pending@390 | estado TRAVADA | chegar a shell montado (mesmo defeito/estado já listado) |
+| CENSO-pending@414 | mobile | censo de portas não tem o que contar em pending@414 | estado TRAVADA | chegar a shell montado (mesmo defeito/estado já listado) |
+| CENSO-pending@430 | mobile | censo de portas não tem o que contar em pending@430 | estado por_medir | chegar a shell montado (mesmo defeito/estado já listado) |
+| CENSO-monitor@320 | mobile | censo de portas não tem o que contar em monitor@320 | estado TRAVADA | chegar a shell montado (mesmo defeito/estado já listado) |
+| CENSO-monitor@375 | mobile | censo de portas não tem o que contar em monitor@375 | estado TRAVADA | chegar a shell montado (mesmo defeito/estado já listado) |
+| CENSO-monitor@390 | mobile | censo de portas não tem o que contar em monitor@390 | estado TRAVADA | chegar a shell montado (mesmo defeito/estado já listado) |
+| CENSO-monitor@414 | mobile | censo de portas não tem o que contar em monitor@414 | estado TRAVADA | chegar a shell montado (mesmo defeito/estado já listado) |
+## Estado de produto (não é erro, não é ausência)
+| Célula | Causa |
+|---|---|
+| pending@375 | conta em análise: barreira de pendência, sem shell nem navegação (estado do produto) |
+| pending@390 | conta em análise: barreira de pendência, sem shell nem navegação (estado do produto) |
+| pending@414 | conta em análise: barreira de pendência, sem shell nem navegação (estado do produto) |
+| pending@320 | conta em análise: barreira de pendência, sem shell nem navegação (estado do produto) |
+| pending@360 | conta em análise: barreira de pendência, sem shell nem navegação (estado do produto) |

@@ -1,0 +1,442 @@
+{
+ "em": "2026-11-20T10:43:23.883Z",
+ "instrumento": "scripts/bu8-listas-20-11.mjs",
+ "modo": "read-only",
+ "ar": {
+  "caminho": "index.html",
+  "bytes": 3547458,
+  "md5": "9e236a23eed978cf7c2a2743d449b307"
+ },
+ "origem": {
+  "bu5": "evidence/bu5-unidades-do-roadmap-20-11.json",
+  "bu7": "evidence/bu7-inventarios-20-11.json",
+  "p73": "evidence/p73-cobertura-m5-por-ar-20-11.json"
+ },
+ "regra_de_classificacao": {
+  "funcionando": [
+   "IMPLEMENTADO E TESTADO"
+  ],
+  "com_erros": [
+   "IMPLEMENTADO COM ERROS"
+  ],
+  "incompletas": [
+   "PARCIALMENTE IMPLEMENTADO",
+   "IMPLEMENTADO, MAS NÃO TESTADO"
+  ],
+  "ausentes": [
+   "SOMENTE INTERFACE",
+   "NÃO IMPLEMENTADO",
+   "NÃO FOI POSSÍVEL VERIFICAR"
+  ]
+ },
+ "listas": {
+  "funcionando": [
+   {
+    "grupo": "5.8",
+    "rotulo": "Secretaria Escolar",
+    "estado": "IMPLEMENTADO E TESTADO",
+    "regua": "conteudo",
+    "prova_bateu": true,
+    "causas": 0
+   },
+   {
+    "grupo": "5.9",
+    "rotulo": "Supervisão Educacional (Secretaria de Educação)",
+    "estado": "IMPLEMENTADO E TESTADO",
+    "regua": "conteudo",
+    "prova_bateu": true,
+    "causas": 0
+   },
+   {
+    "grupo": "5.16",
+    "rotulo": "Segurança transversal",
+    "estado": "IMPLEMENTADO E TESTADO",
+    "regua": "banco",
+    "prova_bateu": true,
+    "causas": 0
+   }
+  ],
+  "com_erros": [
+   {
+    "grupo": "5.1",
+    "rotulo": "Autenticação e sessão",
+    "estado": "IMPLEMENTADO COM ERROS",
+    "regua": "conteudo",
+    "prova_bateu": false,
+    "causas": 1
+   },
+   {
+    "grupo": "5.2",
+    "rotulo": "Navegação e estrutura",
+    "estado": "IMPLEMENTADO COM ERROS",
+    "regua": "conteudo",
+    "prova_bateu": false,
+    "causas": 1
+   },
+   {
+    "grupo": "5.4",
+    "rotulo": "Responsáveis",
+    "estado": "IMPLEMENTADO COM ERROS",
+    "regua": "conteudo",
+    "prova_bateu": false,
+    "causas": 0
+   },
+   {
+    "grupo": "5.5",
+    "rotulo": "Professor",
+    "estado": "IMPLEMENTADO COM ERROS",
+    "regua": "conteudo",
+    "prova_bateu": false,
+    "causas": 1
+   },
+   {
+    "grupo": "5.6",
+    "rotulo": "Coordenação",
+    "estado": "IMPLEMENTADO COM ERROS",
+    "regua": "conteudo",
+    "prova_bateu": false,
+    "causas": 1
+   },
+   {
+    "grupo": "5.10",
+    "rotulo": "Monitor (transporte)",
+    "estado": "IMPLEMENTADO COM ERROS",
+    "regua": "conteudo",
+    "prova_bateu": false,
+    "causas": 1
+   },
+   {
+    "grupo": "5.11",
+    "rotulo": "Porteiro",
+    "estado": "IMPLEMENTADO COM ERROS",
+    "regua": "conteudo",
+    "prova_bateu": false,
+    "causas": 1
+   },
+   {
+    "grupo": "5.13",
+    "rotulo": "Jogos Escolares",
+    "estado": "IMPLEMENTADO COM ERROS",
+    "regua": "conteudo",
+    "prova_bateu": false,
+    "causas": 1
+   },
+   {
+    "grupo": "5.14",
+    "rotulo": "Comunicação e plataforma",
+    "estado": "IMPLEMENTADO COM ERROS",
+    "regua": "conteudo",
+    "prova_bateu": false,
+    "causas": 1
+   }
+  ],
+  "incompletas": [
+   {
+    "grupo": "5.3",
+    "rotulo": "Área do aluno",
+    "estado": "PARCIALMENTE IMPLEMENTADO",
+    "regua": "conteudo",
+    "prova_bateu": false,
+    "causas": 0
+   },
+   {
+    "grupo": "5.7",
+    "rotulo": "Direção",
+    "estado": "PARCIALMENTE IMPLEMENTADO",
+    "regua": "conteudo",
+    "prova_bateu": true,
+    "causas": 0
+   },
+   {
+    "grupo": "5.12",
+    "rotulo": "AEE / Psicologia / Serviço Social",
+    "estado": "IMPLEMENTADO, MAS NÃO TESTADO",
+    "regua": "conteudo",
+    "prova_bateu": false,
+    "causas": 0
+   },
+   {
+    "grupo": "5.15",
+    "rotulo": "Desenvolvedor / equipe técnica",
+    "estado": "IMPLEMENTADO, MAS NÃO TESTADO",
+    "regua": "conteudo",
+    "prova_bateu": false,
+    "causas": 0
+   }
+  ],
+  "ausentes": [
+   {
+    "grupo": "M2",
+    "rotulo": "Secretaria Municipal (módulo 2)",
+    "estado": "SOMENTE INTERFACE",
+    "regua": "banco",
+    "prova_bateu": true,
+    "causas": 0
+   }
+  ]
+ },
+ "saidas": [
+  {
+   "tipo": "defeito",
+   "registro": "A.06 IF",
+   "medido": "aprovação medida com clique real, mas o estado `pending` é inalcançável; o próprio veredicto reescreve o item como IMPLEMENTADO COM PROBLEMAS",
+   "artefacto": "evidence/rm12-veredito.json",
+   "grupo": "5.1",
+   "estado": "IMPLEMENTADO COM ERROS"
+  },
+  {
+   "tipo": "defeito",
+   "registro": "N.02 ICP (abarca quem?)",
+   "medido": "a barra mobile não montou em 6 de 6 larguras do papel `monitor` e em 5 de 6 do `pending`",
+   "artefacto": "evidence/p73-cobertura-m5-por-ar-20-11.json",
+   "grupo": "5.2",
+   "estado": "IMPLEMENTADO COM ERROS"
+  },
+  {
+   "tipo": "prova_ausente",
+   "registro": "P.01 IF vínculo com alunos",
+   "medido": "existe 1 linha em `guardian_students`: a passada com conta real não é reprodutível com o parque de contas",
+   "artefacto": "evidence/bu2-censo-catalogo-20-11.json",
+   "grupo": "5.4",
+   "estado": "IMPLEMENTADO COM ERROS"
+  },
+  {
+   "tipo": "defeito",
+   "registro": "T.05 IF diário de aula",
+   "medido": "o papel `pedagogical` não tem caminho de leitura nem de escrita em `bfr_teacher_diary`",
+   "artefacto": "evidence/bu2c-caminhos-de-autorizacao-20-11c.json",
+   "grupo": "5.5",
+   "estado": "IMPLEMENTADO COM ERROS"
+  },
+  {
+   "tipo": "defeito",
+   "registro": "C.01 a C.09 IF/PI",
+   "medido": "4 regiões do papel estão desativadas no bundle vivo e 2 dos 3 RPCs que elas chamam não existem no catálogo",
+   "artefacto": "evidence/bu3-pegada-de-modulos-20-11e-VERMELHO-de-tres-rpcs-chamados-e-inexistentes.json",
+   "grupo": "5.6",
+   "estado": "IMPLEMENTADO COM ERROS"
+  },
+  {
+   "tipo": "defeito",
+   "registro": "M.01 a M.04 IF",
+   "medido": "as 6 larguras do papel `monitor` estão TRAVADAS (barra mobile não montou), logo nenhuma porta do monitor foi medida no ar actual",
+   "artefacto": "evidence/p73-cobertura-m5-por-ar-20-11.json",
+   "grupo": "5.10",
+   "estado": "IMPLEMENTADO COM ERROS"
+  },
+  {
+   "tipo": "defeito",
+   "registro": "G.01 IF leitor QR, evidência T79/v102-v103",
+   "medido": "o destino servido chama `register_gate_checkin_v2`, que dá 0 em `pg_proc` e 404/PGRST202 pelo fio; calendário com `dia_letivo_confirmado:false`",
+   "artefacto": "evidence/p73-rm52-estado-calendario-20-11.txt",
+   "grupo": "5.11",
+   "estado": "IMPLEMENTADO COM ERROS"
+  },
+  {
+   "tipo": "prova_ausente",
+   "registro": "T79 E2E (§CR/§CV)",
+   "medido": "nenhum artefacto com o identificador T79 existe em `evidence/` nem `scripts/`; a citação só vive na prosa do registro",
+   "artefacto": "docs/roadmap-master.md",
+   "grupo": "5.11",
+   "estado": "IMPLEMENTADO COM ERROS"
+  },
+  {
+   "tipo": "prova_ausente",
+   "registro": "A2.03 IF realtime 4 canais, evidência V71C/V71D",
+   "medido": "nenhum artefacto com esse identificador em `evidence/`; as ocorrências são 2 documentos de prosa e 1 lista de defeitos",
+   "artefacto": "docs/relatorio-final-auditoria.md",
+   "grupo": "5.12",
+   "estado": "IMPLEMENTADO, MAS NÃO TESTADO"
+  },
+  {
+   "tipo": "defeito",
+   "registro": "SP.01 IF jogos escolares",
+   "medido": "`sports_operator` escreve 0 tabelas e lê 3; as 5 mesas de gestão dos jogos estão fora do papel",
+   "artefacto": "evidence/bu2c-caminhos-de-autorizacao-20-11c.json",
+   "grupo": "5.13",
+   "estado": "IMPLEMENTADO COM ERROS"
+  },
+  {
+   "tipo": "defeito",
+   "registro": "CM.04 IF push/FCM/Edge",
+   "medido": "cadeia partida no recetor do service worker (`RM13_CADEIA_PARTIDA 8/14`), medida noutro ar",
+   "artefacto": "evidence/rm13-rotas.json",
+   "grupo": "5.14",
+   "estado": "IMPLEMENTADO COM ERROS"
+  },
+  {
+   "tipo": "numero_desactualizado",
+   "registro": "SC.01 RLS em 176/176 · SC.02 475/475 policies",
+   "medido": "183/183 com RLS activo, 177 com política, 6 sem política nenhuma e 495 políticas lidas",
+   "artefacto": "evidence/bu4-digestao-para-documentacao-20-11.json",
+   "grupo": "5.16",
+   "estado": "IMPLEMENTADO E TESTADO"
+  }
+ ],
+ "ausencias_de_prova": [
+  {
+   "id": "FALTA-W1",
+   "onde": "web",
+   "afirma": "nenhum painel foi aberto em nenhuma célula web",
+   "medido": "abertas_soma=0 em 45 celulas",
+   "exige": "passada autenticada com clique no container de navegação real do desktop"
+  },
+  {
+   "id": "FALTA-W2",
+   "onde": "web",
+   "afirma": "as entradas contadas na barra web não têm geometria",
+   "medido": "entradas_com_geometria=nenhuma de 177 rotulos_lidos_das_45_celulas",
+   "exige": "régua de hit-teste (elementFromPoint) sobre o alvo desktop, não sobre #bfrMobileBottomNav"
+  },
+  {
+   "id": "FALTA-W3",
+   "onde": "web",
+   "afirma": "o instrumento de browser não conhece o container de navegação do desktop (`bfr-single-home-navigation` presente no bundle servido)",
+   "medido": "aparece_em_ah2-mobile2.mjs=false",
+   "exige": "novo selector lido do bundle, nunca dactilografado"
+  },
+  {
+   "id": "MED-POR-pending@430",
+   "onde": "mobile",
+   "afirma": "célula pending@430 sem medida",
+   "medido": "estado lido do p73: por_medir",
+   "exige": "lançar browser nessa célula"
+  },
+  {
+   "id": "MED-POR-secretary@430",
+   "onde": "mobile",
+   "afirma": "célula secretary@430 sem medida",
+   "medido": "estado lido do p73: por_medir",
+   "exige": "lançar browser nessa célula"
+  },
+  {
+   "id": "MED-POR-sports_operator@390",
+   "onde": "mobile",
+   "afirma": "célula sports_operator@390 sem medida",
+   "medido": "estado lido do p73: por_medir",
+   "exige": "lançar browser nessa célula"
+  },
+  {
+   "id": "MED-POR-sports_operator@414",
+   "onde": "mobile",
+   "afirma": "célula sports_operator@414 sem medida",
+   "medido": "estado lido do p73: por_medir",
+   "exige": "lançar browser nessa célula"
+  },
+  {
+   "id": "MED-POR-sports_operator@430",
+   "onde": "mobile",
+   "afirma": "célula sports_operator@430 sem medida",
+   "medido": "estado lido do p73: por_medir",
+   "exige": "lançar browser nessa célula"
+  },
+  {
+   "id": "MED-POR-education_supervisor@414",
+   "onde": "mobile",
+   "afirma": "célula education_supervisor@414 sem medida",
+   "medido": "estado lido do p73: por_medir",
+   "exige": "lançar browser nessa célula"
+  },
+  {
+   "id": "MED-POR-education_supervisor@430",
+   "onde": "mobile",
+   "afirma": "célula education_supervisor@430 sem medida",
+   "medido": "estado lido do p73: por_medir",
+   "exige": "lançar browser nessa célula"
+  },
+  {
+   "id": "CENSO-pending@320",
+   "onde": "mobile",
+   "afirma": "censo de portas não tem o que contar em pending@320",
+   "medido": "estado TRAVADA",
+   "exige": "chegar a shell montado (mesmo defeito/estado já listado)"
+  },
+  {
+   "id": "CENSO-pending@360",
+   "onde": "mobile",
+   "afirma": "censo de portas não tem o que contar em pending@360",
+   "medido": "estado TRAVADA",
+   "exige": "chegar a shell montado (mesmo defeito/estado já listado)"
+  },
+  {
+   "id": "CENSO-pending@375",
+   "onde": "mobile",
+   "afirma": "censo de portas não tem o que contar em pending@375",
+   "medido": "estado TRAVADA",
+   "exige": "chegar a shell montado (mesmo defeito/estado já listado)"
+  },
+  {
+   "id": "CENSO-pending@390",
+   "onde": "mobile",
+   "afirma": "censo de portas não tem o que contar em pending@390",
+   "medido": "estado TRAVADA",
+   "exige": "chegar a shell montado (mesmo defeito/estado já listado)"
+  },
+  {
+   "id": "CENSO-pending@414",
+   "onde": "mobile",
+   "afirma": "censo de portas não tem o que contar em pending@414",
+   "medido": "estado TRAVADA",
+   "exige": "chegar a shell montado (mesmo defeito/estado já listado)"
+  },
+  {
+   "id": "CENSO-pending@430",
+   "onde": "mobile",
+   "afirma": "censo de portas não tem o que contar em pending@430",
+   "medido": "estado por_medir",
+   "exige": "chegar a shell montado (mesmo defeito/estado já listado)"
+  },
+  {
+   "id": "CENSO-monitor@320",
+   "onde": "mobile",
+   "afirma": "censo de portas não tem o que contar em monitor@320",
+   "medido": "estado TRAVADA",
+   "exige": "chegar a shell montado (mesmo defeito/estado já listado)"
+  },
+  {
+   "id": "CENSO-monitor@375",
+   "onde": "mobile",
+   "afirma": "censo de portas não tem o que contar em monitor@375",
+   "medido": "estado TRAVADA",
+   "exige": "chegar a shell montado (mesmo defeito/estado já listado)"
+  },
+  {
+   "id": "CENSO-monitor@390",
+   "onde": "mobile",
+   "afirma": "censo de portas não tem o que contar em monitor@390",
+   "medido": "estado TRAVADA",
+   "exige": "chegar a shell montado (mesmo defeito/estado já listado)"
+  },
+  {
+   "id": "CENSO-monitor@414",
+   "onde": "mobile",
+   "afirma": "censo de portas não tem o que contar em monitor@414",
+   "medido": "estado TRAVADA",
+   "exige": "chegar a shell montado (mesmo defeito/estado já listado)"
+  }
+ ],
+ "saidas_de_produto": [
+  "pending@375",
+  "pending@390",
+  "pending@414",
+  "pending@320",
+  "pending@360"
+ ],
+ "defeitos_de_interface": [
+  "monitor@320",
+  "monitor@360",
+  "monitor@375",
+  "monitor@390",
+  "monitor@414",
+  "monitor@430",
+  "secretary@360",
+  "secretary@375"
+ ],
+ "distribuicao": {
+  "funcionando": 3,
+  "com_erros": 9,
+  "incompletas": 4,
+  "ausentes": 1
+ },
+ "veredito_final": "BU8_VERDE 9/0"
+}

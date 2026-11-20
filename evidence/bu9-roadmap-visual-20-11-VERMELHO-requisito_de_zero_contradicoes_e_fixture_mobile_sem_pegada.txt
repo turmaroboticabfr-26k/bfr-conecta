@@ -1,0 +1,69 @@
+# bu9-roadmap-visual  em=2026-11-20T10:57:45.333Z
+V as_linhas_de_progresso_do_registro_sao_dezasseis_e_batem_com_o_histograma_declarado :: linhas=16 soma_total=104 soma_concluido=92 if_declarado_na_§15=92 | duas representacoes independentes do mesmo numero: linhas de modulo e o histograma
+V o_percentual_de_cada_linha_do_registro_e_re_calculado_a_partir_de_concluido_e_total :: linhas_com_percentual_divergente=nenhuma fixture_7_de_8=87,5% fixture_6_de_6=100% fixture_11_de_14=78,6% | um percentual velho na tabela do registro chumba aqui, nao em confianca
+V o_mapeamento_por_ordem_das_linhas_do_registro_confere_item_a_item_com_a_bu5 :: desloques=nenhum unidades_com_registro=16 linhas=16 mapeadas=16 | a ordem so e fiavel enquanto os denominadores baterem
+V os_nomes_do_registro_divergem_do_rotulo_medido_so_onde_a_divergencia_ja_foi_escrita :: divergentes=5.11: registro="Portaria" medido="Porteiro" fixture_acrescentar_um_par_inedito_muda_a_contagem=true | o verde nomeia a unica dupla de nomes; nao tolera um limiar de ruído
+V a_faixa_exibida_nao_e_a_percentagem_do_registro :: se_copiasse_o_registro_diria_pronto_em=7[Secretaria,Transporte (monitor),AEE/Psicologia/Social,Jogos Escolares,Comunicação,Desenvolvedor,Segurança transversal] no_visual_a_funcionar=3[5.8,5.9,5.16] fixture_classificacao_pela_percentagem_diverge=true | este portao so pode ser verde porque as duas contagens sao diferentes por construcao
+V nenhuma_unidade_na_faixa_funcionando_sem_prova_bater_na_sua_propria_regua :: funcionando=5.8(conteudo,bate),5.9(conteudo,bate),5.16(banco,bate) | uma predica por classe de prova: conteudo exige o byte servido, banco exige a corrida
+X a_cobertura_mobile_citada_no_visual_e_multiplo_das_seis_larguras_e_a_soma_dos_estados_bate :: soma_de_estados_diverge=nenhuma multipilo_diverge=nenhuma sem_cobertura_mobile=5.1,5.16 fixture_ok5+travada1_para_1_papel=diverge(false) | as unidades sem cobertura estao nomeadas, nao omitidas
+V a_cobertura_web_do_visual_usa_so_as_tres_larguras_e_as_duas_classes_do_produtor :: larguras_vistas=[1280,1440,1920] classes_fora=[nenhuma] fixture_acrescentar_390_ao_web=390
+V o_roadmap_visual_declara_um_só_byte_e_ele_bate_com_o_que_bu5_bu7_e_bu8_declaram :: bu5=9e236a23eed978cf7c2a2743d449b307 bu7=9e236a23eed978cf7c2a2743d449b307 bu8=9e236a23eed978cf7c2a2743d449b307 bytes=3547458 fixture_inventar_a_pegada_do_bu8_detecta=[bu8]
+X as_faltas_numeradas_da_bu7_e_da_bu8_chegam_ao_visual_sem_se_tornarem_verdes :: faltas_web=FALTA-W1,FALTA-W2,FALTA-W3 ausencias_bu8=20 ids_unicos=20 funcionando_com_saida_de_defeito=5.16
+V nenhuma_linha_de_tabela_emitada_fica_fora_da_grelha_do_seu_cabecalho :: tabelas=11col,4col,2col linhas_de_tabela=27 fora_da_grelha=nenhuma fixture_cinco_colunas_na_grelha_de_seis_dispara=true
+BU9_VERMELHO 9/2
+registro linhas=16 soma_total=104 soma_concluido=92 if_declarado=92
+DIVERGENCIA_REGISTRO_VS_MEDIDA 5 + 1 de 17 :: registro_pronto_mas_nao_testado=[5.10,5.12,5.13,5.14,5.15] testado_mas_registro_com_lacuna=[5.9] | contagem, nao um portao
+NOMES_DIVERGENTES 1 :: 5.11: registro="Portaria" medido="Porteiro"
+### ROADMAP VISUAL
+Legenda: `#` a funcionar · `~` com erros · `+` incompleta · `_` ausente.
+Comprimento da barra = itens lidos do registro para a unidade; símbolo = estado MEDIDO (nunca a percentagem do registro).
+5.1  Autenticação e sessão                     ~~~~~~~~          8 itens  registro 7/8 87,5%  IMPLEMENTADO COM ERROS
+5.2  Navegação e estrutura                     ~~~~~~            6 itens  registro 5/6 83,3%  IMPLEMENTADO COM ERROS
+5.3  Área do aluno                             ++++++++++++++   14 itens  registro 11/14 78,6%  PARCIALMENTE IMPLEMENTADO
+5.4  Responsáveis                              ~~~~~~~~~         9 itens  registro 8/9 88,9%  IMPLEMENTADO COM ERROS
+5.5  Professor                                 ~~~~~~~~~         9 itens  registro 8/9 88,9%  IMPLEMENTADO COM ERROS
+5.6  Coordenação                               ~~~~~~~~~         9 itens  registro 8/9 88,9%  IMPLEMENTADO COM ERROS
+5.7  Direção                                   +++++++           7 itens  registro 6/7 85,7%  PARCIALMENTE IMPLEMENTADO
+5.8  Secretaria Escolar                        ######            6 itens  registro 6/6 100%  IMPLEMENTADO E TESTADO
+5.9  Supervisão Educacional (Secretaria de Edu ######            6 itens  registro 5/6 83,3%  IMPLEMENTADO E TESTADO
+5.10 Monitor (transporte)                      ~~~~              4 itens  registro 4/4 100%  IMPLEMENTADO COM ERROS
+5.11 Porteiro                                  ~~~~~             5 itens  registro 3/5 60,0%  IMPLEMENTADO COM ERROS
+5.12 AEE / Psicologia / Serviço Social         ++++++            6 itens  registro 6/6 100%  IMPLEMENTADO, MAS NÃO TESTADO
+5.13 Jogos Escolares                           ~~                2 itens  registro 2/2 100%  IMPLEMENTADO COM ERROS
+5.14 Comunicação e plataforma                  ~~~~              4 itens  registro 4/4 100%  IMPLEMENTADO COM ERROS
+5.15 Desenvolvedor / equipe técnica            +++               3 itens  registro 3/3 100%  IMPLEMENTADO, MAS NÃO TESTADO
+5.16 Segurança transversal                     ######            6 itens  registro 6/6 100%  IMPLEMENTADO E TESTADO
+M2   Secretaria Municipal (módulo 2)           _                 0 itens  registro sem linha no registro  SOMENTE INTERFACE
+### TABELA VISUAL POR UNIDADE
+| Grupo | Rótulo medido | Estado medido | Faixa | Registro (IF/total %) | Registro diz pronto | Prova na régua | Itens | Mobile OK/de | Web medida/bloq | Contradições |
+|---|---|---|---|---|---|---|---|---|---|---|
+| 5.1 | Autenticação e sessão | IMPLEMENTADO COM ERROS | com_erros | 7/8 87,5% | nao | NAO | 8 | 0/0 | 0/0 | 1 |
+| 5.2 | Navegação e estrutura | IMPLEMENTADO COM ERROS | com_erros | 5/6 83,3% | nao | NAO | 6 | 64/78 | 35/4 | 1 |
+| 5.3 | Área do aluno | PARCIALMENTE IMPLEMENTADO | incompletas | 11/14 78,6% | nao | NAO | 14 | 51/60 | 27/3 | 0 |
+| 5.4 | Responsáveis | IMPLEMENTADO COM ERROS | com_erros | 8/9 88,9% | nao | NAO | 9 | 37/48 | 20/4 | 1 |
+| 5.5 | Professor | IMPLEMENTADO COM ERROS | com_erros | 8/9 88,9% | nao | NAO | 9 | 30/30 | 14/1 | 1 |
+| 5.6 | Coordenação | IMPLEMENTADO COM ERROS | com_erros | 8/9 88,9% | nao | NAO | 9 | 70/84 | 38/4 | 1 |
+| 5.7 | Direção | PARCIALMENTE IMPLEMENTADO | incompletas | 6/7 85,7% | nao | sim | 7 | 27/36 | 15/3 | 0 |
+| 5.8 | Secretaria Escolar | IMPLEMENTADO E TESTADO | funcionando | 6/6 100% | SIM | sim | 6 | 43/48 | 22/2 | 0 |
+| 5.9 | Supervisão Educacional (Secretaria de Educação) | IMPLEMENTADO E TESTADO | funcionando | 5/6 83,3% | nao | sim | 6 | 43/48 | 22/2 | 0 |
+| 5.10 | Monitor (transporte) | IMPLEMENTADO COM ERROS | com_erros | 4/4 100% | SIM | NAO | 4 | 18/24 | 9/3 | 1 |
+| 5.11 | Porteiro | IMPLEMENTADO COM ERROS | com_erros | 3/5 60,0% | nao | NAO | 5 | 36/42 | 18/3 | 2 |
+| 5.12 | AEE / Psicologia / Serviço Social | IMPLEMENTADO, MAS NÃO TESTADO | incompletas | 6/6 100% | SIM | NAO | 6 | 61/66 | 31/2 | 1 |
+| 5.13 | Jogos Escolares | IMPLEMENTADO COM ERROS | com_erros | 2/2 100% | SIM | NAO | 2 | 52/66 | 29/4 | 1 |
+| 5.14 | Comunicação e plataforma | IMPLEMENTADO COM ERROS | com_erros | 4/4 100% | SIM | NAO | 4 | 67/72 | 34/2 | 1 |
+| 5.15 | Desenvolvedor / equipe técnica | IMPLEMENTADO, MAS NÃO TESTADO | incompletas | 3/3 100% | SIM | NAO | 3 | 6/6 | 3/0 | 0 |
+| 5.16 | Segurança transversal | IMPLEMENTADO E TESTADO | funcionando | 6/6 100% | SIM | sim | 6 | 0/0 | 0/0 | 1 |
+| M2 | Secretaria Municipal (módulo 2) | SOMENTE INTERFACE | ausentes | sem linha no registro | nao | sim | 0 | 10/12 | 5/1 | 0 |
+### DIVERGENCIAS REGISTRO x MEDICAO
+| Grupo | O que o registro afirma | O que a medição sustenta | Classe da divergência |
+|---|---|---|---|
+| 5.9 | 5/6 83,3% | IMPLEMENTADO E TESTADO | medicao_testada__registro_com_lacuna |
+| 5.10 | 4/4 100% | IMPLEMENTADO COM ERROS | registro_pronto__medicao_nao |
+| 5.12 | 6/6 100% | IMPLEMENTADO, MAS NÃO TESTADO | registro_pronto__medicao_nao |
+| 5.13 | 2/2 100% | IMPLEMENTADO COM ERROS | registro_pronto__medicao_nao |
+| 5.14 | 4/4 100% | IMPLEMENTADO COM ERROS | registro_pronto__medicao_nao |
+| 5.15 | 3/3 100% | IMPLEMENTADO, MAS NÃO TESTADO | registro_pronto__medicao_nao |
+### NOMES DO REGISTRO QUE NAO BATEM COM O ROTULO MEDIDO
+| Divergência de nome | Como é resolvida |
+|---|---|
+| 5.11: registro="Portaria" medido="Porteiro" | mapeamento por ordem, conferido pelo denominador de itens |

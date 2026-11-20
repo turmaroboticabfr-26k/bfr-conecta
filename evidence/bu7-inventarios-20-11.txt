@@ -1,0 +1,112 @@
+# bu7-inventarios  em=2026-11-20T10:32:52.915Z
+V a_grelha_mobile_confere_com_a_string_declarada_pelo_p73 :: declarado="15 papeis × 6 larguras = 90 celulas" lido: papeis=15 larguras=6 celulas=90 lacunas=0
+V os_motivos_do_p73_sao_os_tres_declarados_e_a_contagem_nao_e_vacua :: motivos={"travada_com_causa":13,"por_medir":7,"coerente":70} soma=90 de 90 fixture_inedito_rejeita=[estado_inventado]
+V cada_causa_de_trava_aponta_para_uma_celula_TRAVADA_e_cada_TRAVADA_tem_causa :: causas=13 travadas=13 sem_causa=nenhuma causa_sem_celula=nenhuma fixture_parent@320_e_OK? true
+V mobile_e_web_nao_partilham_uma_só_largura :: mobile=[320,360,375,390,414,430] web=[1280,1440,1920] interseccao=vazia fixture_acrescentar_1280_ao_mobile=1280
+V as_portas_por_papel_sao_re_contadas_sem_confundir_rotulo_com_destino :: destinos_distintos=54 rotulos_somados=183 portas_por_papel=183 indice_invertido_n=183 chaves_do_indice=54
+V o_censo_de_portas_por_papel_usa_so_larguras_da_banda_mobile_do_briefing :: larguras_vistas=[320,360,375,390,414,430] papeis_no_censo=15 de 15 fora_da_banda=nenhuma fixture_acrescentar_1280_ao_censo=1280
+V os_lugares_sem_contagem_de_portas_sao_so_celulas_que_nao_chegaram_a_shell :: sem_contagem=10 de 90 estados=TRAVADA,por_medir celulas=[pending@320,pending@360,pending@375,pending@390,pending@414,pending@430,monitor@320,monitor@375,monitor@390,monitor@414] ok_sem_porta=nenhum | o verde nao apaga a lacuna: exige que toda lacuna seja uma celula Travada ou por medir
+V o_total_web_tem_tres_representacoes_independentes_que_batem :: total.celulas=45 soma_por_largura=45 comprimento_celulas=45 papeis_por_largura=1280:15,1440:15,1920:15
+V toda_celula_bloqueada_web_tem_causa_declarada :: bloqueadas=7 de 45 sem_causa=nenhuma
+V a_sessao_web_de_cada_celula_cita_o_byte_servido :: celulas=45 md5_shell_diferente_do_ar=nenhuma artefactos_em_falta=nenhum
+V as_sessoes_m5_do_censo_de_portas_declarao_a_divisao_por_byte :: m5_ficheiros=109 no_ar=60 doutro_ar=49 | o verde nao exige zero sessoes velhas: exige que a divisao feche
+V as_faltas_do_web_sao_numeradas_e_tem_a_medida_que_las_origina :: faltas=FALTA-W1,FALTA-W2,FALTA-W3 abertas_soma=0 barra_com_geometria=0 seletor_desktop_no_leitor=false | uma falta nao se converte em verde: o verde exige que cada falta traga a mediacao que a nomeia
+BU7_VERDE 12/0
+mobile celulas=90 conta={"TRAVADA":13,"por_medir":7,"OK":70} causas=13 por_medir=[pending@430,secretary@430,sports_operator@390,sports_operator@414,sports_operator@430,education_supervisor@414,education_supervisor@430]
+web celulas=45 total={"celulas":45,"medida_web":38,"bloqueada":7,"falta":0,"estouro_vermelho":0,"shell_diverge":0,"vereditos":{"AH7b_MOBILE_LIMPO":0,"AH7b_MOBILE_PARCIAL":0,"AH7b_MOBILE_COM_DEFEITOS":45}}
+### TABELA MOBILE POR PAPEL
+| Papel | Portas no ar | Larguras com contagem | OK | TRAVADA | por medir | de |
+|---|---|---|---|---|---|---|
+| pending | 0 | 0/6 | 0 | 5 | 1 | 6 |
+| parent | 16 | 6/6 | 6 | 0 | 0 | 6 |
+| student | 19 | 6/6 | 6 | 0 | 0 | 6 |
+| pedagogical | 17 | 6/6 | 6 | 0 | 0 | 6 |
+| developer | 28 | 6/6 | 6 | 0 | 0 | 6 |
+| monitor | 8 | 2/6 | 0 | 6 | 0 | 6 |
+| gatekeeper | 8 | 6/6 | 6 | 0 | 0 | 6 |
+| coordinator | 18 | 6/6 | 6 | 0 | 0 | 6 |
+| secretary | 12 | 6/6 | 3 | 2 | 1 | 6 |
+| aee | 11 | 6/6 | 6 | 0 | 0 | 6 |
+| director | 19 | 6/6 | 6 | 0 | 0 | 6 |
+| psychology | 7 | 6/6 | 6 | 0 | 0 | 6 |
+| social_work | 6 | 6/6 | 6 | 0 | 0 | 6 |
+| sports_operator | 5 | 6/6 | 3 | 0 | 3 | 6 |
+| education_supervisor | 9 | 6/6 | 4 | 0 | 2 | 6 |
+### TABELA MOBILE POR LARGURA
+| Largura | OK | TRAVADA | por medir | de |
+|---|---|---|---|---|
+| 320 | 13 | 2 | 0 | 15 |
+| 360 | 12 | 3 | 0 | 15 |
+| 375 | 12 | 3 | 0 | 15 |
+| 390 | 12 | 2 | 1 | 15 |
+| 414 | 11 | 2 | 2 | 15 |
+| 430 | 10 | 1 | 4 | 15 |
+### TABELA MOBILE SEM CONTAGEM DE PORTAS
+| Célula sem contagem de portas | Estado medido no p73 |
+|---|---|
+| pending@320 | TRAVADA |
+| pending@360 | TRAVADA |
+| pending@375 | TRAVADA |
+| pending@390 | TRAVADA |
+| pending@414 | TRAVADA |
+| pending@430 | por_medir |
+| monitor@320 | TRAVADA |
+| monitor@375 | TRAVADA |
+| monitor@390 | TRAVADA |
+| monitor@414 | TRAVADA |
+### TABELA CAUSAS DE TRAVA
+| Célula | Causa medida |
+|---|---|
+| monitor@320 | shell ready sem #bfrMobileBottomNav após rechegar — módulo de apresentação mobile não montou a barra |
+| monitor@360 | shell ready sem #bfrMobileBottomNav após rechegar — módulo de apresentação mobile não montou a barra |
+| monitor@375 | shell ready sem #bfrMobileBottomNav após rechegar — módulo de apresentação mobile não montou a barra |
+| monitor@390 | shell ready sem #bfrMobileBottomNav após rechegar — módulo de apresentação mobile não montou a barra |
+| monitor@414 | shell ready sem #bfrMobileBottomNav após rechegar — módulo de apresentação mobile não montou a barra |
+| monitor@430 | shell ready sem #bfrMobileBottomNav após rechegar — módulo de apresentação mobile não montou a barra |
+| pending@375 | conta em análise: barreira de pendência, sem shell nem navegação (estado do produto) |
+| pending@390 | conta em análise: barreira de pendência, sem shell nem navegação (estado do produto) |
+| pending@414 | conta em análise: barreira de pendência, sem shell nem navegação (estado do produto) |
+| pending@320 | conta em análise: barreira de pendência, sem shell nem navegação (estado do produto) |
+| pending@360 | conta em análise: barreira de pendência, sem shell nem navegação (estado do produto) |
+| secretary@360 | shell ready sem #bfrMobileBottomNav após rechegar — módulo de apresentação mobile não montou a barra |
+| secretary@375 | shell ready sem #bfrMobileBottomNav após rechegar — módulo de apresentação mobile não montou a barra |
+### TABELA WEB POR PAPEL
+| Papel | 1280 | 1440 | 1920 |
+|---|---|---|---|
+| pending | BLOQUEADA | BLOQUEADA | BLOQUEADA |
+| parent | MEDIDA_WEB | MEDIDA_WEB | MEDIDA_WEB |
+| student | MEDIDA_WEB | MEDIDA_WEB | MEDIDA_WEB |
+| pedagogical | MEDIDA_WEB | MEDIDA_WEB | MEDIDA_WEB |
+| developer | MEDIDA_WEB | MEDIDA_WEB | MEDIDA_WEB |
+| monitor | BLOQUEADA | MEDIDA_WEB | BLOQUEADA |
+| gatekeeper | MEDIDA_WEB | MEDIDA_WEB | MEDIDA_WEB |
+| coordinator | BLOQUEADA | MEDIDA_WEB | MEDIDA_WEB |
+| secretary | MEDIDA_WEB | MEDIDA_WEB | MEDIDA_WEB |
+| aee | MEDIDA_WEB | MEDIDA_WEB | MEDIDA_WEB |
+| director | MEDIDA_WEB | MEDIDA_WEB | MEDIDA_WEB |
+| psychology | MEDIDA_WEB | MEDIDA_WEB | MEDIDA_WEB |
+| social_work | MEDIDA_WEB | MEDIDA_WEB | MEDIDA_WEB |
+| sports_operator | MEDIDA_WEB | MEDIDA_WEB | MEDIDA_WEB |
+| education_supervisor | BLOQUEADA | MEDIDA_WEB | MEDIDA_WEB |
+### TABELA WEB BLOQUEADAS
+| Célula | Causa de bloqueio |
+|---|---|
+| pending@1280 | conta em análise: barreira de pendência, sem shell nem navegação (estado do produto) |
+| monitor@1280 | shell ready sem #bfrMobileBottomNav após rechegar — módulo de apresentação mobile não montou a barra |
+| coordinator@1280 | shell ready sem #bfrMobileBottomNav após rechegar — módulo de apresentação mobile não montou a barra |
+| education_supervisor@1280 | shell ready sem #bfrMobileBottomNav após rechegar — módulo de apresentação mobile não montou a barra |
+| pending@1440 | conta em análise: barreira de pendência, sem shell nem navegação (estado do produto) |
+| pending@1920 | conta em análise: barreira de pendência, sem shell nem navegação (estado do produto) |
+| monitor@1920 | shell ready sem #bfrMobileBottomNav após rechegar — módulo de apresentação mobile não montou a barra |
+### TABELA WEB POR LARGURA
+| Largura | células | MEDIDA_WEB | BLOQUEADA | estouro vermelho | shell diverge |
+|---|---|---|---|---|---|
+| 1280 | 15 | 11 | 4 | 0 | 0 |
+| 1440 | 15 | 14 | 1 | 0 | 0 |
+| 1920 | 15 | 13 | 2 | 0 | 0 |
+### FALTAS DO WEB (falta de prova, nao régua)
+| ID | O que falta | Medido que o nomeia | O que exige para fechar |
+|---|---|---|---|
+| FALTA-W1 | nenhum painel foi aberto em nenhuma célula web | abertas_soma=0 em 45 celulas | passada autenticada com clique no container de navegação real do desktop |
+| FALTA-W2 | as entradas contadas na barra web não têm geometria | entradas_com_geometria=nenhuma de 177 rotulos_lidos_das_45_celulas | régua de hit-teste (elementFromPoint) sobre o alvo desktop, não sobre #bfrMobileBottomNav |
+| FALTA-W3 | o instrumento de browser não conhece o container de navegação do desktop (`bfr-single-home-navigation` presente no bundle servido) | aparece_em_ah2-mobile2.mjs=false | novo selector lido do bundle, nunca dactilografado |

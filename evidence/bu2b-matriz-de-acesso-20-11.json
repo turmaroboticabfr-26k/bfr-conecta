@@ -1,0 +1,1835 @@
+{
+  "em": "2026-11-20T07:58:06.770Z",
+  "modo": "read-only",
+  "instrumento": "scripts/bu2b-matriz-de-acesso-20-11.mjs",
+  "papeis_enum": [
+    "pending",
+    "parent",
+    "student",
+    "pedagogical",
+    "developer",
+    "monitor",
+    "gatekeeper",
+    "coordinator",
+    "secretary",
+    "aee",
+    "director",
+    "psychology",
+    "social_work",
+    "sports_operator",
+    "education_supervisor"
+  ],
+  "politicas_analisadas": 495,
+  "estilo_de_autorizacao": {
+    "auth_jwt": 2,
+    "helper_bfr": 263,
+    "subselect_exists": 0,
+    "nenhum_dos_anteriores": 230,
+    "total": 495
+  },
+  "literais_fora_do_enum": {
+    "teacher": {
+      "n_politicas": 4,
+      "amostra_politicas": [
+        "bfr_lesson_attendance|bfr_lesson_attendance_insert|a",
+        "bfr_lesson_attendance|bfr_lesson_attendance_update|w",
+        "psychology_articulations|bfr_psychology_articulations_insert|a",
+        "psychology_articulations|bfr_psychology_articulations_read|r"
+      ]
+    },
+    "email": {
+      "n_politicas": 2,
+      "amostra_politicas": [
+        "access_requests|access_requests_insert|a",
+        "access_requests|access_requests_read|r"
+      ]
+    },
+    "family": {
+      "n_politicas": 2,
+      "amostra_politicas": [
+        "aee_messages|aee_messages_read|r",
+        "aee_messages|bfr_aee_messages_central_read|r"
+      ]
+    },
+    "all": {
+      "n_politicas": 2,
+      "amostra_politicas": [
+        "announcements|announcements_read|r",
+        "announcements|announcements_staff_manage|*"
+      ]
+    },
+    "coordinator_override": {
+      "n_politicas": 2,
+      "amostra_politicas": [
+        "bfr_lesson_attendance|bfr_lesson_attendance_insert|a",
+        "bfr_lesson_attendance|bfr_lesson_attendance_update|w"
+      ]
+    },
+    "active": {
+      "n_politicas": 1,
+      "amostra_politicas": [
+        "aee_plans|bfr_aee_plans_central_read|r"
+      ]
+    },
+    "published": {
+      "n_politicas": 1,
+      "amostra_politicas": [
+        "announcements|announcements_read|r"
+      ]
+    }
+  },
+  "helpers_n": 49,
+  "helpers": {
+    "bfr_can_access_literacy_student": {
+      "definer": true,
+      "corpo_chars": 173,
+      "corpo_md5": "b0a420a05416d7c372dcdd004485e355",
+      "argumentos": "target_student uuid",
+      "cargos_no_corpo": [],
+      "literais_no_corpo_fora_do_enum": [],
+      "le_tabelas_de": [
+        "guardian_students"
+      ]
+    },
+    "bfr_can_manage_communications": {
+      "definer": true,
+      "corpo_chars": 183,
+      "corpo_md5": "5228171eab8f9e30fcc73f4b0c2cb892",
+      "argumentos": "",
+      "cargos_no_corpo": [],
+      "literais_no_corpo_fora_do_enum": [],
+      "le_tabelas_de": [
+        "profiles"
+      ]
+    },
+    "bfr_can_manage_lesson_attendance": {
+      "definer": true,
+      "corpo_chars": 2292,
+      "corpo_md5": "3b50f868777eff986cad44831d492a28",
+      "argumentos": "target_class uuid, target_subject text, target_schedule_entry uuid",
+      "cargos_no_corpo": [],
+      "literais_no_corpo_fora_do_enum": [],
+      "le_tabelas_de": [
+        "bfr_schedule_entries",
+        "bfr_schedule_versions",
+        "bfr_teacher_directory"
+      ]
+    },
+    "bfr_can_manage_student_directory": {
+      "definer": true,
+      "corpo_chars": 124,
+      "corpo_md5": "d76490f10d4e4a6aca50dd366676ef74",
+      "argumentos": "",
+      "cargos_no_corpo": [],
+      "literais_no_corpo_fora_do_enum": [],
+      "le_tabelas_de": []
+    },
+    "bfr_chat_can_access_message": {
+      "definer": true,
+      "corpo_chars": 589,
+      "corpo_md5": "127cb1235048932fb58fd6fcfa652741",
+      "argumentos": "target_message uuid",
+      "cargos_no_corpo": [],
+      "literais_no_corpo_fora_do_enum": [],
+      "le_tabelas_de": [
+        "internal_chat_messages",
+        "internal_chat_room_members"
+      ]
+    },
+    "bfr_chat_is_moderator": {
+      "definer": true,
+      "corpo_chars": 663,
+      "corpo_md5": "8c2850fc2f88c2f7a49e94fb6c377158",
+      "argumentos": "",
+      "cargos_no_corpo": [],
+      "literais_no_corpo_fora_do_enum": [],
+      "le_tabelas_de": [
+        "profiles"
+      ]
+    },
+    "bfr_chat_thread_is_empty": {
+      "definer": true,
+      "corpo_chars": 109,
+      "corpo_md5": "c91e308de058dbe0e5f541231366bcff",
+      "argumentos": "p_thread uuid",
+      "cargos_no_corpo": [],
+      "literais_no_corpo_fora_do_enum": [],
+      "le_tabelas_de": [
+        "internal_chat_messages"
+      ]
+    },
+    "bfr_collab_can_profile": {
+      "definer": true,
+      "corpo_chars": 221,
+      "corpo_md5": "105ba1a322c0cc6a0dcbca58e59fc95a",
+      "argumentos": "target_profile uuid",
+      "cargos_no_corpo": [],
+      "literais_no_corpo_fora_do_enum": [],
+      "le_tabelas_de": [
+        "profiles"
+      ]
+    },
+    "bfr_collab_can_project": {
+      "definer": true,
+      "corpo_chars": 390,
+      "corpo_md5": "edb53d65d1fcb8f8663493898ce29fcf",
+      "argumentos": "target_project uuid",
+      "cargos_no_corpo": [],
+      "literais_no_corpo_fora_do_enum": [],
+      "le_tabelas_de": [
+        "collaboration_project_members",
+        "collaboration_projects"
+      ]
+    },
+    "bfr_collab_can_task": {
+      "definer": true,
+      "corpo_chars": 464,
+      "corpo_md5": "046e4d067c478e957882534fa162a36a",
+      "argumentos": "target_task uuid",
+      "cargos_no_corpo": [],
+      "literais_no_corpo_fora_do_enum": [],
+      "le_tabelas_de": [
+        "collaboration_task_members",
+        "collaboration_tasks"
+      ]
+    },
+    "bfr_collab_is_manager": {
+      "definer": true,
+      "corpo_chars": 76,
+      "corpo_md5": "5393c2e691d70c9a5e8687f457b6bbd5",
+      "argumentos": "",
+      "cargos_no_corpo": [],
+      "literais_no_corpo_fora_do_enum": [],
+      "le_tabelas_de": []
+    },
+    "bfr_current_teacher_id": {
+      "definer": true,
+      "corpo_chars": 94,
+      "corpo_md5": "a8f909f3fdd40333724722d201a9043d",
+      "argumentos": "",
+      "cargos_no_corpo": [],
+      "literais_no_corpo_fora_do_enum": [],
+      "le_tabelas_de": [
+        "bfr_teacher_directory"
+      ]
+    },
+    "bfr_family_can_view_aee": {
+      "definer": true,
+      "corpo_chars": 142,
+      "corpo_md5": "0efc8d1cc0a6045a8d84ff56bb8cd217",
+      "argumentos": "target_student uuid",
+      "cargos_no_corpo": [],
+      "literais_no_corpo_fora_do_enum": [],
+      "le_tabelas_de": [
+        "guardian_students"
+      ]
+    },
+    "bfr_has_specialized_permission": {
+      "definer": true,
+      "corpo_chars": 289,
+      "corpo_md5": "1d180f1f94439190654cbca5bdf26fde",
+      "argumentos": "permission_code text",
+      "cargos_no_corpo": [],
+      "literais_no_corpo_fora_do_enum": [],
+      "le_tabelas_de": [
+        "bfr_specialized_role_capabilities"
+      ]
+    },
+    "bfr_is_coordinator": {
+      "definer": true,
+      "corpo_chars": 120,
+      "corpo_md5": "07733c1d46fa49c88214a17f981cc62c",
+      "argumentos": "user_id uuid",
+      "cargos_no_corpo": [],
+      "literais_no_corpo_fora_do_enum": [],
+      "le_tabelas_de": []
+    },
+    "bfr_is_education_supervisor": {
+      "definer": true,
+      "corpo_chars": 151,
+      "corpo_md5": "7eb780e19b22b3364255646e176b4f07",
+      "argumentos": "",
+      "cargos_no_corpo": [],
+      "literais_no_corpo_fora_do_enum": [],
+      "le_tabelas_de": [
+        "profiles"
+      ]
+    },
+    "bfr_is_instagram_admin": {
+      "definer": true,
+      "corpo_chars": 215,
+      "corpo_md5": "47680e247225fb82c617c7076183e43b",
+      "argumentos": "",
+      "cargos_no_corpo": [],
+      "literais_no_corpo_fora_do_enum": [],
+      "le_tabelas_de": [
+        "profiles"
+      ]
+    },
+    "bfr_is_municipal_authority": {
+      "definer": true,
+      "corpo_chars": 541,
+      "corpo_md5": "73b8b8e2855d88ce86448174b750b26c",
+      "argumentos": "",
+      "cargos_no_corpo": [],
+      "literais_no_corpo_fora_do_enum": [],
+      "le_tabelas_de": [
+        "profiles"
+      ]
+    },
+    "bfr_is_platform_admin": {
+      "definer": true,
+      "corpo_chars": 141,
+      "corpo_md5": "69b83072b7c79ff99798cd0fac855db1",
+      "argumentos": "",
+      "cargos_no_corpo": [],
+      "literais_no_corpo_fora_do_enum": [],
+      "le_tabelas_de": [
+        "profiles"
+      ]
+    },
+    "bfr_is_schedule_manager": {
+      "definer": true,
+      "corpo_chars": 108,
+      "corpo_md5": "d8011769588b20cd3c9191c68c18f232",
+      "argumentos": "",
+      "cargos_no_corpo": [],
+      "literais_no_corpo_fora_do_enum": [],
+      "le_tabelas_de": []
+    },
+    "bfr_is_staff": {
+      "definer": true,
+      "corpo_chars": 160,
+      "corpo_md5": "93943f6ab65ffd255af5941e3b75e1e7",
+      "argumentos": "",
+      "cargos_no_corpo": [],
+      "literais_no_corpo_fora_do_enum": [],
+      "le_tabelas_de": [
+        "profiles"
+      ]
+    },
+    "bfr_learning_is_manager": {
+      "definer": true,
+      "corpo_chars": 141,
+      "corpo_md5": "781261b6f10e3fe4eaaa773829669dcd",
+      "argumentos": "",
+      "cargos_no_corpo": [],
+      "literais_no_corpo_fora_do_enum": [],
+      "le_tabelas_de": [
+        "profiles"
+      ]
+    },
+    "bfr_municipalities_visible": {
+      "definer": true,
+      "corpo_chars": 162,
+      "corpo_md5": "fbccfaed5f81df837a7813f7be46701c",
+      "argumentos": "p_id uuid",
+      "cargos_no_corpo": [],
+      "literais_no_corpo_fora_do_enum": [],
+      "le_tabelas_de": [
+        "bfr_municipal_municipalities"
+      ]
+    },
+    "bfr_pedagogical_can_manage_student": {
+      "definer": true,
+      "corpo_chars": 364,
+      "corpo_md5": "c2e1e9790698f970745a36577e5a6042",
+      "argumentos": "p_student_id uuid, p_subject text DEFAULT NULL::text",
+      "cargos_no_corpo": [],
+      "literais_no_corpo_fora_do_enum": [],
+      "le_tabelas_de": [
+        "bfr_teacher_class_subjects",
+        "students"
+      ]
+    },
+    "bfr_profile_in_my_schools": {
+      "definer": true,
+      "corpo_chars": 911,
+      "corpo_md5": "c31e6cf9e08b926a727550263aa73456",
+      "argumentos": "p_target uuid",
+      "cargos_no_corpo": [],
+      "literais_no_corpo_fora_do_enum": [],
+      "le_tabelas_de": [
+        "guardian_students",
+        "staff_schools",
+        "students"
+      ]
+    },
+    "bfr_psychology_active_professional": {
+      "definer": true,
+      "corpo_chars": 243,
+      "corpo_md5": "9b348be02c39481ee94aab7a477a1cb7",
+      "argumentos": "target_professional uuid",
+      "cargos_no_corpo": [],
+      "literais_no_corpo_fora_do_enum": [],
+      "le_tabelas_de": [
+        "support_professionals"
+      ]
+    },
+    "bfr_psychology_record_access": {
+      "definer": true,
+      "corpo_chars": 737,
+      "corpo_md5": "1e671038f02268c4213a9272469851ed",
+      "argumentos": "target_student uuid, target_professional uuid, shared_with_team boolean DEFAULT false, shared_with_family boolean DEFAULT false, shared_with_aee boolean DEFAULT false",
+      "cargos_no_corpo": [],
+      "literais_no_corpo_fora_do_enum": [],
+      "le_tabelas_de": []
+    },
+    "bfr_reading_editor": {
+      "definer": true,
+      "corpo_chars": 144,
+      "corpo_md5": "dd05c5f44e5f7e4b7aa749a4a4a24f29",
+      "argumentos": "",
+      "cargos_no_corpo": [],
+      "literais_no_corpo_fora_do_enum": [],
+      "le_tabelas_de": [
+        "profiles"
+      ]
+    },
+    "bfr_reading_staff": {
+      "definer": true,
+      "corpo_chars": 155,
+      "corpo_md5": "d0c8d376e4ac81c6d4b95db6d851b6bc",
+      "argumentos": "",
+      "cargos_no_corpo": [],
+      "literais_no_corpo_fora_do_enum": [],
+      "le_tabelas_de": [
+        "profiles"
+      ]
+    },
+    "bfr_rls_director_manages_student": {
+      "definer": true,
+      "corpo_chars": 529,
+      "corpo_md5": "a69e2a5c936a7142e8ddf3720ec2c724",
+      "argumentos": "p_student_id uuid",
+      "cargos_no_corpo": [],
+      "literais_no_corpo_fora_do_enum": [],
+      "le_tabelas_de": []
+    },
+    "bfr_rls_is_developer": {
+      "definer": true,
+      "corpo_chars": 200,
+      "corpo_md5": "d0190d021a0ca94ab2a226afee57daa1",
+      "argumentos": "",
+      "cargos_no_corpo": [],
+      "literais_no_corpo_fora_do_enum": [],
+      "le_tabelas_de": []
+    },
+    "bfr_rls_session_role": {
+      "definer": true,
+      "corpo_chars": 288,
+      "corpo_md5": "1e4857a595ead5b590fe4d7893b48d2a",
+      "argumentos": "",
+      "cargos_no_corpo": [],
+      "literais_no_corpo_fora_do_enum": [],
+      "le_tabelas_de": [
+        "profiles"
+      ]
+    },
+    "bfr_school_in_municipal_scope": {
+      "definer": true,
+      "corpo_chars": 613,
+      "corpo_md5": "aa8b0b96943391e4dfe8e725257691f2",
+      "argumentos": "p_school uuid",
+      "cargos_no_corpo": [],
+      "literais_no_corpo_fora_do_enum": [],
+      "le_tabelas_de": [
+        "bfr_municipal_municipalities",
+        "bfr_school_key_map",
+        "schools"
+      ]
+    },
+    "bfr_school_in_own_school_scope": {
+      "definer": true,
+      "corpo_chars": 517,
+      "corpo_md5": "0505e967571726828456c3788c57ae5a",
+      "argumentos": "p_school uuid",
+      "cargos_no_corpo": [],
+      "literais_no_corpo_fora_do_enum": [],
+      "le_tabelas_de": [
+        "bfr_school_key_map",
+        "staff_schools"
+      ]
+    },
+    "bfr_staff_can_access_channel": {
+      "definer": true,
+      "corpo_chars": 544,
+      "corpo_md5": "d65e357d7e7dd8078f5a9baf66d56c90",
+      "argumentos": "target_channel uuid",
+      "cargos_no_corpo": [],
+      "literais_no_corpo_fora_do_enum": [],
+      "le_tabelas_de": [
+        "staff_channel_members",
+        "staff_channels"
+      ]
+    },
+    "bfr_staff_can_manage_channel": {
+      "definer": true,
+      "corpo_chars": 235,
+      "corpo_md5": "12fb368845cf0fc3845b93da2fc1349c",
+      "argumentos": "target_channel uuid",
+      "cargos_no_corpo": [],
+      "literais_no_corpo_fora_do_enum": [],
+      "le_tabelas_de": [
+        "staff_channels"
+      ]
+    },
+    "bfr_staff_can_manage_student_scope": {
+      "definer": true,
+      "corpo_chars": 374,
+      "corpo_md5": "cae3e560a115502dca0be45aa15f2dc7",
+      "argumentos": "p_student_id uuid, p_subject text DEFAULT NULL::text",
+      "cargos_no_corpo": [],
+      "literais_no_corpo_fora_do_enum": [],
+      "le_tabelas_de": []
+    },
+    "bfr_staff_can_message_recipient": {
+      "definer": true,
+      "corpo_chars": 208,
+      "corpo_md5": "b508cba5c46e665f52f6338605f6637a",
+      "argumentos": "target_profile uuid",
+      "cargos_no_corpo": [],
+      "literais_no_corpo_fora_do_enum": [],
+      "le_tabelas_de": [
+        "profiles"
+      ]
+    },
+    "bfr_staff_can_read_message": {
+      "definer": true,
+      "corpo_chars": 307,
+      "corpo_md5": "f4bdf775327b8eba09bf23eda4f622c1",
+      "argumentos": "target_message uuid",
+      "cargos_no_corpo": [],
+      "literais_no_corpo_fora_do_enum": [],
+      "le_tabelas_de": [
+        "staff_messages"
+      ]
+    },
+    "bfr_staff_is_manager": {
+      "definer": true,
+      "corpo_chars": 76,
+      "corpo_md5": "5393c2e691d70c9a5e8687f457b6bbd5",
+      "argumentos": "",
+      "cargos_no_corpo": [],
+      "literais_no_corpo_fora_do_enum": [],
+      "le_tabelas_de": []
+    },
+    "bfr_staff_role": {
+      "definer": true,
+      "corpo_chars": 87,
+      "corpo_md5": "97085a3c2e90367411bd449562ed50a1",
+      "argumentos": "",
+      "cargos_no_corpo": [],
+      "literais_no_corpo_fora_do_enum": [],
+      "le_tabelas_de": [
+        "profiles"
+      ]
+    },
+    "bfr_support_detail_access": {
+      "definer": true,
+      "corpo_chars": 459,
+      "corpo_md5": "0fae890da2ca05606351e889f815e767",
+      "argumentos": "target_request uuid, target_student uuid, private_record boolean, owner_id uuid",
+      "cargos_no_corpo": [],
+      "literais_no_corpo_fora_do_enum": [],
+      "le_tabelas_de": [
+        "support_requests"
+      ]
+    },
+    "bfr_support_manager": {
+      "definer": true,
+      "corpo_chars": 136,
+      "corpo_md5": "042d084b64c7dcc7a3865de9b58814a8",
+      "argumentos": "",
+      "cargos_no_corpo": [],
+      "literais_no_corpo_fora_do_enum": [],
+      "le_tabelas_de": [
+        "profiles"
+      ]
+    },
+    "bfr_support_request_access": {
+      "definer": true,
+      "corpo_chars": 271,
+      "corpo_md5": "ce7539e0022079f755cd63a5a9604d40",
+      "argumentos": "target_student uuid, target_requester uuid, target_professional uuid",
+      "cargos_no_corpo": [],
+      "literais_no_corpo_fora_do_enum": [],
+      "le_tabelas_de": [
+        "support_professionals"
+      ]
+    },
+    "bfr_support_request_create_access": {
+      "definer": true,
+      "corpo_chars": 173,
+      "corpo_md5": "4f01ad5feacf17d77b45ff144d3c2357",
+      "argumentos": "target_student uuid",
+      "cargos_no_corpo": [],
+      "literais_no_corpo_fora_do_enum": [],
+      "le_tabelas_de": [
+        "guardian_students"
+      ]
+    },
+    "bfr_support_request_matches": {
+      "definer": true,
+      "corpo_chars": 242,
+      "corpo_md5": "f17a130c8290250c292cdb9665af2e94",
+      "argumentos": "target_request uuid, target_student uuid, target_professional uuid DEFAULT NULL::uuid",
+      "cargos_no_corpo": [],
+      "literais_no_corpo_fora_do_enum": [],
+      "le_tabelas_de": [
+        "support_requests"
+      ]
+    },
+    "bfr_support_staff": {
+      "definer": true,
+      "corpo_chars": 173,
+      "corpo_md5": "c02244636ff10221ebec146f43891ff8",
+      "argumentos": "",
+      "cargos_no_corpo": [],
+      "literais_no_corpo_fora_do_enum": [],
+      "le_tabelas_de": [
+        "profiles"
+      ]
+    },
+    "bfr_teacher_can_manage_class_subject": {
+      "definer": true,
+      "corpo_chars": 348,
+      "corpo_md5": "481bf15950c836176b42d8476374d7d9",
+      "argumentos": "p_class_id uuid, p_subject text",
+      "cargos_no_corpo": [],
+      "literais_no_corpo_fora_do_enum": [],
+      "le_tabelas_de": [
+        "bfr_schedule_entries",
+        "bfr_schedule_versions",
+        "bfr_teacher_directory"
+      ]
+    },
+    "bfr_team_can_access_student": {
+      "definer": true,
+      "corpo_chars": 381,
+      "corpo_md5": "5202ff8479417942bd1b1303d83f8f7c",
+      "argumentos": "p_student_id uuid",
+      "cargos_no_corpo": [],
+      "literais_no_corpo_fora_do_enum": [],
+      "le_tabelas_de": [
+        "aee_student_roster"
+      ]
+    }
+  },
+  "helpers_erro": null,
+  "matriz_por_papel": {
+    "pending": {
+      "leitura_tabelas": [],
+      "escrita_tabelas": [],
+      "leitura_n": 0,
+      "escrita_n": 0,
+      "so_por_helper": []
+    },
+    "parent": {
+      "leitura_tabelas": [
+        "aee_game_catalog",
+        "bfr_school_calendar_days",
+        "bfr_school_calendar_month_targets",
+        "bfr_school_shift_settings"
+      ],
+      "escrita_tabelas": [],
+      "leitura_n": 4,
+      "escrita_n": 0,
+      "so_por_helper": []
+    },
+    "student": {
+      "leitura_tabelas": [
+        "aee_game_catalog",
+        "bfr_school_calendar_days",
+        "bfr_school_calendar_month_targets",
+        "bfr_school_shift_settings"
+      ],
+      "escrita_tabelas": [],
+      "leitura_n": 4,
+      "escrita_n": 0,
+      "so_por_helper": []
+    },
+    "pedagogical": {
+      "leitura_tabelas": [
+        "aee_game_catalog",
+        "classes",
+        "school_activities",
+        "school_videos",
+        "sports_athletes",
+        "sports_matches",
+        "students"
+      ],
+      "escrita_tabelas": [
+        "attendance",
+        "bfr_lesson_attendance",
+        "grades",
+        "school_activities",
+        "school_videos",
+        "staff_channels"
+      ],
+      "leitura_n": 7,
+      "escrita_n": 6,
+      "so_por_helper": []
+    },
+    "developer": {
+      "leitura_tabelas": [
+        "aee_game_catalog",
+        "aee_student_roster",
+        "bfr_school_calendar_days",
+        "bfr_school_calendar_month_targets",
+        "bfr_school_shift_settings",
+        "classes",
+        "guardian_students",
+        "school_videos",
+        "sports_athletes",
+        "sports_audit_log",
+        "sports_championships",
+        "sports_match_events",
+        "sports_match_followers",
+        "sports_matches",
+        "sports_schools",
+        "sports_teams",
+        "staff_announcements",
+        "student_location_sharing",
+        "students"
+      ],
+      "escrita_tabelas": [
+        "aee_student_roster",
+        "bfr_lesson_attendance",
+        "bfr_school_calendar_days",
+        "bfr_school_calendar_month_targets",
+        "bfr_school_shift_settings",
+        "guardian_students",
+        "sports_athletes",
+        "sports_championships",
+        "sports_matches",
+        "sports_schools",
+        "sports_teams",
+        "staff_channels"
+      ],
+      "leitura_n": 19,
+      "escrita_n": 12,
+      "so_por_helper": []
+    },
+    "monitor": {
+      "leitura_tabelas": [],
+      "escrita_tabelas": [],
+      "leitura_n": 0,
+      "escrita_n": 0,
+      "so_por_helper": []
+    },
+    "gatekeeper": {
+      "leitura_tabelas": [],
+      "escrita_tabelas": [],
+      "leitura_n": 0,
+      "escrita_n": 0,
+      "so_por_helper": []
+    },
+    "coordinator": {
+      "leitura_tabelas": [
+        "aee_game_catalog",
+        "aee_student_roster",
+        "bfr_school_calendar_days",
+        "bfr_school_calendar_month_targets",
+        "bfr_school_shift_settings",
+        "classes",
+        "school_videos",
+        "sports_athletes",
+        "sports_audit_log",
+        "sports_championships",
+        "sports_match_events",
+        "sports_match_followers",
+        "sports_matches",
+        "sports_schools",
+        "sports_teams"
+      ],
+      "escrita_tabelas": [
+        "aee_student_roster",
+        "bfr_lesson_attendance",
+        "bfr_school_calendar_days",
+        "bfr_school_calendar_month_targets",
+        "bfr_school_shift_settings",
+        "sports_athletes",
+        "sports_championships",
+        "sports_matches",
+        "sports_schools",
+        "sports_teams",
+        "staff_channels"
+      ],
+      "leitura_n": 15,
+      "escrita_n": 11,
+      "so_por_helper": []
+    },
+    "secretary": {
+      "leitura_tabelas": [
+        "attendance",
+        "grades",
+        "school_videos",
+        "sports_athletes",
+        "sports_matches",
+        "sports_schools"
+      ],
+      "escrita_tabelas": [
+        "attendance",
+        "grades",
+        "staff_channels"
+      ],
+      "leitura_n": 6,
+      "escrita_n": 3,
+      "so_por_helper": []
+    },
+    "aee": {
+      "leitura_tabelas": [
+        "aee_game_catalog",
+        "aee_student_roster",
+        "classes",
+        "guardian_students",
+        "school_videos",
+        "sports_athletes",
+        "sports_matches",
+        "students"
+      ],
+      "escrita_tabelas": [
+        "school_videos",
+        "staff_channels"
+      ],
+      "leitura_n": 8,
+      "escrita_n": 2,
+      "so_por_helper": []
+    },
+    "director": {
+      "leitura_tabelas": [
+        "aee_game_catalog",
+        "aee_student_links",
+        "aee_student_roster",
+        "attendance",
+        "bfr_school_calendar_days",
+        "bfr_school_calendar_month_targets",
+        "bfr_school_shift_settings",
+        "classes",
+        "gate_entry_alerts",
+        "profiles",
+        "school_videos",
+        "secretary_requests",
+        "sports_athletes",
+        "sports_audit_log",
+        "sports_championships",
+        "sports_match_events",
+        "sports_match_followers",
+        "sports_matches",
+        "sports_schools",
+        "sports_teams",
+        "student_reading_levels",
+        "students"
+      ],
+      "escrita_tabelas": [
+        "aee_student_roster",
+        "bfr_lesson_attendance",
+        "bfr_school_calendar_days",
+        "bfr_school_calendar_month_targets",
+        "bfr_school_shift_settings",
+        "sports_athletes",
+        "sports_championships",
+        "sports_matches",
+        "sports_schools",
+        "sports_teams",
+        "staff_channels"
+      ],
+      "leitura_n": 22,
+      "escrita_n": 11,
+      "so_por_helper": []
+    },
+    "psychology": {
+      "leitura_tabelas": [],
+      "escrita_tabelas": [],
+      "leitura_n": 0,
+      "escrita_n": 0,
+      "so_por_helper": []
+    },
+    "social_work": {
+      "leitura_tabelas": [],
+      "escrita_tabelas": [],
+      "leitura_n": 0,
+      "escrita_n": 0,
+      "so_por_helper": []
+    },
+    "sports_operator": {
+      "leitura_tabelas": [
+        "sports_athletes",
+        "sports_match_events",
+        "sports_matches"
+      ],
+      "escrita_tabelas": [],
+      "leitura_n": 3,
+      "escrita_n": 0,
+      "so_por_helper": []
+    },
+    "education_supervisor": {
+      "leitura_tabelas": [],
+      "escrita_tabelas": [],
+      "leitura_n": 0,
+      "escrita_n": 0,
+      "so_por_helper": []
+    }
+  },
+  "tabelas_sem_politica": [
+    "push_notify_throttle",
+    "student_location_notify_throttle",
+    "student_location_report_throttle",
+    "student_locations",
+    "student_pairing_attempts",
+    "student_pairing_codes"
+  ],
+  "buckets": {
+    "rotulo": "buckets",
+    "ok": true,
+    "linhas": [
+      {
+        "balde": "activity-media",
+        "publico": false,
+        "id_balde": "activity-media",
+        "politicas_que_o_citam": 4
+      },
+      {
+        "balde": "collaboration-files",
+        "publico": false,
+        "id_balde": "collaboration-files",
+        "politicas_que_o_citam": 3
+      },
+      {
+        "balde": "internal-chat-media",
+        "publico": false,
+        "id_balde": "internal-chat-media",
+        "politicas_que_o_citam": 4
+      },
+      {
+        "balde": "learning-evidence",
+        "publico": false,
+        "id_balde": "learning-evidence",
+        "politicas_que_o_citam": 3
+      },
+      {
+        "balde": "project-media",
+        "publico": false,
+        "id_balde": "project-media",
+        "politicas_que_o_citam": 4
+      },
+      {
+        "balde": "school-documents",
+        "publico": false,
+        "id_balde": "school-documents",
+        "politicas_que_o_citam": 12
+      },
+      {
+        "balde": "secretary-attachments",
+        "publico": false,
+        "id_balde": "secretary-attachments",
+        "politicas_que_o_citam": 8
+      },
+      {
+        "balde": "staff-files",
+        "publico": false,
+        "id_balde": "staff-files",
+        "politicas_que_o_citam": 7
+      },
+      {
+        "balde": "student-photos",
+        "publico": false,
+        "id_balde": "student-photos",
+        "politicas_que_o_citam": 5
+      }
+    ]
+  },
+  "grants_funcoes": {
+    "rotulo": "grants_funcoes",
+    "ok": true,
+    "linhas": [
+      {
+        "papel_de_banco": "-",
+        "privilegio": "EXECUTE",
+        "funcoes": 59
+      },
+      {
+        "papel_de_banco": "anon",
+        "privilegio": "EXECUTE",
+        "funcoes": 36
+      },
+      {
+        "papel_de_banco": "authenticated",
+        "privilegio": "EXECUTE",
+        "funcoes": 147
+      },
+      {
+        "papel_de_banco": "authenticator",
+        "privilegio": "EXECUTE",
+        "funcoes": 9
+      },
+      {
+        "papel_de_banco": "dashboard_user",
+        "privilegio": "EXECUTE",
+        "funcoes": 9
+      },
+      {
+        "papel_de_banco": "pgbouncer",
+        "privilegio": "EXECUTE",
+        "funcoes": 9
+      },
+      {
+        "papel_de_banco": "postgres",
+        "privilegio": "EXECUTE",
+        "funcoes": 158
+      },
+      {
+        "papel_de_banco": "service_role",
+        "privilegio": "EXECUTE",
+        "funcoes": 158
+      },
+      {
+        "papel_de_banco": "supabase_admin",
+        "privilegio": "EXECUTE",
+        "funcoes": 10
+      },
+      {
+        "papel_de_banco": "supabase_auth_admin",
+        "privilegio": "EXECUTE",
+        "funcoes": 9
+      },
+      {
+        "papel_de_banco": "supabase_etl_admin",
+        "privilegio": "EXECUTE",
+        "funcoes": 9
+      },
+      {
+        "papel_de_banco": "supabase_functions_admin",
+        "privilegio": "EXECUTE",
+        "funcoes": 9
+      },
+      {
+        "papel_de_banco": "supabase_privileged_role",
+        "privilegio": "EXECUTE",
+        "funcoes": 9
+      },
+      {
+        "papel_de_banco": "supabase_read_only_user",
+        "privilegio": "EXECUTE",
+        "funcoes": 9
+      },
+      {
+        "papel_de_banco": "supabase_realtime_admin",
+        "privilegio": "EXECUTE",
+        "funcoes": 9
+      },
+      {
+        "papel_de_banco": "supabase_replication_admin",
+        "privilegio": "EXECUTE",
+        "funcoes": 9
+      },
+      {
+        "papel_de_banco": "supabase_storage_admin",
+        "privilegio": "EXECUTE",
+        "funcoes": 9
+      }
+    ]
+  },
+  "grants_tabelas": {
+    "rotulo": "grants_tabelas",
+    "ok": true,
+    "linhas": [
+      {
+        "papel_de_banco": "anon",
+        "privilegio": "DELETE",
+        "objetos": 31
+      },
+      {
+        "papel_de_banco": "anon",
+        "privilegio": "INSERT",
+        "objetos": 31
+      },
+      {
+        "papel_de_banco": "anon",
+        "privilegio": "MAINTAIN",
+        "objetos": 165
+      },
+      {
+        "papel_de_banco": "anon",
+        "privilegio": "REFERENCES",
+        "objetos": 31
+      },
+      {
+        "papel_de_banco": "anon",
+        "privilegio": "SELECT",
+        "objetos": 165
+      },
+      {
+        "papel_de_banco": "anon",
+        "privilegio": "TRIGGER",
+        "objetos": 31
+      },
+      {
+        "papel_de_banco": "anon",
+        "privilegio": "TRUNCATE",
+        "objetos": 31
+      },
+      {
+        "papel_de_banco": "anon",
+        "privilegio": "UPDATE",
+        "objetos": 31
+      },
+      {
+        "papel_de_banco": "authenticated",
+        "privilegio": "DELETE",
+        "objetos": 173
+      },
+      {
+        "papel_de_banco": "authenticated",
+        "privilegio": "INSERT",
+        "objetos": 178
+      },
+      {
+        "papel_de_banco": "authenticated",
+        "privilegio": "MAINTAIN",
+        "objetos": 172
+      },
+      {
+        "papel_de_banco": "authenticated",
+        "privilegio": "REFERENCES",
+        "objetos": 172
+      },
+      {
+        "papel_de_banco": "authenticated",
+        "privilegio": "SELECT",
+        "objetos": 182
+      },
+      {
+        "papel_de_banco": "authenticated",
+        "privilegio": "TRIGGER",
+        "objetos": 172
+      },
+      {
+        "papel_de_banco": "authenticated",
+        "privilegio": "TRUNCATE",
+        "objetos": 172
+      },
+      {
+        "papel_de_banco": "authenticated",
+        "privilegio": "UPDATE",
+        "objetos": 177
+      },
+      {
+        "papel_de_banco": "postgres",
+        "privilegio": "DELETE",
+        "objetos": 190
+      },
+      {
+        "papel_de_banco": "postgres",
+        "privilegio": "INSERT",
+        "objetos": 190
+      },
+      {
+        "papel_de_banco": "postgres",
+        "privilegio": "MAINTAIN",
+        "objetos": 190
+      },
+      {
+        "papel_de_banco": "postgres",
+        "privilegio": "REFERENCES",
+        "objetos": 190
+      },
+      {
+        "papel_de_banco": "postgres",
+        "privilegio": "SELECT",
+        "objetos": 190
+      },
+      {
+        "papel_de_banco": "postgres",
+        "privilegio": "TRIGGER",
+        "objetos": 190
+      },
+      {
+        "papel_de_banco": "postgres",
+        "privilegio": "TRUNCATE",
+        "objetos": 190
+      },
+      {
+        "papel_de_banco": "postgres",
+        "privilegio": "UPDATE",
+        "objetos": 190
+      },
+      {
+        "papel_de_banco": "service_role",
+        "privilegio": "DELETE",
+        "objetos": 188
+      },
+      {
+        "papel_de_banco": "service_role",
+        "privilegio": "INSERT",
+        "objetos": 188
+      },
+      {
+        "papel_de_banco": "service_role",
+        "privilegio": "MAINTAIN",
+        "objetos": 188
+      },
+      {
+        "papel_de_banco": "service_role",
+        "privilegio": "REFERENCES",
+        "objetos": 188
+      },
+      {
+        "papel_de_banco": "service_role",
+        "privilegio": "SELECT",
+        "objetos": 190
+      },
+      {
+        "papel_de_banco": "service_role",
+        "privilegio": "TRIGGER",
+        "objetos": 188
+      },
+      {
+        "papel_de_banco": "service_role",
+        "privilegio": "TRUNCATE",
+        "objetos": 188
+      },
+      {
+        "papel_de_banco": "service_role",
+        "privilegio": "UPDATE",
+        "objetos": 188
+      }
+    ]
+  },
+  "todas_as_tabelas": {
+    "rotulo": "tabelas",
+    "ok": true,
+    "linhas": [
+      {
+        "tabela": "access_requests"
+      },
+      {
+        "tabela": "aee_activities"
+      },
+      {
+        "tabela": "aee_activity_recommendations"
+      },
+      {
+        "tabela": "aee_adaptations"
+      },
+      {
+        "tabela": "aee_attendance"
+      },
+      {
+        "tabela": "aee_game_assignments"
+      },
+      {
+        "tabela": "aee_game_catalog"
+      },
+      {
+        "tabela": "aee_game_favorites"
+      },
+      {
+        "tabela": "aee_game_sessions"
+      },
+      {
+        "tabela": "aee_goals"
+      },
+      {
+        "tabela": "aee_materials"
+      },
+      {
+        "tabela": "aee_messages"
+      },
+      {
+        "tabela": "aee_plan_reviews"
+      },
+      {
+        "tabela": "aee_plans"
+      },
+      {
+        "tabela": "aee_progress"
+      },
+      {
+        "tabela": "aee_resources"
+      },
+      {
+        "tabela": "aee_sessions"
+      },
+      {
+        "tabela": "aee_student_links"
+      },
+      {
+        "tabela": "aee_student_profiles"
+      },
+      {
+        "tabela": "aee_student_roster"
+      },
+      {
+        "tabela": "announcement_reads"
+      },
+      {
+        "tabela": "announcement_recipient_groups"
+      },
+      {
+        "tabela": "announcement_recipients"
+      },
+      {
+        "tabela": "announcements"
+      },
+      {
+        "tabela": "attendance"
+      },
+      {
+        "tabela": "bfr_coordination_messages"
+      },
+      {
+        "tabela": "bfr_coordination_threads"
+      },
+      {
+        "tabela": "bfr_grade_audit"
+      },
+      {
+        "tabela": "bfr_grading_rules"
+      },
+      {
+        "tabela": "bfr_lesson_attendance"
+      },
+      {
+        "tabela": "bfr_lesson_attendance_audit"
+      },
+      {
+        "tabela": "bfr_municipal_access_grants"
+      },
+      {
+        "tabela": "bfr_municipal_audit"
+      },
+      {
+        "tabela": "bfr_municipalities"
+      },
+      {
+        "tabela": "bfr_schedule_changes"
+      },
+      {
+        "tabela": "bfr_schedule_entries"
+      },
+      {
+        "tabela": "bfr_schedule_import_runs"
+      },
+      {
+        "tabela": "bfr_schedule_versions"
+      },
+      {
+        "tabela": "bfr_school_calendar_days"
+      },
+      {
+        "tabela": "bfr_school_calendar_month_targets"
+      },
+      {
+        "tabela": "bfr_school_key_map"
+      },
+      {
+        "tabela": "bfr_school_shift_settings"
+      },
+      {
+        "tabela": "bfr_specialized_audit_log"
+      },
+      {
+        "tabela": "bfr_specialized_role_capabilities"
+      },
+      {
+        "tabela": "bfr_subjects"
+      },
+      {
+        "tabela": "bfr_teacher_class_subjects"
+      },
+      {
+        "tabela": "bfr_teacher_content"
+      },
+      {
+        "tabela": "bfr_teacher_diary"
+      },
+      {
+        "tabela": "bfr_teacher_directory"
+      },
+      {
+        "tabela": "bfr_teacher_events"
+      },
+      {
+        "tabela": "bfr_teacher_plans"
+      },
+      {
+        "tabela": "classes"
+      },
+      {
+        "tabela": "collaboration_notifications"
+      },
+      {
+        "tabela": "collaboration_project_members"
+      },
+      {
+        "tabela": "collaboration_project_stages"
+      },
+      {
+        "tabela": "collaboration_projects"
+      },
+      {
+        "tabela": "collaboration_task_attachments"
+      },
+      {
+        "tabela": "collaboration_task_comments"
+      },
+      {
+        "tabela": "collaboration_task_members"
+      },
+      {
+        "tabela": "collaboration_tasks"
+      },
+      {
+        "tabela": "director_routine_items"
+      },
+      {
+        "tabela": "entry_restrictions"
+      },
+      {
+        "tabela": "gate_badges"
+      },
+      {
+        "tabela": "gate_checkins"
+      },
+      {
+        "tabela": "gate_entry_alerts"
+      },
+      {
+        "tabela": "gate_messages"
+      },
+      {
+        "tabela": "grades"
+      },
+      {
+        "tabela": "guardian_students"
+      },
+      {
+        "tabela": "instagram_accounts"
+      },
+      {
+        "tabela": "instagram_posts"
+      },
+      {
+        "tabela": "instagram_sync_runs"
+      },
+      {
+        "tabela": "internal_chat_message_reactions"
+      },
+      {
+        "tabela": "internal_chat_message_reports"
+      },
+      {
+        "tabela": "internal_chat_messages"
+      },
+      {
+        "tabela": "internal_chat_presence"
+      },
+      {
+        "tabela": "internal_chat_room_members"
+      },
+      {
+        "tabela": "internal_chat_threads"
+      },
+      {
+        "tabela": "learning_action_items"
+      },
+      {
+        "tabela": "learning_action_plans"
+      },
+      {
+        "tabela": "learning_assessment_results"
+      },
+      {
+        "tabela": "learning_assessments"
+      },
+      {
+        "tabela": "learning_evidence"
+      },
+      {
+        "tabela": "learning_external_results"
+      },
+      {
+        "tabela": "learning_goals"
+      },
+      {
+        "tabela": "learning_indicator_settings"
+      },
+      {
+        "tabela": "learning_interventions"
+      },
+      {
+        "tabela": "learning_meeting_actions"
+      },
+      {
+        "tabela": "learning_meetings"
+      },
+      {
+        "tabela": "learning_notifications"
+      },
+      {
+        "tabela": "learning_pedagogical_reports"
+      },
+      {
+        "tabela": "learning_skills"
+      },
+      {
+        "tabela": "learning_student_progress"
+      },
+      {
+        "tabela": "learning_subjects"
+      },
+      {
+        "tabela": "learning_teacher_actions"
+      },
+      {
+        "tabela": "literacy_activity_attempts"
+      },
+      {
+        "tabela": "literacy_progress"
+      },
+      {
+        "tabela": "meeting_notifications"
+      },
+      {
+        "tabela": "notification_preferences"
+      },
+      {
+        "tabela": "occurrences"
+      },
+      {
+        "tabela": "photos"
+      },
+      {
+        "tabela": "poll_options"
+      },
+      {
+        "tabela": "poll_votes"
+      },
+      {
+        "tabela": "polls"
+      },
+      {
+        "tabela": "profiles"
+      },
+      {
+        "tabela": "project_details"
+      },
+      {
+        "tabela": "project_photos"
+      },
+      {
+        "tabela": "project_results"
+      },
+      {
+        "tabela": "projects"
+      },
+      {
+        "tabela": "psychology_articulations"
+      },
+      {
+        "tabela": "psychology_meetings"
+      },
+      {
+        "tabela": "psychology_preventive_actions"
+      },
+      {
+        "tabela": "psychology_referrals"
+      },
+      {
+        "tabela": "psychology_returns"
+      },
+      {
+        "tabela": "push_notify_throttle"
+      },
+      {
+        "tabela": "push_subscriptions"
+      },
+      {
+        "tabela": "route_incidents"
+      },
+      {
+        "tabela": "school_activities"
+      },
+      {
+        "tabela": "school_documents"
+      },
+      {
+        "tabela": "school_events"
+      },
+      {
+        "tabela": "school_meeting_recipient_groups"
+      },
+      {
+        "tabela": "school_meeting_recipients"
+      },
+      {
+        "tabela": "school_meetings"
+      },
+      {
+        "tabela": "school_notification_reads"
+      },
+      {
+        "tabela": "school_poll_responses"
+      },
+      {
+        "tabela": "school_polls"
+      },
+      {
+        "tabela": "school_program_contents"
+      },
+      {
+        "tabela": "school_videos"
+      },
+      {
+        "tabela": "schools"
+      },
+      {
+        "tabela": "secretary_profile_change_requests"
+      },
+      {
+        "tabela": "secretary_request_attachments"
+      },
+      {
+        "tabela": "secretary_request_events"
+      },
+      {
+        "tabela": "secretary_request_messages"
+      },
+      {
+        "tabela": "secretary_requests"
+      },
+      {
+        "tabela": "sports_athletes"
+      },
+      {
+        "tabela": "sports_audit_log"
+      },
+      {
+        "tabela": "sports_brackets"
+      },
+      {
+        "tabela": "sports_championships"
+      },
+      {
+        "tabela": "sports_match_events"
+      },
+      {
+        "tabela": "sports_match_followers"
+      },
+      {
+        "tabela": "sports_match_statistics"
+      },
+      {
+        "tabela": "sports_matches"
+      },
+      {
+        "tabela": "sports_schools"
+      },
+      {
+        "tabela": "sports_standings"
+      },
+      {
+        "tabela": "sports_teams"
+      },
+      {
+        "tabela": "staff_announcement_reads"
+      },
+      {
+        "tabela": "staff_announcements"
+      },
+      {
+        "tabela": "staff_channel_members"
+      },
+      {
+        "tabela": "staff_channels"
+      },
+      {
+        "tabela": "staff_message_attachments"
+      },
+      {
+        "tabela": "staff_message_forwards"
+      },
+      {
+        "tabela": "staff_message_reads"
+      },
+      {
+        "tabela": "staff_messages"
+      },
+      {
+        "tabela": "staff_presence"
+      },
+      {
+        "tabela": "staff_schools"
+      },
+      {
+        "tabela": "staff_security_audit"
+      },
+      {
+        "tabela": "student_achievements"
+      },
+      {
+        "tabela": "student_avatar_configs"
+      },
+      {
+        "tabela": "student_game_sessions"
+      },
+      {
+        "tabela": "student_location_consent_log"
+      },
+      {
+        "tabela": "student_location_notify_throttle"
+      },
+      {
+        "tabela": "student_location_report_throttle"
+      },
+      {
+        "tabela": "student_location_sharing"
+      },
+      {
+        "tabela": "student_locations"
+      },
+      {
+        "tabela": "student_messages"
+      },
+      {
+        "tabela": "student_pairing_attempts"
+      },
+      {
+        "tabela": "student_pairing_codes"
+      },
+      {
+        "tabela": "student_programs"
+      },
+      {
+        "tabela": "student_reading_levels"
+      },
+      {
+        "tabela": "student_school_profiles"
+      },
+      {
+        "tabela": "students"
+      },
+      {
+        "tabela": "supervision_action_plans"
+      },
+      {
+        "tabela": "supervision_alerts"
+      },
+      {
+        "tabela": "supervision_audit"
+      },
+      {
+        "tabela": "supervision_requests"
+      },
+      {
+        "tabela": "supervision_response_attachments"
+      },
+      {
+        "tabela": "supervision_responses"
+      },
+      {
+        "tabela": "support_appointments"
+      },
+      {
+        "tabela": "support_follow_ups"
+      },
+      {
+        "tabela": "support_messages"
+      },
+      {
+        "tabela": "support_plans"
+      },
+      {
+        "tabela": "support_professionals"
+      },
+      {
+        "tabela": "support_requests"
+      },
+      {
+        "tabela": "support_services"
+      }
+    ]
+  },
+  "contagem_direta_pg_policy": 495,
+  "veredictos": [
+    {
+      "nome": "enum_tem_15",
+      "veredito": "VERDE",
+      "detalhe": {
+        "n": 15
+      }
+    },
+    {
+      "nome": "nenhuma_policy_de_leitura_sem_usando",
+      "veredito": "VERDE",
+      "detalhe": {
+        "leitura_sem_qual": 0,
+        "exemplos": []
+      }
+    },
+    {
+      "nome": "helpers_citadas_em_politicas_todas_encontradas_no_catalogo",
+      "veredito": "VERDE",
+      "detalhe": {
+        "citadas": 49,
+        "resolvidas": 49,
+        "faltantes": []
+      }
+    },
+    {
+      "nome": "todo_papel_tem_caminho_de_leitura_ou_e_listado_como_sem",
+      "veredito": "VERDE",
+      "detalhe": {
+        "sem_leitura": [
+          "pending",
+          "monitor",
+          "gatekeeper",
+          "psychology",
+          "social_work",
+          "education_supervisor"
+        ]
+      }
+    },
+    {
+      "nome": "politicas_analisadas_batem_com_contagem_direta_do_pg_policy",
+      "veredito": "VERDE",
+      "detalhe": {
+        "analisadas": 495,
+        "direta": 495
+      }
+    },
+    {
+      "nome": "estilos_somam_o_total_de_politicas",
+      "veredito": "VERDE",
+      "detalhe": {
+        "soma_estilos": 495,
+        "total": 495,
+        "estilos": {
+          "auth_jwt": 2,
+          "helper_bfr": 263,
+          "subselect_exists": 0,
+          "nenhum_dos_anteriores": 230
+        }
+      }
+    },
+    {
+      "nome": "grants_de_funcao_tem_linhas",
+      "veredito": "VERDE",
+      "detalhe": {
+        "n": 17
+      }
+    },
+    {
+      "nome": "buckets_consultados_sem_erro",
+      "veredito": "VERDE",
+      "detalhe": {
+        "n": 9
+      }
+    }
+  ],
+  "veredito_final": "BU2B_MATRIZ_VERDE 8/0",
+  "msd": 11245,
+  "pegada_politicas": "ca4086e04a3275c35b8610be73d78147"
+}

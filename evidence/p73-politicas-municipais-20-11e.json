@@ -1,0 +1,770 @@
+{
+  "programa": "scripts/p73-politicas-municipais-20-11.mjs",
+  "em": "2026-11-20T04:48:36.985Z",
+  "mesas_do_modulo": [
+    "schools",
+    "students",
+    "classes",
+    "supervision_requests",
+    "bfr_lesson_attendance",
+    "staff_schools",
+    "grades",
+    "supervision_alerts",
+    "supervision_responses",
+    "announcements",
+    "school_documents"
+  ],
+  "origem_das_mesas": "evidence/sm23-escopo-aplicado-por-leitura-18-11.json (leituras[].mesa)",
+  "portoes": {
+    "censo_de_policies_respondeu": {
+      "verde": true,
+      "detalhe": {
+        "politicas": 60,
+        "mesas": 11
+      }
+    },
+    "mesa_com_pelo_menos_uma_policy_schools": {
+      "verde": true,
+      "detalhe": {
+        "n": 2
+      }
+    },
+    "mesa_com_pelo_menos_uma_policy_students": {
+      "verde": true,
+      "detalhe": {
+        "n": 9
+      }
+    },
+    "mesa_com_pelo_menos_uma_policy_classes": {
+      "verde": true,
+      "detalhe": {
+        "n": 8
+      }
+    },
+    "mesa_com_pelo_menos_uma_policy_supervision_requests": {
+      "verde": true,
+      "detalhe": {
+        "n": 13
+      }
+    },
+    "mesa_com_pelo_menos_uma_policy_bfr_lesson_attendance": {
+      "verde": true,
+      "detalhe": {
+        "n": 3
+      }
+    },
+    "mesa_com_pelo_menos_uma_policy_staff_schools": {
+      "verde": true,
+      "detalhe": {
+        "n": 6
+      }
+    },
+    "mesa_com_pelo_menos_uma_policy_grades": {
+      "verde": true,
+      "detalhe": {
+        "n": 5
+      }
+    },
+    "mesa_com_pelo_menos_uma_policy_supervision_alerts": {
+      "verde": true,
+      "detalhe": {
+        "n": 3
+      }
+    },
+    "mesa_com_pelo_menos_uma_policy_supervision_responses": {
+      "verde": true,
+      "detalhe": {
+        "n": 5
+      }
+    },
+    "mesa_com_pelo_menos_uma_policy_announcements": {
+      "verde": true,
+      "detalhe": {
+        "n": 2
+      }
+    },
+    "mesa_com_pelo_menos_uma_policy_school_documents": {
+      "verde": true,
+      "detalhe": {
+        "n": 4
+      }
+    },
+    "defs_dos_agregados_lidas": {
+      "verde": true,
+      "detalhe": {
+        "totals_md5": "4ffde76bdb1243f6b9b3ebe6f2f50716"
+      }
+    }
+  },
+  "falhas": [],
+  "policies": [
+    {
+      "tabela": "announcements",
+      "polname": "announcements_read",
+      "polcmd": "r",
+      "polpermissive": true,
+      "papeis": [
+        "authenticated"
+      ],
+      "qual": "(((status = 'published'::text) AND (scheduled_at IS NULL) AND (audience_mode = 'all'::text) AND is_approved()) OR ((status = 'published'::text) AND (EXISTS ( SELECT 1\n   FROM announcement_recipients ar\n  WHERE ((ar.announcement_id = announcements.id) AND (ar.recipient_id = auth.uid()))))) OR bfr_can_manage_communications())",
+      "withcheck": null
+    },
+    {
+      "tabela": "announcements",
+      "polname": "announcements_staff_manage",
+      "polcmd": "*",
+      "polpermissive": true,
+      "papeis": [
+        "authenticated"
+      ],
+      "qual": "bfr_can_manage_communications()",
+      "withcheck": "(bfr_can_manage_communications() AND (COALESCE(audience_mode, 'all'::text) = 'all'::text))"
+    },
+    {
+      "tabela": "bfr_lesson_attendance",
+      "polname": "bfr_lesson_attendance_insert",
+      "polcmd": "a",
+      "polpermissive": true,
+      "papeis": [
+        "authenticated"
+      ],
+      "qual": null,
+      "withcheck": "(bfr_can_manage_lesson_attendance(class_id, subject, schedule_entry_id) AND (entered_by = auth.uid()) AND (updated_by = auth.uid()) AND (((source = 'teacher'::text) AND ((\"current_role\"())::text = 'pedagogical'::text)) OR ((source = 'coordinator_override'::text) AND ((\"current_role\"())::text = ANY (ARRAY['coordinator'::text, 'director'::text, 'developer'::text])))) AND (EXISTS ( SELECT 1\n   FROM students s\n  WHERE ((s.id = bfr_lesson_attendance.student_id) AND (s.class_id = bfr_lesson_attendance.class_id) AND s.active))))"
+    },
+    {
+      "tabela": "bfr_lesson_attendance",
+      "polname": "bfr_lesson_attendance_read",
+      "polcmd": "r",
+      "polpermissive": true,
+      "papeis": [
+        "authenticated"
+      ],
+      "qual": "(bfr_can_manage_lesson_attendance(class_id, subject, schedule_entry_id) AND (EXISTS ( SELECT 1\n   FROM students s\n  WHERE ((s.id = bfr_lesson_attendance.student_id) AND (s.class_id = bfr_lesson_attendance.class_id) AND s.active))))",
+      "withcheck": null
+    },
+    {
+      "tabela": "bfr_lesson_attendance",
+      "polname": "bfr_lesson_attendance_update",
+      "polcmd": "w",
+      "polpermissive": true,
+      "papeis": [
+        "authenticated"
+      ],
+      "qual": "bfr_can_manage_lesson_attendance(class_id, subject, schedule_entry_id)",
+      "withcheck": "(bfr_can_manage_lesson_attendance(class_id, subject, schedule_entry_id) AND (updated_by = auth.uid()) AND (((source = 'teacher'::text) AND ((\"current_role\"())::text = 'pedagogical'::text)) OR ((source = 'coordinator_override'::text) AND ((\"current_role\"())::text = ANY (ARRAY['coordinator'::text, 'director'::text, 'developer'::text])))) AND (EXISTS ( SELECT 1\n   FROM students s\n  WHERE ((s.id = bfr_lesson_attendance.student_id) AND (s.class_id = bfr_lesson_attendance.class_id) AND s.active))))"
+    },
+    {
+      "tabela": "classes",
+      "polname": "classes_family_read",
+      "polcmd": "r",
+      "polpermissive": true,
+      "papeis": [
+        "authenticated"
+      ],
+      "qual": "(EXISTS ( SELECT 1\n   FROM (students s\n     JOIN guardian_students gs ON ((gs.student_id = s.id)))\n  WHERE ((s.class_id = classes.id) AND (gs.profile_id = auth.uid()))))",
+      "withcheck": null
+    },
+    {
+      "tabela": "classes",
+      "polname": "classes_monitor_read",
+      "polcmd": "r",
+      "polpermissive": true,
+      "papeis": [
+        "authenticated"
+      ],
+      "qual": "is_monitor()",
+      "withcheck": null
+    },
+    {
+      "tabela": "classes",
+      "polname": "classes_municipal_read",
+      "polcmd": "r",
+      "polpermissive": true,
+      "papeis": [
+        "authenticated"
+      ],
+      "qual": "bfr_school_in_municipal_scope(school_id)",
+      "withcheck": null
+    },
+    {
+      "tabela": "classes",
+      "polname": "classes_read",
+      "polcmd": "r",
+      "polpermissive": true,
+      "papeis": [
+        "authenticated"
+      ],
+      "qual": "(((\"current_role\"())::text = ANY (ARRAY['aee'::text, 'developer'::text])) OR (((\"current_role\"())::text = 'pedagogical'::text) AND (EXISTS ( SELECT 1\n   FROM bfr_teacher_class_subjects t\n  WHERE ((t.profile_id = auth.uid()) AND (t.class_id = classes.id) AND t.active)))))",
+      "withcheck": null
+    },
+    {
+      "tabela": "classes",
+      "polname": "classes_select_secretary",
+      "polcmd": "r",
+      "polpermissive": true,
+      "papeis": [
+        "authenticated"
+      ],
+      "qual": "(EXISTS ( SELECT 1\n   FROM profiles p\n  WHERE ((p.id = auth.uid()) AND (p.role = 'secretary'::account_role))))",
+      "withcheck": null
+    },
+    {
+      "tabela": "classes",
+      "polname": "classes_supervisor_read",
+      "polcmd": "r",
+      "polpermissive": true,
+      "papeis": [
+        "authenticated"
+      ],
+      "qual": "bfr_is_education_supervisor()",
+      "withcheck": null
+    },
+    {
+      "tabela": "classes",
+      "polname": "coordinators read classes",
+      "polcmd": "r",
+      "polpermissive": true,
+      "papeis": [
+        "authenticated"
+      ],
+      "qual": "(((\"current_role\"())::text = ANY (ARRAY['coordinator'::text, 'developer'::text])) OR (((\"current_role\"())::text = 'pedagogical'::text) AND (EXISTS ( SELECT 1\n   FROM bfr_teacher_class_subjects t\n  WHERE ((t.profile_id = auth.uid()) AND (t.class_id = classes.id) AND t.active)))))",
+      "withcheck": null
+    },
+    {
+      "tabela": "classes",
+      "polname": "director_dashboard_read_classes",
+      "polcmd": "r",
+      "polpermissive": true,
+      "papeis": [
+        "authenticated"
+      ],
+      "qual": "((\"current_role\"())::text = 'director'::text)",
+      "withcheck": null
+    },
+    {
+      "tabela": "grades",
+      "polname": "grades_family_read",
+      "polcmd": "r",
+      "polpermissive": true,
+      "papeis": [
+        "authenticated"
+      ],
+      "qual": "(EXISTS ( SELECT 1\n   FROM guardian_students gs\n  WHERE ((gs.student_id = grades.student_id) AND (gs.profile_id = auth.uid()))))",
+      "withcheck": null
+    },
+    {
+      "tabela": "grades",
+      "polname": "grades_staff_delete",
+      "polcmd": "d",
+      "polpermissive": true,
+      "papeis": [
+        "-"
+      ],
+      "qual": "(bfr_staff_can_manage_student_scope(student_id, subject) AND ((bfr_rls_session_role())::text <> 'secretary'::text))",
+      "withcheck": null
+    },
+    {
+      "tabela": "grades",
+      "polname": "grades_staff_insert",
+      "polcmd": "a",
+      "polpermissive": true,
+      "papeis": [
+        "-"
+      ],
+      "qual": null,
+      "withcheck": "(bfr_staff_can_manage_student_scope(student_id, subject) AND ((bfr_rls_session_role())::text <> 'secretary'::text) AND (((bfr_rls_session_role())::text <> 'pedagogical'::text) OR (entered_by = auth.uid())))"
+    },
+    {
+      "tabela": "grades",
+      "polname": "grades_staff_select",
+      "polcmd": "r",
+      "polpermissive": true,
+      "papeis": [
+        "-"
+      ],
+      "qual": "(bfr_staff_can_manage_student_scope(student_id, subject) AND ((bfr_rls_session_role())::text <> 'secretary'::text))",
+      "withcheck": null
+    },
+    {
+      "tabela": "grades",
+      "polname": "grades_supervisor_read",
+      "polcmd": "r",
+      "polpermissive": true,
+      "papeis": [
+        "authenticated"
+      ],
+      "qual": "bfr_is_education_supervisor()",
+      "withcheck": null
+    },
+    {
+      "tabela": "school_documents",
+      "polname": "families read published school documents",
+      "polcmd": "r",
+      "polpermissive": true,
+      "papeis": [
+        "authenticated"
+      ],
+      "qual": "((published AND (EXISTS ( SELECT 1\n   FROM profiles p\n  WHERE ((p.id = auth.uid()) AND (p.role = ANY (ARRAY['parent'::account_role, 'student'::account_role, 'secretary'::account_role, 'pedagogical'::account_role, 'monitor'::account_role, 'gatekeeper'::account_role, 'developer'::account_role])))))) OR (recipient_id = auth.uid()) OR (EXISTS ( SELECT 1\n   FROM secretary_requests r\n  WHERE ((r.id = school_documents.request_id) AND (r.requester_id = auth.uid())))) OR (EXISTS ( SELECT 1\n   FROM guardian_students g\n  WHERE ((g.profile_id = auth.uid()) AND (g.student_id = school_documents.student_id)))))",
+      "withcheck": null
+    },
+    {
+      "tabela": "school_documents",
+      "polname": "school team manage library documents",
+      "polcmd": "*",
+      "polpermissive": true,
+      "papeis": [
+        "authenticated"
+      ],
+      "qual": "((category ~~ 'Biblioteca%'::text) AND (EXISTS ( SELECT 1\n   FROM profiles p\n  WHERE ((p.id = auth.uid()) AND (p.role = ANY (ARRAY['director'::account_role, 'coordinator'::account_role, 'pedagogical'::account_role, 'secretary'::account_role, 'developer'::account_role]))))))",
+      "withcheck": "((category ~~ 'Biblioteca%'::text) AND (EXISTS ( SELECT 1\n   FROM profiles p\n  WHERE ((p.id = auth.uid()) AND (p.role = ANY (ARRAY['director'::account_role, 'coordinator'::account_role, 'pedagogical'::account_role, 'secretary'::account_role, 'developer'::account_role]))))))"
+    },
+    {
+      "tabela": "school_documents",
+      "polname": "school team read library documents",
+      "polcmd": "r",
+      "polpermissive": true,
+      "papeis": [
+        "authenticated"
+      ],
+      "qual": "((category ~~ 'Biblioteca%'::text) AND (EXISTS ( SELECT 1\n   FROM profiles p\n  WHERE ((p.id = auth.uid()) AND (p.role = ANY (ARRAY['director'::account_role, 'coordinator'::account_role, 'pedagogical'::account_role, 'secretary'::account_role, 'developer'::account_role]))))))",
+      "withcheck": null
+    },
+    {
+      "tabela": "school_documents",
+      "polname": "secretary staff manage school documents",
+      "polcmd": "*",
+      "polpermissive": true,
+      "papeis": [
+        "authenticated"
+      ],
+      "qual": "(EXISTS ( SELECT 1\n   FROM profiles p\n  WHERE ((p.id = auth.uid()) AND (p.role = ANY (ARRAY['secretary'::account_role, 'developer'::account_role])))))",
+      "withcheck": "(EXISTS ( SELECT 1\n   FROM profiles p\n  WHERE ((p.id = auth.uid()) AND (p.role = ANY (ARRAY['secretary'::account_role, 'developer'::account_role])))))"
+    },
+    {
+      "tabela": "schools",
+      "polname": "schools_municipal_read",
+      "polcmd": "r",
+      "polpermissive": true,
+      "papeis": [
+        "authenticated"
+      ],
+      "qual": "bfr_is_municipal_authority()",
+      "withcheck": null
+    },
+    {
+      "tabela": "schools",
+      "polname": "schools_supervisor_read",
+      "polcmd": "r",
+      "polpermissive": true,
+      "papeis": [
+        "authenticated"
+      ],
+      "qual": "bfr_is_education_supervisor()",
+      "withcheck": null
+    },
+    {
+      "tabela": "staff_schools",
+      "polname": "staff_schools_developer_delete",
+      "polcmd": "d",
+      "polpermissive": true,
+      "papeis": [
+        "authenticated"
+      ],
+      "qual": "is_developer()",
+      "withcheck": null
+    },
+    {
+      "tabela": "staff_schools",
+      "polname": "staff_schools_developer_insert",
+      "polcmd": "a",
+      "polpermissive": true,
+      "papeis": [
+        "authenticated"
+      ],
+      "qual": null,
+      "withcheck": "is_developer()"
+    },
+    {
+      "tabela": "staff_schools",
+      "polname": "staff_schools_developer_read",
+      "polcmd": "r",
+      "polpermissive": true,
+      "papeis": [
+        "authenticated"
+      ],
+      "qual": "is_developer()",
+      "withcheck": null
+    },
+    {
+      "tabela": "staff_schools",
+      "polname": "staff_schools_developer_update",
+      "polcmd": "w",
+      "polpermissive": true,
+      "papeis": [
+        "authenticated"
+      ],
+      "qual": "is_developer()",
+      "withcheck": "is_developer()"
+    },
+    {
+      "tabela": "staff_schools",
+      "polname": "staff_schools_own_insert",
+      "polcmd": "a",
+      "polpermissive": true,
+      "papeis": [
+        "authenticated"
+      ],
+      "qual": null,
+      "withcheck": "((profile_id = auth.uid()) AND (\"current_role\"() = ANY (ARRAY['director'::account_role, 'coordinator'::account_role, 'secretary'::account_role])))"
+    },
+    {
+      "tabela": "staff_schools",
+      "polname": "staff_schools_own_read",
+      "polcmd": "r",
+      "polpermissive": true,
+      "papeis": [
+        "authenticated"
+      ],
+      "qual": "(profile_id = auth.uid())",
+      "withcheck": null
+    },
+    {
+      "tabela": "students",
+      "polname": "bfr_students_directory_insert",
+      "polcmd": "a",
+      "polpermissive": true,
+      "papeis": [
+        "authenticated"
+      ],
+      "qual": null,
+      "withcheck": "bfr_can_manage_student_directory()"
+    },
+    {
+      "tabela": "students",
+      "polname": "bfr_students_directory_update",
+      "polcmd": "w",
+      "polpermissive": true,
+      "papeis": [
+        "authenticated"
+      ],
+      "qual": "bfr_can_manage_student_directory()",
+      "withcheck": "bfr_can_manage_student_directory()"
+    },
+    {
+      "tabela": "students",
+      "polname": "director_dashboard_read_students",
+      "polcmd": "r",
+      "polpermissive": true,
+      "papeis": [
+        "authenticated"
+      ],
+      "qual": "((\"current_role\"())::text = 'director'::text)",
+      "withcheck": null
+    },
+    {
+      "tabela": "students",
+      "polname": "staff manage student records",
+      "polcmd": "*",
+      "polpermissive": true,
+      "papeis": [
+        "authenticated"
+      ],
+      "qual": "(EXISTS ( SELECT 1\n   FROM profiles p\n  WHERE ((p.id = auth.uid()) AND (p.role = ANY (ARRAY['coordinator'::account_role, 'developer'::account_role])))))",
+      "withcheck": "(EXISTS ( SELECT 1\n   FROM profiles p\n  WHERE ((p.id = auth.uid()) AND (p.role = ANY (ARRAY['coordinator'::account_role, 'developer'::account_role])))))"
+    },
+    {
+      "tabela": "students",
+      "polname": "students_monitor_read",
+      "polcmd": "r",
+      "polpermissive": true,
+      "papeis": [
+        "authenticated"
+      ],
+      "qual": "is_monitor()",
+      "withcheck": null
+    },
+    {
+      "tabela": "students",
+      "polname": "students_municipal_read",
+      "polcmd": "r",
+      "polpermissive": true,
+      "papeis": [
+        "authenticated"
+      ],
+      "qual": "bfr_school_in_municipal_scope(school_id)",
+      "withcheck": null
+    },
+    {
+      "tabela": "students",
+      "polname": "students_read",
+      "polcmd": "r",
+      "polpermissive": true,
+      "papeis": [
+        "authenticated"
+      ],
+      "qual": "((((\"current_role\"())::text = 'aee'::text) AND (EXISTS ( SELECT 1\n   FROM aee_student_roster r\n  WHERE ((r.student_id = students.id) AND r.active)))) OR ((\"current_role\"())::text = 'developer'::text) OR (((\"current_role\"())::text = 'pedagogical'::text) AND bfr_pedagogical_can_manage_student(id)) OR (EXISTS ( SELECT 1\n   FROM guardian_students gs\n  WHERE ((gs.student_id = students.id) AND (gs.profile_id = auth.uid())))))",
+      "withcheck": null
+    },
+    {
+      "tabela": "students",
+      "polname": "students_select_secretary",
+      "polcmd": "r",
+      "polpermissive": true,
+      "papeis": [
+        "authenticated"
+      ],
+      "qual": "(EXISTS ( SELECT 1\n   FROM profiles p\n  WHERE ((p.id = auth.uid()) AND (p.role = 'secretary'::account_role))))",
+      "withcheck": null
+    },
+    {
+      "tabela": "students",
+      "polname": "students_supervisor_read",
+      "polcmd": "r",
+      "polpermissive": true,
+      "papeis": [
+        "authenticated"
+      ],
+      "qual": "bfr_is_education_supervisor()",
+      "withcheck": null
+    },
+    {
+      "tabela": "supervision_alerts",
+      "polname": "supervision_alerts_developer_insert",
+      "polcmd": "a",
+      "polpermissive": true,
+      "papeis": [
+        "authenticated"
+      ],
+      "qual": null,
+      "withcheck": "(EXISTS ( SELECT 1\n   FROM profiles p\n  WHERE ((p.id = auth.uid()) AND (p.role = 'developer'::account_role))))"
+    },
+    {
+      "tabela": "supervision_alerts",
+      "polname": "supervision_alerts_staff_read",
+      "polcmd": "r",
+      "polpermissive": true,
+      "papeis": [
+        "authenticated"
+      ],
+      "qual": "(EXISTS ( SELECT 1\n   FROM profiles p\n  WHERE ((p.id = auth.uid()) AND (p.role = ANY (ARRAY['secretary'::account_role, 'developer'::account_role, 'director'::account_role, 'coordinator'::account_role])))))",
+      "withcheck": null
+    },
+    {
+      "tabela": "supervision_alerts",
+      "polname": "supervision_alerts_staff_update",
+      "polcmd": "w",
+      "polpermissive": true,
+      "papeis": [
+        "authenticated"
+      ],
+      "qual": "(EXISTS ( SELECT 1\n   FROM profiles p\n  WHERE ((p.id = auth.uid()) AND (p.role = ANY (ARRAY['secretary'::account_role, 'developer'::account_role])))))",
+      "withcheck": null
+    },
+    {
+      "tabela": "supervision_requests",
+      "polname": "supervision_requests_coordinator_update",
+      "polcmd": "w",
+      "polpermissive": true,
+      "papeis": [
+        "authenticated"
+      ],
+      "qual": "(EXISTS ( SELECT 1\n   FROM (profiles p\n     JOIN staff_schools ss ON ((ss.profile_id = p.id)))\n  WHERE ((p.id = auth.uid()) AND (ss.school_id = supervision_requests.school_id) AND (p.role = 'coordinator'::account_role))))",
+      "withcheck": null
+    },
+    {
+      "tabela": "supervision_requests",
+      "polname": "supervision_requests_developer_insert",
+      "polcmd": "a",
+      "polpermissive": true,
+      "papeis": [
+        "authenticated"
+      ],
+      "qual": null,
+      "withcheck": "(EXISTS ( SELECT 1\n   FROM profiles p\n  WHERE ((p.id = auth.uid()) AND (p.role = 'developer'::account_role))))"
+    },
+    {
+      "tabela": "supervision_requests",
+      "polname": "supervision_requests_developer_read",
+      "polcmd": "r",
+      "polpermissive": true,
+      "papeis": [
+        "authenticated"
+      ],
+      "qual": "(EXISTS ( SELECT 1\n   FROM profiles p\n  WHERE ((p.id = auth.uid()) AND (p.role = 'developer'::account_role))))",
+      "withcheck": null
+    },
+    {
+      "tabela": "supervision_requests",
+      "polname": "supervision_requests_developer_update",
+      "polcmd": "w",
+      "polpermissive": true,
+      "papeis": [
+        "authenticated"
+      ],
+      "qual": "(EXISTS ( SELECT 1\n   FROM profiles p\n  WHERE ((p.id = auth.uid()) AND (p.role = 'developer'::account_role))))",
+      "withcheck": null
+    },
+    {
+      "tabela": "supervision_requests",
+      "polname": "supervision_requests_director_read",
+      "polcmd": "r",
+      "polpermissive": true,
+      "papeis": [
+        "authenticated"
+      ],
+      "qual": "(EXISTS ( SELECT 1\n   FROM (profiles p\n     JOIN staff_schools ss ON ((ss.profile_id = p.id)))\n  WHERE ((p.id = auth.uid()) AND (p.role = 'director'::account_role) AND (ss.school_id = supervision_requests.school_id))))",
+      "withcheck": null
+    },
+    {
+      "tabela": "supervision_requests",
+      "polname": "supervision_requests_director_update",
+      "polcmd": "w",
+      "polpermissive": true,
+      "papeis": [
+        "authenticated"
+      ],
+      "qual": "(EXISTS ( SELECT 1\n   FROM (profiles p\n     JOIN staff_schools ss ON ((ss.profile_id = p.id)))\n  WHERE ((p.id = auth.uid()) AND (ss.school_id = supervision_requests.school_id) AND (p.role = 'director'::account_role))))",
+      "withcheck": null
+    },
+    {
+      "tabela": "supervision_requests",
+      "polname": "supervision_requests_municipal_read",
+      "polcmd": "r",
+      "polpermissive": true,
+      "papeis": [
+        "authenticated"
+      ],
+      "qual": "(bfr_school_in_municipal_scope(school_id) OR bfr_school_in_own_school_scope(school_id))",
+      "withcheck": null
+    },
+    {
+      "tabela": "supervision_requests",
+      "polname": "supervision_requests_secretary_update",
+      "polcmd": "w",
+      "polpermissive": true,
+      "papeis": [
+        "authenticated"
+      ],
+      "qual": "(EXISTS ( SELECT 1\n   FROM (staff_schools ss\n     JOIN profiles p ON ((p.id = ss.profile_id)))\n  WHERE ((p.id = auth.uid()) AND (ss.school_id = supervision_requests.school_id) AND (p.role = 'secretary'::account_role))))",
+      "withcheck": null
+    },
+    {
+      "tabela": "supervision_requests",
+      "polname": "supervision_requests_staff_insert",
+      "polcmd": "a",
+      "polpermissive": true,
+      "papeis": [
+        "authenticated"
+      ],
+      "qual": null,
+      "withcheck": "((created_by = auth.uid()) AND (EXISTS ( SELECT 1\n   FROM (staff_schools ss\n     JOIN profiles p ON ((p.id = ss.profile_id)))\n  WHERE ((p.id = auth.uid()) AND (ss.school_id = supervision_requests.school_id) AND (p.role = ANY (ARRAY['secretary'::account_role, 'director'::account_role, 'coordinator'::account_role]))))))"
+    },
+    {
+      "tabela": "supervision_requests",
+      "polname": "supervision_requests_staff_read",
+      "polcmd": "r",
+      "polpermissive": true,
+      "papeis": [
+        "authenticated"
+      ],
+      "qual": "(EXISTS ( SELECT 1\n   FROM (staff_schools ss\n     JOIN profiles p ON ((p.id = ss.profile_id)))\n  WHERE ((p.id = auth.uid()) AND (ss.school_id = supervision_requests.school_id) AND (p.role = ANY (ARRAY['secretary'::account_role, 'director'::account_role, 'coordinator'::account_role])))))",
+      "withcheck": null
+    },
+    {
+      "tabela": "supervision_requests",
+      "polname": "supervision_requests_supervisor_insert",
+      "polcmd": "a",
+      "polpermissive": true,
+      "papeis": [
+        "authenticated"
+      ],
+      "qual": null,
+      "withcheck": "bfr_is_education_supervisor()"
+    },
+    {
+      "tabela": "supervision_requests",
+      "polname": "supervision_requests_supervisor_read",
+      "polcmd": "r",
+      "polpermissive": true,
+      "papeis": [
+        "authenticated"
+      ],
+      "qual": "bfr_is_education_supervisor()",
+      "withcheck": null
+    },
+    {
+      "tabela": "supervision_requests",
+      "polname": "supervision_requests_supervisor_update",
+      "polcmd": "w",
+      "polpermissive": true,
+      "papeis": [
+        "authenticated"
+      ],
+      "qual": "bfr_is_education_supervisor()",
+      "withcheck": null
+    },
+    {
+      "tabela": "supervision_responses",
+      "polname": "supervision_responses_developer_update",
+      "polcmd": "w",
+      "polpermissive": true,
+      "papeis": [
+        "authenticated"
+      ],
+      "qual": "(EXISTS ( SELECT 1\n   FROM profiles p\n  WHERE ((p.id = auth.uid()) AND (p.role = 'developer'::account_role))))",
+      "withcheck": null
+    },
+    {
+      "tabela": "supervision_responses",
+      "polname": "supervision_responses_staff_insert",
+      "polcmd": "a",
+      "polpermissive": true,
+      "papeis": [
+        "authenticated"
+      ],
+      "qual": null,
+      "withcheck": "((created_by = auth.uid()) AND (EXISTS ( SELECT 1\n   FROM (profiles p\n     JOIN staff_schools ss ON ((ss.profile_id = p.id)))\n  WHERE ((p.id = auth.uid()) AND (ss.school_id = ( SELECT supervision_requests.school_id\n           FROM supervision_requests\n          WHERE (supervision_requests.id = supervision_responses.request_id))) AND (p.role = ANY (ARRAY['secretary'::account_role, 'director'::account_role, 'coordinator'::account_role]))))))"
+    },
+    {
+      "tabela": "supervision_responses",
+      "polname": "supervision_responses_staff_read",
+      "polcmd": "r",
+      "polpermissive": true,
+      "papeis": [
+        "authenticated"
+      ],
+      "qual": "(EXISTS ( SELECT 1\n   FROM (profiles p\n     JOIN staff_schools ss ON ((ss.profile_id = p.id)))\n  WHERE ((p.id = auth.uid()) AND (ss.school_id = ( SELECT supervision_requests.school_id\n           FROM supervision_requests\n          WHERE (supervision_requests.id = supervision_responses.request_id))) AND (p.role = ANY (ARRAY['secretary'::account_role, 'director'::account_role, 'coordinator'::account_role, 'developer'::account_role])))))",
+      "withcheck": null
+    },
+    {
+      "tabela": "supervision_responses",
+      "polname": "supervision_responses_supervisor_insert",
+      "polcmd": "a",
+      "polpermissive": true,
+      "papeis": [
+        "authenticated"
+      ],
+      "qual": null,
+      "withcheck": "(bfr_is_education_supervisor() AND (created_by = auth.uid()))"
+    },
+    {
+      "tabela": "supervision_responses",
+      "polname": "supervision_responses_supervisor_read",
+      "polcmd": "r",
+      "polpermissive": true,
+      "papeis": [
+        "authenticated"
+      ],
+      "qual": "bfr_is_education_supervisor()",
+      "withcheck": null
+    }
+  ],
+  "agregados": {
+    "network_totals_def": "CREATE OR REPLACE FUNCTION public.bfr_municipal_network_totals()\n RETURNS TABLE(schools integer, students integer, classes integer, municipalities integer)\n LANGUAGE sql\n STABLE SECURITY DEFINER\n SET search_path TO 'public'\nAS $function$\n  SELECT (SELECT count(*)::int FROM public.bfr_municipal_school_stats),\n         (SELECT coalesce(sum(students_total), 0)::int FROM public.bfr_municipal_school_stats),\n         (SELECT coalesce(sum(classes_total), 0)::int FROM public.bfr_municipal_school_stats),\n         (SELECT count(DISTINCT municipality_id)::int FROM public.bfr_municipal_school_stats\n           WHERE municipality_id IS NOT NULL);\n$function$\n",
+    "network_totals_def_md5": "4ffde76bdb1243f6b9b3ebe6f2f50716",
+    "school_stats_viewdef": " SELECT id AS school_id,\n    name AS school_name,\n    city,\n    zone,\n    operating_status,\n    municipality_id,\n    ( SELECT count(*)::integer AS count\n           FROM students st\n          WHERE st.school_id = s.id) AS students_total,\n    ( SELECT count(*)::integer AS count\n           FROM classes cl\n          WHERE cl.school_id = s.id) AS classes_total,\n    ( SELECT count(*)::integer AS count\n           FROM bfr_school_key_map m\n             JOIN staff_schools ss ON ss.school_id = m.sports_school_id\n          WHERE m.school_id = s.id) AS staff_links_total\n   FROM schools s\n  WHERE bfr_school_in_municipal_scope(id) OR bfr_is_platform_admin();",
+    "concessoes_ativas": 4,
+    "municipios_cadastrados": 1,
+    "escolas_com_municipality_id": 0
+  }
+}

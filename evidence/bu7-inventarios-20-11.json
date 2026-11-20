@@ -1,0 +1,573 @@
+{
+ "em": "2026-11-20T10:32:52.915Z",
+ "instrumento": "scripts/bu7-inventarios-20-11.mjs",
+ "modo": "read-only",
+ "faltas": [
+  {
+   "id": "FALTA-W1",
+   "afirma": "nenhum painel foi aberto em nenhuma célula web",
+   "medido": "abertas_soma=0 em 45 celulas",
+   "exige": "passada autenticada com clique no container de navegação real do desktop"
+  },
+  {
+   "id": "FALTA-W2",
+   "afirma": "as entradas contadas na barra web não têm geometria",
+   "medido": "entradas_com_geometria=nenhuma de 177 rotulos_lidos_das_45_celulas",
+   "exige": "régua de hit-teste (elementFromPoint) sobre o alvo desktop, não sobre #bfrMobileBottomNav"
+  },
+  {
+   "id": "FALTA-W3",
+   "afirma": "o instrumento de browser não conhece o container de navegação do desktop (`bfr-single-home-navigation` presente no bundle servido)",
+   "medido": "aparece_em_ah2-mobile2.mjs=false",
+   "exige": "novo selector lido do bundle, nunca dactilografado"
+  }
+ ],
+ "ar": {
+  "md5": "9e236a23eed978cf7c2a2743d449b307",
+  "bytes": 3547458
+ },
+ "mobile": {
+  "grelha": "15 papeis × 6 larguras = 90 celulas",
+  "celulas": 90,
+  "conta": {
+   "TRAVADA": 13,
+   "por_medir": 7,
+   "OK": 70
+  },
+  "por_papel": [
+   {
+    "papel": "pending",
+    "celulas": 6,
+    "OK": 0,
+    "TRAVADA": 5,
+    "por_medir": 1,
+    "portas": 0
+   },
+   {
+    "papel": "parent",
+    "celulas": 6,
+    "OK": 6,
+    "TRAVADA": 0,
+    "por_medir": 0,
+    "portas": 16
+   },
+   {
+    "papel": "student",
+    "celulas": 6,
+    "OK": 6,
+    "TRAVADA": 0,
+    "por_medir": 0,
+    "portas": 19
+   },
+   {
+    "papel": "pedagogical",
+    "celulas": 6,
+    "OK": 6,
+    "TRAVADA": 0,
+    "por_medir": 0,
+    "portas": 17
+   },
+   {
+    "papel": "developer",
+    "celulas": 6,
+    "OK": 6,
+    "TRAVADA": 0,
+    "por_medir": 0,
+    "portas": 28
+   },
+   {
+    "papel": "monitor",
+    "celulas": 6,
+    "OK": 0,
+    "TRAVADA": 6,
+    "por_medir": 0,
+    "portas": 8
+   },
+   {
+    "papel": "gatekeeper",
+    "celulas": 6,
+    "OK": 6,
+    "TRAVADA": 0,
+    "por_medir": 0,
+    "portas": 8
+   },
+   {
+    "papel": "coordinator",
+    "celulas": 6,
+    "OK": 6,
+    "TRAVADA": 0,
+    "por_medir": 0,
+    "portas": 18
+   },
+   {
+    "papel": "secretary",
+    "celulas": 6,
+    "OK": 3,
+    "TRAVADA": 2,
+    "por_medir": 1,
+    "portas": 12
+   },
+   {
+    "papel": "aee",
+    "celulas": 6,
+    "OK": 6,
+    "TRAVADA": 0,
+    "por_medir": 0,
+    "portas": 11
+   },
+   {
+    "papel": "director",
+    "celulas": 6,
+    "OK": 6,
+    "TRAVADA": 0,
+    "por_medir": 0,
+    "portas": 19
+   },
+   {
+    "papel": "psychology",
+    "celulas": 6,
+    "OK": 6,
+    "TRAVADA": 0,
+    "por_medir": 0,
+    "portas": 7
+   },
+   {
+    "papel": "social_work",
+    "celulas": 6,
+    "OK": 6,
+    "TRAVADA": 0,
+    "por_medir": 0,
+    "portas": 6
+   },
+   {
+    "papel": "sports_operator",
+    "celulas": 6,
+    "OK": 3,
+    "TRAVADA": 0,
+    "por_medir": 3,
+    "portas": 5
+   },
+   {
+    "papel": "education_supervisor",
+    "celulas": 6,
+    "OK": 4,
+    "TRAVADA": 0,
+    "por_medir": 2,
+    "portas": 9
+   }
+  ],
+  "por_largura": [
+   {
+    "largura": 320,
+    "celulas": 15,
+    "OK": 13,
+    "TRAVADA": 2,
+    "por_medir": 0
+   },
+   {
+    "largura": 360,
+    "celulas": 15,
+    "OK": 12,
+    "TRAVADA": 3,
+    "por_medir": 0
+   },
+   {
+    "largura": 375,
+    "celulas": 15,
+    "OK": 12,
+    "TRAVADA": 3,
+    "por_medir": 0
+   },
+   {
+    "largura": 390,
+    "celulas": 15,
+    "OK": 12,
+    "TRAVADA": 2,
+    "por_medir": 1
+   },
+   {
+    "largura": 414,
+    "celulas": 15,
+    "OK": 11,
+    "TRAVADA": 2,
+    "por_medir": 2
+   },
+   {
+    "largura": 430,
+    "celulas": 15,
+    "OK": 10,
+    "TRAVADA": 1,
+    "por_medir": 4
+   }
+  ],
+  "causas": {
+   "monitor@320": "shell ready sem #bfrMobileBottomNav após rechegar — módulo de apresentação mobile não montou a barra",
+   "monitor@360": "shell ready sem #bfrMobileBottomNav após rechegar — módulo de apresentação mobile não montou a barra",
+   "monitor@375": "shell ready sem #bfrMobileBottomNav após rechegar — módulo de apresentação mobile não montou a barra",
+   "monitor@390": "shell ready sem #bfrMobileBottomNav após rechegar — módulo de apresentação mobile não montou a barra",
+   "monitor@414": "shell ready sem #bfrMobileBottomNav após rechegar — módulo de apresentação mobile não montou a barra",
+   "monitor@430": "shell ready sem #bfrMobileBottomNav após rechegar — módulo de apresentação mobile não montou a barra",
+   "pending@375": "conta em análise: barreira de pendência, sem shell nem navegação (estado do produto)",
+   "pending@390": "conta em análise: barreira de pendência, sem shell nem navegação (estado do produto)",
+   "pending@414": "conta em análise: barreira de pendência, sem shell nem navegação (estado do produto)",
+   "pending@320": "conta em análise: barreira de pendência, sem shell nem navegação (estado do produto)",
+   "pending@360": "conta em análise: barreira de pendência, sem shell nem navegação (estado do produto)",
+   "secretary@360": "shell ready sem #bfrMobileBottomNav após rechegar — módulo de apresentação mobile não montou a barra",
+   "secretary@375": "shell ready sem #bfrMobileBottomNav após rechegar — módulo de apresentação mobile não montou a barra"
+  },
+  "por_medir": [
+   "pending@430",
+   "secretary@430",
+   "sports_operator@390",
+   "sports_operator@414",
+   "sports_operator@430",
+   "education_supervisor@414",
+   "education_supervisor@430"
+  ],
+  "ar": {
+   "url": "https://bfr-conecta.turmaroboticabfr.workers.dev/",
+   "md5": "9e236a23eed978cf7c2a2743d449b307"
+  },
+  "motivos": {
+   "travada_com_causa": 13,
+   "por_medir": 7,
+   "coerente": 70
+  },
+  "portas_por_papel": {
+   "aee": 11,
+   "coordinator": 18,
+   "developer": 28,
+   "director": 19,
+   "education_supervisor": 9,
+   "gatekeeper": 8,
+   "monitor": 8,
+   "parent": 16,
+   "pedagogical": 17,
+   "pending": 0,
+   "psychology": 7,
+   "secretary": 12,
+   "social_work": 6,
+   "sports_operator": 5,
+   "student": 19
+  },
+  "larguras_por_papel": {
+   "aee": [
+    320,
+    360,
+    375,
+    390,
+    414,
+    430
+   ],
+   "coordinator": [
+    320,
+    360,
+    375,
+    390,
+    414,
+    430
+   ],
+   "developer": [
+    320,
+    360,
+    375,
+    390,
+    414,
+    430
+   ],
+   "director": [
+    320,
+    360,
+    375,
+    390,
+    414,
+    430
+   ],
+   "education_supervisor": [
+    320,
+    360,
+    375,
+    390,
+    414,
+    430
+   ],
+   "gatekeeper": [
+    320,
+    360,
+    375,
+    390,
+    414,
+    430
+   ],
+   "monitor": [
+    360,
+    430
+   ],
+   "parent": [
+    320,
+    360,
+    375,
+    390,
+    414,
+    430
+   ],
+   "pedagogical": [
+    320,
+    360,
+    375,
+    390,
+    414,
+    430
+   ],
+   "pending": [],
+   "psychology": [
+    320,
+    360,
+    375,
+    390,
+    414,
+    430
+   ],
+   "secretary": [
+    320,
+    360,
+    375,
+    390,
+    414,
+    430
+   ],
+   "social_work": [
+    320,
+    360,
+    375,
+    390,
+    414,
+    430
+   ],
+   "sports_operator": [
+    320,
+    360,
+    375,
+    390,
+    414,
+    430
+   ],
+   "student": [
+    320,
+    360,
+    375,
+    390,
+    414,
+    430
+   ]
+  },
+  "sessoes_m5": {
+   "ficheiros": 109,
+   "no_ar": 60,
+   "doutro_ar": 49
+  },
+  "excecoes_de_nav": [
+   "more"
+  ],
+  "sem_contagem_de_portas": [
+   {
+    "celula": "pending@320",
+    "estado": "TRAVADA"
+   },
+   {
+    "celula": "pending@360",
+    "estado": "TRAVADA"
+   },
+   {
+    "celula": "pending@375",
+    "estado": "TRAVADA"
+   },
+   {
+    "celula": "pending@390",
+    "estado": "TRAVADA"
+   },
+   {
+    "celula": "pending@414",
+    "estado": "TRAVADA"
+   },
+   {
+    "celula": "pending@430",
+    "estado": "por_medir"
+   },
+   {
+    "celula": "monitor@320",
+    "estado": "TRAVADA"
+   },
+   {
+    "celula": "monitor@375",
+    "estado": "TRAVADA"
+   },
+   {
+    "celula": "monitor@390",
+    "estado": "TRAVADA"
+   },
+   {
+    "celula": "monitor@414",
+    "estado": "TRAVADA"
+   }
+  ]
+ },
+ "web": {
+  "total": {
+   "celulas": 45,
+   "medida_web": 38,
+   "bloqueada": 7,
+   "falta": 0,
+   "estouro_vermelho": 0,
+   "shell_diverge": 0,
+   "vereditos": {
+    "AH7b_MOBILE_LIMPO": 0,
+    "AH7b_MOBILE_PARCIAL": 0,
+    "AH7b_MOBILE_COM_DEFEITOS": 45
+   }
+  },
+  "por_largura": {
+   "1280": {
+    "celulas": 15,
+    "medida_web": 11,
+    "bloqueada": 4,
+    "falta": 0,
+    "estouro_vermelho": 0,
+    "shell_diverge": 0
+   },
+   "1440": {
+    "celulas": 15,
+    "medida_web": 14,
+    "bloqueada": 1,
+    "falta": 0,
+    "estouro_vermelho": 0,
+    "shell_diverge": 0
+   },
+   "1920": {
+    "celulas": 15,
+    "medida_web": 13,
+    "bloqueada": 2,
+    "falta": 0,
+    "estouro_vermelho": 0,
+    "shell_diverge": 0
+   }
+  },
+  "bloqueadas": [
+   {
+    "papel": "pending",
+    "largura": "1280",
+    "classe": "BLOQUEADA",
+    "artefacto": "evidence/ah2-mobile2-sm25-pending-1280.json",
+    "em": "2026-11-20T04:02:30.991Z",
+    "veredito": "AH7b_MOBILE_COM_DEFEITOS",
+    "md5_shell": "9e236a23eed978cf7c2a2743d449b307",
+    "barra_rotas": 0,
+    "gaveta_rotas": 0,
+    "estouro_vermelho": false,
+    "abriu_paineis": 0,
+    "causa_bloqueio": "conta em análise: barreira de pendência, sem shell nem navegação (estado do produto)"
+   },
+   {
+    "papel": "monitor",
+    "largura": "1280",
+    "classe": "BLOQUEADA",
+    "artefacto": "evidence/ah2-mobile2-sm25-monitor-1280.json",
+    "em": "2026-11-20T04:06:23.669Z",
+    "veredito": "AH7b_MOBILE_COM_DEFEITOS",
+    "md5_shell": "9e236a23eed978cf7c2a2743d449b307",
+    "presentation": null,
+    "body_mobile": false,
+    "barra_rotas": 0,
+    "gaveta_rotas": 0,
+    "estouro_vermelho": false,
+    "abriu_paineis": 0,
+    "ms_ready": 957,
+    "causa_bloqueio": "shell ready sem #bfrMobileBottomNav após rechegar — módulo de apresentação mobile não montou a barra"
+   },
+   {
+    "papel": "coordinator",
+    "largura": "1280",
+    "classe": "BLOQUEADA",
+    "artefacto": "evidence/ah2-mobile2-sm25-coordinator-1280.json",
+    "em": "2026-11-20T04:13:15.168Z",
+    "veredito": "AH7b_MOBILE_COM_DEFEITOS",
+    "md5_shell": "9e236a23eed978cf7c2a2743d449b307",
+    "presentation": null,
+    "body_mobile": false,
+    "barra_rotas": 0,
+    "gaveta_rotas": 0,
+    "estouro_vermelho": false,
+    "abriu_paineis": 0,
+    "ms_ready": 1478,
+    "causa_bloqueio": "shell ready sem #bfrMobileBottomNav após rechegar — módulo de apresentação mobile não montou a barra"
+   },
+   {
+    "papel": "education_supervisor",
+    "largura": "1280",
+    "classe": "BLOQUEADA",
+    "artefacto": "evidence/ah2-mobile2-sm25-education_supervisor-1280.json",
+    "em": "2026-11-20T04:21:57.331Z",
+    "veredito": "AH7b_MOBILE_COM_DEFEITOS",
+    "md5_shell": "9e236a23eed978cf7c2a2743d449b307",
+    "presentation": null,
+    "body_mobile": false,
+    "barra_rotas": 0,
+    "gaveta_rotas": 0,
+    "estouro_vermelho": false,
+    "abriu_paineis": 0,
+    "ms_ready": 1391,
+    "causa_bloqueio": "shell ready sem #bfrMobileBottomNav após rechegar — módulo de apresentação mobile não montou a barra"
+   },
+   {
+    "papel": "pending",
+    "largura": "1440",
+    "classe": "BLOQUEADA",
+    "artefacto": "evidence/ah2-mobile2-sm25-pending-1440.json",
+    "em": "2026-11-20T04:22:32.832Z",
+    "veredito": "AH7b_MOBILE_COM_DEFEITOS",
+    "md5_shell": "9e236a23eed978cf7c2a2743d449b307",
+    "barra_rotas": 0,
+    "gaveta_rotas": 0,
+    "estouro_vermelho": false,
+    "abriu_paineis": 0,
+    "causa_bloqueio": "conta em análise: barreira de pendência, sem shell nem navegação (estado do produto)"
+   },
+   {
+    "papel": "pending",
+    "largura": "1920",
+    "classe": "BLOQUEADA",
+    "artefacto": "evidence/ah2-mobile2-sm25-pending-1920.json",
+    "em": "2026-11-20T04:25:13.740Z",
+    "veredito": "AH7b_MOBILE_COM_DEFEITOS",
+    "md5_shell": "9e236a23eed978cf7c2a2743d449b307",
+    "barra_rotas": 0,
+    "gaveta_rotas": 0,
+    "estouro_vermelho": false,
+    "abriu_paineis": 0,
+    "causa_bloqueio": "conta em análise: barreira de pendência, sem shell nem navegação (estado do produto)"
+   },
+   {
+    "papel": "monitor",
+    "largura": "1920",
+    "classe": "BLOQUEADA",
+    "artefacto": "evidence/ah2-mobile2-sm25-monitor-1920.json",
+    "em": "2026-11-20T04:26:36.697Z",
+    "veredito": "AH7b_MOBILE_COM_DEFEITOS",
+    "md5_shell": "9e236a23eed978cf7c2a2743d449b307",
+    "presentation": null,
+    "body_mobile": false,
+    "barra_rotas": 0,
+    "gaveta_rotas": 0,
+    "estouro_vermelho": false,
+    "abriu_paineis": 0,
+    "ms_ready": 955,
+    "causa_bloqueio": "shell ready sem #bfrMobileBottomNav após rechegar — módulo de apresentação mobile não montou a barra"
+   }
+  ],
+  "vereditos_por_celula": {
+   "AH7b_MOBILE_COM_DEFEITOS": 45
+  },
+  "artefactos_ok": true
+ },
+ "veredito_final": "BU7_VERDE 12/0"
+}

@@ -1,0 +1,679 @@
+{
+  "em": "2026-11-20T08:20:15.472Z",
+  "modo": "read-only",
+  "instrumento": "scripts/bu2d-politicas-sem-mecanismo-20-11.mjs",
+  "politica_total_no_catalogo": 495,
+  "politicas_sem_mecanismo_na_predica_da_bu2c": 59,
+  "tabelas_envolvidas": [
+    "aee_activities",
+    "aee_activity_recommendations",
+    "aee_attendance",
+    "aee_goals",
+    "aee_plans",
+    "aee_progress",
+    "aee_sessions",
+    "aee_student_links",
+    "aee_student_profiles",
+    "classes",
+    "entry_restrictions",
+    "gate_badges",
+    "gate_checkins",
+    "gate_entry_alerts",
+    "gate_messages",
+    "guardian_students",
+    "instagram_posts",
+    "internal_chat_messages",
+    "internal_chat_presence",
+    "internal_chat_room_members",
+    "internal_chat_threads",
+    "occurrences",
+    "photos",
+    "poll_options",
+    "polls",
+    "profiles",
+    "project_details",
+    "project_photos",
+    "project_results",
+    "projects",
+    "route_incidents",
+    "school_activities",
+    "school_events",
+    "staff_schools",
+    "students",
+    "support_services"
+  ],
+  "por_candidato_de_mecanismo": {
+    "exists_em_outra_tabela": 1,
+    "subselect_na_expression": 1
+  },
+  "sem_nenhum_candidato": [
+    "aee_activities|aee_activities_read",
+    "aee_activity_recommendations|aee_recommendations_read",
+    "aee_activity_recommendations|aee_recommendations_write",
+    "aee_attendance|aee_attendance_read",
+    "aee_attendance|aee_attendance_write",
+    "aee_attendance|bfr_aee_attendance_central_read",
+    "aee_goals|aee_goals_read",
+    "aee_goals|aee_goals_write",
+    "aee_plans|aee_plans_read",
+    "aee_plans|aee_plans_write",
+    "aee_progress|aee_progress_staff_read",
+    "aee_progress|aee_progress_write",
+    "aee_sessions|aee_sessions_read",
+    "aee_sessions|aee_sessions_write",
+    "aee_student_links|aee_links_write",
+    "aee_student_profiles|aee_student_profiles_write",
+    "classes|classes_monitor_read",
+    "entry_restrictions|entry_restrictions_staff_manage",
+    "gate_badges|gate_badges_gatekeeper_read",
+    "gate_checkins|gate_checkins_gatekeeper_read",
+    "gate_checkins|gate_checkins_staff_read",
+    "gate_entry_alerts|gate_entry_alerts_gatekeeper_read",
+    "gate_entry_alerts|gate_entry_alerts_monitor_read",
+    "gate_entry_alerts|gate_entry_alerts_staff_read",
+    "gate_messages|gate_messages_staff_manage",
+    "guardian_students|guardian_students_monitor_read",
+    "instagram_posts|instagram_posts_public_select",
+    "internal_chat_messages|internal_chat_messages_select",
+    "internal_chat_presence|internal_chat_presence_select",
+    "internal_chat_room_members|internal_chat_members_select",
+    "internal_chat_threads|internal_chat_threads_select",
+    "occurrences|occurrences_staff_manage",
+    "photos|photos_read",
+    "photos|photos_staff_manage",
+    "poll_options|poll_options_read",
+    "poll_options|poll_options_staff_manage",
+    "polls|polls_read",
+    "polls|polls_staff_manage",
+    "profiles|profiles_staff_update",
+    "project_details|bfr_project_details_staff_delete",
+    "project_details|bfr_project_details_staff_insert",
+    "project_details|bfr_project_details_staff_update",
+    "project_photos|project_photos_read",
+    "project_photos|project_photos_staff_manage",
+    "project_results|project_results_read",
+    "project_results|project_results_staff_manage",
+    "projects|projects_read",
+    "projects|projects_staff_manage",
+    "route_incidents|route_incidents_staff_read",
+    "school_activities|school_activities_read",
+    "school_events|events_read",
+    "school_events|school_events_staff_manage",
+    "staff_schools|staff_schools_developer_delete",
+    "staff_schools|staff_schools_developer_insert",
+    "staff_schools|staff_schools_developer_read",
+    "staff_schools|staff_schools_developer_update",
+    "students|students_monitor_read",
+    "support_services|bfr_support_services_read"
+  ],
+  "lista": [
+    {
+      "tabela": "aee_activities",
+      "nome": "aee_activities_read",
+      "comando": "r",
+      "usando_chars": 30,
+      "verificando_chars": 0,
+      "candidatos": [],
+      "expressao": "(is_aee() OR is_aee_manager())"
+    },
+    {
+      "tabela": "aee_activity_recommendations",
+      "nome": "aee_recommendations_read",
+      "comando": "r",
+      "usando_chars": 34,
+      "verificando_chars": 0,
+      "candidatos": [],
+      "expressao": "aee_can_access_student(student_id)"
+    },
+    {
+      "tabela": "aee_activity_recommendations",
+      "nome": "aee_recommendations_write",
+      "comando": "*",
+      "usando_chars": 71,
+      "verificando_chars": 71,
+      "candidatos": [],
+      "expressao": "(aee_can_access_student(student_id) AND (is_aee() OR is_aee_manager())) | WITH CHECK (aee_can_access_student(student_id) AND (is_aee() OR is_aee_manager()))"
+    },
+    {
+      "tabela": "aee_attendance",
+      "nome": "aee_attendance_read",
+      "comando": "r",
+      "usando_chars": 34,
+      "verificando_chars": 0,
+      "candidatos": [],
+      "expressao": "aee_can_access_student(student_id)"
+    },
+    {
+      "tabela": "aee_attendance",
+      "nome": "aee_attendance_write",
+      "comando": "*",
+      "usando_chars": 71,
+      "verificando_chars": 71,
+      "candidatos": [],
+      "expressao": "(aee_can_access_student(student_id) AND (is_aee() OR is_aee_manager())) | WITH CHECK (aee_can_access_student(student_id) AND (is_aee() OR is_aee_manager()))"
+    },
+    {
+      "tabela": "aee_attendance",
+      "nome": "bfr_aee_attendance_central_read",
+      "comando": "r",
+      "usando_chars": 34,
+      "verificando_chars": 0,
+      "candidatos": [],
+      "expressao": "aee_can_access_student(student_id)"
+    },
+    {
+      "tabela": "aee_goals",
+      "nome": "aee_goals_read",
+      "comando": "r",
+      "usando_chars": 34,
+      "verificando_chars": 0,
+      "candidatos": [],
+      "expressao": "aee_can_access_student(student_id)"
+    },
+    {
+      "tabela": "aee_goals",
+      "nome": "aee_goals_write",
+      "comando": "*",
+      "usando_chars": 71,
+      "verificando_chars": 71,
+      "candidatos": [],
+      "expressao": "(aee_can_access_student(student_id) AND (is_aee() OR is_aee_manager())) | WITH CHECK (aee_can_access_student(student_id) AND (is_aee() OR is_aee_manager()))"
+    },
+    {
+      "tabela": "aee_plans",
+      "nome": "aee_plans_read",
+      "comando": "r",
+      "usando_chars": 34,
+      "verificando_chars": 0,
+      "candidatos": [],
+      "expressao": "aee_can_access_student(student_id)"
+    },
+    {
+      "tabela": "aee_plans",
+      "nome": "aee_plans_write",
+      "comando": "*",
+      "usando_chars": 71,
+      "verificando_chars": 71,
+      "candidatos": [],
+      "expressao": "(aee_can_access_student(student_id) AND (is_aee() OR is_aee_manager())) | WITH CHECK (aee_can_access_student(student_id) AND (is_aee() OR is_aee_manager()))"
+    },
+    {
+      "tabela": "aee_progress",
+      "nome": "aee_progress_staff_read",
+      "comando": "r",
+      "usando_chars": 34,
+      "verificando_chars": 0,
+      "candidatos": [],
+      "expressao": "aee_can_access_student(student_id)"
+    },
+    {
+      "tabela": "aee_progress",
+      "nome": "aee_progress_write",
+      "comando": "*",
+      "usando_chars": 71,
+      "verificando_chars": 71,
+      "candidatos": [],
+      "expressao": "(aee_can_access_student(student_id) AND (is_aee() OR is_aee_manager())) | WITH CHECK (aee_can_access_student(student_id) AND (is_aee() OR is_aee_manager()))"
+    },
+    {
+      "tabela": "aee_sessions",
+      "nome": "aee_sessions_read",
+      "comando": "r",
+      "usando_chars": 34,
+      "verificando_chars": 0,
+      "candidatos": [],
+      "expressao": "aee_can_access_student(student_id)"
+    },
+    {
+      "tabela": "aee_sessions",
+      "nome": "aee_sessions_write",
+      "comando": "*",
+      "usando_chars": 71,
+      "verificando_chars": 71,
+      "candidatos": [],
+      "expressao": "(aee_can_access_student(student_id) AND (is_aee() OR is_aee_manager())) | WITH CHECK (aee_can_access_student(student_id) AND (is_aee() OR is_aee_manager()))"
+    },
+    {
+      "tabela": "aee_student_links",
+      "nome": "aee_links_write",
+      "comando": "*",
+      "usando_chars": 16,
+      "verificando_chars": 16,
+      "candidatos": [],
+      "expressao": "is_aee_manager() | WITH CHECK is_aee_manager()"
+    },
+    {
+      "tabela": "aee_student_profiles",
+      "nome": "aee_student_profiles_write",
+      "comando": "*",
+      "usando_chars": 19,
+      "verificando_chars": 19,
+      "candidatos": [],
+      "expressao": "aee_profile_staff() | WITH CHECK aee_profile_staff()"
+    },
+    {
+      "tabela": "classes",
+      "nome": "classes_monitor_read",
+      "comando": "r",
+      "usando_chars": 12,
+      "verificando_chars": 0,
+      "candidatos": [],
+      "expressao": "is_monitor()"
+    },
+    {
+      "tabela": "entry_restrictions",
+      "nome": "entry_restrictions_staff_manage",
+      "comando": "*",
+      "usando_chars": 10,
+      "verificando_chars": 10,
+      "candidatos": [],
+      "expressao": "is_staff() | WITH CHECK is_staff()"
+    },
+    {
+      "tabela": "gate_badges",
+      "nome": "gate_badges_gatekeeper_read",
+      "comando": "r",
+      "usando_chars": 15,
+      "verificando_chars": 0,
+      "candidatos": [],
+      "expressao": "is_gatekeeper()"
+    },
+    {
+      "tabela": "gate_checkins",
+      "nome": "gate_checkins_gatekeeper_read",
+      "comando": "r",
+      "usando_chars": 15,
+      "verificando_chars": 0,
+      "candidatos": [],
+      "expressao": "is_gatekeeper()"
+    },
+    {
+      "tabela": "gate_checkins",
+      "nome": "gate_checkins_staff_read",
+      "comando": "r",
+      "usando_chars": 10,
+      "verificando_chars": 0,
+      "candidatos": [],
+      "expressao": "is_staff()"
+    },
+    {
+      "tabela": "gate_entry_alerts",
+      "nome": "gate_entry_alerts_gatekeeper_read",
+      "comando": "r",
+      "usando_chars": 15,
+      "verificando_chars": 0,
+      "candidatos": [],
+      "expressao": "is_gatekeeper()"
+    },
+    {
+      "tabela": "gate_entry_alerts",
+      "nome": "gate_entry_alerts_monitor_read",
+      "comando": "r",
+      "usando_chars": 12,
+      "verificando_chars": 0,
+      "candidatos": [],
+      "expressao": "is_monitor()"
+    },
+    {
+      "tabela": "gate_entry_alerts",
+      "nome": "gate_entry_alerts_staff_read",
+      "comando": "r",
+      "usando_chars": 10,
+      "verificando_chars": 0,
+      "candidatos": [],
+      "expressao": "is_staff()"
+    },
+    {
+      "tabela": "gate_messages",
+      "nome": "gate_messages_staff_manage",
+      "comando": "*",
+      "usando_chars": 10,
+      "verificando_chars": 10,
+      "candidatos": [],
+      "expressao": "is_staff() | WITH CHECK is_staff()"
+    },
+    {
+      "tabela": "guardian_students",
+      "nome": "guardian_students_monitor_read",
+      "comando": "r",
+      "usando_chars": 12,
+      "verificando_chars": 0,
+      "candidatos": [],
+      "expressao": "is_monitor()"
+    },
+    {
+      "tabela": "instagram_posts",
+      "nome": "instagram_posts_public_select",
+      "comando": "r",
+      "usando_chars": 40,
+      "verificando_chars": 0,
+      "candidatos": [],
+      "expressao": "(is_visible AND (published_at <= now()))"
+    },
+    {
+      "tabela": "internal_chat_messages",
+      "nome": "internal_chat_messages_select",
+      "comando": "r",
+      "usando_chars": 38,
+      "verificando_chars": 0,
+      "candidatos": [],
+      "expressao": "internal_chat_can_access_room(room_id)"
+    },
+    {
+      "tabela": "internal_chat_presence",
+      "nome": "internal_chat_presence_select",
+      "comando": "r",
+      "usando_chars": 24,
+      "verificando_chars": 0,
+      "candidatos": [],
+      "expressao": "internal_chat_is_staff()"
+    },
+    {
+      "tabela": "internal_chat_room_members",
+      "nome": "internal_chat_members_select",
+      "comando": "r",
+      "usando_chars": 38,
+      "verificando_chars": 0,
+      "candidatos": [],
+      "expressao": "internal_chat_can_access_room(room_id)"
+    },
+    {
+      "tabela": "internal_chat_threads",
+      "nome": "internal_chat_threads_select",
+      "comando": "r",
+      "usando_chars": 33,
+      "verificando_chars": 0,
+      "candidatos": [],
+      "expressao": "internal_chat_can_access_room(id)"
+    },
+    {
+      "tabela": "occurrences",
+      "nome": "occurrences_staff_manage",
+      "comando": "*",
+      "usando_chars": 10,
+      "verificando_chars": 10,
+      "candidatos": [],
+      "expressao": "is_staff() | WITH CHECK is_staff()"
+    },
+    {
+      "tabela": "photos",
+      "nome": "photos_read",
+      "comando": "r",
+      "usando_chars": 13,
+      "verificando_chars": 0,
+      "candidatos": [],
+      "expressao": "is_approved()"
+    },
+    {
+      "tabela": "photos",
+      "nome": "photos_staff_manage",
+      "comando": "*",
+      "usando_chars": 10,
+      "verificando_chars": 10,
+      "candidatos": [],
+      "expressao": "is_staff() | WITH CHECK is_staff()"
+    },
+    {
+      "tabela": "poll_options",
+      "nome": "poll_options_read",
+      "comando": "r",
+      "usando_chars": 13,
+      "verificando_chars": 0,
+      "candidatos": [],
+      "expressao": "is_approved()"
+    },
+    {
+      "tabela": "poll_options",
+      "nome": "poll_options_staff_manage",
+      "comando": "*",
+      "usando_chars": 10,
+      "verificando_chars": 10,
+      "candidatos": [],
+      "expressao": "is_staff() | WITH CHECK is_staff()"
+    },
+    {
+      "tabela": "polls",
+      "nome": "polls_read",
+      "comando": "r",
+      "usando_chars": 13,
+      "verificando_chars": 0,
+      "candidatos": [],
+      "expressao": "is_approved()"
+    },
+    {
+      "tabela": "polls",
+      "nome": "polls_staff_manage",
+      "comando": "*",
+      "usando_chars": 10,
+      "verificando_chars": 10,
+      "candidatos": [],
+      "expressao": "is_staff() | WITH CHECK is_staff()"
+    },
+    {
+      "tabela": "profiles",
+      "nome": "profiles_staff_update",
+      "comando": "w",
+      "usando_chars": 14,
+      "verificando_chars": 14,
+      "candidatos": [],
+      "expressao": "is_developer() | WITH CHECK is_developer()"
+    },
+    {
+      "tabela": "project_details",
+      "nome": "bfr_project_details_select",
+      "comando": "r",
+      "usando_chars": 110,
+      "verificando_chars": 0,
+      "candidatos": [
+        "exists_em_outra_tabela",
+        "subselect_na_expression"
+      ],
+      "expressao": "(EXISTS ( SELECT 1 FROM projects p WHERE ((p.id = project_details.project_id) AND (p.published = true))))"
+    },
+    {
+      "tabela": "project_details",
+      "nome": "bfr_project_details_staff_delete",
+      "comando": "d",
+      "usando_chars": 10,
+      "verificando_chars": 0,
+      "candidatos": [],
+      "expressao": "is_staff()"
+    },
+    {
+      "tabela": "project_details",
+      "nome": "bfr_project_details_staff_insert",
+      "comando": "a",
+      "usando_chars": 0,
+      "verificando_chars": 10,
+      "candidatos": [],
+      "expressao": " | WITH CHECK is_staff()"
+    },
+    {
+      "tabela": "project_details",
+      "nome": "bfr_project_details_staff_update",
+      "comando": "w",
+      "usando_chars": 10,
+      "verificando_chars": 10,
+      "candidatos": [],
+      "expressao": "is_staff() | WITH CHECK is_staff()"
+    },
+    {
+      "tabela": "project_photos",
+      "nome": "project_photos_read",
+      "comando": "r",
+      "usando_chars": 13,
+      "verificando_chars": 0,
+      "candidatos": [],
+      "expressao": "is_approved()"
+    },
+    {
+      "tabela": "project_photos",
+      "nome": "project_photos_staff_manage",
+      "comando": "*",
+      "usando_chars": 10,
+      "verificando_chars": 10,
+      "candidatos": [],
+      "expressao": "is_staff() | WITH CHECK is_staff()"
+    },
+    {
+      "tabela": "project_results",
+      "nome": "project_results_read",
+      "comando": "r",
+      "usando_chars": 13,
+      "verificando_chars": 0,
+      "candidatos": [],
+      "expressao": "is_approved()"
+    },
+    {
+      "tabela": "project_results",
+      "nome": "project_results_staff_manage",
+      "comando": "*",
+      "usando_chars": 10,
+      "verificando_chars": 10,
+      "candidatos": [],
+      "expressao": "is_staff() | WITH CHECK is_staff()"
+    },
+    {
+      "tabela": "projects",
+      "nome": "projects_read",
+      "comando": "r",
+      "usando_chars": 13,
+      "verificando_chars": 0,
+      "candidatos": [],
+      "expressao": "is_approved()"
+    },
+    {
+      "tabela": "projects",
+      "nome": "projects_staff_manage",
+      "comando": "*",
+      "usando_chars": 10,
+      "verificando_chars": 10,
+      "candidatos": [],
+      "expressao": "is_staff() | WITH CHECK is_staff()"
+    },
+    {
+      "tabela": "route_incidents",
+      "nome": "route_incidents_staff_read",
+      "comando": "r",
+      "usando_chars": 10,
+      "verificando_chars": 0,
+      "candidatos": [],
+      "expressao": "is_staff()"
+    },
+    {
+      "tabela": "school_activities",
+      "nome": "school_activities_read",
+      "comando": "r",
+      "usando_chars": 13,
+      "verificando_chars": 0,
+      "candidatos": [],
+      "expressao": "is_approved()"
+    },
+    {
+      "tabela": "school_events",
+      "nome": "events_read",
+      "comando": "r",
+      "usando_chars": 13,
+      "verificando_chars": 0,
+      "candidatos": [],
+      "expressao": "is_approved()"
+    },
+    {
+      "tabela": "school_events",
+      "nome": "school_events_staff_manage",
+      "comando": "*",
+      "usando_chars": 10,
+      "verificando_chars": 10,
+      "candidatos": [],
+      "expressao": "is_staff() | WITH CHECK is_staff()"
+    },
+    {
+      "tabela": "staff_schools",
+      "nome": "staff_schools_developer_delete",
+      "comando": "d",
+      "usando_chars": 14,
+      "verificando_chars": 0,
+      "candidatos": [],
+      "expressao": "is_developer()"
+    },
+    {
+      "tabela": "staff_schools",
+      "nome": "staff_schools_developer_insert",
+      "comando": "a",
+      "usando_chars": 0,
+      "verificando_chars": 14,
+      "candidatos": [],
+      "expressao": " | WITH CHECK is_developer()"
+    },
+    {
+      "tabela": "staff_schools",
+      "nome": "staff_schools_developer_read",
+      "comando": "r",
+      "usando_chars": 14,
+      "verificando_chars": 0,
+      "candidatos": [],
+      "expressao": "is_developer()"
+    },
+    {
+      "tabela": "staff_schools",
+      "nome": "staff_schools_developer_update",
+      "comando": "w",
+      "usando_chars": 14,
+      "verificando_chars": 14,
+      "candidatos": [],
+      "expressao": "is_developer() | WITH CHECK is_developer()"
+    },
+    {
+      "tabela": "students",
+      "nome": "students_monitor_read",
+      "comando": "r",
+      "usando_chars": 12,
+      "verificando_chars": 0,
+      "candidatos": [],
+      "expressao": "is_monitor()"
+    },
+    {
+      "tabela": "support_services",
+      "nome": "bfr_support_services_read",
+      "comando": "r",
+      "usando_chars": 6,
+      "verificando_chars": 0,
+      "candidatos": [],
+      "expressao": "active"
+    }
+  ],
+  "veredictos": [
+    {
+      "nome": "a_leitura_de_policies_bate_com_contagem_direta_de_pg_policy",
+      "veredito": "VERDE",
+      "detalhe": {
+        "lidas": 495,
+        "direta": 495
+      }
+    },
+    {
+      "nome": "o_artefacto_bu2c_declarou_a_mesma_quantidade_de_sem_mecanismo",
+      "veredito": "VERDE",
+      "detalhe": {
+        "nesta_corrida": 59,
+        "no_bu2c": 59
+      }
+    },
+    {
+      "nome": "cada_item_da_lista_tem_expressao_nao_vazia",
+      "veredito": "VERDE",
+      "detalhe": {
+        "vazias": 0
+      }
+    },
+    {
+      "nome": "nenhuma_politica_sem_mecanismo_e_de_leitura_com_usando_null",
+      "veredito": "VERDE",
+      "detalhe": {
+        "ambas_vazias": []
+      }
+    }
+  ],
+  "veredito_final": "BU2D_SEM_MECANISMO_VERDE 4/0",
+  "msd": 3108
+}
