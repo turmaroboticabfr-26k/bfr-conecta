@@ -126,12 +126,13 @@ e a forma que funciona é o caminho absoluto **primeiro** na lista. O vermelho d
 tirado antes do corpus duplo (`evidence/pacote-municipal-pecas-20-11-VERMELHO-esperado-falsificacao-do-corpus-com-dois-caminhos-inventados.json`,
 `1 de 13 portoes`) fica como história; a re-corrida com o corpus actual é a linha 1 da tabela.
 Sem estas três corridas, o 15/0 não se distinguia de um portão que varre uma lista vazia.
-*Re-corridas depois de esta secção estar escrita:* cada linha que se acrescenta ao corpus obriga a voltar a
-correr o portão, e voltaram verdes com o mesmo censo de portões — a última, já com esta frase escrita, em
-`evidence/pacote-municipal-pecas-20-11-pos-captura.json`; é um registo dessa série que o §11 do documento 08
-cita. Nenhuma dessas pegadas é a pegada deste runbook: um ficheiro que muda com a secção que o cita só tem
-pegada definitiva no commit, por isso o verde que vale para aplicar é o do portão corrido entre o `git add` e o
-`git commit`, nunca o de uma corrida anterior a esta linha.
+*Re-corridas:* cada linha que se acrescenta ao corpus obriga a voltar a correr o portão, e ele voltou verde em
+toda a série (`evidence/pacote-municipal-pecas-20-11-corpus-duplo.json`,
+`evidence/pacote-municipal-pecas-20-11-fecho-corpus-duplo.json`,
+`evidence/pacote-municipal-pecas-20-11-pos-captura.json`), sempre com os mesmos 15 portões; é um registo dessa
+série que o §11 do documento 08 cita. Nenhuma destas pegadas é a pegada deste runbook, e esta frase também não:
+ela muda o ficheiro cuja pegada diz estar a citar. O verde que vale para aplicar é o do portão corrido entre o
+`git add` e o `git commit` daquele texto, nunca uma corrida anterior.
 *Vermelho significa:* falta uma peça, ou uma peça mudou de bytes desde que foi certificada. Não é aviso para
 continuar: o aplicador compara o md5 do SQL que vai enviar com o que o preflight certificou, e um ficheiro
 editado entre a certificação e a aplicação é exactamente o caso que esse portão fecha.
