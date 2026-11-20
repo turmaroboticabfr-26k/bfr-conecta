@@ -1,0 +1,22 @@
+### 1 aplicador --selfteste  (scripts/p73-municipal-aplica-ddl.mjs)
+node_exit=0
+P73_MUNICIPAL_APLICA_SELFTESTE_OK 7/0 · casos=7 · falhas=[]
+### 2 etiqueta --selfteste  (scripts/p73-municipal-etiqueta.mjs)
+node_exit=0
+P73_MUNICIPAL_ETIQUETA_SELFTESTE_OK 6/0
+### 3a etiqueta --lista com P73_SUF repetido: a guarda de sobrescrita aborta
+node_exit=1
+Error: ABORTA: C:\Users\pcmac\Documents\Qoder\2026-10-13\28077d9a\bfr-conecta\evidence\p73-municipal-etiqueta-lista-20-11-revisao-final.json existe — correr com P73_SUF=novo, não por cima
+### 3b etiqueta --lista com P73_SUF=corpus-duplo
+node_exit=0
+stdout: P73_MUNICIPAL_ETIQUETA_LISTA 6 escolas, 0 etiquetadas, 1 municipios, 1 avisos de fixture
+ESCOLA Escola Municipal Alpha · São Paulo/SP · alunos 848 turmas 27 · municipio A DECIDIR
+ESCOLA Escola Alpha · São Paulo/SP · alunos 0 turmas 0 · municipio A DECIDIR
+ESCOLA Escola Beta · Rio de Janeiro/RJ · alunos 0 turmas 0 · municipio A DECIDIR
+ESCOLA Escola Gamma · Belo Horizonte/MG · alunos 0 turmas 0 · municipio A DECIDIR
+ESCOLA Escola Municipal Beta · São Paulo/SP · alunos 0 turmas 0 · municipio A DECIDIR
+ESCOLA Escola Municipal Gamma · São Paulo/SP · alunos 0 turmas 0 · municipio A DECIDIR
+MUNICIPIO Sao Paulo (SM8 fixture — apagar)/SP · ibge null · escolas ligadas 0 · concessoes 4
+AVISO_FIXTURE ["Sao Paulo (SM8 fixture — apagar) (SP) tem 4 concessoes e 0 escolas ligadas: e a linha que hoje sustenta o escopo municipal e esta marcada para apagar"]
+registo C:\Users\pcmac\Documents\Qoder\2026-10-13\28077d9a\bfr-conecta\evidence\p73-municipal-etiqueta-lista-20-11-corpus-duplo.json
+artefacto evidence/p73-municipal-etiqueta-lista-20-11-corpus-duplo.json: veredito=P73_MUNICIPAL_ETIQUETA_LISTA 6 escolas, 0 etiquetadas, 1 municipios, 1 avisos de fixture · escolas=6 com_municipio=0 · municipios=1 · avisos_fixture=1

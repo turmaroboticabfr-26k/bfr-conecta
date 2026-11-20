@@ -213,3 +213,42 @@ O portão 10 merece nota: as 5 células `pending@largura` e as 8 `papel@largura`
 ## 10. Em uma frase
 
 Das 45 fases do §13, 35 têm trabalho em aberto (10 têm prova positiva de fecho), a ordem é função de prioridade lida + dependências reais de um grafo sem ciclos, 5 linhas precisam de OK literal seu e 30 não precisam de autorização nenhuma — e 26 de 35 fases não conseguem ligar-se nominalmente às unidades medidas, o que é uma falha de vocabulário entre o registro e a medição, não uma conclusão sobre o produto.
+
+## 11. Adenda 20/11 — o pacote municipal está pronto a aplicar, e nada nele foi aplicado
+
+A pergunta da sessão foi «a aba da secretaria de educação municipal está pronta?». A resposta medida foi não: a
+porta existe e abre, o escopo não. O que este plano acrescenta desde então é o fecho dessa diferença **em peças**,
+não em execuções. O roteiro com as ordens, os comandos e o OK literal de cada passo está em
+`docs/bu-20-11/10-runbook-municipal.md`; aqui fica o que mudou no inventário de trabalho.
+
+Peças novas, todas certificadas por corrida própria em 20/11:
+
+| Peça | Que faz | Estado medido |
+|---|---|---|
+| `scripts/p73-pen41-preflight.mjs` | mede as quatro policies de `students`/`classes` que hoje decidem só pelo cargo, e o delta exacto da candidata | `P73_PEN41_PREFLIGHT_VERDE_CANDIDATA 13/0` |
+| `scripts/p73-municipal-aplica-ddl.mjs` | o único caminho de aplicação das três peças (PEN-38/39/41), gated por frase literal, com preflight fresco e conferência de saída | `P73_MUNICIPAL_APLICA_SELFTESTE_OK 7/0`; quatro recusas gravadas (`evidence/p73-municipal-aplica-ddl-recusa-*.json`) |
+| `scripts/p73-municipal-etiqueta.mjs` | a porta de etiquetagem escola↔município e a folha de decisão, por RPC autenticado | `P73_MUNICIPAL_ETIQUETA_SELFTESTE_OK 6/0`; `…_LISTA 6 escolas, 0 etiquetadas, 1 municipios, 1 avisos de fixture`; três recusas em `evidence/p73-municipal-etiqueta-stdout-recusas-20-11.txt` |
+| `scripts/pacote-municipal-confere-pecas.mjs` | lê **este documento e o runbook**, mede cada caminho que a prosa cita, e confere no catálogo que nada foi aplicado | `PACOTE_MUNICIPAL_OK 15/0` (`evidence/pacote-municipal-pecas-20-11-fecho-corpus-duplo.json`); dentes provados por três falsificações na tabela de §2.0 do runbook, cada uma a nomear o portão que disparou |
+
+O que o portão do pacote devolveu do banco, à hora do fecho, e é o estado de partida de qualquer OK futuro:
+`funcoes_das_candidatas=0`, `escolas_com_municipio=0`, `policies_alvo=4` das quais `0` com escopo,
+`municipios=1`, `concessoes_ativas=4`, e `publicado=false` na v137.
+
+Três linhas deste plano mudam de natureza por causa disto:
+
+- **PEN-38, PEN-39, PEN-41** deixam de ser «falta candidata» e passam a ser «falta decisão + falta OK». O que
+  falta nelas não é código: é a escolha do §1 do runbook (que município governa cada uma das 6 escolas, com a
+  única linha de município existente declarada fixture) e a frase literal de cada aplicação.
+- **A etiquetagem** entra como item novo e distinto: é escrita de dados pela porta nomeada do PEN-38 bloco C,
+  exige sessão autenticada de admin de plataforma (`auth.uid()`), e hoje não há sessão neste posto de trabalho —
+  `ah2-sessions.json` ausente, `c2-sessions.json` com 3 bytes. O ciclo de mint é OK próprio.
+- **FALTA-1 e FALTA-2**, nomeadas no runbook: não existe peça de conferência pós-deploy da v137 (o modelo é
+  `scripts/v136-pos-deploy.mjs`), e o aplicador não tem modo de reversão. Antes de qualquer «reverter» ou
+  «publicar», ou se escreve a peça, ou se declara o passo como manual.
+
+Réguas acrescentadas a este plano, na mesma família das dez de §8: uma frase literal por passo e a frase de um
+passo não autoriza o passo seguinte; o verde de um preflight vale no instante em que é tirado, por isso o
+aplicador re-corre o preflight antes de escrever e compara o md5 do SQL com o que esse preflight certificou;
+uma classe com conjunto vazio imprime-se com o zero (`secretary` sem vínculo: 848/27 → 0/0, não omitido); e um
+portão que cita o censo do seu próprio corpus envelhece no dia em que a prosa acrescenta um caminho — por isso
+o §11 não pinha o número de peças medidas.

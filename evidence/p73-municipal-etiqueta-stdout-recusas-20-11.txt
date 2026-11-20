@@ -1,0 +1,18 @@
+### selfteste
+{
+ "programa": "scripts/p73-municipal-etiqueta.mjs",
+ "selfteste": true,
+ "casos": 6,
+ "falhas": [],
+ "veredito": "P73_MUNICIPAL_ETIQUETA_SELFTESTE_OK 6/0"
+}
+node_exit=0
+### recusa 1: sem frase, sem motivo, sem sessao (ids reais)
+RECUSADO · ["falta --ok com a frase literal (ETIQUETAR ESCOLA E MUNICIPIO); sem frase, nada e escrito","falta --motivo com pelo menos 3 caracteres (o RPC recusa menos que isso; §11.5)","falta --sessao <ficheiro> e --rotulo <rotulo>: o RPC exige auth.uid(), logo precisa duma sessao autenticada de admin de plataforma, nao da API de gestao","o RPC public.bfr_school_set_municipality ainda nao existe no banco: a PEN-38 tem de ser aplicada antes (scripts/p73-municipal-aplica-ddl.mjs --peca PEN-38 …)","o municipio e a linha de teste Sao Paulo (SM8 fixture — apagar)/SP: passa so com --aceita-fixture, porque etiquetar todas as escolas para uma linha marcada para apagar nao e um fecho"]
+node_exit=2
+### recusa 2: argumento com aspeto de injecao, nunca chega a SQL
+RECUSADO · ["--escola nao e um uuid: \"x' or 1=1--\"","--municipio nao e um uuid: \"nao-uuid\"","falta --motivo com pelo menos 3 caracteres (o RPC recusa menos que isso; §11.5)","falta --sessao <ficheiro> e --rotulo <rotulo>: o RPC exige auth.uid(), logo precisa duma sessao autenticada de admin de plataforma, nao da API de gestao","o RPC public.bfr_school_set_municipality ainda nao existe no banco: a PEN-38 tem de ser aplicada antes (scripts/p73-municipal-aplica-ddl.mjs --peca PEN-38 …)"]
+node_exit=2
+### recusa 3: frase certa + ids reais + sessao inexistente (nada escreve)
+RECUSADO · ["o RPC public.bfr_school_set_municipality ainda nao existe no banco: a PEN-38 tem de ser aplicada antes (scripts/p73-municipal-aplica-ddl.mjs --peca PEN-38 …)","ficheiro de sessao nao existe: ah2-sessions.json — o mint cria-o (scripts/ah2-mint.mjs) e nao e versionado","o municipio e a linha de teste Sao Paulo (SM8 fixture — apagar)/SP: passa so com --aceita-fixture, porque etiquetar todas as escolas para uma linha marcada para apagar nao e um fecho"]
+node_exit=2

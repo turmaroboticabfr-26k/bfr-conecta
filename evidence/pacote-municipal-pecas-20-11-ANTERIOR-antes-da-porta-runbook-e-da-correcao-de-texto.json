@@ -1,0 +1,287 @@
+{
+  "programa": "scripts/pacote-municipal-confere-pecas.mjs",
+  "em": "2026-11-20T18:02:22.620Z",
+  "corpus": {
+    "fonte": "docs/bu-20-11/10-runbook-municipal.md",
+    "regex_familias": "(?:scripts|evidence|docs|worker-deploy-[a-z0-9-]+|bfr-candidata-[a-z0-9-]+|public)\\/[\\p{L}\\p{N}._-]*\\.(?:sql|mjs|json|txt|md)",
+    "total_citados": 31,
+    "por_familia": {
+      "docs": 1,
+      "evidence": 15,
+      "scripts": 15
+    },
+    "extrairam_do_fixture": [
+      "scripts/x-pen99-ddl-candidata.sql",
+      "evidence/x-pecas-20-11.json",
+      "docs/x-nota.md"
+    ],
+    "excepcao_declara": [
+      "evidence/pacote-municipal-pecas-20-11.json"
+    ],
+    "saidas_de_passos_nao_autorizados": [
+      "evidence/v137-deploy-stdout-20-11.txt"
+    ]
+  },
+  "citados_presentes": [
+    {
+      "caminho": "docs/auditoria-bfr-conecta.md",
+      "bytes": 1168893,
+      "md5": "61e16745ded1cd25b354b8187dfbaf1a"
+    },
+    {
+      "caminho": "evidence/p73-leitor-bancada-pen40-20-11e.json",
+      "bytes": 5613,
+      "md5": "8a3aec7ae90e58263d333a8bbf90303d"
+    },
+    {
+      "caminho": "evidence/p73-municipal-aplica-ddl-recusa-ok-solto.json",
+      "bytes": 429,
+      "md5": "71ab0aaed5fa808a914a3cb4c66a4f45"
+    },
+    {
+      "caminho": "evidence/p73-municipal-etiqueta-lista-20-11.json",
+      "bytes": 2923,
+      "md5": "d29fcbd53101e88526182bbc3997e715"
+    },
+    {
+      "caminho": "evidence/p73-municipal-etiqueta-stdout-recusas-20-11.txt",
+      "bytes": 2083,
+      "md5": "8ebe58a4f669c5b82647dfabf403048f"
+    },
+    {
+      "caminho": "evidence/p73-pen38-alcance-por-concessao-20-11e.json",
+      "bytes": 32785,
+      "md5": "0cba6a82c93b988e6873e7284868f23c"
+    },
+    {
+      "caminho": "evidence/p73-pen38-preflight-candidata-20-11e.json",
+      "bytes": 11549,
+      "md5": "ee509bb9afad6d3446efd20c83cd2d88"
+    },
+    {
+      "caminho": "evidence/p73-pen39-preflight-candidata-20-11e.json",
+      "bytes": 13147,
+      "md5": "f197c0bdfb2fd8a59bc7b0f401ebc232"
+    },
+    {
+      "caminho": "evidence/p73-pen41-preflight-candidata-20-11e.json",
+      "bytes": 23732,
+      "md5": "5c8d25a6f7a870e366c726b5ced4f095"
+    },
+    {
+      "caminho": "evidence/p73-pen41-preflight-reversao-20-11e-VERMELHO-falsificacao-legitima-a-candidata-ainda-nao-foi-aplicada.json",
+      "bytes": 23782,
+      "md5": "845547cf30eeb5a35a0fc8cb88b4e289"
+    },
+    {
+      "caminho": "evidence/p73-rm52-estado-calendario-20-11.json",
+      "bytes": 43665,
+      "md5": "b2dbe7fd766cff77033c9a66fc95d668"
+    },
+    {
+      "caminho": "evidence/p73-rm52-regua-completude-20-11.json",
+      "bytes": 15939,
+      "md5": "f6a50c949672e9f1935be78b50e35857"
+    },
+    {
+      "caminho": "evidence/v136-deploy-stdout-19-11.txt",
+      "bytes": 837,
+      "md5": "464c58ba61dcec23506b24a0610b6e4a"
+    },
+    {
+      "caminho": "evidence/v137-gera-bundle-20-11.json",
+      "bytes": 6166,
+      "md5": "a5c3b0d39b1d6572cf70759ed2481d5c"
+    },
+    {
+      "caminho": "scripts/p73-municipal-aplica-ddl.mjs",
+      "bytes": 14687,
+      "md5": "8d5385a90f1c4340e6410c5ae97a504f"
+    },
+    {
+      "caminho": "scripts/p73-municipal-etiqueta.mjs",
+      "bytes": 14494,
+      "md5": "338feb08014549f6e904ba88d0f56326"
+    },
+    {
+      "caminho": "scripts/p73-pen38-alcance-por-concessao-20-11.mjs",
+      "bytes": 16660,
+      "md5": "773fac9dbe25eeab182f6395fd09a7d6"
+    },
+    {
+      "caminho": "scripts/p73-pen38-ddl-candidata.sql",
+      "bytes": 9148,
+      "md5": "ee98c29129cbf1bb59987597fc6cd97d"
+    },
+    {
+      "caminho": "scripts/p73-pen38-ddl-reversao.sql",
+      "bytes": 1461,
+      "md5": "b0c65599c2ced2fe10d5fcc7bd4a494b"
+    },
+    {
+      "caminho": "scripts/p73-pen38-preflight.mjs",
+      "bytes": 11911,
+      "md5": "5aaf656f876faf71e20c5c85bd11cbc7"
+    },
+    {
+      "caminho": "scripts/p73-pen39-ddl-candidata.sql",
+      "bytes": 6784,
+      "md5": "b0c3f3a8600d70078698e7f39a33c741"
+    },
+    {
+      "caminho": "scripts/p73-pen39-ddl-reversao.sql",
+      "bytes": 540,
+      "md5": "cd73aa70129a7e89a2b7a37df8d9261f"
+    },
+    {
+      "caminho": "scripts/p73-pen39-preflight.mjs",
+      "bytes": 13462,
+      "md5": "9812fbbe5258f3e505e1bad8ee589b2b"
+    },
+    {
+      "caminho": "scripts/p73-pen39-sonda-uso-agregados.mjs",
+      "bytes": 8768,
+      "md5": "97a816333072fe35a5d52da88667314e"
+    },
+    {
+      "caminho": "scripts/p73-pen41-ddl-candidata.sql",
+      "bytes": 4930,
+      "md5": "6259a3fca4ae688fb08d3c3f47e4072d"
+    },
+    {
+      "caminho": "scripts/p73-pen41-ddl-reversao.sql",
+      "bytes": 1454,
+      "md5": "d4ea4c160df8324b9b1c5f06e5c9b251"
+    },
+    {
+      "caminho": "scripts/p73-pen41-preflight.mjs",
+      "bytes": 28045,
+      "md5": "43c9598c336e3652dec840a0380aa253"
+    },
+    {
+      "caminho": "scripts/pacote-municipal-confere-pecas.mjs",
+      "bytes": 10364,
+      "md5": "f4ba5811ff29668bd4877a7e63625e87"
+    },
+    {
+      "caminho": "scripts/v136-pos-deploy.mjs",
+      "bytes": 8344,
+      "md5": "c00b780e079fff41e831c02c08e9b0cb"
+    }
+  ],
+  "citados_em_falta": [],
+  "fora_do_git": [
+    {
+      "caminho": "ah2-sessions.json",
+      "existe_em_disco": false,
+      "ignorado_pelo_git": true
+    },
+    {
+      "caminho": "c2-sessions.json",
+      "existe_em_disco": true,
+      "ignorado_pelo_git": true
+    }
+  ],
+  "vivo": {
+    "funcoes_das_candidatas": 0,
+    "escolas_com_municipio": 0,
+    "municipios": 1,
+    "concessoes_ativas": 4,
+    "policies_alvo": 4,
+    "policies_alvo_com_escopo": 0
+  },
+  "nomes_de_funcoes_varridos": [
+    "bfr_school_set_municipality",
+    "bfr_municipal_scope_diagnostico",
+    "bfr_municipal_municipio_totais",
+    "bfr_municipal_distribuicao_por_zona"
+  ],
+  "policies_alvo": [
+    "director_dashboard_read_students",
+    "director_dashboard_read_classes",
+    "students_select_secretary",
+    "classes_select_secretary"
+  ],
+  "ancora_lida_do_preflight_38": {
+    "concessoes_ativas": 4,
+    "municipios": 1,
+    "escolas": 6,
+    "escolas_com_municipio": 0,
+    "pontes_confirmadas": 3,
+    "municipios_de_fixture": 1
+  },
+  "ancora_lida_do_preflight_41": {
+    "policies_das_quatro": 4,
+    "veredito": "P73_PEN41_PREFLIGHT_VERDE_CANDIDATA 13/0"
+  },
+  "v137": {
+    "publicado": false,
+    "ok_literal": "(sem OK literal — candidata pronta; a publicacao exige OK literal novo)",
+    "veredito": "V137_BUNDLE_OK 24/0"
+  },
+  "inputs_de_fecho": [
+    {
+      "caminho": "scripts/p73-pen38-alcance-por-concessao-20-11.mjs",
+      "bytes": 16660,
+      "md5": "773fac9dbe25eeab182f6395fd09a7d6"
+    },
+    {
+      "caminho": "scripts/p73-pen38-preflight.mjs",
+      "bytes": 11911,
+      "md5": "5aaf656f876faf71e20c5c85bd11cbc7"
+    },
+    {
+      "caminho": "scripts/p73-pen39-preflight.mjs",
+      "bytes": 13462,
+      "md5": "9812fbbe5258f3e505e1bad8ee589b2b"
+    },
+    {
+      "caminho": "scripts/p73-pen41-preflight.mjs",
+      "bytes": 28045,
+      "md5": "43c9598c336e3652dec840a0380aa253"
+    },
+    {
+      "caminho": "scripts/p73-municipal-etiqueta.mjs",
+      "bytes": 14494,
+      "md5": "338feb08014549f6e904ba88d0f56326"
+    },
+    {
+      "caminho": "scripts/p73-municipal-aplica-ddl.mjs",
+      "bytes": 14687,
+      "md5": "8d5385a90f1c4340e6410c5ae97a504f"
+    },
+    {
+      "caminho": "scripts/v136-pos-deploy.mjs",
+      "bytes": 8344,
+      "md5": "c00b780e079fff41e831c02c08e9b0cb"
+    },
+    {
+      "caminho": "scripts/pacote-municipal-confere-pecas.mjs",
+      "bytes": 10364,
+      "md5": "f4ba5811ff29668bd4877a7e63625e87"
+    },
+    {
+      "caminho": "docs/bu-20-11/10-runbook-municipal.md",
+      "bytes": 16548,
+      "md5": "5baaef4af05ee9282d65b551902341b3"
+    }
+  ],
+  "portoes": [
+    "a_sonda_de_extração_dispara_no_fixture",
+    "o_corpus_tem_caminhos_suficientes",
+    "nenhum_caminho_citado_falta_em_disco",
+    "cada_familia_do_corpus_despe_pelo_menos_um_caminho",
+    "as_saidas_de_passos_nao_autorizados_estao_mesmo_ausentes",
+    "os_fora_do_git_estao_ignorados_e_nao_e_que_faltasse_a_peca",
+    "nenhuma_funcao_das_candidatas_existe_ainda_no_banco",
+    "o_preflight_declara_zero_escolas_etiquetadas",
+    "o_estado_vivo_bate_com_a_declaracao_do_preflight_38",
+    "as_policies_alvo_existem_e_nenhuma_tem_escopo",
+    "as_quatro_policies_alvo_sao_as_que_o_preflight_41_descreve",
+    "a_v137_continua_nao_publicada_com_a_frase_de_OK_declara",
+    "os_inputs_das_provas_de_fecho_resolvem"
+  ],
+  "falhas": [],
+  "veredito": "PACOTE_MUNICIPAL_OK 13/0 · 29 pecas medidas",
+  "o_que_este_verde_nao_autoriza": "nada: este portão é leitura. Aplicar DDL, etiquetar, publicar e git push continuam a pedir cada um a sua frase literal."
+}
