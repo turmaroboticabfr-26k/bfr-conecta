@@ -1,0 +1,68 @@
+{
+  "ciclo": "AH-7b-MOBILE",
+  "em": "2026-11-20T04:13:15.168Z",
+  "papel": "coordinator",
+  "larguras": [
+    1280
+  ],
+  "altura": 720,
+  "url": "https://bfr-conecta.turmaroboticabfr.workers.dev/",
+  "md5_shell": "9e236a23eed978cf7c2a2743d449b307",
+  "contas": {
+    "id": "9cd0f42e"
+  },
+  "markup": "toque em #bfrMobileBottomNav button[data-bfr-mobile-route] e #bfrMobileDrawer [data-bfr-drawer-route]; a barra do desktop está display:none abaixo de 800px por decisão do app (bfr-responsive-presentation.js:233)",
+  "declaradas": [
+    "inicio",
+    "coordenacao",
+    "horarios",
+    "cadastro-alunos",
+    "comunicados",
+    "ocorrencias",
+    "atividades",
+    "escola-historia",
+    "notificacoes",
+    "conteudos",
+    "relatorios",
+    "comunicacao",
+    "fotos",
+    "chat-interno",
+    "coordenacao-chat",
+    "jogos-escolares",
+    "aee",
+    "resultados-aprendizagem"
+  ],
+  "bandas": {},
+  "bloqueadas": [
+    {
+      "largura": 1280,
+      "causa": "shell ready sem #bfrMobileBottomNav após rechegar — módulo de apresentação mobile não montou a barra",
+      "censo": {
+        "presentation": null,
+        "body_mobile": false,
+        "barra_existe": false,
+        "barra": [],
+        "gaveta_existe": false,
+        "gaveta_aberta": false,
+        "gaveta": [],
+        "hamb": false,
+        "sidebar_caixa": true,
+        "vw": 1280,
+        "vh": 720
+      },
+      "ms_ready": 1478
+    }
+  ],
+  "portoes": 5,
+  "falhas": [
+    "1280px: a app declarou-se em apresentação mobile | dado={\"presentation\":null,\"body_mobile\":false,\"sidebar_escondida\":false} | esperado={\"presentation\":\"mobile\",\"body_mobile\":true,\"sidebar_escondida\":true}",
+    "1280px: a barra inferior tem botões com caixa | dado=false | esperado=true"
+  ],
+  "medido": {
+    "larguras": 0,
+    "rotas_tocadas": 0,
+    "incompleto": 0
+  },
+  "veredito": "AH7b_MOBILE_COM_DEFEITOS",
+  "diagnostico": "a barra de baixo tem 0 rotas e a gaveta 0; toque real abriu 0 painéis nas 0 larguras; alvos <44px na barra: "
+}

@@ -1,0 +1,45 @@
+{
+  "version": "v137",
+  "em": "2026-11-20T04:20:23.156Z",
+  "escrita": "agora",
+  "pen": "PEN-40 (barra mobile morre de fome sob churn: teto de 250 ms passa a montar o chrome quando falta)",
+  "origem": {
+    "dir": "app",
+    "ficheiro": "bfr-responsive-presentation.js",
+    "md5": "a83f77baba7453851b287080686c7afb",
+    "bytes": 51742
+  },
+  "deploy_comparado": {
+    "dir": "worker-deploy-v136-secretaria-de-educacao/public",
+    "md5": "a83f77baba7453851b287080686c7afb",
+    "byte_a_byte_com_a_origem": true
+  },
+  "saida": {
+    "dir": "bfr-candidata-v137-remendo-pen40",
+    "ficheiro": "bfr-responsive-presentation.js",
+    "md5": "b83b4c2666fc909d50a358b86b99de05",
+    "bytes": 52532
+  },
+  "remendo": {
+    "de": "  const pintaSozinho = () => { timer = null; desde = Date.now(); paintHighlight(); };",
+    "para": "  // PEN-40: sob churn contínuo o debounce nunca vence e o sync() — que monta a barra — nunca\n  // corre. O teto (250 ms) já pinta o realce; agora também garante o chrome montado quando ele\n  // ainda não nasceu. ensureMobileChrome e createNav são idempotentes e guardados por existência:\n  // o teto continua barato, sem amplificar o churn que o dispara. O resto do sync fica para o\n  // primeiro sossego.\n  const pintaSozinho = () => { timer = null; desde = Date.now(); paintHighlight(); ensureChromeMontado(); };\n  function ensureChromeMontado() {\n    const shell = app();\n    if (!shell || !shell.classList.contains('ready') || !mobile.matches) return;\n    if (!document.getElementById('bfrMobileBottomNav') || !document.getElementById('bfrMobileAppbar') || !document.getElementById('bfrMobileDrawer')) {\n      ensureMobileChrome();\n      createNav();\n    }\n  }",
+    "delta_bytes": 790
+  },
+  "controlos_negativos": [
+    "debounce_dispara",
+    "piso_teto",
+    "clear_timeout",
+    "armar_timer",
+    "chamada_no_teto",
+    "decl_paint",
+    "decl_createNav",
+    "decl_ensureMobileChrome",
+    "observer",
+    "listener_ready",
+    "listener_navigation"
+  ],
+  "index_html_intocado": true,
+  "delta_bytes": 790,
+  "portoes": "22/0",
+  "veredito": "V137_REMENDO_OK 22/0"
+}

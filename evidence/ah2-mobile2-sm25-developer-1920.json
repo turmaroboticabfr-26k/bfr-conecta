@@ -1,0 +1,194 @@
+{
+  "ciclo": "AH-7b-MOBILE",
+  "em": "2026-11-20T04:26:36.717Z",
+  "papel": "developer",
+  "larguras": [
+    1920
+  ],
+  "altura": 720,
+  "url": "https://bfr-conecta.turmaroboticabfr.workers.dev/",
+  "md5_shell": "9e236a23eed978cf7c2a2743d449b307",
+  "contas": {
+    "id": "49753880"
+  },
+  "markup": "toque em #bfrMobileBottomNav button[data-bfr-mobile-route] e #bfrMobileDrawer [data-bfr-drawer-route]; a barra do desktop está display:none abaixo de 800px por decisão do app (bfr-responsive-presentation.js:233)",
+  "declaradas": [
+    "inicio",
+    "escola-historia",
+    "chat-interno",
+    "notificacoes",
+    "conteudos",
+    "notas",
+    "agenda",
+    "atividades",
+    "horarios",
+    "jogos",
+    "jogos-escolares",
+    "videos-aprender",
+    "comunicados",
+    "ocorrencias",
+    "coordenacao",
+    "monitor",
+    "gate",
+    "administracao",
+    "admin-crachas",
+    "cadastro-alunos",
+    "fotos",
+    "aee",
+    "direcao",
+    "comunicacao",
+    "coordenacao-chat",
+    "resultados-aprendizagem",
+    "psychology",
+    "multiprofissional"
+  ],
+  "bandas": {
+    "1920": {
+      "width": 1920,
+      "ms_ready": 4910,
+      "erro_boot": null,
+      "censo": {
+        "presentation": "web",
+        "body_mobile": false,
+        "barra_existe": true,
+        "barra": [
+          {
+            "rot": "🏠Início",
+            "route": "inicio",
+            "w": 0,
+            "h": 0,
+            "y": 0,
+            "x": 0
+          },
+          {
+            "rot": "🧑‍🎓Alunos",
+            "route": "cadastro-alunos",
+            "w": 0,
+            "h": 0,
+            "y": 0,
+            "x": 0
+          },
+          {
+            "rot": "🏫Direção escola",
+            "route": "direcao",
+            "w": 0,
+            "h": 0,
+            "y": 0,
+            "x": 0
+          },
+          {
+            "rot": "🛠️Administração",
+            "route": "administracao",
+            "w": 0,
+            "h": 0,
+            "y": 0,
+            "x": 0
+          },
+          {
+            "rot": "⋯Mais",
+            "route": "more",
+            "w": 0,
+            "h": 0,
+            "y": 0,
+            "x": 0
+          }
+        ],
+        "gaveta_existe": false,
+        "gaveta_aberta": false,
+        "gaveta": [],
+        "hamb": false,
+        "sidebar_caixa": true,
+        "vw": 1920,
+        "vh": 720
+      },
+      "modal": {
+        "id": "preferredNameModal",
+        "texto": "× PRIMEIRO ACESSO Como você quer ser chamado? Esse nome aparece apenas"
+      },
+      "modal_fechou_a_toque": true,
+      "gaveta_aberta_a_toque": false,
+      "seccoes": {
+        "inicio": {
+          "nao_tocavel": "invisivel"
+        },
+        "cadastro-alunos": {
+          "nao_tocavel": "invisivel"
+        },
+        "direcao": {
+          "nao_tocavel": "invisivel"
+        },
+        "administracao": {
+          "nao_tocavel": "invisivel"
+        }
+      },
+      "abertas": 0,
+      "vazias": [],
+      "nao_assentaram": [],
+      "estouro": [],
+      "tap_miudo": 0,
+      "fonte_miuda": 0,
+      "declaradas_sem_rota": [
+        "escola-historia",
+        "chat-interno",
+        "notificacoes",
+        "conteudos",
+        "notas",
+        "agenda",
+        "atividades",
+        "horarios",
+        "jogos",
+        "jogos-escolares",
+        "videos-aprender",
+        "comunicados",
+        "ocorrencias",
+        "coordenacao",
+        "monitor",
+        "gate",
+        "admin-crachas",
+        "fotos",
+        "aee",
+        "comunicacao",
+        "coordenacao-chat",
+        "resultados-aprendizagem",
+        "psychology",
+        "multiprofissional"
+      ],
+      "rotas_fora_do_mapa": [],
+      "inalcancaveis": [
+        "inicio:invisivel",
+        "cadastro-alunos:invisivel",
+        "direcao:invisivel",
+        "administracao:invisivel"
+      ],
+      "sem_efeito": [],
+      "erros": [],
+      "diagnostico_gaveta": [
+        {
+          "o": "mais_nao_tocavel",
+          "sel": "[data-bfr-open-drawer]",
+          "r": null,
+          "ativa": "inicio",
+          "geo": null
+        }
+      ],
+      "dialogos_sem_saida": [],
+      "dialogos_miudos": []
+    }
+  },
+  "portoes": 16,
+  "falhas": [
+    "1920px: a app declarou-se em apresentação mobile | dado={\"presentation\":null,\"body_mobile\":false,\"sidebar_escondida\":false} | esperado={\"presentation\":\"mobile\",\"body_mobile\":true,\"sidebar_escondida\":true}",
+    "1920px: a barra inferior tem botões com caixa | dado=false | esperado=true",
+    "1920px: a gaveta abre com um toque real | dado=false | esperado=true",
+    "1920px: chegou ao shell e abriu seções a toque | dado=false | esperado=true",
+    "1920px: 0 seções do papel sem rota tocável | dado=[\"escola-historia\",\"chat-interno\",\"notificacoes\",\"conteudos\",\"notas\",\"agenda\",\"atividades\",\"horarios\",\"jogos\",\"jogos-escolares\",\"videos-aprender\",\"comunicados\",\"ocorrencias\",\"coordenacao\",\"monitor\",\"gate\",\"admin-crachas\",\"fotos\",\"aee\",\"comunicacao\",\"coordenacao-chat\",\"resultados-aprendizagem\",\"psychology\",\"multiprofissional\"] | esperado=[]",
+    "1920px: 0 rotas que não abriram painel | dado=[\"inicio:invisivel\",\"cadastro-alunos:invisivel\",\"direcao:invisivel\",\"administracao:invisivel\"] | esperado=[]"
+  ],
+  "medido": {
+    "larguras": 1,
+    "rotas_tocadas": 0,
+    "incompleto": 0
+  },
+  "veredito": "AH7b_MOBILE_COM_DEFEITOS",
+  "diagnostico": "a barra de baixo tem 5 rotas e a gaveta 0; toque real abriu 0 painéis nas 1 larguras; alvos <44px na barra: 1920px=0"
+}

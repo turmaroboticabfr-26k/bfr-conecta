@@ -1,0 +1,131 @@
+{
+  "ciclo": "AH-7b-MOBILE",
+  "em": "2026-11-20T04:21:57.305Z",
+  "papel": "social_work",
+  "larguras": [
+    1280
+  ],
+  "altura": 720,
+  "url": "https://bfr-conecta.turmaroboticabfr.workers.dev/",
+  "md5_shell": "9e236a23eed978cf7c2a2743d449b307",
+  "contas": {
+    "id": "04d52df9"
+  },
+  "markup": "toque em #bfrMobileBottomNav button[data-bfr-mobile-route] e #bfrMobileDrawer [data-bfr-drawer-route]; a barra do desktop está display:none abaixo de 800px por decisão do app (bfr-responsive-presentation.js:233)",
+  "declaradas": [
+    "inicio",
+    "multiprofissional",
+    "chat-interno"
+  ],
+  "bandas": {
+    "1280": {
+      "width": 1280,
+      "ms_ready": 876,
+      "erro_boot": null,
+      "censo": {
+        "presentation": "web",
+        "body_mobile": false,
+        "barra_existe": true,
+        "barra": [
+          {
+            "rot": "🏠Início",
+            "route": "inicio",
+            "w": 0,
+            "h": 0,
+            "y": 0,
+            "x": 0
+          },
+          {
+            "rot": "🧭Equipe de apoi",
+            "route": "multiprofissional",
+            "w": 0,
+            "h": 0,
+            "y": 0,
+            "x": 0
+          },
+          {
+            "rot": "💬Chat interno",
+            "route": "chat-interno",
+            "w": 0,
+            "h": 0,
+            "y": 0,
+            "x": 0
+          },
+          {
+            "rot": "⋯Mais",
+            "route": "more",
+            "w": 0,
+            "h": 0,
+            "y": 0,
+            "x": 0
+          }
+        ],
+        "gaveta_existe": false,
+        "gaveta_aberta": false,
+        "gaveta": [],
+        "hamb": false,
+        "sidebar_caixa": true,
+        "vw": 1280,
+        "vh": 720
+      },
+      "modal": {
+        "id": "preferredNameModal",
+        "texto": "× PRIMEIRO ACESSO Como você quer ser chamado? Esse nome aparece apenas"
+      },
+      "modal_fechou_a_toque": true,
+      "gaveta_aberta_a_toque": false,
+      "seccoes": {
+        "inicio": {
+          "nao_tocavel": "invisivel"
+        },
+        "multiprofissional": {
+          "nao_tocavel": "invisivel"
+        },
+        "chat-interno": {
+          "nao_tocavel": "invisivel"
+        }
+      },
+      "abertas": 0,
+      "vazias": [],
+      "nao_assentaram": [],
+      "estouro": [],
+      "tap_miudo": 0,
+      "fonte_miuda": 0,
+      "declaradas_sem_rota": [],
+      "rotas_fora_do_mapa": [],
+      "inalcancaveis": [
+        "inicio:invisivel",
+        "multiprofissional:invisivel",
+        "chat-interno:invisivel"
+      ],
+      "sem_efeito": [],
+      "erros": [],
+      "diagnostico_gaveta": [
+        {
+          "o": "mais_nao_tocavel",
+          "sel": "[data-bfr-open-drawer]",
+          "r": null,
+          "ativa": "inicio",
+          "geo": null
+        }
+      ],
+      "dialogos_sem_saida": [],
+      "dialogos_miudos": []
+    }
+  },
+  "portoes": 16,
+  "falhas": [
+    "1280px: a app declarou-se em apresentação mobile | dado={\"presentation\":null,\"body_mobile\":false,\"sidebar_escondida\":false} | esperado={\"presentation\":\"mobile\",\"body_mobile\":true,\"sidebar_escondida\":true}",
+    "1280px: a barra inferior tem botões com caixa | dado=false | esperado=true",
+    "1280px: a gaveta abre com um toque real | dado=false | esperado=true",
+    "1280px: chegou ao shell e abriu seções a toque | dado=false | esperado=true",
+    "1280px: 0 rotas que não abriram painel | dado=[\"inicio:invisivel\",\"multiprofissional:invisivel\",\"chat-interno:invisivel\"] | esperado=[]"
+  ],
+  "medido": {
+    "larguras": 1,
+    "rotas_tocadas": 0,
+    "incompleto": 0
+  },
+  "veredito": "AH7b_MOBILE_COM_DEFEITOS",
+  "diagnostico": "a barra de baixo tem 4 rotas e a gaveta 0; toque real abriu 0 painéis nas 1 larguras; alvos <44px na barra: 1280px=0"
+}

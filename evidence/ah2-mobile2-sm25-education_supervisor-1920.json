@@ -1,0 +1,162 @@
+{
+  "ciclo": "AH-7b-MOBILE",
+  "em": "2026-11-20T04:27:18.952Z",
+  "papel": "education_supervisor",
+  "larguras": [
+    1920
+  ],
+  "altura": 720,
+  "url": "https://bfr-conecta.turmaroboticabfr.workers.dev/",
+  "md5_shell": "9e236a23eed978cf7c2a2743d449b307",
+  "contas": {
+    "id": "d7d45999"
+  },
+  "markup": "toque em #bfrMobileBottomNav button[data-bfr-mobile-route] e #bfrMobileDrawer [data-bfr-drawer-route]; a barra do desktop está display:none abaixo de 800px por decisão do app (bfr-responsive-presentation.js:233)",
+  "declaradas": [
+    "inicio",
+    "secretaria",
+    "comunicados",
+    "escola-historia",
+    "notificacoes",
+    "conteudos",
+    "comunicacao",
+    "chat-interno",
+    "coordenacao-chat",
+    "jogos-escolares",
+    "fotos",
+    "supervisao"
+  ],
+  "bandas": {
+    "1920": {
+      "width": 1920,
+      "ms_ready": 799,
+      "erro_boot": null,
+      "censo": {
+        "presentation": "web",
+        "body_mobile": false,
+        "barra_existe": true,
+        "barra": [
+          {
+            "rot": "🏠Início",
+            "route": "inicio",
+            "w": 0,
+            "h": 0,
+            "y": 0,
+            "x": 0
+          },
+          {
+            "rot": "💬Chat interno",
+            "route": "chat-interno",
+            "w": 0,
+            "h": 0,
+            "y": 0,
+            "x": 0
+          },
+          {
+            "rot": "🔔Avisos",
+            "route": "notificacoes",
+            "w": 0,
+            "h": 0,
+            "y": 0,
+            "x": 0
+          },
+          {
+            "rot": "📚Conteúdos",
+            "route": "conteudos",
+            "w": 0,
+            "h": 0,
+            "y": 0,
+            "x": 0
+          },
+          {
+            "rot": "⋯Mais",
+            "route": "more",
+            "w": 0,
+            "h": 0,
+            "y": 0,
+            "x": 0
+          }
+        ],
+        "gaveta_existe": false,
+        "gaveta_aberta": false,
+        "gaveta": [],
+        "hamb": false,
+        "sidebar_caixa": true,
+        "vw": 1920,
+        "vh": 720
+      },
+      "modal": {
+        "id": "preferredNameModal",
+        "texto": "× PRIMEIRO ACESSO Como você quer ser chamado? Esse nome aparece apenas"
+      },
+      "modal_fechou_a_toque": true,
+      "gaveta_aberta_a_toque": false,
+      "seccoes": {
+        "inicio": {
+          "nao_tocavel": "invisivel"
+        },
+        "chat-interno": {
+          "nao_tocavel": "invisivel"
+        },
+        "notificacoes": {
+          "nao_tocavel": "invisivel"
+        },
+        "conteudos": {
+          "nao_tocavel": "invisivel"
+        }
+      },
+      "abertas": 0,
+      "vazias": [],
+      "nao_assentaram": [],
+      "estouro": [],
+      "tap_miudo": 0,
+      "fonte_miuda": 0,
+      "declaradas_sem_rota": [
+        "secretaria",
+        "comunicados",
+        "escola-historia",
+        "comunicacao",
+        "coordenacao-chat",
+        "jogos-escolares",
+        "fotos",
+        "supervisao"
+      ],
+      "rotas_fora_do_mapa": [],
+      "inalcancaveis": [
+        "inicio:invisivel",
+        "chat-interno:invisivel",
+        "notificacoes:invisivel",
+        "conteudos:invisivel"
+      ],
+      "sem_efeito": [],
+      "erros": [],
+      "diagnostico_gaveta": [
+        {
+          "o": "mais_nao_tocavel",
+          "sel": "[data-bfr-open-drawer]",
+          "r": null,
+          "ativa": "inicio",
+          "geo": null
+        }
+      ],
+      "dialogos_sem_saida": [],
+      "dialogos_miudos": []
+    }
+  },
+  "portoes": 16,
+  "falhas": [
+    "1920px: a app declarou-se em apresentação mobile | dado={\"presentation\":null,\"body_mobile\":false,\"sidebar_escondida\":false} | esperado={\"presentation\":\"mobile\",\"body_mobile\":true,\"sidebar_escondida\":true}",
+    "1920px: a barra inferior tem botões com caixa | dado=false | esperado=true",
+    "1920px: a gaveta abre com um toque real | dado=false | esperado=true",
+    "1920px: chegou ao shell e abriu seções a toque | dado=false | esperado=true",
+    "1920px: 0 seções do papel sem rota tocável | dado=[\"secretaria\",\"comunicados\",\"escola-historia\",\"comunicacao\",\"coordenacao-chat\",\"jogos-escolares\",\"fotos\",\"supervisao\"] | esperado=[]",
+    "1920px: 0 rotas que não abriram painel | dado=[\"inicio:invisivel\",\"chat-interno:invisivel\",\"notificacoes:invisivel\",\"conteudos:invisivel\"] | esperado=[]"
+  ],
+  "medido": {
+    "larguras": 1,
+    "rotas_tocadas": 0,
+    "incompleto": 0
+  },
+  "veredito": "AH7b_MOBILE_COM_DEFEITOS",
+  "diagnostico": "a barra de baixo tem 5 rotas e a gaveta 0; toque real abriu 0 painéis nas 1 larguras; alvos <44px na barra: 1920px=0"
+}

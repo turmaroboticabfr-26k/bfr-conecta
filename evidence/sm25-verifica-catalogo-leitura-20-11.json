@@ -1,0 +1,151 @@
+{
+  "programa": "scripts/sm25-verifica-catalogo-leitura.mjs",
+  "em": "2026-11-20T04:12:42.276Z",
+  "metodo": "só leitura: pg_catalog via PAT (c2-lib) + probes REST anon/autenticado; sessões renovadas por refresh_token (auth, sem escrita de produto)",
+  "ar": {
+    "url": "https://bfr-conecta.turmaroboticabfr.workers.dev",
+    "md5_shell_servido": "9e236a23eed978cf7c2a2743d449b307",
+    "htmlMd5_esperado_v136": "9e236a23eed978cf7c2a2743d449b307",
+    "ar_identico_a_v136": true,
+    "chave_anon_presente": true
+  },
+  "controle_de_canal": {
+    "tabelas_public": 183,
+    "funcoes_public": 158,
+    "funcoes_anon_execute": 63,
+    "rls_session_role_anon_exec": true
+  },
+  "pen29": {
+    "alvo": [
+      "bfr_school_shift_settings",
+      "bfr_school_calendar_days",
+      "bfr_school_calendar_month_targets"
+    ],
+    "achadas": [
+      "bfr_school_calendar_days",
+      "bfr_school_calendar_month_targets",
+      "bfr_school_shift_settings"
+    ],
+    "ausentes": [],
+    "por_tabela": {
+      "bfr_school_calendar_days": {
+        "rls": true,
+        "forcada": true,
+        "linhas": 0,
+        "policies": 2
+      },
+      "bfr_school_calendar_month_targets": {
+        "rls": true,
+        "forcada": true,
+        "linhas": 0,
+        "policies": 2
+      },
+      "bfr_school_shift_settings": {
+        "rls": true,
+        "forcada": true,
+        "linhas": 0,
+        "policies": 2
+      }
+    },
+    "veredito": "FECHADA_CONFIRMADA"
+  },
+  "pen37": {
+    "funcoes": [
+      {
+        "proname": "bfr_has_municipal_grant",
+        "args": "p_municipality uuid",
+        "anon_exec": false,
+        "auth_exec": true
+      },
+      {
+        "proname": "bfr_municipal_network_totals",
+        "args": "",
+        "anon_exec": false,
+        "auth_exec": true
+      }
+    ],
+    "probes_anon": {
+      "network_totals": {
+        "status": 401,
+        "bytes": 115
+      },
+      "has_grant": {
+        "status": 401,
+        "bytes": 110
+      }
+    },
+    "veredito": "FECHADA_CONFIRMADA"
+  },
+  "pen23": {
+    "views": 7,
+    "com_invoker": 7,
+    "sem_invoker": [],
+    "veredito": "FECHADA_CONFIRMADA"
+  },
+  "pen39": {
+    "def_md5_hoje": "4ffde76bdb1243f6b9b3ebe6f2f50716",
+    "def_bytes": 652,
+    "probes": {
+      "developer": {
+        "status": 200,
+        "valores": {
+          "schools": 6,
+          "students": 848,
+          "classes": 27,
+          "municipalities": 0
+        },
+        "bytes": 62
+      },
+      "secretario_municipal": {
+        "status": 200,
+        "valores": {
+          "schools": 0,
+          "students": 0,
+          "classes": 0,
+          "municipalities": 0
+        },
+        "bytes": 59
+      }
+    },
+    "renovacoes": {
+      "developer": false,
+      "secretario_municipal": false
+    },
+    "assinatura": {
+      "developer_ve_rede": true,
+      "titular_ve_zeros": true
+    },
+    "veredito": "ABERTA_CONFIRMADA",
+    "ok_exigido": "DDL de reescrita dos agregados municipais (literal OK) + candidata + publicação"
+  },
+  "rm52": {
+    "linhas_por_tabela": {
+      "bfr_school_calendar_days": 0,
+      "bfr_school_calendar_month_targets": 0,
+      "bfr_school_shift_settings": 0
+    },
+    "veredito": "ABERTA_CONFIRMADA",
+    "ok_exigido": "desenho de conteúdo (turnos, dias letivos, metas mensais) — produto; pede OK literal"
+  },
+  "pen38": {
+    "escopo": "front (o módulo municipal abre 11 mesas e não filtra uma única vez por município)",
+    "identidade_do_ar": "shell servido idêntico à v136 — código da PEN-38 inalterado no ar",
+    "veredito": "ABERTA_CONFIRMADA_POR_IDENTIDADE_DO_AR",
+    "ok_exigido": "candidata de código do módulo municipal + publicação v13x (literal OK)"
+  },
+  "itens_abertos_com_ok_exigido": [
+    {
+      "item": "PEN-39",
+      "ok_exigido": "DDL de reescrita dos agregados municipais (literal OK) + candidata + publicação"
+    },
+    {
+      "item": "RM-5.2",
+      "ok_exigido": "desenho de conteúdo (turnos, dias letivos, metas mensais) — produto; pede OK literal"
+    },
+    {
+      "item": "PEN-38",
+      "ok_exigido": "candidata de código do módulo municipal + publicação v13x (literal OK)"
+    }
+  ],
+  "veredito_global": "SM25_CATALOGO_VERDE"
+}
