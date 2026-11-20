@@ -11,6 +11,7 @@ import { createHash } from 'node:crypto';
 import { existsSync, readFileSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { sql } from './c2-lib.mjs';
+import { assinaturaCorresponde, tiposDeCreateFunction } from './p73-assinatura-lib.mjs';
 
 const REPO = 'C:/Users/pcmac/Documents/Qoder/2026-10-13/28077d9a/bfr-conecta';
 const MODO = process.argv.includes('--reversao') ? 'reversao' : 'candidata';
@@ -22,6 +23,20 @@ const t0 = Date.now();
 const ficheiroCand = readFileSync(join(REPO, 'scripts/p73-pen38-ddl-candidata.sql'));
 const ficheiroRev = readFileSync(join(REPO, 'scripts/p73-pen38-ddl-reversao.sql'));
 const pegada = (b) => ({ bytes: b.length, md5: createHash('md5').update(b).digest('hex') });
+
+// As assinaturas que estes portoes procuram leem-se dos CREATE FUNCTION dos ficheiros que as declaram, nao de
+// o que eu dactilografo: uma agulha escrita a mao contra uma build que devolve os nomes dos parametros da
+// funcao e um portao sem positivo possivel (foi assim que a PEN-38 aplicada deu conferencia vermelha em 20/11).
+const ficheiroSm4 = readFileSync(join(REPO, 'scripts/sm4-ddl-municipal-candidata.sql'));
+const assinaturaDe = (texto, nome, quem) => {
+  const t = tiposDeCreateFunction(texto, nome);
+  if (!t) throw new Error('ABORTA: ' + nome + ' nao tem CREATE FUNCTION legivel em ' + quem + ' — a regua nao pode ser suposicao.');
+  return t;
+};
+const SQL_CAND = ficheiroCand.toString('utf8');
+const ASS_SET = assinaturaDe(SQL_CAND, 'bfr_school_set_municipality', 'scripts/p73-pen38-ddl-candidata.sql');
+const ASS_DIAG = assinaturaDe(SQL_CAND, 'bfr_municipal_scope_diagnostico', 'scripts/p73-pen38-ddl-candidata.sql');
+const ASS_ESCOPO = assinaturaDe(ficheiroSm4.toString('utf8'), 'bfr_school_in_municipal_scope', 'scripts/sm4-ddl-municipal-candidata.sql');
 
 const POLIT = `select po.polname, pg_get_expr(po.polqual, po.polrelid) as qual, pg_get_expr(po.polwithcheck, po.polrelid) as chk
   from pg_policy po join pg_class c on c.oid = po.polrelid
@@ -36,7 +51,7 @@ const funcs = await sql(`select p.proname as nome, pg_get_function_identity_argu
     pg_get_userbyid(p.proowner)::text as dono, p.prosecdef::text as definer
   from pg_proc p join pg_namespace n on n.oid = p.pronamespace and n.nspname = 'public'
   where p.proname in (${FUNCS.map((f) => `'${f}'`).join(',')}) order by 1`);
-const ftem = (nome, args) => funcs.some((f) => f.nome === nome && (!args || new RegExp(args, 'i').test(f.argumentos.replace(/\s+/g, ' '))));
+const ftem = (nome, tipos = null) => funcs.some((f) => f.nome === nome && assinaturaCorresponde(tipos, f.argumentos));
 
 const colunas = await sql(`select table_name as tabela, column_name as coluna, data_type as tipo, is_nullable as nullavel
   from information_schema.columns
@@ -68,14 +83,14 @@ const c20 = JSON.parse(readFileSync(join(REPO, 'evidence/p73-politicas-municipai
 const cand = {
   'policy_a_existe_e_tem_o_predicado_que_a_candidata_substitui': tem('schools_municipal_read') && qualDe('schools_municipal_read').includes('bfr_is_municipal_authority'),
   'policy_b_nao_existe_ainda': !tem('schools_platform_admin_read'),
-  'rpc_de_etiquetagem_nao_existe_ainda': !ftem('bfr_school_set_municipality', 'uuid, uuid, text'),
-  'rpc_de_diagnostico_nao_existe_ainda': !ftem('bfr_municipal_scope_diagnostico'),
+  'rpc_de_etiquetagem_nao_existe_ainda': !ftem('bfr_school_set_municipality', ASS_SET),
+  'rpc_de_diagnostico_nao_existe_ainda': !ftem('bfr_municipal_scope_diagnostico', ASS_DIAG),
 };
 const rev = {
   'policy_a_ja_aponta_para_o_escopo': tem('schools_municipal_read') && qualDe('schools_municipal_read').includes('bfr_school_in_municipal_scope'),
   'policy_b_la_esta': tem('schools_platform_admin_read'),
-  'rpc_de_etiquetagem_la': ftem('bfr_school_set_municipality', 'uuid, uuid, text'),
-  'rpc_de_diagnostico_la': ftem('bfr_municipal_scope_diagnostico'),
+  'rpc_de_etiquetagem_la': ftem('bfr_school_set_municipality', ASS_SET),
+  'rpc_de_diagnostico_la': ftem('bfr_municipal_scope_diagnostico', ASS_DIAG),
 };
 const esperadoEstado = MODO === 'candidata' ? cand : rev;
 
@@ -99,7 +114,7 @@ const falhas = [];
 const g = (nome, cond, detalhe) => { if (!cond) falhas.push(nome); return { nome, verde: !!cond, detalhe }; };
 const portoes = [
   g('estado_vivo_bate_com_o_que_este_modo_pressupoe', Object.entries(esperadoEstado).every(([k, v]) => v === true), esperadoEstado),
-  g('os_predicados_que_a_candidata_chama_existem', ftem('bfr_school_in_municipal_scope', 'uuid') && ftem('bfr_is_platform_admin') && ftem('bfr_is_municipal_authority') && ftem('bfr_municipal_municipalities'), funcs.map((f) => `${f.nome}(${f.argumentos}) definer=${f.definer} dono=${f.dono}`)),
+  g('os_predicados_que_a_candidata_chama_existem', ftem('bfr_school_in_municipal_scope', ASS_ESCOPO) && ftem('bfr_is_platform_admin') && ftem('bfr_is_municipal_authority') && ftem('bfr_municipal_municipalities'), funcs.map((f) => `${f.nome}(${f.argumentos}) definer=${f.definer} dono=${f.dono}`)),
   g('a_coluna_de_municipio_existe_e_e_uuid', temColuna('schools', 'municipality_id') && colunas.some((x) => x.tabela === 'schools' && x.coluna === 'municipality_id' && x.tipo === 'uuid'), colunas.filter((x) => x.tabela === 'schools')),
   g('a_mesa_da_trilha_tem_as_colunas_que_o_rpc_escreve', ['actor', 'action', 'entity', 'entity_id', 'detail'].every((c) => temColuna('bfr_municipal_audit', c)), colunas.filter((x) => x.tabela === 'bfr_municipal_audit')),
   g('o_insert_da_trilha_dentro_de_um_definer_e_o_que_o_catalogo_diz', (() => { const a = rlsAudit.find((r) => r.mesa === 'bfr_municipal_audit'); return !!a && a.dono === ctx.utilizador && a.rls === true && a.force_rls === false; })(), { ctx, audit: rlsAudit.find((r) => r.mesa === 'bfr_municipal_audit') || null, nota: 'o bloco C escreve em bfr_municipal_audit dentro duma SECURITY DEFINER: só escapa ao RLS se o dono da funcao (quem a criar) for o dono da mesa e o RLS da mesa não estiver FORCED — medido, não assumido' }),
@@ -121,6 +136,7 @@ const out = {
   numeros: num,
   ficheiros: { candidata: { caminho: 'scripts/p73-pen38-ddl-candidata.sql', ...pegada(ficheiroCand) }, reversao: { caminho: 'scripts/p73-pen38-ddl-reversao.sql', ...pegada(ficheiroRev) } },
   estrutura: { candidata: estruturaCand, certificada_candidata: EXPECT_CAND, reversao: estruturaRev, certificada_reversao: EXPECT_REV },
+  assinaturas_certificadas: { origem_das_agulhas: 'CREATE FUNCTION lidos de scripts/p73-pen38-ddl-candidata.sql e scripts/sm4-ddl-municipal-candidata.sql', bfr_school_set_municipality: ASS_SET, bfr_municipal_scope_diagnostico: ASS_DIAG, bfr_school_in_municipal_scope: ASS_ESCOPO },
   portoes, falhas,
   precedentes: ['evidence/p73-politicas-municipais-20-11e.json', 'evidence/p73-pen38-alcance-por-concessao-20-11e.json'],
   o_que_este_verde_nao_autoriza: 'nada. A aplicação do SQL continua a pedir OK literal novo; este programa só diz que o estado vivo é aquele contra que a candidata foi escrita.',

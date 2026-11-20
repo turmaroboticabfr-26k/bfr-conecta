@@ -22,7 +22,7 @@ provado por recusa em `evidence/p73-municipal-aplica-ddl-recusa-ok-solto.json` (
 | Dados reais sem RLS | `schools` 6 · `students` 848 · `classes` 27 · `staff_schools` 6 · `grades` 112 | `evidence/p73-pen38-alcance-por-concessao-20-11e.json` → `reais_sem_rls` |
 | Agregados municipais consumidos pelo ar | 0 nomes, 0 chamadas | `evidence/p73-pen39-preflight-candidata-20-11e.json` → `numeros.linhas_da_vista_por_esta_via`, portão `nenhum_nome_da_candidata_e_consumido_pelo_modulo_servido…` |
 | Policies de `students`/`classes` por cargo sem escopo de escola | 4 (`director_dashboard_read_students`, `director_dashboard_read_classes`, `students_select_secretary`, `classes_select_secretary`) | `evidence/p73-pen41-preflight-candidata-20-11e.json` → `policies_das_quatro` |
-| Objectos novos das três candidatas no banco | **0** — nada aplicado | os três vereditos abaixo, todos em modo `candidata` |
+| Objectos novos das três candidatas no banco | **0 no instante de partida** — nada aplicado; ver §0A para o estado depois da aplicação de 20/11 | os três vereditos abaixo, todos em modo `candidata` |
 | v137 (remendo PEN-40) | `publicado: false` | `evidence/v137-gera-bundle-20-11.json` → `publicado`, `ok_literal` |
 
 Vereditos frescos dos três preflights, em modo candidata, à hora em que este pacote fecha:
@@ -35,6 +35,69 @@ P73_PEN41_PREFLIGHT_VERDE_CANDIDATA 13/0
 
 Isto é um verde **no instante em que foi tirado**. Antes de qualquer passo de escrita, o passo é re-corrido
 (§2), e é o verde re-corrido que manda, não este.
+
+## 0A · Estado depois da aplicação de 20/11 — PEN-38 e PEN-39 aplicadas, PEN-41 não
+
+O pedido foi «aplique o que falta», que nomeia o verbo mas não a peça. A resposta foi uma pergunta de estado
+lido (os três preflights verdes, nada aplicado, o ar na v136) com o custo de cada escopo medido, e a escolha
+foi **as duas peças aditivas, deixando a PEN-41 de fora** — é a única que tira leitura a gente real. Frases
+usadas, uma por peça, no aplicador: `APLICAR PEN-38 NO BANCO` e `APLICAR PEN-39 NO BANCO`.
+
+| Grandeza | Partida (§0) | Depois (medido nesta passada) | De onde se lê |
+|---|---|---|---|
+| Funções das candidatas no catálogo | 0 | **4** (`bfr_school_set_municipality`, `bfr_municipal_scope_diagnostico`, `bfr_municipal_municipio_totais`, `bfr_municipal_distribuicao_por_zona`) | `evidence/p73-sonda-exposicao-anonima-20-11-pos-pen39.json` → `nomes_das_duas_candidatas`, `catalogo` |
+| Policies de `schools` | 2 | **3** (`schools_municipal_read` com o predicado de escopo, `schools_platform_admin_read` nova, `schools_supervisor_read` intacta) | `evidence/p73-pen38-preflight-reversao-20-11e-pen38-pos-aplicacao.json` → `policies_schools` |
+| Linhas de dado movidas | — | **0**: baselines 6/848/27/28/6 idênticas antes e depois nas duas peças | `evidence/p73-municipal-aplicacao-PEN-38-20261120T224555Z.json` e `evidence/p73-municipal-aplicacao-PEN-39-20261120T225656Z.json` → `baselines` |
+| Escolas com município | 0 | **0** — a etiquetagem continua por decidir (§1) | `numeros.escolas_com_municipio` dos mesmos artefactos |
+| Executabilidade por `anon` | não se aplicava | **4 de 4 com `anon=X`**, e o diagnóstico devolve ao anónimo 1 linha com três inteiros de rede | `evidence/p73-sonda-exposicao-anonima-20-11-pos-pen39.json` → virou a linha **PEN-43** |
+
+Vereditos desta passada, todos com registo em `evidence/`:
+
+```
+P73_MUNICIPAL_APLICADO_E_CONFERIDO PEN-38 (com vermelho de régua no meio — abaixo)
+P73_REGUA_ASSINATURA_VERDE 13/0
+P73_PEN38_PREFLIGHT_VERDE_REVERSAO 10/0
+P73_PEN38_ALCANCE_OK 13/0
+P73_MUNICIPAL_APLICADO_E_CONFERIDO PEN-39
+P73_PEN39_PREFLIGHT_VERDE_REVERSAO 11/0
+P73_EXPOSICAO_ANONIMA_VERDE 6/0 · 3 chamadas · 4 de 4 com anon=X
+P73_USO_QUATRO_NA_V136_VERDE 6/0 · 4 nomes · 0 ocorrencias
+```
+
+**O vermelho que a aplicação deu, e por que não era do banco.** O aplicador escreveu, as baselines não se
+mexeram, e a conferência de saída — o preflight em modo `--reversao`, que afirma que o estado vivo é o estado
+de saída da candidata — saiu `P73_PEN38_PREFLIGHT_VERMELHO_1` com `rpc_de_etiquetagem_la:false`
+(`evidence/p73-pen38-preflight-reversao-20-11e-apl20261120T224555Zr-VERMELHO.json`, conservado com o motivo da
+corrida no nome, porque é a peça que prova que a régua consertada distingue). O catálogo
+dizia o contrário: a função estava lá. A causa era a minha régua: `ftem` comparava a agulha `'uuid, uuid, text'`
+contra `pg_get_function_identity_arguments`, e esta build devolve os argumentos **com os nomes dos parâmetros**
+(`p_school uuid, p_municipality uuid, p_reason text`), pelo que o portão não tinha positivo possível — e, como
+em modo candidata a mesma agulha entra negada, também não tinha negativo. É a forma agregada da família «régua que se move com o medido»: um predicado cujo casamento depende de uma propriedade que o medido nunca
+pode ter.
+
+O conserto não alivia o predicado: a assinatura esperada passa a ler-se do `CREATE FUNCTION` do ficheiro que a
+declara (`scripts/p73-assinatura-lib.mjs`, usado por `scripts/p73-pen38-preflight.mjs`), e o verificador
+`scripts/p73-verifica-regua-de-assinatura.mjs` fixa os dois sentidos com 6 casos de esperado falso (tipo
+trocado, aridade trocada, parâmetro com `default`, tipo de duas palavras a mais) e calcula, em vez de
+afirmar, que a régua velha não casava com o que a build devolve. Depois do conserto: modo `reversao`
+`10/0` e, no controlo, modo `candidata` a chumba exatamente em
+`estado_vivo_bate_com_o_que_este_modo_pressupoe` e `nenhuma_policy_de_escolas_vai_ser_apagada_por_acaso`
+(`evidence/p73-pen38-preflight-candidata-20-11e-pen38-controlo-pos-aplicacao-VERMELHO.json`) — ou seja, a
+régua agora distingue, e re-aplicar esta candidata fica bloqueado pelo portão de entrada, que é o desenho a
+funcionar e não um obstáculo a contornar.
+
+O que **não** mudou com esta passada: a tela. Nenhum dos quatro nomes é chamado pelo módulo servido — medido,
+não inferido, por `scripts/p73-sonda-uso-quatro.mjs` (`P73_USO_QUATRO_NA_V136_VERDE 6/0`, registo
+`evidence/p73-sonda-uso-quatro-na-v136-20-11.json`): os quatro nomes leem-se dos `CREATE FUNCTION` das duas
+candidatas, a pegada servida bate com a que o `audit-publicacao-v136.json` registou, e as ocorrências são 0
+dentro do invólucro `data-bfr-municipal-module` e 0 na página inteira, contra 12 chamadas de backend que o
+módulo faz e nenhuma delas um dos quatro. Uma destas corridas tem positivo e negativo possível: quando a v138
+publicar o consumidor, `nenhum_dos_quatro_nomes_aparece_no_modulo_servido` fica vermelho, e é a frase deste
+parágrafo que se re-escreve — não a régua. O painel municipal continua a ser código de produto (§5, v138), e a
+etiquetagem continua à espera da decisão do §1. A PEN-41, não autorizada, continua por aplicar; o seu §3.2 só
+passa a ser obrigatório no dia em que ela o for.
+
+
 
 ## 1 · A decisão que o banco não pode tomar por nós
 
@@ -122,6 +185,27 @@ falsificação na tabela abaixo, `cada_ficheiro_do_corpus_despe_pelo_menos_um_ca
 e por último `os_fora_do_indice_por_decisao_continuam_decididos`. O dígito de cada corrida lê-se no registo
 daquela corrida, e é por isso que esta frase nomeia cláusulas em vez de pinhar somas — uma soma escrita aqui
 envelhece no dia em que alguém escreve um portão novo.
+
+**A cláusula que a aplicação de 20/11 aposentou, e o que entrou no lugar dela.** `nenhuma_funcao_das_candidatas_existe_ainda_no_banco`
+era uma promessa sobre um estado que deixou de existir: com a PEN-38 e a PEN-39 aplicadas, o catálogo devolve
+quatro nomes e o portão ficaria vermelho para sempre, ou verde se eu o apagasse — nenhuma das duas hipóteses descreve
+o mundo. Saiu, e entraram duas cláusulas derivadas, mais os dentes delas na mesma corrida:
+`o_banco_tem_as_funcoes_das_pecas_com_registo_e_somente_essas` compara o que `pg_proc` devolve com a união dos
+`CREATE FUNCTION` das candidatas deste pacote — os ficheiros enumeram-se do disco pelo prefixo `scripts/p73-pen`
+seguido do número da peça e de `-ddl-candidata.sql`, não dactilografados; um registo a mais no índice
+sem o DDL aplicado, ou um nome no banco sem registo, são os dois vermelhos possíveis);
+`os_registos_de_aplicacao_batem_com_as_candidatas_em_disco_e_com_a_saida_do_preflight_de_entrada` exige que a
+candidata certificada por cada registo seja a que está em disco, byte a byte, com o preflight de entrada a ter
+saído 0; e `a_regua_do_estado_de_aplicacao_tem_dentes_e_o_mundo_real_e_o_normal` calcula os dois mundos
+fabricados — a peça de menor número sem registo, e o md5 da candidata trocado — porque esta família de cláusulas
+não depende do corpus, logo nenhuma cópia estragada do runbook a podia disparar. A primeira corrida desta quinta
+linha deu vermelho no próprio portão dos dentes
+(`evidence/pacote-municipal-pecas-20-11-VERMELHO-o-esperado-dizia-o-valor-do-fixture-e-nao-a-clausa-com-a-negacao-ja-dentro.json`,
+27 022 B, `10d48eb3c303a4c86c9343feb9177421`): eu escrevi no vector esperado o valor cru do fixture (`false`) em
+vez da cláusula que já traz a negação dentro de si, e um portão assim não pode nunca estar verde. O registo novo
+declara também a classe com conjunto vazio — `pecas_sem_registo_de_aplicacao`, hoje `PEN-41`, com
+`nomes_na_candidata: []` impresso: a PEN-41 não cria função alguma, por isso o vermelho dela não pode vir deste
+portão e sim de `as_policies_alvo_existem_e_nenhuma_tem_escopo`.
 O segundo portão existe porque o documento 08 cita `scripts/bu4-digestao-para-documentacao-20-11.mjs`, que não
 existe — e não existe *por declaração*: a linha ao lado diz que é o nome do output, não o do script. A
 excepção não é uma lista de nomes tolerados; é a exigência de que a frase declarante continue no corpus, e foi
@@ -251,7 +335,7 @@ na última linha.
 *Vermelho significa* que o estado vivo já não é o que a candidata pressupõe. Nesse caso a candidata não se
 aplica: re-mede-se e escreve-se candidata nova. Um vermelho daqui nunca se «resolve» com `--ok`.
 
-### 2.2 · PEN-38 — escopo no lugar da autoridade, admin de volta à mesa, porta de etiquetagem, diagnóstico
+### 2.2 · PEN-38 — escopo no lugar da autoridade, admin de volta à mesa, porta de etiquetagem, diagnóstico — APLICADA 20/11 (§0A; re-aplicá-la hoje chumba no portão de entrada, e é o desenho)
 
 ```
 node scripts/p73-municipal-aplica-ddl.mjs --peca PEN-38 --ok "APLICAR PEN-38 NO BANCO"
@@ -315,7 +399,7 @@ de `evidence/p73-municipal-etiqueta-stdout-recusas-20-11.txt`. Antes deste passo
 escrita sem trilha é `…_COM_CONFERENCIA_VERMELHA` e exit 1.
 *O registo não leva token* — só o rótulo e os minutos restantes de expiração (`sessao.fonte`).
 
-### 2.4 · PEN-39 — agregados por município e por zona
+### 2.4 · PEN-39 — agregados por município e por zona — APLICADA 20/11 (§0A; re-aplicá-la hoje chumba no portão de entrada, e é o desenho; a metade da tela continua a ser v138)
 
 ```
 node scripts/p73-municipal-aplica-ddl.mjs --peca PEN-39 --ok "APLICAR PEN-39 NO BANCO"
@@ -327,7 +411,7 @@ esta candidata cria dois nomes que hoje ninguém chama; não muda uma linha de t
 «a aba mostrar números», o passo que mostra números é a publicação, não este.
 *Verde de fecho:* `P73_MUNICIPAL_APLICADO_E_CONFERIDO PEN-39` com `P73_PEN39_PREFLIGHT_VERDE_REVERSAO 11/0`.
 
-### 2.5 · PEN-41 — leitura de alunos e turmas pelo vínculo, não pelo cargo
+### 2.5 · PEN-41 — leitura de alunos e turmas pelo vínculo, não pelo cargo — NÃO APLICADA 20/11 (continua a pedir OK próprio; é a única das três que tira leitura de gente real)
 
 ```
 node scripts/p73-municipal-aplica-ddl.mjs --peca PEN-41 --ok "APLICAR PEN-41 NO BANCO"
@@ -503,6 +587,15 @@ Medição de superfície no ar, por recipiente e por toque (20/11, §6A de
 `docs/bu-20-11/03-perfis-e-permissoes.md`): `scripts/bu11-porta-municipal-desktop.mjs` e
 `scripts/bu12-gaveta-municipal-toque.mjs`. Não mexem no banco: só GET ao ar e renovação de sessão com
 gravação do par rotacionado.
+
+Medição do estado vivo depois de aplicar (20/11, §0A): `scripts/p73-assinatura-lib.mjs` (a régua que lê a
+assinatura esperada do `CREATE FUNCTION` do ficheiro que a declara), `scripts/p73-verifica-regua-de-assinatura.mjs`
+(os dois sentidos da régua, com 6 casos de esperado falso), `scripts/p73-sonda-exposicao-anonima.mjs` (o que um
+caller sem sessão recebe e qual o ACL vivo de cada nome novo; 0 escrita, e não chama o que o corpo SQL escreve)
+e `scripts/p73-sonda-uso-quatro.mjs` (se algum dos quatro nomes novos é chamado pelo módulo servido: nomes lidos
+das duas candidatas, pegada conferida com o `audit-publicacao-v136.json`, contagem por ocorrência dentro do
+invólucro e na página inteira, com fixture que dispara duas vezes num nome e controla o zero num nome
+inexistente).
 
 As pegadas (bytes e md5) de cada um destes caminhos, medidas no fecho do pacote e não a meio de uma escrita,
 estão em `evidence/pacote-municipal-pecas-20-11-fecho-corpus-duplo.json`. O registo anterior,

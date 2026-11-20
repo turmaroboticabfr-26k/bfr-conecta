@@ -11,7 +11,7 @@
 // silenciosa de um portão que não varreu nada.
 import { execFileSync } from 'node:child_process';
 import { createHash } from 'node:crypto';
-import { existsSync, readFileSync, writeFileSync } from 'node:fs';
+import { existsSync, readdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { sql } from './c2-lib.mjs';
 
@@ -105,9 +105,35 @@ const fichasDeDecisao = FORA_DO_INDICE_POR_DECISAO.map((d) => ({ caminho: d.cami
   esta_no_indice: fichasDoGit.has(d.caminho), ignorado_pelo_git: ignoradoPeloGit(d.caminho), frase_da_decisao_no_corpus: fraseNoCorpus(d.a_prosa_diz) }));
 
 // ── estado vivo lido no catálogo ────────────────────────────────────────────
-const NOMES_FUNCOES_NOVAS = ['bfr_school_set_municipality', 'bfr_municipal_scope_diagnostico', 'bfr_municipal_municipio_totais', 'bfr_municipal_distribuicao_por_zona'];
-const POLICIES_ALVO = ['director_dashboard_read_students', 'director_dashboard_read_classes', 'students_select_secretary', 'classes_select_secretary'];
+// Duas coisas mudaram aqui em 20/11, depois de a PEN-38 e a PEN-39 serem aplicadas. (i) Os nomes deixaram de
+// ser dactilografados: leem-se dos `CREATE FUNCTION` de cada `scripts/p73-penNN-ddl-candidata.sql` no disco, e
+// uma candidata nova aparece sozinha neste censo. (ii) O esperado deixou de ser «zero»: um portão que exige
+// zero funções vive num mundo que hoje tem quatro, e o vermelho dele passaria a descrever o instrumento, não o
+// banco. O que o banco deve ter é agora a união dos nomes das peças que têm registo de aplicação versionado — e
+// o contrário também se mede: nome no catálogo que nenhum registo declara é vermelho.
 const inList = (l) => l.map((x) => `'${x}'`).join(',');
+const nomesDe = (t) => [...t.matchAll(/CREATE\s+(?:OR\s+REPLACE\s+)?FUNCTION\s+(?:public\.)?([a-z0-9_]+)/gi)].map((m) => m[1]);
+const FICHEIROS_CANDIDATAS = readdirSync(join(REPO, 'scripts'))
+  .filter((n) => /^p73-pen\d+-ddl-candidata\.sql$/.test(n))
+  .map((n) => ({ peca: 'PEN-' + /^p73-pen(\d+)-/.exec(n)[1], caminho: 'scripts/' + n, texto: readFileSync(join(REPO, 'scripts', n), 'utf8') }))
+  .sort((a, b) => Number(a.peca.slice(4)) - Number(b.peca.slice(4)));
+const REGISTOS_APLICACAO = (() => {
+  const porPeca = {};
+  for (const n of readdirSync(join(REPO, 'evidence')).filter((x) => /^p73-municipal-aplicacao-PEN-\d+.*\.json$/.test(x) && !x.includes('VERMELHO'))) {
+    const r = JSON.parse(readFileSync(join(REPO, 'evidence', n), 'utf8'));
+    if (r.modo !== 'aplicacao' || r.escrito_no_banco !== true) continue;
+    if (!porPeca[r.peca] || String(r.em) > String(porPeca[r.peca].em)) porPeca[r.peca] = Object.assign({}, r, { registo: 'evidence/' + n });
+  }
+  return porPeca;
+})();
+const PECAS_COM_REGISTO = Object.keys(REGISTOS_APLICACAO).sort((a, b) => Number(a.slice(4)) - Number(b.slice(4)));
+const PECAS_SEM_REGISTO = [...new Set(FICHEIROS_CANDIDATAS.map((c) => c.peca))].filter((p) => !PECAS_COM_REGISTO.includes(p)).sort((a, b) => Number(a.slice(4)) - Number(b.slice(4)));
+const NOMES_DE_TODAS_AS_CANDIDATAS = [...new Set(FICHEIROS_CANDIDATAS.flatMap((c) => nomesDe(c.texto)))].sort();
+if (NOMES_DE_TODAS_AS_CANDIDATAS.length === 0) throw new Error('ABORTA: nenhuma candidata deste pacote declara CREATE FUNCTION — o portão de estado do banco ficaria sem nada varrido, e zero sem agulha não afirma nada');
+const NOMES_FUNCOES_NOVAS = NOMES_DE_TODAS_AS_CANDIDATAS;
+const POLICIES_ALVO = ['director_dashboard_read_students', 'director_dashboard_read_classes', 'students_select_secretary', 'classes_select_secretary'];
+const vivosNovos = (await sql(`select p.proname as nome from pg_proc p join pg_namespace n on n.oid=p.pronamespace and n.nspname='public'
+     where p.proname in (${inList(NOMES_DE_TODAS_AS_CANDIDATAS)}) order by 1`)).map((r) => r.nome);
 const vivo = (await sql(`select
   (select count(*)::int from pg_proc p join pg_namespace n on n.oid=p.pronamespace and n.nspname='public'
      where p.proname in (${inList(NOMES_FUNCOES_NOVAS)})) as funcoes_das_candidatas,
@@ -157,7 +183,35 @@ gate('os_fora_do_indice_por_decisao_continuam_decididos',
   FORA_DO_INDICE_POR_DECISAO.map(() => [true, false, false, true]));
 gate('as_saidas_de_passos_nao_autorizados_estao_mesmo_ausentes', SAIDAS_AINDA_NAO_CORRIDAS.map((c) => existsSync(join(REPO, c))), SAIDAS_AINDA_NAO_CORRIDAS.map(() => false));
 gate('os_fora_do_git_estao_ignorados_e_nao_e_que_faltasse_a_peca', FORA_DO_GIT.map((c) => ignoradoPeloGit(c)), [true, true]);
-gate('nenhuma_funcao_das_candidatas_existe_ainda_no_banco', vivo.funcoes_das_candidatas, 0);
+// A régua do estado de aplicação é uma função, não uma linha: serve o mundo real e serve os dois mundos
+// fabricados do portão dos dentes. Assumir que «o que eu calculei em cima» é o mesmo que «o que a régua calcula
+// em cima do fixture» era o verde sem poder de fogo.
+const reguaRegistos = (pecas, registos, candidatas, nomesNoBanco) => {
+  const esperados = [...new Set(pecas.flatMap((p) => nomesDe((candidatas.find((c) => c.peca === p) || { texto: '' }).texto)))].sort();
+  const linhas = pecas.map((p) => { const r = registos[p]; const emDisco = existsSync(join(REPO, r.candidata.caminho)) ? readFileSync(join(REPO, r.candidata.caminho)) : Buffer.alloc(0);
+    return [p, candidatas.some((c) => c.peca === p && c.caminho === r.candidata.caminho), emDisco.length > 0, md5(emDisco) === r.candidata.md5, emDisco.length === r.candidata.bytes,
+      r.preflight_candidata && r.preflight_candidata.codigo === 0]; });
+  return { esperados, linhas, todasVerdes: linhas.every((l) => l.slice(1).every((x) => x === true)) };
+};
+const realRegua = reguaRegistos(PECAS_COM_REGISTO, REGISTOS_APLICACAO, FICHEIROS_CANDIDATAS, vivosNovos);
+gate('o_banco_tem_as_funcoes_das_pecas_com_registo_e_somente_essas', vivosNovos, realRegua.esperados);
+// O outro lado do mesmo facto: o registo certifica bytes. Se a candidata for editada depois de aplicada, o
+// registo deixa de descrever o que está no banco, e é isto que obriga a uma aplicação nova com registo novo.
+gate('os_registos_de_aplicacao_batem_com_as_candidatas_em_disco_e_com_a_saida_do_preflight_de_entrada',
+  realRegua.linhas, PECAS_COM_REGISTO.map((p) => [p, true, true, true, true, true]));
+// Dentes das duas cláusulas acima, provados na mesma corrida e com o mundo real como normal: um registo a
+// menos e um md5 trocado são os dois únicos estados que esta régua tem de apanhar. Cada cláusula abaixo já traz
+// a negação dentro de si — o esperado é «as cinco se cumprem», e pôs aqui o valor cru do fixture (false) em vez
+// da cláusula foi o vermelho da primeira corrida desta quinta linha, preservado com o defeito no nome.
+const FIX_PECA_A_MENOS = reguaRegistos(PECAS_COM_REGISTO.slice(1), REGISTOS_APLICACAO, FICHEIROS_CANDIDATAS, vivosNovos);
+const REG_COM_MD5_FALSO = Object.assign({}, REGISTOS_APLICACAO, { [PECAS_COM_REGISTO[0]]: Object.assign({}, REGISTOS_APLICACAO[PECAS_COM_REGISTO[0]],
+  { candidata: Object.assign({}, REGISTOS_APLICACAO[PECAS_COM_REGISTO[0]].candidata, { md5: '0'.repeat(32) }) }) });
+const FIX_MD5_TROCADO = reguaRegistos(PECAS_COM_REGISTO, REG_COM_MD5_FALSO, FICHEIROS_CANDIDATAS, vivosNovos);
+gate('a_regua_do_estado_de_aplicacao_tem_dentes_e_o_mundo_real_e_o_normal',
+  [vivosNovos.join() === realRegua.esperados.join(),
+    FIX_PECA_A_MENOS.esperados.join() !== realRegua.esperados.join(), realRegua.todasVerdes === true,
+    FIX_MD5_TROCADO.todasVerdes === false, PECAS_COM_REGISTO.length >= 2],
+  [true, true, true, true, true]);
 // Uma cláusula por eixo: o que o artefacto declara, e o que o banco devolve, têm portões separados. Juntá-los
 // num só compara vivo com vivo e não pode dar vermelho quando o runbook fica a prometer um número velho.
 gate('o_preflight_declara_zero_escolas_etiquetadas', pref38.escolas_com_municipio, 0);
@@ -180,6 +234,16 @@ const out = {
   fora_do_indice: { fichas_lidas_do_indice: fichasDoGit.size, esquecidos: esquecidosNoIndice,
     citados_ignorados_por_designio: citadosIgnoradosPorDesignio, por_decisao_assinada: fichasDeDecisao },
   vivo, nomes_de_funcoes_varridos: NOMES_FUNCOES_NOVAS, policies_alvo: POLICIES_ALVO,
+  aplicacao: {
+    candidatas_lidas_do_disco: FICHEIROS_CANDIDATAS.map((c) => ({ peca: c.peca, caminho: c.caminho, nomes_declarados: nomesDe(c.texto) })),
+    pecas_com_registo: PECAS_COM_REGISTO.map((p) => ({ peca: p, registo: REGISTOS_APLICACAO[p].registo, ok_literal_usado: REGISTOS_APLICACAO[p].ok_literal_usado, em: REGISTOS_APLICACAO[p].em,
+      preflight_entrada_codigo: REGISTOS_APLICACAO[p].preflight_candidata && REGISTOS_APLICACAO[p].preflight_candidata.codigo,
+      preflight_saida_codigo: REGISTOS_APLICACAO[p].preflight_reversao && REGISTOS_APLICACAO[p].preflight_reversao.codigo })),
+    pecas_sem_registo_de_aplicacao: PECAS_SEM_REGISTO.map((p) => { const c = FICHEIROS_CANDIDATAS.find((x) => x.peca === p); return { peca: p, candidata: c.caminho, nomes_na_candidata: nomesDe(c.texto),
+      nomes_ja_no_banco: nomesDe(c.texto).filter((n) => vivosNovos.includes(n)), policies_alvo_com_escopo_no_banco: vivo.policies_alvo_com_escopo }; }),
+    nomes_esperados_no_banco: realRegua.esperados, nomes_vivos_no_banco: vivosNovos,
+    nota: 'a classe «sem registo» imprime-se mesmo com o conjunto de nomes vazio: a PEN-41 não cria função alguma, por isso o vermelho dela não pode vir deste portão — vem de as_policies_alvo_existem_e_nenhuma_tem_escopo'
+  },
   ancora_lida_do_preflight_38: pref38, ancora_lida_do_preflight_41: { policies_das_quatro: pref41.policies_das_quatro.length, veredito: pref41.veredito },
   v137: { publicado: v137.publicado, ok_literal: v137.ok_literal, veredito: v137.veredito },
   inputs_de_fecho: INPUTS_FECHO.map(mede),
@@ -192,6 +256,7 @@ console.log(`CORPUS ${out.corpus.total_citados} citados · ${presentes.length} p
 console.log(`DECLARADOS_NAO_EXISTENTES ${JSON.stringify({ saidas_nao_corridas: SAIDAS_AINDA_NAO_CORRIDAS, fora_do_git: out.fora_do_git })}`);
 console.log(`FORA_DO_INDICE ${esquecidosNoIndice.length} esquecidos de ${out.fora_do_indice.fichas_lidas_do_indice} fichas · ignorados_por_designio ${citadosIgnoradosPorDesignio.length} · por_decisao_assinada ${fichasDeDecisao.filter((d) => d.existe_em_disco && !d.esta_no_indice && !d.ignorado_pelo_git && d.frase_da_decisao_no_corpus).length} de ${fichasDeDecisao.length}${esquecidosNoIndice.length ? ' · ' + JSON.stringify(esquecidosNoIndice) : ''}`);
 console.log(`VIVO ${JSON.stringify(vivo)}`);
+console.log(`APLICACAO com_registo=${JSON.stringify(PECAS_COM_REGISTO)} sem_registo=${JSON.stringify(PECAS_SEM_REGISTO)} nomes_no_banco=${JSON.stringify(vivosNovos)} esperados=${JSON.stringify(realRegua.esperados)}`);
 console.log(`V137 publicado=${v137.publicado} · ${v137.veredito}`);
 if (falhas.length) console.log(`FALHAS ${JSON.stringify(falhas)}`);
 console.log(`${out.veredito} · registo ${OUT}`);

@@ -1,0 +1,432 @@
+{
+  "programa": "scripts/p73-pen38-preflight.mjs",
+  "modo": "reversao",
+  "em": "2026-11-20T22:53:46.330Z",
+  "duracao_ms": 7722,
+  "pressuposto": "a candidata foi aplicada; esta corrida afirma o estado de saída dela",
+  "contexto": {
+    "utilizador": "postgres",
+    "sessao": "postgres"
+  },
+  "policies_schools": [
+    {
+      "polname": "schools_municipal_read",
+      "qual": "bfr_school_in_municipal_scope(id)",
+      "chk": null
+    },
+    {
+      "polname": "schools_platform_admin_read",
+      "qual": "bfr_is_platform_admin()",
+      "chk": null
+    },
+    {
+      "polname": "schools_supervisor_read",
+      "qual": "bfr_is_education_supervisor()",
+      "chk": null
+    }
+  ],
+  "funcoes": [
+    {
+      "nome": "bfr_is_municipal_authority",
+      "argumentos": "",
+      "dono": "postgres",
+      "definer": "true"
+    },
+    {
+      "nome": "bfr_is_platform_admin",
+      "argumentos": "",
+      "dono": "postgres",
+      "definer": "true"
+    },
+    {
+      "nome": "bfr_municipal_municipalities",
+      "argumentos": "",
+      "dono": "postgres",
+      "definer": "true"
+    },
+    {
+      "nome": "bfr_municipal_scope_diagnostico",
+      "argumentos": "",
+      "dono": "postgres",
+      "definer": "true"
+    },
+    {
+      "nome": "bfr_school_in_municipal_scope",
+      "argumentos": "p_school uuid",
+      "dono": "postgres",
+      "definer": "true"
+    },
+    {
+      "nome": "bfr_school_set_municipality",
+      "argumentos": "p_school uuid, p_municipality uuid, p_reason text",
+      "dono": "postgres",
+      "definer": "true"
+    }
+  ],
+  "colunas": [
+    {
+      "tabela": "bfr_municipal_audit",
+      "coluna": "action",
+      "tipo": "text",
+      "nullavel": "NO"
+    },
+    {
+      "tabela": "bfr_municipal_audit",
+      "coluna": "actor",
+      "tipo": "uuid",
+      "nullavel": "YES"
+    },
+    {
+      "tabela": "bfr_municipal_audit",
+      "coluna": "detail",
+      "tipo": "jsonb",
+      "nullavel": "YES"
+    },
+    {
+      "tabela": "bfr_municipal_audit",
+      "coluna": "entity",
+      "tipo": "text",
+      "nullavel": "NO"
+    },
+    {
+      "tabela": "bfr_municipal_audit",
+      "coluna": "entity_id",
+      "tipo": "text",
+      "nullavel": "YES"
+    },
+    {
+      "tabela": "bfr_municipalities",
+      "coluna": "id",
+      "tipo": "uuid",
+      "nullavel": "NO"
+    },
+    {
+      "tabela": "bfr_school_key_map",
+      "coluna": "confirmed_by",
+      "tipo": "uuid",
+      "nullavel": "YES"
+    },
+    {
+      "tabela": "bfr_school_key_map",
+      "coluna": "matched_by",
+      "tipo": "text",
+      "nullavel": "NO"
+    },
+    {
+      "tabela": "schools",
+      "coluna": "id",
+      "tipo": "uuid",
+      "nullavel": "NO"
+    },
+    {
+      "tabela": "schools",
+      "coluna": "municipality_id",
+      "tipo": "uuid",
+      "nullavel": "YES"
+    }
+  ],
+  "rls_mesas": [
+    {
+      "mesa": "bfr_municipal_audit",
+      "rls": true,
+      "force_rls": false,
+      "dono": "postgres"
+    },
+    {
+      "mesa": "schools",
+      "rls": true,
+      "force_rls": false,
+      "dono": "postgres"
+    }
+  ],
+  "numeros": {
+    "concessoes_ativas": 4,
+    "municipios": 1,
+    "escolas": 6,
+    "escolas_com_municipio": 0,
+    "pontes_confirmadas": 3,
+    "municipios_de_fixture": 1
+  },
+  "ficheiros": {
+    "candidata": {
+      "caminho": "scripts/p73-pen38-ddl-candidata.sql",
+      "bytes": 9148,
+      "md5": "ee98c29129cbf1bb59987597fc6cd97d"
+    },
+    "reversao": {
+      "caminho": "scripts/p73-pen38-ddl-reversao.sql",
+      "bytes": 1461,
+      "md5": "b0c65599c2ced2fe10d5fcc7bd4a494b"
+    }
+  },
+  "estrutura": {
+    "candidata": {
+      "transaccao": 2,
+      "drop_policy": 1,
+      "create_policy": 2,
+      "create_function": 2,
+      "drop_function": 0,
+      "grant_execute": 2,
+      "revoke": 2,
+      "insert_em_trilha": 1
+    },
+    "certificada_candidata": {
+      "transaccao": 2,
+      "drop_policy": 1,
+      "create_policy": 2,
+      "create_function": 2,
+      "drop_function": 0,
+      "grant_execute": 2,
+      "revoke": 2,
+      "insert_em_trilha": 1
+    },
+    "reversao": {
+      "transaccao": 2,
+      "drop_policy": 2,
+      "create_policy": 1,
+      "create_function": 0,
+      "drop_function": 2,
+      "grant_execute": 0,
+      "revoke": 0,
+      "insert_em_trilha": 0
+    },
+    "certificada_reversao": {
+      "transaccao": 2,
+      "drop_policy": 2,
+      "create_policy": 1,
+      "create_function": 0,
+      "drop_function": 2,
+      "grant_execute": 0,
+      "revoke": 0,
+      "insert_em_trilha": 0
+    }
+  },
+  "assinaturas_certificadas": {
+    "origem_das_agulhas": "CREATE FUNCTION lidos de scripts/p73-pen38-ddl-candidata.sql e scripts/sm4-ddl-municipal-candidata.sql",
+    "bfr_school_set_municipality": [
+      "uuid",
+      "uuid",
+      "text"
+    ],
+    "bfr_municipal_scope_diagnostico": [],
+    "bfr_school_in_municipal_scope": [
+      "uuid"
+    ]
+  },
+  "portoes": [
+    {
+      "nome": "estado_vivo_bate_com_o_que_este_modo_pressupoe",
+      "verde": true,
+      "detalhe": {
+        "policy_a_ja_aponta_para_o_escopo": true,
+        "policy_b_la_esta": true,
+        "rpc_de_etiquetagem_la": true,
+        "rpc_de_diagnostico_la": true
+      }
+    },
+    {
+      "nome": "os_predicados_que_a_candidata_chama_existem",
+      "verde": true,
+      "detalhe": [
+        "bfr_is_municipal_authority() definer=true dono=postgres",
+        "bfr_is_platform_admin() definer=true dono=postgres",
+        "bfr_municipal_municipalities() definer=true dono=postgres",
+        "bfr_municipal_scope_diagnostico() definer=true dono=postgres",
+        "bfr_school_in_municipal_scope(p_school uuid) definer=true dono=postgres",
+        "bfr_school_set_municipality(p_school uuid, p_municipality uuid, p_reason text) definer=true dono=postgres"
+      ]
+    },
+    {
+      "nome": "a_coluna_de_municipio_existe_e_e_uuid",
+      "verde": true,
+      "detalhe": [
+        {
+          "tabela": "schools",
+          "coluna": "id",
+          "tipo": "uuid",
+          "nullavel": "NO"
+        },
+        {
+          "tabela": "schools",
+          "coluna": "municipality_id",
+          "tipo": "uuid",
+          "nullavel": "YES"
+        }
+      ]
+    },
+    {
+      "nome": "a_mesa_da_trilha_tem_as_colunas_que_o_rpc_escreve",
+      "verde": true,
+      "detalhe": [
+        {
+          "tabela": "bfr_municipal_audit",
+          "coluna": "action",
+          "tipo": "text",
+          "nullavel": "NO"
+        },
+        {
+          "tabela": "bfr_municipal_audit",
+          "coluna": "actor",
+          "tipo": "uuid",
+          "nullavel": "YES"
+        },
+        {
+          "tabela": "bfr_municipal_audit",
+          "coluna": "detail",
+          "tipo": "jsonb",
+          "nullavel": "YES"
+        },
+        {
+          "tabela": "bfr_municipal_audit",
+          "coluna": "entity",
+          "tipo": "text",
+          "nullavel": "NO"
+        },
+        {
+          "tabela": "bfr_municipal_audit",
+          "coluna": "entity_id",
+          "tipo": "text",
+          "nullavel": "YES"
+        }
+      ]
+    },
+    {
+      "nome": "o_insert_da_trilha_dentro_de_um_definer_e_o_que_o_catalogo_diz",
+      "verde": true,
+      "detalhe": {
+        "ctx": {
+          "utilizador": "postgres",
+          "sessao": "postgres"
+        },
+        "audit": {
+          "mesa": "bfr_municipal_audit",
+          "rls": true,
+          "force_rls": false,
+          "dono": "postgres"
+        },
+        "nota": "o bloco C escreve em bfr_municipal_audit dentro duma SECURITY DEFINER: só escapa ao RLS se o dono da funcao (quem a criar) for o dono da mesa e o RLS da mesa não estiver FORCED — medido, não assumido"
+      }
+    },
+    {
+      "nome": "nenhuma_policy_de_escolas_vai_ser_apagada_por_acaso",
+      "verde": true,
+      "detalhe": {
+        "lidas": [
+          "schools_municipal_read :: bfr_school_in_municipal_scope(id)",
+          "schools_platform_admin_read :: bfr_is_platform_admin()",
+          "schools_supervisor_read :: bfr_is_education_supervisor()"
+        ],
+        "esperadas_neste_modo": 3
+      }
+    },
+    {
+      "nome": "a_estrutura_da_candidata_e_a_estrutura_da_reversao_sao_as_certificadas",
+      "verde": true,
+      "detalhe": {
+        "medida_candidata": {
+          "transaccao": 2,
+          "drop_policy": 1,
+          "create_policy": 2,
+          "create_function": 2,
+          "drop_function": 0,
+          "grant_execute": 2,
+          "revoke": 2,
+          "insert_em_trilha": 1
+        },
+        "certificada_candidata": {
+          "transaccao": 2,
+          "drop_policy": 1,
+          "create_policy": 2,
+          "create_function": 2,
+          "drop_function": 0,
+          "grant_execute": 2,
+          "revoke": 2,
+          "insert_em_trilha": 1
+        },
+        "medida_reversao": {
+          "transaccao": 2,
+          "drop_policy": 2,
+          "create_policy": 1,
+          "create_function": 0,
+          "drop_function": 2,
+          "grant_execute": 0,
+          "revoke": 0,
+          "insert_em_trilha": 0
+        },
+        "certificada_reversao": {
+          "transaccao": 2,
+          "drop_policy": 2,
+          "create_policy": 1,
+          "create_function": 0,
+          "drop_function": 2,
+          "grant_execute": 0,
+          "revoke": 0,
+          "insert_em_trilha": 0
+        }
+      }
+    },
+    {
+      "nome": "os_numeros_batem_com_a_medida_de_alcance_de_hoje",
+      "verde": true,
+      "detalhe": {
+        "agora": {
+          "concessoes_ativas": 4,
+          "municipios": 1,
+          "escolas": 6,
+          "escolas_com_municipio": 0,
+          "pontes_confirmadas": 3,
+          "municipios_de_fixture": 1
+        },
+        "alcance": {
+          "concessoes_ativas": 4,
+          "municipios": 1,
+          "escolas_com_municipio": 0,
+          "escolas_totais": 6
+        }
+      }
+    },
+    {
+      "nome": "os_numeros_batem_com_o_censo_de_policies_de_hoje",
+      "verde": true,
+      "detalhe": {
+        "agora": {
+          "concessoes_ativas": 4,
+          "municipios": 1,
+          "escolas": 6,
+          "escolas_com_municipio": 0,
+          "pontes_confirmadas": 3,
+          "municipios_de_fixture": 1
+        },
+        "censo": {
+          "network_totals_def": "CREATE OR REPLACE FUNCTION public.bfr_municipal_network_totals()\n RETURNS TABLE(schools integer, students integer, classes integer, municipalities integer)\n LANGUAGE sql\n STABLE SECURITY DEFINER\n SET search_path TO 'public'\nAS $function$\n  SELECT (SELECT count(*)::int FROM public.bfr_municipal_school_stats),\n         (SELECT coalesce(sum(students_total), 0)::int FROM public.bfr_municipal_school_stats),\n         (SELECT coalesce(sum(classes_total), 0)::int FROM public.bfr_municipal_school_stats),\n         (SELECT count(DISTINCT municipality_id)::int FROM public.bfr_municipal_school_stats\n           WHERE municipality_id IS NOT NULL);\n$function$\n",
+          "network_totals_def_md5": "4ffde76bdb1243f6b9b3ebe6f2f50716",
+          "school_stats_viewdef": " SELECT id AS school_id,\n    name AS school_name,\n    city,\n    zone,\n    operating_status,\n    municipality_id,\n    ( SELECT count(*)::integer AS count\n           FROM students st\n          WHERE st.school_id = s.id) AS students_total,\n    ( SELECT count(*)::integer AS count\n           FROM classes cl\n          WHERE cl.school_id = s.id) AS classes_total,\n    ( SELECT count(*)::integer AS count\n           FROM bfr_school_key_map m\n             JOIN staff_schools ss ON ss.school_id = m.sports_school_id\n          WHERE m.school_id = s.id) AS staff_links_total\n   FROM schools s\n  WHERE bfr_school_in_municipal_scope(id) OR bfr_is_platform_admin();",
+          "concessoes_ativas": 4,
+          "municipios_cadastrados": 1,
+          "escolas_com_municipality_id": 0
+        }
+      }
+    },
+    {
+      "nome": "a_candidata_e_a_reversao_estao_em_disco_com_pegada",
+      "verde": true,
+      "detalhe": {
+        "candidata": {
+          "bytes": 9148,
+          "md5": "ee98c29129cbf1bb59987597fc6cd97d"
+        },
+        "reversao": {
+          "bytes": 1461,
+          "md5": "b0c65599c2ced2fe10d5fcc7bd4a494b"
+        }
+      }
+    }
+  ],
+  "falhas": [],
+  "precedentes": [
+    "evidence/p73-politicas-municipais-20-11e.json",
+    "evidence/p73-pen38-alcance-por-concessao-20-11e.json"
+  ],
+  "o_que_este_verde_nao_autoriza": "nada. A aplicação do SQL continua a pedir OK literal novo; este programa só diz que o estado vivo é aquele contra que a candidata foi escrita.",
+  "veredito": "P73_PEN38_PREFLIGHT_VERDE_REVERSAO 10/0"
+}

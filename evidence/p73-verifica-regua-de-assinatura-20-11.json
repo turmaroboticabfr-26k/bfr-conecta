@@ -1,0 +1,109 @@
+{
+  "programa": "scripts/p73-verifica-regua-de-assinatura.mjs",
+  "em": "2026-11-20T22:53:26.966Z",
+  "duracao_ms": 9,
+  "agulhas_derivadas_dos_ficheiros": {
+    "set": [
+      "uuid",
+      "uuid",
+      "text"
+    ],
+    "diag": [],
+    "escopo": [
+      "uuid"
+    ]
+  },
+  "casos_medidos": 13,
+  "casos_com_esperado_falso": 6,
+  "verdes": 13,
+  "portoes": [
+    {
+      "nome": "a_regua_nova_casa_o_que_a_build_devolve_com_nomes",
+      "esperado": true,
+      "obtido": true,
+      "verde": true
+    },
+    {
+      "nome": "a_regua_nova_casa_a_forma_so_com_tipos",
+      "esperado": true,
+      "obtido": true,
+      "verde": true
+    },
+    {
+      "nome": "a_regua_nova_chumba_um_tipo_trocado",
+      "esperado": false,
+      "obtido": false,
+      "verde": true
+    },
+    {
+      "nome": "a_regua_nova_chumba_uma_aridade_diferente",
+      "esperado": false,
+      "obtido": false,
+      "verde": true
+    },
+    {
+      "nome": "a_regua_nova_chumba_um_parametro_com_default",
+      "esperado": false,
+      "obtido": false,
+      "verde": true
+    },
+    {
+      "nome": "a_agulha_vazia_pedida_a_funcao_de_zero_argumentos_bate",
+      "esperado": true,
+      "obtido": true,
+      "verde": true
+    },
+    {
+      "nome": "a_agulha_vazia_pedida_a_funcao_de_zero_argumentos_chumba_quando_ha_argumentos",
+      "esperado": false,
+      "obtido": false,
+      "verde": true
+    },
+    {
+      "nome": "a_agulha_de_um_tipo_bate_a_funcao_de_um_argumento",
+      "esperado": true,
+      "obtido": true,
+      "verde": true
+    },
+    {
+      "nome": "a_agulha_de_um_tipo_chumba_a_funcao_de_tres_argumentos",
+      "esperado": false,
+      "obtido": false,
+      "verde": true
+    },
+    {
+      "nome": "sem_agulha_o_nome_basta",
+      "esperado": true,
+      "obtido": true,
+      "verde": true
+    },
+    {
+      "nome": "tipo_de_duas_palavras_bate_com_nomes",
+      "esperado": true,
+      "obtido": true,
+      "verde": true
+    },
+    {
+      "nome": "tipo_de_duas_palavras_bate_so_com_tipos",
+      "esperado": true,
+      "obtido": true,
+      "verde": true
+    },
+    {
+      "nome": "tipo_de_duas_palavras_chumba_uma_palavra_sozinha",
+      "esperado": false,
+      "obtido": false,
+      "verde": true
+    }
+  ],
+  "falhas": [],
+  "prova_de_que_a_regua_velha_nao_tinha_positivo": {
+    "agulha": "uuid, uuid, text",
+    "lido_devolvido_pela_build": "p_school uuid, p_municipality uuid, p_reason text",
+    "regua_velha_casava": false,
+    "regua_nova_casa": true,
+    "nota": "com a regua velha o portao rpc_de_etiquetagem_la estava calculado por baixo e o modo candidata, que o nega, estava verde sem poder jamais ficar vermelho — as duas direcoes mortas."
+  },
+  "o_que_este_verde_nao_autoriza": "nada autoriza. Prova que a regua de assinatura tem positivos e negativos; o estado vivo de quem e medido pelo preflight.",
+  "veredito": "P73_REGUA_ASSINATURA_VERDE 13/0"
+}

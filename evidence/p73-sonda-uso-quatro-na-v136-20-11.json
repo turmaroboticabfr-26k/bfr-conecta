@@ -1,0 +1,263 @@
+{
+  "programa": "scripts/p73-sonda-uso-quatro.mjs",
+  "em": "2026-11-20T23:12:40.579Z",
+  "duracao_ms": 2766,
+  "pergunta": "as quatro funcoes que PEN-38 e PEN-39 criaram sao chamadas pelo modulo servido no ar de hoje? e existe alguma delas fora do invólucro?",
+  "metodo": "nomes lidos dos CREATE FUNCTION das duas candidatas; catalogo por pg_proc; fetch do ar com cache-control no-cache; invólucro `data-bfr-municipal-module` unico; contagem por nome dentro do modulo e no corpo inteiro; rpc()/from() por regex; pegada esperada lida do audit-publicacao-v136.json",
+  "servido": {
+    "url": "https://bfr-conecta.turmaroboticabfr.workers.dev",
+    "status": 200,
+    "bytes": 3547458,
+    "md5": "9e236a23eed978cf7c2a2743d449b307",
+    "pegada_do_diario": "9e236a23eed978cf7c2a2743d449b307 (3547458 B)"
+  },
+  "catalogo": [
+    {
+      "nome": "bfr_municipal_distribuicao_por_zona",
+      "volatilidade": "s",
+      "dono": "postgres",
+      "definer": "true"
+    },
+    {
+      "nome": "bfr_municipal_municipio_totais",
+      "volatilidade": "s",
+      "dono": "postgres",
+      "definer": "true"
+    },
+    {
+      "nome": "bfr_municipal_scope_diagnostico",
+      "volatilidade": "s",
+      "dono": "postgres",
+      "definer": "true"
+    },
+    {
+      "nome": "bfr_school_set_municipality",
+      "volatilidade": "v",
+      "dono": "postgres",
+      "definer": "true"
+    }
+  ],
+  "por_nome": [
+    {
+      "nome": "bfr_school_set_municipality",
+      "no_modulo": 0,
+      "no_ar_inteiro": 0,
+      "chamado_por_from_ou_rpc": false,
+      "no_catalogo": true
+    },
+    {
+      "nome": "bfr_municipal_scope_diagnostico",
+      "no_modulo": 0,
+      "no_ar_inteiro": 0,
+      "chamado_por_from_ou_rpc": false,
+      "no_catalogo": true
+    },
+    {
+      "nome": "bfr_municipal_municipio_totais",
+      "no_modulo": 0,
+      "no_ar_inteiro": 0,
+      "chamado_por_from_ou_rpc": false,
+      "no_catalogo": true
+    },
+    {
+      "nome": "bfr_municipal_distribuicao_por_zona",
+      "no_modulo": 0,
+      "no_ar_inteiro": 0,
+      "chamado_por_from_ou_rpc": false,
+      "no_catalogo": true
+    }
+  ],
+  "chamadas_no_modulo": [
+    "announcements",
+    "bfr_is_municipal_authority",
+    "bfr_lesson_attendance",
+    "classes",
+    "grades",
+    "school_documents",
+    "schools",
+    "staff_schools",
+    "students",
+    "supervision_alerts",
+    "supervision_requests",
+    "supervision_responses"
+  ],
+  "fixture": {
+    "texto": "const a = sb.rpc(\"bfr_school_set_municipality\", {});\nconst b = sb.from(\"bfr_municipal_scope_diagnostico\").select(\"*\");\n// bfr_municipal_municipio_totais e de novo bfr_municipal_municipio_totais\nconst c = \"bfr_municipal_distribuicao_por_zona\";",
+    "por_nome": [
+      {
+        "nome": "bfr_school_set_municipality",
+        "no_fix": 1
+      },
+      {
+        "nome": "bfr_municipal_scope_diagnostico",
+        "no_fix": 1
+      },
+      {
+        "nome": "bfr_municipal_municipio_totais",
+        "no_fix": 2
+      },
+      {
+        "nome": "bfr_municipal_distribuicao_por_zona",
+        "no_fix": 1
+      }
+    ],
+    "chamadas": [
+      "bfr_school_set_municipality",
+      "bfr_municipal_scope_diagnostico"
+    ],
+    "controlo_zero": 0
+  },
+  "o_que_esta_peca_prova": "que no ar de hoje (pegada conferida com o diario da v136) nenhum dos quatro nomes novos aparece no corpo do modulo municipal nem no resto da pagina, e que os quatro existem no catalogo.",
+  "o_que_nao_prova": "nada sobre o que um utilizador autenticado ve — a pagina serve o mesmo modulo para todos, e o escopo de leitura decide-se no banco. Tambem nao prova que um bundle futuro (v138) continue sem chama-los: este registo e um estado, com a pegada da build que mede.",
+  "o_um_vermelho_deste_registo_significa": "que o modulo passou a chamar algum dos quatro nomes — entao a frase do runbook «a tela nao mudou com a aplicacao» esta ultrapassada e e essa frase que se re-escreve, nao a regua.",
+  "portoes": [
+    {
+      "nome": "os_quatro_nomes_sao_lidos_das_candidatas_e_nao_da_minha_lista",
+      "verde": true,
+      "detalhe": {
+        "lidos_das_candidatas": [
+          "bfr_school_set_municipality",
+          "bfr_municipal_scope_diagnostico",
+          "bfr_municipal_municipio_totais",
+          "bfr_municipal_distribuicao_por_zona"
+        ]
+      }
+    },
+    {
+      "nome": "as_quatro_funcoes_estao_no_catalogo_depois_da_aplicacao",
+      "verde": true,
+      "detalhe": {
+        "esperadas": [
+          "bfr_school_set_municipality",
+          "bfr_municipal_scope_diagnostico",
+          "bfr_municipal_municipio_totais",
+          "bfr_municipal_distribuicao_por_zona"
+        ],
+        "lidas": [
+          {
+            "nome": "bfr_municipal_distribuicao_por_zona",
+            "volatilidade": "s",
+            "dono": "postgres",
+            "definer": "true"
+          },
+          {
+            "nome": "bfr_municipal_municipio_totais",
+            "volatilidade": "s",
+            "dono": "postgres",
+            "definer": "true"
+          },
+          {
+            "nome": "bfr_municipal_scope_diagnostico",
+            "volatilidade": "s",
+            "dono": "postgres",
+            "definer": "true"
+          },
+          {
+            "nome": "bfr_school_set_municipality",
+            "volatilidade": "v",
+            "dono": "postgres",
+            "definer": "true"
+          }
+        ],
+        "faltam": []
+      }
+    },
+    {
+      "nome": "nenhum_dos_quatro_nomes_aparece_no_modulo_servido",
+      "verde": true,
+      "detalhe": [
+        {
+          "nome": "bfr_school_set_municipality",
+          "no_modulo": 0,
+          "no_ar_inteiro": 0,
+          "chamado_por_from_ou_rpc": false,
+          "no_catalogo": true
+        },
+        {
+          "nome": "bfr_municipal_scope_diagnostico",
+          "no_modulo": 0,
+          "no_ar_inteiro": 0,
+          "chamado_por_from_ou_rpc": false,
+          "no_catalogo": true
+        },
+        {
+          "nome": "bfr_municipal_municipio_totais",
+          "no_modulo": 0,
+          "no_ar_inteiro": 0,
+          "chamado_por_from_ou_rpc": false,
+          "no_catalogo": true
+        },
+        {
+          "nome": "bfr_municipal_distribuicao_por_zona",
+          "no_modulo": 0,
+          "no_ar_inteiro": 0,
+          "chamado_por_from_ou_rpc": false,
+          "no_catalogo": true
+        }
+      ]
+    },
+    {
+      "nome": "a_contagem_dispara_no_fixture_e_nao_inventa_no_inexistente",
+      "verde": true,
+      "detalhe": {
+        "fix_por_nome": [
+          {
+            "nome": "bfr_school_set_municipality",
+            "no_fix": 1
+          },
+          {
+            "nome": "bfr_municipal_scope_diagnostico",
+            "no_fix": 1
+          },
+          {
+            "nome": "bfr_municipal_municipio_totais",
+            "no_fix": 2
+          },
+          {
+            "nome": "bfr_municipal_distribuicao_por_zona",
+            "no_fix": 1
+          }
+        ],
+        "fix_chamadas": [
+          "bfr_school_set_municipality",
+          "bfr_municipal_scope_diagnostico"
+        ],
+        "controlo_zero": 0
+      }
+    },
+    {
+      "nome": "a_pegada_servida_e_a_que_o_diario_da_v136_registou",
+      "verde": true,
+      "detalhe": {
+        "servido": {
+          "md5": "9e236a23eed978cf7c2a2743d449b307",
+          "bytes": 3547458
+        },
+        "diario": "9e236a23eed978cf7c2a2743d449b307 (3547458 B)"
+      }
+    },
+    {
+      "nome": "o_involucro_do_modulo_esta_presente_e_tem_corpo_legivel",
+      "verde": true,
+      "detalhe": {
+        "chars_do_modulo": 56408,
+        "chamadas_no_modulo": [
+          "announcements",
+          "bfr_is_municipal_authority",
+          "bfr_lesson_attendance",
+          "classes",
+          "grades",
+          "school_documents",
+          "schools",
+          "staff_schools",
+          "students",
+          "supervision_alerts",
+          "supervision_requests",
+          "supervision_responses"
+        ]
+      }
+    }
+  ],
+  "falhas": [],
+  "veredito": "P73_USO_QUATRO_NA_V136_VERDE 6/0 · 4 nomes · 0 ocorrencias · 12 chamadas no modulo"
+}

@@ -1,0 +1,213 @@
+{
+  "programa": "scripts/p73-sonda-exposicao-anonima.mjs",
+  "em": "2026-11-20T23:01:28.108Z",
+  "duracao_ms": 2720,
+  "host": "https://yyzqoxlkcvqpessypfjo.supabase.co",
+  "nomes_das_duas_candidatas": [
+    "bfr_school_set_municipality",
+    "bfr_municipal_scope_diagnostico",
+    "bfr_municipal_municipio_totais",
+    "bfr_municipal_distribuicao_por_zona"
+  ],
+  "catalogo": [
+    {
+      "nome": "bfr_municipal_distribuicao_por_zona",
+      "volatilidade": "s",
+      "acl": "{postgres=X/postgres,anon=X/postgres,authenticated=X/postgres,service_role=X/postgres}",
+      "dono": "postgres",
+      "definer": "true"
+    },
+    {
+      "nome": "bfr_municipal_municipio_totais",
+      "volatilidade": "s",
+      "acl": "{postgres=X/postgres,anon=X/postgres,authenticated=X/postgres,service_role=X/postgres}",
+      "dono": "postgres",
+      "definer": "true"
+    },
+    {
+      "nome": "bfr_municipal_scope_diagnostico",
+      "volatilidade": "s",
+      "acl": "{postgres=X/postgres,anon=X/postgres,authenticated=X/postgres,service_role=X/postgres}",
+      "dono": "postgres",
+      "definer": "true"
+    },
+    {
+      "nome": "bfr_school_set_municipality",
+      "volatilidade": "v",
+      "acl": "{postgres=X/postgres,anon=X/postgres,authenticated=X/postgres,service_role=X/postgres}",
+      "dono": "postgres",
+      "definer": "true"
+    }
+  ],
+  "escrita_por_corpo_sql": {
+    "bfr_school_set_municipality": true,
+    "bfr_municipal_scope_diagnostico": false,
+    "bfr_municipal_municipio_totais": false,
+    "bfr_municipal_distribuicao_por_zona": false
+  },
+  "chamadas_anonimas": [
+    {
+      "nome": "bfr_municipal_distribuicao_por_zona",
+      "status": 200,
+      "linhas": 0,
+      "tem_uuid": false,
+      "tem_coluna_id": false,
+      "amostra": null
+    },
+    {
+      "nome": "bfr_municipal_municipio_totais",
+      "status": 200,
+      "linhas": 0,
+      "tem_uuid": false,
+      "tem_coluna_id": false,
+      "amostra": null
+    },
+    {
+      "nome": "bfr_municipal_scope_diagnostico",
+      "status": 200,
+      "linhas": 1,
+      "tem_uuid": false,
+      "tem_coluna_id": false,
+      "amostra": {
+        "perfil": null,
+        "tem_concessao": false,
+        "municipios_da_concessao": 0,
+        "escolas_no_meu_municipio": 0,
+        "escolas_sem_municipio_na_rede": 6,
+        "pontes_confirmadas": 3,
+        "concessoes_ativas_na_rede": 4
+      }
+    }
+  ],
+  "acl_anon_tem_executar": {
+    "bfr_municipal_distribuicao_por_zona": true,
+    "bfr_municipal_municipio_totais": true,
+    "bfr_municipal_scope_diagnostico": true,
+    "bfr_school_set_municipality": true
+  },
+  "o_que_esta_peca_prova": "o que uma pessoa sem sessao recebe ao chamar, pelo HTTP do ar, cada funcao nova que o catalogo declara de leitura, e o grau de execucao vivo de cada uma.",
+  "o_que_nao_prova": "que `bfr_school_set_municipality` recusa o anonimo — nao foi chamada, porque o corpo dela escreve trilha e um ensaio de escrita nao e prova de leitura; e nada sobre utilizadores autenticados.",
+  "portoes": [
+    {
+      "nome": "os_nomes_sao_lidos_das_candidatas_e_nao_da_minha_lista",
+      "verde": true,
+      "detalhe": {
+        "lidos_das_candidatas": [
+          "bfr_school_set_municipality",
+          "bfr_municipal_scope_diagnostico",
+          "bfr_municipal_municipio_totais",
+          "bfr_municipal_distribuicao_por_zona"
+        ],
+        "ausentes_no_catalogo": []
+      }
+    },
+    {
+      "nome": "o_catalogo_e_o_corpo_separam_o_que_le_do_que_escreve",
+      "verde": true,
+      "detalhe": {
+        "volatilidade": [
+          "bfr_municipal_distribuicao_por_zona=s",
+          "bfr_municipal_municipio_totais=s",
+          "bfr_municipal_scope_diagnostico=s",
+          "bfr_school_set_municipality=v"
+        ],
+        "que_escrevem_por_corpo": [
+          "bfr_school_set_municipality"
+        ],
+        "de_leitura_chamaveis": [
+          "bfr_municipal_distribuicao_por_zona",
+          "bfr_municipal_municipio_totais",
+          "bfr_municipal_scope_diagnostico"
+        ]
+      }
+    },
+    {
+      "nome": "nenhuma_funcao_que_escreve_foi_chamada",
+      "verde": true,
+      "detalhe": {
+        "chamadas": [
+          "bfr_municipal_distribuicao_por_zona",
+          "bfr_municipal_municipio_totais",
+          "bfr_municipal_scope_diagnostico"
+        ]
+      }
+    },
+    {
+      "nome": "a_anon_nao_recebe_identificador_de_escola",
+      "verde": true,
+      "detalhe": [
+        {
+          "nome": "bfr_municipal_distribuicao_por_zona",
+          "status": 200,
+          "linhas": 0,
+          "tem_uuid": false,
+          "tem_coluna_id": false
+        },
+        {
+          "nome": "bfr_municipal_municipio_totais",
+          "status": 200,
+          "linhas": 0,
+          "tem_uuid": false,
+          "tem_coluna_id": false
+        },
+        {
+          "nome": "bfr_municipal_scope_diagnostico",
+          "status": 200,
+          "linhas": 1,
+          "tem_uuid": false,
+          "tem_coluna_id": false
+        }
+      ]
+    },
+    {
+      "nome": "a_regua_de_identificador_dispara_no_fixture",
+      "verde": true,
+      "detalhe": {
+        "mal_tem_uuid": true,
+        "mal_tem_coluna_id": true,
+        "bem_tem_uuid": false,
+        "bem_tem_coluna_id": false
+      }
+    },
+    {
+      "nome": "o_grau_de_anon_no_acl_e_lido_e_reportado",
+      "verde": true,
+      "detalhe": {
+        "acl_anon_tem_executar": {
+          "bfr_municipal_distribuicao_por_zona": true,
+          "bfr_municipal_municipio_totais": true,
+          "bfr_municipal_scope_diagnostico": true,
+          "bfr_school_set_municipality": true
+        },
+        "lido": [
+          {
+            "nome": "bfr_municipal_distribuicao_por_zona",
+            "volatilidade": "s",
+            "definer": "true",
+            "dono": "postgres"
+          },
+          {
+            "nome": "bfr_municipal_municipio_totais",
+            "volatilidade": "s",
+            "definer": "true",
+            "dono": "postgres"
+          },
+          {
+            "nome": "bfr_municipal_scope_diagnostico",
+            "volatilidade": "s",
+            "definer": "true",
+            "dono": "postgres"
+          },
+          {
+            "nome": "bfr_school_set_municipality",
+            "volatilidade": "v",
+            "definer": "true",
+            "dono": "postgres"
+          }
+        ]
+      }
+    }
+  ],
+  "falhas": [],
+  "veredito": "P73_EXPOSICAO_ANONIMA_VERDE 6/0 · 3 chamadas · 4 de 4 com anon=X"
+}
