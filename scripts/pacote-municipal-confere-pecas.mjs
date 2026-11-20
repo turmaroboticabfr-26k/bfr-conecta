@@ -45,6 +45,17 @@ const FORA_DO_GIT = ['ah2-sessions.json', 'c2-sessions.json'];
 // campo `instrumento` declarava por engano; o fantasma só é inofensivo enquanto a linha ao lado o chamar
 // fantasma. Por isso o portão não perdoa o nome: exige a declaração junto dele.
 const FANTASMAS_DECLARADOS = [{ caminho: 'scripts/bu4-digestao-para-documentacao-20-11.mjs', a_prosa_diz: 'o script com esse nome não existe' }];
+// Quarta classe de «não está no índice»: existe em disco, NÃO é ignorada, e mesmo assim não entra — por decisão
+// assinada e registada noutro lado. É o avesso do esquecimento, e sem esta declaração as duas coisas escrevem-se
+// igual no veredicto. O portão não aceita a alegação: exige (a) que o ficheiro ainda exista, (b) que ainda NÃO
+// esteja no índice, (c) que ainda NÃO seja ignorado, e (d) que a frase que declara a decisão continue no corpus.
+// Cai a frase, o nome volta a ser «esquecido» e o vermelho regressa — é assim que a lista não apodrece sozinha.
+const FORA_DO_INDICE_POR_DECISAO = [
+  { caminho: 'evidence/ah2-home-papel-a-papel-v1.json', a_prosa_diz: 'tem decisão assinada em `26e220d`',
+    decisao: '26e220d renomeou o campo para `rota_home` e re-geriu o artefacto como v3 (v3 está no índice)' },
+  { caminho: 'evidence/.funde-v134-18-11.txt', a_prosa_diz: 'zero ficheiros com ponto inicial estão versionados',
+    decisao: 'régua verificada da casa: nenhum nome de ponto inicial em evidence/ está versionado' },
+];
 // O portão não se varre a si próprio: o registo e o stdout desta corrida são citados pelo runbook e ainda não
 // existem quando a varredura corre — o `.txt` nasce do redireccionamento do stdout desta própria execução.
 // Excluir só estes dois nomes, declarados, e não alargar o predicado.
@@ -64,11 +75,31 @@ const RUNBOOK_USADO = flag('runbook') || CORPUS_ARQS.join(',');
 const CORPUS = RUNBOOK_USADO.split(',').map((s) => s.trim()).filter(Boolean);
 const textoCorpus = CORPUS.map((rel) => readFileSync(ABSOLUTO(rel) ? rel : join(REPO, rel), 'utf8'));
 const texto = textoCorpus.join('\n');
+// O Markdown quebra linhas e as aspas do corpus são aspas de código: uma declaração não deixa de existir porque
+// o editor apartiu a frase em duas. Comparar com espaços colapsados é a única forma de o portão não acusar
+// ausência por um corte de linha meu, e é por isso que as duas famílias declaradas — fantasmas e decisões —
+// passam pelas mesmas duas funções.
+const textoNorm = texto.replace(/\s+/g, ' ');
+const fraseNoCorpus = (frase) => textoNorm.includes(frase.replace(/\s+/g, ' '));
 const cadaFicheiro = CORPUS.map((rel, i) => ({ ficheiro: rel, citados: (textoCorpus[i].match(RE_CORPUS) || []).length }));
 const citados = [...new Set(texto.match(RE_CORPUS) || [])].sort();
 const emFaltaReal = citados.filter((c) => !existsSync(join(REPO, c)) && !SAIDAS_AINDA_NAO_CORRIDAS.includes(c) && !EXCEPCAO_DECLARADA.includes(c) && !FANTASMAS_DECLARADOS.some((f) => f.caminho === c));
 const presentes = citados.filter((c) => existsSync(join(REPO, c)) && !EXCEPCAO_DECLARADA.includes(c));
 const porFamilia = (() => { const f = {}; for (const c of citados) { const k = c.split('/')[0]; f[k] = (f[k] || 0) + 1; } return f; })();
+// `existsSync` não é «a peça existe»: é «a peça está nesta máquina». Descoberto 20/11 ao responder «falta
+// algo?»: a PEN-41 inteira (candidata, reversão, preflight, dois artefactos) estava em disco, citada por um
+// runbook versionado, e nunca tinha entrado no git — `git log --all --diff-filter=A` dava 0 pen41 e
+// `check-ignore` devolvia 1. Num clone novo não havia PEN-41 e o aplicador não tinha o que enviar. A classe
+// tem dois lados opostos, e só `git ls-files` os separa: ESQUECIDO (existe, não está no índice, não é
+// ignorado) contra RECUSADO POR DESIGNO (existe, não está no índice, É ignorado — sessões e contas de teste).
+const fichasDoGit = new Set(execFileSync('git', ['-c', 'core.quotePath=false', 'ls-files'], { cwd: REPO, encoding: 'utf8' }).split('\n'));
+const esquecidosNoIndice = citados.filter((c) => existsSync(join(REPO, c)) && !fichasDoGit.has(c) && !EXCEPCAO_DECLARADA.includes(c) && !ignoradoPeloGit(c) && !FORA_DO_INDICE_POR_DECISAO.some((d) => d.caminho === c));
+const citadosIgnoradosPorDesignio = citados.filter((c) => existsSync(join(REPO, c)) && !fichasDoGit.has(c) && ignoradoPeloGit(c));
+// O outro lado da mesma régua, para o verde não ser cortesia: um nome declarado «fora por decisão» tem de
+// continuar fora, continuar em disco, continuar não-ignorado e continuar declarado. Se algum dia ele entrar no
+// índice à mesma, a lista deixa de descrever o pacote e o portão diz-me isso por nome.
+const fichasDeDecisao = FORA_DO_INDICE_POR_DECISAO.map((d) => ({ caminho: d.caminho, existe_em_disco: existsSync(join(REPO, d.caminho)),
+  esta_no_indice: fichasDoGit.has(d.caminho), ignorado_pelo_git: ignoradoPeloGit(d.caminho), frase_da_decisao_no_corpus: fraseNoCorpus(d.a_prosa_diz) }));
 
 // ── estado vivo lido no catálogo ────────────────────────────────────────────
 const NOMES_FUNCOES_NOVAS = ['bfr_school_set_municipality', 'bfr_municipal_scope_diagnostico', 'bfr_municipal_municipio_totais', 'bfr_municipal_distribuicao_por_zona'];
@@ -110,8 +141,17 @@ gate('cada_familia_do_corpus_despe_pelo_menos_um_caminho', ['scripts', 'evidence
 // A mesma régua, agora por ficheiro: dois corpus com um deles mudo é o portão que varre metade das promessas.
 gate('cada_ficheiro_do_corpus_despe_pelo_menos_um_caminho', cadaFicheiro.map((c) => c.citados > 0), CORPUS.map(() => true));
 gate('os_fantasmas_da_prosa_continuam_fantasmas_declarados',
-  FANTASMAS_DECLARADOS.map((f) => [existsSync(join(REPO, f.caminho)), texto.includes(f.a_prosa_diz)]),
+  FANTASMAS_DECLARADOS.map((f) => [existsSync(join(REPO, f.caminho)), fraseNoCorpus(f.a_prosa_diz)]),
   FANTASMAS_DECLARADOS.map(() => [false, true]));
+// O portão que faltava: «está em disco» não é «está no pacote». Vermelho = a prosa cita uma peça que só
+// existe nesta máquina, e que portanto não existe para quem cloneda o repo ou para um OK dado amanhã.
+gate('nenhum_caminho_citado_fica_fora_do_git', esquecidosNoIndice, []);
+// ...e o contrário dele, para o verde não ser cortesia: o que a prosa declara «fora do índice por decisão» tem
+// de continuar fora, em disco, não ignorado, e com a frase da decisão no corpus. Duas famílias de nomes que
+// trocam de classe em silêncio eram o mesmo buraco com o sinal invertido.
+gate('os_fora_do_indice_por_decisao_continuam_decididos',
+  fichasDeDecisao.map((d) => [d.existe_em_disco, d.esta_no_indice, d.ignorado_pelo_git, d.frase_da_decisao_no_corpus]),
+  FORA_DO_INDICE_POR_DECISAO.map(() => [true, false, false, true]));
 gate('as_saidas_de_passos_nao_autorizados_estao_mesmo_ausentes', SAIDAS_AINDA_NAO_CORRIDAS.map((c) => existsSync(join(REPO, c))), SAIDAS_AINDA_NAO_CORRIDAS.map(() => false));
 gate('os_fora_do_git_estao_ignorados_e_nao_e_que_faltasse_a_peca', FORA_DO_GIT.map((c) => ignoradoPeloGit(c)), [true, true]);
 gate('nenhuma_funcao_das_candidatas_existe_ainda_no_banco', vivo.funcoes_das_candidatas, 0);
@@ -129,11 +169,13 @@ const out = {
   corpus: { fonte: RUNBOOK_USADO, fonte_medida: CORPUS.join(',') === CORPUS_ARQS.join(',') ? CORPUS.map(mede) : [{ caminho: RUNBOOK_USADO, nota: 'corpus de falsificacao, fora do repo' }],
     regex_familias: RE_CORPUS.source, total_citados: citados.length, por_familia: porFamilia, por_ficheiro: cadaFicheiro,
     extrairam_do_fixture: (FIX_DISPARO.match(RE_CORPUS) || []).slice(), excepcao_declara: EXCEPCAO_DECLARADA,
-    fantasmas_declarados: FANTASMAS_DECLARADOS.map((f) => ({ caminho: f.caminho, existe_em_disco: existsSync(join(REPO, f.caminho)), a_prosa_diz: f.a_prosa_diz, frase_encontrada_no_corpus: texto.includes(f.a_prosa_diz) })),
+    fantasmas_declarados: FANTASMAS_DECLARADOS.map((f) => ({ caminho: f.caminho, existe_em_disco: existsSync(join(REPO, f.caminho)), a_prosa_diz: f.a_prosa_diz, frase_encontrada_no_corpus: fraseNoCorpus(f.a_prosa_diz) })),
     saidas_de_passos_nao_autorizados: SAIDAS_AINDA_NAO_CORRIDAS },
   citados_presentes: presentes.map(mede),
   citados_em_falta: emFaltaReal,
   fora_do_git: FORA_DO_GIT.map((c) => ({ caminho: c, existe_em_disco: existsSync(join(REPO, c)), ignorado_pelo_git: ignoradoPeloGit(c) })),
+  fora_do_indice: { fichas_lidas_do_indice: fichasDoGit.size, esquecidos: esquecidosNoIndice,
+    citados_ignorados_por_designio: citadosIgnoradosPorDesignio, por_decisao_assinada: fichasDeDecisao },
   vivo, nomes_de_funcoes_varridos: NOMES_FUNCOES_NOVAS, policies_alvo: POLICIES_ALVO,
   ancora_lida_do_preflight_38: pref38, ancora_lida_do_preflight_41: { policies_das_quatro: pref41.policies_das_quatro.length, veredito: pref41.veredito },
   v137: { publicado: v137.publicado, ok_literal: v137.ok_literal, veredito: v137.veredito },
@@ -145,6 +187,7 @@ out.o_que_este_verde_nao_autoriza = 'nada: este portão é leitura. Aplicar DDL,
 writeFileSync(OUT, JSON.stringify(out, null, 2) + '\n');
 console.log(`CORPUS ${out.corpus.total_citados} citados · ${presentes.length} presentes · ${emFaltaReal.length} em falta · familias ${JSON.stringify(porFamilia)}`);
 console.log(`DECLARADOS_NAO_EXISTENTES ${JSON.stringify({ saidas_nao_corridas: SAIDAS_AINDA_NAO_CORRIDAS, fora_do_git: out.fora_do_git })}`);
+console.log(`FORA_DO_INDICE ${esquecidosNoIndice.length} esquecidos de ${out.fora_do_indice.fichas_lidas_do_indice} fichas · ignorados_por_designio ${citadosIgnoradosPorDesignio.length} · por_decisao_assinada ${fichasDeDecisao.filter((d) => d.existe_em_disco && !d.esta_no_indice && !d.ignorado_pelo_git && d.frase_da_decisao_no_corpus).length} de ${fichasDeDecisao.length}${esquecidosNoIndice.length ? ' · ' + JSON.stringify(esquecidosNoIndice) : ''}`);
 console.log(`VIVO ${JSON.stringify(vivo)}`);
 console.log(`V137 publicado=${v137.publicado} · ${v137.veredito}`);
 if (falhas.length) console.log(`FALHAS ${JSON.stringify(falhas)}`);

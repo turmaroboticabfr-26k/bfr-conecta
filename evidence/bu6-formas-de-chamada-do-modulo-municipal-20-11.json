@@ -1,0 +1,285 @@
+{
+  "programa": "scripts/bu6-formas-de-chamada-do-modulo-municipal.mjs",
+  "em": "2026-11-20T17:21:26.866Z",
+  "duracao_ms": 693,
+  "pergunta": "o módulo municipal servido não cita tabela nenhuma (documento 03) ou abre 11 mesas sobre 20 leituras (sm23)? a resposta está na forma da chamada, e conta-se forma a forma.",
+  "metodo": "fetch + md5/bytes contra `esperado-v136.json`; invólucro `data-bfr-municipal-module` (único, senão aborta); duas agulhas de mesa (com ponto = verbatim do censador por região `bu3:90`, sem ponto = a forma do módulo) contadas dentro e no corpus; RPC e helper contados à parte; fixture com as duas grafias e dois falsos positivos; confronto com `p73-politicas-municipais` e `sm23-escopo-aplicado-por-leitura`; zero SQL, zero escrita no produto",
+  "servido": {
+    "url": "https://bfr-conecta.turmaroboticabfr.workers.dev",
+    "status": 200,
+    "bytes": 3547458,
+    "md5": "9e236a23eed978cf7c2a2743d449b307",
+    "esperado_md5": "9e236a23eed978cf7c2a2743d449b307",
+    "esperado_bytes": 3547458
+  },
+  "involucro": {
+    "tag": "<script data-bfr-municipal-module=\"1\">",
+    "desde": 3472836,
+    "corpo_desde": 3472874,
+    "fim": 3529282,
+    "chars": 56408,
+    "bytes": 56949
+  },
+  "agulhas": {
+    "com_ponto_copiada_do_censador": "\\.from\\(\\s*'([a-z_0-9]+)'",
+    "sem_ponto": "(^|[^A-Za-z0-9_$.])from\\(\\s*'([a-z_0-9]+)'",
+    "dentro_com_ponto": 0,
+    "dentro_sem_ponto": 11,
+    "corpus_com_ponto": 112,
+    "corpus_sem_ponto": 11,
+    "helper_ler": 19,
+    "ocorrencias_sem_ponto": 19,
+    "ocorrencias_rpc": 1,
+    "rpc_distintos": 1,
+    "familia_municipio": 0
+  },
+  "mesas_por_agulha_sem_ponto": [
+    "announcements",
+    "bfr_lesson_attendance",
+    "classes",
+    "grades",
+    "school_documents",
+    "schools",
+    "staff_schools",
+    "students",
+    "supervision_alerts",
+    "supervision_requests",
+    "supervision_responses"
+  ],
+  "rpc_no_involucre": [
+    "bfr_is_municipal_authority"
+  ],
+  "comparacao": {
+    "censo_policies_mesas": [
+      "announcements",
+      "bfr_lesson_attendance",
+      "classes",
+      "grades",
+      "school_documents",
+      "schools",
+      "staff_schools",
+      "students",
+      "supervision_alerts",
+      "supervision_requests",
+      "supervision_responses"
+    ],
+    "sm23_leituras": 20,
+    "sm23_mesas": [
+      "announcements",
+      "bfr_is_municipal_authority",
+      "bfr_lesson_attendance",
+      "classes",
+      "grades",
+      "school_documents",
+      "schools",
+      "staff_schools",
+      "students",
+      "supervision_alerts",
+      "supervision_requests",
+      "supervision_responses"
+    ],
+    "corpus_mesas_com_ponto": 112
+  },
+  "fixture": {
+    "texto": "const a = await supabase.from('mesa_com_ponto'); const b = await (from) => from('mesa_sem_ponto'); const plataforma = 1; transform('nada'); const c = await sb.rpc('funcao_sint');",
+    "com_ponto": [
+      "mesa_com_ponto"
+    ],
+    "sem_ponto": [
+      "mesa_sem_ponto"
+    ]
+  },
+  "conclusao": {
+    "frase_que_esta_corrida_autoriza": "o módulo municipal servido abre 11 mesas distintas nas 20 leituras do seu invólucro — 19 ocorrências `from('t')` sem ponto mais 1 RPC, e 0 chamadas pela agulha do censador por região, que conta 112 mesas com ponto no corpus — «não cita tabela nenhuma» era efeito da agulha (`bu3:90` exige o ponto antes de `from(`), não do código",
+    "o_que_nao_prova": "não prova que as 20 leituras tragam linhas (isso é RLS, medido com sessão na PEN-38 e na PEN-41); prova a forma e o conjunto de nomes, não o resultado de cada pedido."
+  },
+  "portoes": [
+    {
+      "nome": "o_involucre_do_modulo_esta_presente_e_unico",
+      "verde": true,
+      "detalhe": {
+        "chars": 56408,
+        "bytes": 56949,
+        "desde": 3472874,
+        "fim": 3529282
+      }
+    },
+    {
+      "nome": "as_duas_agulhas_contam_cada_um_dois_nomes_do_fixture_e_nem_um_falso_positivo",
+      "verde": true,
+      "detalhe": {
+        "fixPontos": [
+          "mesa_com_ponto"
+        ],
+        "fixSemPonto": [
+          "mesa_sem_ponto"
+        ],
+        "nota": "plataforma/transform não entram em nenhuma das duas"
+      }
+    },
+    {
+      "nome": "a_agulha_do_censador_devolve_zero_dentro_do_involucre_e_muitas_fora_dele",
+      "verde": true,
+      "detalhe": {
+        "dentro": 0,
+        "corpus": 112
+      }
+    },
+    {
+      "nome": "a_agulha_sem_ponto_devolve_o_inverso_e_só_existe_no_involucre",
+      "verde": true,
+      "detalhe": {
+        "dentro": [
+          "announcements",
+          "bfr_lesson_attendance",
+          "classes",
+          "grades",
+          "school_documents",
+          "schools",
+          "staff_schools",
+          "students",
+          "supervision_alerts",
+          "supervision_requests",
+          "supervision_responses"
+        ],
+        "corpus": 11,
+        "nota": "se o corpus e o invólucro dão o mesmo número, nenhuma outra região do bundle usa esta forma — a diferença é sistemática, não acidental"
+      }
+    },
+    {
+      "nome": "os_nomes_lidos_sem_ponto_batem_com_o_censo_de_policies",
+      "verde": true,
+      "detalhe": {
+        "lidos": [
+          "announcements",
+          "bfr_lesson_attendance",
+          "classes",
+          "grades",
+          "school_documents",
+          "schools",
+          "staff_schools",
+          "students",
+          "supervision_alerts",
+          "supervision_requests",
+          "supervision_responses"
+        ],
+        "censo": [
+          "announcements",
+          "bfr_lesson_attendance",
+          "classes",
+          "grades",
+          "school_documents",
+          "schools",
+          "staff_schools",
+          "students",
+          "supervision_alerts",
+          "supervision_requests",
+          "supervision_responses"
+        ],
+        "divergem": []
+      }
+    },
+    {
+      "nome": "a_contagem_bate_com_a_varredura_de_leituras_de_18_11",
+      "verde": true,
+      "detalhe": {
+        "leituras_sm23": 20,
+        "mesas_sm23": [
+          "announcements",
+          "bfr_is_municipal_authority",
+          "bfr_lesson_attendance",
+          "classes",
+          "grades",
+          "school_documents",
+          "schools",
+          "staff_schools",
+          "students",
+          "supervision_alerts",
+          "supervision_requests",
+          "supervision_responses"
+        ],
+        "mesas_agora": [
+          "announcements",
+          "bfr_lesson_attendance",
+          "classes",
+          "grades",
+          "school_documents",
+          "schools",
+          "staff_schools",
+          "students",
+          "supervision_alerts",
+          "supervision_requests",
+          "supervision_responses"
+        ],
+        "rpc_agora": [
+          "bfr_is_municipal_authority"
+        ],
+        "nota": "a leitura 0 do sm23 é o RPC de autoridade contado como mesa"
+      }
+    },
+    {
+      "nome": "a_única_função_chamada_por_rpc_e_a_de_autoridade",
+      "verde": true,
+      "detalhe": {
+        "rpc": [
+          "bfr_is_municipal_authority"
+        ]
+      }
+    },
+    {
+      "nome": "o_helper_e_as_chamadas_contam_se_em_ocorrencias_nao_em_nomes_distintos",
+      "verde": true,
+      "detalhe": {
+        "helper_ler": 19,
+        "ocorrencias_sem_ponto": 19,
+        "ocorrencias_rpc": 1,
+        "leituras_sm23": 20,
+        "nomes_distintos": 11,
+        "nota": "unidades: 19 ocorrências de mesa + 1 de RPC = 20 leituras, sobre 11 nomes distintos; comparar ocorrências com nomes seria o mesmo defeito de unidade que já me apanhou"
+      }
+    },
+    {
+      "nome": "nenhuma_familia_municipal_de_backend_aparece_no_involucre",
+      "verde": true,
+      "detalhe": {
+        "dentro": 0,
+        "nota": "a classe imprime-se com o zero no lugar, porque é isto que a PEN-38 afirma"
+      }
+    },
+    {
+      "nome": "o_ar_e_a_pegada_esperada_da_v136",
+      "verde": true,
+      "detalhe": {
+        "servido": {
+          "bytes": 3547458,
+          "md5": "9e236a23eed978cf7c2a2743d449b307"
+        },
+        "esperado": {
+          "bytes": 3547458,
+          "md5": "9e236a23eed978cf7c2a2743d449b307"
+        }
+      }
+    },
+    {
+      "nome": "a_frase_nova_do_documento_03_cita_os_numeros_deste_artefacto",
+      "verde": true,
+      "detalhe": {
+        "agulhas_de_frase": [
+          "abre 11 mesas distintas nas 20 leituras do seu invólucro",
+          "19 ocorrências `from('t')`",
+          "0 chamadas pela agulha do censador por região",
+          "112 mesas com ponto no corpus"
+        ],
+        "faltam": []
+      }
+    }
+  ],
+  "falhas": [],
+  "precedentes": [
+    "evidence/sm23-escopo-aplicado-por-leitura-18-11.json",
+    "evidence/p73-politicas-municipais-20-11e.json",
+    "docs/bu-20-11/03-perfis-e-permissoes.md",
+    "scripts/bu3-pegada-de-modulos-20-11.mjs"
+  ],
+  "veredito": "BU6_FORMAS_VERDE 11/0"
+}

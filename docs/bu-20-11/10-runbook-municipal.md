@@ -90,8 +90,8 @@ de destino já existir, pelo que `P73_SUF` é sempre um sufixo novo — não é 
 corrida apaga a evidência da anterior.
 
 *OK necessário:* nenhum — os quatro correm em leitura ou em modo de recusa.
-*Verde esperado:* `PACOTE_MUNICIPAL_OK 15/0` (stdout `evidence/pacote-municipal-stdout-corpus-duplo-20-11.txt`,
-registo `evidence/pacote-municipal-pecas-20-11-corpus-duplo.json`), `P73_MUNICIPAL_APLICA_SELFTESTE_OK 7/0`,
+*Verde esperado:* `PACOTE_MUNICIPAL_OK 17/0` (stdout `evidence/pacote-municipal-stdout-pos-pacote-completo-no-indice-20-11.txt`,
+registo `evidence/pacote-municipal-pecas-20-11-pos-pacote-completo-no-indice.json`), `P73_MUNICIPAL_APLICA_SELFTESTE_OK 7/0`,
 `P73_MUNICIPAL_ETIQUETA_SELFTESTE_OK 6/0` e `P73_MUNICIPAL_ETIQUETA_LISTA 6 escolas, 0 etiquetadas, 1 municipios, 1 avisos de fixture` —
 estes três últimos na mesma corrida capturada em `evidence/p73-municipal-stdout-selftestes-e-lista-20-11.txt`,
 que traz também o `ABORTA` da guarda quando o sufixo se repetiu.
@@ -102,20 +102,36 @@ O resto da primeira linha é o censo de peças medidas: cresce com o corpus que 
 pinha aqui — piná-lo obrigaria a re-escrever esta frase a cada caminho acrescentado, e foi exactamente assim
 que a versão anterior deste parágrafo ficou ultrapassada (a corrida preservada em
 `evidence/pacote-municipal-pecas-20-11-ANTERIOR-a-prosa-do-runbook-pinhava-o-censo-de-pecas-medidas.json`
-media 29 e o corpus tinha crescido para 32). Os números `15`, `7`, `6` são função dos portões escritos nos
-instrumentos, não uma promessa sobre o mundo: este 15 era 13 até ao dia em que se lhes juntaram
-`cada_ficheiro_do_corpus_despe_pelo_menos_um_caminho` e `os_fantasmas_da_prosa_continuam_fantasmas_declarados`.
+media 29 e o corpus tinha crescido para 32). Os números `17`, `7`, `6` são função dos portões escritos nos
+instrumentos, não uma promessa sobre o mundo: ao treze original juntaram-se, por esta ordem e cada um com a sua
+falsificação na tabela abaixo, `cada_ficheiro_do_corpus_despe_pelo_menos_um_caminho` e
+`os_fantasmas_da_prosa_continuam_fantasmas_declarados`, depois `nenhum_caminho_citado_fica_fora_do_git` (§2.0.1)
+e por último `os_fora_do_indice_por_decisao_continuam_decididos`. O dígito de cada corrida lê-se no registo
+daquela corrida, e é por isso que esta frase nomeia cláusulas em vez de pinhar somas — uma soma escrita aqui
+envelhece no dia em que alguém escreve um portão novo.
 O segundo portão existe porque o documento 08 cita `scripts/bu4-digestao-para-documentacao-20-11.mjs`, que não
 existe — e não existe *por declaração*: a linha ao lado diz que é o nome do output, não o do script. A
 excepção não é uma lista de nomes tolerados; é a exigência de que a frase declarante continue no corpus, e foi
 provada a cair (abaixo).
-*Dentes do portão, provados* — três falsificações, cada uma com o nome do portão que disparou, todas exit 1:
+*Dentes do portão, provados* — cinco falsificações, cada uma com o nome do portão que disparou, todas exit 1:
 
 | corpus estragado de propósito | portão vermelho | registo | stdout |
 |---|---|---|---|
 | dois caminhos inventados neste runbook | `nenhum_caminho_citado_falta_em_disco` (nomeia os dois) | `evidence/pacote-municipal-pecas-20-11-falsificacao-corpus-duplo.json` | `evidence/pacote-municipal-falsificacao-corpus-duplo-stdout-20-11.txt` |
 | um ficheiro do corpus sem nenhum caminho | `cada_ficheiro_do_corpus_despe_pelo_menos_um_caminho` (`[false,true,true]`) | `evidence/pacote-municipal-pecas-20-11-falsificacao-corpus-mudo.json` | `evidence/pacote-municipal-falsificacao-corpus-mudo-stdout-20-11.txt` |
 | a frase que declara o fantasma apagada, nome do fantasma mantido | `os_fantasmas_da_prosa_continuam_fantasmas_declarados` (`[[false,false]]`) | `evidence/pacote-municipal-pecas-20-11-falsificacao-fantasma-sem-declaracao.json` | `evidence/pacote-municipal-falsificacao-fantasma-sem-declaracao-stdout-20-11.txt` |
+| dois caminhos acrescentados ao corpus, um de cada classe de «não está no índice» | `nenhum_caminho_citado_fica_fora_do_git` (`7 esquecidos de 2309 fichas`, `ignorados_por_designio=1`) | `evidence/pacote-municipal-pecas-20-11-falsificacao-fora-do-indice.json` | `evidence/pacote-municipal-falsificacao-fora-do-indice-stdout-20-11.txt` |
+| as duas frases que declaram a decisão de ficar fora do índice apagadas, nomes mantidos | `os_fora_do_indice_por_decisao_continuam_decididos` (`[[true,false,false,false],[true,false,false,false]]` contra `[true,false,false,true]` duas vezes) | `evidence/pacote-municipal-pecas-20-11-falsificacao-declaracao-apagada-eixo-unico.json` | `evidence/pacote-municipal-falsificacao-declaracao-apagada-eixo-unico-stdout-20-11.txt` |
+
+A primeira corrida desta quinta linha deu `2 de 17 portoes` e não `1`: além do portão desejado levou o do índice,
+porque eu ainda não tinha metido no índice seis capturas que a própria prosa nova citava. Não a versiono e digo
+porquê: é o mesmo instrumento e o mesmo corpus, com um estado de índice que já não existe, e versionar um vermelho
+ultrapassado ao lado da re-corrida de eixo único era dar ao leitor dois números para um facto. O registo dessa
+corrida intermédia fica versionado com o nome do achado que ele é
+(`evidence/pacote-municipal-pecas-20-11-pos-classe-de-decisao.json`: um de dezassete portões, só
+`nenhum_caminho_citado_fica_fora_do_git`, seis esquecidos, e a cláusula nova já verde com
+`por_decisao_assinada 2 de 2`) — é o buraco real das capturas da própria sessão, descoberto pela cláusula que
+escrevi para o fechar.
 
 As cópias estragadas vivem fora do repo (directório de trabalho da sessão), por isso não são caminhos que a
 sonda verifique: o que fica versionado é o registo de cada corrida, que traz a lista exacta do que foi lido.
@@ -125,17 +141,86 @@ shell tinha reescrito — o defeito era meu, da ordem dos argumentos, não do po
 e a forma que funciona é o caminho absoluto **primeiro** na lista. O vermelho de dois caminhos inventados
 tirado antes do corpus duplo (`evidence/pacote-municipal-pecas-20-11-VERMELHO-esperado-falsificacao-do-corpus-com-dois-caminhos-inventados.json`,
 `1 de 13 portoes`) fica como história; a re-corrida com o corpus actual é a linha 1 da tabela.
-Sem estas três corridas, o 15/0 não se distinguia de um portão que varre uma lista vazia.
-*Re-corridas:* cada linha que se acrescenta ao corpus obriga a voltar a correr o portão, e ele voltou verde em
-toda a série (`evidence/pacote-municipal-pecas-20-11-corpus-duplo.json`,
+Sem estas cinco corridas, o verde do portão não se distinguia de um portão que varre uma lista vazia.
+*Re-corridas:* cada linha que se acrescenta ao corpus obriga a voltar a correr o portão, e ele voltou verde na
+série (`evidence/pacote-municipal-pecas-20-11-corpus-duplo.json`,
 `evidence/pacote-municipal-pecas-20-11-fecho-corpus-duplo.json`,
-`evidence/pacote-municipal-pecas-20-11-pos-captura.json`), sempre com os mesmos 15 portões; é um registo dessa
-série que o §11 do documento 08 cita. Nenhuma destas pegadas é a pegada deste runbook, e esta frase também não:
-ela muda o ficheiro cuja pegada diz estar a citar. O verde que vale para aplicar é o do portão corrido entre o
-`git add` e o `git commit` daquele texto, nunca uma corrida anterior.
+`evidence/pacote-municipal-pecas-20-11-pos-captura.json`,
+`evidence/pacote-municipal-pecas-20-11-pos-fechar-buraco-do-git.json`,
+`evidence/pacote-municipal-pecas-20-11-pos-pacote-completo-no-indice.json`); em cada registo vivem escritos
+`portoes.length` e `corpus.total_citados`, e é neles que se lê quantos portões havia naquele instante — a série
+de verdes vai de quinze para dezasseis e para dezassete conforme as cláusulas nomeadas acima entraram no
+instrumento, e o censo de citados sobe com a prosa, não com a minha conta. É um registo dessa série que o §11 do
+documento 08 cita. Nenhuma destas pegadas é a pegada deste runbook,
+e esta frase também não: ela muda o ficheiro cuja pegada diz estar a citar. O verde que vale para aplicar é o do
+portão corrido entre o `git add` e o `git commit` daquele texto, nunca uma corrida anterior.
 *Vermelho significa:* falta uma peça, ou uma peça mudou de bytes desde que foi certificada. Não é aviso para
 continuar: o aplicador compara o md5 do SQL que vai enviar com o que o preflight certificou, e um ficheiro
 editado entre a certificação e a aplicação é exactamente o caso que esse portão fecha.
+
+### 2.0.1 · O buraco do índice que nenhum dos portões anteriores podia dar (20/11)
+
+`existsSync` não significa «a peça existe»: significa «a peça está **nesta máquina**». Foi assim que a PEN-41
+inteira — candidata, reversão, preflight e dois artefactos — esteve citada por este runbook versionado, em disco
+desde que foi escrita, e **fora do `git ls-files`**: `git log --all --diff-filter=A -- scripts/p73-pen41-ddl-candidata.sql`
+dá zero commits e `git check-ignore -v` devolve saída vazia com exit 1, logo não foi recusa por designio, foi
+esquecimento. O commit `a0e457b` afirmava as quatro candidatas escritas — era verdadeiro sobre o disco e falso
+sobre o pacote: num clone novo não havia PEN-41 e o aplicador não tinha o que enviar.
+
+A classe tem dois lados opostos e só o índice os separa, por isso o portão `nenhum_caminho_citado_fica_fora_do_git`
+dividiu a régua em duas, uma por classe: **ESQUECIDO** (existe, não está no índice, não é ignorado) contra
+**RECUSADO POR DESIGNIO** (existe, não está no índice, é ignorado — sessões e contas de teste). Juntá-los num só
+booleano era o verde que tolera o esquecimento desde que alguém o chame de escolha.
+
+Medido, na ordem em que aconteceu:
+
+1. vermelho honesto do pacote real — `P73_SUF=pen41-fora-do-git` → `FORA_DO_INDICE 6 esquecidos`, os seis nomes
+   todos da PEN-41 e do stdout do deploy da v136, `PACOTE_MUNICIPAL_VERMELHO 1 de 16 portoes`
+   (`evidence/pacote-municipal-pecas-20-11-pen41-fora-do-git.json`,
+   `evidence/pacote-municipal-stdout-pen41-fora-do-git-20-11.txt`);
+2. os seis entraram no índice, e com eles mais seis que a mesma varredura encontrou na mesma classe: o programa
+   do bu6 e o seu artefacto (os dois citados por `docs/bu-20-11/03-perfis-e-permissoes.md`), o artefacto das
+   cadeias de login (citado por `docs/auditoria-bfr-conecta.md`) e o seu programa, mais o censo de policies
+   municipais e o contador de pipes escapados. Dos doze, os seis do vermelho são os que este corpus cita; dos
+   outros seis, três têm citação noutro documento versionado e três (`p73-politicas-municipais-20-11.mjs`,
+   `p73-conta-pipes-escapados.mjs`, `p73-entrar-por-senha-cadeias-20-11.mjs`) não são citados por prosa nenhuma
+   e entraram por outra razão, que digo: um artefacto cujo programa produtor fica fora do índice é metade prova,
+   porque a pegada do registo não tem quem a reproduza;
+3. verde re-medido — `FORA_DO_INDICE 0 esquecidos de 2321 fichas` com `PACOTE_MUNICIPAL_OK 16/0`
+   (`evidence/pacote-municipal-pecas-20-11-pos-fechar-buraco-do-git.json`);
+4. o portão apanhou-me a mim, e logo: os caminhos das capturas desta tarefa — três registos e os três stdout
+   correspondentes, a falsificação da linha 4 da tabela, o vermelho honesto da PEN-41 e o verde que os fechou —
+   passaram a ser citados pela prosa que eu estava a escrever nesta mesma secção, e `P73_SUF=pos-classe-de-decisao`
+   tornou a dar `6 esquecidos`, agora de ficheiros meus. É a forma mais incómoda de a cláusula ter dentes: ela
+   não distingue a peça esquecida há meses da que eu esqueci há dois minutos, e não devia;
+5. verde final, com a quarta classe declarada — `FORA_DO_INDICE 0 esquecidos de 2327 fichas ·
+   por_decisao_assinada 2 de 2` com `PACOTE_MUNICIPAL_OK 17/0`
+   (`evidence/pacote-municipal-pecas-20-11-pos-pacote-completo-no-indice.json`, stdout
+   `evidence/pacote-municipal-stdout-pos-pacote-completo-no-indice-20-11.txt`).
+
+Duas peças ficaram de fora **de propósito**, e a razão não é minha: `evidence/ah2-home-papel-a-papel-v1.json`
+tem decisão assinada em `26e220d` — o campo ambíguo `chave` foi renomeado para `rota_home` no gerador e o
+artefacto re-gerido como v3, que **está** no índice com 42 ocorrências de `rota_home` e zero de `chave` (medido
+por `grep -c`); excepcioná-lo agora seria registrar no portão o nome que o projecto eliminou. E
+`evidence/.funde-v134-18-11.txt` cai na régua verificada de que zero ficheiros com ponto inicial estão
+versionados em `evidence/`. Ambos tinham entrado no meu `git add` por hábito, e saíram por
+`git restore --staged` **antes** de qualquer commit; o portão do índice, corrido com eles dentro, respondeu
+`evidence/ah2-home-papel-a-papel-v1.json|senha n=42` com duas famílias de comprimento (39 de 6, 3 de 16) — e
+comprimentos são o que o portão imprime, nunca o valor. A classe é a que `26e220d` já descrevera: são os nomes
+das rotas Home (`inicio` e `professor-inicio`), e o que os torna visíveis é o *nome do campo* acabar em `chave`.
+Para que estes dois nomes não voltem a ser confundidos com esquecimento, o portão tem a quarta cláusula,
+`os_fora_do_indice_por_decisao_continuam_decididos`: para cada um deles exige que o ficheiro continue em disco,
+continue **fora** do índice, continue **não** ignorado, e que a frase da decisão continue no corpus — cai a
+frase, o nome volta a contar como esquecido e o vermelho regressa, que é o desenho que já usei para o fantasma
+do `bu4`. A falsificação está na linha 5 da tabela de §2.0.
+Fica a ponta solta, e fica dita em vez de ser calada: `scripts/sm7-confere-casa-home.mjs:6` está versionado e lê
+o v1 por caminho fixo, por isso o diff v1-vs-v3 que ele prova corre nesta máquina e **morre de `ENOENT` num clone
+novo**. Aqui ele corre e dá `LEITURA_IGUAL_SUCESSOR_SERVE` (`rename=84`, `NUMEROS_DIFERENTES=0`), o que é a
+confirmação de que o sucessor serve — e também de que o portão não o apanha, porque o corpus dele é a prosa dos
+dois documentos, não os `readFileSync` dos scripts. **FALTA-4:** ou o instrumento passa a apontar para o sucessor
+versionado, ou o v1 entra no índice e o substituto é retirado; as duas opções desfazem algo que já foi decidido,
+por isso pedem escolha explícita e não a minha. A numeração é a das pontas soltas deste runbook: FALTA-1 em §2.6,
+FALTA-2 em §4, FALTA-3 em §2.2, esta aqui.
 
 ### 2.1 · Preflight fresco da peça que se vai aplicar
 
@@ -167,6 +252,15 @@ credencial, exige transacção única `BEGIN…COMMIT`, corre o **preflight fres
 mexido **e** que o mesmo preflight, em modo `--reversao`, dê `P73_PEN38_PREFLIGHT_VERDE_REVERSAO 10/0`.
 *Vermelho significa:* `…_ABORTADA` = o Postgres abortou a transacção inteira, nada ficou aplicado; `…_COM_CONFERENCIA_VERMELHA` =
 alguma coisa foi aplicada e não é o que a candidata afirma, e aí o passo seguinte é a reversão do §4, não repetir.
+**FALTA-3:** a quarta acção desta peça — `bfr_municipal_scope_diagnostico()` — não tem consumidora no código
+servido, e isso mede-se nos bundles, não na minha memória do que escrevi. Varredura dos **17** `index.html`
+versionados: **42** chamadas `.rpc('…')`, das quais **zero** ao diagnóstico — as duas únicas funções que lá são
+chamadas são `bfr_is_municipal_authority` (8) e `bfr_teacher_context` (34) —, e zero no
+`worker-deploy-v120-404/worker.mjs`, onde o padrão `.rpc(` encontra 2 chamadas e `bfr_municipal` nenhuma. O controlo
+positivo dispara na mesma varredura — o padrão encontra `.rpc(` e encontra nomes municipais — por isso o zero não
+é régua cega. O comentário da função aponta para o §12 do documento 08, e o §12 lá está, mas a promessa de tela
+(«dizer por que é que a aba está vazia») só se cumpre quando um bundle a chamar existir. Aplicar PEN-38 sem
+FALTA-3 escrita é criar uma função executável que ninguém chama: não estraga nada, e também não prova a tela.
 
 ### 2.3 · Etiquetar escola↔município (só depois da opção 1 ou 2 do §1, e só com sessão)
 
