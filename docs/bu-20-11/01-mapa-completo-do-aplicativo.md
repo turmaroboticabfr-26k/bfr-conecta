@@ -85,3 +85,4 @@ O portão do censo, cujo nome se lê do emissor em `scripts/bu2-censo-catalogo-2
 - O que cada ecrã mostra com dados verdadeiros, por papel: só 3 papéis têm passada autenticada clicada com vínculo real (§BU-8).
 - Envio de notificações, SMTP, SMS ou WhatsApp: nada medido.
 - A `v137` está gerada e gateada (`V137_BUNDLE_OK 24/0`) mas **não publicada**; nada neste documento descreve a v137 como ar.
+- Os três pontos que aqui não tinham régua própria — os nomes de função que convivem entre corpos de script, as condições de acesso por papel nos dois lados, e a contagem de **colisões de nome / `id` duplicados / código morto** — estão medidos em `09-mapa-estrutural-componentes-e-regras.md` (`BU1_MAPA_VERDE 15/0`); este documento continua a não os contar, e onde os dois discordarem manda o campo do artefacto, não a prosa de nenhum dos dois.

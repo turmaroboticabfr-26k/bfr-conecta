@@ -1,0 +1,1643 @@
+{
+  "em": "2026-11-20T15:31:54.065Z",
+  "modo": "read-only",
+  "instrumento": "scripts/bu1-mapa-estrutural-componentes-e-regras-20-11.mjs",
+  "byte_varrido": {
+    "caminho": "bfr-candidata-v136-secretaria-de-educacao/index.html",
+    "bytes": 3547458,
+    "chars": 3529307,
+    "md5": "9e236a23eed978cf7c2a2743d449b307"
+  },
+  "fontes": {
+    "bu2": {
+      "caminho": "evidence/bu2-censo-catalogo-20-11.json",
+      "bytes": 55464,
+      "md5": "da2a7b1b68d921ced480217ca80b2ea0"
+    },
+    "bu2c": {
+      "caminho": "evidence/bu2c-caminhos-de-autorizacao-20-11c.json",
+      "bytes": 320218,
+      "md5": "897dba0c316079da0c6d67502c83c19f"
+    },
+    "bu3": {
+      "caminho": "evidence/bu3-pegada-de-modulos-20-11e-VERMELHO-de-tres-rpcs-chamados-e-inexistentes.json",
+      "bytes": 63026,
+      "md5": "87dce85209260bf13d8b76a4c8f681d4"
+    },
+    "bu4": {
+      "caminho": "evidence/bu4-digestao-para-documentacao-20-11.json",
+      "bytes": 196313,
+      "md5": "efd4d58308390d08f6076fef52fd393a"
+    }
+  },
+  "segmentacao": {
+    "aberturas_cruas": 109,
+    "fechos_cruas": 104,
+    "corpos_com_texto": 99,
+    "scripts_externos_no_documento": 5,
+    "aberturas_textuais": 5,
+    "fechos_sem_abertura": 0,
+    "chars_de_corpo": 3049574,
+    "chars_soma_dos_corpos": 3049476,
+    "bytes_de_corpo": 3066790,
+    "do_produtor": {
+      "aberturas_honoradas": 104,
+      "aberturas_textuais_dentro_de_corpo": 5,
+      "fechos_que_fecharam_elemento": 104,
+      "fechos_sem_abertura": 0,
+      "eventos_de_tag_no_texto_bruto": 213,
+      "regioes_identificadas": 64,
+      "corpos_de_script_no_documento": 104,
+      "bytes_dos_corpos": 2175310,
+      "bytes_de_todo_script": 3049476,
+      "regioes_sem_identidade": 40,
+      "bytes_sem_identidade": 874166
+    }
+  },
+  "componentes": {
+    "nomes_declarados_distintos": 1720,
+    "declaracoes_no_total": 2483,
+    "por_classe": {
+      "sem_chamada_no_byte": 62,
+      "chamada_em_um_corpo": 1361,
+      "compartilhada_em_dois_ou_mais_corpos": 297
+    },
+    "mais_usados": [
+      {
+        "nome": "observe",
+        "corpos": 50,
+        "chamadas": 59,
+        "declaracoes": 2
+      },
+      {
+        "nome": "esc",
+        "corpos": 48,
+        "chamadas": 1601,
+        "declaracoes": 1
+      },
+      {
+        "nome": "render",
+        "corpos": 34,
+        "chamadas": 319,
+        "declaracoes": 33
+      },
+      {
+        "nome": "db",
+        "corpos": 30,
+        "chamadas": 331,
+        "declaracoes": 28
+      },
+      {
+        "nome": "setInterval",
+        "corpos": 30,
+        "chamadas": 43,
+        "declaracoes": 1
+      },
+      {
+        "nome": "matches",
+        "corpos": 28,
+        "chamadas": 135,
+        "declaracoes": 2
+      },
+      {
+        "nome": "profile",
+        "corpos": 28,
+        "chamadas": 54,
+        "declaracoes": 26
+      },
+      {
+        "nome": "user",
+        "corpos": 27,
+        "chamadas": 273,
+        "declaracoes": 27
+      },
+      {
+        "nome": "load",
+        "corpos": 24,
+        "chamadas": 131,
+        "declaracoes": 20
+      },
+      {
+        "nome": "insert",
+        "corpos": 24,
+        "chamadas": 130,
+        "declaracoes": 1
+      },
+      {
+        "nome": "role",
+        "corpos": 24,
+        "chamadas": 127,
+        "declaracoes": 24
+      },
+      {
+        "nome": "root",
+        "corpos": 22,
+        "chamadas": 114,
+        "declaracoes": 22
+      },
+      {
+        "nome": "classLabel",
+        "corpos": 21,
+        "chamadas": 124,
+        "declaracoes": 3
+      },
+      {
+        "nome": "styles",
+        "corpos": 21,
+        "chamadas": 48,
+        "declaracoes": 21
+      },
+      {
+        "nome": "entries",
+        "corpos": 21,
+        "chamadas": 41,
+        "declaracoes": 7
+      },
+      {
+        "nome": "open",
+        "corpos": 20,
+        "chamadas": 55,
+        "declaracoes": 13
+      },
+      {
+        "nome": "normalize",
+        "corpos": 19,
+        "chamadas": 153,
+        "declaracoes": 2
+      },
+      {
+        "nome": "runtime",
+        "corpos": 19,
+        "chamadas": 88,
+        "declaracoes": 18
+      },
+      {
+        "nome": "ensure",
+        "corpos": 19,
+        "chamadas": 35,
+        "declaracoes": 17
+      },
+      {
+        "nome": "reset",
+        "corpos": 16,
+        "chamadas": 64,
+        "declaracoes": 1
+      },
+      {
+        "nome": "classes",
+        "corpos": 16,
+        "chamadas": 53,
+        "declaracoes": 1
+      },
+      {
+        "nome": "bind",
+        "corpos": 16,
+        "chamadas": 37,
+        "declaracoes": 15
+      },
+      {
+        "nome": "allowed",
+        "corpos": 14,
+        "chamadas": 65,
+        "declaracoes": 14
+      },
+      {
+        "nome": "students",
+        "corpos": 13,
+        "chamadas": 40,
+        "declaracoes": 2
+      },
+      {
+        "nome": "schedule",
+        "corpos": 13,
+        "chamadas": 26,
+        "declaracoes": 13
+      },
+      {
+        "nome": "values",
+        "corpos": 13,
+        "chamadas": 24,
+        "declaracoes": 1
+      },
+      {
+        "nome": "today",
+        "corpos": 12,
+        "chamadas": 85,
+        "declaracoes": 12
+      },
+      {
+        "nome": "sync",
+        "corpos": 11,
+        "chamadas": 22,
+        "declaracoes": 9
+      },
+      {
+        "nome": "o",
+        "corpos": 11,
+        "chamadas": 20,
+        "declaracoes": 1
+      },
+      {
+        "nome": "query",
+        "corpos": 9,
+        "chamadas": 106,
+        "declaracoes": 7
+      }
+    ],
+    "nunca_invocados": [
+      "referrals",
+      "referral",
+      "officialStatus",
+      "warning",
+      "ids",
+      "activeStudent",
+      "records",
+      "extension",
+      "grades",
+      "studentIds",
+      "documents",
+      "studentGrades",
+      "studentAttendance",
+      "activateApplicationModules",
+      "normalizedX",
+      "normalizedY",
+      "showParentState",
+      "grade",
+      "wrapped",
+      "validGrades",
+      "aplicar",
+      "syncMode",
+      "scopedLoader",
+      "showMessage",
+      "links",
+      "lesson",
+      "unavailable",
+      "lancamentos",
+      "semCategoria",
+      "occurrences",
+      "gateAlerts",
+      "roomIds",
+      "tick",
+      "gradeRows",
+      "refreshAfterAuth",
+      "missing",
+      "commitments",
+      "pending",
+      "todayEntries",
+      "activities"
+    ],
+    "colisoes_de_nome": [
+      {
+        "nome": "render",
+        "declaracoes": 33,
+        "corpos": 33
+      },
+      {
+        "nome": "db",
+        "declaracoes": 28,
+        "corpos": 27
+      },
+      {
+        "nome": "user",
+        "declaracoes": 27,
+        "corpos": 26
+      },
+      {
+        "nome": "profile",
+        "declaracoes": 26,
+        "corpos": 26
+      },
+      {
+        "nome": "role",
+        "declaracoes": 24,
+        "corpos": 24
+      },
+      {
+        "nome": "root",
+        "declaracoes": 22,
+        "corpos": 22
+      },
+      {
+        "nome": "styles",
+        "declaracoes": 21,
+        "corpos": 21
+      },
+      {
+        "nome": "load",
+        "declaracoes": 20,
+        "corpos": 20
+      },
+      {
+        "nome": "runtime",
+        "declaracoes": 18,
+        "corpos": 18
+      },
+      {
+        "nome": "ensure",
+        "declaracoes": 17,
+        "corpos": 17
+      },
+      {
+        "nome": "bind",
+        "declaracoes": 15,
+        "corpos": 14
+      },
+      {
+        "nome": "allowed",
+        "declaracoes": 14,
+        "corpos": 14
+      },
+      {
+        "nome": "schedule",
+        "declaracoes": 13,
+        "corpos": 13
+      },
+      {
+        "nome": "open",
+        "declaracoes": 13,
+        "corpos": 13
+      },
+      {
+        "nome": "today",
+        "declaracoes": 12,
+        "corpos": 12
+      },
+      {
+        "nome": "view",
+        "declaracoes": 9,
+        "corpos": 9
+      },
+      {
+        "nome": "reportsMarkup",
+        "declaracoes": 9,
+        "corpos": 9
+      },
+      {
+        "nome": "sync",
+        "declaracoes": 9,
+        "corpos": 9
+      },
+      {
+        "nome": "metric",
+        "declaracoes": 9,
+        "corpos": 9
+      },
+      {
+        "nome": "shellMarkup",
+        "declaracoes": 9,
+        "corpos": 9
+      },
+      {
+        "nome": "rows",
+        "declaracoes": 8,
+        "corpos": 6
+      },
+      {
+        "nome": "init",
+        "declaracoes": 8,
+        "corpos": 8
+      },
+      {
+        "nome": "markup",
+        "declaracoes": 8,
+        "corpos": 8
+      },
+      {
+        "nome": "query",
+        "declaracoes": 7,
+        "corpos": 7
+      },
+      {
+        "nome": "overviewMarkup",
+        "declaracoes": 7,
+        "corpos": 7
+      },
+      {
+        "nome": "entries",
+        "declaracoes": 7,
+        "corpos": 6
+      },
+      {
+        "nome": "student",
+        "declaracoes": 7,
+        "corpos": 5
+      },
+      {
+        "nome": "injectStyles",
+        "declaracoes": 7,
+        "corpos": 7
+      },
+      {
+        "nome": "client",
+        "declaracoes": 7,
+        "corpos": 7
+      },
+      {
+        "nome": "injectStyle",
+        "declaracoes": 7,
+        "corpos": 7
+      }
+    ],
+    "ids": {
+      "ocorrencias": 320,
+      "distintos": 299,
+      "duplicados": [
+        {
+          "id": "gradeTerm",
+          "vezes": 3
+        },
+        {
+          "id": "schoolGamesView",
+          "vezes": 2
+        },
+        {
+          "id": "addActivityBtn",
+          "vezes": 2
+        },
+        {
+          "id": "addGradeBtn",
+          "vezes": 2
+        },
+        {
+          "id": "academicTable",
+          "vezes": 2
+        },
+        {
+          "id": "academicEmpty",
+          "vezes": 2
+        },
+        {
+          "id": "coordinatorPresentCount",
+          "vezes": 2
+        },
+        {
+          "id": "coordinatorPresentRate",
+          "vezes": 2
+        },
+        {
+          "id": "coordinatorCheckinCount",
+          "vezes": 2
+        },
+        {
+          "id": "coordinatorAlertCount",
+          "vezes": 2
+        },
+        {
+          "id": "qrReader",
+          "vezes": 2
+        },
+        {
+          "id": "gradeStudent",
+          "vezes": 2
+        },
+        {
+          "id": "gradeSubject",
+          "vezes": 2
+        },
+        {
+          "id": "gradeAssessment",
+          "vezes": 2
+        },
+        {
+          "id": "gradeScore",
+          "vezes": 2
+        },
+        {
+          "id": "gradeFormError",
+          "vezes": 2
+        },
+        {
+          "id": "attendanceControls",
+          "vezes": 2
+        },
+        {
+          "id": "attendanceDate",
+          "vezes": 2
+        },
+        {
+          "id": "saveAttendanceBtn",
+          "vezes": 2
+        },
+        {
+          "id": "attendanceSaveStatus",
+          "vezes": 2
+        }
+      ]
+    },
+    "classes_css": {
+      "tokens_brutos": 7504,
+      "ocorrencias": 6851,
+      "distintas": 1787,
+      "usadas_uma_sozinha": 1066,
+      "nao_classe": 653,
+      "interpoladas": 162,
+      "topo": [
+        {
+          "classe": "eyebrow",
+          "vezes": 319
+        },
+        {
+          "classe": "panel",
+          "vezes": 159
+        },
+        {
+          "classe": "hidden",
+          "vezes": 150
+        },
+        {
+          "classe": "full",
+          "vezes": 97
+        },
+        {
+          "classe": "primary",
+          "vezes": 83
+        },
+        {
+          "classe": "primary-button",
+          "vezes": 83
+        },
+        {
+          "classe": "text-button",
+          "vezes": 82
+        },
+        {
+          "classe": "tap-target",
+          "vezes": 80
+        },
+        {
+          "classe": "panel-heading",
+          "vezes": 80
+        },
+        {
+          "classe": "nav-icon",
+          "vezes": 77
+        },
+        {
+          "classe": "project-empty",
+          "vezes": 73
+        },
+        {
+          "classe": "nav-item",
+          "vezes": 68
+        },
+        {
+          "classe": "bfr-coord-panel",
+          "vezes": 65
+        },
+        {
+          "classe": "bfr-coord-label",
+          "vezes": 63
+        },
+        {
+          "classe": "bfr-coord-panel-head",
+          "vezes": 60
+        },
+        {
+          "classe": "agenda-intro",
+          "vezes": 53
+        },
+        {
+          "classe": "agenda-count",
+          "vezes": 48
+        },
+        {
+          "classe": "secretary-network-empty",
+          "vezes": 48
+        },
+        {
+          "classe": "bfr-coord-inline-action",
+          "vezes": 39
+        },
+        {
+          "classe": "secretary-network-panel-head",
+          "vezes": 37
+        },
+        {
+          "classe": "bfr-psychology-head",
+          "vezes": 35
+        },
+        {
+          "classe": "mobile-more-option",
+          "vezes": 33
+        },
+        {
+          "classe": "publish-status",
+          "vezes": 33
+        },
+        {
+          "classe": "bfr-ops-section-head",
+          "vezes": 33
+        },
+        {
+          "classe": "bfr-mp-panel",
+          "vezes": 32
+        }
+      ]
+    }
+  },
+  "tecnologias": {
+    "script_src_externo": 5,
+    "script_embutido": 104,
+    "modulo_es": 1,
+    "import_dinamico": 0,
+    "export_topo": 0,
+    "web_component_define": 0,
+    "template_id": 0,
+    "shadow_attach": 0,
+    "supabase_createClient": 3,
+    "supabase_js_no_cdn": 2,
+    "janela_supabase": 6,
+    "fetch": 7,
+    "websocket": 0,
+    "service_worker": 7,
+    "local_storage": 55,
+    "session_storage": 23,
+    "indexed_db": 0,
+    "crypto": 15,
+    "intl": 42,
+    "blob": 14,
+    "file_reader": 1,
+    "innerHTML": 528,
+    "insertAdjacentHTML": 173,
+    "createElement": 220,
+    "querySelector": 2285,
+    "getElementById": 452,
+    "addEventListener": 606,
+    "funcao_async": 403,
+    "setInterval_ou_timeout": 198,
+    "style_embutido": 49,
+    "media_query": 257,
+    "variavel_css_root": 10,
+    "meta_csp": 1,
+    "lang_ptbr": 3,
+    "manifest_link": 1
+  },
+  "origens_externas": [
+    "(mesma_origem)",
+    "bfr-conecta-escola-2026-r7m4q2.pages.bu.app",
+    "cdn.jsdelivr.net",
+    "fonts.googleapis.com",
+    "fonts.gstatic.com",
+    "static.cloudflareinsights.com",
+    "www.gstatic.com",
+    "yyzqoxlkcvqpessypfjo.supabase.co"
+  ],
+  "scripts_externos": [
+    "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.50.0/dist/umd/supabase.min.js",
+    "https://static.cloudflareinsights.com/beacon.min.js/v31edd6df95cf4e85bb4c19e7a9bdbcba1788362987495",
+    "bfr-responsive-presentation.js?v=14",
+    "bfr-teacher-arrivals.js?v=2",
+    "bfr-teacher-audit.js?v=1"
+  ],
+  "folhas_e_liga": [
+    "manifest.json",
+    "bfr-app-logo.png",
+    "bfr-app-logo.png",
+    "https://bfr-conecta-escola-2026-r7m4q2.pages.bu.app/",
+    "https://yyzqoxlkcvqpessypfjo.supabase.co",
+    "https://www.gstatic.com",
+    "https://fonts.googleapis.com",
+    "https://fonts.gstatic.com"
+  ],
+  "regras_de_negocio": {
+    "do_banco": {
+      "politicas": {
+        "total": 495,
+        "sem_filtro": 0,
+        "r_leitura": 231,
+        "a_insercao": 75,
+        "w_atualizacao": 57,
+        "d_exclusao": 20,
+        "estrela_tudo": 112
+      },
+      "funcoes": {
+        "total": 158,
+        "security_definer": 145,
+        "definer_com_search_path": 145,
+        "prefixo_bfr": 119
+      },
+      "mecanismos": {
+        "literal_cast": 55,
+        "literal_nu": 143,
+        "helper": 359,
+        "auth_uid": 264,
+        "jwt_claim": 2,
+        "join_de_ponte": 126,
+        "true_total": 1,
+        "sem_porta_de_papel": 2,
+        "nenhum": 0
+      },
+      "soma_de_marcas": 952,
+      "helpers_no_total": 63,
+      "helpers_com_cargo": 50,
+      "helpers_sem_cargo": [
+        "bfr_chat_can_access_message",
+        "bfr_chat_thread_is_empty",
+        "bfr_current_teacher_id",
+        "bfr_family_can_view_aee",
+        "bfr_pedagogical_can_manage_student",
+        "bfr_profile_in_my_schools",
+        "bfr_rls_session_role",
+        "bfr_school_in_municipal_scope",
+        "bfr_school_in_own_school_scope",
+        "bfr_staff_role",
+        "bfr_support_request_matches",
+        "bfr_teacher_can_manage_class_subject",
+        "sports_role_allowed"
+      ],
+      "helpers_topo": [
+        {
+          "nome": "internal_chat_can_access_room",
+          "definer": true,
+          "cargos": 8,
+          "profundidade": [
+            "internal_chat_can_access_room(prof0)",
+            "internal_chat_is_staff(prof1)"
+          ]
+        },
+        {
+          "nome": "internal_chat_is_staff",
+          "definer": true,
+          "cargos": 8,
+          "profundidade": [
+            "internal_chat_is_staff(prof0)"
+          ]
+        },
+        {
+          "nome": "bfr_psychology_record_access",
+          "definer": true,
+          "cargos": 7,
+          "profundidade": [
+            "bfr_psychology_record_access(prof0)",
+            "current_role(prof1)",
+            "bfr_has_specialized_permission(prof1)",
+            "current_role(prof2)",
+            "bfr_psychology_active_professional(prof1)",
+            "current_role(prof2)"
+          ]
+        },
+        {
+          "nome": "is_approved",
+          "definer": true,
+          "cargos": 7,
+          "profundidade": [
+            "is_approved(prof0)",
+            "current_role(prof1)"
+          ]
+        },
+        {
+          "nome": "bfr_collab_can_profile",
+          "definer": true,
+          "cargos": 6,
+          "profundidade": [
+            "bfr_collab_can_profile(prof0)",
+            "bfr_collab_is_staff(prof1)",
+            "bfr_staff_role(prof2)"
+          ]
+        },
+        {
+          "nome": "bfr_collab_can_project",
+          "definer": true,
+          "cargos": 6,
+          "profundidade": [
+            "bfr_collab_can_project(prof0)",
+            "bfr_collab_is_staff(prof1)",
+            "bfr_staff_role(prof2)",
+            "bfr_collab_is_manager(prof1)",
+            "bfr_staff_role(prof2)"
+          ]
+        },
+        {
+          "nome": "bfr_collab_can_task",
+          "definer": true,
+          "cargos": 6,
+          "profundidade": [
+            "bfr_collab_can_task(prof0)",
+            "bfr_collab_is_staff(prof1)",
+            "bfr_staff_role(prof2)",
+            "bfr_collab_is_manager(prof1)",
+            "bfr_staff_role(prof2)",
+            "bfr_collab_can_project(prof1)"
+          ]
+        },
+        {
+          "nome": "bfr_staff_can_manage_student_scope",
+          "definer": true,
+          "cargos": 6,
+          "profundidade": [
+            "bfr_staff_can_manage_student_scope(prof0)",
+            "bfr_is_schedule_manager(prof1)",
+            "current_role(prof2)",
+            "current_role(prof1)",
+            "bfr_pedagogical_can_manage_student(prof1)",
+            "bfr_subject_matches(prof2)"
+          ]
+        },
+        {
+          "nome": "bfr_staff_can_message_recipient",
+          "definer": true,
+          "cargos": 6,
+          "profundidade": [
+            "bfr_staff_can_message_recipient(prof0)",
+            "bfr_is_staff(prof1)"
+          ]
+        },
+        {
+          "nome": "bfr_support_staff",
+          "definer": true,
+          "cargos": 6,
+          "profundidade": [
+            "bfr_support_staff(prof0)"
+          ]
+        },
+        {
+          "nome": "aee_profile_staff",
+          "definer": true,
+          "cargos": 5,
+          "profundidade": [
+            "aee_profile_staff(prof0)"
+          ]
+        },
+        {
+          "nome": "bfr_can_access_literacy_student",
+          "definer": true,
+          "cargos": 5,
+          "profundidade": [
+            "bfr_can_access_literacy_student(prof0)",
+            "bfr_literacy_staff(prof1)",
+            "bfr_staff_role(prof2)"
+          ]
+        },
+        {
+          "nome": "bfr_can_manage_communications",
+          "definer": true,
+          "cargos": 5,
+          "profundidade": [
+            "bfr_can_manage_communications(prof0)"
+          ]
+        },
+        {
+          "nome": "bfr_chat_is_moderator",
+          "definer": true,
+          "cargos": 5,
+          "profundidade": [
+            "bfr_chat_is_moderator(prof0)"
+          ]
+        },
+        {
+          "nome": "bfr_reading_staff",
+          "definer": true,
+          "cargos": 5,
+          "profundidade": [
+            "bfr_reading_staff(prof0)"
+          ]
+        },
+        {
+          "nome": "bfr_support_detail_access",
+          "definer": true,
+          "cargos": 5,
+          "profundidade": [
+            "bfr_support_detail_access(prof0)",
+            "bfr_support_request_matches(prof1)",
+            "bfr_support_request_access(prof1)",
+            "current_role(prof2)",
+            "current_role(prof1)"
+          ]
+        },
+        {
+          "nome": "bfr_team_can_access_student",
+          "definer": true,
+          "cargos": 5,
+          "profundidade": [
+            "bfr_team_can_access_student(prof0)",
+            "bfr_pedagogical_can_manage_student(prof1)",
+            "bfr_subject_matches(prof2)"
+          ]
+        },
+        {
+          "nome": "aee_can_access_student",
+          "definer": true,
+          "cargos": 4,
+          "profundidade": [
+            "aee_can_access_student(prof0)",
+            "current_role(prof1)"
+          ]
+        },
+        {
+          "nome": "aee_game_can_access_student",
+          "definer": true,
+          "cargos": 4,
+          "profundidade": [
+            "aee_game_can_access_student(prof0)",
+            "current_role(prof1)",
+            "aee_can_access_student(prof1)",
+            "current_role(prof2)"
+          ]
+        },
+        {
+          "nome": "bfr_can_manage_lesson_attendance",
+          "definer": true,
+          "cargos": 4,
+          "profundidade": [
+            "bfr_can_manage_lesson_attendance(prof0)"
+          ]
+        }
+      ]
+    },
+    "do_cliente": {
+      "comparacoes_de_papel": 1645,
+      "literais_por_papel": {
+        "pending": 66,
+        "parent": 77,
+        "student": 59,
+        "pedagogical": 89,
+        "developer": 194,
+        "monitor": 35,
+        "gatekeeper": 25,
+        "coordinator": 83,
+        "secretary": 51,
+        "aee": 78,
+        "director": 85,
+        "psychology": 45,
+        "social_work": 17,
+        "sports_operator": 9,
+        "education_supervisor": 14
+      },
+      "portas_por_papel": {
+        "pending": 19,
+        "parent": 23,
+        "student": 16,
+        "pedagogical": 30,
+        "developer": 55,
+        "monitor": 5,
+        "gatekeeper": 4,
+        "coordinator": 11,
+        "secretary": 8,
+        "aee": 7,
+        "director": 8,
+        "psychology": 7,
+        "social_work": 4,
+        "sports_operator": 5,
+        "education_supervisor": 4
+      }
+    },
+    "cruzamento": [
+      {
+        "papel": "pending",
+        "portas_no_cliente": 19,
+        "pares_mesa_lado_no_banco": 2,
+        "mesas_distintas_no_banco": 1,
+        "classe": "nos_dos_lados"
+      },
+      {
+        "papel": "parent",
+        "portas_no_cliente": 23,
+        "pares_mesa_lado_no_banco": 20,
+        "mesas_distintas_no_banco": 20,
+        "classe": "nos_dos_lados"
+      },
+      {
+        "papel": "student",
+        "portas_no_cliente": 16,
+        "pares_mesa_lado_no_banco": 21,
+        "mesas_distintas_no_banco": 21,
+        "classe": "nos_dos_lados"
+      },
+      {
+        "papel": "pedagogical",
+        "portas_no_cliente": 30,
+        "pares_mesa_lado_no_banco": 132,
+        "mesas_distintas_no_banco": 87,
+        "classe": "nos_dos_lados"
+      },
+      {
+        "papel": "developer",
+        "portas_no_cliente": 55,
+        "pares_mesa_lado_no_banco": 309,
+        "mesas_distintas_no_banco": 166,
+        "classe": "nos_dos_lados"
+      },
+      {
+        "papel": "monitor",
+        "portas_no_cliente": 5,
+        "pares_mesa_lado_no_banco": 21,
+        "mesas_distintas_no_banco": 19,
+        "classe": "nos_dos_lados"
+      },
+      {
+        "papel": "gatekeeper",
+        "portas_no_cliente": 4,
+        "pares_mesa_lado_no_banco": 16,
+        "mesas_distintas_no_banco": 16,
+        "classe": "nos_dos_lados"
+      },
+      {
+        "papel": "coordinator",
+        "portas_no_cliente": 11,
+        "pares_mesa_lado_no_banco": 234,
+        "mesas_distintas_no_banco": 135,
+        "classe": "nos_dos_lados"
+      },
+      {
+        "papel": "secretary",
+        "portas_no_cliente": 8,
+        "pares_mesa_lado_no_banco": 125,
+        "mesas_distintas_no_banco": 75,
+        "classe": "nos_dos_lados"
+      },
+      {
+        "papel": "aee",
+        "portas_no_cliente": 7,
+        "pares_mesa_lado_no_banco": 133,
+        "mesas_distintas_no_banco": 83,
+        "classe": "nos_dos_lados"
+      },
+      {
+        "papel": "director",
+        "portas_no_cliente": 8,
+        "pares_mesa_lado_no_banco": 225,
+        "mesas_distintas_no_banco": 131,
+        "classe": "nos_dos_lados"
+      },
+      {
+        "papel": "psychology",
+        "portas_no_cliente": 7,
+        "pares_mesa_lado_no_banco": 29,
+        "mesas_distintas_no_banco": 16,
+        "classe": "nos_dos_lados"
+      },
+      {
+        "papel": "social_work",
+        "portas_no_cliente": 4,
+        "pares_mesa_lado_no_banco": 28,
+        "mesas_distintas_no_banco": 16,
+        "classe": "nos_dos_lados"
+      },
+      {
+        "papel": "sports_operator",
+        "portas_no_cliente": 5,
+        "pares_mesa_lado_no_banco": 3,
+        "mesas_distintas_no_banco": 3,
+        "classe": "nos_dos_lados"
+      },
+      {
+        "papel": "education_supervisor",
+        "portas_no_cliente": 4,
+        "pares_mesa_lado_no_banco": 20,
+        "mesas_distintas_no_banco": 16,
+        "classe": "nos_dos_lados"
+      }
+    ]
+  },
+  "classes_de_cruzamento": {
+    "nos_dos_lados": [
+      "pending",
+      "parent",
+      "student",
+      "pedagogical",
+      "developer",
+      "monitor",
+      "gatekeeper",
+      "coordinator",
+      "secretary",
+      "aee",
+      "director",
+      "psychology",
+      "social_work",
+      "sports_operator",
+      "education_supervisor"
+    ],
+    "so_no_cliente": [],
+    "so_no_banco": [],
+    "em_nenhum_lado": []
+  },
+  "cobertura_do_briefing": [
+    {
+      "ponto_do_briefing": "estrutura do projeto",
+      "agulhas_procuradas": [
+        "estrutura"
+      ],
+      "documentos_onde_se_espera": [
+        "01",
+        "02"
+      ],
+      "documentos_onde_a_palavra_aparece": [
+        "01",
+        "02"
+      ],
+      "ficheiros_em_falta_na_arvore": [],
+      "endereco_declarado": "01 §1",
+      "estado": "COBERTO"
+    },
+    {
+      "ponto_do_briefing": "arquitetura",
+      "agulhas_procuradas": [
+        "arquitetura",
+        "camada"
+      ],
+      "documentos_onde_se_espera": [
+        "09",
+        "01"
+      ],
+      "documentos_onde_a_palavra_aparece": [
+        "09",
+        "01"
+      ],
+      "ficheiros_em_falta_na_arvore": [],
+      "endereco_declarado": "09 §1",
+      "estado": "COBERTO"
+    },
+    {
+      "ponto_do_briefing": "tecnologias utilizadas",
+      "agulhas_procuradas": [
+        "tecnologia",
+        "supabase-js",
+        "cdn"
+      ],
+      "documentos_onde_se_espera": [
+        "09"
+      ],
+      "documentos_onde_a_palavra_aparece": [
+        "09"
+      ],
+      "ficheiros_em_falta_na_arvore": [],
+      "endereco_declarado": "09 §2",
+      "estado": "COBERTO"
+    },
+    {
+      "ponto_do_briefing": "banco de dados",
+      "agulhas_procuradas": [
+        "banco"
+      ],
+      "documentos_onde_se_espera": [
+        "01",
+        "09"
+      ],
+      "documentos_onde_a_palavra_aparece": [
+        "01",
+        "09"
+      ],
+      "ficheiros_em_falta_na_arvore": [],
+      "endereco_declarado": "01 §4 + 09 §5",
+      "estado": "COBERTO"
+    },
+    {
+      "ponto_do_briefing": "perfis",
+      "agulhas_procuradas": [
+        "perfil",
+        "papel"
+      ],
+      "documentos_onde_se_espera": [
+        "03"
+      ],
+      "documentos_onde_a_palavra_aparece": [
+        "03"
+      ],
+      "ficheiros_em_falta_na_arvore": [],
+      "endereco_declarado": "03",
+      "estado": "COBERTO"
+    },
+    {
+      "ponto_do_briefing": "rotas",
+      "agulhas_procuradas": [
+        "rota"
+      ],
+      "documentos_onde_se_espera": [
+        "01",
+        "02"
+      ],
+      "documentos_onde_a_palavra_aparece": [
+        "01",
+        "02"
+      ],
+      "ficheiros_em_falta_na_arvore": [],
+      "endereco_declarado": "01 §2 + 02",
+      "estado": "COBERTO"
+    },
+    {
+      "ponto_do_briefing": "abas",
+      "agulhas_procuradas": [
+        "aba"
+      ],
+      "documentos_onde_se_espera": [
+        "01",
+        "05"
+      ],
+      "documentos_onde_a_palavra_aparece": [
+        "01",
+        "05"
+      ],
+      "ficheiros_em_falta_na_arvore": [],
+      "endereco_declarado": "01 §2 + 05",
+      "estado": "COBERTO"
+    },
+    {
+      "ponto_do_briefing": "módulos",
+      "agulhas_procuradas": [
+        "módulo"
+      ],
+      "documentos_onde_se_espera": [
+        "02"
+      ],
+      "documentos_onde_a_palavra_aparece": [
+        "02"
+      ],
+      "ficheiros_em_falta_na_arvore": [],
+      "endereco_declarado": "02",
+      "estado": "COBERTO"
+    },
+    {
+      "ponto_do_briefing": "funcionalidades",
+      "agulhas_procuradas": [
+        "funcionalidade"
+      ],
+      "documentos_onde_se_espera": [
+        "02",
+        "06"
+      ],
+      "documentos_onde_a_palavra_aparece": [
+        "02",
+        "06"
+      ],
+      "ficheiros_em_falta_na_arvore": [],
+      "endereco_declarado": "02 + 06",
+      "estado": "COBERTO"
+    },
+    {
+      "ponto_do_briefing": "integrações",
+      "agulhas_procuradas": [
+        "integra"
+      ],
+      "documentos_onde_se_espera": [
+        "01"
+      ],
+      "documentos_onde_a_palavra_aparece": [
+        "01"
+      ],
+      "ficheiros_em_falta_na_arvore": [],
+      "endereco_declarado": "01 §5",
+      "estado": "COBERTO"
+    },
+    {
+      "ponto_do_briefing": "componentes compartilhados",
+      "agulhas_procuradas": [
+        "componente compartilhado",
+        "compartilhada"
+      ],
+      "documentos_onde_se_espera": [
+        "09"
+      ],
+      "documentos_onde_a_palavra_aparece": [
+        "09"
+      ],
+      "ficheiros_em_falta_na_arvore": [],
+      "endereco_declarado": "09 §3 e §4",
+      "estado": "COBERTO"
+    },
+    {
+      "ponto_do_briefing": "regras de negócio",
+      "agulhas_procuradas": [
+        "regra de negócio",
+        "mecanismo"
+      ],
+      "documentos_onde_se_espera": [
+        "09"
+      ],
+      "documentos_onde_a_palavra_aparece": [
+        "09"
+      ],
+      "ficheiros_em_falta_na_arvore": [],
+      "endereco_declarado": "09 §5 e §6",
+      "estado": "COBERTO"
+    }
+  ],
+  "controlo_negativo_da_cobertura": {
+    "ponto": "linha de montagem de satélites (controlo negativo)",
+    "agulhas": [
+      "satélite artesanal de cobre"
+    ],
+    "em_espera": [
+      "09"
+    ],
+    "encontrados": [],
+    "estado": "NAO_COBERTO"
+  },
+  "fixtures_das_reguas": [
+    {
+      "regua": "segmentacao_de_corpos",
+      "dispara_em_fixture": true,
+      "n": 2,
+      "minimo": 2,
+      "detalhe": {
+        "corpos": 2,
+        "textuais": 1,
+        "externos": 1,
+        "sem_fecho": 0
+      }
+    },
+    {
+      "regua": "declaracao_de_funcao",
+      "dispara_em_fixture": true,
+      "n": 2,
+      "minimo": 2
+    },
+    {
+      "regua": "invocacao",
+      "dispara_em_fixture": true,
+      "n": 3,
+      "minimo": 3
+    },
+    {
+      "regua": "id_duplicado",
+      "dispara_em_fixture": true,
+      "n": 2,
+      "minimo": 2
+    },
+    {
+      "regua": "classe_multiple",
+      "dispara_em_fixture": true,
+      "n": 2,
+      "minimo": 2
+    },
+    {
+      "regua": "tokens_de_classe",
+      "dispara_em_fixture": true,
+      "n": 3,
+      "minimo": 3
+    },
+    {
+      "regua": "web_component_define",
+      "dispara_em_fixture": true,
+      "n": 1,
+      "minimo": 1
+    },
+    {
+      "regua": "modulo_es",
+      "dispara_em_fixture": true,
+      "n": 1,
+      "minimo": 1
+    },
+    {
+      "regua": "comparacao_de_papel",
+      "dispara_em_fixture": true,
+      "n": 1,
+      "minimo": 1
+    },
+    {
+      "regua": "comparacao_invertida_de_papel",
+      "dispara_em_fixture": true,
+      "n": 1,
+      "minimo": 1
+    },
+    {
+      "regua": "lista_contem_papel",
+      "dispara_em_fixture": true,
+      "n": 1,
+      "minimo": 1
+    }
+  ],
+  "veredictos": [
+    {
+      "nome": "o_byte_varrido_e_o_mesmo_certificado_por_bu3_e_bu4",
+      "veredito": "VERDE",
+      "detalhe": {
+        "varrido": {
+          "md5": "9e236a23eed978cf7c2a2743d449b307",
+          "bytes": 3547458,
+          "chars": 3529307
+        },
+        "bu3": {
+          "caminho": "bfr-candidata-v136-secretaria-de-educacao/index.html",
+          "bytes": 3547458,
+          "md5": "9e236a23eed978cf7c2a2743d449b307",
+          "chars": 3529307
+        },
+        "bu4": {
+          "md5": "9e236a23eed978cf7c2a2743d449b307",
+          "bytes": 3547458
+        }
+      }
+    },
+    {
+      "nome": "a_contagem_de_aberturas_bate_com_a_regua_do_produtor",
+      "veredito": "VERDE",
+      "detalhe": {
+        "aberturas_cruas": 109,
+        "honoradas_do_produtor": 104,
+        "textuais_do_produtor": 5,
+        "fechos_cruas": 104
+      }
+    },
+    {
+      "nome": "os_corpos_varridos_sao_os_registrados_pelo_produtor",
+      "veredito": "VERDE",
+      "detalhe": {
+        "corpos_com_texto": 99,
+        "externos": 5,
+        "textuais": 5,
+        "sem_fecho": 0,
+        "honoradas_do_produtor": 104,
+        "textuais_do_produtor": 5,
+        "fechos_sem_abertura_do_produtor": 0
+      }
+    },
+    {
+      "nome": "a_soma_de_chars_dos_corpos_bate_com_a_grandeza_que_o_produtor_chama_bytes",
+      "veredito": "VERDE",
+      "detalhe": {
+        "chars_dos_corpos_aqui": 3049476,
+        "bytes_de_todo_script_do_produtor": 3049476,
+        "delta": 0,
+        "bytes_dos_corpos_do_produtor": 2175310,
+        "bytes_sem_identidade_do_produtor": 874166,
+        "bytes_utf8_aqui": 3066790,
+        "nota": "o rótulo do produtor diz bytes, o valor que bate é a contagem de caracteres; bytes UTF-8 reais medidos aqui são outros"
+      }
+    },
+    {
+      "nome": "as_tres_classes_de_componente_particionam_os_nomes_declarados",
+      "veredito": "VERDE",
+      "detalhe": {
+        "soma": 1720,
+        "distintos": 1720,
+        "sem_chamada": 62,
+        "num_corpo": 1361,
+        "dois_ou_mais": 297
+      }
+    },
+    {
+      "nome": "a_classe_compartilhada_e_mais_estreita_que_a_classe_chamada_uma_vez_por_todas_as_ocorrencias",
+      "veredito": "VERDE",
+      "detalhe": {
+        "por_corpo": 297,
+        "por_ocorrencia": 1525
+      }
+    },
+    {
+      "nome": "os_ids_duplicados_sao_a_relacao_medida_entre_ocorrencias_e_distintos",
+      "veredito": "VERDE",
+      "detalhe": {
+        "ocorrencias": 320,
+        "distintos": 299,
+        "nomes_duplicados": 20,
+        "excesso_somado": 21
+      }
+    },
+    {
+      "nome": "as_colisoes_de_nome_batem_com_declaracoes_menos_distintos",
+      "veredito": "VERDE",
+      "detalhe": {
+        "declaracoes": 2483,
+        "distintos": 1720,
+        "nomes_em_colisao": 276,
+        "excesso_somado": 763,
+        "topo": [
+          {
+            "nome": "render",
+            "declaracoes": 33,
+            "corpos": 33
+          },
+          {
+            "nome": "db",
+            "declaracoes": 28,
+            "corpos": 27
+          },
+          {
+            "nome": "user",
+            "declaracoes": 27,
+            "corpos": 26
+          },
+          {
+            "nome": "profile",
+            "declaracoes": 26,
+            "corpos": 26
+          },
+          {
+            "nome": "role",
+            "declaracoes": 24,
+            "corpos": 24
+          },
+          {
+            "nome": "root",
+            "declaracoes": 22,
+            "corpos": 22
+          }
+        ]
+      }
+    },
+    {
+      "nome": "as_categorias_de_politica_particionam_o_total_lido_do_produto",
+      "veredito": "VERDE",
+      "detalhe": {
+        "soma_das_cinco": 495,
+        "total_lido": 495,
+        "sem_filtro": 0,
+        "unidade": "politicas_de_rls_no_catalogo"
+      }
+    },
+    {
+      "nome": "as_marcas_de_mecanismo_batem_com_a_soma_do_produtor",
+      "veredito": "VERDE",
+      "detalhe": {
+        "somado_aqui": 952,
+        "declarado_pelo_produtor": 952,
+        "politicas_lidas": 495
+      }
+    },
+    {
+      "nome": "todo_papel_recebe_uma_classe_de_cruzamento_e_as_quatro_classes_sao_impressas",
+      "veredito": "VERDE",
+      "detalhe": {
+        "papeis": 15,
+        "contagens_por_classe": {
+          "nos_dos_lados": 15,
+          "so_no_cliente": 0,
+          "so_no_banco": 0,
+          "em_nenhum_lado": 0
+        },
+        "tabelas_no_catalogo": 183,
+        "maior_uniao": 166,
+        "maior_soma_de_lados": 309
+      }
+    },
+    {
+      "nome": "as_classes_de_vocabulario_vazias_sao_impressas_com_zero_em_vez_de_suprimidas",
+      "veredito": "VERDE",
+      "detalhe": {
+        "classes_com_zero": 7,
+        "total_de_classes": 35,
+        "nomes_com_zero": [
+          "import_dinamico",
+          "export_topo",
+          "web_component_define",
+          "template_id",
+          "shadow_attach",
+          "websocket",
+          "indexed_db"
+        ]
+      }
+    },
+    {
+      "nome": "nenhuma_regua_está_morta",
+      "veredito": "VERDE",
+      "detalhe": []
+    },
+    {
+      "nome": "nenhum_ponto_do_briefing_fica_sem_cobertura_e_o_ponto_inventado_e_chumbado",
+      "veredito": "VERDE",
+      "detalhe": {
+        "nao_cobertos": [],
+        "pontos": 12,
+        "controlo_inventado": {
+          "ponto": "linha de montagem de satélites (controlo negativo)",
+          "agulhas": [
+            "satélite artesanal de cobre"
+          ],
+          "em_espera": [
+            "09"
+          ],
+          "encontrados": [],
+          "estado": "NAO_COBERTO"
+        }
+      }
+    },
+    {
+      "nome": "os_tokens_de_classe_sao_a_soma_das_contadas_mais_as_descartadas",
+      "veredito": "VERDE",
+      "detalhe": {
+        "brutos": 7504,
+        "contados": 6851,
+        "descartados": 653,
+        "formas_descartadas": [
+          [
+            "?",
+            94
+          ],
+          [
+            ":",
+            91
+          ],
+          [
+            "''}",
+            62
+          ],
+          [
+            "===",
+            39
+          ],
+          [
+            "'warn'",
+            11
+          ],
+          [
+            "'is-selected'",
+            10
+          ]
+        ],
+        "interpoladas": 162
+      }
+    }
+  ],
+  "veredito_final": "BU1_MAPA_VERDE 15/0",
+  "msd": 1685
+}

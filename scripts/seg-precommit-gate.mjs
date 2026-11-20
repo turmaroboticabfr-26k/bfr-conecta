@@ -25,8 +25,11 @@ const GIT = (args) => execFileSync('git', args, { cwd: REPO, encoding: 'utf8' })
 const staged = process.argv.includes('--staged');
 const ackBin = process.argv.includes('--ack-binario');
 const memDir = process.argv.find((a) => a.startsWith('--mem-dir='));
+// core.quotePath=false: sem isto o git escapa em octal qualquer nome com letra acentuada
+// ("…-AP\303\223S-…"), o existsSync nao resolve e o portao chumba por ficheiro INEXISTENTE —
+// falha segura, mas o resultado e o mesmo de nao ler: 21 nomes staged, 19 lidos (20/11, medido).
 const files = staged
-  ? GIT(['diff', '--cached', '--name-only', '--diff-filter=ACM']).split('\n').filter(Boolean)
+  ? GIT(['-c', 'core.quotePath=false', 'diff', '--cached', '--name-only', '--diff-filter=ACM']).split('\n').filter(Boolean)
   : process.argv.slice(2).filter((a) => !a.startsWith('--'));
 if (!files.length) { console.log('INSTRUMENTO CEGO: nenhum ficheiro para verificar'); process.exit(1); }
 
