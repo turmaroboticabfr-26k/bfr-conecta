@@ -1,0 +1,529 @@
+{
+  "programa": "scripts/p73-rm52-regua-de-completude-20-11.mjs",
+  "em": "2026-11-20T07:22:30.300Z",
+  "duracao_ms": 3783,
+  "metodo": "Bytes lidos do bundle VERSIONADO (md5 conferido contra o artefacto verde do estado), com contagem de ocorrências por `indexOf`, regiões por `<script>` e suas fronteiras, e catálogo SQL só de leitura. Nenhuma rede autenticada, nenhuma escrita.",
+  "autorizacao": "Só leitura: nenhum DDL aplicado, nenhuma linha escrita, nenhuma publicação, nenhum push.",
+  "bundle": {
+    "caminho": "C:/Users/pcmac/Documents/Qoder/2026-10-13/28077d9a/bfr-conecta/bfr-candidata-v136-secretaria-de-educacao/index.html",
+    "md5": "9e236a23eed978cf7c2a2743d449b307",
+    "bytes": 3547458,
+    "caracteres": 3529307
+  },
+  "referencia": {
+    "artefacto": "evidence/p73-rm52-estado-calendario-20-11.json",
+    "veredito": "RM52_ESTADO_VERDE",
+    "em": "2026-11-20T07:00:16.936Z"
+  },
+  "prontidao_do_painel": {
+    "ocorrencias_calendarDays_length": 1,
+    "ocorrencias_calendarReady": 2,
+    "exige365": true,
+    "exige_todos_confirmados": true,
+    "contagens_alternativas": 0,
+    "janela_textual": "tem.official_name)} · ${esc(classLabel(classById(item.class_id)))}</option>`).join('');\n    const calendarReady = state.calendarDays.length===365 && state.calendarDays.every(item=>item.source_status==='confirmed');\n    return `<section class=\"bfr-coord-panel\"><div class=\"bfr-coord-panel-head\"><div><span class=\"bfr-coor"
+  },
+  "aritmetica": {
+    "ano": 2026,
+    "datas_2026": 365,
+    "seg_sex_por_mes": [
+      22,
+      20,
+      22,
+      22,
+      21,
+      22,
+      23,
+      21,
+      22,
+      22,
+      21,
+      23
+    ],
+    "seg_sex_soma": 261,
+    "seg_sex_por_ano": 261,
+    "seg_sab_por_mes": [
+      27,
+      24,
+      26,
+      26,
+      26,
+      26,
+      27,
+      26,
+      26,
+      27,
+      25,
+      27
+    ],
+    "seg_sab_soma": 313,
+    "seg_sab_por_ano": 313,
+    "meses_com_meta_acima_de_31": [],
+    "linhas_de_semente": {
+      "dias": 365,
+      "turnos": 2,
+      "metas": 12,
+      "total": 379
+    },
+    "bissextos": [
+      {
+        "ano": 2026,
+        "datas": 365,
+        "fevereiro": 28
+      },
+      {
+        "ano": 2027,
+        "datas": 365,
+        "fevereiro": 28
+      },
+      {
+        "ano": 2028,
+        "datas": 366,
+        "fevereiro": 29
+      },
+      {
+        "ano": 2032,
+        "datas": 366,
+        "fevereiro": 29
+      }
+    ]
+  },
+  "portarias": {
+    "definicoes": [
+      {
+        "pos": 900391,
+        "regiao_off": 750635,
+        "regiao_tag": "<script id=\"bfr-public-schedule-fallback\">",
+        "regiao_ate": 1338272
+      },
+      {
+        "pos": 3045185,
+        "regiao_off": 3041341,
+        "regiao_tag": "<script type=\"text/plain\" data-bfr-auth-deferred>",
+        "regiao_ate": 3130003
+      }
+    ],
+    "regiao_diferida": {
+      "de": 3041341,
+      "ate": 3130003
+    },
+    "regiao_da_base": {
+      "de": 750635,
+      "ate": 1338272
+    },
+    "hide_legacy": "function hideLegacy() { root()?.querySelectorAll(':scope > .gate-welcome,:scope > .gate-layout').forEach(item => item.classList.add('bfr-gate-legacy')); }\n  function placeCommunityContent() {\n    const content = state.view?.querySelector('[data-gate-community-content]');\n    const birthdays = state.",
+    "css_legacy": "#gatekeeperView .bfr-gate-legacy{display:none!important}#gatekeeperView .bfr-gate-central{display:grid;gap:13px;margin-b",
+    "marcador_formulario_base": "data-gate-manual-form",
+    "marcador_formulario_diferido": "data-gate-central-manual",
+    "contagens": {
+      "form_base_total": 2,
+      "form_base_na_diferida": 0,
+      "form_diferido_total": 2,
+      "form_diferido_na_base": 0
+    },
+    "loader": {
+      "seletor": "script[type=\"text/plain\"][data-bfr-auth-deferred],script[type=\"text/plain\"][data-bfr-deferred]",
+      "gatilho": "if (data?.session || hasOAuthCallback) await loadApplication()",
+      "script_tags_totais": 109,
+      "scripts_text_plain": 80,
+      "scripts_com_atributo_diferido": 62,
+      "scripts_desativados": 4
+    }
+  },
+  "rpc_no_catalogo": {
+    "register_gate_checkin_v2": 0,
+    "register_gate_checkin": 1,
+    "bfr_confirm_school_calendar": 0
+  },
+  "rpc_pelo_fio_do_artefacto_verde": {
+    "bfr_confirm_school_calendar": "404/PGRST202",
+    "correct_gate_attendance": "404/PGRST202",
+    "register_gate_checkin_v2": "404/PGRST202"
+  },
+  "linhas_das_mesas": [
+    {
+      "tabela": "bfr_school_calendar_days",
+      "linhas": 0
+    },
+    {
+      "tabela": "bfr_school_shift_settings",
+      "linhas": 0
+    },
+    {
+      "tabela": "bfr_school_calendar_month_targets",
+      "linhas": 0
+    }
+  ],
+  "politicas_das_tres_mesas": [
+    {
+      "nome": "bfr_school_calendar_days_managers_write",
+      "tabela": "bfr_school_calendar_days",
+      "comando_cru": "*",
+      "papeis_da_policy": [
+        "authenticated"
+      ],
+      "cargos_na_expressao": [
+        "coordinator",
+        "developer",
+        "director",
+        "coordinator",
+        "developer",
+        "director"
+      ]
+    },
+    {
+      "nome": "bfr_school_calendar_days_staff_read",
+      "tabela": "bfr_school_calendar_days",
+      "comando_cru": "r",
+      "papeis_da_policy": [
+        "authenticated"
+      ],
+      "cargos_na_expressao": [
+        "parent",
+        "student"
+      ]
+    },
+    {
+      "nome": "bfr_school_calendar_month_targets_managers_write",
+      "tabela": "bfr_school_calendar_month_targets",
+      "comando_cru": "*",
+      "papeis_da_policy": [
+        "authenticated"
+      ],
+      "cargos_na_expressao": [
+        "coordinator",
+        "developer",
+        "director",
+        "coordinator",
+        "developer",
+        "director"
+      ]
+    },
+    {
+      "nome": "bfr_school_calendar_month_targets_staff_read",
+      "tabela": "bfr_school_calendar_month_targets",
+      "comando_cru": "r",
+      "papeis_da_policy": [
+        "authenticated"
+      ],
+      "cargos_na_expressao": [
+        "parent",
+        "student"
+      ]
+    },
+    {
+      "nome": "bfr_school_shift_settings_managers_write",
+      "tabela": "bfr_school_shift_settings",
+      "comando_cru": "*",
+      "papeis_da_policy": [
+        "authenticated"
+      ],
+      "cargos_na_expressao": [
+        "coordinator",
+        "developer",
+        "director",
+        "coordinator",
+        "developer",
+        "director"
+      ]
+    },
+    {
+      "nome": "bfr_school_shift_settings_staff_read",
+      "tabela": "bfr_school_shift_settings",
+      "comando_cru": "r",
+      "papeis_da_policy": [
+        "authenticated"
+      ],
+      "cargos_na_expressao": [
+        "parent",
+        "student"
+      ]
+    }
+  ],
+  "cargos_que_escrevem_calendario": [
+    "coordinator",
+    "developer",
+    "director"
+  ],
+  "cargos_excluidos_da_leitura": [
+    "parent",
+    "student"
+  ],
+  "o_que_este_verde_prova": "Que a prontidão do painel é uma contagem fixa de 365 linhas com todas confirmadas, que essa contagem é insatisfaível num ano de 366 datas, que existem duas portarias servidas em regiões de execução diferentes, que a região diferida esconde o formulário da base e submete para `register_gate_checkin_v2`, e que esse RPC não existe no catálogo enquanto o v1 existe.",
+  "o_que_este_verde_nao_autoriza": "Nada privilegiado: não aplica DDL, não cria RPC, não semeia conteúdo, não publica, não faz push.",
+  "falta_declarada": "A prova do clique no DOM vivo — que ouvinte está de facto ligado ao formulário alcançável e que nome de RPC sai no fio quando se submete — é de browser e continua por correr. O critério de fecho é: abrir a portaria com sessão de `gatekeeper`, enumerar os ouvintes do formulário alcançável e registar o nome do rpc pedido, com o registo de `gate_checkins` conferido antes e depois para provar que nada foi escrito.",
+  "portoes": [
+    {
+      "nome": "o_ficheiro_versionado_e_a_pego_dos_bytes_que_o_artefacto_verde_declarou_servidos",
+      "verde": true,
+      "detalhe": {
+        "md5_lido": "9e236a23eed978cf7c2a2743d449b307",
+        "md5_do_artefacto": "9e236a23eed978cf7c2a2743d449b307",
+        "bytes_lidos": 3547458,
+        "bytes_do_artefacto": 3547458
+      }
+    },
+    {
+      "nome": "a_prontidao_do_painel_e_uma_contagem_fixa_de_365_linhas_e_nao_uma_cobertura_de_datas",
+      "verde": true,
+      "detalhe": {
+        "ocorrencias_calendarDays_length": 1,
+        "exige365": true,
+        "exige_todos_confirmados": true,
+        "contagens_alternativas_lidas": 0,
+        "ocorrencias_calendarReady": 2,
+        "janela": "tem.official_name)} · ${esc(classLabel(classById(item.class_id)))}</option>`).join('');\n    const calendarReady = state.calendarDays.length===365 && state.calendarDays.every(item=>item.source_status=="
+      }
+    },
+    {
+      "nome": "a_aritmetica_por_mes_bate_com_a_por_ano_e_com_a_terceira_contagem_do_artefacto_verde",
+      "verde": true,
+      "detalhe": {
+        "seg_sex_por_mes": [
+          22,
+          20,
+          22,
+          22,
+          21,
+          22,
+          23,
+          21,
+          22,
+          22,
+          21,
+          23
+        ],
+        "soma": 261,
+        "por_ano": 261,
+        "seg_sab_por_mes": [
+          27,
+          24,
+          26,
+          26,
+          26,
+          26,
+          27,
+          26,
+          26,
+          27,
+          25,
+          27
+        ],
+        "soma_seg_sab": 313,
+        "metas_do_artefacto": [
+          22,
+          20,
+          22,
+          22,
+          21,
+          22,
+          23,
+          21,
+          22,
+          22,
+          21,
+          23
+        ],
+        "datas_2026": 365
+      }
+    },
+    {
+      "nome": "a_contagem_fixa_de_365_e_intransponivel_num_ano_bissexto_e_2026_nao_e_bissexto",
+      "verde": true,
+      "detalhe": {
+        "bissextos": [
+          {
+            "ano": 2026,
+            "datas": 365,
+            "fevereiro": 28
+          },
+          {
+            "ano": 2027,
+            "datas": 365,
+            "fevereiro": 28
+          },
+          {
+            "ano": 2028,
+            "datas": 366,
+            "fevereiro": 29
+          },
+          {
+            "ano": 2032,
+            "datas": 366,
+            "fevereiro": 29
+          }
+        ],
+        "regra": "datas do ano !== 365 nos bissextos, logo 366 datas nunca caberiam na contagem fixa"
+      }
+    },
+    {
+      "nome": "nenhuma_meta_mensal_ultrapassa_o_CHECK_de_31_dias_mesmo_com_sabado_letivo",
+      "verde": true,
+      "detalhe": {
+        "meses_fora_do_CHECK": [],
+        "seg_sab_por_mes": [
+          27,
+          24,
+          26,
+          26,
+          26,
+          26,
+          27,
+          26,
+          26,
+          27,
+          25,
+          27
+        ]
+      }
+    },
+    {
+      "nome": "as_duas_portarias_servidas_estao_em_regioes_de_execucao_diferentes",
+      "verde": true,
+      "detalhe": {
+        "definicoes": [
+          900391,
+          3045185
+        ],
+        "regioes": [
+          {
+            "pos": 900391,
+            "off_regiao": 750635,
+            "tag": "<script id=\"bfr-public-schedule-fallback\">"
+          },
+          {
+            "pos": 3045185,
+            "off_regiao": 3041341,
+            "tag": "<script type=\"text/plain\" data-bfr-auth-deferred>"
+          }
+        ]
+      }
+    },
+    {
+      "nome": "a_portaria_diferida_esconde_a_da_base_por_classe_e_CSS_e_o_formulario_alcancavel_e_o_dela",
+      "verde": true,
+      "detalhe": {
+        "definicoes_hide_legacy": [
+          {
+            "pos": 1890194,
+            "tag": "<script id=\"bfr-coordination-command\" type=\"text/plain\" data",
+            "adiciona": null
+          },
+          {
+            "pos": 2793556,
+            "tag": "<script type=\"text/plain\" data-bfr-deferred=\"bfr-secretary-c",
+            "adiciona": "bfr-secretary-legacy"
+          },
+          {
+            "pos": 2931146,
+            "tag": "<script id=\"bfr-coordination-central\" type=\"text/plain\" data",
+            "adiciona": null
+          },
+          {
+            "pos": 2996855,
+            "tag": "<script type=\"text/plain\" data-bfr-deferred=\"bfr-monitor-cen",
+            "adiciona": "bfr-monitor-legacy"
+          },
+          {
+            "pos": 3126975,
+            "tag": "<script type=\"text/plain\" data-bfr-auth-deferred>",
+            "adiciona": "bfr-gate-legacy"
+          }
+        ],
+        "escolhida_pelo_seletor_da_portaria": [
+          3126975
+        ],
+        "na_regiao_diferida": true,
+        "agulha_fora_da_regiao_da_base": true,
+        "css_legacy": "#gatekeeperView .bfr-gate-legacy{display:none!important}#gatekeeperView .bfr-gate-central{",
+        "form_base_na_regiao_diferida": 0,
+        "form_diferido_na_regiao_diferida": 2,
+        "form_diferido_na_regiao_da_base": 0,
+        "total_form_base": 2,
+        "total_form_diferido": 2
+      }
+    },
+    {
+      "nome": "o_loader_so_executa_os_diferidos_depois_de_haver_sessao_e_essa_e_a_ordem_que_define_a_portaria_viva",
+      "verde": true,
+      "detalhe": {
+        "seletor_no_loader": "script[type=\"text/plain\"][data-bfr-auth-deferred],script[type=\"text/plain\"][data-bfr-deferred]",
+        "gatilho": "if (data?.session || hasOAuthCallback) await loadApplication()",
+        "ocorrencias_executeDeferred": 3
+      }
+    },
+    {
+      "nome": "o_caminho_manual_da_guarda_nao_chega_a_rpc_existente_em_nenhum_dos_dois_estados_reais",
+      "verde": true,
+      "detalhe": {
+        "guarda": "').trim();\n    const client = db();\n    if (!value) return;\n    if (!client) throw new Error('A conexão com o banco não está disponível.');\n    const exceptionReason=intakeSource==='manual'?manualExce",
+        "no_catalogo": {
+          "register_gate_checkin_v2": 0,
+          "register_gate_checkin": 1,
+          "bfr_confirm_school_calendar": 0
+        },
+        "v2_na_regiao_diferida": 1,
+        "v1_na_regiao_diferida": 1
+      }
+    },
+    {
+      "nome": "as_tres_mesas_continuam_vazias_e_a_escrita_de_calendario_nao_tem_politica_para_secretary",
+      "verde": true,
+      "detalhe": {
+        "linhas": [
+          {
+            "tabela": "bfr_school_calendar_days",
+            "linhas": 0
+          },
+          {
+            "tabela": "bfr_school_shift_settings",
+            "linhas": 0
+          },
+          {
+            "tabela": "bfr_school_calendar_month_targets",
+            "linhas": 0
+          }
+        ],
+        "comandos_cruos_medidos": [
+          "*",
+          "r"
+        ],
+        "politicas": [
+          "bfr_school_calendar_days_managers_write|*|authenticated",
+          "bfr_school_calendar_days_staff_read|r|authenticated",
+          "bfr_school_calendar_month_targets_managers_write|*|authenticated",
+          "bfr_school_calendar_month_targets_staff_read|r|authenticated",
+          "bfr_school_shift_settings_managers_write|*|authenticated",
+          "bfr_school_shift_settings_staff_read|r|authenticated"
+        ],
+        "cargos_que_escrevem": [
+          "coordinator",
+          "developer",
+          "director"
+        ],
+        "cargos_excluidos_da_leitura": [
+          "parent",
+          "student"
+        ],
+        "fio_do_artefacto": {
+          "bfr_confirm_school_calendar": "404/PGRST202",
+          "correct_gate_attendance": "404/PGRST202",
+          "register_gate_checkin_v2": "404/PGRST202"
+        }
+      }
+    },
+    {
+      "nome": "a_regua_de_regiao_dispara_no_fixture_partido_e_nao_e_um_predicado_que_so_ve_o_que_espera",
+      "verde": true,
+      "detalhe": {
+        "fixture": "dois blocos sintéticos com os marcadores trocados: a definição fica no bloco imediato mas o marcador do diferido vai com ela",
+        "sinteticos": {
+          "tag_da_regiao_escolhida": "<script id=\"bfr-public-schedule-fallback\">",
+          "tem_form_diferido_na_imediata": true
+        }
+      }
+    }
+  ],
+  "falhas": [],
+  "veredito": "P73_RM52_REGUA_VERDE 11/0"
+}

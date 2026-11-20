@@ -109,9 +109,9 @@
   </div>
 
   <div class="card">
-    <h2>Pendências (41 itens · PEN-01…PEN-41; re-contadas 20/11 pelo <code>scripts/ah1-cuenta-pen.mjs</code>)</h2>
+    <h2>Pendências (42 itens · PEN-01…PEN-42; re-contadas 20/11 no fecho do §SM.27 pelo <code>scripts/ah1-cuenta-pen.mjs</code>)</h2>
     <div class="kpis">
-      <div class="kpi"><div class="n">16</div><div class="l">prioridade ALTA</div></div>
+      <div class="kpi"><div class="n">17</div><div class="l">prioridade ALTA</div></div>
       <div class="kpi"><div class="n">14</div><div class="l">prioridade MÉDIA</div></div>
       <div class="kpi"><div class="n">11</div><div class="l">prioridade BAIXA</div></div>
     </div>
@@ -189,6 +189,15 @@
   <div class="tl"><b>20/11 (PEN-40, bancada A/B)</b> — a candidata v137 monta a barra do <code>monitor</code> nas <b>6/6</b> larguras (5/5 botões com caixa) onde o módulo byte-idêntico ao ar <b>nunca</b> monta, inclusive a <b>375 px</b> com <code>venceu_piso=0</code>; controlo <code>gatekeeper@320</code> com 121 armados / 8 vencedores. Leitor <code>P73_BANCADA_PEN40_AB_VERDE</code>, <b>16 portões / 0 falhas</b>. <b>Prova ao nível da candidata</b>, não do ar.</div>
   <div class="tl"><b>20/11 (PEN-41 criada)</b> — quatro policies de <code>students</code>/<code>classes</code> (<code>director_dashboard_read_students</code>, <code>students_select_secretary</code> e os dois homónimos de <code>classes</code>) decidem-se <b>só pelo cargo</b>: <code>director</code> e <code>secretary</code> lêem <b>848 alunos e 27 turmas</b> sem concessão, enquanto <code>equipe_administrativa</code> — autoridade municipal com concessão ativa — lê <b>0</b> alunos. O catálogo já sabe a forma certa (<code>students_municipal_read</code> usa <code>bfr_school_in_municipal_scope(school_id)</code>); apertar sem etiquetar escolas troca «lê tudo» por «não lê nada», por isso <b>não foi tocado</b> e pede OK literal.</div>
   <div class="tl"><b>Contas deste fecho:</b> <b>0</b> publicações, <b>0</b> DDL aplicados, <b>0</b> mint, <b>0</b> escrita no banco, <b>0</b> <code>git push</code>; <b>1</b> linha nova no registro (PEN-41), <b>3</b> adendos (PEN-38, PEN-39, PEN-40) e <b>0</b> linhas fechadas.</div>
+</div>
+
+<div class="card" style="margin-top:16px;">
+  <h2>§SM.27 — fecho 20/11 (RM-5.2 medida até aos bytes, desenho de conteúdo escrito, PEN-42 criada)</h2>
+  <div class="sub2">Nada foi aplicado, semeado nem publicado: DDL, semente, publicação, mint e <code>git push</code> continuam a pedir OK literal novo, cada um. Corpo com todas as pegadas em <code>docs/auditoria-bfr-conecta.md</code> §SM.27 e o desenho em <code>docs/plano-rm52-conteudo-calendario-20-11.md</code>.</div>
+  <div class="tl"><b>20/11 (RM-5.2, estado do calendário e da portaria)</b> — <code>scripts/p73-rm52-estado-calendario.mjs</code> dá <b>20 portões / 0 falhas</b>: as cinco funções servidas (<code>schoolDayConfirmed</code>, <code>activeSchoolShift</code>, <code>gateReady</code>, <code>gateLegacyMode</code>, <code>gateScanReady</code>) compiladas em <code>node:vm</code> com o relógio congelado, e a tabela de verdade em quatro estados — o de hoje é <b>B</b>, <code>legacy_mode:false</code> com <code>guarda_lanca_erro:true</code> e RPC escolhido <code>register_gate_checkin_v2</code>.</div>
+  <div class="tl"><b>20/11 (completude e região)</b> — <code>scripts/p73-rm52-regua-de-completude-20-11.mjs</code> dá <b>11/0</b>: a prontidão do painel é <code>calendarDays.length===365</code> com todas <code>confirmed</code> (1 ocorrência, 0 contagens alternativas), a semente são <b>379</b> linhas (365 + 2 turnos + 12 metas), seg–sex <b>261</b> e seg–sáb <b>313</b> por três contagens independentes que batem, 2028 e 2032 têm <b>366</b> datas logo a contagem fixa é intransponível, e <code>secretary</code> não está entre quem escreve calendário (<code>coordinator, developer, director</code>).</div>
+  <div class="tl"><b>20/11 (PEN-42 criada)</b> — o check-in visível não tem destino: as duas portarias servidas estão em regiões de execução diferentes, a diferida esconde a da base pela sua própria classe mais <code>display:none!important</code>, e é ela que ramifica para <code>register_gate_checkin_v2</code> — ausente do <code>pg_proc</code> (<code>no_catalogo = 0</code>) e <code>404/PGRST202</code> pelo fio, com <code>register_gate_checkin</code> a existir. Semear o calendário não repara: o estado C também escolhe o v2.</div>
+  <div class="tl"><b>Contas deste fecho:</b> <b>0</b> publicações, <b>0</b> DDL aplicados, <b>0</b> linhas semeadas, <b>0</b> mint, <b>0</b> <code>git push</code>; <b>1</b> linha nova no registro (PEN-42), <b>1</b> plano de conteúdo escrito, <b>1</b> régua nova versionada e <b>0</b> linhas fechadas.</div>
 </div>
 
 <div class="card" style="margin-top:16px;">

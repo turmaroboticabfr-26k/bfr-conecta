@@ -1,0 +1,9 @@
+bundle=9e236a23eed978cf7c2a2743d449b307 bytes=3547458 caracteres=3529307
+regra_painel=1x calendarDays.length exige365=true todos_confirmados=true
+aritmetica_2026=datas 365 seg_sex 261 [22,20,22,22,21,22,23,21,22,22,21,23] seg_sab 313 [27,24,26,26,26,26,27,26,26,27,25,27]
+bissextos=[{"ano":2026,"datas":365,"fevereiro":28},{"ano":2027,"datas":365,"fevereiro":28},{"ano":2028,"datas":366,"fevereiro":29},{"ano":2032,"datas":366,"fevereiro":29}]
+portarias=900391@750635 imediata | 3045185@3041341 diferida
+marcadores=base 2/0 diferido 2/0
+rpc={"register_gate_checkin_v2":0,"register_gate_checkin":1,"bfr_confirm_school_calendar":0} fio={"bfr_confirm_school_calendar":"404/PGRST202","correct_gate_attendance":"404/PGRST202","register_gate_checkin_v2":"404/PGRST202"}
+linhas=[{"tabela":"bfr_school_calendar_days","linhas":0},{"tabela":"bfr_school_shift_settings","linhas":0},{"tabela":"bfr_school_calendar_month_targets","linhas":0}]
+escrita=["bfr_school_calendar_days_managers_write|*|coordinator+developer+director","bfr_school_calendar_month_targets_managers_write|*|coordinator+developer+director","bfr_school_shift_settings_managers_write|*|coordinator+developer+director"] cargos_que_escrevem=["coordinator","developer","director"] excluidos_da_leitura=["parent","student"]

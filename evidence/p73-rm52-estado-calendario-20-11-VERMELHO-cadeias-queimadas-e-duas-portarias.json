@@ -1,0 +1,1247 @@
+{
+  "programa": "scripts/p73-rm52-estado-calendario.mjs",
+  "em": "2026-11-20T06:47:18.661Z",
+  "metodo": "information_schema + pg_constraint + pg_policy + pg_proc via Management API (sem JWT de sessão, por isso sem RLS); GET ao REST com sessão real e anónimo; POST a RPC inexistente (resolvido antes de executar, logo sem efeito); compilação em node:vm das cinco funções síncronas tal como servidas, com o relógio congelado num instante fixo. Zero escrita; nenhuma chave gravada.",
+  "relogio_congelado": {
+    "instante_utc": "2026-11-20T12:15:00Z",
+    "definicoes_de_schoolClock_no_bundle": 2,
+    "definicao_usada_indice": 3043780,
+    "leitura_vm": {
+      "weekday": "Friday",
+      "minutes": 555
+    },
+    "leitura_hospedeiro": {
+      "weekday": "Friday",
+      "minutes": 555
+    },
+    "dia_da_semana_numero": 5,
+    "janelas": {
+      "cobre_o_instante": [
+        "08:45:00",
+        "09:45:00"
+      ],
+      "fora_do_instante": [
+        "11:15:00",
+        "12:15:00"
+      ]
+    },
+    "nota": "as janelas do fixture são construídas à volta da leitura do relógio SERVIDO, não de horas dactilografadas — por isso o cenário C não depende do minuto em que a corrida decorre"
+  },
+  "guarda_servida_do_escalacao": {
+    "agulha": "!gateLegacyMode()&&!gateReady()",
+    "ocorrencias_no_bundle": 3,
+    "sitios": [
+      3054210,
+      3056334,
+      3058107
+    ],
+    "fronteira_do_modulo_diferido": 1512816,
+    "textos": [
+      " if (!gateLegacyMode()&&!gateReady()&&manualReason.length<8) { scanStatus('O turno ou calendário ainda não foi confirmado. Para um registro manual excepcional, informe o motivo (mínimo de 8 caracteres).'); return; } const targetShi",
+      " if (!gateLegacyMode()&&!gateReady()&&(intakeSource!=='manual'||exceptionReason.length<8)) throw new Error('Turno ou calendário não confirmado. Para seguir manualmente, informe um motivo excepcional com pelo menos 8 caracteres.'); ",
+      " if (!gateLegacyMode()&&!gateReady()&&(pending.intake_source!=='manual'||String(pending.exception_reason||'').length<8)) { scanStatus('O turno mudou ou não está confirmado. Atualize os dados e informe um motivo para continuar manualmen"
+    ]
+  },
+  "portarias_servidas_em_duplicado": [
+    {
+      "indice": 900397,
+      "async_no_bundle": true,
+      "cita_register_gate_checkin": true,
+      "cita_v2": false,
+      "chars": 2526,
+      "texto": "async function registerGateCheckin(token, source = 'manual') {\n          const status = document.querySelector('[data-gate-scan-status]');\n          const direction = document.querySelector('[data-gate-direction]')?.value || 'entry';\n          const normalized = String(token || '').trim();\n           const previous = d"
+    },
+    {
+      "indice": 3045185,
+      "async_no_bundle": false,
+      "cita_register_gate_checkin": true,
+      "cita_v2": true,
+      "chars": 307,
+      "texto": "function registerGateCheckin(client,params) {\n    return gateLegacyMode()\n      ? client.rpc('register_gate_checkin',{target_badge_token:params.target_badge_token,gate_direction:params.gate_direction,visual_confirmation:params.visual_confirmation})\n      : client.rpc('register_gate_checkin_v2',params);\n  }"
+    }
+  ],
+  "bundle_servido_versionado": {
+    "caminho": "C:\\Users\\pcmac\\Documents\\Qoder\\2026-10-13\\28077d9a\\bfr-conecta\\bfr-candidata-v136-secretaria-de-educacao\\index.html",
+    "md5": "9e236a23eed978cf7c2a2743d449b307",
+    "bytes": 3547458
+  },
+  "rotulos_de_leitura_usados_pelo_portao": [
+    {
+      "rotulo": "configuração de turnos",
+      "ocorrencias_no_bundle": 4
+    },
+    {
+      "rotulo": "calendário letivo",
+      "ocorrencias_no_bundle": 4
+    },
+    {
+      "rotulo": "metas do calendário",
+      "ocorrencias_no_bundle": 1
+    }
+  ],
+  "front_pede": {
+    "bfr_school_shift_settings": {
+      "chamadas": 3,
+      "selects": [
+        "school_year,shift,entry_opens_at,class_starts_at,shift_closes_at,active_weekdays,late_grace_minutes,confirmed_by,confirmed_at,updated_at",
+        "school_year,shift,entry_opens_at,class_starts_at,shift_closes_at,active_weekdays,late_grace_minutes,confirmed_at"
+      ],
+      "on_conflict": [
+        "school_year,shift"
+      ],
+      "escritas": 1
+    },
+    "bfr_school_calendar_days": {
+      "chamadas": 3,
+      "selects": [
+        "school_year,school_date,calendar_status,label,source_status,confirmed_at",
+        "school_year,school_date,calendar_status,label,source_status,confirmed_at"
+      ],
+      "on_conflict": [
+        "school_year,school_date"
+      ],
+      "escritas": 1
+    },
+    "bfr_school_calendar_month_targets": {
+      "chamadas": 1,
+      "selects": [
+        "school_year,month,expected_school_days"
+      ],
+      "on_conflict": [],
+      "escritas": 0
+    }
+  },
+  "front_escreve": {
+    "estados_source_status": [
+      "draft"
+    ],
+    "escrita_de_dia": "source_status:'draft',confirmed_by:null,confirmed_at:null,upd",
+    "on_conflict": {
+      "bfr_school_shift_settings": [
+        "school_year,shift"
+      ],
+      "bfr_school_calendar_days": [
+        "school_year,school_date"
+      ],
+      "bfr_school_calendar_month_targets": []
+    },
+    "binding_school_year_no_painel_coordenacao": [
+      "const schoolYear = () => new Date().getFullYear()",
+      "const schoolYear = 2026"
+    ],
+    "regra_calendario_completo": true
+  },
+  "funcoes_extraitas": {
+    "schoolDayConfirmed": {
+      "chars": 151,
+      "texto": "function schoolDayConfirmed() { return state.schoolCalendarDay?.calendar_status==='school_day'&&state.schoolCalendarDay?.source_status==='confirmed'; }"
+    },
+    "activeSchoolShift": {
+      "chars": 572,
+      "texto": "function activeSchoolShift() { const now=schoolClock(); const weekdays={Monday:1,Tuesday:2,Wednesday:3,Thursday:4,Friday:5,Saturday:6,Sunday:7}; const weekday=weekdays[now.weekday]; const matches=state.shiftSettings.filter(item=>item.confirmed_at&&(item.active_weekdays||[1,2,3,4,5]).includes(weekday)&&now.minutes>=Number(String(item.entry_opens_at).slice(0,2))*60+Number(String(item.entry_opens_at)"
+    },
+    "gateReady": {
+      "chars": 83,
+      "texto": "function gateReady() { return Boolean(schoolDayConfirmed()&&activeSchoolShift()); }"
+    },
+    "gateLegacyMode": {
+      "chars": 145,
+      "texto": "function gateLegacyMode() { return state.loaded&&(state.errors.includes('configuração de turnos')||state.errors.includes('calendário letivo')); }"
+    },
+    "gateScanReady": {
+      "chars": 66,
+      "texto": "function gateScanReady() { return gateReady()||gateLegacyMode(); }"
+    }
+  },
+  "ocorrencias_por_nome_de_funcao": {
+    "schoolDayConfirmed": 1,
+    "activeSchoolShift": 1,
+    "gateReady": 1,
+    "gateLegacyMode": 1,
+    "gateScanReady": 1
+  },
+  "funcoes_de_registro": {
+    "registerGateCheckin": {
+      "definicoes_no_bundle": 2,
+      "indice": 900397,
+      "chars": 2526
+    },
+    "registerGateToken": {
+      "definicoes_no_bundle": 1,
+      "indice": 3056018,
+      "chars": 1953
+    },
+    "confirmGateCalendar": {
+      "definicoes_no_bundle": 1,
+      "indice": 1853950,
+      "chars": 457
+    },
+    "registerGateCheckin_ramos": [
+      {
+        "indice": 900397,
+        "chars": 2526,
+        "cita_v2": false
+      },
+      {
+        "indice": 3045185,
+        "chars": 307,
+        "cita_v2": true
+      }
+    ],
+    "ramo_usado_na_verdade": 3045185
+  },
+  "tabela_verdade_do_portao": {
+    "A_antes_do_ddl_404": {
+      "legacy_mode": true,
+      "gate_ready": true,
+      "dia_letivo_confirmado": false,
+      "turno_ativo": null,
+      "guarda_lanca_erro": false,
+      "rpc_escolhido_pelo_fonte": "register_gate_checkin"
+    },
+    "B_hoje_200_com_zero_linhas": {
+      "legacy_mode": false,
+      "gate_ready": false,
+      "dia_letivo_confirmado": false,
+      "turno_ativo": null,
+      "guarda_lanca_erro": true,
+      "rpc_escolhido_pelo_fonte": "register_gate_checkin_v2"
+    },
+    "C_conteudo_confirmado": {
+      "legacy_mode": false,
+      "gate_ready": true,
+      "dia_letivo_confirmado": true,
+      "turno_ativo": "matutino",
+      "guarda_lanca_erro": false,
+      "rpc_escolhido_pelo_fonte": "register_gate_checkin_v2"
+    },
+    "D_dia_confirmado_sem_janela_a_cobrir": {
+      "legacy_mode": false,
+      "gate_ready": false,
+      "dia_letivo_confirmado": true,
+      "turno_ativo": null,
+      "guarda_lanca_erro": true,
+      "rpc_escolhido_pelo_fonte": "register_gate_checkin_v2"
+    }
+  },
+  "fixture_que_prova_a_regua": {
+    "pronto": false,
+    "dia": true,
+    "turno": null
+  },
+  "catalogo": {
+    "colunas": [
+      {
+        "tabela": "bfr_school_calendar_days",
+        "coluna": "school_year",
+        "tipo": "integer",
+        "nulable": "NO",
+        "omissao": ""
+      },
+      {
+        "tabela": "bfr_school_calendar_days",
+        "coluna": "school_date",
+        "tipo": "date",
+        "nulable": "NO",
+        "omissao": ""
+      },
+      {
+        "tabela": "bfr_school_calendar_days",
+        "coluna": "calendar_status",
+        "tipo": "text",
+        "nulable": "NO",
+        "omissao": ""
+      },
+      {
+        "tabela": "bfr_school_calendar_days",
+        "coluna": "label",
+        "tipo": "text",
+        "nulable": "NO",
+        "omissao": "''::text"
+      },
+      {
+        "tabela": "bfr_school_calendar_days",
+        "coluna": "source_status",
+        "tipo": "text",
+        "nulable": "NO",
+        "omissao": "'draft'::text"
+      },
+      {
+        "tabela": "bfr_school_calendar_days",
+        "coluna": "confirmed_by",
+        "tipo": "uuid",
+        "nulable": "YES",
+        "omissao": ""
+      },
+      {
+        "tabela": "bfr_school_calendar_days",
+        "coluna": "confirmed_at",
+        "tipo": "timestamp with time zone",
+        "nulable": "YES",
+        "omissao": ""
+      },
+      {
+        "tabela": "bfr_school_calendar_days",
+        "coluna": "updated_by",
+        "tipo": "uuid",
+        "nulable": "YES",
+        "omissao": ""
+      },
+      {
+        "tabela": "bfr_school_calendar_days",
+        "coluna": "updated_at",
+        "tipo": "timestamp with time zone",
+        "nulable": "NO",
+        "omissao": "now()"
+      },
+      {
+        "tabela": "bfr_school_calendar_month_targets",
+        "coluna": "school_year",
+        "tipo": "integer",
+        "nulable": "NO",
+        "omissao": ""
+      },
+      {
+        "tabela": "bfr_school_calendar_month_targets",
+        "coluna": "month",
+        "tipo": "integer",
+        "nulable": "NO",
+        "omissao": ""
+      },
+      {
+        "tabela": "bfr_school_calendar_month_targets",
+        "coluna": "expected_school_days",
+        "tipo": "integer",
+        "nulable": "NO",
+        "omissao": ""
+      },
+      {
+        "tabela": "bfr_school_calendar_month_targets",
+        "coluna": "updated_by",
+        "tipo": "uuid",
+        "nulable": "YES",
+        "omissao": ""
+      },
+      {
+        "tabela": "bfr_school_calendar_month_targets",
+        "coluna": "updated_at",
+        "tipo": "timestamp with time zone",
+        "nulable": "NO",
+        "omissao": "now()"
+      },
+      {
+        "tabela": "bfr_school_shift_settings",
+        "coluna": "school_year",
+        "tipo": "integer",
+        "nulable": "NO",
+        "omissao": ""
+      },
+      {
+        "tabela": "bfr_school_shift_settings",
+        "coluna": "shift",
+        "tipo": "text",
+        "nulable": "NO",
+        "omissao": ""
+      },
+      {
+        "tabela": "bfr_school_shift_settings",
+        "coluna": "entry_opens_at",
+        "tipo": "time without time zone",
+        "nulable": "NO",
+        "omissao": ""
+      },
+      {
+        "tabela": "bfr_school_shift_settings",
+        "coluna": "class_starts_at",
+        "tipo": "time without time zone",
+        "nulable": "YES",
+        "omissao": ""
+      },
+      {
+        "tabela": "bfr_school_shift_settings",
+        "coluna": "shift_closes_at",
+        "tipo": "time without time zone",
+        "nulable": "NO",
+        "omissao": ""
+      },
+      {
+        "tabela": "bfr_school_shift_settings",
+        "coluna": "active_weekdays",
+        "tipo": "ARRAY",
+        "nulable": "NO",
+        "omissao": "'{}'::integer[]"
+      },
+      {
+        "tabela": "bfr_school_shift_settings",
+        "coluna": "late_grace_minutes",
+        "tipo": "integer",
+        "nulable": "NO",
+        "omissao": "0"
+      },
+      {
+        "tabela": "bfr_school_shift_settings",
+        "coluna": "confirmed_by",
+        "tipo": "uuid",
+        "nulable": "YES",
+        "omissao": ""
+      },
+      {
+        "tabela": "bfr_school_shift_settings",
+        "coluna": "confirmed_at",
+        "tipo": "timestamp with time zone",
+        "nulable": "YES",
+        "omissao": ""
+      },
+      {
+        "tabela": "bfr_school_shift_settings",
+        "coluna": "updated_by",
+        "tipo": "uuid",
+        "nulable": "YES",
+        "omissao": ""
+      },
+      {
+        "tabela": "bfr_school_shift_settings",
+        "coluna": "updated_at",
+        "tipo": "timestamp with time zone",
+        "nulable": "NO",
+        "omissao": "now()"
+      }
+    ],
+    "restricoes": [
+      {
+        "tabela": "bfr_school_calendar_days",
+        "nome": "bfr_school_calendar_days_calendar_status_check",
+        "tipo": "c",
+        "definicao": "CHECK ((calendar_status = ANY (ARRAY['school_day'::text, 'no_school'::text, 'holiday'::text, 'recess'::text, 'recovery'::text])))"
+      },
+      {
+        "tabela": "bfr_school_calendar_days",
+        "nome": "bfr_school_calendar_days_label_check",
+        "tipo": "c",
+        "definicao": "CHECK ((length(label) <= 160))"
+      },
+      {
+        "tabela": "bfr_school_calendar_days",
+        "nome": "bfr_school_calendar_days_school_year_check",
+        "tipo": "c",
+        "definicao": "CHECK (((school_year >= 2000) AND (school_year <= 2999)))"
+      },
+      {
+        "tabela": "bfr_school_calendar_days",
+        "nome": "bfr_school_calendar_days_source_status_check",
+        "tipo": "c",
+        "definicao": "CHECK ((source_status = ANY (ARRAY['draft'::text, 'confirmed'::text])))"
+      },
+      {
+        "tabela": "bfr_school_calendar_days",
+        "nome": "bfr_school_calendar_days_pkey",
+        "tipo": "p",
+        "definicao": "PRIMARY KEY (school_year, school_date)"
+      },
+      {
+        "tabela": "bfr_school_calendar_month_targets",
+        "nome": "bfr_school_calendar_month_targets_expected_school_days_check",
+        "tipo": "c",
+        "definicao": "CHECK (((expected_school_days >= 0) AND (expected_school_days <= 31)))"
+      },
+      {
+        "tabela": "bfr_school_calendar_month_targets",
+        "nome": "bfr_school_calendar_month_targets_month_check",
+        "tipo": "c",
+        "definicao": "CHECK (((month >= 1) AND (month <= 12)))"
+      },
+      {
+        "tabela": "bfr_school_calendar_month_targets",
+        "nome": "bfr_school_calendar_month_targets_school_year_check",
+        "tipo": "c",
+        "definicao": "CHECK (((school_year >= 2000) AND (school_year <= 2999)))"
+      },
+      {
+        "tabela": "bfr_school_calendar_month_targets",
+        "nome": "bfr_school_calendar_month_targets_pkey",
+        "tipo": "p",
+        "definicao": "PRIMARY KEY (school_year, month)"
+      },
+      {
+        "tabela": "bfr_school_shift_settings",
+        "nome": "bfr_school_shift_settings_active_weekdays_check",
+        "tipo": "c",
+        "definicao": "CHECK (((COALESCE(array_length(active_weekdays, 1), 0) >= 1) AND (COALESCE(array_length(active_weekdays, 1), 0) <= 7)))"
+      },
+      {
+        "tabela": "bfr_school_shift_settings",
+        "nome": "bfr_school_shift_settings_late_grace_minutes_check",
+        "tipo": "c",
+        "definicao": "CHECK (((late_grace_minutes >= 0) AND (late_grace_minutes <= 240)))"
+      },
+      {
+        "tabela": "bfr_school_shift_settings",
+        "nome": "bfr_school_shift_settings_school_year_check",
+        "tipo": "c",
+        "definicao": "CHECK (((school_year >= 2000) AND (school_year <= 2999)))"
+      },
+      {
+        "tabela": "bfr_school_shift_settings",
+        "nome": "bfr_school_shift_settings_shift_check",
+        "tipo": "c",
+        "definicao": "CHECK ((shift = ANY (ARRAY['matutino'::text, 'vespertino'::text])))"
+      },
+      {
+        "tabela": "bfr_school_shift_settings",
+        "nome": "bfr_school_shift_settings_window_check",
+        "tipo": "c",
+        "definicao": "CHECK (((class_starts_at IS NULL) OR ((class_starts_at >= entry_opens_at) AND (class_starts_at <= shift_closes_at))))"
+      },
+      {
+        "tabela": "bfr_school_shift_settings",
+        "nome": "bfr_school_shift_settings_pkey",
+        "tipo": "p",
+        "definicao": "PRIMARY KEY (school_year, shift)"
+      }
+    ],
+    "linhas": [
+      {
+        "tabela": "bfr_school_shift_settings",
+        "linhas": 0,
+        "anos": ""
+      },
+      {
+        "tabela": "bfr_school_calendar_days",
+        "linhas": 0,
+        "anos": ""
+      },
+      {
+        "tabela": "bfr_school_calendar_month_targets",
+        "linhas": 0,
+        "anos": ""
+      }
+    ],
+    "politicas": [
+      {
+        "nome": "bfr_school_calendar_days_managers_write",
+        "tabela": "bfr_school_calendar_days",
+        "comando": "*",
+        "papeis_politica": "authenticated",
+        "using_txt": "((bfr_rls_session_role())::text = ANY (ARRAY['coordinator'::text, 'director'::text, 'developer'::text]))",
+        "check_txt": "((bfr_rls_session_role())::text = ANY (ARRAY['coordinator'::text, 'director'::text, 'developer'::text]))"
+      },
+      {
+        "nome": "bfr_school_calendar_days_staff_read",
+        "tabela": "bfr_school_calendar_days",
+        "comando": "SELECT",
+        "papeis_politica": "authenticated",
+        "using_txt": "(((bfr_rls_session_role())::text <> 'parent'::text) AND ((bfr_rls_session_role())::text <> 'student'::text))",
+        "check_txt": ""
+      },
+      {
+        "nome": "bfr_school_calendar_month_targets_managers_write",
+        "tabela": "bfr_school_calendar_month_targets",
+        "comando": "*",
+        "papeis_politica": "authenticated",
+        "using_txt": "((bfr_rls_session_role())::text = ANY (ARRAY['coordinator'::text, 'director'::text, 'developer'::text]))",
+        "check_txt": "((bfr_rls_session_role())::text = ANY (ARRAY['coordinator'::text, 'director'::text, 'developer'::text]))"
+      },
+      {
+        "nome": "bfr_school_calendar_month_targets_staff_read",
+        "tabela": "bfr_school_calendar_month_targets",
+        "comando": "SELECT",
+        "papeis_politica": "authenticated",
+        "using_txt": "(((bfr_rls_session_role())::text <> 'parent'::text) AND ((bfr_rls_session_role())::text <> 'student'::text))",
+        "check_txt": ""
+      },
+      {
+        "nome": "bfr_school_shift_settings_managers_write",
+        "tabela": "bfr_school_shift_settings",
+        "comando": "*",
+        "papeis_politica": "authenticated",
+        "using_txt": "((bfr_rls_session_role())::text = ANY (ARRAY['coordinator'::text, 'director'::text, 'developer'::text]))",
+        "check_txt": "((bfr_rls_session_role())::text = ANY (ARRAY['coordinator'::text, 'director'::text, 'developer'::text]))"
+      },
+      {
+        "nome": "bfr_school_shift_settings_staff_read",
+        "tabela": "bfr_school_shift_settings",
+        "comando": "SELECT",
+        "papeis_politica": "authenticated",
+        "using_txt": "(((bfr_rls_session_role())::text <> 'parent'::text) AND ((bfr_rls_session_role())::text <> 'student'::text))",
+        "check_txt": ""
+      }
+    ],
+    "rpc_no_catalogo": [
+      {
+        "nome": "bfr_confirm_school_calendar",
+        "no_catalogo": 0,
+        "schemas": ""
+      },
+      {
+        "nome": "bfr_nome_de_controlo_negativo_inexistente",
+        "no_catalogo": 0,
+        "schemas": ""
+      },
+      {
+        "nome": "bfr_rls_session_role",
+        "no_catalogo": 1,
+        "schemas": "public"
+      },
+      {
+        "nome": "correct_gate_attendance",
+        "no_catalogo": 0,
+        "schemas": ""
+      },
+      {
+        "nome": "register_gate_checkin",
+        "no_catalogo": 1,
+        "schemas": "public"
+      },
+      {
+        "nome": "register_gate_checkin_v2",
+        "no_catalogo": 0,
+        "schemas": ""
+      }
+    ],
+    "grade_tempos": [
+      {
+        "estado_versao": "published",
+        "entradas": 594,
+        "inicio_min": "07:00:00",
+        "fim_max": "11:30:00",
+        "dias": "quarta,quinta,segunda,sexta,terca"
+      }
+    ],
+    "baselines": {
+      "schools": 6,
+      "classes": 27,
+      "students": 848,
+      "profiles": 28,
+      "classes_years": "6,7,8,9"
+    }
+  },
+  "rest": {
+    "com_sessao": {
+      "secretary": {
+        "erro": "refresh HTTP 400"
+      },
+      "director": {
+        "erro": "refresh HTTP 400"
+      },
+      "developer": {
+        "erro": "refresh HTTP 400"
+      },
+      "education_supervisor": {
+        "erro": "refresh HTTP 400"
+      },
+      "coordinator": {
+        "erro": "refresh HTTP 400"
+      },
+      "gatekeeper": {
+        "erro": "refresh HTTP 400"
+      }
+    },
+    "sem_sessao": {
+      "bfr_school_shift_settings": {
+        "status": 200,
+        "linhas": 0,
+        "code": null,
+        "bytes": 2,
+        "content_range": "*/0"
+      },
+      "bfr_school_calendar_days": {
+        "status": 200,
+        "linhas": 0,
+        "code": null,
+        "bytes": 2,
+        "content_range": "*/0"
+      },
+      "bfr_school_calendar_month_targets": {
+        "status": 200,
+        "linhas": 0,
+        "code": null,
+        "bytes": 2,
+        "content_range": "*/0"
+      }
+    }
+  },
+  "rpc_pelo_fio": {
+    "ausentes_pelo_catalogo": [
+      "bfr_confirm_school_calendar",
+      "correct_gate_attendance",
+      "register_gate_checkin_v2"
+    ],
+    "controlo_positivo_funcao_viva": {
+      "status": 200,
+      "code": null,
+      "message": "null",
+      "bytes": 4
+    },
+    "por_nome": {
+      "bfr_confirm_school_calendar": {
+        "status": 404,
+        "code": "PGRST202",
+        "message": "Could not find the function public.bfr_confirm_school_calendar(target_school_year) in the schema cache",
+        "bytes": 414
+      },
+      "correct_gate_attendance": {
+        "status": 404,
+        "code": "PGRST202",
+        "message": "Could not find the function public.correct_gate_attendance without parameters in the schema cache",
+        "bytes": 399
+      },
+      "register_gate_checkin_v2": {
+        "status": 404,
+        "code": "PGRST202",
+        "message": "Could not find the function public.register_gate_checkin_v2 without parameters in the schema cache",
+        "bytes": 390
+      }
+    }
+  },
+  "pessoas_sondadas": {
+    "sondadas": [
+      "secretary",
+      "director",
+      "developer",
+      "education_supervisor",
+      "coordinator",
+      "gatekeeper"
+    ],
+    "vivas": [],
+    "mortas": {
+      "secretary": "refresh HTTP 400",
+      "director": "refresh HTTP 400",
+      "developer": "refresh HTTP 400",
+      "education_supervisor": "refresh HTTP 400",
+      "coordinator": "refresh HTTP 400",
+      "gatekeeper": "refresh HTTP 400"
+    },
+    "cadeias": {
+      "secretary": {
+        "lida_de": "C:\\Users\\pcmac\\Documents\\Qoder\\2026-10-13\\28077d9a\\ah2-sessao-secretary.json",
+        "renovada": false,
+        "gravado_em": null,
+        "erro": "refresh HTTP 400"
+      },
+      "director": {
+        "lida_de": "C:\\Users\\pcmac\\Documents\\Qoder\\2026-10-13\\28077d9a\\ah2-sessao-director.json",
+        "renovada": false,
+        "gravado_em": null,
+        "erro": "refresh HTTP 400"
+      },
+      "developer": {
+        "lida_de": "C:\\Users\\pcmac\\Documents\\Qoder\\2026-10-13\\28077d9a\\ah2-sessao-developer.json",
+        "renovada": false,
+        "gravado_em": null,
+        "erro": "refresh HTTP 400"
+      },
+      "education_supervisor": {
+        "lida_de": "C:\\Users\\pcmac\\Documents\\Qoder\\2026-10-13\\28077d9a\\ah2-sessao-education_supervisor.json",
+        "renovada": false,
+        "gravado_em": null,
+        "erro": "refresh HTTP 400"
+      },
+      "coordinator": {
+        "lida_de": "C:\\Users\\pcmac\\Documents\\Qoder\\2026-10-13\\28077d9a\\ah2-sessao-coordinator.json",
+        "renovada": false,
+        "gravado_em": null,
+        "erro": "refresh HTTP 400"
+      },
+      "gatekeeper": {
+        "lida_de": "C:\\Users\\pcmac\\Documents\\Qoder\\2026-10-13\\28077d9a\\ah2-sessao-gatekeeper.json",
+        "renovada": false,
+        "gravado_em": null,
+        "erro": "refresh HTTP 400"
+      }
+    }
+  },
+  "papeis_na_politica_de_leitura": [
+    "parent",
+    "student"
+  ],
+  "metas_por_mes_computadas_para_o_ano": {
+    "ano": 6,
+    "valores": [
+      {
+        "mes": 1,
+        "dias_de_semana": 23
+      },
+      {
+        "mes": 2,
+        "dias_de_semana": 20
+      },
+      {
+        "mes": 3,
+        "dias_de_semana": 22
+      },
+      {
+        "mes": 4,
+        "dias_de_semana": 21
+      },
+      {
+        "mes": 5,
+        "dias_de_semana": 23
+      },
+      {
+        "mes": 6,
+        "dias_de_semana": 21
+      },
+      {
+        "mes": 7,
+        "dias_de_semana": 22
+      },
+      {
+        "mes": 8,
+        "dias_de_semana": 23
+      },
+      {
+        "mes": 9,
+        "dias_de_semana": 20
+      },
+      {
+        "mes": 10,
+        "dias_de_semana": 23
+      },
+      {
+        "mes": 11,
+        "dias_de_semana": 22
+      },
+      {
+        "mes": 12,
+        "dias_de_semana": 21
+      }
+    ],
+    "nota": "dias de semana (seg-sex) por mês; feriados e recesso ainda não descontados — são a decisão de conteúdo da RM-5.2"
+  },
+  "o_que_este_verde_nao_autoriza": "Não autoriza publicar, não autoriza DDL nem seed, não prova o comportamento no browser (a tabela de verdade é do fonte servido, não de uma sessão real), não decide quais são os dias letivos nem as horas de entrada — decide só se há caminho para isso existir — e não resolve qual dos dois `registerGateCheckin` servidos está ligado ao botão da portaria em execução: isso só se mede com uma sessão de navegador da conta gatekeeper, cuja cadeia hoje está morta.",
+  "portoes": [
+    {
+      "nome": "regua_de_extracao_de_funcao_dispara_e_fixture_produz_negativo",
+      "verde": true,
+      "detalhe": {
+        "ocorrencias_por_nome": {
+          "schoolDayConfirmed": 1,
+          "activeSchoolShift": 1,
+          "gateReady": 1,
+          "gateLegacyMode": 1,
+          "gateScanReady": 1
+        },
+        "definicoes_de_registerGateCheckin": 2,
+        "ramo_escolhido_indice": 3045185,
+        "comprimentos": {
+          "schoolDayConfirmed": 151,
+          "activeSchoolShift": 572,
+          "gateReady": 83,
+          "gateLegacyMode": 145,
+          "gateScanReady": 66
+        },
+        "fixture_dispara": {
+          "pronto": false,
+          "dia": true,
+          "turno": null
+        }
+      }
+    },
+    {
+      "nome": "os_quatro_cenarios_dao_respostas_distintas",
+      "verde": true,
+      "detalhe": {
+        "A_antes_do_ddl_404": {
+          "legacy_mode": true,
+          "gate_ready": true,
+          "dia_letivo_confirmado": false,
+          "turno_ativo": null,
+          "guarda_lanca_erro": false,
+          "rpc_escolhido_pelo_fonte": "register_gate_checkin"
+        },
+        "B_hoje_200_com_zero_linhas": {
+          "legacy_mode": false,
+          "gate_ready": false,
+          "dia_letivo_confirmado": false,
+          "turno_ativo": null,
+          "guarda_lanca_erro": true,
+          "rpc_escolhido_pelo_fonte": "register_gate_checkin_v2"
+        },
+        "C_conteudo_confirmado": {
+          "legacy_mode": false,
+          "gate_ready": true,
+          "dia_letivo_confirmado": true,
+          "turno_ativo": "matutino",
+          "guarda_lanca_erro": false,
+          "rpc_escolhido_pelo_fonte": "register_gate_checkin_v2"
+        },
+        "D_dia_confirmado_sem_janela_a_cobrir": {
+          "legacy_mode": false,
+          "gate_ready": false,
+          "dia_letivo_confirmado": true,
+          "turno_ativo": null,
+          "guarda_lanca_erro": true,
+          "rpc_escolhido_pelo_fonte": "register_gate_checkin_v2"
+        }
+      }
+    },
+    {
+      "nome": "o_relogio_servido_e_o_mesmo_do_hospedeiro_no_instante_congelado_e_o_dia_e_de_semana",
+      "verde": true,
+      "detalhe": {
+        "definicoes_de_schoolClock": 2,
+        "indice_usada": 3043780,
+        "instante": "2026-11-20T12:15:00Z",
+        "vm": {
+          "weekday": "Friday",
+          "minutes": 555
+        },
+        "hospedeiro": {
+          "weekday": "Friday",
+          "minutes": 555
+        },
+        "janelas": {
+          "cobre": [
+            "08:45:00",
+            "09:45:00"
+          ],
+          "fora": [
+            "11:15:00",
+            "12:15:00"
+          ]
+        }
+      }
+    },
+    {
+      "nome": "a_guarda_que_lanca_o_erro_e_a_mesma_que_o_predicado_medido_e_as_tres_sao_do_modulo_diferido",
+      "verde": true,
+      "detalhe": {
+        "ocorrencias": 3,
+        "sitios": [
+          3054210,
+          3056334,
+          3058107
+        ],
+        "frontier_script": 1512816,
+        "ramos_portaria": [
+          "900397:v1",
+          "3045185:v2"
+        ],
+        "textos": [
+          " if (!gateLegacyMode()&&!gateReady()&&manualReason.length<8) { scanStatus('O turno ou calendário ainda não foi confirmado. Para um registro manual excepcional, informe o motivo (mínimo de 8 caracteres",
+          " if (!gateLegacyMode()&&!gateReady()&&(intakeSource!=='manual'||exceptionReason.length<8)) throw new Error('Turno ou calendário não confirmado. Para seguir manualmente, informe um motivo excepcional c",
+          " if (!gateLegacyMode()&&!gateReady()&&(pending.intake_source!=='manual'||String(pending.exception_reason||'').length<8)) { scanStatus('O turno mudou ou não está confirmado. Atualize os dados e informe"
+        ]
+      }
+    },
+    {
+      "nome": "as_duas_portarias_servidas_chamam_rpcs_diferentes",
+      "verde": true,
+      "detalhe": [
+        {
+          "indice": 900397,
+          "chars": 2526,
+          "v1": true,
+          "v2": false,
+          "async_no_bundle": true
+        },
+        {
+          "indice": 3045185,
+          "chars": 307,
+          "v1": true,
+          "v2": true,
+          "async_no_bundle": false
+        }
+      ]
+    },
+    {
+      "nome": "o_rpc_que_o_modulo_diferido_escolhe_fora_do_legado_nao_existe_no_banco",
+      "verde": true,
+      "detalhe": {
+        "escolhido_por_cenario": {
+          "A_antes_do_ddl_404": "register_gate_checkin",
+          "B_hoje_200_com_zero_linhas": "register_gate_checkin_v2",
+          "C_conteudo_confirmado": "register_gate_checkin_v2",
+          "D_dia_confirmado_sem_janela_a_cobrir": "register_gate_checkin_v2"
+        },
+        "no_catalogo": [
+          "register_gate_checkin=1",
+          "register_gate_checkin_v2=0"
+        ]
+      }
+    },
+    {
+      "nome": "hoje_o_escaneio_da_portaria_lanca_erro_e_o_unico_estado_real",
+      "verde": true,
+      "detalhe": {
+        "hoje": {
+          "legacy_mode": false,
+          "gate_ready": false,
+          "dia_letivo_confirmado": false,
+          "turno_ativo": null,
+          "guarda_lanca_erro": true,
+          "rpc_escolhido_pelo_fonte": "register_gate_checkin_v2"
+        },
+        "com_conteudo": {
+          "legacy_mode": false,
+          "gate_ready": true,
+          "dia_letivo_confirmado": true,
+          "turno_ativo": "matutino",
+          "guarda_lanca_erro": false,
+          "rpc_escolhido_pelo_fonte": "register_gate_checkin_v2"
+        }
+      }
+    },
+    {
+      "nome": "o_front_escreve_so_draft_e_quem_confirma_e_um_rpc",
+      "verde": true,
+      "detalhe": {
+        "estados_escritos": [
+          "draft"
+        ],
+        "rpc_confirm_nomeado": 1
+      }
+    },
+    {
+      "nome": "as_tres_mesas_estao_no_catalogo",
+      "verde": true,
+      "detalhe": {
+        "bfr_school_shift_settings": [
+          "school_year",
+          "shift",
+          "entry_opens_at",
+          "class_starts_at",
+          "shift_closes_at",
+          "active_weekdays",
+          "late_grace_minutes",
+          "confirmed_by",
+          "confirmed_at",
+          "updated_by",
+          "updated_at"
+        ],
+        "bfr_school_calendar_days": [
+          "school_year",
+          "school_date",
+          "calendar_status",
+          "label",
+          "source_status",
+          "confirmed_by",
+          "confirmed_at",
+          "updated_by",
+          "updated_at"
+        ],
+        "bfr_school_calendar_month_targets": [
+          "school_year",
+          "month",
+          "expected_school_days",
+          "updated_by",
+          "updated_at"
+        ]
+      }
+    },
+    {
+      "nome": "nenhuma_coluna_pedida_pelo_front_falta_no_catalogo",
+      "verde": true,
+      "detalhe": {
+        "bfr_school_shift_settings": [
+          "school_year,shift,entry_opens_at,class_starts_at,shift_closes_at,active_weekdays,late_grace_minutes,confirmed_by,confirmed_at,updated_at",
+          "school_year,shift,entry_opens_at,class_starts_at,shift_closes_at,active_weekdays,late_grace_minutes,confirmed_at"
+        ],
+        "bfr_school_calendar_days": [
+          "school_year,school_date,calendar_status,label,source_status,confirmed_at",
+          "school_year,school_date,calendar_status,label,source_status,confirmed_at"
+        ],
+        "bfr_school_calendar_month_targets": [
+          "school_year,month,expected_school_days"
+        ]
+      }
+    },
+    {
+      "nome": "on_conflict_bate_com_a_chave_primaria",
+      "verde": true,
+      "detalhe": [
+        "bfr_school_calendar_days=PRIMARY KEY (school_year, school_date)",
+        "bfr_school_calendar_month_targets=PRIMARY KEY (school_year, month)",
+        "bfr_school_shift_settings=PRIMARY KEY (school_year, shift)"
+      ]
+    },
+    {
+      "nome": "nenhuma_mesa_tem_dimensao_de_escola_e_o_controlo_positivo_prova_que_a_predica_ve",
+      "verde": true,
+      "detalhe": {
+        "por_mesa": {
+          "bfr_school_shift_settings": [],
+          "bfr_school_calendar_days": [],
+          "bfr_school_calendar_month_targets": []
+        },
+        "controlo_classes": [
+          {
+            "t": "classes",
+            "c": "school_id"
+          }
+        ],
+        "mesas_com_school_id_no_banco": [
+          "bfr_municipal_school_stats",
+          "bfr_school_key_map",
+          "classes",
+          "sports_public_teams",
+          "sports_teams",
+          "staff_schools",
+          "students",
+          "supervision_requests"
+        ]
+      }
+    },
+    {
+      "nome": "as_mesas_estao_vazias_hoje",
+      "verde": true,
+      "detalhe": [
+        {
+          "tabela": "bfr_school_shift_settings",
+          "linhas": 0,
+          "anos": ""
+        },
+        {
+          "tabela": "bfr_school_calendar_days",
+          "linhas": 0,
+          "anos": ""
+        },
+        {
+          "tabela": "bfr_school_calendar_month_targets",
+          "linhas": 0,
+          "anos": ""
+        }
+      ]
+    },
+    {
+      "nome": "o_predicado_de_existencia_de_rpc_distingue_o_que_existe_do_que_nao_existe",
+      "verde": true,
+      "detalhe": {
+        "controlo_positivo": {
+          "nome": "bfr_rls_session_role",
+          "no_catalogo": 1,
+          "schemas": "public"
+        },
+        "controlo_negativo": {
+          "nome": "bfr_nome_de_controlo_negativo_inexistente",
+          "no_catalogo": 0,
+          "schemas": ""
+        },
+        "achado_sobre_os_rpcs_do_front": [
+          {
+            "nome": "bfr_confirm_school_calendar",
+            "no_catalogo": 0,
+            "schemas": ""
+          },
+          {
+            "nome": "correct_gate_attendance",
+            "no_catalogo": 0,
+            "schemas": ""
+          },
+          {
+            "nome": "register_gate_checkin",
+            "no_catalogo": 1,
+            "schemas": "public"
+          },
+          {
+            "nome": "register_gate_checkin_v2",
+            "no_catalogo": 0,
+            "schemas": ""
+          }
+        ]
+      }
+    },
+    {
+      "nome": "o_fio_confirma_o_catalogo_e_o_controlo_positivo_nao_da_404",
+      "verde": true,
+      "detalhe": {
+        "controlo": {
+          "status": 200,
+          "code": null,
+          "message": "null",
+          "bytes": 4
+        },
+        "por_nome": {
+          "bfr_confirm_school_calendar": {
+            "status": 404,
+            "code": "PGRST202",
+            "message": "Could not find the function public.bfr_confirm_school_calendar(target_school_year) in the schema cache",
+            "bytes": 414
+          },
+          "correct_gate_attendance": {
+            "status": 404,
+            "code": "PGRST202",
+            "message": "Could not find the function public.correct_gate_attendance without parameters in the schema cache",
+            "bytes": 399
+          },
+          "register_gate_checkin_v2": {
+            "status": 404,
+            "code": "PGRST202",
+            "message": "Could not find the function public.register_gate_checkin_v2 without parameters in the schema cache",
+            "bytes": 390
+          }
+        },
+        "ausentes_pelo_catalogo": [
+          "bfr_confirm_school_calendar",
+          "correct_gate_attendance",
+          "register_gate_checkin_v2"
+        ]
+      }
+    },
+    {
+      "nome": "pelo_menos_uma_politica_de_leitura_por_mesa",
+      "verde": true,
+      "detalhe": [
+        "bfr_school_calendar_days:bfr_school_calendar_days_managers_write:*",
+        "bfr_school_calendar_days:bfr_school_calendar_days_staff_read:SELECT",
+        "bfr_school_calendar_month_targets:bfr_school_calendar_month_targets_managers_write:*",
+        "bfr_school_calendar_month_targets:bfr_school_calendar_month_targets_staff_read:SELECT",
+        "bfr_school_shift_settings:bfr_school_shift_settings_managers_write:*",
+        "bfr_school_shift_settings:bfr_school_shift_settings_staff_read:SELECT"
+      ]
+    },
+    {
+      "nome": "as_pessoas_com_cadeia_viva_leem_com_200_e_zero_linhas_e_o_anonao_tambem",
+      "verde": false,
+      "detalhe": {
+        "vivas": [],
+        "mortas": {
+          "secretary": "refresh HTTP 400",
+          "director": "refresh HTTP 400",
+          "developer": "refresh HTTP 400",
+          "education_supervisor": "refresh HTTP 400",
+          "coordinator": "refresh HTTP 400",
+          "gatekeeper": "refresh HTTP 400"
+        },
+        "exemplos": {},
+        "anonimo": {
+          "ttings": "200/0",
+          "r_days": "200/0",
+          "argets": "200/0"
+        }
+      }
+    },
+    {
+      "nome": "o_predicado_de_papel_na_politica_distingue_um_papel_dentro_de_um_papel_fora",
+      "verde": true,
+      "detalhe": {
+        "papeis_que_a_politica_de_leitura_aceita": [
+          "parent",
+          "student"
+        ],
+        "gatekeeper_dentro": false,
+        "politicas_de_leitura": [
+          "bfr_school_calendar_days:bfr_school_calendar_days_staff_read:(((bfr_rls_session_role())::text <> 'parent'::text) AND ((bfr_rls_session_role())::text <> 'student'::text))",
+          "bfr_school_calendar_month_targets:bfr_school_calendar_month_targets_staff_read:(((bfr_rls_session_role())::text <> 'parent'::text) AND ((bfr_rls_session_role())::text <> 'student'::text))",
+          "bfr_school_shift_settings:bfr_school_shift_settings_staff_read:(((bfr_rls_session_role())::text <> 'parent'::text) AND ((bfr_rls_session_role())::text <> 'student'::text))"
+        ]
+      }
+    },
+    {
+      "nome": "a_regra_dos_365_dias_e_lectivel_no_bundle_e_o_ano_do_painel_e_um_literal",
+      "verde": true,
+      "detalhe": {
+        "regra365": true,
+        "binding_ano": [
+          "const schoolYear = () => new Date().getFullYear()",
+          "const schoolYear = 2026"
+        ],
+        "md5_bundle": "9e236a23eed978cf7c2a2743d449b307"
+      }
+    }
+  ],
+  "veredito": "VERMELHO: 1",
+  "falhas": [
+    "as_pessoas_com_cadeia_viva_leem_com_200_e_zero_linhas_e_o_anonao_tambem: {\"vivas\":[],\"mortas\":{\"secretary\":\"refresh HTTP 400\",\"director\":\"refresh HTTP 400\",\"developer\":\"refresh HTTP 400\",\"education_supervisor\":\"refresh HTTP 400\",\"coordinator\":\"refresh HTTP 400\",\"gatekeeper\":\"refresh HTTP 400\"},\"exemplos\":{},\"anonimo\":{\"ttings\":\"200/0\",\"r_days\":\"200/0\",\"argets\":\"200/0\"}}"
+  ]
+}
