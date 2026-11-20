@@ -1,0 +1,988 @@
+{
+  "programa": "scripts/bu12-gaveta-municipal-toque.mjs",
+  "em": "2026-11-20T22:14:27.856Z",
+  "http": "só GET ao ar + renovação de sessão com gravação do par rotacionado; 0 escrita na base, 0 DDL, 0 deploy",
+  "pergunta": "no ar publicado, a 390x720 com o papel developer: um toque real abre a gaveta do telemóvel, e a rota «secretaria-municipal» está nela e é tocável?",
+  "metodo": "fetch do ar + md5 contra esperado-v136; Chrome headless via CDP; Emulation.setDeviceMetricsOverride {width:390,height:720,deviceScaleFactor:2,mobile:true} ANTES do Page.navigate; esperas pelo predicate do produtor (window.BFR_MUNICIPAL e o botão injetado) e pelo estado da gaveta (is-open + visibility), não por cronómetro; toque = touchStart+touchEnd (nunca element.click, nunca touch+mouse no mesmo gesto); hit-test elementFromPoint por alvo, com rolagem block:center/inline:nearest.",
+  "servido": {
+    "url": "https://bfr-conecta.turmaroboticabfr.workers.dev/",
+    "md5": "9e236a23eed978cf7c2a2743d449b307",
+    "bytes": 3547458,
+    "esperado_md5": "9e236a23eed978cf7c2a2743d449b307",
+    "esperado_bytes": 3547458,
+    "bate_com_esperado": true
+  },
+  "sessao": {
+    "papel": "developer",
+    "registos_gravados": 46,
+    "rodou": true,
+    "expira_em": "2026-11-20T23:14:18.000Z",
+    "access_len": 815,
+    "refresh_len": 12
+  },
+  "tempos_ms": {
+    "login": 450,
+    "shell_ready": 2225,
+    "modulo": 3,
+    "inject": 1124,
+    "chrome_mobile": 379
+  },
+  "passos": [
+    {
+      "o": "estado_inicial",
+      "e": {
+        "gaveta": {
+          "el": "div#bfrMobileDrawer.bfr-mobile-drawer",
+          "aberta": false,
+          "aria_hidden": "true",
+          "inert": true,
+          "disp": "block",
+          "vis": "hidden",
+          "x": 0,
+          "y": 0,
+          "w": 390,
+          "h": 720
+        },
+        "gaveta_itens": [
+          "inicio",
+          "fotos",
+          "chat-interno",
+          "notificacoes",
+          "conteudos",
+          "relatorios",
+          "jogos-escolares",
+          "comunicacao",
+          "secretaria-municipal",
+          "resultados-aprendizagem",
+          "notas",
+          "agenda",
+          "atividades",
+          "horarios",
+          "jogos",
+          "comunicados",
+          "ocorrencias",
+          "coordenacao",
+          "monitor",
+          "gate",
+          "administracao",
+          "cadastro-alunos",
+          "direcao",
+          "apoio",
+          "aee",
+          "psychology",
+          "multiprofissional"
+        ],
+        "item_municipal": {
+          "rota": "secretaria-municipal",
+          "texto": "🏛Secretaria Municipal",
+          "disp": "flex",
+          "vis": "hidden",
+          "x": -334,
+          "y": 726,
+          "w": 311,
+          "h": 48,
+          "centro": {
+            "x": -178,
+            "y": 750
+          }
+        },
+        "more_menu": {
+          "el": "div#mobileMoreMenu.mobile-more-menu",
+          "escondida": true,
+          "disp": "none",
+          "n_itens": 27,
+          "vis": "visible",
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "gatilho_mais": {
+          "disp": "grid",
+          "vis": "visible",
+          "x": 308,
+          "y": 654,
+          "w": 72,
+          "h": 61,
+          "centro": {
+            "x": 344,
+            "y": 685
+          }
+        },
+        "barra_rotas": [
+          "inicio",
+          "cadastro-alunos",
+          "direcao",
+          "administracao",
+          "more"
+        ],
+        "gatilho_more_menu": {
+          "disp": "flex",
+          "vis": "visible",
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "copia_na_gaveta": false,
+        "botoes_municipais": [
+          {
+            "dentro": "nav.nav-list",
+            "na_gaveta": false,
+            "no_more_menu": false,
+            "munApto": "sim",
+            "disp": "none",
+            "caixa": {
+              "disp": "none",
+              "vis": "visible",
+              "x": 0,
+              "y": 0,
+              "w": 0,
+              "h": 0
+            }
+          },
+          {
+            "dentro": "div.mobile-more-grid",
+            "na_gaveta": false,
+            "no_more_menu": true,
+            "munApto": "sim",
+            "disp": "flex",
+            "caixa": {
+              "disp": "flex",
+              "vis": "visible",
+              "x": 0,
+              "y": 0,
+              "w": 0,
+              "h": 0
+            }
+          }
+        ],
+        "n_botoes": 2,
+        "modal": {
+          "havido": true,
+          "el": "div#preferredNameModal.modal",
+          "z": "1300",
+          "tem_fecho": true,
+          "fecho": {
+            "disp": "block",
+            "vis": "visible",
+            "x": 335,
+            "y": 354,
+            "w": 25,
+            "h": 33
+          },
+          "por_cima_do_gatilho_mais": "p.publish-status"
+        },
+        "apto_para_sessao": {
+          "apto": true,
+          "por": "papel=developer viewRole=admin no mapa=true"
+        },
+        "viewport": {
+          "w": 390,
+          "h": 720
+        }
+      }
+    },
+    {
+      "o": "fechar_modal_a_toque",
+      "havido": true,
+      "fechado": true,
+      "alvo": {
+        "disp": "block",
+        "vis": "visible",
+        "x": 335,
+        "y": 354,
+        "w": 25,
+        "h": 33
+      },
+      "e": {
+        "gaveta": {
+          "el": "div#bfrMobileDrawer.bfr-mobile-drawer",
+          "aberta": false,
+          "aria_hidden": "true",
+          "inert": true,
+          "disp": "block",
+          "vis": "hidden",
+          "x": 0,
+          "y": 0,
+          "w": 390,
+          "h": 720
+        },
+        "gaveta_itens": [
+          "inicio",
+          "fotos",
+          "chat-interno",
+          "notificacoes",
+          "conteudos",
+          "relatorios",
+          "jogos-escolares",
+          "comunicacao",
+          "secretaria-municipal",
+          "resultados-aprendizagem",
+          "notas",
+          "agenda",
+          "atividades",
+          "horarios",
+          "jogos",
+          "comunicados",
+          "ocorrencias",
+          "coordenacao",
+          "monitor",
+          "gate",
+          "administracao",
+          "cadastro-alunos",
+          "direcao",
+          "apoio",
+          "aee",
+          "psychology",
+          "multiprofissional"
+        ],
+        "item_municipal": {
+          "rota": "secretaria-municipal",
+          "texto": "🏛Secretaria Municipal",
+          "disp": "flex",
+          "vis": "hidden",
+          "x": -334,
+          "y": 726,
+          "w": 311,
+          "h": 48,
+          "centro": {
+            "x": -178,
+            "y": 750
+          }
+        },
+        "more_menu": {
+          "el": "div#mobileMoreMenu.mobile-more-menu",
+          "escondida": true,
+          "disp": "none",
+          "n_itens": 27,
+          "vis": "visible",
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "gatilho_mais": {
+          "disp": "grid",
+          "vis": "visible",
+          "x": 308,
+          "y": 654,
+          "w": 72,
+          "h": 61,
+          "centro": {
+            "x": 344,
+            "y": 685
+          }
+        },
+        "barra_rotas": [
+          "inicio",
+          "cadastro-alunos",
+          "direcao",
+          "administracao",
+          "more"
+        ],
+        "gatilho_more_menu": {
+          "disp": "flex",
+          "vis": "visible",
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "copia_na_gaveta": false,
+        "botoes_municipais": [
+          {
+            "dentro": "nav.nav-list",
+            "na_gaveta": false,
+            "no_more_menu": false,
+            "munApto": "sim",
+            "disp": "none",
+            "caixa": {
+              "disp": "none",
+              "vis": "visible",
+              "x": 0,
+              "y": 0,
+              "w": 0,
+              "h": 0
+            }
+          },
+          {
+            "dentro": "div.mobile-more-grid",
+            "na_gaveta": false,
+            "no_more_menu": true,
+            "munApto": "sim",
+            "disp": "flex",
+            "caixa": {
+              "disp": "flex",
+              "vis": "visible",
+              "x": 0,
+              "y": 0,
+              "w": 0,
+              "h": 0
+            }
+          }
+        ],
+        "n_botoes": 2,
+        "modal": {
+          "havido": false
+        },
+        "apto_para_sessao": {
+          "apto": true,
+          "por": "papel=developer viewRole=admin no mapa=true"
+        },
+        "viewport": {
+          "w": 390,
+          "h": 720
+        }
+      }
+    },
+    {
+      "o": "antes_do_toque",
+      "e": {
+        "gaveta": {
+          "el": "div#bfrMobileDrawer.bfr-mobile-drawer",
+          "aberta": false,
+          "aria_hidden": "true",
+          "inert": true,
+          "disp": "block",
+          "vis": "hidden",
+          "x": 0,
+          "y": 0,
+          "w": 390,
+          "h": 720
+        },
+        "gaveta_itens": [
+          "inicio",
+          "fotos",
+          "chat-interno",
+          "notificacoes",
+          "conteudos",
+          "relatorios",
+          "jogos-escolares",
+          "comunicacao",
+          "secretaria-municipal",
+          "resultados-aprendizagem",
+          "notas",
+          "agenda",
+          "atividades",
+          "horarios",
+          "jogos",
+          "comunicados",
+          "ocorrencias",
+          "coordenacao",
+          "monitor",
+          "gate",
+          "administracao",
+          "cadastro-alunos",
+          "direcao",
+          "apoio",
+          "aee",
+          "psychology",
+          "multiprofissional"
+        ],
+        "item_municipal": {
+          "rota": "secretaria-municipal",
+          "texto": "🏛Secretaria Municipal",
+          "disp": "flex",
+          "vis": "hidden",
+          "x": -334,
+          "y": 726,
+          "w": 311,
+          "h": 48,
+          "centro": {
+            "x": -178,
+            "y": 750
+          }
+        },
+        "more_menu": {
+          "el": "div#mobileMoreMenu.mobile-more-menu",
+          "escondida": true,
+          "disp": "none",
+          "n_itens": 27,
+          "vis": "visible",
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "gatilho_mais": {
+          "disp": "grid",
+          "vis": "visible",
+          "x": 308,
+          "y": 654,
+          "w": 72,
+          "h": 61,
+          "centro": {
+            "x": 344,
+            "y": 685
+          }
+        },
+        "barra_rotas": [
+          "inicio",
+          "cadastro-alunos",
+          "direcao",
+          "administracao",
+          "more"
+        ],
+        "gatilho_more_menu": {
+          "disp": "flex",
+          "vis": "visible",
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "copia_na_gaveta": false,
+        "botoes_municipais": [
+          {
+            "dentro": "nav.nav-list",
+            "na_gaveta": false,
+            "no_more_menu": false,
+            "munApto": "sim",
+            "disp": "none",
+            "caixa": {
+              "disp": "none",
+              "vis": "visible",
+              "x": 0,
+              "y": 0,
+              "w": 0,
+              "h": 0
+            }
+          },
+          {
+            "dentro": "div.mobile-more-grid",
+            "na_gaveta": false,
+            "no_more_menu": true,
+            "munApto": "sim",
+            "disp": "flex",
+            "caixa": {
+              "disp": "flex",
+              "vis": "visible",
+              "x": 0,
+              "y": 0,
+              "w": 0,
+              "h": 0
+            }
+          }
+        ],
+        "n_botoes": 2,
+        "modal": {
+          "havido": false
+        },
+        "apto_para_sessao": {
+          "apto": true,
+          "por": "papel=developer viewRole=admin no mapa=true"
+        },
+        "viewport": {
+          "w": 390,
+          "h": 720
+        }
+      }
+    },
+    {
+      "o": "toque_no_mais",
+      "alvo": {
+        "x": 344,
+        "y": 685
+      },
+      "em_cima_antes_do_toque": "span.bfr-mobile-icon",
+      "abriu": true,
+      "gaveta_assentada": true,
+      "item_rolado": {
+        "caixa": {
+          "x": 16,
+          "y": 336,
+          "w": 311,
+          "h": 48
+        },
+        "dentro_do_ecra": true,
+        "no_alvo": true,
+        "em_cima": "span",
+        "rota_do_em_cima": "secretaria-municipal"
+      },
+      "e": {
+        "gaveta": {
+          "el": "div#bfrMobileDrawer.bfr-mobile-drawer",
+          "aberta": true,
+          "aria_hidden": "false",
+          "inert": false,
+          "disp": "block",
+          "vis": "visible",
+          "x": 0,
+          "y": 0,
+          "w": 390,
+          "h": 720
+        },
+        "gaveta_itens": [
+          "inicio",
+          "fotos",
+          "chat-interno",
+          "notificacoes",
+          "conteudos",
+          "relatorios",
+          "jogos-escolares",
+          "comunicacao",
+          "secretaria-municipal",
+          "resultados-aprendizagem",
+          "notas",
+          "agenda",
+          "atividades",
+          "horarios",
+          "jogos",
+          "comunicados",
+          "ocorrencias",
+          "coordenacao",
+          "monitor",
+          "gate",
+          "administracao",
+          "cadastro-alunos",
+          "direcao",
+          "apoio",
+          "aee",
+          "psychology",
+          "multiprofissional"
+        ],
+        "item_municipal": {
+          "rota": "secretaria-municipal",
+          "texto": "🏛Secretaria Municipal",
+          "disp": "flex",
+          "vis": "visible",
+          "x": 16,
+          "y": 726,
+          "w": 311,
+          "h": 48,
+          "centro": {
+            "x": 172,
+            "y": 750
+          }
+        },
+        "more_menu": {
+          "el": "div#mobileMoreMenu.mobile-more-menu",
+          "escondida": true,
+          "disp": "none",
+          "n_itens": 27,
+          "vis": "visible",
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "gatilho_mais": {
+          "disp": "grid",
+          "vis": "visible",
+          "x": 308,
+          "y": 654,
+          "w": 72,
+          "h": 61,
+          "centro": {
+            "x": 344,
+            "y": 685
+          }
+        },
+        "barra_rotas": [
+          "inicio",
+          "cadastro-alunos",
+          "direcao",
+          "administracao",
+          "more"
+        ],
+        "gatilho_more_menu": {
+          "disp": "flex",
+          "vis": "visible",
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "copia_na_gaveta": false,
+        "botoes_municipais": [
+          {
+            "dentro": "nav.nav-list",
+            "na_gaveta": false,
+            "no_more_menu": false,
+            "munApto": "sim",
+            "disp": "none",
+            "caixa": {
+              "disp": "none",
+              "vis": "visible",
+              "x": 0,
+              "y": 0,
+              "w": 0,
+              "h": 0
+            }
+          },
+          {
+            "dentro": "div.mobile-more-grid",
+            "na_gaveta": false,
+            "no_more_menu": true,
+            "munApto": "sim",
+            "disp": "flex",
+            "caixa": {
+              "disp": "flex",
+              "vis": "visible",
+              "x": 0,
+              "y": 0,
+              "w": 0,
+              "h": 0
+            }
+          }
+        ],
+        "n_botoes": 2,
+        "modal": {
+          "havido": false
+        },
+        "apto_para_sessao": {
+          "apto": true,
+          "por": "papel=developer viewRole=admin no mapa=true"
+        },
+        "viewport": {
+          "w": 390,
+          "h": 720
+        }
+      }
+    }
+  ],
+  "medido": {
+    "gaveta": {
+      "el": "div#bfrMobileDrawer.bfr-mobile-drawer",
+      "aberta": true,
+      "aria_hidden": "false",
+      "inert": false,
+      "disp": "block",
+      "vis": "visible",
+      "x": 0,
+      "y": 0,
+      "w": 390,
+      "h": 720
+    },
+    "gaveta_itens": [
+      "inicio",
+      "fotos",
+      "chat-interno",
+      "notificacoes",
+      "conteudos",
+      "relatorios",
+      "jogos-escolares",
+      "comunicacao",
+      "secretaria-municipal",
+      "resultados-aprendizagem",
+      "notas",
+      "agenda",
+      "atividades",
+      "horarios",
+      "jogos",
+      "comunicados",
+      "ocorrencias",
+      "coordenacao",
+      "monitor",
+      "gate",
+      "administracao",
+      "cadastro-alunos",
+      "direcao",
+      "apoio",
+      "aee",
+      "psychology",
+      "multiprofissional"
+    ],
+    "item_municipal": {
+      "rota": "secretaria-municipal",
+      "texto": "🏛Secretaria Municipal",
+      "disp": "flex",
+      "vis": "visible",
+      "x": 16,
+      "y": 726,
+      "w": 311,
+      "h": 48,
+      "centro": {
+        "x": 172,
+        "y": 750
+      }
+    },
+    "more_menu": {
+      "el": "div#mobileMoreMenu.mobile-more-menu",
+      "escondida": true,
+      "disp": "none",
+      "n_itens": 27,
+      "vis": "visible",
+      "x": 0,
+      "y": 0,
+      "w": 0,
+      "h": 0
+    },
+    "gatilho_mais": {
+      "disp": "grid",
+      "vis": "visible",
+      "x": 308,
+      "y": 654,
+      "w": 72,
+      "h": 61,
+      "centro": {
+        "x": 344,
+        "y": 685
+      }
+    },
+    "barra_rotas": [
+      "inicio",
+      "cadastro-alunos",
+      "direcao",
+      "administracao",
+      "more"
+    ],
+    "gatilho_more_menu": {
+      "disp": "flex",
+      "vis": "visible",
+      "x": 0,
+      "y": 0,
+      "w": 0,
+      "h": 0
+    },
+    "copia_na_gaveta": false,
+    "botoes_municipais": [
+      {
+        "dentro": "nav.nav-list",
+        "na_gaveta": false,
+        "no_more_menu": false,
+        "munApto": "sim",
+        "disp": "none",
+        "caixa": {
+          "disp": "none",
+          "vis": "visible",
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        }
+      },
+      {
+        "dentro": "div.mobile-more-grid",
+        "na_gaveta": false,
+        "no_more_menu": true,
+        "munApto": "sim",
+        "disp": "flex",
+        "caixa": {
+          "disp": "flex",
+          "vis": "visible",
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        }
+      }
+    ],
+    "n_botoes": 2,
+    "modal": {
+      "havido": false
+    },
+    "apto_para_sessao": {
+      "apto": true,
+      "por": "papel=developer viewRole=admin no mapa=true"
+    },
+    "viewport": {
+      "w": 390,
+      "h": 720
+    }
+  },
+  "consola": [],
+  "conclusao": {
+    "frase_que_esta_corrida_autoriza": "a 390px com developer: um toque em «Mais» abriu div#bfrMobileDrawer.bfr-mobile-drawer (27 rotas) e a rota «secretaria-municipal» está lá, caixa 311x48 dentro do ecrã, com o toque no centro a cair dentro do próprio item; as 2 cópias injetadas pelo módulo (munApto=[\"sim\",\"sim\"]) continuam em recipientes fechados a esta largura — a superfície do telemóvel é a gaveta, não o sidebar nem o #mobileMoreMenu",
+    "o_que_nao_prova": "não prova o que acontece depois do toque no item (o painel que a rota «secretaria-municipal\" mostra está fora desta corrida); não prova outras larguras de toque (430, 320) nem outros papéis não corridos; e o fecho do modal é medido apenas quando o modal aparece — contas antigas sem #preferredNameModal correm o portão do modal pelo ramo «não havido»."
+  },
+  "portoes": [
+    {
+      "id": "a_pagina_assentou_na_largura_do_toque",
+      "ok": true,
+      "estado": {
+        "viewport": {
+          "w": 390,
+          "h": 720
+        },
+        "largura": 390,
+        "altura": 720
+      }
+    },
+    {
+      "id": "o_ar_servido_e_o_esperado_v136",
+      "ok": true,
+      "estado": {
+        "medido_md5": "9e236a23eed978cf7c2a2743d449b307",
+        "medido_bytes": 3547458,
+        "esperado_md5": "9e236a23eed978cf7c2a2743d449b307",
+        "esperado_bytes": 3547458
+      }
+    },
+    {
+      "id": "o_modulo_injetou_as_copias_e_o_estado_e_lido",
+      "ok": true,
+      "estado": {
+        "n": 2,
+        "munApto": [
+          "sim",
+          "sim"
+        ]
+      }
+    },
+    {
+      "id": "a_visibilidade_das_copias_bate_com_aptoParaSessao",
+      "ok": true,
+      "estado": {
+        "apto": true,
+        "copias": [
+          "nav.nav-list:sim:none",
+          "div.mobile-more-grid:sim:flex"
+        ]
+      }
+    },
+    {
+      "id": "o_modal_de_primeiro_acesso_nao_fica_por_fechar",
+      "ok": true,
+      "estado": {
+        "havido": true,
+        "fechado": true,
+        "alvo": {
+          "disp": "block",
+          "vis": "visible",
+          "x": 335,
+          "y": 354,
+          "w": 25,
+          "h": 33
+        }
+      }
+    },
+    {
+      "id": "a_barra_e_a_gaveta_do_telemovel_foram_construidas",
+      "ok": true,
+      "estado": {
+        "gaveta_existe": true,
+        "barra_rotas": [
+          "inicio",
+          "cadastro-alunos",
+          "direcao",
+          "administracao",
+          "more"
+        ],
+        "espera_ms": 379
+      }
+    },
+    {
+      "id": "a_barra_de_baixo_tem_o_gatilho_mais_tocavel",
+      "ok": true,
+      "estado": {
+        "gatilho": {
+          "disp": "grid",
+          "vis": "visible",
+          "x": 308,
+          "y": 654,
+          "w": 72,
+          "h": 61,
+          "centro": {
+            "x": 344,
+            "y": 685
+          }
+        },
+        "barra": [
+          "inicio",
+          "cadastro-alunos",
+          "direcao",
+          "administracao",
+          "more"
+        ]
+      }
+    },
+    {
+      "id": "um_toque_abre_a_gaveta",
+      "ok": true,
+      "estado": {
+        "abriu": true,
+        "assentada": true,
+        "em_cima": "span.bfr-mobile-icon",
+        "alvo": {
+          "x": 344,
+          "y": 685
+        }
+      }
+    },
+    {
+      "id": "a_gaveta_aberta_deixa_de_ser_inerte",
+      "ok": true,
+      "estado": {
+        "gaveta": {
+          "el": "div#bfrMobileDrawer.bfr-mobile-drawer",
+          "aberta": true,
+          "aria_hidden": "false",
+          "inert": false,
+          "disp": "block",
+          "vis": "visible",
+          "x": 0,
+          "y": 0,
+          "w": 390,
+          "h": 720
+        }
+      }
+    },
+    {
+      "id": "a_rota_municipal_na_gaveta_bate_com_aptoParaSessao",
+      "ok": true,
+      "estado": {
+        "apto": true,
+        "tem_a_rota": true,
+        "n_itens": 27
+      }
+    },
+    {
+      "id": "o_item_municipal_da_gaveta_e_tocavel",
+      "ok": true,
+      "estado": {
+        "item": {
+          "caixa": {
+            "x": 16,
+            "y": 336,
+            "w": 311,
+            "h": 48
+          },
+          "dentro_do_ecra": true,
+          "no_alvo": true,
+          "em_cima": "span",
+          "rota_do_em_cima": "secretaria-municipal"
+        }
+      }
+    },
+    {
+      "id": "nenhuma_copia_do_modulo_esta_na_superficie_do_toque",
+      "ok": true,
+      "estado": {
+        "copias": [
+          {
+            "dentro": "nav.nav-list",
+            "na_gaveta": false
+          },
+          {
+            "dentro": "div.mobile-more-grid",
+            "na_gaveta": false
+          }
+        ],
+        "copia_na_gaveta": false
+      }
+    },
+    {
+      "id": "as_copias_injetadas_estao_em_recipientes_fechados_a_esta_largura",
+      "ok": true,
+      "estado": {
+        "em_aberto": 0,
+        "more_menu": {
+          "escondida": true,
+          "disp": "none"
+        },
+        "gatilho_more_menu": {
+          "disp": "flex",
+          "vis": "visible",
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        }
+      }
+    }
+  ],
+  "falhas": [],
+  "veredito": "BU12_GAVETA_MUNICIPAL_VERDE 13/0"
+}

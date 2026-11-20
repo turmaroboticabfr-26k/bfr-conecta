@@ -1,0 +1,335 @@
+{
+  "programa": "scripts/bu11-porta-municipal-desktop.mjs",
+  "em": "2026-11-20T21:46:18.610Z",
+  "http": "só GET ao ar + renovação de sessão; 0 escrita na base, 0 DDL, 0 deploy",
+  "pergunta": "no ar publicado, a largura 1280 com o papel developer: o botão «Secretaria Municipal» está injetado, com que munApto, e está pintado?",
+  "metodo": "fetch do ar + md5 contra esperado-v136; sessão renovada e gravada nos registos antes do browser; Chrome headless via CDP; Emulation.setDeviceMetricsOverride com mobile:false; espera pelo predicate do produtor (BFR_MUNICIPAL + [data-bfr-municipal-nav]), não por cronómetro; leitura do estado vivo do DOM comparada com aptoParaSessao()",
+  "servido": {
+    "url": "https://bfr-conecta.turmaroboticabfr.workers.dev/",
+    "md5": "9e236a23eed978cf7c2a2743d449b307",
+    "bytes": 3547458
+  },
+  "sessao": {
+    "papel": "developer",
+    "registos_gravados": 46,
+    "rodou": true,
+    "expira_em": "2026-11-20T22:46:09.000Z",
+    "access_len": 815,
+    "refresh_len": 12
+  },
+  "tempos_ms": {
+    "login": 566,
+    "shell_ready": 1803,
+    "modulo": 3
+  },
+  "medido": {
+    "viewport": {
+      "inner_width": 1280,
+      "doc_client_width": 1280,
+      "media_max_800": false,
+      "dpr": 1
+    },
+    "papel": {
+      "runtime_role": "developer",
+      "active_view": "admin",
+      "active_section": "inicio"
+    },
+    "mapa": {
+      "chaves": [
+        "parent",
+        "student",
+        "teacher",
+        "coordinator",
+        "admin",
+        "director",
+        "monitor",
+        "gatekeeper",
+        "secretary",
+        "aee",
+        "psychology",
+        "multiprofessional",
+        "sports_operator",
+        "education_supervisor"
+      ],
+      "admin_tem_sect": true,
+      "education_supervisor_tem_sect": true,
+      "secretary_tem_sect": false,
+      "n_de_admin": 27
+    },
+    "modulo": {
+      "existe": true,
+      "sect": "secretaria-municipal",
+      "papeis": [
+        "admin",
+        "education_supervisor"
+      ],
+      "vista_existe": true,
+      "vista_hidden": true,
+      "vista_munApto": "sim",
+      "vista_caixa": {
+        "disp": "none",
+        "vis": "visible",
+        "pe": "auto",
+        "op": "1",
+        "x": 0,
+        "y": 0,
+        "w": 0,
+        "h": 0,
+        "offsetParent_nulo": true
+      }
+    },
+    "apto_para_sessao": {
+      "apto": true,
+      "por": "papel=developer viewRole=admin no mapa=true"
+    },
+    "erro_funcao": null,
+    "sonda": {
+      "feita": true,
+      "executavel": true,
+      "erro": "",
+      "nota": "o backend respondeu false para esta sessão"
+    },
+    "botoes": [
+      {
+        "el": "button.nav-item.tap-target",
+        "host": "nav.nav-list.bfr-platform-nav",
+        "indice": 13,
+        "irmaos": 15,
+        "munApto": "sim",
+        "sec": "secretaria-municipal",
+        "rotulo": "🏛Secretaria Municipal",
+        "dentro_do_mapa": true,
+        "na_gaveta": false,
+        "caixa": {
+          "disp": "flex",
+          "vis": "visible",
+          "pe": "auto",
+          "op": "1",
+          "x": 14,
+          "y": 762,
+          "w": 192,
+          "h": 56,
+          "offsetParent_nulo": false
+        },
+        "recipiente": "sidebar",
+        "recipiente_aberto": true
+      },
+      {
+        "el": "button.mobile-more-option.tap-target",
+        "host": "div.mobile-more-grid",
+        "indice": 27,
+        "irmaos": 31,
+        "munApto": "sim",
+        "sec": "secretaria-municipal",
+        "rotulo": "🏛Secretaria Municipal",
+        "dentro_do_mapa": false,
+        "na_gaveta": true,
+        "caixa": {
+          "disp": "inline-block",
+          "vis": "visible",
+          "pe": "auto",
+          "op": "1",
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0,
+          "offsetParent_nulo": true
+        },
+        "recipiente": "gaveta",
+        "recipiente_aberto": false
+      }
+    ],
+    "n_botoes": 2,
+    "aberturas": {
+      "gaveta_aberta": false,
+      "sidebar_aberta": true
+    },
+    "recipiente": {
+      "sidebar": {
+        "disp": "flex",
+        "vis": "visible",
+        "pe": "auto",
+        "op": "1",
+        "x": 0,
+        "y": 0,
+        "w": 236,
+        "h": 900,
+        "offsetParent_nulo": true
+      },
+      "sidebar_nav_itens": 53,
+      "gaveta": {
+        "disp": "none",
+        "vis": "visible",
+        "pe": "auto",
+        "op": "1",
+        "x": 0,
+        "y": 0,
+        "w": 0,
+        "h": 0,
+        "offsetParent_nulo": true,
+        "aberta": false
+      },
+      "mobile_bottom_nav": true
+    },
+    "barra_papeis": [
+      "admin",
+      "director",
+      "parent",
+      "student",
+      "teacher",
+      "coordinator",
+      "secretary",
+      "monitor",
+      "aee",
+      "gatekeeper"
+    ]
+  },
+  "consola": [],
+  "conclusao": {
+    "frase_que_esta_corrida_autoriza": "a 1280px com developer: 2 botão(ões) injetado(s), munApto=sim, 1 pintado(s) nos 1 recipiente(s) aberto(s) ([\"sidebar:aberto\",\"gaveta:fechado\"]); recipientes: [\"nav.nav-list.bfr-platform-nav\",\"div.mobile-more-grid\"]",
+    "o_que_nao_prova": "não prova o que acontece depois do clique (as rotas medidas por toque estão em ah2-mobile2); não prova larguras intermédias não corridas; e a barra de troca de papel só existe para developer, por isso noutro papel o recipiente pode ser outro."
+  },
+  "portoes": [
+    {
+      "nome": "a_pegada_servida_e_a_shell_publicada_da_v136",
+      "verde": true,
+      "detalhe": {
+        "servido": "9e236a23eed978cf7c2a2743d449b307",
+        "esperado": "9e236a23eed978cf7c2a2743d449b307"
+      }
+    },
+    {
+      "nome": "a_cadeia_foi_renovada_e_gravada_em_todos_os_registos",
+      "verde": true,
+      "detalhe": {
+        "registos": 46,
+        "rodou": true,
+        "expira_em": "2026-11-20T22:46:09.000Z"
+      }
+    },
+    {
+      "nome": "a_sessao_monta_a_shell",
+      "verde": true,
+      "detalhe": {
+        "ms_login": 566,
+        "ms_ready": 1803,
+        "ms_modulo": 3,
+        "papel": "developer"
+      }
+    },
+    {
+      "nome": "o_modulo_esta_presente",
+      "verde": true,
+      "detalhe": {
+        "sect": "secretaria-municipal",
+        "papeis": [
+          "admin",
+          "education_supervisor"
+        ]
+      }
+    },
+    {
+      "nome": "o_botao_municipal_foi_injetado_no_dom",
+      "verde": true,
+      "detalhe": {
+        "n_botoes": 2,
+        "hosts": [
+          "nav.nav-list.bfr-platform-nav",
+          "div.mobile-more-grid"
+        ]
+      }
+    },
+    {
+      "nome": "o_estado_no_dom_bate_com_a_funcao_do_modulo",
+      "verde": true,
+      "detalhe": {
+        "funcao": {
+          "apto": true,
+          "por": "papel=developer viewRole=admin no mapa=true"
+        },
+        "botoes": [
+          {
+            "host": "nav.nav-list.bfr-platform-nav",
+            "munApto": "sim"
+          },
+          {
+            "host": "div.mobile-more-grid",
+            "munApto": "sim"
+          }
+        ]
+      }
+    },
+    {
+      "nome": "a_porta_pintada_em_cada_recipiente_aberto",
+      "verde": true,
+      "detalhe": {
+        "apto": true,
+        "aberturas": {
+          "gaveta_aberta": false,
+          "sidebar_aberta": true
+        },
+        "em_aberto": [
+          {
+            "recipiente": "sidebar",
+            "disp": "flex",
+            "caixa": "192x56@762",
+            "visivel": true
+          }
+        ],
+        "em_fechado": [
+          {
+            "recipiente": "gaveta",
+            "disp": "inline-block",
+            "caixa": "0x0"
+          }
+        ]
+      }
+    },
+    {
+      "nome": "a_seccao_registada_apenas_nos_papeis_municipais",
+      "verde": true,
+      "detalhe": {
+        "mapa": {
+          "chaves": [
+            "parent",
+            "student",
+            "teacher",
+            "coordinator",
+            "admin",
+            "director",
+            "monitor",
+            "gatekeeper",
+            "secretary",
+            "aee",
+            "psychology",
+            "multiprofessional",
+            "sports_operator",
+            "education_supervisor"
+          ],
+          "admin_tem_sect": true,
+          "education_supervisor_tem_sect": true,
+          "secretary_tem_sect": false,
+          "n_de_admin": 27
+        },
+        "papeis": [
+          "admin",
+          "education_supervisor"
+        ]
+      }
+    },
+    {
+      "nome": "a_sonda_do_backend_respondeu_ou_foi_registada_como_nao_respondida",
+      "verde": true,
+      "detalhe": {
+        "sonda": {
+          "feita": true,
+          "executavel": true,
+          "erro": "",
+          "nota": "o backend respondeu false para esta sessão"
+        }
+      }
+    }
+  ],
+  "falhas": [],
+  "veredito": "BU11_PORTA_MUNICIPAL_VERDE 9/0"
+}

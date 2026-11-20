@@ -499,6 +499,10 @@ Conferência pós-deploy: `scripts/v136-pos-deploy.mjs` (corrida em 19/11) e `sc
 (escrita em 20/11, ainda sem corrida de ar — ver §2.6 e §3.3).
 Medição de alcance: `scripts/p73-pen38-alcance-por-concessao-20-11.mjs`, `scripts/p73-pen39-sonda-uso-agregados.mjs`,
 `scripts/p73-pen38-sonda-consumidor-do-diagnostico.mjs` (FALTA-3, escrita e corrida em 20/11).
+Medição de superfície no ar, por recipiente e por toque (20/11, §6A de
+`docs/bu-20-11/03-perfis-e-permissoes.md`): `scripts/bu11-porta-municipal-desktop.mjs` e
+`scripts/bu12-gaveta-municipal-toque.mjs`. Não mexem no banco: só GET ao ar e renovação de sessão com
+gravação do par rotacionado.
 
 As pegadas (bytes e md5) de cada um destes caminhos, medidas no fecho do pacote e não a meio de uma escrita,
 estão em `evidence/pacote-municipal-pecas-20-11-fecho-corpus-duplo.json`. O registo anterior,

@@ -99,6 +99,80 @@ Isto **não** é um botão que devolve vazio por construção: é o desenho habi
 
 Não, e isso é medido: `evidence/sm25-cobertura-desktop-20-11.json` (45 células = 15 papéis × 1280/1440/1920, shell do ar `9e236a23eed978cf7c2a2743d449b307`) deu 38 medidas, 7 bloqueadas, 0 faltas, 0 estouro. As 7 bloqueadas são `pending` nas três larguras (barreira de pendência) e `monitor`, `coordinator`, `education_supervisor` a 1280 e `monitor` a 1920 — causa: shell pronto sem `#bfrMobileBottomNav` montado após rechegar. Na banda larga, a régua de portas do produto é `app/bfr-responsive-presentation.js:71-89` (`drawerItems()`), que usa selectores diferentes consoante o papel (`data-teacher-nav` para `teacher`/`pedagogical`): **a contagem de portas de professor não vem do mesmo sítio que a dos outros 14.**
 
+## 6A. A porta municipal medida ao vivo no ar, por recipiente e por toque (20/11)
+
+Partiu da pergunta de uma pessoa com sessão `developer` no ar publicado: «ainda não acho a aba da secretaria
+municipal». As respostas disponíveis eram de duas espécies que nenhuma cobria o caso — leitura estática do
+`roleSectionAccess` (que **não** contém a secção: ela é acrescentada em runtime por `registar()`, já registado
+em `docs/auditoria-bfr-conecta.md:4443`) e contagens de rotas por papel (`04-inventario-mobile.md` §3/§4), que
+não trazem o `data-mun-apto` nem a caixa do botão. Mediu-se então o estado vivo, com dois instrumentos próprios
+sobre o byte servido `9e236a23eed978cf7c2a2743d449b307` / 3 547 458 B (conferido contra `htmlMd5` e
+`htmlBytes` de `worker-deploy-v136-secretaria-de-educacao/esperado-v136.json`).
+
+**Desktop — `scripts/bu11-porta-municipal-desktop.mjs`.** Registos:
+`evidence/bu11-porta-municipal-desktop-developer-1280-3.json`,
+`evidence/bu11-porta-municipal-desktop-developer-1440-1.json` — `BU11_PORTA_MUNICIPAL_VERDE 9/0` nos dois. O
+rótulo 2 do 1280, corrido por uma versão anterior do próprio instrumento (emulação escrita como asserção
+`mobile:false` no campo `metodo`, em vez de impressa dos parâmetros calculados), foi re-corrido como rótulo 3 e
+bate byte a byte com ele em `conclusao` e em `servido`; os `portoes` diferem apenas no `expira_em` da sessão, e
+`medido` difere num campo censitário que não entra em portão nenhum — `recipiente.mobile_bottom_nav`, abaixo.
+O botão vive em `nav.nav-list.bfr-platform-nav` como `button.nav-item.tap-target`,
+caixa **192×56 @ y=762**, **13.º de 15** irmãos; `munApto="sim"` nas duas cópias injetadas;
+`aptoParaSessao() = {"apto":true,"por":"papel=developer viewRole=admin no mapa=true"}`. A barra de troca de
+papel da captura (`setupPermissionPreview`, que só existe para `developer`) reproduz os 10 chips
+`admin, director, parent, student, teacher, coordinator, secretary, monitor, aee, gatekeeper` — **nenhum é
+municipal**: era ali que a aba se procurava, e ela não é dessa barra.
+
+**Telemóvel — `scripts/bu12-gaveta-municipal-toque.mjs`** (`evidence/bu12-gaveta-municipal-toque-developer-390-2.json`,
+`BU12_GAVETA_MUNICIPAL_VERDE 13/0`, 390×720, `deviceScaleFactor:2`, `mobile:true`, um par
+touchStart+touchEnd, nunca `element.click`). Um toque no «⋯ Mais» da barra de baixo (72×61) abriu
+`#bfrMobileDrawer` (27 rotas, `is-open`, `aria-hidden="false"`, `inert:false`) e a rota
+`secretaria-municipal` está nessa gaveta com caixa **311×48** dentro do ecrã, com o hit-test do centro a cair
+dentro do próprio item. As duas cópias que o módulo injeta **continuam em recipientes fechados** a esta
+largura: sidebar a `display:none` e `#mobileMoreMenu` com a classe de escondido, cujo gatilho
+`[data-mobile-more]` tem caixa 0×0. Ou seja: a superfície do telemóvel não é nenhuma das duas cópias do
+módulo — é a gaveta, construída pelo aplicativo a partir do mesmo mapa que `registar()` muta.
+
+**Condição que fazia o toque falhar, e que não é defeito da app:** com o `#preferredNameModal` aberto (fixed,
+`z-index:1300`, ecrã inteiro — contas recém-criadas sem nome preferido), o toque na barra de baixo aterra em
+`p.publish-status`, filho do cartão do modal. Fechá-lo pelo `.modal-close` do próprio modal (caixa 25×33, já
+abaixo dos 44 px) é o que `scripts/ah2-mobile2.mjs:294-305` prescreve. Cada causa que a régua teve de aprender
+ficou preservada com a causa no nome, e não apagada:
+`evidence/ANTERIOR-bu11-porta-municipal-desktop-developer-1280-1-VERMELHO-a-gaveta-fechada-contava-como-porta-nao-pintada.json`,
+`evidence/ANTERIOR-bu11-porta-municipal-desktop-developer-390-1-VERMELHO-o-gatilho-medido-era-da-barra-de-desktop.json`,
+`evidence/ANTERIOR-bu11-porta-municipal-desktop-developer-390-2-VERMELHO-o-toque-embateu-num-publish-status-sem-a-app-ter-sido-rolada.json`,
+`evidence/ANTERIOR-bu11-porta-municipal-desktop-developer-390-3-VERMELHO-o-toque-embateu-num-publish-status-com-emulacao-de-desktop.json`,
+`evidence/ANTERIOR-bu11-porta-municipal-desktop-developer-390-2-VERMELHO-o-toque-embateu-no-modal-de-primeiro-acesso-preferredNameModal.json`,
+e do lado do bu12
+`evidence/ANTERIOR-bu12-gaveta-municipal-toque-developer-390-1-VERMELHO-o-censo-antes-de-a-barra-e-a-gaveta-existirem.json`.
+Os rótulos de corrida são meus, não identificadores do estado: mais de um nome partilha o mesmo número porque
+a causa foi descoberta depois da renomeação, e o que distingue cada ficheiro é o campo `em` no seu conteúdo.
+
+**Achado 1 — o predicado municipal já existe no banco, e respondeu `false`.** A sonda do próprio módulo devolve
+`{"feita":true,"executavel":true,"nota":"o backend respondeu false para esta sessão"}`, e `executavel` é
+`!error` na origem (`bfr-candidata-v136-secretaria-de-educacao/index.html:28750-28753`), logo o `rpc` correu.
+O catálogo, lido por SELECT (0 escrita), confirma: `bfr_is_municipal_authority()` está em `public`, `boolean`,
+sem argumentos, `SECURITY DEFINER`, e com ela `bfr_has_municipal_grant`, `bfr_municipal_municipalities` e
+`bfr_school_in_municipal_scope`; as quatro mesas do DDL municipal existem com RLS activo e 2–3 políticas cada, e
+`bfr_municipalities` tem 1 linha. Consequência documental: o comentário `index.html:28742-28744` («enquanto o
+DDL SM4 não for aplicado, `bfr_is_municipal_authority()` não existe e a sonda devolve PGRST202») e o texto de
+`faixaSonda()` em `index.html:29165` estão **ultrapassados pelo estado do banco**; e como a faixa escolhe o
+ramo verde por `executavel` e não pelo valor, uma sessão cuja resposta é `false` lê «Controle no backend
+confirmado: o backend respondeu false para esta sessão». É código de produto (v138), não DDL: registo aqui,
+nenhuma alteração feita. O que o `false` significa em termos de concessão continua a pergunta da PEN-38, cujo
+estado de aplicação não muda com esta medição.
+
+**Achado 2 — o recipiente descrito no comentário não é o medido.** O comentário de `registar()` diz que o botão
+de desktop é deliberadamente posto fora de `.bfr-platform-nav`; o host medido no ar é precisamente
+`nav.nav-list.bfr-platform-nav`. Funcionalmente não altera nada (`syncRoleNavigation` percorre
+`.sidebar .nav-item[data-section]`, e é esse nó que a injecção cria), mas o comentário passa a ser a única
+fonte errada sobre o ponto.
+
+**Campo censitário sem portão, e que fluctua:** `medido.recipiente.mobile_bottom_nav` deu `true` em
+1280-2/1440-1/390-* e `false` em 1280-1/1280-3. Não entra em nenhum dos 9 portões do bu11, e a causa já está
+registada em §6 (shell pronto sem `#bfrMobileBottomNav` montado após rechegar) — foi por ela que o bu12 passou
+a esperar pelo predicate do produtor antes de censar, em vez de censar a seguir ao `appShell.ready`.
+
 ## 7. O que não foi possível verificar neste estágio
 
 - Que destinos cada perfil **vê no desktop por nome**: as células desktop têm contagens (`barra_rotas`, `gaveta_rotas`), não listas nomeadas.

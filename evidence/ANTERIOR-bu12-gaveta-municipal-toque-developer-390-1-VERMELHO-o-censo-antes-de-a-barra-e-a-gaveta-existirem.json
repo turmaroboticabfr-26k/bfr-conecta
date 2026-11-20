@@ -1,0 +1,501 @@
+{
+  "programa": "scripts/bu12-gaveta-municipal-toque.mjs",
+  "em": "2026-11-20T22:13:26.642Z",
+  "http": "só GET ao ar + renovação de sessão com gravação do par rotacionado; 0 escrita na base, 0 DDL, 0 deploy",
+  "pergunta": "no ar publicado, a 390x720 com o papel developer: um toque real abre a gaveta do telemóvel, e a rota «secretaria-municipal» está nela e é tocável?",
+  "metodo": "fetch do ar + md5 contra esperado-v136; Chrome headless via CDP; Emulation.setDeviceMetricsOverride {width:390,height:720,deviceScaleFactor:2,mobile:true} ANTES do Page.navigate; esperas pelo predicate do produtor (window.BFR_MUNICIPAL e o botão injetado) e pelo estado da gaveta (is-open + visibility), não por cronómetro; toque = touchStart+touchEnd (nunca element.click, nunca touch+mouse no mesmo gesto); hit-test elementFromPoint por alvo, com rolagem block:center/inline:nearest.",
+  "servido": {
+    "url": "https://bfr-conecta.turmaroboticabfr.workers.dev/",
+    "md5": "9e236a23eed978cf7c2a2743d449b307",
+    "bytes": 3547458,
+    "esperado_md5": "9e236a23eed978cf7c2a2743d449b307",
+    "esperado_bytes": 3547458,
+    "bate_com_esperado": true
+  },
+  "sessao": {
+    "papel": "developer",
+    "registos_gravados": 46,
+    "rodou": true,
+    "expira_em": "2026-11-20T23:13:20.000Z",
+    "access_len": 815,
+    "refresh_len": 12
+  },
+  "tempos_ms": {
+    "login": 744,
+    "shell_ready": 1151,
+    "modulo": 3,
+    "inject": 721
+  },
+  "passos": [
+    {
+      "o": "estado_inicial",
+      "e": {
+        "gaveta": null,
+        "gaveta_itens": null,
+        "item_municipal": null,
+        "more_menu": {
+          "el": "div#mobileMoreMenu.mobile-more-menu",
+          "escondida": true,
+          "disp": "none",
+          "n_itens": 25,
+          "vis": "visible",
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "gatilho_mais": null,
+        "barra_rotas": null,
+        "gatilho_more_menu": {
+          "disp": "flex",
+          "vis": "visible",
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "copia_na_gaveta": null,
+        "botoes_municipais": [
+          {
+            "dentro": "nav.nav-list",
+            "na_gaveta": false,
+            "no_more_menu": false,
+            "munApto": "sim",
+            "disp": "none",
+            "caixa": {
+              "disp": "none",
+              "vis": "visible",
+              "x": 0,
+              "y": 0,
+              "w": 0,
+              "h": 0
+            }
+          },
+          {
+            "dentro": "div.mobile-more-grid",
+            "na_gaveta": false,
+            "no_more_menu": true,
+            "munApto": "sim",
+            "disp": "flex",
+            "caixa": {
+              "disp": "flex",
+              "vis": "visible",
+              "x": 0,
+              "y": 0,
+              "w": 0,
+              "h": 0
+            }
+          }
+        ],
+        "n_botoes": 2,
+        "modal": {
+          "havido": true,
+          "el": "div#preferredNameModal.modal",
+          "z": "1300",
+          "tem_fecho": true,
+          "fecho": {
+            "disp": "block",
+            "vis": "visible",
+            "x": 335,
+            "y": 354,
+            "w": 25,
+            "h": 33
+          },
+          "por_cima_do_gatilho_mais": null
+        },
+        "apto_para_sessao": {
+          "apto": true,
+          "por": "papel=developer viewRole=admin no mapa=true"
+        },
+        "viewport": {
+          "w": 390,
+          "h": 720
+        }
+      }
+    },
+    {
+      "o": "fechar_modal_a_toque",
+      "havido": true,
+      "fechado": true,
+      "alvo": {
+        "disp": "block",
+        "vis": "visible",
+        "x": 335,
+        "y": 354,
+        "w": 25,
+        "h": 33
+      },
+      "e": {
+        "gaveta": null,
+        "gaveta_itens": null,
+        "item_municipal": null,
+        "more_menu": {
+          "el": "div#mobileMoreMenu.mobile-more-menu",
+          "escondida": true,
+          "disp": "none",
+          "n_itens": 25,
+          "vis": "visible",
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "gatilho_mais": null,
+        "barra_rotas": null,
+        "gatilho_more_menu": {
+          "disp": "flex",
+          "vis": "visible",
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "copia_na_gaveta": null,
+        "botoes_municipais": [
+          {
+            "dentro": "nav.nav-list",
+            "na_gaveta": false,
+            "no_more_menu": false,
+            "munApto": "sim",
+            "disp": "none",
+            "caixa": {
+              "disp": "none",
+              "vis": "visible",
+              "x": 0,
+              "y": 0,
+              "w": 0,
+              "h": 0
+            }
+          },
+          {
+            "dentro": "div.mobile-more-grid",
+            "na_gaveta": false,
+            "no_more_menu": true,
+            "munApto": "sim",
+            "disp": "flex",
+            "caixa": {
+              "disp": "flex",
+              "vis": "visible",
+              "x": 0,
+              "y": 0,
+              "w": 0,
+              "h": 0
+            }
+          }
+        ],
+        "n_botoes": 2,
+        "modal": {
+          "havido": false
+        },
+        "apto_para_sessao": {
+          "apto": true,
+          "por": "papel=developer viewRole=admin no mapa=true"
+        },
+        "viewport": {
+          "w": 390,
+          "h": 720
+        }
+      }
+    },
+    {
+      "o": "antes_do_toque",
+      "e": {
+        "gaveta": null,
+        "gaveta_itens": null,
+        "item_municipal": null,
+        "more_menu": {
+          "el": "div#mobileMoreMenu.mobile-more-menu",
+          "escondida": true,
+          "disp": "none",
+          "n_itens": 25,
+          "vis": "visible",
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "gatilho_mais": null,
+        "barra_rotas": null,
+        "gatilho_more_menu": {
+          "disp": "flex",
+          "vis": "visible",
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "copia_na_gaveta": null,
+        "botoes_municipais": [
+          {
+            "dentro": "nav.nav-list",
+            "na_gaveta": false,
+            "no_more_menu": false,
+            "munApto": "sim",
+            "disp": "none",
+            "caixa": {
+              "disp": "none",
+              "vis": "visible",
+              "x": 0,
+              "y": 0,
+              "w": 0,
+              "h": 0
+            }
+          },
+          {
+            "dentro": "div.mobile-more-grid",
+            "na_gaveta": false,
+            "no_more_menu": true,
+            "munApto": "sim",
+            "disp": "flex",
+            "caixa": {
+              "disp": "flex",
+              "vis": "visible",
+              "x": 0,
+              "y": 0,
+              "w": 0,
+              "h": 0
+            }
+          }
+        ],
+        "n_botoes": 2,
+        "modal": {
+          "havido": false
+        },
+        "apto_para_sessao": {
+          "apto": true,
+          "por": "papel=developer viewRole=admin no mapa=true"
+        },
+        "viewport": {
+          "w": 390,
+          "h": 720
+        }
+      }
+    },
+    {
+      "o": "toque_no_mais",
+      "nota": "sem gatilho «mais» com caixa na barra de baixo",
+      "barra_rotas": null
+    }
+  ],
+  "medido": {
+    "gaveta": null,
+    "gaveta_itens": null,
+    "item_municipal": null,
+    "more_menu": {
+      "el": "div#mobileMoreMenu.mobile-more-menu",
+      "escondida": true,
+      "disp": "none",
+      "n_itens": 25,
+      "vis": "visible",
+      "x": 0,
+      "y": 0,
+      "w": 0,
+      "h": 0
+    },
+    "gatilho_mais": null,
+    "barra_rotas": null,
+    "gatilho_more_menu": {
+      "disp": "flex",
+      "vis": "visible",
+      "x": 0,
+      "y": 0,
+      "w": 0,
+      "h": 0
+    },
+    "copia_na_gaveta": null,
+    "botoes_municipais": [
+      {
+        "dentro": "nav.nav-list",
+        "na_gaveta": false,
+        "no_more_menu": false,
+        "munApto": "sim",
+        "disp": "none",
+        "caixa": {
+          "disp": "none",
+          "vis": "visible",
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        }
+      },
+      {
+        "dentro": "div.mobile-more-grid",
+        "na_gaveta": false,
+        "no_more_menu": true,
+        "munApto": "sim",
+        "disp": "flex",
+        "caixa": {
+          "disp": "flex",
+          "vis": "visible",
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        }
+      }
+    ],
+    "n_botoes": 2,
+    "modal": {
+      "havido": false
+    },
+    "apto_para_sessao": {
+      "apto": true,
+      "por": "papel=developer viewRole=admin no mapa=true"
+    },
+    "viewport": {
+      "w": 390,
+      "h": 720
+    }
+  },
+  "consola": [],
+  "conclusao": {
+    "frase_que_esta_corrida_autoriza": "a 390px com developer: a gaveta NÃO abriu ao toque — ver passos, em_cima=null, apto=true, rota_na_gaveta=false",
+    "o_que_nao_prova": "não prova o que acontece depois do toque no item (o painel que a rota «secretaria-municipal\" mostra está fora desta corrida); não prova outras larguras de toque (430, 320) nem outros papéis não corridos; e o fecho do modal é medido apenas quando o modal aparece — contas antigas sem #preferredNameModal correm o portão do modal pelo ramo «não havido»."
+  },
+  "portoes": [
+    {
+      "id": "a_pagina_assentou_na_largura_do_toque",
+      "ok": true,
+      "estado": {
+        "viewport": {
+          "w": 390,
+          "h": 720
+        },
+        "largura": 390,
+        "altura": 720
+      }
+    },
+    {
+      "id": "o_ar_servido_e_o_esperado_v136",
+      "ok": true,
+      "estado": {
+        "medido_md5": "9e236a23eed978cf7c2a2743d449b307",
+        "medido_bytes": 3547458,
+        "esperado_md5": "9e236a23eed978cf7c2a2743d449b307",
+        "esperado_bytes": 3547458
+      }
+    },
+    {
+      "id": "o_modulo_injetou_as_copias_e_o_estado_e_lido",
+      "ok": true,
+      "estado": {
+        "n": 2,
+        "munApto": [
+          "sim",
+          "sim"
+        ]
+      }
+    },
+    {
+      "id": "a_visibilidade_das_copias_bate_com_aptoParaSessao",
+      "ok": true,
+      "estado": {
+        "apto": true,
+        "copias": [
+          "nav.nav-list:sim:none",
+          "div.mobile-more-grid:sim:flex"
+        ]
+      }
+    },
+    {
+      "id": "o_modal_de_primeiro_acesso_nao_fica_por_fechar",
+      "ok": true,
+      "estado": {
+        "havido": true,
+        "fechado": true,
+        "alvo": {
+          "disp": "block",
+          "vis": "visible",
+          "x": 335,
+          "y": 354,
+          "w": 25,
+          "h": 33
+        }
+      }
+    },
+    {
+      "id": "a_barra_de_baixo_tem_o_gatilho_mais_tocavel",
+      "ok": false,
+      "estado": {
+        "gatilho": null,
+        "barra": null
+      }
+    },
+    {
+      "id": "um_toque_abre_a_gaveta",
+      "ok": false,
+      "estado": {
+        "abriu": false,
+        "em_cima": null,
+        "alvo": null
+      }
+    },
+    {
+      "id": "a_gaveta_aberta_deixa_de_ser_inerte",
+      "ok": false,
+      "estado": {
+        "gaveta": null
+      }
+    },
+    {
+      "id": "a_rota_municipal_na_gaveta_bate_com_aptoParaSessao",
+      "ok": false,
+      "estado": {
+        "apto": true,
+        "tem_a_rota": false,
+        "n_itens": 0
+      }
+    },
+    {
+      "id": "o_item_municipal_da_gaveta_e_tocavel",
+      "ok": false,
+      "estado": {}
+    },
+    {
+      "id": "nenhuma_copia_do_modulo_esta_na_superficie_do_toque",
+      "ok": false,
+      "estado": {
+        "copias": [
+          {
+            "dentro": "nav.nav-list",
+            "na_gaveta": false
+          },
+          {
+            "dentro": "div.mobile-more-grid",
+            "na_gaveta": false
+          }
+        ],
+        "copia_na_gaveta": null
+      }
+    },
+    {
+      "id": "as_copias_injetadas_estao_em_recipientes_fechados_a_esta_largura",
+      "ok": true,
+      "estado": {
+        "em_aberto": 0,
+        "more_menu": {
+          "escondida": true,
+          "disp": "none"
+        },
+        "gatilho_more_menu": {
+          "disp": "flex",
+          "vis": "visible",
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        }
+      }
+    }
+  ],
+  "falhas": [
+    "a_barra_de_baixo_tem_o_gatilho_mais_tocavel",
+    "um_toque_abre_a_gaveta",
+    "a_gaveta_aberta_deixa_de_ser_inerte",
+    "a_rota_municipal_na_gaveta_bate_com_aptoParaSessao",
+    "o_item_municipal_da_gaveta_e_tocavel",
+    "nenhuma_copia_do_modulo_esta_na_superficie_do_toque"
+  ],
+  "veredito": "BU12_GAVETA_MUNICIPAL_VERMELHO 6 de 12"
+}

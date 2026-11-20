@@ -1,0 +1,400 @@
+{
+  "programa": "scripts/bu11-porta-municipal-desktop.mjs",
+  "em": "2026-11-20T21:53:28.580Z",
+  "http": "só GET ao ar + renovação de sessão; 0 escrita na base, 0 DDL, 0 deploy",
+  "pergunta": "no ar publicado, a largura 390 com o papel developer: o botão «Secretaria Municipal» está injetado, com que munApto, e está pintado?",
+  "metodo": "fetch do ar + md5 contra esperado-v136; sessão renovada e gravada nos registos antes do browser; Chrome headless via CDP; Emulation.setDeviceMetricsOverride com {\"width\":390,\"height\":720,\"deviceScaleFactor\":2,\"mobile\":true} (a mesma régua de estreitamento do scripts/ah2-mobile2.mjs versionado); espera pelo predicate do produtor (BFR_MUNICIPAL + o botão municipal no DOM), não por cronómetro; leitura do estado vivo do DOM comparada com aptoParaSessao()",
+  "servido": {
+    "url": "https://bfr-conecta.turmaroboticabfr.workers.dev/",
+    "md5": "9e236a23eed978cf7c2a2743d449b307",
+    "bytes": 3547458
+  },
+  "sessao": {
+    "papel": "developer",
+    "registos_gravados": 46,
+    "rodou": true,
+    "expira_em": "2026-11-20T22:53:20.000Z",
+    "access_len": 815,
+    "refresh_len": 12
+  },
+  "tempos_ms": {
+    "login": 488,
+    "shell_ready": 1924,
+    "modulo": 3
+  },
+  "gaveta_aberta_por_toque": {
+    "candidatos": [
+      {
+        "sel": "#bfrMobileBottomNav button[data-bfr-mobile-route=\"more\"]",
+        "existe": true,
+        "disp": "grid",
+        "x": 344,
+        "y": 685,
+        "w": 72,
+        "h": 61
+      },
+      {
+        "sel": "[data-mobile-more]",
+        "existe": true,
+        "disp": "flex",
+        "x": 0,
+        "y": 0,
+        "w": 0,
+        "h": 0
+      },
+      {
+        "sel": "[data-bfr-open-drawer]",
+        "existe": true,
+        "disp": "grid",
+        "x": 36,
+        "y": 30,
+        "w": 44,
+        "h": 44
+      }
+    ],
+    "gatilho": {
+      "sel": "#bfrMobileBottomNav button[data-bfr-mobile-route=\"more\"]",
+      "existe": true,
+      "disp": "grid",
+      "x": 344,
+      "y": 685,
+      "w": 72,
+      "h": 61
+    },
+    "alvo_do_toque": {
+      "x": 344,
+      "y": 685,
+      "w": 72,
+      "h": 61,
+      "no_ecra": true,
+      "no_alvo": false,
+      "por_cima": "p.publish-status",
+      "scroll_y": 0
+    },
+    "entrou": false,
+    "aberta": false,
+    "depois_do_toque": {
+      "menu_display": "none",
+      "em_cima": "p.publish-status",
+      "copia": {
+        "disp": "flex",
+        "vis": "visible",
+        "x": 0,
+        "y": 0,
+        "w": 0,
+        "h": 0,
+        "rotulo": "🏛Secretaria Municipal"
+      }
+    }
+  },
+  "medido": {
+    "viewport": {
+      "inner_width": 390,
+      "doc_client_width": 390,
+      "media_max_800": true,
+      "dpr": 2
+    },
+    "papel": {
+      "runtime_role": "developer",
+      "active_view": "admin",
+      "active_section": "inicio"
+    },
+    "mapa": {
+      "chaves": [
+        "parent",
+        "student",
+        "teacher",
+        "coordinator",
+        "admin",
+        "director",
+        "monitor",
+        "gatekeeper",
+        "secretary",
+        "aee",
+        "psychology",
+        "multiprofessional",
+        "sports_operator",
+        "education_supervisor"
+      ],
+      "admin_tem_sect": true,
+      "education_supervisor_tem_sect": true,
+      "secretary_tem_sect": false,
+      "n_de_admin": 27
+    },
+    "modulo": {
+      "existe": true,
+      "sect": "secretaria-municipal",
+      "papeis": [
+        "admin",
+        "education_supervisor"
+      ],
+      "vista_existe": true,
+      "vista_hidden": true,
+      "vista_munApto": "sim",
+      "vista_caixa": {
+        "disp": "none",
+        "vis": "visible",
+        "pe": "auto",
+        "op": "1",
+        "x": 0,
+        "y": 0,
+        "w": 0,
+        "h": 0,
+        "offsetParent_nulo": true
+      }
+    },
+    "apto_para_sessao": {
+      "apto": true,
+      "por": "papel=developer viewRole=admin no mapa=true"
+    },
+    "erro_funcao": null,
+    "sonda": {
+      "feita": true,
+      "executavel": true,
+      "erro": "",
+      "nota": "o backend respondeu false para esta sessão"
+    },
+    "botoes": [
+      {
+        "el": "button.nav-item.tap-target",
+        "host": "nav.nav-list.bfr-platform-nav",
+        "indice": 13,
+        "irmaos": 15,
+        "munApto": "sim",
+        "sec": "secretaria-municipal",
+        "rotulo": "🏛Secretaria Municipal",
+        "dentro_do_mapa": true,
+        "na_gaveta": false,
+        "caixa": {
+          "disp": "none",
+          "vis": "visible",
+          "pe": "auto",
+          "op": "1",
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0,
+          "offsetParent_nulo": true
+        },
+        "recipiente": "sidebar",
+        "recipiente_aberto": false
+      },
+      {
+        "el": "button.mobile-more-option.tap-target",
+        "host": "div.mobile-more-grid",
+        "indice": 27,
+        "irmaos": 31,
+        "munApto": "sim",
+        "sec": "secretaria-municipal",
+        "rotulo": "🏛Secretaria Municipal",
+        "dentro_do_mapa": false,
+        "na_gaveta": true,
+        "caixa": {
+          "disp": "flex",
+          "vis": "visible",
+          "pe": "auto",
+          "op": "1",
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0,
+          "offsetParent_nulo": true
+        },
+        "recipiente": "gaveta",
+        "recipiente_aberto": false
+      }
+    ],
+    "n_botoes": 2,
+    "aberturas": {
+      "gaveta_aberta": false,
+      "sidebar_aberta": false
+    },
+    "recipiente": {
+      "sidebar": {
+        "disp": "none",
+        "vis": "visible",
+        "pe": "auto",
+        "op": "1",
+        "x": 0,
+        "y": 0,
+        "w": 0,
+        "h": 0,
+        "offsetParent_nulo": true
+      },
+      "sidebar_nav_itens": 53,
+      "gaveta": {
+        "disp": "none",
+        "vis": "visible",
+        "pe": "auto",
+        "op": "1",
+        "x": 0,
+        "y": 0,
+        "w": 0,
+        "h": 0,
+        "offsetParent_nulo": true,
+        "aberta": false
+      },
+      "mobile_bottom_nav": true
+    },
+    "barra_papeis": [
+      "admin",
+      "director",
+      "parent",
+      "student",
+      "teacher",
+      "coordinator",
+      "secretary",
+      "monitor",
+      "aee",
+      "gatekeeper"
+    ]
+  },
+  "consola": [],
+  "conclusao": {
+    "frase_que_esta_corrida_autoriza": "a 390px com developer: 2 botão(ões) injetado(s), munApto=sim, 0 pintado(s) nos 0 recipiente(s) aberto(s) ([\"sidebar:fechado\",\"gaveta:fechado\"]); recipientes: [\"nav.nav-list.bfr-platform-nav\",\"div.mobile-more-grid\"]",
+    "o_que_nao_prova": "não prova o que acontece depois do clique (as rotas medidas por toque estão em ah2-mobile2); não prova larguras intermédias não corridas; e a barra de troca de papel só existe para developer, por isso noutro papel o recipiente pode ser outro."
+  },
+  "portoes": [
+    {
+      "nome": "a_pegada_servida_e_a_shell_publicada_da_v136",
+      "verde": true,
+      "detalhe": {
+        "servido": "9e236a23eed978cf7c2a2743d449b307",
+        "esperado": "9e236a23eed978cf7c2a2743d449b307"
+      }
+    },
+    {
+      "nome": "a_cadeia_foi_renovada_e_gravada_em_todos_os_registos",
+      "verde": true,
+      "detalhe": {
+        "registos": 46,
+        "rodou": true,
+        "expira_em": "2026-11-20T22:53:20.000Z"
+      }
+    },
+    {
+      "nome": "a_sessao_monta_a_shell",
+      "verde": true,
+      "detalhe": {
+        "ms_login": 488,
+        "ms_ready": 1924,
+        "ms_modulo": 3,
+        "papel": "developer"
+      }
+    },
+    {
+      "nome": "o_modulo_esta_presente",
+      "verde": true,
+      "detalhe": {
+        "sect": "secretaria-municipal",
+        "papeis": [
+          "admin",
+          "education_supervisor"
+        ]
+      }
+    },
+    {
+      "nome": "o_botao_municipal_foi_injetado_no_dom",
+      "verde": true,
+      "detalhe": {
+        "n_botoes": 2,
+        "hosts": [
+          "nav.nav-list.bfr-platform-nav",
+          "div.mobile-more-grid"
+        ]
+      }
+    },
+    {
+      "nome": "o_estado_no_dom_bate_com_a_funcao_do_modulo",
+      "verde": true,
+      "detalhe": {
+        "funcao": {
+          "apto": true,
+          "por": "papel=developer viewRole=admin no mapa=true"
+        },
+        "botoes": [
+          {
+            "host": "nav.nav-list.bfr-platform-nav",
+            "munApto": "sim"
+          },
+          {
+            "host": "div.mobile-more-grid",
+            "munApto": "sim"
+          }
+        ]
+      }
+    },
+    {
+      "nome": "a_porta_pintada_em_cada_recipiente_aberto",
+      "verde": false,
+      "detalhe": {
+        "apto": true,
+        "aberturas": {
+          "gaveta_aberta": false,
+          "sidebar_aberta": false
+        },
+        "em_aberto": [],
+        "em_fechado": [
+          {
+            "recipiente": "sidebar",
+            "disp": "none",
+            "caixa": "0x0"
+          },
+          {
+            "recipiente": "gaveta",
+            "disp": "flex",
+            "caixa": "0x0"
+          }
+        ]
+      }
+    },
+    {
+      "nome": "a_seccao_registada_apenas_nos_papeis_municipais",
+      "verde": true,
+      "detalhe": {
+        "mapa": {
+          "chaves": [
+            "parent",
+            "student",
+            "teacher",
+            "coordinator",
+            "admin",
+            "director",
+            "monitor",
+            "gatekeeper",
+            "secretary",
+            "aee",
+            "psychology",
+            "multiprofessional",
+            "sports_operator",
+            "education_supervisor"
+          ],
+          "admin_tem_sect": true,
+          "education_supervisor_tem_sect": true,
+          "secretary_tem_sect": false,
+          "n_de_admin": 27
+        },
+        "papeis": [
+          "admin",
+          "education_supervisor"
+        ]
+      }
+    },
+    {
+      "nome": "a_sonda_do_backend_respondeu_ou_foi_registada_como_nao_respondida",
+      "verde": true,
+      "detalhe": {
+        "sonda": {
+          "feita": true,
+          "executavel": true,
+          "erro": "",
+          "nota": "o backend respondeu false para esta sessão"
+        }
+      }
+    }
+  ],
+  "falhas": [
+    "a_porta_pintada_em_cada_recipiente_aberto"
+  ],
+  "veredito": "BU11_PORTA_MUNICIPAL_VERMELHO 1 de 9"
+}
