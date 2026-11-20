@@ -1,0 +1,286 @@
+{
+  "programa": "scripts/p73-pen38-sonda-consumidor-do-diagnostico.mjs",
+  "em": "2026-11-20T21:12:30.868Z",
+  "http": 0,
+  "escrita_no_banco": 0,
+  "ddl": 0,
+  "pergunta": "a FALTA-3 está aberta? ou seja: existe algum bundle versionado que chame bfr_municipal_scope_diagnostico()?",
+  "metodo": "nomes lidos de scripts/p73-pen38-ddl-candidata.sql; ficheiros lidos de `git ls-files` (índice, não disco); três famílias de grafia (.rpc('…'), /rpc/<nome>, nome em texto), cada uma com fixture e controlo negativo; bundles e workers contados separadamente porque a shell está embutida no worker.mjs",
+  "familias": {
+    "chamada_rpc": "\\.\\s*rpc\\s*\\(\\s*['\"`]X['\"`]",
+    "caminho_rest": "\\/rpc\\/X\\b",
+    "ocorrencias_nome": "\\bX\\b"
+  },
+  "bundles_varridos": [
+    "app/index.html",
+    "bfr-candidata-v114-supervisao/index.html",
+    "bfr-candidata-v115-supervisao-embed/index.html",
+    "bfr-candidata-v119-supervisao-embed/index.html",
+    "bfr-candidata-v120-setrole-supervisor/index.html",
+    "bfr-candidata-v121-rotulos-supervisor/index.html",
+    "bfr-candidata-v127-secretaria-municipal-ANTERIOR-host-fora-do-seletor-do-mapa/index.html",
+    "bfr-candidata-v127-secretaria-municipal/index.html",
+    "bfr-candidata-v129-secretaria-municipal/index.html",
+    "bfr-candidata-v130-secretaria-municipal/index.html",
+    "bfr-candidata-v131-secretaria-municipal/index.html",
+    "bfr-candidata-v132-secretaria-municipal/index.html",
+    "bfr-candidata-v133-secretaria-municipal/index.html",
+    "bfr-candidata-v134-sidebar-escondida/index.html",
+    "bfr-candidata-v136-secretaria-de-educacao/index.html",
+    "bfr-v115-src/index.html",
+    "bfr-v116-src/index.html"
+  ],
+  "workers_varridos": [
+    "bfr-candidata-v124-anticliquejacking/worker.mjs",
+    "bfr-candidata-v125-announcement-created-at/worker.mjs",
+    "bfr-candidata-v126-a11y-secretaria/worker.mjs",
+    "v119-identifica-worker.mjs",
+    "worker-deploy-v115/worker.mjs",
+    "worker-deploy-v116/worker.mjs",
+    "worker-deploy-v117/worker.mjs",
+    "worker-deploy-v118-csp/worker.mjs",
+    "worker-deploy-v118-swclone/worker.mjs",
+    "worker-deploy-v118-swfix/worker.mjs",
+    "worker-deploy-v118/worker.mjs",
+    "worker-deploy-v119/worker.mjs",
+    "worker-deploy-v120-404/worker.mjs",
+    "worker-deploy-v120/worker.mjs",
+    "worker-deploy-v121/worker.mjs",
+    "worker-deploy-v122-push/worker.mjs",
+    "worker-deploy-v123-pdfs/worker.mjs",
+    "worker-deploy-v133-municipal/worker.mjs",
+    "worker-deploy-v134-sidebar/worker.mjs",
+    "worker-deploy-v135-headers/worker.mjs",
+    "worker-deploy-v136-secretaria-de-educacao/worker.mjs",
+    "worker-deploy-v137-remendo-pen40/worker.mjs"
+  ],
+  "por_nome": [
+    {
+      "nome": "bfr_municipal_scope_diagnostico",
+      "bundles": [],
+      "workers": [],
+      "chamadas_rpc": {
+        "bundles": 0,
+        "workers": 0
+      },
+      "caminho_rest": {
+        "bundles": 0,
+        "workers": 0
+      },
+      "ocorrencias_nome": {
+        "bundles": 0,
+        "workers": 0
+      }
+    },
+    {
+      "nome": "bfr_school_set_municipality",
+      "bundles": [],
+      "workers": [],
+      "chamadas_rpc": {
+        "bundles": 0,
+        "workers": 0
+      },
+      "caminho_rest": {
+        "bundles": 0,
+        "workers": 0
+      },
+      "ocorrencias_nome": {
+        "bundles": 0,
+        "workers": 0
+      }
+    }
+  ],
+  "chamadas_rpc_de_tudo_nos_bundles": {
+    "total": 535,
+    "por_nome": {
+      "register_gate_checkin": 51,
+      "list_current_month_birthdays": 34,
+      "set_profile_role": 34,
+      "bfr_teacher_context": 34,
+      "sports_set_match_status": 34,
+      "sports_record_event": 34,
+      "get_student_guardians": 17,
+      "confirm_guardian_entry": 17,
+      "acknowledge_occurrence": 17,
+      "complete_family_registration": 17,
+      "choose_initial_role": 17,
+      "bfr_list_staff_birthdays": 17,
+      "bfr_set_staff_birthday": 17,
+      "correct_gate_attendance": 17,
+      "bfr_confirm_school_calendar": 17,
+      "bfr_teacher_lesson_gate_evidence": 17,
+      "bfr_correct_grade": 17,
+      "bfr_get_student_photo_path": 17,
+      "sports_rebuild_standings": 17,
+      "bfr_resolve_communication_recipients": 17,
+      "bfr_create_school_meeting": 17,
+      "bfr_create_targeted_announcement": 17,
+      "bfr_update_school_meeting": 17,
+      "register_gate_checkin_v2": 17,
+      "bfr_is_municipal_authority": 8
+    }
+  },
+  "fixture": {
+    "nome": "bfr_nome_de_fixture_que_nao_existe",
+    "disparos": {
+      "chamada_rpc": 2,
+      "caminho_rest": 1,
+      "ocorrencias_nome": 4
+    },
+    "controlo_negativo": {
+      "chamada_rpc": 0,
+      "caminho_rest": 0,
+      "ocorrencias_nome": 0
+    }
+  },
+  "conclusao": {
+    "falta_3_aberta": true,
+    "frase_que_esta_corrida_autoriza": "zero chamadas a bfr_municipal_scope_diagnostico nos 17 index.html e 22 worker.mjs do índice; as funções da PEN-38 ficam sem consumidora até existir código de tela que as chame",
+    "o_que_nao_prova": "não prova nada do lado do browser nem do lado do SQL: uma chamada construída por composição de string (`rpc(nomeVariavel)`) não tem o nome entre aspas ao lado do `rpc(` e escapa às três grafias varridas; e um consumidor pode existir num bundle ainda não publicado (a candidata da v138 não existe ainda — ver §5 do runbook)."
+  },
+  "portoes": [
+    {
+      "nome": "os_nomes_varridos_sao_os_da_candidata_e_nao_da_memoria",
+      "verde": true,
+      "detalhe": {
+        "nomes_da_candidata": [
+          "bfr_municipal_scope_diagnostico",
+          "bfr_school_set_municipality"
+        ],
+        "alvo": "bfr_municipal_scope_diagnostico",
+        "origem": "scripts/p73-pen38-ddl-candidata.sql"
+      }
+    },
+    {
+      "nome": "a_lista_de_bundles_ve_do_indice_e_todos_resolvem",
+      "verde": true,
+      "detalhe": {
+        "index_html": 17,
+        "worker_mjs": 22,
+        "ausentes": []
+      }
+    },
+    {
+      "nome": "nenhuma_chamada_ao_diagnostico_no_codigo_versionado",
+      "verde": true,
+      "detalhe": {
+        "alvo": "bfr_municipal_scope_diagnostico",
+        "nome": "bfr_municipal_scope_diagnostico",
+        "bundles": [],
+        "workers": [],
+        "chamadas_rpc": {
+          "bundles": 0,
+          "workers": 0
+        },
+        "caminho_rest": {
+          "bundles": 0,
+          "workers": 0
+        },
+        "ocorrencias_nome": {
+          "bundles": 0,
+          "workers": 0
+        }
+      }
+    },
+    {
+      "nome": "nenhuma_das_funcoes_da_pen38_e_chamada_por_bundles_ou_workers",
+      "verde": true,
+      "detalhe": [
+        {
+          "nome": "bfr_municipal_scope_diagnostico",
+          "rpc": {
+            "bundles": 0,
+            "workers": 0
+          },
+          "rest": {
+            "bundles": 0,
+            "workers": 0
+          },
+          "texto": {
+            "bundles": 0,
+            "workers": 0
+          }
+        },
+        {
+          "nome": "bfr_school_set_municipality",
+          "rpc": {
+            "bundles": 0,
+            "workers": 0
+          },
+          "rest": {
+            "bundles": 0,
+            "workers": 0
+          },
+          "texto": {
+            "bundles": 0,
+            "workers": 0
+          }
+        }
+      ]
+    },
+    {
+      "nome": "a_varredura_ve_chamadas_a_outras_coisas_nao_e_cega",
+      "verde": true,
+      "detalhe": {
+        "total_chamadas_rpc_bundles": 535,
+        "nomes_chamados": {
+          "register_gate_checkin": 51,
+          "list_current_month_birthdays": 34,
+          "set_profile_role": 34,
+          "bfr_teacher_context": 34,
+          "sports_set_match_status": 34,
+          "sports_record_event": 34,
+          "get_student_guardians": 17,
+          "confirm_guardian_entry": 17,
+          "acknowledge_occurrence": 17,
+          "complete_family_registration": 17,
+          "choose_initial_role": 17,
+          "bfr_list_staff_birthdays": 17,
+          "bfr_set_staff_birthday": 17,
+          "correct_gate_attendance": 17,
+          "bfr_confirm_school_calendar": 17,
+          "bfr_teacher_lesson_gate_evidence": 17,
+          "bfr_correct_grade": 17,
+          "bfr_get_student_photo_path": 17,
+          "sports_rebuild_standings": 17,
+          "bfr_resolve_communication_recipients": 17,
+          "bfr_create_school_meeting": 17,
+          "bfr_create_targeted_announcement": 17,
+          "bfr_update_school_meeting": 17,
+          "register_gate_checkin_v2": 17,
+          "bfr_is_municipal_authority": 8
+        }
+      }
+    },
+    {
+      "nome": "cada_familia_de_grafia_dispara_no_fixture",
+      "verde": true,
+      "detalhe": {
+        "chamada_rpc": 2,
+        "caminho_rest": 1,
+        "ocorrencias_nome": 4
+      }
+    },
+    {
+      "nome": "o_controlo_negativo_da_mesma_regua_da_zero",
+      "verde": true,
+      "detalhe": {
+        "chamada_rpc": 0,
+        "caminho_rest": 0,
+        "ocorrencias_nome": 0
+      }
+    },
+    {
+      "nome": "o_bundle_varrido_e_byte_a_byte_a_shell_que_o_ar_serve_hoje",
+      "verde": true,
+      "detalhe": {
+        "varrido": "bfr-candidata-v136-secretaria-de-educacao/index.html",
+        "md5_varrido": "9e236a23eed978cf7c2a2743d449b307",
+        "htmlMd5_do_manifest": "9e236a23eed978cf7c2a2743d449b307",
+        "nota": "a v137 serve o mesmo html (portao C2 de scripts/v137-pos-deploy.mjs), por isto esta pegada cobre o ar de hoje e o da v137"
+      }
+    }
+  ],
+  "falhas": [],
+  "veredito": "P73_PEN38_CONSUMIDOR_FALTA3_ABERTA_CONFIRMADO 8/0"
+}

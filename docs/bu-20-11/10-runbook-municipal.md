@@ -267,15 +267,34 @@ credencial, exige transacção única `BEGIN…COMMIT`, corre o **preflight fres
 mexido **e** que o mesmo preflight, em modo `--reversao`, dê `P73_PEN38_PREFLIGHT_VERDE_REVERSAO 10/0`.
 *Vermelho significa:* `…_ABORTADA` = o Postgres abortou a transacção inteira, nada ficou aplicado; `…_COM_CONFERENCIA_VERMELHA` =
 alguma coisa foi aplicada e não é o que a candidata afirma, e aí o passo seguinte é a reversão do §4, não repetir.
-**FALTA-3:** a quarta acção desta peça — `bfr_municipal_scope_diagnostico()` — não tem consumidora no código
-servido, e isso mede-se nos bundles, não na minha memória do que escrevi. Varredura dos **17** `index.html`
-versionados: **42** chamadas `.rpc('…')`, das quais **zero** ao diagnóstico — as duas únicas funções que lá são
-chamadas são `bfr_is_municipal_authority` (8) e `bfr_teacher_context` (34) —, e zero no
-`worker-deploy-v120-404/worker.mjs`, onde o padrão `.rpc(` encontra 2 chamadas e `bfr_municipal` nenhuma. O controlo
-positivo dispara na mesma varredura — o padrão encontra `.rpc(` e encontra nomes municipais — por isso o zero não
-é régua cega. O comentário da função aponta para o §12 do documento 08, e o §12 lá está, mas a promessa de tela
-(«dizer por que é que a aba está vazia») só se cumpre quando um bundle a chamar existir. Aplicar PEN-38 sem
-FALTA-3 escrita é criar uma função executável que ninguém chama: não estraga nada, e também não prova a tela.
+**FALTA-3 (aberta, e agora medida por peça e não por memória):** a quarta acção desta peça —
+`bfr_municipal_scope_diagnostico()` — não tem consumidora no código servido. A frase que aqui estava era uma
+afirmação sobre ficheiros que ninguém podia re-tirar, e estava **errada no detalhe**: dizia «42 chamadas
+`.rpc(`, das quais zero ao diagnóstico, e as duas únicas funções chamadas são `bfr_is_municipal_authority` (8) e
+`bfr_teacher_context` (34)» — os 42 são a soma desses dois nomes, não o total de chamadas. O instrumento é
+`scripts/p73-pen38-sonda-consumidor-do-diagnostico.mjs` (0 HTTP, 0 banco) e a corrida de 20/11 dá
+`P73_PEN38_CONSUMIDOR_FALTA3_ABERTA_CONFIRMADO 8/0` em
+`evidence/p73-pen38-sonda-consumidor-do-diagnostico-20-11.json`: **17** `index.html` e **22** `worker.mjs` do
+índice, **535** chamadas `.rpc('…')` em **25** nomes distintos, **zero** ao diagnóstico nas três grafias varridas
+(`.rpc('nome')`, `/rest/v1/rpc/nome`, nome como texto) e zero também a `bfr_school_set_municipality`. Os nomes
+varridos não são dactilografados na peça: lêem-se dos `CREATE FUNCTION public.<nome>` da candidata
+(`scripts/p73-pen38-ddl-candidata.sql`), e os ficheiros varridos vêm de `git ls-files`, não do `ls` do disco — um
+bundle que só existe nesta máquina não é um consumidor que se possa publicar amanhã. O controlo positivo dispara
+na mesma varredura (os mesmos 8 e 34 dos dois nomes municipais) e o fixture das três grafias dá 2/1/4 contra um
+texto sem agulha que dá 0/0/0, por isso o zero não é régua cega. A primeira corrida desta peça foi a vermelho
+por defeito meu — o fixture da família `caminho_rest` não era um caminho `rpc` — e está preservada em
+`evidence/p73-pen38-sonda-consumidor-do-diagnostico-20-11-VERMELHO-o-fixture-do-caminho-rest-nao-era-um-caminho-rpc.json`.
+O comentário da função aponta «para o §12 «diagnóstico em cada tela»», e aqui a prosa deste runbook estava
+**errada em duas coisas**, ambas medidas nesta passada: (i) o §12 não é o do documento 08 — esse tem **zero**
+ocorrências da palavra «diagnóstico»; o §12 que nomeia `bfr_municipal_scope_diagnostico()` é a
+«LISTA DE BUGS E PENDÊNCIAS» de `docs/roadmap-master.md` (cabeçalho na linha 552, linha PEN-38 na 599); e (ii) a
+frase «diagnóstico em cada tela» não existe com essas letras em nenhum documento versionado, pelo que o comentário
+é paraphrase de uma promessa, não citação dela — o que a promessa é, diz a linha 114 do SQL
+(`COMMENT ON FUNCTION … IS 'SM4/PEN-38: §12 — porque é que a aba está vazia…'`). A promessa de tela só se cumpre
+quando um bundle a chamar existir — e isso é código de produto (a v138 de §5), não DDL. Aplicar PEN-38 com
+FALTA-3 aberta é criar uma função executável que ninguém chama: não estraga nada, e também não prova a tela. O que
+esta peça **não** prova está no campo `o_que_nao_prova` do registo: uma chamada construída por composição de
+string escapa às três grafias varridas.
 
 ### 2.3 · Etiquetar escola↔município (só depois da opção 1 ou 2 do §1, e só com sessão)
 
@@ -478,7 +497,8 @@ Escrita: `scripts/p73-municipal-aplica-ddl.mjs`, `scripts/p73-municipal-etiqueta
 Conferência do pacote: `scripts/pacote-municipal-confere-pecas.mjs`.
 Conferência pós-deploy: `scripts/v136-pos-deploy.mjs` (corrida em 19/11) e `scripts/v137-pos-deploy.mjs`
 (escrita em 20/11, ainda sem corrida de ar — ver §2.6 e §3.3).
-Medição de alcance: `scripts/p73-pen38-alcance-por-concessao-20-11.mjs`, `scripts/p73-pen39-sonda-uso-agregados.mjs`.
+Medição de alcance: `scripts/p73-pen38-alcance-por-concessao-20-11.mjs`, `scripts/p73-pen39-sonda-uso-agregados.mjs`,
+`scripts/p73-pen38-sonda-consumidor-do-diagnostico.mjs` (FALTA-3, escrita e corrida em 20/11).
 
 As pegadas (bytes e md5) de cada um destes caminhos, medidas no fecho do pacote e não a meio de uma escrita,
 estão em `evidence/pacote-municipal-pecas-20-11-fecho-corpus-duplo.json`. O registo anterior,
