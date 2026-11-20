@@ -38,7 +38,10 @@ const FIX_DISPARO_ESPERADO = ['scripts/x-pen99-ddl-candidata.sql', 'evidence/x-p
 //   saida_de_passo_nao_autorizado — artefacto que só nasce quando o passo correr (publicar a v137);
 //   fora_do_git_por_designio       — ficheiro de sessão, que o `.gitignore` guarda para não versionar
 //                                    credenciais. A régua é o `git check-ignore`, não a memória do nome.
-const SAIDAS_AINDA_NAO_CORRIDAS = ['evidence/v137-deploy-stdout-20-11.txt'];
+// São as três saídas do mesmo passo, e o portão abaixo exige que continuem ausentes: se o `wrangler deploy` correr
+// e elas aparecerem, este portão vai a vermelho e obriga a tirar os nomes da lista — a classe não apodrece sozinha.
+const SAIDAS_AINDA_NAO_CORRIDAS = ['evidence/v137-deploy-stdout-20-11.txt', 'evidence/v137-deployments-list-depois-20-11.json',
+  'evidence/v137-deployments-status-depois-20-11.json'];
 const FORA_DO_GIT = ['ah2-sessions.json', 'c2-sessions.json'];
 // Terceiro tipo de «não existe», medido em 20/11 ao alargar o corpus ao documento 08: um nome que a prosa
 // cita PARA DIRE QUE NÃO EXISTE. `scripts/bu4-digestao-para-documentacao-20-11.mjs` é o nome do output que o
@@ -124,7 +127,7 @@ const pref38 = JSON.parse(readFileSync(join(REPO, 'evidence/p73-pen38-preflight-
 const pref41 = JSON.parse(readFileSync(join(REPO, 'evidence/p73-pen41-preflight-candidata-20-11e.json'), 'utf8'));
 const v137 = JSON.parse(readFileSync(join(REPO, 'evidence/v137-gera-bundle-20-11.json'), 'utf8'));
 
-const INPUTS_FECHO = ['scripts/p73-pen38-alcance-por-concessao-20-11.mjs', 'scripts/p73-pen38-preflight.mjs', 'scripts/p73-pen39-preflight.mjs', 'scripts/p73-pen41-preflight.mjs', 'scripts/p73-municipal-etiqueta.mjs', 'scripts/p73-municipal-aplica-ddl.mjs', 'scripts/v136-pos-deploy.mjs', 'scripts/pacote-municipal-confere-pecas.mjs', RUNBOOK];
+const INPUTS_FECHO = ['scripts/p73-pen38-alcance-por-concessao-20-11.mjs', 'scripts/p73-pen38-preflight.mjs', 'scripts/p73-pen39-preflight.mjs', 'scripts/p73-pen41-preflight.mjs', 'scripts/p73-municipal-etiqueta.mjs', 'scripts/p73-municipal-aplica-ddl.mjs', 'scripts/v136-pos-deploy.mjs', 'scripts/v137-pos-deploy.mjs', 'scripts/pacote-municipal-confere-pecas.mjs', RUNBOOK];
 
 const falhas = [];
 const portoes = [];

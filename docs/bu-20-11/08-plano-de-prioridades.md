@@ -242,9 +242,14 @@ Três linhas deste plano mudam de natureza por causa disto:
 - **A etiquetagem** entra como item novo e distinto: é escrita de dados pela porta nomeada do PEN-38 bloco C,
   exige sessão autenticada de admin de plataforma (`auth.uid()`), e hoje não há sessão neste posto de trabalho —
   `ah2-sessions.json` ausente, `c2-sessions.json` com 3 bytes. O ciclo de mint é OK próprio.
-- **FALTA-1**, nomeada no runbook: não existe peça de conferência pós-deploy da v137 (o modelo é
-  `scripts/v136-pos-deploy.mjs`). Antes de qualquer «publicar», ou se escreve a peça, ou se declara o passo como
-  manual. **FALTA-2 fechou em 20/11**: o aplicador passou a ter modo de reversão (`--reverter`), com frase
+- **FALTA-1 fechou ao nível da candidata em 20/11**: a peça de conferência pós-deploy da v137 é
+  `scripts/v137-pos-deploy.mjs`, modelo `scripts/v136-pos-deploy.mjs` com a cláusula da shell invertida — a v137
+  só muda o módulo, por isso a shell servida tem de continuar byte-a-byte a da v136. O `--selfteste` offline dá
+  `V137_POS_DEPLOY_SELFTESTE_OK 9/0` (`evidence/v137-pos-deploy-stdout-selfteste-20-11.txt`) e a corrida sem flag
+  recusa com exit 2
+  enquanto as três saídas do passo de publicação não existirem (`evidence/v137-pos-deploy-stdout-recusa-20-11.txt`).
+  Fica aberta no único sítio onde pode estar: conferir o ar real exige a publicação, e a publicação pede OK literal
+  próprio que ainda não foi dado. **FALTA-2 fechou em 20/11**: o aplicador passou a ter modo de reversão (`--reverter`), com frase
   própria por peça e por modo e a pré-condição no preflight em modo reversão. O que isto não cobre é o ciclo
   completo aplicar → reverter conferido numa corrida: nenhuma peça foi aplicada, portanto a reversão está provada
   como caminho que recusa quando não deve correr, não como caminho que já desfez alguma coisa.

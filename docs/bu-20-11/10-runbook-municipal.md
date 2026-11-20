@@ -233,7 +233,8 @@ confirmação de que o sucessor serve — e também de que o portão não o apan
 dois documentos, não os `readFileSync` dos scripts. **FALTA-4:** ou o instrumento passa a apontar para o sucessor
 versionado, ou o v1 entra no índice e o substituto é retirado; as duas opções desfazem algo que já foi decidido,
 por isso pedem escolha explícita e não a minha. A numeração é a das pontas soltas deste runbook: FALTA-1 em §2.6
-(aberta — pede a peça de conferência pós-deploy da v137), FALTA-2 em §4 (fechada em 20/11, com as recusas
+(fechada ao nível da candidata em 20/11, com o `--selfteste` e a recusa de publicação medidos; quem põe a peça a
+conferir de verdade é a publicação, e essa pede OK literal próprio), FALTA-2 em §4 (fechada em 20/11, com as recusas
 medidas e o ciclo completo ainda por correr), FALTA-3 em §2.2, esta aqui.
 
 ### 2.1 · Preflight fresco da peça que se vai aplicar
@@ -332,10 +333,21 @@ cd worker-deploy-v137-remendo-pen40 && npx wrangler@4.154.0 deploy > ../evidence
 `docs/auditoria-bfr-conecta.md`, §X.2 da v122).
 *OK necessário:* frase própria de publicação, nova, distinta de qualquer frase de DDL. O `ok_literal` de
 `evidence/v137-gera-bundle-20-11.json` diz `(sem OK literal — candidata pronta; a publicacao exige OK literal novo)`.
-**FALTA-1:** a peça de conferência pós-deploy da v137 não existe. Existe o modelo (`scripts/v136-pos-deploy.mjs`)
-e existe a prova ao nível da candidata (`evidence/p73-leitor-bancada-pen40-20-11e.json`, `P73_BANCADA_PEN40_AB_VERDE`,
-16 portões / 0 falhas, `MONTA` 6/6 na candidata contra `NAO_MONTA` 6/6 na base). Sem FALTA-1 escrita, a
-publicação fica sem prova de fecho e não deve ser feita.
+**FALTA-1 · escrita em 20/11 e fechada ao nível da candidata:** a peça de conferência pós-deploy é
+`scripts/v137-pos-deploy.mjs`, modelo `scripts/v136-pos-deploy.mjs` com uma cláusula invertida — a v137 não
+muda a shell, muda só o módulo de apresentação responsiva, por isso o portão `C2_shell_e_byte_a_byte_a_shell_da_v136`
+exige que a shell servida **não** tenha mudado. Copiar o `C1b` da v136 («a shell deixou de ser a anterior») daria
+vermelho legítimo sobre uma publicação correcta, e era o vermelho da peça, não do mundo. As agulhas do PEN-40 não
+são dactilografadas na peça: lêem-se de `remendo.de` / `remendo.para` em `evidence/v137-remendo-pen40-20-11.json`,
+que é o registo do texto que o remendo substituiu — se o remendo mudar de agulha, a peça muda com ele ou dá
+vermelho. Estado medido hoje: o `--selfteste` offline dá `V137_POS_DEPLOY_SELFTESTE_OK 9/0`
+(`evidence/v137-pos-deploy-stdout-selfteste-20-11.txt`, 0 HTTP, 0 escrita), e a corrida sem flag recusa com
+`V137_POS_DEPLOY_NAO_PUBLICADA`, exit 2 e `evidence/v137-pos-deploy-stdout-recusa-20-11.txt` como única saída —
+as outras três exigidas são `evidence/v137-deploy-stdout-20-11.txt`,
+`evidence/v137-deployments-list-depois-20-11.json` e `evidence/v137-deployments-status-depois-20-11.json`, e só
+nascem do passo de publicação. A recusa não escreve registo próprio de propósito: um vermelho contra um ar que
+ainda serve a v136 é indistinguível de um bundle partido, e as três ausências são o conteúdo do stdout, não o
+nome de um ficheiro. Publicação continua sem OK literal próprio e por isso **não deve ser feita**.
 
 ## 3 · Provas de fecho (o que é medição e o que é previsão)
 
@@ -360,7 +372,26 @@ suprime — é o portão `a_populacao_afectada_tem_somas_coerentes_com_o_zero_im
 Um «todos ainda vêem tudo» depois disto é cache de sessão, não DDL falhado: conferir em sessão nova antes de
 concluir.
 
-### 3.3 · O que ainda não é prova
+### 3.3 · Depois da publicação da v137 (o passo que hoje não pode correr)
+
+```
+node scripts/v137-pos-deploy.mjs        # só depois do `wrangler deploy` de §2.6 com os três stdout/list/status em evidence/
+```
+
+É medição a partir do instante em que as três saídas existirem; hoje é a previsão com o nome do comando. O que os
+portões prometem, e com que fonte: `C1`/`C3` comparam o que o ar serve com `worker-deploy-v137-remendo-pen40/esperado-v137.json`;
+`C2` exige que a shell **não** tenha mudado desde `worker-deploy-v136-secretaria-de-educacao/esperado-v136.json`;
+`C4`/`C5` medem o módulo servido contra o md5 da base e o delta de 790 bytes declarado pelo remendo, e procurem a
+agulha nova sem a agulha velha; `C12`/`C13` percorram os assets que **não** mudam — o censo é
+`worker-deploy-v123-pdfs/esperado-v123.json` menos o módulo remendado, e não os doze, porque a v137 mudou um deles
+à proposição; `C15`/`C16` só valem com as
+três saídas do `wrangler` em disco. A prova ao nível da candidata, essa já é corrida e está em
+`evidence/p73-leitor-bancada-pen40-20-11e.json` (`P73_BANCADA_PEN40_AB_VERDE`, `MONTA` 6/6 na candidata contra
+`NAO_MONTA` 6/6 na base): é o banco, não o browser, e por isso a peça diz no campo
+`o_que_esta_peca_prova` que não prova o efeito do remendo na tela — para isso é re-correr a bancada com as duas
+pernas no ar depois do deploy.
+
+### 3.4 · O que ainda não é prova
 
 * PEN-39 aplicada **não** é tela a mostrar números: o consumo dos agregados pelo módulo servido é código de
   produto (v138), não DDL. Está em §5.
@@ -445,6 +476,8 @@ Candidatas e reversões: `scripts/p73-pen38-ddl-candidata.sql`, `scripts/p73-pen
 Preflights: `scripts/p73-pen38-preflight.mjs`, `scripts/p73-pen39-preflight.mjs`, `scripts/p73-pen41-preflight.mjs`.
 Escrita: `scripts/p73-municipal-aplica-ddl.mjs`, `scripts/p73-municipal-etiqueta.mjs`.
 Conferência do pacote: `scripts/pacote-municipal-confere-pecas.mjs`.
+Conferência pós-deploy: `scripts/v136-pos-deploy.mjs` (corrida em 19/11) e `scripts/v137-pos-deploy.mjs`
+(escrita em 20/11, ainda sem corrida de ar — ver §2.6 e §3.3).
 Medição de alcance: `scripts/p73-pen38-alcance-por-concessao-20-11.mjs`, `scripts/p73-pen39-sonda-uso-agregados.mjs`.
 
 As pegadas (bytes e md5) de cada um destes caminhos, medidas no fecho do pacote e não a meio de uma escrita,

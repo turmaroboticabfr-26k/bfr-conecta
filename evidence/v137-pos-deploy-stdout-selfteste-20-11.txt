@@ -1,0 +1,77 @@
+{
+ "programa": "scripts/v137-pos-deploy.mjs",
+ "selfteste": true,
+ "em": "2026-11-20T20:58:56.388Z",
+ "http": 0,
+ "escrita_no_banco": 0,
+ "ddl": 0,
+ "publicacao": 0,
+ "casos": [
+  {
+   "nome": "as_fontes_de_espera_resolvem_em_disco",
+   "verde": true
+  },
+  {
+   "nome": "a_agulha_do_remendo_distingue_candidata_de_base",
+   "verde": true
+  },
+  {
+   "nome": "os_md5_medidos_batem_com_os_declarados_pelo_remendo_e_pelo_leitor",
+   "verde": true
+  },
+  {
+   "nome": "a_regra_do_delta_bate_com_os_bytes_e_com_a_declaracao",
+   "verde": true
+  },
+  {
+   "nome": "a_shell_da_v137_e_a_da_v136_sem_ambiguidade",
+   "verde": true
+  },
+  {
+   "nome": "o_sw_da_v137_mudou_de_etiqueta_sem_mudar_de_tamanho",
+   "verde": true
+  },
+  {
+   "nome": "a_recusa_de_publicacao_tem_positivo_e_negativo_possiveis",
+   "verde": true
+  },
+  {
+   "nome": "o_url_do_ar_e_derivada_do_diario_e_nao_inventada",
+   "verde": true
+  },
+  {
+   "nome": "a_lista_de_controlo_exclui_s_o_o_modulo_remendado",
+   "verde": true
+  }
+ ],
+ "agulhas_lidas_do_remendo": {
+  "de_bytes": 85,
+  "para_bytes": 875,
+  "de_no_modulo_base": 1,
+  "para_no_modulo_base": 0,
+  "de_no_modulo_candidata": 0,
+  "para_no_modulo_candidata": 1
+ },
+ "modulos": {
+  "base": {
+   "md5": "a83f77baba7453851b287080686c7afb",
+   "bytes": 51742
+  },
+  "candidata": {
+   "md5": "b83b4c2666fc909d50a358b86b99de05",
+   "bytes": 52532
+  }
+ },
+ "saidas_de_publicacao_exigidas": [
+  "evidence/v137-deploy-stdout-20-11.txt",
+  "evidence/v137-deployments-list-depois-20-11.json",
+  "evidence/v137-deployments-status-depois-20-11.json"
+ ],
+ "estado_das_saidas_de_publicacao_agora": [
+  false,
+  false,
+  false
+ ],
+ "veredito": "V137_POS_DEPLOY_SELFTESTE_OK 9/0"
+}
+selfteste: 0 HTTP, 0 escrita; o registo desta corrida e o stdout capturado por redireccionamento
