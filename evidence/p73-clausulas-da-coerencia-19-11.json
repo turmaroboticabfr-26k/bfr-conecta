@@ -1,0 +1,74 @@
+{
+  "programa": "scripts/p73-clausulas-da-coerencia.mjs",
+  "em": "2026-11-19T18:21:15.679Z",
+  "ar_atual": "9e236a23eed978cf7c2a2743d449b307",
+  "linha_da_predica_no_condutor": 107,
+  "expressao": "!!b.censo && b.censo.barra_existe !== false && (b.censo.barra || []).some((x) => x.w > 0 && x.h > 0) && (b.abertas || 0) > 0",
+  "por_ar": {
+    "d418e7fc917f1fbb1437054b7b531f9b": {
+      "ficheiros": 49,
+      "celulas": 84,
+      "coerentes": 79,
+      "chaves_ausentes": {},
+      "primeira_falha": {
+        "censo.barra_existe !== false": 5
+      },
+      "formas": {
+        "abertas,censo,declaradas_sem_rota,diagnostico_gaveta,dialogos_miudos,dialogos_sem_saida,erros,estouro,fonte_miuda,gaveta_aberta_a_toque,inalcancaveis,modal,modal_fechou_a_toque,ms_ready,nao_assentaram,rotas_fora_do_mapa,seccoes,sem_efeito,tap_miudo,vazias,width": 5
+      }
+    },
+    "9e236a23eed978cf7c2a2743d449b307": {
+      "ficheiros": 1,
+      "celulas": 6,
+      "coerentes": 6,
+      "chaves_ausentes": {},
+      "primeira_falha": {},
+      "formas": {}
+    }
+  },
+  "amostra_forma": {
+    "d418e7fc917f1fbb1437054b7b531f9b": {
+      "ficheiro": "ah2-mobile2-m5-coordinator-1.json",
+      "largura": "360",
+      "chaves": [
+        "width",
+        "ms_ready",
+        "censo",
+        "modal",
+        "modal_fechou_a_toque",
+        "gaveta_aberta_a_toque",
+        "seccoes",
+        "abertas",
+        "vazias",
+        "nao_assentaram",
+        "estouro",
+        "tap_miudo",
+        "fonte_miuda",
+        "declaradas_sem_rota",
+        "rotas_fora_do_mapa",
+        "inalcancaveis",
+        "sem_efeito",
+        "erros",
+        "diagnostico_gaveta",
+        "dialogos_sem_saida",
+        "dialogos_miudos"
+      ],
+      "censo_chaves": [
+        "presentation",
+        "body_mobile",
+        "barra_existe",
+        "barra",
+        "gaveta_existe",
+        "gaveta_aberta",
+        "gaveta",
+        "hamb",
+        "sidebar_caixa",
+        "vw",
+        "vh"
+      ],
+      "abertas": 0,
+      "barra_n": 0,
+      "barra_primitiva": []
+    }
+  }
+}

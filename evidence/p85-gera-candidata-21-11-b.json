@@ -1,0 +1,133 @@
+{
+  "programa": "scripts/p85-gera-candidata-sonda-honesta.mjs",
+  "em": "2026-11-21T09:01:01.638Z",
+  "duracao_ms": 680,
+  "faz": "corrige a faixa da sonda no módulo municipal: o verde passa a exigir `data === true`, nasce um ramo de negação, e some a frase que dizia a candidata SM4 «ainda não foi aplicado» quando P82 mediu o contrário.",
+  "nao_faz": "NADA publicado, NADA no banco, NADA mudado em quem vê a aba. Gerar candidata não é publicar: a v139 fica em disco à espera de OK.",
+  "origem": {
+    "pasta": "bfr-candidata-v138-painel-municipal",
+    "md5": "592b3652671d689220784af41da74321",
+    "bytes": 3551245
+  },
+  "saida": {
+    "pasta": "bfr-candidata-v139-sonda-honesta",
+    "md5": "6a902562341d4f9c8c19f33a13ac1c49",
+    "bytes": 3552130,
+    "delta_bytes": 885,
+    "bytes_do_corpo": 61621
+  },
+  "ar": {
+    "url": "https://bfr-conecta.turmaroboticabfr.workers.dev/",
+    "md5_servido": "9e236a23eed978cf7c2a2743d449b307",
+    "continua_a_ser_a_v136": true
+  },
+  "substituicoes": [
+    "sonda_passa_a_guardar_a_resposta_e_a_autorizacao",
+    "a_sonda_regista_o_valor_que_o_backend_devolveu",
+    "o_ramo_verde_passa_a_exigir_verdade_e_ganha_um_ramo_de_negacao",
+    "a_frase_que_afirmava_a_SM4_por_aplicar_desaparece",
+    "a_classe_da_faixa_de_negacao_existe_em_CSS"
+  ],
+  "portoes": [
+    {
+      "nome": "a_origem_fica_byte_a_byte_inalterada",
+      "verde": true,
+      "dado": {
+        "md5_0": "592b3652671d689220784af41da74321",
+        "bytes_0": 3551245
+      }
+    },
+    {
+      "nome": "as_cinco_substituicoes_estao_las_uma_ve_cada",
+      "verde": true,
+      "dado": [
+        "sonda_passa_a_guardar_a_resposta_e_a_autorizacao=1",
+        "a_sonda_regista_o_valor_que_o_backend_devolveu=1",
+        "o_ramo_verde_passa_a_exigir_verdade_e_ganha_um_ramo_de_negacao=1",
+        "a_frase_que_afirmava_a_SM4_por_aplicar_desaparece=1",
+        "a_classe_da_faixa_de_negacao_existe_em_CSS=1"
+      ]
+    },
+    {
+      "nome": "todo_ramo_verde_exige_verdade_e_nao_apenas_resposta",
+      "verde": true,
+      "dado": {
+        "linhas_verdes": [
+          "if (sonda.autorizada === true) return '<div class=\"mun-ok\"><strong>Controle no backend confirmado:</strong> ' + esc(sonda.nota) + "
+        ]
+      }
+    },
+    {
+      "nome": "a_negacao_tem_ramo_proprio",
+      "verde": true,
+      "dado": {
+        "mun_danger": 1
+      }
+    },
+    {
+      "nome": "a_falsa_afirmacao_sobre_a_SM4_desapareceu_do_modulo",
+      "verde": true,
+      "dado": {
+        "occurrences_no_corpo": 0
+      }
+    },
+    {
+      "nome": "o_CSS_da_faixa_de_negacao_fica_mesmo_depois_do_verde",
+      "verde": true,
+      "dado": {
+        "linha": "      '#bfrMunicipalView .mun-danger{background:#fdecec;border:1px solid #e2a0a0;color:#7c1d1d;padding:12px;border-radius:10px;font-size:13px;line-height:1.5;margin-bottom:12px;font-weight:600}',"
+      }
+    },
+    {
+      "nome": "o_corpo_do_modulo_compila",
+      "verde": true,
+      "dado": {
+        "bytes_corpo": 61621,
+        "erro": ""
+      }
+    },
+    {
+      "nome": "o_consumo_de_nomes_do_banco_nao_regride_contra_a_origem",
+      "verde": true,
+      "dado": {
+        "v139": [
+          "bfr_is_municipal_authority=5"
+        ],
+        "origem_v138": [
+          "bfr_is_municipal_authority=4"
+        ]
+      }
+    },
+    {
+      "nome": "a_unica_mencao_acrescentada_e_a_da_faixa_de_negacao",
+      "verde": true,
+      "dado": {
+        "delta": 1,
+        "linha": "if (sonda.executavel && sonda.autorizada === false) return '<div class=\"mun-danger\"><strong>Acesso municipal negado pelo"
+      }
+    },
+    {
+      "nome": "nada_foi_publicado",
+      "verde": true,
+      "dado": {
+        "md5_ar_servido": "9e236a23eed978cf7c2a2743d449b307",
+        "md5_v136": "9e236a23eed978cf7c2a2743d449b307",
+        "diario_v139_existe": false
+      }
+    },
+    {
+      "nome": "a_unica_escrita_e_a_pasta_da_candidata_e_o_registo",
+      "verde": true,
+      "dado": {
+        "escritos": [
+          "C:\\Users\\pcmac\\Documents\\Qoder\\2026-10-13\\28077d9a\\bfr-conecta\\bfr-candidata-v139-sonda-honesta\\index.html",
+          "C:\\Users\\pcmac\\Documents\\Qoder\\2026-10-13\\28077d9a\\bfr-conecta\\bfr-candidata-v139-sonda-honesta\\portoes-v139-candidata.json",
+          "C:\\Users\\pcmac\\Documents\\Qoder\\2026-10-13\\28077d9a\\bfr-conecta\\evidence\\p85-gera-candidata-21-11-b.json"
+        ],
+        "delta_bytes": 885
+      }
+    }
+  ],
+  "falhas": [],
+  "veredito": "P85_CANDIDATA_V139_SONDA_HONESTA_OK 11/0"
+}

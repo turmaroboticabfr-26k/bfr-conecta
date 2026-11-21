@@ -1,0 +1,229 @@
+{
+  "version": "v138",
+  "em": "2026-11-20T23:55:58.095Z",
+  "escrita": "agora",
+  "duracao_ms": 1879,
+  "pen": "PEN-39 (v138): o painel municipal passa a chamar as duas RPC de agregados; enquanto isto nao for publicado a PEN-39 e DDL que ninguem chama",
+  "origem": {
+    "dir": "bfr-candidata-v136-secretaria-de-educacao",
+    "ficheiro": "index.html",
+    "md5": "9e236a23eed978cf7c2a2743d449b307",
+    "bytes": 3547458
+  },
+  "saida": {
+    "dir": "bfr-candidata-v138-painel-municipal",
+    "ficheiro": "index.html",
+    "md5": "592b3652671d689220784af41da74321",
+    "bytes": 3551245
+  },
+  "fonte_dos_nomes": {
+    "ficheiro": "scripts/p73-pen39-ddl-candidata.sql",
+    "funcoes": [
+      {
+        "nome": "bfr_municipal_municipio_totais",
+        "colunas": [
+          "municipio",
+          "nome",
+          "uf"
+        ]
+      },
+      {
+        "nome": "bfr_municipal_distribuicao_por_zona",
+        "colunas": [
+          "municipio",
+          "nome",
+          "zona",
+          "escolas",
+          "alunos"
+        ]
+      }
+    ]
+  },
+  "substituicoes": [
+    {
+      "ancora_chars": 24,
+      "ocorrencias": 1,
+      "dentro_do_involucro": true,
+      "doc_linha": 28871
+    },
+    {
+      "ancora_chars": 73,
+      "ocorrencias": 1,
+      "dentro_do_involucro": true,
+      "doc_linha": 28890
+    },
+    {
+      "ancora_chars": 41,
+      "ocorrencias": 1,
+      "dentro_do_involucro": true,
+      "doc_linha": 28974
+    },
+    {
+      "ancora_chars": 22,
+      "ocorrencias": 1,
+      "dentro_do_involucro": true,
+      "doc_linha": 28935
+    }
+  ],
+  "invariantes": {
+    "involucro_unico": true,
+    "fora_do_involucre_identico": true,
+    "v136_intacta": true,
+    "modulo_chars": {
+      "antes": 56408,
+      "depois": 60184
+    }
+  },
+  "superficie_depois": {
+    "chamadas_de_rpc_no_modulo": 2,
+    "nomes_declados": [
+      "bfr_municipal_municipio_totais",
+      "bfr_municipal_distribuicao_por_zona"
+    ],
+    "colunas_lidas_no_desenho": [
+      "municipio",
+      "e_bucket_sem_municipio",
+      "nome",
+      "uf",
+      "escolas",
+      "alunos",
+      "turmas",
+      "escolas_sem_zona",
+      "escolas_ativas",
+      "escolas_fora_de_ativo",
+      "zona"
+    ],
+    "painelMunicipal_definido": true,
+    "painelMunicipal_chamado": true
+  },
+  "delta_bytes": 3787,
+  "publicado": false,
+  "ok_literal_em_falta": "(sem OK literal — candidata pronta; a publicacao exige OK literal novo, e o bundle v138 ainda por gerar)",
+  "o_que_ainda_nao_e_prova": "nada deste registo prova o que a tela mostra ao utilizador: isso mede-se no browser depois de publicar (a sonda de uso dos quatro nomes passa entao a contar 2 nomes no modulo servido). O que aqui se prova e a candidata: texto, ancoras, colunas e compilacao.",
+  "portoes": [
+    {
+      "nome": "a_origem_e_a_shell_que_o_diario_da_v136_registou_e_que_o_esperado_da_v137_estende",
+      "verde": false,
+      "detalhe": {
+        "origem": "9e236a23eed978cf7c2a2743d449b307",
+        "diario_shell": "9e236a23eed978cf7c2a2743d449b307 (3547458 B)",
+        "diario_candidata": "9e236a23eed978cf7c2a2743d449b307 (3547458 B)",
+        "esperado_v137": "9e236a23eed978cf7c2a2743d449b307"
+      }
+    },
+    {
+      "nome": "o_involucro_do_modulo_e_unico_e_o_ancorado_cai_todo_dentro_dele",
+      "verde": true,
+      "detalhe": {
+        "involucre": {
+          "desde": 3472836,
+          "corpo_chars": 56408
+        },
+        "substituicoes": [
+          {
+            "ancora_chars": 24,
+            "ocorrencias": 1,
+            "dentro_do_involucro": true,
+            "doc_linha": 28871
+          },
+          {
+            "ancora_chars": 73,
+            "ocorrencias": 1,
+            "dentro_do_involucro": true,
+            "doc_linha": 28890
+          },
+          {
+            "ancora_chars": 41,
+            "ocorrencias": 1,
+            "dentro_do_involucro": true,
+            "doc_linha": 28974
+          },
+          {
+            "ancora_chars": 22,
+            "ocorrencias": 1,
+            "dentro_do_involucro": true,
+            "doc_linha": 28935
+          }
+        ]
+      }
+    },
+    {
+      "nome": "os_dois_nomes_de_RPC_sao_lidos_do_DDL_e_aparecem_exactamente_uma_vez_cada",
+      "verde": true,
+      "detalhe": {
+        "ddl_funcoes": [
+          "bfr_municipal_municipio_totais(municipio|nome|uf)",
+          "bfr_municipal_distribuicao_por_zona(municipio|nome|zona|escolas|alunos)"
+        ],
+        "nomes": [
+          "bfr_municipal_municipio_totais",
+          "bfr_municipal_distribuicao_por_zona"
+        ]
+      }
+    },
+    {
+      "nome": "a_porta_de_etiquetagem_nao_e_chamada_pela_candidata",
+      "verde": true,
+      "detalhe": {
+        "ocorrencias_do_nome_de_escrita": 0
+      }
+    },
+    {
+      "nome": "cada_coluna_que_o_desenho_le_esta_no_RETURNS_TABLE_do_DDL_e_a_regua_tem_dente",
+      "verde": false,
+      "detalhe": {
+        "lidas": [
+          "municipio",
+          "e_bucket_sem_municipio",
+          "nome",
+          "uf",
+          "escolas",
+          "alunos",
+          "turmas",
+          "escolas_sem_zona",
+          "escolas_ativas",
+          "escolas_fora_de_ativo",
+          "zona"
+        ],
+        "fora_do_ddl": [
+          "e_bucket_sem_municipio",
+          "turmas",
+          "escolas_sem_zona",
+          "escolas_ativas",
+          "escolas_fora_de_ativo"
+        ],
+        "fixture_coluna_inventada": false
+      }
+    },
+    {
+      "nome": "o_corpo_do_modulo_resultante_compila_e_uma_variavel_partida_nao_compila",
+      "verde": true,
+      "detalhe": {
+        "compila": true,
+        "erro_compila": null,
+        "fixture_partido_compila": false
+      }
+    },
+    {
+      "nome": "nada_fora_do_involucre_mudou_byte_a_byte_e_a_v136_ficou_intacta",
+      "verde": true,
+      "detalhe": {
+        "fora_antes": "8658492dc9477b63a582af5bad48a74f",
+        "fora_depois": "8658492dc9477b63a582af5bad48a74f",
+        "origem_relida": "9e236a23eed978cf7c2a2743d449b307"
+      }
+    },
+    {
+      "nome": "a_candidata_escrita_e_o_que_o_gerador_produz_e_nao_esta_publicada",
+      "verde": true,
+      "detalhe": {
+        "saida": {
+          "bytes": 3551245,
+          "md5": "592b3652671d689220784af41da74321"
+        },
+        "bundle_existe": false
+      }
+    }
+  ],
+  "veredito": "V138_CANDIDATA_VERMELHO 2"
+}
