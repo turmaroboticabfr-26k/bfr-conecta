@@ -1,0 +1,513 @@
+{
+  "programa": "scripts/p100-caixa-vazia-escondida-no-ar.mjs",
+  "em": "2026-11-21T20:08:43.518Z",
+  "duracao_ms": 67176,
+  "teto_ms": 300000,
+  "pergunta": "a caixa 0x0 que a P81 mediu visivel na persona Professor esta escondida na v141, e alguma pessoa autorizada perdeu a entrada?",
+  "metodo": "chrome headless 1366x768, sessao do papel developer; por cada botao .role-toggle le as duas copias de [data-bfr-municipal-nav] (rect, classe hidden, display computado, munApto, munVista), a decisao viva do modulo (aptoParaVista) e o mapa vivo indexado pela vista; a regra do shell le-se dos bytes servidos, nao da memoria. Clique real na vista authorizada, troca para teacher e volta. Zero DDL, zero deploy, zero publicacao.",
+  "ar": {
+    "url": "https://bfr-conecta.turmaroboticabfr.workers.dev/",
+    "md5_servido": "e111b9e66cc758d19dffff1436770d0f",
+    "md5_no_fim": "e111b9e66cc758d19dffff1436770d0f",
+    "bytes": 3554518,
+    "certificada_em": "worker-deploy-v141-caixa-vazia/esperado-v141.json",
+    "sect": "secretaria-municipal",
+    "view_id": "bfrMunicipalView",
+    "papeis_municipais": [
+      "admin",
+      "education_supervisor"
+    ]
+  },
+  "regra": {
+    "extras_admin_lidos_do_shell": [
+      "psychology",
+      "multiprofissional"
+    ],
+    "queda_em_parent": true,
+    "agulhas_no_modulo": {
+      "nova": 1,
+      "velha": 0,
+      "func": 1
+    },
+    "vistas_no_mapa_estatico": 14
+  },
+  "banda": "1366x768",
+  "papel_sessao": "developer",
+  "celulas": [
+    {
+      "rotulo": "Admin",
+      "view_declarada_na_barra": null,
+      "active_view": "admin",
+      "copias_no_dom": 2,
+      "visiveis": 1,
+      "esperado_pelos_bytes": true,
+      "dentro_no_mapa_vivo": true,
+      "mapa_vivo_com_sect": [
+        "admin",
+        "education_supervisor"
+      ],
+      "decisao_do_modulo": true,
+      "munVista": "dentro,dentro",
+      "munApto": "sim,sim",
+      "celula": [
+        "192x56/vis/flex",
+        "0x0/vis/inline-block"
+      ],
+      "painel": {
+        "display": "none",
+        "chars": 0,
+        "abas": 0
+      }
+    },
+    {
+      "rotulo": "Direção",
+      "view_declarada_na_barra": null,
+      "active_view": "director",
+      "copias_no_dom": 2,
+      "visiveis": 0,
+      "esperado_pelos_bytes": false,
+      "dentro_no_mapa_vivo": false,
+      "mapa_vivo_com_sect": [
+        "admin",
+        "education_supervisor"
+      ],
+      "decisao_do_modulo": false,
+      "munVista": "fora,fora",
+      "munApto": "sim,sim",
+      "celula": [
+        "0x0/hid/none",
+        "0x0/hid/none"
+      ],
+      "painel": {
+        "display": "none",
+        "chars": 0,
+        "abas": 0
+      }
+    },
+    {
+      "rotulo": "Pais",
+      "view_declarada_na_barra": null,
+      "active_view": "parent",
+      "copias_no_dom": 2,
+      "visiveis": 0,
+      "esperado_pelos_bytes": false,
+      "dentro_no_mapa_vivo": false,
+      "mapa_vivo_com_sect": [
+        "admin",
+        "education_supervisor"
+      ],
+      "decisao_do_modulo": false,
+      "munVista": "fora,fora",
+      "munApto": "sim,sim",
+      "celula": [
+        "0x0/hid/none",
+        "0x0/hid/none"
+      ],
+      "painel": {
+        "display": "none",
+        "chars": 0,
+        "abas": 0
+      }
+    },
+    {
+      "rotulo": "Aluno",
+      "view_declarada_na_barra": null,
+      "active_view": "student",
+      "copias_no_dom": 2,
+      "visiveis": 0,
+      "esperado_pelos_bytes": false,
+      "dentro_no_mapa_vivo": false,
+      "mapa_vivo_com_sect": [
+        "admin",
+        "education_supervisor"
+      ],
+      "decisao_do_modulo": false,
+      "munVista": "fora,fora",
+      "munApto": "sim,sim",
+      "celula": [
+        "0x0/hid/none",
+        "0x0/hid/none"
+      ],
+      "painel": {
+        "display": "none",
+        "chars": 0,
+        "abas": 0
+      }
+    },
+    {
+      "rotulo": "Professor",
+      "view_declarada_na_barra": null,
+      "active_view": "teacher",
+      "copias_no_dom": 2,
+      "visiveis": 0,
+      "esperado_pelos_bytes": false,
+      "dentro_no_mapa_vivo": false,
+      "mapa_vivo_com_sect": [
+        "admin",
+        "education_supervisor"
+      ],
+      "decisao_do_modulo": false,
+      "munVista": "fora,fora",
+      "munApto": "sim,sim",
+      "celula": [
+        "0x0/hid/none",
+        "0x0/hid/none"
+      ],
+      "painel": {
+        "display": "none",
+        "chars": 0,
+        "abas": 0
+      }
+    },
+    {
+      "rotulo": "Coordenação",
+      "view_declarada_na_barra": null,
+      "active_view": "coordinator",
+      "copias_no_dom": 2,
+      "visiveis": 0,
+      "esperado_pelos_bytes": false,
+      "dentro_no_mapa_vivo": false,
+      "mapa_vivo_com_sect": [
+        "admin",
+        "education_supervisor"
+      ],
+      "decisao_do_modulo": false,
+      "munVista": "fora,fora",
+      "munApto": "sim,sim",
+      "celula": [
+        "0x0/hid/none",
+        "0x0/hid/none"
+      ],
+      "painel": {
+        "display": "none",
+        "chars": 0,
+        "abas": 0
+      }
+    },
+    {
+      "rotulo": "Secretaria",
+      "view_declarada_na_barra": null,
+      "active_view": "secretary",
+      "copias_no_dom": 2,
+      "visiveis": 0,
+      "esperado_pelos_bytes": false,
+      "dentro_no_mapa_vivo": false,
+      "mapa_vivo_com_sect": [
+        "admin",
+        "education_supervisor"
+      ],
+      "decisao_do_modulo": false,
+      "munVista": "fora,fora",
+      "munApto": "sim,sim",
+      "celula": [
+        "0x0/hid/none",
+        "0x0/hid/none"
+      ],
+      "painel": {
+        "display": "none",
+        "chars": 0,
+        "abas": 0
+      }
+    },
+    {
+      "rotulo": "Monitor",
+      "view_declarada_na_barra": null,
+      "active_view": "monitor",
+      "copias_no_dom": 2,
+      "visiveis": 0,
+      "esperado_pelos_bytes": false,
+      "dentro_no_mapa_vivo": false,
+      "mapa_vivo_com_sect": [
+        "admin",
+        "education_supervisor"
+      ],
+      "decisao_do_modulo": false,
+      "munVista": "fora,fora",
+      "munApto": "sim,sim",
+      "celula": [
+        "0x0/hid/none",
+        "0x0/hid/none"
+      ],
+      "painel": {
+        "display": "none",
+        "chars": 0,
+        "abas": 0
+      }
+    },
+    {
+      "rotulo": "AEE",
+      "view_declarada_na_barra": null,
+      "active_view": "aee",
+      "copias_no_dom": 2,
+      "visiveis": 0,
+      "esperado_pelos_bytes": false,
+      "dentro_no_mapa_vivo": false,
+      "mapa_vivo_com_sect": [
+        "admin",
+        "education_supervisor"
+      ],
+      "decisao_do_modulo": false,
+      "munVista": "fora,fora",
+      "munApto": "sim,sim",
+      "celula": [
+        "0x0/hid/none",
+        "0x0/hid/none"
+      ],
+      "painel": {
+        "display": "none",
+        "chars": 0,
+        "abas": 0
+      }
+    },
+    {
+      "rotulo": "Portaria",
+      "view_declarada_na_barra": null,
+      "active_view": "gatekeeper",
+      "copias_no_dom": 2,
+      "visiveis": 0,
+      "esperado_pelos_bytes": false,
+      "dentro_no_mapa_vivo": false,
+      "mapa_vivo_com_sect": [
+        "admin",
+        "education_supervisor"
+      ],
+      "decisao_do_modulo": false,
+      "munVista": "fora,fora",
+      "munApto": "sim,sim",
+      "celula": [
+        "0x0/hid/none",
+        "0x0/hid/none"
+      ],
+      "painel": {
+        "display": "none",
+        "chars": 0,
+        "abas": 0
+      }
+    }
+  ],
+  "por_celula_antes_depois": [
+    {
+      "rotulo": "Admin",
+      "copias_dom_antes": 2,
+      "visiveis_antes": 1,
+      "visiveis_depois": 1,
+      "escondidas_por_classe_depois": 0
+    },
+    {
+      "rotulo": "Direção",
+      "copias_dom_antes": 2,
+      "visiveis_antes": 1,
+      "visiveis_depois": 0,
+      "escondidas_por_classe_depois": 2
+    },
+    {
+      "rotulo": "Pais",
+      "copias_dom_antes": 2,
+      "visiveis_antes": 1,
+      "visiveis_depois": 0,
+      "escondidas_por_classe_depois": 2
+    },
+    {
+      "rotulo": "Aluno",
+      "copias_dom_antes": 2,
+      "visiveis_antes": 1,
+      "visiveis_depois": 0,
+      "escondidas_por_classe_depois": 2
+    },
+    {
+      "rotulo": "Professor",
+      "copias_dom_antes": 2,
+      "visiveis_antes": 0,
+      "visiveis_depois": 0,
+      "escondidas_por_classe_depois": 2
+    },
+    {
+      "rotulo": "Coordenação",
+      "copias_dom_antes": 2,
+      "visiveis_antes": 1,
+      "visiveis_depois": 0,
+      "escondidas_por_classe_depois": 2
+    },
+    {
+      "rotulo": "Secretaria",
+      "copias_dom_antes": 2,
+      "visiveis_antes": 1,
+      "visiveis_depois": 0,
+      "escondidas_por_classe_depois": 2
+    },
+    {
+      "rotulo": "Monitor",
+      "copias_dom_antes": 2,
+      "visiveis_antes": 1,
+      "visiveis_depois": 0,
+      "escondidas_por_classe_depois": 2
+    },
+    {
+      "rotulo": "AEE",
+      "copias_dom_antes": 2,
+      "visiveis_antes": 1,
+      "visiveis_depois": 0,
+      "escondidas_por_classe_depois": 2
+    },
+    {
+      "rotulo": "Portaria",
+      "copias_dom_antes": 2,
+      "visiveis_antes": 1,
+      "visiveis_depois": 0,
+      "escondidas_por_classe_depois": 2
+    }
+  ],
+  "passoAutorizada": {
+    "rotulo": "Admin",
+    "antes": {
+      "rotulo_persona": "Admin",
+      "active_view": "admin",
+      "papel_sessao": "developer",
+      "decisao_modulo": {
+        "visivel": true,
+        "por": "activeView=admin no mapa=true"
+      },
+      "apto_sessao": true,
+      "mapa_vivo": {
+        "parent": false,
+        "student": false,
+        "teacher": false,
+        "coordinator": false,
+        "admin": true,
+        "director": false,
+        "monitor": false,
+        "gatekeeper": false,
+        "secretary": false,
+        "aee": false,
+        "psychology": false,
+        "multiprofessional": false,
+        "sports_operator": false,
+        "education_supervisor": true
+      },
+      "navs": [
+        {
+          "w": 192,
+          "h": 56,
+          "x": 14,
+          "y": 716,
+          "oculto_pela_classe": false,
+          "display": "flex",
+          "munApto": "sim",
+          "munVista": "dentro"
+        },
+        {
+          "w": 0,
+          "h": 0,
+          "x": 0,
+          "y": 0,
+          "oculto_pela_classe": false,
+          "display": "inline-block",
+          "munApto": "sim",
+          "munVista": "dentro"
+        }
+      ],
+      "copias_no_dom": 2,
+      "painel": {
+        "display": "none",
+        "chars": 0,
+        "abas": 0
+      }
+    },
+    "clique": {
+      "clicado": true,
+      "x": 14,
+      "y": 716,
+      "w": 192,
+      "hit": "BUTTON.nav-item tap-target active",
+      "e_o_proprio": true
+    },
+    "depois": {
+      "rotulo_persona": "Admin",
+      "active_view": "admin",
+      "papel_sessao": "developer",
+      "decisao_modulo": {
+        "visivel": true,
+        "por": "activeView=admin no mapa=true"
+      },
+      "apto_sessao": true,
+      "mapa_vivo": {
+        "parent": false,
+        "student": false,
+        "teacher": false,
+        "coordinator": false,
+        "admin": true,
+        "director": false,
+        "monitor": false,
+        "gatekeeper": false,
+        "secretary": false,
+        "aee": false,
+        "psychology": false,
+        "multiprofessional": false,
+        "sports_operator": false,
+        "education_supervisor": true
+      },
+      "navs": [
+        {
+          "w": 192,
+          "h": 56,
+          "x": 14,
+          "y": 716,
+          "oculto_pela_classe": false,
+          "display": "flex",
+          "munApto": "sim",
+          "munVista": "dentro"
+        },
+        {
+          "w": 0,
+          "h": 0,
+          "x": 0,
+          "y": 0,
+          "oculto_pela_classe": false,
+          "display": "inline-block",
+          "munApto": "sim",
+          "munVista": "dentro"
+        }
+      ],
+      "copias_no_dom": 2,
+      "painel": {
+        "display": "block",
+        "chars": 1819,
+        "abas": 10
+      }
+    }
+  },
+  "passoTroca": {
+    "saida": {
+      "rotulo": "Professor",
+      "visiveis": 0,
+      "todas_escondidas": true,
+      "painel": {
+        "display": "block",
+        "chars": 1819,
+        "abas": 10
+      },
+      "munVista": "fora,fora"
+    },
+    "volta": {
+      "visiveis": 1,
+      "painel": {
+        "display": "block",
+        "chars": 1819,
+        "abas": 10
+      }
+    }
+  },
+  "baseline": {
+    "antes": "evidence/p81-pessoa-barra-municipal-21-11-ar-v140-b.json",
+    "depois": "evidence/p81-pessoa-barra-municipal-21-11-ar-v141-c.json",
+    "md5_antes": "e38dd0a8d754edec5a4b3454ec4ef7b9",
+    "md5_depois": "59897ca267e1973597ae3df304ee759d",
+    "veredito_antes": "P81_PESSOA_BARRA_MUNICIPAL_VERMELHO 10 pessoas 2",
+    "veredito_depois": "P81_PESSOA_BARRA_MUNICIPAL_VERMELHO 10 pessoas 11"
+  },
+  "sobre_a_p81_ficar_vermelha": "A regua `bateComMapaDaSessao` da P81 compara a visibilidade com o papel da SESSAO. Essa era a causa nomeada pela P89, e a v141 mudou-a de proposito: o veredito vermelho da P81-c ja nao descreve um defeito, descreve a regua antiga. Nenhuma linha da P81 foi amaciada — fica vermelha e versionada como esta.",
+  "o_que_este_verde_nao_autoriza": "Prova apresentacao por persona nesta sessao de teste. Nao prova os numeros do painel, nao da acesso a nenhuma conta, nao autoriza DDL, concessoes municipais, o rpc como porta, nem reverter PEN-43/44. Publicar seja o que for de novo pede OK literal.",
+  "excecoes": [],
+  "falhas": [],
+  "veredito": "P100_CAIXA_VAZIA_ESCONDIDA_NO_AR_OK 16/0"
+}

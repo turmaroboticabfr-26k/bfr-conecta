@@ -1,0 +1,162 @@
+{
+  "version": "v141",
+  "data": "2026-11-21",
+  "ok_literal": "a escolha do utilizador na pergunta de escopo: «Esconder a caixa vazia (defensivo) + publicar v141»",
+  "nota_do_ok": "cobre construir a candidata, gerar o bundle e PUBLICAR a mudanca de apresentacao. NAO cobre dar a secao «secretaria-municipal» a vista `teacher`, nem revogar as 4 concessoes municipais de contas reais, nem o rpc como porta da visibilidade, nem git push (respondeu «Nao, deixar local»), nem reverter PEN-43/PEN-44, nem rodar senha.",
+  "escopo_do_ok": "por `hidden` e `display:none` nas copias 0x0 da entrada municipal que a sessao de teste tornava visiveis em vistas fora do mapa do shell, e levar isso ao ar",
+  "tarefa": "fechar o sintoma que o utilizador mostrou: «nao aparece a aba de secretaria municipal, so a secretaria da escola» e a caixa vazia que a P81 mediu a 0x0 na persona Professor",
+  "porque_esta_versao": "a cadeia certificada e v138 -> p85 (v139 sonda honesta) -> p87 (v140 trilha) -> p97 (v141 caixa vazia): a v141 traz dentro a sonda honesta e a trilha ja publicadas, e o remendo da PEN-40 continua no bundle (md5 do modulo lido do esperado-v140)",
+  "origem_dos_numeros": "stdout do wrangler + deployments status/list + artefactos p97/p98/p99/p100 em disco; nada copiado-colado da conversa",
+  "deploy": {
+    "worker": "bfr-conecta",
+    "conta": "turmaroboticabfr@gmail.com",
+    "version_id": "678bba24-4a83-4bf0-a596-fa4d67d51d2d",
+    "deployment_id": "3648d5fe-c016-4a8f-b6fb-71a681cf2dd1",
+    "deployment_created": "2026-11-21T19:51:05.79102Z",
+    "versao_anterior_v140": "208d5bff-a040-413d-98c1-4184f3128d7e",
+    "url": "https://bfr-conecta.turmaroboticabfr.workers.dev",
+    "reversao": "devolver o ar a v140 e `wrangler deploy` a partir de worker-deploy-v140-trilha-de-acesso — exige OK literal novo"
+  },
+  "bundle": {
+    "worker_md5": "eb84666da1e9da884f431d76a1728578",
+    "worker_bytes": 3619499,
+    "delta_worker_bytes": 1059,
+    "html_md5": "e111b9e66cc758d19dffff1436770d0f",
+    "html_bytes": 3554518,
+    "sw_md5": "706ff21c52f65dc9c0fc8f35020ab9e9",
+    "sw_bytes": 5064,
+    "cache_label_no_ar": "bfr-conecta-v141",
+    "modulo_pen40_md5": "b83b4c2666fc909d50a358b86b99de05",
+    "assets_copiados": 13,
+    "base": "worker-deploy-v140-trilha-de-acesso (o worker que estava no ar)"
+  },
+  "portoes": {
+    "p97_candidata": "P97_CANDIDATA_V141_CAIXA_VAZIA_OK 15/0",
+    "p98_bundle": "P98_BUNDLE_V141_OK 30/0",
+    "p99_pos_deploy": "P99_POS_DEPLOY_V141_OK 14/0",
+    "p100_browser": "P100_CAIXA_VAZIA_ESCONDIDA_NO_AR_OK 16/0",
+    "p100_vermelho_preservado": "evidence/p100-caixa-vazia-escondida-no-ar-21-11-a-VERMELHO-regua_recebeu_mapa_de_booleanos_como_array.json",
+    "p81_antes": "P81_PESSOA_BARRA_MUNICIPAL_VERMELHO 10 pessoas 2",
+    "p81_depois": "P81_PESSOA_BARRA_MUNICIPAL_VERMELHO 10 pessoas 11"
+  },
+  "conferencia_no_ar": {
+    "veredito_p99": "P99_POS_DEPLOY_V141_OK 14/0",
+    "duracao_ms_p99": 3424,
+    "shells_p99": [
+      {
+        "http": 200,
+        "bytes": 3554518,
+        "md5": "e111b9e66cc758d19dffff1436770d0f"
+      },
+      {
+        "http": 200,
+        "bytes": 3554518,
+        "md5": "e111b9e66cc758d19dffff1436770d0f"
+      },
+      {
+        "http": 200,
+        "bytes": 3554518,
+        "md5": "e111b9e66cc758d19dffff1436770d0f"
+      }
+    ],
+    "md5_agora": "e111b9e66cc758d19dffff1436770d0f",
+    "bytes_agora": 3554518,
+    "h3_regra_velha_fora_dos_bytes": {
+      "regra_nova_no_ar": 1,
+      "regra_velha_no_ar": 0,
+      "funcao_nova_no_ar": 1
+    }
+  },
+  "medido_no_browser": {
+    "veredito_p100": "P100_CAIXA_VAZIA_ESCONDIDA_NO_AR_OK 16/0",
+    "duracao_ms": 67176,
+    "banda": "1366x768",
+    "copias_por_celula": [
+      "Admin=2",
+      "Direção=2",
+      "Pais=2",
+      "Aluno=2",
+      "Professor=2",
+      "Coordenação=2",
+      "Secretaria=2",
+      "Monitor=2",
+      "AEE=2",
+      "Portaria=2"
+    ],
+    "celulas_escondidas": [
+      "Direção",
+      "Pais",
+      "Aluno",
+      "Professor",
+      "Coordenação",
+      "Secretaria",
+      "Monitor",
+      "AEE",
+      "Portaria"
+    ],
+    "celulas_visiveis": [
+      "Admin"
+    ],
+    "passaram_a_escondidas_vs_v140": [
+      "Direção",
+      "Pais",
+      "Aluno",
+      "Coordenação",
+      "Secretaria",
+      "Monitor",
+      "AEE",
+      "Portaria"
+    ],
+    "clique_na_authorizada_pintou": {
+      "painel": {
+        "display": "block",
+        "chars": 1819,
+        "abas": 10
+      },
+      "hit_teste": "BUTTON.nav-item tap-target active",
+      "e_o_proprio": true
+    },
+    "professor_celula_depois": [
+      "0x0/hid/none",
+      "0x0/hid/none"
+    ],
+    "professor_celula_antes": [
+      {
+        "w": 0,
+        "h": 0,
+        "x": 0,
+        "y": 0,
+        "hidden": false,
+        "pai": "nav-list bfr-platform-nav",
+        "aptoAttr": "sim",
+        "ariaCurrent": "false"
+      },
+      {
+        "w": 0,
+        "h": 0,
+        "x": 0,
+        "y": 0,
+        "hidden": false,
+        "pai": "mobile-more-grid",
+        "aptoAttr": "sim",
+        "ariaCurrent": "false"
+      }
+    ]
+  },
+  "observacao_aberta_painel_ja_aberto": {
+    "medida": {
+      "display": "block",
+      "chars": 1819,
+      "abas": 10
+    },
+    "texto": "com o painel municipal aberto, trocar para uma vista fora do mapa esconde a ENTRADA (todas as copias 0x0/hid/none) mas nao fecha o painel: continuou display=block com 1819 B e 10 abas. A sessao de teste e a mesma, logo nao e ganho de acesso; e uma incoerencia de apresentacao.",
+    "o_que_falta_para_fechar": "fechar o painel na troca de vista e uma linha no modulo e uma publicacao nova — pede OK literal; nada nesta publicacao o faz."
+  },
+  "o_que_este_deploy_muda_para_um_usuario_real": {
+    "contas_cuja_vista_activa_esta_no_mapa": "nada muda: continuam a ver a entrada (medido em `admin` com clique real e painel pintado)",
+    "developer_na_barra_de_personas": "a entrada passa a seguir a vista activa: visivel em Admin, escondida nas outras 9 vistas medidas. Na v140 era visivel em 9 dessas vistas porque a decisao era so o papel da sessao.",
+    "professor_conta_real": "a vista `teacher` nao recebe a secao em nenhuma das duas versoes; o que mudou e que a caixa 0x0 que ficava la passou a estar escondida (P81: hidden=false -> P100: hidden=true + display none)",
+    "nota_de_atingibilidade": "o que se esconde e a ENTRADA. A decisao de dados continua em `aptoParaSessao()` e nas rpcs com RLS; nenhuma conta ganhou ou perdeu acesso por esta publicacao."
+  },
+  "o_que_este_diario_nao_autoriza": "git push (recusado); reverter PEN-43/PEN-44; revogar ou manter as 4 concessoes municipais de contas reais sobre o municipio de exemplo da SM8; tornar `bfr_is_municipal_authority()` a porta da visibilidade (P93 mediu D1=0 e D2=0, logo seria expansao de acesso); acrescentar `secretaria-municipal` ao array estatico de `teacher`; fechar o painel na troca de vista; qualquer DDL ou escrita no banco."
+}

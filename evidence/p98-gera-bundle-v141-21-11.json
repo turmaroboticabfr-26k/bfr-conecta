@@ -1,0 +1,310 @@
+{
+  "em": "2026-11-21T19:50:28.445Z",
+  "gerador": "scripts/p98-gera-bundle-v141.mjs",
+  "publicado": false,
+  "base": "worker-deploy-v140-trilha-de-acesso (e o worker que esta no ar: modulos PEN-40 + _headers ja conferidos)",
+  "candidata": "bfr-candidata-v141-caixa-vazia/index.html",
+  "cadeia_candidata": "v138 -> p85 (v139 sonda honesta) -> p87 (v140 trilha, publicada) -> p97 (v141 caixa vazia)",
+  "ar_no_momento": {
+    "diario_mais_novo": "audit-publicacao-v140.json",
+    "versao_publicada": "140"
+  },
+  "ok_literal": "peca escolhida pelo utilizador em 21/11: esconder a caixa 0x0 e publicar a v141",
+  "portoes": {
+    "T1_base_worker_e_o_bundle_v140_do_seu_esperado": {
+      "passou": true,
+      "detalhe": {
+        "lido": {
+          "md5": "42a16cfd24fff90edf6b9b8178ed3254",
+          "bytes": 3618440
+        },
+        "esperado": {
+          "md5": "42a16cfd24fff90edf6b9b8178ed3254",
+          "bytes": 3618440
+        }
+      }
+    },
+    "T2_embed_html_da_base_e_a_candidata_v140_certificada": {
+      "passou": true,
+      "detalhe": {
+        "lido": {
+          "md5": "82c95aa0a23b7b8ccd801b9b920e4f0e",
+          "bytes": 3553473
+        },
+        "esperado": {
+          "md5": "82c95aa0a23b7b8ccd801b9b920e4f0e",
+          "bytes": 3553473
+        }
+      }
+    },
+    "T3_etiqueta_v140_uma_vez_e_v141_zero_na_base": {
+      "passou": true,
+      "detalhe": {
+        "v140": 1,
+        "v141": 0
+      }
+    },
+    "T4_candidata_bate_com_a_saida_certificada_do_p97": {
+      "passou": true,
+      "detalhe": {
+        "lido": {
+          "md5": "e111b9e66cc758d19dffff1436770d0f",
+          "bytes": 3554518
+        },
+        "certificado": {
+          "pasta": "bfr-candidata-v141-caixa-vazia",
+          "md5": "e111b9e66cc758d19dffff1436770d0f",
+          "bytes": 3554518,
+          "delta_bytes": 1045
+        },
+        "veredito": "P97_CANDIDATA_V141_CAIXA_VAZIA_OK 15/0"
+      }
+    },
+    "T4b_veredito_da_candidata_ok": {
+      "passou": true,
+      "detalhe": {
+        "veredito": "P97_CANDIDATA_V141_CAIXA_VAZIA_OK 15/0"
+      }
+    },
+    "T4c_a_origem_declarada_e_a_v140_que_esta_em_disco_e_esta_certificada": {
+      "passou": true,
+      "detalhe": {
+        "pasta_declarada": "bfr-candidata-v140-trilha-de-acesso",
+        "md5_v140_em_disco": "82c95aa0a23b7b8ccd801b9b920e4f0e",
+        "md5_declarado": "82c95aa0a23b7b8ccd801b9b920e4f0e",
+        "veredito_v140": "P87_CANDIDATA_V140_TRILHA_OK 12/0"
+      }
+    },
+    "T4d_a_candidata_difere_do_embed_da_base": {
+      "passou": true,
+      "detalhe": {
+        "base": "82c95aa0a23b7b8ccd801b9b920e4f0e",
+        "candidata": "e111b9e66cc758d19dffff1436770d0f",
+        "delta_bytes": 1045
+      }
+    },
+    "T5_os_rpc_de_agregado_tem_a_mesma_contagem_em_v140_e_v141_e_estao_presentes": {
+      "passou": true,
+      "detalhe": [
+        "bfr_municipal_municipio_totais: v140=1 v141=1",
+        "bfr_municipal_distribuicao_por_zona: v140=1 v141=1"
+      ]
+    },
+    "T5b_a_mesa_de_trilha_nao_ganha_nem_perde_ocorrencias_entre_v140_e_v141": {
+      "passou": true,
+      "detalhe": {
+        "mesa_lida_do_ddl": "bfr_municipal_audit",
+        "v140": 1,
+        "v141": 1
+      }
+    },
+    "T6_a_sonda_honesta_da_v139_mantem_a_contagem_na_v141": {
+      "passou": true,
+      "detalhe": {
+        "v140": 1,
+        "v141": 1
+      }
+    },
+    "T7_o_remendo_da_pen40_no_html_mantem_a_contagem_de_entrada": {
+      "passou": true,
+      "detalhe": {
+        "v140": 3,
+        "v141": 3
+      }
+    },
+    "T8_a_funcao_nova_aparece_uma_vez_e_a_v140_nao_tinha_uma_vez": {
+      "passou": true,
+      "detalhe": {
+        "definicoes": 1,
+        "chamadas": 1,
+        "exportacoes": 1,
+        "na_v140": 0
+      }
+    },
+    "T9_esta_peca_nao_alarga_a_entrada_a_mais_nenhuma_vista": {
+      "passou": true,
+      "detalhe": {
+        "concat_antes": 1,
+        "concat_depois": 1,
+        "papeis_v141": "const PAPEIS_MUNICIPAIS = ['admin', 'education_supervisor']",
+        "igual_a_v140": true
+      }
+    },
+    "T10_o_array_estatico_do_teacher_nao_muda_e_continua_sem_a_seccao": {
+      "passou": true,
+      "detalhe": {
+        "itens_v141": 22,
+        "igual_a_v140": true,
+        "contem_sect": false,
+        "teacher_em_PAPEIS_MUNICIPAIS": false
+      }
+    },
+    "T11_ancora_da_etiqueta_presente_exatamente_uma_vez": {
+      "passou": true,
+      "detalhe": {
+        "vezes": 1
+      }
+    },
+    "T12_etiqueta_nova_dentro_e_velha_fora": {
+      "passou": true,
+      "detalhe": {
+        "v141": 1,
+        "v140": 0
+      }
+    },
+    "T13_worker_novo_compila": {
+      "passou": true,
+      "detalhe": {
+        "erro": null
+      }
+    },
+    "T14_embed_novo_re_extraido_bate_com_a_candidata": {
+      "passou": true,
+      "detalhe": {
+        "re_extraido": {
+          "md5": "e111b9e66cc758d19dffff1436770d0f",
+          "bytes": 3554518
+        },
+        "candidata": {
+          "md5": "e111b9e66cc758d19dffff1436770d0f",
+          "bytes": 3554518
+        }
+      }
+    },
+    "T15_sw_embutido_com_etiqueta_v141_e_mesmo_comprimento_da_base": {
+      "passou": true,
+      "detalhe": {
+        "v141": 1,
+        "v140": 0,
+        "bytes": 5064,
+        "bytes_da_base": 5064
+      }
+    },
+    "T16_um_unico_embed_de_cada": {
+      "passou": true,
+      "detalhe": {
+        "html": 1,
+        "sw": 1,
+        "csp": 1
+      }
+    },
+    "T17_csp_intacta_e_permite_supabase_e_frame_ancestors": {
+      "passou": true,
+      "detalhe": {
+        "csp_igual": true
+      }
+    },
+    "T18_fora_dos_dois_embeds_o_worker_e_byte_a_byte_e_a_regua_tem_dente": {
+      "passou": true,
+      "detalhe": {
+        "antes": "792633a333b7f0181c45c5b5b357e3dc",
+        "depois": "792633a333b7f0181c45c5b5b357e3dc",
+        "dente_saburado": true
+      }
+    },
+    "T19_assets_do_bundle_todos_presentes_e_byte_a_byte_com_a_base": {
+      "passou": true,
+      "detalhe": {
+        "total": 13,
+        "faltam": [],
+        "diferentes": [],
+        "base_declara": 13
+      }
+    },
+    "T20_modulo_remendado_da_pen40_continua_no_bundle": {
+      "passou": true,
+      "detalhe": {
+        "lido": {
+          "md5": "b83b4c2666fc909d50a358b86b99de05",
+          "bytes": 52532
+        },
+        "esperado": {
+          "md5": "b83b4c2666fc909d50a358b86b99de05",
+          "bytes": 52532
+        }
+      }
+    },
+    "T21_headers_com_o_md5_da_base": {
+      "passou": true,
+      "detalhe": {
+        "lido": "6f1f82a390b0e6111e3b8aff7d6415b2",
+        "esperado": "6f1f82a390b0e6111e3b8aff7d6415b2"
+      }
+    },
+    "T22_wrangler_toml_identico_a_base": {
+      "passou": true,
+      "detalhe": true
+    },
+    "T23_worker_do_dir_bate_com_o_desta_corrida": {
+      "passou": true,
+      "detalhe": true
+    },
+    "T24_nada_foi_publicado_por_esta_peca": {
+      "passou": true,
+      "detalhe": {
+        "diario_mais_novo": "audit-publicacao-v140.json",
+        "versao": "140",
+        "diario_v141_existe": false
+      }
+    },
+    "T25_delta_do_worker_igual_ao_delta_do_embed": {
+      "passou": true,
+      "detalhe": {
+        "delta": 1059,
+        "embed_antes": 3610154,
+        "embed_depois": 3611213
+      }
+    },
+    "T26_esperado_re_lido_bate_com_as_reguas_da_corrida": {
+      "passou": true,
+      "detalhe": {
+        "campos": 24,
+        "diferentes": []
+      }
+    }
+  },
+  "total": {
+    "ok": 30,
+    "falha": 0
+  },
+  "esperado": {
+    "workerMd5": "eb84666da1e9da884f431d76a1728578",
+    "workerBytes": 3619499,
+    "swMd5": "706ff21c52f65dc9c0fc8f35020ab9e9",
+    "swBytes": 5064,
+    "htmlMd5": "e111b9e66cc758d19dffff1436770d0f",
+    "htmlBytes": 3554518,
+    "cacheLabel": "bfr-conecta-v141",
+    "baseWorkerMd5": "42a16cfd24fff90edf6b9b8178ed3254",
+    "baseWorkerBytes": 3618440,
+    "baseSwMd5": "b8e2f6b732f77d5f42b6782aae75fdfb",
+    "baseSwBytes": 5064,
+    "baseHtmlMd5": "82c95aa0a23b7b8ccd801b9b920e4f0e",
+    "baseHtmlBytes": 3553473,
+    "headersMd5": "6f1f82a390b0e6111e3b8aff7d6415b2",
+    "headersBytes": 118,
+    "moduleMd5": "b83b4c2666fc909d50a358b86b99de05",
+    "moduleBytes": 52532,
+    "deltaWorkerBytes": 1059,
+    "precacheAlinhado": 0,
+    "assetsCopiados": 13,
+    "rpcNoModulo": [
+      "bfr_municipal_municipio_totais",
+      "bfr_municipal_distribuicao_por_zona"
+    ],
+    "mesaDeTrilha": "bfr_municipal_audit",
+    "ar_no_momento": {
+      "diario": "audit-publicacao-v140.json",
+      "versao": "140"
+    },
+    "origemReguas": [
+      "worker-deploy-v140-trilha-de-acesso/esperado-v140.json",
+      "C:/Users/pcmac/Documents/Qoder/2026-10-13/28077d9a/bfr-conecta/bfr-candidata-v141-caixa-vazia/index.html",
+      "bfr-candidata-v141-caixa-vazia/portoes-v141-candidata.json",
+      "C:/Users/pcmac/Documents/Qoder/2026-10-13/28077d9a/bfr-conecta/bfr-candidata-v140-trilha-de-acesso/index.html",
+      "C:/Users/pcmac/Documents/Qoder/2026-10-13/28077d9a/bfr-conecta/scripts/p73-pen39-ddl-candidata.sql",
+      "C:/Users/pcmac/Documents/Qoder/2026-10-13/28077d9a/bfr-conecta/scripts/sm4-ddl-municipal-candidata.sql"
+    ]
+  },
+  "veredito": "P98_BUNDLE_V141_OK 30/0"
+}

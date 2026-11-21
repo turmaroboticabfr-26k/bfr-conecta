@@ -1,0 +1,260 @@
+{
+  "programa": "scripts/p97-gera-candidata-v141-caixa-vazia.mjs",
+  "em": "2026-11-21T19:47:45.184Z",
+  "duracao_ms": 1458,
+  "pergunta": "a entrada municipal pode deixar de desfazer o escondido do shell — sem dar acesso a ninguem e sem o tirar a quem o tem?",
+  "metodo": "geracao por substituicao contada sobre a candidata v140 certificada pelo p87; o mapa do shell e a sua regra (extras de `admin` e queda em `parent`) extraem-se dos mesmos bytes, e a regra nova AVALIA-SE do texto gerado. 0 publicacao, 0 DDL, 0 INSERT.",
+  "origem": {
+    "pasta": "bfr-candidata-v140-trilha-de-acesso",
+    "md5": "82c95aa0a23b7b8ccd801b9b920e4f0e",
+    "bytes": 3553473,
+    "veredito_portoes": "P87_CANDIDATA_V140_TRILHA_OK 12/0"
+  },
+  "destino": {
+    "pasta": "bfr-candidata-v141-caixa-vazia",
+    "md5": "e111b9e66cc758d19dffff1436770d0f",
+    "bytes": 3554518,
+    "delta_bytes": 1045
+  },
+  "shell": {
+    "extras_admin_lidos": [
+      "psychology",
+      "multiprofissional"
+    ],
+    "queda_em_parent": true,
+    "vistas_no_mapa": 14,
+    "sect": "secretaria-municipal",
+    "papeis_municipais": [
+      "admin",
+      "education_supervisor"
+    ]
+  },
+  "equivalencia": {
+    "vistas_comparadas": 14,
+    "discordantes": [],
+    "ficam_visiveis": [
+      "admin",
+      "education_supervisor"
+    ],
+    "passam_a_escondidos": [
+      "parent",
+      "student",
+      "teacher",
+      "coordinator",
+      "director",
+      "monitor",
+      "gatekeeper",
+      "secretary",
+      "aee",
+      "psychology",
+      "multiprofessional",
+      "sports_operator"
+    ]
+  },
+  "funcao": "function aptoParaVista() {\n    const rt = RT(); const map = rt.roleSectionAccess || {};\n    const vista = String(rt.activeView || '');\n    // Sem vista activa conhecida (arranque), decide a sessão: esconder aqui tiraria a entrada a uma\n    // pessoa autorizada antes de o shell ter desenhado seja o que for, e é precisamente o que esta\n    // peça não pode fazer. Com vista conhecida, a regra É a do shell, indexada por `activeView`.\n    if (!vista) return { visivel: aptoParaSessao().apto, por: 'sem activeView (arranque): decide a sessao' };\n    const permitido = vista === 'admin' ? [...new Set([...(map.admin || []), 'psychology', 'multiprofissional'])]\n      : (map[vista] || map.parent || []);\n    return { visivel: permitido.includes(SECT), por: 'activeView=' + vista + ' no mapa=' + permitido.includes(SECT) };\n  }\n",
+  "publicacao": {
+    "diario_mais_novo": "audit-publicacao-v140.json",
+    "md5_servido": "82c95aa0a23b7b8ccd801b9b920e4f0e",
+    "md5_bundle_v140": "82c95aa0a23b7b8ccd801b9b920e4f0e"
+  },
+  "substituicoes": [
+    {
+      "nome": "a_funcao_que_le_a_mapa_da_view_activa",
+      "depois_presente": true
+    },
+    {
+      "nome": "a_visibilidade_passa_a_pedir_as_duas_decisoes",
+      "depois_presente": true
+    },
+    {
+      "nome": "a_funcao_nova_ficou_exposta_para_medir",
+      "depois_presente": true
+    }
+  ],
+  "o_que_este_verde_nao_autoriza": "Nada fora do disco. Publicar a v141 e outro passo e outro OK; dar a seccao `secretaria-municipal` a vista `teacher` continua decisao de produto, e esta peca nao a tomou.",
+  "portoes": [
+    {
+      "nome": "a_origem_e_a_saida_certificada_do_p87",
+      "verde": true,
+      "dado": {
+        "origem": {
+          "md5": "82c95aa0a23b7b8ccd801b9b920e4f0e",
+          "bytes": 3553473
+        },
+        "certificado": {
+          "pasta": "bfr-candidata-v140-trilha-de-acesso",
+          "md5": "82c95aa0a23b7b8ccd801b9b920e4f0e",
+          "bytes": 3553473,
+          "delta_bytes": 1343
+        },
+        "veredito": "P87_CANDIDATA_V140_TRILHA_OK 12/0"
+      }
+    },
+    {
+      "nome": "cada_substituicao_casou_uma_svez_na_origem_e_escreveu_uma_no_destino",
+      "verde": true,
+      "dado": [
+        "a_funcao_que_le_a_mapa_da_view_activa:antes=1,depois=1",
+        "a_visibilidade_passa_a_pedir_as_duas_decisoes:antes=1,depois=1",
+        "a_funcao_nova_ficou_exposta_para_medir:antes=1,depois=1"
+      ]
+    },
+    {
+      "nome": "o_corpo_do_modulo_compila",
+      "verde": true,
+      "dado": {
+        "bytes_corpo": 63434,
+        "erro": ""
+      }
+    },
+    {
+      "nome": "a_regra_do_shell_extrai_se_dos_bytes_e_nao_da_minha_memoria",
+      "verde": true,
+      "dado": {
+        "extras_lidos": [
+          "psychology",
+          "multiprofissional"
+        ],
+        "queda_em_parent": true,
+        "linha": "const allowed = viewRole === 'admin' ? [...new Set([...roleSectionAccess.admin, 'psychology', 'multiprofissional'])] : (roleSectionAccess[viewRole] || roleSectionAccess.parent);"
+      }
+    },
+    {
+      "nome": "a_funcao_nova_nao_le_o_papel_da_sessao_como_view",
+      "verde": true,
+      "dado": {
+        "le_activeView": true,
+        "bytes_funcao": 823
+      }
+    },
+    {
+      "nome": "a_equivalencia_com_o_shell_bate_em_todas_as_vistas",
+      "verde": true,
+      "dado": {
+        "vistas_comparadas": 14,
+        "discordantes": [],
+        "nota": "a visibilidade do modulo passa a ser, vista a vista, a decisao que o shell ja tomou"
+      }
+    },
+    {
+      "nome": "o_sintoma_da_p81_muda_de_estado_em_cada_vista_afectada",
+      "verde": true,
+      "dado": {
+        "antes": "sessao-authorizada mostrava em 14 vistas",
+        "depois_visiveis": [
+          "admin",
+          "education_supervisor"
+        ],
+        "escondidos": [
+          "parent",
+          "student",
+          "teacher",
+          "coordinator",
+          "director",
+          "monitor",
+          "gatekeeper",
+          "secretary",
+          "aee",
+          "psychology",
+          "multiprofessional",
+          "sports_operator"
+        ]
+      }
+    },
+    {
+      "nome": "nenhuma_conta_autorizada_perde_a_entrada",
+      "verde": true,
+      "dado": {
+        "mantem": [
+          "admin",
+          "education_supervisor"
+        ],
+        "deveriam_manter": [
+          "admin",
+          "education_supervisor"
+        ]
+      }
+    },
+    {
+      "nome": "esta_peca_nao_alarga_o_mapa_a_nenhuma_vista",
+      "verde": true,
+      "dado": {
+        "linha_registar_antes": 1,
+        "linha_registar_depois": 1,
+        "papeis_municipais": [
+          "admin",
+          "education_supervisor"
+        ]
+      }
+    },
+    {
+      "nome": "o_mapa_estatico_do_shell_e_byte_a_byte_o_mesmo_de_v140",
+      "verde": true,
+      "dado": {
+        "bytes_bloco_antes": 2913,
+        "bytes_bloco_depois": 2913,
+        "vistas": [
+          "parent",
+          "student",
+          "teacher",
+          "coordinator",
+          "admin",
+          "director",
+          "monitor",
+          "gatekeeper",
+          "secretary",
+          "aee",
+          "psychology",
+          "multiprofessional",
+          "sports_operator",
+          "education_supervisor"
+        ]
+      }
+    },
+    {
+      "nome": "a_dispositivo_de_arranque_nao_esconde_o_que_o_shell_mostraria",
+      "verde": true,
+      "dado": {
+        "linha": "if (!vista) return { visivel: aptoParaSessao().apto, por: 'sem activeView (arranque): decide a sessao' };"
+      }
+    },
+    {
+      "nome": "a_medicao_antiga_fica_intacta_e_a_nova_fica_visivel",
+      "verde": true,
+      "dado": {
+        "munApto_preservado": true,
+        "munVista_novo": true
+      }
+    },
+    {
+      "nome": "a_sonda_honesta_da_v139_e_a_trilha_da_v140_sobrevivem",
+      "verde": true,
+      "dado": {
+        "sonda_antes": 1,
+        "sonda_depois": 1,
+        "mesa_lida_do_esperado_v140": "bfr_municipal_audit",
+        "mesa_antes": 1,
+        "mesa_depois": 1
+      }
+    },
+    {
+      "nome": "a_funcao_ficou_exposta_para_medir",
+      "verde": true,
+      "dado": {
+        "linha_export": "window.BFR_MUNICIPAL = { abrir, registar, garantir, aptoParaSessao, aptoParaVista, aplicarVisibilidade, sondarBackend, sonda, trilha, registrarTrilha, estado, cache, SECT, PAPEIS_MUNICIPAIS };"
+      }
+    },
+    {
+      "nome": "nada_foi_publicado",
+      "verde": true,
+      "dado": {
+        "diario_mais_novo": "audit-publicacao-v140.json",
+        "md5_servido": "82c95aa0a23b7b8ccd801b9b920e4f0e",
+        "md5_do_bundle_v140": "82c95aa0a23b7b8ccd801b9b920e4f0e",
+        "diario_v141_existe": false
+      }
+    }
+  ],
+  "falhas": [],
+  "veredito": "P97_CANDIDATA_V141_CAIXA_VAZIA_OK 15/0"
+}

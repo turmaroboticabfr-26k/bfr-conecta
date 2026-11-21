@@ -1,0 +1,883 @@
+{
+  "programa": "scripts/p81-pessoa-barra-municipal.mjs",
+  "em": "2026-11-21T19:54:50.290Z",
+  "duracao_ms": 98517,
+  "pergunta": "quando troco de pessoa na barra de personas, a entrada «Secretaria Municipal» aparece ou desaparece — e quem decide?",
+  "metodo": "chrome headless 1366x768, sessao do papel developer; percorre cada botao .role-toggle, clique real, e pergunta ao modulo servido (aptoParaSessao) e ao mapa vivo (roleSectionAccess) indexado pelo papel da SESSAO; o modo professor e tratado como desvio medido. Zero DDL, zero deploy, zero escrita de produto.",
+  "ar": {
+    "url": "https://bfr-conecta.turmaroboticabfr.workers.dev/",
+    "md5_servido": "e111b9e66cc758d19dffff1436770d0f",
+    "sect": "secretaria-municipal",
+    "papeis_municipais_lidos_dos_bytes": [
+      "admin",
+      "education_supervisor"
+    ]
+  },
+  "papel": "developer",
+  "banda": "1366x768",
+  "pessoas": [
+    {
+      "rotulo": "Admin",
+      "view_declarada": null,
+      "clique": {
+        "clicado": true,
+        "rotulo": "Admin",
+        "x": 343,
+        "y": 43
+      },
+      "leitura": {
+        "apresentacao": "web",
+        "pessoa_rotulo": "Admin",
+        "persona_ativa_view": null,
+        "papel_sessao": "developer",
+        "view_role_sessao": null,
+        "active_view": "admin",
+        "body_classes": "bfr-motion-ready bfr-coordination-active",
+        "teacher_mode": false,
+        "mapa_vivo_para_a_view": {
+          "parent": false,
+          "student": false,
+          "teacher": false,
+          "coordinator": false,
+          "admin": true,
+          "director": false,
+          "monitor": false,
+          "gatekeeper": false,
+          "secretary": false,
+          "aee": false,
+          "psychology": false,
+          "multiprofessional": false,
+          "sports_operator": false,
+          "education_supervisor": true
+        },
+        "apto": {
+          "apto": true,
+          "por": "papel=developer viewRole=admin no mapa=true"
+        },
+        "navs": [
+          {
+            "w": 192,
+            "h": 56,
+            "x": 14,
+            "y": 716,
+            "hidden": false,
+            "pai": "nav-list bfr-platform-nav",
+            "aptoAttr": "sim",
+            "ariaCurrent": "false"
+          },
+          {
+            "w": 0,
+            "h": 0,
+            "x": 0,
+            "y": 0,
+            "hidden": false,
+            "pai": "mobile-more-grid",
+            "aptoAttr": "sim",
+            "ariaCurrent": "false"
+          }
+        ],
+        "navs_no_dom": 2,
+        "sidebar_display": "flex",
+        "gaveta_movel": null,
+        "vista": {
+          "display": "none",
+          "chars": 0,
+          "abas": 0
+        }
+      },
+      "visiveis": 1,
+      "bate_com_o_mapa": true
+    },
+    {
+      "rotulo": "Direção",
+      "view_declarada": null,
+      "clique": {
+        "clicado": true,
+        "rotulo": "Direção",
+        "x": 406,
+        "y": 43
+      },
+      "leitura": {
+        "apresentacao": "web",
+        "pessoa_rotulo": "Direção",
+        "persona_ativa_view": null,
+        "papel_sessao": "developer",
+        "view_role_sessao": null,
+        "active_view": "director",
+        "body_classes": "bfr-motion-ready bfr-coordination-active",
+        "teacher_mode": false,
+        "mapa_vivo_para_a_view": {
+          "parent": false,
+          "student": false,
+          "teacher": false,
+          "coordinator": false,
+          "admin": true,
+          "director": false,
+          "monitor": false,
+          "gatekeeper": false,
+          "secretary": false,
+          "aee": false,
+          "psychology": false,
+          "multiprofessional": false,
+          "sports_operator": false,
+          "education_supervisor": true
+        },
+        "apto": {
+          "apto": true,
+          "por": "papel=developer viewRole=admin no mapa=true"
+        },
+        "navs": [
+          {
+            "w": 0,
+            "h": 0,
+            "x": 0,
+            "y": 0,
+            "hidden": true,
+            "pai": "nav-list bfr-platform-nav",
+            "aptoAttr": "sim",
+            "ariaCurrent": "false"
+          },
+          {
+            "w": 0,
+            "h": 0,
+            "x": 0,
+            "y": 0,
+            "hidden": true,
+            "pai": "mobile-more-grid",
+            "aptoAttr": "sim",
+            "ariaCurrent": "false"
+          }
+        ],
+        "navs_no_dom": 2,
+        "sidebar_display": "flex",
+        "gaveta_movel": null,
+        "vista": {
+          "display": "none",
+          "chars": 0,
+          "abas": 0
+        }
+      },
+      "visiveis": 0,
+      "bate_com_o_mapa": false
+    },
+    {
+      "rotulo": "Pais",
+      "view_declarada": null,
+      "clique": {
+        "clicado": true,
+        "rotulo": "Pais",
+        "x": 462,
+        "y": 43
+      },
+      "leitura": {
+        "apresentacao": "web",
+        "pessoa_rotulo": "Pais",
+        "persona_ativa_view": null,
+        "papel_sessao": "developer",
+        "view_role_sessao": null,
+        "active_view": "parent",
+        "body_classes": "bfr-motion-ready bfr-coordination-active",
+        "teacher_mode": false,
+        "mapa_vivo_para_a_view": {
+          "parent": false,
+          "student": false,
+          "teacher": false,
+          "coordinator": false,
+          "admin": true,
+          "director": false,
+          "monitor": false,
+          "gatekeeper": false,
+          "secretary": false,
+          "aee": false,
+          "psychology": false,
+          "multiprofessional": false,
+          "sports_operator": false,
+          "education_supervisor": true
+        },
+        "apto": {
+          "apto": true,
+          "por": "papel=developer viewRole=admin no mapa=true"
+        },
+        "navs": [
+          {
+            "w": 0,
+            "h": 0,
+            "x": 0,
+            "y": 0,
+            "hidden": true,
+            "pai": "nav-list bfr-platform-nav",
+            "aptoAttr": "sim",
+            "ariaCurrent": "false"
+          },
+          {
+            "w": 0,
+            "h": 0,
+            "x": 0,
+            "y": 0,
+            "hidden": true,
+            "pai": "mobile-more-grid",
+            "aptoAttr": "sim",
+            "ariaCurrent": "false"
+          }
+        ],
+        "navs_no_dom": 2,
+        "sidebar_display": "flex",
+        "gaveta_movel": null,
+        "vista": {
+          "display": "none",
+          "chars": 0,
+          "abas": 0
+        }
+      },
+      "visiveis": 0,
+      "bate_com_o_mapa": false
+    },
+    {
+      "rotulo": "Aluno",
+      "view_declarada": null,
+      "clique": {
+        "clicado": true,
+        "rotulo": "Aluno",
+        "x": 513,
+        "y": 43
+      },
+      "leitura": {
+        "apresentacao": "web",
+        "pessoa_rotulo": "Aluno",
+        "persona_ativa_view": null,
+        "papel_sessao": "developer",
+        "view_role_sessao": null,
+        "active_view": "student",
+        "body_classes": "bfr-motion-ready bfr-coordination-active",
+        "teacher_mode": false,
+        "mapa_vivo_para_a_view": {
+          "parent": false,
+          "student": false,
+          "teacher": false,
+          "coordinator": false,
+          "admin": true,
+          "director": false,
+          "monitor": false,
+          "gatekeeper": false,
+          "secretary": false,
+          "aee": false,
+          "psychology": false,
+          "multiprofessional": false,
+          "sports_operator": false,
+          "education_supervisor": true
+        },
+        "apto": {
+          "apto": true,
+          "por": "papel=developer viewRole=admin no mapa=true"
+        },
+        "navs": [
+          {
+            "w": 0,
+            "h": 0,
+            "x": 0,
+            "y": 0,
+            "hidden": true,
+            "pai": "nav-list bfr-platform-nav",
+            "aptoAttr": "sim",
+            "ariaCurrent": "false"
+          },
+          {
+            "w": 0,
+            "h": 0,
+            "x": 0,
+            "y": 0,
+            "hidden": true,
+            "pai": "mobile-more-grid",
+            "aptoAttr": "sim",
+            "ariaCurrent": "false"
+          }
+        ],
+        "navs_no_dom": 2,
+        "sidebar_display": "flex",
+        "gaveta_movel": null,
+        "vista": {
+          "display": "none",
+          "chars": 0,
+          "abas": 0
+        }
+      },
+      "visiveis": 0,
+      "bate_com_o_mapa": false
+    },
+    {
+      "rotulo": "Professor",
+      "view_declarada": null,
+      "clique": {
+        "clicado": true,
+        "rotulo": "Professor",
+        "x": 577,
+        "y": 43
+      },
+      "leitura": {
+        "apresentacao": "web",
+        "pessoa_rotulo": "Professor",
+        "persona_ativa_view": null,
+        "papel_sessao": "developer",
+        "view_role_sessao": null,
+        "active_view": "teacher",
+        "body_classes": "bfr-motion-ready",
+        "teacher_mode": false,
+        "mapa_vivo_para_a_view": {
+          "parent": false,
+          "student": false,
+          "teacher": false,
+          "coordinator": false,
+          "admin": true,
+          "director": false,
+          "monitor": false,
+          "gatekeeper": false,
+          "secretary": false,
+          "aee": false,
+          "psychology": false,
+          "multiprofessional": false,
+          "sports_operator": false,
+          "education_supervisor": true
+        },
+        "apto": {
+          "apto": true,
+          "por": "papel=developer viewRole=admin no mapa=true"
+        },
+        "navs": [
+          {
+            "w": 0,
+            "h": 0,
+            "x": 0,
+            "y": 0,
+            "hidden": true,
+            "pai": "nav-list bfr-platform-nav",
+            "aptoAttr": "sim",
+            "ariaCurrent": "false"
+          },
+          {
+            "w": 0,
+            "h": 0,
+            "x": 0,
+            "y": 0,
+            "hidden": true,
+            "pai": "mobile-more-grid",
+            "aptoAttr": "sim",
+            "ariaCurrent": "false"
+          }
+        ],
+        "navs_no_dom": 2,
+        "sidebar_display": "flex",
+        "gaveta_movel": null,
+        "vista": {
+          "display": "none",
+          "chars": 0,
+          "abas": 0
+        }
+      },
+      "visiveis": 0,
+      "bate_com_o_mapa": false
+    },
+    {
+      "rotulo": "Coordenação",
+      "view_declarada": null,
+      "clique": {
+        "clicado": true,
+        "rotulo": "Coordenação",
+        "x": 662,
+        "y": 43
+      },
+      "leitura": {
+        "apresentacao": "web",
+        "pessoa_rotulo": "Coordenação",
+        "persona_ativa_view": null,
+        "papel_sessao": "developer",
+        "view_role_sessao": null,
+        "active_view": "coordinator",
+        "body_classes": "bfr-motion-ready bfr-coordination-active",
+        "teacher_mode": false,
+        "mapa_vivo_para_a_view": {
+          "parent": false,
+          "student": false,
+          "teacher": false,
+          "coordinator": false,
+          "admin": true,
+          "director": false,
+          "monitor": false,
+          "gatekeeper": false,
+          "secretary": false,
+          "aee": false,
+          "psychology": false,
+          "multiprofessional": false,
+          "sports_operator": false,
+          "education_supervisor": true
+        },
+        "apto": {
+          "apto": true,
+          "por": "papel=developer viewRole=admin no mapa=true"
+        },
+        "navs": [
+          {
+            "w": 0,
+            "h": 0,
+            "x": 0,
+            "y": 0,
+            "hidden": true,
+            "pai": "nav-list bfr-platform-nav",
+            "aptoAttr": "sim",
+            "ariaCurrent": "false"
+          },
+          {
+            "w": 0,
+            "h": 0,
+            "x": 0,
+            "y": 0,
+            "hidden": true,
+            "pai": "mobile-more-grid",
+            "aptoAttr": "sim",
+            "ariaCurrent": "false"
+          }
+        ],
+        "navs_no_dom": 2,
+        "sidebar_display": "flex",
+        "gaveta_movel": null,
+        "vista": {
+          "display": "none",
+          "chars": 0,
+          "abas": 0
+        }
+      },
+      "visiveis": 0,
+      "bate_com_o_mapa": false
+    },
+    {
+      "rotulo": "Secretaria",
+      "view_declarada": null,
+      "clique": {
+        "clicado": true,
+        "rotulo": "Secretaria",
+        "x": 748,
+        "y": 43
+      },
+      "leitura": {
+        "apresentacao": "web",
+        "pessoa_rotulo": "Secretaria",
+        "persona_ativa_view": null,
+        "papel_sessao": "developer",
+        "view_role_sessao": null,
+        "active_view": "secretary",
+        "body_classes": "bfr-motion-ready bfr-coordination-active",
+        "teacher_mode": false,
+        "mapa_vivo_para_a_view": {
+          "parent": false,
+          "student": false,
+          "teacher": false,
+          "coordinator": false,
+          "admin": true,
+          "director": false,
+          "monitor": false,
+          "gatekeeper": false,
+          "secretary": false,
+          "aee": false,
+          "psychology": false,
+          "multiprofessional": false,
+          "sports_operator": false,
+          "education_supervisor": true
+        },
+        "apto": {
+          "apto": true,
+          "por": "papel=developer viewRole=admin no mapa=true"
+        },
+        "navs": [
+          {
+            "w": 0,
+            "h": 0,
+            "x": 0,
+            "y": 0,
+            "hidden": true,
+            "pai": "nav-list bfr-platform-nav",
+            "aptoAttr": "sim",
+            "ariaCurrent": "false"
+          },
+          {
+            "w": 0,
+            "h": 0,
+            "x": 0,
+            "y": 0,
+            "hidden": true,
+            "pai": "mobile-more-grid",
+            "aptoAttr": "sim",
+            "ariaCurrent": "false"
+          }
+        ],
+        "navs_no_dom": 2,
+        "sidebar_display": "flex",
+        "gaveta_movel": null,
+        "vista": {
+          "display": "none",
+          "chars": 0,
+          "abas": 0
+        }
+      },
+      "visiveis": 0,
+      "bate_com_o_mapa": false
+    },
+    {
+      "rotulo": "Monitor",
+      "view_declarada": null,
+      "clique": {
+        "clicado": true,
+        "rotulo": "Monitor",
+        "x": 820,
+        "y": 43
+      },
+      "leitura": {
+        "apresentacao": "web",
+        "pessoa_rotulo": "Monitor",
+        "persona_ativa_view": null,
+        "papel_sessao": "developer",
+        "view_role_sessao": null,
+        "active_view": "monitor",
+        "body_classes": "bfr-motion-ready bfr-coordination-active",
+        "teacher_mode": false,
+        "mapa_vivo_para_a_view": {
+          "parent": false,
+          "student": false,
+          "teacher": false,
+          "coordinator": false,
+          "admin": true,
+          "director": false,
+          "monitor": false,
+          "gatekeeper": false,
+          "secretary": false,
+          "aee": false,
+          "psychology": false,
+          "multiprofessional": false,
+          "sports_operator": false,
+          "education_supervisor": true
+        },
+        "apto": {
+          "apto": true,
+          "por": "papel=developer viewRole=admin no mapa=true"
+        },
+        "navs": [
+          {
+            "w": 0,
+            "h": 0,
+            "x": 0,
+            "y": 0,
+            "hidden": true,
+            "pai": "nav-list bfr-platform-nav",
+            "aptoAttr": "sim",
+            "ariaCurrent": "false"
+          },
+          {
+            "w": 0,
+            "h": 0,
+            "x": 0,
+            "y": 0,
+            "hidden": true,
+            "pai": "mobile-more-grid",
+            "aptoAttr": "sim",
+            "ariaCurrent": "false"
+          }
+        ],
+        "navs_no_dom": 2,
+        "sidebar_display": "flex",
+        "gaveta_movel": null,
+        "vista": {
+          "display": "none",
+          "chars": 0,
+          "abas": 0
+        }
+      },
+      "visiveis": 0,
+      "bate_com_o_mapa": false
+    },
+    {
+      "rotulo": "AEE",
+      "view_declarada": null,
+      "clique": {
+        "clicado": true,
+        "rotulo": "AEE",
+        "x": 876,
+        "y": 43
+      },
+      "leitura": {
+        "apresentacao": "web",
+        "pessoa_rotulo": "AEE",
+        "persona_ativa_view": null,
+        "papel_sessao": "developer",
+        "view_role_sessao": null,
+        "active_view": "aee",
+        "body_classes": "bfr-motion-ready bfr-coordination-active",
+        "teacher_mode": false,
+        "mapa_vivo_para_a_view": {
+          "parent": false,
+          "student": false,
+          "teacher": false,
+          "coordinator": false,
+          "admin": true,
+          "director": false,
+          "monitor": false,
+          "gatekeeper": false,
+          "secretary": false,
+          "aee": false,
+          "psychology": false,
+          "multiprofessional": false,
+          "sports_operator": false,
+          "education_supervisor": true
+        },
+        "apto": {
+          "apto": true,
+          "por": "papel=developer viewRole=admin no mapa=true"
+        },
+        "navs": [
+          {
+            "w": 0,
+            "h": 0,
+            "x": 0,
+            "y": 0,
+            "hidden": true,
+            "pai": "nav-list bfr-platform-nav",
+            "aptoAttr": "sim",
+            "ariaCurrent": "false"
+          },
+          {
+            "w": 0,
+            "h": 0,
+            "x": 0,
+            "y": 0,
+            "hidden": true,
+            "pai": "mobile-more-grid",
+            "aptoAttr": "sim",
+            "ariaCurrent": "false"
+          }
+        ],
+        "navs_no_dom": 2,
+        "sidebar_display": "flex",
+        "gaveta_movel": null,
+        "vista": {
+          "display": "none",
+          "chars": 0,
+          "abas": 0
+        }
+      },
+      "visiveis": 0,
+      "bate_com_o_mapa": false
+    },
+    {
+      "rotulo": "Portaria",
+      "view_declarada": null,
+      "clique": {
+        "clicado": true,
+        "rotulo": "Portaria",
+        "x": 931,
+        "y": 43
+      },
+      "leitura": {
+        "apresentacao": "web",
+        "pessoa_rotulo": "Portaria",
+        "persona_ativa_view": null,
+        "papel_sessao": "developer",
+        "view_role_sessao": null,
+        "active_view": "gatekeeper",
+        "body_classes": "bfr-motion-ready bfr-coordination-active bfr-gatekeeper-active",
+        "teacher_mode": false,
+        "mapa_vivo_para_a_view": {
+          "parent": false,
+          "student": false,
+          "teacher": false,
+          "coordinator": false,
+          "admin": true,
+          "director": false,
+          "monitor": false,
+          "gatekeeper": false,
+          "secretary": false,
+          "aee": false,
+          "psychology": false,
+          "multiprofessional": false,
+          "sports_operator": false,
+          "education_supervisor": true
+        },
+        "apto": {
+          "apto": true,
+          "por": "papel=developer viewRole=admin no mapa=true"
+        },
+        "navs": [
+          {
+            "w": 0,
+            "h": 0,
+            "x": 0,
+            "y": 0,
+            "hidden": true,
+            "pai": "nav-list bfr-platform-nav",
+            "aptoAttr": "sim",
+            "ariaCurrent": "false"
+          },
+          {
+            "w": 0,
+            "h": 0,
+            "x": 0,
+            "y": 0,
+            "hidden": true,
+            "pai": "mobile-more-grid",
+            "aptoAttr": "sim",
+            "ariaCurrent": "false"
+          }
+        ],
+        "navs_no_dom": 2,
+        "sidebar_display": "flex",
+        "gaveta_movel": null,
+        "vista": {
+          "display": "none",
+          "chars": 0,
+          "abas": 0
+        }
+      },
+      "visiveis": 0,
+      "bate_com_o_mapa": false
+    }
+  ],
+  "passoSecretaria": {
+    "rotulo_persona": "Secretaria",
+    "entrada_visiveis_antes": 0,
+    "clique": {
+      "clicado": false
+    },
+    "antes": {
+      "apresentacao": "web",
+      "pessoa_rotulo": "Secretaria",
+      "persona_ativa_view": null,
+      "papel_sessao": "developer",
+      "view_role_sessao": null,
+      "active_view": "secretary",
+      "body_classes": "bfr-motion-ready bfr-coordination-active",
+      "teacher_mode": false,
+      "mapa_vivo_para_a_view": {
+        "parent": false,
+        "student": false,
+        "teacher": false,
+        "coordinator": false,
+        "admin": true,
+        "director": false,
+        "monitor": false,
+        "gatekeeper": false,
+        "secretary": false,
+        "aee": false,
+        "psychology": false,
+        "multiprofessional": false,
+        "sports_operator": false,
+        "education_supervisor": true
+      },
+      "apto": {
+        "apto": true,
+        "por": "papel=developer viewRole=admin no mapa=true"
+      },
+      "navs": [
+        {
+          "w": 0,
+          "h": 0,
+          "x": 0,
+          "y": 0,
+          "hidden": true,
+          "pai": "nav-list bfr-platform-nav",
+          "aptoAttr": "sim",
+          "ariaCurrent": "false"
+        },
+        {
+          "w": 0,
+          "h": 0,
+          "x": 0,
+          "y": 0,
+          "hidden": true,
+          "pai": "mobile-more-grid",
+          "aptoAttr": "sim",
+          "ariaCurrent": "false"
+        }
+      ],
+      "navs_no_dom": 2,
+      "sidebar_display": "flex",
+      "gaveta_movel": null,
+      "vista": {
+        "display": "none",
+        "chars": 0,
+        "abas": 0
+      }
+    },
+    "depois": {
+      "apresentacao": "web",
+      "pessoa_rotulo": "Secretaria",
+      "persona_ativa_view": null,
+      "papel_sessao": "developer",
+      "view_role_sessao": null,
+      "active_view": "secretary",
+      "body_classes": "bfr-motion-ready bfr-coordination-active",
+      "teacher_mode": false,
+      "mapa_vivo_para_a_view": {
+        "parent": false,
+        "student": false,
+        "teacher": false,
+        "coordinator": false,
+        "admin": true,
+        "director": false,
+        "monitor": false,
+        "gatekeeper": false,
+        "secretary": false,
+        "aee": false,
+        "psychology": false,
+        "multiprofessional": false,
+        "sports_operator": false,
+        "education_supervisor": true
+      },
+      "apto": {
+        "apto": true,
+        "por": "papel=developer viewRole=admin no mapa=true"
+      },
+      "navs": [
+        {
+          "w": 0,
+          "h": 0,
+          "x": 0,
+          "y": 0,
+          "hidden": true,
+          "pai": "nav-list bfr-platform-nav",
+          "aptoAttr": "sim",
+          "ariaCurrent": "false"
+        },
+        {
+          "w": 0,
+          "h": 0,
+          "x": 0,
+          "y": 0,
+          "hidden": true,
+          "pai": "mobile-more-grid",
+          "aptoAttr": "sim",
+          "ariaCurrent": "false"
+        }
+      ],
+      "navs_no_dom": 2,
+      "sidebar_display": "flex",
+      "gaveta_movel": null,
+      "vista": {
+        "display": "none",
+        "chars": 0,
+        "abas": 0
+      }
+    }
+  },
+  "excecoes": [],
+  "o_que_este_verde_nao_autoriza": "Prova o estado da ENTRADA por pessoa nesta sessao; nao prova numeros do painel nem autoriza publicar, DDL, concessao municipal ou mudar PAPEIS_MUNICIPAIS.",
+  "falhas": [
+    "entrada visivel nao bate com o mapa da sessao | pessoa=Direção visiveis=0 esperado=true papel_sessao=developer view_sessao=admin",
+    "entrada visivel nao bate com o mapa da sessao | pessoa=Pais visiveis=0 esperado=true papel_sessao=developer view_sessao=admin",
+    "entrada visivel nao bate com o mapa da sessao | pessoa=Aluno visiveis=0 esperado=true papel_sessao=developer view_sessao=admin",
+    "entrada visivel nao bate com o mapa da sessao | pessoa=Professor visiveis=0 esperado=true papel_sessao=developer view_sessao=admin",
+    "entrada visivel nao bate com o mapa da sessao | pessoa=Coordenação visiveis=0 esperado=true papel_sessao=developer view_sessao=admin",
+    "entrada visivel nao bate com o mapa da sessao | pessoa=Secretaria visiveis=0 esperado=true papel_sessao=developer view_sessao=admin",
+    "entrada visivel nao bate com o mapa da sessao | pessoa=Monitor visiveis=0 esperado=true papel_sessao=developer view_sessao=admin",
+    "entrada visivel nao bate com o mapa da sessao | pessoa=AEE visiveis=0 esperado=true papel_sessao=developer view_sessao=admin",
+    "entrada visivel nao bate com o mapa da sessao | pessoa=Portaria visiveis=0 esperado=true papel_sessao=developer view_sessao=admin",
+    "nenhuma pessoa deu teacher_mode medido, logo a excecao do modo professor nao esta exercida nesta corrida | teacher=0",
+    "na persona Secretaria a entrada nao esta visivel | visiveis=0 mapa={\"parent\":false,\"student\":false,\"teacher\":false,\"coordinator\":false,\"admin\":true,\"director\":false,\"monitor\":false,\"gatekeeper\":false,\"secretary\":false,\"aee\":false,\"psychology\":false,\"multiprofessional\":false,\"sports_operator\":false,\"education_supervisor\":true}"
+  ],
+  "veredito": "P81_PESSOA_BARRA_MUNICIPAL_VERMELHO 10 pessoas 11"
+}
