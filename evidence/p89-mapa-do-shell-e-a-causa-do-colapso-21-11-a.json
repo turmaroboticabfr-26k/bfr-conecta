@@ -1,0 +1,136 @@
+{
+  "programa": "scripts/p89-mapa-do-shell-e-a-causa-do-colapso.mjs",
+  "em": "2026-11-21T09:37:09.800Z",
+  "duracao_ms": 53,
+  "pergunta": "porque é que a P81 mediu a entrada municipal a 0×0 na persona «Professor» com hidden=false e munApto=\"sim\"?",
+  "metodo": "extracção estática do `roleSectionAccess` do ar publicado (recorte por contagem de chavetas) e do módulo municipal dos mesmos bytes; 0 browser, 0 banco, 0 publicação.",
+  "ar": {
+    "diario": "audit-publicacao-v136.json",
+    "versao": "136",
+    "pasta": "bfr-candidata-v136-secretaria-de-educacao",
+    "md5": "9e236a23eed978cf7c2a2743d449b307",
+    "bytes": 3529307
+  },
+  "mapa_do_shell": {
+    "vistas": 14,
+    "por_vista_itens": [
+      "parent=16",
+      "student=19",
+      "teacher=22",
+      "coordinator=18",
+      "admin=26",
+      "director=15",
+      "monitor=8",
+      "gatekeeper=8",
+      "secretary=11",
+      "aee=10",
+      "psychology=3",
+      "multiprofessional=3",
+      "sports_operator=4",
+      "education_supervisor=12"
+    ],
+    "tem_sect": [],
+    "teacher_itens": 22,
+    "teacher_contem_sect": false
+  },
+  "modulo": {
+    "sect": "secretaria-municipal",
+    "papeis_municipais": [
+      "admin",
+      "education_supervisor"
+    ],
+    "chaves_sem_array_no_mapa": [],
+    "linha_registar": "      if (Array.isArray(map[papel]) && !map[papel].includes(SECT)) map[papel] = map[papel].concat(SECT);",
+    "linha_apto": "    const rt = RT(); const papel = (rt.profile || {}).role || '';",
+    "linha_visibilidade": "      b.style.display = veredito.apto ? '' : 'none';"
+  },
+  "causa_dita_pelos_bytes": "O `registar()` só acrescenta a seção às chaves declaradas em PAPEIS_MUNICIPAIS. `syncRoleNavigation` esconde o que não estiver em roleSectionAccess[viewRole], e a vista `teacher` não a recebe: daí a caixa 0×0 sem `hidden`. Em simultâneo `aptoParaSessao()` lê rt.profile.role (a SESSÃO), não a persona activa — por isso a P81 viu munApto=\"sim\" na mesma célula.",
+  "o_que_este_verde_nao_autoriza": "Nada. Medir a causa não a muda: acrescentar a seção à vista `teacher` é decisão de produto e escreve no bundle (e depois no ar), o que pede OK literal.",
+  "portoes": [
+    {
+      "nome": "o_mapa_do_shell_resolve_em_bytes_com_vistas",
+      "verde": true,
+      "dado": {
+        "ar": "bfr-candidata-v136-secretaria-de-educacao/index.html",
+        "md5": "9e236a23eed978cf7c2a2743d449b307",
+        "vistas": 14,
+        "bytes_bloco": 2913
+      }
+    },
+    {
+      "nome": "a_secao_nao_esta_em_nenhum_array_estatico_do_mapa",
+      "verde": true,
+      "dado": {
+        "sect": "secretaria-municipal",
+        "vistas_onde_esta": [],
+        "nota": "se algum dia estiver, a entrada passa a ser do shell e não do módulo, e esta régua tem de ser re-escrita"
+      }
+    },
+    {
+      "nome": "os_papeis_municipais_do_modulo_tem_onde_ser_patcheados",
+      "verde": true,
+      "dado": {
+        "papeis": [
+          "admin",
+          "education_supervisor"
+        ],
+        "com_array": [
+          "admin",
+          "education_supervisor"
+        ],
+        "sem_array": [],
+        "nota": "sem Array.isArray(map[papel]) o registar() salta a chave em silêncio e a entrada nunca aparece para essa vista"
+      }
+    },
+    {
+      "nome": "a_causa_do_colapso_na_persona_professor_esta_nomeada",
+      "verde": true,
+      "dado": {
+        "teacher_tem_itens": 22,
+        "contem_sect": false,
+        "LINHA_VIS": "      b.style.display = veredito.apto ? '' : 'none';"
+      }
+    },
+    {
+      "nome": "o_modulo_decide_pelo_papel_da_sessao_e_nao_pela_persona_bar",
+      "verde": true,
+      "dado": {
+        "linha_apto": "    const rt = RT(); const papel = (rt.profile || {}).role || '';",
+        "linha_registar": "      if (Array.isArray(map[papel]) && !map[papel].includes(SECT)) map[papel] = map[papel].concat(SECT);",
+        "nota": "é isto que explica o munApto=\"sim\" junto de uma caixa 0×0 medido pela P81"
+      }
+    },
+    {
+      "nome": "as_vistas_que_recebem_a_secao_sao_as_declaradas",
+      "verde": true,
+      "dado": {
+        "declarados": [
+          "admin",
+          "education_supervisor"
+        ],
+        "com_array_no_mapa": [
+          "admin",
+          "education_supervisor"
+        ],
+        "total_vistas": [
+          "parent",
+          "student",
+          "teacher",
+          "coordinator",
+          "admin",
+          "director",
+          "monitor",
+          "gatekeeper",
+          "secretary",
+          "aee",
+          "psychology",
+          "multiprofessional",
+          "sports_operator",
+          "education_supervisor"
+        ]
+      }
+    }
+  ],
+  "falhas": [],
+  "veredito": "P89_CAUSA_COLAPSO_PROFESSOR_OK 6/0"
+}
