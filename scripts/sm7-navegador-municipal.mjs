@@ -21,8 +21,15 @@ const MOBILE = LARGURA <= 430;
 const DIR = 'C:/Users/pcmac/Documents/Qoder/2026-10-13/28077d9a';
 const RAIZ = `${DIR}/bfr-conecta`;
 const V = process.env.SM6_V || '129';
-const CANDIDATA = `${RAIZ}/bfr-candidata-v${V}-secretaria-municipal`;
-const BASE = `${RAIZ}/bfr-candidata-v121-rotulos-supervisor`;
+// A cadeia v138 chama-se `bfr-candidata-v138-painel-municipal`: o template `-secretaria-municipal` não
+// resolve para ela, por isso o nome da pasta passa a poder ser dado por env. Sem env, o comportamento
+// de 17/11 e 18/11 fica exactamente o mesmo.
+const CANDIDATA = process.env.SM7_CAND ? `${RAIZ}/${process.env.SM7_CAND}` : `${RAIZ}/bfr-candidata-v${V}-secretaria-municipal`;
+// Irmãos servidos quando a candidata não os duplica. Para a v138 isto não é detalhe: o `index.html`
+// da candidata é um ficheiro só, e passou a carregar `bfr-responsive-presentation.js` como recurso
+// externo — sem o `public/` do bundle o boot não acontece e as 10 abas seriam zeros do instrumento.
+// O default mantém as corridas de 17/11 e 18/11 byte a byte como foram.
+const BASE = process.env.SM7_BASE ? `${RAIZ}/${process.env.SM7_BASE}` : `${RAIZ}/bfr-candidata-v121-rotulos-supervisor`;
 const OUT = `${RAIZ}/evidence/sm7-municipal-${PAPEL}-${LARGURA}-${ROTULO}.json`;
 const PERFIL = `${DIR}/.sm7-chrome-${ROTULO}`;
 const PORTA_HTTP = parseInt(process.env.SM7_HTTP || '8913', 10);
@@ -212,10 +219,13 @@ const escreveNoCampo = async (sel, termo) => {
   return r;
 };
 
-// ── sessão: renova com o refresh do registo mestre (único escritor nesta corrida) e injeta de novo
-const REGISTO = `${DIR}/ah2-sessions.json`;
+// ── sessão: renova com o refresh do registo (único escritor nesta corrida) e injeta de novo
+//    Os quatro papéis municipais não estão no registo mestre da enumeração: vivem em
+//    `sm8-municipal-sessions.json`, e é esse ficheiro que `SM7_REGISTO` nomeia (por nome, relativo à
+//    raiz — um caminho absoluto vindo do ambiente é terreno de tradução MSYS).
+const REGISTO = `${DIR}/${process.env.SM7_REGISTO || 'ah2-sessions.json'}`;
 const S = JSON.parse(readFileSync(REGISTO, 'utf8'));
-if (!S[PAPEL]) abort(2, `o registo mestre não tem sessão do papel «${PAPEL}» — não se forja sessão`);
+if (!S[PAPEL]) abort(2, `o registo ${REGISTO.split('/').pop()} não tem sessão do papel «${PAPEL}» — não se forja sessão`);
 const renova = async () => {
   for (let n = 0; n < 5; n++) {
     try {
@@ -299,7 +309,35 @@ if (erro_boot) {
   out.falhas = falhas; writeFileSync(OUT, JSON.stringify(out, null, 2) + '\n');
   abort(6, 'boot falhou — ver artefacto');
 }
-gate('papel real da sessão bate o pedido', out.stages.papel_real, PAPEL);
+// ── o que o banco diz desta mesma conta, lido por REST com o mesmo access token injectado no browser.
+//    Duas grandezas distintas: o papel do PERFIL (a coluna que o módulo usa para decidir) e a AUTORIDADE
+//    MUNICIPAL (a função que o DDL PEN-38 aplica). O rótulo da linha do registo não é o papel do perfil —
+//    os quatro papéis municipais são nomes de `bfr_municipal_access_grants.municipal_role` e os perfis
+//    deles são `secretary`/`coordinator`/`pending`, medido nesta corrida. Comparar rótulo com papel era
+//    defeito meu, e dava vermelho onde não há divergência de produtores.
+let papelDoBanco = null, aptoDoBanco = null;
+const leiturasDoBanco = {};
+try {
+  const uid = sessao.user && sessao.user.id ? sessao.user.id : (S[PAPEL] && S[PAPEL].id ? S[PAPEL].id : null);
+  if (uid) {
+    const rP = await fetch(`${HOST}/rest/v1/profiles?select=role&id=eq.${encodeURIComponent(uid)}`, { headers: { apikey: ANON, Authorization: `Bearer ${sessao.access_token}`, 'Cache-Control': 'no-cache' }, signal: AbortSignal.timeout(45000) });
+    const tP = await rP.text();
+    let jP = null; try { jP = JSON.parse(tP); } catch { /* nao e array */ }
+    papelDoBanco = Array.isArray(jP) && jP.length === 1 ? String(jP[0].role) : null;
+    leiturasDoBanco.perfil = { http: rP.status, linhas: Array.isArray(jP) ? jP.length : null, corpo: papelDoBanco === null ? tP.slice(0, 90) : undefined };
+  } else leiturasDoBanco.perfil = { sem_uid_no_registo: true };
+} catch (e) { leiturasDoBanco.perfil = { erro: String((e && e.message) || e).slice(0, 120) }; }
+out.stages.leituras_do_banco = leiturasDoBanco;
+if (papelDoBanco === null) {
+  out.stages.portao_do_papel_por_correr = 'o REST não devolveu exactamente uma linha de `profiles` para este acesso — o portão fica por correr e não se dá por verde';
+  console.log('AVISO · papel do perfil nao lido do banco: ' + JSON.stringify(leiturasDoBanco.perfil));
+} else {
+  gate('o papel do perfil é o mesmo medido no browser e lido no banco', out.stages.papel_real, papelDoBanco);
+}
+out.stages.rotulo_da_concessao = { pedido_no_registo: PAPEL, papel_real_do_perfil: out.stages.papel_real,
+  coincidem: PAPEL === out.stages.papel_real,
+  nota: 'para os quatro papeis municipais o nome da linha do registo e o `municipal_role` da concessao, nao o `role` do perfil' };
+console.log(`papel: browser=${JSON.stringify(out.stages.papel_real)} banco=${JSON.stringify(papelDoBanco)} rotulo_pedido=${PAPEL}`);
 gate('largura de layout = pedida (documentElement.clientWidth, não innerWidth)', out.stages.janela.clientWidth, LARGURA);
 
 // ── sondas do módulo: está registado? o botão existe? a vista existe?
@@ -323,10 +361,41 @@ out.stages.modulo = await evalJS(`(() => ({
 const mm = out.stages.modulo;
 console.log(`modulo: presente=${mm.runtime_presente} vista_no_dom=${mm.vista_no_dom} botoes_nav=${mm.botao_nav.length} visiveis=${mm.botao_nav.filter((b) => b.visivel).length} papeis=${JSON.stringify(mm.papeis_municipais)} apto=${JSON.stringify(mm.apto_para_sessao)}`);
 
-const aptoEsperado = PAPEL === 'education_supervisor' || PAPEL === 'developer' || PAPEL === 'admin';
+// A expectativa de aptidão lê-se do banco, com o mesmo access token que foi injectado no browser, e
+// não de uma lista dactilografada: a lista era o produto do §5.381 escrito para os três papéis da
+// enumeração, e os quatro papéis municipais não estavam nela — replicá-la seria pedir ao front-end
+// que confirme a memória de quem escreveu o instrumento. O RPC `bfr_is_municipal_authority()` é o outro
+// produtor (o DDL PEN-38 aplicado, que soma a concessão municipal ao ramo `education_supervisor`), por
+// isso comparar os dois tem positivo e negativo: VERMELHO se a UI e o DDL discordarem.
+// `aptoDoBanco` foi declarado acima, junto da leitura do perfil: é o mesmo acesso, o mesmo token, outro
+// endpoint. Voltar a declará-lo aqui seria um `SyntaxError` de colisão de identificador de topo — que o
+// `node --check` vê, e foi por isso que ele corre antes de cada corrida.
+try {
+  const rBanco = await fetch(`${HOST}/rest/v1/rpc/bfr_is_municipal_authority`, {
+    method: 'POST', headers: { apikey: ANON, Authorization: `Bearer ${sessao.access_token}`, 'Content-Type': 'application/json' },
+    body: '{}', signal: AbortSignal.timeout(45000),
+  });
+  const tBanco = await rBanco.text();
+  aptoDoBanco = rBanco.status === 200 && tBanco.trim() === 'true' ? true : (rBanco.status === 200 && tBanco.trim() === 'false' ? false : null);
+  leiturasDoBanco.authority = { http: rBanco.status, corpo: aptoDoBanco === null ? tBanco.slice(0, 90) : undefined };
+  if (aptoDoBanco === null) console.log(`AVISO · RPC de aptidão respondeu HTTP ${rBanco.status} corpo=${JSON.stringify(tBanco.slice(0, 90))} — cai-se na enumeracao`);
+} catch (e) { leiturasDoBanco.authority = { erro: String((e && e.message) || e).slice(0, 120) }; console.log('AVISO · leitura de aptidao no banco falhou: ' + String(e.message || e).slice(0, 120)); }
+const aptoDaEnumeracao = PAPEL === 'education_supervisor' || PAPEL === 'developer' || PAPEL === 'admin';
+const aptoEsperado = aptoDoBanco === null ? aptoDaEnumeracao : aptoDoBanco;
+out.stages.apto_derivado = { origem: 'RPC bfr_is_municipal_authority() com o mesmo access token injectado no browser',
+  do_banco: aptoDoBanco, da_enumeracao: aptoDaEnumeracao, usado: aptoEsperado,
+  produtores_divergem: aptoDoBanco !== null && aptoDoBanco !== aptoDaEnumeracao,
+  nota: 'divergir nao e um erro do instrumento: e os dois produtores (DDL aplicado e lista do front-end) a dizerem coisas diferentes' };
+if (out.stages.apto_derivado.produtores_divergem) console.log(`DIVERGENCIA · banco=${aptoDoBanco} enumeracao=${aptoDaEnumeracao} para o papel ${PAPEL}`);
+// O que se EXERCITA no browser decide-se pelo que a aplicação respondeu; o que se EXIGE continua a ser
+// a expectativa vinda do banco. Com os dois produtores a discordar, misturá-los faria duas coisas más:
+// uma conta com dados reais ficava sem filtro/export/PDF nunca percorridos, e o vermelho da divergência
+// passava a esconder o resto da medição em vez de o nomear.
+const ramoPositivo = mm.apto_para_sessao && mm.apto_para_sessao.apto === true;
+console.log('ramo exercido: ' + (ramoPositivo ? 'positivo (a aplicacao abriu o painel)' : 'negativo (a aplicacao recusou)'));
 // O predido lê-se duas vezes porque o perfil chega mais tarde que o boot: aos olhos do instante da
 // sonda o mapa ainda não tem a sessão, e isso é um facto do cronómetro, não o veredicto que o §5.381 pede.
-console.log(`aptoParaSessao na sonda: ${JSON.stringify(out.stages.modulo.apto_para_sessao)}`);
+console.log(`aptoParaSessao na sonda: ${JSON.stringify(out.stages.modulo.apto_para_sessao)} · esperado do banco: ${JSON.stringify(aptoEsperado)}`);
 
 // ── o clique real no botão do menu. Em banda mobile o botão vive dentro da gaveta «Mais», e uma
 //    gaveta fechada mantém os nós no DOM: por isso o `is-open` verifica-se a cada passo, e não uma
@@ -571,7 +640,7 @@ console.log(`sonda por tabela: ${JSON.stringify(out.stages.sonda_por_tabela).sli
 out.stages.cache_do_modulo = await evalJS(`(() => { const c = (window.BFR_MUNICIPAL?.cache) || {}; return Object.entries(c).map(([k, v]) => ({ familia: String(k).split('_')[0], linhas: Array.isArray(v && v.linhas) ? v.linhas.length : null, total: (v && v.total) ?? null, tem_erro: !!(v && v.erro), escolas_distintas: (v && v.escolasDistintas) ?? null })); })()`);
 const cache_partido = (out.stages.cache_do_modulo || []).filter((e) => e.tem_erro && (e.linhas || 0) > 0);
 console.log(`cache do módulo: ${JSON.stringify(out.stages.cache_do_modulo).slice(0, 500)}`);
-if (aptoEsperado) {
+if (ramoPositivo) {
   gate('nenhum número impresso vem de uma entrada de cache com erro', cache_partido, []);
   gate('pelo menos uma entrada do cache tem linhas sem erro', (out.stages.cache_do_modulo || []).filter((e) => !e.tem_erro && (e.linhas || 0) > 0).length > 0, true);
 }
@@ -652,8 +721,8 @@ if (out.stages.depois_do_clique.munApto === 'sim') {
 }
 out.stages.operacoes = ops;
 
-// ── a negação, medida quando o papel NÃO tem direito: zero leituras de tabela, zero abas montadas
-if (!aptoEsperado) {
+// ── a negação, medida quando a APLICAÇÃO recusa o painel: zero leituras de tabela, zero abas montadas
+if (!ramoPositivo) {
   // As sondas de diagnóstico acima chamam client.from() directamente, com o token autenticado, para
   // dizer se o cliente responde. Isso é comportamento do INSTRUMENTO, não do módulo: sem zerar aqui,
   // o portão «negação não lê nenhuma tabela» coraria pelas minhas próprias sondas. O que se mede a
@@ -711,14 +780,14 @@ gate('o contador do instrumento preserva o this do cliente', out.stages.instrume
 // Os dois portões abaixo falam das dez abas montadas, e uma sessão sem direito não monta nenhuma:
 // correram-nos no caso negativo (sec129) e deram dois vermelhos que descreviam o instrumento, não a
 // app. A régua não foi aliviada — passou a declarar o caso a que se aplica, e o caso negativo tem os
-// seus próprios portões em `if (!aptoEsperado)`.
-if (aptoEsperado) {
+// seus próprios portões em `if (!ramoPositivo)`.
+if (ramoPositivo) {
   gate('cada aba mostra a própria vista: estado.tab bate com a aba pedida', ABAS.filter((a) => abas[a]?.aba_do_estado !== a), []);
   gate('as dez abas mostram conteúdos distintos', [...new Set(ABAS.map((a) => abas[a]?.assinatura))].length, ABAS.length);
 }
 gate('0 erros de consola', consoleErros.length, 0);
 
-if (aptoEsperado) {
+if (ramoPositivo) {
   gate('as dez abas estão no DOM', out.stages.depois_do_clique.tabs_no_dom, 10);
   gate('a entrada do menu está alcançável para este papel (em mobile, com a gaveta aberta)', nav_medido().filter((b) => b.visivel).length > 0, true);
   gate('a vista fica visível após o clique', out.stages.depois_do_clique.oculta, false);
@@ -752,7 +821,7 @@ if (aptoEsperado) {
   gate('o teclado do instrumento chegou ao campo de busca (estado.busca do módulo bate o termo)', ops.escritas_emErro, []);
 }
 out.stages.portoes = portoes;
-out.veredito = falhas.length ? 'SM7_COM_DEFEITOS' : (aptoEsperado ? 'SM7_MUNICIPAL_FUNCIONANDO' : 'SM7_NEGACAO_CORRETA');
+out.veredito = falhas.length ? 'SM7_COM_DEFEITOS' : (ramoPositivo ? 'SM7_MUNICIPAL_FUNCIONANDO' : 'SM7_NEGACAO_CORRETA');
 out.falhas = falhas;
 writeFileSync(OUT, JSON.stringify(out, null, 2) + '\n');
 console.log(`\nVEREDITO ${out.veredito}  portões=${portoes} falhas=${falhas.length}`);

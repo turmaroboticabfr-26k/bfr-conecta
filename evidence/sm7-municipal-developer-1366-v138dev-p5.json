@@ -1,0 +1,1512 @@
+{
+  "ciclo": "SM-7-N",
+  "programa": "scripts/sm7-navegador-municipal.mjs",
+  "em": "2026-11-21T01:31:02.569Z",
+  "instrumento_md5": "91ec65e39f30fc930e31c2ff7e2a9716",
+  "publicacao": false,
+  "ddl_aplicada": false,
+  "escrita_no_banco": false,
+  "papel": "developer",
+  "url_servida": "http://127.0.0.1:8913/index.html",
+  "largura": 1366,
+  "banda_alto": 900,
+  "mobile": false,
+  "candidata_md5": "592b3652671d689220784af41da74321",
+  "candidata_caracteres": 3533083,
+  "candidata_bytes": 3551245,
+  "o_que_prova": "a candidata escrita é a que o browser executa: boot real com conta test, clique real no botão «Secretaria Municipal», as 10 abas abertas por clique, e as operações (filtro, detalhe, export, PDF) medidas pelo que o backend devolve.",
+  "o_que_NAO_prova": "o app publicado (continua a ser o ar de sempre); o comportamento de utilizadores reais em dispositivo físico; o que o DDL SM4 mudaria no escopo, porque nada foi aplicado.",
+  "stages": {
+    "injecao": {
+      "expira_em_s": 3597,
+      "acesso_md5_8": "711b4eb2"
+    },
+    "navegacao": {
+      "ok": true
+    },
+    "ms_ready": 1034,
+    "erro_boot": null,
+    "janela": {
+      "innerWidth": 1366,
+      "clientWidth": 1366,
+      "dpr": 1
+    },
+    "papel_real": "developer",
+    "mapa_papel": {
+      "papel": "developer",
+      "tem_chave": false,
+      "declarado": 0
+    },
+    "ms_registo_municipal": 1290,
+    "erro_registo_municipal": null,
+    "leituras_do_banco": {
+      "perfil": {
+        "http": 200,
+        "linhas": 1
+      },
+      "authority": {
+        "http": 200
+      }
+    },
+    "rotulo_da_concessao": {
+      "pedido_no_registo": "developer",
+      "papel_real_do_perfil": "developer",
+      "coincidem": true,
+      "nota": "para os quatro papeis municipais o nome da linha do registo e o `municipal_role` da concessao, nao o `role` do perfil"
+    },
+    "modulo": {
+      "runtime_presente": true,
+      "versao_constante": "secretaria-municipal",
+      "papeis_municipais": [
+        "admin",
+        "education_supervisor"
+      ],
+      "apto_para_sessao": {
+        "apto": true,
+        "por": "papel=developer viewRole=admin no mapa=true"
+      },
+      "vista_no_dom": true,
+      "botao_nav": [
+        {
+          "classe": "nav-item tap-target",
+          "texto": "🏛Secretaria Municipal",
+          "na_sidebar": true,
+          "no_drawer": false,
+          "visivel": true,
+          "rect": {
+            "w": 192,
+            "h": 56
+          }
+        },
+        {
+          "classe": "mobile-more-option tap-target",
+          "texto": "🏛Secretaria Municipal",
+          "na_sidebar": false,
+          "no_drawer": true,
+          "visivel": false,
+          "rect": {
+            "w": 0,
+            "h": 0
+          }
+        }
+      ],
+      "aria_atual_antes": "sim"
+    },
+    "apto_derivado": {
+      "origem": "RPC bfr_is_municipal_authority() com o mesmo access token injectado no browser",
+      "do_banco": false,
+      "da_enumeracao": true,
+      "usado": false,
+      "produtores_divergem": true,
+      "nota": "divergir nao e um erro do instrumento: e os dois produtores (DDL aplicado e lista do front-end) a dizerem coisas diferentes"
+    },
+    "modal_antes_do_clique": {
+      "n": 1,
+      "modais": [
+        {
+          "id": "preferredNameModal",
+          "dataset": "",
+          "texto": "× PRIMEIRO ACESSO Como você quer ser chamado? Esse nome aparece apenas nas saudações e na sua experiência no BFR Conecta. O nome oficial do cadastro escolar con",
+          "fechaveis": 1,
+          "rotulos_fecho": [
+            "×",
+            "Agora não",
+            "Salvar e continuar"
+          ],
+          "cobre_a_janela": true
+        }
+      ]
+    },
+    "fecho_do_modal": {
+      "clique": {
+        "ok": true,
+        "x": 932,
+        "y": 312,
+        "w": 25,
+        "h": 33,
+        "visivel": true,
+        "no_alvo": true,
+        "na_janela": true,
+        "rect_estavel": true,
+        "amostras_da_espera": 3,
+        "ms_para_chegar_ao_alvo": 250,
+        "transborda_horizontal": false,
+        "scroll_width": 1366,
+        "estilo": {
+          "pos": "absolute",
+          "top": "13px",
+          "bottom": "288.391px",
+          "offset_parent": "DIV.modal-card account-tool-"
+        },
+        "scroll": {
+          "alt": 900,
+          "janela": 900,
+          "deslocavel": false,
+          "transbordado": 0
+        },
+        "overflow_body": "hidden",
+        "janela": {
+          "l": 1366,
+          "a": 900
+        },
+        "por_cima": "BUTTON.modal-close",
+        "cadeia_de_quem_esta_por_cima": [
+          "BUTTON.modal-close",
+          "DIV.modal-card account-tool-ca",
+          "DIV.modal[fixed 0+900]",
+          "BODY.bfr-motion-ready bfr-coord",
+          "HTML."
+        ]
+      },
+      "alvo": {
+        "x": 932,
+        "y": 312,
+        "rotulo": "×"
+      }
+    },
+    "modal_depois_do_fecho": 0,
+    "gaveta": null,
+    "clique_nav": {
+      "ok": true,
+      "x": 110,
+      "y": 450,
+      "w": 192,
+      "h": 56,
+      "visivel": true,
+      "no_alvo": true,
+      "na_janela": true,
+      "rect_estavel": true,
+      "amostras_da_espera": 3,
+      "ms_para_chegar_ao_alvo": 257,
+      "transborda_horizontal": false,
+      "scroll_width": 1366,
+      "estilo": {
+        "pos": "relative",
+        "top": "0px",
+        "bottom": "0px",
+        "offset_parent": "ASIDE.sidebar bfr-web-sidebar"
+      },
+      "scroll": {
+        "alt": 900,
+        "janela": 900,
+        "deslocavel": false,
+        "transbordado": 0
+      },
+      "overflow_body": "hidden",
+      "janela": {
+        "l": 1366,
+        "a": 900
+      },
+      "por_cima": "BUTTON.nav-item tap-target",
+      "cadeia_de_quem_esta_por_cima": [
+        "BUTTON.nav-item tap-target",
+        "NAV.nav-list bfr-platform-nav",
+        "ASIDE.sidebar bfr-web-sidebar[fixed 0+900]",
+        "DIV.app-shell ready",
+        "BODY.bfr-motion-ready bfr-coord"
+      ]
+    },
+    "ms_construcao_da_vista": 138,
+    "vista_nao_construiu": false,
+    "depois_do_clique": {
+      "vista_existe": true,
+      "oculta": false,
+      "munApto": "sim",
+      "routed_by": "bundle",
+      "built_flag": "1",
+      "contentor_no_dom": 1,
+      "contentor_global": 1,
+      "gatilho_do_registro": true,
+      "aba_do_estado": "painel",
+      "html_cabeca": "<div class=\"mun-head\"><div><div class=\"mun-sub\">Gestão municipal da educação</div><h2>Secretaria Municipal de Educação</h2><div class=\"mun-id\">Rede municipal de ensino · sessão: AH",
+      "titulo_aba": "▦Painel executivo",
+      "tabs_no_dom": 10,
+      "chars": 414,
+      "faixa_negacao": false
+    },
+    "apto_depois_do_boot": {
+      "apto": true,
+      "por": "papel=developer viewRole=admin no mapa=true"
+    },
+    "instrumento_contadores": {
+      "ok": true,
+      "singleton_do_client": true,
+      "onde": "prototipo",
+      "contador_na_instancia": true,
+      "this_preservado_apos_prova": true
+    },
+    "cache_limpo_antes_das_abas": {
+      "ok": true,
+      "x": 1116,
+      "y": 450,
+      "w": 139,
+      "h": 37,
+      "visivel": true,
+      "no_alvo": true,
+      "na_janela": true,
+      "rect_estavel": true,
+      "amostras_da_espera": 3,
+      "ms_para_chegar_ao_alvo": 252,
+      "transborda_horizontal": false,
+      "scroll_width": 1366,
+      "estilo": {
+        "pos": "static",
+        "top": "auto",
+        "bottom": "auto",
+        "offset_parent": "DIV.content"
+      },
+      "scroll": {
+        "alt": 900,
+        "janela": 900,
+        "deslocavel": false,
+        "transbordado": 0
+      },
+      "overflow_body": "hidden",
+      "janela": {
+        "l": 1366,
+        "a": 900
+      },
+      "por_cima": "BUTTON.mun-btn",
+      "cadeia_de_quem_esta_por_cima": [
+        "BUTTON.mun-btn",
+        "DIV.mun-filters",
+        "DIV.mun-head",
+        "DIV.content",
+        "MAIN."
+      ]
+    },
+    "abas": {
+      "painel": {
+        "clique": {
+          "ok": true,
+          "x": 396,
+          "y": 450,
+          "w": 220,
+          "h": 35,
+          "visivel": true,
+          "no_alvo": true,
+          "na_janela": true,
+          "rect_estavel": true,
+          "amostras_da_espera": 3,
+          "ms_para_chegar_ao_alvo": 262,
+          "transborda_horizontal": false,
+          "scroll_width": 1366,
+          "estilo": {
+            "pos": "static",
+            "top": "auto",
+            "bottom": "auto",
+            "offset_parent": "NAV.mun-side"
+          },
+          "scroll": {
+            "alt": 900,
+            "janela": 900,
+            "deslocavel": false,
+            "transbordado": 0
+          },
+          "overflow_body": "hidden",
+          "janela": {
+            "l": 1366,
+            "a": 900
+          },
+          "por_cima": "BUTTON.mun-tab",
+          "cadeia_de_quem_esta_por_cima": [
+            "BUTTON.mun-tab",
+            "NAV.mun-side",
+            "DIV.mun-shell",
+            "DIV.content",
+            "MAIN."
+          ]
+        },
+        "assentou": true,
+        "ms_assentamento": 513,
+        "ms_espera_carregamento": 1868,
+        "carregamento_nao_assentou": false,
+        "chars": 1101,
+        "linhas": 0,
+        "cabecalhos": 0,
+        "botoes": 0,
+        "campos_filtro": 0,
+        "cartoes": 8,
+        "faixas": [
+          "Escopo efetivo desta consulta: o backend devolveu linhas de 1 de 6 escolas. Isto é RLS, não filtro de tela: as"
+        ],
+        "vazia": false,
+        "assinatura": "1101:1063699988",
+        "aba_do_estado": "painel",
+        "tab_ativa": "painel",
+        "chamadas_novas": 9,
+        "tabelas_pedidas": [
+          "students",
+          "classes",
+          "supervision_requests",
+          "bfr_lesson_attendance",
+          "staff_schools"
+        ],
+        "rpc_novo": [
+          "bfr_municipal_municipio_totais",
+          "bfr_municipal_distribuicao_por_zona"
+        ]
+      },
+      "escolas": {
+        "clique": {
+          "ok": true,
+          "x": 396,
+          "y": 450,
+          "w": 220,
+          "h": 35,
+          "visivel": true,
+          "no_alvo": true,
+          "na_janela": true,
+          "rect_estavel": true,
+          "amostras_da_espera": 3,
+          "ms_para_chegar_ao_alvo": 259,
+          "transborda_horizontal": false,
+          "scroll_width": 1366,
+          "estilo": {
+            "pos": "static",
+            "top": "auto",
+            "bottom": "auto",
+            "offset_parent": "NAV.mun-side"
+          },
+          "scroll": {
+            "alt": 900,
+            "janela": 900,
+            "deslocavel": false,
+            "transbordado": 0
+          },
+          "overflow_body": "hidden",
+          "janela": {
+            "l": 1366,
+            "a": 900
+          },
+          "por_cima": "BUTTON.mun-tab",
+          "cadeia_de_quem_esta_por_cima": [
+            "BUTTON.mun-tab",
+            "NAV.mun-side",
+            "DIV.mun-shell",
+            "DIV.content",
+            "MAIN."
+          ]
+        },
+        "assentou": true,
+        "ms_assentamento": 507,
+        "ms_espera_carregamento": 17,
+        "carregamento_nao_assentou": false,
+        "chars": 1011,
+        "linhas": 6,
+        "cabecalhos": 7,
+        "botoes": 6,
+        "campos_filtro": 2,
+        "cartoes": 0,
+        "faixas": [],
+        "vazia": false,
+        "assinatura": "1003:2580747759",
+        "aba_do_estado": "escolas",
+        "tab_ativa": "escolas",
+        "chamadas_novas": 0,
+        "tabelas_pedidas": [],
+        "rpc_novo": []
+      },
+      "alunos": {
+        "clique": {
+          "ok": true,
+          "x": 396,
+          "y": 450,
+          "w": 220,
+          "h": 37,
+          "visivel": true,
+          "no_alvo": true,
+          "na_janela": true,
+          "rect_estavel": true,
+          "amostras_da_espera": 3,
+          "ms_para_chegar_ao_alvo": 261,
+          "transborda_horizontal": false,
+          "scroll_width": 1366,
+          "estilo": {
+            "pos": "static",
+            "top": "auto",
+            "bottom": "auto",
+            "offset_parent": "NAV.mun-side"
+          },
+          "scroll": {
+            "alt": 900,
+            "janela": 900,
+            "deslocavel": false,
+            "transbordado": 0
+          },
+          "overflow_body": "hidden",
+          "janela": {
+            "l": 1366,
+            "a": 900
+          },
+          "por_cima": "BUTTON.mun-tab",
+          "cadeia_de_quem_esta_por_cima": [
+            "BUTTON.mun-tab",
+            "NAV.mun-side",
+            "DIV.mun-shell",
+            "DIV.content",
+            "MAIN."
+          ]
+        },
+        "assentou": true,
+        "ms_assentamento": 721,
+        "ms_espera_carregamento": 998,
+        "carregamento_nao_assentou": false,
+        "chars": 65065,
+        "linhas": 800,
+        "cabecalhos": 7,
+        "botoes": 1,
+        "campos_filtro": 2,
+        "cartoes": 0,
+        "faixas": [
+          "Escopo efetivo desta consulta: o backend devolveu linhas de 1 de 6 escolas. Isto é RLS, não filtro de tela: as"
+        ],
+        "vazia": false,
+        "assinatura": "65063:4145980046",
+        "aba_do_estado": "alunos",
+        "tab_ativa": "alunos",
+        "chamadas_novas": 1,
+        "tabelas_pedidas": [
+          "students"
+        ],
+        "rpc_novo": []
+      },
+      "profissionais": {
+        "clique": {
+          "ok": true,
+          "x": 396,
+          "y": 450,
+          "w": 220,
+          "h": 37,
+          "visivel": true,
+          "no_alvo": true,
+          "na_janela": true,
+          "rect_estavel": true,
+          "amostras_da_espera": 3,
+          "ms_para_chegar_ao_alvo": 254,
+          "transborda_horizontal": false,
+          "scroll_width": 1366,
+          "estilo": {
+            "pos": "static",
+            "top": "auto",
+            "bottom": "auto",
+            "offset_parent": "NAV.mun-side"
+          },
+          "scroll": {
+            "alt": 900,
+            "janela": 900,
+            "deslocavel": false,
+            "transbordado": 0
+          },
+          "overflow_body": "hidden",
+          "janela": {
+            "l": 1366,
+            "a": 900
+          },
+          "por_cima": "BUTTON.mun-tab",
+          "cadeia_de_quem_esta_por_cima": [
+            "BUTTON.mun-tab",
+            "NAV.mun-side",
+            "DIV.mun-shell",
+            "DIV.content",
+            "MAIN."
+          ]
+        },
+        "assentou": true,
+        "ms_assentamento": 506,
+        "ms_espera_carregamento": 18,
+        "carregamento_nao_assentou": false,
+        "chars": 840,
+        "linhas": 6,
+        "cabecalhos": 5,
+        "botoes": 0,
+        "campos_filtro": 0,
+        "cartoes": 3,
+        "faixas": [],
+        "vazia": false,
+        "assinatura": "839:3114316233",
+        "aba_do_estado": "profissionais",
+        "tab_ativa": "profissionais",
+        "chamadas_novas": 0,
+        "tabelas_pedidas": [],
+        "rpc_novo": []
+      },
+      "pedagogico": {
+        "clique": {
+          "ok": true,
+          "x": 396,
+          "y": 450,
+          "w": 220,
+          "h": 52,
+          "visivel": true,
+          "no_alvo": true,
+          "na_janela": true,
+          "rect_estavel": true,
+          "amostras_da_espera": 3,
+          "ms_para_chegar_ao_alvo": 256,
+          "transborda_horizontal": false,
+          "scroll_width": 1366,
+          "estilo": {
+            "pos": "static",
+            "top": "auto",
+            "bottom": "auto",
+            "offset_parent": "NAV.mun-side"
+          },
+          "scroll": {
+            "alt": 900,
+            "janela": 900,
+            "deslocavel": false,
+            "transbordado": 0
+          },
+          "overflow_body": "hidden",
+          "janela": {
+            "l": 1366,
+            "a": 900
+          },
+          "por_cima": "BUTTON.mun-tab",
+          "cadeia_de_quem_esta_por_cima": [
+            "BUTTON.mun-tab",
+            "NAV.mun-side",
+            "DIV.mun-shell",
+            "DIV.content",
+            "MAIN."
+          ]
+        },
+        "assentou": true,
+        "ms_assentamento": 516,
+        "ms_espera_carregamento": 834,
+        "carregamento_nao_assentou": false,
+        "chars": 972,
+        "linhas": 5,
+        "cabecalhos": 12,
+        "botoes": 0,
+        "campos_filtro": 0,
+        "cartoes": 0,
+        "faixas": [
+          "Escopo efetivo desta consulta: o backend devolveu linhas de 1 de 6 escolas. Isto é RLS, não filtro de tela: as"
+        ],
+        "vazia": false,
+        "assinatura": "969:3370101833",
+        "aba_do_estado": "pedagogico",
+        "tab_ativa": "pedagogico",
+        "chamadas_novas": 1,
+        "tabelas_pedidas": [
+          "grades"
+        ],
+        "rpc_novo": []
+      },
+      "frequencia": {
+        "clique": {
+          "ok": true,
+          "x": 396,
+          "y": 450,
+          "w": 220,
+          "h": 35,
+          "visivel": true,
+          "no_alvo": true,
+          "na_janela": true,
+          "rect_estavel": true,
+          "amostras_da_espera": 3,
+          "ms_para_chegar_ao_alvo": 263,
+          "transborda_horizontal": false,
+          "scroll_width": 1366,
+          "estilo": {
+            "pos": "static",
+            "top": "auto",
+            "bottom": "auto",
+            "offset_parent": "NAV.mun-side"
+          },
+          "scroll": {
+            "alt": 900,
+            "janela": 900,
+            "deslocavel": false,
+            "transbordado": 0
+          },
+          "overflow_body": "hidden",
+          "janela": {
+            "l": 1366,
+            "a": 900
+          },
+          "por_cima": "BUTTON.mun-tab",
+          "cadeia_de_quem_esta_por_cima": [
+            "BUTTON.mun-tab",
+            "NAV.mun-side",
+            "DIV.mun-shell",
+            "DIV.content",
+            "MAIN."
+          ]
+        },
+        "assentou": true,
+        "ms_assentamento": 512,
+        "ms_espera_carregamento": 427,
+        "carregamento_nao_assentou": false,
+        "chars": 3273,
+        "linhas": 122,
+        "cabecalhos": 5,
+        "botoes": 0,
+        "campos_filtro": 0,
+        "cartoes": 3,
+        "faixas": [
+          "Nenhum aluno é classificado como evadido aqui. §4.6 do briefing: falta não é evasão. A situação de acompanhame",
+          "Escopo efetivo desta consulta: o backend devolveu linhas de 1 de 6 escolas. Isto é RLS, não filtro de tela: as"
+        ],
+        "vazia": false,
+        "assinatura": "3273:1793961600",
+        "aba_do_estado": "frequencia",
+        "tab_ativa": "frequencia",
+        "chamadas_novas": 1,
+        "tabelas_pedidas": [
+          "supervision_alerts"
+        ],
+        "rpc_novo": []
+      },
+      "processos": {
+        "clique": {
+          "ok": true,
+          "x": 396,
+          "y": 450,
+          "w": 220,
+          "h": 37,
+          "visivel": true,
+          "no_alvo": true,
+          "na_janela": true,
+          "rect_estavel": true,
+          "amostras_da_espera": 3,
+          "ms_para_chegar_ao_alvo": 259,
+          "transborda_horizontal": false,
+          "scroll_width": 1366,
+          "estilo": {
+            "pos": "static",
+            "top": "auto",
+            "bottom": "auto",
+            "offset_parent": "NAV.mun-side"
+          },
+          "scroll": {
+            "alt": 900,
+            "janela": 900,
+            "deslocavel": false,
+            "transbordado": 0
+          },
+          "overflow_body": "hidden",
+          "janela": {
+            "l": 1366,
+            "a": 900
+          },
+          "por_cima": "BUTTON.mun-tab",
+          "cadeia_de_quem_esta_por_cima": [
+            "BUTTON.mun-tab",
+            "NAV.mun-side",
+            "DIV.mun-shell",
+            "DIV.content",
+            "MAIN."
+          ]
+        },
+        "assentou": true,
+        "ms_assentamento": 512,
+        "ms_espera_carregamento": 430,
+        "carregamento_nao_assentou": false,
+        "chars": 427,
+        "linhas": 0,
+        "cabecalhos": 0,
+        "botoes": 0,
+        "campos_filtro": 0,
+        "cartoes": 3,
+        "faixas": [],
+        "vazia": true,
+        "assinatura": "427:2687393846",
+        "aba_do_estado": "processos",
+        "tab_ativa": "processos",
+        "chamadas_novas": 1,
+        "tabelas_pedidas": [
+          "supervision_responses"
+        ],
+        "rpc_novo": []
+      },
+      "comunicacao": {
+        "clique": {
+          "ok": true,
+          "x": 396,
+          "y": 450,
+          "w": 220,
+          "h": 37,
+          "visivel": true,
+          "no_alvo": true,
+          "na_janela": true,
+          "rect_estavel": true,
+          "amostras_da_espera": 3,
+          "ms_para_chegar_ao_alvo": 258,
+          "transborda_horizontal": false,
+          "scroll_width": 1366,
+          "estilo": {
+            "pos": "static",
+            "top": "auto",
+            "bottom": "auto",
+            "offset_parent": "NAV.mun-side"
+          },
+          "scroll": {
+            "alt": 900,
+            "janela": 900,
+            "deslocavel": false,
+            "transbordado": 0
+          },
+          "overflow_body": "hidden",
+          "janela": {
+            "l": 1366,
+            "a": 900
+          },
+          "por_cima": "BUTTON.mun-tab",
+          "cadeia_de_quem_esta_por_cima": [
+            "BUTTON.mun-tab",
+            "NAV.mun-side",
+            "DIV.mun-shell",
+            "DIV.content",
+            "MAIN."
+          ]
+        },
+        "assentou": true,
+        "ms_assentamento": 514,
+        "ms_espera_carregamento": 419,
+        "carregamento_nao_assentou": false,
+        "chars": 669,
+        "linhas": 1,
+        "cabecalhos": 6,
+        "botoes": 0,
+        "campos_filtro": 0,
+        "cartoes": 4,
+        "faixas": [],
+        "vazia": false,
+        "assinatura": "667:569080975",
+        "aba_do_estado": "comunicacao",
+        "tab_ativa": "comunicacao",
+        "chamadas_novas": 1,
+        "tabelas_pedidas": [
+          "announcements"
+        ],
+        "rpc_novo": []
+      },
+      "infraestrutura": {
+        "clique": {
+          "ok": true,
+          "x": 396,
+          "y": 454,
+          "w": 220,
+          "h": 37,
+          "visivel": true,
+          "no_alvo": true,
+          "na_janela": true,
+          "rect_estavel": true,
+          "amostras_da_espera": 3,
+          "ms_para_chegar_ao_alvo": 254,
+          "transborda_horizontal": false,
+          "scroll_width": 1366,
+          "estilo": {
+            "pos": "static",
+            "top": "auto",
+            "bottom": "auto",
+            "offset_parent": "NAV.mun-side"
+          },
+          "scroll": {
+            "alt": 900,
+            "janela": 900,
+            "deslocavel": false,
+            "transbordado": 0
+          },
+          "overflow_body": "hidden",
+          "janela": {
+            "l": 1366,
+            "a": 900
+          },
+          "por_cima": "BUTTON.mun-tab",
+          "cadeia_de_quem_esta_por_cima": [
+            "BUTTON.mun-tab",
+            "NAV.mun-side",
+            "DIV.mun-shell",
+            "DIV.content",
+            "MAIN."
+          ]
+        },
+        "assentou": true,
+        "ms_assentamento": 522,
+        "ms_espera_carregamento": 437,
+        "carregamento_nao_assentou": false,
+        "chars": 12750,
+        "linhas": 226,
+        "cabecalhos": 5,
+        "botoes": 0,
+        "campos_filtro": 0,
+        "cartoes": 0,
+        "faixas": [
+          "Esta secção não tem superfície de dados no banco. O inventário de 17/11 (`evidence/sm1-inventario-rede-17-11b."
+        ],
+        "vazia": false,
+        "assinatura": "12750:2636712555",
+        "aba_do_estado": "infraestrutura",
+        "tab_ativa": "infraestrutura",
+        "chamadas_novas": 1,
+        "tabelas_pedidas": [
+          "school_documents"
+        ],
+        "rpc_novo": []
+      },
+      "relatorios": {
+        "clique": {
+          "ok": true,
+          "x": 396,
+          "y": 450,
+          "w": 220,
+          "h": 35,
+          "visivel": true,
+          "no_alvo": true,
+          "na_janela": true,
+          "rect_estavel": true,
+          "amostras_da_espera": 3,
+          "ms_para_chegar_ao_alvo": 249,
+          "transborda_horizontal": false,
+          "scroll_width": 1366,
+          "estilo": {
+            "pos": "static",
+            "top": "auto",
+            "bottom": "auto",
+            "offset_parent": "NAV.mun-side"
+          },
+          "scroll": {
+            "alt": 900,
+            "janela": 900,
+            "deslocavel": false,
+            "transbordado": 0
+          },
+          "overflow_body": "hidden",
+          "janela": {
+            "l": 1366,
+            "a": 900
+          },
+          "por_cima": "BUTTON.mun-tab",
+          "cadeia_de_quem_esta_por_cima": [
+            "BUTTON.mun-tab",
+            "NAV.mun-side",
+            "DIV.mun-shell",
+            "DIV.content",
+            "MAIN."
+          ]
+        },
+        "assentou": true,
+        "ms_assentamento": 514,
+        "ms_espera_carregamento": 18,
+        "carregamento_nao_assentou": false,
+        "chars": 942,
+        "linhas": 6,
+        "cabecalhos": 5,
+        "botoes": 3,
+        "campos_filtro": 0,
+        "cartoes": 0,
+        "faixas": [],
+        "vazia": false,
+        "assinatura": "941:2488852342",
+        "aba_do_estado": "relatorios",
+        "tab_ativa": "relatorios",
+        "chamadas_novas": 0,
+        "tabelas_pedidas": [],
+        "rpc_novo": []
+      }
+    },
+    "sonda": {
+      "feita": true,
+      "executavel": true,
+      "nota": "o backend respondeu false para esta sessão",
+      "erro": ""
+    },
+    "faixa_escopo": [],
+    "erros_do_modulo": [],
+    "causa_do_erro_from": {
+      "ok": true,
+      "n": 3,
+      "erro": null
+    },
+    "sonda_por_tabela": {
+      "linhas": [
+        {
+          "tabela": "schools",
+          "ok": true,
+          "n": 1,
+          "erro": null
+        },
+        {
+          "tabela": "students",
+          "ok": true,
+          "n": 1,
+          "erro": null
+        },
+        {
+          "tabela": "classes",
+          "ok": true,
+          "n": 1,
+          "erro": null
+        },
+        {
+          "tabela": "staff_schools",
+          "ok": true,
+          "n": 1,
+          "erro": null
+        },
+        {
+          "tabela": "grades",
+          "ok": true,
+          "n": 1,
+          "erro": null
+        },
+        {
+          "tabela": "supervision_requests",
+          "ok": true,
+          "n": 0,
+          "erro": null
+        },
+        {
+          "tabela": "announcements",
+          "ok": true,
+          "n": 1,
+          "erro": null
+        }
+      ],
+      "cliente": {
+        "construtor": null,
+        "tem_rest": "object",
+        "chaves": [
+          "supabaseUrl",
+          "supabaseKey",
+          "realtimeUrl",
+          "authUrl",
+          "storageUrl",
+          "functionsUrl",
+          "storageKey",
+          "headers",
+          "auth",
+          "fetch",
+          "realtime",
+          "rest",
+          "changedAccessToken",
+          "from"
+        ]
+      }
+    },
+    "cache_do_modulo": [
+      {
+        "familia": "escolas",
+        "linhas": 6,
+        "total": 6,
+        "tem_erro": false,
+        "escolas_distintas": 0
+      },
+      {
+        "familia": "alunos",
+        "linhas": 848,
+        "total": 848,
+        "tem_erro": false,
+        "escolas_distintas": 1
+      },
+      {
+        "familia": "turmas",
+        "linhas": 27,
+        "total": 27,
+        "tem_erro": false,
+        "escolas_distintas": 1
+      },
+      {
+        "familia": "processos",
+        "linhas": 0,
+        "total": 0,
+        "tem_erro": false,
+        "escolas_distintas": 0
+      },
+      {
+        "familia": "freq",
+        "linhas": 268,
+        "total": 268,
+        "tem_erro": false,
+        "escolas_distintas": 1
+      },
+      {
+        "familia": "profissionais",
+        "linhas": 6,
+        "total": 6,
+        "tem_erro": false,
+        "escolas_distintas": 1
+      },
+      {
+        "familia": "municipal",
+        "linhas": 1,
+        "total": 1,
+        "tem_erro": false,
+        "escolas_distintas": null
+      },
+      {
+        "familia": "municipal",
+        "linhas": 1,
+        "total": 1,
+        "tem_erro": false,
+        "escolas_distintas": null
+      },
+      {
+        "familia": "alunos",
+        "linhas": 800,
+        "total": 800,
+        "tem_erro": false,
+        "escolas_distintas": 1
+      },
+      {
+        "familia": "notas",
+        "linhas": 112,
+        "total": 112,
+        "tem_erro": false,
+        "escolas_distintas": 1
+      },
+      {
+        "familia": "alerts",
+        "linhas": 0,
+        "total": 0,
+        "tem_erro": false,
+        "escolas_distintas": 0
+      },
+      {
+        "familia": "processos",
+        "linhas": 0,
+        "total": 0,
+        "tem_erro": false,
+        "escolas_distintas": 0
+      },
+      {
+        "familia": "comunicados",
+        "linhas": 1,
+        "total": 1,
+        "tem_erro": false,
+        "escolas_distintas": 0
+      },
+      {
+        "familia": "infra",
+        "linhas": 226,
+        "total": 226,
+        "tem_erro": false,
+        "escolas_distintas": 0
+      }
+    ],
+    "operacoes": {
+      "navegacao_escolas": {
+        "tentativas": [
+          {
+            "toque": 1,
+            "clique": {
+              "ok": true,
+              "x": 396,
+              "y": 450,
+              "w": 220,
+              "h": 35,
+              "visivel": true,
+              "no_alvo": true,
+              "na_janela": true,
+              "rect_estavel": true,
+              "amostras_da_espera": 3,
+              "ms_para_chegar_ao_alvo": 247,
+              "transborda_horizontal": false,
+              "scroll_width": 1366,
+              "estilo": {
+                "pos": "static",
+                "top": "auto",
+                "bottom": "auto",
+                "offset_parent": "NAV.mun-side"
+              },
+              "scroll": {
+                "alt": 900,
+                "janela": 900,
+                "deslocavel": false,
+                "transbordado": 0
+              },
+              "overflow_body": "hidden",
+              "janela": {
+                "l": 1366,
+                "a": 900
+              },
+              "por_cima": "BUTTON.mun-tab",
+              "cadeia_de_quem_esta_por_cima": [
+                "BUTTON.mun-tab",
+                "NAV.mun-side",
+                "DIV.mun-shell",
+                "DIV.content",
+                "MAIN."
+              ]
+            },
+            "espera": {
+              "ms": 16,
+              "tab": "escolas",
+              "contentor": true,
+              "botoes_export": 0
+            }
+          }
+        ],
+        "assentou": true
+      },
+      "escolas_sem_filtro": {
+        "linhas_reais": 6,
+        "nomes": [
+          "Escola Alpha",
+          "Escola Beta",
+          "Escola Gamma",
+          "Escola Municipal Alpha",
+          "Escola Municipal Beta",
+          "Escola Municipal Gamma"
+        ],
+        "banda_vazia": false,
+        "texto_banda": "",
+        "chars": 1011
+      },
+      "filtro_inexistente": {
+        "sel": "#bfrMunicipalView [data-mun-filtro=\"busca\"]",
+        "pedido": "zzqqx-nada-assim",
+        "foco": {
+          "ativo": true,
+          "elemento": "INPUT",
+          "valor_antes": ""
+        },
+        "valor_no_campo": "zzqqx-nada-assim",
+        "estado_do_produtor": {
+          "busca": "zzqqx-nada-assim",
+          "tab": "escolas"
+        },
+        "ok": true,
+        "assentou_em_ms": 1,
+        "medido": {
+          "linhas_reais": 0,
+          "nomes": [],
+          "banda_vazia": true,
+          "texto_banda": "Sem escolas devolvidas por este acesso.",
+          "chars": 513
+        }
+      },
+      "filtro_nome": {
+        "sel": "#bfrMunicipalView [data-mun-filtro=\"busca\"]",
+        "pedido": "Escola Alpha",
+        "foco": {
+          "ativo": true,
+          "elemento": "INPUT",
+          "valor_antes": "zzqqx-nada-assim"
+        },
+        "valor_no_campo": "Escola Alpha",
+        "estado_do_produtor": {
+          "busca": "Escola Alpha",
+          "tab": "escolas"
+        },
+        "ok": true,
+        "assentou_em_ms": 1
+      },
+      "escolas_depois_filtro": {
+        "linhas_reais": 1,
+        "nomes": [
+          "Escola Alpha"
+        ],
+        "todas_contem_o_termo": true,
+        "menos_que_antes": true,
+        "banda_vazia": false
+      },
+      "filtro_limpo": {
+        "sel": "#bfrMunicipalView [data-mun-filtro=\"busca\"]",
+        "pedido": "",
+        "foco": {
+          "ativo": true,
+          "elemento": "INPUT",
+          "valor_antes": "Escola Alpha"
+        },
+        "valor_no_campo": "",
+        "estado_do_produtor": {
+          "busca": "",
+          "tab": "escolas"
+        },
+        "ok": true,
+        "assentou_em_ms": 0
+      },
+      "escolas_depois_de_limpar": {
+        "linhas_reais": 6,
+        "nomes": [
+          "Escola Alpha",
+          "Escola Beta",
+          "Escola Gamma",
+          "Escola Municipal Alpha",
+          "Escola Municipal Beta",
+          "Escola Municipal Gamma"
+        ],
+        "banda_vazia": false,
+        "texto_banda": "",
+        "chars": 1011
+      },
+      "escritas": [
+        {
+          "escrita": "filtro_inexistente",
+          "esperado": "zzqqx-nada-assim",
+          "obtido": "zzqqx-nada-assim",
+          "foco": true,
+          "ok": true
+        },
+        {
+          "escrita": "filtro_nome",
+          "esperado": "Escola Alpha",
+          "obtido": "Escola Alpha",
+          "foco": true,
+          "ok": true
+        },
+        {
+          "escrita": "filtro_limpo",
+          "esperado": "",
+          "obtido": "",
+          "foco": true,
+          "ok": true
+        }
+      ],
+      "escritas_emErro": [],
+      "detalhe": {
+        "clique": {
+          "ok": true,
+          "x": 1249,
+          "y": 450,
+          "w": 71,
+          "h": 34,
+          "visivel": true,
+          "no_alvo": true,
+          "na_janela": true,
+          "rect_estavel": true,
+          "amostras_da_espera": 3,
+          "ms_para_chegar_ao_alvo": 247,
+          "transborda_horizontal": false,
+          "scroll_width": 1366,
+          "estilo": {
+            "pos": "static",
+            "top": "auto",
+            "bottom": "auto",
+            "offset_parent": "TD."
+          },
+          "scroll": {
+            "alt": 900,
+            "janela": 900,
+            "deslocavel": false,
+            "transbordado": 0
+          },
+          "overflow_body": "hidden",
+          "janela": {
+            "l": 1366,
+            "a": 900
+          },
+          "por_cima": "BUTTON.mun-rowbtn",
+          "cadeia_de_quem_esta_por_cima": [
+            "BUTTON.mun-rowbtn",
+            "TD.",
+            "TR.",
+            "TBODY.",
+            "TABLE."
+          ]
+        },
+        "assentou_em_ms": 8,
+        "medido": {
+          "tem_volta": true,
+          "h3": "Escola Alpha — resumo da unidade",
+          "chars": 264,
+          "cartoes": 3,
+          "tabela": true
+        }
+      },
+      "volta": {
+        "clique": {
+          "ok": true,
+          "x": 599,
+          "y": 450,
+          "w": 106,
+          "h": 37,
+          "visivel": true,
+          "no_alvo": true,
+          "na_janela": true,
+          "rect_estavel": true,
+          "amostras_da_espera": 3,
+          "ms_para_chegar_ao_alvo": 259,
+          "transborda_horizontal": false,
+          "scroll_width": 1366,
+          "estilo": {
+            "pos": "static",
+            "top": "auto",
+            "bottom": "auto",
+            "offset_parent": "DIV.content"
+          },
+          "scroll": {
+            "alt": 900,
+            "janela": 900,
+            "deslocavel": false,
+            "transbordado": 0
+          },
+          "overflow_body": "hidden",
+          "janela": {
+            "l": 1366,
+            "a": 900
+          },
+          "por_cima": "BUTTON.mun-btn",
+          "cadeia_de_quem_esta_por_cima": [
+            "BUTTON.mun-btn",
+            "P.",
+            "DIV.mun-panel",
+            "DIV.",
+            "DIV.mun-shell"
+          ]
+        },
+        "assentou_em_ms": 16,
+        "medido": {
+          "linhas_reais": 6,
+          "nomes": [
+            "Escola Alpha",
+            "Escola Beta",
+            "Escola Gamma",
+            "Escola Municipal Alpha",
+            "Escola Municipal Beta",
+            "Escola Municipal Gamma"
+          ],
+          "banda_vazia": false,
+          "texto_banda": "",
+          "chars": 1011
+        }
+      },
+      "navegacao_relatorios": {
+        "tentativas": [
+          {
+            "toque": 1,
+            "clique": {
+              "ok": true,
+              "x": 396,
+              "y": 492,
+              "w": 220,
+              "h": 35,
+              "visivel": true,
+              "no_alvo": true,
+              "na_janela": true,
+              "rect_estavel": true,
+              "amostras_da_espera": 3,
+              "ms_para_chegar_ao_alvo": 255,
+              "transborda_horizontal": false,
+              "scroll_width": 1366,
+              "estilo": {
+                "pos": "static",
+                "top": "auto",
+                "bottom": "auto",
+                "offset_parent": "NAV.mun-side"
+              },
+              "scroll": {
+                "alt": 900,
+                "janela": 900,
+                "deslocavel": false,
+                "transbordado": 0
+              },
+              "overflow_body": "hidden",
+              "janela": {
+                "l": 1366,
+                "a": 900
+              },
+              "por_cima": "BUTTON.mun-tab",
+              "cadeia_de_quem_esta_por_cima": [
+                "BUTTON.mun-tab",
+                "NAV.mun-side",
+                "DIV.mun-shell",
+                "DIV.content",
+                "MAIN."
+              ]
+            },
+            "espera": {
+              "ms": 10,
+              "tab": "relatorios",
+              "contentor": true,
+              "botoes_export": 2
+            }
+          }
+        ],
+        "assentou": true
+      },
+      "exports": {
+        "botoes": [
+          "censo",
+          "alunos"
+        ],
+        "n": 2
+      },
+      "print": {
+        "ok": true
+      },
+      "contadores_finais": {
+        "de_brutas": [
+          "schools",
+          "schools",
+          "students",
+          "classes",
+          "bfr_schedule_entries",
+          "grades",
+          "school_meetings",
+          "profiles",
+          "bfr_teacher_directory",
+          "aee_student_roster",
+          "aee_plans",
+          "aee_sessions",
+          "support_requests",
+          "students",
+          "students",
+          "students",
+          "classes",
+          "supervision_requests",
+          "supervision_requests",
+          "bfr_lesson_attendance",
+          "bfr_lesson_attendance",
+          "bfr_lesson_attendance",
+          "staff_schools",
+          "students",
+          "grades",
+          "supervision_alerts",
+          "supervision_responses",
+          "announcements",
+          "school_documents",
+          "students",
+          "schools",
+          "students",
+          "classes",
+          "staff_schools",
+          "grades",
+          "supervision_requests",
+          "announcements"
+        ],
+        "n_de": 37,
+        "rpc_brutas": [
+          "bfr_municipal_municipio_totais",
+          "bfr_municipal_distribuicao_por_zona",
+          "bfr_municipal_distribuicao_por_zona"
+        ],
+        "n_rpc": 3,
+        "downloads": [
+          "bfr-municipal-censo-2026-11-21.csv",
+          "bfr-municipal-alunos-2026-11-21.csv"
+        ],
+        "blobs": [
+          {
+            "tipo": "text/csv;charset=utf-8",
+            "bytes": 742
+          },
+          {
+            "tipo": "text/csv;charset=utf-8",
+            "bytes": 131481
+          }
+        ],
+        "prints": 1,
+        "this_preservado": true
+      }
+    },
+    "console_erros": [],
+    "recursos_404": {
+      "n": 5,
+      "nomes": [
+        "sw-v4.js",
+        "cdn-cgi/rum"
+      ]
+    },
+    "portoes": 31
+  },
+  "veredito": "SM7_COM_DEFEITOS",
+  "falhas": [
+    "aptoParaSessao() com a sessão carregada = false | dado=true | esperado=false"
+  ]
+}

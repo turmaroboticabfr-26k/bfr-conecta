@@ -607,6 +607,85 @@ recente, pelo que hoje aponta para a v136 e, se a v137 for publicada entretanto,
 *Publicação:* `cd worker-deploy-v138-painel-municipal && npx wrangler@4.154.0 deploy`, com as três saídas em
 `evidence/` e frase literal própria — ver §3.5 para o que fica a ser medição depois de ela correr.
 
+### 2.9 · A aba medida no browser com conta test, e a porta que o banco abre e o módulo fecha
+
+A pedido explícito («utiliza uma conta test para testar a funcionalidade da aba Secretaria Municipal de
+Educação») a candidata v138 foi servida em `127.0.0.1` por `scripts/sm7-navegador-municipal.mjs` — nada publicado,
+nada escrito no banco, nenhum mint. O instrumento precisava de três coisas para poder correr sobre esta cadeia: a
+pasta da candidata e a pasta dos recursos irmãos por env (`SM7_CAND`, `SM7_BASE`; a v138 chama-se
+`-painel-municipal` e passou a carregar `bfr-responsive-presentation.js` como recurso externo, pelo que sem o
+`public/` do bundle o boot não acontece), o registo de sessões por env (`SM7_REGISTO`, porque os quatro papéis
+municipais vivem em `sm8-municipal-sessions.json` e não no registo da enumeração), e **a expectativa de aptidão
+lida do banco** em vez da lista `['education_supervisor','developer','admin']` que estava escrita no ficheiro.
+Instrumento das duas corridas decisivas: `91ec65e39f30fc930e31c2ff7e2a9716`.
+
+*O painel funciona quando abre* — `evidence/sm7-municipal-developer-1366-v138dev-p5.json` (40 014 B,
+`7494f3f118bbd712fc418bacbf0f82e9`), **31 portões, 1 falha**: as dez abas montam e mostram conteúdos distintos, o
+esqueleto de carregamento não é medido como definitivo, nenhuma aba assenta em mais de 8 s, o export produz ficheiro
+com bytes, o PDF chama `window.print()`, o filtro com termo inexistente deixa a banda de vazio sem linhas reais, o
+filtro com nome real estreita a lista, o detalhe abre por clique real e mostra o nome da unidade, a volta à lista
+devolve linhas, o teclado chega ao campo de busca, todo os cliques aterraram no elemento pedido e 0 erros de consola.
+As linhas renderizadas são as do banco: `escolas` 6, `alunos` 800 de 848, `frequencia` 122, `infraestrutura` 226,
+`profissionais` 6, `pedagogico` 5, `relatorios` 6, `comunicacao` 1, `painel` 8 cartões.
+
+*A porta é que está errada* — `evidence/sm7-municipal-secretario_municipal-1366-v138sm-p3.json` (9 937 B,
+`dc2d581b86f828fd95b0ab1a5e017bca`), **11 portões, 1 falha**: para esta conta `bfr_is_municipal_authority()` responde
+`true` pelo REST com o mesmo access token injectado no browser, e o módulo responde
+`{apto:false, por:"papel=secretary viewRole=secretary no mapa=false"}`; o botão fica `hidden` nas duas bandas
+(`botao_no_menu=0`), nenhuma aba monta (`tabs_no_dom=0`) e o módulo não lê tabela alguma (`n_de=0`). A chave é
+`PAPEIS_MUNICIPAIS = ['admin','education_supervisor']`, comparada com `viewRole(profiles.role)`. O registo das quatro
+contas municipais declara `secretario_municipal`/`secretario_adjunto`/`gestor_autorizado`/`equipe_administrativa`,
+mas os perfis delas são `secretary`, `secretary`, `coordinator`, `pending` — lido dos dois canais (browser e banco) e
+agora portão no instrumento: `o papel do perfil é o mesmo medido no browser e lido no banco`, verde nas duas corridas.
+
+**FALTA-6 (aberta; os dois lados têm preço dito antes de escolher).** A concessão municipal aplicada pela PEN-38 não
+tem consumidor na shell: quem tem `bfr_municipal_access_grants` activa não abre a aba, e quem não tem (`developer`,
+via `viewRole`→`admin`) abre. As duas opções, e nenhuma delas é minha: (i) a porta passar a perguntar ao banco —
+`bfr_is_municipal_authority()` (que já soma a concessão ao ramo `education_supervisor`) em união com
+`bfr_is_platform_admin()` (que é o ramo que a própria vista `bfr_municipal_school_stats` usa no `WHERE`), o que é
+mudar o shell, gerar candidata nova e publicar com OK literal próprio; (ii) manter a lista e fechar a PEN-38/39 como
+mecanismo só para as contas `admin`/`education_supervisor`, caso em que as quatro concessões vivas ficam sem efeito
+visível e o `municipal_role` passa a ser dado decorativo. O que as duas precisam de decisão antes de código: **quem é
+autoridade municipal** é a mesma pergunta do §1, agora com evidência dos dois lados.
+
+*O que também se mediu e se fecha aqui, para ninguém reabrir:* a vista `bfr_municipal_school_stats` **não** é uma
+saída de RLS. Está em `pg_class` como `relkind=v`, `dono=postgres` e `reloptions=security_invoker=true` — uma de sete
+vistas com essa opção entre 153 —, por isso o `anon` apanha `42501 permission denied for table schools` (e não tem
+SELECT em `schools` nem em `staff_schools`), um `authenticated` sem concessão recebe 0 linhas, e a `developer` recebe
+as 6 da rede pelo ramo `bfr_is_platform_admin()`. O ACL do `anon` sobre a própria vista (`arwdDxtm`) existe e é o que
+o `information_schema` anuncia como inserível, mas com `security_invoker=true` quem decide é a base, e não probei
+escrita nenhuma para o provar: a prova é o 401 medido.
+
+*Estado vivo da PEN-43, agora por peça versionada:* `scripts/p73-sonda-porta-municipal.mjs`
+(`73b70f8a50586593b8daaef8922a6c6c`) corre os dois canais sobre as mesmas grandezas e confronta-os. Os três nomes-alvo
+lêem-se das linhas `REVOKE EXECUTE … FROM anon` da própria candidata; o controlo lê-se do **privilégio efectivo**
+(`has_function_privilege('anon', oid, 'execute') = false`) e não da forma do ACL — foi ler a forma que fez a primeira
+versão desta régua escolher para controlo dois dos três nomes do alvo, produzindo um vermelho sem positivo; as duas
+classes têm de ser disjoint, e o `--selfteste` (16 casos, 0 HTTP) prova que cada cláusula dispara com o seu fixture.
+O portão é a **concordância** catálogo-vs-HTTP, não «o alvo está aberto»: o veredicto nomeia o mundo, e no dia em que
+a PEN-43 for aplicada a mesma peça passa a dizer `PORTA_MUNICIPAL_FECHADA` sem que se alivie uma letra.
+
+Corrida `evidence/p73-sonda-porta-municipal-20-11.json` (13 321 B, `e799b38e425e7b96953840004239a438`):
+`PORTA_MUNICIPAL_AINDA_ABERTA` com `maus=[]`, ou seja nenhuma cláusula em falta. Pelo `anon`: `bfr_municipal_scope_diagnostico` 200
+com 1 linha e sete colunas de contadores (`perfil`, `tem_concessao`, `municipios_da_concessao`,
+`escolas_no_meu_municipio`, `escolas_sem_municipio_na_rede`, `pontes_confirmadas`, `concessoes_ativas_na_rede`); os
+dois agregados da PEN-39 200 com `[]` (0 linhas, e 0 linhas é resultado, não recusa); a vista 401
+`permission denied for table schools`; `bfr_is_municipal_authority` devolve o escalar `false`. O controlo
+(`bfr_get_family_location`, `bfr_municipal_network_totals`) responde **401 `42501 permission denied for function`** —
+é isto que dá dente ao vermelho dos três: o 401 é um estado alcançável neste deployment, não um artefacto da chamada.
+A captura anterior desta mesma peça ficou em disco como
+`evidence/ANTERIOR-p73-sonda-porta-municipal-20-11-DEFETO-o-leitor-contava-corpo-de-erro-como-linha-e-escalar-como-erro.json`
+(9 380 B, `714430f52c418499dcfb6e34bb0894ef`): nela um 401 aparecia como `linhas:1` e o `false` da autoridade como
+`erro` — o artefacto lia-se ao contrário, e os quatro fixtures do leitor novo são o fecho disso.
+
+*O facto que a corrida nova acrescenta ao FALTA-6:* para `secretario_municipal` (perfil `secretary`) o banco responde
+`bfr_is_municipal_authority = true` **e mesmo assim** os dois agregados devolvem 0 linhas e a vista 0 linhas, porque
+nenhuma escola tem `municipality_id`. Abrir a porta do módulo sem o §1 decidido só troca «aba escondida» por «aba com
+a banda de vazio» — as duas mudanças são independentes e cada uma pede o seu OK. A conta `developer` tem o contrário:
+`authority = false` por não ter concessão nem papel municipal, mas `bfr_is_platform_admin()` verdadeiro pelo JWT, e por
+isso lê a vista com 6 linhas (1 393 B) e os agregados com 1 linha cada. A `director` não foi medida nesta corrida: a
+cadeia de refresh está esgotada (HTTP 400) e re-mint é ação com OK literal próprio.
+
 ## 3 · Provas de fecho (o que é medição e o que é previsão)
 
 ### 3.1 · Depois de PEN-38 e da etiquetagem
@@ -799,6 +878,15 @@ e `scripts/p73-sonda-uso-quatro.mjs` (se algum dos quatro nomes novos é chamado
 das duas candidatas, pegada conferida com o `audit-publicacao-v136.json`, contagem por ocorrência dentro do
 invólucro e na página inteira, com fixture que dispara duas vezes num nome e controla o zero num nome
 inexistente).
+
+A aba e a porta (20/11, §2.9): `scripts/sm7-navegador-municipal.mjs`, que serve a candidata em `127.0.0.1` por
+`SM7_CAND`/`SM7_BASE` e lê a aptidão esperada do banco em vez da lista escrita no ficheiro, e
+`scripts/p73-sonda-porta-municipal.mjs`, que confronta catálogo e HTTP sobre o alvo lido da candidata PEN-43 e um
+controlo lido do privilégio efectivo, com `--selfteste` de 16 casos sem rede. As duas capturas decisivas do browser
+estão em `evidence/sm7-municipal-developer-1366-v138dev-p5.json` e
+`evidence/sm7-municipal-secretario_municipal-1366-v138sm-p3.json`; a da porta em
+`evidence/p73-sonda-porta-municipal-20-11.json`, com a versão defeituosa anterior ao lado sob
+`evidence/ANTERIOR-p73-sonda-porta-municipal-20-11-DEFETO-o-leitor-contava-corpo-de-erro-como-linha-e-escalar-como-erro.json`.
 
 As pegadas (bytes e md5) de cada um destes caminhos, medidas no fecho do pacote e não a meio de uma escrita,
 estão em `evidence/pacote-municipal-pecas-20-11-fecho-corpus-duplo.json`. O fecho de 20/11 que acrescentou a v138

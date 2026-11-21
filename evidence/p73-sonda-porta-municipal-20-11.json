@@ -1,0 +1,396 @@
+{
+  "programa": "scripts/p73-sonda-porta-municipal.mjs",
+  "ciclo": "P73-SONDA-PORTA-MUNICIPAL",
+  "em": "2026-11-21T01:44:21.833Z",
+  "escrita_no_banco": 0,
+  "ddl": 0,
+  "mint": 0,
+  "publicacao": 0,
+  "http_escrita": 0,
+  "origem": {
+    "ar": "https://bfr-conecta.turmaroboticabfr.workers.dev/",
+    "shell_md5": "9e236a23eed978cf7c2a2743d449b307",
+    "shell_bytes": 3547458,
+    "candidata_pen43": "scripts/p73-pen43-ddl-candidata.sql",
+    "ddl_pen39": "scripts/p73-pen39-ddl-candidata.sql",
+    "registos": [
+      "ah2-sessions.json",
+      "undefinedsm8-municipal-sessions.json"
+    ]
+  },
+  "nomes": {
+    "alvo_lido_da_candidata_pen43": [
+      "bfr_municipal_scope_diagnostico",
+      "bfr_municipal_municipio_totais",
+      "bfr_municipal_distribuicao_por_zona"
+    ],
+    "pen39_lida_do_ddl": [
+      "bfr_municipal_municipio_totais",
+      "bfr_municipal_distribuicao_por_zona"
+    ],
+    "controlo_lido_do_catalogo": [
+      "bfr_get_family_location",
+      "bfr_municipal_network_totals"
+    ],
+    "criterio_do_controlo": "has_function_privilege('anon', oid, 'execute') = false, disjoint do alvo"
+  },
+  "catalogo": {
+    "alvo": [
+      {
+        "nome": "bfr_municipal_distribuicao_por_zona",
+        "sem_acl": false,
+        "anon_pode": true,
+        "auth_pode": true,
+        "acl": "postgres=X/postgres | anon=X/postgres | authenticated=X/postgres | service_role=X/postgres",
+        "args": ""
+      },
+      {
+        "nome": "bfr_municipal_municipio_totais",
+        "sem_acl": false,
+        "anon_pode": true,
+        "auth_pode": true,
+        "acl": "postgres=X/postgres | anon=X/postgres | authenticated=X/postgres | service_role=X/postgres",
+        "args": ""
+      },
+      {
+        "nome": "bfr_municipal_scope_diagnostico",
+        "sem_acl": false,
+        "anon_pode": true,
+        "auth_pode": true,
+        "acl": "postgres=X/postgres | anon=X/postgres | authenticated=X/postgres | service_role=X/postgres",
+        "args": ""
+      }
+    ],
+    "controlo_priv": [
+      {
+        "nome": "bfr_get_family_location",
+        "anon_pode": false
+      },
+      {
+        "nome": "bfr_municipal_network_totals",
+        "anon_pode": false
+      }
+    ],
+    "vista": {
+      "relname": "bfr_municipal_school_stats",
+      "relkind": "v",
+      "reloptions": "security_invoker=true",
+      "dono": "postgres",
+      "acl": "postgres=arwdDxtm/postgres,anon=arwdDxtm/postgres,authenticated=arwdDxtm/postgres,service_role=arwdDxtm/postgres",
+      "rls_propria": false
+    },
+    "contagem_vistas": {
+      "vistas_total": 153,
+      "com_invoker_true": 7
+    },
+    "definicao_da_vista": " SELECT id AS school_id,\n    name AS school_name,\n    city,\n    zone,\n    operating_status,\n    municipality_id,\n    ( SELECT (count(*))::integer AS count\n           FROM students st\n          WHERE (st.school_id = s.id)) AS students_total,\n    ( SELECT (count(*))::integer AS count\n           FROM classes cl\n          WHERE (cl.school_id = s.id)) AS classes_total,\n    ( SELECT (count(*))::integer AS count\n           FROM (bfr_school_key_map m\n             JOIN staff_schools ss ON ((ss.school_id = m.sports_school_id)))\n          WHERE (m.school_id = s.id)) AS staff_links_total\n   FROM schools s\n  WHERE (bfr_school_in_municipal_scope(id) OR bfr_is_platform_admin());"
+  },
+  "regua": {
+    "o_que_e_portao": "concordancia catalogo-vs-HTTP em cada classe, disjoint das classes, negacao da vista ao anon",
+    "estados_legiveis": [
+      "PORTA_MUNICIPAL_AINDA_ABERTA",
+      "PORTA_MUNICIPAL_FECHADA"
+    ],
+    "porque_aberta_nao_e_vermelho": "o veredicto nomeia o mundo; aliviar ou apagar a cláusula de estado seria o defeito de «limiar que é função do valor medido» — a PEN-43 aplica-se por OK literal e a mesma peça re-corrida passa a dizer FECHADA sem que aqui se mude uma letra"
+  },
+  "por_identidade": {
+    "anon": {
+      "canal": "sem sessao",
+      "alvo::bfr_municipal_scope_diagnostico": {
+        "nome": "bfr_municipal_scope_diagnostico",
+        "http": 200,
+        "bytes": 183,
+        "forma": "linhas",
+        "linhas": 1,
+        "colunas": [
+          "perfil",
+          "tem_concessao",
+          "municipios_da_concessao",
+          "escolas_no_meu_municipio",
+          "escolas_sem_municipio_na_rede",
+          "pontes_confirmadas",
+          "concessoes_ativas_na_rede"
+        ]
+      },
+      "alvo::bfr_municipal_municipio_totais": {
+        "nome": "bfr_municipal_municipio_totais",
+        "http": 200,
+        "bytes": 2,
+        "forma": "linhas",
+        "linhas": 0,
+        "colunas": []
+      },
+      "alvo::bfr_municipal_distribuicao_por_zona": {
+        "nome": "bfr_municipal_distribuicao_por_zona",
+        "http": 200,
+        "bytes": 2,
+        "forma": "linhas",
+        "linhas": 0,
+        "colunas": []
+      },
+      "controlo::bfr_get_family_location": {
+        "nome": "bfr_get_family_location",
+        "http": 401,
+        "bytes": 110,
+        "forma": "resposta de erro",
+        "code": "42501",
+        "mensagem": "permission denied for function bfr_get_family_location"
+      },
+      "controlo::bfr_municipal_network_totals": {
+        "nome": "bfr_municipal_network_totals",
+        "http": 401,
+        "bytes": 115,
+        "forma": "resposta de erro",
+        "code": "42501",
+        "mensagem": "permission denied for function bfr_municipal_network_totals"
+      },
+      "bfr_municipal_school_stats": {
+        "nome": "bfr_municipal_school_stats",
+        "http": 401,
+        "bytes": 184,
+        "forma": "resposta de erro",
+        "code": "42501",
+        "mensagem": "permission denied for table schools"
+      },
+      "bfr_is_municipal_authority": {
+        "nome": "bfr_is_municipal_authority",
+        "http": 200,
+        "bytes": 5,
+        "forma": "escalar",
+        "valor": false
+      }
+    },
+    "secretario_municipal": {
+      "canal": "registo sm8-municipal-sessions.json",
+      "acesso_md5_8": "b6e14122",
+      "papel_do_perfil_no_banco": "secretary",
+      "rotulo_do_registo": "secretario_municipal",
+      "alvo::bfr_municipal_scope_diagnostico": {
+        "nome": "bfr_municipal_scope_diagnostico",
+        "http": 200,
+        "bytes": 216,
+        "forma": "linhas",
+        "linhas": 1,
+        "colunas": [
+          "perfil",
+          "tem_concessao",
+          "municipios_da_concessao",
+          "escolas_no_meu_municipio",
+          "escolas_sem_municipio_na_rede",
+          "pontes_confirmadas",
+          "concessoes_ativas_na_rede"
+        ]
+      },
+      "alvo::bfr_municipal_municipio_totais": {
+        "nome": "bfr_municipal_municipio_totais",
+        "http": 200,
+        "bytes": 2,
+        "forma": "linhas",
+        "linhas": 0,
+        "colunas": []
+      },
+      "alvo::bfr_municipal_distribuicao_por_zona": {
+        "nome": "bfr_municipal_distribuicao_por_zona",
+        "http": 200,
+        "bytes": 2,
+        "forma": "linhas",
+        "linhas": 0,
+        "colunas": []
+      },
+      "controlo::bfr_get_family_location": {
+        "nome": "bfr_get_family_location",
+        "http": 200,
+        "bytes": 2,
+        "forma": "linhas",
+        "linhas": 0,
+        "colunas": []
+      },
+      "controlo::bfr_municipal_network_totals": {
+        "nome": "bfr_municipal_network_totals",
+        "http": 200,
+        "bytes": 59,
+        "forma": "linhas",
+        "linhas": 1,
+        "colunas": [
+          "schools",
+          "students",
+          "classes",
+          "municipalities"
+        ]
+      },
+      "bfr_municipal_school_stats": {
+        "nome": "bfr_municipal_school_stats",
+        "http": 200,
+        "bytes": 2,
+        "forma": "linhas",
+        "linhas": 0,
+        "colunas": []
+      },
+      "bfr_is_municipal_authority": {
+        "nome": "bfr_is_municipal_authority",
+        "http": 200,
+        "bytes": 4,
+        "forma": "escalar",
+        "valor": true
+      }
+    },
+    "developer": {
+      "canal": "registo ah2-sessions.json",
+      "acesso_md5_8": "e466682b",
+      "papel_do_perfil_no_banco": "developer",
+      "rotulo_do_registo": "developer",
+      "alvo::bfr_municipal_scope_diagnostico": {
+        "nome": "bfr_municipal_scope_diagnostico",
+        "http": 200,
+        "bytes": 217,
+        "forma": "linhas",
+        "linhas": 1,
+        "colunas": [
+          "perfil",
+          "tem_concessao",
+          "municipios_da_concessao",
+          "escolas_no_meu_municipio",
+          "escolas_sem_municipio_na_rede",
+          "pontes_confirmadas",
+          "concessoes_ativas_na_rede"
+        ]
+      },
+      "alvo::bfr_municipal_municipio_totais": {
+        "nome": "bfr_municipal_municipio_totais",
+        "http": 200,
+        "bytes": 175,
+        "forma": "linhas",
+        "linhas": 1,
+        "colunas": [
+          "municipio",
+          "nome",
+          "uf",
+          "escolas",
+          "alunos",
+          "turmas",
+          "escolas_sem_zona",
+          "escolas_ativas",
+          "escolas_fora_de_ativo",
+          "e_bucket_sem_municipio"
+        ]
+      },
+      "alvo::bfr_municipal_distribuicao_por_zona": {
+        "nome": "bfr_municipal_distribuicao_por_zona",
+        "http": 200,
+        "bytes": 69,
+        "forma": "linhas",
+        "linhas": 1,
+        "colunas": [
+          "municipio",
+          "nome",
+          "zona",
+          "escolas",
+          "alunos"
+        ]
+      },
+      "controlo::bfr_get_family_location": {
+        "nome": "bfr_get_family_location",
+        "http": 200,
+        "bytes": 2,
+        "forma": "linhas",
+        "linhas": 0,
+        "colunas": []
+      },
+      "controlo::bfr_municipal_network_totals": {
+        "nome": "bfr_municipal_network_totals",
+        "http": 200,
+        "bytes": 62,
+        "forma": "linhas",
+        "linhas": 1,
+        "colunas": [
+          "schools",
+          "students",
+          "classes",
+          "municipalities"
+        ]
+      },
+      "bfr_municipal_school_stats": {
+        "nome": "bfr_municipal_school_stats",
+        "http": 200,
+        "bytes": 1393,
+        "forma": "linhas",
+        "linhas": 6,
+        "colunas": [
+          "school_id",
+          "school_name",
+          "city",
+          "zone",
+          "operating_status",
+          "municipality_id",
+          "students_total",
+          "classes_total",
+          "staff_links_total"
+        ]
+      },
+      "bfr_is_municipal_authority": {
+        "nome": "bfr_is_municipal_authority",
+        "http": 200,
+        "bytes": 5,
+        "forma": "escalar",
+        "valor": false
+      }
+    },
+    "director": {
+      "canal": "registo ah2-sessions.json",
+      "recusa": "cadeia de refresh esgotada (HTTP 400) — re-mint pede OK literal proprio"
+    }
+  },
+  "leitor": {
+    "formas": [
+      "linhas (200 + array/object: contagem e colunas)",
+      "escalar (200 + booleano/null/numero)",
+      "resposta de erro (status != 200: code e mensagem, nunca linhas)",
+      "corpo nao parseavel"
+    ],
+    "porque": "a primeira versão contava o corpo de erro como `linhas: 1` e o escalar como erro, o que fazia o artefacto ler-se ao contrário; os quatro fixtures estão no --selfteste"
+  },
+  "clausulas": {
+    "alvo_tem_tres_nomes_e_sao_lidos_do_ddl": true,
+    "as_duas_classes_sao_disjoint": true,
+    "os_canais_concordam_sobre_o_alvo": true,
+    "os_canais_concordam_sobre_o_controlo": true,
+    "existe_controlo_que_o_anon_nao_pode_executar": true,
+    "vista_negada_ao_anon_por_http": true,
+    "_alvo_aberto_agora": true
+  },
+  "veredicto": {
+    "estado": "PORTA_MUNICIPAL_AINDA_ABERTA · os tres nomes continuam executaveis por anon nos dois canais; a PEN-43 esta por aplicar",
+    "maus": []
+  },
+  "nao_probatorio_hoje": {
+    "alvo_revela_colunas_de_linha": [
+      {
+        "nome": "bfr_municipal_scope_diagnostico",
+        "linhas_para_anon": 1
+      },
+      {
+        "nome": "bfr_municipal_municipio_totais",
+        "linhas_para_anon": 0
+      },
+      {
+        "nome": "bfr_municipal_distribuicao_por_zona",
+        "linhas_para_anon": 0
+      }
+    ],
+    "motivo": "os agregados devolvem contagens e nenhuma escola tem município: com 0 linhas não há identificador de linha para contar, por isso esta cláusula foi posta fora do veredicto em vez de se amaciar o limiar"
+  },
+  "pen39_e_alvo": {
+    "nota": "o que a shell servida chama é medido por scripts/p73-sonda-uso-quatro.mjs; aqui só se regista que os dois nomes da PEN-39 estão no alvo da PEN-43",
+    "pen39": [
+      "bfr_municipal_municipio_totais",
+      "bfr_municipal_distribuicao_por_zona"
+    ],
+    "alvo": [
+      "bfr_municipal_scope_diagnostico",
+      "bfr_municipal_municipio_totais",
+      "bfr_municipal_distribuicao_por_zona"
+    ]
+  },
+  "o_que_prova": "que o anon não lê a vista (401 na base, security_invoker=true medido no catálogo), que os três nomes da candidata PEN-43 continuam executáveis pelo anon nos dois canais (catálogo e HTTP), e que existe pelo menos uma função agregada municipal que o anon NÃO pode executar — o que prova que o 401 é um estado alcançável neste deployment e não um artefacto da chamada.",
+  "o_que_NAO_prova": "o que a tela mostra (isso é scripts/sm7-navegador-municipal.mjs), nem o que aconteceria depois de aplicar a PEN-43 (isso é a mesma peça re-corrida depois do OK literal), nem qualquer escrita: nada aqui INSERT/UPDATE/DELETE."
+}
