@@ -48,11 +48,11 @@ const FORA_DO_GIT = ['ah2-sessions.json', 'c2-sessions.json'];
 // cita PARA DIRE QUE NÃO EXISTE. `scripts/bu4-digestao-para-documentacao-20-11.mjs` é o nome do output que o
 // campo `instrumento` declarava por engano; o fantasma só é inofensivo enquanto a linha ao lado o chamar
 // fantasma. Por isso o portão não perdoa o nome: exige a declaração junto dele.
-// `scripts/p73-pen43-preflight.mjs` é da mesma raça e entrou no corpus com a FALTA-5 do §2.7: o nome é citado
-// como a peça que FALTA escrever, e a frase declarante é a única coisa que o separa de um caminho partido à mão.
+// `scripts/p73-pen43-preflight.mjs` era desta raça e saiu da lista em 20/11, no dia em que a peça passou a
+// existir: a FALTA-5 do §2.7 fechou ao nível do caminho e a frase declarante foi apagada com ela. Um nome que sai
+// dos fantasmas tem de resolver em disco E entrar no índice — são as duas réguas abaixo que o vigiam.
 const FANTASMAS_DECLARADOS = [
   { caminho: 'scripts/bu4-digestao-para-documentacao-20-11.mjs', a_prosa_diz: 'o script com esse nome não existe' },
-  { caminho: 'scripts/p73-pen43-preflight.mjs', a_prosa_diz: 'o caminho com esse nome ainda não existe' },
 ];
 // Quarta classe de «não está no índice»: existe em disco, NÃO é ignorada, e mesmo assim não entra — por decisão
 // assinada e registada noutro lado. É o avesso do esquecimento, e sem esta declaração as duas coisas escrevem-se
@@ -172,7 +172,7 @@ const v137 = JSON.parse(readFileSync(join(REPO, 'evidence/v137-gera-bundle-20-11
 const v138b = JSON.parse(readFileSync(join(REPO, 'evidence/v138-gera-bundle-20-11.json'), 'utf8'));
 const v138c = JSON.parse(readFileSync(join(REPO, 'evidence/v138-gera-candidata-20-11.json'), 'utf8'));
 
-const INPUTS_FECHO = ['scripts/p73-pen38-alcance-por-concessao-20-11.mjs', 'scripts/p73-pen38-preflight.mjs', 'scripts/p73-pen39-preflight.mjs', 'scripts/p73-pen41-preflight.mjs', 'scripts/p73-municipal-etiqueta.mjs', 'scripts/p73-municipal-aplica-ddl.mjs', 'scripts/v136-pos-deploy.mjs', 'scripts/v137-pos-deploy.mjs', 'scripts/v138-gera-candidata.mjs', 'scripts/v138-gera-bundle.mjs', 'scripts/v138-pos-deploy.mjs', 'scripts/p73-pen43-gera-candidata.mjs', 'scripts/pacote-municipal-confere-pecas.mjs', RUNBOOK];
+const INPUTS_FECHO = ['scripts/p73-pen38-alcance-por-concessao-20-11.mjs', 'scripts/p73-pen38-preflight.mjs', 'scripts/p73-pen39-preflight.mjs', 'scripts/p73-pen41-preflight.mjs', 'scripts/p73-pen43-preflight.mjs', 'scripts/p73-municipal-etiqueta.mjs', 'scripts/p73-municipal-aplica-ddl.mjs', 'scripts/v136-pos-deploy.mjs', 'scripts/v137-pos-deploy.mjs', 'scripts/v138-gera-candidata.mjs', 'scripts/v138-gera-bundle.mjs', 'scripts/v138-pos-deploy.mjs', 'scripts/p73-pen43-gera-candidata.mjs', 'scripts/pacote-municipal-confere-pecas.mjs', RUNBOOK];
 
 const falhas = [];
 const portoes = [];

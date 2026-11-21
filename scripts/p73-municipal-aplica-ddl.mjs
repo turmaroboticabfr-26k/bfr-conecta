@@ -1,8 +1,12 @@
 #!/usr/bin/env node
-// P73-MUNICIPAL-APLICA-DDL — o único caminho de aplicação das três peças municipais candidatas (PEN-38, PEN-39,
-// PEN-41) e da respectiva conferência. Existe porque o runbook `docs/bu-20-11/10-runbook-municipal.md` promete
+// P73-MUNICIPAL-APLICA-DDL — o único caminho de aplicação das quatro peças municipais candidatas (PEN-38, PEN-39,
+// PEN-41, PEN-43) e da respectiva conferência. Existe porque o runbook `docs/bu-20-11/10-runbook-municipal.md` promete
 // comandos executáveis: sem esta peça, «deixar pronto» deixaria ao utilizador a parte irreversível, e a
 // comparação de estado vivo ficaria a cargo da memória de quem copia e cola.
+// As três primeiras fazem DDL (policies e funções); a PEN-43 não faz — são REVOKE/GRANT de EXECUTE ao pseudo-papel
+// `anon`. O desenho serve as duas raças: o portão é (a) uma transacção por ficheiro, (b) nenhum statement que esta
+// casa recusa fora de corpo de função, (c) a reversão desfaz alguma coisa e não é a candidata copiada, e (d) onde a
+// candidata revoga um nome, a reversão tem de devolver exactamente esse nome — sem sobras nem trocas.
 //
 // Por omissão NADA é escrito. O programa só corre o SQL quando (a) `--peca` resolve num ficheiro que existe,
 // (b) `--ok` é exactamente a frase declarada para essa peça e para este modo, e (c) o preflight fresco da
@@ -37,6 +41,7 @@ const PECAS = {
   'PEN-38': { pref: 'scripts/p73-pen38-preflight.mjs', cand: 'scripts/p73-pen38-ddl-candidata.sql', rev: 'scripts/p73-pen38-ddl-reversao.sql', prefixo: 'P73_PEN38_PREFLIGHT_VERDE', frase: 'APLICAR PEN-38 NO BANCO', fraseRev: 'REVERTER PEN-38 NO BANCO' },
   'PEN-39': { pref: 'scripts/p73-pen39-preflight.mjs', cand: 'scripts/p73-pen39-ddl-candidata.sql', rev: 'scripts/p73-pen39-ddl-reversao.sql', prefixo: 'P73_PEN39_PREFLIGHT_VERDE', frase: 'APLICAR PEN-39 NO BANCO', fraseRev: 'REVERTER PEN-39 NO BANCO' },
   'PEN-41': { pref: 'scripts/p73-pen41-preflight.mjs', cand: 'scripts/p73-pen41-ddl-candidata.sql', rev: 'scripts/p73-pen41-ddl-reversao.sql', prefixo: 'P73_PEN41_PREFLIGHT_VERDE', frase: 'APLICAR PEN-41 NO BANCO', fraseRev: 'REVERTER PEN-41 NO BANCO' },
+  'PEN-43': { pref: 'scripts/p73-pen43-preflight.mjs', cand: 'scripts/p73-pen43-ddl-candidata.sql', rev: 'scripts/p73-pen43-ddl-reversao.sql', prefixo: 'P73_PEN43_PREFLIGHT_VERDE', frase: 'APLICAR PEN-43 NO BANCO', fraseRev: 'REVERTER PEN-43 NO BANCO' },
 };
 // A frase certificada depende do modo, e é a única diferença de autorização entre aplicar e reverter. Vive
 // numa função para o `--selfteste` medir a mesma função que o fluxo usa: uma asserção que reproduzisse a
@@ -63,7 +68,11 @@ const perigos = (t) => {
     // `DROP FUNCTION` conta-se porque é o trabalho duma reversão (as três candidatas criam 2+2+0 funções e as
     // reversões correspondentes descartam-nas), mas não chumba: não está em ZERO_OBRIGATORIO. Acrescentar uma
     // contagem nunca alarga um predicado de bloqueio — os dois lados ficam visíveis no registo.
-    drop_policy: c(/^\s*DROP\s+POLICY/gim), drop_function: c(/^\s*DROP\s+FUNCTION/gim), create_policy: c(/^\s*CREATE\s+POLICY/gim), create_function: c(/^\s*CREATE\s+FUNCTION/gim) };
+    drop_policy: c(/^\s*DROP\s+POLICY/gim), drop_function: c(/^\s*DROP\s+FUNCTION/gim), create_policy: c(/^\s*CREATE\s+POLICY/gim), create_function: c(/^\s*CREATE\s+FUNCTION/gim),
+    // GRANT/REVOKE de EXECUTE contam-se porque sao o trabalho duma peca de graus (PEN-43). Como os DROP, nao estao em
+    // ZERO_OBRIGATORIO: um GRANT escrito a mao dentro duma candidata fica visivel no registo em vez de chumbar a
+    // varredura, e e o portao do espelho, em baixo, que pergunta se ele devia la estar.
+    grant_execute: c(/^\s*GRANT\s+EXECUTE\s+ON\s+FUNCTION/gim), revoke_execute: c(/^\s*REVOKE\s+EXECUTE\s+ON\s+FUNCTION/gim) };
 };
 const ZERO_OBRIGATORIO = ['drop_table', 'truncate', 'delete_from', 'update_fora_de_funcao', 'drop_schema_ou_database', 'credencial'];
 const bloqueadoresDe = (pj) => Object.entries(pj).filter(([k, v]) => ZERO_OBRIGATORIO.includes(k) && v > 0).map(([k, v]) => k + '=' + v);
@@ -77,6 +86,25 @@ const FIX_PERIGOS = {
   drop_table_fora_de_comentario_conta: perigos('-- UPDATE\nDROP TABLE t;').drop_table === 1,
   palavra_credencial_fora_de_comentario_conta: perigos("select 'service_role'").credencial === 1,
   drop_function_conta_como_trabalho_de_reversao: perigos('DROP FUNCTION public.f();').drop_function === 1,
+  grant_e_revoke_contam_se_separadamente: perigos('REVOKE EXECUTE ON FUNCTION public.f() FROM anon;\nGRANT EXECUTE ON FUNCTION public.f() TO anon;').revoke_execute === 1
+    && perigos('REVOKE EXECUTE ON FUNCTION public.f() FROM anon;').grant_execute === 0,
+};
+
+// Os nomes a que uma peca de graus se dirige, lidos do proprio ficheiro e nunca recordados: o REVOKE diz o que fecha
+// e o GRANT da reversao diz o que abre. Se divergirem, o caminho de volta abre uma porta diferente da que a
+// candidata fechou — e isso nao se ve em nenhuma contagem de statements. Devolve null quando o lado de cima nao e
+// de graus, para o portao abaixo poder dizer «esta peca nao pergunta nada aqui» em vez de afirmar um espelho vazio.
+const nomesDeGraus = (t) => ({ revoke: [...t.matchAll(/REVOKE\s+EXECUTE\s+ON\s+FUNCTION\s+(?:public\.)?([a-z0-9_]+)\s*\([^)]*\)\s+FROM\s+anon;/gi)].map((m) => m[1]),
+  grant: [...t.matchAll(/GRANT\s+EXECUTE\s+ON\s+FUNCTION\s+(?:public\.)?([a-z0-9_]+)\s*\([^)]*\)\s+TO\s+anon;/gi)].map((m) => m[1]) });
+const ordenado = (a) => [...new Set(a)].sort();
+const seEspelham = (cand, rev) => { const a = nomesDeGraus(so_codigo(cand)), b = nomesDeGraus(so_codigo(rev));
+  return a.revoke.length === 0 ? null : JSON.stringify(ordenado(a.revoke)) === JSON.stringify(ordenado(b.grant)); };
+const FIX_ESPELHO = {
+  mesmo_nome_espelha: seEspelham('REVOKE EXECUTE ON FUNCTION public.a() FROM anon;', 'GRANT EXECUTE ON FUNCTION public.a() TO anon;') === true,
+  nome_trocado_nao: seEspelham('REVOKE EXECUTE ON FUNCTION public.a() FROM anon;', 'GRANT EXECUTE ON FUNCTION public.b() TO anon;') === false,
+  sobra_na_reversao_nao: seEspelham('REVOKE EXECUTE ON FUNCTION public.a() FROM anon;', 'GRANT EXECUTE ON FUNCTION public.a() TO anon;\nGRANT EXECUTE ON FUNCTION public.c() TO anon;') === false,
+  prosa_de_comentario_nao_conta_como_grau: seEspelham('-- REVOKE EXECUTE ON FUNCTION public.a() FROM anon;\nSELECT 1;', 'GRANT EXECUTE ON FUNCTION public.a() TO anon;') === null,
+  peca_de_ddl_nao_pergunta: seEspelham('DROP POLICY p ON public.t;', 'CREATE POLICY p ON public.t USING (x);') === null,
 };
 
 const MODO = tem('reverter') ? 'reversao' : 'aplicacao';
@@ -124,13 +152,15 @@ if (selfteste) {
   const verdeReal = (v) => /_VERDE_/.test(v) && /\/0$/.test(v);
   c('regua_do_verde_bate_nas_formas_que_os_preflights_emitem', [
     'P73_PEN41_PREFLIGHT_VERDE_CANDIDATA 13/0', 'P73_PEN38_PREFLIGHT_VERDE_REVERSAO 10/0', 'P73_PEN39_PREFLIGHT_VERDE_CANDIDATA 9/0',
-  ].every(verdeReal) && !verdeReal('P73_PEN41_PREFLIGHT_VERMELHO_5') && !verdeReal('P73_PEN38_PREFLIGHT_VERDE_CANDIDATA 9/1'));
+    'P73_PEN43_PREFLIGHT_VERDE_CANDIDATA 13/0', 'P73_PEN43_PREFLIGHT_VERDE_REVERSAO 13/0',
+  ].every(verdeReal) && !verdeReal('P73_PEN41_PREFLIGHT_VERMELHO_5') && !verdeReal('P73_PEN38_PREFLIGHT_VERDE_CANDIDATA 9/1')
+    && !verdeReal('P73_PEN43_PREFLIGHT_VERMELHO_1'));
   c('caminho_de_registo_absoluto_e_lido_como_absoluto', caminhoReal('C:/repo/evidence/x.json') === 'C:/repo/evidence/x.json' && caminhoReal('evidence/x.json') === join(REPO, 'evidence/x.json'));
   // ── modo reversão ─────────────────────────────────────────────────────────
-  // Seis frases, não três: a de aplicar e a de reverter por peça. Duas peças trocarem de frase já estava
-  // coberto; o que o modo novo introduz é a tentação de reverter com a frase da aplicação, e é isso que
-  // `frasePara` tem de tornar impossível. Medido sobre a tabela, não sobre o que eu escrevi à mão.
-  c('frases_de_aplicacao_e_reversao_sao_seis_e_disjuntas',
+  // Duas frases por peça — a de aplicar e a de reverter — e um censo sobre a tabela, não sobre o que eu escrevi à
+  // mão: o que o modo novo introduz é a tentação de reverter com a frase da aplicação, e é isso que `frasePara` tem
+  // de tornar impossível. Contar as frases no nome do caso deixava-o velho no dia em que entrasse uma peça.
+  c('frases_de_aplicacao_e_reversao_sao_pares_por_peca_e_disjuntas',
     new Set(Object.values(PECAS).flatMap((p) => [p.frase, p.fraseRev])).size === Object.keys(PECAS).length * 2
       && Object.values(PECAS).every((p) => p.frase !== p.fraseRev), true);
   const pecas = Object.keys(PECAS);
@@ -145,20 +175,29 @@ if (selfteste) {
   // é o que uma reversão faz, e não está na lista obrigatória de zeros.
   c('drop_function_de_reversao_e_trabalho_nao_statement_proibido', bloqueadoresDe(perigos('DROP FUNCTION public.f();')).length === 0 && perigos('DROP FUNCTION public.f();').drop_function === 1);
   c('frase_de_reversao_solta_nao_autoriza_aplicacao', frasePara(PECAS['PEN-41'], 'aplicacao') !== 'REVERTER PEN-41 NO BANCO');
-  // Os seis SQL em disco, medidos nesta corrida: uma transacção cada, nenhum statement proibido, e a reversão
+  // O SQL das peças em disco, medido nesta corrida: uma transacção cada, nenhum statement proibido, e a reversão
   // não pode ser a candidata copiada ao contrário nem um ficheiro vazio de efeito. Isto lê ficheiros — não
   // toca no banco, por isso o `--selfteste` corre sem credencial nenhuma.
-  const seisSql = Object.entries(PECAS).flatMap(([k, p]) => [[k, 'candidata', p.cand], [k, 'reversao', p.rev]]);
-  c('os_seis_sql_sao_unicas_transaccoes_sem_statement_proibido', seisSql.every(([, , f]) => {
+  const sqlDasPecas = Object.entries(PECAS).flatMap(([k, p]) => [[k, 'candidata', p.cand], [k, 'reversao', p.rev]]);
+  c('todos_os_sql_das_pecas_sao_unicas_transaccoes_sem_statement_proibido', sqlDasPecas.every(([, , f]) => {
     const t = readFileSync(join(REPO, f), 'utf8');
     return /^BEGIN;/m.test(t) && /^COMMIT;/m.test(t) && bloqueadoresDe(perigos(t)).length === 0;
   }));
   c('cada_reversao_desfaz_algo_e_nao_e_a_candidata', Object.entries(PECAS).every(([k, p]) => {
     const a = readFileSync(join(REPO, p.cand), 'utf8'), b = readFileSync(join(REPO, p.rev), 'utf8');
     const pb = perigos(b);
-    return md5(a) !== md5(b) && pb.drop_function + pb.drop_policy + pb.create_policy > 0;
+    // `grant_execute` entra no desfazimento porque uma peca de graus nao descarta nada: devolver um grau e o
+    // trabalho dela, e uma reversao sem GRANT nem DROP nao desfaz o que quer que seja.
+    return md5(a) !== md5(b) && pb.drop_function + pb.drop_policy + pb.create_policy + pb.grant_execute > 0;
   }));
-  const medidos = seisSql.map(([k, lado, f]) => { const t = readFileSync(join(REPO, f), 'utf8'); const pj = perigos(t); return { peca: k, lado, caminho: f, bytes: Buffer.byteLength(t, 'utf8'), md5: md5(t), desfaz: pj.drop_function + pj.drop_policy + pj.create_policy }; });
+  // O espelho nome-a-nome, com os tres mundos fabricados dentro da propria corrida: um REVOKE sem GRANT do mesmo
+  // nome nao e reversao nenhuma, e a regra tem de continuar nao-vacia enquanto houver pecas de graus na tabela.
+  const espelhaveis = Object.entries(PECAS).map(([k, p]) => { const esp = seEspelham(readFileSync(join(REPO, p.cand), 'utf8'), readFileSync(join(REPO, p.rev), 'utf8')); return { peca: k, espelho: esp }; });
+  c('onde_a_candidata_revoga_um_nome_a_reversao_devolve_exactamente_esse_conjunto', espelhaveis.filter((x) => x.espelho !== null).length >= 1
+    && espelhaveis.every((x) => x.espelho !== false) && FIX_ESPELHO.mesmo_nome_espelha === true && FIX_ESPELHO.nome_trocado_nao === true
+    && FIX_ESPELHO.sobra_na_reversao_nao === true && FIX_ESPELHO.prosa_de_comentario_nao_conta_como_grau === true && FIX_ESPELHO.peca_de_ddl_nao_pergunta === true,
+    { por_peca: espelhaveis, fixtures: FIX_ESPELHO });
+  const medidos = sqlDasPecas.map(([k, lado, f]) => { const t = readFileSync(join(REPO, f), 'utf8'); const pj = perigos(t); const ng = nomesDeGraus(so_codigo(t)); return { peca: k, lado, caminho: f, bytes: Buffer.byteLength(t, 'utf8'), md5: md5(t), desfaz: pj.drop_function + pj.drop_policy + pj.create_policy + pj.grant_execute, graus: { revogados: ng.revoke, devolvidos: ng.grant } }; });
   const boas = casos.filter((x) => x.verde).length;
   const out = { programa: 'scripts/p73-municipal-aplica-ddl.mjs', selfteste: true, em: new Date().toISOString(), aplicado: false, escrito_no_banco: false, casos, sql_medidos: medidos, veredito: boas === casos.length ? `P73_MUNICIPAL_APLICA_SELFTESTE_OK ${casos.length}/0` : `P73_MUNICIPAL_APLICA_SELFTESTE_VERMELHO ${casos.length - boas}` };
   console.log(JSON.stringify(out, null, 1));

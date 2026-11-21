@@ -1,0 +1,401 @@
+-- Duas corridas offline do caminho de aplicacao da PEN-43 (FALTA-5 do 2.7), 20/11, 0 HTTP e 0 escrita no banco.
+-- P73_SUF=st2 node scripts/p73-pen43-preflight.mjs --selfteste   -> exit 0
+{
+ "programa": "scripts/p73-pen43-preflight.mjs",
+ "selfteste": true,
+ "modo_imitado": "candidata",
+ "escrito_no_banco": false,
+ "banco_consultado": false,
+ "casos": [
+  {
+   "nome": "os_cinco_mundos_de_acl_tem_os_dois_sentidos_de_cada_regua",
+   "verde": true,
+   "detalhe": [
+    {
+     "nome": "hoje_candidata",
+     "acl": "postgres=X/postgres|anon=X/postgres|authenticated=X/postgres|service_role=X/postgres",
+     "priv": true,
+     "estado": {
+      "nula": false,
+      "anon_X": true,
+      "public_X": false
+     },
+     "explicavel": true,
+     "destaca_candidata": true,
+     "destaca_reversao": false
+    },
+    {
+     "nome": "depois_reversao",
+     "acl": "postgres=X/postgres|authenticated=X/postgres|service_role=X/postgres",
+     "priv": false,
+     "estado": {
+      "nula": false,
+      "anon_X": false,
+      "public_X": false
+     },
+     "explicavel": true,
+     "destaca_candidata": false,
+     "destaca_reversao": true
+    },
+    {
+     "nome": "public_da_no_op",
+     "acl": "=X/postgres|postgres=X/postgres|anon=X/postgres|authenticated=X/postgres",
+     "priv": true,
+     "estado": {
+      "nula": false,
+      "anon_X": true,
+      "public_X": true
+     },
+     "explicavel": true,
+     "destaca_candidata": false,
+     "destaca_reversao": false
+    },
+    {
+     "nome": "acl_nula_do_default",
+     "acl": "NULL_POR_DEFAULT",
+     "priv": true,
+     "estado": {
+      "nula": true,
+      "anon_X": false,
+      "public_X": false
+     },
+     "explicavel": false,
+     "destaca_candidata": false,
+     "destaca_reversao": false
+    },
+    {
+     "nome": "inexplicavel_acl_sem_grau",
+     "acl": "postgres=X/postgres|anon=X/postgres|authenticated=X/postgres|service_role=X/postgres",
+     "priv": false,
+     "estado": {
+      "nula": false,
+      "anon_X": true,
+      "public_X": false
+     },
+     "explicavel": false,
+     "destaca_candidata": false,
+     "destaca_reversao": false
+    }
+   ]
+  },
+  {
+   "nome": "a_regua_de_assinatura_recusa_aridade_e_tipo_e_tolera_nomes_de_parametro",
+   "verde": true,
+   "detalhe": {
+    "aridade_errada_nao_casa": true,
+    "lista_vazia_casa_com_catalogo_vazio": true,
+    "nomes_de_parametro_casam": true,
+    "tipo_trocado_nao_casa": true
+   }
+  },
+  {
+   "nome": "a_contagem_de_estrutura_ve_transaccao_dados_e_o_espelho_do_grant",
+   "verde": true,
+   "detalhe": {
+    "sem_transaccao_da_begin_0": true,
+    "insert_contado": true,
+    "grant_espelho": true
+   }
+  },
+  {
+   "nome": "o_censo_porta_um_nome_novo_e_nao_o_que_ja_esta_declarado",
+   "verde": true,
+   "detalhe": {
+    "declarados": [
+     "bfr_municipalities_visible",
+     "bfr_school_set_municipality"
+    ]
+   }
+  },
+  {
+   "nome": "a_pegada_so_bate_com_o_registo_que_a_certificou",
+   "verde": true,
+   "detalhe": {
+    "pin": {
+     "candidata": "9d43a22606255c258350ad6fed263630",
+     "reversao": "ee4f50eee403f63eb506c2e960ba785d"
+    },
+    "medido_agora": {
+     "candidata": {
+      "bytes": 1494,
+      "md5": "9d43a22606255c258350ad6fed263630"
+     },
+     "reversao": {
+      "bytes": 543,
+      "md5": "ee4f50eee403f63eb506c2e960ba785d"
+     }
+    }
+   }
+  },
+  {
+   "nome": "os_dois_ficheiros_em_disco_batem_com_o_registo_mais_recente_da_geradora",
+   "verde": true,
+   "detalhe": {
+    "indexados": 3,
+    "todos": [
+     {
+      "registo": "evidence/p73-pen43-gera-candidata-20-11e-20-11h.json",
+      "em": "2026-11-20T23:52:43.059Z",
+      "candidata": "74a4cae7fa7888e42b9aceb00d47d4a9",
+      "reversao": "dec93047a0ba92b233589ec6143a37fc"
+     },
+     {
+      "registo": "evidence/p73-pen43-gera-candidata-20-11e-20-11h-recorre.json",
+      "em": "2026-11-20T23:52:55.154Z",
+      "candidata": "74a4cae7fa7888e42b9aceb00d47d4a9",
+      "reversao": "dec93047a0ba92b233589ec6143a37fc"
+     },
+     {
+      "registo": "evidence/p73-pen43-gera-candidata-20-11e-20-11tx.json",
+      "em": "2026-11-21T02:04:57.207Z",
+      "candidata": "9d43a22606255c258350ad6fed263630",
+      "reversao": "ee4f50eee403f63eb506c2e960ba785d"
+     }
+    ]
+   }
+  },
+  {
+   "nome": "os_nomes_do_revoke_e_do_grant_sao_o_mesmo_conjunto_espelhado",
+   "verde": true,
+   "detalhe": {
+    "revoke": [
+     {
+      "nome": "bfr_municipal_scope_diagnostico",
+      "args": ""
+     },
+     {
+      "nome": "bfr_municipal_municipio_totais",
+      "args": ""
+     },
+     {
+      "nome": "bfr_municipal_distribuicao_por_zona",
+      "args": ""
+     }
+    ],
+    "grant": [
+     {
+      "nome": "bfr_municipal_scope_diagnostico",
+      "args": ""
+     },
+     {
+      "nome": "bfr_municipal_municipio_totais",
+      "args": ""
+     },
+     {
+      "nome": "bfr_municipal_distribuicao_por_zona",
+      "args": ""
+     }
+    ]
+   }
+  },
+  {
+   "nome": "a_candidata_e_a_reversao_sao_cada_um_uma_unica_transaccao_de_graus",
+   "verde": true,
+   "detalhe": {
+    "candidata": {
+     "begin": 1,
+     "commit": 1,
+     "revoke": 3,
+     "grant": 0,
+     "statement_fora_dos_graus": 0
+    },
+    "reversao": {
+     "begin": 1,
+     "commit": 1,
+     "revoke": 0,
+     "grant": 3,
+     "statement_fora_dos_graus": 0
+    }
+   }
+  },
+  {
+   "nome": "a_query_de_leitura_e_distinta_de_um_statement_de_escrita",
+   "verde": true
+  },
+  {
+   "nome": "a_varredura_de_pessoal_dispara_no_fixture_e_nao_no_texto_de_ambos_os_lados",
+   "verde": true,
+   "detalhe": {
+    "fixture": {
+     "emails": 1,
+     "jwt": 1
+    }
+   }
+  }
+ ],
+ "veredito": "P73_PEN43_PREFLIGHT_SELFTESTE_OK 10/0"
+}
+
+-- node scripts/p73-municipal-aplica-ddl.mjs --selfteste          -> exit 0
+{
+ "programa": "scripts/p73-municipal-aplica-ddl.mjs",
+ "selfteste": true,
+ "em": "2026-11-21T02:22:21.674Z",
+ "aplicado": false,
+ "escrito_no_banco": false,
+ "casos": [
+  {
+   "nome": "frase_solta_nao_autoriza",
+   "verde": true
+  },
+  {
+   "nome": "cada_peca_tem_ficheiros_em_disco",
+   "verde": true
+  },
+  {
+   "nome": "varredura_de_perigo_nao_confunde_prosa_nem_corpo_de_funcao",
+   "verde": true
+  },
+  {
+   "nome": "varredura_de_credencial_dispara",
+   "verde": true
+  },
+  {
+   "nome": "preflight_escreve_nome_de_registo_que_se_le_na_saida",
+   "verde": true
+  },
+  {
+   "nome": "regua_do_verde_bate_nas_formas_que_os_preflights_emitem",
+   "verde": true
+  },
+  {
+   "nome": "caminho_de_registo_absoluto_e_lido_como_absoluto",
+   "verde": true
+  },
+  {
+   "nome": "frases_de_aplicacao_e_reversao_sao_pares_por_peca_e_disjuntas",
+   "verde": true
+  },
+  {
+   "nome": "o_modo_escolhe_a_frase_e_nao_a_conveniencia",
+   "verde": true
+  },
+  {
+   "nome": "drop_function_de_reversao_e_trabalho_nao_statement_proibido",
+   "verde": true
+  },
+  {
+   "nome": "frase_de_reversao_solta_nao_autoriza_aplicacao",
+   "verde": true
+  },
+  {
+   "nome": "todos_os_sql_das_pecas_sao_unicas_transaccoes_sem_statement_proibido",
+   "verde": true
+  },
+  {
+   "nome": "cada_reversao_desfaz_algo_e_nao_e_a_candidata",
+   "verde": true
+  },
+  {
+   "nome": "onde_a_candidata_revoga_um_nome_a_reversao_devolve_exactamente_esse_conjunto",
+   "verde": true
+  }
+ ],
+ "sql_medidos": [
+  {
+   "peca": "PEN-38",
+   "lado": "candidata",
+   "caminho": "scripts/p73-pen38-ddl-candidata.sql",
+   "bytes": 9148,
+   "md5": "ee98c29129cbf1bb59987597fc6cd97d",
+   "desfaz": 5,
+   "graus": {
+    "revogados": [],
+    "devolvidos": []
+   }
+  },
+  {
+   "peca": "PEN-38",
+   "lado": "reversao",
+   "caminho": "scripts/p73-pen38-ddl-reversao.sql",
+   "bytes": 1461,
+   "md5": "b0c65599c2ced2fe10d5fcc7bd4a494b",
+   "desfaz": 5,
+   "graus": {
+    "revogados": [],
+    "devolvidos": []
+   }
+  },
+  {
+   "peca": "PEN-39",
+   "lado": "candidata",
+   "caminho": "scripts/p73-pen39-ddl-candidata.sql",
+   "bytes": 6784,
+   "md5": "b0c3f3a8600d70078698e7f39a33c741",
+   "desfaz": 2,
+   "graus": {
+    "revogados": [],
+    "devolvidos": []
+   }
+  },
+  {
+   "peca": "PEN-39",
+   "lado": "reversao",
+   "caminho": "scripts/p73-pen39-ddl-reversao.sql",
+   "bytes": 540,
+   "md5": "cd73aa70129a7e89a2b7a37df8d9261f",
+   "desfaz": 2,
+   "graus": {
+    "revogados": [],
+    "devolvidos": []
+   }
+  },
+  {
+   "peca": "PEN-41",
+   "lado": "candidata",
+   "caminho": "scripts/p73-pen41-ddl-candidata.sql",
+   "bytes": 4930,
+   "md5": "6259a3fca4ae688fb08d3c3f47e4072d",
+   "desfaz": 8,
+   "graus": {
+    "revogados": [],
+    "devolvidos": []
+   }
+  },
+  {
+   "peca": "PEN-41",
+   "lado": "reversao",
+   "caminho": "scripts/p73-pen41-ddl-reversao.sql",
+   "bytes": 1454,
+   "md5": "d4ea4c160df8324b9b1c5f06e5c9b251",
+   "desfaz": 8,
+   "graus": {
+    "revogados": [],
+    "devolvidos": []
+   }
+  },
+  {
+   "peca": "PEN-43",
+   "lado": "candidata",
+   "caminho": "scripts/p73-pen43-ddl-candidata.sql",
+   "bytes": 1494,
+   "md5": "9d43a22606255c258350ad6fed263630",
+   "desfaz": 0,
+   "graus": {
+    "revogados": [
+     "bfr_municipal_scope_diagnostico",
+     "bfr_municipal_municipio_totais",
+     "bfr_municipal_distribuicao_por_zona"
+    ],
+    "devolvidos": []
+   }
+  },
+  {
+   "peca": "PEN-43",
+   "lado": "reversao",
+   "caminho": "scripts/p73-pen43-ddl-reversao.sql",
+   "bytes": 543,
+   "md5": "ee4f50eee403f63eb506c2e960ba785d",
+   "desfaz": 3,
+   "graus": {
+    "revogados": [],
+    "devolvidos": [
+     "bfr_municipal_scope_diagnostico",
+     "bfr_municipal_municipio_totais",
+     "bfr_municipal_distribuicao_por_zona"
+    ]
+   }
+  }
+ ],
+ "veredito": "P73_MUNICIPAL_APLICA_SELFTESTE_OK 14/0"
+}

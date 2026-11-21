@@ -361,8 +361,9 @@ versionado, ou o v1 entra no índice e o substituto é retirado; as duas opçõe
 por isso pedem escolha explícita e não a minha. A numeração é a das pontas soltas deste runbook: FALTA-1 em §2.6
 (fechada ao nível da candidata em 20/11, com o `--selfteste` e a recusa de publicação medidos; quem põe a peça a
 conferir de verdade é a publicação, e essa pede OK literal próprio), FALTA-2 em §4 (fechada em 20/11, com as recusas
-medidas e o ciclo completo ainda por correr), FALTA-3 em §2.2, esta aqui, FALTA-5 em §2.7 (a PEN-43 tem candidata
-e reversão certificadas e não tem caminho de aplicação) e a sua irmã de publicação em §2.8, que é o mesmo tipo de
+medidas e o ciclo completo ainda por correr), FALTA-3 em §2.2, esta aqui, FALTA-5 em §2.7 (fechada em 20/11 ao
+nível do caminho: preflight nos dois modos escrito e corrido, peça entrada no aplicador, recusas medidas — o que
+falta é a frase `APLICAR PEN-43 NO BANCO`, e só ela) e a sua irmã de publicação em §2.8, que é o mesmo tipo de
 ponta com outro nome: escrita, gateada, e à espera de frase.
 
 ### 2.1 · Preflight fresco da peça que se vai aplicar
@@ -371,10 +372,13 @@ ponta com outro nome: escrita, gateada, e à espera de frase.
 node scripts/p73-pen38-preflight.mjs
 node scripts/p73-pen39-preflight.mjs
 node scripts/p73-pen41-preflight.mjs
+node scripts/p73-pen43-preflight.mjs
 ```
 
 *OK necessário:* nenhum (só leitura). *Verde esperado:* os três vereditos do §0, com o nome do registo impresso
-na última linha.
+na última linha, e para a PEN-43 `P73_PEN43_PREFLIGHT_VERDE_CANDIDATA 13/0` — o verde dela foi medido em 20/11 e é
+de uma peça **não aplicada**, pelo que o modo `--reversao` desta quarta linha está destinado a dar vermelho enquanto
+o `REVOKE` não correr (§2.7 tem o registo vermelho e o motivo).
 *Cada registo é escrito uma vez*: para re-correr sem por cima do anterior, `P73_SUF=<rótulo> node …`.
 *Vermelho significa* que o estado vivo já não é o que a candidata pressupõe. Nesse caso a candidata não se
 aplica: re-mede-se e escreve-se candidata nova. Um vermelho daqui nunca se «resolve» com `--ok`.
@@ -509,7 +513,7 @@ nascem do passo de publicação. A recusa não escreve registo próprio de prop�
 ainda serve a v136 é indistinguível de um bundle partido, e as três ausências são o conteúdo do stdout, não o
 nome de um ficheiro. Publicação continua sem OK literal próprio e por isso **não deve ser feita**.
 
-### 2.7 · PEN-43 — fechar o `EXECUTE` de `anon` nas funções municipais de leitura — CANDIDATA ESCRITA 20/11, NADA APLICADO
+### 2.7 · PEN-43 — fechar o `EXECUTE` de `anon` nas funções municipais de leitura — CANDIDATA E CAMINHO DE APLICAÇÃO ESCRITOS 20/11, NADA APLICADO
 
 A pendência nasceu da aplicação da PEN-39: as três funções novas que ela criou ficaram no catálogo com
 `anon=X` na ACL explícita, `SECURITY DEFINER` e `STABLE`. O que um chamador sem sessão recebe hoje, medido às
@@ -521,14 +525,32 @@ decidida, os mesmos `GET` passam a devolver números reais sem um único `GRANT`
 peça existir antes da decisão, e não depois.
 
 O remédio é o menor possível, e é gerado, não escrito à mão — `scripts/p73-pen43-gera-candidata.mjs` (0 escrita no
-banco, catálogo lido por `SELECT`) produz `scripts/p73-pen43-ddl-candidata.sql` (1 373 B,
-`74a4cae7fa7888e42b9aceb00d47d4a9`) e `scripts/p73-pen43-ddl-reversao.sql` (432 B, `dec93047a0ba92b233589ec6143a37fc`):
-três `REVOKE ... FROM anon`, um por nome de leitura, com a reversão a devolver o grau exactamente nos mesmos três
-nomes. Os nomes e os tipos vêm dos `CREATE FUNCTION` das candidatas em disco (`p73-pen38`, `p73-pen39`, `p73-pen41`)
-e a lista de revogados vem da `proacl` viva — nada é dactilografado, e é por isso que correr a geradora duas vezes
-dá os mesmos bytes: `evidence/p73-pen43-gera-candidata-20-11e-20-11h.json` e
+banco, catálogo lido por `SELECT`) produz `scripts/p73-pen43-ddl-candidata.sql` e
+`scripts/p73-pen43-ddl-reversao.sql`: três `REVOKE ... FROM anon`, um por nome de leitura, com a reversão a
+devolver o grau exactamente nos mesmos três nomes. Os nomes e os tipos vêm dos `CREATE FUNCTION` das candidatas em
+disco (`p73-pen38`, `p73-pen39`, `p73-pen41`) e a lista de revogados vem da `proacl` viva — nada é dactilografado,
+e é por isso que correr a geradora duas vezes dá os mesmos bytes:
+`evidence/p73-pen43-gera-candidata-20-11e-20-11h.json` e
 `evidence/p73-pen43-gera-candidata-20-11e-20-11h-recorre.json` são `P73_PEN43_CANDIDATA_OK 8/0` as duas, com os
 dois `md5` de ficheiro iguais entre si.
+
+**O que aqueles 8/0 não cobriam, e a passada que os substituiu (20/11).** Os ficheiros que essas duas corridas
+certificaram mandavam os três `REVOKE` soltos, sem `BEGIN;`/`COMMIT;`, e o aplicador recusa enviar SQL que não é
+uma única transacção — a razão não é burocracia: um `REVOKE` a meio falha e ficam um grau fechado e dois abertos,
+e a reversão deixa de ser o espelho da candidata. A geradora passou a emitir os dois ficheiros entre `BEGIN;` e
+`COMMIT;` e ganhou um 9.º portão
+(`cada_ficheiro_e_uma_unica_transaccao_de_graus_e_o_mundo_sem_transaccao_chumba`), com o mundo sem transacção
+fabricado dentro da própria corrida: `estrutura_dos_arquivos.fixture_sem_transaccao` lê `begin:0`, `commit:0`,
+`revoke:1` num SQL de uma linha cujo comentário nomeia as duas marcas, e a contagem é feita sobre o corpo sem
+comentários para que um `BEGIN;` escrito em prosa de cabeçalho não conte como transacção. Corrida com sufixo novo
+(`P73_SUF=20-11tx`): `P73_PEN43_CANDIDATA_OK 9/0` em 5 056 ms, registo
+`evidence/p73-pen43-gera-candidata-20-11e-20-11tx.json`, pegadas actuais candidata 1 494 B
+`9d43a22606255c258350ad6fed263630` e reversão 543 B `ee4f50eee403f63eb506c2e960ba785d`. Os dois ficheiros
+substituídos não foram apagados: ficaram como
+`scripts/ANTERIOR-p73-pen43-ddl-candidata-sem-transaccoes-20-11.sql` (1 373 B, `74a4cae7fa7888e42b9aceb00d47d4a9`)
+e `scripts/ANTERIOR-p73-pen43-ddl-reversao-sem-transaccoes-20-11.sql` (432 B, `dec93047a0ba92b233589ec6143a37fc`)
+— e são exactamente as pegadas que a geradora anterior tinha certificado, pelo que um `mv` que tivesse trocado os
+bytes daria vermelho no portão da pegada, não no meu olho.
 
 **A pré-condição de eficácia, e os dois mundos que a negam.** Um `REVOKE ... FROM anon` só é eficaz se o grau do
 `anon` estiver numa entrada *explícita* da ACL: se ele vier do default a `PUBLIC`, o mesmo `REVOKE` não faz nada e o
@@ -540,21 +562,64 @@ casamento de assinatura: `tipos_trocados_nao_casa:false` com `nomes_de_parametro
 `p_school uuid, …` e uma agulha de tipos sem nomes não tinha positivo possível (é a mesma lição da régua de
 assinatura do §0A, reaproveitada aqui antes de escrever o portão).
 
-**FALTA-5 (aberta, e o custo de cada lado está dito antes de escolher).** A PEN-43 tem candidata e reversão
-certificadas, mas **não tem caminho de aplicação**: a tabela `PECAS` do aplicador cobre PEN-38/39/41, e cada uma
-delas exige um preflight próprio com os dois modos (`--reversao` como pré-condição de entrada, candidata como
-conferência de saída). `node scripts/p73-municipal-aplica-ddl.mjs --peca PEN-43` recusa hoje com
-`--peca tem de ser uma das pecas certificadas: PEN-38, PEN-39, PEN-41`, e foi medido, não inferido. As duas
-saídas, com o preço de cada uma: (i) escrever `scripts/p73-pen43-preflight.mjs` nos dois modos e acrescentar a
-entrada à tabela — o caminho com esse nome ainda não existe, é peça nova, com dentes próprios, e mexe num
-instrumento que escreve no banco; (ii) deixar a
-candidata na gaveta enquanto a decisão do §1 não for tomada, que é o estado de hoje e não queima nada. Colar o SQL
-à mão no painel do Postgres é a terceira hipótese, e é exatamente contra ela que este pacote foi desenhado, por
-isso não a conto como opção.
+**FALTA-5 (fechada em 20/11 ao nível do caminho — o que continua em falta é a frase, e só ela).** Das duas saídas
+listadas aqui antes, a escolha foi (i): `scripts/p73-pen43-preflight.mjs` existe, nos dois modos e com `--selfteste`
+offline, e a peça entrou na tabela `PECAS` do aplicador com `frase: 'APLICAR PEN-43 NO BANCO'` e
+`fraseRev: 'REVERTER PEN-43 NO BANCO'`. O que correu, cada linha com o artefacto ao lado:
 
-MOTIVO-SEM-REGISTO · PEN-43 — a candidata e a reversão estão escritas e certificadas offline, mas a peça não tem
-preflight nos dois modos nem entrada no aplicador (FALTA-5 acima), logo nenhum `APLICAR PEN-43 NO BANCO` pode
-correr pelo caminho que o pacote exige.
+* Offline, 0 HTTP, no mesmo stdout: `P73_PEN43_PREFLIGHT_SELFTESTE_OK 10/0` e
+  `P73_MUNICIPAL_APLICA_SELFTESTE_OK 14/0` — os dois recortes em
+  `evidence/p73-pen43-stdout-selfteste-preflight-e-aplicador-fecho-falta5-20-11.txt`.
+* Modo `candidata`: `P73_PEN43_PREFLIGHT_VERDE_CANDIDATA 13/0` em 6 636 ms
+  (`evidence/p73-pen43-preflight-candidata-20-11e-20-11p2.json`). Os portões que a geradora não podia dar:
+  `os_nomes_do_revoke_e_do_grant_sao_o_mesmo_conjunto_espelhado` (o `REVOKE` de um nome sem `GRANT` espelhado na
+  reversão chumba), `a_pegada_dos_dois_ficheiros_e_a_do_registo_mais_recente_da_geradora_e_a_regua_tem_dentes` (o
+  esperado lê-se do registo **indexado** mais recente, nunca da memória desta corrida), e
+  `o_privilegio_efectivo_do_anon_e_explicado_pela_acl_em_cada_nome_e_os_cinco_mundos_tem_dentes`, com os mundos
+  `hoje_candidata`, `depois_reversao`, `public_da_no_op`, `acl_nula_do_default` e `inexplicavel_acl_sem_grau`
+  fabricados dentro da mesma corrida — os dois últimos são os que negam a eficácia do `REVOKE` por nome, e dão o
+  vermelho que a cláusula promete.
+* Modo `--reversao`: `P73_PEN43_PREFLIGHT_VERMELHO_1`, e o único portão vermelho é
+  `o_estado_vivo_do_anon_bate_com_o_que_o_modo_reversao_pressupoe_e_o_outro_modo_chumba_nesse_estado`, com os três
+  nomes a ler `anon_pode=true` (`evidence/p73-pen43-preflight-reversao-20-11e-20-11p2r-VERMELHO.json`, stdout em
+  `evidence/p73-pen43-stdout-modo-reversao-VERMELHO-esperado-porque-a-peca-ainda-nao-foi-aplicada.txt`). É o
+  vermelho do desenho, não um obstáculo: o modo reversão afirma o estado de **saída** da candidata, e nenhuma peça
+  não aplicada pode estar verde nos dois sentidos no mesmo instante. Os outros 12 portões bateram nessa corrida, e
+  `o_estado_que_o_modo_reversao_pressupoe_ja_existe_hoje_noutros_nomes_lidos_do_catalogo` diz, por linhas reais do
+  catálogo, que o mundo que esse modo pressupõe já existe hoje noutros nomes — o ramo verde do modo `--reversao` é
+  alcançável por dados, não só pela minha construção.
+* A recusa do aplicador deixou de ser «peça não certificada» e passou a ser «frase não autorizada», medida três
+  vezes com `escrito_no_banco:false`:
+  `evidence/p73-municipal-aplica-ddl-recusa-PEN-43-1795227471593.json` (sem `--ok`),
+  `evidence/p73-municipal-aplica-ddl-recusa-PEN-43-1795227479397.json` (um «ok» solto dito ao banco) e
+  `evidence/p73-municipal-reversao-recusa-PEN-43-1795227479547.json` (a frase de aplicar dita ao modo de reverter —
+  é o motivo de `APLICAR PEN-43 NO BANCO` não comprar um `REVERTER`).
+* A corrida de 12 portões que ficou para trás, anterior à cláusula dos espelhos reais, está conservada com o motivo
+  no nome: `evidence/ANTERIOR-p73-pen43-preflight-candidata-20-11e-doze-portoes-antes-da-clausula-dos-espelhos-reais.json`.
+* O portão do pacote, corrido depois de staged os nomes acima, com o índice já a recebê-los:
+  `PACOTE_MUNICIPAL_OK 24/0 · 153 pecas medidas`, `FORA_DO_INDICE 0 esquecidos de 2435 fichas`, e a classe de
+  aplicação impressa como `com_registo=["PEN-38","PEN-39"] sem_registo=["PEN-41","PEN-43"]` — a PEN-43 continua sem
+  registo de aplicação, e é o que o §2.7 afirma (`evidence/pacote-municipal-pecas-20-11-fecho-falta5.json`). A
+  pegada do runbook gravada nesse registo é a do instante **anterior** à linha que o cita, porque uma captura não
+  pode pinar o documento que a nomeia; a corrida de verificação final, com esta linha já escrita, correu com sufixo
+  novo e o stdout ficou fora do repo, como as outras capturas finais.
+
+**O censo que o preflight imprime, e que a peça não fecha.** Medido na corrida de candidata: 162 funções no
+`public`, 67 executáveis por `anon`, 27 delas só porque a entrada a `PUBLIC` traz o grau (nelas um
+`REVOKE … FROM anon` é no-op decorativo), 0 com ACL nula, e a divergência entre as duas formas de contar é 0 — é
+diferença medida, não afirmada. A PEN-43 fecha **3** dessas 67. Ficam declaradas, com a razão medida ao lado do
+nome, em `censo_de_exposicao_anonima.declarados`: `bfr_municipalities_visible`, porque a ACL dela tem
+`=X/postgres` além do `anon=X` e fechá-la exigiria `REVOKE … FROM PUBLIC`, que é alargar o escopo da peça e pede OK
+próprio; e `bfr_school_set_municipality`, a porta de etiquetagem volátil, mantida executável por anónimo de
+propósito para um sem-sessão receber `42501` em vez de `404`. Este parágrafo é a razão de o verde do modo candidata
+não se poder ler como «a exposição anónima está fechada», nem o vermelho do modo reversão como «está aberta de
+surpresa».
+
+MOTIVO-SEM-REGISTO · PEN-43 — desde 20/11 o motivo deixou de ser o caminho: a peça tem preflight nos dois modos,
+entrada certificada no aplicador e os dois SQL transaccionais com pegada conferida. O registo de aplicação continua
+ausente por um motivo só — nenhuma frase `APLICAR PEN-43 NO BANCO` foi dita — e é a classe
+`pecas_sem_registo_de_aplicacao` que a imprime, com `nomes_na_candidata: []` porque revogar execução não cria
+função alguma.
 
 ### 2.8 · Publicação da v138 (o consumidor dos agregados da PEN-39) — CANDIDATA E BUNDLE PRONTOS, NADA PUBLICADO
 
@@ -736,8 +801,11 @@ pernas no ar depois do deploy.
   dos dois nomes no bundle publicado, e enquanto a v138 não for publicada a PEN-39 é DDL sem consumidor no site.
 * A etiquetagem é contável em `bfr_municipal_audit`; a sua ausência **não** é previsão, é o portão
   `trilha.linhas_para_esta_escola > 0` do artefacto de escrita, que hoje nunca correu porque o RPC não existe.
-* A PEN-43 tem candidata e reversão certificadas e **não** tem caminho de aplicação (FALTA-5 do §2.7): correr o
-  aplicador com `--peca PEN-43` dá recusa medida, não erro de digitação minha.
+* A PEN-43 passou a ter caminho de aplicação em 20/11 (FALTA-5 do §2.7, fechada ao nível do instrumento), e isso não
+  é prova de porta fechada: o `REVOKE` não corre, logo as três funções de leitura continuam executáveis por anónimo.
+  O que o pacote prova é o efeito medido do grau e o censo dos 27 nomes que a peça não toca; correr
+  `node scripts/p73-municipal-aplica-ddl.mjs --peca PEN-43 --ok "APLICAR PEN-43 NO BANCO"` é o único passo que
+  autoriza a frase «fechada» — e hoje dá recusa medida, não erro de digitação minha.
 
 ### 3.5 · Depois da publicação da v138 (o passo que hoje não pode correr)
 
@@ -839,9 +907,12 @@ exactamente a que FALTA-2 existia para não ficar ao arbítrio de quem cola SQL.
 4. **RM-5.2 (seed do calendário letivo).** Estado medido em `evidence/p73-rm52-estado-calendario-20-11.json`
    e régua de completude em `evidence/p73-rm52-regua-completude-20-11.json`; conteúdo é decisão pedagógica.
 5. **PEN-42 (`register_gate_checkin_v2`).** Fora do escopo municipal.
-6. **O preflight da PEN-43 (FALTA-5 do §2.7).** A peça tem candidata e reversão certificadas e não tem caminho de
-   aplicação; escrevê-lo é mexer num instrumento que escreve no banco, e a escolha tem preço dos dois lados — por
-   isso é decisão da casa, não deste pacote.
+6. **Aplicar ou não a PEN-43 — a frase, não o caminho.** Desde 20/11 o caminho existe: preflight nos dois modos,
+   peça entrada na tabela `PECAS` do aplicador, os dois SQL transaccionais com a pegada conferida contra o registo
+   indexado da geradora (§2.7). O que fica do lado da casa é dizer `APLICAR PEN-43 NO BANCO`. O preço de aplicar é
+   re-medir o canal depois (`scripts/p73-sonda-porta-municipal.mjs` passa a dizer `PORTA_MUNICIPAL_FECHADA` sem se
+   aliviar uma letra); o preço de não aplicar é as três funções de leitura continuarem chamáveis por anónimo — 0
+   linhas hoje, números reais no dia em que a etiquetagem do §1 for decidida.
 7. **`git push`** dos commits deste pacote: precisa de OK literal novo; nenhum push está autorizado pelo
    trabalho descrito aqui.
 
@@ -849,8 +920,12 @@ exactamente a que FALTA-2 existia para não ficar ao arbítrio de quem cola SQL.
 
 Candidatas e reversões: `scripts/p73-pen38-ddl-candidata.sql`, `scripts/p73-pen38-ddl-reversao.sql`,
 `scripts/p73-pen39-ddl-candidata.sql`, `scripts/p73-pen39-ddl-reversao.sql`,
-`scripts/p73-pen41-ddl-candidata.sql`, `scripts/p73-pen41-ddl-reversao.sql`.
-Preflights: `scripts/p73-pen38-preflight.mjs`, `scripts/p73-pen39-preflight.mjs`, `scripts/p73-pen41-preflight.mjs`.
+`scripts/p73-pen41-ddl-candidata.sql`, `scripts/p73-pen41-ddl-reversao.sql`,
+`scripts/p73-pen43-ddl-candidata.sql`, `scripts/p73-pen43-ddl-reversao.sql` e os dois substituídos da PEN-43,
+conservados com o defeito no nome: `scripts/ANTERIOR-p73-pen43-ddl-candidata-sem-transaccoes-20-11.sql` e
+`scripts/ANTERIOR-p73-pen43-ddl-reversao-sem-transaccoes-20-11.sql`.
+Preflights: `scripts/p73-pen38-preflight.mjs`, `scripts/p73-pen39-preflight.mjs`, `scripts/p73-pen41-preflight.mjs`,
+`scripts/p73-pen43-preflight.mjs`.
 Escrita: `scripts/p73-municipal-aplica-ddl.mjs`, `scripts/p73-municipal-etiqueta.mjs`.
 Conferência do pacote: `scripts/pacote-municipal-confere-pecas.mjs`.
 Conferência pós-deploy: `scripts/v136-pos-deploy.mjs` (corrida em 19/11) e `scripts/v137-pos-deploy.mjs`
@@ -860,9 +935,14 @@ Cadeia local da v138 (20/11, §2.8): `scripts/v138-gera-candidata.mjs` com
 `bfr-candidata-v138-painel-municipal/portoes-v138-candidata.json`, `scripts/v138-gera-bundle.mjs` com
 `worker-deploy-v138-painel-municipal/esperado-v138.json`, e os dois stdout de `scripts/v138-pos-deploy.mjs` em
 `evidence/v138-pos-deploy-stdout-selfteste-20-11.txt` e `evidence/v138-pos-deploy-stdout-recusa-20-11.txt`.
-Geradora da PEN-43 (20/11, §2.7): `scripts/p73-pen43-gera-candidata.mjs`, que escreve
+Geradora e caminho da PEN-43 (20/11, §2.7): `scripts/p73-pen43-gera-candidata.mjs`, que escreve
 `scripts/p73-pen43-ddl-candidata.sql` e `scripts/p73-pen43-ddl-reversao.sql` a partir dos `CREATE FUNCTION` das
-candidatas e da `proacl` viva; o `scripts/p73-pen43-preflight.mjs` continua fantasma declarado, é a FALTA-5.
+candidatas e da `proacl` viva, e `scripts/p73-pen43-preflight.mjs`, a peça que faltava e foi escrita em 20/11 — os
+dois modos, o `--selfteste` offline e o censo de exposição anónima, com a entrada na tabela `PECAS` do
+`scripts/p73-municipal-aplica-ddl.mjs`. Esse nome deixou de ser fantasma declarado na mesma passada: passou a
+resolver em disco e a estar no índice, e a frase que o declarava foi apagada com a FALTA-5 — é o único caminho pelo
+qual um nome sai da classe sem que a classe apodreça, porque o portão dos fantasmas passa a não o conhecer e os dos
+caminhos citados passam a exigi-lo no índice.
 Medição de alcance: `scripts/p73-pen38-alcance-por-concessao-20-11.mjs`, `scripts/p73-pen39-sonda-uso-agregados.mjs`,
 `scripts/p73-pen38-sonda-consumidor-do-diagnostico.mjs` (FALTA-3, escrita e corrida em 20/11).
 Medição de superfície no ar, por recipiente e por toque (20/11, §6A de

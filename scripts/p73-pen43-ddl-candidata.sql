@@ -4,9 +4,14 @@
 -- Eficacia medida: o grau do anon esta numa entrada EXPLICITA da proacl (nenhuma linha a PUBLIC), por isso o REVOKE
 -- por nome e o grau efetivo; se alguma vez passar a vir do default a PUBLIC, o portao da geradora da vermelho.
 -- 0 dados tocados: nenhuma linha deste ficheiro escreve em tables. Autorizacao exigida: APLICAR PEN-43 NO BANCO.
+-- Transacao unica: um nome em falta aborta os outros, em vez de deixar um grau fechado e dois abertos.
+
+BEGIN;
 REVOKE EXECUTE ON FUNCTION public.bfr_municipal_scope_diagnostico() FROM anon;
 REVOKE EXECUTE ON FUNCTION public.bfr_municipal_municipio_totais() FROM anon;
 REVOKE EXECUTE ON FUNCTION public.bfr_municipal_distribuicao_por_zona() FROM anon;
+
+COMMIT;
 
 -- EM ABERTO (decisao da casa, nao deste ficheiro): public.bfr_school_set_municipality(uuid, uuid, text)
 -- e a porta de etiquetagem e tambem hoje executavel por anon. Manter o grau significa receber 42501 de

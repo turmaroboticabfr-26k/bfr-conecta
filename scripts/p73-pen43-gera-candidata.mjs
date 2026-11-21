@@ -10,6 +10,9 @@
 // SQL escreve — e o gerador chumba se as duas divergirem. O quarto nome, a porta de etiquetagem, NÃO é revogado
 // aqui: se ela continua executável por anónimo (para receber 42501 em vez de 404) é decisão da casa, não deste programa.
 // 0 escrita no banco: só SELECTs ao catálogo, contados no registo. Única escrita: os dois .sql novos + o registo.
+// Porque cada ficheiro sai entre BEGIN; e COMMIT;: o aplicador (p73-municipal-aplica-ddl.mjs) recusa enviar SQL que não é
+// uma única transacção, e a razão não é burocracia — três REVOKE a meio deixariam um grau fechado e dois abertos, e a
+// reversão deixaria de ser o espelho da candidata. O portão conta as marcas e traz o fixture que dispara sem elas.
 import { createHash } from 'node:crypto';
 import { existsSync, readdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
@@ -88,16 +91,23 @@ const textoCand = [
   '-- Eficacia medida: o grau do anon esta numa entrada EXPLICITA da proacl (nenhuma linha a PUBLIC), por isso o REVOKE',
   '-- por nome e o grau efetivo; se alguma vez passar a vir do default a PUBLIC, o portao da geradora da vermelho.',
   '-- 0 dados tocados: nenhuma linha deste ficheiro escreve em tables. Autorizacao exigida: APLICAR PEN-43 NO BANCO.',
+  '-- Transacao unica: um nome em falta aborta os outros, em vez de deixar um grau fechado e dois abertos.',
   '',
-].join('\n') + deLeitura.map((c) => 'REVOKE EXECUTE ON FUNCTION ' + assina(c) + ' FROM anon;').join('\n') + '\n\n'
+  'BEGIN;',
+  '',
+].join('\n') + deLeitura.map((c) => 'REVOKE EXECUTE ON FUNCTION ' + assina(c) + ' FROM anon;').join('\n') + '\n\nCOMMIT;\n\n'
   + '-- EM ABERTO (decisao da casa, nao deste ficheiro): ' + deEscrita.map((c) => assina(c)).join(', ') + '\n'
   + '-- e a porta de etiquetagem e tambem hoje executavel por anon. Manter o grau significa receber 42501 de\n'
   + '-- «nao e administrador» em vez de 404 de rota inexistente; revogar significa que um anonimo nem sabe que ela existe.\n'
   + '-- Medido em evidence/p73-sonda-exposicao-anonima-20-11-20-11h.json (4 de 4 com anon=X, escrita nao chamada).\n';
 const textoRevs = [
   '-- PEN-43 - reversao do remedio: devolve o EXECUTE ao anon exactamente nos nomes que a candidata revogou.',
-  '-- Gerada pelo mesmo programa; a lista e derivada dos mesmos CREATE FUNCTION, nunca recordada.\n',
-].join('\n') + deLeitura.map((c) => 'GRANT EXECUTE ON FUNCTION ' + assina(c) + ' TO anon;').join('\n') + '\n';
+  '-- Gerada pelo mesmo programa; a lista e derivada dos mesmos CREATE FUNCTION, nunca recordada.',
+  '-- Transacao unica, pela mesma razao da candidata: desfazer a meio deixa a porta semi-aberta.',
+  '',
+  'BEGIN;',
+  '',
+].join('\n') + deLeitura.map((c) => 'GRANT EXECUTE ON FUNCTION ' + assina(c) + ' TO anon;').join('\n') + '\n\nCOMMIT;\n';
 
 for (const [p, t] of [[CAND, textoCand], [REVS, textoRevs]]) {
   if (existsSync(p)) { if (md5(readFileSync(p, 'utf8')) !== md5(t)) throw new Error('ABORTA: ' + p + ' difere do gerado — renomear como ANTERIOR e re-correr'); }
@@ -116,6 +126,16 @@ const fixIncluirEscrita = soLeituraDe(deEscrita.map((c) => c.nome).concat(deLeit
 const relectoCand = readFileSync(CAND, 'utf8');
 const relectoRevs = readFileSync(REVS, 'utf8');
 const conta = (t, re) => (t.match(re) || []).length;
+// Estrutura contada sobre o codigo sem comentarios, porque `BEGIN;` escrito em prosa de cabecalho nao e uma
+// transaccao. O fixture do mundo sem transaccao vive aqui para o portao nao se limitar a confirmar o que o
+// gerador acabou de escrever: sem ele, a contagem nao teria negativo possivel.
+const semComentarios = (t) => t.split('\n').map((l) => (l.trim().startsWith('--') ? '' : l)).join('\n');
+const estruturaDe = (t) => { const s = semComentarios(t); const c = (re) => (s.match(re) || []).length;
+  return { begin: c(/^BEGIN;/gm), commit: c(/^COMMIT;/gm), revoke: c(/^REVOKE EXECUTE/gm), grant: c(/^GRANT EXECUTE/gm),
+    statement_fora_dos_graus: c(/^\s*(INSERT|UPDATE|DELETE|DROP|ALTER|CREATE|TRUNCATE|COPY)\b/gim) }; };
+const FIX_SEM_TRANSACCAO = 'REVOKE EXECUTE ON FUNCTION public.x() FROM anon;\n-- BEGIN; e COMMIT; em comentario nao contam\n';
+const estruturaFixSemTx = estruturaDe(FIX_SEM_TRANSACCAO);
+const FIX_COMENTARIO_NAO_VIRA_TRANSACCAO = estruturaFixSemTx.begin === 0 && estruturaFixSemTx.commit === 0 && estruturaFixSemTx.revoke === 1;
 
 const portoes = [
   g('os_quatro_nomes_sao_lidos_dos_ficheiros_e_resolvem_no_catalogo', declaradas.length === 4 && vivo.every((v) => v.lido) && declaradas.every((d) => d.tipos && d.corpo_chars > 0), { ficheiros, nomes: classif.map((c) => c.nome), tipos_null: classif.filter((c) => !c.tipos).map((c) => c.nome) }),
@@ -124,6 +144,10 @@ const portoes = [
   g('o_revoke_por_nome_e_o_grau_efetivo_e_os_dois_mundos_que_o_negam_disparam', classif.every(revogaveis) && revogaveis(W_PUBLIC) === false && revogaveis(W_NULA) === false, { real: classif.map((c) => `${c.nome}:anon=${c.anon_explicito}:public=${c.public_explicito}:nula=${c.acl_nula}`), mundo_public: W_PUBLIC, mundo_acl_nula: W_NULA }),
   g('a_candidata_revogue_somente_o_que_as_duas_viias_acordam_ser_leitura', deLeitura.length === 3 && deEscrita.length === 1 && soLeituraDe(deLeitura.map((c) => c.nome)) === true && fixIncluirEscrita === false, { leitura: deLeitura.map((c) => c.nome), escrita: deEscrita.map((c) => c.nome), fixture_incluir_escrita: fixIncluirEscrita }),
   g('a_contagem_textual_de_REVOKE_e_de_GRANT_bate_com_a_lista_derivada', conta(relectoCand, /^REVOKE EXECUTE/gm) === deLeitura.length && conta(relectoRevs, /^GRANT EXECUTE/gm) === deLeitura.length && conta(relectoRevs, /^REVOKE/gm) === 0 && conta(relectoCand, /^GRANT/gm) === 0, { revoke_candidata: conta(relectoCand, /^REVOKE EXECUTE/gm), grant_reversao: conta(relectoRevs, /^GRANT EXECUTE/gm), revoke_reversao: conta(relectoRevs, /^REVOKE/gm), grant_candidata: conta(relectoCand, /^GRANT/gm) }),
+  g('cada_ficheiro_e_uma_unica_transaccao_de_graus_e_o_mundo_sem_transaccao_chumba', (() => { const a = estruturaDe(relectoCand), b = estruturaDe(relectoRevs);
+    return a.begin === 1 && a.commit === 1 && a.revoke === deLeitura.length && a.grant === 0 && a.statement_fora_dos_graus === 0
+      && b.begin === 1 && b.commit === 1 && b.grant === deLeitura.length && b.revoke === 0 && b.statement_fora_dos_graus === 0
+      && FIX_COMENTARIO_NAO_VIRA_TRANSACCAO === true; })(), { candidata: estruturaDe(relectoCand), reversao: estruturaDe(relectoRevs), fixture_sem_transaccao: estruturaFixSemTx, comentario_contado_como_transaccao: FIX_COMENTARIO_NAO_VIRA_TRANSACCAO }),
   g('nenhuma_query_deste_programa_escreveu_no_banco', formas.length === 4 && formas.every((x) => x === true), { queries: formas.length, nao_leitura: formas.filter((x) => !x).length }),
   g('os_dois_ficheiros_sao_o_que_o_gerador_produz_byte_a_byte', md5(relectoCand) === md5(textoCand) && md5(relectoRevs) === md5(textoRevs), { candidata: { bytes: Buffer.byteLength(relectoCand), md5: md5(relectoCand) }, reversao: { bytes: Buffer.byteLength(relectoRevs), md5: md5(relectoRevs) } }),
 ];
@@ -136,7 +160,8 @@ const out = {
   por_nome: classif,
   revogados: deLeitura.map((c) => c.nome),
   em_aberto: { nomes: deEscrita.map((c) => c.nome), porque: 'porta de etiquetagem: revogar tira ate o 42501; a decisao e da casa' },
-  fixtures: { tipos_trocados_nao_casa: fixTiposTrocados, nomes_de_parametro_casam: fixNomesDeParametro, mundo_acl_com_public: W_PUBLIC, mundo_acl_nulo: W_NULA, incluir_escrita_no_rollo: fixIncluirEscrita },
+  fixtures: { tipos_trocados_nao_casa: fixTiposTrocados, nomes_de_parametro_casam: fixNomesDeParametro, mundo_acl_com_public: W_PUBLIC, mundo_acl_nulo: W_NULA, incluir_escrita_no_rollo: fixIncluirEscrita, mundo_sem_transaccao_chumba: FIX_COMENTARIO_NAO_VIRA_TRANSACCAO },
+  estrutura_dos_arquivos: { candidata: estruturaDe(relectoCand), reversao: estruturaDe(relectoRevs), fixture_sem_transaccao: estruturaFixSemTx },
   arquivos: { candidata: { caminho: 'scripts/p73-pen43-ddl-candidata.sql', bytes: Buffer.byteLength(relectoCand), md5: md5(relectoCand) }, reversao: { caminho: 'scripts/p73-pen43-ddl-reversao.sql', bytes: Buffer.byteLength(relectoRevs), md5: md5(relectoRevs) } },
   o_que_nao_prova: 'nao prova que o REVOKE foi aplicado; prova que a candidata existe, que o grau a revogar esta medido na proacl e que a regua de eficacia tem dois mundos que a negam. A aplicacao pede OK literal proprio.',
   portoes, falhas,
