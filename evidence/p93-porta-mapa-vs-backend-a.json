@@ -1,0 +1,146 @@
+{
+  "programa": "scripts/p93-porta-mapa-vs-backend.mjs",
+  "em": "2026-11-21T17:48:08.857Z",
+  "duracao_ms": 14290,
+  "ar": "https://bfr-conecta.turmaroboticabfr.workers.dev/",
+  "personas": [
+    "developer",
+    "education_supervisor",
+    "secretary"
+  ],
+  "registros": [
+    {
+      "papel": "developer",
+      "espera_ms": 1755,
+      "modulo_presente": true,
+      "cliente_presente": true,
+      "mapa_apto": false,
+      "mapa_por": "sem perfil carregado",
+      "nav_qtd": 0,
+      "nav_existe": false,
+      "backend_autorizada": false,
+      "backend_admin": true,
+      "rpc_erro": null,
+      "papel_sessao": "developer",
+      "d1_visivel_mas_negado": false,
+      "d2_escondido_mas_autorizado": true
+    },
+    {
+      "papel": "education_supervisor",
+      "espera_ms": 2356,
+      "modulo_presente": true,
+      "cliente_presente": true,
+      "mapa_apto": false,
+      "mapa_por": "sem perfil carregado",
+      "nav_qtd": 0,
+      "nav_existe": false,
+      "backend_autorizada": true,
+      "backend_admin": false,
+      "rpc_erro": null,
+      "papel_sessao": "education_supervisor",
+      "d1_visivel_mas_negado": false,
+      "d2_escondido_mas_autorizado": true
+    },
+    {
+      "papel": "secretary",
+      "espera_ms": 883,
+      "modulo_presente": true,
+      "cliente_presente": true,
+      "mapa_apto": false,
+      "mapa_por": "sem perfil carregado",
+      "nav_qtd": 0,
+      "nav_existe": false,
+      "backend_autorizada": false,
+      "backend_admin": false,
+      "rpc_erro": null,
+      "papel_sessao": "secretary",
+      "d1_visivel_mas_negado": false,
+      "d2_escondido_mas_autorizado": false
+    }
+  ],
+  "resumo": {
+    "medidas": 3,
+    "d1_visivel_mas_negado": [],
+    "d2_escondido_mas_autorizado": [
+      "developer",
+      "education_supervisor"
+    ]
+  },
+  "portoes": [
+    {
+      "nome": "todas_as_personas_foram_medidas_sem_nulo",
+      "verde": true,
+      "dado": {
+        "pedidas": 3,
+        "registradas": 3,
+        "medidas": 3,
+        "com_falha": []
+      }
+    },
+    {
+      "nome": "o_papel_da_sessão_bate_com_a_persona",
+      "verde": true,
+      "dado": {
+        "trocados": []
+      }
+    },
+    {
+      "nome": "o_developer_é_admin_de_plataforma_e_por_isso_fica",
+      "verde": true,
+      "dado": {
+        "developer": [
+          {
+            "admin": true,
+            "autorizada": false
+          }
+        ]
+      }
+    },
+    {
+      "nome": "a_supervisão_educativa_é_autorizada_pelo_backend",
+      "verde": true,
+      "dado": {
+        "edsup": [
+          true
+        ]
+      }
+    },
+    {
+      "nome": "a_veredicto_do_mapa_e_a_pintura_do_botão_batem_por_persona",
+      "verde": true,
+      "dado": {
+        "divergentes": []
+      }
+    },
+    {
+      "nome": "nenhuma_sessão_tem_as_duas_rpc_em_erro",
+      "verde": true,
+      "dado": {
+        "com_erro": []
+      }
+    },
+    {
+      "nome": "a_divergência_D1_que_a_porta_pelo_rpc_fecharia_está_contada",
+      "verde": true,
+      "dado": {
+        "d1": [],
+        "n_d1": 0,
+        "nota": "contador, não régua: 0 D1 significa que publicar a v141 não esconderia nada, e é isso que reporto"
+      }
+    },
+    {
+      "nome": "a_divergência_D2_que_a_porta_pelo_rpc_abriria_está_contada",
+      "verde": true,
+      "dado": {
+        "d2": [
+          "developer",
+          "education_supervisor"
+        ],
+        "n_d2": 2,
+        "nota": "contador, não régua: D2>0 significa entrada escondida pelo mapa a quem o backend autoriza"
+      }
+    }
+  ],
+  "falhas": [],
+  "veredito": "P93_PORTA_MAPA_VS_BACKEND_OK 8/0 · D1=0 D2=2"
+}

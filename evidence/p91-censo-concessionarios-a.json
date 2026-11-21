@@ -1,0 +1,214 @@
+{
+  "programa": "scripts/p91-censo-concessionarios.mjs",
+  "em": "2026-11-21T17:32:15.391Z",
+  "duracao_ms": 8283,
+  "pergunta": "os 4 perfis com concessão municipal são contas a quem o §5.377 permite ler a rede, ou é acesso de brinde a papel de escola?",
+  "regras": "0 escrita, 0 DDL, 0 publicação, 0 token, 0 e-mail completo.",
+  "colunas_de_profiles": [
+    "birth_date",
+    "created_at",
+    "display_name_custom",
+    "email",
+    "full_name",
+    "id",
+    "phone",
+    "photo_path",
+    "role"
+  ],
+  "enum_account_role": "{pending,parent,student,pedagogical,developer,monitor,gatekeeper,coordinator,secretary,aee,director,psychology,social_work,sports_operator,education_supervisor}",
+  "concessoes": [
+    {
+      "grant_id": "988ffed7-5206-4100-9756-7d0c9bf46bd1",
+      "municipal_role": "secretario_municipal",
+      "municipality_id": "ef4647c2-80a8-466a-810d-2a1579c20a95",
+      "profile_id": "86e31850-eefb-4539-93e1-192ceceb6d12",
+      "granted_by": "49753880-f7fc-4f0a-bbbb-c3883c37a29d",
+      "viva": true,
+      "papel_da_conta": "secretary",
+      "nome_do_municipio": "Sao Paulo (SM8 fixture — apagar)",
+      "uf": "SP",
+      "fora_do_municipal": true
+    },
+    {
+      "grant_id": "d3439a15-71d2-4c66-af9b-fc6fa13abc09",
+      "municipal_role": "secretario_adjunto",
+      "municipality_id": "ef4647c2-80a8-466a-810d-2a1579c20a95",
+      "profile_id": "68075dee-13f4-4d8c-b74f-eceb14ce18d7",
+      "granted_by": "49753880-f7fc-4f0a-bbbb-c3883c37a29d",
+      "viva": true,
+      "papel_da_conta": "secretary",
+      "nome_do_municipio": "Sao Paulo (SM8 fixture — apagar)",
+      "uf": "SP",
+      "fora_do_municipal": true
+    },
+    {
+      "grant_id": "ebf0287d-3e0b-4964-8f2a-1d5553311749",
+      "municipal_role": "gestor_autorizado",
+      "municipality_id": "ef4647c2-80a8-466a-810d-2a1579c20a95",
+      "profile_id": "6083a77c-bedc-4ff9-b75b-f08ff0d33fe1",
+      "granted_by": "49753880-f7fc-4f0a-bbbb-c3883c37a29d",
+      "viva": true,
+      "papel_da_conta": "coordinator",
+      "nome_do_municipio": "Sao Paulo (SM8 fixture — apagar)",
+      "uf": "SP",
+      "fora_do_municipal": true
+    },
+    {
+      "grant_id": "a206f198-6b79-4eca-b54e-8bba7ef8a731",
+      "municipal_role": "equipe_administrativa",
+      "municipality_id": "ef4647c2-80a8-466a-810d-2a1579c20a95",
+      "profile_id": "6936a45a-89ca-4917-b4a9-e7d47209aeae",
+      "granted_by": "49753880-f7fc-4f0a-bbbb-c3883c37a29d",
+      "viva": true,
+      "papel_da_conta": "pending",
+      "nome_do_municipio": "Sao Paulo (SM8 fixture — apagar)",
+      "uf": "SP",
+      "fora_do_municipal": true
+    }
+  ],
+  "municipio_das_concessoes": [
+    {
+      "id": "ef4647c2-80a8-466a-810d-2a1579c20a95",
+      "name": "Sao Paulo (SM8 fixture — apagar)",
+      "uf": "SP"
+    }
+  ],
+  "quem_concedeu": [
+    {
+      "papel_de_quem_concedeu": "developer",
+      "concessoes": 4
+    }
+  ],
+  "escolas_com_city_Sao_Paulo": [
+    {
+      "id": "07201ebb-3cde-411f-b5ce-fed8b27aa540",
+      "nome": "Escola Alpha",
+      "city": "São Paulo"
+    },
+    {
+      "id": "08ebef62-2193-4520-ab44-c044160d565f",
+      "nome": "Escola Municipal Alpha",
+      "city": "São Paulo"
+    },
+    {
+      "id": "0f51bc67-9987-483d-aba0-f138b2b7580e",
+      "nome": "Escola Municipal Beta",
+      "city": "São Paulo"
+    },
+    {
+      "id": "f4ab6309-8c41-4456-a3e2-14f3fe2ad9d3",
+      "nome": "Escola Municipal Gamma",
+      "city": "São Paulo"
+    }
+  ],
+  "planos_da_P92": {
+    "criar_ou_regularizar": "um município real «São Paulo»/SP — o UF já está medido no banco (P90), a cidade vem de `schools.city`",
+    "ligar": [
+      "Escola Alpha",
+      "Escola Municipal Alpha",
+      "Escola Municipal Beta",
+      "Escola Municipal Gamma"
+    ],
+    "nao_ligar": "as escolas de Rio de Janeiro e Belo Horizonte ficam fora de qualquer concessão enquanto não houver grant para elas",
+    "condicao_de_efeito": "ligar escolas torna efetivas as 4 concessões existentes: é por isto que este pré-voo corre antes da escrita"
+  },
+  "portoes": [
+    {
+      "nome": "as_quatro_concessoes_sao_vivas_e_apontam_todas_ao_mesmo_municipio",
+      "verde": true,
+      "dado": {
+        "n": 4,
+        "municipios": [
+          "ef4647c2-80a8-466a-810d-2a1579c20a95"
+        ],
+        "nomes": [
+          "Sao Paulo (SM8 fixture — apagar)"
+        ]
+      }
+    },
+    {
+      "nome": "nenhum_concessionado_tem_apenas_papel_de_escola",
+      "verde": false,
+      "dado": {
+        "fora": [
+          "secretario_municipal<-secretary",
+          "secretario_adjunto<-secretary",
+          "gestor_autorizado<-coordinator",
+          "equipe_administrativa<-pending"
+        ],
+        "todos": [
+          "secretary",
+          "secretary",
+          "coordinator",
+          "pending"
+        ]
+      }
+    },
+    {
+      "nome": "o_municipio_das_concessoes_esta_marcado_como_fixture_para_apagar",
+      "verde": true,
+      "dado": {
+        "fixture": [
+          {
+            "id": "ef4647c2-80a8-466a-810d-2a1579c20a95",
+            "name": "Sao Paulo (SM8 fixture — apagar)",
+            "uf": "SP"
+          }
+        ]
+      }
+    },
+    {
+      "nome": "o_uf_do_municipio_das_concessoes_e_SP_no_banco",
+      "verde": true,
+      "dado": {
+        "uf": "SP"
+      }
+    },
+    {
+      "nome": "quem_concedeu_tem_papel_de_admin",
+      "verde": true,
+      "dado": {
+        "granter": [
+          {
+            "papel_de_quem_concedeu": "developer",
+            "concessoes": 4
+          }
+        ]
+      }
+    },
+    {
+      "nome": "as_escolas_com_city_Sao_Paulo_estao_lista_las",
+      "verde": true,
+      "dado": {
+        "escolas": [
+          "Escola Alpha",
+          "Escola Municipal Alpha",
+          "Escola Municipal Beta",
+          "Escola Municipal Gamma"
+        ],
+        "n": 4
+      }
+    },
+    {
+      "nome": "o_artefacto_nao_e_portador_de_credencial",
+      "verde": true,
+      "dado": {
+        "chaves_lidas": [
+          "grant_id",
+          "municipal_role",
+          "municipality_id",
+          "profile_id",
+          "granted_by",
+          "viva",
+          "papel_da_conta",
+          "nome_do_municipio",
+          "uf"
+        ]
+      }
+    }
+  ],
+  "falhas": [
+    "nenhum_concessionado_tem_apenas_papel_de_escola | {\"fora\":[\"secretario_municipal<-secretary\",\"secretario_adjunto<-secretary\",\"gestor_autorizado<-coordinator\",\"equipe_administrativa<-pending\"],\"todos\":[\"secretary\",\"secretary\",\"coordinator\",\"pending\"]}"
+  ],
+  "veredito": "P91_CENSO_CONCESSIONARIOS_VERMELHO 1 de 7"
+}

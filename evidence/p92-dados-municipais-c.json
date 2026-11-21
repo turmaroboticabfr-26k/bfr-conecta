@@ -1,0 +1,398 @@
+{
+  "programa": "scripts/p92-dados-municipais.mjs",
+  "em": "2026-11-21T17:40:14.792Z",
+  "duracao_ms": 17348,
+  "modo": "--aplicar",
+  "pergunta": "encher o buraco de dados sem dar acesso a quem o §5.377 recusa",
+  "descoberta_p91": "as 4 concessões vivas são de contas reais (secretary×2, coordinator, pending) sobre um município marcado «apagar»; ligar escolas a esse município seria uma concessão disfarçada de cadastro",
+  "decisão": "município NOVO a partir de schools.city (derivação, não invenção; UF medido no banco); escolas fora de São Paulo ficam NULL; concessão nova só sobre a conta de teste da barra; fixture e as 4 linhas ficam intactas",
+  "antes": {
+    "escolas": [
+      {
+        "id": "07201ebb-3cde-411f-b5ce-fed8b27aa540",
+        "nome": "Escola Alpha",
+        "city": "São Paulo",
+        "municipality_id": null
+      },
+      {
+        "id": "b0d73479-35b8-4a6b-a7e4-2377bee9493c",
+        "nome": "Escola Beta",
+        "city": "Rio de Janeiro",
+        "municipality_id": null
+      },
+      {
+        "id": "8a29b3ce-3d9d-47d9-8891-3d45dcd1acfa",
+        "nome": "Escola Gamma",
+        "city": "Belo Horizonte",
+        "municipality_id": null
+      },
+      {
+        "id": "08ebef62-2193-4520-ab44-c044160d565f",
+        "nome": "Escola Municipal Alpha",
+        "city": "São Paulo",
+        "municipality_id": null
+      },
+      {
+        "id": "0f51bc67-9987-483d-aba0-f138b2b7580e",
+        "nome": "Escola Municipal Beta",
+        "city": "São Paulo",
+        "municipality_id": null
+      },
+      {
+        "id": "f4ab6309-8c41-4456-a3e2-14f3fe2ad9d3",
+        "nome": "Escola Municipal Gamma",
+        "city": "São Paulo",
+        "municipality_id": null
+      }
+    ],
+    "municipios": [
+      {
+        "id": "ef4647c2-80a8-466a-810d-2a1579c20a95",
+        "name": "Sao Paulo (SM8 fixture — apagar)",
+        "uf": "SP"
+      }
+    ],
+    "grants": [
+      {
+        "id": "988ffed7-5206-4100-9756-7d0c9bf46bd1",
+        "profile_id": "86e31850-eefb-4539-93e1-192ceceb6d12",
+        "municipality_id": "ef4647c2-80a8-466a-810d-2a1579c20a95",
+        "municipal_role": "secretario_municipal"
+      },
+      {
+        "id": "d3439a15-71d2-4c66-af9b-fc6fa13abc09",
+        "profile_id": "68075dee-13f4-4d8c-b74f-eceb14ce18d7",
+        "municipality_id": "ef4647c2-80a8-466a-810d-2a1579c20a95",
+        "municipal_role": "secretario_adjunto"
+      },
+      {
+        "id": "ebf0287d-3e0b-4964-8f2a-1d5553311749",
+        "profile_id": "6083a77c-bedc-4ff9-b75b-f08ff0d33fe1",
+        "municipality_id": "ef4647c2-80a8-466a-810d-2a1579c20a95",
+        "municipal_role": "gestor_autorizado"
+      },
+      {
+        "id": "a206f198-6b79-4eca-b54e-8bba7ef8a731",
+        "profile_id": "6936a45a-89ca-4917-b4a9-e7d47209aeae",
+        "municipality_id": "ef4647c2-80a8-466a-810d-2a1579c20a95",
+        "municipal_role": "equipe_administrativa"
+      }
+    ]
+  },
+  "pre": {
+    "escolas_candidatas": [
+      {
+        "id": "07201ebb-3cde-411f-b5ce-fed8b27aa540",
+        "nome": "Escola Alpha"
+      },
+      {
+        "id": "08ebef62-2193-4520-ab44-c044160d565f",
+        "nome": "Escola Municipal Alpha"
+      },
+      {
+        "id": "0f51bc67-9987-483d-aba0-f138b2b7580e",
+        "nome": "Escola Municipal Beta"
+      },
+      {
+        "id": "f4ab6309-8c41-4456-a3e2-14f3fe2ad9d3",
+        "nome": "Escola Municipal Gamma"
+      }
+    ],
+    "escolas_fora": [
+      {
+        "nome": "Escola Beta",
+        "city": "Rio de Janeiro"
+      },
+      {
+        "nome": "Escola Gamma",
+        "city": "Belo Horizonte"
+      }
+    ],
+    "municipio_fixture": {
+      "id": "ef4647c2-80a8-466a-810d-2a1579c20a95",
+      "name": "Sao Paulo (SM8 fixture — apagar)",
+      "uf": "SP"
+    },
+    "grantees_actuais": [
+      "secretario_municipal",
+      "secretario_adjunto",
+      "gestor_autorizado",
+      "equipe_administrativa"
+    ],
+    "grantee_novo": {
+      "persona": "education_supervisor",
+      "papel_medido": "education_supervisor",
+      "id": "d7d45999-c21f-4322-8f94-46c6564ff728"
+    },
+    "conta_controle_negada": {
+      "persona": "secretary",
+      "papel_medido": "secretary",
+      "id": "839e1f87-c596-4355-9f89-2ed97711349f"
+    },
+    "quem_concede": {
+      "papel": "developer",
+      "id": "49753880-f7fc-4f0a-bbbb-c3883c37a29d"
+    }
+  },
+  "escritos": [
+    "bfr_municipalities: 1 linha («São Paulo», SP) id cde2740e-9f09-45a5-9cd6-6ee3d6b17268",
+    "schools.municipality_id: 4 linhas ligadas a cde2740e-9f09-45a5-9cd6-6ee3d6b17268",
+    "bfr_municipal_access_grants: 1 linha (education_supervisor → São Paulo, secretario_municipal) id cf6fac96-8464-4d71-9991-f2ba10f7e565"
+  ],
+  "depois": {
+    "escolas": [
+      {
+        "id": "07201ebb-3cde-411f-b5ce-fed8b27aa540",
+        "name": "Escola Alpha",
+        "municipality_id": "cde2740e-9f09-45a5-9cd6-6ee3d6b17268"
+      },
+      {
+        "id": "b0d73479-35b8-4a6b-a7e4-2377bee9493c",
+        "name": "Escola Beta",
+        "municipality_id": null
+      },
+      {
+        "id": "8a29b3ce-3d9d-47d9-8891-3d45dcd1acfa",
+        "name": "Escola Gamma",
+        "municipality_id": null
+      },
+      {
+        "id": "08ebef62-2193-4520-ab44-c044160d565f",
+        "name": "Escola Municipal Alpha",
+        "municipality_id": "cde2740e-9f09-45a5-9cd6-6ee3d6b17268"
+      },
+      {
+        "id": "0f51bc67-9987-483d-aba0-f138b2b7580e",
+        "name": "Escola Municipal Beta",
+        "municipality_id": "cde2740e-9f09-45a5-9cd6-6ee3d6b17268"
+      },
+      {
+        "id": "f4ab6309-8c41-4456-a3e2-14f3fe2ad9d3",
+        "name": "Escola Municipal Gamma",
+        "municipality_id": "cde2740e-9f09-45a5-9cd6-6ee3d6b17268"
+      }
+    ],
+    "municipios": [
+      {
+        "id": "cde2740e-9f09-45a5-9cd6-6ee3d6b17268",
+        "name": "São Paulo",
+        "uf": "SP"
+      },
+      {
+        "id": "ef4647c2-80a8-466a-810d-2a1579c20a95",
+        "name": "Sao Paulo (SM8 fixture — apagar)",
+        "uf": "SP"
+      }
+    ],
+    "grants": [
+      {
+        "id": "988ffed7-5206-4100-9756-7d0c9bf46bd1",
+        "profile_id": "86e31850-eefb-4539-93e1-192ceceb6d12",
+        "municipality_id": "ef4647c2-80a8-466a-810d-2a1579c20a95"
+      },
+      {
+        "id": "d3439a15-71d2-4c66-af9b-fc6fa13abc09",
+        "profile_id": "68075dee-13f4-4d8c-b74f-eceb14ce18d7",
+        "municipality_id": "ef4647c2-80a8-466a-810d-2a1579c20a95"
+      },
+      {
+        "id": "ebf0287d-3e0b-4964-8f2a-1d5553311749",
+        "profile_id": "6083a77c-bedc-4ff9-b75b-f08ff0d33fe1",
+        "municipality_id": "ef4647c2-80a8-466a-810d-2a1579c20a95"
+      },
+      {
+        "id": "a206f198-6b79-4eca-b54e-8bba7ef8a731",
+        "profile_id": "6936a45a-89ca-4917-b4a9-e7d47209aeae",
+        "municipality_id": "ef4647c2-80a8-466a-810d-2a1579c20a95"
+      },
+      {
+        "id": "cf6fac96-8464-4d71-9991-f2ba10f7e565",
+        "profile_id": "d7d45999-c21f-4322-8f94-46c6564ff728",
+        "municipality_id": "cde2740e-9f09-45a5-9cd6-6ee3d6b17268"
+      }
+    ]
+  },
+  "visao_por_sessao": {
+    "concedida": [
+      {
+        "uid_lido": "d7d45999-c21f-4322-8f94-46c6564ff728",
+        "escolas": 4,
+        "alunos": 848,
+        "turmas": 27,
+        "escolas_no_escopo_da_funcao": 4
+      }
+    ],
+    "funcao_de_escopo": {
+      "uid_lido": "d7d45999-c21f-4322-8f94-46c6564ff728",
+      "escolas_no_escopo": 4
+    },
+    "negada_controle": [
+      {
+        "uid_lido": "839e1f87-c596-4355-9f89-2ed97711349f",
+        "escolas": 0
+      }
+    ]
+  },
+  "dados_dentro_das_escolas_ligadas": [
+    {
+      "escola": "Escola Alpha",
+      "alunos": 0,
+      "turmas": 0
+    },
+    {
+      "escola": "Escola Municipal Alpha",
+      "alunos": 848,
+      "turmas": 27
+    },
+    {
+      "escola": "Escola Municipal Beta",
+      "alunos": 0,
+      "turmas": 0
+    },
+    {
+      "escola": "Escola Municipal Gamma",
+      "alunos": 0,
+      "turmas": 0
+    }
+  ],
+  "portoes": [
+    {
+      "nome": "o_municipio_real_nunca_é_a_linha_do_fixture",
+      "verde": true,
+      "dado": {
+        "novo": "cde2740e-9f09-45a5-9cd6-6ee3d6b17268",
+        "fixture": "ef4647c2-80a8-466a-810d-2a1579c20a95",
+        "nomes": [
+          "São Paulo",
+          "Sao Paulo (SM8 fixture — apagar)"
+        ]
+      }
+    },
+    {
+      "nome": "nenhuma_escola_foi_ligada_ao_municipio_do_fixture",
+      "verde": true,
+      "dado": {
+        "ligadas_ao_fixture": []
+      }
+    },
+    {
+      "nome": "as_concessões_sobre_o_fixture_ficam_intactas_e_as_do_municipio_real_são_as_que_devo",
+      "verde": true,
+      "dado": {
+        "grants_antes": 4,
+        "grants_depois": 5,
+        "no_fixture": 4,
+        "no_real": 1
+      }
+    },
+    {
+      "nome": "só_escolas_da_cidade_medida_estão_ligadas",
+      "verde": true,
+      "dado": {
+        "ligadas": [
+          null,
+          null,
+          null,
+          null
+        ],
+        "ao_real": 4,
+        "candidatas": 4
+      }
+    },
+    {
+      "nome": "a_concessão_efectiva_é_sobre_a_conta_de_teste_e_nunca_sobre_uma_conta_real",
+      "verde": true,
+      "dado": {
+        "papeis_no_municipio_real": [
+          "d7d45999…"
+        ],
+        "esperado": "d7d45999…",
+        "papel": "education_supervisor"
+      }
+    },
+    {
+      "nome": "as_claims_chegam_onde_o_predicado_as_lê",
+      "verde": true,
+      "dado": {
+        "concedida": "d7d45999-c21f-4322-8f94-46c6564ff728",
+        "esperada": "d7d45999-c21f-4322-8f94-46c6564ff728",
+        "negada": "839e1f87-c596-4355-9f89-2ed97711349f",
+        "esperada_negada": "839e1f87-c596-4355-9f89-2ed97711349f"
+      }
+    },
+    {
+      "nome": "o_agregado_vê_exactamente_as_escolas_ligadas_ao_municipio_real",
+      "verde": true,
+      "dado": {
+        "lido": {
+          "uid_lido": "d7d45999-c21f-4322-8f94-46c6564ff728",
+          "escolas": 4,
+          "alunos": 848,
+          "turmas": 27,
+          "escolas_no_escopo_da_funcao": 4
+        },
+        "ligadas_no_estado": 4,
+        "candidatas": 4,
+        "municipio_real_existe": true
+      }
+    },
+    {
+      "nome": "a_sessão_sem_concessão_sobre_o_municipio_real_vê_zero",
+      "verde": true,
+      "dado": {
+        "lido": {
+          "uid_lido": "839e1f87-c596-4355-9f89-2ed97711349f",
+          "escolas": 0
+        },
+        "papel_da_controle": "secretary"
+      }
+    },
+    {
+      "nome": "a_função_de_escopo_confirma_o_mesmo_número_da_vista",
+      "verde": true,
+      "dado": {
+        "lido": {
+          "uid_lido": "d7d45999-c21f-4322-8f94-46c6564ff728",
+          "escolas_no_escopo": 4
+        }
+      }
+    },
+    {
+      "nome": "se_existe_município_real_então_a_reversão_existe_e_o_antes_está_gravado",
+      "verde": true,
+      "dado": {
+        "reversao": true,
+        "municipio_real_existe": true,
+        "antes_escolas": 6,
+        "antes_municipios": 1,
+        "antes_grants": 4
+      }
+    },
+    {
+      "nome": "o_estado_de_antes_está_gravado_no_artefacto_com_a_contagem_medida",
+      "verde": true,
+      "dado": {
+        "escolas": 6,
+        "grants": 4,
+        "municipios": 1
+      }
+    },
+    {
+      "nome": "o_artefacto_não_contém_credencial",
+      "verde": true,
+      "dado": {
+        "chaves": [
+          "escolas_candidatas",
+          "escolas_fora",
+          "municipio_fixture",
+          "grantees_actuais",
+          "grantee_novo",
+          "conta_controle_negada",
+          "quem_concede"
+        ]
+      }
+    }
+  ],
+  "falhas": [],
+  "veredito": "P92_DADOS_MUNICIPAIS_APLICADO_E_CONFERIDO 12/0"
+}

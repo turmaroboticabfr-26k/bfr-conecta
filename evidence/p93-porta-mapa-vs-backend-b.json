@@ -1,0 +1,174 @@
+{
+  "programa": "scripts/p93-porta-mapa-vs-backend.mjs",
+  "em": "2026-11-21T17:51:52.924Z",
+  "duracao_ms": 26349,
+  "ar": "https://bfr-conecta.turmaroboticabfr.workers.dev/",
+  "personas": [
+    "developer",
+    "education_supervisor",
+    "secretary"
+  ],
+  "registros": [
+    {
+      "papel": "developer",
+      "espera_ms": 4777,
+      "tentativas": 3,
+      "pronto": true,
+      "modulo_presente": true,
+      "cliente_presente": true,
+      "mapa_apto": true,
+      "mapa_por": "papel=developer viewRole=admin no mapa=true",
+      "nav_qtd": 2,
+      "nav_existe": true,
+      "nav_display": "flex",
+      "nav_hidden_class": false,
+      "nav_caixa": {
+        "w": 192,
+        "h": 56
+      },
+      "nav_visivel": true,
+      "mun_apto_dataset": "sim",
+      "backend_autorizada": false,
+      "backend_admin": true,
+      "rpc_erro": null,
+      "papel_sessao": "developer",
+      "d1_visivel_mas_negado": false,
+      "d2_escondido_mas_autorizado": false
+    },
+    {
+      "papel": "education_supervisor",
+      "espera_ms": 10071,
+      "tentativas": 3,
+      "pronto": true,
+      "modulo_presente": true,
+      "cliente_presente": true,
+      "mapa_apto": true,
+      "mapa_por": "papel=education_supervisor viewRole=education_supervisor no mapa=true",
+      "nav_qtd": 2,
+      "nav_existe": true,
+      "nav_display": "flex",
+      "nav_hidden_class": false,
+      "nav_caixa": {
+        "w": 192,
+        "h": 56
+      },
+      "nav_visivel": true,
+      "mun_apto_dataset": "sim",
+      "backend_autorizada": true,
+      "backend_admin": false,
+      "rpc_erro": null,
+      "papel_sessao": "education_supervisor",
+      "d1_visivel_mas_negado": false,
+      "d2_escondido_mas_autorizado": false
+    },
+    {
+      "papel": "secretary",
+      "espera_ms": 2869,
+      "tentativas": 3,
+      "pronto": true,
+      "modulo_presente": true,
+      "cliente_presente": true,
+      "mapa_apto": false,
+      "mapa_por": "papel=secretary viewRole=secretary no mapa=false",
+      "nav_qtd": 2,
+      "nav_existe": true,
+      "nav_display": "none",
+      "nav_hidden_class": true,
+      "nav_caixa": {
+        "w": 0,
+        "h": 0
+      },
+      "nav_visivel": false,
+      "mun_apto_dataset": "nao",
+      "backend_autorizada": false,
+      "backend_admin": false,
+      "rpc_erro": null,
+      "papel_sessao": "secretary",
+      "d1_visivel_mas_negado": false,
+      "d2_escondido_mas_autorizado": false
+    }
+  ],
+  "resumo": {
+    "pedidas": 3,
+    "sem_falha": 3,
+    "prontas": 3,
+    "com_defeito_de_leitura": [],
+    "d1_visivel_mas_negado": [],
+    "d2_escondido_mas_autorizado": []
+  },
+  "portoes": [
+    {
+      "nome": "todas_as_personas_foram_medidas_sem_nulo",
+      "verde": true,
+      "dado": {
+        "pedidas": 3,
+        "registradas": 3,
+        "prontas": 3,
+        "com_falha": [],
+        "abortadas": []
+      }
+    },
+    {
+      "nome": "o_papel_da_sessão_bate_com_a_persona",
+      "verde": true,
+      "dado": {
+        "trocados": []
+      }
+    },
+    {
+      "nome": "o_developer_é_admin_de_plataforma_e_por_isso_fica",
+      "verde": true,
+      "dado": {
+        "developer": [
+          {
+            "admin": true,
+            "autorizada": false
+          }
+        ]
+      }
+    },
+    {
+      "nome": "a_supervisão_educativa_é_autorizada_pelo_backend",
+      "verde": true,
+      "dado": {
+        "edsup": [
+          true
+        ]
+      }
+    },
+    {
+      "nome": "a_veredicto_do_mapa_e_a_pintura_do_botão_batem_por_persona",
+      "verde": true,
+      "dado": {
+        "divergentes": []
+      }
+    },
+    {
+      "nome": "nenhuma_sessão_tem_as_duas_rpc_em_erro",
+      "verde": true,
+      "dado": {
+        "com_erro": []
+      }
+    },
+    {
+      "nome": "a_divergência_D1_que_a_porta_pelo_rpc_fecharia_está_contada",
+      "verde": true,
+      "dado": {
+        "d1": [],
+        "n_d1": 0,
+        "nota": "contador, não régua: 0 D1 significa que publicar a v141 não esconderia nada, e é isso que reporto"
+      }
+    },
+    {
+      "nome": "a_divergência_D2_que_a_porta_pelo_rpc_abriria_está_contada",
+      "verde": true,
+      "dado": {
+        "d2": [],
+        "n_d2": 0,
+        "nota": "contador, não régua: D2>0 significa entrada escondida pelo mapa a quem o backend autoriza"
+      }
+    }
+  ],
+  "falhas": [],
+  "veredito": "P93_PORTA_MAPA_VS_BACKEND_OK 8/0 · D1=0 D2=0"
+}

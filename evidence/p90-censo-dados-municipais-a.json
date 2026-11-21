@@ -1,0 +1,336 @@
+{
+  "programa": "scripts/p90-censo-dados-municipais.mjs",
+  "em": "2026-11-21T17:28:21.984Z",
+  "duracao_ms": 9646,
+  "pergunta": "associar as escolas a município é derivar do que já está no banco, ou é inventar dado?",
+  "regras": "0 escrita, 0 DDL, 0 publicação, só SELECT e contagens agregadas; perfis por id e papel, sem PII.",
+  "colunas_geograficas": [
+    {
+      "tabela": "bfr_municipal_access_grants",
+      "coluna": "municipal_role",
+      "tipo": "text",
+      "anulavel": "NO"
+    },
+    {
+      "tabela": "bfr_municipal_access_grants",
+      "coluna": "municipality_id",
+      "tipo": "uuid",
+      "anulavel": "NO"
+    },
+    {
+      "tabela": "bfr_municipal_school_stats",
+      "coluna": "city",
+      "tipo": "text",
+      "anulavel": "YES"
+    },
+    {
+      "tabela": "bfr_municipal_school_stats",
+      "coluna": "municipality_id",
+      "tipo": "uuid",
+      "anulavel": "YES"
+    },
+    {
+      "tabela": "bfr_municipalities",
+      "coluna": "code_ibge",
+      "tipo": "text",
+      "anulavel": "YES"
+    },
+    {
+      "tabela": "bfr_municipalities",
+      "coluna": "uf",
+      "tipo": "character",
+      "anulavel": "NO"
+    },
+    {
+      "tabela": "schools",
+      "coluna": "city",
+      "tipo": "text",
+      "anulavel": "YES"
+    },
+    {
+      "tabela": "schools",
+      "coluna": "municipality_id",
+      "tipo": "uuid",
+      "anulavel": "YES"
+    },
+    {
+      "tabela": "schools",
+      "coluna": "state",
+      "tipo": "text",
+      "anulavel": "YES"
+    },
+    {
+      "tabela": "sports_public_schools",
+      "coluna": "city",
+      "tipo": "text",
+      "anulavel": "YES"
+    },
+    {
+      "tabela": "sports_schools",
+      "coluna": "city",
+      "tipo": "text",
+      "anulavel": "YES"
+    }
+  ],
+  "escolas": [
+    {
+      "id": "07201ebb-3cde-411f-b5ce-fed8b27aa540",
+      "nome": "Escola Alpha",
+      "city": "São Paulo",
+      "zone": null,
+      "operating_status": "ativo",
+      "municipality_id": null
+    },
+    {
+      "id": "b0d73479-35b8-4a6b-a7e4-2377bee9493c",
+      "nome": "Escola Beta",
+      "city": "Rio de Janeiro",
+      "zone": null,
+      "operating_status": "ativo",
+      "municipality_id": null
+    },
+    {
+      "id": "8a29b3ce-3d9d-47d9-8891-3d45dcd1acfa",
+      "nome": "Escola Gamma",
+      "city": "Belo Horizonte",
+      "zone": null,
+      "operating_status": "ativo",
+      "municipality_id": null
+    },
+    {
+      "id": "08ebef62-2193-4520-ab44-c044160d565f",
+      "nome": "Escola Municipal Alpha",
+      "city": "São Paulo",
+      "zone": null,
+      "operating_status": "ativo",
+      "municipality_id": null
+    },
+    {
+      "id": "0f51bc67-9987-483d-aba0-f138b2b7580e",
+      "nome": "Escola Municipal Beta",
+      "city": "São Paulo",
+      "zone": null,
+      "operating_status": "ativo",
+      "municipality_id": null
+    },
+    {
+      "id": "f4ab6309-8c41-4456-a3e2-14f3fe2ad9d3",
+      "nome": "Escola Municipal Gamma",
+      "city": "São Paulo",
+      "zone": null,
+      "operating_status": "ativo",
+      "municipality_id": null
+    }
+  ],
+  "sports_schools": [
+    {
+      "id": "559acff1-e4df-42bc-aea4-2d96b8b5b11b",
+      "nome": "Escola Alpha",
+      "city": "São Paulo"
+    },
+    {
+      "id": "2efafbdc-12f4-4e63-a58e-2e50ca5479e2",
+      "nome": "Escola Beta",
+      "city": "Rio de Janeiro"
+    },
+    {
+      "id": "75a15897-e987-408b-af1c-eace66b0a70d",
+      "nome": "Escola Gamma",
+      "city": "Belo Horizonte"
+    },
+    {
+      "id": "08ebef62-2193-4520-ab44-c044160d565f",
+      "nome": "Escola Municipal Alpha",
+      "city": "São Paulo"
+    },
+    {
+      "id": "0f51bc67-9987-483d-aba0-f138b2b7580e",
+      "nome": "Escola Municipal Beta",
+      "city": "São Paulo"
+    },
+    {
+      "id": "f4ab6309-8c41-4456-a3e2-14f3fe2ad9d3",
+      "nome": "Escola Municipal Gamma",
+      "city": "São Paulo"
+    }
+  ],
+  "municipios_no_banco": [
+    {
+      "id": "ef4647c2-80a8-466a-810d-2a1579c20a95",
+      "name": "Sao Paulo (SM8 fixture — apagar)",
+      "uf": "SP",
+      "code_ibge": null
+    }
+  ],
+  "ponte_chaves": [
+    {
+      "matched_by": "mesmo_id",
+      "pares": 3,
+      "confirmados": 0
+    },
+    {
+      "matched_by": "mesmo_nome",
+      "pares": 3,
+      "confirmados": 0
+    }
+  ],
+  "concessoes": [
+    {
+      "id": "988ffed7-5206-4100-9756-7d0c9bf46bd1",
+      "municipality_id": "ef4647c2-80a8-466a-810d-2a1579c20a95",
+      "municipal_role": "secretario_municipal",
+      "viva": true,
+      "granted_by": "49753880-f7fc-4f0a-bbbb-c3883c37a29d"
+    },
+    {
+      "id": "d3439a15-71d2-4c66-af9b-fc6fa13abc09",
+      "municipality_id": "ef4647c2-80a8-466a-810d-2a1579c20a95",
+      "municipal_role": "secretario_adjunto",
+      "viva": true,
+      "granted_by": "49753880-f7fc-4f0a-bbbb-c3883c37a29d"
+    },
+    {
+      "id": "ebf0287d-3e0b-4964-8f2a-1d5553311749",
+      "municipality_id": "ef4647c2-80a8-466a-810d-2a1579c20a95",
+      "municipal_role": "gestor_autorizado",
+      "viva": true,
+      "granted_by": "49753880-f7fc-4f0a-bbbb-c3883c37a29d"
+    },
+    {
+      "id": "a206f198-6b79-4eca-b54e-8bba7ef8a731",
+      "municipality_id": "ef4647c2-80a8-466a-810d-2a1579c20a95",
+      "municipal_role": "equipe_administrativa",
+      "viva": true,
+      "granted_by": "49753880-f7fc-4f0a-bbbb-c3883c37a29d"
+    }
+  ],
+  "papeis_de_perfil": [
+    {
+      "papel": "secretary",
+      "perfis": 4
+    },
+    {
+      "papel": "developer",
+      "perfis": 3
+    },
+    {
+      "papel": "student",
+      "perfis": 2
+    },
+    {
+      "papel": "aee",
+      "perfis": 2
+    },
+    {
+      "papel": "coordinator",
+      "perfis": 2
+    },
+    {
+      "papel": "director",
+      "perfis": 2
+    },
+    {
+      "papel": "pending",
+      "perfis": 2
+    },
+    {
+      "papel": "monitor",
+      "perfis": 2
+    },
+    {
+      "papel": "gatekeeper",
+      "perfis": 2
+    },
+    {
+      "papel": "pedagogical",
+      "perfis": 2
+    },
+    {
+      "papel": "education_supervisor",
+      "perfis": 1
+    },
+    {
+      "papel": "sports_operator",
+      "perfis": 1
+    },
+    {
+      "papel": "parent",
+      "perfis": 1
+    },
+    {
+      "papel": "social_work",
+      "perfis": 1
+    },
+    {
+      "papel": "psychology",
+      "perfis": 1
+    }
+  ],
+  "uf": {
+    "colunas_que_parecem_estado": [],
+    "medicao_por_coluna": [],
+    "colunas_com_dado_real": []
+  },
+  "cidades_das_escolas": [
+    {
+      "id": "07201ebb-3cde-411f-b5ce-fed8b27aa540",
+      "nome": "Escola Alpha",
+      "city": "São Paulo",
+      "cidade": "São Paulo",
+      "uf": null
+    },
+    {
+      "id": "b0d73479-35b8-4a6b-a7e4-2377bee9493c",
+      "nome": "Escola Beta",
+      "city": "Rio de Janeiro",
+      "cidade": "Rio de Janeiro",
+      "uf": null
+    },
+    {
+      "id": "8a29b3ce-3d9d-47d9-8891-3d45dcd1acfa",
+      "nome": "Escola Gamma",
+      "city": "Belo Horizonte",
+      "cidade": "Belo Horizonte",
+      "uf": null
+    },
+    {
+      "id": "08ebef62-2193-4520-ab44-c044160d565f",
+      "nome": "Escola Municipal Alpha",
+      "city": "São Paulo",
+      "cidade": "São Paulo",
+      "uf": null
+    },
+    {
+      "id": "0f51bc67-9987-483d-aba0-f138b2b7580e",
+      "nome": "Escola Municipal Beta",
+      "city": "São Paulo",
+      "cidade": "São Paulo",
+      "uf": null
+    },
+    {
+      "id": "f4ab6309-8c41-4456-a3e2-14f3fe2ad9d3",
+      "nome": "Escola Municipal Gamma",
+      "city": "São Paulo",
+      "cidade": "São Paulo",
+      "uf": null
+    }
+  ],
+  "conclusao": {
+    "escolas": 6,
+    "escolas_com_municipality_id": 0,
+    "municipios_no_banco": 1,
+    "cidades_distintas": [
+      "São Paulo",
+      "Rio de Janeiro",
+      "Belo Horizonte"
+    ],
+    "uf_derivavel_de_coluna_real": false,
+    "uf_na_string_de_cidade": [],
+    "associar_e_derivacao": true,
+    "associar_e_derivacao_sem_invencion_de_uf": false,
+    "beco": [
+      "o município é derivável da `city`, mas `bfr_municipalities.uf` é NOT NULL e não há UF em lado nenhum: ou o UF vem do usuário, ou se altera a tabela certificada (mudar a candidata, não preencher dado) — o §11.5 proíbe inventá-lo."
+    ]
+  },
+  "veredito": "P90_CENSO_DADOS_MUNICIPAIS_MEDIDO"
+}
