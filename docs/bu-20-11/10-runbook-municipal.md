@@ -99,6 +99,34 @@ passa a ser obrigatório no dia em que ela o for.
 
 
 
+## 0B · Estado re-medido no fecho desta passada (20/11, 23:42–23:53 UTC, só leitura)
+
+O pedido foi «resolva todas as pendencias», que nomeia o verbo e não a peça: as medidas abaixo foram tiradas para
+dizer o que está feito, o que está pronto e o que continua a pedir frase literal. Nenhuma escrita no banco,
+nenhum deploy, nenhum mint, nenhum push nesta passada.
+
+| Grandeza | Valor re-medido | Artefacto (todos com o `em` da corrida dentro) |
+|---|---|---|
+| Shell servida pelo ar | `9e236a23eed978cf7c2a2743d449b307`, 3 547 458 B — **ainda a v136** | `evidence/p73-pen38-alcance-por-concessao-20-11e-20-11h.json` → `servido` |
+| Dados reais sem RLS | `schools` 6 · `students` 848 · `classes` 27 · `grades` 112 · `bfr_lesson_attendance` 268 | mesmo artefacto → `reais_sem_rls` (idêntico ao de partida, §0) |
+| Estado municipal | 4 concessões ativas, 1 município, **0** escolas com `municipality_id` | mesmo artefacto → `estado_municipal` |
+| Folha de etiquetagem | 6 escolas, 0 etiquetadas, 1 município (fixture), 1 aviso de fixture | `evidence/p73-municipal-etiqueta-lista-20-11-20-11h.json` → `veredito` |
+| PEN-41 em modo candidata | `P73_PEN41_PREFLIGHT_VERDE_CANDIDATA 13/0` em 14 045 ms | `evidence/p73-pen41-preflight-candidata-20-11e-20-11h.json` |
+| A quem a PEN-41 tira leitura | `director` 2 perfis, 2 com vínculo; `secretary` 4 perfis, 2 com vínculo e **2 sem vínculo** | mesmo artefacto → `populacao_afectada` |
+| Grau de execução vivo das 4 funções novas | 4 de 4 com `anon=X`, `public` não explícito, ACL não nula, dono `postgres`, `SECURITY DEFINER` | `evidence/p73-sonda-exposicao-anonima-20-11-20-11h.json` → `catalogo`, `acl_anon_tem_executar` |
+| O que um caller sem sessão recebe | 3 chamadas, todas 200: os dois agregados com **0 linhas**, o diagnóstico com 1 linha e zero identificadores de linha | mesmo artefacto → `chamadas_anonimas` (`tem_uuid:false`, `tem_coluna_id:false`) |
+| Candidata PEN-43 | `P73_PEN43_CANDIDATA_OK 8/0`, duas vezes, com os dois SQL byte a byte iguais entre corridas | `evidence/p73-pen43-gera-candidata-20-11e-20-11h.json` e `evidence/p73-pen43-gera-candidata-20-11e-20-11h-recorre.json` → `arquivos` |
+
+Os quatro primeiros itens são **os mesmos números do §0 e do §0A**, o que é a conferência de que esta passada não
+mexeu no mundo: a etiqueta continua por decidir, o ar continua na v136, e as políticas alvo da PEN-41 continuam sem
+cláusula de escola. A diferença está em baixo nesta tabela: a PEN-43 tem agora candidata escrita e certificada, e o
+consumidor dos agregados da PEN-39 tem candidata, bundle e peça de fecho escritos (§2.7, §2.8).
+
+Sobre os 0 linhas dos agregados chamados por `anon`: é o caso em que a revogação **não** muda a quantidade de dados
+que hoje se vê — o município de ninguém tem 0 escolas — mas muda a promessa: as duas funções são `STABLE` e
+`SECURITY DEFINER`, por isso o que hoje sai vazio pode sair preenchido no dia em que a etiquetagem for decidida,
+sem um único `GRANT` novo no meio. É essa a razão de a candidata existir antes da decisão do §1.
+
 ## 1 · A decisão que o banco não pode tomar por nós
 
 Há uma única coisa neste pacote que não é técnica: **que município governa cada escola.** A folha está medida e
@@ -153,7 +181,8 @@ de destino já existir, pelo que `P73_SUF` é sempre um sufixo novo — não é 
 corrida apaga a evidência da anterior.
 
 *OK necessário:* nenhum — os quatro correm em leitura ou em modo de recusa.
-*Verde esperado:* `PACOTE_MUNICIPAL_OK 17/0`, na corrida que já varre o corpus com o modo de reversão de §4:
+*Verde esperado:* `PACOTE_MUNICIPAL_OK` com o censo de portões lido do registo daquela corrida, na corrida que já
+varre o corpus com o modo de reversão de §4:
 stdout `evidence/pacote-municipal-stdout-pos-modo-reversao-20-11.txt`, registo
 `evidence/pacote-municipal-pecas-20-11-pos-modo-reversao.json`. A corrida anterior,
 `evidence/pacote-municipal-pecas-20-11-pos-pacote-completo-no-indice.json` (stdout
@@ -182,7 +211,16 @@ mudou em 20/11 com o modo de reversão, e uma soma nesta página envelhece no di
 ao `--selfteste`. Ao treze original de portões do pacote juntaram-se, por esta ordem e cada um com a sua
 falsificação na tabela abaixo, `cada_ficheiro_do_corpus_despe_pelo_menos_um_caminho` e
 `os_fantasmas_da_prosa_continuam_fantasmas_declarados`, depois `nenhum_caminho_citado_fica_fora_do_git` (§2.0.1)
-e por último `os_fora_do_indice_por_decisao_continuam_decididos`. O dígito de cada corrida lê-se no registo
+e `os_fora_do_indice_por_decisao_continuam_decididos`. Nesta passada entraram mais cinco, todos sobre as peças
+novas: `a_v138_continua_nao_publicada_com_a_frase_de_OK_declara`,
+`a_v138_tem_candidata_e_bundle_verdes_com_a_prova_de_ar_escrita`,
+`o_bundle_v138_empilha_o_remendo_da_pen40_e_muda_a_shell`,
+`a_v138_chama_os_dois_nomes_que_o_DDL_da_PEN39_declara` e
+`toda_peca_sem_registo_tem_motivo_no_corpus_e_apagar_a_frase_e_vermelho`. As quatro primeiras lêem vereditos de
+artefactos e nomes de `CREATE FUNCTION` de ficheiros SQL; a última foi re-escrita a meio desta passada, porque na
+primeira forma comparava um literal deste script consigo próprio — tautologia sem vermelho possível — e passou a
+exigir a frase no corpus, com o procurador corrido duas vezes: uma sobre o corpus real e outra sobre uma cópia com
+as marcas apagadas, onde não encontrar nada é o lado verde do dente. O dígito de cada corrida lê-se no registo
 daquela corrida, e é por isso que esta frase nomeia cláusulas em vez de pinhar somas — uma soma escrita aqui
 envelhece no dia em que alguém escreve um portão novo.
 
@@ -203,9 +241,13 @@ linha deu vermelho no próprio portão dos dentes
 (`evidence/pacote-municipal-pecas-20-11-VERMELHO-o-esperado-dizia-o-valor-do-fixture-e-nao-a-clausa-com-a-negacao-ja-dentro.json`,
 27 022 B, `10d48eb3c303a4c86c9343feb9177421`): eu escrevi no vector esperado o valor cru do fixture (`false`) em
 vez da cláusula que já traz a negação dentro de si, e um portão assim não pode nunca estar verde. O registo novo
-declara também a classe com conjunto vazio — `pecas_sem_registo_de_aplicacao`, hoje `PEN-41`, com
-`nomes_na_candidata: []` impresso: a PEN-41 não cria função alguma, por isso o vermelho dela não pode vir deste
-portão e sim de `as_policies_alvo_existem_e_nenhuma_tem_escopo`.
+declara também a classe com conjunto vazio — `pecas_sem_registo_de_aplicacao`, hoje `PEN-41` e `PEN-43`, ambas com
+`nomes_na_candidata: []` impresso: nenhuma das duas cria função alguma (a PEN-41 aperta policies, a PEN-43 revoga
+execução sobre nomes já criados pela PEN-39), por isso o vermelho delas não pode vir deste portão e sim, para a
+PEN-41, de `as_policies_alvo_existem_e_nenhuma_tem_escopo`, e para a PEN-43 do portão do §2.7 que exige que o `anon`
+continue com `X` no catálogo vivo até a peça ser aplicada. O motivo de cada uma estar sem registo passou a ser
+frase deste documento, com marcador próprio, e não uma linha do script — ver as duas linhas `MOTIVO-SEM-REGISTO`
+abaixo (§2.5 e §2.7).
 O segundo portão existe porque o documento 08 cita `scripts/bu4-digestao-para-documentacao-20-11.mjs`, que não
 existe — e não existe *por declaração*: a linha ao lado diz que é o nome do output, não o do script. A
 excepção não é uma lista de nomes tolerados; é a exigência de que a frase declarante continue no corpus, e foi
@@ -319,7 +361,9 @@ versionado, ou o v1 entra no índice e o substituto é retirado; as duas opçõe
 por isso pedem escolha explícita e não a minha. A numeração é a das pontas soltas deste runbook: FALTA-1 em §2.6
 (fechada ao nível da candidata em 20/11, com o `--selfteste` e a recusa de publicação medidos; quem põe a peça a
 conferir de verdade é a publicação, e essa pede OK literal próprio), FALTA-2 em §4 (fechada em 20/11, com as recusas
-medidas e o ciclo completo ainda por correr), FALTA-3 em §2.2, esta aqui.
+medidas e o ciclo completo ainda por correr), FALTA-3 em §2.2, esta aqui, FALTA-5 em §2.7 (a PEN-43 tem candidata
+e reversão certificadas e não tem caminho de aplicação) e a sua irmã de publicação em §2.8, que é o mesmo tipo de
+ponta com outro nome: escrita, gateada, e à espera de frase.
 
 ### 2.1 · Preflight fresco da peça que se vai aplicar
 
@@ -423,6 +467,19 @@ perfis `secretary` sem vínculo passam de 848/27 para 0/0**. Este é o único pa
 de leitura a utilizadores reais, e por isso o §3.2 é obrigatório depois dele.
 *Verde de fecho:* `P73_MUNICIPAL_APLICADO_E_CONFERIDO PEN-41` com `P73_PEN41_PREFLIGHT_VERDE_REVERSAO 13/0`.
 
+MOTIVO-SEM-REGISTO · PEN-41 — candidata escrita, preflight de entrada verde em modo candidata, mas nenhuma frase
+`APLICAR PEN-41 NO BANCO` foi dada: é a única das três que tira leitura a gente real, e o registo de aplicação só
+pode nascer de um OK próprio.
+
+Re-medida às 23:43 UTC de 20/11, em leitura, com o `p73-pen41-preflight.mjs` da altura:
+`P73_PEN41_PREFLIGHT_VERDE_CANDIDATA 13/0` em 14 045 ms
+(`evidence/p73-pen41-preflight-candidata-20-11e-20-11h.json`). Os números que o §2.5 promete manter-se-ão:
+`populacao_afectada` dá `director` 2 perfis / 2 com vínculo e `secretary` 4 perfis / 2 com vínculo / **2 sem
+vínculo**, e `clausula_de_escopo` confirma que o acrescento às quatro policies é uma só expressão,
+`bfr_school_in_own_school_scope(school_id)`, nada mais. O campo `o_que_este_verde_nao_autoriza` diz «nada» com
+todas as letras, e é essa a frase que este parágrafo não deve ampliar: o verde re-tirado prova que o estado vivo
+ainda é aquele contra que a candidata foi escrita, e nada mais.
+
 ### 2.6 · Publicação da v137 (PEN-40) — o passo que muda a tela
 
 Não é DDL e não passa pelo aplicador. O mecanismo é o das versões anteriores, medido em
@@ -451,6 +508,104 @@ as outras três exigidas são `evidence/v137-deploy-stdout-20-11.txt`,
 nascem do passo de publicação. A recusa não escreve registo próprio de propósito: um vermelho contra um ar que
 ainda serve a v136 é indistinguível de um bundle partido, e as três ausências são o conteúdo do stdout, não o
 nome de um ficheiro. Publicação continua sem OK literal próprio e por isso **não deve ser feita**.
+
+### 2.7 · PEN-43 — fechar o `EXECUTE` de `anon` nas funções municipais de leitura — CANDIDATA ESCRITA 20/11, NADA APLICADO
+
+A pendência nasceu da aplicação da PEN-39: as três funções novas que ela criou ficaram no catálogo com
+`anon=X` na ACL explícita, `SECURITY DEFINER` e `STABLE`. O que um chamador sem sessão recebe hoje, medido às
+23:43 UTC de 20/11 (`evidence/p73-sonda-exposicao-anonima-20-11-20-11h.json`,
+`P73_EXPOSICAO_ANONIMA_VERDE 6/0 · 3 chamadas · 4 de 4 com anon=X`): as duas agregadas devolvem **200 com 0
+linhas** e nenhum identificador de linha (`tem_uuid:false`, `tem_coluna_id:false`), e a de diagnóstico devolve 200
+com **uma** linha de contagens de rede. Zero hoje não quer dizer zero amanhã: no dia em que a etiquetagem do §1 for
+decidida, os mesmos `GET` passam a devolver números reais sem um único `GRANT` novo no meio. É essa a razão de a
+peça existir antes da decisão, e não depois.
+
+O remédio é o menor possível, e é gerado, não escrito à mão — `scripts/p73-pen43-gera-candidata.mjs` (0 escrita no
+banco, catálogo lido por `SELECT`) produz `scripts/p73-pen43-ddl-candidata.sql` (1 373 B,
+`74a4cae7fa7888e42b9aceb00d47d4a9`) e `scripts/p73-pen43-ddl-reversao.sql` (432 B, `dec93047a0ba92b233589ec6143a37fc`):
+três `REVOKE ... FROM anon`, um por nome de leitura, com a reversão a devolver o grau exactamente nos mesmos três
+nomes. Os nomes e os tipos vêm dos `CREATE FUNCTION` das candidatas em disco (`p73-pen38`, `p73-pen39`, `p73-pen41`)
+e a lista de revogados vem da `proacl` viva — nada é dactilografado, e é por isso que correr a geradora duas vezes
+dá os mesmos bytes: `evidence/p73-pen43-gera-candidata-20-11e-20-11h.json` e
+`evidence/p73-pen43-gera-candidata-20-11e-20-11h-recorre.json` são `P73_PEN43_CANDIDATA_OK 8/0` as duas, com os
+dois `md5` de ficheiro iguais entre si.
+
+**A pré-condição de eficácia, e os dois mundos que a negam.** Um `REVOKE ... FROM anon` só é eficaz se o grau do
+`anon` estiver numa entrada *explícita* da ACL: se ele vier do default a `PUBLIC`, o mesmo `REVOKE` não faz nada e o
+portão verde seria cortesia. A geradora exige `anon_explicito && !public_explicito && !acl_nula` por nome, e prova
+os dois negativos na mesma corrida — `fixtures.mundo_acl_com_public` e `fixtures.mundo_acl_nulo` são ACLs
+fabricadas, corridas pelo mesmo classificador, e dão exactamente as duas bandeiras que fariam o vermelho
+(`public_explicito:true` no primeiro, `anon_explicito:false, acl_nula:true` no segundo). O terceiro dente é o do
+casamento de assinatura: `tipos_trocados_nao_casa:false` com `nomes_de_parametro_casam:true`, porque esta build devolve
+`p_school uuid, …` e uma agulha de tipos sem nomes não tinha positivo possível (é a mesma lição da régua de
+assinatura do §0A, reaproveitada aqui antes de escrever o portão).
+
+**FALTA-5 (aberta, e o custo de cada lado está dito antes de escolher).** A PEN-43 tem candidata e reversão
+certificadas, mas **não tem caminho de aplicação**: a tabela `PECAS` do aplicador cobre PEN-38/39/41, e cada uma
+delas exige um preflight próprio com os dois modos (`--reversao` como pré-condição de entrada, candidata como
+conferência de saída). `node scripts/p73-municipal-aplica-ddl.mjs --peca PEN-43` recusa hoje com
+`--peca tem de ser uma das pecas certificadas: PEN-38, PEN-39, PEN-41`, e foi medido, não inferido. As duas
+saídas, com o preço de cada uma: (i) escrever `scripts/p73-pen43-preflight.mjs` nos dois modos e acrescentar a
+entrada à tabela — o caminho com esse nome ainda não existe, é peça nova, com dentes próprios, e mexe num
+instrumento que escreve no banco; (ii) deixar a
+candidata na gaveta enquanto a decisão do §1 não for tomada, que é o estado de hoje e não queima nada. Colar o SQL
+à mão no painel do Postgres é a terceira hipótese, e é exatamente contra ela que este pacote foi desenhado, por
+isso não a conto como opção.
+
+MOTIVO-SEM-REGISTO · PEN-43 — a candidata e a reversão estão escritas e certificadas offline, mas a peça não tem
+preflight nos dois modos nem entrada no aplicador (FALTA-5 acima), logo nenhum `APLICAR PEN-43 NO BANCO` pode
+correr pelo caminho que o pacote exige.
+
+### 2.8 · Publicação da v138 (o consumidor dos agregados da PEN-39) — CANDIDATA E BUNDLE PRONTOS, NADA PUBLICADO
+
+Não é DDL e não passa pelo aplicador; é o mesmo mecanismo do §2.6 com uma base diferente. A v138 existe porque a
+PEN-39 criou dois nomes que **ninguém chama** — medido, não inferido, por `scripts/p73-sonda-uso-quatro.mjs`
+(`P73_USO_QUATRO_NA_V136_VERDE 6/0`, `evidence/p73-sonda-uso-quatro-na-v136-20-11.json`). Sem este passo, a PEN-39 é
+DDL morto; com ele, a aba municipal passa a ler os agregados pelo RPC em vez de percorrer as mesas.
+
+```
+node scripts/v138-gera-candidata.mjs      # 0 HTTP, 0 banco: recorta o invólucro do módulo na shell da v136
+node scripts/v138-gera-bundle.mjs         # 0 deploy: worker-deploy-v138-painel-municipal + esperado-v138.json
+node scripts/v138-pos-deploy.mjs --selfteste
+```
+
+*O que a candidata faz e o que prova* (`evidence/v138-gera-candidata-20-11.json`, `V138_CANDIDATA_OK 8/0`;
+`bfr-candidata-v138-painel-municipal/index.html` = 3 551 245 B, `592b3652671d689220784af41da74321`): parte da shell
+que o `audit-publicacao-v136.json` registou (`9e236a23eed978cf7c2a2743d449b307`, 3 547 458 B), recorta **só** o
+interior do invólucro `<script data-bfr-municipal-module="1">` — é o único sítio onde o módulo municipal vive, e o
+âncorado tem de cair todo dentro dele — e acrescenta duas chamadas `.rpc('…')`. Os dois nomes não são escritos
+aqui nem ali: lêem-se dos `CREATE FUNCTION` de `scripts/p73-pen39-ddl-candidata.sql`, e o portão exige **exactamente
+uma ocorrência de cada** dentro do invólucro. As colunas pedidas por cada RPC são conferidas contra o `RETURNS
+TABLE` do mesmo DDL, com um fixture que dispara (`RETURNS TABLE (a uuid, b char(2), c integer, d boolean)` tem de
+dar `a,b,c,d`) porque um `[^)]*` corta-se dentro de `char(2)` — foi o vermelho desta peça, preservado com o defeito
+no nome em `evidence/v138-gera-candidata-20-11-VERMELHO-parser-de-colunas-cortado-em-char-2-e-pegada-composta.json`.
+O comportamento proibido também é portão: a porta de etiquetagem (`bfr_school_set_municipality`) não pode ser
+chamada por uma candidata que só lê.
+
+*O que o bundle prova* (`evidence/v138-gera-bundle-20-11.json`, `V138_BUNDLE_OK 28/0`;
+`worker-deploy-v138-painel-municipal/worker.mjs` = 3 616 188 B, `6837bf459045346aff5dccf5ebcab84f`): a base é o
+worker **candidato** da v137, não o ar publicado — `worker-deploy-v137-remendo-pen40/esperado-v137.json` —, por isso
+a v138 empilha o remendo PEN-40 em vez de o desfazer: o módulo servido continua `b83b4c2666fc909d50a358b86b99de05`
+com 52 532 B, byte a byte o da v137, e o que muda é o embed HTML (+3 787 B no embed, +3 856 B no worker, e os dois
+números são do mesmo portão, não de conta minha) e a etiqueta do SW `bfr-conecta-v138`. Os treze assets e o
+`_headers` (`6f1f82a390b0e6111e3b8aff7d6415b2`) ficam intactos, o esqueleto do worker fora dos dois embeds é
+verificado por máscara com um dente que parte a máscara de propósito, e o `esperado-v138.json` que a corrida escreve
+é re-lido e conferido campo a campo antes do veredicto.
+
+*Estado de publicação, medido e não declarado:* `publicado:false`, `ok_literal` =
+`(sem OK literal — candidata pronta; a publicacao exige OK literal novo)`, e o marcador de que uma versão foi mesmo
+publicada é o `audit-publicacao-vNNN.json` na raiz — existe para v133, v134, v135 e v136, **não** existe para v137
+nem para v138, embora os dois directórios `worker-deploy-*` estejam em disco. É por isso que a candidata recusa o
+proxy «o directório existe logo foi publicado»: um bundle pronto e um bundle no ar são duas coisas que este pacote
+já confundiu uma vez. A prova ao nível do ar, `scripts/v138-pos-deploy.mjs`, está escrita com as duas cláusulas
+invertidas face à v137 — aqui a shell **tem** de ter mudado e o módulo **não** pode ter mudado —, dá
+`V138_POS_DEPLOY_SELFTESTE_OK 11/0` offline (`evidence/v138-pos-deploy-stdout-selfteste-20-11.txt`, 0 HTTP, 0
+escrita) e recusa com exit 2 sem as três saídas do `wrangler` (`evidence/v138-pos-deploy-stdout-recusa-20-11.txt`).
+O antecessor publicado também não é lembrado: a peça percorre os `audit-publicacao-vNNN.json` e escolhe o mais
+recente, pelo que hoje aponta para a v136 e, se a v137 for publicada entretanto, passa a apontar para ela sozinha.
+
+*Publicação:* `cd worker-deploy-v138-painel-municipal && npx wrangler@4.154.0 deploy`, com as três saídas em
+`evidence/` e frase literal própria — ver §3.5 para o que fica a ser medição depois de ela correr.
 
 ## 3 · Provas de fecho (o que é medição e o que é previsão)
 
@@ -497,9 +652,43 @@ pernas no ar depois do deploy.
 ### 3.4 · O que ainda não é prova
 
 * PEN-39 aplicada **não** é tela a mostrar números: o consumo dos agregados pelo módulo servido é código de
-  produto (v138), não DDL. Está em §5.
+  produto, e esse produto existe desde 20/11 como v138 local (§2.8) — candidata `V138_CANDIDATA_OK 8/0` e bundle
+  `V138_BUNDLE_OK 28/0`. O que continua por provar é o ar: `scripts/p73-sonda-uso-quatro.mjs` mede 0 ocorrências
+  dos dois nomes no bundle publicado, e enquanto a v138 não for publicada a PEN-39 é DDL sem consumidor no site.
 * A etiquetagem é contável em `bfr_municipal_audit`; a sua ausência **não** é previsão, é o portão
   `trilha.linhas_para_esta_escola > 0` do artefacto de escrita, que hoje nunca correu porque o RPC não existe.
+* A PEN-43 tem candidata e reversão certificadas e **não** tem caminho de aplicação (FALTA-5 do §2.7): correr o
+  aplicador com `--peca PEN-43` dá recusa medida, não erro de digitação minha.
+
+### 3.5 · Depois da publicação da v138 (o passo que hoje não pode correr)
+
+```
+node scripts/v138-pos-deploy.mjs --selfteste   # offline, já corrido: 0 HTTP, 0 escrita
+node scripts/v138-pos-deploy.mjs               # só depois do `wrangler deploy` de §2.8, com as três saídas em evidence/
+```
+
+O que **já é medição** hoje: o `--selfteste` offline, 11 casos, `V138_POS_DEPLOY_SELFTESTE_OK 11/0` em
+`evidence/v138-pos-deploy-stdout-selfteste-20-11.txt` — ele confere as fontes de espera, que os dois nomes do
+DDL distinguem a candidata da shell publicada, que a régua do delta bate com a promessa da candidata **e** do
+bundle, que o módulo da v138 é o mesmo remendo da v137, que a etiqueta mudou com o SW do mesmo comprimento, que a
+recusa de publicação tem positivo e negativo possíveis, que o antecessor se deriva do disco (`agora` = v136, e o
+fixture prova que ele passaria a v137 se a v137 fosse publicada), que o URL vem do diário e que a lista de
+controlo exclui só o módulo. E é medição a recusa: `node scripts/v138-pos-deploy.mjs` sem as três saídas imprime
+`V138_POS_DEPLOY_NAO_PUBLICADA` com exit 2 (`evidence/v138-pos-deploy-stdout-recusa-20-11.txt`) e não escreve
+registo, de propósito — um vermelho contra um ar que ainda serve a v136 é indistinguível de um bundle partido.
+
+O que **ainda é previsão**: a corrida de ar, 18 portões de `C0` a `C17`. As duas cláusulas que a v137 invertia
+estão invertidas aqui, e é a diferença de natureza entre as duas publicações: `C2` afirma que a shell servida
+**deixou** de ser a da v136 e a da v137 (com o delta de 3 787 B conferido contra `portoes-v138-candidata.json`), e
+`C4` afirma que o módulo servido **continua** byte a byte o remendo da PEN-40. `C1`/`C3`/`C6`/`C14` comparam com
+`worker-deploy-v138-painel-municipal/esperado-v138.json`; `C5` conta os dois nomes lidos do DDL na shell servida e
+exige zero ocorrências da porta de etiquetagem; `C7` pega no SW com os mesmos bytes e md5 diferente; `C8`–`C11`
+são headers, CSP, 404 e firebase; `C12`/`C13` percorrem os onze assets que não mudam (censo =
+`worker-deploy-v123-pdfs/esperado-v123.json` menos o módulo); `C15`/`C16` só valem com as três saídas do
+`wrangler` em disco, e `C16` ancora a cadeia de reversão no antecessor que o disco provar. Nem um nem outro
+provam a tela: `o_que_esta_peca_prova` diz que o ar serve o bundle gateado, e que o que o painel mostra a um
+utilizador autenticado é uma corrida de browser à parte — com a etiquetagem do §1 por decidir, os números legítimos
+são zero, e zero não distingue «painel vazio por desenho» de «painel partido» sem essa corrida.
 
 ## 4 · Reversão, se for preciso desfazer
 
@@ -563,12 +752,18 @@ exactamente a que FALTA-2 existia para não ficar ao arbítrio de quem cola SQL.
 1. **`INSERT` do município real.** Escrita de conteúdo, sem instrumento; é a opção 1 do §1 e pede OK próprio.
 2. **Apagar a fixture `Sao Paulo (SM8 fixture — apagar)`.** Só faz sentido depois de as concessões estarem
    apontadas para um município real; hoje apagá-la deixa 4 concessões órfãs.
-3. **v138: o código de produto que chama os agregados da PEN-39.** Sem isto, a PEN-39 é DDL morto. Não é
-   deste runbook.
+3. **A publicação da v138 — não o seu código.** Desde 20/11 a v138 pertence ao pacote: candidata
+   `V138_CANDIDATA_OK 8/0`, bundle `V138_BUNDLE_OK 28/0` e peça de fecho com self-teste verde estão escritos
+   (§2.8, §3.5). O que fica fora é o `wrangler deploy`, que exige OK literal próprio, e a corrida de browser que
+   mostra números a uma conta autenticada — essa continua bloqueada pela decisão de etiquetagem do §1, porque sem
+   escola etiquetada os agregados devolvem zero e zero não distingue painel vazio de painel partido.
 4. **RM-5.2 (seed do calendário letivo).** Estado medido em `evidence/p73-rm52-estado-calendario-20-11.json`
    e régua de completude em `evidence/p73-rm52-regua-completude-20-11.json`; conteúdo é decisão pedagógica.
 5. **PEN-42 (`register_gate_checkin_v2`).** Fora do escopo municipal.
-6. **`git push`** dos commits deste pacote: precisa de OK literal novo; nenhum push está autorizado pelo
+6. **O preflight da PEN-43 (FALTA-5 do §2.7).** A peça tem candidata e reversão certificadas e não tem caminho de
+   aplicação; escrevê-lo é mexer num instrumento que escreve no banco, e a escolha tem preço dos dois lados — por
+   isso é decisão da casa, não deste pacote.
+7. **`git push`** dos commits deste pacote: precisa de OK literal novo; nenhum push está autorizado pelo
    trabalho descrito aqui.
 
 ## 6 · Índice das peças nomeadas
@@ -580,7 +775,15 @@ Preflights: `scripts/p73-pen38-preflight.mjs`, `scripts/p73-pen39-preflight.mjs`
 Escrita: `scripts/p73-municipal-aplica-ddl.mjs`, `scripts/p73-municipal-etiqueta.mjs`.
 Conferência do pacote: `scripts/pacote-municipal-confere-pecas.mjs`.
 Conferência pós-deploy: `scripts/v136-pos-deploy.mjs` (corrida em 19/11) e `scripts/v137-pos-deploy.mjs`
-(escrita em 20/11, ainda sem corrida de ar — ver §2.6 e §3.3).
+(escrita em 20/11, ainda sem corrida de ar — ver §2.6 e §3.3), e `scripts/v138-pos-deploy.mjs` (escrita e
+self-testada em 20/11, também sem corrida de ar — §2.8 e §3.5).
+Cadeia local da v138 (20/11, §2.8): `scripts/v138-gera-candidata.mjs` com
+`bfr-candidata-v138-painel-municipal/portoes-v138-candidata.json`, `scripts/v138-gera-bundle.mjs` com
+`worker-deploy-v138-painel-municipal/esperado-v138.json`, e os dois stdout de `scripts/v138-pos-deploy.mjs` em
+`evidence/v138-pos-deploy-stdout-selfteste-20-11.txt` e `evidence/v138-pos-deploy-stdout-recusa-20-11.txt`.
+Geradora da PEN-43 (20/11, §2.7): `scripts/p73-pen43-gera-candidata.mjs`, que escreve
+`scripts/p73-pen43-ddl-candidata.sql` e `scripts/p73-pen43-ddl-reversao.sql` a partir dos `CREATE FUNCTION` das
+candidatas e da `proacl` viva; o `scripts/p73-pen43-preflight.mjs` continua fantasma declarado, é a FALTA-5.
 Medição de alcance: `scripts/p73-pen38-alcance-por-concessao-20-11.mjs`, `scripts/p73-pen39-sonda-uso-agregados.mjs`,
 `scripts/p73-pen38-sonda-consumidor-do-diagnostico.mjs` (FALTA-3, escrita e corrida em 20/11).
 Medição de superfície no ar, por recipiente e por toque (20/11, §6A de
@@ -598,10 +801,14 @@ invólucro e na página inteira, com fixture que dispara duas vezes num nome e c
 inexistente).
 
 As pegadas (bytes e md5) de cada um destes caminhos, medidas no fecho do pacote e não a meio de uma escrita,
-estão em `evidence/pacote-municipal-pecas-20-11-fecho-corpus-duplo.json`. O registo anterior,
+estão em `evidence/pacote-municipal-pecas-20-11-fecho-corpus-duplo.json`. O fecho de 20/11 que acrescentou a v138
+e a PEN-43 ao corpus tem as suas pegadas no registo da própria corrida, que nomeio por família
+(`evidence/pacote-municipal-pecas-20-11-<sufixo>.json`) e não por nome: o sufixo escolhe-se no momento de correr,
+e a captura que decide um commit não se stagea no mesmo fôlego — stageá-la faria o portão de índice varrer-se a si
+próprio, que já foi regressão medida nesta casa. O registo anterior,
 `evidence/pacote-municipal-pecas-20-11.json`, fica como história: mediu o tempo em que o corpus era só este
 runbook, e o censo de caminhos que ele traz é menor do que o de hoje pela única razão de que a prosa entretanto
-passou a citar mais ficheiros. Não pinho aqui nenhum dos dois números pelo motivo explicado em §2.0 — pinar o
+passou a citar mais ficheiros. Não pinho aqui nenhum dos números pelo motivo explicado em §2.0 — pinar o
 censo obriga a re-escrever esta frase a cada caminho acrescentado, e a frase que o conta é ela própria um
-caminho acrescentado. Nenhum dos dois registos lista a sua própria pegada: mudam com a secção que os cita, e um
+caminho acrescentado. Nenhum destes registos lista a sua própria pegada: mudam com a secção que os cita, e um
 número medido antes do commit já nasce ultrapassado. A pegada deste runbook é a do commit que o versionar.

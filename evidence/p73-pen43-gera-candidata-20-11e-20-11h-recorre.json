@@ -1,0 +1,242 @@
+{
+  "programa": "scripts/p73-pen43-gera-candidata.mjs",
+  "em": "2026-11-20T23:52:55.154Z",
+  "duracao_ms": 5004,
+  "pergunta": "que REVOKE por nome fecha hoje o grau de anon nas funcoes municipais de leitura, e o que fica por decidir?",
+  "metodo": "nomes, tipos e corpo lidos dos CREATE FUNCTION das candidatas em disco; catalogo vivo por SELECT (provolatile, prosecdef, proacl, pg_get_function_identity_arguments); classificacao por duas vias; arquivos gerados com abort se diferirem do produzido",
+  "candidatas_lidas": [
+    "p73-pen38-ddl-candidata.sql",
+    "p73-pen39-ddl-candidata.sql",
+    "p73-pen41-ddl-candidata.sql",
+    "p73-pen43-ddl-candidata.sql"
+  ],
+  "por_nome": [
+    {
+      "nome": "bfr_school_set_municipality",
+      "ficheiro": "scripts/p73-pen38-ddl-candidata.sql",
+      "tipos": [
+        "uuid",
+        "uuid",
+        "text"
+      ],
+      "corpo_chars": 1238,
+      "vol": "v",
+      "definer": "true",
+      "ident": "p_school uuid, p_municipality uuid, p_reason text",
+      "acl": "postgres=X/postgres|anon=X/postgres|authenticated=X/postgres|service_role=X/postgres",
+      "anon_explicito": true,
+      "public_explicito": false,
+      "acl_nula": false,
+      "escreve_no_corpo": true,
+      "escrita_por_volatilidade": true,
+      "assinatura_casa": true,
+      "acordam": true
+    },
+    {
+      "nome": "bfr_municipal_scope_diagnostico",
+      "ficheiro": "scripts/p73-pen38-ddl-candidata.sql",
+      "tipos": [],
+      "corpo_chars": 583,
+      "vol": "s",
+      "definer": "true",
+      "ident": "",
+      "acl": "postgres=X/postgres|anon=X/postgres|authenticated=X/postgres|service_role=X/postgres",
+      "anon_explicito": true,
+      "public_explicito": false,
+      "acl_nula": false,
+      "escreve_no_corpo": false,
+      "escrita_por_volatilidade": false,
+      "assinatura_casa": true,
+      "acordam": true
+    },
+    {
+      "nome": "bfr_municipal_municipio_totais",
+      "ficheiro": "scripts/p73-pen39-ddl-candidata.sql",
+      "tipos": [],
+      "corpo_chars": 687,
+      "vol": "s",
+      "definer": "true",
+      "ident": "",
+      "acl": "postgres=X/postgres|anon=X/postgres|authenticated=X/postgres|service_role=X/postgres",
+      "anon_explicito": true,
+      "public_explicito": false,
+      "acl_nula": false,
+      "escreve_no_corpo": false,
+      "escrita_por_volatilidade": false,
+      "assinatura_casa": true,
+      "acordam": true
+    },
+    {
+      "nome": "bfr_municipal_distribuicao_por_zona",
+      "ficheiro": "scripts/p73-pen39-ddl-candidata.sql",
+      "tipos": [],
+      "corpo_chars": 349,
+      "vol": "s",
+      "definer": "true",
+      "ident": "",
+      "acl": "postgres=X/postgres|anon=X/postgres|authenticated=X/postgres|service_role=X/postgres",
+      "anon_explicito": true,
+      "public_explicito": false,
+      "acl_nula": false,
+      "escreve_no_corpo": false,
+      "escrita_por_volatilidade": false,
+      "assinatura_casa": true,
+      "acordam": true
+    }
+  ],
+  "revogados": [
+    "bfr_municipal_scope_diagnostico",
+    "bfr_municipal_municipio_totais",
+    "bfr_municipal_distribuicao_por_zona"
+  ],
+  "em_aberto": {
+    "nomes": [
+      "bfr_school_set_municipality"
+    ],
+    "porque": "porta de etiquetagem: revogar tira ate o 42501; a decisao e da casa"
+  },
+  "fixtures": {
+    "tipos_trocados_nao_casa": false,
+    "nomes_de_parametro_casam": true,
+    "mundo_acl_com_public": {
+      "anon_explicito": true,
+      "public_explicito": true,
+      "acl_nula": false
+    },
+    "mundo_acl_nulo": {
+      "anon_explicito": false,
+      "public_explicito": false,
+      "acl_nula": true
+    },
+    "incluir_escrita_no_rollo": false
+  },
+  "arquivos": {
+    "candidata": {
+      "caminho": "scripts/p73-pen43-ddl-candidata.sql",
+      "bytes": 1373,
+      "md5": "74a4cae7fa7888e42b9aceb00d47d4a9"
+    },
+    "reversao": {
+      "caminho": "scripts/p73-pen43-ddl-reversao.sql",
+      "bytes": 432,
+      "md5": "dec93047a0ba92b233589ec6143a37fc"
+    }
+  },
+  "o_que_nao_prova": "nao prova que o REVOKE foi aplicado; prova que a candidata existe, que o grau a revogar esta medido na proacl e que a regua de eficacia tem dois mundos que a negam. A aplicacao pede OK literal proprio.",
+  "portoes": [
+    {
+      "nome": "os_quatro_nomes_sao_lidos_dos_ficheiros_e_resolvem_no_catalogo",
+      "verde": true,
+      "detalhe": {
+        "ficheiros": [
+          "p73-pen38-ddl-candidata.sql",
+          "p73-pen39-ddl-candidata.sql",
+          "p73-pen41-ddl-candidata.sql",
+          "p73-pen43-ddl-candidata.sql"
+        ],
+        "nomes": [
+          "bfr_school_set_municipality",
+          "bfr_municipal_scope_diagnostico",
+          "bfr_municipal_municipio_totais",
+          "bfr_municipal_distribuicao_por_zona"
+        ],
+        "tipos_null": []
+      }
+    },
+    {
+      "nome": "as_duas_viias_de_classificacao_acordam_em_cada_nome",
+      "verde": true,
+      "detalhe": [
+        "bfr_school_set_municipality:vol=v:corpo_escreve=true",
+        "bfr_municipal_scope_diagnostico:vol=s:corpo_escreve=false",
+        "bfr_municipal_municipio_totais:vol=s:corpo_escreve=false",
+        "bfr_municipal_distribuicao_por_zona:vol=s:corpo_escreve=false"
+      ]
+    },
+    {
+      "nome": "cada_assinatura_da_candidata_casa_com_a_identidade_do_servidor_e_a_regua_tem_dentes",
+      "verde": true,
+      "detalhe": {
+        "fix_tipos_trocados": false,
+        "fix_nomes_de_parametro": true,
+        "por_nome": [
+          "bfr_school_set_municipality:true:uuid|uuid|text:p_school uuid, p_municipality uuid, p_reason text",
+          "bfr_municipal_scope_diagnostico:true::",
+          "bfr_municipal_municipio_totais:true::",
+          "bfr_municipal_distribuicao_por_zona:true::"
+        ]
+      }
+    },
+    {
+      "nome": "o_revoke_por_nome_e_o_grau_efetivo_e_os_dois_mundos_que_o_negam_disparam",
+      "verde": true,
+      "detalhe": {
+        "real": [
+          "bfr_school_set_municipality:anon=true:public=false:nula=false",
+          "bfr_municipal_scope_diagnostico:anon=true:public=false:nula=false",
+          "bfr_municipal_municipio_totais:anon=true:public=false:nula=false",
+          "bfr_municipal_distribuicao_por_zona:anon=true:public=false:nula=false"
+        ],
+        "mundo_public": {
+          "anon_explicito": true,
+          "public_explicito": true,
+          "acl_nula": false
+        },
+        "mundo_acl_nula": {
+          "anon_explicito": false,
+          "public_explicito": false,
+          "acl_nula": true
+        }
+      }
+    },
+    {
+      "nome": "a_candidata_revogue_somente_o_que_as_duas_viias_acordam_ser_leitura",
+      "verde": true,
+      "detalhe": {
+        "leitura": [
+          "bfr_municipal_scope_diagnostico",
+          "bfr_municipal_municipio_totais",
+          "bfr_municipal_distribuicao_por_zona"
+        ],
+        "escrita": [
+          "bfr_school_set_municipality"
+        ],
+        "fixture_incluir_escrita": false
+      }
+    },
+    {
+      "nome": "a_contagem_textual_de_REVOKE_e_de_GRANT_bate_com_a_lista_derivada",
+      "verde": true,
+      "detalhe": {
+        "revoke_candidata": 3,
+        "grant_reversao": 3,
+        "revoke_reversao": 0,
+        "grant_candidata": 0
+      }
+    },
+    {
+      "nome": "nenhuma_query_deste_programa_escreveu_no_banco",
+      "verde": true,
+      "detalhe": {
+        "queries": 4,
+        "nao_leitura": 0
+      }
+    },
+    {
+      "nome": "os_dois_ficheiros_sao_o_que_o_gerador_produz_byte_a_byte",
+      "verde": true,
+      "detalhe": {
+        "candidata": {
+          "bytes": 1373,
+          "md5": "74a4cae7fa7888e42b9aceb00d47d4a9"
+        },
+        "reversao": {
+          "bytes": 432,
+          "md5": "dec93047a0ba92b233589ec6143a37fc"
+        }
+      }
+    }
+  ],
+  "falhas": [],
+  "veredito": "P73_PEN43_CANDIDATA_OK 8/0"
+}

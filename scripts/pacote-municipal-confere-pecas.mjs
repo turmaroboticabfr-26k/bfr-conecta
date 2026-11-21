@@ -41,13 +41,19 @@ const FIX_DISPARO_ESPERADO = ['scripts/x-pen99-ddl-candidata.sql', 'evidence/x-p
 // São as três saídas do mesmo passo, e o portão abaixo exige que continuem ausentes: se o `wrangler deploy` correr
 // e elas aparecerem, este portão vai a vermelho e obriga a tirar os nomes da lista — a classe não apodrece sozinha.
 const SAIDAS_AINDA_NAO_CORRIDAS = ['evidence/v137-deploy-stdout-20-11.txt', 'evidence/v137-deployments-list-depois-20-11.json',
-  'evidence/v137-deployments-status-depois-20-11.json'];
+  'evidence/v137-deployments-status-depois-20-11.json',
+  'evidence/v138-deploy-stdout-20-11.txt', 'evidence/v138-deployments-list-depois-20-11.json', 'evidence/v138-deployments-status-depois-20-11.json'];
 const FORA_DO_GIT = ['ah2-sessions.json', 'c2-sessions.json'];
 // Terceiro tipo de «não existe», medido em 20/11 ao alargar o corpus ao documento 08: um nome que a prosa
 // cita PARA DIRE QUE NÃO EXISTE. `scripts/bu4-digestao-para-documentacao-20-11.mjs` é o nome do output que o
 // campo `instrumento` declarava por engano; o fantasma só é inofensivo enquanto a linha ao lado o chamar
 // fantasma. Por isso o portão não perdoa o nome: exige a declaração junto dele.
-const FANTASMAS_DECLARADOS = [{ caminho: 'scripts/bu4-digestao-para-documentacao-20-11.mjs', a_prosa_diz: 'o script com esse nome não existe' }];
+// `scripts/p73-pen43-preflight.mjs` é da mesma raça e entrou no corpus com a FALTA-5 do §2.7: o nome é citado
+// como a peça que FALTA escrever, e a frase declarante é a única coisa que o separa de um caminho partido à mão.
+const FANTASMAS_DECLARADOS = [
+  { caminho: 'scripts/bu4-digestao-para-documentacao-20-11.mjs', a_prosa_diz: 'o script com esse nome não existe' },
+  { caminho: 'scripts/p73-pen43-preflight.mjs', a_prosa_diz: 'o caminho com esse nome ainda não existe' },
+];
 // Quarta classe de «não está no índice»: existe em disco, NÃO é ignorada, e mesmo assim não entra — por decisão
 // assinada e registada noutro lado. É o avesso do esquecimento, e sem esta declaração as duas coisas escrevem-se
 // igual no veredicto. O portão não aceita a alegação: exige (a) que o ficheiro ainda exista, (b) que ainda NÃO
@@ -128,6 +134,17 @@ const REGISTOS_APLICACAO = (() => {
 })();
 const PECAS_COM_REGISTO = Object.keys(REGISTOS_APLICACAO).sort((a, b) => Number(a.slice(4)) - Number(b.slice(4)));
 const PECAS_SEM_REGISTO = [...new Set(FICHEIROS_CANDIDATAS.map((c) => c.peca))].filter((p) => !PECAS_COM_REGISTO.includes(p)).sort((a, b) => Number(a.slice(4)) - Number(b.slice(4)));
+// Uma candidata que entra na enumeração sem registo de aplicação tem de trazer o motivo **dito no corpus**, não
+// num literal deste script: um literal que eu escrevo e comparo a mim mesmo é tautologia, e apagá-lo não dá
+// vermelho nenhum no mundo. O marcador é uma frase por peça; apagar a frase do corpus volta a engrossar em
+// silêncio a classe que se lê como «esquecida», e é isso que o portão abaixo não permite.
+const MARCA_MOTIVO = 'MOTIVO-SEM-REGISTO';
+const fraseDoMotivo = (peca, textos) => {
+  const re = new RegExp(MARCA_MOTIVO + ' \\u00b7 ' + peca + ' \\u2014 [^\\n]{40,}', 'u');
+  const i = textos.findIndex((t) => re.test(t));
+  return i < 0 ? null : { ficheiro: CORPUS[i], frase: re.exec(textos[i])[0] };
+};
+const MOTIVOS_SEM_REGISTO = PECAS_SEM_REGISTO.map((p) => ({ peca: p, ...(fraseDoMotivo(p, textoCorpus) || { ficheiro: null, frase: null }) }));
 const NOMES_DE_TODAS_AS_CANDIDATAS = [...new Set(FICHEIROS_CANDIDATAS.flatMap((c) => nomesDe(c.texto)))].sort();
 if (NOMES_DE_TODAS_AS_CANDIDATAS.length === 0) throw new Error('ABORTA: nenhuma candidata deste pacote declara CREATE FUNCTION — o portão de estado do banco ficaria sem nada varrido, e zero sem agulha não afirma nada');
 const NOMES_FUNCOES_NOVAS = NOMES_DE_TODAS_AS_CANDIDATAS;
@@ -152,8 +169,10 @@ const vivo = (await sql(`select
 const pref38 = JSON.parse(readFileSync(join(REPO, 'evidence/p73-pen38-preflight-candidata-20-11e.json'), 'utf8')).numeros;
 const pref41 = JSON.parse(readFileSync(join(REPO, 'evidence/p73-pen41-preflight-candidata-20-11e.json'), 'utf8'));
 const v137 = JSON.parse(readFileSync(join(REPO, 'evidence/v137-gera-bundle-20-11.json'), 'utf8'));
+const v138b = JSON.parse(readFileSync(join(REPO, 'evidence/v138-gera-bundle-20-11.json'), 'utf8'));
+const v138c = JSON.parse(readFileSync(join(REPO, 'evidence/v138-gera-candidata-20-11.json'), 'utf8'));
 
-const INPUTS_FECHO = ['scripts/p73-pen38-alcance-por-concessao-20-11.mjs', 'scripts/p73-pen38-preflight.mjs', 'scripts/p73-pen39-preflight.mjs', 'scripts/p73-pen41-preflight.mjs', 'scripts/p73-municipal-etiqueta.mjs', 'scripts/p73-municipal-aplica-ddl.mjs', 'scripts/v136-pos-deploy.mjs', 'scripts/v137-pos-deploy.mjs', 'scripts/pacote-municipal-confere-pecas.mjs', RUNBOOK];
+const INPUTS_FECHO = ['scripts/p73-pen38-alcance-por-concessao-20-11.mjs', 'scripts/p73-pen38-preflight.mjs', 'scripts/p73-pen39-preflight.mjs', 'scripts/p73-pen41-preflight.mjs', 'scripts/p73-municipal-etiqueta.mjs', 'scripts/p73-municipal-aplica-ddl.mjs', 'scripts/v136-pos-deploy.mjs', 'scripts/v137-pos-deploy.mjs', 'scripts/v138-gera-candidata.mjs', 'scripts/v138-gera-bundle.mjs', 'scripts/v138-pos-deploy.mjs', 'scripts/p73-pen43-gera-candidata.mjs', 'scripts/pacote-municipal-confere-pecas.mjs', RUNBOOK];
 
 const falhas = [];
 const portoes = [];
@@ -219,7 +238,33 @@ gate('o_estado_vivo_bate_com_a_declaracao_do_preflight_38', [vivo.escolas_com_mu
 gate('as_policies_alvo_existem_e_nenhuma_tem_escopo', [vivo.policies_alvo, vivo.policies_alvo_com_escopo], [POLICIES_ALVO.length, 0]);
 gate('as_quatro_policies_alvo_sao_as_que_o_preflight_41_descreve', pref41.policies_das_quatro.length, POLICIES_ALVO.length);
 gate('a_v137_continua_nao_publicada_com_a_frase_de_OK_declara', [v137.publicado, /sem OK literal/.test(String(v137.ok_literal))], [false, true]);
+// A v138 é a outra metade da PEN-39: sem o código que chama os agregados, o DDL aplicado fica função sem
+// chamador. O portão não acredita em prosa — lê as duas pegadas dos artefactos e confere que o bundle leva o
+// remendo da PEN-40 (empilhamento) e uma shell nova (a mudança), e que o marcador de publicação não existe.
+gate('a_v138_continua_nao_publicada_com_a_frase_de_OK_declara', [v138b.publicado, /sem OK literal/.test(String(v138b.ok_literal))], [false, true]);
+gate('a_v138_tem_candidata_e_bundle_verdes_com_a_prova_de_ar_escrita', [
+  String(v138c.veredito).startsWith('V138_CANDIDATA_OK'), String(v138b.veredito).startsWith('V138_BUNDLE_OK'),
+  existsSync(join(REPO, 'worker-deploy-v138-painel-municipal/esperado-v138.json')), existsSync(join(REPO, 'scripts/v138-pos-deploy.mjs')),
+  existsSync(join(REPO, 'audit-publicacao-v138.json'))], [true, true, true, true, false]);
+gate('o_bundle_v138_empilha_o_remendo_da_pen40_e_muda_a_shell', [
+  v138b.esperado.moduleMd5 === v137.esperado.moduleMd5 && v138b.esperado.moduleBytes === v137.esperado.moduleBytes,
+  v138b.esperado.htmlMd5 !== v137.esperado.htmlMd5 && v138b.esperado.baseHtmlMd5 === v137.esperado.htmlMd5,
+  String(v138b.esperado.cacheLabel) === 'bfr-conecta-v138'], [true, true, true]);
+gate('a_v138_chama_os_dois_nomes_que_o_DDL_da_PEN39_declara', (() => {
+  const html = readFileSync(join(REPO, 'bfr-candidata-v138-painel-municipal/index.html'), 'utf8');
+  const nomes = NOMES_FUNCOES_NOVAS.filter((x) => /totais|distribuicao/.test(x));
+  return [nomes.length, nomes.every((x) => html.split("'" + x + "'").length - 1 === 1)];
+})(), [2, true]);
 gate('os_inputs_das_provas_de_fecho_resolvem', INPUTS_FECHO.filter((c) => !existsSync(join(REPO, c))), []);
+// Toda peça sem registo tem de ter o motivo **dito no corpus**, e a régua tem de poder falhar: o mesmo
+// procurador, corrido sobre uma cópia do corpus com as marcas apagadas, tem de não encontrar nada. Sem este
+// segundo lado, «o motivo está declarado» é uma afirmação sobre o conteúdo de um literal meu.
+const CORPUS_SEM_MARCAS = textoCorpus.map((t) => t.split(MARCA_MOTIVO).join(''));
+gate('toda_peca_sem_registo_tem_motivo_no_corpus_e_apagar_a_frase_e_vermelho',
+  [PECAS_SEM_REGISTO.length > 0,
+    MOTIVOS_SEM_REGISTO.every((m) => !!m.ficheiro && m.frase.length >= 40),
+    PECAS_SEM_REGISTO.every((p) => fraseDoMotivo(p, CORPUS_SEM_MARCAS) === null)],
+  [true, true, true]);
 
 const out = {
   programa: 'scripts/pacote-municipal-confere-pecas.mjs', em: new Date().toISOString(),
@@ -240,9 +285,9 @@ const out = {
       preflight_entrada_codigo: REGISTOS_APLICACAO[p].preflight_candidata && REGISTOS_APLICACAO[p].preflight_candidata.codigo,
       preflight_saida_codigo: REGISTOS_APLICACAO[p].preflight_reversao && REGISTOS_APLICACAO[p].preflight_reversao.codigo })),
     pecas_sem_registo_de_aplicacao: PECAS_SEM_REGISTO.map((p) => { const c = FICHEIROS_CANDIDATAS.find((x) => x.peca === p); return { peca: p, candidata: c.caminho, nomes_na_candidata: nomesDe(c.texto),
-      nomes_ja_no_banco: nomesDe(c.texto).filter((n) => vivosNovos.includes(n)), policies_alvo_com_escopo_no_banco: vivo.policies_alvo_com_escopo }; }),
+      motivo_da_ausencia_de_registo: (MOTIVOS_SEM_REGISTO.find((m) => m.peca === p) || {}).frase || '', nomes_ja_no_banco: nomesDe(c.texto).filter((n) => vivosNovos.includes(n)), policies_alvo_com_escopo_no_banco: vivo.policies_alvo_com_escopo }; }),
     nomes_esperados_no_banco: realRegua.esperados, nomes_vivos_no_banco: vivosNovos,
-    nota: 'a classe «sem registo» imprime-se mesmo com o conjunto de nomes vazio: a PEN-41 não cria função alguma, por isso o vermelho dela não pode vir deste portão — vem de as_policies_alvo_existem_e_nenhuma_tem_escopo'
+    nota: 'a classe «sem registo» imprime-se mesmo com o conjunto de nomes vazio, e cada peca dela tem de levar o motivo declarado: a PEN-41 nao cria funcao alguma (o vermelho dela vem de as_policies_alvo_existem_e_nenhuma_tem_escopo), e a PEN-43 so faz REVOKE sobre nomes que a PEN-39 ja criou — estar no banco nao e registo de aplicacao da PEN-43'
   },
   ancora_lida_do_preflight_38: pref38, ancora_lida_do_preflight_41: { policies_das_quatro: pref41.policies_das_quatro.length, veredito: pref41.veredito },
   v137: { publicado: v137.publicado, ok_literal: v137.ok_literal, veredito: v137.veredito },
@@ -258,6 +303,7 @@ console.log(`FORA_DO_INDICE ${esquecidosNoIndice.length} esquecidos de ${out.for
 console.log(`VIVO ${JSON.stringify(vivo)}`);
 console.log(`APLICACAO com_registo=${JSON.stringify(PECAS_COM_REGISTO)} sem_registo=${JSON.stringify(PECAS_SEM_REGISTO)} nomes_no_banco=${JSON.stringify(vivosNovos)} esperados=${JSON.stringify(realRegua.esperados)}`);
 console.log(`V137 publicado=${v137.publicado} · ${v137.veredito}`);
+console.log(`V138 publicado=${v138b.publicado} · ${v138c.veredito} · ${v138b.veredito} · etiqueta_sw=${v138b.esperado.cacheLabel} · shell ${v138b.esperado.baseHtmlMd5} -> ${v138b.esperado.htmlMd5} · modulo pen40 ${v138b.esperado.moduleMd5}`);
 if (falhas.length) console.log(`FALHAS ${JSON.stringify(falhas)}`);
 console.log(`${out.veredito} · registo ${OUT}`);
 process.exit(falhas.length === 0 ? 0 : 1);

@@ -1,0 +1,117 @@
+{
+ "programa": "scripts/v138-pos-deploy.mjs",
+ "selfteste": true,
+ "em": "2026-11-21T00:30:58.146Z",
+ "http": 0,
+ "escrita_no_banco": 0,
+ "ddl": 0,
+ "publicacao": 0,
+ "casos": [
+  {
+   "nome": "as_fontes_de_espera_resolvem_em_disco",
+   "verde": true,
+   "faltam": []
+  },
+  {
+   "nome": "os_dois_nomes_sao_lidos_do_DDL_e_distinguem_a_candidata_da_shell_publicada",
+   "verde": true,
+   "nomes": [
+    "bfr_municipal_municipio_totais",
+    "bfr_municipal_distribuicao_por_zona"
+   ],
+   "na_candidata": [
+    1,
+    1
+   ],
+   "na_shell_v136": [
+    0,
+    0
+   ]
+  },
+  {
+   "nome": "a_regua_do_delta_de_shell_bate_com_a_promessa_da_candidata_e_do_bundle",
+   "verde": true,
+   "portoes_delta": 3787,
+   "medido_candidata_vs_v136": 3787,
+   "bundle_delta": 3787
+  },
+  {
+   "nome": "a_shell_da_v138_difere_da_shell_que_a_v137_ia_servir",
+   "verde": true,
+   "v137": "9e236a23eed978cf7c2a2743d449b307",
+   "v138": "592b3652671d689220784af41da74321"
+  },
+  {
+   "nome": "o_modulo_da_v138_e_o_mesmo_remendo_que_a_v137_levou",
+   "verde": true,
+   "v138_module": "b83b4c2666fc909d50a358b86b99de05",
+   "v137_module": "b83b4c2666fc909d50a358b86b99de05"
+  },
+  {
+   "nome": "o_delta_do_worker_bate_com_a_soma_dos_dos_embeds",
+   "verde": true,
+   "medido": 3856,
+   "declarado": 3856
+  },
+  {
+   "nome": "a_etiqueta_mudou_e_o_sw_continuam_o_mesmo_comprimento",
+   "verde": true,
+   "sw_bytes_v137": 5064,
+   "sw_bytes_v138": 5064,
+   "rotulo": "bfr-conecta-v138"
+  },
+  {
+   "nome": "a_recusa_de_publicacao_tem_positivo_e_negativo_possiveis",
+   "verde": true,
+   "saidas": 3
+  },
+  {
+   "nome": "o_antecessor_derivado_do_disco_escolhe_v137_so_se_a_v137_for_publicada",
+   "verde": true,
+   "agora": {
+    "versao": 136,
+    "diario": "audit-publicacao-v136.json",
+    "status": "evidence/v136-deployments-status-depois-*"
+   }
+  },
+  {
+   "nome": "o_url_do_ar_e_derivada_do_diario_e_nao_inventada",
+   "verde": true
+  },
+  {
+   "nome": "a_lista_de_controlo_exclui_s_o_o_modulo",
+   "verde": true,
+   "excluidos": 1
+  }
+ ],
+ "agulhas_lidas_do_ddl": [
+  {
+   "nome": "bfr_municipal_municipio_totais",
+   "ocorrencias_na_candidata": 1,
+   "bytes": 30
+  },
+  {
+   "nome": "bfr_municipal_distribuicao_por_zona",
+   "ocorrencias_na_candidata": 1,
+   "bytes": 35
+  }
+ ],
+ "antecessor_agora": {
+  "versao": 136,
+  "diario": "audit-publicacao-v136.json",
+  "status": "evidence/v136-deployments-status-depois-*"
+ },
+ "saidas_de_publicacao_exigidas": [
+  "evidence/v138-deploy-stdout-20-11.txt",
+  "evidence/v138-deployments-list-depois-20-11.json",
+  "evidence/v138-deployments-status-depois-20-11.json"
+ ],
+ "estado_das_saidas_de_publicacao_agora": [
+  false,
+  false,
+  false
+ ],
+ "veredito": "V138_POS_DEPLOY_SELFTESTE_OK 11/0"
+}
+selfteste: 0 HTTP, 0 escrita; o registo desta corrida e o stdout capturado por redireccionamento
+node_exit=0

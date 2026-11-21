@@ -1,0 +1,96 @@
+{
+  "programa": "scripts/p73-municipal-etiqueta.mjs",
+  "modo": "lista",
+  "em": "2026-11-20T23:42:08.916Z",
+  "pressuposto": "nenhum município foi aplicado às escolas: esta corrida é a folha de decisão, não a prova de fecho",
+  "escolas": {
+    "total": 6,
+    "com_municipio": 0,
+    "com_dados": 1,
+    "linhas": [
+      {
+        "id": "08ebef62-2193-4520-ab44-c044160d565f",
+        "name": "Escola Municipal Alpha",
+        "city": "São Paulo",
+        "state": "SP",
+        "municipality_id": null,
+        "alunos": 848,
+        "turmas": 27,
+        "decidir_municipio": true
+      },
+      {
+        "id": "07201ebb-3cde-411f-b5ce-fed8b27aa540",
+        "name": "Escola Alpha",
+        "city": "São Paulo",
+        "state": "SP",
+        "municipality_id": null,
+        "alunos": 0,
+        "turmas": 0,
+        "decidir_municipio": true
+      },
+      {
+        "id": "b0d73479-35b8-4a6b-a7e4-2377bee9493c",
+        "name": "Escola Beta",
+        "city": "Rio de Janeiro",
+        "state": "RJ",
+        "municipality_id": null,
+        "alunos": 0,
+        "turmas": 0,
+        "decidir_municipio": true
+      },
+      {
+        "id": "8a29b3ce-3d9d-47d9-8891-3d45dcd1acfa",
+        "name": "Escola Gamma",
+        "city": "Belo Horizonte",
+        "state": "MG",
+        "municipality_id": null,
+        "alunos": 0,
+        "turmas": 0,
+        "decidir_municipio": true
+      },
+      {
+        "id": "0f51bc67-9987-483d-aba0-f138b2b7580e",
+        "name": "Escola Municipal Beta",
+        "city": "São Paulo",
+        "state": "SP",
+        "municipality_id": null,
+        "alunos": 0,
+        "turmas": 0,
+        "decidir_municipio": true
+      },
+      {
+        "id": "f4ab6309-8c41-4456-a3e2-14f3fe2ad9d3",
+        "name": "Escola Municipal Gamma",
+        "city": "São Paulo",
+        "state": "SP",
+        "municipality_id": null,
+        "alunos": 0,
+        "turmas": 0,
+        "decidir_municipio": true
+      }
+    ]
+  },
+  "municipios": {
+    "total": 1,
+    "linhas": [
+      {
+        "id": "ef4647c2-80a8-466a-810d-2a1579c20a95",
+        "name": "Sao Paulo (SM8 fixture — apagar)",
+        "uf": "SP",
+        "code_ibge": null,
+        "escolas_ligadas": 0,
+        "concessoes": 4
+      }
+    ]
+  },
+  "o_que_esta_folha_decide": "para cada escola com dados, que município a governa. As escolas sem dados ficam como estão: etiquetar uma escola vazia não muda nenhum número e cria uma falsa sensação de censo completo.",
+  "aviso_fixture": [
+    "Sao Paulo (SM8 fixture — apagar) (SP) tem 4 concessoes e 0 escolas ligadas: e a linha que hoje sustenta o escopo municipal e esta marcada para apagar"
+  ],
+  "regua_fixture": {
+    "agulha": "/fixture|apagar|descartar|de teste|teste\\b/i",
+    "nomes_varridos": 1,
+    "disparou_no_nome_medido_em_disco": true
+  },
+  "veredito": "P73_MUNICIPAL_ETIQUETA_LISTA 6 escolas, 0 etiquetadas, 1 municipios, 1 avisos de fixture"
+}
