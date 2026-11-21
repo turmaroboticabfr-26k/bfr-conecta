@@ -1,0 +1,194 @@
+{
+  "programa": "scripts/p87-gera-candidata-v140-trilha-de-acesso.mjs",
+  "em": "2026-11-21T09:27:04.155Z",
+  "duracao_ms": 1042,
+  "pergunta": "o painel municipal pode passar a deixar trilha de quem o abriu sem que ninguém publique nem escreva no banco agora?",
+  "metodo": "geração por substituição contada sobre a candidata certificada v139; a mesa e a política de escrita lêem-se de scripts/sm4-ddl-municipal-candidata.sql, nunca dactilografadas. 0 publicação, 0 DDL, 0 INSERT executado.",
+  "origem": {
+    "pasta": "bfr-candidata-v139-sonda-honesta",
+    "md5": "6a902562341d4f9c8c19f33a13ac1c49",
+    "bytes": 3552130,
+    "veredito_portoes": "P85_CANDIDATA_V139_SONDA_HONESTA_OK 11/0"
+  },
+  "destino": {
+    "pasta": "bfr-candidata-v140-trilha-de-acesso",
+    "md5": "82c95aa0a23b7b8ccd801b9b920e4f0e",
+    "bytes": 3553473,
+    "delta_bytes": 1343
+  },
+  "trilha": {
+    "mesa_lida_do_ddl": "bfr_municipal_audit",
+    "colunas_do_ddl": [
+      "id",
+      "at",
+      "actor",
+      "action",
+      "entity",
+      "entity_id",
+      "detail"
+    ],
+    "politica_de_escrita": "CREATE POLICY bfr_municipal_audit_write ON public.bfr_municipal_audit\n  FOR INSERT TO authenticated WITH CHECK (actor = auth.uid() AND public.bfr_is_municipal_authority());",
+    "payload": " actor: ator, action: 'painel_aberto', entity: SECT, detail: { tab: estado.tab } ",
+    "chaves_de_topo": [
+      "actor",
+      "action",
+      "entity",
+      "detail"
+    ],
+    "chaves_do_detail": [
+      "tab"
+    ],
+    "chaves_do_estado": [
+      "tab",
+      "cache"
+    ],
+    "funcao_bytes": 958,
+    "funcao": "async function registrarTrilha(s) {\n    if (trilhaNestaCarga) return trilha;\n    if (!s || s.autorizada !== true) return trilha;\n    const c = client();\n    if (!c) { trilha.erro = 'sem cliente'; return trilha; }\n    trilhaNestaCarga = true; trilha.tentada = true;\n    try {\n      const u = await c.auth.getUser();\n      const ator = (u && u.data && u.data.user) ? u.data.user.id : null;\n      if (!ator) { trilha.erro = 'sem utilizador na sessão'; trilhaNestaCarga = false; return trilha; }\n      const { error } = await c.from('bfr_municipal_audit').insert({ actor: ator, action: 'painel_aberto', entity: SECT, detail: { tab: estado.tab } });\n      trilha.escrita = !error; trilha.erro = error ? String(error.message || error.code) : '';\n      if (!error) trilha.acoes.push('painel_aberto:' + SECT + ':' + estado.tab);\n    } catch (e) { trilha.escrita = false; trilha.erro = String((e && e.message) || e); trilhaNestaCarga = false; }\n    return trilha;\n  }"
+  },
+  "publicacao": {
+    "diario_mais_novo": "audit-publicacao-v136.json",
+    "versao_publicada": "136",
+    "md5_servido": "9e236a23eed978cf7c2a2743d449b307",
+    "md5_v136_local": "9e236a23eed978cf7c2a2743d449b307"
+  },
+  "substituicoes": [
+    {
+      "nome": "estado_da_trilha_de_acesso",
+      "depois_presente": true
+    },
+    {
+      "nome": "a_funcao_que_assina_a_abertura",
+      "depois_presente": true
+    },
+    {
+      "nome": "a_abertura_chama_a_trilha_depois_da_sonda",
+      "depois_presente": true
+    },
+    {
+      "nome": "a_trilha_ficou_medivel_na_consola",
+      "depois_presente": true
+    }
+  ],
+  "o_que_este_verde_nao_autoriza": "Nada fora do disco. A trilha só escreve quando o ar for publicado (pede OK), e a P88 mede o caminho com o cliente interceptado para não escrever.",
+  "portoes": [
+    {
+      "nome": "cada_substituicao_casou_uma_svez_na_origem",
+      "verde": true,
+      "dado": [
+        "estado_da_trilha_de_acesso:origem=1,destino=1",
+        "a_funcao_que_assina_a_abertura:origem=1,destino=1",
+        "a_abertura_chama_a_trilha_depois_da_sonda:origem=1,destino=1",
+        "a_trilha_ficou_medivel_na_consola:origem=1,destino=1"
+      ]
+    },
+    {
+      "nome": "o_corpo_do_modulo_compila",
+      "verde": true,
+      "dado": {
+        "bytes_corpo": 62394,
+        "erro": ""
+      }
+    },
+    {
+      "nome": "a_escrita_vai_a_mesa_de_auditoria_declarada_no_ddl",
+      "verde": true,
+      "dado": {
+        "mesa_lida_do_ddl": "bfr_municipal_audit",
+        "bloco_politica": "CREATE POLICY bfr_municipal_audit_write ON public.bfr_municipal_audit\n  FOR INSERT TO authenticated WITH CHECK (actor = auth.uid() AND public.bfr_is_municipal_authority());"
+      }
+    },
+    {
+      "nome": "a_escrita_s_e_tenta_quando_o_backend_responde_true",
+      "verde": true,
+      "dado": {
+        "funcao_bytes": 958
+      }
+    },
+    {
+      "nome": "o_payload_so_usa_colunas_declaradas_na_mesa_do_ddl",
+      "verde": true,
+      "dado": {
+        "lidas_no_payload": [
+          "actor",
+          "action",
+          "entity",
+          "detail"
+        ],
+        "colunas_do_ddl": [
+          "id",
+          "at",
+          "actor",
+          "action",
+          "entity",
+          "entity_id",
+          "detail"
+        ],
+        "politica": "CREATE POLICY bfr_municipal_audit_write ON public.bfr_municipal_audit\n  FOR INSERT TO authenticated WITH CHECK (actor = auth.uid() AND public.bfr_is_municipal_authority());"
+      }
+    },
+    {
+      "nome": "o_detail_nao_nomeia_nenhuma_chave_fora_do_estado_do_painel",
+      "verde": true,
+      "dado": {
+        "lidas_no_detail": [
+          "tab"
+        ],
+        "chaves_do_estado": [
+          "tab",
+          "cache"
+        ],
+        "nota": "o que é permitido aqui é o que o painel já sabe de si mesmo; um campo de aluno ou de perfil não está entre as chaves do `estado`"
+      }
+    },
+    {
+      "nome": "o_actor_veio_da_sessao_e_nao_de_um_uuid_escrito_a_mao",
+      "verde": true,
+      "dado": {
+        "tem_getuser": true
+      }
+    },
+    {
+      "nome": "uma_escripta_por_carregamento_de_pagina",
+      "verde": true,
+      "dado": {
+        "ocorrencias_guarda": 4
+      }
+    },
+    {
+      "nome": "a_faixa_honesta_da_v139_continua_la",
+      "verde": true,
+      "dado": {
+        "verde_exige_verdade": true,
+        "ramo_negacao": true,
+        "css": true
+      }
+    },
+    {
+      "nome": "a_abertura_chama_a_trilha_depois_da_sonda",
+      "verde": true,
+      "dado": {
+        "linha": "sondarBackend().then((s) => { pintarSonda(); return registrarTrilha(s); });"
+      }
+    },
+    {
+      "nome": "a_trilha_ficou_exposta_para_medir",
+      "verde": true,
+      "dado": {
+        "linha_export": "window.BFR_MUNICIPAL = { abrir, registar, garantir, aptoParaSessao, aplicarVisibilidade, sondarBackend, sonda, trilha, registrarTrilha, estado, cache, SECT, PAPEIS_MUNICIPAIS };"
+      }
+    },
+    {
+      "nome": "nada_foi_publicado",
+      "verde": true,
+      "dado": {
+        "diario_mais_novo": "audit-publicacao-v136.json",
+        "versao_publicada": "136",
+        "existe_diario_v140": false,
+        "md5_servido": "9e236a23eed978cf7c2a2743d449b307",
+        "md5_v136": "9e236a23eed978cf7c2a2743d449b307"
+      }
+    }
+  ],
+  "falhas": [],
+  "veredito": "P87_CANDIDATA_V140_TRILHA_OK 12/0"
+}
