@@ -1,0 +1,186 @@
+{
+  "programa": "scripts/p76-censo-acesso-seccoes-desktop.mjs",
+  "em": "2026-11-21T07:00:08.702Z",
+  "pergunta": "as células vazias e os cliques que não fixam que a grelha P74 mediu são previstos pelas listas que o próprio bundle usa, ou são falha de medição?",
+  "metodo": "leitor só-leitura: extrai `STAFF_ROLES`, a fallback de views de `allowed()`, o ramo `section === fotos` e `roleSectionAccess` dos bytes SERVIDOS; traduz papel→view com a prédica do `syncRoleNavigation` e confronta com os artefactos `ah2-p35d-*` do MESMO md5.",
+  "ar": {
+    "url": "https://bfr-conecta.turmaroboticabfr.workers.dev/",
+    "diario": "audit-publicacao-v136.json",
+    "md5": "9e236a23eed978cf7c2a2743d449b307",
+    "esperado": "9e236a23eed978cf7c2a2743d449b307",
+    "pasta": "worker-deploy-v136-secretaria-de-educacao"
+  },
+  "listas_lidas_dos_bytes": {
+    "staff_roles": [
+      "pedagogical",
+      "aee",
+      "coordinator",
+      "director",
+      "secretary",
+      "psychology",
+      "social_work",
+      "developer"
+    ],
+    "chat_views": [
+      "teacher",
+      "coordinator",
+      "director",
+      "secretary",
+      "aee",
+      "multiprofessional",
+      "admin"
+    ],
+    "fotos_views": [
+      "admin",
+      "developer",
+      "coordinator",
+      "coordenacao",
+      "director",
+      "secretary"
+    ],
+    "posicao_do_ramo_fotos": 633461,
+    "posicao_do_modulo_chat": 1965539
+  },
+  "traducao_lida": "viewRole = role === 'developer' ? 'admin' : role === 'pedagogical' ? 'teacher' : role === 'psychology' ? 'psychology' : role === 'social_work' ? 'multiprofessional' : role;",
+  "celulas_do_mesmo_ar": 45,
+  "chat": {
+    "medidas_vazias": [
+      "education_supervisor/1280",
+      "education_supervisor/1440",
+      "education_supervisor/1920"
+    ],
+    "previstas_vazias": [
+      "education_supervisor/1280",
+      "education_supervisor/1440",
+      "education_supervisor/1920"
+    ],
+    "papeis_com_conteudo": [
+      "aee",
+      "coordinator",
+      "developer",
+      "director",
+      "pedagogical",
+      "psychology",
+      "secretary",
+      "social_work"
+    ]
+  },
+  "fotos": {
+    "medidas_fora_da_secao": [
+      "education_supervisor/1280",
+      "education_supervisor/1440",
+      "education_supervisor/1920"
+    ],
+    "previstas_fora": [
+      "education_supervisor/1280",
+      "education_supervisor/1440",
+      "education_supervisor/1920"
+    ]
+  },
+  "censo_seccoes_sem_item_no_dom": {
+    "escola-historia": 33,
+    "coordenacao-chat": 18,
+    "videos-aprender": 6,
+    "admin-crachas": 3,
+    "comunicacao": 3,
+    "supervisao": 3,
+    "professor-agenda-hoje": 3
+  },
+  "o_que_este_verde_nao_autoriza": "Não corrige nada: as duas listas são do bundle publicado e mexer nelas é produto + publicação, que pede OK literal. Prova só que o destino do clique é previsto pelo código servido, e portanto é estado do produto, não defeito do instrumento.",
+  "portoes": [
+    {
+      "nome": "o_ar_conferido_e_o_publicado_no_diario_mais_novo",
+      "verde": true,
+      "detalhe": {
+        "medido": "9e236a23eed978cf7c2a2743d449b307",
+        "esperado": "9e236a23eed978cf7c2a2743d449b307",
+        "diario": "audit-publicacao-v136.json"
+      }
+    },
+    {
+      "nome": "a_predica_do_chat_prevem_exatamente_as_celulas_medidas_vazias",
+      "verde": true,
+      "detalhe": {
+        "medidas": [
+          "education_supervisor/1280",
+          "education_supervisor/1440",
+          "education_supervisor/1920"
+        ],
+        "previstas": [
+          "education_supervisor/1280",
+          "education_supervisor/1440",
+          "education_supervisor/1920"
+        ]
+      }
+    },
+    {
+      "nome": "a_predica_de_fotos_prevem_exatamente_as_celulas_onde_a_secao_nao_fixou",
+      "verde": true,
+      "detalhe": {
+        "medidas": [
+          "education_supervisor/1280",
+          "education_supervisor/1440",
+          "education_supervisor/1920"
+        ],
+        "previstas": [
+          "education_supervisor/1280",
+          "education_supervisor/1440",
+          "education_supervisor/1920"
+        ]
+      }
+    },
+    {
+      "nome": "nenhum_papel_do_mapa_recebe_chat_interno_sem_o_predicado_do_bundle_o_permitir",
+      "verde": false,
+      "detalhe": [
+        "education_supervisor"
+      ]
+    },
+    {
+      "nome": "o_censo_de_seccoes_sem_item_nao_depende_da_banda",
+      "verde": true,
+      "detalhe": []
+    },
+    {
+      "nome": "toda_celula_unicidade_tem_as_duas_pecas_medidas",
+      "verde": false,
+      "detalhe": [
+        "aee/1280=sem_fotos",
+        "aee/1440=sem_fotos",
+        "aee/1920=sem_fotos",
+        "gatekeeper/1280=sem_chatsem_fotos",
+        "gatekeeper/1440=sem_chatsem_fotos",
+        "gatekeeper/1920=sem_chatsem_fotos",
+        "monitor/1280=sem_chatsem_fotos",
+        "monitor/1440=sem_chatsem_fotos",
+        "monitor/1920=sem_chatsem_fotos",
+        "parent/1280=sem_chatsem_fotos",
+        "parent/1440=sem_chatsem_fotos",
+        "parent/1920=sem_chatsem_fotos",
+        "pedagogical/1280=sem_fotos",
+        "pedagogical/1440=sem_fotos",
+        "pedagogical/1920=sem_fotos",
+        "pending/1280=sem_chatsem_fotos",
+        "pending/1440=sem_chatsem_fotos",
+        "pending/1920=sem_chatsem_fotos",
+        "psychology/1280=sem_fotos",
+        "psychology/1440=sem_fotos",
+        "psychology/1920=sem_fotos",
+        "social_work/1280=sem_fotos",
+        "social_work/1440=sem_fotos",
+        "social_work/1920=sem_fotos",
+        "sports_operator/1280=sem_chatsem_fotos",
+        "sports_operator/1440=sem_chatsem_fotos",
+        "sports_operator/1920=sem_chatsem_fotos",
+        "student/1280=sem_chatsem_fotos",
+        "student/1440=sem_chatsem_fotos",
+        "student/1920=sem_chatsem_fotos"
+      ]
+    }
+  ],
+  "falhas": [
+    "nenhum_papel_do_mapa_recebe_chat_interno_sem_o_predicado_do_bundle_o_permitir | dado=[\"education_supervisor\"]",
+    "toda_celula_unicidade_tem_as_duas_pecas_medidas | dado=[\"aee/1280=sem_fotos\",\"aee/1440=sem_fotos\",\"aee/1920=sem_fotos\",\"gatekeeper/1280=sem_chatsem_fotos\",\"gatekeeper/1440=sem_chatsem_fotos\",\"gatekeeper/1920=sem_chatsem_fotos\",\"monitor/1280=sem_chatsem_fotos\",\"monitor/1440=sem_chatsem_fotos\",\"monitor/1920=sem_chatsem_fotos\",\"parent/1280=sem_chatsem_foto"
+  ],
+  "veredito": "P76_CENSO_VERMELHO 2 de 6"
+}

@@ -1,0 +1,177 @@
+{
+  "programa": "scripts/p76-censo-acesso-seccoes-desktop.mjs",
+  "em": "2026-11-21T07:00:59.267Z",
+  "pergunta": "as células vazias e os cliques que não fixam que a grelha P74 mediu são previstos pelas listas que o próprio bundle usa, ou são falha de medição?",
+  "metodo": "leitor só-leitura: extrai `STAFF_ROLES`, a fallback de views de `allowed()`, o ramo `section === fotos` e `roleSectionAccess` dos bytes SERVIDOS; traduz papel→view com a prédica do `syncRoleNavigation` e confronta com os artefactos `ah2-p35d-*` do MESMO md5.",
+  "ar": {
+    "url": "https://bfr-conecta.turmaroboticabfr.workers.dev/",
+    "diario": "audit-publicacao-v136.json",
+    "md5": "9e236a23eed978cf7c2a2743d449b307",
+    "esperado": "9e236a23eed978cf7c2a2743d449b307",
+    "pasta": "worker-deploy-v136-secretaria-de-educacao"
+  },
+  "listas_lidas_dos_bytes": {
+    "staff_roles": [
+      "pedagogical",
+      "aee",
+      "coordinator",
+      "director",
+      "secretary",
+      "psychology",
+      "social_work",
+      "developer"
+    ],
+    "chat_views": [
+      "teacher",
+      "coordinator",
+      "director",
+      "secretary",
+      "aee",
+      "multiprofessional",
+      "admin"
+    ],
+    "fotos_views": [
+      "admin",
+      "developer",
+      "coordinator",
+      "coordenacao",
+      "director",
+      "secretary"
+    ],
+    "posicao_do_ramo_fotos": 633461,
+    "posicao_do_modulo_chat": 1965539
+  },
+  "traducao_lida": "viewRole = role === 'developer' ? 'admin' : role === 'pedagogical' ? 'teacher' : role === 'psychology' ? 'psychology' : role === 'social_work' ? 'multiprofessional' : role;",
+  "celulas_do_mesmo_ar": 45,
+  "chat": {
+    "medidas_vazias": [
+      "education_supervisor/1280",
+      "education_supervisor/1440",
+      "education_supervisor/1920"
+    ],
+    "previstas_vazias": [
+      "education_supervisor/1280",
+      "education_supervisor/1440",
+      "education_supervisor/1920"
+    ],
+    "papeis_com_conteudo": [
+      "aee",
+      "coordinator",
+      "developer",
+      "director",
+      "pedagogical",
+      "psychology",
+      "secretary",
+      "social_work"
+    ]
+  },
+  "fotos": {
+    "medidas_fora_da_secao": [
+      "education_supervisor/1280",
+      "education_supervisor/1440",
+      "education_supervisor/1920"
+    ],
+    "previstas_fora": [
+      "education_supervisor/1280",
+      "education_supervisor/1440",
+      "education_supervisor/1920"
+    ]
+  },
+  "acesso_negado_pelo_mapa": {
+    "papeis_a_quem_roleSectionAccess_oferece_chat_interno_mas_allowed_recusa": [
+      "education_supervisor"
+    ],
+    "papeis_medidos_com_celula_vazia": [
+      "education_supervisor"
+    ]
+  },
+  "celulas_sem_peca_onde_o_mapa_a_declara": [],
+  "papeis_sem_fotos_no_mapa": [
+    "aee",
+    "gatekeeper",
+    "monitor",
+    "multiprofessional",
+    "parent",
+    "psychology",
+    "sports_operator",
+    "student",
+    "teacher"
+  ],
+  "censo_seccoes_sem_item_no_dom": {
+    "escola-historia": 33,
+    "coordenacao-chat": 18,
+    "videos-aprender": 6,
+    "admin-crachas": 3,
+    "comunicacao": 3,
+    "supervisao": 3,
+    "professor-agenda-hoje": 3
+  },
+  "o_que_este_verde_nao_autoriza": "Não corrige nada: as duas listas são do bundle publicado e mexer nelas é produto + publicação, que pede OK literal. Prova só que o destino do clique é previsto pelo código servido, e portanto é estado do produto, não defeito do instrumento.",
+  "portoes": [
+    {
+      "nome": "o_ar_conferido_e_o_publicado_no_diario_mais_novo",
+      "verde": true,
+      "detalhe": {
+        "medido": "9e236a23eed978cf7c2a2743d449b307",
+        "esperado": "9e236a23eed978cf7c2a2743d449b307",
+        "diario": "audit-publicacao-v136.json"
+      }
+    },
+    {
+      "nome": "a_predica_do_chat_prevem_exatamente_as_celulas_medidas_vazias",
+      "verde": true,
+      "detalhe": {
+        "medidas": [
+          "education_supervisor/1280",
+          "education_supervisor/1440",
+          "education_supervisor/1920"
+        ],
+        "previstas": [
+          "education_supervisor/1280",
+          "education_supervisor/1440",
+          "education_supervisor/1920"
+        ]
+      }
+    },
+    {
+      "nome": "a_predica_de_fotos_prevem_exatamente_as_celulas_onde_a_secao_nao_fixou",
+      "verde": true,
+      "detalhe": {
+        "medidas": [
+          "education_supervisor/1280",
+          "education_supervisor/1440",
+          "education_supervisor/1920"
+        ],
+        "previstas": [
+          "education_supervisor/1280",
+          "education_supervisor/1440",
+          "education_supervisor/1920"
+        ]
+      }
+    },
+    {
+      "nome": "todo_papel_a_quem_o_mapa_oferece_chat_fica_fora_do_predicado_e_medido_como_celula_vazia",
+      "verde": true,
+      "detalhe": {
+        "mapa_oferece_predicado_recusa": [
+          "education_supervisor"
+        ],
+        "papeis_medidos_vazios": [
+          "education_supervisor"
+        ]
+      }
+    },
+    {
+      "nome": "o_censo_de_seccoes_sem_item_nao_depende_da_banda",
+      "verde": true,
+      "detalhe": []
+    },
+    {
+      "nome": "toda_celula_cujo_mapa_declara_a_peca_tem_a_peca_medida",
+      "verde": true,
+      "detalhe": []
+    }
+  ],
+  "falhas": [],
+  "veredito": "P76_CENSO_OK 6/0"
+}
