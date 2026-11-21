@@ -133,7 +133,11 @@ const SNAPSHOT = `(() => {
 })()`;
 
 await send('Page.enable'); await send('Runtime.enable'); await send('Page.bringToFront');
-await send('Emulation.setDeviceMetricsOverride', { width: 1280, height: 900, deviceScaleFactor: 1, mobile: false });
+// A banda é variável porque a pergunta do usuário é de ecrã dele, não da minha janela de medição: o default
+// fica 1280x900 (as corridas de 21/11 de manhã), e P75_LARGURA/P75_ALTURA deixam-na bater com o print.
+const LARG = parseInt(process.env.P75_LARGURA || '1280', 10);
+const ALT = parseInt(process.env.P75_ALTURA || '900', 10);
+await send('Emulation.setDeviceMetricsOverride', { width: LARG, height: ALT, deviceScaleFactor: 1, mobile: false });
 // Primeiro navega-se para a origem do app: `localStorage` numa página `about:blank` é SecurityError, e foi
 // exatamente o que a 1.ª corrida apanhou. Só depois do shell aparecer é que a sessão é injetada.
 await send('Page.navigate', { url: URL_APP });
