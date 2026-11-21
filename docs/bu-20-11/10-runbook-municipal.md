@@ -858,7 +858,16 @@ peças não se sobrescrevem. `bfr_school_set_municipality` continua fora, pela r
 etiquetagem volátil, mantida chamável por anónimo para devolver `42501`).
 
 **O que este verde não afirma.** (i) Não mede o que cada um dos 45 nomes *devolve* a um chamador sem sessão — isso é
-HTTP e está por correr; o que aqui está certificado é o grau, não o conteúdo, e é por isso que a linha é M e não A.
+HTTP e foi medido em 21/11 por `scripts/p74-pen44-sonda-anonima.mjs` (selfteste offline
+`P74_PEN44_SONDA_ANONIMA_SELFTESTE_OK 8/0`; ao vivo `P74_PEN44_SONDA_ANONIMA_OK 6/0 · 45 chamadas · 0 por escrever`,
+registo `evidence/p74-pen44-sonda-anonima-21-11.json`, 36 811 B), com zero escrita no banco: uma leitura de
+catálogo e POSTs anónimos sem argumentos, só aos nomes que as duas vias — a volatilidade declarada e o corpo SQL
+vivo — classificam como leitura, e só guardando forma (tipo do corpo, chaves de objeto, nomes de coluna,
+bandeiras), nunca valores de linha. Resultado medido: **nenhum dos 45 devolve linhas a um anónimo sem
+argumentos** — 15 respondem 2xx com escalares (13 boolean, 1 null, 1 string sem identificador), 30 respondem 404
+sem argumentos (26 por os exigirem, 4 que os não exigem e devolvem 404 na mesma), 0 corpos com identificador,
+0 escritores chamados. O que o verde de certificação do grau afirma mantém-se; a linha é M porque o DDL não está
+aplicado — a frase `APLICAR PEN-44 NO BANCO` não foi dita — não porque falte o censo.
 (ii) Não fecha a exposição anónima inteira: fecha a via `PUBLIC`. Os 67 nomes executáveis por `anon` são outro eixo, e
 o que neles não vem do `PUBLIC` — a entrada `anon=X` explícita — é a classe da PEN-43, não desta, e as duas peças têm
 intersecção vazia de nomes. Nenhum número de «quantos ficam abertos depois» é afirmado aqui, porque seria uma
@@ -1057,8 +1066,9 @@ exactamente a que FALTA-2 existia para não ficar ao arbítrio de quem cola SQL.
    (deny-by-default — quem criar um papel de leitura novo tem de o conceder nominalmente), e a preservação dos 8
    papéis de plataforma passa de simulação a leitura do catálogo, que é o que o modo `--reversao` afirma e hoje chumba.
    O preço de não aplicar é permanecer o `PUBLIC` aberto sobre 45 nomes, com o grau de cada um deles a chegar ao
-   `anon` por pseudo-papel e não por decisão. O que esta peça **não** mede, e é a razão de a linha ser M: o conteúdo
-   que cada nome devolve a um chamador sem sessão.
+   `anon` por pseudo-papel e não por decisão. O censo de conteúdo que faltava foi medido em 21/11 (§2.10): nenhum
+   dos 45 devolve linhas a um anónimo sem argumentos — 15 respondem 2xx com escalares, 30 respondem 404. A razão de
+   a linha continuar M já não é o censo: é o DDL não aplicado, que pede a frase literal.
 8. **`git push`** dos commits deste pacote: precisa de OK literal novo; nenhum push está autorizado pelo
    trabalho descrito aqui.
 
@@ -1107,6 +1117,12 @@ afirma que nada foi aplicado. As capturas desta passada, cada uma com o motivo n
 `evidence/p73-municipal-reversao-recusa-PEN-44-1795233672431.json`, a contagem do ledger
 `evidence/ah1-cuenta-pen-21-11-conta-44.txt` e o stdout do portão de índice que apanhou o defeito de instrumento,
 `evidence/portao-indice-21-11-VERMELHO-a-uma-adjacencia-de-rotulo-chave-com-dois-pontos-e-literal-de-sete-letras-no-preflight.txt`.
+Censo de conteúdo dos 45 nomes (21/11, §2.10): `scripts/p74-pen44-sonda-anonima.mjs` (selfteste offline 8/0;
+ao vivo `P74_PEN44_SONDA_ANONIMA_OK 6/0 · 45 chamadas · 0 por escrever`; zero escrita no banco), registo
+`evidence/p74-pen44-sonda-anonima-21-11.json` (36 811 B) e a primeira forma do registo conservada com o defeito no
+nome, `evidence/p74-pen44-sonda-anonima-21-11-FORMA-ANTERIOR-nao_json-capaz-de-guardar-escalar.json` — a forma
+antiga guardava o corpo escalar num campo `nao_json` e foi substituída pela forma que só guarda tipo, chaves e
+bandeiras.
 Medição de alcance: `scripts/p73-pen38-alcance-por-concessao-20-11.mjs`, `scripts/p73-pen39-sonda-uso-agregados.mjs`,
 `scripts/p73-pen38-sonda-consumidor-do-diagnostico.mjs` (FALTA-3, escrita e corrida em 20/11).
 Medição de superfície no ar, por recipiente e por toque (20/11, §6A de
