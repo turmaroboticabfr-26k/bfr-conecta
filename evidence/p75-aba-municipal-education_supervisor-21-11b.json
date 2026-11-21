@@ -1,0 +1,332 @@
+{
+  "programa": "scripts/p75-aba-municipal-no-ar.mjs",
+  "em": "2026-11-21T06:34:59.698Z",
+  "duracao_ms": 11782,
+  "pergunta": "a entrada «Secretaria Municipal» aparece no ar servido para o papel education_supervisor? se não, qual predicado a esconde?",
+  "metodo": "chrome headless 1280 com a sessão do papel renovada por refresh; as perguntas vão ao próprio módulo servido (window.BFR_MUNICIPAL), nunca a uma versão minha da régua. Zero DDL, zero deploy, zero escrita de produto, zero endpoint de admin.",
+  "ar": {
+    "url": "https://bfr-conecta.turmaroboticabfr.workers.dev/",
+    "diario": "audit-publicacao-v136.json",
+    "md5_servido": "9e236a23eed978cf7c2a2743d449b307",
+    "md5_esperado": "9e236a23eed978cf7c2a2743d449b307",
+    "pasta_deploy": "worker-deploy-v136-secretaria-de-educacao"
+  },
+  "leitura_do_bundle": {
+    "sect": "secretaria-municipal",
+    "papeis_municipais": [
+      "admin",
+      "education_supervisor"
+    ],
+    "bytes_do_modulo": 56446,
+    "chaves_no_mapa_estatico_com_sect": [],
+    "papeis_no_mapa_estatico": 14
+  },
+  "alvo": {
+    "papel": "education_supervisor",
+    "view_role": "education_supervisor",
+    "esperado_no_dom": true
+  },
+  "erro_boot": null,
+  "injecao": {
+    "acesso_md5_8": "2045b74f",
+    "expira_em_s": 3587
+  },
+  "antes": {
+    "modulo_exposto": true,
+    "sect_da_module": "secretaria-municipal",
+    "papeis_municipais_da_module": [
+      "admin",
+      "education_supervisor"
+    ],
+    "papel_da_sessao": "education_supervisor",
+    "active_view": "education_supervisor",
+    "apto": {
+      "apto": true,
+      "por": "papel=education_supervisor viewRole=education_supervisor no mapa=true"
+    },
+    "mapa_vivo_com_sect": {
+      "parent": false,
+      "student": false,
+      "teacher": false,
+      "coordinator": false,
+      "admin": true,
+      "director": false,
+      "monitor": false,
+      "gatekeeper": false,
+      "secretary": false,
+      "aee": false,
+      "psychology": false,
+      "multiprofessional": false,
+      "sports_operator": false,
+      "education_supervisor": true
+    },
+    "navs": [
+      {
+        "host": "nav-list bfr-platform-nav",
+        "classe": "nav-item tap-target",
+        "hidden": false,
+        "display": "",
+        "visivel": true,
+        "munApto": "sim",
+        "rotulo": "🏛Secretaria Municipal"
+      },
+      {
+        "host": "mobile-more-grid",
+        "classe": "mobile-more-option tap-target",
+        "hidden": false,
+        "display": "",
+        "visivel": false,
+        "munApto": "sim",
+        "rotulo": "🏛Secretaria Municipal"
+      }
+    ],
+    "navs_no_dom": 2,
+    "navs_visiveis": 1,
+    "vista": {
+      "existe": true,
+      "classes": "content hidden",
+      "munApto": "sim",
+      "built": null,
+      "chars": 0
+    },
+    "abas_do_topo": [
+      "Responsável",
+      "Professor"
+    ],
+    "abas_do_topo_com_municipal": [],
+    "sidebar_visiveis": [
+      "inicio",
+      "chat-interno",
+      "notificacoes",
+      "conteudos",
+      "jogos-escolares",
+      "secretaria-municipal",
+      "comunicados",
+      "secretaria",
+      "jogos-escolares"
+    ],
+    "sidebar_total": 52,
+    "estouro_horizontal": false
+  },
+  "sonda": {
+    "feita": true,
+    "executavel": true,
+    "erro": "",
+    "nota": "o backend respondeu true para esta sessão"
+  },
+  "clique": "clicado",
+  "depois_clique": {
+    "modulo_exposto": true,
+    "sect_da_module": "secretaria-municipal",
+    "papeis_municipais_da_module": [
+      "admin",
+      "education_supervisor"
+    ],
+    "papel_da_sessao": "education_supervisor",
+    "active_view": "education_supervisor",
+    "apto": {
+      "apto": true,
+      "por": "papel=education_supervisor viewRole=education_supervisor no mapa=true"
+    },
+    "mapa_vivo_com_sect": {
+      "parent": false,
+      "student": false,
+      "teacher": false,
+      "coordinator": false,
+      "admin": true,
+      "director": false,
+      "monitor": false,
+      "gatekeeper": false,
+      "secretary": false,
+      "aee": false,
+      "psychology": false,
+      "multiprofessional": false,
+      "sports_operator": false,
+      "education_supervisor": true
+    },
+    "navs": [
+      {
+        "host": "nav-list bfr-platform-nav",
+        "classe": "nav-item tap-target active",
+        "hidden": false,
+        "display": "",
+        "visivel": true,
+        "munApto": "sim",
+        "rotulo": "🏛Secretaria Municipal"
+      },
+      {
+        "host": "mobile-more-grid",
+        "classe": "mobile-more-option tap-target active",
+        "hidden": false,
+        "display": "",
+        "visivel": false,
+        "munApto": "sim",
+        "rotulo": "🏛Secretaria Municipal"
+      }
+    ],
+    "navs_no_dom": 2,
+    "navs_visiveis": 1,
+    "vista": {
+      "existe": true,
+      "classes": "content",
+      "munApto": "sim",
+      "built": "1",
+      "chars": 1322
+    },
+    "abas_do_topo": [
+      "Responsável",
+      "Professor"
+    ],
+    "abas_do_topo_com_municipal": [],
+    "sidebar_visiveis": [
+      "inicio",
+      "chat-interno",
+      "notificacoes",
+      "conteudos",
+      "jogos-escolares",
+      "secretaria-municipal",
+      "comunicados",
+      "secretaria",
+      "jogos-escolares"
+    ],
+    "sidebar_total": 52,
+    "estouro_horizontal": false
+  },
+  "faixa_sonda_no_painel": "Controle no backend confirmado: o backend respondeu true para esta sessão\nESCOLAS CADASTRADAS\n6\n3 cidade(s): São Paulo, Rio de Janeiro, Belo Horizonte\nESCOLAS EM FUNCIONAMENTO\n6\ncampo `active` de schools\nALUNOS VISÍVEIS AO ACESSO\n848\nlinhas devolvidas por `students`\nTURMAS\n27\ncampos year/class_code/",
+  "abas_internas_do_painel": [
+    "▦Painel executivo",
+    "⌂Escolas da rede",
+    "⚉Alunos da rede",
+    "☷Profissionais",
+    "✧Acompanhamento pedagógico",
+    "◔Frequência e abandono",
+    "⛁Processos e protocolos",
+    "✉Comunicação da rede",
+    "⚒Infraestrutura",
+    "⎙Relatórios executivos"
+  ],
+  "excecoes": [],
+  "o_que_este_verde_nao_autoriza": "Não prova que o painel municipal mostra números corretos, nem autoriza publicar v138, aplicar DDL ou escrever concessões: prova só o estado da ENTRADA no ar de hoje para este papel.",
+  "portoes": [
+    {
+      "nome": "o_ar_medido_e_o_publicado_no_diario_mais_novo",
+      "verde": true,
+      "detalhe": {
+        "medido": "9e236a23eed978cf7c2a2743d449b307",
+        "esperado": "9e236a23eed978cf7c2a2743d449b307",
+        "diario": "audit-publicacao-v136.json"
+      }
+    },
+    {
+      "nome": "o_involucrio_municipal_esta_nos_bytes_servidos",
+      "verde": true,
+      "detalhe": {
+        "bytes_modulo": 56446,
+        "sect": "secretaria-municipal",
+        "papeis": [
+          "admin",
+          "education_supervisor"
+        ]
+      }
+    },
+    {
+      "nome": "a_seccao_municipal_nao_esta_no_mapa_estatico_do_bundle",
+      "verde": true,
+      "detalhe": {
+        "chaves_com_sect_estaticamente": []
+      }
+    },
+    {
+      "nome": "a_sessao_e_do_papel_pedido",
+      "verde": true,
+      "detalhe": {
+        "pedido": "education_supervisor",
+        "view": "education_supervisor",
+        "lido": "education_supervisor",
+        "erro_boot": null
+      }
+    },
+    {
+      "nome": "o_modulo_esta_exposto_na_janela",
+      "verde": true,
+      "detalhe": {
+        "modulo_exposto": true
+      }
+    },
+    {
+      "nome": "o_modulo_insere_o_botao_no_dom_seja_qual_for_o_papel",
+      "verde": true,
+      "detalhe": {
+        "navs_no_dom": 2,
+        "hosts": [
+          "nav-list bfr-platform-nav",
+          "mobile-more-grid"
+        ]
+      }
+    },
+    {
+      "nome": "o_botao_so_e_visivel_para_os_papeis_municipais_lidos_do_bundle",
+      "verde": true,
+      "detalhe": {
+        "pedido": "education_supervisor",
+        "view": "education_supervisor",
+        "esperado_visivel": true,
+        "navs_visiveis": 1
+      }
+    },
+    {
+      "nome": "a_visibilidade_do_botao_bate_com_o_predicado_do_modulo",
+      "verde": true,
+      "detalhe": {
+        "navs": [
+          {
+            "host": "nav-list bfr-platform-nav",
+            "classe": "nav-item tap-target",
+            "hidden": false,
+            "display": "",
+            "visivel": true,
+            "munApto": "sim",
+            "rotulo": "🏛Secretaria Municipal"
+          },
+          {
+            "host": "mobile-more-grid",
+            "classe": "mobile-more-option tap-target",
+            "hidden": false,
+            "display": "",
+            "visivel": false,
+            "munApto": "sim",
+            "rotulo": "🏛Secretaria Municipal"
+          }
+        ],
+        "apto": {
+          "apto": true,
+          "por": "papel=education_supervisor viewRole=education_supervisor no mapa=true"
+        }
+      }
+    },
+    {
+      "nome": "a_entrada_municipal_nao_e_uma_aba_do_seletor_de_papel",
+      "verde": true,
+      "detalhe": {
+        "abas_do_topo": [
+          "Responsável",
+          "Professor"
+        ]
+      }
+    },
+    {
+      "nome": "o_backend_respondeu_a_sonda_de_autorizacao",
+      "verde": true,
+      "detalhe": {
+        "sonda": {
+          "feita": true,
+          "executavel": true,
+          "erro": "",
+          "nota": "o backend respondeu true para esta sessão"
+        }
+      }
+    }
+  ],
+  "falhas": [],
+  "veredito": "P75_ABA_MUNICIPAL_OK education_supervisor"
+}

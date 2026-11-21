@@ -1,0 +1,723 @@
+{
+  "ciclo": "AH-2-VD",
+  "em": "2026-11-21T05:57:30.424Z",
+  "papel": "aee",
+  "bandas": [
+    "1280",
+    "1440",
+    "1920"
+  ],
+  "tetos": {
+    "praga_ms": 367065,
+    "watchdog_ms": 457065,
+    "estabilizacao_ms": 6000,
+    "cdp_timeout_ms": 25000
+  },
+  "url": "https://bfr-conecta.turmaroboticabfr.workers.dev/",
+  "md5_shell": "9e236a23eed978cf7c2a2743d449b307",
+  "mapa_declarado": {
+    "parent": 16,
+    "student": 19,
+    "teacher": 22,
+    "coordinator": 18,
+    "admin": 26,
+    "director": 15,
+    "monitor": 8,
+    "gatekeeper": 8,
+    "secretary": 11,
+    "aee": 10,
+    "psychology": 3,
+    "multiprofessional": 3,
+    "sports_operator": 4,
+    "education_supervisor": 12
+  },
+  "traducao_lida_do_bundle": "viewRole = role === 'developer' ? 'admin' : role === 'pedagogical' ? 'teacher' : role === 'psychology' ? 'psychology' : role === 'social_work' ? 'multiprofessional' : role;",
+  "stages": {
+    "aee": {
+      "1280": {
+        "nav": {
+          "tentativas": 2,
+          "ms": 145,
+          "ok": true
+        },
+        "ms_ready": 2096,
+        "erro_boot": null,
+        "estado": {
+          "entrou": true,
+          "aviso_pendencia": false,
+          "login_visivel": false,
+          "nav_visiveis": 5
+        },
+        "papel_da_sessao": "aee",
+        "botoes_no_dom": 36,
+        "peca": {
+          "inicio": {
+            "painel": {
+              "id": "aeeView",
+              "c": 6420
+            },
+            "ms": 4286,
+            "controles": 72,
+            "nos": 450,
+            "tap": 72,
+            "fonte": 0,
+            "cortados": 4,
+            "estouro_h": false,
+            "seccao_ativa": "inicio",
+            "papel_apos": "aee",
+            "view_apos": "aee",
+            "nao_estabilizou": false,
+            "botao_attivo": "inicio",
+            "view_antes": null
+          },
+          "aee": {
+            "painel": {
+              "id": "aeeView",
+              "c": 6420
+            },
+            "ms": 1845,
+            "controles": 72,
+            "nos": 450,
+            "tap": 72,
+            "fonte": 0,
+            "cortados": 4,
+            "estouro_h": false,
+            "seccao_ativa": "aee",
+            "papel_apos": "aee",
+            "view_apos": "aee",
+            "nao_estabilizou": false,
+            "botao_attivo": "aee",
+            "view_antes": "aee"
+          },
+          "atividades": {
+            "painel": {
+              "id": "activityCenterView",
+              "c": 1011
+            },
+            "ms": 1825,
+            "controles": 19,
+            "nos": 96,
+            "tap": 15,
+            "fonte": 0,
+            "cortados": 0,
+            "estouro_h": false,
+            "seccao_ativa": "atividades",
+            "papel_apos": "aee",
+            "view_apos": "aee",
+            "nao_estabilizou": false,
+            "botao_attivo": null,
+            "view_antes": "aee"
+          },
+          "horarios": {
+            "painel": {
+              "id": "aeeView",
+              "c": 6420
+            },
+            "ms": 1823,
+            "controles": 72,
+            "nos": 450,
+            "tap": 72,
+            "fonte": 0,
+            "cortados": 4,
+            "estouro_h": false,
+            "seccao_ativa": "horarios",
+            "papel_apos": "aee",
+            "view_apos": "aee",
+            "nao_estabilizou": false,
+            "botao_attivo": null,
+            "view_antes": "aee"
+          },
+          "comunicados": {
+            "painel": {
+              "id": "aeeView",
+              "c": 6420
+            },
+            "ms": 1827,
+            "controles": 72,
+            "nos": 450,
+            "tap": 72,
+            "fonte": 0,
+            "cortados": 4,
+            "estouro_h": false,
+            "seccao_ativa": "comunicados",
+            "papel_apos": "aee",
+            "view_apos": "aee",
+            "nao_estabilizou": false,
+            "botao_attivo": "comunicados",
+            "view_antes": "aee"
+          },
+          "notificacoes": {
+            "painel": {
+              "id": "bfrNotificationsView",
+              "c": 400
+            },
+            "ms": 2438,
+            "controles": 3,
+            "nos": 26,
+            "tap": 3,
+            "fonte": 0,
+            "cortados": 0,
+            "estouro_h": false,
+            "seccao_ativa": "notificacoes",
+            "papel_apos": "aee",
+            "view_apos": "aee",
+            "nao_estabilizou": false,
+            "botao_attivo": "notificacoes",
+            "view_antes": "aee"
+          },
+          "conteudos": {
+            "painel": {
+              "id": "bfrContentHubView",
+              "c": 1021
+            },
+            "ms": 1818,
+            "controles": 14,
+            "nos": 68,
+            "tap": 14,
+            "fonte": 3,
+            "cortados": 0,
+            "estouro_h": false,
+            "seccao_ativa": "conteudos",
+            "papel_apos": "aee",
+            "view_apos": "aee",
+            "nao_estabilizou": false,
+            "botao_attivo": "conteudos",
+            "view_antes": "aee"
+          },
+          "chat-interno": {
+            "painel": {
+              "id": "internalChatView",
+              "c": 738
+            },
+            "ms": 1831,
+            "controles": 18,
+            "nos": 122,
+            "tap": 11,
+            "fonte": 7,
+            "cortados": 0,
+            "estouro_h": false,
+            "seccao_ativa": "chat-interno",
+            "papel_apos": "aee",
+            "view_apos": "aee",
+            "nao_estabilizou": false,
+            "botao_attivo": "chat-interno",
+            "view_antes": "aee"
+          },
+          "jogos-escolares": {
+            "painel": {
+              "id": "schoolGamesView",
+              "c": 865
+            },
+            "ms": 1828,
+            "controles": 8,
+            "nos": 79,
+            "tap": 8,
+            "fonte": 0,
+            "cortados": 0,
+            "estouro_h": false,
+            "seccao_ativa": "jogos-escolares",
+            "papel_apos": "aee",
+            "view_apos": "aee",
+            "nao_estabilizou": false,
+            "botao_attivo": null,
+            "view_antes": "aee"
+          }
+        },
+        "sem_botao": [
+          "escola-historia"
+        ],
+        "erros_console": [],
+        "erros_brutos": 0,
+        "log_rede_erros": 1,
+        "log_rede_amostra": [
+          {
+            "fonte": "network",
+            "texto": "Failed to load resource: the server responded with a status of 404 ()",
+            "url": "/cdn-cgi/rum"
+          }
+        ],
+        "falhas_api_rede": [],
+        "erros_brutos_amostra": [],
+        "n_erros": 0,
+        "painel_vazio": [],
+        "estouro": [],
+        "tap_total": 339,
+        "fonte_total": 10,
+        "abertas": 9,
+        "instaveis": [],
+        "ms_max": 4286,
+        "ms_de_inicio": 4286,
+        "seg_banda": 113.8
+      },
+      "1440": {
+        "nav": {
+          "tentativas": 1,
+          "ms": 138,
+          "ok": true
+        },
+        "ms_ready": 850,
+        "erro_boot": null,
+        "estado": {
+          "entrou": true,
+          "aviso_pendencia": false,
+          "login_visivel": false,
+          "nav_visiveis": 5
+        },
+        "papel_da_sessao": "aee",
+        "botoes_no_dom": 36,
+        "peca": {
+          "inicio": {
+            "painel": {
+              "id": "aeeView",
+              "c": 6464
+            },
+            "ms": 3666,
+            "controles": 74,
+            "nos": 453,
+            "tap": 74,
+            "fonte": 0,
+            "cortados": 4,
+            "estouro_h": false,
+            "seccao_ativa": "inicio",
+            "papel_apos": "aee",
+            "view_apos": "aee",
+            "nao_estabilizou": false,
+            "botao_attivo": "inicio",
+            "view_antes": null
+          },
+          "aee": {
+            "painel": {
+              "id": "aeeView",
+              "c": 6464
+            },
+            "ms": 1827,
+            "controles": 74,
+            "nos": 453,
+            "tap": 74,
+            "fonte": 0,
+            "cortados": 4,
+            "estouro_h": false,
+            "seccao_ativa": "aee",
+            "papel_apos": "aee",
+            "view_apos": "aee",
+            "nao_estabilizou": false,
+            "botao_attivo": "aee",
+            "view_antes": "aee"
+          },
+          "atividades": {
+            "painel": {
+              "id": "activityCenterView",
+              "c": 1011
+            },
+            "ms": 1827,
+            "controles": 19,
+            "nos": 96,
+            "tap": 15,
+            "fonte": 0,
+            "cortados": 0,
+            "estouro_h": false,
+            "seccao_ativa": "atividades",
+            "papel_apos": "aee",
+            "view_apos": "aee",
+            "nao_estabilizou": false,
+            "botao_attivo": null,
+            "view_antes": "aee"
+          },
+          "horarios": {
+            "painel": {
+              "id": "aeeView",
+              "c": 6464
+            },
+            "ms": 2440,
+            "controles": 74,
+            "nos": 453,
+            "tap": 74,
+            "fonte": 0,
+            "cortados": 4,
+            "estouro_h": false,
+            "seccao_ativa": "horarios",
+            "papel_apos": "aee",
+            "view_apos": "aee",
+            "nao_estabilizou": false,
+            "botao_attivo": null,
+            "view_antes": "aee"
+          },
+          "comunicados": {
+            "painel": {
+              "id": "aeeView",
+              "c": 6464
+            },
+            "ms": 1818,
+            "controles": 74,
+            "nos": 453,
+            "tap": 74,
+            "fonte": 0,
+            "cortados": 4,
+            "estouro_h": false,
+            "seccao_ativa": "comunicados",
+            "papel_apos": "aee",
+            "view_apos": "aee",
+            "nao_estabilizou": false,
+            "botao_attivo": "comunicados",
+            "view_antes": "aee"
+          },
+          "notificacoes": {
+            "painel": {
+              "id": "bfrNotificationsView",
+              "c": 400
+            },
+            "ms": 1829,
+            "controles": 3,
+            "nos": 26,
+            "tap": 3,
+            "fonte": 0,
+            "cortados": 0,
+            "estouro_h": false,
+            "seccao_ativa": "notificacoes",
+            "papel_apos": "aee",
+            "view_apos": "aee",
+            "nao_estabilizou": false,
+            "botao_attivo": "notificacoes",
+            "view_antes": "aee"
+          },
+          "conteudos": {
+            "painel": {
+              "id": "bfrContentHubView",
+              "c": 1021
+            },
+            "ms": 1826,
+            "controles": 14,
+            "nos": 68,
+            "tap": 14,
+            "fonte": 3,
+            "cortados": 0,
+            "estouro_h": false,
+            "seccao_ativa": "conteudos",
+            "papel_apos": "aee",
+            "view_apos": "aee",
+            "nao_estabilizou": false,
+            "botao_attivo": "conteudos",
+            "view_antes": "aee"
+          },
+          "chat-interno": {
+            "painel": {
+              "id": "internalChatView",
+              "c": 738
+            },
+            "ms": 1826,
+            "controles": 18,
+            "nos": 122,
+            "tap": 11,
+            "fonte": 7,
+            "cortados": 0,
+            "estouro_h": false,
+            "seccao_ativa": "chat-interno",
+            "papel_apos": "aee",
+            "view_apos": "aee",
+            "nao_estabilizou": false,
+            "botao_attivo": "chat-interno",
+            "view_antes": "aee"
+          },
+          "jogos-escolares": {
+            "painel": {
+              "id": "schoolGamesView",
+              "c": 865
+            },
+            "ms": 1822,
+            "controles": 8,
+            "nos": 79,
+            "tap": 8,
+            "fonte": 0,
+            "cortados": 0,
+            "estouro_h": false,
+            "seccao_ativa": "jogos-escolares",
+            "papel_apos": "aee",
+            "view_apos": "aee",
+            "nao_estabilizou": false,
+            "botao_attivo": null,
+            "view_antes": "aee"
+          }
+        },
+        "sem_botao": [
+          "escola-historia"
+        ],
+        "erros_console": [],
+        "erros_brutos": 0,
+        "log_rede_erros": 1,
+        "log_rede_amostra": [
+          {
+            "fonte": "network",
+            "texto": "Failed to load resource: the server responded with a status of 404 ()",
+            "url": "/cdn-cgi/rum"
+          }
+        ],
+        "falhas_api_rede": [],
+        "erros_brutos_amostra": [],
+        "n_erros": 0,
+        "painel_vazio": [],
+        "estouro": [],
+        "tap_total": 347,
+        "fonte_total": 10,
+        "abertas": 9,
+        "instaveis": [],
+        "ms_max": 3666,
+        "ms_de_inicio": 3666,
+        "seg_banda": 20.9
+      },
+      "1920": {
+        "nav": {
+          "tentativas": 1,
+          "ms": 157,
+          "ok": true
+        },
+        "ms_ready": 475,
+        "erro_boot": null,
+        "estado": {
+          "entrou": true,
+          "aviso_pendencia": false,
+          "login_visivel": false,
+          "nav_visiveis": 5
+        },
+        "papel_da_sessao": "aee",
+        "botoes_no_dom": 36,
+        "peca": {
+          "inicio": {
+            "painel": {
+              "id": "aeeView",
+              "c": 6464
+            },
+            "ms": 3685,
+            "controles": 74,
+            "nos": 453,
+            "tap": 74,
+            "fonte": 0,
+            "cortados": 4,
+            "estouro_h": false,
+            "seccao_ativa": "inicio",
+            "papel_apos": "aee",
+            "view_apos": "aee",
+            "nao_estabilizou": false,
+            "botao_attivo": "inicio",
+            "view_antes": null
+          },
+          "aee": {
+            "painel": {
+              "id": "aeeView",
+              "c": 6464
+            },
+            "ms": 1816,
+            "controles": 74,
+            "nos": 453,
+            "tap": 74,
+            "fonte": 0,
+            "cortados": 4,
+            "estouro_h": false,
+            "seccao_ativa": "aee",
+            "papel_apos": "aee",
+            "view_apos": "aee",
+            "nao_estabilizou": false,
+            "botao_attivo": "aee",
+            "view_antes": "aee"
+          },
+          "atividades": {
+            "painel": {
+              "id": "activityCenterView",
+              "c": 1011
+            },
+            "ms": 1836,
+            "controles": 19,
+            "nos": 96,
+            "tap": 15,
+            "fonte": 0,
+            "cortados": 0,
+            "estouro_h": false,
+            "seccao_ativa": "atividades",
+            "papel_apos": "aee",
+            "view_apos": "aee",
+            "nao_estabilizou": false,
+            "botao_attivo": null,
+            "view_antes": "aee"
+          },
+          "horarios": {
+            "painel": {
+              "id": "aeeView",
+              "c": 6464
+            },
+            "ms": 2421,
+            "controles": 74,
+            "nos": 453,
+            "tap": 74,
+            "fonte": 0,
+            "cortados": 4,
+            "estouro_h": false,
+            "seccao_ativa": "horarios",
+            "papel_apos": "aee",
+            "view_apos": "aee",
+            "nao_estabilizou": false,
+            "botao_attivo": null,
+            "view_antes": "aee"
+          },
+          "comunicados": {
+            "painel": {
+              "id": "aeeView",
+              "c": 6464
+            },
+            "ms": 1822,
+            "controles": 74,
+            "nos": 453,
+            "tap": 74,
+            "fonte": 0,
+            "cortados": 4,
+            "estouro_h": false,
+            "seccao_ativa": "comunicados",
+            "papel_apos": "aee",
+            "view_apos": "aee",
+            "nao_estabilizou": false,
+            "botao_attivo": "comunicados",
+            "view_antes": "aee"
+          },
+          "notificacoes": {
+            "painel": {
+              "id": "bfrNotificationsView",
+              "c": 400
+            },
+            "ms": 1816,
+            "controles": 3,
+            "nos": 26,
+            "tap": 3,
+            "fonte": 0,
+            "cortados": 0,
+            "estouro_h": false,
+            "seccao_ativa": "notificacoes",
+            "papel_apos": "aee",
+            "view_apos": "aee",
+            "nao_estabilizou": false,
+            "botao_attivo": "notificacoes",
+            "view_antes": "aee"
+          },
+          "conteudos": {
+            "painel": {
+              "id": "bfrContentHubView",
+              "c": 1021
+            },
+            "ms": 1825,
+            "controles": 14,
+            "nos": 68,
+            "tap": 14,
+            "fonte": 3,
+            "cortados": 0,
+            "estouro_h": false,
+            "seccao_ativa": "conteudos",
+            "papel_apos": "aee",
+            "view_apos": "aee",
+            "nao_estabilizou": false,
+            "botao_attivo": "conteudos",
+            "view_antes": "aee"
+          },
+          "chat-interno": {
+            "painel": {
+              "id": "internalChatView",
+              "c": 738
+            },
+            "ms": 1821,
+            "controles": 18,
+            "nos": 122,
+            "tap": 11,
+            "fonte": 7,
+            "cortados": 0,
+            "estouro_h": false,
+            "seccao_ativa": "chat-interno",
+            "papel_apos": "aee",
+            "view_apos": "aee",
+            "nao_estabilizou": false,
+            "botao_attivo": "chat-interno",
+            "view_antes": "aee"
+          },
+          "jogos-escolares": {
+            "painel": {
+              "id": "schoolGamesView",
+              "c": 865
+            },
+            "ms": 1824,
+            "controles": 8,
+            "nos": 79,
+            "tap": 8,
+            "fonte": 0,
+            "cortados": 0,
+            "estouro_h": false,
+            "seccao_ativa": "jogos-escolares",
+            "papel_apos": "aee",
+            "view_apos": "aee",
+            "nao_estabilizou": false,
+            "botao_attivo": null,
+            "view_antes": "aee"
+          }
+        },
+        "sem_botao": [
+          "escola-historia"
+        ],
+        "erros_console": [],
+        "erros_brutos": 0,
+        "log_rede_erros": 1,
+        "log_rede_amostra": [
+          {
+            "fonte": "network",
+            "texto": "Failed to load resource: the server responded with a status of 404 ()",
+            "url": "/cdn-cgi/rum"
+          }
+        ],
+        "falhas_api_rede": [],
+        "erros_brutos_amostra": [],
+        "n_erros": 0,
+        "painel_vazio": [],
+        "estouro": [],
+        "tap_total": 347,
+        "fonte_total": 10,
+        "abertas": 9,
+        "instaveis": [],
+        "ms_max": 3685,
+        "ms_de_inicio": 3685,
+        "seg_banda": 20.4
+      },
+      "declaradas": 10,
+      "secoes": [
+        "inicio",
+        "aee",
+        "atividades",
+        "horarios",
+        "comunicados",
+        "escola-historia",
+        "notificacoes",
+        "conteudos",
+        "chat-interno",
+        "jogos-escolares"
+      ],
+      "injecao_1280": {
+        "expira_em_s": 3596,
+        "acesso_md5_8": "c4d80a59"
+      },
+      "injecao_1440": {
+        "expira_em_s": 3596,
+        "acesso_md5_8": "a8c75b86"
+      },
+      "injecao_1920": {
+        "expira_em_s": 3596,
+        "acesso_md5_8": "f35ae6f9"
+      }
+    }
+  },
+  "portoes": 32,
+  "falhas": [],
+  "medido": {
+    "papeis": 1,
+    "bandas": 3,
+    "banda_nomes": [
+      "1280",
+      "1440",
+      "1920"
+    ],
+    "paineis_abertos": 27,
+    "completa": true
+  },
+  "veredito": "AH2_VARREDURA_DESKTOP_LIMPA"
+}

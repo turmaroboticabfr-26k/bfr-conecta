@@ -105,7 +105,7 @@ const out = {
 out.veredito = out.com_estouro > 0 ? 'HA_ESTOURO_NO_AR'
   : out.cobertas_neste_ar === esperadas && out.distintas_sem_lista_de_estouro === 0 ? 'P35_ESTOURO_MEDIDO_SEM_ESTOURO_NO_AR'
   : 'P35_COBERTURA_PARCIAL_DO_ESTOURO';
-out.larguras_fora_da_grelha_que_esta_peca_nao_cobre = ['1280', '1440', '1920 — as bandas desktop continuam com os valores da passada de 17/11, re-medi-las é corrida própria'];
+out.larguras_fora_da_grelha_que_esta_peca_nao_cobre = ['1280', '1440', '1920 — esta peça só lê a família M5 (larguras móveis); o valor desktop do mesmo ar foi medido a 20/11 por scripts/sm25-cobertura-desktop.mjs (45 células, 0 estouro) e corroborado a 21/11 por scripts/p74-pen35-desktop-resumo.mjs (45/45, 0 estouro) — as passadas de 17/11 continuam sem valor probatório'];
 writeFileSync(OUT, JSON.stringify(out, null, 2) + '\n');
 console.log('ar=' + AR_ESPERADO + ' · ' + out.grelha_declarada_do_produtor + ' · ficheiros m5 em disco=' + ficheiros.length + ' · emissor:' + out.leitura_do_produtor.linha_onde_o_emissor_escreve_a_lista + ' | portao:' + out.leitura_do_produtor.linha_do_portao_do_produtor);
 for (const [k, v] of Object.entries(out.por_ar)) console.log('  ar ' + k + ': fich=' + v.ficheiros + ' papeis=' + v.papeis + ' com_lista=' + v.celulas_com_lista + ' com_estouro=' + v.celulas_com_estouro + ' sem_a_chave=' + v.celulas_sem_a_chave + (v.he_o_ar_atual ? '  <= AR ATUAL' : ''));

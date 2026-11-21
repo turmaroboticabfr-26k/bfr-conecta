@@ -1,0 +1,457 @@
+{
+  "programa": "scripts/p74-pen35-desktop-resumo.mjs",
+  "em": "2026-11-21T06:33:50.049Z",
+  "pergunta": "PEN-35 bandas desktop: com a régua corrigida (clientWidth) e o ar servido, há estouro horizontal em 1280/1440/1920?",
+  "ar": {
+    "url": "https://bfr-conecta.turmaroboticabfr.workers.dev/",
+    "md5_esperado_de": "worker-deploy-v136-secretaria-de-educacao/esperado-v136.json",
+    "md5": "9e236a23eed978cf7c2a2743d449b307"
+  },
+  "produtor": {
+    "ficheiro": "scripts/p74-pen35-varredura-desktop.mjs",
+    "regua_tem_clientWidth": true,
+    "regua_sem_innerWidth": true,
+    "papeis_lidos": 15,
+    "bandas_lidas": [
+      "1280",
+      "1440",
+      "1920"
+    ]
+  },
+  "unidade": "celula = papel x largura; uma ocorrencia por ficheiro; lista vazia = medido sem estouro; chave ausente = nao medido (fora do verde); erro_boot em 2+ ficheiros sem medicao = travada",
+  "ficheiros_p35d_em_disco": 32,
+  "por_ar": {
+    "9e236a23eed9": {
+      "ficheiros": 32,
+      "papeis": 15,
+      "he_o_ar_atual": true
+    }
+  },
+  "grelha_declarada": "15 papeis x 3 larguras = 45 celulas",
+  "medidos_neste_ar": 45,
+  "com_lista_vazia": 45,
+  "com_estouro": 0,
+  "com_falhas_nao_persona": 6,
+  "travados_por_boot": 0,
+  "por_medir": 0,
+  "mapa": {
+    "pending@1280": {
+      "medido": true,
+      "ocorrencias": 1,
+      "estouro": [],
+      "travado_por_boot_2_ou_mais": false,
+      "persona_errada": 0,
+      "pela_praga_sem_medir": false,
+      "falhas_do_ultimo": []
+    },
+    "pending@1440": {
+      "medido": true,
+      "ocorrencias": 1,
+      "estouro": [],
+      "travado_por_boot_2_ou_mais": false,
+      "persona_errada": 0,
+      "pela_praga_sem_medir": false,
+      "falhas_do_ultimo": []
+    },
+    "pending@1920": {
+      "medido": true,
+      "ocorrencias": 1,
+      "estouro": [],
+      "travado_por_boot_2_ou_mais": false,
+      "persona_errada": 0,
+      "pela_praga_sem_medir": false,
+      "falhas_do_ultimo": []
+    },
+    "parent@1280": {
+      "medido": true,
+      "ocorrencias": 2,
+      "estouro": [],
+      "travado_por_boot_2_ou_mais": false,
+      "persona_errada": 0,
+      "pela_praga_sem_medir": false,
+      "falhas_do_ultimo": []
+    },
+    "parent@1440": {
+      "medido": true,
+      "ocorrencias": 2,
+      "estouro": [],
+      "travado_por_boot_2_ou_mais": false,
+      "persona_errada": 0,
+      "pela_praga_sem_medir": false,
+      "falhas_do_ultimo": []
+    },
+    "parent@1920": {
+      "medido": true,
+      "ocorrencias": 2,
+      "estouro": [],
+      "travado_por_boot_2_ou_mais": false,
+      "persona_errada": 0,
+      "pela_praga_sem_medir": false,
+      "falhas_do_ultimo": []
+    },
+    "student@1280": {
+      "medido": true,
+      "ocorrencias": 2,
+      "estouro": [],
+      "travado_por_boot_2_ou_mais": false,
+      "persona_errada": 0,
+      "pela_praga_sem_medir": false,
+      "falhas_do_ultimo": []
+    },
+    "student@1440": {
+      "medido": true,
+      "ocorrencias": 2,
+      "estouro": [],
+      "travado_por_boot_2_ou_mais": false,
+      "persona_errada": 0,
+      "pela_praga_sem_medir": false,
+      "falhas_do_ultimo": []
+    },
+    "student@1920": {
+      "medido": true,
+      "ocorrencias": 2,
+      "estouro": [],
+      "travado_por_boot_2_ou_mais": false,
+      "persona_errada": 0,
+      "pela_praga_sem_medir": false,
+      "falhas_do_ultimo": []
+    },
+    "pedagogical@1280": {
+      "medido": true,
+      "ocorrencias": 2,
+      "estouro": [],
+      "travado_por_boot_2_ou_mais": false,
+      "persona_errada": 0,
+      "pela_praga_sem_medir": false,
+      "falhas_do_ultimo": []
+    },
+    "pedagogical@1440": {
+      "medido": true,
+      "ocorrencias": 2,
+      "estouro": [],
+      "travado_por_boot_2_ou_mais": false,
+      "persona_errada": 0,
+      "pela_praga_sem_medir": false,
+      "falhas_do_ultimo": []
+    },
+    "pedagogical@1920": {
+      "medido": true,
+      "ocorrencias": 2,
+      "estouro": [],
+      "travado_por_boot_2_ou_mais": false,
+      "persona_errada": 0,
+      "pela_praga_sem_medir": false,
+      "falhas_do_ultimo": []
+    },
+    "developer@1280": {
+      "medido": true,
+      "ocorrencias": 3,
+      "estouro": [],
+      "travado_por_boot_2_ou_mais": false,
+      "persona_errada": 0,
+      "pela_praga_sem_medir": false,
+      "falhas_do_ultimo": []
+    },
+    "developer@1440": {
+      "medido": true,
+      "ocorrencias": 3,
+      "estouro": [],
+      "travado_por_boot_2_ou_mais": false,
+      "persona_errada": 0,
+      "pela_praga_sem_medir": false,
+      "falhas_do_ultimo": []
+    },
+    "developer@1920": {
+      "medido": true,
+      "ocorrencias": 3,
+      "estouro": [],
+      "travado_por_boot_2_ou_mais": false,
+      "persona_errada": 0,
+      "pela_praga_sem_medir": false,
+      "falhas_do_ultimo": [
+        "developer/1920: 0 seções cujo conteúdo não assenta em 6 s | dado=[\"inicio@6273ms\"] | esperado=[]"
+      ]
+    },
+    "monitor@1280": {
+      "medido": true,
+      "ocorrencias": 2,
+      "estouro": [],
+      "travado_por_boot_2_ou_mais": false,
+      "persona_errada": 0,
+      "pela_praga_sem_medir": false,
+      "falhas_do_ultimo": []
+    },
+    "monitor@1440": {
+      "medido": true,
+      "ocorrencias": 2,
+      "estouro": [],
+      "travado_por_boot_2_ou_mais": false,
+      "persona_errada": 0,
+      "pela_praga_sem_medir": false,
+      "falhas_do_ultimo": []
+    },
+    "monitor@1920": {
+      "medido": true,
+      "ocorrencias": 2,
+      "estouro": [],
+      "travado_por_boot_2_ou_mais": false,
+      "persona_errada": 0,
+      "pela_praga_sem_medir": false,
+      "falhas_do_ultimo": []
+    },
+    "gatekeeper@1280": {
+      "medido": true,
+      "ocorrencias": 2,
+      "estouro": [],
+      "travado_por_boot_2_ou_mais": false,
+      "persona_errada": 0,
+      "pela_praga_sem_medir": false,
+      "falhas_do_ultimo": []
+    },
+    "gatekeeper@1440": {
+      "medido": true,
+      "ocorrencias": 2,
+      "estouro": [],
+      "travado_por_boot_2_ou_mais": false,
+      "persona_errada": 0,
+      "pela_praga_sem_medir": false,
+      "falhas_do_ultimo": []
+    },
+    "gatekeeper@1920": {
+      "medido": true,
+      "ocorrencias": 2,
+      "estouro": [],
+      "travado_por_boot_2_ou_mais": false,
+      "persona_errada": 0,
+      "pela_praga_sem_medir": false,
+      "falhas_do_ultimo": []
+    },
+    "coordinator@1280": {
+      "medido": true,
+      "ocorrencias": 2,
+      "estouro": [],
+      "travado_por_boot_2_ou_mais": false,
+      "persona_errada": 0,
+      "pela_praga_sem_medir": false,
+      "falhas_do_ultimo": [
+        "coordinator/1280: 0 seções cujo conteúdo não assenta em 6 s | dado=[\"inicio@6436ms\"] | esperado=[]"
+      ]
+    },
+    "coordinator@1440": {
+      "medido": true,
+      "ocorrencias": 2,
+      "estouro": [],
+      "travado_por_boot_2_ou_mais": false,
+      "persona_errada": 0,
+      "pela_praga_sem_medir": false,
+      "falhas_do_ultimo": []
+    },
+    "coordinator@1920": {
+      "medido": true,
+      "ocorrencias": 2,
+      "estouro": [],
+      "travado_por_boot_2_ou_mais": false,
+      "persona_errada": 0,
+      "pela_praga_sem_medir": false,
+      "falhas_do_ultimo": []
+    },
+    "secretary@1280": {
+      "medido": true,
+      "ocorrencias": 4,
+      "estouro": [],
+      "travado_por_boot_2_ou_mais": false,
+      "persona_errada": 0,
+      "pela_praga_sem_medir": false,
+      "falhas_do_ultimo": []
+    },
+    "secretary@1440": {
+      "medido": true,
+      "ocorrencias": 4,
+      "estouro": [],
+      "travado_por_boot_2_ou_mais": false,
+      "persona_errada": 0,
+      "pela_praga_sem_medir": false,
+      "falhas_do_ultimo": []
+    },
+    "secretary@1920": {
+      "medido": true,
+      "ocorrencias": 4,
+      "estouro": [],
+      "travado_por_boot_2_ou_mais": false,
+      "persona_errada": 1,
+      "pela_praga_sem_medir": false,
+      "falhas_do_ultimo": []
+    },
+    "aee@1280": {
+      "medido": true,
+      "ocorrencias": 2,
+      "estouro": [],
+      "travado_por_boot_2_ou_mais": false,
+      "persona_errada": 0,
+      "pela_praga_sem_medir": false,
+      "falhas_do_ultimo": []
+    },
+    "aee@1440": {
+      "medido": true,
+      "ocorrencias": 2,
+      "estouro": [],
+      "travado_por_boot_2_ou_mais": false,
+      "persona_errada": 0,
+      "pela_praga_sem_medir": false,
+      "falhas_do_ultimo": []
+    },
+    "aee@1920": {
+      "medido": true,
+      "ocorrencias": 2,
+      "estouro": [],
+      "travado_por_boot_2_ou_mais": false,
+      "persona_errada": 0,
+      "pela_praga_sem_medir": false,
+      "falhas_do_ultimo": []
+    },
+    "director@1280": {
+      "medido": true,
+      "ocorrencias": 2,
+      "estouro": [],
+      "travado_por_boot_2_ou_mais": false,
+      "persona_errada": 0,
+      "pela_praga_sem_medir": false,
+      "falhas_do_ultimo": []
+    },
+    "director@1440": {
+      "medido": true,
+      "ocorrencias": 2,
+      "estouro": [],
+      "travado_por_boot_2_ou_mais": false,
+      "persona_errada": 0,
+      "pela_praga_sem_medir": false,
+      "falhas_do_ultimo": []
+    },
+    "director@1920": {
+      "medido": true,
+      "ocorrencias": 2,
+      "estouro": [],
+      "travado_por_boot_2_ou_mais": false,
+      "persona_errada": 0,
+      "pela_praga_sem_medir": false,
+      "falhas_do_ultimo": [
+        "director/1920: 0 seções cujo conteúdo não assenta em 6 s | dado=[\"inicio@6319ms\"] | esperado=[]"
+      ]
+    },
+    "psychology@1280": {
+      "medido": true,
+      "ocorrencias": 2,
+      "estouro": [],
+      "travado_por_boot_2_ou_mais": false,
+      "persona_errada": 0,
+      "pela_praga_sem_medir": false,
+      "falhas_do_ultimo": []
+    },
+    "psychology@1440": {
+      "medido": true,
+      "ocorrencias": 2,
+      "estouro": [],
+      "travado_por_boot_2_ou_mais": false,
+      "persona_errada": 0,
+      "pela_praga_sem_medir": false,
+      "falhas_do_ultimo": []
+    },
+    "psychology@1920": {
+      "medido": true,
+      "ocorrencias": 2,
+      "estouro": [],
+      "travado_por_boot_2_ou_mais": false,
+      "persona_errada": 0,
+      "pela_praga_sem_medir": false,
+      "falhas_do_ultimo": []
+    },
+    "social_work@1280": {
+      "medido": true,
+      "ocorrencias": 2,
+      "estouro": [],
+      "travado_por_boot_2_ou_mais": false,
+      "persona_errada": 0,
+      "pela_praga_sem_medir": false,
+      "falhas_do_ultimo": []
+    },
+    "social_work@1440": {
+      "medido": true,
+      "ocorrencias": 2,
+      "estouro": [],
+      "travado_por_boot_2_ou_mais": false,
+      "persona_errada": 0,
+      "pela_praga_sem_medir": false,
+      "falhas_do_ultimo": []
+    },
+    "social_work@1920": {
+      "medido": true,
+      "ocorrencias": 2,
+      "estouro": [],
+      "travado_por_boot_2_ou_mais": false,
+      "persona_errada": 0,
+      "pela_praga_sem_medir": false,
+      "falhas_do_ultimo": []
+    },
+    "sports_operator@1280": {
+      "medido": true,
+      "ocorrencias": 2,
+      "estouro": [],
+      "travado_por_boot_2_ou_mais": false,
+      "persona_errada": 0,
+      "pela_praga_sem_medir": false,
+      "falhas_do_ultimo": []
+    },
+    "sports_operator@1440": {
+      "medido": true,
+      "ocorrencias": 2,
+      "estouro": [],
+      "travado_por_boot_2_ou_mais": false,
+      "persona_errada": 0,
+      "pela_praga_sem_medir": false,
+      "falhas_do_ultimo": []
+    },
+    "sports_operator@1920": {
+      "medido": true,
+      "ocorrencias": 2,
+      "estouro": [],
+      "travado_por_boot_2_ou_mais": false,
+      "persona_errada": 0,
+      "pela_praga_sem_medir": false,
+      "falhas_do_ultimo": []
+    },
+    "education_supervisor@1280": {
+      "medido": true,
+      "ocorrencias": 2,
+      "estouro": [],
+      "travado_por_boot_2_ou_mais": false,
+      "persona_errada": 0,
+      "pela_praga_sem_medir": false,
+      "falhas_do_ultimo": [
+        "education_supervisor/1280: 0 painéis vazios entre as 8 seções abertas | dado=[\"chat-interno\"] | esperado=[]"
+      ]
+    },
+    "education_supervisor@1440": {
+      "medido": true,
+      "ocorrencias": 2,
+      "estouro": [],
+      "travado_por_boot_2_ou_mais": false,
+      "persona_errada": 0,
+      "pela_praga_sem_medir": false,
+      "falhas_do_ultimo": [
+        "education_supervisor/1440: 0 painéis vazios entre as 8 seções abertas | dado=[\"chat-interno\"] | esperado=[]"
+      ]
+    },
+    "education_supervisor@1920": {
+      "medido": true,
+      "ocorrencias": 2,
+      "estouro": [],
+      "travado_por_boot_2_ou_mais": false,
+      "persona_errada": 0,
+      "pela_praga_sem_medir": false,
+      "falhas_do_ultimo": [
+        "education_supervisor/1920: 0 painéis vazios entre as 8 seções abertas | dado=[\"chat-interno\"] | esperado=[]"
+      ]
+    }
+  },
+  "veredito": "P35_DESKTOP_ESTOURO_MEDIDO_SEM_ESTOURO_45_45"
+}

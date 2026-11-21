@@ -1,0 +1,607 @@
+{
+  "ciclo": "AH-2-VD",
+  "em": "2026-11-21T05:46:11.429Z",
+  "papel": "gatekeeper",
+  "bandas": [
+    "1280",
+    "1440",
+    "1920"
+  ],
+  "tetos": {
+    "praga_ms": 430000,
+    "watchdog_ms": 520000,
+    "estabilizacao_ms": 6000,
+    "cdp_timeout_ms": 25000
+  },
+  "url": "https://bfr-conecta.turmaroboticabfr.workers.dev/",
+  "md5_shell": "9e236a23eed978cf7c2a2743d449b307",
+  "mapa_declarado": {
+    "parent": 16,
+    "student": 19,
+    "teacher": 22,
+    "coordinator": 18,
+    "admin": 26,
+    "director": 15,
+    "monitor": 8,
+    "gatekeeper": 8,
+    "secretary": 11,
+    "aee": 10,
+    "psychology": 3,
+    "multiprofessional": 3,
+    "sports_operator": 4,
+    "education_supervisor": 12
+  },
+  "traducao_lida_do_bundle": "viewRole = role === 'developer' ? 'admin' : role === 'pedagogical' ? 'teacher' : role === 'psychology' ? 'psychology' : role === 'social_work' ? 'multiprofessional' : role;",
+  "stages": {
+    "gatekeeper": {
+      "1280": {
+        "nav": {
+          "tentativas": 1,
+          "ms": 86,
+          "ok": true
+        },
+        "ms_ready": 1437,
+        "erro_boot": null,
+        "estado": {
+          "entrou": true,
+          "aviso_pendencia": false,
+          "login_visivel": false,
+          "nav_visiveis": 4
+        },
+        "papel_da_sessao": "gatekeeper",
+        "botoes_no_dom": 36,
+        "peca": {
+          "inicio": {
+            "painel": {
+              "id": "gatekeeperView",
+              "c": 1819
+            },
+            "ms": 3776,
+            "controles": 26,
+            "nos": 1120,
+            "tap": 11,
+            "fonte": 4,
+            "cortados": 1,
+            "estouro_h": false,
+            "seccao_ativa": "inicio",
+            "papel_apos": "gatekeeper",
+            "view_apos": "gatekeeper",
+            "nao_estabilizou": false,
+            "botao_attivo": "inicio",
+            "view_antes": null
+          },
+          "gate": {
+            "painel": {
+              "id": "gatekeeperView",
+              "c": 1819
+            },
+            "ms": 1849,
+            "controles": 26,
+            "nos": 1120,
+            "tap": 11,
+            "fonte": 4,
+            "cortados": 1,
+            "estouro_h": false,
+            "seccao_ativa": "gate",
+            "papel_apos": "gatekeeper",
+            "view_apos": "gatekeeper",
+            "nao_estabilizou": false,
+            "botao_attivo": null,
+            "view_antes": "gatekeeper"
+          },
+          "horarios": {
+            "painel": {
+              "id": "gatekeeperView",
+              "c": 1324
+            },
+            "ms": 1836,
+            "controles": 9,
+            "nos": 1120,
+            "tap": 9,
+            "fonte": 0,
+            "cortados": 3,
+            "estouro_h": false,
+            "seccao_ativa": "horarios",
+            "papel_apos": "gatekeeper",
+            "view_apos": "gatekeeper",
+            "nao_estabilizou": false,
+            "botao_attivo": null,
+            "view_antes": "gatekeeper"
+          },
+          "comunicados": {
+            "painel": {
+              "id": "gatekeeperView",
+              "c": 1324
+            },
+            "ms": 1823,
+            "controles": 9,
+            "nos": 1120,
+            "tap": 9,
+            "fonte": 0,
+            "cortados": 3,
+            "estouro_h": false,
+            "seccao_ativa": "comunicados",
+            "papel_apos": "gatekeeper",
+            "view_apos": "gatekeeper",
+            "nao_estabilizou": false,
+            "botao_attivo": "comunicados",
+            "view_antes": "gatekeeper"
+          },
+          "notificacoes": {
+            "painel": {
+              "id": "bfrNotificationsView",
+              "c": 400
+            },
+            "ms": 1829,
+            "controles": 3,
+            "nos": 26,
+            "tap": 3,
+            "fonte": 0,
+            "cortados": 0,
+            "estouro_h": false,
+            "seccao_ativa": "notificacoes",
+            "papel_apos": "gatekeeper",
+            "view_apos": "gatekeeper",
+            "nao_estabilizou": false,
+            "botao_attivo": "notificacoes",
+            "view_antes": "gatekeeper"
+          },
+          "conteudos": {
+            "painel": {
+              "id": "bfrContentHubView",
+              "c": 1021
+            },
+            "ms": 1821,
+            "controles": 14,
+            "nos": 68,
+            "tap": 14,
+            "fonte": 3,
+            "cortados": 0,
+            "estouro_h": false,
+            "seccao_ativa": "conteudos",
+            "papel_apos": "gatekeeper",
+            "view_apos": "gatekeeper",
+            "nao_estabilizou": false,
+            "botao_attivo": "conteudos",
+            "view_antes": "gatekeeper"
+          },
+          "jogos-escolares": {
+            "painel": {
+              "id": "schoolGamesView",
+              "c": 865
+            },
+            "ms": 1837,
+            "controles": 8,
+            "nos": 79,
+            "tap": 8,
+            "fonte": 0,
+            "cortados": 0,
+            "estouro_h": false,
+            "seccao_ativa": "jogos-escolares",
+            "papel_apos": "gatekeeper",
+            "view_apos": "gatekeeper",
+            "nao_estabilizou": false,
+            "botao_attivo": null,
+            "view_antes": "gatekeeper"
+          }
+        },
+        "sem_botao": [
+          "escola-historia"
+        ],
+        "erros_console": [],
+        "erros_brutos": 0,
+        "log_rede_erros": 1,
+        "log_rede_amostra": [
+          {
+            "fonte": "network",
+            "texto": "Failed to load resource: the server responded with a status of 404 ()",
+            "url": "/cdn-cgi/rum"
+          }
+        ],
+        "falhas_api_rede": [],
+        "erros_brutos_amostra": [],
+        "n_erros": 0,
+        "painel_vazio": [],
+        "estouro": [],
+        "tap_total": 65,
+        "fonte_total": 11,
+        "abertas": 7,
+        "instaveis": [],
+        "ms_max": 3776,
+        "ms_de_inicio": 3776,
+        "seg_banda": 17.3
+      },
+      "1440": {
+        "nav": {
+          "tentativas": 1,
+          "ms": 303,
+          "ok": true
+        },
+        "ms_ready": 861,
+        "erro_boot": null,
+        "estado": {
+          "entrou": true,
+          "aviso_pendencia": false,
+          "login_visivel": false,
+          "nav_visiveis": 8
+        },
+        "papel_da_sessao": "gatekeeper",
+        "botoes_no_dom": 36,
+        "peca": {
+          "inicio": {
+            "painel": {
+              "id": "gatekeeperView",
+              "c": 1819
+            },
+            "ms": 3080,
+            "controles": 26,
+            "nos": 1120,
+            "tap": 11,
+            "fonte": 4,
+            "cortados": 1,
+            "estouro_h": false,
+            "seccao_ativa": "inicio",
+            "papel_apos": "gatekeeper",
+            "view_apos": "gatekeeper",
+            "nao_estabilizou": false,
+            "botao_attivo": "inicio",
+            "view_antes": "gatekeeper"
+          },
+          "gate": {
+            "painel": {
+              "id": "gatekeeperView",
+              "c": 1819
+            },
+            "ms": 1823,
+            "controles": 26,
+            "nos": 1120,
+            "tap": 11,
+            "fonte": 4,
+            "cortados": 1,
+            "estouro_h": false,
+            "seccao_ativa": "gate",
+            "papel_apos": "gatekeeper",
+            "view_apos": "gatekeeper",
+            "nao_estabilizou": false,
+            "botao_attivo": null,
+            "view_antes": "gatekeeper"
+          },
+          "horarios": {
+            "painel": {
+              "id": "gatekeeperView",
+              "c": 1324
+            },
+            "ms": 1829,
+            "controles": 9,
+            "nos": 1120,
+            "tap": 9,
+            "fonte": 0,
+            "cortados": 3,
+            "estouro_h": false,
+            "seccao_ativa": "horarios",
+            "papel_apos": "gatekeeper",
+            "view_apos": "gatekeeper",
+            "nao_estabilizou": false,
+            "botao_attivo": null,
+            "view_antes": "gatekeeper"
+          },
+          "comunicados": {
+            "painel": {
+              "id": "gatekeeperView",
+              "c": 1324
+            },
+            "ms": 1824,
+            "controles": 9,
+            "nos": 1120,
+            "tap": 9,
+            "fonte": 0,
+            "cortados": 3,
+            "estouro_h": false,
+            "seccao_ativa": "comunicados",
+            "papel_apos": "gatekeeper",
+            "view_apos": "gatekeeper",
+            "nao_estabilizou": false,
+            "botao_attivo": "comunicados",
+            "view_antes": "gatekeeper"
+          },
+          "notificacoes": {
+            "painel": {
+              "id": "bfrNotificationsView",
+              "c": 400
+            },
+            "ms": 1837,
+            "controles": 3,
+            "nos": 26,
+            "tap": 3,
+            "fonte": 0,
+            "cortados": 0,
+            "estouro_h": false,
+            "seccao_ativa": "notificacoes",
+            "papel_apos": "gatekeeper",
+            "view_apos": "gatekeeper",
+            "nao_estabilizou": false,
+            "botao_attivo": "notificacoes",
+            "view_antes": "gatekeeper"
+          },
+          "conteudos": {
+            "painel": {
+              "id": "bfrContentHubView",
+              "c": 1021
+            },
+            "ms": 1832,
+            "controles": 14,
+            "nos": 68,
+            "tap": 14,
+            "fonte": 3,
+            "cortados": 0,
+            "estouro_h": false,
+            "seccao_ativa": "conteudos",
+            "papel_apos": "gatekeeper",
+            "view_apos": "gatekeeper",
+            "nao_estabilizou": false,
+            "botao_attivo": "conteudos",
+            "view_antes": "gatekeeper"
+          },
+          "jogos-escolares": {
+            "painel": {
+              "id": "schoolGamesView",
+              "c": 865
+            },
+            "ms": 1815,
+            "controles": 8,
+            "nos": 79,
+            "tap": 8,
+            "fonte": 0,
+            "cortados": 0,
+            "estouro_h": false,
+            "seccao_ativa": "jogos-escolares",
+            "papel_apos": "gatekeeper",
+            "view_apos": "gatekeeper",
+            "nao_estabilizou": false,
+            "botao_attivo": null,
+            "view_antes": "gatekeeper"
+          }
+        },
+        "sem_botao": [
+          "escola-historia"
+        ],
+        "erros_console": [],
+        "erros_brutos": 0,
+        "log_rede_erros": 1,
+        "log_rede_amostra": [
+          {
+            "fonte": "network",
+            "texto": "Failed to load resource: the server responded with a status of 404 ()",
+            "url": "/cdn-cgi/rum"
+          }
+        ],
+        "falhas_api_rede": [],
+        "erros_brutos_amostra": [],
+        "n_erros": 0,
+        "painel_vazio": [],
+        "estouro": [],
+        "tap_total": 65,
+        "fonte_total": 11,
+        "abertas": 7,
+        "instaveis": [],
+        "ms_max": 3080,
+        "ms_de_inicio": 3080,
+        "seg_banda": 15.9
+      },
+      "1920": {
+        "nav": {
+          "tentativas": 1,
+          "ms": 135,
+          "ok": true
+        },
+        "ms_ready": 450,
+        "erro_boot": null,
+        "estado": {
+          "entrou": true,
+          "aviso_pendencia": false,
+          "login_visivel": false,
+          "nav_visiveis": 4
+        },
+        "papel_da_sessao": "gatekeeper",
+        "botoes_no_dom": 36,
+        "peca": {
+          "inicio": {
+            "painel": {
+              "id": "gatekeeperView",
+              "c": 1819
+            },
+            "ms": 3113,
+            "controles": 26,
+            "nos": 1120,
+            "tap": 11,
+            "fonte": 4,
+            "cortados": 1,
+            "estouro_h": false,
+            "seccao_ativa": "inicio",
+            "papel_apos": "gatekeeper",
+            "view_apos": "gatekeeper",
+            "nao_estabilizou": false,
+            "botao_attivo": "inicio",
+            "view_antes": null
+          },
+          "gate": {
+            "painel": {
+              "id": "gatekeeperView",
+              "c": 1819
+            },
+            "ms": 1835,
+            "controles": 26,
+            "nos": 1120,
+            "tap": 11,
+            "fonte": 4,
+            "cortados": 1,
+            "estouro_h": false,
+            "seccao_ativa": "gate",
+            "papel_apos": "gatekeeper",
+            "view_apos": "gatekeeper",
+            "nao_estabilizou": false,
+            "botao_attivo": null,
+            "view_antes": "gatekeeper"
+          },
+          "horarios": {
+            "painel": {
+              "id": "gatekeeperView",
+              "c": 1324
+            },
+            "ms": 1825,
+            "controles": 9,
+            "nos": 1120,
+            "tap": 9,
+            "fonte": 0,
+            "cortados": 3,
+            "estouro_h": false,
+            "seccao_ativa": "horarios",
+            "papel_apos": "gatekeeper",
+            "view_apos": "gatekeeper",
+            "nao_estabilizou": false,
+            "botao_attivo": null,
+            "view_antes": "gatekeeper"
+          },
+          "comunicados": {
+            "painel": {
+              "id": "gatekeeperView",
+              "c": 1324
+            },
+            "ms": 1822,
+            "controles": 9,
+            "nos": 1120,
+            "tap": 9,
+            "fonte": 0,
+            "cortados": 3,
+            "estouro_h": false,
+            "seccao_ativa": "comunicados",
+            "papel_apos": "gatekeeper",
+            "view_apos": "gatekeeper",
+            "nao_estabilizou": false,
+            "botao_attivo": "comunicados",
+            "view_antes": "gatekeeper"
+          },
+          "notificacoes": {
+            "painel": {
+              "id": "bfrNotificationsView",
+              "c": 400
+            },
+            "ms": 1813,
+            "controles": 3,
+            "nos": 26,
+            "tap": 3,
+            "fonte": 0,
+            "cortados": 0,
+            "estouro_h": false,
+            "seccao_ativa": "notificacoes",
+            "papel_apos": "gatekeeper",
+            "view_apos": "gatekeeper",
+            "nao_estabilizou": false,
+            "botao_attivo": "notificacoes",
+            "view_antes": "gatekeeper"
+          },
+          "conteudos": {
+            "painel": {
+              "id": "bfrContentHubView",
+              "c": 1021
+            },
+            "ms": 1830,
+            "controles": 14,
+            "nos": 68,
+            "tap": 14,
+            "fonte": 3,
+            "cortados": 0,
+            "estouro_h": false,
+            "seccao_ativa": "conteudos",
+            "papel_apos": "gatekeeper",
+            "view_apos": "gatekeeper",
+            "nao_estabilizou": false,
+            "botao_attivo": "conteudos",
+            "view_antes": "gatekeeper"
+          },
+          "jogos-escolares": {
+            "painel": {
+              "id": "schoolGamesView",
+              "c": 865
+            },
+            "ms": 1825,
+            "controles": 8,
+            "nos": 79,
+            "tap": 8,
+            "fonte": 0,
+            "cortados": 0,
+            "estouro_h": false,
+            "seccao_ativa": "jogos-escolares",
+            "papel_apos": "gatekeeper",
+            "view_apos": "gatekeeper",
+            "nao_estabilizou": false,
+            "botao_attivo": null,
+            "view_antes": "gatekeeper"
+          }
+        },
+        "sem_botao": [
+          "escola-historia"
+        ],
+        "erros_console": [],
+        "erros_brutos": 0,
+        "log_rede_erros": 1,
+        "log_rede_amostra": [
+          {
+            "fonte": "network",
+            "texto": "Failed to load resource: the server responded with a status of 404 ()",
+            "url": "/cdn-cgi/rum"
+          }
+        ],
+        "falhas_api_rede": [],
+        "erros_brutos_amostra": [],
+        "n_erros": 0,
+        "painel_vazio": [],
+        "estouro": [],
+        "tap_total": 65,
+        "fonte_total": 11,
+        "abertas": 7,
+        "instaveis": [],
+        "ms_max": 3113,
+        "ms_de_inicio": 3113,
+        "seg_banda": 15.4
+      },
+      "declaradas": 8,
+      "secoes": [
+        "inicio",
+        "gate",
+        "horarios",
+        "comunicados",
+        "escola-historia",
+        "notificacoes",
+        "conteudos",
+        "jogos-escolares"
+      ],
+      "injecao_1280": {
+        "expira_em_s": 3596,
+        "acesso_md5_8": "ff663805"
+      },
+      "injecao_1440": {
+        "expira_em_s": 3597,
+        "acesso_md5_8": "c68101a7"
+      },
+      "injecao_1920": {
+        "expira_em_s": 3596,
+        "acesso_md5_8": "1a2f990e"
+      }
+    }
+  },
+  "portoes": 32,
+  "falhas": [],
+  "medido": {
+    "papeis": 1,
+    "bandas": 3,
+    "banda_nomes": [
+      "1280",
+      "1440",
+      "1920"
+    ],
+    "paineis_abertos": 21,
+    "completa": true
+  },
+  "veredito": "AH2_VARREDURA_DESKTOP_LIMPA"
+}
