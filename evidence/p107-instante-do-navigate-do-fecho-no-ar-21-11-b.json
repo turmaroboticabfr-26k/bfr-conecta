@@ -1,0 +1,200 @@
+{
+  "programa": "scripts/p107-instante-do-navigate-do-fecho-no-ar.mjs",
+  "em": "2026-11-21T21:24:25.439Z",
+  "duracao_ms": 53503,
+  "url": "https://bfr-conecta.turmaroboticabfr.workers.dev/",
+  "pergunta": "que activeView o modulo lia no instante em que o fecho chamou navigate?",
+  "ar": {
+    "md5": "0e22e78fe1e0ce929ec4717f86365ad9",
+    "bytes": 3556664,
+    "sect": "secretaria-municipal",
+    "view_id": "bfrMunicipalView"
+  },
+  "regra_do_shell_lida_dos_bytes": "const fallback = fallbackByRole[activeView] || 'inicio';",
+  "instalacao_da_sonda": {
+    "ok": true,
+    "motivo": "proxy instalado sobre o valor do runtime",
+    "instalacoes": 1
+  },
+  "desinstalacao": "tentada",
+  "literais": {
+    "fallback_chaves": [
+      "parent",
+      "admin",
+      "director",
+      "coordinator",
+      "student",
+      "monitor",
+      "gatekeeper",
+      "secretary",
+      "aee",
+      "psychology",
+      "multiprofessional"
+    ],
+    "teacher_no_fallback": false,
+    "education_supervisor_no_fallback": false,
+    "mapa_vias": [
+      "parent",
+      "student",
+      "teacher",
+      "coordinator",
+      "admin",
+      "director",
+      "monitor",
+      "gatekeeper",
+      "secretary",
+      "aee",
+      "psychology",
+      "multiprofessional",
+      "sports_operator",
+      "education_supervisor"
+    ],
+    "teacher_primeiro": "professor-inicio",
+    "education_supervisor_primeiro": "inicio"
+  },
+  "celulas": [
+    {
+      "origem": "Admin",
+      "alvo": "Professor",
+      "origem_estado": {
+        "vista": "admin",
+        "seccao": "inicio",
+        "painel_aberto": false,
+        "oculto_pela_classe": true,
+        "fecho": null
+      },
+      "painel_aberto_na_origem": true,
+      "sonda_antes_da_troca": {
+        "ok": true,
+        "motivo": "proxy ainda no sitio",
+        "instalacoes": 1
+      },
+      "vistas_registadas_na_troca": [],
+      "estado_final": {
+        "vista": "teacher",
+        "seccao": "professor-inicio",
+        "painel_aberto": false,
+        "oculto_pela_classe": true,
+        "fecho": null
+      },
+      "navigate_log": [],
+      "vista_lida_no_instante": null,
+      "destino_navegado": null,
+      "esperado_pela_regra_do_modulo_com_a_vista_entrante": "professor-inicio",
+      "esperado_pela_regra_do_modulo_com_a_vista_deixada": "inicio",
+      "esperado_pela_regra_do_shell_para_a_entrante": "inicio",
+      "esperado_pela_regra_do_shell_para_a_deixada": "inicio",
+      "tipo_mapa_no_instante": null,
+      "pilha_do_navigate": null
+    },
+    {
+      "origem": "Admin",
+      "alvo": "Direção",
+      "origem_estado": {
+        "vista": "admin",
+        "seccao": "inicio",
+        "painel_aberto": false,
+        "oculto_pela_classe": true,
+        "fecho": null
+      },
+      "painel_aberto_na_origem": true,
+      "sonda_antes_da_troca": {
+        "ok": true,
+        "motivo": "proxy ainda no sitio",
+        "instalacoes": 1
+      },
+      "vistas_registadas_na_troca": [],
+      "estado_final": {
+        "vista": "director",
+        "seccao": "inicio",
+        "painel_aberto": false,
+        "oculto_pela_classe": true,
+        "fecho": {
+          "fechado": true,
+          "destino": "inicio",
+          "motivo": "vista fora do mapa com painel aberto"
+        }
+      },
+      "navigate_log": [
+        {
+          "t_ms": 1795296254600,
+          "destino_navegado": "inicio",
+          "lido_activeView": "director",
+          "lido_activeSection": "inicio",
+          "tipo_mapa": "[object Object]",
+          "mapa_eh_array": false,
+          "mapa_primeiro_elemento_teacher": "professor-inicio",
+          "mapa_tem_a_vista_lida": true,
+          "painel_aberto_antes": false,
+          "pilha": "    at Proxy.<anonymous> (<anonymous>:20:26) |     at fecharPainelForaDaVista (https://bfr-conecta.turmaroboticabfr.workers.dev/:29348:35) |     at aplicarVisibilidade (https://bfr-conecta.turmaroboticabfr.workers.dev/:29357:54) |     at garantir (https://bfr-conecta.turmaroboticabfr.workers.dev/:29374:27) |     at https://bfr-conecta.turmaroboticabfr.workers.dev/:29396:45"
+        }
+      ],
+      "vista_lida_no_instante": "director",
+      "destino_navegado": "inicio",
+      "esperado_pela_regra_do_modulo_com_a_vista_entrante": "inicio",
+      "esperado_pela_regra_do_modulo_com_a_vista_deixada": "inicio",
+      "esperado_pela_regra_do_shell_para_a_entrante": "inicio",
+      "esperado_pela_regra_do_shell_para_a_deixada": "inicio",
+      "tipo_mapa_no_instante": "[object Object]",
+      "pilha_do_navigate": "    at Proxy.<anonymous> (<anonymous>:20:26) |     at fecharPainelForaDaVista (https://bfr-conecta.turmaroboticabfr.workers.dev/:29348:35) |     at aplicarVisibilidade (https://bfr-conecta.turmaroboticabfr.workers.dev/:29357:54) |     at garantir (https://bfr-conecta.turmaroboticabfr.workers.dev/:29374:27) |     at https://bfr-conecta.turmaroboticabfr.workers.dev/:29396:45"
+    },
+    {
+      "origem": "Secretaria da escola",
+      "alvo": "Professor",
+      "erro": "ABORTA: sem pessoa com rotulo \"Secretaria da escola\" — existentes: Admin|Direção|Pais|Aluno|Professor|Coordenação|Secretaria|Monitor|AEE|Portaria"
+    },
+    {
+      "origem": "Admin",
+      "alvo": "Pais",
+      "origem_estado": {
+        "vista": "admin",
+        "seccao": "inicio",
+        "painel_aberto": false,
+        "oculto_pela_classe": true,
+        "fecho": {
+          "fechado": true,
+          "destino": "inicio",
+          "motivo": "vista fora do mapa com painel aberto"
+        }
+      },
+      "painel_aberto_na_origem": true,
+      "sonda_antes_da_troca": {
+        "ok": true,
+        "motivo": "proxy ainda no sitio",
+        "instalacoes": 1
+      },
+      "vistas_registadas_na_troca": [],
+      "estado_final": {
+        "vista": "parent",
+        "seccao": "inicio",
+        "painel_aberto": false,
+        "oculto_pela_classe": true,
+        "fecho": {
+          "fechado": true,
+          "destino": "inicio",
+          "motivo": "vista fora do mapa com painel aberto"
+        }
+      },
+      "navigate_log": [],
+      "vista_lida_no_instante": null,
+      "destino_navegado": null,
+      "esperado_pela_regra_do_modulo_com_a_vista_entrante": "inicio",
+      "esperado_pela_regra_do_modulo_com_a_vista_deixada": "inicio",
+      "esperado_pela_regra_do_shell_para_a_entrante": "inicio",
+      "esperado_pela_regra_do_shell_para_a_deixada": "inicio",
+      "tipo_mapa_no_instante": null,
+      "pilha_do_navigate": null
+    }
+  ],
+  "o_que_esta_peca_nao_prova": "prova o que o modulo lia no instante; nao prova qual dessas duas vistas o produto DEVERIA usar — isso e decisao de produto, nao medicao",
+  "sintesis": [
+    {
+      "par": "Admin->Direção",
+      "lida": "director",
+      "navegado": "inicio",
+      "igual_a_regra_do_modulo_sobre_a_entrante": true,
+      "igual_a_regra_do_modulo_sobre_a_deixada": true
+    }
+  ],
+  "excecoes": []
+}

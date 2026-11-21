@@ -1,0 +1,764 @@
+{
+  "programa": "scripts/p111-ator-da-escondida-por-simbolo-nos-bytes.mjs",
+  "em": "2026-11-21T21:50:54.303Z",
+  "duracao_ms": 63244,
+  "teto_ms": 300000,
+  "url": "https://bfr-conecta.turmaroboticabfr.workers.dev/",
+  "pergunta": "que funcao escreve a classe hidden no painel municipal em cada troca de vista, e em que regiao dos bytes servidos vive essa funcao?",
+  "ar": {
+    "md5_ini": "0e22e78fe1e0ce929ec4717f86365ad9",
+    "md5_fim": "0e22e78fe1e0ce929ec4717f86365ad9",
+    "bytes": 3556664,
+    "sect": "secretaria-municipal",
+    "view_id": "bfrMunicipalView"
+  },
+  "regioes": {
+    "blocos_script": 104,
+    "core": {
+      "nome": "id=bfr-core-runtime",
+      "tipo": "text/plain",
+      "ini_linha": 5174,
+      "fim_linha": 11618,
+      "e_modulo": false,
+      "e_core": true
+    },
+    "modulo": {
+      "nome": "data-bfr-municipal-module=1",
+      "tipo": null,
+      "ini_linha": 28663,
+      "fim_linha": 29404,
+      "e_modulo": true,
+      "e_core": false
+    },
+    "nota": "o core runtime esta num bloco type=text/plain injectado em tempo de execucao: por isso as suas moldes saem como <anonymous> e a linha da pilha NAO e linha do documento"
+  },
+  "resolucoes_de_controle_na_regua": {
+    "dentro": {
+      "simbolo": "fecharPainelForaDaVista",
+      "padrao": "function fecharPainelForaDaVista(",
+      "off": 3534564,
+      "linha": 29338,
+      "ocorrencias": 1,
+      "em_modulo": true,
+      "bloco": "data-bfr-municipal-module=1",
+      "bloco_tipo": null,
+      "pilha_usa_url_anonima": null
+    },
+    "fora": {
+      "simbolo": "setProfessionalTeacherSection",
+      "padrao": "function setProfessionalTeacherSection(",
+      "off": 664354,
+      "linha": 5588,
+      "ocorrencias": 1,
+      "em_modulo": false,
+      "bloco": "id=bfr-core-runtime",
+      "bloco_tipo": "text/plain",
+      "pilha_usa_url_anonima": null
+    },
+    "chamada": {
+      "simbolo": "setRole",
+      "padrao": "function setRole(",
+      "off": 1166884,
+      "linha": 9901,
+      "ocorrencias": 1,
+      "em_modulo": false,
+      "bloco": "id=bfr-core-runtime",
+      "bloco_tipo": "text/plain",
+      "pilha_usa_url_anonima": null
+    },
+    "pais": {
+      "simbolo": "setHomeMode",
+      "padrao": "function setHomeMode(",
+      "off": 1947051,
+      "linha": 16048,
+      "ocorrencias": 1,
+      "em_modulo": false,
+      "bloco": "id=bfr-parent-dashboard-v3",
+      "bloco_tipo": "text/plain",
+      "pilha_usa_url_anonima": null
+    }
+  },
+  "instalacao_da_sonda": {
+    "ok": true,
+    "motivo": "sonda sobre DOMTokenList.add/remove/toggle/replace, setAttribute, className e MutationObserver, com URL por mouldura",
+    "instalacoes": 1,
+    "painel_ja_escondido": true,
+    "calibracao": {
+      "escritas": 4,
+      "assinaturas": 10,
+      "classe_restaurada": true,
+      "url_do_documento": "https://bfr-conecta.turmaroboticabfr.workers.dev/"
+    }
+  },
+  "weakmap": "weakmap criado",
+  "celulas": [
+    {
+      "alvo": "Professor",
+      "motivo_celula": "a celula que a P105 chumbou na F6",
+      "painel_aberto_na_origem": true,
+      "reinstalacao": {
+        "ok": true,
+        "motivo": "sonda ja instalada — registos zerados",
+        "instalacoes": 1,
+        "calibracao": {
+          "escritas": 4,
+          "assinaturas": 10,
+          "classe_restaurada": true,
+          "url_do_documento": "https://bfr-conecta.turmaroboticabfr.workers.dev/"
+        }
+      },
+      "escondido_antes": false,
+      "vista_deixada": "admin",
+      "vista_entrante": "teacher",
+      "seccao_final": "professor-inicio",
+      "escondido_depois": true,
+      "painel_aberto_depois": false,
+      "fecho_antes_da_celula": null,
+      "fecho_depois_da_celula": null,
+      "escritas": [
+        {
+          "t_ms": 20,
+          "mecanismo": "classList.add",
+          "detalhe": "hidden",
+          "antes_escondido": false,
+          "depois_escondido": true,
+          "pilha": [
+            {
+              "texto": "at window.__P111_reg (<anonymous>:22:17)",
+              "funcao": "window.__P111_reg",
+              "url": "<anonymous>",
+              "linha": 22,
+              "col": 17,
+              "sonda": true
+            },
+            {
+              "texto": "at DOMTokenList.w [as add] (<anonymous>:33:168)",
+              "funcao": "DOMTokenList.w [as add]",
+              "url": "<anonymous>",
+              "linha": 33,
+              "col": 168,
+              "sonda": true
+            },
+            {
+              "texto": "at <anonymous>:415:400",
+              "funcao": "<anonymous>",
+              "url": null,
+              "linha": 415,
+              "col": 400,
+              "sonda": false
+            },
+            {
+              "texto": "at NodeList.forEach (<anonymous>)",
+              "funcao": null,
+              "url": null,
+              "linha": null,
+              "col": null,
+              "sonda": false
+            },
+            {
+              "texto": "at setProfessionalTeacherSection (<anonymous>:415:369)",
+              "funcao": "setProfessionalTeacherSection",
+              "url": "<anonymous>",
+              "linha": 415,
+              "col": 369,
+              "sonda": false
+            },
+            {
+              "texto": "at setupProfessionalTeacherView (<anonymous>:418:12)",
+              "funcao": "setupProfessionalTeacherView",
+              "url": "<anonymous>",
+              "linha": 418,
+              "col": 12,
+              "sonda": false
+            },
+            {
+              "texto": "at setRole (<anonymous>:4764:13)",
+              "funcao": "setRole",
+              "url": "<anonymous>",
+              "linha": 4764,
+              "col": 13,
+              "sonda": false
+            },
+            {
+              "texto": "at HTMLButtonElement.<anonymous> (<anonymous>:3977:114)",
+              "funcao": "HTMLButtonElement.<anonymous>",
+              "url": "<anonymous>",
+              "linha": 3977,
+              "col": 114,
+              "sonda": false
+            }
+          ],
+          "primeira_real": {
+            "texto": "at <anonymous>:415:400",
+            "funcao": "<anonymous>",
+            "url": null,
+            "linha": 415,
+            "col": 400,
+            "sonda": false
+          },
+          "funcao_escritora": "setProfessionalTeacherSection",
+          "url_da_mouldura": "<anonymous>",
+          "linha_da_pilha": 415
+        }
+      ],
+      "mutacoes": [
+        {
+          "t_ms": 141,
+          "escondido_agora": true
+        }
+      ],
+      "escondida": {
+        "t_ms": 20,
+        "mecanismo": "classList.add",
+        "detalhe": "hidden",
+        "antes_escondido": false,
+        "depois_escondido": true,
+        "pilha": [
+          {
+            "texto": "at window.__P111_reg (<anonymous>:22:17)",
+            "funcao": "window.__P111_reg",
+            "url": "<anonymous>",
+            "linha": 22,
+            "col": 17,
+            "sonda": true
+          },
+          {
+            "texto": "at DOMTokenList.w [as add] (<anonymous>:33:168)",
+            "funcao": "DOMTokenList.w [as add]",
+            "url": "<anonymous>",
+            "linha": 33,
+            "col": 168,
+            "sonda": true
+          },
+          {
+            "texto": "at <anonymous>:415:400",
+            "funcao": "<anonymous>",
+            "url": null,
+            "linha": 415,
+            "col": 400,
+            "sonda": false
+          },
+          {
+            "texto": "at NodeList.forEach (<anonymous>)",
+            "funcao": null,
+            "url": null,
+            "linha": null,
+            "col": null,
+            "sonda": false
+          },
+          {
+            "texto": "at setProfessionalTeacherSection (<anonymous>:415:369)",
+            "funcao": "setProfessionalTeacherSection",
+            "url": "<anonymous>",
+            "linha": 415,
+            "col": 369,
+            "sonda": false
+          },
+          {
+            "texto": "at setupProfessionalTeacherView (<anonymous>:418:12)",
+            "funcao": "setupProfessionalTeacherView",
+            "url": "<anonymous>",
+            "linha": 418,
+            "col": 12,
+            "sonda": false
+          },
+          {
+            "texto": "at setRole (<anonymous>:4764:13)",
+            "funcao": "setRole",
+            "url": "<anonymous>",
+            "linha": 4764,
+            "col": 13,
+            "sonda": false
+          },
+          {
+            "texto": "at HTMLButtonElement.<anonymous> (<anonymous>:3977:114)",
+            "funcao": "HTMLButtonElement.<anonymous>",
+            "url": "<anonymous>",
+            "linha": 3977,
+            "col": 114,
+            "sonda": false
+          }
+        ],
+        "primeira_real": {
+          "texto": "at <anonymous>:415:400",
+          "funcao": "<anonymous>",
+          "url": null,
+          "linha": 415,
+          "col": 400,
+          "sonda": false
+        },
+        "funcao_escritora": "setProfessionalTeacherSection",
+        "url_da_mouldura": "<anonymous>",
+        "linha_da_pilha": 415
+      },
+      "resolucao": {
+        "simbolo": "setProfessionalTeacherSection",
+        "padrao": "function setProfessionalTeacherSection(",
+        "off": 664354,
+        "linha": 5588,
+        "ocorrencias": 1,
+        "em_modulo": false,
+        "bloco": "id=bfr-core-runtime",
+        "bloco_tipo": "text/plain",
+        "pilha_usa_url_anonima": true
+      },
+      "ator": "fora_do_modulo",
+      "linha_da_pilha_e_do_documento": false,
+      "pilha_linha_dentro_da_regiao_resolvida": false
+    },
+    {
+      "alvo": "Direção",
+      "motivo_celula": "controlo com dentes: aqui fecha o modulo",
+      "painel_aberto_na_origem": true,
+      "reinstalacao": {
+        "ok": true,
+        "motivo": "sonda ja instalada — registos zerados",
+        "instalacoes": 1,
+        "calibracao": {
+          "escritas": 4,
+          "assinaturas": 10,
+          "classe_restaurada": true,
+          "url_do_documento": "https://bfr-conecta.turmaroboticabfr.workers.dev/"
+        }
+      },
+      "escondido_antes": false,
+      "vista_deixada": "admin",
+      "vista_entrante": "director",
+      "seccao_final": "inicio",
+      "escondido_depois": true,
+      "painel_aberto_depois": false,
+      "fecho_antes_da_celula": null,
+      "fecho_depois_da_celula": "F1",
+      "escritas": [
+        {
+          "t_ms": 618,
+          "mecanismo": "classList.add",
+          "detalhe": "hidden",
+          "antes_escondido": false,
+          "depois_escondido": true,
+          "pilha": [
+            {
+              "texto": "at window.__P111_reg (<anonymous>:22:17)",
+              "funcao": "window.__P111_reg",
+              "url": "<anonymous>",
+              "linha": 22,
+              "col": 17,
+              "sonda": true
+            },
+            {
+              "texto": "at DOMTokenList.w [as add] (<anonymous>:33:168)",
+              "funcao": "DOMTokenList.w [as add]",
+              "url": "<anonymous>",
+              "linha": 33,
+              "col": 168,
+              "sonda": true
+            },
+            {
+              "texto": "at fecharPainelForaDaVista (https://bfr-conecta.turmaroboticabfr.workers.dev/:29345:68)",
+              "funcao": "fecharPainelForaDaVista",
+              "url": "https://bfr-conecta.turmaroboticabfr.workers.dev/",
+              "linha": 29345,
+              "col": 68,
+              "sonda": false
+            },
+            {
+              "texto": "at aplicarVisibilidade (https://bfr-conecta.turmaroboticabfr.workers.dev/:29357:54)",
+              "funcao": "aplicarVisibilidade",
+              "url": "https://bfr-conecta.turmaroboticabfr.workers.dev/",
+              "linha": 29357,
+              "col": 54,
+              "sonda": false
+            },
+            {
+              "texto": "at garantir (https://bfr-conecta.turmaroboticabfr.workers.dev/:29374:27)",
+              "funcao": "garantir",
+              "url": "https://bfr-conecta.turmaroboticabfr.workers.dev/",
+              "linha": 29374,
+              "col": 27,
+              "sonda": false
+            },
+            {
+              "texto": "at https://bfr-conecta.turmaroboticabfr.workers.dev/:29396:45",
+              "funcao": "https://bfr-conecta.turmaroboticabfr.workers.dev/",
+              "url": null,
+              "linha": 29396,
+              "col": 45,
+              "sonda": false
+            }
+          ],
+          "primeira_real": {
+            "texto": "at fecharPainelForaDaVista (https://bfr-conecta.turmaroboticabfr.workers.dev/:29345:68)",
+            "funcao": "fecharPainelForaDaVista",
+            "url": "https://bfr-conecta.turmaroboticabfr.workers.dev/",
+            "linha": 29345,
+            "col": 68,
+            "sonda": false
+          },
+          "funcao_escritora": "fecharPainelForaDaVista",
+          "url_da_mouldura": "https://bfr-conecta.turmaroboticabfr.workers.dev/",
+          "linha_da_pilha": 29345
+        }
+      ],
+      "mutacoes": [
+        {
+          "t_ms": 798,
+          "escondido_agora": true
+        }
+      ],
+      "escondida": {
+        "t_ms": 618,
+        "mecanismo": "classList.add",
+        "detalhe": "hidden",
+        "antes_escondido": false,
+        "depois_escondido": true,
+        "pilha": [
+          {
+            "texto": "at window.__P111_reg (<anonymous>:22:17)",
+            "funcao": "window.__P111_reg",
+            "url": "<anonymous>",
+            "linha": 22,
+            "col": 17,
+            "sonda": true
+          },
+          {
+            "texto": "at DOMTokenList.w [as add] (<anonymous>:33:168)",
+            "funcao": "DOMTokenList.w [as add]",
+            "url": "<anonymous>",
+            "linha": 33,
+            "col": 168,
+            "sonda": true
+          },
+          {
+            "texto": "at fecharPainelForaDaVista (https://bfr-conecta.turmaroboticabfr.workers.dev/:29345:68)",
+            "funcao": "fecharPainelForaDaVista",
+            "url": "https://bfr-conecta.turmaroboticabfr.workers.dev/",
+            "linha": 29345,
+            "col": 68,
+            "sonda": false
+          },
+          {
+            "texto": "at aplicarVisibilidade (https://bfr-conecta.turmaroboticabfr.workers.dev/:29357:54)",
+            "funcao": "aplicarVisibilidade",
+            "url": "https://bfr-conecta.turmaroboticabfr.workers.dev/",
+            "linha": 29357,
+            "col": 54,
+            "sonda": false
+          },
+          {
+            "texto": "at garantir (https://bfr-conecta.turmaroboticabfr.workers.dev/:29374:27)",
+            "funcao": "garantir",
+            "url": "https://bfr-conecta.turmaroboticabfr.workers.dev/",
+            "linha": 29374,
+            "col": 27,
+            "sonda": false
+          },
+          {
+            "texto": "at https://bfr-conecta.turmaroboticabfr.workers.dev/:29396:45",
+            "funcao": "https://bfr-conecta.turmaroboticabfr.workers.dev/",
+            "url": null,
+            "linha": 29396,
+            "col": 45,
+            "sonda": false
+          }
+        ],
+        "primeira_real": {
+          "texto": "at fecharPainelForaDaVista (https://bfr-conecta.turmaroboticabfr.workers.dev/:29345:68)",
+          "funcao": "fecharPainelForaDaVista",
+          "url": "https://bfr-conecta.turmaroboticabfr.workers.dev/",
+          "linha": 29345,
+          "col": 68,
+          "sonda": false
+        },
+        "funcao_escritora": "fecharPainelForaDaVista",
+        "url_da_mouldura": "https://bfr-conecta.turmaroboticabfr.workers.dev/",
+        "linha_da_pilha": 29345
+      },
+      "resolucao": {
+        "simbolo": "fecharPainelForaDaVista",
+        "padrao": "function fecharPainelForaDaVista(",
+        "off": 3534564,
+        "linha": 29338,
+        "ocorrencias": 1,
+        "em_modulo": true,
+        "bloco": "data-bfr-municipal-module=1",
+        "bloco_tipo": null,
+        "pilha_usa_url_anonima": false
+      },
+      "ator": "modulo",
+      "linha_da_pilha_e_do_documento": true,
+      "pilha_linha_dentro_da_regiao_resolvida": true
+    },
+    {
+      "alvo": "Pais",
+      "motivo_celula": "controlo: outra vista fora do mapa, escritora diferente",
+      "painel_aberto_na_origem": true,
+      "reinstalacao": {
+        "ok": true,
+        "motivo": "sonda ja instalada — registos zerados",
+        "instalacoes": 1,
+        "calibracao": {
+          "escritas": 4,
+          "assinaturas": 10,
+          "classe_restaurada": true,
+          "url_do_documento": "https://bfr-conecta.turmaroboticabfr.workers.dev/"
+        }
+      },
+      "escondido_antes": false,
+      "vista_deixada": "admin",
+      "vista_entrante": "parent",
+      "seccao_final": "inicio",
+      "escondido_depois": true,
+      "painel_aberto_depois": false,
+      "fecho_antes_da_celula": "F1",
+      "fecho_depois_da_celula": "F2",
+      "escritas": [
+        {
+          "t_ms": 541,
+          "mecanismo": "classList.add",
+          "detalhe": "hidden",
+          "antes_escondido": false,
+          "depois_escondido": true,
+          "pilha": [
+            {
+              "texto": "at window.__P111_reg (<anonymous>:22:17)",
+              "funcao": "window.__P111_reg",
+              "url": "<anonymous>",
+              "linha": 22,
+              "col": 17,
+              "sonda": true
+            },
+            {
+              "texto": "at DOMTokenList.w [as add] (<anonymous>:33:168)",
+              "funcao": "DOMTokenList.w [as add]",
+              "url": "<anonymous>",
+              "linha": 33,
+              "col": 168,
+              "sonda": true
+            },
+            {
+              "texto": "at fecharPainelForaDaVista (https://bfr-conecta.turmaroboticabfr.workers.dev/:29345:68)",
+              "funcao": "fecharPainelForaDaVista",
+              "url": "https://bfr-conecta.turmaroboticabfr.workers.dev/",
+              "linha": 29345,
+              "col": 68,
+              "sonda": false
+            },
+            {
+              "texto": "at aplicarVisibilidade (https://bfr-conecta.turmaroboticabfr.workers.dev/:29357:54)",
+              "funcao": "aplicarVisibilidade",
+              "url": "https://bfr-conecta.turmaroboticabfr.workers.dev/",
+              "linha": 29357,
+              "col": 54,
+              "sonda": false
+            },
+            {
+              "texto": "at garantir (https://bfr-conecta.turmaroboticabfr.workers.dev/:29374:27)",
+              "funcao": "garantir",
+              "url": "https://bfr-conecta.turmaroboticabfr.workers.dev/",
+              "linha": 29374,
+              "col": 27,
+              "sonda": false
+            },
+            {
+              "texto": "at https://bfr-conecta.turmaroboticabfr.workers.dev/:29396:45",
+              "funcao": "https://bfr-conecta.turmaroboticabfr.workers.dev/",
+              "url": null,
+              "linha": 29396,
+              "col": 45,
+              "sonda": false
+            }
+          ],
+          "primeira_real": {
+            "texto": "at fecharPainelForaDaVista (https://bfr-conecta.turmaroboticabfr.workers.dev/:29345:68)",
+            "funcao": "fecharPainelForaDaVista",
+            "url": "https://bfr-conecta.turmaroboticabfr.workers.dev/",
+            "linha": 29345,
+            "col": 68,
+            "sonda": false
+          },
+          "funcao_escritora": "fecharPainelForaDaVista",
+          "url_da_mouldura": "https://bfr-conecta.turmaroboticabfr.workers.dev/",
+          "linha_da_pilha": 29345
+        },
+        {
+          "t_ms": 879,
+          "mecanismo": "classList.add",
+          "detalhe": "hidden",
+          "antes_escondido": true,
+          "depois_escondido": true,
+          "pilha": [
+            {
+              "texto": "at window.__P111_reg (<anonymous>:22:17)",
+              "funcao": "window.__P111_reg",
+              "url": "<anonymous>",
+              "linha": 22,
+              "col": 17,
+              "sonda": true
+            },
+            {
+              "texto": "at DOMTokenList.w [as add] (<anonymous>:33:168)",
+              "funcao": "DOMTokenList.w [as add]",
+              "url": "<anonymous>",
+              "linha": 33,
+              "col": 168,
+              "sonda": true
+            },
+            {
+              "texto": "at <anonymous>:95:245",
+              "funcao": "<anonymous>",
+              "url": null,
+              "linha": 95,
+              "col": 245,
+              "sonda": false
+            },
+            {
+              "texto": "at NodeList.forEach (<anonymous>)",
+              "funcao": null,
+              "url": null,
+              "linha": null,
+              "col": null,
+              "sonda": false
+            },
+            {
+              "texto": "at setHomeMode (<anonymous>:95:193)",
+              "funcao": "setHomeMode",
+              "url": "<anonymous>",
+              "linha": 95,
+              "col": 193,
+              "sonda": false
+            },
+            {
+              "texto": "at ensure (<anonymous>:96:480)",
+              "funcao": "ensure",
+              "url": "<anonymous>",
+              "linha": 96,
+              "col": 480,
+              "sonda": false
+            }
+          ],
+          "primeira_real": {
+            "texto": "at <anonymous>:95:245",
+            "funcao": "<anonymous>",
+            "url": null,
+            "linha": 95,
+            "col": 245,
+            "sonda": false
+          },
+          "funcao_escritora": "setHomeMode",
+          "url_da_mouldura": "<anonymous>",
+          "linha_da_pilha": 95
+        }
+      ],
+      "mutacoes": [
+        {
+          "t_ms": 691,
+          "escondido_agora": true
+        },
+        {
+          "t_ms": 890,
+          "escondido_agora": true
+        }
+      ],
+      "escondida": {
+        "t_ms": 541,
+        "mecanismo": "classList.add",
+        "detalhe": "hidden",
+        "antes_escondido": false,
+        "depois_escondido": true,
+        "pilha": [
+          {
+            "texto": "at window.__P111_reg (<anonymous>:22:17)",
+            "funcao": "window.__P111_reg",
+            "url": "<anonymous>",
+            "linha": 22,
+            "col": 17,
+            "sonda": true
+          },
+          {
+            "texto": "at DOMTokenList.w [as add] (<anonymous>:33:168)",
+            "funcao": "DOMTokenList.w [as add]",
+            "url": "<anonymous>",
+            "linha": 33,
+            "col": 168,
+            "sonda": true
+          },
+          {
+            "texto": "at fecharPainelForaDaVista (https://bfr-conecta.turmaroboticabfr.workers.dev/:29345:68)",
+            "funcao": "fecharPainelForaDaVista",
+            "url": "https://bfr-conecta.turmaroboticabfr.workers.dev/",
+            "linha": 29345,
+            "col": 68,
+            "sonda": false
+          },
+          {
+            "texto": "at aplicarVisibilidade (https://bfr-conecta.turmaroboticabfr.workers.dev/:29357:54)",
+            "funcao": "aplicarVisibilidade",
+            "url": "https://bfr-conecta.turmaroboticabfr.workers.dev/",
+            "linha": 29357,
+            "col": 54,
+            "sonda": false
+          },
+          {
+            "texto": "at garantir (https://bfr-conecta.turmaroboticabfr.workers.dev/:29374:27)",
+            "funcao": "garantir",
+            "url": "https://bfr-conecta.turmaroboticabfr.workers.dev/",
+            "linha": 29374,
+            "col": 27,
+            "sonda": false
+          },
+          {
+            "texto": "at https://bfr-conecta.turmaroboticabfr.workers.dev/:29396:45",
+            "funcao": "https://bfr-conecta.turmaroboticabfr.workers.dev/",
+            "url": null,
+            "linha": 29396,
+            "col": 45,
+            "sonda": false
+          }
+        ],
+        "primeira_real": {
+          "texto": "at fecharPainelForaDaVista (https://bfr-conecta.turmaroboticabfr.workers.dev/:29345:68)",
+          "funcao": "fecharPainelForaDaVista",
+          "url": "https://bfr-conecta.turmaroboticabfr.workers.dev/",
+          "linha": 29345,
+          "col": 68,
+          "sonda": false
+        },
+        "funcao_escritora": "fecharPainelForaDaVista",
+        "url_da_mouldura": "https://bfr-conecta.turmaroboticabfr.workers.dev/",
+        "linha_da_pilha": 29345
+      },
+      "resolucao": {
+        "simbolo": "fecharPainelForaDaVista",
+        "padrao": "function fecharPainelForaDaVista(",
+        "off": 3534564,
+        "linha": 29338,
+        "ocorrencias": 1,
+        "em_modulo": true,
+        "bloco": "data-bfr-municipal-module=1",
+        "bloco_tipo": null,
+        "pilha_usa_url_anonima": false
+      },
+      "ator": "modulo",
+      "linha_da_pilha_e_do_documento": true,
+      "pilha_linha_dentro_da_regiao_resolvida": true
+    }
+  ],
+  "atores": {
+    "fora_do_modulo": 1,
+    "modulo": 2
+  },
+  "portoes": {
+    "C1_ar_certificado_estavel": true,
+    "C2_duas_regioes_distintas": true,
+    "C3_regua_tem_dois_lados": true,
+    "C4_calibracao_da_sonda": true,
+    "C5_todas_medidas_e_escondidas": true,
+    "C6_ator_sempre_nomeado": true,
+    "C7_atores_por_celula_e_bloco": false,
+    "C8_linha_da_pilha_so_vale_com_url_do_documento": true
+  },
+  "o_que_esta_peca_prova_sobre_a_p110": "a P110 acertou no actor mas por comparacao de linha da pilha com a faixa do documento, que nao vale para moldes <anonymous>; aqui a mesma conclusao sai por simbolo resolvido nos bytes",
+  "o_que_esta_peca_nao_prova": "prova quem escreve a classe; nao prova para onde o produto DEVERIA navegar — isso e decisao registada, nao medicao",
+  "veredito": "P111_ATOR_DA_ESCONDIDA_POR_SIMBOLO_VERMELHO 1 de 8 · {\"C1_ar_certificado_estavel\":true,\"C2_duas_regioes_distintas\":true,\"C3_regua_tem_dois_lados\":true,\"C4_calibracao_da_sonda\":true,\"C5_todas_medidas_e_escondidas\":true,\"C6_ator_sempre_nomeado\":true,\"C7_atores_por_celula_e_bloco\":false,\"C8_linha_da_pilha_so_vale_com_url_do_documento\":true} · excecoes=0",
+  "excecoes": []
+}

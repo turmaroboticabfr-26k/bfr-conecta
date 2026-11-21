@@ -1,0 +1,102 @@
+{
+  "programa": "scripts/p102-gera-candidata-v142-painel-na-troca.mjs",
+  "em": "2026-11-21T20:47:17.568Z",
+  "duracao_ms": 0,
+  "pergunta": "com o painel municipal aberto, trocar para uma vista fora do mapa fecha o painel sem deixar ecra em branco?",
+  "origem": {
+    "pasta": "bfr-candidata-v141-caixa-vazia",
+    "md5": "e111b9e66cc758d19dffff1436770d0f",
+    "bytes": 3554518,
+    "veredito_portoes": "P97_CANDIDATA_V141_CAIXA_VAZIA_OK 15/0"
+  },
+  "destino": {
+    "pasta": "bfr-candidata-v142-painel-na-troca",
+    "md5": "0e22e78fe1e0ce929ec4717f86365ad9",
+    "bytes": 3556664,
+    "delta_bytes": 2146
+  },
+  "substituicoes": [
+    {
+      "nome": "consts_do_fecho",
+      "vezes": 1,
+      "delta_bytes": 69
+    },
+    {
+      "nome": "registar_o_que_foi_escondido",
+      "vezes": 1,
+      "delta_bytes": 71
+    },
+    {
+      "nome": "funcoes_de_fecho",
+      "vezes": 1,
+      "delta_bytes": 1801
+    },
+    {
+      "nome": "chamada_no_aplicarVisibilidade",
+      "vezes": 1,
+      "delta_bytes": 120
+    },
+    {
+      "nome": "exporto_do_fecho",
+      "vezes": 1,
+      "delta_bytes": 85
+    }
+  ],
+  "sect": "secretaria-municipal",
+  "view_id": "bfrMunicipalView",
+  "papeis_municipais": [
+    "admin",
+    "education_supervisor"
+  ],
+  "destino_por_vista_medida": {
+    "admin": {
+      "destino": "inicio",
+      "fonte": "fallbackByRole"
+    },
+    "director": {
+      "destino": "inicio",
+      "fonte": "fallbackByRole"
+    },
+    "parent": {
+      "destino": "inicio",
+      "fonte": "fallbackByRole"
+    },
+    "student": {
+      "destino": "inicio",
+      "fonte": "fallbackByRole"
+    },
+    "teacher": {
+      "destino": "professor-inicio",
+      "fonte": "primeira_seccao_do_mapa"
+    },
+    "coordinator": {
+      "destino": "inicio",
+      "fonte": "fallbackByRole"
+    },
+    "secretary": {
+      "destino": "inicio",
+      "fonte": "fallbackByRole"
+    },
+    "monitor": {
+      "destino": "inicio",
+      "fonte": "fallbackByRole"
+    },
+    "aee": {
+      "destino": "inicio",
+      "fonte": "fallbackByRole"
+    },
+    "gatekeeper": {
+      "destino": "inicio",
+      "fonte": "fallbackByRole"
+    }
+  },
+  "fallback_dos_bytes": {
+    "vistas": 11,
+    "literal_md5": "e406799121d1074f4506bf1eb313f2bc"
+  },
+  "portoes": {
+    "total": 12,
+    "falhas": 0
+  },
+  "veredito": "P102_CANDIDATA_V142_PAINEL_NA_TROCA_OK 12/0"
+}

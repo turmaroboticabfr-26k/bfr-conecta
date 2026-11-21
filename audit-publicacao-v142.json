@@ -1,0 +1,286 @@
+{
+  "version": "v142",
+  "data": "2026-11-21",
+  "ok_literal": "a escolha do utilizador na pergunta de escopo de 21/11: «So fechar o painel (Recomendado)»",
+  "nota_do_ok": "cobre construir a candidata, gerar o bundle e PUBLICAR o fecho do painel municipal na troca de vista. NAO cobre revogar as 4 concessoes municipais de contas reais (respondeu «Manter (Recomendado)» — 0 escritas no banco), NEM o rpc como porta da visibilidade, NEM reverter PEN-43/PEN-44 nem por `secretaria-municipal` no array estatico de `teacher` nem rodar senha (respondeu «Nenhum (Recomendado)» ao bloco dos desaconselhados), NEM git push.",
+  "escopo_do_ok": "uma linha no modulo municipal: quando a vista activa sai do mapa do shell e o painel da Secretaria Municipal esta aberto, fecha-lo com `fecharPainelForaDaVista(destino, motivo)`, sendo o destino o que a regra do shell da (a mesma que os bytes dao a qualquer vista sem chave em `fallbackByRole`), e levar isso ao ar",
+  "tarefa": "fechar a incoerencia de apresentacao registada no diario da v141 (`observacao_aberta_painel_ja_aberto`): com o painel aberto, a troca de vista escondia a ENTRADA mas deixava o painel display=block com 1819 B visiveis por cima da vista nova",
+  "porque_esta_versao": "a cadeia certificada e v139 (sonda honesta) -> v140 (trilha) -> v141 (caixa vazia) -> p102 (v142 fecho na troca): a v142 parte do worker que estava no ar (P103 T1) e traz dentro as tres pecas anteriores",
+  "origem_dos_numeros": "stdout do wrangler + deployments status/list + artefactos p102/p103/p104/p105/p108/p110/p111/p112 e esperado-v142 em disco; nada copiado-colado da conversa",
+  "deploy": {
+    "worker": "bfr-conecta",
+    "conta": "turmaroboticabfr@gmail.com",
+    "version_id": "ebe8e698-620c-47ff-bc88-10c0c25b456c",
+    "deployment_id": "d13c1e65-b9b8-42d8-8e6c-cea8090ebffb",
+    "deployment_created": "2026-11-21T20:50:34.780772Z",
+    "versao_anterior_v141": "678bba24-4a83-4bf0-a596-fa4d67d51d2d",
+    "url": "https://bfr-conecta.turmaroboticabfr.workers.dev",
+    "reversao": "devolver o ar a v141 e `wrangler deploy` a partir de worker-deploy-v141-caixa-vazia — exige OK literal novo"
+  },
+  "bundle": {
+    "worker_md5": "b1827dade7c8fb829a149272d89b9c97",
+    "worker_bytes": 3621665,
+    "delta_worker_bytes": 2166,
+    "html_md5": "0e22e78fe1e0ce929ec4717f86365ad9",
+    "html_bytes": 3556664,
+    "sw_md5": "6b76396e455bd28eefbc83be527965cb",
+    "sw_bytes": 5064,
+    "cache_label_no_ar": "bfr-conecta-v142",
+    "modulo_md5": "b83b4c2666fc909d50a358b86b99de05",
+    "modulo_bytes": 52532,
+    "headers_md5": "6f1f82a390b0e6111e3b8aff7d6415b2",
+    "assets_copiados": 13,
+    "precache_alinhado": 0,
+    "base": "worker-deploy-v141-caixa-vazia (o worker que estava no ar)",
+    "candidata": {
+      "origem": "bfr-candidata-v141-caixa-vazia md5=e111b9e66cc758d19dffff1436770d0f",
+      "destino": "bfr-candidata-v142-painel-na-troca md5=0e22e78fe1e0ce929ec4717f86365ad9",
+      "delta_bytes": 2146,
+      "substituicoes": [
+        "consts_do_fecho x1",
+        "registar_o_que_foi_escondido x1",
+        "funcoes_de_fecho x1",
+        "chamada_no_aplicarVisibilidade x1",
+        "exporto_do_fecho x1"
+      ]
+    }
+  },
+  "portoes": {
+    "p102_candidata": "P102_CANDIDATA_V142_PAINEL_NA_TROCA_OK 12/0",
+    "p103_bundle": "P103_BUNDLE_V142_OK 34/0",
+    "p104_pos_deploy": "P104_POS_DEPLOY_V142_OK 17/0",
+    "p112_browser": "P112_PAINEL_FECHA_NA_TROCA_COM_ATOR_POR_CELULA_OK 16/0",
+    "p105_vermelho_preservado": {
+      "caminho": "evidence/p105-painel-fecha-na-troca-no-ar-21-11-a.json",
+      "veredito": "P105_PAINEL_FECHA_NA_TROCA_NO_AR_VERMELHO 1 de 14"
+    },
+    "p104_vermelho_preservado": "evidence/p104-pos-deploy-v142-a-VERMELHO-regua_do_H15_procurou_id_em_vez_de_data_section.json",
+    "p102_vermelho_preservado": "evidence/p102-gera-candidata-v142-21-11-b-VERMELHO-regua_do_SECT_contava_o_literal_e_insert_exigia_zero.json",
+    "p112_vermelho_preservado": "evidence/p112-painel-fecha-na-troca-com-ator-por-celula-no-ar-21-11-a-ERRO-MEU-FIND-EM-VEZ-DE-FINDINDEX.json",
+    "p111_vermelhos_preservados": [
+      "evidence/p111-ator-da-escondida-por-simbolo-nos-bytes-21-11-a-ERRO-MEU-TDZ-CAL.json",
+      "evidence/p111-ator-da-escondida-por-simbolo-nos-bytes-21-11-b-ERRO-MEU-ESPERADO-FIXO-NA-CELULA-PAIS.json"
+    ],
+    "p111_terceira_corrida": "P111_ATOR_DA_ESCONDIDA_POR_SIMBOLO_OK 8/0",
+    "p110_pilha": "P110_ACTOR_DA_ESCONDIDA_POR_PILHA_OK 7/0",
+    "p108_atribuicao_por_ausencia": "P108_ACTOR_DO_FECHO_MEDIDO 3/3 celulas · {\"shell\":1,\"modulo\":2}"
+  },
+  "conferencia_no_ar": {
+    "veredito_p104": "P104_POS_DEPLOY_V142_OK 17/0",
+    "duracao_ms_p104": 3415,
+    "shells_p104": [
+      {
+        "http": 200,
+        "bytes": 3556664,
+        "md5": "0e22e78fe1e0ce929ec4717f86365ad9"
+      },
+      {
+        "http": 200,
+        "bytes": 3556664,
+        "md5": "0e22e78fe1e0ce929ec4717f86365ad9"
+      },
+      {
+        "http": 200,
+        "bytes": 3556664,
+        "md5": "0e22e78fe1e0ce929ec4717f86365ad9"
+      }
+    ],
+    "md5_agora": "0e22e78fe1e0ce929ec4717f86365ad9",
+    "bytes_agora": 3556664,
+    "agulhas_no_ar": [
+      "function fecharPainelForaDaVis=1",
+      "function painelAberto() {=1",
+      "if (!mostrar && painelAberto()=1",
+      "const CONTEUDOS_ESCONDIDOS = n=1",
+      "const FALBACKS_DOS_BYTES = =1"
+    ],
+    "etiquetas_perdidas_da_v141": {
+      "rotulo_lido": "bfr-conecta-v142",
+      "esperado": "bfr-conecta-v142",
+      "v141_no_sw": 0
+    },
+    "nada_da_v141_perdido": {
+      "trilha_no_ar": 1,
+      "trilha_na_v141": 1,
+      "sonda_no_ar": 1,
+      "sonda_na_v141": 1,
+      "entrada_no_ar": 3,
+      "entrada_na_v141": 3
+    },
+    "destinos_do_fecho_sao_seccoes_da_paleta": [
+      "admin->inicio[fallbackByRole] data_section_no_ar=17/na_candidata=17",
+      "director->inicio[fallbackByRole] data_section_no_ar=17/na_candidata=17",
+      "parent->inicio[fallbackByRole] data_section_no_ar=17/na_candidata=17",
+      "student->inicio[fallbackByRole] data_section_no_ar=17/na_candidata=17",
+      "teacher->professor-inicio[primeira_seccao_do_mapa] data_section_no_ar=2/na_candidata=2",
+      "coordinator->inicio[fallbackByRole] data_section_no_ar=17/na_candidata=17",
+      "secretary->inicio[fallbackByRole] data_section_no_ar=17/na_candidata=17",
+      "monitor->inicio[fallbackByRole] data_section_no_ar=17/na_candidata=17",
+      "aee->inicio[fallbackByRole] data_section_no_ar=17/na_candidata=17",
+      "gatekeeper->inicio[fallbackByRole] data_section_no_ar=17/na_candidata=17"
+    ],
+    "controlo_negativo_do_H15_tem_dentes": {
+      "destino_inventado_no_ar": 0,
+      "inicio_no_ar": 17,
+      "nota": "uma regua que so contasse a presenca do nome aceitaria um destino inventado"
+    }
+  },
+  "medido_no_browser": {
+    "veredito_p112": "P112_PAINEL_FECHA_NA_TROCA_COM_ATOR_POR_CELULA_OK 16/0",
+    "duracao_ms": 140614,
+    "banda": "1366x768",
+    "papel_sessao": "developer",
+    "pergunta": "na v142, cada troca de vista fora do mapa esconde o painel municipal sem ecrã vazio — e o destino que o modulo nomeia, quando o modulo fecha, e o da regra do shell lida dos bytes?",
+    "celulas": [
+      "Direção director fecho_novo fecho=null->F1 destino=inicio regra_shell=inicio",
+      "Pais parent fecho_novo fecho=F1->F2 destino=inicio regra_shell=inicio",
+      "Aluno student fecho_novo fecho=F2->F3 destino=inicio regra_shell=inicio",
+      "Professor teacher escondida_sem_fecho fecho=F3->F3 destino=inicio regra_shell=inicio",
+      "Coordenação coordinator fecho_novo fecho=F3->F4 destino=inicio regra_shell=inicio",
+      "Secretaria secretary fecho_novo fecho=F4->F5 destino=inicio regra_shell=inicio",
+      "Monitor monitor fecho_novo fecho=F5->F6 destino=inicio regra_shell=inicio",
+      "AEE aee fecho_novo fecho=F6->F7 destino=inicio regra_shell=inicio",
+      "Portaria gatekeeper fecho_novo fecho=F7->F8 destino=inicio regra_shell=inicio"
+    ],
+    "classes_de_celula": {
+      "fecho_novo": [
+        "Direção",
+        "Pais",
+        "Aluno",
+        "Coordenação",
+        "Secretaria",
+        "Monitor",
+        "AEE",
+        "Portaria"
+      ],
+      "escondida_sem_fecho": [
+        "Professor"
+      ],
+      "total_fora_do_mapa": 9
+    },
+    "regra_do_shell_lida_dos_bytes": {
+      "linha_dos_bytes": "const fallback = fallbackByRole[activeView] || 'inicio';",
+      "mutacoes_de_roleSectionAccess_nos_bytes": 0,
+      "fallbackByRole_chaves": [
+        "parent",
+        "admin",
+        "director",
+        "coordinator",
+        "student",
+        "monitor",
+        "gatekeeper",
+        "secretary",
+        "aee",
+        "psychology",
+        "multiprofessional"
+      ],
+      "teacher_no_fallbackByRole": false
+    },
+    "painel_continua_aberto_sem_troca": {
+      "antes": {
+        "display": "block",
+        "oculto_pela_classe": false,
+        "abas": 10,
+        "chars": 2123
+      },
+      "depois": {
+        "display": "block",
+        "oculto_pela_classe": false,
+        "abas": 10,
+        "chars": 2123
+      }
+    },
+    "saida_e_volta": {
+      "saida_painel": {
+        "display": "none",
+        "oculto_pela_classe": true,
+        "abas": 10,
+        "chars": 2061
+      },
+      "entrada_de_volta": {
+        "display": "block",
+        "oculto_pela_classe": false,
+        "abas": 10,
+        "chars": 2123
+      },
+      "clique_de_reabertura": {
+        "clicado": true,
+        "e_o_proprio": true
+      }
+    }
+  },
+  "reclassificacao_do_vermelho_da_P105": {
+    "veredito_original": "P105_PAINEL_FECHA_NA_TROCA_NO_AR_VERMELHO 1 de 14",
+    "unica_porta_chumbada": "F6_o_fecho_nomeia_o_destino_que_os_bytes_dao_para_a_vista",
+    "o_que_a_P105_mediu_de_apresentacao": "nas 9 celulas da P105 a vista entrante estava dentro do mapa=false, aberto_antes_da_troca=true e `painel.oculto_pela_classe`=true — o painel fechou-se em todas; o vermelho nunca foi de apresentacao, foi da espera",
+    "D1_espectativa": "a P102 e a P105 comparavam com a primeira seccao do mapa estatico (`roleSectionAccess[vista][0]`) quando `fallbackByRole` nao tinha a vista; os bytes dizem `const fallback = fallbackByRole[activeView] || 'inicio';` e nao ha nenhuma mutacao de `roleSectionAccess` nos bytes (P112 F16: mutacoes=0, e `teacher` nao e chave de `fallbackByRole`, medido por `hasOwnProperty` = false; a segunda fonte da P102 continua registada em cada celula so para se ver onde divergiria)",
+    "D2_atribuicao": "a P105 lia `ultimoFecho()` — um global do modulo — como se fosse a medida da celula; na celula `teacher` o modulo nao cria fecho nenhum, logo a P105 leu o fecho da celula anterior (P112 marca essa celula como `escondida_sem_fecho` com fecho inalterado F3->F3)",
+    "divergencia_unica_medida": [
+      "Professor vista=teacher p102=professor-inicio shell=inicio"
+    ],
+    "consertado_em": "scripts/p112-painel-fecha-na-troca-com-ator-por-celula-no-ar.mjs (F6 dividida em F6a/F6b, mais F15 e F16); nenhuma predicado existente foi amaciado nem removido",
+    "preservados": [
+      "evidence/p105-painel-fecha-na-troca-no-ar-21-11-a.json",
+      "evidence/p105-painel-fecha-na-troca-no-ar-21-11-a.txt"
+    ]
+  },
+  "atribuicao_do_esconder_por_medida": {
+    "p108_por_ausencia": {
+      "shell": 1,
+      "modulo": 2
+    },
+    "p110_por_pilha": "P110_ACTOR_DA_ESCONDIDA_POR_PILHA_OK 7/0",
+    "p111_por_simbolo_nos_bytes": "P111_ATOR_DA_ESCONDIDA_POR_SIMBOLO_OK 8/0",
+    "act_p111": {
+      "fora_do_modulo": 1,
+      "modulo": 2
+    },
+    "como_se_le": "na celula `Professor` a classe `hidden` e escrita ~11 ms depois do clique por `setProfessionalTeacherSection` (bloco `bfr-core-runtime`, injectado em tempo de arranque — por isso o seu frame aparece como `<anonymous>` e a sua numeração é por bloco, nao por documento); nas celulas em que o modulo fecha, quem escreve e `fecharPainelForaDaVista` e nomeia `inicio`",
+    "corregao_da_p110": "a P110 comparava a linha da pilha com a faixa de documento do modulo; para frames `<anonymous>` isso sao eixos incompativeis. A P111 resolve o simbolo nos bytes servidos e registra `linha_da_pilha_e_do_documento`; o verde da P110 mantem-se como medido, a sua etiqueta e re-derivada pela P111",
+    "nota_de_corrida_celula_Pais": {
+      "celula": "Pais",
+      "p110": "escondida por setHomeMode do shell com fecho inalterado (F1->F1), t=448 ms",
+      "p111_medida_aqui": "escondida por fecharPainelForaDaVista com fecho F1->F2, t=614 ms",
+      "leitura": "corrida entre o esconder do shell e a vigilia do modulo; ambas escondem o painel, pelo que a promessa da v142 cumpre-se nos dois lados e nenhuma das duas corridas e um vermelho do produto",
+      "artefactos": [
+        "evidence/p110-actor-da-escondida-por-pilha-21-11-a.json",
+        "esta corrida"
+      ]
+    }
+  },
+  "o_que_este_deploy_muda_para_um_usuario_real": {
+    "quem_ve_a_entrada": "nada muda: a visibilidade continua a seguir a vista activa e a decisao de dados fica em `aptoParaSessao()` e nas rpcs com RLS",
+    "painel_aberto_e_troca_de_view": "fecha: medido nas 9 vistas fora do mapa — `oculto_pela_classe=true` em todas, com alguma coisa pintada na vista nova (P112 D8)",
+    "quem_nao_tem_painel_para_fechar": "uma vista (`teacher`) nao passa pelo fecho do modulo: o proprio shell ja lhe poe a classe `hidden` ~11 ms depois do clique, e a P112 nao lhe credita um fecho que nao aconteceu",
+    "nota_de_atingibilidade": "o painel tambem continua fechavel e reabrivel na sessao de teste: `volta.clique` deu clicado=true e e_o_proprio=true e o painel tornou a display=block com 2123 B"
+  },
+  "decisoes_de_registro": {
+    "quatro_concessoes_municipais_de_contas_reais": {
+      "decisao": "Manter (Recomendado) — resposta do utilizador em 21/11",
+      "consequencia": "zero escritas no banco; as 4 concessoes da SM8 sobre o municipio de exemplo ficam como estao e continuam a ler 4/848/27",
+      "medida_em": "evidence/p81-* e evidence/p91-* (contagem da barra) e P92 (4 de 6 escolas ligadas por municipio)"
+    },
+    "rpc_como_porta_da_visibilidade": {
+      "decisao": "nao construida nem publicada",
+      "porque": "P93 mediu D1=0 e D2=0 em 14 personas legiveis — uma v141 com o rpc como porta nao mudaria nada para as contas da barra e so daria entrada as 4 contas reais concessionadas, logo seria expansao de acesso",
+      "tarefa": "#27 fica como decisao de registro"
+    },
+    "desaconselhados": {
+      "decisao": "Nenhum (Recomendado)",
+      "itens": [
+        "reverter PEN-43/PEN-44",
+        "acrescentar secretaria-municipal ao array estatico de `teacher`",
+        "rodar senha das contas de teste"
+      ]
+    }
+  },
+  "estado_do_remoto_medido_agora": {
+    "main": "14cfbfc87809c3b64a94e687df043165ec5706da",
+    "origin_main": "14cfbfc87809c3b64a94e687df043165ec5706da",
+    "ahead": 0,
+    "reflog_remoto": "14cfbfc refs/remotes/origin/main@{2026-11-21 17:19:53 -0300}: update by push",
+    "leitura": "valor recolhido antes do commit deste diario: `main` e `origin/main` dao o mesmo hash, portanto a publicacao anterior (v141) ja esta no remoto e o commit que ha-de conter este diario ainda nao existe quando esta linha e escrita. O push desta peca nao e feito por esta corrida e pede OK literal novo.",
+    "medido_por": "git rev-parse main / git rev-parse origin/main / git rev-list --count origin/main..main / git reflog show origin/main, corridos por esta peca em tempo de execucao (0 escrita em git)"
+  },
+  "o_que_este_diario_nao_autoriza": "git push; revogar ou manter de novo as 4 concessoes municipais de contas reais (mantidas por decisao do utilizador); tornar `bfr_is_municipal_authority()` a porta da visibilidade (P93: D1=0, D2=0 — seria expansao de acesso); acrescentar `secretaria-municipal` ao array estatico de `teacher`; reverter PEN-43/PEN-44; rodar senha de contas de teste; qualquer DDL ou escrita no banco; publicar uma v143 — cada uma dessas pecas pede OK literal proprio."
+}

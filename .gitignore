@@ -21,7 +21,10 @@ bfr-audit-contas.json
 
 # Perfis de browser dos rigs de captura: trazem Local Storage e Login Data com
 # as sessões reais do ciclo. 196 MB no C2, e nenhum deles ignorado até aqui.
+# A classe nao e o nome: os rigs novos escrevem `.p<peca>-perfil-<porta>` e
+# escapavam do padrao antigo. 0 ficheiros versionados casam com esta linha.
 *-chrome-profile/
+*perfil-*/
 
 # Scripts com credenciais sintéticas hardcoded
 reset-supervisor-password.mjs

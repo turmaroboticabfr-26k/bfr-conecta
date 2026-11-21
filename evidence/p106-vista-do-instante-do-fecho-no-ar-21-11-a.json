@@ -1,0 +1,474 @@
+{
+  "programa": "scripts/p106-vista-do-instante-do-fecho-no-ar.mjs",
+  "em": "2026-11-21T21:16:15.691Z",
+  "duracao_ms": 106945,
+  "url": "https://bfr-conecta.turmaroboticabfr.workers.dev/",
+  "pergunta": "o fecho nomeia o destino a partir da vista que se entra ou da que se deixa?",
+  "ar": {
+    "md5": "0e22e78fe1e0ce929ec4717f86365ad9",
+    "bytes": 3556664
+  },
+  "sect": "secretaria-municipal",
+  "view_id": "bfrMunicipalView",
+  "papel": "developer",
+  "regra_do_shell_lida_dos_bytes": "const fallback = fallbackByRole[activeView] || 'inicio';",
+  "H_a_estado_do_mapa_no_ar": {
+    "e_objecto_na_declaracao": true,
+    "chaves": [
+      "parent",
+      "student",
+      "teacher",
+      "coordinator",
+      "admin",
+      "director",
+      "monitor",
+      "gatekeeper",
+      "secretary",
+      "aee",
+      "psychology",
+      "multiprofessional",
+      "sports_operator",
+      "education_supervisor"
+    ],
+    "teacher_primeiro": "professor-inicio",
+    "mutacoes_do_mapa": 0
+  },
+  "H_b_liteais": {
+    "shell_e_injectado_byte_a_byte": true,
+    "md5_shell": "e406799121d1074f4506bf1eb313f2bc",
+    "md5_injectado": "e406799121d1074f4506bf1eb313f2bc",
+    "chaves_shell": [
+      "parent",
+      "admin",
+      "director",
+      "coordinator",
+      "student",
+      "monitor",
+      "gatekeeper",
+      "secretary",
+      "aee",
+      "psychology",
+      "multiprofessional"
+    ],
+    "chaves_injectadas": [
+      "parent",
+      "admin",
+      "director",
+      "coordinator",
+      "student",
+      "monitor",
+      "gatekeeper",
+      "secretary",
+      "aee",
+      "psychology",
+      "multiprofessional"
+    ],
+    "teacher_no_shell": false,
+    "teacher_no_injectado": false
+  },
+  "celulas": [
+    {
+      "rotulo": "Direção",
+      "vista_deixada": "admin",
+      "vista_entrante": "director",
+      "seccao_final": "inicio",
+      "destino": "inicio",
+      "fechado": true,
+      "amostra_primeiro": {
+        "t": 1039,
+        "vista": "director",
+        "seccao": "inicio",
+        "aberto": false,
+        "fecho": {
+          "fechado": true,
+          "destino": "inicio",
+          "motivo": "vista fora do mapa com painel aberto"
+        }
+      },
+      "amostra_fim": {
+        "vista": "director",
+        "seccao": "inicio",
+        "aberto": false,
+        "fecho": {
+          "fechado": true,
+          "destino": "inicio",
+          "motivo": "vista fora do mapa com painel aberto"
+        }
+      },
+      "vistas_vistas_na_troca": [
+        "director"
+      ],
+      "amostras": 2,
+      "painel_fechado_no_fim": true,
+      "pintados_no_fim": 2,
+      "regra_do_shell_para_a_entrante": "inicio",
+      "regra_do_shell_para_a_deixada": "inicio",
+      "usou_a_vista_deixada": false
+    },
+    {
+      "rotulo": "Pais",
+      "vista_deixada": "admin",
+      "vista_entrante": "parent",
+      "seccao_final": "inicio",
+      "destino": "inicio",
+      "fechado": true,
+      "amostra_primeiro": {
+        "t": 0,
+        "vista": "parent",
+        "seccao": "inicio",
+        "aberto": true,
+        "fecho": {
+          "fechado": true,
+          "destino": "inicio",
+          "motivo": "vista fora do mapa com painel aberto"
+        }
+      },
+      "amostra_fim": {
+        "vista": "parent",
+        "seccao": "inicio",
+        "aberto": true,
+        "fecho": {
+          "fechado": true,
+          "destino": "inicio",
+          "motivo": "vista fora do mapa com painel aberto"
+        }
+      },
+      "vistas_vistas_na_troca": [
+        "parent"
+      ],
+      "amostras": 1,
+      "painel_fechado_no_fim": false,
+      "pintados_no_fim": 1,
+      "regra_do_shell_para_a_entrante": "inicio",
+      "regra_do_shell_para_a_deixada": "inicio",
+      "usou_a_vista_deixada": false
+    },
+    {
+      "rotulo": "Aluno",
+      "vista_deixada": "admin",
+      "vista_entrante": "student",
+      "seccao_final": "inicio",
+      "destino": "inicio",
+      "fechado": true,
+      "amostra_primeiro": {
+        "t": 0,
+        "vista": "student",
+        "seccao": "inicio",
+        "aberto": true,
+        "fecho": {
+          "fechado": true,
+          "destino": "inicio",
+          "motivo": "vista fora do mapa com painel aberto"
+        }
+      },
+      "amostra_fim": {
+        "vista": "student",
+        "seccao": "inicio",
+        "aberto": true,
+        "fecho": {
+          "fechado": true,
+          "destino": "inicio",
+          "motivo": "vista fora do mapa com painel aberto"
+        }
+      },
+      "vistas_vistas_na_troca": [
+        "student"
+      ],
+      "amostras": 1,
+      "painel_fechado_no_fim": false,
+      "pintados_no_fim": 1,
+      "regra_do_shell_para_a_entrante": "inicio",
+      "regra_do_shell_para_a_deixada": "inicio",
+      "usou_a_vista_deixada": false
+    },
+    {
+      "rotulo": "Professor",
+      "vista_deixada": "admin",
+      "vista_entrante": "teacher",
+      "seccao_final": "professor-inicio",
+      "destino": "inicio",
+      "fechado": true,
+      "amostra_primeiro": {
+        "t": 0,
+        "vista": "teacher",
+        "seccao": "professor-inicio",
+        "aberto": false,
+        "fecho": {
+          "fechado": true,
+          "destino": "inicio",
+          "motivo": "vista fora do mapa com painel aberto"
+        }
+      },
+      "amostra_fim": {
+        "vista": "teacher",
+        "seccao": "professor-inicio",
+        "aberto": false,
+        "fecho": {
+          "fechado": true,
+          "destino": "inicio",
+          "motivo": "vista fora do mapa com painel aberto"
+        }
+      },
+      "vistas_vistas_na_troca": [
+        "teacher"
+      ],
+      "amostras": 1,
+      "painel_fechado_no_fim": true,
+      "pintados_no_fim": 1,
+      "regra_do_shell_para_a_entrante": "inicio",
+      "regra_do_shell_para_a_deixada": "inicio",
+      "usou_a_vista_deixada": false
+    },
+    {
+      "rotulo": "Coordenação",
+      "vista_deixada": "admin",
+      "vista_entrante": "coordinator",
+      "seccao_final": "inicio",
+      "destino": "inicio",
+      "fechado": true,
+      "amostra_primeiro": {
+        "t": 0,
+        "vista": "coordinator",
+        "seccao": "inicio",
+        "aberto": true,
+        "fecho": {
+          "fechado": true,
+          "destino": "inicio",
+          "motivo": "vista fora do mapa com painel aberto"
+        }
+      },
+      "amostra_fim": {
+        "vista": "coordinator",
+        "seccao": "inicio",
+        "aberto": true,
+        "fecho": {
+          "fechado": true,
+          "destino": "inicio",
+          "motivo": "vista fora do mapa com painel aberto"
+        }
+      },
+      "vistas_vistas_na_troca": [
+        "coordinator"
+      ],
+      "amostras": 1,
+      "painel_fechado_no_fim": true,
+      "pintados_no_fim": 3,
+      "regra_do_shell_para_a_entrante": "inicio",
+      "regra_do_shell_para_a_deixada": "inicio",
+      "usou_a_vista_deixada": false
+    },
+    {
+      "rotulo": "Secretaria",
+      "vista_deixada": "admin",
+      "vista_entrante": "secretary",
+      "seccao_final": "inicio",
+      "destino": "inicio",
+      "fechado": true,
+      "amostra_primeiro": {
+        "t": 0,
+        "vista": "secretary",
+        "seccao": "inicio",
+        "aberto": true,
+        "fecho": {
+          "fechado": true,
+          "destino": "inicio",
+          "motivo": "vista fora do mapa com painel aberto"
+        }
+      },
+      "amostra_fim": {
+        "vista": "secretary",
+        "seccao": "inicio",
+        "aberto": true,
+        "fecho": {
+          "fechado": true,
+          "destino": "inicio",
+          "motivo": "vista fora do mapa com painel aberto"
+        }
+      },
+      "vistas_vistas_na_troca": [
+        "secretary"
+      ],
+      "amostras": 1,
+      "painel_fechado_no_fim": false,
+      "pintados_no_fim": 1,
+      "regra_do_shell_para_a_entrante": "inicio",
+      "regra_do_shell_para_a_deixada": "inicio",
+      "usou_a_vista_deixada": false
+    },
+    {
+      "rotulo": "Monitor",
+      "vista_deixada": "admin",
+      "vista_entrante": "monitor",
+      "seccao_final": "inicio",
+      "destino": "inicio",
+      "fechado": true,
+      "amostra_primeiro": {
+        "t": 0,
+        "vista": "monitor",
+        "seccao": "inicio",
+        "aberto": true,
+        "fecho": {
+          "fechado": true,
+          "destino": "inicio",
+          "motivo": "vista fora do mapa com painel aberto"
+        }
+      },
+      "amostra_fim": {
+        "vista": "monitor",
+        "seccao": "inicio",
+        "aberto": true,
+        "fecho": {
+          "fechado": true,
+          "destino": "inicio",
+          "motivo": "vista fora do mapa com painel aberto"
+        }
+      },
+      "vistas_vistas_na_troca": [
+        "monitor"
+      ],
+      "amostras": 1,
+      "painel_fechado_no_fim": false,
+      "pintados_no_fim": 1,
+      "regra_do_shell_para_a_entrante": "inicio",
+      "regra_do_shell_para_a_deixada": "inicio",
+      "usou_a_vista_deixada": false
+    },
+    {
+      "rotulo": "AEE",
+      "vista_deixada": "admin",
+      "vista_entrante": "aee",
+      "seccao_final": "inicio",
+      "destino": "inicio",
+      "fechado": true,
+      "amostra_primeiro": {
+        "t": 0,
+        "vista": "aee",
+        "seccao": "inicio",
+        "aberto": true,
+        "fecho": {
+          "fechado": true,
+          "destino": "inicio",
+          "motivo": "vista fora do mapa com painel aberto"
+        }
+      },
+      "amostra_fim": {
+        "vista": "aee",
+        "seccao": "inicio",
+        "aberto": true,
+        "fecho": {
+          "fechado": true,
+          "destino": "inicio",
+          "motivo": "vista fora do mapa com painel aberto"
+        }
+      },
+      "vistas_vistas_na_troca": [
+        "aee"
+      ],
+      "amostras": 1,
+      "painel_fechado_no_fim": false,
+      "pintados_no_fim": 1,
+      "regra_do_shell_para_a_entrante": "inicio",
+      "regra_do_shell_para_a_deixada": "inicio",
+      "usou_a_vista_deixada": false
+    },
+    {
+      "rotulo": "Portaria",
+      "vista_deixada": "admin",
+      "vista_entrante": "gatekeeper",
+      "seccao_final": "inicio",
+      "destino": "inicio",
+      "fechado": true,
+      "amostra_primeiro": {
+        "t": 0,
+        "vista": "gatekeeper",
+        "seccao": "inicio",
+        "aberto": true,
+        "fecho": {
+          "fechado": true,
+          "destino": "inicio",
+          "motivo": "vista fora do mapa com painel aberto"
+        }
+      },
+      "amostra_fim": {
+        "vista": "gatekeeper",
+        "seccao": "inicio",
+        "aberto": true,
+        "fecho": {
+          "fechado": true,
+          "destino": "inicio",
+          "motivo": "vista fora do mapa com painel aberto"
+        }
+      },
+      "vistas_vistas_na_troca": [
+        "gatekeeper"
+      ],
+      "amostras": 1,
+      "painel_fechado_no_fim": false,
+      "pintados_no_fim": 1,
+      "regra_do_shell_para_a_entrante": "inicio",
+      "regra_do_shell_para_a_deixada": "inicio",
+      "usou_a_vista_deixada": false
+    }
+  ],
+  "degrau_chamada_directa_no_instante_da_troca": {
+    "vista": "gatekeeper",
+    "seccao": "inicio",
+    "antes": {
+      "vista": "gatekeeper",
+      "aberto": false,
+      "fecho": {
+        "fechado": true,
+        "destino": "inicio",
+        "motivo": "vista fora do mapa com painel aberto"
+      }
+    },
+    "res": {
+      "fechado": true,
+      "destino": "inicio",
+      "motivo": "sonda de chamada directa com vista conhecida"
+    },
+    "depois": {
+      "aberto": false,
+      "fecho": {
+        "fechado": true,
+        "destino": "inicio",
+        "motivo": "vista fora do mapa com painel aberto"
+      }
+    },
+    "tipo_roleSectionAccess": "[object Object]",
+    "teacher_primeiro_vivo": "professor-inicio"
+  },
+  "degrau_chamada_directa_com_teacher_assentado": {
+    "antes": {
+      "vista": "teacher",
+      "aberto": false
+    },
+    "res": {
+      "fechado": true,
+      "destino": "professor-inicio",
+      "motivo": "sonda directa com activeView=teacher"
+    },
+    "vista": "teacher",
+    "tipo": "[object Object]",
+    "teacher_vivo": "professor-inicio"
+  },
+  "sintese": {
+    "celulas": 9,
+    "com_fecho": 9,
+    "destinos_mediados": [
+      "director:inicio",
+      "parent:inicio",
+      "student:inicio",
+      "teacher:inicio",
+      "coordinator:inicio",
+      "secretary:inicio",
+      "monitor:inicio",
+      "aee:inicio",
+      "gatekeeper:inicio"
+    ],
+    "iguais_a_regra_do_shell_para_a_entrante": 9,
+    "iguais_a_regra_do_shell_para_a_deixada": 9,
+    "fechos_que_lem_a_vista_deixada": 0
+  },
+  "excecoes": []
+}

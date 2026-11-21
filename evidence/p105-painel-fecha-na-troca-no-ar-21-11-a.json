@@ -1,0 +1,2099 @@
+{
+  "programa": "scripts/p105-painel-fecha-na-troca-no-ar.mjs",
+  "em": "2026-11-21T21:00:57.813Z",
+  "duracao_ms": 160032,
+  "teto_ms": 300000,
+  "pergunta": "na v142, trocar de vista com o painel municipal aberto fecha-o sem deixar ecrã vazio — e a vista autorizada conserva-o?",
+  "metodo": "chrome headless 1366x768, sessao do papel developer; abre o painel na vista autorizada, troca para cada uma das outras pessoas da barra e le painel (classe/display/abas), M.painelAberto(), M.ultimoFecho(), os paineis .content pintados e a entrada; deixa correr a vigilia sem troca na vista autorizada; volta e reabre. O destino esperado le-se dos bytes (fallbackByRole, senao a primeira seccao do mapa), nao da memoria. Zero DDL, zero deploy, zero publicacao.",
+  "ar": {
+    "url": "https://bfr-conecta.turmaroboticabfr.workers.dev/",
+    "md5_servido": "0e22e78fe1e0ce929ec4717f86365ad9",
+    "md5_no_fim": "0e22e78fe1e0ce929ec4717f86365ad9",
+    "bytes": 3556664,
+    "certificada_em": "worker-deploy-v142-painel-na-troca/esperado-v142.json",
+    "sect": "secretaria-municipal",
+    "view_id": "bfrMunicipalView",
+    "papeis_municipais": [
+      "admin",
+      "education_supervisor"
+    ]
+  },
+  "agulhas_no_modulo_servido": {
+    "v141": 1,
+    "v142": [
+      "function fecharPainelForaDaVista(=1",
+      "function painelAberto() {=1",
+      "if (!mostrar && painelAberto()) {=1",
+      "const CONTEUDOS_ESCONDIDOS = new Set();=1"
+    ]
+  },
+  "banda": "1366x768",
+  "papel_sessao": "developer",
+  "frio": {
+    "rotulo_persona": "Admin",
+    "active_view": "admin",
+    "active_section": "inicio",
+    "painel": {
+      "display": "none",
+      "oculto_pela_classe": true,
+      "abas": 0,
+      "chars": 0
+    },
+    "painel_aberto_pelo_modulo": false,
+    "ultimo_fecho": null,
+    "paineis": [
+      {
+        "id": "parentView",
+        "w": 0,
+        "h": 0,
+        "visivel": false,
+        "chars": 5620
+      },
+      {
+        "id": "teacherView",
+        "w": 0,
+        "h": 0,
+        "visivel": false,
+        "chars": 0
+      },
+      {
+        "id": "studentView",
+        "w": 0,
+        "h": 0,
+        "visivel": false,
+        "chars": 0
+      },
+      {
+        "id": "adminView",
+        "w": 1115,
+        "h": 9647,
+        "visivel": true,
+        "chars": 33951
+      },
+      {
+        "id": "directorView",
+        "w": 0,
+        "h": 0,
+        "visivel": false,
+        "chars": 0
+      },
+      {
+        "id": "coordinatorView",
+        "w": 0,
+        "h": 0,
+        "visivel": false,
+        "chars": 931
+      },
+      {
+        "id": "secretaryView",
+        "w": 0,
+        "h": 0,
+        "visivel": false,
+        "chars": 0
+      },
+      {
+        "id": "monitorView",
+        "w": 0,
+        "h": 0,
+        "visivel": false,
+        "chars": 0
+      },
+      {
+        "id": "gatekeeperView",
+        "w": 0,
+        "h": 0,
+        "visivel": false,
+        "chars": 0
+      },
+      {
+        "id": "aeeView",
+        "w": 0,
+        "h": 0,
+        "visivel": false,
+        "chars": 0
+      },
+      {
+        "id": "psychologyView",
+        "w": 0,
+        "h": 0,
+        "visivel": false,
+        "chars": 0
+      },
+      {
+        "id": "multiprofessionalView",
+        "w": 0,
+        "h": 0,
+        "visivel": false,
+        "chars": 0
+      },
+      {
+        "id": "resultsLearningView",
+        "w": 0,
+        "h": 0,
+        "visivel": false,
+        "chars": 0
+      },
+      {
+        "id": "supportView",
+        "w": 0,
+        "h": 0,
+        "visivel": false,
+        "chars": 0
+      },
+      {
+        "id": "healthyFoodView",
+        "w": 0,
+        "h": 0,
+        "visivel": false,
+        "chars": 0
+      },
+      {
+        "id": "readingLibraryView",
+        "w": 0,
+        "h": 0,
+        "visivel": false,
+        "chars": 0
+      },
+      {
+        "id": "activityCenterView",
+        "w": 0,
+        "h": 0,
+        "visivel": false,
+        "chars": 0
+      },
+      {
+        "id": "platformLearnView",
+        "w": 0,
+        "h": 0,
+        "visivel": false,
+        "chars": 0
+      },
+      {
+        "id": "platformEvolveView",
+        "w": 0,
+        "h": 0,
+        "visivel": false,
+        "chars": 0
+      },
+      {
+        "id": "platformSchoolView",
+        "w": 0,
+        "h": 0,
+        "visivel": false,
+        "chars": 0
+      },
+      {
+        "id": "platformSpaceView",
+        "w": 0,
+        "h": 0,
+        "visivel": false,
+        "chars": 0
+      },
+      {
+        "id": "internalChatView",
+        "w": 0,
+        "h": 0,
+        "visivel": false,
+        "chars": 0
+      },
+      {
+        "id": "bfrNotificationsView",
+        "w": 0,
+        "h": 0,
+        "visivel": false,
+        "chars": 0
+      },
+      {
+        "id": "bfrReportsView",
+        "w": 0,
+        "h": 0,
+        "visivel": false,
+        "chars": 0
+      },
+      {
+        "id": "bfrContentHubView",
+        "w": 0,
+        "h": 0,
+        "visivel": false,
+        "chars": 0
+      },
+      {
+        "id": "schoolGamesView",
+        "w": 0,
+        "h": 0,
+        "visivel": false,
+        "chars": 0
+      },
+      {
+        "id": "bfrCommunicationView",
+        "w": 0,
+        "h": 0,
+        "visivel": false,
+        "chars": 0
+      },
+      {
+        "id": "bfrMunicipalView",
+        "w": 0,
+        "h": 0,
+        "visivel": false,
+        "chars": 0
+      }
+    ],
+    "paineis_visiveis": [
+      "adminView(33951B)"
+    ],
+    "navs": [
+      {
+        "w": 192,
+        "h": 56,
+        "oculto_pela_classe": false,
+        "display": "flex",
+        "munVista": "dentro"
+      },
+      {
+        "w": 0,
+        "h": 0,
+        "oculto_pela_classe": false,
+        "display": "inline-block",
+        "munVista": "dentro"
+      }
+    ],
+    "entrada_visiveis": 1,
+    "mapa_vivo": {
+      "parent": false,
+      "student": false,
+      "teacher": false,
+      "coordinator": false,
+      "admin": true,
+      "director": false,
+      "monitor": false,
+      "gatekeeper": false,
+      "secretary": false,
+      "aee": false,
+      "psychology": false,
+      "multiprofessional": false,
+      "sports_operator": false,
+      "education_supervisor": true
+    }
+  },
+  "admin": {
+    "rotulo_persona": "Admin",
+    "active_view": "admin",
+    "active_section": "inicio",
+    "painel": {
+      "display": "none",
+      "oculto_pela_classe": true,
+      "abas": 0,
+      "chars": 0
+    },
+    "painel_aberto_pelo_modulo": false,
+    "ultimo_fecho": null,
+    "paineis": [
+      {
+        "id": "parentView",
+        "w": 0,
+        "h": 0,
+        "visivel": false,
+        "chars": 38517
+      },
+      {
+        "id": "teacherView",
+        "w": 0,
+        "h": 0,
+        "visivel": false,
+        "chars": 0
+      },
+      {
+        "id": "studentView",
+        "w": 0,
+        "h": 0,
+        "visivel": false,
+        "chars": 0
+      },
+      {
+        "id": "adminView",
+        "w": 1115,
+        "h": 15419,
+        "visivel": true,
+        "chars": 147385
+      },
+      {
+        "id": "directorView",
+        "w": 0,
+        "h": 0,
+        "visivel": false,
+        "chars": 0
+      },
+      {
+        "id": "coordinatorView",
+        "w": 0,
+        "h": 0,
+        "visivel": false,
+        "chars": 931
+      },
+      {
+        "id": "secretaryView",
+        "w": 0,
+        "h": 0,
+        "visivel": false,
+        "chars": 0
+      },
+      {
+        "id": "monitorView",
+        "w": 0,
+        "h": 0,
+        "visivel": false,
+        "chars": 0
+      },
+      {
+        "id": "gatekeeperView",
+        "w": 0,
+        "h": 0,
+        "visivel": false,
+        "chars": 0
+      },
+      {
+        "id": "aeeView",
+        "w": 0,
+        "h": 0,
+        "visivel": false,
+        "chars": 0
+      },
+      {
+        "id": "psychologyView",
+        "w": 0,
+        "h": 0,
+        "visivel": false,
+        "chars": 0
+      },
+      {
+        "id": "multiprofessionalView",
+        "w": 0,
+        "h": 0,
+        "visivel": false,
+        "chars": 0
+      },
+      {
+        "id": "resultsLearningView",
+        "w": 0,
+        "h": 0,
+        "visivel": false,
+        "chars": 0
+      },
+      {
+        "id": "supportView",
+        "w": 0,
+        "h": 0,
+        "visivel": false,
+        "chars": 0
+      },
+      {
+        "id": "healthyFoodView",
+        "w": 0,
+        "h": 0,
+        "visivel": false,
+        "chars": 0
+      },
+      {
+        "id": "readingLibraryView",
+        "w": 0,
+        "h": 0,
+        "visivel": false,
+        "chars": 0
+      },
+      {
+        "id": "activityCenterView",
+        "w": 0,
+        "h": 0,
+        "visivel": false,
+        "chars": 0
+      },
+      {
+        "id": "platformLearnView",
+        "w": 0,
+        "h": 0,
+        "visivel": false,
+        "chars": 0
+      },
+      {
+        "id": "platformEvolveView",
+        "w": 0,
+        "h": 0,
+        "visivel": false,
+        "chars": 0
+      },
+      {
+        "id": "platformSchoolView",
+        "w": 0,
+        "h": 0,
+        "visivel": false,
+        "chars": 0
+      },
+      {
+        "id": "platformSpaceView",
+        "w": 0,
+        "h": 0,
+        "visivel": false,
+        "chars": 0
+      },
+      {
+        "id": "internalChatView",
+        "w": 0,
+        "h": 0,
+        "visivel": false,
+        "chars": 0
+      },
+      {
+        "id": "bfrNotificationsView",
+        "w": 0,
+        "h": 0,
+        "visivel": false,
+        "chars": 0
+      },
+      {
+        "id": "bfrReportsView",
+        "w": 0,
+        "h": 0,
+        "visivel": false,
+        "chars": 0
+      },
+      {
+        "id": "bfrContentHubView",
+        "w": 0,
+        "h": 0,
+        "visivel": false,
+        "chars": 0
+      },
+      {
+        "id": "schoolGamesView",
+        "w": 0,
+        "h": 0,
+        "visivel": false,
+        "chars": 0
+      },
+      {
+        "id": "bfrCommunicationView",
+        "w": 0,
+        "h": 0,
+        "visivel": false,
+        "chars": 0
+      },
+      {
+        "id": "bfrMunicipalView",
+        "w": 0,
+        "h": 0,
+        "visivel": false,
+        "chars": 0
+      }
+    ],
+    "paineis_visiveis": [
+      "adminView(147385B)"
+    ],
+    "navs": [
+      {
+        "w": 192,
+        "h": 56,
+        "oculto_pela_classe": false,
+        "display": "flex",
+        "munVista": "dentro"
+      },
+      {
+        "w": 0,
+        "h": 0,
+        "oculto_pela_classe": false,
+        "display": "inline-block",
+        "munVista": "dentro"
+      }
+    ],
+    "entrada_visiveis": 1,
+    "mapa_vivo": {
+      "parent": false,
+      "student": false,
+      "teacher": false,
+      "coordinator": false,
+      "admin": true,
+      "director": false,
+      "monitor": false,
+      "gatekeeper": false,
+      "secretary": false,
+      "aee": false,
+      "psychology": false,
+      "multiprofessional": false,
+      "sports_operator": false,
+      "education_supervisor": true
+    }
+  },
+  "aberto_antes": {
+    "clique": {
+      "clicado": true,
+      "e_o_proprio": true
+    },
+    "s": {
+      "rotulo_persona": "Admin",
+      "active_view": "admin",
+      "active_section": "secretaria-municipal",
+      "painel": {
+        "display": "block",
+        "oculto_pela_classe": false,
+        "abas": 10,
+        "chars": 1819
+      },
+      "painel_aberto_pelo_modulo": true,
+      "ultimo_fecho": null,
+      "paineis": [
+        {
+          "id": "parentView",
+          "w": 0,
+          "h": 0,
+          "visivel": false,
+          "chars": 38517
+        },
+        {
+          "id": "teacherView",
+          "w": 0,
+          "h": 0,
+          "visivel": false,
+          "chars": 0
+        },
+        {
+          "id": "studentView",
+          "w": 0,
+          "h": 0,
+          "visivel": false,
+          "chars": 0
+        },
+        {
+          "id": "adminView",
+          "w": 1115,
+          "h": 18988,
+          "visivel": true,
+          "chars": 151020
+        },
+        {
+          "id": "directorView",
+          "w": 0,
+          "h": 0,
+          "visivel": false,
+          "chars": 0
+        },
+        {
+          "id": "coordinatorView",
+          "w": 0,
+          "h": 0,
+          "visivel": false,
+          "chars": 3912
+        },
+        {
+          "id": "secretaryView",
+          "w": 0,
+          "h": 0,
+          "visivel": false,
+          "chars": 0
+        },
+        {
+          "id": "monitorView",
+          "w": 0,
+          "h": 0,
+          "visivel": false,
+          "chars": 0
+        },
+        {
+          "id": "gatekeeperView",
+          "w": 0,
+          "h": 0,
+          "visivel": false,
+          "chars": 0
+        },
+        {
+          "id": "aeeView",
+          "w": 0,
+          "h": 0,
+          "visivel": false,
+          "chars": 3982
+        },
+        {
+          "id": "psychologyView",
+          "w": 0,
+          "h": 0,
+          "visivel": false,
+          "chars": 0
+        },
+        {
+          "id": "multiprofessionalView",
+          "w": 0,
+          "h": 0,
+          "visivel": false,
+          "chars": 0
+        },
+        {
+          "id": "resultsLearningView",
+          "w": 0,
+          "h": 0,
+          "visivel": false,
+          "chars": 0
+        },
+        {
+          "id": "supportView",
+          "w": 0,
+          "h": 0,
+          "visivel": false,
+          "chars": 0
+        },
+        {
+          "id": "healthyFoodView",
+          "w": 0,
+          "h": 0,
+          "visivel": false,
+          "chars": 0
+        },
+        {
+          "id": "readingLibraryView",
+          "w": 0,
+          "h": 0,
+          "visivel": false,
+          "chars": 0
+        },
+        {
+          "id": "activityCenterView",
+          "w": 0,
+          "h": 0,
+          "visivel": false,
+          "chars": 0
+        },
+        {
+          "id": "platformLearnView",
+          "w": 0,
+          "h": 0,
+          "visivel": false,
+          "chars": 0
+        },
+        {
+          "id": "platformEvolveView",
+          "w": 0,
+          "h": 0,
+          "visivel": false,
+          "chars": 0
+        },
+        {
+          "id": "platformSchoolView",
+          "w": 0,
+          "h": 0,
+          "visivel": false,
+          "chars": 0
+        },
+        {
+          "id": "platformSpaceView",
+          "w": 0,
+          "h": 0,
+          "visivel": false,
+          "chars": 0
+        },
+        {
+          "id": "internalChatView",
+          "w": 0,
+          "h": 0,
+          "visivel": false,
+          "chars": 0
+        },
+        {
+          "id": "bfrNotificationsView",
+          "w": 0,
+          "h": 0,
+          "visivel": false,
+          "chars": 0
+        },
+        {
+          "id": "bfrReportsView",
+          "w": 0,
+          "h": 0,
+          "visivel": false,
+          "chars": 0
+        },
+        {
+          "id": "bfrContentHubView",
+          "w": 0,
+          "h": 0,
+          "visivel": false,
+          "chars": 0
+        },
+        {
+          "id": "schoolGamesView",
+          "w": 0,
+          "h": 0,
+          "visivel": false,
+          "chars": 0
+        },
+        {
+          "id": "bfrCommunicationView",
+          "w": 0,
+          "h": 0,
+          "visivel": false,
+          "chars": 0
+        },
+        {
+          "id": "bfrMunicipalView",
+          "w": 1115,
+          "h": 1118,
+          "visivel": true,
+          "chars": 1819
+        }
+      ],
+      "paineis_visiveis": [
+        "adminView(151020B)",
+        "bfrMunicipalView(1819B)"
+      ],
+      "navs": [
+        {
+          "w": 192,
+          "h": 56,
+          "oculto_pela_classe": false,
+          "display": "flex",
+          "munVista": "dentro"
+        },
+        {
+          "w": 0,
+          "h": 0,
+          "oculto_pela_classe": false,
+          "display": "inline-block",
+          "munVista": "dentro"
+        }
+      ],
+      "entrada_visiveis": 1,
+      "mapa_vivo": {
+        "parent": false,
+        "student": false,
+        "teacher": false,
+        "coordinator": false,
+        "admin": true,
+        "director": false,
+        "monitor": false,
+        "gatekeeper": false,
+        "secretary": false,
+        "aee": false,
+        "psychology": false,
+        "multiprofessional": false,
+        "sports_operator": false,
+        "education_supervisor": true
+      }
+    }
+  },
+  "trocas": [
+    {
+      "rotulo": "Direção",
+      "active_view": "director",
+      "active_section": "inicio",
+      "painel_antes_da_troca": {
+        "display": "block",
+        "oculto_pela_classe": false,
+        "abas": 10,
+        "chars": 2123
+      },
+      "aberto_antes_da_troca": true,
+      "painel": {
+        "display": "none",
+        "oculto_pela_classe": true,
+        "abas": 10,
+        "chars": 2061
+      },
+      "painel_aberto_pelo_modulo": false,
+      "ultimo_fecho": {
+        "fechado": true,
+        "destino": "inicio",
+        "motivo": "vista fora do mapa com painel aberto"
+      },
+      "paineis_visiveis": [
+        "adminView(141798B)",
+        "directorView(520B)"
+      ],
+      "alguma_coisa_pintada": true,
+      "destino_esperado_dos_bytes": "inicio",
+      "entrada_visiveis": 0,
+      "dentro_do_mapa": false,
+      "mapa_vivo_com_sect": "admin,education_supervisor"
+    },
+    {
+      "rotulo": "Pais",
+      "active_view": "parent",
+      "active_section": "inicio",
+      "painel_antes_da_troca": {
+        "display": "block",
+        "oculto_pela_classe": false,
+        "abas": 10,
+        "chars": 2123
+      },
+      "aberto_antes_da_troca": true,
+      "painel": {
+        "display": "none",
+        "oculto_pela_classe": true,
+        "abas": 10,
+        "chars": 2061
+      },
+      "painel_aberto_pelo_modulo": false,
+      "ultimo_fecho": {
+        "fechado": true,
+        "destino": "inicio",
+        "motivo": "vista fora do mapa com painel aberto"
+      },
+      "paineis_visiveis": [
+        "parentView(1138B)"
+      ],
+      "alguma_coisa_pintada": true,
+      "destino_esperado_dos_bytes": "inicio",
+      "entrada_visiveis": 0,
+      "dentro_do_mapa": false,
+      "mapa_vivo_com_sect": "admin,education_supervisor"
+    },
+    {
+      "rotulo": "Aluno",
+      "active_view": "student",
+      "active_section": "inicio",
+      "painel_antes_da_troca": {
+        "display": "block",
+        "oculto_pela_classe": false,
+        "abas": 10,
+        "chars": 2123
+      },
+      "aberto_antes_da_troca": true,
+      "painel": {
+        "display": "none",
+        "oculto_pela_classe": true,
+        "abas": 10,
+        "chars": 2061
+      },
+      "painel_aberto_pelo_modulo": false,
+      "ultimo_fecho": {
+        "fechado": true,
+        "destino": "inicio",
+        "motivo": "vista fora do mapa com painel aberto"
+      },
+      "paineis_visiveis": [
+        "studentView(1278B)",
+        "adminView(141815B)"
+      ],
+      "alguma_coisa_pintada": true,
+      "destino_esperado_dos_bytes": "inicio",
+      "entrada_visiveis": 0,
+      "dentro_do_mapa": false,
+      "mapa_vivo_com_sect": "admin,education_supervisor"
+    },
+    {
+      "rotulo": "Professor",
+      "active_view": "teacher",
+      "active_section": "professor-inicio",
+      "painel_antes_da_troca": {
+        "display": "block",
+        "oculto_pela_classe": false,
+        "abas": 10,
+        "chars": 2123
+      },
+      "aberto_antes_da_troca": true,
+      "painel": {
+        "display": "none",
+        "oculto_pela_classe": true,
+        "abas": 10,
+        "chars": 2061
+      },
+      "painel_aberto_pelo_modulo": false,
+      "ultimo_fecho": {
+        "fechado": true,
+        "destino": "inicio",
+        "motivo": "vista fora do mapa com painel aberto"
+      },
+      "paineis_visiveis": [
+        "teacherView(714B)"
+      ],
+      "alguma_coisa_pintada": true,
+      "destino_esperado_dos_bytes": "professor-inicio",
+      "entrada_visiveis": 0,
+      "dentro_do_mapa": false,
+      "mapa_vivo_com_sect": "admin,education_supervisor"
+    },
+    {
+      "rotulo": "Coordenação",
+      "active_view": "coordinator",
+      "active_section": "inicio",
+      "painel_antes_da_troca": {
+        "display": "block",
+        "oculto_pela_classe": false,
+        "abas": 10,
+        "chars": 2123
+      },
+      "aberto_antes_da_troca": true,
+      "painel": {
+        "display": "none",
+        "oculto_pela_classe": true,
+        "abas": 10,
+        "chars": 2061
+      },
+      "painel_aberto_pelo_modulo": false,
+      "ultimo_fecho": {
+        "fechado": true,
+        "destino": "inicio",
+        "motivo": "vista fora do mapa com painel aberto"
+      },
+      "paineis_visiveis": [
+        "adminView(143173B)",
+        "coordinatorView(4799B)"
+      ],
+      "alguma_coisa_pintada": true,
+      "destino_esperado_dos_bytes": "inicio",
+      "entrada_visiveis": 0,
+      "dentro_do_mapa": false,
+      "mapa_vivo_com_sect": "admin,education_supervisor"
+    },
+    {
+      "rotulo": "Secretaria",
+      "active_view": "secretary",
+      "active_section": "inicio",
+      "painel_antes_da_troca": {
+        "display": "block",
+        "oculto_pela_classe": false,
+        "abas": 10,
+        "chars": 2123
+      },
+      "aberto_antes_da_troca": true,
+      "painel": {
+        "display": "none",
+        "oculto_pela_classe": true,
+        "abas": 10,
+        "chars": 2061
+      },
+      "painel_aberto_pelo_modulo": false,
+      "ultimo_fecho": {
+        "fechado": true,
+        "destino": "inicio",
+        "motivo": "vista fora do mapa com painel aberto"
+      },
+      "paineis_visiveis": [
+        "adminView(143173B)",
+        "secretaryView(2132B)"
+      ],
+      "alguma_coisa_pintada": true,
+      "destino_esperado_dos_bytes": "inicio",
+      "entrada_visiveis": 0,
+      "dentro_do_mapa": false,
+      "mapa_vivo_com_sect": "admin,education_supervisor"
+    },
+    {
+      "rotulo": "Monitor",
+      "active_view": "monitor",
+      "active_section": "inicio",
+      "painel_antes_da_troca": {
+        "display": "block",
+        "oculto_pela_classe": false,
+        "abas": 10,
+        "chars": 2123
+      },
+      "aberto_antes_da_troca": true,
+      "painel": {
+        "display": "none",
+        "oculto_pela_classe": true,
+        "abas": 10,
+        "chars": 2061
+      },
+      "painel_aberto_pelo_modulo": false,
+      "ultimo_fecho": {
+        "fechado": true,
+        "destino": "inicio",
+        "motivo": "vista fora do mapa com painel aberto"
+      },
+      "paineis_visiveis": [
+        "adminView(143173B)",
+        "monitorView(2785B)"
+      ],
+      "alguma_coisa_pintada": true,
+      "destino_esperado_dos_bytes": "inicio",
+      "entrada_visiveis": 0,
+      "dentro_do_mapa": false,
+      "mapa_vivo_com_sect": "admin,education_supervisor"
+    },
+    {
+      "rotulo": "AEE",
+      "active_view": "aee",
+      "active_section": "inicio",
+      "painel_antes_da_troca": {
+        "display": "block",
+        "oculto_pela_classe": false,
+        "abas": 10,
+        "chars": 2123
+      },
+      "aberto_antes_da_troca": true,
+      "painel": {
+        "display": "none",
+        "oculto_pela_classe": true,
+        "abas": 10,
+        "chars": 2061
+      },
+      "painel_aberto_pelo_modulo": false,
+      "ultimo_fecho": {
+        "fechado": true,
+        "destino": "inicio",
+        "motivo": "vista fora do mapa com painel aberto"
+      },
+      "paineis_visiveis": [
+        "adminView(143173B)",
+        "aeeView(4916B)"
+      ],
+      "alguma_coisa_pintada": true,
+      "destino_esperado_dos_bytes": "inicio",
+      "entrada_visiveis": 0,
+      "dentro_do_mapa": false,
+      "mapa_vivo_com_sect": "admin,education_supervisor"
+    },
+    {
+      "rotulo": "Portaria",
+      "active_view": "gatekeeper",
+      "active_section": "inicio",
+      "painel_antes_da_troca": {
+        "display": "block",
+        "oculto_pela_classe": false,
+        "abas": 10,
+        "chars": 2123
+      },
+      "aberto_antes_da_troca": true,
+      "painel": {
+        "display": "none",
+        "oculto_pela_classe": true,
+        "abas": 10,
+        "chars": 2061
+      },
+      "painel_aberto_pelo_modulo": false,
+      "ultimo_fecho": {
+        "fechado": true,
+        "destino": "inicio",
+        "motivo": "vista fora do mapa com painel aberto"
+      },
+      "paineis_visiveis": [
+        "adminView(143173B)",
+        "gatekeeperView(1892B)"
+      ],
+      "alguma_coisa_pintada": true,
+      "destino_esperado_dos_bytes": "inicio",
+      "entrada_visiveis": 0,
+      "dentro_do_mapa": false,
+      "mapa_vivo_com_sect": "admin,education_supervisor"
+    }
+  ],
+  "sem_troca": {
+    "antes": {
+      "rotulo_persona": "Admin",
+      "active_view": "admin",
+      "active_section": "secretaria-municipal",
+      "painel": {
+        "display": "block",
+        "oculto_pela_classe": false,
+        "abas": 10,
+        "chars": 2123
+      },
+      "painel_aberto_pelo_modulo": true,
+      "ultimo_fecho": {
+        "fechado": true,
+        "destino": "inicio",
+        "motivo": "vista fora do mapa com painel aberto"
+      },
+      "paineis": [
+        {
+          "id": "parentView",
+          "w": 0,
+          "h": 0,
+          "visivel": false,
+          "chars": 44028
+        },
+        {
+          "id": "teacherView",
+          "w": 0,
+          "h": 0,
+          "visivel": false,
+          "chars": 75852
+        },
+        {
+          "id": "studentView",
+          "w": 0,
+          "h": 0,
+          "visivel": false,
+          "chars": 46471
+        },
+        {
+          "id": "adminView",
+          "w": 1115,
+          "h": 21730,
+          "visivel": true,
+          "chars": 153890
+        },
+        {
+          "id": "directorView",
+          "w": 0,
+          "h": 0,
+          "visivel": false,
+          "chars": 40586
+        },
+        {
+          "id": "coordinatorView",
+          "w": 0,
+          "h": 0,
+          "visivel": false,
+          "chars": 7672
+        },
+        {
+          "id": "secretaryView",
+          "w": 0,
+          "h": 0,
+          "visivel": false,
+          "chars": 61104
+        },
+        {
+          "id": "monitorView",
+          "w": 0,
+          "h": 0,
+          "visivel": false,
+          "chars": 5410
+        },
+        {
+          "id": "gatekeeperView",
+          "w": 0,
+          "h": 0,
+          "visivel": false,
+          "chars": 5657
+        },
+        {
+          "id": "aeeView",
+          "w": 0,
+          "h": 0,
+          "visivel": false,
+          "chars": 3805
+        },
+        {
+          "id": "psychologyView",
+          "w": 0,
+          "h": 0,
+          "visivel": false,
+          "chars": 0
+        },
+        {
+          "id": "multiprofessionalView",
+          "w": 0,
+          "h": 0,
+          "visivel": false,
+          "chars": 0
+        },
+        {
+          "id": "resultsLearningView",
+          "w": 0,
+          "h": 0,
+          "visivel": false,
+          "chars": 0
+        },
+        {
+          "id": "supportView",
+          "w": 0,
+          "h": 0,
+          "visivel": false,
+          "chars": 0
+        },
+        {
+          "id": "healthyFoodView",
+          "w": 0,
+          "h": 0,
+          "visivel": false,
+          "chars": 0
+        },
+        {
+          "id": "readingLibraryView",
+          "w": 0,
+          "h": 0,
+          "visivel": false,
+          "chars": 0
+        },
+        {
+          "id": "activityCenterView",
+          "w": 0,
+          "h": 0,
+          "visivel": false,
+          "chars": 0
+        },
+        {
+          "id": "platformLearnView",
+          "w": 0,
+          "h": 0,
+          "visivel": false,
+          "chars": 0
+        },
+        {
+          "id": "platformEvolveView",
+          "w": 0,
+          "h": 0,
+          "visivel": false,
+          "chars": 0
+        },
+        {
+          "id": "platformSchoolView",
+          "w": 0,
+          "h": 0,
+          "visivel": false,
+          "chars": 0
+        },
+        {
+          "id": "platformSpaceView",
+          "w": 0,
+          "h": 0,
+          "visivel": false,
+          "chars": 0
+        },
+        {
+          "id": "internalChatView",
+          "w": 0,
+          "h": 0,
+          "visivel": false,
+          "chars": 0
+        },
+        {
+          "id": "bfrNotificationsView",
+          "w": 0,
+          "h": 0,
+          "visivel": false,
+          "chars": 0
+        },
+        {
+          "id": "bfrReportsView",
+          "w": 0,
+          "h": 0,
+          "visivel": false,
+          "chars": 0
+        },
+        {
+          "id": "bfrContentHubView",
+          "w": 0,
+          "h": 0,
+          "visivel": false,
+          "chars": 0
+        },
+        {
+          "id": "schoolGamesView",
+          "w": 0,
+          "h": 0,
+          "visivel": false,
+          "chars": 0
+        },
+        {
+          "id": "bfrCommunicationView",
+          "w": 0,
+          "h": 0,
+          "visivel": false,
+          "chars": 0
+        },
+        {
+          "id": "bfrMunicipalView",
+          "w": 1115,
+          "h": 1214,
+          "visivel": true,
+          "chars": 2123
+        }
+      ],
+      "paineis_visiveis": [
+        "adminView(153890B)",
+        "bfrMunicipalView(2123B)"
+      ],
+      "navs": [
+        {
+          "w": 192,
+          "h": 56,
+          "oculto_pela_classe": false,
+          "display": "flex",
+          "munVista": "dentro"
+        },
+        {
+          "w": 0,
+          "h": 0,
+          "oculto_pela_classe": false,
+          "display": "inline-block",
+          "munVista": "dentro"
+        }
+      ],
+      "entrada_visiveis": 1,
+      "mapa_vivo": {
+        "parent": false,
+        "student": false,
+        "teacher": false,
+        "coordinator": false,
+        "admin": true,
+        "director": false,
+        "monitor": false,
+        "gatekeeper": false,
+        "secretary": false,
+        "aee": false,
+        "psychology": false,
+        "multiprofessional": false,
+        "sports_operator": false,
+        "education_supervisor": true
+      }
+    },
+    "depois": {
+      "rotulo_persona": "Admin",
+      "active_view": "admin",
+      "active_section": "secretaria-municipal",
+      "painel": {
+        "display": "block",
+        "oculto_pela_classe": false,
+        "abas": 10,
+        "chars": 2123
+      },
+      "painel_aberto_pelo_modulo": true,
+      "ultimo_fecho": {
+        "fechado": true,
+        "destino": "inicio",
+        "motivo": "vista fora do mapa com painel aberto"
+      },
+      "paineis": [
+        {
+          "id": "parentView",
+          "w": 0,
+          "h": 0,
+          "visivel": false,
+          "chars": 44028
+        },
+        {
+          "id": "teacherView",
+          "w": 0,
+          "h": 0,
+          "visivel": false,
+          "chars": 75852
+        },
+        {
+          "id": "studentView",
+          "w": 0,
+          "h": 0,
+          "visivel": false,
+          "chars": 46471
+        },
+        {
+          "id": "adminView",
+          "w": 1115,
+          "h": 21730,
+          "visivel": true,
+          "chars": 153890
+        },
+        {
+          "id": "directorView",
+          "w": 0,
+          "h": 0,
+          "visivel": false,
+          "chars": 40586
+        },
+        {
+          "id": "coordinatorView",
+          "w": 0,
+          "h": 0,
+          "visivel": false,
+          "chars": 7672
+        },
+        {
+          "id": "secretaryView",
+          "w": 0,
+          "h": 0,
+          "visivel": false,
+          "chars": 61104
+        },
+        {
+          "id": "monitorView",
+          "w": 0,
+          "h": 0,
+          "visivel": false,
+          "chars": 5410
+        },
+        {
+          "id": "gatekeeperView",
+          "w": 0,
+          "h": 0,
+          "visivel": false,
+          "chars": 5657
+        },
+        {
+          "id": "aeeView",
+          "w": 0,
+          "h": 0,
+          "visivel": false,
+          "chars": 3805
+        },
+        {
+          "id": "psychologyView",
+          "w": 0,
+          "h": 0,
+          "visivel": false,
+          "chars": 0
+        },
+        {
+          "id": "multiprofessionalView",
+          "w": 0,
+          "h": 0,
+          "visivel": false,
+          "chars": 0
+        },
+        {
+          "id": "resultsLearningView",
+          "w": 0,
+          "h": 0,
+          "visivel": false,
+          "chars": 0
+        },
+        {
+          "id": "supportView",
+          "w": 0,
+          "h": 0,
+          "visivel": false,
+          "chars": 0
+        },
+        {
+          "id": "healthyFoodView",
+          "w": 0,
+          "h": 0,
+          "visivel": false,
+          "chars": 0
+        },
+        {
+          "id": "readingLibraryView",
+          "w": 0,
+          "h": 0,
+          "visivel": false,
+          "chars": 0
+        },
+        {
+          "id": "activityCenterView",
+          "w": 0,
+          "h": 0,
+          "visivel": false,
+          "chars": 0
+        },
+        {
+          "id": "platformLearnView",
+          "w": 0,
+          "h": 0,
+          "visivel": false,
+          "chars": 0
+        },
+        {
+          "id": "platformEvolveView",
+          "w": 0,
+          "h": 0,
+          "visivel": false,
+          "chars": 0
+        },
+        {
+          "id": "platformSchoolView",
+          "w": 0,
+          "h": 0,
+          "visivel": false,
+          "chars": 0
+        },
+        {
+          "id": "platformSpaceView",
+          "w": 0,
+          "h": 0,
+          "visivel": false,
+          "chars": 0
+        },
+        {
+          "id": "internalChatView",
+          "w": 0,
+          "h": 0,
+          "visivel": false,
+          "chars": 0
+        },
+        {
+          "id": "bfrNotificationsView",
+          "w": 0,
+          "h": 0,
+          "visivel": false,
+          "chars": 0
+        },
+        {
+          "id": "bfrReportsView",
+          "w": 0,
+          "h": 0,
+          "visivel": false,
+          "chars": 0
+        },
+        {
+          "id": "bfrContentHubView",
+          "w": 0,
+          "h": 0,
+          "visivel": false,
+          "chars": 0
+        },
+        {
+          "id": "schoolGamesView",
+          "w": 0,
+          "h": 0,
+          "visivel": false,
+          "chars": 0
+        },
+        {
+          "id": "bfrCommunicationView",
+          "w": 0,
+          "h": 0,
+          "visivel": false,
+          "chars": 0
+        },
+        {
+          "id": "bfrMunicipalView",
+          "w": 1115,
+          "h": 1214,
+          "visivel": true,
+          "chars": 2123
+        }
+      ],
+      "paineis_visiveis": [
+        "adminView(153890B)",
+        "bfrMunicipalView(2123B)"
+      ],
+      "navs": [
+        {
+          "w": 192,
+          "h": 56,
+          "oculto_pela_classe": false,
+          "display": "flex",
+          "munVista": "dentro"
+        },
+        {
+          "w": 0,
+          "h": 0,
+          "oculto_pela_classe": false,
+          "display": "inline-block",
+          "munVista": "dentro"
+        }
+      ],
+      "entrada_visiveis": 1,
+      "mapa_vivo": {
+        "parent": false,
+        "student": false,
+        "teacher": false,
+        "coordinator": false,
+        "admin": true,
+        "director": false,
+        "monitor": false,
+        "gatekeeper": false,
+        "secretary": false,
+        "aee": false,
+        "psychology": false,
+        "multiprofessional": false,
+        "sports_operator": false,
+        "education_supervisor": true
+      }
+    }
+  },
+  "saida": {
+    "rotulo_persona": "Direção",
+    "active_view": "director",
+    "active_section": "inicio",
+    "painel": {
+      "display": "none",
+      "oculto_pela_classe": true,
+      "abas": 10,
+      "chars": 2061
+    },
+    "painel_aberto_pelo_modulo": false,
+    "ultimo_fecho": {
+      "fechado": true,
+      "destino": "inicio",
+      "motivo": "vista fora do mapa com painel aberto"
+    },
+    "paineis": [
+      {
+        "id": "parentView",
+        "w": 0,
+        "h": 0,
+        "visivel": false,
+        "chars": 44028
+      },
+      {
+        "id": "teacherView",
+        "w": 0,
+        "h": 0,
+        "visivel": false,
+        "chars": 75852
+      },
+      {
+        "id": "studentView",
+        "w": 0,
+        "h": 0,
+        "visivel": false,
+        "chars": 46471
+      },
+      {
+        "id": "adminView",
+        "w": 1115,
+        "h": 15249,
+        "visivel": true,
+        "chars": 143173
+      },
+      {
+        "id": "directorView",
+        "w": 1115,
+        "h": 5624,
+        "visivel": true,
+        "chars": 4675
+      },
+      {
+        "id": "coordinatorView",
+        "w": 0,
+        "h": 0,
+        "visivel": false,
+        "chars": 7654
+      },
+      {
+        "id": "secretaryView",
+        "w": 0,
+        "h": 0,
+        "visivel": false,
+        "chars": 61104
+      },
+      {
+        "id": "monitorView",
+        "w": 0,
+        "h": 0,
+        "visivel": false,
+        "chars": 5410
+      },
+      {
+        "id": "gatekeeperView",
+        "w": 0,
+        "h": 0,
+        "visivel": false,
+        "chars": 5657
+      },
+      {
+        "id": "aeeView",
+        "w": 0,
+        "h": 0,
+        "visivel": false,
+        "chars": 3805
+      },
+      {
+        "id": "psychologyView",
+        "w": 0,
+        "h": 0,
+        "visivel": false,
+        "chars": 0
+      },
+      {
+        "id": "multiprofessionalView",
+        "w": 0,
+        "h": 0,
+        "visivel": false,
+        "chars": 0
+      },
+      {
+        "id": "resultsLearningView",
+        "w": 0,
+        "h": 0,
+        "visivel": false,
+        "chars": 0
+      },
+      {
+        "id": "supportView",
+        "w": 0,
+        "h": 0,
+        "visivel": false,
+        "chars": 0
+      },
+      {
+        "id": "healthyFoodView",
+        "w": 0,
+        "h": 0,
+        "visivel": false,
+        "chars": 0
+      },
+      {
+        "id": "readingLibraryView",
+        "w": 0,
+        "h": 0,
+        "visivel": false,
+        "chars": 0
+      },
+      {
+        "id": "activityCenterView",
+        "w": 0,
+        "h": 0,
+        "visivel": false,
+        "chars": 0
+      },
+      {
+        "id": "platformLearnView",
+        "w": 0,
+        "h": 0,
+        "visivel": false,
+        "chars": 0
+      },
+      {
+        "id": "platformEvolveView",
+        "w": 0,
+        "h": 0,
+        "visivel": false,
+        "chars": 0
+      },
+      {
+        "id": "platformSchoolView",
+        "w": 0,
+        "h": 0,
+        "visivel": false,
+        "chars": 0
+      },
+      {
+        "id": "platformSpaceView",
+        "w": 0,
+        "h": 0,
+        "visivel": false,
+        "chars": 0
+      },
+      {
+        "id": "internalChatView",
+        "w": 0,
+        "h": 0,
+        "visivel": false,
+        "chars": 0
+      },
+      {
+        "id": "bfrNotificationsView",
+        "w": 0,
+        "h": 0,
+        "visivel": false,
+        "chars": 0
+      },
+      {
+        "id": "bfrReportsView",
+        "w": 0,
+        "h": 0,
+        "visivel": false,
+        "chars": 0
+      },
+      {
+        "id": "bfrContentHubView",
+        "w": 0,
+        "h": 0,
+        "visivel": false,
+        "chars": 0
+      },
+      {
+        "id": "schoolGamesView",
+        "w": 0,
+        "h": 0,
+        "visivel": false,
+        "chars": 0
+      },
+      {
+        "id": "bfrCommunicationView",
+        "w": 0,
+        "h": 0,
+        "visivel": false,
+        "chars": 0
+      },
+      {
+        "id": "bfrMunicipalView",
+        "w": 0,
+        "h": 0,
+        "visivel": false,
+        "chars": 2061
+      }
+    ],
+    "paineis_visiveis": [
+      "adminView(143173B)",
+      "directorView(4675B)"
+    ],
+    "navs": [
+      {
+        "w": 0,
+        "h": 0,
+        "oculto_pela_classe": true,
+        "display": "none",
+        "munVista": "fora"
+      },
+      {
+        "w": 0,
+        "h": 0,
+        "oculto_pela_classe": true,
+        "display": "none",
+        "munVista": "fora"
+      }
+    ],
+    "entrada_visiveis": 0,
+    "mapa_vivo": {
+      "parent": false,
+      "student": false,
+      "teacher": false,
+      "coordinator": false,
+      "admin": true,
+      "director": false,
+      "monitor": false,
+      "gatekeeper": false,
+      "secretary": false,
+      "aee": false,
+      "psychology": false,
+      "multiprofessional": false,
+      "sports_operator": false,
+      "education_supervisor": true
+    }
+  },
+  "volta": {
+    "clique": {
+      "clicado": true,
+      "e_o_proprio": true
+    },
+    "s": {
+      "rotulo_persona": "Admin",
+      "active_view": "admin",
+      "active_section": "secretaria-municipal",
+      "painel": {
+        "display": "block",
+        "oculto_pela_classe": false,
+        "abas": 10,
+        "chars": 2123
+      },
+      "painel_aberto_pelo_modulo": true,
+      "ultimo_fecho": {
+        "fechado": true,
+        "destino": "inicio",
+        "motivo": "vista fora do mapa com painel aberto"
+      },
+      "paineis": [
+        {
+          "id": "parentView",
+          "w": 0,
+          "h": 0,
+          "visivel": false,
+          "chars": 44028
+        },
+        {
+          "id": "teacherView",
+          "w": 0,
+          "h": 0,
+          "visivel": false,
+          "chars": 75852
+        },
+        {
+          "id": "studentView",
+          "w": 0,
+          "h": 0,
+          "visivel": false,
+          "chars": 46471
+        },
+        {
+          "id": "adminView",
+          "w": 1115,
+          "h": 21730,
+          "visivel": true,
+          "chars": 153890
+        },
+        {
+          "id": "directorView",
+          "w": 0,
+          "h": 0,
+          "visivel": false,
+          "chars": 40586
+        },
+        {
+          "id": "coordinatorView",
+          "w": 0,
+          "h": 0,
+          "visivel": false,
+          "chars": 7672
+        },
+        {
+          "id": "secretaryView",
+          "w": 0,
+          "h": 0,
+          "visivel": false,
+          "chars": 61104
+        },
+        {
+          "id": "monitorView",
+          "w": 0,
+          "h": 0,
+          "visivel": false,
+          "chars": 5410
+        },
+        {
+          "id": "gatekeeperView",
+          "w": 0,
+          "h": 0,
+          "visivel": false,
+          "chars": 5657
+        },
+        {
+          "id": "aeeView",
+          "w": 0,
+          "h": 0,
+          "visivel": false,
+          "chars": 3805
+        },
+        {
+          "id": "psychologyView",
+          "w": 0,
+          "h": 0,
+          "visivel": false,
+          "chars": 0
+        },
+        {
+          "id": "multiprofessionalView",
+          "w": 0,
+          "h": 0,
+          "visivel": false,
+          "chars": 0
+        },
+        {
+          "id": "resultsLearningView",
+          "w": 0,
+          "h": 0,
+          "visivel": false,
+          "chars": 0
+        },
+        {
+          "id": "supportView",
+          "w": 0,
+          "h": 0,
+          "visivel": false,
+          "chars": 0
+        },
+        {
+          "id": "healthyFoodView",
+          "w": 0,
+          "h": 0,
+          "visivel": false,
+          "chars": 0
+        },
+        {
+          "id": "readingLibraryView",
+          "w": 0,
+          "h": 0,
+          "visivel": false,
+          "chars": 0
+        },
+        {
+          "id": "activityCenterView",
+          "w": 0,
+          "h": 0,
+          "visivel": false,
+          "chars": 0
+        },
+        {
+          "id": "platformLearnView",
+          "w": 0,
+          "h": 0,
+          "visivel": false,
+          "chars": 0
+        },
+        {
+          "id": "platformEvolveView",
+          "w": 0,
+          "h": 0,
+          "visivel": false,
+          "chars": 0
+        },
+        {
+          "id": "platformSchoolView",
+          "w": 0,
+          "h": 0,
+          "visivel": false,
+          "chars": 0
+        },
+        {
+          "id": "platformSpaceView",
+          "w": 0,
+          "h": 0,
+          "visivel": false,
+          "chars": 0
+        },
+        {
+          "id": "internalChatView",
+          "w": 0,
+          "h": 0,
+          "visivel": false,
+          "chars": 0
+        },
+        {
+          "id": "bfrNotificationsView",
+          "w": 0,
+          "h": 0,
+          "visivel": false,
+          "chars": 0
+        },
+        {
+          "id": "bfrReportsView",
+          "w": 0,
+          "h": 0,
+          "visivel": false,
+          "chars": 0
+        },
+        {
+          "id": "bfrContentHubView",
+          "w": 0,
+          "h": 0,
+          "visivel": false,
+          "chars": 0
+        },
+        {
+          "id": "schoolGamesView",
+          "w": 0,
+          "h": 0,
+          "visivel": false,
+          "chars": 0
+        },
+        {
+          "id": "bfrCommunicationView",
+          "w": 0,
+          "h": 0,
+          "visivel": false,
+          "chars": 0
+        },
+        {
+          "id": "bfrMunicipalView",
+          "w": 1115,
+          "h": 1214,
+          "visivel": true,
+          "chars": 2123
+        }
+      ],
+      "paineis_visiveis": [
+        "adminView(153890B)",
+        "bfrMunicipalView(2123B)"
+      ],
+      "navs": [
+        {
+          "w": 192,
+          "h": 56,
+          "oculto_pela_classe": false,
+          "display": "flex",
+          "munVista": "dentro"
+        },
+        {
+          "w": 0,
+          "h": 0,
+          "oculto_pela_classe": false,
+          "display": "inline-block",
+          "munVista": "dentro"
+        }
+      ],
+      "entrada_visiveis": 1,
+      "mapa_vivo": {
+        "parent": false,
+        "student": false,
+        "teacher": false,
+        "coordinator": false,
+        "admin": true,
+        "director": false,
+        "monitor": false,
+        "gatekeeper": false,
+        "secretary": false,
+        "aee": false,
+        "psychology": false,
+        "multiprofessional": false,
+        "sports_operator": false,
+        "education_supervisor": true
+      }
+    }
+  },
+  "o_que_este_verde_nao_autoriza": "Prova apresentacao na troca de vista nesta sessao de teste. Nao prova os numeros do painel, nao da acesso a nenhuma conta, nao autoriza DDL, concessoes municipais, o rpc como porta, nem reverter PEN-43/44. Publicar seja o que for de novo pede OK literal.",
+  "excecoes": [],
+  "falhas": [
+    "F6_o_fecho_nomeia_o_destino_que_os_bytes_dao_para_a_vista | [\"Direção vista=director fecho={\\\"fechado\\\":true,\\\"destino\\\":\\\"inicio\\\",\\\"motivo\\\":\\\"vista fora do mapa com painel aberto\\\"} bytes=inicio\",\"Pais vista=parent fecho={\\\"fechado\\\":true,\\\"destino\\\":\\\"inicio\\\",\\\"motivo\\\":\\\"vista fora do mapa com painel aberto\\\"} bytes=inicio\",\"Aluno vista=student fecho={\\\"fechado\\\":true,\\\"d"
+  ],
+  "veredito": "P105_PAINEL_FECHA_NA_TROCA_NO_AR_VERMELHO 1 de 14"
+}
