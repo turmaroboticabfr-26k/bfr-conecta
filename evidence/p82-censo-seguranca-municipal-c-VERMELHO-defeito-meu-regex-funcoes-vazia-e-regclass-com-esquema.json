@@ -1,0 +1,355 @@
+{
+  "programa": "scripts/p82-censo-seguranca-municipal.mjs",
+  "em": "2026-11-21T08:39:20.609Z",
+  "duracao_ms": 7963,
+  "pergunta": "quem decide hoje quem vê a Secretaria Municipal, o que o painel lê, e o que falta para o backend (e não o bundle) ser o porteiro?",
+  "metodo": "SELECT-only via o mesmo canal de censo do catálogo usado em PEN-43/PEN-44; as tabelas, o banner e o predicado são lidos dos bytes do ar publicado (mais novo diário), nunca dactilografados. Zero DDL, zero escrita, zero publicação.",
+  "ar": {
+    "diario": "audit-publicacao-v136.json",
+    "versao": "136",
+    "pasta_deploy": "worker-deploy-v136-secretaria-de-educacao",
+    "pasta_censada": "bfr-candidata-v136-secretaria-de-educacao",
+    "ficheiro": "index.html",
+    "md5_ar": "9e236a23eed978cf7c2a2743d449b307",
+    "md5_servido": "9e236a23eed978cf7c2a2743d449b307",
+    "bytes_modulo": 56446,
+    "sect": "secretaria-municipal",
+    "papeis_municipais_no_bundle": [
+      "admin",
+      "education_supervisor"
+    ]
+  },
+  "painel_le": {
+    "tabelas": [
+      "announcements",
+      "bfr_lesson_attendance",
+      "classes",
+      "grades",
+      "school_documents",
+      "schools",
+      "staff_schools",
+      "students",
+      "supervision_alerts",
+      "supervision_requests",
+      "supervision_responses"
+    ],
+    "rls_censo": [
+      {
+        "tabela": "announcements",
+        "rls": "true",
+        "forca": "false",
+        "politicas_hoje": "2"
+      },
+      {
+        "tabela": "bfr_lesson_attendance",
+        "rls": "true",
+        "forca": "false",
+        "politicas_hoje": "3"
+      },
+      {
+        "tabela": "classes",
+        "rls": "true",
+        "forca": "false",
+        "politicas_hoje": "8"
+      },
+      {
+        "tabela": "grades",
+        "rls": "true",
+        "forca": "false",
+        "politicas_hoje": "5"
+      },
+      {
+        "tabela": "school_documents",
+        "rls": "true",
+        "forca": "false",
+        "politicas_hoje": "4"
+      },
+      {
+        "tabela": "schools",
+        "rls": "true",
+        "forca": "false",
+        "politicas_hoje": "3"
+      },
+      {
+        "tabela": "staff_schools",
+        "rls": "true",
+        "forca": "false",
+        "politicas_hoje": "6"
+      },
+      {
+        "tabela": "students",
+        "rls": "true",
+        "forca": "false",
+        "politicas_hoje": "9"
+      },
+      {
+        "tabela": "supervision_alerts",
+        "rls": "true",
+        "forca": "false",
+        "politicas_hoje": "3"
+      },
+      {
+        "tabela": "supervision_requests",
+        "rls": "true",
+        "forca": "false",
+        "politicas_hoje": "13"
+      },
+      {
+        "tabela": "supervision_responses",
+        "rls": "true",
+        "forca": "false",
+        "politicas_hoje": "5"
+      }
+    ],
+    "politicas_nestas_mesas": 61
+  },
+  "bundle_decide_visibilidade": {
+    "linha_do_ramo_verde": "    if (sonda.executavel) return '<div class=\"mun-ok\"><strong>Controle no backend confirmado:</strong> ' + esc(sonda.nota) + '</div>';",
+    "exige_verdade": false,
+    "nota": "a visibilidade vem de PAPEIS_MUNICIPAIS no bundle; o backend é consultado mas não é a porta"
+  },
+  "banco": {
+    "funcoes_candidatas": [],
+    "funcoes_existentes": [
+      "bfr_is_municipal_authority|definer=true|dono=postgres"
+    ],
+    "graus_por_papel": [
+      {
+        "nome": "bfr_is_municipal_authority",
+        "papel": "anon",
+        "pode": "false"
+      },
+      {
+        "nome": "bfr_is_municipal_authority",
+        "papel": "authenticated",
+        "pode": "true"
+      },
+      {
+        "nome": "bfr_is_municipal_authority",
+        "papel": "service_role",
+        "pode": "true"
+      },
+      {
+        "nome": "bfr_is_municipal_authority",
+        "papel": "supabase_privileged_role",
+        "pode": "true"
+      }
+    ],
+    "predicado_corpo": "CREATE OR REPLACE FUNCTION public.bfr_is_municipal_authority()\n RETURNS boolean\n LANGUAGE sql\n STABLE SECURITY DEFINER\n SET search_path TO 'public'\nAS $function$\n  SELECT public.bfr_has_municipal_grant(NULL)\n      -- Retro-compatibilidade medida: o cargo `education_supervisor` já tinha políticas de rede inteira\n      -- em `schools` e `supervision_requests`; retirá-las em silêncio deixaria de funcionar o que hoje\n      -- funciona (contra §11.1/§11.6). Com a concessão nova, passa a ser possível ser municipal SEM\n      -- ser supervisor do enum.\n      OR COALESCE((SELECT true FROM public.profiles WHERE id = auth.uid()\n                   AND role = 'education_supervisor'::account_role), false);\n$function$\n",
+    "concessoes": null,
+    "regclasses": [
+      {
+        "mesa": "public.bfr_municipal_access_grants",
+        "existe": "bfr_municipal_access_grants"
+      },
+      {
+        "mesa": "public.bfr_municipal_audit",
+        "existe": "bfr_municipal_audit"
+      },
+      {
+        "mesa": "public.bfr_municipalities",
+        "existe": "bfr_municipalities"
+      },
+      {
+        "mesa": "public.bfr_school_key_map",
+        "existe": "bfr_school_key_map"
+      }
+    ]
+  },
+  "candidata_sm4": {
+    "ficheiro": "scripts/sm4-ddl-municipal-candidata.sql",
+    "bytes": 19855,
+    "politicas": [
+      "bfr_municipal_audit_read",
+      "bfr_municipal_audit_write",
+      "bfr_municipal_grants_grant",
+      "bfr_municipal_grants_revoke",
+      "bfr_municipal_grants_self_read",
+      "bfr_municipalities_insert",
+      "bfr_municipalities_read",
+      "bfr_municipalities_update",
+      "bfr_school_key_map_read",
+      "bfr_school_key_map_write",
+      "classes_municipal_read",
+      "schools_municipal_read",
+      "students_municipal_read",
+      "supervision_requests_municipal_read"
+    ],
+    "faltam_politicas": [
+      "bfr_municipal_audit_read",
+      "bfr_municipal_audit_write",
+      "bfr_municipal_grants_grant",
+      "bfr_municipal_grants_revoke",
+      "bfr_municipal_grants_self_read",
+      "bfr_municipalities_insert",
+      "bfr_municipalities_read",
+      "bfr_municipalities_update",
+      "bfr_school_key_map_read",
+      "bfr_school_key_map_write"
+    ],
+    "faltam_funcoes": [],
+    "mesas": [
+      "bfr_municipal_access_grants",
+      "bfr_municipal_audit",
+      "bfr_municipalities",
+      "bfr_school_key_map"
+    ]
+  },
+  "o_que_este_verde_nao_autoriza": "Nada. Esta peça não aplica DDL, não publica ar, não concede acesso a ninguém: mede o estado. A decisão de aplicar a candidata SM4 (PEN-41) ou de corrigir o banner do bundle continua a pedir OK literal.",
+  "portoes": [
+    {
+      "nome": "o_html_censado_e_byte_a_byte_o_ar_publicado",
+      "verde": true,
+      "detalhe": {
+        "diario": "audit-publicacao-v136.json",
+        "pasta_deploy": "worker-deploy-v136-secretaria-de-educacao",
+        "censado": "bfr-candidata-v136-secretaria-de-educacao/index.html",
+        "md5_censado": "9e236a23eed978cf7c2a2743d449b307",
+        "md5_servido": "9e236a23eed978cf7c2a2743d449b307"
+      }
+    },
+    {
+      "nome": "todas_as_mesas_lidas_pelo_ar_existem_no_censo_de_RLS",
+      "verde": true,
+      "detalhe": {
+        "lidas": [
+          "announcements",
+          "bfr_lesson_attendance",
+          "classes",
+          "grades",
+          "school_documents",
+          "schools",
+          "staff_schools",
+          "students",
+          "supervision_alerts",
+          "supervision_requests",
+          "supervision_responses"
+        ],
+        "sem_censo": []
+      }
+    },
+    {
+      "nome": "nenhuma_mesa_lida_pelo_painel_esta_com_RLS_desligado",
+      "verde": true,
+      "detalhe": {
+        "mesas_sem_rls": [],
+        "censo": [
+          "announcements:true",
+          "bfr_lesson_attendance:true",
+          "classes:true",
+          "grades:true",
+          "school_documents:true",
+          "schools:true",
+          "staff_schools:true",
+          "students:true",
+          "supervision_alerts:true",
+          "supervision_requests:true",
+          "supervision_responses:true"
+        ]
+      }
+    },
+    {
+      "nome": "o_predicado_municipal_existe_no_banco",
+      "verde": true,
+      "detalhe": {
+        "existentes": [
+          "bfr_is_municipal_authority"
+        ]
+      }
+    },
+    {
+      "nome": "o_predicado_nao_e_executavel_por_anon",
+      "verde": true,
+      "detalhe": {
+        "graus": [
+          {
+            "nome": "bfr_is_municipal_authority",
+            "papel": "anon",
+            "pode": "false"
+          },
+          {
+            "nome": "bfr_is_municipal_authority",
+            "papel": "authenticated",
+            "pode": "true"
+          },
+          {
+            "nome": "bfr_is_municipal_authority",
+            "papel": "service_role",
+            "pode": "true"
+          },
+          {
+            "nome": "bfr_is_municipal_authority",
+            "papel": "supabase_privileged_role",
+            "pode": "true"
+          }
+        ]
+      }
+    },
+    {
+      "nome": "a_tabela_de_concessoes_municipais_existe",
+      "verde": false,
+      "detalhe": {
+        "regclasses": [
+          {
+            "mesa": "public.bfr_municipal_access_grants",
+            "existe": "bfr_municipal_access_grants"
+          },
+          {
+            "mesa": "public.bfr_municipal_audit",
+            "existe": "bfr_municipal_audit"
+          },
+          {
+            "mesa": "public.bfr_municipalities",
+            "existe": "bfr_municipalities"
+          },
+          {
+            "mesa": "public.bfr_school_key_map",
+            "existe": "bfr_school_key_map"
+          }
+        ],
+        "mesa_procurada": "bfr_municipal_access_grants"
+      }
+    },
+    {
+      "nome": "nenhuma_funcao_candidata_SM4_falta_no_banco",
+      "verde": true,
+      "detalhe": {
+        "faltam": [],
+        "candidatas": 0
+      }
+    },
+    {
+      "nome": "nenhuma_politica_candidata_SM4_falta_no_banco",
+      "verde": false,
+      "detalhe": {
+        "faltam": [
+          "bfr_municipal_audit_read",
+          "bfr_municipal_audit_write",
+          "bfr_municipal_grants_grant",
+          "bfr_municipal_grants_revoke",
+          "bfr_municipal_grants_self_read",
+          "bfr_municipalities_insert",
+          "bfr_municipalities_read",
+          "bfr_municipalities_update",
+          "bfr_school_key_map_read",
+          "bfr_school_key_map_write"
+        ],
+        "candidatas": 14,
+        "existentes_na_superficie": 61
+      }
+    },
+    {
+      "nome": "o_banner_verde_do_ar_exige_verdade_do_backend",
+      "verde": false,
+      "detalhe": {
+        "linha": "    if (sonda.executavel) return '<div class=\"mun-ok\"><strong>Controle no backend confirmado:</strong> ' + esc(sonda.nota) + '</div>';"
+      }
+    }
+  ],
+  "falhas": [
+    "a_tabela_de_concessoes_municipais_existe | dado={\"regclasses\":[{\"mesa\":\"public.bfr_municipal_access_grants\",\"existe\":\"bfr_municipal_access_grants\"},{\"mesa\":\"public.bfr_municipal_audit\",\"existe\":\"bfr_municipal_audit\"},{\"mesa\":\"public.bfr_municipalities\",\"existe\":\"bfr_municipalities\"},{\"mesa\":\"public.bfr_school_key_map\",\"existe\":\"bfr_school_key_map",
+    "nenhuma_politica_candidata_SM4_falta_no_banco | dado={\"faltam\":[\"bfr_municipal_audit_read\",\"bfr_municipal_audit_write\",\"bfr_municipal_grants_grant\",\"bfr_municipal_grants_revoke\",\"bfr_municipal_grants_self_read\",\"bfr_municipalities_insert\",\"bfr_municipalities_read\",\"bfr_municipalities_update\",\"bfr_school_key_map_read\",\"bfr_school_key_map_write\"],\"candi",
+    "o_banner_verde_do_ar_exige_verdade_do_backend | dado={\"linha\":\"    if (sonda.executavel) return '<div class=\\\"mun-ok\\\"><strong>Controle no backend confirmado:</strong> ' + esc(sonda.nota) + '</div>';\"}"
+  ],
+  "veredito": "P82_CENSO_SEGURANCA_MUNICIPAL_VERMELHO 3"
+}

@@ -1,0 +1,431 @@
+{
+  "programa": "scripts/p83-escopo-leitura-municipal.mjs",
+  "em": "2026-11-21T08:44:51.099Z",
+  "duracao_ms": 7585,
+  "pergunta": "tirando a visibilidade do botão, o banco deixa mesmo ver só os dados da própria pessoa autorizada?",
+  "metodo": "SELECT-only sobre pg_policies/pg_class/agregados; as 11 mesas vêm dos bytes do ar publicado (bfr-candidata-v136-secretaria-de-educacao/index.html, md5 9e236a23eed9), nunca dactilografadas. Zero PII: só contagens e predicados de código. 0 DDL, 0 escrita, 0 publicação.",
+  "ar": {
+    "diario": "audit-publicacao-v136.json",
+    "versao": "136",
+    "pasta_censada": "bfr-candidata-v136-secretaria-de-educacao",
+    "md5_ar": "9e236a23eed978cf7c2a2743d449b307",
+    "bytes_modulo": 56446
+  },
+  "mesas_lidas": [
+    "announcements",
+    "bfr_lesson_attendance",
+    "classes",
+    "grades",
+    "school_documents",
+    "schools",
+    "staff_schools",
+    "students",
+    "supervision_alerts",
+    "supervision_requests",
+    "supervision_responses"
+  ],
+  "por_tabela": [
+    {
+      "tabela": "announcements",
+      "rls": "true",
+      "politicas_total": 2,
+      "politicas_de_leitura": 1,
+      "municipais": [],
+      "municipal_filtra_municipio": true,
+      "sem_filtro_por_identidade": [],
+      "quals_municipais": []
+    },
+    {
+      "tabela": "bfr_lesson_attendance",
+      "rls": "true",
+      "politicas_total": 3,
+      "politicas_de_leitura": 1,
+      "municipais": [],
+      "municipal_filtra_municipio": true,
+      "sem_filtro_por_identidade": [
+        "bfr_lesson_attendance_read | USING=(bfr_can_manage_lesson_attendance(class_id, subject, schedule_entry_id) AND (EXISTS ( SELE"
+      ],
+      "quals_municipais": []
+    },
+    {
+      "tabela": "classes",
+      "rls": "true",
+      "politicas_total": 8,
+      "politicas_de_leitura": 8,
+      "municipais": [
+        "classes_municipal_read:SELECT:permissivo=PERMISSIVE:papeis=authenticated"
+      ],
+      "municipal_filtra_municipio": true,
+      "sem_filtro_por_identidade": [
+        "classes_monitor_read | USING=is_monitor()",
+        "classes_supervisor_read | USING=bfr_is_education_supervisor()",
+        "director_dashboard_read_classes | USING=((\"current_role\"())::text = 'director'::text)"
+      ],
+      "quals_municipais": [
+        "classes_municipal_read -> bfr_school_in_municipal_scope(school_id)"
+      ]
+    },
+    {
+      "tabela": "grades",
+      "rls": "true",
+      "politicas_total": 5,
+      "politicas_de_leitura": 3,
+      "municipais": [],
+      "municipal_filtra_municipio": true,
+      "sem_filtro_por_identidade": [
+        "grades_supervisor_read | USING=bfr_is_education_supervisor()"
+      ],
+      "quals_municipais": []
+    },
+    {
+      "tabela": "school_documents",
+      "rls": "true",
+      "politicas_total": 4,
+      "politicas_de_leitura": 2,
+      "municipais": [],
+      "municipal_filtra_municipio": true,
+      "sem_filtro_por_identidade": [],
+      "quals_municipais": []
+    },
+    {
+      "tabela": "schools",
+      "rls": "true",
+      "politicas_total": 3,
+      "politicas_de_leitura": 3,
+      "municipais": [
+        "schools_municipal_read:SELECT:permissivo=PERMISSIVE:papeis=authenticated"
+      ],
+      "municipal_filtra_municipio": true,
+      "sem_filtro_por_identidade": [
+        "schools_platform_admin_read | USING=bfr_is_platform_admin()",
+        "schools_supervisor_read | USING=bfr_is_education_supervisor()"
+      ],
+      "quals_municipais": [
+        "schools_municipal_read -> bfr_school_in_municipal_scope(id)"
+      ]
+    },
+    {
+      "tabela": "staff_schools",
+      "rls": "true",
+      "politicas_total": 6,
+      "politicas_de_leitura": 2,
+      "municipais": [],
+      "municipal_filtra_municipio": true,
+      "sem_filtro_por_identidade": [
+        "staff_schools_developer_read | USING=is_developer()"
+      ],
+      "quals_municipais": []
+    },
+    {
+      "tabela": "students",
+      "rls": "true",
+      "politicas_total": 9,
+      "politicas_de_leitura": 6,
+      "municipais": [
+        "students_municipal_read:SELECT:permissivo=PERMISSIVE:papeis=authenticated"
+      ],
+      "municipal_filtra_municipio": true,
+      "sem_filtro_por_identidade": [
+        "director_dashboard_read_students | USING=((\"current_role\"())::text = 'director'::text)",
+        "students_monitor_read | USING=is_monitor()",
+        "students_supervisor_read | USING=bfr_is_education_supervisor()"
+      ],
+      "quals_municipais": [
+        "students_municipal_read -> bfr_school_in_municipal_scope(school_id)"
+      ]
+    },
+    {
+      "tabela": "supervision_alerts",
+      "rls": "true",
+      "politicas_total": 3,
+      "politicas_de_leitura": 1,
+      "municipais": [],
+      "municipal_filtra_municipio": true,
+      "sem_filtro_por_identidade": [],
+      "quals_municipais": []
+    },
+    {
+      "tabela": "supervision_requests",
+      "rls": "true",
+      "politicas_total": 13,
+      "politicas_de_leitura": 5,
+      "municipais": [
+        "supervision_requests_municipal_read:SELECT:permissivo=PERMISSIVE:papeis=authenticated"
+      ],
+      "municipal_filtra_municipio": true,
+      "sem_filtro_por_identidade": [
+        "supervision_requests_supervisor_read | USING=bfr_is_education_supervisor()"
+      ],
+      "quals_municipais": [
+        "supervision_requests_municipal_read -> (bfr_school_in_municipal_scope(school_id) OR bfr_school_in_own_school_scope(school_id))"
+      ]
+    },
+    {
+      "tabela": "supervision_responses",
+      "rls": "true",
+      "politicas_total": 5,
+      "politicas_de_leitura": 2,
+      "municipais": [],
+      "municipal_filtra_municipio": true,
+      "sem_filtro_por_identidade": [
+        "supervision_responses_supervisor_read | USING=bfr_is_education_supervisor()"
+      ],
+      "quals_municipais": []
+    }
+  ],
+  "mesas_sem_politica_municipal": [
+    "announcements",
+    "bfr_lesson_attendance",
+    "grades",
+    "school_documents",
+    "staff_schools",
+    "supervision_alerts",
+    "supervision_responses"
+  ],
+  "agregados": [
+    {
+      "tabela": "schools",
+      "linhas": "6"
+    },
+    {
+      "tabela": "municipalities",
+      "linhas": "1"
+    },
+    {
+      "tabela": "concessoes_ativas",
+      "linhas": "4"
+    },
+    {
+      "tabela": "concessoes_total",
+      "linhas": "4"
+    },
+    {
+      "tabela": "papeis_de_concessao_distintos",
+      "linhas": "4"
+    },
+    {
+      "tabela": "escolas_com_municipio",
+      "linhas": "0"
+    },
+    {
+      "tabela": "perfis",
+      "linhas": "28"
+    }
+  ],
+  "cargos_dos_perfis": [
+    {
+      "papel": "secretary",
+      "perfis": "4"
+    },
+    {
+      "papel": "developer",
+      "perfis": "3"
+    },
+    {
+      "papel": "aee",
+      "perfis": "2"
+    },
+    {
+      "papel": "pedagogical",
+      "perfis": "2"
+    },
+    {
+      "papel": "student",
+      "perfis": "2"
+    },
+    {
+      "papel": "coordinator",
+      "perfis": "2"
+    },
+    {
+      "papel": "director",
+      "perfis": "2"
+    },
+    {
+      "papel": "gatekeeper",
+      "perfis": "2"
+    },
+    {
+      "papel": "pending",
+      "perfis": "2"
+    },
+    {
+      "papel": "monitor",
+      "perfis": "2"
+    },
+    {
+      "papel": "social_work",
+      "perfis": "1"
+    },
+    {
+      "papel": "education_supervisor",
+      "perfis": "1"
+    },
+    {
+      "papel": "psychology",
+      "perfis": "1"
+    },
+    {
+      "papel": "sports_operator",
+      "perfis": "1"
+    },
+    {
+      "papel": "parent",
+      "perfis": "1"
+    }
+  ],
+  "papeis_de_concessao": [
+    {
+      "papel": "equipe_administrativa",
+      "linhas": "1",
+      "vivas": "1"
+    },
+    {
+      "papel": "gestor_autorizado",
+      "linhas": "1",
+      "vivas": "1"
+    },
+    {
+      "papel": "secretario_adjunto",
+      "linhas": "1",
+      "vivas": "1"
+    },
+    {
+      "papel": "secretario_municipal",
+      "linhas": "1",
+      "vivas": "1"
+    }
+  ],
+  "corpos": [
+    {
+      "nome": "bfr_has_municipal_grant",
+      "corpo": "CREATE OR REPLACE FUNCTION public.bfr_has_municipal_grant(p_municipality uuid)\n RETURNS boolean\n LANGUAGE sql\n STABLE SECURITY DEFINER\n SET search_path TO 'public'\nAS $function$\n  SELECT COALESCE((SELECT true FROM public.bfr_municipal_access_grants g\n                   WHERE g.profile_id = auth.uid() AND g.revoked_at IS NULL\n                     AND (p_municipality IS NULL OR g.municipality_id = p_municipality)), false);\n$function$\n"
+    },
+    {
+      "nome": "bfr_is_education_supervisor",
+      "corpo": "CREATE OR REPLACE FUNCTION public.bfr_is_education_supervisor()\n RETURNS boolean\n LANGUAGE sql\n STABLE SECURITY DEFINER\n SET search_path TO 'public'\nAS $function$\n  SELECT COALESCE(\n    (SELECT true FROM public.profiles \n     WHERE id = auth.uid() AND role = 'education_supervisor'::account_role),\n    false\n  );\n$function$\n"
+    }
+  ],
+  "o_que_este_verde_nao_autoriza": "Nada. Esta peça mede; não aplica DDL, não revoga, não publica, não concede. Mudar políticas ou o banner do bundle continua a pedir OK literal.",
+  "portoes": [
+    {
+      "nome": "todas_as_mesas_lidas_tem_rls_ligado",
+      "verde": true,
+      "detalhe": []
+    },
+    {
+      "nome": "nenhuma_politica_de_leitura_deixa_autenticated_ver_tudo_sem_filtro",
+      "verde": false,
+      "detalhe": {
+        "mesas": [
+          "bfr_lesson_attendance",
+          "classes",
+          "grades",
+          "schools",
+          "staff_schools",
+          "students",
+          "supervision_requests",
+          "supervision_responses"
+        ],
+        "detalhes": [
+          "bfr_lesson_attendance: bfr_lesson_attendance_read | USING=(bfr_can_manage_lesson_attendance(class_id, subject, schedule_entry_id) AND (EXISTS ( SELE",
+          "classes: classes_monitor_read | USING=is_monitor() || classes_supervisor_read | USING=bfr_is_education_supervisor() || director_dashboard_read_classes | USING=((\"current_role\"())::text = 'director'::text)",
+          "grades: grades_supervisor_read | USING=bfr_is_education_supervisor()",
+          "schools: schools_platform_admin_read | USING=bfr_is_platform_admin() || schools_supervisor_read | USING=bfr_is_education_supervisor()",
+          "staff_schools: staff_schools_developer_read | USING=is_developer()",
+          "students: director_dashboard_read_students | USING=((\"current_role\"())::text = 'director'::text) || students_monitor_read | USING=is_monitor() || students_supervisor_read | USING=bfr_is_education_supervisor()",
+          "supervision_requests: supervision_requests_supervisor_read | USING=bfr_is_education_supervisor()",
+          "supervision_responses: supervision_responses_supervisor_read | USING=bfr_is_education_supervisor()"
+        ]
+      }
+    },
+    {
+      "nome": "toda_politica_municipal_de_leitura_filtra_pelo_municipio",
+      "verde": true,
+      "detalhe": {
+        "mesas": [],
+        "quals": [
+          "classes: classes_municipal_read -> bfr_school_in_municipal_scope(school_id)",
+          "schools: schools_municipal_read -> bfr_school_in_municipal_scope(id)",
+          "students: students_municipal_read -> bfr_school_in_municipal_scope(school_id)",
+          "supervision_requests: supervision_requests_municipal_read -> (bfr_school_in_municipal_scope(school_id) OR bfr_school_in_own_school_scope(school_id))"
+        ]
+      }
+    },
+    {
+      "nome": "as_concessoes_ativas_estao_contadas_e_por_papel",
+      "verde": true,
+      "detalhe": {
+        "papeis_de_concessao": [
+          {
+            "papel": "equipe_administrativa",
+            "linhas": "1",
+            "vivas": "1"
+          },
+          {
+            "papel": "gestor_autorizado",
+            "linhas": "1",
+            "vivas": "1"
+          },
+          {
+            "papel": "secretario_adjunto",
+            "linhas": "1",
+            "vivas": "1"
+          },
+          {
+            "papel": "secretario_municipal",
+            "linhas": "1",
+            "vivas": "1"
+          }
+        ],
+        "agregados": [
+          {
+            "tabela": "schools",
+            "linhas": "6"
+          },
+          {
+            "tabela": "municipalities",
+            "linhas": "1"
+          },
+          {
+            "tabela": "concessoes_ativas",
+            "linhas": "4"
+          },
+          {
+            "tabela": "concessoes_total",
+            "linhas": "4"
+          },
+          {
+            "tabela": "papeis_de_concessao_distintos",
+            "linhas": "4"
+          },
+          {
+            "tabela": "escolas_com_municipio",
+            "linhas": "0"
+          },
+          {
+            "tabela": "perfis",
+            "linhas": "28"
+          }
+        ]
+      }
+    },
+    {
+      "nome": "nenhuma_concessao_ativa_aponta_para_papel_fora_do_esperado",
+      "verde": false,
+      "detalhe": {
+        "papeis": [
+          "equipe_administrativa=1vivas/1",
+          "gestor_autorizado=1vivas/1",
+          "secretario_adjunto=1vivas/1",
+          "secretario_municipal=1vivas/1"
+        ]
+      }
+    }
+  ],
+  "falhas": [
+    "nenhuma_politica_de_leitura_deixa_autenticated_ver_tudo_sem_filtro | {\"mesas\":[\"bfr_lesson_attendance\",\"classes\",\"grades\",\"schools\",\"staff_schools\",\"students\",\"supervision_requests\",\"supervision_responses\"],\"detalhes\":[\"bfr_lesson_attendance: bfr_lesson_attendance_read | USING=(bfr_can_manage_lesson_attendance(class_id, subject, schedule_entry_id) AND (EXISTS ( SELE\",\"classes: classes_m",
+    "nenhuma_concessao_ativa_aponta_para_papel_fora_do_esperado | {\"papeis\":[\"equipe_administrativa=1vivas/1\",\"gestor_autorizado=1vivas/1\",\"secretario_adjunto=1vivas/1\",\"secretario_municipal=1vivas/1\"]}"
+  ],
+  "veredito": "P83_ESCOPO_LEITURA_MUNICIPAL_VERMELHO 2"
+}
