@@ -119,9 +119,12 @@ const fichasDeDecisao = FORA_DO_INDICE_POR_DECISAO.map((d) => ({ caminho: d.cami
 // o contrário também se mede: nome no catálogo que nenhum registo declara é vermelho.
 const inList = (l) => l.map((x) => `'${x}'`).join(',');
 const nomesDe = (t) => [...t.matchAll(/CREATE\s+(?:OR\s+REPLACE\s+)?FUNCTION\s+(?:public\.)?([a-z0-9_]+)/gi)].map((m) => m[1]);
+// A família de prefixo não é fixa: as peças municipais começaram em `p73-` e a PEN-44 é `p74-`. Uma régua que
+// exige o prefixo do primeiro instrumento deixa sair da classe a peça mais recente, e o censo de `sem_registo`
+// passa a omiti-la sem que nada o diga — foi assim que a PEN-44 ficou fora desta contagem no primeiro fecho.
 const FICHEIROS_CANDIDATAS = readdirSync(join(REPO, 'scripts'))
-  .filter((n) => /^p73-pen\d+-ddl-candidata\.sql$/.test(n))
-  .map((n) => ({ peca: 'PEN-' + /^p73-pen(\d+)-/.exec(n)[1], caminho: 'scripts/' + n, texto: readFileSync(join(REPO, 'scripts', n), 'utf8') }))
+  .filter((n) => /^p7\d-pen\d+-ddl-candidata\.sql$/.test(n))
+  .map((n) => ({ peca: 'PEN-' + /^p7\d-pen(\d+)-/.exec(n)[1], caminho: 'scripts/' + n, texto: readFileSync(join(REPO, 'scripts', n), 'utf8') }))
   .sort((a, b) => Number(a.peca.slice(4)) - Number(b.peca.slice(4)));
 const REGISTOS_APLICACAO = (() => {
   const porPeca = {};
@@ -172,7 +175,11 @@ const v137 = JSON.parse(readFileSync(join(REPO, 'evidence/v137-gera-bundle-20-11
 const v138b = JSON.parse(readFileSync(join(REPO, 'evidence/v138-gera-bundle-20-11.json'), 'utf8'));
 const v138c = JSON.parse(readFileSync(join(REPO, 'evidence/v138-gera-candidata-20-11.json'), 'utf8'));
 
-const INPUTS_FECHO = ['scripts/p73-pen38-alcance-por-concessao-20-11.mjs', 'scripts/p73-pen38-preflight.mjs', 'scripts/p73-pen39-preflight.mjs', 'scripts/p73-pen41-preflight.mjs', 'scripts/p73-pen43-preflight.mjs', 'scripts/p73-municipal-etiqueta.mjs', 'scripts/p73-municipal-aplica-ddl.mjs', 'scripts/v136-pos-deploy.mjs', 'scripts/v137-pos-deploy.mjs', 'scripts/v138-gera-candidata.mjs', 'scripts/v138-gera-bundle.mjs', 'scripts/v138-pos-deploy.mjs', 'scripts/p73-pen43-gera-candidata.mjs', 'scripts/pacote-municipal-confere-pecas.mjs', RUNBOOK];
+const CAMINHOS_DA_TABELA_PECAS = (() => {
+  const t = readFileSync(join(REPO, 'scripts/p73-municipal-aplica-ddl.mjs'), 'utf8');
+  return [...new Set([...t.matchAll(/\b(?:pref|cand|rev):\s*'([^']+)'/g)].map((m) => m[1]))].sort();
+})();
+const INPUTS_FECHO = [...new Set(['scripts/p73-pen38-alcance-por-concessao-20-11.mjs', 'scripts/p73-pen38-preflight.mjs', 'scripts/p73-pen39-preflight.mjs', 'scripts/p73-pen41-preflight.mjs', 'scripts/p73-pen43-preflight.mjs', 'scripts/p73-municipal-etiqueta.mjs', 'scripts/p73-municipal-aplica-ddl.mjs', 'scripts/v136-pos-deploy.mjs', 'scripts/v137-pos-deploy.mjs', 'scripts/v138-gera-candidata.mjs', 'scripts/v138-gera-bundle.mjs', 'scripts/v138-pos-deploy.mjs', 'scripts/p73-pen43-gera-candidata.mjs', 'scripts/pacote-municipal-confere-pecas.mjs', RUNBOOK, ...CAMINHOS_DA_TABELA_PECAS])];
 
 const falhas = [];
 const portoes = [];

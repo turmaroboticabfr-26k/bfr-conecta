@@ -751,6 +751,143 @@ a banda de vazio» — as duas mudanças são independentes e cada uma pede o se
 isso lê a vista com 6 linhas (1 393 B) e os agregados com 1 linha cada. A `director` não foi medida nesta corrida: a
 cadeia de refresh está esgotada (HTTP 400) e re-mint é ação com OK literal próprio.
 
+### 2.10 · PEN-44 — fechar a entrada a `PUBLIC` nos 45 nomes que só por ela são executáveis por `anon` — CANDIDATA CERTIFICADA 21/11, NADA APLICADO
+
+**De onde vem o número, e por que não é o da frase do pedido.** O escopo escolhido foi «a candidata dos 27 via
+PUBLIC». Os 27 vêm da corrida de candidata da PEN-43 e contam os nomes em que o grau do `anon` vem *só* do `PUBLIC`
+(não há `anon=X` explícito). A alavanca desta peça é outra, e é ela que o SQL toca: a entrada `=X/postgres` na ACL.
+Medida pela pré-leitura do preflight no instante da corrida, e são **eixos distintos, não uma filtragem da lista
+pela anterior**: das 162 funções em `public`, 67 são executáveis por `anon` por qualquer via e 59 têm entrada a
+`PUBLIC` na ACL; **45** delas compõem o alvo desta peça e **14 ficam fora por `prorettype = trigger`** — um gatilho
+não é chamável por RPC e uma peça de graus não lhe mexe, e é essa a conta que fecha `fora_do_alvo: 14` com
+`nao_declarados: []`. Dos 45, **22** têm também `anon=X` explícito, e para esses a
+peça escreve um segundo `REVOKE … FROM anon`; sem essa segunda linha o grau sobreviveria pela entrada nominal, que é
+exatamente o erro que a PEN-43 tinha aprendido a não cometer.
+
+**Comandos, cada um com o artefacto que deixou.** A geradora e o preflight são os únicos caminhos, e ambos só lêem:
+
+```
+node scripts/p74-pen44-gera-candidata.mjs                      # P74_PEN44_CANDIDATA_OK 16/0 · 4 SELECT · 0 escrita
+node scripts/p74-pen44-preflight.mjs --selfteste               # P74_PEN44_PREFLIGHT_SELFTESTE_OK 12/0 · 0 banco
+node scripts/p74-pen44-preflight.mjs                           # modo candidata: P74_PEN44_PREFLIGHT_VERDE_CANDIDATA 18/0
+node scripts/p74-pen44-preflight.mjs --reversao                # P74_PEN44_PREFLIGHT_VERMELHO_3 (peça não aplicada)
+node scripts/p73-municipal-aplica-ddl.mjs --selfteste          # P73_MUNICIPAL_APLICA_SELFTESTE_OK 15/0
+```
+
+Corridas gravadas: geradora `evidence/p74-pen44-gera-candidata-21-11-c.json` (49 633 B,
+`4f48486c0925e8b94456cb1fbcaf37bf`) com o par anterior em `…-21-11b.json` (47 791 B) e o vermelho de contagem em
+`…-21-11a-VERMELHO-a-contagem-de-grau-contava-o-TO-anon-da-reversao-como-preservacao.json` (46 706 B); preflight de
+candidata `evidence/p74-pen44-preflight-candidata-21-11-e.json` (107 230 B, `aeca8c9ea27f1bf4884672c3501441d0`,
+8 935 ms, seis leituras declaradas e seis medidas, `nao_leitura: 0`) — corrida que corresponde ao instrumento hoje em
+pacote — e a corrida que a substituiu, `…-21-11-d.json` (107 230 B, `35c44aaa0323c3910d0776559ae35428`), fica como
+história; os dois vermelhos de reversão
+`…reversao-21-11-d-VERMELHO-estado_de_antes_anon_executa_os_45_nomes_e_a_entrada_public_continua_na_acl.json`
+(111 799 B) e `…reversao-21-11-rev20261121T040104Zr-VERMELHO-invocado-pelo-aplicador_a_peca_nao_esta_aplicada.json`
+(111 799 B) — o segundo é a corrida que o **aplicador** fez antes de recusar, e por isso tem o motivo no nome, porque
+sem ele os dois ficheiros seriam indistinguíveis byte a byte salvo o relógio. Os dois SQL: candidata
+`scripts/p74-pen44-ddl-candidata.sql` (17 835 B, `262e22e5a63fadc42204b7d8c5b985c1`) — 45 `REVOKE … FROM PUBLIC`, 22
+`REVOKE … FROM anon`, 45 `GRANT … TO` com os oito papéis, tudo entre `BEGIN;` e `COMMIT;` — e reversão
+`scripts/p74-pen44-ddl-reversao.sql` (16 574 B, `68c5b2f0e15dbc16bafde3f608f29dbf`), que devolve os 45 `GRANT … TO
+PUBLIC`, os 22 `GRANT … TO anon` e desfaz os 45 `GRANT` de preservação. Contagem de estrutura lida do preflight, com
+`statement_fora_dos_graus: 0` dos dois lados.
+
+**A avaria encontrada a meio, e o que ela custou.** O predicado que exclui as famílias de plataforma da enumeração
+estava escrito `not like 'pg_%'` sem `ESCAPE`. Em `LIKE`, `_` é curinga de um caractere, pelo que a cláusula não
+omitia só a família `pg_*`: omitia também `pgbouncer`, que é um login real e um dos papéis que a preservação tem de
+cobrir. O que o detectou não foi o meu olho nem um teste à lista: foi a segunda via de enumeração — `pg_roles`
+inteiro filtrado por `rolname.startsWith('pg_')` em JavaScript, onde `_` é literal — a divergir da primeira
+exactamente numa palavra, `discordam_onde_o_curinga_mente: ["pgbouncer"]`, com os dois canais registrados lado a
+lado em `papeis` (`lidos: 16`, `no_catalogo_inteiro: 31`, `esperados_sem_familias_pg: 16`). A régua ficou com dente
+demonstrável dentro da corrida: `comoLike` é uma função pura que reimplementa as três regras do `LIKE` (curinga `%`,
+curinga `_`, `\x` literal) e o fixture exige `sem_escape_devora_pgbouncer === true` **e**
+`escapado_so_omite_a_familia === true` — uma cláusula que só pudesse ser verde do lado do escape não teria
+negativos. Consequência material: **os `7 papéis / 315 pares` certificados pelas corridas `21-11a` e `21-11b` estão
+substituídos por `8 papéis / 360 pares`**, os dois SQL foram re-gerados, e o par substituído não se apagou — ficou
+como `scripts/ANTERIOR-p74-pen44-ddl-candidata-so-sete-papeis-preservados-21-11.sql` (17 340 B,
+`b6019f5a37a67a2437dd1ff2f37842ef`) e `…-reversao-so-sete-papeis-preservados-21-11.sql` (16 079 B,
+`5735ec1c366f39ce97f5cf71bc1bd068`), com a razão no nome em vez de um comentário no corpo.
+
+**O segundo defeito era meu, e só o portão de índice o via.** Ao correr `scripts/portao-indice.mjs` sobre o índice já
+com os nomes acima, o varredor de credenciais chumbou o próprio preflight (`NAO_COBERTA scripts/p74-pen44-preflight.mjs`
+com `n=1` e um literal de sete caracteres). Classifiquei antes de assumir: reproduzi o padrão do varredor sobre o
+ficheiro, a expressão devolveu **um** casamento, na linha do `chave_catalogo` de uma entrada em que o rótulo termina
+em `chave`, vem um dois-pontos e vem um literal de aspas — a forma que o padrão lê como senha, e o valor era um
+marcador de ausência. Não alarguei o predicado nem escrevi exceção: re-escrevi a expressão com `||`, que é
+semanticamente igual porque aquele valor nunca é cadeia vazia, e a prova de igualdade não é a minha leitura — é a
+re-corrida. Offline `P74_PEN44_PREFLIGHT_SELFTESTE_OK 12/0`, ao vivo `P74_PEN44_PREFLIGHT_VERDE_CANDIDATA 18/0`, e as
+duas corridas comparadas campo a campo com os campos de corrida excluídos dão **uma** diferença, `contexto.pid`
+(1047550 contra 1049360), com os dois ficheiros de 107 230 B. O stdout do vermelho ficou em disco com o achado no
+nome: `evidence/portao-indice-21-11-VERMELHO-a-uma-adjacencia-de-rotulo-chave-com-dois-pontos-e-literal-de-sete-letras-no-preflight.txt`.
+Regra durável que daqui sai, e é a terceira vez que a casa a paga: um rótulo de campo terminado em `chave` seguido da
+forma `dois-pontos, aspas, literal de 6 a 24` torna o ficheiro portador do padrão, **inclusive quando o valor é um
+sentinela** — por isso a frase de cima nomeia a forma por descrição e não a reproduz, porque reproduzi-la tornaria
+esta secção portadora dela.
+
+**O terceiro defeito não era da PEN-44, era do portão do pacote, e só se viu porque a peça nova o ignorou em
+silêncio.** A primeira corrida de `scripts/pacote-municipal-confere-pecas.mjs` depois disto imprimiu
+`sem_registo=["PEN-41","PEN-43"]` — com a PEN-44 escrita, certificada e na tabela `PECAS`, e o portão ainda assim
+vermelho-em-nada. A causa é o recorte da classe: o censo de candidatas filtrava `/^p73-pen\d+-ddl-candidata\.sql$/`,
+e esta peça é `p74-`, porque os seus instrumentos nasceram noutro prefixo. Uma régua com o prefixo da primeira peça
+não vê a última, e o que ela imprime como «peças sem registo» passa a ser a lista das peças que a régua conhece. O
+filtro passou a `/^p7\d-pen\d+-ddl-candidata\.sql$/`, e a mesma corrida passou a imprimir
+`sem_registo=["PEN-41","PEN-43","PEN-44"]` com o motivo lido do corpus (`MOTIVO-SEM-REGISTO · PEN-44` acima) e o
+dente do lado negativo intacto: `toda_peca_sem_registo_tem_motivo_no_corpus_e_apagar_a_frase_e_vermelho` continua a
+correr sobre uma cópia do corpus com as marcas apagadas e a exigir que aí nada se encontre. Os contadores não
+mudaram com isto: `PACOTE_MUNICIPAL_OK 24/0 · 173 pecas medidas`, `FORA_DO_INDICE 0 esquecidos`, `funcoes_das_candidatas=4`
+— e é esse o ponto: a classe dos nomes novos do banco **não** contém a PEN-44, porque revogar execução não cria
+função, enquanto a classe das peças não certificadas passou a contê-la.
+
+**O que os 18/0 afirmam, e como se distingue de «está fechado».** O invariante não é «o SQL está bem escrito», é
+`depois_e_simulado_e_o_antes_lido_confirma_o_predicado_da_peca`: no modo candidata o `depois` é uma simulação
+construída sobre o catálogo de hoje (`invSim.anon_ainda_pode` vazio e `invSim.verde`), e o `antes` é lido do catálogo
+vivo (`invVivo.anon_executa_algum_nome` com exactamente 45 entradas e `nomes_sem_leitura` vazio) — as duas metades
+têm origens diferentes, e uma cláusula que só simulasse seria cortesia da minha própria construção. A preservação é
+provada por dois caminhos independentes: `nenhum_papel_preservado_e_pai_do_anon` (se um dos preservados fosse
+antepassado do `anon`, o `GRANT` reabriria o que o `REVOKE` fecha — `anon_herdado_de: []`) e o censo de papéis por
+canal duplo, acima. `authenticated`, `service_role` e `postgres` não recebem `GRANT` porque já têm entrada explícita
+na ACL: acrescentar-lhes um grau seria concessão nova, e o portão
+`um_grant_a_quem_conservaria_de_qualquer_manera_chumba_o_invariante` existe para não deixar escrever isso — o
+fixtures mostram-no com `grants_inuteis: ["f():authenticated"]` a dar vermelho num mundo fabricado.
+
+**O facto novo que esta peça resolve no censo da PEN-43.** `bfr_municipalities_visible` estava declarada fora do
+escopo da PEN-43 porque a ACL dela tem `=X/postgres` além do `anon=X` e fechá-la exigia `REVOKE … FROM PUBLIC` — que
+é precisamente o que esta peça faz, com OK próprio. O preflight confirma-lhe a presença no alvo (`no_alvo: true`).
+Os três nomes da PEN-43, esses, têm intersecção vazia com os 45 (`interseccao_com_pen44: []`, com a razão impressa ao
+lado de cada nome: «a ACL viva não tem entrada a PUBLIC; a alavanca dela é `REVOKE … FROM anon`»), pelo que as duas
+peças não se sobrescrevem. `bfr_school_set_municipality` continua fora, pela razão declarada na PEN-43 (porta de
+etiquetagem volátil, mantida chamável por anónimo para devolver `42501`).
+
+**O que este verde não afirma.** (i) Não mede o que cada um dos 45 nomes *devolve* a um chamador sem sessão — isso é
+HTTP e está por correr; o que aqui está certificado é o grau, não o conteúdo, e é por isso que a linha é M e não A.
+(ii) Não fecha a exposição anónima inteira: fecha a via `PUBLIC`. Os 67 nomes executáveis por `anon` são outro eixo, e
+o que neles não vem do `PUBLIC` — a entrada `anon=X` explícita — é a classe da PEN-43, não desta, e as duas peças têm
+intersecção vazia de nomes. Nenhum número de «quantos ficam abertos depois» é afirmado aqui, porque seria uma
+subtracção entre duas réguas de natureza diferente; o que se lê do artefacto é `fora_do_alvo: 14` com
+`nao_declarados: []`, e esses 14 são os gatilhos. (iii) Não está aplicada: `pecas_sem_registo_de_aplicacao`
+continua a listá-la, e o vermelho triplo do modo `--reversao` é a prova lida do catálogo de que nenhuma frase
+`APLICAR PEN-44 NO BANCO` foi dita. (iv) Depois de aplicada, a consequência permanente é de produto: um papel criado
+amanhã **não** herda `EXECUTE` sobre estes 45 nomes, porque a herança era o `PUBLIC` — é o efeito desejado
+(deny-by-default), mas é um efeito, e quem criar um papel de leitura novo vai ter de o conceder nominalmente.
+
+**Caminho de aplicação, medido por recusa.** A peça está na tabela `PECAS` do aplicador com
+`frase: 'APLICAR PEN-44 NO BANCO'` e `fraseRev: 'REVERTER PEN-44 NO BANCO'`, e o aplicador re-corre o preflight e
+confere o md5 dos dois SQL antes de enviar seja o que for. O que correu nesta passada foi a recusa:
+`evidence/p73-municipal-reversao-recusa-PEN-44-1795233672431.json` (590 B, `2bbb551a2c4d0cafc8bc8a3b68b80659`,
+`escrito_no_banco: false`) com o motivo triplo impresso — preflight de reversão não verde, o registo dessa corrida, e
+«o modo reversão só pode correr sobre uma peça aplicada». Foi por causa deste entrada na `PECAS` que o aplicador
+ganhou a cláusula de espelho por **família de grau**
+(`onde_a_candidata_retira_public_ou_preserva_papeis_a_reversao_devolve_as_mesmas_assinaturas_ao_mesmos_conjuntos`):
+uma régua de forma única sobre as duas classes de peça não tinha positivo, porque as candidatas da PEN-38/39/41 não
+revogam `PUBLIC` e devolviam `espelho: null` — agora o `null` é a classe fora da régua, impresso com as contas ao
+lado (`nas_assinaturas_atingidas`, `fora_daquelas_para_outra_regua`), e a PEN-43 e a PEN-44 são as duas linhas com
+`espelho: true`. Os nove fixtures dessa régua estão no self-teste (15/0), incluindo
+`revoke_sem_grant_de_preservacao_e_um_mundo_novo` e `papel_esquecido_na_reversao_nao`.
+
+MOTIVO-SEM-REGISTO · PEN-44 — não há registo de aplicação porque nenhuma frase `APLICAR PEN-44 NO BANCO` foi dita, e
+é o portão `pecas_sem_registo_de_aplicacao` que imprime a classe, com `nomes_na_candidata: []` porque revogar execução
+a uma entrada `PUBLIC` não cria função nenhuma: a peça mexe em graus sobre 45 nomes que já existem, e é por isso que o
+censo de funções novas do banco (`funcoes_das_candidatas=4`) não a contém e não a pode conter.
+
 ## 3 · Provas de fecho (o que é medição e o que é previsão)
 
 ### 3.1 · Depois de PEN-38 e da etiquetagem
@@ -913,7 +1050,16 @@ exactamente a que FALTA-2 existia para não ficar ao arbítrio de quem cola SQL.
    re-medir o canal depois (`scripts/p73-sonda-porta-municipal.mjs` passa a dizer `PORTA_MUNICIPAL_FECHADA` sem se
    aliviar uma letra); o preço de não aplicar é as três funções de leitura continuarem chamáveis por anónimo — 0
    linhas hoje, números reais no dia em que a etiquetagem do §1 for decidida.
-7. **`git push`** dos commits deste pacote: precisa de OK literal novo; nenhum push está autorizado pelo
+7. **Aplicar ou não a PEN-44 — a frase, não o caminho.** Desde 21/11 o caminho existe nos dois sentidos (§2.10):
+   geradora e preflight com self-teste offline, os dois SQL transaccionais com a pegada conferida contra o registo da
+   geradora, e entrada na tabela `PECAS` do aplicador. O que fica do lado da casa é dizer `APLICAR PEN-44 NO BANCO`.
+   O preço de aplicar é duplo e já está declarado: os 45 nomes deixam de ser herdáveis por um papel criado amanhã
+   (deny-by-default — quem criar um papel de leitura novo tem de o conceder nominalmente), e a preservação dos 8
+   papéis de plataforma passa de simulação a leitura do catálogo, que é o que o modo `--reversao` afirma e hoje chumba.
+   O preço de não aplicar é permanecer o `PUBLIC` aberto sobre 45 nomes, com o grau de cada um deles a chegar ao
+   `anon` por pseudo-papel e não por decisão. O que esta peça **não** mede, e é a razão de a linha ser M: o conteúdo
+   que cada nome devolve a um chamador sem sessão.
+8. **`git push`** dos commits deste pacote: precisa de OK literal novo; nenhum push está autorizado pelo
    trabalho descrito aqui.
 
 ## 6 · Índice das peças nomeadas
@@ -921,11 +1067,14 @@ exactamente a que FALTA-2 existia para não ficar ao arbítrio de quem cola SQL.
 Candidatas e reversões: `scripts/p73-pen38-ddl-candidata.sql`, `scripts/p73-pen38-ddl-reversao.sql`,
 `scripts/p73-pen39-ddl-candidata.sql`, `scripts/p73-pen39-ddl-reversao.sql`,
 `scripts/p73-pen41-ddl-candidata.sql`, `scripts/p73-pen41-ddl-reversao.sql`,
-`scripts/p73-pen43-ddl-candidata.sql`, `scripts/p73-pen43-ddl-reversao.sql` e os dois substituídos da PEN-43,
-conservados com o defeito no nome: `scripts/ANTERIOR-p73-pen43-ddl-candidata-sem-transaccoes-20-11.sql` e
-`scripts/ANTERIOR-p73-pen43-ddl-reversao-sem-transaccoes-20-11.sql`.
+`scripts/p73-pen43-ddl-candidata.sql`, `scripts/p73-pen43-ddl-reversao.sql`,
+`scripts/p74-pen44-ddl-candidata.sql`, `scripts/p74-pen44-ddl-reversao.sql` e os substituídos, conservados com o
+defeito no nome: `scripts/ANTERIOR-p73-pen43-ddl-candidata-sem-transaccoes-20-11.sql`,
+`scripts/ANTERIOR-p73-pen43-ddl-reversao-sem-transaccoes-20-11.sql`,
+`scripts/ANTERIOR-p74-pen44-ddl-candidata-so-sete-papeis-preservados-21-11.sql` e
+`scripts/ANTERIOR-p74-pen44-ddl-reversao-so-sete-papeis-preservados-21-11.sql`.
 Preflights: `scripts/p73-pen38-preflight.mjs`, `scripts/p73-pen39-preflight.mjs`, `scripts/p73-pen41-preflight.mjs`,
-`scripts/p73-pen43-preflight.mjs`.
+`scripts/p73-pen43-preflight.mjs`, `scripts/p74-pen44-preflight.mjs`.
 Escrita: `scripts/p73-municipal-aplica-ddl.mjs`, `scripts/p73-municipal-etiqueta.mjs`.
 Conferência do pacote: `scripts/pacote-municipal-confere-pecas.mjs`.
 Conferência pós-deploy: `scripts/v136-pos-deploy.mjs` (corrida em 19/11) e `scripts/v137-pos-deploy.mjs`
@@ -943,6 +1092,21 @@ dois modos, o `--selfteste` offline e o censo de exposição anónima, com a ent
 resolver em disco e a estar no índice, e a frase que o declarava foi apagada com a FALTA-5 — é o único caminho pelo
 qual um nome sai da classe sem que a classe apodreça, porque o portão dos fantasmas passa a não o conhecer e os dos
 caminhos citados passam a exigi-lo no índice.
+Geradora e caminho da PEN-44 (21/11, §2.10): `scripts/p74-pen44-gera-candidata.mjs` enumera o alvo pelo catálogo
+(`proacl`, `prorettype`, `pg_proc`/`pg_namespace`) e escreve os dois SQL, com o censo de papéis por duas vias que
+discordam de forma imprimível onde um `LIKE` sem `ESCAPE` mente; `scripts/p74-pen44-preflight.mjs` corre os três
+modos, simula o `depois` no modo candidata e lê o `antes` no modo reversão, e é a peça cujo vermelho triplo de hoje
+afirma que nada foi aplicado. As capturas desta passada, cada uma com o motivo no nome quando é o caso:
+`evidence/p74-pen44-gera-candidata-21-11-c.json`, `evidence/p74-pen44-gera-candidata-21-11b.json`,
+`evidence/p74-pen44-gera-candidata-21-11-c-INTERROMPIDA.json`,
+`evidence/p74-pen44-gera-candidata-21-11a-VERMELHO-a-contagem-de-grau-contava-o-TO-anon-da-reversao-como-preservacao.json`,
+`evidence/p74-pen44-preflight-candidata-21-11-d.json`, `evidence/p74-pen44-preflight-candidata-21-11-e.json`,
+`evidence/p74-pen44-preflight-candidata-21-11-VERMELHO-a-geradora-perdia-pgbouncer-porque-um-like-sem-escape-trata-o-under-line-como-curinga.json`,
+`evidence/p74-pen44-preflight-reversao-21-11-d-VERMELHO-estado_de_antes_anon_executa_os_45_nomes_e_a_entrada_public_continua_na_acl.json`,
+`evidence/p74-pen44-preflight-reversao-21-11-rev20261121T040104Zr-VERMELHO-invocado-pelo-aplicador_a_peca_nao_esta_aplicada.json`,
+`evidence/p73-municipal-reversao-recusa-PEN-44-1795233672431.json`, a contagem do ledger
+`evidence/ah1-cuenta-pen-21-11-conta-44.txt` e o stdout do portão de índice que apanhou o defeito de instrumento,
+`evidence/portao-indice-21-11-VERMELHO-a-uma-adjacencia-de-rotulo-chave-com-dois-pontos-e-literal-de-sete-letras-no-preflight.txt`.
 Medição de alcance: `scripts/p73-pen38-alcance-por-concessao-20-11.mjs`, `scripts/p73-pen39-sonda-uso-agregados.mjs`,
 `scripts/p73-pen38-sonda-consumidor-do-diagnostico.mjs` (FALTA-3, escrita e corrida em 20/11).
 Medição de superfície no ar, por recipiente e por toque (20/11, §6A de

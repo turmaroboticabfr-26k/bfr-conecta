@@ -1,12 +1,15 @@
 #!/usr/bin/env node
-// P73-MUNICIPAL-APLICA-DDL — o único caminho de aplicação das quatro peças municipais candidatas (PEN-38, PEN-39,
-// PEN-41, PEN-43) e da respectiva conferência. Existe porque o runbook `docs/bu-20-11/10-runbook-municipal.md` promete
-// comandos executáveis: sem esta peça, «deixar pronto» deixaria ao utilizador a parte irreversível, e a
-// comparação de estado vivo ficaria a cargo da memória de quem copia e cola.
-// As três primeiras fazem DDL (policies e funções); a PEN-43 não faz — são REVOKE/GRANT de EXECUTE ao pseudo-papel
-// `anon`. O desenho serve as duas raças: o portão é (a) uma transacção por ficheiro, (b) nenhum statement que esta
-// casa recusa fora de corpo de função, (c) a reversão desfaz alguma coisa e não é a candidata copiada, e (d) onde a
-// candidata revoga um nome, a reversão tem de devolver exactamente esse nome — sem sobras nem trocas.
+// P73-MUNICIPAL-APLICA-DDL — o único caminho de aplicação das peças municipais candidatas registadas em `PECAS`
+// (a lista lê-se da tabela, nunca desta frase) e da respectiva conferência. Existe porque o runbook
+// `docs/bu-20-11/10-runbook-municipal.md` promete comandos executáveis: sem esta peça, «deixar pronto» deixaria ao
+// utilizador a parte irreversível, e a comparação de estado vivo ficaria a cargo da memória de quem copia e cola.
+// Há duas raças de peça na tabela: as que fazem DDL (policies e funções) e as que só mexem graus — REVOKE/GRANT de
+// EXECUTE a papéis e ao pseudo-papel `PUBLIC`. Uma peça de graus pode ainda preservar vários papéis na mesma linha
+// (`GRANT … TO a, b, c`), forma que nenhuma das anteriores tinha. O desenho serve as duas: o portão é (a) uma
+// transacção por ficheiro, (b) nenhum statement que esta casa recusa fora de corpo de função, (c) a reversão desfaz
+// alguma coisa e não é a candidata copiada, (d) onde a candidata revoga um nome ao `anon`, a reversão tem de
+// devolver exactamente esse nome, e (e) onde a candidata retira a entrada a `PUBLIC` ou preserva papéis, a reversão
+// tem de devolver as mesmas assinaturas aos mesmos conjuntos de papéis — sem sobras nem trocas.
 //
 // Por omissão NADA é escrito. O programa só corre o SQL quando (a) `--peca` resolve num ficheiro que existe,
 // (b) `--ok` é exactamente a frase declarada para essa peça e para este modo, e (c) o preflight fresco da
@@ -42,6 +45,7 @@ const PECAS = {
   'PEN-39': { pref: 'scripts/p73-pen39-preflight.mjs', cand: 'scripts/p73-pen39-ddl-candidata.sql', rev: 'scripts/p73-pen39-ddl-reversao.sql', prefixo: 'P73_PEN39_PREFLIGHT_VERDE', frase: 'APLICAR PEN-39 NO BANCO', fraseRev: 'REVERTER PEN-39 NO BANCO' },
   'PEN-41': { pref: 'scripts/p73-pen41-preflight.mjs', cand: 'scripts/p73-pen41-ddl-candidata.sql', rev: 'scripts/p73-pen41-ddl-reversao.sql', prefixo: 'P73_PEN41_PREFLIGHT_VERDE', frase: 'APLICAR PEN-41 NO BANCO', fraseRev: 'REVERTER PEN-41 NO BANCO' },
   'PEN-43': { pref: 'scripts/p73-pen43-preflight.mjs', cand: 'scripts/p73-pen43-ddl-candidata.sql', rev: 'scripts/p73-pen43-ddl-reversao.sql', prefixo: 'P73_PEN43_PREFLIGHT_VERDE', frase: 'APLICAR PEN-43 NO BANCO', fraseRev: 'REVERTER PEN-43 NO BANCO' },
+  'PEN-44': { pref: 'scripts/p74-pen44-preflight.mjs', cand: 'scripts/p74-pen44-ddl-candidata.sql', rev: 'scripts/p74-pen44-ddl-reversao.sql', prefixo: 'P74_PEN44_PREFLIGHT_VERDE', frase: 'APLICAR PEN-44 NO BANCO', fraseRev: 'REVERTER PEN-44 NO BANCO' },
 };
 // A frase certificada depende do modo, e é a única diferença de autorização entre aplicar e reverter. Vive
 // numa função para o `--selfteste` medir a mesma função que o fluxo usa: uma asserção que reproduzisse a
@@ -107,6 +111,41 @@ const FIX_ESPELHO = {
   peca_de_ddl_nao_pergunta: seEspelham('DROP POLICY p ON public.t;', 'CREATE POLICY p ON public.t USING (x);') === null,
 };
 
+// A outra família de graus duma peça como a PEN-44 não passa pelo `anon`: é `REVOKE … FROM PUBLIC` acompanhado dum
+// `GRANT … TO a, b, c` de preservação, desfeito na reversão pela ordem contrária. O `seEspelham` acima não vê esta
+// família nenhuma — os seus regex pedem `FROM anon`/`TO anon` —, por isso uma reversão que esquecesse de devolver o
+// grau a um dos papéis preservados passaria neste portão sem nada dizer e deixaria a ACL aberta para sempre. Compara
+// assinaturas com conjuntos de papéis, não linhas: a ordem dos nomes numa lista não é parte do estado do banco.
+const paresDe = (t, re, fixo) => [...t.matchAll(re)].map((m) => ({ sig: m[1].toLowerCase().replace(/\s+/g, ' '),
+  alvos: fixo ? [fixo] : m[2].split(',').map((s) => s.trim()).filter(Boolean).sort() }));
+const familiasDe = (t) => { const s = so_codigo(t);
+  return { revoga_public: paresDe(s, /^REVOKE\s+EXECUTE\s+ON\s+FUNCTION\s+(\S+\([^)]*\))\s+FROM\s+PUBLIC;/gim, 'PUBLIC'),
+    devolve_public: paresDe(s, /^GRANT\s+EXECUTE\s+ON\s+FUNCTION\s+(\S+\([^)]*\))\s+TO\s+PUBLIC;/gim, 'PUBLIC'),
+    preserva: paresDe(s, /^GRANT\s+EXECUTE\s+ON\s+FUNCTION\s+(\S+\([^)]*\))\s+TO\s+([^;]+);/gim).filter((x) => !x.alvos.some((a) => a.toUpperCase() === 'PUBLIC')),
+    desfaz_preservacao: paresDe(s, /^REVOKE\s+EXECUTE\s+ON\s+FUNCTION\s+(\S+\([^)]*\))\s+FROM\s+([^;]+);/gim).filter((x) => !x.alvos.some((a) => a.toUpperCase() === 'PUBLIC')) }; };
+const comoChaves = (L) => JSON.stringify(L.map((x) => [x.sig, x.alvos]).sort());
+// A pergunta só se põe a uma peça que retire a entrada a `PUBLIC`: é esse o gesto que obriga à lista de preservação,
+// e é essa lista que a reversão tem de desfazer. Uma peça que cria uma função e a grant-a a `authenticated` (PEN-38,
+// PEN-39) não tem nada a desfazer por aqui — a reversão dela descarta a função — e mentir-lhe-ia um `false`.
+const seEspelhamFamilias = (cand, rev) => { const a = familiasDe(cand), b = familiasDe(rev);
+  if (a.revoga_public.length === 0) return null;
+  const atingidas = new Set(a.revoga_public.map((x) => x.sig));
+  const preservaDasAtingidas = a.preserva.filter((x) => atingidas.has(x.sig));
+  const desfazDasAtingidas = b.desfaz_preservacao.filter((x) => atingidas.has(x.sig));
+  return comoChaves(a.revoga_public) === comoChaves(b.devolve_public) && b.devolve_public.length === a.revoga_public.length
+    && comoChaves(preservaDasAtingidas) === comoChaves(desfazDasAtingidas) && desfazDasAtingidas.length === preservaDasAtingidas.length; };
+const FIX_FAMILIAS = {
+  mesma_lista_na_mesma_ordem_espelha: seEspelhamFamilias('REVOKE EXECUTE ON FUNCTION public.f(uuid) FROM PUBLIC;\nGRANT EXECUTE ON FUNCTION public.f(uuid) TO alpha, beta;', 'REVOKE EXECUTE ON FUNCTION public.f(uuid) FROM alpha, beta;\nGRANT EXECUTE ON FUNCTION public.f(uuid) TO PUBLIC;') === true,
+  a_ordem_dos_papeis_na_lista_nao_e_estado: seEspelhamFamilias('REVOKE EXECUTE ON FUNCTION public.f(uuid) FROM PUBLIC;\nGRANT EXECUTE ON FUNCTION public.f(uuid) TO beta, alpha;', 'REVOKE EXECUTE ON FUNCTION public.f(uuid) FROM alpha, beta;\nGRANT EXECUTE ON FUNCTION public.f(uuid) TO PUBLIC;') === true,
+  papel_esquecido_na_reversao_nao: seEspelhamFamilias('REVOKE EXECUTE ON FUNCTION public.f() FROM PUBLIC;\nGRANT EXECUTE ON FUNCTION public.f() TO alpha, beta;', 'REVOKE EXECUTE ON FUNCTION public.f() FROM alpha;\nGRANT EXECUTE ON FUNCTION public.f() TO PUBLIC;') === false,
+  papel_trocado_na_reversao_nao: seEspelhamFamilias('REVOKE EXECUTE ON FUNCTION public.f() FROM PUBLIC;\nGRANT EXECUTE ON FUNCTION public.f() TO alpha, beta;', 'REVOKE EXECUTE ON FUNCTION public.f() FROM gamma, beta;\nGRANT EXECUTE ON FUNCTION public.f() TO PUBLIC;') === false,
+  assinatura_trocada_nao: seEspelhamFamilias('REVOKE EXECUTE ON FUNCTION public.f(uuid) FROM PUBLIC;\nGRANT EXECUTE ON FUNCTION public.f(uuid) TO alpha;', 'REVOKE EXECUTE ON FUNCTION public.f(uuid) FROM alpha;\nGRANT EXECUTE ON FUNCTION public.g(uuid) TO PUBLIC;') === false,
+  grant_a_mais_na_reversao_nao: seEspelhamFamilias('REVOKE EXECUTE ON FUNCTION public.f() FROM PUBLIC;\nGRANT EXECUTE ON FUNCTION public.f() TO alpha;', 'REVOKE EXECUTE ON FUNCTION public.f() FROM alpha;\nGRANT EXECUTE ON FUNCTION public.f() TO PUBLIC;\nGRANT EXECUTE ON FUNCTION public.h() TO PUBLIC;') === false,
+  revoke_sem_grant_de_preservacao_e_um_mundo_novo: seEspelhamFamilias('REVOKE EXECUTE ON FUNCTION public.f() FROM PUBLIC;\nGRANT EXECUTE ON FUNCTION public.f() TO alpha;', 'GRANT EXECUTE ON FUNCTION public.f() TO PUBLIC;') === false,
+  prosa_de_comentario_nao_e_grau: seEspelhamFamilias('-- REVOKE EXECUTE ON FUNCTION public.f() FROM PUBLIC;\nSELECT 1;', 'GRANT EXECUTE ON FUNCTION public.f() TO PUBLIC;') === null,
+  peca_de_ddl_nao_pergunta_nada: seEspelhamFamilias('CREATE POLICY p ON public.t USING (x);', 'DROP POLICY p ON public.t;') === null,
+};
+
 const MODO = tem('reverter') ? 'reversao' : 'aplicacao';
 const recusa = (motivos, extra) => {
   const corpo = { programa: 'scripts/p73-municipal-aplica-ddl.mjs', modo: MODO, em: new Date().toISOString(),
@@ -141,7 +180,7 @@ const correPreflight = (caminhoRel, modo, sufixo) => {
 const selfteste = tem('selfteste');
 if (selfteste) {
   const casos = [];
-  const c = (nome, verde) => casos.push({ nome, verde: !!verde });
+  const c = (nome, verde, detalhe) => casos.push({ nome, verde: !!verde, ...(detalhe ? { detalhe } : {}) });
   c('frase_solta_nao_autoriza', 'APLICAR PEN-41 NO BANCO' !== 'ok' && 'APLICAR PEN-41 NO BANCO' !== 'APLICAR PEN-38 NO BANCO');
   c('cada_peca_tem_ficheiros_em_disco', Object.entries(PECAS).every(([, p]) => [p.pref, p.cand, p.rev].every((f) => existsSync(join(REPO, f)))));
   c('varredura_de_perigo_nao_confunde_prosa_nem_corpo_de_funcao', Object.values(FIX_PERIGOS).every(Boolean));
@@ -150,11 +189,9 @@ if (selfteste) {
   // Régua do verde do preflight, medida contra as três formas que os preflights emitem de facto. A versão
   // antiga pedia «espaço-0» no fim, que `13/0` nunca satisfaz: nunca haveria positivo possível.
   const verdeReal = (v) => /_VERDE_/.test(v) && /\/0$/.test(v);
-  c('regua_do_verde_bate_nas_formas_que_os_preflights_emitem', [
-    'P73_PEN41_PREFLIGHT_VERDE_CANDIDATA 13/0', 'P73_PEN38_PREFLIGHT_VERDE_REVERSAO 10/0', 'P73_PEN39_PREFLIGHT_VERDE_CANDIDATA 9/0',
-    'P73_PEN43_PREFLIGHT_VERDE_CANDIDATA 13/0', 'P73_PEN43_PREFLIGHT_VERDE_REVERSAO 13/0',
-  ].every(verdeReal) && !verdeReal('P73_PEN41_PREFLIGHT_VERMELHO_5') && !verdeReal('P73_PEN38_PREFLIGHT_VERDE_CANDIDATA 9/1')
-    && !verdeReal('P73_PEN43_PREFLIGHT_VERMELHO_1'));
+  const prefixos = Object.values(PECAS).map((p) => p.prefixo);
+  c('regua_do_verde_bate_nas_formas_que_os_preflights_emitem', prefixos.every((pf) => verdeReal(pf + '_CANDIDATA 13/0') && verdeReal(pf + '_REVERSAO 13/0'))
+    && prefixos.every((pf) => !verdeReal(pf.replace('_VERDE', '_VERMELHO') + '_5') && !verdeReal(pf + '_CANDIDATA 9/1')), { prefixos_da_tabela: prefixos, forma_negativa: prefixos.map((pf) => pf.replace('_VERDE', '_VERMELHO') + '_5') });
   c('caminho_de_registo_absoluto_e_lido_como_absoluto', caminhoReal('C:/repo/evidence/x.json') === 'C:/repo/evidence/x.json' && caminhoReal('evidence/x.json') === join(REPO, 'evidence/x.json'));
   // ── modo reversão ─────────────────────────────────────────────────────────
   // Duas frases por peça — a de aplicar e a de reverter — e um censo sobre a tabela, não sobre o que eu escrevi à
@@ -162,7 +199,7 @@ if (selfteste) {
   // de tornar impossível. Contar as frases no nome do caso deixava-o velho no dia em que entrasse uma peça.
   c('frases_de_aplicacao_e_reversao_sao_pares_por_peca_e_disjuntas',
     new Set(Object.values(PECAS).flatMap((p) => [p.frase, p.fraseRev])).size === Object.keys(PECAS).length * 2
-      && Object.values(PECAS).every((p) => p.frase !== p.fraseRev), true);
+      && Object.values(PECAS).every((p) => p.frase !== p.fraseRev));
   const pecas = Object.keys(PECAS);
   c('o_modo_escolhe_a_frase_e_nao_a_conveniencia', pecas.every((k) =>
     frasePara(PECAS[k], 'aplicacao') === PECAS[k].frase && frasePara(PECAS[k], 'reversao') === PECAS[k].fraseRev
@@ -197,6 +234,17 @@ if (selfteste) {
     && espelhaveis.every((x) => x.espelho !== false) && FIX_ESPELHO.mesmo_nome_espelha === true && FIX_ESPELHO.nome_trocado_nao === true
     && FIX_ESPELHO.sobra_na_reversao_nao === true && FIX_ESPELHO.prosa_de_comentario_nao_conta_como_grau === true && FIX_ESPELHO.peca_de_ddl_nao_pergunta === true,
     { por_peca: espelhaveis, fixtures: FIX_ESPELHO });
+  // A família `PUBLIC` + preservação de vários papéis, com os seus próprios mundos fabricados. Sem esta régua, uma
+  // reversão que esquecesse de desfazer um GRANT de preservação não era notada por nenhum portão daqui: o espelho
+  // acima só vê as linhas que mencionam `anon`, e o preflight da peça é um único canal para esta pergunta.
+  const familias = Object.entries(PECAS).map(([k, p]) => ({ peca: k,
+    espelho: seEspelhamFamilias(readFileSync(join(REPO, p.cand), 'utf8'), readFileSync(join(REPO, p.rev), 'utf8')),
+    contas: (() => { const a = familiasDe(readFileSync(join(REPO, p.cand), 'utf8')), b = familiasDe(readFileSync(join(REPO, p.rev), 'utf8'));
+      const atingidas = new Set(a.revoga_public.map((x) => x.sig));
+      return { candidata: { revoga_public: a.revoga_public.length, grant_total_de_preservacao: a.preserva.length, nas_assinaturas_atingidas: a.preserva.filter((x) => atingidas.has(x.sig)).length, fora_daquelas_para_outra_regua: a.preserva.filter((x) => !atingidas.has(x.sig)).length, papeis_preservados: [...new Set(a.preserva.flatMap((x) => x.alvos))].sort() }, reversao: { devolve_public: b.devolve_public.length, desfaz_preservacao: b.desfaz_preservacao.length } }; })() }));
+  c('onde_a_candidata_retira_public_ou_preserva_papeis_a_reversao_devolve_as_mesmas_assinaturas_ao_mesmos_conjuntos',
+    familias.filter((x) => x.espelho !== null).length >= 1 && familias.every((x) => x.espelho !== false)
+      && Object.values(FIX_FAMILIAS).every(Boolean), { por_peca: familias, fixtures: FIX_FAMILIAS });
   const medidos = sqlDasPecas.map(([k, lado, f]) => { const t = readFileSync(join(REPO, f), 'utf8'); const pj = perigos(t); const ng = nomesDeGraus(so_codigo(t)); return { peca: k, lado, caminho: f, bytes: Buffer.byteLength(t, 'utf8'), md5: md5(t), desfaz: pj.drop_function + pj.drop_policy + pj.create_policy + pj.grant_execute, graus: { revogados: ng.revoke, devolvidos: ng.grant } }; });
   const boas = casos.filter((x) => x.verde).length;
   const out = { programa: 'scripts/p73-municipal-aplica-ddl.mjs', selfteste: true, em: new Date().toISOString(), aplicado: false, escrito_no_banco: false, casos, sql_medidos: medidos, veredito: boas === casos.length ? `P73_MUNICIPAL_APLICA_SELFTESTE_OK ${casos.length}/0` : `P73_MUNICIPAL_APLICA_SELFTESTE_VERMELHO ${casos.length - boas}` };
@@ -234,6 +282,12 @@ const perigoAlvo = perigos(txtAlvo);
 const bloqueadores = bloqueadoresDe(perigoAlvo);
 if (bloqueadores.length) recusa([`o SQL que este modo enviaria tem statement fora de corpo de funcao que esta peça recusa: ${bloqueadores.join(', ')}`]);
 if (!/^BEGIN;/m.test(txtAlvo) || !/^COMMIT;/m.test(txtAlvo)) recusa(['o SQL deste modo nao e uma unica transacco (BEGIN/COMMIT)']);
+// Os dois espelhos de graus correm tambem aqui, no caminho de escrita, e nao só no `--selfteste`: o que está em disco
+// neste instante é o que vai ao banco, e uma reversao que nao devolvesse exactamente o que a candidata fecha deixaria
+// a ACL mudada para sempre. `null` significa «esta peca nao e desta raca» e nao chumba.
+const espAnon = seEspelham(txtCand, txtRev), espPublico = seEspelhamFamilias(txtCand, txtRev);
+if (espAnon === false) recusa(['o espelho do anon nao bate: a reversao nao devolve exactamente os nomes que a candidata revoga', `candidata ${JSON.stringify(nomesDeGraus(so_codigo(txtCand)).revoke)}`, `reversao ${JSON.stringify(nomesDeGraus(so_codigo(txtRev)).grant)}`]);
+if (espPublico === false) recusa(['o espelho das familias de PUBLIC e de preservacao nao bate: a reversao nao devolve as mesmas assinaturas aos mesmos conjuntos de papeis'], { familias: { candidata: familiasDe(txtCand), reversao: familiasDe(txtRev) } });
 
 const stamp = new Date().toISOString().replace(/[-:]/g, '').replace(/\.\d+Z$/, 'Z');
 const OUT = join(REPO, `evidence/p73-municipal-${MODO === 'reversao' ? 'reversao' : 'aplicacao'}-${peca}-${stamp}.json`);

@@ -1,0 +1,1697 @@
+{
+  "programa": "scripts/p74-pen44-gera-candidata.mjs",
+  "em": "2026-11-21T03:50:01.492Z",
+  "duracao_ms": 5214,
+  "pergunta": "que REVOKE fecha hoje o grau de anon nos nomes cujo EXECUTE chega da entrada a PUBLIC, sem tirar grau a mais nenhum papel?",
+  "metodo": "catalogo vivo por SELECT: proacl, pg_get_function_identity_arguments, prorettype, prosecdef, proowner, has_function_privilege por cada papel nao-pg_ e pg_auth_members; a lista de preservacao de cada nome e a diferenca entre o que cada papel pode hoje e o que conservaria sem a entrada a PUBLIC, com heranca iterada",
+  "queries": 4,
+  "funcoes_no_public": 162,
+  "alvo_ate_gatilhos": 59,
+  "alvo": 45,
+  "papeis_no_catalogo": 31,
+  "papeis_fora_das_familias_pg": 16,
+  "gatilhos_fora_do_alvo": [
+    "bfr_collab_task_notification_trigger",
+    "bfr_collab_member_notification_trigger",
+    "bfr_collab_comment_notification_trigger",
+    "bfr_staff_audit_trigger",
+    "bfr_touch_updated_at",
+    "sports_touch_updated_at",
+    "bfr_prevent_duplicate_grade",
+    "enforce_bfr_avatar_uniform",
+    "bfr_specialized_audit_trigger",
+    "bfr_support_request_scope_guard",
+    "bfr_psychology_schedule_guard",
+    "bfr_validate_lesson_attendance",
+    "bfr_audit_lesson_attendance_change",
+    "schools_updated_at"
+  ],
+  "papeis_lidos": [
+    "anon",
+    "authenticated",
+    "authenticator",
+    "dashboard_user",
+    "pgbouncer",
+    "postgres",
+    "service_role",
+    "supabase_admin",
+    "supabase_auth_admin",
+    "supabase_etl_admin",
+    "supabase_functions_admin",
+    "supabase_privileged_role",
+    "supabase_read_only_user",
+    "supabase_realtime_admin",
+    "supabase_replication_admin",
+    "supabase_storage_admin"
+  ],
+  "papeis_preservados": [
+    "dashboard_user",
+    "pgbouncer",
+    "supabase_auth_admin",
+    "supabase_etl_admin",
+    "supabase_functions_admin",
+    "supabase_privileged_role",
+    "supabase_read_only_user",
+    "supabase_replication_admin"
+  ],
+  "pares_que_perderiam_sem_preservar": 360,
+  "nomes_com_preservacao": 45,
+  "exemplo_de_preservacao": [
+    "is_aee <- dashboard_user+pgbouncer+supabase_auth_admin+supabase_etl_admin+supabase_functions_admin+supabase_privileged_role+supabase_read_only_user+supabase_replication_admin",
+    "is_aee_manager <- dashboard_user+pgbouncer+supabase_auth_admin+supabase_etl_admin+supabase_functions_admin+supabase_privileged_role+supabase_read_only_user+supabase_replication_admin"
+  ],
+  "precisa_revoke_de_anon": [
+    "family_normalize_name",
+    "family_normalize_cpf",
+    "family_cpf_is_valid",
+    "bfr_subject_matches",
+    "bfr_can_manage_communications",
+    "bfr_pedagogical_can_manage_student",
+    "bfr_staff_can_manage_student_scope",
+    "bfr_has_specialized_permission",
+    "bfr_family_can_view_aee",
+    "bfr_support_request_access",
+    "bfr_support_detail_access",
+    "bfr_support_request_create_access",
+    "aee_can_write_student",
+    "bfr_psychology_can_write",
+    "bfr_psychology_record_access",
+    "bfr_psychology_active_professional",
+    "bfr_can_manage_student_directory",
+    "aee_game_can_access_student",
+    "bfr_learning_is_manager",
+    "bfr_is_platform_admin",
+    "bfr_is_municipal_authority",
+    "bfr_municipalities_visible"
+  ],
+  "por_nome": [
+    {
+      "nome": "is_aee",
+      "ret": "bool",
+      "vol": "s",
+      "definer": "true",
+      "dono": "postgres",
+      "acl": "=X/postgres|postgres=X/postgres|authenticated=X/postgres|service_role=X/postgres",
+      "ident": "",
+      "anon_explicito": false,
+      "public_explicito": true,
+      "acl_nula": false,
+      "precisa_revoke_anon": false,
+      "preservar": [
+        "dashboard_user",
+        "pgbouncer",
+        "supabase_auth_admin",
+        "supabase_etl_admin",
+        "supabase_functions_admin",
+        "supabase_privileged_role",
+        "supabase_read_only_user",
+        "supabase_replication_admin"
+      ],
+      "tipos": [],
+      "anon_superuser": false,
+      "assinatura_casa": true
+    },
+    {
+      "nome": "is_aee_manager",
+      "ret": "bool",
+      "vol": "s",
+      "definer": "true",
+      "dono": "postgres",
+      "acl": "=X/postgres|postgres=X/postgres|authenticated=X/postgres|service_role=X/postgres",
+      "ident": "",
+      "anon_explicito": false,
+      "public_explicito": true,
+      "acl_nula": false,
+      "precisa_revoke_anon": false,
+      "preservar": [
+        "dashboard_user",
+        "pgbouncer",
+        "supabase_auth_admin",
+        "supabase_etl_admin",
+        "supabase_functions_admin",
+        "supabase_privileged_role",
+        "supabase_read_only_user",
+        "supabase_replication_admin"
+      ],
+      "tipos": [],
+      "anon_superuser": false,
+      "assinatura_casa": true
+    },
+    {
+      "nome": "aee_can_access_student",
+      "ret": "bool",
+      "vol": "s",
+      "definer": "true",
+      "dono": "postgres",
+      "acl": "=X/postgres|postgres=X/postgres|authenticated=X/postgres|service_role=X/postgres",
+      "ident": "target_student uuid",
+      "anon_explicito": false,
+      "public_explicito": true,
+      "acl_nula": false,
+      "precisa_revoke_anon": false,
+      "preservar": [
+        "dashboard_user",
+        "pgbouncer",
+        "supabase_auth_admin",
+        "supabase_etl_admin",
+        "supabase_functions_admin",
+        "supabase_privileged_role",
+        "supabase_read_only_user",
+        "supabase_replication_admin"
+      ],
+      "tipos": [
+        "uuid"
+      ],
+      "anon_superuser": false,
+      "assinatura_casa": true
+    },
+    {
+      "nome": "bfr_staff_role",
+      "ret": "text",
+      "vol": "s",
+      "definer": "true",
+      "dono": "postgres",
+      "acl": "=X/postgres|postgres=X/postgres|authenticated=X/postgres|service_role=X/postgres",
+      "ident": "",
+      "anon_explicito": false,
+      "public_explicito": true,
+      "acl_nula": false,
+      "precisa_revoke_anon": false,
+      "preservar": [
+        "dashboard_user",
+        "pgbouncer",
+        "supabase_auth_admin",
+        "supabase_etl_admin",
+        "supabase_functions_admin",
+        "supabase_privileged_role",
+        "supabase_read_only_user",
+        "supabase_replication_admin"
+      ],
+      "tipos": [],
+      "anon_superuser": false,
+      "assinatura_casa": true
+    },
+    {
+      "nome": "bfr_literacy_staff",
+      "ret": "bool",
+      "vol": "s",
+      "definer": "true",
+      "dono": "postgres",
+      "acl": "=X/postgres|postgres=X/postgres|authenticated=X/postgres|service_role=X/postgres",
+      "ident": "",
+      "anon_explicito": false,
+      "public_explicito": true,
+      "acl_nula": false,
+      "precisa_revoke_anon": false,
+      "preservar": [
+        "dashboard_user",
+        "pgbouncer",
+        "supabase_auth_admin",
+        "supabase_etl_admin",
+        "supabase_functions_admin",
+        "supabase_privileged_role",
+        "supabase_read_only_user",
+        "supabase_replication_admin"
+      ],
+      "tipos": [],
+      "anon_superuser": false,
+      "assinatura_casa": true
+    },
+    {
+      "nome": "bfr_can_access_literacy_student",
+      "ret": "bool",
+      "vol": "s",
+      "definer": "true",
+      "dono": "postgres",
+      "acl": "=X/postgres|postgres=X/postgres|authenticated=X/postgres|service_role=X/postgres",
+      "ident": "target_student uuid",
+      "anon_explicito": false,
+      "public_explicito": true,
+      "acl_nula": false,
+      "precisa_revoke_anon": false,
+      "preservar": [
+        "dashboard_user",
+        "pgbouncer",
+        "supabase_auth_admin",
+        "supabase_etl_admin",
+        "supabase_functions_admin",
+        "supabase_privileged_role",
+        "supabase_read_only_user",
+        "supabase_replication_admin"
+      ],
+      "tipos": [
+        "uuid"
+      ],
+      "anon_superuser": false,
+      "assinatura_casa": true
+    },
+    {
+      "nome": "bfr_staff_can_access_channel",
+      "ret": "bool",
+      "vol": "s",
+      "definer": "true",
+      "dono": "postgres",
+      "acl": "=X/postgres|postgres=X/postgres|authenticated=X/postgres|service_role=X/postgres",
+      "ident": "target_channel uuid",
+      "anon_explicito": false,
+      "public_explicito": true,
+      "acl_nula": false,
+      "precisa_revoke_anon": false,
+      "preservar": [
+        "dashboard_user",
+        "pgbouncer",
+        "supabase_auth_admin",
+        "supabase_etl_admin",
+        "supabase_functions_admin",
+        "supabase_privileged_role",
+        "supabase_read_only_user",
+        "supabase_replication_admin"
+      ],
+      "tipos": [
+        "uuid"
+      ],
+      "anon_superuser": false,
+      "assinatura_casa": true
+    },
+    {
+      "nome": "bfr_staff_can_message_recipient",
+      "ret": "bool",
+      "vol": "s",
+      "definer": "true",
+      "dono": "postgres",
+      "acl": "=X/postgres|postgres=X/postgres|authenticated=X/postgres|service_role=X/postgres",
+      "ident": "target_profile uuid",
+      "anon_explicito": false,
+      "public_explicito": true,
+      "acl_nula": false,
+      "precisa_revoke_anon": false,
+      "preservar": [
+        "dashboard_user",
+        "pgbouncer",
+        "supabase_auth_admin",
+        "supabase_etl_admin",
+        "supabase_functions_admin",
+        "supabase_privileged_role",
+        "supabase_read_only_user",
+        "supabase_replication_admin"
+      ],
+      "tipos": [
+        "uuid"
+      ],
+      "anon_superuser": false,
+      "assinatura_casa": true
+    },
+    {
+      "nome": "bfr_staff_is_manager",
+      "ret": "bool",
+      "vol": "s",
+      "definer": "true",
+      "dono": "postgres",
+      "acl": "=X/postgres|postgres=X/postgres|authenticated=X/postgres|service_role=X/postgres",
+      "ident": "",
+      "anon_explicito": false,
+      "public_explicito": true,
+      "acl_nula": false,
+      "precisa_revoke_anon": false,
+      "preservar": [
+        "dashboard_user",
+        "pgbouncer",
+        "supabase_auth_admin",
+        "supabase_etl_admin",
+        "supabase_functions_admin",
+        "supabase_privileged_role",
+        "supabase_read_only_user",
+        "supabase_replication_admin"
+      ],
+      "tipos": [],
+      "anon_superuser": false,
+      "assinatura_casa": true
+    },
+    {
+      "nome": "bfr_collab_is_staff",
+      "ret": "bool",
+      "vol": "s",
+      "definer": "true",
+      "dono": "postgres",
+      "acl": "=X/postgres|postgres=X/postgres|authenticated=X/postgres|service_role=X/postgres",
+      "ident": "",
+      "anon_explicito": false,
+      "public_explicito": true,
+      "acl_nula": false,
+      "precisa_revoke_anon": false,
+      "preservar": [
+        "dashboard_user",
+        "pgbouncer",
+        "supabase_auth_admin",
+        "supabase_etl_admin",
+        "supabase_functions_admin",
+        "supabase_privileged_role",
+        "supabase_read_only_user",
+        "supabase_replication_admin"
+      ],
+      "tipos": [],
+      "anon_superuser": false,
+      "assinatura_casa": true
+    },
+    {
+      "nome": "bfr_collab_is_manager",
+      "ret": "bool",
+      "vol": "s",
+      "definer": "true",
+      "dono": "postgres",
+      "acl": "=X/postgres|postgres=X/postgres|authenticated=X/postgres|service_role=X/postgres",
+      "ident": "",
+      "anon_explicito": false,
+      "public_explicito": true,
+      "acl_nula": false,
+      "precisa_revoke_anon": false,
+      "preservar": [
+        "dashboard_user",
+        "pgbouncer",
+        "supabase_auth_admin",
+        "supabase_etl_admin",
+        "supabase_functions_admin",
+        "supabase_privileged_role",
+        "supabase_read_only_user",
+        "supabase_replication_admin"
+      ],
+      "tipos": [],
+      "anon_superuser": false,
+      "assinatura_casa": true
+    },
+    {
+      "nome": "bfr_collab_can_profile",
+      "ret": "bool",
+      "vol": "s",
+      "definer": "true",
+      "dono": "postgres",
+      "acl": "=X/postgres|postgres=X/postgres|authenticated=X/postgres|service_role=X/postgres",
+      "ident": "target_profile uuid",
+      "anon_explicito": false,
+      "public_explicito": true,
+      "acl_nula": false,
+      "precisa_revoke_anon": false,
+      "preservar": [
+        "dashboard_user",
+        "pgbouncer",
+        "supabase_auth_admin",
+        "supabase_etl_admin",
+        "supabase_functions_admin",
+        "supabase_privileged_role",
+        "supabase_read_only_user",
+        "supabase_replication_admin"
+      ],
+      "tipos": [
+        "uuid"
+      ],
+      "anon_superuser": false,
+      "assinatura_casa": true
+    },
+    {
+      "nome": "bfr_collab_can_project",
+      "ret": "bool",
+      "vol": "s",
+      "definer": "true",
+      "dono": "postgres",
+      "acl": "=X/postgres|postgres=X/postgres|authenticated=X/postgres|service_role=X/postgres",
+      "ident": "target_project uuid",
+      "anon_explicito": false,
+      "public_explicito": true,
+      "acl_nula": false,
+      "precisa_revoke_anon": false,
+      "preservar": [
+        "dashboard_user",
+        "pgbouncer",
+        "supabase_auth_admin",
+        "supabase_etl_admin",
+        "supabase_functions_admin",
+        "supabase_privileged_role",
+        "supabase_read_only_user",
+        "supabase_replication_admin"
+      ],
+      "tipos": [
+        "uuid"
+      ],
+      "anon_superuser": false,
+      "assinatura_casa": true
+    },
+    {
+      "nome": "bfr_collab_can_task",
+      "ret": "bool",
+      "vol": "s",
+      "definer": "true",
+      "dono": "postgres",
+      "acl": "=X/postgres|postgres=X/postgres|authenticated=X/postgres|service_role=X/postgres",
+      "ident": "target_task uuid",
+      "anon_explicito": false,
+      "public_explicito": true,
+      "acl_nula": false,
+      "precisa_revoke_anon": false,
+      "preservar": [
+        "dashboard_user",
+        "pgbouncer",
+        "supabase_auth_admin",
+        "supabase_etl_admin",
+        "supabase_functions_admin",
+        "supabase_privileged_role",
+        "supabase_read_only_user",
+        "supabase_replication_admin"
+      ],
+      "tipos": [
+        "uuid"
+      ],
+      "anon_superuser": false,
+      "assinatura_casa": true
+    },
+    {
+      "nome": "bfr_staff_can_manage_channel",
+      "ret": "bool",
+      "vol": "s",
+      "definer": "true",
+      "dono": "postgres",
+      "acl": "=X/postgres|postgres=X/postgres|authenticated=X/postgres|service_role=X/postgres",
+      "ident": "target_channel uuid",
+      "anon_explicito": false,
+      "public_explicito": true,
+      "acl_nula": false,
+      "precisa_revoke_anon": false,
+      "preservar": [
+        "dashboard_user",
+        "pgbouncer",
+        "supabase_auth_admin",
+        "supabase_etl_admin",
+        "supabase_functions_admin",
+        "supabase_privileged_role",
+        "supabase_read_only_user",
+        "supabase_replication_admin"
+      ],
+      "tipos": [
+        "uuid"
+      ],
+      "anon_superuser": false,
+      "assinatura_casa": true
+    },
+    {
+      "nome": "bfr_staff_can_read_message",
+      "ret": "bool",
+      "vol": "s",
+      "definer": "true",
+      "dono": "postgres",
+      "acl": "=X/postgres|postgres=X/postgres|authenticated=X/postgres|service_role=X/postgres",
+      "ident": "target_message uuid",
+      "anon_explicito": false,
+      "public_explicito": true,
+      "acl_nula": false,
+      "precisa_revoke_anon": false,
+      "preservar": [
+        "dashboard_user",
+        "pgbouncer",
+        "supabase_auth_admin",
+        "supabase_etl_admin",
+        "supabase_functions_admin",
+        "supabase_privileged_role",
+        "supabase_read_only_user",
+        "supabase_replication_admin"
+      ],
+      "tipos": [
+        "uuid"
+      ],
+      "anon_superuser": false,
+      "assinatura_casa": true
+    },
+    {
+      "nome": "internal_chat_is_staff",
+      "ret": "bool",
+      "vol": "s",
+      "definer": "true",
+      "dono": "postgres",
+      "acl": "=X/postgres|postgres=X/postgres|authenticated=X/postgres|service_role=X/postgres",
+      "ident": "",
+      "anon_explicito": false,
+      "public_explicito": true,
+      "acl_nula": false,
+      "precisa_revoke_anon": false,
+      "preservar": [
+        "dashboard_user",
+        "pgbouncer",
+        "supabase_auth_admin",
+        "supabase_etl_admin",
+        "supabase_functions_admin",
+        "supabase_privileged_role",
+        "supabase_read_only_user",
+        "supabase_replication_admin"
+      ],
+      "tipos": [],
+      "anon_superuser": false,
+      "assinatura_casa": true
+    },
+    {
+      "nome": "internal_chat_can_access_room",
+      "ret": "bool",
+      "vol": "s",
+      "definer": "true",
+      "dono": "postgres",
+      "acl": "=X/postgres|postgres=X/postgres|authenticated=X/postgres|service_role=X/postgres",
+      "ident": "target_room uuid",
+      "anon_explicito": false,
+      "public_explicito": true,
+      "acl_nula": false,
+      "precisa_revoke_anon": false,
+      "preservar": [
+        "dashboard_user",
+        "pgbouncer",
+        "supabase_auth_admin",
+        "supabase_etl_admin",
+        "supabase_functions_admin",
+        "supabase_privileged_role",
+        "supabase_read_only_user",
+        "supabase_replication_admin"
+      ],
+      "tipos": [
+        "uuid"
+      ],
+      "anon_superuser": false,
+      "assinatura_casa": true
+    },
+    {
+      "nome": "family_normalize_name",
+      "ret": "text",
+      "vol": "i",
+      "definer": "false",
+      "dono": "postgres",
+      "acl": "=X/postgres|postgres=X/postgres|anon=X/postgres|authenticated=X/postgres|service_role=X/postgres",
+      "ident": "value text",
+      "anon_explicito": true,
+      "public_explicito": true,
+      "acl_nula": false,
+      "precisa_revoke_anon": true,
+      "preservar": [
+        "dashboard_user",
+        "pgbouncer",
+        "supabase_auth_admin",
+        "supabase_etl_admin",
+        "supabase_functions_admin",
+        "supabase_privileged_role",
+        "supabase_read_only_user",
+        "supabase_replication_admin"
+      ],
+      "tipos": [
+        "text"
+      ],
+      "anon_superuser": false,
+      "assinatura_casa": true
+    },
+    {
+      "nome": "family_normalize_cpf",
+      "ret": "text",
+      "vol": "i",
+      "definer": "false",
+      "dono": "postgres",
+      "acl": "=X/postgres|postgres=X/postgres|anon=X/postgres|authenticated=X/postgres|service_role=X/postgres",
+      "ident": "value text",
+      "anon_explicito": true,
+      "public_explicito": true,
+      "acl_nula": false,
+      "precisa_revoke_anon": true,
+      "preservar": [
+        "dashboard_user",
+        "pgbouncer",
+        "supabase_auth_admin",
+        "supabase_etl_admin",
+        "supabase_functions_admin",
+        "supabase_privileged_role",
+        "supabase_read_only_user",
+        "supabase_replication_admin"
+      ],
+      "tipos": [
+        "text"
+      ],
+      "anon_superuser": false,
+      "assinatura_casa": true
+    },
+    {
+      "nome": "family_cpf_is_valid",
+      "ret": "bool",
+      "vol": "i",
+      "definer": "false",
+      "dono": "postgres",
+      "acl": "=X/postgres|postgres=X/postgres|anon=X/postgres|authenticated=X/postgres|service_role=X/postgres",
+      "ident": "value text",
+      "anon_explicito": true,
+      "public_explicito": true,
+      "acl_nula": false,
+      "precisa_revoke_anon": true,
+      "preservar": [
+        "dashboard_user",
+        "pgbouncer",
+        "supabase_auth_admin",
+        "supabase_etl_admin",
+        "supabase_functions_admin",
+        "supabase_privileged_role",
+        "supabase_read_only_user",
+        "supabase_replication_admin"
+      ],
+      "tipos": [
+        "text"
+      ],
+      "anon_superuser": false,
+      "assinatura_casa": true
+    },
+    {
+      "nome": "bfr_is_schedule_manager",
+      "ret": "bool",
+      "vol": "s",
+      "definer": "true",
+      "dono": "postgres",
+      "acl": "=X/postgres|postgres=X/postgres|authenticated=X/postgres|service_role=X/postgres",
+      "ident": "",
+      "anon_explicito": false,
+      "public_explicito": true,
+      "acl_nula": false,
+      "precisa_revoke_anon": false,
+      "preservar": [
+        "dashboard_user",
+        "pgbouncer",
+        "supabase_auth_admin",
+        "supabase_etl_admin",
+        "supabase_functions_admin",
+        "supabase_privileged_role",
+        "supabase_read_only_user",
+        "supabase_replication_admin"
+      ],
+      "tipos": [],
+      "anon_superuser": false,
+      "assinatura_casa": true
+    },
+    {
+      "nome": "bfr_current_teacher_id",
+      "ret": "uuid",
+      "vol": "s",
+      "definer": "true",
+      "dono": "postgres",
+      "acl": "=X/postgres|postgres=X/postgres|authenticated=X/postgres|service_role=X/postgres",
+      "ident": "",
+      "anon_explicito": false,
+      "public_explicito": true,
+      "acl_nula": false,
+      "precisa_revoke_anon": false,
+      "preservar": [
+        "dashboard_user",
+        "pgbouncer",
+        "supabase_auth_admin",
+        "supabase_etl_admin",
+        "supabase_functions_admin",
+        "supabase_privileged_role",
+        "supabase_read_only_user",
+        "supabase_replication_admin"
+      ],
+      "tipos": [],
+      "anon_superuser": false,
+      "assinatura_casa": true
+    },
+    {
+      "nome": "bfr_teacher_can_manage_student",
+      "ret": "bool",
+      "vol": "s",
+      "definer": "true",
+      "dono": "postgres",
+      "acl": "=X/postgres|postgres=X/postgres|authenticated=X/postgres|service_role=X/postgres",
+      "ident": "p_student_id uuid, p_subject text",
+      "anon_explicito": false,
+      "public_explicito": true,
+      "acl_nula": false,
+      "precisa_revoke_anon": false,
+      "preservar": [
+        "dashboard_user",
+        "pgbouncer",
+        "supabase_auth_admin",
+        "supabase_etl_admin",
+        "supabase_functions_admin",
+        "supabase_privileged_role",
+        "supabase_read_only_user",
+        "supabase_replication_admin"
+      ],
+      "tipos": [
+        "uuid",
+        "text"
+      ],
+      "anon_superuser": false,
+      "assinatura_casa": true
+    },
+    {
+      "nome": "bfr_teacher_can_manage_class_subject",
+      "ret": "bool",
+      "vol": "s",
+      "definer": "true",
+      "dono": "postgres",
+      "acl": "=X/postgres|postgres=X/postgres|authenticated=X/postgres|service_role=X/postgres",
+      "ident": "p_class_id uuid, p_subject text",
+      "anon_explicito": false,
+      "public_explicito": true,
+      "acl_nula": false,
+      "precisa_revoke_anon": false,
+      "preservar": [
+        "dashboard_user",
+        "pgbouncer",
+        "supabase_auth_admin",
+        "supabase_etl_admin",
+        "supabase_functions_admin",
+        "supabase_privileged_role",
+        "supabase_read_only_user",
+        "supabase_replication_admin"
+      ],
+      "tipos": [
+        "uuid",
+        "text"
+      ],
+      "anon_superuser": false,
+      "assinatura_casa": true
+    },
+    {
+      "nome": "bfr_subject_matches",
+      "ret": "bool",
+      "vol": "i",
+      "definer": "false",
+      "dono": "postgres",
+      "acl": "=X/postgres|postgres=X/postgres|anon=X/postgres|authenticated=X/postgres|service_role=X/postgres",
+      "ident": "p_schedule_subject text, p_requested_subject text",
+      "anon_explicito": true,
+      "public_explicito": true,
+      "acl_nula": false,
+      "precisa_revoke_anon": true,
+      "preservar": [
+        "dashboard_user",
+        "pgbouncer",
+        "supabase_auth_admin",
+        "supabase_etl_admin",
+        "supabase_functions_admin",
+        "supabase_privileged_role",
+        "supabase_read_only_user",
+        "supabase_replication_admin"
+      ],
+      "tipos": [
+        "text",
+        "text"
+      ],
+      "anon_superuser": false,
+      "assinatura_casa": true
+    },
+    {
+      "nome": "sports_role_allowed",
+      "ret": "bool",
+      "vol": "s",
+      "definer": "true",
+      "dono": "postgres",
+      "acl": "=X/postgres|postgres=X/postgres|authenticated=X/postgres|service_role=X/postgres",
+      "ident": "allowed_roles text[]",
+      "anon_explicito": false,
+      "public_explicito": true,
+      "acl_nula": false,
+      "precisa_revoke_anon": false,
+      "preservar": [
+        "dashboard_user",
+        "pgbouncer",
+        "supabase_auth_admin",
+        "supabase_etl_admin",
+        "supabase_functions_admin",
+        "supabase_privileged_role",
+        "supabase_read_only_user",
+        "supabase_replication_admin"
+      ],
+      "tipos": [
+        "text[]"
+      ],
+      "anon_superuser": false,
+      "assinatura_casa": true
+    },
+    {
+      "nome": "bfr_can_manage_communications",
+      "ret": "bool",
+      "vol": "s",
+      "definer": "true",
+      "dono": "postgres",
+      "acl": "=X/postgres|postgres=X/postgres|anon=X/postgres|authenticated=X/postgres|service_role=X/postgres",
+      "ident": "",
+      "anon_explicito": true,
+      "public_explicito": true,
+      "acl_nula": false,
+      "precisa_revoke_anon": true,
+      "preservar": [
+        "dashboard_user",
+        "pgbouncer",
+        "supabase_auth_admin",
+        "supabase_etl_admin",
+        "supabase_functions_admin",
+        "supabase_privileged_role",
+        "supabase_read_only_user",
+        "supabase_replication_admin"
+      ],
+      "tipos": [],
+      "anon_superuser": false,
+      "assinatura_casa": true
+    },
+    {
+      "nome": "bfr_pedagogical_can_manage_student",
+      "ret": "bool",
+      "vol": "s",
+      "definer": "true",
+      "dono": "postgres",
+      "acl": "=X/postgres|postgres=X/postgres|anon=X/postgres|authenticated=X/postgres|service_role=X/postgres",
+      "ident": "p_student_id uuid, p_subject text",
+      "anon_explicito": true,
+      "public_explicito": true,
+      "acl_nula": false,
+      "precisa_revoke_anon": true,
+      "preservar": [
+        "dashboard_user",
+        "pgbouncer",
+        "supabase_auth_admin",
+        "supabase_etl_admin",
+        "supabase_functions_admin",
+        "supabase_privileged_role",
+        "supabase_read_only_user",
+        "supabase_replication_admin"
+      ],
+      "tipos": [
+        "uuid",
+        "text"
+      ],
+      "anon_superuser": false,
+      "assinatura_casa": true
+    },
+    {
+      "nome": "bfr_staff_can_manage_student_scope",
+      "ret": "bool",
+      "vol": "s",
+      "definer": "true",
+      "dono": "postgres",
+      "acl": "=X/postgres|postgres=X/postgres|anon=X/postgres|authenticated=X/postgres|service_role=X/postgres",
+      "ident": "p_student_id uuid, p_subject text",
+      "anon_explicito": true,
+      "public_explicito": true,
+      "acl_nula": false,
+      "precisa_revoke_anon": true,
+      "preservar": [
+        "dashboard_user",
+        "pgbouncer",
+        "supabase_auth_admin",
+        "supabase_etl_admin",
+        "supabase_functions_admin",
+        "supabase_privileged_role",
+        "supabase_read_only_user",
+        "supabase_replication_admin"
+      ],
+      "tipos": [
+        "uuid",
+        "text"
+      ],
+      "anon_superuser": false,
+      "assinatura_casa": true
+    },
+    {
+      "nome": "bfr_has_specialized_permission",
+      "ret": "bool",
+      "vol": "s",
+      "definer": "true",
+      "dono": "postgres",
+      "acl": "=X/postgres|postgres=X/postgres|anon=X/postgres|authenticated=X/postgres|service_role=X/postgres",
+      "ident": "permission_code text",
+      "anon_explicito": true,
+      "public_explicito": true,
+      "acl_nula": false,
+      "precisa_revoke_anon": true,
+      "preservar": [
+        "dashboard_user",
+        "pgbouncer",
+        "supabase_auth_admin",
+        "supabase_etl_admin",
+        "supabase_functions_admin",
+        "supabase_privileged_role",
+        "supabase_read_only_user",
+        "supabase_replication_admin"
+      ],
+      "tipos": [
+        "text"
+      ],
+      "anon_superuser": false,
+      "assinatura_casa": true
+    },
+    {
+      "nome": "bfr_family_can_view_aee",
+      "ret": "bool",
+      "vol": "s",
+      "definer": "true",
+      "dono": "postgres",
+      "acl": "=X/postgres|postgres=X/postgres|anon=X/postgres|authenticated=X/postgres|service_role=X/postgres",
+      "ident": "target_student uuid",
+      "anon_explicito": true,
+      "public_explicito": true,
+      "acl_nula": false,
+      "precisa_revoke_anon": true,
+      "preservar": [
+        "dashboard_user",
+        "pgbouncer",
+        "supabase_auth_admin",
+        "supabase_etl_admin",
+        "supabase_functions_admin",
+        "supabase_privileged_role",
+        "supabase_read_only_user",
+        "supabase_replication_admin"
+      ],
+      "tipos": [
+        "uuid"
+      ],
+      "anon_superuser": false,
+      "assinatura_casa": true
+    },
+    {
+      "nome": "bfr_support_request_access",
+      "ret": "bool",
+      "vol": "s",
+      "definer": "true",
+      "dono": "postgres",
+      "acl": "=X/postgres|postgres=X/postgres|anon=X/postgres|authenticated=X/postgres|service_role=X/postgres",
+      "ident": "target_student uuid, target_requester uuid, target_professional uuid",
+      "anon_explicito": true,
+      "public_explicito": true,
+      "acl_nula": false,
+      "precisa_revoke_anon": true,
+      "preservar": [
+        "dashboard_user",
+        "pgbouncer",
+        "supabase_auth_admin",
+        "supabase_etl_admin",
+        "supabase_functions_admin",
+        "supabase_privileged_role",
+        "supabase_read_only_user",
+        "supabase_replication_admin"
+      ],
+      "tipos": [
+        "uuid",
+        "uuid",
+        "uuid"
+      ],
+      "anon_superuser": false,
+      "assinatura_casa": true
+    },
+    {
+      "nome": "bfr_support_detail_access",
+      "ret": "bool",
+      "vol": "s",
+      "definer": "true",
+      "dono": "postgres",
+      "acl": "=X/postgres|postgres=X/postgres|anon=X/postgres|authenticated=X/postgres|service_role=X/postgres",
+      "ident": "target_request uuid, target_student uuid, private_record boolean, owner_id uuid",
+      "anon_explicito": true,
+      "public_explicito": true,
+      "acl_nula": false,
+      "precisa_revoke_anon": true,
+      "preservar": [
+        "dashboard_user",
+        "pgbouncer",
+        "supabase_auth_admin",
+        "supabase_etl_admin",
+        "supabase_functions_admin",
+        "supabase_privileged_role",
+        "supabase_read_only_user",
+        "supabase_replication_admin"
+      ],
+      "tipos": [
+        "uuid",
+        "uuid",
+        "boolean",
+        "uuid"
+      ],
+      "anon_superuser": false,
+      "assinatura_casa": true
+    },
+    {
+      "nome": "bfr_support_request_create_access",
+      "ret": "bool",
+      "vol": "s",
+      "definer": "true",
+      "dono": "postgres",
+      "acl": "=X/postgres|postgres=X/postgres|anon=X/postgres|authenticated=X/postgres|service_role=X/postgres",
+      "ident": "target_student uuid",
+      "anon_explicito": true,
+      "public_explicito": true,
+      "acl_nula": false,
+      "precisa_revoke_anon": true,
+      "preservar": [
+        "dashboard_user",
+        "pgbouncer",
+        "supabase_auth_admin",
+        "supabase_etl_admin",
+        "supabase_functions_admin",
+        "supabase_privileged_role",
+        "supabase_read_only_user",
+        "supabase_replication_admin"
+      ],
+      "tipos": [
+        "uuid"
+      ],
+      "anon_superuser": false,
+      "assinatura_casa": true
+    },
+    {
+      "nome": "aee_can_write_student",
+      "ret": "bool",
+      "vol": "s",
+      "definer": "true",
+      "dono": "postgres",
+      "acl": "=X/postgres|postgres=X/postgres|anon=X/postgres|authenticated=X/postgres|service_role=X/postgres",
+      "ident": "target_student uuid",
+      "anon_explicito": true,
+      "public_explicito": true,
+      "acl_nula": false,
+      "precisa_revoke_anon": true,
+      "preservar": [
+        "dashboard_user",
+        "pgbouncer",
+        "supabase_auth_admin",
+        "supabase_etl_admin",
+        "supabase_functions_admin",
+        "supabase_privileged_role",
+        "supabase_read_only_user",
+        "supabase_replication_admin"
+      ],
+      "tipos": [
+        "uuid"
+      ],
+      "anon_superuser": false,
+      "assinatura_casa": true
+    },
+    {
+      "nome": "bfr_psychology_can_write",
+      "ret": "bool",
+      "vol": "s",
+      "definer": "true",
+      "dono": "postgres",
+      "acl": "=X/postgres|postgres=X/postgres|anon=X/postgres|authenticated=X/postgres|service_role=X/postgres",
+      "ident": "target_professional uuid",
+      "anon_explicito": true,
+      "public_explicito": true,
+      "acl_nula": false,
+      "precisa_revoke_anon": true,
+      "preservar": [
+        "dashboard_user",
+        "pgbouncer",
+        "supabase_auth_admin",
+        "supabase_etl_admin",
+        "supabase_functions_admin",
+        "supabase_privileged_role",
+        "supabase_read_only_user",
+        "supabase_replication_admin"
+      ],
+      "tipos": [
+        "uuid"
+      ],
+      "anon_superuser": false,
+      "assinatura_casa": true
+    },
+    {
+      "nome": "bfr_psychology_record_access",
+      "ret": "bool",
+      "vol": "s",
+      "definer": "true",
+      "dono": "postgres",
+      "acl": "=X/postgres|postgres=X/postgres|anon=X/postgres|authenticated=X/postgres|service_role=X/postgres",
+      "ident": "target_student uuid, target_professional uuid, shared_with_team boolean, shared_with_family boolean, shared_with_aee boolean",
+      "anon_explicito": true,
+      "public_explicito": true,
+      "acl_nula": false,
+      "precisa_revoke_anon": true,
+      "preservar": [
+        "dashboard_user",
+        "pgbouncer",
+        "supabase_auth_admin",
+        "supabase_etl_admin",
+        "supabase_functions_admin",
+        "supabase_privileged_role",
+        "supabase_read_only_user",
+        "supabase_replication_admin"
+      ],
+      "tipos": [
+        "uuid",
+        "uuid",
+        "boolean",
+        "boolean",
+        "boolean"
+      ],
+      "anon_superuser": false,
+      "assinatura_casa": true
+    },
+    {
+      "nome": "bfr_psychology_active_professional",
+      "ret": "bool",
+      "vol": "s",
+      "definer": "true",
+      "dono": "postgres",
+      "acl": "=X/postgres|postgres=X/postgres|anon=X/postgres|authenticated=X/postgres|service_role=X/postgres",
+      "ident": "target_professional uuid",
+      "anon_explicito": true,
+      "public_explicito": true,
+      "acl_nula": false,
+      "precisa_revoke_anon": true,
+      "preservar": [
+        "dashboard_user",
+        "pgbouncer",
+        "supabase_auth_admin",
+        "supabase_etl_admin",
+        "supabase_functions_admin",
+        "supabase_privileged_role",
+        "supabase_read_only_user",
+        "supabase_replication_admin"
+      ],
+      "tipos": [
+        "uuid"
+      ],
+      "anon_superuser": false,
+      "assinatura_casa": true
+    },
+    {
+      "nome": "bfr_can_manage_student_directory",
+      "ret": "bool",
+      "vol": "s",
+      "definer": "true",
+      "dono": "postgres",
+      "acl": "=X/postgres|postgres=X/postgres|anon=X/postgres|authenticated=X/postgres|service_role=X/postgres",
+      "ident": "",
+      "anon_explicito": true,
+      "public_explicito": true,
+      "acl_nula": false,
+      "precisa_revoke_anon": true,
+      "preservar": [
+        "dashboard_user",
+        "pgbouncer",
+        "supabase_auth_admin",
+        "supabase_etl_admin",
+        "supabase_functions_admin",
+        "supabase_privileged_role",
+        "supabase_read_only_user",
+        "supabase_replication_admin"
+      ],
+      "tipos": [],
+      "anon_superuser": false,
+      "assinatura_casa": true
+    },
+    {
+      "nome": "aee_game_can_access_student",
+      "ret": "bool",
+      "vol": "s",
+      "definer": "true",
+      "dono": "postgres",
+      "acl": "=X/postgres|postgres=X/postgres|anon=X/postgres|authenticated=X/postgres|service_role=X/postgres",
+      "ident": "target_student uuid",
+      "anon_explicito": true,
+      "public_explicito": true,
+      "acl_nula": false,
+      "precisa_revoke_anon": true,
+      "preservar": [
+        "dashboard_user",
+        "pgbouncer",
+        "supabase_auth_admin",
+        "supabase_etl_admin",
+        "supabase_functions_admin",
+        "supabase_privileged_role",
+        "supabase_read_only_user",
+        "supabase_replication_admin"
+      ],
+      "tipos": [
+        "uuid"
+      ],
+      "anon_superuser": false,
+      "assinatura_casa": true
+    },
+    {
+      "nome": "bfr_learning_is_manager",
+      "ret": "bool",
+      "vol": "s",
+      "definer": "true",
+      "dono": "postgres",
+      "acl": "=X/postgres|postgres=X/postgres|anon=X/postgres|authenticated=X/postgres|service_role=X/postgres",
+      "ident": "",
+      "anon_explicito": true,
+      "public_explicito": true,
+      "acl_nula": false,
+      "precisa_revoke_anon": true,
+      "preservar": [
+        "dashboard_user",
+        "pgbouncer",
+        "supabase_auth_admin",
+        "supabase_etl_admin",
+        "supabase_functions_admin",
+        "supabase_privileged_role",
+        "supabase_read_only_user",
+        "supabase_replication_admin"
+      ],
+      "tipos": [],
+      "anon_superuser": false,
+      "assinatura_casa": true
+    },
+    {
+      "nome": "bfr_is_platform_admin",
+      "ret": "bool",
+      "vol": "s",
+      "definer": "true",
+      "dono": "postgres",
+      "acl": "=X/postgres|postgres=X/postgres|anon=X/postgres|authenticated=X/postgres|service_role=X/postgres",
+      "ident": "",
+      "anon_explicito": true,
+      "public_explicito": true,
+      "acl_nula": false,
+      "precisa_revoke_anon": true,
+      "preservar": [
+        "dashboard_user",
+        "pgbouncer",
+        "supabase_auth_admin",
+        "supabase_etl_admin",
+        "supabase_functions_admin",
+        "supabase_privileged_role",
+        "supabase_read_only_user",
+        "supabase_replication_admin"
+      ],
+      "tipos": [],
+      "anon_superuser": false,
+      "assinatura_casa": true
+    },
+    {
+      "nome": "bfr_is_municipal_authority",
+      "ret": "bool",
+      "vol": "s",
+      "definer": "true",
+      "dono": "postgres",
+      "acl": "=X/postgres|postgres=X/postgres|anon=X/postgres|authenticated=X/postgres|service_role=X/postgres",
+      "ident": "",
+      "anon_explicito": true,
+      "public_explicito": true,
+      "acl_nula": false,
+      "precisa_revoke_anon": true,
+      "preservar": [
+        "dashboard_user",
+        "pgbouncer",
+        "supabase_auth_admin",
+        "supabase_etl_admin",
+        "supabase_functions_admin",
+        "supabase_privileged_role",
+        "supabase_read_only_user",
+        "supabase_replication_admin"
+      ],
+      "tipos": [],
+      "anon_superuser": false,
+      "assinatura_casa": true
+    },
+    {
+      "nome": "bfr_municipalities_visible",
+      "ret": "bool",
+      "vol": "s",
+      "definer": "true",
+      "dono": "postgres",
+      "acl": "=X/postgres|postgres=X/postgres|anon=X/postgres|authenticated=X/postgres|service_role=X/postgres",
+      "ident": "p_id uuid",
+      "anon_explicito": true,
+      "public_explicito": true,
+      "acl_nula": false,
+      "precisa_revoke_anon": true,
+      "preservar": [
+        "dashboard_user",
+        "pgbouncer",
+        "supabase_auth_admin",
+        "supabase_etl_admin",
+        "supabase_functions_admin",
+        "supabase_privileged_role",
+        "supabase_read_only_user",
+        "supabase_replication_admin"
+      ],
+      "tipos": [
+        "uuid"
+      ],
+      "anon_superuser": false,
+      "assinatura_casa": true
+    }
+  ],
+  "fixtures": {
+    "public_sem_entrada_chumba": true,
+    "acl_nula_chumba": true,
+    "mundo_onde_todos_tem_entrada_propria_nao_preserva_nada": true,
+    "mundo_da_acl_real_perde_papeis": true,
+    "papeis_que_perderiam": [
+      "dashboard_user",
+      "pgbouncer",
+      "supabase_auth_admin",
+      "supabase_etl_admin",
+      "supabase_functions_admin",
+      "supabase_privileged_role",
+      "supabase_read_only_user",
+      "supabase_replication_admin"
+    ],
+    "mundo_sem_transaccao_chumba": true,
+    "assinatura": {
+      "nomes_de_parametro": true,
+      "tipo_de_duas_palavras": true,
+      "aridade_trocada": true,
+      "tipo_trocado": true,
+      "lista_vazia": true
+    },
+    "varredura_dispara": {
+      "emails": 1,
+      "jwt": 0
+    },
+    "predicado_de_exclusao_de_papeis": {
+      "sem_escape_devora_pgbouncer": true,
+      "escapado_so_omite_a_familia": true,
+      "papel_de_plataforma_fica": true
+    }
+  },
+  "estrutura_dos_arquivos": {
+    "candidata": {
+      "begin": 1,
+      "commit": 1,
+      "revoke_public": 45,
+      "revoke_anon": 22,
+      "grant_public": 0,
+      "grant_preservacao": 45,
+      "grant_anon": 0,
+      "revoke_preservacao": 0,
+      "statement_fora_dos_graus": 0
+    },
+    "reversao": {
+      "begin": 1,
+      "commit": 1,
+      "revoke_public": 0,
+      "revoke_anon": 0,
+      "grant_public": 45,
+      "grant_preservacao": 0,
+      "grant_anon": 22,
+      "revoke_preservacao": 45,
+      "statement_fora_dos_graus": 0
+    },
+    "fixture_sem_transaccao": {
+      "begin": 0,
+      "commit": 0,
+      "revoke_public": 1,
+      "revoke_anon": 0,
+      "grant_public": 0,
+      "grant_preservacao": 0,
+      "grant_anon": 0,
+      "revoke_preservacao": 0,
+      "statement_fora_dos_graus": 0
+    },
+    "fixture_reversao_sem_devolver_anon": {
+      "begin": 0,
+      "commit": 0,
+      "revoke_public": 0,
+      "revoke_anon": 0,
+      "grant_public": 1,
+      "grant_preservacao": 1,
+      "grant_anon": 0,
+      "revoke_preservacao": 0,
+      "statement_fora_dos_graus": 0
+    }
+  },
+  "arquivos": {
+    "candidata": {
+      "caminho": "scripts/p74-pen44-ddl-candidata.sql",
+      "bytes": 17835,
+      "md5": "262e22e5a63fadc42204b7d8c5b985c1"
+    },
+    "reversao": {
+      "caminho": "scripts/p74-pen44-ddl-reversao.sql",
+      "bytes": 16574,
+      "md5": "68c5b2f0e15dbc16bafde3f608f29dbf"
+    }
+  },
+  "o_que_nao_prova": "prova que a candidata existe, que o grau a fechar esta medido na proacl e que a preservacao de cada papel e calculada por has_function_privilege antes e por simulacao com heranca depois. NAO prova o canal HTTP (isso e scripts/p73-sonda-porta-municipal.mjs), nao prova que os 14 gatilhos nem as 3 funcoes da PEN-43 estejam fechados, e nao prova que nenhum papel de plataforma chame uma destas funcoes por caminho interno que o catalogo nao descreva. A aplicacao pede OK literal proprio.",
+  "portoes": [
+    {
+      "nome": "o_alvo_e_lido_do_catalogo_e_cada_nome_traz_acl_identidade_retorno_e_papeis_enumerados",
+      "verde": true,
+      "detalhe": {
+        "funcoes_lidas": 162,
+        "alvo": 45,
+        "papeis": 16,
+        "tipos_null": []
+      }
+    },
+    {
+      "nome": "o_censo_de_papeis_ve_do_catalogo_inteiro_e_o_predicado_nao_devora_um_papel_real",
+      "verde": true,
+      "detalhe": {
+        "no_servidor": 31,
+        "esperados": 16,
+        "lidos": 16,
+        "faltantes": [],
+        "sobrantes": [],
+        "nomes_onde_o_curinga_e_o_literal_discordam": [
+          "pgbouncer"
+        ],
+        "predicado": {
+          "sem_escape_devora_pgbouncer": true,
+          "escapado_so_omite_a_familia": true,
+          "papel_de_plataforma_fica": true
+        }
+      }
+    },
+    {
+      "nome": "a_alavanca_e_mesmo_a_entrada_a_public_e_os_dois_mundos_sem_elachumbam_do_alvo",
+      "verde": true,
+      "detalhe": {
+        "public_sem_entrada_chumba": true,
+        "acl_nula_chumba": true,
+        "anon_via_public_sem_acl": 0
+      }
+    },
+    {
+      "nome": "o_anon_nao_e_superuser_nem_dono_de_nada_no_alvo_senao_o_revoke_nao_fecharia_nada",
+      "verde": true,
+      "detalhe": {
+        "anon_superuser": [],
+        "dono_anon": []
+      }
+    },
+    {
+      "nome": "a_preservacao_e_calculada_por_papel_com_heranca_e_a_regua_tem_os_dois_mundos",
+      "verde": true,
+      "detalhe": {
+        "pares_preservados": 360,
+        "papeis_preservados": [
+          "dashboard_user",
+          "pgbouncer",
+          "supabase_auth_admin",
+          "supabase_etl_admin",
+          "supabase_functions_admin",
+          "supabase_privileged_role",
+          "supabase_read_only_user",
+          "supabase_replication_admin"
+        ],
+        "mundo_de_acl_real_perde_papeis": true,
+        "mundo_onde_todos_tem_entrada_propria_nao_preserva_nada": true,
+        "perderiam_na_acl_real": [
+          "dashboard_user",
+          "pgbouncer",
+          "supabase_auth_admin",
+          "supabase_etl_admin",
+          "supabase_functions_admin",
+          "supabase_privileged_role",
+          "supabase_read_only_user",
+          "supabase_replication_admin"
+        ]
+      }
+    },
+    {
+      "nome": "os_grants_de_preservacao_nao_dao_grau_a_quem_ja_o_tem_por_entrada_propria",
+      "verde": true,
+      "detalhe": {
+        "entradas_explicitas_na_acl_real": [
+          "is_aee:4",
+          "is_aee_manager:4",
+          "aee_can_access_student:4"
+        ],
+        "vazios": []
+      }
+    },
+    {
+      "nome": "os_nomes_com_entrada_anon_explicita_trazem_os_dois_revoke_e_os_outros_so_um",
+      "verde": true,
+      "detalhe": {
+        "com_entrada_anon": 22,
+        "sem_entrada_anon": 23,
+        "revoke_anon_no_ficheiro": 22
+      }
+    },
+    {
+      "nome": "os_gatilhos_de_trigger_saem_do_alvo_e_a_saida_e_impressa_em_nome_proprio",
+      "verde": true,
+      "detalhe": {
+        "gatilhos_fora": 14,
+        "rpc_no_alvo": 45,
+        "nomes_gatilho": [
+          "bfr_collab_task_notification_trigger",
+          "bfr_collab_member_notification_trigger",
+          "bfr_collab_comment_notification_trigger",
+          "bfr_staff_audit_trigger",
+          "bfr_touch_updated_at",
+          "sports_touch_updated_at",
+          "bfr_prevent_duplicate_grade",
+          "enforce_bfr_avatar_uniform",
+          "bfr_specialized_audit_trigger",
+          "bfr_support_request_scope_guard",
+          "bfr_psychology_schedule_guard",
+          "bfr_validate_lesson_attendance",
+          "bfr_audit_lesson_attendance_change",
+          "schools_updated_at"
+        ]
+      }
+    },
+    {
+      "nome": "o_escopo_nao_se_sobrepoe_ao_da_pen43_e_a_disjuncao_e_por_chave_independente",
+      "verde": true,
+      "detalhe": {
+        "pen43": [
+          "bfr_municipal_scope_diagnostico",
+          "bfr_municipal_municipio_totais",
+          "bfr_municipal_distribuicao_por_zona"
+        ],
+        "sem_public_no_catalogo": [
+          "bfr_municipal_scope_diagnostico",
+          "bfr_municipal_municipio_totais",
+          "bfr_municipal_distribuicao_por_zona"
+        ],
+        "interseccao": []
+      }
+    },
+    {
+      "nome": "cada_assinatura_emitida_casa_com_a_identidade_do_servidor_e_a_regua_tem_dentes",
+      "verde": true,
+      "detalhe": {
+        "fixtures": {
+          "nomes_de_parametro": true,
+          "tipo_de_duas_palavras": true,
+          "aridade_trocada": true,
+          "tipo_trocado": true,
+          "lista_vazia": true
+        },
+        "por_nome": [
+          "is_aee::",
+          "is_aee_manager::",
+          "aee_can_access_student:uuid:target_student uuid",
+          "bfr_staff_role::"
+        ],
+        "tipos_de_duas_palavras": []
+      }
+    },
+    {
+      "nome": "a_candidata_e_a_reversao_espelham_se_por_assinatura_e_grau_a_grau",
+      "verde": true,
+      "detalhe": {
+        "assinaturas_candidata": 45,
+        "assinaturas_reversao": 45,
+        "espelhos_por_assinatura": true,
+        "ordem_igual": true
+      }
+    },
+    {
+      "nome": "cada_ficheiro_e_uma_unica_transaccao_de_graus_sem_dados_e_dois_mundos_fabricados_chumbam",
+      "verde": true,
+      "detalhe": {
+        "candidata": {
+          "begin": 1,
+          "commit": 1,
+          "revoke_public": 45,
+          "revoke_anon": 22,
+          "grant_public": 0,
+          "grant_preservacao": 45,
+          "grant_anon": 0,
+          "revoke_preservacao": 0,
+          "statement_fora_dos_graus": 0
+        },
+        "reversao": {
+          "begin": 1,
+          "commit": 1,
+          "revoke_public": 0,
+          "revoke_anon": 0,
+          "grant_public": 45,
+          "grant_preservacao": 0,
+          "grant_anon": 22,
+          "revoke_preservacao": 45,
+          "statement_fora_dos_graus": 0
+        },
+        "fixture_sem_transaccao": {
+          "begin": 0,
+          "commit": 0,
+          "revoke_public": 1,
+          "revoke_anon": 0,
+          "grant_public": 0,
+          "grant_preservacao": 0,
+          "grant_anon": 0,
+          "revoke_preservacao": 0,
+          "statement_fora_dos_graus": 0
+        },
+        "fixture_reversao_sem_devolver_anon": {
+          "begin": 0,
+          "commit": 0,
+          "revoke_public": 0,
+          "revoke_anon": 0,
+          "grant_public": 1,
+          "grant_preservacao": 1,
+          "grant_anon": 0,
+          "revoke_preservacao": 0,
+          "statement_fora_dos_graus": 0
+        },
+        "comentario_contado_como_tx": true,
+        "anon_e_preservacao_contados_a_parte": true
+      }
+    },
+    {
+      "nome": "as_contagens_textuais_das_quatro_familias_de_grau_batem_com_o_lido_do_catalogo",
+      "verde": true,
+      "detalhe": {
+        "revoke_anon_cand": 22,
+        "grant_preservacao_cand": 45,
+        "grant_anon_revs": 22,
+        "revoke_preservacao_revs": 45,
+        "com_anon": 22,
+        "com_preservar": 45,
+        "alvo": 45
+      }
+    },
+    {
+      "nome": "nenhuma_query_deste_programa_escreveu_no_banco",
+      "verde": true,
+      "detalhe": {
+        "queries": 4,
+        "nao_leitura": 0
+      }
+    },
+    {
+      "nome": "nenhum_identificador_pessoal_nem_token_entra_neste_registo_e_a_varredura_tem_fixture",
+      "verde": true,
+      "detalhe": {
+        "registo": {
+          "emails": 0,
+          "jwt": 0
+        },
+        "fixture_dispara": {
+          "emails": 1,
+          "jwt": 0
+        }
+      }
+    },
+    {
+      "nome": "os_dois_ficheiros_sao_o_que_o_gerador_produz_byte_a_byte",
+      "verde": true,
+      "detalhe": {
+        "candidata": {
+          "bytes": 17835,
+          "md5": "262e22e5a63fadc42204b7d8c5b985c1"
+        },
+        "reversao": {
+          "bytes": 16574,
+          "md5": "68c5b2f0e15dbc16bafde3f608f29dbf"
+        }
+      }
+    }
+  ],
+  "falhas": [],
+  "veredito": "P74_PEN44_CANDIDATA_OK 16/0"
+}
