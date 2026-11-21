@@ -1,0 +1,156 @@
+{
+  "version": "v140",
+  "data": "2026-11-21",
+  "ok_literal": "resolva todas as pendencias, tem meu ok (21/11, depois da tabela de seis pendências cada uma com o OK que exige)",
+  "nota_do_ok": "cobre a publicacao do bundle escolhido e a escrita de dados municipais. NAO cobre git push (o utilizador respondeu «Nao, deixar local» no mesmo dia) nem a reversao de PEN-43/PEN-44: reverter re-concederia graus a anon e PUBLIC, contra a prioridade de seguranca que ele proprio nomeou.",
+  "escopo_do_ok": "publicar a candidata que fecha os dois vermelhos medidos no browser (sonda honesta da v139 por P86, trilha interceptada da v140 por P88) e preencher o buraco de dados escola-municipio por P92",
+  "tarefa": "levar ao ar a sonda honesta (o painel do developer passa a ler a negacao em vez de «Controle no backend confirmado») e a trilha de acesso em bfr_municipal_audit, com o remendo da PEN-40 que ja estava no bundle da v138",
+  "porque_esta_versao": "a cadeia certificada e v138 -> p85 (v139 sonda honesta, portoes 11/0) -> p87 (v140 trilha, portoes 12/0): publicar a v140 inclui a v139, logo nao e escolha entre as duas",
+  "deploy": {
+    "worker": "bfr-conecta",
+    "conta": "turmaroboticabfr@gmail.com",
+    "version_id": "208d5bff-a040-413d-98c1-4184f3128d7e",
+    "deployment_id": "a4e1b053-ac9f-41a2-96d6-d799cf4c73bb",
+    "versao_anterior_v136": "1598137c-ab84-4ca7-a5e3-ce621d06f255",
+    "deployment_created": "2026-11-21T18:02:58.729134Z",
+    "percentual_trafego_novo": 100,
+    "wrangler": "4.154.0 (fixada: 4.156+ quebra o upload de assets com o erro 100312)",
+    "cwd": "worker-deploy-v140-trilha-de-acesso",
+    "base_do_bundle": "worker-deploy-v138-painel-municipal (bundle local nunca publicado; escolhido por medida porque ja leva o modulo da PEN-40)",
+    "url": "https://bfr-conecta.turmaroboticabfr.workers.dev",
+    "comando": "npx -y wrangler@4.154.0 deploy dentro de worker-deploy-v140-trilha-de-acesso",
+    "stdout_regue": {
+      "caminho": "evidence/v140-deploy-stdout-21-11.txt",
+      "bytes": 789,
+      "md5": "ead27155637c70bc746842adfe73e72e",
+      "uploaded_files": "1",
+      "tempo_upload_s": "1.40"
+    },
+    "assets_no_bundle": 13,
+    "assets_servidos_conferidos": 12,
+    "assets_nao_servidos_como_ficheiro": [
+      "_headers"
+    ],
+    "nota_assets": "os dois numeros diferem por medida, nao por descuido: o _headers nao e servido como ficheiro proprio, e sim aplicado pelo Cloudflare a todas as rotas (G8/9 no p95)"
+  },
+  "origem_dos_numeros": "stdout do wrangler + deployments status/list re-emitidos por p95; nada copiado-colado da conversa",
+  "bundle": {
+    "worker_md5": "42a16cfd24fff90edf6b9b8178ed3254",
+    "worker_bytes": 3618440,
+    "delta_worker_bytes": 2252,
+    "html_md5": "82c95aa0a23b7b8ccd801b9b920e4f0e",
+    "html_bytes": 3553473,
+    "sw_md5": "b8e2f6b732f77d5f42b6782aae75fdfb",
+    "sw_bytes": 5064,
+    "cache_label_no_ar": "bfr-conecta-v140",
+    "modulo_pen40_md5": "b83b4c2666fc909d50a358b86b99de05",
+    "modulo_pen40_bytes": 52532,
+    "headers_md5": "6f1f82a390b0e6111e3b8aff7d6415b2",
+    "mesa_de_trilha": "bfr_municipal_audit",
+    "rpc_sem_modulo": [
+      "bfr_municipal_municipio_totais",
+      "bfr_municipal_distribuicao_por_zona"
+    ],
+    "portoes_do_gerador": "P94_BUNDLE_V140_OK 30/0"
+  },
+  "conferencia_no_ar": {
+    "veredito": "P95_POS_DEPLOY_V140_OK 12/0",
+    "duracao_ms": 3401,
+    "tres_fetches_de_slash": [
+      {
+        "http": 200,
+        "bytes": 3553473,
+        "md5": "82c95aa0a23b7b8ccd801b9b920e4f0e"
+      },
+      {
+        "http": 200,
+        "bytes": 3553473,
+        "md5": "82c95aa0a23b7b8ccd801b9b920e4f0e"
+      },
+      {
+        "http": 200,
+        "bytes": 3553473,
+        "md5": "82c95aa0a23b7b8ccd801b9b920e4f0e"
+      }
+    ],
+    "rota_inexistente": {
+      "http": 404
+    },
+    "desvios_de_assets": [],
+    "contagens": {
+      "G6": {
+        "autorizada_no_ar": 1,
+        "autorizada_na_candidata": 1,
+        "mesa_no_ar": 1,
+        "mesa_na_candidata": 1,
+        "mesa_lida_do_ddl": "bfr_municipal_audit"
+      },
+      "G7": {
+        "trilha_no_ar": 1,
+        "trilha_na_v139": 0,
+        "sonda_no_ar": 1,
+        "sonda_na_v139": 1
+      },
+      "G10": {
+        "stdout": "208d5bff-a040-413d-98c1-4184f3128d7e",
+        "status": {
+          "version_id": "208d5bff-a040-413d-98c1-4184f3128d7e",
+          "percentage": 100
+        },
+        "lista_mais_nova": {
+          "version_id": "208d5bff-a040-413d-98c1-4184f3128d7e",
+          "percentage": 100
+        }
+      },
+      "G11": {
+        "anterior": "1598137c-ab84-4ca7-a5e3-ce621d06f255",
+        "v136_no_diario": "1598137c-ab84-4ca7-a5e3-ce621d06f255",
+        "nota": "devolver o ar a v136 e um `wrangler deploy` a partir de worker-deploy-v136-secretaria-de-educacao — exige OK literal novo"
+      },
+      "G12": {
+        "nota": "a chave publishable e configuracao do cliente e vive nos dois lados; o que se proibe aqui e um token de sessao impresso no ar"
+      }
+    }
+  },
+  "o_que_este_deploy_muda_para_um_usuario_real": {
+    "developer": "o painel municipal passa a ler a negao do backend em vez do banner verde de «Controle no backend confirmado» (proviso por P86 em f e g)",
+    "education_supervisor": "continua a ver a aba, e passa a ter a entrada no gaveta movel (P80: painel com 10 abas pintado)",
+    "outros_papeis": "nada: P93 mediu D1=0 e D2=0 nas 14 personas legiveis do total de 15 — o mapa do bundle e o backend dao o mesmo veredicto"
+  },
+  "dados_no_banco_nesta_noite": {
+    "p92": "P92_DADOS_MUNICIPAIS_APLICADO_E_CONFERIDO 12/0",
+    "escolas_ligadas": 4,
+    "sessao_concedida_ve": {
+      "uid_lido": "d7d45999-c21f-4322-8f94-46c6564ff728",
+      "escolas": 4,
+      "alunos": 848,
+      "turmas": 27,
+      "escolas_no_escopo_da_funcao": 4
+    },
+    "sessao_controle_ve": {
+      "uid_lido": "839e1f87-c596-4355-9f89-2ed97711349f",
+      "escolas": 0
+    },
+    "reversao": "scripts/p92-reversao-dados-municipais.sql",
+    "nota": "a concessao nova e sobre a conta de teste da barra; o municipio da SM8 («apagar») e as suas 4 concessoes de contas reais ficam intactos"
+  },
+  "o_que_este_diario_nao_autoriza": "git push (recusado pelo utilizador); reversao de PEN-43/PEN-44; revogar as 4 concessoes de contas reais sobre o municipio de exemplo; dar a porta da visibilidade ao rpc (P93 mediu 0 divergencias, e a mudanca so afectaria contas reais com concessao); qualquer nova escrita no banco.",
+  "portoes": {
+    "p94": {
+      "ok": 30,
+      "falha": 0
+    },
+    "p95": "12/0",
+    "p93": {
+      "veredito": "P93_PORTA_MAPA_VS_BACKEND_VERMELHO 1 de 8",
+      "vermelhos": 1,
+      "quais": [
+        "todas_as_personas_foram_medidas_sem_nulo"
+      ],
+      "causa_lida_do_artefacto": [
+        "pending"
+      ],
+      "nota": "o unico vermelho do P93 e de leitura, nao de acesso: a persona «pending» nunca carrega perfil (nav_qtd=0 apos 24 tentativas), logo nao e uma persona mensuravel. Os contadores D1/D2 so aceitam amostras prontas."
+    }
+  }
+}

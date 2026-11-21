@@ -1,0 +1,282 @@
+{
+  "workerMd5": "42a16cfd24fff90edf6b9b8178ed3254",
+  "workerBytes": 3618440,
+  "swMd5": "b8e2f6b732f77d5f42b6782aae75fdfb",
+  "swBytes": 5064,
+  "htmlMd5": "82c95aa0a23b7b8ccd801b9b920e4f0e",
+  "htmlBytes": 3553473,
+  "cacheLabel": "bfr-conecta-v140",
+  "baseWorkerMd5": "6837bf459045346aff5dccf5ebcab84f",
+  "baseWorkerBytes": 3616188,
+  "baseSwMd5": "f1a52d452d1903dee74a587dbc70369d",
+  "baseSwBytes": 5064,
+  "baseHtmlMd5": "592b3652671d689220784af41da74321",
+  "baseHtmlBytes": 3551245,
+  "headersMd5": "6f1f82a390b0e6111e3b8aff7d6415b2",
+  "headersBytes": 118,
+  "moduleMd5": "b83b4c2666fc909d50a358b86b99de05",
+  "moduleBytes": 52532,
+  "deltaWorkerBytes": 2252,
+  "precacheAlinhado": 0,
+  "assetsCopiados": 13,
+  "rpcNoModulo": [
+    "bfr_municipal_municipio_totais",
+    "bfr_municipal_distribuicao_por_zona"
+  ],
+  "mesaDeTrilha": "bfr_municipal_audit",
+  "ar_no_momento": {
+    "diario": "audit-publicacao-v136.json",
+    "versao": "136"
+  },
+  "ok_literal": "(sem deploy — bundle de candidata; publicar exige OK literal)",
+  "origemReguas": [
+    "worker-deploy-v138-painel-municipal/esperado-v138.json",
+    "C:/Users/pcmac/Documents/Qoder/2026-10-13/28077d9a/bfr-conecta/bfr-candidata-v140-trilha-de-acesso/index.html",
+    "bfr-candidata-v140-trilha-de-acesso/portoes-v140-candidata.json",
+    "C:/Users/pcmac/Documents/Qoder/2026-10-13/28077d9a/bfr-conecta/bfr-candidata-v139-sonda-honesta/index.html",
+    "C:/Users/pcmac/Documents/Qoder/2026-10-13/28077d9a/bfr-conecta/scripts/p73-pen39-ddl-candidata.sql",
+    "C:/Users/pcmac/Documents/Qoder/2026-10-13/28077d9a/bfr-conecta/scripts/sm4-ddl-municipal-candidata.sql"
+  ],
+  "portoes": 29,
+  "portoesDetalhados": {
+    "S1_base_worker_e_o_bundle_v138_do_seu_esperado": {
+      "passou": true,
+      "detalhe": {
+        "lido": {
+          "md5": "6837bf459045346aff5dccf5ebcab84f",
+          "bytes": 3616188
+        },
+        "esperado": {
+          "md5": "6837bf459045346aff5dccf5ebcab84f",
+          "bytes": 3616188
+        }
+      }
+    },
+    "S2_embed_html_da_base_e_a_candidata_v138_certificada": {
+      "passou": true,
+      "detalhe": {
+        "lido": {
+          "md5": "592b3652671d689220784af41da74321",
+          "bytes": 3551245
+        },
+        "esperado": {
+          "md5": "592b3652671d689220784af41da74321",
+          "bytes": 3551245
+        }
+      }
+    },
+    "S3_etiqueta_v138_uma_vez_e_v140_zero_na_base": {
+      "passou": true,
+      "detalhe": {
+        "v138": 1,
+        "v140": 0
+      }
+    },
+    "S4_candidata_bate_com_a_saida_certificada_do_p87": {
+      "passou": true,
+      "detalhe": {
+        "lido": {
+          "md5": "82c95aa0a23b7b8ccd801b9b920e4f0e",
+          "bytes": 3553473
+        },
+        "certificado": {
+          "pasta": "bfr-candidata-v140-trilha-de-acesso",
+          "md5": "82c95aa0a23b7b8ccd801b9b920e4f0e",
+          "bytes": 3553473,
+          "delta_bytes": 1343
+        },
+        "veredito": "P87_CANDIDATA_V140_TRILHA_OK 12/0"
+      }
+    },
+    "S4b_veredito_da_candidata_ok": {
+      "passou": true,
+      "detalhe": {
+        "veredito": "P87_CANDIDATA_V140_TRILHA_OK 12/0"
+      }
+    },
+    "S4c_a_origem_declarada_e_a_v139_que_esta_em_disco_e_esta_certificada": {
+      "passou": true,
+      "detalhe": {
+        "pasta_declarada": "bfr-candidata-v139-sonda-honesta",
+        "md5_v139_em_disco": "6a902562341d4f9c8c19f33a13ac1c49",
+        "md5_declarado": "6a902562341d4f9c8c19f33a13ac1c49",
+        "veredito_portoes_origem": "P85_CANDIDATA_V139_SONDA_HONESTA_OK 11/0"
+      }
+    },
+    "S4d_a_candidata_difere_do_embed_da_base": {
+      "passou": true,
+      "detalhe": {
+        "base": "592b3652671d689220784af41da74321",
+        "candidata": "82c95aa0a23b7b8ccd801b9b920e4f0e",
+        "delta_bytes": 2228
+      }
+    },
+    "S5_os_rpc_de_agregado_tem_a_mesma_contagem_em_v139_e_v140_e_estao_presentes": {
+      "passou": true,
+      "detalhe": [
+        "bfr_municipal_municipio_totais: v139=1 v140=1",
+        "bfr_municipal_distribuicao_por_zona: v139=1 v140=1"
+      ]
+    },
+    "S5b_a_mesa_de_trilha_leia_do_DDL_aparece_na_v140_uma_vez_mais_que_na_v139": {
+      "passou": true,
+      "detalhe": {
+        "mesa_lida_do_ddl": "bfr_municipal_audit",
+        "v139": 0,
+        "v140": 1
+      }
+    },
+    "S5c_porta_de_etiquetagem_continua_fora_das_duas_candidatas": {
+      "passou": true,
+      "detalhe": {
+        "v140": 0,
+        "v139": 0
+      }
+    },
+    "S5d_balde_de_teste_nao_aparece_na_candidata": {
+      "passou": true,
+      "detalhe": {
+        "ocorrencias": 0
+      }
+    },
+    "S6_a_clausa_da_sonda_honesta_tem_a_mesma_contagem_na_v140_que_na_v139_e_esta_presente": {
+      "passou": true,
+      "detalhe": {
+        "v139": 1,
+        "v140": 1
+      }
+    },
+    "S7_ancora_da_etiqueta_presente_exatamente_uma_vez": {
+      "passou": true,
+      "detalhe": {
+        "vezes": 1
+      }
+    },
+    "S8_etiqueta_nova_dentro_e_velha_fora": {
+      "passou": true,
+      "detalhe": {
+        "v140": 1,
+        "v138": 0
+      }
+    },
+    "S9_worker_novo_compila": {
+      "passou": true,
+      "detalhe": {
+        "erro": null
+      }
+    },
+    "S10_embed_novo_re-extraido_bate_com_a_candidata": {
+      "passou": true,
+      "detalhe": {
+        "re_extraido": {
+          "md5": "82c95aa0a23b7b8ccd801b9b920e4f0e",
+          "bytes": 3553473
+        },
+        "candidata": {
+          "md5": "82c95aa0a23b7b8ccd801b9b920e4f0e",
+          "bytes": 3553473
+        }
+      }
+    },
+    "S11_embed_novo_e_o_json_stringify_da_candidata": {
+      "passou": true,
+      "detalhe": true
+    },
+    "S12_sw_embutido_com_etiqueta_v140_e_mesmo_comprimento_da_base": {
+      "passou": true,
+      "detalhe": {
+        "v140": 1,
+        "v138": 0,
+        "bytes": 5064,
+        "bytes_da_base": 5064
+      }
+    },
+    "S13_um_unico_embed_de_cada": {
+      "passou": true,
+      "detalhe": {
+        "html": 1,
+        "sw": 1,
+        "csp": 1
+      }
+    },
+    "S14_csp_intacta_e_permite_supabase_e_frame_ancestors": {
+      "passou": true,
+      "detalhe": {
+        "csp_igual": true,
+        "supabase_connect": true,
+        "frame_ancestors": true
+      }
+    },
+    "S15_fora_dos_dois_embeds_o_worker_e_byte_a_byte_e_a_regua_tem_dente": {
+      "passou": true,
+      "detalhe": {
+        "antes": "792633a333b7f0181c45c5b5b357e3dc",
+        "depois": "792633a333b7f0181c45c5b5b357e3dc",
+        "dente_saburado": true,
+        "embeds_mascarados": [
+          "HTML",
+          "SW"
+        ]
+      }
+    },
+    "S16_assets_do_bundle_todos_presentes_e_byte_a_byte_com_a_base": {
+      "passou": true,
+      "detalhe": {
+        "total": 13,
+        "faltam": [],
+        "diferentes": [],
+        "base_declara": 13
+      }
+    },
+    "S17_modulo_remendado_da_pen40_continua_no_bundle": {
+      "passou": true,
+      "detalhe": {
+        "lido": {
+          "md5": "b83b4c2666fc909d50a358b86b99de05",
+          "bytes": 52532
+        },
+        "esperado": {
+          "md5": "b83b4c2666fc909d50a358b86b99de05",
+          "bytes": 52532
+        }
+      }
+    },
+    "S18_headers_com_o_md5_da_base": {
+      "passou": true,
+      "detalhe": {
+        "lido": "6f1f82a390b0e6111e3b8aff7d6415b2",
+        "esperado": "6f1f82a390b0e6111e3b8aff7d6415b2"
+      }
+    },
+    "S19_wrangler_toml_identico_a_base": {
+      "passou": true,
+      "detalhe": true
+    },
+    "S20_worker_do_dir_bate_com_o_desta_corrida": {
+      "passou": true,
+      "detalhe": true
+    },
+    "S21_dir_ja_existia_ou_foi_escrito_agora": {
+      "passou": true,
+      "detalhe": {
+        "estado": "escrito_agora"
+      }
+    },
+    "S22_nada_foi_publicado_por_esta_peca": {
+      "passou": true,
+      "detalhe": {
+        "diario_mais_novo": "audit-publicacao-v136.json",
+        "versao": "136",
+        "diario_v140_existe": false
+      }
+    },
+    "S23_delta_do_worker_igual_ao_delta_do_embed": {
+      "passou": true,
+      "detalhe": {
+        "delta": 2252,
+        "embed_antes_bytes": 3607902,
+        "embed_depois_bytes": 3610154
+      }
+    }
+  }
+}

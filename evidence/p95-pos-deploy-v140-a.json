@@ -1,0 +1,222 @@
+{
+  "programa": "scripts/p95-pos-deploy-v140.mjs",
+  "em": "2026-11-21T18:06:02.653Z",
+  "url": "https://bfr-conecta.turmaroboticabfr.workers.dev",
+  "escrita": 0,
+  "ddl": 0,
+  "mint": 0,
+  "publicacao": "esta peça não publica: confere o deploy já feito",
+  "G1_shell_servida_tres_vezes_identica_e_igual_ao_embed_da_P94": {
+    "servido": [
+      {
+        "http": 200,
+        "md5": "82c95aa0a23b7b8ccd801b9b920e4f0e",
+        "bytes": 3553473
+      },
+      {
+        "http": 200,
+        "md5": "82c95aa0a23b7b8ccd801b9b920e4f0e",
+        "bytes": 3553473
+      },
+      {
+        "http": 200,
+        "md5": "82c95aa0a23b7b8ccd801b9b920e4f0e",
+        "bytes": 3553473
+      }
+    ],
+    "esperado": {
+      "md5": "82c95aa0a23b7b8ccd801b9b920e4f0e",
+      "bytes": 3553473
+    }
+  },
+  "G2_a_shell_deixou_de_ser_a_v136_publicada": {
+    "ar": "82c95aa0a23b7b8ccd801b9b920e4f0e",
+    "v136": "9e236a23eed978cf7c2a2743d449b307",
+    "delta_bytes": 6015
+  },
+  "G3_o_sw_no_ar_tem_a_etiqueta_da_v140_e_perde_a_da_v136": {
+    "rotulo_lido": "bfr-conecta-v140",
+    "esperado": "bfr-conecta-v140",
+    "v136_no_sw": 0
+  },
+  "G4_o_asset_de_servico_da_v140_chega_byte_a_byte_ao_ar": {
+    "total": 12,
+    "desvios": []
+  },
+  "G5_o_remendo_da_pen40_no_modulo_esta_no_ar": {
+    "lido": {
+      "arquivo": "bfr-responsive-presentation.js",
+      "http": 200,
+      "md5_servido": "b83b4c2666fc909d50a358b86b99de05",
+      "bytes_servidos": 52532,
+      "md5_local": "b83b4c2666fc909d50a358b86b99de05",
+      "bytes_local": 52532,
+      "xfo": "SAMEORIGIN",
+      "csp": "frame-ancestors 'self'; base-uri 'self'; form-action 'self'"
+    },
+    "esperado": {
+      "md5": "b83b4c2666fc909d50a358b86b99de05",
+      "bytes": 52532
+    }
+  },
+  "G6_a_sonda_honesta_e_a_trilha_chegam_ao_ar_com_a_contagem_da_candidata_local": {
+    "autorizada_no_ar": 1,
+    "autorizada_na_candidata": 1,
+    "mesa_no_ar": 1,
+    "mesa_na_candidata": 1,
+    "mesa_lida_do_ddl": "bfr_municipal_audit"
+  },
+  "G7_a_v140_acrescenta_a_trilha_sobre_a_v139_e_nao_perde_a_clausa_da_sonda": {
+    "trilha_no_ar": 1,
+    "trilha_na_v139": 0,
+    "sonda_no_ar": 1,
+    "sonda_na_v139": 1
+  },
+  "G8_headers_da_shell_intactos": {
+    "xfo": "SAMEORIGIN",
+    "csp_frag": "default-src 'self'; base-uri 'self'; object-src 'none'; script-src 'self' 'unsafe-inline' https://bfr-conecta.turmaroboticabfr.workers.dev https://cdn.jsdelivr."
+  },
+  "G9_rota_inexistente_ainda_da_404": {
+    "http": 404,
+    "bytes": 9
+  },
+  "G10_o_servidor_concorda_com_o_stdout_do_deploy": {
+    "stdout": "208d5bff-a040-413d-98c1-4184f3128d7e",
+    "status": {
+      "version_id": "208d5bff-a040-413d-98c1-4184f3128d7e",
+      "percentage": 100
+    },
+    "lista_mais_nova": {
+      "version_id": "208d5bff-a040-413d-98c1-4184f3128d7e",
+      "percentage": 100
+    }
+  },
+  "G11_a_cadeia_de_reversao_aponta_para_a_v136": {
+    "anterior": "1598137c-ab84-4ca7-a5e3-ce621d06f255",
+    "v136_no_diario": "1598137c-ab84-4ca7-a5e3-ce621d06f255",
+    "nota": "devolver o ar a v136 e um `wrangler deploy` a partir de worker-deploy-v136-secretaria-de-educacao — exige OK literal novo"
+  },
+  "G12_nenhum_valor_de_credencial_sale_do_servido": {
+    "nota": "a chave publishable e configuracao do cliente e vive nos dois lados; o que se proibe aqui e um token de sessao impresso no ar"
+  },
+  "medido": {
+    "url": "https://bfr-conecta.turmaroboticabfr.workers.dev",
+    "shells": [
+      {
+        "http": 200,
+        "bytes": 3553473,
+        "md5": "82c95aa0a23b7b8ccd801b9b920e4f0e"
+      },
+      {
+        "http": 200,
+        "bytes": 3553473,
+        "md5": "82c95aa0a23b7b8ccd801b9b920e4f0e"
+      },
+      {
+        "http": 200,
+        "bytes": 3553473,
+        "md5": "82c95aa0a23b7b8ccd801b9b920e4f0e"
+      }
+    ],
+    "sw": {
+      "http": 200,
+      "bytes": 5064,
+      "md5": "b8e2f6b732f77d5f42b6782aae75fdfb",
+      "rotulo": "bfr-conecta-v140"
+    },
+    "notfound": {
+      "http": 404
+    },
+    "assets": [
+      {
+        "arquivo": "bfr-app-logo.png",
+        "http": 200,
+        "md5_servido": "288e9f5ffa4d870066ac7c1e25e75167",
+        "bytes_servidos": 448736,
+        "md5_local": "288e9f5ffa4d870066ac7c1e25e75167"
+      },
+      {
+        "arquivo": "bfr-responsive-presentation.js",
+        "http": 200,
+        "md5_servido": "b83b4c2666fc909d50a358b86b99de05",
+        "bytes_servidos": 52532,
+        "md5_local": "b83b4c2666fc909d50a358b86b99de05"
+      },
+      {
+        "arquivo": "bfr-teacher-arrivals.js",
+        "http": 200,
+        "md5_servido": "dcb69a88c8f4e93a5f818233cf185300",
+        "bytes_servidos": 13975,
+        "md5_local": "dcb69a88c8f4e93a5f818233cf185300"
+      },
+      {
+        "arquivo": "bfr-teacher-audit.js",
+        "http": 200,
+        "md5_servido": "255a2cd46599a25584b89775a276ed68",
+        "bytes_servidos": 3554,
+        "md5_local": "255a2cd46599a25584b89775a276ed68"
+      },
+      {
+        "arquivo": "calendario-letivo-2026.pdf",
+        "http": 200,
+        "md5_servido": "99874ef2d1aab69cadd20873d45a63b2",
+        "bytes_servidos": 202349,
+        "md5_local": "99874ef2d1aab69cadd20873d45a63b2"
+      },
+      {
+        "arquivo": "horario-matutino-2026.pdf",
+        "http": 200,
+        "md5_servido": "d461d5a19fe3013d7b05f1e2bfe1c71c",
+        "bytes_servidos": 521385,
+        "md5_local": "d461d5a19fe3013d7b05f1e2bfe1c71c"
+      },
+      {
+        "arquivo": "horario-matutino-2026.png",
+        "http": 200,
+        "md5_servido": "fa2936f5df94bfa111b3207640edbc93",
+        "bytes_servidos": 501591,
+        "md5_local": "fa2936f5df94bfa111b3207640edbc93"
+      },
+      {
+        "arquivo": "horario-vespertino-2026.pdf",
+        "http": 200,
+        "md5_servido": "579c45c0aca881f6ce71a23796739a54",
+        "bytes_servidos": 498802,
+        "md5_local": "579c45c0aca881f6ce71a23796739a54"
+      },
+      {
+        "arquivo": "horario-vespertino-2026.png",
+        "http": 200,
+        "md5_servido": "a1265544c0561e5028d43ada7644e62b",
+        "bytes_servidos": 480258,
+        "md5_local": "a1265544c0561e5028d43ada7644e62b"
+      },
+      {
+        "arquivo": "lia-avatar.png",
+        "http": 200,
+        "md5_servido": "4ea92d4c55fcf2c96d220fff7b751311",
+        "bytes_servidos": 1736466,
+        "md5_local": "4ea92d4c55fcf2c96d220fff7b751311"
+      },
+      {
+        "arquivo": "lia-avatar.svg",
+        "http": 200,
+        "md5_servido": "fd080cd554c553567cb6cd82bbeff0de",
+        "bytes_servidos": 352,
+        "md5_local": "fd080cd554c553567cb6cd82bbeff0de"
+      },
+      {
+        "arquivo": "manifest.json",
+        "http": 200,
+        "md5_servido": "68d155183c80e3e554466ce2415cb268",
+        "bytes_servidos": 484,
+        "md5_local": "68d155183c80e3e554466ce2415cb268"
+      }
+    ],
+    "stdout_bytes": 789,
+    "deploy_created_on": "2026-11-21T18:02:58.729134Z",
+    "deployment_id": "a4e1b053-ac9f-41a2-96d6-d799cf4c73bb"
+  },
+  "duracao_ms": 3401,
+  "veredito": "P95_POS_DEPLOY_V140_OK 12/0"
+}
