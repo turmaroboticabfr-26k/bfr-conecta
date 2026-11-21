@@ -1,0 +1,42 @@
+{
+  "programa": "scripts/p85-gera-candidata-sonda-honesta.mjs",
+  "em": "2026-11-21T09:01:01.054Z",
+  "origem": {
+    "pasta": "bfr-candidata-v138-painel-municipal",
+    "md5": "592b3652671d689220784af41da74321",
+    "bytes": 3551245,
+    "veredito_portoes": "V138_CANDIDATA_OK 8/0"
+  },
+  "destino": {
+    "pasta": "bfr-candidata-v139-sonda-honesta",
+    "md5": "6a902562341d4f9c8c19f33a13ac1c49",
+    "bytes": 3552130
+  },
+  "substituicoes": [
+    {
+      "nome": "sonda_passa_a_guardar_a_resposta_e_a_autorizacao",
+      "antes_ok": true,
+      "depois_presente": true
+    },
+    {
+      "nome": "a_sonda_regista_o_valor_que_o_backend_devolveu",
+      "antes_ok": true,
+      "depois_presente": true
+    },
+    {
+      "nome": "o_ramo_verde_passa_a_exigir_verdade_e_ganha_um_ramo_de_negacao",
+      "antes_ok": true,
+      "depois_presente": true
+    },
+    {
+      "nome": "a_frase_que_afirmava_a_SM4_por_aplicar_desaparece",
+      "antes_ok": true,
+      "depois_presente": true
+    },
+    {
+      "nome": "a_classe_da_faixa_de_negacao_existe_em_CSS",
+      "antes_ok": true,
+      "depois_presente": true
+    }
+  ]
+}
