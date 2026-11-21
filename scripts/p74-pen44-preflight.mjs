@@ -284,12 +284,17 @@ const hoje = {}; for (const x of lidoPorPapel) { (hoje[x.nome] = hoje[x.nome] ||
 const porNome = {}; for (const x of alvo) if (x.linhas.length === 1) porNome[x.par.nome] = { acl: x.linhas[0].acl, dono: x.linhas[0].dono };
 const invSim = invariante({ nomes: nomesAlvo, porNome, papeis: PAPEIS, hoje, grants: grantsPorNome, revogaAnon: revogaAnonPorNome, herdado_de, supers });
 // Em modo reversao o «depois» não se simula: lê-se. Estes são os três factos lidos que a aplicação tem de produzir.
-const invVivo = { anon_executa_algum_nome: nomesAlvo.filter((n) => hoje[n] && hoje[n].anon === true),
+// O `verde` nasceu fora do literal porque um objeto não pode ler-se a si próprio na sua própria construção — em
+// modo reversao isto era ReferenceError antes de qualquer portão, e o aplicador recebia `registo:null, codigo:1`.
+const vivoLido = { anon_executa_algum_nome: nomesAlvo.filter((n) => hoje[n] && hoje[n].anon === true),
   public_sobrou: nomesAlvo.filter((n) => porNome[n] && leAcl(porNome[n].acl).public_X === true),
   anon_X_sobrou: nomesAlvo.filter((n) => porNome[n] && leAcl(porNome[n].acl).anon_X === true),
   preservados_que_nao_executam: Object.entries(grantsPorNome).flatMap(([n, ps]) => ps.filter((p) => !(hoje[n] && hoje[n][p] === true)).map((p) => n + ':' + p)),
-  nomes_sem_leitura: nomesAlvo.filter((n) => !porNome[n]),
-  verde: MODO === 'reversao' ? nomesAlvo.every((n) => hoje[n] && hoje[n].anon === false) && invVivo.public_sobrou.length === 0 && invVivo.preservados_que_nao_executam.length === 0 && invVivo.nomes_sem_leitura.length === 0 : true };
+  nomes_sem_leitura: nomesAlvo.filter((n) => !porNome[n]) };
+const invVivo = { ...vivoLido,
+  verde: MODO === 'reversao'
+    ? nomesAlvo.every((n) => hoje[n] && hoje[n].anon === false) && vivoLido.public_sobrou.length === 0 && vivoLido.preservados_que_nao_executam.length === 0 && vivoLido.nomes_sem_leitura.length === 0
+    : vivoLido.anon_executa_algum_nome.length === nomesAlvo.length && vivoLido.public_sobrou.length === nomesAlvo.length && vivoLido.nomes_sem_leitura.length === 0 };
 const detalhes = alvo.map(({ par, linhas }) => {
   const l = linhas[0] || null;
   const nome = par.nome;

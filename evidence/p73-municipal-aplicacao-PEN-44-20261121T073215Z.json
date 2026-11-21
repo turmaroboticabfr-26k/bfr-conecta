@@ -1,0 +1,92 @@
+{
+  "programa": "scripts/p73-municipal-aplica-ddl.mjs",
+  "peca": "PEN-44",
+  "modo": "aplicacao",
+  "em": "2026-11-21T07:32:24.801Z",
+  "duracao_ms": 10463,
+  "aplicado": true,
+  "escrito_no_banco": true,
+  "ok_literal_usado": "APLICAR PEN-44 NO BANCO",
+  "frase_certificada": "APLICAR PEN-44 NO BANCO",
+  "frase_do_outro_modo_nao_autoriza": "REVERTER PEN-44 NO BANCO",
+  "sql_enviado": {
+    "nome": "candidata",
+    "caminho": "scripts/p74-pen44-ddl-candidata.sql",
+    "bytes": 17835,
+    "md5": "262e22e5a63fadc42204b7d8c5b985c1"
+  },
+  "candidata": {
+    "caminho": "scripts/p74-pen44-ddl-candidata.sql",
+    "bytes": 17835,
+    "md5": "262e22e5a63fadc42204b7d8c5b985c1"
+  },
+  "reversao": {
+    "caminho": "scripts/p74-pen44-ddl-reversao.sql",
+    "bytes": 16574,
+    "md5": "68c5b2f0e15dbc16bafde3f608f29dbf"
+  },
+  "preflight_candidata": {
+    "modo": "candidata",
+    "registo": "C:\\Users\\pcmac\\Documents\\Qoder\\2026-10-13\\28077d9a\\bfr-conecta\\evidence\\p74-pen44-preflight-candidata-21-11-apl20261121T073215Zc.json",
+    "veredito": "P74_PEN44_PREFLIGHT_VERDE_CANDIDATA 18/0",
+    "codigo": 0
+  },
+  "preflight_reversao": {
+    "modo": "reversao",
+    "registo": null,
+    "veredito": null,
+    "codigo": 1
+  },
+  "sequencia": [
+    {
+      "ordem": 1,
+      "papel": "precondicao: a peca tem de estar por aplicar",
+      "modo": "candidata",
+      "registo": "C:\\Users\\pcmac\\Documents\\Qoder\\2026-10-13\\28077d9a\\bfr-conecta\\evidence\\p74-pen44-preflight-candidata-21-11-apl20261121T073215Zc.json",
+      "veredito": "P74_PEN44_PREFLIGHT_VERDE_CANDIDATA 18/0",
+      "codigo": 0
+    },
+    {
+      "ordem": 2,
+      "papel": "conferencia de saida: o DDL produzido e o DDL certificado",
+      "modo": "reversao",
+      "registo": null,
+      "veredito": null,
+      "codigo": 1
+    }
+  ],
+  "varredura_do_sql": {
+    "drop_table": 0,
+    "truncate": 0,
+    "delete_from": 0,
+    "update_fora_de_funcao": 0,
+    "drop_schema_ou_database": 0,
+    "credencial": 0,
+    "drop_policy": 0,
+    "drop_function": 0,
+    "create_policy": 0,
+    "create_function": 0,
+    "grant_execute": 45,
+    "revoke_execute": 67
+  },
+  "baselines": {
+    "antes": {
+      "schools": 6,
+      "students": 848,
+      "classes": 27,
+      "profiles": 28,
+      "staff_schools": 6
+    },
+    "depois": {
+      "schools": 6,
+      "students": 848,
+      "classes": 27,
+      "profiles": 28,
+      "staff_schools": 6
+    },
+    "inalteradas": true
+  },
+  "erro_de_escrita": null,
+  "o_que_este_registo_nao_cobre": "a publicacao de qualquer versao do ar, o seed do calendario (RM-5.2) e a etiquetagem escola-municipio: cada um tem instrumento e OK proprios.",
+  "veredito": "P73_MUNICIPAL_APLICADO_COM_CONFERENCIA_VERMELHA PEN-44"
+}

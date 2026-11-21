@@ -1,0 +1,129 @@
+{
+  "programa": "scripts/p74-pen44-diff-antes-depois.mjs",
+  "em": "2026-11-21T07:46:20.390Z",
+  "pergunta": "depois de aplicar a PEN-44, perdeu grau alguem que nao o anon e o PUBLIC?",
+  "metodo": "compara nome a nome as ACLs de dois registos versionados do mesmo preflight (candidata antes de escrever, reversao depois) e acrescenta a distribuicao de estados HTTP da sonda anonima, tirada duas vezes. Nada consulta o banco.",
+  "fontes": {
+    "antes": "evidence/p74-pen44-preflight-candidata-21-11.json",
+    "depois": "evidence/p74-pen44-preflight-reversao-21-11-21-11-pos-pen44.json",
+    "sonda_antes": "evidence/p74-pen44-sonda-anonima-21-11.json",
+    "sonda_depois": "evidence/p74-pen44-sonda-anonima-21-11-21-11-pos.json"
+  },
+  "fixture": {
+    "perde_nome_real": [
+      "authenticated"
+    ],
+    "saida_de_public_a_sozinha": [
+      "PUBLIC"
+    ],
+    "nada_perde_quando_preservado": [],
+    "ganho_de_preservado": [
+      "pgbouncer"
+    ]
+  },
+  "alvo": 45,
+  "papeis_preservados": [
+    "dashboard_user",
+    "pgbouncer",
+    "supabase_auth_admin",
+    "supabase_etl_admin",
+    "supabase_functions_admin",
+    "supabase_privileged_role",
+    "supabase_read_only_user",
+    "supabase_replication_admin"
+  ],
+  "catalogo": {
+    "nomes_sem_entrada_public_depois": 45,
+    "nomes_com_anon_x_antes": 22,
+    "nomes_com_anon_x_depois": 0
+  },
+  "http_anonimo": {
+    "distribuicao_antes": {
+      "200": 15,
+      "404": 30
+    },
+    "distribuicao_depois": {
+      "401": 15,
+      "404": 30
+    },
+    "nomes_que_eram_2xx": 15,
+    "nomes_que_ainda_sao_2xx": []
+  },
+  "portoes": [
+    {
+      "nome": "os_quatro_registos_de_partida_estao_no_indice_e_nao_so_em_disco",
+      "verde": true,
+      "detalhe": []
+    },
+    {
+      "nome": "o_antes_e_candidata_o_depois_e_reversao_e_o_veredicto_de_saida_e_verde",
+      "verde": true,
+      "detalhe": {
+        "antes_modo": "candidata",
+        "depois_modo": "reversao",
+        "depois_veredito": "P74_PEN44_PREFLIGHT_VERDE_REVERSAO 18/0"
+      }
+    },
+    {
+      "nome": "o_antes_e_anterior_ao_depois_em_milissegundos",
+      "verde": true,
+      "detalhe": {
+        "antes": "2026-11-21T07:25:59.784Z",
+        "depois": "2026-11-21T07:35:03.596Z",
+        "sonda_antes": "2026-11-21T04:39:22.229Z",
+        "sonda_depois": "2026-11-21T07:35:53.764Z"
+      }
+    },
+    {
+      "nome": "os_dois_registos_cobrem_os_mesmos_nomes_do_alvo",
+      "verde": true,
+      "detalhe": {
+        "antes": 45,
+        "depois": 45,
+        "diferenca": []
+      }
+    },
+    {
+      "nome": "nenhum_papel_com_nome_perde_grau_so_anon_e_public_perdem",
+      "verde": true,
+      "detalhe": []
+    },
+    {
+      "nome": "nenhum_grau_novo_aparece_fora_dos_papeis_preservados_que_ja_o_tinham_por_public",
+      "verde": true,
+      "detalhe": []
+    },
+    {
+      "nome": "o_anon_deixa_de_poder_executar_todos_os_nomes_do_alvo",
+      "verde": true,
+      "detalhe": {
+        "nomes_onde_anon_ainda_pode": [],
+        "total_alvo": 45
+      }
+    },
+    {
+      "nome": "cada_papel_preservado_continua_a_executar_cada_nome",
+      "verde": true,
+      "detalhe": []
+    },
+    {
+      "nome": "o_http_confirma_o_catalogo_os_200_de_antes_deixaram_de_ser_200",
+      "verde": true,
+      "detalhe": {
+        "antes_2xx": 15,
+        "ainda_2xx_depois": [],
+        "estados_antes": {
+          "200": 15,
+          "404": 30
+        },
+        "estados_depois": {
+          "401": 15,
+          "404": 30
+        }
+      }
+    }
+  ],
+  "falhas": [],
+  "o_que_este_verde_nao_cobre": "Nao cobre o que um utilizador autenticado ve em sessao real: as ACLs provam grau por papel, nao resposta de aplicacao. Tambem nao cobre as 30 funcoes que exigem argumentos (404 nos dois lados) alem do grau.",
+  "veredito": "P74_PEN44_DIFF_OK 9/0"
+}

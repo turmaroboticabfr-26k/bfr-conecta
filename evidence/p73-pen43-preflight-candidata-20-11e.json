@@ -1,0 +1,653 @@
+{
+  "programa": "scripts/p73-pen43-preflight.mjs",
+  "modo": "candidata",
+  "em": "2026-11-21T07:25:52.028Z",
+  "duracao_ms": 7419,
+  "pergunta": "o REVOKE que a candidata envia muda alguma coisa neste instante, nas assinaturas certas, sem tocar em dados nem noutros papeis?",
+  "metodo": "nomes e assinaturas lidos dos REVOKE/GRANT dos dois .sql em disco; pegada confrontada com o registo mais recente da geradora (git ls-files, lido do indice); privilegio efectivo e ACL lidos do catalogo por duas chaves separadas (alvo por IN, controlo por NOT IN); censo de todas as funcoes do esquema public agregado por familia de nome; comparacoes por sim()/nao() porque has_function_privilege devolve booleano e nao um t/f de letra.",
+  "contexto": {
+    "utilizador": "postgres",
+    "pid": 1066517
+  },
+  "pressuposto": "o anon pode executar cada um dos nomes e o grau vem duma entrada anon=X explicita, sem entrada a PUBLIC: o REVOKE por nome e o grau efetivo",
+  "papeis_lidos": [
+    "anon",
+    "authenticated",
+    "postgres",
+    "service_role"
+  ],
+  "nomes": [
+    {
+      "nome": "bfr_municipal_scope_diagnostico",
+      "argumentos_no_sql": "",
+      "ident_no_catalogo": "",
+      "vol": "s",
+      "definer": "true",
+      "dono": "postgres",
+      "acl": "postgres=X/postgres|anon=X/postgres|authenticated=X/postgres|service_role=X/postgres",
+      "sobrecargas": 1,
+      "estado": {
+        "nula": false,
+        "anon_X": true,
+        "public_X": false
+      },
+      "anon_pode": "true",
+      "authenticated_pode": "true",
+      "service_role_pode": "true",
+      "assinatura_casa": true,
+      "explicavel": true,
+      "destaca": true,
+      "e_de_leitura": true
+    },
+    {
+      "nome": "bfr_municipal_municipio_totais",
+      "argumentos_no_sql": "",
+      "ident_no_catalogo": "",
+      "vol": "s",
+      "definer": "true",
+      "dono": "postgres",
+      "acl": "postgres=X/postgres|anon=X/postgres|authenticated=X/postgres|service_role=X/postgres",
+      "sobrecargas": 1,
+      "estado": {
+        "nula": false,
+        "anon_X": true,
+        "public_X": false
+      },
+      "anon_pode": "true",
+      "authenticated_pode": "true",
+      "service_role_pode": "true",
+      "assinatura_casa": true,
+      "explicavel": true,
+      "destaca": true,
+      "e_de_leitura": true
+    },
+    {
+      "nome": "bfr_municipal_distribuicao_por_zona",
+      "argumentos_no_sql": "",
+      "ident_no_catalogo": "",
+      "vol": "s",
+      "definer": "true",
+      "dono": "postgres",
+      "acl": "postgres=X/postgres|anon=X/postgres|authenticated=X/postgres|service_role=X/postgres",
+      "sobrecargas": 1,
+      "estado": {
+        "nula": false,
+        "anon_X": true,
+        "public_X": false
+      },
+      "anon_pode": "true",
+      "authenticated_pode": "true",
+      "service_role_pode": "true",
+      "assinatura_casa": true,
+      "explicavel": true,
+      "destaca": true,
+      "e_de_leitura": true
+    }
+  ],
+  "estrutura": {
+    "candidata": {
+      "begin": 1,
+      "commit": 1,
+      "revoke": 3,
+      "grant": 0,
+      "statement_fora_dos_graus": 0
+    },
+    "reversao": {
+      "begin": 1,
+      "commit": 1,
+      "revoke": 0,
+      "grant": 3,
+      "statement_fora_dos_graus": 0
+    }
+  },
+  "ficheiros": {
+    "candidata": {
+      "caminho": "scripts/p73-pen43-ddl-candidata.sql",
+      "bytes": 1494,
+      "md5": "9d43a22606255c258350ad6fed263630"
+    },
+    "reversao": {
+      "caminho": "scripts/p73-pen43-ddl-reversao.sql",
+      "bytes": 543,
+      "md5": "ee4f50eee403f63eb506c2e960ba785d"
+    }
+  },
+  "certificacao": {
+    "indexados": 3,
+    "mais_recente": "evidence/p73-pen43-gera-candidata-20-11e-20-11tx.json",
+    "historico": [
+      {
+        "registo": "evidence/p73-pen43-gera-candidata-20-11e-20-11h.json",
+        "em": "2026-11-20T23:52:43.059Z",
+        "candidata": "74a4cae7fa7888e42b9aceb00d47d4a9",
+        "reversao": "dec93047a0ba92b233589ec6143a37fc"
+      },
+      {
+        "registo": "evidence/p73-pen43-gera-candidata-20-11e-20-11h-recorre.json",
+        "em": "2026-11-20T23:52:55.154Z",
+        "candidata": "74a4cae7fa7888e42b9aceb00d47d4a9",
+        "reversao": "dec93047a0ba92b233589ec6143a37fc"
+      },
+      {
+        "registo": "evidence/p73-pen43-gera-candidata-20-11e-20-11tx.json",
+        "em": "2026-11-21T02:04:57.207Z",
+        "candidata": "9d43a22606255c258350ad6fed263630",
+        "reversao": "ee4f50eee403f63eb506c2e960ba785d"
+      }
+    ]
+  },
+  "controlos_de_privilegio": [
+    {
+      "nome": "acknowledge_occurrence",
+      "acl": "postgres=X/postgres|authenticated=X/postgres|service_role=X/postgres",
+      "anon_pode": "false"
+    },
+    {
+      "nome": "aee_profile_staff",
+      "acl": "postgres=X/postgres|authenticated=X/postgres|service_role=X/postgres",
+      "anon_pode": "false"
+    },
+    {
+      "nome": "bfr_boletim_componente",
+      "acl": "postgres=X/postgres|authenticated=X/postgres|service_role=X/postgres",
+      "anon_pode": "false"
+    },
+    {
+      "nome": "bfr_can_link_student_account",
+      "acl": "postgres=X/postgres|authenticated=X/postgres|service_role=X/postgres",
+      "anon_pode": "false"
+    },
+    {
+      "nome": "bfr_can_manage_lesson_attendance",
+      "acl": "postgres=X/postgres|authenticated=X/postgres|service_role=X/postgres",
+      "anon_pode": "false"
+    },
+    {
+      "nome": "bfr_can_view_student_birthdays",
+      "acl": "postgres=X/postgres|authenticated=X/postgres|service_role=X/postgres",
+      "anon_pode": "false"
+    },
+    {
+      "nome": "bfr_chat_can_access_message",
+      "acl": "postgres=X/postgres|authenticated=X/postgres|service_role=X/postgres",
+      "anon_pode": "false"
+    },
+    {
+      "nome": "bfr_chat_is_moderator",
+      "acl": "postgres=X/postgres|authenticated=X/postgres|service_role=X/postgres",
+      "anon_pode": "false"
+    }
+  ],
+  "censo_de_exposicao_anonima": {
+    "agregado": {
+      "total": 162,
+      "executiveis": 67,
+      "so_por_public": 27,
+      "sem_entrada_de_anon": 27
+    },
+    "fora_do_alvo_na_familia_municipal": [
+      "bfr_municipalities_visible"
+    ],
+    "declarados": [
+      {
+        "nome": "bfr_municipalities_visible",
+        "porque": "stabel, executavel por anon; a ACL dela traz `=X/postgres` alem do anon=X, por isso um REVOKE por nome nao a fecha — fechar-lheia exigir REVOKE ... FROM PUBLIC, que e alargar o escopo da peca e pede OK proprio",
+        "continua_no_catalogo": true,
+        "continua_executavel_por_anon": true,
+        "acl": "=X/postgres|postgres=X/postgres|anon=X/postgres|authenticated=X/postgres|service_role=X/postgres",
+        "grau_vem_de_public": true
+      },
+      {
+        "nome": "bfr_school_set_municipality",
+        "porque": "volatil, e a porta de etiquetagem: mantida executavel por anon de proposito para que um anonimo receba 42501 em vez de 404 (decisao da casa, §SM.33)",
+        "continua_no_catalogo": true,
+        "continua_executavel_por_anon": true,
+        "acl": "postgres=X/postgres|anon=X/postgres|authenticated=X/postgres|service_role=X/postgres",
+        "grau_vem_de_public": false
+      }
+    ],
+    "amostra_so_por_public": [
+      "aee_can_access_student",
+      "bfr_can_access_literacy_student",
+      "bfr_collab_can_profile",
+      "bfr_collab_can_project",
+      "bfr_collab_can_task",
+      "bfr_collab_comment_notification_trigger",
+      "bfr_collab_is_manager",
+      "bfr_collab_is_staff",
+      "bfr_collab_member_notification_trigger",
+      "bfr_collab_task_notification_trigger",
+      "bfr_current_teacher_id",
+      "bfr_is_schedule_manager"
+    ],
+    "divergencia_entre_as_duas_contagens": 0,
+    "nota": "so_por_public e sem_entrada_de_anon coincidem enquanto toda a exposição do anon vem ou da entrada anon=X ou da entrada a PUBLIC; a diferenca entre as duas e medidas, nao afirmada — se algum dia for nao-zero, o grau esta a chegar por associacao a outro papel e o REVOKE por nome tambem nao o toca"
+  },
+  "fixtures": {
+    "mundos_de_acl": [
+      {
+        "nome": "hoje_candidata",
+        "acl": "postgres=X/postgres|anon=X/postgres|authenticated=X/postgres|service_role=X/postgres",
+        "priv": true,
+        "explicavel": true,
+        "destaca_candidata": true,
+        "destaca_reversao": false,
+        "anon_X": true,
+        "public_X": false,
+        "nula": false
+      },
+      {
+        "nome": "depois_reversao",
+        "acl": "postgres=X/postgres|authenticated=X/postgres|service_role=X/postgres",
+        "priv": false,
+        "explicavel": true,
+        "destaca_candidata": false,
+        "destaca_reversao": true,
+        "anon_X": false,
+        "public_X": false,
+        "nula": false
+      },
+      {
+        "nome": "public_da_no_op",
+        "acl": "=X/postgres|postgres=X/postgres|anon=X/postgres|authenticated=X/postgres",
+        "priv": true,
+        "explicavel": true,
+        "destaca_candidata": false,
+        "destaca_reversao": false,
+        "anon_X": true,
+        "public_X": true,
+        "nula": false
+      },
+      {
+        "nome": "acl_nula_do_default",
+        "acl": "NULL_POR_DEFAULT",
+        "priv": true,
+        "explicavel": false,
+        "destaca_candidata": false,
+        "destaca_reversao": false,
+        "anon_X": false,
+        "public_X": false,
+        "nula": true
+      },
+      {
+        "nome": "inexplicavel_acl_sem_grau",
+        "acl": "postgres=X/postgres|anon=X/postgres|authenticated=X/postgres|service_role=X/postgres",
+        "priv": false,
+        "explicavel": false,
+        "destaca_candidata": false,
+        "destaca_reversao": false,
+        "anon_X": true,
+        "public_X": false,
+        "nula": false
+      }
+    ],
+    "assinatura": {
+      "aridade_errada_nao_casa": true,
+      "lista_vazia_casa_com_catalogo_vazio": true,
+      "nomes_de_parametro_casam": true,
+      "tipo_trocado_nao_casa": true
+    },
+    "estrutura": {
+      "sem_transaccao_da_begin_0": true,
+      "insert_contado": true,
+      "grant_espelho": true
+    },
+    "censo_licenca": true,
+    "pegada": true,
+    "varredura": {
+      "emails": 1,
+      "jwt": 1
+    }
+  },
+  "varredura_de_pessoal_no_registo": {
+    "emails": 0,
+    "jwt": 0
+  },
+  "conclusao": {
+    "o_que_este_verde_autoriza_a_perguntar": "que o REVOKE por nome tem efeito medido hoje nos nomes declarados, e que a reversao em disco e o espelho deles — nada mais; a aplicacao continua a pedir a frase literal da peca",
+    "o_que_nao_prova": "nao prova o canal HTTP (isso mede-se em scripts/p73-sonda-porta-municipal.mjs, que porta a concordancia catalogo-vs-HTTP por classe), nao prova que as 63+ outras funcoes executaveis por anon estejam fechadas — a PEN-43 e sobre os agregados municipais novos — e nao prova que depois do REVOKE uma chamada anon deva 42501 em vez de 404.",
+    "frase_que_esta_corrida_deixa_escrita": "no catalogo, neste instante, o anon PODE executar [\"bfr_municipal_scope_diagnostico\",\"bfr_municipal_municipio_totais\",\"bfr_municipal_distribuicao_por_zona\"]; das 162 funcoes do esquema public, 67 sao executaveis por anon e 27 recebem o grau apenas pelo default a PUBLIC, onde um REVOKE por nome nao tocava."
+  },
+  "portoes": [
+    {
+      "nome": "os_nomes_do_revoke_e_do_grant_sao_o_mesmo_conjunto_espelhado",
+      "verde": true,
+      "detalhe": {
+        "revoke": [
+          {
+            "nome": "bfr_municipal_scope_diagnostico",
+            "args": ""
+          },
+          {
+            "nome": "bfr_municipal_municipio_totais",
+            "args": ""
+          },
+          {
+            "nome": "bfr_municipal_distribuicao_por_zona",
+            "args": ""
+          }
+        ],
+        "grant": [
+          {
+            "nome": "bfr_municipal_scope_diagnostico",
+            "args": ""
+          },
+          {
+            "nome": "bfr_municipal_municipio_totais",
+            "args": ""
+          },
+          {
+            "nome": "bfr_municipal_distribuicao_por_zona",
+            "args": ""
+          }
+        ]
+      }
+    },
+    {
+      "nome": "a_pegada_dos_dois_ficheiros_e_a_do_registo_mais_recente_da_geradora_e_a_regua_tem_dentes",
+      "verde": true,
+      "detalhe": {
+        "indexados": 3,
+        "mais_recente": "evidence/p73-pen43-gera-candidata-20-11e-20-11tx.json",
+        "historico": [
+          {
+            "registo": "evidence/p73-pen43-gera-candidata-20-11e-20-11h.json",
+            "em": "2026-11-20T23:52:43.059Z",
+            "candidata": "74a4cae7fa7888e42b9aceb00d47d4a9",
+            "reversao": "dec93047a0ba92b233589ec6143a37fc"
+          },
+          {
+            "registo": "evidence/p73-pen43-gera-candidata-20-11e-20-11h-recorre.json",
+            "em": "2026-11-20T23:52:55.154Z",
+            "candidata": "74a4cae7fa7888e42b9aceb00d47d4a9",
+            "reversao": "dec93047a0ba92b233589ec6143a37fc"
+          },
+          {
+            "registo": "evidence/p73-pen43-gera-candidata-20-11e-20-11tx.json",
+            "em": "2026-11-21T02:04:57.207Z",
+            "candidata": "9d43a22606255c258350ad6fed263630",
+            "reversao": "ee4f50eee403f63eb506c2e960ba785d"
+          }
+        ],
+        "medido_agora": {
+          "candidata": {
+            "bytes": 1494,
+            "md5": "9d43a22606255c258350ad6fed263630"
+          },
+          "reversao": {
+            "bytes": 543,
+            "md5": "ee4f50eee403f63eb506c2e960ba785d"
+          }
+        }
+      }
+    },
+    {
+      "nome": "cada_ficheiro_e_uma_unica_transaccao_de_graus_sem_dados_e_os_mundos_fabricados_chumbam",
+      "verde": true,
+      "detalhe": {
+        "candidata": {
+          "begin": 1,
+          "commit": 1,
+          "revoke": 3,
+          "grant": 0,
+          "statement_fora_dos_graus": 0
+        },
+        "reversao": {
+          "begin": 1,
+          "commit": 1,
+          "revoke": 0,
+          "grant": 3,
+          "statement_fora_dos_graus": 0
+        },
+        "fixtures": {
+          "sem_transaccao_da_begin_0": true,
+          "insert_contado": true,
+          "grant_espelho": true
+        }
+      }
+    },
+    {
+      "nome": "cada_nome_existe_uma_sozinha_no_catalogo_e_a_assinatura_do_revoke_casa_com_a_identidade",
+      "verde": true,
+      "detalhe": {
+        "por_nome": [
+          {
+            "nome": "bfr_municipal_scope_diagnostico",
+            "argumentos_no_sql": "",
+            "ident_no_catalogo": "",
+            "sobrecargas": 1,
+            "assinatura_casa": true
+          },
+          {
+            "nome": "bfr_municipal_municipio_totais",
+            "argumentos_no_sql": "",
+            "ident_no_catalogo": "",
+            "sobrecargas": 1,
+            "assinatura_casa": true
+          },
+          {
+            "nome": "bfr_municipal_distribuicao_por_zona",
+            "argumentos_no_sql": "",
+            "ident_no_catalogo": "",
+            "sobrecargas": 1,
+            "assinatura_casa": true
+          }
+        ],
+        "fixtures": {
+          "aridade_errada_nao_casa": true,
+          "lista_vazia_casa_com_catalogo_vazio": true,
+          "nomes_de_parametro_casam": true,
+          "tipo_trocado_nao_casa": true
+        }
+      }
+    },
+    {
+      "nome": "o_privilegio_efectivo_do_anon_e_explicado_pela_acl_em_cada_nome_e_os_cinco_mundos_tem_dentes",
+      "verde": true,
+      "detalhe": {
+        "por_nome": [
+          "bfr_municipal_scope_diagnostico:acl=postgres=X/postgres|anon=X/postgres|authenticated=X/postgres|service_role=X/postgres:anon_pode=true:anon_X=true:public_X=false:explicavel=true",
+          "bfr_municipal_municipio_totais:acl=postgres=X/postgres|anon=X/postgres|authenticated=X/postgres|service_role=X/postgres:anon_pode=true:anon_X=true:public_X=false:explicavel=true",
+          "bfr_municipal_distribuicao_por_zona:acl=postgres=X/postgres|anon=X/postgres|authenticated=X/postgres|service_role=X/postgres:anon_pode=true:anon_X=true:public_X=false:explicavel=true"
+        ],
+        "mundos": [
+          {
+            "nome": "hoje_candidata",
+            "acl": "postgres=X/postgres|anon=X/postgres|authenticated=X/postgres|service_role=X/postgres",
+            "priv": true,
+            "explicavel": true,
+            "destaca_candidata": true,
+            "destaca_reversao": false,
+            "anon_X": true,
+            "public_X": false,
+            "nula": false
+          },
+          {
+            "nome": "depois_reversao",
+            "acl": "postgres=X/postgres|authenticated=X/postgres|service_role=X/postgres",
+            "priv": false,
+            "explicavel": true,
+            "destaca_candidata": false,
+            "destaca_reversao": true,
+            "anon_X": false,
+            "public_X": false,
+            "nula": false
+          },
+          {
+            "nome": "public_da_no_op",
+            "acl": "=X/postgres|postgres=X/postgres|anon=X/postgres|authenticated=X/postgres",
+            "priv": true,
+            "explicavel": true,
+            "destaca_candidata": false,
+            "destaca_reversao": false,
+            "anon_X": true,
+            "public_X": true,
+            "nula": false
+          },
+          {
+            "nome": "acl_nula_do_default",
+            "acl": "NULL_POR_DEFAULT",
+            "priv": true,
+            "explicavel": false,
+            "destaca_candidata": false,
+            "destaca_reversao": false,
+            "anon_X": false,
+            "public_X": false,
+            "nula": true
+          },
+          {
+            "nome": "inexplicavel_acl_sem_grau",
+            "acl": "postgres=X/postgres|anon=X/postgres|authenticated=X/postgres|service_role=X/postgres",
+            "priv": false,
+            "explicavel": false,
+            "destaca_candidata": false,
+            "destaca_reversao": false,
+            "anon_X": true,
+            "public_X": false,
+            "nula": false
+          }
+        ]
+      }
+    },
+    {
+      "nome": "o_estado_vivo_do_anon_bate_com_o_que_o_modo_candidata_pressupoe_e_o_outro_modo_chumba_nesse_estado",
+      "verde": true,
+      "detalhe": {
+        "modo": "candidata",
+        "por_nome": [
+          "bfr_municipal_scope_diagnostico:anon_pode=true:anon_X=true:public_X=false:destaca=true",
+          "bfr_municipal_municipio_totais:anon_pode=true:anon_X=true:public_X=false:destaca=true",
+          "bfr_municipal_distribuicao_por_zona:anon_pode=true:anon_X=true:public_X=false:destaca=true"
+        ],
+        "mundo_do_outro_modo": "depois_reversao"
+      }
+    },
+    {
+      "nome": "o_estado_que_o_modo_reversao_pressupoe_ja_existe_hoje_noutros_nomes_lidos_do_catalogo",
+      "verde": true,
+      "detalhe": {
+        "espelhos_lidos_do_catalogo": [
+          "acknowledge_occurrence:anon_X=false:public_X=false:anon_pode=false",
+          "aee_profile_staff:anon_X=false:public_X=false:anon_pode=false",
+          "bfr_boletim_componente:anon_X=false:public_X=false:anon_pode=false",
+          "bfr_can_link_student_account:anon_X=false:public_X=false:anon_pode=false",
+          "bfr_can_manage_lesson_attendance:anon_X=false:public_X=false:anon_pode=false",
+          "bfr_can_view_student_birthdays:anon_X=false:public_X=false:anon_pode=false",
+          "bfr_chat_can_access_message:anon_X=false:public_X=false:anon_pode=false",
+          "bfr_chat_is_moderator:anon_X=false:public_X=false:anon_pode=false"
+        ]
+      }
+    },
+    {
+      "nome": "so_funcoes_de_leitura_entram_na_peca_e_a_porta_de_etiquetagem_fica_fora",
+      "verde": true,
+      "detalhe": {
+        "vol": [
+          "bfr_municipal_scope_diagnostico:s",
+          "bfr_municipal_municipio_totais:s",
+          "bfr_municipal_distribuicao_por_zona:s"
+        ],
+        "etiqueta": [
+          "bfr_school_set_municipality:vol=v:anon_pode=true"
+        ]
+      }
+    },
+    {
+      "nome": "os_papeis_que_a_peca_nao_toca_mantem_o_grau_e_o_anon_e_um_papel_que_existe",
+      "verde": true,
+      "detalhe": {
+        "papeis": [
+          "anon",
+          "authenticated",
+          "postgres",
+          "service_role"
+        ],
+        "por_nome": [
+          "bfr_municipal_scope_diagnostico:authenticated=true:service_role=true:dono=postgres",
+          "bfr_municipal_municipio_totais:authenticated=true:service_role=true:dono=postgres",
+          "bfr_municipal_distribuicao_por_zona:authenticated=true:service_role=true:dono=postgres"
+        ]
+      }
+    },
+    {
+      "nome": "existe_controlo_que_o_anon_nao_pode_executar_e_ele_e_disjoint_do_alvo_por_chave_independente",
+      "verde": true,
+      "detalhe": {
+        "controlos": [
+          "acknowledge_occurrence:anon_pode=false",
+          "aee_profile_staff:anon_pode=false",
+          "bfr_boletim_componente:anon_pode=false",
+          "bfr_can_link_student_account:anon_pode=false",
+          "bfr_can_manage_lesson_attendance:anon_pode=false",
+          "bfr_can_view_student_birthdays:anon_pode=false",
+          "bfr_chat_can_access_message:anon_pode=false",
+          "bfr_chat_is_moderator:anon_pode=false"
+        ],
+        "alvos": [
+          "bfr_municipal_scope_diagnostico",
+          "bfr_municipal_municipio_totais",
+          "bfr_municipal_distribuicao_por_zona"
+        ]
+      }
+    },
+    {
+      "nome": "o_censo_de_exposicao_anonima_imprime_o_que_a_peca_nao_fecha_sem_alargar_o_escopo_silenciosamente",
+      "verde": true,
+      "detalhe": {
+        "agregado": {
+          "total": 162,
+          "executiveis": 67,
+          "so_por_public": 27,
+          "sem_entrada_de_anon": 27
+        },
+        "fora_do_alvo_na_familia_municipal": [
+          "bfr_municipalities_visible"
+        ],
+        "declarados": [
+          {
+            "nome": "bfr_municipalities_visible",
+            "porque": "stabel, executavel por anon; a ACL dela traz `=X/postgres` alem do anon=X, por isso um REVOKE por nome nao a fecha — fechar-lheia exigir REVOKE ... FROM PUBLIC, que e alargar o escopo da peca e pede OK proprio",
+            "continua_no_catalogo": true,
+            "continua_executavel_por_anon": true,
+            "acl": "=X/postgres|postgres=X/postgres|anon=X/postgres|authenticated=X/postgres|service_role=X/postgres",
+            "grau_vem_de_public": true
+          },
+          {
+            "nome": "bfr_school_set_municipality",
+            "porque": "volatil, e a porta de etiquetagem: mantida executavel por anon de proposito para que um anonimo receba 42501 em vez de 404 (decisao da casa, §SM.33)",
+            "continua_no_catalogo": true,
+            "continua_executavel_por_anon": true,
+            "acl": "postgres=X/postgres|anon=X/postgres|authenticated=X/postgres|service_role=X/postgres",
+            "grau_vem_de_public": false
+          }
+        ],
+        "nota": "o portao chumba um nome NOVO e aberto na familia, nao um que deixe de estar aberto — fechar mais portas e trabalho de outra autorizacao"
+      }
+    },
+    {
+      "nome": "nenhuma_query_deste_programa_escreveu_no_banco",
+      "verde": true,
+      "detalhe": {
+        "queries": 5,
+        "nao_leitura": 0
+      }
+    },
+    {
+      "nome": "nenhum_identificador_pessoal_nem_token_entra_neste_registo",
+      "verde": true,
+      "detalhe": {
+        "medida_no_registo": {
+          "emails": 0,
+          "jwt": 0
+        },
+        "fixture_que_dispara": {
+          "emails": 1,
+          "jwt": 1
+        }
+      }
+    }
+  ],
+  "falhas": [],
+  "o_que_este_verde_nao_autoriza": "nada. A aplicacao do SQL pede a frase literal `APLICAR PEN-43 NO BANCO`; a reversao pede `REVERTER PEN-43 NO BANCO`. Um verde velho de hoje nao serve: o aplicador corre o preflight nos dois lados da escrita.",
+  "veredito": "P73_PEN43_PREFLIGHT_VERDE_CANDIDATA 13/0"
+}
