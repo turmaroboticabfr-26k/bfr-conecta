@@ -47,8 +47,16 @@ const OUTROS_CODIGOS = CODIGOS_STATUS.filter((c) => c !== CODIGO_DE_FECHO);
 // As restantes ou estao no inicio da celula, que a familia ancorada ja reclama, ou vem de «continua / mantem a
 // linha aberta», que as outras duas familias ja reclamam. Nao ha filtro de ruido: um filtro assim suprimiria
 // tambem a declaracao verdadeira «a classe continua aberta» (PEN-48).
+//
+// A janela entre a palavra de fecho e a data nao e um chute: e o intervalo contado no corpus, onde ha 11
+// ocorrencias de «palavra de fecho + data» com histograma {1: 10, 17: 1}. O maior intervalo legitimo medido e 17
+// — o `FECHADAS AS DUAS METADES 19/11` da PEN-36 — e a janela anterior (12) nao o alcançava, pelo que a celula
+// era lida pelo sinal de 17/11 e nunca pelo de 19/11. A janela passa a const abaixo, que compoe o regex: o portao
+// `a_janela_do_fecho_cobre_o_maior_intervalo_medido_no_corpus` governa o mesmo numero que a regua usa, por isso
+// nao podem envelhecer separadas.
+const JANELA_FECHO = 20;
 const IDIOMAS = [
-  { fam: 'FECHO', nome: 'fecho datado', re: /\b(?:FECHAD[OA]S?|APLICAD[OA]S?|PUBLICAD[OA]S?|CANCELAD[OA]S?|ATENDID[OA]S?)\b[^.]{0,12}(?:1[0-9]|2[0-9])\/1[12]/ },
+  { fam: 'FECHO', nome: 'fecho datado', re: new RegExp('\\b(?:FECHAD[OA]S?|APLICAD[OA]S?|PUBLICAD[OA]S?|CANCELAD[OA]S?|ATENDID[OA]S?)\\b[^.]{0,' + JANELA_FECHO + '}(?:1[0-9]|2[0-9])\\/1[12]') },
   { fam: 'ABERTO', nome: 'continua + estado', re: /\bcontinua (?:abert|pendente|por|sem prova|em aberto|nao|sem)/ },
   { fam: 'ABERTO', nome: 'esta linha nao se fecha', re: /n[ãa]o se fecha/ },
   { fam: 'ABERTO', nome: 'por provar', re: /por provar/ },
@@ -200,6 +208,8 @@ const FIXTURES = [
   { celula: '**Aberta 13/11 na passada S21 (§R.4 do arquivo de auditoria)** — dona **RM-1.7**', esperado: 'ABERTA', por: 'palavra de estado no inicio (PEN-32 real)' },
   { celula: '**Criada 20/11 pelo §SM.26, com o texto medido e nao resumido.**', esperado: 'ABERTA', por: 'palavra de estado no inicio (PEN-41 real)' },
   { celula: 'FECHADA 14/11 pelo push do remendo. **[PEN-34] Criada 14/11 ao fechar o RM-6.9, com medicao propria**', esperado: 'DIVERGENTE', por: 'palavra de estado com data depois do fecho, data nao mais recente' },
+  { celula: '**FECHADAS AS DUAS METADES 19/11 — §SM.24**', esperado: 'FECHADA', por: 'fecho datado com intervalo 17, a forma real da PEN-36 que a janela de 12 nao alcançava' },
+  { celula: 'FECHADAS AS DUAS METADES DA SUPERFICIE E DOS ROTULOS E DAS PORTAS 21/11', esperado: 'SEM_DECLARACAO', por: 'intervalo acima da janela medida: a regua nao a reconhece e e isso que o portao da janela vigia' },
 ];
 const disparados = {};
 for (const f of FIXTURES) { const c = classe(f.celula).classe; disparados[f.esperado] = (disparados[f.esperado] || 0) + (c === f.esperado ? 1 : 0); }
@@ -223,6 +233,32 @@ const usoPorIdioma = usoEmTextos(celulasDoCorpus);
 const usoPorIdiomaFixtures = usoEmTextos(FIXTURES.map((f) => f.celula));
 const idiomasSemUso = Object.keys(usoPorIdioma).filter((k) => usoPorIdioma[k] === 0 && (usoPorIdiomaFixtures[k] || 0) === 0);
 
+// O intervalo entre a palavra de fecho e a data, medido com a mesma semantica do regex da regua (a busca para no
+// primeiro ponto). Publica-se e governa a JANELA_FECHO: e a unica forma de a janela deixar de servir sem que eu
+// de conta do aviso.
+const PALAVRA_DE_FECHO = new RegExp('\\b(?:FECHAD[OA]S?|APLICAD[OA]S?|PUBLICAD[OA]S?|CANCELAD[OA]S?|ATENDID[OA]S?)\\b', 'g');
+const DATA_DE_FECHO = /(?:1[0-9]|2[0-9])\/1[12]/;
+const intervalosDeFecho = (textos) => {
+  const histograma = {};
+  let ocorrencias = 0;
+  let maior = 0;
+  for (const t of textos) {
+    PALAVRA_DE_FECHO.lastIndex = 0;
+    let m;
+    while ((m = PALAVRA_DE_FECHO.exec(t))) {
+      const cauda = t.slice(m.index + m[0].length).split('.')[0].slice(0, 80);
+      const d = cauda.match(DATA_DE_FECHO);
+      if (!d) continue;
+      ocorrencias++;
+      histograma[d.index] = (histograma[d.index] || 0) + 1;
+      if (d.index > maior) maior = d.index;
+    }
+  }
+  return { ocorrencias, maior_intervalo: maior, histograma };
+};
+const intervalosCorpus = intervalosDeFecho(celulasDoCorpus);
+const intervalosFixtures = intervalosDeFecho(FIXTURES.map((f) => f.celula));
+
 const CLASSES = ['ABERTA', 'FECHADA', 'DIVERGENTE', 'SEM_DECLARACAO'];
 const contagem = {};
 for (const k of CLASSES) contagem[k] = 0;
@@ -238,6 +274,8 @@ gate('nenhuma_linha_pen_fica_fora_das_quatro_classes_registadas', semClasse.leng
 gate('as_quatro_classes_imprimem_se_mesmo_quando_vazias', [CLASSES.length, Object.keys(contagem).length], [4, 4]);
 gate('cada_fixture_produz_a_classe_esperada_pelo_desenho', fixturesFalham.length, 0);
 gate('cada_idiom_de_estado_tem_uso_medido_no_corpus_ou_em_fixture', idiomasSemUso, []);
+gate('a_janela_do_fecho_cobre_o_maior_intervalo_medido_no_corpus',
+  [intervalosCorpus.maior_intervalo <= JANELA_FECHO, intervalosFixtures.maior_intervalo > JANELA_FECHO], [true, true]);
 gate('as_duas_legendas_da_seccao_12_foram_lidas_e_deram_codigos', [LEGENDA_STATUS_LINHA ? 1 : 0, LEGENDA_PRIORIDADE_LINHA ? 1 : 0, CODIGOS_STATUS.length > 0 ? 1 : 0, CODIGOS_PRIORIDADE.length > 0 ? 1 : 0], [1, 1, 1, 1]);
 gate('todo_codigo_usado_no_inicio_de_celula_consta_na_legenda_de_status', Object.keys(codigosNoInicio).filter((c) => !CODIGOS_STATUS.includes(c)).sort(), []);
 gate('toda_prioridade_lida_bate_com_a_legenda_de_prioridade', Object.keys(prioridadesForaDaLegenda).sort(), []);
@@ -260,7 +298,7 @@ const saida = {
   rotulo: process.env.P133_ROTULO || 'a',
   em: new Date().toISOString(),
   pergunta: 'quais pendencias estao mesmo abertas, por que classe medida, e que OK cada uma exige?',
-  metodo: 'todas as linhas PEN lidas com a predica do produtor (pipes escapados nao separam celulas, sete partes por split); classe = os dois veredictos da celula (ultimo sinal por posicao e sinal com a data mais recente) quando concordam, DIVERGENTE quando divergem, SEM_DECLARACAO quando a celula nao tem nenhum idiom; os idioms sao as formas medidas no corpus (p133-sonda-idiomas.cjs, p133-sonda-prefixos.cjs), com as abreviaturas lidas da propria linha da legenda de status e nao dactilografadas; a palavra solta «abert» esta fora das familias porque tres das suas ocorrencias descrevem superficie e nao estado; registro de aplicacao lido com o filtro do portao do pacote (modo=aplicacao e escrito_no_banco=true); seccao 13 e o censo PEN contados pelos produtores versionados por execFile, nao por reimplementacao.',
+  metodo: 'todas as linhas PEN lidas com a predica do produtor (pipes escapados nao separam celulas, sete partes por split); classe = os dois veredictos da celula (ultimo sinal por posicao e sinal com a data mais recente) quando concordam, DIVERGENTE quando divergem, SEM_DECLARACAO quando a celula nao tem nenhum idiom; os idioms sao as formas medidas no corpus (p133-sonda-idiomas.cjs, p133-sonda-prefixos.cjs), com as abreviaturas lidas da propria linha da legenda de status e nao dactilografadas; a palavra solta «abert» esta fora das familias porque tres das suas ocorrencias descrevem superficie e nao estado; a janela entre a palavra de fecho e a data e a const JANELA_FECHO, contada no corpus (11 ocorrencias, histograma de intervalos publicado em janela_de_fecho) e vigiada pelo portao do mesmo nome; registro de aplicacao lido com o filtro do portao do pacote (modo=aplicacao e escrito_no_banco=true); seccao 13 e o censo PEN contados pelos produtores versionados por execFile, nao por reimplementacao.',
   emissor_bytes: Buffer.byteLength(emissor),
   emissor_md5: createHash('md5').update(emissor).digest('hex').slice(0, 8),
   fontes: { ledger: LEDGER, painel: PAINEL, registro_diretorio: 'evidence', censo_rm: 'scripts/censo-pendencias.mjs' },
@@ -271,6 +309,7 @@ const saida = {
     prioridades_fora_da_legenda: prioridadesForaDaLegenda,
   },
   idiomas: { definidos: IDIOMAS.length, uso_no_corpus: usoPorIdioma, uso_nos_fixtures: usoPorIdiomaFixtures, sem_uso_em_ambos: idiomasSemUso },
+  janela_de_fecho: { valor: JANELA_FECHO, corpus: intervalosCorpus, fixtures: intervalosFixtures },
   linhas_pen: itens.length,
   contagem_por_classe: contagem,
   abertas: itens.filter((i) => i.classe === 'ABERTA').map((i) => ({ id: i.id, pri: i.pri, vencedor: i.vencedor, ok: i.ok, registo: i.registo_aplicacao ? i.registo_aplicacao.registo : null })),
@@ -287,8 +326,8 @@ const saida = {
   fixtures: { definidas: FIXTURES.length, disparados, falhas: fixturesFalham },
   abertas_com_registo: abertasComRegisto,
   portoes: { total: portoes.length, falhas: falhas.length, lista: portoes },
-  o_que_prova: ['que o ledger tem N linhas PEN de cinco celulas e em que classe cada celula cai pelo sinal mais recente, com a posicao e a data desse sinal', 'quais dessas linhas tem registo de aplicacao no banco em disco e com que frase de OK', 'que as tres contagens de pendencias (painel, paragrafo 15, linhas lidas) batem ou divergem', `que o classificador dispara em todas as ${FIXTURES.length} formas postas em fixture`, `que cada um dos ${IDIOMAS.length} idioms tem uso medido no corpus ou em fixture`],
-  o_que_NAO_prova: ['que a classe do ledger seja o estado vivo do produto: a fonte e prosa versionada, nao o ar', 'que o OK exigido por cada linha seja suficiente: a coluna e a assinatura lexical do texto, a frase concreta pertence ao utilizador', 'que as linhas RM-x.y abertas estejam bem ou mal: o censo so conta e classifica por sinais do texto', 'que uma celula SEM_DECLARACAO esteja fechada ou aberta: diz so que o texto nao declara estado em nenhum dos idioms medidos'],
+  o_que_prova: ['que o ledger tem N linhas PEN de cinco celulas e em que classe cada celula cai pelo sinal mais recente, com a posicao e a data desse sinal', 'quais dessas linhas tem registo de aplicacao no banco em disco e com que frase de OK', 'que as tres contagens de pendencias (painel, paragrafo 15, linhas lidas) batem ou divergem', `que o classificador dispara em todas as ${FIXTURES.length} formas postas em fixture`, `que cada um dos ${IDIOMAS.length} idioms tem uso medido no corpus ou em fixture`, `que a janela de ${JANELA_FECHO} caracteres entre a palavra de fecho e a data cobre o maior intervalo medido no corpus (${intervalosCorpus.maior_intervalo}) e que tem fixture acima dela (${intervalosFixtures.maior_intervalo}) para nao virar ramo morto`],
+  o_que_NAO_prova: ['que a classe do ledger seja o estado vivo do produto: a fonte e prosa versionada, nao o ar', 'que o OK exigido por cada linha seja suficiente: a coluna e a assinatura lexical do texto, a frase concreta pertence ao utilizador', 'que as linhas RM-x.y abertas estejam bem ou mal: o censo so conta e classifica por sinais do texto', 'que uma celula SEM_DECLARACAO esteja fechada ou aberta: diz so que o texto nao declara estado em nenhum dos idioms medidos', 'que um fecho declarado no texto seja verdadeiro: a regua reconhece a forma «palavra de fecho + data», nao confere a corrida citada — foi assim que a PEN-36 pôde declarar as duas metades fechadas enquanto o ar publicado mantinha seis rotulos', 'que o intervalo entre a palavra de fecho e a data esteja dentro da janela numa forma de escrita nova: acima de ' + JANELA_FECHO + ' caracteres a data passa a nao contar, e o portao da janela e o que da o aviso'],
 };
 saida.veredito = (falhas.length ? 'P133_INVENTARIO_VERMELHO ' : 'P133_INVENTARIO_MEDIDO ') + portoes.length + '/' + falhas.length + ' · esperanca=medir';
 fs.writeFileSync(OUT, JSON.stringify(saida, null, 2) + '\n');
