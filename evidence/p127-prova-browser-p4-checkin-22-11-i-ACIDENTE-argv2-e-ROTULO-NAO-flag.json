@@ -1,0 +1,2166 @@
+{
+  "peca": "scripts/p127-prova-browser-p4-checkin.mjs",
+  "rotulo": "--sonda-rguas",
+  "em": "2026-11-22T05:34:54.380Z",
+  "duracao_ms": 44026,
+  "pergunta": "com sessao de gatekeeper no ar medido: que ouvintes estao ligados ao controlo de leitura manual da portaria, que nome de RPC sai quando se submete, e o que nao saiu",
+  "metodo": "CDP headless 1280x900; Emulation.setDeviceMetricsOverride antes do Page.navigate; cadeia injectada so no localStorage; prontidao esperada pelo predicado do proprio fonte (gateCentralBound + [data-gate-central-manual]) antes de enumerar ouvintes; clique real com elementFromPoint antes de cada Input.dispatchMouseEvent; submissao por escada de degraus nomeados (rato com hit-test -> teclado Tab/Enter -> form.requestSubmit como ultimo recurso) e census do ponto do alvo quando o rato nao pousa no botao; ouvintes por DOMDebugger.getEventListeners, camada lida do trecho do fonte via Debugger.getScriptSource; pedidos lidos de Network.requestWillBeSent e Network.responseReceived.",
+  "http": "GET ao ar; POST de auth apenas se a cadeia estiver vencida; dois GET so-leitura das mesas de configuracao para medir o modo legado; POST de submissao como o utilizador faria; SELECT so-leitura de gate_checkins",
+  "ar_esperado_de": "worker-deploy-v142-painel-na-troca/esperado-v142.json",
+  "passos": [
+    {
+      "passo": "modulo_sem_motivo_excepcional",
+      "camada_alvo": "modulo_diferido",
+      "no_dom": 1,
+      "pedidos_antes": 2,
+      "modal": {
+        "tentativas": [
+          {
+            "k": 0,
+            "tapou": "form",
+            "fecho": "button.modal-close",
+            "fecho_no_alvo": true
+          }
+        ],
+        "resolvido": false,
+        "motivo": "por_cima=div.bfr-gate-empty e sem botao de fecho pintado (sem node)"
+      },
+      "gaveta": {
+        "antes": {
+          "em_details": true,
+          "aberto": false,
+          "sumario_existe": true,
+          "sumario_caixa": {
+            "x": 274,
+            "y": 279,
+            "w": 952,
+            "h": 44
+          }
+        },
+        "depois": {
+          "em_details": true,
+          "aberto": false,
+          "sumario_existe": true,
+          "sumario_caixa": {
+            "x": 274,
+            "y": 390,
+            "w": 952,
+            "h": 44
+          }
+        },
+        "click": {
+          "no_ponto": "summary",
+          "no_alvo": true,
+          "por_cima": false,
+          "contem_o_alvo": false,
+          "relacao": "no_alvo"
+        },
+        "ponto": {
+          "x": 751,
+          "y": 450
+        },
+        "tentado": true,
+        "motivo": "o_clique_no_summary_nao_abriu_a_gaveta"
+      },
+      "alcancavel": true,
+      "geo": {
+        "entrada": {
+          "x": 441,
+          "y": 534,
+          "w": 135,
+          "h": 22,
+          "disp": "inline-block",
+          "vis": "visible",
+          "ancestor_unico": true,
+          "antes": {
+            "x": 441,
+            "y": 534
+          },
+          "movido_por_scroll": false,
+          "scroll_behaviour_do_html": "smooth",
+          "rolagem_do_documento": {
+            "no": "html",
+            "top": 0,
+            "sh": 900,
+            "ch": 900
+          },
+          "cadeia_rolavel": [
+            {
+              "no": "input",
+              "overflow_y": "clip",
+              "posicao": "static",
+              "sh": 18,
+              "ch": 18,
+              "top": 0,
+              "rolavel": false
+            },
+            {
+              "no": "label",
+              "overflow_y": "visible",
+              "posicao": "static",
+              "sh": 22,
+              "ch": 22,
+              "top": 0,
+              "rolavel": false
+            },
+            {
+              "no": "form.bfr-gate-manual",
+              "overflow_y": "visible",
+              "posicao": "static",
+              "sh": 64,
+              "ch": 64,
+              "top": 0,
+              "rolavel": false
+            },
+            {
+              "no": "details.bfr-gate-reader-options",
+              "overflow_y": "visible",
+              "posicao": "static",
+              "sh": 52,
+              "ch": 52,
+              "top": 0,
+              "rolavel": false
+            },
+            {
+              "no": "div.bfr-gate-overview",
+              "overflow_y": "visible",
+              "posicao": "static",
+              "sh": 1019,
+              "ch": 1019,
+              "top": 0,
+              "rolavel": false
+            },
+            {
+              "no": "div",
+              "overflow_y": "visible",
+              "posicao": "static",
+              "sh": 1163,
+              "ch": 1163,
+              "top": 0,
+              "rolavel": false
+            },
+            {
+              "no": "div.bfr-gate-central",
+              "overflow_y": "visible",
+              "posicao": "static",
+              "sh": 1453,
+              "ch": 1453,
+              "top": 0,
+              "rolavel": false
+            },
+            {
+              "no": "div#gatekeeperView.content",
+              "overflow_y": "visible",
+              "posicao": "relative",
+              "sh": 1573,
+              "ch": 1573,
+              "top": 0,
+              "rolavel": false
+            },
+            {
+              "no": "main",
+              "overflow_y": "auto",
+              "posicao": "relative",
+              "sh": 1635,
+              "ch": 900,
+              "top": 624,
+              "rolavel": true
+            },
+            {
+              "no": "div#appShell.app-shell",
+              "overflow_y": "visible",
+              "posicao": "relative",
+              "sh": 900,
+              "ch": 900,
+              "top": 0,
+              "rolavel": false
+            },
+            {
+              "no": "body.bfr-motion-ready",
+              "overflow_y": "hidden",
+              "posicao": "static",
+              "sh": 900,
+              "ch": 900,
+              "top": 0,
+              "rolavel": false
+            },
+            {
+              "no": "html",
+              "overflow_y": "visible",
+              "posicao": "static",
+              "sh": 900,
+              "ch": 900,
+              "top": 0,
+              "rolavel": false
+            }
+          ],
+          "janela": {
+            "iw": 1280,
+            "ih": 900,
+            "cw": 1280,
+            "sw": 1280
+          },
+          "atingibilidade": [
+            {
+              "k": 0,
+              "metodo": "scrollIntoView",
+              "ok": true,
+              "motivo": null,
+              "y": 534
+            }
+          ]
+        },
+        "botao": {
+          "x": 747,
+          "y": 570,
+          "w": 944,
+          "h": 34,
+          "disp": "block",
+          "vis": "visible",
+          "ancestor_unico": true,
+          "antes": {
+            "x": 747,
+            "y": 570
+          },
+          "movido_por_scroll": false,
+          "scroll_behaviour_do_html": "smooth",
+          "rolagem_do_documento": {
+            "no": "html",
+            "top": 0,
+            "sh": 900,
+            "ch": 900
+          },
+          "cadeia_rolavel": [
+            {
+              "no": "button.bfr-gate-button",
+              "overflow_y": "visible",
+              "posicao": "static",
+              "sh": 32,
+              "ch": 32,
+              "top": 0,
+              "rolavel": false
+            },
+            {
+              "no": "form.bfr-gate-manual",
+              "overflow_y": "visible",
+              "posicao": "static",
+              "sh": 64,
+              "ch": 64,
+              "top": 0,
+              "rolavel": false
+            },
+            {
+              "no": "details.bfr-gate-reader-options",
+              "overflow_y": "visible",
+              "posicao": "static",
+              "sh": 52,
+              "ch": 52,
+              "top": 0,
+              "rolavel": false
+            },
+            {
+              "no": "div.bfr-gate-overview",
+              "overflow_y": "visible",
+              "posicao": "static",
+              "sh": 1019,
+              "ch": 1019,
+              "top": 0,
+              "rolavel": false
+            },
+            {
+              "no": "div",
+              "overflow_y": "visible",
+              "posicao": "static",
+              "sh": 1163,
+              "ch": 1163,
+              "top": 0,
+              "rolavel": false
+            },
+            {
+              "no": "div.bfr-gate-central",
+              "overflow_y": "visible",
+              "posicao": "static",
+              "sh": 1453,
+              "ch": 1453,
+              "top": 0,
+              "rolavel": false
+            },
+            {
+              "no": "div#gatekeeperView.content",
+              "overflow_y": "visible",
+              "posicao": "relative",
+              "sh": 1573,
+              "ch": 1573,
+              "top": 0,
+              "rolavel": false
+            },
+            {
+              "no": "main",
+              "overflow_y": "auto",
+              "posicao": "relative",
+              "sh": 1635,
+              "ch": 900,
+              "top": 624,
+              "rolavel": true
+            },
+            {
+              "no": "div#appShell.app-shell",
+              "overflow_y": "visible",
+              "posicao": "relative",
+              "sh": 900,
+              "ch": 900,
+              "top": 0,
+              "rolavel": false
+            },
+            {
+              "no": "body.bfr-motion-ready",
+              "overflow_y": "hidden",
+              "posicao": "static",
+              "sh": 900,
+              "ch": 900,
+              "top": 0,
+              "rolavel": false
+            },
+            {
+              "no": "html",
+              "overflow_y": "visible",
+              "posicao": "static",
+              "sh": 900,
+              "ch": 900,
+              "top": 0,
+              "rolavel": false
+            }
+          ],
+          "janela": {
+            "iw": 1280,
+            "ih": 900,
+            "cw": 1280,
+            "sw": 1280
+          },
+          "atingibilidade": [
+            {
+              "k": 0,
+              "metodo": "scrollIntoView",
+              "ok": true,
+              "motivo": null,
+              "y": 570
+            }
+          ]
+        }
+      },
+      "foco": {
+        "no_ponto": "div.bfr-gate-empty",
+        "no_alvo": false,
+        "por_cima": false,
+        "contem_o_alvo": false,
+        "relacao": "outro_elemento"
+      },
+      "ponto_de_entrada": {
+        "x": 441,
+        "y": 534
+      },
+      "entrada_derivada": {
+        "dx": 0,
+        "dy": 0
+      },
+      "limpeza_entrada_rato": {
+        "focado": false,
+        "length_depois": null
+      },
+      "cracha_lido": "",
+      "primeiro_input_da_vista_valor": "",
+      "alcancavel_no_momento": true,
+      "ponto_de_submissao": {
+        "x": 747,
+        "y": 570
+      },
+      "deriva_do_rect_lido_antes": {
+        "dx": 0,
+        "dy": 0
+      },
+      "registo_de_atingibilidade_do_botao": [
+        {
+          "k": 0,
+          "metodo": "scrollIntoView",
+          "ok": true,
+          "motivo": null,
+          "y": 570
+        }
+      ],
+      "clique": {
+        "no_ponto": "section.bfr-gate-overview-grid",
+        "no_alvo": false,
+        "por_cima": false,
+        "contem_o_alvo": false,
+        "relacao": "outro_elemento"
+      },
+      "rato_pousou_no_alvo": false,
+      "oclusao": {
+        "ponto": {
+          "x": 747,
+          "y": 570
+        },
+        "no_ponto": "section.bfr-gate-overview-grid",
+        "ocupante": {
+          "x": 274,
+          "y": 434,
+          "w": 952,
+          "h": 172,
+          "posicao": "static",
+          "z_index": "auto",
+          "opacidade": "1",
+          "pointer_events": "auto"
+        },
+        "alvo": {
+          "x": 274,
+          "y": 553,
+          "w": 944,
+          "h": 34,
+          "centro_x": 747,
+          "centro_y": 570
+        },
+        "alvo_e_mesmo_ponto": true,
+        "cadeia_do_ponto": [
+          "section.bfr-gate-overview-grid",
+          "div.bfr-gate-overview",
+          "div",
+          "div.bfr-gate-central",
+          "div#gatekeeperView.content",
+          "main",
+          "div#appShell.app-shell",
+          "body.bfr-motion-ready"
+        ]
+      },
+      "degrau_teclado": {
+        "degrau": "teclado",
+        "foco_entrada": {
+          "existe": true,
+          "focado": false,
+          "no": "input",
+          "tipo": null,
+          "readOnly": false,
+          "disabled": false
+        },
+        "primeiro_token_da_vista": "",
+        "enter_despachado": true
+      },
+      "degrau_request_submit": {
+        "ok": true,
+        "degrau": "requestSubmit",
+        "form": "form",
+        "acoes": null
+      },
+      "emissao_por_degrau": {
+        "rato": [],
+        "teclado": [],
+        "request_submit": []
+      },
+      "submetido_por": null,
+      "pedidos_do_passo": [
+        {
+          "passo": "modulo_sem_motivo_excepcional",
+          "nome": "list_current_month_birthdays",
+          "http": 200,
+          "corpo_bytes": 19,
+          "corpo_campos": [
+            "target_month"
+          ],
+          "cracha_e_o_de_controlo": false,
+          "corpo_bytes_resposta": 10152,
+          "corpo_resumo": {
+            "chaves": [
+              "0",
+              "1",
+              "10",
+              "11",
+              "12",
+              "13",
+              "14",
+              "15",
+              "16",
+              "17",
+              "18",
+              "19",
+              "2",
+              "20",
+              "21",
+              "22",
+              "23",
+              "24",
+              "25",
+              "26",
+              "27",
+              "28",
+              "29",
+              "3",
+              "30",
+              "31",
+              "32",
+              "33",
+              "34",
+              "35",
+              "36",
+              "37",
+              "38",
+              "39",
+              "4",
+              "40",
+              "41",
+              "42",
+              "43",
+              "44",
+              "45",
+              "46",
+              "47",
+              "48",
+              "49",
+              "5",
+              "50",
+              "51",
+              "52",
+              "53",
+              "54",
+              "55",
+              "56",
+              "57",
+              "58",
+              "59",
+              "6",
+              "60",
+              "61",
+              "62",
+              "63",
+              "64",
+              "65",
+              "66",
+              "67",
+              "68",
+              "7",
+              "8",
+              "9"
+            ],
+            "ok": null,
+            "motivo": null,
+            "codigo_de_erro": null,
+            "mensagem_de_erro": null,
+            "entrada_status": null
+          }
+        },
+        {
+          "passo": "modulo_sem_motivo_excepcional",
+          "nome": "list_current_month_birthdays",
+          "http": 200,
+          "corpo_bytes": 0,
+          "corpo_campos": [],
+          "cracha_e_o_de_controlo": false,
+          "corpo_resumo": {
+            "leitura_falhou": true
+          }
+        }
+      ],
+      "status": "Leitura suspensa: Calendário de hoje ainda não confirmado. Use registro manual excepcional com justificativa."
+    },
+    {
+      "passo": "modulo_com_motivo_de_oito_caracteres",
+      "camada_alvo": "modulo_diferido",
+      "no_dom": 1,
+      "pedidos_antes": 4,
+      "modal": {
+        "tentativas": [],
+        "resolvido": false,
+        "motivo": "por_cima=div.bfr-gate-empty e sem botao de fecho pintado (sem node)"
+      },
+      "gaveta": {
+        "antes": {
+          "em_details": true,
+          "aberto": false,
+          "sumario_existe": true,
+          "sumario_caixa": {
+            "x": 274,
+            "y": 390,
+            "w": 952,
+            "h": 44
+          }
+        },
+        "depois": {
+          "em_details": true,
+          "aberto": true,
+          "sumario_existe": true,
+          "sumario_caixa": {
+            "x": 274,
+            "y": 428,
+            "w": 952,
+            "h": 44
+          }
+        },
+        "click": {
+          "no_ponto": "summary",
+          "no_alvo": true,
+          "por_cima": false,
+          "contem_o_alvo": false,
+          "relacao": "no_alvo"
+        },
+        "ponto": {
+          "x": 751,
+          "y": 450
+        },
+        "tentado": true,
+        "motivo": null
+      },
+      "alcancavel": true,
+      "geo": {
+        "entrada": {
+          "x": 441,
+          "y": 450,
+          "w": 135,
+          "h": 22,
+          "disp": "inline-block",
+          "vis": "visible",
+          "ancestor_unico": true,
+          "antes": {
+            "x": 441,
+            "y": 581
+          },
+          "movido_por_scroll": true,
+          "scroll_behaviour_do_html": "smooth",
+          "rolagem_do_documento": {
+            "no": "html",
+            "top": 0,
+            "sh": 900,
+            "ch": 900
+          },
+          "cadeia_rolavel": [
+            {
+              "no": "input",
+              "overflow_y": "clip",
+              "posicao": "static",
+              "sh": 18,
+              "ch": 18,
+              "top": 0,
+              "rolavel": false
+            },
+            {
+              "no": "label",
+              "overflow_y": "visible",
+              "posicao": "static",
+              "sh": 22,
+              "ch": 22,
+              "top": 0,
+              "rolavel": false
+            },
+            {
+              "no": "form.bfr-gate-manual",
+              "overflow_y": "visible",
+              "posicao": "static",
+              "sh": 64,
+              "ch": 64,
+              "top": 0,
+              "rolavel": false
+            },
+            {
+              "no": "details.bfr-gate-reader-options",
+              "overflow_y": "visible",
+              "posicao": "static",
+              "sh": 345,
+              "ch": 345,
+              "top": 0,
+              "rolavel": false
+            },
+            {
+              "no": "div.bfr-gate-overview",
+              "overflow_y": "visible",
+              "posicao": "static",
+              "sh": 1312,
+              "ch": 1312,
+              "top": 0,
+              "rolavel": false
+            },
+            {
+              "no": "div",
+              "overflow_y": "visible",
+              "posicao": "static",
+              "sh": 1455,
+              "ch": 1455,
+              "top": 0,
+              "rolavel": false
+            },
+            {
+              "no": "div.bfr-gate-central",
+              "overflow_y": "visible",
+              "posicao": "static",
+              "sh": 1745,
+              "ch": 1745,
+              "top": 0,
+              "rolavel": false
+            },
+            {
+              "no": "div#gatekeeperView.content",
+              "overflow_y": "visible",
+              "posicao": "relative",
+              "sh": 1865,
+              "ch": 1865,
+              "top": 0,
+              "rolavel": false
+            },
+            {
+              "no": "main",
+              "overflow_y": "auto",
+              "posicao": "relative",
+              "sh": 1927,
+              "ch": 900,
+              "top": 717,
+              "rolavel": true
+            },
+            {
+              "no": "div#appShell.app-shell",
+              "overflow_y": "visible",
+              "posicao": "relative",
+              "sh": 900,
+              "ch": 900,
+              "top": 0,
+              "rolavel": false
+            },
+            {
+              "no": "body.bfr-motion-ready",
+              "overflow_y": "hidden",
+              "posicao": "static",
+              "sh": 900,
+              "ch": 900,
+              "top": 0,
+              "rolavel": false
+            },
+            {
+              "no": "html",
+              "overflow_y": "visible",
+              "posicao": "static",
+              "sh": 900,
+              "ch": 900,
+              "top": 0,
+              "rolavel": false
+            }
+          ],
+          "janela": {
+            "iw": 1280,
+            "ih": 900,
+            "cw": 1280,
+            "sw": 1280
+          },
+          "atingibilidade": [
+            {
+              "k": 0,
+              "metodo": "scrollIntoView",
+              "ok": true,
+              "motivo": null,
+              "y": 450
+            }
+          ]
+        },
+        "botao": {
+          "x": 747,
+          "y": 450,
+          "w": 944,
+          "h": 34,
+          "disp": "block",
+          "vis": "visible",
+          "ancestor_unico": true,
+          "antes": {
+            "x": 747,
+            "y": 486
+          },
+          "movido_por_scroll": true,
+          "scroll_behaviour_do_html": "smooth",
+          "rolagem_do_documento": {
+            "no": "html",
+            "top": 0,
+            "sh": 900,
+            "ch": 900
+          },
+          "cadeia_rolavel": [
+            {
+              "no": "button.bfr-gate-button",
+              "overflow_y": "visible",
+              "posicao": "static",
+              "sh": 32,
+              "ch": 32,
+              "top": 0,
+              "rolavel": false
+            },
+            {
+              "no": "form.bfr-gate-manual",
+              "overflow_y": "visible",
+              "posicao": "static",
+              "sh": 64,
+              "ch": 64,
+              "top": 0,
+              "rolavel": false
+            },
+            {
+              "no": "details.bfr-gate-reader-options",
+              "overflow_y": "visible",
+              "posicao": "static",
+              "sh": 345,
+              "ch": 345,
+              "top": 0,
+              "rolavel": false
+            },
+            {
+              "no": "div.bfr-gate-overview",
+              "overflow_y": "visible",
+              "posicao": "static",
+              "sh": 1312,
+              "ch": 1312,
+              "top": 0,
+              "rolavel": false
+            },
+            {
+              "no": "div",
+              "overflow_y": "visible",
+              "posicao": "static",
+              "sh": 1455,
+              "ch": 1455,
+              "top": 0,
+              "rolavel": false
+            },
+            {
+              "no": "div.bfr-gate-central",
+              "overflow_y": "visible",
+              "posicao": "static",
+              "sh": 1745,
+              "ch": 1745,
+              "top": 0,
+              "rolavel": false
+            },
+            {
+              "no": "div#gatekeeperView.content",
+              "overflow_y": "visible",
+              "posicao": "relative",
+              "sh": 1865,
+              "ch": 1865,
+              "top": 0,
+              "rolavel": false
+            },
+            {
+              "no": "main",
+              "overflow_y": "auto",
+              "posicao": "relative",
+              "sh": 1927,
+              "ch": 900,
+              "top": 753,
+              "rolavel": true
+            },
+            {
+              "no": "div#appShell.app-shell",
+              "overflow_y": "visible",
+              "posicao": "relative",
+              "sh": 900,
+              "ch": 900,
+              "top": 0,
+              "rolavel": false
+            },
+            {
+              "no": "body.bfr-motion-ready",
+              "overflow_y": "hidden",
+              "posicao": "static",
+              "sh": 900,
+              "ch": 900,
+              "top": 0,
+              "rolavel": false
+            },
+            {
+              "no": "html",
+              "overflow_y": "visible",
+              "posicao": "static",
+              "sh": 900,
+              "ch": 900,
+              "top": 0,
+              "rolavel": false
+            }
+          ],
+          "janela": {
+            "iw": 1280,
+            "ih": 900,
+            "cw": 1280,
+            "sw": 1280
+          },
+          "atingibilidade": [
+            {
+              "k": 0,
+              "metodo": "scrollIntoView",
+              "ok": true,
+              "motivo": null,
+              "y": 450
+            }
+          ]
+        }
+      },
+      "foco": {
+        "no_ponto": "input",
+        "no_alvo": true,
+        "por_cima": false,
+        "contem_o_alvo": false,
+        "relacao": "no_alvo"
+      },
+      "ponto_de_entrada": {
+        "x": 441,
+        "y": 450
+      },
+      "entrada_derivada": {
+        "dx": 0,
+        "dy": 0
+      },
+      "limpeza_entrada_rato": {
+        "focado": true,
+        "length_antes": null,
+        "length_depois": 0
+      },
+      "cracha_lido": "P4CONTROLEINEXISTENTE0123456789",
+      "primeiro_input_da_vista_valor": "P4CONTROLEINEXISTENTE0123456789",
+      "foco_motivo": {
+        "no_ponto": "textarea",
+        "no_alvo": true,
+        "por_cima": false,
+        "contem_o_alvo": false,
+        "relacao": "no_alvo"
+      },
+      "motivo_ponto": {
+        "x": 751,
+        "y": 450
+      },
+      "motivo_derivado": {
+        "dx": 0,
+        "dy": 0
+      },
+      "registo_de_atingibilidade_do_motivo": [
+        {
+          "k": 0,
+          "metodo": "scrollIntoView",
+          "ok": true,
+          "motivo": null,
+          "y": 450
+        }
+      ],
+      "limpeza_motivo_rato": {
+        "focado": true,
+        "length_antes": null,
+        "length_depois": 0
+      },
+      "motivo_lido": "P4 controle de prova",
+      "alcancavel_no_momento": true,
+      "ponto_de_submissao": {
+        "x": 747,
+        "y": 450
+      },
+      "deriva_do_rect_lido_antes": {
+        "dx": 0,
+        "dy": 0
+      },
+      "registo_de_atingibilidade_do_botao": [
+        {
+          "k": 0,
+          "metodo": "scrollIntoView",
+          "ok": true,
+          "motivo": null,
+          "y": 450
+        }
+      ],
+      "clique": {
+        "no_ponto": "button.bfr-gate-button",
+        "no_alvo": true,
+        "por_cima": false,
+        "contem_o_alvo": false,
+        "relacao": "no_alvo"
+      },
+      "rato_pousou_no_alvo": true,
+      "oclusao": null,
+      "degrau_teclado": null,
+      "degrau_request_submit": null,
+      "emissao_por_degrau": {
+        "rato": [
+          "register_gate_checkin_v2"
+        ],
+        "teclado": [],
+        "request_submit": []
+      },
+      "submetido_por": "rato",
+      "pedidos_do_passo": [
+        {
+          "passo": "modulo_com_motivo_de_oito_caracteres",
+          "nome": "register_gate_checkin_v2",
+          "http": 400,
+          "corpo_bytes": 196,
+          "corpo_campos": [
+            "exception_reason",
+            "gate_direction",
+            "intake_source",
+            "target_badge_token",
+            "target_shift",
+            "visual_confirmation"
+          ],
+          "cracha_e_o_de_controlo": true,
+          "corpo_bytes_resposta": 127,
+          "corpo_resumo": {
+            "chaves": [
+              "code",
+              "details",
+              "hint",
+              "message"
+            ],
+            "ok": null,
+            "motivo": null,
+            "codigo_de_erro": null,
+            "mensagem_de_erro": null,
+            "entrada_status": null
+          }
+        },
+        {
+          "passo": "modulo_com_motivo_de_oito_caracteres",
+          "nome": "register_gate_checkin_v2",
+          "http": 200,
+          "corpo_bytes": 0,
+          "corpo_campos": [],
+          "cracha_e_o_de_controlo": false,
+          "corpo_resumo": {
+            "leitura_falhou": true
+          }
+        }
+      ],
+      "status": "QR Code não reconhecido. Tente novamente ou busque o aluno."
+    },
+    {
+      "passo": "legado_com_cracha",
+      "camada_alvo": "legado_shell",
+      "no_dom": 1,
+      "pedidos_antes": 6,
+      "modal": {
+        "tentativas": [],
+        "resolvido": false,
+        "motivo": "alvo nao alcancavel antes do modal: no DOM sem caixa pintada"
+      },
+      "gaveta": {
+        "antes": {
+          "em_details": false,
+          "aberto": null,
+          "sumario_existe": null,
+          "sumario_caixa": null
+        },
+        "depois": {
+          "em_details": false,
+          "aberto": null,
+          "sumario_existe": null,
+          "sumario_caixa": null
+        },
+        "click": null,
+        "tentado": false,
+        "motivo": "o_controlo_nao_esta_dentro_de_um_details"
+      },
+      "alcancavel": false,
+      "motivo": "entrada: no DOM sem caixa pintada | botao: no DOM sem caixa pintada",
+      "geo": {
+        "entrada": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0,
+          "disp": "block",
+          "vis": "visible",
+          "ancestor_unico": true,
+          "antes": {
+            "x": 0,
+            "y": 0
+          },
+          "movido_por_scroll": false,
+          "scroll_behaviour_do_html": "smooth",
+          "rolagem_do_documento": {
+            "no": "html",
+            "top": 0,
+            "sh": 900,
+            "ch": 900
+          },
+          "cadeia_rolavel": [
+            {
+              "no": "input",
+              "overflow_y": "clip",
+              "posicao": "static",
+              "sh": 0,
+              "ch": 0,
+              "top": 0,
+              "rolavel": false
+            },
+            {
+              "no": "label",
+              "overflow_y": "visible",
+              "posicao": "static",
+              "sh": 0,
+              "ch": 0,
+              "top": 0,
+              "rolavel": false
+            },
+            {
+              "no": "form.gate-manual-form",
+              "overflow_y": "visible",
+              "posicao": "static",
+              "sh": 0,
+              "ch": 0,
+              "top": 0,
+              "rolavel": false
+            },
+            {
+              "no": "section.panel",
+              "overflow_y": "visible",
+              "posicao": "relative",
+              "sh": 0,
+              "ch": 0,
+              "top": 0,
+              "rolavel": false
+            },
+            {
+              "no": "div.gate-layout",
+              "overflow_y": "visible",
+              "posicao": "static",
+              "sh": 0,
+              "ch": 0,
+              "top": 0,
+              "rolavel": false
+            },
+            {
+              "no": "div#gatekeeperView.content",
+              "overflow_y": "visible",
+              "posicao": "relative",
+              "sh": 1865,
+              "ch": 1865,
+              "top": 0,
+              "rolavel": false
+            },
+            {
+              "no": "main",
+              "overflow_y": "auto",
+              "posicao": "relative",
+              "sh": 1927,
+              "ch": 900,
+              "top": 753,
+              "rolavel": true
+            },
+            {
+              "no": "div#appShell.app-shell",
+              "overflow_y": "visible",
+              "posicao": "relative",
+              "sh": 900,
+              "ch": 900,
+              "top": 0,
+              "rolavel": false
+            },
+            {
+              "no": "body.bfr-motion-ready",
+              "overflow_y": "hidden",
+              "posicao": "static",
+              "sh": 900,
+              "ch": 900,
+              "top": 0,
+              "rolavel": false
+            },
+            {
+              "no": "html",
+              "overflow_y": "visible",
+              "posicao": "static",
+              "sh": 900,
+              "ch": 900,
+              "top": 0,
+              "rolavel": false
+            }
+          ],
+          "janela": {
+            "iw": 1280,
+            "ih": 900,
+            "cw": 1280,
+            "sw": 1280
+          },
+          "atingibilidade": [
+            {
+              "k": 0,
+              "metodo": "scrollIntoView",
+              "ok": false,
+              "motivo": "no DOM sem caixa pintada",
+              "y": 0
+            }
+          ]
+        },
+        "botao": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0,
+          "disp": "block",
+          "vis": "visible",
+          "ancestor_unico": true,
+          "antes": {
+            "x": 0,
+            "y": 0
+          },
+          "movido_por_scroll": false,
+          "scroll_behaviour_do_html": "smooth",
+          "rolagem_do_documento": {
+            "no": "html",
+            "top": 0,
+            "sh": 900,
+            "ch": 900
+          },
+          "cadeia_rolavel": [
+            {
+              "no": "button.text-button",
+              "overflow_y": "hidden",
+              "posicao": "relative",
+              "sh": 0,
+              "ch": 0,
+              "top": 0,
+              "rolavel": false
+            },
+            {
+              "no": "form.gate-manual-form",
+              "overflow_y": "visible",
+              "posicao": "static",
+              "sh": 0,
+              "ch": 0,
+              "top": 0,
+              "rolavel": false
+            },
+            {
+              "no": "section.panel",
+              "overflow_y": "visible",
+              "posicao": "relative",
+              "sh": 0,
+              "ch": 0,
+              "top": 0,
+              "rolavel": false
+            },
+            {
+              "no": "div.gate-layout",
+              "overflow_y": "visible",
+              "posicao": "static",
+              "sh": 0,
+              "ch": 0,
+              "top": 0,
+              "rolavel": false
+            },
+            {
+              "no": "div#gatekeeperView.content",
+              "overflow_y": "visible",
+              "posicao": "relative",
+              "sh": 1865,
+              "ch": 1865,
+              "top": 0,
+              "rolavel": false
+            },
+            {
+              "no": "main",
+              "overflow_y": "auto",
+              "posicao": "relative",
+              "sh": 1927,
+              "ch": 900,
+              "top": 753,
+              "rolavel": true
+            },
+            {
+              "no": "div#appShell.app-shell",
+              "overflow_y": "visible",
+              "posicao": "relative",
+              "sh": 900,
+              "ch": 900,
+              "top": 0,
+              "rolavel": false
+            },
+            {
+              "no": "body.bfr-motion-ready",
+              "overflow_y": "hidden",
+              "posicao": "static",
+              "sh": 900,
+              "ch": 900,
+              "top": 0,
+              "rolavel": false
+            },
+            {
+              "no": "html",
+              "overflow_y": "visible",
+              "posicao": "static",
+              "sh": 900,
+              "ch": 900,
+              "top": 0,
+              "rolavel": false
+            }
+          ],
+          "janela": {
+            "iw": 1280,
+            "ih": 900,
+            "cw": 1280,
+            "sw": 1280
+          },
+          "atingibilidade": [
+            {
+              "k": 0,
+              "metodo": "scrollIntoView",
+              "ok": false,
+              "motivo": "no DOM sem caixa pintada",
+              "y": 0
+            }
+          ]
+        }
+      },
+      "degraus_tentaveis": "no_node_sem_caixa_pintada_pelo_rato_nem_pelo_teclado_fica_a_chamada_direta_ao_form",
+      "chamada_direta_preparacao": {
+        "proprio_len": 31,
+        "primeiro_da_vista_len": 31,
+        "mesmo_no": false,
+        "pai_do_proprio": "label"
+      },
+      "degrau_request_submit": {
+        "ok": true,
+        "degrau": "requestSubmit",
+        "form": "form",
+        "acoes": null
+      },
+      "emissao_por_degrau": {
+        "rato": [],
+        "teclado": [],
+        "request_submit": []
+      },
+      "submetido_por": null,
+      "pedidos_do_passo": [],
+      "status": "QR CODE INVÁLIDO. Não foi possível validar este código. Tente novamente.",
+      "cracha_lido": 31
+    }
+  ],
+  "pedidos_no_fio": [
+    {
+      "passo": "censo_ao_pronto",
+      "nome": "bfr_is_municipal_authority",
+      "http": 200,
+      "corpo_bytes": 2,
+      "corpo_campos": [],
+      "cracha_e_o_de_controlo": false,
+      "corpo_bytes_resposta": 5,
+      "corpo_resumo": {
+        "nao_parseavel": true,
+        "md5": "68934a3e9455"
+      }
+    },
+    {
+      "passo": "censo_ao_pronto",
+      "nome": "bfr_is_municipal_authority",
+      "http": 200,
+      "corpo_bytes": 0,
+      "corpo_campos": [],
+      "cracha_e_o_de_controlo": false,
+      "corpo_resumo": {
+        "leitura_falhou": true
+      }
+    },
+    {
+      "passo": "modulo_sem_motivo_excepcional",
+      "nome": "list_current_month_birthdays",
+      "http": 200,
+      "corpo_bytes": 19,
+      "corpo_campos": [
+        "target_month"
+      ],
+      "cracha_e_o_de_controlo": false,
+      "corpo_bytes_resposta": 10152,
+      "corpo_resumo": {
+        "chaves": [
+          "0",
+          "1",
+          "10",
+          "11",
+          "12",
+          "13",
+          "14",
+          "15",
+          "16",
+          "17",
+          "18",
+          "19",
+          "2",
+          "20",
+          "21",
+          "22",
+          "23",
+          "24",
+          "25",
+          "26",
+          "27",
+          "28",
+          "29",
+          "3",
+          "30",
+          "31",
+          "32",
+          "33",
+          "34",
+          "35",
+          "36",
+          "37",
+          "38",
+          "39",
+          "4",
+          "40",
+          "41",
+          "42",
+          "43",
+          "44",
+          "45",
+          "46",
+          "47",
+          "48",
+          "49",
+          "5",
+          "50",
+          "51",
+          "52",
+          "53",
+          "54",
+          "55",
+          "56",
+          "57",
+          "58",
+          "59",
+          "6",
+          "60",
+          "61",
+          "62",
+          "63",
+          "64",
+          "65",
+          "66",
+          "67",
+          "68",
+          "7",
+          "8",
+          "9"
+        ],
+        "ok": null,
+        "motivo": null,
+        "codigo_de_erro": null,
+        "mensagem_de_erro": null,
+        "entrada_status": null
+      }
+    },
+    {
+      "passo": "modulo_sem_motivo_excepcional",
+      "nome": "list_current_month_birthdays",
+      "http": 200,
+      "corpo_bytes": 0,
+      "corpo_campos": [],
+      "cracha_e_o_de_controlo": false,
+      "corpo_resumo": {
+        "leitura_falhou": true
+      }
+    },
+    {
+      "passo": "modulo_com_motivo_de_oito_caracteres",
+      "nome": "register_gate_checkin_v2",
+      "http": 400,
+      "corpo_bytes": 196,
+      "corpo_campos": [
+        "exception_reason",
+        "gate_direction",
+        "intake_source",
+        "target_badge_token",
+        "target_shift",
+        "visual_confirmation"
+      ],
+      "cracha_e_o_de_controlo": true,
+      "corpo_bytes_resposta": 127,
+      "corpo_resumo": {
+        "chaves": [
+          "code",
+          "details",
+          "hint",
+          "message"
+        ],
+        "ok": null,
+        "motivo": null,
+        "codigo_de_erro": null,
+        "mensagem_de_erro": null,
+        "entrada_status": null
+      }
+    },
+    {
+      "passo": "modulo_com_motivo_de_oito_caracteres",
+      "nome": "register_gate_checkin_v2",
+      "http": 200,
+      "corpo_bytes": 0,
+      "corpo_campos": [],
+      "cracha_e_o_de_controlo": false,
+      "corpo_resumo": {
+        "leitura_falhou": true
+      }
+    }
+  ],
+  "excepcoes_da_pagina": [],
+  "o_que_este_registo_nao_cobre": [
+    "o que acontece com um cracha verdadeiro: o cracha submetido e de controlo e nao existe na mesa de badges",
+    "o grau de EXECUTE de anon na viva, que e a PEN-48 e pede APLICAR PEN-48 NO BANCO",
+    "o conteudo do calendario letivo: as tres mesas da RM-5.2 continuam sem linhas ate que a semente seja autorizada",
+    "campos pessoais: de gate_checkins so sao lidos a contagem, a marca do ultimo checked_at e o numero de linhas novas",
+    "o nome no fio pelo caminho legado: o shell exige a forma UUID antes de chamar o RPC e recusa o cracha de controlo, pelo que a camada legado fica julgada pelo fonte servido e pela recusa medida, nao por um pedido emitido"
+  ],
+  "ar": {
+    "bytes": 3556664,
+    "md5": "0e22e78fe1e0ce929ec4717f86365ad9",
+    "tem_marca_modulo": true,
+    "tem_marca_legado": true
+  },
+  "ar_registo_versionado": {
+    "htmlMd5": "0e22e78fe1e0ce929ec4717f86365ad9",
+    "htmlBytes": 3556664
+  },
+  "cadeia": {
+    "arrancou_sem_renovar": true,
+    "exp_mais_tarde_s": 721,
+    "hash_acesso_antes": "a9672934986a",
+    "hash_refresh_antes": "825022bf7514",
+    "renovou_nesta_corrida": false
+  },
+  "modo_legado_medido_no_canal": [
+    {
+      "mesa": "bfr_school_calendar_days",
+      "http": 200,
+      "ok": true,
+      "lista_vazia": true,
+      "caracteres_do_corpo": 2
+    },
+    {
+      "mesa": "bfr_school_shift_settings",
+      "http": 200,
+      "ok": true,
+      "lista_vazia": true,
+      "caracteres_do_corpo": 2
+    }
+  ],
+  "gate_checkins": {
+    "antes": {
+      "linhas": 272,
+      "ultimo": "2026-11-18 19:38:43.349678+00",
+      "novas": 0
+    },
+    "depois": {
+      "linhas": 272,
+      "ultimo": "2026-11-18 19:38:43.349678+00",
+      "novas": 0
+    },
+    "medido_em": "2026-11-22T05:34:54.380Z"
+  },
+  "baselines": {
+    "antes": {
+      "schools": 6,
+      "profiles": 28,
+      "students": 848,
+      "checkins": 272
+    },
+    "depois": {
+      "schools": 6,
+      "profiles": 28,
+      "students": 848,
+      "checkins": 272
+    }
+  },
+  "cracha_de_controlo": {
+    "texto_bytes": 31,
+    "tem_forma_de_uuid": false,
+    "motivo_submetido_caracteres": 20,
+    "motivo_passa_o_porta_de_oito": true
+  },
+  "assinatura_no_catalogo": {
+    "args_v2": "target_badge_token uuid, gate_direction text, visual_confirmation boolean, intake_source text, target_shift text, exception_reason text",
+    "args_v1": "target_badge_token uuid, gate_direction text, visual_confirmation boolean, intake_source text, target_shift text, exception_reason text",
+    "funcoes_do_par": 2
+  },
+  "depuracao_disponivel": true,
+  "tempos_ms": {
+    "shell_ready": 1069,
+    "modulo_montado": 693
+  },
+  "censo_ao_pronto": {
+    "vista_existe": true,
+    "vista_escondida": false,
+    "vista_cls": "content",
+    "bound_modulo": false,
+    "papel_perfil": "gatekeeper",
+    "vista_activa": null,
+    "api_modulo_registrada": false,
+    "n_legado": 1,
+    "n_modulo": 0,
+    "legado_pronto": true,
+    "legado_caixa": {
+      "x": 531,
+      "y": 596,
+      "w": 474,
+      "h": 86,
+      "disp": "grid",
+      "vis": "visible",
+      "oculto": false
+    },
+    "legado_botao": {
+      "x": 531,
+      "y": 628,
+      "w": 474,
+      "h": 22,
+      "disp": "block",
+      "vis": "visible",
+      "oculto": false
+    },
+    "modulo_caixa": null,
+    "modulo_botao": null,
+    "modulo_entrada": null,
+    "modulo_motivo": null,
+    "status": null
+  },
+  "censo_apos_modulo": {
+    "vista_existe": true,
+    "vista_escondida": false,
+    "vista_cls": "content bfr-gate-operational-view",
+    "bound_modulo": true,
+    "papel_perfil": "gatekeeper",
+    "vista_activa": "gatekeeper",
+    "api_modulo_registrada": true,
+    "n_legado": 1,
+    "n_modulo": 1,
+    "legado_pronto": true,
+    "legado_caixa": {
+      "x": 0,
+      "y": 0,
+      "w": 0,
+      "h": 0,
+      "disp": "grid",
+      "vis": "visible",
+      "oculto": false
+    },
+    "legado_botao": {
+      "x": 0,
+      "y": 0,
+      "w": 0,
+      "h": 0,
+      "disp": "block",
+      "vis": "visible",
+      "oculto": false
+    },
+    "modulo_caixa": {
+      "x": 751,
+      "y": 1194,
+      "w": 952,
+      "h": 64,
+      "disp": "grid",
+      "vis": "visible",
+      "oculto": false
+    },
+    "modulo_botao": {
+      "x": 747,
+      "y": 1209,
+      "w": 944,
+      "h": 34,
+      "disp": "block",
+      "vis": "visible",
+      "oculto": false
+    },
+    "modulo_entrada": {
+      "x": 441,
+      "y": 1173,
+      "w": 135,
+      "h": 22,
+      "disp": "inline-block",
+      "vis": "visible",
+      "oculto": false
+    },
+    "modulo_motivo": {
+      "x": 751,
+      "y": 1293,
+      "w": 952,
+      "h": 72,
+      "disp": "block",
+      "vis": "visible",
+      "oculto": false
+    },
+    "status": "Leitura suspensa: Sincronizando dados autorizados. Use registro manual excepcional com justificativa."
+  },
+  "modulo_montado": true,
+  "transitorio": {
+    "ao_pronto_so_legado": true,
+    "legado_ao_pronto_tem_caixa": true,
+    "legado_tem_ouvinte_na_enumacao": true
+  },
+  "gaveta": {
+    "form_existe": true,
+    "details_existe": true,
+    "aberto": false,
+    "tem_sumario": true,
+    "caixa_details": {
+      "centro_y": 1063,
+      "h": 21,
+      "sh": 21,
+      "ch": 21
+    },
+    "caixa_form": {
+      "centro_y": 1194,
+      "h": 64,
+      "sh": 64,
+      "ch": 64
+    },
+    "caixa_motivo": {
+      "centro_y": 1293,
+      "h": 72,
+      "sh": 70,
+      "ch": 70
+    },
+    "display_do_form": "grid",
+    "janela_ih": 900
+  },
+  "ouvintes": {
+    "contentor": {
+      "presente": true,
+      "n": 4,
+      "ouvintes": [
+        {
+          "tipo": "click",
+          "e_de_submissao": false,
+          "usa_capture": false,
+          "script_id": "149",
+          "linha": 576,
+          "coluna": 35,
+          "handler_devolvido_pelo_cdp": false,
+          "fonte_bytes": 420,
+          "fonte_md5": "cbf7140a6403",
+          "trecho": "t || host.dataset.gateCentralBound === 'true') return; host.dataset.gateCentralBound = 'true';\n    host.addEventListener('click', event => {\n      const tab = event.target.closest('[data-gate-tab]'); if (tab) return setT",
+          "camada": "desconhecida",
+          "censo_do_script": {
+            "bytes": 89100,
+            "tem_marca_modulo": true,
+            "tem_marca_legado": true
+          }
+        },
+        {
+          "tipo": "input",
+          "e_de_submissao": false,
+          "usa_capture": false,
+          "script_id": "149",
+          "linha": 596,
+          "coluna": 35,
+          "handler_devolvido_pelo_cdp": false,
+          "fonte_bytes": 420,
+          "fonte_md5": "687fb9b17ddc",
+          "trecho": "ent.target.closest('[data-gate-export]')) return canAudit() ? exportCsv() : undefined;\n    });\n    host.addEventListener('input', event => {\n      if (event.target.matches('[data-gate-query]')) {\n        state.query = ev",
+          "camada": "desconhecida",
+          "censo_do_script": {
+            "bytes": 89100,
+            "tem_marca_modulo": true,
+            "tem_marca_legado": true
+          }
+        },
+        {
+          "tipo": "change",
+          "e_de_submissao": false,
+          "usa_capture": false,
+          "script_id": "149",
+          "linha": 610,
+          "coluna": 36,
+          "handler_devolvido_pelo_cdp": false,
+          "fonte_bytes": 420,
+          "fonte_md5": "d96d92413a64",
+          "trecho": "ate-exception-reason]')) { state.manualReason=event.target.value; syncGateControls(); }\n    });\n    host.addEventListener('change', event => {\n      if (event.target.matches('[data-gate-visual-check]')) { state.view.quer",
+          "camada": "desconhecida",
+          "censo_do_script": {
+            "bytes": 89100,
+            "tem_marca_modulo": true,
+            "tem_marca_legado": true
+          }
+        },
+        {
+          "tipo": "submit",
+          "e_de_submissao": true,
+          "usa_capture": false,
+          "script_id": "149",
+          "linha": 620,
+          "coluna": 36,
+          "handler_devolvido_pelo_cdp": false,
+          "fonte_bytes": 420,
+          "fonte_md5": "50dade424c10",
+          "trecho": "('[data-gate-custom-end]')) { state.customEnd = event.target.value; render(); return; }\n    });\n    host.addEventListener('submit', event => {\n      if (event.target.matches('[data-gate-central-manual]')) { event.prevent",
+          "camada": "modulo_diferido",
+          "censo_do_script": {
+            "bytes": 89100,
+            "tem_marca_modulo": true,
+            "tem_marca_legado": true
+          }
+        }
+      ],
+      "submissao": [
+        "modulo_diferido"
+      ]
+    },
+    "formulario_legado": {
+      "presente": true,
+      "n": 1,
+      "ouvintes": [
+        {
+          "tipo": "submit",
+          "e_de_submissao": true,
+          "usa_capture": false,
+          "script_id": "75",
+          "linha": 2185,
+          "coluna": 43,
+          "handler_devolvido_pelo_cdp": false,
+          "fonte_bytes": 420,
+          "fonte_md5": "a71ca1c341b8",
+          "trecho": "          view.querySelector('[data-start-gate-scanner]').addEventListener('click', startGateScanner);\n           form.addEventListener('submit', event => { event.preventDefault(); registerGateCheckin(view.querySelector(",
+          "camada": "legado_shell",
+          "censo_do_script": {
+            "bytes": 788774,
+            "tem_marca_modulo": false,
+            "tem_marca_legado": true
+          }
+        }
+      ],
+      "submissao": [
+        "legado_shell"
+      ]
+    },
+    "formulario_modulo": {
+      "presente": true,
+      "n": 0,
+      "ouvintes": [],
+      "submissao": []
+    }
+  },
+  "sonda_rolagem": {
+    "antes": {
+      "se_top": 0,
+      "se_sh": 900,
+      "se_ch": 900,
+      "corpo_top": 0,
+      "overflow_html": "visible",
+      "overflow_corpo": "hidden",
+      "vista": {
+        "top": 0,
+        "sh": 1611,
+        "ch": 1611,
+        "overflow_y": "visible",
+        "posicao": "relative"
+      }
+    },
+    "depois": {
+      "se_top": 0,
+      "vista_top": 0
+    },
+    "rolavel": {
+      "documento": false,
+      "vista": false
+    },
+    "scroll_y_da_janela": 0
+  },
+  "censo_final": {
+    "vista_existe": true,
+    "vista_escondida": false,
+    "vista_cls": "content bfr-gate-operational-view",
+    "bound_modulo": true,
+    "papel_perfil": "gatekeeper",
+    "vista_activa": "gatekeeper",
+    "api_modulo_registrada": true,
+    "n_legado": 1,
+    "n_modulo": 1,
+    "legado_pronto": true,
+    "legado_caixa": {
+      "x": 0,
+      "y": 0,
+      "w": 0,
+      "h": 0,
+      "disp": "grid",
+      "vis": "visible",
+      "oculto": false
+    },
+    "legado_botao": {
+      "x": 0,
+      "y": 0,
+      "w": 0,
+      "h": 0,
+      "disp": "block",
+      "vis": "visible",
+      "oculto": false
+    },
+    "modulo_caixa": {
+      "x": 751,
+      "y": 435,
+      "w": 952,
+      "h": 64,
+      "disp": "grid",
+      "vis": "visible",
+      "oculto": false
+    },
+    "modulo_botao": {
+      "x": 747,
+      "y": 450,
+      "w": 944,
+      "h": 34,
+      "disp": "block",
+      "vis": "visible",
+      "oculto": false
+    },
+    "modulo_entrada": {
+      "x": 441,
+      "y": 414,
+      "w": 135,
+      "h": 22,
+      "disp": "inline-block",
+      "vis": "visible",
+      "oculto": false
+    },
+    "modulo_motivo": {
+      "x": 751,
+      "y": 534,
+      "w": 952,
+      "h": 72,
+      "disp": "block",
+      "vis": "visible",
+      "oculto": false
+    },
+    "status": "QR CODE INVÁLIDO. Não foi possível validar este código. Tente novamente."
+  },
+  "ouvintes_apos_submissao": {
+    "contentor": {
+      "presente": true,
+      "n": 4,
+      "ouvintes": [
+        {
+          "tipo": "click",
+          "e_de_submissao": false,
+          "usa_capture": false,
+          "script_id": "149",
+          "linha": 576,
+          "coluna": 35,
+          "handler_devolvido_pelo_cdp": false,
+          "fonte_bytes": 420,
+          "fonte_md5": "cbf7140a6403",
+          "trecho": "t || host.dataset.gateCentralBound === 'true') return; host.dataset.gateCentralBound = 'true';\n    host.addEventListener('click', event => {\n      const tab = event.target.closest('[data-gate-tab]'); if (tab) return setT",
+          "camada": "desconhecida",
+          "censo_do_script": {
+            "bytes": 89100,
+            "tem_marca_modulo": true,
+            "tem_marca_legado": true
+          }
+        },
+        {
+          "tipo": "input",
+          "e_de_submissao": false,
+          "usa_capture": false,
+          "script_id": "149",
+          "linha": 596,
+          "coluna": 35,
+          "handler_devolvido_pelo_cdp": false,
+          "fonte_bytes": 420,
+          "fonte_md5": "687fb9b17ddc",
+          "trecho": "ent.target.closest('[data-gate-export]')) return canAudit() ? exportCsv() : undefined;\n    });\n    host.addEventListener('input', event => {\n      if (event.target.matches('[data-gate-query]')) {\n        state.query = ev",
+          "camada": "desconhecida",
+          "censo_do_script": {
+            "bytes": 89100,
+            "tem_marca_modulo": true,
+            "tem_marca_legado": true
+          }
+        },
+        {
+          "tipo": "change",
+          "e_de_submissao": false,
+          "usa_capture": false,
+          "script_id": "149",
+          "linha": 610,
+          "coluna": 36,
+          "handler_devolvido_pelo_cdp": false,
+          "fonte_bytes": 420,
+          "fonte_md5": "d96d92413a64",
+          "trecho": "ate-exception-reason]')) { state.manualReason=event.target.value; syncGateControls(); }\n    });\n    host.addEventListener('change', event => {\n      if (event.target.matches('[data-gate-visual-check]')) { state.view.quer",
+          "camada": "desconhecida",
+          "censo_do_script": {
+            "bytes": 89100,
+            "tem_marca_modulo": true,
+            "tem_marca_legado": true
+          }
+        },
+        {
+          "tipo": "submit",
+          "e_de_submissao": true,
+          "usa_capture": false,
+          "script_id": "149",
+          "linha": 620,
+          "coluna": 36,
+          "handler_devolvido_pelo_cdp": false,
+          "fonte_bytes": 420,
+          "fonte_md5": "50dade424c10",
+          "trecho": "('[data-gate-custom-end]')) { state.customEnd = event.target.value; render(); return; }\n    });\n    host.addEventListener('submit', event => {\n      if (event.target.matches('[data-gate-central-manual]')) { event.prevent",
+          "camada": "modulo_diferido",
+          "censo_do_script": {
+            "bytes": 89100,
+            "tem_marca_modulo": true,
+            "tem_marca_legado": true
+          }
+        }
+      ],
+      "submissao": [
+        "modulo_diferido"
+      ]
+    },
+    "formulario_legado": {
+      "presente": true,
+      "n": 1,
+      "ouvintes": [
+        {
+          "tipo": "submit",
+          "e_de_submissao": true,
+          "usa_capture": false,
+          "script_id": "75",
+          "linha": 2185,
+          "coluna": 43,
+          "handler_devolvido_pelo_cdp": false,
+          "fonte_bytes": 420,
+          "fonte_md5": "a71ca1c341b8",
+          "trecho": "          view.querySelector('[data-start-gate-scanner]').addEventListener('click', startGateScanner);\n           form.addEventListener('submit', event => { event.preventDefault(); registerGateCheckin(view.querySelector(",
+          "camada": "legado_shell",
+          "censo_do_script": {
+            "bytes": 788774,
+            "tem_marca_modulo": false,
+            "tem_marca_legado": true
+          }
+        }
+      ],
+      "submissao": [
+        "legado_shell"
+      ]
+    },
+    "formulario_modulo": {
+      "presente": true,
+      "n": 0,
+      "ouvintes": [],
+      "submissao": []
+    }
+  },
+  "modo_legado_medido": false,
+  "pedidos_do_fio_aguardados_antes_da_escrita": 0,
+  "atribuicao": {
+    "podeLegado": true,
+    "podeModulo": true,
+    "modoLegadoMedido": false,
+    "calendario_medido_vazio": true,
+    "nomes_vistos_em_todo_o_passo": [
+      "list_current_month_birthdays",
+      "register_gate_checkin_v2"
+    ],
+    "outros_nomes_que_nao_sao_da_portaria": [
+      "list_current_month_birthdays"
+    ],
+    "nomes_de_checkin": [
+      "register_gate_checkin_v2"
+    ],
+    "por_passo": [
+      {
+        "passo": "modulo_sem_motivo_excepcional",
+        "camada": "modulo_diferido",
+        "tentado": false,
+        "motivo_lido_ok": false,
+        "nomes_obtidos": [],
+        "esperado": null,
+        "bate": null,
+        "motivo": "nenhum degrau da escada emitiu um dos dois RPC neste passo",
+        "status": "Leitura suspensa: Calendário de hoje ainda não confirmado. Use registro manual excepcional com justificativa."
+      },
+      {
+        "passo": "modulo_com_motivo_de_oito_caracteres",
+        "camada": "modulo_diferido",
+        "tentado": true,
+        "motivo_lido_ok": true,
+        "nomes_obtidos": [
+          "register_gate_checkin_v2"
+        ],
+        "esperado": [
+          "register_gate_checkin_v2"
+        ],
+        "bate": true,
+        "motivo": "passo com motivo (ou modulo em modo legado): um pedido, com o nome do modo medido",
+        "status": "QR Code não reconhecido. Tente novamente ou busque o aluno."
+      },
+      {
+        "passo": "legado_com_cracha",
+        "camada": "legado_shell",
+        "tentado": false,
+        "motivo_lido_ok": false,
+        "nomes_obtidos": [],
+        "esperado": null,
+        "bate": null,
+        "motivo": "nenhum degrau da escada emitiu um dos dois RPC neste passo",
+        "status": "QR CODE INVÁLIDO. Não foi possível validar este código. Tente novamente."
+      }
+    ],
+    "n_julgaveis": 1
+  },
+  "portoes": [
+    {
+      "nome": "o_ar_medido_bate_com_o_v142_do_registo_versionado",
+      "verde": true
+    },
+    {
+      "nome": "a_sessao_e_de_gatekeeper_e_a_vista_da_portaria_e_a_pintada",
+      "verde": true
+    },
+    {
+      "nome": "os_dois_discriminadores_de_camada_existem_nos_bytes_servidos",
+      "verde": true
+    },
+    {
+      "nome": "nenhum_ouvinte_de_submissao_alcanavel_fica_sem_camada_resolvida",
+      "verde": true
+    },
+    {
+      "nome": "o_ouvinte_legado_sobre_com_o_no_que_o_legado_pinta_e_com_o_que_a_corrida_tentou",
+      "verde": true
+    },
+    {
+      "nome": "o_nome_do_rpc_no_fio_bate_com_a_camada_e_com_o_motivo_que_o_declaradamente_produz",
+      "verde": true
+    },
+    {
+      "nome": "a_enumacao_de_ouvintes_aconteceu_depois_de_o_modulo_diferido_montar_e_com_o_depurador_activo",
+      "verde": true
+    },
+    {
+      "nome": "a_classificacao_de_camada_nao_dependeu_de_um_handler_que_este_build_nao_devolve",
+      "verde": true
+    },
+    {
+      "nome": "nenhuma_das_quatro_mesas_de_referencia_se_moveu_por_esta_corrida",
+      "verde": true
+    },
+    {
+      "nome": "nenhuma_linha_de_gate_checkins_foi_escrita_por_esta_corrida",
+      "verde": true
+    },
+    {
+      "nome": "cada_passo_nao_alcancavel_tem_causa_nomeada_com_testemunha_independente",
+      "verde": true
+    },
+    {
+      "nome": "cada_passo_alcancavel_ous_tem_o_clique_no_botao_ous_tem_a_oclusao_medida_no_ponto",
+      "verde": true
+    },
+    {
+      "nome": "o_cracha_de_controlo_nao_podia_resolver_em_linha_de_nenhum_dos_dous_rpc",
+      "verde": true
+    },
+    {
+      "nome": "o_passo_de_submissao_foi_tentado_e_a_recusa_ficou_registrada",
+      "verde": true
+    },
+    {
+      "nome": "nenhum_valor_real_de_cadeia_chega_ao_artefacto",
+      "verde": true
+    },
+    {
+      "nome": "o_registo_declara_o_que_nao_cobre",
+      "verde": true
+    }
+  ],
+  "falhas": [],
+  "veredito": "P127_P4_PROVA_BROWSER_OK 16/0"
+}

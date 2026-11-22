@@ -1,0 +1,844 @@
+{
+  "peca": "scripts/p127-prova-browser-p4-checkin.mjs",
+  "rotulo": "22-11-a",
+  "em": "2026-11-22T04:03:26.997Z",
+  "duracao_ms": 16339,
+  "pergunta": "com sessao de gatekeeper no ar medido: que ouvintes estao ligados ao controlo de leitura manual da portaria, que nome de RPC sai quando se submete, e o que nao saiu",
+  "metodo": "CDP headless 1280x900; Emulation.setDeviceMetricsOverride antes do Page.navigate; cadeia injectada so no localStorage; clique real com elementFromPoint antes de cada Input.dispatchMouseEvent; ouvintes por DOMDebugger.getEventListeners com String(this) do handler; pedidos lidos de Network.requestWillBeSent e Network.responseReceived.",
+  "http": "GET ao ar; POST de auth apenas se a cadeia estiver vencida; dois GET so-leitura das mesas de configuracao para medir o modo legado; POST de submissao como o utilizador faria; SELECT so-leitura de gate_checkins",
+  "ar_esperado_de": "worker-deploy-v142-painel-na-troca/esperado-v142.json",
+  "passos": [
+    {
+      "passo": "modulo_sem_motivo_excepcional",
+      "camada_alvo": "modulo_diferido",
+      "no_dom": 0,
+      "pedidos_antes": 0,
+      "alcancavel": false,
+      "motivo": "nenhum formulario desta camada no contentor de gatekeeper"
+    },
+    {
+      "passo": "modulo_sem_motivo_excepcional",
+      "camada_alvo": "modulo_diferido",
+      "no_dom": 0,
+      "pedidos_antes": 0,
+      "alcancavel": false,
+      "motivo": "nenhum formulario desta camada no contentor de gatekeeper"
+    },
+    {
+      "passo": "modulo_com_motivo_de_oito_caracteres",
+      "camada_alvo": "modulo_diferido",
+      "no_dom": 0,
+      "pedidos_antes": 0,
+      "alcancavel": false,
+      "motivo": "nenhum formulario desta camada no contentor de gatekeeper"
+    },
+    {
+      "passo": "modulo_com_motivo_de_oito_caracteres",
+      "camada_alvo": "modulo_diferido",
+      "no_dom": 0,
+      "pedidos_antes": 0,
+      "alcancavel": false,
+      "motivo": "nenhum formulario desta camada no contentor de gatekeeper"
+    },
+    {
+      "passo": "legado_com_cracha",
+      "camada_alvo": "legado_shell",
+      "no_dom": 1,
+      "pedidos_antes": 0,
+      "alcancavel": true,
+      "foco": {
+        "no_ponto": "div.modal-card",
+        "no_alvo": false,
+        "por_cima": false
+      },
+      "cracha_lido": "",
+      "primeiro_input_da_vista_valor": "",
+      "clique": {
+        "no_ponto": "div#preferredNameModal.modal",
+        "no_alvo": false,
+        "por_cima": false
+      },
+      "pedidos_do_passo": [
+        {
+          "passo": "legado_com_cracha",
+          "nome": "bfr_is_municipal_authority",
+          "http": 200,
+          "corpo_bytes": 2,
+          "corpo_campos": [],
+          "cracha_e_o_de_controlo": false,
+          "corpo_bytes_resposta": 5,
+          "corpo_resumo": {
+            "nao_parseavel": true,
+            "md5": "68934a3e9455"
+          }
+        },
+        {
+          "passo": "legado_com_cracha",
+          "nome": "bfr_is_municipal_authority",
+          "http": 200,
+          "corpo_bytes": 0,
+          "corpo_campos": [],
+          "cracha_e_o_de_controlo": false,
+          "corpo_resumo": {
+            "leitura_falhou": true
+          }
+        },
+        {
+          "passo": "legado_com_cracha",
+          "nome": "list_current_month_birthdays",
+          "http": 200,
+          "corpo_bytes": 19,
+          "corpo_campos": [
+            "target_month"
+          ],
+          "cracha_e_o_de_controlo": false,
+          "corpo_bytes_resposta": 10152,
+          "corpo_resumo": {
+            "chaves": [
+              "0",
+              "1",
+              "10",
+              "11",
+              "12",
+              "13",
+              "14",
+              "15",
+              "16",
+              "17",
+              "18",
+              "19",
+              "2",
+              "20",
+              "21",
+              "22",
+              "23",
+              "24",
+              "25",
+              "26",
+              "27",
+              "28",
+              "29",
+              "3",
+              "30",
+              "31",
+              "32",
+              "33",
+              "34",
+              "35",
+              "36",
+              "37",
+              "38",
+              "39",
+              "4",
+              "40",
+              "41",
+              "42",
+              "43",
+              "44",
+              "45",
+              "46",
+              "47",
+              "48",
+              "49",
+              "5",
+              "50",
+              "51",
+              "52",
+              "53",
+              "54",
+              "55",
+              "56",
+              "57",
+              "58",
+              "59",
+              "6",
+              "60",
+              "61",
+              "62",
+              "63",
+              "64",
+              "65",
+              "66",
+              "67",
+              "68",
+              "7",
+              "8",
+              "9"
+            ],
+            "ok": null,
+            "motivo": null,
+            "codigo_de_erro": null,
+            "mensagem_de_erro": null,
+            "entrada_status": null
+          }
+        },
+        {
+          "passo": "legado_com_cracha",
+          "nome": "list_current_month_birthdays",
+          "http": 200,
+          "corpo_bytes": 0,
+          "corpo_campos": [],
+          "cracha_e_o_de_controlo": false,
+          "corpo_resumo": {
+            "leitura_falhou": true
+          }
+        }
+      ],
+      "status": "Leitura suspensa: Calendário de hoje ainda não confirmado. Use registro manual excepcional com justificativa.",
+      "n_ouvintes_do_contentor": 4
+    },
+    {
+      "passo": "legado_com_cracha",
+      "camada_alvo": "legado_shell",
+      "no_dom": 1,
+      "pedidos_antes": 0,
+      "alcancavel": true,
+      "foco": {
+        "no_ponto": "div.modal-card",
+        "no_alvo": false,
+        "por_cima": false
+      },
+      "cracha_lido": "",
+      "primeiro_input_da_vista_valor": "",
+      "clique": {
+        "no_ponto": "div#preferredNameModal.modal",
+        "no_alvo": false,
+        "por_cima": false
+      },
+      "pedidos_do_passo": [
+        {
+          "passo": "legado_com_cracha",
+          "nome": "bfr_is_municipal_authority",
+          "http": 200,
+          "corpo_bytes": 2,
+          "corpo_campos": [],
+          "cracha_e_o_de_controlo": false,
+          "corpo_bytes_resposta": 5,
+          "corpo_resumo": {
+            "nao_parseavel": true,
+            "md5": "68934a3e9455"
+          }
+        },
+        {
+          "passo": "legado_com_cracha",
+          "nome": "bfr_is_municipal_authority",
+          "http": 200,
+          "corpo_bytes": 0,
+          "corpo_campos": [],
+          "cracha_e_o_de_controlo": false,
+          "corpo_resumo": {
+            "leitura_falhou": true
+          }
+        },
+        {
+          "passo": "legado_com_cracha",
+          "nome": "list_current_month_birthdays",
+          "http": 200,
+          "corpo_bytes": 19,
+          "corpo_campos": [
+            "target_month"
+          ],
+          "cracha_e_o_de_controlo": false,
+          "corpo_bytes_resposta": 10152,
+          "corpo_resumo": {
+            "chaves": [
+              "0",
+              "1",
+              "10",
+              "11",
+              "12",
+              "13",
+              "14",
+              "15",
+              "16",
+              "17",
+              "18",
+              "19",
+              "2",
+              "20",
+              "21",
+              "22",
+              "23",
+              "24",
+              "25",
+              "26",
+              "27",
+              "28",
+              "29",
+              "3",
+              "30",
+              "31",
+              "32",
+              "33",
+              "34",
+              "35",
+              "36",
+              "37",
+              "38",
+              "39",
+              "4",
+              "40",
+              "41",
+              "42",
+              "43",
+              "44",
+              "45",
+              "46",
+              "47",
+              "48",
+              "49",
+              "5",
+              "50",
+              "51",
+              "52",
+              "53",
+              "54",
+              "55",
+              "56",
+              "57",
+              "58",
+              "59",
+              "6",
+              "60",
+              "61",
+              "62",
+              "63",
+              "64",
+              "65",
+              "66",
+              "67",
+              "68",
+              "7",
+              "8",
+              "9"
+            ],
+            "ok": null,
+            "motivo": null,
+            "codigo_de_erro": null,
+            "mensagem_de_erro": null,
+            "entrada_status": null
+          }
+        },
+        {
+          "passo": "legado_com_cracha",
+          "nome": "list_current_month_birthdays",
+          "http": 200,
+          "corpo_bytes": 0,
+          "corpo_campos": [],
+          "cracha_e_o_de_controlo": false,
+          "corpo_resumo": {
+            "leitura_falhou": true
+          }
+        }
+      ],
+      "status": "Leitura suspensa: Calendário de hoje ainda não confirmado. Use registro manual excepcional com justificativa.",
+      "n_ouvintes_do_contentor": 4
+    }
+  ],
+  "pedidos_no_fio": [
+    {
+      "passo": "legado_com_cracha",
+      "nome": "bfr_is_municipal_authority",
+      "http": 200,
+      "corpo_bytes": 2,
+      "corpo_campos": [],
+      "cracha_e_o_de_controlo": false,
+      "corpo_bytes_resposta": 5,
+      "corpo_resumo": {
+        "nao_parseavel": true,
+        "md5": "68934a3e9455"
+      }
+    },
+    {
+      "passo": "legado_com_cracha",
+      "nome": "bfr_is_municipal_authority",
+      "http": 200,
+      "corpo_bytes": 0,
+      "corpo_campos": [],
+      "cracha_e_o_de_controlo": false,
+      "corpo_resumo": {
+        "leitura_falhou": true
+      }
+    },
+    {
+      "passo": "legado_com_cracha",
+      "nome": "list_current_month_birthdays",
+      "http": 200,
+      "corpo_bytes": 19,
+      "corpo_campos": [
+        "target_month"
+      ],
+      "cracha_e_o_de_controlo": false,
+      "corpo_bytes_resposta": 10152,
+      "corpo_resumo": {
+        "chaves": [
+          "0",
+          "1",
+          "10",
+          "11",
+          "12",
+          "13",
+          "14",
+          "15",
+          "16",
+          "17",
+          "18",
+          "19",
+          "2",
+          "20",
+          "21",
+          "22",
+          "23",
+          "24",
+          "25",
+          "26",
+          "27",
+          "28",
+          "29",
+          "3",
+          "30",
+          "31",
+          "32",
+          "33",
+          "34",
+          "35",
+          "36",
+          "37",
+          "38",
+          "39",
+          "4",
+          "40",
+          "41",
+          "42",
+          "43",
+          "44",
+          "45",
+          "46",
+          "47",
+          "48",
+          "49",
+          "5",
+          "50",
+          "51",
+          "52",
+          "53",
+          "54",
+          "55",
+          "56",
+          "57",
+          "58",
+          "59",
+          "6",
+          "60",
+          "61",
+          "62",
+          "63",
+          "64",
+          "65",
+          "66",
+          "67",
+          "68",
+          "7",
+          "8",
+          "9"
+        ],
+        "ok": null,
+        "motivo": null,
+        "codigo_de_erro": null,
+        "mensagem_de_erro": null,
+        "entrada_status": null
+      }
+    },
+    {
+      "passo": "legado_com_cracha",
+      "nome": "list_current_month_birthdays",
+      "http": 200,
+      "corpo_bytes": 0,
+      "corpo_campos": [],
+      "cracha_e_o_de_controlo": false,
+      "corpo_resumo": {
+        "leitura_falhou": true
+      }
+    }
+  ],
+  "excepcoes_da_pagina": [],
+  "o_que_este_registo_nao_cobre": [
+    "o que acontece com um cracha verdadeiro: o cracha submetido e de controlo e nao existe na mesa de badges",
+    "o grau de EXECUTE de anon na viva, que e a PEN-48 e pede APLICAR PEN-48 NO BANCO",
+    "o conteudo do calendario letivo: as tres mesas da RM-5.2 continuam sem linhas ate que a semente seja autorizada",
+    "campos pessoais: de gate_checkins so sao lidos a contagem, a marca do ultimo checked_at e o numero de linhas novas"
+  ],
+  "ar": {
+    "bytes": 3556664,
+    "md5": "0e22e78fe1e0ce929ec4717f86365ad9",
+    "tem_marca_modulo": true,
+    "tem_marca_legado": true
+  },
+  "ar_registo_versionado": {
+    "htmlMd5": "0e22e78fe1e0ce929ec4717f86365ad9",
+    "htmlBytes": 3556664
+  },
+  "cadeia": {
+    "arrancou_sem_renovar": true,
+    "exp_mais_tarde_s": 2629,
+    "hash_acesso_antes": "e5289c521116",
+    "hash_refresh_antes": "f36d7579668b",
+    "renovou_nesta_corrida": false
+  },
+  "modo_legado_medido_no_canal": [
+    {
+      "mesa": "bfr_school_calendar_days",
+      "http": 200,
+      "ok": true
+    },
+    {
+      "mesa": "bfr_school_shift_settings",
+      "http": 200,
+      "ok": true
+    }
+  ],
+  "gate_checkins": {
+    "antes": {
+      "linhas": 272,
+      "ultimo": "2026-11-18 19:38:43.349678+00",
+      "novas": 0
+    },
+    "depois": {
+      "linhas": 272,
+      "ultimo": "2026-11-18 19:38:43.349678+00",
+      "novas": 0
+    },
+    "medido_em": "2026-11-22T04:03:26.997Z"
+  },
+  "cracha_de_controlo": {
+    "texto_bytes": 31,
+    "tem_forma_de_uuid": false,
+    "motivo_submetido_caracteres": 20,
+    "motivo_passa_o_porta_de_oito": true
+  },
+  "assinatura_no_catalogo": {
+    "args_v2": "target_badge_token uuid, gate_direction text, visual_confirmation boolean, intake_source text, target_shift text, exception_reason text",
+    "args_v1": "target_badge_token uuid, gate_direction text, visual_confirmation boolean, intake_source text, target_shift text, exception_reason text",
+    "funcoes_do_par": 2
+  },
+  "tempos_ms": {
+    "shell_ready": 848,
+    "portaria_no_dom": 9
+  },
+  "censo_inicial": {
+    "vista_existe": true,
+    "vista_escondida": false,
+    "vista_cls": "content",
+    "bound_modulo": false,
+    "papel_perfil": "gatekeeper",
+    "vista_activa": null,
+    "api_modulo_registrada": false,
+    "n_legado": 1,
+    "n_modulo": 0,
+    "legado_pronto": true,
+    "legado_caixa": {
+      "x": 531,
+      "y": 596,
+      "w": 474,
+      "h": 86,
+      "disp": "grid",
+      "vis": "visible",
+      "oculto": false
+    },
+    "legado_botao": {
+      "x": 531,
+      "y": 628,
+      "w": 474,
+      "h": 22,
+      "disp": "block",
+      "vis": "visible",
+      "oculto": false
+    },
+    "modulo_caixa": null,
+    "modulo_botao": null,
+    "modulo_entrada": null,
+    "modulo_motivo": null,
+    "status": null
+  },
+  "censo_apos_espera": {
+    "vista_existe": true,
+    "vista_escondida": false,
+    "vista_cls": "content",
+    "bound_modulo": false,
+    "papel_perfil": "gatekeeper",
+    "vista_activa": null,
+    "api_modulo_registrada": false,
+    "n_legado": 1,
+    "n_modulo": 0,
+    "legado_pronto": true,
+    "legado_caixa": {
+      "x": 531,
+      "y": 596,
+      "w": 474,
+      "h": 86,
+      "disp": "grid",
+      "vis": "visible",
+      "oculto": false
+    },
+    "legado_botao": {
+      "x": 531,
+      "y": 628,
+      "w": 474,
+      "h": 22,
+      "disp": "block",
+      "vis": "visible",
+      "oculto": false
+    },
+    "modulo_caixa": null,
+    "modulo_botao": null,
+    "modulo_entrada": null,
+    "modulo_motivo": null,
+    "status": null
+  },
+  "ouvintes": {
+    "contentor": {
+      "presente": true,
+      "n": 0,
+      "ouvintes": [],
+      "submissao": []
+    },
+    "formulario_legado": {
+      "presente": true,
+      "n": 1,
+      "ouvintes": [
+        {
+          "tipo": "submit",
+          "e_de_submissao": true,
+          "passivo": false,
+          "fonte_bytes": null,
+          "fonte_md5": null,
+          "camada": "sem_fonte"
+        }
+      ],
+      "submissao": [
+        "sem_fonte"
+      ]
+    },
+    "formulario_modulo": {
+      "presente": false,
+      "n": 0,
+      "ouvintes": [],
+      "submissao": []
+    }
+  },
+  "censo_final": {
+    "vista_existe": true,
+    "vista_escondida": false,
+    "vista_cls": "content bfr-gate-operational-view",
+    "bound_modulo": true,
+    "papel_perfil": "gatekeeper",
+    "vista_activa": "gatekeeper",
+    "api_modulo_registrada": true,
+    "n_legado": 1,
+    "n_modulo": 1,
+    "legado_pronto": true,
+    "legado_caixa": {
+      "x": 0,
+      "y": 0,
+      "w": 0,
+      "h": 0,
+      "disp": "grid",
+      "vis": "visible",
+      "oculto": false
+    },
+    "legado_botao": {
+      "x": 0,
+      "y": 0,
+      "w": 0,
+      "h": 0,
+      "disp": "block",
+      "vis": "visible",
+      "oculto": false
+    },
+    "modulo_caixa": {
+      "x": 751,
+      "y": 1179,
+      "w": 952,
+      "h": 64,
+      "disp": "grid",
+      "vis": "visible",
+      "oculto": false
+    },
+    "modulo_botao": {
+      "x": 747,
+      "y": 1194,
+      "w": 944,
+      "h": 34,
+      "disp": "block",
+      "vis": "visible",
+      "oculto": false
+    },
+    "modulo_entrada": {
+      "x": 441,
+      "y": 1158,
+      "w": 135,
+      "h": 22,
+      "disp": "inline-block",
+      "vis": "visible",
+      "oculto": false
+    },
+    "modulo_motivo": {
+      "x": 751,
+      "y": 1278,
+      "w": 952,
+      "h": 72,
+      "disp": "block",
+      "vis": "visible",
+      "oculto": false
+    },
+    "status": "Leitura suspensa: Calendário de hoje ainda não confirmado. Use registro manual excepcional com justificativa."
+  },
+  "ouvintes_apos_submissao": {
+    "contentor": {
+      "presente": true,
+      "n": 4,
+      "ouvintes": [
+        {
+          "tipo": "click",
+          "e_de_submissao": false,
+          "passivo": false,
+          "fonte_bytes": null,
+          "fonte_md5": null,
+          "camada": "sem_fonte"
+        },
+        {
+          "tipo": "input",
+          "e_de_submissao": false,
+          "passivo": false,
+          "fonte_bytes": null,
+          "fonte_md5": null,
+          "camada": "sem_fonte"
+        },
+        {
+          "tipo": "change",
+          "e_de_submissao": false,
+          "passivo": false,
+          "fonte_bytes": null,
+          "fonte_md5": null,
+          "camada": "sem_fonte"
+        },
+        {
+          "tipo": "submit",
+          "e_de_submissao": true,
+          "passivo": false,
+          "fonte_bytes": null,
+          "fonte_md5": null,
+          "camada": "sem_fonte"
+        }
+      ],
+      "submissao": [
+        "sem_fonte"
+      ]
+    },
+    "formulario_legado": {
+      "presente": true,
+      "n": 1,
+      "ouvintes": [
+        {
+          "tipo": "submit",
+          "e_de_submissao": true,
+          "passivo": false,
+          "fonte_bytes": null,
+          "fonte_md5": null,
+          "camada": "sem_fonte"
+        }
+      ],
+      "submissao": [
+        "sem_fonte"
+      ]
+    },
+    "formulario_modulo": {
+      "presente": true,
+      "n": 0,
+      "ouvintes": [],
+      "submissao": []
+    }
+  },
+  "modo_legado_medido": false,
+  "pedidos_do_fio_aguardados_antes_da_escrita": 0,
+  "atribuicao": {
+    "podeLegado": false,
+    "podeModulo": false,
+    "modoLegadoMedido": false,
+    "nomes_vistos": [
+      "bfr_is_municipal_authority",
+      "list_current_month_birthdays"
+    ],
+    "resultados": [
+      false,
+      false,
+      false,
+      false
+    ]
+  },
+  "portoes": [
+    {
+      "nome": "o_ar_medido_bate_com_o_v142_do_registo_versionado",
+      "verde": true
+    },
+    {
+      "nome": "a_sessao_e_de_gatekeeper_e_a_vista_da_portaria_e_a_pintada",
+      "verde": true
+    },
+    {
+      "nome": "os_dois_discriminadores_de_camada_existem_nos_bytes_servidos",
+      "verde": true
+    },
+    {
+      "nome": "nenhum_ouvinte_de_submissao_alcanavel_fica_sem_camada_resolvida",
+      "verde": true
+    },
+    {
+      "nome": "o_ouvinte_legado_sobre_com_o_no_que_o_legado_pinta_e_com_o_que_a_corrida_tentou",
+      "verde": true
+    },
+    {
+      "nome": "o_nome_do_rpc_no_fio_e_atribuivel_a_camada_que_o_pode_gerar",
+      "verde": false,
+      "obtido": [
+        false,
+        false,
+        true,
+        true,
+        true
+      ]
+    },
+    {
+      "nome": "nenhuma_linha_de_gate_checkins_foi_escrita_por_esta_corrida",
+      "verde": true
+    },
+    {
+      "nome": "o_cracha_de_controlo_nao_podia_resolver_em_linha_de_nenhum_dos_dous_rpc",
+      "verde": true
+    },
+    {
+      "nome": "o_passo_de_submissao_foi_tentado_e_a_recusa_ficou_registrada",
+      "verde": false,
+      "obtido": [
+        false,
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    {
+      "nome": "nenhum_valor_real_de_cadeia_chega_ao_artefacto",
+      "verde": true
+    },
+    {
+      "nome": "o_registo_declara_o_que_nao_cobre",
+      "verde": true
+    }
+  ],
+  "falhas": [
+    "o_nome_do_rpc_no_fio_e_atribuivel_a_camada_que_o_pode_gerar: {\"obtido\":[false,false,true,true,true]}",
+    "o_passo_de_submissao_foi_tentado_e_a_recusa_ficou_registrada: {\"obtido\":[false,true,true,true,true]}"
+  ],
+  "veredito": "P127_P4_PROVA_BROWSER_VERMELHO 2"
+}
