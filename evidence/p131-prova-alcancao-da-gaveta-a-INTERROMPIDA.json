@@ -1,0 +1,783 @@
+{
+  "peca": "scripts/p131-prova-alcancao-da-gaveta.mjs",
+  "rotulo": "a",
+  "em": "2026-11-22T10:04:14.682Z",
+  "duracao_ms": 16905,
+  "pergunta": "no estado em que o porteiro fica, cada <details class=\"bfr-gate-reader-options\"> abre com um clique real no centro do seu sumario, e se nao abre quem esta no ponto e com que caixa",
+  "metodo": "CDP headless 1280x900; Emulation.setDeviceMetricsOverride antes do Page.navigate; prontidao esperada pelo predicado do proprio fonte (gateCentralBound + [data-gate-central-manual]); por gaveta: rect do details e do sumario, document.elementsFromPoint no centro do sumario, escalada directa no primeiro ancestor rolavel, clique real com hit-test, travessia por Tab e Enter reais; pedidos do fio lidos de Network.requestWillBeSent.",
+  "espera_declarada": "medir",
+  "janela": {
+    "largura": 1280,
+    "altura": 900
+  },
+  "gavetas": [
+    {
+      "i": 0,
+      "classe": "bfr-gate-reader-options",
+      "aberto_inicial": false,
+      "centro_dentro_da_janela": false,
+      "sumario": {
+        "no": "summary",
+        "x": 274,
+        "y": 1060,
+        "w": 952,
+        "h": 21,
+        "centro_x": 751,
+        "centro_y": 1071,
+        "disp": "list-item",
+        "vis": "visible",
+        "pos": "static",
+        "ponteiro": "auto",
+        "z": "auto",
+        "op": "1"
+      },
+      "details": {
+        "no": "details.bfr-gate-reader-options",
+        "x": 274,
+        "y": 1060,
+        "w": 952,
+        "h": 21,
+        "centro_x": 751,
+        "centro_y": 1071,
+        "disp": "block",
+        "vis": "visible",
+        "pos": "static",
+        "ponteiro": "auto",
+        "z": "auto",
+        "op": "1"
+      },
+      "oclusor_no_ponto_inicial": null,
+      "escala": {
+        "ok": true,
+        "contentor": {
+          "no": "main",
+          "antes": 54,
+          "depois": 765,
+          "sh": 1720,
+          "ch": 900,
+          "rolavel": true
+        },
+        "centro_antes": 1071,
+        "centro_depois": 360,
+        "janela_ih": 900
+      },
+      "sonda_depois_da_escala": {
+        "i": 0,
+        "classe": "bfr-gate-reader-options",
+        "aberto": false,
+        "tem_sumario": true,
+        "dentro_do_formulario_manual": true,
+        "details": {
+          "no": "details.bfr-gate-reader-options",
+          "x": 274,
+          "y": 349,
+          "w": 952,
+          "h": 21,
+          "centro_x": 751,
+          "centro_y": 360,
+          "disp": "block",
+          "vis": "visible",
+          "pos": "static",
+          "ponteiro": "auto",
+          "z": "auto",
+          "op": "1"
+        },
+        "sumario": {
+          "no": "summary",
+          "x": 274,
+          "y": 349,
+          "w": 952,
+          "h": 21,
+          "centro_x": 751,
+          "centro_y": 360,
+          "disp": "list-item",
+          "vis": "visible",
+          "pos": "static",
+          "ponteiro": "auto",
+          "z": "auto",
+          "op": "1"
+        },
+        "centro_do_sumario": {
+          "x": 751,
+          "y": 360
+        },
+        "centro_dentro_da_janela": true,
+        "pilha_no_centro": {
+          "n": 12,
+          "itens": [
+            {
+              "no": "div.modal-card",
+              "x": 360,
+              "y": 282,
+              "w": 560,
+              "h": 336,
+              "centro_x": 640,
+              "centro_y": 450,
+              "disp": "block",
+              "vis": "visible",
+              "pos": "relative",
+              "ponteiro": "auto",
+              "z": "auto",
+              "op": "1"
+            },
+            {
+              "no": "div#preferredNameModal.modal",
+              "x": 0,
+              "y": 0,
+              "w": 1280,
+              "h": 900,
+              "centro_x": 640,
+              "centro_y": 450,
+              "disp": "grid",
+              "vis": "visible",
+              "pos": "fixed",
+              "ponteiro": "auto",
+              "z": "1300",
+              "op": "1"
+            },
+            {
+              "no": "summary",
+              "x": 274,
+              "y": 349,
+              "w": 952,
+              "h": 21,
+              "centro_x": 751,
+              "centro_y": 360,
+              "disp": "list-item",
+              "vis": "visible",
+              "pos": "static",
+              "ponteiro": "auto",
+              "z": "auto",
+              "op": "1"
+            },
+            {
+              "no": "details.bfr-gate-reader-options",
+              "x": 274,
+              "y": 349,
+              "w": 952,
+              "h": 21,
+              "centro_x": 751,
+              "centro_y": 360,
+              "disp": "block",
+              "vis": "visible",
+              "pos": "static",
+              "ponteiro": "auto",
+              "z": "auto",
+              "op": "1"
+            },
+            {
+              "no": "div.bfr-gate-overview",
+              "x": 274,
+              "y": -301,
+              "w": 952,
+              "h": 1105,
+              "centro_x": 751,
+              "centro_y": 252,
+              "disp": "block",
+              "vis": "visible",
+              "pos": "static",
+              "ponteiro": "auto",
+              "z": "auto",
+              "op": "1"
+            }
+          ],
+          "topo": {
+            "no": "div.modal-card",
+            "x": 360,
+            "y": 282,
+            "w": 560,
+            "h": 336,
+            "centro_x": 640,
+            "centro_y": 450,
+            "disp": "block",
+            "vis": "visible",
+            "pos": "relative",
+            "ponteiro": "auto",
+            "z": "auto",
+            "op": "1"
+          }
+        },
+        "oclusor_no_ponto": {
+          "no": "div.modal-card",
+          "cobre_a_gaveta": false,
+          "anterior_no_dom": false,
+          "w": 560,
+          "h": 336,
+          "centro_y": 450,
+          "pos": "relative",
+          "z": "auto",
+          "ponteiro": "auto",
+          "pai": "div#preferredNameModal.modal"
+        },
+        "topo_do_ponto_e_o_sumario": false,
+        "caixa_do_formulario": {
+          "no": "form.bfr-gate-manual",
+          "x": 274,
+          "y": 459,
+          "w": 952,
+          "h": 64,
+          "centro_x": 751,
+          "centro_y": 491,
+          "disp": "grid",
+          "vis": "visible",
+          "pos": "static",
+          "ponteiro": "auto",
+          "z": "auto",
+          "op": "1"
+        },
+        "sumario_e_focusavel": {
+          "tabIndex": 0,
+          "contentEditable": false
+        },
+        "ancestor_rolavel": {
+          "no": "main",
+          "sh": 1720,
+          "ch": 900,
+          "top": 765
+        }
+      },
+      "oclusor_no_ponto_depois": {
+        "no": "div.modal-card",
+        "cobre_a_gaveta": false,
+        "anterior_no_dom": false,
+        "w": 560,
+        "h": 336,
+        "centro_y": 450,
+        "pos": "relative",
+        "z": "auto",
+        "ponteiro": "auto",
+        "pai": "div#preferredNameModal.modal"
+      },
+      "topo_do_ponto_e_o_sumario_depois": false,
+      "hit_test_no_ponto": {
+        "no": "div.modal-card",
+        "disp": "block",
+        "ponteiro": "auto",
+        "pos": "relative",
+        "w": 560,
+        "h": 336
+      },
+      "clique": {
+        "tentado": true,
+        "aberto_antes": false,
+        "aberto_depois": false,
+        "mudou": false,
+        "pousou_em": "div.modal-card",
+        "no_alvo": "div.modal-card"
+      },
+      "sonda_depois_do_clique": {
+        "i": 0,
+        "classe": "bfr-gate-reader-options",
+        "aberto": false,
+        "tem_sumario": true,
+        "dentro_do_formulario_manual": true,
+        "details": {
+          "no": "details.bfr-gate-reader-options",
+          "x": 274,
+          "y": 349,
+          "w": 952,
+          "h": 53,
+          "centro_x": 751,
+          "centro_y": 375,
+          "disp": "block",
+          "vis": "visible",
+          "pos": "static",
+          "ponteiro": "auto",
+          "z": "auto",
+          "op": "1"
+        },
+        "sumario": {
+          "no": "summary",
+          "x": 274,
+          "y": 358,
+          "w": 952,
+          "h": 44,
+          "centro_x": 751,
+          "centro_y": 380,
+          "disp": "flex",
+          "vis": "visible",
+          "pos": "static",
+          "ponteiro": "auto",
+          "z": "auto",
+          "op": "1"
+        },
+        "centro_do_sumario": {
+          "x": 751,
+          "y": 380
+        },
+        "centro_dentro_da_janela": true,
+        "pilha_no_centro": {
+          "n": 13,
+          "itens": [
+            {
+              "no": "p",
+              "x": 387,
+              "y": 368,
+              "w": 506,
+              "h": 33,
+              "centro_x": 640,
+              "centro_y": 384,
+              "disp": "block",
+              "vis": "visible",
+              "pos": "static",
+              "ponteiro": "auto",
+              "z": "auto",
+              "op": "1"
+            },
+            {
+              "no": "div.modal-card",
+              "x": 360,
+              "y": 282,
+              "w": 560,
+              "h": 336,
+              "centro_x": 640,
+              "centro_y": 450,
+              "disp": "block",
+              "vis": "visible",
+              "pos": "relative",
+              "ponteiro": "auto",
+              "z": "auto",
+              "op": "1"
+            },
+            {
+              "no": "div#preferredNameModal.modal",
+              "x": 0,
+              "y": 0,
+              "w": 1280,
+              "h": 900,
+              "centro_x": 640,
+              "centro_y": 450,
+              "disp": "grid",
+              "vis": "visible",
+              "pos": "fixed",
+              "ponteiro": "auto",
+              "z": "1300",
+              "op": "1"
+            },
+            {
+              "no": "summary",
+              "x": 274,
+              "y": 358,
+              "w": 952,
+              "h": 44,
+              "centro_x": 751,
+              "centro_y": 380,
+              "disp": "flex",
+              "vis": "visible",
+              "pos": "static",
+              "ponteiro": "auto",
+              "z": "auto",
+              "op": "1"
+            },
+            {
+              "no": "details.bfr-gate-reader-options",
+              "x": 274,
+              "y": 349,
+              "w": 952,
+              "h": 53,
+              "centro_x": 751,
+              "centro_y": 375,
+              "disp": "block",
+              "vis": "visible",
+              "pos": "static",
+              "ponteiro": "auto",
+              "z": "auto",
+              "op": "1"
+            }
+          ],
+          "topo": {
+            "no": "p",
+            "x": 387,
+            "y": 368,
+            "w": 506,
+            "h": 33,
+            "centro_x": 640,
+            "centro_y": 384,
+            "disp": "block",
+            "vis": "visible",
+            "pos": "static",
+            "ponteiro": "auto",
+            "z": "auto",
+            "op": "1"
+          }
+        },
+        "oclusor_no_ponto": {
+          "no": "p",
+          "cobre_a_gaveta": false,
+          "anterior_no_dom": false,
+          "w": 506,
+          "h": 33,
+          "centro_y": 384,
+          "pos": "static",
+          "z": "auto",
+          "ponteiro": "auto",
+          "pai": "div.modal-card"
+        },
+        "topo_do_ponto_e_o_sumario": false,
+        "caixa_do_formulario": {
+          "no": "form.bfr-gate-manual",
+          "x": 274,
+          "y": 491,
+          "w": 952,
+          "h": 64,
+          "centro_x": 751,
+          "centro_y": 523,
+          "disp": "grid",
+          "vis": "visible",
+          "pos": "static",
+          "ponteiro": "auto",
+          "z": "auto",
+          "op": "1"
+        },
+        "sumario_e_focusavel": {
+          "tabIndex": 0,
+          "contentEditable": false
+        },
+        "ancestor_rolavel": {
+          "no": "main",
+          "sh": 1673,
+          "ch": 900,
+          "top": 694
+        }
+      }
+    }
+  ],
+  "degraus": [],
+  "teclado": {
+    "travessia": [],
+    "chegou_ao_sumario": false,
+    "abriu_por_teclado": false,
+    "motivo": null,
+    "sumario_alvo": {
+      "existe": true,
+      "tabIndex": 0,
+      "no": "summary",
+      "centro_x": 751,
+      "centro_y": 380
+    }
+  },
+  "pedidos_no_fio": [
+    {
+      "passo": "prontidao",
+      "metodo": "OPTIONS",
+      "origem": "supabase",
+      "caminho": "/rest/v1/profiles",
+      "tem_corpo": false
+    },
+    {
+      "passo": "vista_porteiro",
+      "metodo": "OPTIONS",
+      "origem": "supabase",
+      "caminho": "/rest/v1/gate_checkins",
+      "tem_corpo": false
+    },
+    {
+      "passo": "modulo_montado",
+      "metodo": "OPTIONS",
+      "origem": "supabase",
+      "caminho": "/rest/v1/classes",
+      "tem_corpo": false
+    },
+    {
+      "passo": "modulo_montado",
+      "metodo": "POST",
+      "origem": "alvo",
+      "caminho": null,
+      "tem_corpo": true
+    },
+    {
+      "passo": "modulo_montado",
+      "metodo": "OPTIONS",
+      "origem": "supabase",
+      "caminho": "/rest/v1/school_activities",
+      "tem_corpo": false
+    },
+    {
+      "passo": "modulo_montado",
+      "metodo": "OPTIONS",
+      "origem": "supabase",
+      "caminho": "/rest/v1/projects",
+      "tem_corpo": false
+    },
+    {
+      "passo": "modulo_montado",
+      "metodo": "OPTIONS",
+      "origem": "supabase",
+      "caminho": "/rest/v1/project_photos",
+      "tem_corpo": false
+    },
+    {
+      "passo": "modulo_montado",
+      "metodo": "OPTIONS",
+      "origem": "supabase",
+      "caminho": "/rest/v1/announcements",
+      "tem_corpo": false
+    },
+    {
+      "passo": "modulo_montado",
+      "metodo": "OPTIONS",
+      "origem": "supabase",
+      "caminho": "/rest/v1/school_events",
+      "tem_corpo": false
+    },
+    {
+      "passo": "modulo_montado",
+      "metodo": "OPTIONS",
+      "origem": "supabase",
+      "caminho": "/rest/v1/notification_preferences",
+      "tem_corpo": false
+    },
+    {
+      "passo": "modulo_montado",
+      "metodo": "OPTIONS",
+      "origem": "supabase",
+      "caminho": "/rest/v1/announcements",
+      "tem_corpo": false
+    },
+    {
+      "passo": "modulo_montado",
+      "metodo": "OPTIONS",
+      "origem": "supabase",
+      "caminho": "/rest/v1/school_events",
+      "tem_corpo": false
+    },
+    {
+      "passo": "modulo_montado",
+      "metodo": "OPTIONS",
+      "origem": "supabase",
+      "caminho": "/rest/v1/project_results",
+      "tem_corpo": false
+    },
+    {
+      "passo": "modulo_montado",
+      "metodo": "OPTIONS",
+      "origem": "supabase",
+      "caminho": "/rest/v1/school_notification_reads",
+      "tem_corpo": false
+    },
+    {
+      "passo": "modulo_montado",
+      "metodo": "POST",
+      "origem": "supabase",
+      "caminho": "/rest/v1/rpc/bfr_is_municipal_authority",
+      "tem_corpo": true
+    },
+    {
+      "passo": "modulo_montado",
+      "metodo": "OPTIONS",
+      "origem": "supabase",
+      "caminho": "/rest/v1/rpc/bfr_is_municipal_authority",
+      "tem_corpo": false
+    },
+    {
+      "passo": "modulo_montado",
+      "metodo": "POST",
+      "origem": "supabase",
+      "caminho": "/rest/v1/rpc/list_current_month_birthdays",
+      "tem_corpo": true
+    },
+    {
+      "passo": "modulo_montado",
+      "metodo": "OPTIONS",
+      "origem": "supabase",
+      "caminho": "/rest/v1/rpc/list_current_month_birthdays",
+      "tem_corpo": false
+    },
+    {
+      "passo": "modulo_montado",
+      "metodo": "OPTIONS",
+      "origem": "supabase",
+      "caminho": "/rest/v1/students",
+      "tem_corpo": false
+    },
+    {
+      "passo": "escalada_gaveta_0",
+      "metodo": "OPTIONS",
+      "origem": "supabase",
+      "caminho": "/rest/v1/classes",
+      "tem_corpo": false
+    },
+    {
+      "passo": "clique_gaveta_0",
+      "metodo": "OPTIONS",
+      "origem": "supabase",
+      "caminho": "/rest/v1/gate_checkins",
+      "tem_corpo": false
+    },
+    {
+      "passo": "clique_gaveta_0",
+      "metodo": "OPTIONS",
+      "origem": "supabase",
+      "caminho": "/rest/v1/gate_entry_alerts",
+      "tem_corpo": false
+    },
+    {
+      "passo": "clique_gaveta_0",
+      "metodo": "OPTIONS",
+      "origem": "supabase",
+      "caminho": "/rest/v1/entry_restrictions",
+      "tem_corpo": false
+    },
+    {
+      "passo": "clique_gaveta_0",
+      "metodo": "OPTIONS",
+      "origem": "supabase",
+      "caminho": "/rest/v1/bfr_school_shift_settings",
+      "tem_corpo": false
+    },
+    {
+      "passo": "clique_gaveta_0",
+      "metodo": "OPTIONS",
+      "origem": "supabase",
+      "caminho": "/rest/v1/bfr_school_calendar_days",
+      "tem_corpo": false
+    }
+  ],
+  "contagem_pedidos": {
+    "GET outro": 56,
+    "GET supabase": 21,
+    "OPTIONS supabase": 22,
+    "POST outro": 1,
+    "POST supabase": 2
+  },
+  "excepcoes_da_pagina": [],
+  "o_que_prova": [
+    "se o centro do sumario esta dentro da janela, que elemento recebe o rato nesse ponto e com que rect, pointer-events e posicao",
+    "se um clique real no centro do sumario muda details.open, lido antes e depois na mesma corrida",
+    "se a travessia por Tab chega ao sumario e se Enter/Space o abre quando o rato nao chega",
+    "que nenhum pedido de escrita saiu pelo fio durante a sonda"
+  ],
+  "o_que_NAO_prova": [
+    "o que um utilizador com outro zoom, fonte ou DPI ve - a janela e a do override, medida no artefacto",
+    "se abrir a gaveta faz alguma coisa util a seguir: isso e a P127 (submissao) e a candidata, nao esta sonda",
+    "o ar com a candidata aplicada: sem P131_PASTA so existe um documento medido, o servido",
+    "o estado de uma vista que nao seja a do gatekeeper: a cadeia lida e a gravada, nunca uma conta nova"
+  ],
+  "portoes": {
+    "total": 6,
+    "falhas": null
+  },
+  "veredito": "P131_INTERROMPIDA",
+  "alvo": {
+    "modo": "ar_publicado",
+    "pasta": null,
+    "url": "https://bfr-conecta.turmaroboticabfr.workers.dev/",
+    "bytes": 3556664,
+    "md5": "0e22e78fe1e0ce929ec4717f86365ad9",
+    "tem_a_gaveta_servida": true,
+    "tem_o_predicado_de_prontidao": true
+  },
+  "cadeia": {
+    "papel": "gatekeeper",
+    "arrancou_sem_renovar": false,
+    "hash_acesso_antes": "a9672934986a",
+    "renovou_nesta_corrida": true,
+    "hash_acesso_depois": "5de6f385fd0b"
+  },
+  "tempos_ms": {
+    "injecao": 8655,
+    "shell_ready": 3954,
+    "modulo_montado": 2929
+  },
+  "vista_porteiro": {
+    "necessario": false,
+    "activa": null
+  },
+  "dentes_leitor": {
+    "com_open": true,
+    "sem_open": false
+  },
+  "sonda_inicial": {
+    "vista_existe": true,
+    "vista_escondida": false,
+    "papel_perfil": "gatekeeper",
+    "vista_activa": "gatekeeper",
+    "bound": true,
+    "janela": {
+      "iw": 1280,
+      "ih": 900,
+      "cw": 1280,
+      "sw": 1280
+    },
+    "rolavel_do_documento": {
+      "no": "html",
+      "top": 0,
+      "sh": 900,
+      "ch": 900
+    },
+    "n_gavetas": 1,
+    "gavetas": [
+      {
+        "i": 0,
+        "classe": "bfr-gate-reader-options",
+        "aberto": false,
+        "tem_sumario": true,
+        "dentro_do_formulario_manual": true,
+        "details": {
+          "no": "details.bfr-gate-reader-options",
+          "x": 274,
+          "y": 1060,
+          "w": 952,
+          "h": 21,
+          "centro_x": 751,
+          "centro_y": 1071,
+          "disp": "block",
+          "vis": "visible",
+          "pos": "static",
+          "ponteiro": "auto",
+          "z": "auto",
+          "op": "1"
+        },
+        "sumario": {
+          "no": "summary",
+          "x": 274,
+          "y": 1060,
+          "w": 952,
+          "h": 21,
+          "centro_x": 751,
+          "centro_y": 1071,
+          "disp": "list-item",
+          "vis": "visible",
+          "pos": "static",
+          "ponteiro": "auto",
+          "z": "auto",
+          "op": "1"
+        },
+        "centro_do_sumario": {
+          "x": 751,
+          "y": 1071
+        },
+        "centro_dentro_da_janela": false,
+        "pilha_no_centro": null,
+        "oclusor_no_ponto": null,
+        "topo_do_ponto_e_o_sumario": false,
+        "caixa_do_formulario": {
+          "no": "form.bfr-gate-manual",
+          "x": 274,
+          "y": 1170,
+          "w": 952,
+          "h": 64,
+          "centro_x": 751,
+          "centro_y": 1202,
+          "disp": "grid",
+          "vis": "visible",
+          "pos": "static",
+          "ponteiro": "auto",
+          "z": "auto",
+          "op": "1"
+        },
+        "sumario_e_focusavel": {
+          "tabIndex": 0,
+          "contentEditable": false
+        },
+        "ancestor_rolavel": {
+          "no": "main",
+          "sh": 1720,
+          "ch": 900,
+          "top": 54
+        }
+      }
+    ]
+  },
+  "falha_em": "uncaughtException: Unexpected event type 'keyChar'"
+}
