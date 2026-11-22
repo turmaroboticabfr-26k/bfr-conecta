@@ -1,0 +1,833 @@
+{
+  "programa": "scripts/p73-pen41-preflight.mjs",
+  "modo": "reversao",
+  "em": "2026-11-22T06:26:35.708Z",
+  "duracao_ms": 13072,
+  "pressuposto": "a candidata foi aplicada: as quatro policies vivas ja carregam a clausula de escopo, e a reversao ainda e o texto do censo",
+  "metodo": "leitura do catalogo (pg_policy/pg_proc/pg_class/information_schema) + censo versionado p73-politicas-municipais-20-11e.json como texto de referencia + alcance versionado p73-pen38-alcance-por-concessao-20-11e.json como referencia de totais. Comparacao por `forma` (caixa/aspas/espacos/parenteses redundantes/public.) com a limitacao declarada e com `operadores` a contar conectivos, porque o deparser do Postgres nao devolve o texto como foi escrito.",
+  "contexto": {
+    "utilizador": "postgres"
+  },
+  "policies_das_quatro": [
+    {
+      "polname": "director_dashboard_read_students",
+      "mesa": "students",
+      "cmd": "r",
+      "papeis": "authenticated",
+      "withcheck": "nada",
+      "escopo_na_viva": true,
+      "verde": true,
+      "qual_viva": "(((\"current_role\"())::text = 'director'::text) AND bfr_school_in_own_school_scope(school_id))",
+      "qual_do_censo": "((\"current_role\"())::text = 'director'::text)"
+    },
+    {
+      "polname": "director_dashboard_read_classes",
+      "mesa": "classes",
+      "cmd": "r",
+      "papeis": "authenticated",
+      "withcheck": "nada",
+      "escopo_na_viva": true,
+      "verde": true,
+      "qual_viva": "(((\"current_role\"())::text = 'director'::text) AND bfr_school_in_own_school_scope(school_id))",
+      "qual_do_censo": "((\"current_role\"())::text = 'director'::text)"
+    },
+    {
+      "polname": "students_select_secretary",
+      "mesa": "students",
+      "cmd": "r",
+      "papeis": "authenticated",
+      "withcheck": "nada",
+      "escopo_na_viva": true,
+      "verde": true,
+      "qual_viva": "((EXISTS ( SELECT 1\n   FROM profiles p\n  WHERE ((p.id = auth.uid()) AND (p.role = 'secretary'::account_role)))) AND bfr_school_in_own_school_scope(school_id))",
+      "qual_do_censo": "(EXISTS ( SELECT 1\n   FROM profiles p\n  WHERE ((p.id = auth.uid()) AND (p.role = 'secretary'::account_role))))"
+    },
+    {
+      "polname": "classes_select_secretary",
+      "mesa": "classes",
+      "cmd": "r",
+      "papeis": "authenticated",
+      "withcheck": "nada",
+      "escopo_na_viva": true,
+      "verde": true,
+      "qual_viva": "((EXISTS ( SELECT 1\n   FROM profiles p\n  WHERE ((p.id = auth.uid()) AND (p.role = 'secretary'::account_role)))) AND bfr_school_in_own_school_scope(school_id))",
+      "qual_do_censo": "(EXISTS ( SELECT 1\n   FROM profiles p\n  WHERE ((p.id = auth.uid()) AND (p.role = 'secretary'::account_role))))"
+    }
+  ],
+  "clausula_de_escopo": {
+    "como_fica_no_sql": "bfr_school_in_own_school_scope(school_id)",
+    "presenca_derivada_da_forma": "bfr_school_in_own_school_scopeschool_id",
+    "forma_exacta_de_and_derivada": "andbfr_school_in_own_school_scopeschool_id",
+    "nota": "presenca serve para o estado vivo e para o controlo do catalogo (la o conectivo e OR); a forma de AND serve so para o delta candidata-vs-reversao"
+  },
+  "policies_por_mesa": [
+    {
+      "mesa": "students",
+      "policies": [
+        "bfr_students_directory_insert",
+        "bfr_students_directory_update",
+        "director_dashboard_read_students",
+        "staff manage student records",
+        "students_monitor_read",
+        "students_municipal_read",
+        "students_read",
+        "students_select_secretary",
+        "students_supervisor_read"
+      ]
+    },
+    {
+      "mesa": "classes",
+      "policies": [
+        "classes_family_read",
+        "classes_monitor_read",
+        "classes_municipal_read",
+        "classes_read",
+        "classes_select_secretary",
+        "classes_supervisor_read",
+        "coordinators read classes",
+        "director_dashboard_read_classes"
+      ]
+    }
+  ],
+  "controlo_positivo_do_detector": [
+    {
+      "mesa": "supervision_requests",
+      "polname": "supervision_requests_municipal_read",
+      "qual": "(bfr_school_in_municipal_scope(school_id) OR bfr_school_in_own_school_scope(school_id))"
+    }
+  ],
+  "funcoes": [
+    {
+      "nome": "public.bfr_school_in_own_school_scope",
+      "argumentos": "p_school uuid",
+      "definer": "true",
+      "config": "search_path=public",
+      "dono": "postgres",
+      "authenticated_pode": "true",
+      "anon_pode": "false"
+    },
+    {
+      "nome": "public.current_role",
+      "argumentos": "",
+      "definer": "true",
+      "config": "search_path=\"\"",
+      "dono": "postgres",
+      "authenticated_pode": "true",
+      "anon_pode": "false"
+    }
+  ],
+  "rls_mesas": [
+    {
+      "mesa": "classes",
+      "rls": "true",
+      "force_rls": "false",
+      "dono": "postgres"
+    },
+    {
+      "mesa": "profiles",
+      "rls": "true",
+      "force_rls": "false",
+      "dono": "postgres"
+    },
+    {
+      "mesa": "staff_schools",
+      "rls": "true",
+      "force_rls": "false",
+      "dono": "postgres"
+    },
+    {
+      "mesa": "students",
+      "rls": "true",
+      "force_rls": "false",
+      "dono": "postgres"
+    }
+  ],
+  "colunas_de_escopo": [
+    {
+      "mesa": "classes",
+      "coluna": "id",
+      "tipo": "uuid",
+      "nullavel": "NO"
+    },
+    {
+      "mesa": "classes",
+      "coluna": "school_id",
+      "tipo": "uuid",
+      "nullavel": "NO"
+    },
+    {
+      "mesa": "students",
+      "coluna": "id",
+      "tipo": "uuid",
+      "nullavel": "NO"
+    },
+    {
+      "mesa": "students",
+      "coluna": "school_id",
+      "tipo": "uuid",
+      "nullavel": "NO"
+    }
+  ],
+  "totais": {
+    "por_mesa": [
+      {
+        "mesa": "classes",
+        "linhas": 27,
+        "escolas_distintas": 1
+      },
+      {
+        "mesa": "schools",
+        "linhas": 6,
+        "escolas_distintas": null
+      },
+      {
+        "mesa": "staff_schools",
+        "linhas": 6,
+        "escolas_distintas": 1
+      },
+      {
+        "mesa": "students",
+        "linhas": 848,
+        "escolas_distintas": 1
+      }
+    ],
+    "referencia_alcance": {
+      "schools": 6,
+      "students": 848,
+      "classes": 27,
+      "supervision_requests": 0,
+      "bfr_lesson_attendance": 268,
+      "staff_schools": 6,
+      "grades": 112,
+      "supervision_alerts": 0,
+      "supervision_responses": 0,
+      "announcements": 1,
+      "school_documents": 226
+    },
+    "escolas_sem_municipio": 2
+  },
+  "populacao_afectada": [
+    {
+      "papel": "director",
+      "perfis": 2,
+      "com_vinculo": 2,
+      "sem_vinculo": 0,
+      "ligado_a_escola_com_dados": 2
+    },
+    {
+      "papel": "secretary",
+      "perfis": 4,
+      "com_vinculo": 2,
+      "sem_vinculo": 2,
+      "ligado_a_escola_com_dados": 2
+    }
+  ],
+  "ficheiros": {
+    "candidata": {
+      "caminho": "scripts/p73-pen41-ddl-candidata.sql",
+      "bytes": 4934,
+      "md5": "b3f928fe7aa210e65a64985a4b78c325"
+    },
+    "reversao": {
+      "caminho": "scripts/p73-pen41-ddl-reversao.sql",
+      "bytes": 1458,
+      "md5": "b16b4dc4eb4f16afed7a89649d5efc15"
+    }
+  },
+  "estrutura": {
+    "certificada_ambos_os_ficheiros": {
+      "transaccao": 2,
+      "drop_policy": 4,
+      "create_policy": 4,
+      "create_function": 0,
+      "drop_function": 0,
+      "grant": 0,
+      "revoke": 0,
+      "insert": 0,
+      "literais_uuid": 0
+    },
+    "candidata": {
+      "transaccao": 2,
+      "drop_policy": 4,
+      "create_policy": 4,
+      "create_function": 0,
+      "drop_function": 0,
+      "grant": 0,
+      "revoke": 0,
+      "insert": 0,
+      "literais_uuid": 0
+    },
+    "reversao": {
+      "transaccao": 2,
+      "drop_policy": 4,
+      "create_policy": 4,
+      "create_function": 0,
+      "drop_function": 0,
+      "grant": 0,
+      "revoke": 0,
+      "insert": 0,
+      "literais_uuid": 0
+    }
+  },
+  "deltas": [
+    {
+      "polname": "director_dashboard_read_students",
+      "clausula_medida": "andbfr_school_in_own_school_scopeschool_id",
+      "delta_e_a_clausula": true,
+      "mais_um_and": true,
+      "reversao_igual_ao_censo": true
+    },
+    {
+      "polname": "director_dashboard_read_classes",
+      "clausula_medida": "andbfr_school_in_own_school_scopeschool_id",
+      "delta_e_a_clausula": true,
+      "mais_um_and": true,
+      "reversao_igual_ao_censo": true
+    },
+    {
+      "polname": "students_select_secretary",
+      "clausula_medida": "andbfr_school_in_own_school_scopeschool_id",
+      "delta_e_a_clausula": true,
+      "mais_um_and": true,
+      "reversao_igual_ao_censo": true
+    },
+    {
+      "polname": "classes_select_secretary",
+      "clausula_medida": "andbfr_school_in_own_school_scopeschool_id",
+      "delta_e_a_clausula": true,
+      "mais_um_and": true,
+      "reversao_igual_ao_censo": true
+    }
+  ],
+  "fixtures": {
+    "extracao_de_usings": {
+      "grupo_equilibrado_a_panhar_os_dois": true,
+      "parentesis_que_nao_fecha_da_null": true,
+      "contas": {
+        "transaccao": 2,
+        "drop_policy": 2,
+        "create_policy": 3,
+        "create_function": 0,
+        "drop_function": 0,
+        "grant": 0,
+        "revoke": 0,
+        "insert": 0,
+        "literais_uuid": 0
+      },
+      "comentario_contado_como_codigo": true
+    },
+    "forma_detecta_mudanca": true,
+    "clausula_de_escopo_nao_e_tautologia": {
+      "outra_clausula_nao_passa": true,
+      "clausula_a_mais_nao_passa": true,
+      "base_nao_dispara_a_presenca": true,
+      "certa_dispara_a_presenca": true,
+      "or_dispara_a_presenca_mas_nao_o_and": true,
+      "conectivos_contam": true
+    },
+    "varredura_de_pessoal": {
+      "emails": 1,
+      "jwt": 1
+    },
+    "etiquetagem_hardcoded": true
+  },
+  "varredura_de_pessoal_no_registo": {
+    "emails": 0,
+    "jwt": 0
+  },
+  "conclusao": {
+    "frase_que_esta_corrida_autoriza": "no momento desta corrida, director mantem a leitura porque tem vinculo em staff_schools para a escola onde os dados estao, e perdem-na secretary:2; a clausula acrescentada as quatro policies e exatamente bfr_school_in_own_school_scope(school_id), nada mais.",
+    "o_que_nao_prova": "nao prova que a candidata, depois de aplicada, depte exatamente a forma escrita (o deparser re-escreve parenteses) nem que uma sessao autenticada de cada papel recebe os numeros calculados aqui: isso mede-se pelo `p73-pen38-alcance-por-concessao-20-11.mjs` re-corrido apos aplicacao."
+  },
+  "portoes": [
+    {
+      "nome": "o_estado_vivo_bate_com_o_que_este_modo_pressupoe",
+      "verde": true,
+      "detalhe": {
+        "modo": "reversao",
+        "policies": [
+          {
+            "polname": "director_dashboard_read_students",
+            "mesa": "students",
+            "cmd": "r",
+            "papeis": "authenticated",
+            "withcheck": "nada",
+            "escopo_na_viva": true,
+            "verde": true,
+            "qual_viva": "(((\"current_role\"())::text = 'director'::text) AND bfr_school_in_own_school_scope(school_id))",
+            "qual_do_censo": "((\"current_role\"())::text = 'director'::text)"
+          },
+          {
+            "polname": "director_dashboard_read_classes",
+            "mesa": "classes",
+            "cmd": "r",
+            "papeis": "authenticated",
+            "withcheck": "nada",
+            "escopo_na_viva": true,
+            "verde": true,
+            "qual_viva": "(((\"current_role\"())::text = 'director'::text) AND bfr_school_in_own_school_scope(school_id))",
+            "qual_do_censo": "((\"current_role\"())::text = 'director'::text)"
+          },
+          {
+            "polname": "students_select_secretary",
+            "mesa": "students",
+            "cmd": "r",
+            "papeis": "authenticated",
+            "withcheck": "nada",
+            "escopo_na_viva": true,
+            "verde": true,
+            "qual_viva": "((EXISTS ( SELECT 1\n   FROM profiles p\n  WHERE ((p.id = auth.uid()) AND (p.role = 'secretary'::account_role)))) AND bfr_school_in_own_school_scope(school_id))",
+            "qual_do_censo": "(EXISTS ( SELECT 1\n   FROM profiles p\n  WHERE ((p.id = auth.uid()) AND (p.role = 'secretary'::account_role))))"
+          },
+          {
+            "polname": "classes_select_secretary",
+            "mesa": "classes",
+            "cmd": "r",
+            "papeis": "authenticated",
+            "withcheck": "nada",
+            "escopo_na_viva": true,
+            "verde": true,
+            "qual_viva": "((EXISTS ( SELECT 1\n   FROM profiles p\n  WHERE ((p.id = auth.uid()) AND (p.role = 'secretary'::account_role)))) AND bfr_school_in_own_school_scope(school_id))",
+            "qual_do_censo": "(EXISTS ( SELECT 1\n   FROM profiles p\n  WHERE ((p.id = auth.uid()) AND (p.role = 'secretary'::account_role))))"
+          }
+        ]
+      }
+    },
+    {
+      "nome": "a_presenca_do_predicado_de_escopo_tem_controlo_positivo_no_catalogo",
+      "verde": true,
+      "detalhe": {
+        "controlo_positivo": [
+          "supervision_requests:supervision_requests_municipal_read"
+        ],
+        "controlo_lido_do_catalogo_por_agulha_de_nome": [
+          "(bfr_school_in_municipal_scope(school_id) OR bfr_school_in_own_school_scope(school_id))"
+        ],
+        "na_candidata": [
+          true,
+          true,
+          true,
+          true
+        ],
+        "na_reversao": [
+          false,
+          false,
+          false,
+          false
+        ],
+        "clausula_derivada": "andbfr_school_in_own_school_scopeschool_id"
+      }
+    },
+    {
+      "nome": "o_predicado_de_escopo_e_definer_com_search_path_fixa_e_executavel_por_authenticated",
+      "verde": true,
+      "detalhe": {
+        "funcoes": [
+          "public.bfr_school_in_own_school_scope(p_school uuid) definer=true config=search_path=public auth=true anon=false dono=postgres",
+          "public.current_role() definer=true config=search_path=\"\" auth=true anon=false dono=postgres"
+        ]
+      }
+    },
+    {
+      "nome": "o_dono_do_predicado_e_o_dono_da_mesa_de_vinculos_e_o_rls_dela_nao_forcado",
+      "verde": true,
+      "detalhe": {
+        "helper_dono": "postgres",
+        "mesas": [
+          {
+            "mesa": "classes",
+            "rls": "true",
+            "force_rls": "false",
+            "dono": "postgres"
+          },
+          {
+            "mesa": "profiles",
+            "rls": "true",
+            "force_rls": "false",
+            "dono": "postgres"
+          },
+          {
+            "mesa": "staff_schools",
+            "rls": "true",
+            "force_rls": "false",
+            "dono": "postgres"
+          },
+          {
+            "mesa": "students",
+            "rls": "true",
+            "force_rls": "false",
+            "dono": "postgres"
+          }
+        ]
+      }
+    },
+    {
+      "nome": "a_coluna_de_escopo_e_uuid_nao_nula_e_o_rls_das_duas_mesas_e_o_medido",
+      "verde": true,
+      "detalhe": [
+        {
+          "mesa": "classes",
+          "coluna": "id",
+          "tipo": "uuid",
+          "nullavel": "NO"
+        },
+        {
+          "mesa": "classes",
+          "coluna": "school_id",
+          "tipo": "uuid",
+          "nullavel": "NO"
+        },
+        {
+          "mesa": "students",
+          "coluna": "id",
+          "tipo": "uuid",
+          "nullavel": "NO"
+        },
+        {
+          "mesa": "students",
+          "coluna": "school_id",
+          "tipo": "uuid",
+          "nullavel": "NO"
+        }
+      ]
+    },
+    {
+      "nome": "o_conjunto_de_policies_das_duas_mesas_bate_com_o_censo_versionado",
+      "verde": true,
+      "detalhe": {
+        "lidas": [
+          {
+            "mesa": "students",
+            "policies": [
+              "bfr_students_directory_insert",
+              "bfr_students_directory_update",
+              "director_dashboard_read_students",
+              "staff manage student records",
+              "students_monitor_read",
+              "students_municipal_read",
+              "students_read",
+              "students_select_secretary",
+              "students_supervisor_read"
+            ]
+          },
+          {
+            "mesa": "classes",
+            "policies": [
+              "classes_family_read",
+              "classes_monitor_read",
+              "classes_municipal_read",
+              "classes_read",
+              "classes_select_secretary",
+              "classes_supervisor_read",
+              "coordinators read classes",
+              "director_dashboard_read_classes"
+            ]
+          }
+        ],
+        "do_censo": [
+          {
+            "mesa": "students",
+            "n": 9
+          },
+          {
+            "mesa": "classes",
+            "n": 8
+          }
+        ]
+      }
+    },
+    {
+      "nome": "a_estrutura_da_candidata_e_a_da_reversao_sao_as_certificadas",
+      "verde": true,
+      "detalhe": {
+        "certificada": {
+          "transaccao": 2,
+          "drop_policy": 4,
+          "create_policy": 4,
+          "create_function": 0,
+          "drop_function": 0,
+          "grant": 0,
+          "revoke": 0,
+          "insert": 0,
+          "literais_uuid": 0
+        },
+        "candidata": {
+          "transaccao": 2,
+          "drop_policy": 4,
+          "create_policy": 4,
+          "create_function": 0,
+          "drop_function": 0,
+          "grant": 0,
+          "revoke": 0,
+          "insert": 0,
+          "literais_uuid": 0
+        },
+        "reversao": {
+          "transaccao": 2,
+          "drop_policy": 4,
+          "create_policy": 4,
+          "create_function": 0,
+          "drop_function": 0,
+          "grant": 0,
+          "revoke": 0,
+          "insert": 0,
+          "literais_uuid": 0
+        },
+        "fixture_contas": {
+          "transaccao": 2,
+          "drop_policy": 2,
+          "create_policy": 3,
+          "create_function": 0,
+          "drop_function": 0,
+          "grant": 0,
+          "revoke": 0,
+          "insert": 0,
+          "literais_uuid": 0
+        }
+      }
+    },
+    {
+      "nome": "as_definicoes_da_reversao_batem_com_o_texto_do_censo_nao_com_a_minha_reconstrucao",
+      "verde": true,
+      "detalhe": {
+        "comparadas": [
+          {
+            "polname": "director_dashboard_read_students",
+            "reversao_igual_ao_censo": true,
+            "forma_reversao": "current_role::text='director'::text"
+          },
+          {
+            "polname": "director_dashboard_read_classes",
+            "reversao_igual_ao_censo": true,
+            "forma_reversao": "current_role::text='director'::text"
+          },
+          {
+            "polname": "students_select_secretary",
+            "reversao_igual_ao_censo": true,
+            "forma_reversao": "existsselect1fromprofilespwherep.id=auth.uidandp.role='secretary'::account_role"
+          },
+          {
+            "polname": "classes_select_secretary",
+            "reversao_igual_ao_censo": true,
+            "forma_reversao": "existsselect1fromprofilespwherep.id=auth.uidandp.role='secretary'::account_role"
+          }
+        ],
+        "limitacao": "forma ignora parenteses redundantes; operadores() em baixo cobre conectivos"
+      }
+    },
+    {
+      "nome": "o_delta_da_candidata_sobre_a_reversao_e_exactamente_a_clausula_de_escopo",
+      "verde": true,
+      "detalhe": {
+        "deltas": [
+          {
+            "polname": "director_dashboard_read_students",
+            "forma_reversao": "current_role::text='director'::text",
+            "clausula_medida": "andbfr_school_in_own_school_scopeschool_id",
+            "delta_e_a_clausula": true,
+            "mais_um_and": true,
+            "mesmo_or": true,
+            "reversao_igual_ao_censo": true,
+            "verde": true
+          },
+          {
+            "polname": "director_dashboard_read_classes",
+            "forma_reversao": "current_role::text='director'::text",
+            "clausula_medida": "andbfr_school_in_own_school_scopeschool_id",
+            "delta_e_a_clausula": true,
+            "mais_um_and": true,
+            "mesmo_or": true,
+            "reversao_igual_ao_censo": true,
+            "verde": true
+          },
+          {
+            "polname": "students_select_secretary",
+            "forma_reversao": "existsselect1fromprofilespwherep.id=auth.uidandp.role='secretary'::account_role",
+            "clausula_medida": "andbfr_school_in_own_school_scopeschool_id",
+            "delta_e_a_clausula": true,
+            "mais_um_and": true,
+            "mesmo_or": true,
+            "reversao_igual_ao_censo": true,
+            "verde": true
+          },
+          {
+            "polname": "classes_select_secretary",
+            "forma_reversao": "existsselect1fromprofilespwherep.id=auth.uidandp.role='secretary'::account_role",
+            "clausula_medida": "andbfr_school_in_own_school_scopeschool_id",
+            "delta_e_a_clausula": true,
+            "mais_um_and": true,
+            "mesmo_or": true,
+            "reversao_igual_ao_censo": true,
+            "verde": true
+          }
+        ],
+        "fixtures": {
+          "outra_clausula_nao_passa": true,
+          "clausula_a_mais_nao_passa": true,
+          "base_nao_dispara_a_presenca": true,
+          "certa_dispara_a_presenca": true,
+          "or_dispara_a_presenca_mas_nao_o_and": true,
+          "conectivos_contam": true
+        },
+        "extracao": {
+          "equilibrado": true,
+          "desequilibrado_da_null": true
+        }
+      }
+    },
+    {
+      "nome": "a_candidata_e_a_reversao_nao_etaquetam_escola_por_id_nem_por_nome",
+      "verde": true,
+      "detalhe": {
+        "medida": {
+          "uuid_no_codigo": 0,
+          "nomes_de_escola_no_codigo": 0,
+          "nomes_de_escola_so_em_prosa": 1
+        },
+        "escolas_na_rede_sem_imprimir_os_nomes": 6
+      }
+    },
+    {
+      "nome": "os_totais_vivos_batem_com_a_medida_de_alcance_versionada",
+      "verde": true,
+      "detalhe": {
+        "agora": [
+          {
+            "mesa": "classes",
+            "linhas": 27,
+            "escolas_distintas": 1
+          },
+          {
+            "mesa": "schools",
+            "linhas": 6,
+            "escolas_distintas": null
+          },
+          {
+            "mesa": "staff_schools",
+            "linhas": 6,
+            "escolas_distintas": 1
+          },
+          {
+            "mesa": "students",
+            "linhas": 848,
+            "escolas_distintas": 1
+          }
+        ],
+        "na_referencia_de_alcance": {
+          "schools": 6,
+          "students": 848,
+          "classes": 27,
+          "supervision_requests": 0,
+          "bfr_lesson_attendance": 268,
+          "staff_schools": 6,
+          "grades": 112,
+          "supervision_alerts": 0,
+          "supervision_responses": 0,
+          "announcements": 1,
+          "school_documents": 226
+        }
+      }
+    },
+    {
+      "nome": "a_populacao_afectada_tem_somas_coerentes_com_o_zero_impresso",
+      "verde": true,
+      "detalhe": {
+        "por_papel": [
+          {
+            "papel": "director",
+            "perfis": 2,
+            "com_vinculo": 2,
+            "sem_vinculo": 0,
+            "ligado_a_escola_com_dados": 2
+          },
+          {
+            "papel": "secretary",
+            "perfis": 4,
+            "com_vinculo": 2,
+            "sem_vinculo": 2,
+            "ligado_a_escola_com_dados": 2
+          }
+        ],
+        "escolas_sem_municipio": [
+          {
+            "escolas_sem_municipio": 2
+          }
+        ],
+        "escolas_na_rede": 6
+      }
+    },
+    {
+      "nome": "nenhuma_palavra_reservada_e_chamada_como_funcao_sem_aspas_duplas",
+      "verde": true,
+      "detalhe": {
+        "candidata": [
+          {
+            "polname": "director_dashboard_read_students",
+            "nuas": []
+          },
+          {
+            "polname": "director_dashboard_read_classes",
+            "nuas": []
+          },
+          {
+            "polname": "students_select_secretary",
+            "nuas": []
+          },
+          {
+            "polname": "classes_select_secretary",
+            "nuas": []
+          }
+        ],
+        "reversao": [
+          {
+            "polname": "director_dashboard_read_students",
+            "nuas": []
+          },
+          {
+            "polname": "director_dashboard_read_classes",
+            "nuas": []
+          },
+          {
+            "polname": "students_select_secretary",
+            "nuas": []
+          },
+          {
+            "polname": "classes_select_secretary",
+            "nuas": []
+          }
+        ],
+        "vigiadas": [
+          "current_role",
+          "session_user",
+          "current_user"
+        ],
+        "fixtures": {
+          "despida_dispara": true,
+          "aspada_nao_dispara": true
+        }
+      }
+    },
+    {
+      "nome": "nenhum_identificador_pessoal_nem_token_entra_neste_registo",
+      "verde": true,
+      "detalhe": {
+        "medida_no_registo": {
+          "emails": 0,
+          "jwt": 0
+        },
+        "fixture_que_dispara": {
+          "emails": 1,
+          "jwt": 1
+        }
+      }
+    }
+  ],
+  "falhas": [],
+  "precedentes": [
+    "evidence/p73-politicas-municipais-20-11e.json",
+    "evidence/p73-pen38-alcance-por-concessao-20-11e.json",
+    "scripts/p73-pen38-preflight.mjs"
+  ],
+  "o_que_este_verde_nao_autoriza": "nada. A aplicacao do SQL continua a pedir OK literal novo; este programa so diz que o estado vivo e aquele contra que a candidata foi escrita e que os dois ficheiros tem a estrutura certificada.",
+  "veredito": "P73_PEN41_PREFLIGHT_VERDE_REVERSAO 14/0"
+}

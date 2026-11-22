@@ -373,7 +373,18 @@ gate('a_regua_do_estado_de_dados_tem_dentes_e_o_preflight_deixa_de_ser_o_esperad
   reguaEstadoDados(vivo, estadoPreflight).includes(false),
   REGISTO_DADOS.esperado.join() !== estadoPreflight.join(),
   reguaEstadoDados(vivo, REGISTO_DADOS.esperado).every((x) => x === true)], [true, true, true, true]);
-gate('as_policies_alvo_existem_e_nenhuma_tem_escopo', [vivo.policies_alvo, vivo.policies_alvo_com_escopo], [POLICIES_ALVO.length, 0]);
+// A primeira versão desta linha prometia `0` policies com escopo, e o `0` era o mundo **antes** da acção: no
+// instante em que a PEN-41 foi autorizada e escrita (22/11, `evidence/p73-municipal-aplicacao-PEN-41-20261122T062605Z.json`)
+// o portão passou a não ter positivo nenhum. Não se amaciou o dígito — derivou-se o esperado do registo de aplicação
+// versionado (`REGISTOS_APLICACAO`), que é outra fonte que o catálogo: com registo esperam-se as quatro, sem registo
+// espera-se zero. Assim os dois vermelhos possíveis continuam vivos, e a cláusula dos dois mundos abaixo prova que
+// a derivação não é uma constante.
+const comEscopoEsperado = (temRegisto) => (temRegisto ? POLICIES_ALVO.length : 0);
+const ESPERADO_COM_ESCOPO = comEscopoEsperado(!!REGISTOS_APLICACAO['PEN-41']);
+gate('as_policies_alvo_tem_escopo_conforme_o_registo_versionado_da_pen41',
+  [vivo.policies_alvo, vivo.policies_alvo_com_escopo, vivo.policies_alvo_com_escopo === ESPERADO_COM_ESCOPO,
+    comEscopoEsperado(true), comEscopoEsperado(false)],
+  [POLICIES_ALVO.length, ESPERADO_COM_ESCOPO, true, POLICIES_ALVO.length, 0]);
 gate('as_quatro_policies_alvo_sao_as_que_o_preflight_41_descreve', pref41.policies_das_quatro.length, POLICIES_ALVO.length);
 gate('a_v137_continua_nao_publicada_com_a_frase_de_OK_declara', [v137.publicado, /sem OK literal/.test(String(v137.ok_literal))], [false, true]);
 // A v138 é a outra metade da PEN-39: sem o código que chama os agregados, o DDL aplicado fica função sem
@@ -397,12 +408,20 @@ gate('os_inputs_das_provas_de_fecho_resolvem', INPUTS_FECHO.filter((c) => !exist
 // Toda peça sem registo tem de ter o motivo **dito no corpus**, e a régua tem de poder falhar: o mesmo
 // procurador, corrido sobre uma cópia do corpus com as marcas apagadas, tem de não encontrar nada. Sem este
 // segundo lado, «o motivo está declarado» é uma afirmação sobre o conteúdo de um literal meu.
+// A cláusula que abria esta linha era `PECAS_SEM_REGISTO.length > 0`, e o `> 0` era o mundo **antes** da acção:
+// no instante em que a última peça sem registo foi autorizada e escrita (22/11, PEN-41 e PEN-48) a classe ficou
+// vazia e o portão passou a não ter positivo nenhum. Não se apagou a promessa sobre a classe — tirou-se dela o
+// dígito auto-referente e passou a provar-se o **procurador**, com um marcador inventurado que tem de casar e a
+// mesma peça ausente do corpus que tem de não casar. A classe vazia imprime-se como vazia (`pecas_sem_registo_de_aplicacao`).
 const CORPUS_SEM_MARCAS = textoCorpus.map((t) => t.split(MARCA_MOTIVO).join(''));
+const FIX_PECA_PROBE = 'PEN-00';
+const CORPUS_COM_MARCA_PROBE = textoCorpus.concat([MARCA_MOTIVO + ' \u00b7 ' + FIX_PECA_PROBE + ' \u2014 marcador inventurado por este fixture, comprido o suficiente para o procurador dos quarenta caracteres o casar.']);
 gate('toda_peca_sem_registo_tem_motivo_no_corpus_e_apagar_a_frase_e_vermelho',
-  [PECAS_SEM_REGISTO.length > 0,
-    MOTIVOS_SEM_REGISTO.every((m) => !!m.ficheiro && m.frase.length >= 40),
-    PECAS_SEM_REGISTO.every((p) => fraseDoMotivo(p, CORPUS_SEM_MARCAS) === null)],
-  [true, true, true]);
+  [MOTIVOS_SEM_REGISTO.every((m) => !!m.ficheiro && m.frase.length >= 40),
+    PECAS_SEM_REGISTO.every((p) => fraseDoMotivo(p, CORPUS_SEM_MARCAS) === null),
+    fraseDoMotivo(FIX_PECA_PROBE, CORPUS_COM_MARCA_PROBE) !== null,
+    fraseDoMotivo(FIX_PECA_PROBE, textoCorpus) === null],
+  [true, true, true, true]);
 
 const out = {
   programa: 'scripts/pacote-municipal-confere-pecas.mjs', em: new Date().toISOString(),
@@ -427,7 +446,7 @@ const out = {
     pecas_sem_registo_de_aplicacao: PECAS_SEM_REGISTO.map((p) => { const c = FICHEIROS_CANDIDATAS.find((x) => x.peca === p); return { peca: p, candidata: c.caminho, nomes_na_candidata: nomesDe(c.texto),
       motivo_da_ausencia_de_registo: (MOTIVOS_SEM_REGISTO.find((m) => m.peca === p) || {}).frase || '', nomes_ja_no_banco: nomesDe(c.texto).filter((n) => vivosNovos.includes(n)), policies_alvo_com_escopo_no_banco: vivo.policies_alvo_com_escopo }; }),
     nomes_esperados_no_banco: realRegua.esperados, nomes_vivos_no_banco: vivosNovos,
-    nota: 'a classe «sem registo» imprime-se mesmo com o conjunto de nomes vazio, e cada peca dela tem de levar o motivo declarado: a PEN-41 nao cria funcao alguma (o vermelho dela vem de as_policies_alvo_existem_e_nenhuma_tem_escopo), e a PEN-43 so faz REVOKE sobre nomes que a PEN-39 ja criou — estar no banco nao e registo de aplicacao da PEN-43'
+    nota: 'a classe «sem registo» imprime-se mesmo com o conjunto de nomes vazio, e cada peca dela tem de levar o motivo declarado: a PEN-41 nao cria funcao alguma (o vermelho dela vem de as_policies_alvo_tem_escopo_conforme_o_registo_versionado_da_pen41), e a PEN-43 so faz REVOKE sobre nomes que a PEN-39 ja criou — estar no banco nao e registo de aplicacao da PEN-43'
   },
   ancora_lida_do_preflight_38: pref38, ancora_lida_do_preflight_41: { policies_das_quatro: pref41.policies_das_quatro.length, veredito: pref41.veredito },
   registo_de_aplicacao_de_dados: Object.assign({}, REGISTO_DADOS, { estado_vivo: [vivo.escolas_com_municipio, vivo.municipios, vivo.concessoes_ativas],

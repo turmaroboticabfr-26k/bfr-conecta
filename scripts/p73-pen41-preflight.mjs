@@ -251,6 +251,17 @@ const batemComAlcance = MESAS.concat(['staff_schools']).every((m) => {
 });
 const coerentes = populacao.length === 2 && populacao.every((p) => p.com_vinculo + p.sem_vinculo === p.perfis && p.ligado_a_escola_com_dados <= p.com_vinculo);
 
+// Régua de parseabilidade, 22/11. Nada daqui via o defeito que a escrita do aplicador encontrou: `current_role`
+// é palavra reservada e só se chama como função entre aspas duplas — que é a forma que o censo grava. O `forma()`
+// normaliza aspas e parêntesis, por isso um DDL que o Postgres recusa passaria verde por este preflight. A régua
+// é por palavra e por vizinhança: reservada seguida de `(` sem aspa dupla à frente (e sem ponto de esquema) é
+// inexecutável. O fixture compõe-se do texto real despido das aspas e tem de disparar; o texto aspado não dispara.
+const RESERVADAS_COMO_FUNCAO = ['current_role', 'session_user', 'current_user'];
+const nuasNaExpressao = (t) => RESERVADAS_COMO_FUNCAO.filter((k) => new RegExp(`(^|[^"\\w.])${k}\\s*\\(`, 'i').test(String(t || '')));
+const nusCand = POLIT.map((n) => ({ polname: n, nuas: nuasNaExpressao(usingsCand[n]) }));
+const nusRev = POLIT.map((n) => ({ polname: n, nuas: nuasNaExpressao(usingsRev[n]) }));
+const FIX_RESERVADA = { despida_dispara: nuasNaExpressao(txtCand.split('"current_role"').join('current_role')).length >= 1, aspada_nao_dispara: nuasNaExpressao(txtCand).length === 0 };
+
 const portoes = [
   g('o_estado_vivo_bate_com_o_que_este_modo_pressupoe', portao1, { modo: MODO, policies: estadoEsperadoVivo }),
   g('a_presenca_do_predicado_de_escopo_tem_controlo_positivo_no_catalogo', controloPositivo.length >= 1 && controloPositivo.every((p) => tem_escopo(p.qual)) && POLIT.every((n) => tem_escopo(usingsCand[n] || '')) && POLIT.every((n) => tem_escopo(usingsRev[n] || '') === false), { controlo_positivo: controloPositivo.map((p) => `${p.mesa}:${p.polname}`), controlo_lido_do_catalogo_por_agulha_de_nome: controloPositivo.map((p) => p.qual), na_candidata: POLIT.map((n) => tem_escopo(usingsCand[n] || '')), na_reversao: POLIT.map((n) => tem_escopo(usingsRev[n] || '')), clausula_derivada: CLAUSE_ESCOPO_AND }),
@@ -264,6 +275,7 @@ const portoes = [
   g('a_candidata_e_a_reversao_nao_etaquetam_escola_por_id_nem_por_nome', etiquetagemHardcoded.uuid_no_codigo === 0 && etiquetagemHardcoded.nomes_de_escola_no_codigo === 0 && FIX_ETIQUETAGEM_DISPARA, { medida: etiquetagemHardcoded, escolas_na_rede_sem_imprimir_os_nomes: nomesEscolas.length }),
   g('os_totais_vivos_batem_com_a_medida_de_alcance_versionada', batemComAlcance, { agora: totais, na_referencia_de_alcance: alcance.reais_sem_rls }),
   g('a_populacao_afectada_tem_somas_coerentes_com_o_zero_impresso', coerentes, { por_papel: populacao, escolas_sem_municipio: semMunicipio, escolas_na_rede: (totais.find((t) => t.mesa === 'schools') || {}).linhas }),
+  g('nenhuma_palavra_reservada_e_chamada_como_funcao_sem_aspas_duplas', nusCand.every((x) => x.nuas.length === 0) && nusRev.every((x) => x.nuas.length === 0) && FIX_RESERVADA.despida_dispara && FIX_RESERVADA.aspada_nao_dispara, { candidata: nusCand, reversao: nusRev, vigiadas: RESERVADAS_COMO_FUNCAO, fixtures: FIX_RESERVADA }),
   g('nenhum_identificador_pessoal_nem_token_entra_neste_registo', varredura.emails === 0 && varredura.jwt === 0 && varreduraFix.emails >= 1 && varreduraFix.jwt >= 1, { medida_no_registo: varredura, fixture_que_dispara: varreduraFix }),
 ];
 

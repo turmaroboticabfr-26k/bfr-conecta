@@ -40,13 +40,13 @@ SET LOCAL lock_timeout = '10s';
 DROP POLICY director_dashboard_read_students ON public.students;
 CREATE POLICY director_dashboard_read_students ON public.students
   FOR SELECT TO authenticated
-  USING ((current_role()::text = 'director'::text)
+  USING (("current_role"()::text = 'director'::text)
          AND public.bfr_school_in_own_school_scope(school_id));
 
 DROP POLICY director_dashboard_read_classes ON public.classes;
 CREATE POLICY director_dashboard_read_classes ON public.classes
   FOR SELECT TO authenticated
-  USING ((current_role()::text = 'director'::text)
+  USING (("current_role"()::text = 'director'::text)
          AND public.bfr_school_in_own_school_scope(school_id));
 
 --------------------------------------------------------------------------------

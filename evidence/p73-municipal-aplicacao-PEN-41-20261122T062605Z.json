@@ -1,0 +1,93 @@
+{
+  "programa": "scripts/p73-municipal-aplica-ddl.mjs",
+  "peca": "PEN-41",
+  "modo": "aplicacao",
+  "em": "2026-11-22T06:26:20.138Z",
+  "duracao_ms": 15586,
+  "aplicado": true,
+  "escrito_no_banco": true,
+  "ok_literal_usado": "APLICAR PEN-41 NO BANCO",
+  "frase_certificada": "APLICAR PEN-41 NO BANCO",
+  "frase_do_outro_modo_nao_autoriza": "REVERTER PEN-41 NO BANCO",
+  "sql_enviado": {
+    "nome": "candidata",
+    "caminho": "scripts/p73-pen41-ddl-candidata.sql",
+    "bytes": 4934,
+    "md5": "b3f928fe7aa210e65a64985a4b78c325"
+  },
+  "candidata": {
+    "caminho": "scripts/p73-pen41-ddl-candidata.sql",
+    "bytes": 4934,
+    "md5": "b3f928fe7aa210e65a64985a4b78c325"
+  },
+  "reversao": {
+    "caminho": "scripts/p73-pen41-ddl-reversao.sql",
+    "bytes": 1458,
+    "md5": "b16b4dc4eb4f16afed7a89649d5efc15"
+  },
+  "preflight_candidata": {
+    "modo": "candidata",
+    "registo": "C:\\Users\\pcmac\\Documents\\Qoder\\2026-10-13\\28077d9a\\bfr-conecta\\evidence\\p73-pen41-preflight-candidata-20-11e-apl20261122T062605Zc.json",
+    "veredito": "P73_PEN41_PREFLIGHT_VERDE_CANDIDATA 14/0",
+    "codigo": 0
+  },
+  "preflight_reversao": {
+    "modo": "reversao",
+    "registo": "C:\\Users\\pcmac\\Documents\\Qoder\\2026-10-13\\28077d9a\\bfr-conecta\\evidence\\p73-pen41-preflight-reversao-20-11e-apl20261122T062605Zr.json",
+    "veredito": "P73_PEN41_PREFLIGHT_VERDE_REVERSAO 14/0",
+    "codigo": 0
+  },
+  "sequencia": [
+    {
+      "ordem": 1,
+      "papel": "precondicao: a peca tem de estar por aplicar",
+      "modo": "candidata",
+      "registo": "C:\\Users\\pcmac\\Documents\\Qoder\\2026-10-13\\28077d9a\\bfr-conecta\\evidence\\p73-pen41-preflight-candidata-20-11e-apl20261122T062605Zc.json",
+      "veredito": "P73_PEN41_PREFLIGHT_VERDE_CANDIDATA 14/0",
+      "codigo": 0
+    },
+    {
+      "ordem": 2,
+      "papel": "conferencia de saida: o DDL produzido e o DDL certificado",
+      "modo": "reversao",
+      "registo": "C:\\Users\\pcmac\\Documents\\Qoder\\2026-10-13\\28077d9a\\bfr-conecta\\evidence\\p73-pen41-preflight-reversao-20-11e-apl20261122T062605Zr.json",
+      "veredito": "P73_PEN41_PREFLIGHT_VERDE_REVERSAO 14/0",
+      "codigo": 0
+    }
+  ],
+  "varredura_do_sql": {
+    "drop_table": 0,
+    "truncate": 0,
+    "delete_from": 0,
+    "update_fora_de_funcao": 0,
+    "drop_schema_ou_database": 0,
+    "credencial": 0,
+    "drop_policy": 4,
+    "drop_function": 0,
+    "create_policy": 4,
+    "create_function": 0,
+    "create_or_replace_function": 0,
+    "grant_execute": 0,
+    "revoke_execute": 0
+  },
+  "baselines": {
+    "antes": {
+      "schools": 6,
+      "students": 848,
+      "classes": 27,
+      "profiles": 28,
+      "staff_schools": 6
+    },
+    "depois": {
+      "schools": 6,
+      "students": 848,
+      "classes": 27,
+      "profiles": 28,
+      "staff_schools": 6
+    },
+    "inalteradas": true
+  },
+  "erro_de_escrita": null,
+  "o_que_este_registo_nao_cobre": "a publicacao de qualquer versao do ar, o seed do calendario (RM-5.2) e a etiquetagem escola-municipio: cada um tem instrumento e OK proprios.",
+  "veredito": "P73_MUNICIPAL_APLICADO_E_CONFERIDO PEN-41"
+}

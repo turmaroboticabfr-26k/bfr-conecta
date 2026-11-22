@@ -63,7 +63,21 @@ console.log("SOMAS MEDIDAS:", somaIf + "/" + somaTot, "· tabela §15: 92/104 ·
 // O desenho importa: procurar «176/176» em qualquer ponto do ficheiro não é portão — a cifra pode
 // existir numa linha que não é aquela que o indicador usa. Aqui a âncora é a LINHA e o número é
 // capturado dela; corromper o artefacto (ou a linha) tem de dar vermelho.
-const censo = JSON.parse(fs.readFileSync("evidence/roadmap-censo-db.json", "utf8"));
+// 22/11 — a fonte destas três cifras deixou de ser `evidence/roadmap-censo-db.json`. O ficheiro é de
+// 12/11 04:07Z e `scripts/roadmap-censo-db.mjs` escreve sempre para esse mesmo caminho (sem sufixo, sem
+// guarda de sobrescrita), por isso «re-correr o censo» seria apagar a medição que o §7 cita por data. A
+// medição mais recente versionada é `evidence/bu4-digestao-para-documentacao-20-11.json` (196 313 B,
+// em 2026-11-20T11:35:00.323Z, só leitura), e foi contra ela que o §SM.28 subiu os KPI do painel.
+// Os denominadores passam a ler-se do artefacto: com 176 e 475 escritos à mão, a âncora do painel não
+// podia casar com o painel (vermelho sem positivo) e o §15 podia ficar «verde» contra um número de 12/11
+// enquanto o painel dizia 183 — que é exactamente a contradição que o varrimento apanhou hoje.
+const censo = JSON.parse(fs.readFileSync("evidence/bu4-digestao-para-documentacao-20-11.json", "utf8"));
+const TOTAL_TABELAS = censo.catalogo.objetos.find((o) => o.tipo === "r").total;
+const TABELAS_COM_RLS = censo.catalogo.tabelas_rls_ativa;
+const TABELAS_COM_POLICY = censo.catalogo.tabelas_com_politica;
+const TOTAL_POLITICS = censo.catalogo.politicas.total;
+const POLITICS_COM_FILTRO = TOTAL_POLITICS - censo.catalogo.politicas.sem_filtro;
+const REALTIME = censo.catalogo.realtime.tabelas_publicadas;
 const suite = JSON.parse(fs.readFileSync("evidence/rm14-suite.json", "utf8"));
 const anon = JSON.parse(fs.readFileSync("evidence/rm14-censo-anon.json", "utf8"));
 const docTxt = fs.readFileSync("docs/roadmap-master.md", "utf8");
@@ -86,8 +100,8 @@ const afirmacoes = [
   ["§15 pendências registradas", docTxt, /\| Pendências registradas \| (\d+) \(PEN-01/, penRows],
   ["§15 tarefas de roadmap", docTxt, /\| Tarefas de roadmap \| (\d+) \(contadas por parser/, rmTotal],
   ["§15 tabelas com RLS", docTxt, /\| Tabelas com RLS \| (\d+)\/(\d+) /, null],
-  ["§15 policies com filtro", docTxt, /\| Policies com filtro \| (\d+)\/(\d+) /, censo.policies[0].com_filtro],
-  ["§15 tabelas realtime", docTxt, /\| Tabelas realtime \| (\d+) \|/, censo.realtime[0].tabelas_publicadas],
+  ["§15 policies com filtro", docTxt, /\| Policies com filtro \| (\d+)\/(\d+) /, POLITICS_COM_FILTRO],
+  ["§15 tabelas realtime", docTxt, /\| Tabelas realtime \| (\d+) \|/, REALTIME],
   ["§15 portões da suite", docTxt, /\(RM-1\.4\) \| (\d+) portões/, suite.portoes],
   ["§15 verde da suite", docTxt, /(\d+) verde \/ (\d+) amarelo/, suite.portoes - suite.falhas.length - suite.lacunas_registradas.length],
   ["§15 vermelho da suite", docTxt, /amarelo .*?\/ (\d+) vermelho/, suite.falhas.length],
@@ -98,8 +112,9 @@ const afirmacoes = [
   ["painel tarefas por fase", painelTxt, /Roadmap por fases — (\d+) tarefas/, rmTotal],
   ["painel pendências", painelTxt, /Pendências \((\d+) itens · PEN-01/, penRows],
   ["painel IF", painelTxt, /class="tag if">IF<\/span> (\d+) \(/, somaIf],
-  ["painel tabelas com RLS", painelTxt, /class="n">(\d+)\/176<\/div><div class="l">tabelas com RLS/, censo.tabelas[0].com_rls],
-  ["painel policies", painelTxt, /class="n">(\d+)\/475<\/div><div class="l">policies/, censo.policies[0].com_filtro],
+  ["painel tabelas com RLS", painelTxt, new RegExp('class="n">(\\d+)/' + TOTAL_TABELAS + '</div><div class="l">tabelas com RLS', 'u'), TABELAS_COM_RLS],
+  ["painel parenthetical sem policy", painelTxt, new RegExp('<div class="l">tabelas com RLS activa \\((\\d+) têm pelo menos uma policy\\)', 'u'), TABELAS_COM_POLICY],
+  ["painel policies", painelTxt, new RegExp('class="n">(\\d+)/' + TOTAL_POLITICS + '</div><div class="l">policies', 'u'), POLITICS_COM_FILTRO],
   ["painel suite", painelTxt, new RegExp('class="n">(\\d+)/' + suite.portoes + '</div><div class="l">suite mínima'), suite.portoes - suite.falhas.length - suite.lacunas_registradas.length],
   ["painel progresso", painelTxt, /class="big">(\d+),(\d+)%/, null],
 ];
@@ -113,8 +128,8 @@ for (const [nome, corpo, re, esperadoValor] of afirmacoes) {
   // a linha «Tabelas com RLS» é «a/b» — aí o artefacto impõe ambos os lados
   let esperado = esperadoValor;
   if (nome === "§15 tabelas com RLS") {
-    const okLinha = Number(m[1]) === censo.tabelas[0].com_rls && Number(m[2]) === censo.tabelas[0].total;
-    if (!okLinha) { roxos++; console.log("DIVERGE  " + nome.padEnd(36) + m[1] + "/" + m[2] + " ≠ " + censo.tabelas[0].com_rls + "/" + censo.tabelas[0].total); }
+    const okLinha = Number(m[1]) === TABELAS_COM_RLS && Number(m[2]) === TOTAL_TABELAS;
+    if (!okLinha) { roxos++; console.log("DIVERGE  " + nome.padEnd(36) + m[1] + "/" + m[2] + " ≠ " + TABELAS_COM_RLS + "/" + TOTAL_TABELAS); }
     else console.log("OK       " + nome.padEnd(36) + "= " + m[1] + "/" + m[2]);
     continue;
   }

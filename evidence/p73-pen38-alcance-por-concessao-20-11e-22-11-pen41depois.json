@@ -1,0 +1,1459 @@
+{
+  "programa": "scripts/p73-pen38-alcance-por-concessao-20-11.mjs",
+  "em": "2026-11-22T06:27:33.011Z",
+  "duracao_ms": 48330,
+  "pergunta": "quanto do que o módulo municipal abre chega de facto a cada persona com concessão — e o município da concessão é hoje uma fronteira em alguma mesa?",
+  "metodo": "HEAD por mesa com `Prefer: count=exact` e sessão de cada persona local; totais sem RLS pelo canal de leitura; zero corpo no fio; refresh de token vencido escrito só nos ficheiros locais de sessão, nunca no artefacto",
+  "servido": {
+    "url": "https://bfr-conecta.turmaroboticabfr.workers.dev",
+    "bytes": 3556664,
+    "md5": "0e22e78fe1e0ce929ec4717f86365ad9",
+    "diario": "audit-publicacao-v142.json",
+    "versao": 142,
+    "html_md5_do_diario": "0e22e78fe1e0ce929ec4717f86365ad9",
+    "html_md5_da_pasta": "0e22e78fe1e0ce929ec4717f86365ad9",
+    "pasta": [
+      "worker-deploy-v142-painel-na-troca"
+    ],
+    "md5_do_diario_anterior": "e111b9e66cc758d19dffff1436770d0f"
+  },
+  "mesas": {
+    "origem": "evidence/p73-politicas-municipais-20-11e.json (mesas_do_modulo)",
+    "nomes": [
+      "schools",
+      "students",
+      "classes",
+      "supervision_requests",
+      "bfr_lesson_attendance",
+      "staff_schools",
+      "grades",
+      "supervision_alerts",
+      "supervision_responses",
+      "announcements",
+      "school_documents"
+    ]
+  },
+  "proveniencia_dos_esperados": {
+    "shell": "o par diário↔pasta da MESMA versão, enumerados do índice por número de versão (regra da casa; nada pinado à mão)",
+    "dados": "evidence/p92-dados-municipais-c.json (`depois`, escrita certificada) em relação de CONTIDO — agregados do censo de policies de 20/11 ficaram campo de história, não régua",
+    "censo_20_11_historico": {
+      "network_totals_def": "CREATE OR REPLACE FUNCTION public.bfr_municipal_network_totals()\n RETURNS TABLE(schools integer, students integer, classes integer, municipalities integer)\n LANGUAGE sql\n STABLE SECURITY DEFINER\n SET search_path TO 'public'\nAS $function$\n  SELECT (SELECT count(*)::int FROM public.bfr_municipal_school_stats),\n         (SELECT coalesce(sum(students_total), 0)::int FROM public.bfr_municipal_school_stats),\n         (SELECT coalesce(sum(classes_total), 0)::int FROM public.bfr_municipal_school_stats),\n         (SELECT count(DISTINCT municipality_id)::int FROM public.bfr_municipal_school_stats\n           WHERE municipality_id IS NOT NULL);\n$function$\n",
+      "network_totals_def_md5": "4ffde76bdb1243f6b9b3ebe6f2f50716",
+      "school_stats_viewdef": " SELECT id AS school_id,\n    name AS school_name,\n    city,\n    zone,\n    operating_status,\n    municipality_id,\n    ( SELECT count(*)::integer AS count\n           FROM students st\n          WHERE st.school_id = s.id) AS students_total,\n    ( SELECT count(*)::integer AS count\n           FROM classes cl\n          WHERE cl.school_id = s.id) AS classes_total,\n    ( SELECT count(*)::integer AS count\n           FROM bfr_school_key_map m\n             JOIN staff_schools ss ON ss.school_id = m.sports_school_id\n          WHERE m.school_id = s.id) AS staff_links_total\n   FROM schools s\n  WHERE bfr_school_in_municipal_scope(id) OR bfr_is_platform_admin();",
+      "concessoes_ativas": 4,
+      "municipios_cadastrados": 1,
+      "escolas_com_municipality_id": 0
+    },
+    "porque_mudou": "as três cláusulas antigas pediam ao censo de 20/11 o que ele não podia dar depois do P92 e da v142: um verde que envelhece no dia em que a ação é autorizada não mede o mundo, mede o passado"
+  },
+  "reais_sem_rls": {
+    "schools": 6,
+    "students": 848,
+    "classes": 27,
+    "supervision_requests": 0,
+    "bfr_lesson_attendance": 268,
+    "staff_schools": 6,
+    "grades": 112,
+    "supervision_alerts": 0,
+    "supervision_responses": 0,
+    "announcements": 1,
+    "school_documents": 226
+  },
+  "estado_municipal": {
+    "concessoes_ativas": 5,
+    "municipios": 2,
+    "escolas_com_municipio": 4,
+    "escolas_totais": 6
+  },
+  "concessoes": [
+    {
+      "grant_id": "a206f198-6b79-4eca-b54e-8bba7ef8a731",
+      "uid": "6936a45a-89ca-4917-b4a9-e7d47209aeae",
+      "municipal_role": "equipe_administrativa",
+      "municipio": "Sao Paulo (SM8 fixture — apagar)",
+      "papel_no_perfil": "pending"
+    },
+    {
+      "grant_id": "ebf0287d-3e0b-4964-8f2a-1d5553311749",
+      "uid": "6083a77c-bedc-4ff9-b75b-f08ff0d33fe1",
+      "municipal_role": "gestor_autorizado",
+      "municipio": "Sao Paulo (SM8 fixture — apagar)",
+      "papel_no_perfil": "coordinator"
+    },
+    {
+      "grant_id": "d3439a15-71d2-4c66-af9b-fc6fa13abc09",
+      "uid": "68075dee-13f4-4d8c-b74f-eceb14ce18d7",
+      "municipal_role": "secretario_adjunto",
+      "municipio": "Sao Paulo (SM8 fixture — apagar)",
+      "papel_no_perfil": "secretary"
+    },
+    {
+      "grant_id": "cf6fac96-8464-4d71-9991-f2ba10f7e565",
+      "uid": "d7d45999-c21f-4322-8f94-46c6564ff728",
+      "municipal_role": "secretario_municipal",
+      "municipio": "São Paulo",
+      "papel_no_perfil": "education_supervisor"
+    },
+    {
+      "grant_id": "988ffed7-5206-4100-9756-7d0c9bf46bd1",
+      "uid": "86e31850-eefb-4539-93e1-192ceceb6d12",
+      "municipal_role": "secretario_municipal",
+      "municipio": "Sao Paulo (SM8 fixture — apagar)",
+      "papel_no_perfil": "secretary"
+    }
+  ],
+  "fixture_content_range": {
+    "entrada": {
+      "cheio": "0-24/137",
+      "vazio": "*/0",
+      "mentiroso": "0-24/abc"
+    },
+    "medido": {
+      "cheio": 137,
+      "vazio": 0,
+      "sem": null,
+      "mentiroso": null
+    }
+  },
+  "anon": {
+    "perfil": "anon",
+    "origem": "sem sessao",
+    "alcance": {
+      "schools": {
+        "status": 401,
+        "total": null,
+        "corpo_bytes": 0,
+        "code": null
+      },
+      "students": {
+        "status": 200,
+        "total": 0,
+        "corpo_bytes": 0,
+        "code": null
+      },
+      "classes": {
+        "status": 200,
+        "total": 0,
+        "corpo_bytes": 0,
+        "code": null
+      },
+      "supervision_requests": {
+        "status": 401,
+        "total": null,
+        "corpo_bytes": 0,
+        "code": null
+      },
+      "bfr_lesson_attendance": {
+        "status": 401,
+        "total": null,
+        "corpo_bytes": 0,
+        "code": null
+      },
+      "staff_schools": {
+        "status": 401,
+        "total": null,
+        "corpo_bytes": 0,
+        "code": null
+      },
+      "grades": {
+        "status": 401,
+        "total": null,
+        "corpo_bytes": 0,
+        "code": null
+      },
+      "supervision_alerts": {
+        "status": 401,
+        "total": null,
+        "corpo_bytes": 0,
+        "code": null
+      },
+      "supervision_responses": {
+        "status": 401,
+        "total": null,
+        "corpo_bytes": 0,
+        "code": null
+      },
+      "announcements": {
+        "status": 200,
+        "total": 0,
+        "corpo_bytes": 0,
+        "code": null
+      },
+      "school_documents": {
+        "status": 200,
+        "total": 0,
+        "corpo_bytes": 0,
+        "code": null
+      }
+    },
+    "rpc_autoridade_status": 401
+  },
+  "pessoas": [
+    {
+      "perfil": "secretario_municipal",
+      "origem": "sm8-municipal-sessions",
+      "uid": "86e31850-eefb-4539-93e1-192ceceb6d12",
+      "papel_no_perfil": "secretary",
+      "tem_concessao_ativa": true,
+      "cadeia_lida_de": "sm8-municipal-sessions.json",
+      "alcance": {
+        "schools": {
+          "status": 200,
+          "total": 0,
+          "corpo_bytes": 0,
+          "code": null
+        },
+        "students": {
+          "status": 200,
+          "total": 0,
+          "corpo_bytes": 0,
+          "code": null
+        },
+        "classes": {
+          "status": 200,
+          "total": 0,
+          "corpo_bytes": 0,
+          "code": null
+        },
+        "supervision_requests": {
+          "status": 200,
+          "total": 0,
+          "corpo_bytes": 0,
+          "code": null
+        },
+        "bfr_lesson_attendance": {
+          "status": 200,
+          "total": 0,
+          "corpo_bytes": 0,
+          "code": null
+        },
+        "staff_schools": {
+          "status": 200,
+          "total": 0,
+          "corpo_bytes": 0,
+          "code": null
+        },
+        "grades": {
+          "status": 200,
+          "total": 0,
+          "corpo_bytes": 0,
+          "code": null
+        },
+        "supervision_alerts": {
+          "status": 200,
+          "total": 0,
+          "corpo_bytes": 0,
+          "code": null
+        },
+        "supervision_responses": {
+          "status": 200,
+          "total": 0,
+          "corpo_bytes": 0,
+          "code": null
+        },
+        "announcements": {
+          "status": 200,
+          "total": 1,
+          "corpo_bytes": 0,
+          "code": null
+        },
+        "school_documents": {
+          "status": 200,
+          "total": 226,
+          "corpo_bytes": 0,
+          "code": null
+        }
+      },
+      "rpc": {
+        "autoridade": {
+          "status": 200,
+          "valor": true,
+          "corpo_bytes": 4
+        },
+        "network_totals": {
+          "status": 200,
+          "valor": [
+            {
+              "schools": 0,
+              "students": 0,
+              "classes": 0,
+              "municipalities": 0
+            }
+          ],
+          "corpo_bytes": 59
+        },
+        "vista_linhas": {
+          "status": 200,
+          "total": 0,
+          "corpo_bytes": 0,
+          "code": null
+        }
+      },
+      "token_renovado": false,
+      "gravado_em": null,
+      "gravado_hash": null,
+      "alcance_escolas_com_municipio": {
+        "status": 200,
+        "total": 0,
+        "corpo_bytes": 0,
+        "code": null
+      }
+    },
+    {
+      "perfil": "secretario_adjunto",
+      "origem": "sm8-municipal-sessions",
+      "uid": "68075dee-13f4-4d8c-b74f-eceb14ce18d7",
+      "papel_no_perfil": "secretary",
+      "tem_concessao_ativa": true,
+      "cadeia_lida_de": "sm8-municipal-sessions.json",
+      "alcance": {
+        "schools": {
+          "status": 200,
+          "total": 0,
+          "corpo_bytes": 0,
+          "code": null
+        },
+        "students": {
+          "status": 200,
+          "total": 0,
+          "corpo_bytes": 0,
+          "code": null
+        },
+        "classes": {
+          "status": 200,
+          "total": 0,
+          "corpo_bytes": 0,
+          "code": null
+        },
+        "supervision_requests": {
+          "status": 200,
+          "total": 0,
+          "corpo_bytes": 0,
+          "code": null
+        },
+        "bfr_lesson_attendance": {
+          "status": 200,
+          "total": 0,
+          "corpo_bytes": 0,
+          "code": null
+        },
+        "staff_schools": {
+          "status": 200,
+          "total": 0,
+          "corpo_bytes": 0,
+          "code": null
+        },
+        "grades": {
+          "status": 200,
+          "total": 0,
+          "corpo_bytes": 0,
+          "code": null
+        },
+        "supervision_alerts": {
+          "status": 200,
+          "total": 0,
+          "corpo_bytes": 0,
+          "code": null
+        },
+        "supervision_responses": {
+          "status": 200,
+          "total": 0,
+          "corpo_bytes": 0,
+          "code": null
+        },
+        "announcements": {
+          "status": 200,
+          "total": 1,
+          "corpo_bytes": 0,
+          "code": null
+        },
+        "school_documents": {
+          "status": 200,
+          "total": 226,
+          "corpo_bytes": 0,
+          "code": null
+        }
+      },
+      "rpc": {
+        "autoridade": {
+          "status": 200,
+          "valor": true,
+          "corpo_bytes": 4
+        },
+        "network_totals": {
+          "status": 200,
+          "valor": [
+            {
+              "schools": 0,
+              "students": 0,
+              "classes": 0,
+              "municipalities": 0
+            }
+          ],
+          "corpo_bytes": 59
+        },
+        "vista_linhas": {
+          "status": 200,
+          "total": 0,
+          "corpo_bytes": 0,
+          "code": null
+        }
+      },
+      "token_renovado": false,
+      "gravado_em": null,
+      "gravado_hash": null,
+      "alcance_escolas_com_municipio": {
+        "status": 200,
+        "total": 0,
+        "corpo_bytes": 0,
+        "code": null
+      }
+    },
+    {
+      "perfil": "gestor_autorizado",
+      "origem": "sm8-municipal-sessions",
+      "uid": "6083a77c-bedc-4ff9-b75b-f08ff0d33fe1",
+      "papel_no_perfil": "coordinator",
+      "tem_concessao_ativa": true,
+      "cadeia_lida_de": "sm8-municipal-sessions.json",
+      "alcance": {
+        "schools": {
+          "status": 200,
+          "total": 0,
+          "corpo_bytes": 0,
+          "code": null
+        },
+        "students": {
+          "status": 200,
+          "total": 848,
+          "corpo_bytes": 0,
+          "code": null
+        },
+        "classes": {
+          "status": 200,
+          "total": 27,
+          "corpo_bytes": 0,
+          "code": null
+        },
+        "supervision_requests": {
+          "status": 200,
+          "total": 0,
+          "corpo_bytes": 0,
+          "code": null
+        },
+        "bfr_lesson_attendance": {
+          "status": 200,
+          "total": 268,
+          "corpo_bytes": 0,
+          "code": null
+        },
+        "staff_schools": {
+          "status": 200,
+          "total": 0,
+          "corpo_bytes": 0,
+          "code": null
+        },
+        "grades": {
+          "status": 200,
+          "total": 112,
+          "corpo_bytes": 0,
+          "code": null
+        },
+        "supervision_alerts": {
+          "status": 200,
+          "total": 0,
+          "corpo_bytes": 0,
+          "code": null
+        },
+        "supervision_responses": {
+          "status": 200,
+          "total": 0,
+          "corpo_bytes": 0,
+          "code": null
+        },
+        "announcements": {
+          "status": 200,
+          "total": 1,
+          "corpo_bytes": 0,
+          "code": null
+        },
+        "school_documents": {
+          "status": 200,
+          "total": 226,
+          "corpo_bytes": 0,
+          "code": null
+        }
+      },
+      "rpc": {
+        "autoridade": {
+          "status": 200,
+          "valor": true,
+          "corpo_bytes": 4
+        },
+        "network_totals": {
+          "status": 200,
+          "valor": [
+            {
+              "schools": 0,
+              "students": 0,
+              "classes": 0,
+              "municipalities": 0
+            }
+          ],
+          "corpo_bytes": 59
+        },
+        "vista_linhas": {
+          "status": 200,
+          "total": 0,
+          "corpo_bytes": 0,
+          "code": null
+        }
+      },
+      "token_renovado": false,
+      "gravado_em": null,
+      "gravado_hash": null,
+      "alcance_escolas_com_municipio": {
+        "status": 200,
+        "total": 0,
+        "corpo_bytes": 0,
+        "code": null
+      }
+    },
+    {
+      "perfil": "equipe_administrativa",
+      "origem": "sm8-municipal-sessions",
+      "uid": "6936a45a-89ca-4917-b4a9-e7d47209aeae",
+      "papel_no_perfil": "pending",
+      "tem_concessao_ativa": true,
+      "cadeia_lida_de": "sm8-municipal-sessions.json",
+      "alcance": {
+        "schools": {
+          "status": 200,
+          "total": 0,
+          "corpo_bytes": 0,
+          "code": null
+        },
+        "students": {
+          "status": 200,
+          "total": 0,
+          "corpo_bytes": 0,
+          "code": null
+        },
+        "classes": {
+          "status": 200,
+          "total": 0,
+          "corpo_bytes": 0,
+          "code": null
+        },
+        "supervision_requests": {
+          "status": 200,
+          "total": 0,
+          "corpo_bytes": 0,
+          "code": null
+        },
+        "bfr_lesson_attendance": {
+          "status": 200,
+          "total": 0,
+          "corpo_bytes": 0,
+          "code": null
+        },
+        "staff_schools": {
+          "status": 200,
+          "total": 0,
+          "corpo_bytes": 0,
+          "code": null
+        },
+        "grades": {
+          "status": 200,
+          "total": 0,
+          "corpo_bytes": 0,
+          "code": null
+        },
+        "supervision_alerts": {
+          "status": 200,
+          "total": 0,
+          "corpo_bytes": 0,
+          "code": null
+        },
+        "supervision_responses": {
+          "status": 200,
+          "total": 0,
+          "corpo_bytes": 0,
+          "code": null
+        },
+        "announcements": {
+          "status": 200,
+          "total": 0,
+          "corpo_bytes": 0,
+          "code": null
+        },
+        "school_documents": {
+          "status": 200,
+          "total": 0,
+          "corpo_bytes": 0,
+          "code": null
+        }
+      },
+      "rpc": {
+        "autoridade": {
+          "status": 200,
+          "valor": true,
+          "corpo_bytes": 4
+        },
+        "network_totals": {
+          "status": 200,
+          "valor": [
+            {
+              "schools": 0,
+              "students": 0,
+              "classes": 0,
+              "municipalities": 0
+            }
+          ],
+          "corpo_bytes": 59
+        },
+        "vista_linhas": {
+          "status": 200,
+          "total": 0,
+          "corpo_bytes": 0,
+          "code": null
+        }
+      },
+      "token_renovado": false,
+      "gravado_em": null,
+      "gravado_hash": null,
+      "alcance_escolas_com_municipio": {
+        "status": 200,
+        "total": 0,
+        "corpo_bytes": 0,
+        "code": null
+      }
+    },
+    {
+      "perfil": "developer",
+      "origem": "ah2-sessions",
+      "uid": "49753880-f7fc-4f0a-bbbb-c3883c37a29d",
+      "papel_no_perfil": "developer",
+      "tem_concessao_ativa": false,
+      "cadeia_lida_de": "C:\\Users\\pcmac\\Documents\\Qoder\\2026-10-13\\28077d9a\\ah2-sessao-developer.json",
+      "alcance": {
+        "schools": {
+          "status": 200,
+          "total": 6,
+          "corpo_bytes": 0,
+          "code": null
+        },
+        "students": {
+          "status": 200,
+          "total": 848,
+          "corpo_bytes": 0,
+          "code": null
+        },
+        "classes": {
+          "status": 200,
+          "total": 27,
+          "corpo_bytes": 0,
+          "code": null
+        },
+        "supervision_requests": {
+          "status": 200,
+          "total": 0,
+          "corpo_bytes": 0,
+          "code": null
+        },
+        "bfr_lesson_attendance": {
+          "status": 200,
+          "total": 268,
+          "corpo_bytes": 0,
+          "code": null
+        },
+        "staff_schools": {
+          "status": 200,
+          "total": 6,
+          "corpo_bytes": 0,
+          "code": null
+        },
+        "grades": {
+          "status": 200,
+          "total": 112,
+          "corpo_bytes": 0,
+          "code": null
+        },
+        "supervision_alerts": {
+          "status": 200,
+          "total": 0,
+          "corpo_bytes": 0,
+          "code": null
+        },
+        "supervision_responses": {
+          "status": 200,
+          "total": 0,
+          "corpo_bytes": 0,
+          "code": null
+        },
+        "announcements": {
+          "status": 200,
+          "total": 1,
+          "corpo_bytes": 0,
+          "code": null
+        },
+        "school_documents": {
+          "status": 200,
+          "total": 226,
+          "corpo_bytes": 0,
+          "code": null
+        }
+      },
+      "rpc": {
+        "autoridade": {
+          "status": 200,
+          "valor": false,
+          "corpo_bytes": 5
+        },
+        "network_totals": {
+          "status": 200,
+          "valor": [
+            {
+              "schools": 6,
+              "students": 848,
+              "classes": 27,
+              "municipalities": 1
+            }
+          ],
+          "corpo_bytes": 62
+        },
+        "vista_linhas": {
+          "status": 200,
+          "total": 6,
+          "corpo_bytes": 0,
+          "code": null
+        }
+      },
+      "token_renovado": false,
+      "gravado_em": null,
+      "gravado_hash": null,
+      "alcance_escolas_com_municipio": {
+        "status": 200,
+        "total": 4,
+        "corpo_bytes": 0,
+        "code": null
+      }
+    },
+    {
+      "perfil": "education_supervisor",
+      "origem": "ah2-sessions",
+      "uid": "d7d45999-c21f-4322-8f94-46c6564ff728",
+      "papel_no_perfil": "education_supervisor",
+      "tem_concessao_ativa": true,
+      "cadeia_lida_de": "C:\\Users\\pcmac\\Documents\\Qoder\\2026-10-13\\28077d9a\\ah2-sessao-education_supervisor.json",
+      "alcance": {
+        "schools": {
+          "status": 200,
+          "total": 6,
+          "corpo_bytes": 0,
+          "code": null
+        },
+        "students": {
+          "status": 200,
+          "total": 848,
+          "corpo_bytes": 0,
+          "code": null
+        },
+        "classes": {
+          "status": 200,
+          "total": 27,
+          "corpo_bytes": 0,
+          "code": null
+        },
+        "supervision_requests": {
+          "status": 200,
+          "total": 0,
+          "corpo_bytes": 0,
+          "code": null
+        },
+        "bfr_lesson_attendance": {
+          "status": 200,
+          "total": 0,
+          "corpo_bytes": 0,
+          "code": null
+        },
+        "staff_schools": {
+          "status": 200,
+          "total": 1,
+          "corpo_bytes": 0,
+          "code": null
+        },
+        "grades": {
+          "status": 200,
+          "total": 112,
+          "corpo_bytes": 0,
+          "code": null
+        },
+        "supervision_alerts": {
+          "status": 200,
+          "total": 0,
+          "corpo_bytes": 0,
+          "code": null
+        },
+        "supervision_responses": {
+          "status": 200,
+          "total": 0,
+          "corpo_bytes": 0,
+          "code": null
+        },
+        "announcements": {
+          "status": 200,
+          "total": 0,
+          "corpo_bytes": 0,
+          "code": null
+        },
+        "school_documents": {
+          "status": 200,
+          "total": 0,
+          "corpo_bytes": 0,
+          "code": null
+        }
+      },
+      "rpc": {
+        "autoridade": {
+          "status": 200,
+          "valor": true,
+          "corpo_bytes": 4
+        },
+        "network_totals": {
+          "status": 200,
+          "valor": [
+            {
+              "schools": 4,
+              "students": 848,
+              "classes": 27,
+              "municipalities": 1
+            }
+          ],
+          "corpo_bytes": 62
+        },
+        "vista_linhas": {
+          "status": 200,
+          "total": 4,
+          "corpo_bytes": 0,
+          "code": null
+        }
+      },
+      "token_renovado": false,
+      "gravado_em": null,
+      "gravado_hash": null,
+      "alcance_escolas_com_municipio": {
+        "status": 200,
+        "total": 4,
+        "corpo_bytes": 0,
+        "code": null
+      }
+    },
+    {
+      "perfil": "director",
+      "origem": "ah2-sessions",
+      "uid": "b5be4883-f076-4706-b40c-6ab1e720baa7",
+      "papel_no_perfil": "director",
+      "tem_concessao_ativa": false,
+      "cadeia_lida_de": "C:\\Users\\pcmac\\Documents\\Qoder\\2026-10-13\\28077d9a\\ah2-sessao-director.json",
+      "alcance": {
+        "schools": {
+          "status": 200,
+          "total": 0,
+          "corpo_bytes": 0,
+          "code": null
+        },
+        "students": {
+          "status": 200,
+          "total": 848,
+          "corpo_bytes": 0,
+          "code": null
+        },
+        "classes": {
+          "status": 200,
+          "total": 27,
+          "corpo_bytes": 0,
+          "code": null
+        },
+        "supervision_requests": {
+          "status": 200,
+          "total": 0,
+          "corpo_bytes": 0,
+          "code": null
+        },
+        "bfr_lesson_attendance": {
+          "status": 200,
+          "total": 268,
+          "corpo_bytes": 0,
+          "code": null
+        },
+        "staff_schools": {
+          "status": 200,
+          "total": 1,
+          "corpo_bytes": 0,
+          "code": null
+        },
+        "grades": {
+          "status": 200,
+          "total": 112,
+          "corpo_bytes": 0,
+          "code": null
+        },
+        "supervision_alerts": {
+          "status": 200,
+          "total": 0,
+          "corpo_bytes": 0,
+          "code": null
+        },
+        "supervision_responses": {
+          "status": 200,
+          "total": 0,
+          "corpo_bytes": 0,
+          "code": null
+        },
+        "announcements": {
+          "status": 200,
+          "total": 1,
+          "corpo_bytes": 0,
+          "code": null
+        },
+        "school_documents": {
+          "status": 200,
+          "total": 226,
+          "corpo_bytes": 0,
+          "code": null
+        }
+      },
+      "rpc": {
+        "autoridade": {
+          "status": 200,
+          "valor": false,
+          "corpo_bytes": 5
+        },
+        "network_totals": {
+          "status": 200,
+          "valor": [
+            {
+              "schools": 0,
+              "students": 0,
+              "classes": 0,
+              "municipalities": 0
+            }
+          ],
+          "corpo_bytes": 59
+        },
+        "vista_linhas": {
+          "status": 200,
+          "total": 0,
+          "corpo_bytes": 0,
+          "code": null
+        }
+      },
+      "token_renovado": false,
+      "gravado_em": null,
+      "gravado_hash": null,
+      "alcance_escolas_com_municipio": {
+        "status": 200,
+        "total": 0,
+        "corpo_bytes": 0,
+        "code": null
+      }
+    },
+    {
+      "perfil": "secretary",
+      "origem": "ah2-sessions",
+      "uid": "839e1f87-c596-4355-9f89-2ed97711349f",
+      "papel_no_perfil": "secretary",
+      "tem_concessao_ativa": false,
+      "cadeia_lida_de": "C:\\Users\\pcmac\\Documents\\Qoder\\2026-10-13\\28077d9a\\ah2-sessao-secretary.json",
+      "alcance": {
+        "schools": {
+          "status": 200,
+          "total": 0,
+          "corpo_bytes": 0,
+          "code": null
+        },
+        "students": {
+          "status": 200,
+          "total": 848,
+          "corpo_bytes": 0,
+          "code": null
+        },
+        "classes": {
+          "status": 200,
+          "total": 27,
+          "corpo_bytes": 0,
+          "code": null
+        },
+        "supervision_requests": {
+          "status": 200,
+          "total": 0,
+          "corpo_bytes": 0,
+          "code": null
+        },
+        "bfr_lesson_attendance": {
+          "status": 200,
+          "total": 0,
+          "corpo_bytes": 0,
+          "code": null
+        },
+        "staff_schools": {
+          "status": 200,
+          "total": 1,
+          "corpo_bytes": 0,
+          "code": null
+        },
+        "grades": {
+          "status": 200,
+          "total": 0,
+          "corpo_bytes": 0,
+          "code": null
+        },
+        "supervision_alerts": {
+          "status": 200,
+          "total": 0,
+          "corpo_bytes": 0,
+          "code": null
+        },
+        "supervision_responses": {
+          "status": 200,
+          "total": 0,
+          "corpo_bytes": 0,
+          "code": null
+        },
+        "announcements": {
+          "status": 200,
+          "total": 1,
+          "corpo_bytes": 0,
+          "code": null
+        },
+        "school_documents": {
+          "status": 200,
+          "total": 226,
+          "corpo_bytes": 0,
+          "code": null
+        }
+      },
+      "rpc": {
+        "autoridade": {
+          "status": 200,
+          "valor": false,
+          "corpo_bytes": 5
+        },
+        "network_totals": {
+          "status": 200,
+          "valor": [
+            {
+              "schools": 0,
+              "students": 0,
+              "classes": 0,
+              "municipalities": 0
+            }
+          ],
+          "corpo_bytes": 59
+        },
+        "vista_linhas": {
+          "status": 200,
+          "total": 0,
+          "corpo_bytes": 0,
+          "code": null
+        }
+      },
+      "token_renovado": false,
+      "gravado_em": null,
+      "gravado_hash": null,
+      "alcance_escolas_com_municipio": {
+        "status": 200,
+        "total": 0,
+        "corpo_bytes": 0,
+        "code": null
+      }
+    }
+  ],
+  "achados": {
+    "escolas_reais": 6,
+    "alunos_reais": 848,
+    "turmas_reais": 27,
+    "por_persona": [
+      {
+        "perfil": "secretario_municipal",
+        "autoridade": true,
+        "escolas": 0,
+        "escolas_com_municipio": 0,
+        "alunos": 0,
+        "turmas": 0,
+        "vista": 0,
+        "totals": [
+          {
+            "schools": 0,
+            "students": 0,
+            "classes": 0,
+            "municipalities": 0
+          }
+        ]
+      },
+      {
+        "perfil": "secretario_adjunto",
+        "autoridade": true,
+        "escolas": 0,
+        "escolas_com_municipio": 0,
+        "alunos": 0,
+        "turmas": 0,
+        "vista": 0,
+        "totals": [
+          {
+            "schools": 0,
+            "students": 0,
+            "classes": 0,
+            "municipalities": 0
+          }
+        ]
+      },
+      {
+        "perfil": "gestor_autorizado",
+        "autoridade": true,
+        "escolas": 0,
+        "escolas_com_municipio": 0,
+        "alunos": 848,
+        "turmas": 27,
+        "vista": 0,
+        "totals": [
+          {
+            "schools": 0,
+            "students": 0,
+            "classes": 0,
+            "municipalities": 0
+          }
+        ]
+      },
+      {
+        "perfil": "equipe_administrativa",
+        "autoridade": true,
+        "escolas": 0,
+        "escolas_com_municipio": 0,
+        "alunos": 0,
+        "turmas": 0,
+        "vista": 0,
+        "totals": [
+          {
+            "schools": 0,
+            "students": 0,
+            "classes": 0,
+            "municipalities": 0
+          }
+        ]
+      },
+      {
+        "perfil": "developer",
+        "autoridade": false,
+        "escolas": 6,
+        "escolas_com_municipio": 4,
+        "alunos": 848,
+        "turmas": 27,
+        "vista": 6,
+        "totals": [
+          {
+            "schools": 6,
+            "students": 848,
+            "classes": 27,
+            "municipalities": 1
+          }
+        ]
+      },
+      {
+        "perfil": "education_supervisor",
+        "autoridade": true,
+        "escolas": 6,
+        "escolas_com_municipio": 4,
+        "alunos": 848,
+        "turmas": 27,
+        "vista": 4,
+        "totals": [
+          {
+            "schools": 4,
+            "students": 848,
+            "classes": 27,
+            "municipalities": 1
+          }
+        ]
+      },
+      {
+        "perfil": "director",
+        "autoridade": false,
+        "escolas": 0,
+        "escolas_com_municipio": 0,
+        "alunos": 848,
+        "turmas": 27,
+        "vista": 0,
+        "totals": [
+          {
+            "schools": 0,
+            "students": 0,
+            "classes": 0,
+            "municipalities": 0
+          }
+        ]
+      },
+      {
+        "perfil": "secretary",
+        "autoridade": false,
+        "escolas": 0,
+        "escolas_com_municipio": 0,
+        "alunos": 848,
+        "turmas": 27,
+        "vista": 0,
+        "totals": [
+          {
+            "schools": 0,
+            "students": 0,
+            "classes": 0,
+            "municipalities": 0
+          }
+        ]
+      }
+    ],
+    "sobre_largo_em_schools": [
+      "developer",
+      "education_supervisor"
+    ],
+    "sobre_estreito_em_students": [
+      "secretario_municipal",
+      "secretario_adjunto",
+      "equipe_administrativa"
+    ],
+    "municipio_da_concessao_filtra_algo": [
+      "education_supervisor"
+    ]
+  },
+  "portoes": [
+    {
+      "nome": "mesas_lidas_do_artefacto_do_censo_e_todas_com_policy_censurada",
+      "verde": true,
+      "detalhe": {
+        "n": 11,
+        "sem_policy": [],
+        "origem": "scripts/p73-politicas-municipais-20-11.mjs"
+      }
+    },
+    {
+      "nome": "identificadores_de_mesa_validados_antes_do_sql",
+      "verde": true,
+      "detalhe": [
+        "schools",
+        "students",
+        "classes",
+        "supervision_requests",
+        "bfr_lesson_attendance",
+        "staff_schools",
+        "grades",
+        "supervision_alerts",
+        "supervision_responses",
+        "announcements",
+        "school_documents"
+      ]
+    },
+    {
+      "nome": "todas_as_mesas_existem_no_catalogo",
+      "verde": true,
+      "detalhe": {
+        "lidas": [
+          "announcements:r",
+          "bfr_lesson_attendance:r",
+          "classes:r",
+          "grades:r",
+          "school_documents:r",
+          "schools:r",
+          "staff_schools:r",
+          "students:r",
+          "supervision_alerts:r",
+          "supervision_requests:r",
+          "supervision_responses:r"
+        ],
+        "esperadas": 11
+      }
+    },
+    {
+      "nome": "a_shell_servida_bate_com_o_par_diario_pasta_da_mesma_versao",
+      "verde": true,
+      "detalhe": {
+        "servido": "0e22e78fe1e0ce929ec4717f86365ad9",
+        "diario": "audit-publicacao-v142.json",
+        "versao": 142,
+        "html_md5_do_diario": "0e22e78fe1e0ce929ec4717f86365ad9",
+        "md5_no_ar_do_diario": "0e22e78fe1e0ce929ec4717f86365ad9",
+        "pasta": [
+          "worker-deploy-v142-painel-na-troca"
+        ],
+        "html_md5_da_pasta": "0e22e78fe1e0ce929ec4717f86365ad9",
+        "md5_do_diario_anterior": "e111b9e66cc758d19dffff1436770d0f",
+        "distingue_da_anterior": true
+      }
+    },
+    {
+      "nome": "a_regua_do_content_range_ve_o_total_do_fixture_e_nao_inventa_no_controlo",
+      "verde": true,
+      "detalhe": {
+        "cheio": 137,
+        "vazio": 0,
+        "sem": null,
+        "mentiroso": null
+      }
+    },
+    {
+      "nome": "nenhuma_celula_devolveu_corpo",
+      "verde": true,
+      "detalhe": {
+        "celulas": 88,
+        "com_corpo": 0
+      }
+    },
+    {
+      "nome": "nenhuma_celula_sem_status_ou_sem_total",
+      "verde": true,
+      "detalhe": {
+        "sem_total": []
+      }
+    },
+    {
+      "nome": "o_que_o_registro_P92_certificado_ainda_esta_no_banco_vivo",
+      "verde": true,
+      "detalhe": {
+        "escolas_que_faltam": [],
+        "grants_que_faltam": [],
+        "municipios_que_faltam": [],
+        "certificados": {
+          "escolas": 4,
+          "grants": 5,
+          "municipios": 2
+        },
+        "vivos": {
+          "escolas": 4,
+          "grants": 5,
+          "municipios": 2
+        },
+        "registro": "scripts/p92-dados-municipais.mjs · P92_DADOS_MUNICIPAIS_APLICADO_E_CONFERIDO 12/0"
+      }
+    },
+    {
+      "nome": "as_contagens_agregadas_batem_com_as_listas_de_linhas_do_mesmo_instante",
+      "verde": true,
+      "detalhe": {
+        "agregados": {
+          "concessoes_ativas": 5,
+          "municipios": 2,
+          "escolas_com_municipio": 4,
+          "escolas_totais": 6
+        },
+        "listas": {
+          "grants": 5,
+          "escolas_ligadas": 4,
+          "municipios": 2
+        }
+      }
+    },
+    {
+      "nome": "a_regua_de_conjunto_tem_dentes_no_fixture_de_perda",
+      "verde": true,
+      "detalhe": {
+        "sumir_uma_escola": 1,
+        "sumir_um_grant": 1,
+        "intacto": 0
+      }
+    },
+    {
+      "nome": "controle_de_autenticacao_passa_para_quem_tem_sessao",
+      "verde": true,
+      "detalhe": {
+        "sem_erro": 8,
+        "pessoas": 8,
+        "schools_status": [
+          200,
+          200,
+          200,
+          200,
+          200,
+          200,
+          200,
+          200
+        ]
+      }
+    },
+    {
+      "nome": "autoridade_devolve_o_que_a_mesa_das_concessoes_afirma",
+      "verde": true,
+      "detalhe": [
+        "secretario_municipal:rpc=true:mesa=true:papel=secretary",
+        "secretario_adjunto:rpc=true:mesa=true:papel=secretary",
+        "gestor_autorizado:rpc=true:mesa=true:papel=coordinator",
+        "equipe_administrativa:rpc=true:mesa=true:papel=pending",
+        "developer:rpc=false:mesa=false:papel=developer",
+        "education_supervisor:rpc=true:mesa=true:papel=education_supervisor",
+        "director:rpc=false:mesa=false:papel=director",
+        "secretary:rpc=false:mesa=false:papel=secretary"
+      ]
+    },
+    {
+      "nome": "o_anon_nao_recebe_linha_de_dado_escolar",
+      "verde": true,
+      "detalhe": {
+        "schools": [
+          401,
+          null
+        ],
+        "students": [
+          200,
+          0
+        ],
+        "classes": [
+          200,
+          0
+        ],
+        "supervision_requests": [
+          401,
+          null
+        ],
+        "bfr_lesson_attendance": [
+          401,
+          null
+        ],
+        "staff_schools": [
+          401,
+          null
+        ],
+        "grades": [
+          401,
+          null
+        ],
+        "supervision_alerts": [
+          401,
+          null
+        ],
+        "supervision_responses": [
+          401,
+          null
+        ],
+        "announcements": [
+          200,
+          0
+        ],
+        "school_documents": [
+          200,
+          0
+        ]
+      }
+    },
+    {
+      "nome": "a_rpc_de_totais_responde_para_quem_tem_autoridade",
+      "verde": true,
+      "detalhe": [
+        "secretario_municipal:200",
+        "secretario_adjunto:200",
+        "gestor_autorizado:200",
+        "equipe_administrativa:200",
+        "education_supervisor:200"
+      ]
+    }
+  ],
+  "falhas": [],
+  "veredito": "P73_PEN38_ALCANCE_OK 14/0"
+}

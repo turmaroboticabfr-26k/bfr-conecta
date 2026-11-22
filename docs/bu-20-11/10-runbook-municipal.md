@@ -4,7 +4,8 @@ Peça do pacote BU (análise, compreensão e documentação completa do BFR Cone
 executado.** Ele existe porque as peças certificadas (preflights, candidatas, reversões, o aplicador e a porta
 de etiquetagem) já estavam todas escritas e separadas, e «deixar pronto» sem ordem de aplicação deixaria ao
 utilizador a parte irreversível. Todos os números abaixo são lidos dos artefactos nomeados, com o campo
-indicado, e não da memória de quem escreve.
+indicado, e não da memória de quem escreve. (Essa última frase é do instante em que o documento foi escrito, 20/11:
+entretanto as peças foram aplicadas, cada uma com a sua frase literal, e o estado vivo do banco lê-se em **§0D**.)
 
 A regra de autorização deste pacote é a mesma em todos os passos: **uma frase literal por passo, e a frase de
 um passo não autoriza o passo seguinte.** Um «ok» solto não autoriza escrita no banco nem publicação; está
@@ -94,7 +95,8 @@ dentro do invólucro `data-bfr-municipal-module` e 0 na página inteira, contra 
 módulo faz e nenhuma delas um dos quatro. Uma destas corridas tem positivo e negativo possível: quando a v138
 publicar o consumidor, `nenhum_dos_quatro_nomes_aparece_no_modulo_servido` fica vermelho, e é a frase deste
 parágrafo que se re-escreve — não a régua. O painel municipal continua a ser código de produto (§5, v138), e a
-etiquetagem continua à espera da decisão do §1. A PEN-41, não autorizada, continua por aplicar; o seu §3.2 só
+etiquetagem continua à espera da decisão do §1. A PEN-41, não autorizada, continua por aplicar — forma do instante
+em que esta secção foi escrita, e o dia em que ela passou a estar aplicada é o §0D/§2.5; o seu §3.2 só
 passa a ser obrigatório no dia em que ela o for.
 
 
@@ -140,7 +142,7 @@ que mudou no banco foi a etiqueta de município, e isso é o §1 decidido com re
 | Escolas com `municipality_id` | **0** | **4** | `evidence/p73-pen38-preflight-candidata-20-11e.json` → `numeros` / `evidence/p92-dados-municipais-c.json` → `depois.escolas` |
 | Municípios | 1 (só a fixture) | **2** (a fixture + `São Paulo`/SP) | mesmo par → `depois.municipios` |
 | Concessões ativas | 4 | **5** | mesmo par → `depois.grants` |
-| Policies alvo com cláusula de escola | 0 | **0** (PEN-41 continua por aplicar) | `scripts/pacote-municipal-confere-pecas.mjs` → `vivo` |
+| Policies alvo com cláusula de escola | 0 | **0** — forma deste instante (21/11); às 06:26:20Z de 22/11 as quatro passaram a ter, ver §0D e §2.5 | `scripts/pacote-municipal-confere-pecas.mjs` → `vivo` |
 
 A corrida tem três peças e não uma: `scripts/p92-dados-municipais.mjs` em `--preflight` deu primeiro
 `P92_DADOS_MUNICIPAIS_PREFLIGHT_VERMELHO 2 de 12` (`evidence/p92-dados-municipais-a.json`, 17:38:54Z), depois
@@ -170,6 +172,44 @@ tempo, um papel de escola — o censo recusa a sobreposição, e o que ela prova
 como conta municipal dedicada. A fixture `Sao Paulo (SM8 fixture — apagar)` é o outro lado do retrato, e continua
 viva porque as quatro concessões antigas apontam para ela (§5.2). A prova no browser das três corridas está em
 `evidence/p93-porta-mapa-vs-backend-a.json`, `-b.json` e `-c.json`.
+
+## 0D · Estado depois da aplicação de 22/11 — PEN-48 e PEN-41 aplicadas, nada mais deste pacote
+
+O pedido que abriu esta passada foi «aplique o que falta», e a escolha de escopo dada na única pergunta de custo foi
+**«Só os dois DDL (48 + 41)»**. As duas peças têm agora registo de aplicação com `escrito_no_banco:true` (§2.12,
+§2.5) e **a classe `pecas_sem_registo_de_aplicacao` do portão do pacote está vazia** — não porque eu a tenha
+declarado vazia, mas porque ela lê-se do cruzamento em disco: as candidatas `scripts/p7\d-pen\d+-ddl-candidata.sql`
+contra os registos `evidence/p73-municipal-aplicacao-PEN-*-*.json`. Nada mais foi tocado: sem seed do calendário
+(RM-5.2), sem nova versão do ar, sem publicação, sem mint, sem rotação de senha, sem `git push`.
+
+| Grandeza | Antes (medido 06:19:53Z–06:02:53Z) | Depois (06:05:46Z–06:27:33Z) | De onde se lê |
+|---|---|---|---|
+| Policies alvo com cláusula de escola (`students`, `classes`) | **0** de 4 | **4** de 4 | `evidence/pacote-municipal-pecas-20-11-22-11-reguas-derivadas.json` → `vivo.policies_alvo_com_escopo` |
+| Grau de `EXECUTE` de `anon` sobre `register_gate_checkin_v2` | `anon=X` na `proacl`; sonda de ar devolve `400 / P0001` (entra no corpo) | entrada `anon` **ausente**; sonda devolve `401 / 42501` (recusado pela ACL) | `evidence/p73-pen48-preflight-candidata-21-11-apl20261122T060246Zc.json` e `…-reversao-21-11-22-11-pen48pos.json` → `alvo.acl`, `sonda_de_ar` |
+| Censo de exposição anónima em `public` | 20 executáveis por `anon`, 16 por entrada explícita, 0 com ACL nula, sobre **163** | **19 / 15 / 0**, sobre os mesmos 163 | mesmos dois artefactos → `censo_de_exposicao_anonima` |
+| Quem lê a rede inteira de alunos e turmas pelo só cargo | `secretario_municipal` 848/27, `secretario_adjunto` 848/27, `director` 848/27, `secretary` 848/27, `gestor_autorizado` 848/27 | os dois **sem vínculo** em `staff_schools` passam a **0/0**; `director`, `secretary` e `gestor_autorizado` (com vínculo) mantêm 848/27 | `evidence/p73-pen38-alcance-por-concessao-20-11e-22-11-pen41antes-v2.json` e `…-22-11-pen41depois.json` → `achados.por_persona` |
+| Funções das candidatas no catálogo | 5 nomes | **5** — a PEN-41 não cria função alguma, aperta quatro policies | `evidence/pacote-municipal-pecas-20-11-22-11-*.json` → `aplicacao.nomes_esperados_no_banco` |
+| Dados | 6 escolas · 848 alunos · 27 turmas · 28 perfis · 6 vínculos; 5 concessões, 2 municípios, 4 escolas etiquetadas | **idêntico**, nas baselines dos dois registos e nas duas corridas de alcance | `baselines` dos dois registos; `estado_municipal` dos dois artefactos de alcance |
+| Shell servida | `0e22e78fe1e0ce929ec4717f86365ad9`, a v142 | **a mesma** — nenhuma publicação nesta passada, e é por isso que o par diário↔pasta se lê por derivação e não por pin | `…-22-11-pen41depois.json` → `servido` |
+
+**Os dois vermelhos que a autorização criou, e como se fecharam.** Nada aqui se amaciou: uma cláusula que promete
+«ainda não aplicado» morre no minuto em que a acção é autorizada, e a resposta é derivar o esperado de uma prova
+versionada em vez de baixar um número. Na PEN-48 foi a conferência de saída do próprio modo `reversao` (§2.12, com o
+vermelho preservado e os quatro mundos que agora provam os dois ramos). No portão do pacote foram duas cláusulas: a
+que prometia `0` policies com escopo passou a derivar o esperado de a PEN-41 ter registo versionado, e a que
+prometia «a classe sem registo não está vazia» passou a provar o **procurador** com um marcador inventurado, porque
+com a classe vazia nenhuma quantificação sobre ela tem positivo (§2.0). No instrumento de alcance foram três as
+cláusulas envelhecidas — o pin da shell à v137/v136, o esperado do censo de 20/11 e a igualdade do registo P92 — e
+as três passaram a ler-se de prova versionada, com a relação de **contido** no lugar da igualdade para que o
+crescimento legítimo não dê vermelho e a perda de uma linha certificada dê.
+
+**O que este fecho deixa em aberto, com o OK que cada um exige.** Etiquetagem das duas escolas fora de São Paulo
+(§1, decisão de produto, e sem ela «o painel municipal mostra números às duas contas municipais» não tem prova);
+RM-5.2 (seed de calendário, 365+2+12 linhas e um nome novo de função); a frente do `teacher` que o ciclo da v142
+escolheu **manter**; publicação de qualquer versão nova; mint; rotação de senhas; `git push`. Nenhum deles se lê
+das frases desta secção.
+
+
 
 ## 1 · A decisão que o banco não pode tomar por nós
 
@@ -289,14 +329,29 @@ declara também a classe com conjunto vazio — `pecas_sem_registo_de_aplicacao`
 `PEN-41` e `PEN-43`, ambas com
 `nomes_na_candidata: []` impresso: nenhuma das duas cria função alguma (a PEN-41 aperta policies, a PEN-43 revoga
 execução sobre nomes já criados pela PEN-39), por isso o vermelho delas não pode vir deste portão e sim, para a
-PEN-41, de `as_policies_alvo_existem_e_nenhuma_tem_escopo`, e para a PEN-43 do portão do §2.7 que exige que o `anon`
+PEN-41, de `as_policies_alvo_tem_escopo_conforme_o_registo_versionado_da_pen41`, e para a PEN-43 do portão do §2.7 que exige que o `anon`
 continue com `X` no catálogo vivo até a peça ser aplicada. **A classe é função do instante, não deste documento:** a
 lista de hoje lê-se cruzando os dois conjuntos em disco — as candidatas `scripts/p7\d-pen\d+-ddl-candidata.sql` contra
 os registos `evidence/p73-municipal-aplicacao-PEN-*-*.json` — e dá `PEN-41` e `PEN-48`: a PEN-43 saiu da lista às
 07:31:57Z de 21/11 com `P73_MUNICIPAL_APLICADO_E_CONFERIDO PEN-43` (§2.7), a PEN-44 entrou e saiu no mesmo bloco
 (§2.10) e a PEN-42 saiu às 01:41:56Z de 22/11 UTC (§2.11). O motivo de cada peça sem registo passou a ser
-frase deste documento, com marcador próprio, e não uma linha do script — ver as duas linhas `MOTIVO-SEM-REGISTO`
-abaixo (§2.5 e §2.12).
+frase deste documento, com marcador próprio, e não uma linha do script — as duas linhas `MOTIVO-SEM-REGISTO` que
+então estavam nos §2.5 e §2.12 são a forma que aquele instante tinha; abaixo já são blocos de registo de aplicação.
+
+**O mesmo cruzamento, re-lido às 06:26:20Z de 22/11, dá a classe vazia.** As duas peças que faltavam têm agora
+registo de aplicação com `escrito_no_banco:true` — `evidence/p73-municipal-aplicacao-PEN-48-20261122T060246Z.json`
+e `evidence/p73-municipal-aplicacao-PEN-41-20261122T062605Z.json` — e o parágrafo acima passa a ser o registo do
+instante em que foi escrito, não o estado vivo: as duas frases `MOTIVO-SEM-REGISTO` dos §2.5 e §2.12 viraram blocos
+de registo de aplicação, pelo mesmo motivo pelo qual as da PEN-43 e da PEN-44 viraram (§2.7, §2.10) — a marca é
+exigida só às peças sem registo. A classe imprime-se vazia (`pecas_sem_registo_de_aplicacao: []`) em vez de
+suprimida, e o procurador do portão passou a provar-se com um marcador inventurado dentro do próprio portão: dispara
+com a marca presente, não dispara com ela ausente. É que a cláusula que abria aquele portão era
+`PECAS_SEM_REGISTO.length > 0`, e o `> 0` era o mundo antes da acção: no instante em que a última peça sem registo
+foi escrita, a classe ficou vazia e o portão deixou de ter positivo possível. Não se apagou a promessa sobre a
+classe — tirou-se-lhe o dígito auto-referente. A outra cláusula que envelheceu no mesmo minuto é a que prometia
+`0` policies com escopo; o esperado passou a derivar-se de a PEN-41 ter ou não registo versionado (com registo:
+as quatro; sem registo: zero), e os dois mundos entram no portão como fixture, porque uma derivação que só conhece
+o mundo de hoje não pode apanhar o banco ter mudado sem registo nem o registo prometer o que o banco não tem.
 O segundo portão existe porque o documento 08 cita `scripts/bu4-digestao-para-documentacao-20-11.mjs`, que não
 existe — e não existe *por declaração*: a linha ao lado diz que é o nome do output, não o do script. A
 excepção não é uma lista de nomes tolerados; é a exigência de que a frase declarante continue no corpus, e foi
@@ -458,7 +513,9 @@ de seis, donde **verde era impossível**; foi a corrida que devia dar verde, log
 O vermelho dessa corrida está preservado em
 `evidence/pacote-municipal-pecas-20-11-sm28-14-VERMELHO-a-minha-clausula-nova-prometia-seis-colunas-onde-a-linha-tinha-sete-e-verde-era-impossivel.json`
 (56 659 B) e o verde que decide o fecho imprime `PACOTE_MUNICIPAL_OK 33/0` com `com_registo` de cinco peças e
-`sem_registo=["PEN-41","PEN-48"]`, que é a classe que o §2.0 promete ler do cruzamento em disco. Fica a regra de
+`sem_registo=["PEN-41","PEN-48"]` — **valor daquele instante** (21/11): desde 06:26:20Z de 22/11 o mesmo campo
+imprime a classe vazia, porque as duas peças têm registo (§2.5, §2.12) — que é a classe que o §2.0 promete ler do
+cruzamento em disco. Fica a regra de
 fôlego onde se cumpre: **o SQL aplicado entra no mesmo `git add` que o seu registo** — se a régua do índice apanha
 um verde largo demais, é porque o staging ainda não aconteceu.
 
@@ -555,7 +612,7 @@ esta candidata cria dois nomes que hoje ninguém chama; não muda uma linha de t
 «a aba mostrar números», o passo que mostra números é a publicação, não este.
 *Verde de fecho:* `P73_MUNICIPAL_APLICADO_E_CONFERIDO PEN-39` com `P73_PEN39_PREFLIGHT_VERDE_REVERSAO 11/0`.
 
-### 2.5 · PEN-41 — leitura de alunos e turmas pelo vínculo, não pelo cargo — NÃO APLICADA 20/11 (continua a pedir OK próprio; é a única das três que tira leitura de gente real)
+### 2.5 · PEN-41 — leitura de alunos e turmas pelo vínculo, não pelo cargo — APLICADA 22/11 (foi a única das três que tira leitura de gente real; o passo seguinte obrigatório, o §3.2, está corrido)
 
 ```
 node scripts/p73-municipal-aplica-ddl.mjs --peca PEN-41 --ok "APLICAR PEN-41 NO BANCO"
@@ -565,11 +622,49 @@ node scripts/p73-municipal-aplica-ddl.mjs --peca PEN-41 --ok "APLICAR PEN-41 NO 
 os 2 perfis `director` e os 2 `secretary` com vínculo em `staff_schools` mantêm 848 alunos / 27 turmas; **2
 perfis `secretary` sem vínculo passam de 848/27 para 0/0**. Este é o único passo do pacote que tira capacidade
 de leitura a utilizadores reais, e por isso o §3.2 é obrigatório depois dele.
-*Verde de fecho:* `P73_MUNICIPAL_APLICADO_E_CONFERIDO PEN-41` com `P73_PEN41_PREFLIGHT_VERDE_REVERSAO 13/0`.
 
-MOTIVO-SEM-REGISTO · PEN-41 — candidata escrita, preflight de entrada verde em modo candidata, mas nenhuma frase
-`APLICAR PEN-41 NO BANCO` foi dada: é a única das três que tira leitura a gente real, e o registo de aplicação só
-pode nascer de um OK próprio.
+**APLICADA ÀS 06:26:20Z DE 22/11, com registo e com o §3.2 corrido.** A frase dita na escolha de escopo foi
+**«Só os dois DDL (48 + 41)»**, e o degrau não autorizou mais nada: nem o seed do calendário (RM-5.2), nem a v143,
+nem publicação, nem mint, nem rotação de senha, nem `git push`. O que está em
+`evidence/p73-municipal-aplicacao-PEN-41-20261122T062605Z.json`: `ok_literal_usado` e `frase_certificada` ambos
+`APLICAR PEN-41 NO BANCO`, `escrito_no_banco:true`, candidata `scripts/p73-pen41-ddl-candidata.sql` 4 934 B
+`b3f928fe7aa210e65a64985a4b78c325`, reversão `scripts/p73-pen41-ddl-reversao.sql` 1 458 B
+`b16b4dc4eb4f16afed7a89649d5efc15`, preflight de entrada `P73_PEN41_PREFLIGHT_VERDE_CANDIDATA 14/0` e conferência
+de saída `P73_PEN41_PREFLIGHT_VERDE_REVERSAO 14/0` em 13 072 ms
+(`evidence/p73-pen41-preflight-reversao-20-11e-apl20261122T062605Zr.json`), baselines 6/848/27/28/6 idênticas
+antes e depois — a peça muda quem lê, não o que existe.
+
+**A primeira tentativa abortou, e o abort é prova, não ruído.** Às 06:20:32Z o aplicador devolveu
+`P73_MUNICIPAL_APLICACAO_ABORTADA PEN-41` com `erro_de_escrita` = `42601: syntax error at or near "(" LINE 43`
+e `escrito_no_banco:false`; as baselines dos dois lados são as mesmas, pelo que nada ficou a meio
+(`evidence/p73-municipal-aplicacao-PEN-41-20261122T062032Z-ABORTADA-42601-current_role-sem-aspas.json`, 2 970 B,
+`c2dbfa94b4257ea48e41a75750f6500d` — conservado com o defeito no nome, renomeado e não apagado, com o md5 medido
+igual dos dois lados do `mv`). A causa não se adivinhou: mediu-se em leitura que `current_role` é palavra
+reservada e que `current_role()::text` é rejeitado pelo parser enquanto `"current_role"()::text` é aceite, e o
+defeito estava nas duas linhas `director` da candidata **e** da reversão. O preflight não o podia ter apanhado: o
+seu `forma()` normaliza aspas e parêntesis redundantes, logo compara as duas formas como iguais — é a família
+«régua que não pode ter positivo». Em vez de confiar a parseabilidade à comparação, entrou um portão estático no
+preflight (`nenhuma_palavra_reservada_e_chamada_como_funcao_sem_aspas_duplas`, com os dois fixtures do próprio
+texto: a candidata aspada não dispara, e a mesma candidata com aspas arrancadas dispara), e o instrumento passou
+de 13/0 para 14/0 nos dois modos.
+
+*Verde de fecho real:* `P73_MUNICIPAL_APLICADO_E_CONFERIDO PEN-41` com `P73_PEN41_PREFLIGHT_VERDE_REVERSAO 14/0`, e
+o critério de fecho que a própria candidata declara — re-correr o instrumento de alcance — está cumprido:
+`P73_PEN38_ALCANCE_OK 14/0` em 48 330 ms às 06:27:33Z
+(`evidence/p73-pen38-alcance-por-concessao-20-11e-22-11-pen41depois.json`), com a corrida de entrada verde
+também guardada (`…-22-11-pen41antes-v2.json`, 43 160 ms, 06:19:53Z) e o vermelho que ela substituiu preservado
+(`…-22-11-pen41antes-VERMELHO.json`). O §3.2 bate com o medido, por persona: `director` 848/27 (mantido),
+`secretary` 848/27 (mantido, tem vínculo), `secretario_municipal` e `secretario_adjunto` **848/27 → 0/0** (os dois
+perfis `secretary` sem vínculo), e os `totals` da RPC municipal não mudam de valor entre as duas corridas. As
+duas ferramentas concordam sem se emprestarem números: o `populacao_afectada` do preflight diz `secretary` 4
+perfis, 2 com vínculo, **2 sem**, e são exactamente os dois que o censo de rede viu cair.
+
+**O que este verde levanta e não decide.** Os dois perfis que ficaram a zero continuam com autoridade municipal
+(`autoridade=true`, `mesa=true`), mas as suas concessões não resolvem escola nenhuma (`escolas=0/6`), pelo que a
+leitura de alunos e turmas deles tem de vir do caminho etiquetado (município → escolas → agregados da PEN-39) e
+não do cargo. Enquanto a etiquetagem do §1 não for decidida para as duas escolas fora de São Paulo, «o painel
+municipal mostra números a estas duas contas» é uma afirmação sem prova. Isto é produto, não DDL, e não se fecha
+com este OK.
 
 Re-medida às 23:43 UTC de 20/11, em leitura, com o `p73-pen41-preflight.mjs` da altura:
 `P73_PEN41_PREFLIGHT_VERDE_CANDIDATA 13/0` em 14 045 ms
@@ -1147,11 +1242,13 @@ revestimento — logo «`viva < revestimento`» quer dizer «a aplicação não 
 
 **O que este fecho não autoriza.** A PEN-42 está aplicada e nada aqui pede autorização para a re-aplicar — o pedido em
 aberto é outro: os graus do revestimento (§2.12, PEN-48), que precisam da sua frase literal `APLICAR PEN-48 NO BANCO`.
+(Registrado aqui porque este parágrafo é o estado ao fechar a PEN-42: essa frase foi dita na manhã seguinte, às
+06:02:46Z de 22/11, no degrau de escopo **«Só os dois DDL (48 + 41)»**, e o que a PEN-48 escreveu está em §2.12.)
 Publicar seja o que for, escrever no banco, reverter uma peça, `git push` e rotar senhas continuam a pedir cada um a
 sua frase; e nada disto toca no que a PEN-42 não é — o `search_path` dos predicados municipais e a porta de
 visibilidade pelo rpc ficam descritos em §5 e na tarefa aberta, não aqui.
 
-### 2.12 · PEN-48 — fechar ao `anon` o grau que a PEN-42 trouxe por default — CANDIDATA CERTIFICADA 21/11, NADA APLICADO
+### 2.12 · PEN-48 — fechar ao `anon` o grau que a PEN-42 trouxe por default — APLICADA 22/11, com um vermelho de régua no meio da conferência de saída
 
 **O achado, em uma linha lida do catálogo.** O revestimento que a PEN-42 criou (`register_gate_checkin_v2`, oid 32918)
 tem o grau de `EXECUTE` do pseudo-papel `anon` numa entrada explícita da `proacl`
@@ -1219,9 +1316,39 @@ PEN-43 já fechou as três funções municipais de leitura e a PEN-44 trata da f
 a `PUBLIC`; ficam nomes anónimo-executáveis, e a frase «a porta do anónimo está fechada» continua falsa enquanto for
 sobre a classe e verdadeira só sobre este nome.
 
-MOTIVO-SEM-REGISTO · PEN-48 — não existe registo de aplicação porque nenhuma frase `APLICAR PEN-48 NO BANCO` foi dita;
-a peça está na tabela `PECAS` do aplicador, o preflight está verde em modo candidata com 14/0, e a recusa do aplicador
-sem a frase está capturada em `evidence/p73-municipal-aplicador-recusa-frase-pen48-21-11.txt` com `node_exit=2`.
+**APLICADA ÀS 06:02:55Z DE 22/11** (corrida iniciada 06:02:46Z, que é o sufixo dos artefactos), com a mesma escolha
+de escopo da PEN-41: **«Só os dois DDL (48 + 41)»**. `evidence/p73-municipal-aplicacao-PEN-48-20261122T060246Z.json`:
+`ok_literal_usado` = `frase_certificada` = `APLICAR PEN-48 NO BANCO`, `escrito_no_banco:true`, candidata
+`scripts/p73-pen48-ddl-candidata.sql` 2 348 B `a0a83855cb5165fb617e2125753cd44e`, reversão
+`scripts/p73-pen48-ddl-reversao.sql` 794 B `969fe709bc7d275c62511481d64be1a6`, varredura do SQL com **1**
+`revoke_execute` e zero em todas as outras nove classes, baselines 6/848/27/28/6 idênticas, preflight de entrada
+`P73_PEN48_PREFLIGHT_VERDE_CANDIDATA 14/0`.
+
+**O veredito do registo diz `COM_CONFERENCIA_VERMELHA`, e é preciso ler o porquê — não é um vermelho vivo.**
+A conferência de saída, corrida às 06:03:03Z, deu `P73_PEN48_PREFLIGHT_VERMELHO_REVERSAO 1 de 14 portoes` com uma
+falha só: `o_revoke_por_nome_e_o_grau_efetivo_e_os_dois_mundos_que_o_negam_disparam`, obtido
+`[false,false,false,false]` contra um esperado `[true,false,false,false]`
+(`evidence/p73-pen48-preflight-reversao-21-11-apl20261122T060246Zr.json`, preservado). O banco já estava certo
+nessa altura, e lê-se no próprio artefacto vermelho: `alvo.acl` passou de
+`postgres=X/postgres,anon=X/postgres,authenticated=X/postgres,service_role=X/postgres` para a mesma lista **sem a
+entrada `anon`**, e a sonda de ar do revestimento mudou de `400 / P0001` (entrou no corpo, que é o mundo em que o
+`anon` pode executar) para `401 / 42501` (recusado pela ACL, que é o que a peça promete). O que faltava era
+positivo na régua: a sua primeira cláusula só conhecia o mundo do modo `candidata`, onde a entrada `anon` tem de
+estar presente, e por isso no minuto em que a frase foi dita ela passou a não poder nunca estar verde — a mesma
+família da cláusula de etiquetagem da PEN-38 (§2.1) e da «ainda não aplicado» do censo de dados (§0C). O conserto
+não amaciou o dígito: o grau efectivo passou a ler-se do pressuposto do modo (`grauEfetivo(acl, modo)`, que é o
+que a cláusula `o_estado_vivo_bate_com_o_que_o_modo_pressupoe` já declarava), e entraram os **quatro** mundos que
+provam que os dois ramos disparam — candidata-aberto, reversao-fechado e os dois ramos trocados. Re-corrido às
+06:05:46Z, o mesmo modo `reversao` deu `P73_PEN48_PREFLIGHT_VERDE_REVERSAO 14/0`
+(`evidence/p73-pen48-preflight-reversao-21-11-22-11-pen48pos.json`). O registo de aplicação conserva o veredito
+com que a corrida terminou: um registo de corrida não se re-escreve à posteriori, e foi por isso que o verde de
+saída ficou no artefacto próprio, citado aqui pelo nome.
+
+**O delta, medido nos dois modos do mesmo instrumento.** O censo do catálogo passa de `anon_pode 20 /
+anon_por_entrada 16 / acl_nula 0` (entrada, 06:02:53Z) para `19 / 15 / 0` (saída, 06:05:46Z) sobre o mesmo total de
+**163** funções de `public`. É exactamente um nome, e é a frase que sempre valeu: a porta do anónimo **não** está
+fechada como classe — ficam 19 nomes executáveis por `anon`, 15 deles por entrada explícita — e está fechada para
+`register_gate_checkin_v2`.
 
 **A recusa, medida em vez de suposta.** Depois de a peça entrar na tabela `PECAS`, a pergunta honesta era se o
 aplicador a deixaria aplicar por engano. Corre-se sem a frase e ele imprime

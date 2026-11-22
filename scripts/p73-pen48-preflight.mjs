@@ -206,10 +206,25 @@ gate('a_assinatura_do_revoke_casa_com_a_identidade_do_servidor_e_a_regua_tem_den
   [tiposPeca !== null && tiposPeca.length === 6, alvo !== null && assinaturaCorresponde(tiposPeca, alvo.ident),
     FIX_TIPO_TROCADO, FIX_NOMES_DE_PARAMETRO],
   [true, true, false, true]);
+// O grau efectivo lê-se contra o modo, porque os dois modos pressupõem mundos opostos: em `candidata` a peça
+// ainda não entrou e a entrada `anon` tem de estar no ACL; em `reversao` a peça está aplicada e a entrada tem de
+// ter desaparecido. A primeira versão desta cláusula só conhecia o primeiro mundo, por isso no instante em que a
+// peça foi autorizada e escrita (22/11, `evidence/p73-municipal-aplicacao-PEN-48-20261122T060246Z.json`) o portão
+// de saída deu vermelho sem positivo possível — o vermelho era da régua, não do banco, e está preservado em
+// `evidence/p73-pen48-preflight-reversao-21-11-apl20261122T060246Zr.json`. Não se amaciou o dígito: derivou-se o
+// esperado do pressuposto do modo, que a cláusula `o_estado_vivo_bate_com_o_que_o_modo_pressupoe` já declarava,
+// e acrescentaram-se os quatro mundos que provam que os dois ramos disparam.
+const grauEfetivo = (acl, modo) => ((modo === 'candidata') === temEntradaAnon(acl)) && !temPublicX(acl);
+const FIX_RAMO_CANDIDATA_ABERTO = grauEfetivo(MINUTA.alvo.acl, 'candidata');
+const FIX_RAMO_REVERSAO_FECHADO = grauEfetivo(W_JA_FECHADO.acl, 'reversao');
+const FIX_RAMO_TROCADO_ABERTO = grauEfetivo(MINUTA.alvo.acl, 'reversao');
+const FIX_RAMO_TROCADO_FECHADO = grauEfetivo(W_JA_FECHADO.acl, 'candidata');
+
 gate('o_revoke_por_nome_e_o_grau_efetivo_e_os_dois_mundos_que_o_negam_disparam',
-  [alvo !== null && temEntradaAnon(alvo.acl) && !temPublicX(alvo.acl), temEntradaAnon(W_PUBLIC.acl) && !temPublicX(W_PUBLIC.acl),
-    temEntradaAnon(W_NULA.acl) && !temPublicX(W_NULA.acl), temEntradaAnon(W_JA_FECHADO.acl)],
-  [true, false, false, false]);
+  [alvo !== null && grauEfetivo(alvo.acl, MODO), temEntradaAnon(W_PUBLIC.acl) && !temPublicX(W_PUBLIC.acl),
+    temEntradaAnon(W_NULA.acl) && !temPublicX(W_NULA.acl), temEntradaAnon(W_JA_FECHADO.acl),
+    FIX_RAMO_CANDIDATA_ABERTO, FIX_RAMO_REVERSAO_FECHADO, FIX_RAMO_TROCADO_ABERTO, FIX_RAMO_TROCADO_FECHADO],
+  [true, false, false, false, true, true, false, false]);
 gate('a_peca_fecha_somente_o_grau_que_a_viva_nao_tem_e_nao_alarga_a_casa',
   [papeisPeca.join(',') === 'anon',
     MODO === 'candidata' ? (alargamento !== null && alargamento.join(',') === 'anon')
@@ -305,9 +320,17 @@ const saida = {
     mundo_acl_com_public: { tem_anon: temEntradaAnon(W_PUBLIC.acl), tem_public_x: temPublicX(W_PUBLIC.acl) },
     mundo_acl_nula: { tem_anon: temEntradaAnon(W_NULA.acl) }, mundo_ja_fechado: { tem_anon: temEntradaAnon(W_JA_FECHADO.acl) },
     espelho_nome_trocado: FIX_NOME_TROCADO, espelho_papel_a_mais: FIX_PAPEL_A_MAIS, espelho_ok: FIX_ESPELHO_OK,
+    ramo_candidata_sobre_mundo_aberto: FIX_RAMO_CANDIDATA_ABERTO, ramo_reversao_sobre_mundo_fechado: FIX_RAMO_REVERSAO_FECHADO,
+    ramo_candidata_sobre_mundo_fechado_chumba: FIX_RAMO_TROCADO_FECHADO, ramo_reversao_sobre_mundo_aberto_chumba: FIX_RAMO_TROCADO_ABERTO,
     estrutura_sem_transacco: FIX_EST_SEM_TX },
   o_que_este_verde_nao_autoriza: 'nada: é leitura. Aplicar a candidata, reverter, publicar seja o que for, escrever no banco e git push continuam a pedir cada um a sua frase literal.',
-  o_que_este_verde_nao_prova: 'que o REVOKE está aplicado — prova que o grau está onde a peça o pode tocar e que a reversão é simétrica. Não fecha os outros nomes anónimo-executáveis do censo (a PEN-43 e a PEN-44 tratam das suas famílias), nem prova que o `front` com sessão continua a chamar a portaria: isso só se mede depois, com JWT e no browser.',
+  // Esta frase também envelhecia no dia da aplicação: em modo `reversao` o verde prova precisamente que o REVOKE
+  // está aplicado (a entrada `anon` sumiu do ACL e o ar responde 42501 antes do corpo). O que nenhum dos dois modos
+  // prova é o resto, e isso é igual nos dois.
+  o_que_este_verde_nao_prova: (MODO === 'candidata'
+    ? 'que o REVOKE está aplicado — este modo pressupõe o contrário: prova que o grau está onde a peça o pode tocar e que a reversão é simétrica. '
+    : 'que a peça é suficiente — este modo prova que o REVOKE está aplicado (ACL sem `anon` e ar a responder 42501 antes do corpo), não que bastava. ')
+    + 'Não fecha os outros nomes anónimo-executáveis do censo (a PEN-43 e a PEN-44 tratam das suas famílias), nem prova que o `front` com sessão continua a chamar a portaria: isso só se mede depois, com JWT e no browser.',
   portoes, falhas,
 };
 saida.veredito = falhas.length === 0

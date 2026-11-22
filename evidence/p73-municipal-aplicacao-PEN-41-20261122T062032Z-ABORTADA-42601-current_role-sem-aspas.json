@@ -1,0 +1,93 @@
+{
+  "programa": "scripts/p73-municipal-aplica-ddl.mjs",
+  "peca": "PEN-41",
+  "modo": "aplicacao",
+  "em": "2026-11-22T06:20:49.504Z",
+  "duracao_ms": 2408,
+  "aplicado": false,
+  "escrito_no_banco": false,
+  "ok_literal_usado": "APLICAR PEN-41 NO BANCO",
+  "frase_certificada": "APLICAR PEN-41 NO BANCO",
+  "frase_do_outro_modo_nao_autoriza": "REVERTER PEN-41 NO BANCO",
+  "sql_enviado": {
+    "nome": "candidata",
+    "caminho": "scripts/p73-pen41-ddl-candidata.sql",
+    "bytes": 4930,
+    "md5": "6259a3fca4ae688fb08d3c3f47e4072d"
+  },
+  "candidata": {
+    "caminho": "scripts/p73-pen41-ddl-candidata.sql",
+    "bytes": 4930,
+    "md5": "6259a3fca4ae688fb08d3c3f47e4072d"
+  },
+  "reversao": {
+    "caminho": "scripts/p73-pen41-ddl-reversao.sql",
+    "bytes": 1454,
+    "md5": "d4ea4c160df8324b9b1c5f06e5c9b251"
+  },
+  "preflight_candidata": {
+    "modo": "candidata",
+    "registo": "C:\\Users\\pcmac\\Documents\\Qoder\\2026-10-13\\28077d9a\\bfr-conecta\\evidence\\p73-pen41-preflight-candidata-20-11e-apl20261122T062032Zc.json",
+    "veredito": "P73_PEN41_PREFLIGHT_VERDE_CANDIDATA 13/0",
+    "codigo": 0
+  },
+  "preflight_reversao": {
+    "modo": "reversao",
+    "registo": null,
+    "veredito": null,
+    "codigo": "ABORTADO"
+  },
+  "sequencia": [
+    {
+      "ordem": 1,
+      "papel": "precondicao: a peca tem de estar por aplicar",
+      "modo": "candidata",
+      "registo": "C:\\Users\\pcmac\\Documents\\Qoder\\2026-10-13\\28077d9a\\bfr-conecta\\evidence\\p73-pen41-preflight-candidata-20-11e-apl20261122T062032Zc.json",
+      "veredito": "P73_PEN41_PREFLIGHT_VERDE_CANDIDATA 13/0",
+      "codigo": 0
+    },
+    {
+      "ordem": 2,
+      "papel": "conferencia de saida: o DDL produzido e o DDL certificado",
+      "modo": "reversao",
+      "registo": null,
+      "veredito": null,
+      "codigo": "ABORTADO"
+    }
+  ],
+  "varredura_do_sql": {
+    "drop_table": 0,
+    "truncate": 0,
+    "delete_from": 0,
+    "update_fora_de_funcao": 0,
+    "drop_schema_ou_database": 0,
+    "credencial": 0,
+    "drop_policy": 4,
+    "drop_function": 0,
+    "create_policy": 4,
+    "create_function": 0,
+    "create_or_replace_function": 0,
+    "grant_execute": 0,
+    "revoke_execute": 0
+  },
+  "baselines": {
+    "antes": {
+      "schools": 6,
+      "students": 848,
+      "classes": 27,
+      "profiles": 28,
+      "staff_schools": 6
+    },
+    "depois": {
+      "schools": 6,
+      "students": 848,
+      "classes": 27,
+      "profiles": 28,
+      "staff_schools": 6
+    },
+    "inalteradas": true
+  },
+  "erro_de_escrita": "sql HTTP 400: {\"message\":\"Failed to run sql query: ERROR:  42601: syntax error at or near \\\"(\\\"\\nLINE 43:   USING ((current_role()::text = 'director'::text)\\n                               ^\\n\"}",
+  "o_que_este_registo_nao_cobre": "a publicacao de qualquer versao do ar, o seed do calendario (RM-5.2) e a etiquetagem escola-municipio: cada um tem instrumento e OK proprios.",
+  "veredito": "P73_MUNICIPAL_APLICACAO_ABORTADA PEN-41"
+}
