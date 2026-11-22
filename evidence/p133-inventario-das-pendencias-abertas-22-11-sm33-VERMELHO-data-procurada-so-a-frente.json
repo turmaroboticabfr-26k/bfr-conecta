@@ -1,0 +1,832 @@
+{
+  "peca": "p133-inventario-das-pendencias-abertas.mjs",
+  "rotulo": "a",
+  "em": "2026-11-22T19:12:50.027Z",
+  "pergunta": "quais pendencias estao mesmo abertas, por que classe medida, e que OK cada uma exige?",
+  "metodo": "cinco celulas lidas com a predica do produtor (pipes escapados nao separam celulas, sete partes por split); classe = sinal mais recente por posicao, familias FECHO/ABERTO reutilizadas do FECHADO de scripts/censo-pendencias.mjs mais as abreviaturas da legenda da seccao 12; registro de aplicacao lido com o filtro do portao do pacote (modo=aplicacao e escrito_no_banco=true); seccao 13 contado pelo proprio censo versionado por execFile, nao por reimplementacao.",
+  "emissor_bytes": 13588,
+  "emissor_md5": "4a62c0d0",
+  "fontes": {
+    "ledger": "docs/roadmap-master.md",
+    "painel": "docs/roadmap-painel.html",
+    "registro_diretorio": "evidence",
+    "censo_rm": "scripts/censo-pendencias.mjs"
+  },
+  "legendas_lidas": {
+    "linha_114": "Legenda de status: **IF** = IMPLEMENTADO E FUNCIONANDO · **ICP** = IMPLEMENTADO COM PROBLEMAS · **PI** = PARCIALMENTE IMPLEMENTADO · **NI** = NÃO IMPLEMENTADO · **NT** = NECESSITA DE TESTES · **NM** = NECESSITA DE MELHORIAS · **PF** = PLANEJADO PARA O FUTURO.",
+    "prioridade": "Legenda de prioridade: **C** crítica · **A** alta · **M** média · **B** baixa."
+  },
+  "linhas_pen": 48,
+  "contagem_por_classe": {
+    "ABERTA": 41,
+    "FECHADA": 6,
+    "DIVERGENTE": 1
+  },
+  "abertas": [
+    {
+      "id": "PEN-01",
+      "pri": "M",
+      "vencedor": "frase Abert @0",
+      "ok": [
+        {
+          "exigido": "nenhum: medicao ou leitura minha",
+          "gatilho": "-"
+        }
+      ],
+      "registo": null
+    },
+    {
+      "id": "PEN-02",
+      "pri": "B",
+      "vencedor": "frase Abert @0",
+      "ok": [
+        {
+          "exigido": "nenhum: medicao ou leitura minha",
+          "gatilho": "-"
+        }
+      ],
+      "registo": null
+    },
+    {
+      "id": "PEN-03",
+      "pri": "B",
+      "vencedor": "frase Abert @0",
+      "ok": [
+        {
+          "exigido": "nenhum: medicao ou leitura minha",
+          "gatilho": "-"
+        }
+      ],
+      "registo": null
+    },
+    {
+      "id": "PEN-04",
+      "pri": "B",
+      "vencedor": "frase Abert @0",
+      "ok": [
+        {
+          "exigido": "nenhum: medicao ou leitura minha",
+          "gatilho": "-"
+        }
+      ],
+      "registo": null
+    },
+    {
+      "id": "PEN-05",
+      "pri": "M",
+      "vencedor": "frase Abert @0",
+      "ok": [
+        {
+          "exigido": "nenhum: medicao ou leitura minha",
+          "gatilho": "-"
+        }
+      ],
+      "registo": null
+    },
+    {
+      "id": "PEN-06",
+      "pri": "M",
+      "vencedor": "frase Abert @0",
+      "ok": [
+        {
+          "exigido": "nenhum: medicao ou leitura minha",
+          "gatilho": "-"
+        }
+      ],
+      "registo": null
+    },
+    {
+      "id": "PEN-07",
+      "pri": "B",
+      "vencedor": "abreviatura PF @0",
+      "ok": [
+        {
+          "exigido": "nenhum: medicao ou leitura minha",
+          "gatilho": "-"
+        }
+      ],
+      "registo": null
+    },
+    {
+      "id": "PEN-08",
+      "pri": "B",
+      "vencedor": "abreviatura PF @0",
+      "ok": [
+        {
+          "exigido": "nenhum: medicao ou leitura minha",
+          "gatilho": "-"
+        }
+      ],
+      "registo": null
+    },
+    {
+      "id": "PEN-09",
+      "pri": "B",
+      "vencedor": "abreviatura PF @0",
+      "ok": [
+        {
+          "exigido": "decisao humana (produto ou aparelho)",
+          "gatilho": "físic"
+        }
+      ],
+      "registo": null
+    },
+    {
+      "id": "PEN-10",
+      "pri": "B",
+      "vencedor": "abreviatura PF @0",
+      "ok": [
+        {
+          "exigido": "decisao humana (produto ou aparelho)",
+          "gatilho": "físic"
+        }
+      ],
+      "registo": null
+    },
+    {
+      "id": "PEN-11",
+      "pri": "M",
+      "vencedor": "frase por provar @137 2026-11-14",
+      "ok": [
+        {
+          "exigido": "OK de publicacao",
+          "gatilho": "publica"
+        },
+        {
+          "exigido": "decisao humana (produto ou aparelho)",
+          "gatilho": "aparelho"
+        }
+      ],
+      "registo": null
+    },
+    {
+      "id": "PEN-12",
+      "pri": "M",
+      "vencedor": "abreviatura NT @0",
+      "ok": [
+        {
+          "exigido": "nenhum: medicao ou leitura minha",
+          "gatilho": "-"
+        }
+      ],
+      "registo": null
+    },
+    {
+      "id": "PEN-13",
+      "pri": "A",
+      "vencedor": "frase abert @1087",
+      "ok": [
+        {
+          "exigido": "nenhum: medicao ou leitura minha",
+          "gatilho": "-"
+        }
+      ],
+      "registo": null
+    },
+    {
+      "id": "PEN-15",
+      "pri": "M",
+      "vencedor": "abreviatura NT @0",
+      "ok": [
+        {
+          "exigido": "nenhum: medicao ou leitura minha",
+          "gatilho": "-"
+        }
+      ],
+      "registo": null
+    },
+    {
+      "id": "PEN-16",
+      "pri": "A",
+      "vencedor": "abreviatura PF @0",
+      "ok": [
+        {
+          "exigido": "nenhum: medicao ou leitura minha",
+          "gatilho": "-"
+        }
+      ],
+      "registo": null
+    },
+    {
+      "id": "PEN-17",
+      "pri": "B",
+      "vencedor": "abreviatura PF @0",
+      "ok": [
+        {
+          "exigido": "nenhum: medicao ou leitura minha",
+          "gatilho": "-"
+        }
+      ],
+      "registo": null
+    },
+    {
+      "id": "PEN-18",
+      "pri": "M",
+      "vencedor": "frase Abert @0 2026-11-18",
+      "ok": [
+        {
+          "exigido": "nenhum: medicao ou leitura minha",
+          "gatilho": "-"
+        }
+      ],
+      "registo": null
+    },
+    {
+      "id": "PEN-19",
+      "pri": "B",
+      "vencedor": "frase Abert @0 2026-11-18",
+      "ok": [
+        {
+          "exigido": "OK de publicacao",
+          "gatilho": "publica"
+        }
+      ],
+      "registo": null
+    },
+    {
+      "id": "PEN-20",
+      "pri": "M",
+      "vencedor": "frase Parcial @19 2026-11-12",
+      "ok": [
+        {
+          "exigido": "nenhum: medicao ou leitura minha",
+          "gatilho": "-"
+        }
+      ],
+      "registo": null
+    },
+    {
+      "id": "PEN-21",
+      "pri": "B",
+      "vencedor": "frase Abert @0",
+      "ok": [
+        {
+          "exigido": "nenhum: medicao ou leitura minha",
+          "gatilho": "-"
+        }
+      ],
+      "registo": null
+    },
+    {
+      "id": "PEN-22",
+      "pri": "A",
+      "vencedor": "frase continua @1675",
+      "ok": [
+        {
+          "exigido": "OK de aplicacao de DDL",
+          "gatilho": "grant"
+        }
+      ],
+      "registo": null
+    },
+    {
+      "id": "PEN-23",
+      "pri": "A",
+      "vencedor": "frase continua @1841",
+      "ok": [
+        {
+          "exigido": "OK de aplicacao de DDL",
+          "gatilho": "DDL"
+        },
+        {
+          "exigido": "decisao humana (produto ou aparelho)",
+          "gatilho": "opção"
+        }
+      ],
+      "registo": null
+    },
+    {
+      "id": "PEN-26",
+      "pri": "A",
+      "vencedor": "frase continua @1734 2026-11-18",
+      "ok": [
+        {
+          "exigido": "OK de publicacao",
+          "gatilho": "publica"
+        },
+        {
+          "exigido": "decisao humana (produto ou aparelho)",
+          "gatilho": "aparelho"
+        }
+      ],
+      "registo": null
+    },
+    {
+      "id": "PEN-28",
+      "pri": "A",
+      "vencedor": "frase continua @778",
+      "ok": [
+        {
+          "exigido": "OK de publicacao",
+          "gatilho": "publica"
+        }
+      ],
+      "registo": null
+    },
+    {
+      "id": "PEN-29",
+      "pri": "M",
+      "vencedor": "frase continua @1909",
+      "ok": [
+        {
+          "exigido": "OK de aplicacao de DDL",
+          "gatilho": "DDL"
+        },
+        {
+          "exigido": "OK de mint ou rotacao de senha",
+          "gatilho": "senha"
+        }
+      ],
+      "registo": null
+    },
+    {
+      "id": "PEN-31",
+      "pri": "A",
+      "vencedor": "frase pendente @2616",
+      "ok": [
+        {
+          "exigido": "OK de publicacao",
+          "gatilho": "deploy"
+        }
+      ],
+      "registo": null
+    },
+    {
+      "id": "PEN-32",
+      "pri": "A",
+      "vencedor": "frase continua @1852",
+      "ok": [
+        {
+          "exigido": "OK de publicacao",
+          "gatilho": "publica"
+        },
+        {
+          "exigido": "OK de aplicacao de DDL",
+          "gatilho": "DDL"
+        },
+        {
+          "exigido": "OK de mint ou rotacao de senha",
+          "gatilho": "mint"
+        }
+      ],
+      "registo": null
+    },
+    {
+      "id": "PEN-33",
+      "pri": "M",
+      "vencedor": "frase pendente @2340 2026-11-18",
+      "ok": [
+        {
+          "exigido": "OK de publicacao",
+          "gatilho": "publica"
+        },
+        {
+          "exigido": "OK de aplicacao de DDL",
+          "gatilho": "DDL"
+        },
+        {
+          "exigido": "OK de mint ou rotacao de senha",
+          "gatilho": "mint"
+        }
+      ],
+      "registo": null
+    },
+    {
+      "id": "PEN-34",
+      "pri": "M",
+      "vencedor": "frase continua @1153",
+      "ok": [
+        {
+          "exigido": "OK de publicacao",
+          "gatilho": "publica"
+        },
+        {
+          "exigido": "OK de mint ou rotacao de senha",
+          "gatilho": "senha"
+        },
+        {
+          "exigido": "decisao humana (produto ou aparelho)",
+          "gatilho": "decis"
+        }
+      ],
+      "registo": null
+    },
+    {
+      "id": "PEN-35",
+      "pri": "B",
+      "vencedor": "frase pendente @3612 2026-11-21",
+      "ok": [
+        {
+          "exigido": "OK de publicacao",
+          "gatilho": "deploy"
+        },
+        {
+          "exigido": "OK de mint ou rotacao de senha",
+          "gatilho": "mint"
+        }
+      ],
+      "registo": null
+    },
+    {
+      "id": "PEN-37",
+      "pri": "A",
+      "vencedor": "frase continua @2195 2026-01-00",
+      "ok": [
+        {
+          "exigido": "OK de aplicacao de DDL",
+          "gatilho": "grant"
+        }
+      ],
+      "registo": null
+    },
+    {
+      "id": "PEN-38",
+      "pri": "A",
+      "vencedor": "frase abert @6169",
+      "ok": [
+        {
+          "exigido": "OK de aplicacao de DDL",
+          "gatilho": "polic"
+        },
+        {
+          "exigido": "OK de mint ou rotacao de senha",
+          "gatilho": "senha"
+        },
+        {
+          "exigido": "decisao humana (produto ou aparelho)",
+          "gatilho": "decis"
+        }
+      ],
+      "registo": "p73-municipal-aplicacao-PEN-38-20261120T224555Z.json"
+    },
+    {
+      "id": "PEN-39",
+      "pri": "M",
+      "vencedor": "frase ainda não @6860",
+      "ok": [
+        {
+          "exigido": "OK de publicacao",
+          "gatilho": "publica"
+        },
+        {
+          "exigido": "OK de aplicacao de DDL",
+          "gatilho": "REVOKE"
+        },
+        {
+          "exigido": "decisao humana (produto ou aparelho)",
+          "gatilho": "decis"
+        }
+      ],
+      "registo": "p73-municipal-aplicacao-PEN-39-20261120T225656Z.json"
+    },
+    {
+      "id": "PEN-40",
+      "pri": "A",
+      "vencedor": "frase continua @7894",
+      "ok": [
+        {
+          "exigido": "OK de publicacao",
+          "gatilho": "publica"
+        }
+      ],
+      "registo": null
+    },
+    {
+      "id": "PEN-41",
+      "pri": "A",
+      "vencedor": "frase continua @3721",
+      "ok": [
+        {
+          "exigido": "OK de aplicacao de DDL",
+          "gatilho": "polic"
+        },
+        {
+          "exigido": "decisao humana (produto ou aparelho)",
+          "gatilho": "escolh"
+        }
+      ],
+      "registo": "p73-municipal-aplicacao-PEN-41-20261122T062605Z.json"
+    },
+    {
+      "id": "PEN-42",
+      "pri": "A",
+      "vencedor": "frase continua @7434",
+      "ok": [
+        {
+          "exigido": "OK de publicacao",
+          "gatilho": "Publica"
+        },
+        {
+          "exigido": "OK de aplicacao de DDL",
+          "gatilho": "APLICAR"
+        },
+        {
+          "exigido": "decisao humana (produto ou aparelho)",
+          "gatilho": "escolh"
+        }
+      ],
+      "registo": "p73-municipal-aplicacao-PEN-42-20261122T014151Z.json"
+    },
+    {
+      "id": "PEN-44",
+      "pri": "M",
+      "vencedor": "frase continua @12741",
+      "ok": [
+        {
+          "exigido": "OK de publicacao",
+          "gatilho": "publica"
+        },
+        {
+          "exigido": "OK de aplicacao de DDL",
+          "gatilho": "GRANT"
+        },
+        {
+          "exigido": "OK de mint ou rotacao de senha",
+          "gatilho": "senha"
+        },
+        {
+          "exigido": "decisao humana (produto ou aparelho)",
+          "gatilho": "escolh"
+        }
+      ],
+      "registo": "p73-municipal-aplicacao-PEN-44-20261121T073215Z.json"
+    },
+    {
+      "id": "PEN-45",
+      "pri": "M",
+      "vencedor": "frase Abert @1227",
+      "ok": [
+        {
+          "exigido": "OK de publicacao",
+          "gatilho": "publica"
+        },
+        {
+          "exigido": "decisao humana (produto ou aparelho)",
+          "gatilho": "opção"
+        }
+      ],
+      "registo": null
+    },
+    {
+      "id": "PEN-46",
+      "pri": "M",
+      "vencedor": "frase continua @2676",
+      "ok": [
+        {
+          "exigido": "OK de publicacao",
+          "gatilho": "publica"
+        },
+        {
+          "exigido": "OK de aplicacao de DDL",
+          "gatilho": "DDL"
+        }
+      ],
+      "registo": null
+    },
+    {
+      "id": "PEN-47",
+      "pri": "B",
+      "vencedor": "frase abert @1559",
+      "ok": [
+        {
+          "exigido": "OK de publicacao",
+          "gatilho": "publica"
+        },
+        {
+          "exigido": "OK de aplicacao de DDL",
+          "gatilho": "polic"
+        },
+        {
+          "exigido": "decisao humana (produto ou aparelho)",
+          "gatilho": "decis"
+        }
+      ],
+      "registo": null
+    },
+    {
+      "id": "PEN-48",
+      "pri": "B",
+      "vencedor": "frase abert @6413",
+      "ok": [
+        {
+          "exigido": "OK de publicacao",
+          "gatilho": "publica"
+        },
+        {
+          "exigido": "OK de aplicacao de DDL",
+          "gatilho": "REVOKE"
+        },
+        {
+          "exigido": "OK de mint ou rotacao de senha",
+          "gatilho": "mint"
+        }
+      ],
+      "registo": "p73-municipal-aplicacao-PEN-48-20261122T060246Z.json"
+    }
+  ],
+  "divergentes": [
+    {
+      "id": "PEN-25",
+      "sinais": 2
+    }
+  ],
+  "sem_sinal": [],
+  "fora_de_forma": [],
+  "registro": {
+    "nome_varridos": 8,
+    "com_aplicacao": [
+      "PEN-38",
+      "PEN-39",
+      "PEN-41",
+      "PEN-42",
+      "PEN-43",
+      "PEN-44",
+      "PEN-48"
+    ],
+    "descartados": [
+      "p73-municipal-aplicacao-PEN-41-20261122T062032Z-ABORTADA-42601-current_role-sem-aspas.json"
+    ],
+    "registos": {
+      "PEN-38": {
+        "registo": "p73-municipal-aplicacao-PEN-38-20261120T224555Z.json",
+        "em": "2026-11-20T22:46:05.047Z",
+        "ok_literal_usado": "APLICAR PEN-38 NO BANCO",
+        "preflight": 1
+      },
+      "PEN-39": {
+        "registo": "p73-municipal-aplicacao-PEN-39-20261120T225656Z.json",
+        "em": "2026-11-20T22:57:04.508Z",
+        "ok_literal_usado": "APLICAR PEN-39 NO BANCO",
+        "preflight": 0
+      },
+      "PEN-41": {
+        "registo": "p73-municipal-aplicacao-PEN-41-20261122T062605Z.json",
+        "em": "2026-11-22T06:26:20.138Z",
+        "ok_literal_usado": "APLICAR PEN-41 NO BANCO",
+        "preflight": 0
+      },
+      "PEN-42": {
+        "registo": "p73-municipal-aplicacao-PEN-42-20261122T014151Z.json",
+        "em": "2026-11-22T01:41:56.784Z",
+        "ok_literal_usado": "APLICAR PEN-42 NO BANCO",
+        "preflight": 0
+      },
+      "PEN-43": {
+        "registo": "p73-municipal-aplicacao-PEN-43-20261121T073148Z.json",
+        "em": "2026-11-21T07:31:57.606Z",
+        "ok_literal_usado": "APLICAR PEN-43 NO BANCO",
+        "preflight": 0
+      },
+      "PEN-44": {
+        "registo": "p73-municipal-aplicacao-PEN-44-20261121T073215Z.json",
+        "em": "2026-11-21T07:32:24.801Z",
+        "ok_literal_usado": "APLICAR PEN-44 NO BANCO",
+        "preflight": 1
+      },
+      "PEN-48": {
+        "registo": "p73-municipal-aplicacao-PEN-48-20261122T060246Z.json",
+        "em": "2026-11-22T06:02:55.117Z",
+        "ok_literal_usado": "APLICAR PEN-48 NO BANCO",
+        "preflight": 1
+      }
+    }
+  },
+  "painel": {
+    "pen_do_painel": 48,
+    "pen_do_paragrafo_15": 48,
+    "linhas_lidas": 48
+  },
+  "rm_13": {
+    "do_produtor": 45,
+    "lidas_aqui": 45,
+    "abertas_pelo_produtor": 35,
+    "censo_falhou": null
+  },
+  "contador_do_ledger": {
+    "linhas_pen": 48,
+    "ids_unicos": 48
+  },
+  "vocabulario_de_ok_usado": [
+    "APLICAR PEN-38 NO BANCO",
+    "APLICAR PEN-39 NO BANCO",
+    "APLICAR PEN-41 NO BANCO",
+    "APLICAR PEN-42 NO BANCO",
+    "APLICAR PEN-43 NO BANCO",
+    "APLICAR PEN-44 NO BANCO",
+    "APLICAR PEN-48 NO BANCO"
+  ],
+  "fixtures": {
+    "definidas": 5,
+    "disparados": {
+      "ABERTA": 2,
+      "FECHADA": 2,
+      "DIVERGENTE": 0
+    },
+    "falhas": [
+      {
+        "esperado": "DIVERGENTE",
+        "obtido": "ABERTA"
+      }
+    ]
+  },
+  "abertas_com_registo": [
+    "PEN-38",
+    "PEN-39",
+    "PEN-41",
+    "PEN-42",
+    "PEN-44",
+    "PEN-48"
+  ],
+  "portoes": {
+    "total": 8,
+    "falhas": 1,
+    "lista": [
+      {
+        "nome": "todas_as_linhas_pen_tem_cinco_celulas",
+        "obtido": 0,
+        "esperado": 0,
+        "ok": true
+      },
+      {
+        "nome": "nenhuma_linha_fica_sem_classe",
+        "obtido": 0,
+        "esperado": 0,
+        "ok": true
+      },
+      {
+        "nome": "as_cinco_classes_do_classificador_disparam_em_fixture",
+        "obtido": 1,
+        "esperado": 0,
+        "ok": false
+      },
+      {
+        "nome": "nenhum_registo_de_aplicacao_aponta_para_pen_inexistente",
+        "obtido": 0,
+        "esperado": 0,
+        "ok": true
+      },
+      {
+        "nome": "o_censo_do_painel_bate_com_o_paragrafo_15_e_com_as_linhas_lidas",
+        "obtido": [
+          48,
+          48,
+          48
+        ],
+        "esperado": [
+          48,
+          48,
+          48
+        ],
+        "ok": true
+      },
+      {
+        "nome": "o_produtor_e_a_minha_leitura_do_seccao_13_contam_as_mesmas_linhas_rm",
+        "obtido": [
+          45,
+          45
+        ],
+        "esperado": [
+          45,
+          45
+        ],
+        "ok": true
+      },
+      {
+        "nome": "o_meu_censo_bate_com_o_contador_versionado_do_ledger",
+        "obtido": [
+          48,
+          48
+        ],
+        "esperado": [
+          48,
+          48
+        ],
+        "ok": true
+      },
+      {
+        "nome": "todo_registo_de_aplicacao_traz_a_frase_de_ok_com_que_foi_autorizado",
+        "obtido": [
+          7,
+          7
+        ],
+        "esperado": [
+          7,
+          7
+        ],
+        "ok": true
+      }
+    ]
+  },
+  "o_que_prova": [
+    "que o ledger tem N linhas PEN de cinco celulas e em que classe cada celula cai pelo sinal mais recente, com a posicao e a data desse sinal",
+    "quais dessas linhas tem registo de aplicacao no banco em disco e com que frase de OK",
+    "que as tres contagens de pendencias (painel, paragrafo 15, linhas lidas) batem ou divergem",
+    "que o classificador dispara nas cinco formas pedidas em fixture"
+  ],
+  "o_que_NAO_prova": [
+    "que a classe do ledger seja o estado vivo do produto: a fonte e prosa versionada, nao o ar",
+    "que o OK exigido por cada linha seja suficiente: a coluna e a assinatura lexical do texto, a frase concreta pertence ao utilizador",
+    "que as linhas RM-x.y abertas estejam bem ou mal: o censo so conta e classifica por sinais do texto"
+  ],
+  "veredito": "P133_INVENTARIO_VERMELHO 8/1 · esperanca=medir"
+}

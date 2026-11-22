@@ -1,0 +1,28 @@
+celulas_de_cinco_celulas=48
+legenda_status=["IF","ICP","PI","NI","NT","NM","PF"] legenda_prioridade=["C","A","M","B"]
+abreviatura_da_legenda: ocorrencias=10 no_inicio=9 dentro=1 por_codigo={"PF":6,"ICP":2,"NT":2}
+   dentro: PEN-13 @37 ## Medida 12/11 (RM-1.2, 57 portões/0); ICP por RM12-A1 — o estado `pending` nunca é escri
+abreviatura_IF_no_corpus_linhas=0 (por isso so dispara em fixture)
+estado_no_inicio: linhas=29 ids=01,02,03,04,05,06,18,19,20,21,24,26,28,29,30,32,36,37,38,39,40,41,42,43,44,45,46,47,48
+estado_com_data: ocorrencias=15 no_inicio=14 dentro=1
+   dentro: PEN-34 @679 ## ia sobre `/firebase-messaging-sw.js` volta a ser argumento. Criada 14/11 ao fechar o RM-6.9, com medição própria antes d
+palavra_solta_abert_nao_apanhada_por_familia_de_estado: ocorrencias=3
+   PEN-13 @1087 ## utenticação trazia papel. O que fica em aberto é o que RM12-A1 realmente queria 
+   PEN-25 @1152 ## as e pede OK próprio.** O que estava em aberto até aqui: **Causa medida 12/11** 
+   PEN-34 @541 ## Esta linha é o registo da decisão; a re-abertura só se justifica com um pedido n
+fecho_datado: linhas=10 ids=14,24,25,26,27,30,31,32,33,34
+continua_estado: linhas=9 ids=11,24,29,33,35,39,41,46,48
+nao_se_fecha: linhas=2 ids=23,48
+por_provar: linhas=2 ids=11,42
+prioridades_fora_da_legenda={}
+celulas_sem_declaracao_medida=10
+   PEN-07 [PF — RM-5.1]
+   PEN-08 [PF — RM-5.2]
+   PEN-09 [PF — RM-5.3]
+   PEN-10 [PF — RM-5.3]
+   PEN-12 [NT — RM-2.7]
+   PEN-13 [Medida 12/11 (RM-1.2, 57 portões/0); ICP por RM12-A1 — o est]
+   PEN-15 [NT — coberto em parte pelo C7; RM-2.6]
+   PEN-16 [PF — RM-3.2/RM-3.3]
+   PEN-17 [PF — RM-3.4]
+   PEN-22 [Portão de re-verificação criado 12/11 (`scripts/fin2-higiene]
