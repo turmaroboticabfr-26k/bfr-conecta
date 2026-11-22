@@ -1,0 +1,66 @@
+VERDE  320px: o boot abriu no shell do papel
+VERDE  320px: a app declarou-se em apresentação mobile
+VERDE  320px: a barra inferior tem botões com caixa
+VERDE  320px: 0 botões da barra com alvo de toque < 44 px
+VERDE  320px: o modal de primeiro acesso fecha com um toque real
+VERDE  320px: a gaveta abre com um toque real
+  320px/notificacoes: bfrNotificationsView 400c 3235ms ctl=3 tap<0 fonte<0 ativa=notificacoes
+  320px/conteudos: bfrContentHubView 1021c 3089ms ctl=14 tap<0 fonte<3 ativa=conteudos
+  320px/jogos-escolares: schoolGamesView 220c 2909ms ctl=2 tap<0 fonte<0 ativa=jogos-escolares
+VERDE  320px: chegou ao shell e abriu seções a toque
+VERDE  320px: 0 toques que não mudaram a seção ativa
+VERMELHO  320px: 0 seções do papel sem rota tocável
+VERDE  320px: 0 links de navegação fora do mapa do papel
+VERDE  320px: 0 rotas que não abriram painel
+VERDE  320px: 0 painéis vazios entre as 7 abertas
+VERDE  320px: 0 seções cujo conteúdo não assenta em 6 s
+VERDE  320px: 0 estouro horizontal
+VERDE  320px: 0 erros de consola de aplicação
+VERDE  320px: toda a seção-diálogo que tapa a barra tem saída tocável
+VERDE  360px: o boot abriu no shell do papel
+VERDE  360px: a app declarou-se em apresentação mobile
+VERDE  360px: a barra inferior tem botões com caixa
+VERDE  360px: 0 botões da barra com alvo de toque < 44 px
+VERDE  360px: o modal de primeiro acesso fecha com um toque real
+VERDE  360px: a gaveta abre com um toque real
+  360px/notificacoes: bfrNotificationsView 400c 3445ms ctl=3 tap<0 fonte<0 ativa=notificacoes
+  360px/conteudos: bfrContentHubView 1021c 2866ms ctl=14 tap<0 fonte<3 ativa=conteudos
+  360px/jogos-escolares: schoolGamesView 220c 2928ms ctl=2 tap<0 fonte<0 ativa=jogos-escolares
+VERDE  360px: chegou ao shell e abriu seções a toque
+VERDE  360px: 0 toques que não mudaram a seção ativa
+VERMELHO  360px: 0 seções do papel sem rota tocável
+VERDE  360px: 0 links de navegação fora do mapa do papel
+VERDE  360px: 0 rotas que não abriram painel
+VERDE  360px: 0 painéis vazios entre as 7 abertas
+VERDE  360px: 0 seções cujo conteúdo não assenta em 6 s
+VERDE  360px: 0 estouro horizontal
+VERDE  360px: 0 erros de consola de aplicação
+VERDE  360px: toda a seção-diálogo que tapa a barra tem saída tocável
+VERDE  375px: o boot abriu no shell do papel
+VERDE  375px: a app declarou-se em apresentação mobile
+VERDE  375px: a barra inferior tem botões com caixa
+VERDE  375px: 0 botões da barra com alvo de toque < 44 px
+VERDE  375px: o modal de primeiro acesso fecha com um toque real
+VERDE  375px: a gaveta abre com um toque real
+  375px/notificacoes: bfrNotificationsView 400c 2574ms ctl=3 tap<0 fonte<0 ativa=notificacoes
+  375px/conteudos: bfrContentHubView 1021c 3099ms ctl=14 tap<0 fonte<3 ativa=conteudos
+  375px/jogos-escolares: schoolGamesView 865c 4960ms ctl=8 tap<0 fonte<0 ativa=jogos-escolares
+VERDE  375px: chegou ao shell e abriu seções a toque
+VERDE  375px: 0 toques que não mudaram a seção ativa
+VERMELHO  375px: 0 seções do papel sem rota tocável
+VERDE  375px: 0 links de navegação fora do mapa do papel
+VERDE  375px: 0 rotas que não abriram painel
+VERDE  375px: 0 painéis vazios entre as 7 abertas
+VERDE  375px: 0 seções cujo conteúdo não assenta em 6 s
+VERDE  375px: 0 estouro horizontal
+VERDE  375px: 0 erros de consola de aplicação
+VERDE  375px: toda a seção-diálogo que tapa a barra tem saída tocável
+
+PORTÕES: 48  FALHAS: 3
+  VERMELHO: 320px: 0 seções do papel sem rota tocável | dado=["escola-historia"] | esperado=[]
+  VERMELHO: 360px: 0 seções do papel sem rota tocável | dado=["escola-historia"] | esperado=[]
+  VERMELHO: 375px: 0 seções do papel sem rota tocável | dado=["escola-historia"] | esperado=[]
+DIAGNOSTICO: a barra de baixo tem 5 rotas e a gaveta 7; toque real abriu 21 painéis nas 3 larguras; alvos <44px na barra: 320px=0, 360px=0, 375px=0
+AH7b_MOBILE_COM_DEFEITOS · ah2-mobile2-21-11-pen40-a.json
+PAROU: fecho normal
+node_exit=0

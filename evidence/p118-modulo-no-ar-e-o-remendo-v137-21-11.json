@@ -1,0 +1,29 @@
+{
+  "programa": "scripts/p118-modulo-no-ar-e-o-remendo-v137.mjs",
+  "em": "2026-11-21T23:18:42.727Z",
+  "duracao_ms": 916,
+  "metodo": "Fetch anonimo do shell; o nome do asset e lido do <script src> do proprio shell (nunca dactilografado); o bytes do asset servido confrontados com a saida versionada da candidata v137 e com o moduleMd5 do certificado da v142.",
+  "asset": {
+    "url": "https://bfr-conecta.turmaroboticabfr.workers.dev/bfr-responsive-presentation.js?v=14",
+    "http": 200,
+    "bytes": 52532,
+    "md5": "b83b4c2666fc909d50a358b86b99de05"
+  },
+  "candidata_v137": {
+    "f": "bfr-candidata-v137-remendo-pen40/bfr-responsive-presentation.js",
+    "bytes": 52532,
+    "md5": "b83b4c2666fc909d50a358b86b99de05"
+  },
+  "certificado_v142": {
+    "moduleMd5": "b83b4c2666fc909d50a358b86b99de05",
+    "htmlMd5": "0e22e78fe1e0ce929ec4717f86365ad9",
+    "cacheLabel": "bfr-conecta-v142"
+  },
+  "iguais": {
+    "ar_e_candidata_v137": true,
+    "ar_e_moduleMd5_do_certificado": true,
+    "candidata_e_certificado": true
+  },
+  "o_que_nao_ve": "Nao ve se o comportamento do ar corresponde ao remendo (isso e a corrida do ah2-mobile2 em P114); ve apenas identidade de bytes.",
+  "veredito": "P118_MODULO_NO_AR_E_O_REMENDO_V137_OK"
+}

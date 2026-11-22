@@ -1,0 +1,30 @@
+{
+  "programa": "scripts/p119-agregados-no-ar.mjs",
+  "em": "2026-11-21T23:20:30.451Z",
+  "duracao_ms": 486,
+  "metodo": "Fetch anónimo do shell; os nomes dos agregados leem-se dos CREATE FUNCTION do DDL candidato da PEN-39 (nunca dactilografados); contagem de ocorrências no byte servido, com a variante `.rpc(nome)` contada à parte porque uma menção em string de comentário não é chamada.",
+  "ar": {
+    "url": "https://bfr-conecta.turmaroboticabfr.workers.dev/",
+    "bytes": 3556664,
+    "md5": "0e22e78fe1e0ce929ec4717f86365ad9",
+    "bate_com_certificado_v142": true
+  },
+  "nomes_lidos_do_ddl": [
+    "bfr_municipal_municipio_totais",
+    "bfr_municipal_distribuicao_por_zona"
+  ],
+  "por_nome": [
+    {
+      "nome": "bfr_municipal_municipio_totais",
+      "ocorrencias_no_byte": 1,
+      "chamada_rpc": 0
+    },
+    {
+      "nome": "bfr_municipal_distribuicao_por_zona",
+      "ocorrencias_no_byte": 1,
+      "chamada_rpc": 0
+    }
+  ],
+  "o_que_nao_ve": "Não vê se um agregado é chamado por via dinâmica (nome construído em tempo de execução) nem se uma função existe no catálogo — para o catálogo há o preflight da PEN-39.",
+  "veredito": "P119_BYTE_AVALIADO_E_O_CERTIFICADO_V142 · chamadas=0 de 2 nomes"
+}

@@ -1,0 +1,277 @@
+{
+  "programa": "scripts/p116-consistencia-de-versao.mjs",
+  "em": "2026-11-21T23:03:32.522Z",
+  "duracao_ms": 867,
+  "metodo": "Fetch anónimo duplicado do shell; diários lidos de `git ls-files` e ordenados pelo número medido no nome; a cadeia de `versao_anterior_vX` confrontada com os `version_id` dos próprios diários; as contagens vêm de chamar `scripts/ah1-cuenta-pen.mjs`, nunca de contar linhas aqui; painel e diário de corrida recortados por uma prédica por linha declarante, com o texto extraído impresso ao lado do veredicto.",
+  "ar": {
+    "url": "https://bfr-conecta.turmaroboticabfr.workers.dev/",
+    "leituras": [
+      {
+        "i": 1,
+        "http": 200,
+        "bytes": 3556664,
+        "md5": "0e22e78fe1e0ce929ec4717f86365ad9"
+      },
+      {
+        "i": 2,
+        "http": 200,
+        "bytes": 3556664,
+        "md5": "0e22e78fe1e0ce929ec4717f86365ad9"
+      }
+    ],
+    "diario": "v142",
+    "data_do_diario": "2026-11-21"
+  },
+  "diarios_no_indice": [
+    "v117",
+    "v119",
+    "v120",
+    "v121",
+    "v122",
+    "v133",
+    "v134",
+    "v135",
+    "v136",
+    "v140",
+    "v141",
+    "v142"
+  ],
+  "cadeia": {
+    "arestas": [
+      {
+        "de": "v135",
+        "para": "v134",
+        "id_declrado": "8600fc3d",
+        "id_do_diario_destino": "8600fc3d",
+        "ok": true
+      },
+      {
+        "de": "v136",
+        "para": "v135",
+        "id_declrado": "f5c157f2",
+        "id_do_diario_destino": "f5c157f2",
+        "ok": true
+      },
+      {
+        "de": "v140",
+        "para": "v136",
+        "id_declrado": "1598137c",
+        "id_do_diario_destino": "1598137c",
+        "ok": true
+      },
+      {
+        "de": "v141",
+        "para": "v140",
+        "id_declrado": "208d5bff",
+        "id_do_diario_destino": "208d5bff",
+        "ok": true
+      },
+      {
+        "de": "v142",
+        "para": "v141",
+        "id_declrado": "678bba24",
+        "id_do_diario_destino": "678bba24",
+        "ok": true
+      }
+    ],
+    "rotas": []
+  },
+  "emissor": {
+    "linhas": 46,
+    "A": 17,
+    "M": 18,
+    "B": 11,
+    "soma": 46,
+    "fora_de_forma": "nenhuma",
+    "unicas": 46,
+    "maior": 46
+  },
+  "painel": {
+    "itens_extraido": null,
+    "maior_extraido": null,
+    "linha_cabecalho": "NAO_CASEI",
+    "ALTA": 17,
+    "MEDIA": 14,
+    "BAIXA": 11
+  },
+  "diario_de_corrida": {
+    "blocos_SM": 28,
+    "primeiro": "**SM.0. Entrada e alcance deste bloco.** O briefing anexado («AUDITORIA, CORREÇÃO E IMPLEM",
+    "ultimo": "**SM.27. A RM-5.2 medida até aos bytes e convertida em desenho de conteúdo com uma régua nova versionada; a portaria vis",
+    "que_nomeiam_a_versao_mais_nova": []
+  },
+  "o_que_esta_regua_ve_e_nao_ve": "Vê as três relações que a casa não medía: ar↔diário, painel↔emissor, diário de corrida↔versão publicada. Não vê se o conteúdo do bloco SM está certo, se o painel descreve bem cada cartão, nem se um `deploy` do Cloudflare tem diário — isso continua no `pacote-municipal-confere-pecas.mjs` e na leitura da lista de deployments. Um KPI do painel que não tenha emissor (o de «versões publicadas») não é governado por esta régua, porque eu não tenho como derivar o esperado dele sem chamar a API de administração.",
+  "portoes": [
+    {
+      "nome": "o_ar_servido_duas_vezes_seguidas_e_igual_a_si_mesmo_e_ao_md5_do_diario_mas_novo",
+      "verde": true,
+      "detalhe": {
+        "diario": "v142",
+        "html_md5_declrado": "0e22e78fe1e0ce929ec4717f86365ad9",
+        "html_bytes_declrados": 3556664,
+        "leituras": [
+          "200/3556664B/0e22e78fe1e0ce929ec4717f86365ad9",
+          "200/3556664B/0e22e78fe1e0ce929ec4717f86365ad9"
+        ]
+      }
+    },
+    {
+      "nome": "cada_diario_que_declara_um_anterior_aponta_para_o_version_id_desse_mesmo_diario",
+      "verde": false,
+      "detalhe": {
+        "arestas": [
+          {
+            "de": "v135",
+            "para": "v134",
+            "id_declrado": "8600fc3d",
+            "id_do_diario_destino": "8600fc3d",
+            "ok": true
+          },
+          {
+            "de": "v136",
+            "para": "v135",
+            "id_declrado": "f5c157f2",
+            "id_do_diario_destino": "f5c157f2",
+            "ok": true
+          },
+          {
+            "de": "v140",
+            "para": "v136",
+            "id_declrado": "1598137c",
+            "id_do_diario_destino": "1598137c",
+            "ok": true
+          },
+          {
+            "de": "v141",
+            "para": "v140",
+            "id_declrado": "208d5bff",
+            "id_do_diario_destino": "208d5bff",
+            "ok": true
+          },
+          {
+            "de": "v142",
+            "para": "v141",
+            "id_declrado": "678bba24",
+            "id_do_diario_destino": "678bba24",
+            "ok": true
+          }
+        ],
+        "rotas": [],
+        "diarios_no_indice": [
+          "v117",
+          "v119",
+          "v120",
+          "v121",
+          "v122",
+          "v133",
+          "v134",
+          "v135",
+          "v136",
+          "v140",
+          "v141",
+          "v142"
+        ]
+      }
+    },
+    {
+      "nome": "o_painel_declara_a_contagem_de_itens_do_emissor_e_o_maior_id_declara_o_mesmo",
+      "verde": false,
+      "detalhe": {
+        "emissor": {
+          "linhas": 46,
+          "A": 17,
+          "M": 18,
+          "B": 11,
+          "soma": 46,
+          "fora_de_forma": "nenhuma",
+          "unicas": 46,
+          "maior": 46
+        },
+        "painel": {
+          "itens_extraido": null,
+          "maior_extraido": null,
+          "linha_cabecalho": "NAO_CASEI",
+          "ALTA": 17,
+          "MEDIA": 14,
+          "BAIXA": 11
+        },
+        "unidades": "linhas da tabela PEN do ledger, contadas pela grelha do emissor, não por prefixo"
+      }
+    },
+    {
+      "nome": "o_painel_declara_as_tres_prioridades_do_emissor_e_a_soma_delas_e_a_contagem_de_itens",
+      "verde": false,
+      "detalhe": {
+        "emissor": {
+          "linhas": 46,
+          "A": 17,
+          "M": 18,
+          "B": 11,
+          "soma": 46,
+          "fora_de_forma": "nenhuma",
+          "unicas": 46,
+          "maior": 46
+        },
+        "painel": {
+          "itens_extraido": null,
+          "maior_extraido": null,
+          "linha_cabecalho": "NAO_CASEI",
+          "ALTA": 17,
+          "MEDIA": 14,
+          "BAIXA": 11
+        }
+      }
+    },
+    {
+      "nome": "nenhuma_linha_pen_fica_fora_de_forma_no_emissor",
+      "verde": true,
+      "detalhe": {
+        "emissor": {
+          "linhas": 46,
+          "A": 17,
+          "M": 18,
+          "B": 11,
+          "soma": 46,
+          "fora_de_forma": "nenhuma",
+          "unicas": 46,
+          "maior": 46
+        }
+      }
+    },
+    {
+      "nome": "o_diario_de_corrida_tem_um_bloco_SM_que_nomeia_a_versao_publicada_mas_nova",
+      "verde": false,
+      "detalhe": {
+        "alvo": "v142",
+        "blocos_SM": 28,
+        "que_nomeiam_a_versao": [],
+        "ultimo_bloco": "**SM.27. A RM-5.2 medida até aos bytes e convertida em desenho de conteúdo com uma régua nova versionada; a po"
+      }
+    },
+    {
+      "nome": "o_diario_mas_novo_declara_o_mesmo_md5_para_o_bundle_e_para_a_saida_da_candidata",
+      "verde": true,
+      "detalhe": {
+        "bundle_html_md5": "0e22e78fe1e0ce929ec4717f86365ad9",
+        "candidata_destino_md5": "0e22e78fe1e0ce929ec4717f86365ad9",
+        "destino": "bfr-candidata-v142-painel-na-troca md5=0e22e78fe1e0ce929ec4717f86365ad9"
+      }
+    },
+    {
+      "nome": "nenhum_token_de_sessao_chega_ao_registo_desta_regua",
+      "verde": true,
+      "detalhe": {
+        "regexua_lida_do_emissor": true,
+        "ocorrencias": 0,
+        "comparado": "o corpo serializado desta própria saída"
+      }
+    }
+  ],
+  "falhas": [
+    "cada_diario_que_declara_um_anterior_aponta_para_o_version_id_desse_mesmo_diario: {\"arestas\":[{\"de\":\"v135\",\"para\":\"v134\",\"id_declrado\":\"8600fc3d\",\"id_do_diario_destino\":\"8600fc3d\",\"ok\":true},{\"de\":\"v136\",\"para\":\"v135\",\"id_declrado\":\"f5c157f2\",\"id_do_diario_destino\":\"f5c157f2\",\"ok\":true},{\"de\":\"v140\",\"para\":\"v136\",\"id_declrado\":\"1598137c\",\"id_do_diario_destino\":\"1598137c\",\"ok\":true},{\"de\":\"v141\",\"par",
+    "o_painel_declara_a_contagem_de_itens_do_emissor_e_o_maior_id_declara_o_mesmo: {\"emissor\":{\"linhas\":46,\"A\":17,\"M\":18,\"B\":11,\"soma\":46,\"fora_de_forma\":\"nenhuma\",\"unicas\":46,\"maior\":46},\"painel\":{\"itens_extraido\":null,\"maior_extraido\":null,\"linha_cabecalho\":\"NAO_CASEI\",\"ALTA\":17,\"MEDIA\":14,\"BAIXA\":11},\"unidades\":\"linhas da tabela PEN do ledger, contadas pela grelha do emissor, não por prefixo\"}",
+    "o_painel_declara_as_tres_prioridades_do_emissor_e_a_soma_delas_e_a_contagem_de_itens: {\"emissor\":{\"linhas\":46,\"A\":17,\"M\":18,\"B\":11,\"soma\":46,\"fora_de_forma\":\"nenhuma\",\"unicas\":46,\"maior\":46},\"painel\":{\"itens_extraido\":null,\"maior_extraido\":null,\"linha_cabecalho\":\"NAO_CASEI\",\"ALTA\":17,\"MEDIA\":14,\"BAIXA\":11}}",
+    "o_diario_de_corrida_tem_um_bloco_SM_que_nomeia_a_versao_publicada_mas_nova: {\"alvo\":\"v142\",\"blocos_SM\":28,\"que_nomeiam_a_versao\":[],\"ultimo_bloco\":\"**SM.27. A RM-5.2 medida até aos bytes e convertida em desenho de conteúdo com uma régua nova versionada; a po\"}"
+  ],
+  "veredito": "P116_CONSISTENCIA_DE_VERSAO_VERMELHO 4 de 8"
+}

@@ -1,0 +1,329 @@
+{
+  "programa": "scripts/p114-leitor-pen40-no-ar.mjs",
+  "em": "2026-11-21T22:56:47.209Z",
+  "duracao_ms": 7,
+  "metodo": "Compõe os dois lançamentos sequenciais do produtor `ah2-mobile2` (3 larguras por lançamento, porque um `renova()` roda no arranque de cada um e dois paralelos dariam `refresh_token_already_used`), confere a identidade do ar por três lados (as duas corridas, o `esperado-v142.json` e uma leitura fresca) e aplica a régua do produtor: a barra existe por `censo.barra_existe`, os botões têm caixa por `w>0 && h>0`, os painéis contam-se por `abertas`.",
+  "unidades": [
+    "censo.barra_existe (booleano por largura)",
+    "botoes_com_caixa (contagem de itens da barra com w>0 e h>0)",
+    "abertas (painéis abertos por toque real, por largura)",
+    "declaradas_sem_rota (nomes de seção por largura)"
+  ],
+  "ar": {
+    "url": "https://bfr-conecta.turmaroboticabfr.workers.dev/",
+    "esperada_html_md5_v142": "0e22e78fe1e0ce929ec4717f86365ad9",
+    "servida_agora_md5": "0e22e78fe1e0ce929ec4717f86365ad9",
+    "cacheLabel": "bfr-conecta-v142",
+    "moduleMd5": "b83b4c2666fc909d50a358b86b99de05",
+    "workerMd5": "b1827dade7c8fb829a149272d89b9c97"
+  },
+  "contrato_lido_do_produtor": {
+    "larguras": [
+      320,
+      360,
+      375,
+      390,
+      414,
+      430
+    ],
+    "campo_da_barra": "censo.barra_existe",
+    "regexua": "process.argv[3] || '<csv>' e barra_existe: !!nav"
+  },
+  "corridas": {
+    "a": {
+      "ficheiro": "C:\\Users\\pcmac\\Documents\\Qoder\\2026-10-13\\28077d9a\\bfr-conecta\\evidence\\ah2-mobile2-21-11-pen40-a.json",
+      "em": "2026-11-21T22:47:59.518Z",
+      "veredito": "AH7b_MOBILE_COM_DEFEITOS",
+      "larguras": [
+        320,
+        360,
+        375
+      ]
+    },
+    "b": {
+      "ficheiro": "C:\\Users\\pcmac\\Documents\\Qoder\\2026-10-13\\28077d9a\\bfr-conecta\\evidence\\ah2-mobile2-21-11-pen40-b.json",
+      "em": "2026-11-21T22:50:58.755Z",
+      "veredito": "AH7b_MOBILE_COM_DEFEITOS",
+      "larguras": [
+        390,
+        414,
+        430
+      ]
+    }
+  },
+  "bandas": [
+    {
+      "corrida": "a",
+      "largura": 320,
+      "papel": "monitor",
+      "md5_shell": "0e22e78fe1e0ce929ec4717f86365ad9",
+      "url": "https://bfr-conecta.turmaroboticabfr.workers.dev/",
+      "em": "2026-11-21T22:47:59.518Z",
+      "barra_existe": true,
+      "rotas_barra": 5,
+      "gaveta": 7,
+      "botoes_com_caixa": 5,
+      "alvos_menores_que_44": 0,
+      "abertas": 7,
+      "pela_praga": false,
+      "declaradas_sem_rota": [
+        "escola-historia"
+      ],
+      "veredito_corrida": "AH7b_MOBILE_COM_DEFEITOS",
+      "medido_incompleto": 0,
+      "faltaram": null
+    },
+    {
+      "corrida": "a",
+      "largura": 360,
+      "papel": "monitor",
+      "md5_shell": "0e22e78fe1e0ce929ec4717f86365ad9",
+      "url": "https://bfr-conecta.turmaroboticabfr.workers.dev/",
+      "em": "2026-11-21T22:47:59.518Z",
+      "barra_existe": true,
+      "rotas_barra": 5,
+      "gaveta": 7,
+      "botoes_com_caixa": 5,
+      "alvos_menores_que_44": 0,
+      "abertas": 7,
+      "pela_praga": false,
+      "declaradas_sem_rota": [
+        "escola-historia"
+      ],
+      "veredito_corrida": "AH7b_MOBILE_COM_DEFEITOS",
+      "medido_incompleto": 0,
+      "faltaram": null
+    },
+    {
+      "corrida": "a",
+      "largura": 375,
+      "papel": "monitor",
+      "md5_shell": "0e22e78fe1e0ce929ec4717f86365ad9",
+      "url": "https://bfr-conecta.turmaroboticabfr.workers.dev/",
+      "em": "2026-11-21T22:47:59.518Z",
+      "barra_existe": true,
+      "rotas_barra": 5,
+      "gaveta": 7,
+      "botoes_com_caixa": 5,
+      "alvos_menores_que_44": 0,
+      "abertas": 7,
+      "pela_praga": false,
+      "declaradas_sem_rota": [
+        "escola-historia"
+      ],
+      "veredito_corrida": "AH7b_MOBILE_COM_DEFEITOS",
+      "medido_incompleto": 0,
+      "faltaram": null
+    },
+    {
+      "corrida": "b",
+      "largura": 390,
+      "papel": "monitor",
+      "md5_shell": "0e22e78fe1e0ce929ec4717f86365ad9",
+      "url": "https://bfr-conecta.turmaroboticabfr.workers.dev/",
+      "em": "2026-11-21T22:50:58.755Z",
+      "barra_existe": true,
+      "rotas_barra": 5,
+      "gaveta": 7,
+      "botoes_com_caixa": 5,
+      "alvos_menores_que_44": 0,
+      "abertas": 7,
+      "pela_praga": false,
+      "declaradas_sem_rota": [
+        "escola-historia"
+      ],
+      "veredito_corrida": "AH7b_MOBILE_COM_DEFEITOS",
+      "medido_incompleto": 0,
+      "faltaram": null
+    },
+    {
+      "corrida": "b",
+      "largura": 414,
+      "papel": "monitor",
+      "md5_shell": "0e22e78fe1e0ce929ec4717f86365ad9",
+      "url": "https://bfr-conecta.turmaroboticabfr.workers.dev/",
+      "em": "2026-11-21T22:50:58.755Z",
+      "barra_existe": true,
+      "rotas_barra": 5,
+      "gaveta": 7,
+      "botoes_com_caixa": 5,
+      "alvos_menores_que_44": 0,
+      "abertas": 7,
+      "pela_praga": false,
+      "declaradas_sem_rota": [
+        "escola-historia"
+      ],
+      "veredito_corrida": "AH7b_MOBILE_COM_DEFEITOS",
+      "medido_incompleto": 0,
+      "faltaram": null
+    },
+    {
+      "corrida": "b",
+      "largura": 430,
+      "papel": "monitor",
+      "md5_shell": "0e22e78fe1e0ce929ec4717f86365ad9",
+      "url": "https://bfr-conecta.turmaroboticabfr.workers.dev/",
+      "em": "2026-11-21T22:50:58.755Z",
+      "barra_existe": true,
+      "rotas_barra": 5,
+      "gaveta": 7,
+      "botoes_com_caixa": 5,
+      "alvos_menores_que_44": 0,
+      "abertas": 7,
+      "pela_praga": false,
+      "declaradas_sem_rota": [
+        "escola-historia"
+      ],
+      "veredito_corrida": "AH7b_MOBILE_COM_DEFEITOS",
+      "medido_incompleto": 0,
+      "faltaram": null
+    }
+  ],
+  "sem_rota_union": [
+    "escola-historia"
+  ],
+  "pen40": {
+    "criterio_escrito": "nav_existe=true nas 6 larguras do papel monitor",
+    "campo_efetivamente_medido": "censo.barra_existe",
+    "nav_existe_em_produtor": 0,
+    "nav_existe_em_bancada": 12
+  },
+  "o_que_esta_prova_e_o_que_ela_nao_e": "Verde: a barra mobile do `monitor` MONTA no ar publicado da v142 nas seis larguras do contrato, com as cinco rotas com caixa, 7 painéis abertos por toque e 0 alvos abaixo de 44 px — é o critério de fecho da PEN-40, medido no ar e não em bancada. Vermelho que fica e não é da PEN-40: `escola-historia` continua declarada no mapa do `monitor` sem rota tocável nas seis larguras, que é exatamente a classe que a PEN-46 conta em 33 células / 11 papéis e que a PEN-36(b) deixou como re-prova por DOM/clique depois de `BFR_APP_RUNTIME` ter deixado de estar exposto. Não autoriza publicar, DDL, grant, rotação de credencial, mint nem `git push`.",
+  "portoes": [
+    {
+      "nome": "as_seis_larguras_do_contrato_do_produtor_estao_medidas_e_as_duas_corridas_sao_do_monitor",
+      "verde": true,
+      "detalhe": {
+        "contrato": [
+          320,
+          360,
+          375,
+          390,
+          414,
+          430
+        ],
+        "medidas": [
+          "320px@a",
+          "360px@a",
+          "375px@a",
+          "390px@b",
+          "414px@b",
+          "430px@b"
+        ],
+        "papéis": [
+          "monitor"
+        ]
+      }
+    },
+    {
+      "nome": "nenhuma_banda_caiu_pela_praga_e_nenhuma_largura_faltou",
+      "verde": true,
+      "detalhe": {
+        "320": "praga=false incompleto=0 faltaram=null",
+        "360": "praga=false incompleto=0 faltaram=null",
+        "375": "praga=false incompleto=0 faltaram=null",
+        "390": "praga=false incompleto=0 faltaram=null",
+        "414": "praga=false incompleto=0 faltaram=null",
+        "430": "praga=false incompleto=0 faltaram=null"
+      }
+    },
+    {
+      "nome": "o_md5_do_ar_e_o_mesmo_nas_duas_corridas_no_certificado_da_v142_e_no_servido_agora",
+      "verde": true,
+      "detalhe": {
+        "corridas": [
+          "0e22e78fe1e0ce929ec4717f86365ad9"
+        ],
+        "esperado_v142": "0e22e78fe1e0ce929ec4717f86365ad9",
+        "servido_agora": "0e22e78fe1e0ce929ec4717f86365ad9",
+        "bytes_servidos_agora": 3556664
+      }
+    },
+    {
+      "nome": "a_barra_mobile_existe_em_todas_as_seis_larguras_do_monitor_pelo_campo_do_produtor",
+      "verde": true,
+      "detalhe": {
+        "campo_lido": "censo.barra_existe",
+        "dado": {
+          "320": true,
+          "360": true,
+          "375": true,
+          "390": true,
+          "414": true,
+          "430": true
+        }
+      }
+    },
+    {
+      "nome": "a_barra_tem_cinco_rotas_e_as_cinco_tem_caixa_de_layout_em_todas_as_seis",
+      "verde": true,
+      "detalhe": {
+        "320": "rotas=5 com_caixa=5 menores44=0",
+        "360": "rotas=5 com_caixa=5 menores44=0",
+        "375": "rotas=5 com_caixa=5 menores44=0",
+        "390": "rotas=5 com_caixa=5 menores44=0",
+        "414": "rotas=5 com_caixa=5 menores44=0",
+        "430": "rotas=5 com_caixa=5 menores44=0"
+      }
+    },
+    {
+      "nome": "o_toque_real_abriu_sete_paineis_em_cada_uma_das_seis_larguras",
+      "verde": true,
+      "detalhe": {
+        "320": "abertas=7 gaveta=7",
+        "360": "abertas=7 gaveta=7",
+        "375": "abertas=7 gaveta=7",
+        "390": "abertas=7 gaveta=7",
+        "414": "abertas=7 gaveta=7",
+        "430": "abertas=7 gaveta=7"
+      }
+    },
+    {
+      "nome": "o_vermelho_remanescente_e_so_a_classe_ja_cartao_de_pen46_e_o_nome_dela_consta_no_ledger_com_monitor",
+      "verde": true,
+      "detalhe": {
+        "sem_rota": [
+          "escola-historia"
+        ],
+        "ocorrencias_no_ledger_pen46": 2,
+        "cellulas_por_largura": {
+          "320": "escola-historia",
+          "360": "escola-historia",
+          "375": "escola-historia",
+          "390": "escola-historia",
+          "414": "escola-historia",
+          "430": "escola-historia"
+        }
+      }
+    },
+    {
+      "nome": "o_nome_do_criterio_no_ledger_nao_e_um_campo_do_produtor_e_sim_da_bancada",
+      "verde": true,
+      "detalhe": {
+        "nav_existe_em_ah2_mobile2": 0,
+        "nav_existe_em_p73_bancada": 12,
+        "campo_do_produtor": "censo.barra_existe",
+        "criterio_escrito_no_ledger": "nav_existe=true nas 6 larguras"
+      }
+    },
+    {
+      "nome": "as_duas_corridas_trouxeram_veredito_de_defeito_pela_mesma_classe_e_nao_um_aborto",
+      "verde": true,
+      "detalhe": {
+        "a": "AH7b_MOBILE_COM_DEFEITOS falhas_array=true=3 portoes=48 forma_de_portoes=number",
+        "b": "AH7b_MOBILE_COM_DEFEITOS falhas_array=true=3 portoes=48 forma_de_portoes=number"
+      }
+    },
+    {
+      "nome": "nenhum_valor_real_de_credencial_chega_ao_registo",
+      "verde": true,
+      "detalhe": {
+        "comparados": 3,
+        "presentes": 0,
+        "unidades": "três valores: a credencial gravada e as duas strings de sessão do monitor"
+      }
+    }
+  ],
+  "falhas": [],
+  "veredito": "P114_PEN40_AR_OK 10/0"
+}

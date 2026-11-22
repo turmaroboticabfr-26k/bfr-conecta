@@ -1,0 +1,61 @@
+{
+  "programa": "scripts/p119-agregados-no-ar.mjs",
+  "em": "2026-11-21T23:23:17.308Z",
+  "duracao_ms": 548,
+  "metodo": "Fetch anónimo do shell; os nomes leem-se dos CREATE FUNCTION do DDL da PEN-39 (nunca dactilografados); para cada nome encadeia-se literal→constante→parâmetro entregue ao `.rpc(`→callsite com essa constante no mesmo índice, com o corpo de cada helper delimitado por contagem de chavetas; três fixtures montados em tempo de execução (fecha, sem callsite, índice trocado) provam os dois sentidos da régua.",
+  "ar": {
+    "url": "https://bfr-conecta.turmaroboticabfr.workers.dev/",
+    "bytes": 3556664,
+    "md5": "0e22e78fe1e0ce929ec4717f86365ad9",
+    "bate_com_certificado_v142": true
+  },
+  "nomes_lidos_do_ddl": [
+    "bfr_municipal_municipio_totais",
+    "bfr_municipal_distribuicao_por_zona"
+  ],
+  "por_nome": [
+    {
+      "nome": "bfr_municipal_municipio_totais",
+      "cadeia": {
+        "passo": "fechado",
+        "fechado": true,
+        "constante": "NOME_TOTAIS",
+        "ocorrencias_do_literal": 1,
+        "cadeia": [
+          {
+            "helper": "lerRpc",
+            "rpc_arg": "nome",
+            "indice_do_parametro": 1,
+            "callsites": 3,
+            "callsites_com_a_constante_naquela_posicao": 1
+          }
+        ]
+      }
+    },
+    {
+      "nome": "bfr_municipal_distribuicao_por_zona",
+      "cadeia": {
+        "passo": "fechado",
+        "fechado": true,
+        "constante": "NOME_DISTRIB",
+        "ocorrencias_do_literal": 1,
+        "cadeia": [
+          {
+            "helper": "lerRpc",
+            "rpc_arg": "nome",
+            "indice_do_parametro": 1,
+            "callsites": 3,
+            "callsites_com_a_constante_naquela_posicao": 1
+          }
+        ]
+      }
+    }
+  ],
+  "fixtures": {
+    "positivo_fecha": true,
+    "sem_callsite_chumba": true,
+    "indice_trocado_chumba": true
+  },
+  "o_que_nao_ve": "Não vê se o loader que chama o agregado está ligado a um botão do painel (isso é o censo de chamadas `scripts/sm24-censo-de-chamadas-do-modulo.mjs`), nem se o RPC devolve linhas com sessão (preflight da PEN-39). Vê que o byte invoca o nome, e por qual cadeia.",
+  "veredito": "P119_AGREGADOS_PEN39_SAO_CHAMADOS_NO_AR 2/2"
+}
