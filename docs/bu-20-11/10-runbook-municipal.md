@@ -959,6 +959,73 @@ MOTIVO-SEM-REGISTO · PEN-44 — não há registo de aplicação porque nenhuma 
 a uma entrada `PUBLIC` não cria função nenhuma: a peça mexe em graus sobre 45 nomes que já existem, e é por isso que o
 censo de funções novas do banco (`funcoes_das_candidatas=4`) não a contém e não a pode conter.
 
+### 2.11 · PEN-42 — o nome que o `front` servido chama e o catálogo não tem — CANDIDATA CERTIFICADA 21/11, NADA APLICADO
+
+**O que foi medido, não suposto.** O bundle servido da v142 chama `rpc('register_gate_checkin_v2'` uma vez, no
+deslocamento de bytes 3 045 454 dos 3 556 664 que o ficheiro tem; `pg_proc` tem zero linhas com esse nome, e é o
+404 `PGRST202` que a condicional do módulo produz quando o ramo não-legado é tomado. A função viva
+`public.register_gate_checkin` (oid 30855) tem **a mesma identidade de seis argumentos**
+(`target_badge_token uuid, gate_direction text, visual_confirmation boolean, intake_source text, target_shift text,
+exception_reason text`) e **as onze colunas devolvidas** que o chamador lê. Logo a PEN-42 não é comportamento em
+falta: é um nome trocado entre o `front` e o catálogo, e o remédio correcto é um encaminamento, não uma função nova.
+
+**Por que isto é pré-condição do RM-5.2 e não um passo independente.** Hoje `gateLegacyMode()` é verdadeiro porque
+`bfr_school_calendar_days`, `bfr_school_calendar_month_targets` e `bfr_school_shift_settings` estão as três com zero
+linhas, e a portaria trabalha pelo ramo legado, que chama a viva. Confirmar um calendário (RM-5.2) inverte essa
+condicional e passa a chamar o nome ausente: **o primeiro dia letivo real parte a portaria**. Aplicar a PEN-42 antes
+de qualquer entrada de calendário é o que impede essa sequência; aplicá-la depois deixa a portaria inoperante no
+dia em que o calendário deixa de estar vazio.
+
+**A peça.** `scripts/p73-pen42-ddl-candidata.sql` (3 520 B) é puramente aditiva — um `CREATE OR REPLACE FUNCTION`
+com `LANGUAGE sql VOLATILE SECURITY DEFINER SET search_path TO ''`, que selecciona as onze colunas do `FROM
+public.register_gate_checkin(...)` com notação nomeada e não tem comportamento próprio; zero `ALTER`, zero `DROP`,
+zero `INSERT`/`UPDATE`/`DELETE`. Os graus são os medidos na viva: `REVOKE ALL ... FROM PUBLIC` e
+`GRANT EXECUTE ... TO authenticated, service_role`, sem entrada para `anon` nem para `PUBLIC`, porque a viva já não
+os tem. Nenhum parâmetro colide com uma coluna devolvida — a colisão resolveria pela coluna e não pelo argumento,
+que é exactamente o que `LANGUAGE sql` faria em silêncio.
+
+**A reversão.** `scripts/p73-pen42-ddl-reversao.sql` (587 B) é um único `DROP FUNCTION` com a assinatura inteira e
+**sem `IF EXISTS`**: se o objecto não estiver lá, a reversão chumba em vez de fingir que reverteu.
+
+**O preflight e os seus vermelhos.** `scripts/p73-pen42-preflight.mjs` corre 12 portões nos dois modos e lê o estado
+vivo pelo catálogo (`pg_proc`, `pg_get_function_identity_arguments`, `pg_get_function_result`, `proacl`), sem JWT de
+sessão e sem escrita. Verde em modo candidata em
+`evidence/p73-pen42-preflight-candidata-21-11-d.json` (12/0). O modo `--reversao` está **vermelho por falsificação
+legítima**, e o vermelho está conservado com o motivo no nome:
+`evidence/p73-pen42-preflight-reversao-21-11-rev-a-VERMELHO-falsificacao-legitima-a-candidata-ainda-nao-foi-aplicada.json`
+— é a prova lida do catálogo de que nenhuma frase de aplicação foi dita. Os três vermelhos do próprio instrumento
+também ficaram em disco com o defeito no nome: dois portões prometiam contagem crua de sítios e seis privilégios
+quando a classe só pode exprimir-se como relação; a agulha do sítio vivo recebeu uma entrada de carro no meio do
+identificador porque `\\${VIVA}` dentro de um template literal produz a barra e não o nome, e a sonda passou a ver
+zero sítios — o verde sobre conjunto vazio; e a agulha do ramo legado exigia o texto que o próprio `match` já tinha
+consumido, o que produzia um `NAO_CLASSIFICADO` em vez de um `ramo_legado`.
+
+**O censo de superfície, para saber se era um nome ou dez.** `scripts/p126-censo-rpc-do-bundle-servido.mjs` extrai
+todos os `rpc('<nome>'` dos bytes do bundle e confirma cada nome contra `pg_proc`: na v142 são **25 nomes distintos,
+32 chamadas, 22 presentes no catálogo e exactamente 3 ausentes**, e os três ausentes são chamados uma vez cada um.
+Os outros dois não têm gémeo no catálogo: `bfr_confirm_school_calendar` (confirmar um dia letivo e devolver a
+contagem) e `correct_gate_attendance` (correção de presenças com `target_student`/`target_date`/`target_status`/
+`correction_reason` auditável) são **semântica de produto nova**, e não foram inventados em SQL por este instrumento
+— precisam de decisão e de OK, não de um ficheiro. Registos: `evidence/p126-censo-rpc-21-11-v142.json` e
+`evidence/p126-censo-rpc-21-11-v142b.json`.
+
+**Defeito de instrumento apanhado e corrigido por medida.** A primeira corrida do censo escreveu o registo completo
+e depois morreu no `teardown` do `fetch` com uma asserção de libuv do build do Windows, deixando `exit=127` num
+instrumento desenhado para sair 0. A causa era o `process.exit(0)` explícito a forçar o fecho com o socket ainda em
+curso; retirei-o (o código de saída natural já é 0) e re-corri. As duas corridas comparam-se campo a campo **sem os
+campos de corrida**: 3 335 caracteres de cada lado, idênticas. O registo da corrida que morreu fica em disco como
+história, porque um vermelho de instrumento nunca se apaga.
+
+MOTIVO-SEM-REGISTO · PEN-42 — não há registo de aplicação porque nenhuma frase `APLICAR PEN-42 NO BANCO` foi dita, e
+o aplicador recusá-la-ia mesmo se dita sem preflight verde; a candidata existe, é aditiva e tem reversão certificada,
+e o seu verde de hoje prova apenas que o nome ausente é de facto ausente e que a viva tem a identidade que o `front`
+lê — não prova a portaria a funcionar de ponta a ponta, que só se mede no browser depois de confirmado o calendário
+e os turnos, enquanto o ramo legado for o que atende.
+
+**O que este verde não autoriza.** Aplicar a candidata ao banco, publicar seja o que for, escrever no banco ou
+`git push` continuam a pedir cada um a sua frase literal; e nada disto toca no que a PEN-42 não é — o `search_path`
+dos predicados municipais e a porta de visibilidade pelo rpc ficam descritos em §5 e na tarefa aberta, não aqui.
+
 ## 3 · Provas de fecho (o que é medição e o que é previsão)
 
 ### 3.1 · Depois de PEN-38 e da etiquetagem
@@ -1233,6 +1300,19 @@ estão em `evidence/sm7-municipal-developer-1366-v138dev-p5.json` e
 `evidence/sm7-municipal-secretario_municipal-1366-v138sm-p3.json`; a da porta em
 `evidence/p73-sonda-porta-municipal-20-11.json`, com a versão defeituosa anterior ao lado sob
 `evidence/ANTERIOR-p73-sonda-porta-municipal-20-11-DEFETO-o-leitor-contava-corpo-de-erro-como-linha-e-escalar-como-erro.json`.
+
+PEN-42 e censo de superfície (21/11, §2.11): `scripts/p73-pen42-ddl-candidata.sql`,
+`scripts/p73-pen42-ddl-reversao.sql` e `scripts/p73-pen42-preflight.mjs`, que corre 12 portões nos dois modos e cujo verde de candidata está em
+`evidence/p73-pen42-preflight-candidata-21-11-d.json`; os quatro vermelhos conservados
+com o motivo no nome são os três de instrumento
+(`evidence/p73-pen42-preflight-candidata-21-11-a-VERMELHO-dois-portoes-do-instrumento-prometiam-contagem-crua-de-sitios-e-6-privilegios.json`,
+`evidence/p73-pen42-preflight-candidata-21-11-b-VERMELHO-o_regex-de-sitio-recebia-tra-R-no-meio-do-nome-e-conta-sitios-nenhum.json`,
+`evidence/p73-pen42-preflight-candidata-21-11-c-VERMELHO-a-agulha-do-ramo-legado-exigia-o-nome-ja-consumido-pelo-match.json`)
+e a falsificação legítima do modo reversão
+(`evidence/p73-pen42-preflight-reversao-21-11-rev-a-VERMELHO-falsificacao-legitima-a-candidata-ainda-nao-foi-aplicada.json`).
+O censo de nomes de rpc é `scripts/p126-censo-rpc-do-bundle-servido.mjs`, com as duas corridas comparáveis entre si
+em `evidence/p126-censo-rpc-21-11-v142.json` (a que morreu no `teardown` depois de escrever, antes de o
+`process.exit(0)` explícito ser retirado) e `evidence/p126-censo-rpc-21-11-v142b.json` (a corrida limpa, `exit=0`).
 
 As pegadas (bytes e md5) de cada um destes caminhos, medidas no fecho do pacote e não a meio de uma escrita,
 estão em `evidence/pacote-municipal-pecas-20-11-fecho-corpus-duplo.json`. O fecho de 20/11 que acrescentou a v138
