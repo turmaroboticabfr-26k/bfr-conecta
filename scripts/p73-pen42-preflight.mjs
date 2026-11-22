@@ -234,7 +234,7 @@ const saida = {
     sitios_vivos_classificados: sitiosVivos, por_classe: { ramo_legado: porClasse('ramo_legado'), modulo_antigo: porClasse('modulo_antigo'), nao_classificados: porClasse('NAO_CLASSIFICADO') },
     inicio_do_modulo_novo: inicioModuloNovo },
   o_que_este_verde_nao_autoriza: 'nada: é leitura. Aplicar a candidata, publicar seja o que for, escrever no banco e git push continuam a pedir cada um a sua frase literal.',
-  o_que_este_verde_nao_prova: 'que a aplicação da candidata faça a portaria funcionar de ponta a ponta: isso só se mede depois, no browser, com o calendário e os turnos confirmados — enquanto estiverem por confirmar o front toma o ramo legado e o nome novo nem é chamado. Também não prova nada sobre `bfr_confirm_school_calendar` nem `correct_gate_attendance`, que este instrumento não abre.',
+  o_que_este_verde_nao_prova: 'que a aplicação da candidata faça a portaria funcionar de ponta a ponta: isso só se mede depois, no browser. E a frase que aqui estava antes de 21/11 estava invertida contra os bytes, pelo que fica corrigida por medida: `gateLegacyMode()` é `state.loaded && (state.errors.includes("configuração de turnos") || state.errors.includes("calendário letivo"))`, e o estado medido de hoje — `B_hoje_200_com_zero_linhas` em `evidence/p73-rm52-estado-calendario-20-11.txt` — tem as mesas criadas a devolver 200 com zero linhas, logo nenhuma das duas etiquetas entra e o check-in já chama o nome ausente com `lanca=true`. O ramo legado só tinha valor no estado A, antes do DDL do calendário, quando o fetch das mesas rebentava. Também não prova nada sobre `bfr_confirm_school_calendar` nem `correct_gate_attendance`, que este instrumento não abre.',
   portoes, falhas,
 };
 saida.veredito = falhas.length === 0

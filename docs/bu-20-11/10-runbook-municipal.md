@@ -969,12 +969,22 @@ deslocamento de bytes 3 045 454 dos 3 556 664 que o ficheiro tem; `pg_proc` tem 
 exception_reason text`) e **as onze colunas devolvidas** que o chamador lê. Logo a PEN-42 não é comportamento em
 falta: é um nome trocado entre o `front` e o catálogo, e o remédio correcto é um encaminamento, não uma função nova.
 
-**Por que isto é pré-condição do RM-5.2 e não um passo independente.** Hoje `gateLegacyMode()` é verdadeiro porque
-`bfr_school_calendar_days`, `bfr_school_calendar_month_targets` e `bfr_school_shift_settings` estão as três com zero
-linhas, e a portaria trabalha pelo ramo legado, que chama a viva. Confirmar um calendário (RM-5.2) inverte essa
-condicional e passa a chamar o nome ausente: **o primeiro dia letivo real parte a portaria**. Aplicar a PEN-42 antes
-de qualquer entrada de calendário é o que impede essa sequência; aplicá-la depois deixa a portaria inoperante no
-dia em que o calendário deixa de estar vazio.
+**O que o estado medido diz, e a correção de uma frase minha escrita por raciocínio.** Os bytes definem
+`gateLegacyMode()` como `state.loaded && (state.errors.includes("configuração de turnos") ||
+state.errors.includes("calendário letivo"))` — a prédica é sobre **etiquetas de erro**, não sobre «zero linhas». A
+tabela medida em `evidence/p73-rm52-estado-calendario-20-11.txt` tem quatro estados e o de hoje é
+`B_hoje_200_com_zero_linhas`, com `legacy=false`, `lanca=true` e `rpc=register_gate_checkin_v2`: depois do DDL do
+calendário as mesas existem e o `fetch` devolve 200 com zero linhas, nenhuma etiqueta entra em `state.errors`, o ramo
+legado **não** é tomado e o check-in chama o nome ausente — a portaria está partida **agora**, e é por isso que a
+PEN-42 é prioridade A. O estado em que o ramo legado atendia era o `A_antes_do_ddl_404` (`legacy=true`), quando as
+mesas ainda não existiam e o `fetch` rebentava; `C_conteudo_confirmado` e `D_dia_confirmado_sem_janela_a_cobrir`
+também chamam o nome ausente. A consequência para o RM-5.2 inverte-se portanto em relação ao que escrevi: semear o
+calendário **não** parte a portaria, herda-a partida, e o que a PEN-42 destrava é o check-in de hoje — deixá-la por
+aplicar deixa o RM-5.2 sem nada que se possa medir no fim. Escrever «hoje o front
+toma o ramo legado» foi inferência minha a partir de `linhas=0`, e o registo do preflight carregava a mesma frase no
+campo `o_que_este_verde_nao_prova`; os dois foram corrigidos pelo texto medido acima, e o registo re-emitido com a
+correção é `evidence/p73-pen42-preflight-candidata-21-11-e.json` (12/0) — o `-d` fica como a corrida em que a medição
+dos doze portões estava certa e a frase de rodapé não estava.
 
 **A peça.** `scripts/p73-pen42-ddl-candidata.sql` (3 520 B) é puramente aditiva — um `CREATE OR REPLACE FUNCTION`
 com `LANGUAGE sql VOLATILE SECURITY DEFINER SET search_path TO ''`, que selecciona as onze colunas do `FROM
@@ -1019,8 +1029,8 @@ história, porque um vermelho de instrumento nunca se apaga.
 MOTIVO-SEM-REGISTO · PEN-42 — não há registo de aplicação porque nenhuma frase `APLICAR PEN-42 NO BANCO` foi dita, e
 o aplicador recusá-la-ia mesmo se dita sem preflight verde; a candidata existe, é aditiva e tem reversão certificada,
 e o seu verde de hoje prova apenas que o nome ausente é de facto ausente e que a viva tem a identidade que o `front`
-lê — não prova a portaria a funcionar de ponta a ponta, que só se mede no browser depois de confirmado o calendário
-e os turnos, enquanto o ramo legado for o que atende.
+lê — não prova a portaria a funcionar de ponta a ponta, e o estado medido de hoje (`B_hoje_200_com_zero_linhas`, acima)
+já toma o ramo que chama o nome ausente, pelo que a volta do check-in só se mede no browser depois de aplicada.
 
 **O que este verde não autoriza.** Aplicar a candidata ao banco, publicar seja o que for, escrever no banco ou
 `git push` continuam a pedir cada um a sua frase literal; e nada disto toca no que a PEN-42 não é — o `search_path`
@@ -1303,7 +1313,9 @@ estão em `evidence/sm7-municipal-developer-1366-v138dev-p5.json` e
 
 PEN-42 e censo de superfície (21/11, §2.11): `scripts/p73-pen42-ddl-candidata.sql`,
 `scripts/p73-pen42-ddl-reversao.sql` e `scripts/p73-pen42-preflight.mjs`, que corre 12 portões nos dois modos e cujo verde de candidata está em
-`evidence/p73-pen42-preflight-candidata-21-11-d.json`; os quatro vermelhos conservados
+`evidence/p73-pen42-preflight-candidata-21-11-e.json` (a corrida com a frase de rodapé corrigida pelo estado medido) e
+em `evidence/p73-pen42-preflight-candidata-21-11-d.json` (a corrida anterior, conservada: os doze portões mediram
+certo, a afirmação sobre o ramo legado não); os quatro vermelhos conservados
 com o motivo no nome são os três de instrumento
 (`evidence/p73-pen42-preflight-candidata-21-11-a-VERMELHO-dois-portoes-do-instrumento-prometiam-contagem-crua-de-sitios-e-6-privilegios.json`,
 `evidence/p73-pen42-preflight-candidata-21-11-b-VERMELHO-o_regex-de-sitio-recebia-tra-R-no-meio-do-nome-e-conta-sitios-nenhum.json`,
