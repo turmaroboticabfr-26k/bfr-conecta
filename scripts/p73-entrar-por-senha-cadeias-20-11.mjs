@@ -11,6 +11,7 @@
 // e depois é portão, não promessa. Zero DDL, zero linha de produto, zero publicação.
 import { createHash } from 'node:crypto';
 import { existsSync, readFileSync, writeFileSync } from 'node:fs';
+import { causaAdmissivel } from './p74-predicado-da-causa-da-cadeia.mjs';
 import { join } from 'node:path';
 import { sql, HOST } from './c2-lib.mjs';
 
@@ -52,7 +53,7 @@ const antes = await baselines();
 const tenta_refresh = async (token) => {
   const r = await fetch(`${HOST}/auth/v1/token?grant_type=refresh_token`, { method: 'POST', headers: { 'content-type': 'application/json', apikey: anonKey, Authorization: `Bearer ${anonKey}` }, body: JSON.stringify({ refresh_token: token }) });
   const j = await r.json().catch(() => null);
-  return { http: r.status, codigo: (j && (j.error_code || j.msg || j.error)) || 'sem-corpo', ok: !!r.ok && !!(j && j.access_token) };
+  return { http: r.status, codigo: (j && (j.error_code || j.msg || j.error)) || (j && j.access_token ? 'renovou' : 'sem-corpo'), ok: !!r.ok && !!(j && j.access_token) };
 };
 
 const papeis = {};
@@ -94,7 +95,7 @@ const falhas = [];
 const g = (nome, cond, detalhe) => { if (!cond) falhas.push(`${nome}: ${JSON.stringify(detalhe).slice(0, 300)}`); return { nome, verde: !!cond, detalhe }; };
 const portoes = [
   g('nenhuma_senha_foi_rotacionada_o_hash_antes_iguala_o_depois', ALVOS.every((p) => hashes_senha_antes[p] === hashes_senha_depois[p]), { antes: hashes_senha_antes, depois: hashes_senha_depois }),
-  g('a_causa_do_vermelho_e_ja_queimada_e_nao_falta_de_senha', ALVOS.every((p) => papeis[p].cadeia_anterior.codigo === 'refresh_token_already_used' || papeis[p].cadeia_anterior.codigo === 'sem_cadeia_no_ficheiro_do_papel'), Object.fromEntries(ALVOS.map((p) => [p, `${papeis[p].cadeia_anterior.http}/${papeis[p].cadeia_anterior.codigo}`]))),
+  g('a_causa_do_vermelho_e_ja_queimada_ou_so_access_expirado_e_nao_falta_de_senha', ALVOS.every((p) => causaAdmissivel(papeis[p])), Object.fromEntries(ALVOS.map((p) => [p, `${papeis[p].cadeia_anterior.http}/${papeis[p].cadeia_anterior.codigo}${papeis[p].falha ? ' COM-FALHA-DE-LOGIN' : ''}`]))),
   g('o_login_por_senha_bate_para_todos_os_alvos', ALVOS.every((p) => papeis[p].login_http === 200), Object.fromEntries(ALVOS.map((p) => [p, `${papeis[p].login_http}/${papeis[p].login_codigo}`]))),
   g('o_uid_de_cada_papel_e_o_mesmo_do_registo_a_rotação_nao_mudou_identidade', ALVOS.every((p) => papeis[p].uid_preservado === true), Object.fromEntries(ALVOS.map((p) => [p, papeis[p].uid_gravado])),),
   g('a_cadeia_nova_fica_no_ficheiro_do_papel_e_o_mestre_nao_e_tocado', ALVOS.every((p) => papeis[p].escritura_provada === true) && md5(mestre_depois) === md5(mestreTxt), { mestre_antes: md5(mestreTxt).slice(0, 12), mestre_depois: md5(mestre_depois).slice(0, 12), ficheros: Object.fromEntries(ALVOS.map((p) => [p, papeis[p].gravado_em || null])) }),

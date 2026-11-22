@@ -127,6 +127,50 @@ que hoje se vê — o município de ninguém tem 0 escolas — mas muda a promes
 `SECURITY DEFINER`, por isso o que hoje sai vazio pode sair preenchido no dia em que a etiquetagem for decidida,
 sem um único `GRANT` novo no meio. É essa a razão de a candidata existir antes da decisão do §1.
 
+## 0C · Estado depois da aplicação de dados municipais de 21/11 (P91→P93, com OK próprio)
+
+O pedido que abriu esta passada foi «tudo o que estiver faltando resolva, tem o meu ok», e o alcance ficou nas
+três escolhas registadas na ferramenta: **só fechar o painel** (a frente, publicada como v142), **manter** as
+quatro concessões municipais das contas reais, e **nenhum** dos desaconselhados (nem reverter PEN-43/PEN-44, nem
+o `secretaria-municipal` no array estático do `teacher`, nem rotação de senhas). Não há DDL novo nesta secção: o
+que mudou no banco foi a etiqueta de município, e isso é o §1 decidido com registo.
+
+| Grandeza | 20/11 (§0B, preflight da PEN-38) | 21/11 depois do P92 | De onde se lê |
+|---|---|---|---|
+| Escolas com `municipality_id` | **0** | **4** | `evidence/p73-pen38-preflight-candidata-20-11e.json` → `numeros` / `evidence/p92-dados-municipais-c.json` → `depois.escolas` |
+| Municípios | 1 (só a fixture) | **2** (a fixture + `São Paulo`/SP) | mesmo par → `depois.municipios` |
+| Concessões ativas | 4 | **5** | mesmo par → `depois.grants` |
+| Policies alvo com cláusula de escola | 0 | **0** (PEN-41 continua por aplicar) | `scripts/pacote-municipal-confere-pecas.mjs` → `vivo` |
+
+A corrida tem três peças e não uma: `scripts/p92-dados-municipais.mjs` em `--preflight` deu primeiro
+`P92_DADOS_MUNICIPAIS_PREFLIGHT_VERMELHO 2 de 12` (`evidence/p92-dados-municipais-a.json`, 17:38:54Z), depois
+verde (`evidence/p92-dados-municipais-b.json`, 17:39:49Z) e só então `--aplicar`, com
+`P92_DADOS_MUNICIPAIS_APLICADO_E_CONFERIDO 12/0` (`evidence/p92-dados-municipais-c.json`, 17:40:14Z). O que o
+registo declara escrito, linha a linha: `bfr_municipalities` com 1 linha `São Paulo`/SP id
+`cde2740e-9f09-45a5-9cd6-6ee3d6b17268`, `schools.municipality_id` com 4 linhas ligadas a esse id, e
+`bfr_municipal_access_grants` com 1 linha (`education_supervisor` → `secretario_municipal`, id
+`cf6fac96-8464-4d71-9991-f2ba10f7e565`). As duas linhas que ficam de fora são as duas escolas cujo `city` não é
+São Paulo — o município deriva-se de `schools.city`, não se inventa.
+
+O que **não** correu, e por isso continua a poder correr: a reversão. O caminho existe e está no índice
+(`scripts/p92-reversao-dados-municipais.sql`), mas a família `evidence/p92-*revers*` tem **0** ficheiros medidos
+por `readdirSync`, pelo que a frase «os 4/2/5 acima são o estado vivo e não o resto de uma meia-desfeita» tem
+prova. É também por isto que o portão do pacote deixou de comparar o banco com o preflight de 20/11: essa
+cláusula era um «ainda não aplicado» e envelheceu no dia da autorização. O esperado passou a ler-se do `depois`
+do registo de aplicação, e os dois vermelhos continuam vivos — o mundo a mexer sem registo novo (inclusive uma
+reversão corrida sem artefacto) e um registo que promete o que o mundo não tem. A falsificação dos dois sentidos
+está no portão `a_regua_do_estado_de_dados_tem_dentes_e_o_preflight_deixa_de_ser_o_esperado`.
+
+Antes disto, o censo de quem são os concessionários (`evidence/p91-censo-concessionarios-a.json`) respondeu
+`P91_CENSO_CONCESSIONARIOS_VERMELHO 1 de 7`, e a falha é uma só, lida no emissor:
+`nenhum_concessionado_tem_apenas_papel_de_escola`, com `todos=["secretary","secretary","coordinator","pending"]`
+e `fora=["secretario_municipal<-secretary","secretario_adjunto<-secretary","gestor_autorizado<-coordinator",
+"equipe_administrativa<-pending"]`. Ou seja: os quatro perfis que hoje têm concessão municipal têm, ao mesmo
+tempo, um papel de escola — o censo recusa a sobreposição, e o que ela prova é que nenhuma das quatro foi criada
+como conta municipal dedicada. A fixture `Sao Paulo (SM8 fixture — apagar)` é o outro lado do retrato, e continua
+viva porque as quatro concessões antigas apontam para ela (§5.2). A prova no browser das três corridas está em
+`evidence/p93-porta-mapa-vs-backend-a.json`, `-b.json` e `-c.json`.
+
 ## 1 · A decisão que o banco não pode tomar por nós
 
 Há uma única coisa neste pacote que não é técnica: **que município governa cada escola.** A folha está medida e
@@ -352,6 +396,24 @@ Para que estes dois nomes não voltem a ser confundidos com esquecimento, o port
 continue **fora** do índice, continue **não** ignorado, e que a frase da decisão continue no corpus — cai a
 frase, o nome volta a contar como esquecido e o vermelho regressa, que é o desenho que já usei para o fantasma
 do `bu4`. A falsificação está na linha 5 da tabela de §2.0.
+
+**Correção datada 21/11, com o portão re-escrito por medida e não por cortesia.** O `evidence/.funde-v134-18-11.txt`
+está **dentro** do índice desde o batch `1800682` («versionar as 48 provas nomeadas por conteúdo indexado e que
+estavam fora do git»), e o texto de cima, que o declarava fora, é medição de 20/11: continua verdadeiro sobre o
+dia em que foi escrito e falso sobre a árvore de hoje. Foi este o vermelho que a corrida do portão deu quando a
+prosa do §SM.28 foi escrita — `[[true,false,false,true],[true,true,false,true]]` contra
+`[[true,false,false,true],[true,false,false,true]]`, com a segunda linha a ser o ponto em causa. Não des-rastrei:
+o conteúdo já está no histórico, e tirar-lhe a ficha agora só faria o índice mentir sobre o que um clone já tem.
+Também não apaguei a cláusula nem aliviei o predicado — a classe passou de um zero para uma lista declarada:
+`os_no_indice_por_decisao_nova_continuam_versionados_com_a_frase` exige agora que cada nome desta lista continue
+em disco, continue no índice, continue não ignorado e continue com a sua frase da decisão no corpus, e
+`a_classe_de_pontos_versionados_em_evidence_e_a_declarada` mede a classe inteira com `git ls-files` em vez de a
+lembrar, pelo que um segundo ponto varrido por `git add` amplo chumba por nome. Os dentes estão provados na mesma
+corrida por `a_regua_da_classe_de_pontos_tem_dentes`: acrescentar um ponto de fixture tem de alterar a lista
+medida, e a lista medida tem de ser cumprida pelos declarados. O que autoriza a entrada não é o batch sozinho —
+é o facto de o stdout do `scripts/ah2-funde-sessoes.mjs` ser a prova que a própria prosa nomeia; a varredura de
+credenciais sobre os seus 1 737 B e 35 linhas deu **0** tokens com a forma de JWT e **0** rótulos de
+`access_token`/`refresh_token`/`senha`, que é a razão de poder viver no git sem ser exceção.
 Fica a ponta solta, e fica dita em vez de ser calada: `scripts/sm7-confere-casa-home.mjs:6` está versionado e lê
 o v1 por caminho fixo, por isso o diff v1-vs-v3 que ele prova corre nesta máquina e **morre de `ENOENT` num clone
 novo**. Aqui ele corre e dá `LEITURA_IGUAL_SUCESSOR_SERVE` (`rename=84`, `NUMEROS_DIFERENTES=0`), o que é a
@@ -1071,6 +1133,30 @@ exactamente a que FALTA-2 existia para não ficar ao arbítrio de quem cola SQL.
    a linha continuar M já não é o censo: é o DDL não aplicado, que pede a frase literal.
 8. **`git push`** dos commits deste pacote: precisa de OK literal novo; nenhum push está autorizado pelo
    trabalho descrito aqui.
+9. **Os sete portadores de credencial que vivem fora do índice, agora com guard próprio.** Até 21/11 a única
+   régua de credenciais era `scripts/portao-indice.mjs`, que varre o **índice** (`git show :caminho`) — um
+   ficheiro com a forma de credencial que nunca foi `add` é invisível para ele e fica à distância de um
+   `git add -A` de ser publicado. Foi exactamente assim que o batch `1800682` levou um stdout de sessão para
+   dentro do git. O guard novo é `scripts/p125-portadores-fora-do-indice.mjs`: varre o conjunto que um add amplo
+   levaria (não-versionados não ignorados + modificados), com os padrões escritos duas vezes no próprio ficheiro
+   — um literal meu e outro extraído da fonte do emissor, comparados `source` a `source` e `flags` a `flags` — e
+   exige que cada casamento esteja declarado aqui, com a frase da razão. Os sete, com o motivo medido (o
+   `evidence/p125-portadores-fora-do-indice-21-11-b.json` imprime rótulos, contagens e comprimentos, nunca o
+   valor): `evidence/ah2-home-papel-a-papel-v1.json` tem decisão assinada em `26e220d` — o sucessor `v3` está no
+   índice; `evidence/.sm7-sup1366j.txt`, `evidence/.sm7-sup1366k.txt`,
+   `evidence/sm7-municipal-education_supervisor-1366-sup1366j.json` e
+   `evidence/sm7-municipal-education_supervisor-1366-sup1366k.json` — a série r substituiu as corridas j e k do
+   1366, e nas finais o campo `erros_do_modulo` é `[]` (é por isso que nenhuma das quatro tem de ser citada como
+   prova viva); `evidence/ANTERIOR-p73-corpos-de-artefactos-20-11d-corpus-so-html.json` — o dump ANTERIOR ficou
+   fora porque o sucessor do dia está no índice (`evidence/p73-corpos-de-artefactos-20-11f.json`);
+   `evidence/sm7-municipal-education_supervisor-390-sm8bar390.run.log` — o stdout de célula fica fora quando o
+   registo json da mesma célula está no índice (`evidence/sm7-municipal-education_supervisor-390-sm8bar390.json`).
+   Todos os casamentos dos sete têm o rótulo `chave`, que é a classe já resolvida no §SM.14 e no §SM.24: o
+   padrão do portão não distingue «chave de sessão» de «nome de campo acabado em chave», e é por isso que a
+   proteção aqui é a declaração com frase, não a convicção de que o valor é inofensivo. Cai a frase desta lista,
+   o nome volta a contar como esquecimento e o `pacote-municipal-confere-pecas.mjs` dá vermelho por nome — a
+   exclusão dele lê-se da fonte do guard, não de uma segunda lista que eu manteria à mão.
+
 
 ## 6 · Índice das peças nomeadas
 

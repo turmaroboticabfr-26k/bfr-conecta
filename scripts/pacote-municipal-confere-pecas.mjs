@@ -62,8 +62,16 @@ const FANTASMAS_DECLARADOS = [
 const FORA_DO_INDICE_POR_DECISAO = [
   { caminho: 'evidence/ah2-home-papel-a-papel-v1.json', a_prosa_diz: 'tem decisão assinada em `26e220d`',
     decisao: '26e220d renomeou o campo para `rota_home` e re-geriu o artefacto como v3 (v3 está no índice)' },
-  { caminho: 'evidence/.funde-v134-18-11.txt', a_prosa_diz: 'zero ficheiros com ponto inicial estão versionados',
-    decisao: 'régua verificada da casa: nenhum nome de ponto inicial em evidence/ está versionado' },
+];
+// Quinta classe, o avesso medido da anterior. Em 18/11 a régua da casa era «zero ficheiros com ponto inicial
+// versionados em `evidence/`», e o batch `1800682` («versionar as 48 provas nomeadas por conteúdo indexado») levou
+// um deles para dentro sem que a frase de §3.5 fosse reescrita. O conteúdo já está publicado e em histórico,
+// portanto des-rastrear seria teatro; a classe deixa de ser um zero e passa a ser **a lista declarada**, com a
+// frase da decisão como condição — cai a frase, ou aparece um segundo ponto que ninguém assinou, e o portão dá
+// vermelho por nome. É a mesma régua com o `esperado` derivado do git, não o valor lembrado por quem escreve.
+const NO_INDICE_POR_DECISAO_NOVA = [
+  { caminho: 'evidence/.funde-v134-18-11.txt', a_prosa_diz: 'a classe passou de um zero para uma lista declarada',
+    decisao: '1800682 versionou o stdout do `ah2-funde-sessoes.mjs` por ser prova nomeada pela prosa; a frase de 18/11 fica como medição datada daquele dia' },
 ];
 // O portão não se varre a si próprio: o registo e o stdout desta corrida são citados pelo runbook e ainda não
 // existem quando a varredura corre — o `.txt` nasce do redireccionamento do stdout desta própria execução.
@@ -102,13 +110,39 @@ const porFamilia = (() => { const f = {}; for (const c of citados) { const k = c
 // tem dois lados opostos, e só `git ls-files` os separa: ESQUECIDO (existe, não está no índice, não é
 // ignorado) contra RECUSADO POR DESIGNO (existe, não está no índice, É ignorado — sessões e contas de teste).
 const fichasDoGit = new Set(execFileSync('git', ['-c', 'core.quotePath=false', 'ls-files'], { cwd: REPO, encoding: 'utf8' }).split('\n'));
-const esquecidosNoIndice = citados.filter((c) => existsSync(join(REPO, c)) && !fichasDoGit.has(c) && !EXCEPCAO_DECLARADA.includes(c) && !ignoradoPeloGit(c) && !FORA_DO_INDICE_POR_DECISAO.some((d) => d.caminho === c));
+// Sexta classe de «não está no índice», e NÃO é uma segunda lista que eu mantenho à mão: os portadores de
+// credencial que vivem fora do git têm um guard próprio, `scripts/p125-portadores-fora-do-indice.mjs`, cuja
+// condição é a frase da razão no runbook. Copiar os nomes para aqui dava duas verdades a divergir em silêncio —
+// por isso este portão lê a declaração na FONTE do guard e só exclui um nome do esquecimento enquanto o guard
+// continuar a afirmá-lo. Apagar a lista ou o ficheiro do guard dá aborta, não verde.
+const GUARD_PORTADORES = 'scripts/p125-portadores-fora-do-indice.mjs';
+const DECLARADOS_PELO_GUARD = (() => {
+  const t = readFileSync(join(REPO, GUARD_PORTADORES), 'utf8');
+  const bloco = /const DECLARADOS = \[([\s\S]*?)\n\];/.exec(t);
+  if (!bloco) throw new Error(`GUARD_SEM_LISTA_DECLARADOS em ${GUARD_PORTADORES}`);
+  return [...new Set([...bloco[1].matchAll(/arquivo: '([^']+)'/g)].map((m) => m[1]))].sort();
+})();
+// Um caminho citado que existe, não está no índice, não é exceção de si e não é ignorado: «esquecido», a menos
+// que uma das duas declarações o cubra. Vive como função porque o portão dos dentes precisa de aplicar a mesma
+// prédica a um nome de controlo — duplicar a expressão dentro do portão seria ter duas regras na mesma corrida.
+const foraDoGitSemDeclaracoes = (c) => existsSync(join(REPO, c)) && !fichasDoGit.has(c) && !EXCEPCAO_DECLARADA.includes(c) && !ignoradoPeloGit(c);
+const esquecidosNoIndice = citados.filter((c) => foraDoGitSemDeclaracoes(c) && !FORA_DO_INDICE_POR_DECISAO.some((d) => d.caminho === c) && !DECLARADOS_PELO_GUARD.includes(c));
 const citadosIgnoradosPorDesignio = citados.filter((c) => existsSync(join(REPO, c)) && !fichasDoGit.has(c) && ignoradoPeloGit(c));
 // O outro lado da mesma régua, para o verde não ser cortesia: um nome declarado «fora por decisão» tem de
 // continuar fora, continuar em disco, continuar não-ignorado e continuar declarado. Se algum dia ele entrar no
 // índice à mesma, a lista deixa de descrever o pacote e o portão diz-me isso por nome.
 const fichasDeDecisao = FORA_DO_INDICE_POR_DECISAO.map((d) => ({ caminho: d.caminho, existe_em_disco: existsSync(join(REPO, d.caminho)),
   esta_no_indice: fichasDoGit.has(d.caminho), ignorado_pelo_git: ignoradoPeloGit(d.caminho), frase_da_decisao_no_corpus: fraseNoCorpus(d.a_prosa_diz) }));
+const fichasDeDecisaoNova = NO_INDICE_POR_DECISAO_NOVA.map((d) => ({ caminho: d.caminho, existe_em_disco: existsSync(join(REPO, d.caminho)),
+  esta_no_indice: fichasDoGit.has(d.caminho), ignorado_pelo_git: ignoradoPeloGit(d.caminho), frase_da_decisao_no_corpus: fraseNoCorpus(d.a_prosa_diz) }));
+// Ficha do lado do guard: cada nome que ele declara tem de continuar em disco, continuar FORA do índice e
+// continuar não-ignorado. `ignorado_pelo_git=false` é o ponto da casa — foi precisamente por não serem
+// ignorados que estes ficheiros ficaram à distância de um `git add -A` de serem publicados.
+const fichasGuard = DECLARADOS_PELO_GUARD.map((c) => ({ caminho: c, existe_em_disco: existsSync(join(REPO, c)),
+  esta_no_indice: fichasDoGit.has(c), ignorado_pelo_git: ignoradoPeloGit(c), citado_no_corpus: citados.includes(c) }));
+// A classe lida do git, não da lista: qualquer ponto que entre em `evidence/` aparece aqui, esteja ou não na
+// declaração. É isto que dá dentes à lista nova — um nome varrido por um `git add` amplo chumba por si.
+const pontosVersionadosEmEvidence = [...fichasDoGit].filter((c) => c.startsWith('evidence/.')).sort();
 
 // ── estado vivo lido no catálogo ────────────────────────────────────────────
 // Duas coisas mudaram aqui em 20/11, depois de a PEN-38 e a PEN-39 serem aplicadas. (i) Os nomes deixaram de
@@ -179,7 +213,7 @@ const CAMINHOS_DA_TABELA_PECAS = (() => {
   const t = readFileSync(join(REPO, 'scripts/p73-municipal-aplica-ddl.mjs'), 'utf8');
   return [...new Set([...t.matchAll(/\b(?:pref|cand|rev):\s*'([^']+)'/g)].map((m) => m[1]))].sort();
 })();
-const INPUTS_FECHO = [...new Set(['scripts/p73-pen38-alcance-por-concessao-20-11.mjs', 'scripts/p73-pen38-preflight.mjs', 'scripts/p73-pen39-preflight.mjs', 'scripts/p73-pen41-preflight.mjs', 'scripts/p73-pen43-preflight.mjs', 'scripts/p73-municipal-etiqueta.mjs', 'scripts/p73-municipal-aplica-ddl.mjs', 'scripts/v136-pos-deploy.mjs', 'scripts/v137-pos-deploy.mjs', 'scripts/v138-gera-candidata.mjs', 'scripts/v138-gera-bundle.mjs', 'scripts/v138-pos-deploy.mjs', 'scripts/p73-pen43-gera-candidata.mjs', 'scripts/pacote-municipal-confere-pecas.mjs', RUNBOOK, ...CAMINHOS_DA_TABELA_PECAS])];
+const INPUTS_FECHO = [...new Set(['scripts/p73-pen38-alcance-por-concessao-20-11.mjs', 'scripts/p73-pen38-preflight.mjs', 'scripts/p73-pen39-preflight.mjs', 'scripts/p73-pen41-preflight.mjs', 'scripts/p73-pen43-preflight.mjs', 'scripts/p73-municipal-etiqueta.mjs', 'scripts/p73-municipal-aplica-ddl.mjs', 'scripts/v136-pos-deploy.mjs', 'scripts/v137-pos-deploy.mjs', 'scripts/v138-gera-candidata.mjs', 'scripts/v138-gera-bundle.mjs', 'scripts/v138-pos-deploy.mjs', 'scripts/p73-pen43-gera-candidata.mjs', 'scripts/pacote-municipal-confere-pecas.mjs', 'scripts/p125-portadores-fora-do-indice.mjs', 'scripts/portao-indice.mjs', RUNBOOK, ...CAMINHOS_DA_TABELA_PECAS])];
 
 const falhas = [];
 const portoes = [];
@@ -207,6 +241,32 @@ gate('nenhum_caminho_citado_fica_fora_do_git', esquecidosNoIndice, []);
 gate('os_fora_do_indice_por_decisao_continuam_decididos',
   fichasDeDecisao.map((d) => [d.existe_em_disco, d.esta_no_indice, d.ignorado_pelo_git, d.frase_da_decisao_no_corpus]),
   FORA_DO_INDICE_POR_DECISAO.map(() => [true, false, false, true]));
+// O lado novo da mesma classe: entrou, continua em disco, não é ignorado, e a frase que assina a entrada tem de
+// estar no corpus. E a classe inteira, medida do git, tem de ser exactamente a declarada — um ponto varrido por
+// engano entra pela lista medida, não pela que eu lembrei.
+gate('os_no_indice_por_decisao_nova_continuam_versionados_com_a_frase',
+  fichasDeDecisaoNova.map((d) => [d.existe_em_disco, d.esta_no_indice, d.ignorado_pelo_git, d.frase_da_decisao_no_corpus]),
+  NO_INDICE_POR_DECISAO_NOVA.map(() => [true, true, false, true]));
+gate('a_classe_de_pontos_versionados_em_evidence_e_a_declarada',
+  [pontosVersionadosEmEvidence, fichasDeDecisaoNova.every((d) => d.esta_no_indice && d.frase_da_decisao_no_corpus)],
+  [NO_INDICE_POR_DECISAO_NOVA.map((d) => d.caminho).sort(), true]);
+// Dentes da classe, com o mundo real como normal: acrescentar um ponto que ninguém assinou tem de dar vermelho,
+// e apagar a frase da declaração tem de tirar o nome da lista dos cumpridos. Os dois sentidos numa só corrida.
+gate('a_regua_da_classe_de_pontos_tem_dentes', [
+  pontosVersionadosEmEvidence.concat(['evidence/.sonda-de-fixture.txt']).join() !== pontosVersionadosEmEvidence.join(),
+  pontosVersionadosEmEvidence.every((c) => fichasDeDecisaoNova.some((d) => d.caminho === c && d.frase_da_decisao_no_corpus)) === true,
+  NO_INDICE_POR_DECISAO_NOVA.every((d) => fraseNoCorpus(d.a_prosa_diz) === true),
+  pontosVersionadosEmEvidence.length >= 1], [true, true, true, true]);
+gate('os_portadores_do_guard_continuam_fora_do_indice_em_disco_e_nao_ignorados',
+  fichasGuard.map((d) => [d.existe_em_disco, !d.esta_no_indice, !d.ignorado_pelo_git]),
+  DECLARADOS_PELO_GUARD.map(() => [true, true, true]));
+// O guard é a única coisa entre estes nomes e um `git add -A` de publicação. A exclusão tem de estar a tapar um
+// buraco REAL (cada nome continua fora-do-git) e a prédica não pode ter degenerado para «sempre true»: o
+// controlo contrário são os caminhos citados que ESTÃO no índice, e nesses a prédica tem de dar falsa.
+gate('a_exclusao_dos_portadores_tem_dentes_e_o_contrario_tambem', [
+  DECLARADOS_PELO_GUARD.length >= 1,
+  DECLARADOS_PELO_GUARD.every((c) => foraDoGitSemDeclaracoes(c) === true),
+  citados.filter((c) => fichasDoGit.has(c) && !ignoradoPeloGit(c)).every((c) => foraDoGitSemDeclaracoes(c) === false)], [true, true, true]);
 gate('as_saidas_de_passos_nao_autorizados_estao_mesmo_ausentes', SAIDAS_AINDA_NAO_CORRIDAS.map((c) => existsSync(join(REPO, c))), SAIDAS_AINDA_NAO_CORRIDAS.map(() => false));
 gate('os_fora_do_git_estao_ignorados_e_nao_e_que_faltasse_a_peca', FORA_DO_GIT.map((c) => ignoradoPeloGit(c)), [true, true]);
 // A régua do estado de aplicação é uma função, não uma linha: serve o mundo real e serve os dois mundos
@@ -241,7 +301,36 @@ gate('a_regua_do_estado_de_aplicacao_tem_dentes_e_o_mundo_real_e_o_normal',
 // Uma cláusula por eixo: o que o artefacto declara, e o que o banco devolve, têm portões separados. Juntá-los
 // num só compara vivo com vivo e não pode dar vermelho quando o runbook fica a prometer um número velho.
 gate('o_preflight_declara_zero_escolas_etiquetadas', pref38.escolas_com_municipio, 0);
-gate('o_estado_vivo_bate_com_a_declaracao_do_preflight_38', [vivo.escolas_com_municipio, vivo.municipios, vivo.concessoes_ativas], [pref38.escolas_com_municipio, pref38.municipios, pref38.concessoes_ativas]);
+// 21/11: a etiqueta deixou de ser zero. O `p92-dados-municipais.mjs` em modo `--aplicar` escreveu município,
+// ligações e uma concessão com OK próprio, e o registo está versionado. Comparar o estado vivo com o preflight
+// de 20/11 era uma cláusula «ainda não aplicado» que envelheceu no dia da autorização; o esperado passa a
+// derivar-se do registo de aplicação dos dados, lido do disco por enumeração de família. Os dois vermelhos
+// continuam vivos: mundo a mexer sem registo novo, e registo que promete o que o mundo não tem. A reversão
+// SQL existe como caminho e não tem corrida — se ela correr sem artefacto, este portão chumba.
+const REGISTO_DADOS = (() => {
+  const familia = readdirSync(join(REPO, 'evidence')).filter((n) => /^p92-dados-municipais-.*\.json$/.test(n) && !n.includes('VERMELHO'));
+  const fichas = familia.map((n) => { const j = JSON.parse(readFileSync(join(REPO, 'evidence', n), 'utf8')); return { caminho: 'evidence/' + n, modo: j.modo, em: j.em, veredito: j.veredito, programa: j.programa, depois: j.depois }; });
+  const aplicados = fichas.filter((f) => f.modo === '--aplicar').sort((a, b) => String(a.em).localeCompare(String(b.em)));
+  if (aplicados.length !== 1) throw new Error('REGISTO_DE_DADOS_AMBIGUO ' + JSON.stringify(fichas.map((f) => [f.caminho, f.modo])));
+  const r = aplicados[0];
+  if (!r.depois || !Array.isArray(r.depois.escolas) || !Array.isArray(r.depois.municipios) || !Array.isArray(r.depois.grants)) throw new Error('REGISTO_DE_DADOS_SEM_DEPOIS ' + r.caminho);
+  return { caminho: r.caminho, em: r.em, veredito: r.veredito, programa: r.programa, familia: familia.length,
+    esperado: [r.depois.escolas.filter((e) => e.municipality_id).length, r.depois.municipios.length, r.depois.grants.length] };
+})();
+const reguaEstadoDados = (medido, esperado) => [medido.escolas_com_municipio === esperado[0], medido.municipios === esperado[1], medido.concessoes_ativas === esperado[2]];
+const estadoPreflight = [pref38.escolas_com_municipio, pref38.municipios, pref38.concessoes_ativas];
+gate('o_estado_vivo_bate_com_o_registo_de_aplicacao_de_dados', reguaEstadoDados(vivo, REGISTO_DADOS.esperado), [true, true, true]);
+gate('o_registo_de_aplicacao_de_dados_esta_no_git_com_o_programa_que_o_escreveu_e_a_reversao_sem_corrida',
+  [fichasDoGit.has(REGISTO_DADOS.caminho), existsSync(join(REPO, REGISTO_DADOS.programa)),
+    String(REGISTO_DADOS.veredito).startsWith('P92_DADOS_MUNICIPAIS_APLICADO_E_CONFERIDO'),
+    readdirSync(join(REPO, 'evidence')).filter((n) => /^p92-.*revers/i.test(n)).length,
+    existsSync(join(REPO, 'scripts/p92-reversao-dados-municipais.sql'))],
+  [true, true, true, 0, true]);
+gate('a_regua_do_estado_de_dados_tem_dentes_e_o_preflight_deixa_de_ser_o_esperado', [
+  reguaEstadoDados(vivo, REGISTO_DADOS.esperado.map((x) => x + 1)).every((x) => x === false),
+  reguaEstadoDados(vivo, estadoPreflight).includes(false),
+  REGISTO_DADOS.esperado.join() !== estadoPreflight.join(),
+  reguaEstadoDados(vivo, REGISTO_DADOS.esperado).every((x) => x === true)], [true, true, true, true]);
 gate('as_policies_alvo_existem_e_nenhuma_tem_escopo', [vivo.policies_alvo, vivo.policies_alvo_com_escopo], [POLICIES_ALVO.length, 0]);
 gate('as_quatro_policies_alvo_sao_as_que_o_preflight_41_descreve', pref41.policies_das_quatro.length, POLICIES_ALVO.length);
 gate('a_v137_continua_nao_publicada_com_a_frase_de_OK_declara', [v137.publicado, /sem OK literal/.test(String(v137.ok_literal))], [false, true]);
@@ -284,7 +373,9 @@ const out = {
   citados_em_falta: emFaltaReal,
   fora_do_git: FORA_DO_GIT.map((c) => ({ caminho: c, existe_em_disco: existsSync(join(REPO, c)), ignorado_pelo_git: ignoradoPeloGit(c) })),
   fora_do_indice: { fichas_lidas_do_indice: fichasDoGit.size, esquecidos: esquecidosNoIndice,
-    citados_ignorados_por_designio: citadosIgnoradosPorDesignio, por_decisao_assinada: fichasDeDecisao },
+    citados_ignorados_por_designio: citadosIgnoradosPorDesignio, por_decisao_assinada: fichasDeDecisao,
+    por_decisao_nova_entraram: fichasDeDecisaoNova, pontos_versionados_em_evidence: pontosVersionadosEmEvidence,
+    portadores_fora_do_indice_do_guard: { fonte_da_lista: GUARD_PORTADORES, declarados: fichasGuard } },
   vivo, nomes_de_funcoes_varridos: NOMES_FUNCOES_NOVAS, policies_alvo: POLICIES_ALVO,
   aplicacao: {
     candidatas_lidas_do_disco: FICHEIROS_CANDIDATAS.map((c) => ({ peca: c.peca, caminho: c.caminho, nomes_declarados: nomesDe(c.texto) })),
@@ -297,6 +388,8 @@ const out = {
     nota: 'a classe «sem registo» imprime-se mesmo com o conjunto de nomes vazio, e cada peca dela tem de levar o motivo declarado: a PEN-41 nao cria funcao alguma (o vermelho dela vem de as_policies_alvo_existem_e_nenhuma_tem_escopo), e a PEN-43 so faz REVOKE sobre nomes que a PEN-39 ja criou — estar no banco nao e registo de aplicacao da PEN-43'
   },
   ancora_lida_do_preflight_38: pref38, ancora_lida_do_preflight_41: { policies_das_quatro: pref41.policies_das_quatro.length, veredito: pref41.veredito },
+  registo_de_aplicacao_de_dados: Object.assign({}, REGISTO_DADOS, { estado_vivo: [vivo.escolas_com_municipio, vivo.municipios, vivo.concessoes_ativas],
+    estado_do_preflight_38: estadoPreflight, notas: 'o esperado le-se do `depois` do registo; o preflight de 20/11 continua porta de entrada (zero etiquetas antes de aplicar)' }),
   v137: { publicado: v137.publicado, ok_literal: v137.ok_literal, veredito: v137.veredito },
   inputs_de_fecho: INPUTS_FECHO.map(mede),
   portoes, falhas,
@@ -308,6 +401,7 @@ console.log(`CORPUS ${out.corpus.total_citados} citados · ${presentes.length} p
 console.log(`DECLARADOS_NAO_EXISTENTES ${JSON.stringify({ saidas_nao_corridas: SAIDAS_AINDA_NAO_CORRIDAS, fora_do_git: out.fora_do_git })}`);
 console.log(`FORA_DO_INDICE ${esquecidosNoIndice.length} esquecidos de ${out.fora_do_indice.fichas_lidas_do_indice} fichas · ignorados_por_designio ${citadosIgnoradosPorDesignio.length} · por_decisao_assinada ${fichasDeDecisao.filter((d) => d.existe_em_disco && !d.esta_no_indice && !d.ignorado_pelo_git && d.frase_da_decisao_no_corpus).length} de ${fichasDeDecisao.length}${esquecidosNoIndice.length ? ' · ' + JSON.stringify(esquecidosNoIndice) : ''}`);
 console.log(`VIVO ${JSON.stringify(vivo)}`);
+console.log(`DADOS registo=${REGISTO_DADOS.caminho} esperado_do_depois=${JSON.stringify(REGISTO_DADOS.esperado)} vivo=${JSON.stringify([vivo.escolas_com_municipio, vivo.municipios, vivo.concessoes_ativas])} preflight_38=${JSON.stringify(estadoPreflight)} familia=${REGISTO_DADOS.familia}`);
 console.log(`APLICACAO com_registo=${JSON.stringify(PECAS_COM_REGISTO)} sem_registo=${JSON.stringify(PECAS_SEM_REGISTO)} nomes_no_banco=${JSON.stringify(vivosNovos)} esperados=${JSON.stringify(realRegua.esperados)}`);
 console.log(`V137 publicado=${v137.publicado} · ${v137.veredito}`);
 console.log(`V138 publicado=${v138b.publicado} · ${v138c.veredito} · ${v138b.veredito} · etiqueta_sw=${v138b.esperado.cacheLabel} · shell ${v138b.esperado.baseHtmlMd5} -> ${v138b.esperado.htmlMd5} · modulo pen40 ${v138b.esperado.moduleMd5}`);

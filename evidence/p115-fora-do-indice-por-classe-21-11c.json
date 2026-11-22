@@ -1,0 +1,744 @@
+{
+  "programa": "scripts/p115-classifica-fora-do-indice.mjs",
+  "em": "2026-11-22T00:34:06.453Z",
+  "sufixo": "21-11c",
+  "metodo": "git ls-files --others --exclude-standard desdobra directorios; as regex de credencial sao importadas por fonte e flags de scripts/portao-indice.mjs, nao copiadas a mao.",
+  "contagens": {
+    "fora_do_indice": 536,
+    "no_indice": 2770,
+    "ignorados_por_regra": 89
+  },
+  "por_classe": {
+    "SCRATCH_DE_RAIZ": {
+      "n": 57,
+      "bytes": 198821,
+      "exemplos": [
+        ".estado-final-18-11.txt",
+        ".g-cita-sm21f.txt",
+        ".g-cita-sm21g.txt",
+        ".g-indice-sm21f.txt",
+        ".g-rm-numeros-agora.txt",
+        ".g-sm22-adenda-commit.txt"
+      ]
+    },
+    "EVIDENCIA_LIMPA": {
+      "n": 137,
+      "bytes": 5580894,
+      "exemplos": [
+        "bfr-candidata-v138-DESCARTADA-parser-de-colunas-cortado/index.html",
+        "estado_painel.mjs",
+        "evidence/.ah1-cita-18-11-sm21f.json",
+        "evidence/.ah1-cita-18-11-v134.json",
+        "evidence/.ah1-cita-18-11-v134b.json",
+        "evidence/.ah1-cita-18-11-v134c.json"
+      ]
+    },
+    "CAPTURA_DE_STDOUT": {
+      "n": 288,
+      "bytes": 520954,
+      "exemplos": [
+        "estado_painel.out.txt",
+        "evidence/.confirma-verde.txt",
+        "evidence/.confirma-vermelho.txt",
+        "evidence/.g-cita-v134.txt",
+        "evidence/.g-cita-v134b.txt",
+        "evidence/.g-cita-v134c.txt"
+      ]
+    },
+    "PORTADOR_DE_CREDENCIAL": {
+      "n": 7,
+      "bytes": 80468,
+      "exemplos": [
+        "evidence/.sm7-sup1366j.txt",
+        "evidence/.sm7-sup1366k.txt",
+        "evidence/ANTERIOR-p73-corpos-de-artefactos-20-11d-corpus-so-html.json",
+        "evidence/ah2-home-papel-a-papel-v1.json",
+        "evidence/sm7-municipal-education_supervisor-1366-sup1366j.json",
+        "evidence/sm7-municipal-education_supervisor-1366-sup1366k.json"
+      ]
+    },
+    "VERMELHO_PRESERVADO": {
+      "n": 47,
+      "bytes": 704483,
+      "exemplos": [
+        "evidence/ANTERIOR-ah2-mobile2-m5-secretary-rep1-2-larguras-no-mesmo-filho-mortas-na-2a.json",
+        "evidence/ANTERIOR-ah2-mobile2-m5-secretary-rep2-2-larguras-no-mesmo-filho-mortas-na-2a.json",
+        "evidence/ANTERIOR-p73-cobertura-m5-por-ar-19-11-agulha-const-TODOS-nao-casava-no-condutor.txt",
+        "evidence/ANTERIOR-p73-cobertura-m5-por-ar-19-11-coerencia-contada-depois-do-continue-estrutural-0.json",
+        "evidence/ANTERIOR-p73-cobertura-m5-por-ar-19-11-coerencia-contada-depois-do-continue-estrutural-0.txt",
+        "evidence/ANTERIOR-p73-cobertura-m5-por-ar-fotografia-01-travada-dobra-como-por-medir.json"
+      ]
+    }
+  },
+  "por_directorio": {
+    "(raiz)": 59,
+    "bfr-candidata-v138-DESCARTADA-parser-de-colunas-cortado": 1,
+    "evidence": 468,
+    "scripts": 8
+  },
+  "portadores": [
+    {
+      "f": "evidence/.sm7-sup1366j.txt",
+      "bytes": 5508,
+      "occ": {
+        "jwt": 0,
+        "senha": 3,
+        "url_token": 0
+      }
+    },
+    {
+      "f": "evidence/.sm7-sup1366k.txt",
+      "bytes": 5405,
+      "occ": {
+        "jwt": 0,
+        "senha": 2,
+        "url_token": 0
+      }
+    },
+    {
+      "f": "evidence/ANTERIOR-p73-corpos-de-artefactos-20-11d-corpus-so-html.json",
+      "bytes": 1823,
+      "occ": {
+        "jwt": 0,
+        "senha": 4,
+        "url_token": 0
+      }
+    },
+    {
+      "f": "evidence/ah2-home-papel-a-papel-v1.json",
+      "bytes": 13910,
+      "occ": {
+        "jwt": 0,
+        "senha": 42,
+        "url_token": 0
+      }
+    },
+    {
+      "f": "evidence/sm7-municipal-education_supervisor-1366-sup1366j.json",
+      "bytes": 23191,
+      "occ": {
+        "jwt": 0,
+        "senha": 18,
+        "url_token": 0
+      }
+    },
+    {
+      "f": "evidence/sm7-municipal-education_supervisor-1366-sup1366k.json",
+      "bytes": 20453,
+      "occ": {
+        "jwt": 0,
+        "senha": 2,
+        "url_token": 0
+      }
+    },
+    {
+      "f": "evidence/sm7-municipal-education_supervisor-390-sm8bar390.run.log",
+      "bytes": 10178,
+      "occ": {
+        "jwt": 0,
+        "senha": 3,
+        "url_token": 0
+      }
+    }
+  ],
+  "vermelhos_preservados": [
+    "evidence/ANTERIOR-ah2-mobile2-m5-secretary-rep1-2-larguras-no-mesmo-filho-mortas-na-2a.json",
+    "evidence/ANTERIOR-ah2-mobile2-m5-secretary-rep2-2-larguras-no-mesmo-filho-mortas-na-2a.json",
+    "evidence/ANTERIOR-p73-cobertura-m5-por-ar-19-11-agulha-const-TODOS-nao-casava-no-condutor.txt",
+    "evidence/ANTERIOR-p73-cobertura-m5-por-ar-19-11-coerencia-contada-depois-do-continue-estrutural-0.json",
+    "evidence/ANTERIOR-p73-cobertura-m5-por-ar-19-11-coerencia-contada-depois-do-continue-estrutural-0.txt",
+    "evidence/ANTERIOR-p73-cobertura-m5-por-ar-fotografia-01-travada-dobra-como-por-medir.json",
+    "evidence/ANTERIOR-p73-cobertura-m5-por-ar-fotografia-01-travada-dobra-como-por-medir.txt",
+    "evidence/ANTERIOR-p73-corpo-unico-medido-antes-pdf-texto-99874ef2-20-11e-corpus-so-html-declarou-unico-o-render-de-pdf-ja-versionado.json",
+    "evidence/ANTERIOR-p73-extracao-de-corpos-unicos-20-11e-corpus-so-html.json",
+    "evidence/bu6-formas-de-chamada-do-modulo-municipal-20-11-VERMELHO-documento_03_ainda_nao_cita_a_frase_nova-VERMELHO.json",
+    "evidence/bu6-formas-de-chamada-do-modulo-municipal-20-11-VERMELHO-minha-agulha-supabase-dot-from-nao-existe-no-corpus-e-o-campo-de-bytes-era-htmlbytes.json",
+    "evidence/bu6-formas-de-chamada-do-modulo-municipal-20-11-VERMELHO-minha-gate-comparava-ocorrencias-do-helper-com-nomes-distintos.json",
+    "evidence/bu6-stdout-primeira-corrida-VERMELHO-defeitos-do-meu-instrumento.txt",
+    "evidence/bu6-stdout-segunda-corrida-VERMELHO-unidades-ocorrencias-vs-nomes.txt",
+    "evidence/p114-leitor-pen40-no-ar-ANTERIOR-duracao-media-depois-do-fetch.json",
+    "evidence/p114-leitor-pen40-no-ar-ANTERIOR-duracao-media-depois-do-fetch.txt",
+    "evidence/p116-consistencia-de-versao-21-11-A-VERMELHO.json",
+    "evidence/p116-consistencia-de-versao-21-11-ANTES-VERMELHO-duas_cifras_do_painel_velhas_e_zero_blocos_SM_sobre_a_cadeia_v140_v142.json",
+    "evidence/p116-consistencia-de-versao-21-11-antes-VERMELHO-minha-regua-de-arestas-nao-tem-positivo-e-o-recorte-do-painel-nao-casava-o-code.json",
+    "evidence/p117-corrida-21-11-ANTES-VERMELHO.txt",
+    "evidence/p117-varredura-de-escritas-21-11-ANTES-VERMELHO-a-regua-de-familia-chumava-Delta-e-Sigma-que-sao-os-unicos-gregos-do-corpus.json",
+    "evidence/p117-varredura-de-escritas-21-11-ANTES-VERMELHO-a-regua-de-familia-chumava-Delta-e-Sigma-que-sao-os-unicos-gregos-do-corpus.txt",
+    "evidence/p36-browser-supervisao-stdout-ANTERIOR-runtime-nao-exposto.txt",
+    "evidence/p36-recon-linhas-supervisao-stdout-ANTERIOR-declaracao-duplicada-de-HOST.txt",
+    "evidence/p36-recon-linhas-supervisao-stdout-ANTERIOR-host-regex-panhado-do-c2-lib.txt",
+    "evidence/p36b2-supervisao-stdout-ANTERIOR-sub-aba-nao-assentou-a-390px-19-11.txt",
+    "evidence/p36b2-verifica-instrumento-ANTERIOR-antes-da-escada-de-rastreio-19-11.json",
+    "evidence/p36b2-verifica-instrumento-ANTERIOR-antes-dos-dos-controles-19-11.json",
+    "evidence/p36b2-verifica-instrumento-ANTERIOR-predica-do-estado-nao-casou-19-11.json",
+    "evidence/p36b2-verifica-instrumento-stdout-ANTERIOR-antes-da-escada-de-rastreio-19-11.txt",
+    "evidence/p36b2-verifica-instrumento-stdout-ANTERIOR-antes-dos-dos-controles-19-11.txt",
+    "evidence/p73-entrar-por-senha-cadeias-20-11e--monitor-pen40-VERMELHO-regra_da_causa_sem_positivo_para_cadeia_viva.json",
+    "evidence/p73-pen41-preflight-candidata-20-11e-VERMELHO-exigi-and-na-presenca-e-o-controlo-do-catalogo-usa-or.json",
+    "evidence/p73-pen41-preflight-candidata-20-11e-VERMELHO-minha-clausula-escrita-a-mao-com-parenteses-contra-uma-forma-que-os-remove-e-booleans-do-api-comparados-a-texto.json",
+    "evidence/p73-pen41-stdout-modo-reversao-VERMELHO-esperado-porque-nada-foi-aplicado.txt",
+    "evidence/p73-pen41-stdout-primeira-corrida-VERMELHO-defeitos-do-meu-instrumento.txt",
+    "evidence/p73-pen41-stdout-segunda-corrida-VERMELHO-and-na-presenca.txt",
+    "evidence/p73-renova-cadeias-stdout-ANTERIOR-parenteses-partidos-no-enum-19-11.txt",
+    "evidence/pacote-municipal-pecas-20-11-sm28-VERMELHO-a-classe-de-ponto-entrou-no-indice-com-1800682-e-o-preflight-38-era-o-esperado-antes-do-P92.json",
+    "evidence/v135-deploy-stdout-19-11-ANTERIOR-primeiro-deploy-ainda-sem-headers.txt",
+    "evidence/v135-deployments-list-depois-19-11-ANTERIOR-primeiro-deploy.json",
+    "evidence/v135-diario-publicacao-stdout-19-11-ANTERIOR-g10-e-destruturacao-sem-o-v.txt",
+    "evidence/v135-gera-bundle-stdout-19-11-ANTERIOR-ancora-csp-com-ponto-e-virgula-fora-do-slice.txt",
+    "evidence/v135-gera-bundle-stdout-19-11-ANTERIOR-ancora-s9-com-aspa-que-nao-existe-no-corpo.txt",
+    "evidence/v135-pos-deploy-stdout-19-11-ANTERIOR-assets-sem-headers-porque-o-worker-nao-corre-para-assets.txt",
+    "evidence/v135-pos-deploy-stdout-19-11-ANTERIOR-c10-sem-o-degrau-intermedio.txt",
+    "evidence/v136-preflight-stdout-19-11-ANTERIOR-B10-basehtml-igual-ao-ar.txt"
+  ],
+  "evidencias_limpas": [
+    {
+      "f": "bfr-candidata-v138-DESCARTADA-parser-de-colunas-cortado/index.html",
+      "bytes": 3551245
+    },
+    {
+      "f": "estado_painel.mjs",
+      "bytes": 823
+    },
+    {
+      "f": "evidence/.ah1-cita-18-11-sm21f.json",
+      "bytes": 9969
+    },
+    {
+      "f": "evidence/.ah1-cita-18-11-v134.json",
+      "bytes": 9969
+    },
+    {
+      "f": "evidence/.ah1-cita-18-11-v134b.json",
+      "bytes": 9969
+    },
+    {
+      "f": "evidence/.ah1-cita-18-11-v134c.json",
+      "bytes": 9969
+    },
+    {
+      "f": "evidence/.ah1-cita-18-11-v134d.json",
+      "bytes": 9969
+    },
+    {
+      "f": "evidence/.ah1-cita-18-11-v134e.json",
+      "bytes": 9969
+    },
+    {
+      "f": "evidence/.ah1-varre-escritas-18-11-sm21f.json",
+      "bytes": 1914
+    },
+    {
+      "f": "evidence/.ah1-varre-escritas-18-11-v134.json",
+      "bytes": 1914
+    },
+    {
+      "f": "evidence/.ah1-varre-escritas-18-11-v134b.json",
+      "bytes": 1914
+    },
+    {
+      "f": "evidence/.ah1-varre-escritas-18-11-v134c.json",
+      "bytes": 1914
+    },
+    {
+      "f": "evidence/.ah1-varre-escritas-18-11-v134d.json",
+      "bytes": 1914
+    },
+    {
+      "f": "evidence/.sm18-cita-h.json",
+      "bytes": 9969
+    },
+    {
+      "f": "evidence/.sm18-cita-i.json",
+      "bytes": 9969
+    },
+    {
+      "f": "evidence/.sm18-cita-j.json",
+      "bytes": 9969
+    },
+    {
+      "f": "evidence/.sm18-cita-k.json",
+      "bytes": 9969
+    },
+    {
+      "f": "evidence/.sm18-cita-l.json",
+      "bytes": 9969
+    },
+    {
+      "f": "evidence/.sm18-varre-h.json",
+      "bytes": 1914
+    },
+    {
+      "f": "evidence/.sm18-varre-i.json",
+      "bytes": 1914
+    },
+    {
+      "f": "evidence/.sm18-varre-j.json",
+      "bytes": 1914
+    },
+    {
+      "f": "evidence/.sm18-varre-k.json",
+      "bytes": 1914
+    },
+    {
+      "f": "evidence/.sm18-varre-l.json",
+      "bytes": 1914
+    },
+    {
+      "f": "evidence/.sm7-fixture-k.out",
+      "bytes": 617
+    },
+    {
+      "f": "evidence/.sm7-fixture.out",
+      "bytes": 573
+    },
+    {
+      "f": "evidence/.sm7-fixture2.out",
+      "bytes": 617
+    },
+    {
+      "f": "evidence/.sm7-inj-i.out",
+      "bytes": 192
+    },
+    {
+      "f": "evidence/.sm7-inj-j.out",
+      "bytes": 192
+    },
+    {
+      "f": "evidence/.sm7-inj-k.out",
+      "bytes": 192
+    },
+    {
+      "f": "evidence/.sm7-inj-l.out",
+      "bytes": 192
+    },
+    {
+      "f": "evidence/.sm7-inj.out",
+      "bytes": 191
+    },
+    {
+      "f": "evidence/.sm7-inj2.out",
+      "bytes": 191
+    },
+    {
+      "f": "evidence/.sm7-inj3.out",
+      "bytes": 191
+    },
+    {
+      "f": "evidence/.sm7-inj4.out",
+      "bytes": 353
+    },
+    {
+      "f": "evidence/.sm7-inj5.out",
+      "bytes": 191
+    },
+    {
+      "f": "evidence/.sm7-inj6.out",
+      "bytes": 192
+    },
+    {
+      "f": "evidence/.sm7-inj7.out",
+      "bytes": 192
+    },
+    {
+      "f": "evidence/ah2-mobile2-21-11-pen40-a.json",
+      "bytes": 22389
+    },
+    {
+      "f": "evidence/ah2-mobile2-21-11-pen40-b.json",
+      "bytes": 22392
+    },
+    {
+      "f": "evidence/ah2-mobile2-m5-aee-4.json",
+      "bytes": 52966
+    },
+    {
+      "f": "evidence/ah2-mobile2-m5-coordinator-10.json",
+      "bytes": 17312
+    },
+    {
+      "f": "evidence/ah2-mobile2-m5-coordinator-11.json",
+      "bytes": 17314
+    },
+    {
+      "f": "evidence/ah2-mobile2-m5-coordinator-8.json",
+      "bytes": 31191
+    },
+    {
+      "f": "evidence/ah2-mobile2-m5-coordinator-9.json",
+      "bytes": 17254
+    },
+    {
+      "f": "evidence/ah2-mobile2-m5-developer-10.json",
+      "bytes": 23495
+    },
+    {
+      "f": "evidence/ah2-mobile2-m5-developer-9.json",
+      "bytes": 23495
+    },
+    {
+      "f": "evidence/ah2-mobile2-m5-director-3.json",
+      "bytes": 96841
+    },
+    {
+      "f": "evidence/ah2-mobile2-m5-education_supervisor-2.json",
+      "bytes": 9498
+    },
+    {
+      "f": "evidence/ah2-mobile2-m5-education_supervisor-3.json",
+      "bytes": 9807
+    },
+    {
+      "f": "evidence/ah2-mobile2-m5-education_supervisor-4.json",
+      "bytes": 9870
+    },
+    {
+      "f": "evidence/ah2-mobile2-m5-education_supervisor-5.json",
+      "bytes": 9864
+    },
+    {
+      "f": "evidence/ah2-mobile2-m5-education_supervisor-6.json",
+      "bytes": 9556
+    },
+    {
+      "f": "evidence/ah2-mobile2-m5-education_supervisor-7.json",
+      "bytes": 9556
+    },
+    {
+      "f": "evidence/ah2-mobile2-m5-gatekeeper-3.json",
+      "bytes": 43680
+    },
+    {
+      "f": "evidence/ah2-mobile2-m5-monitor-rep2w360.json",
+      "bytes": 8256
+    },
+    {
+      "f": "evidence/ah2-mobile2-m5-parent-3.json",
+      "bytes": 80433
+    },
+    {
+      "f": "evidence/ah2-mobile2-m5-pedagogical-4.json",
+      "bytes": 91711
+    },
+    {
+      "f": "evidence/ah2-mobile2-m5-psychology-3.json",
+      "bytes": 40026
+    },
+    {
+      "f": "evidence/ah2-mobile2-m5-secretary-10.json",
+      "bytes": 12643
+    },
+    {
+      "f": "evidence/ah2-mobile2-m5-secretary-11.json",
+      "bytes": 12337
+    },
+    {
+      "f": "evidence/ah2-mobile2-m5-secretary-9.json",
+      "bytes": 12588
+    },
+    {
+      "f": "evidence/ah2-mobile2-m5-secretary-rep1w360.json",
+      "bytes": 12177
+    },
+    {
+      "f": "evidence/ah2-mobile2-m5-secretary-rep2w360.json",
+      "bytes": 12586
+    },
+    {
+      "f": "evidence/ah2-mobile2-m5-secretary-rep2w375.json",
+      "bytes": 12281
+    },
+    {
+      "f": "evidence/ah2-mobile2-m5-social_work-3.json",
+      "bytes": 35330
+    },
+    {
+      "f": "evidence/ah2-mobile2-m5-sports_operator-4.json",
+      "bytes": 5677
+    },
+    {
+      "f": "evidence/ah2-mobile2-m5-sports_operator-5.json",
+      "bytes": 5677
+    },
+    {
+      "f": "evidence/ah2-mobile2-m5-sports_operator-6.json",
+      "bytes": 6052
+    },
+    {
+      "f": "evidence/ah2-mobile2-m5-sports_operator-7.json",
+      "bytes": 5737
+    },
+    {
+      "f": "evidence/ah2-mobile2-m5-sports_operator-8.json",
+      "bytes": 5735
+    },
+    {
+      "f": "evidence/ah2-mobile2-m5-sports_operator-9.json",
+      "bytes": 5742
+    },
+    {
+      "f": "evidence/ah2-mobile2-m5-student-3.json",
+      "bytes": 94081
+    },
+    {
+      "f": "evidence/p114-leitor-pen40-no-ar-21-11-B.json",
+      "bytes": 10757
+    },
+    {
+      "f": "evidence/p115-fora-do-indice-por-classe-21-11a.json",
+      "bytes": 19892
+    },
+    {
+      "f": "evidence/p115-fora-do-indice-por-classe-21-11b.json",
+      "bytes": 21844
+    },
+    {
+      "f": "evidence/p116-consistencia-de-versao-21-11.json",
+      "bytes": 9842
+    },
+    {
+      "f": "evidence/p117-varredura-de-escritas-21-11-D.json",
+      "bytes": 5508
+    },
+    {
+      "f": "evidence/p118-modulo-no-ar-e-o-remendo-v137-21-11.json",
+      "bytes": 1239
+    },
+    {
+      "f": "evidence/p119-agregados-no-ar-21-11-ANTES-VERDE-FALSO-minha-agulha-era-o-literal-do-rpc-e-o-ar-passa-uma-constante.json",
+      "bytes": 1242
+    },
+    {
+      "f": "evidence/p119-agregados-no-ar-21-11-B.json",
+      "bytes": 2240
+    },
+    {
+      "f": "evidence/p73-cobertura-m5-por-ar-19-11-corrigida.json",
+      "bytes": 4816
+    },
+    {
+      "f": "evidence/p73-cobertura-m5-por-ar-19-11.json",
+      "bytes": 3737
+    },
+    {
+      "f": "evidence/p73-custo-por-largura-19-11-custo-b.json",
+      "bytes": 14886
+    },
+    {
+      "f": "evidence/p73-custo-por-largura-19-11a.json",
+      "bytes": 6879
+    },
+    {
+      "f": "evidence/p73-estado-das-cadeias-19-11-onda5.json",
+      "bytes": 3034
+    },
+    {
+      "f": "evidence/p73-estado-das-cadeias-19-11.json",
+      "bytes": 3238
+    },
+    {
+      "f": "evidence/p73-estado-das-cadeias-21-11.json",
+      "bytes": 3235
+    },
+    {
+      "f": "evidence/p73-pen38-preflight-candidata-20-11e-estado-final.json",
+      "bytes": 11549
+    },
+    {
+      "f": "evidence/p73-pen39-preflight-candidata-20-11e-estado-final.json",
+      "bytes": 13147
+    },
+    {
+      "f": "evidence/p73-pen41-preflight-candidata-20-11e-estado-final.json",
+      "bytes": 23732
+    },
+    {
+      "f": "evidence/p73-repeticao-monitor-320-360-375px-20-11-matriz-a-reconto.json",
+      "bytes": 3094
+    },
+    {
+      "f": "evidence/p73-repeticao-monitor-390-414-430px-20-11-matriz-b-reconto.json",
+      "bytes": 3046
+    },
+    {
+      "f": "evidence/p73-repeticao-secretary-360-375px-20-11-matriz-reconto.json",
+      "bytes": 2300
+    },
+    {
+      "f": "evidence/p73-rotacao-de-senhas-prova-secretaria.json",
+      "bytes": 1168
+    },
+    {
+      "f": "evidence/p73-sonda-starvacao-sync-monitor-320-430px-20-11b.json",
+      "bytes": 3682
+    },
+    {
+      "f": "evidence/p74-verifica-portao-da-causa-21-11.json",
+      "bytes": 2027
+    },
+    {
+      "f": "evidence/p75-aba-municipal-developer-21-11c.json",
+      "bytes": 10240
+    },
+    {
+      "f": "evidence/p75-aba-municipal-developer-21-11d.json",
+      "bytes": 10240
+    },
+    {
+      "f": "evidence/p85-gera-candidata-21-11-a.json",
+      "bytes": 4407
+    },
+    {
+      "f": "evidence/pacote-municipal-pecas-20-11-21-11fecho.json",
+      "bytes": 38656
+    },
+    {
+      "f": "evidence/pacote-municipal-pecas-20-11-21-11fecho2.json",
+      "bytes": 40683
+    },
+    {
+      "f": "evidence/pacote-municipal-pecas-20-11-bu12-aberto.json",
+      "bytes": 22429
+    },
+    {
+      "f": "evidence/pacote-municipal-pecas-20-11-bu12-indice.json",
+      "bytes": 22716
+    },
+    {
+      "f": "evidence/pacote-municipal-pecas-20-11-bu12-pos-commit.json",
+      "bytes": 22716
+    },
+    {
+      "f": "evidence/pacote-municipal-pecas-20-11-ensaio-dentes.json",
+      "bytes": 27444
+    },
+    {
+      "f": "evidence/pacote-municipal-pecas-20-11-falsificacao-declaracao-de-decisao-apagada.json",
+      "bytes": 19667
+    },
+    {
+      "f": "evidence/pacote-municipal-pecas-20-11-fecho-falta1-pos-deploy.json",
+      "bytes": 22059
+    },
+    {
+      "f": "evidence/pacote-municipal-pecas-20-11-fecho-falta3-sonda-consumidor.json",
+      "bytes": 22429
+    },
+    {
+      "f": "evidence/pacote-municipal-pecas-20-11-motivo-no-corpus.json",
+      "bytes": 33930
+    },
+    {
+      "f": "evidence/pacote-municipal-pecas-20-11-pos-aplicacao-pen38-39.json",
+      "bytes": 24585
+    },
+    {
+      "f": "evidence/pacote-municipal-pecas-20-11-pos-commit-20-11g.json",
+      "bytes": 27060
+    },
+    {
+      "f": "evidence/pacote-municipal-pecas-20-11-pos-commit-99bdd83.json",
+      "bytes": 32240
+    },
+    {
+      "f": "evidence/pacote-municipal-pecas-20-11-pos-commit-buraco-fechado.json",
+      "bytes": 19136
+    },
+    {
+      "f": "evidence/pacote-municipal-pecas-20-11-pos-portao-de-aplicacao.json",
+      "bytes": 27060
+    },
+    {
+      "f": "evidence/pacote-municipal-pecas-20-11-pos-tudo-citado-no-indice.json",
+      "bytes": 19136
+    },
+    {
+      "f": "evidence/pacote-municipal-pecas-20-11-sm28b.json",
+      "bytes": 43196
+    },
+    {
+      "f": "evidence/pacote-municipal-pecas-20-11-sm28c.json",
+      "bytes": 46816
+    },
+    {
+      "f": "evidence/pacote-municipal-pecas-20-11-verifica-citacao-modo-reversao.json",
+      "bytes": 20635
+    },
+    {
+      "f": "evidence/sm7-municipal-developer-1366-v138dev-p1.json",
+      "bytes": 40577
+    },
+    {
+      "f": "evidence/sm7-municipal-developer-1366-v138dev-p2.json",
+      "bytes": 40772
+    },
+    {
+      "f": "evidence/sm7-municipal-developer-1366-v138dev-p3.json",
+      "bytes": 41031
+    },
+    {
+      "f": "evidence/sm7-municipal-developer-1366-v138dev-p4.json",
+      "bytes": 39232
+    },
+    {
+      "f": "evidence/sm7-municipal-secretario_municipal-1366-v138sm-p1.json",
+      "bytes": 10670
+    },
+    {
+      "f": "evidence/sm7-municipal-secretario_municipal-1366-v138sm-p2.json",
+      "bytes": 9596
+    },
+    {
+      "f": "evidence/v138-gera-bundle-20-11-corrida1.json",
+      "bytes": 6516
+    },
+    {
+      "f": "evidence/v138-gera-bundle-20-11-corrida3_resumo_contado_antes_de_S23.json",
+      "bytes": 6473
+    },
+    {
+      "f": "evidence/v138-gera-candidata-20-11-corrida1.json",
+      "bytes": 6991
+    },
+    {
+      "f": "evidence/v138-gera-candidata-20-11-corrida2.json",
+      "bytes": 6991
+    },
+    {
+      "f": "evidence/v138-gera-candidata-20-11-corrida3.json",
+      "bytes": 7057
+    },
+    {
+      "f": "scripts/p114-leitor-pen40-no-ar.mjs",
+      "bytes": 12831
+    },
+    {
+      "f": "scripts/p115-classifica-fora-do-indice.mjs",
+      "bytes": 6063
+    },
+    {
+      "f": "scripts/p116-consistencia-de-versao.mjs",
+      "bytes": 14036
+    },
+    {
+      "f": "scripts/p117-varredura-de-escritas.mjs",
+      "bytes": 10407
+    },
+    {
+      "f": "scripts/p118-modulo-no-ar-e-o-remendo-v137.mjs",
+      "bytes": 3525
+    },
+    {
+      "f": "scripts/p119-agregados-no-ar.mjs",
+      "bytes": 8506
+    },
+    {
+      "f": "scripts/p74-predicado-da-causa-da-cadeia.mjs",
+      "bytes": 1079
+    },
+    {
+      "f": "scripts/p74-verifica-portao-da-causa.mjs",
+      "bytes": 4435
+    }
+  ],
+  "o_que_nao_faz": "Nao apaga, nao move, nao adiciona ao indice e nao escreve no .gitignore: entrega as tres listas para a decisao ser por classe medida."
+}
