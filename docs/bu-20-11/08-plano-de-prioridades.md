@@ -228,6 +228,7 @@ Peças novas, todas certificadas por corrida própria em 20/11:
 | `scripts/p73-pen41-preflight.mjs` | mede as quatro policies de `students`/`classes` que hoje decidem só pelo cargo, e o delta exacto da candidata | `P73_PEN41_PREFLIGHT_VERDE_CANDIDATA 13/0` |
 | `scripts/p73-municipal-aplica-ddl.mjs` | o único caminho de aplicação **e de reversão** das peças municipais registadas na tabela `PECAS` (a lista lê-se da tabela, nunca desta frase): `--ok "APLICAR …"` escreve a candidata, `--reverter --ok "REVERTER …"` escreve a reversão; frase literal por peça **e por modo**, preflight fresco antes de tocar no banco e conferência de saída depois | `P73_MUNICIPAL_APLICA_SELFTESTE_OK 13/0` (`evidence/p73-municipal-stdout-selfteste-aplicador-com-reversao-20-11.txt`), re-corrido em 20/11 com a PEN-43 na tabela e a cláusula dos espelhos nome-a-nome como `P73_MUNICIPAL_APLICA_SELFTESTE_OK 14/0` (`evidence/p73-pen43-stdout-selfteste-preflight-e-aplicador-fecho-falta5-20-11.txt`), e re-corrido 21/11 com a PEN-44 na tabela e o espelho por **família de grau** como `P73_MUNICIPAL_APLICA_SELFTESTE_OK 15/0`; recusas gravadas nas duas famílias, stdout `evidence/p73-municipal-reversao-stdout-recusas-20-11.txt`; o caso forte é `evidence/p73-municipal-reversao-recusa-precondicao-peca-nao-aplicada.json` — frase certa, pré-condição vermelha, `escrito_no_banco: false`, e desde 21/11 o mesmo desenho existe para a PEN-44 em `evidence/p73-municipal-reversao-recusa-PEN-44-1795233672431.json` |
 | `scripts/p74-pen44-gera-candidata.mjs` + `scripts/p74-pen44-preflight.mjs` | a peça que fecha a entrada a `PUBLIC` nos 45 nomes cujo `EXECUTE` chega ao `anon` por pseudo-papel, preservando os 8 papéis de plataforma que hoje só o têm por essa via, e o preflight que simula o `depois` e lê o `antes` | `P74_PEN44_CANDIDATA_OK 16/0` (`evidence/p74-pen44-gera-candidata-21-11-c.json`) e `P74_PEN44_PREFLIGHT_VERDE_CANDIDATA 18/0` em 8 065 ms (`evidence/p74-pen44-preflight-candidata-21-11-d.json`), com `--selfteste` offline a dar `12/0`; em `--reversao` dá `P74_PEN44_PREFLIGHT_VERMELHO_3`, que é o vermelho de quem ainda não aplicou nada. **Zero escrita no banco em todas as corridas.** O caminho tem runbook próprio: §2.10 de `docs/bu-20-11/10-runbook-municipal.md` |
+| `scripts/p73-pen48-ddl-candidata.sql` + `-reversao.sql` + `scripts/p73-pen48-preflight.mjs` | **peça nova 22/11 UTC**, nascida do único vermelho que sobreviveu ao fecho da PEN-42: o revestimento da portaria chegou ao `anon` pelo privilégio default do esquema, e a peça é um `REVOKE EXECUTE … FROM anon` sobre esse único nome, dentro duma transacção, com a reversão a devolver o grau pela mesma assinatura. O preflight tem os dois canais que a afirmação exige — a cadeia de catálogos em quatro elos, cada um com mundo falso que chumba, e a chamada ao ar sem sessão que distingue `401/42501` na viva de `400/P0001` no revestimento | `P73_PEN48_PREFLIGHT_VERDE_CANDIDATA 14/0` (`evidence/p73-pen48-preflight-candidata-21-11-e.json`) e `P73_PEN48_PREFLIGHT_VERMELHO_REVERSAO 3 de 14`, que é o vermelho de quem ainda não aplicou (`evidence/p73-pen48-preflight-reversao-21-11-f-VERMELHO-falsificacao-legitima-a-peca-ainda-nao-foi-aplicada-e-o-ar-tambem-o-diz.json`); **zero escrita no banco**, e o aplicador recusa sem a frase, com o stdout guardado em `evidence/p73-municipal-aplicador-recusa-frase-pen48-21-11.txt` porque esta classe de recusa não deixa JSON. Runbook §2.12, linha PEN-48 do roadmap |
 | `scripts/p73-municipal-etiqueta.mjs` | a porta de etiquetagem escola↔município e a folha de decisão, por RPC autenticado | `P73_MUNICIPAL_ETIQUETA_SELFTESTE_OK 6/0`; `…_LISTA 6 escolas, 0 etiquetadas, 1 municipios, 1 avisos de fixture`; três recusas em `evidence/p73-municipal-etiqueta-stdout-recusas-20-11.txt` |
 | `scripts/pacote-municipal-confere-pecas.mjs` | lê **este documento e o runbook**, mede cada caminho que a prosa cita, confere no catálogo que nada foi aplicado e exige que cada caminho citado esteja **no índice** e não apenas nesta máquina | `PACOTE_MUNICIPAL_OK 17/0` (`evidence/pacote-municipal-pecas-20-11-pos-pacote-completo-no-indice.json`); dentes provados por cinco falsificações na tabela de §2.0 do runbook, cada uma a nomear o portão que disparou, mais o vermelho honesto de §2.0.1 (seis peças da PEN-41 citadas e fora do git) |
 
@@ -235,11 +236,26 @@ O que o portão do pacote devolveu do banco, à hora do fecho, e é o estado de 
 `funcoes_das_candidatas=0`, `escolas_com_municipio=0`, `policies_alvo=4` das quais `0` com escopo,
 `municipios=1`, `concessoes_ativas=4`, e `publicado=false` na v137.
 
+**Correção datada, 22/11, e o parágrafo acima fica como é — instantâneo de 20/11, não promessa de hoje.** Cinco
+peças têm hoje registo de aplicação (PEN-38, PEN-39, PEN-42, PEN-43, PEN-44), duas não têm nenhuma (PEN-41 e PEN-48),
+e é o cruzamento dos dois conjuntos em disco que o diz, lido no fecho em
+`evidence/pacote-municipal-pecas-20-11-antes-staging-VERMELHO-o-sql-que-o-banco-recebeu-era-so-da-arvore-de-trabalho-pen42.json`.
+O estado vivo dos dados municipais passou de `0 / 1 / 4` (escolas etiquetadas / municípios / concessões) para
+`4 / 2 / 5`, e o esperado do portão lê-se agora do `depois` do registo `evidence/p92-dados-municipais-c.json`
+(`P92_DADOS_MUNICIPAIS_APLICADO_E_CONFERIDO 12/0`, 21/11 às 17:40:14Z), com o preflight de 20/11 como porta de
+entrada. A v137 continua por publicar — `publicado=false`, `V137_BUNDLE_OK 24/0` — e não foi ultrapassada por decisão
+de escopo, não por esquecimento: o ar servido é a v142.
+
 Três linhas deste plano mudam de natureza por causa disto:
 
 - **PEN-38, PEN-39, PEN-41** deixam de ser «falta candidata» e passam a ser «falta decisão + falta OK». O que
   falta nelas não é código: é a escolha do §1 do runbook (que município governa cada uma das 6 escolas, com a
   única linha de município existente declarada fixture) e a frase literal de cada aplicação.
+  **Correção datada, 22/11:** das três, só a PEN-41 continua na classe «falta OK»; a PEN-38 e a PEN-39 foram
+  aplicadas em 20/11 (registos `evidence/p73-municipal-aplicacao-PEN-38-20261120T224555Z.json` e
+  `evidence/p73-municipal-aplicacao-PEN-39-20261120T225656Z.json`), a escolha do §1 foi tomada e exercida com OK
+  próprio no passo P92, e o que hoje falta na PEN-38 é a **tela** (código de produto, não DDL) e na PEN-39 o
+  consumo pelos painéis — nenhuma das duas se fecha com frase de banco.
 - **A etiquetagem** entra como item novo e distinto: é escrita de dados pela porta nomeada do PEN-38 bloco C,
   exige sessão autenticada de admin de plataforma (`auth.uid()`), e hoje não há sessão neste posto de trabalho —
   `ah2-sessions.json` ausente, `c2-sessions.json` com 3 bytes. O ciclo de mint é OK próprio.

@@ -1,0 +1,248 @@
+{
+  "programa": "scripts/p73-pen48-preflight.mjs",
+  "modo": "candidata",
+  "em": "2026-11-22T02:33:35.139Z",
+  "duracao_ms": 6410,
+  "pergunta": "que REVOKE por nome fecha hoje o grau de `anon` no revestimento da PEN-42, e o que fica de fora?",
+  "metodo": "pg_proc, pg_get_function_identity_arguments, pg_get_functiondef e has_function_privilege pela API de gestão (sem JWT de sessão, logo sem RLS e sem escrita); os nomes, assinaturas e papéis lêem-se do código sem comentários das duas peças; o censo de exposição anónima conta o catálogo inteiro",
+  "queries": {
+    "total": 4,
+    "todas_leitura": true
+  },
+  "ficheiros": {
+    "candidata": {
+      "caminho": "scripts/p73-pen48-ddl-candidata.sql",
+      "bytes": 2348,
+      "md5": "a0a83855cb5165fb617e2125753cd44e"
+    },
+    "reversao": {
+      "caminho": "scripts/p73-pen48-ddl-reversao.sql",
+      "bytes": 794,
+      "md5": "969fe709bc7d275c62511481d64be1a6"
+    }
+  },
+  "peca": {
+    "nomes": [
+      "register_gate_checkin_v2"
+    ],
+    "papeis": [
+      "anon"
+    ],
+    "tipos": [
+      "uuid",
+      "text",
+      "boolean",
+      "text",
+      "text",
+      "text"
+    ],
+    "revogados": [
+      {
+        "nome": "register_gate_checkin_v2",
+        "assinatura": "uuid, text, boolean, text, text, text",
+        "papeis": [
+          "anon"
+        ]
+      }
+    ],
+    "devolvidos": [
+      {
+        "nome": "register_gate_checkin_v2",
+        "assinatura": "uuid, text, boolean, text, text, text",
+        "papeis": [
+          "anon"
+        ]
+      }
+    ],
+    "estrutura_candidata": {
+      "begin": 1,
+      "commit": 1,
+      "revoke": 1,
+      "grant": 0,
+      "statement_fora_dos_graus": 0
+    },
+    "estrutura_reversao": {
+      "begin": 1,
+      "commit": 1,
+      "revoke": 0,
+      "grant": 1,
+      "statement_fora_dos_graus": 0
+    },
+    "transacco_crua": {
+      "candidata": {
+        "begin": 1,
+        "commit": 1
+      },
+      "reversao": {
+        "begin": 1,
+        "commit": 1
+      }
+    }
+  },
+  "alvo": {
+    "oid": "32918",
+    "xmin": "903646",
+    "definer": "true",
+    "config": "{\"search_path=\\\"\\\"\"}",
+    "vol": "v",
+    "acl": "postgres=X/postgres,anon=X/postgres,authenticated=X/postgres,service_role=X/postgres",
+    "papeis": [
+      "anon",
+      "authenticated",
+      "postgres",
+      "service_role"
+    ],
+    "anon_pode": true,
+    "authenticated_pode": true,
+    "service_role_pode": true,
+    "identidade": "target_badge_token uuid, gate_direction text, visual_confirmation boolean, intake_source text, target_shift text, exception_reason text",
+    "corpo_chars": 489,
+    "chama_a_viva": 1
+  },
+  "viva": {
+    "oid": "30855",
+    "acl": "postgres=X/postgres,authenticated=X/postgres,service_role=X/postgres",
+    "papeis": [
+      "authenticated",
+      "postgres",
+      "service_role"
+    ],
+    "anon_pode": false,
+    "authenticated_pode": true,
+    "service_role_pode": true
+  },
+  "alargamento_de_papeis_sobre_a_viva": [
+    "anon"
+  ],
+  "censo_de_exposicao_anonima": {
+    "total": 163,
+    "anon_pode": 20,
+    "anon_por_entrada": 16,
+    "acl_nula": 0
+  },
+  "defesa_da_viva": {
+    "elos": [
+      "viva_chama_a_guarda",
+      "guarda_devolve_false_e_nao_null",
+      "papel_vem_da_sessao",
+      "sessao_vem_do_jwt"
+    ],
+    "medido": [
+      true,
+      true,
+      true,
+      true
+    ],
+    "frase_da_guarda": "if not public.is_gatekeeper() then raise exception 'Acesso restrito ao porteiro'; end if;",
+    "corpo_viva_bytes": 3260,
+    "por_nome": [
+      {
+        "nome": "auth.uid",
+        "definer": "false",
+        "papeis": [
+          "dashboard_user",
+          "supabase_auth_admin"
+        ],
+        "anon_pode": true,
+        "corpo_bytes": 176
+      },
+      {
+        "nome": "public.is_gatekeeper",
+        "definer": "true",
+        "papeis": [
+          "authenticated",
+          "postgres",
+          "service_role"
+        ],
+        "anon_pode": false,
+        "corpo_bytes": 76
+      },
+      {
+        "nome": "public.current_role",
+        "definer": "true",
+        "papeis": [
+          "authenticated",
+          "postgres",
+          "service_role"
+        ],
+        "anon_pode": false,
+        "corpo_bytes": 56
+      }
+    ]
+  },
+  "sonda_de_ar": {
+    "bundle": "bfr-candidata-v142-painel-na-troca/index.html",
+    "argumentos": "os seis, com `target_badge_token` de um UUID aleatório desta corrida",
+    "publicacao": "só a publishable lida dos bytes da candidata; nenhuma chave entra no registo e nenhuma sessão é usada",
+    "viva": {
+      "nome": "register_gate_checkin",
+      "status": 401,
+      "code": "42501",
+      "corpo_bytes": 108
+    },
+    "revestimento": {
+      "nome": "register_gate_checkin_v2",
+      "status": 400,
+      "code": "P0001",
+      "corpo_bytes": 83
+    },
+    "esperado_neste_modo": "401|42501|400|P0001",
+    "fixtures": {
+      "real_bate": true,
+      "grau_ja_fechado_no_modo_candidata_chumba": false,
+      "viva_aberta_no_ar_chumba": false
+    }
+  },
+  "registo_no_aplicador": {
+    "pref": "scripts/p73-pen48-preflight.mjs",
+    "cand": "scripts/p73-pen48-ddl-candidata.sql",
+    "rev": "scripts/p73-pen48-ddl-reversao.sql",
+    "prefixo": "P73_PEN48_PREFLIGHT_VERDE",
+    "frase": "APLICAR PEN-48 NO BANCO",
+    "fraseRev": "REVERTER PEN-48 NO BANCO"
+  },
+  "mundos_fabricados": {
+    "tipos_trocados_nao_casam": false,
+    "nomes_de_parametro_casam": true,
+    "mundo_acl_com_public": {
+      "tem_anon": true,
+      "tem_public_x": true
+    },
+    "mundo_acl_nula": {
+      "tem_anon": false
+    },
+    "mundo_ja_fechado": {
+      "tem_anon": false
+    },
+    "espelho_nome_trocado": false,
+    "espelho_papel_a_mais": false,
+    "espelho_ok": true,
+    "estrutura_sem_transacco": {
+      "begin": 0,
+      "commit": 0,
+      "revoke": 1,
+      "grant": 0,
+      "statement_fora_dos_graus": 0
+    }
+  },
+  "o_que_este_verde_nao_autoriza": "nada: é leitura. Aplicar a candidata, reverter, publicar seja o que for, escrever no banco e git push continuam a pedir cada um a sua frase literal.",
+  "o_que_este_verde_nao_prova": "que o REVOKE está aplicado — prova que o grau está onde a peça o pode tocar e que a reversão é simétrica. Não fecha os outros nomes anónimo-executáveis do censo (a PEN-43 e a PEN-44 tratam das suas famílias), nem prova que o `front` com sessão continua a chamar a portaria: isso só se mede depois, com JWT e no browser.",
+  "portoes": [
+    "o_estado_vivo_bate_com_o_que_o_modo_pressupoe",
+    "o_alvo_e_o_revestimento_da_pen42_e_nao_a_viva_nem_outro_objecto",
+    "a_assinatura_do_revoke_casa_com_a_identidade_do_servidor_e_a_regua_tem_dentes",
+    "o_revoke_por_nome_e_o_grau_efetivo_e_os_dois_mundos_que_o_negam_disparam",
+    "a_peca_fecha_somente_o_grau_que_a_viva_nao_tem_e_nao_alarga_a_casa",
+    "a_reversao_e_o_espelho_da_candidata_e_os_tres_mundos_que_a_negam_disparam",
+    "cada_ficheiro_e_uma_sola_transacco_de_graus_sem_dados_e_o_mundo_sem_transacco_chumba",
+    "o_censo_de_exposicao_anonima_imprime_o_que_a_peca_nao_fecha",
+    "a_defesa_que_hoje_impede_o_grau_de_anon_de_escreve_mora_no_corpo_da_viva_e_os_quatro_elos_chumbam_um_a_um",
+    "no_ar_quem_nao_tem_sessao_e_recusado_pela_acl_na_viva_e_toca_o_corpo_no_revestimento_enquanto_a_peca_nao_entrar",
+    "a_peca_esta_registada_na_tabela_pecas_do_aplicador_com_estes_mesmos_caminhos",
+    "a_pegada_certificada_e_a_dos_bytes_crus_dos_dois_ficheiros",
+    "cada_query_passa_por_q_e_so_ha_um_toque_directo_de_sql_e_os_mundos_fora_disso_chumbam",
+    "nenhum_identificador_pessoal_nem_token_entra_neste_registo"
+  ],
+  "falhas": [],
+  "veredito": "P73_PEN48_PREFLIGHT_VERDE_CANDIDATA 14/0"
+}

@@ -298,6 +298,48 @@ gate('a_regua_do_estado_de_aplicacao_tem_dentes_e_o_mundo_real_e_o_normal',
     FIX_PECA_A_MENOS.esperados.join() !== realRegua.esperados.join(), realRegua.todasVerdes === true,
     FIX_MD5_TROCADO.todasVerdes === false, PECAS_COM_REGISTO.length >= 2],
   [true, true, true, true, true]);
+// O índice, não o disco. A régua acima compara o registo com o ficheiro da árvore de trabalho, e isso não vê um
+// `git add` esquecido: o banco fica com um SQL que o pacote publicado não tem. aconteceu na PEN-42 — o índice tinha
+// a candidata pré-estreitamento (3 520 B, `GRANT … TO authenticated, service_role`, sem `BEGIN;`/`COMMIT;`) enquanto
+// o que o banco recebeu foi a de 4 841 B; a do índice nem seria aplicável, porque o aplicador recusa SQL sem as duas
+// marcas. Nove dos dez caminhos batiam, e os dois que não batiam eram exactamente esses. Ler o blob do índice é
+// outra fonte que ler o disco, por isso é portão próprio — e só pode estar verde depois de os caminhos estarem
+// stageados, que é o lugar desta régua no fôlego de fecho.
+const blobDoIndice = (caminho) => {
+  try { return execFileSync('git', ['show', ':' + caminho], { cwd: REPO, maxBuffer: 64 * 1024 * 1024 }); }
+  catch { return Buffer.alloc(0); }
+};
+const reguaRegistosNoIndice = (pecas, registos, lerBlob) => pecas.map((p) => {
+  const lados = [['candidata', registos[p].candidata], ['reversao', registos[p].reversao]];
+  return [p, ...lados.flatMap(([, l]) => {
+    const b = l && l.caminho ? lerBlob(l.caminho) : Buffer.alloc(0);
+    return [b.length > 0, md5(b) === l.md5, b.length === l.bytes];
+  })];
+});
+const BLOBS_DO_INDICE = new Map();
+const lerBlobDoIndice = (c) => { if (!BLOBS_DO_INDICE.has(c)) BLOBS_DO_INDICE.set(c, blobDoIndice(c)); return BLOBS_DO_INDICE.get(c); };
+const reguaIndiceReal = reguaRegistosNoIndice(PECAS_COM_REGISTO, REGISTOS_APLICACAO, lerBlobDoIndice);
+// A primeira versão desta linha comparava a linha de sete elementos (nome + três colunas por lado) com um esperado
+// de seis, e por isso **não tinha positivo possível**: verde-era-impossível dentro do portão que prova que os
+// portões têm dentes. O `reguaRegistos` da disco já trazia o nome da peça na linha; a régua nova tem de o trazer
+// também, e foi a corrida depois do `git add` — a que devia dar verde — que o disse.
+gate('os_registos_de_aplicacao_batem_com_os_blobs_do_indice_e_nao_somente_com_o_disco',
+  reguaIndiceReal, PECAS_COM_REGISTO.map((p) => [p, true, true, true, true, true, true]));
+// Dentes com o mundo real como normal: um blob ausente do índice e um blob trocado são os dois únicos estados que
+// esta régua tem de apanhar, e nenhum dos dois se confunde com o vermelho de produto acima. Uma régua que exigisse
+// «todas as col falsas» ao blob trocado não teria positivo nenhum -- um blob de 46 bytes **existe**, o que está
+// trocado é o conteúdo -- por isso as duas colunas de pegada (`md5` e `bytes`, índices 2,3,5,6) têm o seu próprio
+// predicado, e a existência só entra na conta do fixture ausente.
+const soAsPegadas = (l) => [l[2], l[3], l[5], l[6]];
+const FIX_BLOB_AUSENTE = reguaRegistosNoIndice(PECAS_COM_REGISTO, REGISTOS_APLICACAO, () => Buffer.alloc(0));
+const FIX_BLOB_TROCADO = reguaRegistosNoIndice(PECAS_COM_REGISTO, REGISTOS_APLICACAO, (c) => Buffer.from(c + '-outra-peca'));
+gate('a_regua_dos_blobs_do_indice_tem_dentes_e_o_mundo_real_e_o_normal',
+  [PECAS_COM_REGISTO.length >= 2,
+    reguaIndiceReal.every((l) => l.slice(1).every((x) => x === true)) === true,
+    FIX_BLOB_AUSENTE.every((l) => l.slice(1).every((x) => x === false)) === true,
+    FIX_BLOB_TROCADO.every((l) => soAsPegadas(l).every((x) => x === false)) === true,
+    FIX_BLOB_TROCADO.every((l) => l[1] === true && l[4] === true) === true],
+  [true, true, true, true, true]);
 // Uma cláusula por eixo: o que o artefacto declara, e o que o banco devolve, têm portões separados. Juntá-los
 // num só compara vivo com vivo e não pode dar vermelho quando o runbook fica a prometer um número velho.
 gate('o_preflight_declara_zero_escolas_etiquetadas', pref38.escolas_com_municipio, 0);
@@ -403,6 +445,7 @@ console.log(`FORA_DO_INDICE ${esquecidosNoIndice.length} esquecidos de ${out.for
 console.log(`VIVO ${JSON.stringify(vivo)}`);
 console.log(`DADOS registo=${REGISTO_DADOS.caminho} esperado_do_depois=${JSON.stringify(REGISTO_DADOS.esperado)} vivo=${JSON.stringify([vivo.escolas_com_municipio, vivo.municipios, vivo.concessoes_ativas])} preflight_38=${JSON.stringify(estadoPreflight)} familia=${REGISTO_DADOS.familia}`);
 console.log(`APLICACAO com_registo=${JSON.stringify(PECAS_COM_REGISTO)} sem_registo=${JSON.stringify(PECAS_SEM_REGISTO)} nomes_no_banco=${JSON.stringify(vivosNovos)} esperados=${JSON.stringify(realRegua.esperados)}`);
+console.log(`INDICE ${JSON.stringify(PECAS_COM_REGISTO.flatMap((p) => ['candidata', 'reversao'].map((k) => { const l = REGISTOS_APLICACAO[p][k]; const b = lerBlobDoIndice(l.caminho); return { peca: p + ':' + k, caminho: l.caminho, no_indice: b.length, no_registro: l.bytes, igual: b.length === l.bytes && md5(b) === l.md5 }; })))}`);
 console.log(`V137 publicado=${v137.publicado} · ${v137.veredito}`);
 console.log(`V138 publicado=${v138b.publicado} · ${v138c.veredito} · ${v138b.veredito} · etiqueta_sw=${v138b.esperado.cacheLabel} · shell ${v138b.esperado.baseHtmlMd5} -> ${v138b.esperado.htmlMd5} · modulo pen40 ${v138b.esperado.moduleMd5}`);
 if (falhas.length) console.log(`FALHAS ${JSON.stringify(falhas)}`);

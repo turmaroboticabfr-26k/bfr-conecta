@@ -1,0 +1,131 @@
+{
+  "programa": "scripts/p73-pen42-preflight.mjs",
+  "modo": "reversao",
+  "em": "2026-11-22T01:42:03.329Z",
+  "metodo": "pg_proc e pg_get_function_* pela Management API (sem JWT de sessão, logo sem RLS e sem escrita); a identidade esperada lê-se da declaração da candidata e confirma-se contra o catálogo; as chamadas contam-se nos bytes do bundle servido",
+  "ficheiros": {
+    "candidata": {
+      "caminho": "scripts/p73-pen42-ddl-candidata.sql",
+      "bytes": 4841,
+      "md5": "3d2a386023885441915e6b5832fe9f79"
+    },
+    "reversao": {
+      "caminho": "scripts/p73-pen42-ddl-reversao.sql",
+      "bytes": 795,
+      "md5": "a9ca26a22526ec2e1ae8a40323ef8cec"
+    },
+    "bundle": {
+      "caminho": "bfr-candidata-v142-painel-na-troca/index.html",
+      "bytes": 3556664,
+      "md5": "0e22e78fe1e0ce929ec4717f86365ad9"
+    }
+  },
+  "viva": {
+    "oid": 30855,
+    "nome": "register_gate_checkin",
+    "dono": "postgres",
+    "definer": true,
+    "config": "search_path=\"\"",
+    "volatilidade": "v",
+    "identidade": "target_badge_token uuid, gate_direction text, visual_confirmation boolean, intake_source text, target_shift text, exception_reason text",
+    "colunas": "checkin_id uuid, student_id uuid, official_name text, class_label text, direction text, checked_at timestamp with time zone, entry_status text, entry_allowed boolean, restriction_reason text, alert_id uuid, photo_path text",
+    "papeis": [
+      "authenticated",
+      "postgres",
+      "service_role"
+    ],
+    "tem_public": false
+  },
+  "ausente_no_catalogo": {
+    "nome": "register_gate_checkin_v2",
+    "linhas_em_pg_proc": 1
+  },
+  "estrutura": {
+    "candidata": {
+      "create_function": 1,
+      "drop_function": 0,
+      "alter": 0,
+      "drop_policy": 0,
+      "create_policy": 0,
+      "grant_execute": 1,
+      "revoke": 1,
+      "comment": 1,
+      "insert": 0,
+      "update": 0,
+      "delete": 0
+    },
+    "reversao": {
+      "create_function": 0,
+      "drop_function": 1,
+      "alter": 0,
+      "drop_policy": 0,
+      "create_policy": 0,
+      "grant_execute": 0,
+      "revoke": 0,
+      "comment": 0,
+      "insert": 0,
+      "update": 0,
+      "delete": 0
+    }
+  },
+  "transacco": {
+    "candidata": {
+      "begin": 1,
+      "commit": 1
+    },
+    "reversao": {
+      "begin": 1,
+      "commit": 1
+    },
+    "regex_do_aplicador": "/^BEGIN;/m e /^COMMIT;/m sobre os bytes crus"
+  },
+  "front": {
+    "chamadas_ao_nome_ausente": 1,
+    "chamadas_a_viva": 3,
+    "chaves_passadas": "exception_reason,gate_direction,intake_source,target_badge_token,target_shift,visual_confirmation",
+    "sitios_do_chamador": "3056698,3058468",
+    "ramo_legado_chama_viva": true,
+    "indice_do_ramo_medido": 3045449,
+    "sitios_vivos_classificados": [
+      {
+        "bytes": 901221,
+        "classe": "modulo_antigo"
+      },
+      {
+        "bytes": 903296,
+        "classe": "modulo_antigo"
+      },
+      {
+        "bytes": 3045274,
+        "classe": "ramo_legado"
+      }
+    ],
+    "por_classe": {
+      "ramo_legado": 1,
+      "modulo_antigo": 2,
+      "nao_classificados": 0
+    },
+    "inicio_do_modulo_novo": 3044968
+  },
+  "o_que_este_verde_nao_autoriza": "nada: é leitura. Aplicar a candidata, publicar seja o que for, escrever no banco e git push continuam a pedir cada um a sua frase literal.",
+  "o_que_este_verde_nao_prova": "que a aplicação da candidata faça a portaria funcionar de ponta a ponta: isso só se mede depois, no browser. E a frase que aqui estava antes de 21/11 estava invertida contra os bytes, pelo que fica corrigida por medida: `gateLegacyMode()` é `state.loaded && (state.errors.includes(\"configuração de turnos\") || state.errors.includes(\"calendário letivo\"))`, e o estado medido de hoje — `B_hoje_200_com_zero_linhas` em `evidence/p73-rm52-estado-calendario-20-11.txt` — tem as mesas criadas a devolver 200 com zero linhas, logo nenhuma das duas etiquetas entra e o check-in já chama o nome ausente com `lanca=true`. O ramo legado só tinha valor no estado A, antes do DDL do calendário, quando o fetch das mesas rebentava. Também não prova nada sobre `bfr_confirm_school_calendar` nem `correct_gate_attendance`, que este instrumento não abre.",
+  "portoes": [
+    "o_estado_vivo_bate_com_o_que_este_modo_pressupoe",
+    "a_identidade_declarada_na_candidata_e_a_identidade_medida_da_viva",
+    "as_colunas_devolvidas_batem_na_ordem_e_o_tipo_de_duas_palavras_preserva_se",
+    "a_candidata_e_somente_aditiva_e_a_reversao_somente_retira",
+    "cada_peca_e_uma_sola_transacco_nos_bytes_que_o_aplicador_le",
+    "a_pegada_certificada_e_a_do_ficheiro_crudo_e_nao_a_do_texto_normalizado",
+    "o_revestimento_chama_a_viva_qualificada_e_nunca_a_si_proprio",
+    "nenhum_parametro_colide_com_uma_coluna_devolvida",
+    "os_graus_declerados_sao_subconjunto_dos_medidos_na_viva_e_nao_abrem_public_nem_anon",
+    "a_predica_de_graus_tem_dentes_contra_os_dois_grants_falsos",
+    "o_front_servido_chama_o_nome_ausente_exactamente_uma_vez",
+    "todos_os_sitios_do_nome_vivo_estao_classificados_e_o_legado_tem_par_do_ausente",
+    "as_chaves_que_o_chamador_passa_batem_com_os_seis_argumentos",
+    "a_regua_tem_dentes_contra_os_seis_falsos",
+    "nenhum_identificador_pessoal_nem_token_entra_neste_registo"
+  ],
+  "falhas": [],
+  "veredito": "P73_PEN42_PREFLIGHT_VERDE_REVERSAO 15/0"
+}

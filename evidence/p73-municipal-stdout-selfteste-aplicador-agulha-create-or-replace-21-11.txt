@@ -1,0 +1,522 @@
+{
+ "programa": "scripts/p73-municipal-aplica-ddl.mjs",
+ "selfteste": true,
+ "em": "2026-11-22T02:48:44.268Z",
+ "aplicado": false,
+ "escrito_no_banco": false,
+ "casos": [
+  {
+   "nome": "frase_solta_nao_autoriza",
+   "verde": true
+  },
+  {
+   "nome": "cada_peca_tem_ficheiros_em_disco",
+   "verde": true
+  },
+  {
+   "nome": "varredura_de_perigo_nao_confunde_prosa_nem_corpo_de_funcao",
+   "verde": true,
+   "detalhe": {
+    "fixtures": [
+     "update_dentro_de_funcao_nao_conta=true",
+     "update_fora_de_funcao_conta=true",
+     "truncate_conta=true",
+     "prosa_de_cabecalho_nao_e_statement=true",
+     "drop_table_fora_de_comentario_conta=true",
+     "palavra_credencial_fora_de_comentario_conta=true",
+     "drop_function_conta_como_trabalho_de_reversao=true",
+     "grant_e_revoke_contam_se_separadamente=true",
+     "create_or_replace_tem_classe_propria_e_nao_confunde_as_duas=true",
+     "prosa_de_create_or_replace_em_comentario_nao_conta=true"
+    ],
+    "contagem": 10
+   }
+  },
+  {
+   "nome": "varredura_de_credencial_dispara",
+   "verde": true
+  },
+  {
+   "nome": "preflight_escreve_nome_de_registo_que_se_le_na_saida",
+   "verde": true
+  },
+  {
+   "nome": "regua_do_verde_bate_nas_formas_que_os_preflights_emitem",
+   "verde": true,
+   "detalhe": {
+    "prefixos_da_tabela": [
+     "P73_PEN38_PREFLIGHT_VERDE",
+     "P73_PEN39_PREFLIGHT_VERDE",
+     "P73_PEN41_PREFLIGHT_VERDE",
+     "P73_PEN43_PREFLIGHT_VERDE",
+     "P74_PEN44_PREFLIGHT_VERDE",
+     "P73_PEN42_PREFLIGHT_VERDE",
+     "P73_PEN48_PREFLIGHT_VERDE"
+    ],
+    "forma_negativa": [
+     "P73_PEN38_PREFLIGHT_VERMELHO_5",
+     "P73_PEN39_PREFLIGHT_VERMELHO_5",
+     "P73_PEN41_PREFLIGHT_VERMELHO_5",
+     "P73_PEN43_PREFLIGHT_VERMELHO_5",
+     "P74_PEN44_PREFLIGHT_VERMELHO_5",
+     "P73_PEN42_PREFLIGHT_VERMELHO_5",
+     "P73_PEN48_PREFLIGHT_VERMELHO_5"
+    ]
+   }
+  },
+  {
+   "nome": "caminho_de_registo_absoluto_e_lido_como_absoluto",
+   "verde": true
+  },
+  {
+   "nome": "frases_de_aplicacao_e_reversao_sao_pares_por_peca_e_disjuntas",
+   "verde": true
+  },
+  {
+   "nome": "o_modo_escolhe_a_frase_e_nao_a_conveniencia",
+   "verde": true
+  },
+  {
+   "nome": "drop_function_de_reversao_e_trabalho_nao_statement_proibido",
+   "verde": true
+  },
+  {
+   "nome": "frase_de_reversao_solta_nao_autoriza_aplicacao",
+   "verde": true
+  },
+  {
+   "nome": "todos_os_sql_das_pecas_sao_unicas_transaccoes_sem_statement_proibido",
+   "verde": true
+  },
+  {
+   "nome": "cada_reversao_desfaz_algo_e_nao_e_a_candidata",
+   "verde": true
+  },
+  {
+   "nome": "onde_a_candidata_revoga_um_nome_a_reversao_devolve_exactamente_esse_conjunto",
+   "verde": true,
+   "detalhe": {
+    "por_peca": [
+     {
+      "peca": "PEN-38",
+      "espelho": null
+     },
+     {
+      "peca": "PEN-39",
+      "espelho": null
+     },
+     {
+      "peca": "PEN-41",
+      "espelho": null
+     },
+     {
+      "peca": "PEN-43",
+      "espelho": true
+     },
+     {
+      "peca": "PEN-44",
+      "espelho": true
+     },
+     {
+      "peca": "PEN-42",
+      "espelho": null
+     },
+     {
+      "peca": "PEN-48",
+      "espelho": true
+     }
+    ],
+    "fixtures": {
+     "mesmo_nome_espelha": true,
+     "nome_trocado_nao": true,
+     "sobra_na_reversao_nao": true,
+     "prosa_de_comentario_nao_conta_como_grau": true,
+     "peca_de_ddl_nao_pergunta": true
+    }
+   }
+  },
+  {
+   "nome": "onde_a_candidata_retira_public_ou_preserva_papeis_a_reversao_devolve_as_mesmas_assinaturas_ao_mesmos_conjuntos",
+   "verde": true,
+   "detalhe": {
+    "por_peca": [
+     {
+      "peca": "PEN-38",
+      "espelho": null,
+      "contas": {
+       "candidata": {
+        "revoga_public": 0,
+        "grant_total_de_preservacao": 2,
+        "nas_assinaturas_atingidas": 0,
+        "fora_daquelas_para_outra_regua": 2,
+        "papeis_preservados": [
+         "authenticated"
+        ]
+       },
+       "reversao": {
+        "devolve_public": 0,
+        "desfaz_preservacao": 0
+       }
+      }
+     },
+     {
+      "peca": "PEN-39",
+      "espelho": null,
+      "contas": {
+       "candidata": {
+        "revoga_public": 0,
+        "grant_total_de_preservacao": 2,
+        "nas_assinaturas_atingidas": 0,
+        "fora_daquelas_para_outra_regua": 2,
+        "papeis_preservados": [
+         "authenticated"
+        ]
+       },
+       "reversao": {
+        "devolve_public": 0,
+        "desfaz_preservacao": 0
+       }
+      }
+     },
+     {
+      "peca": "PEN-41",
+      "espelho": null,
+      "contas": {
+       "candidata": {
+        "revoga_public": 0,
+        "grant_total_de_preservacao": 0,
+        "nas_assinaturas_atingidas": 0,
+        "fora_daquelas_para_outra_regua": 0,
+        "papeis_preservados": []
+       },
+       "reversao": {
+        "devolve_public": 0,
+        "desfaz_preservacao": 0
+       }
+      }
+     },
+     {
+      "peca": "PEN-43",
+      "espelho": null,
+      "contas": {
+       "candidata": {
+        "revoga_public": 0,
+        "grant_total_de_preservacao": 0,
+        "nas_assinaturas_atingidas": 0,
+        "fora_daquelas_para_outra_regua": 0,
+        "papeis_preservados": []
+       },
+       "reversao": {
+        "devolve_public": 0,
+        "desfaz_preservacao": 0
+       }
+      }
+     },
+     {
+      "peca": "PEN-44",
+      "espelho": true,
+      "contas": {
+       "candidata": {
+        "revoga_public": 45,
+        "grant_total_de_preservacao": 45,
+        "nas_assinaturas_atingidas": 45,
+        "fora_daquelas_para_outra_regua": 0,
+        "papeis_preservados": [
+         "dashboard_user",
+         "pgbouncer",
+         "supabase_auth_admin",
+         "supabase_etl_admin",
+         "supabase_functions_admin",
+         "supabase_privileged_role",
+         "supabase_read_only_user",
+         "supabase_replication_admin"
+        ]
+       },
+       "reversao": {
+        "devolve_public": 45,
+        "desfaz_preservacao": 45
+       }
+      }
+     },
+     {
+      "peca": "PEN-42",
+      "espelho": null,
+      "contas": {
+       "candidata": {
+        "revoga_public": 0,
+        "grant_total_de_preservacao": 1,
+        "nas_assinaturas_atingidas": 0,
+        "fora_daquelas_para_outra_regua": 1,
+        "papeis_preservados": [
+         "authenticated"
+        ]
+       },
+       "reversao": {
+        "devolve_public": 0,
+        "desfaz_preservacao": 0
+       }
+      }
+     },
+     {
+      "peca": "PEN-48",
+      "espelho": null,
+      "contas": {
+       "candidata": {
+        "revoga_public": 0,
+        "grant_total_de_preservacao": 0,
+        "nas_assinaturas_atingidas": 0,
+        "fora_daquelas_para_outra_regua": 0,
+        "papeis_preservados": []
+       },
+       "reversao": {
+        "devolve_public": 0,
+        "desfaz_preservacao": 0
+       }
+      }
+     }
+    ],
+    "fixtures": {
+     "mesma_lista_na_mesma_ordem_espelha": true,
+     "a_ordem_dos_papeis_na_lista_nao_e_estado": true,
+     "papel_esquecido_na_reversao_nao": true,
+     "papel_trocado_na_reversao_nao": true,
+     "assinatura_trocada_nao": true,
+     "grant_a_mais_na_reversao_nao": true,
+     "revoke_sem_grant_de_preservacao_e_um_mundo_novo": true,
+     "prosa_de_comentario_nao_e_grau": true,
+     "peca_de_ddl_nao_pergunta_nada": true
+    }
+   }
+  }
+ ],
+ "sql_medidos": [
+  {
+   "peca": "PEN-38",
+   "lado": "candidata",
+   "caminho": "scripts/p73-pen38-ddl-candidata.sql",
+   "bytes": 9148,
+   "md5": "ee98c29129cbf1bb59987597fc6cd97d",
+   "desfaz": 5,
+   "graus": {
+    "revogados": [],
+    "devolvidos": []
+   }
+  },
+  {
+   "peca": "PEN-38",
+   "lado": "reversao",
+   "caminho": "scripts/p73-pen38-ddl-reversao.sql",
+   "bytes": 1461,
+   "md5": "b0c65599c2ced2fe10d5fcc7bd4a494b",
+   "desfaz": 5,
+   "graus": {
+    "revogados": [],
+    "devolvidos": []
+   }
+  },
+  {
+   "peca": "PEN-39",
+   "lado": "candidata",
+   "caminho": "scripts/p73-pen39-ddl-candidata.sql",
+   "bytes": 6784,
+   "md5": "b0c3f3a8600d70078698e7f39a33c741",
+   "desfaz": 2,
+   "graus": {
+    "revogados": [],
+    "devolvidos": []
+   }
+  },
+  {
+   "peca": "PEN-39",
+   "lado": "reversao",
+   "caminho": "scripts/p73-pen39-ddl-reversao.sql",
+   "bytes": 540,
+   "md5": "cd73aa70129a7e89a2b7a37df8d9261f",
+   "desfaz": 2,
+   "graus": {
+    "revogados": [],
+    "devolvidos": []
+   }
+  },
+  {
+   "peca": "PEN-41",
+   "lado": "candidata",
+   "caminho": "scripts/p73-pen41-ddl-candidata.sql",
+   "bytes": 4930,
+   "md5": "6259a3fca4ae688fb08d3c3f47e4072d",
+   "desfaz": 8,
+   "graus": {
+    "revogados": [],
+    "devolvidos": []
+   }
+  },
+  {
+   "peca": "PEN-41",
+   "lado": "reversao",
+   "caminho": "scripts/p73-pen41-ddl-reversao.sql",
+   "bytes": 1454,
+   "md5": "d4ea4c160df8324b9b1c5f06e5c9b251",
+   "desfaz": 8,
+   "graus": {
+    "revogados": [],
+    "devolvidos": []
+   }
+  },
+  {
+   "peca": "PEN-43",
+   "lado": "candidata",
+   "caminho": "scripts/p73-pen43-ddl-candidata.sql",
+   "bytes": 1494,
+   "md5": "9d43a22606255c258350ad6fed263630",
+   "desfaz": 0,
+   "graus": {
+    "revogados": [
+     "bfr_municipal_scope_diagnostico",
+     "bfr_municipal_municipio_totais",
+     "bfr_municipal_distribuicao_por_zona"
+    ],
+    "devolvidos": []
+   }
+  },
+  {
+   "peca": "PEN-43",
+   "lado": "reversao",
+   "caminho": "scripts/p73-pen43-ddl-reversao.sql",
+   "bytes": 543,
+   "md5": "ee4f50eee403f63eb506c2e960ba785d",
+   "desfaz": 3,
+   "graus": {
+    "revogados": [],
+    "devolvidos": [
+     "bfr_municipal_scope_diagnostico",
+     "bfr_municipal_municipio_totais",
+     "bfr_municipal_distribuicao_por_zona"
+    ]
+   }
+  },
+  {
+   "peca": "PEN-44",
+   "lado": "candidata",
+   "caminho": "scripts/p74-pen44-ddl-candidata.sql",
+   "bytes": 17835,
+   "md5": "262e22e5a63fadc42204b7d8c5b985c1",
+   "desfaz": 45,
+   "graus": {
+    "revogados": [
+     "family_normalize_name",
+     "family_normalize_cpf",
+     "family_cpf_is_valid",
+     "bfr_subject_matches",
+     "bfr_can_manage_communications",
+     "bfr_pedagogical_can_manage_student",
+     "bfr_staff_can_manage_student_scope",
+     "bfr_has_specialized_permission",
+     "bfr_family_can_view_aee",
+     "bfr_support_request_access",
+     "bfr_support_detail_access",
+     "bfr_support_request_create_access",
+     "aee_can_write_student",
+     "bfr_psychology_can_write",
+     "bfr_psychology_record_access",
+     "bfr_psychology_active_professional",
+     "bfr_can_manage_student_directory",
+     "aee_game_can_access_student",
+     "bfr_learning_is_manager",
+     "bfr_is_platform_admin",
+     "bfr_is_municipal_authority",
+     "bfr_municipalities_visible"
+    ],
+    "devolvidos": []
+   }
+  },
+  {
+   "peca": "PEN-44",
+   "lado": "reversao",
+   "caminho": "scripts/p74-pen44-ddl-reversao.sql",
+   "bytes": 16574,
+   "md5": "68c5b2f0e15dbc16bafde3f608f29dbf",
+   "desfaz": 67,
+   "graus": {
+    "revogados": [],
+    "devolvidos": [
+     "family_normalize_name",
+     "family_normalize_cpf",
+     "family_cpf_is_valid",
+     "bfr_subject_matches",
+     "bfr_can_manage_communications",
+     "bfr_pedagogical_can_manage_student",
+     "bfr_staff_can_manage_student_scope",
+     "bfr_has_specialized_permission",
+     "bfr_family_can_view_aee",
+     "bfr_support_request_access",
+     "bfr_support_detail_access",
+     "bfr_support_request_create_access",
+     "aee_can_write_student",
+     "bfr_psychology_can_write",
+     "bfr_psychology_record_access",
+     "bfr_psychology_active_professional",
+     "bfr_can_manage_student_directory",
+     "aee_game_can_access_student",
+     "bfr_learning_is_manager",
+     "bfr_is_platform_admin",
+     "bfr_is_municipal_authority",
+     "bfr_municipalities_visible"
+    ]
+   }
+  },
+  {
+   "peca": "PEN-42",
+   "lado": "candidata",
+   "caminho": "scripts/p73-pen42-ddl-candidata.sql",
+   "bytes": 4841,
+   "md5": "3d2a386023885441915e6b5832fe9f79",
+   "desfaz": 1,
+   "graus": {
+    "revogados": [],
+    "devolvidos": []
+   }
+  },
+  {
+   "peca": "PEN-42",
+   "lado": "reversao",
+   "caminho": "scripts/p73-pen42-ddl-reversao.sql",
+   "bytes": 795,
+   "md5": "a9ca26a22526ec2e1ae8a40323ef8cec",
+   "desfaz": 1,
+   "graus": {
+    "revogados": [],
+    "devolvidos": []
+   }
+  },
+  {
+   "peca": "PEN-48",
+   "lado": "candidata",
+   "caminho": "scripts/p73-pen48-ddl-candidata.sql",
+   "bytes": 2348,
+   "md5": "a0a83855cb5165fb617e2125753cd44e",
+   "desfaz": 0,
+   "graus": {
+    "revogados": [
+     "register_gate_checkin_v2"
+    ],
+    "devolvidos": []
+   }
+  },
+  {
+   "peca": "PEN-48",
+   "lado": "reversao",
+   "caminho": "scripts/p73-pen48-ddl-reversao.sql",
+   "bytes": 794,
+   "md5": "969fe709bc7d275c62511481d64be1a6",
+   "desfaz": 1,
+   "graus": {
+    "revogados": [],
+    "devolvidos": [
+     "register_gate_checkin_v2"
+    ]
+   }
+  }
+ ],
+ "veredito": "P73_MUNICIPAL_APLICA_SELFTESTE_OK 15/0"
+}
+node_exit=0

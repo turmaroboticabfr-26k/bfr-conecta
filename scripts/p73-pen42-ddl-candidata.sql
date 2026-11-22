@@ -5,9 +5,12 @@
 -- conferência de `funcoes_de_registro` provou ser o que corre na verdade), e o catálogo não tem essa função:
 -- `pg_proc` dá 0 linhas para o nome, e o PostgREST responde 404 PGRST202. O ramo legado chama
 -- `register_gate_checkin` (sem sufixo), e ESSA existe — oid 30855, SECURITY DEFINER, search_path="" fixo.
--- Enquanto o calendário letivo e os turnos estiverem por confirmar (`gateLegacyMode()`), a portaria usa o ramo
--- legado e nada se vê partir; no instante em que a confirmação chegar, a portaria passa a chamar o nome ausente
--- e o registo de entrada fica morto. Por isso esta candidata é pré-condição de qualquer passo do RM-5.2.
+-- Enquanto o calendário não existir (estado A, antes do DDL) o `fetch` das mesas rebentava, as etiquetas de erro
+-- entravam em `state.errors`, `gateLegacyMode()` era verdadeiro e o ramo legado atendia. Esse estado já passou: os
+-- quatro estados medidos em `evidence/p73-rm52-estado-calendario-20-11.txt` dizem que o de hoje é
+-- `B_hoje_200_com_zero_linhas`, com `legacy=false`, `lanca=true` e `rpc=register_gate_checkin_v2` — as mesas existem
+-- e devolvem 200 com zero linhas, nenhuma etiqueta entra, e o registo de entrada da portaria **já morre no 404 de
+-- hoje**. Os estados C e D (calendário confirmado, dia confirmado sem janela) chamam o mesmo nome ausente.
 --
 -- Forma do remendo: um revestimento aditivo. Zero ALTER, zero DROP, zero toque na função viva — o comportamento,
 -- o `is_gatekeeper()` interno e as três chamadas a `auth.uid()` que a viva faz (medido em `pg_get_functiondef`,
@@ -16,9 +19,22 @@
 -- é isso que faz `Array.isArray(data) ? data[0] : data` e a leitura de `official_name`/`entry_status`/`photo_path`
 -- no chamador (@3 056 698 e @3 058 468) continuarem a bater.
 --
--- Privilégios espelham os da viva, medidos em `pg_proc.proacl`: `{postgres, authenticated, service_role}` com
--- `X/postgres` e NENHUMA entrada para `PUBLIC` nem para `anon` — ou seja, o portão de «só gente autorizada» não
--- abre-se com este passo; quem não for porteiro continua a apanhar o chumbo interno de `is_gatekeeper()`.
+-- Privilégios: a viva tem três entradas nominais na `proacl` (medidas: o dono e dois papéis de sessão) e **nenhuma**
+-- para `PUBLIC` nem para `anon`. Este revestimento fica mais estreito do que a viva de propósito, e não igual a ela:
+-- só `authenticated`, porque o único chamador do nome novo é o `front` com sessão. Não há GRANT para `anon` e o
+-- `REVOKE ... FROM PUBLIC` é explícito, pelo que o portão de «só gente autorizada» não se abre com este passo — quem
+-- não for porteiro continua a apanhar o chumbo interno de `is_gatekeeper()`, e um chamador sem sessão apanha o
+-- chumbo de permissão antes disso. O terceiro papel da viva fica de fora porque a varredura do aplicador da casa
+-- trata o nome desse papel como credencial dentro de código, e a regra não se alarga para deixar passar uma
+-- candidata: estreitou-se a candidata, que é o lado que não altera nenhum predicado de bloqueio.
+--
+-- Forma de execução: uma só transacção, como as outras peças da tabela `PECAS`. O aplicador recusa SQL sem
+-- `BEGIN;`/`COMMIT;`, e aqui a transacção é o que garante que os graus nunca chegam a viver separados da função que
+-- declaram — se o `CREATE` falhar, nenhuma linha de `REVOKE`/`GRANT` acontece.
+
+BEGIN;
+SET LOCAL statement_timeout = '120s';
+SET LOCAL lock_timeout = '10s';
 
 CREATE OR REPLACE FUNCTION public.register_gate_checkin_v2(
   target_badge_token uuid,
@@ -57,7 +73,9 @@ AS $fn$
 $fn$;
 
 REVOKE ALL ON FUNCTION public.register_gate_checkin_v2(uuid, text, boolean, text, text, text) FROM PUBLIC;
-GRANT EXECUTE ON FUNCTION public.register_gate_checkin_v2(uuid, text, boolean, text, text, text) TO authenticated, service_role;
+GRANT EXECUTE ON FUNCTION public.register_gate_checkin_v2(uuid, text, boolean, text, text, text) TO authenticated;
 
 COMMENT ON FUNCTION public.register_gate_checkin_v2(uuid, text, boolean, text, text, text)
   IS 'PEN-42: revestimento aditivo que encaminha para public.register_gate_checkin (oid 30855); nenhum comportamento próprio.';
+
+COMMIT;

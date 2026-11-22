@@ -5,5 +5,13 @@
 -- estado medido em 21/11, em que `register_gate_checkin_v2` tem 0 linhas em `pg_proc`.
 --
 -- Sem `IF EXISTS`: se o objeto não estiver lá, a reversão chumba em vez de fingir que reverteu.
+--
+-- Uma só transacção, pela mesma razão da candidata: o `DROP` e nada mais, e o aplicador recusa SQL sem `BEGIN;`.
+
+BEGIN;
+SET LOCAL statement_timeout = '120s';
+SET LOCAL lock_timeout = '10s';
 
 DROP FUNCTION public.register_gate_checkin_v2(uuid, text, boolean, text, text, text);
+
+COMMIT;

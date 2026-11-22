@@ -1,0 +1,102 @@
+{
+  "programa": "scripts/p126-censo-rpc-do-bundle-servido.mjs",
+  "em": "2026-11-22T02:20:28.457Z",
+  "metodo": "extracção por `rpc('<nome>')` nos bytes do bundle passado como argumento; existência por pg_proc via Management API (sem JWT de sessão, logo sem RLS e sem escrita)",
+  "fixture_do_extractor": {
+    "disparo": [
+      "bfr_outra",
+      "bfr_qualquer_coisa"
+    ],
+    "esperado": [
+      "bfr_outra",
+      "bfr_qualquer_coisa"
+    ],
+    "passou": true
+  },
+  "bundles": [
+    {
+      "caminho": "bfr-candidata-v142-painel-na-troca/index.html",
+      "bytes": 3556664,
+      "md5": "0e22e78fe1e0ce929ec4717f86365ad9",
+      "nomes": [
+        "acknowledge_occurrence",
+        "bfr_confirm_school_calendar",
+        "bfr_correct_grade",
+        "bfr_create_school_meeting",
+        "bfr_create_targeted_announcement",
+        "bfr_get_student_photo_path",
+        "bfr_is_municipal_authority",
+        "bfr_list_staff_birthdays",
+        "bfr_resolve_communication_recipients",
+        "bfr_set_staff_birthday",
+        "bfr_teacher_context",
+        "bfr_teacher_lesson_gate_evidence",
+        "bfr_update_school_meeting",
+        "choose_initial_role",
+        "complete_family_registration",
+        "confirm_guardian_entry",
+        "correct_gate_attendance",
+        "get_student_guardians",
+        "list_current_month_birthdays",
+        "register_gate_checkin",
+        "register_gate_checkin_v2",
+        "set_profile_role",
+        "sports_rebuild_standings",
+        "sports_record_event",
+        "sports_set_match_status"
+      ],
+      "chamadas": 32,
+      "por_nome": {
+        "acknowledge_occurrence": 1,
+        "bfr_confirm_school_calendar": 1,
+        "bfr_correct_grade": 1,
+        "bfr_create_school_meeting": 1,
+        "bfr_create_targeted_announcement": 1,
+        "bfr_get_student_photo_path": 1,
+        "bfr_is_municipal_authority": 1,
+        "bfr_list_staff_birthdays": 1,
+        "bfr_resolve_communication_recipients": 1,
+        "bfr_set_staff_birthday": 1,
+        "bfr_teacher_context": 2,
+        "bfr_teacher_lesson_gate_evidence": 1,
+        "bfr_update_school_meeting": 1,
+        "choose_initial_role": 1,
+        "complete_family_registration": 1,
+        "confirm_guardian_entry": 1,
+        "correct_gate_attendance": 1,
+        "get_student_guardians": 1,
+        "list_current_month_birthdays": 2,
+        "register_gate_checkin": 3,
+        "register_gate_checkin_v2": 1,
+        "set_profile_role": 2,
+        "sports_rebuild_standings": 1,
+        "sports_record_event": 2,
+        "sports_set_match_status": 2
+      }
+    }
+  ],
+  "total": {
+    "nomes_distintos": 25,
+    "no_catalogo": 23,
+    "ausentes": 2
+  },
+  "ausentes": [
+    {
+      "nome": "bfr_confirm_school_calendar",
+      "chamadas": 1,
+      "em": [
+        "bfr-candidata-v142-painel-na-troca/index.html"
+      ]
+    },
+    {
+      "nome": "correct_gate_attendance",
+      "chamadas": 1,
+      "em": [
+        "bfr-candidata-v142-painel-na-troca/index.html"
+      ]
+    }
+  ],
+  "o_que_este_verde_nao_autoriza": "nada: é leitura. Não há veredicto de «zero ausentes» — a régua do que deve existir é decisão de produto, e cada aplicação de DDL continua a pedir a sua frase literal.",
+  "o_que_NAO_prova": "que o nome presente no catálogo tenha os argumentos que o front passa, nem que esteja acessível ao papel que chama: isto é um censo de nomes, não de contratos. O contrato de um nome mede-se pelo preflight da peça correspondente.",
+  "veredito": "P126_CENSO_RPC_MEDIDO 25 nomes · 23 no catalogo · 2 ausentes"
+}

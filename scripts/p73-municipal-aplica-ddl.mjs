@@ -46,6 +46,8 @@ const PECAS = {
   'PEN-41': { pref: 'scripts/p73-pen41-preflight.mjs', cand: 'scripts/p73-pen41-ddl-candidata.sql', rev: 'scripts/p73-pen41-ddl-reversao.sql', prefixo: 'P73_PEN41_PREFLIGHT_VERDE', frase: 'APLICAR PEN-41 NO BANCO', fraseRev: 'REVERTER PEN-41 NO BANCO' },
   'PEN-43': { pref: 'scripts/p73-pen43-preflight.mjs', cand: 'scripts/p73-pen43-ddl-candidata.sql', rev: 'scripts/p73-pen43-ddl-reversao.sql', prefixo: 'P73_PEN43_PREFLIGHT_VERDE', frase: 'APLICAR PEN-43 NO BANCO', fraseRev: 'REVERTER PEN-43 NO BANCO' },
   'PEN-44': { pref: 'scripts/p74-pen44-preflight.mjs', cand: 'scripts/p74-pen44-ddl-candidata.sql', rev: 'scripts/p74-pen44-ddl-reversao.sql', prefixo: 'P74_PEN44_PREFLIGHT_VERDE', frase: 'APLICAR PEN-44 NO BANCO', fraseRev: 'REVERTER PEN-44 NO BANCO' },
+  'PEN-42': { pref: 'scripts/p73-pen42-preflight.mjs', cand: 'scripts/p73-pen42-ddl-candidata.sql', rev: 'scripts/p73-pen42-ddl-reversao.sql', prefixo: 'P73_PEN42_PREFLIGHT_VERDE', frase: 'APLICAR PEN-42 NO BANCO', fraseRev: 'REVERTER PEN-42 NO BANCO' },
+  'PEN-48': { pref: 'scripts/p73-pen48-preflight.mjs', cand: 'scripts/p73-pen48-ddl-candidata.sql', rev: 'scripts/p73-pen48-ddl-reversao.sql', prefixo: 'P73_PEN48_PREFLIGHT_VERDE', frase: 'APLICAR PEN-48 NO BANCO', fraseRev: 'REVERTER PEN-48 NO BANCO' },
 };
 // A frase certificada depende do modo, e é a única diferença de autorização entre aplicar e reverter. Vive
 // numa função para o `--selfteste` medir a mesma função que o fluxo usa: uma asserção que reproduzisse a
@@ -73,6 +75,11 @@ const perigos = (t) => {
     // reversões correspondentes descartam-nas), mas não chumba: não está em ZERO_OBRIGATORIO. Acrescentar uma
     // contagem nunca alarga um predicado de bloqueio — os dois lados ficam visíveis no registo.
     drop_policy: c(/^\s*DROP\s+POLICY/gim), drop_function: c(/^\s*DROP\s+FUNCTION/gim), create_policy: c(/^\s*CREATE\s+POLICY/gim), create_function: c(/^\s*CREATE\s+FUNCTION/gim),
+    // `CREATE FUNCTION` e `CREATE OR REPLACE FUNCTION` sao duas formas distintas e a primeira agulha nunca viu a
+    // segunda: o registo da PEN-42 (revestimento aditivo por `CREATE OR REPLACE`) saiu com `create_function: 0` a
+    // dizer «nenhuma funcao criada», quando a classe existia no SQL. Nao se altera o significado duma contagem ja
+    // versionada -- acrescenta-se a classe que faltava, e os dois lados ficam visiveis no registo.
+    create_or_replace_function: c(/^\s*CREATE\s+OR\s+REPLACE\s+FUNCTION/gim),
     // GRANT/REVOKE de EXECUTE contam-se porque sao o trabalho duma peca de graus (PEN-43). Como os DROP, nao estao em
     // ZERO_OBRIGATORIO: um GRANT escrito a mao dentro duma candidata fica visivel no registo em vez de chumbar a
     // varredura, e e o portao do espelho, em baixo, que pergunta se ele devia la estar.
@@ -92,6 +99,13 @@ const FIX_PERIGOS = {
   drop_function_conta_como_trabalho_de_reversao: perigos('DROP FUNCTION public.f();').drop_function === 1,
   grant_e_revoke_contam_se_separadamente: perigos('REVOKE EXECUTE ON FUNCTION public.f() FROM anon;\nGRANT EXECUTE ON FUNCTION public.f() TO anon;').revoke_execute === 1
     && perigos('REVOKE EXECUTE ON FUNCTION public.f() FROM anon;').grant_execute === 0,
+  // As duas formas de criar funcao tem cada uma a sua contagem, e nenhuma delas pode estar verde sozinha:
+  // `CREATE FUNCTION` nao enche a classe nova e `CREATE OR REPLACE` nunca encheu a antiga.
+  create_or_replace_tem_classe_propria_e_nao_confunde_as_duas: perigos('CREATE OR REPLACE FUNCTION public.f() RETURNS int AS $fn$ SELECT 1 $fn$ LANGUAGE sql;').create_or_replace_function === 1
+    && perigos('CREATE OR REPLACE FUNCTION public.f() RETURNS int AS $fn$ SELECT 1 $fn$ LANGUAGE sql;').create_function === 0
+    && perigos('CREATE FUNCTION public.g() RETURNS int AS $fn$ SELECT 1 $fn$ LANGUAGE sql;').create_function === 1
+    && perigos('CREATE FUNCTION public.g() RETURNS int AS $fn$ SELECT 1 $fn$ LANGUAGE sql;').create_or_replace_function === 0,
+  prosa_de_create_or_replace_em_comentario_nao_conta: perigos('-- CREATE OR REPLACE FUNCTION public.f()\nSELECT 1;').create_or_replace_function === 0,
 };
 
 // Os nomes a que uma peca de graus se dirige, lidos do proprio ficheiro e nunca recordados: o REVOKE diz o que fecha
@@ -183,7 +197,8 @@ if (selfteste) {
   const c = (nome, verde, detalhe) => casos.push({ nome, verde: !!verde, ...(detalhe ? { detalhe } : {}) });
   c('frase_solta_nao_autoriza', 'APLICAR PEN-41 NO BANCO' !== 'ok' && 'APLICAR PEN-41 NO BANCO' !== 'APLICAR PEN-38 NO BANCO');
   c('cada_peca_tem_ficheiros_em_disco', Object.entries(PECAS).every(([, p]) => [p.pref, p.cand, p.rev].every((f) => existsSync(join(REPO, f)))));
-  c('varredura_de_perigo_nao_confunde_prosa_nem_corpo_de_funcao', Object.values(FIX_PERIGOS).every(Boolean));
+  c('varredura_de_perigo_nao_confunde_prosa_nem_corpo_de_funcao', Object.values(FIX_PERIGOS).every(Boolean),
+    { fixtures: Object.entries(FIX_PERIGOS).map(([k, v]) => k + '=' + v), contagem: Object.keys(FIX_PERIGOS).length });
   c('varredura_de_credencial_dispara', perigos('token eyJhbGciOiJIUzI1NiJ9.abcdefghijklmnopqrstuvwxyz').credencial === 1);
   c('preflight_escreve_nome_de_registo_que_se_le_na_saida', /registo \S+\.json/.test('P73_X_VERDE_CANDIDATA 12 ms · registo evidence/x.json'));
   // Régua do verde do preflight, medida contra as três formas que os preflights emitem de facto. A versão
