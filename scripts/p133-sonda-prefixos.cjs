@@ -4,8 +4,18 @@
 const fs = require('node:fs');
 const RAIZ = 'C:/Users/pcmac/Documents/Qoder/2026-10-13/28077d9a/bfr-conecta/';
 const ESC = String.fromCharCode(92) + '|';
+// A janela e as palavras de fecho NAO sao dactilografadas aqui: leem-se do instrumento, para que esta saida use a
+// predica de hoje. A versao anterior trazia {0,12} escrito a mao e ficou envelhecida quando o §SM.34 passou a
+// janela para 20, o que fazia desta sonda a fonte de um numero que o instrumento ja nao produzia.
+const fonte = fs.readFileSync(RAIZ + 'scripts/p133-inventario-das-pendencias-abertas.mjs', 'utf8');
+const mJanela = /const JANELA_FECHO = (\d+);/.exec(fonte);
+const mPalavras = /const PALAVRAS_DE_FECHO = '([^']+)';/.exec(fonte);
+if (!mJanela) throw new Error('ABORTA: nao li JANELA_FECHO no instrumento');
+if (!mPalavras) throw new Error('ABORTA: nao li PALAVRAS_DE_FECHO no instrumento');
+const JANELA_FECHO = Number(mJanela[1]);
+const PALAVRAS_DE_FECHO = mPalavras[1];
 const P = {
-  fecho_datado: /\b(?:FECHAD[OA]S?|APLICAD[OA]S?|PUBLICAD[OA]S?|CANCELAD[OA]S?|ATENDID[OA]S?)\b[^.]{0,12}(?:1[0-9]|2[0-9])\/1[12]/,
+  fecho_datado: new RegExp('\\b(?:' + PALAVRAS_DE_FECHO + ')\\b[^.]{0,' + JANELA_FECHO + '}(?:1[0-9]|2[0-9])\\/1[12]'),
   continua_estado: /\bcontinua (?:abert|pendente|por|sem prova|em aberto|nao|sem)/,
   nao_se_fecha: /n[ãa]o se fecha/,
   por_provar: /por provar/,
@@ -13,6 +23,7 @@ const P = {
   estado_com_data: /\b(?:Abert[oa]|Criada)\s+(?:1[0-9]|2[0-9])\/1[12]/,
   palavra_solta_abert: /abert/i,
 };
+console.log('lido_do_instrumento: JANELA_FECHO=' + JANELA_FECHO + ' PALAVRAS_DE_FECHO=' + PALAVRAS_DE_FECHO);
 const LE = /^\| PEN-\d+ \|/;
 const linhas = fs.readFileSync(RAIZ + 'docs/roadmap-master.md', 'utf8').split('\n');
 const celulas = [];

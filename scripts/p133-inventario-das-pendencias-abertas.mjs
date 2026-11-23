@@ -34,10 +34,13 @@ const OUTROS_CODIGOS = CODIGOS_STATUS.filter((c) => c !== CODIGO_DE_FECHO);
 // Os idioms abaixo foram medidos no corpus e as contas ficam nas duas saidas versionadas: o vocabulario esta em
 // evidence/p133-sonda-idiomas-22-11.txt (produto de scripts/p133-sonda-idiomas.cjs) e as formas ancoradas em
 // evidence/p133-sonda-prefixos-22-11.txt (produto de scripts/p133-sonda-prefixos.cjs, que usa estas mesmas
-// predicas). O que essa saida imprime: fecho com data em 10 linhas, «continua + estado» em 9, «nao se fecha» em
-// 2, «por provar» em 2, abreviatura da legenda em 10 ocorrencias (PF 6, NT 2, ICP 2 — nove no inicio da celula e
-// uma dentro, o «ICP por RM12-A1» do PEN-13), «palavra de estado no inicio» em 29 linhas e «palavra de estado +
-// data» em 15 ocorrencias, 14 no inicio e 1 dentro (PEN-34, «Criada 14/11 ao fechar o RM-6.9»). O `IF` da legenda
+// predicas). O que essa saida imprime, na captura de hoje (evidence/p133-sonda-prefixos-22-11-sm35.txt, que le a
+// janela e as palavras deste ficheiro em vez de os re-dactilografar): fecho com data em 11 linhas, «continua +
+// estado» em 9, «nao se fecha» em 2, «por provar» em 2, abreviatura da legenda em 10 ocorrencias (PF 6, NT 2, ICP 2
+// — nove no inicio da celula e uma dentro, o «ICP por RM12-A1» do PEN-13), «palavra de estado no inicio» em 29
+// linhas e «palavra de estado + data» em 15 ocorrencias, 14 no inicio e 1 dentro (PEN-34, «Criada 14/11 ao fechar o
+// RM-6.9»). A captura anterior (evidence/p133-sonda-prefixos-22-11.txt) dizia 10 linhas de fecho porque ainda trazia
+// a janela de 12 escrita a mao: ficou como estava e serve de exemplar do numero envelhecido. O `IF` da legenda
 // nao tem nenhuma ocorrencia no corpus: a sua familia so dispara em fixture, e e por isso que o portao dos
 // idioms sem uso aceita o uso em fixture. A abreviatura nao e aceite sozinha: exige logo depois `por`, travessao
 // ou `=`, a unica forma com que aparece nas dez ocorrencias medidas. A palavra solta «abert» fica FORA da familia
@@ -54,9 +57,24 @@ const OUTROS_CODIGOS = CODIGOS_STATUS.filter((c) => c !== CODIGO_DE_FECHO);
 // era lida pelo sinal de 17/11 e nunca pelo de 19/11. A janela passa a const abaixo, que compoe o regex: o portao
 // `a_janela_do_fecho_cobre_o_maior_intervalo_medido_no_corpus` governa o mesmo numero que a regua usa, por isso
 // nao podem envelhecer separadas.
+//
+// A janela de cima so vale na direccao palavra-antes-da-data. Medido por scripts/p135-sonda-adendos-de-fecho.cjs
+// (saida em evidence/p135-sonda-adendos-de-fecho-22-11.txt, que le a janela e as palavras deste ficheiro): ha 7
+// adendos nas linhas PEN, todos com a marca `(DD/MM)`, todos com exactamente 2 caracteres de pura pontuacao a seguir
+// (`: `), e em 6 deles nao ha palavra de estado ate 60 caracteres — sao notas de progresso, e e por isso que a
+// familia nova nao os reclama. O setimo tem `FECHADA` logo a seguir a data: a PEN-40, que o §SM.28 fecha no ar da
+// v142 e que esta regua lia como ABERTA porque a data vinha antes da palavra. A familia fica abaixo, com janela
+// propria e portao proprio; o fixture de 15 caracteres e o que prova que ela pode falhar.
 const JANELA_FECHO = 20;
+const PALAVRAS_DE_FECHO = 'FECHAD[OA]S?|APLICAD[OA]S?|PUBLICAD[OA]S?|CANCELAD[OA]S?|ATENDID[OA]S?';
+// A JANELA_ADENDO governa o outro eixo: a corrida de pura pontuacao ENTRE a marca de data do adendo e a palavra de
+// fecho que vem depois dela. Medida na sonda versionada: sete adendos nas linhas PEN, todos com a mesma corrida de
+// dois caracteres (`: `) e um so com palavra de fecho a seguir. Dois era o minimo que servia o corpus; seis e a
+// margem que ainda deixa o fixture de doze caracteres Fora da familia, o unico modo de esta janela poder falhar.
+const JANELA_ADENDO = 6;
 const IDIOMAS = [
-  { fam: 'FECHO', nome: 'fecho datado', re: new RegExp('\\b(?:FECHAD[OA]S?|APLICAD[OA]S?|PUBLICAD[OA]S?|CANCELAD[OA]S?|ATENDID[OA]S?)\\b[^.]{0,' + JANELA_FECHO + '}(?:1[0-9]|2[0-9])\\/1[12]') },
+  { fam: 'FECHO', nome: 'fecho datado', re: new RegExp('\\b(?:' + PALAVRAS_DE_FECHO + ')\\b[^.]{0,' + JANELA_FECHO + '}(?:1[0-9]|2[0-9])\\/1[12]') },
+  { fam: 'FECHO', nome: 'fecho em adendo com a data antes da palavra', re: new RegExp('[Aa]dendo\\b[^|\\n]{0,24}?\\((?:1[0-9]|2[0-9])\\/1[12]\\)[^A-Za-z0-9\\u00C0-\\u00FF]{0,' + JANELA_ADENDO + '}(?:' + PALAVRAS_DE_FECHO + ')\\b') },
   { fam: 'ABERTO', nome: 'continua + estado', re: /\bcontinua (?:abert|pendente|por|sem prova|em aberto|nao|sem)/ },
   { fam: 'ABERTO', nome: 'esta linha nao se fecha', re: /n[ãa]o se fecha/ },
   { fam: 'ABERTO', nome: 'por provar', re: /por provar/ },
@@ -210,6 +228,9 @@ const FIXTURES = [
   { celula: 'FECHADA 14/11 pelo push do remendo. **[PEN-34] Criada 14/11 ao fechar o RM-6.9, com medicao propria**', esperado: 'DIVERGENTE', por: 'palavra de estado com data depois do fecho, data nao mais recente' },
   { celula: '**FECHADAS AS DUAS METADES 19/11 — §SM.24**', esperado: 'FECHADA', por: 'fecho datado com intervalo 17, a forma real da PEN-36 que a janela de 12 nao alcançava' },
   { celula: 'FECHADAS AS DUAS METADES DA SUPERFICIE E DOS ROTULOS E DAS PORTAS 21/11', esperado: 'SEM_DECLARACAO', por: 'intervalo acima da janela medida: a regua nao a reconhece e e isso que o portao da janela vigia' },
+  { celula: '**[Adendo §SM.28 (21/11): FECHADA por execução no ar da v142]**', esperado: 'FECHADA', por: 'fecho em adendo com a data antes da palavra, a forma real da PEN-40, corrida de 2' },
+  { celula: 'Adendo §SM.9 (21/11): **PUBLICADA a v143 com portao', esperado: 'FECHADA', por: 'a mesma familia com o involacro de negrito, corrida de 4, dentro da margem' },
+  { celula: 'Adendo §SM.9 (21/11): ............ FECHADA', esperado: 'SEM_DECLARACAO', por: 'corrida de 14 caracteres, acima da janela do adendo: a familia nao a reclama e este fixture e o que o prova' },
 ];
 const disparados = {};
 for (const f of FIXTURES) { const c = classe(f.celula).classe; disparados[f.esperado] = (disparados[f.esperado] || 0) + (c === f.esperado ? 1 : 0); }
@@ -236,7 +257,7 @@ const idiomasSemUso = Object.keys(usoPorIdioma).filter((k) => usoPorIdioma[k] ==
 // O intervalo entre a palavra de fecho e a data, medido com a mesma semantica do regex da regua (a busca para no
 // primeiro ponto). Publica-se e governa a JANELA_FECHO: e a unica forma de a janela deixar de servir sem que eu
 // de conta do aviso.
-const PALAVRA_DE_FECHO = new RegExp('\\b(?:FECHAD[OA]S?|APLICAD[OA]S?|PUBLICAD[OA]S?|CANCELAD[OA]S?|ATENDID[OA]S?)\\b', 'g');
+const PALAVRA_DE_FECHO = new RegExp('\\b(?:' + PALAVRAS_DE_FECHO + ')\\b', 'g');
 const DATA_DE_FECHO = /(?:1[0-9]|2[0-9])\/1[12]/;
 const intervalosDeFecho = (textos) => {
   const histograma = {};
@@ -259,6 +280,30 @@ const intervalosDeFecho = (textos) => {
 const intervalosCorpus = intervalosDeFecho(celulasDoCorpus);
 const intervalosFixtures = intervalosDeFecho(FIXTURES.map((f) => f.celula));
 
+// A outra face da mesma cegueira, medida em vez de suposta: a corrida de pontuacao que vai da marca de data do
+// adendo ate a palavra de fecho. O regex da familia poe-lhe o limite; esta contagem nao poe, para que se veja o
+// que ficaria Fora sem que eu de por isso. A classe do grupo capturado nao tem letras nem digitos, por isso o
+// backtracking nao pode inventar uma palavra que nao comece no fim da corrida.
+const RE_ADENDO_SEM_LIMITE = new RegExp('[Aa]dendo\\b[^|\\n]{0,24}?\\((?:1[0-9]|2[0-9])\\/1[12]\\)([^A-Za-z0-9\\u00C0-\\u00FF]*)(?:' + PALAVRAS_DE_FECHO + ')\\b', 'g');
+const intervalosDeAdendo = (textos) => {
+  const histograma = {};
+  let ocorrencias = 0;
+  let maior = 0;
+  for (const t of textos) {
+    RE_ADENDO_SEM_LIMITE.lastIndex = 0;
+    let m;
+    while ((m = RE_ADENDO_SEM_LIMITE.exec(t)) !== null) {
+      ocorrencias++;
+      histograma[m[1].length] = (histograma[m[1].length] || 0) + 1;
+      if (m[1].length > maior) maior = m[1].length;
+      if (m.index === RE_ADENDO_SEM_LIMITE.lastIndex) RE_ADENDO_SEM_LIMITE.lastIndex++;
+    }
+  }
+  return { ocorrencias, maior_intervalo: maior, histograma };
+};
+const adendoCorpus = intervalosDeAdendo(celulasDoCorpus);
+const adendoFixtures = intervalosDeAdendo(FIXTURES.map((f) => f.celula));
+
 const CLASSES = ['ABERTA', 'FECHADA', 'DIVERGENTE', 'SEM_DECLARACAO'];
 const contagem = {};
 for (const k of CLASSES) contagem[k] = 0;
@@ -276,6 +321,8 @@ gate('cada_fixture_produz_a_classe_esperada_pelo_desenho', fixturesFalham.length
 gate('cada_idiom_de_estado_tem_uso_medido_no_corpus_ou_em_fixture', idiomasSemUso, []);
 gate('a_janela_do_fecho_cobre_o_maior_intervalo_medido_no_corpus',
   [intervalosCorpus.maior_intervalo <= JANELA_FECHO, intervalosFixtures.maior_intervalo > JANELA_FECHO], [true, true]);
+gate('a_janela_do_adendo_cobre_o_maior_intervalo_medido_no_corpus',
+  [adendoCorpus.maior_intervalo <= JANELA_ADENDO, adendoFixtures.maior_intervalo > JANELA_ADENDO], [true, true]);
 gate('as_duas_legendas_da_seccao_12_foram_lidas_e_deram_codigos', [LEGENDA_STATUS_LINHA ? 1 : 0, LEGENDA_PRIORIDADE_LINHA ? 1 : 0, CODIGOS_STATUS.length > 0 ? 1 : 0, CODIGOS_PRIORIDADE.length > 0 ? 1 : 0], [1, 1, 1, 1]);
 gate('todo_codigo_usado_no_inicio_de_celula_consta_na_legenda_de_status', Object.keys(codigosNoInicio).filter((c) => !CODIGOS_STATUS.includes(c)).sort(), []);
 gate('toda_prioridade_lida_bate_com_a_legenda_de_prioridade', Object.keys(prioridadesForaDaLegenda).sort(), []);
@@ -298,7 +345,7 @@ const saida = {
   rotulo: process.env.P133_ROTULO || 'a',
   em: new Date().toISOString(),
   pergunta: 'quais pendencias estao mesmo abertas, por que classe medida, e que OK cada uma exige?',
-  metodo: 'todas as linhas PEN lidas com a predica do produtor (pipes escapados nao separam celulas, sete partes por split); classe = os dois veredictos da celula (ultimo sinal por posicao e sinal com a data mais recente) quando concordam, DIVERGENTE quando divergem, SEM_DECLARACAO quando a celula nao tem nenhum idiom; os idioms sao as formas medidas no corpus (p133-sonda-idiomas.cjs, p133-sonda-prefixos.cjs), com as abreviaturas lidas da propria linha da legenda de status e nao dactilografadas; a palavra solta «abert» esta fora das familias porque tres das suas ocorrencias descrevem superficie e nao estado; a janela entre a palavra de fecho e a data e a const JANELA_FECHO, contada no corpus (11 ocorrencias, histograma de intervalos publicado em janela_de_fecho) e vigiada pelo portao do mesmo nome; registro de aplicacao lido com o filtro do portao do pacote (modo=aplicacao e escrito_no_banco=true); seccao 13 e o censo PEN contados pelos produtores versionados por execFile, nao por reimplementacao.',
+  metodo: `todas as linhas PEN lidas com a predica do produtor (pipes escapados nao separam celulas, sete partes por split); classe = os dois veredictos da celula (ultimo sinal por posicao e sinal com a data mais recente) quando concordam, DIVERGENTE quando divergem, SEM_DECLARACAO quando a celula nao tem nenhum idiom; os idioms sao as formas medidas no corpus (p133-sonda-idiomas.cjs, p133-sonda-prefixos.cjs, p135-sonda-adendos-de-fecho.cjs, que leem esta mesma fonte em vez de re-dactilografar as predicas), com as abreviaturas lidas da propria linha da legenda de status e nao dactilografadas; a palavra solta «abert» esta fora das familias porque tres das suas ocorrencias descrevem superficie e nao estado; a janela entre a palavra de fecho e a data e a const JANELA_FECHO, contada no corpus (${intervalosCorpus.ocorrencias} ocorrencias, histograma publicado em janela_de_fecho) e vigiada pelo portao do mesmo nome; ha uma segunda janela, JANELA_ADENDO, para a forma em que a data vem ANTES da palavra («Adendo §SM.28 (21/11): FECHADA», ${adendoCorpus.ocorrencias} ocorrencia no corpus, corrida de pontuacao medida em ${JSON.stringify(adendoCorpus.histograma)} pela sonda p135), tambem ela vigiada por portao proprio com fixture nos dois sentidos; registro de aplicacao lido com o filtro do portao do pacote (modo=aplicacao e escrito_no_banco=true); seccao 13 e o censo PEN contados pelos produtores versionados por execFile, nao por reimplementacao.`,
   emissor_bytes: Buffer.byteLength(emissor),
   emissor_md5: createHash('md5').update(emissor).digest('hex').slice(0, 8),
   fontes: { ledger: LEDGER, painel: PAINEL, registro_diretorio: 'evidence', censo_rm: 'scripts/censo-pendencias.mjs' },
@@ -310,6 +357,7 @@ const saida = {
   },
   idiomas: { definidos: IDIOMAS.length, uso_no_corpus: usoPorIdioma, uso_nos_fixtures: usoPorIdiomaFixtures, sem_uso_em_ambos: idiomasSemUso },
   janela_de_fecho: { valor: JANELA_FECHO, corpus: intervalosCorpus, fixtures: intervalosFixtures },
+  janela_de_adendo: { valor: JANELA_ADENDO, corpus: adendoCorpus, fixtures: adendoFixtures },
   linhas_pen: itens.length,
   contagem_por_classe: contagem,
   abertas: itens.filter((i) => i.classe === 'ABERTA').map((i) => ({ id: i.id, pri: i.pri, vencedor: i.vencedor, ok: i.ok, registo: i.registo_aplicacao ? i.registo_aplicacao.registo : null })),
@@ -326,8 +374,8 @@ const saida = {
   fixtures: { definidas: FIXTURES.length, disparados, falhas: fixturesFalham },
   abertas_com_registo: abertasComRegisto,
   portoes: { total: portoes.length, falhas: falhas.length, lista: portoes },
-  o_que_prova: ['que o ledger tem N linhas PEN de cinco celulas e em que classe cada celula cai pelo sinal mais recente, com a posicao e a data desse sinal', 'quais dessas linhas tem registo de aplicacao no banco em disco e com que frase de OK', 'que as tres contagens de pendencias (painel, paragrafo 15, linhas lidas) batem ou divergem', `que o classificador dispara em todas as ${FIXTURES.length} formas postas em fixture`, `que cada um dos ${IDIOMAS.length} idioms tem uso medido no corpus ou em fixture`, `que a janela de ${JANELA_FECHO} caracteres entre a palavra de fecho e a data cobre o maior intervalo medido no corpus (${intervalosCorpus.maior_intervalo}) e que tem fixture acima dela (${intervalosFixtures.maior_intervalo}) para nao virar ramo morto`],
-  o_que_NAO_prova: ['que a classe do ledger seja o estado vivo do produto: a fonte e prosa versionada, nao o ar', 'que o OK exigido por cada linha seja suficiente: a coluna e a assinatura lexical do texto, a frase concreta pertence ao utilizador', 'que as linhas RM-x.y abertas estejam bem ou mal: o censo so conta e classifica por sinais do texto', 'que uma celula SEM_DECLARACAO esteja fechada ou aberta: diz so que o texto nao declara estado em nenhum dos idioms medidos', 'que um fecho declarado no texto seja verdadeiro: a regua reconhece a forma «palavra de fecho + data», nao confere a corrida citada — foi assim que a PEN-36 pôde declarar as duas metades fechadas enquanto o ar publicado mantinha seis rotulos', 'que o intervalo entre a palavra de fecho e a data esteja dentro da janela numa forma de escrita nova: acima de ' + JANELA_FECHO + ' caracteres a data passa a nao contar, e o portao da janela e o que da o aviso'],
+  o_que_prova: ['que o ledger tem N linhas PEN de cinco celulas e em que classe cada celula cai pelo sinal mais recente, com a posicao e a data desse sinal', 'quais dessas linhas tem registo de aplicacao no banco em disco e com que frase de OK', 'que as tres contagens de pendencias (painel, paragrafo 15, linhas lidas) batem ou divergem', `que o classificador dispara em todas as ${FIXTURES.length} formas postas em fixture`, `que cada um dos ${IDIOMAS.length} idioms tem uso medido no corpus ou em fixture`, `que a janela de ${JANELA_FECHO} caracteres entre a palavra de fecho e a data cobre o maior intervalo medido no corpus (${intervalosCorpus.maior_intervalo}) e que tem fixture acima dela (${intervalosFixtures.maior_intervalo}) para nao virar ramo morto`, `que a janela de ${JANELA_ADENDO} caracteres entre a marca de data do adendo e a palavra de fecho cobre o maior intervalo medido no corpus (${adendoCorpus.maior_intervalo}) e que tem fixture acima dela (${adendoFixtures.maior_intervalo})`],
+  o_que_NAO_prova: ['que a classe do ledger seja o estado vivo do produto: a fonte e prosa versionada, nao o ar', 'que o OK exigido por cada linha seja suficiente: a coluna e a assinatura lexical do texto, a frase concreta pertence ao utilizador', 'que as linhas RM-x.y abertas estejam bem ou mal: o censo so conta e classifica por sinais do texto', 'que uma celula SEM_DECLARACAO esteja fechada ou aberta: diz so que o texto nao declara estado em nenhum dos idioms medidos', 'que um fecho declarado no texto seja verdadeiro: a regua reconhece a forma «palavra de fecho + data» e a forma «adendo com a data antes da palavra», mas nao confere a corrida citada — foi assim que a PEN-36 pôde declarar as duas metades fechadas enquanto o ar publicado mantinha cinco rotulos com dois ou mais usos, dos sete nomes listados em 17/11 (medido por scripts/p134-rotulos-da-secretaria-no-ar.mjs)', `que o intervalo entre a palavra e a data esteja dentro da janela numa forma de escrita nova: acima de ${JANELA_FECHO} caracteres, com a data depois da palavra, ou acima de ${JANELA_ADENDO} caracteres de pura pontuacao, com a data antes dela, a data passa a nao contar, e os portoes das duas janelas sao o que da o aviso`],
 };
 saida.veredito = (falhas.length ? 'P133_INVENTARIO_VERMELHO ' : 'P133_INVENTARIO_MEDIDO ') + portoes.length + '/' + falhas.length + ' · esperanca=medir';
 fs.writeFileSync(OUT, JSON.stringify(saida, null, 2) + '\n');
