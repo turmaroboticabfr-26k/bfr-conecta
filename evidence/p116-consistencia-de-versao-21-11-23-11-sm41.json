@@ -1,0 +1,321 @@
+{
+  "programa": "scripts/p116-consistencia-de-versao.mjs",
+  "em": "2026-11-23T22:57:45.519Z",
+  "duracao_ms": 1048,
+  "metodo": "Fetch anónimo duplicado do shell; diários lidos de `git ls-files` e ordenados pelo número medido no nome; a cadeia de `versao_anterior_vX` confrontada com os `version_id` dos próprios diários; as contagens vêm de chamar `scripts/ah1-cuenta-pen.mjs`, nunca de contar linhas aqui; painel e diário de corrida recortados por uma prédica por linha declarante, com o texto extraído impresso ao lado do veredicto.",
+  "ar": {
+    "url": "https://bfr-conecta.turmaroboticabfr.workers.dev/",
+    "leituras": [
+      {
+        "i": 1,
+        "http": 200,
+        "bytes": 3556664,
+        "md5": "0e22e78fe1e0ce929ec4717f86365ad9"
+      },
+      {
+        "i": 2,
+        "http": 200,
+        "bytes": 3556664,
+        "md5": "0e22e78fe1e0ce929ec4717f86365ad9"
+      }
+    ],
+    "diario": "v142",
+    "data_do_diario": "2026-11-21"
+  },
+  "diarios_no_indice": [
+    "v117",
+    "v119",
+    "v120",
+    "v121",
+    "v122",
+    "v133",
+    "v134",
+    "v135",
+    "v136",
+    "v140",
+    "v141",
+    "v142"
+  ],
+  "cadeia": {
+    "caminho": [
+      {
+        "de": "v142",
+        "para": "v141",
+        "id_declarado": "678bba24",
+        "id_do_diario_destino": "678bba24",
+        "ok": true
+      },
+      {
+        "de": "v141",
+        "para": "v140",
+        "id_declarado": "208d5bff",
+        "id_do_diario_destino": "208d5bff",
+        "ok": true
+      },
+      {
+        "de": "v140",
+        "para": "v136",
+        "id_declarado": "1598137c",
+        "id_do_diario_destino": "1598137c",
+        "ok": true
+      },
+      {
+        "de": "v136",
+        "para": "v135",
+        "id_declarado": "f5c157f2",
+        "id_do_diario_destino": "f5c157f2",
+        "ok": true
+      },
+      {
+        "de": "v135",
+        "para": "v134",
+        "id_declarado": "8600fc3d",
+        "id_do_diario_destino": "8600fc3d",
+        "ok": true
+      }
+    ],
+    "termo": "sem_aresta_declarada_em_v134",
+    "arestas": [
+      {
+        "de": "v135",
+        "para": "v134",
+        "id_declarado": "8600fc3d",
+        "id_do_diario_destino": "8600fc3d",
+        "ok": true
+      },
+      {
+        "de": "v136",
+        "para": "v135",
+        "id_declarado": "f5c157f2",
+        "id_do_diario_destino": "f5c157f2",
+        "ok": true
+      },
+      {
+        "de": "v140",
+        "para": "v136",
+        "id_declarado": "1598137c",
+        "id_do_diario_destino": "1598137c",
+        "ok": true
+      },
+      {
+        "de": "v141",
+        "para": "v140",
+        "id_declarado": "208d5bff",
+        "id_do_diario_destino": "208d5bff",
+        "ok": true
+      },
+      {
+        "de": "v142",
+        "para": "v141",
+        "id_declarado": "678bba24",
+        "id_do_diario_destino": "678bba24",
+        "ok": true
+      }
+    ],
+    "rotas": []
+  },
+  "emissor": {
+    "linhas": 48,
+    "A": 17,
+    "M": 18,
+    "B": 13,
+    "soma": 48,
+    "fora_de_forma": "nenhuma",
+    "unicas": 48,
+    "maior": 48
+  },
+  "painel": {
+    "itens_extraido": 48,
+    "maior_extraido": 48,
+    "nomeia_a_fonte": true,
+    "linha_cabecalho": "    <h2>Pendências (48 itens · PEN-01…PEN-48; re-contadas 22/11 no fecho do §SM.30, depois de aplicados os dois DDL autorizados, sempre pelo <code>scripts/ah1-cuenta-pen.mjs</code> — a corrida actual está em <code>eviden",
+    "ALTA": 17,
+    "MEDIA": 18,
+    "BAIXA": 13
+  },
+  "diario_de_corrida": {
+    "blocos_SM": 42,
+    "primeiro": "**SM.0. Entrada e alcance deste bloco.** O briefing anexado («AUDITORIA, CORREÇÃO E IMPLEM",
+    "ultimo": "**SM.41. A auditoria em leitura do mandato: oito instrumentos re-corridos com sufixo fresco, o censo vivo batido contra ",
+    "que_nomeiam_a_versao_mais_nova": [
+      "**SM.28. A cadeia v140→v141→v142 executada, conferida no ar e re-contada: o painel municipal fecha-se na troca de vista,",
+      "**SM.40. A pendência A1 ganha candidata e pré-voo verde (35/0) sem ser aplicada: a função confirma só os dias e devolve "
+    ]
+  },
+  "o_que_esta_regua_ve_e_nao_ve": "Vê as três relações que a casa não medía: ar↔diário, painel↔emissor, diário de corrida↔versão publicada. Não vê se o conteúdo do bloco SM está certo, se o painel descreve bem cada cartão, nem se um `deploy` do Cloudflare tem diário — isso continua no `pacote-municipal-confere-pecas.mjs` e na leitura da lista de deployments. Um KPI do painel que não tenha emissor (o de «versões publicadas») não é governado por esta régua, porque eu não tenho como derivar o esperado dele sem chamar a API de administração.",
+  "portoes": [
+    {
+      "nome": "o_ar_servido_duas_vezes_seguidas_e_igual_a_si_mesmo_e_ao_md5_do_diario_mas_novo",
+      "verde": true,
+      "detalhe": {
+        "diario": "v142",
+        "html_md5_declarado": "0e22e78fe1e0ce929ec4717f86365ad9",
+        "html_bytes_declarados": 3556664,
+        "leituras": [
+          "200/3556664B/0e22e78fe1e0ce929ec4717f86365ad9",
+          "200/3556664B/0e22e78fe1e0ce929ec4717f86365ad9"
+        ]
+      }
+    },
+    {
+      "nome": "a_cadeia_partida_do_diario_mas_novo_sobe_por_diarios_versionados_ate_um_termo_declarado_sem_ciclo_nem_id_trocado",
+      "verde": true,
+      "detalhe": {
+        "caminho": [
+          {
+            "de": "v142",
+            "para": "v141",
+            "id_declarado": "678bba24",
+            "id_do_diario_destino": "678bba24",
+            "ok": true
+          },
+          {
+            "de": "v141",
+            "para": "v140",
+            "id_declarado": "208d5bff",
+            "id_do_diario_destino": "208d5bff",
+            "ok": true
+          },
+          {
+            "de": "v140",
+            "para": "v136",
+            "id_declarado": "1598137c",
+            "id_do_diario_destino": "1598137c",
+            "ok": true
+          },
+          {
+            "de": "v136",
+            "para": "v135",
+            "id_declarado": "f5c157f2",
+            "id_do_diario_destino": "f5c157f2",
+            "ok": true
+          },
+          {
+            "de": "v135",
+            "para": "v134",
+            "id_declarado": "8600fc3d",
+            "id_do_diario_destino": "8600fc3d",
+            "ok": true
+          }
+        ],
+        "termo": "sem_aresta_declarada_em_v134",
+        "arestas_globais": 5,
+        "rotas": [],
+        "diarios_no_indice": [
+          "v117",
+          "v119",
+          "v120",
+          "v121",
+          "v122",
+          "v133",
+          "v134",
+          "v135",
+          "v136",
+          "v140",
+          "v141",
+          "v142"
+        ]
+      }
+    },
+    {
+      "nome": "o_painel_declara_a_contagem_de_itens_do_emissor_e_o_maior_id_declara_o_mesmo_e_cita_a_fonte",
+      "verde": true,
+      "detalhe": {
+        "emissor": {
+          "linhas": 48,
+          "A": 17,
+          "M": 18,
+          "B": 13,
+          "soma": 48,
+          "fora_de_forma": "nenhuma",
+          "unicas": 48,
+          "maior": 48
+        },
+        "painel": {
+          "itens_extraido": 48,
+          "maior_extraido": 48,
+          "nomeia_a_fonte": true,
+          "linha_cabecalho": "    <h2>Pendências (48 itens · PEN-01…PEN-48; re-contadas 22/11 no fecho do §SM.30, depois de aplicados os dois DDL autorizados, sempre pelo <code>scripts/ah1-cuenta-pen.mjs</code> — a corrida actual está em <code>eviden",
+          "ALTA": 17,
+          "MEDIA": 18,
+          "BAIXA": 13
+        },
+        "unidades": "linhas da tabela PEN do ledger, contadas pela grelha do emissor, não por prefixo"
+      }
+    },
+    {
+      "nome": "o_painel_declara_as_tres_prioridades_do_emissor_e_a_soma_delas_e_a_contagem_de_itens",
+      "verde": true,
+      "detalhe": {
+        "emissor": {
+          "linhas": 48,
+          "A": 17,
+          "M": 18,
+          "B": 13,
+          "soma": 48,
+          "fora_de_forma": "nenhuma",
+          "unicas": 48,
+          "maior": 48
+        },
+        "painel": {
+          "itens_extraido": 48,
+          "maior_extraido": 48,
+          "nomeia_a_fonte": true,
+          "linha_cabecalho": "    <h2>Pendências (48 itens · PEN-01…PEN-48; re-contadas 22/11 no fecho do §SM.30, depois de aplicados os dois DDL autorizados, sempre pelo <code>scripts/ah1-cuenta-pen.mjs</code> — a corrida actual está em <code>eviden",
+          "ALTA": 17,
+          "MEDIA": 18,
+          "BAIXA": 13
+        }
+      }
+    },
+    {
+      "nome": "nenhuma_linha_pen_fica_fora_de_forma_no_emissor",
+      "verde": true,
+      "detalhe": {
+        "emissor": {
+          "linhas": 48,
+          "A": 17,
+          "M": 18,
+          "B": 13,
+          "soma": 48,
+          "fora_de_forma": "nenhuma",
+          "unicas": 48,
+          "maior": 48
+        }
+      }
+    },
+    {
+      "nome": "o_diario_de_corrida_tem_um_bloco_SM_que_nomeia_a_versao_publicada_mas_nova",
+      "verde": true,
+      "detalhe": {
+        "alvo": "v142",
+        "blocos_SM": 42,
+        "que_nomeiam_a_versao": [
+          "**SM.28. A cadeia v140→v141→v142 executada, conferida no ar e re-contada: o painel municip",
+          "**SM.40. A pendência A1 ganha candidata e pré-voo verde (35/0) sem ser aplicada: a função "
+        ],
+        "ultimo_bloco": "**SM.41. A auditoria em leitura do mandato: oito instrumentos re-corridos com sufixo fresco, o censo vivo bati"
+      }
+    },
+    {
+      "nome": "o_diario_mas_novo_declara_o_mesmo_md5_para_o_bundle_e_para_a_saida_da_candidata",
+      "verde": true,
+      "detalhe": {
+        "bundle_html_md5": "0e22e78fe1e0ce929ec4717f86365ad9",
+        "candidata_destino_md5": "0e22e78fe1e0ce929ec4717f86365ad9",
+        "destino": "bfr-candidata-v142-painel-na-troca md5=0e22e78fe1e0ce929ec4717f86365ad9"
+      }
+    },
+    {
+      "nome": "nenhum_token_de_sessao_chega_ao_registo_desta_regua",
+      "verde": true,
+      "detalhe": {
+        "regexua_lida_do_emissor": true,
+        "ocorrencias": 0,
+        "comparado": "o corpo serializado desta própria saída"
+      }
+    }
+  ],
+  "falhas": [],
+  "veredito": "P116_CONSISTENCIA_DE_VERSAO_OK 8/0"
+}

@@ -1,0 +1,16 @@
+veredito=BU2_CENSO_VERMELHO 7/1 expressions_de_politicas_sao_subconjunto_do_enum
+objetos=[{"tipo":"r","total":183},{"tipo":"v","total":7}]
+politicas={"total":496,"sem_filtro":0,"r_leitura":232,"a_insercao":75,"w_atualizacao":57,"d_exclusao":20,"estrela_tudo":112}
+papeis_enum=15 pending,parent,student,pedagogical,developer,monitor,gatekeeper,coordinator,secretary,aee,director,psychology,social_work,sports_operator,education_supervisor
+cargos_na_matriz=active,aee,all,coordinator,coordinator_override,developer,director,email,family,parent,pedagogical,published,secretary,sports_operator,student,teacher
+cargos_sem_politica=pending,monitor,gatekeeper,psychology,social_work,education_supervisor
+matriz_por_papel=pending:l0/e0 parent:l4/e0 student:l4/e0 pedagogical:l7/e6 developer:l19/e12 monitor:l0/e0 gatekeeper:l0/e0 coordinator:l15/e11 secretary:l6/e3 aee:l8/e2 director:l22/e11 psychology:l0/e0 social_work:l0/e0 sports_operator:l3/e0 education_supervisor:l0/e0
+contas_por_papel=secretary=4 developer=3 aee=2 coordinator=2 director=2 gatekeeper=2 monitor=2 pedagogical=2 pending=2 student=2 education_supervisor=1 parent=1 psychology=1 social_work=1 sports_operator=1 auth_users=28
+volumes=students=848 profiles=28 schools=6 classes=27 guardian_students=1 staff_schools=6 gate_checkins=272 gate_badges=843 attendance=25 grades=112 announcements=1 internal_chat_messages=2 internal_chat_threads=1 occurrences=0 access_requests=12 route_incidents=0 learning_action_plans=0 support_requests=1 psychology_referrals=0 supervision_requests=0 supervision_responses=0 bfr_teacher_class_subjects=5 bfr_school_calendar_days=0 bfr_school_shift_settings=0 bfr_school_calendar_month_targets=0 school_documents=226 student_messages=1 school_activities=0 bfr_municipal_audit=0
+nucleares_nao_encontradas=attendance_records,notifications,routes,vehicles,behavior_records,bfr_municipal_grants,municipalities
+funcoes={"total":163,"security_definer":150,"definer_com_search_path":150,"prefixo_bfr":123}
+triggers={"total":64,"ativos":35}
+realtime=75 views=7 buckets=erro
+classes_de_dados={"identificacao":65,"contato":9,"imagem":0,"credencial_fisica_de_acesso":0,"outros":0,"colunas_de_credencial_por_tabela":"3 tabelas"}
+gates=tabelas_pg_class_batem_com_pg_namespace:VERDE nenhuma_tabela_sem_rls:VERDE politicas_por_soma_de_tabelas_batem_com_contagem_direta:VERDE comandos_somam_a_contagem_direta_sem_contar_duas_vezes:VERDE a_predica_de_cargo_discontra_em_linha_real:VERDE a_predica_nao_inventa_cargo:VERDE expressions_de_politicas_sao_subconjunto_do_enum:VERMELHO profiles_por_papel_soma_e_nao_excede_auth_users:VERDE
+node_exit=0 ms=21685 pegada_politicas=1b0cb53791b1224eb8b2b61146c167e1
