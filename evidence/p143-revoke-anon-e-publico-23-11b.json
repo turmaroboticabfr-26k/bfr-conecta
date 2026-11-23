@@ -1,0 +1,2934 @@
+{
+  "peca": "scripts/p143-revoke-anon-e-publico.mjs",
+  "em": "2026-11-23T05:41:40.792Z",
+  "duracao_ms": 6673,
+  "emissor_bytes": 29210,
+  "emissor_md5": "de541c82110d7768434d74773af52d9e",
+  "pergunta": "qual e a candidata de REVOKE que fecha hoje o caminho do anonimo ao EXECUTE nas 19 funcoes de public medidas no sm37g, sem tocar em mais nenhum grau — e que raio de estouro tem?",
+  "metodo": "SELECTs de catalogo (censo, pg_proc com pg_get_function_identity_arguments, aclexplode, pg_policy, pg_trigger) so com o predicado eLeitura lido do p139 e compilado em node:vm; os 19 nomes leem-se do registo do p142 com a pegada conferida; a candidata e a reversao compoem-se estritamente das identidades medidas; zero escrita no banco.",
+  "identidade_do_medido": {
+    "registo_p142": {
+      "rel": "evidence/p142-origem-da-entrada-anon-no-acl-sm37g.json",
+      "bytes": 34669,
+      "md5": "084546de6bee7395e6780f15e903f3a8",
+      "pega_do_emissor": {
+        "bytes": 31326,
+        "md5": "fae425b55b54ad6023b2dcd55abfac8d"
+      }
+    },
+    "registo_p139": {
+      "rel": "evidence/p139-acls-dos-nomes-do-ar-contra-o-alvo-sm37g.json",
+      "bytes": 162118,
+      "md5": "9c615cc3063e0ce5869d0189f55d1317",
+      "pega_do_emissor": {
+        "bytes": 30219,
+        "md5": "d5fa48ac38ac92d2093c0ab98f0a2d70"
+      }
+    },
+    "registo_p140": {
+      "rel": "evidence/p140-superficie-rpc-das-duas-formas-sm37g.json",
+      "bytes": 27416,
+      "md5": "b0e4b7f1fc99cd54b23d9d9797fd1537",
+      "pega_do_emissor": {
+        "bytes": 20452,
+        "md5": "c40c594c6d567d17a8f212e318c29f16"
+      }
+    },
+    "predicado_lido_da_fonte": "const eLeitura = (t) => /^\\s*(select|with)\\b/i.test(String(t));"
+  },
+  "nomes_lidos": {
+    "anon_explicito": [
+      "bfr_audit_lesson_attendance_change",
+      "bfr_get_student_photo_path",
+      "bfr_prevent_duplicate_grade",
+      "bfr_psychology_schedule_guard",
+      "bfr_rls_director_manages_student",
+      "bfr_rls_is_developer",
+      "bfr_rls_session_role",
+      "bfr_school_set_municipality",
+      "bfr_specialized_audit_trigger",
+      "bfr_support_request_scope_guard",
+      "bfr_touch_updated_at",
+      "bfr_validate_lesson_attendance",
+      "enforce_bfr_avatar_uniform",
+      "schools_updated_at",
+      "sports_touch_updated_at"
+    ],
+    "so_por_publico": [
+      "bfr_collab_comment_notification_trigger",
+      "bfr_collab_member_notification_trigger",
+      "bfr_collab_task_notification_trigger",
+      "bfr_staff_audit_trigger"
+    ],
+    "uniao": [
+      "bfr_audit_lesson_attendance_change",
+      "bfr_collab_comment_notification_trigger",
+      "bfr_collab_member_notification_trigger",
+      "bfr_collab_task_notification_trigger",
+      "bfr_get_student_photo_path",
+      "bfr_prevent_duplicate_grade",
+      "bfr_psychology_schedule_guard",
+      "bfr_rls_director_manages_student",
+      "bfr_rls_is_developer",
+      "bfr_rls_session_role",
+      "bfr_school_set_municipality",
+      "bfr_specialized_audit_trigger",
+      "bfr_staff_audit_trigger",
+      "bfr_support_request_scope_guard",
+      "bfr_touch_updated_at",
+      "bfr_validate_lesson_attendance",
+      "enforce_bfr_avatar_uniform",
+      "schools_updated_at",
+      "sports_touch_updated_at"
+    ]
+  },
+  "medido_por_nome": {
+    "bfr_audit_lesson_attendance_change": {
+      "linha": {
+        "oid": "26388",
+        "nome": "bfr_audit_lesson_attendance_change",
+        "retorno": "trigger",
+        "vol": "v",
+        "definer": "true",
+        "acl_nula": false,
+        "ident": "",
+        "anon_pode": true,
+        "acl_texto": "=X/postgres,postgres=X/postgres,anon=X/postgres,authenticated=X/postgres,service_role=X/postgres"
+      },
+      "contemplados": [
+        "PUBLIC",
+        "anon",
+        "authenticated",
+        "postgres",
+        "service_role"
+      ],
+      "entradas_execute": [
+        "PUBLIC por postgres",
+        "anon por postgres",
+        "authenticated por postgres",
+        "postgres por postgres",
+        "service_role por postgres"
+      ],
+      "tem_anon": true,
+      "tem_public": true
+    },
+    "bfr_collab_comment_notification_trigger": {
+      "linha": {
+        "oid": "20862",
+        "nome": "bfr_collab_comment_notification_trigger",
+        "retorno": "trigger",
+        "vol": "v",
+        "definer": "true",
+        "acl_nula": false,
+        "ident": "",
+        "anon_pode": true,
+        "acl_texto": "=X/postgres,postgres=X/postgres,authenticated=X/postgres,service_role=X/postgres"
+      },
+      "contemplados": [
+        "PUBLIC",
+        "authenticated",
+        "postgres",
+        "service_role"
+      ],
+      "entradas_execute": [
+        "PUBLIC por postgres",
+        "authenticated por postgres",
+        "postgres por postgres",
+        "service_role por postgres"
+      ],
+      "tem_anon": false,
+      "tem_public": true
+    },
+    "bfr_collab_member_notification_trigger": {
+      "linha": {
+        "oid": "20859",
+        "nome": "bfr_collab_member_notification_trigger",
+        "retorno": "trigger",
+        "vol": "v",
+        "definer": "true",
+        "acl_nula": false,
+        "ident": "",
+        "anon_pode": true,
+        "acl_texto": "=X/postgres,postgres=X/postgres,authenticated=X/postgres,service_role=X/postgres"
+      },
+      "contemplados": [
+        "PUBLIC",
+        "authenticated",
+        "postgres",
+        "service_role"
+      ],
+      "entradas_execute": [
+        "PUBLIC por postgres",
+        "authenticated por postgres",
+        "postgres por postgres",
+        "service_role por postgres"
+      ],
+      "tem_anon": false,
+      "tem_public": true
+    },
+    "bfr_collab_task_notification_trigger": {
+      "linha": {
+        "oid": "20857",
+        "nome": "bfr_collab_task_notification_trigger",
+        "retorno": "trigger",
+        "vol": "v",
+        "definer": "true",
+        "acl_nula": false,
+        "ident": "",
+        "anon_pode": true,
+        "acl_texto": "=X/postgres,postgres=X/postgres,authenticated=X/postgres,service_role=X/postgres"
+      },
+      "contemplados": [
+        "PUBLIC",
+        "authenticated",
+        "postgres",
+        "service_role"
+      ],
+      "entradas_execute": [
+        "PUBLIC por postgres",
+        "authenticated por postgres",
+        "postgres por postgres",
+        "service_role por postgres"
+      ],
+      "tem_anon": false,
+      "tem_public": true
+    },
+    "bfr_get_student_photo_path": {
+      "linha": {
+        "oid": "24994",
+        "nome": "bfr_get_student_photo_path",
+        "retorno": "text",
+        "vol": "s",
+        "definer": "true",
+        "acl_nula": false,
+        "ident": "target_student_id uuid",
+        "anon_pode": true,
+        "acl_texto": "postgres=X/postgres,anon=X/postgres,authenticated=X/postgres,service_role=X/postgres"
+      },
+      "contemplados": [
+        "anon",
+        "authenticated",
+        "postgres",
+        "service_role"
+      ],
+      "entradas_execute": [
+        "anon por postgres",
+        "authenticated por postgres",
+        "postgres por postgres",
+        "service_role por postgres"
+      ],
+      "tem_anon": true,
+      "tem_public": false
+    },
+    "bfr_prevent_duplicate_grade": {
+      "linha": {
+        "oid": "23268",
+        "nome": "bfr_prevent_duplicate_grade",
+        "retorno": "trigger",
+        "vol": "v",
+        "definer": "true",
+        "acl_nula": false,
+        "ident": "",
+        "anon_pode": true,
+        "acl_texto": "=X/postgres,postgres=X/postgres,anon=X/postgres,authenticated=X/postgres,service_role=X/postgres"
+      },
+      "contemplados": [
+        "PUBLIC",
+        "anon",
+        "authenticated",
+        "postgres",
+        "service_role"
+      ],
+      "entradas_execute": [
+        "PUBLIC por postgres",
+        "anon por postgres",
+        "authenticated por postgres",
+        "postgres por postgres",
+        "service_role por postgres"
+      ],
+      "tem_anon": true,
+      "tem_public": true
+    },
+    "bfr_psychology_schedule_guard": {
+      "linha": {
+        "oid": "24855",
+        "nome": "bfr_psychology_schedule_guard",
+        "retorno": "trigger",
+        "vol": "v",
+        "definer": "true",
+        "acl_nula": false,
+        "ident": "",
+        "anon_pode": true,
+        "acl_texto": "=X/postgres,postgres=X/postgres,anon=X/postgres,authenticated=X/postgres,service_role=X/postgres"
+      },
+      "contemplados": [
+        "PUBLIC",
+        "anon",
+        "authenticated",
+        "postgres",
+        "service_role"
+      ],
+      "entradas_execute": [
+        "PUBLIC por postgres",
+        "anon por postgres",
+        "authenticated por postgres",
+        "postgres por postgres",
+        "service_role por postgres"
+      ],
+      "tem_anon": true,
+      "tem_public": true
+    },
+    "bfr_rls_director_manages_student": {
+      "linha": {
+        "oid": "32516",
+        "nome": "bfr_rls_director_manages_student",
+        "retorno": "boolean",
+        "vol": "s",
+        "definer": "true",
+        "acl_nula": false,
+        "ident": "p_student_id uuid",
+        "anon_pode": true,
+        "acl_texto": "postgres=X/postgres,anon=X/postgres,authenticated=X/postgres,service_role=X/postgres"
+      },
+      "contemplados": [
+        "anon",
+        "authenticated",
+        "postgres",
+        "service_role"
+      ],
+      "entradas_execute": [
+        "anon por postgres",
+        "authenticated por postgres",
+        "postgres por postgres",
+        "service_role por postgres"
+      ],
+      "tem_anon": true,
+      "tem_public": false
+    },
+    "bfr_rls_is_developer": {
+      "linha": {
+        "oid": "32515",
+        "nome": "bfr_rls_is_developer",
+        "retorno": "boolean",
+        "vol": "s",
+        "definer": "true",
+        "acl_nula": false,
+        "ident": "",
+        "anon_pode": true,
+        "acl_texto": "postgres=X/postgres,anon=X/postgres,authenticated=X/postgres,service_role=X/postgres"
+      },
+      "contemplados": [
+        "anon",
+        "authenticated",
+        "postgres",
+        "service_role"
+      ],
+      "entradas_execute": [
+        "anon por postgres",
+        "authenticated por postgres",
+        "postgres por postgres",
+        "service_role por postgres"
+      ],
+      "tem_anon": true,
+      "tem_public": false
+    },
+    "bfr_rls_session_role": {
+      "linha": {
+        "oid": "32514",
+        "nome": "bfr_rls_session_role",
+        "retorno": "account_role",
+        "vol": "s",
+        "definer": "true",
+        "acl_nula": false,
+        "ident": "",
+        "anon_pode": true,
+        "acl_texto": "postgres=X/postgres,anon=X/postgres,authenticated=X/postgres,service_role=X/postgres"
+      },
+      "contemplados": [
+        "anon",
+        "authenticated",
+        "postgres",
+        "service_role"
+      ],
+      "entradas_execute": [
+        "anon por postgres",
+        "authenticated por postgres",
+        "postgres por postgres",
+        "service_role por postgres"
+      ],
+      "tem_anon": true,
+      "tem_public": false
+    },
+    "bfr_school_set_municipality": {
+      "linha": {
+        "oid": "32881",
+        "nome": "bfr_school_set_municipality",
+        "retorno": "void",
+        "vol": "v",
+        "definer": "true",
+        "acl_nula": false,
+        "ident": "p_school uuid, p_municipality uuid, p_reason text",
+        "anon_pode": true,
+        "acl_texto": "postgres=X/postgres,anon=X/postgres,authenticated=X/postgres,service_role=X/postgres"
+      },
+      "contemplados": [
+        "anon",
+        "authenticated",
+        "postgres",
+        "service_role"
+      ],
+      "entradas_execute": [
+        "anon por postgres",
+        "authenticated por postgres",
+        "postgres por postgres",
+        "service_role por postgres"
+      ],
+      "tem_anon": true,
+      "tem_public": false
+    },
+    "bfr_specialized_audit_trigger": {
+      "linha": {
+        "oid": "23858",
+        "nome": "bfr_specialized_audit_trigger",
+        "retorno": "trigger",
+        "vol": "v",
+        "definer": "true",
+        "acl_nula": false,
+        "ident": "",
+        "anon_pode": true,
+        "acl_texto": "=X/postgres,postgres=X/postgres,anon=X/postgres,authenticated=X/postgres,service_role=X/postgres"
+      },
+      "contemplados": [
+        "PUBLIC",
+        "anon",
+        "authenticated",
+        "postgres",
+        "service_role"
+      ],
+      "entradas_execute": [
+        "PUBLIC por postgres",
+        "anon por postgres",
+        "authenticated por postgres",
+        "postgres por postgres",
+        "service_role por postgres"
+      ],
+      "tem_anon": true,
+      "tem_public": true
+    },
+    "bfr_staff_audit_trigger": {
+      "linha": {
+        "oid": "20973",
+        "nome": "bfr_staff_audit_trigger",
+        "retorno": "trigger",
+        "vol": "v",
+        "definer": "true",
+        "acl_nula": false,
+        "ident": "",
+        "anon_pode": true,
+        "acl_texto": "=X/postgres,postgres=X/postgres,authenticated=X/postgres,service_role=X/postgres"
+      },
+      "contemplados": [
+        "PUBLIC",
+        "authenticated",
+        "postgres",
+        "service_role"
+      ],
+      "entradas_execute": [
+        "PUBLIC por postgres",
+        "authenticated por postgres",
+        "postgres por postgres",
+        "service_role por postgres"
+      ],
+      "tem_anon": false,
+      "tem_public": true
+    },
+    "bfr_support_request_scope_guard": {
+      "linha": {
+        "oid": "24195",
+        "nome": "bfr_support_request_scope_guard",
+        "retorno": "trigger",
+        "vol": "v",
+        "definer": "true",
+        "acl_nula": false,
+        "ident": "",
+        "anon_pode": true,
+        "acl_texto": "=X/postgres,postgres=X/postgres,anon=X/postgres,authenticated=X/postgres,service_role=X/postgres"
+      },
+      "contemplados": [
+        "PUBLIC",
+        "anon",
+        "authenticated",
+        "postgres",
+        "service_role"
+      ],
+      "entradas_execute": [
+        "PUBLIC por postgres",
+        "anon por postgres",
+        "authenticated por postgres",
+        "postgres por postgres",
+        "service_role por postgres"
+      ],
+      "tem_anon": true,
+      "tem_public": true
+    },
+    "bfr_touch_updated_at": {
+      "linha": {
+        "oid": "21562",
+        "nome": "bfr_touch_updated_at",
+        "retorno": "trigger",
+        "vol": "v",
+        "definer": "false",
+        "acl_nula": false,
+        "ident": "",
+        "anon_pode": true,
+        "acl_texto": "=X/postgres,postgres=X/postgres,anon=X/postgres,authenticated=X/postgres,service_role=X/postgres"
+      },
+      "contemplados": [
+        "PUBLIC",
+        "anon",
+        "authenticated",
+        "postgres",
+        "service_role"
+      ],
+      "entradas_execute": [
+        "PUBLIC por postgres",
+        "anon por postgres",
+        "authenticated por postgres",
+        "postgres por postgres",
+        "service_role por postgres"
+      ],
+      "tem_anon": true,
+      "tem_public": true
+    },
+    "bfr_validate_lesson_attendance": {
+      "linha": {
+        "oid": "26386",
+        "nome": "bfr_validate_lesson_attendance",
+        "retorno": "trigger",
+        "vol": "v",
+        "definer": "true",
+        "acl_nula": false,
+        "ident": "",
+        "anon_pode": true,
+        "acl_texto": "=X/postgres,postgres=X/postgres,anon=X/postgres,authenticated=X/postgres,service_role=X/postgres"
+      },
+      "contemplados": [
+        "PUBLIC",
+        "anon",
+        "authenticated",
+        "postgres",
+        "service_role"
+      ],
+      "entradas_execute": [
+        "PUBLIC por postgres",
+        "anon por postgres",
+        "authenticated por postgres",
+        "postgres por postgres",
+        "service_role por postgres"
+      ],
+      "tem_anon": true,
+      "tem_public": true
+    },
+    "enforce_bfr_avatar_uniform": {
+      "linha": {
+        "oid": "23308",
+        "nome": "enforce_bfr_avatar_uniform",
+        "retorno": "trigger",
+        "vol": "v",
+        "definer": "true",
+        "acl_nula": false,
+        "ident": "",
+        "anon_pode": true,
+        "acl_texto": "=X/postgres,postgres=X/postgres,anon=X/postgres,authenticated=X/postgres,service_role=X/postgres"
+      },
+      "contemplados": [
+        "PUBLIC",
+        "anon",
+        "authenticated",
+        "postgres",
+        "service_role"
+      ],
+      "entradas_execute": [
+        "PUBLIC por postgres",
+        "anon por postgres",
+        "authenticated por postgres",
+        "postgres por postgres",
+        "service_role por postgres"
+      ],
+      "tem_anon": true,
+      "tem_public": true
+    },
+    "schools_updated_at": {
+      "linha": {
+        "oid": "32123",
+        "nome": "schools_updated_at",
+        "retorno": "trigger",
+        "vol": "v",
+        "definer": "true",
+        "acl_nula": false,
+        "ident": "",
+        "anon_pode": true,
+        "acl_texto": "=X/postgres,postgres=X/postgres,anon=X/postgres,authenticated=X/postgres,service_role=X/postgres"
+      },
+      "contemplados": [
+        "PUBLIC",
+        "anon",
+        "authenticated",
+        "postgres",
+        "service_role"
+      ],
+      "entradas_execute": [
+        "PUBLIC por postgres",
+        "anon por postgres",
+        "authenticated por postgres",
+        "postgres por postgres",
+        "service_role por postgres"
+      ],
+      "tem_anon": true,
+      "tem_public": true
+    },
+    "sports_touch_updated_at": {
+      "linha": {
+        "oid": "22751",
+        "nome": "sports_touch_updated_at",
+        "retorno": "trigger",
+        "vol": "v",
+        "definer": "false",
+        "acl_nula": false,
+        "ident": "",
+        "anon_pode": true,
+        "acl_texto": "=X/postgres,postgres=X/postgres,anon=X/postgres,authenticated=X/postgres,service_role=X/postgres"
+      },
+      "contemplados": [
+        "PUBLIC",
+        "anon",
+        "authenticated",
+        "postgres",
+        "service_role"
+      ],
+      "entradas_execute": [
+        "PUBLIC por postgres",
+        "anon por postgres",
+        "authenticated por postgres",
+        "postgres por postgres",
+        "service_role por postgres"
+      ],
+      "tem_anon": true,
+      "tem_public": true
+    }
+  },
+  "censo_vivo": {
+    "total": 163,
+    "anon_pode": 19,
+    "anon_por_entrada": 15,
+    "acl_nula": 0
+  },
+  "confronto_com_o_registo_p142": {
+    "particao_do_p142": {
+      "total": 163,
+      "acl_nula": 0,
+      "anon_pode": 19,
+      "classe_barrado": 144,
+      "classe_anon_explicito": 15,
+      "classe_so_por_publico": 4,
+      "classe_por_membria": 0
+    },
+    "censo_do_p139": {
+      "total": 163,
+      "anon_pode": 19,
+      "anon_por_entrada": 15,
+      "acl_nula": 0
+    },
+    "nomes_com_ambos": [
+      "bfr_audit_lesson_attendance_change",
+      "bfr_prevent_duplicate_grade",
+      "bfr_psychology_schedule_guard",
+      "bfr_specialized_audit_trigger",
+      "bfr_support_request_scope_guard",
+      "bfr_touch_updated_at",
+      "bfr_validate_lesson_attendance",
+      "enforce_bfr_avatar_uniform",
+      "schools_updated_at",
+      "sports_touch_updated_at"
+    ]
+  },
+  "declaracoes_geradas": {
+    "candidata": [
+      {
+        "nome": "bfr_audit_lesson_attendance_change",
+        "ident": "",
+        "papel": "anon",
+        "verbo": "REVOKE"
+      },
+      {
+        "nome": "bfr_get_student_photo_path",
+        "ident": "target_student_id uuid",
+        "papel": "anon",
+        "verbo": "REVOKE"
+      },
+      {
+        "nome": "bfr_prevent_duplicate_grade",
+        "ident": "",
+        "papel": "anon",
+        "verbo": "REVOKE"
+      },
+      {
+        "nome": "bfr_psychology_schedule_guard",
+        "ident": "",
+        "papel": "anon",
+        "verbo": "REVOKE"
+      },
+      {
+        "nome": "bfr_rls_director_manages_student",
+        "ident": "p_student_id uuid",
+        "papel": "anon",
+        "verbo": "REVOKE"
+      },
+      {
+        "nome": "bfr_rls_is_developer",
+        "ident": "",
+        "papel": "anon",
+        "verbo": "REVOKE"
+      },
+      {
+        "nome": "bfr_rls_session_role",
+        "ident": "",
+        "papel": "anon",
+        "verbo": "REVOKE"
+      },
+      {
+        "nome": "bfr_school_set_municipality",
+        "ident": "p_school uuid, p_municipality uuid, p_reason text",
+        "papel": "anon",
+        "verbo": "REVOKE"
+      },
+      {
+        "nome": "bfr_specialized_audit_trigger",
+        "ident": "",
+        "papel": "anon",
+        "verbo": "REVOKE"
+      },
+      {
+        "nome": "bfr_support_request_scope_guard",
+        "ident": "",
+        "papel": "anon",
+        "verbo": "REVOKE"
+      },
+      {
+        "nome": "bfr_touch_updated_at",
+        "ident": "",
+        "papel": "anon",
+        "verbo": "REVOKE"
+      },
+      {
+        "nome": "bfr_validate_lesson_attendance",
+        "ident": "",
+        "papel": "anon",
+        "verbo": "REVOKE"
+      },
+      {
+        "nome": "enforce_bfr_avatar_uniform",
+        "ident": "",
+        "papel": "anon",
+        "verbo": "REVOKE"
+      },
+      {
+        "nome": "schools_updated_at",
+        "ident": "",
+        "papel": "anon",
+        "verbo": "REVOKE"
+      },
+      {
+        "nome": "sports_touch_updated_at",
+        "ident": "",
+        "papel": "anon",
+        "verbo": "REVOKE"
+      },
+      {
+        "nome": "bfr_audit_lesson_attendance_change",
+        "ident": "",
+        "papel": "PUBLIC",
+        "verbo": "REVOKE"
+      },
+      {
+        "nome": "bfr_collab_comment_notification_trigger",
+        "ident": "",
+        "papel": "PUBLIC",
+        "verbo": "REVOKE"
+      },
+      {
+        "nome": "bfr_collab_member_notification_trigger",
+        "ident": "",
+        "papel": "PUBLIC",
+        "verbo": "REVOKE"
+      },
+      {
+        "nome": "bfr_collab_task_notification_trigger",
+        "ident": "",
+        "papel": "PUBLIC",
+        "verbo": "REVOKE"
+      },
+      {
+        "nome": "bfr_prevent_duplicate_grade",
+        "ident": "",
+        "papel": "PUBLIC",
+        "verbo": "REVOKE"
+      },
+      {
+        "nome": "bfr_psychology_schedule_guard",
+        "ident": "",
+        "papel": "PUBLIC",
+        "verbo": "REVOKE"
+      },
+      {
+        "nome": "bfr_specialized_audit_trigger",
+        "ident": "",
+        "papel": "PUBLIC",
+        "verbo": "REVOKE"
+      },
+      {
+        "nome": "bfr_staff_audit_trigger",
+        "ident": "",
+        "papel": "PUBLIC",
+        "verbo": "REVOKE"
+      },
+      {
+        "nome": "bfr_support_request_scope_guard",
+        "ident": "",
+        "papel": "PUBLIC",
+        "verbo": "REVOKE"
+      },
+      {
+        "nome": "bfr_touch_updated_at",
+        "ident": "",
+        "papel": "PUBLIC",
+        "verbo": "REVOKE"
+      },
+      {
+        "nome": "bfr_validate_lesson_attendance",
+        "ident": "",
+        "papel": "PUBLIC",
+        "verbo": "REVOKE"
+      },
+      {
+        "nome": "enforce_bfr_avatar_uniform",
+        "ident": "",
+        "papel": "PUBLIC",
+        "verbo": "REVOKE"
+      },
+      {
+        "nome": "schools_updated_at",
+        "ident": "",
+        "papel": "PUBLIC",
+        "verbo": "REVOKE"
+      },
+      {
+        "nome": "sports_touch_updated_at",
+        "ident": "",
+        "papel": "PUBLIC",
+        "verbo": "REVOKE"
+      }
+    ],
+    "reversao": [
+      {
+        "nome": "bfr_audit_lesson_attendance_change",
+        "ident": "",
+        "papel": "anon",
+        "verbo": "GRANT"
+      },
+      {
+        "nome": "bfr_get_student_photo_path",
+        "ident": "target_student_id uuid",
+        "papel": "anon",
+        "verbo": "GRANT"
+      },
+      {
+        "nome": "bfr_prevent_duplicate_grade",
+        "ident": "",
+        "papel": "anon",
+        "verbo": "GRANT"
+      },
+      {
+        "nome": "bfr_psychology_schedule_guard",
+        "ident": "",
+        "papel": "anon",
+        "verbo": "GRANT"
+      },
+      {
+        "nome": "bfr_rls_director_manages_student",
+        "ident": "p_student_id uuid",
+        "papel": "anon",
+        "verbo": "GRANT"
+      },
+      {
+        "nome": "bfr_rls_is_developer",
+        "ident": "",
+        "papel": "anon",
+        "verbo": "GRANT"
+      },
+      {
+        "nome": "bfr_rls_session_role",
+        "ident": "",
+        "papel": "anon",
+        "verbo": "GRANT"
+      },
+      {
+        "nome": "bfr_school_set_municipality",
+        "ident": "p_school uuid, p_municipality uuid, p_reason text",
+        "papel": "anon",
+        "verbo": "GRANT"
+      },
+      {
+        "nome": "bfr_specialized_audit_trigger",
+        "ident": "",
+        "papel": "anon",
+        "verbo": "GRANT"
+      },
+      {
+        "nome": "bfr_support_request_scope_guard",
+        "ident": "",
+        "papel": "anon",
+        "verbo": "GRANT"
+      },
+      {
+        "nome": "bfr_touch_updated_at",
+        "ident": "",
+        "papel": "anon",
+        "verbo": "GRANT"
+      },
+      {
+        "nome": "bfr_validate_lesson_attendance",
+        "ident": "",
+        "papel": "anon",
+        "verbo": "GRANT"
+      },
+      {
+        "nome": "enforce_bfr_avatar_uniform",
+        "ident": "",
+        "papel": "anon",
+        "verbo": "GRANT"
+      },
+      {
+        "nome": "schools_updated_at",
+        "ident": "",
+        "papel": "anon",
+        "verbo": "GRANT"
+      },
+      {
+        "nome": "sports_touch_updated_at",
+        "ident": "",
+        "papel": "anon",
+        "verbo": "GRANT"
+      },
+      {
+        "nome": "bfr_audit_lesson_attendance_change",
+        "ident": "",
+        "papel": "PUBLIC",
+        "verbo": "GRANT"
+      },
+      {
+        "nome": "bfr_collab_comment_notification_trigger",
+        "ident": "",
+        "papel": "PUBLIC",
+        "verbo": "GRANT"
+      },
+      {
+        "nome": "bfr_collab_member_notification_trigger",
+        "ident": "",
+        "papel": "PUBLIC",
+        "verbo": "GRANT"
+      },
+      {
+        "nome": "bfr_collab_task_notification_trigger",
+        "ident": "",
+        "papel": "PUBLIC",
+        "verbo": "GRANT"
+      },
+      {
+        "nome": "bfr_prevent_duplicate_grade",
+        "ident": "",
+        "papel": "PUBLIC",
+        "verbo": "GRANT"
+      },
+      {
+        "nome": "bfr_psychology_schedule_guard",
+        "ident": "",
+        "papel": "PUBLIC",
+        "verbo": "GRANT"
+      },
+      {
+        "nome": "bfr_specialized_audit_trigger",
+        "ident": "",
+        "papel": "PUBLIC",
+        "verbo": "GRANT"
+      },
+      {
+        "nome": "bfr_staff_audit_trigger",
+        "ident": "",
+        "papel": "PUBLIC",
+        "verbo": "GRANT"
+      },
+      {
+        "nome": "bfr_support_request_scope_guard",
+        "ident": "",
+        "papel": "PUBLIC",
+        "verbo": "GRANT"
+      },
+      {
+        "nome": "bfr_touch_updated_at",
+        "ident": "",
+        "papel": "PUBLIC",
+        "verbo": "GRANT"
+      },
+      {
+        "nome": "bfr_validate_lesson_attendance",
+        "ident": "",
+        "papel": "PUBLIC",
+        "verbo": "GRANT"
+      },
+      {
+        "nome": "enforce_bfr_avatar_uniform",
+        "ident": "",
+        "papel": "PUBLIC",
+        "verbo": "GRANT"
+      },
+      {
+        "nome": "schools_updated_at",
+        "ident": "",
+        "papel": "PUBLIC",
+        "verbo": "GRANT"
+      },
+      {
+        "nome": "sports_touch_updated_at",
+        "ident": "",
+        "papel": "PUBLIC",
+        "verbo": "GRANT"
+      }
+    ]
+  },
+  "ficheiros_gerados": {
+    "candidata": {
+      "caminho": "scripts/p143-revoke-anon-e-publico-ddl-candidata.sql",
+      "bytes": 3520,
+      "md5": "aa49f50178e57c82c1470182de86681f"
+    },
+    "reversao": {
+      "caminho": "scripts/p143-revoke-anon-e-publico-ddl-reversao.sql",
+      "bytes": 3387,
+      "md5": "965edc65d9d42493179bcdc3f330a531"
+    },
+    "estrutura": {
+      "candidata": {
+        "begin": 1,
+        "commit": 1,
+        "revoke": 29,
+        "grant": 0,
+        "statement_fora_dos_graus": 0
+      },
+      "reversao": {
+        "begin": 1,
+        "commit": 1,
+        "revoke": 0,
+        "grant": 29,
+        "statement_fora_dos_graus": 0
+      }
+    }
+  },
+  "raio_de_estouro": {
+    "nomes_citados_em_pg_policy": [
+      {
+        "nome": "bfr_rls_director_manages_student",
+        "sitios": [
+          {
+            "tabela": "occurrences",
+            "politica": "occurrences_director_select",
+            "ocorrencias": 1
+          },
+          {
+            "tabela": "occurrences",
+            "politica": "occurrences_director_update",
+            "ocorrencias": 2
+          }
+        ]
+      },
+      {
+        "nome": "bfr_rls_is_developer",
+        "sitios": [
+          {
+            "tabela": "access_requests",
+            "politica": "access_requests_manage",
+            "ocorrencias": 2
+          },
+          {
+            "tabela": "access_requests",
+            "politica": "access_requests_staff_insert",
+            "ocorrencias": 1
+          }
+        ]
+      },
+      {
+        "nome": "bfr_rls_session_role",
+        "sitios": [
+          {
+            "tabela": "attendance",
+            "politica": "attendance_staff_delete",
+            "ocorrencias": 1
+          },
+          {
+            "tabela": "attendance",
+            "politica": "attendance_staff_insert",
+            "ocorrencias": 2
+          },
+          {
+            "tabela": "attendance",
+            "politica": "attendance_staff_select",
+            "ocorrencias": 1
+          },
+          {
+            "tabela": "attendance",
+            "politica": "attendance_staff_update",
+            "ocorrencias": 2
+          },
+          {
+            "tabela": "bfr_school_calendar_days",
+            "politica": "bfr_school_calendar_days_managers_write",
+            "ocorrencias": 2
+          },
+          {
+            "tabela": "bfr_school_calendar_days",
+            "politica": "bfr_school_calendar_days_staff_read",
+            "ocorrencias": 2
+          },
+          {
+            "tabela": "bfr_school_calendar_month_targets",
+            "politica": "bfr_school_calendar_month_targets_managers_write",
+            "ocorrencias": 2
+          },
+          {
+            "tabela": "bfr_school_calendar_month_targets",
+            "politica": "bfr_school_calendar_month_targets_staff_read",
+            "ocorrencias": 2
+          },
+          {
+            "tabela": "bfr_school_shift_settings",
+            "politica": "bfr_school_shift_settings_managers_write",
+            "ocorrencias": 2
+          },
+          {
+            "tabela": "bfr_school_shift_settings",
+            "politica": "bfr_school_shift_settings_staff_read",
+            "ocorrencias": 2
+          },
+          {
+            "tabela": "grades",
+            "politica": "grades_staff_delete",
+            "ocorrencias": 1
+          },
+          {
+            "tabela": "grades",
+            "politica": "grades_staff_insert",
+            "ocorrencias": 2
+          },
+          {
+            "tabela": "grades",
+            "politica": "grades_staff_select",
+            "ocorrencias": 1
+          }
+        ]
+      }
+    ],
+    "gatilhos_do_catalogo_para_os_19": [
+      {
+        "funcao": "bfr_audit_lesson_attendance_change",
+        "gatilho": "bfr_lesson_attendance_audit",
+        "estado": "O",
+        "tabela": "bfr_lesson_attendance",
+        "anon_insert": false,
+        "anon_update": false,
+        "anon_delete": false,
+        "anon_truncate": false
+      },
+      {
+        "funcao": "bfr_collab_comment_notification_trigger",
+        "gatilho": "collaboration_comment_notification",
+        "estado": "O",
+        "tabela": "collaboration_task_comments",
+        "anon_insert": false,
+        "anon_update": false,
+        "anon_delete": false,
+        "anon_truncate": false
+      },
+      {
+        "funcao": "bfr_collab_member_notification_trigger",
+        "gatilho": "collaboration_project_member_notification",
+        "estado": "O",
+        "tabela": "collaboration_project_members",
+        "anon_insert": false,
+        "anon_update": false,
+        "anon_delete": false,
+        "anon_truncate": false
+      },
+      {
+        "funcao": "bfr_collab_member_notification_trigger",
+        "gatilho": "collaboration_task_member_notification",
+        "estado": "O",
+        "tabela": "collaboration_task_members",
+        "anon_insert": false,
+        "anon_update": false,
+        "anon_delete": false,
+        "anon_truncate": false
+      },
+      {
+        "funcao": "bfr_collab_task_notification_trigger",
+        "gatilho": "collaboration_task_notification_trigger",
+        "estado": "O",
+        "tabela": "collaboration_tasks",
+        "anon_insert": false,
+        "anon_update": false,
+        "anon_delete": false,
+        "anon_truncate": false
+      },
+      {
+        "funcao": "bfr_prevent_duplicate_grade",
+        "gatilho": "bfr_prevent_duplicate_grade",
+        "estado": "O",
+        "tabela": "grades",
+        "anon_insert": true,
+        "anon_update": true,
+        "anon_delete": true,
+        "anon_truncate": true
+      },
+      {
+        "funcao": "bfr_psychology_schedule_guard",
+        "gatilho": "bfr_psychology_schedule_guard",
+        "estado": "O",
+        "tabela": "support_appointments",
+        "anon_insert": false,
+        "anon_update": false,
+        "anon_delete": false,
+        "anon_truncate": false
+      },
+      {
+        "funcao": "bfr_psychology_schedule_guard",
+        "gatilho": "bfr_psychology_schedule_guard",
+        "estado": "O",
+        "tabela": "psychology_meetings",
+        "anon_insert": false,
+        "anon_update": false,
+        "anon_delete": false,
+        "anon_truncate": false
+      },
+      {
+        "funcao": "bfr_specialized_audit_trigger",
+        "gatilho": "bfr_specialized_audit",
+        "estado": "O",
+        "tabela": "aee_plans",
+        "anon_insert": false,
+        "anon_update": false,
+        "anon_delete": false,
+        "anon_truncate": false
+      },
+      {
+        "funcao": "bfr_specialized_audit_trigger",
+        "gatilho": "bfr_specialized_audit",
+        "estado": "O",
+        "tabela": "aee_attendance",
+        "anon_insert": false,
+        "anon_update": false,
+        "anon_delete": false,
+        "anon_truncate": false
+      },
+      {
+        "funcao": "bfr_specialized_audit_trigger",
+        "gatilho": "bfr_specialized_audit",
+        "estado": "O",
+        "tabela": "aee_messages",
+        "anon_insert": false,
+        "anon_update": false,
+        "anon_delete": false,
+        "anon_truncate": false
+      },
+      {
+        "funcao": "bfr_specialized_audit_trigger",
+        "gatilho": "bfr_specialized_audit",
+        "estado": "O",
+        "tabela": "support_follow_ups",
+        "anon_insert": false,
+        "anon_update": false,
+        "anon_delete": false,
+        "anon_truncate": false
+      },
+      {
+        "funcao": "bfr_specialized_audit_trigger",
+        "gatilho": "bfr_specialized_audit",
+        "estado": "O",
+        "tabela": "support_plans",
+        "anon_insert": false,
+        "anon_update": false,
+        "anon_delete": false,
+        "anon_truncate": false
+      },
+      {
+        "funcao": "bfr_specialized_audit_trigger",
+        "gatilho": "bfr_specialized_audit",
+        "estado": "O",
+        "tabela": "support_professionals",
+        "anon_insert": false,
+        "anon_update": false,
+        "anon_delete": false,
+        "anon_truncate": false
+      },
+      {
+        "funcao": "bfr_specialized_audit_trigger",
+        "gatilho": "bfr_specialized_audit",
+        "estado": "O",
+        "tabela": "support_requests",
+        "anon_insert": false,
+        "anon_update": false,
+        "anon_delete": false,
+        "anon_truncate": false
+      },
+      {
+        "funcao": "bfr_specialized_audit_trigger",
+        "gatilho": "bfr_specialized_audit",
+        "estado": "O",
+        "tabela": "support_appointments",
+        "anon_insert": false,
+        "anon_update": false,
+        "anon_delete": false,
+        "anon_truncate": false
+      },
+      {
+        "funcao": "bfr_specialized_audit_trigger",
+        "gatilho": "bfr_specialized_audit",
+        "estado": "O",
+        "tabela": "aee_adaptations",
+        "anon_insert": false,
+        "anon_update": false,
+        "anon_delete": false,
+        "anon_truncate": false
+      },
+      {
+        "funcao": "bfr_specialized_audit_trigger",
+        "gatilho": "bfr_specialized_audit",
+        "estado": "O",
+        "tabela": "aee_game_assignments",
+        "anon_insert": false,
+        "anon_update": false,
+        "anon_delete": false,
+        "anon_truncate": false
+      },
+      {
+        "funcao": "bfr_specialized_audit_trigger",
+        "gatilho": "bfr_specialized_audit",
+        "estado": "O",
+        "tabela": "aee_game_catalog",
+        "anon_insert": false,
+        "anon_update": false,
+        "anon_delete": false,
+        "anon_truncate": false
+      },
+      {
+        "funcao": "bfr_specialized_audit_trigger",
+        "gatilho": "bfr_specialized_audit",
+        "estado": "O",
+        "tabela": "aee_game_favorites",
+        "anon_insert": false,
+        "anon_update": false,
+        "anon_delete": false,
+        "anon_truncate": false
+      },
+      {
+        "funcao": "bfr_specialized_audit_trigger",
+        "gatilho": "bfr_specialized_audit",
+        "estado": "O",
+        "tabela": "aee_game_sessions",
+        "anon_insert": false,
+        "anon_update": false,
+        "anon_delete": false,
+        "anon_truncate": false
+      },
+      {
+        "funcao": "bfr_specialized_audit_trigger",
+        "gatilho": "bfr_specialized_audit",
+        "estado": "O",
+        "tabela": "aee_materials",
+        "anon_insert": false,
+        "anon_update": false,
+        "anon_delete": false,
+        "anon_truncate": false
+      },
+      {
+        "funcao": "bfr_specialized_audit_trigger",
+        "gatilho": "bfr_specialized_audit",
+        "estado": "O",
+        "tabela": "aee_resources",
+        "anon_insert": false,
+        "anon_update": false,
+        "anon_delete": false,
+        "anon_truncate": false
+      },
+      {
+        "funcao": "bfr_specialized_audit_trigger",
+        "gatilho": "bfr_specialized_audit",
+        "estado": "O",
+        "tabela": "aee_sessions",
+        "anon_insert": false,
+        "anon_update": false,
+        "anon_delete": false,
+        "anon_truncate": false
+      },
+      {
+        "funcao": "bfr_specialized_audit_trigger",
+        "gatilho": "bfr_specialized_audit",
+        "estado": "O",
+        "tabela": "psychology_referrals",
+        "anon_insert": false,
+        "anon_update": false,
+        "anon_delete": false,
+        "anon_truncate": false
+      },
+      {
+        "funcao": "bfr_specialized_audit_trigger",
+        "gatilho": "bfr_specialized_audit",
+        "estado": "O",
+        "tabela": "psychology_returns",
+        "anon_insert": false,
+        "anon_update": false,
+        "anon_delete": false,
+        "anon_truncate": false
+      },
+      {
+        "funcao": "bfr_specialized_audit_trigger",
+        "gatilho": "bfr_specialized_audit",
+        "estado": "O",
+        "tabela": "psychology_preventive_actions",
+        "anon_insert": false,
+        "anon_update": false,
+        "anon_delete": false,
+        "anon_truncate": false
+      },
+      {
+        "funcao": "bfr_specialized_audit_trigger",
+        "gatilho": "bfr_specialized_audit",
+        "estado": "O",
+        "tabela": "psychology_meetings",
+        "anon_insert": false,
+        "anon_update": false,
+        "anon_delete": false,
+        "anon_truncate": false
+      },
+      {
+        "funcao": "bfr_specialized_audit_trigger",
+        "gatilho": "bfr_specialized_audit",
+        "estado": "O",
+        "tabela": "psychology_articulations",
+        "anon_insert": false,
+        "anon_update": false,
+        "anon_delete": false,
+        "anon_truncate": false
+      },
+      {
+        "funcao": "bfr_specialized_audit_trigger",
+        "gatilho": "bfr_specialized_audit",
+        "estado": "O",
+        "tabela": "aee_progress",
+        "anon_insert": false,
+        "anon_update": false,
+        "anon_delete": false,
+        "anon_truncate": false
+      },
+      {
+        "funcao": "bfr_specialized_audit_trigger",
+        "gatilho": "bfr_specialized_audit",
+        "estado": "O",
+        "tabela": "aee_student_links",
+        "anon_insert": false,
+        "anon_update": false,
+        "anon_delete": false,
+        "anon_truncate": false
+      },
+      {
+        "funcao": "bfr_specialized_audit_trigger",
+        "gatilho": "bfr_specialized_audit",
+        "estado": "O",
+        "tabela": "aee_student_roster",
+        "anon_insert": false,
+        "anon_update": false,
+        "anon_delete": false,
+        "anon_truncate": false
+      },
+      {
+        "funcao": "bfr_specialized_audit_trigger",
+        "gatilho": "bfr_specialized_audit",
+        "estado": "O",
+        "tabela": "support_messages",
+        "anon_insert": false,
+        "anon_update": false,
+        "anon_delete": false,
+        "anon_truncate": false
+      },
+      {
+        "funcao": "bfr_specialized_audit_trigger",
+        "gatilho": "bfr_specialized_audit",
+        "estado": "O",
+        "tabela": "aee_activities",
+        "anon_insert": false,
+        "anon_update": false,
+        "anon_delete": false,
+        "anon_truncate": false
+      },
+      {
+        "funcao": "bfr_specialized_audit_trigger",
+        "gatilho": "bfr_specialized_audit",
+        "estado": "O",
+        "tabela": "aee_activity_recommendations",
+        "anon_insert": false,
+        "anon_update": false,
+        "anon_delete": false,
+        "anon_truncate": false
+      },
+      {
+        "funcao": "bfr_specialized_audit_trigger",
+        "gatilho": "bfr_specialized_audit",
+        "estado": "O",
+        "tabela": "aee_goals",
+        "anon_insert": false,
+        "anon_update": false,
+        "anon_delete": false,
+        "anon_truncate": false
+      },
+      {
+        "funcao": "bfr_specialized_audit_trigger",
+        "gatilho": "bfr_specialized_audit",
+        "estado": "O",
+        "tabela": "aee_plan_reviews",
+        "anon_insert": false,
+        "anon_update": false,
+        "anon_delete": false,
+        "anon_truncate": false
+      },
+      {
+        "funcao": "bfr_staff_audit_trigger",
+        "gatilho": "staff_channel_members_audit_trigger",
+        "estado": "O",
+        "tabela": "staff_channel_members",
+        "anon_insert": false,
+        "anon_update": false,
+        "anon_delete": false,
+        "anon_truncate": false
+      },
+      {
+        "funcao": "bfr_staff_audit_trigger",
+        "gatilho": "staff_channels_audit_trigger",
+        "estado": "O",
+        "tabela": "staff_channels",
+        "anon_insert": false,
+        "anon_update": false,
+        "anon_delete": false,
+        "anon_truncate": false
+      },
+      {
+        "funcao": "bfr_staff_audit_trigger",
+        "gatilho": "staff_message_attachments_audit_trigger",
+        "estado": "O",
+        "tabela": "staff_message_attachments",
+        "anon_insert": false,
+        "anon_update": false,
+        "anon_delete": false,
+        "anon_truncate": false
+      },
+      {
+        "funcao": "bfr_staff_audit_trigger",
+        "gatilho": "staff_message_forwards_audit_trigger",
+        "estado": "O",
+        "tabela": "staff_message_forwards",
+        "anon_insert": false,
+        "anon_update": false,
+        "anon_delete": false,
+        "anon_truncate": false
+      },
+      {
+        "funcao": "bfr_staff_audit_trigger",
+        "gatilho": "staff_messages_audit_trigger",
+        "estado": "O",
+        "tabela": "staff_messages",
+        "anon_insert": false,
+        "anon_update": false,
+        "anon_delete": false,
+        "anon_truncate": false
+      },
+      {
+        "funcao": "bfr_support_request_scope_guard",
+        "gatilho": "bfr_support_request_scope_guard",
+        "estado": "O",
+        "tabela": "support_requests",
+        "anon_insert": false,
+        "anon_update": false,
+        "anon_delete": false,
+        "anon_truncate": false
+      },
+      {
+        "funcao": "bfr_touch_updated_at",
+        "gatilho": "bfr_grading_rules_touch_updated_at",
+        "estado": "O",
+        "tabela": "bfr_grading_rules",
+        "anon_insert": false,
+        "anon_update": false,
+        "anon_delete": false,
+        "anon_truncate": false
+      },
+      {
+        "funcao": "bfr_touch_updated_at",
+        "gatilho": "bfr_schedule_entries_touch",
+        "estado": "O",
+        "tabela": "bfr_schedule_entries",
+        "anon_insert": false,
+        "anon_update": false,
+        "anon_delete": false,
+        "anon_truncate": false
+      },
+      {
+        "funcao": "bfr_touch_updated_at",
+        "gatilho": "bfr_schedule_versions_touch",
+        "estado": "O",
+        "tabela": "bfr_schedule_versions",
+        "anon_insert": false,
+        "anon_update": false,
+        "anon_delete": false,
+        "anon_truncate": false
+      },
+      {
+        "funcao": "bfr_touch_updated_at",
+        "gatilho": "bfr_subjects_touch",
+        "estado": "O",
+        "tabela": "bfr_subjects",
+        "anon_insert": false,
+        "anon_update": false,
+        "anon_delete": false,
+        "anon_truncate": false
+      },
+      {
+        "funcao": "bfr_touch_updated_at",
+        "gatilho": "bfr_teacher_directory_touch",
+        "estado": "O",
+        "tabela": "bfr_teacher_directory",
+        "anon_insert": false,
+        "anon_update": false,
+        "anon_delete": false,
+        "anon_truncate": false
+      },
+      {
+        "funcao": "bfr_validate_lesson_attendance",
+        "gatilho": "bfr_lesson_attendance_validate",
+        "estado": "O",
+        "tabela": "bfr_lesson_attendance",
+        "anon_insert": false,
+        "anon_update": false,
+        "anon_delete": false,
+        "anon_truncate": false
+      },
+      {
+        "funcao": "enforce_bfr_avatar_uniform",
+        "gatilho": "trg_enforce_bfr_avatar_uniform",
+        "estado": "O",
+        "tabela": "student_avatar_configs",
+        "anon_insert": true,
+        "anon_update": true,
+        "anon_delete": true,
+        "anon_truncate": true
+      },
+      {
+        "funcao": "schools_updated_at",
+        "gatilho": "schools_updated_at_trigger",
+        "estado": "O",
+        "tabela": "schools",
+        "anon_insert": false,
+        "anon_update": false,
+        "anon_delete": false,
+        "anon_truncate": false
+      },
+      {
+        "funcao": "sports_touch_updated_at",
+        "gatilho": "sports_athletes_updated_at",
+        "estado": "O",
+        "tabela": "sports_athletes",
+        "anon_insert": false,
+        "anon_update": false,
+        "anon_delete": false,
+        "anon_truncate": false
+      },
+      {
+        "funcao": "sports_touch_updated_at",
+        "gatilho": "sports_championships_updated_at",
+        "estado": "O",
+        "tabela": "sports_championships",
+        "anon_insert": false,
+        "anon_update": false,
+        "anon_delete": false,
+        "anon_truncate": false
+      },
+      {
+        "funcao": "sports_touch_updated_at",
+        "gatilho": "sports_matches_updated_at",
+        "estado": "O",
+        "tabela": "sports_matches",
+        "anon_insert": false,
+        "anon_update": false,
+        "anon_delete": false,
+        "anon_truncate": false
+      },
+      {
+        "funcao": "sports_touch_updated_at",
+        "gatilho": "sports_schools_updated_at",
+        "estado": "O",
+        "tabela": "sports_schools",
+        "anon_insert": false,
+        "anon_update": false,
+        "anon_delete": false,
+        "anon_truncate": false
+      },
+      {
+        "funcao": "sports_touch_updated_at",
+        "gatilho": "sports_teams_updated_at",
+        "estado": "O",
+        "tabela": "sports_teams",
+        "anon_insert": false,
+        "anon_update": false,
+        "anon_delete": false,
+        "anon_truncate": false
+      }
+    ],
+    "tabelas_com_dml_anonimo_sob_gatilho_dos_19": [
+      "grades",
+      "student_avatar_configs"
+    ],
+    "chamado_pelo_ar": {
+      "na_uniao_dos_27_do_p140": [
+        "bfr_get_student_photo_path"
+      ],
+      "fora_da_uniao": [
+        "bfr_audit_lesson_attendance_change",
+        "bfr_collab_comment_notification_trigger",
+        "bfr_collab_member_notification_trigger",
+        "bfr_collab_task_notification_trigger",
+        "bfr_prevent_duplicate_grade",
+        "bfr_psychology_schedule_guard",
+        "bfr_rls_director_manages_student",
+        "bfr_rls_is_developer",
+        "bfr_rls_session_role",
+        "bfr_school_set_municipality",
+        "bfr_specialized_audit_trigger",
+        "bfr_staff_audit_trigger",
+        "bfr_support_request_scope_guard",
+        "bfr_touch_updated_at",
+        "bfr_validate_lesson_attendance",
+        "enforce_bfr_avatar_uniform",
+        "schools_updated_at",
+        "sports_touch_updated_at"
+      ]
+    },
+    "default_privileges_do_p142": {
+      "contagem_do_catalogo": {
+        "linhas": 27,
+        "do_tipo_funcao": 9,
+        "funcao_que_da_anon": 5
+      },
+      "linhas_lidas": 27,
+      "do_tipo_funcao": [
+        {
+          "papel": "postgres",
+          "acl": "{postgres=X/postgres,anon=X/postgres,authenticated=X/postgres,service_role=X/postgres}",
+          "da_execute_ao_anon": true
+        },
+        {
+          "papel": "postgres",
+          "acl": "{postgres=X/postgres,anon=X/postgres,authenticated=X/postgres,service_role=X/postgres}",
+          "da_execute_ao_anon": true
+        },
+        {
+          "papel": "supabase_admin",
+          "acl": "{postgres=X*/supabase_admin}",
+          "da_execute_ao_anon": false
+        },
+        {
+          "papel": "supabase_admin",
+          "acl": "{postgres=X/supabase_admin,dashboard_user=X/supabase_admin}",
+          "da_execute_ao_anon": false
+        },
+        {
+          "papel": "supabase_admin",
+          "acl": "{postgres=X/supabase_admin,anon=X/supabase_admin,authenticated=X/supabase_admin,service_role=X/supabase_admin}",
+          "da_execute_ao_anon": true
+        },
+        {
+          "papel": "supabase_admin",
+          "acl": "{postgres=X/supabase_admin,anon=X/supabase_admin,authenticated=X/supabase_admin,service_role=X/supabase_admin}",
+          "da_execute_ao_anon": true
+        },
+        {
+          "papel": "supabase_admin",
+          "acl": "{postgres=X*/supabase_admin}",
+          "da_execute_ao_anon": false
+        },
+        {
+          "papel": "supabase_admin",
+          "acl": "{postgres=X/supabase_admin,anon=X/supabase_admin,authenticated=X/supabase_admin,service_role=X/supabase_admin}",
+          "da_execute_ao_anon": true
+        },
+        {
+          "papel": "supabase_auth_admin",
+          "acl": "{postgres=X/supabase_auth_admin,dashboard_user=X/supabase_auth_admin}",
+          "da_execute_ao_anon": false
+        }
+      ],
+      "leitura": "ha 5 linha(s) de default privileges do tipo funcao a dar EXECUTE ao anon"
+    }
+  },
+  "fixtures": {
+    "nome": [
+      [
+        "bfr_audit_lesson_attendance_change",
+        true
+      ],
+      [
+        "bfr_x; drop table t",
+        false
+      ],
+      [
+        "Bfr_Upper",
+        false
+      ],
+      [
+        "bfr_x--",
+        false
+      ]
+    ],
+    "identidade": [
+      [
+        "",
+        true
+      ],
+      [
+        "uuid, text, boolean",
+        true
+      ],
+      [
+        "p_school uuid, p_municipality uuid",
+        true
+      ],
+      [
+        "character varying",
+        true
+      ],
+      [
+        "integer[]",
+        true
+      ],
+      [
+        "\"Tipo Citado\"",
+        true
+      ],
+      [
+        "uuid; drop table t",
+        false
+      ],
+      [
+        "uuid--",
+        false
+      ],
+      [
+        "uuid, bad'x",
+        false
+      ]
+    ],
+    "classe": [
+      [
+        [
+          false,
+          false,
+          true
+        ],
+        "sem_caminho"
+      ],
+      [
+        [
+          false,
+          true,
+          true
+        ],
+        "so_public"
+      ],
+      [
+        [
+          true,
+          false,
+          true
+        ],
+        "so_anon"
+      ],
+      [
+        [
+          true,
+          true,
+          true
+        ],
+        "ambos"
+      ],
+      [
+        [
+          false,
+          false,
+          false
+        ],
+        "fechado"
+      ]
+    ],
+    "renderizador": [
+      [
+        "uuid",
+        "REVOKE",
+        "anon",
+        "REVOKE EXECUTE ON FUNCTION public.n(uuid) FROM anon;"
+      ],
+      [
+        "",
+        "REVOKE",
+        "PUBLIC",
+        "REVOKE EXECUTE ON FUNCTION public.n() FROM PUBLIC;"
+      ]
+    ]
+  },
+  "o_que_prova": "que a candidata fecha exactamente os caminhos medidos do anonimo (entradas nominais e PUBLIC, incluindo os nomes que tem as duas) nos 19 nomes do sm37g, pela assinatura de identidade que o servidor devolve hoje, com reversao simetrica e estrutura de uma transaccao; e que o catalogo nao mudou desde o sm37g (censo com delta 0 e classes nome a nome).",
+  "o_que_NAO_prova": "que aplicar seja seguro para os chamadores: os nomes citados em pg_policy e os gatilhos estao medidos como raio de estouro, mas o efeito em RLS e em triggers so se ve depois, com sessao — e nas tabelas onde o anonimo ainda tem DML sob um gatilho dos 19 (ver raio_de_estouro.tabelas_com_dml_anonimo_sob_gatilho_dos_19), fechar o EXECUTE faz a escrita anonima falhar com 42501 em vez de disparar o gatilho, que e uma mudanca de comportamento a decidir, nao um dado. Nao fecha o mecanismo de default privileges (pg_default_acl), nao prova autoria das entradas, e NAO APLICA nada: aplicar, reverter e publicar pedem cada um a sua frase literal.",
+  "portoes": {
+    "total": 20,
+    "falhas": 0,
+    "lista": [
+      {
+        "nome": "as_pegas_dos_tres_registos_conferem_contra_os_emissores_em_disco",
+        "verde": true,
+        "obtido": [
+          true,
+          true,
+          true
+        ],
+        "esperado": [
+          true,
+          true,
+          true
+        ],
+        "detalhe": {
+          "p142": {
+            "bytes": 31326,
+            "md5": "fae425b55b54ad6023b2dcd55abfac8d"
+          },
+          "p139": {
+            "bytes": 30219,
+            "md5": "d5fa48ac38ac92d2093c0ab98f0a2d70"
+          },
+          "p140": {
+            "bytes": 20452,
+            "md5": "c40c594c6d567d17a8f212e318c29f16"
+          },
+          "rel": [
+            "evidence/p142-origem-da-entrada-anon-no-acl-sm37g.json",
+            "evidence/p139-acls-dos-nomes-do-ar-contra-o-alvo-sm37g.json",
+            "evidence/p140-superficie-rpc-das-duas-formas-sm37g.json"
+          ]
+        }
+      },
+      {
+        "nome": "a_guarda_de_leitura_aborta_antes_de_chegar_ao_banco",
+        "verde": true,
+        "obtido": [
+          true,
+          false
+        ],
+        "esperado": [
+          true,
+          false
+        ],
+        "detalhe": {
+          "texto_passado": "REVOKE ALL ON FUNCTION public.x() FROM anon",
+          "predicado_lido": "const eLeitura = (t) => /^\\s*(select|with)\\b/i.test(String(t));"
+        }
+      },
+      {
+        "nome": "o_predicado_de_leitura_e_lido_do_produtor_e_dispara_nos_dois_lados",
+        "verde": true,
+        "obtido": [
+          [
+            true,
+            true,
+            false,
+            false
+          ]
+        ],
+        "esperado": [
+          [
+            true,
+            true,
+            false,
+            false
+          ]
+        ],
+        "detalhe": {
+          "origem": "scripts/p139-acls-dos-nomes-do-ar-contra-o-alvo.mjs"
+        }
+      },
+      {
+        "nome": "os_19_nomes_lidos_do_p142_sao_15_mais_4_sem_repeticao",
+        "verde": true,
+        "obtido": [
+          19,
+          15,
+          4,
+          19,
+          true
+        ],
+        "esperado": [
+          19,
+          15,
+          4,
+          19,
+          true
+        ],
+        "detalhe": {
+          "nomes": [
+            "bfr_audit_lesson_attendance_change",
+            "bfr_collab_comment_notification_trigger",
+            "bfr_collab_member_notification_trigger",
+            "bfr_collab_task_notification_trigger",
+            "bfr_get_student_photo_path",
+            "bfr_prevent_duplicate_grade",
+            "bfr_psychology_schedule_guard",
+            "bfr_rls_director_manages_student",
+            "bfr_rls_is_developer",
+            "bfr_rls_session_role",
+            "bfr_school_set_municipality",
+            "bfr_specialized_audit_trigger",
+            "bfr_staff_audit_trigger",
+            "bfr_support_request_scope_guard",
+            "bfr_touch_updated_at",
+            "bfr_validate_lesson_attendance",
+            "enforce_bfr_avatar_uniform",
+            "schools_updated_at",
+            "sports_touch_updated_at"
+          ]
+        }
+      },
+      {
+        "nome": "o_censo_vivo_bate_com_o_registo_do_p139_e_com_a_particao_do_p142",
+        "verde": true,
+        "obtido": [
+          163,
+          19,
+          15,
+          0
+        ],
+        "esperado": [
+          163,
+          19,
+          15,
+          0
+        ],
+        "detalhe": {
+          "censo139": {
+            "total": 163,
+            "anon_pode": 19,
+            "anon_por_entrada": 15,
+            "acl_nula": 0
+          },
+          "particao142": {
+            "total": 163,
+            "anon_pode": 19,
+            "explicito": 15,
+            "publico": 4,
+            "membria": 0,
+            "acl_nula": 0
+          }
+        }
+      },
+      {
+        "nome": "a_particao_do_p142_tambem_bate_com_o_censo_vivo",
+        "verde": true,
+        "obtido": [
+          163,
+          19,
+          15,
+          4,
+          0,
+          0
+        ],
+        "esperado": [
+          163,
+          19,
+          15,
+          4,
+          0,
+          0
+        ],
+        "detalhe": {
+          "nota": "a quarta coluna do p142 conta os abertos SO por PUBLIC; se algum dos 15 explicitos tambem tiver PUBLIC, aparece na classe \"ambos\" e leva as duas linhas"
+        }
+      },
+      {
+        "nome": "cada_nome_tem_exactamente_uma_linha_e_e_executavel_por_anon",
+        "verde": true,
+        "obtido": [
+          19,
+          19,
+          0
+        ],
+        "esperado": [
+          19,
+          19,
+          0
+        ],
+        "detalhe": {
+          "nomes_sem_linha": []
+        }
+      },
+      {
+        "nome": "as_classes_medidas_batem_nome_a_nome_com_as_do_p142",
+        "verde": true,
+        "obtido": [
+          [
+            "bfr_audit_lesson_attendance_change",
+            "bfr_get_student_photo_path",
+            "bfr_prevent_duplicate_grade",
+            "bfr_psychology_schedule_guard",
+            "bfr_rls_director_manages_student",
+            "bfr_rls_is_developer",
+            "bfr_rls_session_role",
+            "bfr_school_set_municipality",
+            "bfr_specialized_audit_trigger",
+            "bfr_support_request_scope_guard",
+            "bfr_touch_updated_at",
+            "bfr_validate_lesson_attendance",
+            "enforce_bfr_avatar_uniform",
+            "schools_updated_at",
+            "sports_touch_updated_at"
+          ],
+          [
+            "bfr_collab_comment_notification_trigger",
+            "bfr_collab_member_notification_trigger",
+            "bfr_collab_task_notification_trigger",
+            "bfr_staff_audit_trigger"
+          ],
+          true,
+          0
+        ],
+        "esperado": [
+          [
+            "bfr_audit_lesson_attendance_change",
+            "bfr_get_student_photo_path",
+            "bfr_prevent_duplicate_grade",
+            "bfr_psychology_schedule_guard",
+            "bfr_rls_director_manages_student",
+            "bfr_rls_is_developer",
+            "bfr_rls_session_role",
+            "bfr_school_set_municipality",
+            "bfr_specialized_audit_trigger",
+            "bfr_support_request_scope_guard",
+            "bfr_touch_updated_at",
+            "bfr_validate_lesson_attendance",
+            "enforce_bfr_avatar_uniform",
+            "schools_updated_at",
+            "sports_touch_updated_at"
+          ],
+          [
+            "bfr_collab_comment_notification_trigger",
+            "bfr_collab_member_notification_trigger",
+            "bfr_collab_task_notification_trigger",
+            "bfr_staff_audit_trigger"
+          ],
+          true,
+          0
+        ],
+        "detalhe": {
+          "nota": "os 15 explicitos e os 4 so-PUBLIC batem com o p142; a classe \"ambos\" (entrada nominal + PUBLIC no mesmo nome) nao existe no p142 porque a particao dele e por ordem de eliminacao — aqui ela e medida e tem de estar dentro dos 15, nunca dentro dos 4",
+          "nomesComAnon": [
+            "bfr_audit_lesson_attendance_change",
+            "bfr_get_student_photo_path",
+            "bfr_prevent_duplicate_grade",
+            "bfr_psychology_schedule_guard",
+            "bfr_rls_director_manages_student",
+            "bfr_rls_is_developer",
+            "bfr_rls_session_role",
+            "bfr_school_set_municipality",
+            "bfr_specialized_audit_trigger",
+            "bfr_support_request_scope_guard",
+            "bfr_touch_updated_at",
+            "bfr_validate_lesson_attendance",
+            "enforce_bfr_avatar_uniform",
+            "schools_updated_at",
+            "sports_touch_updated_at"
+          ],
+          "nomesComPublic": [
+            "bfr_audit_lesson_attendance_change",
+            "bfr_collab_comment_notification_trigger",
+            "bfr_collab_member_notification_trigger",
+            "bfr_collab_task_notification_trigger",
+            "bfr_prevent_duplicate_grade",
+            "bfr_psychology_schedule_guard",
+            "bfr_specialized_audit_trigger",
+            "bfr_staff_audit_trigger",
+            "bfr_support_request_scope_guard",
+            "bfr_touch_updated_at",
+            "bfr_validate_lesson_attendance",
+            "enforce_bfr_avatar_uniform",
+            "schools_updated_at",
+            "sports_touch_updated_at"
+          ],
+          "nomesComAmbos": [
+            "bfr_audit_lesson_attendance_change",
+            "bfr_prevent_duplicate_grade",
+            "bfr_psychology_schedule_guard",
+            "bfr_specialized_audit_trigger",
+            "bfr_support_request_scope_guard",
+            "bfr_touch_updated_at",
+            "bfr_validate_lesson_attendance",
+            "enforce_bfr_avatar_uniform",
+            "schools_updated_at",
+            "sports_touch_updated_at"
+          ]
+        }
+      },
+      {
+        "nome": "nenhum_nome_fica_aberto_por_caminho_que_a_candidata_nao_cobre",
+        "verde": true,
+        "obtido": [
+          0,
+          0,
+          0
+        ],
+        "esperado": [
+          0,
+          0,
+          0
+        ],
+        "detalhe": {
+          "nota": "classe por_membria medida a zero; um nome novo a aparecer aqui aborta a geracao, nao a contorna"
+        }
+      },
+      {
+        "nome": "as_identidades_do_servidor_passam_a_regua_de_forma",
+        "verde": true,
+        "obtido": [
+          19,
+          19
+        ],
+        "esperado": [
+          19,
+          19
+        ],
+        "detalhe": {
+          "idents": {
+            "bfr_audit_lesson_attendance_change": "",
+            "bfr_collab_comment_notification_trigger": "",
+            "bfr_collab_member_notification_trigger": "",
+            "bfr_collab_task_notification_trigger": "",
+            "bfr_get_student_photo_path": "target_student_id uuid",
+            "bfr_prevent_duplicate_grade": "",
+            "bfr_psychology_schedule_guard": "",
+            "bfr_rls_director_manages_student": "p_student_id uuid",
+            "bfr_rls_is_developer": "",
+            "bfr_rls_session_role": "",
+            "bfr_school_set_municipality": "p_school uuid, p_municipality uuid, p_reason text",
+            "bfr_specialized_audit_trigger": "",
+            "bfr_staff_audit_trigger": "",
+            "bfr_support_request_scope_guard": "",
+            "bfr_touch_updated_at": "",
+            "bfr_validate_lesson_attendance": "",
+            "enforce_bfr_avatar_uniform": "",
+            "schools_updated_at": "",
+            "sports_touch_updated_at": ""
+          }
+        }
+      },
+      {
+        "nome": "a_regua_de_nome_tem_positivo_e_negativo_em_fixture",
+        "verde": true,
+        "obtido": [
+          true,
+          false,
+          false,
+          false
+        ],
+        "esperado": [
+          true,
+          false,
+          false,
+          false
+        ],
+        "detalhe": {
+          "FIX_NOME": [
+            [
+              "bfr_audit_lesson_attendance_change",
+              true
+            ],
+            [
+              "bfr_x; drop table t",
+              false
+            ],
+            [
+              "Bfr_Upper",
+              false
+            ],
+            [
+              "bfr_x--",
+              false
+            ]
+          ]
+        }
+      },
+      {
+        "nome": "a_regua_de_identidade_tem_positivo_e_negativo_em_fixture",
+        "verde": true,
+        "obtido": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          false,
+          false,
+          false
+        ],
+        "esperado": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          false,
+          false,
+          false
+        ],
+        "detalhe": {
+          "FIX_IDENT": [
+            [
+              "",
+              true
+            ],
+            [
+              "uuid, text, boolean",
+              true
+            ],
+            [
+              "p_school uuid, p_municipality uuid",
+              true
+            ],
+            [
+              "character varying",
+              true
+            ],
+            [
+              "integer[]",
+              true
+            ],
+            [
+              "\"Tipo Citado\"",
+              true
+            ],
+            [
+              "uuid; drop table t",
+              false
+            ],
+            [
+              "uuid--",
+              false
+            ],
+            [
+              "uuid, bad'x",
+              false
+            ]
+          ]
+        }
+      },
+      {
+        "nome": "a_classificadora_de_caminhos_tem_positivo_e_negativo_em_fixture",
+        "verde": true,
+        "obtido": [
+          "sem_caminho",
+          "so_public",
+          "so_anon",
+          "ambos",
+          "fechado"
+        ],
+        "esperado": [
+          "sem_caminho",
+          "so_public",
+          "so_anon",
+          "ambos",
+          "fechado"
+        ],
+        "detalhe": {
+          "FIX_CLASSE": [
+            [
+              [
+                false,
+                false,
+                true
+              ],
+              "sem_caminho"
+            ],
+            [
+              [
+                false,
+                true,
+                true
+              ],
+              "so_public"
+            ],
+            [
+              [
+                true,
+                false,
+                true
+              ],
+              "so_anon"
+            ],
+            [
+              [
+                true,
+                true,
+                true
+              ],
+              "ambos"
+            ],
+            [
+              [
+                false,
+                false,
+                false
+              ],
+              "fechado"
+            ]
+          ]
+        }
+      },
+      {
+        "nome": "o_renderizador_de_graus_tem_fixture_nos_dois_sentidos",
+        "verde": true,
+        "obtido": [
+          "REVOKE EXECUTE ON FUNCTION public.n(uuid) FROM anon;",
+          "REVOKE EXECUTE ON FUNCTION public.n() FROM PUBLIC;"
+        ],
+        "esperado": [
+          "REVOKE EXECUTE ON FUNCTION public.n(uuid) FROM anon;",
+          "REVOKE EXECUTE ON FUNCTION public.n() FROM PUBLIC;"
+        ],
+        "detalhe": {
+          "FIX_RENDE": [
+            [
+              "uuid",
+              "REVOKE",
+              "anon",
+              "REVOKE EXECUTE ON FUNCTION public.n(uuid) FROM anon;"
+            ],
+            [
+              "",
+              "REVOKE",
+              "PUBLIC",
+              "REVOKE EXECUTE ON FUNCTION public.n() FROM PUBLIC;"
+            ]
+          ]
+        }
+      },
+      {
+        "nome": "os_ficheiros_gerados_tem_uma_so_transacco_sem_dados_e_o_aviso_de_nao_aplicar",
+        "verde": true,
+        "obtido": [
+          1,
+          1,
+          29,
+          0,
+          0,
+          1,
+          1,
+          29,
+          0,
+          0,
+          true,
+          true
+        ],
+        "esperado": [
+          1,
+          1,
+          29,
+          0,
+          0,
+          1,
+          1,
+          29,
+          0,
+          0,
+          true,
+          true
+        ],
+        "detalhe": {
+          "estCand": {
+            "begin": 1,
+            "commit": 1,
+            "revoke": 29,
+            "grant": 0,
+            "statement_fora_dos_graus": 0
+          },
+          "estRev": {
+            "begin": 1,
+            "commit": 1,
+            "revoke": 0,
+            "grant": 29,
+            "statement_fora_dos_graus": 0
+          },
+          "nota": "a candidata so REVOKE, a reversao so GRANT, e nenhuma escreve dados"
+        }
+      },
+      {
+        "nome": "o_parser_rele_os_ficheiros_e_devolve_exactamente_o_que_foi_gerado",
+        "verde": true,
+        "obtido": [
+          "[[\"bfr_audit_lesson_attendance_change\",\"\",\"anon\"],[\"bfr_get_student_photo_path\",\"target_student_id uuid\",\"anon\"],[\"bfr_prevent_duplicate_grade\",\"\",\"anon\"],[\"bfr_psychology_schedule_guard\",\"\",\"anon\"],[\"bfr_rls_director_manages_student\",\"p_student_id uuid\",\"anon\"],[\"bfr_rls_is_developer\",\"\",\"anon\"],[\"bfr_rls_session_role\",\"\",\"anon\"],[\"bfr_school_set_municipality\",\"p_school uuid, p_municipality uuid, p_reason text\",\"anon\"],[\"bfr_specialized_audit_trigger\",\"\",\"anon\"],[\"bfr_support_request_scope_guard\",\"\",\"anon\"],[\"bfr_touch_updated_at\",\"\",\"anon\"],[\"bfr_validate_lesson_attendance\",\"\",\"anon\"],[\"enforce_bfr_avatar_uniform\",\"\",\"anon\"],[\"schools_updated_at\",\"\",\"anon\"],[\"sports_touch_updated_at\",\"\",\"anon\"],[\"bfr_audit_lesson_attendance_change\",\"\",\"PUBLIC\"],[\"bfr_collab_comment_notification_trigger\",\"\",\"PUBLIC\"],[\"bfr_collab_member_notification_trigger\",\"\",\"PUBLIC\"],[\"bfr_collab_task_notification_trigger\",\"\",\"PUBLIC\"],[\"bfr_prevent_duplicate_grade\",\"\",\"PUBLIC\"],[\"bfr_psychology_schedule_guard\",\"\",\"PUBLIC\"],[\"bfr_specialized_audit_trigger\",\"\",\"PUBLIC\"],[\"bfr_staff_audit_trigger\",\"\",\"PUBLIC\"],[\"bfr_support_request_scope_guard\",\"\",\"PUBLIC\"],[\"bfr_touch_updated_at\",\"\",\"PUBLIC\"],[\"bfr_validate_lesson_attendance\",\"\",\"PUBLIC\"],[\"enforce_bfr_avatar_uniform\",\"\",\"PUBLIC\"],[\"schools_updated_at\",\"\",\"PUBLIC\"],[\"sports_touch_updated_at\",\"\",\"PUBLIC\"]]",
+          "[[\"bfr_audit_lesson_attendance_change\",\"\",\"anon\"],[\"bfr_get_student_photo_path\",\"target_student_id uuid\",\"anon\"],[\"bfr_prevent_duplicate_grade\",\"\",\"anon\"],[\"bfr_psychology_schedule_guard\",\"\",\"anon\"],[\"bfr_rls_director_manages_student\",\"p_student_id uuid\",\"anon\"],[\"bfr_rls_is_developer\",\"\",\"anon\"],[\"bfr_rls_session_role\",\"\",\"anon\"],[\"bfr_school_set_municipality\",\"p_school uuid, p_municipality uuid, p_reason text\",\"anon\"],[\"bfr_specialized_audit_trigger\",\"\",\"anon\"],[\"bfr_support_request_scope_guard\",\"\",\"anon\"],[\"bfr_touch_updated_at\",\"\",\"anon\"],[\"bfr_validate_lesson_attendance\",\"\",\"anon\"],[\"enforce_bfr_avatar_uniform\",\"\",\"anon\"],[\"schools_updated_at\",\"\",\"anon\"],[\"sports_touch_updated_at\",\"\",\"anon\"],[\"bfr_audit_lesson_attendance_change\",\"\",\"PUBLIC\"],[\"bfr_collab_comment_notification_trigger\",\"\",\"PUBLIC\"],[\"bfr_collab_member_notification_trigger\",\"\",\"PUBLIC\"],[\"bfr_collab_task_notification_trigger\",\"\",\"PUBLIC\"],[\"bfr_prevent_duplicate_grade\",\"\",\"PUBLIC\"],[\"bfr_psychology_schedule_guard\",\"\",\"PUBLIC\"],[\"bfr_specialized_audit_trigger\",\"\",\"PUBLIC\"],[\"bfr_staff_audit_trigger\",\"\",\"PUBLIC\"],[\"bfr_support_request_scope_guard\",\"\",\"PUBLIC\"],[\"bfr_touch_updated_at\",\"\",\"PUBLIC\"],[\"bfr_validate_lesson_attendance\",\"\",\"PUBLIC\"],[\"enforce_bfr_avatar_uniform\",\"\",\"PUBLIC\"],[\"schools_updated_at\",\"\",\"PUBLIC\"],[\"sports_touch_updated_at\",\"\",\"PUBLIC\"]]"
+        ],
+        "esperado": [
+          "[[\"bfr_audit_lesson_attendance_change\",\"\",\"anon\"],[\"bfr_get_student_photo_path\",\"target_student_id uuid\",\"anon\"],[\"bfr_prevent_duplicate_grade\",\"\",\"anon\"],[\"bfr_psychology_schedule_guard\",\"\",\"anon\"],[\"bfr_rls_director_manages_student\",\"p_student_id uuid\",\"anon\"],[\"bfr_rls_is_developer\",\"\",\"anon\"],[\"bfr_rls_session_role\",\"\",\"anon\"],[\"bfr_school_set_municipality\",\"p_school uuid, p_municipality uuid, p_reason text\",\"anon\"],[\"bfr_specialized_audit_trigger\",\"\",\"anon\"],[\"bfr_support_request_scope_guard\",\"\",\"anon\"],[\"bfr_touch_updated_at\",\"\",\"anon\"],[\"bfr_validate_lesson_attendance\",\"\",\"anon\"],[\"enforce_bfr_avatar_uniform\",\"\",\"anon\"],[\"schools_updated_at\",\"\",\"anon\"],[\"sports_touch_updated_at\",\"\",\"anon\"],[\"bfr_audit_lesson_attendance_change\",\"\",\"PUBLIC\"],[\"bfr_collab_comment_notification_trigger\",\"\",\"PUBLIC\"],[\"bfr_collab_member_notification_trigger\",\"\",\"PUBLIC\"],[\"bfr_collab_task_notification_trigger\",\"\",\"PUBLIC\"],[\"bfr_prevent_duplicate_grade\",\"\",\"PUBLIC\"],[\"bfr_psychology_schedule_guard\",\"\",\"PUBLIC\"],[\"bfr_specialized_audit_trigger\",\"\",\"PUBLIC\"],[\"bfr_staff_audit_trigger\",\"\",\"PUBLIC\"],[\"bfr_support_request_scope_guard\",\"\",\"PUBLIC\"],[\"bfr_touch_updated_at\",\"\",\"PUBLIC\"],[\"bfr_validate_lesson_attendance\",\"\",\"PUBLIC\"],[\"enforce_bfr_avatar_uniform\",\"\",\"PUBLIC\"],[\"schools_updated_at\",\"\",\"PUBLIC\"],[\"sports_touch_updated_at\",\"\",\"PUBLIC\"]]",
+          "[[\"bfr_audit_lesson_attendance_change\",\"\",\"anon\"],[\"bfr_get_student_photo_path\",\"target_student_id uuid\",\"anon\"],[\"bfr_prevent_duplicate_grade\",\"\",\"anon\"],[\"bfr_psychology_schedule_guard\",\"\",\"anon\"],[\"bfr_rls_director_manages_student\",\"p_student_id uuid\",\"anon\"],[\"bfr_rls_is_developer\",\"\",\"anon\"],[\"bfr_rls_session_role\",\"\",\"anon\"],[\"bfr_school_set_municipality\",\"p_school uuid, p_municipality uuid, p_reason text\",\"anon\"],[\"bfr_specialized_audit_trigger\",\"\",\"anon\"],[\"bfr_support_request_scope_guard\",\"\",\"anon\"],[\"bfr_touch_updated_at\",\"\",\"anon\"],[\"bfr_validate_lesson_attendance\",\"\",\"anon\"],[\"enforce_bfr_avatar_uniform\",\"\",\"anon\"],[\"schools_updated_at\",\"\",\"anon\"],[\"sports_touch_updated_at\",\"\",\"anon\"],[\"bfr_audit_lesson_attendance_change\",\"\",\"PUBLIC\"],[\"bfr_collab_comment_notification_trigger\",\"\",\"PUBLIC\"],[\"bfr_collab_member_notification_trigger\",\"\",\"PUBLIC\"],[\"bfr_collab_task_notification_trigger\",\"\",\"PUBLIC\"],[\"bfr_prevent_duplicate_grade\",\"\",\"PUBLIC\"],[\"bfr_psychology_schedule_guard\",\"\",\"PUBLIC\"],[\"bfr_specialized_audit_trigger\",\"\",\"PUBLIC\"],[\"bfr_staff_audit_trigger\",\"\",\"PUBLIC\"],[\"bfr_support_request_scope_guard\",\"\",\"PUBLIC\"],[\"bfr_touch_updated_at\",\"\",\"PUBLIC\"],[\"bfr_validate_lesson_attendance\",\"\",\"PUBLIC\"],[\"enforce_bfr_avatar_uniform\",\"\",\"PUBLIC\"],[\"schools_updated_at\",\"\",\"PUBLIC\"],[\"sports_touch_updated_at\",\"\",\"PUBLIC\"]]"
+        ],
+        "detalhe": {
+          "lidosCand": [
+            {
+              "nome": "bfr_audit_lesson_attendance_change",
+              "ident": "",
+              "papel": "anon"
+            },
+            {
+              "nome": "bfr_get_student_photo_path",
+              "ident": "target_student_id uuid",
+              "papel": "anon"
+            },
+            {
+              "nome": "bfr_prevent_duplicate_grade",
+              "ident": "",
+              "papel": "anon"
+            },
+            {
+              "nome": "bfr_psychology_schedule_guard",
+              "ident": "",
+              "papel": "anon"
+            },
+            {
+              "nome": "bfr_rls_director_manages_student",
+              "ident": "p_student_id uuid",
+              "papel": "anon"
+            },
+            {
+              "nome": "bfr_rls_is_developer",
+              "ident": "",
+              "papel": "anon"
+            },
+            {
+              "nome": "bfr_rls_session_role",
+              "ident": "",
+              "papel": "anon"
+            },
+            {
+              "nome": "bfr_school_set_municipality",
+              "ident": "p_school uuid, p_municipality uuid, p_reason text",
+              "papel": "anon"
+            },
+            {
+              "nome": "bfr_specialized_audit_trigger",
+              "ident": "",
+              "papel": "anon"
+            },
+            {
+              "nome": "bfr_support_request_scope_guard",
+              "ident": "",
+              "papel": "anon"
+            },
+            {
+              "nome": "bfr_touch_updated_at",
+              "ident": "",
+              "papel": "anon"
+            },
+            {
+              "nome": "bfr_validate_lesson_attendance",
+              "ident": "",
+              "papel": "anon"
+            },
+            {
+              "nome": "enforce_bfr_avatar_uniform",
+              "ident": "",
+              "papel": "anon"
+            },
+            {
+              "nome": "schools_updated_at",
+              "ident": "",
+              "papel": "anon"
+            },
+            {
+              "nome": "sports_touch_updated_at",
+              "ident": "",
+              "papel": "anon"
+            },
+            {
+              "nome": "bfr_audit_lesson_attendance_change",
+              "ident": "",
+              "papel": "PUBLIC"
+            },
+            {
+              "nome": "bfr_collab_comment_notification_trigger",
+              "ident": "",
+              "papel": "PUBLIC"
+            },
+            {
+              "nome": "bfr_collab_member_notification_trigger",
+              "ident": "",
+              "papel": "PUBLIC"
+            },
+            {
+              "nome": "bfr_collab_task_notification_trigger",
+              "ident": "",
+              "papel": "PUBLIC"
+            },
+            {
+              "nome": "bfr_prevent_duplicate_grade",
+              "ident": "",
+              "papel": "PUBLIC"
+            },
+            {
+              "nome": "bfr_psychology_schedule_guard",
+              "ident": "",
+              "papel": "PUBLIC"
+            },
+            {
+              "nome": "bfr_specialized_audit_trigger",
+              "ident": "",
+              "papel": "PUBLIC"
+            },
+            {
+              "nome": "bfr_staff_audit_trigger",
+              "ident": "",
+              "papel": "PUBLIC"
+            },
+            {
+              "nome": "bfr_support_request_scope_guard",
+              "ident": "",
+              "papel": "PUBLIC"
+            },
+            {
+              "nome": "bfr_touch_updated_at",
+              "ident": "",
+              "papel": "PUBLIC"
+            },
+            {
+              "nome": "bfr_validate_lesson_attendance",
+              "ident": "",
+              "papel": "PUBLIC"
+            },
+            {
+              "nome": "enforce_bfr_avatar_uniform",
+              "ident": "",
+              "papel": "PUBLIC"
+            },
+            {
+              "nome": "schools_updated_at",
+              "ident": "",
+              "papel": "PUBLIC"
+            },
+            {
+              "nome": "sports_touch_updated_at",
+              "ident": "",
+              "papel": "PUBLIC"
+            }
+          ],
+          "lidosRev": [
+            {
+              "nome": "bfr_audit_lesson_attendance_change",
+              "ident": "",
+              "papel": "anon"
+            },
+            {
+              "nome": "bfr_get_student_photo_path",
+              "ident": "target_student_id uuid",
+              "papel": "anon"
+            },
+            {
+              "nome": "bfr_prevent_duplicate_grade",
+              "ident": "",
+              "papel": "anon"
+            },
+            {
+              "nome": "bfr_psychology_schedule_guard",
+              "ident": "",
+              "papel": "anon"
+            },
+            {
+              "nome": "bfr_rls_director_manages_student",
+              "ident": "p_student_id uuid",
+              "papel": "anon"
+            },
+            {
+              "nome": "bfr_rls_is_developer",
+              "ident": "",
+              "papel": "anon"
+            },
+            {
+              "nome": "bfr_rls_session_role",
+              "ident": "",
+              "papel": "anon"
+            },
+            {
+              "nome": "bfr_school_set_municipality",
+              "ident": "p_school uuid, p_municipality uuid, p_reason text",
+              "papel": "anon"
+            },
+            {
+              "nome": "bfr_specialized_audit_trigger",
+              "ident": "",
+              "papel": "anon"
+            },
+            {
+              "nome": "bfr_support_request_scope_guard",
+              "ident": "",
+              "papel": "anon"
+            },
+            {
+              "nome": "bfr_touch_updated_at",
+              "ident": "",
+              "papel": "anon"
+            },
+            {
+              "nome": "bfr_validate_lesson_attendance",
+              "ident": "",
+              "papel": "anon"
+            },
+            {
+              "nome": "enforce_bfr_avatar_uniform",
+              "ident": "",
+              "papel": "anon"
+            },
+            {
+              "nome": "schools_updated_at",
+              "ident": "",
+              "papel": "anon"
+            },
+            {
+              "nome": "sports_touch_updated_at",
+              "ident": "",
+              "papel": "anon"
+            },
+            {
+              "nome": "bfr_audit_lesson_attendance_change",
+              "ident": "",
+              "papel": "PUBLIC"
+            },
+            {
+              "nome": "bfr_collab_comment_notification_trigger",
+              "ident": "",
+              "papel": "PUBLIC"
+            },
+            {
+              "nome": "bfr_collab_member_notification_trigger",
+              "ident": "",
+              "papel": "PUBLIC"
+            },
+            {
+              "nome": "bfr_collab_task_notification_trigger",
+              "ident": "",
+              "papel": "PUBLIC"
+            },
+            {
+              "nome": "bfr_prevent_duplicate_grade",
+              "ident": "",
+              "papel": "PUBLIC"
+            },
+            {
+              "nome": "bfr_psychology_schedule_guard",
+              "ident": "",
+              "papel": "PUBLIC"
+            },
+            {
+              "nome": "bfr_specialized_audit_trigger",
+              "ident": "",
+              "papel": "PUBLIC"
+            },
+            {
+              "nome": "bfr_staff_audit_trigger",
+              "ident": "",
+              "papel": "PUBLIC"
+            },
+            {
+              "nome": "bfr_support_request_scope_guard",
+              "ident": "",
+              "papel": "PUBLIC"
+            },
+            {
+              "nome": "bfr_touch_updated_at",
+              "ident": "",
+              "papel": "PUBLIC"
+            },
+            {
+              "nome": "bfr_validate_lesson_attendance",
+              "ident": "",
+              "papel": "PUBLIC"
+            },
+            {
+              "nome": "enforce_bfr_avatar_uniform",
+              "ident": "",
+              "papel": "PUBLIC"
+            },
+            {
+              "nome": "schools_updated_at",
+              "ident": "",
+              "papel": "PUBLIC"
+            },
+            {
+              "nome": "sports_touch_updated_at",
+              "ident": "",
+              "papel": "PUBLIC"
+            }
+          ],
+          "nota": "o parser e o mesmo que o preflight usa: se os dois nao fecham o circulo, e aqui que se ve"
+        }
+      },
+      {
+        "nome": "a_reversao_e_o_espelho_exacto_da_candidata_e_o_mundo_trocado_chumba",
+        "verde": true,
+        "obtido": [
+          true,
+          false,
+          false
+        ],
+        "esperado": [
+          true,
+          false,
+          false
+        ],
+        "detalhe": {
+          "nota": "mesmo nome, mesma assinatura, mesmo papel: REVOKE vira GRANT e nada mais muda"
+        }
+      },
+      {
+        "nome": "as_linhas_de_publico_e_de_anon_batem_com_o_medido_por_nome",
+        "verde": true,
+        "obtido": [
+          [
+            "bfr_audit_lesson_attendance_change",
+            "bfr_collab_comment_notification_trigger",
+            "bfr_collab_member_notification_trigger",
+            "bfr_collab_task_notification_trigger",
+            "bfr_prevent_duplicate_grade",
+            "bfr_psychology_schedule_guard",
+            "bfr_specialized_audit_trigger",
+            "bfr_staff_audit_trigger",
+            "bfr_support_request_scope_guard",
+            "bfr_touch_updated_at",
+            "bfr_validate_lesson_attendance",
+            "enforce_bfr_avatar_uniform",
+            "schools_updated_at",
+            "sports_touch_updated_at"
+          ],
+          [
+            "bfr_audit_lesson_attendance_change",
+            "bfr_get_student_photo_path",
+            "bfr_prevent_duplicate_grade",
+            "bfr_psychology_schedule_guard",
+            "bfr_rls_director_manages_student",
+            "bfr_rls_is_developer",
+            "bfr_rls_session_role",
+            "bfr_school_set_municipality",
+            "bfr_specialized_audit_trigger",
+            "bfr_support_request_scope_guard",
+            "bfr_touch_updated_at",
+            "bfr_validate_lesson_attendance",
+            "enforce_bfr_avatar_uniform",
+            "schools_updated_at",
+            "sports_touch_updated_at"
+          ]
+        ],
+        "esperado": [
+          [
+            "bfr_audit_lesson_attendance_change",
+            "bfr_collab_comment_notification_trigger",
+            "bfr_collab_member_notification_trigger",
+            "bfr_collab_task_notification_trigger",
+            "bfr_prevent_duplicate_grade",
+            "bfr_psychology_schedule_guard",
+            "bfr_specialized_audit_trigger",
+            "bfr_staff_audit_trigger",
+            "bfr_support_request_scope_guard",
+            "bfr_touch_updated_at",
+            "bfr_validate_lesson_attendance",
+            "enforce_bfr_avatar_uniform",
+            "schools_updated_at",
+            "sports_touch_updated_at"
+          ],
+          [
+            "bfr_audit_lesson_attendance_change",
+            "bfr_get_student_photo_path",
+            "bfr_prevent_duplicate_grade",
+            "bfr_psychology_schedule_guard",
+            "bfr_rls_director_manages_student",
+            "bfr_rls_is_developer",
+            "bfr_rls_session_role",
+            "bfr_school_set_municipality",
+            "bfr_specialized_audit_trigger",
+            "bfr_support_request_scope_guard",
+            "bfr_touch_updated_at",
+            "bfr_validate_lesson_attendance",
+            "enforce_bfr_avatar_uniform",
+            "schools_updated_at",
+            "sports_touch_updated_at"
+          ]
+        ],
+        "detalhe": {
+          "nota": "cada linha gerada corresponde a um caminho medido: anon para entrada nominal, PUBLIC para entrada PUBLIC — um nome com as duas leva as duas linhas"
+        }
+      },
+      {
+        "nome": "cada_query_passa_por_q_e_so_ha_um_toque_directo_de_sql",
+        "verde": true,
+        "obtido": [
+          true,
+          true,
+          true,
+          true
+        ],
+        "esperado": [
+          true,
+          true,
+          true,
+          true
+        ],
+        "detalhe": {
+          "formas": 6,
+          "nota": "o unico false em formas e a sonda da guarda, que passa um REVOKE de proposito para provar o aborto; as agulhas compoem-se em runtime para nao se contarem a si mesmas"
+        }
+      },
+      {
+        "nome": "nenhum_identificador_pessoal_nem_token_entra_neste_registo",
+        "verde": true,
+        "obtido": [
+          0,
+          0,
+          1,
+          1
+        ],
+        "esperado": [
+          0,
+          0,
+          1,
+          1
+        ]
+      }
+    ]
+  },
+  "veredito": "P143_REVOKE_GERADO 20/0 · nomes 19 · linhas 29 · anon 15 · public 14 · ambos 10 · censo 163/19/15/0 · 6673 ms"
+}

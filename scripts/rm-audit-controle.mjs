@@ -6,8 +6,15 @@ import { execFileSync } from "node:child_process";
 const RAIZ = process.cwd();
 const TMP = "evidence/.tmp-controle-numeros";
 for (const p of ["docs", "scripts", "evidence"]) mkdirSync(`${TMP}/${p}`, { recursive: true });
-for (const p of ["docs/roadmap-master.md", "docs/roadmap-painel.html", "scripts/rm-audit-numeros.mjs",
-  "evidence/roadmap-censo-db.json", "evidence/rm14-censo-anon.json"]) cpSync(`${RAIZ}/${p}`, `${TMP}/${p}`);
+// Os artefactos que a bancada lê são derivados do próprio rm-audit-numeros.mjs: a lista fixa de antes
+// envelheceu a 22/11, quando a fonte das três cifras passou de roadmap-censo-db.json para
+// bu4-digestao-para-documentacao-20-11.json e o controle passou a correr contra um mundo sem o ficheiro.
+const emisorTxt = readFileSync(`${RAIZ}/scripts/rm-audit-numeros.mjs`, "utf8");
+const lidosPelaBancada = [...emisorTxt.matchAll(/fs\.readFileSync\(\s*"([^"]+)"\s*[,)]/g)]
+  .map((m) => m[1])
+  .filter((p) => /^(docs|evidence)\//.test(p) && p !== "evidence/rm14-suite.json");
+if (lidosPelaBancada.length < 3) throw new Error("ABORTA: derivacao leu " + lidosPelaBancada.length + " ficheiros — a lista nao pode ter encolhido para isto");
+for (const p of ["scripts/rm-audit-numeros.mjs", ...lidosPelaBancada]) cpSync(`${RAIZ}/${p}`, `${TMP}/${p}`);
 
 const suite = JSON.parse(readFileSync("evidence/rm14-suite.json", "utf8"));
 console.log(`artefacto de referência: portoes=${suite.portoes}, falhas=${suite.falhas.length}, alcancaveis=${suite.rls_no_catalogo.alcancaveis}`);
