@@ -1,0 +1,777 @@
+{
+  "peca": "scripts/p144-rm52-conteudo-calendario.mjs",
+  "em": "2026-11-23T07:07:06.621Z",
+  "duracao_ms": 14,
+  "emissor_bytes": 25003,
+  "emissor_md5": "df004289081cf388dfbc56da4c7f08d1",
+  "pergunta": "qual e a semente de conteudo da RM-5.2 que reproduz exactamente o CALENDARIO LETIVO 2026 oficial (204 dias letivos declarados, rotulos mensais, feriados, recessos, sabados letivos, etapas e recuperacao) e o turno com as horas ja medidas da grade — sem fingir confirmacao e sem inventar o turno vespertino?",
+  "metodo": "as 365 datas derivam-se por getUTCDay de 2026; os status saem das regras de precedencia sobre as constantes do documento (feriados, carnaval, recesso 06-17/07, recuperacao 21-23/12, 8 sabados letivos, periodo 09/02-18/12); as metas mensais sao os rotulos «DIAS LETIVOS» do documento e a sua soma (204) e conferida contra a derivacao mes a mes; o turno usa inicio_min/fim_max da grade medida no artefacto do p73; zero escrita no banco e zero chamada de rede.",
+  "constantes": {
+    "ano": 2026,
+    "inicio": "2026-02-09",
+    "fim": "2026-12-18",
+    "carnaval": [
+      "2026-02-16",
+      "2026-02-17",
+      "2026-02-18"
+    ],
+    "recesso_julho": {
+      "de": "2026-07-06",
+      "ate": "2026-07-17"
+    },
+    "recuperacao": [
+      "2026-12-21",
+      "2026-12-22",
+      "2026-12-23"
+    ],
+    "sabados_letivos": [
+      "2026-03-14",
+      "2026-04-11",
+      "2026-05-16",
+      "2026-06-13",
+      "2026-08-15",
+      "2026-09-12",
+      "2026-10-10",
+      "2026-11-14"
+    ],
+    "feriados": [
+      [
+        "2026-04-02",
+        "Nao letivo (sem nome no documento)"
+      ],
+      [
+        "2026-04-03",
+        "Sexta Santa"
+      ],
+      [
+        "2026-04-21",
+        "Tiradentes"
+      ],
+      [
+        "2026-05-01",
+        "Feriado nacional"
+      ],
+      [
+        "2026-05-31",
+        "Feriado municipal"
+      ],
+      [
+        "2026-06-04",
+        "Corpus Christi"
+      ],
+      [
+        "2026-06-24",
+        "Feriado municipal"
+      ],
+      [
+        "2026-06-29",
+        "Feriado municipal"
+      ],
+      [
+        "2026-09-07",
+        "Feriado nacional"
+      ],
+      [
+        "2026-09-16",
+        "Feriado estadual"
+      ],
+      [
+        "2026-10-12",
+        "N. S. Aparecida"
+      ],
+      [
+        "2026-10-15",
+        "Professor"
+      ],
+      [
+        "2026-10-28",
+        "Dia do Servidor Publico"
+      ],
+      [
+        "2026-11-02",
+        "Finados"
+      ],
+      [
+        "2026-11-20",
+        "Consciencia Negra"
+      ],
+      [
+        "2026-11-30",
+        "Dia do Evangelico"
+      ],
+      [
+        "2026-12-08",
+        "N. S. da Conceicao"
+      ],
+      [
+        "2026-12-25",
+        "Natal"
+      ]
+    ],
+    "metas_mensais": [
+      0,
+      12,
+      23,
+      20,
+      21,
+      20,
+      13,
+      22,
+      21,
+      20,
+      19,
+      13
+    ],
+    "turno": {
+      "shift": "matutino",
+      "entry_opens_at": "07:00:00",
+      "class_starts_at": "07:00:00",
+      "shift_closes_at": "11:30:00",
+      "active_weekdays": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "late_grace_minutes": 0
+    },
+    "turnos_sem_horas_medidas": [
+      "vespertino"
+    ]
+  },
+  "derivado": {
+    "contagens_por_status": {
+      "no_school": 127,
+      "school_day": 204,
+      "recess": 13,
+      "holiday": 18,
+      "recovery": 3
+    },
+    "mensais_derivados": [
+      0,
+      12,
+      23,
+      20,
+      21,
+      20,
+      13,
+      22,
+      21,
+      20,
+      19,
+      13
+    ],
+    "soma_metas": 204,
+    "recesso_julho_uteis": [
+      "2026-07-06",
+      "2026-07-07",
+      "2026-07-08",
+      "2026-07-09",
+      "2026-07-10",
+      "2026-07-13",
+      "2026-07-14",
+      "2026-07-15",
+      "2026-07-16",
+      "2026-07-17"
+    ],
+    "feriados_em_dia_util": [
+      "2026-04-02",
+      "2026-04-03",
+      "2026-04-21",
+      "2026-05-01",
+      "2026-06-04",
+      "2026-06-24",
+      "2026-06-29",
+      "2026-09-07",
+      "2026-09-16",
+      "2026-10-12",
+      "2026-10-15",
+      "2026-10-28",
+      "2026-11-02",
+      "2026-11-20",
+      "2026-11-30",
+      "2026-12-08"
+    ],
+    "fora_do_efeito": [
+      "2026-05-31",
+      "2026-12-25"
+    ]
+  },
+  "ficheiros_gerados": {
+    "candidata": {
+      "caminho": "scripts/p144-rm52-conteudo-ddl-candidata.sql",
+      "bytes": 55168,
+      "md5": "5cfe4a53071b14d2002cfff7f6a680b2"
+    },
+    "reversao": {
+      "caminho": "scripts/p144-rm52-conteudo-ddl-reversao.sql",
+      "bytes": 1195,
+      "md5": "535c06708e11927d5a89c4ffa3d3cf67"
+    },
+    "estrutura": {
+      "candidata": {
+        "begin": 1,
+        "commit": 1,
+        "insert_dias": 365,
+        "insert_metas": 12,
+        "insert_turno": 1,
+        "deletes": 0,
+        "fora": 0
+      },
+      "reversao": {
+        "begin": 1,
+        "commit": 1,
+        "insert_dias": 0,
+        "insert_metas": 0,
+        "insert_turno": 0,
+        "deletes": 3,
+        "fora": 0
+      }
+    }
+  },
+  "fixtures": {
+    "semana": [
+      [
+        "2026-03-14",
+        6
+      ],
+      [
+        "2026-02-09",
+        1
+      ],
+      [
+        "2026-12-31",
+        4
+      ],
+      [
+        "2026-01-01",
+        4
+      ]
+    ],
+    "dentro": [
+      [
+        "2026-02-08",
+        false
+      ],
+      [
+        "2026-02-09",
+        true
+      ],
+      [
+        "2026-12-18",
+        true
+      ],
+      [
+        "2026-12-19",
+        false
+      ]
+    ]
+  },
+  "decisoes_registadas": {
+    "carnaval_e_recesso": "os 3 dias de Carnaval (16-18/02) levam o status recess com o rotulo Carnaval: o documento marca-os sem categoria legivel e recesso de Carnaval e a categoria escolar que nao inventa um feriado que o documento nao declara.",
+    "confirmacao": "nenhuma linha nasce confirmada (source_status fica draft por omissao; confirmed_by/confirmed_at NULL em dias e turno) — confirmar e o ato administrativo da funcao A1, ausente; corrige-se aqui a linha de §6 do plano que pedia confirmed_at nao nulo na semente.",
+    "vespertino": "o turno vespertino nao tem horas medidas em nenhuma fonte e nao se semeia (turnos_sem_horas_medidas); as horas do matutino sao as da grade medida (07:00/07:00/11:30).",
+    "sabados_letivos": "sao school_day no calendario, mas o turno cobre [1..5]: nesses 8 dias o portao da portaria continua fechado (schoolDayConfirmed sem activeSchoolShift) — alargar o turno a sabado e decisao do dono.",
+    "metas_mensais": "as metas sao os rotulos mensais do documento, que incluem os 8 sabados letivos (soma 204); substitui-se por esta decisao a linha de §3 do plano que usava o regime seg-sex 261.",
+    "feriados_fora_do_efeito": "31/05 (domingo) e 25/12 (fora do periodo) ficam rotulados holiday por fidelidade ao documento, sem consumir dia util."
+  },
+  "o_que_prova": "que a semente reproduz o documento oficial: 365 datas unicas de 2026, contagens por status exactas, metas mensais iguais aos rotulos lidos e soma 204 = declarado, sabados letivos todos ao sabado, recesso de julho com 10 uteis, e o turno com horas da grade medida e janela do CHECK respeitada.",
+  "o_que_NAO_prova": "nada sobre o ar, o produto ou a base: e geracao local. NAO APLICA nada — aplicar, reverter e publicar pedem cada um a sua frase literal. Nao cria a funcao de confirmacao (A1) nem muda policies: com so esta semente o portao da portaria continua fechado (faltam source_status confirmed e confirmed_at, que sao o ato de A1).",
+  "portoes": {
+    "total": 19,
+    "falhas": 0,
+    "lista": [
+      {
+        "nome": "o_ano_tem_365_datas_distintas_e_todas_dentro_de_2026",
+        "verde": true,
+        "obtido": [
+          365,
+          365,
+          0
+        ],
+        "esperado": [
+          365,
+          365,
+          0
+        ],
+        "detalhe": {}
+      },
+      {
+        "nome": "as_contagens_por_status_sao_exactamente_as_derivadas",
+        "verde": true,
+        "obtido": [
+          204,
+          18,
+          13,
+          3,
+          127
+        ],
+        "esperado": [
+          204,
+          18,
+          13,
+          3,
+          127
+        ],
+        "detalhe": {
+          "contagens": {
+            "no_school": 127,
+            "school_day": 204,
+            "recess": 13,
+            "holiday": 18,
+            "recovery": 3
+          },
+          "nota": "204 = 196 uteis (225 - 16 feriados em dia util - 3 carnaval - 10 recesso) + 8 sabados letivos; feriados 18 = 16 em dia util + 31/05 domingo + 25/12 fora do periodo; recess 13 = 3 carnaval + 10 julho"
+        }
+      },
+      {
+        "nome": "as_metas_mensais_do_documento_batem_com_a_derivacao_mes_a_mes",
+        "verde": true,
+        "obtido": [
+          0,
+          12,
+          23,
+          20,
+          21,
+          20,
+          13,
+          22,
+          21,
+          20,
+          19,
+          13
+        ],
+        "esperado": [
+          0,
+          12,
+          23,
+          20,
+          21,
+          20,
+          13,
+          22,
+          21,
+          20,
+          19,
+          13
+        ],
+        "detalhe": {
+          "mensais": [
+            0,
+            12,
+            23,
+            20,
+            21,
+            20,
+            13,
+            22,
+            21,
+            20,
+            19,
+            13
+          ],
+          "nota": "os rotulos «DIAS LETIVOS» do documento incluem os sabados letivos e somam 204"
+        }
+      },
+      {
+        "nome": "a_soma_das_metas_mensais_e_o_declarado_do_documento",
+        "verde": true,
+        "obtido": [
+          204,
+          12
+        ],
+        "esperado": [
+          204,
+          12
+        ],
+        "detalhe": {}
+      },
+      {
+        "nome": "os_8_sabados_letivos_sao_todos_sabado_e_estao_dentro_do_periodo",
+        "verde": true,
+        "obtido": [
+          8,
+          true,
+          true,
+          true
+        ],
+        "esperado": [
+          8,
+          true,
+          true,
+          true
+        ],
+        "detalhe": {}
+      },
+      {
+        "nome": "os_feriados_em_dia_util_sao_16_e_todos_caem_de_segunda_a_sexta",
+        "verde": true,
+        "obtido": [
+          16,
+          [
+            "2026-04-02",
+            "2026-04-03",
+            "2026-04-21",
+            "2026-05-01",
+            "2026-06-04",
+            "2026-06-24",
+            "2026-06-29",
+            "2026-09-07",
+            "2026-09-16",
+            "2026-10-12",
+            "2026-10-15",
+            "2026-10-28",
+            "2026-11-02",
+            "2026-11-20",
+            "2026-11-30",
+            "2026-12-08"
+          ],
+          [
+            "2026-05-31",
+            "2026-12-25"
+          ]
+        ],
+        "esperado": [
+          16,
+          [
+            "2026-04-02",
+            "2026-04-03",
+            "2026-04-21",
+            "2026-05-01",
+            "2026-06-04",
+            "2026-06-24",
+            "2026-06-29",
+            "2026-09-07",
+            "2026-09-16",
+            "2026-10-12",
+            "2026-10-15",
+            "2026-10-28",
+            "2026-11-02",
+            "2026-11-20",
+            "2026-11-30",
+            "2026-12-08"
+          ],
+          [
+            "2026-05-31",
+            "2026-12-25"
+          ]
+        ],
+        "detalhe": {
+          "nota": "31/05 e domingo e 25/12 esta fora do periodo: nao consomem dia util mas ficam rotulados de feriado por fidelidade ao documento"
+        }
+      },
+      {
+        "nome": "o_carnaval_sao_3_dias_uteis_e_a_recuperacao_3_dias_uteis_apos_o_periodo",
+        "verde": true,
+        "obtido": [
+          [
+            1,
+            2,
+            3
+          ],
+          true,
+          [
+            1,
+            2,
+            3
+          ],
+          true
+        ],
+        "esperado": [
+          [
+            1,
+            2,
+            3
+          ],
+          true,
+          [
+            1,
+            2,
+            3
+          ],
+          true
+        ],
+        "detalhe": {}
+      },
+      {
+        "nome": "o_recesso_de_julho_sao_exactamente_10_dias_uteis_entre_06_e_17",
+        "verde": true,
+        "obtido": [
+          10,
+          true,
+          0,
+          10
+        ],
+        "esperado": [
+          10,
+          true,
+          0,
+          10
+        ],
+        "detalhe": {}
+      },
+      {
+        "nome": "todas_as_datas_dos_rotulos_respeitam_a_forma_e_os_rotulos_o_tecto_de_160",
+        "verde": true,
+        "obtido": [
+          true,
+          true,
+          true,
+          0
+        ],
+        "esperado": [
+          true,
+          true,
+          true,
+          0
+        ],
+        "detalhe": {
+          "nota": "sem apostrofo em rotulo nenhum: o escape de aspa simples do gerador nunca e exercitado"
+        }
+      },
+      {
+        "nome": "o_turno_respeita_a_janela_do_CHECK_e_os_weekdays_sao_de_segunda_a_sexta",
+        "verde": true,
+        "obtido": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          1
+        ],
+        "esperado": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          1
+        ],
+        "detalhe": {
+          "turno": {
+            "shift": "matutino",
+            "entry_opens_at": "07:00:00",
+            "class_starts_at": "07:00:00",
+            "shift_closes_at": "11:30:00",
+            "active_weekdays": [
+              1,
+              2,
+              3,
+              4,
+              5
+            ],
+            "late_grace_minutes": 0
+          },
+          "nota": "horas lidas da grade medida (p73 grade_tempos: inicio_min 07:00:00, fim_max 11:30:00); vespertino sem horas medidas fica por semear"
+        }
+      },
+      {
+        "nome": "as_horas_do_turno_sao_as_da_grade_medida_do_p73",
+        "verde": true,
+        "obtido": true,
+        "esperado": true,
+        "detalhe": {
+          "nota": "07:00 e 11:30 leem-se do artefacto do p73 (grade_tempos.inicio_min/fim_max), nunca da memoria"
+        }
+      },
+      {
+        "nome": "a_candidata_tem_uma_transaccao_com_378_inserts_e_nada_fora_de_inserts",
+        "verde": true,
+        "obtido": [
+          1,
+          1,
+          365,
+          12,
+          1,
+          0,
+          0
+        ],
+        "esperado": [
+          1,
+          1,
+          365,
+          12,
+          1,
+          0,
+          0
+        ],
+        "detalhe": {
+          "estCand": {
+            "begin": 1,
+            "commit": 1,
+            "insert_dias": 365,
+            "insert_metas": 12,
+            "insert_turno": 1,
+            "deletes": 0,
+            "fora": 0
+          }
+        }
+      },
+      {
+        "nome": "a_reversao_tem_uma_transaccao_com_3_deletes_do_mesmo_ano_e_nada_fora_de_deletes",
+        "verde": true,
+        "obtido": [
+          1,
+          1,
+          0,
+          0,
+          0,
+          3,
+          0
+        ],
+        "esperado": [
+          1,
+          1,
+          0,
+          0,
+          0,
+          3,
+          0
+        ],
+        "detalhe": {
+          "estRev": {
+            "begin": 1,
+            "commit": 1,
+            "insert_dias": 0,
+            "insert_metas": 0,
+            "insert_turno": 0,
+            "deletes": 3,
+            "fora": 0
+          }
+        }
+      },
+      {
+        "nome": "o_parser_rele_as_365_datas_e_devolve_exactamente_o_derivado",
+        "verde": true,
+        "obtido": [
+          365,
+          true,
+          "[[\"2026-01-01\",\"no_school\",\"\"],[\"2026-01-02\",\"no_school\",\"\"],[\"2026-01-03\",\"no_school\",\"\"],[\"2026-01-04\",\"no_school\",\"\"],[\"2026-01-05\",\"no_school\",\"\"],[\"2026-01-06\",\"no_school\",\"\"],[\"2026-01-07\",\"no_school\",\"\"],[\"2026-01-08\",\"no_school\",\"\"],[\"2026-01-09\",\"no_school\",\"\"],[\"2026-01-10\",\"no_school\",\"\"],[\"2026-01-11\",\"no_school\",\"\"],[\"2026-01-12\",\"no_school\",\"\"],[\"2026-01-13\",\"no_school\",\"\"],[\"2026-01-14\",\"no_school\",\"\"],[\"2026-01-15\",\"no_school\",\"\"],[\"2026-01-16\",\"no_school\",\"\"],[\"2026-01-17\",\"no_school\",\"\"],[\"2026-01-18\",\"no_school\",\"\"],[\"2026-01-19\",\"no_school\",\"\"],[\"2026-01-20\",\"no_school\",\"\"],[\"2026-01-21\",\"no_school\",\"\"],[\"2026-01-22\",\"no_school\",\"\"],[\"2026-01-23\",\"no_school\",\"\"],[\"2026-01-24\",\"no_school\",\"\"],[\"2026-01-25\",\"no_school\",\"\"],[\"2026-01-26\",\"no_school\",\"\"],[\"2026-01-27\",\"no_school\",\"\"],[\"2026-01-28\",\"no_school\",\"\"],[\"2026-01-29\",\"no_school\",\"\"],[\"2026-01-30\",\"no_school\",\"\"],[\"2026-01-31\",\"no_school\",\"\"],[\"2026-02-01\",\"no_school\",\"\"],[\"2026-02-02\",\"no_school\",\"\"],[\"2026-02-03\",\"no_school\",\"\"],[\"2026-02-04\",\"no_school\",\"\"],[\"2026-02-05\",\"no_school\",\"\"],[\"2026-02-06\",\"no_school\",\"\"],[\"2026-02-07\",\"no_school\",\"\"],[\"2026-02-08\",\"no_school\",\"\"],[\"2026-02-09\",\"school_day\",\"\"],[\"2026-02-10\",\"school_day\",\"\"],[\"2026-02-11\",\"school_day\",\"\"],[\"2026-02-12\",\"school_day\",\"\"],[\"2026-02-13\",\"school_day\",\"\"],[\"2026-02-14\",\"no_school\",\"\"],[\"2026-02-15\",\"no_school\",\"\"],[\"2026-02-16\",\"recess\",\"Carnaval\"],[\"2026-02-17\",\"recess\",\"Carnaval\"],[\"2026-02-18\",\"recess\",\"Carnaval\"],[\"2026-02-19\",\"school_day\",\"\"],[\"2026-02-20\",\"school_day\",\"\"],[\"2026-02-21\",\"no_school\",\"\"],[\"2026-02-22\",\"no_school\",\"\"],[\"2026-02-23\",\"school_day\",\"\"],[\"2026-02-24\",\"school_day\",\"\"],[\"2026-02-25\",\"school_day\",\"\"],[\"2026-02-26\",\"school_day\",\"\"],[\"2026-02-27\",\"school_day\",\"\"],[\"2026-02-28\",\"no_school\",\"\"],[\"2026-03-01\",\"no_school\",\"\"],[\"2026-03-02\",\"school_day\",\"\"],[\"2026-03-03\",\"school_day\",\"\"],[\"2026-03-04\",\"school_day\",\"\"],[\"2026-03-05\",\"school_day\",\"\"],[\"2026-03-06\",\"school_day\",\"\"],[\"2026-03-07\",\"no_school\",\"\"],[\"2026-03-08\",\"no_school\",\"\"],[\"2026-03-09\",\"school_day\",\"\"],[\"2026-03-10\",\"school_day\",\"\"],[\"2026-03-11\",\"school_day\",\"\"],[\"2026-03-12\",\"school_day\",\"\"],[\"2026-03-13\",\"school_day\",\"\"],[\"2026-03-14\",\"school_day\",\"Sabado letivo\"],[\"2026-03-15\",\"no_school\",\"\"],[\"2026-03-16\",\"school_day\",\"\"],[\"2026-03-17\",\"school_day\",\"\"],[\"2026-03-18\",\"school_day\",\"\"],[\"2026-03-19\",\"school_day\",\"\"],[\"2026-03-20\",\"school_day\",\"\"],[\"2026-03-21\",\"no_school\",\"\"],[\"2026-03-22\",\"no_school\",\"\"],[\"2026-03-23\",\"school_day\",\"\"],[\"2026-03-24\",\"school_day\",\"\"],[\"2026-03-25\",\"school_day\",\"\"],[\"2026-03-26\",\"school_day\",\"\"],[\"2026-03-27\",\"school_day\",\"\"],[\"2026-03-28\",\"no_school\",\"\"],[\"2026-03-29\",\"no_school\",\"\"],[\"2026-03-30\",\"school_day\",\"\"],[\"2026-03-31\",\"school_day\",\"\"],[\"2026-04-01\",\"school_day\",\"\"],[\"2026-04-02\",\"holiday\",\"Nao letivo (sem nome no documento)\"],[\"2026-04-03\",\"holiday\",\"Sexta Santa\"],[\"2026-04-04\",\"no_school\",\"\"],[\"2026-04-05\",\"no_school\",\"\"],[\"2026-04-06\",\"school_day\",\"\"],[\"2026-04-07\",\"school_day\",\"\"],[\"2026-04-08\",\"school_day\",\"\"],[\"2026-04-09\",\"school_day\",\"\"],[\"2026-04-10\",\"school_day\",\"\"],[\"2026-04-11\",\"school_day\",\"Sabado letivo\"],[\"2026-04-12\",\"no_school\",\"\"],[\"2026-04-13\",\"school_day\",\"\"],[\"2026-04-14\",\"school_day\",\"\"],[\"2026-04-15\",\"school_day\",\"\"],[\"2026-04-16\",\"school_day\",\"\"],[\"2026-04-17\",\"school_day\",\"\"],[\"2026-04-18\",\"no_school\",\"\"],[\"2026-04-19\",\"no_school\",\"\"],[\"2026-04-20\",\"school_day\",\"\"],[\"2026-04-21\",\"holiday\",\"Tiradentes\"],[\"2026-04-22\",\"school_day\",\"\"],[\"2026-04-23\",\"school_day\",\"\"],[\"2026-04-24\",\"school_day\",\"\"],[\"2026-04-25\",\"no_school\",\"\"],[\"2026-04-26\",\"no_school\",\"\"],[\"2026-04-27\",\"school_day\",\"\"],[\"2026-04-28\",\"school_day\",\"\"],[\"2026-04-29\",\"school_day\",\"\"],[\"2026-04-30\",\"school_day\",\"\"],[\"2026-05-01\",\"holiday\",\"Feriado nacional\"],[\"2026-05-02\",\"no_school\",\"\"],[\"2026-05-03\",\"no_school\",\"\"],[\"2026-05-04\",\"school_day\",\"\"],[\"2026-05-05\",\"school_day\",\"\"],[\"2026-05-06\",\"school_day\",\"\"],[\"2026-05-07\",\"school_day\",\"\"],[\"2026-05-08\",\"school_day\",\"\"],[\"2026-05-09\",\"no_school\",\"\"],[\"2026-05-10\",\"no_school\",\"\"],[\"2026-05-11\",\"school_day\",\"\"],[\"2026-05-12\",\"school_day\",\"\"],[\"2026-05-13\",\"school_day\",\"\"],[\"2026-05-14\",\"school_day\",\"\"],[\"2026-05-15\",\"school_day\",\"\"],[\"2026-05-16\",\"school_day\",\"Sabado letivo\"],[\"2026-05-17\",\"no_school\",\"\"],[\"2026-05-18\",\"school_day\",\"\"],[\"2026-05-19\",\"school_day\",\"\"],[\"2026-05-20\",\"school_day\",\"\"],[\"2026-05-21\",\"school_day\",\"\"],[\"2026-05-22\",\"school_day\",\"\"],[\"2026-05-23\",\"no_school\",\"\"],[\"2026-05-24\",\"no_school\",\"\"],[\"2026-05-25\",\"school_day\",\"\"],[\"2026-05-26\",\"school_day\",\"\"],[\"2026-05-27\",\"school_day\",\"\"],[\"2026-05-28\",\"school_day\",\"\"],[\"2026-05-29\",\"school_day\",\"\"],[\"2026-05-30\",\"no_school\",\"\"],[\"2026-05-31\",\"holiday\",\"Feriado municipal\"],[\"2026-06-01\",\"school_day\",\"\"],[\"2026-06-02\",\"school_day\",\"\"],[\"2026-06-03\",\"school_day\",\"\"],[\"2026-06-04\",\"holiday\",\"Corpus Christi\"],[\"2026-06-05\",\"school_day\",\"\"],[\"2026-06-06\",\"no_school\",\"\"],[\"2026-06-07\",\"no_school\",\"\"],[\"2026-06-08\",\"school_day\",\"\"],[\"2026-06-09\",\"school_day\",\"\"],[\"2026-06-10\",\"school_day\",\"\"],[\"2026-06-11\",\"school_day\",\"\"],[\"2026-06-12\",\"school_day\",\"\"],[\"2026-06-13\",\"school_day\",\"Sabado letivo\"],[\"2026-06-14\",\"no_school\",\"\"],[\"2026-06-15\",\"school_day\",\"\"],[\"2026-06-16\",\"school_day\",\"\"],[\"2026-06-17\",\"school_day\",\"\"],[\"2026-06-18\",\"school_day\",\"\"],[\"2026-06-19\",\"school_day\",\"\"],[\"2026-06-20\",\"no_school\",\"\"],[\"2026-06-21\",\"no_school\",\"\"],[\"2026-06-22\",\"school_day\",\"\"],[\"2026-06-23\",\"school_day\",\"\"],[\"2026-06-24\",\"holiday\",\"Feriado municipal\"],[\"2026-06-25\",\"school_day\",\"\"],[\"2026-06-26\",\"school_day\",\"\"],[\"2026-06-27\",\"no_school\",\"\"],[\"2026-06-28\",\"no_school\",\"\"],[\"2026-06-29\",\"holiday\",\"Feriado municipal\"],[\"2026-06-30\",\"school_day\",\"\"],[\"2026-07-01\",\"school_day\",\"\"],[\"2026-07-02\",\"school_day\",\"\"],[\"2026-07-03\",\"school_day\",\"\"],[\"2026-07-04\",\"no_school\",\"\"],[\"2026-07-05\",\"no_school\",\"\"],[\"2026-07-06\",\"recess\",\"Recesso escolar\"],[\"2026-07-07\",\"recess\",\"Recesso escolar\"],[\"2026-07-08\",\"recess\",\"Recesso escolar\"],[\"2026-07-09\",\"recess\",\"Recesso escolar\"],[\"2026-07-10\",\"recess\",\"Recesso escolar\"],[\"2026-07-11\",\"no_school\",\"\"],[\"2026-07-12\",\"no_school\",\"\"],[\"2026-07-13\",\"recess\",\"Recesso escolar\"],[\"2026-07-14\",\"recess\",\"Recesso escolar\"],[\"2026-07-15\",\"recess\",\"Recesso escolar\"],[\"2026-07-16\",\"recess\",\"Recesso escolar\"],[\"2026-07-17\",\"recess\",\"Recesso escolar\"],[\"2026-07-18\",\"no_school\",\"\"],[\"2026-07-19\",\"no_school\",\"\"],[\"2026-07-20\",\"school_day\",\"\"],[\"2026-07-21\",\"school_day\",\"\"],[\"2026-07-22\",\"school_day\",\"\"],[\"2026-07-23\",\"school_day\",\"\"],[\"2026-07-24\",\"school_day\",\"\"],[\"2026-07-25\",\"no_school\",\"\"],[\"2026-07-26\",\"no_school\",\"\"],[\"2026-07-27\",\"school_day\",\"\"],[\"2026-07-28\",\"school_day\",\"\"],[\"2026-07-29\",\"school_day\",\"\"],[\"2026-07-30\",\"school_day\",\"\"],[\"2026-07-31\",\"school_day\",\"\"],[\"2026-08-01\",\"no_school\",\"\"],[\"2026-08-02\",\"no_school\",\"\"],[\"2026-08-03\",\"school_day\",\"\"],[\"2026-08-04\",\"school_day\",\"\"],[\"2026-08-05\",\"school_day\",\"\"],[\"2026-08-06\",\"school_day\",\"\"],[\"2026-08-07\",\"school_day\",\"\"],[\"2026-08-08\",\"no_school\",\"\"],[\"2026-08-09\",\"no_school\",\"\"],[\"2026-08-10\",\"school_day\",\"\"],[\"2026-08-11\",\"school_day\",\"\"],[\"2026-08-12\",\"school_day\",\"\"],[\"2026-08-13\",\"school_day\",\"\"],[\"2026-08-14\",\"school_day\",\"\"],[\"2026-08-15\",\"school_day\",\"Sabado letivo\"],[\"2026-08-16\",\"no_school\",\"\"],[\"2026-08-17\",\"school_day\",\"\"],[\"2026-08-18\",\"school_day\",\"\"],[\"2026-08-19\",\"school_day\",\"\"],[\"2026-08-20\",\"school_day\",\"\"],[\"2026-08-21\",\"school_day\",\"\"],[\"2026-08-22\",\"no_school\",\"\"],[\"2026-08-23\",\"no_school\",\"\"],[\"2026-08-24\",\"school_day\",\"\"],[\"2026-08-25\",\"school_day\",\"\"],[\"2026-08-26\",\"school_day\",\"\"],[\"2026-08-27\",\"school_day\",\"\"],[\"2026-08-28\",\"school_day\",\"\"],[\"2026-08-29\",\"no_school\",\"\"],[\"2026-08-30\",\"no_school\",\"\"],[\"2026-08-31\",\"school_day\",\"\"],[\"2026-09-01\",\"school_day\",\"\"],[\"2026-09-02\",\"school_day\",\"\"],[\"2026-09-03\",\"school_day\",\"\"],[\"2026-09-04\",\"school_day\",\"\"],[\"2026-09-05\",\"no_school\",\"\"],[\"2026-09-06\",\"no_school\",\"\"],[\"2026-09-07\",\"holiday\",\"Feriado nacional\"],[\"2026-09-08\",\"school_day\",\"\"],[\"2026-09-09\",\"school_day\",\"\"],[\"2026-09-10\",\"school_day\",\"\"],[\"2026-09-11\",\"school_day\",\"\"],[\"2026-09-12\",\"school_day\",\"Sabado letivo\"],[\"2026-09-13\",\"no_school\",\"\"],[\"2026-09-14\",\"school_day\",\"\"],[\"2026-09-15\",\"school_day\",\"\"],[\"2026-09-16\",\"holiday\",\"Feriado estadual\"],[\"2026-09-17\",\"school_day\",\"\"],[\"2026-09-18\",\"school_day\",\"\"],[\"2026-09-19\",\"no_school\",\"\"],[\"2026-09-20\",\"no_school\",\"\"],[\"2026-09-21\",\"school_day\",\"\"],[\"2026-09-22\",\"school_day\",\"\"],[\"2026-09-23\",\"school_day\",\"\"],[\"2026-09-24\",\"school_day\",\"\"],[\"2026-09-25\",\"school_day\",\"\"],[\"2026-09-26\",\"no_school\",\"\"],[\"2026-09-27\",\"no_school\",\"\"],[\"2026-09-28\",\"school_day\",\"\"],[\"2026-09-29\",\"school_day\",\"\"],[\"2026-09-30\",\"school_day\",\"\"],[\"2026-10-01\",\"school_day\",\"\"],[\"2026-10-02\",\"school_day\",\"\"],[\"2026-10-03\",\"no_school\",\"\"],[\"2026-10-04\",\"no_school\",\"\"],[\"2026-10-05\",\"school_day\",\"\"],[\"2026-10-06\",\"school_day\",\"\"],[\"2026-10-07\",\"school_day\",\"\"],[\"2026-10-08\",\"school_day\",\"\"],[\"2026-10-09\",\"school_day\",\"\"],[\"2026-10-10\",\"school_day\",\"Sabado letivo\"],[\"2026-10-11\",\"no_school\",\"\"],[\"2026-10-12\",\"holiday\",\"N. S. Aparecida\"],[\"2026-10-13\",\"school_day\",\"\"],[\"2026-10-14\",\"school_day\",\"\"],[\"2026-10-15\",\"holiday\",\"Professor\"],[\"2026-10-16\",\"school_day\",\"\"],[\"2026-10-17\",\"no_school\",\"\"],[\"2026-10-18\",\"no_school\",\"\"],[\"2026-10-19\",\"school_day\",\"\"],[\"2026-10-20\",\"school_day\",\"\"],[\"2026-10-21\",\"school_day\",\"\"],[\"2026-10-22\",\"school_day\",\"\"],[\"2026-10-23\",\"school_day\",\"\"],[\"2026-10-24\",\"no_school\",\"\"],[\"2026-10-25\",\"no_school\",\"\"],[\"2026-10-26\",\"school_day\",\"\"],[\"2026-10-27\",\"school_day\",\"\"],[\"2026-10-28\",\"holiday\",\"Dia do Servidor Publico\"],[\"2026-10-29\",\"school_day\",\"\"],[\"2026-10-30\",\"school_day\",\"\"],[\"2026-10-31\",\"no_school\",\"\"],[\"2026-11-01\",\"no_school\",\"\"],[\"2026-11-02\",\"holiday\",\"Finados\"],[\"2026-11-03\",\"school_day\",\"\"],[\"2026-11-04\",\"school_day\",\"\"],[\"2026-11-05\",\"school_day\",\"\"],[\"2026-11-06\",\"school_day\",\"\"],[\"2026-11-07\",\"no_school\",\"\"],[\"2026-11-08\",\"no_school\",\"\"],[\"2026-11-09\",\"school_day\",\"\"],[\"2026-11-10\",\"school_day\",\"\"],[\"2026-11-11\",\"school_day\",\"\"],[\"2026-11-12\",\"school_day\",\"\"],[\"2026-11-13\",\"school_day\",\"\"],[\"2026-11-14\",\"school_day\",\"Sabado letivo\"],[\"2026-11-15\",\"no_school\",\"\"],[\"2026-11-16\",\"school_day\",\"\"],[\"2026-11-17\",\"school_day\",\"\"],[\"2026-11-18\",\"school_day\",\"\"],[\"2026-11-19\",\"school_day\",\"\"],[\"2026-11-20\",\"holiday\",\"Consciencia Negra\"],[\"2026-11-21\",\"no_school\",\"\"],[\"2026-11-22\",\"no_school\",\"\"],[\"2026-11-23\",\"school_day\",\"\"],[\"2026-11-24\",\"school_day\",\"\"],[\"2026-11-25\",\"school_day\",\"\"],[\"2026-11-26\",\"school_day\",\"\"],[\"2026-11-27\",\"school_day\",\"\"],[\"2026-11-28\",\"no_school\",\"\"],[\"2026-11-29\",\"no_school\",\"\"],[\"2026-11-30\",\"holiday\",\"Dia do Evangelico\"],[\"2026-12-01\",\"school_day\",\"\"],[\"2026-12-02\",\"school_day\",\"\"],[\"2026-12-03\",\"school_day\",\"\"],[\"2026-12-04\",\"school_day\",\"\"],[\"2026-12-05\",\"no_school\",\"\"],[\"2026-12-06\",\"no_school\",\"\"],[\"2026-12-07\",\"school_day\",\"\"],[\"2026-12-08\",\"holiday\",\"N. S. da Conceicao\"],[\"2026-12-09\",\"school_day\",\"\"],[\"2026-12-10\",\"school_day\",\"\"],[\"2026-12-11\",\"school_day\",\"\"],[\"2026-12-12\",\"no_school\",\"\"],[\"2026-12-13\",\"no_school\",\"\"],[\"2026-12-14\",\"school_day\",\"\"],[\"2026-12-15\",\"school_day\",\"\"],[\"2026-12-16\",\"school_day\",\"\"],[\"2026-12-17\",\"school_day\",\"\"],[\"2026-12-18\",\"school_day\",\"\"],[\"2026-12-19\",\"no_school\",\"\"],[\"2026-12-20\",\"no_school\",\"\"],[\"2026-12-21\",\"recovery\",\"Recuperacao final\"],[\"2026-12-22\",\"recovery\",\"Recuperacao final\"],[\"2026-12-23\",\"recovery\",\"Recuperacao final\"],[\"2026-12-24\",\"no_school\",\"\"],[\"2026-12-25\",\"holiday\",\"Natal\"],[\"2026-12-26\",\"no_school\",\"\"],[\"2026-12-27\",\"no_school\",\"\"],[\"2026-12-28\",\"no_school\",\"\"],[\"2026-12-29\",\"no_school\",\"\"],[\"2026-12-30\",\"no_school\",\"\"],[\"2026-12-31\",\"no_school\",\"\"]]",
+          0
+        ],
+        "esperado": [
+          365,
+          true,
+          "[[\"2026-01-01\",\"no_school\",\"\"],[\"2026-01-02\",\"no_school\",\"\"],[\"2026-01-03\",\"no_school\",\"\"],[\"2026-01-04\",\"no_school\",\"\"],[\"2026-01-05\",\"no_school\",\"\"],[\"2026-01-06\",\"no_school\",\"\"],[\"2026-01-07\",\"no_school\",\"\"],[\"2026-01-08\",\"no_school\",\"\"],[\"2026-01-09\",\"no_school\",\"\"],[\"2026-01-10\",\"no_school\",\"\"],[\"2026-01-11\",\"no_school\",\"\"],[\"2026-01-12\",\"no_school\",\"\"],[\"2026-01-13\",\"no_school\",\"\"],[\"2026-01-14\",\"no_school\",\"\"],[\"2026-01-15\",\"no_school\",\"\"],[\"2026-01-16\",\"no_school\",\"\"],[\"2026-01-17\",\"no_school\",\"\"],[\"2026-01-18\",\"no_school\",\"\"],[\"2026-01-19\",\"no_school\",\"\"],[\"2026-01-20\",\"no_school\",\"\"],[\"2026-01-21\",\"no_school\",\"\"],[\"2026-01-22\",\"no_school\",\"\"],[\"2026-01-23\",\"no_school\",\"\"],[\"2026-01-24\",\"no_school\",\"\"],[\"2026-01-25\",\"no_school\",\"\"],[\"2026-01-26\",\"no_school\",\"\"],[\"2026-01-27\",\"no_school\",\"\"],[\"2026-01-28\",\"no_school\",\"\"],[\"2026-01-29\",\"no_school\",\"\"],[\"2026-01-30\",\"no_school\",\"\"],[\"2026-01-31\",\"no_school\",\"\"],[\"2026-02-01\",\"no_school\",\"\"],[\"2026-02-02\",\"no_school\",\"\"],[\"2026-02-03\",\"no_school\",\"\"],[\"2026-02-04\",\"no_school\",\"\"],[\"2026-02-05\",\"no_school\",\"\"],[\"2026-02-06\",\"no_school\",\"\"],[\"2026-02-07\",\"no_school\",\"\"],[\"2026-02-08\",\"no_school\",\"\"],[\"2026-02-09\",\"school_day\",\"\"],[\"2026-02-10\",\"school_day\",\"\"],[\"2026-02-11\",\"school_day\",\"\"],[\"2026-02-12\",\"school_day\",\"\"],[\"2026-02-13\",\"school_day\",\"\"],[\"2026-02-14\",\"no_school\",\"\"],[\"2026-02-15\",\"no_school\",\"\"],[\"2026-02-16\",\"recess\",\"Carnaval\"],[\"2026-02-17\",\"recess\",\"Carnaval\"],[\"2026-02-18\",\"recess\",\"Carnaval\"],[\"2026-02-19\",\"school_day\",\"\"],[\"2026-02-20\",\"school_day\",\"\"],[\"2026-02-21\",\"no_school\",\"\"],[\"2026-02-22\",\"no_school\",\"\"],[\"2026-02-23\",\"school_day\",\"\"],[\"2026-02-24\",\"school_day\",\"\"],[\"2026-02-25\",\"school_day\",\"\"],[\"2026-02-26\",\"school_day\",\"\"],[\"2026-02-27\",\"school_day\",\"\"],[\"2026-02-28\",\"no_school\",\"\"],[\"2026-03-01\",\"no_school\",\"\"],[\"2026-03-02\",\"school_day\",\"\"],[\"2026-03-03\",\"school_day\",\"\"],[\"2026-03-04\",\"school_day\",\"\"],[\"2026-03-05\",\"school_day\",\"\"],[\"2026-03-06\",\"school_day\",\"\"],[\"2026-03-07\",\"no_school\",\"\"],[\"2026-03-08\",\"no_school\",\"\"],[\"2026-03-09\",\"school_day\",\"\"],[\"2026-03-10\",\"school_day\",\"\"],[\"2026-03-11\",\"school_day\",\"\"],[\"2026-03-12\",\"school_day\",\"\"],[\"2026-03-13\",\"school_day\",\"\"],[\"2026-03-14\",\"school_day\",\"Sabado letivo\"],[\"2026-03-15\",\"no_school\",\"\"],[\"2026-03-16\",\"school_day\",\"\"],[\"2026-03-17\",\"school_day\",\"\"],[\"2026-03-18\",\"school_day\",\"\"],[\"2026-03-19\",\"school_day\",\"\"],[\"2026-03-20\",\"school_day\",\"\"],[\"2026-03-21\",\"no_school\",\"\"],[\"2026-03-22\",\"no_school\",\"\"],[\"2026-03-23\",\"school_day\",\"\"],[\"2026-03-24\",\"school_day\",\"\"],[\"2026-03-25\",\"school_day\",\"\"],[\"2026-03-26\",\"school_day\",\"\"],[\"2026-03-27\",\"school_day\",\"\"],[\"2026-03-28\",\"no_school\",\"\"],[\"2026-03-29\",\"no_school\",\"\"],[\"2026-03-30\",\"school_day\",\"\"],[\"2026-03-31\",\"school_day\",\"\"],[\"2026-04-01\",\"school_day\",\"\"],[\"2026-04-02\",\"holiday\",\"Nao letivo (sem nome no documento)\"],[\"2026-04-03\",\"holiday\",\"Sexta Santa\"],[\"2026-04-04\",\"no_school\",\"\"],[\"2026-04-05\",\"no_school\",\"\"],[\"2026-04-06\",\"school_day\",\"\"],[\"2026-04-07\",\"school_day\",\"\"],[\"2026-04-08\",\"school_day\",\"\"],[\"2026-04-09\",\"school_day\",\"\"],[\"2026-04-10\",\"school_day\",\"\"],[\"2026-04-11\",\"school_day\",\"Sabado letivo\"],[\"2026-04-12\",\"no_school\",\"\"],[\"2026-04-13\",\"school_day\",\"\"],[\"2026-04-14\",\"school_day\",\"\"],[\"2026-04-15\",\"school_day\",\"\"],[\"2026-04-16\",\"school_day\",\"\"],[\"2026-04-17\",\"school_day\",\"\"],[\"2026-04-18\",\"no_school\",\"\"],[\"2026-04-19\",\"no_school\",\"\"],[\"2026-04-20\",\"school_day\",\"\"],[\"2026-04-21\",\"holiday\",\"Tiradentes\"],[\"2026-04-22\",\"school_day\",\"\"],[\"2026-04-23\",\"school_day\",\"\"],[\"2026-04-24\",\"school_day\",\"\"],[\"2026-04-25\",\"no_school\",\"\"],[\"2026-04-26\",\"no_school\",\"\"],[\"2026-04-27\",\"school_day\",\"\"],[\"2026-04-28\",\"school_day\",\"\"],[\"2026-04-29\",\"school_day\",\"\"],[\"2026-04-30\",\"school_day\",\"\"],[\"2026-05-01\",\"holiday\",\"Feriado nacional\"],[\"2026-05-02\",\"no_school\",\"\"],[\"2026-05-03\",\"no_school\",\"\"],[\"2026-05-04\",\"school_day\",\"\"],[\"2026-05-05\",\"school_day\",\"\"],[\"2026-05-06\",\"school_day\",\"\"],[\"2026-05-07\",\"school_day\",\"\"],[\"2026-05-08\",\"school_day\",\"\"],[\"2026-05-09\",\"no_school\",\"\"],[\"2026-05-10\",\"no_school\",\"\"],[\"2026-05-11\",\"school_day\",\"\"],[\"2026-05-12\",\"school_day\",\"\"],[\"2026-05-13\",\"school_day\",\"\"],[\"2026-05-14\",\"school_day\",\"\"],[\"2026-05-15\",\"school_day\",\"\"],[\"2026-05-16\",\"school_day\",\"Sabado letivo\"],[\"2026-05-17\",\"no_school\",\"\"],[\"2026-05-18\",\"school_day\",\"\"],[\"2026-05-19\",\"school_day\",\"\"],[\"2026-05-20\",\"school_day\",\"\"],[\"2026-05-21\",\"school_day\",\"\"],[\"2026-05-22\",\"school_day\",\"\"],[\"2026-05-23\",\"no_school\",\"\"],[\"2026-05-24\",\"no_school\",\"\"],[\"2026-05-25\",\"school_day\",\"\"],[\"2026-05-26\",\"school_day\",\"\"],[\"2026-05-27\",\"school_day\",\"\"],[\"2026-05-28\",\"school_day\",\"\"],[\"2026-05-29\",\"school_day\",\"\"],[\"2026-05-30\",\"no_school\",\"\"],[\"2026-05-31\",\"holiday\",\"Feriado municipal\"],[\"2026-06-01\",\"school_day\",\"\"],[\"2026-06-02\",\"school_day\",\"\"],[\"2026-06-03\",\"school_day\",\"\"],[\"2026-06-04\",\"holiday\",\"Corpus Christi\"],[\"2026-06-05\",\"school_day\",\"\"],[\"2026-06-06\",\"no_school\",\"\"],[\"2026-06-07\",\"no_school\",\"\"],[\"2026-06-08\",\"school_day\",\"\"],[\"2026-06-09\",\"school_day\",\"\"],[\"2026-06-10\",\"school_day\",\"\"],[\"2026-06-11\",\"school_day\",\"\"],[\"2026-06-12\",\"school_day\",\"\"],[\"2026-06-13\",\"school_day\",\"Sabado letivo\"],[\"2026-06-14\",\"no_school\",\"\"],[\"2026-06-15\",\"school_day\",\"\"],[\"2026-06-16\",\"school_day\",\"\"],[\"2026-06-17\",\"school_day\",\"\"],[\"2026-06-18\",\"school_day\",\"\"],[\"2026-06-19\",\"school_day\",\"\"],[\"2026-06-20\",\"no_school\",\"\"],[\"2026-06-21\",\"no_school\",\"\"],[\"2026-06-22\",\"school_day\",\"\"],[\"2026-06-23\",\"school_day\",\"\"],[\"2026-06-24\",\"holiday\",\"Feriado municipal\"],[\"2026-06-25\",\"school_day\",\"\"],[\"2026-06-26\",\"school_day\",\"\"],[\"2026-06-27\",\"no_school\",\"\"],[\"2026-06-28\",\"no_school\",\"\"],[\"2026-06-29\",\"holiday\",\"Feriado municipal\"],[\"2026-06-30\",\"school_day\",\"\"],[\"2026-07-01\",\"school_day\",\"\"],[\"2026-07-02\",\"school_day\",\"\"],[\"2026-07-03\",\"school_day\",\"\"],[\"2026-07-04\",\"no_school\",\"\"],[\"2026-07-05\",\"no_school\",\"\"],[\"2026-07-06\",\"recess\",\"Recesso escolar\"],[\"2026-07-07\",\"recess\",\"Recesso escolar\"],[\"2026-07-08\",\"recess\",\"Recesso escolar\"],[\"2026-07-09\",\"recess\",\"Recesso escolar\"],[\"2026-07-10\",\"recess\",\"Recesso escolar\"],[\"2026-07-11\",\"no_school\",\"\"],[\"2026-07-12\",\"no_school\",\"\"],[\"2026-07-13\",\"recess\",\"Recesso escolar\"],[\"2026-07-14\",\"recess\",\"Recesso escolar\"],[\"2026-07-15\",\"recess\",\"Recesso escolar\"],[\"2026-07-16\",\"recess\",\"Recesso escolar\"],[\"2026-07-17\",\"recess\",\"Recesso escolar\"],[\"2026-07-18\",\"no_school\",\"\"],[\"2026-07-19\",\"no_school\",\"\"],[\"2026-07-20\",\"school_day\",\"\"],[\"2026-07-21\",\"school_day\",\"\"],[\"2026-07-22\",\"school_day\",\"\"],[\"2026-07-23\",\"school_day\",\"\"],[\"2026-07-24\",\"school_day\",\"\"],[\"2026-07-25\",\"no_school\",\"\"],[\"2026-07-26\",\"no_school\",\"\"],[\"2026-07-27\",\"school_day\",\"\"],[\"2026-07-28\",\"school_day\",\"\"],[\"2026-07-29\",\"school_day\",\"\"],[\"2026-07-30\",\"school_day\",\"\"],[\"2026-07-31\",\"school_day\",\"\"],[\"2026-08-01\",\"no_school\",\"\"],[\"2026-08-02\",\"no_school\",\"\"],[\"2026-08-03\",\"school_day\",\"\"],[\"2026-08-04\",\"school_day\",\"\"],[\"2026-08-05\",\"school_day\",\"\"],[\"2026-08-06\",\"school_day\",\"\"],[\"2026-08-07\",\"school_day\",\"\"],[\"2026-08-08\",\"no_school\",\"\"],[\"2026-08-09\",\"no_school\",\"\"],[\"2026-08-10\",\"school_day\",\"\"],[\"2026-08-11\",\"school_day\",\"\"],[\"2026-08-12\",\"school_day\",\"\"],[\"2026-08-13\",\"school_day\",\"\"],[\"2026-08-14\",\"school_day\",\"\"],[\"2026-08-15\",\"school_day\",\"Sabado letivo\"],[\"2026-08-16\",\"no_school\",\"\"],[\"2026-08-17\",\"school_day\",\"\"],[\"2026-08-18\",\"school_day\",\"\"],[\"2026-08-19\",\"school_day\",\"\"],[\"2026-08-20\",\"school_day\",\"\"],[\"2026-08-21\",\"school_day\",\"\"],[\"2026-08-22\",\"no_school\",\"\"],[\"2026-08-23\",\"no_school\",\"\"],[\"2026-08-24\",\"school_day\",\"\"],[\"2026-08-25\",\"school_day\",\"\"],[\"2026-08-26\",\"school_day\",\"\"],[\"2026-08-27\",\"school_day\",\"\"],[\"2026-08-28\",\"school_day\",\"\"],[\"2026-08-29\",\"no_school\",\"\"],[\"2026-08-30\",\"no_school\",\"\"],[\"2026-08-31\",\"school_day\",\"\"],[\"2026-09-01\",\"school_day\",\"\"],[\"2026-09-02\",\"school_day\",\"\"],[\"2026-09-03\",\"school_day\",\"\"],[\"2026-09-04\",\"school_day\",\"\"],[\"2026-09-05\",\"no_school\",\"\"],[\"2026-09-06\",\"no_school\",\"\"],[\"2026-09-07\",\"holiday\",\"Feriado nacional\"],[\"2026-09-08\",\"school_day\",\"\"],[\"2026-09-09\",\"school_day\",\"\"],[\"2026-09-10\",\"school_day\",\"\"],[\"2026-09-11\",\"school_day\",\"\"],[\"2026-09-12\",\"school_day\",\"Sabado letivo\"],[\"2026-09-13\",\"no_school\",\"\"],[\"2026-09-14\",\"school_day\",\"\"],[\"2026-09-15\",\"school_day\",\"\"],[\"2026-09-16\",\"holiday\",\"Feriado estadual\"],[\"2026-09-17\",\"school_day\",\"\"],[\"2026-09-18\",\"school_day\",\"\"],[\"2026-09-19\",\"no_school\",\"\"],[\"2026-09-20\",\"no_school\",\"\"],[\"2026-09-21\",\"school_day\",\"\"],[\"2026-09-22\",\"school_day\",\"\"],[\"2026-09-23\",\"school_day\",\"\"],[\"2026-09-24\",\"school_day\",\"\"],[\"2026-09-25\",\"school_day\",\"\"],[\"2026-09-26\",\"no_school\",\"\"],[\"2026-09-27\",\"no_school\",\"\"],[\"2026-09-28\",\"school_day\",\"\"],[\"2026-09-29\",\"school_day\",\"\"],[\"2026-09-30\",\"school_day\",\"\"],[\"2026-10-01\",\"school_day\",\"\"],[\"2026-10-02\",\"school_day\",\"\"],[\"2026-10-03\",\"no_school\",\"\"],[\"2026-10-04\",\"no_school\",\"\"],[\"2026-10-05\",\"school_day\",\"\"],[\"2026-10-06\",\"school_day\",\"\"],[\"2026-10-07\",\"school_day\",\"\"],[\"2026-10-08\",\"school_day\",\"\"],[\"2026-10-09\",\"school_day\",\"\"],[\"2026-10-10\",\"school_day\",\"Sabado letivo\"],[\"2026-10-11\",\"no_school\",\"\"],[\"2026-10-12\",\"holiday\",\"N. S. Aparecida\"],[\"2026-10-13\",\"school_day\",\"\"],[\"2026-10-14\",\"school_day\",\"\"],[\"2026-10-15\",\"holiday\",\"Professor\"],[\"2026-10-16\",\"school_day\",\"\"],[\"2026-10-17\",\"no_school\",\"\"],[\"2026-10-18\",\"no_school\",\"\"],[\"2026-10-19\",\"school_day\",\"\"],[\"2026-10-20\",\"school_day\",\"\"],[\"2026-10-21\",\"school_day\",\"\"],[\"2026-10-22\",\"school_day\",\"\"],[\"2026-10-23\",\"school_day\",\"\"],[\"2026-10-24\",\"no_school\",\"\"],[\"2026-10-25\",\"no_school\",\"\"],[\"2026-10-26\",\"school_day\",\"\"],[\"2026-10-27\",\"school_day\",\"\"],[\"2026-10-28\",\"holiday\",\"Dia do Servidor Publico\"],[\"2026-10-29\",\"school_day\",\"\"],[\"2026-10-30\",\"school_day\",\"\"],[\"2026-10-31\",\"no_school\",\"\"],[\"2026-11-01\",\"no_school\",\"\"],[\"2026-11-02\",\"holiday\",\"Finados\"],[\"2026-11-03\",\"school_day\",\"\"],[\"2026-11-04\",\"school_day\",\"\"],[\"2026-11-05\",\"school_day\",\"\"],[\"2026-11-06\",\"school_day\",\"\"],[\"2026-11-07\",\"no_school\",\"\"],[\"2026-11-08\",\"no_school\",\"\"],[\"2026-11-09\",\"school_day\",\"\"],[\"2026-11-10\",\"school_day\",\"\"],[\"2026-11-11\",\"school_day\",\"\"],[\"2026-11-12\",\"school_day\",\"\"],[\"2026-11-13\",\"school_day\",\"\"],[\"2026-11-14\",\"school_day\",\"Sabado letivo\"],[\"2026-11-15\",\"no_school\",\"\"],[\"2026-11-16\",\"school_day\",\"\"],[\"2026-11-17\",\"school_day\",\"\"],[\"2026-11-18\",\"school_day\",\"\"],[\"2026-11-19\",\"school_day\",\"\"],[\"2026-11-20\",\"holiday\",\"Consciencia Negra\"],[\"2026-11-21\",\"no_school\",\"\"],[\"2026-11-22\",\"no_school\",\"\"],[\"2026-11-23\",\"school_day\",\"\"],[\"2026-11-24\",\"school_day\",\"\"],[\"2026-11-25\",\"school_day\",\"\"],[\"2026-11-26\",\"school_day\",\"\"],[\"2026-11-27\",\"school_day\",\"\"],[\"2026-11-28\",\"no_school\",\"\"],[\"2026-11-29\",\"no_school\",\"\"],[\"2026-11-30\",\"holiday\",\"Dia do Evangelico\"],[\"2026-12-01\",\"school_day\",\"\"],[\"2026-12-02\",\"school_day\",\"\"],[\"2026-12-03\",\"school_day\",\"\"],[\"2026-12-04\",\"school_day\",\"\"],[\"2026-12-05\",\"no_school\",\"\"],[\"2026-12-06\",\"no_school\",\"\"],[\"2026-12-07\",\"school_day\",\"\"],[\"2026-12-08\",\"holiday\",\"N. S. da Conceicao\"],[\"2026-12-09\",\"school_day\",\"\"],[\"2026-12-10\",\"school_day\",\"\"],[\"2026-12-11\",\"school_day\",\"\"],[\"2026-12-12\",\"no_school\",\"\"],[\"2026-12-13\",\"no_school\",\"\"],[\"2026-12-14\",\"school_day\",\"\"],[\"2026-12-15\",\"school_day\",\"\"],[\"2026-12-16\",\"school_day\",\"\"],[\"2026-12-17\",\"school_day\",\"\"],[\"2026-12-18\",\"school_day\",\"\"],[\"2026-12-19\",\"no_school\",\"\"],[\"2026-12-20\",\"no_school\",\"\"],[\"2026-12-21\",\"recovery\",\"Recuperacao final\"],[\"2026-12-22\",\"recovery\",\"Recuperacao final\"],[\"2026-12-23\",\"recovery\",\"Recuperacao final\"],[\"2026-12-24\",\"no_school\",\"\"],[\"2026-12-25\",\"holiday\",\"Natal\"],[\"2026-12-26\",\"no_school\",\"\"],[\"2026-12-27\",\"no_school\",\"\"],[\"2026-12-28\",\"no_school\",\"\"],[\"2026-12-29\",\"no_school\",\"\"],[\"2026-12-30\",\"no_school\",\"\"],[\"2026-12-31\",\"no_school\",\"\"]]",
+          0
+        ],
+        "detalhe": {
+          "nota": "o parser e o mesmo que o preflight usa"
+        }
+      },
+      {
+        "nome": "o_parser_rele_as_12_metas_e_devolve_exactamente_o_derivado",
+        "verde": true,
+        "obtido": [
+          12,
+          "[[2026,1,0],[2026,2,12],[2026,3,23],[2026,4,20],[2026,5,21],[2026,6,20],[2026,7,13],[2026,8,22],[2026,9,21],[2026,10,20],[2026,11,19],[2026,12,13]]"
+        ],
+        "esperado": [
+          12,
+          "[[2026,1,0],[2026,2,12],[2026,3,23],[2026,4,20],[2026,5,21],[2026,6,20],[2026,7,13],[2026,8,22],[2026,9,21],[2026,10,20],[2026,11,19],[2026,12,13]]"
+        ],
+        "detalhe": {}
+      },
+      {
+        "nome": "a_reversao_apaga_exactamente_as_tres_mesas_do_mesmo_ano",
+        "verde": true,
+        "obtido": [
+          "[[\"bfr_school_calendar_days\",2026],[\"bfr_school_calendar_month_targets\",2026],[\"bfr_school_shift_settings\",2026]]"
+        ],
+        "esperado": [
+          "[[\"bfr_school_calendar_days\",2026],[\"bfr_school_calendar_month_targets\",2026],[\"bfr_school_shift_settings\",2026]]"
+        ],
+        "detalhe": {}
+      },
+      {
+        "nome": "o_aviso_de_nao_aplicar_esta_nas_duas_pecas",
+        "verde": true,
+        "obtido": [
+          true,
+          true
+        ],
+        "esperado": [
+          true,
+          true
+        ],
+        "detalhe": {}
+      },
+      {
+        "nome": "a_derivadora_de_dia_de_semana_tem_fixture_nos_dois_sentidos",
+        "verde": true,
+        "obtido": [
+          6,
+          1,
+          4,
+          4
+        ],
+        "esperado": [
+          6,
+          1,
+          4,
+          4
+        ],
+        "detalhe": {
+          "FIX_WEEK": [
+            [
+              "2026-03-14",
+              6
+            ],
+            [
+              "2026-02-09",
+              1
+            ],
+            [
+              "2026-12-31",
+              4
+            ],
+            [
+              "2026-01-01",
+              4
+            ]
+          ],
+          "nota": "2026-01-01 e quinta (dow 4)"
+        }
+      },
+      {
+        "nome": "a_predicada_dentro_do_periodo_tem_fixture_nos_dois_sentidos",
+        "verde": true,
+        "obtido": [
+          false,
+          true,
+          true,
+          false
+        ],
+        "esperado": [
+          false,
+          true,
+          true,
+          false
+        ],
+        "detalhe": {
+          "FIX_DENTRO": [
+            [
+              "2026-02-08",
+              false
+            ],
+            [
+              "2026-02-09",
+              true
+            ],
+            [
+              "2026-12-18",
+              true
+            ],
+            [
+              "2026-12-19",
+              false
+            ]
+          ]
+        }
+      }
+    ]
+  },
+  "veredito": "P144_RM52_CONTEUDO_GERADO 19/0 · dias 365 · metas 12 · turnos 1 · status no_school=127/school_day=204/recess=13/holiday=18/recovery=3 · soma_metas 204 · 14 ms"
+}

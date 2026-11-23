@@ -116,11 +116,21 @@ outro script. As três dão 261 (seg–sex) e 313 (seg–sáb). O CHECK
 
 Feriados e recesso **não estão descontados** — é a entrada §9-D1, não um número que se invente.
 
+**Correção datada 23/11 (D1 fechada):** os `expected_school_days` da semente **não** são os 261/313
+desta tabela. Com o documento oficial na mão, as metas passam a ser os rótulos mensais «DIAS LETIVOS»
+do próprio documento: jan 0 · fev 12 · mar 23 · abr 20 · mai 21 · jun 20 · jul 13 · ago 22 · set 21 ·
+out 20 · nov 19 · dez 13, soma **204 = «204 DIAS LETIVOS!!» declarado**. Os 261 (seg–sex) e 313
+(seg–sáb) continuam a ser os dois regimes medidos do turno — o que mudou foi a fonte das metas.
+A conferência mensal fecha todos os meses (fev 12 = 15 úteis − 3 Carnaval; out 20 = 22 − 3 feriados +
+1 sábado; dez 13 = 14 úteis − 1 feriado, com a recuperação 21–23/12 fora do período letivo).
+
 **A contagem fixa de 365 não é uma cobertura.** Medido: 2026 e 2027 têm 365 datas; 2028 e 2032 têm
 366 (`fevereiro = 29`). Sem tocar no produto, um calendário de 2028 nunca fica verde. E 365 linhas
 não garante 365 datas: a contagem aceita datas repetidas. As duas linhas de turnos e as 12 de metas
 **não** entram na contagem de 365, mas a semente completa é `365 + 2 + 12 = 379` linhas
-(`aritmetica.linhas_de_semente`).
+(`aritmetica.linhas_de_semente`). **Correção datada 23/11:** a semente real da candidata p144 tem
+`365 + 1 + 12 = 378` linhas — só o turno `matutino` (o `vespertino` não tem horas medidas e fica por
+semear, §6).
 
 ## 4. As quatro ausências, cada uma com o OK que exige
 
@@ -216,9 +226,17 @@ canal de leitura da própria prova de browser.
   `dias = quarta,quinta,segunda,sexta,terca` — os cinco dias de semana, por ordem do `string_agg`,
   sem sábado (mesas `bfr_schedule_versions` / `bfr_schedule_entries`, lidas pelo artefacto do estado
   em `catalogo.grade_tempos`).
+  **Correção datada 23/11:** a candidata p144 semeia **1 linha** — só `matutino` com as horas da
+  grade medida acima (`07:00:00`/`07:00:00`/`11:30:00`, weekdays `[1..5]`, graça 0). O `vespertino`
+  **não tem horas medidas** em lado nenhum e fica por semear; e `confirmed_at` nasce **NULL** na
+  semente: confirmar é o ato da função A1 (ausente), não da semente — a linha de §2.2 descreve o
+  estado pós-A1, não o estado pós-semente.
 - `bfr_school_calendar_month_targets`: 12 linhas com os valores de §3 **menos** D1. O painel lê
   `school_year,month,expected_school_days` (`front_pede`: 1 chamada, 0 escritas, sem `on_conflict`) —
-  hoje nenhuma das três mesas tem linhas para essa leitura devolver.
+  hoje nenhuma das três mesas tem linhas para essa leitura devolver. **Correção datada 23/11:** com
+  D1 fechada, as 12 linhas são os rótulos mensais do documento (jan 0 · fev 12 · mar 23 · abr 20 ·
+  mai 21 · jun 20 · jul 13 · ago 22 · set 21 · out 20 · nov 19 · dez 13, soma 204), conforme a
+  correção datada de §3 — não os 261/313 seg–sex.
 
 ## 7. A função de confirmação (A1): forma proposta, ainda não escrita
 
@@ -279,10 +297,10 @@ persiste depois da criação é cache, não ausência. Por isso o critério de f
 
 | # | pergunta | consequência medida de não responder | quem responde |
 |---|---|---|---|
-| D1 | Feriados municipais e recesso de 2026 (datas com `calendar_status`) | os 261 dias seg–sex ficam como se não houvesse férias; `expected_school_days` passa a descrever o calendário escolar teórico, não a realidade | Secretaria Municipal (dados, não código) |
-| D2 | Quem confirma: mantém `coordinator`/`director`/`developer`, entra `secretary`? | hoje `secretary` não tem política de escrita em nenhuma das três mesas: gravar calendário pela Secretaria Escolar é rejeitado pela policy | decisão de produto |
-| D3 | Letivo aos sábados? | as duas metas existem medidas (261 vs 313); escolher sem medir era o erro que a régua deste ciclo evita. Também decide o `active_weekdays` de cada turno | decisão de produto |
-| D4 | Calendário por escola ou da rede? | nenhuma das três mesas tem `school_id`; com `municipality_id` a `NULL` em 6/6 escolas, etiquetar agora troca «lê a rede toda» por «não lê nada» (PEN-41) | decisão de produto, depois da etiquetagem |
+| D1 | Feriados municipais e recesso de 2026 (datas com `calendar_status`) | os 261 dias seg–sex ficam como se não houvesse férias; `expected_school_days` passa a descrever o calendário escolar teórico, não a realidade | Secretaria Municipal (dados, não código) — **23/11, fechada por medida**: 4 imagens do CALENDÁRIO LETIVO 2026 deram os 11 rótulos mensais «DIAS LETIVOS» (jan 0 · fev 12 · mar 23 · abr 20 · mai 21 · jun 20 · jul 13 · ago 22 · set 21 · out 20 · nov 19 · dez 13), soma **204 = declarado**; respostas do dono: Carnaval 16–18/02, 02/04 não letivo, 15/10 e 28/10 feriados (o documento contradisse a resposta anterior «letivos»), 8 sábados letivos, etapas I–IV, recuperação 21–23/12; conferência: 225 úteis − 16 feriados − 3 Carnaval − 10 recesso = 196, + 8 sábados = **204 EXATO**; registado em `evidence/p151-d1-extracao-23-11.txt` e materializado na candidata p144 (23/11) |
+| D2 | Quem confirma: mantém `coordinator`/`director`/`developer`, entra `secretary`? | hoje `secretary` não tem política de escrita em nenhuma das três mesas: gravar calendário pela Secretaria Escolar é rejeitado pela policy | decisão de produto — 23/11: **manter os 3 papéis**; `secretary` fica de fora, 0 escrita |
+| D3 | Letivo aos sábados? | as duas metas existem medidas (261 vs 313); escolher sem medir era o erro que a régua deste ciclo evita. Também decide o `active_weekdays` de cada turno | decisão de produto — 23/11: **com sábados letivos pontuais** (o dono revisou a resposta «seg–sex»: «sim, alguns sábados»; o documento oficial lista sábados letivos) |
+| D4 | Calendário por escola ou da rede? | nenhuma das três mesas tem `school_id`; com `municipality_id` a `NULL` em 6/6 escolas, etiquetar agora troca «lê a rede toda» por «não lê nada» (PEN-41) | decisão de produto — 23/11: **da rede**; por-escola fica para depois da etiquetagem (PEN-41) |
 
 ## 10. Fronteiras — o que este documento não prova
 
