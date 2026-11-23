@@ -1,0 +1,65 @@
+{
+  "peca": "scripts/p136-varre-cifras-do-ledger-no-ar.mjs",
+  "em": "2026-11-23T00:28:44.293Z",
+  "emissor_bytes": 8567,
+  "emissor_md5": "3e8a7e0c43bc4b95b23ea39ee0409ec5",
+  "estado": "MEDIDO",
+  "predica_lida_do_produtor": "/new MutationObserver/g",
+  "pergunta": "quantos MutationObserver ha no ar de hoje, e onde cada um assenta — e a cifra do ledger (56, de 18/11 sobre a v134) ainda bate?",
+  "identidade": {
+    "diario": "audit-publicacao-v142.json",
+    "versao_registada": 142,
+    "url_lida_do_diario": "https://bfr-conecta.turmaroboticabfr.workers.dev",
+    "status": 200,
+    "bytes_apanhados": 3556664,
+    "md5_apanhado": "0e22e78fe1e0ce929ec4717f86365ad9",
+    "bytes_registrados_no_diario": 3556664,
+    "md5_registrado_no_diario": "0e22e78fe1e0ce929ec4717f86365ad9",
+    "byte_identico_ao_ar_registrado": true
+  },
+  "controlo_da_regua": {
+    "ficheiro": "bfr-candidata-v134-sidebar-escondida/index.html",
+    "existe": true,
+    "contagem_da_minha_predica": 56,
+    "contagem_registrada_em_18_11": 56,
+    "reproduz_a_corrida_velha": true
+  },
+  "janela_observe": 400,
+  "pen18": {
+    "no_ar_hoje": 56,
+    "no_ar_registrado_em_18_11": 56,
+    "delta": 0,
+    "sobre_document_body": 21,
+    "sem_observe_na_janela": 1,
+    "por_alvo": {
+      "target": 1,
+      "document.body": 21,
+      "admin": 1,
+      "document.getElementById": 8,
+      "document.documentElement": 3,
+      "SEM_OBSERVE_NA_JANELA": 1,
+      "appShell": 2,
+      "overlay": 1,
+      "parentView": 2,
+      "view": 4,
+      "shell": 3,
+      "raiz": 1,
+      "app": 4,
+      "menu": 1,
+      "document.head": 1,
+      "reinsertTarget": 1,
+      "root": 1
+    }
+  },
+  "o_que_prova": [
+    "os bytes contados sao os do ar registado no diario (md5 e comprimento conferidos antes de contar)",
+    "a contagem de `new MutationObserver` no ar de hoje, com a mesma predica lida da peca de 18/11",
+    "o alvo do `.observe(` seguinte a cada construtor, dentro duma janela declarada"
+  ],
+  "o_que_NAO_prova": [
+    "que o numero de construtores seja o numero de ouvintes activos em execucao — isto e texto estatico, nao runtime",
+    "que a sub-contagem de 12/11 («22 sobre body») seja comparavel: ela nao tinha regua escrita, e a janela de hoje e uma escolha minha declarada aqui",
+    "que nenhuma das cifras de PEN-19/26/29/30/32/33 (outros marcadores da peca de 18/11) se tenha movido — esta peca so conta a PEN-18",
+    "que o ar corresponda a candidata em disco se o portao de identidade falhar — nesse caso a peca aborta antes de contar"
+  ]
+}
