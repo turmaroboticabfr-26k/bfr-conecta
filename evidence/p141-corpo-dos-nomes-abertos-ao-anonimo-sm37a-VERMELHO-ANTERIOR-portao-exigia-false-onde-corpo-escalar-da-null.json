@@ -1,0 +1,412 @@
+{
+  "peca": "scripts/p141-corpo-dos-nomes-abertos-ao-anonimo.mjs",
+  "em": "2026-11-23T03:11:50.205Z",
+  "duracao_ms": 6300,
+  "emissor_bytes": 19539,
+  "emissor_md5": "340d3eae9425a1923e9e0846e262d131",
+  "pergunta": "para cada nome que o p139 mediu com EXECUTE a anon, o corpo da propria funcao contem um cheque de sessao e uma recusa, e que resposta HTTP da o ar a quem nao tem sessao quando o corpo e de leitura e o identificador e fabricado?",
+  "metodo": "SELECTs de catalogo com as colunas de graus do preflight da PEN-48 e o corpo recortado pela `corpoDef` dele; a escrita no corpo mede-se pela `escreveNoCorpo` da sonda de exposicao anonima; as duas predicados e o detector de identificador sao copiados por texto e compilados em contexto isolado; a chamada anonima so acontece nos nomes que a regua das tres provas aceita, com uuid de `gen_random_uuid()`; a chave publishable e lida dos bytes do ar e nunca escrita no registo.",
+  "fonte_dos_nomes": {
+    "ficheiro": "evidence/p139-acls-dos-nomes-do-ar-contra-o-alvo-sm37a.json",
+    "abertos_ao_anonimo": [
+      "bfr_get_student_photo_path",
+      "bfr_school_set_municipality"
+    ]
+  },
+  "graus_e_corpo": [
+    {
+      "nome": "bfr_get_student_photo_path",
+      "oid": "24994",
+      "assinatura": "target_student_id uuid",
+      "resultado": "text",
+      "definer": "true",
+      "vol": "s",
+      "anon_pode": true,
+      "authenticated_pode": true,
+      "entrada_anon_no_acl": true,
+      "corpo_bytes": 346,
+      "escreve_no_corpo": false,
+      "papeis_no_acl": [
+        "anon",
+        "authenticated",
+        "postgres",
+        "service_role"
+      ]
+    },
+    {
+      "nome": "bfr_school_set_municipality",
+      "oid": "32881",
+      "assinatura": "p_school uuid, p_municipality uuid, p_reason text",
+      "resultado": "void",
+      "definer": "true",
+      "vol": "v",
+      "anon_pode": true,
+      "authenticated_pode": true,
+      "entrada_anon_no_acl": true,
+      "corpo_bytes": 1238,
+      "escreve_no_corpo": true,
+      "papeis_no_acl": [
+        "anon",
+        "authenticated",
+        "postgres",
+        "service_role"
+      ]
+    }
+  ],
+  "corpos_cheques": [
+    {
+      "nome": "bfr_get_student_photo_path",
+      "corpo_bytes": 346,
+      "cheque_de_sessao": {
+        "auth_uid": 1,
+        "auth_jwt": 0,
+        "current_setting_jwt": 0,
+        "predicado_de_sessao_publico": 0,
+        "current_role": 0,
+        "session_user": 0
+      },
+      "total_cheques": 1,
+      "recusa": {
+        "raise_exception": 0,
+        "return_null": 0,
+        "return_false": 0,
+        "role_does_not_exist": 0
+      },
+      "total_recusas": 0,
+      "primeiro_cheque": {
+        "padrao": "auth_uid",
+        "em": 273,
+        "trecho": "udents link where link.student_id = target_student_id and link.profile_id = auth.uid() ) order by profile.updated_at desc nulls last limit 1"
+      }
+    },
+    {
+      "nome": "bfr_school_set_municipality",
+      "corpo_bytes": 1238,
+      "cheque_de_sessao": {
+        "auth_uid": 1,
+        "auth_jwt": 0,
+        "current_setting_jwt": 0,
+        "predicado_de_sessao_publico": 1,
+        "current_role": 0,
+        "session_user": 0
+      },
+      "total_cheques": 2,
+      "recusa": {
+        "raise_exception": 5,
+        "return_null": 0,
+        "return_false": 0,
+        "role_does_not_exist": 0
+      },
+      "total_recusas": 5,
+      "primeiro_cheque": {
+        "padrao": "auth_uid",
+        "em": 1064,
+        "trecho": "RT INTO public.bfr_municipal_audit (actor, action, entity, entity_id, detail) VALUES (auth.uid(), 'school_municipality_set', 'schools', p_school::text, jsonb_build_object('municipio_id', p_municipality, 'motivo', l"
+      }
+    }
+  ],
+  "familia_de_padroes": {
+    "sessao": [
+      "auth_uid",
+      "auth_jwt",
+      "current_setting_jwt",
+      "predicado_de_sessao_publico",
+      "current_role",
+      "session_user"
+    ],
+    "recusa": [
+      "raise_exception",
+      "return_null",
+      "return_false",
+      "role_does_not_exist"
+    ]
+  },
+  "chamada_anonima": {
+    "permitidas_para": [
+      "bfr_get_student_photo_path"
+    ],
+    "recusadas_por_a_regua": [
+      "bfr_school_set_municipality(vol=v,escreve_no_corpo=true,args=p_school uuid, p_municipality uuid, p_reason text)"
+    ],
+    "resultados": [
+      {
+        "nome": "bfr_get_student_photo_path",
+        "tentada": true,
+        "id_fabricado_md5": "f6066e115be73383b9265d0da87df9f1",
+        "status": 200,
+        "forma": "texto",
+        "code": null,
+        "bytes_resposta": 4,
+        "resposta_tem_uuid": null,
+        "resposta_tem_coluna_id": null,
+        "linhas": null
+      }
+    ],
+    "regua": "POST /rpc so com provolatile em (i,s), corpo sem escrita medida e uuid na assinatura; nenhuma funcao que escreve foi tocada"
+  },
+  "fixtures": {
+    "escrita_e_leitura": [
+      true,
+      false,
+      false,
+      true
+    ],
+    "corpo_def": [
+      "select 1",
+      ""
+    ],
+    "cheques": {
+      "com": 1,
+      "sem": 0
+    },
+    "regua_de_chamada": [
+      true,
+      false,
+      false
+    ],
+    "detector_de_identificador": [
+      true,
+      true,
+      false,
+      false
+    ]
+  },
+  "o_que_prova": "se o corpo de cada nome aberto ao anonimo contem cheques de sessao e recusas, por familia de padroes com os dois lados em fixture, e — nos nomes que a regua das tres provas aceita — que status, forma e presenca de identificadores chegaram a quem nao tem sessao com um uuid fabricado.",
+  "o_que_NAO_prova": "o que um identificador existente devolveria: um 200 com zero linhas dum id fabricado e compativel com um corpo que nao checa sessao, por isso a ausencia de dados nesta corrida nao e prova de fechamento. Nao prova nada sobre nomes que o p139 nao classificou como abertos ao anonimo, nem autoriza REVOKE, GRANT, DDL ou publicacao: cada um desses pede a sua frase literal.",
+  "portoes": {
+    "total": 10,
+    "falhas": 1,
+    "lista": [
+      {
+        "nome": "as_predicas_copiadas_disparam_nos_dois_lados_do_fixture",
+        "verde": true,
+        "obtido": [
+          [
+            true,
+            false,
+            false,
+            true
+          ],
+          [
+            "select 1",
+            ""
+          ]
+        ],
+        "esperado": [
+          [
+            true,
+            false,
+            false,
+            true
+          ],
+          [
+            "select 1",
+            ""
+          ]
+        ],
+        "detalhe": {
+          "ficheiros": [
+            "scripts/p73-pen48-preflight.mjs",
+            "scripts/p73-sonda-exposicao-anonima.mjs"
+          ],
+          "lidas": {
+            "corpoDef": "(t) => { const m = /AS\\s*(\\$[a-zA-Z0-9_]*\\$)([\\s\\S]*?)\\1/.exec(String(t)); return m ? m[2] : ''; }",
+            "escreveNoCorpo": "(corpo) => /\\b(INSERT\\s+INTO|UPDATE\\s+[a-z_]|DELETE\\s+FROM)\\b/i.test(corpo)",
+            "eLeitura": "(t) => /^\\s*(select|with)\\b/i.test(String(t))",
+            "contem_identificador": "(corpo) => { const txt = JSON.stringify(corpo); return { uuid: UUID_RE.test(txt), coluna_id: /\"(?:[a-z_]*_id|id|school_i"
+          }
+        }
+      },
+      {
+        "nome": "os_nomes_medidos_sao_os_abertos_ao_anonimo_no_p139",
+        "verde": true,
+        "obtido": [
+          [
+            "bfr_get_student_photo_path",
+            "bfr_school_set_municipality"
+          ],
+          2
+        ],
+        "esperado": [
+          [
+            "bfr_get_student_photo_path",
+            "bfr_school_set_municipality"
+          ],
+          2
+        ],
+        "detalhe": {
+          "do_artefacto": [
+            "bfr_get_student_photo_path",
+            "bfr_school_set_municipality"
+          ],
+          "no_catalogo": [
+            "bfr_get_student_photo_path",
+            "bfr_school_set_municipality"
+          ]
+        }
+      },
+      {
+        "nome": "cada_nome_medido_tem_corpo_lido_do_catalogo",
+        "verde": true,
+        "obtido": true,
+        "esperado": true,
+        "detalhe": [
+          {
+            "nome": "bfr_get_student_photo_path",
+            "corpo_bytes": 346,
+            "definer": "true",
+            "vol": "s"
+          },
+          {
+            "nome": "bfr_school_set_municipality",
+            "corpo_bytes": 1238,
+            "definer": "true",
+            "vol": "v"
+          }
+        ]
+      },
+      {
+        "nome": "a_familia_de_cheques_de_sessao_tem_os_dois_lados_no_fixture",
+        "verde": true,
+        "obtido": [
+          1,
+          0
+        ],
+        "esperado": [
+          1,
+          0
+        ],
+        "detalhe": {
+          "padroes": [
+            "auth_uid",
+            "auth_jwt",
+            "current_setting_jwt",
+            "predicado_de_sessao_publico",
+            "current_role",
+            "session_user"
+          ],
+          "com_cheque": 1,
+          "sem_cheque": 0
+        }
+      },
+      {
+        "nome": "a_regua_de_chamada_tem_os_tres_negativos_e_o_positivo_em_fixture",
+        "verde": true,
+        "obtido": [
+          true,
+          false,
+          false
+        ],
+        "esperado": [
+          true,
+          false,
+          false
+        ],
+        "detalhe": {
+          "positiva": "vol=s sem escrita com uuid",
+          "negativas": [
+            "vol=v e escreve",
+            "sem uuid na assinatura"
+          ]
+        }
+      },
+      {
+        "nome": "as_classes_de_chamada_imprimem_se_mesmo_quando_vazias",
+        "verde": true,
+        "obtido": [
+          2,
+          2
+        ],
+        "esperado": [
+          2,
+          2
+        ],
+        "detalhe": {
+          "chamaveis": [
+            "bfr_get_student_photo_path"
+          ],
+          "nao_chamados": [
+            "bfr_school_set_municipality(vol=v,escreve_no_corpo=true,args=p_school uuid, p_municipality uuid, p_reason text)"
+          ]
+        }
+      },
+      {
+        "nome": "toda_chamada_tentada_passa_as_tres_provas_de_leitura",
+        "verde": true,
+        "obtido": [
+          [
+            true,
+            true
+          ]
+        ],
+        "esperado": [
+          [
+            true,
+            true
+          ]
+        ],
+        "detalhe": {
+          "tentadas": [
+            {
+              "nome": "bfr_get_student_photo_path",
+              "tentada": true,
+              "skipped": null
+            }
+          ]
+        }
+      },
+      {
+        "nome": "o_detector_de_identificador_tem_positivo_e_negativo_em_fixture",
+        "verde": true,
+        "obtido": [
+          true,
+          true,
+          false,
+          false
+        ],
+        "esperado": [
+          true,
+          true,
+          false,
+          false
+        ],
+        "detalhe": {
+          "com_uuid_e_coluna_id": "mal",
+          "agregado_sem": "bem"
+        }
+      },
+      {
+        "nome": "nenhuma_resposta_anonima_devolve_identificador",
+        "verde": false,
+        "obtido": false,
+        "esperado": true,
+        "detalhe": [
+          {
+            "nome": "bfr_get_student_photo_path",
+            "status": 200,
+            "forma": "texto",
+            "uuid": null,
+            "coluna_id": null,
+            "linhas": null
+          }
+        ]
+      },
+      {
+        "nome": "a_guarda_de_leitura_aborta_antes_de_chegar_ao_banco",
+        "verde": true,
+        "obtido": [
+          true,
+          false
+        ],
+        "esperado": [
+          true,
+          false
+        ],
+        "detalhe": {
+          "mensagem": "REVOKE passado a q() na corrida"
+        }
+      }
+    ]
+  },
+  "veredito": "P141_VERMELHO_1"
+}

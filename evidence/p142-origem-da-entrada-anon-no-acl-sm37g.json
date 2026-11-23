@@ -1,0 +1,1312 @@
+{
+  "peca": "scripts/p142-origem-da-entrada-anon-no-acl.mjs",
+  "em": "2026-11-23T04:24:50.460Z",
+  "duracao_ms": 8436,
+  "emissor_bytes": 31326,
+  "emissor_md5": "fae425b55b54ad6023b2dcd55abfac8d",
+  "pergunta": "por que caminho o papel anon chega ao EXECUTE nas funcoes de public: entrada explicita na ACL, entrada PUBLIC, membros de papel, ou default privileges do catalogo — e as funcoes novas herdam a porta?",
+  "metodo": "SELECTs de catalogo (pg_default_acl com contagem propria, pg_proc desmontado por aclexplode) so com o predicado eLeitura lido do ficheiro do p139 e compilado em node:vm; censo e nomes abertos e linhas de graus lidos do registo do p139 evidence/p139-acls-dos-nomes-do-ar-contra-o-alvo-sm37g.json (pegada conferida por portao antes de contar); zero escrita e zero chamada a /rpc.",
+  "identidade_do_medido": {
+    "registo_ligado": "evidence/p139-acls-dos-nomes-do-ar-contra-o-alvo-sm37g.json",
+    "registo_bytes": 162118,
+    "registo_md5": "9c615cc3063e0ce5869d0189f55d1317",
+    "censo_do_p139": {
+      "total": 163,
+      "anon_pode": 19,
+      "anon_por_entrada": 15,
+      "acl_nula": 0
+    },
+    "cobertura_do_extract_do_p139": {
+      "linhas_no_texto": 126,
+      "linhas_extraidas": 126,
+      "por_grau": {
+        "ALL": 5,
+        "EXECUTE": 436
+      },
+      "familias": [
+        "ALL",
+        "EXECUTE"
+      ],
+      "ficheiros": [
+        "p73-pen38-ddl-candidata.sql",
+        "p73-pen39-ddl-candidata.sql",
+        "p73-pen41-ddl-candidata.sql",
+        "p73-pen42-ddl-candidata.sql",
+        "p73-pen43-ddl-candidata.sql",
+        "p73-pen48-ddl-candidata.sql",
+        "p74-pen44-ddl-candidata.sql"
+      ],
+      "unidade_de_linhas": "cabecas de declaracao de grau no texto despido de comentarios, nao linhas do ficheiro",
+      "unidade_de_por_grau": "pares declaracao x papel, depois do desdobrar da lista de papeis",
+      "pares_no_corpus": 441
+    },
+    "predicado_lido_da_fonte": "const eLeitura = (t) => /^\\s*(select|with)\\b/i.test(String(t));"
+  },
+  "nomes_em_causa": [
+    "bfr_get_student_photo_path",
+    "bfr_school_set_municipality"
+  ],
+  "particao_do_esquema": {
+    "total": 163,
+    "acl_nula": 0,
+    "anon_pode": 19,
+    "classe_barrado": 144,
+    "classe_anon_explicito": 15,
+    "classe_so_por_publico": 4,
+    "classe_por_membria": 0
+  },
+  "representacao_de_publico_na_base": {
+    "entradas_execute": 976,
+    "grantee_nulo": 0,
+    "grantee_zero": 14,
+    "grantee_papel": 962,
+    "papel_com_oid_zero": 0,
+    "papeis_de_que_anon_e_membro": 0,
+    "funcoes_com_publico_por_oid": 14,
+    "funcoes_com_publico_por_texto": 14
+  },
+  "rotas_de_contagem": {
+    "filtros_aclexplode": {
+      "total": 163,
+      "acl_nula": 0,
+      "anon_pode": 19,
+      "classe_barrado": 144,
+      "classe_anon_explicito": 15,
+      "classe_so_por_publico": 4,
+      "classe_por_membria": 0
+    },
+    "texto_da_acl": {
+      "por_texto_anon_explicito": 15,
+      "por_texto_so_por_publico": 4,
+      "por_texto_por_membria": 0,
+      "por_texto_anon_pode": 19,
+      "por_texto_acl_nula": 0,
+      "por_texto_total": 163
+    }
+  },
+  "nomes_por_classe": {
+    "anon_explicito": [
+      "bfr_audit_lesson_attendance_change",
+      "bfr_get_student_photo_path",
+      "bfr_prevent_duplicate_grade",
+      "bfr_psychology_schedule_guard",
+      "bfr_rls_director_manages_student",
+      "bfr_rls_is_developer",
+      "bfr_rls_session_role",
+      "bfr_school_set_municipality",
+      "bfr_specialized_audit_trigger",
+      "bfr_support_request_scope_guard",
+      "bfr_touch_updated_at",
+      "bfr_validate_lesson_attendance",
+      "enforce_bfr_avatar_uniform",
+      "schools_updated_at",
+      "sports_touch_updated_at"
+    ],
+    "so_por_publico": [
+      "bfr_collab_comment_notification_trigger",
+      "bfr_collab_member_notification_trigger",
+      "bfr_collab_task_notification_trigger",
+      "bfr_staff_audit_trigger"
+    ],
+    "por_membria": [],
+    "acl_nula": []
+  },
+  "linhas_das_classes": {
+    "so_por_publico": [
+      {
+        "nome": "bfr_collab_comment_notification_trigger",
+        "retorno": "trigger",
+        "definer": "true",
+        "anon_oid": false,
+        "publico_oid": true,
+        "papeis_com_execute": "service_role,postgres,PUBLIC,authenticated",
+        "outorgante": "postgres",
+        "acl_nula": false,
+        "anon_pode": true,
+        "papeis_com_execute_unicos": [
+          "PUBLIC",
+          "authenticated",
+          "postgres",
+          "service_role"
+        ]
+      },
+      {
+        "nome": "bfr_collab_member_notification_trigger",
+        "retorno": "trigger",
+        "definer": "true",
+        "anon_oid": false,
+        "publico_oid": true,
+        "papeis_com_execute": "authenticated,service_role,PUBLIC,postgres",
+        "outorgante": "postgres",
+        "acl_nula": false,
+        "anon_pode": true,
+        "papeis_com_execute_unicos": [
+          "PUBLIC",
+          "authenticated",
+          "postgres",
+          "service_role"
+        ]
+      },
+      {
+        "nome": "bfr_collab_task_notification_trigger",
+        "retorno": "trigger",
+        "definer": "true",
+        "anon_oid": false,
+        "publico_oid": true,
+        "papeis_com_execute": "PUBLIC,postgres,authenticated,service_role",
+        "outorgante": "postgres",
+        "acl_nula": false,
+        "anon_pode": true,
+        "papeis_com_execute_unicos": [
+          "PUBLIC",
+          "authenticated",
+          "postgres",
+          "service_role"
+        ]
+      },
+      {
+        "nome": "bfr_staff_audit_trigger",
+        "retorno": "trigger",
+        "definer": "true",
+        "anon_oid": false,
+        "publico_oid": true,
+        "papeis_com_execute": "service_role,postgres,PUBLIC,authenticated",
+        "outorgante": "postgres",
+        "acl_nula": false,
+        "anon_pode": true,
+        "papeis_com_execute_unicos": [
+          "PUBLIC",
+          "authenticated",
+          "postgres",
+          "service_role"
+        ]
+      }
+    ],
+    "por_membria": []
+  },
+  "default_privileges": {
+    "contagem_do_catalogo": {
+      "linhas": 27,
+      "do_tipo_funcao": 9,
+      "funcao_que_da_anon": 5
+    },
+    "linhas_lidas": 27,
+    "do_tipo_funcao": [
+      {
+        "papel": "postgres",
+        "acl": "{postgres=X/postgres,anon=X/postgres,authenticated=X/postgres,service_role=X/postgres}",
+        "da_execute_ao_anon": true
+      },
+      {
+        "papel": "postgres",
+        "acl": "{postgres=X/postgres,anon=X/postgres,authenticated=X/postgres,service_role=X/postgres}",
+        "da_execute_ao_anon": true
+      },
+      {
+        "papel": "supabase_admin",
+        "acl": "{postgres=X*/supabase_admin}",
+        "da_execute_ao_anon": false
+      },
+      {
+        "papel": "supabase_admin",
+        "acl": "{postgres=X/supabase_admin,dashboard_user=X/supabase_admin}",
+        "da_execute_ao_anon": false
+      },
+      {
+        "papel": "supabase_admin",
+        "acl": "{postgres=X/supabase_admin,anon=X/supabase_admin,authenticated=X/supabase_admin,service_role=X/supabase_admin}",
+        "da_execute_ao_anon": true
+      },
+      {
+        "papel": "supabase_admin",
+        "acl": "{postgres=X/supabase_admin,anon=X/supabase_admin,authenticated=X/supabase_admin,service_role=X/supabase_admin}",
+        "da_execute_ao_anon": true
+      },
+      {
+        "papel": "supabase_admin",
+        "acl": "{postgres=X*/supabase_admin}",
+        "da_execute_ao_anon": false
+      },
+      {
+        "papel": "supabase_admin",
+        "acl": "{postgres=X/supabase_admin,anon=X/supabase_admin,authenticated=X/supabase_admin,service_role=X/supabase_admin}",
+        "da_execute_ao_anon": true
+      },
+      {
+        "papel": "supabase_auth_admin",
+        "acl": "{postgres=X/supabase_auth_admin,dashboard_user=X/supabase_auth_admin}",
+        "da_execute_ao_anon": false
+      }
+    ],
+    "leitura": "ha 5 linha(s) de default privileges do tipo funcao a dar EXECUTE ao anon"
+  },
+  "nomes": {
+    "bfr_get_student_photo_path": {
+      "oid": "24994",
+      "municipal_de_ddl": false,
+      "chamado_pelo_ar_no_p139": true,
+      "no_alvo_de_peca_de_graus": false,
+      "acl_registada_no_p139": "postgres=X/postgres,anon=X/postgres,authenticated=X/postgres,service_role=X/postgres",
+      "entradas_execute": [
+        "anon por postgres",
+        "authenticated por postgres",
+        "postgres por postgres",
+        "service_role por postgres"
+      ],
+      "contemplados": [
+        "anon",
+        "authenticated",
+        "postgres",
+        "service_role"
+      ],
+      "papeis_com_X_lidos_do_texto_do_p139": [
+        "anon",
+        "authenticated",
+        "postgres",
+        "service_role"
+      ],
+      "anon_no_texto_do_p139": true,
+      "publico_na_acl_segundo_o_p139": false,
+      "anon_explicito": true,
+      "publico_executa": false,
+      "linhas_de_graus_no_texto": [],
+      "linhas_de_graus_que_nomeiam_anon": 0,
+      "linhas_de_graus_que_fecham_public": 0
+    },
+    "bfr_school_set_municipality": {
+      "oid": "32881",
+      "municipal_de_ddl": true,
+      "chamado_pelo_ar_no_p139": false,
+      "no_alvo_de_peca_de_graus": true,
+      "acl_registada_no_p139": "postgres=X/postgres,anon=X/postgres,authenticated=X/postgres,service_role=X/postgres",
+      "entradas_execute": [
+        "anon por postgres",
+        "authenticated por postgres",
+        "postgres por postgres",
+        "service_role por postgres"
+      ],
+      "contemplados": [
+        "anon",
+        "authenticated",
+        "postgres",
+        "service_role"
+      ],
+      "papeis_com_X_lidos_do_texto_do_p139": [
+        "anon",
+        "authenticated",
+        "postgres",
+        "service_role"
+      ],
+      "anon_no_texto_do_p139": true,
+      "publico_na_acl_segundo_o_p139": false,
+      "anon_explicito": true,
+      "publico_executa": false,
+      "linhas_de_graus_no_texto": [
+        "p73-pen38-ddl-candidata.sql REVOKE ALL bfr_school_set_municipality FROM PUBLIC",
+        "p73-pen38-ddl-candidata.sql GRANT EXECUTE bfr_school_set_municipality TO authenticated"
+      ],
+      "linhas_de_graus_que_nomeiam_anon": 0,
+      "linhas_de_graus_que_fecham_public": 1
+    }
+  },
+  "o_que_prova": "de que classe vem cada funcao executavel por anon no esquema public, medida por aclexplode e confrontada com o censo, o texto da ACL e as linhas de graus do p139; e se o catalogo de hoje tem default privileges que reabram a porta a cada funcao nova.",
+  "o_que_NAO_prova": "quem escreveu cada entrada nem quando: o catalogo nao guarda historico de ACLs, por isso isto fecha o mecanismo, nao a autoria. Uma entrada anon explicita sem linha de graus que a nomeie pode vir dum GRANT fora do texto versionado, dum default vigente ao tempo do CREATE que entretanto mudou, ou doutro caminho. Nao prova que um anon com token leia dados, nem autoriza REVOKE, GRANT, DDL ou publicacao.",
+  "fixtures": {
+    "caminhos_de_entrada": [
+      [
+        "anon_explicito",
+        {
+          "anon_pode": true,
+          "anon_explicito": true,
+          "publico_executa": false,
+          "acl_nula": false
+        }
+      ],
+      [
+        "so_por_publico",
+        {
+          "anon_pode": true,
+          "anon_explicito": false,
+          "publico_executa": true,
+          "acl_nula": false
+        }
+      ],
+      [
+        "por_membria_ou_default",
+        {
+          "anon_pode": true,
+          "anon_explicito": false,
+          "publico_executa": false,
+          "acl_nula": false
+        }
+      ],
+      [
+        "barrado",
+        {
+          "anon_pode": false,
+          "anon_explicito": true,
+          "publico_executa": false,
+          "acl_nula": false
+        }
+      ],
+      [
+        "acl_nula_default_postgres",
+        {
+          "anon_pode": true,
+          "anon_explicito": false,
+          "publico_executa": false,
+          "acl_nula": true
+        }
+      ]
+    ],
+    "tipos_de_default": [
+      [
+        true,
+        "f"
+      ],
+      [
+        false,
+        "r"
+      ],
+      [
+        false,
+        "S"
+      ],
+      [
+        false,
+        "T"
+      ],
+      [
+        false,
+        ""
+      ]
+    ],
+    "anon_no_default": [
+      [
+        true,
+        "{anon=X/postgres,authenticated=X/postgres}"
+      ],
+      [
+        false,
+        "{authenticated=X/postgres,postgres=X/postgres}"
+      ],
+      [
+        false,
+        "(null)"
+      ]
+    ],
+    "leitura": [
+      [
+        true,
+        "select 1"
+      ],
+      [
+        true,
+        "WITH a AS (SELECT 1) SELECT * FROM a"
+      ],
+      [
+        false,
+        "REVOKE ALL ON FUNCTION public.x() FROM PUBLIC"
+      ],
+      [
+        false,
+        ""
+      ]
+    ],
+    "papeis_da_acl": [
+      [
+        [
+          "anon",
+          "authenticated",
+          "postgres"
+        ],
+        "postgres=X/postgres,anon=X/postgres,authenticated=X/postgres"
+      ],
+      [
+        [
+          "authenticated",
+          "postgres"
+        ],
+        "postgres=X/postgres,authenticated=X/postgres"
+      ],
+      [
+        [
+          "PUBLIC",
+          "postgres"
+        ],
+        "=X/postgres,postgres=X/postgres"
+      ],
+      [
+        [
+          "anon",
+          "authenticated",
+          "postgres"
+        ],
+        "{postgres=X/postgres,anon=X/postgres,authenticated=X/postgres}"
+      ]
+    ],
+    "grantee_publico": [
+      [
+        true,
+        null
+      ],
+      [
+        true,
+        0
+      ],
+      [
+        false,
+        1
+      ],
+      [
+        false,
+        "anon"
+      ],
+      [
+        false,
+        ""
+      ]
+    ],
+    "papeis_unicos": [
+      [
+        [
+          "PUBLIC",
+          "anon"
+        ],
+        "anon,PUBLIC"
+      ],
+      [
+        [
+          "authenticated",
+          "postgres"
+        ],
+        "postgres,authenticated,authenticated"
+      ],
+      [
+        [],
+        null
+      ],
+      [
+        [],
+        ""
+      ]
+    ]
+  },
+  "portoes": {
+    "total": 22,
+    "falhas": 0,
+    "lista": [
+      {
+        "nome": "a_guarda_de_leitura_aborta_antes_de_chegar_ao_banco",
+        "verde": true,
+        "obtido": [
+          true,
+          false
+        ],
+        "esperado": [
+          true,
+          false
+        ],
+        "detalhe": {
+          "texto_passado": "REVOKE ALL ON FUNCTION public.x() FROM anon",
+          "predicado_lido": "const eLeitura = (t) => /^\\s*(select|with)\\b/i.test(String(t));"
+        }
+      },
+      {
+        "nome": "o_predicado_de_leitura_e_lido_do_produtor_e_dispara_nos_dois_lados",
+        "verde": true,
+        "obtido": [
+          true,
+          true,
+          false,
+          false
+        ],
+        "esperado": [
+          true,
+          true,
+          false,
+          false
+        ],
+        "detalhe": {
+          "origem": "scripts/p139-acls-dos-nomes-do-ar-contra-o-alvo.mjs",
+          "pares": [
+            [
+              true,
+              "select 1"
+            ],
+            [
+              true,
+              "WITH a AS (SELECT 1) SELECT * FROM a"
+            ],
+            [
+              false,
+              "REVOKE ALL ON FUNCTION public.x() FROM PUBLI"
+            ],
+            [
+              false,
+              ""
+            ]
+          ]
+        }
+      },
+      {
+        "nome": "o_censo_do_aclexplode_bate_com_o_censo_do_p139",
+        "verde": true,
+        "obtido": [
+          163,
+          0,
+          19
+        ],
+        "esperado": [
+          163,
+          0,
+          19
+        ],
+        "detalhe": {
+          "aqui": [
+            163,
+            0,
+            19
+          ],
+          "p139": [
+            163,
+            0,
+            19
+          ]
+        }
+      },
+      {
+        "nome": "a_particao_soma_anon_pode_e_a_particao_bate_com_a_predica_de_entrada_do_p139",
+        "verde": true,
+        "obtido": [
+          true,
+          true,
+          true
+        ],
+        "esperado": [
+          true,
+          true,
+          true
+        ],
+        "detalhe": {
+          "particao": {
+            "total": 163,
+            "acl_nula": 0,
+            "anon_pode": 19,
+            "classe_barrado": 144,
+            "classe_anon_explicito": 15,
+            "classe_so_por_publico": 4,
+            "classe_por_membria": 0
+          },
+          "anon_por_entrada_do_p139": 15
+        }
+      },
+      {
+        "nome": "as_quatro_classes_de_caminho_constam_no_registo_mesmo_que_nao_encham",
+        "verde": true,
+        "obtido": [
+          "classe_anon_explicito",
+          "classe_barrado",
+          "classe_por_membria",
+          "classe_so_por_publico"
+        ],
+        "esperado": [
+          "classe_anon_explicito",
+          "classe_barrado",
+          "classe_por_membria",
+          "classe_so_por_publico"
+        ],
+        "detalhe": {
+          "valores": {
+            "classe_barrado": 144,
+            "classe_anon_explicito": 15,
+            "classe_so_por_publico": 4,
+            "classe_por_membria": 0
+          }
+        }
+      },
+      {
+        "nome": "a_classificadora_de_caminhos_tem_positivo_e_negativo_em_fixture",
+        "verde": true,
+        "obtido": [
+          "anon_explicito",
+          "so_por_publico",
+          "por_membria_ou_default",
+          "barrado",
+          "acl_nula_default_postgres"
+        ],
+        "esperado": [
+          "anon_explicito",
+          "so_por_publico",
+          "por_membria_ou_default",
+          "barrado",
+          "acl_nula_default_postgres"
+        ],
+        "detalhe": {
+          "FIX_CAMINHOS": [
+            [
+              "anon_explicito",
+              {
+                "anon_pode": true,
+                "anon_explicito": true,
+                "publico_executa": false,
+                "acl_nula": false
+              }
+            ],
+            [
+              "so_por_publico",
+              {
+                "anon_pode": true,
+                "anon_explicito": false,
+                "publico_executa": true,
+                "acl_nula": false
+              }
+            ],
+            [
+              "por_membria_ou_default",
+              {
+                "anon_pode": true,
+                "anon_explicito": false,
+                "publico_executa": false,
+                "acl_nula": false
+              }
+            ],
+            [
+              "barrado",
+              {
+                "anon_pode": false,
+                "anon_explicito": true,
+                "publico_executa": false,
+                "acl_nula": false
+              }
+            ],
+            [
+              "acl_nula_default_postgres",
+              {
+                "anon_pode": true,
+                "anon_explicito": false,
+                "publico_executa": false,
+                "acl_nula": true
+              }
+            ]
+          ]
+        }
+      },
+      {
+        "nome": "o_leitor_de_publico_no_grantee_tem_positivo_e_negativo_em_fixture",
+        "verde": true,
+        "obtido": [
+          true,
+          true,
+          false,
+          false,
+          false
+        ],
+        "esperado": [
+          true,
+          true,
+          false,
+          false,
+          false
+        ],
+        "detalhe": {
+          "FIX_GRANTEE_PUBLICO": [
+            [
+              true,
+              null
+            ],
+            [
+              true,
+              0
+            ],
+            [
+              false,
+              1
+            ],
+            [
+              false,
+              "anon"
+            ],
+            [
+              false,
+              ""
+            ]
+          ],
+          "nota": "nulo e zero sao as duas representacoes que o Postgres usa para PUBLIC; 1, uma string e a string vazia nao sao"
+        }
+      },
+      {
+        "nome": "o_desdobrador_de_papeis_do_string_agg_tem_positivo_e_negativo_em_fixture",
+        "verde": true,
+        "obtido": [
+          [
+            "PUBLIC",
+            "anon"
+          ],
+          [
+            "authenticated",
+            "postgres"
+          ],
+          [],
+          []
+        ],
+        "esperado": [
+          [
+            "PUBLIC",
+            "anon"
+          ],
+          [
+            "authenticated",
+            "postgres"
+          ],
+          [],
+          []
+        ],
+        "detalhe": {
+          "FIX_PAPEIS_UNICOS": [
+            [
+              [
+                "PUBLIC",
+                "anon"
+              ],
+              "anon,PUBLIC"
+            ],
+            [
+              [
+                "authenticated",
+                "postgres"
+              ],
+              "postgres,authenticated,authenticated"
+            ],
+            [
+              [],
+              null
+            ],
+            [
+              [],
+              ""
+            ]
+          ],
+          "nota": "o string_agg nao aceita distinct com esta ordem, por isso o desdobramento e meu: null e string vazia dao lista vazia, repetido da um so"
+        }
+      },
+      {
+        "nome": "a_representacao_de_publico_nesta_base_e_medida_e_nao_assumida",
+        "verde": true,
+        "obtido": [
+          14,
+          0
+        ],
+        "esperado": [
+          14,
+          0
+        ],
+        "detalhe": {
+          "REP": {
+            "entradas_execute": 976,
+            "grantee_nulo": 0,
+            "grantee_zero": 14,
+            "grantee_papel": 962,
+            "papel_com_oid_zero": 0,
+            "papeis_de_que_anon_e_membro": 0,
+            "funcoes_com_publico_por_oid": 14,
+            "funcoes_com_publico_por_texto": 14
+          },
+          "nota": "a contagem por aclexplode com o meu predicado de grantee e a contagem pelo texto da ACL, sem aclexplode, tem de dar o mesmo numero; se o OID 0 fosse um papel real, `= 0` nao podia significar PUBLIC e o predicado estaria errado"
+        }
+      },
+      {
+        "nome": "a_classe_por_memoria_e_testemunha_de_anon_nao_ser_membro_de_nada",
+        "verde": true,
+        "obtido": [
+          true,
+          true
+        ],
+        "esperado": [
+          true,
+          true
+        ],
+        "detalhe": {
+          "nota": "a frase do rodape dizia que o buraco 19/15 era membros; esta e a conta que o diria se fosse — e se um dia anon entrar noutro papel, o portao passa a exigir que a classe por_membria encha",
+          "papeis_de_que_anon_e_membro": 0,
+          "classe_por_membria": 0
+        }
+      },
+      {
+        "nome": "a_rota_do_texto_da_acl_bate_conta_a_conta_com_a_particao_por_aclexplode",
+        "verde": true,
+        "obtido": [
+          19,
+          163,
+          0,
+          15,
+          4,
+          0
+        ],
+        "esperado": [
+          19,
+          163,
+          0,
+          15,
+          4,
+          0
+        ],
+        "detalhe": {
+          "rota_oid_filtros": {
+            "total": 163,
+            "acl_nula": 0,
+            "anon_pode": 19,
+            "classe_barrado": 144,
+            "classe_anon_explicito": 15,
+            "classe_so_por_publico": 4,
+            "classe_por_membria": 0
+          },
+          "rota_aclexplode_texto": {
+            "por_texto_anon_explicito": 15,
+            "por_texto_so_por_publico": 4,
+            "por_texto_por_membria": 0,
+            "por_texto_anon_pode": 19,
+            "por_texto_acl_nula": 0,
+            "por_texto_total": 163
+          },
+          "nota": "a rota do texto nao usa aclexplode nem o meu predicado de grantee: se eu tiver inventado uma classe, e aqui que se ve"
+        }
+      },
+      {
+        "nome": "as_classes_tem_nome_e_a_contagem_por_nome_bate_com_a_particao",
+        "verde": true,
+        "obtido": [
+          15,
+          4,
+          0,
+          0
+        ],
+        "esperado": [
+          15,
+          4,
+          0,
+          0
+        ],
+        "detalhe": {
+          "por_classe": {
+            "anon_explicito": [
+              "bfr_audit_lesson_attendance_change",
+              "bfr_get_student_photo_path",
+              "bfr_prevent_duplicate_grade",
+              "bfr_psychology_schedule_guard",
+              "bfr_rls_director_manages_student",
+              "bfr_rls_is_developer",
+              "bfr_rls_session_role",
+              "bfr_school_set_municipality",
+              "bfr_specialized_audit_trigger",
+              "bfr_support_request_scope_guard",
+              "bfr_touch_updated_at",
+              "bfr_validate_lesson_attendance",
+              "enforce_bfr_avatar_uniform",
+              "schools_updated_at",
+              "sports_touch_updated_at"
+            ],
+            "so_por_publico": [
+              "bfr_collab_comment_notification_trigger",
+              "bfr_collab_member_notification_trigger",
+              "bfr_collab_task_notification_trigger",
+              "bfr_staff_audit_trigger"
+            ],
+            "por_membria": [],
+            "acl_nula": []
+          },
+          "nota": "uma classe vazia imprime a lista vazia: o verde diz que foi medida, nao que foi suprimida"
+        }
+      },
+      {
+        "nome": "o_predicado_de_tipo_de_default_tem_positivo_e_negativo_em_fixture",
+        "verde": true,
+        "obtido": [
+          true,
+          false,
+          false,
+          false,
+          false
+        ],
+        "esperado": [
+          true,
+          false,
+          false,
+          false,
+          false
+        ],
+        "detalhe": {
+          "FIX_TIPOS": [
+            [
+              true,
+              "f"
+            ],
+            [
+              false,
+              "r"
+            ],
+            [
+              false,
+              "S"
+            ],
+            [
+              false,
+              "T"
+            ],
+            [
+              false,
+              ""
+            ]
+          ]
+        }
+      },
+      {
+        "nome": "o_predicado_de_anon_no_default_tem_positivo_e_negativo_em_fixture",
+        "verde": true,
+        "obtido": [
+          true,
+          false,
+          false
+        ],
+        "esperado": [
+          true,
+          false,
+          false
+        ],
+        "detalhe": {
+          "FIX_ANON_NO_DEFAULT": [
+            [
+              true,
+              "{anon=X/postgres,authenticated=X/postgres}"
+            ],
+            [
+              false,
+              "{authenticated=X/postgres,postgres=X/postgres}"
+            ],
+            [
+              false,
+              "(null)"
+            ]
+          ]
+        }
+      },
+      {
+        "nome": "a_lista_de_default_privileges_e_contada_por_dois_caminhos_e_bate",
+        "verde": true,
+        "obtido": [
+          27,
+          9,
+          5
+        ],
+        "esperado": [
+          27,
+          9,
+          5
+        ],
+        "detalhe": {
+          "contagem_do_catalogo": {
+            "linhas": 27,
+            "do_tipo_funcao": 9,
+            "funcao_que_da_anon": 5
+          },
+          "nota": "as duas primeiras vem de linhas lidas em JS, a terceira duma contagem SQL; so ha verde se nenhum dos dois vir Partial"
+        }
+      },
+      {
+        "nome": "os_nomes_abertos_ao_anonimo_ao_aclexplode_sao_os_do_p139_por_has_function_privilege",
+        "verde": true,
+        "obtido": [
+          "bfr_get_student_photo_path",
+          "bfr_school_set_municipality"
+        ],
+        "esperado": [
+          "bfr_get_student_photo_path",
+          "bfr_school_set_municipality"
+        ],
+        "detalhe": {
+          "p139_rel": "evidence/p139-acls-dos-nomes-do-ar-contra-o-alvo-sm37g.json",
+          "p139_bytes": 162118,
+          "p139_md5": "9c615cc3063e0ce5869d0189f55d1317",
+          "nomes": [
+            "bfr_get_student_photo_path",
+            "bfr_school_set_municipality"
+          ]
+        }
+      },
+      {
+        "nome": "o_desmontar_de_entradas_bate_com_o_texto_da_acl_do_p139",
+        "verde": true,
+        "obtido": [
+          [
+            "anon",
+            "authenticated",
+            "postgres",
+            "service_role"
+          ],
+          [
+            "anon",
+            "authenticated",
+            "postgres",
+            "service_role"
+          ]
+        ],
+        "esperado": [
+          [
+            "anon",
+            "authenticated",
+            "postgres",
+            "service_role"
+          ],
+          [
+            "anon",
+            "authenticated",
+            "postgres",
+            "service_role"
+          ]
+        ],
+        "detalhe": {
+          "por_nome": [
+            [
+              "bfr_get_student_photo_path",
+              [
+                "anon",
+                "authenticated",
+                "postgres",
+                "service_role"
+              ],
+              [
+                "anon",
+                "authenticated",
+                "postgres",
+                "service_role"
+              ]
+            ],
+            [
+              "bfr_school_set_municipality",
+              [
+                "anon",
+                "authenticated",
+                "postgres",
+                "service_role"
+              ],
+              [
+                "anon",
+                "authenticated",
+                "postgres",
+                "service_role"
+              ]
+            ]
+          ]
+        }
+      },
+      {
+        "nome": "as_rotas_de_anon_e_de_publico_batem_nome_a_nome_com_o_texto_da_acl_do_p139",
+        "verde": true,
+        "obtido": [
+          [
+            true,
+            false
+          ],
+          [
+            true,
+            false
+          ]
+        ],
+        "esperado": [
+          [
+            true,
+            false
+          ],
+          [
+            true,
+            false
+          ]
+        ],
+        "detalhe": {
+          "nota": "a minha rota e SQL (aclexplode sobre proacl), a do p139 e JS sobre o texto renderizado; um desacordo significa que uma das duas esta cega",
+          "por_nome": [
+            [
+              "bfr_get_student_photo_path",
+              true,
+              true,
+              false,
+              false
+            ],
+            [
+              "bfr_school_set_municipality",
+              true,
+              true,
+              false,
+              false
+            ]
+          ]
+        }
+      },
+      {
+        "nome": "a_pega_do_ficheiro_do_p139_e_a_do_registo_que_leio",
+        "verde": true,
+        "obtido": [
+          30219,
+          "d5fa48ac38ac92d2093c0ab98f0a2d70"
+        ],
+        "esperado": [
+          30219,
+          "d5fa48ac38ac92d2093c0ab98f0a2d70"
+        ],
+        "detalhe": {
+          "nota": "o predicado que compilo do ficheiro so e o da corrida gravada se os dois bytes forem os mesmos",
+          "registo": "evidence/p139-acls-dos-nomes-do-ar-contra-o-alvo-sm37g.json",
+          "p139_emissor_bytes": 30219,
+          "p139_emissor_md5": "d5fa48ac38ac92d2093c0ab98f0a2d70"
+        }
+      },
+      {
+        "nome": "o_leitor_de_papeis_do_texto_da_acl_tem_positivo_e_negativo_em_fixture",
+        "verde": true,
+        "obtido": [
+          [
+            "anon",
+            "authenticated",
+            "postgres"
+          ],
+          [
+            "authenticated",
+            "postgres"
+          ],
+          [
+            "PUBLIC",
+            "postgres"
+          ],
+          [
+            "anon",
+            "authenticated",
+            "postgres"
+          ]
+        ],
+        "esperado": [
+          [
+            "anon",
+            "authenticated",
+            "postgres"
+          ],
+          [
+            "authenticated",
+            "postgres"
+          ],
+          [
+            "PUBLIC",
+            "postgres"
+          ],
+          [
+            "anon",
+            "authenticated",
+            "postgres"
+          ]
+        ],
+        "detalhe": {
+          "nota": "a forma com chavetas e a sem chavetas tem de dar o mesmo conjunto; o caso PUBLIC prova que o contemplado vazio nao se perde",
+          "fixture": [
+            [
+              [
+                "anon",
+                "authenticated",
+                "postgres"
+              ],
+              "postgres=X/postgres,anon=X/postgres,authenticated=X/postgres"
+            ],
+            [
+              [
+                "authenticated",
+                "postgres"
+              ],
+              "postgres=X/postgres,authenticated=X/postgres"
+            ],
+            [
+              [
+                "PUBLIC",
+                "postgres"
+              ],
+              "=X/postgres,postgres=X/postgres"
+            ],
+            [
+              [
+                "anon",
+                "authenticated",
+                "postgres"
+              ],
+              "{postgres=X/postgres,anon=X/postgres,authenticated=X/postgres}"
+            ]
+          ]
+        }
+      },
+      {
+        "nome": "o_nome_municipal_de_escrita_tem_anon_explicito_zero_linhas_a_nomeiar_e_o_REVOKE_ALL_do_PUBLIC_lescrito",
+        "verde": true,
+        "obtido": [
+          [
+            true,
+            0,
+            1
+          ]
+        ],
+        "esperado": [
+          [
+            true,
+            0,
+            1
+          ]
+        ],
+        "detalhe": {
+          "nota": "o texto fechou o PUBLIC e nunca nomeou o anon; e isso que torna a origem do anon uma pergunta e nao uma resposta"
+        }
+      },
+      {
+        "nome": "a_cobertura_do_extract_de_graus_do_p139_declara_as_duas_familias_e_esta_integral",
+        "verde": true,
+        "obtido": [
+          [
+            "ALL",
+            "EXECUTE"
+          ],
+          true,
+          5
+        ],
+        "esperado": [
+          [
+            "ALL",
+            "EXECUTE"
+          ],
+          true,
+          5
+        ],
+        "detalhe": {
+          "cobertura139": {
+            "linhas_no_texto": 126,
+            "linhas_extraidas": 126,
+            "por_grau": {
+              "ALL": 5,
+              "EXECUTE": 436
+            },
+            "familias": [
+              "ALL",
+              "EXECUTE"
+            ],
+            "ficheiros": [
+              "p73-pen38-ddl-candidata.sql",
+              "p73-pen39-ddl-candidata.sql",
+              "p73-pen41-ddl-candidata.sql",
+              "p73-pen42-ddl-candidata.sql",
+              "p73-pen43-ddl-candidata.sql",
+              "p73-pen48-ddl-candidata.sql",
+              "p74-pen44-ddl-candidata.sql"
+            ],
+            "unidade_de_linhas": "cabecas de declaracao de grau no texto despido de comentarios, nao linhas do ficheiro",
+            "unidade_de_por_grau": "pares declaracao x papel, depois do desdobrar da lista de papeis",
+            "pares_no_corpus": 441
+          }
+        }
+      }
+    ]
+  },
+  "veredito": "P142_ORIGEM_ANON_MEDIDA 22/0 · public 163 · anon_pode 19 · explicito 15 · so_por_publico 4 · por_membria 0 · defaults 27/9 · 8435 ms · registo C:\\Users\\pcmac\\Documents\\Qoder\\2026-10-13\\28077d9a\\bfr-conecta\\evidence\\p142-origem-da-entrada-anon-no-acl-sm37g.json"
+}

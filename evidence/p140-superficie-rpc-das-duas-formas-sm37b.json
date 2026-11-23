@@ -1,0 +1,986 @@
+{
+  "peca": "scripts/p140-superficie-rpc-das-duas-formas.mjs",
+  "em": "2026-11-23T03:24:33.606Z",
+  "duracao_ms": 536,
+  "emissor_bytes": 20452,
+  "emissor_md5": "90d3e81670b67d4f9be2defbb8d9fbb3",
+  "pergunta": "que nomes de funcao o bundle servido chama, contados nas duas formas em que a casa escreve um nome — literal entre aspas e constante passada a um wrapper — e quantos deles o censo de 21/11 nao via?",
+  "metodo": "fetch do ar + bytes/md5 contra o diario de publicacao mais novo; a forma literal e reproduzida do texto-fonte do p126 e conferida com o artefacto dele; cada sitio `.rpc(` e classificado em quatro classes, com resolutor de constante e de parametro de funcao (profundidade maxima 3) e registo dos ramos do wrapper que nao resolvem; zero SQL, zero /rpc, zero escrita.",
+  "identidade_do_medido": {
+    "diario": "audit-publicacao-v142.json",
+    "versao_registada": 142,
+    "url_lida_do_diario": "https://bfr-conecta.turmaroboticabfr.workers.dev",
+    "bytes_no_diario": 3556664,
+    "md5_no_diario": "0e22e78fe1e0ce929ec4717f86365ad9",
+    "bytes_apanhados": 3556664,
+    "md5_apanhado": "0e22e78fe1e0ce929ec4717f86365ad9",
+    "ar_bate_com_o_diario": true
+  },
+  "forma_literal_proveniente_de": {
+    "ficheiro": "scripts/p126-censo-rpc-do-bundle-servido.mjs",
+    "fonte": "\\brpc\\(\\s*'([a-z0-9_]+)'",
+    "fixture": {
+      "obtido": [
+        "bfr_alpha",
+        "bfr_beta"
+      ],
+      "esperado": [
+        "bfr_alpha",
+        "bfr_beta"
+      ],
+      "passou": true
+    }
+  },
+  "resumo_dos_sitios": {
+    "literal": {
+      "total": 32,
+      "nomes": [
+        "acknowledge_occurrence",
+        "bfr_confirm_school_calendar",
+        "bfr_correct_grade",
+        "bfr_create_school_meeting",
+        "bfr_create_targeted_announcement",
+        "bfr_get_student_photo_path",
+        "bfr_is_municipal_authority",
+        "bfr_list_staff_birthdays",
+        "bfr_resolve_communication_recipients",
+        "bfr_set_staff_birthday",
+        "bfr_teacher_context",
+        "bfr_teacher_lesson_gate_evidence",
+        "bfr_update_school_meeting",
+        "choose_initial_role",
+        "complete_family_registration",
+        "confirm_guardian_entry",
+        "correct_gate_attendance",
+        "get_student_guardians",
+        "list_current_month_birthdays",
+        "register_gate_checkin",
+        "register_gate_checkin_v2",
+        "set_profile_role",
+        "sports_rebuild_standings",
+        "sports_record_event",
+        "sports_set_match_status"
+      ],
+      "em": [
+        685569,
+        901220,
+        903295,
+        906454,
+        914297,
+        1078937,
+        1081705,
+        1205050,
+        1229285,
+        1232888,
+        1464535,
+        1464774,
+        1521748,
+        1853592,
+        1854135,
+        2066951,
+        2143561,
+        2158403,
+        2434524,
+        2540601,
+        2540980,
+        2541280,
+        2542547,
+        2543657,
+        2570134,
+        2571991,
+        2572530,
+        2580375,
+        3045273,
+        3045448,
+        3407448,
+        3478851
+      ]
+    },
+    "por_constante": {
+      "total": 0,
+      "nomes": [],
+      "em": []
+    },
+    "por_wrapper": {
+      "total": 1,
+      "nomes": [
+        "bfr_municipal_distribuicao_por_zona",
+        "bfr_municipal_municipio_totais"
+      ],
+      "em": [
+        3491848
+      ]
+    },
+    "sem_forma_conhecida": {
+      "total": 0,
+      "nomes": [],
+      "em": []
+    }
+  },
+  "nomes": {
+    "literais": [
+      "acknowledge_occurrence",
+      "bfr_confirm_school_calendar",
+      "bfr_correct_grade",
+      "bfr_create_school_meeting",
+      "bfr_create_targeted_announcement",
+      "bfr_get_student_photo_path",
+      "bfr_is_municipal_authority",
+      "bfr_list_staff_birthdays",
+      "bfr_resolve_communication_recipients",
+      "bfr_set_staff_birthday",
+      "bfr_teacher_context",
+      "bfr_teacher_lesson_gate_evidence",
+      "bfr_update_school_meeting",
+      "choose_initial_role",
+      "complete_family_registration",
+      "confirm_guardian_entry",
+      "correct_gate_attendance",
+      "get_student_guardians",
+      "list_current_month_birthdays",
+      "register_gate_checkin",
+      "register_gate_checkin_v2",
+      "set_profile_role",
+      "sports_rebuild_standings",
+      "sports_record_event",
+      "sports_set_match_status"
+    ],
+    "por_constante_ou_wrapper": [
+      "bfr_municipal_distribuicao_por_zona",
+      "bfr_municipal_municipio_totais"
+    ],
+    "chamados_uniao": [
+      "acknowledge_occurrence",
+      "bfr_confirm_school_calendar",
+      "bfr_correct_grade",
+      "bfr_create_school_meeting",
+      "bfr_create_targeted_announcement",
+      "bfr_get_student_photo_path",
+      "bfr_is_municipal_authority",
+      "bfr_list_staff_birthdays",
+      "bfr_municipal_distribuicao_por_zona",
+      "bfr_municipal_municipio_totais",
+      "bfr_resolve_communication_recipients",
+      "bfr_set_staff_birthday",
+      "bfr_teacher_context",
+      "bfr_teacher_lesson_gate_evidence",
+      "bfr_update_school_meeting",
+      "choose_initial_role",
+      "complete_family_registration",
+      "confirm_guardian_entry",
+      "correct_gate_attendance",
+      "get_student_guardians",
+      "list_current_month_birthdays",
+      "register_gate_checkin",
+      "register_gate_checkin_v2",
+      "set_profile_role",
+      "sports_rebuild_standings",
+      "sports_record_event",
+      "sports_set_match_status"
+    ]
+  },
+  "contagens": {
+    "sitios": 33,
+    "literais": 32,
+    "por_constante": 0,
+    "por_wrapper": 1,
+    "sem_forma_conhecida": 0,
+    "ramos_nao_resolvidos": 0,
+    "nomes_uniao": 27,
+    "p126": 25
+  },
+  "censo_anterior": {
+    "ficheiro": "evidence/p126-censo-rpc-21-11-v142b.json",
+    "veredito": "P126_CENSO_RPC_MEDIDO 25 nomes · 22 no catalogo · 3 ausentes",
+    "nomes": [
+      "acknowledge_occurrence",
+      "bfr_confirm_school_calendar",
+      "bfr_correct_grade",
+      "bfr_create_school_meeting",
+      "bfr_create_targeted_announcement",
+      "bfr_get_student_photo_path",
+      "bfr_is_municipal_authority",
+      "bfr_list_staff_birthdays",
+      "bfr_resolve_communication_recipients",
+      "bfr_set_staff_birthday",
+      "bfr_teacher_context",
+      "bfr_teacher_lesson_gate_evidence",
+      "bfr_update_school_meeting",
+      "choose_initial_role",
+      "complete_family_registration",
+      "confirm_guardian_entry",
+      "correct_gate_attendance",
+      "get_student_guardians",
+      "list_current_month_birthdays",
+      "register_gate_checkin",
+      "register_gate_checkin_v2",
+      "set_profile_role",
+      "sports_rebuild_standings",
+      "sports_record_event",
+      "sports_set_match_status"
+    ],
+    "reproducao_da_forma_literal": true
+  },
+  "serie_p126": [
+    {
+      "ficheiro": "evidence/p126-censo-rpc-21-11-v142.json",
+      "em": "2026-11-22T01:13:48.277Z",
+      "md5_bundle": "0e22e78fe1e0ce929ec4717f86365ad9",
+      "nomes": 25,
+      "ausentes": [
+        "bfr_confirm_school_calendar",
+        "correct_gate_attendance",
+        "register_gate_checkin_v2"
+      ],
+      "veredito": "P126_CENSO_RPC_MEDIDO 25 nomes · 22 no catalogo · 3 ausentes"
+    },
+    {
+      "ficheiro": "evidence/p126-censo-rpc-21-11-v142b.json",
+      "em": "2026-11-22T01:16:40.966Z",
+      "md5_bundle": "0e22e78fe1e0ce929ec4717f86365ad9",
+      "nomes": 25,
+      "ausentes": [
+        "bfr_confirm_school_calendar",
+        "correct_gate_attendance",
+        "register_gate_checkin_v2"
+      ],
+      "veredito": "P126_CENSO_RPC_MEDIDO 25 nomes · 22 no catalogo · 3 ausentes"
+    },
+    {
+      "ficheiro": "evidence/p126-censo-rpc-21-11-v142-apos42.json",
+      "em": "2026-11-22T02:20:28.457Z",
+      "md5_bundle": "0e22e78fe1e0ce929ec4717f86365ad9",
+      "nomes": 25,
+      "ausentes": [
+        "bfr_confirm_school_calendar",
+        "correct_gate_attendance"
+      ],
+      "veredito": "P126_CENSO_RPC_MEDIDO 25 nomes · 23 no catalogo · 2 ausentes"
+    }
+  ],
+  "revelados_fora_do_censo_anterior": [
+    "bfr_municipal_distribuicao_por_zona",
+    "bfr_municipal_municipio_totais"
+  ],
+  "declaracoes_dos_nomes_por_constante_ou_wrapper": [
+    {
+      "nome": "bfr_municipal_distribuicao_por_zona",
+      "identificadores": [
+        "NOME_DISTRIB"
+      ],
+      "ocorrencias_da_string_no_bundle": 1
+    },
+    {
+      "nome": "bfr_municipal_municipio_totais",
+      "identificadores": [
+        "NOME_TOTAIS"
+      ],
+      "ocorrencias_da_string_no_bundle": 1
+    }
+  ],
+  "varredura_de_corpos": {
+    "limite_caracteres_por_funcao": 60000,
+    "funcoes_lidas": 1867,
+    "sem_fecho": [],
+    "constates_lidos_no_ar": 3
+  },
+  "cruzamento_com_o_p139": {
+    "ficheiro": "evidence/p139-acls-dos-nomes-do-ar-contra-o-alvo-sm37b.json",
+    "linhas": [
+      {
+        "nome": "bfr_municipal_distribuicao_por_zona",
+        "no_universo_p139": true,
+        "no_alvo_de_peca_de_graus": true,
+        "oid": [
+          "32884"
+        ],
+        "anon_pode": [
+          false
+        ],
+        "vol": [
+          "s"
+        ],
+        "chamado_pelo_ar_no_p139": [
+          false
+        ]
+      },
+      {
+        "nome": "bfr_municipal_municipio_totais",
+        "no_universo_p139": true,
+        "no_alvo_de_peca_de_graus": true,
+        "oid": [
+          "32883"
+        ],
+        "anon_pode": [
+          false
+        ],
+        "vol": [
+          "s"
+        ],
+        "chamado_pelo_ar_no_p139": [
+          false
+        ]
+      }
+    ]
+  },
+  "sitios_por_classe": {
+    "literal": [
+      {
+        "em": 685569,
+        "argumento": "'get_student_guardians'",
+        "por": "'get_student_guardians'",
+        "nomes": [
+          "get_student_guardians"
+        ],
+        "ramos": []
+      },
+      {
+        "em": 901220,
+        "argumento": "'register_gate_checkin'",
+        "por": "'register_gate_checkin'",
+        "nomes": [
+          "register_gate_checkin"
+        ],
+        "ramos": []
+      },
+      {
+        "em": 903295,
+        "argumento": "'register_gate_checkin'",
+        "por": "'register_gate_checkin'",
+        "nomes": [
+          "register_gate_checkin"
+        ],
+        "ramos": []
+      },
+      {
+        "em": 906454,
+        "argumento": "'confirm_guardian_entry'",
+        "por": "'confirm_guardian_entry'",
+        "nomes": [
+          "confirm_guardian_entry"
+        ],
+        "ramos": []
+      },
+      {
+        "em": 914297,
+        "argumento": "'list_current_month_birthdays'",
+        "por": "'list_current_month_birthdays'",
+        "nomes": [
+          "list_current_month_birthdays"
+        ],
+        "ramos": []
+      },
+      {
+        "em": 1078937,
+        "argumento": "'set_profile_role'",
+        "por": "'set_profile_role'",
+        "nomes": [
+          "set_profile_role"
+        ],
+        "ramos": []
+      },
+      {
+        "em": 1081705,
+        "argumento": "'set_profile_role'",
+        "por": "'set_profile_role'",
+        "nomes": [
+          "set_profile_role"
+        ],
+        "ramos": []
+      },
+      {
+        "em": 1205050,
+        "argumento": "'acknowledge_occurrence'",
+        "por": "'acknowledge_occurrence'",
+        "nomes": [
+          "acknowledge_occurrence"
+        ],
+        "ramos": []
+      },
+      {
+        "em": 1229285,
+        "argumento": "'complete_family_registration'",
+        "por": "'complete_family_registration'",
+        "nomes": [
+          "complete_family_registration"
+        ],
+        "ramos": []
+      },
+      {
+        "em": 1232888,
+        "argumento": "'choose_initial_role'",
+        "por": "'choose_initial_role'",
+        "nomes": [
+          "choose_initial_role"
+        ],
+        "ramos": []
+      },
+      {
+        "em": 1464535,
+        "argumento": "'list_current_month_birthdays'",
+        "por": "'list_current_month_birthdays'",
+        "nomes": [
+          "list_current_month_birthdays"
+        ],
+        "ramos": []
+      },
+      {
+        "em": 1464774,
+        "argumento": "'bfr_list_staff_birthdays'",
+        "por": "'bfr_list_staff_birthdays'",
+        "nomes": [
+          "bfr_list_staff_birthdays"
+        ],
+        "ramos": []
+      },
+      {
+        "em": 1521748,
+        "argumento": "'bfr_set_staff_birthday'",
+        "por": "'bfr_set_staff_birthday'",
+        "nomes": [
+          "bfr_set_staff_birthday"
+        ],
+        "ramos": []
+      },
+      {
+        "em": 1853592,
+        "argumento": "'correct_gate_attendance'",
+        "por": "'correct_gate_attendance'",
+        "nomes": [
+          "correct_gate_attendance"
+        ],
+        "ramos": []
+      },
+      {
+        "em": 1854135,
+        "argumento": "'bfr_confirm_school_calendar'",
+        "por": "'bfr_confirm_school_calendar'",
+        "nomes": [
+          "bfr_confirm_school_calendar"
+        ],
+        "ramos": []
+      },
+      {
+        "em": 2066951,
+        "argumento": "'bfr_teacher_context'",
+        "por": "'bfr_teacher_context'",
+        "nomes": [
+          "bfr_teacher_context"
+        ],
+        "ramos": []
+      },
+      {
+        "em": 2143561,
+        "argumento": "'bfr_teacher_lesson_gate_evidence'",
+        "por": "'bfr_teacher_lesson_gate_evidence'",
+        "nomes": [
+          "bfr_teacher_lesson_gate_evidence"
+        ],
+        "ramos": []
+      },
+      {
+        "em": 2158403,
+        "argumento": "'bfr_correct_grade'",
+        "por": "'bfr_correct_grade'",
+        "nomes": [
+          "bfr_correct_grade"
+        ],
+        "ramos": []
+      },
+      {
+        "em": 2434524,
+        "argumento": "'bfr_get_student_photo_path'",
+        "por": "'bfr_get_student_photo_path'",
+        "nomes": [
+          "bfr_get_student_photo_path"
+        ],
+        "ramos": []
+      },
+      {
+        "em": 2540601,
+        "argumento": "'sports_set_match_status'",
+        "por": "'sports_set_match_status'",
+        "nomes": [
+          "sports_set_match_status"
+        ],
+        "ramos": []
+      },
+      {
+        "em": 2540980,
+        "argumento": "'sports_set_match_status'",
+        "por": "'sports_set_match_status'",
+        "nomes": [
+          "sports_set_match_status"
+        ],
+        "ramos": []
+      },
+      {
+        "em": 2541280,
+        "argumento": "'sports_rebuild_standings'",
+        "por": "'sports_rebuild_standings'",
+        "nomes": [
+          "sports_rebuild_standings"
+        ],
+        "ramos": []
+      },
+      {
+        "em": 2542547,
+        "argumento": "'sports_record_event'",
+        "por": "'sports_record_event'",
+        "nomes": [
+          "sports_record_event"
+        ],
+        "ramos": []
+      },
+      {
+        "em": 2543657,
+        "argumento": "'sports_record_event'",
+        "por": "'sports_record_event'",
+        "nomes": [
+          "sports_record_event"
+        ],
+        "ramos": []
+      },
+      {
+        "em": 2570134,
+        "argumento": "'bfr_resolve_communication_recipients'",
+        "por": "'bfr_resolve_communication_recipients'",
+        "nomes": [
+          "bfr_resolve_communication_recipients"
+        ],
+        "ramos": []
+      },
+      {
+        "em": 2571991,
+        "argumento": "'bfr_create_school_meeting'",
+        "por": "'bfr_create_school_meeting'",
+        "nomes": [
+          "bfr_create_school_meeting"
+        ],
+        "ramos": []
+      },
+      {
+        "em": 2572530,
+        "argumento": "'bfr_create_targeted_announcement'",
+        "por": "'bfr_create_targeted_announcement'",
+        "nomes": [
+          "bfr_create_targeted_announcement"
+        ],
+        "ramos": []
+      },
+      {
+        "em": 2580375,
+        "argumento": "'bfr_update_school_meeting'",
+        "por": "'bfr_update_school_meeting'",
+        "nomes": [
+          "bfr_update_school_meeting"
+        ],
+        "ramos": []
+      },
+      {
+        "em": 3045273,
+        "argumento": "'register_gate_checkin'",
+        "por": "'register_gate_checkin'",
+        "nomes": [
+          "register_gate_checkin"
+        ],
+        "ramos": []
+      },
+      {
+        "em": 3045448,
+        "argumento": "'register_gate_checkin_v2'",
+        "por": "'register_gate_checkin_v2'",
+        "nomes": [
+          "register_gate_checkin_v2"
+        ],
+        "ramos": []
+      },
+      {
+        "em": 3407448,
+        "argumento": "'bfr_teacher_context'",
+        "por": "'bfr_teacher_context'",
+        "nomes": [
+          "bfr_teacher_context"
+        ],
+        "ramos": []
+      },
+      {
+        "em": 3478851,
+        "argumento": "'bfr_is_municipal_authority'",
+        "por": "'bfr_is_municipal_authority'",
+        "nomes": [
+          "bfr_is_municipal_authority"
+        ],
+        "ramos": []
+      }
+    ],
+    "por_constante": [],
+    "por_wrapper": [
+      {
+        "em": 3491848,
+        "argumento": "nome",
+        "por": "lerRpc(param nome nº 2)",
+        "nomes": [
+          "bfr_municipal_distribuicao_por_zona",
+          "bfr_municipal_municipio_totais"
+        ],
+        "chamadas": [
+          [
+            "'municipal_totais'",
+            "NOME_TOTAIS",
+            "{}"
+          ],
+          [
+            "'municipal_zonas'",
+            "NOME_DISTRIB",
+            "{}"
+          ]
+        ],
+        "ramos": []
+      }
+    ],
+    "sem_forma_conhecida": []
+  },
+  "wrappers": [
+    {
+      "em": 3491848,
+      "por": "lerRpc(param nome nº 2)",
+      "nomes": [
+        "bfr_municipal_distribuicao_por_zona",
+        "bfr_municipal_municipio_totais"
+      ],
+      "chamadas": [
+        [
+          "'municipal_totais'",
+          "NOME_TOTAIS",
+          "{}"
+        ],
+        [
+          "'municipal_zonas'",
+          "NOME_DISTRIB",
+          "{}"
+        ]
+      ]
+    }
+  ],
+  "fixtures": {
+    "esperado": {
+      "literal": 2,
+      "por_constante": 1,
+      "por_wrapper": 2,
+      "sem_forma_conhecida": 2
+    },
+    "obtido": {
+      "literal": 2,
+      "por_constante": 1,
+      "por_wrapper": 2,
+      "sem_forma_conhecida": 2
+    },
+    "ramos_no_fixture": [
+      {
+        "wrapper": "outroWrapper",
+        "dado": "variavelQueNaoEConst (nao e const nem parametro de funcao com sitio)",
+        "classe": "sem_forma_conhecida"
+      }
+    ],
+    "texto": "const NOME_K = 'bfr_k_por_constante_direta';\nasync function embrulho(chave, nome) { const r = await c.rpc(nome, {}); return r; }\nembrulho('a', 'bfr_k_por_literal_na_chamada');\nembrulho('b', NOME_K);\nasync function outroWrapper(chave, nome) { const r = await x.rpc(nome, {}); return r; }\noutroWrapper('c', variavelQueNaoEConst);\nc.rpc('bfr_lit_1'); d.rpc( 'bfr_lit_2' ,{}); e.rpc(varivelSolta); f.rpc(umaTemplate);\nconst NOME_D = 'bfr_d_constante_direta'; g.rpc(NOME_D);",
+    "sitios": [
+      {
+        "argumento": "nome",
+        "classe": "por_wrapper",
+        "por": "embrulho(param nome nº 2)",
+        "nomes": [
+          "bfr_k_por_constante_direta",
+          "bfr_k_por_literal_na_chamada"
+        ]
+      },
+      {
+        "argumento": "nome",
+        "classe": "por_wrapper",
+        "por": "outroWrapper(param nome nº 2)",
+        "nomes": []
+      },
+      {
+        "argumento": "'bfr_lit_1'",
+        "classe": "literal",
+        "por": "'bfr_lit_1'",
+        "nomes": [
+          "bfr_lit_1"
+        ]
+      },
+      {
+        "argumento": "'bfr_lit_2'",
+        "classe": "literal",
+        "por": "'bfr_lit_2'",
+        "nomes": [
+          "bfr_lit_2"
+        ]
+      },
+      {
+        "argumento": "varivelSolta",
+        "classe": "sem_forma_conhecida",
+        "por": "varivelSolta (nao e const nem parametro de funcao com sitio)",
+        "nomes": []
+      },
+      {
+        "argumento": "umaTemplate",
+        "classe": "sem_forma_conhecida",
+        "por": "umaTemplate (nao e const nem parametro de funcao com sitio)",
+        "nomes": []
+      },
+      {
+        "argumento": "NOME_D",
+        "classe": "por_constante",
+        "por": "const NOME_D",
+        "nomes": [
+          "bfr_d_constante_direta"
+        ]
+      }
+    ]
+  },
+  "o_que_prova": "quantos sitios `.rpc(` o bundle servido tem, que nomes cada forma entrega, e que nomes chegam ao ar por constante passada a um wrapper — portanto faltavam ao censo do p126 e ao campo `chamado_pelo_ar` do p139. A forma literal desta peca e a do produtor, reproduzida do texto dele e conferida com o artefacto dele.",
+  "o_que_NAO_prova": "que o nome resolvido seja executado em runtime — uma chamada pode estar atras dum ramo nunca tomado — nem que exista no catalogo ou tenha graus: existencia, ACL e classes leem-se no p139. So vale para os bytes do ar registado no diario mais novo; nao prova nada sobre outras versoes nem sobre nomes chamados por outras formas que nao `.rpc(` (o contador de sitios e por essa forma).",
+  "portoes": {
+    "total": 11,
+    "falhas": 0,
+    "lista": [
+      {
+        "nome": "a_identidade_do_ar_bate_com_o_diario_de_publicacao",
+        "verde": true,
+        "obtido": true,
+        "esperado": true,
+        "detalhe": {
+          "diario": "audit-publicacao-v142.json",
+          "versao_registada": 142,
+          "url_lida_do_diario": "https://bfr-conecta.turmaroboticabfr.workers.dev",
+          "bytes_no_diario": 3556664,
+          "md5_no_diario": "0e22e78fe1e0ce929ec4717f86365ad9",
+          "bytes_apanhados": 3556664,
+          "md5_apanhado": "0e22e78fe1e0ce929ec4717f86365ad9",
+          "ar_bate_com_o_diario": true
+        }
+      },
+      {
+        "nome": "a_forma_literal_lida_do_produtor_dispara_no_fixture_dele",
+        "verde": true,
+        "obtido": [
+          "bfr_alpha",
+          "bfr_beta"
+        ],
+        "esperado": [
+          "bfr_alpha",
+          "bfr_beta"
+        ],
+        "detalhe": {
+          "fonte": "\\brpc\\(\\s*'([a-z0-9_]+)'",
+          "ficheiro": "scripts/p126-censo-rpc-do-bundle-servido.mjs"
+        }
+      },
+      {
+        "nome": "a_forma_literal_reproduzida_bate_com_o_artefacto_do_p126",
+        "verde": true,
+        "obtido": [
+          true,
+          25
+        ],
+        "esperado": [
+          true,
+          25
+        ],
+        "detalhe": {
+          "reproduzidos": 25,
+          "no_artefacto": 25,
+          "veredito_p126": "P126_CENSO_RPC_MEDIDO 25 nomes · 22 no catalogo · 3 ausentes"
+        }
+      },
+      {
+        "nome": "cada_classe_de_sitio_tem_positivo_em_fixture",
+        "verde": true,
+        "obtido": [
+          true,
+          true
+        ],
+        "esperado": [
+          true,
+          true
+        ],
+        "detalhe": {
+          "obtido": {
+            "literal": 2,
+            "por_constante": 1,
+            "por_wrapper": 2,
+            "sem_forma_conhecida": 2
+          },
+          "esperado": {
+            "literal": 2,
+            "por_constante": 1,
+            "por_wrapper": 2,
+            "sem_forma_conhecida": 2
+          }
+        }
+      },
+      {
+        "nome": "os_ramos_de_wrapper_nao_resolvidos_disparam_no_fixture_e_vao_zero_no_corpus",
+        "verde": true,
+        "obtido": [
+          true,
+          0
+        ],
+        "esperado": [
+          true,
+          0
+        ],
+        "detalhe": {
+          "no_fixture": [
+            {
+              "wrapper": "outroWrapper",
+              "dado": "variavelQueNaoEConst (nao e const nem parametro de funcao com sitio)",
+              "classe": "sem_forma_conhecida"
+            }
+          ],
+          "no_corpus": []
+        }
+      },
+      {
+        "nome": "o_resumo_de_sitios_imprime_as_quatro_classes_com_corpus_vazio",
+        "verde": true,
+        "obtido": [
+          true,
+          0
+        ],
+        "esperado": [
+          true,
+          0
+        ],
+        "detalhe": {
+          "vazio": {
+            "literal": {
+              "total": 0,
+              "nomes": [],
+              "em": []
+            },
+            "por_constante": {
+              "total": 0,
+              "nomes": [],
+              "em": []
+            },
+            "por_wrapper": {
+              "total": 0,
+              "nomes": [],
+              "em": []
+            },
+            "sem_forma_conhecida": {
+              "total": 0,
+              "nomes": [],
+              "em": []
+            }
+          }
+        }
+      },
+      {
+        "nome": "nenhum_sitio_do_ar_fica_fora_das_quatro_classes",
+        "verde": true,
+        "obtido": 33,
+        "esperado": 33,
+        "detalhe": {
+          "sitios": 33,
+          "por_classe": {
+            "literal": 32,
+            "por_constante": 0,
+            "por_wrapper": 1,
+            "sem_forma_conhecida": 0
+          }
+        }
+      },
+      {
+        "nome": "os_nomes_revelados_fora_do_censo_estao_no_universo_do_p139",
+        "verde": true,
+        "obtido": true,
+        "esperado": true,
+        "detalhe": {
+          "revelados": [
+            "bfr_municipal_distribuicao_por_zona",
+            "bfr_municipal_municipio_totais"
+          ],
+          "universo_p139": 29
+        }
+      },
+      {
+        "nome": "a_serie_do_p126_tem_a_mesma_pega_de_bundle",
+        "verde": true,
+        "obtido": 1,
+        "esperado": 1,
+        "detalhe": {
+          "registos": [
+            {
+              "ficheiro": "evidence/p126-censo-rpc-21-11-v142.json",
+              "em": "2026-11-22T01:13:48.277Z",
+              "md5_bundle": "0e22e78fe1e0ce929ec4717f86365ad9",
+              "nomes": 25,
+              "ausentes": [
+                "bfr_confirm_school_calendar",
+                "correct_gate_attendance",
+                "register_gate_checkin_v2"
+              ],
+              "veredito": "P126_CENSO_RPC_MEDIDO 25 nomes · 22 no catalogo · 3 ausentes"
+            },
+            {
+              "ficheiro": "evidence/p126-censo-rpc-21-11-v142b.json",
+              "em": "2026-11-22T01:16:40.966Z",
+              "md5_bundle": "0e22e78fe1e0ce929ec4717f86365ad9",
+              "nomes": 25,
+              "ausentes": [
+                "bfr_confirm_school_calendar",
+                "correct_gate_attendance",
+                "register_gate_checkin_v2"
+              ],
+              "veredito": "P126_CENSO_RPC_MEDIDO 25 nomes · 22 no catalogo · 3 ausentes"
+            },
+            {
+              "ficheiro": "evidence/p126-censo-rpc-21-11-v142-apos42.json",
+              "em": "2026-11-22T02:20:28.457Z",
+              "md5_bundle": "0e22e78fe1e0ce929ec4717f86365ad9",
+              "nomes": 25,
+              "ausentes": [
+                "bfr_confirm_school_calendar",
+                "correct_gate_attendance"
+              ],
+              "veredito": "P126_CENSO_RPC_MEDIDO 25 nomes · 23 no catalogo · 2 ausentes"
+            }
+          ]
+        }
+      },
+      {
+        "nome": "o_bundle_cujo_censo_conferi_e_o_mesmo_ar_de_hoje",
+        "verde": true,
+        "obtido": true,
+        "esperado": true,
+        "detalhe": {
+          "caminho_no_artefacto": "bfr-candidata-v142-painel-na-troca/index.html",
+          "md5_126": "0e22e78fe1e0ce929ec4717f86365ad9",
+          "bytes_126": 3556664,
+          "md5_ar": "0e22e78fe1e0ce929ec4717f86365ad9",
+          "bytes_ar": 3556664,
+          "bate": true
+        }
+      },
+      {
+        "nome": "nenhuma_funcao_do_corpus_fica_sem_fecho_dentro_do_limite_lido",
+        "verde": true,
+        "obtido": [
+          0,
+          60000
+        ],
+        "esperado": [
+          0,
+          60000
+        ],
+        "detalhe": {
+          "funcoes_varridas": 1867,
+          "sem_fecho": []
+        }
+      }
+    ]
+  },
+  "veredito": "P140_SUPERFICIE_MEDIDA 11/0 · sitios 33 · chamados 27 (literais 25 + constante/wrapper 2) · revelados_fora_do_censo 2 · ramos_nao_resolvidos 0"
+}

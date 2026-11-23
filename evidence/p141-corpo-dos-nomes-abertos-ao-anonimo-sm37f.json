@@ -1,0 +1,817 @@
+{
+  "peca": "scripts/p141-corpo-dos-nomes-abertos-ao-anonimo.mjs",
+  "em": "2026-11-23T04:20:16.060Z",
+  "duracao_ms": 3902,
+  "emissor_bytes": 30560,
+  "emissor_md5": "ff5b137d7af8d9180c987cd894182588",
+  "pergunta": "para cada nome que o p139 mediu com EXECUTE a anon, o corpo da propria funcao contem um cheque de sessao e uma recusa, e que resposta HTTP da o ar a quem nao tem sessao quando o corpo e de leitura e o identificador e fabricado?",
+  "metodo": "SELECTs de catalogo com as colunas de graus do preflight da PEN-48 e o corpo recortado pela `corpoDef` dele; a escrita no corpo mede-se pela `escreveNoCorpo` da sonda de exposicao anonima; as duas predicados e o detector de identificador sao copiados por texto e compilados em contexto isolado; a forma da resposta tem classificador proprio com as cinco classes em fixture, e o detector so tem palavra a dizer em objeto ou array; a chamada anonima so acontece nos nomes que a regua das tres provas aceita, com uuid de `gen_random_uuid()`; os campos de superficie e de bytes de definicao leem-se dos artefactos do p139 e do p140 e confrontam-se, nunca se re-dactilografam; a chave publishable e lida dos bytes do ar e nunca escrita no registo.",
+  "fonte_dos_nomes": {
+    "ficheiro": "evidence/p139-acls-dos-nomes-do-ar-contra-o-alvo-sm37d.json",
+    "abertos_ao_anonimo": [
+      "bfr_get_student_photo_path",
+      "bfr_school_set_municipality"
+    ]
+  },
+  "graus_e_corpo": [
+    {
+      "nome": "bfr_get_student_photo_path",
+      "oid": "24994",
+      "assinatura": "target_student_id uuid",
+      "resultado": "text",
+      "definer": "true",
+      "vol": "s",
+      "anon_pode": true,
+      "authenticated_pode": true,
+      "entrada_anon_no_acl": true,
+      "corpo_bytes": 346,
+      "def_bytes": 537,
+      "escreve_no_corpo": false,
+      "papeis_no_acl": [
+        "anon",
+        "authenticated",
+        "postgres",
+        "service_role"
+      ],
+      "publico_na_acl": false,
+      "no_alvo_de_peca_de_graus": false,
+      "municipal_de_ddl": false,
+      "chamado_pelo_ar_no_p139": true,
+      "chamado_pelo_ar_no_p140": true,
+      "p139_def_bytes_como_registado": 537,
+      "linhas_de_graus_no_texto": []
+    },
+    {
+      "nome": "bfr_school_set_municipality",
+      "oid": "32881",
+      "assinatura": "p_school uuid, p_municipality uuid, p_reason text",
+      "resultado": "void",
+      "definer": "true",
+      "vol": "v",
+      "anon_pode": true,
+      "authenticated_pode": true,
+      "entrada_anon_no_acl": true,
+      "corpo_bytes": 1238,
+      "def_bytes": 1454,
+      "escreve_no_corpo": true,
+      "papeis_no_acl": [
+        "anon",
+        "authenticated",
+        "postgres",
+        "service_role"
+      ],
+      "publico_na_acl": false,
+      "no_alvo_de_peca_de_graus": true,
+      "municipal_de_ddl": true,
+      "chamado_pelo_ar_no_p139": false,
+      "chamado_pelo_ar_no_p140": false,
+      "p139_def_bytes_como_registado": 1454,
+      "linhas_de_graus_no_texto": [
+        "p73-pen38-ddl-candidata.sql REVOKE ALL bfr_school_set_municipality FROM PUBLIC",
+        "p73-pen38-ddl-candidata.sql GRANT EXECUTE bfr_school_set_municipality TO authenticated"
+      ]
+    }
+  ],
+  "corpos_cheques": [
+    {
+      "nome": "bfr_get_student_photo_path",
+      "corpo_bytes": 346,
+      "cheque_de_sessao": {
+        "auth_uid": 1,
+        "auth_jwt": 0,
+        "current_setting_jwt": 0,
+        "predicado_de_sessao_publico": 0,
+        "current_role": 0,
+        "session_user": 0
+      },
+      "total_cheques": 1,
+      "recusa": {
+        "raise_exception": 0,
+        "return_null": 0,
+        "return_false": 0,
+        "role_does_not_exist": 0
+      },
+      "total_recusas": 0,
+      "primeiro_cheque": {
+        "padrao": "auth_uid",
+        "em": 273,
+        "trecho": "udents link where link.student_id = target_student_id and link.profile_id = auth.uid() ) order by profile.updated_at desc nulls last limit 1"
+      }
+    },
+    {
+      "nome": "bfr_school_set_municipality",
+      "corpo_bytes": 1238,
+      "cheque_de_sessao": {
+        "auth_uid": 1,
+        "auth_jwt": 0,
+        "current_setting_jwt": 0,
+        "predicado_de_sessao_publico": 1,
+        "current_role": 0,
+        "session_user": 0
+      },
+      "total_cheques": 2,
+      "recusa": {
+        "raise_exception": 5,
+        "return_null": 0,
+        "return_false": 0,
+        "role_does_not_exist": 0
+      },
+      "total_recusas": 5,
+      "primeiro_cheque": {
+        "padrao": "auth_uid",
+        "em": 1064,
+        "trecho": "RT INTO public.bfr_municipal_audit (actor, action, entity, entity_id, detail) VALUES (auth.uid(), 'school_municipality_set', 'schools', p_school::text, jsonb_build_object('municipio_id', p_municipality, 'motivo', l"
+      }
+    }
+  ],
+  "familia_de_padroes": {
+    "sessao": [
+      "auth_uid",
+      "auth_jwt",
+      "current_setting_jwt",
+      "predicado_de_sessao_publico",
+      "current_role",
+      "session_user"
+    ],
+    "recusa": [
+      "raise_exception",
+      "return_null",
+      "return_false",
+      "role_does_not_exist"
+    ]
+  },
+  "chamada_anonima": {
+    "permitidas_para": [
+      "bfr_get_student_photo_path"
+    ],
+    "recusadas_por_a_regua": [
+      "bfr_school_set_municipality(vol=v,escreve_no_corpo=true,args=p_school uuid, p_municipality uuid, p_reason text)"
+    ],
+    "resultados": [
+      {
+        "nome": "bfr_get_student_photo_path",
+        "tentada": true,
+        "id_fabricado_md5": "e433e27b14caa5d10c316fac15c67c22",
+        "status": 200,
+        "forma": "nulo",
+        "code": null,
+        "dado_na_resposta": false,
+        "bytes_resposta": 4,
+        "texto_resposta_md5": "37a6259cc0c1dae299a7866489dff0bd",
+        "linhas": null,
+        "resposta_tem_uuid": null,
+        "resposta_tem_coluna_id": null
+      }
+    ],
+    "classes_de_forma": {
+      "com_dado": [],
+      "sem_dado": [
+        "bfr_get_student_photo_path"
+      ]
+    },
+    "regua": "POST /rpc so com provolatile em (i,s), corpo sem escrita medida e uuid na assinatura; nenhuma funcao que escreve foi tocada"
+  },
+  "cruzamento_com_o_p139_e_o_p140": {
+    "ficheiro_p140": "evidence/p140-superficie-rpc-das-duas-formas-sm37e.json",
+    "p140_uniao": 27,
+    "p139_nomes_do_ar": 25,
+    "so_no_p140": [
+      "bfr_municipal_distribuicao_por_zona",
+      "bfr_municipal_municipio_totais"
+    ],
+    "so_no_p139": [],
+    "revelados_declarados_por_p140": [
+      "bfr_municipal_distribuicao_por_zona",
+      "bfr_municipal_municipio_totais"
+    ],
+    "por_nome": [
+      {
+        "nome": "bfr_get_student_photo_path",
+        "p139_def_bytes": 537,
+        "aqui_def_bytes": 537,
+        "aqui_corpo_bytes": 346,
+        "chamado_p139": true,
+        "chamado_p140": true,
+        "no_alvo_de_peca_de_graus": false,
+        "municipal_de_ddl": false
+      },
+      {
+        "nome": "bfr_school_set_municipality",
+        "p139_def_bytes": 1454,
+        "aqui_def_bytes": 1454,
+        "aqui_corpo_bytes": 1238,
+        "chamado_p139": false,
+        "chamado_p140": false,
+        "no_alvo_de_peca_de_graus": true,
+        "municipal_de_ddl": true
+      }
+    ],
+    "contraste_acl_vs_texto": [
+      {
+        "nome": "bfr_get_student_photo_path",
+        "anon_pode": true,
+        "entrada_anon_no_acl": true,
+        "linhas_de_graus": [],
+        "anon_nomeado_nas_linhas": false
+      },
+      {
+        "nome": "bfr_school_set_municipality",
+        "anon_pode": true,
+        "entrada_anon_no_acl": true,
+        "linhas_de_graus": [
+          "p73-pen38-ddl-candidata.sql REVOKE ALL bfr_school_set_municipality FROM PUBLIC",
+          "p73-pen38-ddl-candidata.sql GRANT EXECUTE bfr_school_set_municipality TO authenticated"
+        ],
+        "anon_nomeado_nas_linhas": false
+      }
+    ]
+  },
+  "portao_do_sm37a_substituido": "o portao `nenhuma_resposta_anonima_devolve_identificador` medido em sm37a ficou vermelho porque exigia `false` a um corpo que chegou como `null` (4 bytes, sem chaves a percorrer); foi substituido por `o_classificador_de_forma_tem_as_cinco_classes_em_fixture` + `nenhum_corpo_de_dado_devolve_identificador` + `as_duas_classes_de_resposta_imprimem_se_mesmo_quando_vazias`, e o registo vermelho do sm37a fica preservado com o defeito no nome.",
+  "fixtures": {
+    "escrita_e_leitura": [
+      true,
+      false,
+      false,
+      true
+    ],
+    "corpo_def": [
+      "select 1",
+      ""
+    ],
+    "acl_texto": [
+      true,
+      true,
+      "anon,postgres",
+      false,
+      0
+    ],
+    "cheques": {
+      "com": 1,
+      "sem": 0
+    },
+    "regua_de_chamada": [
+      true,
+      false,
+      false
+    ],
+    "detector_de_identificador": [
+      true,
+      true,
+      false,
+      false
+    ],
+    "forma_da_resposta": [
+      [
+        "array",
+        true,
+        true,
+        true
+      ],
+      [
+        "array",
+        true,
+        false,
+        false
+      ],
+      [
+        "nulo",
+        false,
+        null,
+        null
+      ],
+      [
+        "nao_json",
+        false,
+        null,
+        null
+      ],
+      [
+        "objeto_erro",
+        true,
+        false,
+        false
+      ]
+    ]
+  },
+  "o_que_prova": "se o corpo de cada nome aberto ao anonimo contem cheques de sessao e recusas, por familia de padroes com os dois lados em fixture, e — nos nomes que a regua das tres provas aceita — que status, forma e presenca de identificadores chegaram a quem nao tem sessao com um uuid fabricado.",
+  "o_que_NAO_prova": "o que um identificador existente devolveria: um 200 com zero linhas dum id fabricado e compativel com um corpo que nao checa sessao, por isso a ausencia de dados nesta corrida nao e prova de fechamento. Um `null` de quatro bytes tambem nao e: diz que nao veio dado, nao que a funcao recusou — pelo nome com `total_recusas` = 0 o que fecha a porta e o predicado do join com `auth.uid()` a resolver para nulo, e essa diferenca so se ve noutro dia com um id verdadeiro. Nao prova nada sobre nomes que o p139 nao classificou como abertos ao anonimo, nem autoriza REVOKE, GRANT, DDL ou publicacao: cada um desses pede a sua frase literal. E `papeis_no_acl` nao e a lista de quem pode executar: a entrada de PUBLIC comeca por `=` sem nome e o `papeisDe` lido do preflight descarta token vazio; para PUBLIC leia `publico_na_acl`.",
+  "portoes": {
+    "total": 17,
+    "falhas": 0,
+    "lista": [
+      {
+        "nome": "as_predicas_copiadas_disparam_nos_dois_lados_do_fixture",
+        "verde": true,
+        "obtido": [
+          [
+            true,
+            false,
+            false,
+            true
+          ],
+          [
+            "select 1",
+            ""
+          ],
+          [
+            true,
+            true,
+            "anon,postgres",
+            false,
+            0
+          ]
+        ],
+        "esperado": [
+          [
+            true,
+            false,
+            false,
+            true
+          ],
+          [
+            "select 1",
+            ""
+          ],
+          [
+            true,
+            true,
+            "anon,postgres",
+            false,
+            0
+          ]
+        ],
+        "detalhe": {
+          "ficheiros": [
+            "scripts/p73-pen48-preflight.mjs",
+            "scripts/p73-sonda-exposicao-anonima.mjs"
+          ],
+          "lidas": {
+            "corpoDef": "(t) => { const m = /AS\\s*(\\$[a-zA-Z0-9_]*\\$)([\\s\\S]*?)\\1/.exec(String(t)); return m ? m[2] : ''; }",
+            "escreveNoCorpo": "(corpo) => /\\b(INSERT\\s+INTO|UPDATE\\s+[a-z_]|DELETE\\s+FROM)\\b/i.test(corpo)",
+            "eLeitura": "(t) => /^\\s*(select|with)\\b/i.test(String(t))",
+            "contem_identificador": "(corpo) => { const txt = JSON.stringify(corpo); return { uuid: UUID_RE.test(txt), coluna_id: /\"(?:[a-z_]*_id|id|school_i",
+            "temEntradaAnon": "(acl) => String(acl).split(',').some((x) => /^\\s*anon=X/.test(x.trim()))",
+            "papeisDe": "(acl) => [...new Set(String(acl).split(',').map((x) => x.trim().split('=')[0]).filter((r) => r && r !== '<null_por_default>'))].sort()",
+            "temPublicX": "(acl) => String(acl).split(',').some((x) => /^\\s*=/.test(x.trim()))"
+          },
+          "nota": "o terceiro vector e a rota de texto da ACL: PUBLIC da verdadeiro em temPublicX e nao aparece em papeisDe"
+        }
+      },
+      {
+        "nome": "os_nomes_medidos_sao_os_abertos_ao_anonimo_no_p139",
+        "verde": true,
+        "obtido": [
+          [
+            "bfr_get_student_photo_path",
+            "bfr_school_set_municipality"
+          ],
+          2
+        ],
+        "esperado": [
+          [
+            "bfr_get_student_photo_path",
+            "bfr_school_set_municipality"
+          ],
+          2
+        ],
+        "detalhe": {
+          "do_artefacto": [
+            "bfr_get_student_photo_path",
+            "bfr_school_set_municipality"
+          ],
+          "no_catalogo": [
+            "bfr_get_student_photo_path",
+            "bfr_school_set_municipality"
+          ]
+        }
+      },
+      {
+        "nome": "cada_nome_medido_tem_corpo_lido_do_catalogo",
+        "verde": true,
+        "obtido": true,
+        "esperado": true,
+        "detalhe": [
+          {
+            "nome": "bfr_get_student_photo_path",
+            "corpo_bytes": 346,
+            "definer": "true",
+            "vol": "s"
+          },
+          {
+            "nome": "bfr_school_set_municipality",
+            "corpo_bytes": 1238,
+            "definer": "true",
+            "vol": "v"
+          }
+        ]
+      },
+      {
+        "nome": "a_familia_de_cheques_de_sessao_tem_os_dois_lados_no_fixture",
+        "verde": true,
+        "obtido": [
+          1,
+          0
+        ],
+        "esperado": [
+          1,
+          0
+        ],
+        "detalhe": {
+          "padroes": [
+            "auth_uid",
+            "auth_jwt",
+            "current_setting_jwt",
+            "predicado_de_sessao_publico",
+            "current_role",
+            "session_user"
+          ],
+          "com_cheque": 1,
+          "sem_cheque": 0
+        }
+      },
+      {
+        "nome": "a_regua_de_chamada_tem_os_tres_negativos_e_o_positivo_em_fixture",
+        "verde": true,
+        "obtido": [
+          true,
+          false,
+          false
+        ],
+        "esperado": [
+          true,
+          false,
+          false
+        ],
+        "detalhe": {
+          "positiva": "vol=s sem escrita com uuid",
+          "negativas": [
+            "vol=v e escreve",
+            "sem uuid na assinatura"
+          ]
+        }
+      },
+      {
+        "nome": "as_classes_de_chamada_imprimem_se_mesmo_quando_vazias",
+        "verde": true,
+        "obtido": [
+          2,
+          2
+        ],
+        "esperado": [
+          2,
+          2
+        ],
+        "detalhe": {
+          "chamaveis": [
+            "bfr_get_student_photo_path"
+          ],
+          "nao_chamados": [
+            "bfr_school_set_municipality(vol=v,escreve_no_corpo=true,args=p_school uuid, p_municipality uuid, p_reason text)"
+          ]
+        }
+      },
+      {
+        "nome": "toda_chamada_tentada_passa_as_tres_provas_de_leitura",
+        "verde": true,
+        "obtido": [
+          [
+            true,
+            true
+          ]
+        ],
+        "esperado": [
+          [
+            true,
+            true
+          ]
+        ],
+        "detalhe": {
+          "tentadas": [
+            {
+              "nome": "bfr_get_student_photo_path",
+              "tentada": true,
+              "skipped": null
+            }
+          ]
+        }
+      },
+      {
+        "nome": "o_detector_de_identificador_tem_positivo_e_negativo_em_fixture",
+        "verde": true,
+        "obtido": [
+          true,
+          true,
+          false,
+          false
+        ],
+        "esperado": [
+          true,
+          true,
+          false,
+          false
+        ],
+        "detalhe": {
+          "com_uuid_e_coluna_id": "mal",
+          "agregado_sem": "bem"
+        }
+      },
+      {
+        "nome": "o_classificador_de_forma_tem_as_cinco_classes_em_fixture",
+        "verde": true,
+        "obtido": [
+          [
+            "array",
+            true,
+            true,
+            true
+          ],
+          [
+            "array",
+            true,
+            false,
+            false
+          ],
+          [
+            "nulo",
+            false,
+            null,
+            null
+          ],
+          [
+            "nao_json",
+            false,
+            null,
+            null
+          ],
+          [
+            "objeto_erro",
+            true,
+            false,
+            false
+          ]
+        ],
+        "esperado": [
+          [
+            "array",
+            true,
+            true,
+            true
+          ],
+          [
+            "array",
+            true,
+            false,
+            false
+          ],
+          [
+            "nulo",
+            false,
+            null,
+            null
+          ],
+          [
+            "nao_json",
+            false,
+            null,
+            null
+          ],
+          [
+            "objeto_erro",
+            true,
+            false,
+            false
+          ]
+        ],
+        "detalhe": {
+          "nota": "o detector so tem palavra a dizer em array ou objeto; nulo e nao_json dao null/null porque nao ha chaves a percorrer, e nao e o mesmo que um verde de «sem identificador»"
+        }
+      },
+      {
+        "nome": "nenhum_corpo_de_dado_devolve_identificador",
+        "verde": true,
+        "obtido": [],
+        "esperado": [],
+        "detalhe": {
+          "nota": "lista vazia e o verde legitimo, mas tem de poder crescer: o fixture acima prova que um corpo com uuid e coluna `school_id` enche esta lista"
+        }
+      },
+      {
+        "nome": "as_duas_classes_de_resposta_imprimem_se_mesmo_quando_vazias",
+        "verde": true,
+        "obtido": [
+          [
+            "bfr_get_student_photo_path"
+          ],
+          [
+            "bfr_get_student_photo_path"
+          ],
+          1
+        ],
+        "esperado": [
+          [
+            "bfr_get_student_photo_path"
+          ],
+          [
+            "bfr_get_student_photo_path"
+          ],
+          1
+        ],
+        "detalhe": {
+          "com_dado": [],
+          "sem_dado": [
+            "bfr_get_student_photo_path"
+          ]
+        }
+      },
+      {
+        "nome": "a_guarda_de_leitura_aborta_antes_de_chegar_ao_banco",
+        "verde": true,
+        "obtido": [
+          true,
+          false
+        ],
+        "esperado": [
+          true,
+          false
+        ],
+        "detalhe": {
+          "mensagem": "REVOKE passado a q() na corrida"
+        }
+      },
+      {
+        "nome": "o_numero_do_p139_labelado_como_corpo_e_a_definicao_inteira_e_o_corpo_recortado_fica_abaixo",
+        "verde": true,
+        "obtido": [
+          [
+            true,
+            true
+          ],
+          [
+            true,
+            true
+          ]
+        ],
+        "esperado": [
+          [
+            true,
+            true
+          ],
+          [
+            true,
+            true
+          ]
+        ],
+        "detalhe": {
+          "nota": "ate ao sm37a o p139 chamava `corpo_bytes` a este numero; passou a `def_bytes` e a corrida nova e a fonte",
+          "medido_aqui": [
+            {
+              "nome": "bfr_get_student_photo_path",
+              "def_bytes": 537,
+              "corpo_bytes": 346,
+              "delta_cabecalho": 191,
+              "p139_def_bytes": 537
+            },
+            {
+              "nome": "bfr_school_set_municipality",
+              "def_bytes": 1454,
+              "corpo_bytes": 1238,
+              "delta_cabecalho": 216,
+              "p139_def_bytes": 1454
+            }
+          ]
+        }
+      },
+      {
+        "nome": "a_superficie_dos_dois_instrumentos_divide_so_pelos_revelados",
+        "verde": true,
+        "obtido": [
+          [
+            "bfr_municipal_distribuicao_por_zona",
+            "bfr_municipal_municipio_totais"
+          ],
+          []
+        ],
+        "esperado": [
+          [
+            "bfr_municipal_distribuicao_por_zona",
+            "bfr_municipal_municipio_totais"
+          ],
+          []
+        ],
+        "detalhe": {
+          "p140_uniao": 27,
+          "p139_nomes_do_ar": 25,
+          "revelados_declarados_por_p140": [
+            "bfr_municipal_distribuicao_por_zona",
+            "bfr_municipal_municipio_totais"
+          ]
+        }
+      },
+      {
+        "nome": "para_os_nomes_medidos_a_superficie_e_a_mesma_nas_duas_pecas",
+        "verde": true,
+        "obtido": [
+          true,
+          true
+        ],
+        "esperado": [
+          true,
+          true
+        ],
+        "detalhe": [
+          {
+            "nome": "bfr_get_student_photo_path",
+            "p139": true,
+            "p140": true
+          },
+          {
+            "nome": "bfr_school_set_municipality",
+            "p139": false,
+            "p140": false
+          }
+        ]
+      },
+      {
+        "nome": "a_rota_de_texto_da_acl_bate_nome_a_nome_com_o_artefacto_do_p139",
+        "verde": true,
+        "obtido": [
+          [
+            "bfr_get_student_photo_path",
+            true,
+            false
+          ],
+          [
+            "bfr_school_set_municipality",
+            true,
+            false
+          ]
+        ],
+        "esperado": [
+          [
+            "bfr_get_student_photo_path",
+            true,
+            false
+          ],
+          [
+            "bfr_school_set_municipality",
+            true,
+            false
+          ]
+        ],
+        "detalhe": {
+          "p139": "evidence/p139-acls-dos-nomes-do-ar-contra-o-alvo-sm37d.json",
+          "p139_emissor_md5": "b0e30e52e7f2dd25156d5a08674ed605",
+          "por_nome": [
+            [
+              "bfr_get_student_photo_path",
+              true,
+              false,
+              true,
+              false
+            ],
+            [
+              "bfr_school_set_municipality",
+              true,
+              false,
+              true,
+              false
+            ]
+          ],
+          "nota": "os dois lados sem coacao: um undefined no lado do p139 vale registo anterior a `publico_na_acl` e isto tem de ir vermelho"
+        }
+      },
+      {
+        "nome": "as_linhas_de_graus_de_cada_nome_sao_as_do_artefacto_do_p139",
+        "verde": true,
+        "obtido": [
+          0,
+          2
+        ],
+        "esperado": [
+          0,
+          2
+        ],
+        "detalhe": [
+          {
+            "nome": "bfr_get_student_photo_path",
+            "anon_pode": true,
+            "entrada_anon_no_acl": true,
+            "linhas": [],
+            "anon_nomeado_nas_linhas": false
+          },
+          {
+            "nome": "bfr_school_set_municipality",
+            "anon_pode": true,
+            "entrada_anon_no_acl": true,
+            "linhas": [
+              "p73-pen38-ddl-candidata.sql REVOKE ALL bfr_school_set_municipality FROM PUBLIC",
+              "p73-pen38-ddl-candidata.sql GRANT EXECUTE bfr_school_set_municipality TO authenticated"
+            ],
+            "anon_nomeado_nas_linhas": false
+          }
+        ]
+      }
+    ]
+  },
+  "veredito": "P141_CORPOS_MEDIDOS 17/0 · nomes 2 · com_cheque 2/2 · chamadas_anonimas 1/1"
+}

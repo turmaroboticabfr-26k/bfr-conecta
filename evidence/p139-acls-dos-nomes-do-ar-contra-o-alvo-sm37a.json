@@ -1,0 +1,4280 @@
+{
+  "peca": "scripts/p139-acls-dos-nomes-do-ar-contra-o-alvo.mjs",
+  "em": "2026-11-23T02:45:34.589Z",
+  "duracao_ms": 4155,
+  "emissor_bytes": 22259,
+  "emissor_md5": "b0466b4016946a45e9bcfc7f66e06af1",
+  "pergunta": "dos nomes que o servido chama e dos que as candidatas municipais de DDL criam, quantos tem hoje EXECUTE a anon e quantos estao fora do alvo de qualquer peca de graus ja escrita?",
+  "metodo": "SELECTs de catalogo so com a eLeitura do produtor como guarda; nomes lidos do artefacto do p126 e dos CREATE FUNCTION por globo; alvo lido dos REVOKE/GRANT EXECUTE ON FUNCTION nos mesmos SQL; identidade do ar conferida antes de contar; zero chamada a /rpc.",
+  "identidade_do_medido": {
+    "diario": "audit-publicacao-v142.json",
+    "versao_registada": 142,
+    "url_lida_do_diario": "https://bfr-conecta.turmaroboticabfr.workers.dev",
+    "bytes_no_diario": 3556664,
+    "md5_no_diario": "0e22e78fe1e0ce929ec4717f86365ad9",
+    "bytes_apanhados": 3556664,
+    "md5_apanhado": "0e22e78fe1e0ce929ec4717f86365ad9",
+    "ar_bate_com_o_diario": true
+  },
+  "bundle_dos_nomes": {
+    "caminho": "bfr-candidata-v142-painel-na-troca/index.html",
+    "bytes_declarados": 3556664,
+    "md5_declarado": "0e22e78fe1e0ce929ec4717f86365ad9",
+    "bytes_em_disco": 3556664,
+    "md5_em_disco": "0e22e78fe1e0ce929ec4717f86365ad9",
+    "disco_bate_com_o_registro_p126": true,
+    "bundle_e_o_ar_do_diario": true
+  },
+  "fontes": {
+    "preflight_pen48": "scripts/p73-pen48-preflight.mjs",
+    "censo_p126": "evidence/p126-censo-rpc-21-11-v142b.json",
+    "ficheiros_ddl_lidos": [
+      "p73-pen38-ddl-candidata.sql",
+      "p73-pen39-ddl-candidata.sql",
+      "p73-pen41-ddl-candidata.sql",
+      "p73-pen42-ddl-candidata.sql",
+      "p73-pen43-ddl-candidata.sql",
+      "p73-pen48-ddl-candidata.sql",
+      "p74-pen44-ddl-candidata.sql"
+    ],
+    "ficheiros_ddl_no_repo": 18,
+    "ficheiros_ddl_excluidos_por_globo": [
+      "ANTERIOR-p73-pen43-ddl-candidata-sem-transaccoes-20-11.sql",
+      "ANTERIOR-p73-pen43-ddl-reversao-sem-transaccoes-20-11.sql",
+      "ANTERIOR-p74-pen44-ddl-candidata-so-sete-papeis-preservados-21-11.sql",
+      "ANTERIOR-p74-pen44-ddl-reversao-so-sete-papeis-preservados-21-11.sql",
+      "p73-pen38-ddl-reversao.sql",
+      "p73-pen39-ddl-reversao.sql",
+      "p73-pen41-ddl-reversao.sql",
+      "p73-pen42-ddl-reversao.sql",
+      "p73-pen43-ddl-reversao.sql",
+      "p73-pen48-ddl-reversao.sql",
+      "p74-pen44-ddl-reversao.sql"
+    ],
+    "create_function_por_ficheiro": {
+      "p73-pen38-ddl-candidata.sql": [
+        "bfr_municipal_scope_diagnostico",
+        "bfr_school_set_municipality"
+      ],
+      "p73-pen39-ddl-candidata.sql": [
+        "bfr_municipal_distribuicao_por_zona",
+        "bfr_municipal_municipio_totais"
+      ],
+      "p73-pen41-ddl-candidata.sql": [],
+      "p73-pen42-ddl-candidata.sql": [],
+      "p73-pen43-ddl-candidata.sql": [],
+      "p73-pen48-ddl-candidata.sql": [],
+      "p74-pen44-ddl-candidata.sql": []
+    },
+    "registo_pen48": "evidence/p73-pen48-preflight-reversao-21-11-22-11-pen48pos.json"
+  },
+  "universos": {
+    "nomes_do_ar": [
+      "acknowledge_occurrence",
+      "bfr_confirm_school_calendar",
+      "bfr_correct_grade",
+      "bfr_create_school_meeting",
+      "bfr_create_targeted_announcement",
+      "bfr_get_student_photo_path",
+      "bfr_is_municipal_authority",
+      "bfr_list_staff_birthdays",
+      "bfr_resolve_communication_recipients",
+      "bfr_set_staff_birthday",
+      "bfr_teacher_context",
+      "bfr_teacher_lesson_gate_evidence",
+      "bfr_update_school_meeting",
+      "choose_initial_role",
+      "complete_family_registration",
+      "confirm_guardian_entry",
+      "correct_gate_attendance",
+      "get_student_guardians",
+      "list_current_month_birthdays",
+      "register_gate_checkin",
+      "register_gate_checkin_v2",
+      "set_profile_role",
+      "sports_rebuild_standings",
+      "sports_record_event",
+      "sports_set_match_status"
+    ],
+    "nomes_municipais_de_ddl": [
+      "bfr_municipal_distribuicao_por_zona",
+      "bfr_municipal_municipio_totais",
+      "bfr_municipal_scope_diagnostico",
+      "bfr_school_set_municipality"
+    ],
+    "universo": 29,
+    "nomes_do_alvo": [
+      "aee_can_access_student",
+      "aee_can_write_student",
+      "aee_game_can_access_student",
+      "bfr_can_access_literacy_student",
+      "bfr_can_manage_communications",
+      "bfr_can_manage_student_directory",
+      "bfr_collab_can_profile",
+      "bfr_collab_can_project",
+      "bfr_collab_can_task",
+      "bfr_collab_is_manager",
+      "bfr_collab_is_staff",
+      "bfr_current_teacher_id",
+      "bfr_family_can_view_aee",
+      "bfr_has_specialized_permission",
+      "bfr_is_municipal_authority",
+      "bfr_is_platform_admin",
+      "bfr_is_schedule_manager",
+      "bfr_learning_is_manager",
+      "bfr_literacy_staff",
+      "bfr_municipal_distribuicao_por_zona",
+      "bfr_municipal_municipio_totais",
+      "bfr_municipal_scope_diagnostico",
+      "bfr_municipalities_visible",
+      "bfr_pedagogical_can_manage_student",
+      "bfr_psychology_active_professional",
+      "bfr_psychology_can_write",
+      "bfr_psychology_record_access",
+      "bfr_school_set_municipality",
+      "bfr_staff_can_access_channel",
+      "bfr_staff_can_manage_channel",
+      "bfr_staff_can_manage_student_scope",
+      "bfr_staff_can_message_recipient",
+      "bfr_staff_can_read_message",
+      "bfr_staff_is_manager",
+      "bfr_staff_role",
+      "bfr_subject_matches",
+      "bfr_support_detail_access",
+      "bfr_support_request_access",
+      "bfr_support_request_create_access",
+      "bfr_teacher_can_manage_class_subject",
+      "bfr_teacher_can_manage_student",
+      "family_cpf_is_valid",
+      "family_normalize_cpf",
+      "family_normalize_name",
+      "internal_chat_can_access_room",
+      "internal_chat_is_staff",
+      "is_aee",
+      "is_aee_manager",
+      "register_gate_checkin_v2",
+      "sports_role_allowed"
+    ],
+    "alvo_linhas": [
+      {
+        "ficheiro": "p73-pen38-ddl-candidata.sql",
+        "nome": "bfr_school_set_municipality",
+        "assinatura": "uuid, uuid, text",
+        "verbo": "GRANT",
+        "papel": "authenticated"
+      },
+      {
+        "ficheiro": "p73-pen38-ddl-candidata.sql",
+        "nome": "bfr_municipal_scope_diagnostico",
+        "assinatura": "",
+        "verbo": "GRANT",
+        "papel": "authenticated"
+      },
+      {
+        "ficheiro": "p73-pen39-ddl-candidata.sql",
+        "nome": "bfr_municipal_municipio_totais",
+        "assinatura": "",
+        "verbo": "GRANT",
+        "papel": "authenticated"
+      },
+      {
+        "ficheiro": "p73-pen39-ddl-candidata.sql",
+        "nome": "bfr_municipal_distribuicao_por_zona",
+        "assinatura": "",
+        "verbo": "GRANT",
+        "papel": "authenticated"
+      },
+      {
+        "ficheiro": "p73-pen42-ddl-candidata.sql",
+        "nome": "register_gate_checkin_v2",
+        "assinatura": "uuid, text, boolean, text, text, text",
+        "verbo": "GRANT",
+        "papel": "authenticated"
+      },
+      {
+        "ficheiro": "p73-pen43-ddl-candidata.sql",
+        "nome": "bfr_municipal_scope_diagnostico",
+        "assinatura": "",
+        "verbo": "REVOKE",
+        "papel": "anon"
+      },
+      {
+        "ficheiro": "p73-pen43-ddl-candidata.sql",
+        "nome": "bfr_municipal_municipio_totais",
+        "assinatura": "",
+        "verbo": "REVOKE",
+        "papel": "anon"
+      },
+      {
+        "ficheiro": "p73-pen43-ddl-candidata.sql",
+        "nome": "bfr_municipal_distribuicao_por_zona",
+        "assinatura": "",
+        "verbo": "REVOKE",
+        "papel": "anon"
+      },
+      {
+        "ficheiro": "p73-pen48-ddl-candidata.sql",
+        "nome": "register_gate_checkin_v2",
+        "assinatura": "uuid, text, boolean, text, text, text",
+        "verbo": "REVOKE",
+        "papel": "anon"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "is_aee",
+        "assinatura": "",
+        "verbo": "REVOKE",
+        "papel": "PUBLIC"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "is_aee",
+        "assinatura": "",
+        "verbo": "GRANT",
+        "papel": "dashboard_user"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "is_aee",
+        "assinatura": "",
+        "verbo": "GRANT",
+        "papel": "pgbouncer"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "is_aee",
+        "assinatura": "",
+        "verbo": "GRANT",
+        "papel": "supabase_auth_admin"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "is_aee",
+        "assinatura": "",
+        "verbo": "GRANT",
+        "papel": "supabase_etl_admin"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "is_aee",
+        "assinatura": "",
+        "verbo": "GRANT",
+        "papel": "supabase_functions_admin"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "is_aee",
+        "assinatura": "",
+        "verbo": "GRANT",
+        "papel": "supabase_privileged_role"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "is_aee",
+        "assinatura": "",
+        "verbo": "GRANT",
+        "papel": "supabase_read_only_user"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "is_aee",
+        "assinatura": "",
+        "verbo": "GRANT",
+        "papel": "supabase_replication_admin"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "is_aee_manager",
+        "assinatura": "",
+        "verbo": "REVOKE",
+        "papel": "PUBLIC"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "is_aee_manager",
+        "assinatura": "",
+        "verbo": "GRANT",
+        "papel": "dashboard_user"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "is_aee_manager",
+        "assinatura": "",
+        "verbo": "GRANT",
+        "papel": "pgbouncer"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "is_aee_manager",
+        "assinatura": "",
+        "verbo": "GRANT",
+        "papel": "supabase_auth_admin"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "is_aee_manager",
+        "assinatura": "",
+        "verbo": "GRANT",
+        "papel": "supabase_etl_admin"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "is_aee_manager",
+        "assinatura": "",
+        "verbo": "GRANT",
+        "papel": "supabase_functions_admin"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "is_aee_manager",
+        "assinatura": "",
+        "verbo": "GRANT",
+        "papel": "supabase_privileged_role"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "is_aee_manager",
+        "assinatura": "",
+        "verbo": "GRANT",
+        "papel": "supabase_read_only_user"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "is_aee_manager",
+        "assinatura": "",
+        "verbo": "GRANT",
+        "papel": "supabase_replication_admin"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "aee_can_access_student",
+        "assinatura": "uuid",
+        "verbo": "REVOKE",
+        "papel": "PUBLIC"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "aee_can_access_student",
+        "assinatura": "uuid",
+        "verbo": "GRANT",
+        "papel": "dashboard_user"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "aee_can_access_student",
+        "assinatura": "uuid",
+        "verbo": "GRANT",
+        "papel": "pgbouncer"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "aee_can_access_student",
+        "assinatura": "uuid",
+        "verbo": "GRANT",
+        "papel": "supabase_auth_admin"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "aee_can_access_student",
+        "assinatura": "uuid",
+        "verbo": "GRANT",
+        "papel": "supabase_etl_admin"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "aee_can_access_student",
+        "assinatura": "uuid",
+        "verbo": "GRANT",
+        "papel": "supabase_functions_admin"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "aee_can_access_student",
+        "assinatura": "uuid",
+        "verbo": "GRANT",
+        "papel": "supabase_privileged_role"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "aee_can_access_student",
+        "assinatura": "uuid",
+        "verbo": "GRANT",
+        "papel": "supabase_read_only_user"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "aee_can_access_student",
+        "assinatura": "uuid",
+        "verbo": "GRANT",
+        "papel": "supabase_replication_admin"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_staff_role",
+        "assinatura": "",
+        "verbo": "REVOKE",
+        "papel": "PUBLIC"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_staff_role",
+        "assinatura": "",
+        "verbo": "GRANT",
+        "papel": "dashboard_user"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_staff_role",
+        "assinatura": "",
+        "verbo": "GRANT",
+        "papel": "pgbouncer"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_staff_role",
+        "assinatura": "",
+        "verbo": "GRANT",
+        "papel": "supabase_auth_admin"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_staff_role",
+        "assinatura": "",
+        "verbo": "GRANT",
+        "papel": "supabase_etl_admin"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_staff_role",
+        "assinatura": "",
+        "verbo": "GRANT",
+        "papel": "supabase_functions_admin"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_staff_role",
+        "assinatura": "",
+        "verbo": "GRANT",
+        "papel": "supabase_privileged_role"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_staff_role",
+        "assinatura": "",
+        "verbo": "GRANT",
+        "papel": "supabase_read_only_user"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_staff_role",
+        "assinatura": "",
+        "verbo": "GRANT",
+        "papel": "supabase_replication_admin"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_literacy_staff",
+        "assinatura": "",
+        "verbo": "REVOKE",
+        "papel": "PUBLIC"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_literacy_staff",
+        "assinatura": "",
+        "verbo": "GRANT",
+        "papel": "dashboard_user"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_literacy_staff",
+        "assinatura": "",
+        "verbo": "GRANT",
+        "papel": "pgbouncer"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_literacy_staff",
+        "assinatura": "",
+        "verbo": "GRANT",
+        "papel": "supabase_auth_admin"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_literacy_staff",
+        "assinatura": "",
+        "verbo": "GRANT",
+        "papel": "supabase_etl_admin"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_literacy_staff",
+        "assinatura": "",
+        "verbo": "GRANT",
+        "papel": "supabase_functions_admin"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_literacy_staff",
+        "assinatura": "",
+        "verbo": "GRANT",
+        "papel": "supabase_privileged_role"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_literacy_staff",
+        "assinatura": "",
+        "verbo": "GRANT",
+        "papel": "supabase_read_only_user"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_literacy_staff",
+        "assinatura": "",
+        "verbo": "GRANT",
+        "papel": "supabase_replication_admin"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_can_access_literacy_student",
+        "assinatura": "uuid",
+        "verbo": "REVOKE",
+        "papel": "PUBLIC"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_can_access_literacy_student",
+        "assinatura": "uuid",
+        "verbo": "GRANT",
+        "papel": "dashboard_user"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_can_access_literacy_student",
+        "assinatura": "uuid",
+        "verbo": "GRANT",
+        "papel": "pgbouncer"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_can_access_literacy_student",
+        "assinatura": "uuid",
+        "verbo": "GRANT",
+        "papel": "supabase_auth_admin"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_can_access_literacy_student",
+        "assinatura": "uuid",
+        "verbo": "GRANT",
+        "papel": "supabase_etl_admin"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_can_access_literacy_student",
+        "assinatura": "uuid",
+        "verbo": "GRANT",
+        "papel": "supabase_functions_admin"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_can_access_literacy_student",
+        "assinatura": "uuid",
+        "verbo": "GRANT",
+        "papel": "supabase_privileged_role"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_can_access_literacy_student",
+        "assinatura": "uuid",
+        "verbo": "GRANT",
+        "papel": "supabase_read_only_user"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_can_access_literacy_student",
+        "assinatura": "uuid",
+        "verbo": "GRANT",
+        "papel": "supabase_replication_admin"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_staff_can_access_channel",
+        "assinatura": "uuid",
+        "verbo": "REVOKE",
+        "papel": "PUBLIC"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_staff_can_access_channel",
+        "assinatura": "uuid",
+        "verbo": "GRANT",
+        "papel": "dashboard_user"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_staff_can_access_channel",
+        "assinatura": "uuid",
+        "verbo": "GRANT",
+        "papel": "pgbouncer"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_staff_can_access_channel",
+        "assinatura": "uuid",
+        "verbo": "GRANT",
+        "papel": "supabase_auth_admin"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_staff_can_access_channel",
+        "assinatura": "uuid",
+        "verbo": "GRANT",
+        "papel": "supabase_etl_admin"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_staff_can_access_channel",
+        "assinatura": "uuid",
+        "verbo": "GRANT",
+        "papel": "supabase_functions_admin"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_staff_can_access_channel",
+        "assinatura": "uuid",
+        "verbo": "GRANT",
+        "papel": "supabase_privileged_role"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_staff_can_access_channel",
+        "assinatura": "uuid",
+        "verbo": "GRANT",
+        "papel": "supabase_read_only_user"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_staff_can_access_channel",
+        "assinatura": "uuid",
+        "verbo": "GRANT",
+        "papel": "supabase_replication_admin"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_staff_can_message_recipient",
+        "assinatura": "uuid",
+        "verbo": "REVOKE",
+        "papel": "PUBLIC"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_staff_can_message_recipient",
+        "assinatura": "uuid",
+        "verbo": "GRANT",
+        "papel": "dashboard_user"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_staff_can_message_recipient",
+        "assinatura": "uuid",
+        "verbo": "GRANT",
+        "papel": "pgbouncer"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_staff_can_message_recipient",
+        "assinatura": "uuid",
+        "verbo": "GRANT",
+        "papel": "supabase_auth_admin"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_staff_can_message_recipient",
+        "assinatura": "uuid",
+        "verbo": "GRANT",
+        "papel": "supabase_etl_admin"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_staff_can_message_recipient",
+        "assinatura": "uuid",
+        "verbo": "GRANT",
+        "papel": "supabase_functions_admin"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_staff_can_message_recipient",
+        "assinatura": "uuid",
+        "verbo": "GRANT",
+        "papel": "supabase_privileged_role"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_staff_can_message_recipient",
+        "assinatura": "uuid",
+        "verbo": "GRANT",
+        "papel": "supabase_read_only_user"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_staff_can_message_recipient",
+        "assinatura": "uuid",
+        "verbo": "GRANT",
+        "papel": "supabase_replication_admin"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_staff_is_manager",
+        "assinatura": "",
+        "verbo": "REVOKE",
+        "papel": "PUBLIC"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_staff_is_manager",
+        "assinatura": "",
+        "verbo": "GRANT",
+        "papel": "dashboard_user"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_staff_is_manager",
+        "assinatura": "",
+        "verbo": "GRANT",
+        "papel": "pgbouncer"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_staff_is_manager",
+        "assinatura": "",
+        "verbo": "GRANT",
+        "papel": "supabase_auth_admin"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_staff_is_manager",
+        "assinatura": "",
+        "verbo": "GRANT",
+        "papel": "supabase_etl_admin"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_staff_is_manager",
+        "assinatura": "",
+        "verbo": "GRANT",
+        "papel": "supabase_functions_admin"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_staff_is_manager",
+        "assinatura": "",
+        "verbo": "GRANT",
+        "papel": "supabase_privileged_role"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_staff_is_manager",
+        "assinatura": "",
+        "verbo": "GRANT",
+        "papel": "supabase_read_only_user"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_staff_is_manager",
+        "assinatura": "",
+        "verbo": "GRANT",
+        "papel": "supabase_replication_admin"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_collab_is_staff",
+        "assinatura": "",
+        "verbo": "REVOKE",
+        "papel": "PUBLIC"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_collab_is_staff",
+        "assinatura": "",
+        "verbo": "GRANT",
+        "papel": "dashboard_user"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_collab_is_staff",
+        "assinatura": "",
+        "verbo": "GRANT",
+        "papel": "pgbouncer"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_collab_is_staff",
+        "assinatura": "",
+        "verbo": "GRANT",
+        "papel": "supabase_auth_admin"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_collab_is_staff",
+        "assinatura": "",
+        "verbo": "GRANT",
+        "papel": "supabase_etl_admin"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_collab_is_staff",
+        "assinatura": "",
+        "verbo": "GRANT",
+        "papel": "supabase_functions_admin"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_collab_is_staff",
+        "assinatura": "",
+        "verbo": "GRANT",
+        "papel": "supabase_privileged_role"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_collab_is_staff",
+        "assinatura": "",
+        "verbo": "GRANT",
+        "papel": "supabase_read_only_user"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_collab_is_staff",
+        "assinatura": "",
+        "verbo": "GRANT",
+        "papel": "supabase_replication_admin"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_collab_is_manager",
+        "assinatura": "",
+        "verbo": "REVOKE",
+        "papel": "PUBLIC"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_collab_is_manager",
+        "assinatura": "",
+        "verbo": "GRANT",
+        "papel": "dashboard_user"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_collab_is_manager",
+        "assinatura": "",
+        "verbo": "GRANT",
+        "papel": "pgbouncer"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_collab_is_manager",
+        "assinatura": "",
+        "verbo": "GRANT",
+        "papel": "supabase_auth_admin"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_collab_is_manager",
+        "assinatura": "",
+        "verbo": "GRANT",
+        "papel": "supabase_etl_admin"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_collab_is_manager",
+        "assinatura": "",
+        "verbo": "GRANT",
+        "papel": "supabase_functions_admin"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_collab_is_manager",
+        "assinatura": "",
+        "verbo": "GRANT",
+        "papel": "supabase_privileged_role"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_collab_is_manager",
+        "assinatura": "",
+        "verbo": "GRANT",
+        "papel": "supabase_read_only_user"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_collab_is_manager",
+        "assinatura": "",
+        "verbo": "GRANT",
+        "papel": "supabase_replication_admin"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_collab_can_profile",
+        "assinatura": "uuid",
+        "verbo": "REVOKE",
+        "papel": "PUBLIC"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_collab_can_profile",
+        "assinatura": "uuid",
+        "verbo": "GRANT",
+        "papel": "dashboard_user"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_collab_can_profile",
+        "assinatura": "uuid",
+        "verbo": "GRANT",
+        "papel": "pgbouncer"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_collab_can_profile",
+        "assinatura": "uuid",
+        "verbo": "GRANT",
+        "papel": "supabase_auth_admin"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_collab_can_profile",
+        "assinatura": "uuid",
+        "verbo": "GRANT",
+        "papel": "supabase_etl_admin"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_collab_can_profile",
+        "assinatura": "uuid",
+        "verbo": "GRANT",
+        "papel": "supabase_functions_admin"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_collab_can_profile",
+        "assinatura": "uuid",
+        "verbo": "GRANT",
+        "papel": "supabase_privileged_role"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_collab_can_profile",
+        "assinatura": "uuid",
+        "verbo": "GRANT",
+        "papel": "supabase_read_only_user"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_collab_can_profile",
+        "assinatura": "uuid",
+        "verbo": "GRANT",
+        "papel": "supabase_replication_admin"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_collab_can_project",
+        "assinatura": "uuid",
+        "verbo": "REVOKE",
+        "papel": "PUBLIC"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_collab_can_project",
+        "assinatura": "uuid",
+        "verbo": "GRANT",
+        "papel": "dashboard_user"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_collab_can_project",
+        "assinatura": "uuid",
+        "verbo": "GRANT",
+        "papel": "pgbouncer"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_collab_can_project",
+        "assinatura": "uuid",
+        "verbo": "GRANT",
+        "papel": "supabase_auth_admin"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_collab_can_project",
+        "assinatura": "uuid",
+        "verbo": "GRANT",
+        "papel": "supabase_etl_admin"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_collab_can_project",
+        "assinatura": "uuid",
+        "verbo": "GRANT",
+        "papel": "supabase_functions_admin"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_collab_can_project",
+        "assinatura": "uuid",
+        "verbo": "GRANT",
+        "papel": "supabase_privileged_role"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_collab_can_project",
+        "assinatura": "uuid",
+        "verbo": "GRANT",
+        "papel": "supabase_read_only_user"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_collab_can_project",
+        "assinatura": "uuid",
+        "verbo": "GRANT",
+        "papel": "supabase_replication_admin"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_collab_can_task",
+        "assinatura": "uuid",
+        "verbo": "REVOKE",
+        "papel": "PUBLIC"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_collab_can_task",
+        "assinatura": "uuid",
+        "verbo": "GRANT",
+        "papel": "dashboard_user"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_collab_can_task",
+        "assinatura": "uuid",
+        "verbo": "GRANT",
+        "papel": "pgbouncer"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_collab_can_task",
+        "assinatura": "uuid",
+        "verbo": "GRANT",
+        "papel": "supabase_auth_admin"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_collab_can_task",
+        "assinatura": "uuid",
+        "verbo": "GRANT",
+        "papel": "supabase_etl_admin"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_collab_can_task",
+        "assinatura": "uuid",
+        "verbo": "GRANT",
+        "papel": "supabase_functions_admin"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_collab_can_task",
+        "assinatura": "uuid",
+        "verbo": "GRANT",
+        "papel": "supabase_privileged_role"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_collab_can_task",
+        "assinatura": "uuid",
+        "verbo": "GRANT",
+        "papel": "supabase_read_only_user"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_collab_can_task",
+        "assinatura": "uuid",
+        "verbo": "GRANT",
+        "papel": "supabase_replication_admin"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_staff_can_manage_channel",
+        "assinatura": "uuid",
+        "verbo": "REVOKE",
+        "papel": "PUBLIC"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_staff_can_manage_channel",
+        "assinatura": "uuid",
+        "verbo": "GRANT",
+        "papel": "dashboard_user"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_staff_can_manage_channel",
+        "assinatura": "uuid",
+        "verbo": "GRANT",
+        "papel": "pgbouncer"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_staff_can_manage_channel",
+        "assinatura": "uuid",
+        "verbo": "GRANT",
+        "papel": "supabase_auth_admin"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_staff_can_manage_channel",
+        "assinatura": "uuid",
+        "verbo": "GRANT",
+        "papel": "supabase_etl_admin"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_staff_can_manage_channel",
+        "assinatura": "uuid",
+        "verbo": "GRANT",
+        "papel": "supabase_functions_admin"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_staff_can_manage_channel",
+        "assinatura": "uuid",
+        "verbo": "GRANT",
+        "papel": "supabase_privileged_role"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_staff_can_manage_channel",
+        "assinatura": "uuid",
+        "verbo": "GRANT",
+        "papel": "supabase_read_only_user"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_staff_can_manage_channel",
+        "assinatura": "uuid",
+        "verbo": "GRANT",
+        "papel": "supabase_replication_admin"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_staff_can_read_message",
+        "assinatura": "uuid",
+        "verbo": "REVOKE",
+        "papel": "PUBLIC"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_staff_can_read_message",
+        "assinatura": "uuid",
+        "verbo": "GRANT",
+        "papel": "dashboard_user"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_staff_can_read_message",
+        "assinatura": "uuid",
+        "verbo": "GRANT",
+        "papel": "pgbouncer"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_staff_can_read_message",
+        "assinatura": "uuid",
+        "verbo": "GRANT",
+        "papel": "supabase_auth_admin"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_staff_can_read_message",
+        "assinatura": "uuid",
+        "verbo": "GRANT",
+        "papel": "supabase_etl_admin"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_staff_can_read_message",
+        "assinatura": "uuid",
+        "verbo": "GRANT",
+        "papel": "supabase_functions_admin"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_staff_can_read_message",
+        "assinatura": "uuid",
+        "verbo": "GRANT",
+        "papel": "supabase_privileged_role"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_staff_can_read_message",
+        "assinatura": "uuid",
+        "verbo": "GRANT",
+        "papel": "supabase_read_only_user"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_staff_can_read_message",
+        "assinatura": "uuid",
+        "verbo": "GRANT",
+        "papel": "supabase_replication_admin"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "internal_chat_is_staff",
+        "assinatura": "",
+        "verbo": "REVOKE",
+        "papel": "PUBLIC"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "internal_chat_is_staff",
+        "assinatura": "",
+        "verbo": "GRANT",
+        "papel": "dashboard_user"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "internal_chat_is_staff",
+        "assinatura": "",
+        "verbo": "GRANT",
+        "papel": "pgbouncer"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "internal_chat_is_staff",
+        "assinatura": "",
+        "verbo": "GRANT",
+        "papel": "supabase_auth_admin"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "internal_chat_is_staff",
+        "assinatura": "",
+        "verbo": "GRANT",
+        "papel": "supabase_etl_admin"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "internal_chat_is_staff",
+        "assinatura": "",
+        "verbo": "GRANT",
+        "papel": "supabase_functions_admin"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "internal_chat_is_staff",
+        "assinatura": "",
+        "verbo": "GRANT",
+        "papel": "supabase_privileged_role"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "internal_chat_is_staff",
+        "assinatura": "",
+        "verbo": "GRANT",
+        "papel": "supabase_read_only_user"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "internal_chat_is_staff",
+        "assinatura": "",
+        "verbo": "GRANT",
+        "papel": "supabase_replication_admin"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "internal_chat_can_access_room",
+        "assinatura": "uuid",
+        "verbo": "REVOKE",
+        "papel": "PUBLIC"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "internal_chat_can_access_room",
+        "assinatura": "uuid",
+        "verbo": "GRANT",
+        "papel": "dashboard_user"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "internal_chat_can_access_room",
+        "assinatura": "uuid",
+        "verbo": "GRANT",
+        "papel": "pgbouncer"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "internal_chat_can_access_room",
+        "assinatura": "uuid",
+        "verbo": "GRANT",
+        "papel": "supabase_auth_admin"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "internal_chat_can_access_room",
+        "assinatura": "uuid",
+        "verbo": "GRANT",
+        "papel": "supabase_etl_admin"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "internal_chat_can_access_room",
+        "assinatura": "uuid",
+        "verbo": "GRANT",
+        "papel": "supabase_functions_admin"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "internal_chat_can_access_room",
+        "assinatura": "uuid",
+        "verbo": "GRANT",
+        "papel": "supabase_privileged_role"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "internal_chat_can_access_room",
+        "assinatura": "uuid",
+        "verbo": "GRANT",
+        "papel": "supabase_read_only_user"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "internal_chat_can_access_room",
+        "assinatura": "uuid",
+        "verbo": "GRANT",
+        "papel": "supabase_replication_admin"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "family_normalize_name",
+        "assinatura": "text",
+        "verbo": "REVOKE",
+        "papel": "anon"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "family_normalize_name",
+        "assinatura": "text",
+        "verbo": "REVOKE",
+        "papel": "PUBLIC"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "family_normalize_name",
+        "assinatura": "text",
+        "verbo": "GRANT",
+        "papel": "dashboard_user"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "family_normalize_name",
+        "assinatura": "text",
+        "verbo": "GRANT",
+        "papel": "pgbouncer"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "family_normalize_name",
+        "assinatura": "text",
+        "verbo": "GRANT",
+        "papel": "supabase_auth_admin"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "family_normalize_name",
+        "assinatura": "text",
+        "verbo": "GRANT",
+        "papel": "supabase_etl_admin"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "family_normalize_name",
+        "assinatura": "text",
+        "verbo": "GRANT",
+        "papel": "supabase_functions_admin"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "family_normalize_name",
+        "assinatura": "text",
+        "verbo": "GRANT",
+        "papel": "supabase_privileged_role"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "family_normalize_name",
+        "assinatura": "text",
+        "verbo": "GRANT",
+        "papel": "supabase_read_only_user"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "family_normalize_name",
+        "assinatura": "text",
+        "verbo": "GRANT",
+        "papel": "supabase_replication_admin"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "family_normalize_cpf",
+        "assinatura": "text",
+        "verbo": "REVOKE",
+        "papel": "anon"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "family_normalize_cpf",
+        "assinatura": "text",
+        "verbo": "REVOKE",
+        "papel": "PUBLIC"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "family_normalize_cpf",
+        "assinatura": "text",
+        "verbo": "GRANT",
+        "papel": "dashboard_user"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "family_normalize_cpf",
+        "assinatura": "text",
+        "verbo": "GRANT",
+        "papel": "pgbouncer"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "family_normalize_cpf",
+        "assinatura": "text",
+        "verbo": "GRANT",
+        "papel": "supabase_auth_admin"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "family_normalize_cpf",
+        "assinatura": "text",
+        "verbo": "GRANT",
+        "papel": "supabase_etl_admin"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "family_normalize_cpf",
+        "assinatura": "text",
+        "verbo": "GRANT",
+        "papel": "supabase_functions_admin"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "family_normalize_cpf",
+        "assinatura": "text",
+        "verbo": "GRANT",
+        "papel": "supabase_privileged_role"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "family_normalize_cpf",
+        "assinatura": "text",
+        "verbo": "GRANT",
+        "papel": "supabase_read_only_user"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "family_normalize_cpf",
+        "assinatura": "text",
+        "verbo": "GRANT",
+        "papel": "supabase_replication_admin"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "family_cpf_is_valid",
+        "assinatura": "text",
+        "verbo": "REVOKE",
+        "papel": "anon"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "family_cpf_is_valid",
+        "assinatura": "text",
+        "verbo": "REVOKE",
+        "papel": "PUBLIC"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "family_cpf_is_valid",
+        "assinatura": "text",
+        "verbo": "GRANT",
+        "papel": "dashboard_user"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "family_cpf_is_valid",
+        "assinatura": "text",
+        "verbo": "GRANT",
+        "papel": "pgbouncer"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "family_cpf_is_valid",
+        "assinatura": "text",
+        "verbo": "GRANT",
+        "papel": "supabase_auth_admin"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "family_cpf_is_valid",
+        "assinatura": "text",
+        "verbo": "GRANT",
+        "papel": "supabase_etl_admin"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "family_cpf_is_valid",
+        "assinatura": "text",
+        "verbo": "GRANT",
+        "papel": "supabase_functions_admin"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "family_cpf_is_valid",
+        "assinatura": "text",
+        "verbo": "GRANT",
+        "papel": "supabase_privileged_role"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "family_cpf_is_valid",
+        "assinatura": "text",
+        "verbo": "GRANT",
+        "papel": "supabase_read_only_user"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "family_cpf_is_valid",
+        "assinatura": "text",
+        "verbo": "GRANT",
+        "papel": "supabase_replication_admin"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_is_schedule_manager",
+        "assinatura": "",
+        "verbo": "REVOKE",
+        "papel": "PUBLIC"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_is_schedule_manager",
+        "assinatura": "",
+        "verbo": "GRANT",
+        "papel": "dashboard_user"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_is_schedule_manager",
+        "assinatura": "",
+        "verbo": "GRANT",
+        "papel": "pgbouncer"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_is_schedule_manager",
+        "assinatura": "",
+        "verbo": "GRANT",
+        "papel": "supabase_auth_admin"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_is_schedule_manager",
+        "assinatura": "",
+        "verbo": "GRANT",
+        "papel": "supabase_etl_admin"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_is_schedule_manager",
+        "assinatura": "",
+        "verbo": "GRANT",
+        "papel": "supabase_functions_admin"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_is_schedule_manager",
+        "assinatura": "",
+        "verbo": "GRANT",
+        "papel": "supabase_privileged_role"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_is_schedule_manager",
+        "assinatura": "",
+        "verbo": "GRANT",
+        "papel": "supabase_read_only_user"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_is_schedule_manager",
+        "assinatura": "",
+        "verbo": "GRANT",
+        "papel": "supabase_replication_admin"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_current_teacher_id",
+        "assinatura": "",
+        "verbo": "REVOKE",
+        "papel": "PUBLIC"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_current_teacher_id",
+        "assinatura": "",
+        "verbo": "GRANT",
+        "papel": "dashboard_user"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_current_teacher_id",
+        "assinatura": "",
+        "verbo": "GRANT",
+        "papel": "pgbouncer"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_current_teacher_id",
+        "assinatura": "",
+        "verbo": "GRANT",
+        "papel": "supabase_auth_admin"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_current_teacher_id",
+        "assinatura": "",
+        "verbo": "GRANT",
+        "papel": "supabase_etl_admin"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_current_teacher_id",
+        "assinatura": "",
+        "verbo": "GRANT",
+        "papel": "supabase_functions_admin"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_current_teacher_id",
+        "assinatura": "",
+        "verbo": "GRANT",
+        "papel": "supabase_privileged_role"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_current_teacher_id",
+        "assinatura": "",
+        "verbo": "GRANT",
+        "papel": "supabase_read_only_user"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_current_teacher_id",
+        "assinatura": "",
+        "verbo": "GRANT",
+        "papel": "supabase_replication_admin"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_teacher_can_manage_student",
+        "assinatura": "uuid, text",
+        "verbo": "REVOKE",
+        "papel": "PUBLIC"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_teacher_can_manage_student",
+        "assinatura": "uuid, text",
+        "verbo": "GRANT",
+        "papel": "dashboard_user"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_teacher_can_manage_student",
+        "assinatura": "uuid, text",
+        "verbo": "GRANT",
+        "papel": "pgbouncer"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_teacher_can_manage_student",
+        "assinatura": "uuid, text",
+        "verbo": "GRANT",
+        "papel": "supabase_auth_admin"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_teacher_can_manage_student",
+        "assinatura": "uuid, text",
+        "verbo": "GRANT",
+        "papel": "supabase_etl_admin"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_teacher_can_manage_student",
+        "assinatura": "uuid, text",
+        "verbo": "GRANT",
+        "papel": "supabase_functions_admin"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_teacher_can_manage_student",
+        "assinatura": "uuid, text",
+        "verbo": "GRANT",
+        "papel": "supabase_privileged_role"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_teacher_can_manage_student",
+        "assinatura": "uuid, text",
+        "verbo": "GRANT",
+        "papel": "supabase_read_only_user"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_teacher_can_manage_student",
+        "assinatura": "uuid, text",
+        "verbo": "GRANT",
+        "papel": "supabase_replication_admin"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_teacher_can_manage_class_subject",
+        "assinatura": "uuid, text",
+        "verbo": "REVOKE",
+        "papel": "PUBLIC"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_teacher_can_manage_class_subject",
+        "assinatura": "uuid, text",
+        "verbo": "GRANT",
+        "papel": "dashboard_user"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_teacher_can_manage_class_subject",
+        "assinatura": "uuid, text",
+        "verbo": "GRANT",
+        "papel": "pgbouncer"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_teacher_can_manage_class_subject",
+        "assinatura": "uuid, text",
+        "verbo": "GRANT",
+        "papel": "supabase_auth_admin"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_teacher_can_manage_class_subject",
+        "assinatura": "uuid, text",
+        "verbo": "GRANT",
+        "papel": "supabase_etl_admin"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_teacher_can_manage_class_subject",
+        "assinatura": "uuid, text",
+        "verbo": "GRANT",
+        "papel": "supabase_functions_admin"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_teacher_can_manage_class_subject",
+        "assinatura": "uuid, text",
+        "verbo": "GRANT",
+        "papel": "supabase_privileged_role"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_teacher_can_manage_class_subject",
+        "assinatura": "uuid, text",
+        "verbo": "GRANT",
+        "papel": "supabase_read_only_user"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_teacher_can_manage_class_subject",
+        "assinatura": "uuid, text",
+        "verbo": "GRANT",
+        "papel": "supabase_replication_admin"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_subject_matches",
+        "assinatura": "text, text",
+        "verbo": "REVOKE",
+        "papel": "anon"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_subject_matches",
+        "assinatura": "text, text",
+        "verbo": "REVOKE",
+        "papel": "PUBLIC"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_subject_matches",
+        "assinatura": "text, text",
+        "verbo": "GRANT",
+        "papel": "dashboard_user"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_subject_matches",
+        "assinatura": "text, text",
+        "verbo": "GRANT",
+        "papel": "pgbouncer"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_subject_matches",
+        "assinatura": "text, text",
+        "verbo": "GRANT",
+        "papel": "supabase_auth_admin"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_subject_matches",
+        "assinatura": "text, text",
+        "verbo": "GRANT",
+        "papel": "supabase_etl_admin"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_subject_matches",
+        "assinatura": "text, text",
+        "verbo": "GRANT",
+        "papel": "supabase_functions_admin"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_subject_matches",
+        "assinatura": "text, text",
+        "verbo": "GRANT",
+        "papel": "supabase_privileged_role"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_subject_matches",
+        "assinatura": "text, text",
+        "verbo": "GRANT",
+        "papel": "supabase_read_only_user"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_subject_matches",
+        "assinatura": "text, text",
+        "verbo": "GRANT",
+        "papel": "supabase_replication_admin"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "sports_role_allowed",
+        "assinatura": "text[]",
+        "verbo": "REVOKE",
+        "papel": "PUBLIC"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "sports_role_allowed",
+        "assinatura": "text[]",
+        "verbo": "GRANT",
+        "papel": "dashboard_user"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "sports_role_allowed",
+        "assinatura": "text[]",
+        "verbo": "GRANT",
+        "papel": "pgbouncer"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "sports_role_allowed",
+        "assinatura": "text[]",
+        "verbo": "GRANT",
+        "papel": "supabase_auth_admin"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "sports_role_allowed",
+        "assinatura": "text[]",
+        "verbo": "GRANT",
+        "papel": "supabase_etl_admin"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "sports_role_allowed",
+        "assinatura": "text[]",
+        "verbo": "GRANT",
+        "papel": "supabase_functions_admin"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "sports_role_allowed",
+        "assinatura": "text[]",
+        "verbo": "GRANT",
+        "papel": "supabase_privileged_role"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "sports_role_allowed",
+        "assinatura": "text[]",
+        "verbo": "GRANT",
+        "papel": "supabase_read_only_user"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "sports_role_allowed",
+        "assinatura": "text[]",
+        "verbo": "GRANT",
+        "papel": "supabase_replication_admin"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_can_manage_communications",
+        "assinatura": "",
+        "verbo": "REVOKE",
+        "papel": "anon"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_can_manage_communications",
+        "assinatura": "",
+        "verbo": "REVOKE",
+        "papel": "PUBLIC"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_can_manage_communications",
+        "assinatura": "",
+        "verbo": "GRANT",
+        "papel": "dashboard_user"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_can_manage_communications",
+        "assinatura": "",
+        "verbo": "GRANT",
+        "papel": "pgbouncer"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_can_manage_communications",
+        "assinatura": "",
+        "verbo": "GRANT",
+        "papel": "supabase_auth_admin"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_can_manage_communications",
+        "assinatura": "",
+        "verbo": "GRANT",
+        "papel": "supabase_etl_admin"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_can_manage_communications",
+        "assinatura": "",
+        "verbo": "GRANT",
+        "papel": "supabase_functions_admin"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_can_manage_communications",
+        "assinatura": "",
+        "verbo": "GRANT",
+        "papel": "supabase_privileged_role"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_can_manage_communications",
+        "assinatura": "",
+        "verbo": "GRANT",
+        "papel": "supabase_read_only_user"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_can_manage_communications",
+        "assinatura": "",
+        "verbo": "GRANT",
+        "papel": "supabase_replication_admin"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_pedagogical_can_manage_student",
+        "assinatura": "uuid, text",
+        "verbo": "REVOKE",
+        "papel": "anon"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_pedagogical_can_manage_student",
+        "assinatura": "uuid, text",
+        "verbo": "REVOKE",
+        "papel": "PUBLIC"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_pedagogical_can_manage_student",
+        "assinatura": "uuid, text",
+        "verbo": "GRANT",
+        "papel": "dashboard_user"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_pedagogical_can_manage_student",
+        "assinatura": "uuid, text",
+        "verbo": "GRANT",
+        "papel": "pgbouncer"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_pedagogical_can_manage_student",
+        "assinatura": "uuid, text",
+        "verbo": "GRANT",
+        "papel": "supabase_auth_admin"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_pedagogical_can_manage_student",
+        "assinatura": "uuid, text",
+        "verbo": "GRANT",
+        "papel": "supabase_etl_admin"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_pedagogical_can_manage_student",
+        "assinatura": "uuid, text",
+        "verbo": "GRANT",
+        "papel": "supabase_functions_admin"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_pedagogical_can_manage_student",
+        "assinatura": "uuid, text",
+        "verbo": "GRANT",
+        "papel": "supabase_privileged_role"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_pedagogical_can_manage_student",
+        "assinatura": "uuid, text",
+        "verbo": "GRANT",
+        "papel": "supabase_read_only_user"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_pedagogical_can_manage_student",
+        "assinatura": "uuid, text",
+        "verbo": "GRANT",
+        "papel": "supabase_replication_admin"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_staff_can_manage_student_scope",
+        "assinatura": "uuid, text",
+        "verbo": "REVOKE",
+        "papel": "anon"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_staff_can_manage_student_scope",
+        "assinatura": "uuid, text",
+        "verbo": "REVOKE",
+        "papel": "PUBLIC"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_staff_can_manage_student_scope",
+        "assinatura": "uuid, text",
+        "verbo": "GRANT",
+        "papel": "dashboard_user"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_staff_can_manage_student_scope",
+        "assinatura": "uuid, text",
+        "verbo": "GRANT",
+        "papel": "pgbouncer"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_staff_can_manage_student_scope",
+        "assinatura": "uuid, text",
+        "verbo": "GRANT",
+        "papel": "supabase_auth_admin"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_staff_can_manage_student_scope",
+        "assinatura": "uuid, text",
+        "verbo": "GRANT",
+        "papel": "supabase_etl_admin"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_staff_can_manage_student_scope",
+        "assinatura": "uuid, text",
+        "verbo": "GRANT",
+        "papel": "supabase_functions_admin"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_staff_can_manage_student_scope",
+        "assinatura": "uuid, text",
+        "verbo": "GRANT",
+        "papel": "supabase_privileged_role"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_staff_can_manage_student_scope",
+        "assinatura": "uuid, text",
+        "verbo": "GRANT",
+        "papel": "supabase_read_only_user"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_staff_can_manage_student_scope",
+        "assinatura": "uuid, text",
+        "verbo": "GRANT",
+        "papel": "supabase_replication_admin"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_has_specialized_permission",
+        "assinatura": "text",
+        "verbo": "REVOKE",
+        "papel": "anon"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_has_specialized_permission",
+        "assinatura": "text",
+        "verbo": "REVOKE",
+        "papel": "PUBLIC"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_has_specialized_permission",
+        "assinatura": "text",
+        "verbo": "GRANT",
+        "papel": "dashboard_user"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_has_specialized_permission",
+        "assinatura": "text",
+        "verbo": "GRANT",
+        "papel": "pgbouncer"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_has_specialized_permission",
+        "assinatura": "text",
+        "verbo": "GRANT",
+        "papel": "supabase_auth_admin"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_has_specialized_permission",
+        "assinatura": "text",
+        "verbo": "GRANT",
+        "papel": "supabase_etl_admin"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_has_specialized_permission",
+        "assinatura": "text",
+        "verbo": "GRANT",
+        "papel": "supabase_functions_admin"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_has_specialized_permission",
+        "assinatura": "text",
+        "verbo": "GRANT",
+        "papel": "supabase_privileged_role"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_has_specialized_permission",
+        "assinatura": "text",
+        "verbo": "GRANT",
+        "papel": "supabase_read_only_user"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_has_specialized_permission",
+        "assinatura": "text",
+        "verbo": "GRANT",
+        "papel": "supabase_replication_admin"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_family_can_view_aee",
+        "assinatura": "uuid",
+        "verbo": "REVOKE",
+        "papel": "anon"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_family_can_view_aee",
+        "assinatura": "uuid",
+        "verbo": "REVOKE",
+        "papel": "PUBLIC"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_family_can_view_aee",
+        "assinatura": "uuid",
+        "verbo": "GRANT",
+        "papel": "dashboard_user"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_family_can_view_aee",
+        "assinatura": "uuid",
+        "verbo": "GRANT",
+        "papel": "pgbouncer"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_family_can_view_aee",
+        "assinatura": "uuid",
+        "verbo": "GRANT",
+        "papel": "supabase_auth_admin"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_family_can_view_aee",
+        "assinatura": "uuid",
+        "verbo": "GRANT",
+        "papel": "supabase_etl_admin"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_family_can_view_aee",
+        "assinatura": "uuid",
+        "verbo": "GRANT",
+        "papel": "supabase_functions_admin"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_family_can_view_aee",
+        "assinatura": "uuid",
+        "verbo": "GRANT",
+        "papel": "supabase_privileged_role"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_family_can_view_aee",
+        "assinatura": "uuid",
+        "verbo": "GRANT",
+        "papel": "supabase_read_only_user"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_family_can_view_aee",
+        "assinatura": "uuid",
+        "verbo": "GRANT",
+        "papel": "supabase_replication_admin"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_support_request_access",
+        "assinatura": "uuid, uuid, uuid",
+        "verbo": "REVOKE",
+        "papel": "anon"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_support_request_access",
+        "assinatura": "uuid, uuid, uuid",
+        "verbo": "REVOKE",
+        "papel": "PUBLIC"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_support_request_access",
+        "assinatura": "uuid, uuid, uuid",
+        "verbo": "GRANT",
+        "papel": "dashboard_user"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_support_request_access",
+        "assinatura": "uuid, uuid, uuid",
+        "verbo": "GRANT",
+        "papel": "pgbouncer"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_support_request_access",
+        "assinatura": "uuid, uuid, uuid",
+        "verbo": "GRANT",
+        "papel": "supabase_auth_admin"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_support_request_access",
+        "assinatura": "uuid, uuid, uuid",
+        "verbo": "GRANT",
+        "papel": "supabase_etl_admin"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_support_request_access",
+        "assinatura": "uuid, uuid, uuid",
+        "verbo": "GRANT",
+        "papel": "supabase_functions_admin"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_support_request_access",
+        "assinatura": "uuid, uuid, uuid",
+        "verbo": "GRANT",
+        "papel": "supabase_privileged_role"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_support_request_access",
+        "assinatura": "uuid, uuid, uuid",
+        "verbo": "GRANT",
+        "papel": "supabase_read_only_user"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_support_request_access",
+        "assinatura": "uuid, uuid, uuid",
+        "verbo": "GRANT",
+        "papel": "supabase_replication_admin"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_support_detail_access",
+        "assinatura": "uuid, uuid, boolean, uuid",
+        "verbo": "REVOKE",
+        "papel": "anon"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_support_detail_access",
+        "assinatura": "uuid, uuid, boolean, uuid",
+        "verbo": "REVOKE",
+        "papel": "PUBLIC"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_support_detail_access",
+        "assinatura": "uuid, uuid, boolean, uuid",
+        "verbo": "GRANT",
+        "papel": "dashboard_user"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_support_detail_access",
+        "assinatura": "uuid, uuid, boolean, uuid",
+        "verbo": "GRANT",
+        "papel": "pgbouncer"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_support_detail_access",
+        "assinatura": "uuid, uuid, boolean, uuid",
+        "verbo": "GRANT",
+        "papel": "supabase_auth_admin"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_support_detail_access",
+        "assinatura": "uuid, uuid, boolean, uuid",
+        "verbo": "GRANT",
+        "papel": "supabase_etl_admin"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_support_detail_access",
+        "assinatura": "uuid, uuid, boolean, uuid",
+        "verbo": "GRANT",
+        "papel": "supabase_functions_admin"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_support_detail_access",
+        "assinatura": "uuid, uuid, boolean, uuid",
+        "verbo": "GRANT",
+        "papel": "supabase_privileged_role"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_support_detail_access",
+        "assinatura": "uuid, uuid, boolean, uuid",
+        "verbo": "GRANT",
+        "papel": "supabase_read_only_user"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_support_detail_access",
+        "assinatura": "uuid, uuid, boolean, uuid",
+        "verbo": "GRANT",
+        "papel": "supabase_replication_admin"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_support_request_create_access",
+        "assinatura": "uuid",
+        "verbo": "REVOKE",
+        "papel": "anon"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_support_request_create_access",
+        "assinatura": "uuid",
+        "verbo": "REVOKE",
+        "papel": "PUBLIC"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_support_request_create_access",
+        "assinatura": "uuid",
+        "verbo": "GRANT",
+        "papel": "dashboard_user"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_support_request_create_access",
+        "assinatura": "uuid",
+        "verbo": "GRANT",
+        "papel": "pgbouncer"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_support_request_create_access",
+        "assinatura": "uuid",
+        "verbo": "GRANT",
+        "papel": "supabase_auth_admin"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_support_request_create_access",
+        "assinatura": "uuid",
+        "verbo": "GRANT",
+        "papel": "supabase_etl_admin"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_support_request_create_access",
+        "assinatura": "uuid",
+        "verbo": "GRANT",
+        "papel": "supabase_functions_admin"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_support_request_create_access",
+        "assinatura": "uuid",
+        "verbo": "GRANT",
+        "papel": "supabase_privileged_role"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_support_request_create_access",
+        "assinatura": "uuid",
+        "verbo": "GRANT",
+        "papel": "supabase_read_only_user"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_support_request_create_access",
+        "assinatura": "uuid",
+        "verbo": "GRANT",
+        "papel": "supabase_replication_admin"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "aee_can_write_student",
+        "assinatura": "uuid",
+        "verbo": "REVOKE",
+        "papel": "anon"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "aee_can_write_student",
+        "assinatura": "uuid",
+        "verbo": "REVOKE",
+        "papel": "PUBLIC"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "aee_can_write_student",
+        "assinatura": "uuid",
+        "verbo": "GRANT",
+        "papel": "dashboard_user"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "aee_can_write_student",
+        "assinatura": "uuid",
+        "verbo": "GRANT",
+        "papel": "pgbouncer"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "aee_can_write_student",
+        "assinatura": "uuid",
+        "verbo": "GRANT",
+        "papel": "supabase_auth_admin"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "aee_can_write_student",
+        "assinatura": "uuid",
+        "verbo": "GRANT",
+        "papel": "supabase_etl_admin"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "aee_can_write_student",
+        "assinatura": "uuid",
+        "verbo": "GRANT",
+        "papel": "supabase_functions_admin"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "aee_can_write_student",
+        "assinatura": "uuid",
+        "verbo": "GRANT",
+        "papel": "supabase_privileged_role"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "aee_can_write_student",
+        "assinatura": "uuid",
+        "verbo": "GRANT",
+        "papel": "supabase_read_only_user"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "aee_can_write_student",
+        "assinatura": "uuid",
+        "verbo": "GRANT",
+        "papel": "supabase_replication_admin"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_psychology_can_write",
+        "assinatura": "uuid",
+        "verbo": "REVOKE",
+        "papel": "anon"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_psychology_can_write",
+        "assinatura": "uuid",
+        "verbo": "REVOKE",
+        "papel": "PUBLIC"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_psychology_can_write",
+        "assinatura": "uuid",
+        "verbo": "GRANT",
+        "papel": "dashboard_user"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_psychology_can_write",
+        "assinatura": "uuid",
+        "verbo": "GRANT",
+        "papel": "pgbouncer"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_psychology_can_write",
+        "assinatura": "uuid",
+        "verbo": "GRANT",
+        "papel": "supabase_auth_admin"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_psychology_can_write",
+        "assinatura": "uuid",
+        "verbo": "GRANT",
+        "papel": "supabase_etl_admin"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_psychology_can_write",
+        "assinatura": "uuid",
+        "verbo": "GRANT",
+        "papel": "supabase_functions_admin"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_psychology_can_write",
+        "assinatura": "uuid",
+        "verbo": "GRANT",
+        "papel": "supabase_privileged_role"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_psychology_can_write",
+        "assinatura": "uuid",
+        "verbo": "GRANT",
+        "papel": "supabase_read_only_user"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_psychology_can_write",
+        "assinatura": "uuid",
+        "verbo": "GRANT",
+        "papel": "supabase_replication_admin"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_psychology_record_access",
+        "assinatura": "uuid, uuid, boolean, boolean, boolean",
+        "verbo": "REVOKE",
+        "papel": "anon"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_psychology_record_access",
+        "assinatura": "uuid, uuid, boolean, boolean, boolean",
+        "verbo": "REVOKE",
+        "papel": "PUBLIC"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_psychology_record_access",
+        "assinatura": "uuid, uuid, boolean, boolean, boolean",
+        "verbo": "GRANT",
+        "papel": "dashboard_user"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_psychology_record_access",
+        "assinatura": "uuid, uuid, boolean, boolean, boolean",
+        "verbo": "GRANT",
+        "papel": "pgbouncer"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_psychology_record_access",
+        "assinatura": "uuid, uuid, boolean, boolean, boolean",
+        "verbo": "GRANT",
+        "papel": "supabase_auth_admin"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_psychology_record_access",
+        "assinatura": "uuid, uuid, boolean, boolean, boolean",
+        "verbo": "GRANT",
+        "papel": "supabase_etl_admin"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_psychology_record_access",
+        "assinatura": "uuid, uuid, boolean, boolean, boolean",
+        "verbo": "GRANT",
+        "papel": "supabase_functions_admin"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_psychology_record_access",
+        "assinatura": "uuid, uuid, boolean, boolean, boolean",
+        "verbo": "GRANT",
+        "papel": "supabase_privileged_role"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_psychology_record_access",
+        "assinatura": "uuid, uuid, boolean, boolean, boolean",
+        "verbo": "GRANT",
+        "papel": "supabase_read_only_user"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_psychology_record_access",
+        "assinatura": "uuid, uuid, boolean, boolean, boolean",
+        "verbo": "GRANT",
+        "papel": "supabase_replication_admin"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_psychology_active_professional",
+        "assinatura": "uuid",
+        "verbo": "REVOKE",
+        "papel": "anon"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_psychology_active_professional",
+        "assinatura": "uuid",
+        "verbo": "REVOKE",
+        "papel": "PUBLIC"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_psychology_active_professional",
+        "assinatura": "uuid",
+        "verbo": "GRANT",
+        "papel": "dashboard_user"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_psychology_active_professional",
+        "assinatura": "uuid",
+        "verbo": "GRANT",
+        "papel": "pgbouncer"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_psychology_active_professional",
+        "assinatura": "uuid",
+        "verbo": "GRANT",
+        "papel": "supabase_auth_admin"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_psychology_active_professional",
+        "assinatura": "uuid",
+        "verbo": "GRANT",
+        "papel": "supabase_etl_admin"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_psychology_active_professional",
+        "assinatura": "uuid",
+        "verbo": "GRANT",
+        "papel": "supabase_functions_admin"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_psychology_active_professional",
+        "assinatura": "uuid",
+        "verbo": "GRANT",
+        "papel": "supabase_privileged_role"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_psychology_active_professional",
+        "assinatura": "uuid",
+        "verbo": "GRANT",
+        "papel": "supabase_read_only_user"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_psychology_active_professional",
+        "assinatura": "uuid",
+        "verbo": "GRANT",
+        "papel": "supabase_replication_admin"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_can_manage_student_directory",
+        "assinatura": "",
+        "verbo": "REVOKE",
+        "papel": "anon"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_can_manage_student_directory",
+        "assinatura": "",
+        "verbo": "REVOKE",
+        "papel": "PUBLIC"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_can_manage_student_directory",
+        "assinatura": "",
+        "verbo": "GRANT",
+        "papel": "dashboard_user"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_can_manage_student_directory",
+        "assinatura": "",
+        "verbo": "GRANT",
+        "papel": "pgbouncer"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_can_manage_student_directory",
+        "assinatura": "",
+        "verbo": "GRANT",
+        "papel": "supabase_auth_admin"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_can_manage_student_directory",
+        "assinatura": "",
+        "verbo": "GRANT",
+        "papel": "supabase_etl_admin"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_can_manage_student_directory",
+        "assinatura": "",
+        "verbo": "GRANT",
+        "papel": "supabase_functions_admin"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_can_manage_student_directory",
+        "assinatura": "",
+        "verbo": "GRANT",
+        "papel": "supabase_privileged_role"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_can_manage_student_directory",
+        "assinatura": "",
+        "verbo": "GRANT",
+        "papel": "supabase_read_only_user"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_can_manage_student_directory",
+        "assinatura": "",
+        "verbo": "GRANT",
+        "papel": "supabase_replication_admin"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "aee_game_can_access_student",
+        "assinatura": "uuid",
+        "verbo": "REVOKE",
+        "papel": "anon"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "aee_game_can_access_student",
+        "assinatura": "uuid",
+        "verbo": "REVOKE",
+        "papel": "PUBLIC"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "aee_game_can_access_student",
+        "assinatura": "uuid",
+        "verbo": "GRANT",
+        "papel": "dashboard_user"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "aee_game_can_access_student",
+        "assinatura": "uuid",
+        "verbo": "GRANT",
+        "papel": "pgbouncer"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "aee_game_can_access_student",
+        "assinatura": "uuid",
+        "verbo": "GRANT",
+        "papel": "supabase_auth_admin"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "aee_game_can_access_student",
+        "assinatura": "uuid",
+        "verbo": "GRANT",
+        "papel": "supabase_etl_admin"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "aee_game_can_access_student",
+        "assinatura": "uuid",
+        "verbo": "GRANT",
+        "papel": "supabase_functions_admin"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "aee_game_can_access_student",
+        "assinatura": "uuid",
+        "verbo": "GRANT",
+        "papel": "supabase_privileged_role"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "aee_game_can_access_student",
+        "assinatura": "uuid",
+        "verbo": "GRANT",
+        "papel": "supabase_read_only_user"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "aee_game_can_access_student",
+        "assinatura": "uuid",
+        "verbo": "GRANT",
+        "papel": "supabase_replication_admin"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_learning_is_manager",
+        "assinatura": "",
+        "verbo": "REVOKE",
+        "papel": "anon"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_learning_is_manager",
+        "assinatura": "",
+        "verbo": "REVOKE",
+        "papel": "PUBLIC"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_learning_is_manager",
+        "assinatura": "",
+        "verbo": "GRANT",
+        "papel": "dashboard_user"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_learning_is_manager",
+        "assinatura": "",
+        "verbo": "GRANT",
+        "papel": "pgbouncer"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_learning_is_manager",
+        "assinatura": "",
+        "verbo": "GRANT",
+        "papel": "supabase_auth_admin"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_learning_is_manager",
+        "assinatura": "",
+        "verbo": "GRANT",
+        "papel": "supabase_etl_admin"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_learning_is_manager",
+        "assinatura": "",
+        "verbo": "GRANT",
+        "papel": "supabase_functions_admin"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_learning_is_manager",
+        "assinatura": "",
+        "verbo": "GRANT",
+        "papel": "supabase_privileged_role"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_learning_is_manager",
+        "assinatura": "",
+        "verbo": "GRANT",
+        "papel": "supabase_read_only_user"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_learning_is_manager",
+        "assinatura": "",
+        "verbo": "GRANT",
+        "papel": "supabase_replication_admin"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_is_platform_admin",
+        "assinatura": "",
+        "verbo": "REVOKE",
+        "papel": "anon"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_is_platform_admin",
+        "assinatura": "",
+        "verbo": "REVOKE",
+        "papel": "PUBLIC"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_is_platform_admin",
+        "assinatura": "",
+        "verbo": "GRANT",
+        "papel": "dashboard_user"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_is_platform_admin",
+        "assinatura": "",
+        "verbo": "GRANT",
+        "papel": "pgbouncer"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_is_platform_admin",
+        "assinatura": "",
+        "verbo": "GRANT",
+        "papel": "supabase_auth_admin"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_is_platform_admin",
+        "assinatura": "",
+        "verbo": "GRANT",
+        "papel": "supabase_etl_admin"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_is_platform_admin",
+        "assinatura": "",
+        "verbo": "GRANT",
+        "papel": "supabase_functions_admin"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_is_platform_admin",
+        "assinatura": "",
+        "verbo": "GRANT",
+        "papel": "supabase_privileged_role"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_is_platform_admin",
+        "assinatura": "",
+        "verbo": "GRANT",
+        "papel": "supabase_read_only_user"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_is_platform_admin",
+        "assinatura": "",
+        "verbo": "GRANT",
+        "papel": "supabase_replication_admin"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_is_municipal_authority",
+        "assinatura": "",
+        "verbo": "REVOKE",
+        "papel": "anon"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_is_municipal_authority",
+        "assinatura": "",
+        "verbo": "REVOKE",
+        "papel": "PUBLIC"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_is_municipal_authority",
+        "assinatura": "",
+        "verbo": "GRANT",
+        "papel": "dashboard_user"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_is_municipal_authority",
+        "assinatura": "",
+        "verbo": "GRANT",
+        "papel": "pgbouncer"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_is_municipal_authority",
+        "assinatura": "",
+        "verbo": "GRANT",
+        "papel": "supabase_auth_admin"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_is_municipal_authority",
+        "assinatura": "",
+        "verbo": "GRANT",
+        "papel": "supabase_etl_admin"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_is_municipal_authority",
+        "assinatura": "",
+        "verbo": "GRANT",
+        "papel": "supabase_functions_admin"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_is_municipal_authority",
+        "assinatura": "",
+        "verbo": "GRANT",
+        "papel": "supabase_privileged_role"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_is_municipal_authority",
+        "assinatura": "",
+        "verbo": "GRANT",
+        "papel": "supabase_read_only_user"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_is_municipal_authority",
+        "assinatura": "",
+        "verbo": "GRANT",
+        "papel": "supabase_replication_admin"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_municipalities_visible",
+        "assinatura": "uuid",
+        "verbo": "REVOKE",
+        "papel": "anon"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_municipalities_visible",
+        "assinatura": "uuid",
+        "verbo": "REVOKE",
+        "papel": "PUBLIC"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_municipalities_visible",
+        "assinatura": "uuid",
+        "verbo": "GRANT",
+        "papel": "dashboard_user"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_municipalities_visible",
+        "assinatura": "uuid",
+        "verbo": "GRANT",
+        "papel": "pgbouncer"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_municipalities_visible",
+        "assinatura": "uuid",
+        "verbo": "GRANT",
+        "papel": "supabase_auth_admin"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_municipalities_visible",
+        "assinatura": "uuid",
+        "verbo": "GRANT",
+        "papel": "supabase_etl_admin"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_municipalities_visible",
+        "assinatura": "uuid",
+        "verbo": "GRANT",
+        "papel": "supabase_functions_admin"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_municipalities_visible",
+        "assinatura": "uuid",
+        "verbo": "GRANT",
+        "papel": "supabase_privileged_role"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_municipalities_visible",
+        "assinatura": "uuid",
+        "verbo": "GRANT",
+        "papel": "supabase_read_only_user"
+      },
+      {
+        "ficheiro": "p74-pen44-ddl-candidata.sql",
+        "nome": "bfr_municipalities_visible",
+        "assinatura": "uuid",
+        "verbo": "GRANT",
+        "papel": "supabase_replication_admin"
+      }
+    ]
+  },
+  "por_nome": [
+    {
+      "nome": "acknowledge_occurrence",
+      "oid": "18158",
+      "assinatura": "target_occurrence uuid",
+      "definer": "true",
+      "vol": "v",
+      "acl": "postgres=X/postgres,authenticated=X/postgres,service_role=X/postgres",
+      "anon_pode": false,
+      "authenticated_pode": true,
+      "service_role_pode": true,
+      "corpo_bytes": 831,
+      "entrada_anon_no_acl": false,
+      "papeis_no_acl": [
+        "authenticated",
+        "postgres",
+        "service_role"
+      ],
+      "chamado_pelo_ar": true,
+      "municipal_de_ddl": false,
+      "no_alvo_de_peca_de_graus": false
+    },
+    {
+      "nome": "bfr_correct_grade",
+      "oid": "26520",
+      "assinatura": "p_grade_id uuid, p_new_score numeric, p_reason text",
+      "definer": "true",
+      "vol": "v",
+      "acl": "postgres=X/postgres,authenticated=X/postgres,service_role=X/postgres",
+      "anon_pode": false,
+      "authenticated_pode": true,
+      "service_role_pode": true,
+      "corpo_bytes": 1908,
+      "entrada_anon_no_acl": false,
+      "papeis_no_acl": [
+        "authenticated",
+        "postgres",
+        "service_role"
+      ],
+      "chamado_pelo_ar": true,
+      "municipal_de_ddl": false,
+      "no_alvo_de_peca_de_graus": false
+    },
+    {
+      "nome": "bfr_create_school_meeting",
+      "oid": "23110",
+      "assinatura": "p_title text, p_starts_at timestamp with time zone, p_location text, p_description text, p_notes text, p_group_types text[], p_class_ids uuid[], p_recipient_ids uuid[], p_reminder_days integer, p_reminder_time time without time zone",
+      "definer": "true",
+      "vol": "v",
+      "acl": "postgres=X/postgres,authenticated=X/postgres,service_role=X/postgres,authenticator=X/postgres,dashboard_user=X/postgres,pgbouncer=X/postgres,supabase_admin=X/postgres,supabase_auth_admin=X/postgres,supabase_etl_admin=X/postgres,supabase_functions_admin=X/postgres,supabase_privileged_role=X/postgres,supabase_read_only_user=X/postgres,supabase_realtime_admin=X/postgres,supabase_replication_admin=X/postgres,supabase_storage_admin=X/postgres",
+      "anon_pode": false,
+      "authenticated_pode": true,
+      "service_role_pode": true,
+      "corpo_bytes": 2829,
+      "entrada_anon_no_acl": false,
+      "papeis_no_acl": [
+        "authenticated",
+        "authenticator",
+        "dashboard_user",
+        "pgbouncer",
+        "postgres",
+        "service_role",
+        "supabase_admin",
+        "supabase_auth_admin",
+        "supabase_etl_admin",
+        "supabase_functions_admin",
+        "supabase_privileged_role",
+        "supabase_read_only_user",
+        "supabase_realtime_admin",
+        "supabase_replication_admin",
+        "supabase_storage_admin"
+      ],
+      "chamado_pelo_ar": true,
+      "municipal_de_ddl": false,
+      "no_alvo_de_peca_de_graus": false
+    },
+    {
+      "nome": "bfr_create_targeted_announcement",
+      "oid": "23109",
+      "assinatura": "p_title text, p_body text, p_message_type text, p_group_types text[], p_class_ids uuid[], p_recipient_ids uuid[], p_scheduled_at timestamp with time zone, p_important boolean, p_requires_confirmation boolean, p_meeting_id uuid",
+      "definer": "true",
+      "vol": "v",
+      "acl": "postgres=X/postgres,authenticated=X/postgres,service_role=X/postgres,authenticator=X/postgres,dashboard_user=X/postgres,pgbouncer=X/postgres,supabase_admin=X/postgres,supabase_auth_admin=X/postgres,supabase_etl_admin=X/postgres,supabase_functions_admin=X/postgres,supabase_privileged_role=X/postgres,supabase_read_only_user=X/postgres,supabase_realtime_admin=X/postgres,supabase_replication_admin=X/postgres,supabase_storage_admin=X/postgres",
+      "anon_pode": false,
+      "authenticated_pode": true,
+      "service_role_pode": true,
+      "corpo_bytes": 2713,
+      "entrada_anon_no_acl": false,
+      "papeis_no_acl": [
+        "authenticated",
+        "authenticator",
+        "dashboard_user",
+        "pgbouncer",
+        "postgres",
+        "service_role",
+        "supabase_admin",
+        "supabase_auth_admin",
+        "supabase_etl_admin",
+        "supabase_functions_admin",
+        "supabase_privileged_role",
+        "supabase_read_only_user",
+        "supabase_realtime_admin",
+        "supabase_replication_admin",
+        "supabase_storage_admin"
+      ],
+      "chamado_pelo_ar": true,
+      "municipal_de_ddl": false,
+      "no_alvo_de_peca_de_graus": false
+    },
+    {
+      "nome": "bfr_get_student_photo_path",
+      "oid": "24994",
+      "assinatura": "target_student_id uuid",
+      "definer": "true",
+      "vol": "s",
+      "acl": "postgres=X/postgres,anon=X/postgres,authenticated=X/postgres,service_role=X/postgres",
+      "anon_pode": true,
+      "authenticated_pode": true,
+      "service_role_pode": true,
+      "corpo_bytes": 537,
+      "entrada_anon_no_acl": true,
+      "papeis_no_acl": [
+        "anon",
+        "authenticated",
+        "postgres",
+        "service_role"
+      ],
+      "chamado_pelo_ar": true,
+      "municipal_de_ddl": false,
+      "no_alvo_de_peca_de_graus": false
+    },
+    {
+      "nome": "bfr_is_municipal_authority",
+      "oid": "32752",
+      "assinatura": "",
+      "definer": "true",
+      "vol": "s",
+      "acl": "postgres=X/postgres,authenticated=X/postgres,service_role=X/postgres,dashboard_user=X/postgres,pgbouncer=X/postgres,supabase_auth_admin=X/postgres,supabase_etl_admin=X/postgres,supabase_functions_admin=X/postgres,supabase_privileged_role=X/postgres,supabase_read_only_user=X/postgres,supabase_replication_admin=X/postgres",
+      "anon_pode": false,
+      "authenticated_pode": true,
+      "service_role_pode": true,
+      "corpo_bytes": 713,
+      "entrada_anon_no_acl": false,
+      "papeis_no_acl": [
+        "authenticated",
+        "dashboard_user",
+        "pgbouncer",
+        "postgres",
+        "service_role",
+        "supabase_auth_admin",
+        "supabase_etl_admin",
+        "supabase_functions_admin",
+        "supabase_privileged_role",
+        "supabase_read_only_user",
+        "supabase_replication_admin"
+      ],
+      "chamado_pelo_ar": true,
+      "municipal_de_ddl": false,
+      "no_alvo_de_peca_de_graus": true
+    },
+    {
+      "nome": "bfr_list_staff_birthdays",
+      "oid": "19474",
+      "assinatura": "target_month integer",
+      "definer": "true",
+      "vol": "v",
+      "acl": "postgres=X/postgres,authenticated=X/postgres,service_role=X/postgres",
+      "anon_pode": false,
+      "authenticated_pode": true,
+      "service_role_pode": true,
+      "corpo_bytes": 847,
+      "entrada_anon_no_acl": false,
+      "papeis_no_acl": [
+        "authenticated",
+        "postgres",
+        "service_role"
+      ],
+      "chamado_pelo_ar": true,
+      "municipal_de_ddl": false,
+      "no_alvo_de_peca_de_graus": false
+    },
+    {
+      "nome": "bfr_municipal_distribuicao_por_zona",
+      "oid": "32884",
+      "assinatura": "",
+      "definer": "true",
+      "vol": "s",
+      "acl": "postgres=X/postgres,authenticated=X/postgres,service_role=X/postgres",
+      "anon_pode": false,
+      "authenticated_pode": true,
+      "service_role_pode": true,
+      "corpo_bytes": 599,
+      "entrada_anon_no_acl": false,
+      "papeis_no_acl": [
+        "authenticated",
+        "postgres",
+        "service_role"
+      ],
+      "chamado_pelo_ar": false,
+      "municipal_de_ddl": true,
+      "no_alvo_de_peca_de_graus": true
+    },
+    {
+      "nome": "bfr_municipal_municipio_totais",
+      "oid": "32883",
+      "assinatura": "",
+      "definer": "true",
+      "vol": "s",
+      "acl": "postgres=X/postgres,authenticated=X/postgres,service_role=X/postgres",
+      "anon_pode": false,
+      "authenticated_pode": true,
+      "service_role_pode": true,
+      "corpo_bytes": 1064,
+      "entrada_anon_no_acl": false,
+      "papeis_no_acl": [
+        "authenticated",
+        "postgres",
+        "service_role"
+      ],
+      "chamado_pelo_ar": false,
+      "municipal_de_ddl": true,
+      "no_alvo_de_peca_de_graus": true
+    },
+    {
+      "nome": "bfr_municipal_scope_diagnostico",
+      "oid": "32882",
+      "assinatura": "",
+      "definer": "true",
+      "vol": "s",
+      "acl": "postgres=X/postgres,authenticated=X/postgres,service_role=X/postgres",
+      "anon_pode": false,
+      "authenticated_pode": true,
+      "service_role_pode": true,
+      "corpo_bytes": 958,
+      "entrada_anon_no_acl": false,
+      "papeis_no_acl": [
+        "authenticated",
+        "postgres",
+        "service_role"
+      ],
+      "chamado_pelo_ar": false,
+      "municipal_de_ddl": true,
+      "no_alvo_de_peca_de_graus": true
+    },
+    {
+      "nome": "bfr_resolve_communication_recipients",
+      "oid": "23108",
+      "assinatura": "p_group_types text[], p_class_ids uuid[], p_recipient_ids uuid[]",
+      "definer": "true",
+      "vol": "s",
+      "acl": "postgres=X/postgres,authenticated=X/postgres,service_role=X/postgres,authenticator=X/postgres,dashboard_user=X/postgres,pgbouncer=X/postgres,supabase_admin=X/postgres,supabase_auth_admin=X/postgres,supabase_etl_admin=X/postgres,supabase_functions_admin=X/postgres,supabase_privileged_role=X/postgres,supabase_read_only_user=X/postgres,supabase_realtime_admin=X/postgres,supabase_replication_admin=X/postgres,supabase_storage_admin=X/postgres",
+      "anon_pode": false,
+      "authenticated_pode": true,
+      "service_role_pode": true,
+      "corpo_bytes": 3397,
+      "entrada_anon_no_acl": false,
+      "papeis_no_acl": [
+        "authenticated",
+        "authenticator",
+        "dashboard_user",
+        "pgbouncer",
+        "postgres",
+        "service_role",
+        "supabase_admin",
+        "supabase_auth_admin",
+        "supabase_etl_admin",
+        "supabase_functions_admin",
+        "supabase_privileged_role",
+        "supabase_read_only_user",
+        "supabase_realtime_admin",
+        "supabase_replication_admin",
+        "supabase_storage_admin"
+      ],
+      "chamado_pelo_ar": true,
+      "municipal_de_ddl": false,
+      "no_alvo_de_peca_de_graus": false
+    },
+    {
+      "nome": "bfr_school_set_municipality",
+      "oid": "32881",
+      "assinatura": "p_school uuid, p_municipality uuid, p_reason text",
+      "definer": "true",
+      "vol": "v",
+      "acl": "postgres=X/postgres,anon=X/postgres,authenticated=X/postgres,service_role=X/postgres",
+      "anon_pode": true,
+      "authenticated_pode": true,
+      "service_role_pode": true,
+      "corpo_bytes": 1454,
+      "entrada_anon_no_acl": true,
+      "papeis_no_acl": [
+        "anon",
+        "authenticated",
+        "postgres",
+        "service_role"
+      ],
+      "chamado_pelo_ar": false,
+      "municipal_de_ddl": true,
+      "no_alvo_de_peca_de_graus": true
+    },
+    {
+      "nome": "bfr_set_staff_birthday",
+      "oid": "19475",
+      "assinatura": "target_profile uuid, birthday date",
+      "definer": "true",
+      "vol": "v",
+      "acl": "postgres=X/postgres,authenticated=X/postgres,service_role=X/postgres",
+      "anon_pode": false,
+      "authenticated_pode": true,
+      "service_role_pode": true,
+      "corpo_bytes": 491,
+      "entrada_anon_no_acl": false,
+      "papeis_no_acl": [
+        "authenticated",
+        "postgres",
+        "service_role"
+      ],
+      "chamado_pelo_ar": true,
+      "municipal_de_ddl": false,
+      "no_alvo_de_peca_de_graus": false
+    },
+    {
+      "nome": "bfr_teacher_context",
+      "oid": "21726",
+      "assinatura": "",
+      "definer": "true",
+      "vol": "s",
+      "acl": "postgres=X/postgres,authenticated=X/postgres,service_role=X/postgres",
+      "anon_pode": false,
+      "authenticated_pode": true,
+      "service_role_pode": true,
+      "corpo_bytes": 2947,
+      "entrada_anon_no_acl": false,
+      "papeis_no_acl": [
+        "authenticated",
+        "postgres",
+        "service_role"
+      ],
+      "chamado_pelo_ar": true,
+      "municipal_de_ddl": false,
+      "no_alvo_de_peca_de_graus": false
+    },
+    {
+      "nome": "bfr_teacher_lesson_gate_evidence",
+      "oid": "26396",
+      "assinatura": "target_class uuid, target_date date, target_schedule_entry uuid",
+      "definer": "true",
+      "vol": "s",
+      "acl": "postgres=X/postgres,authenticated=X/postgres,service_role=X/postgres",
+      "anon_pode": false,
+      "authenticated_pode": true,
+      "service_role_pode": true,
+      "corpo_bytes": 14280,
+      "entrada_anon_no_acl": false,
+      "papeis_no_acl": [
+        "authenticated",
+        "postgres",
+        "service_role"
+      ],
+      "chamado_pelo_ar": true,
+      "municipal_de_ddl": false,
+      "no_alvo_de_peca_de_graus": false
+    },
+    {
+      "nome": "bfr_update_school_meeting",
+      "oid": "23228",
+      "assinatura": "p_meeting_id uuid, p_action text, p_starts_at timestamp with time zone",
+      "definer": "true",
+      "vol": "v",
+      "acl": "postgres=X/postgres,authenticated=X/postgres,service_role=X/postgres,authenticator=X/postgres,dashboard_user=X/postgres,pgbouncer=X/postgres,supabase_admin=X/postgres,supabase_auth_admin=X/postgres,supabase_etl_admin=X/postgres,supabase_functions_admin=X/postgres,supabase_privileged_role=X/postgres,supabase_read_only_user=X/postgres,supabase_realtime_admin=X/postgres,supabase_replication_admin=X/postgres,supabase_storage_admin=X/postgres",
+      "anon_pode": false,
+      "authenticated_pode": true,
+      "service_role_pode": true,
+      "corpo_bytes": 2282,
+      "entrada_anon_no_acl": false,
+      "papeis_no_acl": [
+        "authenticated",
+        "authenticator",
+        "dashboard_user",
+        "pgbouncer",
+        "postgres",
+        "service_role",
+        "supabase_admin",
+        "supabase_auth_admin",
+        "supabase_etl_admin",
+        "supabase_functions_admin",
+        "supabase_privileged_role",
+        "supabase_read_only_user",
+        "supabase_realtime_admin",
+        "supabase_replication_admin",
+        "supabase_storage_admin"
+      ],
+      "chamado_pelo_ar": true,
+      "municipal_de_ddl": false,
+      "no_alvo_de_peca_de_graus": false
+    },
+    {
+      "nome": "choose_initial_role",
+      "oid": "18289",
+      "assinatura": "requested_role account_role",
+      "definer": "true",
+      "vol": "v",
+      "acl": "postgres=X/postgres,authenticated=X/postgres,service_role=X/postgres",
+      "anon_pode": false,
+      "authenticated_pode": true,
+      "service_role_pode": true,
+      "corpo_bytes": 739,
+      "entrada_anon_no_acl": false,
+      "papeis_no_acl": [
+        "authenticated",
+        "postgres",
+        "service_role"
+      ],
+      "chamado_pelo_ar": true,
+      "municipal_de_ddl": false,
+      "no_alvo_de_peca_de_graus": false
+    },
+    {
+      "nome": "complete_family_registration",
+      "oid": "21397",
+      "assinatura": "requested_role text, student_name text, student_birth_date date, guardian_name text, guardian_cpf text",
+      "definer": "true",
+      "vol": "v",
+      "acl": "postgres=X/postgres,authenticated=X/postgres,service_role=X/postgres",
+      "anon_pode": false,
+      "authenticated_pode": true,
+      "service_role_pode": true,
+      "corpo_bytes": 8708,
+      "entrada_anon_no_acl": false,
+      "papeis_no_acl": [
+        "authenticated",
+        "postgres",
+        "service_role"
+      ],
+      "chamado_pelo_ar": true,
+      "municipal_de_ddl": false,
+      "no_alvo_de_peca_de_graus": false
+    },
+    {
+      "nome": "confirm_guardian_entry",
+      "oid": "18244",
+      "assinatura": "target_checkin uuid",
+      "definer": "true",
+      "vol": "v",
+      "acl": "postgres=X/postgres,authenticated=X/postgres,service_role=X/postgres",
+      "anon_pode": false,
+      "authenticated_pode": true,
+      "service_role_pode": true,
+      "corpo_bytes": 1354,
+      "entrada_anon_no_acl": false,
+      "papeis_no_acl": [
+        "authenticated",
+        "postgres",
+        "service_role"
+      ],
+      "chamado_pelo_ar": true,
+      "municipal_de_ddl": false,
+      "no_alvo_de_peca_de_graus": false
+    },
+    {
+      "nome": "get_student_guardians",
+      "oid": "17964",
+      "assinatura": "target_student uuid",
+      "definer": "true",
+      "vol": "s",
+      "acl": "postgres=X/postgres,authenticated=X/postgres,service_role=X/postgres",
+      "anon_pode": false,
+      "authenticated_pode": true,
+      "service_role_pode": true,
+      "corpo_bytes": 431,
+      "entrada_anon_no_acl": false,
+      "papeis_no_acl": [
+        "authenticated",
+        "postgres",
+        "service_role"
+      ],
+      "chamado_pelo_ar": true,
+      "municipal_de_ddl": false,
+      "no_alvo_de_peca_de_graus": false
+    },
+    {
+      "nome": "list_current_month_birthdays",
+      "oid": "18966",
+      "assinatura": "target_month integer",
+      "definer": "true",
+      "vol": "s",
+      "acl": "postgres=X/postgres,authenticated=X/postgres,service_role=X/postgres",
+      "anon_pode": false,
+      "authenticated_pode": true,
+      "service_role_pode": true,
+      "corpo_bytes": 854,
+      "entrada_anon_no_acl": false,
+      "papeis_no_acl": [
+        "authenticated",
+        "postgres",
+        "service_role"
+      ],
+      "chamado_pelo_ar": true,
+      "municipal_de_ddl": false,
+      "no_alvo_de_peca_de_graus": false
+    },
+    {
+      "nome": "register_gate_checkin",
+      "oid": "30855",
+      "assinatura": "target_badge_token uuid, gate_direction text, visual_confirmation boolean, intake_source text, target_shift text, exception_reason text",
+      "definer": "true",
+      "vol": "v",
+      "acl": "postgres=X/postgres,authenticated=X/postgres,service_role=X/postgres",
+      "anon_pode": false,
+      "authenticated_pode": true,
+      "service_role_pode": true,
+      "corpo_bytes": 3868,
+      "entrada_anon_no_acl": false,
+      "papeis_no_acl": [
+        "authenticated",
+        "postgres",
+        "service_role"
+      ],
+      "chamado_pelo_ar": true,
+      "municipal_de_ddl": false,
+      "no_alvo_de_peca_de_graus": false
+    },
+    {
+      "nome": "register_gate_checkin_v2",
+      "oid": "32918",
+      "assinatura": "target_badge_token uuid, gate_direction text, visual_confirmation boolean, intake_source text, target_shift text, exception_reason text",
+      "definer": "true",
+      "vol": "v",
+      "acl": "postgres=X/postgres,authenticated=X/postgres,service_role=X/postgres",
+      "anon_pode": false,
+      "authenticated_pode": true,
+      "service_role_pode": true,
+      "corpo_bytes": 1096,
+      "entrada_anon_no_acl": false,
+      "papeis_no_acl": [
+        "authenticated",
+        "postgres",
+        "service_role"
+      ],
+      "chamado_pelo_ar": true,
+      "municipal_de_ddl": false,
+      "no_alvo_de_peca_de_graus": true
+    },
+    {
+      "nome": "set_profile_role",
+      "oid": "24954",
+      "assinatura": "target_profile_id uuid, target_role account_role, target_full_name text",
+      "definer": "true",
+      "vol": "v",
+      "acl": "postgres=X/postgres,authenticated=X/postgres,service_role=X/postgres,supabase_admin=X/postgres",
+      "anon_pode": false,
+      "authenticated_pode": true,
+      "service_role_pode": true,
+      "corpo_bytes": 644,
+      "entrada_anon_no_acl": false,
+      "papeis_no_acl": [
+        "authenticated",
+        "postgres",
+        "service_role",
+        "supabase_admin"
+      ],
+      "chamado_pelo_ar": true,
+      "municipal_de_ddl": false,
+      "no_alvo_de_peca_de_graus": false
+    },
+    {
+      "nome": "sports_rebuild_standings",
+      "oid": "22779",
+      "assinatura": "target_championship uuid",
+      "definer": "true",
+      "vol": "v",
+      "acl": "postgres=X/postgres,authenticated=X/postgres,service_role=X/postgres",
+      "anon_pode": false,
+      "authenticated_pode": true,
+      "service_role_pode": true,
+      "corpo_bytes": 1886,
+      "entrada_anon_no_acl": false,
+      "papeis_no_acl": [
+        "authenticated",
+        "postgres",
+        "service_role"
+      ],
+      "chamado_pelo_ar": true,
+      "municipal_de_ddl": false,
+      "no_alvo_de_peca_de_graus": false
+    },
+    {
+      "nome": "sports_record_event",
+      "oid": "22778",
+      "assinatura": "target_match uuid, target_team uuid, event_type_value text, points_delta integer, period_label text, clock_seconds_value integer, athlete_id_value uuid, event_description text, client_event_id_value uuid",
+      "definer": "true",
+      "vol": "v",
+      "acl": "postgres=X/postgres,authenticated=X/postgres,service_role=X/postgres",
+      "anon_pode": false,
+      "authenticated_pode": true,
+      "service_role_pode": true,
+      "corpo_bytes": 2808,
+      "entrada_anon_no_acl": false,
+      "papeis_no_acl": [
+        "authenticated",
+        "postgres",
+        "service_role"
+      ],
+      "chamado_pelo_ar": true,
+      "municipal_de_ddl": false,
+      "no_alvo_de_peca_de_graus": false
+    },
+    {
+      "nome": "sports_set_match_status",
+      "oid": "22777",
+      "assinatura": "target_match uuid, next_status text, next_period text, next_clock_seconds integer",
+      "definer": "true",
+      "vol": "v",
+      "acl": "postgres=X/postgres,authenticated=X/postgres,service_role=X/postgres",
+      "anon_pode": false,
+      "authenticated_pode": true,
+      "service_role_pode": true,
+      "corpo_bytes": 1584,
+      "entrada_anon_no_acl": false,
+      "papeis_no_acl": [
+        "authenticated",
+        "postgres",
+        "service_role"
+      ],
+      "chamado_pelo_ar": true,
+      "municipal_de_ddl": false,
+      "no_alvo_de_peca_de_graus": false
+    }
+  ],
+  "classes": {
+    "no_alvo_e_anon_pode": {
+      "total": 1,
+      "nomes": [
+        "bfr_school_set_municipality"
+      ]
+    },
+    "no_alvo_e_anon_nao_pode": {
+      "total": 5,
+      "nomes": [
+        "bfr_is_municipal_authority",
+        "bfr_municipal_distribuicao_por_zona",
+        "bfr_municipal_municipio_totais",
+        "bfr_municipal_scope_diagnostico",
+        "register_gate_checkin_v2"
+      ]
+    },
+    "fora_do_alvo_e_anon_pode": {
+      "total": 1,
+      "nomes": [
+        "bfr_get_student_photo_path"
+      ]
+    },
+    "fora_do_alvo_e_anon_nao_pode": {
+      "total": 20,
+      "nomes": [
+        "acknowledge_occurrence",
+        "bfr_correct_grade",
+        "bfr_create_school_meeting",
+        "bfr_create_targeted_announcement",
+        "bfr_list_staff_birthdays",
+        "bfr_resolve_communication_recipients",
+        "bfr_set_staff_birthday",
+        "bfr_teacher_context",
+        "bfr_teacher_lesson_gate_evidence",
+        "bfr_update_school_meeting",
+        "choose_initial_role",
+        "complete_family_registration",
+        "confirm_guardian_entry",
+        "get_student_guardians",
+        "list_current_month_birthdays",
+        "register_gate_checkin",
+        "set_profile_role",
+        "sports_rebuild_standings",
+        "sports_record_event",
+        "sports_set_match_status"
+      ]
+    }
+  },
+  "ausente_no_catalogo": {
+    "total": 2,
+    "nomes": [
+      "bfr_confirm_school_calendar",
+      "correct_gate_attendance"
+    ]
+  },
+  "censo_do_esquema_inteiro": {
+    "total": 163,
+    "anon_pode": 19,
+    "anon_por_entrada": 15,
+    "acl_nula": 0
+  },
+  "contraste_com_registo_da_pen48": {
+    "total": {
+      "registro_pen48": 163,
+      "hoje": 163,
+      "delta": 0
+    },
+    "anon_pode": {
+      "registro_pen48": 19,
+      "hoje": 19,
+      "delta": 0
+    },
+    "anon_por_entrada": {
+      "registro_pen48": 15,
+      "hoje": 15,
+      "delta": 0
+    },
+    "acl_nula": {
+      "registro_pen48": 0,
+      "hoje": 0,
+      "delta": 0
+    }
+  },
+  "acl_do_alvo_no_registo": "postgres=X/postgres,authenticated=X/postgres,service_role=X/postgres",
+  "entrada_anon_distinta_no_corpus": [
+    false,
+    true
+  ],
+  "fixtures": {
+    "classes": {
+      "no_alvo_e_anon_pode": [
+        "f_no_alvo_aberto"
+      ],
+      "no_alvo_e_anon_nao_pode": [
+        "f_no_alvo_fechado"
+      ],
+      "fora_do_alvo_e_anon_pode": [
+        "f_fora_aberto"
+      ],
+      "fora_do_alvo_e_anon_nao_pode": [
+        "f_fora_fechado"
+      ]
+    },
+    "predicados": {
+      "entrada_anon_positivo": true,
+      "entrada_anon_negativo_na_acl_apertada": false,
+      "entrada_anon_negativa_so_no_nome": false,
+      "papeis_da_acl_apertada": [
+        "authenticated",
+        "postgres",
+        "service_role"
+      ],
+      "papeis_do_default": [],
+      "leitura_negativa": false
+    },
+    "extractor_alvo": {
+      "com_despir": [
+        "GRANT:uma_funcao:authenticated",
+        "REVOKE:outra:anon"
+      ],
+      "sem_despir": [
+        "uma_funcao",
+        "outra",
+        "comentario"
+      ],
+      "esperado": [
+        "GRANT:uma_funcao:authenticated",
+        "REVOKE:outra:anon"
+      ]
+    }
+  },
+  "o_que_prova": "quais nomes que o ar servido chama ou que as candidatas municipais criam tem hoje EXECUTE a anon no catalogo vivo, medido com as predicas e a query do preflight da PEN-48, e quantos desses nunca aparecem como alvo de um REVOKE/GRANT EXECUTE escrito pela casa.",
+  "o_que_NAO_prova": "que uma pessoa sem sessao receba dados de um nome aberto: RLS, colunas e argumentos nao se leem num ACL, e esta peca nao chamou /rpc nenhuma vez. Nao prova nada sobre os nomes de public que o front nao chama nem as candidatas criam (o denominador deles e o censo). Nao autoriza REVOKE nenhum: uma peca de graus continua a pedir a sua frase literal.",
+  "portoes": {
+    "total": 13,
+    "falhas": 0,
+    "lista": [
+      {
+        "nome": "a_identidade_do_ar_bate_com_o_diario_de_publicacao",
+        "verde": true,
+        "obtido": true,
+        "esperado": true,
+        "detalhe": {
+          "diario": "audit-publicacao-v142.json",
+          "versao_registada": 142,
+          "url_lida_do_diario": "https://bfr-conecta.turmaroboticabfr.workers.dev",
+          "bytes_no_diario": 3556664,
+          "md5_no_diario": "0e22e78fe1e0ce929ec4717f86365ad9",
+          "bytes_apanhados": 3556664,
+          "md5_apanhado": "0e22e78fe1e0ce929ec4717f86365ad9",
+          "ar_bate_com_o_diario": true
+        }
+      },
+      {
+        "nome": "o_bundle_varrido_pelo_p126_e_o_mesmo_ar_do_diario",
+        "verde": true,
+        "obtido": [
+          true,
+          true
+        ],
+        "esperado": [
+          true,
+          true
+        ],
+        "detalhe": {
+          "caminho": "bfr-candidata-v142-painel-na-troca/index.html",
+          "bytes_declarados": 3556664,
+          "md5_declarado": "0e22e78fe1e0ce929ec4717f86365ad9",
+          "bytes_em_disco": 3556664,
+          "md5_em_disco": "0e22e78fe1e0ce929ec4717f86365ad9",
+          "disco_bate_com_o_registro_p126": true,
+          "bundle_e_o_ar_do_diario": true
+        }
+      },
+      {
+        "nome": "as_predicas_de_acl_sao_as_do_preflight_da_pen48",
+        "verde": true,
+        "obtido": 3,
+        "esperado": 3,
+        "detalhe": {
+          "lidas": [
+            true,
+            true,
+            true
+          ],
+          "ficheiro": "scripts/p73-pen48-preflight.mjs"
+        }
+      },
+      {
+        "nome": "a_query_do_censo_e_a_do_produtor",
+        "verde": true,
+        "obtido": true,
+        "esperado": true,
+        "detalhe": {
+          "caracteres": 396,
+          "colunas": 4
+        }
+      },
+      {
+        "nome": "o_extractor_de_alvo_apanha_a_linha_aplicada_da_pen48",
+        "verde": true,
+        "obtido": true,
+        "esperado": true,
+        "detalhe": [
+          {
+            "ficheiro": "p73-pen48-ddl-candidata.sql",
+            "nome": "register_gate_checkin_v2",
+            "assinatura": "uuid, text, boolean, text, text, text",
+            "verbo": "REVOKE",
+            "papel": "anon"
+          }
+        ]
+      },
+      {
+        "nome": "o_extractor_de_alvo_dispara_no_fixture_e_na_pega_do_comentario",
+        "verde": true,
+        "obtido": [
+          "GRANT:uma_funcao:authenticated",
+          "REVOKE:outra:anon"
+        ],
+        "esperado": [
+          "GRANT:uma_funcao:authenticated",
+          "REVOKE:outra:anon"
+        ],
+        "detalhe": {
+          "obtido": [
+            "GRANT:uma_funcao:authenticated",
+            "REVOKE:outra:anon"
+          ],
+          "esperado": [
+            "GRANT:uma_funcao:authenticated",
+            "REVOKE:outra:anon"
+          ]
+        }
+      },
+      {
+        "nome": "cada_classe_de_classificador_tem_positivo_em_fixture",
+        "verde": true,
+        "obtido": true,
+        "esperado": true,
+        "detalhe": {
+          "no_alvo_e_anon_pode": [
+            "f_no_alvo_aberto"
+          ],
+          "no_alvo_e_anon_nao_pode": [
+            "f_no_alvo_fechado"
+          ],
+          "fora_do_alvo_e_anon_pode": [
+            "f_fora_aberto"
+          ],
+          "fora_do_alvo_e_anon_nao_pode": [
+            "f_fora_fechado"
+          ]
+        }
+      },
+      {
+        "nome": "os_predicados_de_acl_tem_positivo_e_negativo_em_fixture",
+        "verde": true,
+        "obtido": true,
+        "esperado": true,
+        "detalhe": {
+          "entrada_anon_positivo": true,
+          "entrada_anon_negativo_na_acl_apertada": false,
+          "entrada_anon_negativa_so_no_nome": false,
+          "papeis_da_acl_apertada": [
+            "authenticated",
+            "postgres",
+            "service_role"
+          ],
+          "papeis_do_default": [],
+          "leitura_negativa": false
+        }
+      },
+      {
+        "nome": "nenhum_nome_do_universo_fica_fora_das_quatro_classes",
+        "verde": true,
+        "obtido": 29,
+        "esperado": 29,
+        "detalhe": {
+          "linhas": 27,
+          "ausentes": 2,
+          "universo": 29
+        }
+      },
+      {
+        "nome": "o_nome_aplicado_pela_pen48_esta_fechado_hoje",
+        "verde": true,
+        "obtido": [
+          1,
+          false,
+          false
+        ],
+        "esperado": [
+          1,
+          false,
+          false
+        ],
+        "detalhe": [
+          {
+            "nome": "register_gate_checkin_v2",
+            "oid": "32918",
+            "assinatura": "target_badge_token uuid, gate_direction text, visual_confirmation boolean, intake_source text, target_shift text, exception_reason text",
+            "definer": "true",
+            "vol": "v",
+            "acl": "postgres=X/postgres,authenticated=X/postgres,service_role=X/postgres",
+            "anon_pode": false,
+            "authenticated_pode": true,
+            "service_role_pode": true,
+            "corpo_bytes": 1096,
+            "entrada_anon_no_acl": false,
+            "papeis_no_acl": [
+              "authenticated",
+              "postgres",
+              "service_role"
+            ],
+            "chamado_pelo_ar": true,
+            "municipal_de_ddl": false,
+            "no_alvo_de_peca_de_graus": true
+          }
+        ]
+      },
+      {
+        "nome": "a_guarda_de_leitura_aborta_antes_de_chegar_ao_banco",
+        "verde": true,
+        "obtido": [
+          true,
+          false
+        ],
+        "esperado": [
+          true,
+          false
+        ],
+        "detalhe": {
+          "mensagem": "REVOKE passado a q() na corrida"
+        }
+      },
+      {
+        "nome": "o_despir_de_comentarios_tem_os_dois_lados_no_fixture",
+        "verde": true,
+        "obtido": [
+          [
+            "GRANT:uma_funcao:authenticated",
+            "REVOKE:outra:anon"
+          ],
+          [
+            "uma_funcao",
+            "outra",
+            "comentario"
+          ]
+        ],
+        "esperado": [
+          [
+            "GRANT:uma_funcao:authenticated",
+            "REVOKE:outra:anon"
+          ],
+          [
+            "uma_funcao",
+            "outra",
+            "comentario"
+          ]
+        ],
+        "detalhe": {
+          "com_despir": [
+            "GRANT:uma_funcao:authenticated",
+            "REVOKE:outra:anon"
+          ],
+          "sem_despir": [
+            "uma_funcao",
+            "outra",
+            "comentario"
+          ]
+        }
+      },
+      {
+        "nome": "o_resumo_de_classes_imprime_as_quatro_com_corpus_vazio_e_cheio",
+        "verde": true,
+        "obtido": [
+          4,
+          0,
+          4,
+          1
+        ],
+        "esperado": [
+          4,
+          0,
+          4,
+          1
+        ],
+        "detalhe": {
+          "vazio": {
+            "no_alvo_e_anon_pode": {
+              "total": 0,
+              "nomes": []
+            },
+            "no_alvo_e_anon_nao_pode": {
+              "total": 0,
+              "nomes": []
+            },
+            "fora_do_alvo_e_anon_pode": {
+              "total": 0,
+              "nomes": []
+            },
+            "fora_do_alvo_e_anon_nao_pode": {
+              "total": 0,
+              "nomes": []
+            }
+          },
+          "fixture": {
+            "no_alvo_e_anon_pode": {
+              "total": 1,
+              "nomes": [
+                "f_no_alvo_aberto"
+              ]
+            },
+            "no_alvo_e_anon_nao_pode": {
+              "total": 1,
+              "nomes": [
+                "f_no_alvo_fechado"
+              ]
+            },
+            "fora_do_alvo_e_anon_pode": {
+              "total": 1,
+              "nomes": [
+                "f_fora_aberto"
+              ]
+            },
+            "fora_do_alvo_e_anon_nao_pode": {
+              "total": 1,
+              "nomes": [
+                "f_fora_fechado"
+              ]
+            }
+          }
+        }
+      }
+    ]
+  },
+  "veredito": "P139_ALVOS_MEDIDO 13/0 · universo 29 · anon_pode_fora_do_alvo 1 · censo 19/15 de 163"
+}
