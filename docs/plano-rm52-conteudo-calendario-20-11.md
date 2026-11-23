@@ -261,6 +261,18 @@ sem porta de escola é exatamente tão largo quanto a policy de escrita que já 
 interno («todas as datas presentes, exatamente uma vez») é o que impede a função de confirmar um ano
 incompleto, e um `CHECK`/policy não sabe contar o conjunto das datas.
 
+**Correção datada 23/11:** a forma ficou escrita na candidata
+`scripts/p145-a1-confirmar-calendario-ddl-candidata.sql` (pré-voo 35/0 contra o catálogo vivo,
+**sem aplicar**), com três divergências medidas da forma proposta acima: (i) a função confirma
+**só os dias** e devolve a contagem (`RETURNS bigint`), porque o consumidor v142 medido
+(`app/index.html:15334-15336`) imprime `${data||0} datas confirmadas` e avisa que «a gestão ainda
+precisa confirmar os horários dos turnos» — os turnos confirmam-se pelo formulário de horários
+(checkbox, `app/index.html:15303`), não pelo A1; (ii) a porta por papel vive **no corpo** da função
+(RAISE com os 3 papéis de §9-D2), além do GRANT a authenticated — com FORCE RLS, o UPDATE continua
+a passar pela política `managers_write`, e a checagem explícita evita o «0 datas confirmadas»
+silencioso para quem não tem papel; (iii) o portão de completude é por **ano civil** (365/366 datas
+distintas, a primeira em 01/01 e a última em 31/12), que é a forma da semente p144.
+
 Depois de qualquer DDL de função é preciso recarregar o cache do PostgREST; um `404/PGRST202` que
 persiste depois da criação é cache, não ausência. Por isso o critério de fecho é o **fio**, não o
 `pg_proc`.
@@ -274,6 +286,9 @@ persiste depois da criação é cache, não ausência. Por isso o critério de f
   `as_tres_mesas_continuam_vazias_e_a_escrita_de_calendario_nao_tem_politica_para_secretary` **por
   desenho**: nesse dia re-corre-se para um artefacto novo, com o veredito esperado mudado no nome,
   e não se edita a semente à espera de um verde velho.
+  **Correção datada 23/11:** o A1 confirma só os dias (correção datada de §7); a parte dos turnos do
+  P2 satisfaz-se pelo formulário de horários, e a semente é **1** linha (matutino), não 2 — o
+  vespertino fica por semear porque não tem horas medidas em lado nenhum.
 - **P3 — portão da portaria em aberto.** Com P1+P2, `gateReady()` dá verdadeiro dentro da janela do
   turno e `gateLegacyMode()` continua `false`. Verifica-se fora do ar: as cinco funções de §2
   compiam-se em `node:vm` no instrumento do estado, pelo que basta re-correr a tabela de verdade com
