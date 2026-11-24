@@ -7,6 +7,9 @@
 // se divergirem, a linha e DIVERGENTE e imprime-se para leitura humana, nunca para escolha minha.
 // A data de um sinal e a mais proxima num janela de 40 caracteres para cada lado, porque o ledger escreve
 // tanto «FECHADA 13/11» (data depois) como «[18/11 §SM.22: ...]» (data antes).
+// Um segundo vocabulario (ACAO_NOMEADA, oito familias) parte a classe sem familia de OK nas duas faces que o rotulo
+// antigo misturava: a celula que nomeia na propria prosa um passo que nao e leitura minha, e a que nao nomeia passo
+// nenhum. As quatro familias de OK nao foram tocadas — somou-se uma régua nova, nao se alargou a velha.
 import fs from 'node:fs';
 import { execFileSync } from 'node:child_process';
 import { createHash } from 'node:crypto';
@@ -142,14 +145,53 @@ const OK_EXIGIDO = [
   ['decisao humana (produto ou aparelho)', /decis|op[çc][ãa]o|escolh|aparelho|f[íi]sic|hardware|celular/i],
 ];
 
+// As oito familias abaixo nao substituem as quatro de cima: somam-se e separam o que o rotulo «nenhum» chamava uma
+// coisa so. Uma celula pode nao dizer nenhuma das quatro palavras de OK e ainda assim nomear, na sua propria prosa, o
+// passo que nao e meu — escrever no produto, publicar, pedir cadeia viva, tocar no indice. Quantas caem em cada face
+// imprime-o scripts/p167-vocabulario-das-acoes-nomeadas.mjs, que recorta estas mesmas constantes do ficheiro presente
+// e aborta se nao as ler; este comentario nao replica as contas, porque elas envelhecem com a prosa do ledger e um
+// comentario nao pode envelhecer sozinho. Cada familia traz fixture proprio (o lado que tem de disparar) e ha um
+// controlo negativo comum (a frase em que nenhuma pode disparar): sem os dois, uma familia que nao casa nada e um
+// ramo morto que passa por medida.
+const ACAO_NOMEADA = [
+  ['ok_literal_nomeado', /\bOK\b/, 'a transicao pede candidata e OK proprios'],
+  ['candidata', /candidata/i, 'isto precisa de candidata nova'],
+  ['escrita', /escrita|escrever\b|\bescreve\b/i, 'mover o texto e escrita no produto'],
+  ['browser_ou_cadeia_viva', /medi[cç][aã]o de browser|cadeia viva|autenticad|re-login|toque e paint/i, 'exige medicao de browser com cadeia viva autenticada'],
+  ['re_execucao', /re-?executar|re-?correr o cen[aá]rio|executar escreve/i, 'o que falta e re-executar com as cadeias vivas'],
+  ['indice_ou_gitignore', /gitignore|para o [ií]ndice|version[aá]r/i, 'toca o .gitignore e pede versao'],
+  ['implementar', /implementar/i, 'implementar o offline e escrita no produto'],
+  ['nova_versao', /nova vers[ãa]o|vers[ãa]o candidata/i, 'fecha com uma nova versao do pacote'],
+];
+const CONTROLO_NEGATIVO_DE_FAMILIA = 'o censo registado bate com a ficha e nao ha mais nada a dizer';
+
+function acoesNomeadas(texto) {
+  const hits = [];
+  for (const [nome, re] of ACAO_NOMEADA) {
+    const g = new RegExp(re.source, re.flags.includes('g') ? re.flags : re.flags + 'g');
+    let m;
+    let n = 0;
+    let primeiro = null;
+    while ((m = g.exec(texto)) !== null) {
+      n++;
+      if (primeiro === null) primeiro = texto.slice(Math.max(0, m.index - 12), m.index + m[0].length + 12);
+      if (m.index === g.lastIndex) g.lastIndex++;
+    }
+    if (n) hits.push({ nome, ocorrencias: n, gatilho: primeiro });
+  }
+  return hits;
+}
+
 function okExigido(texto) {
   const hits = [];
   for (const [nome, re] of OK_EXIGIDO) {
     const m = texto.match(re);
     if (m) hits.push({ exigido: nome, gatilho: m[0].slice(0, 40) });
   }
-  return hits.length ? hits : [{ exigido: 'nenhum: medicao ou leitura minha', gatilho: '-' }];
+  return hits.length ? hits : [{ exigido: 'nenhum_familia_de_ok_lida', gatilho: '-' }];
 }
+const SEM_FAMILIA_DE_OK = 'nenhum_familia_de_ok_lida';
+
 
 const rows = linhas.filter((l) => /^\| PEN-\d+ \|/.test(l));
 const foraDeForma = [];
@@ -167,6 +209,7 @@ for (const r of rows) {
   if (prefixo) codigosNoInicio[prefixo[1]] = (codigosNoInicio[prefixo[1]] || 0) + 1;
   const pri = c[4].trim();
   if (!CODIGOS_PRIORIDADE.includes(pri)) prioridadesForaDaLegenda[pri] = (prioridadesForaDaLegenda[pri] || 0) + 1;
+  const lido = item + ' ' + estado;
   itens.push({
     id, tipo: c[3].trim(), pri: pri,
     classe: av.classe,
@@ -175,7 +218,9 @@ for (const r of rows) {
     por_data: av.porData ? av.porData.nome + ' ' + av.porData.data : '-',
     recorte: av.vencedor ? av.vencedor.recorte.slice(0, 170) : estado.slice(0, 170),
     n_sinais: av.s.length,
-    ok: okExigido(item + ' ' + estado),
+    texto_lido: lido,
+    ok: okExigido(lido),
+    acao: acoesNomeadas(lido),
     bytes_estado: Buffer.byteLength(estado),
   });
 }
@@ -312,6 +357,39 @@ const semClasse = itens.filter((i) => !CLASSES.includes(i.classe)).map((i) => i.
 const abertasComRegisto = itens.filter((i) => i.classe === 'ABERTA' && i.registo_aplicacao).map((i) => i.id);
 
 const vocabOk = Object.values(registos).map((r) => r.ok_literal_usado).filter(Boolean);
+
+// A face nova do vocabulario, medida sobre a mesma string que a regua de OK le (titulo + Estado, separados por um
+// espaco). As duas faces da classe sem familia de OK imprimem-se mesmo quando vazias: suprimir uma face era o mesmo
+// defeito do portao que proibia uma classe legítima (§SM.33) — «nao sei» nao pode passar a «nao existe».
+const usoFamilia = (familia, textos) => {
+  const uso = {};
+  for (const [nome] of familia) uso[nome] = 0;
+  for (const t of textos) {
+    for (const [nome, re] of familia) {
+      const g = new RegExp(re.source, re.flags.includes('g') ? re.flags : re.flags + 'g');
+      if (g.test(t)) uso[nome]++;
+    }
+  }
+  return uso;
+};
+const semFamilia = itens.filter((i) => i.ok.length === 1 && i.ok[0].exigido === SEM_FAMILIA_DE_OK);
+const comFamilia = itens.filter((i) => !(i.ok.length === 1 && i.ok[0].exigido === SEM_FAMILIA_DE_OK));
+const facesDaClasseSemFamilia = {
+  com_acao_nomeada: semFamilia.filter((i) => i.acao.length > 0).map((i) => i.id),
+  sem_passo_nomeado: semFamilia.filter((i) => i.acao.length === 0).map((i) => i.id),
+};
+const usoAcaoNoCorpus = usoFamilia(ACAO_NOMEADA, itens.map((i) => i.texto_lido));
+const usoAcaoNaClasseSemFamilia = usoFamilia(ACAO_NOMEADA, semFamilia.map((i) => i.texto_lido));
+const usoAcaoNosFixtures = usoFamilia(ACAO_NOMEADA, ACAO_NOMEADA.map((f) => f[2]));
+const fixturesDeAcaoQueFalham = ACAO_NOMEADA.filter(([, re, fix]) => !re.test(fix)).map(([nome]) => nome);
+const familiasQueDisparamNoControloNegativo = ACAO_NOMEADA.filter(([, re]) => re.test(CONTROLO_NEGATIVO_DE_FAMILIA)).map(([nome]) => nome);
+const particaoDasQuatroFaces = {
+  so_familia_de_ok: comFamilia.filter((i) => i.acao.length === 0).map((i) => i.id),
+  familia_de_ok_e_acao_nomeada: comFamilia.filter((i) => i.acao.length > 0).map((i) => i.id),
+  so_acao_nomeada: facesDaClasseSemFamilia.com_acao_nomeada,
+  nenhuma_das_duas: facesDaClasseSemFamilia.sem_passo_nomeado,
+};
+
 const portoes = [];
 const gate = (nome, ob, esp) => portoes.push({ nome, obtido: ob, esperado: esp, ok: JSON.stringify(ob) === JSON.stringify(esp) });
 gate('todas_as_linhas_pen_tem_cinco_celulas', foraDeForma.length, 0);
@@ -337,6 +415,11 @@ const linhasDoProdutor = mCuenta ? +mCuenta[1] : null;
 const idsUnicosDoProdutor = mUnicas ? +mUnicas[1] : null;
 gate('o_meu_censo_bate_com_o_contador_versionado_do_ledger', [linhasDoProdutor, idsUnicosDoProdutor], [itens.length + foraDeForma.length, new Set(itens.map((i) => i.id)).size]);
 gate('todo_registo_de_aplicacao_traz_a_frase_de_ok_com_que_foi_autorizado', [Object.keys(registos).length, vocabOk.length], [vocabOk.length, vocabOk.length]);
+gate('cada_familia_de_acao_nomeada_dispara_no_fixture_que_lhe_foi_posto', fixturesDeAcaoQueFalham, []);
+gate('nenhuma_familia_de_acao_nomeada_dispara_no_controlo_negativo', familiasQueDisparamNoControloNegativo, []);
+gate('a_classe_sem_familia_de_ok_e_exactamente_a_soma_das_suas_duas_faces',
+  [facesDaClasseSemFamilia.com_acao_nomeada.length + facesDaClasseSemFamilia.sem_passo_nomeado.length, semFamilia.length], [semFamilia.length, semFamilia.length]);
+gate('as_quatro_familias_de_ok_do_desenho_continuam_os_quatro_nomes_e_a_mesma_ordem', OK_EXIGIDO.map(([n]) => n), ['OK de publicacao', 'OK de aplicacao de DDL', 'OK de mint ou rotacao de senha', 'decisao humana (produto ou aparelho)']);
 const falhas = portoes.filter((p) => !p.ok);
 const emissor = fs.readFileSync(REPO + '/scripts/p133-inventario-das-pendencias-abertas.mjs', 'utf8');
 
@@ -345,7 +428,7 @@ const saida = {
   rotulo: process.env.P133_ROTULO || 'a',
   em: new Date().toISOString(),
   pergunta: 'quais pendencias estao mesmo abertas, por que classe medida, e que OK cada uma exige?',
-  metodo: `todas as linhas PEN lidas com a predica do produtor (pipes escapados nao separam celulas, sete partes por split); classe = os dois veredictos da celula (ultimo sinal por posicao e sinal com a data mais recente) quando concordam, DIVERGENTE quando divergem, SEM_DECLARACAO quando a celula nao tem nenhum idiom; os idioms sao as formas medidas no corpus (p133-sonda-idiomas.cjs, p133-sonda-prefixos.cjs, p135-sonda-adendos-de-fecho.cjs, que leem esta mesma fonte em vez de re-dactilografar as predicas), com as abreviaturas lidas da propria linha da legenda de status e nao dactilografadas; a palavra solta «abert» esta fora das familias porque tres das suas ocorrencias descrevem superficie e nao estado; a janela entre a palavra de fecho e a data e a const JANELA_FECHO, contada no corpus (${intervalosCorpus.ocorrencias} ocorrencias, histograma publicado em janela_de_fecho) e vigiada pelo portao do mesmo nome; ha uma segunda janela, JANELA_ADENDO, para a forma em que a data vem ANTES da palavra («Adendo §SM.28 (21/11): FECHADA», ${adendoCorpus.ocorrencias} ocorrencia no corpus, corrida de pontuacao medida em ${JSON.stringify(adendoCorpus.histograma)} pela sonda p135), tambem ela vigiada por portao proprio com fixture nos dois sentidos; registro de aplicacao lido com o filtro do portao do pacote (modo=aplicacao e escrito_no_banco=true); seccao 13 e o censo PEN contados pelos produtores versionados por execFile, nao por reimplementacao.`,
+  metodo: `todas as linhas PEN lidas com a predica do produtor (pipes escapados nao separam celulas, sete partes por split); classe = os dois veredictos da celula (ultimo sinal por posicao e sinal com a data mais recente) quando concordam, DIVERGENTE quando divergem, SEM_DECLARACAO quando a celula nao tem nenhum idiom; os idioms sao as formas medidas no corpus (p133-sonda-idiomas.cjs, p133-sonda-prefixos.cjs, p135-sonda-adendos-de-fecho.cjs, que leem esta mesma fonte em vez de re-dactilografar as predicas), com as abreviaturas lidas da propria linha da legenda de status e nao dactilografadas; a palavra solta «abert» esta fora das familias porque tres das suas ocorrencias descrevem superficie e nao estado; a janela entre a palavra de fecho e a data e a const JANELA_FECHO, contada no corpus (${intervalosCorpus.ocorrencias} ocorrencias, histograma publicado em janela_de_fecho) e vigiada pelo portao do mesmo nome; ha uma segunda janela, JANELA_ADENDO, para a forma em que a data vem ANTES da palavra («Adendo §SM.28 (21/11): FECHADA», ${adendoCorpus.ocorrencias} ocorrencia no corpus, corrida de pontuacao medida em ${JSON.stringify(adendoCorpus.histograma)} pela sonda p135), tambem ela vigiada por portao proprio com fixture nos dois sentidos; registro de aplicacao lido com o filtro do portao do pacote (modo=aplicacao e escrito_no_banco=true); seccao 13 e o censo PEN contados pelos produtores versionados por execFile, nao por reimplementacao; ha um segundo vocabulario, ACAO_NOMEADA, com ${ACAO_NOMEADA.length} familias que leem na prosa da celula um passo que nao pertence a nenhuma das quatro familias de OK — cada familia com fixture proprio e um controlo negativo comum, e a classe sem familia de OK partida nas duas faces publicadas (acao nomeada / passo nenhum). A etiqueta de fallback diz agora apenas o que a regua media: nenhum OK foi lido, e nao que a linha se fecha por leitura.`,
   emissor_bytes: Buffer.byteLength(emissor),
   emissor_md5: createHash('md5').update(emissor).digest('hex').slice(0, 8),
   fontes: { ledger: LEDGER, painel: PAINEL, registro_diretorio: 'evidence', censo_rm: 'scripts/censo-pendencias.mjs' },
@@ -360,7 +443,7 @@ const saida = {
   janela_de_adendo: { valor: JANELA_ADENDO, corpus: adendoCorpus, fixtures: adendoFixtures },
   linhas_pen: itens.length,
   contagem_por_classe: contagem,
-  abertas: itens.filter((i) => i.classe === 'ABERTA').map((i) => ({ id: i.id, pri: i.pri, vencedor: i.vencedor, ok: i.ok, registo: i.registo_aplicacao ? i.registo_aplicacao.registo : null })),
+  abertas: itens.filter((i) => i.classe === 'ABERTA').map((i) => ({ id: i.id, pri: i.pri, vencedor: i.vencedor, ok: i.ok, acao: i.acao, registo: i.registo_aplicacao ? i.registo_aplicacao.registo : null })),
   divergentes: itens.filter((i) => i.classe === 'DIVERGENTE').map((i) => ({ id: i.id, pri: i.pri, n_sinais: i.n_sinais, vencedor: i.vencedor, por_data: i.por_data, recorte: i.recorte })),
   sem_declaracao: itens.filter((i) => i.classe === 'SEM_DECLARACAO').map((i) => ({ id: i.id, pri: i.pri, recorte: i.recorte })),
   fechadas: itens.filter((i) => i.classe === 'FECHADA').map((i) => ({ id: i.id, vencedor: i.vencedor })),
@@ -371,16 +454,31 @@ const saida = {
   rm_13: { do_produtor: rmDoProdutor, lidas_aqui: rmLinhas.length, abertas_pelo_produtor: rmAbertasDoProdutor, censo_falhou: censoFalhou },
   contador_do_ledger: { linhas_pen: linhasDoProdutor, ids_unicos: idsUnicosDoProdutor },
   vocabulario_de_ok_usado: vocabOk,
+  vocabulario_de_acao_nomeada: {
+    definidas: ACAO_NOMEADA.map(([n]) => n),
+    celulas_lidas: itens.length,
+    sem_familia_de_ok: semFamilia.length,
+    uso_no_corpus: usoAcaoNoCorpus,
+    uso_na_classe_sem_familia_de_ok: usoAcaoNaClasseSemFamilia,
+    uso_nos_fixtures: usoAcaoNosFixtures,
+    fixtures_que_falham: fixturesDeAcaoQueFalham,
+    controlo_negativo: { frase: CONTROLO_NEGATIVO_DE_FAMILIA, familias_que_disparam: familiasQueDisparamNoControloNegativo },
+    faces_da_classe_sem_familia_de_ok: facesDaClasseSemFamilia,
+    particao_das_quatro_faces: particaoDasQuatroFaces,
+  },
   fixtures: { definidas: FIXTURES.length, disparados, falhas: fixturesFalham },
   abertas_com_registo: abertasComRegisto,
   portoes: { total: portoes.length, falhas: falhas.length, lista: portoes },
-  o_que_prova: ['que o ledger tem N linhas PEN de cinco celulas e em que classe cada celula cai pelo sinal mais recente, com a posicao e a data desse sinal', 'quais dessas linhas tem registo de aplicacao no banco em disco e com que frase de OK', 'que as tres contagens de pendencias (painel, paragrafo 15, linhas lidas) batem ou divergem', `que o classificador dispara em todas as ${FIXTURES.length} formas postas em fixture`, `que cada um dos ${IDIOMAS.length} idioms tem uso medido no corpus ou em fixture`, `que a janela de ${JANELA_FECHO} caracteres entre a palavra de fecho e a data cobre o maior intervalo medido no corpus (${intervalosCorpus.maior_intervalo}) e que tem fixture acima dela (${intervalosFixtures.maior_intervalo}) para nao virar ramo morto`, `que a janela de ${JANELA_ADENDO} caracteres entre a marca de data do adendo e a palavra de fecho cobre o maior intervalo medido no corpus (${adendoCorpus.maior_intervalo}) e que tem fixture acima dela (${adendoFixtures.maior_intervalo})`],
-  o_que_NAO_prova: ['que a classe do ledger seja o estado vivo do produto: a fonte e prosa versionada, nao o ar', 'que o OK exigido por cada linha seja suficiente: a coluna e a assinatura lexical do texto, a frase concreta pertence ao utilizador', 'que as linhas RM-x.y abertas estejam bem ou mal: o censo so conta e classifica por sinais do texto', 'que uma celula SEM_DECLARACAO esteja fechada ou aberta: diz so que o texto nao declara estado em nenhum dos idioms medidos', 'que um fecho declarado no texto seja verdadeiro: a regua reconhece a forma «palavra de fecho + data» e a forma «adendo com a data antes da palavra», mas nao confere a corrida citada — foi assim que a PEN-36 pôde declarar as duas metades fechadas enquanto o ar publicado mantinha cinco rotulos com dois ou mais usos, dos sete nomes listados em 17/11 (medido por scripts/p134-rotulos-da-secretaria-no-ar.mjs)', `que o intervalo entre a palavra e a data esteja dentro da janela numa forma de escrita nova: acima de ${JANELA_FECHO} caracteres, com a data depois da palavra, ou acima de ${JANELA_ADENDO} caracteres de pura pontuacao, com a data antes dela, a data passa a nao contar, e os portoes das duas janelas sao o que da o aviso`],
+  o_que_prova: ['que o ledger tem N linhas PEN de cinco celulas e em que classe cada celula cai pelo sinal mais recente, com a posicao e a data desse sinal', 'quais dessas linhas tem registo de aplicacao no banco em disco e com que frase de OK', 'que as tres contagens de pendencias (painel, paragrafo 15, linhas lidas) batem ou divergem', `que o classificador dispara em todas as ${FIXTURES.length} formas postas em fixture`, `que cada um dos ${IDIOMAS.length} idioms tem uso medido no corpus ou em fixture`, `que a janela de ${JANELA_FECHO} caracteres entre a palavra de fecho e a data cobre o maior intervalo medido no corpus (${intervalosCorpus.maior_intervalo}) e que tem fixture acima dela (${intervalosFixtures.maior_intervalo}) para nao virar ramo morto`, `que a janela de ${JANELA_ADENDO} caracteres entre a marca de data do adendo e a palavra de fecho cobre o maior intervalo medido no corpus (${adendoCorpus.maior_intervalo}) e que tem fixture acima dela (${adendoFixtures.maior_intervalo})`, `que das ${itens.length} celulas lidas ${semFamilia.length} nao dizem nenhuma das quatro familias de OK, e que dessas ${facesDaClasseSemFamilia.com_acao_nomeada.length} nomeiam na sua propria prosa um passo que nao e meu e ${facesDaClasseSemFamilia.sem_passo_nomeado.length} nao nomeiam passo nenhum, com as duas listas impressas mesmo vazias`, `que cada uma das ${ACAO_NOMEADA.length} familias de accao nomeada dispara no fixture que lhe foi posto e que nenhuma delas dispara no controlo negativo`],
+  o_que_NAO_prova: ['que a classe do ledger seja o estado vivo do produto: a fonte e prosa versionada, nao o ar', 'que o OK exigido por cada linha seja suficiente: a coluna e a assinatura lexical do texto, a frase concreta pertence ao utilizador', 'que as linhas RM-x.y abertas estejam bem ou mal: o censo so conta e classifica por sinais do texto', 'que uma celula SEM_DECLARACAO esteja fechada ou aberta: diz so que o texto nao declara estado em nenhum dos idioms medidos', 'que um fecho declarado no texto seja verdadeiro: a regua reconhece a forma «palavra de fecho + data» e a forma «adendo com a data antes da palavra», mas nao confere a corrida citada — foi assim que a PEN-36 pôde declarar as duas metades fechadas enquanto o ar publicado mantinha cinco rotulos com dois ou mais usos, dos sete nomes listados em 17/11 (medido por scripts/p134-rotulos-da-secretaria-no-ar.mjs)', `que o intervalo entre a palavra e a data esteja dentro da janela numa forma de escrita nova: acima de ${JANELA_FECHO} caracteres, com a data depois da palavra, ou acima de ${JANELA_ADENDO} caracteres de pura pontuacao, com a data antes dela, a data passa a nao contar, e os portoes das duas janelas sao o que da o aviso`, 'que a etiqueta nenhum_familia_de_ok_lida signifique que a linha se fecha por leitura: ela diz so que nenhuma das quatro familias de OK casou no texto. O passo que a celula nomeia esta publicado em vocabulario_de_acao_nomeada.faces_da_classe_sem_familia_de_ok.com_acao_nomeada; e uma celula que nao aparece em nenhuma das duas listas nao prova que nada falte — prova que a prosa do ledger nao o disse, que e um defeito de descricao e nao de regua'],
 };
 saida.veredito = (falhas.length ? 'P133_INVENTARIO_VERMELHO ' : 'P133_INVENTARIO_MEDIDO ') + portoes.length + '/' + falhas.length + ' · esperanca=medir';
 fs.writeFileSync(OUT, JSON.stringify(saida, null, 2) + '\n');
 for (const p of falhas) console.log('FALHA', p.nome, '| obtido', JSON.stringify(p.obtido), '| esperado', JSON.stringify(p.esperado));
 console.log(saida.veredito, '· classes', JSON.stringify(contagem), '· abertas', saida.abertas.length, '· com registo', saida.registro.com_aplicacao.length, '· painel', penDoPainel + '/' + penDo15 + '/' + itens.length, '· rm', rmDoProdutor + '/' + rmLinhas.length + '/' + rmAbertasDoProdutor);
 console.log('ABERTAS:', saida.abertas.map((a) => a.id + '[' + a.pri + ']').join(' '));
+console.log('FACES_DA_CLASSE_SEM_FAMILIA_DE_OK', JSON.stringify(saida.vocabulario_de_acao_nomeada.faces_da_classe_sem_familia_de_ok));
+console.log('USO_NA_CLASSE', JSON.stringify(saida.vocabulario_de_acao_nomeada.uso_na_classe_sem_familia_de_ok));
+console.log('PARTICAO', JSON.stringify(Object.fromEntries(Object.entries(saida.vocabulario_de_acao_nomeada.particao_das_quatro_faces).map(([k, v]) => [k, v.length]))));
 console.log('registo em ' + OUT);
 process.exit(falhas.length ? 1 : 0);
