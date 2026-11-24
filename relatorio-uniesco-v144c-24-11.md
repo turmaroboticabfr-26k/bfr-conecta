@@ -1,7 +1,7 @@
 # RELATÓRIO — Renomeação BFR CONECTA → UNIESCO e nova identidade visual (v144c)
 
-**Data:** 24/11/2026 · **Estado:** candidata e bundle prontos, **publicação NÃO executada** (aguarda validação e autorização)
-**Base:** v142 no ar (`audit-publicacao-v142.json`) · **Sucessora:** v144c (`worker-deploy-v144c-uniesco/`), cadeia v144 → v144b → v144c
+**Data:** 24/11/2026 · **Estado:** **publicada a 24/11 17:45Z** — deploy `c14026e7-9c54-4169-810f-17815c936daf` a 100 % do tráfego, conferida no ar (diário `audit-publicacao-v144.json`)
+**Base:** v142 no ar antes do deploy (`audit-publicacao-v142.json`) · **Sucessora:** v144c (`worker-deploy-v144c-uniesco/`), cadeia v144 → v144b → v144c
 
 ---
 
@@ -105,7 +105,7 @@ Régua: HTML visível (sem script/style) e scripts medidos à parte; delimitaç�
 
 ## 9. Pendências
 
-1. **Publicação/deploy da v144c** — não executada; exige OK próprio. Instruções: pré-voo contra o ar (padrão das campanhas anteriores), `wrangler deploy` do bundle, pos-deploy, diário.
+1. **Publicação/deploy da v144c** — executada a 24/11 com o OK literal «resolva o item 1» (só este objeto). Deploy `c14026e7-9c54-4169-810f-17815c936daf` (criado 2026-11-24T17:45:12Z, 100 % do tráfego) em `https://bfr-conecta.turmaroboticabfr.workers.dev`; conferência no ar: nome antigo 0/0/0/0 (visível/scripts/downloads/SW), UNIESCO 9, manifest UNIESCO/#00399b; reversão para `ebe8e698…` (v142) documentada. Diário: `audit-publicacao-v144.json`.
 2. **Templates de e-mail do Supabase Auth** (confirmação, recuperação de senha, boas-vindas) — vivem no painel Supabase, fora do repo; ainda dizem BFR. Atualização manual com o mesmo nome/slogan.
 3. **Notificações push do lado servidor** (payloads FCM com título «BFR Conecta») — configuração do emissor, fora do repo; o fallback do SW já é UNIESCO.
 4. **Listagens de loja** (nome/ícones/descrição nas stores) — fora do repo.
@@ -131,4 +131,4 @@ Régua: HTML visível (sem script/style) e scripts medidos à parte; delimitaç�
 | `public/uniesco-icon-180.png` | 19 789 | `03e9ef9f5fcba8f4c89b40ab5373e871` |
 | `public/uniesco-icon-512.png` | 95 834 | `4d41c45d1addde81cc60363a5bee5283` |
 
-Ar no ar inalterado: v142 (`audit-publicacao-v142.json`). Zero escritas no banco nesta campanha.
+Ar no ar desde 24/11 17:45Z: v144c (`audit-publicacao-v144.json`), shell `573de00016fe2d9b87e671bb84d21559` / 3 557 197 B, versão `c14026e7-9c54-4169-810f-17815c936daf` a 100 %. Zero escritas no banco nesta campanha.

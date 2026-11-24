@@ -1,0 +1,84 @@
+{
+  "version": "v144c",
+  "data": "2026-11-24T17:49:11.867Z",
+  "ok_literal": "«resolva o item 1»",
+  "nota_do_ok": "o item 1 da pergunta «Quer que ataque algum destes três?» era a publicação da v144c, que aguardava OK — este OK cobre só esse objeto",
+  "escopo_do_ok": "só a publicação (deploy) da v144c; nenhum push, nenhuma escrita no banco, nenhum DDL/mint/rotação",
+  "tarefa": "UNIESCO T5: publicação da v144c (renomeação BFR CONECTA → UNIESCO)",
+  "porque_esta_versao": "a v144c é a candidata que fecha os 10 nomes de download -bfr- além dos 13 residuais visíveis da v144b; varredura final 5/5 e prova local 12/0",
+  "origem_dos_numeros": "stdout do wrangler + deployments status/list depois + artefactos p151/p152/p154/p155/p157/p158/p153/p156/p159/p160 e esperado-v144c em disco; nada copiado-colado da conversa",
+  "deploy": {
+    "worker": "bfr-conecta",
+    "conta": "turmaroboticabfr@gmail.com",
+    "version_id": "c14026e7-9c54-4169-810f-17815c936daf",
+    "deployment_id": "82693363-b1dd-4d0e-abe0-b0c132f65ce9",
+    "deployment_created": "2026-11-24T17:45:12.333643Z",
+    "versao_anterior_v142": "ebe8e698-620c-47ff-bc88-10c0c25b456c",
+    "url": "https://bfr-conecta.turmaroboticabfr.workers.dev",
+    "assets_novos": [
+      "manifest.json",
+      "uniesco-icon-192.png",
+      "uniesco-icon-180.png",
+      "uniesco-icon-512.png",
+      "bfr-app-logo.png"
+    ],
+    "reversao": "devolver o ar a v142 e `wrangler deploy` a partir de worker-deploy-v142-painel-na-troca — exige OK literal novo"
+  },
+  "bundle": {
+    "workerMd5": "278a9c1e64e7ecc15421a2d96c1e2dd0",
+    "workerBytes": 3622362,
+    "htmlMd5": "573de00016fe2d9b87e671bb84d21559",
+    "htmlBytes": 3557197,
+    "swMd5": "60d317d62cebbf327bf2e7576bd61931",
+    "swBytes": 5210,
+    "cacheLabel": "bfr-conecta-v144",
+    "logoTecnicaMd5": "1a05424a578aa5340e700274252c3577",
+    "icones": {
+      "180": "03e9ef9f5fcba8f4c89b40ab5373e871",
+      "192": "114493b17b6c8a5843b54d617d7822bc",
+      "512": "4d41c45d1addde81cc60363a5bee5283"
+    }
+  },
+  "conferencia_no_ar": {
+    "shell_md5": "573de00016fe2d9b87e671bb84d21559",
+    "shell_bytes": 3557197,
+    "versao": "c14026e7-9c54-4169-810f-17815c936daf",
+    "percentagem": 100,
+    "nome_antigo_visivel": 0,
+    "nome_antigo_em_scripts": 0,
+    "nome_antigo_em_downloads": 0,
+    "nome_antigo_no_sw": 0,
+    "UNIESCO": 9,
+    "manifest": "UNIESCO / UNIESCO / #00399b",
+    "tecnica_preservada": {
+      "window.BFR_* (APIs internas)": 305,
+      "bfr-app-logo.png (nome técnico, conteúdo = lockup UNIESCO)": 7,
+      "bfr-paint-hold (classe do splash)": 8,
+      "bfr-conecta (hosts CSP/canonical/Firebase + etiqueta do cache SW)": 26,
+      ".bfr-* classes CSS/DOM": 8850,
+      "bfr-*.js (módulos públicos)": 5,
+      "Supabase/rotas bfr_* (RPC)": 112
+    }
+  },
+  "portoes": {
+    "p151": "P151_CANDIDATA_V144_UNIESCO_OK 16/0",
+    "p152": "P152_BUNDLE_V144_OK 18/0",
+    "p154": "P154_DERIVA_V144B_OK 6/0",
+    "p155": "P155_BUNDLE_V144B_OK 18/0",
+    "p157": "P157_DERIVA_V144C_OK 7/0",
+    "p158": "P158_BUNDLE_V144C_OK 18/0",
+    "p153": "P153_PROVA_LOCAL_OK 12/0",
+    "p156": "P156_VARREDURA_NOME_V144C_OK 5/5",
+    "p159": "P159_PREFLIGHT_V144C_OK 11/0",
+    "p160": "P160_POS_DEPLOY_V144C_OK 12/0",
+    "diario": "D1-D9 verdes"
+  },
+  "o_que_este_deploy_muda_para_um_usuario_real": "todo o visível passa a dizer UNIESCO (título, splash, manifest, ícones, logo, nomes de download); os identificadores técnicos (window.BFR_*, classes .bfr-*, rotas bfr_*, hosts, nome do worker) ficam intactos; nada muda em banco, tabelas, senhas, perfis, permissões, APIs ou integrações",
+  "o_que_este_diario_nao_autoriza": "git push, DDL/DML/grants, mint/rotação, decisões PEN-41/43/44 e v141 (#27), templates de email do Supabase, push FCM do servidor, listagens das stores, PDFs raster (precisam dos documentos-fonte), prova autenticada por papel",
+  "estado_do_remoto_medido_agora": {
+    "main": "b30ed3ff7058e320d0fa9a31a265ec53699d8fea",
+    "origin_main": "71765609cb986c753b9ace408e3b46be75cb4119",
+    "ahead": 2,
+    "nota": "sem push deste ciclo — o ahead inclui o b30ed3f do §SM.51 e este diario ainda nao esta commitado"
+  }
+}

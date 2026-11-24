@@ -1,0 +1,123 @@
+{
+  "ciclo": "P160-POS-DEPLOY-V144C",
+  "em": "2026-11-24T17:46:33.626Z",
+  "url": "https://bfr-conecta.turmaroboticabfr.workers.dev",
+  "escrita": 0,
+  "ddl": 0,
+  "mint": 0,
+  "publicacao": "esta peça não publica: confere o deploy já feito",
+  "version_id_do_stdout": "c14026e7-9c54-4169-810f-17815c936daf",
+  "portoes": {
+    "B1_shell_no_ar_e_a_candidata_v144c": {
+      "passou": true,
+      "medido": {
+        "md5": "573de00016fe2d9b87e671bb84d21559",
+        "bytes": 3557197
+      },
+      "esperado": {
+        "md5": "573de00016fe2d9b87e671bb84d21559",
+        "bytes": 3557197
+      }
+    },
+    "B2_nome_velho_a_zero_nas_tres_reguas_no_ar": {
+      "passou": true,
+      "regra": "RE_VISIVEL/RE_DOWNLOAD lidos do p156; scripts com o composto tecnico bfr-conecta removido"
+    },
+    "B3_UNIESCO_presente_no_ar": {
+      "passou": true,
+      "UNIESCO": 9
+    },
+    "B4_manifest_no_ar_e_UNIESCO": {
+      "passou": true,
+      "name": "UNIESCO",
+      "short_name": "UNIESCO",
+      "theme": "#00399b"
+    },
+    "B5_sw_no_ar_e_o_da_v144c_com_etiqueta_e_titulo_novos": {
+      "passou": true,
+      "rotulo": "bfr-conecta-v144",
+      "md5": "60d317d62cebbf327bf2e7576bd61931",
+      "esperado": {
+        "md5": "60d317d62cebbf327bf2e7576bd61931",
+        "bytes": 5210
+      },
+      "titulo_UNIESCO": 1
+    },
+    "B6_icones_e_logo_tecnica_no_ar_batem_com_o_bundle": {
+      "passou": true,
+      "icones": [
+        {
+          "arquivo": "uniesco-icon-192.png",
+          "http": 200,
+          "md5": "114493b17b6c8a5843b54d617d7822bc",
+          "bytes": 21725
+        },
+        {
+          "arquivo": "uniesco-icon-180.png",
+          "http": 200,
+          "md5": "03e9ef9f5fcba8f4c89b40ab5373e871",
+          "bytes": 19789
+        },
+        {
+          "arquivo": "uniesco-icon-512.png",
+          "http": 200,
+          "md5": "4d41c45d1addde81cc60363a5bee5283",
+          "bytes": 95834
+        },
+        {
+          "arquivo": "bfr-app-logo.png",
+          "http": 200,
+          "md5": "1a05424a578aa5340e700274252c3577",
+          "bytes": 252879
+        }
+      ]
+    },
+    "B7_headers_de_seguranca_na_shell": {
+      "passou": true,
+      "xfo": "SAMEORIGIN",
+      "csp_tem_frame_ancestors": true
+    },
+    "B8_rota_inexistente_da_404": {
+      "passou": true,
+      "http": 404
+    },
+    "B9_versao_no_servidor_e_a_do_deploy_a_100": {
+      "passou": true,
+      "status": {
+        "version_id": "c14026e7-9c54-4169-810f-17815c936daf",
+        "percentage": 100
+      },
+      "lista_mais_nova": "c14026e7-9c54-4169-810f-17815c936daf",
+      "created": "2026-11-24T17:45:12.333643Z"
+    },
+    "B10_cadeia_de_reversao_para_a_v142": {
+      "passou": true,
+      "anterior": "ebe8e698-620c-47ff-bc88-10c0c25b456c",
+      "v142_no_diario": "ebe8e698-620c-47ff-bc88-10c0c25b456c",
+      "nota": "reversao: wrangler deploy a partir de worker-deploy-v142-painel-na-troca — exige OK literal novo"
+    },
+    "B11_p156_disco_verde_sobre_esta_mesma_candidata": {
+      "passou": true,
+      "p156": "P156_VARREDURA_NOME_V144C_OK 5/5",
+      "p156_candidata": "573de00016fe2d9b87e671bb84d21559",
+      "esperado": "573de00016fe2d9b87e671bb84d21559"
+    },
+    "B12_diario_v144_ainda_nao_existe": {
+      "passou": true,
+      "nota": "o diario de publicacao v144 ainda nao existe"
+    }
+  },
+  "total": {
+    "ok": 12,
+    "falha": 0
+  },
+  "medido": {
+    "visivel_velho": 0,
+    "scripts_velho": 0,
+    "downloads_velho": 0,
+    "UNIESCO": 9,
+    "sw_velho": 0,
+    "nota_sw": "SW medido com o composto tecnico preservado bfr-conecta (etiqueta do cache) removido, como o p156 faz aos scripts"
+  },
+  "veredito": "P160_POS_DEPLOY_V144C_OK 12/0"
+}

@@ -1,0 +1,94 @@
+{
+  "ciclo": "P159-PREFLIGHT-V144C",
+  "em": "2026-11-24T17:44:43.311Z",
+  "escrita": 0,
+  "ddl": 0,
+  "mint": 0,
+  "deploy": 0,
+  "origem_url": "audit-publicacao-v142.json",
+  "url": "https://bfr-conecta.turmaroboticabfr.workers.dev",
+  "versao_esperada_no_ar": "v142 (ebe8e698-620c-47ff-bc88-10c0c25b456c)",
+  "portoes": {
+    "A1_shell_no_ar_e_a_v142": {
+      "passou": true,
+      "medido": {
+        "md5": "0e22e78fe1e0ce929ec4717f86365ad9",
+        "bytes": 3556664
+      },
+      "esperado_v142": {
+        "md5": "0e22e78fe1e0ce929ec4717f86365ad9",
+        "bytes": 3556664
+      }
+    },
+    "A2_a_marca_velha_esta_visivel_no_ar_e_UNIESCO_ainda_nao": {
+      "passou": true,
+      "nome_velho_visivel": 16,
+      "UNIESCO_no_ar": 0,
+      "nota": "prova que este preflight olha a versao com a marca velha"
+    },
+    "A3_nomes_de_download_velhos_no_ar": {
+      "passou": true,
+      "downloads_bfr_no_ar": 11,
+      "regra": "RE_DOWNLOAD lido do p156"
+    },
+    "A4_sw_no_ar_e_o_da_v142_com_etiqueta_e_titulo_velhos": {
+      "passou": true,
+      "rotulo": "bfr-conecta-v142",
+      "md5": "6b76396e455bd28eefbc83be527965cb",
+      "esperado": "6b76396e455bd28eefbc83be527965cb"
+    },
+    "A5_manifest_no_ar_e_o_da_v142": {
+      "passou": true,
+      "nome_v142": "BFR Conecta",
+      "md5_ar": "68d155183c80e3e554466ce2415cb268"
+    },
+    "A6_versao_no_servidor_e_a_v142_a_100": {
+      "passou": true,
+      "status": {
+        "version_id": "ebe8e698-620c-47ff-bc88-10c0c25b456c",
+        "percentage": 100
+      },
+      "lista_mais_nova": "ebe8e698-620c-47ff-bc88-10c0c25b456c"
+    },
+    "A7_rota_inexistente_da_404": {
+      "passou": true,
+      "http": 404
+    },
+    "A8_worker_em_disco_bate_com_o_esperado_v144c": {
+      "passou": true,
+      "medido": {
+        "md5": "278a9c1e64e7ecc15421a2d96c1e2dd0",
+        "bytes": 3622362
+      },
+      "esperado": {
+        "md5": "278a9c1e64e7ecc15421a2d96c1e2dd0",
+        "bytes": 3622362
+      }
+    },
+    "A9_candidata_em_disco_bate_com_o_esperado_v144c": {
+      "passou": true,
+      "medido": {
+        "md5": "573de00016fe2d9b87e671bb84d21559",
+        "bytes": 3557197
+      },
+      "esperado": {
+        "md5": "573de00016fe2d9b87e671bb84d21559",
+        "bytes": 3557197
+      }
+    },
+    "A10_p156_e_p158_verdes_no_disco": {
+      "passou": true,
+      "p156": "P156_VARREDURA_NOME_V144C_OK 5/5",
+      "p158": "P158_BUNDLE_V144C_OK 18/0"
+    },
+    "A11_nada_publicado_ainda_para_v144": {
+      "passou": true,
+      "nota": "o diario de publicacao v144 ainda nao existe"
+    }
+  },
+  "total": {
+    "ok": 11,
+    "falha": 0
+  },
+  "veredito": "P159_PREFLIGHT_V144C_OK 11/0"
+}
