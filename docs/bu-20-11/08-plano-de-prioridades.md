@@ -297,3 +297,25 @@ seu ato em tempo de execução é confirmar dias semeados, por isso só faz sent
 15+4** — independente da cadeia do calendário (nenhum dos 19 nomes toca as mesas de dias/metas/turnos), pode
 correr em qualquer ponto e fica montado por último para manter a cadeia do calendário contígua. Cada passo tem
 frase literal própria **e por modo**, e nenhuma das três frases foi dada: este adendo é leitura, não autorização.
+
+## 13. Adenda 23/11 — a FASE 2 (identidade visual) medida em leitura: o que a v142 já tem, e o que a execução pede
+
+A FASE 2 verbatim da missão é **preservação da identidade visual** (a opção de escopo que a escolheu dizia
+«identidade/contas» — a correção está registada no §SM.44 do diário): regra inegociável de não alterar paleta,
+logótipos e elementos institucionais, usar os mesmos tons de azul/verde/turquesa, e melhorar o design (layout
+executivo, cartões, gráficos, tipografia, tabelas, espaçamento, navegação, animações discretas, responsividade)
+sem identidade genérica de dashboard. O degrau escolhido mediu em leitura o que o bundle já tem —
+`scripts/p147-fase2-identidade-visual.mjs`, veredicto `P147_FASE2_INVENTARIO_VERDE 6/6`
+(`evidence/p147-fase2-identidade-visual-23-11.json`), sobre a v142 com a identidade conferida pelo artefacto do
+§SM.41 (3 556 664 B, md5 `0e22e78f…` — o instrumento aborta se divergir):
+
+- **paleta**: 5 166 ocorrências de cor hex em 1 189 cores distintas — azul 493, turquesa 145, verde 114 (as três
+  famílias da regra inegociável estão presentes), neutro 178, vermelho 114, laranja 125, roxo 16, amarelo 4;
+  cabeça por uso `#fff` 575, `#1769d2` 330 (azul), `#71809a` 249 (azul), `#aee` 84 (turquesa), `#16826f` 56 (turquesa);
+- **design existente**: logo 1, svg 1, viewBox 10, tabelas 61, cartões 350, tipografia 26, gráficos 91, media
+  queries 257, keyframes 35, transitions 68, 86 variáveis CSS distintas com 492 usos.
+
+**O que fica por medir** (primeiro degrau de execução da FASE 2): a aderência da paleta **por módulo** — o p147
+varre o bundle inteiro e não delimita a região municipal (o registo declara-o em `o_que_NAO_prova`). A execução
+pede candidata + frase literal de publicação por peça e cadeias de browser vivas (o p73 mediu 0/15 sem renovar).
+Este adendo é leitura, não autorização: nenhuma frase literal foi dada.
