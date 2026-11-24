@@ -1521,6 +1521,9 @@ exactamente a que FALTA-2 existia para não ficar ao arbítrio de quem cola SQL.
    Adendo 24/11: a semente entrou no banco a 24/11 com a frase literal dada, por instrumento próprio (veredicto
    `P144_RM52_SEMENTE_APLICADA_E_CONFERIDA`, censo 365/12/1); o item 1 deste §5, que descrevia a escrita como
    «sem instrumento», tem o adendo correspondente.
+   Adendo 24/11 (A1): a função `bfr_confirm_school_calendar` foi criada e conferida no banco (aplicador
+   `scripts/p145-a1-confirmar-calendario-aplica.mjs`, veredicto `P145_A1_REAPLICADA_E_CONFERIDA`, 365 dias
+   confirmados, pré-voo reversão 37/0); o consumo na portaria continua aberto e pede a sua própria frase.
 5. **PEN-42 (`register_gate_checkin_v2`).** Fora do escopo municipal.
 6. **Aplicar ou não a PEN-43 — a frase, não o caminho.** Desde 20/11 o caminho existe: preflight nos dois modos,
    peça entrada na tabela `PECAS` do aplicador, os dois SQL transaccionais com a pegada conferida contra o registo

@@ -1,0 +1,195 @@
+{
+  "programa": "scripts/p145-a1-default-acl-probe.mjs",
+  "emissor_bytes": 2545,
+  "emissor_md5": "54fb2b17c9e60d45f902f0914028f60c",
+  "em": "2026-11-24T06:33:01.498Z",
+  "proacl_atual": [
+    {
+      "a": "(16388,16388,EXECUTE,f)"
+    },
+    {
+      "a": "(16388,16485,EXECUTE,f)"
+    }
+  ],
+  "default_acl": [
+    {
+      "papel": "postgres",
+      "tipo": "f",
+      "ns": "public",
+      "acl": "{postgres=X/postgres,anon=X/postgres,authenticated=X/postgres,service_role=X/postgres}"
+    },
+    {
+      "papel": "postgres",
+      "tipo": "f",
+      "ns": "storage",
+      "acl": "{postgres=X/postgres,anon=X/postgres,authenticated=X/postgres,service_role=X/postgres}"
+    },
+    {
+      "papel": "postgres",
+      "tipo": "r",
+      "ns": "public",
+      "acl": "{postgres=arwdDxtm/postgres,anon=arwdDxtm/postgres,authenticated=arwdDxtm/postgres,service_role=arwdDxtm/postgres}"
+    },
+    {
+      "papel": "postgres",
+      "tipo": "r",
+      "ns": "storage",
+      "acl": "{postgres=arwdDxtm/postgres,anon=arwdDxtm/postgres,authenticated=arwdDxtm/postgres,service_role=arwdDxtm/postgres}"
+    },
+    {
+      "papel": "postgres",
+      "tipo": "S",
+      "ns": "public",
+      "acl": "{postgres=rwU/postgres,anon=rwU/postgres,authenticated=rwU/postgres,service_role=rwU/postgres}"
+    },
+    {
+      "papel": "postgres",
+      "tipo": "S",
+      "ns": "storage",
+      "acl": "{postgres=rwU/postgres,anon=rwU/postgres,authenticated=rwU/postgres,service_role=rwU/postgres}"
+    },
+    {
+      "papel": "supabase_admin",
+      "tipo": "f",
+      "ns": "cron",
+      "acl": "{postgres=X*/supabase_admin}"
+    },
+    {
+      "papel": "supabase_admin",
+      "tipo": "f",
+      "ns": "extensions",
+      "acl": "{postgres=X*/supabase_admin}"
+    },
+    {
+      "papel": "supabase_admin",
+      "tipo": "f",
+      "ns": "graphql",
+      "acl": "{postgres=X/supabase_admin,anon=X/supabase_admin,authenticated=X/supabase_admin,service_role=X/supabase_admin}"
+    },
+    {
+      "papel": "supabase_admin",
+      "tipo": "f",
+      "ns": "graphql_public",
+      "acl": "{postgres=X/supabase_admin,anon=X/supabase_admin,authenticated=X/supabase_admin,service_role=X/supabase_admin}"
+    },
+    {
+      "papel": "supabase_admin",
+      "tipo": "f",
+      "ns": "public",
+      "acl": "{postgres=X/supabase_admin,anon=X/supabase_admin,authenticated=X/supabase_admin,service_role=X/supabase_admin}"
+    },
+    {
+      "papel": "supabase_admin",
+      "tipo": "f",
+      "ns": "realtime",
+      "acl": "{postgres=X/supabase_admin,dashboard_user=X/supabase_admin}"
+    },
+    {
+      "papel": "supabase_admin",
+      "tipo": "r",
+      "ns": "cron",
+      "acl": "{postgres=a*r*w*d*D*x*t*m*/supabase_admin}"
+    },
+    {
+      "papel": "supabase_admin",
+      "tipo": "r",
+      "ns": "extensions",
+      "acl": "{postgres=a*r*w*d*D*x*t*m*/supabase_admin}"
+    },
+    {
+      "papel": "supabase_admin",
+      "tipo": "r",
+      "ns": "graphql",
+      "acl": "{postgres=arwdDxtm/supabase_admin,anon=arwdDxtm/supabase_admin,authenticated=arwdDxtm/supabase_admin,service_role=arwdDxtm/supabase_admin}"
+    },
+    {
+      "papel": "supabase_admin",
+      "tipo": "r",
+      "ns": "graphql_public",
+      "acl": "{postgres=arwdDxtm/supabase_admin,anon=arwdDxtm/supabase_admin,authenticated=arwdDxtm/supabase_admin,service_role=arwdDxtm/supabase_admin}"
+    },
+    {
+      "papel": "supabase_admin",
+      "tipo": "r",
+      "ns": "public",
+      "acl": "{postgres=arwdDxtm/supabase_admin,anon=arwdDxtm/supabase_admin,authenticated=arwdDxtm/supabase_admin,service_role=arwdDxtm/supabase_admin}"
+    },
+    {
+      "papel": "supabase_admin",
+      "tipo": "r",
+      "ns": "realtime",
+      "acl": "{postgres=a*r*wdDxtm/supabase_admin,dashboard_user=arwdDxtm/supabase_admin}"
+    },
+    {
+      "papel": "supabase_admin",
+      "tipo": "S",
+      "ns": "cron",
+      "acl": "{postgres=r*w*U*/supabase_admin}"
+    },
+    {
+      "papel": "supabase_admin",
+      "tipo": "S",
+      "ns": "extensions",
+      "acl": "{postgres=r*w*U*/supabase_admin}"
+    },
+    {
+      "papel": "supabase_admin",
+      "tipo": "S",
+      "ns": "graphql",
+      "acl": "{postgres=rwU/supabase_admin,anon=rwU/supabase_admin,authenticated=rwU/supabase_admin,service_role=rwU/supabase_admin}"
+    },
+    {
+      "papel": "supabase_admin",
+      "tipo": "S",
+      "ns": "graphql_public",
+      "acl": "{postgres=rwU/supabase_admin,anon=rwU/supabase_admin,authenticated=rwU/supabase_admin,service_role=rwU/supabase_admin}"
+    },
+    {
+      "papel": "supabase_admin",
+      "tipo": "S",
+      "ns": "public",
+      "acl": "{postgres=rwU/supabase_admin,anon=rwU/supabase_admin,authenticated=rwU/supabase_admin,service_role=rwU/supabase_admin}"
+    },
+    {
+      "papel": "supabase_admin",
+      "tipo": "S",
+      "ns": "realtime",
+      "acl": "{postgres=rwU/supabase_admin,dashboard_user=rwU/supabase_admin}"
+    },
+    {
+      "papel": "supabase_auth_admin",
+      "tipo": "f",
+      "ns": "auth",
+      "acl": "{postgres=X/supabase_auth_admin,dashboard_user=X/supabase_auth_admin}"
+    },
+    {
+      "papel": "supabase_auth_admin",
+      "tipo": "r",
+      "ns": "auth",
+      "acl": "{postgres=arwdDxtm/supabase_auth_admin,dashboard_user=arwdDxtm/supabase_auth_admin}"
+    },
+    {
+      "papel": "supabase_auth_admin",
+      "tipo": "S",
+      "ns": "auth",
+      "acl": "{postgres=rwU/supabase_auth_admin,dashboard_user=rwU/supabase_auth_admin}"
+    }
+  ],
+  "membros_anon": [],
+  "funcao_owner": [
+    {
+      "dono": "postgres"
+    }
+  ],
+  "privilegios_diretos": [
+    {
+      "quem": "authenticated",
+      "privilege_type": "EXECUTE"
+    },
+    {
+      "quem": "postgres",
+      "privilege_type": "EXECUTE"
+    }
+  ],
+  "o_que_prova": "mecanismo vivo: o pg_default_acl de postgres em public (tipo f) concede EXECUTE a anon/authenticated/service_role na criação; a ACL explícita da função reflete o estado depois do REVOKE por nome de 24/11"
+}

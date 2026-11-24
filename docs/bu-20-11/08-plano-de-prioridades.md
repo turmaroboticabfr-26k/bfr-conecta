@@ -26,7 +26,7 @@ O plano não é uma lista nova: é a intersecção de três coisas que já estav
 | fase | porque entrou sem estar marcada como pendente |
 |---|---|
 | RM-1.3 | `Medido 12/11 com achado — RM13_CADEIA_PARTIDA` — medição não é fecho; a exibição em aparelho físico continua em falta |
-| RM-5.2 | `Desenho de conteúdo proposto 20/11 ... conteúdo 0 linhas` Adendo 24/11: a semente foi aplicada e conferida no banco (365 dias + 12 metas + 1 turno); a razão de entrada de 20/11 mantém-se no texto original. |
+| RM-5.2 | `Desenho de conteúdo proposto 20/11 ... conteúdo 0 linhas` Adendo 24/11: a semente foi aplicada e conferida no banco (365 dias + 12 metas + 1 turno); o A1 foi aplicado e conferido (função `bfr_confirm_school_calendar` criada, 365 dias confirmados); a razão de entrada de 20/11 mantém-se no texto original. |
 | RM-5.6 | `Bloqueado — ...` — bloqueio é estado de trabalho, não conclusão |
 | RM-1.6 | `EXECUTADA ... PUBLICADA` **e** uma cláusula `Pendente` no mesmo texto: ambígua. Entra, com a ambiguidade impressa, em vez de ser lida como fechada por uma das metades |
 
@@ -84,7 +84,7 @@ Tabela copiada byte a byte da secção `### PLANO DE PRIORIDADES` do diário do 
 | 29 | RM-5.4 | B | M | Ferramentas administrativas novas (conforme demanda) | Direção/Secr. | Pendente | nenhum | — | — | aberta |
 | 30 | RM-2.8 | B | B | Publicar candidata do `navButton` (1,2 s→1×) | Desempenho | Pendente | nenhum | RM-2.1 | — | aberta |
 | 31 | RM-3.5 | B | M | Preferências de notificação por responsável | Notificações | Pendente | nenhum | RM-3.4 | — | aberta |
-| 32 | RM-5.2 | B | M | Turnos/calendário real da portaria | Portaria | **Desenho de conteúdo proposto 20/11** (`docs/plano-rm52-conteudo-calendario-20-11.md`); e [24/11: semente aplicada e conferida no banco (365 dias + 12 metas + 1 turno); o A1 e o consumo na portaria seguem abertos] | nenhum | RM-5.1 | — | sem_marca |
+| 32 | RM-5.2 | B | M | Turnos/calendário real da portaria | Portaria | **Desenho de conteúdo proposto 20/11** (`docs/plano-rm52-conteudo-calendario-20-11.md`); e [24/11: semente aplicada e conferida no banco (365 dias + 12 metas + 1 turno); o A1 aplicado e conferido a 24/11 (365 dias confirmados pela função nova); o consumo na portaria segue aberto] | nenhum | RM-5.1 | — | sem_marca |
 | 33 | RM-6.4 | B | M | Testes de desempenho e carga | QA | Pendente | nenhum | RM-4.6 | — | aberta |
 | 34 | RM-5.5 | B | A | Inteligência de dados (alertas de evasão/desempenho) | Indicadores | Pendente | nenhum | RM-3.2 | — | aberta |
 | 35 | RM-5.7 | B | M | Expansão institucional (novas escolas na rede) | Supervisão | Pendente | nenhum | RM-3.2 | 5.9 | aberta |
@@ -298,7 +298,7 @@ seu ato em tempo de execução é confirmar dias semeados, por isso só faz sent
 correr em qualquer ponto e fica montado por último para manter a cadeia do calendário contígua. Cada passo tem
 frase literal própria **e por modo**, e nenhuma das três frases foi dada: este adendo é leitura, não autorização.
 
-Adendo 24/11 — a primeira das três frases foi dada. «aplique a semente RM-5.2 no banco» foi dada e aplicada por `scripts/p144-rm52-conteudo-aplica.mjs`: pré-voo candidata fresco 26/0 (censo 0/0/0) antes da escrita, pré-voo reversão 26/0 (censo 365/12/1) depois, baselines inalteradas, veredicto `P144_RM52_SEMENTE_APLICADA_E_CONFERIDA` (registo `evidence/p144-rm52-conteudo-aplicacao-20261124T041524Z.json`). O passo (1) da ordem está executado; as frases do A1 e do REVOKE continuam por dar, cada uma por peça e por modo.
+Adendo 24/11 — a primeira das três frases foi dada. «aplique a semente RM-5.2 no banco» foi dada e aplicada por `scripts/p144-rm52-conteudo-aplica.mjs`: pré-voo candidata fresco 26/0 (censo 0/0/0) antes da escrita, pré-voo reversão 26/0 (censo 365/12/1) depois, baselines inalteradas, veredicto `P144_RM52_SEMENTE_APLICADA_E_CONFERIDA` (registo `evidence/p144-rm52-conteudo-aplicacao-20261124T041524Z.json`). O passo (1) da ordem está executado; as frases do A1 e do REVOKE continuam por dar, cada uma por peça e por modo. Adendo 24/11 — a segunda frase também foi dada. «aplique o A1 no banco» foi dada e aplicada por `scripts/p145-a1-confirmar-calendario-aplica.mjs` em duas corridas: a primeira apanhou o desvio de grants do `pg_default_acl` (vermelho preservado `evidence/p145-a1-confirmar-calendario-aplica-24-11-a1.json`), a re-aplicação fechou com veredicto `P145_A1_REAPLICADA_E_CONFERIDA` (registo `evidence/p145-a1-confirmar-calendario-aplica-24-11-a1r2.json`). Resta a frase do REVOKE, cada uma por peça e por modo.
 
 ## 13. Adenda 23/11 — a FASE 2 (identidade visual) medida em leitura: o que a v142 já tem, e o que a execução pede
 

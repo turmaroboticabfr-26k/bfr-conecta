@@ -12,6 +12,9 @@
 // tempo de execução. Nada disto se lê só do texto; mede-se no catálogo e no bundle, neste instante.
 //
 // Uso: node scripts/p145-a1-confirmar-calendario-preflight.mjs
+//      node scripts/p145-a1-confirmar-calendario-preflight.mjs --reversao
+//      (modo reversao: a função tem de existir, o GRANT tem de ser só authenticated e os 365 dias têm
+//       de estar confirmed — é o pré-voo da conferência pós-ato do aplicador)
 //      P145PF_SUF=novo distingue corridas (a guarda de sobrescrita aborta em vez de apagar).
 import { createHash } from 'node:crypto';
 import { existsSync, readFileSync, writeFileSync } from 'node:fs';
@@ -25,6 +28,8 @@ const REPO = dirname(AQUI);
 const EU = readFileSync(fileURLToPath(import.meta.url));
 const md5 = (b) => createHash('md5').update(b).digest('hex');
 const SUF = process.env.P145PF_SUF ? '-' + process.env.P145PF_SUF : '-23-11';
+const REVERSAO = process.argv.includes('--reversao');
+const MODO = REVERSAO ? 'reversao' : 'candidata';
 let OUT = join(REPO, 'evidence', 'p145-a1-confirmar-calendario-preflight' + SUF + '.json');
 if (existsSync(OUT)) { console.error('ABORTA: ja existe ' + OUT + ' — passe P145PF_SUF novo.'); process.exit(2); }
 const CAM_CAND = 'scripts/p145-a1-confirmar-calendario-ddl-candidata.sql';
@@ -77,6 +82,10 @@ try {
   cat.politica = f(await q(
     "select count(*)::int as n from pg_policies where schemaname = 'public' and tablename = 'bfr_school_calendar_days' and policyname = 'bfr_school_calendar_days_managers_write'"));
   cat.linhas_dias = f(await q('select count(*)::int as dias from public.bfr_school_calendar_days'));
+  cat.grants = f(await q(
+    "select case when to_regprocedure('public.bfr_confirm_school_calendar(integer)') is null then null else has_function_privilege('authenticated', 'public.bfr_confirm_school_calendar(integer)', 'EXECUTE') end as autenticado, case when to_regprocedure('public.bfr_confirm_school_calendar(integer)') is null then null else has_function_privilege('public', 'public.bfr_confirm_school_calendar(integer)', 'EXECUTE') end as publico, case when to_regprocedure('public.bfr_confirm_school_calendar(integer)') is null then null else has_function_privilege('anon', 'public.bfr_confirm_school_calendar(integer)', 'EXECUTE') end as anonimo, case when to_regprocedure('public.bfr_confirm_school_calendar(integer)') is null then null else has_function_privilege('service_role', 'public.bfr_confirm_school_calendar(integer)', 'EXECUTE') end as service_role"));
+  cat.dias_estado = f(await q(
+    "select count(*) filter (where source_status = 'confirmed')::int as confirmadas, count(*) filter (where source_status = 'draft')::int as draft, count(*)::int as total from public.bfr_school_calendar_days"));
   cat.sonda_make_date = f(await q(
     "select (make_date(2026,12,31) - make_date(2026,1,1) + 1)::int as d2026, (make_date(2024,12,31) - make_date(2024,1,1) + 1)::int as d2024"));
 } catch (e) {
@@ -87,9 +96,16 @@ const colunasDias = (cat.colunas_dias || []).map((r) => r.column_name);
 const papeis = (cat.papeis || []).map((r) => r.enumlabel);
 
 // ---- agulhas PII compostas em tempo de execução (nunca literais de ficheiro de configuração) ----------
+// A palavra service_role na linha autorizada do REVOKE é nome de papel, não credencial: comentários são
+// retirados e essa linha exata (declarada por nome) é mascarada, com a máscara provada em runtime
+// (mascara_dispara só conta se a agulha dispara na linha crua — o fixture vive no selfteste do aplicador).
+const LINHA_REVOKE_SR = 'REVOKE ALL ON FUNCTION public.bfr_confirm_school_calendar(integer) FROM anon, service_role;'.toLowerCase();
 const agulhas = ['senha', 'password', 'Bearer ', 'apikey', 'service_role', 'secret_key'].map((a) => a.toLowerCase());
-const textoTodo = (rawCand + rawRev).toLowerCase();
-const achadosPii = agulhas.filter((a) => textoTodo.includes(a));
+const tiraComentarios = (t) => t.split('\n').map((l) => (l.trim().startsWith('--') ? '' : l)).join('\n');
+const cruSemComentarios = (tiraComentarios(rawCand) + '\n' + tiraComentarios(rawRev)).toLowerCase();
+const mascaraDispara = cruSemComentarios.includes(LINHA_REVOKE_SR) && agulhas.some((a) => LINHA_REVOKE_SR.includes(a));
+const varrido = cruSemComentarios.replace(LINHA_REVOKE_SR, ' REVOKE_ANON_SR_NEUTRO ');
+const achadosPii = agulhas.filter((a) => varrido.includes(a));
 
 // ---- portões -------------------------------------------------------------------------------------------
 const G = [];
@@ -132,21 +148,29 @@ gate('consumidor_contagem', n(/`\$\{data\|\|0\} datas confirmadas/, rawBundle) =
 gate('consumidor_avisos_turnos', n(/A gestão ainda precisa confirmar os horários dos turnos/, rawBundle) === 1, n(/A gestão ainda precisa confirmar os horários dos turnos/, rawBundle), 1, 'os turnos continuam por confirmar depois do rpc');
 
 // catálogo vivo
-gate('cat_funcao_ausente', (cat.funcao[0] || {}).n === 0, (cat.funcao[0] || {}).n, 0, 'A1 ainda não existe — pré-condição do modo candidata');
+if (REVERSAO) {
+  gate('cat_funcao_presente', (cat.funcao[0] || {}).n === 1, (cat.funcao[0] || {}).n, 1, 'A1 existe — pré-condição do modo reversão');
+} else {
+  gate('cat_funcao_ausente', (cat.funcao[0] || {}).n === 0, (cat.funcao[0] || {}).n, 0, 'A1 ainda não existe — pré-condição do modo candidata');
+}
 gate('cat_colunas_dias', ['school_year', 'school_date', 'calendar_status', 'label', 'source_status', 'confirmed_by', 'confirmed_at', 'updated_by', 'updated_at'].every((c) => colunasDias.includes(c)), colunasDias, '9 colunas esperadas presentes', 'as colunas que o corpo escreve existem');
 gate('cat_force_rls', (cat.rls[0] || {}).relrowsecurity === true && (cat.rls[0] || {}).relforcerowsecurity === true, cat.rls[0] || {}, 'rowsecurity e forcerowsecurity = true', 'o UPDATE continua a passar pela política managers_write');
 gate('cat_sessao_viva', (cat.sessao[0] || {}).n >= 1, (cat.sessao[0] || {}).n, '>= 1', 'bfr_rls_session_role existe — a porta por papel depende dela');
 gate('cat_papeis_d2', ['coordinator', 'director', 'developer'].every((p) => papeis.includes(p)), papeis, 'coordinator/director/developer no enum', 'os 3 papéis da decisão D2 existem no account_role');
 gate('cat_politica_managers', (cat.politica[0] || {}).n === 1, (cat.politica[0] || {}).n, 1, 'a política managers_write dos dias está viva');
 gate('cat_sonda_make_date', (cat.sonda_make_date[0] || {}).d2026 === 365 && (cat.sonda_make_date[0] || {}).d2024 === 366, cat.sonda_make_date[0] || {}, '2026=365 e 2024=366', 'a aritmética do portão de completude reproduz-se no próprio banco');
+if (REVERSAO) {
+  gate('cat_grant_so_authenticated', (cat.grants[0] || {}).autenticado === true && (cat.grants[0] || {}).publico === false && (cat.grants[0] || {}).anonimo === false && (cat.grants[0] || {}).service_role === false, cat.grants[0] || {}, 'authenticated sim, public/anon/service_role não', 'o EXECUTE ficou só em authenticated');
+  gate('cat_dias_confirmados_365', (cat.dias_estado[0] || {}).confirmadas === 365 && (cat.dias_estado[0] || {}).draft === 0 && (cat.dias_estado[0] || {}).total === 365, cat.dias_estado[0] || {}, '365 confirmadas / 0 draft / 365 no total', 'o ato em runtime confirmou o ano civil inteiro');
+}
 
 // PII + guarda
-gate('pii_zero', achadosPii.length === 0, achadosPii, [], 'nenhuma agulha PII nos dois ficheiros');
+gate('pii_zero', achadosPii.length === 0 && mascaraDispara, { achados: achadosPii, mascara_dispara: mascaraDispara }, { achados: [], mascara_dispara: true }, 'nenhuma agulha PII fora da linha autorizada do REVOKE (máscara provada em runtime)');
 gate('guarda_abortou', guardaAbortou && !guardaChegouAoBanco, { guardaAbortou, guardaChegouAoBanco }, 'aborta antes do banco', 'a sonda de escrita é travada pela própria prédica');
 
 const verdes = G.filter((g) => g.ok).length;
 const vermelhas = G.filter((g) => !g.ok);
-const veredicto = vermelhas.length === 0 ? 'P145_A1_PREFLIGHT_VERDE_CANDIDATA ' + G.length + '/' + vermelhas.length : 'P145_A1_PREFLIGHT_VERMELHO';
+const veredicto = vermelhas.length === 0 ? 'P145_A1_PREFLIGHT_VERDE_' + MODO.toUpperCase() + ' ' + G.length + '/' + vermelhas.length : 'P145_A1_PREFLIGHT_VERMELHO';
 if (vermelhas.length > 0) OUT = OUT.replace(/\.json$/, '-VERMELHO-' + vermelhas.map((g) => g.id).join('-') + '.json');
 const reg = {
   peca: 'scripts/p145-a1-confirmar-calendario-preflight.mjs',
@@ -154,7 +178,7 @@ const reg = {
   emissor_md5: md5(EU),
   em: new Date().toISOString(),
   tempo_ms: Date.now() - t0,
-  modo: 'candidata (só leitura)',
+  modo: MODO + ' (só leitura)',
   ficheiros: {
     candidata: { caminho: CAM_CAND, bytes: Buffer.byteLength(rawCand), md5: md5(rawCand) },
     reversao: { caminho: CAM_REV, bytes: Buffer.byteLength(rawRev), md5: md5(rawRev) },
@@ -168,6 +192,8 @@ const reg = {
     papeis,
     politica_managers: cat.politica[0] || null,
     linhas_dias: cat.linhas_dias[0] || null,
+    grants: cat.grants[0] || null,
+    dias_estado: cat.dias_estado[0] || null,
     sonda_make_date: cat.sonda_make_date[0] || null,
   },
   portoes: G,

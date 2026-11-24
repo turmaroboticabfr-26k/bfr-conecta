@@ -1,0 +1,407 @@
+{
+  "peca": "scripts/p145-a1-confirmar-calendario-preflight.mjs",
+  "emissor_bytes": 18419,
+  "emissor_md5": "07b3af22b68e1b56055977f365619aff",
+  "em": "2026-11-24T06:03:20.131Z",
+  "tempo_ms": 11966,
+  "modo": "reversao (só leitura)",
+  "ficheiros": {
+    "candidata": {
+      "caminho": "scripts/p145-a1-confirmar-calendario-ddl-candidata.sql",
+      "bytes": 4378,
+      "md5": "ffc83edbcbb7f7ea37357a31863907b4"
+    },
+    "reversao": {
+      "caminho": "scripts/p145-a1-confirmar-calendario-ddl-reversao.sql",
+      "bytes": 370,
+      "md5": "94c735333decc86050c5073d21d3d9c7"
+    },
+    "consumidor": {
+      "caminho": "app/index.html",
+      "bytes": 3489467,
+      "md5": "ae59d35346b685b2fbf9d18ade4fa5cd"
+    }
+  },
+  "catalogo_vivo": {
+    "funcao_a1": {
+      "n": 1
+    },
+    "colunas_dias": [
+      "school_year",
+      "school_date",
+      "calendar_status",
+      "label",
+      "source_status",
+      "confirmed_by",
+      "confirmed_at",
+      "updated_by",
+      "updated_at"
+    ],
+    "rls": {
+      "relrowsecurity": true,
+      "relforcerowsecurity": true
+    },
+    "sessao": {
+      "n": 1
+    },
+    "papeis": [
+      "pending",
+      "parent",
+      "student",
+      "pedagogical",
+      "developer",
+      "monitor",
+      "gatekeeper",
+      "coordinator",
+      "secretary",
+      "aee",
+      "director",
+      "psychology",
+      "social_work",
+      "sports_operator",
+      "education_supervisor"
+    ],
+    "politica_managers": {
+      "n": 1
+    },
+    "linhas_dias": {
+      "dias": 365
+    },
+    "grants": {
+      "autenticado": true,
+      "publico": false,
+      "anonimo": true
+    },
+    "dias_estado": {
+      "confirmadas": 365,
+      "draft": 0,
+      "total": 365
+    },
+    "sonda_make_date": {
+      "d2026": 365,
+      "d2024": 366
+    }
+  },
+  "portoes": [
+    {
+      "id": "cand_begin",
+      "ok": true,
+      "medido": 1,
+      "esperado": 1,
+      "nota": "uma transacção"
+    },
+    {
+      "id": "cand_commit",
+      "ok": true,
+      "medido": 1,
+      "esperado": 1,
+      "nota": "uma transacção"
+    },
+    {
+      "id": "cand_uma_funcao",
+      "ok": true,
+      "medido": 1,
+      "esperado": 1,
+      "nota": "assinatura única (integer)"
+    },
+    {
+      "id": "cand_revoke_public",
+      "ok": true,
+      "medido": 1,
+      "esperado": 1,
+      "nota": "REVOKE FROM PUBLIC"
+    },
+    {
+      "id": "cand_grant_so_authenticated",
+      "ok": true,
+      "medido": [
+        1,
+        1
+      ],
+      "esperado": "[1,1]",
+      "nota": "um só GRANT, a authenticated"
+    },
+    {
+      "id": "cand_notify",
+      "ok": true,
+      "medido": 1,
+      "esperado": 1,
+      "nota": "recarrega o schema do PostgREST"
+    },
+    {
+      "id": "cand_comment",
+      "ok": true,
+      "medido": 1,
+      "esperado": 1,
+      "nota": "comment próprio"
+    },
+    {
+      "id": "cand_sem_escritas_fora_do_corpo",
+      "ok": true,
+      "medido": 0,
+      "esperado": 0,
+      "nota": "nada além da função e dos privilégios dela"
+    },
+    {
+      "id": "cand_definer_path",
+      "ok": true,
+      "medido": [
+        1,
+        1
+      ],
+      "esperado": "[1,1]",
+      "nota": "DEFINER com search_path pinado"
+    },
+    {
+      "id": "cand_retorna_bigint",
+      "ok": true,
+      "medido": 1,
+      "esperado": 1,
+      "nota": "o consumidor imprime `${data||0}` — tem de ser número"
+    },
+    {
+      "id": "corpo_raise_papel",
+      "ok": true,
+      "medido": 1,
+      "esperado": 1,
+      "nota": "porta por papel falha fechada com mensagem"
+    },
+    {
+      "id": "corpo_raise_completude",
+      "ok": true,
+      "medido": 1,
+      "esperado": 1,
+      "nota": "porta de completude falha fechada com mensagem"
+    },
+    {
+      "id": "corpo_papeis_d2",
+      "ok": true,
+      "medido": 1,
+      "esperado": 1,
+      "nota": "os 3 confirmadores da decisão §9-D2"
+    },
+    {
+      "id": "corpo_make_date",
+      "ok": true,
+      "medido": 4,
+      "esperado": 4,
+      "nota": "dias do ano civil + primeiro/último dia"
+    },
+    {
+      "id": "corpo_distintas",
+      "ok": true,
+      "medido": 1,
+      "esperado": 1,
+      "nota": "duplicados contam contra o portão"
+    },
+    {
+      "id": "corpo_so_dias",
+      "ok": true,
+      "medido": [
+        1,
+        0
+      ],
+      "esperado": "[1,0]",
+      "nota": "só os dias; os turnos confirmam-se no formulário (contrato do consumidor)"
+    },
+    {
+      "id": "corpo_estado_confirmed",
+      "ok": true,
+      "medido": 1,
+      "esperado": 1,
+      "nota": "draft → confirmed"
+    },
+    {
+      "id": "corpo_auth_uid",
+      "ok": true,
+      "medido": 2,
+      "esperado": 2,
+      "nota": "confirmed_by e updated_by pelo chamador"
+    },
+    {
+      "id": "corpo_row_count",
+      "ok": true,
+      "medido": [
+        1,
+        1
+      ],
+      "esperado": "[1,1]",
+      "nota": "devolve a contagem medida"
+    },
+    {
+      "id": "rev_begin_commit",
+      "ok": true,
+      "medido": [
+        1,
+        1
+      ],
+      "esperado": "[1,1]",
+      "nota": "uma transacção"
+    },
+    {
+      "id": "rev_drop_certo",
+      "ok": true,
+      "medido": 1,
+      "esperado": 1,
+      "nota": "apaga exatamente a assinatura criada"
+    },
+    {
+      "id": "rev_notify",
+      "ok": true,
+      "medido": 1,
+      "esperado": 1,
+      "nota": "schema recarregado"
+    },
+    {
+      "id": "rev_sem_dados",
+      "ok": true,
+      "medido": 0,
+      "esperado": 0,
+      "nota": "não toca em linhas"
+    },
+    {
+      "id": "consumidor_rpc",
+      "ok": true,
+      "medido": 1,
+      "esperado": 1,
+      "nota": "a chamada real do consumidor"
+    },
+    {
+      "id": "consumidor_contagem",
+      "ok": true,
+      "medido": 1,
+      "esperado": 1,
+      "nota": "o consumidor imprime a contagem devolvida"
+    },
+    {
+      "id": "consumidor_avisos_turnos",
+      "ok": true,
+      "medido": 1,
+      "esperado": 1,
+      "nota": "os turnos continuam por confirmar depois do rpc"
+    },
+    {
+      "id": "cat_funcao_presente",
+      "ok": true,
+      "medido": 1,
+      "esperado": 1,
+      "nota": "A1 existe — pré-condição do modo reversão"
+    },
+    {
+      "id": "cat_colunas_dias",
+      "ok": true,
+      "medido": [
+        "school_year",
+        "school_date",
+        "calendar_status",
+        "label",
+        "source_status",
+        "confirmed_by",
+        "confirmed_at",
+        "updated_by",
+        "updated_at"
+      ],
+      "esperado": "9 colunas esperadas presentes",
+      "nota": "as colunas que o corpo escreve existem"
+    },
+    {
+      "id": "cat_force_rls",
+      "ok": true,
+      "medido": {
+        "relrowsecurity": true,
+        "relforcerowsecurity": true
+      },
+      "esperado": "rowsecurity e forcerowsecurity = true",
+      "nota": "o UPDATE continua a passar pela política managers_write"
+    },
+    {
+      "id": "cat_sessao_viva",
+      "ok": true,
+      "medido": 1,
+      "esperado": ">= 1",
+      "nota": "bfr_rls_session_role existe — a porta por papel depende dela"
+    },
+    {
+      "id": "cat_papeis_d2",
+      "ok": true,
+      "medido": [
+        "pending",
+        "parent",
+        "student",
+        "pedagogical",
+        "developer",
+        "monitor",
+        "gatekeeper",
+        "coordinator",
+        "secretary",
+        "aee",
+        "director",
+        "psychology",
+        "social_work",
+        "sports_operator",
+        "education_supervisor"
+      ],
+      "esperado": "coordinator/director/developer no enum",
+      "nota": "os 3 papéis da decisão D2 existem no account_role"
+    },
+    {
+      "id": "cat_politica_managers",
+      "ok": true,
+      "medido": 1,
+      "esperado": 1,
+      "nota": "a política managers_write dos dias está viva"
+    },
+    {
+      "id": "cat_sonda_make_date",
+      "ok": true,
+      "medido": {
+        "d2026": 365,
+        "d2024": 366
+      },
+      "esperado": "2026=365 e 2024=366",
+      "nota": "a aritmética do portão de completude reproduz-se no próprio banco"
+    },
+    {
+      "id": "cat_grant_so_authenticated",
+      "ok": false,
+      "medido": {
+        "autenticado": true,
+        "publico": false,
+        "anonimo": true
+      },
+      "esperado": "authenticated sim, public e anon não",
+      "nota": "o EXECUTE ficou só em authenticated"
+    },
+    {
+      "id": "cat_dias_confirmados_365",
+      "ok": true,
+      "medido": {
+        "confirmadas": 365,
+        "draft": 0,
+        "total": 365
+      },
+      "esperado": "365 confirmadas / 0 draft / 365 no total",
+      "nota": "o ato em runtime confirmou o ano civil inteiro"
+    },
+    {
+      "id": "pii_zero",
+      "ok": true,
+      "medido": [],
+      "esperado": [],
+      "nota": "nenhuma agulha PII nos dois ficheiros"
+    },
+    {
+      "id": "guarda_abortou",
+      "ok": true,
+      "medido": {
+        "guardaAbortou": true,
+        "guardaChegouAoBanco": false
+      },
+      "esperado": "aborta antes do banco",
+      "nota": "a sonda de escrita é travada pela própria prédica"
+    }
+  ],
+  "veredicto": "P145_A1_PREFLIGHT_VERMELHO",
+  "o_que_prova": "A candidata p145 está íntegra em disco (bytes/md5), carrega as duas portas de RAISE, a cláusula dos 3 papéis do D2, confirma só os dias e devolve contagem, o contrato do consumidor v142 casa com ela, o catálogo vivo está no estado pré-aplicação (A1 ausente, colunas presentes, FORCE RLS, sessão viva, política managers_write) e a aritmética 365/366 reproduz-se no banco — neste instante.",
+  "o_que_NAO_prova": "Não prova o comportamento pós-aplicação (o UPDATE real passa pela RLS e pelas políticas com um chamador autenticado de cada papel; isso mede-se no fio depois do OK de DDL e do recarregar do schema). Não prova a semente (p144) nem qualquer escrita: esta peça é só leitura."
+}

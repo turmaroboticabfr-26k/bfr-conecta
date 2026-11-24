@@ -78,6 +78,10 @@ END
 $fn$;
 
 REVOKE ALL ON FUNCTION public.bfr_confirm_school_calendar(integer) FROM PUBLIC;
+-- 24/11, medido no catálogo: o pg_default_acl de postgres em public concede EXECUTE a anon/authenticated/
+-- service_role na criação — o REVOKE FROM PUBLIC não apaga essas entradas. O contrato declarado é «um só
+-- GRANT, a authenticated», por isso os dois papéis são revogados por nome.
+REVOKE ALL ON FUNCTION public.bfr_confirm_school_calendar(integer) FROM anon, service_role;
 GRANT EXECUTE ON FUNCTION public.bfr_confirm_school_calendar(integer) TO authenticated;
 
 COMMENT ON FUNCTION public.bfr_confirm_school_calendar(integer)

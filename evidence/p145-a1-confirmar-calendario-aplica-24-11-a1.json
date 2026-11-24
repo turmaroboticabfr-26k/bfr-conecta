@@ -1,0 +1,345 @@
+{
+  "peca": "scripts/p145-a1-confirmar-calendario-aplica.mjs",
+  "emissor_bytes": 20479,
+  "emissor_md5": "2cbb012a1395b9bf2ee9c72cca34ddb0",
+  "em": "2026-11-24T06:02:34.355Z",
+  "modo": "aplicacao",
+  "frase_usada": "aplique o A1 no banco",
+  "ok_origem": "escolha do utilizador 24/11: «Construir + aplicar o A1» (pergunta única de escopo; autoriza DDL e ato em runtime; a reversao continua sem OK)",
+  "ficheiros": {
+    "candidata": {
+      "caminho": "scripts/p145-a1-confirmar-calendario-ddl-candidata.sql",
+      "bytes": 4378,
+      "md5": "ffc83edbcbb7f7ea37357a31863907b4"
+    },
+    "reversao": {
+      "caminho": "scripts/p145-a1-confirmar-calendario-ddl-reversao.sql",
+      "bytes": 370,
+      "md5": "94c735333decc86050c5073d21d3d9c7"
+    }
+  },
+  "varredura": {
+    "candidata": {
+      "drop_table": 0,
+      "drop_function": 0,
+      "drop_schema_database": 0,
+      "truncate": 0,
+      "insert_into": 0,
+      "delete_from": 0,
+      "update_fora_de_funcao": 0,
+      "alter": 0,
+      "create_function": 1,
+      "grant": 1,
+      "revoke": 1,
+      "comment": 1,
+      "credencial": 0,
+      "begin": 1,
+      "commit": 1,
+      "notify": 1,
+      "create_a1_exata": 1,
+      "drop_a1_exato": 0
+    },
+    "reversao": {
+      "drop_table": 0,
+      "drop_function": 1,
+      "drop_schema_database": 0,
+      "truncate": 0,
+      "insert_into": 0,
+      "delete_from": 0,
+      "update_fora_de_funcao": 0,
+      "alter": 0,
+      "create_function": 0,
+      "grant": 0,
+      "revoke": 0,
+      "comment": 0,
+      "credencial": 0,
+      "begin": 1,
+      "commit": 1,
+      "notify": 1,
+      "create_a1_exata": 0,
+      "drop_a1_exato": 1
+    },
+    "estrutura": [
+      {
+        "id": "begin_commit",
+        "ok": true,
+        "medido": [
+          1,
+          1
+        ],
+        "esperado": "[1,1]"
+      },
+      {
+        "id": "create_a1_unica",
+        "ok": true,
+        "medido": [
+          1,
+          1
+        ],
+        "esperado": "[1,1]"
+      },
+      {
+        "id": "grant_revoke_notify",
+        "ok": true,
+        "medido": [
+          1,
+          1,
+          1
+        ],
+        "esperado": "[1,1,1]"
+      }
+    ],
+    "zeros_exigidos": {
+      "candidata": [
+        "drop_table",
+        "drop_schema_database",
+        "truncate",
+        "insert_into",
+        "delete_from",
+        "update_fora_de_funcao",
+        "alter",
+        "credencial",
+        "drop_function"
+      ],
+      "reversao": [
+        "drop_table",
+        "drop_schema_database",
+        "truncate",
+        "insert_into",
+        "delete_from",
+        "update_fora_de_funcao",
+        "alter",
+        "credencial",
+        "create_function",
+        "grant",
+        "revoke",
+        "comment"
+      ]
+    }
+  },
+  "preflight_antes": {
+    "ficha": "C:\\Users\\pcmac\\Documents\\Qoder\\2026-10-13\\28077d9a\\bfr-conecta\\evidence\\p145-a1-confirmar-calendario-preflight-a1apl1795500154357.json",
+    "veredicto": "P145_A1_PREFLIGHT_VERDE_CANDIDATA 35/0",
+    "catalogo_vivo": {
+      "funcao_a1": {
+        "n": 0
+      },
+      "colunas_dias": [
+        "school_year",
+        "school_date",
+        "calendar_status",
+        "label",
+        "source_status",
+        "confirmed_by",
+        "confirmed_at",
+        "updated_by",
+        "updated_at"
+      ],
+      "rls": {
+        "relrowsecurity": true,
+        "relforcerowsecurity": true
+      },
+      "sessao": {
+        "n": 1
+      },
+      "papeis": [
+        "pending",
+        "parent",
+        "student",
+        "pedagogical",
+        "developer",
+        "monitor",
+        "gatekeeper",
+        "coordinator",
+        "secretary",
+        "aee",
+        "director",
+        "psychology",
+        "social_work",
+        "sports_operator",
+        "education_supervisor"
+      ],
+      "politica_managers": {
+        "n": 1
+      },
+      "linhas_dias": {
+        "dias": 365
+      },
+      "grants": {
+        "autenticado": null,
+        "publico": null,
+        "anonimo": null
+      },
+      "dias_estado": {
+        "confirmadas": 0,
+        "draft": 365,
+        "total": 365
+      },
+      "sonda_make_date": {
+        "d2026": 365,
+        "d2024": 366
+      }
+    }
+  },
+  "baselines_antes": {
+    "schools": 6,
+    "students": 848,
+    "classes": 27,
+    "profiles": 28,
+    "staff_schools": 6
+  },
+  "ato_runtime": {
+    "falha_fechada": {
+      "esperado": true,
+      "disparou": true,
+      "mensagem": "sql HTTP 400: {\"message\":\"Failed to run sql query: ERROR:  P0001: A confirmação do calendário é reservada a coordinator, director e developer (papel da sessão: sem papel).\\nCONTEXT:  PL/pgSQL function bfr_confirm_school_calendar(integer) line 13 at RAISE\\n\"}"
+    },
+    "coordenador": {
+      "id": "6083a77c-bedc-4ff9-b75b-f08ff0d33fe1",
+      "papel": "coordinator",
+      "nome": ""
+    },
+    "confirmadas": 365,
+    "mecanismo": "a mesma resolução do PostgREST: set_config(request.jwt.claim.sub) local à transação -> auth.uid() -> profiles.role -> bfr_rls_session_role(); a chamada positiva corre na ligação postgres do c2-lib, não por JWT real (cadeias 0/15 — p73-estado-das-cadeias-24-11-a1.json)"
+  },
+  "conferencia": {
+    "dias": {
+      "confirmadas": 365,
+      "draft": 0,
+      "total": 365,
+      "confirmadores": 1,
+      "sem_at": 0
+    },
+    "confirmado_por": [
+      "6083a77c-bedc-4ff9-b75b-f08ff0d33fe1"
+    ],
+    "visibilidade_postgrest": {
+      "status": 400,
+      "corpo": "{\"code\":\"P0001\",\"details\":null,\"hint\":null,\"message\":\"A confirmação do calendário é reservada a coordinator, director e developer (papel da sessão: sem papel).\"}"
+    }
+  },
+  "conferencia_gates": [
+    {
+      "id": "falha_fechada_disparou",
+      "ok": true,
+      "medido": true
+    },
+    {
+      "id": "confirmadas_365",
+      "ok": true,
+      "medido": 365,
+      "esperado": 365
+    },
+    {
+      "id": "dias_confirmados",
+      "ok": true,
+      "medido": {
+        "confirmadas": 365,
+        "draft": 0,
+        "total": 365,
+        "confirmadores": 1,
+        "sem_at": 0
+      }
+    },
+    {
+      "id": "confirmado_pelo_coordenador_escolhido",
+      "ok": true,
+      "medido": [
+        "6083a77c-bedc-4ff9-b75b-f08ff0d33fe1"
+      ]
+    },
+    {
+      "id": "todos_com_at",
+      "ok": true,
+      "medido": 0,
+      "esperado": 0
+    },
+    {
+      "id": "postgrest_ve_a_funcao",
+      "ok": true,
+      "medido": 400,
+      "esperado": "diferente de 404 (o NOTIFY recarregou o schema)"
+    }
+  ],
+  "baselines_depois": {
+    "schools": 6,
+    "students": 848,
+    "classes": 27,
+    "profiles": 28,
+    "staff_schools": 6
+  },
+  "baselines_iguais": true,
+  "preflight_depois": {
+    "ficha": "C:\\Users\\pcmac\\Documents\\Qoder\\2026-10-13\\28077d9a\\bfr-conecta\\evidence\\p145-a1-confirmar-calendario-preflight-a1dep1795500188119-VERMELHO-cat_grant_so_authenticated.json",
+    "veredicto": "P145_A1_PREFLIGHT_VERMELHO",
+    "catalogo_vivo": {
+      "funcao_a1": {
+        "n": 1
+      },
+      "colunas_dias": [
+        "school_year",
+        "school_date",
+        "calendar_status",
+        "label",
+        "source_status",
+        "confirmed_by",
+        "confirmed_at",
+        "updated_by",
+        "updated_at"
+      ],
+      "rls": {
+        "relrowsecurity": true,
+        "relforcerowsecurity": true
+      },
+      "sessao": {
+        "n": 1
+      },
+      "papeis": [
+        "pending",
+        "parent",
+        "student",
+        "pedagogical",
+        "developer",
+        "monitor",
+        "gatekeeper",
+        "coordinator",
+        "secretary",
+        "aee",
+        "director",
+        "psychology",
+        "social_work",
+        "sports_operator",
+        "education_supervisor"
+      ],
+      "politica_managers": {
+        "n": 1
+      },
+      "linhas_dias": {
+        "dias": 365
+      },
+      "grants": {
+        "autenticado": true,
+        "publico": false,
+        "anonimo": true
+      },
+      "dias_estado": {
+        "confirmadas": 365,
+        "draft": 0,
+        "total": 365
+      },
+      "sonda_make_date": {
+        "d2026": 365,
+        "d2024": 366
+      }
+    }
+  },
+  "preflight_depois_verde": false,
+  "tempo_ms": 45803,
+  "escreveu_banco": true,
+  "erro_de_escrita": null,
+  "erro_de_runtime": null,
+  "veredicto": "P145_A1_APLICADA_COM_CONFERENCIA_VERMELHA",
+  "o_que_prova": "Com a frase literal do modo: os dois ficheiros SQL estão íntegros (bytes/md5 contra as fichas do pré-voo fresco), a varredura de perigos por família dá zero fora dos atos declarados, o pré-voo candidata (35 portões) passou antes da escrita, o pré-voo reversao (37 portões) passou depois, as baselines das 5 mesas não se moveram, e — no modo aplicacao — a porta por papel falha fechada sem claims, a chamada com a claim de sessão do coordenador de teste devolveu 365 e os dias ficaram confirmed pelo coordenador escolhido, com o PostgREST a ver a função (sem 404). O mecanismo de sessão está DECLARADO acima: é a mesma resolução do PostgREST, mas não passa por JWT real (as 15 cadeias estão mortas — artefacto p73 de 24/11).",
+  "o_que_NAO_prova": "Não prova uma passada de navegador com JWT real de cada papel (exige re-login/mint, sem OK). Não prova o comportamento do formulário de horários (turnos continuam draft — contrato do consumidor). Não autoriza nem executa a reversão, o REVOKE 15+4, a publicação, o push, o mint ou a rotação — cada um tem a sua frase.",
+  "node_exit_esperado": 1
+}

@@ -162,6 +162,8 @@ toda» por «não lê nada» para os cargos sem vínculo — mas o número dela 
 perfis de `secretary` sem vínculo são a população que deixaria de ler alunos e turmas se a PEN-41 fosse
 aplicada hoje.
 
+**Adendo 24/11: o A1 deixou de estar ausente.** A função `bfr_confirm_school_calendar` foi criada e conferida no banco (aplicador `scripts/p145-a1-confirmar-calendario-aplica.mjs`; veredicto `P145_A1_REAPLICADA_E_CONFERIDA`, registo `evidence/p145-a1-confirmar-calendario-aplica-24-11-a1r2.json`: 365 dias confirmados, conferência 6/6, pré-voo reversão 37/0 com `EXECUTE` só a `authenticated`). A4 também mudou com a semente de 24/11 (365+12+1 linhas nas três mesas).
+
 ## 5. O caminho da portaria, que a semente do calendário não repara
 
 Medido no bundle com posições de bytes, no portão `a_portaria_diferida_esconde_a_da_base_por_classe_e_CSS_e_o_formulario_alcancavel_e_o_dela`:
@@ -239,6 +241,8 @@ canal de leitura da própria prova de browser.
   correção datada de §3 — não os 261/313 seg–sex.
 
 ## 7. A função de confirmação (A1): forma proposta, ainda não escrita
+
+**Adendo 24/11: a forma foi escrita, aplicada e conferida.** A candidata `scripts/p145-a1-confirmar-calendario-ddl-candidata.sql` segue a forma proposta abaixo, com dois acréscimos que a conferência mediu necessários: `REVOKE ALL … FROM anon, service_role` (o `pg_default_acl` semeia `EXECUTE` aos quatro papéis e o `REVOKE … FROM PUBLIC` não apaga essas entradas) e `NOTIFY pgrst` de recarga. O pré-voo `scripts/p145-a1-confirmar-calendario-preflight.mjs` tem modo candidata e modo `--reversao` (37 portões, incluindo o portão dos grants). O detalhe completo está no §SM.49 da auditoria; a forma proposta abaixo fica como foi medida a 20/11 e 22/11.
 
 ```
 bfr_confirm_school_calendar(target_school_year)
