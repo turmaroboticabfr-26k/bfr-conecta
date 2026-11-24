@@ -279,3 +279,21 @@ aplicador re-corre o preflight antes de escrever e compara o md5 do SQL com o qu
 uma classe com conjunto vazio imprime-se com o zero (`secretary` sem vínculo: 848/27 → 0/0, não omitido); e um
 portão que cita o censo do seu próprio corpus envelhece no dia em que a prosa acrescenta um caminho — por isso
 o §11 não pinha o número de peças medidas.
+
+## 12. Adenda 23/11 — as três candidatas prontas re-validadas em leitura, e a ordem de aplicação montada
+
+As três peças que ficaram «prontas sem aplicar» nos ciclos anteriores foram re-validadas em 23/11 com pré-voos
+frescos contra o catálogo vivo — só leitura, **0 escrita no banco** — e a ordem de aplicação ficou montada. Os
+veredictos são do instante da corrida (sufixo `23-11-degrau`), cada registo nomeia a própria peça:
+
+| Peça | Natureza | Pré-voo fresco 23/11 |
+|---|---|---|
+| semente RM-5.2 — `scripts/p144-rm52-conteudo-ddl-candidata.sql` | **DML** de conteúdo: 365 dias + 12 metas + 1 turno (378 INSERTs numa transacção) | `P144_RM52_PREFLIGHT_VERDE_CANDIDATA 26/0 · dias 365 · metas 12 · turnos 1 · censo 0/0/0 · conflitos 0` (`evidence/p144-rm52-conteudo-preflight-candidata-23-11-degrau.json`, 12 516 ms) |
+| A1 — `scripts/p145-a1-confirmar-calendario-ddl-candidata.sql` | **DDL**: função `bfr_confirm_school_calendar`, confirma só os dias, porta por papel no corpo, FORCE RLS | `P145_A1_PREFLIGHT_VERDE_CANDIDATA 35/0` (`evidence/p145-a1-confirmar-calendario-preflight-23-11-degrau.json`, 9 743 ms, `linhas_dias_hoje={"dias":0}` — a semente ainda não está aplicada, registado não ocultado) |
+| REVOKE dos 15+4 — `scripts/p143-revoke-anon-e-publico-ddl-candidata.sql` | **DDL**: 29 linhas (15 `FROM anon` + 14 `FROM PUBLIC`) sobre os 19 nomes | `P143_REVOKE_PREFLIGHT_VERDE_CANDIDATA 16/0 · nomes 19 · linhas 29 · censo 163/19/15/0` (`evidence/p143-revoke-anon-e-publico-preflight-candidata-23-11-degrau.json`, 3 889 ms) |
+
+**A ordem montada**, lida das dependências medidas: **(1) semente RM-5.2** — não depende de nada; **(2) A1** — o
+seu ato em tempo de execução é confirmar dias semeados, por isso só faz sentido depois de (1); **(3) REVOKE dos
+15+4** — independente da cadeia do calendário (nenhum dos 19 nomes toca as mesas de dias/metas/turnos), pode
+correr em qualquer ponto e fica montado por último para manter a cadeia do calendário contígua. Cada passo tem
+frase literal própria **e por modo**, e nenhuma das três frases foi dada: este adendo é leitura, não autorização.
