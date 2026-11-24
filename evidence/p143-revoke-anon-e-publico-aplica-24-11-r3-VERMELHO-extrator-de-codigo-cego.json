@@ -1,0 +1,246 @@
+{
+  "peca": "scripts/p143-revoke-anon-e-publico-aplica.mjs",
+  "emissor_bytes": 20212,
+  "emissor_md5": "16889fef4103272df851dfc2c3438698",
+  "em": "2026-11-24T07:48:51.547Z",
+  "modo": "aplicacao",
+  "frase_usada": "Aplicar o REVOKE 15+4",
+  "ok_origem": "escolha do utilizador 24/11: «Aplicar o REVOKE 15+4» (pergunta unica de escopo «O que «finalize» deve fechar?»; autoriza a DDL do REVOKE no banco; a reversao continua sem OK — frase propria nao usada)",
+  "ficheiros": {
+    "candidata": {
+      "caminho": "scripts/p143-revoke-anon-e-publico-ddl-candidata.sql",
+      "bytes": 3520,
+      "md5": "aa49f50178e57c82c1470182de86681f"
+    },
+    "reversao": {
+      "caminho": "scripts/p143-revoke-anon-e-publico-ddl-reversao.sql",
+      "bytes": 3387,
+      "md5": "965edc65d9d42493179bcdc3f330a531"
+    }
+  },
+  "registo_do_gerador": {
+    "rel": "evidence/p143-revoke-anon-e-publico-23-11b.json"
+  },
+  "varredura": {
+    "candidata": {
+      "drop_table": 0,
+      "drop_function": 0,
+      "drop_schema_database": 0,
+      "truncate": 0,
+      "insert_into": 0,
+      "delete_from": 0,
+      "update_fora_de_funcao": 0,
+      "alter": 0,
+      "create": 0,
+      "grant": 0,
+      "revoke": 29,
+      "comment": 0,
+      "credencial": 0,
+      "begin": 1,
+      "commit": 1,
+      "notify": 0
+    },
+    "reversao": {
+      "drop_table": 0,
+      "drop_function": 0,
+      "drop_schema_database": 0,
+      "truncate": 0,
+      "insert_into": 0,
+      "delete_from": 0,
+      "update_fora_de_funcao": 0,
+      "alter": 0,
+      "create": 0,
+      "grant": 29,
+      "revoke": 0,
+      "comment": 0,
+      "credencial": 0,
+      "begin": 1,
+      "commit": 1,
+      "notify": 0
+    },
+    "estrutura": [
+      {
+        "id": "begin_commit",
+        "ok": true,
+        "medido": [
+          1,
+          1
+        ],
+        "esperado": "[1,1]"
+      },
+      {
+        "id": "revoke_29_e_mais_nada",
+        "ok": true,
+        "medido": [
+          29,
+          0
+        ],
+        "esperado": "[29,0]"
+      }
+    ],
+    "zeros_exigidos": {
+      "candidata": [
+        "drop_table",
+        "drop_function",
+        "drop_schema_database",
+        "truncate",
+        "insert_into",
+        "delete_from",
+        "update_fora_de_funcao",
+        "alter",
+        "create",
+        "comment",
+        "credencial",
+        "notify",
+        "grant"
+      ],
+      "reversao": [
+        "drop_table",
+        "drop_function",
+        "drop_schema_database",
+        "truncate",
+        "insert_into",
+        "delete_from",
+        "update_fora_de_funcao",
+        "alter",
+        "create",
+        "comment",
+        "credencial",
+        "notify",
+        "revoke"
+      ]
+    }
+  },
+  "probes": {
+    "nominal": "public.bfr_get_student_photo_path('00000000-0000-0000-0000-000000000000'::uuid)",
+    "publico": "public.bfr_staff_audit_trigger()",
+    "nota": "SET ROLE anon na mesma string do select: cada chamada de sql() e um pedido HTTP fresco, o estado de sessao nao vaza; com EXECUTE revogado o erro e 42501 permission denied for function, antes de qualquer execucao"
+  },
+  "preflight_antes": {
+    "ficha": "C:\\Users\\pcmac\\Documents\\Qoder\\2026-10-13\\28077d9a\\bfr-conecta\\evidence\\p143-revoke-anon-e-publico-preflight-candidata-rapl1795506531548.json",
+    "veredicto": "P143_REVOKE_PREFLIGHT_VERDE_CANDIDATA 17/0 · nomes 19 · linhas 29 · censo 164/19/15/0 · 5469 ms",
+    "censo_vivo": {
+      "total": 164,
+      "anon_pode": 19,
+      "anon_por_entrada": 15,
+      "acl_nula": 0
+    }
+  },
+  "baselines_antes": {
+    "funcoes_public": 164,
+    "grants_nao_visados": {
+      "authenticated": 153,
+      "postgres": 164,
+      "service_role": 163
+    },
+    "pg_default_acl": {
+      "total": 27,
+      "anon_x": 5
+    }
+  },
+  "preflight_depois": {
+    "ficha": "C:\\Users\\pcmac\\Documents\\Qoder\\2026-10-13\\28077d9a\\bfr-conecta\\evidence\\p143-revoke-anon-e-publico-preflight-reversao-rdep1795506542508.json",
+    "veredicto": "P143_REVOKE_PREFLIGHT_VERDE_REVERSAO 17/0 · nomes 19 · linhas 29 · censo 164/0/0/0 · 5388 ms",
+    "censo_vivo": {
+      "total": 164,
+      "anon_pode": 0,
+      "anon_por_entrada": 0,
+      "acl_nula": 0
+    }
+  },
+  "preflight_depois_verde": true,
+  "baselines_depois": {
+    "funcoes_public": 164,
+    "grants_nao_visados": {
+      "authenticated": 153,
+      "postgres": 164,
+      "service_role": 163
+    },
+    "pg_default_acl": {
+      "total": 27,
+      "anon_x": 5
+    }
+  },
+  "baselines_iguais": true,
+  "porta_na_pratica": {
+    "nominal": {
+      "sem_erro": false,
+      "linhas": 0,
+      "valor": "",
+      "erro_codigo": null,
+      "mensagem": "sql HTTP 400: {\"message\":\"Failed to run sql query: ERROR:  42501: permission denied for function bfr_get_student_photo_path\\n\"}"
+    },
+    "publico": {
+      "sem_erro": false,
+      "linhas": 0,
+      "valor": "",
+      "erro_codigo": null,
+      "mensagem": "sql HTTP 400: {\"message\":\"Failed to run sql query: ERROR:  42501: permission denied for function bfr_staff_audit_trigger\\n\"}"
+    }
+  },
+  "conferencia_gates": [
+    {
+      "id": "preflight_depois_verde",
+      "ok": true,
+      "medido": "P143_REVOKE_PREFLIGHT_VERDE_REVERSAO 17/0 · nomes 19 · linhas 29 · censo 164/0/0/0 · 5388 ms"
+    },
+    {
+      "id": "baselines_iguais",
+      "ok": true,
+      "medido": {
+        "antes": {
+          "funcoes_public": 164,
+          "grants_nao_visados": {
+            "authenticated": 153,
+            "postgres": 164,
+            "service_role": 163
+          },
+          "pg_default_acl": {
+            "total": 27,
+            "anon_x": 5
+          }
+        },
+        "depois": {
+          "funcoes_public": 164,
+          "grants_nao_visados": {
+            "authenticated": 153,
+            "postgres": 164,
+            "service_role": 163
+          },
+          "pg_default_acl": {
+            "total": 27,
+            "anon_x": 5
+          }
+        }
+      }
+    },
+    {
+      "id": "portas_fechadas",
+      "ok": false,
+      "medido": {
+        "nominal": {
+          "sem_erro": false,
+          "linhas": 0,
+          "valor": "",
+          "erro_codigo": null,
+          "mensagem": "sql HTTP 400: {\"message\":\"Failed to run sql query: ERROR:  42501: permission denied for function bfr_get_student_photo_path\\n\"}"
+        },
+        "publico": {
+          "sem_erro": false,
+          "linhas": 0,
+          "valor": "",
+          "erro_codigo": null,
+          "mensagem": "sql HTTP 400: {\"message\":\"Failed to run sql query: ERROR:  42501: permission denied for function bfr_staff_audit_trigger\\n\"}"
+        }
+      }
+    }
+  ],
+  "tempo_ms": 22518,
+  "escreveu_banco": true,
+  "erro_de_escrita": null,
+  "erro_de_runtime": null,
+  "veredicto": "P143_REVOKE_APLICADO_COM_CONFERENCIA_VERMELHA",
+  "o_que_prova": "Com a frase literal do modo: os dois ficheiros SQL estao integros (bytes/md5 contra as fichas do pre-voo fresco, que por sua vez conferem a pega do gerador), a varredura de perigos por familia da zero fora dos 29 graus declarados, o pre-voo candidata (17 portoes, censo 164/19/15/0: o 164 e o 163 do registo do gerador mais a funcao do A1 atribuida por medida) passou antes da escrita, o pre-voo reversao (17 portoes, censo 164/0/0/0) passou depois, as baselines nao se moveram — funcoes public 164 (163 do gerador + a do A1), os grants EXECUTE de authenticated/service_role/postgres ficaram identicos e o pg_default_acl ficou intacto (a licao do A1: o REVOKE por nome fecha as entradas vivas sem tocar no mecanismo que governa funcoes futuras) — e a porta fechou na pratica: com SET ROLE anon, o representante nominal (bfr_get_student_photo_path, que o sm37 media em 200) e o representante PUBLIC (bfr_staff_audit_trigger) devolvem 42501 permission denied for function. No modo reversao, as mesmas portas reabrem (o nominal devolve linha, o PUBLIC falha em 0A000 por ser funcao de gatilho chamada a seco, nao por privilegio).",
+  "o_que_NAO_prova": "Nao prova o efeito em RLS nem em gatilhos disparados por tabela (o raio de estouro do gerador mede quem cita os nomes; o efeito so se ve com sessao real, e as cadeias estao 0/15). Nao fecha o mecanismo de default privileges — esse e outra decisao, fora desta peca, e a candidata declara que nao lhe toca (medido no baseline). Nao autoriza nem executa a reversao, a publicacao, o push, o mint ou a rotacao — cada um tem a sua frase.",
+  "node_exit_esperado": 1
+}

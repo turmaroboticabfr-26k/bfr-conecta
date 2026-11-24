@@ -41,8 +41,8 @@ const F_REG = join(REPO, REL_REG);
 if (!existsSync(F_REG)) { console.error('ABORTA: falta ' + F_REG); process.exit(2); }
 const bufReg = readFileSync(F_REG);
 const gen = JSON.parse(bufReg.toString('utf8'));
-if (!gen || !gen.ficheiros_gerados || !gen.declaracoes_geradas || !gen.medido_por_nome) {
-  console.error('ABORTA: o registo do gerador nao traz ficheiros_gerados/declaracoes_geradas/medido_por_nome.'); process.exit(2);
+if (!gen || !gen.ficheiros_gerados || !gen.declaracoes_geradas || !gen.medido_por_nome || !gen.censo_vivo) {
+  console.error('ABORTA: o registo do gerador nao traz ficheiros_gerados/declaracoes_geradas/medido_por_nome/censo_vivo.'); process.exit(2);
 }
 
 // ---- o que as duas pecas escrevem, lido do codigo e nao da minha memoria --------------------------------
@@ -111,6 +111,16 @@ const entradas = await q([
   "  and a.privilege_type = 'EXECUTE'",
   'order by 1, 2',
 ].join('\n'));
+
+// ---- o acrescimo ao mundo do gerador, atribuido por medida ------------------------------------------------
+const NOME_A1 = 'bfr_confirm_school_calendar';
+const a1Medido = (await q([
+  'select count(*)::int as n,',
+  "       count(*) filter (where has_function_privilege('anon'::regrole, p.oid, 'EXECUTE'))::int as anon_pode,",
+  "       count(*) filter (where coalesce(array_to_string(p.proacl,''),'') like '%anon=%')::int as anon_por_entrada",
+  'from pg_proc p join pg_namespace n on n.oid = p.pronamespace',
+  "where n.nspname = 'public' and p.prokind = 'f' and p.proname = " + literal(NOME_A1),
+].join('\n')))[0];
 
 // ---- o mundo medido, nome a nome -------------------------------------------------------------------------
 const porNome = {};
@@ -189,10 +199,33 @@ gate('cada_linha_revoga_o_caminho_que_o_nome_tem_' + (MODO === 'candidata' ? 'e_
     : [entradaPresente(d.nome, d.papel) === false, porNome[d.nome].linha.anon_pode === false]),
   revogados.map(() => [true, true]),
   { por_linha: revogados.map((d) => [d.nome, d.papel, entradaPresente(d.nome, d.papel), porNome[d.nome].linha && porNome[d.nome].linha.anon_pode]) });
-gate('o_censo_vivo_bate_com_o_mundo_do_modo',
-  [censo.total, censo.anon_pode, censo.anon_por_entrada, censo.acl_nula],
-  MODO === 'candidata' ? [163, 19, 15, 0] : [163, 0, 0, 0],
-  { censo, nota: 'em candidata o grau ainda esta la; em reversao os 19 fechados levam o censo anonimo a zero (acl_nula 0 e membria 0 medidas)' });
+// ---- a regua do censo, derivada do registo do gerador + o acrescimo atribuido -----------------------------
+const censoBate = (censoVivo, a1, genCenso, modo) => {
+  const esperado = modo === 'candidata'
+    ? [genCenso.total + a1.n, genCenso.anon_pode, genCenso.anon_por_entrada, genCenso.acl_nula]
+    : [genCenso.total + a1.n, 0, 0, 0];
+  const vivo = [censoVivo.total, censoVivo.anon_pode, censoVivo.anon_por_entrada, censoVivo.acl_nula];
+  const a1SemRotaAnon = a1.anon_pode === 0 && a1.anon_por_entrada === 0;
+  return { ok: JSON.stringify(vivo) === JSON.stringify(esperado) && a1SemRotaAnon, vivo, esperado, a1SemRotaAnon };
+};
+const rCenso = censoBate(censo, a1Medido, gen.censo_vivo, MODO);
+gate('o_censo_vivo_bate_com_o_mundo_do_modo_com_o_acrescimo_atribuido_ao_a1',
+  [rCenso.ok, rCenso.vivo, rCenso.a1SemRotaAnon],
+  [true, rCenso.esperado, true],
+  { censo, gen_censo_vivo: gen.censo_vivo, a1: a1Medido, nome_a1: NOME_A1,
+    nota: 'o total esperado e o do registo do gerador mais exatamente as funcoes do A1 medidas hoje (uma, criada em 24/11 pelo ciclo autorizado do A1, com acl so de postgres e authenticated): nenhuma pode dar EXECUTE ao anon; candidata exige os campos do anon iguais aos do gerador, reversao exige-os a zero' });
+const fxCenso = [
+  ['mundo_do_gerador_mais_a1_sem_rota_anon', censoBate({ total: 164, anon_pode: 19, anon_por_entrada: 15, acl_nula: 0 }, { n: 1, anon_pode: 0, anon_por_entrada: 0 }, gen.censo_vivo, 'candidata'), true],
+  ['acrescimo_sem_atribuicao', censoBate({ total: 165, anon_pode: 19, anon_por_entrada: 15, acl_nula: 0 }, { n: 1, anon_pode: 0, anon_por_entrada: 0 }, gen.censo_vivo, 'candidata'), false],
+  ['a1_com_rota_anon', censoBate({ total: 164, anon_pode: 20, anon_por_entrada: 16, acl_nula: 0 }, { n: 1, anon_pode: 1, anon_por_entrada: 1 }, gen.censo_vivo, 'candidata'), false],
+  ['funcao_a_menos', censoBate({ total: 163, anon_pode: 19, anon_por_entrada: 15, acl_nula: 0 }, { n: 1, anon_pode: 0, anon_por_entrada: 0 }, gen.censo_vivo, 'candidata'), false],
+  ['reversao_mundo_fechado', censoBate({ total: 164, anon_pode: 0, anon_por_entrada: 0, acl_nula: 0 }, { n: 1, anon_pode: 0, anon_por_entrada: 0 }, gen.censo_vivo, 'reversao'), true],
+  ['reversao_ainda_aberta', censoBate({ total: 164, anon_pode: 19, anon_por_entrada: 15, acl_nula: 0 }, { n: 1, anon_pode: 0, anon_por_entrada: 0 }, gen.censo_vivo, 'reversao'), false],
+];
+gate('a_regua_do_censo_dispara_nos_dois_sentidos_com_a_delta_do_a1_atribuida',
+  fxCenso.map(([n, r]) => [n, r.ok]),
+  fxCenso.map(([n, , e]) => [n, e]),
+  { nota: 'os seis mundos fabricados provam que a regua aceita exactamente o mundo do gerador mais a funcao do A1 sem rota anon, e chumba acrescimos sem atribuicao, rota anon na funcao nova e mundos a menos' });
 gate('o_confronto_nome_a_nome_com_o_registo_do_gerador_' + (MODO === 'candidata' ? 'esta_em_delta_zero' : 'so_mostra_as_entradas_que_ficam'),
   NOMES.map((n) => MODO === 'candidata'
     ? [porNome[n].contemplados, porNome[n].entradas_execute]
@@ -235,7 +268,7 @@ const resultado = {
   emissor_bytes: EU.length,
   emissor_md5: md5(EU),
   pergunta: 'o que o catalogo vivo diz hoje sobre as duas pecas do p143: a candidata revoga exactamente os caminhos medidos e a reversao devolve exactamente o que ela tira?',
-  metodo: 'as declaracoes leem-se do codigo sem comentarios das duas pecas; o catalogo e re-medido (censo, identidades, entradas de ACL) com o predicado eLeitura lido do p139; o registo do gerador ' + REL_REG + ' e a testemunha do mundo antes; zero escrita.',
+  metodo: 'as declaracoes leem-se do codigo sem comentarios das duas pecas; o catalogo e re-medido (censo, identidades, entradas de ACL) com o predicado eLeitura lido do p139; o registo do gerador ' + REL_REG + ' e a testemunha do mundo antes; o acrescimo ao censo do gerador e atribuido por nome (a funcao do A1, 24/11) e re-medido sem rota anon; zero escrita.',
   identidade_do_medido: {
     registo_do_gerador: { rel: REL_REG, bytes: bufReg.length, md5: md5(bufReg) },
     ficheiros: { candidata: { caminho: CAM_CAND, bytes: Buffer.byteLength(rawCand, 'utf8'), md5: md5(Buffer.from(rawCand, 'utf8')) },

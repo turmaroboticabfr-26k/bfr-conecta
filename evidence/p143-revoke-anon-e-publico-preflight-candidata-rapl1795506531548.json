@@ -1,0 +1,2583 @@
+{
+  "peca": "scripts/p143-revoke-anon-e-publico-preflight.mjs",
+  "modo": "candidata",
+  "em": "2026-11-24T07:48:57.070Z",
+  "duracao_ms": 5470,
+  "emissor_bytes": 21732,
+  "emissor_md5": "f258cc475b2cb22e69fad536e044f2a1",
+  "pergunta": "o que o catalogo vivo diz hoje sobre as duas pecas do p143: a candidata revoga exactamente os caminhos medidos e a reversao devolve exactamente o que ela tira?",
+  "metodo": "as declaracoes leem-se do codigo sem comentarios das duas pecas; o catalogo e re-medido (censo, identidades, entradas de ACL) com o predicado eLeitura lido do p139; o registo do gerador evidence/p143-revoke-anon-e-publico-23-11b.json e a testemunha do mundo antes; o acrescimo ao censo do gerador e atribuido por nome (a funcao do A1, 24/11) e re-medido sem rota anon; zero escrita.",
+  "identidade_do_medido": {
+    "registo_do_gerador": {
+      "rel": "evidence/p143-revoke-anon-e-publico-23-11b.json",
+      "bytes": 87994,
+      "md5": "1efce2074eb929b5cb0c2d505e2a7719"
+    },
+    "ficheiros": {
+      "candidata": {
+        "caminho": "scripts/p143-revoke-anon-e-publico-ddl-candidata.sql",
+        "bytes": 3520,
+        "md5": "aa49f50178e57c82c1470182de86681f"
+      },
+      "reversao": {
+        "caminho": "scripts/p143-revoke-anon-e-publico-ddl-reversao.sql",
+        "bytes": 3387,
+        "md5": "965edc65d9d42493179bcdc3f330a531"
+      }
+    },
+    "predicado_lido_da_fonte": "const eLeitura = (t) => /^\\s*(select|with)\\b/i.test(String(t));"
+  },
+  "declaracoes": {
+    "candidata": [
+      {
+        "nome": "bfr_audit_lesson_attendance_change",
+        "ident": "",
+        "papel": "anon"
+      },
+      {
+        "nome": "bfr_get_student_photo_path",
+        "ident": "target_student_id uuid",
+        "papel": "anon"
+      },
+      {
+        "nome": "bfr_prevent_duplicate_grade",
+        "ident": "",
+        "papel": "anon"
+      },
+      {
+        "nome": "bfr_psychology_schedule_guard",
+        "ident": "",
+        "papel": "anon"
+      },
+      {
+        "nome": "bfr_rls_director_manages_student",
+        "ident": "p_student_id uuid",
+        "papel": "anon"
+      },
+      {
+        "nome": "bfr_rls_is_developer",
+        "ident": "",
+        "papel": "anon"
+      },
+      {
+        "nome": "bfr_rls_session_role",
+        "ident": "",
+        "papel": "anon"
+      },
+      {
+        "nome": "bfr_school_set_municipality",
+        "ident": "p_school uuid, p_municipality uuid, p_reason text",
+        "papel": "anon"
+      },
+      {
+        "nome": "bfr_specialized_audit_trigger",
+        "ident": "",
+        "papel": "anon"
+      },
+      {
+        "nome": "bfr_support_request_scope_guard",
+        "ident": "",
+        "papel": "anon"
+      },
+      {
+        "nome": "bfr_touch_updated_at",
+        "ident": "",
+        "papel": "anon"
+      },
+      {
+        "nome": "bfr_validate_lesson_attendance",
+        "ident": "",
+        "papel": "anon"
+      },
+      {
+        "nome": "enforce_bfr_avatar_uniform",
+        "ident": "",
+        "papel": "anon"
+      },
+      {
+        "nome": "schools_updated_at",
+        "ident": "",
+        "papel": "anon"
+      },
+      {
+        "nome": "sports_touch_updated_at",
+        "ident": "",
+        "papel": "anon"
+      },
+      {
+        "nome": "bfr_audit_lesson_attendance_change",
+        "ident": "",
+        "papel": "PUBLIC"
+      },
+      {
+        "nome": "bfr_collab_comment_notification_trigger",
+        "ident": "",
+        "papel": "PUBLIC"
+      },
+      {
+        "nome": "bfr_collab_member_notification_trigger",
+        "ident": "",
+        "papel": "PUBLIC"
+      },
+      {
+        "nome": "bfr_collab_task_notification_trigger",
+        "ident": "",
+        "papel": "PUBLIC"
+      },
+      {
+        "nome": "bfr_prevent_duplicate_grade",
+        "ident": "",
+        "papel": "PUBLIC"
+      },
+      {
+        "nome": "bfr_psychology_schedule_guard",
+        "ident": "",
+        "papel": "PUBLIC"
+      },
+      {
+        "nome": "bfr_specialized_audit_trigger",
+        "ident": "",
+        "papel": "PUBLIC"
+      },
+      {
+        "nome": "bfr_staff_audit_trigger",
+        "ident": "",
+        "papel": "PUBLIC"
+      },
+      {
+        "nome": "bfr_support_request_scope_guard",
+        "ident": "",
+        "papel": "PUBLIC"
+      },
+      {
+        "nome": "bfr_touch_updated_at",
+        "ident": "",
+        "papel": "PUBLIC"
+      },
+      {
+        "nome": "bfr_validate_lesson_attendance",
+        "ident": "",
+        "papel": "PUBLIC"
+      },
+      {
+        "nome": "enforce_bfr_avatar_uniform",
+        "ident": "",
+        "papel": "PUBLIC"
+      },
+      {
+        "nome": "schools_updated_at",
+        "ident": "",
+        "papel": "PUBLIC"
+      },
+      {
+        "nome": "sports_touch_updated_at",
+        "ident": "",
+        "papel": "PUBLIC"
+      }
+    ],
+    "reversao": [
+      {
+        "nome": "bfr_audit_lesson_attendance_change",
+        "ident": "",
+        "papel": "anon"
+      },
+      {
+        "nome": "bfr_get_student_photo_path",
+        "ident": "target_student_id uuid",
+        "papel": "anon"
+      },
+      {
+        "nome": "bfr_prevent_duplicate_grade",
+        "ident": "",
+        "papel": "anon"
+      },
+      {
+        "nome": "bfr_psychology_schedule_guard",
+        "ident": "",
+        "papel": "anon"
+      },
+      {
+        "nome": "bfr_rls_director_manages_student",
+        "ident": "p_student_id uuid",
+        "papel": "anon"
+      },
+      {
+        "nome": "bfr_rls_is_developer",
+        "ident": "",
+        "papel": "anon"
+      },
+      {
+        "nome": "bfr_rls_session_role",
+        "ident": "",
+        "papel": "anon"
+      },
+      {
+        "nome": "bfr_school_set_municipality",
+        "ident": "p_school uuid, p_municipality uuid, p_reason text",
+        "papel": "anon"
+      },
+      {
+        "nome": "bfr_specialized_audit_trigger",
+        "ident": "",
+        "papel": "anon"
+      },
+      {
+        "nome": "bfr_support_request_scope_guard",
+        "ident": "",
+        "papel": "anon"
+      },
+      {
+        "nome": "bfr_touch_updated_at",
+        "ident": "",
+        "papel": "anon"
+      },
+      {
+        "nome": "bfr_validate_lesson_attendance",
+        "ident": "",
+        "papel": "anon"
+      },
+      {
+        "nome": "enforce_bfr_avatar_uniform",
+        "ident": "",
+        "papel": "anon"
+      },
+      {
+        "nome": "schools_updated_at",
+        "ident": "",
+        "papel": "anon"
+      },
+      {
+        "nome": "sports_touch_updated_at",
+        "ident": "",
+        "papel": "anon"
+      },
+      {
+        "nome": "bfr_audit_lesson_attendance_change",
+        "ident": "",
+        "papel": "PUBLIC"
+      },
+      {
+        "nome": "bfr_collab_comment_notification_trigger",
+        "ident": "",
+        "papel": "PUBLIC"
+      },
+      {
+        "nome": "bfr_collab_member_notification_trigger",
+        "ident": "",
+        "papel": "PUBLIC"
+      },
+      {
+        "nome": "bfr_collab_task_notification_trigger",
+        "ident": "",
+        "papel": "PUBLIC"
+      },
+      {
+        "nome": "bfr_prevent_duplicate_grade",
+        "ident": "",
+        "papel": "PUBLIC"
+      },
+      {
+        "nome": "bfr_psychology_schedule_guard",
+        "ident": "",
+        "papel": "PUBLIC"
+      },
+      {
+        "nome": "bfr_specialized_audit_trigger",
+        "ident": "",
+        "papel": "PUBLIC"
+      },
+      {
+        "nome": "bfr_staff_audit_trigger",
+        "ident": "",
+        "papel": "PUBLIC"
+      },
+      {
+        "nome": "bfr_support_request_scope_guard",
+        "ident": "",
+        "papel": "PUBLIC"
+      },
+      {
+        "nome": "bfr_touch_updated_at",
+        "ident": "",
+        "papel": "PUBLIC"
+      },
+      {
+        "nome": "bfr_validate_lesson_attendance",
+        "ident": "",
+        "papel": "PUBLIC"
+      },
+      {
+        "nome": "enforce_bfr_avatar_uniform",
+        "ident": "",
+        "papel": "PUBLIC"
+      },
+      {
+        "nome": "schools_updated_at",
+        "ident": "",
+        "papel": "PUBLIC"
+      },
+      {
+        "nome": "sports_touch_updated_at",
+        "ident": "",
+        "papel": "PUBLIC"
+      }
+    ],
+    "estrutura": {
+      "candidata": {
+        "begin": 1,
+        "commit": 1,
+        "revoke": 29,
+        "grant": 0,
+        "statement_fora_dos_graus": 0
+      },
+      "reversao": {
+        "begin": 1,
+        "commit": 1,
+        "revoke": 0,
+        "grant": 29,
+        "statement_fora_dos_graus": 0
+      }
+    }
+  },
+  "medido_por_nome": {
+    "bfr_audit_lesson_attendance_change": {
+      "linha": {
+        "oid": "26388",
+        "nome": "bfr_audit_lesson_attendance_change",
+        "ident": "",
+        "anon_pode": true,
+        "acl_texto": "=X/postgres,postgres=X/postgres,anon=X/postgres,authenticated=X/postgres,service_role=X/postgres"
+      },
+      "contemplados": [
+        "PUBLIC",
+        "anon",
+        "authenticated",
+        "postgres",
+        "service_role"
+      ],
+      "tem_anon": true,
+      "tem_public": true,
+      "restantes": [
+        "authenticated",
+        "postgres",
+        "service_role"
+      ],
+      "entradas_execute": [
+        "PUBLIC por postgres",
+        "anon por postgres",
+        "authenticated por postgres",
+        "postgres por postgres",
+        "service_role por postgres"
+      ]
+    },
+    "bfr_collab_comment_notification_trigger": {
+      "linha": {
+        "oid": "20862",
+        "nome": "bfr_collab_comment_notification_trigger",
+        "ident": "",
+        "anon_pode": true,
+        "acl_texto": "=X/postgres,postgres=X/postgres,authenticated=X/postgres,service_role=X/postgres"
+      },
+      "contemplados": [
+        "PUBLIC",
+        "authenticated",
+        "postgres",
+        "service_role"
+      ],
+      "tem_anon": false,
+      "tem_public": true,
+      "restantes": [
+        "authenticated",
+        "postgres",
+        "service_role"
+      ],
+      "entradas_execute": [
+        "PUBLIC por postgres",
+        "authenticated por postgres",
+        "postgres por postgres",
+        "service_role por postgres"
+      ]
+    },
+    "bfr_collab_member_notification_trigger": {
+      "linha": {
+        "oid": "20859",
+        "nome": "bfr_collab_member_notification_trigger",
+        "ident": "",
+        "anon_pode": true,
+        "acl_texto": "=X/postgres,postgres=X/postgres,authenticated=X/postgres,service_role=X/postgres"
+      },
+      "contemplados": [
+        "PUBLIC",
+        "authenticated",
+        "postgres",
+        "service_role"
+      ],
+      "tem_anon": false,
+      "tem_public": true,
+      "restantes": [
+        "authenticated",
+        "postgres",
+        "service_role"
+      ],
+      "entradas_execute": [
+        "PUBLIC por postgres",
+        "authenticated por postgres",
+        "postgres por postgres",
+        "service_role por postgres"
+      ]
+    },
+    "bfr_collab_task_notification_trigger": {
+      "linha": {
+        "oid": "20857",
+        "nome": "bfr_collab_task_notification_trigger",
+        "ident": "",
+        "anon_pode": true,
+        "acl_texto": "=X/postgres,postgres=X/postgres,authenticated=X/postgres,service_role=X/postgres"
+      },
+      "contemplados": [
+        "PUBLIC",
+        "authenticated",
+        "postgres",
+        "service_role"
+      ],
+      "tem_anon": false,
+      "tem_public": true,
+      "restantes": [
+        "authenticated",
+        "postgres",
+        "service_role"
+      ],
+      "entradas_execute": [
+        "PUBLIC por postgres",
+        "authenticated por postgres",
+        "postgres por postgres",
+        "service_role por postgres"
+      ]
+    },
+    "bfr_get_student_photo_path": {
+      "linha": {
+        "oid": "24994",
+        "nome": "bfr_get_student_photo_path",
+        "ident": "target_student_id uuid",
+        "anon_pode": true,
+        "acl_texto": "postgres=X/postgres,anon=X/postgres,authenticated=X/postgres,service_role=X/postgres"
+      },
+      "contemplados": [
+        "anon",
+        "authenticated",
+        "postgres",
+        "service_role"
+      ],
+      "tem_anon": true,
+      "tem_public": false,
+      "restantes": [
+        "authenticated",
+        "postgres",
+        "service_role"
+      ],
+      "entradas_execute": [
+        "anon por postgres",
+        "authenticated por postgres",
+        "postgres por postgres",
+        "service_role por postgres"
+      ]
+    },
+    "bfr_prevent_duplicate_grade": {
+      "linha": {
+        "oid": "23268",
+        "nome": "bfr_prevent_duplicate_grade",
+        "ident": "",
+        "anon_pode": true,
+        "acl_texto": "=X/postgres,postgres=X/postgres,anon=X/postgres,authenticated=X/postgres,service_role=X/postgres"
+      },
+      "contemplados": [
+        "PUBLIC",
+        "anon",
+        "authenticated",
+        "postgres",
+        "service_role"
+      ],
+      "tem_anon": true,
+      "tem_public": true,
+      "restantes": [
+        "authenticated",
+        "postgres",
+        "service_role"
+      ],
+      "entradas_execute": [
+        "PUBLIC por postgres",
+        "anon por postgres",
+        "authenticated por postgres",
+        "postgres por postgres",
+        "service_role por postgres"
+      ]
+    },
+    "bfr_psychology_schedule_guard": {
+      "linha": {
+        "oid": "24855",
+        "nome": "bfr_psychology_schedule_guard",
+        "ident": "",
+        "anon_pode": true,
+        "acl_texto": "=X/postgres,postgres=X/postgres,anon=X/postgres,authenticated=X/postgres,service_role=X/postgres"
+      },
+      "contemplados": [
+        "PUBLIC",
+        "anon",
+        "authenticated",
+        "postgres",
+        "service_role"
+      ],
+      "tem_anon": true,
+      "tem_public": true,
+      "restantes": [
+        "authenticated",
+        "postgres",
+        "service_role"
+      ],
+      "entradas_execute": [
+        "PUBLIC por postgres",
+        "anon por postgres",
+        "authenticated por postgres",
+        "postgres por postgres",
+        "service_role por postgres"
+      ]
+    },
+    "bfr_rls_director_manages_student": {
+      "linha": {
+        "oid": "32516",
+        "nome": "bfr_rls_director_manages_student",
+        "ident": "p_student_id uuid",
+        "anon_pode": true,
+        "acl_texto": "postgres=X/postgres,anon=X/postgres,authenticated=X/postgres,service_role=X/postgres"
+      },
+      "contemplados": [
+        "anon",
+        "authenticated",
+        "postgres",
+        "service_role"
+      ],
+      "tem_anon": true,
+      "tem_public": false,
+      "restantes": [
+        "authenticated",
+        "postgres",
+        "service_role"
+      ],
+      "entradas_execute": [
+        "anon por postgres",
+        "authenticated por postgres",
+        "postgres por postgres",
+        "service_role por postgres"
+      ]
+    },
+    "bfr_rls_is_developer": {
+      "linha": {
+        "oid": "32515",
+        "nome": "bfr_rls_is_developer",
+        "ident": "",
+        "anon_pode": true,
+        "acl_texto": "postgres=X/postgres,anon=X/postgres,authenticated=X/postgres,service_role=X/postgres"
+      },
+      "contemplados": [
+        "anon",
+        "authenticated",
+        "postgres",
+        "service_role"
+      ],
+      "tem_anon": true,
+      "tem_public": false,
+      "restantes": [
+        "authenticated",
+        "postgres",
+        "service_role"
+      ],
+      "entradas_execute": [
+        "anon por postgres",
+        "authenticated por postgres",
+        "postgres por postgres",
+        "service_role por postgres"
+      ]
+    },
+    "bfr_rls_session_role": {
+      "linha": {
+        "oid": "32514",
+        "nome": "bfr_rls_session_role",
+        "ident": "",
+        "anon_pode": true,
+        "acl_texto": "postgres=X/postgres,anon=X/postgres,authenticated=X/postgres,service_role=X/postgres"
+      },
+      "contemplados": [
+        "anon",
+        "authenticated",
+        "postgres",
+        "service_role"
+      ],
+      "tem_anon": true,
+      "tem_public": false,
+      "restantes": [
+        "authenticated",
+        "postgres",
+        "service_role"
+      ],
+      "entradas_execute": [
+        "anon por postgres",
+        "authenticated por postgres",
+        "postgres por postgres",
+        "service_role por postgres"
+      ]
+    },
+    "bfr_school_set_municipality": {
+      "linha": {
+        "oid": "32881",
+        "nome": "bfr_school_set_municipality",
+        "ident": "p_school uuid, p_municipality uuid, p_reason text",
+        "anon_pode": true,
+        "acl_texto": "postgres=X/postgres,anon=X/postgres,authenticated=X/postgres,service_role=X/postgres"
+      },
+      "contemplados": [
+        "anon",
+        "authenticated",
+        "postgres",
+        "service_role"
+      ],
+      "tem_anon": true,
+      "tem_public": false,
+      "restantes": [
+        "authenticated",
+        "postgres",
+        "service_role"
+      ],
+      "entradas_execute": [
+        "anon por postgres",
+        "authenticated por postgres",
+        "postgres por postgres",
+        "service_role por postgres"
+      ]
+    },
+    "bfr_specialized_audit_trigger": {
+      "linha": {
+        "oid": "23858",
+        "nome": "bfr_specialized_audit_trigger",
+        "ident": "",
+        "anon_pode": true,
+        "acl_texto": "=X/postgres,postgres=X/postgres,anon=X/postgres,authenticated=X/postgres,service_role=X/postgres"
+      },
+      "contemplados": [
+        "PUBLIC",
+        "anon",
+        "authenticated",
+        "postgres",
+        "service_role"
+      ],
+      "tem_anon": true,
+      "tem_public": true,
+      "restantes": [
+        "authenticated",
+        "postgres",
+        "service_role"
+      ],
+      "entradas_execute": [
+        "PUBLIC por postgres",
+        "anon por postgres",
+        "authenticated por postgres",
+        "postgres por postgres",
+        "service_role por postgres"
+      ]
+    },
+    "bfr_staff_audit_trigger": {
+      "linha": {
+        "oid": "20973",
+        "nome": "bfr_staff_audit_trigger",
+        "ident": "",
+        "anon_pode": true,
+        "acl_texto": "=X/postgres,postgres=X/postgres,authenticated=X/postgres,service_role=X/postgres"
+      },
+      "contemplados": [
+        "PUBLIC",
+        "authenticated",
+        "postgres",
+        "service_role"
+      ],
+      "tem_anon": false,
+      "tem_public": true,
+      "restantes": [
+        "authenticated",
+        "postgres",
+        "service_role"
+      ],
+      "entradas_execute": [
+        "PUBLIC por postgres",
+        "authenticated por postgres",
+        "postgres por postgres",
+        "service_role por postgres"
+      ]
+    },
+    "bfr_support_request_scope_guard": {
+      "linha": {
+        "oid": "24195",
+        "nome": "bfr_support_request_scope_guard",
+        "ident": "",
+        "anon_pode": true,
+        "acl_texto": "=X/postgres,postgres=X/postgres,anon=X/postgres,authenticated=X/postgres,service_role=X/postgres"
+      },
+      "contemplados": [
+        "PUBLIC",
+        "anon",
+        "authenticated",
+        "postgres",
+        "service_role"
+      ],
+      "tem_anon": true,
+      "tem_public": true,
+      "restantes": [
+        "authenticated",
+        "postgres",
+        "service_role"
+      ],
+      "entradas_execute": [
+        "PUBLIC por postgres",
+        "anon por postgres",
+        "authenticated por postgres",
+        "postgres por postgres",
+        "service_role por postgres"
+      ]
+    },
+    "bfr_touch_updated_at": {
+      "linha": {
+        "oid": "21562",
+        "nome": "bfr_touch_updated_at",
+        "ident": "",
+        "anon_pode": true,
+        "acl_texto": "=X/postgres,postgres=X/postgres,anon=X/postgres,authenticated=X/postgres,service_role=X/postgres"
+      },
+      "contemplados": [
+        "PUBLIC",
+        "anon",
+        "authenticated",
+        "postgres",
+        "service_role"
+      ],
+      "tem_anon": true,
+      "tem_public": true,
+      "restantes": [
+        "authenticated",
+        "postgres",
+        "service_role"
+      ],
+      "entradas_execute": [
+        "PUBLIC por postgres",
+        "anon por postgres",
+        "authenticated por postgres",
+        "postgres por postgres",
+        "service_role por postgres"
+      ]
+    },
+    "bfr_validate_lesson_attendance": {
+      "linha": {
+        "oid": "26386",
+        "nome": "bfr_validate_lesson_attendance",
+        "ident": "",
+        "anon_pode": true,
+        "acl_texto": "=X/postgres,postgres=X/postgres,anon=X/postgres,authenticated=X/postgres,service_role=X/postgres"
+      },
+      "contemplados": [
+        "PUBLIC",
+        "anon",
+        "authenticated",
+        "postgres",
+        "service_role"
+      ],
+      "tem_anon": true,
+      "tem_public": true,
+      "restantes": [
+        "authenticated",
+        "postgres",
+        "service_role"
+      ],
+      "entradas_execute": [
+        "PUBLIC por postgres",
+        "anon por postgres",
+        "authenticated por postgres",
+        "postgres por postgres",
+        "service_role por postgres"
+      ]
+    },
+    "enforce_bfr_avatar_uniform": {
+      "linha": {
+        "oid": "23308",
+        "nome": "enforce_bfr_avatar_uniform",
+        "ident": "",
+        "anon_pode": true,
+        "acl_texto": "=X/postgres,postgres=X/postgres,anon=X/postgres,authenticated=X/postgres,service_role=X/postgres"
+      },
+      "contemplados": [
+        "PUBLIC",
+        "anon",
+        "authenticated",
+        "postgres",
+        "service_role"
+      ],
+      "tem_anon": true,
+      "tem_public": true,
+      "restantes": [
+        "authenticated",
+        "postgres",
+        "service_role"
+      ],
+      "entradas_execute": [
+        "PUBLIC por postgres",
+        "anon por postgres",
+        "authenticated por postgres",
+        "postgres por postgres",
+        "service_role por postgres"
+      ]
+    },
+    "schools_updated_at": {
+      "linha": {
+        "oid": "32123",
+        "nome": "schools_updated_at",
+        "ident": "",
+        "anon_pode": true,
+        "acl_texto": "=X/postgres,postgres=X/postgres,anon=X/postgres,authenticated=X/postgres,service_role=X/postgres"
+      },
+      "contemplados": [
+        "PUBLIC",
+        "anon",
+        "authenticated",
+        "postgres",
+        "service_role"
+      ],
+      "tem_anon": true,
+      "tem_public": true,
+      "restantes": [
+        "authenticated",
+        "postgres",
+        "service_role"
+      ],
+      "entradas_execute": [
+        "PUBLIC por postgres",
+        "anon por postgres",
+        "authenticated por postgres",
+        "postgres por postgres",
+        "service_role por postgres"
+      ]
+    },
+    "sports_touch_updated_at": {
+      "linha": {
+        "oid": "22751",
+        "nome": "sports_touch_updated_at",
+        "ident": "",
+        "anon_pode": true,
+        "acl_texto": "=X/postgres,postgres=X/postgres,anon=X/postgres,authenticated=X/postgres,service_role=X/postgres"
+      },
+      "contemplados": [
+        "PUBLIC",
+        "anon",
+        "authenticated",
+        "postgres",
+        "service_role"
+      ],
+      "tem_anon": true,
+      "tem_public": true,
+      "restantes": [
+        "authenticated",
+        "postgres",
+        "service_role"
+      ],
+      "entradas_execute": [
+        "PUBLIC por postgres",
+        "anon por postgres",
+        "authenticated por postgres",
+        "postgres por postgres",
+        "service_role por postgres"
+      ]
+    }
+  },
+  "censo_vivo": {
+    "total": 164,
+    "anon_pode": 19,
+    "anon_por_entrada": 15,
+    "acl_nula": 0
+  },
+  "o_que_este_verde_nao_autoriza": "nada: e leitura. Aplicar a candidata, reverter, publicar seja o que for, escrever no banco e git push continuam a pedir cada um a sua frase literal.",
+  "o_que_este_verde_nao_prova": "que o REVOKE esta aplicado — este modo pressupoe o contrario: prova que o grau esta onde a peca o pode tocar e que a reversao e simetrica. ",
+  "portoes": {
+    "total": 17,
+    "falhas": 0,
+    "lista": [
+      {
+        "nome": "a_pega_dos_ficheiros_lidos_e_a_do_registo_do_gerador",
+        "verde": true,
+        "obtido": [
+          3520,
+          "aa49f50178e57c82c1470182de86681f",
+          3387,
+          "965edc65d9d42493179bcdc3f330a531"
+        ],
+        "esperado": [
+          3520,
+          "aa49f50178e57c82c1470182de86681f",
+          3387,
+          "965edc65d9d42493179bcdc3f330a531"
+        ],
+        "detalhe": {
+          "rel": "evidence/p143-revoke-anon-e-publico-23-11b.json",
+          "nota": "o preflight certifica exactamente os bytes que o gerador escreveu"
+        }
+      },
+      {
+        "nome": "a_pega_do_emissor_do_gerador_bate_com_o_ficheiro_em_disco",
+        "verde": true,
+        "obtido": [
+          true,
+          true
+        ],
+        "esperado": [
+          true,
+          true
+        ],
+        "detalhe": {
+          "peca": "scripts/p143-revoke-anon-e-publico.mjs"
+        }
+      },
+      {
+        "nome": "a_guarda_de_leitura_aborta_antes_de_chegar_ao_banco",
+        "verde": true,
+        "obtido": [
+          true,
+          false
+        ],
+        "esperado": [
+          true,
+          false
+        ],
+        "detalhe": {
+          "texto_passado": "REVOKE ALL ON FUNCTION public.x() FROM anon",
+          "predicado_lido": "const eLeitura = (t) => /^\\s*(select|with)\\b/i.test(String(t));"
+        }
+      },
+      {
+        "nome": "o_predicado_de_leitura_dispara_nos_dois_lados",
+        "verde": true,
+        "obtido": [
+          [
+            true,
+            true,
+            false,
+            false
+          ]
+        ],
+        "esperado": [
+          [
+            true,
+            true,
+            false,
+            false
+          ]
+        ],
+        "detalhe": {
+          "origem": "scripts/p139-acls-dos-nomes-do-ar-contra-o-alvo.mjs"
+        }
+      },
+      {
+        "nome": "as_duas_pecas_tem_uma_so_transacco_de_graus_sem_dados_e_o_aviso_de_nao_aplicar",
+        "verde": true,
+        "obtido": [
+          1,
+          1,
+          29,
+          0,
+          0,
+          1,
+          1,
+          29,
+          0,
+          0,
+          true,
+          true
+        ],
+        "esperado": [
+          1,
+          1,
+          29,
+          0,
+          0,
+          1,
+          1,
+          29,
+          0,
+          0,
+          true,
+          true
+        ],
+        "detalhe": {
+          "estCand": {
+            "begin": 1,
+            "commit": 1,
+            "revoke": 29,
+            "grant": 0,
+            "statement_fora_dos_graus": 0
+          },
+          "estRev": {
+            "begin": 1,
+            "commit": 1,
+            "revoke": 0,
+            "grant": 29,
+            "statement_fora_dos_graus": 0
+          }
+        }
+      },
+      {
+        "nome": "a_reversao_e_o_espelho_exacto_da_candidata_e_os_dois_mundos_trocados_chumbam",
+        "verde": true,
+        "obtido": [
+          true,
+          false,
+          false
+        ],
+        "esperado": [
+          true,
+          false,
+          false
+        ],
+        "detalhe": {
+          "revogados": 29,
+          "devolvidos": 29
+        }
+      },
+      {
+        "nome": "as_declaracoes_batem_com_as_do_registo_do_gerador",
+        "verde": true,
+        "obtido": [
+          "[[\"bfr_audit_lesson_attendance_change\",\"\",\"PUBLIC\"],[\"bfr_audit_lesson_attendance_change\",\"\",\"anon\"],[\"bfr_collab_comment_notification_trigger\",\"\",\"PUBLIC\"],[\"bfr_collab_member_notification_trigger\",\"\",\"PUBLIC\"],[\"bfr_collab_task_notification_trigger\",\"\",\"PUBLIC\"],[\"bfr_get_student_photo_path\",\"target_student_id uuid\",\"anon\"],[\"bfr_prevent_duplicate_grade\",\"\",\"PUBLIC\"],[\"bfr_prevent_duplicate_grade\",\"\",\"anon\"],[\"bfr_psychology_schedule_guard\",\"\",\"PUBLIC\"],[\"bfr_psychology_schedule_guard\",\"\",\"anon\"],[\"bfr_rls_director_manages_student\",\"p_student_id uuid\",\"anon\"],[\"bfr_rls_is_developer\",\"\",\"anon\"],[\"bfr_rls_session_role\",\"\",\"anon\"],[\"bfr_school_set_municipality\",\"p_school uuid, p_municipality uuid, p_reason text\",\"anon\"],[\"bfr_specialized_audit_trigger\",\"\",\"PUBLIC\"],[\"bfr_specialized_audit_trigger\",\"\",\"anon\"],[\"bfr_staff_audit_trigger\",\"\",\"PUBLIC\"],[\"bfr_support_request_scope_guard\",\"\",\"PUBLIC\"],[\"bfr_support_request_scope_guard\",\"\",\"anon\"],[\"bfr_touch_updated_at\",\"\",\"PUBLIC\"],[\"bfr_touch_updated_at\",\"\",\"anon\"],[\"bfr_validate_lesson_attendance\",\"\",\"PUBLIC\"],[\"bfr_validate_lesson_attendance\",\"\",\"anon\"],[\"enforce_bfr_avatar_uniform\",\"\",\"PUBLIC\"],[\"enforce_bfr_avatar_uniform\",\"\",\"anon\"],[\"schools_updated_at\",\"\",\"PUBLIC\"],[\"schools_updated_at\",\"\",\"anon\"],[\"sports_touch_updated_at\",\"\",\"PUBLIC\"],[\"sports_touch_updated_at\",\"\",\"anon\"]]",
+          "[[\"bfr_audit_lesson_attendance_change\",\"\",\"PUBLIC\"],[\"bfr_audit_lesson_attendance_change\",\"\",\"anon\"],[\"bfr_collab_comment_notification_trigger\",\"\",\"PUBLIC\"],[\"bfr_collab_member_notification_trigger\",\"\",\"PUBLIC\"],[\"bfr_collab_task_notification_trigger\",\"\",\"PUBLIC\"],[\"bfr_get_student_photo_path\",\"target_student_id uuid\",\"anon\"],[\"bfr_prevent_duplicate_grade\",\"\",\"PUBLIC\"],[\"bfr_prevent_duplicate_grade\",\"\",\"anon\"],[\"bfr_psychology_schedule_guard\",\"\",\"PUBLIC\"],[\"bfr_psychology_schedule_guard\",\"\",\"anon\"],[\"bfr_rls_director_manages_student\",\"p_student_id uuid\",\"anon\"],[\"bfr_rls_is_developer\",\"\",\"anon\"],[\"bfr_rls_session_role\",\"\",\"anon\"],[\"bfr_school_set_municipality\",\"p_school uuid, p_municipality uuid, p_reason text\",\"anon\"],[\"bfr_specialized_audit_trigger\",\"\",\"PUBLIC\"],[\"bfr_specialized_audit_trigger\",\"\",\"anon\"],[\"bfr_staff_audit_trigger\",\"\",\"PUBLIC\"],[\"bfr_support_request_scope_guard\",\"\",\"PUBLIC\"],[\"bfr_support_request_scope_guard\",\"\",\"anon\"],[\"bfr_touch_updated_at\",\"\",\"PUBLIC\"],[\"bfr_touch_updated_at\",\"\",\"anon\"],[\"bfr_validate_lesson_attendance\",\"\",\"PUBLIC\"],[\"bfr_validate_lesson_attendance\",\"\",\"anon\"],[\"enforce_bfr_avatar_uniform\",\"\",\"PUBLIC\"],[\"enforce_bfr_avatar_uniform\",\"\",\"anon\"],[\"schools_updated_at\",\"\",\"PUBLIC\"],[\"schools_updated_at\",\"\",\"anon\"],[\"sports_touch_updated_at\",\"\",\"PUBLIC\"],[\"sports_touch_updated_at\",\"\",\"anon\"]]"
+        ],
+        "esperado": [
+          "[[\"bfr_audit_lesson_attendance_change\",\"\",\"PUBLIC\"],[\"bfr_audit_lesson_attendance_change\",\"\",\"anon\"],[\"bfr_collab_comment_notification_trigger\",\"\",\"PUBLIC\"],[\"bfr_collab_member_notification_trigger\",\"\",\"PUBLIC\"],[\"bfr_collab_task_notification_trigger\",\"\",\"PUBLIC\"],[\"bfr_get_student_photo_path\",\"target_student_id uuid\",\"anon\"],[\"bfr_prevent_duplicate_grade\",\"\",\"PUBLIC\"],[\"bfr_prevent_duplicate_grade\",\"\",\"anon\"],[\"bfr_psychology_schedule_guard\",\"\",\"PUBLIC\"],[\"bfr_psychology_schedule_guard\",\"\",\"anon\"],[\"bfr_rls_director_manages_student\",\"p_student_id uuid\",\"anon\"],[\"bfr_rls_is_developer\",\"\",\"anon\"],[\"bfr_rls_session_role\",\"\",\"anon\"],[\"bfr_school_set_municipality\",\"p_school uuid, p_municipality uuid, p_reason text\",\"anon\"],[\"bfr_specialized_audit_trigger\",\"\",\"PUBLIC\"],[\"bfr_specialized_audit_trigger\",\"\",\"anon\"],[\"bfr_staff_audit_trigger\",\"\",\"PUBLIC\"],[\"bfr_support_request_scope_guard\",\"\",\"PUBLIC\"],[\"bfr_support_request_scope_guard\",\"\",\"anon\"],[\"bfr_touch_updated_at\",\"\",\"PUBLIC\"],[\"bfr_touch_updated_at\",\"\",\"anon\"],[\"bfr_validate_lesson_attendance\",\"\",\"PUBLIC\"],[\"bfr_validate_lesson_attendance\",\"\",\"anon\"],[\"enforce_bfr_avatar_uniform\",\"\",\"PUBLIC\"],[\"enforce_bfr_avatar_uniform\",\"\",\"anon\"],[\"schools_updated_at\",\"\",\"PUBLIC\"],[\"schools_updated_at\",\"\",\"anon\"],[\"sports_touch_updated_at\",\"\",\"PUBLIC\"],[\"sports_touch_updated_at\",\"\",\"anon\"]]",
+          "[[\"bfr_audit_lesson_attendance_change\",\"\",\"PUBLIC\"],[\"bfr_audit_lesson_attendance_change\",\"\",\"anon\"],[\"bfr_collab_comment_notification_trigger\",\"\",\"PUBLIC\"],[\"bfr_collab_member_notification_trigger\",\"\",\"PUBLIC\"],[\"bfr_collab_task_notification_trigger\",\"\",\"PUBLIC\"],[\"bfr_get_student_photo_path\",\"target_student_id uuid\",\"anon\"],[\"bfr_prevent_duplicate_grade\",\"\",\"PUBLIC\"],[\"bfr_prevent_duplicate_grade\",\"\",\"anon\"],[\"bfr_psychology_schedule_guard\",\"\",\"PUBLIC\"],[\"bfr_psychology_schedule_guard\",\"\",\"anon\"],[\"bfr_rls_director_manages_student\",\"p_student_id uuid\",\"anon\"],[\"bfr_rls_is_developer\",\"\",\"anon\"],[\"bfr_rls_session_role\",\"\",\"anon\"],[\"bfr_school_set_municipality\",\"p_school uuid, p_municipality uuid, p_reason text\",\"anon\"],[\"bfr_specialized_audit_trigger\",\"\",\"PUBLIC\"],[\"bfr_specialized_audit_trigger\",\"\",\"anon\"],[\"bfr_staff_audit_trigger\",\"\",\"PUBLIC\"],[\"bfr_support_request_scope_guard\",\"\",\"PUBLIC\"],[\"bfr_support_request_scope_guard\",\"\",\"anon\"],[\"bfr_touch_updated_at\",\"\",\"PUBLIC\"],[\"bfr_touch_updated_at\",\"\",\"anon\"],[\"bfr_validate_lesson_attendance\",\"\",\"PUBLIC\"],[\"bfr_validate_lesson_attendance\",\"\",\"anon\"],[\"enforce_bfr_avatar_uniform\",\"\",\"PUBLIC\"],[\"enforce_bfr_avatar_uniform\",\"\",\"anon\"],[\"schools_updated_at\",\"\",\"PUBLIC\"],[\"schools_updated_at\",\"\",\"anon\"],[\"sports_touch_updated_at\",\"\",\"PUBLIC\"],[\"sports_touch_updated_at\",\"\",\"anon\"]]"
+        ],
+        "detalhe": {
+          "nota": "os ficheiros nao mudaram desde a geracao, linha a linha"
+        }
+      },
+      {
+        "nome": "os_nomes_e_as_identidades_passam_a_regua_de_forma",
+        "verde": true,
+        "obtido": [
+          19,
+          true,
+          true,
+          true
+        ],
+        "esperado": [
+          19,
+          true,
+          true,
+          true
+        ],
+        "detalhe": {
+          "NOMES": [
+            "bfr_audit_lesson_attendance_change",
+            "bfr_collab_comment_notification_trigger",
+            "bfr_collab_member_notification_trigger",
+            "bfr_collab_task_notification_trigger",
+            "bfr_get_student_photo_path",
+            "bfr_prevent_duplicate_grade",
+            "bfr_psychology_schedule_guard",
+            "bfr_rls_director_manages_student",
+            "bfr_rls_is_developer",
+            "bfr_rls_session_role",
+            "bfr_school_set_municipality",
+            "bfr_specialized_audit_trigger",
+            "bfr_staff_audit_trigger",
+            "bfr_support_request_scope_guard",
+            "bfr_touch_updated_at",
+            "bfr_validate_lesson_attendance",
+            "enforce_bfr_avatar_uniform",
+            "schools_updated_at",
+            "sports_touch_updated_at"
+          ]
+        }
+      },
+      {
+        "nome": "nenhuma_palavra_reservada_e_chamada_como_funcao_nas_duas_pecas",
+        "verde": true,
+        "obtido": [
+          0,
+          0
+        ],
+        "esperado": [
+          0,
+          0
+        ],
+        "detalhe": {
+          "nota": "a regua de parseabilidade da casa: reservada sem aspas duplas e inexecutavel; aqui nao ha chamadas nenhumas, e o verde prova que os graus sao so nome e assinatura"
+        }
+      },
+      {
+        "nome": "cada_nome_tem_exactamente_uma_linha_no_catalogo",
+        "verde": true,
+        "obtido": [
+          19,
+          19
+        ],
+        "esperado": [
+          19,
+          19
+        ],
+        "detalhe": {
+          "nomes_sem_linha": []
+        }
+      },
+      {
+        "nome": "a_assinatura_de_cada_linha_casa_com_a_identidade_do_servidor_nos_dois_sentidos",
+        "verde": true,
+        "obtido": [
+          true,
+          [
+            [
+              "bfr_audit_lesson_attendance_change",
+              "",
+              ""
+            ],
+            [
+              "bfr_get_student_photo_path",
+              "target_student_id uuid",
+              "target_student_id uuid"
+            ],
+            [
+              "bfr_prevent_duplicate_grade",
+              "",
+              ""
+            ],
+            [
+              "bfr_psychology_schedule_guard",
+              "",
+              ""
+            ],
+            [
+              "bfr_rls_director_manages_student",
+              "p_student_id uuid",
+              "p_student_id uuid"
+            ],
+            [
+              "bfr_rls_is_developer",
+              "",
+              ""
+            ],
+            [
+              "bfr_rls_session_role",
+              "",
+              ""
+            ],
+            [
+              "bfr_school_set_municipality",
+              "p_school uuid, p_municipality uuid, p_reason text",
+              "p_school uuid, p_municipality uuid, p_reason text"
+            ],
+            [
+              "bfr_specialized_audit_trigger",
+              "",
+              ""
+            ],
+            [
+              "bfr_support_request_scope_guard",
+              "",
+              ""
+            ],
+            [
+              "bfr_touch_updated_at",
+              "",
+              ""
+            ],
+            [
+              "bfr_validate_lesson_attendance",
+              "",
+              ""
+            ],
+            [
+              "enforce_bfr_avatar_uniform",
+              "",
+              ""
+            ],
+            [
+              "schools_updated_at",
+              "",
+              ""
+            ],
+            [
+              "sports_touch_updated_at",
+              "",
+              ""
+            ],
+            [
+              "bfr_audit_lesson_attendance_change",
+              "",
+              ""
+            ],
+            [
+              "bfr_collab_comment_notification_trigger",
+              "",
+              ""
+            ],
+            [
+              "bfr_collab_member_notification_trigger",
+              "",
+              ""
+            ],
+            [
+              "bfr_collab_task_notification_trigger",
+              "",
+              ""
+            ],
+            [
+              "bfr_prevent_duplicate_grade",
+              "",
+              ""
+            ],
+            [
+              "bfr_psychology_schedule_guard",
+              "",
+              ""
+            ],
+            [
+              "bfr_specialized_audit_trigger",
+              "",
+              ""
+            ],
+            [
+              "bfr_staff_audit_trigger",
+              "",
+              ""
+            ],
+            [
+              "bfr_support_request_scope_guard",
+              "",
+              ""
+            ],
+            [
+              "bfr_touch_updated_at",
+              "",
+              ""
+            ],
+            [
+              "bfr_validate_lesson_attendance",
+              "",
+              ""
+            ],
+            [
+              "enforce_bfr_avatar_uniform",
+              "",
+              ""
+            ],
+            [
+              "schools_updated_at",
+              "",
+              ""
+            ],
+            [
+              "sports_touch_updated_at",
+              "",
+              ""
+            ]
+          ]
+        ],
+        "esperado": [
+          true,
+          [
+            [
+              "bfr_audit_lesson_attendance_change",
+              "",
+              ""
+            ],
+            [
+              "bfr_get_student_photo_path",
+              "target_student_id uuid",
+              "target_student_id uuid"
+            ],
+            [
+              "bfr_prevent_duplicate_grade",
+              "",
+              ""
+            ],
+            [
+              "bfr_psychology_schedule_guard",
+              "",
+              ""
+            ],
+            [
+              "bfr_rls_director_manages_student",
+              "p_student_id uuid",
+              "p_student_id uuid"
+            ],
+            [
+              "bfr_rls_is_developer",
+              "",
+              ""
+            ],
+            [
+              "bfr_rls_session_role",
+              "",
+              ""
+            ],
+            [
+              "bfr_school_set_municipality",
+              "p_school uuid, p_municipality uuid, p_reason text",
+              "p_school uuid, p_municipality uuid, p_reason text"
+            ],
+            [
+              "bfr_specialized_audit_trigger",
+              "",
+              ""
+            ],
+            [
+              "bfr_support_request_scope_guard",
+              "",
+              ""
+            ],
+            [
+              "bfr_touch_updated_at",
+              "",
+              ""
+            ],
+            [
+              "bfr_validate_lesson_attendance",
+              "",
+              ""
+            ],
+            [
+              "enforce_bfr_avatar_uniform",
+              "",
+              ""
+            ],
+            [
+              "schools_updated_at",
+              "",
+              ""
+            ],
+            [
+              "sports_touch_updated_at",
+              "",
+              ""
+            ],
+            [
+              "bfr_audit_lesson_attendance_change",
+              "",
+              ""
+            ],
+            [
+              "bfr_collab_comment_notification_trigger",
+              "",
+              ""
+            ],
+            [
+              "bfr_collab_member_notification_trigger",
+              "",
+              ""
+            ],
+            [
+              "bfr_collab_task_notification_trigger",
+              "",
+              ""
+            ],
+            [
+              "bfr_prevent_duplicate_grade",
+              "",
+              ""
+            ],
+            [
+              "bfr_psychology_schedule_guard",
+              "",
+              ""
+            ],
+            [
+              "bfr_specialized_audit_trigger",
+              "",
+              ""
+            ],
+            [
+              "bfr_staff_audit_trigger",
+              "",
+              ""
+            ],
+            [
+              "bfr_support_request_scope_guard",
+              "",
+              ""
+            ],
+            [
+              "bfr_touch_updated_at",
+              "",
+              ""
+            ],
+            [
+              "bfr_validate_lesson_attendance",
+              "",
+              ""
+            ],
+            [
+              "enforce_bfr_avatar_uniform",
+              "",
+              ""
+            ],
+            [
+              "schools_updated_at",
+              "",
+              ""
+            ],
+            [
+              "sports_touch_updated_at",
+              "",
+              ""
+            ]
+          ]
+        ],
+        "detalhe": {
+          "nota": "a tolerancia e a da casa: o servidor pode devolver a assinatura com ou sem nomes de parametro, e as duas formas casam (medido em 20/11 no p73)"
+        }
+      },
+      {
+        "nome": "cada_linha_revoga_o_caminho_que_o_nome_tem_e_o_estado_vivo_e_o_de_antes",
+        "verde": true,
+        "obtido": [
+          [
+            true,
+            true
+          ],
+          [
+            true,
+            true
+          ],
+          [
+            true,
+            true
+          ],
+          [
+            true,
+            true
+          ],
+          [
+            true,
+            true
+          ],
+          [
+            true,
+            true
+          ],
+          [
+            true,
+            true
+          ],
+          [
+            true,
+            true
+          ],
+          [
+            true,
+            true
+          ],
+          [
+            true,
+            true
+          ],
+          [
+            true,
+            true
+          ],
+          [
+            true,
+            true
+          ],
+          [
+            true,
+            true
+          ],
+          [
+            true,
+            true
+          ],
+          [
+            true,
+            true
+          ],
+          [
+            true,
+            true
+          ],
+          [
+            true,
+            true
+          ],
+          [
+            true,
+            true
+          ],
+          [
+            true,
+            true
+          ],
+          [
+            true,
+            true
+          ],
+          [
+            true,
+            true
+          ],
+          [
+            true,
+            true
+          ],
+          [
+            true,
+            true
+          ],
+          [
+            true,
+            true
+          ],
+          [
+            true,
+            true
+          ],
+          [
+            true,
+            true
+          ],
+          [
+            true,
+            true
+          ],
+          [
+            true,
+            true
+          ],
+          [
+            true,
+            true
+          ]
+        ],
+        "esperado": [
+          [
+            true,
+            true
+          ],
+          [
+            true,
+            true
+          ],
+          [
+            true,
+            true
+          ],
+          [
+            true,
+            true
+          ],
+          [
+            true,
+            true
+          ],
+          [
+            true,
+            true
+          ],
+          [
+            true,
+            true
+          ],
+          [
+            true,
+            true
+          ],
+          [
+            true,
+            true
+          ],
+          [
+            true,
+            true
+          ],
+          [
+            true,
+            true
+          ],
+          [
+            true,
+            true
+          ],
+          [
+            true,
+            true
+          ],
+          [
+            true,
+            true
+          ],
+          [
+            true,
+            true
+          ],
+          [
+            true,
+            true
+          ],
+          [
+            true,
+            true
+          ],
+          [
+            true,
+            true
+          ],
+          [
+            true,
+            true
+          ],
+          [
+            true,
+            true
+          ],
+          [
+            true,
+            true
+          ],
+          [
+            true,
+            true
+          ],
+          [
+            true,
+            true
+          ],
+          [
+            true,
+            true
+          ],
+          [
+            true,
+            true
+          ],
+          [
+            true,
+            true
+          ],
+          [
+            true,
+            true
+          ],
+          [
+            true,
+            true
+          ],
+          [
+            true,
+            true
+          ]
+        ],
+        "detalhe": {
+          "por_linha": [
+            [
+              "bfr_audit_lesson_attendance_change",
+              "anon",
+              true,
+              true
+            ],
+            [
+              "bfr_get_student_photo_path",
+              "anon",
+              true,
+              true
+            ],
+            [
+              "bfr_prevent_duplicate_grade",
+              "anon",
+              true,
+              true
+            ],
+            [
+              "bfr_psychology_schedule_guard",
+              "anon",
+              true,
+              true
+            ],
+            [
+              "bfr_rls_director_manages_student",
+              "anon",
+              true,
+              true
+            ],
+            [
+              "bfr_rls_is_developer",
+              "anon",
+              true,
+              true
+            ],
+            [
+              "bfr_rls_session_role",
+              "anon",
+              true,
+              true
+            ],
+            [
+              "bfr_school_set_municipality",
+              "anon",
+              true,
+              true
+            ],
+            [
+              "bfr_specialized_audit_trigger",
+              "anon",
+              true,
+              true
+            ],
+            [
+              "bfr_support_request_scope_guard",
+              "anon",
+              true,
+              true
+            ],
+            [
+              "bfr_touch_updated_at",
+              "anon",
+              true,
+              true
+            ],
+            [
+              "bfr_validate_lesson_attendance",
+              "anon",
+              true,
+              true
+            ],
+            [
+              "enforce_bfr_avatar_uniform",
+              "anon",
+              true,
+              true
+            ],
+            [
+              "schools_updated_at",
+              "anon",
+              true,
+              true
+            ],
+            [
+              "sports_touch_updated_at",
+              "anon",
+              true,
+              true
+            ],
+            [
+              "bfr_audit_lesson_attendance_change",
+              "PUBLIC",
+              true,
+              true
+            ],
+            [
+              "bfr_collab_comment_notification_trigger",
+              "PUBLIC",
+              true,
+              true
+            ],
+            [
+              "bfr_collab_member_notification_trigger",
+              "PUBLIC",
+              true,
+              true
+            ],
+            [
+              "bfr_collab_task_notification_trigger",
+              "PUBLIC",
+              true,
+              true
+            ],
+            [
+              "bfr_prevent_duplicate_grade",
+              "PUBLIC",
+              true,
+              true
+            ],
+            [
+              "bfr_psychology_schedule_guard",
+              "PUBLIC",
+              true,
+              true
+            ],
+            [
+              "bfr_specialized_audit_trigger",
+              "PUBLIC",
+              true,
+              true
+            ],
+            [
+              "bfr_staff_audit_trigger",
+              "PUBLIC",
+              true,
+              true
+            ],
+            [
+              "bfr_support_request_scope_guard",
+              "PUBLIC",
+              true,
+              true
+            ],
+            [
+              "bfr_touch_updated_at",
+              "PUBLIC",
+              true,
+              true
+            ],
+            [
+              "bfr_validate_lesson_attendance",
+              "PUBLIC",
+              true,
+              true
+            ],
+            [
+              "enforce_bfr_avatar_uniform",
+              "PUBLIC",
+              true,
+              true
+            ],
+            [
+              "schools_updated_at",
+              "PUBLIC",
+              true,
+              true
+            ],
+            [
+              "sports_touch_updated_at",
+              "PUBLIC",
+              true,
+              true
+            ]
+          ]
+        }
+      },
+      {
+        "nome": "o_censo_vivo_bate_com_o_mundo_do_modo_com_o_acrescimo_atribuido_ao_a1",
+        "verde": true,
+        "obtido": [
+          true,
+          [
+            164,
+            19,
+            15,
+            0
+          ],
+          true
+        ],
+        "esperado": [
+          true,
+          [
+            164,
+            19,
+            15,
+            0
+          ],
+          true
+        ],
+        "detalhe": {
+          "censo": {
+            "total": 164,
+            "anon_pode": 19,
+            "anon_por_entrada": 15,
+            "acl_nula": 0
+          },
+          "gen_censo_vivo": {
+            "total": 163,
+            "anon_pode": 19,
+            "anon_por_entrada": 15,
+            "acl_nula": 0
+          },
+          "a1": {
+            "n": 1,
+            "anon_pode": 0,
+            "anon_por_entrada": 0
+          },
+          "nome_a1": "bfr_confirm_school_calendar",
+          "nota": "o total esperado e o do registo do gerador mais exatamente as funcoes do A1 medidas hoje (uma, criada em 24/11 pelo ciclo autorizado do A1, com acl so de postgres e authenticated): nenhuma pode dar EXECUTE ao anon; candidata exige os campos do anon iguais aos do gerador, reversao exige-os a zero"
+        }
+      },
+      {
+        "nome": "a_regua_do_censo_dispara_nos_dois_sentidos_com_a_delta_do_a1_atribuida",
+        "verde": true,
+        "obtido": [
+          [
+            "mundo_do_gerador_mais_a1_sem_rota_anon",
+            true
+          ],
+          [
+            "acrescimo_sem_atribuicao",
+            false
+          ],
+          [
+            "a1_com_rota_anon",
+            false
+          ],
+          [
+            "funcao_a_menos",
+            false
+          ],
+          [
+            "reversao_mundo_fechado",
+            true
+          ],
+          [
+            "reversao_ainda_aberta",
+            false
+          ]
+        ],
+        "esperado": [
+          [
+            "mundo_do_gerador_mais_a1_sem_rota_anon",
+            true
+          ],
+          [
+            "acrescimo_sem_atribuicao",
+            false
+          ],
+          [
+            "a1_com_rota_anon",
+            false
+          ],
+          [
+            "funcao_a_menos",
+            false
+          ],
+          [
+            "reversao_mundo_fechado",
+            true
+          ],
+          [
+            "reversao_ainda_aberta",
+            false
+          ]
+        ],
+        "detalhe": {
+          "nota": "os seis mundos fabricados provam que a regua aceita exactamente o mundo do gerador mais a funcao do A1 sem rota anon, e chumba acrescimos sem atribuicao, rota anon na funcao nova e mundos a menos"
+        }
+      },
+      {
+        "nome": "o_confronto_nome_a_nome_com_o_registo_do_gerador_esta_em_delta_zero",
+        "verde": true,
+        "obtido": [
+          [
+            [
+              "PUBLIC",
+              "anon",
+              "authenticated",
+              "postgres",
+              "service_role"
+            ],
+            [
+              "PUBLIC por postgres",
+              "anon por postgres",
+              "authenticated por postgres",
+              "postgres por postgres",
+              "service_role por postgres"
+            ]
+          ],
+          [
+            [
+              "PUBLIC",
+              "authenticated",
+              "postgres",
+              "service_role"
+            ],
+            [
+              "PUBLIC por postgres",
+              "authenticated por postgres",
+              "postgres por postgres",
+              "service_role por postgres"
+            ]
+          ],
+          [
+            [
+              "PUBLIC",
+              "authenticated",
+              "postgres",
+              "service_role"
+            ],
+            [
+              "PUBLIC por postgres",
+              "authenticated por postgres",
+              "postgres por postgres",
+              "service_role por postgres"
+            ]
+          ],
+          [
+            [
+              "PUBLIC",
+              "authenticated",
+              "postgres",
+              "service_role"
+            ],
+            [
+              "PUBLIC por postgres",
+              "authenticated por postgres",
+              "postgres por postgres",
+              "service_role por postgres"
+            ]
+          ],
+          [
+            [
+              "anon",
+              "authenticated",
+              "postgres",
+              "service_role"
+            ],
+            [
+              "anon por postgres",
+              "authenticated por postgres",
+              "postgres por postgres",
+              "service_role por postgres"
+            ]
+          ],
+          [
+            [
+              "PUBLIC",
+              "anon",
+              "authenticated",
+              "postgres",
+              "service_role"
+            ],
+            [
+              "PUBLIC por postgres",
+              "anon por postgres",
+              "authenticated por postgres",
+              "postgres por postgres",
+              "service_role por postgres"
+            ]
+          ],
+          [
+            [
+              "PUBLIC",
+              "anon",
+              "authenticated",
+              "postgres",
+              "service_role"
+            ],
+            [
+              "PUBLIC por postgres",
+              "anon por postgres",
+              "authenticated por postgres",
+              "postgres por postgres",
+              "service_role por postgres"
+            ]
+          ],
+          [
+            [
+              "anon",
+              "authenticated",
+              "postgres",
+              "service_role"
+            ],
+            [
+              "anon por postgres",
+              "authenticated por postgres",
+              "postgres por postgres",
+              "service_role por postgres"
+            ]
+          ],
+          [
+            [
+              "anon",
+              "authenticated",
+              "postgres",
+              "service_role"
+            ],
+            [
+              "anon por postgres",
+              "authenticated por postgres",
+              "postgres por postgres",
+              "service_role por postgres"
+            ]
+          ],
+          [
+            [
+              "anon",
+              "authenticated",
+              "postgres",
+              "service_role"
+            ],
+            [
+              "anon por postgres",
+              "authenticated por postgres",
+              "postgres por postgres",
+              "service_role por postgres"
+            ]
+          ],
+          [
+            [
+              "anon",
+              "authenticated",
+              "postgres",
+              "service_role"
+            ],
+            [
+              "anon por postgres",
+              "authenticated por postgres",
+              "postgres por postgres",
+              "service_role por postgres"
+            ]
+          ],
+          [
+            [
+              "PUBLIC",
+              "anon",
+              "authenticated",
+              "postgres",
+              "service_role"
+            ],
+            [
+              "PUBLIC por postgres",
+              "anon por postgres",
+              "authenticated por postgres",
+              "postgres por postgres",
+              "service_role por postgres"
+            ]
+          ],
+          [
+            [
+              "PUBLIC",
+              "authenticated",
+              "postgres",
+              "service_role"
+            ],
+            [
+              "PUBLIC por postgres",
+              "authenticated por postgres",
+              "postgres por postgres",
+              "service_role por postgres"
+            ]
+          ],
+          [
+            [
+              "PUBLIC",
+              "anon",
+              "authenticated",
+              "postgres",
+              "service_role"
+            ],
+            [
+              "PUBLIC por postgres",
+              "anon por postgres",
+              "authenticated por postgres",
+              "postgres por postgres",
+              "service_role por postgres"
+            ]
+          ],
+          [
+            [
+              "PUBLIC",
+              "anon",
+              "authenticated",
+              "postgres",
+              "service_role"
+            ],
+            [
+              "PUBLIC por postgres",
+              "anon por postgres",
+              "authenticated por postgres",
+              "postgres por postgres",
+              "service_role por postgres"
+            ]
+          ],
+          [
+            [
+              "PUBLIC",
+              "anon",
+              "authenticated",
+              "postgres",
+              "service_role"
+            ],
+            [
+              "PUBLIC por postgres",
+              "anon por postgres",
+              "authenticated por postgres",
+              "postgres por postgres",
+              "service_role por postgres"
+            ]
+          ],
+          [
+            [
+              "PUBLIC",
+              "anon",
+              "authenticated",
+              "postgres",
+              "service_role"
+            ],
+            [
+              "PUBLIC por postgres",
+              "anon por postgres",
+              "authenticated por postgres",
+              "postgres por postgres",
+              "service_role por postgres"
+            ]
+          ],
+          [
+            [
+              "PUBLIC",
+              "anon",
+              "authenticated",
+              "postgres",
+              "service_role"
+            ],
+            [
+              "PUBLIC por postgres",
+              "anon por postgres",
+              "authenticated por postgres",
+              "postgres por postgres",
+              "service_role por postgres"
+            ]
+          ],
+          [
+            [
+              "PUBLIC",
+              "anon",
+              "authenticated",
+              "postgres",
+              "service_role"
+            ],
+            [
+              "PUBLIC por postgres",
+              "anon por postgres",
+              "authenticated por postgres",
+              "postgres por postgres",
+              "service_role por postgres"
+            ]
+          ]
+        ],
+        "esperado": [
+          [
+            [
+              "PUBLIC",
+              "anon",
+              "authenticated",
+              "postgres",
+              "service_role"
+            ],
+            [
+              "PUBLIC por postgres",
+              "anon por postgres",
+              "authenticated por postgres",
+              "postgres por postgres",
+              "service_role por postgres"
+            ]
+          ],
+          [
+            [
+              "PUBLIC",
+              "authenticated",
+              "postgres",
+              "service_role"
+            ],
+            [
+              "PUBLIC por postgres",
+              "authenticated por postgres",
+              "postgres por postgres",
+              "service_role por postgres"
+            ]
+          ],
+          [
+            [
+              "PUBLIC",
+              "authenticated",
+              "postgres",
+              "service_role"
+            ],
+            [
+              "PUBLIC por postgres",
+              "authenticated por postgres",
+              "postgres por postgres",
+              "service_role por postgres"
+            ]
+          ],
+          [
+            [
+              "PUBLIC",
+              "authenticated",
+              "postgres",
+              "service_role"
+            ],
+            [
+              "PUBLIC por postgres",
+              "authenticated por postgres",
+              "postgres por postgres",
+              "service_role por postgres"
+            ]
+          ],
+          [
+            [
+              "anon",
+              "authenticated",
+              "postgres",
+              "service_role"
+            ],
+            [
+              "anon por postgres",
+              "authenticated por postgres",
+              "postgres por postgres",
+              "service_role por postgres"
+            ]
+          ],
+          [
+            [
+              "PUBLIC",
+              "anon",
+              "authenticated",
+              "postgres",
+              "service_role"
+            ],
+            [
+              "PUBLIC por postgres",
+              "anon por postgres",
+              "authenticated por postgres",
+              "postgres por postgres",
+              "service_role por postgres"
+            ]
+          ],
+          [
+            [
+              "PUBLIC",
+              "anon",
+              "authenticated",
+              "postgres",
+              "service_role"
+            ],
+            [
+              "PUBLIC por postgres",
+              "anon por postgres",
+              "authenticated por postgres",
+              "postgres por postgres",
+              "service_role por postgres"
+            ]
+          ],
+          [
+            [
+              "anon",
+              "authenticated",
+              "postgres",
+              "service_role"
+            ],
+            [
+              "anon por postgres",
+              "authenticated por postgres",
+              "postgres por postgres",
+              "service_role por postgres"
+            ]
+          ],
+          [
+            [
+              "anon",
+              "authenticated",
+              "postgres",
+              "service_role"
+            ],
+            [
+              "anon por postgres",
+              "authenticated por postgres",
+              "postgres por postgres",
+              "service_role por postgres"
+            ]
+          ],
+          [
+            [
+              "anon",
+              "authenticated",
+              "postgres",
+              "service_role"
+            ],
+            [
+              "anon por postgres",
+              "authenticated por postgres",
+              "postgres por postgres",
+              "service_role por postgres"
+            ]
+          ],
+          [
+            [
+              "anon",
+              "authenticated",
+              "postgres",
+              "service_role"
+            ],
+            [
+              "anon por postgres",
+              "authenticated por postgres",
+              "postgres por postgres",
+              "service_role por postgres"
+            ]
+          ],
+          [
+            [
+              "PUBLIC",
+              "anon",
+              "authenticated",
+              "postgres",
+              "service_role"
+            ],
+            [
+              "PUBLIC por postgres",
+              "anon por postgres",
+              "authenticated por postgres",
+              "postgres por postgres",
+              "service_role por postgres"
+            ]
+          ],
+          [
+            [
+              "PUBLIC",
+              "authenticated",
+              "postgres",
+              "service_role"
+            ],
+            [
+              "PUBLIC por postgres",
+              "authenticated por postgres",
+              "postgres por postgres",
+              "service_role por postgres"
+            ]
+          ],
+          [
+            [
+              "PUBLIC",
+              "anon",
+              "authenticated",
+              "postgres",
+              "service_role"
+            ],
+            [
+              "PUBLIC por postgres",
+              "anon por postgres",
+              "authenticated por postgres",
+              "postgres por postgres",
+              "service_role por postgres"
+            ]
+          ],
+          [
+            [
+              "PUBLIC",
+              "anon",
+              "authenticated",
+              "postgres",
+              "service_role"
+            ],
+            [
+              "PUBLIC por postgres",
+              "anon por postgres",
+              "authenticated por postgres",
+              "postgres por postgres",
+              "service_role por postgres"
+            ]
+          ],
+          [
+            [
+              "PUBLIC",
+              "anon",
+              "authenticated",
+              "postgres",
+              "service_role"
+            ],
+            [
+              "PUBLIC por postgres",
+              "anon por postgres",
+              "authenticated por postgres",
+              "postgres por postgres",
+              "service_role por postgres"
+            ]
+          ],
+          [
+            [
+              "PUBLIC",
+              "anon",
+              "authenticated",
+              "postgres",
+              "service_role"
+            ],
+            [
+              "PUBLIC por postgres",
+              "anon por postgres",
+              "authenticated por postgres",
+              "postgres por postgres",
+              "service_role por postgres"
+            ]
+          ],
+          [
+            [
+              "PUBLIC",
+              "anon",
+              "authenticated",
+              "postgres",
+              "service_role"
+            ],
+            [
+              "PUBLIC por postgres",
+              "anon por postgres",
+              "authenticated por postgres",
+              "postgres por postgres",
+              "service_role por postgres"
+            ]
+          ],
+          [
+            [
+              "PUBLIC",
+              "anon",
+              "authenticated",
+              "postgres",
+              "service_role"
+            ],
+            [
+              "PUBLIC por postgres",
+              "anon por postgres",
+              "authenticated por postgres",
+              "postgres por postgres",
+              "service_role por postgres"
+            ]
+          ]
+        ],
+        "detalhe": {
+          "nota": "as entradas de authenticated/postgres/service_role nao sao tocadas pela candidata: em candidata o conjunto inteiro bate com o gerador, em reversao o que resta bate com o que o gerador tinha sem anon/PUBLIC"
+        }
+      },
+      {
+        "nome": "cada_query_passa_por_q_e_so_ha_um_toque_directo_de_sql",
+        "verde": true,
+        "obtido": [
+          true,
+          true,
+          true,
+          true
+        ],
+        "esperado": [
+          true,
+          true,
+          true,
+          true
+        ],
+        "detalhe": {
+          "formas": 5,
+          "nota": "o unico false e a sonda da guarda"
+        }
+      },
+      {
+        "nome": "nenhum_identificador_pessoal_nem_token_entra_neste_registo",
+        "verde": true,
+        "obtido": [
+          0,
+          0,
+          1,
+          1
+        ],
+        "esperado": [
+          0,
+          0,
+          1,
+          1
+        ]
+      }
+    ]
+  },
+  "veredito": "P143_REVOKE_PREFLIGHT_VERDE_CANDIDATA 17/0 · nomes 19 · linhas 29 · censo 164/19/15/0 · 5469 ms"
+}

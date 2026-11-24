@@ -1350,6 +1350,14 @@ anon_por_entrada 16 / acl_nula 0` (entrada, 06:02:53Z) para `19 / 15 / 0` (saíd
 fechada como classe — ficam 19 nomes executáveis por `anon`, 15 deles por entrada explícita — e está fechada para
 `register_gate_checkin_v2`.
 
+Adendo 24/11 (REVOKE dos 15+4): a classe também se fechou. A candidata `scripts/p143-revoke-anon-e-publico-ddl-candidata.sql`
+(29 linhas: 15 `FROM anon` + 14 `FROM PUBLIC` sobre os 19 nomes) foi aplicada com a frase dada e conferida
+(`scripts/p143-revoke-anon-e-publico-aplica.mjs`, veredicto `P143_REVOKE_JA_APLICADO_CONFERIDO`, registo
+`evidence/p143-revoke-anon-e-publico-aplica-24-11-r4.json`): o censo passou de 19/15 a **0/0** sobre as 164 funções
+de `public` (o 164.º nome é o `bfr_confirm_school_calendar` do A1 de 24/11) e os dois representantes respondem 42501
+a `SET ROLE anon`. O `pg_default_acl` (27/5) fica intacto — é mecanismo para a frente, decisão própria. A reversão
+pede a sua própria frase.
+
 **A recusa, medida em vez de suposta.** Depois de a peça entrar na tabela `PECAS`, a pergunta honesta era se o
 aplicador a deixaria aplicar por engano. Corre-se sem a frase e ele imprime
 `RECUSADO · aplicacao · ["--ok nao e a frase certificada deste modo; esperado exatamente \"APLICAR PEN-48 NO BANCO\"", …]`
