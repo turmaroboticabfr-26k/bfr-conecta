@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="pt-BR">
+<body style="margin:0;padding:0;background-color:#f4f6fa;font-family:Arial,Helvetica,sans-serif;">
+  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background-color:#f4f6fa;padding:24px 8px;">
+    <tr><td align="center">
+      <table role="presentation" width="100%" style="max-width:560px;background-color:#ffffff;border-radius:12px;overflow:hidden;">
+        <tr><td style="padding:20px 24px;border-bottom:1px solid #e3e8f0;">
+          <img src="https://bfr-conecta.turmaroboticabfr.workers.dev/bfr-app-logo.png" alt="UNIESCO" style="height:44px;display:block;" />
+        </td></tr>
+        <tr><td style="padding:24px;">
+          <h1 style="color:#00399b;font-size:20px;margin:0 0 12px;">Confirme seu novo e-mail</h1>
+          <p style="color:#333333;font-size:15px;line-height:1.6;margin:0 0 16px;">Você pediu para trocar o e-mail da sua conta UNIESCO de <strong>{{ .Email }}</strong> para <strong>{{ .NewEmail }}</strong>. Clique no botão abaixo para confirmar a troca.</p>
+          <p style="text-align:center;margin:24px 0;">
+            <a href="{{ .ConfirmationURL }}" style="background-color:#00399b;color:#ffffff;text-decoration:none;padding:12px 28px;border-radius:8px;display:inline-block;font-size:15px;">Confirmar troca de e-mail</a>
+          </p>
+          <p style="color:#666666;font-size:13px;line-height:1.6;margin:0;">Se o botão não funcionar, copie e cole este endereço no navegador:<br><span style="word-break:break-all;">{{ .ConfirmationURL }}</span></p>
+        </td></tr>
+        <tr><td style="background-color:#3fb80a;height:4px;line-height:4px;font-size:0;">&nbsp;</td></tr>
+        <tr><td style="padding:14px 24px;color:#666666;font-size:12px;line-height:1.6;">UNIESCO — Conexão que transforma aprendizado, relações e futuro.<br>Se você não pediu esta troca, ignore este e-mail.</td></tr>
+      </table>
+    </td></tr>
+  </table>
+</body>
+</html>

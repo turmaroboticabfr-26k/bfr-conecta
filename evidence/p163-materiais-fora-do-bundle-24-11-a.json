@@ -1,0 +1,101 @@
+{
+  "veredito": "P163_MATERIAIS_FORA_DO_BUNDLE_OK 22/0",
+  "total": {
+    "verdes": 22,
+    "falha": 0
+  },
+  "medido": {
+    "templates": {
+      "confirm-signup.html": {
+        "bytes": 1894,
+        "placeholders_medidos": [
+          "{{ .ConfirmationURL }}",
+          "{{ .Email }}"
+        ],
+        "nome_antigo_encontrado": []
+      },
+      "invite-user.html": {
+        "bytes": 1929,
+        "placeholders_medidos": [
+          "{{ .ConfirmationURL }}",
+          "{{ .Email }}"
+        ],
+        "nome_antigo_encontrado": []
+      },
+      "magic-link.html": {
+        "bytes": 1880,
+        "placeholders_medidos": [
+          "{{ .ConfirmationURL }}"
+        ],
+        "nome_antigo_encontrado": []
+      },
+      "change-email.html": {
+        "bytes": 1963,
+        "placeholders_medidos": [
+          "{{ .ConfirmationURL }}",
+          "{{ .Email }}",
+          "{{ .NewEmail }}"
+        ],
+        "nome_antigo_encontrado": []
+      },
+      "reset-password.html": {
+        "bytes": 1966,
+        "placeholders_medidos": [
+          "{{ .ConfirmationURL }}",
+          "{{ .Email }}"
+        ],
+        "nome_antigo_encontrado": []
+      }
+    },
+    "fcm": {
+      "title": "UNIESCO",
+      "body": "Conexão que transforma aprendizado, relações e futuro.",
+      "icon": "https://bfr-conecta.turmaroboticabfr.workers.dev/uniesco-icon-192.png",
+      "badge": "https://bfr-conecta.turmaroboticabfr.workers.dev/uniesco-icon-192.png",
+      "topic": "comunicados"
+    },
+    "stores": {
+      "play-store-listing.json": {
+        "name": {
+          "texto": "UNIESCO",
+          "chars": 7,
+          "teto": 30
+        },
+        "short_description": {
+          "texto": "UNIESCO — Conexão que transforma aprendizado, relações e futuro.",
+          "chars": 64,
+          "teto": 80
+        },
+        "full_description": {
+          "texto": "A UNIESCO é o aplicativo oficial da Escola Benício Ferreira Reis. Acompanhe boletins, comunicados, frequência e o calendário letivo em um só lugar. Conexão que transforma aprendizado, relações e futuro.",
+          "chars": 202,
+          "teto": 4000
+        }
+      },
+      "apple-store-listing.json": {
+        "name": {
+          "texto": "UNIESCO",
+          "chars": 7,
+          "teto": 30
+        },
+        "subtitle": {
+          "texto": "Conexão que transforma",
+          "chars": 22,
+          "teto": 30
+        },
+        "promotional_text": {
+          "texto": "Aplicativo oficial da UNIESCO — Conexão que transforma aprendizado, relações e futuro.",
+          "chars": 86,
+          "teto": 170
+        },
+        "description": {
+          "texto": "A UNIESCO é o aplicativo oficial da Escola Benício Ferreira Reis. Acompanhe boletins, comunicados, frequência e o calendário letivo em um só lugar. Conexão que transforma aprendizado, relações e futuro.",
+          "chars": 202,
+          "teto": 4000
+        }
+      }
+    }
+  },
+  "falhas": [],
+  "node_exit": 0
+}
