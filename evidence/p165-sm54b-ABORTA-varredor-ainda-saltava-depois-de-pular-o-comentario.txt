@@ -1,0 +1,12 @@
+file:///C:/Users/pcmac/Documents/Qoder/2026-10-13/28077d9a/bfr-conecta/scripts/p165-censo-em-leitura-das-pen-de-catalogo.mjs:159
+  if (r.sql.length !== 1) throw new Error('ABORTA: o fragmento [' + fragmento + '] em ' + P[de] + ' resolve em ' + r.sql.length + ' literais SQL (outros ' + r.outros + '), espero 1');
+                                ^
+
+Error: ABORTA: o fragmento [as sem_at from public.bfr_school_calendar_days] em scripts/p145-a1-confirmar-calendario-aplica.mjs resolve em 0 literais SQL (outros 0), espero 1
+    at literalQueContem (file:///C:/Users/pcmac/Documents/Qoder/2026-10-13/28077d9a/bfr-conecta/scripts/p165-censo-em-leitura-das-pen-de-catalogo.mjs:159:33)
+    at file:///C:/Users/pcmac/Documents/Qoder/2026-10-13/28077d9a/bfr-conecta/scripts/p165-censo-em-leitura-das-pen-de-catalogo.mjs:201:18
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+
+Node.js v24.18.1
+Assertion failed: !(handle->flags & UV_HANDLE_CLOSING), file src\win\async.c, line 94
+node_exit=127

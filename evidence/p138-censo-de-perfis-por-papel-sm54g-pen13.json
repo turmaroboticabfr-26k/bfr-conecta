@@ -1,0 +1,203 @@
+{
+  "peca": "scripts/p138-censo-de-perfis-por-papel.mjs",
+  "em": "2026-11-24T20:15:31.812Z",
+  "emissor_bytes": 7560,
+  "emissor_md5": "cdd5e51909048fef5264a0accf4084d0",
+  "estado": "MEDIDO",
+  "pergunta": "o censo que a PEN-13 cita de 18/11 (28 perfis, 2 em pending, default 'pending'::account_role) ainda e o estado vivo do banco?",
+  "predicas_lidas_do_produtor": [
+    {
+      "trecho": "select table_name as tabela, column_name as co…",
+      "aparece_no_produtor": true
+    },
+    {
+      "trecho": "select coalesce(role::text,'(nulo)') as papel,…",
+      "aparece_no_produtor": true
+    },
+    {
+      "trecho": "select count(*)::int as linhas from public.pro…",
+      "aparece_no_produtor": true
+    }
+  ],
+  "colunas_de_papel": [
+    {
+      "tabela": "access_requests",
+      "coluna": "status",
+      "tipo": "USER-DEFINED",
+      "nulavel": "NO",
+      "default": "'pending'::request_status"
+    },
+    {
+      "tabela": "profiles",
+      "coluna": "role",
+      "tipo": "USER-DEFINED",
+      "nulavel": "NO",
+      "default": "'pending'::account_role"
+    }
+  ],
+  "distribuicao_profiles": [
+    {
+      "papel": "secretary",
+      "linhas": 4
+    },
+    {
+      "papel": "developer",
+      "linhas": 3
+    },
+    {
+      "papel": "aee",
+      "linhas": 2
+    },
+    {
+      "papel": "coordinator",
+      "linhas": 2
+    },
+    {
+      "papel": "director",
+      "linhas": 2
+    },
+    {
+      "papel": "gatekeeper",
+      "linhas": 2
+    },
+    {
+      "papel": "monitor",
+      "linhas": 2
+    },
+    {
+      "papel": "pedagogical",
+      "linhas": 2
+    },
+    {
+      "papel": "pending",
+      "linhas": 2
+    },
+    {
+      "papel": "student",
+      "linhas": 2
+    },
+    {
+      "papel": "education_supervisor",
+      "linhas": 1
+    },
+    {
+      "papel": "parent",
+      "linhas": 1
+    },
+    {
+      "papel": "psychology",
+      "linhas": 1
+    },
+    {
+      "papel": "social_work",
+      "linhas": 1
+    },
+    {
+      "papel": "sports_operator",
+      "linhas": 1
+    }
+  ],
+  "total_profiles": 28,
+  "soma_por_papel": 28,
+  "regulacao_bate": true,
+  "linhas_em_pending": 2,
+  "pending_no_censo": true,
+  "contraste_com_18_11": {
+    "artifacto": "evidence/sm22-varre-formas-pen-18-11.json",
+    "total": {
+      "18_11": 28,
+      "hoje": 28,
+      "delta": 0
+    },
+    "pending": {
+      "18_11": 2,
+      "hoje": 2,
+      "delta": 0
+    },
+    "papeis_no_censo": {
+      "18_11": 15,
+      "hoje": 15,
+      "delta": 0
+    }
+  },
+  "fixtures_de_regulacao": {
+    "sem_um_papel": {
+      "linhas": [
+        {
+          "papel": "secretary",
+          "linhas": 4
+        },
+        {
+          "papel": "developer",
+          "linhas": 3
+        }
+      ],
+      "total": 28,
+      "regula": false
+    },
+    "todas_as_linhas_contadas": {
+      "linhas": [
+        {
+          "papel": "secretary",
+          "linhas": 4
+        },
+        {
+          "papel": "developer",
+          "linhas": 3
+        }
+      ],
+      "total": 7,
+      "regula": true
+    }
+  },
+  "portoes": {
+    "total": 4,
+    "falhas": 0,
+    "lista": [
+      {
+        "nome": "as_tres_predicas_de_hoje_aparecem_na_peca_de_18_11",
+        "obtido": 3,
+        "esperado": 3,
+        "ok": true
+      },
+      {
+        "nome": "a_regulacao_bate_no_corpus_e_o_fixture_partido_nao_bate",
+        "obtido": [
+          true,
+          false,
+          true
+        ],
+        "esperado": [
+          true,
+          false,
+          true
+        ],
+        "ok": true
+      },
+      {
+        "nome": "o_default_da_coluna_e_lido_do_catalogo_e_menciona_o_estado_por_o_qual_a_pendencia_existe",
+        "obtido": true,
+        "esperado": true,
+        "ok": true
+      },
+      {
+        "nome": "nenhuma_linha_fica_fora_dos_papeis_do_censo",
+        "obtido": 0,
+        "esperado": 0,
+        "ok": true
+      }
+    ]
+  },
+  "o_que_prova": [
+    "quantas linhas ha hoje em public.profiles, como se distribuem por papel e se a soma bate com o total",
+    "quantas linhas estao no estado pending hoje, e se esse estado aparece no censo",
+    "qual e o default lido do catalogo para a coluna profiles.role, com a nulabilidade",
+    "que as tres frases SQL desta corrida sao as mesmas que a peca de 18/11 usa (comparacao normalizada, publicada)",
+    "que a regulacao tem positivo: o fixture com um papel a menos devolve falso"
+  ],
+  "o_que_NAO_prova": [
+    "que o estado pending seja escrito por fluxo humano: o censo conta linhas, nao a origem delas",
+    "que a aprovacao administrativa (pending -> papel) funcione: isso e uma escrita, e precisa de OK proprio",
+    "nada sobre as colunas de access_requests alem do default que o catalogo devolve"
+  ]
+}

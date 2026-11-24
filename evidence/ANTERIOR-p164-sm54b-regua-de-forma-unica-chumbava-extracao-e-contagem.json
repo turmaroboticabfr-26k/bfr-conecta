@@ -1,0 +1,985 @@
+{
+  "peca": "scripts/p164-medicao-no-ar-das-pen-sem-ok.mjs",
+  "em": "2026-11-24T19:20:08.125Z",
+  "duracao_ms": 1383,
+  "emissor_bytes": 44706,
+  "emissor_md5": "4253a8a919c6977085d874a32bea5e1e",
+  "ciclo": "§SM.54",
+  "metodo": "GET anónimo do shell e de cada caminho de SW que o próprio shell anuncia; identidade conferida contra o diário antes de contar; réguas e código do produtor lidos dos ficheiros e compilados; baselines lidas de artefactos em disco; 0 escrita no banco, 0 publicação, 0 push",
+  "identidade": {
+    "diario": "audit-publicacao-v144.json",
+    "versao": 144,
+    "url_lida_do_diario": "https://bfr-conecta.turmaroboticabfr.workers.dev",
+    "campo_de_pegada_lido": "shell_md5/shell_bytes",
+    "shell": {
+      "http": 200,
+      "bytes": 3557197,
+      "md5": "573de00016fe2d9b87e671bb84d21559",
+      "registado": "573de00016fe2d9b87e671bb84d21559/3557197",
+      "byte_identico_ao_registado": true
+    }
+  },
+  "bundle_sw_registado": {
+    "campo": "sw",
+    "md5": "60d317d62cebbf327bf2e7576bd61931",
+    "bytes": 5210,
+    "caminhos_que_batem": [
+      "/sw-v4.js?v=45",
+      "/sw-v4.js"
+    ]
+  },
+  "produtores_lidos": {
+    "fin1": "scripts/fin1-decisoes-produto.mjs",
+    "sm22t": "scripts/sm22-varre-timers.mjs",
+    "sm22sw": "scripts/sm22-varre-sw-servido.mjs",
+    "p119": "scripts/p119-agregados-no-ar.mjs",
+    "ddl39": "scripts/p73-pen39-ddl-candidata.sql"
+  },
+  "reguas_lidas": [
+    {
+      "peca": "scripts/sm22-varre-sw-servido.mjs",
+      "linha": 32,
+      "para": "caminho do SW no shell",
+      "regua": "/serviceWorker\\.register\\(\\s*[`'\"]([^`'\"]*sw[^`'\"]*\\.js[^`'\"]*)/g",
+      "flags": "g",
+      "classe_de_uso": "contagem"
+    },
+    {
+      "peca": "scripts/sm22-varre-timers.mjs",
+      "linha": 140,
+      "para": "PEN-01 setInterval",
+      "regua": "/setInterval/g",
+      "flags": "g",
+      "classe_de_uso": "extracao"
+    },
+    {
+      "peca": "scripts/sm22-varre-timers.mjs",
+      "linha": 142,
+      "para": "PEN-01 requestAnimationFrame",
+      "regua": "/requestAnimationFrame/g",
+      "flags": "g",
+      "classe_de_uso": "extracao"
+    },
+    {
+      "peca": "scripts/sm22-varre-timers.mjs",
+      "linha": 143,
+      "para": "PEN-01 MutationObserver",
+      "regua": "/new MutationObserver/g",
+      "flags": "g",
+      "classe_de_uso": "extracao"
+    },
+    {
+      "peca": "scripts/fin1-decisoes-produto.mjs",
+      "linha": 202,
+      "para": "PEN-03 official_name",
+      "regua": "/official_name/g",
+      "flags": "g",
+      "classe_de_uso": "contagem"
+    },
+    {
+      "peca": "scripts/fin1-decisoes-produto.mjs",
+      "linha": 203,
+      "para": "PEN-03 displayName",
+      "regua": "/displayName/g",
+      "flags": "g",
+      "classe_de_uso": "contagem"
+    },
+    {
+      "peca": "scripts/fin1-decisoes-produto.mjs",
+      "linha": 204,
+      "para": "PEN-03 preferredDisplayName",
+      "regua": "/preferredDisplayName/g",
+      "flags": "g",
+      "classe_de_uso": "contagem"
+    },
+    {
+      "peca": "scripts/fin1-decisoes-produto.mjs",
+      "linha": 205,
+      "para": "PEN-03 display_name_custom",
+      "regua": "/display_name_custom/g",
+      "flags": "g",
+      "classe_de_uso": "contagem"
+    },
+    {
+      "peca": "scripts/fin1-decisoes-produto.mjs",
+      "linha": 206,
+      "para": "PEN-03 bfr-student-hero",
+      "regua": "/bfr-student-hero/g",
+      "flags": "g",
+      "classe_de_uso": "contagem"
+    },
+    {
+      "peca": "scripts/fin1-decisoes-produto.mjs",
+      "linha": 211,
+      "para": "PEN-03 eyebrow do hero",
+      "regua": "/eyebrow/g",
+      "flags": "g",
+      "classe_de_uso": "contagem"
+    },
+    {
+      "peca": "scripts/fin1-decisoes-produto.mjs",
+      "linha": 208,
+      "para": "PEN-03 applyIdentity le official_name",
+      "regua": "/official_name/",
+      "flags": "",
+      "classe_de_uso": "nao_classificada"
+    },
+    {
+      "peca": "scripts/fin1-decisoes-produto.mjs",
+      "linha": 209,
+      "para": "PEN-03 applyIdentity le preferred",
+      "regua": "/preferredDisplayName|display_name_custom/",
+      "flags": "",
+      "classe_de_uso": "nao_classificada"
+    },
+    {
+      "peca": "scripts/fin1-decisoes-produto.mjs",
+      "linha": -1,
+      "para": "PEN-03 ancora applyIdentity",
+      "ancara": "function applyIdentity()",
+      "limite": 4000
+    },
+    {
+      "peca": "scripts/fin1-decisoes-produto.mjs",
+      "linha": -1,
+      "para": "PEN-03 ancora shellMarkup",
+      "ancara": "function shellMarkup()",
+      "limite": 6000
+    },
+    {
+      "peca": "scripts/fin1-decisoes-produto.mjs",
+      "linha": 216,
+      "para": "PEN-04 assinaturas de load()",
+      "regua": "/\\b(?:async\\s+)?function\\s+load\\s*\\(/g",
+      "flags": "g",
+      "classe_de_uso": "contagem"
+    },
+    {
+      "peca": "scripts/fin1-decisoes-produto.mjs",
+      "linha": 226,
+      "para": "PEN-04 guarda state.loading",
+      "regua": "/if\\s*\\([\\s\\S]{0,200}?state\\.loading[\\s\\S]{0,200}?\\)\\s*\\{?\\s*return/",
+      "flags": "",
+      "classe_de_uso": "nao_classificada"
+    },
+    {
+      "peca": "scripts/fin1-decisoes-produto.mjs",
+      "linha": 227,
+      "para": "PEN-04 guarda state.loaded",
+      "regua": "/if\\s*\\([\\s\\S]{0,200}?state\\.loaded[\\s\\S]{0,200}?\\)\\s*\\{?\\s*return/",
+      "flags": "",
+      "classe_de_uso": "nao_classificada"
+    },
+    {
+      "peca": "scripts/fin1-decisoes-produto.mjs",
+      "linha": 228,
+      "para": "PEN-04 state.error no corpo",
+      "regua": "/state\\.error\\s*=/",
+      "flags": "",
+      "classe_de_uso": "nao_classificada"
+    },
+    {
+      "peca": "scripts/fin1-decisoes-produto.mjs",
+      "linha": 241,
+      "para": "PEN-04 catch de bloco vazio",
+      "regua": "/\\bcatch\\s*\\(([^)]*)\\)\\s*\\{\\s*\\}/g",
+      "flags": "g",
+      "classe_de_uso": "contagem"
+    },
+    {
+      "peca": "scripts/fin1-decisoes-produto.mjs",
+      "linha": 242,
+      "para": "PEN-04 catch de arrow vazio",
+      "regua": "/\\.catch\\(\\s*\\(\\s*\\)\\s*=>\\s*\\{\\s*\\}\\s*\\)/g",
+      "flags": "g",
+      "classe_de_uso": "contagem"
+    },
+    {
+      "peca": "scripts/fin1-decisoes-produto.mjs",
+      "linha": 243,
+      "para": "PEN-04 renderHomeDock",
+      "regua": "/renderHomeDock/g",
+      "flags": "g",
+      "classe_de_uso": "contagem"
+    },
+    {
+      "peca": "scripts/fin1-decisoes-produto.mjs",
+      "linha": -1,
+      "para": "MARCADOS.rm25_announcements",
+      "literal": "from('announcements')"
+    },
+    {
+      "peca": "scripts/fin1-decisoes-produto.mjs",
+      "linha": 171,
+      "para": "PEN-05 ocorrencias do texto",
+      "regua": "/Marcar em análise/g",
+      "flags": "g",
+      "classe_de_uso": "contagem"
+    },
+    {
+      "peca": "scripts/fin1-decisoes-produto.mjs",
+      "linha": 173,
+      "para": "PEN-05 modulos text/plain",
+      "regua": "/<script[^>]*type\\s*=\\s*[\"']text\\/plain[\"']/gi",
+      "flags": "gi",
+      "classe_de_uso": "contagem"
+    },
+    {
+      "peca": "scripts/fin1-decisoes-produto.mjs",
+      "linha": 174,
+      "para": "PEN-05 deferred-disabled",
+      "regua": "/deferred-disabled/g",
+      "flags": "g",
+      "classe_de_uso": "contagem"
+    },
+    {
+      "peca": "scripts/fin1-decisoes-produto.mjs",
+      "linha": 166,
+      "para": "PEN-05 tag de modulo morto",
+      "regua": "/deferred-disabled|text\\/plain/i",
+      "flags": "i",
+      "classe_de_uso": "nao_classificada"
+    },
+    {
+      "peca": "scripts/fin1-decisoes-produto.mjs",
+      "linha": 167,
+      "para": "PEN-05 id do bloco",
+      "regua": "/\\bid\\s*=\\s*[\"']([^\"']+)/",
+      "flags": "",
+      "classe_de_uso": "extracao"
+    },
+    {
+      "peca": "scripts/fin1-decisoes-produto.mjs",
+      "linha": 168,
+      "para": "PEN-05 roles do bloco",
+      "regua": "/data-bfr-critical-roles\\s*=\\s*[\"']([^\"']+)/",
+      "flags": "",
+      "classe_de_uso": "extracao"
+    },
+    {
+      "peca": "scripts/fin1-decisoes-produto.mjs",
+      "linha": 147,
+      "para": "PEN-06 regras display:none",
+      "regua": "/\\.bfr-exec-legacy-hidden\\s*\\{[^}]*display\\s*:\\s*none/gi",
+      "flags": "gi",
+      "classe_de_uso": "contagem"
+    },
+    {
+      "peca": "scripts/fin1-decisoes-produto.mjs",
+      "linha": 148,
+      "para": "PEN-06 ocorrencias da classe",
+      "regua": "/bfr-exec-legacy-hidden/g",
+      "flags": "g",
+      "classe_de_uso": "contagem"
+    },
+    {
+      "peca": "scripts/fin1-decisoes-produto.mjs",
+      "linha": 149,
+      "para": "PEN-06 escape data-exec-revealed",
+      "regua": "/data-exec-revealed/g",
+      "flags": "g",
+      "classe_de_uso": "contagem"
+    },
+    {
+      "peca": "scripts/fin1-decisoes-produto.mjs",
+      "linha": 150,
+      "para": "PEN-06 toggle por JS",
+      "regua": "/classList\\.[a-z]+\\(\\s*['\"]bfr-exec-legacy-hidden['\"]/g",
+      "flags": "g",
+      "classe_de_uso": "contagem"
+    },
+    {
+      "peca": "scripts/fin1-decisoes-produto.mjs",
+      "linha": 151,
+      "para": "PEN-06 seletores hospedeiros",
+      "regua": "/([.#][\\w-]+)\\s+\\.bfr-exec-legacy-hidden/g",
+      "flags": "g",
+      "classe_de_uso": "contagem"
+    },
+    {
+      "peca": "scripts/sm22-varre-sw-servido.mjs",
+      "linha": 36,
+      "para": "PEN-07 ouvintes do SW",
+      "texto": "NOMES + regua do produtor compilados (5 nomes), nao re-dactilografados"
+    },
+    {
+      "peca": "scripts/p119-agregados-no-ar.mjs",
+      "linha": 26,
+      "para": "PEN-16 CREATE FUNCTION do DDL da PEN-39",
+      "regua": "/CREATE\\s+(?:OR\\s+REPLACE\\s+)?FUNCTION\\s+public\\.([a-z_]+)/gi",
+      "flags": "gi",
+      "classe_de_uso": "contagem"
+    }
+  ],
+  "reguas_sem_flag_global": [],
+  "reguas_nao_classificadas": [
+    {
+      "para": "PEN-03 applyIdentity le official_name",
+      "regua": "/official_name/",
+      "linha": 208
+    },
+    {
+      "para": "PEN-03 applyIdentity le preferred",
+      "regua": "/preferredDisplayName|display_name_custom/",
+      "linha": 209
+    },
+    {
+      "para": "PEN-04 guarda state.loading",
+      "regua": "/if\\s*\\([\\s\\S]{0,200}?state\\.loading[\\s\\S]{0,200}?\\)\\s*\\{?\\s*return/",
+      "linha": 226
+    },
+    {
+      "para": "PEN-04 guarda state.loaded",
+      "regua": "/if\\s*\\([\\s\\S]{0,200}?state\\.loaded[\\s\\S]{0,200}?\\)\\s*\\{?\\s*return/",
+      "linha": 227
+    },
+    {
+      "para": "PEN-04 state.error no corpo",
+      "regua": "/state\\.error\\s*=/",
+      "linha": 228
+    },
+    {
+      "para": "PEN-05 tag de modulo morto",
+      "regua": "/deferred-disabled|text\\/plain/i",
+      "linha": 166
+    }
+  ],
+  "marcadores_nao_lidos": [],
+  "reguas_por_classe": [
+    {
+      "classe": "contagem",
+      "total": 20
+    },
+    {
+      "classe": "extracao",
+      "total": 5
+    },
+    {
+      "classe": "nao_classificada",
+      "total": 6
+    }
+  ],
+  "marcadores": {
+    "pedidos": [
+      "rm25_announcements"
+    ],
+    "lidos_do_bloco": 14,
+    "entradas_no_bloco": 14
+  },
+  "candidatos_byte_identica_ao_ar": [
+    "bfr-candidata-v144c-uniesco"
+  ],
+  "eixo_por_via": {
+    "bytes_servidos": [
+      "PEN-02",
+      "PEN-03",
+      "PEN-04",
+      "PEN-05",
+      "PEN-06",
+      "PEN-07",
+      "PEN-16"
+    ],
+    "massa_estatica_nao_decide": [
+      "PEN-01 (RM-2.1 é tempo entre toque e paint; a medição que fecha precisa de browser com cadeia viva)"
+    ]
+  },
+  "eixos": {
+    "PEN_01": {
+      "pergunta": "a massa estatica de timers do ar mudou desde 18/11, e isso decide a PEN-01?",
+      "grandeza_que_fecha_a_linha": "tempo entre o toque e o paint (RM-2.1) — medicao de browser com sessao viva",
+      "decidivel_em_leitura": false,
+      "medido_no_ar": {
+        "setInterval": 44,
+        "requestAnimationFrame": 35,
+        "new_MutationObserver": 56
+      },
+      "baseline": {
+        "artefacto": "evidence/sm22-varre-timers-18-11d.json",
+        "em": "2026-11-18T17:16:31.485Z",
+        "ar_md5_da_baseline": "b272fd4f3a737c518e888250ab8167f1",
+        "igual_ao_ar_de_hoje": false,
+        "valores": {
+          "setInterval": 44,
+          "requestAnimationFrame": 35,
+          "new_MutationObserver": 56
+        }
+      },
+      "delta": {
+        "setInterval": 0,
+        "requestAnimationFrame": 0,
+        "new_MutationObserver": 0
+      }
+    },
+    "PEN_02": {
+      "pergunta": "o que o painel de XP/Trilhas/Conquistas mostra vem de uma literal no byte ou de uma consulta?",
+      "decidivel_em_leitura": true,
+      "medido_no_ar": {
+        "ocorrencias_da_ancara": 1,
+        "linha_html": 13538,
+        "corpo_bytes": 256,
+        "campos_numericos": [
+          "xp=180",
+          "streak=4",
+          "index=0",
+          "correct=0",
+          "completed=0",
+          "trailStep=1"
+        ],
+        "campos_alimentados_por_query": [],
+        "veredito_eixo": "LITERAL_NO_BYTE (hardcoded confirmado por medida)"
+      },
+      "baseline": {
+        "nota": "o fin1 nao conta este eixo; a baseline de 12/11 e a alegacao textual do ledger, nao um numero — por isso nao ha delta aqui",
+        "artefacto_sem_numero": "evidence/fin1-decisoes-produto.json"
+      },
+      "fixtures": {
+        "literal_da_query_zero": {
+          "campos": [
+            "xp",
+            "streak",
+            "trailStep",
+            "index"
+          ],
+          "da_query": [],
+          "passa_como_hardcoded": true
+        },
+        "literal_alimentado_por_query": {
+          "campos": [
+            "xp",
+            "streak",
+            "trailStep"
+          ],
+          "da_query": [
+            "xp"
+          ],
+          "chumba_hardcoded": true
+        }
+      }
+    },
+    "PEN_03": {
+      "pergunta": "o hero do aluno obedece ao nome oficial ou ao nome preferido, nos bytes de hoje?",
+      "decidivel_em_leitura": true,
+      "ancora_lida_do_produtor": "function applyIdentity()",
+      "medido_no_ar": {
+        "official_name": 475,
+        "displayName": 8,
+        "preferredDisplayName": 13,
+        "display_name_custom": 14,
+        "bfr_student_hero": 8,
+        "applyIdentity_bytes": 882,
+        "applyIdentity_lê_official_name": true,
+        "applyIdentity_lê_preferred": false,
+        "applyIdentity_cabeca": "function applyIdentity() {⏎    if (!isStudent() || !state.student) return;⏎    const name = state.student.official_name || 'Aluno';⏎    const url = state.photoUrl;⏎    document.querySelectorAll('.bfr-student-avatar,.bfr-student-today-avatar,.mini-person .avata",
+        "hero_eyebrow": 0
+      },
+      "baseline": {
+        "artefacto": "evidence/fin1-decisoes-produto.json",
+        "em": "2026-11-13T01:50:09.977Z",
+        "ar_md5_da_baseline": "ae59d35346b685b2fbf9d18ade4fa5cd",
+        "igual_ao_ar_de_hoje": false,
+        "valores": {
+          "official_name": 464,
+          "displayName": 8,
+          "preferredDisplayName": 13,
+          "display_name_custom": 14,
+          "bfr_student_hero": 8,
+          "applyIdentity_bytes": 882,
+          "applyIdentity_lê_official_name": true,
+          "applyIdentity_lê_preferred": false
+        }
+      },
+      "delta": {
+        "official_name": 11,
+        "displayName": 0,
+        "preferredDisplayName": 0,
+        "display_name_custom": 0,
+        "bfr_student_hero": 0,
+        "applyIdentity_bytes": 0
+      },
+      "booleans_moveram": []
+    },
+    "PEN_04": {
+      "pergunta": "a falha silenciosa do Home do aluno continua nos bytes, e em que linha vive hoje?",
+      "decidivel_em_leitura": "em parte: os bytes doem onde o erro e engolido; se o utilizador VE o erro e de browser",
+      "medido_no_ar": {
+        "carregadores": 19,
+        "com_guarda_state_loading": 11,
+        "com_guarda_state_loaded": 4,
+        "sem_nenhuma_guarda": 7,
+        "seteam_state_error": 6,
+        "catch_silencioso_bloco": 2,
+        "catch_silencioso_arrow": 7,
+        "renderHomeDock": 3,
+        "from_announcements": 15,
+        "carregadores_que_falam_com_o_aluno": [
+          {
+            "linha_html": 20828,
+            "catch_vazios_no_corpo": 0,
+            "seta_state_error": true,
+            "bytes_corpo": 3490
+          },
+          {
+            "linha_html": 27755,
+            "catch_vazios_no_corpo": 0,
+            "seta_state_error": false,
+            "bytes_corpo": 4675
+          }
+        ],
+        "linhas_dos_catch_silenciosos": {
+          "total": 2,
+          "primeiras_10": [
+            7195,
+            10314
+          ]
+        }
+      },
+      "baseline": {
+        "artefacto": "evidence/fin1-decisoes-produto.json",
+        "em": "2026-11-13T01:50:09.977Z",
+        "valores": {
+          "carregadores": 19,
+          "com_guarda_state_loading": 11,
+          "com_guarda_state_loaded": 4,
+          "sem_nenhuma_guarda": 7,
+          "seteam_state_error": 6,
+          "catch_silencioso_bloco": 2,
+          "catch_silencioso_arrow": 7,
+          "renderHomeDock": 3,
+          "from_announcements": 14
+        }
+      },
+      "nota_amarra_velha": "o titulo da linha cita a linha 9392 (build antiga) e o fin1 localizava o carregador do aluno por janela de linhas 20800-20900; nenhuma das duas amarras vale na byte-count de hoje, por isso a peca procura o carregador por predicado (isStudent) e devolve a linha medida.",
+      "fixtures": {
+        "catch_vazio_casado": true,
+        "catch_tratado_nao_casado": true
+      },
+      "delta": {
+        "carregadores": 0,
+        "com_guarda_state_loading": 0,
+        "com_guarda_state_loaded": 0,
+        "sem_nenhuma_guarda": 0,
+        "seteam_state_error": 0,
+        "catch_silencioso_bloco": 0,
+        "catch_silencioso_arrow": 0,
+        "renderHomeDock": 0,
+        "from_announcements": 1
+      }
+    },
+    "PEN_05": {
+      "pergunta": "todas as ocorrencias do texto vivem em modulo morto, ou so a primeira (como mediu o fin1)?",
+      "decidivel_em_leitura": true,
+      "medido_no_ar": {
+        "ocorrencias": 4,
+        "em_modulo_morto": 4,
+        "em_modulo_vivo": 0,
+        "modulos_text_plain": 80,
+        "modulos_deferred_disabled": 5,
+        "por_ocorrencia": [
+          {
+            "linha_html": 596,
+            "offset_bytes": 105652,
+            "tag_resumida": "<script id=\"bfr-coordination-ux\" type=\"text/plain\" data-bfr-auth-deferred data-bfr-critical-roles=\"coordinator,developer\">",
+            "modulo_morto": true,
+            "id": "bfr-coordination-ux",
+            "roles": "coordinator,developer"
+          },
+          {
+            "linha_html": 597,
+            "offset_bytes": 106530,
+            "tag_resumida": "<script id=\"bfr-coordination-ux\" type=\"text/plain\" data-bfr-auth-deferred data-bfr-critical-roles=\"coordinator,developer\">",
+            "modulo_morto": true,
+            "id": "bfr-coordination-ux",
+            "roles": "coordinator,developer"
+          },
+          {
+            "linha_html": 15240,
+            "offset_bytes": 1834572,
+            "tag_resumida": "<script id=\"bfr-coordination-command\" type=\"text/plain\" data-bfr-auth-deferred-disabled>",
+            "modulo_morto": true,
+            "id": "bfr-coordination-command",
+            "roles": null
+          },
+          {
+            "linha_html": 24237,
+            "offset_bytes": 2883940,
+            "tag_resumida": "<script id=\"bfr-coordination-central\" type=\"text/plain\" data-bfr-auth-deferred data-bfr-critical-roles=\"coordinator,developer\">",
+            "modulo_morto": true,
+            "id": "bfr-coordination-central",
+            "roles": "coordinator,developer"
+          }
+        ],
+        "veredito_eixo": "TODAS as ocorrencias estao em modulo morto (a alegicao da linha e reproduzida por medida)"
+      },
+      "baseline": {
+        "artefacto": "evidence/fin1-decisoes-produto.json",
+        "em": "2026-11-13T01:50:09.977Z",
+        "valores": {
+          "ocorrencias": 4,
+          "modulos_text_plain": 80,
+          "modulos_deferred_disabled": 5,
+          "primeira_em_modulo_morto": true,
+          "primeira_id": "bfr-coordination-ux",
+          "primeira_linha": 596
+        }
+      },
+      "fixtures": {
+        "tag_com_text_plain_da_morta": true,
+        "tag_module_nao_da_morta": true
+      }
+    },
+    "PEN_06": {
+      "pergunta": "o overlay continua a esconder os paineis legados e com quantas regras/escapes?",
+      "decidivel_em_leitura": true,
+      "medido_no_ar": {
+        "regras_css_com_display_none": 3,
+        "ocorrencias_da_classe": 7,
+        "escape_data_exec_revealed": 5,
+        "toggle_por_js": 2,
+        "seletores_hospedeiros": []
+      },
+      "baseline": {
+        "artefacto": "evidence/fin1-decisoes-produto.json",
+        "em": "2026-11-13T01:50:09.977Z",
+        "valores": {
+          "regras_css_com_display_none": 3,
+          "ocorrencias_da_classe": 7,
+          "escape_data_exec_revealed": 5,
+          "toggle_por_js": 2
+        }
+      },
+      "delta": {
+        "regras_css_com_display_none": 0,
+        "ocorrencias_da_classe": 0,
+        "escape_data_exec_revealed": 0,
+        "toggle_por_js": 0
+      }
+    },
+    "PEN_07": {
+      "pergunta": "que mecanismo de offline existe hoje nos bytes servidos (SW e shell) para a portaria?",
+      "decidivel_em_leitura": true,
+      "caminho_do_sw_lido_do_shell": {
+        "brutos": [
+          "${APP_ORIGIN}/sw-v4.js?v=45",
+          "${window.location.origin}/sw-v4.js?v=45",
+          "${location.origin}/sw-v4.js?v=45"
+        ],
+        "resolvidos": [
+          "/sw-v4.js?v=45",
+          "/sw-v4.js"
+        ]
+      },
+      "sw_servidos": [
+        {
+          "caminho": "/sw-v4.js?v=45",
+          "http": 200,
+          "bytes": 5210,
+          "md5": "60d317d62cebbf327bf2e7576bd61931"
+        },
+        {
+          "caminho": "/sw-v4.js",
+          "http": 200,
+          "bytes": 5210,
+          "md5": "60d317d62cebbf327bf2e7576bd61931"
+        }
+      ],
+      "ouvintes_por_nome": [
+        {
+          "caminho": "/sw-v4.js?v=45",
+          "ouvintes": {
+            "install": true,
+            "activate": true,
+            "fetch": true,
+            "push": true,
+            "notificationclick": true
+          }
+        },
+        {
+          "caminho": "/sw-v4.js",
+          "ouvintes": {
+            "install": true,
+            "activate": true,
+            "fetch": true,
+            "push": true,
+            "notificationclick": true
+          }
+        }
+      ],
+      "medido_no_ar": {
+        "sw": {
+          "sync_listener": 0,
+          "sync_manager": 0,
+          "caches_open": 3,
+          "caches_match": 5,
+          "add_all": 1,
+          "catch_no_sw": 0,
+          "offline_ficheiro": 0,
+          "navigator_onLine": 0,
+          "online_offline_listener": 0,
+          "localStorage_set": 0,
+          "indexedDB_open": 0
+        },
+        "shell": {
+          "sync_listener": 0,
+          "sync_manager": 0,
+          "caches_open": 0,
+          "caches_match": 0,
+          "add_all": 0,
+          "catch_no_sw": 38,
+          "offline_ficheiro": 0,
+          "navigator_onLine": 5,
+          "online_offline_listener": 4,
+          "localStorage_set": 29,
+          "indexedDB_open": 0
+        }
+      },
+      "baseline": {
+        "artefacto": "evidence/sm22-varre-sw-servido-18-11.json",
+        "nota": "o produtor de 18/11 so contava ouvintes (5 nomes); as grandezas de offline (sync, caches, fila em localStorage) nunca tiveram baseline, por isso esta e a primeira corrida com elas"
+      },
+      "fixtures": {
+        "ouvintes_do_produtor_no_sintetico": {
+          "install": true,
+          "activate": true,
+          "fetch": true,
+          "push": false,
+          "notificationclick": false
+        },
+        "sintetico_chumba_push_e_notificationclick": true,
+        "sintetico_com_offline_passa": true,
+        "ar_de_hoje_chumba_onde_nao_ha": true
+      }
+    },
+    "PEN_16": {
+      "pergunta": "os dois agregados municipais da PEN-39 continuam a ser chamados nos bytes servidos?",
+      "decidivel_em_leitura": true,
+      "nomes_lidos_do_ddl": [
+        "bfr_municipal_municipio_totais",
+        "bfr_municipal_distribuicao_por_zona"
+      ],
+      "controlo_da_regua": {
+        "ficheiro": "bfr-candidata-v142-painel-na-troca/index.html",
+        "bytes": 3556664,
+        "md5": "0e22e78fe1e0ce929ec4717f86365ad9",
+        "artefacto_confrontado": "evidence/p119-agregados-no-ar-21-11-B.json",
+        "md5_do_artefacto": "0e22e78fe1e0ce929ec4717f86365ad9",
+        "byte_identico_ao_artefacto": true,
+        "reproduz_o_artefacto": true,
+        "dado": [
+          {
+            "nome": "bfr_municipal_municipio_totais",
+            "fechado": true,
+            "passo": "fechado",
+            "ocorrencias_do_literal": 1,
+            "callsites_com_a_constante": [
+              1
+            ]
+          },
+          {
+            "nome": "bfr_municipal_distribuicao_por_zona",
+            "fechado": true,
+            "passo": "fechado",
+            "ocorrencias_do_literal": 1,
+            "callsites_com_a_constante": [
+              1
+            ]
+          }
+        ],
+        "esperado": [
+          {
+            "nome": "bfr_municipal_municipio_totais",
+            "fechado": true,
+            "passo": "fechado",
+            "ocorrencias_do_literal": 1,
+            "callsites_com_a_constante": [
+              1
+            ]
+          },
+          {
+            "nome": "bfr_municipal_distribuicao_por_zona",
+            "fechado": true,
+            "passo": "fechado",
+            "ocorrencias_do_literal": 1,
+            "callsites_com_a_constante": [
+              1
+            ]
+          }
+        ]
+      },
+      "medido_no_ar": [
+        {
+          "nome": "bfr_municipal_municipio_totais",
+          "fechado": true,
+          "passo": "fechado",
+          "ocorrencias_do_literal": 1,
+          "callsites_com_a_constante": [
+            1
+          ]
+        },
+        {
+          "nome": "bfr_municipal_distribuicao_por_zona",
+          "fechado": true,
+          "passo": "fechado",
+          "ocorrencias_do_literal": 1,
+          "callsites_com_a_constante": [
+            1
+          ]
+        }
+      ],
+      "veredito_eixo": "AMBOS CHAMADOS NO AR"
+    }
+  },
+  "portoes": {
+    "total": 12,
+    "falhas": 1,
+    "lista": [
+      {
+        "nome": "a_identidade_do_ar_bate_com_o_registo_do_diario",
+        "obtido": true,
+        "esperado": true,
+        "ok": true
+      },
+      {
+        "nome": "o_sw_servido_bate_com_o_bundle_registado",
+        "obtido": [
+          1,
+          true
+        ],
+        "esperado": [
+          1,
+          true
+        ],
+        "ok": true
+      },
+      {
+        "nome": "nenhuma_regua_foi_re_dactilografada",
+        "obtido": true,
+        "esperado": true,
+        "ok": true
+      },
+      {
+        "nome": "toda_predica_de_contagem_tem_flag_global",
+        "obtido": [],
+        "esperado": [],
+        "ok": true
+      },
+      {
+        "nome": "nenhuma_regua_lida_fica_sem_classe_de_uso",
+        "obtido": [
+          {
+            "para": "PEN-03 applyIdentity le official_name",
+            "regua": "/official_name/",
+            "linha": 208
+          },
+          {
+            "para": "PEN-03 applyIdentity le preferred",
+            "regua": "/preferredDisplayName|display_name_custom/",
+            "linha": 209
+          },
+          {
+            "para": "PEN-04 guarda state.loading",
+            "regua": "/if\\s*\\([\\s\\S]{0,200}?state\\.loading[\\s\\S]{0,200}?\\)\\s*\\{?\\s*return/",
+            "linha": 226
+          },
+          {
+            "para": "PEN-04 guarda state.loaded",
+            "regua": "/if\\s*\\([\\s\\S]{0,200}?state\\.loaded[\\s\\S]{0,200}?\\)\\s*\\{?\\s*return/",
+            "linha": 227
+          },
+          {
+            "para": "PEN-04 state.error no corpo",
+            "regua": "/state\\.error\\s*=/",
+            "linha": 228
+          },
+          {
+            "para": "PEN-05 tag de modulo morto",
+            "regua": "/deferred-disabled|text\\/plain/i",
+            "linha": 166
+          }
+        ],
+        "esperado": [],
+        "ok": false
+      },
+      {
+        "nome": "a_regua_da_pen16_reproduz_o_artefacto_do_produtor",
+        "obtido": true,
+        "esperado": true,
+        "ok": true
+      },
+      {
+        "nome": "a_regua_de_catch_silencioso_tem_os_dois_sentidos_em_fixture",
+        "obtido": [
+          true,
+          true
+        ],
+        "esperado": [
+          true,
+          true
+        ],
+        "ok": true
+      },
+      {
+        "nome": "a_regua_de_literal_vs_query_tem_os_dois_sentidos_em_fixture",
+        "obtido": [
+          true,
+          true
+        ],
+        "esperado": [
+          true,
+          true
+        ],
+        "ok": true
+      },
+      {
+        "nome": "a_regua_de_modulo_morto_tem_os_dois_sentidos_em_fixture",
+        "obtido": [
+          true,
+          true
+        ],
+        "esperado": [
+          true,
+          true
+        ],
+        "ok": true
+      },
+      {
+        "nome": "a_regua_de_offline_tem_positivo_e_negativo_em_fixture",
+        "obtido": [
+          true,
+          true
+        ],
+        "esperado": [
+          true,
+          true
+        ],
+        "ok": true
+      },
+      {
+        "nome": "nenhum_eixo_declarado_fica_sem_numero_medido",
+        "obtido": [],
+        "esperado": [],
+        "ok": true
+      },
+      {
+        "nome": "o_ar_de_hoje_tem_um_soiro_de_candidata_byte_identica_em_disco",
+        "obtido": 1,
+        "esperado": 1,
+        "ok": true
+      }
+    ]
+  },
+  "o_que_prova": [
+    "os bytes contados são os do ar registado no diário de publicação (md5 e comprimento conferidos por campo lido por forma, não por nome lembrado), e o SW servido bate com o bundle registado",
+    "cada marcador e cada prédica usados vêm do ficheiro do produtor, com a linha de origem registada; o código da cadeia da PEN-16 e o extrautor de corpo da PEN-03/04 são recortados do produtor e compilados",
+    "a régua da PEN-16 reproduz o artefacto do p119 sobre a candidata v142 em disco, byte-idêntica ao ar que o p119 mediu",
+    "as contagens de hoje para PEN-02/03/04/05/06/07/16 com os seus deltas face ao artefacto de 12/11 (fin1) ou de 18/11 (sm22)",
+    "as três réguas novas (literal×query, módulo morto por ocorrência, offline no SW) têm fixture nos dois sentidos"
+  ],
+  "o_que_NAO_prova": [
+    "que a PEN-01 esteja fechada ou aberta: a grandeza é tempo de espera e esta peça só conta massa estática de código",
+    "que o utilizador veja ou não veja um erro — PEN-04 diz onde o byte engole o catch, não o que a tela pinta",
+    "que os deltas face ao fin1 se devam só ao produto: as duas corridas medem bytes diferentes (v118 vs 144) e algumas réguas foram re-implementadas por recorte, não re-corridas sobre o mesmo ficheiro",
+    "que o offline exista em comportamento: a régua lê listeners e primitivas nos bytes, não executa o service worker",
+    "nada sobre PEN-08, PEN-12, PEN-13, PEN-15, PEN-17, PEN-20, PEN-21 — são catálogo (p165) e disco (p166)"
+  ],
+  "veredito": "P164_AR_DAS_15_SEM_OK_VERMELHO 11/1"
+}
