@@ -1,0 +1,138 @@
+{
+  "programa": "scripts/p151-gera-candidata-v144-uniesco.mjs",
+  "em": "2026-11-24T09:49:45.694Z",
+  "duracao_ms": 0,
+  "pergunta": "o nome BFR Conecta desaparece de toda a experiencia do utilizador e a identidade passa a ser UNIESCO com a logo oficial, sem tocar em identificadores tecnicos?",
+  "origem": {
+    "pasta": "bfr-candidata-v142-painel-na-troca",
+    "md5": "0e22e78fe1e0ce929ec4717f86365ad9",
+    "bytes": 3556664,
+    "veredito_portoes": "P102_CANDIDATA_V142_PAINEL_NA_TROCA_OK 12/0"
+  },
+  "destino": {
+    "pasta": "bfr-candidata-v144-uniesco",
+    "md5": "6f1bb41e4799ad4fd5fa9a6f7e65f715",
+    "bytes": 3557225,
+    "delta_bytes": 561
+  },
+  "substituicoes": [
+    {
+      "nome": "splash_degrade_velho_por_logo_centreada",
+      "vezes": 1,
+      "delta_bytes": 50
+    },
+    {
+      "nome": "splash_texto_velho_por_regras_novas",
+      "vezes": 1,
+      "delta_bytes": 205
+    },
+    {
+      "nome": "release_do_splash_com_saida_suave",
+      "vezes": 1,
+      "delta_bytes": 210
+    },
+    {
+      "nome": "favicon_para_icone_192",
+      "vezes": 1,
+      "delta_bytes": 20
+    },
+    {
+      "nome": "apple_touch_para_icone_180",
+      "vezes": 1,
+      "delta_bytes": 20
+    },
+    {
+      "nome": "metas_de_nome_do_aplicativo",
+      "vezes": 1,
+      "delta_bytes": 106
+    },
+    {
+      "nome": "descricao_do_portal",
+      "vezes": 1,
+      "delta_bytes": 8
+    },
+    {
+      "nome": "login_logo_para_simbolo_192",
+      "vezes": 1,
+      "delta_bytes": 4
+    },
+    {
+      "nome": "school_symbol_para_simbolo_192",
+      "vezes": 1,
+      "delta_bytes": 4
+    },
+    {
+      "nome": "app_logo_para_simbolo_192",
+      "vezes": 1,
+      "delta_bytes": 4
+    },
+    {
+      "nome": "js_que_forca_o_src_dos_logos",
+      "vezes": 1,
+      "delta_bytes": 4
+    },
+    {
+      "nome": "alt_do_simbolo",
+      "vezes": 1,
+      "delta_bytes": -22
+    },
+    {
+      "nome": "nome_do_ficheiro_dos_boletins",
+      "vezes": 1,
+      "delta_bytes": -4
+    },
+    {
+      "nome": "navy_antigo_pelo_navy_da_marca",
+      "vezes": 109,
+      "delta_bytes": 0
+    }
+  ],
+  "passagem": {
+    "nome_velho_ocorrencias": 200,
+    "frases_compostas_trocadas": 68,
+    "sobras_simples_trocadas": 62,
+    "removidas_pelas_subs": 2,
+    "trocadas_no_total": 130,
+    "restantes": 0
+  },
+  "identificadores_tecnicos_poupados": {
+    "bfr-paint-hold": 3,
+    "bfr-app-logo": -5,
+    "boletins-bfr-conecta": -1
+  },
+  "cores": {
+    "navy": "#00399b",
+    "navy_contraste_branco": 10.2,
+    "velho_10295f_media": 13.96,
+    "verde_texto_decidido_nao_usado_porque_contraste": 2.6
+  },
+  "splash": {
+    "estado_ao_soltar": "bfr-paint-hold+uniesco-splash-out",
+    "timeouts": [
+      240
+    ],
+    "duplicou_timeout": false,
+    "estado_final": "livre",
+    "neutro_ja_livre": true
+  },
+  "monogramas": [
+    "U",
+    "U",
+    "UN"
+  ],
+  "scripts": {
+    "total": 20,
+    "falhas_antes": 0,
+    "falhas_depois": 0
+  },
+  "pendentes_fora_destas_bytes": [
+    "manifest.json e icones publicos sao do bundle (P152)",
+    "templates de e-mail/FCM do Supabase fora do repo",
+    "publicacao/deploy tem de pedir OK proprio"
+  ],
+  "portoes": {
+    "total": 16,
+    "falhas": 0
+  },
+  "veredito": "P151_CANDIDATA_V144_UNIESCO_OK 16/0"
+}

@@ -1,0 +1,45 @@
+{
+  "veredito": "P156_VARREDURA_NOME_V144B_OK 4/4",
+  "em": "2026-11-24T10:07:33.720Z",
+  "gerador": "scripts/p156-varredura-nome-v144b.mjs",
+  "alvo": {
+    "candidata": "bfr-candidata-v144b-uniesco/index.html",
+    "bundle": "worker-deploy-v144b-uniesco/"
+  },
+  "identidade": {
+    "candidata_md5": "023b18020eb7fd73b6d99f987d78c5b2",
+    "candidata_bytes": 3557157,
+    "worker_md5": "32e8d3ad69252f94144ea8c7513ad217",
+    "manifest_nome": "UNIESCO",
+    "manifest_theme": "#00399b"
+  },
+  "visivel": {
+    "ocorrencias_nome_antigo": 0,
+    "UNIESCO": 9,
+    "regra": "HTML sem script/style; delimitação alargada (sem `-` e `.` na classe); qualquer casamento é proibido"
+  },
+  "scripts": {
+    "ocorrencias_nome_antigo": 0,
+    "nota": "scripts medidos com o composto técnico preservado `bfr-conecta` removido; nas 6 originais, todas eram segmento do hostname Firebase bfr-conecta-notificacoes-62bbc (integração, preservada por regra do brief)"
+  },
+  "sw": {
+    "cache_label": 1,
+    "titulo_push_fallback": 1,
+    "BFR_Conecta_no_sw": 0
+  },
+  "tecnica_preservada": {
+    "window.BFR_* (APIs internas)": 305,
+    "bfr-app-logo.png (nome técnico, conteúdo = lockup UNIESCO)": 7,
+    "bfr-paint-hold (classe do splash)": 8,
+    "bfr-conecta (hosts CSP/canonical/Firebase + etiqueta do cache SW)": 26,
+    ".bfr-* classes CSS/DOM": 8850,
+    "bfr-*.js (módulos públicos)": 5,
+    "Supabase/rotas bfr_* (RPC)": 112
+  },
+  "portoes": {
+    "zero_visivel": true,
+    "zero_em_scripts": true,
+    "sw_sem_nome_velho": true,
+    "manifest_uniesco": true
+  }
+}

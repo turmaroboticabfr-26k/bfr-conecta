@@ -1,0 +1,184 @@
+{
+  "em": "2026-11-24T10:02:43.339Z",
+  "gerador": "scripts/p155-gera-bundle-v144b-uniesco.mjs",
+  "publicado": false,
+  "sufixo": "a",
+  "base": "worker-deploy-v142-painel-na-troca (certificada pelo esperado-v142.json)",
+  "candidata": "bfr-candidata-v144b-uniesco/index.html (P154_DERIVA_V144B_OK 6/0)",
+  "ar_no_momento": {
+    "diario_mais_novo": "audit-publicacao-v142.json",
+    "versao_no_ar": "142"
+  },
+  "portoes": {
+    "b1_a_base_e_o_worker_v142_do_seu_esperado": {
+      "passou": true,
+      "detalhe": {
+        "lido": {
+          "md5": "b1827dade7c8fb829a149272d89b9c97",
+          "bytes": 3621665
+        },
+        "esperado": {
+          "md5": "b1827dade7c8fb829a149272d89b9c97",
+          "bytes": 3621665
+        }
+      }
+    },
+    "b2_o_embed_html_da_base_e_a_candidata_v142": {
+      "passou": true,
+      "detalhe": {
+        "lido": {
+          "md5": "0e22e78fe1e0ce929ec4717f86365ad9",
+          "bytes": 3556664
+        },
+        "esperado": {
+          "md5": "0e22e78fe1e0ce929ec4717f86365ad9",
+          "bytes": 3556664
+        }
+      }
+    },
+    "b3_a_candidata_v144_bate_com_a_saida_certificada_do_p151": {
+      "passou": false,
+      "detalhe": {
+        "lido": "023b18020eb7fd73b6d99f987d78c5b2",
+        "certificado": "023b18020eb7fd73b6d99f987d78c5b2",
+        "veredito": "P154_DERIVA_V144B_OK 6/0"
+      }
+    },
+    "b4_o_sw_da_base_tem_a_etiqueta_v142_e_o_titulo_velho": {
+      "passou": true,
+      "detalhe": {
+        "v142": 1,
+        "titulo_velho": 1
+      }
+    },
+    "b5_o_sw_novo_tem_etiqueta_titulo_e_icones_e_o_resto_inalterado": {
+      "passou": true,
+      "detalhe": {
+        "v144": 1,
+        "uniesco": 1,
+        "icones192": 2,
+        "bfr_logo": 4,
+        "bfr_logo_base": 4
+      }
+    },
+    "b6_o_sw_novo_compila": {
+      "passou": true,
+      "detalhe": {
+        "bytes": 5210
+      }
+    },
+    "b7_embeds_reextraidos_batem_com_candidata_e_sw_novo": {
+      "passou": true,
+      "detalhe": {
+        "html": "023b18020eb7fd73b6d99f987d78c5b2",
+        "sw_igual": true
+      }
+    },
+    "b8_fora_dos_tres_embeds_o_worker_e_byte_a_byte_e_a_regua_tem_dente": {
+      "passou": true,
+      "detalhe": {
+        "antes": "80394e9f940451d85d2273214bcc9e10",
+        "depois": "80394e9f940451d85d2273214bcc9e10"
+      }
+    },
+    "b9_o_worker_novo_compila": {
+      "passou": true,
+      "detalhe": {
+        "erro": null
+      }
+    },
+    "b10_o_manifest_novo_e_UNIESCO_e_so_muda_o_que_a_marca_manda": {
+      "passou": true,
+      "detalhe": {
+        "novo": {
+          "name": "UNIESCO",
+          "short_name": "UNIESCO",
+          "description": "Portal escolar UNIESCO da Escola Benício Ferreira Reis.",
+          "lang": "pt-BR",
+          "id": "/",
+          "scope": "/",
+          "start_url": "/",
+          "display": "standalone",
+          "display_override": [
+            "standalone",
+            "minimal-ui"
+          ],
+          "background_color": "#ffffff",
+          "theme_color": "#00399b",
+          "icons": [
+            {
+              "src": "uniesco-icon-192.png",
+              "sizes": "192x192",
+              "type": "image/png",
+              "purpose": "any"
+            },
+            {
+              "src": "uniesco-icon-512.png",
+              "sizes": "512x512",
+              "type": "image/png",
+              "purpose": "any maskable"
+            }
+          ]
+        },
+        "theme_color": "#00399b"
+      }
+    },
+    "b11_a_logo_tecnica_agora_e_a_lockup_oficial_800": {
+      "passou": true,
+      "detalhe": {
+        "lido": "1a05424a578aa5340e700274252c3577",
+        "esperado": "1a05424a578aa5340e700274252c3577"
+      }
+    },
+    "b12_os_tres_icones_batem_com_o_p150": {
+      "passou": true,
+      "detalhe": {
+        "icones": [
+          "uniesco-icon-180.png",
+          "uniesco-icon-192.png",
+          "uniesco-icon-512.png"
+        ]
+      }
+    },
+    "b13_todos_os_outros_assets_byte_a_byte_com_a_base": {
+      "passou": true,
+      "detalhe": {
+        "total_base": 11,
+        "iguais": 11,
+        "diferentes_esperados": [
+          "manifest.json",
+          "bfr-app-logo.png"
+        ]
+      }
+    },
+    "b14_o_manifest_escrito_faz_parse_e_diz_UNIESCO": {
+      "passou": true,
+      "detalhe": {
+        "manifest": "{\n  \"name\": \"UNIESCO\",\n  \"short_name\": \"UNIESCO\",\n  \"description\": \"Portal escolar UNIESCO da Escola Benício Ferreira Reis.\",\n  \"lang\": \"pt-BR\",\n  \"id\": \"/\",\n  \"scope\": \"/\",\n  \"start_url\": \"/\",\n  \"dis"
+      }
+    },
+    "b15_headers_e_wrangler_identicos_a_base": {
+      "passou": true,
+      "detalhe": true
+    },
+    "b16_o_worker_do_dir_bate_com_o_desta_corrida": {
+      "passou": true,
+      "detalhe": {
+        "bytes": 3622322
+      }
+    },
+    "b17_nada_foi_publicado_por_esta_peca": {
+      "passou": true,
+      "detalhe": {
+        "diario_mais_novo": "audit-publicacao-v142.json",
+        "versao_no_ar": "142",
+        "diario_v144": false
+      }
+    }
+  },
+  "total": {
+    "ok": 16,
+    "falha": 1
+  },
+  "veredito": "P155_BUNDLE_V144B_FALHOU 16/1"
+}

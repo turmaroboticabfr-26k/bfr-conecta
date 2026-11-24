@@ -1,0 +1,46 @@
+{
+  "programa": "scripts/p154-deriva-v144b-uniesco.mjs",
+  "em": "2026-11-24T10:02:20.352Z",
+  "pergunta": "as 13 referências visíveis que a passagem delimitada da v144 nao apanhou (10 UNIESCO Conecta. + 2 BFR- protocolo + 1 comunicado BFR.) ficam UNIESCO sem tocar em mais nada?",
+  "origem": {
+    "pasta": "bfr-candidata-v144-uniesco",
+    "md5": "6f1bb41e4799ad4fd5fa9a6f7e65f715",
+    "bytes": 3557225,
+    "veredito": "P151_CANDIDATA_V144_UNIESCO_OK 16/0"
+  },
+  "destino": {
+    "pasta": "bfr-candidata-v144b-uniesco",
+    "md5": "023b18020eb7fd73b6d99f987d78c5b2",
+    "bytes": 3557157,
+    "delta_bytes": -68
+  },
+  "fronteira_antes": 13,
+  "fronteira_depois": 0,
+  "substituicoes": [
+    {
+      "nome": "uniesco_conecta_ponto",
+      "vezes": 10,
+      "delta_bytes": -80
+    },
+    {
+      "nome": "protocolo_secretaria",
+      "vezes": 1,
+      "delta_bytes": 4
+    },
+    {
+      "nome": "protocolo_comunicado",
+      "vezes": 1,
+      "delta_bytes": 4
+    },
+    {
+      "nome": "texto_erro_comunicado",
+      "vezes": 1,
+      "delta_bytes": 4
+    }
+  ],
+  "portoes": {
+    "total": 6,
+    "falhas": 0
+  },
+  "veredito": "P154_DERIVA_V144B_OK 6/0"
+}
