@@ -1508,7 +1508,7 @@ exactamente a que FALTA-2 existia para não ficar ao arbítrio de quem cola SQL.
 
 ## 5 · O que fica fora deste pacote (e porquê)
 
-1. **`INSERT` do município real.** Escrita de conteúdo, sem instrumento; é a opção 1 do §1 e pede OK próprio.
+1. **`INSERT` do município real.** Escrita de conteúdo; é a opção 1 do §1 e pede OK próprio. Adendo 24/11: o «sem instrumento» deixou de descrever o disco — a escrita passou a ter instrumento, `scripts/p144-rm52-conteudo-aplica.mjs`, e foi por ele que a semente entrou no banco a 24/11 com a frase literal dada (veredicto `P144_RM52_SEMENTE_APLICADA_E_CONFERIDA`, censo 365/12/1).
 2. **Apagar a fixture `Sao Paulo (SM8 fixture — apagar)`.** Só faz sentido depois de as concessões estarem
    apontadas para um município real; hoje apagá-la deixa 4 concessões órfãs.
 3. **A publicação da v138 — não o seu código.** Desde 20/11 a v138 pertence ao pacote: candidata
@@ -1518,6 +1518,9 @@ exactamente a que FALTA-2 existia para não ficar ao arbítrio de quem cola SQL.
    escola etiquetada os agregados devolvem zero e zero não distingue painel vazio de painel partido.
 4. **RM-5.2 (seed do calendário letivo).** Estado medido em `evidence/p73-rm52-estado-calendario-20-11.json`
    e régua de completude em `evidence/p73-rm52-regua-completude-20-11.json`; conteúdo é decisão pedagógica.
+   Adendo 24/11: a semente entrou no banco a 24/11 com a frase literal dada, por instrumento próprio (veredicto
+   `P144_RM52_SEMENTE_APLICADA_E_CONFERIDA`, censo 365/12/1); o item 1 deste §5, que descrevia a escrita como
+   «sem instrumento», tem o adendo correspondente.
 5. **PEN-42 (`register_gate_checkin_v2`).** Fora do escopo municipal.
 6. **Aplicar ou não a PEN-43 — a frase, não o caminho.** Desde 20/11 o caminho existe: preflight nos dois modos,
    peça entrada na tabela `PECAS` do aplicador, os dois SQL transaccionais com a pegada conferida contra o registo

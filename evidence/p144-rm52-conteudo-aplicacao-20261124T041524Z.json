@@ -1,0 +1,100 @@
+{
+  "programa": "scripts/p144-rm52-conteudo-aplica.mjs",
+  "peca": "RM-5.2 (semente do calendario letivo 2026)",
+  "modo": "aplicacao",
+  "em": "2026-11-24T04:15:38.543Z",
+  "duracao_ms": 15167,
+  "aplicado": true,
+  "escrito_no_banco": true,
+  "ok_literal_usado": "aplique a semente RM-5.2 no banco",
+  "frase_certificada": "aplique a semente RM-5.2 no banco",
+  "frase_do_outro_modo_nao_autoriza": "reverta a semente RM-5.2 no banco",
+  "sql_enviado": {
+    "nome": "candidata",
+    "caminho": "scripts/p144-rm52-conteudo-ddl-candidata.sql",
+    "bytes": 55168,
+    "md5": "5cfe4a53071b14d2002cfff7f6a680b2"
+  },
+  "candidata": {
+    "caminho": "scripts/p144-rm52-conteudo-ddl-candidata.sql",
+    "bytes": 55168,
+    "md5": "5cfe4a53071b14d2002cfff7f6a680b2"
+  },
+  "reversao": {
+    "caminho": "scripts/p144-rm52-conteudo-ddl-reversao.sql",
+    "bytes": 1195,
+    "md5": "535c06708e11927d5a89c4ffa3d3cf67"
+  },
+  "preflight_candidata": {
+    "modo": "candidata",
+    "registo": "C:\\Users\\pcmac\\Documents\\Qoder\\2026-10-13\\28077d9a\\bfr-conecta\\evidence\\p144-rm52-conteudo-preflight-candidata-apl20261124T041524Zc.json",
+    "veredito": "P144_RM52_PREFLIGHT_VERDE_CANDIDATA 26/0 · dias 365 · metas 12 · turnos 1 · censo 0/0/0 · conflitos 0 · 12380 ms",
+    "codigo": 0
+  },
+  "preflight_reversao": {
+    "modo": "reversao",
+    "registo": "C:\\Users\\pcmac\\Documents\\Qoder\\2026-10-13\\28077d9a\\bfr-conecta\\evidence\\p144-rm52-conteudo-preflight-reversao-apl20261124T041524Zr.json",
+    "veredito": "P144_RM52_PREFLIGHT_VERDE_REVERSAO 26/0 · dias 365 · metas 12 · turnos 1 · censo 365/12/1 · conflitos 0 · 12242 ms",
+    "codigo": 0
+  },
+  "sequencia": [
+    {
+      "ordem": 1,
+      "papel": "precondicao: as tres mesas tem de estar vazias",
+      "modo": "candidata",
+      "registo": "C:\\Users\\pcmac\\Documents\\Qoder\\2026-10-13\\28077d9a\\bfr-conecta\\evidence\\p144-rm52-conteudo-preflight-candidata-apl20261124T041524Zc.json",
+      "veredito": "P144_RM52_PREFLIGHT_VERDE_CANDIDATA 26/0 · dias 365 · metas 12 · turnos 1 · censo 0/0/0 · conflitos 0 · 12380 ms",
+      "codigo": 0
+    },
+    {
+      "ordem": 2,
+      "papel": "conferencia de saida: o conteudo semeado e o conteudo certificado",
+      "modo": "reversao",
+      "registo": "C:\\Users\\pcmac\\Documents\\Qoder\\2026-10-13\\28077d9a\\bfr-conecta\\evidence\\p144-rm52-conteudo-preflight-reversao-apl20261124T041524Zr.json",
+      "veredito": "P144_RM52_PREFLIGHT_VERDE_REVERSAO 26/0 · dias 365 · metas 12 · turnos 1 · censo 365/12/1 · conflitos 0 · 12242 ms",
+      "codigo": 0
+    }
+  ],
+  "varredura_do_sql": {
+    "alvo": {
+      "drop_table": 0,
+      "truncate": 0,
+      "update_fora_de_funcao": 0,
+      "insert_into": 378,
+      "delete_from": 0,
+      "delete_sem_guarda_de_ano": 0,
+      "drop_schema_ou_database": 0,
+      "credencial": 0
+    },
+    "contra": {
+      "drop_table": 0,
+      "truncate": 0,
+      "update_fora_de_funcao": 0,
+      "insert_into": 0,
+      "delete_from": 3,
+      "delete_sem_guarda_de_ano": 0,
+      "drop_schema_ou_database": 0,
+      "credencial": 0
+    }
+  },
+  "baselines": {
+    "antes": {
+      "schools": 6,
+      "students": 848,
+      "classes": 27,
+      "profiles": 28,
+      "staff_schools": 6
+    },
+    "depois": {
+      "schools": 6,
+      "students": 848,
+      "classes": 27,
+      "profiles": 28,
+      "staff_schools": 6
+    },
+    "inalteradas": true
+  },
+  "erro_de_escrita": null,
+  "o_que_este_registo_nao_cobre": "a publicacao de qualquer versao do ar, o A1 (bfr_confirm_school_calendar), o REVOKE dos 15+4, a etiquetagem escola-municipio, o mint/rotacao de contas e o git push: cada um pede a sua frase literal propria.",
+  "veredito": "P144_RM52_SEMENTE_APLICADA_E_CONFERIDA"
+}
