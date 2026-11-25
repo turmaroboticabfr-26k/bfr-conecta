@@ -1,0 +1,28 @@
+emissor_bytes=10820 emissor_md5=ce2f47d94f03db59178a6b31bddb9be4
+sufixos=sm68y/sm69b agulhas=-sm68y+-sm69b familia=p170-
+CLASSE nomes_com_um_sufixo=10 da_familia=8 fora_da_familia=2 do_par=4 so_um_sufixo=4
+FORA_DA_FAMILIA ["p125-portadores-fora-do-indice-21-11-sm68y.json","p125-portadores-fora-do-indice-21-11-sm69b.json"]
+SO_UM_SUFIXO ["p170-sm68n-sm68y-com-causa-declarada-log-25-11-sm69f.txt","p170-sm68n-sm68y-com-causa-declarada-registo-25-11-sm69f.json","p170-sm68n-sm68y-sem-causa-declarada-log-25-11-sm69e.txt","p170-sm68n-sm68y-sem-causa-declarada-registo-25-11-sm69e.json"]
+FICHEIRO tipo=log bytes=2521 no_nome=1+1 no_miudo=2+1 posicoes_miudo_a=[117,934] posicoes_miudo_b=[176] evidence/p170-sm68y-sm69b-com-causa-declarada-log-25-11-sm69g.txt
+FICHEIRO tipo=registo bytes=626 no_nome=1+1 no_miudo=0+0 posicoes_miudo_a=[] posicoes_miudo_b=[] evidence/p170-sm68y-sm69b-com-causa-declarada-registo-25-11-sm69g.json
+FICHEIRO tipo=log bytes=2423 no_nome=1+1 no_miudo=1+1 posicoes_miudo_a=[117] posicoes_miudo_b=[176] evidence/p170-sm68y-sm69b-sem-causa-declarada-log-25-11-sm69d.txt
+FICHEIRO tipo=registo bytes=709 no_nome=1+1 no_miudo=0+0 posicoes_miudo_a=[] posicoes_miudo_b=[] evidence/p170-sm68y-sm69b-sem-causa-declarada-registo-25-11-sm69d.json
+  FIXTURE positivo_miudo_que_nomeia_o_par_da_uma_posicao_por_sufixo esperado=1 obtido=1 bate=true
+  FIXTURE positivo_miudo_que_nomeia_o_par_b_da_uma_posicao esperado=1 obtido=1 bate=true
+  FIXTURE negativo_miudo_sem_o_par_da_zero esperado=0 obtido=0 bate=true
+  FIXTURE negativo_agulha_repetida_da_as_tres_posicoes esperado=3 obtido=3 bate=true
+  FIXTURE negativo_sufixo_sem_traco_nao_casa esperado=0 obtido=0 bate=true
+  FIXTURE positivo_portao_4_chumba_registo_que_nomeia_o_par esperado=false obtido=false bate=true
+  FIXTURE positivo_portao_4_passa_registo_sem_o_par esperado=true obtido=true bate=true
+  FIXTURE positivo_portao_3_chumba_log_sem_o_par esperado=false obtido=false bate=true
+  FIXTURE negativo_ficheiro_so_de_um_sufixo_fica_fora_da_regua_do_par esperado=1 obtido=1 bate=true
+  FIXTURE negativo_classe_so_um_sufixo_e_lista_na_classe_do_portao_1 esperado=1 obtido=1 bate=true
+  FIXTURE positivo_classe_sem_extensao_chumba_o_portao_5 esperado=false obtido=false bate=true
+PORTAO portao_1_a_classe_do_par_nao_esta_vazia = VERDE {"do_par":4,"so_um_sufixo":4,"lista_so_um":["p170-sm68n-sm68y-com-causa-declarada-log-25-11-sm69f.txt","p170-sm68n-sm68y-com-causa-declarada-registo-25-11-sm69f.json","p170-sm68n-sm68y-sem-causa-declarada-log-25-11-sm69e.txt","p170-sm68n-sm68y-sem-causa-declarada-registo-25-11-sm69e.json"]}
+PORTAO portao_2_a_soma_das_tres_classes_bate_com_o_do_par = VERDE {"registos":2,"logs":2,"sem_classe":0,"do_par":4}
+PORTAO portao_3_os_logs_do_par_nomeiam_o_par_dentro_do_miudo = VERDE {"logs":2,"com_par_dentro":["p170-sm68y-sm69b-com-causa-declarada-log-25-11-sm69g.txt","p170-sm68y-sm69b-sem-causa-declarada-log-25-11-sm69d.txt"],"sem_par":[]}
+PORTAO portao_4_os_registos_do_par_nao_nomeiam_o_par_dentro_do_miudo = VERDE {"registos":2,"com_par_dentro":[]}
+PORTAO portao_5_nenhum_ficheiro_do_par_fica_sem_classe = VERDE []
+VEREDICTO P179_OK 5/0 · 4 ficheiros do par sm68y-sm69b · 11 fixtures
+o_que_NAO_prova: que o registo do p170 devesse nomear o par (escolha de quem escreve o registo), nem que as posicoes contadas sejam o par certo -- so contam a agulha construida dos dois sufixos passados na linha de comando, e so dentro de evidence/.
+CAPTURA C:/Users/pcmac/Documents/Qoder/2026-11-15-2e9c4296/p179-sm69i.json

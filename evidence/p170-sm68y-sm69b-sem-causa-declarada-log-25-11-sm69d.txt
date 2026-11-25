@@ -1,0 +1,27 @@
+emissor_bytes=26143 emissor_md5=430272a27f3541326222553d08fa1449
+p125 a=evidence/p125-portadores-fora-do-indice-21-11-sm68y.json b=evidence/p125-portadores-fora-do-indice-21-11-sm69b.json folhas=107/107 uniao=107 divergentes=6 carimbo=1 espelho=0 grandeza=5 sem_par=0 carimbos_do_produtor=em
+   grandeza_medida contagens.lidos :: 579 -> 581
+   grandeza_medida contagens.modificados :: 0 -> 2
+   grandeza_medida contagens.no_indice :: 3485 -> 3487
+   grandeza_medida contagens.varridos :: 579 -> 581
+   carimbo_de_corrida em :: "2026-11-25T21:23:41.743Z" -> "2026-11-25T21:42:53.746Z"
+   grandeza_medida veredito :: "P125_PORTADORES_FORA_DO_INDICE_OK 6/0 · 7 portadores declarados de 579 varridos" -> "P125_PORTADORES_FORA_DO_INDICE_OK 6/0 · 7 portadores declarados de 581 varridos"
+PORTAO portao_1_as_duas_rondas_teem_os_mesmos_numeros_de_peca = VERDE {"pares":1,"sufixo_a":"sm68y","sufixo_b":"sm69b"}
+PORTAO portao_2_cada_folha_tem_par_na_outra_ronda = VERDE {"so_em_a":0,"so_em_b":0}
+PORTAO portao_3_os_carimbos_foram_lidos_do_produtor = VERDE ["p125=em"]
+PORTAO portao_4_todo_carimbo_de_corrida_e_selo_iso = VERDE {"carimbos_divergentes":1,"sem_selo":5}
+PORTAO portao_5_nenhuma_grandeza_diverge_sem_declaracao = VERMELHO ["p125/contagens.lidos","p125/contagens.modificados","p125/contagens.no_indice","p125/contagens.varridos","p125/veredito"]
+PORTAO portao_6_nenhuma_grandeza_declarada_que_nao_divergiu = VERDE []
+PORTAO portao_7_a_causa_declarada_bate_ou_nao_ha_causa_declaravel = VERMELHO {"ramo":"causa_por_declarar","folhas_numericas_divergentes":4,"lista":["p125/contagens.lidos","p125/contagens.modificados","p125/contagens.no_indice","p125/contagens.varridos"]}
+VEREDICTO P170_VERMELHO 2/7
+file:///C:/Users/pcmac/Documents/Qoder/2026-10-13/28077d9a/bfr-conecta/scripts/p170-conferencia-de-duas-corridas.mjs:405
+  throw new Error('ABORTA: ' + corpo.veredicto + ' -- registo vermelho em ' + destino);
+        ^
+
+Error: ABORTA: P170_VERMELHO 2/7 -- registo vermelho em C:/Users/pcmac/Documents/Qoder/2026-11-15-2e9c4296/p170-sm69d.json-VERMELHO.json
+    at file:///C:/Users/pcmac/Documents/Qoder/2026-10-13/28077d9a/bfr-conecta/scripts/p170-conferencia-de-duas-corridas.mjs:405:9
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:643:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)
+
+Node.js v24.18.1

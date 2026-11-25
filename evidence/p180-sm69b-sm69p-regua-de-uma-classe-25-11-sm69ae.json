@@ -1,0 +1,71 @@
+{
+ "o_que_prova": "que os caminhos nao-versionados com mtime na janela aberta pelos dois carimbos `em` sao exactamente tantos como o delta de `varridos` e como o delta de `nao_versionados` entre os dois registos do p125",
+ "o_que_NAO_prova": "que mtime seja origem de conteudo: um ficheiro editado sem mudar mtime, ou criado e apagado dentro da janela, nao e visto aqui; nem prova que os caminhos da janela sejam a unica causa possivel do delta, apenas que a contagem bate",
+ "sufixos": [
+  "sm69b",
+  "sm69p"
+ ],
+ "em_a": "2026-11-25T21:42:53.746Z",
+ "em_b": "2026-11-25T22:34:30.415Z",
+ "contagens_a": {
+  "varridos": 581,
+  "lidos": 581,
+  "portadores": 7,
+  "casamentos": 74,
+  "declarados": 7,
+  "nao_versionados": 579,
+  "modificados": 2,
+  "no_indice": 3487
+ },
+ "contagens_b": {
+  "varridos": 598,
+  "lidos": 598,
+  "portadores": 7,
+  "casamentos": 74,
+  "declarados": 7,
+  "nao_versionados": 596,
+  "modificados": 2,
+  "no_indice": 3487
+ },
+ "delta_varridos": 17,
+ "delta_nao_versionados": 17,
+ "caminhos_da_janela": [
+  "evidence/p116-consistencia-de-versao-21-11-sm69n.json",
+  "evidence/p116-consistencia-de-versao-21-11-sm69n.txt",
+  "evidence/p116-selfteste-21-11.json",
+  "evidence/p125-portadores-fora-do-indice-21-11-sm69b.json",
+  "evidence/p133-inventario-das-pendencias-abertas-22-11-sm69o.json",
+  "evidence/p170-sm68n-sm68y-com-causa-declarada-log-25-11-sm69f.txt",
+  "evidence/p170-sm68n-sm68y-com-causa-declarada-registo-25-11-sm69f.json",
+  "evidence/p170-sm68n-sm68y-sem-causa-declarada-log-25-11-sm69e.txt",
+  "evidence/p170-sm68n-sm68y-sem-causa-declarada-registo-25-11-sm69e.json",
+  "evidence/p170-sm68y-sm69b-com-causa-declarada-log-25-11-sm69g.txt",
+  "evidence/p170-sm68y-sm69b-com-causa-declarada-registo-25-11-sm69g.json",
+  "evidence/p170-sm68y-sm69b-sem-causa-declarada-log-25-11-sm69d.txt",
+  "evidence/p170-sm68y-sm69b-sem-causa-declarada-registo-25-11-sm69d.json",
+  "evidence/p179-onde-vive-o-nome-do-par-25-11-sm69h.txt",
+  "evidence/p179-onde-vive-o-nome-do-par-25-11-sm69i.txt",
+  "evidence/p179-selfteste-onde-vive-o-nome-do-par-25-11-sm69h.txt",
+  "scripts/p179-onde-vive-o-nome-do-par.cjs"
+ ],
+ "emissor_bytes": 10608,
+ "emissor_md5": "9ac0bd39aaaac3efb637e3076d00db5c",
+ "portoes": [
+  {
+   "nome": "os_dois_registos_foram_lidos_com_em_e_contagens",
+   "ok": true
+  },
+  {
+   "nome": "o_delta_de_varridos_bate_com_o_numero_de_caminhos_da_janela",
+   "ok": true
+  },
+  {
+   "nome": "o_delta_de_nao_versionados_bate_com_o_mesmo_numero",
+   "ok": true
+  },
+  {
+   "nome": "a_lista_da_janela_imprime_se_a_janela_for_vazia",
+   "ok": true
+  }
+ ]
+}

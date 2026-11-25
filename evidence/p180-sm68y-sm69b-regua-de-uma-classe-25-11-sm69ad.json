@@ -1,0 +1,55 @@
+{
+ "o_que_prova": "que os caminhos nao-versionados com mtime na janela aberta pelos dois carimbos `em` sao exactamente tantos como o delta de `varridos` e como o delta de `nao_versionados` entre os dois registos do p125",
+ "o_que_NAO_prova": "que mtime seja origem de conteudo: um ficheiro editado sem mudar mtime, ou criado e apagado dentro da janela, nao e visto aqui; nem prova que os caminhos da janela sejam a unica causa possivel do delta, apenas que a contagem bate",
+ "sufixos": [
+  "sm68y",
+  "sm69b"
+ ],
+ "em_a": "2026-11-25T21:23:41.743Z",
+ "em_b": "2026-11-25T21:42:53.746Z",
+ "contagens_a": {
+  "varridos": 579,
+  "lidos": 579,
+  "portadores": 7,
+  "casamentos": 74,
+  "declarados": 7,
+  "nao_versionados": 579,
+  "modificados": 0,
+  "no_indice": 3485
+ },
+ "contagens_b": {
+  "varridos": 581,
+  "lidos": 581,
+  "portadores": 7,
+  "casamentos": 74,
+  "declarados": 7,
+  "nao_versionados": 579,
+  "modificados": 2,
+  "no_indice": 3487
+ },
+ "delta_varridos": 2,
+ "delta_nao_versionados": 0,
+ "caminhos_da_janela": [
+  "evidence/p178-portao-da-portaria-sm69a.json"
+ ],
+ "emissor_bytes": 10608,
+ "emissor_md5": "9ac0bd39aaaac3efb637e3076d00db5c",
+ "portoes": [
+  {
+   "nome": "os_dois_registos_foram_lidos_com_em_e_contagens",
+   "ok": true
+  },
+  {
+   "nome": "o_delta_de_varridos_bate_com_o_numero_de_caminhos_da_janela",
+   "ok": false
+  },
+  {
+   "nome": "o_delta_de_nao_versionados_bate_com_o_mesmo_numero",
+   "ok": false
+  },
+  {
+   "nome": "a_lista_da_janela_imprime_se_a_janela_for_vazia",
+   "ok": true
+  }
+ ]
+}

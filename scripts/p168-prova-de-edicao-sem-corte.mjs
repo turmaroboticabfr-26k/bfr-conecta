@@ -4,6 +4,7 @@
 //      node scripts/p168-prova-de-edicao-sem-corte.mjs --medir
 //      node scripts/p168-prova-de-edicao-sem-corte.mjs <captura> --acrescimo --espera "<cabecalho esperado>"
 //      node scripts/p168-prova-de-edicao-sem-corte.mjs <captura> --acrescimo-com-substituicao --espera "<cabecalho esperado>"
+//      node scripts/p168-prova-de-edicao-sem-corte.mjs <captura> --so-linha-tocada --espera "<frase que ha-de ler-se na linha>"
 //      node scripts/p168-prova-de-edicao-sem-corte.mjs --portao-a3
 //      node scripts/p168-prova-de-edicao-sem-corte.mjs --duo <captura>
 // Toda a saida leva a pegada do emissor (bytes e md5 deste ficheiro, lidos do disco) e fecha-se com `cifras_em_duo=0`,
@@ -36,8 +37,10 @@ const flagDe = (nome) => {
 };
 const flagAcrescimo = process.argv.includes('--acrescimo');
 const flagMista = process.argv.includes('--acrescimo-com-substituicao');
-if (flagAcrescimo && flagMista) throw new Error('ABORTA: as duas flags de classe foram passadas juntas, o predicado escolhido nao pode depender da ordem do codigo');
-const CLASSE = flagMista ? 'acrescimo_no_fim_com_uma_linha_tocada' : flagAcrescimo ? 'acrescimo_no_fim' : 'substituicao_de_uma_linha';
+const flagSoTocada = process.argv.includes('--so-linha-tocada');
+const flagsDeClasse = [flagAcrescimo, flagMista, flagSoTocada].filter(Boolean).length;
+if (flagsDeClasse > 1) throw new Error('ABORTA: mais de uma flag de classe foi passada, o predicado escolhido nao pode depender da ordem do codigo');
+const CLASSE = flagMista ? 'acrescimo_no_fim_com_uma_linha_tocada' : flagAcrescimo ? 'acrescimo_no_fim' : flagSoTocada ? 'linha_tocada_sem_acrescimo' : 'substituicao_de_uma_linha';
 const ESPERA = flagDe('--espera');
 // A pegada do emissor e identidade do codigo que corre, nao alegacao estavel: envelhece a cada edicao desta peça.
 // Por isso vive na captura e nunca na prosa, e le-se com o mesmo metodo do p169 (bytes e md5 do proprio ficheiro).
@@ -226,6 +229,30 @@ function analisa(headTexto, discoTexto, soMedir, opcao) {
     chk('portao_C8_a_primeira_linha_nova_com_conteudo_traz_a_expectativa', primeiraComConteudo(novas).indexOf(espera) >= 0, { primeira_com_conteudo: primeiraComConteudo(novas).slice(0, 60), espera: espera });
     return { linhas, portoes, indiceDaLinha: c, acrescentadas: novas.length, classe: classe };
   }
+  // A quarta classe e a forma duma correccao de uma frase a meio duma linha ja comitada, sem bloco novo no fim. As
+  // outras tres nao a medem, e isso foi medido antes de escrito: na classe de substituicao o portao_2 exige mais de
+  // uma linha no miolo, por isso uma linha crescida no sitio da-lhe VERMELHO com zero cortes (corrida verificada com
+  // --medir); na mista o portao_C2 exige acrescimo depois do head; na de acrescimo puro o portao_A1 exige head
+  // integral. Alargar qualquer um dos tres seria mover uma regua que ja tem fixture, pelo que o que faltava era o
+  // predicado propio, julgado por INDICE e com o numero de linhas conferido.
+  if (classe === 'linha_tocada_sem_acrescimo') {
+    if (espera === null || espera === undefined) throw new Error('ABORTA: a classe de linha tocada sem acrescimo exige a expectativa declarada, senao o verde nao tem o que medir');
+    const dif = [];
+    for (let i = 0; i < H.length; i++) if (H[i] !== D[i]) dif.push(i);
+    const c = dif.length === 1 ? dif[0] : -1;
+    const par = parDeCaudas(c < 0 ? '' : H[c], c < 0 ? '' : D[c]);
+    const caudaTocada = par.caudaOld;
+    const emHeadTocada = H.filter((l) => l.includes(caudaTocada)).length;
+    linhas.push('classe_da_edicao=' + classe + ' indices_de_head_diferentes_do_disco=' + JSON.stringify(dif) + ' linha_tocada_no_indice=' + c);
+    linhas.push('coluna_de_divergencia_na_linha_tocada=' + par.comum + ' bytes_da_cauda_substituida=' + Buffer.byteLength(caudaTocada, 'utf8') + ' bytes_da_cauda_nova=' + Buffer.byteLength(par.caudaNew, 'utf8'));
+    chk('portao_T1_uma_unica_linha_de_head_diferente_do_disco', dif.length === 1, { indices: dif, head: H.length, disco: D.length });
+    chk('portao_T2_o_numero_de_linhas_nao_se_mexe', D.length === H.length, { head: H.length, disco: D.length });
+    chk('portao_T3_a_linha_tocada_mantem_cabeca_nao_vazia', par.comum > 0, par.comum);
+    chk('portao_T4_a_substituida_dentro_da_linha_nao_vazia', caudaTocada.length > 0, Buffer.byteLength(caudaTocada, 'utf8'));
+    chk('portao_T5_a_frase_substituida_e_unica_no_head', emHeadTocada === 1, emHeadTocada);
+    chk('portao_T6_a_linha_tocada_traz_a_expectativa_declarada', par.caudaNew.indexOf(espera) >= 0, { espera: espera, coluna_da_cauda_nova: par.caudaNew.indexOf(espera) });
+    return { linhas, portoes, indiceDaLinha: c, acrescentadas: D.length - H.length, classe: classe };
+  }
   linhas.push('classe_da_edicao=' + classe);
   linhas.push('MEDIDA_linhas_de_head_fora_da_tocada_que_nao_aparecem_no_disco=' + H.filter((l, i) => i !== p && !setD.has(l)).length + ' (medida, nao portao: um corte noutra linha faz o portao_1 abortar antes, por isso aqui nao ha positivo possivel)');
   chk('portao_1_uma_unica_linha_de_head_alterada', meioH.length === 1, meioH.length);
@@ -265,6 +292,7 @@ if (process.argv.includes('--fixtures')) {
   const ok = velho.slice(0, corte) + ' SUBSTITUICAO DO RESTO DA FRASE.';
   const AC = { classe: 'acrescimo_no_fim', espera: 'SM.57. cabecalho do bloco' };
   const CC = { classe: 'acrescimo_no_fim_com_uma_linha_tocada', espera: 'SM.57. cabecalho do bloco' };
+  const TD = { classe: 'linha_tocada_sem_acrescimo', espera: 'SUBSTITUICAO DO RESTO DA FRASE.' };
   const FIM = '\nSM.57. cabecalho do bloco\nitem um do bloco';
   // O diff da classe mista: a linha 35 reescrita no sitio, sem linhas inseridas ao lado, e o bloco só depois do fim
   // do head. e exactamente a forma dum fecho de ronda neste diario, por isso os casos dela constroem-se daqui.
@@ -301,6 +329,17 @@ if (process.argv.includes('--fixtures')) {
     ['C9_primeira_linha_nova_solta_antes_do_cabecalho', headTxt(null), tocada + '\nparagrafo solto\nSM.57. cabecalho do bloco', true, 'portao_C8', CC],
     ['C10_classe_sem_expectativa_declara_da_aborta', headTxt(null), tocada + FIM, true, 'ABORTA: a classe de acrescimo com linha tocada exige', { classe: 'acrescimo_no_fim_com_uma_linha_tocada', espera: null }],
     ['C11_sem_edicao_pendente_o_disco_igual_a_cabeca_na_classe_mista', headTxt(null), headTxt(null), true, 'ABORTA_SEM_EDICAO_PENDENTE', CC],
+    // A quarta classe nos dois sentidos: o positivo e cada uma das seis portas vermelhas com o seu caso proprio, e o
+    // caso que e Verde na classe mista mas vermelho aqui (acrescimo depois do head) e o que prova que as duas nao sao
+    // a mesma régua.
+    ['D1_positivo_linha_crescida_no_sitio_sem_acrescimo', headTxt(null), headTxt(null).replace(velho, ok), false, '-', TD],
+    ['D2_duas_linhas_de_head_diferentes_do_disco', headTxt(null), headTxt(null).replace(velho, ok).replace(base[10], base[10] + ' OUTRA TOCADA'), true, 'portao_T1', TD],
+    ['D3_acrescimo_depois_de_todo_o_head_nao_e_esta_classe', headTxt(null), headTxt(null).replace(velho, ok) + FIM, true, 'portao_T2', TD],
+    ['D4_linha_reescrita_desde_o_primeiro_byte', headTxt(null), headTxt(null).replace(velho, 'W' + velho.slice(1)), true, 'portao_T3', TD],
+    ['D5_acrescimo_puro_no_fim_da_linha_tocada', headTxt(null), headTxt(null).replace(velho, velho + ' acrescimo puro no fim'), true, 'portao_T4', TD],
+    ['D6_frase_antiga_em_duas_linhas_do_head', headTxt(cauda), headTxt(cauda).replace(velho, ok), true, 'portao_T5', TD],
+    ['D7_linha_tocada_sem_a_expectativa_declarada', headTxt(null), headTxt(null).replace(velho, velho.slice(0, corte) + ' OUTRA FRASE QUALQUER'), true, 'portao_T6', TD],
+    ['D8_classe_sem_expectativa_declara_da_aborta', headTxt(null), headTxt(null).replace(velho, ok), true, 'ABORTA: a classe de linha tocada sem acrescimo exige', { classe: 'linha_tocada_sem_acrescimo', espera: null }],
   ];
   const saida = [];
   const veredictos = [];

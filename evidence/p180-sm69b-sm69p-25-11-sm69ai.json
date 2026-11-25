@@ -1,0 +1,78 @@
+{
+ "o_que_prova": "que, com o indice parado entre os dois registos do p125, o delta de `nao_versionados` e exactamente o numero de caminhos nao-versionados com mtime na janela aberta pelos dois carimbos `em`; e que, mexendo-se o indice, a corrida nomeia e conta a classe dos caminhos versionados na mesma janela",
+ "o_que_NAO_prova": "que mtime seja data de entrada no indice — um caminho editado antes da janela e `git add` dentro dela nao e visto, e um caminho apagado dentro da janela desaparece das duas listas; prova contagens do instante, nao a historia do indice",
+ "sufixos": [
+  "sm69b",
+  "sm69p"
+ ],
+ "em_a": "2026-11-25T21:42:53.746Z",
+ "em_b": "2026-11-25T22:34:30.415Z",
+ "contagens_a": {
+  "varridos": 581,
+  "lidos": 581,
+  "portadores": 7,
+  "casamentos": 74,
+  "declarados": 7,
+  "nao_versionados": 579,
+  "modificados": 2,
+  "no_indice": 3487
+ },
+ "contagens_b": {
+  "varridos": 598,
+  "lidos": 598,
+  "portadores": 7,
+  "casamentos": 74,
+  "declarados": 7,
+  "nao_versionados": 596,
+  "modificados": 2,
+  "no_indice": 3487
+ },
+ "delta_varridos": 17,
+ "delta_nao_versionados": 17,
+ "delta_modificados": 0,
+ "delta_no_indice": 0,
+ "janela_nao_versionados": [
+  "evidence/p116-consistencia-de-versao-21-11-sm69n.json",
+  "evidence/p116-consistencia-de-versao-21-11-sm69n.txt",
+  "evidence/p116-selfteste-21-11.json",
+  "evidence/p125-portadores-fora-do-indice-21-11-sm69b.json",
+  "evidence/p133-inventario-das-pendencias-abertas-22-11-sm69o.json",
+  "evidence/p170-sm68n-sm68y-com-causa-declarada-log-25-11-sm69f.txt",
+  "evidence/p170-sm68n-sm68y-com-causa-declarada-registo-25-11-sm69f.json",
+  "evidence/p170-sm68n-sm68y-sem-causa-declarada-log-25-11-sm69e.txt",
+  "evidence/p170-sm68n-sm68y-sem-causa-declarada-registo-25-11-sm69e.json",
+  "evidence/p170-sm68y-sm69b-com-causa-declarada-log-25-11-sm69g.txt",
+  "evidence/p170-sm68y-sm69b-com-causa-declarada-registo-25-11-sm69g.json",
+  "evidence/p170-sm68y-sm69b-sem-causa-declarada-log-25-11-sm69d.txt",
+  "evidence/p170-sm68y-sm69b-sem-causa-declarada-registo-25-11-sm69d.json",
+  "evidence/p179-onde-vive-o-nome-do-par-25-11-sm69h.txt",
+  "evidence/p179-onde-vive-o-nome-do-par-25-11-sm69i.txt",
+  "evidence/p179-selfteste-onde-vive-o-nome-do-par-25-11-sm69h.txt",
+  "scripts/p179-onde-vive-o-nome-do-par.cjs"
+ ],
+ "janela_versionados": [],
+ "emissor_bytes": 13287,
+ "emissor_md5": "9e803cb1a4dbb94ac6a2450143b551bc",
+ "portoes": [
+  {
+   "nome": "os_dois_registos_foram_lidos_com_em_e_as_quatro_contagens",
+   "ok": true
+  },
+  {
+   "nome": "em_ambos_os_registos_varridos_bate_com_nao_versionados_mais_modificados",
+   "ok": true
+  },
+  {
+   "nome": "com_o_indice_parado_o_delta_de_nao_versionados_bate_com_a_janela_dos_nao_versionados",
+   "ok": true
+  },
+  {
+   "nome": "quando_o_indice_se_mexeu_a_classe_da_janela_versionada_e_impressa",
+   "ok": true
+  },
+  {
+   "nome": "a_janela_vazia_tem_marcador_e_a_janela_cheia_tem_lista",
+   "ok": true
+  }
+ ]
+}

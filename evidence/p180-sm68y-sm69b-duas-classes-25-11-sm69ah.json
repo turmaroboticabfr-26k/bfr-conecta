@@ -1,0 +1,65 @@
+{
+ "o_que_prova": "que, com o indice parado entre os dois registos do p125, o delta de `nao_versionados` e exactamente o numero de caminhos nao-versionados com mtime na janela aberta pelos dois carimbos `em`; e que, mexendo-se o indice, a corrida nomeia e conta a classe dos caminhos versionados na mesma janela",
+ "o_que_NAO_prova": "que mtime seja data de entrada no indice — um caminho editado antes da janela e `git add` dentro dela nao e visto, e um caminho apagado dentro da janela desaparece das duas listas; prova contagens do instante, nao a historia do indice",
+ "sufixos": [
+  "sm68y",
+  "sm69b"
+ ],
+ "em_a": "2026-11-25T21:23:41.743Z",
+ "em_b": "2026-11-25T21:42:53.746Z",
+ "contagens_a": {
+  "varridos": 579,
+  "lidos": 579,
+  "portadores": 7,
+  "casamentos": 74,
+  "declarados": 7,
+  "nao_versionados": 579,
+  "modificados": 0,
+  "no_indice": 3485
+ },
+ "contagens_b": {
+  "varridos": 581,
+  "lidos": 581,
+  "portadores": 7,
+  "casamentos": 74,
+  "declarados": 7,
+  "nao_versionados": 579,
+  "modificados": 2,
+  "no_indice": 3487
+ },
+ "delta_varridos": 2,
+ "delta_nao_versionados": 0,
+ "delta_modificados": 2,
+ "delta_no_indice": 2,
+ "janela_nao_versionados": [
+  "evidence/p178-portao-da-portaria-sm69a.json"
+ ],
+ "janela_versionados": [
+  "evidence/p125-portadores-fora-do-indice-21-11-sm68y.json",
+  "scripts/p168-prova-de-edicao-sem-corte.mjs"
+ ],
+ "emissor_bytes": 13287,
+ "emissor_md5": "9e803cb1a4dbb94ac6a2450143b551bc",
+ "portoes": [
+  {
+   "nome": "os_dois_registos_foram_lidos_com_em_e_as_quatro_contagens",
+   "ok": true
+  },
+  {
+   "nome": "em_ambos_os_registos_varridos_bate_com_nao_versionados_mais_modificados",
+   "ok": true
+  },
+  {
+   "nome": "com_o_indice_parado_o_delta_de_nao_versionados_bate_com_a_janela_dos_nao_versionados",
+   "ok": true
+  },
+  {
+   "nome": "quando_o_indice_se_mexeu_a_classe_da_janela_versionada_e_impressa",
+   "ok": true
+  },
+  {
+   "nome": "a_janela_vazia_tem_marcador_e_a_janela_cheia_tem_lista",
+   "ok": true
+  }
+ ]
+}

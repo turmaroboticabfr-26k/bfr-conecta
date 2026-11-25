@@ -1,0 +1,27 @@
+JANELA sm69b -> sm69p em_a=2026-11-25T21:42:53.746Z em_b=2026-11-25T22:34:30.415Z
+CONTAS a={"varridos":581,"lidos":581,"portadores":7,"casamentos":74,"declarados":7,"nao_versionados":579,"modificados":2,"no_indice":3487} b={"varridos":598,"lidos":598,"portadores":7,"casamentos":74,"declarados":7,"nao_versionados":596,"modificados":2,"no_indice":3487}
+DELTA varridos=17 nao_versionados=17 modificados=0 no_indice=0
+  JanelaNAOVER 1/17 evidence/p116-consistencia-de-versao-21-11-sm69n.json
+  JanelaNAOVER 2/17 evidence/p116-consistencia-de-versao-21-11-sm69n.txt
+  JanelaNAOVER 3/17 evidence/p116-selfteste-21-11.json
+  JanelaNAOVER 4/17 evidence/p125-portadores-fora-do-indice-21-11-sm69b.json
+  JanelaNAOVER 5/17 evidence/p133-inventario-das-pendencias-abertas-22-11-sm69o.json
+  JanelaNAOVER 6/17 evidence/p170-sm68n-sm68y-com-causa-declarada-log-25-11-sm69f.txt
+  JanelaNAOVER 7/17 evidence/p170-sm68n-sm68y-com-causa-declarada-registo-25-11-sm69f.json
+  JanelaNAOVER 8/17 evidence/p170-sm68n-sm68y-sem-causa-declarada-log-25-11-sm69e.txt
+  JanelaNAOVER 9/17 evidence/p170-sm68n-sm68y-sem-causa-declarada-registo-25-11-sm69e.json
+  JanelaNAOVER 10/17 evidence/p170-sm68y-sm69b-com-causa-declarada-log-25-11-sm69g.txt
+  JanelaNAOVER 11/17 evidence/p170-sm68y-sm69b-com-causa-declarada-registo-25-11-sm69g.json
+  JanelaNAOVER 12/17 evidence/p170-sm68y-sm69b-sem-causa-declarada-log-25-11-sm69d.txt
+  JanelaNAOVER 13/17 evidence/p170-sm68y-sm69b-sem-causa-declarada-registo-25-11-sm69d.json
+  JanelaNAOVER 14/17 evidence/p179-onde-vive-o-nome-do-par-25-11-sm69h.txt
+  JanelaNAOVER 15/17 evidence/p179-onde-vive-o-nome-do-par-25-11-sm69i.txt
+  JanelaNAOVER 16/17 evidence/p179-selfteste-onde-vive-o-nome-do-par-25-11-sm69h.txt
+  JanelaNAOVER 17/17 scripts/p179-onde-vive-o-nome-do-par.cjs
+PORTAO os_dois_registos_foram_lidos_com_em_e_as_quatro_contagens = VERDE {"em_a":"2026-11-25T21:42:53.746Z","em_b":"2026-11-25T22:34:30.415Z"}
+PORTAO em_ambos_os_registos_varridos_bate_com_nao_versionados_mais_modificados = VERDE {"batem_a":true,"batem_b":true}
+PORTAO com_o_indice_parado_o_delta_de_nao_versionados_bate_com_a_janela_dos_nao_versionados = VERDE {"delta_no_indice":0,"delta_nao_versionados":17,"janela_nao_versionados":17}
+PORTAO quando_o_indice_se_mexeu_a_classe_da_janela_versionada_e_impressa = VERDE {"delta_no_indice":0,"janela_versionados":0,"impressa":false}
+PORTAO a_janela_vazia_tem_marcador_e_a_janela_cheia_tem_lista = VERDE {"janela_nao_versionados":17,"janela_versionados":0,"lista_impressa":true,"marcador_vazio_impresso":false}
+P180_CAPTURE C:/Users/pcmac/Documents/Qoder/2026-11-15-2e9c4296/p180-sm69b-sm69p-sm69ai.json
+P180_JANELA_OK 5/0 · sm69b-sm69p · janela_nao_ver=17 janela_ver=0
