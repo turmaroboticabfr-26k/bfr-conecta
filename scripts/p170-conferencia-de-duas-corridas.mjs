@@ -1,5 +1,7 @@
 // Conferencia de DUAS corridas dos mesmos registos de portao: o que diverge e carimbo de corrida, espelho da outra
 // ronda, ou grandeza medida? So a terceira classe precisa de declaracao, e a declaracao e vigiada nos dois sentidos.
+// A causa (portao 7) tem duas faces medidas: se alguma folha numerica de grandeza medida divergiu, a causa tem de ser
+// declarada e bater por contagem; se nenhuma divergiu, exigir causa nao tem positivo e o portao julga o zero medido.
 // Uso: node scripts/p170-conferencia-de-duas-corridas.mjs <sufixoA> <sufixoB> [--tolerada p125/contagens.no_indice] [--causa p125/contagens.no_indice] [--captura <caminho>]
 //      node scripts/p170-conferencia-de-duas-corridas.mjs --fixtures
 // Os nomes dos campos de carimbo sao lidos da fonte do produtor; a pieza aborta se nao os ler.
@@ -187,9 +189,16 @@ function portoes(res, opts) {
     { carimbos_divergentes: pares.reduce((n, p) => n + p.por_classe.carimbo_de_corrida, 0), sem_selo: foraDasClasses.length });
   chk('portao_5_nenhuma_grandeza_diverge_sem_declaracao', naoDeclaradas.length === 0, naoDeclaradas);
   chk('portao_6_nenhuma_grandeza_declarada_que_nao_divergiu', declaradasQueNaoDivergiram.length === 0, declaradasQueNaoDivergiram);
-  chk('portao_7_a_causa_declarada_bate_por_contagem',
-    opts.causa === null ? false : !!res.causa && res.causa.bate === true,
-    res.causa ? { folha: res.causa.folha, delta: res.causa.delta, registos_a_no_indice: res.causa.registos_a_no_indice, bate: res.causa.bate } : 'nenhuma causa declarada');
+  // Duas faces, uma por eixo: quando ha uma folha numerica de grandeza medida que divergiu, a causa e obrigatoria e
+  // tem de bater; quando nao ha nenhuma, exigir causa nao tem positivo nenhum -- o ramo velho chumbava para sempre
+  // a ronda limpia (medido a 25/11 na comparacao sm63a/sm66a, em que so o selo divergiu e o portao 7 deu 1/7).
+  const divergentesNumericas = [];
+  for (const p of pares) for (const d of p.lista) if (d.classe === 'grandeza_medida' && typeof d.a === 'number' && typeof d.b === 'number') divergentesNumericas.push(p.id + '/' + d.folha);
+  chk('portao_7_a_causa_declarada_bate_ou_nao_ha_causa_declaravel',
+    opts.causa !== null ? (!!res.causa && res.causa.bate === true) : divergentesNumericas.length === 0,
+    opts.causa !== null
+      ? (res.causa ? { ramo: 'causa_declarada', folha: res.causa.folha, delta: res.causa.delta, registos_a_no_indice: res.causa.registos_a_no_indice, bate: res.causa.bate } : { ramo: 'causa_declarada_sem_causa_medida' })
+      : { ramo: divergentesNumericas.length === 0 ? 'nenhuma_folha_numeric_de_grandeza_medida_divergiu' : 'causa_por_declarar', folhas_numericas_divergentes: divergentesNumericas.length, lista: divergentesNumericas });
   return saida;
 }
 
@@ -296,6 +305,17 @@ function fixtures() {
   ok('negativo_grandeza_sem_declaracao_chumba_o_cinco', false, (v3m.find((p) => p.portao === 'portao_5_nenhuma_grandeza_diverge_sem_declaracao') || {}).verde);
   const v3d = portoes(res3, { sufixoA: 'xa', sufixoB: 'xb', toleradas: ['p3/contagens.outra'], causa: 'p3/contagens.no_indice' });
   ok('negativo_declaracao_que_nao_divergiu_chumba_o_seis', false, (v3d.find((p) => p.portao === 'portao_6_nenhuma_grandeza_declarada_que_nao_divergiu') || {}).verde);
+  // As duas faces da AUSENCIA de causa: o ramo novo so tem direito a existir se o velho continuar a morder. p1 e o
+  // par em que apenas o selo diverge (nenhuma folha numerica de grandeza medida); p3 e o par em que `contagens.no_indice`
+  // divergiu e a causa nao foi declarada -- esse tem de continuar VERMELHO, senao o afrouxamento nao teria dente.
+  const NOME7 = 'portao_7_a_causa_declarada_bate_ou_nao_ha_causa_declaravel';
+  const v7semNada = portoes({ pares: [p1], causa: null }, { sufixoA: 'xa', sufixoB: 'xb', toleradas: [], causa: null });
+  ok('positivo_ronda_sem_folha_numeric_divergente_nao_exige_causa', true, (v7semNada.find((p) => p.portao === NOME7) || {}).verde);
+  ok('positivo_o_ramo_de_zero_folhas_e_impresso_com_a_lista', 0, (v7semNada.find((p) => p.portao === NOME7) || {}).valor.folhas_numericas_divergentes);
+  const v7semCausa = portoes({ pares: [p3], causa: null }, { sufixoA: 'xa', sufixoB: 'xb', toleradas: ['p3/contagens.no_indice'], causa: null });
+  ok('negativo_folha_numeric_divergente_sem_causa_chumba_o_sete', false, (v7semCausa.find((p) => p.portao === NOME7) || {}).verde);
+  ok('negativo_o_ramo_de_causa_por_declarar_nomeia_a_folha', 'p3/contagens.no_indice',
+    ((v7semCausa.find((p) => p.portao === NOME7) || {}).valor.lista || []).join('+'));
   const RA = { em: '2026-01-01T00:00:00.000Z', metodo: 'm', extra: 1 };
   const p4 = compararPar(4, 'evidence/p4-r-xa.json', RA, 'evidence/p4-r-xb.json', B, opts, carimbos, selos);
   ok('negativo_folha_so_num_lado_chumba_o_dois', 1, p4.so_em_a.length);
@@ -332,6 +352,10 @@ function portoesDeFixtures(casos) {
     ['positivo_os_sete_portoes_verdes_neste_par', 'negativo_grandeza_sem_declaracao_chumba_o_cinco',
       'negativo_declaracao_que_nao_divergiu_chumba_o_seis', 'negativo_folha_so_num_lado_chumba_o_dois',
       'negativo_produtor_sem_carimbo_aborta'].every((n) => casos.find((c) => c.nome === n).bate), 5);
+  chk('fixture_a_ausencia_de_causa_tem_as_duas_faces',
+    ['positivo_ronda_sem_folha_numeric_divergente_nao_exige_causa', 'positivo_o_ramo_de_zero_folhas_e_impresso_com_a_lista',
+      'negativo_folha_numeric_divergente_sem_causa_chumba_o_sete', 'negativo_o_ramo_de_causa_por_declarar_nomeia_a_folha']
+      .every((n) => casos.find((c) => c.nome === n).bate), 4);
   chk('fixture_a_leitura_da_fonte_e_o_nome_do_registo_disparam',
     ['positivo_leitura_de_carimbo_da_fonte', 'positivo_duas_chaves_na_mesma_linha_fica_a_do_selo',
       'negativo_linha_sem_chave_antes_do_selo_nao_inventa', 'negativo_fonte_sem_carimbo_da_conjunto_vazio',

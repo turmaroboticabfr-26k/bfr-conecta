@@ -1,0 +1,94 @@
+{
+ "modo": "medida",
+ "sufixo_a": "sm63a",
+ "sufixo_b": "sm66a",
+ "selos_iso_contados": 2,
+ "pares": [
+  {
+   "id": "p133",
+   "caminho_a": "evidence/p133-inventario-das-pendencias-abertas-22-11-sm63a.json",
+   "caminho_b": "evidence/p133-inventario-das-pendencias-abertas-22-11-sm66a.json",
+   "folhas_a": 888,
+   "folhas_b": 888,
+   "uniao_de_folhas": 888,
+   "so_em_a": [],
+   "so_em_b": [],
+   "divergentes": 1,
+   "por_classe": {
+    "carimbo_de_corrida": 1,
+    "espelho_da_ronda": 0,
+    "grandeza_medida": 0
+   },
+   "lista": [
+    {
+     "folha": "em",
+     "classe": "carimbo_de_corrida",
+     "a": "2026-11-25T09:12:48.699Z",
+     "b": "2026-11-25T17:12:42.750Z"
+    }
+   ],
+   "carimbos_lidos_do_produtor": [
+    "em"
+   ]
+  }
+ ],
+ "declaradas": [],
+ "causa": null,
+ "raiz": "C:/Users/pcmac/Documents/Qoder/2026-10-13/28077d9a/bfr-conecta",
+ "portoes": [
+  {
+   "portao": "portao_1_as_duas_rondas_teem_os_mesmos_numeros_de_peca",
+   "verde": true,
+   "valor": {
+    "pares": 1,
+    "sufixo_a": "sm63a",
+    "sufixo_b": "sm66a"
+   }
+  },
+  {
+   "portao": "portao_2_cada_folha_tem_par_na_outra_ronda",
+   "verde": true,
+   "valor": {
+    "so_em_a": 0,
+    "so_em_b": 0
+   }
+  },
+  {
+   "portao": "portao_3_os_carimbos_foram_lidos_do_produtor",
+   "verde": true,
+   "valor": [
+    "p133=em"
+   ]
+  },
+  {
+   "portao": "portao_4_todo_carimbo_de_corrida_e_selo_iso",
+   "verde": true,
+   "valor": {
+    "carimbos_divergentes": 1,
+    "sem_selo": 0
+   }
+  },
+  {
+   "portao": "portao_5_nenhuma_grandeza_diverge_sem_declaracao",
+   "verde": true,
+   "valor": []
+  },
+  {
+   "portao": "portao_6_nenhuma_grandeza_declarada_que_nao_divergiu",
+   "verde": true,
+   "valor": []
+  },
+  {
+   "portao": "portao_7_a_causa_declarada_bate_ou_nao_ha_causa_declaravel",
+   "verde": true,
+   "valor": {
+    "ramo": "nenhuma_folha_numeric_de_grandeza_medida_divergiu",
+    "folhas_numericas_divergentes": 0,
+    "lista": []
+   }
+  }
+ ],
+ "vermelhos": [],
+ "veredicto": "P170_CONFERENCIA_DE_DUAS_CORRIDAS_OK 7/0 · 1 pares · 0 grandezas divergentes declaradas",
+ "em": "2026-11-25T17:40:44.017Z"
+}

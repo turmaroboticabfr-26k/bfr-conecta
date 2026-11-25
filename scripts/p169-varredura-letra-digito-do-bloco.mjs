@@ -51,6 +51,19 @@ function nomeiaGlifos(t) {
   for (const ch of t) saida += ehOfensora(ch.codePointAt(0)) ? 'U+' + ch.codePointAt(0).toString(16).toUpperCase() : ch;
   return saida;
 }
+function linhaEColuna(texto, indice) {
+  const ate = texto.slice(0, indice);
+  return { linha: ate.split('\n').length, coluna: indice - (ate.lastIndexOf('\n') + 1) + 1 };
+}
+// A limpa troca cada span de backtick por UM espaco. Enquanto nenhum span levar uma quebra de linha, contar novas
+// linhas no texto varrido da-me as linhas do bruto; se um span levar uma, os totais deixam de bater e a linha
+// impressa passa a ser do texto varrido, nao do bloco. A devolcao traz os dois totais para que o quadro seja medido
+// em cada corrida e declarado em cada linha, nunca suposto.
+function quadroDaLinha(bruto, varrido) {
+  const nb = (bruto.match(/\n/g) || []).length;
+  const nv = (varrido.match(/\n/g) || []).length;
+  return { novas_linhas_bruto: nb, novas_linhas_varrido: nv, linha_e_do_bruto: nb === nv };
+}
 const GLIFO_FORA = String.fromCodePoint(0x79fb, 0x52a8);
 const FIX_LIMPO_FORA = 'a linha diz 28 papeis e 3 contas, com plicas «» ‘’ “” – — … , setas -> e <=> , matemática ≥ ≤ ≠ ≈ ± × ÷ ∪ ∩ ∑ ∆ ⋯ , sinais ✓ ✗ ⚠ † ‡ , e o emoji 📷 🏠 🃆 🔔 📅 🔎 📊 ❌ 🎮';
 const partidoNaoLatino = ofensoras(GLIFO_FORA + FIX_LIMPO_FORA);
@@ -66,6 +79,32 @@ say('PROVA_FIXTURE_REDIGIR antes_com_glifos=' + ofensoras(FIX_REDIGIR_PARTIDO).l
 if (ofensoras(redigidoFix).length !== 0) throw new Error('ABORTA: a redacao deixou ' + ofensoras(redigidoFix).length + ' glifos na familia, o destino ainda seria ofensor');
 if (!redigidoFix.includes('U+79FB') || !redigidoFix.includes('U+52A8')) throw new Error('ABORTA: a redacao nao nomeou os dois codepoints esperados, deu ' + JSON.stringify(redigidoFix));
 if (nomeiaGlifos(FIX_REDIGIR_LIMPO) !== FIX_REDIGIR_LIMPO) throw new Error('ABORTA: a redacao tocou no fixture limpo, o instrumento deixa de ser identidade sobre o que nao e da familia');
+
+// Os fixtures que seguem nao provam a regua de contar (essa esta provada acima): provam a localizacao, o ramo
+// consertado a 25/11 porque o contexto era derivado por agulha com indexOf, e nao por ocorrencia. O controlo da
+// regra velha e obrigatorio: se as duas regras dessem o mesmo numero neste fixture, o verde do ramo novo nao teria
+// positivo nenhum e eu teria assinado uma cara morta.
+const CRASE = String.fromCharCode(0x60);
+const QUEBRA = String.fromCharCode(10);
+const REg = new RegExp(RE.source, RE.flags.indexOf('g') >= 0 ? RE.flags : RE.flags + 'g');
+const FIX_ADJ_REPETIDO = 'a primeira 28papeis fica aqui e a segunda 28papeis fica ali';
+const varridoFixAdj = limpa(FIX_ADJ_REPETIDO);
+const ocsFixAdj = [...varridoFixAdj.matchAll(REg)].map((m) => ({ g: m[0], i: m.index }));
+const posNovasFix = new Set(ocsFixAdj.map((o) => o.i)).size;
+const posVelhasFix = new Set(ocsFixAdj.map((o) => varridoFixAdj.indexOf(o.g))).size;
+const ctxNovasFix = new Set(ocsFixAdj.map((o) => varridoFixAdj.slice(Math.max(0, o.i - 12), o.i + 12))).size;
+say('PROVA_FIXTURE_LOCALIZACAO ocorrencias=' + ocsFixAdj.length + ' posicoes_distintas_nova=' + posNovasFix + ' contextos_distintos_nova=' + ctxNovasFix + ' posicoes_distintas_regra_velha=' + posVelhasFix);
+if (ocsFixAdj.length < 2) throw new Error('ABORTA: o fixture de localizacao nao tem duas ocorrencias da mesma adjacencia, deu ' + ocsFixAdj.length);
+if (posNovasFix !== ocsFixAdj.length) throw new Error('ABORTA: a localizacao por ocorrencia nao deu uma posicao por ocorrencia, deu ' + posNovasFix + ' de ' + ocsFixAdj.length);
+if (ctxNovasFix !== ocsFixAdj.length) throw new Error('ABORTA: as posicoes distintas nao chegaram ao contexto impresso, deu ' + ctxNovasFix + ' de ' + ocsFixAdj.length + ' -- o agregado estaria certo e o onde mentiria');
+if (posVelhasFix !== 1) throw new Error('ABORTA: o fixture nao reproduz o defecto consertado, a regra do indexOf deveria dar UMA posicao e deu ' + posVelhasFix);
+const FIX_Q_INLINE = 'primeira linha ' + CRASE + 'um_span_de_codigo_28' + CRASE + ' e 28papeis no fim';
+const FIX_Q_QUEBRA = ['linha_um', 'com ' + CRASE + 'abc', 'def' + CRASE + ' aqui', 'linha_quatro'].join(QUEBRA);
+const qInline = quadroDaLinha(FIX_Q_INLINE, limpa(FIX_Q_INLINE));
+const qQuebra = quadroDaLinha(FIX_Q_QUEBRA, limpa(FIX_Q_QUEBRA));
+say('PROVA_FIXTURE_QUADRO span_inline=' + JSON.stringify(qInline) + ' span_que_cruza_a_quebra=' + JSON.stringify(qQuebra));
+if (qInline.linha_e_do_bruto !== true) throw new Error('ABORTA: com um span dentro da linha a guarda negou o quadro do bruto, deu ' + JSON.stringify(qInline));
+if (qQuebra.linha_e_do_bruto !== false) throw new Error('ABORTA: a guarda nao tem positivo para o span que cruza a quebra, deu ' + JSON.stringify(qQuebra) + ' -- a linha impressa seria uma mentira');
 
 // Modo de derivação: uma captura ja corrida, fora do repo, que carregue os glifos no contexto. O destino e a mesma
 // varrida com os ofensores nomeados por codepoint, com os bytes e o md5 da origem registados para que a cadeia de
@@ -104,22 +143,27 @@ const marcaSeguinte = seguintes[0];
 const fim = marcaSeguinte === undefined ? -1 : bruto.indexOf('**SM.' + marcaSeguinte + '.', inicio);
 const bloco = bruto.slice(inicio, fim < 0 ? bruto.length : fim);
 const varrido = limpa(bloco);
-const achados = varrido.match(RE) || [];
+const ocorrencias = [...varrido.matchAll(REg)].map((m) => ({ g: m[0], i: m.index }));
+const achados = ocorrencias.map((o) => o.g);
 say('bloco_inicio_char=' + inicio + ' marca_seguinte_mais_proxima=' + (marcaSeguinte === undefined ? 'nenhuma' : 'SM.' + marcaSeguinte) + ' bloco_fim_char=' + (fim < 0 ? 'fim_do_ficheiro' : fim));
 say('ficheiro_chars=' + bruto.length + ' ficheiro_bytes=' + Buffer.byteLength(bruto, 'utf8') + ' bloco_bytes=' + Buffer.byteLength(bloco, 'utf8') + ' bloco_linhas=' + bloco.split('\n').length);
-say('chars_cru=' + bloco.length + ' chars_varridos=' + varrido.length + ' spans_de_backtick_retirados=' + (bloco.length - varrido.length));
+say('chars_cru=' + bloco.length + ' chars_varridos=' + varrido.length + ' chars_a_menos_pela_limpa=' + (bloco.length - varrido.length) + ' backticks_no_bloco=' + (bloco.split(CRASE).length - 1));
 say('CANDIDATOS=' + achados.length);
 const hist = {};
 for (const a of achados) hist[a] = (hist[a] || 0) + 1;
 say('HISTOGRAMA ' + JSON.stringify(hist));
-for (const a of achados) {
-  const n = varrido.indexOf(a);
-  say('[' + a + '] x' + hist[a] + ' :: ' + JSON.stringify(nomeiaGlifos(varrido.slice(Math.max(0, n - 40), n + 40))));
-}
-function linhaEColuna(texto, indice) {
-  const ate = texto.slice(0, indice);
-  return { linha: ate.split('\n').length, coluna: indice - (ate.lastIndexOf('\n') + 1) + 1 };
-}
+const posDistintas = new Set(ocorrencias.map((o) => o.i)).size;
+const porAgulhaVelha = new Set(ocorrencias.map((o) => varrido.indexOf(o.g))).size;
+const q = quadroDaLinha(bloco, varrido);
+const linhaDoInicioNoFicheiro = linhaEColuna(bruto, inicio).linha;
+say('QUADRO_DA_LINHA ' + JSON.stringify(q) + ' bloco_inicio_linha_no_ficheiro=' + linhaDoInicioNoFicheiro);
+say('POSICOES_DISTINTAS=' + posDistintas + ' de ' + ocorrencias.length + ' ocorrencias se_fosse_por_agulha_regra_velha=' + porAgulhaVelha);
+if (ocorrencias.length > 0 && posDistintas !== ocorrencias.length) throw new Error('ABORTA: a localizacao por ocorrencia deu ' + posDistintas + ' posicoes para ' + ocorrencias.length + ' ocorrencias -- sem posicao por linha o onde nao e medido');
+ocorrencias.forEach((o, k) => {
+  const lc = linhaEColuna(varrido, o.i);
+  const linhaFicheiro = q.linha_e_do_bruto ? linhaDoInicioNoFicheiro + lc.linha - 1 : 'nao_derivavel';
+  say('ADJ #' + (k + 1) + '/' + ocorrencias.length + ' [' + o.g + '] x' + hist[o.g] + ' linha_no_texto_varrido=' + lc.linha + ' linha_no_ficheiro=' + linhaFicheiro + ' quadro_linha=' + (q.linha_e_do_bruto ? 'ficheiro' : 'texto_varrido') + ' coluna_no_texto_varrido=' + lc.coluna + ' char_varrido=' + o.i + ' :: ' + JSON.stringify(nomeiaGlifos(varrido.slice(Math.max(0, o.i - 40), o.i + 40))));
+});
 // O censo do ficheiro conta, mas nao diz ONDE: sem posicao, a prosa que nomeasse a linha do ofensor seria mais uma
 // cifra de nenhuma peça. A derivação tem fixture próprio, com o glifo na segunda linha, para que linha e coluna
 // possam falhar -- um contador que so sabe o caso limpo nao mede nada.
