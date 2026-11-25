@@ -2,14 +2,34 @@
 // Uso: node scripts/p168-prova-de-edicao-sem-corte.mjs <caminho-da-captura>
 //      node scripts/p168-prova-de-edicao-sem-corte.mjs --fixtures
 //      node scripts/p168-prova-de-edicao-sem-corte.mjs --medir
+//      node scripts/p168-prova-de-edicao-sem-corte.mjs <captura> --acrescimo --espera "<cabecalho esperado>"
+//      node scripts/p168-prova-de-edicao-sem-corte.mjs --portao-a3
+// Duas classes de edicao, um predicado por classe, cada classe com fixture proprio: a substituicao duma linha e o
+// acrescimo puro no fim do ficheiro. A classe de acrescimo exige a expectativa declarada, senao aborta antes de medir.
+// O portao_A3 da classe de acrescimo foi escrito como o comprimento do prefixo comum ate ao fim do HEAD, que e o
+// portao_A1 por outra forma; --portao-a3 mede as separacoes entre os dois e passa o A3 a exigir que a primeira
+// linha nova com conteudo traga a expectativa, o unico eixo com positivo proprio, provado nas mesmas fabricas.
 // Cada portao tem fixture que o faz abortar; a guarda de sobrescrita exige sufixo novo.
 import { execFileSync } from 'node:child_process';
 import { readFileSync, writeFileSync, existsSync, statSync } from 'node:fs';
 
 const ALVO = process.argv[3] || 'docs/auditoria-bfr-conecta.md';
 const REPOReal = execFileSync('git', ['rev-parse', '--show-toplevel'], { encoding: 'utf8' }).trim();
+const flagDe = (nome) => {
+  const i = process.argv.indexOf(nome);
+  return i < 0 ? null : process.argv[i + 1];
+};
+const CLASSE = process.argv.includes('--acrescimo') ? 'acrescimo_no_fim' : 'substituicao_de_uma_linha';
+const ESPERA = flagDe('--espera');
 
-function analisa(headTexto, discoTexto, soMedir) {
+function primeiraComConteudo(L) {
+  const comConteudo = L.filter((l) => l.trim().length > 0);
+  return comConteudo.length === 0 ? '' : comConteudo[0];
+}
+
+function analisa(headTexto, discoTexto, soMedir, opcao) {
+  const classe = (opcao && opcao.classe) || CLASSE;
+  const espera = opcao && Object.prototype.hasOwnProperty.call(opcao, 'espera') ? opcao.espera : ESPERA;
   const H = headTexto.split('\n');
   const D = discoTexto.split('\n');
   let p = 0;
@@ -41,6 +61,16 @@ function analisa(headTexto, discoTexto, soMedir) {
   linhas.push('cauda_substituida_comeca_por=' + JSON.stringify(caudaOld.slice(0, 24)));
   linhas.push('frase_substituida_em_head_linhas=' + emHead + ' frase_substituida_em_disco_linhas=' + emDisco);
   const setD = new Set(D);
+  if (classe === 'acrescimo_no_fim') {
+    if (espera === null || espera === undefined) throw new Error('ABORTA: a classe de acrescimo exige a expectativa declarada, senao o verde nao tem o que medir');
+    const novas = D.slice(H.length);
+    linhas.push('classe_da_edicao=acrescimo_no_fim linhas_novas=' + novas.length + ' linhas_novas_sem_conteudo=' + (novas.length - novas.filter((l) => l.trim().length > 0).length) + ' primeira_linha_nova_com_conteudo=' + JSON.stringify(primeiraComConteudo(novas).slice(0, 40)));
+    chk('portao_A1_todas_as_linhas_de_head_sao_o_comeco_exacto_do_disco', D.slice(0, H.length).join('\n') === H.join('\n'), { head: H.length, disco: D.length });
+    chk('portao_A2_o_acrescimo_contem_a_expectativa_declarada', novas.some((l) => l.indexOf(espera) >= 0), { espera: espera, em_linhas: novas.filter((l) => l.indexOf(espera) >= 0).length });
+    chk('portao_A3_a_primeira_linha_nova_com_conteudo_traz_a_expectativa', primeiraComConteudo(novas).indexOf(espera) >= 0, { primeira_com_conteudo: primeiraComConteudo(novas).slice(0, 60), espera: espera });
+    return { linhas, portoes, indiceDaLinha: H.length, acrescentadas: novas.length, classe: classe };
+  }
+  linhas.push('classe_da_edicao=' + classe);
   linhas.push('MEDIDA_linhas_de_head_fora_da_tocada_que_nao_aparecem_no_disco=' + H.filter((l, i) => i !== p && !setD.has(l)).length + ' (medida, nao portao: um corte noutra linha faz o portao_1 abortar antes, por isso aqui nao ha positivo possivel)');
   chk('portao_1_uma_unica_linha_de_head_alterada', meioH.length === 1, meioH.length);
   chk('portao_2_acrescimo_depois_da_linha_tocada', meioD.length > 1, meioD.length);
@@ -48,7 +78,7 @@ function analisa(headTexto, discoTexto, soMedir) {
   chk('portao_4_a_substituida_dentro_da_linha_nao_vazia', caudaOld.length > 0, Buffer.byteLength(caudaOld, 'utf8'));
   chk('portao_5_frase_substituida_unica_no_head', emHead === 1, emHead);
   chk('portao_6_frase_substituida_nao_sobrevive_no_disco', emDisco === 0, emDisco);
-  return { linhas, portoes, indiceDaLinha: p + 1, acrescentadas: meioD.length - 1 };
+  return { linhas, portoes, indiceDaLinha: p + 1, acrescentadas: meioD.length - 1, classe: classe };
 }
 
 function lePar() {
@@ -77,6 +107,7 @@ if (process.argv.includes('--fixtures')) {
     return L.join('\n');
   };
   const ok = velho.slice(0, corte) + ' SUBSTITUICAO DO RESTO DA FRASE.';
+  const AC = { classe: 'acrescimo_no_fim', espera: 'SM.57. cabecalho do bloco' };
   const casos = [
     ['F1_positivo', headTxt(null), discoTxt(ok, null), false, '-'],
     ['F2_duas_linhas_alteradas', headTxt(null), discoTxt(ok, null).replace(base[10], base[10] + ' CORTE NO MEIO DO FICHEIRO'), true, 'portao_1'],
@@ -86,22 +117,98 @@ if (process.argv.includes('--fixtures')) {
     ['F6_acrescimo_puro_no_fim_da_linha', headTxt(null), discoTxt(velho + ' acrescimo puro no fim', null), true, 'portao_4'],
     ['F7_frase_antiga_duplicada_noutro_lugar', headTxt(cauda), discoTxt(ok, { e20: cauda }), true, 'portao_5'],
     ['F8_frase_antiga_preservada_dentro_do_bloco', headTxt(null), discoTxt(ok, { repete: cauda }), true, 'portao_6'],
+    ['A1_positivo_acrescimo_no_fim', headTxt(null), headTxt(null) + '\nSM.57. cabecalho do bloco\nitem um do bloco', false, '-', AC],
+    ['A2_mutacao_duma_linha_de_head_no_meio', headTxt(null), headTxt(null).replace(base[10], base[10] + ' CORTE') + '\nSM.57. cabecalho do bloco', true, 'portao_A1', AC],
+    ['A3_sem_nenhuma_linha_nova', headTxt(null), headTxt(null), true, 'portao_A2', AC],
+    ['A4_acrescimo_que_nao_traz_o_cabecalho_declarado', headTxt(null), headTxt(null) + '\nparagrafo sem titulo nenhum', true, 'portao_A2', AC],
+    ['A5_apagar_a_ultima_linha_de_head_passa_por_acrescimo', headTxt(null), headTxt(null).split('\n').slice(0, 39).join('\n') + '\nSM.57. cabecalho do bloco', true, 'portao_A1', AC],
+    ['A6_classe_sem_expectativa_declara_da_aborta_antes_de_medir', headTxt(null), headTxt(null) + '\nSM.57. cabecalho do bloco', true, 'ABORTA: a classe de acrescimo exige', { classe: 'acrescimo_no_fim', espera: null }],
+    ['A7_positivo_com_linhas_em_branco_antes_do_cabecalho', headTxt(null), headTxt(null) + '\n\n\nSM.57. cabecalho do bloco\nitem um do bloco', false, '-', AC],
+    ['A8_linha_com_conteudo_antes_do_cabecalho_declarado', headTxt(null), headTxt(null) + '\nparagrafo solto\nSM.57. cabecalho do bloco', true, 'portao_A3', AC],
   ];
   const saida = [];
   const veredictos = [];
-  for (const [nome, h, d, esperaAborto, alvo] of casos) {
+  for (const [nome, h, d, esperaAborto, alvo, opcao] of casos) {
     let abortou = false;
     let msg = '';
-    try { analisa(h, d, false); } catch (e) { abortou = true; msg = e.message; }
+    try { analisa(h, d, false, opcao || { classe: 'substituicao_de_uma_linha', espera: null }); } catch (e) { abortou = true; msg = e.message; }
     const esperado = esperaAborto ? abortou && msg.includes(alvo) : !abortou;
     veredictos.push(esperado);
     saida.push(nome + ' abortou=' + abortou + ' esperava_aborto=' + esperaAborto + ' portao_alvo=' + alvo + ' veredicto=' + (esperado ? 'EXPERADO' : 'INESPERADO') + (abortou ? ' [' + msg + ']' : ''));
   }
   const nEsperados = veredictos.filter(Boolean).length;
+  const nPositivos = casos.filter((c) => !c[3]).length;
   console.log(saida.join('\n'));
-  console.log('FIXTURES total=' + casos.length + ' positivos=1 negativos=' + (casos.length - 1) + ' esperados=' + nEsperados + ' inesperados=' + veredictos.filter((v) => !v).length);
+  console.log('FIXTURES total=' + casos.length + ' positivos=' + nPositivos + ' negativos=' + (casos.length - nPositivos) + ' esperados=' + nEsperados + ' inesperados=' + veredictos.filter((v) => !v).length);
   if (nEsperados !== casos.length) throw new Error('ABORTA ' + nEsperados + ' de ' + casos.length + ' fixtures nao dao o veredicto esperado');
   console.log('P168_FIXTURES_OK');
+  process.exit(0);
+}
+
+if (process.argv.includes('--portao-a3')) {
+  const CAB = 'SM.57. cabecalho do bloco';
+  const total = 240;
+  const A1 = (H, D) => D.slice(0, H.length).join('\n') === H.join('\n');
+  const A2 = (H, D) => D.slice(H.length).some((l) => l.indexOf(CAB) >= 0);
+  const A3 = (H, D) => {
+    const novas = D.slice(H.length);
+    let primeira = '';
+    for (let i = 0; i < novas.length; i++) { if (novas[i].trim().length > 0) { primeira = novas[i]; break; } }
+    return primeira.indexOf(CAB) >= 0;
+  };
+  const antigoA3 = (H, D) => {
+    let p = 0;
+    while (p < H.length && p < D.length && H[p] === D[p]) p++;
+    return p === H.length;
+  };
+  const fabrica = (k) => {
+    const n = 8 + (k % 15);
+    const H = [];
+    for (let i = 0; i < n; i++) H.push('linha ' + i + ' ' + 'a'.repeat(30 + i + (k % 7)));
+    const r = k % 5;
+    if (r === 0) return { H, D: H.concat(['', '', CAB, 'item um do bloco']) };
+    if (r === 1) return { H, D: H.concat(['', 'paragrafo solto antes do cabecalho', CAB]) };
+    if (r === 2) { const D = H.slice(); D[1] = D[1] + ' TOCADA'; return { H, D: D.concat(['', CAB]) }; }
+    if (r === 3) return { H, D: H.concat(['', 'paragrafo sem titulo nenhum']) };
+    return { H, D: H.slice(0, H.length - 1) };
+  };
+  const NOMES = ['acrescimo_apos_duas_linhas_em_branco', 'linha_solta_antes_do_cabecalho', 'linha_de_head_tocada', 'acrescimo_sem_cabecalho', 'head_truncado_sem_acrescimo'];
+  let separacoesDoAntigoA3 = 0, falhasDoAntigoA3 = 0, atingemA1eA2 = 0, falhamNoNovoA3 = 0, passamOsTres = 0;
+  const porClasse = {};
+  for (let k = 0; k < total; k++) {
+    const f = fabrica(k);
+    const a1 = A1(f.H, f.D), a2 = A2(f.H, f.D), a3 = A3(f.H, f.D), anti = antigoA3(f.H, f.D);
+    if (a1 !== anti) separacoesDoAntigoA3++;
+    if (a1 && !anti) falhasDoAntigoA3++;
+    if (a1 && a2) {
+      atingemA1eA2++;
+      if (!a3) falhamNoNovoA3++;
+    }
+    if (a1 && a2 && a3) passamOsTres++;
+    const nome = NOMES[k % 5];
+    const c = porClasse[nome] || (porClasse[nome] = { total: 0, A1: 0, antigo_A3: 0, A2: 0, novo_A3: 0, separacoes: 0 });
+    c.total++;
+    if (a1) c.A1++;
+    if (anti) c.antigo_A3++;
+    if (a2) c.A2++;
+    if (a3) c.novo_A3++;
+    if (a1 !== anti) c.separacoes++;
+  }
+  const linhas = [
+    'total_fabricas=' + total,
+    'o_antigo_A3_separa_se_do_A1_em=' + separacoesDoAntigoA3,
+    'o_antigo_A3_falha_onde_o_A1_da_OK=' + falhasDoAntigoA3,
+    'atingem_A1_e_A2=' + atingemA1eA2,
+    'falham_no_novo_A3_atingindo_A1_e_A2=' + falhamNoNovoA3,
+    'passam_os_tres=' + passamOsTres,
+    'POR_CLASSE=' + JSON.stringify(porClasse),
+  ];
+  if (separacoesDoAntigoA3 !== 0) throw new Error('ABORTA o antigo portao_A3 separa-se do A1 em ' + separacoesDoAntigoA3 + ' de ' + total + ' fabricas, portanto tinha positivo proprio e nao era reposicao do A1');
+  if (atingemA1eA2 === 0) throw new Error('ABORTA denominador zero: nenhuma fabrica atinge A1 e A2, a medida do novo A3 nao fala de nada');
+  if (falhamNoNovoA3 === 0) throw new Error('ABORTA o novo portao_A3 nunca falha com A1 e A2 ambos OK, e por isso nao mede nada que os dois ja nao meçam');
+  if (passamOsTres === 0) throw new Error('ABORTA o novo portao_A3 nunca da OK, nao tem positivo');
+  process.stdout.write(linhas.join('\n') + '\n');
+  process.stdout.write('P168_PORTAO_A3_MEDIDA separacoes_do_antigo_A3_contra_o_A1=' + separacoesDoAntigoA3 + ' de ' + total + ' fabricas, que e a medida de que os dois portoes sao o mesmo; o A3 novo passa em ' + passamOsTres + ' e aborta noutras ' + falhamNoNovoA3 + ', todas com A1 e A2 ja OK\n');
   process.exit(0);
 }
 
@@ -209,6 +316,8 @@ if (!destino || destino === ALVO) throw new Error('ABORTA: passe o caminho da ca
 if (existsSync(destino)) throw new Error('ABORTA: a captura ja existe, use sufixo novo -- ' + destino + ' tem ' + statSync(destino).size + ' bytes');
 const { head, disco } = lePar();
 const r = analisa(head, disco, false);
-const corpo = r.linhas.join('\n') + '\n' + r.portoes.join('\n') + '\nP168_EDICAO_SEM_CORTE_OK linha_unica_tocada_no_indice=' + r.indiceDaLinha + ' linhas_acrescentadas=' + r.acrescentadas + '\n';
+const corpo = r.linhas.join('\n') + '\n' + r.portoes.join('\n') + '\nP168_EDICAO_SEM_CORTE_OK classe=' + r.classe +
+  (r.classe === 'acrescimo_no_fim' ? ' linhas_no_fim_do_ficheiro=' : ' linha_unica_tocada_no_indice=') + r.indiceDaLinha +
+  ' linhas_acrescentadas=' + r.acrescentadas + '\n';
 writeFileSync(destino, corpo, 'utf8');
 process.stdout.write(corpo);

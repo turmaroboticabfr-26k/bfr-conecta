@@ -1,4 +1,7 @@
-// Varredura letra<->digito dum bloco do diario, por codepoint, com o positivo provado antes de confiar num zero.
+// Varredura de duas familias dum bloco do diario, por codepoint, com o positivo provado antes de confiar num zero:
+// a adjacencia letra-digito (o nome trocado por cifra) e a escrita fora do Latino, que e de onde vem o glifo que o
+// teclado do condutor injerta. Os ofensores da segunda familia nomeiam-se por codepoint, nunca pelo glifo, senao a
+// captura que denuncia passa a ser a ofensora varrida pelo portao do indice.
 // Uso: node scripts/p169-varredura-letra-digito-do-bloco.mjs <caminho-da-captura> [MARCA] [alvo]
 //      MARCA default SM.56; o fim do bloco e medido como a mais pequena **SM.N.** seguinte existente no ficheiro.
 // Os spans de backtick vao fora antes de contar: e neles que vivem os nomes de peca, os md5 e as cifras citadas.
@@ -23,6 +26,31 @@ const FIX_PARTIDO = 'a linha dice 28papeis e 3contas mas devia 28 papeis e 3 con
 const FIX_LIMPO = 'a linha diz 28 papeis e 3 contas';
 const positivo = limpa(FIX_PARTIDO).match(RE) || [];
 const negativo = limpa(FIX_LIMPO).match(RE) || [];
+
+const faixasOfensoras = [[0x3000, 0x303f], [0x3040, 0x30ff], [0x3400, 0x4dbf], [0x4e00, 0x9fff], [0xac00, 0xd7a3], [0xd800, 0xdfff], [0xff00, 0xffef]];
+const ehOfensora = (c) => faixasOfensoras.some((f) => c >= f[0] && c <= f[1]);
+function foraDoASCII(t) {
+  const ach = [];
+  for (let i = 0; i < t.length; ) {
+    const c = t.codePointAt(i);
+    const pos = i;
+    i += c > 0xffff ? 2 : 1;
+    if (c < 0x80) continue;
+    ach.push({ i: pos, cp: 'U+' + c.toString(16).toUpperCase() });
+  }
+  return ach;
+}
+const ofensoras = (t) => foraDoASCII(t).filter((a) => ehOfensora(parseInt(a.cp.slice(2), 16)));
+const GLIFO_FORA = String.fromCodePoint(0x79fb, 0x52a8);
+const FIX_LIMPO_FORA = 'a linha diz 28 papeis e 3 contas, com plicas «» ‘’ “” – — … , setas -> e <=> , matemática ≥ ≤ ≠ ≈ ± × ÷ ∪ ∩ ∑ ∆ ⋯ , sinais ✓ ✗ ⚠ † ‡ , e o emoji 📷 🏠 🃆 🔔 📅 🔎 📊 ❌ 🎮';
+const partidoNaoLatino = ofensoras(GLIFO_FORA + FIX_LIMPO_FORA);
+const limpoNaoLatino = ofensoras(FIX_LIMPO_FORA);
+say('FAIXAS_OFENSORAS=' + JSON.stringify(faixasOfensoras));
+say('PROVA_FIXTURE_NAO_LATINO partido=' + JSON.stringify(partidoNaoLatino.map((a) => a.cp)) + ' limpo=' + JSON.stringify(limpoNaoLatino.map((a) => a.cp)));
+if (partidoNaoLatino.length !== 2) throw new Error('ABORTA: a familia do nao-Latino nao deu as duas letras do fixture, deu ' + JSON.stringify(partidoNaoLatino.map((a) => a.cp)));
+if (limpoNaoLatino.length !== 0) throw new Error('ABORTA: o fixture limpo do nao-Latino deu ' + JSON.stringify(limpoNaoLatino.map((a) => a.cp)) + ', a familia proibe uma classe legita do diario');
+
+
 say('alvo=' + ALVO + ' repo=' + REPOReal + ' MARCA=' + MARCA);
 say('emissor_bytes=' + Buffer.byteLength(eu, 'utf8') + ' emissor_md5=' + createHash('md5').update(eu).digest('hex'));
 say('PROVA_FIXTURE positivo=' + JSON.stringify(positivo) + ' negativo=' + JSON.stringify(negativo));
@@ -51,5 +79,16 @@ for (const a of achados) {
   const n = varrido.indexOf(a);
   say('[' + a + '] x' + hist[a] + ' :: ' + JSON.stringify(varrido.slice(Math.max(0, n - 40), n + 40)));
 }
+const ofensasNoBloco = ofensoras(bloco);
+const mapaDoFicheiro = {};
+for (const o of foraDoASCII(bruto)) mapaDoFicheiro[o.cp] = (mapaDoFicheiro[o.cp] || 0) + 1;
+const mapaDoBloco = {};
+for (const o of foraDoASCII(bloco)) mapaDoBloco[o.cp] = (mapaDoBloco[o.cp] || 0) + 1;
+const ofensasNoFicheiro = ofensoras(bruto);
+say('CENSO_NAO_LATINO_DO_FICHEIRO=' + JSON.stringify(mapaDoFicheiro));
+say('CENSO_NAO_LATINO_DO_BLOCO=' + JSON.stringify(mapaDoBloco));
+say('FORA_DA_ESCRITA=' + ofensasNoBloco.length + ' no bloco ' + MARCA + ' · no_ficheiro=' + ofensasNoFicheiro.length);
+for (const o of ofensasNoBloco) say('OFENSOR codepoint=' + o.cp + ' indice_char=' + o.i + ' contexto=' + JSON.stringify(bloco.slice(Math.max(0, o.i - 40), o.i + 40)));
 writeFileSync(destino, capt.join('\n') + '\n', 'utf8');
-process.stdout.write('P169_VARREDURA_FEITA candidatos=' + achados.length + ' captura=' + destino + '\n');
+if (ofensasNoBloco.length !== 0) throw new Error('ABORTA FORA_DA_ESCRITA=' + ofensasNoBloco.length + ' no bloco ' + MARCA + ', captura guardada em ' + destino);
+process.stdout.write('P169_VARREDURA_FEITA candidatos=' + achados.length + ' fora_da_escrita=' + ofensasNoBloco.length + ' captura=' + destino + '\n');
