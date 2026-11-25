@@ -1,0 +1,169 @@
+{
+  "programa": "scripts/p117-varredura-de-escritas.mjs",
+  "em": "2026-11-25T06:32:53.313Z",
+  "duracao_ms": 392,
+  "metodo": "Uma cláusula por eixo sobre os cinco documentos deste fecho: oito famílias de escrita proibidas a zero; grego permitido só nos codepoints que o próprio corpus mede; formas largas CJK obrigadas a resolver num rótulo versionado em app/index.html; e três fixtures montados por codepoint em tempo de execução para provar que a varredura varre.",
+  "alvos": [
+    {
+      "f": "docs/roadmap-painel.html",
+      "bytes": 52075,
+      "md5": "b91099c7399cd9570419edfaada26e5f"
+    },
+    {
+      "f": "docs/roadmap-master.md",
+      "bytes": 329957,
+      "md5": "6eb6dbe9247df67eeb1a4621f868925f"
+    },
+    {
+      "f": "docs/auditoria-bfr-conecta.md",
+      "bytes": 1487235,
+      "md5": "911f86a00ea478d0fb8791fc32c58463"
+    },
+    {
+      "f": "docs/bu-20-11/07-roadmap-visual.md",
+      "bytes": 16542,
+      "md5": "263964d054954483ca21b4865bf13b68"
+    },
+    {
+      "f": "docs/bu-20-11/06-as-quatro-listas.md",
+      "bytes": 21591,
+      "md5": "ee265a743886db6d336b91de2f3214cc"
+    }
+  ],
+  "bytes_produto_app_index_html": 3489467,
+  "por_familia": {
+    "grego": 57
+  },
+  "total_achados": 57,
+  "gregos": {
+    "total": 57,
+    "distintos": [
+      "0x394",
+      "0x3A3"
+    ],
+    "permitidos_declados": [
+      "0x394",
+      "0x3A3"
+    ]
+  },
+  "formas_largas": [],
+  "palavras_de_controle": [
+    {
+      "f": "docs/roadmap-painel.html",
+      "rotacao_portugues": 4,
+      "rota_seguida_de_cirilico": 0
+    },
+    {
+      "f": "docs/roadmap-master.md",
+      "rotacao_portugues": 7,
+      "rota_seguida_de_cirilico": 0
+    },
+    {
+      "f": "docs/auditoria-bfr-conecta.md",
+      "rotacao_portugues": 72,
+      "rota_seguida_de_cirilico": 0
+    },
+    {
+      "f": "docs/bu-20-11/07-roadmap-visual.md",
+      "rotacao_portugues": 0,
+      "rota_seguida_de_cirilico": 0
+    },
+    {
+      "f": "docs/bu-20-11/06-as-quatro-listas.md",
+      "rotacao_portugues": 0,
+      "rota_seguida_de_cirilico": 0
+    }
+  ],
+  "o_que_nao_ve": "Não vê corrupção feita com letras latinas trocadas (accents errados, `ç` por `c`) nem glifos de famílias fora das dez declaradas (tailandês, etíope, siríaco). Para nomes de ficheiros e campos há o varredor de escritas do `portao-indice.mjs`.",
+  "portoes": [
+    {
+      "nome": "as_oito_familias_proibidas_dao_zero_ocorrencias_nos_cinco_documentos",
+      "verde": true,
+      "detalhe": {
+        "por_familia": {
+          "grego": 57
+        },
+        "esperados_zero": [
+          "cirilico",
+          "armenio",
+          "hebraico",
+          "arabe",
+          "devanagari",
+          "hiragana_katakana",
+          "hangul",
+          "han"
+        ],
+        "amostra": []
+      }
+    },
+    {
+      "nome": "todo_codepoint_grego_no_corpus_esta_no_conjunto_permitido_e_o_conjunto_permitido_e_medido_no_corpus",
+      "verde": true,
+      "detalhe": {
+        "permitidos_declados": [
+          "0x394",
+          "0x3A3"
+        ],
+        "medidos_no_corpus": [
+          "0x394",
+          "0x3A3"
+        ],
+        "total_gregos": 57,
+        "por_codepoint": {
+          "0x394": 54,
+          "0x3a3": 3
+        }
+      }
+    },
+    {
+      "nome": "todo_glifo_de_forma_larga_resolve_num_rotulo_do_produto_lido_de_app_index_html",
+      "verde": true,
+      "detalhe": {
+        "conjunto_vazio": true,
+        "largas_unicas": [],
+        "resolvem": []
+      }
+    },
+    {
+      "nome": "a_regua_tem_dentes_pro_fixture_de_cirilico_e_de_grego_fora_do_permitido",
+      "verde": true,
+      "detalhe": {
+        "cirilico_0x0424_classificado_proibido": true,
+        "grego_0x03C9_fora_do_permitido": true,
+        "grego_0x0394_dentro_do_permitido": true,
+        "nota": "os tres codepoints do fixture sao montados por codePointAt em tempo de execucao, nunca dactilografados neste ficheiro"
+      }
+    },
+    {
+      "nome": "os_cinco_documentos_existem_e_sao_nao_vazios_com_md5_medido",
+      "verde": true,
+      "detalhe": {
+        "docs": {
+          "docs/roadmap-painel.html": {
+            "bytes": 52075,
+            "md5": "b91099c7399cd9570419edfaada26e5f"
+          },
+          "docs/roadmap-master.md": {
+            "bytes": 329957,
+            "md5": "6eb6dbe9247df67eeb1a4621f868925f"
+          },
+          "docs/auditoria-bfr-conecta.md": {
+            "bytes": 1487235,
+            "md5": "911f86a00ea478d0fb8791fc32c58463"
+          },
+          "docs/bu-20-11/07-roadmap-visual.md": {
+            "bytes": 16542,
+            "md5": "263964d054954483ca21b4865bf13b68"
+          },
+          "docs/bu-20-11/06-as-quatro-listas.md": {
+            "bytes": 21591,
+            "md5": "ee265a743886db6d336b91de2f3214cc"
+          }
+        },
+        "bytes_produto": 3489467
+      }
+    }
+  ],
+  "falhas": [],
+  "veredito": "P117_ESCRITAS_OK 5/0 · cirilico=0 gregos=57 todos_permitidos largas=0 todas_com_rótulo_no_produto"
+}

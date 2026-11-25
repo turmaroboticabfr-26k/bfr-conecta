@@ -220,7 +220,13 @@ if (!caminhoCaptura || caminhoCaptura.startsWith('--')) throw new Error('ABORTA:
 const m = mede();
 const g = julgamentos(m);
 const ruins = g.filter((p) => !p.ok).map((p) => p.nome);
-if (ruins.length) throw new Error('ABORTA portoes_vermelhos=' + JSON.stringify(ruins) + ' - a captura nao sai por cima dum portao vermelho');
+if (ruins.length) {
+  const parcial = corpoDaMedida(m, g) + 'P174_PARCIAL_VERMELHO portoes_vermelhos=' + JSON.stringify(ruins) + '\n';
+  guardaDeSobrescrita(caminhoCaptura);
+  writeFileSync(caminhoCaptura, parcial);
+  console.log('P174_PARCIAL_ESCRITO em=' + caminhoCaptura + ' portoes_vermelhos=' + JSON.stringify(ruins));
+  throw new Error('ABORTA portoes_vermelhos=' + JSON.stringify(ruins) + ' - o parcial saiu com o vermelho nomeado; a captura verde nao sai por cima dum portao vermelho');
+}
 const texto = corpoDaMedida(m, g);
 guardaDeSobrescrita(caminhoCaptura);
 writeFileSync(caminhoCaptura, texto);
