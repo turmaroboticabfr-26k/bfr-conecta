@@ -1,0 +1,17 @@
+sonda=p175-sonda-negacao-do-marcador produtor=scripts/p175-folha-das-decisoes-humanas.mjs
+produtor_bytes=44181 produtor_md5=bdbd3417ac1dfe5b51890d2cda583b72
+linhas_da_folha=19 saidas=41 superficies_no_vocabulario=5
+vocabulario_de_negacao_lido_do_produtor=["nao","sem","nunca","nenhuma","nenhum","nem","jamais"]
+  AFIRMADA | PEN-10 | auth_mint_ou_rotacao | marcador="mint" | negacao=[] | clausula="o que puxa o grupo do mint"
+  AFIRMADA | PEN-10 | trafego_no_ar | marcador="captura com sessao real" | negacao=[] | clausula="um telemovel com camera e uma captura com sessao real"
+  NEGADA   | PEN-10 | gente_e_aparelho | marcador="camera" | negacao=["nenhum"] | clausula="nenhum instrumento desta casa falsifica uma camera"
+  AFIRMADA | PEN-11 | trafego_no_ar | marcador="aparelho com sessao" | negacao=[] | clausula="falta um aparelho com sessao e a palavra de quem o segura"
+  AFIRMADA | PEN-21 | auth_mint_ou_rotacao | marcador="mint" | negacao=[] | clausula="mexe no tempo de resposta de gente real e pode exigir mint ou rotacao antes de poder ser corrido"
+  AFIRMADA | PEN-21 | auth_mint_ou_rotacao | marcador="rotacao" | negacao=[] | clausula="mexe no tempo de resposta de gente real e pode exigir mint ou rotacao antes de poder ser corrido"
+  NEGADA   | PEN-43 | banco_ddl_ou_dml | marcador="revogar" | negacao=["nenhuma"] | clausula="e nenhuma das duas se fecha com revogar"
+  AFIRMADA | PEN-47 | banco_ddl_ou_dml | marcador="escrita autenticada" | negacao=[] | clausula="leitura e escrita autenticadas e uma tentativa anonima recusada"
+  AFIRMADA | PEN-47 | trafego_no_ar | marcador="tentativa anonima" | negacao=[] | clausula="leitura e escrita autenticadas e uma tentativa anonima recusada"
+OCORRENCIAS=9 AFIRMADAS=7 NEGADAS=2
+HISTOGRAMA={"AFIRMADA/auth_mint_ou_rotacao":3,"AFIRMADA/trafego_no_ar":3,"NEGADA/gente_e_aparelho":1,"NEGADA/banco_ddl_ou_dml":1,"AFIRMADA/banco_ddl_ou_dml":1}
+FICHAS_DE_NEGACAO_ACHADAS={"nenhum":1,"nenhuma":1}
+FICHAS_DE_NEGACAO_SEM_USO_NO_CORPUS=["nao","sem","nunca","nem","jamais"]

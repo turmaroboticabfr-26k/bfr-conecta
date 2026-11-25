@@ -35,185 +35,279 @@ const VOCAB_ESCRITA = {
   gente_e_aparelho: 'precisa de gente, impressora, camera ou telemovel: nenhuma ferramenta desta casa o faz',
 };
 
+const NENHUMA_SUPERFICIE = 'nada_fora_dos_meus_ficheiros';
+
+// O texto conferido de cada saida e o rotulo seguido do custo, e esta escrito com e sem sinal (medido: «nao muda
+// byte» e «decisao de sabado» na mesma folha), por isso o encontro de um marcador nao pode ser feito por byte a byte.
+// Sem normalizar, o marcador `camera` nunca casava o «camera» acentuado de PEN-09 e PEN-10 — a regua
+// estaria cega por ortografia, nao por conteudo.
+function semSinal(t) { return String(t).normalize('NFD').replace(/\p{Diacritic}/gu, '').toLowerCase(); }
+
+// A clausura so serve para mostrar ONDE o marcador caiu; nao ha isencao por negacao. Razao medida: a palavra `sem`
+// nega o objeto («o bucket sem municipio»), nao o verbo da clausula, por isso qualquer vocabulario de negacao
+// abriria uma rota para esconder uma superficie real. O que nega um eixo tem de o nomear por descricao — os dois
+// casos re-escritos sao a saida 2 de PEN-10 e a saida 2 de PEN-43, visiveis no bloco DECISOES abaixo.
+const CLUSURA_DE_CUSTO = /[;,:]/;
+
+const ORDEM_DE_GRAVIDADE = [
+  'banco_ddl_ou_dml',
+  'auth_mint_ou_rotacao',
+  'trafego_no_ar',
+  'bundle_do_app_publicar',
+  'gente_e_aparelho',
+];
+
+const OK_POR_SUPERFICIE = {
+  banco_ddl_ou_dml: 'OK de aplicacao de DDL',
+  auth_mint_ou_rotacao: 'OK de mint ou rotacao de senha',
+  trafego_no_ar: 'OK de mint ou rotacao de senha',
+  bundle_do_app_publicar: 'OK de publicacao',
+  gente_e_aparelho: SENTINELA_SEM_OK,
+};
+
+const MARCADORES_DE_SUPERFICIE = {
+  banco_ddl_ou_dml: ['escreve no banco', 'ddl', 'preflight', 'reversao', 'trilha', 'concessao por conta', 'revogar', 'apertar as policies', 'mexer em defaults', 'policy', 'conteudo novo', 'escrita autenticada'],
+  auth_mint_ou_rotacao: ['mint', 'rotacao', 'dar-lhes numero'],
+  trafego_no_ar: ['contra o ar', 'tentativa anonima', 'aparelho com sessao', 'captura com sessao real', 'com contas reais'],
+  bundle_do_app_publicar: ['no fonte do pacote', 'escrita no css', 'escrita no modulo', 'escrita no pacote', 'e publicacao', 'publicar'],
+  gente_e_aparelho: ['impressora', 'camera', 'telemovel', 'pessoa', 'quem o segura'],
+};
+
+function deriva(o) {
+  const superficies = (o.tocam && o.tocam.length ? o.tocam : [NENHUMA_SUPERFICIE]).slice();
+  const classe = ORDEM_DE_GRAVIDADE.find((s) => superficies.indexOf(s) >= 0) || NENHUMA_SUPERFICIE;
+  const familias = [];
+  for (const s of superficies) {
+    if (s === NENHUMA_SUPERFICIE) continue;
+    const f = OK_POR_SUPERFICIE[s];
+    if (f && f !== SENTINELA_SEM_OK && familias.indexOf(f) < 0) familias.push(f);
+  }
+  return { superficies, classe, falta: familias.length ? familias : [SENTINELA_SEM_OK] };
+}
+
+function clausulasDe(textoNormalizado) {
+  const out = [];
+  let desde = 0;
+  for (let i = 0; i < textoNormalizado.length; i++) {
+    if (CLUSURA_DE_CUSTO.test(textoNormalizado[i])) { out.push({ texto: textoNormalizado.slice(desde, i), a: desde, b: i }); desde = i + 1; }
+  }
+  out.push({ texto: textoNormalizado.slice(desde), a: desde, b: textoNormalizado.length });
+  return out;
+}
+
+// Devolve TODAS as ocorrencias de marcador de superficie nao declarada, cada uma com a clausula onde caiu.
+// Nao ha filtro: nomear uma superficie que a saida nao declara e vermelho, seja em frase afirmativa ou negada.
+function ocorrenciasDeMarcadorForaDaDeclaracao(textoCusto, superficies) {
+  const t = semSinal(textoCusto);
+  const cls = clausulasDe(t);
+  const fora = [];
+  for (const s of Object.keys(MARCADORES_DE_SUPERFICIE)) {
+    if (superficies.indexOf(s) >= 0) continue;
+    for (const m of MARCADORES_DE_SUPERFICIE[s]) {
+      const agulha = semSinal(m);
+      let k = t.indexOf(agulha);
+      while (k >= 0) {
+        const cl = cls.find((c) => k >= c.a && k < c.b) || { texto: t, a: 0, b: t.length };
+        fora.push({ superficie: s, marcador: m, clausula: cl.texto.trim() });
+        k = t.indexOf(agulha, k + agulha.length);
+      }
+    }
+  }
+  return fora;
+}
+
+function marcadoresDaPropriaDeclaracao(textoCusto, superficies) {
+  const t = semSinal(textoCusto);
+  return superficies.filter((s) => {
+    if (s === NENHUMA_SUPERFICIE) return true;
+    const lista = MARCADORES_DE_SUPERFICIE[s] || [];
+    return !lista.some((m) => t.indexOf(semSinal(m)) >= 0);
+  });
+}
+
+// O texto conferido de uma saida e o que o dono ve na folha: o rotulo (ancorado no ledger, portanto nao meu) mais o custo.
+// Uma so definicao: portao, registo e censo de uso de marcadores varrem exactamente o mesmo texto.
+function textoDaSaida(x) { return x.rotulo + ' ; ' + x.custo; }
+
 const DECISOES = [
   { id: 'PEN-03', pergunta: 'O espaco do aluno pinta o nome oficial ou o nome preferido?',
     opcoes: [
       { rotulo: 'nome preferido (paridade com a saudação)', ancora: { tipo: 'tabela_12_1', entrada: 'RM-2.4' },
-        escreve: 'bundle_do_app_publicar', falta: 'OK de publicacao',
+        tocam: ['bundle_do_app_publicar'],
         custo: 'mexer no applyIdentity() da fonte do pacote, conferir no browser com cadeia viva autenticada e publicar; e a saida que alinha o hero com a saudação do topo' },
       { rotulo: 'ao oficial', ancora: { tipo: 'tabela_12_1', entrada: 'RM-2.4' },
-        escreve: 'nada_fora_dos_meus_ficheiros', falta: SENTINELA_SEM_OK,
+        tocam: ['nada_fora_dos_meus_ficheiros'],
         custo: 'o corpo medido no ar ja lê o nome oficial, por isso esta saida nao muda byte de produto: fechar é declarar a escolha no ledger e re-conferir com a sonda do ar' },
     ] },
   { id: 'PEN-06', pergunta: 'O overlay executivo fica com escape por rota ou acabam os painéis legados?',
     opcoes: [
       { rotulo: 'manter o overlay com escape por rota', ancora: { tipo: 'tabela_12_1', entrada: 'RM-2.2' },
-        escreve: 'bundle_do_app_publicar', falta: 'OK de publicacao',
+        tocam: ['bundle_do_app_publicar'],
         custo: 'o escape passa a contrato por rota: escrita no CSS e nos toggles, prova de browser e publicacao' },
       { rotulo: 'expor/remover os painéis legados', ancora: { tipo: 'tabela_12_1', entrada: 'RM-2.2' },
-        escreve: 'bundle_do_app_publicar', falta: 'OK de publicacao',
+        tocam: ['bundle_do_app_publicar'],
         custo: 'tira regras e classes do pacote; abre superficie nova ao papel de direcao, por isso pede censo de portas depois de publicar' },
     ] },
   { id: 'PEN-08', pergunta: 'Que dias contam como letivos (o sábado entra?) e onde está o corpo da função que falta?',
     opcoes: [
       { rotulo: 'decisão de sábado', ancora: { tipo: 'celula' },
-        escreve: 'banco_ddl_ou_dml', falta: 'OK de aplicacao de DDL',
+        tocam: ['banco_ddl_ou_dml'],
         custo: 'a grade medida hoje nao tem sábado, logo a decisao escreve-se como conteudo novo nas mesas do calendario, com candidata, reversao e preflight' },
       { rotulo: 'correct_gate_attendance', ancora: { tipo: 'celula' },
-        escreve: 'banco_ddl_ou_dml', falta: 'OK de aplicacao de DDL',
+        tocam: ['banco_ddl_ou_dml'],
         custo: 'e o unico nome chamado no ar sem corpo no catalogo: DDL com assinatura lida dos bytes, e a mesma sonda de ar a confirmar que deixou de dar quarenta e quatro' },
       { rotulo: 'declarar a linha fora do ambito desta casa', ancora: { tipo: 'minha_leitura' },
-        escreve: 'nada_fora_dos_meus_ficheiros', falta: SENTINELA_SEM_OK,
+        tocam: ['nada_fora_dos_meus_ficheiros'],
         custo: 'a linha continua ABERTA por vontade e nao por falta de medicao; zero escrita fora desta casa' },
     ] },
   { id: 'PEN-09', pergunta: 'Quem faz o teste real do crachá impresso, e quando?',
     opcoes: [
       { rotulo: 'Crachá físico impresso (teste real)', ancora: { tipo: 'item_pen' },
-        escreve: 'gente_e_aparelho', falta: SENTINELA_SEM_OK,
+        tocam: ['gente_e_aparelho'],
         custo: 'impressora, crachá e uma pessoa: nada nesta casa imprime, e o resultado entra como artefacto datado com quem segurou o crachá' },
       { rotulo: 'declarar a linha nao testavel aqui', ancora: { tipo: 'minha_leitura' },
-        escreve: 'nada_fora_dos_meus_ficheiros', falta: SENTINELA_SEM_OK,
+        tocam: ['nada_fora_dos_meus_ficheiros'],
         custo: 'fecha por decisao e nao por medicao; o painel passa a contar esta linha como fechada por vontade do dono' },
     ] },
   { id: 'PEN-10', pergunta: 'Quem faz o teste de câmera num dispositivo real, e quando?',
     opcoes: [
       { rotulo: 'Câmera de dispositivo real (teste físico)', ancora: { tipo: 'item_pen' },
-        escreve: 'gente_e_aparelho', falta: SENTINELA_SEM_OK,
+        tocam: ['gente_e_aparelho', 'trafego_no_ar', 'auth_mint_ou_rotacao'],
         custo: 'um telemóvel com câmera e uma captura com sessao real; a cadeia de auth ainda tem de estar viva nesse momento, o que puxa o grupo do mint' },
       { rotulo: 'declarar a linha nao testavel aqui', ancora: { tipo: 'minha_leitura' },
-        escreve: 'nada_fora_dos_meus_ficheiros', falta: SENTINELA_SEM_OK,
-        custo: 'fecha por decisao; nenhum instrumento desta casa falsifica uma câmera' },
+        tocam: ['nada_fora_dos_meus_ficheiros'],
+        custo: 'fecha por decisao; nenhuma ferramenta desta casa substitui o aparelho' },
     ] },
   { id: 'PEN-11', pergunta: 'A entrega do push vai ser testada num aparelho físico, ou a linha fica sem prova?',
     opcoes: [
       { rotulo: 'só resta a palavra', ancora: { tipo: 'celula' },
-        escreve: 'gente_e_aparelho', falta: SENTINELA_SEM_OK,
+        tocam: ['gente_e_aparelho', 'trafego_no_ar'],
         custo: 'o recetor ja foi medido no service worker servido e no Chrome real; falta um aparelho com sessao e a palavra de quem o segura' },
       { rotulo: 'nada nela se pode provar por leitura', ancora: { tipo: 'celula' },
-        escreve: 'nada_fora_dos_meus_ficheiros', falta: SENTINELA_SEM_OK,
+        tocam: ['nada_fora_dos_meus_ficheiros'],
         custo: 'manter ABERTA com a causa escrita; a leitura nao alcanga este eixo, e aliviar a frase seria mover a régua' },
     ] },
   { id: 'PEN-16', pergunta: 'O que é um relatório comparativo de rede, para quem vai e com que frequência?',
     opcoes: [
       { rotulo: 'produto por construir', ancora: { tipo: 'celula' },
-        escreve: 'bundle_do_app_publicar', falta: 'OK de publicacao',
+        tocam: ['bundle_do_app_publicar'],
         custo: 'os dois agregados de rede ja sao chamados no ar, mas nada os mostra como comparacao: escrita no modulo e publicacao, com prova de pixel por papel' },
       { rotulo: 'decisão e OK próprios', ancora: { tipo: 'celula' },
-        escreve: 'nada_fora_dos_meus_ficheiros', falta: SENTINELA_SEM_OK,
+        tocam: ['nada_fora_dos_meus_ficheiros'],
         custo: 'a propria celula declara que a linha pede escolha sua antes de qualquer instrumento; zero escrita enquanto essa escolha nao vier' },
     ] },
   { id: 'PEN-21', pergunta: 'Autorizo escrever o instrumento de carga e correr-lhe o perfil contra o ar?',
     opcoes: [
       { rotulo: 'escrever o instrumento de carga', ancora: { tipo: 'celula' },
-        escreve: 'nada_fora_dos_meus_ficheiros', falta: SENTINELA_SEM_OK,
+        tocam: ['nada_fora_dos_meus_ficheiros'],
         custo: 'peca nova versionada, com os seis zeros de hoje como fixture do que ainda nao existe; sozinha nao toca no ar' },
       { rotulo: 'bate no ar com contas reais', ancora: { tipo: 'celula' },
-        escreve: 'trafego_no_ar', falta: 'OK de mint ou rotacao de senha',
+        tocam: ['trafego_no_ar', 'auth_mint_ou_rotacao'],
         custo: 'corre contra o ar com cadeias vivas: mexe no tempo de resposta de gente real e pode exigir mint ou rotacao antes de poder ser corrido' },
     ] },
   { id: 'PEN-23', pergunta: 'O `security_invoker` passa a portão automático ou continua checklist humano?',
     opcoes: [
       { rotulo: 'nada no CI obriga', ancora: { tipo: 'celula' },
-        escreve: 'nada_fora_dos_meus_ficheiros', falta: SENTINELA_SEM_OK,
+        tocam: ['nada_fora_dos_meus_ficheiros'],
         custo: 'portão meu sobre o SQL dos candidatos, com fixture que dispara numa view sem a opcao; zero banco, zero ar' },
       { rotulo: 'processo sem portão', ancora: { tipo: 'celula' },
-        escreve: 'nada_fora_dos_meus_ficheiros', falta: SENTINELA_SEM_OK,
+        tocam: ['nada_fora_dos_meus_ficheiros'],
         custo: 'a linha fica ABERTA por desenho: o censo de hoje ja esta verde, e foi exatamente por isso que a celula recusou fechar-se com um verde de censo' },
     ] },
   { id: 'PEN-36', pergunta: 'Qual é o rótulo canónico da secretaria, e o secretariado escolar entra na superfície municipal?',
     opcoes: [
       { rotulo: 'decisão de produto', ancora: { tipo: 'celula' },
-        escreve: 'bundle_do_app_publicar', falta: 'OK de publicacao',
+        tocam: ['bundle_do_app_publicar'],
         custo: 'a peca dos rotulos mede hoje cinco nomes com dois ou mais usos no ar; escolher um é escrita no pacote e publicacao, nao medicao' },
       { rotulo: 'concessão municipal no banco', ancora: { tipo: 'celula' },
-        escreve: 'banco_ddl_ou_dml', falta: 'OK de aplicacao de DDL',
+        tocam: ['banco_ddl_ou_dml'],
         custo: 'da acesso por conta e nao por papel, com trilha; a visibilidade continua decidida pelo mapa do bundle ate que alguem mude o mapa' },
       { rotulo: 'no bundle (produto + publicar)', ancora: { tipo: 'celula' },
-        escreve: 'bundle_do_app_publicar', falta: 'OK de publicacao',
+        tocam: ['bundle_do_app_publicar'],
         custo: 'mudar os papeis municipais do mapa abre a entrada a um papel que o runbook recusa hoje: alargar superficie, nao corrigir pixels' },
     ] },
   { id: 'PEN-38', pergunta: 'Que escolas pertencem a que município real, e o teste de fronteira vai ser corrido?',
     opcoes: [
       { rotulo: 'a etiquetagem por decidir', ancora: { tipo: 'celula' },
-        escreve: 'banco_ddl_ou_dml', falta: 'OK de aplicacao de DDL',
+        tocam: ['banco_ddl_ou_dml'],
         custo: 'e dado de gente real: sem municipios fora de fixture o predicado nao discrimina nada, e apertar por escopo deixava de ler tudo para nao ler nada' },
       { rotulo: 'perfil municipal a pedir dados de outro município', ancora: { tipo: 'celula' },
-        escreve: 'trafego_no_ar', falta: 'OK de mint ou rotacao de senha',
+        tocam: ['trafego_no_ar'],
         custo: 'o criterio de fecho da linha: precisa de duas contas municipais com cadeias vivas para que a recusa seja medida e nao prometida' },
     ] },
   { id: 'PEN-39', pergunta: 'O que é que um município deve poder somar, e o bucket sem município se mostra?',
     opcoes: [
       { rotulo: 'decisão de produto sobre o que um município deve poder somar', ancora: { tipo: 'celula' },
-        escreve: 'banco_ddl_ou_dml', falta: 'OK de aplicacao de DDL',
+        tocam: ['banco_ddl_ou_dml'],
         custo: 'o DDL dos dois agregados ja esta aplicado e o consumo ja esta no ar: falta dizer o que é legitimo somar, e isso nao se mede' },
       { rotulo: 'mostrar ou esconder a classe sem municipio', ancora: { tipo: 'minha_leitura' },
-        escreve: 'nada_fora_dos_meus_ficheiros', falta: SENTINELA_SEM_OK,
+        tocam: ['nada_fora_dos_meus_ficheiros'],
         custo: 'decidir se o bucket se imprime na tela ou desaparece dela: muda a leitura do painel, nao o numero de linhas do banco' },
     ] },
   { id: 'PEN-41', pergunta: 'Director e secretaria com vínculo continuam a ler a rede inteira, ou passam a ler a escola do cargo?',
     opcoes: [
       { rotulo: 'etiquetagem das escolas primeiro', ancora: { tipo: 'celula' },
-        escreve: 'banco_ddl_ou_dml', falta: 'OK de aplicacao de DDL',
+        tocam: ['banco_ddl_ou_dml'],
         custo: 'a ordem esta escrita na linha: sem escolas etiquetadas, apertar as policies converte leitura em vazio para quem hoje tem dados' },
       { rotulo: 'continua sem prova', ancora: { tipo: 'celula' },
-        escreve: 'auth_mint_ou_rotacao', falta: 'OK de mint ou rotacao de senha',
+        tocam: ['auth_mint_ou_rotacao'],
         custo: 'as duas contas municipais sem vínculo ficam a ver zero: dar-lhes numero é vínculo e concessao de gente real, com cadeia viva para o provar' },
     ] },
   { id: 'PEN-42', pergunta: 'Que conteúdo do calendário entra no ar (as lacunas das D1 a D4)?',
     opcoes: [
       { rotulo: '(RM-5.2, D1-D4)', ancora: { tipo: 'celula' },
-        escreve: 'banco_ddl_ou_dml', falta: 'OK de aplicacao de DDL',
+        tocam: ['banco_ddl_ou_dml'],
         custo: 'as decisoes comecaram e parte delas esta semeada; falta o conteudo por confirmar, e cada tranche de calendario pede a sua frase' },
       { rotulo: 'nao a superficie', ancora: { tipo: 'celula' },
-        escreve: 'nada_fora_dos_meus_ficheiros', falta: SENTINELA_SEM_OK,
+        tocam: ['nada_fora_dos_meus_ficheiros'],
         custo: 'a linha ja nao e de cadeia nem de catalogo: re-correr instrumentos aqui nao move nada, so a escolha do conteudo move' },
     ] },
   { id: 'PEN-43', pergunta: 'A porta de etiquetagem continua chamável por anónimo para receber recusa?',
     opcoes: [
       { rotulo: 'a porta de etiquetagem fica executável por anónimo', ancora: { tipo: 'celula' },
-        escreve: 'banco_ddl_ou_dml', falta: 'OK de aplicacao de DDL',
+        tocam: ['banco_ddl_ou_dml'],
         custo: 'e a escolha contraria: manter um nome chamavel sem sessao para que a recusa venha do corpo; um revogar novo com frase propria fecha-a' },
       { rotulo: 'decidir o que um autenticado recebe', ancora: { tipo: 'minha_leitura' },
-        escreve: 'nada_fora_dos_meus_ficheiros', falta: SENTINELA_SEM_OK,
-        custo: 'esta linha nao trata do que um autenticado com sessao recebe: isso sao as PEN-38 e PEN-39 e uma decisao de produto, e nenhuma das duas se fecha com revogar' },
+        tocam: ['nada_fora_dos_meus_ficheiros'],
+        custo: 'esta linha nao trata do que um autenticado com sessao recebe: isso sao as PEN-38 e PEN-39, e ai a escolha do conteudo e que fecha, nao um grau deste lado' },
     ] },
   { id: 'PEN-44', pergunta: 'Os papéis de plataforma preservados e os nomes fora do alvo ficam assim, ou revertem?',
     opcoes: [
       { rotulo: 'contadores que coincidem', ancora: { tipo: 'celula' },
-        escreve: 'nada_fora_dos_meus_ficheiros', falta: SENTINELA_SEM_OK,
+        tocam: ['nada_fora_dos_meus_ficheiros'],
         custo: 'a celula declara que tres grandezas dao o mesmo numero sem prova de ser o mesmo conjunto nome a nome: fechar isto e medir nomes, nao confiar na coincidencia' },
       { rotulo: 'deixar local', ancora: { tipo: 'celula' },
-        escreve: 'nada_fora_dos_meus_ficheiros', falta: SENTINELA_SEM_OK,
+        tocam: ['nada_fora_dos_meus_ficheiros'],
         custo: 'foi a palavra ja dada para o envio dos commits; vale como decisao de alcance e nao como fecho da linha' },
       { rotulo: 'a concessão municipal', ancora: { tipo: 'celula' },
-        escreve: 'banco_ddl_ou_dml', falta: 'OK de aplicacao de DDL',
+        tocam: ['banco_ddl_ou_dml'],
         custo: 'o grau esta fechado, o conteudo nao: concessao por conta e escrita com trilha, com frase propria' },
     ] },
   { id: 'PEN-45', pergunta: 'O supervisor educacional ganha o chat interno, ou perde a aba que o mapa lhe oferece?',
     opcoes: [
       { rotulo: 'uma das duas listas do módulo', ancora: { tipo: 'celula' },
-        escreve: 'bundle_do_app_publicar', falta: 'OK de publicacao',
+        tocam: ['bundle_do_app_publicar'],
         custo: 'abre superficie nova: o papel passa a ver conversas que hoje o predicado lhe recusa, e o censo de portas por papel muda com ele' },
       { rotulo: 'é a que não abre superfície nova', ancora: { tipo: 'celula' },
-        escreve: 'bundle_do_app_publicar', falta: 'OK de publicacao',
+        tocam: ['bundle_do_app_publicar'],
         custo: 'retira o convite do mapa do papel: a aba deixa de existir para quem nao a pode usar, e a contradicao medida desaparece sem dar acesso a ninguem' },
     ] },
   { id: 'PEN-47', pergunta: 'As seis mesas com RLS e zero policies são mesas de máquina ou leitores perdidos?',
     opcoes: [
       { rotulo: 'escrever uma policy por mesa', ancora: { tipo: 'celula' },
-        escreve: 'banco_ddl_ou_dml', falta: 'OK de aplicacao de DDL',
+        tocam: ['banco_ddl_ou_dml'],
         custo: 'ramo de DDL com preflight e conferencia como as pecas municipais, e supoe que existe um leitor para cada uma das seis mesas' },
       { rotulo: 'mesas de papel com bypass', ancora: { tipo: 'celula' },
-        escreve: 'nada_fora_dos_meus_ficheiros', falta: SENTINELA_SEM_OK,
+        tocam: ['banco_ddl_ou_dml', 'trafego_no_ar'],
         custo: 'ramo de decisao escrita, mas com o teste que a prova: leitura e escrita autenticadas e uma tentativa anonima recusada, gravadas em artefacto' },
     ] },
   { id: 'PEN-48', pergunta: 'O mecanismo que dá EXECUTE ao anónimo a funções criadas amanhã fica, ou é desmontado?',
     opcoes: [
       { rotulo: 'pg_default_acl', ancora: { tipo: 'celula' },
-        escreve: 'banco_ddl_ou_dml', falta: 'OK de aplicacao de DDL',
+        tocam: ['banco_ddl_ou_dml'],
         custo: 'mexer em defaults nao muda o que ja existe: muda o que uma funcao nova herda, e por isso a prova e para a frente, nao para tras' },
       { rotulo: 'continuam decisoes proprias', ancora: { tipo: 'celula' },
-        escreve: 'banco_ddl_ou_dml', falta: 'OK de aplicacao de DDL',
+        tocam: ['banco_ddl_ou_dml'],
         custo: 'a reversao do revogar dos nomes e outra frase e outro alcance; as duas podem ser recusadas, e a recusa tambem fecha a decisao' },
     ] },
 ];
@@ -331,21 +425,52 @@ function monta(registro, grupo, cel, tab, folha, caminhos) {
     const t = c ? c.item + ' ' + c.estado : '';
     rmsPorLinha[d.id] = [...new Set((t.match(reRm) || []).concat(t.match(reRmAlt) || []))];
   }
-  const classesFora = [];
-  for (const d of folha) for (const o of d.opcoes) if (!Object.prototype.hasOwnProperty.call(VOCAB_ESCRITA, o.escreve)) classesFora.push({ id: d.id, escreve: o.escreve });
-  add('o_valor_escreve_de_cada_saida_pertence_ao_vocabulario_declarado_da_peca', classesFora.length === 0, { fora_do_vocabulario: classesFora }, 'lista vazia');
+  const derivadas = [];
+  for (const d of folha) for (const o of d.opcoes) derivadas.push({ id: d.id, rotulo: o.rotulo, custo: o.custo, tocam: (o.tocam || []).slice(), dv: deriva(o) });
+
+  const superficiesFora = [];
+  for (const x of derivadas) for (const s of x.dv.superficies) if (!Object.prototype.hasOwnProperty.call(VOCAB_ESCRITA, s)) superficiesFora.push({ id: x.id, superficie: s });
+  add('toda_a_superficie_declaada_pertence_ao_vocabulario_de_escrita_da_peca', superficiesFora.length === 0,
+    { fora_do_vocabulario: superficiesFora }, 'lista vazia');
+
+  const duplicadas = [];
+  for (const x of derivadas) { const rep = x.tocam.filter((s, i) => x.tocam.indexOf(s) !== i); if (rep.length) duplicadas.push({ id: x.id, rotulo: x.rotulo, repetidas: [...new Set(rep)] }); }
+  add('nenhuma_saida_repete_a_mesma_superficie_na_declaraao', duplicadas.length === 0, { duplicadas }, 'lista vazia');
+
+  const mistas = [];
+  for (const x of derivadas) if (x.tocam.indexOf(NENHUMA_SUPERFICIE) >= 0 && x.tocam.length > 1) mistas.push({ id: x.id, rotulo: x.rotulo, tocam: x.tocam });
+  add('nenhuma_saida_mistura_a_superficie_nenhuma_com_uma_real', mistas.length === 0, { mistas }, 'lista vazia');
+
+  const ordemFora = ORDEM_DE_GRAVIDADE.filter((s) => !Object.prototype.hasOwnProperty.call(VOCAB_ESCRITA, s));
+  const mapaSemSuperficie = Object.keys(OK_POR_SUPERFICIE).filter((s) => !Object.prototype.hasOwnProperty.call(VOCAB_ESCRITA, s));
+  const superficieSemMapa = Object.keys(VOCAB_ESCRITA).filter((s) => s !== NENHUMA_SUPERFICIE && !Object.prototype.hasOwnProperty.call(OK_POR_SUPERFICIE, s));
 
   const familiasFora = [];
-  for (const d of folha) for (const o of d.opcoes) {
-    if (o.falta !== SENTINELA_SEM_OK && grupo.familias.indexOf(o.falta) < 0) familiasFora.push({ id: d.id, falta: o.falta });
+  for (const x of derivadas) for (const f of x.dv.falta) {
+    if (f !== SENTINELA_SEM_OK && grupo.familias.indexOf(f) < 0) familiasFora.push({ id: x.id, falta: f });
   }
-  add('o_ok_que_falta_de_cada_saida_e_uma_das_familias_lidas_ou_a_sentinela_explicita', familiasFora.length === 0,
+  add('o_ok_derivado_de_cada_saida_e_uma_das_familias_lidas_ou_a_sentinela_explicita', familiasFora.length === 0,
     { fora_das_familias_lidas: familiasFora, familias_lidas: grupo.familias }, 'lista vazia');
 
-  const totalPorFlat = folha.reduce((n, d) => n + d.opcoes.length, 0);
-  const totalPorClasse = Object.keys(VOCAB_ESCRITA).reduce((n, k) => n + folha.reduce((m, d) => m + d.opcoes.filter((o) => o.escreve === k).length, 0), 0);
+  const marcadoresFora = [];
+  const semJustificacao = [];
+  for (const x of derivadas) {
+    const texto = textoDaSaida(x);
+    for (const m of ocorrenciasDeMarcadorForaDaDeclaracao(texto, x.dv.superficies)) marcadoresFora.push({ id: x.id, rotulo: x.rotulo, superficie: m.superficie, marcador: m.marcador, clausula: m.clausula });
+    for (const s of marcadoresDaPropriaDeclaracao(texto, x.dv.superficies)) if (s !== NENHUMA_SUPERFICIE) semJustificacao.push({ id: x.id, rotulo: x.rotulo, superficie: s });
+  }
+  add('nenhum_texto_de_saida_nomeia_uma_superficie_fora_da_declaada', marcadoresFora.length === 0,
+    { nomeados_sem_declaraar: marcadoresFora }, 'lista vazia');
+
+  const totalPorFlat = derivadas.length;
+  const totalPorClasse = Object.keys(VOCAB_ESCRITA).reduce((n, k) => n + derivadas.filter((x) => x.dv.classe === k).length, 0);
   add('a_contagem_de_saidas_bate_por_duas_rotas_independentes', totalPorFlat === totalPorClasse,
     { por_flatmap: totalPorFlat, por_soma_de_classes: totalPorClasse }, 'os dois numeros iguais');
+
+  // Sem portao para a familia de OK por saida univoca, e dito por que: `classe` e `falta` saem da mesma lista de
+  // superficies dentro de deriva(), por isso nenhuma mutacao de dados faria as duas discordarem — um predicado sobre
+  // elas nao teria positivo. O que se mede e impresso em contagens (a soma de ocorrencias de familia difere do numero
+  // de saidas quando ha uma saida de duas superficies), e a conta que a prosa cita passa a vir do artefacto.
 
   const sReg = sufixoDe(caminhos.registro);
   const sCap = sufixoDe(caminhos.captura);
@@ -356,12 +481,28 @@ function monta(registro, grupo, cel, tab, folha, caminhos) {
   const mapaTabela = {};
   for (const t of tab) mapaTabela[t.entrada] = folha.filter((d) => rmsPorLinha[d.id].indexOf(t.entrada) >= 0).map((d) => d.id);
 
+  const usoPorMarcador = {};
+  for (const x of derivadas) {
+    const t = semSinal(textoDaSaida(x));
+    for (const s of Object.keys(MARCADORES_DE_SUPERFICIE)) for (const m of MARCADORES_DE_SUPERFICIE[s]) if (t.indexOf(semSinal(m)) >= 0) usoPorMarcador[s + '/' + m] = (usoPorMarcador[s + '/' + m] || 0) + 1;
+  }
+  const marcadoresMortos = [];
+  let totalDeMarcadores = 0;
+  for (const s of Object.keys(MARCADORES_DE_SUPERFICIE)) for (const m of MARCADORES_DE_SUPERFICIE[s]) { totalDeMarcadores++; if (!usoPorMarcador[s + '/' + m]) marcadoresMortos.push(s + '/' + m); }
+
   return {
-    portoes: p, mapaTabela, rmsPorLinha, totalPorFlat, entradasSemPen,
+    portoes: p, mapaTabela, rmsPorLinha, totalPorFlat, entradasSemPen, derivadas, totalDeMarcadores, usoPorMarcador,
     registos_de_classe: {
       linhas_da_folha_sem_rm_lido_na_celula: folha.filter((d) => rmsPorLinha[d.id].length === 0).map((d) => d.id),
       entradas_da_tabela_que_nao_estao_na_folha: entradasSemPen,
       sentinela_sem_ok: SENTINELA_SEM_OK,
+      saidas_com_superficie_nomeada_no_texto_da_saida_fora_da_declaada: marcadoresFora,
+      superficies_declaadas_sem_marcador_no_texto_da_saida: semJustificacao,
+      marcadores_do_vocabulario_sem_uso_no_corpus: marcadoresMortos,
+      vocabulario_de_gravidade: ORDEM_DE_GRAVIDADE,
+      ordem_fora_do_vocabulario: ordemFora,
+      mapa_de_ok_sem_superficie_no_vocabulario: mapaSemSuperficie,
+      vocabulario_sem_saida_de_ok: superficieSemMapa,
     },
   };
 }
@@ -388,14 +529,48 @@ if (FIXTURES) {
   };
   roda('saida_da_folha_fora_do_grupo', (b) => {
     b.folha.push({ id: 'PEN-99', pergunta: 'pergunta fabricada para o fixture', opcoes: [
-      { rotulo: 'rotulo um', ancora: { tipo: 'minha_leitura' }, escreve: 'nada_fora_dos_meus_ficheiros', falta: SENTINELA_SEM_OK, custo: 'y' },
-      { rotulo: 'rotulo dois', ancora: { tipo: 'minha_leitura' }, escreve: 'nada_fora_dos_meus_ficheiros', falta: SENTINELA_SEM_OK, custo: 'w' }] });
+      { rotulo: 'rotulo um', ancora: { tipo: 'minha_leitura' }, tocam: [NENHUMA_SUPERFICIE], custo: 'y' },
+      { rotulo: 'rotulo dois', ancora: { tipo: 'minha_leitura' }, tocam: [NENHUMA_SUPERFICIE], custo: 'w' }] });
   });
   roda('linha_do_grupo_sem_folha', (b) => { b.folha = b.folha.slice(1); });
   roda('id_repetido_na_folha', (b) => { b.folha.push(clone(b.folha[0])); });
   roda('saida_inventada_fora_da_fonte', (b) => { b.folha[0].opcoes[0].rotulo = 'nome inventado por mim sem par no ledger'; });
-  roda('classe_de_escrita_fora_do_vocabulario', (b) => { b.folha[1].opcoes[0].escreve = 'fogo'; });
-  roda('familia_de_ok_fora_das_lidas', (b) => { b.folha[2].opcoes[0].falta = 'OK de enviar telegrama'; });
+  roda('superficie_fora_do_vocabulario', (b) => { b.folha[1].opcoes[0].tocam = ['fogo']; });
+  roda('superficie_repetida_na_declaraao', (b) => {
+    const s = b.folha[1].opcoes[0].tocam;
+    if (!s.length) throw new Error('ABORTA FIXTURE: a linha 2 saida 1 nao declara superficie, o caso de repeticao nao e constructivel');
+    b.folha[1].opcoes[0].tocam = [s[0], s[0]];
+  });
+  roda('superficie_nenhuma_misturada_com_uma_real', (b) => {
+    const s = b.folha[1].opcoes[1].tocam;
+    if (!s.length || s[0] === NENHUMA_SUPERFICIE) throw new Error('ABORTA FIXTURE: a linha 2 saida 2 nao declara superficie real, o caso de mistura nao e constructivel');
+    b.folha[1].opcoes[1].tocam = [NENHUMA_SUPERFICIE].concat(s);
+  });
+  // As duas meias do texto varrido (rotulo e custo) precisam de caso proprio: uma regua alargada so e alargada
+  // para a metade que um fixture faz disparar.
+  const procuraSaida = (b, predicate, nome) => {
+    const o = b.folha.reduce((acc, d) => acc.concat(d.opcoes), []).find(predicate);
+    if (!o) throw new Error('ABORTA FIXTURE: nenhuma saida casa o caso `' + nome + '`, que deixou de ser constructivel');
+    return o;
+  };
+  roda('o_custos_nomeia_uma_superficie_que_a_declaraao_esconde', (b) => {
+    const o = procuraSaida(b, (x) => (x.tocam || []).indexOf('bundle_do_app_publicar') < 0, 'custo que nomeia o que a saida nao declara');
+    o.custo = String(o.custo) + ' — e publicacao do pacote';
+  });
+  roda('o_rotulo_nomeia_uma_superficie_que_a_declaraao_esconde', (b) => {
+    // Precisa de ser saida `minha_leitura`: trocar o rotulo duma saida ancorada chumbaria tambem o portao da
+    // ancora, e o vermelho deixaria de pertencer a meia nova do texto varrido.
+    const o = procuraSaida(b, (x) => x.ancora.tipo === 'minha_leitura' && (x.tocam || []).indexOf('bundle_do_app_publicar') < 0, 'rotulo que nomeia o que a saida nao declara');
+    o.rotulo = String(o.rotulo) + ' — e publicacao do pacote';
+  });
+  roda('familia_de_ok_fora_das_lidas', (b) => {
+    const deriv = [];
+    for (const d of b.folha) for (const o of d.opcoes) for (const f of deriva(o).falta) if (f !== SENTINELA_SEM_OK && deriv.indexOf(f) < 0) deriv.push(f);
+    const lidas = b.grupo.familias || [];
+    const tiravel = deriv.filter((f) => lidas.indexOf(f) >= 0);
+    if (!tiravel.length) throw new Error('ABORTA FIXTURE: nenhuma familia derivada (' + JSON.stringify(deriv) + ') esta entre as lidas ' + JSON.stringify(lidas) + ' — o caso nao e constructivel');
+    b.grupo = Object.assign({}, b.grupo, { familias: lidas.filter((f) => f !== tiravel[0]) });
+  });
   roda('saida_unica_na_linha', (b) => { b.folha[3].opcoes = [clone(b.folha[3].opcoes[0])]; });
   roda('pergunta_curta_demais', (b) => { b.folha[4].pergunta = 'oi?'; });
   roda('linha_so_com_minha_leitura', (b) => { b.folha[5].opcoes.forEach((o, i) => { o.ancora = { tipo: 'minha_leitura' }; o.rotulo = 'rotulo ' + i; }); });
@@ -432,7 +607,9 @@ const emissor = fs.readFileSync(AQUI);
 const emissorMd5 = createHash('md5').update(emissor).digest('hex');
 const em = new Date().toISOString();
 const contagemPorClasse = {};
-for (const k of Object.keys(VOCAB_ESCRITA)) contagemPorClasse[k] = DECISOES.reduce((n, d) => n + d.opcoes.filter((o) => o.escreve === k).length, 0);
+for (const k of Object.keys(VOCAB_ESCRITA)) contagemPorClasse[k] = built.derivadas.filter((x) => x.dv.classe === k).length;
+const contagemPorSuperficie = {};
+for (const k of Object.keys(VOCAB_ESCRITA)) contagemPorSuperficie[k] = built.derivadas.filter((x) => x.dv.superficies.indexOf(k) >= 0).length;
 const arte = {
   peca: 'p175', rotulo: 'FOLHA DAS DECISOES HUMANAS', em, sufixo: SUF.replace('-', '') || null,
   emissor_bytes: emissor.length, emissor_md5: emissorMd5,
@@ -441,22 +618,38 @@ const arte = {
     regras_de_rm_lidas_como_constante_da_peca: [RE_RM, RE_RM_ALT] },
   grupo_medido: { rotulo: grupo.rotulo, ids: grupo.ids, familias_lidas: grupo.familias, fora_do_grupo: grupo.fora_do_grupo },
   vocabulario_de_escrita: VOCAB_ESCRITA,
+  ordem_de_gravidade_declaada: ORDEM_DE_GRAVIDADE,
+  ok_por_superficie_declaado: OK_POR_SUPERFICIE,
+  marcadores_por_superficie: MARCADORES_DE_SUPERFICIE,
   linhas_pen_no_registo: registro.linhas_pen, celulas_lidas_com_sete_colunas: Object.keys(CEL).length,
   linhas_da_tabela_de_insumos: TAB.length,
   saidas_da_tabela_por_linha_da_folha: built.mapaTabela,
   rms_lidos_de_cada_celula: built.rmsPorLinha,
   registos_de_classe: built.registos_de_classe,
-  folha: DECISOES,
+  folha: DECISOES.map((d) => ({
+    id: d.id, pergunta: d.pergunta,
+    opcoes: d.opcoes.map((o) => {
+      const dv = deriva(o);
+      return { rotulo: o.rotulo, ancora: o.ancora, tocam: dv.superficies, classe_derivada: dv.classe, ok_derivado: dv.falta, custo: o.custo };
+    }),
+  })),
   contagens: {
     linhas_na_folha: DECISOES.length, saidas_totais: built.totalPorFlat,
     saidas_por_classe_de_escrita: contagemPorClasse,
+    saidas_por_superficie_declaada: contagemPorSuperficie,
+    total_de_superficies_declaadas: Object.keys(VOCAB_ESCRITA).reduce((n, k) => n + contagemPorSuperficie[k], 0),
+    marcadores_no_vocabulario: built.totalDeMarcadores,
+    marcadores_com_uso_no_corpus: Object.keys(built.usoPorMarcador).length,
     saidas_ancoradas_no_ledger: DECISOES.reduce((n, d) => n + d.opcoes.filter((o) => o.ancora.tipo !== 'minha_leitura').length, 0),
     saidas_de_minha_leitura: DECISOES.reduce((n, d) => n + d.opcoes.filter((o) => o.ancora.tipo === 'minha_leitura').length, 0),
     linhas_por_prioridade_lida_da_celula: DECISOES.reduce((o, d) => { const p = CEL[d.id] ? CEL[d.id].pri : '?'; o[p] = (o[p] || 0) + 1; return o; }, {}),
+    saidas_por_conjunto_de_familias_de_ok: built.derivadas.reduce((o, x) => { const k = x.dv.falta.slice().sort().join('+'); o[k] = (o[k] || 0) + 1; return o; }, {}),
+    somatorio_de_ocorrencias_de_familia_de_ok: built.derivadas.reduce((n, x) => n + x.dv.falta.length, 0),
+    saidas_com_mais_de_uma_familia_de_ok: built.derivadas.filter((x) => x.dv.falta.length > 1).map((x) => x.id + ' :: ' + x.dv.falta.join('+')),
   },
   portoes: built.portoes,
-  o_que_prova: 'que cada linha do grupo de decisao humana tem pergunta, pelo menos duas saidas e pelo menos uma saida cujo texto existe literalmente na fonte declarada; que as classes de escrita e as familias de OK estao dentro dos vocabularios lidos; que a conta de saidas bate por duas rotas; que registro e captura sao da mesma ronda.',
-  o_que_NAO_prova: 'que alguma das saidas seja a certa, nem que a escolha feche a linha sem outro OK: nenhuma chamada de rede, nenhum SQL e nenhum deploy foram corridos por esta peca, e o custo de cada saida e a minha leitura, nao uma medicao.',
+  o_que_prova: 'que cada linha do grupo de decisao humana tem pergunta, pelo menos duas saidas e pelo menos uma saida cujo texto existe literalmente na fonte declarada; que as classes de escrita e as familias de OK estao dentro dos vocabularios lidos; que nenhum texto de saida — o rotulo ancorado mais o custo, pela funcao textoDaSaida — nomeia uma superficie que a saida nao declara; que a conta de saidas bate por duas rotas; que registro e captura sao da mesma ronda.',
+  o_que_NAO_prova: 'que alguma das saidas seja a certa, nem que a escolha feche a linha sem outro OK: nenhuma chamada de rede, nenhum SQL e nenhum deploy foram corridos por esta peca, e o custo de cada saida e a minha leitura, nao uma medicao. O vocabulario de marcadores e meu: a regua apanha a superficie nomeada sem a declarar, nao inventa o marcador que me esqueci de escrever, por isso um texto que descreva a escrita noutros termos passa. As saidas com superficie declarada que o texto nao nomeia, e os marcadores do vocabulario sem uso no corpus, saem registadas em registos_de_classe e continuam verdes — sao denuncias, nao predicados, porque um predicado sobre elas nao teria positivo sem eu primeiro escolher as palavras.',
   veredito: vermelhos.length === 0 ? 'P175_FOLHA_OK' : 'P175_FOLHA_PARCIAL_VERMELHO',
 };
 console.log('peca=' + arte.peca + ' ' + arte.rotulo + ' em=' + arte.em + ' sufixo=' + (arte.sufixo || '-'));
@@ -471,7 +664,7 @@ for (const d of arte.folha) {
   console.log('  PERGUNTA: ' + d.pergunta);
   d.opcoes.forEach((o, i) => {
     console.log('  SAIDA ' + (i + 1) + ' [' + o.ancora.tipo + (o.ancora.entrada ? ':' + o.ancora.entrada : '') + '] «' + o.rotulo + '»');
-    console.log('            escreve=' + o.escreve + ' | ok_depois_da_escolha=' + o.falta);
+    console.log('            tocam=' + o.tocam.join(',') + ' | classe=' + o.classe_derivada + ' | ok_depois_da_escolha=' + o.ok_derivado.join('+'));
     console.log('            custo: ' + o.custo);
   });
 }

@@ -1,0 +1,1637 @@
+{
+  "peca": "p133-inventario-das-pendencias-abertas.mjs",
+  "rotulo": "a",
+  "em": "2026-11-25T08:27:38.268Z",
+  "pergunta": "quais pendencias estao mesmo abertas, por que classe medida, e que OK cada uma exige?",
+  "metodo": "todas as linhas PEN lidas com a predica do produtor (pipes escapados nao separam celulas, sete partes por split); classe = os dois veredictos da celula (ultimo sinal por posicao e sinal com a data mais recente) quando concordam, DIVERGENTE quando divergem, SEM_DECLARACAO quando a celula nao tem nenhum idiom; os idioms sao as formas medidas no corpus (p133-sonda-idiomas.cjs, p133-sonda-prefixos.cjs, p135-sonda-adendos-de-fecho.cjs, que leem esta mesma fonte em vez de re-dactilografar as predicas), com as abreviaturas lidas da propria linha da legenda de status e nao dactilografadas; a palavra solta «abert» esta fora das familias porque tres das suas ocorrencias descrevem superficie e nao estado; a janela entre a palavra de fecho e a data e a const JANELA_FECHO, contada no corpus (11 ocorrencias, histograma publicado em janela_de_fecho) e vigiada pelo portao do mesmo nome; ha uma segunda janela, JANELA_ADENDO, para a forma em que a data vem ANTES da palavra («Adendo §SM.28 (21/11): FECHADA», 1 ocorrencia no corpus, corrida de pontuacao medida em {\"2\":1} pela sonda p135), tambem ela vigiada por portao proprio com fixture nos dois sentidos; registro de aplicacao lido com o filtro do portao do pacote (modo=aplicacao e escrito_no_banco=true); seccao 13 e o censo PEN contados pelos produtores versionados por execFile, nao por reimplementacao; ha um segundo vocabulario, ACAO_NOMEADA, com 8 familias que leem na prosa da celula um passo que nao pertence a nenhuma das quatro familias de OK — cada familia com fixture proprio e um controlo negativo comum, e a classe sem familia de OK partida nas duas faces publicadas (acao nomeada / passo nenhum). A etiqueta de fallback diz agora apenas o que a regua media: nenhum OK foi lido, e nao que a linha se fecha por leitura.",
+  "emissor_bytes": 38708,
+  "emissor_md5": "313b6322",
+  "fontes": {
+    "ledger": "docs/roadmap-master.md",
+    "painel": "docs/roadmap-painel.html",
+    "registro_diretorio": "evidence",
+    "censo_rm": "scripts/censo-pendencias.mjs"
+  },
+  "legendas_lidas": {
+    "status": {
+      "linha": "Legenda de status: **IF** = IMPLEMENTADO E FUNCIONANDO · **ICP** = IMPLEMENTADO COM PROBLEMAS · **PI** = PARCIALMENTE IMPLEMENTADO · **NI** = NÃO IMPLEMENTADO · **NT** = NECESSITA DE TESTES · **NM** = NECESSITA DE MELHORIAS · **PF** = PLANEJADO PARA O FUTURO.",
+      "byte": 266,
+      "codigos": [
+        "IF",
+        "ICP",
+        "PI",
+        "NI",
+        "NT",
+        "NM",
+        "PF"
+      ],
+      "codigo_de_fecho": "IF"
+    },
+    "prioridade": {
+      "linha": "Legenda de prioridade: **C** crítica · **A** alta · **M** média · **B** baixa.",
+      "byte": 83,
+      "codigos": [
+        "C",
+        "A",
+        "M",
+        "B"
+      ]
+    },
+    "codigos_usados_no_inicio_das_celulas": {
+      "PF": 6,
+      "ICP": 1,
+      "NT": 2
+    },
+    "prioridades_fora_da_legenda": {}
+  },
+  "idiomas": {
+    "definidos": 9,
+    "uso_no_corpus": {
+      "fecho datado": 11,
+      "fecho em adendo com a data antes da palavra": 1,
+      "continua + estado": 10,
+      "esta linha nao se fecha": 5,
+      "por provar": 2,
+      "palavra de estado no inicio da celula": 29,
+      "palavra de estado seguida de data": 15,
+      "abreviatura da legenda": 10,
+      "abreviatura IF da legenda": 0
+    },
+    "uso_nos_fixtures": {
+      "fecho datado": 5,
+      "fecho em adendo com a data antes da palavra": 2,
+      "continua + estado": 2,
+      "esta linha nao se fecha": 0,
+      "por provar": 1,
+      "palavra de estado no inicio da celula": 3,
+      "palavra de estado seguida de data": 3,
+      "abreviatura da legenda": 2,
+      "abreviatura IF da legenda": 1
+    },
+    "sem_uso_em_ambos": []
+  },
+  "janela_de_fecho": {
+    "valor": 20,
+    "corpus": {
+      "ocorrencias": 11,
+      "maior_intervalo": 17,
+      "histograma": {
+        "1": 10,
+        "17": 1
+      }
+    },
+    "fixtures": {
+      "ocorrencias": 6,
+      "maior_intervalo": 58,
+      "histograma": {
+        "1": 4,
+        "17": 1,
+        "58": 1
+      }
+    }
+  },
+  "janela_de_adendo": {
+    "valor": 6,
+    "corpus": {
+      "ocorrencias": 1,
+      "maior_intervalo": 2,
+      "histograma": {
+        "2": 1
+      }
+    },
+    "fixtures": {
+      "ocorrencias": 3,
+      "maior_intervalo": 15,
+      "histograma": {
+        "2": 1,
+        "4": 1,
+        "15": 1
+      }
+    }
+  },
+  "linhas_pen": 48,
+  "contagem_por_classe": {
+    "ABERTA": 37,
+    "FECHADA": 10,
+    "DIVERGENTE": 0,
+    "SEM_DECLARACAO": 1
+  },
+  "abertas": [
+    {
+      "id": "PEN-01",
+      "pri": "M",
+      "vencedor": "palavra de estado no inicio da celula @0",
+      "ok": [
+        {
+          "exigido": "nenhum_familia_de_ok_lida",
+          "gatilho": "-"
+        }
+      ],
+      "acao": [
+        {
+          "nome": "browser_ou_cadeia_viva",
+          "ocorrencias": 3,
+          "gatilho": "tempo entre toque e paint (RM-2.1), e"
+        }
+      ],
+      "registo": null
+    },
+    {
+      "id": "PEN-02",
+      "pri": "B",
+      "vencedor": "palavra de estado no inicio da celula @0 2026-11-24",
+      "ok": [
+        {
+          "exigido": "nenhum_familia_de_ok_lida",
+          "gatilho": "-"
+        }
+      ],
+      "acao": [
+        {
+          "nome": "escrita",
+          "ocorrencias": 1,
+          "gatilho": "literal não escreve a consulta."
+        }
+      ],
+      "registo": null
+    },
+    {
+      "id": "PEN-03",
+      "pri": "B",
+      "vencedor": "esta linha nao se fecha @1016",
+      "ok": [
+        {
+          "exigido": "OK de publicacao",
+          "gatilho": "publica"
+        },
+        {
+          "exigido": "decisao humana (produto ou aparelho)",
+          "gatilho": "decis"
+        }
+      ],
+      "acao": [
+        {
+          "nome": "escrita",
+          "ocorrencias": 1,
+          "gatilho": "ha do dono, escrita no `applyId"
+        },
+        {
+          "nome": "browser_ou_cadeia_viva",
+          "ocorrencias": 3,
+          "gatilho": "nferida por medição de browser com cadeia "
+        },
+        {
+          "nome": "nova_versao",
+          "ocorrencias": 1,
+          "gatilho": " do pacote, nova versão conferida p"
+        }
+      ],
+      "registo": null
+    },
+    {
+      "id": "PEN-04",
+      "pri": "B",
+      "vencedor": "palavra de estado no inicio da celula @0 2026-11-24",
+      "ok": [
+        {
+          "exigido": "nenhum_familia_de_ok_lida",
+          "gatilho": "-"
+        }
+      ],
+      "acao": [
+        {
+          "nome": "browser_ou_cadeia_viva",
+          "ocorrencias": 1,
+          "gatilho": "efacto como medição de browser.]**"
+        }
+      ],
+      "registo": null
+    },
+    {
+      "id": "PEN-05",
+      "pri": "M",
+      "vencedor": "palavra de estado no inicio da celula @0 2026-11-24",
+      "ok": [
+        {
+          "exigido": "nenhum_familia_de_ok_lida",
+          "gatilho": "-"
+        }
+      ],
+      "acao": [
+        {
+          "nome": "escrita",
+          "ocorrencias": 1,
+          "gatilho": "dulo vivo é escrita no produto."
+        }
+      ],
+      "registo": null
+    },
+    {
+      "id": "PEN-06",
+      "pri": "M",
+      "vencedor": "esta linha nao se fecha @813",
+      "ok": [
+        {
+          "exigido": "OK de publicacao",
+          "gatilho": "publica"
+        },
+        {
+          "exigido": "decisao humana (produto ou aparelho)",
+          "gatilho": "escolh"
+        }
+      ],
+      "acao": [
+        {
+          "nome": "ok_literal_nomeado",
+          "ocorrencias": 1,
+          "gatilho": "movidos com OK. Enquanto a"
+        },
+        {
+          "nome": "escrita",
+          "ocorrencias": 1,
+          "gatilho": "ha do dono, escrita no CSS e no"
+        },
+        {
+          "nome": "browser_ou_cadeia_viva",
+          "ocorrencias": 3,
+          "gatilho": "nferida por medição de browser com cadeia "
+        },
+        {
+          "nome": "nova_versao",
+          "ocorrencias": 1,
+          "gatilho": " do pacote, nova versão conferida p"
+        }
+      ],
+      "registo": null
+    },
+    {
+      "id": "PEN-07",
+      "pri": "B",
+      "vencedor": "esta linha nao se fecha @797",
+      "ok": [
+        {
+          "exigido": "nenhum_familia_de_ok_lida",
+          "gatilho": "-"
+        }
+      ],
+      "acao": [
+        {
+          "nome": "escrita",
+          "ocorrencias": 1,
+          "gatilho": "plementar é escrita no produto,"
+        },
+        {
+          "nome": "implementar",
+          "ocorrencias": 1,
+          "gatilho": "ontinua PF: implementar é escrita n"
+        }
+      ],
+      "registo": null
+    },
+    {
+      "id": "PEN-08",
+      "pri": "B",
+      "vencedor": "abreviatura da legenda @0 2026-11-24",
+      "ok": [
+        {
+          "exigido": "OK de aplicacao de DDL",
+          "gatilho": "DDL"
+        },
+        {
+          "exigido": "decisao humana (produto ou aparelho)",
+          "gatilho": "decis"
+        }
+      ],
+      "acao": [],
+      "registo": null
+    },
+    {
+      "id": "PEN-09",
+      "pri": "B",
+      "vencedor": "abreviatura da legenda @0",
+      "ok": [
+        {
+          "exigido": "decisao humana (produto ou aparelho)",
+          "gatilho": "físic"
+        }
+      ],
+      "acao": [],
+      "registo": null
+    },
+    {
+      "id": "PEN-10",
+      "pri": "B",
+      "vencedor": "abreviatura da legenda @0",
+      "ok": [
+        {
+          "exigido": "decisao humana (produto ou aparelho)",
+          "gatilho": "físic"
+        }
+      ],
+      "acao": [],
+      "registo": null
+    },
+    {
+      "id": "PEN-11",
+      "pri": "M",
+      "vencedor": "por provar @137 2026-11-14",
+      "ok": [
+        {
+          "exigido": "OK de publicacao",
+          "gatilho": "publica"
+        },
+        {
+          "exigido": "decisao humana (produto ou aparelho)",
+          "gatilho": "aparelho"
+        }
+      ],
+      "acao": [],
+      "registo": null
+    },
+    {
+      "id": "PEN-12",
+      "pri": "M",
+      "vencedor": "abreviatura da legenda @0 2026-11-24",
+      "ok": [
+        {
+          "exigido": "OK de mint ou rotacao de senha",
+          "gatilho": "mint"
+        }
+      ],
+      "acao": [
+        {
+          "nome": "ok_literal_nomeado",
+          "ocorrencias": 1,
+          "gatilho": "rita e pede OK próprio.]**"
+        },
+        {
+          "nome": "escrita",
+          "ocorrencias": 1,
+          "gatilho": "ar/mintar é escrita e pede OK p"
+        }
+      ],
+      "registo": null
+    },
+    {
+      "id": "PEN-13",
+      "pri": "A",
+      "vencedor": "abreviatura da legenda @37 2026-11-12",
+      "ok": [
+        {
+          "exigido": "nenhum_familia_de_ok_lida",
+          "gatilho": "-"
+        }
+      ],
+      "acao": [
+        {
+          "nome": "ok_literal_nomeado",
+          "ocorrencias": 2,
+          "gatilho": "candidata e OK próprios.] "
+        },
+        {
+          "nome": "candidata",
+          "ocorrencias": 3,
+          "gatilho": "ita, e pede candidata e OK própri"
+        },
+        {
+          "nome": "escrita",
+          "ocorrencias": 4,
+          "gatilho": " coluna que escreve o estado, n"
+        },
+        {
+          "nome": "browser_ou_cadeia_viva",
+          "ocorrencias": 1,
+          "gatilho": "ige passada autenticada — escrita,"
+        }
+      ],
+      "registo": null
+    },
+    {
+      "id": "PEN-15",
+      "pri": "M",
+      "vencedor": "abreviatura da legenda @0",
+      "ok": [
+        {
+          "exigido": "nenhum_familia_de_ok_lida",
+          "gatilho": "-"
+        }
+      ],
+      "acao": [
+        {
+          "nome": "ok_literal_nomeado",
+          "ocorrencias": 1,
+          "gatilho": ", logo pede OK próprio. A "
+        },
+        {
+          "nome": "escrita",
+          "ocorrencias": 2,
+          "gatilho": " e executar escreve, logo pede "
+        },
+        {
+          "nome": "re_execucao",
+          "ocorrencias": 3,
+          "gatilho": "s` na 39) — re-correr o cenário é executá-l"
+        },
+        {
+          "nome": "indice_ou_gitignore",
+          "ocorrencias": 1,
+          "gatilho": "rópria do `.gitignore` (`scripts/"
+        }
+      ],
+      "registo": null
+    },
+    {
+      "id": "PEN-16",
+      "pri": "A",
+      "vencedor": "abreviatura da legenda @0 2026-11-24",
+      "ok": [
+        {
+          "exigido": "decisao humana (produto ou aparelho)",
+          "gatilho": "decis"
+        }
+      ],
+      "acao": [
+        {
+          "nome": "ok_literal_nomeado",
+          "ocorrencias": 1,
+          "gatilho": "e decisão e OK próprios.]"
+        }
+      ],
+      "registo": null
+    },
+    {
+      "id": "PEN-17",
+      "pri": "B",
+      "vencedor": "abreviatura da legenda @0 2026-11-24",
+      "ok": [
+        {
+          "exigido": "OK de aplicacao de DDL",
+          "gatilho": "grant"
+        }
+      ],
+      "acao": [
+        {
+          "nome": "ok_literal_nomeado",
+          "ocorrencias": 1,
+          "gatilho": " e DDL pede OK próprio.]"
+        },
+        {
+          "nome": "escrita",
+          "ocorrencias": 3,
+          "gatilho": "a em 23/11. Escrita em `notific"
+        }
+      ],
+      "registo": null
+    },
+    {
+      "id": "PEN-18",
+      "pri": "M",
+      "vencedor": "palavra de estado no inicio da celula @0 2026-11-18",
+      "ok": [
+        {
+          "exigido": "OK de publicacao",
+          "gatilho": "deploy"
+        }
+      ],
+      "acao": [
+        {
+          "nome": "candidata",
+          "ocorrencias": 1,
+          "gatilho": "/11 sobre a candidata v134 como c"
+        },
+        {
+          "nome": "escrita",
+          "ocorrencias": 2,
+          "gatilho": "a com régua escrita Aberto — RM"
+        }
+      ],
+      "registo": null
+    },
+    {
+      "id": "PEN-19",
+      "pri": "B",
+      "vencedor": "palavra de estado no inicio da celula @0 2026-11-18",
+      "ok": [
+        {
+          "exigido": "OK de publicacao",
+          "gatilho": "publica"
+        }
+      ],
+      "acao": [
+        {
+          "nome": "candidata",
+          "ocorrencias": 2,
+          "gatilho": "` (1,2 s) — candidata pronta, não"
+        }
+      ],
+      "registo": null
+    },
+    {
+      "id": "PEN-20",
+      "pri": "M",
+      "vencedor": "palavra de estado no inicio da celula @0",
+      "ok": [
+        {
+          "exigido": "nenhum_familia_de_ok_lida",
+          "gatilho": "-"
+        }
+      ],
+      "acao": [
+        {
+          "nome": "ok_literal_nomeado",
+          "ocorrencias": 1,
+          "gatilho": "ore` e pede OK próprio.]"
+        },
+        {
+          "nome": "indice_ou_gitignore",
+          "ocorrencias": 2,
+          "gatilho": "er as peças para o índice e dar-lhes "
+        }
+      ],
+      "registo": null
+    },
+    {
+      "id": "PEN-21",
+      "pri": "B",
+      "vencedor": "palavra de estado no inicio da celula @0 2026-11-24",
+      "ok": [
+        {
+          "exigido": "decisao humana (produto ou aparelho)",
+          "gatilho": "decis"
+        }
+      ],
+      "acao": [
+        {
+          "nome": "ok_literal_nomeado",
+          "ocorrencias": 1,
+          "gatilho": "e decisão e OK próprios.]"
+        },
+        {
+          "nome": "escrita",
+          "ocorrencias": 1,
+          "gatilho": "em prosa: é escrever o instrumen"
+        }
+      ],
+      "registo": null
+    },
+    {
+      "id": "PEN-23",
+      "pri": "A",
+      "vencedor": "esta linha nao se fecha @1947",
+      "ok": [
+        {
+          "exigido": "OK de aplicacao de DDL",
+          "gatilho": "DDL"
+        },
+        {
+          "exigido": "decisao humana (produto ou aparelho)",
+          "gatilho": "opção"
+        }
+      ],
+      "acao": [
+        {
+          "nome": "ok_literal_nomeado",
+          "ocorrencias": 1,
+          "gatilho": "peça (b) do OK «DDL munici"
+        }
+      ],
+      "registo": null
+    },
+    {
+      "id": "PEN-28",
+      "pri": "A",
+      "vencedor": "palavra de estado no inicio da celula @0 2026-11-12",
+      "ok": [
+        {
+          "exigido": "OK de publicacao",
+          "gatilho": "publica"
+        }
+      ],
+      "acao": [],
+      "registo": null
+    },
+    {
+      "id": "PEN-29",
+      "pri": "M",
+      "vencedor": "continua + estado @1761",
+      "ok": [
+        {
+          "exigido": "OK de aplicacao de DDL",
+          "gatilho": "DDL"
+        },
+        {
+          "exigido": "OK de mint ou rotacao de senha",
+          "gatilho": "senha"
+        }
+      ],
+      "acao": [
+        {
+          "nome": "ok_literal_nomeado",
+          "ocorrencias": 2,
+          "gatilho": "ql`) e pede OK.]** **[Fech"
+        },
+        {
+          "nome": "candidata",
+          "ocorrencias": 1,
+          "gatilho": "-calendario-candidata.sql`) e ped"
+        },
+        {
+          "nome": "escrita",
+          "ocorrencias": 1,
+          "gatilho": "política de escrita `bfr_school"
+        }
+      ],
+      "registo": null
+    },
+    {
+      "id": "PEN-33",
+      "pri": "M",
+      "vencedor": "continua + estado @3195 2026-11-25",
+      "ok": [
+        {
+          "exigido": "OK de publicacao",
+          "gatilho": "publica"
+        },
+        {
+          "exigido": "OK de aplicacao de DDL",
+          "gatilho": "DDL"
+        },
+        {
+          "exigido": "OK de mint ou rotacao de senha",
+          "gatilho": "mint"
+        }
+      ],
+      "acao": [
+        {
+          "nome": "ok_literal_nomeado",
+          "ocorrencias": 6,
+          "gatilho": "v121**, sob OK literal «pu"
+        },
+        {
+          "nome": "candidata",
+          "ocorrencias": 4,
+          "gatilho": "de lá que a candidata tira o valo"
+        },
+        {
+          "nome": "escrita",
+          "ocorrencias": 2,
+          "gatilho": " **0 DDL, 0 escrita em banco, 0"
+        }
+      ],
+      "registo": null
+    },
+    {
+      "id": "PEN-35",
+      "pri": "B",
+      "vencedor": "continua + estado @7116",
+      "ok": [
+        {
+          "exigido": "OK de publicacao",
+          "gatilho": "deploy"
+        },
+        {
+          "exigido": "OK de mint ou rotacao de senha",
+          "gatilho": "mint"
+        }
+      ],
+      "acao": [
+        {
+          "nome": "ok_literal_nomeado",
+          "ocorrencias": 2,
+          "gatilho": "a de mint + OK próprios. N"
+        },
+        {
+          "nome": "candidata",
+          "ocorrencias": 1,
+          "gatilho": "`htmlMd5`), candidata em disco e "
+        },
+        {
+          "nome": "escrita",
+          "ocorrencias": 1,
+          "gatilho": " **Ressalva escrita 17/11 nos t"
+        },
+        {
+          "nome": "browser_ou_cadeia_viva",
+          "ocorrencias": 4,
+          "gatilho": " a passagem autenticada precisa de"
+        }
+      ],
+      "registo": null
+    },
+    {
+      "id": "PEN-36",
+      "pri": "M",
+      "vencedor": "palavra de estado seguida de data @8719 2026-11-22",
+      "ok": [
+        {
+          "exigido": "OK de publicacao",
+          "gatilho": "publica"
+        },
+        {
+          "exigido": "OK de aplicacao de DDL",
+          "gatilho": "DDL"
+        },
+        {
+          "exigido": "OK de mint ou rotacao de senha",
+          "gatilho": "mint"
+        },
+        {
+          "exigido": "decisao humana (produto ou aparelho)",
+          "gatilho": "decis"
+        }
+      ],
+      "acao": [
+        {
+          "nome": "ok_literal_nomeado",
+          "ocorrencias": 5,
+          "gatilho": "+ browser + OK** próprios "
+        },
+        {
+          "nome": "candidata",
+          "ocorrencias": 1,
+          "gatilho": "rrências na candidata. O texto or"
+        },
+        {
+          "nome": "escrita",
+          "ocorrencias": 1,
+          "gatilho": "a em causa (escrita em `bfr_mun"
+        },
+        {
+          "nome": "browser_ou_cadeia_viva",
+          "ocorrencias": 3,
+          "gatilho": "as o diário autenticado de 17/11 ("
+        }
+      ],
+      "registo": null
+    },
+    {
+      "id": "PEN-37",
+      "pri": "A",
+      "vencedor": "palavra de estado seguida de data @2 2026-11-18",
+      "ok": [
+        {
+          "exigido": "OK de aplicacao de DDL",
+          "gatilho": "grant"
+        }
+      ],
+      "acao": [
+        {
+          "nome": "ok_literal_nomeado",
+          "ocorrencias": 1,
+          "gatilho": "ado — exige OK literal, po"
+        },
+        {
+          "nome": "escrita",
+          "ocorrencias": 1,
+          "gatilho": "OKE` não se escreve por argumen"
+        },
+        {
+          "nome": "browser_ou_cadeia_viva",
+          "ocorrencias": 1,
+          "gatilho": "emanescente autenticado passa a se"
+        }
+      ],
+      "registo": null
+    },
+    {
+      "id": "PEN-38",
+      "pri": "A",
+      "vencedor": "palavra de estado seguida de data @2 2026-11-18",
+      "ok": [
+        {
+          "exigido": "OK de aplicacao de DDL",
+          "gatilho": "polic"
+        },
+        {
+          "exigido": "OK de mint ou rotacao de senha",
+          "gatilho": "senha"
+        },
+        {
+          "exigido": "decisao humana (produto ou aparelho)",
+          "gatilho": "decis"
+        }
+      ],
+      "acao": [
+        {
+          "nome": "ok_literal_nomeado",
+          "ocorrencias": 2,
+          "gatilho": "m com o seu OK: aplicar o "
+        },
+        {
+          "nome": "candidata",
+          "ocorrencias": 9,
+          "gatilho": "atálogo e a candidata existe em d"
+        }
+      ],
+      "registo": "p73-municipal-aplicacao-PEN-38-20261120T224555Z.json"
+    },
+    {
+      "id": "PEN-39",
+      "pri": "M",
+      "vencedor": "continua + estado @4751",
+      "ok": [
+        {
+          "exigido": "OK de publicacao",
+          "gatilho": "publica"
+        },
+        {
+          "exigido": "OK de aplicacao de DDL",
+          "gatilho": "REVOKE"
+        },
+        {
+          "exigido": "decisao humana (produto ou aparelho)",
+          "gatilho": "decis"
+        }
+      ],
+      "acao": [
+        {
+          "nome": "ok_literal_nomeado",
+          "ocorrencias": 3,
+          "gatilho": "icar o DDL (OK literal) e "
+        },
+        {
+          "nome": "candidata",
+          "ocorrencias": 4,
+          "gatilho": "unicípio?». Candidata não aplicad"
+        },
+        {
+          "nome": "escrita",
+          "ocorrencias": 4,
+          "gatilho": "m de ser re-escrita, porque no "
+        },
+        {
+          "nome": "browser_ou_cadeia_viva",
+          "ocorrencias": 1,
+          "gatilho": " **não** ao autenticado (`anon=fal"
+        }
+      ],
+      "registo": "p73-municipal-aplicacao-PEN-39-20261120T225656Z.json"
+    },
+    {
+      "id": "PEN-41",
+      "pri": "A",
+      "vencedor": "continua + estado @3721",
+      "ok": [
+        {
+          "exigido": "OK de aplicacao de DDL",
+          "gatilho": "polic"
+        },
+        {
+          "exigido": "decisao humana (produto ou aparelho)",
+          "gatilho": "escolh"
+        }
+      ],
+      "acao": [
+        {
+          "nome": "ok_literal_nomeado",
+          "ocorrencias": 1,
+          "gatilho": " precisa de OK literal nov"
+        },
+        {
+          "nome": "candidata",
+          "ocorrencias": 5,
+          "gatilho": "é objeto da candidata da PEN-38, "
+        }
+      ],
+      "registo": "p73-municipal-aplicacao-PEN-41-20261122T062605Z.json"
+    },
+    {
+      "id": "PEN-42",
+      "pri": "A",
+      "vencedor": "continua + estado @9292",
+      "ok": [
+        {
+          "exigido": "OK de publicacao",
+          "gatilho": "Publica"
+        },
+        {
+          "exigido": "OK de aplicacao de DDL",
+          "gatilho": "APLICAR"
+        },
+        {
+          "exigido": "decisao humana (produto ou aparelho)",
+          "gatilho": "escolh"
+        }
+      ],
+      "acao": [
+        {
+          "nome": "ok_literal_nomeado",
+          "ocorrencias": 1,
+          "gatilho": "cada um com OK literal pró"
+        },
+        {
+          "nome": "candidata",
+          "ocorrencias": 4,
+          "gatilho": ", 6 570 ms, candidata 4 841 B `3d"
+        },
+        {
+          "nome": "escrita",
+          "ocorrencias": 1,
+          "gatilho": "vez de se reescrever o significa"
+        },
+        {
+          "nome": "nova_versao",
+          "ocorrencias": 1,
+          "gatilho": "blicação de nova versão do ar, `git"
+        }
+      ],
+      "registo": "p73-municipal-aplicacao-PEN-42-20261122T014151Z.json"
+    },
+    {
+      "id": "PEN-43",
+      "pri": "M",
+      "vencedor": "palavra de estado seguida de data @2 2026-11-20",
+      "ok": [
+        {
+          "exigido": "OK de publicacao",
+          "gatilho": "publica"
+        },
+        {
+          "exigido": "OK de aplicacao de DDL",
+          "gatilho": "REVOKE"
+        },
+        {
+          "exigido": "decisao humana (produto ou aparelho)",
+          "gatilho": "escolh"
+        }
+      ],
+      "acao": [
+        {
+          "nome": "ok_literal_nomeado",
+          "ocorrencias": 2,
+          "gatilho": " de DDL com OK literal nov"
+        },
+        {
+          "nome": "candidata",
+          "ocorrencias": 8,
+          "gatilho": " PUBLIC` da candidata tira o pseu"
+        },
+        {
+          "nome": "escrita",
+          "ocorrencias": 5,
+          "gatilho": "ima.mjs` (0 escrita), que (i) l"
+        }
+      ],
+      "registo": "p73-municipal-aplicacao-PEN-43-20261121T073148Z.json"
+    },
+    {
+      "id": "PEN-44",
+      "pri": "M",
+      "vencedor": "palavra de estado seguida de data @2 2026-11-21",
+      "ok": [
+        {
+          "exigido": "OK de publicacao",
+          "gatilho": "publica"
+        },
+        {
+          "exigido": "OK de aplicacao de DDL",
+          "gatilho": "GRANT"
+        },
+        {
+          "exigido": "OK de mint ou rotacao de senha",
+          "gatilho": "senha"
+        },
+        {
+          "exigido": "decisao humana (produto ou aparelho)",
+          "gatilho": "escolh"
+        }
+      ],
+      "acao": [
+        {
+          "nome": "ok_literal_nomeado",
+          "ocorrencias": 2,
+          "gatilho": " de DDL com OK literal nov"
+        },
+        {
+          "nome": "candidata",
+          "ocorrencias": 15,
+          "gatilho": "o («PEN-44: candidata dos 27 via "
+        },
+        {
+          "nome": "escrita",
+          "ocorrencias": 10,
+          "gatilho": "didas, 0 de escrita) no catálog"
+        }
+      ],
+      "registo": "p73-municipal-aplicacao-PEN-44-20261121T073215Z.json"
+    },
+    {
+      "id": "PEN-45",
+      "pri": "M",
+      "vencedor": "palavra de estado seguida de data @2 2026-11-21",
+      "ok": [
+        {
+          "exigido": "OK de publicacao",
+          "gatilho": "publica"
+        },
+        {
+          "exigido": "decisao humana (produto ou aparelho)",
+          "gatilho": "opção"
+        }
+      ],
+      "acao": [
+        {
+          "nome": "ok_literal_nomeado",
+          "ocorrencias": 1,
+          "gatilho": "cada um com OK próprio: ad"
+        },
+        {
+          "nome": "escrita",
+          "ocorrencias": 1,
+          "gatilho": "a. Foram re-escritas como previ"
+        }
+      ],
+      "registo": null
+    },
+    {
+      "id": "PEN-46",
+      "pri": "M",
+      "vencedor": "continua + estado @2676",
+      "ok": [
+        {
+          "exigido": "OK de publicacao",
+          "gatilho": "publica"
+        },
+        {
+          "exigido": "OK de aplicacao de DDL",
+          "gatilho": "DDL"
+        }
+      ],
+      "acao": [
+        {
+          "nome": "ok_literal_nomeado",
+          "ocorrencias": 1,
+          "gatilho": "ambas pedem OK literal e p"
+        }
+      ],
+      "registo": null
+    },
+    {
+      "id": "PEN-47",
+      "pri": "B",
+      "vencedor": "palavra de estado seguida de data @2 2026-11-21",
+      "ok": [
+        {
+          "exigido": "OK de publicacao",
+          "gatilho": "publica"
+        },
+        {
+          "exigido": "OK de aplicacao de DDL",
+          "gatilho": "polic"
+        },
+        {
+          "exigido": "decisao humana (produto ou aparelho)",
+          "gatilho": "decis"
+        }
+      ],
+      "acao": [
+        {
+          "nome": "ok_literal_nomeado",
+          "ocorrencias": 2,
+          "gatilho": "cada um com OK próprio: es"
+        },
+        {
+          "nome": "escrita",
+          "ocorrencias": 4,
+          "gatilho": "de máquina, escritas por um pap"
+        },
+        {
+          "nome": "browser_ou_cadeia_viva",
+          "ocorrencias": 1,
+          "gatilho": "a e escrita autenticadas e uma ten"
+        }
+      ],
+      "registo": null
+    },
+    {
+      "id": "PEN-48",
+      "pri": "B",
+      "vencedor": "esta linha nao se fecha @6433",
+      "ok": [
+        {
+          "exigido": "OK de publicacao",
+          "gatilho": "publica"
+        },
+        {
+          "exigido": "OK de aplicacao de DDL",
+          "gatilho": "REVOKE"
+        },
+        {
+          "exigido": "OK de mint ou rotacao de senha",
+          "gatilho": "mint"
+        },
+        {
+          "exigido": "decisao humana (produto ou aparelho)",
+          "gatilho": "escolh"
+        }
+      ],
+      "acao": [
+        {
+          "nome": "ok_literal_nomeado",
+          "ocorrencias": 2,
+          "gatilho": " §2.12. **O OK que falta é"
+        },
+        {
+          "nome": "candidata",
+          "ocorrencias": 12,
+          "gatilho": "LIGHT_VERDE_CANDIDATA` nos 14 por"
+        },
+        {
+          "nome": "escrita",
+          "ocorrencias": 5,
+          "gatilho": " que a peça escreve não o tira "
+        },
+        {
+          "nome": "nova_versao",
+          "ocorrencias": 1,
+          "gatilho": "blicação de nova versão do ar, nem "
+        }
+      ],
+      "registo": "p73-municipal-aplicacao-PEN-48-20261122T060246Z.json"
+    }
+  ],
+  "divergentes": [],
+  "sem_declaracao": [
+    {
+      "id": "PEN-22",
+      "pri": "A",
+      "recorte": "Portão de re-verificação criado 12/11 (`scripts/fin2-higiene-rm62.mjs`): censo medido **147 funções · EXECUTE a anon em 57 · a public em 56 · 0 com `proacl` nula** (`evid"
+    }
+  ],
+  "fechadas": [
+    {
+      "id": "PEN-14",
+      "vencedor": "fecho datado @0 2026-11-12"
+    },
+    {
+      "id": "PEN-24",
+      "vencedor": "fecho datado @483 2026-11-19"
+    },
+    {
+      "id": "PEN-25",
+      "vencedor": "fecho datado @3 2026-11-15"
+    },
+    {
+      "id": "PEN-26",
+      "vencedor": "fecho datado @1010 2026-11-15"
+    },
+    {
+      "id": "PEN-27",
+      "vencedor": "fecho datado @2 2026-11-14"
+    },
+    {
+      "id": "PEN-30",
+      "vencedor": "fecho datado @483 2026-11-19"
+    },
+    {
+      "id": "PEN-31",
+      "vencedor": "fecho datado @2 2026-11-13"
+    },
+    {
+      "id": "PEN-32",
+      "vencedor": "fecho datado @1061 2026-11-13"
+    },
+    {
+      "id": "PEN-34",
+      "vencedor": "fecho datado @2 2026-11-15"
+    },
+    {
+      "id": "PEN-40",
+      "vencedor": "fecho em adendo com a data antes da palavra @5188 2026-11-21"
+    }
+  ],
+  "fora_das_quatro_classes": [],
+  "fora_de_forma": [],
+  "registro": {
+    "nome_varridos": 8,
+    "com_aplicacao": [
+      "PEN-38",
+      "PEN-39",
+      "PEN-41",
+      "PEN-42",
+      "PEN-43",
+      "PEN-44",
+      "PEN-48"
+    ],
+    "descartados": [
+      "p73-municipal-aplicacao-PEN-41-20261122T062032Z-ABORTADA-42601-current_role-sem-aspas.json"
+    ],
+    "registos": {
+      "PEN-38": {
+        "registo": "p73-municipal-aplicacao-PEN-38-20261120T224555Z.json",
+        "em": "2026-11-20T22:46:05.047Z",
+        "ok_literal_usado": "APLICAR PEN-38 NO BANCO",
+        "preflight": 1
+      },
+      "PEN-39": {
+        "registo": "p73-municipal-aplicacao-PEN-39-20261120T225656Z.json",
+        "em": "2026-11-20T22:57:04.508Z",
+        "ok_literal_usado": "APLICAR PEN-39 NO BANCO",
+        "preflight": 0
+      },
+      "PEN-41": {
+        "registo": "p73-municipal-aplicacao-PEN-41-20261122T062605Z.json",
+        "em": "2026-11-22T06:26:20.138Z",
+        "ok_literal_usado": "APLICAR PEN-41 NO BANCO",
+        "preflight": 0
+      },
+      "PEN-42": {
+        "registo": "p73-municipal-aplicacao-PEN-42-20261122T014151Z.json",
+        "em": "2026-11-22T01:41:56.784Z",
+        "ok_literal_usado": "APLICAR PEN-42 NO BANCO",
+        "preflight": 0
+      },
+      "PEN-43": {
+        "registo": "p73-municipal-aplicacao-PEN-43-20261121T073148Z.json",
+        "em": "2026-11-21T07:31:57.606Z",
+        "ok_literal_usado": "APLICAR PEN-43 NO BANCO",
+        "preflight": 0
+      },
+      "PEN-44": {
+        "registo": "p73-municipal-aplicacao-PEN-44-20261121T073215Z.json",
+        "em": "2026-11-21T07:32:24.801Z",
+        "ok_literal_usado": "APLICAR PEN-44 NO BANCO",
+        "preflight": 1
+      },
+      "PEN-48": {
+        "registo": "p73-municipal-aplicacao-PEN-48-20261122T060246Z.json",
+        "em": "2026-11-22T06:02:55.117Z",
+        "ok_literal_usado": "APLICAR PEN-48 NO BANCO",
+        "preflight": 1
+      }
+    }
+  },
+  "painel": {
+    "pen_do_painel": 48,
+    "pen_do_paragrafo_15": 48,
+    "linhas_lidas": 48
+  },
+  "rm_13": {
+    "do_produtor": 45,
+    "lidas_aqui": 45,
+    "abertas_pelo_produtor": 35,
+    "censo_falhou": null
+  },
+  "contador_do_ledger": {
+    "linhas_pen": 48,
+    "ids_unicos": 48
+  },
+  "vocabulario_de_ok_usado": [
+    "APLICAR PEN-38 NO BANCO",
+    "APLICAR PEN-39 NO BANCO",
+    "APLICAR PEN-41 NO BANCO",
+    "APLICAR PEN-42 NO BANCO",
+    "APLICAR PEN-43 NO BANCO",
+    "APLICAR PEN-44 NO BANCO",
+    "APLICAR PEN-48 NO BANCO"
+  ],
+  "vocabulario_de_acao_nomeada": {
+    "definidas": [
+      "ok_literal_nomeado",
+      "candidata",
+      "escrita",
+      "browser_ou_cadeia_viva",
+      "re_execucao",
+      "indice_ou_gitignore",
+      "implementar",
+      "nova_versao"
+    ],
+    "celulas_lidas": 48,
+    "sem_familia_de_ok": 8,
+    "uso_no_corpus": {
+      "ok_literal_nomeado": 31,
+      "candidata": 19,
+      "escrita": 27,
+      "browser_ou_cadeia_viva": 12,
+      "re_execucao": 1,
+      "indice_ou_gitignore": 2,
+      "implementar": 1,
+      "nova_versao": 4
+    },
+    "uso_na_classe_sem_familia_de_ok": {
+      "ok_literal_nomeado": 3,
+      "candidata": 1,
+      "escrita": 5,
+      "browser_ou_cadeia_viva": 3,
+      "re_execucao": 1,
+      "indice_ou_gitignore": 2,
+      "implementar": 1,
+      "nova_versao": 0
+    },
+    "uso_nos_fixtures": {
+      "ok_literal_nomeado": 1,
+      "candidata": 2,
+      "escrita": 2,
+      "browser_ou_cadeia_viva": 1,
+      "re_execucao": 1,
+      "indice_ou_gitignore": 1,
+      "implementar": 1,
+      "nova_versao": 1
+    },
+    "fixtures_que_falham": [],
+    "controlo_negativo": {
+      "frase": "o censo registado bate com a ficha e nao ha mais nada a dizer",
+      "familias_que_disparam": []
+    },
+    "faces_da_classe_sem_familia_de_ok": {
+      "com_acao_nomeada": [
+        "PEN-01",
+        "PEN-02",
+        "PEN-04",
+        "PEN-05",
+        "PEN-07",
+        "PEN-13",
+        "PEN-15",
+        "PEN-20"
+      ],
+      "sem_passo_nomeado": []
+    },
+    "particao_das_quatro_faces": {
+      "so_familia_de_ok": [
+        "PEN-08",
+        "PEN-09",
+        "PEN-10",
+        "PEN-11",
+        "PEN-14",
+        "PEN-22",
+        "PEN-28"
+      ],
+      "familia_de_ok_e_acao_nomeada": [
+        "PEN-03",
+        "PEN-06",
+        "PEN-12",
+        "PEN-16",
+        "PEN-17",
+        "PEN-18",
+        "PEN-19",
+        "PEN-21",
+        "PEN-23",
+        "PEN-24",
+        "PEN-25",
+        "PEN-26",
+        "PEN-27",
+        "PEN-29",
+        "PEN-30",
+        "PEN-31",
+        "PEN-32",
+        "PEN-33",
+        "PEN-34",
+        "PEN-35",
+        "PEN-36",
+        "PEN-37",
+        "PEN-38",
+        "PEN-39",
+        "PEN-40",
+        "PEN-41",
+        "PEN-42",
+        "PEN-43",
+        "PEN-44",
+        "PEN-45",
+        "PEN-46",
+        "PEN-47",
+        "PEN-48"
+      ],
+      "so_acao_nomeada": [
+        "PEN-01",
+        "PEN-02",
+        "PEN-04",
+        "PEN-05",
+        "PEN-07",
+        "PEN-13",
+        "PEN-15",
+        "PEN-20"
+      ],
+      "nenhuma_das_duas": []
+    }
+  },
+  "fixtures": {
+    "definidas": 16,
+    "disparados": {
+      "ABERTA": 6,
+      "FECHADA": 5,
+      "DIVERGENTE": 2,
+      "SEM_DECLARACAO": 3
+    },
+    "falhas": []
+  },
+  "abertas_com_registo": [
+    "PEN-38",
+    "PEN-39",
+    "PEN-41",
+    "PEN-42",
+    "PEN-43",
+    "PEN-44",
+    "PEN-48"
+  ],
+  "portoes": {
+    "total": 19,
+    "falhas": 0,
+    "lista": [
+      {
+        "nome": "todas_as_linhas_pen_tem_cinco_celulas",
+        "obtido": 0,
+        "esperado": 0,
+        "ok": true
+      },
+      {
+        "nome": "nenhuma_linha_pen_fica_fora_das_quatro_classes_registadas",
+        "obtido": 0,
+        "esperado": 0,
+        "ok": true
+      },
+      {
+        "nome": "as_quatro_classes_imprimem_se_mesmo_quando_vazias",
+        "obtido": [
+          4,
+          4
+        ],
+        "esperado": [
+          4,
+          4
+        ],
+        "ok": true
+      },
+      {
+        "nome": "cada_fixture_produz_a_classe_esperada_pelo_desenho",
+        "obtido": 0,
+        "esperado": 0,
+        "ok": true
+      },
+      {
+        "nome": "cada_idiom_de_estado_tem_uso_medido_no_corpus_ou_em_fixture",
+        "obtido": [],
+        "esperado": [],
+        "ok": true
+      },
+      {
+        "nome": "a_janela_do_fecho_cobre_o_maior_intervalo_medido_no_corpus",
+        "obtido": [
+          true,
+          true
+        ],
+        "esperado": [
+          true,
+          true
+        ],
+        "ok": true
+      },
+      {
+        "nome": "a_janela_do_adendo_cobre_o_maior_intervalo_medido_no_corpus",
+        "obtido": [
+          true,
+          true
+        ],
+        "esperado": [
+          true,
+          true
+        ],
+        "ok": true
+      },
+      {
+        "nome": "as_duas_legendas_da_seccao_12_foram_lidas_e_deram_codigos",
+        "obtido": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "esperado": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "ok": true
+      },
+      {
+        "nome": "todo_codigo_usado_no_inicio_de_celula_consta_na_legenda_de_status",
+        "obtido": [],
+        "esperado": [],
+        "ok": true
+      },
+      {
+        "nome": "toda_prioridade_lida_bate_com_a_legenda_de_prioridade",
+        "obtido": [],
+        "esperado": [],
+        "ok": true
+      },
+      {
+        "nome": "nenhum_registo_de_aplicacao_aponta_para_pen_inexistente",
+        "obtido": 0,
+        "esperado": 0,
+        "ok": true
+      },
+      {
+        "nome": "o_censo_do_painel_bate_com_o_paragrafo_15_e_com_as_linhas_lidas",
+        "obtido": [
+          48,
+          48,
+          48
+        ],
+        "esperado": [
+          48,
+          48,
+          48
+        ],
+        "ok": true
+      },
+      {
+        "nome": "o_produtor_e_a_minha_leitura_do_seccao_13_contam_as_mesmas_linhas_rm",
+        "obtido": [
+          45,
+          45
+        ],
+        "esperado": [
+          45,
+          45
+        ],
+        "ok": true
+      },
+      {
+        "nome": "o_meu_censo_bate_com_o_contador_versionado_do_ledger",
+        "obtido": [
+          48,
+          48
+        ],
+        "esperado": [
+          48,
+          48
+        ],
+        "ok": true
+      },
+      {
+        "nome": "todo_registo_de_aplicacao_traz_a_frase_de_ok_com_que_foi_autorizado",
+        "obtido": [
+          7,
+          7
+        ],
+        "esperado": [
+          7,
+          7
+        ],
+        "ok": true
+      },
+      {
+        "nome": "cada_familia_de_acao_nomeada_dispara_no_fixture_que_lhe_foi_posto",
+        "obtido": [],
+        "esperado": [],
+        "ok": true
+      },
+      {
+        "nome": "nenhuma_familia_de_acao_nomeada_dispara_no_controlo_negativo",
+        "obtido": [],
+        "esperado": [],
+        "ok": true
+      },
+      {
+        "nome": "a_classe_sem_familia_de_ok_e_exactamente_a_soma_das_suas_duas_faces",
+        "obtido": [
+          8,
+          8
+        ],
+        "esperado": [
+          8,
+          8
+        ],
+        "ok": true
+      },
+      {
+        "nome": "as_quatro_familias_de_ok_do_desenho_continuam_os_quatro_nomes_e_a_mesma_ordem",
+        "obtido": [
+          "OK de publicacao",
+          "OK de aplicacao de DDL",
+          "OK de mint ou rotacao de senha",
+          "decisao humana (produto ou aparelho)"
+        ],
+        "esperado": [
+          "OK de publicacao",
+          "OK de aplicacao de DDL",
+          "OK de mint ou rotacao de senha",
+          "decisao humana (produto ou aparelho)"
+        ],
+        "ok": true
+      }
+    ]
+  },
+  "o_que_prova": [
+    "que o ledger tem N linhas PEN de cinco celulas e em que classe cada celula cai pelo sinal mais recente, com a posicao e a data desse sinal",
+    "quais dessas linhas tem registo de aplicacao no banco em disco e com que frase de OK",
+    "que as tres contagens de pendencias (painel, paragrafo 15, linhas lidas) batem ou divergem",
+    "que o classificador dispara em todas as 16 formas postas em fixture",
+    "que cada um dos 9 idioms tem uso medido no corpus ou em fixture",
+    "que a janela de 20 caracteres entre a palavra de fecho e a data cobre o maior intervalo medido no corpus (17) e que tem fixture acima dela (58) para nao virar ramo morto",
+    "que a janela de 6 caracteres entre a marca de data do adendo e a palavra de fecho cobre o maior intervalo medido no corpus (2) e que tem fixture acima dela (15)",
+    "que das 48 celulas lidas 8 nao dizem nenhuma das quatro familias de OK, e que dessas 8 nomeiam na sua propria prosa um passo que nao e meu e 0 nao nomeiam passo nenhum, com as duas listas impressas mesmo vazias",
+    "que cada uma das 8 familias de accao nomeada dispara no fixture que lhe foi posto e que nenhuma delas dispara no controlo negativo"
+  ],
+  "o_que_NAO_prova": [
+    "que a classe do ledger seja o estado vivo do produto: a fonte e prosa versionada, nao o ar",
+    "que o OK exigido por cada linha seja suficiente: a coluna e a assinatura lexical do texto, a frase concreta pertence ao utilizador",
+    "que as linhas RM-x.y abertas estejam bem ou mal: o censo so conta e classifica por sinais do texto",
+    "que uma celula SEM_DECLARACAO esteja fechada ou aberta: diz so que o texto nao declara estado em nenhum dos idioms medidos",
+    "que um fecho declarado no texto seja verdadeiro: a regua reconhece a forma «palavra de fecho + data» e a forma «adendo com a data antes da palavra», mas nao confere a corrida citada — foi assim que a PEN-36 pôde declarar as duas metades fechadas enquanto o ar publicado mantinha cinco rotulos com dois ou mais usos, dos sete nomes listados em 17/11 (medido por scripts/p134-rotulos-da-secretaria-no-ar.mjs)",
+    "que o intervalo entre a palavra e a data esteja dentro da janela numa forma de escrita nova: acima de 20 caracteres, com a data depois da palavra, ou acima de 6 caracteres de pura pontuacao, com a data antes dela, a data passa a nao contar, e os portoes das duas janelas sao o que da o aviso",
+    "que a etiqueta nenhum_familia_de_ok_lida signifique que a linha se fecha por leitura: ela diz so que nenhuma das quatro familias de OK casou no texto. O passo que a celula nomeia esta publicado em vocabulario_de_acao_nomeada.faces_da_classe_sem_familia_de_ok.com_acao_nomeada; e uma celula que nao aparece em nenhuma das duas listas nao prova que nada falte — prova que a prosa do ledger nao o disse, que e um defeito de descricao e nao de regua"
+  ],
+  "veredito": "P133_INVENTARIO_MEDIDO 19/0 · esperanca=medir"
+}

@@ -1,0 +1,1095 @@
+{
+ "peca": "p175",
+ "rotulo": "FOLHA DAS DECISOES HUMANAS",
+ "em": "2026-11-25T08:18:47.948Z",
+ "sufixo": "sm62d",
+ "emissor_bytes": 44748,
+ "emissor_md5": "f97e176250ec671ee95442ad2ea22089",
+ "fontes": {
+  "p133_para_as_predicas": "scripts/p133-inventario-das-pendencias-abertas.mjs",
+  "predica_de_fatiamento_lida": "const rows = linhas.filter((l) => /^\\| PEN-\\d+ \\|/.test(l));",
+  "ledger": "docs/roadmap-master.md",
+  "registro_p133": "evidence/p133-inventario-das-pendencias-abertas-22-11-sm62d.json",
+  "captura_p171": "evidence/p171-agrupamento-das-abertas-por-quem-as-fecha-sm62d.txt",
+  "tabela_de_insumos": "seccao 12.1 do ledger",
+  "regras_de_rm_lidas_como_constante_da_peca": [
+   "\\bRM-\\d+\\.\\d+\\b",
+   "\\bRM\\d+-[A-Z]\\d\\b"
+  ]
+ },
+ "grupo_medido": {
+  "rotulo": "decisao humana (produto ou aparelho)",
+  "ids": [
+   "PEN-03",
+   "PEN-06",
+   "PEN-08",
+   "PEN-09",
+   "PEN-10",
+   "PEN-11",
+   "PEN-16",
+   "PEN-21",
+   "PEN-23",
+   "PEN-36",
+   "PEN-38",
+   "PEN-39",
+   "PEN-41",
+   "PEN-42",
+   "PEN-43",
+   "PEN-44",
+   "PEN-45",
+   "PEN-47",
+   "PEN-48"
+  ],
+  "familias_lidas": [
+   "OK de publicacao",
+   "OK de aplicacao de DDL",
+   "OK de mint ou rotacao de senha",
+   "decisao humana (produto ou aparelho)"
+  ],
+  "fora_do_grupo": [
+   "OK de publicacao",
+   "OK de aplicacao de DDL",
+   "OK de mint ou rotacao de senha"
+  ]
+ },
+ "vocabulario_de_escrita": {
+  "nada_fora_dos_meus_ficheiros": "so escreve prova e prosa desta casa: banco, ar e auth ficam como estao",
+  "bundle_do_app_publicar": "escreve no fonte do pacote e so chega ao utilizador depois de publicar uma versao",
+  "banco_ddl_ou_dml": "escreve no banco (policy, funcao, grants ou conteudo das mesas)",
+  "auth_mint_ou_rotacao": "escreve em auth: criar contas ou rodar senha de cadeias vivas",
+  "trafego_no_ar": "manda trafego real ao ar (carga, reproducao com sessao) sem escrever schema nenhum",
+  "gente_e_aparelho": "precisa de gente, impressora, camera ou telemovel: nenhuma ferramenta desta casa o faz"
+ },
+ "ordem_de_gravidade_declaada": [
+  "banco_ddl_ou_dml",
+  "auth_mint_ou_rotacao",
+  "trafego_no_ar",
+  "bundle_do_app_publicar",
+  "gente_e_aparelho"
+ ],
+ "ok_por_superficie_declaado": {
+  "banco_ddl_ou_dml": "OK de aplicacao de DDL",
+  "auth_mint_ou_rotacao": "OK de mint ou rotacao de senha",
+  "trafego_no_ar": "OK de mint ou rotacao de senha",
+  "bundle_do_app_publicar": "OK de publicacao",
+  "gente_e_aparelho": "nenhuma_das_quatro_familias"
+ },
+ "marcadores_por_superficie": {
+  "banco_ddl_ou_dml": [
+   "escreve no banco",
+   "ddl",
+   "preflight",
+   "reversao",
+   "trilha",
+   "concessao por conta",
+   "revogar",
+   "apertar as policies",
+   "mexer em defaults",
+   "policy",
+   "conteudo novo",
+   "escrita autenticada"
+  ],
+  "auth_mint_ou_rotacao": [
+   "mint",
+   "rotacao",
+   "dar-lhes numero"
+  ],
+  "trafego_no_ar": [
+   "contra o ar",
+   "tentativa anonima",
+   "aparelho com sessao",
+   "captura com sessao real",
+   "com contas reais"
+  ],
+  "bundle_do_app_publicar": [
+   "no fonte do pacote",
+   "escrita no css",
+   "escrita no modulo",
+   "escrita no pacote",
+   "e publicacao",
+   "publicar"
+  ],
+  "gente_e_aparelho": [
+   "impressora",
+   "camera",
+   "telemovel",
+   "pessoa",
+   "quem o segura"
+  ]
+ },
+ "linhas_pen_no_registo": 48,
+ "celulas_lidas_com_sete_colunas": 48,
+ "linhas_da_tabela_de_insumos": 6,
+ "saidas_da_tabela_por_linha_da_folha": {
+  "RM-2.2": [
+   "PEN-06"
+  ],
+  "RM-2.3": [],
+  "RM-2.4": [
+   "PEN-03"
+  ],
+  "RM-2.5": [],
+  "RM12-A1": [],
+  "RM-6.7": []
+ },
+ "rms_lidos_de_cada_celula": {
+  "PEN-03": [
+   "RM-2.4"
+  ],
+  "PEN-06": [
+   "RM-2.2"
+  ],
+  "PEN-08": [
+   "RM-5.2"
+  ],
+  "PEN-09": [
+   "RM-5.3"
+  ],
+  "PEN-10": [
+   "RM-5.3"
+  ],
+  "PEN-11": [
+   "RM-1.3",
+   "RM-1.5"
+  ],
+  "PEN-16": [
+   "RM-3.2",
+   "RM-3.3"
+  ],
+  "PEN-21": [
+   "RM-4.6",
+   "RM-6.4"
+  ],
+  "PEN-23": [],
+  "PEN-36": [],
+  "PEN-38": [],
+  "PEN-39": [],
+  "PEN-41": [],
+  "PEN-42": [
+   "RM-5.2"
+  ],
+  "PEN-43": [],
+  "PEN-44": [],
+  "PEN-45": [],
+  "PEN-47": [],
+  "PEN-48": [
+   "RM-5.2"
+  ]
+ },
+ "registos_de_classe": {
+  "linhas_da_folha_sem_rm_lido_na_celula": [
+   "PEN-23",
+   "PEN-36",
+   "PEN-38",
+   "PEN-39",
+   "PEN-41",
+   "PEN-43",
+   "PEN-44",
+   "PEN-45",
+   "PEN-47"
+  ],
+  "entradas_da_tabela_que_nao_estao_na_folha": [
+   "RM-2.3",
+   "RM-2.5",
+   "RM12-A1",
+   "RM-6.7"
+  ],
+  "sentinela_sem_ok": "nenhuma_das_quatro_familias",
+  "saidas_com_superficie_nomeada_no_texto_da_saida_fora_da_declaada": [],
+  "superficies_declaadas_sem_marcador_no_texto_da_saida": [
+   {
+    "id": "PEN-38",
+    "rotulo": "a etiquetagem por decidir",
+    "superficie": "banco_ddl_ou_dml"
+   },
+   {
+    "id": "PEN-38",
+    "rotulo": "perfil municipal a pedir dados de outro município",
+    "superficie": "trafego_no_ar"
+   },
+   {
+    "id": "PEN-42",
+    "rotulo": "(RM-5.2, D1-D4)",
+    "superficie": "banco_ddl_ou_dml"
+   },
+   {
+    "id": "PEN-45",
+    "rotulo": "uma das duas listas do módulo",
+    "superficie": "bundle_do_app_publicar"
+   },
+   {
+    "id": "PEN-45",
+    "rotulo": "é a que não abre superfície nova",
+    "superficie": "bundle_do_app_publicar"
+   }
+  ],
+  "marcadores_do_vocabulario_sem_uso_no_corpus": [
+   "banco_ddl_ou_dml/escreve no banco",
+   "bundle_do_app_publicar/no fonte do pacote"
+  ],
+  "vocabulario_de_gravidade": [
+   "banco_ddl_ou_dml",
+   "auth_mint_ou_rotacao",
+   "trafego_no_ar",
+   "bundle_do_app_publicar",
+   "gente_e_aparelho"
+  ],
+  "ordem_fora_do_vocabulario": [],
+  "mapa_de_ok_sem_superficie_no_vocabulario": [],
+  "vocabulario_sem_saida_de_ok": []
+ },
+ "folha": [
+  {
+   "id": "PEN-03",
+   "pergunta": "O espaco do aluno pinta o nome oficial ou o nome preferido?",
+   "opcoes": [
+    {
+     "rotulo": "nome preferido (paridade com a saudação)",
+     "ancora": {
+      "tipo": "tabela_12_1",
+      "entrada": "RM-2.4"
+     },
+     "tocam": [
+      "bundle_do_app_publicar"
+     ],
+     "classe_derivada": "bundle_do_app_publicar",
+     "ok_derivado": [
+      "OK de publicacao"
+     ],
+     "custo": "mexer no applyIdentity() da fonte do pacote, conferir no browser com cadeia viva autenticada e publicar; e a saida que alinha o hero com a saudação do topo"
+    },
+    {
+     "rotulo": "ao oficial",
+     "ancora": {
+      "tipo": "tabela_12_1",
+      "entrada": "RM-2.4"
+     },
+     "tocam": [
+      "nada_fora_dos_meus_ficheiros"
+     ],
+     "classe_derivada": "nada_fora_dos_meus_ficheiros",
+     "ok_derivado": [
+      "nenhuma_das_quatro_familias"
+     ],
+     "custo": "o corpo medido no ar ja lê o nome oficial, por isso esta saida nao muda byte de produto: fechar é declarar a escolha no ledger e re-conferir com a sonda do ar"
+    }
+   ]
+  },
+  {
+   "id": "PEN-06",
+   "pergunta": "O overlay executivo fica com escape por rota ou acabam os painéis legados?",
+   "opcoes": [
+    {
+     "rotulo": "manter o overlay com escape por rota",
+     "ancora": {
+      "tipo": "tabela_12_1",
+      "entrada": "RM-2.2"
+     },
+     "tocam": [
+      "bundle_do_app_publicar"
+     ],
+     "classe_derivada": "bundle_do_app_publicar",
+     "ok_derivado": [
+      "OK de publicacao"
+     ],
+     "custo": "o escape passa a contrato por rota: escrita no CSS e nos toggles, prova de browser e publicacao"
+    },
+    {
+     "rotulo": "expor/remover os painéis legados",
+     "ancora": {
+      "tipo": "tabela_12_1",
+      "entrada": "RM-2.2"
+     },
+     "tocam": [
+      "bundle_do_app_publicar"
+     ],
+     "classe_derivada": "bundle_do_app_publicar",
+     "ok_derivado": [
+      "OK de publicacao"
+     ],
+     "custo": "tira regras e classes do pacote; abre superficie nova ao papel de direcao, por isso pede censo de portas depois de publicar"
+    }
+   ]
+  },
+  {
+   "id": "PEN-08",
+   "pergunta": "Que dias contam como letivos (o sábado entra?) e onde está o corpo da função que falta?",
+   "opcoes": [
+    {
+     "rotulo": "decisão de sábado",
+     "ancora": {
+      "tipo": "celula"
+     },
+     "tocam": [
+      "banco_ddl_ou_dml"
+     ],
+     "classe_derivada": "banco_ddl_ou_dml",
+     "ok_derivado": [
+      "OK de aplicacao de DDL"
+     ],
+     "custo": "a grade medida hoje nao tem sábado, logo a decisao escreve-se como conteudo novo nas mesas do calendario, com candidata, reversao e preflight"
+    },
+    {
+     "rotulo": "correct_gate_attendance",
+     "ancora": {
+      "tipo": "celula"
+     },
+     "tocam": [
+      "banco_ddl_ou_dml"
+     ],
+     "classe_derivada": "banco_ddl_ou_dml",
+     "ok_derivado": [
+      "OK de aplicacao de DDL"
+     ],
+     "custo": "e o unico nome chamado no ar sem corpo no catalogo: DDL com assinatura lida dos bytes, e a mesma sonda de ar a confirmar que deixou de dar quarenta e quatro"
+    },
+    {
+     "rotulo": "declarar a linha fora do ambito desta casa",
+     "ancora": {
+      "tipo": "minha_leitura"
+     },
+     "tocam": [
+      "nada_fora_dos_meus_ficheiros"
+     ],
+     "classe_derivada": "nada_fora_dos_meus_ficheiros",
+     "ok_derivado": [
+      "nenhuma_das_quatro_familias"
+     ],
+     "custo": "a linha continua ABERTA por vontade e nao por falta de medicao; zero escrita fora desta casa"
+    }
+   ]
+  },
+  {
+   "id": "PEN-09",
+   "pergunta": "Quem faz o teste real do crachá impresso, e quando?",
+   "opcoes": [
+    {
+     "rotulo": "Crachá físico impresso (teste real)",
+     "ancora": {
+      "tipo": "item_pen"
+     },
+     "tocam": [
+      "gente_e_aparelho"
+     ],
+     "classe_derivada": "gente_e_aparelho",
+     "ok_derivado": [
+      "nenhuma_das_quatro_familias"
+     ],
+     "custo": "impressora, crachá e uma pessoa: nada nesta casa imprime, e o resultado entra como artefacto datado com quem segurou o crachá"
+    },
+    {
+     "rotulo": "declarar a linha nao testavel aqui",
+     "ancora": {
+      "tipo": "minha_leitura"
+     },
+     "tocam": [
+      "nada_fora_dos_meus_ficheiros"
+     ],
+     "classe_derivada": "nada_fora_dos_meus_ficheiros",
+     "ok_derivado": [
+      "nenhuma_das_quatro_familias"
+     ],
+     "custo": "fecha por decisao e nao por medicao; o painel passa a contar esta linha como fechada por vontade do dono"
+    }
+   ]
+  },
+  {
+   "id": "PEN-10",
+   "pergunta": "Quem faz o teste de câmera num dispositivo real, e quando?",
+   "opcoes": [
+    {
+     "rotulo": "Câmera de dispositivo real (teste físico)",
+     "ancora": {
+      "tipo": "item_pen"
+     },
+     "tocam": [
+      "gente_e_aparelho",
+      "trafego_no_ar",
+      "auth_mint_ou_rotacao"
+     ],
+     "classe_derivada": "auth_mint_ou_rotacao",
+     "ok_derivado": [
+      "OK de mint ou rotacao de senha"
+     ],
+     "custo": "um telemóvel com câmera e uma captura com sessao real; a cadeia de auth ainda tem de estar viva nesse momento, o que puxa o grupo do mint"
+    },
+    {
+     "rotulo": "declarar a linha nao testavel aqui",
+     "ancora": {
+      "tipo": "minha_leitura"
+     },
+     "tocam": [
+      "nada_fora_dos_meus_ficheiros"
+     ],
+     "classe_derivada": "nada_fora_dos_meus_ficheiros",
+     "ok_derivado": [
+      "nenhuma_das_quatro_familias"
+     ],
+     "custo": "fecha por decisao; nenhuma ferramenta desta casa substitui o aparelho"
+    }
+   ]
+  },
+  {
+   "id": "PEN-11",
+   "pergunta": "A entrega do push vai ser testada num aparelho físico, ou a linha fica sem prova?",
+   "opcoes": [
+    {
+     "rotulo": "só resta a palavra",
+     "ancora": {
+      "tipo": "celula"
+     },
+     "tocam": [
+      "gente_e_aparelho",
+      "trafego_no_ar"
+     ],
+     "classe_derivada": "trafego_no_ar",
+     "ok_derivado": [
+      "OK de mint ou rotacao de senha"
+     ],
+     "custo": "o recetor ja foi medido no service worker servido e no Chrome real; falta um aparelho com sessao e a palavra de quem o segura"
+    },
+    {
+     "rotulo": "nada nela se pode provar por leitura",
+     "ancora": {
+      "tipo": "celula"
+     },
+     "tocam": [
+      "nada_fora_dos_meus_ficheiros"
+     ],
+     "classe_derivada": "nada_fora_dos_meus_ficheiros",
+     "ok_derivado": [
+      "nenhuma_das_quatro_familias"
+     ],
+     "custo": "manter ABERTA com a causa escrita; a leitura nao alcanga este eixo, e aliviar a frase seria mover a régua"
+    }
+   ]
+  },
+  {
+   "id": "PEN-16",
+   "pergunta": "O que é um relatório comparativo de rede, para quem vai e com que frequência?",
+   "opcoes": [
+    {
+     "rotulo": "produto por construir",
+     "ancora": {
+      "tipo": "celula"
+     },
+     "tocam": [
+      "bundle_do_app_publicar"
+     ],
+     "classe_derivada": "bundle_do_app_publicar",
+     "ok_derivado": [
+      "OK de publicacao"
+     ],
+     "custo": "os dois agregados de rede ja sao chamados no ar, mas nada os mostra como comparacao: escrita no modulo e publicacao, com prova de pixel por papel"
+    },
+    {
+     "rotulo": "decisão e OK próprios",
+     "ancora": {
+      "tipo": "celula"
+     },
+     "tocam": [
+      "nada_fora_dos_meus_ficheiros"
+     ],
+     "classe_derivada": "nada_fora_dos_meus_ficheiros",
+     "ok_derivado": [
+      "nenhuma_das_quatro_familias"
+     ],
+     "custo": "a propria celula declara que a linha pede escolha sua antes de qualquer instrumento; zero escrita enquanto essa escolha nao vier"
+    }
+   ]
+  },
+  {
+   "id": "PEN-21",
+   "pergunta": "Autorizo escrever o instrumento de carga e correr-lhe o perfil contra o ar?",
+   "opcoes": [
+    {
+     "rotulo": "escrever o instrumento de carga",
+     "ancora": {
+      "tipo": "celula"
+     },
+     "tocam": [
+      "nada_fora_dos_meus_ficheiros"
+     ],
+     "classe_derivada": "nada_fora_dos_meus_ficheiros",
+     "ok_derivado": [
+      "nenhuma_das_quatro_familias"
+     ],
+     "custo": "peca nova versionada, com os seis zeros de hoje como fixture do que ainda nao existe; sozinha nao toca no ar"
+    },
+    {
+     "rotulo": "bate no ar com contas reais",
+     "ancora": {
+      "tipo": "celula"
+     },
+     "tocam": [
+      "trafego_no_ar",
+      "auth_mint_ou_rotacao"
+     ],
+     "classe_derivada": "auth_mint_ou_rotacao",
+     "ok_derivado": [
+      "OK de mint ou rotacao de senha"
+     ],
+     "custo": "corre contra o ar com cadeias vivas: mexe no tempo de resposta de gente real e pode exigir mint ou rotacao antes de poder ser corrido"
+    }
+   ]
+  },
+  {
+   "id": "PEN-23",
+   "pergunta": "O `security_invoker` passa a portão automático ou continua checklist humano?",
+   "opcoes": [
+    {
+     "rotulo": "nada no CI obriga",
+     "ancora": {
+      "tipo": "celula"
+     },
+     "tocam": [
+      "nada_fora_dos_meus_ficheiros"
+     ],
+     "classe_derivada": "nada_fora_dos_meus_ficheiros",
+     "ok_derivado": [
+      "nenhuma_das_quatro_familias"
+     ],
+     "custo": "portão meu sobre o SQL dos candidatos, com fixture que dispara numa view sem a opcao; zero banco, zero ar"
+    },
+    {
+     "rotulo": "processo sem portão",
+     "ancora": {
+      "tipo": "celula"
+     },
+     "tocam": [
+      "nada_fora_dos_meus_ficheiros"
+     ],
+     "classe_derivada": "nada_fora_dos_meus_ficheiros",
+     "ok_derivado": [
+      "nenhuma_das_quatro_familias"
+     ],
+     "custo": "a linha fica ABERTA por desenho: o censo de hoje ja esta verde, e foi exatamente por isso que a celula recusou fechar-se com um verde de censo"
+    }
+   ]
+  },
+  {
+   "id": "PEN-36",
+   "pergunta": "Qual é o rótulo canónico da secretaria, e o secretariado escolar entra na superfície municipal?",
+   "opcoes": [
+    {
+     "rotulo": "decisão de produto",
+     "ancora": {
+      "tipo": "celula"
+     },
+     "tocam": [
+      "bundle_do_app_publicar"
+     ],
+     "classe_derivada": "bundle_do_app_publicar",
+     "ok_derivado": [
+      "OK de publicacao"
+     ],
+     "custo": "a peca dos rotulos mede hoje cinco nomes com dois ou mais usos no ar; escolher um é escrita no pacote e publicacao, nao medicao"
+    },
+    {
+     "rotulo": "concessão municipal no banco",
+     "ancora": {
+      "tipo": "celula"
+     },
+     "tocam": [
+      "banco_ddl_ou_dml"
+     ],
+     "classe_derivada": "banco_ddl_ou_dml",
+     "ok_derivado": [
+      "OK de aplicacao de DDL"
+     ],
+     "custo": "da acesso por conta e nao por papel, com trilha; a visibilidade continua decidida pelo mapa do bundle ate que alguem mude o mapa"
+    },
+    {
+     "rotulo": "no bundle (produto + publicar)",
+     "ancora": {
+      "tipo": "celula"
+     },
+     "tocam": [
+      "bundle_do_app_publicar"
+     ],
+     "classe_derivada": "bundle_do_app_publicar",
+     "ok_derivado": [
+      "OK de publicacao"
+     ],
+     "custo": "mudar os papeis municipais do mapa abre a entrada a um papel que o runbook recusa hoje: alargar superficie, nao corrigir pixels"
+    }
+   ]
+  },
+  {
+   "id": "PEN-38",
+   "pergunta": "Que escolas pertencem a que município real, e o teste de fronteira vai ser corrido?",
+   "opcoes": [
+    {
+     "rotulo": "a etiquetagem por decidir",
+     "ancora": {
+      "tipo": "celula"
+     },
+     "tocam": [
+      "banco_ddl_ou_dml"
+     ],
+     "classe_derivada": "banco_ddl_ou_dml",
+     "ok_derivado": [
+      "OK de aplicacao de DDL"
+     ],
+     "custo": "e dado de gente real: sem municipios fora de fixture o predicado nao discrimina nada, e apertar por escopo deixava de ler tudo para nao ler nada"
+    },
+    {
+     "rotulo": "perfil municipal a pedir dados de outro município",
+     "ancora": {
+      "tipo": "celula"
+     },
+     "tocam": [
+      "trafego_no_ar"
+     ],
+     "classe_derivada": "trafego_no_ar",
+     "ok_derivado": [
+      "OK de mint ou rotacao de senha"
+     ],
+     "custo": "o criterio de fecho da linha: precisa de duas contas municipais com cadeias vivas para que a recusa seja medida e nao prometida"
+    }
+   ]
+  },
+  {
+   "id": "PEN-39",
+   "pergunta": "O que é que um município deve poder somar, e o bucket sem município se mostra?",
+   "opcoes": [
+    {
+     "rotulo": "decisão de produto sobre o que um município deve poder somar",
+     "ancora": {
+      "tipo": "celula"
+     },
+     "tocam": [
+      "banco_ddl_ou_dml"
+     ],
+     "classe_derivada": "banco_ddl_ou_dml",
+     "ok_derivado": [
+      "OK de aplicacao de DDL"
+     ],
+     "custo": "o DDL dos dois agregados ja esta aplicado e o consumo ja esta no ar: falta dizer o que é legitimo somar, e isso nao se mede"
+    },
+    {
+     "rotulo": "mostrar ou esconder a classe sem municipio",
+     "ancora": {
+      "tipo": "minha_leitura"
+     },
+     "tocam": [
+      "nada_fora_dos_meus_ficheiros"
+     ],
+     "classe_derivada": "nada_fora_dos_meus_ficheiros",
+     "ok_derivado": [
+      "nenhuma_das_quatro_familias"
+     ],
+     "custo": "decidir se o bucket se imprime na tela ou desaparece dela: muda a leitura do painel, nao o numero de linhas do banco"
+    }
+   ]
+  },
+  {
+   "id": "PEN-41",
+   "pergunta": "Director e secretaria com vínculo continuam a ler a rede inteira, ou passam a ler a escola do cargo?",
+   "opcoes": [
+    {
+     "rotulo": "etiquetagem das escolas primeiro",
+     "ancora": {
+      "tipo": "celula"
+     },
+     "tocam": [
+      "banco_ddl_ou_dml"
+     ],
+     "classe_derivada": "banco_ddl_ou_dml",
+     "ok_derivado": [
+      "OK de aplicacao de DDL"
+     ],
+     "custo": "a ordem esta escrita na linha: sem escolas etiquetadas, apertar as policies converte leitura em vazio para quem hoje tem dados"
+    },
+    {
+     "rotulo": "continua sem prova",
+     "ancora": {
+      "tipo": "celula"
+     },
+     "tocam": [
+      "auth_mint_ou_rotacao"
+     ],
+     "classe_derivada": "auth_mint_ou_rotacao",
+     "ok_derivado": [
+      "OK de mint ou rotacao de senha"
+     ],
+     "custo": "as duas contas municipais sem vínculo ficam a ver zero: dar-lhes numero é vínculo e concessao de gente real, com cadeia viva para o provar"
+    }
+   ]
+  },
+  {
+   "id": "PEN-42",
+   "pergunta": "Que conteúdo do calendário entra no ar (as lacunas das D1 a D4)?",
+   "opcoes": [
+    {
+     "rotulo": "(RM-5.2, D1-D4)",
+     "ancora": {
+      "tipo": "celula"
+     },
+     "tocam": [
+      "banco_ddl_ou_dml"
+     ],
+     "classe_derivada": "banco_ddl_ou_dml",
+     "ok_derivado": [
+      "OK de aplicacao de DDL"
+     ],
+     "custo": "as decisoes comecaram e parte delas esta semeada; falta o conteudo por confirmar, e cada tranche de calendario pede a sua frase"
+    },
+    {
+     "rotulo": "nao a superficie",
+     "ancora": {
+      "tipo": "celula"
+     },
+     "tocam": [
+      "nada_fora_dos_meus_ficheiros"
+     ],
+     "classe_derivada": "nada_fora_dos_meus_ficheiros",
+     "ok_derivado": [
+      "nenhuma_das_quatro_familias"
+     ],
+     "custo": "a linha ja nao e de cadeia nem de catalogo: re-correr instrumentos aqui nao move nada, so a escolha do conteudo move"
+    }
+   ]
+  },
+  {
+   "id": "PEN-43",
+   "pergunta": "A porta de etiquetagem continua chamável por anónimo para receber recusa?",
+   "opcoes": [
+    {
+     "rotulo": "a porta de etiquetagem fica executável por anónimo",
+     "ancora": {
+      "tipo": "celula"
+     },
+     "tocam": [
+      "banco_ddl_ou_dml"
+     ],
+     "classe_derivada": "banco_ddl_ou_dml",
+     "ok_derivado": [
+      "OK de aplicacao de DDL"
+     ],
+     "custo": "e a escolha contraria: manter um nome chamavel sem sessao para que a recusa venha do corpo; um revogar novo com frase propria fecha-a"
+    },
+    {
+     "rotulo": "decidir o que um autenticado recebe",
+     "ancora": {
+      "tipo": "minha_leitura"
+     },
+     "tocam": [
+      "nada_fora_dos_meus_ficheiros"
+     ],
+     "classe_derivada": "nada_fora_dos_meus_ficheiros",
+     "ok_derivado": [
+      "nenhuma_das_quatro_familias"
+     ],
+     "custo": "esta linha nao trata do que um autenticado com sessao recebe: isso sao as PEN-38 e PEN-39, e ai a escolha do conteudo e que fecha, nao um grau deste lado"
+    }
+   ]
+  },
+  {
+   "id": "PEN-44",
+   "pergunta": "Os papéis de plataforma preservados e os nomes fora do alvo ficam assim, ou revertem?",
+   "opcoes": [
+    {
+     "rotulo": "contadores que coincidem",
+     "ancora": {
+      "tipo": "celula"
+     },
+     "tocam": [
+      "nada_fora_dos_meus_ficheiros"
+     ],
+     "classe_derivada": "nada_fora_dos_meus_ficheiros",
+     "ok_derivado": [
+      "nenhuma_das_quatro_familias"
+     ],
+     "custo": "a celula declara que tres grandezas dao o mesmo numero sem prova de ser o mesmo conjunto nome a nome: fechar isto e medir nomes, nao confiar na coincidencia"
+    },
+    {
+     "rotulo": "deixar local",
+     "ancora": {
+      "tipo": "celula"
+     },
+     "tocam": [
+      "nada_fora_dos_meus_ficheiros"
+     ],
+     "classe_derivada": "nada_fora_dos_meus_ficheiros",
+     "ok_derivado": [
+      "nenhuma_das_quatro_familias"
+     ],
+     "custo": "foi a palavra ja dada para o envio dos commits; vale como decisao de alcance e nao como fecho da linha"
+    },
+    {
+     "rotulo": "a concessão municipal",
+     "ancora": {
+      "tipo": "celula"
+     },
+     "tocam": [
+      "banco_ddl_ou_dml"
+     ],
+     "classe_derivada": "banco_ddl_ou_dml",
+     "ok_derivado": [
+      "OK de aplicacao de DDL"
+     ],
+     "custo": "o grau esta fechado, o conteudo nao: concessao por conta e escrita com trilha, com frase propria"
+    }
+   ]
+  },
+  {
+   "id": "PEN-45",
+   "pergunta": "O supervisor educacional ganha o chat interno, ou perde a aba que o mapa lhe oferece?",
+   "opcoes": [
+    {
+     "rotulo": "uma das duas listas do módulo",
+     "ancora": {
+      "tipo": "celula"
+     },
+     "tocam": [
+      "bundle_do_app_publicar"
+     ],
+     "classe_derivada": "bundle_do_app_publicar",
+     "ok_derivado": [
+      "OK de publicacao"
+     ],
+     "custo": "abre superficie nova: o papel passa a ver conversas que hoje o predicado lhe recusa, e o censo de portas por papel muda com ele"
+    },
+    {
+     "rotulo": "é a que não abre superfície nova",
+     "ancora": {
+      "tipo": "celula"
+     },
+     "tocam": [
+      "bundle_do_app_publicar"
+     ],
+     "classe_derivada": "bundle_do_app_publicar",
+     "ok_derivado": [
+      "OK de publicacao"
+     ],
+     "custo": "retira o convite do mapa do papel: a aba deixa de existir para quem nao a pode usar, e a contradicao medida desaparece sem dar acesso a ninguem"
+    }
+   ]
+  },
+  {
+   "id": "PEN-47",
+   "pergunta": "As seis mesas com RLS e zero policies são mesas de máquina ou leitores perdidos?",
+   "opcoes": [
+    {
+     "rotulo": "escrever uma policy por mesa",
+     "ancora": {
+      "tipo": "celula"
+     },
+     "tocam": [
+      "banco_ddl_ou_dml"
+     ],
+     "classe_derivada": "banco_ddl_ou_dml",
+     "ok_derivado": [
+      "OK de aplicacao de DDL"
+     ],
+     "custo": "ramo de DDL com preflight e conferencia como as pecas municipais, e supoe que existe um leitor para cada uma das seis mesas"
+    },
+    {
+     "rotulo": "mesas de papel com bypass",
+     "ancora": {
+      "tipo": "celula"
+     },
+     "tocam": [
+      "banco_ddl_ou_dml",
+      "trafego_no_ar"
+     ],
+     "classe_derivada": "banco_ddl_ou_dml",
+     "ok_derivado": [
+      "OK de aplicacao de DDL",
+      "OK de mint ou rotacao de senha"
+     ],
+     "custo": "ramo de decisao escrita, mas com o teste que a prova: leitura e escrita autenticadas e uma tentativa anonima recusada, gravadas em artefacto"
+    }
+   ]
+  },
+  {
+   "id": "PEN-48",
+   "pergunta": "O mecanismo que dá EXECUTE ao anónimo a funções criadas amanhã fica, ou é desmontado?",
+   "opcoes": [
+    {
+     "rotulo": "pg_default_acl",
+     "ancora": {
+      "tipo": "celula"
+     },
+     "tocam": [
+      "banco_ddl_ou_dml"
+     ],
+     "classe_derivada": "banco_ddl_ou_dml",
+     "ok_derivado": [
+      "OK de aplicacao de DDL"
+     ],
+     "custo": "mexer em defaults nao muda o que ja existe: muda o que uma funcao nova herda, e por isso a prova e para a frente, nao para tras"
+    },
+    {
+     "rotulo": "continuam decisoes proprias",
+     "ancora": {
+      "tipo": "celula"
+     },
+     "tocam": [
+      "banco_ddl_ou_dml"
+     ],
+     "classe_derivada": "banco_ddl_ou_dml",
+     "ok_derivado": [
+      "OK de aplicacao de DDL"
+     ],
+     "custo": "a reversao do revogar dos nomes e outra frase e outro alcance; as duas podem ser recusadas, e a recusa tambem fecha a decisao"
+    }
+   ]
+  }
+ ],
+ "contagens": {
+  "linhas_na_folha": 19,
+  "saidas_totais": 41,
+  "saidas_por_classe_de_escrita": {
+   "nada_fora_dos_meus_ficheiros": 14,
+   "bundle_do_app_publicar": 8,
+   "banco_ddl_ou_dml": 13,
+   "auth_mint_ou_rotacao": 3,
+   "trafego_no_ar": 2,
+   "gente_e_aparelho": 1
+  },
+  "saidas_por_superficie_declaada": {
+   "nada_fora_dos_meus_ficheiros": 14,
+   "bundle_do_app_publicar": 8,
+   "banco_ddl_ou_dml": 13,
+   "auth_mint_ou_rotacao": 3,
+   "trafego_no_ar": 5,
+   "gente_e_aparelho": 3
+  },
+  "total_de_superficies_declaadas": 46,
+  "marcadores_no_vocabulario": 31,
+  "marcadores_com_uso_no_corpus": 29,
+  "saidas_ancoradas_no_ledger": 36,
+  "saidas_de_minha_leitura": 5,
+  "linhas_por_prioridade_lida_da_celula": {
+   "B": 7,
+   "M": 7,
+   "A": 5
+  }
+ },
+ "portoes": [
+  {
+   "nome": "o_grupo_e_lido_da_captura_do_p171_e_nao_dactilografado",
+   "passa": true,
+   "obtido": {
+    "rotulo_do_grupo": "decisao humana (produto ou aparelho)",
+    "lidos": 19,
+    "fora_das_linhas_pen": []
+   },
+   "esperado": "conjunto nao vazio, todo ele dentro das linhas PEN do ledger"
+  },
+  {
+   "nome": "nenhuma_linha_da_folha_fica_fora_do_grupo_e_nenhuma_linha_do_grupo_fica_fora_da_folha",
+   "passa": true,
+   "obtido": {
+    "duplicados": [],
+    "fora_do_grupo": [],
+    "sem_folha": []
+   },
+   "esperado": "os tres conjuntos vazios"
+  },
+  {
+   "nome": "toda_a_linha_da_folha_consta_ABERTA_no_registo_do_p133",
+   "passa": true,
+   "obtido": {
+    "nao_abertas": [],
+    "sem_classe_lida": []
+   },
+   "esperado": "as duas listas vazias"
+  },
+  {
+   "nome": "cada_linha_da_folha_tem_pergunta_e_ao_menos_duas_opcoes",
+   "passa": true,
+   "obtido": {
+    "sem_pergunta": [],
+    "com_uma_opcao": []
+   },
+   "esperado": "as duas listas vazias"
+  },
+  {
+   "nome": "ao_menos_uma_saida_por_linha_e_ancorada_num_texto_do_ledger",
+   "passa": true,
+   "obtido": {
+    "linhas_so_com_minha_leitura": []
+   },
+   "esperado": "lista vazia"
+  },
+  {
+   "nome": "toda_a_saida_ancorada_existe_na_fonte_que_declara",
+   "passa": true,
+   "obtido": {
+    "fora_da_fonte": []
+   },
+   "esperado": "lista vazia"
+  },
+  {
+   "nome": "toda_a_superficie_declaada_pertence_ao_vocabulario_de_escrita_da_peca",
+   "passa": true,
+   "obtido": {
+    "fora_do_vocabulario": []
+   },
+   "esperado": "lista vazia"
+  },
+  {
+   "nome": "nenhuma_saida_repete_a_mesma_superficie_na_declaraao",
+   "passa": true,
+   "obtido": {
+    "duplicadas": []
+   },
+   "esperado": "lista vazia"
+  },
+  {
+   "nome": "nenhuma_saida_mistura_a_superficie_nenhuma_com_uma_real",
+   "passa": true,
+   "obtido": {
+    "mistas": []
+   },
+   "esperado": "lista vazia"
+  },
+  {
+   "nome": "o_ok_derivado_de_cada_saida_e_uma_das_familias_lidas_ou_a_sentinela_explicita",
+   "passa": true,
+   "obtido": {
+    "fora_das_familias_lidas": [],
+    "familias_lidas": [
+     "OK de publicacao",
+     "OK de aplicacao de DDL",
+     "OK de mint ou rotacao de senha",
+     "decisao humana (produto ou aparelho)"
+    ]
+   },
+   "esperado": "lista vazia"
+  },
+  {
+   "nome": "nenhum_texto_de_saida_nomeia_uma_superficie_fora_da_declaada",
+   "passa": true,
+   "obtido": {
+    "nomeados_sem_declaraar": []
+   },
+   "esperado": "lista vazia"
+  },
+  {
+   "nome": "a_contagem_de_saidas_bate_por_duas_rotas_independentes",
+   "passa": true,
+   "obtido": {
+    "por_flatmap": 41,
+    "por_soma_de_classes": 41
+   },
+   "esperado": "os dois numeros iguais"
+  },
+  {
+   "nome": "registro_e_captura_sao_da_mesma_ronda_de_sufixo",
+   "passa": true,
+   "obtido": {
+    "registro": "sm62d",
+    "captura": "sm62d",
+    "sufixo_da_peca": "sm62d"
+   },
+   "esperado": "os dois caminhos de entrada com o mesmo sufixo de ronda"
+  }
+ ],
+ "o_que_prova": "que cada linha do grupo de decisao humana tem pergunta, pelo menos duas saidas e pelo menos uma saida cujo texto existe literalmente na fonte declarada; que as classes de escrita e as familias de OK estao dentro dos vocabularios lidos; que nenhum texto de saida — o rotulo ancorado mais o custo, pela funcao textoDaSaida — nomeia uma superficie que a saida nao declara; que a conta de saidas bate por duas rotas; que registro e captura sao da mesma ronda.",
+ "o_que_NAO_prova": "que alguma das saidas seja a certa, nem que a escolha feche a linha sem outro OK: nenhuma chamada de rede, nenhum SQL e nenhum deploy foram corridos por esta peca, e o custo de cada saida e a minha leitura, nao uma medicao. O vocabulario de marcadores e meu: a regua apanha a superficie nomeada sem a declarar, nao inventa o marcador que me esqueci de escrever, por isso um texto que descreva a escrita noutros termos passa. As saidas com superficie declarada que o texto nao nomeia, e os marcadores do vocabulario sem uso no corpus, saem registadas em registos_de_classe e continuam verdes — sao denuncias, nao predicados, porque um predicado sobre elas nao teria positivo sem eu primeiro escolher as palavras.",
+ "veredito": "P175_FOLHA_OK"
+}

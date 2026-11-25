@@ -1,0 +1,29 @@
+alvo=evidence/p133-inventario-das-pendencias-abertas-22-11-sm62g.json
+emissor_bytes=20716 emissor_md5=814e02665fe8b1ef0d544daf1928f72d
+produtor_bytes=38708 produtor_md5_8=313b6322 registro_md5_8=313b6322
+registro_rotulo=a registro_em=2026-11-25T08:27:38.268Z
+vocabulario_lido_do_produtor ok=4 acao=8 etiqueta_de_nenhum_lida=true
+linhas_pen=48 classes={"ABERTA":37,"FECHADA":10,"DIVERGENTE":0,"SEM_DECLARACAO":1}
+abertas=37 soma_das_quatro_faces=37
+faces={"so_familia_de_ok":5,"familia_de_ok_e_acao_nomeada":24,"so_acao_nomeada":8,"nenhuma_das_duas":0}
+ids_por_face={"so_familia_de_ok":["PEN-08","PEN-09","PEN-10","PEN-11","PEN-28"],"familia_de_ok_e_acao_nomeada":["PEN-03","PEN-06","PEN-12","PEN-16","PEN-17","PEN-18","PEN-19","PEN-21","PEN-23","PEN-29","PEN-33","PEN-35","PEN-36","PEN-37","PEN-38","PEN-39","PEN-41","PEN-42","PEN-43","PEN-44","PEN-45","PEN-46","PEN-47","PEN-48"],"so_acao_nomeada":["PEN-01","PEN-02","PEN-04","PEN-05","PEN-07","PEN-13","PEN-15","PEN-20"],"nenhuma_das_duas":[]}
+unidade_do_histograma=ocorrencias_de_familia_em_linha_e_nao_linhas
+ocorrencias_contadas_por_familia=60 ocorrencias_contadas_por_linha_distinta=60
+com_familia=29 sem_familia=8 multifamilia=19
+ids_multifamilia=["PEN-03","PEN-06","PEN-08","PEN-11","PEN-23","PEN-29","PEN-33","PEN-35","PEN-36","PEN-38","PEN-39","PEN-41","PEN-42","PEN-43","PEN-44","PEN-45","PEN-46","PEN-47","PEN-48"]
+grupos_por_quem_fecha={"OK de publicacao":["PEN-03","PEN-06","PEN-11","PEN-18","PEN-19","PEN-28","PEN-33","PEN-35","PEN-36","PEN-39","PEN-42","PEN-43","PEN-44","PEN-45","PEN-46","PEN-47","PEN-48"],"OK de aplicacao de DDL":["PEN-08","PEN-17","PEN-23","PEN-29","PEN-33","PEN-36","PEN-37","PEN-38","PEN-39","PEN-41","PEN-42","PEN-43","PEN-44","PEN-46","PEN-47","PEN-48"],"OK de mint ou rotacao de senha":["PEN-12","PEN-29","PEN-33","PEN-35","PEN-36","PEN-38","PEN-44","PEN-48"],"decisao humana (produto ou aparelho)":["PEN-03","PEN-06","PEN-08","PEN-09","PEN-10","PEN-11","PEN-16","PEN-21","PEN-23","PEN-36","PEN-38","PEN-39","PEN-41","PEN-42","PEN-43","PEN-44","PEN-45","PEN-47","PEN-48"]}
+tamanho_de_cada_grupo_de_ok={"OK de publicacao":17,"OK de aplicacao de DDL":16,"OK de mint ou rotacao de senha":8,"decisao humana (produto ou aparelho)":19}
+etiquetas_fora_do_vocabulario=[]
+fora_do_conjunto_do_produtor=[]
+faces_do_produtor_lidas=sim
+portao_as_quatro_faces_sao_disjuntas_e_cobrem_as_abertas=OK obtido=[37,37] esperado=[37,37]
+portao_nenhuma_etiqueta_fora_do_vocabulario_lido_do_produtor=OK obtido=[] esperado=[]
+portao_o_conjunto_de_cada_face_e_subconjunto_do_do_produtor=OK obtido=[] esperado=[]
+portao_ter_ou_nao_ter_familia_de_ok_parte_as_abertas_sem_sobra=OK obtido=37 esperado=37
+portao_as_duas_rotas_de_contar_ocorrencias_de_familia_batem=OK obtido=60 esperado=60
+portoes=5 vermelhos=0 lista_de_vermelhos=[]
+o_que_prova="agrupamento das abertas por face e por familia de OK, com o vocabulario lido do ficheiro do produtor e a identidade desse produtor conferida por bytes e md5 contra o registro"
+o_que_NAO_prova="que as familias de OK sejam a unica via de fecho, que a classe ABERTA esteja certa (vem do p133 e esta peca so le o que ele registou), nem quanto cada linha custa em horas ou em risco"
+P171_AGRUPAMENTO_MEDIDO abertas=37 faces=so_familia_de_ok:5,familia_de_ok_e_acao_nomeada:24,so_acao_nomeada:8,nenhuma_das_duas:0
+DUO em=evidence/p171-agrupamento-das-abertas-por-quem-as-fecha-sm62g.txt linhas=28 varridas=22 excluidas_por_portao=5 regiao_fecha_em=P171_AGRUPAMENTO_MEDIDO regiao_cobre_o_fim=true cifras_em_duo=0 listas=[]
+P168_DUO_DE_CIFRAS_NENHUM
