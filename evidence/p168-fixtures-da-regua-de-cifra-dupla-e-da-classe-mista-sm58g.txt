@@ -1,0 +1,32 @@
+PROVA_DUO_DE_CIFRAS colisao=["linhas_acrescentadas: 15 e 16"] corrigida=[] tabela_sem_regiao=true tabela_se_varrida_sem_regiao_daria=1 portoes_excluidas=1 fecho_estrang=P171_AGRUPAMENTO_MEDIDO antes_do_fecho_apanhado=1 depois_do_fecho_julgado=0 depois_cobre_o_fim=false
+F1_positivo abortou=false esperava_aborto=false portao_alvo=- veredicto=EXPERADO
+F2_duas_linhas_alteradas abortou=true esperava_aborto=true portao_alvo=portao_1 veredicto=EXPERADO [ABORTA portao_1_uma_unica_linha_de_head_alterada nao se cumpre, obtido=26]
+F3_insercao_no_topo abortou=true esperava_aborto=true portao_alvo=portao_1 veredicto=EXPERADO [ABORTA portao_1_uma_unica_linha_de_head_alterada nao se cumpre, obtido=36]
+F4_sem_acrescimo abortou=true esperava_aborto=true portao_alvo=portao_2 veredicto=EXPERADO [ABORTA portao_2_acrescimo_depois_da_linha_tocada nao se cumpre, obtido=1]
+F5_linha_reescrita_desde_o_primeiro_byte abortou=true esperava_aborto=true portao_alvo=portao_3 veredicto=EXPERADO [ABORTA portao_3_linha_tocada_mantem_cabeca_nao_vazia nao se cumpre, obtido=0]
+F6_acrescimo_puro_no_fim_da_linha abortou=true esperava_aborto=true portao_alvo=portao_4 veredicto=EXPERADO [ABORTA portao_4_a_substituida_dentro_da_linha_nao_vazia nao se cumpre, obtido=0]
+F7_frase_antiga_duplicada_noutro_lugar abortou=true esperava_aborto=true portao_alvo=portao_5 veredicto=EXPERADO [ABORTA portao_5_frase_substituida_unica_no_head nao se cumpre, obtido=2]
+F8_frase_antiga_preservada_dentro_do_bloco abortou=true esperava_aborto=true portao_alvo=portao_6 veredicto=EXPERADO [ABORTA portao_6_frase_substituida_nao_sobrevive_no_disco nao se cumpre, obtido=1]
+A1_positivo_acrescimo_no_fim abortou=false esperava_aborto=false portao_alvo=- veredicto=EXPERADO
+A2_mutacao_duma_linha_de_head_no_meio abortou=true esperava_aborto=true portao_alvo=portao_A1 veredicto=EXPERADO [ABORTA portao_A1_todas_as_linhas_de_head_sao_o_comeco_exacto_do_disco nao se cumpre, obtido={"head":40,"disco":41}]
+A3_sem_nenhuma_linha_nova abortou=true esperava_aborto=true portao_alvo=portao_A2 veredicto=EXPERADO [ABORTA portao_A2_o_acrescimo_contem_a_expectativa_declarada nao se cumpre, obtido={"espera":"SM.57. cabecalho do bloco","em_linhas":0}]
+A4_acrescimo_que_nao_traz_o_cabecalho_declarado abortou=true esperava_aborto=true portao_alvo=portao_A2 veredicto=EXPERADO [ABORTA portao_A2_o_acrescimo_contem_a_expectativa_declarada nao se cumpre, obtido={"espera":"SM.57. cabecalho do bloco","em_linhas":0}]
+A5_apagar_a_ultima_linha_de_head_passa_por_acrescimo abortou=true esperava_aborto=true portao_alvo=portao_A1 veredicto=EXPERADO [ABORTA portao_A1_todas_as_linhas_de_head_sao_o_comeco_exacto_do_disco nao se cumpre, obtido={"head":40,"disco":40}]
+A6_classe_sem_expectativa_declara_da_aborta_antes_de_medir abortou=true esperava_aborto=true portao_alvo=ABORTA: a classe de acrescimo exige veredicto=EXPERADO [ABORTA: a classe de acrescimo exige a expectativa declarada, senao o verde nao tem o que medir]
+A7_positivo_com_linhas_em_branco_antes_do_cabecalho abortou=false esperava_aborto=false portao_alvo=- veredicto=EXPERADO
+A8_linha_com_conteudo_antes_do_cabecalho_declarado abortou=true esperava_aborto=true portao_alvo=portao_A3 veredicto=EXPERADO [ABORTA portao_A3_a_primeira_linha_nova_com_conteudo_traz_a_expectativa nao se cumpre, obtido={"primeira_com_conteudo":"paragrafo solto","espera":"SM.57. cabecalho do bloco"}]
+B1_sem_edicao_pendente_o_disco_igual_a_cabeca_na_classe_de_substituicao abortou=true esperava_aborto=true portao_alvo=ABORTA_SEM_EDICAO_PENDENTE veredicto=EXPERADO [ABORTA_SEM_EDICAO_PENDENTE: o conteudo em disco e byte-identico ao de cabeca (9496 bytes, 40 linhas) e nao ha edicao para provar nesta classe]
+C1_positivo_linha_tocada_a_meio_mais_acrescimo_no_fim abortou=false esperava_aborto=false portao_alvo=- veredicto=EXPERADO
+C2_duas_linhas_de_head_diferentes_do_disco abortou=true esperava_aborto=true portao_alvo=portao_C1 veredicto=EXPERADO [ABORTA portao_C1_uma_unica_linha_de_head_diferente_do_disco nao se cumpre, obtido={"indices":[10,35],"head":40,"disco":42}]
+C3_linha_tocada_sem_acrescimo_no_fim abortou=true esperava_aborto=true portao_alvo=portao_C2 veredicto=EXPERADO [ABORTA portao_C2_o_disco_tem_acrescimo_depois_de_todo_o_head nao se cumpre, obtido={"head":40,"disco":40}]
+C4_linha_tocada_reescrita_desde_o_primeiro_byte abortou=true esperava_aborto=true portao_alvo=portao_C3 veredicto=EXPERADO [ABORTA portao_C3_a_linha_tocada_mantem_cabeca_nao_vazia nao se cumpre, obtido=0]
+C5_acrescimo_puro_no_fim_da_linha_tocada abortou=true esperava_aborto=true portao_alvo=portao_C4 veredicto=EXPERADO [ABORTA portao_C4_a_substituida_dentro_da_linha_nao_vazia nao se cumpre, obtido=0]
+C6_frase_antiga_duplicada_noutro_lugar_do_head abortou=true esperava_aborto=true portao_alvo=portao_C5 veredicto=EXPERADO [ABORTA portao_C5_a_frase_substituida_e_unica_no_head nao se cumpre, obtido=2]
+C7_frase_antiga_preservada_dentro_do_acrescimo abortou=true esperava_aborto=true portao_alvo=portao_C6 veredicto=EXPERADO [ABORTA portao_C6_a_frase_substituida_nao_sobrevive_no_disco nao se cumpre, obtido=1]
+C8_acrescimo_que_nao_traz_o_cabecalho_declarado abortou=true esperava_aborto=true portao_alvo=portao_C7 veredicto=EXPERADO [ABORTA portao_C7_o_acrescimo_contem_a_expectativa_declarada nao se cumpre, obtido={"espera":"SM.57. cabecalho do bloco","em_linhas":0}]
+C9_primeira_linha_nova_solta_antes_do_cabecalho abortou=true esperava_aborto=true portao_alvo=portao_C8 veredicto=EXPERADO [ABORTA portao_C8_a_primeira_linha_nova_com_conteudo_traz_a_expectativa nao se cumpre, obtido={"primeira_com_conteudo":"paragrafo solto","espera":"SM.57. cabecalho do bloco"}]
+C10_classe_sem_expectativa_declara_da_aborta abortou=true esperava_aborto=true portao_alvo=ABORTA: a classe de acrescimo com linha tocada exige veredicto=EXPERADO [ABORTA: a classe de acrescimo com linha tocada exige a expectativa declarada, senao o verde nao tem o que medir]
+C11_sem_edicao_pendente_o_disco_igual_a_cabeca_na_classe_mista abortou=true esperava_aborto=true portao_alvo=ABORTA_SEM_EDICAO_PENDENTE veredicto=EXPERADO [ABORTA_SEM_EDICAO_PENDENTE: o conteudo em disco e byte-identico ao de cabeca (9496 bytes, 40 linhas) e nao ha edicao para provar nesta classe]
+FIXTURES total=28 positivos=4 negativos=24 esperados=28 inesperados=0
+P168_FIXTURES_OK
+node_exit=0

@@ -3,33 +3,152 @@
 //      node scripts/p168-prova-de-edicao-sem-corte.mjs --fixtures
 //      node scripts/p168-prova-de-edicao-sem-corte.mjs --medir
 //      node scripts/p168-prova-de-edicao-sem-corte.mjs <captura> --acrescimo --espera "<cabecalho esperado>"
+//      node scripts/p168-prova-de-edicao-sem-corte.mjs <captura> --acrescimo-com-substituicao --espera "<cabecalho esperado>"
 //      node scripts/p168-prova-de-edicao-sem-corte.mjs --portao-a3
-// Duas classes de edicao, um predicado por classe, cada classe com fixture proprio: a substituicao duma linha e o
-// acrescimo puro no fim do ficheiro. A classe de acrescimo exige a expectativa declarada, senao aborta antes de medir.
+//      node scripts/p168-prova-de-edicao-sem-corte.mjs --duo <captura>
+// Toda a saida leva a pegada do emissor (bytes e md5 deste ficheiro, lidos do disco) e fecha-se com `cifras_em_duo=0`,
+// o portao que recusa um artefacto onde o mesmo nome de grandeza aparece com dois valores.
+// --duo e a mesma regua aplicada a um artefacto de fora: a regiao de uma medida e da familia toda (`alvo=` ate a
+// primeira linha `P<tres digitos>_`), porque uma pieza nova nao reimplementa o predicado que ja vive aqui; por isso
+// a saida diz ONDE a regiao se fechou e se ela cobre o fim do ficheiro, senao um veredicto alhures no meio encurtava
+// a varredura e o verde passava a significar "nao vi".
+// Tres classes de edicao, um predicado por classe, cada classe com fixture proprio: a substituicao duma linha com
+// acrescimo logo depois dela, o acrescimo puro no fim do ficheiro, e a forma que os fechos de ronda realmente produzem
+// (uma linha reescrita a meio MAIS acrescimo no fim). Cada classe exige a expectativa que julga, senao aborta antes
+// de medir; passar duas flags de classe de uma vez aborta, porque a escolha do predicado nao pode ser implicita.
 // O portao_A3 da classe de acrescimo foi escrito como o comprimento do prefixo comum ate ao fim do HEAD, que e o
 // portao_A1 por outra forma; --portao-a3 mede as separacoes entre os dois e passa o A3 a exigir que a primeira
 // linha nova com conteudo traga a expectativa, o unico eixo com positivo proprio, provado nas mesmas fabricas.
 // Cada portao tem fixture que o faz abortar; a guarda de sobrescrita exige sufixo novo.
 import { execFileSync } from 'node:child_process';
 import { readFileSync, writeFileSync, existsSync, statSync } from 'node:fs';
+import { createHash } from 'node:crypto';
+import { fileURLToPath } from 'node:url';
 
-const ALVO = process.argv[3] || 'docs/auditoria-bfr-conecta.md';
+// argv[3] so e o alvo quando nao tem forma de flag. Com a forma antiga, `--acrescimo-com-substituicao` no lugar do
+// alvo era lido como caminho e a pieza morria num `git show HEAD:--…` em vez de dizer o que se passou.
+const ALVOarg = process.argv[3];
+const ALVO = ALVOarg && !ALVOarg.startsWith('--') ? ALVOarg : 'docs/auditoria-bfr-conecta.md';
 const REPOReal = execFileSync('git', ['rev-parse', '--show-toplevel'], { encoding: 'utf8' }).trim();
 const flagDe = (nome) => {
   const i = process.argv.indexOf(nome);
   return i < 0 ? null : process.argv[i + 1];
 };
-const CLASSE = process.argv.includes('--acrescimo') ? 'acrescimo_no_fim' : 'substituicao_de_uma_linha';
+const flagAcrescimo = process.argv.includes('--acrescimo');
+const flagMista = process.argv.includes('--acrescimo-com-substituicao');
+if (flagAcrescimo && flagMista) throw new Error('ABORTA: as duas flags de classe foram passadas juntas, o predicado escolhido nao pode depender da ordem do codigo');
+const CLASSE = flagMista ? 'acrescimo_no_fim_com_uma_linha_tocada' : flagAcrescimo ? 'acrescimo_no_fim' : 'substituicao_de_uma_linha';
 const ESPERA = flagDe('--espera');
+// A pegada do emissor e identidade do codigo que corre, nao alegacao estavel: envelhece a cada edicao desta peça.
+// Por isso vive na captura e nunca na prosa, e le-se com o mesmo metodo do p169 (bytes e md5 do proprio ficheiro).
+const EU = readFileSync(fileURLToPath(import.meta.url), 'utf8');
+const EMISSOR = { bytes: Buffer.byteLength(EU, 'utf8'), md5: createHash('md5').update(EU).digest('hex') };
 
 function primeiraComConteudo(L) {
   const comConteudo = L.filter((l) => l.trim().length > 0);
   return comConteudo.length === 0 ? '' : comConteudo[0];
 }
 
+// A coluna onde uma linha deixada para tras coincide com a mesma linha reescrita, e as duas caudas a partir dela.
+// Vive fora das classes porque a classe de acrescimo com linha tocada observa a linha tocada por indice (o miolo do
+// prefixo comum nao a isola) e a prédica de substituicao tem de ser a mesma das duas rotas, nao uma copia aproximada.
+function parDeCaudas(a, b) {
+  let comum = 0;
+  while (comum < a.length && comum < b.length && a.charCodeAt(comum) === b.charCodeAt(comum)) comum++;
+  return { comum, caudaOld: a.slice(comum), caudaNew: b.slice(comum) };
+}
+
+// Uma cifra com o mesmo nome e valores diferentes no mesmo artefacto nao e duas medidas, e uma delas falsa: quem le o
+// numero nao pode saber a que grandeza pertence. As linhas dos portoes repetem `obtido` por construcao (cada portao
+// observa o seu), por isso saem da varredura pelo nome da primeira chave e a saida diz quantas linhas ficaram fora.
+function duoDeCifras(L) {
+  const vistas = new Map();
+  const fora = [];
+  for (const texto of L) {
+    const re = new RegExp('([a-zA-Z_][a-zA-Z0-9_]*)=(-?\\d+)(?=\\s|$)', 'g');
+    let m;
+    while ((m = re.exec(texto)) !== null) {
+      if (vistas.has(m[1]) && vistas.get(m[1]) !== m[2]) fora.push(m[1] + ': ' + vistas.get(m[1]) + ' e ' + m[2]);
+      vistas.set(m[1], m[2]);
+    }
+  }
+  return fora;
+}
+function soMedidas(L) {
+  const kept = [];
+  let excluidas = 0;
+  for (const l of L) {
+    const primeira = (l.match(/([a-zA-Z_][a-zA-Z0-9_]*)=/) || [null, ''])[1];
+    if (/^portao/.test(primeira)) excluidas++;
+    else kept.push(l);
+  }
+  return { kept, excluidas };
+}
+// Uma cifra dupla so e defeito dentro de UMA medida. Os artefactos de uma medida comecam por `alvo=` e fecham-se na
+// primeira linha de veredicto da familia `P<tres digitos>_`; as tabelas de casos (fixtures, tautologia) repetem
+// `obtido` e `passam_os_quatro` linha a linha por construcao, e chamar-lhes defeito seria a regua a chumbar classe
+// legitima. Sem regiao, o probe nao afirma nada. O fecho e tambem medido: `fecha_em` diz a linha que fechou a regiao
+// e `cobre_o_fim` diz se nada mais do que linhas em branco se segue a ela, porque regiao encurtada por um veredicto
+// no meio e uma varredura mais curta a dar verde.
+function regiaoDeMedida(L) {
+  const i = L.findIndex((l) => /^alvo=/.test(l));
+  if (i < 0) return null;
+  let j = -1;
+  for (let k = i; k < L.length; k++) if (/^P\d{3}_/.test(L[k])) { j = k; break; }
+  const corpo = L.slice(i, (j < 0 ? L.length : j + 1));
+  return { corpo, fecha_em: j < 0 ? 'fim_do_ficheiro' : L[j].split(' ')[0], cobre_o_fim: j < 0 || L.slice(j + 1).every((l) => l.trim().length === 0) };
+}
+function duoNaRegiao(L) {
+  const reg = regiaoDeMedida(L);
+  if (!reg) return null;
+  const { kept, excluidas } = soMedidas(reg.corpo);
+  return { kept, excluidas, fecha_em: reg.fecha_em, cobre_o_fim: reg.cobre_o_fim, fora: duoDeCifras(kept) };
+}
+function corpoDe(r, veredicto) {
+  return r.linhas.join('\n') + '\n' + r.portoes.join('\n') + '\n' + veredicto + '\n';
+}
+function veredictoDeClasse(r) {
+  return 'P168_EDICAO_SEM_CORTE_OK classe=' + r.classe +
+    (r.classe === 'acrescimo_no_fim' ? ' linhas_no_fim_do_ficheiro=' : ' linha_unica_tocada_no_indice=') + r.indiceDaLinha +
+    ' linhas_acrescentadas=' + r.acrescentadas;
+}
+// O portao da cifra dupla corre antes de qualquer escrita: um artefacto com o mesmo nome e dois valores sai partido,
+// nao sai com um deles. A linha `cifras_em_duo=0` mede a varredura do corpo SEM ella propria, porque o seu valor
+// unico nao pode colidir consigo mesmo; o positivo prova-se com as duas linhas que o emissor antigo imprimia.
+function corpoFinalOuAborto(r, veredicto) {
+  const base = corpoDe(r, veredicto);
+  const m = duoNaRegiao(base.split('\n'));
+  if (!m) throw new Error('ABORTA: o corpo emitido nao comeca por `alvo=`, a varredura de cifras nao tem regiao onde medir');
+  if (m.fora.length > 0) throw new Error('ABORTA cifras_em_duo=' + m.fora.length + ' ' + JSON.stringify(m.fora) + ' -- um nome com dois valores nao sao duas medidas, uma delas e falsa');
+  return base + 'cifras_em_duo=0\n';
+}
+
+if (process.argv.includes('--duo')) {
+  const alvoDuo = process.argv[process.argv.indexOf('--duo') + 1];
+  if (!alvoDuo || alvoDuo.startsWith('--')) throw new Error('ABORTA: --duo pede o caminho duma captura como argumento seguinte');
+  const L = readFileSync(alvoDuo, 'utf8').split('\n');
+  const m = duoNaRegiao(L);
+  if (!m) {
+    console.log('DUO em=' + alvoDuo + ' linhas=' + L.length + ' regiao_de_medida=nao_encontrada: o ficheiro e uma tabela de casos, cada linha e uma medida sua, e repetir chaves entre linhas nao e cifra dupla');
+    console.log('P168_DUO_FORA_DO_DOMINIO');
+    process.exit(0);
+  }
+  console.log('DUO em=' + alvoDuo + ' linhas=' + L.length + ' varridas=' + m.kept.length + ' excluidas_por_portao=' + m.excluidas + ' regiao_fecha_em=' + m.fecha_em + ' regiao_cobre_o_fim=' + m.cobre_o_fim + ' cifras_em_duo=' + m.fora.length + ' listas=' + JSON.stringify(m.fora));
+  console.log(m.fora.length > 0 ? 'P168_DUO_DE_CIFRAS_ACHADO' : 'P168_DUO_DE_CIFRAS_NENHUM');
+  process.exit(0);
+}
+
 function analisa(headTexto, discoTexto, soMedir, opcao) {
   const classe = (opcao && opcao.classe) || CLASSE;
   const espera = opcao && Object.prototype.hasOwnProperty.call(opcao, 'espera') ? opcao.espera : ESPERA;
+  // Medido na corrida que versionei como `evidence/p168-medicao-do-diario-SEM-EDICAO-PENDENTE-o-indice-ia-igual-a-cabeca-e-os-seis-portoes-estavam-vermelhos-por-nao-haver-edicao.txt`
+  // (seis portoes vermelhos, delta_bytes=0): com o indice byte-identico a cabeca esta classe nao tem linha tocada, o
+  // miolo fica vazio e a agulha da frase substituida fica a string vazia, que casa todas as linhas do ficheiro, por
+  // isso as seis portas so podiam estar vermelhas. Um vermelho sem positivo e o mesmo defeito que o p171 acabou de
+  // nomear na sua propria emissao, e o remedio e dar o nome ao estado, nunca arranjar uma edicao para que a regua
+  // tenha o que morder. A classe de acrescimo nao passa por aqui: para ela o acrescimo zero e face legitima e ja tem
+  // porta propria, o fixture A3.
+  if (headTexto === discoTexto && classe !== 'acrescimo_no_fim') throw new Error('ABORTA_SEM_EDICAO_PENDENTE: o conteudo em disco e byte-identico ao de cabeca (' + Buffer.byteLength(discoTexto, 'utf8') + ' bytes, ' + discoTexto.split('\n').length + ' linhas) e nao ha edicao para provar nesta classe');
   const H = headTexto.split('\n');
   const D = discoTexto.split('\n');
   let p = 0;
@@ -40,10 +159,7 @@ function analisa(headTexto, discoTexto, soMedir, opcao) {
   const meioD = D.slice(p, D.length - s);
   const a = meioH.length === 1 ? meioH[0] : '';
   const b = meioD.length >= 1 ? meioD[0] : '';
-  let comum = 0;
-  while (comum < a.length && comum < b.length && a.charCodeAt(comum) === b.charCodeAt(comum)) comum++;
-  const caudaOld = a.slice(comum);
-  const caudaNew = b.slice(comum);
+  const { comum, caudaOld, caudaNew } = parDeCaudas(a, b);
   const emHead = H.filter((l) => l.includes(caudaOld)).length;
   const emDisco = D.filter((l) => l.includes(caudaOld)).length;
   const linhas = [];
@@ -53,13 +169,21 @@ function analisa(headTexto, discoTexto, soMedir, opcao) {
     if (!cond && !soMedir) throw new Error('ABORTA ' + nome + ' nao se cumpre, obtido=' + JSON.stringify(obtido));
   };
   linhas.push('alvo=' + ALVO + ' repo=' + REPOReal);
+  linhas.push('emissor_bytes=' + EMISSOR.bytes + ' emissor_md5=' + EMISSOR.md5);
   linhas.push('linhas_head=' + H.length + ' linhas_disco=' + D.length);
   linhas.push('bytes_head=' + Buffer.byteLength(headTexto, 'utf8') + ' bytes_disco=' + Buffer.byteLength(discoTexto, 'utf8') + ' delta_bytes=' + (Buffer.byteLength(discoTexto, 'utf8') - Buffer.byteLength(headTexto, 'utf8')));
   linhas.push('prefixo_identico_linhas=' + p + ' sufixo_identico_linhas=' + s);
-  linhas.push('miolo_head_linhas=' + meioH.length + ' miolo_disco_linhas=' + meioD.length + ' linhas_acrescentadas=' + (meioD.length - 1));
-  linhas.push('coluna_de_divergencia_na_linha_tocada=' + comum + ' bytes_da_cauda_substituida=' + Buffer.byteLength(caudaOld, 'utf8') + ' bytes_da_cauda_nova=' + Buffer.byteLength(caudaNew, 'utf8'));
-  linhas.push('cauda_substituida_comeca_por=' + JSON.stringify(caudaOld.slice(0, 24)));
-  linhas.push('frase_substituida_em_head_linhas=' + emHead + ' frase_substituida_em_disco_linhas=' + emDisco);
+  // Estas quatro linhas medem a vista do miolo, que so e a linha tocada na classe de substituicao e na de acrescimo
+  // puro. Na classe mista o miolo e todo o resto do ficheiro, e imprimir `coluna_de_divergencia_na_linha_tocada=0`
+  // com esse valor seria a cifra de uma grandeza que a classe nao define: a linha tocada la observada por indice.
+  if (classe !== 'acrescimo_no_fim_com_uma_linha_tocada') {
+    // O miolo nao e a regiao acrescentada na classe de acrescimo (la o que vale e `novas.length`, impresso pela classe),
+    // por isso esta cifra tem nome proprio: partilhar o nome com a cifra da classe dava dois valores no mesmo artefacto.
+    linhas.push('miolo_head_linhas=' + meioH.length + ' miolo_disco_linhas=' + meioD.length + ' linhas_acrescentadas_no_miolo=' + (meioD.length - 1));
+    linhas.push('coluna_de_divergencia_na_linha_tocada=' + comum + ' bytes_da_cauda_substituida=' + Buffer.byteLength(caudaOld, 'utf8') + ' bytes_da_cauda_nova=' + Buffer.byteLength(caudaNew, 'utf8'));
+    linhas.push('cauda_substituida_comeca_por=' + JSON.stringify(caudaOld.slice(0, 24)));
+    linhas.push('frase_substituida_em_head_linhas=' + emHead + ' frase_substituida_em_disco_linhas=' + emDisco);
+  }
   const setD = new Set(D);
   if (classe === 'acrescimo_no_fim') {
     if (espera === null || espera === undefined) throw new Error('ABORTA: a classe de acrescimo exige a expectativa declarada, senao o verde nao tem o que medir');
@@ -69,6 +193,38 @@ function analisa(headTexto, discoTexto, soMedir, opcao) {
     chk('portao_A2_o_acrescimo_contem_a_expectativa_declarada', novas.some((l) => l.indexOf(espera) >= 0), { espera: espera, em_linhas: novas.filter((l) => l.indexOf(espera) >= 0).length });
     chk('portao_A3_a_primeira_linha_nova_com_conteudo_traz_a_expectativa', primeiraComConteudo(novas).indexOf(espera) >= 0, { primeira_com_conteudo: primeiraComConteudo(novas).slice(0, 60), espera: espera });
     return { linhas, portoes, indiceDaLinha: H.length, acrescentadas: novas.length, classe: classe };
+  }
+  // A terceira classe e a forma como este diario e mesmo editado num fecho de ronda: uma linha reescrita a meio do
+  // ficheiro (uma celula corrigida, um glifo fora do alfabeto trocado) e o bloco novo acrescentado no FIM. Nenhuma
+  // das duas classes anteriores a mede, e isso foi medido antes de escrito: com os dois eixos no mesmo diff, o
+  // portao_A1 da classe de acrescimo fica vermelho porque uma linha de head nao e igual ao disco, e o portao_1 da
+  // classe de substituicao fica vermelho porque o sufixo comum e zero e o miolo passa a ser todo o resto do ficheiro.
+  // Amaciar qualquer dos dois seria mover uma regua que ja tem fixture; o que falta era o predicado da classe mista,
+  // por isso as linhas tocadas sao comparadas por INDICE (o alinhamento nao se move, so ha acrescimo depois do head)
+  // e a substituicao em si e julgada pela mesma prédica de caudas da classe de substituicao, agora em parDeCaudas.
+  if (classe === 'acrescimo_no_fim_com_uma_linha_tocada') {
+    if (espera === null || espera === undefined) throw new Error('ABORTA: a classe de acrescimo com linha tocada exige a expectativa declarada, senao o verde nao tem o que medir');
+    const dif = [];
+    for (let i = 0; i < H.length; i++) if (H[i] !== D[i]) dif.push(i);
+    const c = dif.length === 1 ? dif[0] : -1;
+    const par = parDeCaudas(c < 0 ? '' : H[c], c < 0 ? '' : D[c]);
+    const caudaTocada = par.caudaOld;
+    const emHeadTocada = H.filter((l) => l.includes(caudaTocada)).length;
+    const emDiscoTocada = D.filter((l) => l.includes(caudaTocada)).length;
+    const novas = D.slice(H.length);
+    linhas.push('classe_da_edicao=' + classe + ' indices_de_head_diferentes_do_disco=' + JSON.stringify(dif) + ' linha_tocada_no_indice=' + c);
+    linhas.push('coluna_de_divergencia_na_linha_tocada=' + par.comum + ' bytes_da_cauda_substituida=' + Buffer.byteLength(caudaTocada, 'utf8') + ' bytes_da_cauda_nova=' + Buffer.byteLength(par.caudaNew, 'utf8'));
+    linhas.push('frase_substituida_em_head_linhas=' + emHeadTocada + ' frase_substituida_em_disco_linhas=' + emDiscoTocada);
+    linhas.push('linhas_novas=' + novas.length + ' linhas_novas_sem_conteudo=' + (novas.length - novas.filter((l) => l.trim().length > 0).length) + ' primeira_linha_nova_com_conteudo=' + JSON.stringify(primeiraComConteudo(novas).slice(0, 40)));
+    chk('portao_C1_uma_unica_linha_de_head_diferente_do_disco', dif.length === 1, { indices: dif, head: H.length, disco: D.length });
+    chk('portao_C2_o_disco_tem_acrescimo_depois_de_todo_o_head', novas.length > 0, { head: H.length, disco: D.length });
+    chk('portao_C3_a_linha_tocada_mantem_cabeca_nao_vazia', par.comum > 0, par.comum);
+    chk('portao_C4_a_substituida_dentro_da_linha_nao_vazia', caudaTocada.length > 0, Buffer.byteLength(caudaTocada, 'utf8'));
+    chk('portao_C5_a_frase_substituida_e_unica_no_head', emHeadTocada === 1, emHeadTocada);
+    chk('portao_C6_a_frase_substituida_nao_sobrevive_no_disco', emDiscoTocada === 0, emDiscoTocada);
+    chk('portao_C7_o_acrescimo_contem_a_expectativa_declarada', novas.some((l) => l.indexOf(espera) >= 0), { espera: espera, em_linhas: novas.filter((l) => l.indexOf(espera) >= 0).length });
+    chk('portao_C8_a_primeira_linha_nova_com_conteudo_traz_a_expectativa', primeiraComConteudo(novas).indexOf(espera) >= 0, { primeira_com_conteudo: primeiraComConteudo(novas).slice(0, 60), espera: espera });
+    return { linhas, portoes, indiceDaLinha: c, acrescentadas: novas.length, classe: classe };
   }
   linhas.push('classe_da_edicao=' + classe);
   linhas.push('MEDIDA_linhas_de_head_fora_da_tocada_que_nao_aparecem_no_disco=' + H.filter((l, i) => i !== p && !setD.has(l)).length + ' (medida, nao portao: um corte noutra linha faz o portao_1 abortar antes, por isso aqui nao ha positivo possivel)');
@@ -108,6 +264,11 @@ if (process.argv.includes('--fixtures')) {
   };
   const ok = velho.slice(0, corte) + ' SUBSTITUICAO DO RESTO DA FRASE.';
   const AC = { classe: 'acrescimo_no_fim', espera: 'SM.57. cabecalho do bloco' };
+  const CC = { classe: 'acrescimo_no_fim_com_uma_linha_tocada', espera: 'SM.57. cabecalho do bloco' };
+  const FIM = '\nSM.57. cabecalho do bloco\nitem um do bloco';
+  // O diff da classe mista: a linha 35 reescrita no sitio, sem linhas inseridas ao lado, e o bloco só depois do fim
+  // do head. e exactamente a forma dum fecho de ronda neste diario, por isso os casos dela constroem-se daqui.
+  const tocada = headTxt(null).replace(velho, ok);
   const casos = [
     ['F1_positivo', headTxt(null), discoTxt(ok, null), false, '-'],
     ['F2_duas_linhas_alteradas', headTxt(null), discoTxt(ok, null).replace(base[10], base[10] + ' CORTE NO MEIO DO FICHEIRO'), true, 'portao_1'],
@@ -125,9 +286,51 @@ if (process.argv.includes('--fixtures')) {
     ['A6_classe_sem_expectativa_declara_da_aborta_antes_de_medir', headTxt(null), headTxt(null) + '\nSM.57. cabecalho do bloco', true, 'ABORTA: a classe de acrescimo exige', { classe: 'acrescimo_no_fim', espera: null }],
     ['A7_positivo_com_linhas_em_branco_antes_do_cabecalho', headTxt(null), headTxt(null) + '\n\n\nSM.57. cabecalho do bloco\nitem um do bloco', false, '-', AC],
     ['A8_linha_com_conteudo_antes_do_cabecalho_declarado', headTxt(null), headTxt(null) + '\nparagrafo solto\nSM.57. cabecalho do bloco', true, 'portao_A3', AC],
+    // O caso espelho do A3, na outra classe: sem edicao nenhuma o veredicto honesto e o nome do estado, nao seis
+    // portas vermelhas. Sem este fixture o aborta so existiria na prosa do cabecalho.
+    ['B1_sem_edicao_pendente_o_disco_igual_a_cabeca_na_classe_de_substituicao', headTxt(null), headTxt(null), true, 'ABORTA_SEM_EDICAO_PENDENTE'],
+    // A classe mista, nos dois sentidos: o positivo e cada uma das sete portas vermelhas com o seu caso proprio.
+    ['C1_positivo_linha_tocada_a_meio_mais_acrescimo_no_fim', headTxt(null), tocada + FIM, false, '-', CC],
+    ['C2_duas_linhas_de_head_diferentes_do_disco', headTxt(null), tocada.replace(base[10], base[10] + ' OUTRA TOCADA') + FIM, true, 'portao_C1', CC],
+    ['C3_linha_tocada_sem_acrescimo_no_fim', headTxt(null), tocada, true, 'portao_C2', CC],
+    ['C4_linha_tocada_reescrita_desde_o_primeiro_byte', headTxt(null), headTxt(null).replace(velho, 'W' + velho.slice(1)) + FIM, true, 'portao_C3', CC],
+    ['C5_acrescimo_puro_no_fim_da_linha_tocada', headTxt(null), headTxt(null).replace(velho, velho + ' acrescimo puro no fim') + FIM, true, 'portao_C4', CC],
+    ['C6_frase_antiga_duplicada_noutro_lugar_do_head', headTxt(cauda), headTxt(cauda).replace(velho, ok) + FIM, true, 'portao_C5', CC],
+    ['C7_frase_antiga_preservada_dentro_do_acrescimo', headTxt(null), tocada + '\nSM.57. cabecalho do bloco\n' + cauda, true, 'portao_C6', CC],
+    ['C8_acrescimo_que_nao_traz_o_cabecalho_declarado', headTxt(null), tocada + '\nparagrafo sem titulo nenhum', true, 'portao_C7', CC],
+    ['C9_primeira_linha_nova_solta_antes_do_cabecalho', headTxt(null), tocada + '\nparagrafo solto\nSM.57. cabecalho do bloco', true, 'portao_C8', CC],
+    ['C10_classe_sem_expectativa_declara_da_aborta', headTxt(null), tocada + FIM, true, 'ABORTA: a classe de acrescimo com linha tocada exige', { classe: 'acrescimo_no_fim_com_uma_linha_tocada', espera: null }],
+    ['C11_sem_edicao_pendente_o_disco_igual_a_cabeca_na_classe_mista', headTxt(null), headTxt(null), true, 'ABORTA_SEM_EDICAO_PENDENTE', CC],
   ];
   const saida = [];
   const veredictos = [];
+  const CAB = 'alvo=docs/auditoria-bfr-conecta.md repo=/x emissor_bytes=1 emissor_md5=a1';
+  const LIN_PORTAO = 'portao_1_uma_unica_linha_de_head_alterada=OK obtido=1';
+  const LIN_VEREDICTO = 'P168_EDICAO_SEM_CORTE_OK classe=acrescimo_no_fim linhas_no_fim_do_ficheiro=5155 linhas_acrescentadas=16';
+  const COLISAO = [CAB, 'miolo_head_linhas=0 miolo_disco_linhas=16 linhas_acrescentadas=15', LIN_PORTAO, LIN_VEREDICTO];
+  const CORIGIDA = [CAB, 'miolo_head_linhas=0 miolo_disco_linhas=16 linhas_acrescentadas_no_miolo=15', LIN_PORTAO, LIN_VEREDICTO];
+  const TABELA = ['F1_INESPERADO ABORTA: uma_unica_linha_alterada nao se cumpre, obtido=5', 'F2_ABORTOU ABORTA: uma_unica_linha_alterada nao se cumpre, obtido=30'];
+  // O fecho da regiao passou a ser da familia `P<tres digitos>_` para que una pieza nova peca esta regua em vez de a
+  // reimplementar. Os dois sentidos provam-se com veredicto doutro nome: antes do fecho a colisao e apanhada, depois
+  // do fecho nao e julgada, e `fecha_em` diz qual linha encerrou a varredura.
+  const VEREDICTO_ESTRANGEIRO = 'P171_AGRUPAMENTO_MEDIDO grupos=4 soma_dos_grupos=36';
+  const ANTES_DO_FECHO = [CAB, 'abertas=36', 'abertas=40', VEREDICTO_ESTRANGEIRO];
+  const DEPOIS_DO_FECHO = [CAB, 'abertas=36', VEREDICTO_ESTRANGEIRO, 'abertas=40'];
+  const dAntesDoFecho = duoNaRegiao(ANTES_DO_FECHO);
+  const dDepoisDoFecho = duoNaRegiao(DEPOIS_DO_FECHO);
+  const dColisao = duoNaRegiao(COLISAO);
+  const dCorrigida = duoNaRegiao(CORIGIDA);
+  const dTabela = duoNaRegiao(TABELA);
+  const semRegiao = duoDeCifras(soMedidas(TABELA).kept);
+  console.log('PROVA_DUO_DE_CIFRAS colisao=' + JSON.stringify(dColisao && dColisao.fora) + ' corrigida=' + JSON.stringify(dCorrigida && dCorrigida.fora) + ' tabela_sem_regiao=' + (dTabela === null ? 'true' : 'false') + ' tabela_se_varrida_sem_regiao_daria=' + semRegiao.length + ' portoes_excluidas=' + (dColisao ? dColisao.excluidas : -1) + ' fecho_estrang=' + (dAntesDoFecho ? dAntesDoFecho.fecha_em : 'null') + ' antes_do_fecho_apanhado=' + (dAntesDoFecho ? dAntesDoFecho.fora.length : -1) + ' depois_do_fecho_julgado=' + (dDepoisDoFecho ? dDepoisDoFecho.fora.length : -1) + ' depois_cobre_o_fim=' + (dDepoisDoFecho ? dDepoisDoFecho.cobre_o_fim : 'null'));
+  if (!dAntesDoFecho || dAntesDoFecho.fecha_em !== 'P171_AGRUPAMENTO_MEDIDO') throw new Error('ABORTA: um veredicto doutro nome da familia nao fechou a regiao, deu ' + (dAntesDoFecho ? dAntesDoFecho.fecha_em : 'null'));
+  if (!dAntesDoFecho || dAntesDoFecho.fora.length !== 1) throw new Error('ABORTA: a colisao antes do fecho da familia nao foi apanhada, deu ' + (dAntesDoFecho ? dAntesDoFecho.fora.length : 'null'));
+  if (!dDepoisDoFecho || dDepoisDoFecho.fora.length !== 0) throw new Error('ABORTA: a regiao nao se fechou no veredicto, a linha depois dele foi julgada');
+  if (!dDepoisDoFecho || dDepoisDoFecho.cobre_o_fim !== false) throw new Error('ABORTA: cobre_o_fim afirmou o fim dum ficheiro que tem linhas depois do fecho');
+  if (!dColisao || dColisao.fora.length !== 1) throw new Error('ABORTA: a regua nao dispara na colisao fabricada das duas linhas do emissor antigo, deu ' + JSON.stringify(dColisao && dColisao.fora));
+  if (!dCorrigida || dCorrigida.fora.length !== 0) throw new Error('ABORTA: o layout corrigido ainda aparece com cifra dupla, deu ' + JSON.stringify(dCorrigida && dCorrigida.fora));
+  if (dTabela !== null) throw new Error('ABORTA: a regua tratou uma tabela de casos como uma medida, o que faria dela uma regua que chumba classe legitima');
+  if (dColisao.excluidas !== 1) throw new Error('ABORTA: a linha de portao nao foi excluida pelo nome, deu ' + dColisao.excluidas);
   for (const [nome, h, d, esperaAborto, alvo, opcao] of casos) {
     let abortou = false;
     let msg = '';
@@ -305,9 +508,7 @@ if (process.argv.includes('--tautologia')) {
 if (process.argv.includes('--medir')) {
   const { head, disco } = lePar();
   const r = analisa(head, disco, true);
-  console.log(r.linhas.join('\n'));
-  console.log(r.portoes.join('\n'));
-  console.log('P168_MEDICAO_SEM_ABORTO linha_unica_tocada_no_indice=' + r.indiceDaLinha);
+  process.stdout.write(corpoFinalOuAborto(r, 'P168_MEDICAO_SEM_ABORTO linha_unica_tocada_no_indice=' + r.indiceDaLinha));
   process.exit(0);
 }
 
@@ -316,8 +517,6 @@ if (!destino || destino === ALVO) throw new Error('ABORTA: passe o caminho da ca
 if (existsSync(destino)) throw new Error('ABORTA: a captura ja existe, use sufixo novo -- ' + destino + ' tem ' + statSync(destino).size + ' bytes');
 const { head, disco } = lePar();
 const r = analisa(head, disco, false);
-const corpo = r.linhas.join('\n') + '\n' + r.portoes.join('\n') + '\nP168_EDICAO_SEM_CORTE_OK classe=' + r.classe +
-  (r.classe === 'acrescimo_no_fim' ? ' linhas_no_fim_do_ficheiro=' : ' linha_unica_tocada_no_indice=') + r.indiceDaLinha +
-  ' linhas_acrescentadas=' + r.acrescentadas + '\n';
+const corpo = corpoFinalOuAborto(r, veredictoDeClasse(r));
 writeFileSync(destino, corpo, 'utf8');
 process.stdout.write(corpo);

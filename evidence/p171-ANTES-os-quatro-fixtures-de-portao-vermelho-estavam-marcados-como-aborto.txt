@@ -1,0 +1,23 @@
+positivo_as_quatro_faces_e_as_duas_rotas abortou=false veredicto=EXPERADO
+aborta_se_o_registro_nao_for_do_p133 abortou=true veredicto=EXPERADO [ABORTA: o registro nao se declara do p133, declara peca=outra.cjs]
+aborta_se_a_identidade_do_produtor_divergir abortou=true veredicto=EXPERADO [ABORTA: identidade do produtor nao conferida: o registro declara emissor_bytes=1]
+apanha_etiqueta_fora_do_vocabulario abortou=true veredicto=EXPERADO [PORTOES_DE_MAIS_OU_DE_MENOS: ["nenhuma_etiqueta_fora_do_vocabulario_lido_do_prod]
+apanha_face_fora_do_conjunto_do_produtor abortou=false veredicto=INESPERADO
+apanha_registro_sem_particao_do_produtor abortou=false veredicto=INESPERADO
+apanha_particao_que_nao_cobre_as_abertas abortou=false veredicto=INESPERADO
+apanha_linha_que_repete_a_mesma_familia abortou=false veredicto=EXPERADO
+aborta_a_guarda_sobre_um_ficheiro_que_ja_existe abortou=true veredicto=INESPERADO [ABORTA: a captura C:\Users\pcmac\AppData\Local\Temp/p171-guarda-fixture-39644.tx]
+deixa_passar_um_ficheiro_novo abortou=false veredicto=EXPERADO
+P171_FIXTURES total=10 esperados=6 inesperados=4
+file:///C:/Users/pcmac/Documents/Qoder/2026-10-13/28077d9a/bfr-conecta/scripts/p171-agrupamento-das-abertas-por-quem-as-fecha.mjs:175
+  if (inesperados.length) throw new Error('ABORTA: ' + inesperados.length + ' fixtures dao o veredicto errado');
+                                ^
+
+Error: ABORTA: 4 fixtures dao o veredicto errado
+    at file:///C:/Users/pcmac/Documents/Qoder/2026-10-13/28077d9a/bfr-conecta/scripts/p171-agrupamento-das-abertas-por-quem-as-fecha.mjs:175:33
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:643:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)
+
+Node.js v24.18.1
+node_exit=1
