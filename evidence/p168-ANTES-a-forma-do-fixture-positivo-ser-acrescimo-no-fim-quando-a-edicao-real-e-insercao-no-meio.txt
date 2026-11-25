@@ -1,0 +1,16 @@
+F1_INESPERADO ABORTA: uma_unica_linha_alterada nao se cumpre, obtido=5
+F2_ABORTOU ABORTA: uma_unica_linha_alterada nao se cumpre, obtido=30
+F3_ABORTOU ABORTA: uma_unica_linha_alterada nao se cumpre, obtido=40
+FIXTURES positivo_1=false negativo_2=true negativo_3=true
+file:///C:/Users/pcmac/Documents/Qoder/2026-11-15/2e9c4296/sm56-prova-edicao-sem-corte.mjs:56
+  if (!(ok1 && aborta2 && aborta3)) throw new Error('ABORTA: os fixtures nao dao o veredicto esperado');
+                                          ^
+
+Error: ABORTA: os fixtures nao dao o veredicto esperado
+    at file:///C:/Users/pcmac/Documents/Qoder/2026-11-15/2e9c4296/sm56-prova-edicao-sem-corte.mjs:56:43
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:643:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)
+
+Node.js v24.18.1
+node_exit=1

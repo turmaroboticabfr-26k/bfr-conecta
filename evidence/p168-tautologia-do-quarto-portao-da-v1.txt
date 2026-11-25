@@ -1,0 +1,5 @@
+legal: total=240 atinge_os_tres_primeiros=240 (esperado todos) quarto_portao_deu_falso=0 (esperado 0) passam_os_quatro=240 (esperado 240) veredicto=CONFORME
+legal_com_corte_da_ultima_linha: total=240 atinge_os_tres_primeiros=0 (esperado 0) quarto_portao_deu_falso=0 (esperado 0) passam_os_quatro=0 (esperado 0) veredicto=CONFORME
+malformada: total=240 atinge_os_tres_primeiros=25 (esperado >=1) quarto_portao_deu_falso=0 (esperado 0) passam_os_quatro=25 (esperado <240) veredicto=CONFORME
+P168_TAUTOLOGIA_MEDIDA o quarto portao deu falso em 0 de 720 fabricas e 265 delas atingem os tres primeiros portoes; na familia com a ultima linha apagada, que e um corte real, o quarto portao deu OK em 240 e passam os quatro 0, porque e o primeiro portao que apanha o corte
+node_exit=0

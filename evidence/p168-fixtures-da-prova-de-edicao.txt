@@ -1,0 +1,11 @@
+F1_positivo abortou=false esperava_aborto=false portao_alvo=- veredicto=EXPERADO
+F2_duas_linhas_alteradas abortou=true esperava_aborto=true portao_alvo=portao_1 veredicto=EXPERADO [ABORTA portao_1_uma_unica_linha_de_head_alterada nao se cumpre, obtido=26]
+F3_insercao_no_topo abortou=true esperava_aborto=true portao_alvo=portao_1 veredicto=EXPERADO [ABORTA portao_1_uma_unica_linha_de_head_alterada nao se cumpre, obtido=36]
+F4_sem_acrescimo abortou=true esperava_aborto=true portao_alvo=portao_2 veredicto=EXPERADO [ABORTA portao_2_acrescimo_depois_da_linha_tocada nao se cumpre, obtido=1]
+F5_linha_reescrita_desde_o_primeiro_byte abortou=true esperava_aborto=true portao_alvo=portao_3 veredicto=EXPERADO [ABORTA portao_3_linha_tocada_mantem_cabeca_nao_vazia nao se cumpre, obtido=0]
+F6_acrescimo_puro_no_fim_da_linha abortou=true esperava_aborto=true portao_alvo=portao_4 veredicto=EXPERADO [ABORTA portao_4_a_substituida_dentro_da_linha_nao_vazia nao se cumpre, obtido=0]
+F7_frase_antiga_duplicada_noutro_lugar abortou=true esperava_aborto=true portao_alvo=portao_5 veredicto=EXPERADO [ABORTA portao_5_frase_substituida_unica_no_head nao se cumpre, obtido=2]
+F8_frase_antiga_preservada_dentro_do_bloco abortou=true esperava_aborto=true portao_alvo=portao_6 veredicto=EXPERADO [ABORTA portao_6_frase_substituida_nao_sobrevive_no_disco nao se cumpre, obtido=1]
+FIXTURES total=8 positivos=1 negativos=7 esperados=8 inesperados=0
+P168_FIXTURES_OK
+node_exit=0

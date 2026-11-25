@@ -1,0 +1,21 @@
+F1_positivo abortou=true esperava_aborto=false portao_alvo=- veredicto=INESPERADO [ABORTA portao_3_linha_tocada_mantem_cabeca_nao_vazia nao se cumpre, obtido=0]
+F2_duas_linhas_alteradas abortou=true esperava_aborto=true portao_alvo=portao_1 veredicto=EXPERADO [ABORTA portao_1_uma_unica_linha_de_head_alterada nao se cumpre, obtido=26]
+F3_insercao_no_topo abortou=true esperava_aborto=true portao_alvo=portao_1 veredicto=EXPERADO [ABORTA portao_1_uma_unica_linha_de_head_alterada nao se cumpre, obtido=36]
+F4_sem_acrescimo abortou=true esperava_aborto=true portao_alvo=portao_2 veredicto=EXPERADO [ABORTA portao_2_acrescimo_depois_da_linha_tocada nao se cumpre, obtido=1]
+F5_linha_reescrita_desde_o_primeiro_byte abortou=true esperava_aborto=true portao_alvo=portao_3 veredicto=EXPERADO [ABORTA portao_3_linha_tocada_mantem_cabeca_nao_vazia nao se cumpre, obtido=0]
+F6_acrescimo_puro_no_fim_da_linha abortou=true esperava_aborto=true portao_alvo=portao_4 veredicto=INESPERADO [ABORTA portao_3_linha_tocada_mantem_cabeca_nao_vazia nao se cumpre, obtido=0]
+F7_frase_antiga_duplicada_noutro_lugar abortou=true esperava_aborto=true portao_alvo=portao_5 veredicto=INESPERADO [ABORTA portao_3_linha_tocada_mantem_cabeca_nao_vazia nao se cumpre, obtido=0]
+F8_frase_antiga_preservada_dentro_do_bloco abortou=true esperava_aborto=true portao_alvo=portao_6 veredicto=INESPERADO [ABORTA portao_3_linha_tocada_mantem_cabeca_nao_vazia nao se cumpre, obtido=0]
+FIXTURES total=8 positivos=1 negativos=7 esperados=0
+file:///C:/Users/pcmac/Documents/Qoder/2026-11-15/2e9c4296/sm56-prova-edicao-sem-corte.mjs:92
+  if (!todosOk) throw new Error('ABORTA: um fixture nao deu o veredicto esperado');
+                      ^
+
+Error: ABORTA: um fixture nao deu o veredicto esperado
+    at file:///C:/Users/pcmac/Documents/Qoder/2026-11-15/2e9c4296/sm56-prova-edicao-sem-corte.mjs:92:23
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:643:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)
+
+Node.js v24.18.1
+node_exit=1
