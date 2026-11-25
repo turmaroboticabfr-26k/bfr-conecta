@@ -1,0 +1,95 @@
+{
+ "peca": "p178-portao-da-portaria-lido-do-ar.mjs",
+ "emissor": {
+  "bytes": 15263,
+  "md5": "e99e2d9bc9dfe937d80a50e2fc07ec30"
+ },
+ "em": "2026-11-25T18:38:42.795Z",
+ "selfteste": false,
+ "registos_lidos": [
+  {
+   "ficheiro": "evidence\\p160-pos-deploy-v144c-24-11-b.json",
+   "url": true,
+   "b1_shell": true,
+   "medido_md5": true,
+   "veredito": "P160_POS_DEPLOY_V144C_OK 12/0",
+   "falhas": 0
+  }
+ ],
+ "registo_do_alvo": {
+  "ficheiro": "evidence\\p160-pos-deploy-v144c-24-11-b.json",
+  "url": "https://bfr-conecta.turmaroboticabfr.workers.dev",
+  "md5": "573de00016fe2d9b87e671bb84d21559",
+  "bytes": 3557197,
+  "veredito": "P160_POS_DEPLOY_V144C_OK 12/0",
+  "em": "2026-11-24T17:46:33.626Z",
+  "rotulo_do_veredito": "P160_POS_DEPLOY_V144C_OK",
+  "passadas": 12
+ },
+ "ar": {
+  "url": "https://bfr-conecta.turmaroboticabfr.workers.dev",
+  "bytes": 3557197,
+  "md5": "573de00016fe2d9b87e671bb84d21559",
+  "igual_ao_registo": true
+ },
+ "medido": {
+  "minutos_locais": 938,
+  "dia_da_semana": "Wednesday",
+  "numero_do_dia": 3,
+  "linhas_de_turno": 1,
+  "com_confirmacao": 0,
+  "com_dia_da_semana": 1,
+  "na_janela": 0,
+  "correspondencias": 0,
+  "turno_ativo_do_ar": null,
+  "turno_esperado_pela_regua": null,
+  "bate_com_o_produtor": true,
+  "veredito": "FECHADO_NENHUMA_LINHA_CONFIRMADA",
+  "fonte_da_extracao": {
+   "origem": "ar_servido",
+   "url": "https://bfr-conecta.turmaroboticabfr.workers.dev",
+   "pegada": {
+    "bytes": 3557197,
+    "md5": "573de00016fe2d9b87e671bb84d21559"
+   },
+   "prova": {
+    "ocorrencias_de_schoolClock": [
+     5455,
+     25497
+    ],
+    "relogio_escolhido_linha": 25497,
+    "activeSchoolShift_linha": 25498,
+    "corpo_relogio": {
+     "bytes": 370,
+     "md5": "0e104d74d303a46c3d728ec9430ffad0"
+    },
+    "corpo_turnos": {
+     "bytes": 572,
+     "md5": "857fb4b3e7e0f3baa728194bbf85cf05"
+    }
+   }
+  },
+  "data_local": "2026-11-25",
+  "ano": 2026,
+  "linhas": [
+   {
+    "shift": "matutino",
+    "janela": "07:00-11:30",
+    "dias": "1,2,3,4,5",
+    "confirmado": false,
+    "tolerancia": 0
+   }
+  ],
+  "calendario_de_hoje": [
+   {
+    "calendar_status": "school_day",
+    "source_status": "confirmed",
+    "confirmed_at": "2026-11-24 06:17:05.388728+00",
+    "label": ""
+   }
+  ],
+  "dia_letivo_confirmado": true
+ },
+ "veredito": "FECHADO_NENHUMA_LINHA_CONFIRMADA",
+ "o_que_NAO_prova": "Nao prova que a camera abra nem que o QR de um aluno passe: prova so o predicado de sessao do painel, lido dos bytes servidos. Nao prova as horas reais da escola — so diz que nenhuma janela confirmada cobre o instante medido."
+}

@@ -1,0 +1,168 @@
+{
+ "peca": "p178-portao-da-portaria-lido-do-ar.mjs",
+ "emissor": {
+  "bytes": 24597,
+  "md5": "b67b07b9752f978cd845e76c49522237"
+ },
+ "em": "2026-11-25T19:33:32.552Z",
+ "selfteste": true,
+ "ponte_de_dias": {
+  "mesas_getday_lidas": 2,
+  "mesas_distintas": 1,
+  "nomes_resolvidos": 14,
+  "ponte": {
+   "sunday": 7,
+   "domingo": 7,
+   "monday": 1,
+   "segunda": 1,
+   "tuesday": 2,
+   "terca": 2,
+   "wednesday": 3,
+   "quarta": 3,
+   "thursday": 4,
+   "quinta": 4,
+   "friday": 5,
+   "sexta": 5,
+   "saturday": 6,
+   "sabado": 6
+  },
+  "iso_do_mapa_weekdays": {
+   "Monday": 1,
+   "Tuesday": 2,
+   "Wednesday": 3,
+   "Thursday": 4,
+   "Friday": 5,
+   "Saturday": 6,
+   "Sunday": 7
+  }
+ },
+ "fonte_da_extracao": {
+  "origem": "copia_em_disco_da_candidata_v144c",
+  "caminho": "bfr-candidata-v144c-uniesco/index.html",
+  "pegada": {
+   "bytes": 3557197,
+   "md5": "573de00016fe2d9b87e671bb84d21559"
+  },
+  "prova": {
+   "ocorrencias_de_schoolClock": [
+    5455,
+    25497
+   ],
+   "relogio_escolhido_linha": 25497,
+   "activeSchoolShift_linha": 25498,
+   "corpo_relogio": {
+    "bytes": 370,
+    "md5": "0e104d74d303a46c3d728ec9430ffad0"
+   },
+   "corpo_turnos": {
+    "bytes": 572,
+    "md5": "857fb4b3e7e0f3baa728194bbf85cf05"
+   }
+  }
+ },
+ "casos": [
+  {
+   "id": "f1_nenhuma_linha_confirmada",
+   "espera": "FECHADO_NENHUMA_LINHA_CONFIRMADA",
+   "obtido": "FECHADO_NENHUMA_LINHA_CONFIRMADA",
+   "bate": true,
+   "bate_o_produtor": true,
+   "correspondencias": 0
+  },
+  {
+   "id": "f2_confirmado_fora_da_janela",
+   "espera": "FECHADO_HORA_FORA_DA_JANELA_CONFIRMADA",
+   "obtido": "FECHADO_HORA_FORA_DA_JANELA_CONFIRMADA",
+   "bate": true,
+   "bate_o_produtor": true,
+   "correspondencias": 0
+  },
+  {
+   "id": "f3_vespertino_casa",
+   "espera": "ABERTO",
+   "obtido": "ABERTO",
+   "bate": true,
+   "bate_o_produtor": true,
+   "correspondencias": 1
+  },
+  {
+   "id": "f4_sobpostos",
+   "espera": "FECHADO_TURNOS_SOBPOSTOS",
+   "obtido": "FECHADO_TURNOS_SOBPOSTOS",
+   "bate": true,
+   "bate_o_produtor": true,
+   "correspondencias": 2
+  },
+  {
+   "id": "f5_so_sabado",
+   "espera": "FECHADO_DIA_DA_SEMANA_FORA_DO_TURNO",
+   "obtido": "FECHADO_DIA_DA_SEMANA_FORA_DO_TURNO",
+   "bate": true,
+   "bate_o_produtor": true,
+   "correspondencias": 0
+  },
+  {
+   "id": "f6_calendario_por_confirmar",
+   "espera": "FECHADO_CALENDARIO_NAO_CONFIRMADO",
+   "obtido": "FECHADO_CALENDARIO_NAO_CONFIRMADO",
+   "bate": true,
+   "bate_o_produtor": true,
+   "correspondencias": 1
+  },
+  {
+   "id": "f7_janela_viva_sem_confirmacao",
+   "espera": "FECHADO_CORRESPONDENCIAS_ZERO_SEM_CLASSE_UNICA",
+   "obtido": "FECHADO_CORRESPONDENCIAS_ZERO_SEM_CLASSE_UNICA",
+   "bate": true,
+   "bate_o_produtor": true,
+   "correspondencias": 0
+  }
+ ],
+ "etiquetas_distintas": 7,
+ "cruzamento": [
+  {
+   "id": "x1_grade_tem_domingo_linha_nao",
+   "espera": "verdadeiro",
+   "obtido": true,
+   "bate": true
+  },
+  {
+   "id": "x2_linha_tem_domingo_grade_nao",
+   "espera": "verdadeiro",
+   "obtido": true,
+   "bate": true
+  },
+  {
+   "id": "x3_turno_sem_linha_no_banco",
+   "espera": "verdadeiro",
+   "obtido": true,
+   "bate": true
+  },
+  {
+   "id": "x4_linha_sem_grade_no_shell",
+   "espera": "verdadeiro",
+   "obtido": true,
+   "bate": true
+  },
+  {
+   "id": "x5_sabado_existe_na_grade_e_nao_na_linha",
+   "espera": "verdadeiro",
+   "obtido": true,
+   "bate": true
+  },
+  {
+   "id": "x6_dia_fora_do_mapa_lido_dos_bytes_aborta",
+   "espera": "aborta",
+   "obtido": "ABORTA: o dia «feriado» da grade nao esta na mesa de dias li",
+   "bate": true
+  },
+  {
+   "id": "x7_duas_linhas_para_o_mesmo_turno_aborta",
+   "espera": "aborta",
+   "obtido": "ABORTA: 2 linhas para o turno «matutino», esperado 0 ou 1",
+   "bate": true
+  }
+ ],
+ "instantaneo": "2026-11-25T18:00:00Z",
+ "veredito": "P178_SELFTESTE_OK"
+}

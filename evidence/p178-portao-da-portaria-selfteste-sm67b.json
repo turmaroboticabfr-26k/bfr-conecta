@@ -1,0 +1,94 @@
+{
+ "peca": "p178-portao-da-portaria-lido-do-ar.mjs",
+ "emissor": {
+  "bytes": 14595,
+  "md5": "eaebfb8775ef4e1a152269eedfd63694"
+ },
+ "em": "2026-11-25T18:37:25.862Z",
+ "selfteste": true,
+ "fonte_da_extracao": {
+  "origem": "copia_em_disco_da_candidata_v144c",
+  "caminho": "bfr-candidata-v144c-uniesco/index.html",
+  "pegada": {
+   "bytes": 3557197,
+   "md5": "573de00016fe2d9b87e671bb84d21559"
+  },
+  "prova": {
+   "ocorrencias_de_schoolClock": [
+    5455,
+    25497
+   ],
+   "relogio_escolhido_linha": 25497,
+   "activeSchoolShift_linha": 25498,
+   "corpo_relogio": {
+    "bytes": 370,
+    "md5": "0e104d74d303a46c3d728ec9430ffad0"
+   },
+   "corpo_turnos": {
+    "bytes": 572,
+    "md5": "857fb4b3e7e0f3baa728194bbf85cf05"
+   }
+  }
+ },
+ "casos": [
+  {
+   "id": "f1_nenhuma_linha_confirmada",
+   "espera": "FECHADO_NENHUMA_LINHA_CONFIRMADA",
+   "obtido": "FECHADO_NENHUMA_LINHA_CONFIRMADA",
+   "bate": true,
+   "bate_o_produtor": true,
+   "correspondencias": 0
+  },
+  {
+   "id": "f2_confirmado_fora_da_janela",
+   "espera": "FECHADO_HORA_FORA_DA_JANELA_CONFIRMADA",
+   "obtido": "FECHADO_HORA_FORA_DA_JANELA_CONFIRMADA",
+   "bate": true,
+   "bate_o_produtor": true,
+   "correspondencias": 0
+  },
+  {
+   "id": "f3_vespertino_casa",
+   "espera": "ABERTO",
+   "obtido": "ABERTO",
+   "bate": true,
+   "bate_o_produtor": true,
+   "correspondencias": 1
+  },
+  {
+   "id": "f4_sobpostos",
+   "espera": "FECHADO_TURNOS_SOBPOSTOS",
+   "obtido": "FECHADO_TURNOS_SOBPOSTOS",
+   "bate": true,
+   "bate_o_produtor": true,
+   "correspondencias": 2
+  },
+  {
+   "id": "f5_so_sabado",
+   "espera": "FECHADO_DIA_DA_SEMANA_FORA_DO_TURNO",
+   "obtido": "FECHADO_DIA_DA_SEMANA_FORA_DO_TURNO",
+   "bate": true,
+   "bate_o_produtor": true,
+   "correspondencias": 0
+  },
+  {
+   "id": "f6_calendario_por_confirmar",
+   "espera": "FECHADO_CALENDARIO_NAO_CONFIRMADO",
+   "obtido": "FECHADO_CALENDARIO_NAO_CONFIRMADO",
+   "bate": true,
+   "bate_o_produtor": true,
+   "correspondencias": 1
+  },
+  {
+   "id": "f7_janela_viva_sem_confirmacao",
+   "espera": "FECHADO_CORRESPONDENCIAS_ZERO_SEM_CLASSE_UNICA",
+   "obtido": "FECHADO_CORRESPONDENCIAS_ZERO_SEM_CLASSE_UNICA",
+   "bate": true,
+   "bate_o_produtor": true,
+   "correspondencias": 0
+  }
+ ],
+ "etiquetas_distintas": 7,
+ "instantaneo": "2026-11-25T18:00:00Z",
+ "veredito": "P178_SELFTESTE_OK"
+}

@@ -152,7 +152,7 @@ const DECISOES = [
     opcoes: [
       { rotulo: 'decisão de sábado', ancora: { tipo: 'celula' },
         tocam: ['banco_ddl_ou_dml'],
-        custo: 'a grade medida hoje nao tem sábado, logo a decisao escreve-se como conteudo novo nas mesas do calendario, com candidata, reversao e preflight' },
+        custo: 'a grade do matutino publicada no ar ja traz sabado (numero 6) e a linha do banco para esse turno so lista 1 a 5, enquanto a grade do vespertino nao traz sabado: a decisao escreve-se como conteudo novo nas mesas do calendario, com candidata, reversao e preflight' },
       { rotulo: 'correct_gate_attendance', ancora: { tipo: 'celula' },
         tocam: ['banco_ddl_ou_dml'],
         custo: 'e o unico nome chamado no ar sem corpo no catalogo: DDL com assinatura lida dos bytes, e a mesma sonda de ar a confirmar que deixou de dar quarenta e quatro' },
@@ -309,6 +309,15 @@ const DECISOES = [
       { rotulo: 'continuam decisoes proprias', ancora: { tipo: 'celula' },
         tocam: ['banco_ddl_ou_dml'],
         custo: 'a reversao do revogar dos nomes e outra frase e outro alcance; as duas podem ser recusadas, e a recusa tambem fecha a decisao' },
+    ] },
+  { id: 'PEN-49', pergunta: 'O selo de prontidão da Portaria passa a consultar o portão de leitura, e com que etiqueta quando o portão está fechado?',
+    opcoes: [
+      { rotulo: 'terceira etiqueta para portão fechado', ancora: { tipo: 'celula' },
+        tocam: ['bundle_do_app_publicar'],
+        custo: 'escrita no modulo do porteiro no fonte do pacote, conferida no markup local e depois e publicacao; as palavras da etiqueta nova sao minhas ate as ver na tela' },
+      { rotulo: 'nomear uma classe nova', ancora: { tipo: 'celula' },
+        tocam: ['bundle_do_app_publicar'],
+        custo: 'reaproveita a classe que ja esta na css servida em vez de escrever regra nova; o que muda e o markup do modulo, e publicacao continua a ser o ultimo degrau, com o risco de o selo se ler como aviso de aluno com restricao trocado pela ausencia de mudanca na folha de estilo' },
     ] },
 ];
 
