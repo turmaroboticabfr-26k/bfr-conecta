@@ -1,0 +1,136 @@
+{
+  "programa": "scripts/p116-consistencia-de-versao.mjs --selfteste",
+  "em": "2026-11-25T20:56:08.577Z",
+  "duracao_ms": 2,
+  "metodo": "Fixtures puros das três faces do §SM.67 T1: resolução de família de grafias (positivo nas duas grafias, aborto na ambiguidade e na ausência), classes de saída de candidata, partição e numeração de nomes de registo. Sem rede, sem escrita no banco, sem ler credencial.",
+  "casos": [
+    {
+      "id": "camel_case_resolve",
+      "espera": "htmlMd5",
+      "obtem": "htmlMd5",
+      "bate": true
+    },
+    {
+      "id": "snake_case_resolve",
+      "espera": "html_md5",
+      "obtem": "html_md5",
+      "bate": true
+    },
+    {
+      "id": "duas_grafias_aborta",
+      "espera": "aborta",
+      "obtem": "aborta",
+      "bate": true
+    },
+    {
+      "id": "nenhuma_grafia_aborta",
+      "espera": "aborta",
+      "obtem": "aborta",
+      "bate": true
+    },
+    {
+      "id": "bytes_na_grafia_do_produtor",
+      "espera": "htmlBytes",
+      "obtem": "htmlBytes",
+      "bate": true
+    },
+    {
+      "id": "saida_ausente_e_classe_nao_divergencia",
+      "espera": "produtor_nao_declara_saida",
+      "obtem": "produtor_nao_declara_saida",
+      "bate": true
+    },
+    {
+      "id": "saida_declara_mas_sem_destino",
+      "espera": "declara_saida_sem_destino",
+      "obtem": "declara_saida_sem_destino",
+      "bate": true
+    },
+    {
+      "id": "saida_com_md5_extrai",
+      "espera": "saida_com_md5",
+      "obtem": "saida_com_md5",
+      "bate": true
+    },
+    {
+      "id": "saida_sem_md5_no_texto",
+      "espera": "saida_sem_md5_no_texto",
+      "obtem": "saida_sem_md5_no_texto",
+      "bate": true
+    },
+    {
+      "id": "md5_extraido_bate_com_o_declarado",
+      "espera": true,
+      "obtem": true,
+      "bate": true
+    },
+    {
+      "id": "regua_velha_panha_so_os_numericos_json",
+      "espera": "audit-publicacao-v144.json",
+      "obtem": "audit-publicacao-v144.json",
+      "bate": true
+    },
+    {
+      "id": "grafias_de_letra_ficam_fora_mas_nomeadas",
+      "espera": "audit-publicacao-v142.txt,audit-publicacao-v145b.json",
+      "obtem": "audit-publicacao-v142.txt,audit-publicacao-v145b.json",
+      "bate": true
+    },
+    {
+      "id": "parentetico_descartado_nao_e_diario_novo",
+      "espera": true,
+      "obtem": true,
+      "bate": true
+    },
+    {
+      "id": "registro_em_subpasta_nao_entra_na_cadeia",
+      "espera": "audit-publicacao-v144.json",
+      "obtem": "audit-publicacao-v144.json",
+      "bate": true
+    },
+    {
+      "id": "irmaos_em_subpasta_sao_nomeados_em_vez_de_calados",
+      "espera": 3,
+      "obtem": 3,
+      "bate": true
+    },
+    {
+      "id": "o_irmao_com_parentetico_em_subpasta_nao_e_contado",
+      "espera": true,
+      "obtem": true,
+      "bate": true
+    },
+    {
+      "id": "numero_do_diario_lido_do_nome",
+      "espera": 144,
+      "obtem": 144,
+      "bate": true
+    },
+    {
+      "id": "sufixo_de_letra_aborta_em_vez_de_contar_o_vizinho",
+      "espera": "aborta",
+      "obtem": "aborta",
+      "bate": true
+    },
+    {
+      "id": "nome_de_irmao_txt_aborta",
+      "espera": "aborta",
+      "obtem": "aborta",
+      "bate": true
+    },
+    {
+      "id": "parentico_descartado_aborta",
+      "espera": "aborta",
+      "obtem": "aborta",
+      "bate": true
+    },
+    {
+      "id": "numero_de_v144",
+      "espera": 144,
+      "obtem": 144,
+      "bate": true
+    }
+  ],
+  "falhas": [],
+  "veredito": "P116_SELFTESTE_OK 21/0"
+}
