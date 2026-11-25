@@ -1,0 +1,44 @@
+regua_lida_de=scripts/p169-varredura-letra-digito-do-bloco.mjs
+produtor_bytes=10955 produtor_md5_8=1ef96aa9
+emissor_p173_bytes=11433 emissor_p173_md5=277920b8377f531f1b44e802b027fc34
+RE=/[A-Za-zÀ-ÿ][0-9]|[0-9][A-Za-zÀ-ÿ]/g FAIXAS_OFENSORAS=[[12288,12351],[12352,12543],[13312,19903],[19968,40959],[44032,55203],[55296,57343],[65280,65519]]
+PROVA_FIXTURE adjacencia_partido=2 adjacencia_limpo=0 naoLatino_partido=2 naoLatino_limpo=0
+PROVA_FIXTURE_LOCALIZACAO ocorrencias=2 posicoes_distintas_nova=2 contextos_distintos_nova=2 posicoes_distintas_regra_velha=1
+PROVA_FIXTURE_QUADRO span_inline={"novas_linhas_bruto":0,"novas_linhas_varrido":0,"linha_e_do_ficheiro":true} span_que_cruza_a_quebra={"novas_linhas_bruto":3,"novas_linhas_varrido":2,"linha_e_do_ficheiro":false}
+alvo=scripts/p173-varredura-duma-escrita-fora-do-repo.mjs bytes=11433 bytes_md5_8=277920b8 linhas=127
+chars_cru=11380 chars_varridos=11361 chars_a_menos_pela_limpa=19 backticks_no_bruto=6
+QUADRO_DA_LINHA {"novas_linhas_bruto":126,"novas_linhas_varrido":126,"linha_e_do_ficheiro":true}
+CANDIDATOS_ADJACENCIA=32 HISTOGRAMA={"p1":5,"f8":7,"0x":6,"7f":1,"d5":6,"8p":4,"3c":1,"P1":2} POSICOES_DISTINTAS=32 se_fosse_por_agulha=8
+ADJ #1/32 [p1] x5 linha=13 quadro_linha=ficheiro coluna_no_texto_varrido=22 char_varrido=1267 :: ", nao por suposto.\n// Uso: node scripts/p173-varredura-duma-escrita-fora-do-repo"
+ADJ #2/32 [f8] x7 linha=19 quadro_linha=ficheiro coluna_no_texto_varrido=87 char_varrido=1644 :: "se', '--show-toplevel'], { encoding: 'utf8' }).trim();\nconst alvo = process.argv"
+ADJ #3/32 [f8] x7 linha=24 quadro_linha=ficheiro coluna_no_texto_varrido=60 char_varrido=2021 :: "Sync(fileURLToPath(import.meta.url), 'utf8');\nconst capt = [];\nconst say = (s) ="
+ADJ #4/32 [p1] x5 linha=28 quadro_linha=ficheiro coluna_no_texto_varrido=46 char_varrido=2144 :: " produtorCaminho = REPOReal + '/scripts/p169-varredura-letra-digito-do-bloco.mjs"
+ADJ #5/32 [f8] x7 linha=29 quadro_linha=ficheiro coluna_no_texto_varrido=51 char_varrido=2237 :: "utor = readFileSync(produtorCaminho, 'utf8');\nconst linhaRE = produtor.split('\\n"
+ADJ #6/32 [0x] x6 linha=40 quadro_linha=ficheiro coluna_no_texto_varrido=111 char_varrido=3458 :: ") { const c = t.codePointAt(i); if (c > 0x7f && ehOfensora(c)) a.push({ i, cp: '"
+ADJ #7/32 [7f] x1 linha=40 quadro_linha=ficheiro coluna_no_texto_varrido=113 char_varrido=3460 :: "{ const c = t.codePointAt(i); if (c > 0x7f && ehOfensora(c)) a.push({ i, cp: 'U+"
+ADJ #8/32 [0x] x6 linha=40 quadro_linha=ficheiro coluna_no_texto_varrido=199 char_varrido=3546 :: "toString(16).toUpperCase() }); i += c > 0xffff ? 2 : 1; } return a; };\nfunction "
+ADJ #9/32 [p1] x5 linha=55 quadro_linha=ficheiro coluna_no_texto_varrido=33 char_varrido=4450 :: "v };\n}\n\nsay('regua_lida_de=' + 'scripts/p169-varredura-letra-digito-do-bloco.mjs"
+ADJ #10/32 [f8] x7 linha=56 quadro_linha=ficheiro coluna_no_texto_varrido=56 char_varrido=4549 :: "ytes=' + Buffer.byteLength(produtor, 'utf8') + ' produtor_md5_8=' + createHash('"
+ADJ #11/32 [d5] x6 linha=56 quadro_linha=ficheiro coluna_no_texto_varrido=75 char_varrido=4568 :: "eLength(produtor, 'utf8') + ' produtor_md5_8=' + createHash('md5').update(produt"
+ADJ #12/32 [d5] x6 linha=56 quadro_linha=ficheiro coluna_no_texto_varrido=97 char_varrido=4590 :: "8') + ' produtor_md5_8=' + createHash('md5').update(produtor).digest('hex').slic"
+ADJ #13/32 [p1] x5 linha=57 quadro_linha=ficheiro coluna_no_texto_varrido=14 char_varrido=4653 :: "igest('hex').slice(0, 8));\nsay('emissor_p173_bytes=' + Buffer.byteLength(EU, 'ut"
+ADJ #14/32 [f8] x7 linha=57 quadro_linha=ficheiro coluna_no_texto_varrido=54 char_varrido=4693 :: "p173_bytes=' + Buffer.byteLength(EU, 'utf8') + ' emissor_p173_md5=' + createHash"
+ADJ #15/32 [p1] x5 linha=57 quadro_linha=ficheiro coluna_no_texto_varrido=71 char_varrido=4710 :: "ffer.byteLength(EU, 'utf8') + ' emissor_p173_md5=' + createHash('md5').update(EU"
+ADJ #16/32 [d5] x6 linha=57 quadro_linha=ficheiro coluna_no_texto_varrido=77 char_varrido=4716 :: "yteLength(EU, 'utf8') + ' emissor_p173_md5=' + createHash('md5').update(EU).dige"
+ADJ #17/32 [d5] x6 linha=57 quadro_linha=ficheiro coluna_no_texto_varrido=97 char_varrido=4736 :: ") + ' emissor_p173_md5=' + createHash('md5').update(EU).digest('hex'));\nsay('RE="
+ADJ #18/32 [8p] x4 linha=60 quadro_linha=ficheiro coluna_no_texto_varrido=36 char_varrido=4886 :: "));\n\nconst FIX_PARTIDO = 'a linha dice 28papeis e 3contas com ' + String.fromCha"
+ADJ #19/32 [3c] x1 linha=60 quadro_linha=ficheiro coluna_no_texto_varrido=46 char_varrido=4896 :: " FIX_PARTIDO = 'a linha dice 28papeis e 3contas com ' + String.fromCharCode(0x63"
+ADJ #20/32 [0x] x6 linha=60 quadro_linha=ficheiro coluna_no_texto_varrido=82 char_varrido=4932 :: "s e 3contas com ' + String.fromCharCode(0x6392, 0x7248) + ' no meio';\nconst FIX_"
+ADJ #21/32 [0x] x6 linha=60 quadro_linha=ficheiro coluna_no_texto_varrido=90 char_varrido=4940 :: "tas com ' + String.fromCharCode(0x6392, 0x7248) + ' no meio';\nconst FIX_LIMPO = "
+ADJ #22/32 [0x] x6 linha=71 quadro_linha=ficheiro coluna_no_texto_varrido=59 char_varrido=6253 :: "IX_PARTIDO).indexOf(String.fromCharCode(0x6392)) >= 0) throw new Error('ABORTA: "
+ADJ #23/32 [0x] x6 linha=76 quadro_linha=ficheiro coluna_no_texto_varrido=35 char_varrido=6678 :: "nhum.\nconst CRASE = String.fromCharCode(0x60);\nconst NL = String.fromCharCode(10"
+ADJ #24/32 [8p] x4 linha=78 quadro_linha=ficheiro coluna_no_texto_varrido=39 char_varrido=6759 :: ";\nconst FIX_ADJ_REPETIDO = 'a primeira 28papeis fica aqui e a segunda 28papeis f"
+ADJ #25/32 [8p] x4 linha=78 quadro_linha=ficheiro coluna_no_texto_varrido=70 char_varrido=6790 :: "rimeira 28papeis fica aqui e a segunda 28papeis fica ali';\nconst varridoFixAdj ="
+ADJ #26/32 [8p] x4 linha=89 quadro_linha=ficheiro coluna_no_texto_varrido=92 char_varrido=8165 :: "+ 'um_span_de_codigo_28' + CRASE + ' e 28papeis no fim';\nconst FIX_QUE_QUEBRA = "
+ADJ #27/32 [f8] x7 linha=97 quadro_linha=ficheiro coluna_no_texto_varrido=37 char_varrido=8979 :: ");\n\nconst bruto = readFileSync(alvo, 'utf8');\nconst varrido = limpa(bruto);\ncons"
+ADJ #28/32 [f8] x7 linha=107 quadro_linha=ficheiro coluna_no_texto_varrido=62 char_varrido=9498 :: "' bytes=' + Buffer.byteLength(bruto, 'utf8') + ' bytes_md5_8=' + createHash('md5"
+ADJ #29/32 [d5] x6 linha=107 quadro_linha=ficheiro coluna_no_texto_varrido=78 char_varrido=9514 :: "er.byteLength(bruto, 'utf8') + ' bytes_md5_8=' + createHash('md5').update(bruto)"
+ADJ #30/32 [d5] x6 linha=107 quadro_linha=ficheiro coluna_no_texto_varrido=100 char_varrido=9536 :: "utf8') + ' bytes_md5_8=' + createHash('md5').update(bruto).digest('hex').slice(0"
+ADJ #31/32 [P1] x2 linha=123 quadro_linha=ficheiro coluna_no_texto_varrido=8 char_varrido=11148 :: "th !== 0 || fora.length !== 0) {\n  say('P173_CANDIDATOS_A_LISTAR adjacencia=' + "
+ADJ #32/32 [P1] x2 linha=125 quadro_linha=ficheiro coluna_no_texto_varrido=8 char_varrido=11303 :: "datos, nao veredicto');\n} else {\n  say('P173_ESCRITA_SEM_CANDIDATOS adjacencia=0"
+FORA_DO_LATINO=0 codigo=[]
