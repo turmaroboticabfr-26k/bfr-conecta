@@ -1,13 +1,15 @@
 #!/usr/bin/env node
 // P146 — cobertura da FASE 1 da missão «centro executivo de inteligência educacional» (briefing anexado em
-// 23/11) contra os dez documentos BU em docs/bu-20-11/. Só-leitura: escreve apenas o seu registo, com guarda
+// 23/11) contra os documentos BU indexados em docs/bu-20-11/. Só-leitura: escreve apenas o seu registo, com guarda
 // de sobrescrita. Os 17 itens vêm do briefing; os stems de cada item são as palavras com que os documentos os
 // cobrem, medidas por grep sobre os próprios documentos antes de serem constantes (ver §SM.42). A frescura
-// lê-se dos artefactos do §SM.41 — censo vivo, identidade do ar e classes do classificador — nunca se
-// dactilografa: se o ficheiro-fonte faltar, o portão chumba.
+// lê-se do registo mais novo da família de cada produtor, pelo carimpo `em` que o próprio produtor escreveu,
+// e aborta se nenhum ou dois resolverem. O conjunto de documentos varridos também não é re-dactilografado: lê
+// o índice do git, por isso um documento novo em docs/bu-20-11 entra na matriz em vez de chumbar o portão, e a
+// lista dos fora da lista declarada imprime-se mesmo quando vazia.
 import { execFileSync } from 'node:child_process';
 import { createHash } from 'node:crypto';
-import { existsSync, readFileSync, writeFileSync } from 'node:fs';
+import { existsSync, readdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { join, resolve } from 'node:path';
 
 const RAIZ = resolve(import.meta.dirname, '..');
@@ -54,8 +56,41 @@ const git = (args) => {
   try { return execFileSync('git', ['-c', 'core.quotePath=false', ...args], { cwd: RAIZ, encoding: 'utf8' }); } catch { return ''; }
 };
 const noIndice = git(['ls-files', '--', 'docs/bu-20-11']).split(/\r?\n/).filter(Boolean).sort();
-const docs = ESPERADOS.map((p) => ({ caminho: p, texto: readFileSync(join(RAIZ, p), 'utf8') }));
+if (noIndice.length === 0) throw new Error('ABORTA: nenhum documento BU no índice — a sonda não pode contar o vazio');
+const conjuntosDeDocs = (esperados, indice) => ({
+  varridos: [...indice].sort(),
+  faltantes: esperados.filter((p) => !indice.includes(p)),
+  fora_da_lista: indice.filter((p) => !esperados.includes(p))
+});
+const conjuntos = conjuntosDeDocs(ESPERADOS, noIndice);
+const docs = conjuntos.varridos.map((p) => ({ caminho: p, texto: readFileSync(join(RAIZ, p), 'utf8') }));
 const contar = (stems, texto) => (texto.match(new RegExp(stems.source, 'gi')) || []).length;
+
+// O produtor do registo lido é escolhido pela data que ele próprio escreveu no registo, nunca pelo nome que eu
+// lembrasse: re-dactilografar o ficheiro de outro ciclo é a quinta face do mesmo defeito (ver §SM.72).
+const EVIDENCE = join(RAIZ, 'evidence');
+const escolheMaisNovo = (candidatos) => {
+  const legiveis = candidatos.filter((c) => Number.isFinite(c.ms));
+  const sem_em = candidatos.filter((c) => !Number.isFinite(c.ms)).map((c) => c.nome);
+  if (legiveis.length === 0) return { ok: false, motivo: 'nenhum candidato com carimpo legível', total: candidatos.length, sem_em };
+  const max = Math.max(...legiveis.map((c) => c.ms));
+  const empatados = legiveis.filter((c) => c.ms === max).map((c) => c.nome);
+  if (empatados.length > 1) return { ok: false, motivo: 'empate no carimpo mais novo', total: candidatos.length, sem_em, empatados };
+  const escolhido = legiveis.find((c) => c.ms === max);
+  return { ok: true, nome: escolhido.nome, em: escolhido.em, total: candidatos.length, sem_em };
+};
+const leFamilia = (prefixo) => {
+  const nomes = readdirSync(EVIDENCE).filter((n) => n.startsWith(prefixo) && n.endsWith('.json')).sort();
+  const candidatos = nomes.map((n) => {
+    let em;
+    try { em = JSON.parse(readFileSync(join(EVIDENCE, n), 'utf8')).em; } catch { em = undefined; }
+    return { nome: n, em, ms: typeof em === 'string' ? Date.parse(em) : NaN };
+  });
+  const escolha = escolheMaisNovo(candidatos);
+  if (!escolha.ok) throw new Error(`ABORTA família ${prefixo}: ${escolha.motivo} — ${JSON.stringify(escolha)}`);
+  return { ...escolha, json: JSON.parse(readFileSync(join(EVIDENCE, escolha.nome), 'utf8')) };
+};
+const proveniencias = [];
 
 const porItem = ITENS.map((it) => {
   const porDoc = docs.map((d) => ({ doc: d.caminho, n: contar(it.stems, d.texto) }));
@@ -69,9 +104,16 @@ const proprio = readFileSync(import.meta.filename, 'utf8');
 const portoes = [];
 const reg = (nome, ok, detalhe) => portoes.push({ nome, ok, detalhe });
 
-reg('docs_no_indice_batem_com_a_lista_esperada',
-  JSON.stringify(noIndice) === JSON.stringify([...ESPERADOS].sort()),
-  `indice ${noIndice.length} vs esperados ${ESPERADOS.length}`);
+reg('docs_esperados_estao_todos_no_indice', conjuntos.faltantes.length === 0,
+  `esperados ${ESPERADOS.length} · índice ${noIndice.length} · faltantes ${JSON.stringify(conjuntos.faltantes)} · fora_da_lista ${JSON.stringify(conjuntos.fora_da_lista)}`);
+
+{
+  const a = conjuntosDeDocs(['d/01.md', 'd/02.md'], ['d/01.md', 'd/02.md', 'd/03.md']);
+  const b = conjuntosDeDocs(['d/01.md', 'd/02.md'], ['d/01.md']);
+  reg('derivacao_de_conjunto_de_docs_tem_positivo_e_negativo',
+    a.faltantes.length === 0 && a.fora_da_lista.length === 1 && a.varridos.length === 3 && b.faltantes.length === 1 && b.fora_da_lista.length === 0,
+    `fixture A faltantes ${a.faltantes.length} fora ${JSON.stringify(a.fora_da_lista)} varridos ${a.varridos.length} · fixture B faltantes ${JSON.stringify(b.faltantes)}`);
+}
 
 reg('nenhum_doc_vazio', docs.every((d) => d.texto.length > 0),
   docs.map((d) => `${d.caminho.split('/').pop()} ${d.texto.length}`).join(' · '));
@@ -96,10 +138,24 @@ reg('entregaveis_da_fase_1_presentes',
   `diagnostico ${noIndice.includes(DIAGNOSTICO)} · plano ${PLANO.map((p) => noIndice.includes(p)).join('/')}`);
 
 {
-  const FONTE = 'evidence/bu2-censo-catalogo-20-11-23-11-aud.json';
+  const pos = escolheMaisNovo([
+    { nome: 'velho.json', em: '2026-11-20T00:00:00.000Z', ms: Date.parse('2026-11-20T00:00:00.000Z') },
+    { nome: 'novo.json', em: '2026-11-26T00:00:00.000Z', ms: Date.parse('2026-11-26T00:00:00.000Z') }
+  ]);
+  const mudo = escolheMaisNovo([{ nome: 'sem-carimpo.json', ms: NaN }]);
+  const empate = escolheMaisNovo([{ nome: 'a.json', ms: 5 }, { nome: 'b.json', ms: 5 }]);
+  const vazio = escolheMaisNovo([]);
+  reg('escolha_do_registo_mais_novo_tem_as_quatro_caras',
+    pos.ok === true && pos.nome === 'novo.json' && mudo.ok === false && empate.ok === false
+      && empate.empatados.length === 2 && vazio.ok === false,
+    `positivo ${pos.ok}/${pos.nome} · sem-carimpo ${mudo.ok}/${mudo.sem_em.length} · empate ${empate.ok}/${JSON.stringify(empate.empatados)} · vazio ${vazio.ok}/${vazio.total}`);
+}
+
+{
+  const lido = leFamilia('bu2-censo-catalogo');
   let censo = null;
   try {
-    const j = JSON.parse(readFileSync(join(RAIZ, FONTE), 'utf8'));
+    const j = lido.json;
     censo = {
       tabelas: j.tabelas.length,
       politicas: j.politicas.linhas[0].total,
@@ -108,33 +164,42 @@ reg('entregaveis_da_fase_1_presentes',
       contas: j.contas_auth.linhas[0].auth_users
     };
   } catch { censo = null; }
+  proveniencias.push({ familia: 'bu2-censo-catalogo', registo: lido.nome, em: lido.em, candidatos: lido.total });
   const camposPositivos = censo && Object.values(censo).every((v) => Number.isFinite(v) && v > 0);
-  reg('frescura_catalogo_lida_do_artefacto_sm41', camposPositivos === true,
-    censo ? `${FONTE} -> ${censo.tabelas}/${censo.politicas}/${censo.funcoes}/${censo.triggers}/${censo.contas}` : `${FONTE} ilegível`);
+  reg('frescura_catalogo_lida_do_registo_mais_novo_da_familia', camposPositivos === true,
+    censo ? `${lido.nome} (em ${lido.em}, ${lido.total} candidatos) -> ${censo.tabelas}/${censo.politicas}/${censo.funcoes}/${censo.triggers}/${censo.contas}`
+      : `${lido.nome} ilegível`);
 }
 
 {
-  const FONTE = 'evidence/p116-consistencia-de-versao-21-11-23-11-sm41.json';
+  const lido = leFamilia('p116-consistencia-de-versao');
   let ar = null;
   try {
-    const j = JSON.parse(readFileSync(join(RAIZ, FONTE), 'utf8'));
+    const j = lido.json;
     const l = j.ar.leituras[0];
     ar = { diario: j.ar.diario, bytes: l.bytes, md5: l.md5, veredito: j.veredito };
   } catch { ar = null; }
-  reg('frescura_do_ar_lida_do_artefacto_sm41', ar !== null && ar.bytes > 0 && ar.md5.length === 32,
-    ar ? `${FONTE} -> ${ar.diario} ${ar.bytes}B ${ar.md5} (${ar.veredito})` : `${FONTE} ilegível`);
+  proveniencias.push({ familia: 'p116-consistencia-de-versao', registo: lido.nome, em: lido.em, candidatos: lido.total });
+  reg('frescura_do_ar_lida_do_registo_mais_novo_da_familia', ar !== null && ar.bytes > 0 && ar.md5.length === 32,
+    ar ? `${lido.nome} (em ${lido.em}, ${lido.total} candidatos) -> ${ar.diario} ${ar.bytes}B ${ar.md5} (${ar.veredito})`
+      : `${lido.nome} ilegível`);
 }
 
 {
-  const FONTE = 'evidence/p133-inventario-das-pendencias-abertas-22-11--23-11-aud.json';
-  let classes = null;
-  try {
-    const j = JSON.parse(readFileSync(join(RAIZ, FONTE), 'utf8'));
-    classes = j.contagem_por_classe;
-  } catch { classes = null; }
-  reg('frescura_do_classificador_lida_do_artefacto_sm41',
+  const lido = leFamilia('p133-inventario-das-pendencias-abertas');
+  const classes = lido.json.contagem_por_classe;
+  proveniencias.push({ familia: 'p133-inventario-das-pendencias-abertas', registo: lido.nome, em: lido.em, candidatos: lido.total });
+  reg('frescura_do_classificador_lida_do_registo_mais_novo_da_familia',
     classes && ['ABERTA', 'FECHADA', 'DIVERGENTE', 'SEM_DECLARACAO'].every((k) => Number.isFinite(classes[k])),
-    classes ? `${FONTE} -> ${Object.entries(classes).map(([k, v]) => `${k} ${v}`).join(' · ')}` : `${FONTE} ilegível`);
+    classes ? `${lido.nome} (em ${lido.em}, ${lido.total} candidatos) -> ${Object.entries(classes).map(([k, v]) => `${k} ${v}`).join(' · ')}`
+      : `${lido.nome} sem contagem_por_classe`);
+}
+
+{
+  const nomes = readdirSync(EVIDENCE).filter((n) => n.startsWith('p133-inventario-das-pendencias-abertas') && n.endsWith('.json'));
+  const sem_em = escolheMaisNovo(nomes.map((n) => ({ nome: n, ms: NaN })));
+  reg('aborta_se_a_familia_nao_tiver_carimpo', sem_em.ok === false && sem_em.total === nomes.length,
+    `familia p133 com ${nomes.length} registos: ${sem_em.motivo}`);
 }
 
 const ok = portoes.filter((p) => p.ok).length;
@@ -146,12 +211,19 @@ const registo = {
   emissor_bytes: proprio.length,
   emissor_md5: md5(proprio),
   docs: docs.map((d) => ({ caminho: d.caminho, bytes: Buffer.byteLength(d.texto, 'utf8') })),
+  docs_no_indice: noIndice.length,
+  lista_declarada: ESPERADOS.length,
+  faltantes_da_lista_declarada: conjuntos.faltantes,
+  fora_da_lista_declarada: conjuntos.fora_da_lista,
+  proveniencias,
   itens: porItem,
   portoes,
   veredito: `P146_FASE1_COBERTURA_${falhas.length === 0 ? 'VERDE' : 'VERMELHO'} ${ok}/${portoes.length}`
 };
 writeFileSync(OUT, JSON.stringify(registo, null, 2) + '\n');
 console.log(`P146 registo ${OUT}`);
+console.log(`P146 docs indice=${conjuntos.varridos.length} declarados=${ESPERADOS.length} faltantes=${JSON.stringify(conjuntos.faltantes)} fora_da_lista=${JSON.stringify(conjuntos.fora_da_lista)}`);
+console.log(`P146 proveniencias ${proveniencias.map((p) => `${p.registo} @${p.em}`).join(' · ')}`);
 console.log(porItem.map((r) => `${String(r.item).padStart(2)} ${r.nome} -> ${r.total} em ${r.docs_que_cobrem.length} docs`).join('\n'));
 console.log(registo.veredito);
 if (falhas.length) {
