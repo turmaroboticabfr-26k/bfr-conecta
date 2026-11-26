@@ -1,0 +1,225 @@
+{
+  "peca": "scripts/p137-candidatas-contra-diarios-de-publicacao.mjs",
+  "em": "2026-11-26T18:00:19.242Z",
+  "emissor_bytes": 14423,
+  "emissor_md5": "d9b1d292eacafa4b24c16a7b7ab7122c",
+  "estado": "MEDIDO",
+  "pergunta": "ha candidata pronta a publicar, ou o grupo «OK de publicacao» das linhas abertas esta bloqueado sobre trabalho que ainda nao existe?",
+  "contagens": {
+    "directorios_candidata": 31,
+    "diarios_de_publicacao": 13,
+    "versoes_candidatas": 25
+  },
+  "mais_nova_candidata": "bfr-candidata-v144c-uniesco",
+  "mais_novo_diario": "audit-publicacao-v144.json",
+  "versoes_declaradas": {
+    "diario_lido_do_campo_version": "v144c",
+    "candidata_lida_do_nome_do_directorio": "v144c"
+  },
+  "familia_de_grafias_aceites": {
+    "md5_da_shell": [
+      "md5_agora",
+      "shell_md5"
+    ],
+    "bytes_da_shell": [
+      "bytes_agora",
+      "shell_bytes"
+    ]
+  },
+  "censo_de_grafias_dos_diarios": {
+    "classes_declaradas": [
+      "declara_a_grafia_da_shell",
+      "bloco_sem_grafia_da_shell",
+      "declara_duas_grafias",
+      "sem_bloco_de_conferencia",
+      "nao_e_json_lidavel"
+    ],
+    "por_classe": {
+      "declara_a_grafia_da_shell": [
+        "audit-publicacao-v141.json",
+        "audit-publicacao-v142.json",
+        "audit-publicacao-v144.json"
+      ],
+      "bloco_sem_grafia_da_shell": [
+        "audit-publicacao-v140.json"
+      ],
+      "declara_duas_grafias": [],
+      "sem_bloco_de_conferencia": [
+        "audit-publicacao-v117.json",
+        "audit-publicacao-v119.json",
+        "audit-publicacao-v120.json",
+        "audit-publicacao-v121.json",
+        "audit-publicacao-v122.json",
+        "audit-publicacao-v133.json",
+        "audit-publicacao-v134.json",
+        "audit-publicacao-v135.json",
+        "audit-publicacao-v136.json"
+      ],
+      "nao_e_json_lidavel": []
+    },
+    "fora_das_classes": [],
+    "grafias_aceitas_sem_fixture": []
+  },
+  "prova_da_resolucao": [
+    {
+      "id": "r1_grafia_antiga_resolve",
+      "espera": "md5_agora",
+      "obtido": "md5_agora",
+      "bate": true
+    },
+    {
+      "id": "r2_grafia_nova_resolve",
+      "espera": "shell_md5",
+      "obtido": "shell_md5",
+      "bate": true
+    },
+    {
+      "id": "r3_bytes_na_grafia_do_produtor",
+      "espera": "shell_bytes",
+      "obtido": "shell_bytes",
+      "bate": true
+    },
+    {
+      "id": "r3b_bytes_na_grafia_antiga",
+      "espera": "bytes_agora",
+      "obtido": "bytes_agora",
+      "bate": true
+    },
+    {
+      "id": "r4_duas_grafias_aborta",
+      "espera": "aborta",
+      "obtido": "aborta",
+      "bate": true
+    },
+    {
+      "id": "r5_nenhuma_grafia_aborta",
+      "espera": "aborta",
+      "obtido": "aborta",
+      "bate": true
+    },
+    {
+      "id": "r6_bloco_vazio_aborta",
+      "espera": "aborta",
+      "obtido": "aborta",
+      "bate": true
+    },
+    {
+      "id": "r7_camel_de_outro_bloco_nao_e_aceite",
+      "espera": "aborta",
+      "obtido": "aborta",
+      "bate": true
+    }
+  ],
+  "candidatas_acima_da_publicada": [],
+  "candidatas_sem_diario_de_publicacao": [
+    "bfr-candidata-v114-supervisao",
+    "bfr-candidata-v115-supervisao-embed",
+    "bfr-candidata-v124-anticliquejacking",
+    "bfr-candidata-v125-announcement-created-at",
+    "bfr-candidata-v126-a11y-secretaria",
+    "bfr-candidata-v126-a11y-secretaria-ANTERIOR-portao-insercao-mal-formulado",
+    "bfr-candidata-v127-secretaria-municipal",
+    "bfr-candidata-v127-secretaria-municipal-ANTERIOR-host-fora-do-seletor-do-mapa",
+    "bfr-candidata-v128-SEM-CERTIDAO-deixado-de-lado",
+    "bfr-candidata-v129-secretaria-municipal",
+    "bfr-candidata-v130-secretaria-municipal",
+    "bfr-candidata-v131-secretaria-municipal",
+    "bfr-candidata-v132-secretaria-municipal",
+    "bfr-candidata-v137-remendo-pen40",
+    "bfr-candidata-v138-DESCARTADA-parser-de-colunas-cortado",
+    "bfr-candidata-v138-painel-municipal",
+    "bfr-candidata-v139-sonda-honesta"
+  ],
+  "pega_da_mais_nova": {
+    "caminho_lido_do_nome_do_directorio": "bfr-candidata-v144c-uniesco/index.html",
+    "existe": true,
+    "bytes": 3557197,
+    "md5": "573de00016fe2d9b87e671bb84d21559",
+    "grafia_lida_no_diario": {
+      "md5": "shell_md5",
+      "bytes": "shell_bytes"
+    },
+    "registo_do_diario": {
+      "md5": "573de00016fe2d9b87e671bb84d21559",
+      "bytes": 3557197
+    },
+    "byte_identico_ao_ar_registrado": true
+  },
+  "portoes": {
+    "total": 7,
+    "falhas": 0,
+    "lista": [
+      {
+        "nome": "a_versao_numerica_mais_nova_em_disco_e_a_mesma_do_diario_mais_novo",
+        "obtido": [
+          144,
+          144
+        ],
+        "esperado": [
+          144,
+          144
+        ],
+        "ok": true
+      },
+      {
+        "nome": "a_letra_declarada_dentro_do_diario_e_a_mesma_do_directorio_da_candidata",
+        "obtido": [
+          "v144c",
+          "v144c"
+        ],
+        "esperado": [
+          "v144c",
+          "v144c"
+        ],
+        "ok": true
+      },
+      {
+        "nome": "nenhuma_candidata_e_mais_nova_que_a_versao_publicada",
+        "obtido": 0,
+        "esperado": 0,
+        "ok": true
+      },
+      {
+        "nome": "o_shell_da_candidata_mais_nova_bate_com_o_ar_do_diario_mais_novo",
+        "obtido": true,
+        "esperado": true,
+        "ok": true
+      },
+      {
+        "nome": "nenhum_diario_fica_fora_das_classes_declaradas_do_censo",
+        "obtido": [],
+        "esperado": [],
+        "ok": true
+      },
+      {
+        "nome": "toda_grafia_aceita_da_familia_tem_fixture_que_a_resolve",
+        "obtido": [],
+        "esperado": [],
+        "ok": true
+      },
+      {
+        "nome": "nenhuma_fixture_da_resolucao_bateu_errado",
+        "obtido": [],
+        "esperado": [],
+        "ok": true
+      }
+    ]
+  },
+  "o_que_prova": [
+    "quantos directorios de candidata e quantos diarios de publicacao existem neste disco, por numero lido do nome",
+    "que a mais nova candidata em disco e a mesma versao numerica do mais novo diario de publicacao",
+    "que a letra declarada dentro do diario e a mesma do nome do directorio da candidata mais nova",
+    "que a shell da candidata mais nova e byte a byte o ar que esse diario registou, na grafia que o propio diario declara",
+    "que nenhuma candidata em disco esta acima da versao publicada",
+    "em que classe de grafia da shell cai cada diario, com as cinco classes declaradas impressas mesmo vazias",
+    "que cada grafia aceite pela familia tem uma fixture que a resolve, provada pelo conjunto das nunca resolvidas"
+  ],
+  "o_que_NAO_prova": [
+    "por que razao as 17 pastas sem diario nao o tem: a peca conta apenas quantas estao acima da versao publicada (zero), e nao distingue trabalho abandonado de trabalho superado",
+    "que as 17 pastas sem diario estao bem ou mal",
+    "que o ar publicado e o ar servido: isso e a peca p136, que apanha a shell por URL lida do proprio diario",
+    "que nada ha a publicar no futuro: a pergunta desta peca e se ha candidata pronta AGORA",
+    "que as cinco classes do censo sejam todas as possiveis: um diario cuja grafia ainda nao entrou na familia cai em «bloco_sem_grafia_da_shell», a mesma classe dum diario que nunca registou a shell — o nome diz o que a predica mede, nao o que o diario quis dizer",
+    "que o diario mais novo seja o da candidata mais nova por outro caminho que nao o numero do nome: as letras sao conferidas pelo campo `version`, que o numero nao ve"
+  ]
+}

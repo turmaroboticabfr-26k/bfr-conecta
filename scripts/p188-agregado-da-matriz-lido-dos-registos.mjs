@@ -7,8 +7,9 @@
 // O que prova: por papel válido, quantas portas o mapa autoriza, quantas a superfície pintou, quais as células
 // de excesso (pintadas sem autorização) e de falta (autorizadas e não mostradas), e se o censo de um papel
 // cobriu o universo de tokens que o produtor declarou.
-// O que NÃO prova: se uma célula de excesso chega a ter conteúdo no destino (isso é toque em browser, peça
-// própria), nem qual das duas autoridades — o documento BU-6 ou o mapa servido — decide as divergências.
+// O que NÃO prova: se uma célula de excesso chega a ter conteúdo no destino — isso é o modo `--toque` do
+// próprio emissor, cujo registo declara as seis classes de destino e a ficha por célula; nem qual das duas
+// autoridades — o documento BU-6 ou o mapa servido — decide as divergências.
 //
 // A identidade do ar NÃO é dactilografada aqui: é lida do `ar.md5` do registo mais novo da família do `p187`,
 // com aborto se nenhum resolver ou se houver empate — a mesma régua do §SM.36/§SM.72, para esta peça não
@@ -107,7 +108,23 @@ function agrega(mapa, ar) {
 // lista — não para a lista dos registos rejeitados, porque isso faria deste leitor um portão que proíbe uma
 // classe legítima (a forma espelhada do §SM.33). Papel repetido fica do registo mais novo, porque `ordenados`
 // já vem ordenado por carimpo descendente.
-function consomeRegisto(rotulo, j, AR, mapa, rejeitados, semBoots, avisos, porRegisto) {
+// O vocabulário de classes de «papel que não entra no agregado» NÃO é lembrado aqui: lê-se da linha
+// declaradora do fonte do emissor e aborta se não se ler. Um leitor que re-dactilografa as classes do
+// produtor é a quarta instância da «menção de origem não é origem» (§SM.35) e passa a chamar legítima uma
+// classe que ele próprio inventou — que é exactamente o buraco em que o `pending` caiu o ciclo inteiro.
+const EMISSOR_SONDA = path.join(RAIZ, 'scripts', 'ah2-sonda-portas-por-papel.mjs');
+function vocabulario_do_emissor(caminho) {
+  const texto = readFileSync(caminho, 'utf8');
+  const m = texto.match(/^\/\/ VOCABULARIO-DE-CLASSES: (.+)$/m);
+  if (!m) throw new Error('ABORTA_MARCADOR_DE_VOCABULARIO_AUSENTE: ' + caminho + ' não declara a linha VOCABULARIO-DE-CLASSES');
+  const lista = m[1].split('|').map((s) => s.trim()).filter(Boolean);
+  if (lista.length < 1) throw new Error('ABORTA_VOCABULARIO_VAZIO: ' + caminho + ' declara zero classes');
+  return lista;
+}
+const VOCAB = vocabulario_do_emissor(EMISSOR_SONDA);
+
+function consomeRegisto(rotulo, j, AR, mapa, rejeitados, semBoots, avisos, porRegisto, foraDoVocab) {
+  if (foraDoVocab === undefined) throw new Error('ABORTA: consomeRegisto sem o eixo foraDoVocab — um eixo que não é passado nunca se enche e o verde passa a significar «não olhei»');
   const erros = classificaRegisto(j, AR);
   if (erros.length) { rejeitados.push(rotulo + ': ' + erros.join(' / ')); return false; }
   const chave = chaveDosPapeis(j);
@@ -116,7 +133,12 @@ function consomeRegisto(rotulo, j, AR, mapa, rejeitados, semBoots, avisos, porRe
     + ' modo=' + j.modo + ' largura=' + j.largura + ' batida=' + JSON.stringify(j.batida)
     + ' | matriz ' + prov.registo + ' em=' + prov.em + ' papeis_no_registo=' + prov.papeis_no_registo);
   for (const [papel, reg] of Object.entries(j[chave] || {})) {
-    if (!reg.boot_ok) { semBoots.push(rotulo + '/' + papel + ': ' + reg.classe + ' ' + JSON.stringify(reg.erro || '').slice(0, 90)); continue; }
+    if (!reg.boot_ok) {
+      const linha = rotulo + '/' + papel + ': ' + reg.classe + ' ' + JSON.stringify(reg.erro || '').slice(0, 90);
+      if (VOCAB.includes(reg.classe)) semBoots.push(linha);
+      else foraDoVocab.push(linha + ' — classe fora do vocabulario lido do emissor (' + VOCAB.join(' ') + ')');
+      continue;
+    }
     if (mapa[papel]) { avisos.push(papel + ' aparece em dois registos — fica o mais novo (' + mapa[papel].rotulo + ')'); continue; }
     mapa[papel] = resumoDoPapel(rotulo, reg);
   }
@@ -157,8 +179,8 @@ if (MODO_FIXTURES) {
   regFix('r12_autorizadas_somam_os_dos_papeis', mAgregado.nAutorizadas === 5, 'n=' + mAgregado.nAutorizadas);
   const falhou = base();
   falhou['papéis'].pending = { boot_ok: false, classe: 'CENSO_FALHOU', erro: 'barreira de pendencia' };
-  const mFalha = {}; const rejFalha = []; const bootFalho = []; const avFalha = []; const regFalha = [];
-  consomeRegisto('fx', falhou, AR, mFalha, rejFalha, bootFalho, avFalha, regFalha);
+  const mFalha = {}; const rejFalha = []; const bootFalho = []; const avFalha = []; const regFalha = []; const foraV1 = [];
+  consomeRegisto('fx', falhou, AR, mFalha, rejFalha, bootFalho, avFalha, regFalha, foraV1);
   regFix('r13_papel_sem_boot_sai_para_a_classe_propria_e_nao_para_o_agregado',
     Object.keys(mFalha).length === 1 && rejFalha.length === 0 && bootFalho.length === 1 && String(bootFalho[0]).indexOf('pending') > 0,
     'no agregado=' + Object.keys(mFalha).join(',') + ' rejeitados=' + JSON.stringify(rejFalha) + ' sem_boot=' + JSON.stringify(bootFalho));
@@ -166,8 +188,8 @@ if (MODO_FIXTURES) {
   velho['papéis'].director.comparacao.autorizadas_registradas = 99;
   const novo = base({ em: '2026-11-26T11:00:00.000Z' });
   const mDois = {}; const rejDois = []; const bootDois = []; const avDois = []; const regDois = [];
-  consomeRegisto('novo', novo, AR, mDois, rejDois, bootDois, avDois, regDois);
-  consomeRegisto('velho', velho, AR, mDois, rejDois, bootDois, avDois, regDois);
+  consomeRegisto('novo', novo, AR, mDois, rejDois, bootDois, avDois, regDois, []);
+  consomeRegisto('velho', velho, AR, mDois, rejDois, bootDois, avDois, regDois, []);
   regFix('r14_papel_repetido_fica_do_primeiro_consumido',
     mDois.director.rotulo === 'novo' && mDois.director.autorizadas === 3 && avDois.length === 1,
     'rotulo=' + mDois.director.rotulo + ' autorizadas=' + mDois.director.autorizadas + ' avisos=' + avDois.length);
@@ -175,10 +197,34 @@ if (MODO_FIXTURES) {
     [{ em: '2026-11-26T09:00:00.000Z' }, { em: '2026-11-26T11:00:00.000Z' }].slice().sort((a, b) => Date.parse(b.em) - Date.parse(a.em))[0].em === '2026-11-26T11:00:00.000Z', '');
   regFix('r16_registro_de_outro_ar_e_rejeitado_e_nao_entra_no_mapa', (() => {
     const mOutro = {}; const iOutro = []; const bOutro = []; const aOutro = []; const rOutro = [];
-    consomeRegisto('outro', base({ md5_shell: 'bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb' }), AR, mOutro, iOutro, bOutro, aOutro, rOutro);
+    consomeRegisto('outro', base({ md5_shell: 'bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb' }), AR, mOutro, iOutro, bOutro, aOutro, rOutro, []);
     return Object.keys(mOutro).length === 0 && iOutro.length === 1 && bOutro.length === 0;
   })(), '');
-  regFix('r17_o_veredicto_nao_depende_da_classe_sem_boot', bootFalho.length === 1 && rejFalha.length === 0, JSON.stringify({ bootFalho: bootFalho.length, rejFalha: rejFalha.length }));
+  regFix('r17_o_veredicto_nao_depende_da_classe_sem_boot', bootFalho.length === 1 && rejFalha.length === 0 && foraV1.length === 0, JSON.stringify({ bootFalho: bootFalho.length, rejFalha: rejFalha.length, fora: foraV1.length }));
+  // A face (c) do §SM.76 tinha duas caras e este leitor só tinha uma lista: `CENSO_FALHOU` (culpa minha) e a
+  // barreira legítima do `pending` caíam na mesma `semBoots`, e a diferença vivia na minha memória. Desde
+  // aqui a diferença é o vocabulário lido do fonte do emissor — por isso as três células abaixo: uma classe
+  // declarada fica na sua lista, uma classe que eu inventei sai para a sua, e o leitor aborta se o emissor
+  // não declarar linha nenhuma. Sem a do meio, o verde significaria «não olhei de onde veio o nome».
+  regFix('r18_classe_legitima_do_emissor_fica_na_lista_propria', (() => {
+    const m = {}; const rej = []; const boot = []; const av = []; const rg = []; const fora = [];
+    const j = base(); j['papéis'].pending = { boot_ok: false, classe: 'BARRERA_DE_PENDENCIA_SEM_SHELL', erro: 'x' };
+    delete j['papéis'].director;
+    consomeRegisto('fx', j, AR, m, rej, boot, av, rg, fora);
+    return boot.length === 1 && fora.length === 0 && Object.keys(m).length === 0;
+  })(), '');
+  regFix('r19_classe_inventada_por_mim_sai_para_o_eixo_de_divergencia', (() => {
+    const m = {}; const rej = []; const boot = []; const av = []; const rg = []; const fora = [];
+    const j = base(); j['papéis'].director = { boot_ok: false, classe: 'CLASSE_QUE_EU_INVENTEI', erro: 'x' };
+    consomeRegisto('fx', j, AR, m, rej, boot, av, rg, fora);
+    return boot.length === 0 && fora.length === 1 && Object.keys(m).length === 0;
+  })(), '');
+  regFix('r20_leitor_aborta_se_o_emissor_nao_declara_vocabulario', (() => {
+    try { vocabulario_do_emissor(path.join(RAIZ, 'scripts', 'p189-atribuicao-do-sem-caixa-por-papel.mjs')); return false; } catch (e) { return String(e && e.message || e).startsWith('ABORTA_MARCADOR_DE_VOCABULARIO_AUSENTE'); }
+  })(), '');
+  regFix('r21_o_eixo_novo_e_obrigatorio_em_toda_chamada', (() => {
+    try { consomeRegisto('fx', base(), AR, {}, [], [], [], []); return false; } catch (e) { return String(e && e.message || e).startsWith('ABORTA: consomeRegisto sem o eixo'); }
+  })(), '');
   const ok = portoes.filter((x) => x.ok).length;
   console.log('P188_FIXURAS ' + ok + '/' + portoes.length + (ok === portoes.length ? ' P188_FIXURAS_OK' : ' P188_FIXURAS_VERMELHO'));
   for (const x of portoes) if (!x.ok) console.log('  FALHA ' + x.nome + ' :: ' + x.detalhe);
@@ -205,6 +251,7 @@ if (MODO_FAMILIA) {
 const mapa = {};
 const rejeitados = [];
 const semBoots = [];
+const foraDoVocabulario = [];
 const avisos = [];
 const porRegisto = [];
 const ordenados = rotulos.map((r) => {
@@ -216,7 +263,7 @@ const ordenados = rotulos.map((r) => {
 
 for (const item of ordenados) {
   if (item.missing) { rejeitados.push(item.rotulo + ': ficheiro ausente'); continue; }
-  consomeRegisto(item.rotulo, item.json, AR, mapa, rejeitados, semBoots, avisos, porRegisto);
+  consomeRegisto(item.rotulo, item.json, AR, mapa, rejeitados, semBoots, avisos, porRegisto, foraDoVocabulario);
 }
 
 const A = agrega(mapa, AR);
@@ -240,11 +287,15 @@ const naoCobertos = ESPERA.filter((p) => !mapa[p]);
 if (ESPERA.length) console.log('COBERTURA PEDIDA: ' + (ESPERA.length - naoCobertos.length) + '/' + ESPERA.length + (naoCobertos.length ? ' · em falta: ' + naoCobertos.join(',') : ''));
 if (avisos.length) console.log('AVISOS: ' + JSON.stringify(avisos));
 console.log('PAPEIS_SEM_BOOT (' + semBoots.length + ') — classe medida, nao rejeicao do leitor: ' + JSON.stringify(semBoots));
+// Impresso mesmo vazio, e com o vocabulario lido do emissor na mesma linha: o zero desta face so significa
+// alguma coisa se o leitor mostrou de onde tirou as classes.
+console.log('CLASSES_FORA_DO_VOCABULARIO (' + foraDoVocabulario.length + ') — vocabulario lido de scripts/ah2-sonda-portas-por-papel.mjs: ' + JSON.stringify(VOCAB) + ' | ' + JSON.stringify(foraDoVocabulario));
 console.log('REGISTOS_REJEITADOS (' + rejeitados.length + '): ' + JSON.stringify(rejeitados));
 if (MODO_FAMILIA) {
   console.log('P188_CENSO_DA_FAMILIA registos=' + rotulos.length + ' papeis_validos=' + A.papeis.length
-    + ' papeis_sem_boot=' + semBoots.length + ' registos_rejeitados=' + rejeitados.length);
+    + ' papeis_sem_boot=' + semBoots.length + ' registos_rejeitados=' + rejeitados.length
+    + ' classes_fora_do_vocabulario=' + foraDoVocabulario.length);
 } else {
   const coberto = ESPERA.length === 0 ? true : naoCobertos.length === 0;
-  console.log(rejeitados.length === 0 && A.papeis.length > 0 && coberto ? 'P188_MATRIZ_LIDA_OK' : 'P188_MATRIZ_LIDA_PARCIAL');
+  console.log(rejeitados.length === 0 && foraDoVocabulario.length === 0 && A.papeis.length > 0 && coberto ? 'P188_MATRIZ_LIDA_OK' : 'P188_MATRIZ_LIDA_PARCIAL');
 }

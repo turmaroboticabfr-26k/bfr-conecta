@@ -43,8 +43,13 @@ const ROTULO = process.argv[4] || 'pp1';
 // separam-se aqui e não a jusante.
 const ARGOS = process.argv.slice(5);
 const MODO_MATRIZ = ARGOS.includes('--matriz');
+const MODO_TOQUE = ARGOS.includes('--toque');
 const SÓ_PAPEIS = ARGOS.filter((a) => !a.startsWith('--'));
-if (!Number.isFinite(LARGURA)) throw new Error('ABORTA: largura «' + process.argv[3] + '» não é número — os argumentos são posicionais: [prefixo] [largura] [rótulo] [papéis…] [--matriz]');
+if (!Number.isFinite(LARGURA)) throw new Error('ABORTA: largura «' + process.argv[3] + '» não é número — os argumentos são posicionais: [prefixo] [largura] [rótulo] [papéis…] [--matriz] [--toque]');
+// O toque não tem pergunta própria: ele responde «o que acontece no destino duma célula de excesso», e a
+// célula de excesso só existe como saída da comparação de matriz. Correr --toque sem --matriz seria tocar
+// em tudo e chamar-lhe excesso, por isso a combinação aborta em vez de inventar a lista.
+if (MODO_TOQUE && !MODO_MATRIZ) throw new Error('ABORTA: --toque exige --matriz; as células a tocar são as excessivas medidas pela matriz, nunca uma lista dactilografada');
 
 // — leitor de família: o mecanismo é o do p187 (o mais novo por `em`, aborto se não há ou se há empate) porque
 // quem precisa do veredicto de outra peça lê o registo dela e nunca re-dactilografa o predicado. Em modo
@@ -105,6 +110,93 @@ function comparaPapel(universo, censo, autorizadas) {
     autorizadas_registradas: autorizadasOrdenadas.length
   };
 }
+// VOCABULARIO-DE-CLASSES: CENSO_INVALIDO_SEM_BOOT | CENSO_FALHOU | BARRERA_DE_PENDENCIA_SEM_SHELL
+// As três classes de papel que não entra no agregado, declaradas aqui e por ninguém mais. O `p188` lê esta
+// linha do fonte e aborta se não a ler: um leitor que re-dactilografa o vocabulário do emissor é a quarta
+// instância da «menção de origem não é origem» (§SM.35) e passa a chamar legítima uma morte sua.
+const CLASSE_SEM_BOOT = 'CENSO_INVALIDO_SEM_BOOT';
+const CLASSE_FALHA_DE_INSTRUMENTO = 'CENSO_FALHOU';
+const CLASSE_BARRERA_SEM_SHELL = 'BARRERA_DE_PENDENCIA_SEM_SHELL';
+
+function vocabulario_do_source() {
+  const texto = readFileSync(new URL(import.meta.url), 'utf8');
+  const m = texto.match(/^\/\/ VOCABULARIO-DE-CLASSES: (.+)$/m);
+  if (!m) throw new Error('ABORTA_MARCADOR_DE_VOCABULARIO_AUSENTE: nenhuma linha declaradora no emissor');
+  return m[1].split('|').map((s) => s.trim()).filter(Boolean);
+}
+// A segunda familia tem o seu próprio marcador e o seu próprio leitor: o que classifica um papel morto e o
+// que classifica um destino tocado sao perguntas diferentes, e le-los pelo mesmo nome deixaria ao leitor do
+// agregado um vocabulario que autoriza a minha cegueira de rede como resposta do produto.
+function vocabulario_de_destino_do_source() {
+  const texto = readFileSync(new URL(import.meta.url), 'utf8');
+  const m = texto.match(/^\/\/ VOCABULARIO-DE-CLASSES-DE-DESTINO: (.+)$/m);
+  if (!m) throw new Error('ABORTA_MARCADOR_DE_VOCABULARIO_DE_DESTINO_AUSENTE: nenhuma linha declaradora no emissor');
+  return m[1].split('|').map((s) => s.trim()).filter(Boolean);
+}
+
+function classe_da_falha(superficie, medida_antes) {
+  // Uma cláusula por eixo, medida no instante da falha: `pp7a` morreu em `Page.navigate` e o `CENSO_FALHOU`
+  // secava tudo — inclusive o `pending`, que é papel SEM shell por desenho da regra servida. As duas caras
+  // são diferentes e o registo tinha de as distinguir por medida, não por lembrar qual papel é qual.
+  // `medida_antes` é a ultima leitura desta mesma superficie tirada por este mesmo instrumento antes de o
+  // transporte rebentar (o `sm77a` mediu `com_caixa 0` duas vezes e depois morreu no `Page.navigate` do
+  // recarregamento). Recusar essa leitura era deitar fora a medida e chamá-la falha minha; aceita-la obriga
+  // o registo a dizer de qual das duas veio a classe.
+  if (!superficie) return { classe: CLASSE_FALHA_DE_INSTRUMENTO, motivo: 'nenhuma superficie medida no instante da falha', medida: null, fonte_da_medicao: 'nenhuma' };
+  const re_medicao_falhou = !!superficie.medicao_falhou;
+  const anterior_prendivel = !!(medida_antes && !medida_antes.medicao_falhou);
+  if (re_medicao_falhou && !anterior_prendivel) return { classe: CLASSE_FALHA_DE_INSTRUMENTO, motivo: 'a re-medicao da superficie tambem falhou e nao havia leitura anterior aprovechavel', medida: superficie.medicao_falhou, fonte_da_medicao: 'nenhuma' };
+  const usada = re_medicao_falhou ? medida_antes : superficie;
+  const fonte = re_medicao_falhou ? 'medicao_anterior_do_mesmo_instrumento' : 're-medicao_no_instante_da_falha';
+  const l = usada.login || null;
+  const login_com_caixa = !!(l && l.w > 0 && l.h > 0 && l.display !== 'none' && l.visibility !== 'hidden');
+  const classes = usada.appShell_classes === null || usada.appShell_classes === undefined ? '' : String(usada.appShell_classes);
+  const shell_sem_ready = !/(^|\s)ready(\s|$)/.test(classes);
+  const barra_pintada = Number(usada.com_caixa) > 0;
+  const e_barreira = login_com_caixa && shell_sem_ready && !barra_pintada;
+  return { classe: e_barreira ? CLASSE_BARRERA_SEM_SHELL : CLASSE_FALHA_DE_INSTRUMENTO,
+    motivo: 'login_com_caixa=' + login_com_caixa + ' appShell_classes="' + classes + '" com_caixa=' + String(usada.com_caixa),
+    medida: { login_com_caixa: login_com_caixa, shell_sem_ready: shell_sem_ready, barra_pintada: barra_pintada },
+    fonte_da_medicao: fonte };
+}
+
+// VOCABULARIO-DE-CLASSES-DE-DESTINO: SEM_CAJA_PARA_TOQUE | SEM_MOVIMENTO | DESTINO_RECUSADO | DESTINO_COM_CONTEUDO | DESTINO_SEM_DADOS | REDE_NAO_OBSERVADA
+// Segundo vocabulario, separado do das falhas de papel de proposito: o que aqui se classifica nao e a morte
+// do instrumento nem a barreira do `pending` — e o que o destino respondeu depois de um toque real na cellula
+// que a matriz mediu como excesso. Dobrar as duas familias numa so linha faria do `REDE_NAO_OBSERVADA` (culpa
+// minha) uma resposta do produto, que e exactamente o genero de portao que proibe uma classe legitima.
+const TQ_SEM_CAJA = 'SEM_CAJA_PARA_TOQUE';
+const TQ_SEM_MOVIMENTO = 'SEM_MOVIMENTO';
+const TQ_RECUSADO = 'DESTINO_RECUSADO';
+const TQ_COM_CONTEUDO = 'DESTINO_COM_CONTEUDO';
+const TQ_SEM_DADOS = 'DESTINO_SEM_DADOS';
+const TQ_REDE_CEGA = 'REDE_NAO_OBSERVADA';
+
+function classe_do_toque(m) {
+  // Uma clausula por eixo e um positivo por classe, todos exercidos nos fixtures. `rede_habilitada` e o
+  // interruptor honesto: sem o dominio de rede ligado nao sei se o destino respondeu, e chamar a isso
+  // «destino sem dados» seria assinar seguranca a partir da minha propria cegueira.
+  // O MARCADOR NAO E A REGUA. A primeira corrida com esta regua (`sm77tq1`) chamou SEM_MOVIMENTO a celulas
+  // onde chegaram 112 respostas de dados com corpo e mais de 100 mil caracteres de texto, porque exigia
+  // `seccao_ativa === rota`. O meu proprio registo de 17/11, `ah2-m5-marcador-vs-mapa-v2.json`, mediu 14 pares
+  // (rota, papel) fora do mapa do papel e 0 marcaram — e as celulas de excesso sao um subconjunto deles. Uma
+  // regla que so pode dar verde onde o mapa ja autorizou e o portao sem positivo possivel do §SM.66 com a
+  // assinatura invertida: fecharia o achado de seguranca. O que decide e o destino; o marcador fica registado
+  // como diagnostico (`marcador_chegou`), nunca como predicado.
+  if (!m || typeof m !== 'object') return { classe: TQ_REDE_CEGA, motivo: 'nenhuma medição de toque recebida', medida: null };
+  if (!m.rede_habilitada) return { classe: TQ_REDE_CEGA, motivo: 'o dominio Network nao estava habilitado nesta corrida', medida: { rede_habilitada: false } };
+  if (!m.item_tocado) return { classe: TQ_SEM_CAJA, motivo: 'o item da cellula nao tinha caixa para pousar o toque', medida: { caixa: m.caixa_do_item } };
+  const respostas = Array.isArray(m.respostas_de_dados) ? m.respostas_de_dados : [];
+  const recusadas = respostas.filter((r) => Number(r.status) >= 400);
+  const com_corpo = respostas.filter((r) => Number(r.status) >= 200 && Number(r.status) < 300 && Number(r.bytes) > 0);
+  const base = { respostas: respostas.length, com_corpo: com_corpo.length, recusadas: recusadas.length,
+    marcador_chegou: m.seccao_ativa_depois === m.rota, delta_texto: m.delta_texto };
+  if (recusadas.length > 0) return { classe: TQ_RECUSADO, motivo: recusadas.length + ' resposta(s) de dados com estado >= 400', medida: Object.assign({}, base, { estados_recusados: recusadas.map((r) => r.status) }) };
+  if (com_corpo.length > 0) return { classe: TQ_COM_CONTEUDO, motivo: 'chegaram ' + com_corpo.length + ' resposta(s) de dados com corpo, marcador_chegou=' + base.marcador_chegou, medida: base };
+  if (respostas.length > 0) return { classe: TQ_SEM_DADOS, motivo: 'houve ' + respostas.length + ' trafego(s) de dados mas nenhum 2xx com corpo', medida: base };
+  return { classe: TQ_SEM_MOVIMENTO, motivo: 'nenhum trafego de dados depois do toque, marcador_chegou=' + base.marcador_chegou, medida: base };
+}
+
 if (ARGOS.includes('--sonda-fixtures')) {
   const f = [];
   const add = (nome, ok, detalhe) => f.push({ nome, ok: !!ok, detalhe });
@@ -176,9 +268,88 @@ if (ARGOS.includes('--sonda-fixtures')) {
   let mi_s = '', corpo_s = '';
   try { corpo_s = SONDA_SUPERFICIE(['.sidebar .nav-item[data-section]'], '.sidebar .nav-item[data-section]'); } catch (e) { mi_s = String(e && e.message || e); }
   add('o_corpo_da_sonda_de_superficie_e_codigo_inteiro_chamando_o_construtor', mi_s === '' && confere_corpo(corpo_s) === '', mi_s.slice(0, 70) || confere_corpo(corpo_s) || corpo_s.length + ' caracteres');
+  let mi_d = '', corpo_d = '';
+  try { corpo_d = SONDA_DESTINO(); } catch (e) { mi_d = String(e && e.message || e); }
+  add('o_corpo_da_sonda_de_destino_e_codigo_inteiro_chamando_o_construtor', mi_d === '' && confere_corpo(corpo_d) === '', mi_d.slice(0, 70) || confere_corpo(corpo_d) || corpo_d.length + ' caracteres');
+  // A expressao de espera do toque e um corpo injectado ao `waitFor`, nao uma funcao minha: um acento grave
+  // la dentro reproduziria exactamente a avaria do `pp7c`, e so se apanha compilando o que o browser recebe.
+  let mi_e = ''; const exp_e = "document.querySelector('button[data-section].active')?.getAttribute('data-section') === 'relatorios'";
+  try { new Function('return (' + exp_e + ')'); } catch (e) { mi_e = String(e && e.message || e); }
+  add('a_expressao_de_espera_do_toque_compila_e_nao_tem_acentos_grave', mi_e === '' && exp_e.split(GRAVE).length - 1 === 0, mi_e.slice(0, 60) || exp_e.length + ' caracteres');
   const FONTE_PARTIDA = '(() => { const s = ' + GRAVE + 'um item sem ' + GRAVE + '.hidden ' + GRAVE + 'caixa ' + GRAVE + '; return s; })()';
   let mi_p = ''; try { new Function('return (' + FONTE_PARTIDA + ')')(); } catch (e) { mi_p = String(e && e.message || e); }
   add('a_regua_de_corpo_inteiro_tem_positivo_nas_duas_faces', confere_corpo('a' + GRAVE + 'b').startsWith('acentos_grave_no_corpo=1') && mi_p.includes('is not a function'), confere_corpo('a' + GRAVE + 'b') + ' | ' + (mi_p.slice(0, 46) || 'NAO REBENTOU'));
+  // A face (c) do §SM.76: o `CENSO_FALHOU` secava papéis que são barreira legítima e papéis cuja cadeia
+  // morreu por minha causa. As cinco células abaixo são as cinco formas do mesmo `catch` — três dele, duas
+  // minhas — e cada uma tem de cair na classe certa; sem as três últimas a régua só teria positivo duma
+  // cara, que é o portão que proíbe uma classe legítima com o nome trocado.
+  add('barreira_de_pendencia_e_classe_propria_e_nao_falha_de_instrumento',
+    classe_da_falha({ login: { w: 1280, h: 720, display: 'block', visibility: 'visible' }, appShell_classes: 'app-shell', com_caixa: 0 }).classe === CLASSE_BARRERA_SEM_SHELL,
+    JSON.stringify(classe_da_falha({ login: { w: 1280, h: 720, display: 'block', visibility: 'visible' }, appShell_classes: 'app-shell', com_caixa: 0 })));
+  add('papel_valido_que_rebenta_continua_falha_do_instrumento',
+    classe_da_falha({ login: { w: 0, h: 0, display: 'none', visibility: 'hidden' }, appShell_classes: 'app-shell ready', com_caixa: 27 }).classe === CLASSE_FALHA_DE_INSTRUMENTO,
+    JSON.stringify(classe_da_falha({ login: { w: 0, h: 0, display: 'none', visibility: 'hidden' }, appShell_classes: 'app-shell ready', com_caixa: 27 }).medida));
+  add('barra_pintada_na_barra_do_login_nao_e_barreira',
+    classe_da_falha({ login: { w: 1280, h: 720, display: 'block', visibility: 'visible' }, appShell_classes: 'app-shell', com_caixa: 3 }).classe === CLASSE_FALHA_DE_INSTRUMENTO,
+    JSON.stringify(classe_da_falha({ login: { w: 1280, h: 720, display: 'block', visibility: 'visible' }, appShell_classes: 'app-shell', com_caixa: 3 }).medida));
+  add('classe_da_shell_com_token_que_so_contem_ready_nao_e_ready',
+    classe_da_falha({ login: { w: 1280, h: 720, display: 'block', visibility: 'visible' }, appShell_classes: 'app-shell ready-state', com_caixa: 0 }).classe === CLASSE_BARRERA_SEM_SHELL,
+    String(classe_da_falha({ login: { w: 1280, h: 720, display: 'block', visibility: 'visible' }, appShell_classes: 'app-shell ready-state', com_caixa: 0 }).medida.shell_sem_ready));
+  add('sem_medicao_na_falha_e_falha_do_instrumento_com_o_motivo',
+    classe_da_falha(null).classe === CLASSE_FALHA_DE_INSTRUMENTO && classe_da_falha({ medicao_falhou: 'socket closed' }).classe === CLASSE_FALHA_DE_INSTRUMENTO,
+    classe_da_falha(null).motivo + ' | ' + classe_da_falha({ medicao_falhou: 'socket closed' }).motivo);
+  const PENDENTE_MEDIDO_ANTES = { login: { w: 1280, h: 720, display: 'block', visibility: 'visible' }, appShell_classes: 'app-shell', com_caixa: 0 };
+  add('a_barreira_lida_da_medicao_anterior_quando_a_remedicao_morre',
+    classe_da_falha({ medicao_falhou: 'socket closed' }, PENDENTE_MEDIDO_ANTES).classe === CLASSE_BARRERA_SEM_SHELL,
+    JSON.stringify(classe_da_falha({ medicao_falhou: 'socket closed' }, PENDENTE_MEDIDO_ANTES)));
+  add('a_fonte_da_medicao_diz_de_onde_veio_a_classe',
+    classe_da_falha({ medicao_falhou: 'socket closed' }, PENDENTE_MEDIDO_ANTES).fonte_da_medicao === 'medicao_anterior_do_mesmo_instrumento'
+      && classe_da_falha(PENDENTE_MEDIDO_ANTES).fonte_da_medicao === 're-medicao_no_instante_da_falha'
+      && classe_da_falha(null).fonte_da_medicao === 'nenhuma',
+    classe_da_falha({ medicao_falhou: 'socket closed' }, PENDENTE_MEDIDO_ANTES).fonte_da_medicao + ' | ' + classe_da_falha(PENDENTE_MEDIDO_ANTES).fonte_da_medicao + ' | ' + classe_da_falha(null).fonte_da_medicao);
+  add('medicao_anterior_partida_nao_rende_classe_legitima',
+    classe_da_falha({ medicao_falhou: 'socket closed' }, { medicao_falhou: 'socket closed' }).classe === CLASSE_FALHA_DE_INSTRUMENTO
+      && classe_da_falha({ medicao_falhou: 'socket closed' }, null).classe === CLASSE_FALHA_DE_INSTRUMENTO,
+    classe_da_falha({ medicao_falhou: 'socket closed' }, { medicao_falhou: 'socket closed' }).motivo);
+  add('o_marcador_de_vocabulario_no_source_bate_com_as_constantes', (() => {
+    const lidos = vocabulario_do_source().slice().sort().join('|');
+    const declaradas = [CLASSE_SEM_BOOT, CLASSE_FALHA_DE_INSTRUMENTO, CLASSE_BARRERA_SEM_SHELL].slice().sort().join('|');
+    return lidos === declaradas;
+  })(), vocabulario_do_source().join(' '));
+  const REDE_ON = { rede_habilitada: true, item_tocado: true };
+  add('destino_com_conteudo_marca_quando_chegou_corpo_e_o_marcador_tambem_bateu',
+    classe_do_toque(Object.assign({}, REDE_ON, { rota: 'relatorios', seccao_ativa_antes: 'inicio', seccao_ativa_depois: 'relatorios', respostas_de_dados: [{ status: 200, bytes: 4120 }], delta_texto: 310 })).classe === TQ_COM_CONTEUDO,
+    classe_do_toque(Object.assign({}, REDE_ON, { rota: 'relatorios', seccao_ativa_antes: 'inicio', seccao_ativa_depois: 'relatorios', respostas_de_dados: [{ status: 200, bytes: 4120 }], delta_texto: 310 })).motivo);
+  add('destino_com_conteudo_nao_depende_do_marcador', (() => {
+    const c = classe_do_toque(Object.assign({}, REDE_ON, { rota: 'relatorios', seccao_ativa_antes: 'inicio', seccao_ativa_depois: 'inicio', respostas_de_dados: [{ status: 200, bytes: 4120 }], delta_texto: 139605 }));
+    return c.classe === TQ_COM_CONTEUDO && c.medida.marcador_chegou === false && c.medida.com_corpo === 1;
+  })(), JSON.stringify(classe_do_toque(Object.assign({}, REDE_ON, { rota: 'relatorios', seccao_ativa_antes: 'inicio', seccao_ativa_depois: 'inicio', respostas_de_dados: [{ status: 200, bytes: 4120 }], delta_texto: 139605 })).medida));
+  add('destino_recusado_ganha_quando_um_estado_quatro_centos_chega', (() => {
+    const c = classe_do_toque(Object.assign({}, REDE_ON, { rota: 'conteudos', seccao_ativa_antes: 'inicio', seccao_ativa_depois: 'conteudos', respostas_de_dados: [{ status: 200, bytes: 12 }, { status: 403, bytes: 0 }] }));
+    return c.classe === TQ_RECUSADO && c.medida.estados_recusados.join(',') === '403';
+  })(), JSON.stringify(classe_do_toque(Object.assign({}, REDE_ON, { rota: 'conteudos', seccao_ativa_antes: 'inicio', seccao_ativa_depois: 'conteudos', respostas_de_dados: [{ status: 200, bytes: 12 }, { status: 403, bytes: 0 }] }))));
+  add('resposta_2xx_sem_corpo_nao_e_conteudo',
+    classe_do_toque(Object.assign({}, REDE_ON, { rota: 'notificacoes', seccao_ativa_antes: 'inicio', seccao_ativa_depois: 'notificacoes', respostas_de_dados: [{ status: 200, bytes: 0 }], delta_texto: 0 })).classe === TQ_SEM_DADOS,
+    classe_do_toque(Object.assign({}, REDE_ON, { rota: 'notificacoes', seccao_ativa_antes: 'inicio', seccao_ativa_depois: 'notificacoes', respostas_de_dados: [{ status: 200, bytes: 0 }], delta_texto: 0 })).motivo);
+  add('trafego_so_de_erro_nao_e_conteudo_mas_e_recusado',
+    classe_do_toque(Object.assign({}, REDE_ON, { rota: 'multiprofissional', seccao_ativa_antes: 'inicio', seccao_ativa_depois: 'inicio', respostas_de_dados: [{ status: 500, bytes: 90 }] })).classe === TQ_RECUSADO,
+    classe_do_toque(Object.assign({}, REDE_ON, { rota: 'multiprofissional', seccao_ativa_antes: 'inicio', seccao_ativa_depois: 'inicio', respostas_de_dados: [{ status: 500, bytes: 90 }] })).motivo);
+  add('nenhum_trafego_e_o_unico_sem_movimento',
+    classe_do_toque(Object.assign({}, REDE_ON, { rota: 'multiprofissional', seccao_ativa_antes: 'inicio', seccao_ativa_depois: 'inicio', respostas_de_dados: [] })).classe === TQ_SEM_MOVIMENTO
+      && classe_do_toque(Object.assign({}, REDE_ON, { rota: 'notificacoes', seccao_ativa_antes: 'inicio', seccao_ativa_depois: 'notificacoes', respostas_de_dados: [] })).classe === TQ_SEM_MOVIMENTO,
+    classe_do_toque(Object.assign({}, REDE_ON, { rota: 'multiprofissional', seccao_ativa_antes: 'inicio', seccao_ativa_depois: 'inicio', respostas_de_dados: [] })).motivo);
+  add('item_sem_caixa_nao_e_perguntado_ao_destino',
+    classe_do_toque(Object.assign({}, REDE_ON, { item_tocado: false, caixa_do_item: { w: 0, h: 0 } })).classe === TQ_SEM_CAJA,
+    JSON.stringify(classe_do_toque(Object.assign({}, REDE_ON, { item_tocado: false, caixa_do_item: { w: 0, h: 0 } }))));
+  add('rede_cega_nunca_e_destino_sem_dados',
+    classe_do_toque({ rede_habilitada: false, item_tocado: true, rota: 'relatorios', seccao_ativa_antes: 'inicio', seccao_ativa_depois: 'relatorios', respostas_de_dados: [] }).classe === TQ_REDE_CEGA
+      && classe_do_toque(null).classe === TQ_REDE_CEGA,
+    classe_do_toque({ rede_habilitada: false }).motivo + ' | ' + classe_do_toque(null).motivo);
+  add('o_marcador_de_destino_no_source_bate_com_as_constantes', (() => {
+    const lidos = vocabulario_de_destino_do_source().slice().sort().join('|');
+    const declaradas = [TQ_SEM_CAJA, TQ_SEM_MOVIMENTO, TQ_RECUSADO, TQ_COM_CONTEUDO, TQ_SEM_DADOS, TQ_REDE_CEGA].slice().sort().join('|');
+    return lidos === declaradas;
+  })(), vocabulario_de_destino_do_source().join(' '));
   const verdes = f.filter((x) => x.ok).length;
   console.log('SONDA_PORTAS_FIXTURES ' + verdes + '/' + f.length);
   for (const x of f) console.log((x.ok ? 'ok   ' : 'VERM ') + x.nome + ' :: ' + x.detalhe);
@@ -268,6 +439,7 @@ const saida = {
     ? { citacao_de_fonte: 'app/bfr-responsive-presentation.js:71 drawerItems()', seletor_servido_lido_do_registo: SELETOR_DA_REGRA, superficie_censurada: SELETOR_SIDEBAR }
     : 'app/bfr-responsive-presentation.js:71-89 drawerItems()',
   proveniencia_matriz: PROVENIENCIA_MATRIZ, universo: MODO_MATRIZ ? UNIVERSO : null, papéis: {}, resumo: null,
+  vocabulario_de_classes: vocabulario_do_source(),
   o_que_prova: MODO_MATRIZ ? 'quais destas portas aparecem pintadas na barra lateral, neste shell, para cada papel com cadeia viva — e quais das visíveis o mapa não autorizou' : null,
   o_que_NAO_prova: MODO_MATRIZ ? 'que o backend autorize a chamada correspondente; que a mesma porta não seja alcançável por outra superfície (menu Mais, gaveta, atalho dentro duma vista); que o conteúdo de cada aba esteja certo; e que um papel sem cadeia viva nesta ficha tenha a mesma resposta' : null
 };
@@ -292,7 +464,12 @@ if (!page) grava(1);
 const ws = new WebSocket(page.webSocketDebuggerUrl);
 await new Promise((res, rej) => { ws.onopen = res; ws.onerror = rej; setTimeout(() => rej(new Error('handshake')), 30000); }).catch(() => grava(5));
 let seq = 0; const pend = new Map();
-ws.onmessage = (ev) => { const m = JSON.parse(ev.data); if (m.id && pend.has(m.id)) { const p = pend.get(m.id); pend.delete(m.id); m.error ? p.rej(new Error(p.method + ': ' + m.error.message)) : p.res(m.result); return; } };
+// O buffer de rede so enche se o dominio estiver ligado (modo toque). Guardar o `method` do pedido era o
+// unico modo de associar uma resposta ao trafego que EU provoquei: os pedidos ficam marcados por indice,
+// e cada toque le o que aconteceu desde a marca anterior — nunca o total da sessao, que incluiria o boot.
+const REDE = [];
+let rede_ligada = false;
+ws.onmessage = (ev) => { const m = JSON.parse(ev.data); if (m.id && pend.has(m.id)) { const p = pend.get(m.id); pend.delete(m.id); m.error ? p.rej(new Error(p.method + ': ' + m.error.message)) : p.res(m.result); return; } if (!rede_ligada) return; if (m.method === 'Network.responseReceived') { const r = m.params && m.params.response || {}; const tipo = (m.params && m.params.type) || ''; if (/^(Fetch|XHR|Other)$/.test(tipo) || /rest\/v1|\/rpc\//.test(r.url || '')) REDE.push({ rid: m.params.requestId, url: String(r.url || '').split('?')[0], status: Number(r.status) || 0, bytes: Number(r.encodedDataLength) || 0, tipo: tipo, em_ms: Date.now() }); } else if (m.method === 'Network.loadingFinished') { const a = REDE.find((x) => x.rid === m.params.requestId); if (a && Number(m.params.encodedDataLength) > a.bytes) a.bytes = Number(m.params.encodedDataLength); } };
 // O prazo por método é o do produtor `ah2-mobile2.mjs:122`, copiado com a razão: sem ele, um `Runtime.evaluate`
 // a que a página não responde deixa o `pend` à espera para sempre — foi o que calou o `pp6t` no censo de 60
 // tokens, sem artefacto e sem linha de erro. `Page.navigate` não tem ack até a navegação assentar, por isso
@@ -308,10 +485,27 @@ const send = (method, params = {}) => new Promise((res, rej) => {
 const E = async (expression) => { const r = await send('Runtime.evaluate', { expression, returnByValue: true, awaitPromise: true }); if (r.exceptionDetails) throw new Error('eval: ' + String(r.exceptionDetails.exception?.description || r.exceptionDetails.text).slice(0, 300)); return r.result?.value; };
 const waitFor = async (e, ms = 60000) => { const t0 = Date.now(); while (Date.now() - t0 < ms) { let v; try { v = await E(e); } catch {} if (v) return Date.now() - t0; await dorme(350); } return null; };
 await send('Page.enable'); await send('Runtime.enable');
+// Sem o dominio de rede o veredicto de destino nao tem como existir: so o trafego diz se o conteudo chegou,
+// foi recusado ou se nada se passou. Liga-se exclusivamente no modo toque, e e por isso que `rede_habilitada`
+// entra na classificacao — uma corrida sem rede ligada tem de dizer «nao observei», nunca «esta vazio».
+if (MODO_TOQUE) { await send('Network.enable'); rede_ligada = true; }
 await send('Emulation.setTouchEmulationEnabled', { enabled: true, maxTouchPoints: 1 });
 await send('Emulation.setDeviceMetricsOverride', { width: LARGURA, height: ALTURA, deviceScaleFactor: 2, mobile: true });
 const TOQUE = async (x, y) => { if (!Number.isFinite(x) || !Number.isFinite(y)) throw new Error('TOQUE sem coordenadas: ' + x + ',' + y); await send('Input.dispatchTouchEvent', { type: 'touchStart', touchPoints: [{ x, y }] }); await send('Input.dispatchTouchEvent', { type: 'touchEnd', touchPoints: [] }); };
 const centro = async (sel) => E(`(() => { const b = document.querySelector(${JSON.stringify(sel)}); if (!b) return null; b.scrollIntoView({block:'center'}); const r = b.getBoundingClientRect(); return {x: Math.round(r.x + r.width/2), y: Math.round(r.y + r.height/2), w: Math.round(r.width), h: Math.round(r.height)}; })()`);
+// Ao toque de telemovel (que a emulacao ja produz) soma-se o rato: em 1280 a barra lateral e uma superficie
+// de rato, e um `touchStart` pode nao chegar ao handler. Os dois sao gravados na ficha da cellula com o
+// mecanismo que produziu o movimento — sem isto, «nao aconteceu nada» poderia ser «bati na porta errada».
+const CLIQUE_RATO = async (x, y) => { if (!Number.isFinite(x) || !Number.isFinite(y)) throw new Error('CLIQUE_RATO sem coordenadas: ' + x + ',' + y); await send('Input.dispatchMouseEvent', { type: 'mousePressed', x, y, button: 'left', clickCount: 1 }); await send('Input.dispatchMouseEvent', { type: 'mouseReleased', x, y, button: 'left', clickCount: 1 }); };
+// O seletor do marcador de seccao ativa e o do instrumento que o mediu primeiro (`ah1-secretaria-navegador.mjs:257`),
+// copiado com a razao e nao reinventado: e a mesma leitura que ja produziu `seccao_ativa` nas tabelas do §5.
+function SONDA_DESTINO() { return `(() => {
+  const activa = document.querySelector('button[data-section].active');
+  const texto = (document.getElementById('appShell') || {}).innerText || '';
+  return { seccao_ativa: activa ? (activa.getAttribute('data-section') || null) : null,
+           activas: [...document.querySelectorAll('[data-section].active')].map((n) => n.getAttribute('data-section')),
+           chars_visiveis: texto.replace(/\\s+/g, ' ').trim().length };
+})()`; }
 
 // O censo por rota, escrito com os MESMOS selectores da regra do produto: o que aqui se lê é a decisão do
 // `drawerItems()`, não uma aproximação minha.
@@ -458,13 +652,60 @@ for (const papel of papeis) {
   for (const [r, v] of Object.entries(census)) cont[v.classe] = (cont[v.classe] || []).concat(r);
   const visiveis_censura = Object.entries(census).filter(([, v]) => v.visivel_no_ecra === true).map(([r]) => r).sort();
   const comparacao = MODO_MATRIZ && boot_ok ? comparaPapel(UNIVERSO, census, ESPERADO[papel].portas) : null;
-  saida.papéis[papel] = { ms_ready: ms, role_lido, modal_inicial: modal, ms_barra, data_section_no_dom: n_section, afordancia, gaveta_aberta, itens_gaveta, sidebar_censo, esperadas: rotas.length, visiveis_no_ecra: boot_ok ? visiveis_censura : null, comparacao, boot_ok, rotas: boot_ok ? census : null, por_classe: boot_ok ? Object.fromEntries(Object.entries(cont).map(([k, v]) => [k, v.sort()])) : null, classe: boot_ok ? null : 'CENSO_INVALIDO_SEM_BOOT' };
+  saida.papéis[papel] = { ms_ready: ms, role_lido, modal_inicial: modal, ms_barra, data_section_no_dom: n_section, afordancia, gaveta_aberta, itens_gaveta, sidebar_censo, esperadas: rotas.length, visiveis_no_ecra: boot_ok ? visiveis_censura : null, comparacao, boot_ok, rotas: boot_ok ? census : null, por_classe: boot_ok ? Object.fromEntries(Object.entries(cont).map(([k, v]) => [k, v.sort()])) : null, classe: boot_ok ? null : CLASSE_SEM_BOOT };
   console.log(`${papel} (role=${role_lido}, modal=${modal}, data-section=${n_section}, ${MODO_MATRIZ ? 'sidebar=' + JSON.stringify(sidebar_censo) : 'barra=' + ms_barra + 'ms, afordancia=' + afordancia + ', gaveta_aberta=' + gaveta_aberta + ', ' + itens_gaveta + ' itens'}) → ${boot_ok ? (MODO_MATRIZ ? 'visiveis=' + visiveis_censura.length + ' excesso=' + JSON.stringify(comparacao.visiveis_nao_autorizadas) + ' falta=' + JSON.stringify(comparacao.autorizadas_nao_visiveis) : Object.entries(cont).map(([k, v]) => k + '=' + v.length).join(' ')) : 'CENSO INVÁLIDO: a app não assentou'}`);
+  if (MODO_TOQUE && boot_ok) {
+    // O que se toca e a lista medida pela matriz nesta corrida, nunca uma lista minha: `visiveis_nao_autorizadas`
+    // e a face de seguranca do censo, e a pergunta que falta e «o destino respondeu?». A ficha guarda o
+    // mecanismo que produziu o movimento e o tempo entre o toque e a seccao ativa — que e a grandeza que a
+    // linha PEN-01 pede (RM-2.1) e que ate aqui nenhuma peca versionada produzia.
+    const excess = comparacao.visiveis_nao_autorizadas.slice().sort();
+    const expressao_activa = (rota) => `document.querySelector('button[data-section].active')?.getAttribute('data-section') === ${JSON.stringify(rota)}`;
+    saida.papéis[papel].toque = excess.length ? {} : null;
+    saida.papéis[papel].toque_excesso_medido = excess;
+    for (const rota of excess) {
+      const sel = '#appShell .sidebar .nav-item[data-section="' + rota + '"]';
+      const antes = await E(SONDA_DESTINO());
+      const caixa = await centro(sel);
+      const marca_rede = REDE.length;
+      let mecanismo = null, ms_seccao = null;
+      if (caixa) {
+        await TOQUE(caixa.x, caixa.y); mecanismo = 'toque';
+        ms_seccao = await waitFor(expressao_activa(rota), 8000);
+        if (ms_seccao === null) { await CLIQUE_RATO(caixa.x, caixa.y); mecanismo = 'toque_e_rato'; ms_seccao = await waitFor(expressao_activa(rota), 8000); }
+        await dorme(3000);
+      }
+      const depois = await E(SONDA_DESTINO());
+      const respostas = REDE.slice(marca_rede);
+      const medido = { rede_habilitada: rede_ligada, item_tocado: !!caixa, caixa_do_item: caixa, rota: rota,
+        seccao_ativa_antes: antes ? antes.seccao_ativa : null, seccao_ativa_depois: depois ? depois.seccao_ativa : null,
+        respostas_de_dados: respostas, delta_texto: (depois ? depois.chars_visiveis : 0) - (antes ? antes.chars_visiveis : 0) };
+      const cd = classe_do_toque(medido);
+      saida.papéis[papel].toque[rota] = { classe: cd.classe, motivo: cd.motivo, medida: cd.medida, mecanismo: mecanismo,
+        ms_toque_ate_seccao: ms_seccao, chars_antes: antes ? antes.chars_visiveis : null, chars_depois: depois ? depois.chars_visiveis : null,
+        delta_texto: medido.delta_texto, estados_de_dados: respostas.map((x) => x.status),
+        // Os comprimentos vão na ficha para que re-classificar nao exija nova passada de browser: sem estes
+        // campos, «houve corpo?» so pode ser respondido relendo o registo com o chrome aberto.
+        bytes_por_resposta: respostas.map((x) => x.bytes), bytes_totais_de_dados: respostas.reduce((a, x) => a + (Number(x.bytes) || 0), 0),
+        rotas_de_dados: respostas.map((x) => x.status + ' ' + x.url.replace(/^https?:\/\//, '').slice(-60)) };
+      console.log('  TOQUE ' + papel + '/' + rota + ': ' + cd.classe + ' [' + mecanismo + ', ms_seccao=' + ms_seccao + ', redes=' + respostas.length + ', delta_texto=' + medido.delta_texto + '] (' + cd.motivo + ')');
+    }
+    if (!excess.length) console.log('  TOQUE ' + papel + ': NADA_A_TOCAR — a matriz desta corrida nao mediu excesso neste papel');
+  }
  } catch (e) {
-  // A falha leva a última superfície medida: `pp7a` morreu em `Page.navigate` e a causa — ecrã de entrada a
-  // tapa-lo tudo, sem `ready` na `appShell` — só existia no stdout, que não é prova versionada.
-  saida.papéis[papel] = { classe: 'CENSO_FALHOU', erro: String(e && e.message || e).slice(0, 240), boot_ok: false, sidebar_censo, rotas: null, por_classe: null };
-  console.log(`${papel}: CENSO FALHOU — ${saida.papéis[papel].erro}`);
+  // A falha leva a última superfície medida e, desde aqui, leva a CLASSE medida: re-meiro a superfície dentro
+  // do `catch`, no seu próprio `try`, porque foi isso que separa o `pending` (barreira sem shell, estado do
+  // produto) duma cadeia morta (culpa minha). Se a re-medição morrer, vale a última leitura que ESTE
+  // instrumento tirou da mesma superfície antes de o transporte rebentar — `sm77a` mediu `com_caixa 0` duas
+  // vezes e só depois falhou no `Page.navigate` do recarregamento, e deitar essa medida fora seria chamar
+  // falha minha a um estado do produto já medido. Sem nenhuma das duas, a classe fica a do instrumento.
+  let superficie_na_falha = null;
+  try {
+    superficie_na_falha = (PARTES_DA_REGRA && SELETOR_SIDEBAR) ? await E(SONDA_SUPERFICIE(PARTES_DA_REGRA, SELETOR_SIDEBAR)) : null;
+  } catch (e2) { superficie_na_falha = { medicao_falhou: String(e2 && e2.message || e2).slice(0, 120) }; }
+  const cf = classe_da_falha(superficie_na_falha, sidebar_censo);
+  saida.papéis[papel] = { classe: cf.classe, motivo_da_classe: cf.motivo, fonte_da_medicao_da_classe: cf.fonte_da_medicao, superficie_na_falha, erro: String(e && e.message || e).slice(0, 240), boot_ok: false, sidebar_censo: (sidebar_censo && !sidebar_censo.medicao_falhou) ? sidebar_censo : (superficie_na_falha || sidebar_censo), rotas: null, por_classe: null };
+  console.log(`${papel}: ${cf.classe} [${cf.fonte_da_medicao}] (${cf.motivo}) — ${saida.papéis[papel].erro}`);
  }
   saida.batida = { papeis_registrados: Object.keys(saida.papéis).length, de: papeis.length, escrito: escreve() };
   console.log(`  batida: ${saida.batida.papeis_registrados}/${papeis.length} papel(is) em disco, escrito=${saida.batida.escrito}`);
@@ -495,6 +736,24 @@ if (MODO_MATRIZ) {
   console.log('MATRIZ: falta (o mapa autoriza e esta superfície não mostra): ' + resumo_matriz.falta_uniao.length + ' células');
   console.log('MATRIZ: tokens do universo sem entrada no censo: ' + JSON.stringify(resumo_matriz.ausentes_do_censo));
   for (const [p, c] of Object.entries(resumo_matriz.por_papel)) console.log('  ' + p + ': autorizadas=' + c.autorizadas_do_registo + ' visiveis=' + c.visiveis_no_ecra + ' excesso=' + JSON.stringify(c.visiveis_nao_autorizadas) + ' falta=' + JSON.stringify(c.autorizadas_nao_visiveis));
+}
+if (MODO_TOQUE) {
+  // As seis classes de destino imprimem-se todas, mesmo vazias: o vazio de `DESTINO_COM_CONTEUDO` e
+  // precisamente a resposta que a face de seguranca do briefing pede, e so se distingue duma corrida cega
+  // porque a familia inteira se ve. `NADA_A_TOCAR` e eixo aparte — e um papel cujo excesso medido foi zero,
+  // nao uma cellula que nao respondeu.
+  const por_classe_destino = {};
+  const celulas = [];
+  let papéis_sem_ficha_de_toque = [];
+  for (const p of cobertos) {
+    const ficha = saida.papéis[p].toque;
+    if (!ficha) { if ((saida.papéis[p].toque_excesso_medido || []).length === 0) continue; papéis_sem_ficha_de_toque.push(p); continue; }
+    for (const [rota, v] of Object.entries(ficha)) { por_classe_destino[v.classe] = (por_classe_destino[v.classe] || 0) + 1; celulas.push(p + '/' + rota + '=' + v.classe); }
+  }
+  saida.resumo.toque = { rede_habilitada: rede_ligada, celulas_tocadas: celulas.length, por_classe: por_classe_destino, celulas: celulas.sort(), papeis_nada_a_tocar: cobertos.filter((p) => (saida.papéis[p].toque_excesso_medido || []).length === 0), papeis_sem_ficha: papéis_sem_ficha_de_toque, vocabulario_de_destino: vocabulario_de_destino_do_source() };
+  for (const c of vocabulario_de_destino_do_source()) console.log('TOQUE ' + c + ' × ' + (por_classe_destino[c] || 0));
+  console.log('TOQUE celulas: ' + celulas.join(' '));
+  if (papéis_sem_ficha_de_toque.length) console.log('TOQUE SEM FICHA (excesso medido mas nenhuma cellula registada): ' + papéis_sem_ficha_de_toque.join(','));
 }
 saida.veredito = MODO_MATRIZ
   ? (cobertos.length === papeis.length ? 'SONDA_MATRIZ_TODOS_CENSURADOS ' + cobertos.length + '/' + papeis.length : 'SONDA_MATRIZ_PARCIAL ' + cobertos.length + '/' + papeis.length)

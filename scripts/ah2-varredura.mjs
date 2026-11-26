@@ -7,8 +7,10 @@
 // Aceitação «15×2 com 0 defeitos novos»: defeito novo = painel que não renderiza, erro de console de
 // aplicação, ou estouro horizontal. alvo<44 px e fonte<11 px são CONTADOS (são a herança que a
 // candidata v126 trata), não novidade. Sem captura de tela: 400 painéis com nomes reais de alunos.
-// Uso: node scripts/ah2-varredura.mjs <papeis|TODOS> <rotulo>
-import { readFileSync, writeFileSync, existsSync, mkdirSync, rmSync } from 'node:fs';
+// Uso: node scripts/ah2-varredura.mjs <papeis|TODOS> <rotulo> [banda]
+//      node scripts/ah2-varredura.mjs --fixtures   (selftestes do leitor da regua, sem browser)
+//      node scripts/ah2-varredura.mjs --regra      (resolve a regua e mede o ar, sem browser nem contas)
+import { readFileSync, writeFileSync, existsSync, mkdirSync, rmSync, readdirSync } from 'node:fs';
 import { spawn } from 'node:child_process';
 import { createHash } from 'node:crypto';
 
@@ -33,13 +35,105 @@ if (!BANDAS.length) throw new Error('ABORTA: banda desconhecida «' + SO_BANDA +
 const TODOS = ['pending', 'parent', 'student', 'pedagogical', 'developer', 'monitor', 'gatekeeper', 'coordinator', 'secretary', 'aee', 'director', 'psychology', 'social_work', 'sports_operator', 'education_supervisor'];
 const PAPEIS = PAPEIS_ARG === 'TODOS' ? TODOS : PAPEIS_ARG.split(',');
 
+// A identidade do ar varrido era um JSON congelado (worker-deploy-v123-pdfs/esperado-v123.json). Com a
+// v144c servida, o portao comparava a casca de hoje com a de nove ciclos atras: o vermelho era da regua,
+// nao do produto — e afrouxa-la seria apagar a medida. Desde aqui a regua e LIDA do disco, no padrao da
+// casa (p146/p187/p188/p189): o registo mais novo da familia do mapa, abortando se nenhum carimbo resolver,
+// se dois empatarem no topo, ou se o produtor nao declarar o campo que eu vou testar — igualar `undefined`
+// a uma constante so pode dar vermelho, e esse vermelho nao descreve o ar.
+const FAM_REGUA = 'p187-mapa-de-portas-por-papel';
+const EV_REGUA = `${DIR}/bfr-conecta/evidence`;
+
+function escolhe_mais_novo(candidatos) {
+  const legiveis = [], mudos = [];
+  for (const c of candidatos) (typeof c.em === 'string' && !Number.isNaN(Date.parse(c.em)) ? legiveis : mudos).push(c);
+  if (!legiveis.length) {
+    throw new Error('ABORTA_REGUA_SEM_CARIMBO_LEGIVEL: ' + candidatos.length + ' ficheiros na familia, nenhum com `em` legivel'
+      + (mudos.length ? ' [' + mudos.slice(0, 6).map((c) => c.nome).join(' ') + ']' : ''));
+  }
+  legiveis.sort((a, b) => Date.parse(b.em) - Date.parse(a.em));
+  const topo = legiveis[0].em, empatadas = legiveis.filter((c) => c.em === topo);
+  if (empatadas.length > 1) throw new Error('ABORTA_REGUA_EMPATE_NO_TOPO: ' + empatadas.map((c) => c.nome).join(' ') + ' com o mesmo em=' + topo);
+  const es = empatadas[0];
+  const faltam = ['md5', 'bytes'].filter((k) => !es.ar || es.ar[k] === undefined || es.ar[k] === null);
+  if (faltam.length) {
+    throw new Error('ABORTA_REGUA_CAMPO_NAO_DECLARADO: ' + es.nome + ' nao declara ar.' + faltam.join(', ar.')
+      + ' — campos de topo lidos: ' + (es.campos || []).join(','));
+  }
+  return es;
+}
+
+function le_regua_do_disco() {
+  if (!existsSync(EV_REGUA)) throw new Error('ABORTA_REGUA_SEM_DIRECTORIO: ' + EV_REGUA);
+  const nomes = readdirSync(EV_REGUA).filter((f) => f.startsWith(FAM_REGUA) && f.endsWith('.json'));
+  const candidatos = nomes.map((f) => {
+    let j = null, erro = null;
+    try { j = JSON.parse(readFileSync(`${EV_REGUA}/${f}`, 'utf8')); } catch (e) { erro = String((e && e.message) || e).slice(0, 60); }
+    return { nome: f, em: j ? j.em : undefined, ar: j ? j.ar : undefined, campos: j ? Object.keys(j) : [], erro };
+  });
+  const es = escolhe_mais_novo(candidatos);
+  return {
+    familia: FAM_REGUA, directora_do_registo: es.nome, em: es.em,
+    md5: es.ar.md5, bytes: es.ar.bytes, directora: es.ar.directora || null,
+    registos_na_familia: nomes.length, sem_carimbo_legivel: candidatos.filter((c) => !c.em).map((c) => c.nome),
+  };
+}
+
+if (process.argv.includes('--fixtures')) {
+  const K = (c) => ({ nome: c.nome, em: c.em, ar: c.ar, campos: c.campos || [] });
+  const t = new Date('2026-11-26T17:04:03.062Z').toISOString();
+  const tres = [K({ nome: 'mais-velho.json', em: '2026-11-25T09:00:00.000Z', ar: { md5: 'mmm', bytes: 11 } }),
+    K({ nome: 'mais-novo.json', em: t, ar: { md5: 'nnn', bytes: 22 } }),
+    K({ nome: 'meio.json', em: '2026-11-26T10:00:00.000Z', ar: { md5: 'ooo', bytes: 33 } })];
+  const casos = [];
+  const mede = (nome, acao, exige) => {
+    let out;
+    try { out = { verde: true, valor: acao() }; } catch (e) { out = { verde: false, erro: String((e && e.message) || e) }; }
+    casos.push({ nome, passa: !!exige(out), dito: out.verde ? JSON.stringify(out.valor) : out.erro.slice(0, 84) });
+  };
+  mede('o_mais_novo_dos_tres_e_escolhido_pelo_carimbo', () => escolhe_mais_novo(tres).ar.md5,
+    (o) => o.verde && o.valor === 'nnn');
+  mede('carimbo ilegivel nao apaga_um_registo_legivel', () => escolhe_mais_novo([K({ nome: 'mudo.json', em: 'ontem', ar: tres[1].ar }), tres[1]]).nome,
+    (o) => o.verde && o.valor === 'mais-novo.json');
+  mede('empatada_no_topo_aborta_e_imprime_os_dois_nomes', () => escolhe_mais_novo([tres[1], K({ nome: 'gémea.json', em: t, ar: tres[1].ar })]),
+    (o) => !o.verde && o.erro.startsWith('ABORTA_REGUA_EMPATE_NO_TOPO') && o.erro.includes('mais-novo.json') && o.erro.includes('gémea.json'));
+  mede('familia_vazia_aborta_com_a_contagem_lida', () => escolhe_mais_novo([]),
+    (o) => !o.verde && o.erro.startsWith('ABORTA_REGUA_SEM_CARIMBO_LEGIVEL') && o.erro.includes('0 ficheiros'));
+  mede('so_carimbos_ilegiveis_aborta_e_nomeia_os_ficheiros', () => escolhe_mais_novo([K({ nome: 'x.json', em: 'ontem', ar: tres[1].ar }), K({ nome: 'y.json', ar: tres[1].ar })]),
+    (o) => !o.verde && o.erro.includes('2 ficheiros') && o.erro.includes('x.json') && o.erro.includes('y.json'));
+  mede('registo_sem_o_bloco_ar_aborta_com_os_campos_lidos', () => escolhe_mais_novo([K({ nome: 'z.json', em: '2026-11-26T18:00:00.000Z', campos: ['em', 'emissor', 'veredito'] })]),
+    (o) => !o.verde && o.erro.startsWith('ABORTA_REGUA_CAMPO_NAO_DECLARADO') && o.erro.includes('ar.md5') && o.erro.includes('ar.bytes') && o.erro.includes('veredito'));
+  mede('md5_declarado_sem_bytes_aborta_so_pela_falta_do_bytes', () => escolhe_mais_novo([K({ nome: 'w.json', em: '2026-11-26T18:00:00.000Z', ar: { md5: 'so' } })]),
+    (o) => !o.verde && o.erro.includes('ar.bytes') && !o.erro.includes('ar.md5'));
+  mede('a_regua_do_disco_resolve_num_ar_de_32_hex', () => le_regua_do_disco(),
+    (o) => o.verde && /^[0-9a-f]{32}$/.test(o.valor.md5) && Number.isInteger(o.valor.bytes) && o.valor.bytes > 0 && o.valor.registos_na_familia >= 1);
+  const ruins = casos.filter((c) => !c.passa);
+  for (const c of casos) console.log(`  ${c.passa ? 'ok    ' : 'FALHA '} ${c.nome} :: ${c.dito}`);
+  console.log('AH2V_REGUA_FIXURAS ' + (casos.length - ruins.length) + '/' + casos.length);
+  console.log(ruins.length ? 'AH2V_REGUA_FIXURAS_VERMELHO' : 'AH2V_REGUA_FIXURAS_OK');
+  process.exit(ruins.length ? 1 : 0);
+}
+
+if (process.argv.includes('--regra')) {
+  const r = le_regua_do_disco();
+  const txt = await (await fetch(URL_APP, { headers: { 'Cache-Control': 'no-cache' } })).text();
+  const medido = { md5: createHash('md5').update(txt).digest('hex'), bytes: Buffer.byteLength(txt, 'utf8') };
+  console.log('registo_lido=' + r.directora_do_registo + ' em=' + r.em + ' familia=' + r.familia + ' registos_na_familia=' + r.registos_na_familia + ' sem_carimbo=' + JSON.stringify(r.sem_carimbo_legivel));
+  console.log('registo=md5 ' + r.md5 + ' bytes ' + r.bytes + ' directora ' + r.directora);
+  console.log('ar_medido=md5 ' + medido.md5 + ' bytes ' + medido.bytes);
+  console.log('bate_md5=' + (medido.md5 === r.md5) + ' bate_bytes=' + (medido.bytes === r.bytes));
+  console.log(medido.md5 === r.md5 ? 'AH2V_REGUA_LIDA_OK' : 'AH2V_REGUA_DIVERGE_DO_AR');
+  process.exit(medido.md5 === r.md5 ? 0 : 1);
+}
+
+const REGUA = le_regua_do_disco();
+
 if (existsSync(OUT)) throw new Error('ABORTA: ' + OUT + ' existe — rode com outro rótulo');
 if (existsSync(PERFIL)) rmSync(PERFIL, { recursive: true, force: true, maxRetries: 3, retryDelay: 300 });
 mkdirSync(PERFIL, { recursive: true });
 
 const S = JSON.parse(readFileSync(`${DIR}/ah2-sessions.json`, 'utf8'));
 const shellTxt = await (await fetch(URL_APP, { headers: { 'Cache-Control': 'no-cache' } })).text();
-const regua = JSON.parse(readFileSync(`${DIR}/bfr-conecta/worker-deploy-v123-pdfs/esperado-v123.json`, 'utf8'));
 const ANON = shellTxt.match(/SUPABASE_PUBLISHABLE_KEY\s*=\s*["'`]([^"'`]+)["'`]/)[1];
 
 // mapa declarado, lido do ar
@@ -184,13 +278,13 @@ const MEDIR = `(async () => {
   return { painel: alvo, ms, controles: ctl.length, nos: el.querySelectorAll('*').length, tap: taps.length, fonte: folhas.length, cortados: cortados.length, estouro_h: estouro, ...REGUA };
 })()`;
 
-const out = { ciclo: 'AH-2-V', em: new Date().toISOString(), tetos: { boot_s: 75, estabilizacao_ms: 6000, cdp_timeout_ms: 25000, praga_s: 470, watchdog_s: 560 }, papeis: PAPEIS, bandas: BANDAS.map((b) => b.nome), url: URL_APP, md5_shell: createHash('md5').update(shellTxt).digest('hex'), mapa_declarado: Object.fromEntries(Object.entries(MAPA).map(([k, v]) => [k, v.length])), traducao_lida_do_bundle: exprTraducao.slice(0, 220), stages: {} };
+const out = { ciclo: 'AH-2-V', em: new Date().toISOString(), tetos: { boot_s: 75, estabilizacao_ms: 6000, cdp_timeout_ms: 25000, praga_s: 470, watchdog_s: 560 }, papeis: PAPEIS, bandas: BANDAS.map((b) => b.nome), url: URL_APP, md5_shell: createHash('md5').update(shellTxt).digest('hex'), regua_lida_de: { familia: REGUA.familia, registo: REGUA.directora_do_registo, em: REGUA.em, md5: REGUA.md5, bytes: REGUA.bytes, directora: REGUA.directora, registos_na_familia: REGUA.registos_na_familia, sem_carimbo_legivel: REGUA.sem_carimbo_legivel }, mapa_declarado: Object.fromEntries(Object.entries(MAPA).map(([k, v]) => [k, v.length])), traducao_lida_do_bundle: exprTraducao.slice(0, 220), stages: {} };
 const falhas = []; let portoes = 0;
 const gate = (n, d, e) => { portoes++; const ok = JSON.stringify(d) === JSON.stringify(e); if (!ok) falhas.push(`${n} | dado=${JSON.stringify(d)} | esperado=${JSON.stringify(e)}`); console.log(`${ok ? 'VERDE' : 'VERMELHO'}  ${n}`); return ok; };
 
 await send('Page.enable'); await send('Runtime.enable'); await send('Log.enable'); await send('Page.bringToFront');
 const relevantes = () => consoleErros.filter((t) => !/favicon|net::ERR_(404|503)|Google API|installTrigger|Service-Worker|Failed to load resource|WebSocket|chunkloaderror/i.test(t));
-gate('o ar varrido é a v123 da régua', createHash('md5').update(shellTxt).digest('hex'), regua.htmlMd5);
+gate('o ar varrido e o ar do registo mais novo da familia do mapa', { md5: createHash('md5').update(shellTxt).digest('hex'), bytes: Buffer.byteLength(shellTxt, 'utf8') }, { md5: REGUA.md5, bytes: REGUA.bytes });
 gate('mapa declarado lido do bundle tem as 14 chaves', Object.keys(MAPA).length, 14);
 gate('a tradução de rótulos está no bundle (developer/pedagogical/social_work)', ['developer', 'pedagogical', 'social_work'].every((r) => exprTraducao.includes(r)), true);
 gate('secretary declarado = as 11 do ciclo AH-1 (duas fontes batem)', MAPA.secretary, ['inicio', 'secretaria', 'comunicados', 'escola-historia', 'notificacoes', 'conteudos', 'comunicacao', 'chat-interno', 'coordenacao-chat', 'jogos-escolares', 'fotos']);
