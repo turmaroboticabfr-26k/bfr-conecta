@@ -109,6 +109,7 @@ say('chars_cru=' + bruto.length + ' chars_varridos=' + varrido.length + ' chars_
 say('QUADRO_DA_LINHA ' + JSON.stringify(q));
 say('CANDIDATOS_ADJACENCIA=' + achados.length + ' HISTOGRAMA=' + JSON.stringify(hist) + ' POSICOES_DISTINTAS=' + posDistintas + ' se_fosse_por_agulha=' + porAgulhaVelha);
 if (ocorrencias.length > 0 && posDistintas !== ocorrencias.length) throw new Error('ABORTA: a localizacao por ocorrencia deu ' + posDistintas + ' posicoes para ' + ocorrencias.length + ' ocorrencias, e sem posicao por linha o onde nao e medido');
+say('TABELAS_DECLARADAS [ADJ OFENSOR] · cada fila e uma medida sua, declaracao lida pela regua de cifras em duo do p168');
 ocorrencias.forEach((o, k) => {
   const lc = linhaEColuna(varrido, o.i);
   say('ADJ #' + (k + 1) + '/' + ocorrencias.length + ' [' + o.g + '] x' + hist[o.g] + ' linha=' + lc.linha + ' quadro_linha=' + (q.linha_e_do_ficheiro ? 'ficheiro' : 'texto_varrido') + ' coluna_no_texto_varrido=' + lc.coluna + ' char_varrido=' + o.i + ' :: ' + JSON.stringify(nomeiaGlifos(varrido.slice(Math.max(0, o.i - 40), o.i + 40))));

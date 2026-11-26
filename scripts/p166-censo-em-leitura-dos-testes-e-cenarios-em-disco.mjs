@@ -91,9 +91,14 @@ const ALEGADO_PORTOES_20 = numeroDepoisDe(C20, 'rm14-suite.mjs', 'de PEN-20');
 const DESFECHOS_20 = [...new Set([...C20.texto.matchAll(/\bRM14_SUITE_(?:VERDE|VERMELHA)\b/g)].map((x) => x[0]))];
 if (DESFECHOS_20.length !== 1) throw new Error('ABORTA: a celula PEN-20 devolve ' + DESFECHOS_20.length + ' literais de desfecho, espero 1');
 const ALEGADO_DESFECHO_20 = DESFECHOS_20[0];
-const PELOS_15 = [...C15.texto.matchAll(/\bpelo\s+([A-Za-z0-9-]+)/g)].map((x) => x[1]);
-if (PELOS_15.length !== 1) throw new Error('ABORTA: em PEN-15 a agulha «pelo <ciclo>» resolve para ' + PELOS_15.length + ' candidatos, espero 1');
-const ALEGADO_CICLO_15 = PELOS_15[0];
+// A celula PEN-15 apoia-se em fichas citadas por caminho. A agulha antiga era «pelo <token>» — uma expressao da
+// lingua, nao uma forma — e por isso um adendo em prosa portuguesa partida ou abortava o censo (foi o que aconteceu
+// em sm78a, com dois candidatos) ou apanhava a palavra errada. Fica a forma: so vale um caminho de ficha citado,
+// e cada caminho tem de estar no indice.
+const CITAS_DE_DISCO_15 = [...new Set([...C15.texto.matchAll(/(?:docs|evidence)\/[A-Za-z0-9_.-]+\.json/g)].map((x) => x[0]))];
+const CITAS_15_FORA_DO_INDICE = CITAS_DE_DISCO_15.filter((p) => !VERSIONADOS.includes(p));
+const FIX_CITA_15_FABRICADA = 'evidence/c7-ficha-que-nao-existe-para-provar-a-regua.json';
+const FIX_CITA_15_FORA = [FIX_CITA_15_FABRICADA].filter((p) => !VERSIONADOS.includes(p)).length;
 const ALEGADO_RMS_21 = [...new Set([...C21.texto.matchAll(/RM-[\d.]+/g)].map((x) => x[0]))];
 if (ALEGADO_RMS_21.length === 0) throw new Error('ABORTA: a celula PEN-21 nao nomeia nenhum RM');
 const ALEGADO_NUNCA_EXECUTADO_21 = /nunca\s+executado/i.test(C21.texto);
@@ -227,29 +232,110 @@ const HARNESS = [
 const AGREGADOR = /^scripts\/.*suite.*\.mjs$/;
 const AGREGADOR_MEDIDO = { pecas_no_indice: VERSIONADOS.filter((n) => AGREGADOR.test(n)), fichas_no_indice: FICHAS_RM14,
   no_fixture: ['scripts/x-suite.mjs', 'docs/nota.md'].filter((n) => AGREGADOR.test(n)).length };
+// Esta peca e o instrumento que procura as cinco palavras: uma mencao na minha propria lista nao e uso de
+// framework, e a agulha. O marcador retira da classe de peca apenas as linhas que o carregam, e o fixture
+// prova que a mesma linha noutro sitio continua a contar. As linhas marcadas saem no artefacto, nome a nome.
+const PALAVRAS_FRAMEWORK = ['playwright', 'vitest', 'jest', 'mocha', 'cypress']; //AGULHA-DECLARADA
+const MARCO_AGULHA = 'AGULHA-DECLARADA';
 const RE_DE_CODIGO = /^(scripts|sql|app|functions|worker)\//;
-const PALAVRAS_FRAMEWORK = ['playwright', 'vitest', 'jest', 'mocha', 'cypress'];
+const GLUES_IMPORTE = ['from ', 'require(']; //AGULHA-DECLARADA
+const API_RUNNER = ['describe', 'beforeEach', 'afterEach', 'expect']; //AGULHA-DECLARADA
 function grepVersionado(args) {
   const r = gitRaw(['grep', '-l', '-z'].concat(args));
   if (r.status !== 0 && r.status !== 1) throw new Error('ABORTA: git grep ' + args.join(' ') + ' devolveu ' + r.status + ': ' + String(r.stderr || '').slice(0, 140));
   return r.status === 1 ? [] : zeroACada(r.stdout);
 }
+function grepVersionadoLinhas(args) {
+  const r = gitRaw(['grep', '-n'].concat(args));
+  if (r.status !== 0 && r.status !== 1) throw new Error('ABORTA: git grep -n ' + args.join(' ') + ' devolveu ' + r.status + ': ' + String(r.stderr || '').slice(0, 140));
+  if (r.status === 1) return [];
+  return String(r.stdout).split('\n').filter(Boolean).map((l) => {
+    const a = l.indexOf(':'), b = l.indexOf(':', a + 1);
+    const n = a < 1 || b < 0 ? NaN : Number(l.slice(a + 1, b));
+    if (!Number.isInteger(n) || n < 1) throw new Error('ABORTA: linha de git grep -n fora do formato nome:numero:conteudo: ' + l.slice(0, 90));
+    return { nome: l.slice(0, a), n, linha: l.slice(b + 1) };
+  });
+}
 const delimitada = (p) => '(^|[^a-z0-9])' + p + '([^a-z0-9]|$)';
+const ePeca = (o) => RE_DE_CODIGO.test(o.nome);
+const eAgulhaDeclarada = (o) => String(o.linha).indexOf(MARCO_AGULHA) >= 0;
+const contaPecaReal = (o) => ePeca(o) && !eAgulhaDeclarada(o);
+const nomesDe = (ocs) => [...new Set(ocs.map((o) => o.nome))].sort();
+function tokenDaPalavra(linha, palavra) {
+  const i = String(linha).toLowerCase().indexOf(String(palavra).toLowerCase());
+  if (i < 0) throw new Error('ABORTA: token pedido numa linha sem a palavra ' + palavra + ': ' + String(linha).slice(0, 90));
+  const fim = i + palavra.length;
+  let a = i, b = fim;
+  while (a > 0 && /\w/.test(linha[a - 1])) a -= 1;
+  while (b < linha.length && /\w/.test(linha[b])) b += 1;
+  return linha.slice(a, b);
+}
 const FRAMEWORKS = PALAVRAS_FRAMEWORK.map((palavra) => {
-  const crua = grepVersionado(['-i', palavra]);
-  const limpa = grepVersionado(['-i', '-E', delimitada(palavra)]);
-  return { palavra, fichas_crua: crua.length, fichas_delimitada: limpa.length,
-    em_peca_crua: crua.filter((n) => RE_DE_CODIGO.test(n)), em_peca_delimitada: limpa.filter((n) => RE_DE_CODIGO.test(n)), nomes: crua };
+  const ocCrua = grepVersionadoLinhas(['-i', palavra]);
+  const ocDel = grepVersionadoLinhas(['-i', '-E', delimitada(palavra)]);
+  const delinha = (l) => new RegExp(delimitada(palavra), 'i').test(String(l));
+  const soCrua = ocCrua.filter((o) => !delinha(o.linha));
+  return {
+    palavra,
+    fichas_crua: nomesDe(ocCrua).length,
+    fichas_delimitada: nomesDe(ocDel).length,
+    em_peca_crua: nomesDe(ocCrua.filter(ePeca)),
+    em_peca_delimitada: nomesDe(ocDel.filter(contaPecaReal)),
+    em_peca_delimitada_bruta: nomesDe(ocDel.filter(ePeca)),
+    agulhas_excluidas: ocDel.filter((o) => ePeca(o) && eAgulhaDeclarada(o)).map((o) => ({ nome: o.nome, n: o.n, palavra })),
+    nomes: nomesDe(ocCrua),
+    nomes_delimitada: nomesDe(ocDel),
+    nomes_delimitada_por_linha_js: nomesDe(ocCrua.filter((o) => delinha(o.linha))),
+    so_crua: soCrua.map((o) => {
+      const token = tokenDaPalavra(o.linha, palavra);
+      return { nome: o.nome, n: o.n, token, linha_de_agulha: eAgulhaDeclarada(o), maior_que_a_palavra: token.length > palavra.length };
+    }),
+  };
 });
-// O falso positivo da busca crua tem de ser nomeado pela linha onde vive, nao por opiniao minha.
-const MOCHA_CRUA = FRAMEWORKS.find((f) => f.palavra === 'mocha').em_peca_crua;
-const LINHA_MOCHA = MOCHA_CRUA.length === 1 ? leTexto(MOCHA_CRUA[0]).split('\n').find((l) => /mocha/i.test(l)) : null;
-if (MOCHA_CRUA.length === 1 && !LINHA_MOCHA) throw new Error('ABORTA: mocha casou em ' + MOCHA_CRUA[0] + ' mas nenhuma linha contem a palavra');
-const IDENTIFICADOR_MOCHA = LINHA_MOCHA ? ((LINHA_MOCHA.match(/const (\w*[mM]o[cC]ha\w*)/) || [])[1] || 'sem_identificador') : 'sem_ficha';
-// Os dois sentidos da mesma regua em fixture: a palavra sozinha dispara nas duas, a substring dentro de um
-// identificador so dispara na crua — que e exactamente o caso que o repo tem.
-const FIX_LINHAS_MOCHA = ['const mocha = 1;', 'const comoChaves = (L) => 1;'].map((l) => ({
-  crua: /mocha/i.test(l), delimitada: new RegExp(delimitada('mocha'), 'i').test(l) }));
+const SO_CRUA_TODAS = FRAMEWORKS.flatMap((f) => f.so_crua.map((x) => ({ palavra: f.palavra, ...x })));
+const SUBSTRINGS_EM_PECA = SO_CRUA_TODAS.filter((x) => ePeca(x) && !x.linha_de_agulha);
+const FIX_EXCLUSAO_AGULHA = [
+  { rotulo: 'minha_linha_de_agulha', o: { nome: PECA, n: 1, linha: 'const P = [' + JSON.stringify(PALAVRAS_FRAMEWORK[0]) + ']; // ' + MARCO_AGULHA }, deve_contar: false },
+  { rotulo: 'mesma_linha_em_peca_sem_marcador', o: { nome: 'scripts/peca_fabricada_para_a_regua.mjs', n: 1, linha: 'const P = [' + JSON.stringify(PALAVRAS_FRAMEWORK[0]) + '];' }, deve_contar: true },
+].map((f) => ({ rotulo: f.rotulo, medido: contaPecaReal(f.o), bate: contaPecaReal(f.o) === f.deve_contar }));
+// Os dois sentidos da mesma regua, compostos em tempo de execucao para que nenhuma linha desta peca seja
+// ela propria o caso que a regua procura: a palavra sozinha e delimitada, a substring dentro dum
+// identificador so casca na busca crua e tem de ter token mais longo que a palavra.
+const FIX_LINHAS_SO_CRUA = ['const ' + PALAVRAS_FRAMEWORK[0] + ' = 1;', 'const como' + PALAVRAS_FRAMEWORK[0] + 's = 1;'].map((l) => {
+  const token = tokenDaPalavra(l, PALAVRAS_FRAMEWORK[0]);
+  return { crua: new RegExp(PALAVRAS_FRAMEWORK[0], 'i').test(l), delimitada: new RegExp(delimitada(PALAVRAS_FRAMEWORK[0]), 'i').test(l),
+    token, maior: token.length > PALAVRAS_FRAMEWORK[0].length };
+});
+const PECAS_NO_INDICE = VERSIONADOS.filter((n) => RE_DE_CODIGO.test(n));
+const LINHAS_DE_PECA = new Map(PECAS_NO_INDICE.map((n) => {
+  if (!existsSync(join(REPO, n))) throw new Error('ABORTA: ' + n + ' esta no indice mas nao em disco');
+  return [n, readFileSync(join(REPO, n), 'utf8').split('\n')];
+}));
+const RE_IMPORTE = new RegExp('(from|require)[\\s(]*[\'"](' + PALAVRAS_FRAMEWORK.join('|') + ')[\'"]', 'i');
+const RE_API_RUNNER = new RegExp('(^|[^a-z0-9])(' + API_RUNNER.join('|') + ')[ \\t]*\\(', 'i');
+function ocorrenciasEmPecas(re) {
+  const saida = [];
+  for (const [nome, linhas] of LINHAS_DE_PECA) {
+    for (let i = 0; i < linhas.length; i += 1) {
+      if (re.test(linhas[i]) && linhas[i].indexOf(MARCO_AGULHA) < 0) saida.push({ nome, n: i + 1 });
+    }
+  }
+  return saida;
+}
+const SEM_IMPORTE_EM_PECA = ocorrenciasEmPecas(RE_IMPORTE);
+const SEM_API_EM_PECA = ocorrenciasEmPecas(RE_API_RUNNER);
+// Cada forma de harness tem de ter um positivo construivel: as cinco linhas abaixo passam pelos dois
+// padroes reais e so as duas primeiras devessem cair.
+const FIX_PADROES_SEM_HARNESS = [
+  { forma: 'import_de', linha: 'import { test } ' + GLUES_IMPORTE[0] + JSON.stringify(PALAVRAS_FRAMEWORK[0]) + ';', esperado: [true, false] },
+  { forma: 'require_de', linha: 'const su = ' + GLUES_IMPORTE[1] + JSON.stringify(PALAVRAS_FRAMEWORK[1]) + ');', esperado: [true, false] },
+  { forma: 'runner_describe', linha: API_RUNNER[0] + '(' + JSON.stringify('cenario') + ', () => {});', esperado: [false, true] },
+  { forma: 'runner_expect', linha: API_RUNNER[3] + '(x).toBe(1);', esperado: [false, true] },
+  { forma: 'portao_local_deste_repo', linha: 'gate(' + JSON.stringify('nome') + ', medido, esperado);', esperado: [false, false] },
+].map((f) => {
+  const medido = [RE_IMPORTE.test(f.linha), RE_API_RUNNER.test(f.linha)];
+  return { forma: f.forma, medido, esperado: f.esperado, bate: medido[0] === f.esperado[0] && medido[1] === f.esperado[1] };
+});
 
 // ---- PEN-21: familia de carga -----------------------------------------------------------------------
 const CLASSES_CARGA = [
@@ -317,9 +403,26 @@ portao('emissor_bytes_sao_bytes_do_ficheiro_e_nao_caracteres_da_string', [EMISSO
 //FIM-PEN20-COMUM
 portao('nao_ha_harness_de_teste_no_indice_e_a_regua_dispara_em_nome_fabricado', [HARNESS.map((x) => x.no_indice.length), HARNESS.map((x) => x.no_fixture)], [[0, 0], [1, 1]]);
 portao('nenhum_agregador_de_suite_no_indice_e_o_disparador_tem_fixture', [AGREGADOR_MEDIDO.pecas_no_indice.length, AGREGADOR_MEDIDO.fichas_no_indice.length, AGREGADOR_MEDIDO.no_fixture], [0, 4, 1]);
-portao('nenhuma_mencao_delimitada_de_framework_de_teste_vive_em_peca', FRAMEWORKS.map((f) => f.em_peca_delimitada.length), [0, 0, 0, 0, 0]);
-portao('a_mencao_crua_de_framework_e_de_prosa_e_o_unico_caso_em_peca_e_um_falso_positivo_de_substring', [FRAMEWORKS.map((f) => f.fichas_crua), FRAMEWORKS.map((f) => f.fichas_delimitada), MOCHA_CRUA.length, IDENTIFICADOR_MOCHA], [[9, 9, 0, 1, 0], [9, 9, 0, 0, 0], 1, 'comoChaves']);
-portao('o_falso_positivo_de_substring_tem_fixture_nos_dois_sentidos', FIX_LINHAS_MOCHA, [{ crua: true, delimitada: true }, { crua: true, delimitada: false }]);
+portao('nenhuma_mencao_delimitada_de_framework_vive_em_peca_e_a_unica_linha_retirada_e_a_lista_de_agulhas_deste_instrumento',
+  [FRAMEWORKS.map((f) => f.em_peca_delimitada.length),
+   FRAMEWORKS.map((f) => JSON.stringify(f.em_peca_delimitada_bruta) === JSON.stringify(nomesDe(f.agulhas_excluidas))),
+   FRAMEWORKS.every((f) => f.agulhas_excluidas.length > 0 && f.agulhas_excluidas.every((x) => x.nome === PECA))],
+  [[0, 0, 0, 0, 0], [true, true, true, true, true], true]);
+portao('a_exclusao_das_minhas_linhas_de_agulha_dispara_em_dos_sentidos',
+  [FIX_EXCLUSAO_AGULHA.map((x) => x.medido), FIX_EXCLUSAO_AGULHA.every((x) => x.bate)], [[false, true], true]);
+portao('a_regex_js_de_linha_e_o_mesmo_conjunto_de_ficheiros_que_o_git_grep_delimitado',
+  FRAMEWORKS.map((f) => JSON.stringify(f.nomes_delimitada) === JSON.stringify(f.nomes_delimitada_por_linha_js)), [true, true, true, true, true]);
+portao('cada_ocorrencia_apenas_crua_vive_dentro_de_um_identificador_mais_longo_que_a_palavra',
+  [SO_CRUA_TODAS.filter((x) => !x.linha_de_agulha).every((x) => x.maior_que_a_palavra), SO_CRUA_TODAS.length > 0,
+   SUBSTRINGS_EM_PECA.every((x) => x.nome !== PECA)], [true, true, true]);
+portao('nenhuma_peca_importa_um_pacote_de_framework', [SEM_IMPORTE_EM_PECA.length, LINHAS_DE_PECA.size > 0], [0, true]);
+portao('nenhuma_peca_chama_a_api_global_de_um_runner', SEM_API_EM_PECA.length, 0);
+portao('o_fixture_de_harness_tem_as_tres_formas_e_bate_no_seu_padrao',
+  [FIX_PADROES_SEM_HARNESS.every((f) => f.bate),
+   [[true, false], [false, true], [false, false]].every((p) => FIX_PADROES_SEM_HARNESS.some((f) => f.medido[0] === p[0] && f.medido[1] === p[1]))],
+  [true, true]);
+portao('o_falso_positivo_de_substring_tem_fixture_nos_dois_sentidos',
+  FIX_LINHAS_SO_CRUA.map((x) => [x.crua, x.delimitada, x.maior]), [[true, true, false], [true, false, true]]);
 portao('as_tres_pecas_de_suite_e_jornada_estao_fora_do_indice_por_linha_propria_do_gitignore', LINHAS_DAS_TRES, [['scripts/c7-gap-fix-prova.mjs', 'IGNORADO', 38], ['scripts/c7-2-jornada-jwt.mjs', 'IGNORADO', 39], ['scripts/rm14-suite.mjs', 'IGNORADO', 69]]);
 portao('nenhum_padrao_nominal_de_peca_no_gitignore_aponta_para_um_caminho_inexistente', [IGN_NOMINAIS.length, IGN_NOMINAIS_MEDIDOS.filter((x) => !x.em_disco).map((x) => x.padrao), IGN_NOMINAIS_MEDIDOS.filter((x) => x.classe !== 'IGNORADO').map((x) => x.padrao)], [13, [], []]);
 portao('a_suite_minima_registra_tantos_portoes_quantos_a_celula_pen20_afirma', [ALEGADO_PORTOES_20, FICHA_RM14.portoes], [31, 31]);
@@ -337,7 +440,7 @@ portao('as_fichas_e2e_com_instante_sao_todas_anteriores_a_versao_atual_do_ar', [
 portao('a_jornada_c7_registra_doze_testes_cinco_verdes_e_sete_vermelhos', [CONTAGEM_POR_CLASSE.VERDE, CONTAGEM_POR_CLASSE.VERMELHO, FICHA_C7.portoes], [5, 7, 12]);
 portao('o_resumo_bate_com_a_lista_de_testes_campo_a_campo', [RESUMO_C7.portoes, RESUMO_C7.sucessos, RESUMO_C7.falhas, FICHA_C7.falhas.length], [12, 5, 7, 7]);
 portao('nenhum_teste_da_jornada_fica_sem_classe_de_estado', [CONTAGEM_POR_CLASSE.SEM_CLASSE, TESTES_C7.filter((t) => t.ok === 'VERDE' || t.ok === 'VERMELHO').length], [0, 12]);
-portao('a_celula_pen15_cita_um_ciclo_cujas_fichas_estao_no_indice', [ALEGADO_CICLO_15, FICHAS_JORNADA_V.filter((n) => n.startsWith('docs/c7-')).length], ['C7', 2]);
+portao('cada_ficha_de_disco_citada_na_celula_pen15_esta_no_indice_a_celula_cita_alguma_e_a_rua_fabricada_cai_fora', [CITAS_15_FORA_DO_INDICE.length, CITAS_DE_DISCO_15.length > 0, FIX_CITA_15_FORA], [0, true, 1]);
 portao('as_cinco_mesas_do_cenario_sao_lidas_do_produtor_e_o_nome_fabricado_nao_casa', [MESAS_C7.length, MESAS_C7.every((m) => fonte.c7j.includes('/rest/v1/' + m)), FIX_MESA_FORA.every((m) => fonte.c7j.includes('/rest/v1/' + m))], [5, true, false]);
 portao('os_tres_tokens_de_papel_estao_registrados_na_ficha', TOKENS_C7, ['T0_DIR_TOKEN', 'T0_COORD_TOKEN', 'T0_SECR_TOKEN']);
 portao('as_tres_lacunas_registradas_tem_prova_de_correcao_e_dos_cinco_testes_vermelhos_duas_falhas_ficam_sem_prova', [GAP_IDS_REGISTRADOS, GAP_IDS_COM_PROVA, TESTES_COM_PROVA, FALHAS_COM_PROVA, FALHAS_SEM_PROVA, NAO_EXEC_C7], [['1', '2', '3'], ['1', '2', '3'], ['T1', 'T2', 'T4'], 5, ['T3:1', 'T5:1'], ['T3', 'T5']]);
@@ -370,7 +473,7 @@ const out = {
   indices: { versionados: VERSIONADOS.length, nao_rastreados: NAO_RASTREADOS.length, ignorados: IGNORADOS.length },
   ar_atual: { diario: DIARIO_TOPO.eleito.caminho, versao: DIARIO.version, data: DIARIO.data, numero: NUM_AR },
   celulas_lidas: {
-    PEN_15: { linha: C15.n, ciclo_citado: ALEGADO_CICLO_15 },
+    PEN_15: { linha: C15.n, fichas_citadas: CITAS_DE_DISCO_15, fora_do_indice: CITAS_15_FORA_DO_INDICE },
     PEN_20: { linha: C20.n, portoes_alegados: ALEGADO_PORTOES_20, desfecho_alegado: ALEGADO_DESFECHO_20 },
     PEN_21: { linha: C21.n, rms: ALEGADO_RMS_21, alega_nunca_executado: ALEGADO_NUNCA_EXECUTADO_21 },
   },
@@ -381,7 +484,11 @@ const out = {
     harness: HARNESS,
     agregador: AGREGADOR_MEDIDO,
     frameworks: FRAMEWORKS,
-    linha_onde_mocha_casa: LINHA_MOCHA ? LINHA_MOCHA.trim().slice(0, 120) : 'sem_caso',
+    substrings_em_peca: SUBSTRINGS_EM_PECA,
+    agulhas_excluidas: FRAMEWORKS.flatMap((f) => f.agulhas_excluidas),
+    sem_importe_em_peca: SEM_IMPORTE_EM_PECA, sem_api_em_peca: SEM_API_EM_PECA,
+    pecas_lidas_para_os_padroes: LINHAS_DE_PECA.size, fixture_de_harness: FIX_PADROES_SEM_HARNESS,
+    exclusao_de_agulha: FIX_EXCLUSAO_AGULHA,
     gitignore_nominal: IGN_NOMINAIS_MEDIDOS,
     ficha: { caminho: RM14_TOPO.eleito.caminho, grupo_mesmo_instante: RM14_TOPO.grupo.map((x) => x.caminho), em: FICHA_RM14.em,
       idade_dias: idadeEmDias(FICHA_RM14.em), portoes: FICHA_RM14.portoes, falhas: FICHA_RM14.falhas,
@@ -410,7 +517,8 @@ const out = {
     celula: { alega_nunca_executado: ALEGADO_NUNCA_EXECUTADO_21, rms: ALEGADO_RMS_21 },
   },
   o_que_prova: [
-    'que nao ha harness de teste no indice (package.json, *.test.*, *.spec.*) e que os cinco nomes de framework so aparecem em prosa, com o unico caso em peca explicado por substring',
+    'que nao ha harness de teste no indice (package.json, *.test.*, *.spec.*) e que nenhuma peca de codigo importa um pacote de framework nem chama a API global dum runner',
+    'que as unicas mencoes delimitadas de framework em peca sao a lista de agulhas deste instrumento, e que a diferenca entre a busca crua e a delimitada so existe num nome e toda ela vive dentro de um identificador mais longo',
     'quantos portoes a suite do RM-1.4 registou na ficha mais recente, se esse numero e o mesmo que a celula PEN-20 afirma, e contra que numero de versao ela apontou',
     'que a contagem estatica de sitios de chamada de portao nao e a contagem de runtime em ambos os sentidos: o rm14 tem menos sitios que portoes e o C7 tem mais',
     'que as tres pecas de suite e jornada estao fora do indice por linha nominal propria do .gitignore e que os treze padroes nominais de peca apontam todos para ficheiro existente',
@@ -420,12 +528,15 @@ const out = {
     'que nenhuma ficha e2e traz contagem de portoes e que nove das dezasseis nem sequer trazem instante legivel em ISO',
   ],
   o_que_NAO_prova: [
-    'que a suite do RM-1.4 passa hoje: nao a re-corri, porque ela escreve por cima de evidence/rm14-suite.json, um nome ja versionado, e porque fala com a rede; o que esta medido e a ultima ficha que existe',
+    'que a suite do RM-1.4 passa hoje: nao a re-corri, porque ela escreve por cima da sua propria ficha versionada, um nome que ja esta no indice, e porque fala com a rede; o que esta medido e a ultima ficha que existe',
     'que a jornada do C7 passa hoje: re-corre-la escreve em occurrences, supervision_requests, staff_announcements e limpa contas; isto e censo de ficha velha, nao execucao',
     'que um teste de produto e2e funcione: conto fichas e a ausencia de contagem de portoes nelas',
     'que a ausencia de instrumento de carga signifique que o produto aguenta carga: significa que nunca houve instrumento para tentar',
     'que o .gitignore deva deixar de excluir as tres pecas: isto registra o estado, nao propoe alteracao; mexer no predicado de exclusao e decisao com OK proprio',
     'nada sobre senhas, tokens ou valores de linha: as fichas ignoradas que carregam credencial foram classificadas por nome e nunca abertas por esta peca',
+    'que os padroes de ausencia de harness alcancem as pecas nao versionadas: a varredura por regex corre so sobre as pecas que estao no indice, e as tres pecas de suite e jornada estao fora dele por linha propria do .gitignore',
+    'que as contagens de mencoes por ficheiro sejam uma grandeza fixa: cada corrida deste censo escreve um artefacto que menciona os cinco nomes, por isso essas contagens crescem corrida a corrida e ficam no artefacto como medida, nunca como portao',
+    'que a unica linha de peca retirada da classe de mencoes seja esta: a exclusao e por marcador no conteudo da linha, as linhas retiradas saem nome a nome no artefacto, e cada uma delas resolve nesta peca',
   ],
   portoes: { total: G.length, falhas: falhas.length, lista: G },
   estado: falhas.length > 0 ? 'PORTAO_VERMELHO — veredito nao emitido' : 'MEDIDO',
@@ -437,7 +548,7 @@ const linhasTxt = [
   'indices versionados=' + VERSIONADOS.length + ' nao_rastreados=' + NAO_RASTREADOS.length + ' ignorados=' + IGNORADOS.length,
   'ar=' + DIARIO_TOPO.eleito.caminho + ' versao=' + DIARIO.version + ' data=' + DIARIO.data,
   'pen20 harness=' + HARNESS.map((x) => x.classe + ':' + x.no_indice.length + '/fix' + x.no_fixture).join(' ') + ' agregador_pecas=' + AGREGADOR_MEDIDO.pecas_no_indice.length + ' agregador_fichas=' + AGREGADOR_MEDIDO.fichas_no_indice.length,
-  'pen20 frameworks=' + FRAMEWORKS.map((f) => f.palavra + ':crua' + f.fichas_crua + '/delimitada' + f.fichas_delimitada + '/peca' + f.em_peca_delimitada.length).join(' ') + ' mocha_em_peca=' + MOCHA_CRUA.join(',') + ' identificador=' + IDENTIFICADOR_MOCHA,
+  'pen20 frameworks=' + FRAMEWORKS.map((f) => f.palavra + ':crua' + f.fichas_crua + '/delimitada' + f.fichas_delimitada + '/peca' + f.em_peca_delimitada.length + '/bruta' + f.em_peca_delimitada_bruta.length + '/excluidas' + f.agulhas_excluidas.length + '/soCrua' + f.so_crua.length).join(' ') + ' substring_em_peca=' + SUBSTRINGS_EM_PECA.map((x) => x.nome + ':' + x.n + '=' + x.token).join(',') + ' import=' + SEM_IMPORTE_EM_PECA.length + ' api=' + SEM_API_EM_PECA.length + ' pecas_lidas=' + LINHAS_DE_PECA.size,
   'pen20 ficha=' + RM14_TOPO.eleito.caminho + ' em=' + FICHA_RM14.em + ' idade_dias=' + idadeEmDias(FICHA_RM14.em) + ' portoes=' + FICHA_RM14.portoes + ' alegado=' + ALEGADO_PORTOES_20 + ' desfecho=' + FICHA_RM14.desfecho,
   'pen20 sitios=' + JSON.stringify(SITIOS) + ' portoes_da_ficha_c7j=' + FICHA_C7.portoes + ' amostra=' + AMOSTRA_RM14.length + '/' + FICHA_RM14.amostra_anon.tentadas,
   'pen20 alvo=' + FICHA_RM14.cache_publicada_no_sw + '(' + NUM_ALVO_RM14 + ') ar=' + DIARIO.version + '(' + NUM_AR + ') delta_versoes=' + (NUM_AR - NUM_ALVO_RM14),

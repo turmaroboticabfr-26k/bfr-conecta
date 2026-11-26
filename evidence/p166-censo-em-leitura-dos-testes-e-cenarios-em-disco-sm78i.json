@@ -1,0 +1,1938 @@
+{
+  "peca": "scripts/p166-censo-em-leitura-dos-testes-e-cenarios-em-disco.mjs",
+  "em": "2026-11-26T21:12:43.155Z",
+  "duracao_ms": 20357,
+  "emissor_bytes": 46840,
+  "emissor_chars": 46820,
+  "emissor_md5": "f01bb1c6a2e1b3250863e0977b623af9",
+  "ciclo": "SM.54",
+  "metodo": "so leitura de disco: git ls-files (versionados, nao rastreados, ignorados) e git grep sobre o indice, texto dos produtores compilado, fichas JSON em disco; 0 rede, 0 chamada ao banco, 0 escrita fora de evidence/",
+  "indices": {
+    "versionados": 3649,
+    "nao_rastreados": 606,
+    "ignorados": 5883
+  },
+  "ar_atual": {
+    "diario": "audit-publicacao-v144.json",
+    "versao": "v144c",
+    "data": "2026-11-24T17:49:11.867Z",
+    "numero": 144
+  },
+  "celulas_lidas": {
+    "PEN_15": {
+      "linha": 572,
+      "fichas_citadas": [
+        "evidence/p166-censo-em-leitura-dos-testes-e-cenarios-em-disco-sm55b.json",
+        "docs/c7-2-jornada-jwt.json",
+        "docs/c7-gap-fix-prova.json",
+        "docs/c7-3-limpeza.json"
+      ],
+      "fora_do_indice": []
+    },
+    "PEN_20": {
+      "linha": 577,
+      "portoes_alegados": 31,
+      "desfecho_alegado": "RM14_SUITE_VERDE"
+    },
+    "PEN_21": {
+      "linha": 578,
+      "rms": [
+        "RM-4.6",
+        "RM-6.4"
+      ],
+      "alega_nunca_executado": true
+    }
+  },
+  "produtores": {
+    "rm14": "scripts/rm14-suite.mjs",
+    "c7j": "scripts/c7-2-jornada-jwt.mjs",
+    "c7l": "scripts/c7-3-limpeza.mjs",
+    "gitignore": ".gitignore"
+  },
+  "produtores_lidos": [
+    {
+      "caminho": "docs/roadmap-master.md",
+      "bytes": 349357,
+      "md5": "c2927d0f89b3f2156417b678a22839cc"
+    },
+    {
+      "caminho": "scripts/rm14-suite.mjs",
+      "bytes": 14418,
+      "md5": "fffaa7723da221df1f505636b4c7502b"
+    },
+    {
+      "caminho": "scripts/c7-2-jornada-jwt.mjs",
+      "bytes": 8630,
+      "md5": "8086cdd8678a340b93c5aee9491af901"
+    },
+    {
+      "caminho": "scripts/c7-3-limpeza.mjs",
+      "bytes": 6732,
+      "md5": "266602ef2c29eec18e91d1effd274875"
+    },
+    {
+      "caminho": ".gitignore",
+      "bytes": 11239,
+      "md5": "eb7a7dc9a144cbde3c1d9bde29cd899e"
+    },
+    {
+      "caminho": "evidence/rm14-suite-pos-rm68-15-11b.json",
+      "bytes": 1144,
+      "md5": "2cacc8641cf4db3513e6c98fbd45a1b3"
+    },
+    {
+      "caminho": "audit-publicacao-v144.json",
+      "bytes": 4213,
+      "md5": "43c4d86915d01cc211d2e0d863d1b2e1"
+    },
+    {
+      "caminho": "docs/c7-2-jornada-jwt.json",
+      "bytes": 1704,
+      "md5": "4eda2f26993f0bc4c4eb1d4a39735698"
+    },
+    {
+      "caminho": "docs/c7-2-resumo-jornada.json",
+      "bytes": 2803,
+      "md5": "7052898b51f693145b4d47f59e4b0fe6"
+    },
+    {
+      "caminho": "docs/c7-gap-fix-prova.json",
+      "bytes": 291,
+      "md5": "8a70aa59be112bcdeda0492356ff4537"
+    },
+    {
+      "caminho": "docs/c7-3-limpeza.json",
+      "bytes": 560,
+      "md5": "00b058790a6bc2ff2525faaa37b59dee"
+    },
+    {
+      "caminho": "evidence/e2e2-baseline.json",
+      "bytes": 1985,
+      "md5": "1c0dfb7c71073af0ebbb1f9fc3fa4fb9"
+    },
+    {
+      "caminho": "evidence/e2e2-chat.json",
+      "bytes": 6560,
+      "md5": "69524f49e12550940ad713ed2c6a9a58"
+    },
+    {
+      "caminho": "evidence/e2e2-fixture.json",
+      "bytes": 1026,
+      "md5": "ff6c302c963f120ee6fefac7d47dade6"
+    },
+    {
+      "caminho": "evidence/e2e2-frequencia.json",
+      "bytes": 4641,
+      "md5": "db0da5f653b7c4c1f60079d1d3cf12e2"
+    },
+    {
+      "caminho": "evidence/e2e2-limpeza.json",
+      "bytes": 5226,
+      "md5": "034605a8dd0a6c59e896c54c194e4c16"
+    },
+    {
+      "caminho": "evidence/e2e3-nota-modal.json",
+      "bytes": 2957,
+      "md5": "b30a24629ab290af7737a9a8f3e85fc4"
+    },
+    {
+      "caminho": "evidence/e2e4-biblioteca.json",
+      "bytes": 3576,
+      "md5": "236af3c582382970d8c341284fc7192d"
+    },
+    {
+      "caminho": "evidence/manual-v59-e2e-atividade.json",
+      "bytes": 2032,
+      "md5": "a24c63a6fc2e58b6d4b1104346d8e437"
+    },
+    {
+      "caminho": "evidence/manual-v59-e2e-controles.json",
+      "bytes": 4870,
+      "md5": "4f9e10eb5c3d9d364d1542cd4210d7f1"
+    },
+    {
+      "caminho": "evidence/manual-v59-e2e-correcao.json",
+      "bytes": 2415,
+      "md5": "7f5aa52fb485b14197da5ca51c0be04c"
+    },
+    {
+      "caminho": "evidence/manual-v59-e2e-formularios.json",
+      "bytes": 5027,
+      "md5": "456bd81b4d0b201603739bffa0527457"
+    },
+    {
+      "caminho": "evidence/manual-v59-e2e-leitura.json",
+      "bytes": 1481,
+      "md5": "3b1d007a68a7ffc6433f3f457b9433a7"
+    },
+    {
+      "caminho": "evidence/manual-v59-e2e-lia.json",
+      "bytes": 1299,
+      "md5": "fc5e278960fbe149f6ed63322d899df2"
+    },
+    {
+      "caminho": "evidence/manual-v59-e2e-nota.json",
+      "bytes": 3918,
+      "md5": "2a0d6aea161187ce60e907a36c984d37"
+    },
+    {
+      "caminho": "evidence/manual-v59-e2e-recado.json",
+      "bytes": 1382,
+      "md5": "d28b3d004873f815f6e7e3487ba792f7"
+    },
+    {
+      "caminho": "evidence/manual-v59-e2e-relatorios.json",
+      "bytes": 3901,
+      "md5": "4eac97e537855a2d96727b29eaf01002"
+    }
+  ],
+  "portoes_estaticos": {
+    "rm14": 22,
+    "c7j": 15,
+    "inc_rm14": 1,
+    "inc_c7j": 1,
+    "nome_do_portao_rm14": "ok",
+    "nome_do_portao_c7j": "gate",
+    "contador_rm14": "g.portoes",
+    "contador_c7j": "results.portoes"
+  },
+  "pen20": {
+    "harness": [
+      {
+        "classe": "package_json",
+        "no_indice": [],
+        "no_fixture": 1
+      },
+      {
+        "classe": "ficheiro_teste_ou_spec",
+        "no_indice": [],
+        "no_fixture": 1
+      }
+    ],
+    "agregador": {
+      "pecas_no_indice": [],
+      "fichas_no_indice": [
+        "evidence/rm14-suite-2026-11-12T21-18-39-584Z.json",
+        "evidence/rm14-suite-antes-rm68-15-11.json",
+        "evidence/rm14-suite-pos-rm68-15-11b.json",
+        "evidence/rm14-suite.json"
+      ],
+      "no_fixture": 1
+    },
+    "frameworks": [
+      {
+        "palavra": "playwright",
+        "fichas_crua": 15,
+        "fichas_delimitada": 15,
+        "em_peca_crua": [
+          "scripts/p166-censo-em-leitura-dos-testes-e-cenarios-em-disco.mjs"
+        ],
+        "em_peca_delimitada": [],
+        "em_peca_delimitada_bruta": [
+          "scripts/p166-censo-em-leitura-dos-testes-e-cenarios-em-disco.mjs"
+        ],
+        "agulhas_excluidas": [
+          {
+            "nome": "scripts/p166-censo-em-leitura-dos-testes-e-cenarios-em-disco.mjs",
+            "n": 238,
+            "palavra": "playwright"
+          }
+        ],
+        "nomes": [
+          "docs/auditoria-bfr-conecta.md",
+          "docs/bu-20-11/08-plano-de-prioridades.md",
+          "docs/relatorio-final-auditoria.md",
+          "docs/roadmap-master.md",
+          "evidence/ANTERIOR-p166-sm55a-VERMELHO-4-portoes-alvo-lido-por-indice-de-string-e-gap-sem-hifen.json",
+          "evidence/ANTERIOR-p166-sm55a-VERMELHO-4-portoes-alvo-lido-por-indice-de-string-e-gap-sem-hifen.txt",
+          "evidence/bu10-prioridades-20-11-VERMELHO-artefacto_em_docs_recusado_por_predicado_de_evidence_e_grelha_contando_cabecalho.json",
+          "evidence/bu10-prioridades-20-11-VERMELHO-artefacto_em_docs_recusado_por_predicado_de_evidence_e_grelha_contando_cabecalho.txt",
+          "evidence/bu10-prioridades-20-11-VERMELHO-cinco_defeitos_de_instrumento_fase_9_celulas_regex_rm_com_ponto_final_regua_crua_sinal_de_fixture_e_grelha_contando_cabecalho.json",
+          "evidence/bu10-prioridades-20-11-VERMELHO-cinco_defeitos_de_instrumento_fase_9_celulas_regex_rm_com_ponto_final_regua_crua_sinal_de_fixture_e_grelha_contando_cabecalho.txt",
+          "evidence/bu10-prioridades-20-11.json",
+          "evidence/bu10-prioridades-20-11.txt",
+          "evidence/p166-censo-em-leitura-dos-testes-e-cenarios-em-disco-sm55b.json",
+          "evidence/p166-censo-em-leitura-dos-testes-e-cenarios-em-disco-sm55b.txt",
+          "scripts/p166-censo-em-leitura-dos-testes-e-cenarios-em-disco.mjs"
+        ],
+        "nomes_delimitada": [
+          "docs/auditoria-bfr-conecta.md",
+          "docs/bu-20-11/08-plano-de-prioridades.md",
+          "docs/relatorio-final-auditoria.md",
+          "docs/roadmap-master.md",
+          "evidence/ANTERIOR-p166-sm55a-VERMELHO-4-portoes-alvo-lido-por-indice-de-string-e-gap-sem-hifen.json",
+          "evidence/ANTERIOR-p166-sm55a-VERMELHO-4-portoes-alvo-lido-por-indice-de-string-e-gap-sem-hifen.txt",
+          "evidence/bu10-prioridades-20-11-VERMELHO-artefacto_em_docs_recusado_por_predicado_de_evidence_e_grelha_contando_cabecalho.json",
+          "evidence/bu10-prioridades-20-11-VERMELHO-artefacto_em_docs_recusado_por_predicado_de_evidence_e_grelha_contando_cabecalho.txt",
+          "evidence/bu10-prioridades-20-11-VERMELHO-cinco_defeitos_de_instrumento_fase_9_celulas_regex_rm_com_ponto_final_regua_crua_sinal_de_fixture_e_grelha_contando_cabecalho.json",
+          "evidence/bu10-prioridades-20-11-VERMELHO-cinco_defeitos_de_instrumento_fase_9_celulas_regex_rm_com_ponto_final_regua_crua_sinal_de_fixture_e_grelha_contando_cabecalho.txt",
+          "evidence/bu10-prioridades-20-11.json",
+          "evidence/bu10-prioridades-20-11.txt",
+          "evidence/p166-censo-em-leitura-dos-testes-e-cenarios-em-disco-sm55b.json",
+          "evidence/p166-censo-em-leitura-dos-testes-e-cenarios-em-disco-sm55b.txt",
+          "scripts/p166-censo-em-leitura-dos-testes-e-cenarios-em-disco.mjs"
+        ],
+        "nomes_delimitada_por_linha_js": [
+          "docs/auditoria-bfr-conecta.md",
+          "docs/bu-20-11/08-plano-de-prioridades.md",
+          "docs/relatorio-final-auditoria.md",
+          "docs/roadmap-master.md",
+          "evidence/ANTERIOR-p166-sm55a-VERMELHO-4-portoes-alvo-lido-por-indice-de-string-e-gap-sem-hifen.json",
+          "evidence/ANTERIOR-p166-sm55a-VERMELHO-4-portoes-alvo-lido-por-indice-de-string-e-gap-sem-hifen.txt",
+          "evidence/bu10-prioridades-20-11-VERMELHO-artefacto_em_docs_recusado_por_predicado_de_evidence_e_grelha_contando_cabecalho.json",
+          "evidence/bu10-prioridades-20-11-VERMELHO-artefacto_em_docs_recusado_por_predicado_de_evidence_e_grelha_contando_cabecalho.txt",
+          "evidence/bu10-prioridades-20-11-VERMELHO-cinco_defeitos_de_instrumento_fase_9_celulas_regex_rm_com_ponto_final_regua_crua_sinal_de_fixture_e_grelha_contando_cabecalho.json",
+          "evidence/bu10-prioridades-20-11-VERMELHO-cinco_defeitos_de_instrumento_fase_9_celulas_regex_rm_com_ponto_final_regua_crua_sinal_de_fixture_e_grelha_contando_cabecalho.txt",
+          "evidence/bu10-prioridades-20-11.json",
+          "evidence/bu10-prioridades-20-11.txt",
+          "evidence/p166-censo-em-leitura-dos-testes-e-cenarios-em-disco-sm55b.json",
+          "evidence/p166-censo-em-leitura-dos-testes-e-cenarios-em-disco-sm55b.txt",
+          "scripts/p166-censo-em-leitura-dos-testes-e-cenarios-em-disco.mjs"
+        ],
+        "so_crua": []
+      },
+      {
+        "palavra": "vitest",
+        "fichas_crua": 15,
+        "fichas_delimitada": 15,
+        "em_peca_crua": [
+          "scripts/p166-censo-em-leitura-dos-testes-e-cenarios-em-disco.mjs"
+        ],
+        "em_peca_delimitada": [],
+        "em_peca_delimitada_bruta": [
+          "scripts/p166-censo-em-leitura-dos-testes-e-cenarios-em-disco.mjs"
+        ],
+        "agulhas_excluidas": [
+          {
+            "nome": "scripts/p166-censo-em-leitura-dos-testes-e-cenarios-em-disco.mjs",
+            "n": 238,
+            "palavra": "vitest"
+          }
+        ],
+        "nomes": [
+          "docs/auditoria-bfr-conecta.md",
+          "docs/bu-20-11/08-plano-de-prioridades.md",
+          "docs/relatorio-final-auditoria.md",
+          "docs/roadmap-master.md",
+          "evidence/ANTERIOR-p166-sm55a-VERMELHO-4-portoes-alvo-lido-por-indice-de-string-e-gap-sem-hifen.json",
+          "evidence/ANTERIOR-p166-sm55a-VERMELHO-4-portoes-alvo-lido-por-indice-de-string-e-gap-sem-hifen.txt",
+          "evidence/bu10-prioridades-20-11-VERMELHO-artefacto_em_docs_recusado_por_predicado_de_evidence_e_grelha_contando_cabecalho.json",
+          "evidence/bu10-prioridades-20-11-VERMELHO-artefacto_em_docs_recusado_por_predicado_de_evidence_e_grelha_contando_cabecalho.txt",
+          "evidence/bu10-prioridades-20-11-VERMELHO-cinco_defeitos_de_instrumento_fase_9_celulas_regex_rm_com_ponto_final_regua_crua_sinal_de_fixture_e_grelha_contando_cabecalho.json",
+          "evidence/bu10-prioridades-20-11-VERMELHO-cinco_defeitos_de_instrumento_fase_9_celulas_regex_rm_com_ponto_final_regua_crua_sinal_de_fixture_e_grelha_contando_cabecalho.txt",
+          "evidence/bu10-prioridades-20-11.json",
+          "evidence/bu10-prioridades-20-11.txt",
+          "evidence/p166-censo-em-leitura-dos-testes-e-cenarios-em-disco-sm55b.json",
+          "evidence/p166-censo-em-leitura-dos-testes-e-cenarios-em-disco-sm55b.txt",
+          "scripts/p166-censo-em-leitura-dos-testes-e-cenarios-em-disco.mjs"
+        ],
+        "nomes_delimitada": [
+          "docs/auditoria-bfr-conecta.md",
+          "docs/bu-20-11/08-plano-de-prioridades.md",
+          "docs/relatorio-final-auditoria.md",
+          "docs/roadmap-master.md",
+          "evidence/ANTERIOR-p166-sm55a-VERMELHO-4-portoes-alvo-lido-por-indice-de-string-e-gap-sem-hifen.json",
+          "evidence/ANTERIOR-p166-sm55a-VERMELHO-4-portoes-alvo-lido-por-indice-de-string-e-gap-sem-hifen.txt",
+          "evidence/bu10-prioridades-20-11-VERMELHO-artefacto_em_docs_recusado_por_predicado_de_evidence_e_grelha_contando_cabecalho.json",
+          "evidence/bu10-prioridades-20-11-VERMELHO-artefacto_em_docs_recusado_por_predicado_de_evidence_e_grelha_contando_cabecalho.txt",
+          "evidence/bu10-prioridades-20-11-VERMELHO-cinco_defeitos_de_instrumento_fase_9_celulas_regex_rm_com_ponto_final_regua_crua_sinal_de_fixture_e_grelha_contando_cabecalho.json",
+          "evidence/bu10-prioridades-20-11-VERMELHO-cinco_defeitos_de_instrumento_fase_9_celulas_regex_rm_com_ponto_final_regua_crua_sinal_de_fixture_e_grelha_contando_cabecalho.txt",
+          "evidence/bu10-prioridades-20-11.json",
+          "evidence/bu10-prioridades-20-11.txt",
+          "evidence/p166-censo-em-leitura-dos-testes-e-cenarios-em-disco-sm55b.json",
+          "evidence/p166-censo-em-leitura-dos-testes-e-cenarios-em-disco-sm55b.txt",
+          "scripts/p166-censo-em-leitura-dos-testes-e-cenarios-em-disco.mjs"
+        ],
+        "nomes_delimitada_por_linha_js": [
+          "docs/auditoria-bfr-conecta.md",
+          "docs/bu-20-11/08-plano-de-prioridades.md",
+          "docs/relatorio-final-auditoria.md",
+          "docs/roadmap-master.md",
+          "evidence/ANTERIOR-p166-sm55a-VERMELHO-4-portoes-alvo-lido-por-indice-de-string-e-gap-sem-hifen.json",
+          "evidence/ANTERIOR-p166-sm55a-VERMELHO-4-portoes-alvo-lido-por-indice-de-string-e-gap-sem-hifen.txt",
+          "evidence/bu10-prioridades-20-11-VERMELHO-artefacto_em_docs_recusado_por_predicado_de_evidence_e_grelha_contando_cabecalho.json",
+          "evidence/bu10-prioridades-20-11-VERMELHO-artefacto_em_docs_recusado_por_predicado_de_evidence_e_grelha_contando_cabecalho.txt",
+          "evidence/bu10-prioridades-20-11-VERMELHO-cinco_defeitos_de_instrumento_fase_9_celulas_regex_rm_com_ponto_final_regua_crua_sinal_de_fixture_e_grelha_contando_cabecalho.json",
+          "evidence/bu10-prioridades-20-11-VERMELHO-cinco_defeitos_de_instrumento_fase_9_celulas_regex_rm_com_ponto_final_regua_crua_sinal_de_fixture_e_grelha_contando_cabecalho.txt",
+          "evidence/bu10-prioridades-20-11.json",
+          "evidence/bu10-prioridades-20-11.txt",
+          "evidence/p166-censo-em-leitura-dos-testes-e-cenarios-em-disco-sm55b.json",
+          "evidence/p166-censo-em-leitura-dos-testes-e-cenarios-em-disco-sm55b.txt",
+          "scripts/p166-censo-em-leitura-dos-testes-e-cenarios-em-disco.mjs"
+        ],
+        "so_crua": []
+      },
+      {
+        "palavra": "jest",
+        "fichas_crua": 7,
+        "fichas_delimitada": 7,
+        "em_peca_crua": [
+          "scripts/p166-censo-em-leitura-dos-testes-e-cenarios-em-disco.mjs"
+        ],
+        "em_peca_delimitada": [],
+        "em_peca_delimitada_bruta": [
+          "scripts/p166-censo-em-leitura-dos-testes-e-cenarios-em-disco.mjs"
+        ],
+        "agulhas_excluidas": [
+          {
+            "nome": "scripts/p166-censo-em-leitura-dos-testes-e-cenarios-em-disco.mjs",
+            "n": 238,
+            "palavra": "jest"
+          }
+        ],
+        "nomes": [
+          "docs/auditoria-bfr-conecta.md",
+          "docs/roadmap-master.md",
+          "evidence/ANTERIOR-p166-sm55a-VERMELHO-4-portoes-alvo-lido-por-indice-de-string-e-gap-sem-hifen.json",
+          "evidence/ANTERIOR-p166-sm55a-VERMELHO-4-portoes-alvo-lido-por-indice-de-string-e-gap-sem-hifen.txt",
+          "evidence/p166-censo-em-leitura-dos-testes-e-cenarios-em-disco-sm55b.json",
+          "evidence/p166-censo-em-leitura-dos-testes-e-cenarios-em-disco-sm55b.txt",
+          "scripts/p166-censo-em-leitura-dos-testes-e-cenarios-em-disco.mjs"
+        ],
+        "nomes_delimitada": [
+          "docs/auditoria-bfr-conecta.md",
+          "docs/roadmap-master.md",
+          "evidence/ANTERIOR-p166-sm55a-VERMELHO-4-portoes-alvo-lido-por-indice-de-string-e-gap-sem-hifen.json",
+          "evidence/ANTERIOR-p166-sm55a-VERMELHO-4-portoes-alvo-lido-por-indice-de-string-e-gap-sem-hifen.txt",
+          "evidence/p166-censo-em-leitura-dos-testes-e-cenarios-em-disco-sm55b.json",
+          "evidence/p166-censo-em-leitura-dos-testes-e-cenarios-em-disco-sm55b.txt",
+          "scripts/p166-censo-em-leitura-dos-testes-e-cenarios-em-disco.mjs"
+        ],
+        "nomes_delimitada_por_linha_js": [
+          "docs/auditoria-bfr-conecta.md",
+          "docs/roadmap-master.md",
+          "evidence/ANTERIOR-p166-sm55a-VERMELHO-4-portoes-alvo-lido-por-indice-de-string-e-gap-sem-hifen.json",
+          "evidence/ANTERIOR-p166-sm55a-VERMELHO-4-portoes-alvo-lido-por-indice-de-string-e-gap-sem-hifen.txt",
+          "evidence/p166-censo-em-leitura-dos-testes-e-cenarios-em-disco-sm55b.json",
+          "evidence/p166-censo-em-leitura-dos-testes-e-cenarios-em-disco-sm55b.txt",
+          "scripts/p166-censo-em-leitura-dos-testes-e-cenarios-em-disco.mjs"
+        ],
+        "so_crua": []
+      },
+      {
+        "palavra": "mocha",
+        "fichas_crua": 8,
+        "fichas_delimitada": 7,
+        "em_peca_crua": [
+          "scripts/p166-censo-em-leitura-dos-testes-e-cenarios-em-disco.mjs",
+          "scripts/p73-municipal-aplica-ddl.mjs"
+        ],
+        "em_peca_delimitada": [],
+        "em_peca_delimitada_bruta": [
+          "scripts/p166-censo-em-leitura-dos-testes-e-cenarios-em-disco.mjs"
+        ],
+        "agulhas_excluidas": [
+          {
+            "nome": "scripts/p166-censo-em-leitura-dos-testes-e-cenarios-em-disco.mjs",
+            "n": 238,
+            "palavra": "mocha"
+          }
+        ],
+        "nomes": [
+          "docs/auditoria-bfr-conecta.md",
+          "docs/roadmap-master.md",
+          "evidence/ANTERIOR-p166-sm55a-VERMELHO-4-portoes-alvo-lido-por-indice-de-string-e-gap-sem-hifen.json",
+          "evidence/ANTERIOR-p166-sm55a-VERMELHO-4-portoes-alvo-lido-por-indice-de-string-e-gap-sem-hifen.txt",
+          "evidence/p166-censo-em-leitura-dos-testes-e-cenarios-em-disco-sm55b.json",
+          "evidence/p166-censo-em-leitura-dos-testes-e-cenarios-em-disco-sm55b.txt",
+          "scripts/p166-censo-em-leitura-dos-testes-e-cenarios-em-disco.mjs",
+          "scripts/p73-municipal-aplica-ddl.mjs"
+        ],
+        "nomes_delimitada": [
+          "docs/auditoria-bfr-conecta.md",
+          "docs/roadmap-master.md",
+          "evidence/ANTERIOR-p166-sm55a-VERMELHO-4-portoes-alvo-lido-por-indice-de-string-e-gap-sem-hifen.json",
+          "evidence/ANTERIOR-p166-sm55a-VERMELHO-4-portoes-alvo-lido-por-indice-de-string-e-gap-sem-hifen.txt",
+          "evidence/p166-censo-em-leitura-dos-testes-e-cenarios-em-disco-sm55b.json",
+          "evidence/p166-censo-em-leitura-dos-testes-e-cenarios-em-disco-sm55b.txt",
+          "scripts/p166-censo-em-leitura-dos-testes-e-cenarios-em-disco.mjs"
+        ],
+        "nomes_delimitada_por_linha_js": [
+          "docs/auditoria-bfr-conecta.md",
+          "docs/roadmap-master.md",
+          "evidence/ANTERIOR-p166-sm55a-VERMELHO-4-portoes-alvo-lido-por-indice-de-string-e-gap-sem-hifen.json",
+          "evidence/ANTERIOR-p166-sm55a-VERMELHO-4-portoes-alvo-lido-por-indice-de-string-e-gap-sem-hifen.txt",
+          "evidence/p166-censo-em-leitura-dos-testes-e-cenarios-em-disco-sm55b.json",
+          "evidence/p166-censo-em-leitura-dos-testes-e-cenarios-em-disco-sm55b.txt",
+          "scripts/p166-censo-em-leitura-dos-testes-e-cenarios-em-disco.mjs"
+        ],
+        "so_crua": [
+          {
+            "nome": "evidence/ANTERIOR-p166-sm55a-VERMELHO-4-portoes-alvo-lido-por-indice-de-string-e-gap-sem-hifen.json",
+            "n": 827,
+            "token": "comoChaves",
+            "linha_de_agulha": false,
+            "maior_que_a_palavra": true
+          },
+          {
+            "nome": "evidence/ANTERIOR-p166-sm55a-VERMELHO-4-portoes-alvo-lido-por-indice-de-string-e-gap-sem-hifen.json",
+            "n": 845,
+            "token": "comoChaves",
+            "linha_de_agulha": false,
+            "maior_que_a_palavra": true
+          },
+          {
+            "nome": "evidence/p166-censo-em-leitura-dos-testes-e-cenarios-em-disco-sm55b.json",
+            "n": 843,
+            "token": "comoChaves",
+            "linha_de_agulha": false,
+            "maior_que_a_palavra": true
+          },
+          {
+            "nome": "evidence/p166-censo-em-leitura-dos-testes-e-cenarios-em-disco-sm55b.json",
+            "n": 861,
+            "token": "comoChaves",
+            "linha_de_agulha": false,
+            "maior_que_a_palavra": true
+          },
+          {
+            "nome": "scripts/p73-municipal-aplica-ddl.mjs",
+            "n": 140,
+            "token": "comoChaves",
+            "linha_de_agulha": false,
+            "maior_que_a_palavra": true
+          },
+          {
+            "nome": "scripts/p73-municipal-aplica-ddl.mjs",
+            "n": 149,
+            "token": "comoChaves",
+            "linha_de_agulha": false,
+            "maior_que_a_palavra": true
+          },
+          {
+            "nome": "scripts/p73-municipal-aplica-ddl.mjs",
+            "n": 150,
+            "token": "comoChaves",
+            "linha_de_agulha": false,
+            "maior_que_a_palavra": true
+          }
+        ]
+      },
+      {
+        "palavra": "cypress",
+        "fichas_crua": 7,
+        "fichas_delimitada": 7,
+        "em_peca_crua": [
+          "scripts/p166-censo-em-leitura-dos-testes-e-cenarios-em-disco.mjs"
+        ],
+        "em_peca_delimitada": [],
+        "em_peca_delimitada_bruta": [
+          "scripts/p166-censo-em-leitura-dos-testes-e-cenarios-em-disco.mjs"
+        ],
+        "agulhas_excluidas": [
+          {
+            "nome": "scripts/p166-censo-em-leitura-dos-testes-e-cenarios-em-disco.mjs",
+            "n": 238,
+            "palavra": "cypress"
+          }
+        ],
+        "nomes": [
+          "docs/auditoria-bfr-conecta.md",
+          "docs/roadmap-master.md",
+          "evidence/ANTERIOR-p166-sm55a-VERMELHO-4-portoes-alvo-lido-por-indice-de-string-e-gap-sem-hifen.json",
+          "evidence/ANTERIOR-p166-sm55a-VERMELHO-4-portoes-alvo-lido-por-indice-de-string-e-gap-sem-hifen.txt",
+          "evidence/p166-censo-em-leitura-dos-testes-e-cenarios-em-disco-sm55b.json",
+          "evidence/p166-censo-em-leitura-dos-testes-e-cenarios-em-disco-sm55b.txt",
+          "scripts/p166-censo-em-leitura-dos-testes-e-cenarios-em-disco.mjs"
+        ],
+        "nomes_delimitada": [
+          "docs/auditoria-bfr-conecta.md",
+          "docs/roadmap-master.md",
+          "evidence/ANTERIOR-p166-sm55a-VERMELHO-4-portoes-alvo-lido-por-indice-de-string-e-gap-sem-hifen.json",
+          "evidence/ANTERIOR-p166-sm55a-VERMELHO-4-portoes-alvo-lido-por-indice-de-string-e-gap-sem-hifen.txt",
+          "evidence/p166-censo-em-leitura-dos-testes-e-cenarios-em-disco-sm55b.json",
+          "evidence/p166-censo-em-leitura-dos-testes-e-cenarios-em-disco-sm55b.txt",
+          "scripts/p166-censo-em-leitura-dos-testes-e-cenarios-em-disco.mjs"
+        ],
+        "nomes_delimitada_por_linha_js": [
+          "docs/auditoria-bfr-conecta.md",
+          "docs/roadmap-master.md",
+          "evidence/ANTERIOR-p166-sm55a-VERMELHO-4-portoes-alvo-lido-por-indice-de-string-e-gap-sem-hifen.json",
+          "evidence/ANTERIOR-p166-sm55a-VERMELHO-4-portoes-alvo-lido-por-indice-de-string-e-gap-sem-hifen.txt",
+          "evidence/p166-censo-em-leitura-dos-testes-e-cenarios-em-disco-sm55b.json",
+          "evidence/p166-censo-em-leitura-dos-testes-e-cenarios-em-disco-sm55b.txt",
+          "scripts/p166-censo-em-leitura-dos-testes-e-cenarios-em-disco.mjs"
+        ],
+        "so_crua": []
+      }
+    ],
+    "substrings_em_peca": [
+      {
+        "palavra": "mocha",
+        "nome": "scripts/p73-municipal-aplica-ddl.mjs",
+        "n": 140,
+        "token": "comoChaves",
+        "linha_de_agulha": false,
+        "maior_que_a_palavra": true
+      },
+      {
+        "palavra": "mocha",
+        "nome": "scripts/p73-municipal-aplica-ddl.mjs",
+        "n": 149,
+        "token": "comoChaves",
+        "linha_de_agulha": false,
+        "maior_que_a_palavra": true
+      },
+      {
+        "palavra": "mocha",
+        "nome": "scripts/p73-municipal-aplica-ddl.mjs",
+        "n": 150,
+        "token": "comoChaves",
+        "linha_de_agulha": false,
+        "maior_que_a_palavra": true
+      }
+    ],
+    "agulhas_excluidas": [
+      {
+        "nome": "scripts/p166-censo-em-leitura-dos-testes-e-cenarios-em-disco.mjs",
+        "n": 238,
+        "palavra": "playwright"
+      },
+      {
+        "nome": "scripts/p166-censo-em-leitura-dos-testes-e-cenarios-em-disco.mjs",
+        "n": 238,
+        "palavra": "vitest"
+      },
+      {
+        "nome": "scripts/p166-censo-em-leitura-dos-testes-e-cenarios-em-disco.mjs",
+        "n": 238,
+        "palavra": "jest"
+      },
+      {
+        "nome": "scripts/p166-censo-em-leitura-dos-testes-e-cenarios-em-disco.mjs",
+        "n": 238,
+        "palavra": "mocha"
+      },
+      {
+        "nome": "scripts/p166-censo-em-leitura-dos-testes-e-cenarios-em-disco.mjs",
+        "n": 238,
+        "palavra": "cypress"
+      }
+    ],
+    "sem_importe_em_peca": [],
+    "sem_api_em_peca": [],
+    "pecas_lidas_para_os_padroes": 786,
+    "fixture_de_harness": [
+      {
+        "forma": "import_de",
+        "medido": [
+          true,
+          false
+        ],
+        "esperado": [
+          true,
+          false
+        ],
+        "bate": true
+      },
+      {
+        "forma": "require_de",
+        "medido": [
+          true,
+          false
+        ],
+        "esperado": [
+          true,
+          false
+        ],
+        "bate": true
+      },
+      {
+        "forma": "runner_describe",
+        "medido": [
+          false,
+          true
+        ],
+        "esperado": [
+          false,
+          true
+        ],
+        "bate": true
+      },
+      {
+        "forma": "runner_expect",
+        "medido": [
+          false,
+          true
+        ],
+        "esperado": [
+          false,
+          true
+        ],
+        "bate": true
+      },
+      {
+        "forma": "portao_local_deste_repo",
+        "medido": [
+          false,
+          false
+        ],
+        "esperado": [
+          false,
+          false
+        ],
+        "bate": true
+      }
+    ],
+    "exclusao_de_agulha": [
+      {
+        "rotulo": "minha_linha_de_agulha",
+        "medido": false,
+        "bate": true
+      },
+      {
+        "rotulo": "mesma_linha_em_peca_sem_marcador",
+        "medido": true,
+        "bate": true
+      }
+    ],
+    "gitignore_nominal": [
+      {
+        "linha": 38,
+        "padrao": "scripts/c7-gap-fix-prova.mjs",
+        "em_disco": true,
+        "classe": "IGNORADO"
+      },
+      {
+        "linha": 39,
+        "padrao": "scripts/c7-2-jornada-jwt.mjs",
+        "em_disco": true,
+        "classe": "IGNORADO"
+      },
+      {
+        "linha": 40,
+        "padrao": "scripts/gap3-definitive-test.mjs",
+        "em_disco": true,
+        "classe": "IGNORADO"
+      },
+      {
+        "linha": 41,
+        "padrao": "scripts/gap3-deep-diagnostic.mjs",
+        "em_disco": true,
+        "classe": "IGNORADO"
+      },
+      {
+        "linha": 42,
+        "padrao": "scripts/gap3-diagnostic.mjs",
+        "em_disco": true,
+        "classe": "IGNORADO"
+      },
+      {
+        "linha": 43,
+        "padrao": "scripts/gap3-final-test.mjs",
+        "em_disco": true,
+        "classe": "IGNORADO"
+      },
+      {
+        "linha": 44,
+        "padrao": "scripts/s20-behavioral.mjs",
+        "em_disco": true,
+        "classe": "IGNORADO"
+      },
+      {
+        "linha": 67,
+        "padrao": "scripts/c2r-jornada.mjs",
+        "em_disco": true,
+        "classe": "IGNORADO"
+      },
+      {
+        "linha": 68,
+        "padrao": "scripts/rm14-recon.mjs",
+        "em_disco": true,
+        "classe": "IGNORADO"
+      },
+      {
+        "linha": 69,
+        "padrao": "scripts/rm14-suite.mjs",
+        "em_disco": true,
+        "classe": "IGNORADO"
+      },
+      {
+        "linha": 89,
+        "padrao": "scripts/c2-mint.mjs",
+        "em_disco": true,
+        "classe": "IGNORADO"
+      },
+      {
+        "linha": 90,
+        "padrao": "scripts/s19-mint.mjs",
+        "em_disco": true,
+        "classe": "IGNORADO"
+      },
+      {
+        "linha": 106,
+        "padrao": "scripts/s20-behavioral-ruler3.mjs",
+        "em_disco": true,
+        "classe": "IGNORADO"
+      }
+    ],
+    "ficha": {
+      "caminho": "evidence/rm14-suite-pos-rm68-15-11b.json",
+      "grupo_mesmo_instante": [
+        "evidence/rm14-suite-pos-rm68-15-11b.json",
+        "evidence/rm14-suite.json"
+      ],
+      "em": "2026-11-15T03:33:24.131Z",
+      "idade_dias": 9,
+      "portoes": 31,
+      "falhas": [],
+      "lacunas_registradas": 1,
+      "desfecho": "RM14_SUITE_VERDE",
+      "cache_publicada_no_sw": "bfr-conecta-v122",
+      "alvo": "https://bfr-conecta.turmaroboticabfr.workers.dev"
+    },
+    "e2e": {
+      "pecas": [
+        "scripts/e2e2-baseline.mjs",
+        "scripts/e2e2-fixture.mjs",
+        "scripts/e2e2-limpeza.mjs",
+        "scripts/e2e2-teste-chat.mjs",
+        "scripts/e2e2-teste-frequencia.mjs",
+        "scripts/e2e3-teste-nota-modal.mjs",
+        "scripts/e2e4-teste-biblioteca.mjs"
+      ],
+      "fichas": 16,
+      "com_instante": 7,
+      "sem_instante": [
+        "evidence/manual-v59-e2e-atividade.json",
+        "evidence/manual-v59-e2e-controles.json",
+        "evidence/manual-v59-e2e-correcao.json",
+        "evidence/manual-v59-e2e-formularios.json",
+        "evidence/manual-v59-e2e-leitura.json",
+        "evidence/manual-v59-e2e-lia.json",
+        "evidence/manual-v59-e2e-nota.json",
+        "evidence/manual-v59-e2e-recado.json",
+        "evidence/manual-v59-e2e-relatorios.json"
+      ],
+      "com_contagem_de_portoes": 0,
+      "idade_em_dias": [
+        32,
+        32,
+        32,
+        32,
+        32,
+        32,
+        32
+      ]
+    }
+  },
+  "pen15": {
+    "ficha": {
+      "caminho": "docs/c7-2-jornada-jwt.json",
+      "em": "2026-11-08T22:02:35.301Z",
+      "idade_dias": 15,
+      "portoes": 12,
+      "contagem_por_classe": {
+        "VERDE": 5,
+        "VERMELHO": 7,
+        "SEM_CLASSE": 0
+      },
+      "testes": [
+        {
+          "nome": "T0_DIR_TOKEN",
+          "ok": "VERDE"
+        },
+        {
+          "nome": "T0_COORD_TOKEN",
+          "ok": "VERDE"
+        },
+        {
+          "nome": "T0_SECR_TOKEN",
+          "ok": "VERDE"
+        },
+        {
+          "nome": "T1_COORD_INSERT_OCC",
+          "ok": "VERDE"
+        },
+        {
+          "nome": "T1_DIR_READ_OCC",
+          "ok": "VERMELHO"
+        },
+        {
+          "nome": "T1_DIR_SEES_COORD",
+          "ok": "VERMELHO"
+        },
+        {
+          "nome": "T2_SECR_INSERT_SUP",
+          "ok": "VERDE"
+        },
+        {
+          "nome": "T2_DIR_UPDATE_SUP",
+          "ok": "VERMELHO"
+        },
+        {
+          "nome": "T2_SECR_READ_UPDATED",
+          "ok": "VERMELHO"
+        },
+        {
+          "nome": "T3_COORD_INSERT_LAP",
+          "ok": "VERMELHO"
+        },
+        {
+          "nome": "T4_COORD_INSERT_SA",
+          "ok": "VERMELHO"
+        },
+        {
+          "nome": "T5_SECR_INSERT_SR",
+          "ok": "VERMELHO"
+        }
+      ]
+    },
+    "resumo": {
+      "caminho": "docs/c7-2-resumo-jornada.json",
+      "portoes": 12,
+      "sucessos": 5,
+      "falhas": 7,
+      "lacunas": [
+        {
+          "id": "C7-GAP-1",
+          "teste": "T1",
+          "severidade": "ALTA — diretor deveria ver todas as ocorrências da escola"
+        },
+        {
+          "id": "C7-GAP-2",
+          "teste": "T2",
+          "severidade": "MÉDIA — requer investigação adicional do erro 400"
+        },
+        {
+          "id": "C7-GAP-3",
+          "teste": "T4",
+          "severidade": "ALTA — coordinator deveria poder publicar comunicados internos"
+        }
+      ],
+      "nao_executados": [
+        "T3",
+        "T5"
+      ]
+    },
+    "gap_fix": {
+      "caminho": "docs/c7-gap-fix-prova.json",
+      "em": "2026-11-08T23:00:47.729Z",
+      "idade_dias": 15,
+      "portoes": 5,
+      "nomes": [
+        "GAP1_COORD_INSERT",
+        "GAP1_DIR_SELECT",
+        "GAP2_SEC_INSERT",
+        "GAP2_DIR_UPDATE",
+        "GAP3_COORD_INSERT"
+      ],
+      "gaps_com_prova": [
+        "1",
+        "2",
+        "3"
+      ],
+      "testes_com_prova": [
+        "T1",
+        "T2",
+        "T4"
+      ]
+    },
+    "decomposicao_dos_vermelhos": {
+      "por_teste": {
+        "T1": 2,
+        "T2": 2,
+        "T3": 1,
+        "T4": 1,
+        "T5": 1
+      },
+      "com_prova": 5,
+      "sem_prova": [
+        "T3:1",
+        "T5:1"
+      ]
+    },
+    "limpeza": {
+      "caminho": "docs/c7-3-limpeza.json",
+      "em": "2026-11-08T22:06:29.176Z",
+      "portoes": 9,
+      "falhas": 9,
+      "causa": "sql HTTP 400: {\"message\":\"Failed to run sql query: ERROR:  0A000: cross-database references are not implemented: \\\"public.auth.users\\\"\\nLINE 1: SELECT count(*) as n FROM public.auth.users\\n           "
+    },
+    "mesas": [
+      "learning_action_plans",
+      "occurrences",
+      "staff_announcements",
+      "supervision_requests",
+      "support_requests"
+    ],
+    "papeis": [
+      "T0_DIR_TOKEN",
+      "T0_COORD_TOKEN",
+      "T0_SECR_TOKEN"
+    ],
+    "reprodutibilidade": {
+      "peca": "scripts/c7-2-jornada-jwt.mjs",
+      "classe_da_peca": "IGNORADO",
+      "dependencias": [
+        {
+          "caminho": "docs/c7-accounts.json",
+          "classe": "IGNORADO"
+        },
+        {
+          "caminho": "docs/c7-fixtures.json",
+          "classe": "VERSIONADO"
+        }
+      ],
+      "fichas_de_jornada_no_indice": [
+        "docs/c2-jornada-gatekeeper-jwt.json",
+        "docs/c2-jornada-monitor-jwt.json",
+        "docs/c2-jornada-parent-jwt.json",
+        "docs/c7-2-jornada-jwt.json",
+        "docs/c7-2-resumo-jornada.json"
+      ],
+      "fichas_ignoradas_nao_abertas": [
+        "docs/c2r-jornada.json"
+      ]
+    }
+  },
+  "pen21": {
+    "classes": [
+      {
+        "classe": "k6",
+        "no_indice": 0,
+        "em_ignorados": 0,
+        "no_fixture": [
+          "scripts/carga-k6.mjs",
+          "k6/carga.js"
+        ]
+      },
+      {
+        "classe": "artillery",
+        "no_indice": 0,
+        "em_ignorados": 0,
+        "no_fixture": [
+          "tools/artillery.yml"
+        ]
+      },
+      {
+        "classe": "stress",
+        "no_indice": 0,
+        "em_ignorados": 0,
+        "no_fixture": [
+          "scripts/stress-lancamento.mjs"
+        ]
+      },
+      {
+        "classe": "carga",
+        "no_indice": 0,
+        "em_ignorados": 0,
+        "no_fixture": [
+          "scripts/carga-k6.mjs",
+          "k6/carga.js"
+        ]
+      },
+      {
+        "classe": "pressao",
+        "no_indice": 0,
+        "em_ignorados": 0,
+        "no_fixture": [
+          "scripts/pressao.mjs"
+        ]
+      },
+      {
+        "classe": "load_test",
+        "no_indice": 0,
+        "em_ignorados": 0,
+        "no_fixture": [
+          "scripts/load_test.mjs"
+        ]
+      }
+    ],
+    "regua_naiva": {
+      "no_indice": [
+        "scripts/seg-p0-download-para-ficheiro.mjs",
+        "uniesco-fora-do-bundle/fcm/exemplo-payload-fcm-v1.json"
+      ],
+      "porque_casou": [
+        {
+          "nome": "scripts/seg-p0-download-para-ficheiro.mjs",
+          "casou_por": "download"
+        },
+        {
+          "nome": "uniesco-fora-do-bundle/fcm/exemplo-payload-fcm-v1.json",
+          "casou_por": "payload"
+        }
+      ],
+      "em_ignorados": 30,
+      "em_ignorados_de_perfis_de_browser": 30
+    },
+    "celula": {
+      "alega_nunca_executado": true,
+      "rms": [
+        "RM-4.6",
+        "RM-6.4"
+      ]
+    }
+  },
+  "o_que_prova": [
+    "que nao ha harness de teste no indice (package.json, *.test.*, *.spec.*) e que nenhuma peca de codigo importa um pacote de framework nem chama a API global dum runner",
+    "que as unicas mencoes delimitadas de framework em peca sao a lista de agulhas deste instrumento, e que a diferenca entre a busca crua e a delimitada so existe num nome e toda ela vive dentro de um identificador mais longo",
+    "quantos portoes a suite do RM-1.4 registou na ficha mais recente, se esse numero e o mesmo que a celula PEN-20 afirma, e contra que numero de versao ela apontou",
+    "que a contagem estatica de sitios de chamada de portao nao e a contagem de runtime em ambos os sentidos: o rm14 tem menos sitios que portoes e o C7 tem mais",
+    "que as tres pecas de suite e jornada estao fora do indice por linha nominal propria do .gitignore e que os treze padroes nominais de peca apontam todos para ficheiro existente",
+    "o que a ficha da jornada cross-role do C7 registou: doze testes, cinco verdes, sete vermelhos, as mesas tocadas, os papeis com token e a decomposicao dos vermelhos entre provados e nao provados",
+    "que a peca que executa a jornada le um ficheiro de contas que tambem esta fora do indice, logo a jornada nao se reproduz a partir do repo",
+    "que a familia de carga e desempeno tem zero nomes no indice e zero nos ignorados pela regua delimitada, com a versao ingenua registada ao lado e os dois nomes que ela apanha explicados",
+    "que nenhuma ficha e2e traz contagem de portoes e que nove das dezasseis nem sequer trazem instante legivel em ISO"
+  ],
+  "o_que_NAO_prova": [
+    "que a suite do RM-1.4 passa hoje: nao a re-corri, porque ela escreve por cima da sua propria ficha versionada, um nome que ja esta no indice, e porque fala com a rede; o que esta medido e a ultima ficha que existe",
+    "que a jornada do C7 passa hoje: re-corre-la escreve em occurrences, supervision_requests, staff_announcements e limpa contas; isto e censo de ficha velha, nao execucao",
+    "que um teste de produto e2e funcione: conto fichas e a ausencia de contagem de portoes nelas",
+    "que a ausencia de instrumento de carga signifique que o produto aguenta carga: significa que nunca houve instrumento para tentar",
+    "que o .gitignore deva deixar de excluir as tres pecas: isto registra o estado, nao propoe alteracao; mexer no predicado de exclusao e decisao com OK proprio",
+    "nada sobre senhas, tokens ou valores de linha: as fichas ignoradas que carregam credencial foram classificadas por nome e nunca abertas por esta peca",
+    "que os padroes de ausencia de harness alcancem as pecas nao versionadas: a varredura por regex corre so sobre as pecas que estao no indice, e as tres pecas de suite e jornada estao fora dele por linha propria do .gitignore",
+    "que as contagens de mencoes por ficheiro sejam uma grandeza fixa: cada corrida deste censo escreve um artefacto que menciona os cinco nomes, por isso essas contagens crescem corrida a corrida e ficam no artefacto como medida, nunca como portao",
+    "que a unica linha de peca retirada da classe de mencoes seja esta: a exclusao e por marcador no conteudo da linha, as linhas retiradas saem nome a nome no artefacto, e cada uma delas resolve nesta peca"
+  ],
+  "portoes": {
+    "total": 47,
+    "falhas": 0,
+    "lista": [
+      {
+        "nome": "o_classificador_de_classe_de_indice_dispara_em_cada_um_dos_quatro_ramos",
+        "medido": [
+          "VERSIONADO",
+          "IGNORADO",
+          "SO_EM_DISCO",
+          "AUSENTE"
+        ],
+        "esperado": [
+          "VERSIONADO",
+          "IGNORADO",
+          "SO_EM_DISCO",
+          "AUSENTE"
+        ],
+        "ok": true
+      },
+      {
+        "nome": "nenhum_nome_aparece_em_duas_classes_do_indice",
+        "medido": [
+          0,
+          0,
+          0
+        ],
+        "esperado": [
+          0,
+          0,
+          0
+        ],
+        "ok": true
+      },
+      {
+        "nome": "os_tres_denominadores_de_indice_ficam_registrados_e_sao_maiores_que_zero",
+        "medido": [
+          true,
+          true,
+          true
+        ],
+        "esperado": [
+          true,
+          true,
+          true
+        ],
+        "ok": true
+      },
+      {
+        "nome": "cada_peca_e_cada_ficha_citada_resolvem_em_disco_e_o_fixture_de_peca_falsa_dispara",
+        "medido": [
+          0,
+          true,
+          1,
+          true
+        ],
+        "esperado": [
+          0,
+          true,
+          1,
+          true
+        ],
+        "ok": true
+      },
+      {
+        "nome": "nenhum_produtor_lido_e_um_ficheiro_vazio",
+        "medido": [],
+        "esperado": [],
+        "ok": true
+      },
+      {
+        "nome": "emissor_bytes_sao_bytes_do_ficheiro_e_nao_caracteres_da_string",
+        "medido": [
+          true,
+          true,
+          true
+        ],
+        "esperado": [
+          true,
+          true,
+          true
+        ],
+        "ok": true
+      },
+      {
+        "nome": "nao_ha_harness_de_teste_no_indice_e_a_regua_dispara_em_nome_fabricado",
+        "medido": [
+          [
+            0,
+            0
+          ],
+          [
+            1,
+            1
+          ]
+        ],
+        "esperado": [
+          [
+            0,
+            0
+          ],
+          [
+            1,
+            1
+          ]
+        ],
+        "ok": true
+      },
+      {
+        "nome": "nenhum_agregador_de_suite_no_indice_e_o_disparador_tem_fixture",
+        "medido": [
+          0,
+          4,
+          1
+        ],
+        "esperado": [
+          0,
+          4,
+          1
+        ],
+        "ok": true
+      },
+      {
+        "nome": "nenhuma_mencao_delimitada_de_framework_vive_em_peca_e_a_unica_linha_retirada_e_a_lista_de_agulhas_deste_instrumento",
+        "medido": [
+          [
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            true,
+            true,
+            true,
+            true,
+            true
+          ],
+          true
+        ],
+        "esperado": [
+          [
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            true,
+            true,
+            true,
+            true,
+            true
+          ],
+          true
+        ],
+        "ok": true
+      },
+      {
+        "nome": "a_exclusao_das_minhas_linhas_de_agulha_dispara_em_dos_sentidos",
+        "medido": [
+          [
+            false,
+            true
+          ],
+          true
+        ],
+        "esperado": [
+          [
+            false,
+            true
+          ],
+          true
+        ],
+        "ok": true
+      },
+      {
+        "nome": "a_regex_js_de_linha_e_o_mesmo_conjunto_de_ficheiros_que_o_git_grep_delimitado",
+        "medido": [
+          true,
+          true,
+          true,
+          true,
+          true
+        ],
+        "esperado": [
+          true,
+          true,
+          true,
+          true,
+          true
+        ],
+        "ok": true
+      },
+      {
+        "nome": "cada_ocorrencia_apenas_crua_vive_dentro_de_um_identificador_mais_longo_que_a_palavra",
+        "medido": [
+          true,
+          true,
+          true
+        ],
+        "esperado": [
+          true,
+          true,
+          true
+        ],
+        "ok": true
+      },
+      {
+        "nome": "nenhuma_peca_importa_um_pacote_de_framework",
+        "medido": [
+          0,
+          true
+        ],
+        "esperado": [
+          0,
+          true
+        ],
+        "ok": true
+      },
+      {
+        "nome": "nenhuma_peca_chama_a_api_global_de_um_runner",
+        "medido": 0,
+        "esperado": 0,
+        "ok": true
+      },
+      {
+        "nome": "o_fixture_de_harness_tem_as_tres_formas_e_bate_no_seu_padrao",
+        "medido": [
+          true,
+          true
+        ],
+        "esperado": [
+          true,
+          true
+        ],
+        "ok": true
+      },
+      {
+        "nome": "o_falso_positivo_de_substring_tem_fixture_nos_dois_sentidos",
+        "medido": [
+          [
+            true,
+            true,
+            false
+          ],
+          [
+            true,
+            false,
+            true
+          ]
+        ],
+        "esperado": [
+          [
+            true,
+            true,
+            false
+          ],
+          [
+            true,
+            false,
+            true
+          ]
+        ],
+        "ok": true
+      },
+      {
+        "nome": "as_tres_pecas_de_suite_e_jornada_estao_fora_do_indice_por_linha_propria_do_gitignore",
+        "medido": [
+          [
+            "scripts/c7-gap-fix-prova.mjs",
+            "IGNORADO",
+            38
+          ],
+          [
+            "scripts/c7-2-jornada-jwt.mjs",
+            "IGNORADO",
+            39
+          ],
+          [
+            "scripts/rm14-suite.mjs",
+            "IGNORADO",
+            69
+          ]
+        ],
+        "esperado": [
+          [
+            "scripts/c7-gap-fix-prova.mjs",
+            "IGNORADO",
+            38
+          ],
+          [
+            "scripts/c7-2-jornada-jwt.mjs",
+            "IGNORADO",
+            39
+          ],
+          [
+            "scripts/rm14-suite.mjs",
+            "IGNORADO",
+            69
+          ]
+        ],
+        "ok": true
+      },
+      {
+        "nome": "nenhum_padrao_nominal_de_peca_no_gitignore_aponta_para_um_caminho_inexistente",
+        "medido": [
+          13,
+          [],
+          []
+        ],
+        "esperado": [
+          13,
+          [],
+          []
+        ],
+        "ok": true
+      },
+      {
+        "nome": "a_suite_minima_registra_tantos_portoes_quantos_a_celula_pen20_afirma",
+        "medido": [
+          31,
+          31
+        ],
+        "esperado": [
+          31,
+          31
+        ],
+        "ok": true
+      },
+      {
+        "nome": "o_desfecho_da_ficha_e_o_literal_que_a_celula_cita",
+        "medido": [
+          "RM14_SUITE_VERDE",
+          "RM14_SUITE_VERDE"
+        ],
+        "esperado": [
+          "RM14_SUITE_VERDE",
+          "RM14_SUITE_VERDE"
+        ],
+        "ok": true
+      },
+      {
+        "nome": "o_contador_de_portao_incrementa_num_sitio_unico_em_cada_produtor",
+        "medido": [
+          1,
+          1,
+          "ok",
+          "g.portoes",
+          "gate",
+          "results.portoes"
+        ],
+        "esperado": [
+          1,
+          1,
+          "ok",
+          "g.portoes",
+          "gate",
+          "results.portoes"
+        ],
+        "ok": true
+      },
+      {
+        "nome": "os_sitios_estaticos_nao_sao_os_portoes_de_runtime_nem_por_um_nem_por_outro",
+        "medido": [
+          22,
+          31,
+          -9,
+          15,
+          12,
+          3
+        ],
+        "esperado": [
+          22,
+          31,
+          -9,
+          15,
+          12,
+          3
+        ],
+        "ok": true
+      },
+      {
+        "nome": "a_amostra_de_mesas_lida_do_produtor_bate_com_a_contagem_da_ficha",
+        "medido": [
+          11,
+          11
+        ],
+        "esperado": [
+          11,
+          11
+        ],
+        "ok": true
+      },
+      {
+        "nome": "a_suite_nao_aponta_para_a_versao_do_ar_do_diario_mais_novo",
+        "medido": [
+          122,
+          144,
+          22
+        ],
+        "esperado": [
+          122,
+          144,
+          22
+        ],
+        "ok": true
+      },
+      {
+        "nome": "nenhuma_ficha_de_suite_e_posterior_ao_ultimo_deploy_e_o_grupo_mais_recento_tem_um_conteudo",
+        "medido": [
+          true,
+          2,
+          1
+        ],
+        "esperado": [
+          true,
+          2,
+          1
+        ],
+        "ok": true
+      },
+      {
+        "nome": "as_sondas_de_produto_e2e_estao_no_indice_e_a_contagem_de_fichas_e_a_medida",
+        "medido": [
+          7,
+          16
+        ],
+        "esperado": [
+          7,
+          16
+        ],
+        "ok": true
+      },
+      {
+        "nome": "nenhuma_ficha_e2e_tem_contagem_de_portoes_e_a_classe_dispara_em_fixture",
+        "medido": [
+          0,
+          16,
+          1
+        ],
+        "esperado": [
+          0,
+          16,
+          1
+        ],
+        "ok": true
+      },
+      {
+        "nome": "a_classe_de_ficha_e2e_sem_instante_iso_imprime_se_com_o_numero",
+        "medido": [
+          7,
+          9,
+          true
+        ],
+        "esperado": [
+          7,
+          9,
+          true
+        ],
+        "ok": true
+      },
+      {
+        "nome": "as_fichas_e2e_com_instante_sao_todas_anteriores_a_versao_atual_do_ar",
+        "medido": [
+          true,
+          32,
+          32
+        ],
+        "esperado": [
+          true,
+          32,
+          32
+        ],
+        "ok": true
+      },
+      {
+        "nome": "a_jornada_c7_registra_doze_testes_cinco_verdes_e_sete_vermelhos",
+        "medido": [
+          5,
+          7,
+          12
+        ],
+        "esperado": [
+          5,
+          7,
+          12
+        ],
+        "ok": true
+      },
+      {
+        "nome": "o_resumo_bate_com_a_lista_de_testes_campo_a_campo",
+        "medido": [
+          12,
+          5,
+          7,
+          7
+        ],
+        "esperado": [
+          12,
+          5,
+          7,
+          7
+        ],
+        "ok": true
+      },
+      {
+        "nome": "nenhum_teste_da_jornada_fica_sem_classe_de_estado",
+        "medido": [
+          0,
+          12
+        ],
+        "esperado": [
+          0,
+          12
+        ],
+        "ok": true
+      },
+      {
+        "nome": "cada_ficha_de_disco_citada_na_celula_pen15_esta_no_indice_a_celula_cita_alguma_e_a_rua_fabricada_cai_fora",
+        "medido": [
+          0,
+          true,
+          1
+        ],
+        "esperado": [
+          0,
+          true,
+          1
+        ],
+        "ok": true
+      },
+      {
+        "nome": "as_cinco_mesas_do_cenario_sao_lidas_do_produtor_e_o_nome_fabricado_nao_casa",
+        "medido": [
+          5,
+          true,
+          false
+        ],
+        "esperado": [
+          5,
+          true,
+          false
+        ],
+        "ok": true
+      },
+      {
+        "nome": "os_tres_tokens_de_papel_estao_registrados_na_ficha",
+        "medido": [
+          "T0_DIR_TOKEN",
+          "T0_COORD_TOKEN",
+          "T0_SECR_TOKEN"
+        ],
+        "esperado": [
+          "T0_DIR_TOKEN",
+          "T0_COORD_TOKEN",
+          "T0_SECR_TOKEN"
+        ],
+        "ok": true
+      },
+      {
+        "nome": "as_tres_lacunas_registradas_tem_prova_de_correcao_e_dos_cinco_testes_vermelhos_duas_falhas_ficam_sem_prova",
+        "medido": [
+          [
+            "1",
+            "2",
+            "3"
+          ],
+          [
+            "1",
+            "2",
+            "3"
+          ],
+          [
+            "T1",
+            "T2",
+            "T4"
+          ],
+          5,
+          [
+            "T3:1",
+            "T5:1"
+          ],
+          [
+            "T3",
+            "T5"
+          ]
+        ],
+        "esperado": [
+          [
+            "1",
+            "2",
+            "3"
+          ],
+          [
+            "1",
+            "2",
+            "3"
+          ],
+          [
+            "T1",
+            "T2",
+            "T4"
+          ],
+          5,
+          [
+            "T3:1",
+            "T5:1"
+          ],
+          [
+            "T3",
+            "T5"
+          ]
+        ],
+        "ok": true
+      },
+      {
+        "nome": "os_digitos_de_lacuna_tem_disparador_em_nome_fabricado_e_em_nome_sem_numero",
+        "medido": [
+          "1",
+          "2",
+          "3",
+          "sem_digito"
+        ],
+        "esperado": [
+          "1",
+          "2",
+          "3",
+          "sem_digito"
+        ],
+        "ok": true
+      },
+      {
+        "nome": "nenhuma_ficha_de_jornada_e_posterior_a_prova_de_08-11_e_a_folga_entre_as_tres_e_de_um_dia",
+        "medido": [
+          true,
+          true,
+          0
+        ],
+        "esperado": [
+          true,
+          true,
+          0
+        ],
+        "ok": true
+      },
+      {
+        "nome": "a_peca_da_jornada_le_um_ficheiro_de_contas_que_tambem_esta_fora_do_indice",
+        "medido": [
+          {
+            "caminho": "docs/c7-accounts.json",
+            "classe": "IGNORADO"
+          },
+          {
+            "caminho": "docs/c7-fixtures.json",
+            "classe": "VERSIONADO"
+          }
+        ],
+        "esperado": [
+          {
+            "caminho": "docs/c7-accounts.json",
+            "classe": "IGNORADO"
+          },
+          {
+            "caminho": "docs/c7-fixtures.json",
+            "classe": "VERSIONADO"
+          }
+        ],
+        "ok": true
+      },
+      {
+        "nome": "esta_peca_nao_abre_nenhuma_ficha_de_jornada_ignorada",
+        "medido": [
+          0,
+          1
+        ],
+        "esperado": [
+          0,
+          1
+        ],
+        "ok": true
+      },
+      {
+        "nome": "a_limpeza_c7_registra_nove_portoes_nove_falhas_e_a_causa_do_aborto_fica_na_ficha",
+        "medido": [
+          9,
+          9,
+          true
+        ],
+        "esperado": [
+          9,
+          9,
+          true
+        ],
+        "ok": true
+      },
+      {
+        "nome": "cada_teste_vermelho_da_jornada_ou_ja_tem_prova_de_correcao_ou_esta_entre_os_nao_executados",
+        "medido": [
+          5,
+          5
+        ],
+        "esperado": [
+          5,
+          5
+        ],
+        "ok": true
+      },
+      {
+        "nome": "nenhuma_peca_e_nenhum_artefacto_de_carga_de_desempenho_no_indice",
+        "medido": [
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        ],
+        "esperado": [
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        ],
+        "ok": true
+      },
+      {
+        "nome": "as_seis_classes_de_carga_imprimem_se_com_o_numero_mesmo_quando_e_zero",
+        "medido": [
+          {
+            "k6": 0,
+            "artillery": 0,
+            "stress": 0,
+            "carga": 0,
+            "pressao": 0,
+            "load_test": 0
+          },
+          true,
+          [
+            2,
+            1,
+            1,
+            2,
+            1,
+            1
+          ]
+        ],
+        "esperado": [
+          {
+            "k6": 0,
+            "artillery": 0,
+            "stress": 0,
+            "carga": 0,
+            "pressao": 0,
+            "load_test": 0
+          },
+          true,
+          [
+            2,
+            1,
+            1,
+            2,
+            1,
+            1
+          ]
+        ],
+        "ok": true
+      },
+      {
+        "nome": "a_regua_naiva_de_substring_conta_dois_nomes_e_ambos_sao_explicados_por_que_casam",
+        "medido": [
+          2,
+          [
+            "download",
+            "payload"
+          ]
+        ],
+        "esperado": [
+          2,
+          [
+            "download",
+            "payload"
+          ]
+        ],
+        "ok": true
+      },
+      {
+        "nome": "a_regua_naiva_tambem_corre_sobre_os_ignorados_e_todas_as_ocorrencias_sao_perfis_de_browser",
+        "medido": [
+          true,
+          true,
+          []
+        ],
+        "esperado": [
+          true,
+          true,
+          []
+        ],
+        "ok": true
+      },
+      {
+        "nome": "a_celula_pen21_afirma_nunca_executado_e_nao_ha_instrumento_para_o_executar",
+        "medido": [
+          true,
+          0,
+          [
+            "RM-4.6",
+            "RM-6.4"
+          ]
+        ],
+        "esperado": [
+          true,
+          0,
+          [
+            "RM-4.6",
+            "RM-6.4"
+          ]
+        ],
+        "ok": true
+      }
+    ]
+  },
+  "estado": "MEDIDO",
+  "veredito_final": "P166_CENSO_MEDIDO 47/0"
+}

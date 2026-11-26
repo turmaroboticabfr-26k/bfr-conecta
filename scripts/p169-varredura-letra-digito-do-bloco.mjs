@@ -177,6 +177,7 @@ const linhaDoInicioNoFicheiro = linhaEColuna(bruto, inicio).linha;
 say('QUADRO_DA_LINHA ' + JSON.stringify(q) + ' bloco_inicio_linha_no_ficheiro=' + linhaDoInicioNoFicheiro);
 say('POSICOES_DISTINTAS=' + posDistintas + ' de ' + ocorrencias.length + ' ocorrencias se_fosse_por_agulha_regra_velha=' + porAgulhaVelha);
 if (ocorrencias.length > 0 && posDistintas !== ocorrencias.length) throw new Error('ABORTA: a localizacao por ocorrencia deu ' + posDistintas + ' posicoes para ' + ocorrencias.length + ' ocorrencias -- sem posicao por linha o onde nao e medido');
+say('TABELAS_DECLARADAS [ADJ OFENSOR] · cada fila e uma medida sua, declaracao lida pela regua de cifras em duo do p168');
 ocorrencias.forEach((o, k) => {
   const lc = linhaEColuna(varrido, o.i);
   const linhaFicheiro = q.linha_e_do_bruto ? linhaDoInicioNoFicheiro + lc.linha - 1 : 'nao_derivavel';

@@ -78,14 +78,29 @@ function duoDeCifras(L) {
   return fora;
 }
 function soMedidas(L) {
+  // Uma tabela de casos repete `linha`, `coluna`, `obtido` linha a linha por construcao: cada fila e uma medida sua.
+  // Quem imprime tabelas declara os prefixos das suas filas numa linha `TABELAS_DECLARADAS [TOKEN TOKEN]` — a lista
+  // e lida do ARTEFACTO, nunca lembrada por esta régua, e so exclui filas comecadas por um token declarado. As linhas
+  // de medida (`alvo=`, `CANDIDATOS…=`) nao tem token, logo uma declaracao nao pode esconder uma cifra dupla que
+  // viva nelas: isso e o fixture E3. Uma declaracao sem fila correspondente imprime-se como censo, nao como vermelho,
+  // porque zero ofensores duma classe legitima e o resultado honesto de um ficheiro limpo.
+  const declaradas = new Set();
+  for (const l of L) {
+    const m = /^TABELAS_DECLARADAS \[([A-Z0-9 ]*)\]/.exec(l);
+    if (m) for (const t of m[1].trim().split(/\s+/)) if (t) declaradas.add(t);
+  }
+  const usos = {};
   const kept = [];
   let excluidas = 0;
+  let excluidas_por_declaracao = 0;
   for (const l of L) {
     const primeira = (l.match(/([a-zA-Z_][a-zA-Z0-9_]*)=/) || [null, ''])[1];
+    const token = (l.match(/^([A-Z][A-Z0-9]*) /) || [null, ''])[1];
     if (/^portao/.test(primeira)) excluidas++;
+    else if (token && declaradas.has(token)) { excluidas_por_declaracao++; usos[token] = (usos[token] || 0) + 1; }
     else kept.push(l);
   }
-  return { kept, excluidas };
+  return { kept, excluidas, excluidas_por_declaracao, declaradas: Array.from(declaradas).sort(), declaracoes_sem_fila: Array.from(declaradas).filter((t) => !usos[t]).sort() };
 }
 // Uma cifra dupla so e defeito dentro de UMA medida. Os artefactos de uma medida comecam por `alvo=` e fecham-se na
 // primeira linha de veredicto da familia `P<tres digitos>_`; as tabelas de casos (fixtures, tautologia) repetem
@@ -104,8 +119,8 @@ function regiaoDeMedida(L) {
 function duoNaRegiao(L) {
   const reg = regiaoDeMedida(L);
   if (!reg) return null;
-  const { kept, excluidas } = soMedidas(reg.corpo);
-  return { kept, excluidas, fecha_em: reg.fecha_em, cobre_o_fim: reg.cobre_o_fim, fora: duoDeCifras(kept) };
+  const { kept, excluidas, excluidas_por_declaracao, declaradas, declaracoes_sem_fila } = soMedidas(reg.corpo);
+  return { kept, excluidas, excluidas_por_declaracao, declaradas, declaracoes_sem_fila, fecha_em: reg.fecha_em, cobre_o_fim: reg.cobre_o_fim, fora: duoDeCifras(kept) };
 }
 function corpoDe(r, veredicto) {
   return r.linhas.join('\n') + '\n' + r.portoes.join('\n') + '\n' + veredicto + '\n';
@@ -136,7 +151,7 @@ if (process.argv.includes('--duo')) {
     console.log('P168_DUO_FORA_DO_DOMINIO');
     process.exit(0);
   }
-  console.log('DUO em=' + alvoDuo + ' linhas=' + L.length + ' varridas=' + m.kept.length + ' excluidas_por_portao=' + m.excluidas + ' regiao_fecha_em=' + m.fecha_em + ' regiao_cobre_o_fim=' + m.cobre_o_fim + ' cifras_em_duo=' + m.fora.length + ' listas=' + JSON.stringify(m.fora));
+  console.log('DUO em=' + alvoDuo + ' linhas=' + L.length + ' varridas=' + m.kept.length + ' excluidas_por_portao=' + m.excluidas + ' tabelas_declaradas=' + JSON.stringify(m.declaradas) + ' filas_de_caso_excluidas=' + m.excluidas_por_declaracao + ' declaracoes_sem_fila=' + JSON.stringify(m.declaracoes_sem_fila) + ' regiao_fecha_em=' + m.fecha_em + ' regiao_cobre_o_fim=' + m.cobre_o_fim + ' cifras_em_duo=' + m.fora.length + ' listas=' + JSON.stringify(m.fora));
   console.log(m.fora.length > 0 ? 'P168_DUO_DE_CIFRAS_ACHADO' : 'P168_DUO_DE_CIFRAS_NENHUM');
   process.exit(0);
 }
@@ -370,6 +385,24 @@ if (process.argv.includes('--fixtures')) {
   if (!dCorrigida || dCorrigida.fora.length !== 0) throw new Error('ABORTA: o layout corrigido ainda aparece com cifra dupla, deu ' + JSON.stringify(dCorrigida && dCorrigida.fora));
   if (dTabela !== null) throw new Error('ABORTA: a regua tratou uma tabela de casos como uma medida, o que faria dela uma regua que chumba classe legitima');
   if (dColisao.excluidas !== 1) throw new Error('ABORTA: a linha de portao nao foi excluida pelo nome, deu ' + dColisao.excluidas);
+  // A face (e) do §SM.77: as filas duma tabela de casos repetem `linha` e `char_varrido` por construcao, e a regua
+  // julgava-as uma medida. Quem imprime as filas declara os prefixos numa linha `TABELAS_DECLARADAS [TOKEN …]` e a
+  // regua le a lista do proprio artefacto. Os quatro fixtures separam as quatro coisas que a declaracao pode fazer,
+  // cada uma com o seu contra-exemplo: com declaracao as filas saem, sem declaracao as mesmas filas dao vermelho
+  // (logo e a declaracao que julga, nao a regua afrouxada), uma cifra dupla numa linha de MEDIDA continua vermelha
+  // com declaracao presente (a declaracao nao serve para esconder), e uma declaracao sem fila imprime-se como censo
+  // e nao como vermelho, porque zero ofensores duma classe legitima e o resultado honesto dum ficheiro limpo.
+  const DECL = 'TABELAS_DECLARADAS [ADJ OFENSOR]';
+  const FILAS = ['ADJ #1/2 [2a] linha=5 char_varrido=90', 'ADJ #2/2 [3b] linha=9 char_varrido=140'];
+  const dE1 = duoNaRegiao([CAB, 'CANDIDATOS=2 POSICOES_DISTINTAS=2', DECL].concat(FILAS, [LIN_VEREDICTO]));
+  const dE2 = duoNaRegiao([CAB, 'CANDIDATOS=2 POSICOES_DISTINTAS=2'].concat(FILAS, [LIN_VEREDICTO]));
+  const dE3 = duoNaRegiao([CAB, 'CANDIDATOS=2', DECL].concat(FILAS, ['CANDIDATOS=7', LIN_VEREDICTO]));
+  const dE4 = duoNaRegiao([CAB, 'FORA_DO_LATINO=0', DECL, LIN_VEREDICTO]);
+  console.log('PROVA_DUO_DE_TABELAS com_declaracao_fora=' + dE1.fora.length + ' filas_excluidas=' + dE1.excluidas_por_declaracao + ' declaradas_lidas=' + JSON.stringify(dE1.declaradas) + ' sem_declaracao_fora=' + dE2.fora.length + ' dupla_em_linha_de_medida_com_declaracao_fora=' + dE3.fora.length + ' declaracao_sem_fila_sem_ocorrencia=' + JSON.stringify(dE4.declaracoes_sem_fila) + ' declaracao_sem_fila_fora=' + dE4.fora.length);
+  if (dE1.fora.length !== 0 || dE1.excluidas_por_declaracao !== 2) throw new Error('ABORTA: com a declaracao presente as filas ainda foram julgadas como uma medida (fora=' + dE1.fora.length + ', filas=' + dE1.excluidas_por_declaracao + ')');
+  if (dE2.fora.length === 0) throw new Error('ABORTA: sem declaracao as MESMAS filas deram o mesmo veredicto — entao nao era a declaracao que mudava o julgamento, era a regua que tinha deixado de medir');
+  if (dE3.fora.length !== 1) throw new Error('ABORTA: uma cifra dupla numa linha de medida desapareceu por haver declaracao de tabela no artefacto — a declaracao serviria para esconder, deu ' + JSON.stringify(dE3.fora));
+  if (dE4.fora.length !== 0 || dE4.declaracoes_sem_fila.length !== 2) throw new Error('ABORTA: uma declaracao sem fila nao foi censada como censo (sem_ocorrencia=' + JSON.stringify(dE4.declaracoes_sem_fila) + ', fora=' + dE4.fora.length + ')');
   for (const [nome, h, d, esperaAborto, alvo, opcao] of casos) {
     let abortou = false;
     let msg = '';

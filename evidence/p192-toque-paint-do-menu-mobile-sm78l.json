@@ -1,0 +1,474 @@
+{
+  "ciclo": "SM.78-PEN01",
+  "em": "2026-11-26T20:57:45.211Z",
+  "papel": "secretary",
+  "id_conta": "839e1f87",
+  "url": "https://bfr-conecta.turmaroboticabfr.workers.dev/",
+  "larguras": [
+    430
+  ],
+  "altura": 720,
+  "janela_inativa_ms": 30000,
+  "emissor_p192": {
+    "caminho": "scripts/p192-toque-paint-do-menu-mobile.mjs",
+    "bytes": 50032,
+    "md5": "29ce54f5a1a3acfb64371bf2993b5e51"
+  },
+  "ar": {
+    "bytes": 3557197,
+    "md5": "573de00016fe2d9b87e671bb84d21559",
+    "declarada_por": "ah2-sonda-portas-por-papel-sm77tq2.json",
+    "em_registo": "2026-11-26T19:06:53.365Z",
+    "bate_com_o_registo_mais_novo": true
+  },
+  "previsao_estatica_do_menu": {
+    "registo": "ag5-rm21-timers-17-11.json",
+    "em_registo": "2026-11-17T03:04:40.272Z",
+    "ar_desse_registo": "7044c8c02368fbc2a99edc1b366e2326",
+    "periodos_ms": [
+      1200,
+      900
+    ],
+    "escritas_esperadas_na_janela": 58
+  },
+  "definicao_de_destino": "window.__p192_destino se existir, senao BFR_APP_RUNTIME.activeSection|activeView — o marco da latencia decisiva e o quadro em que este valor muda, registado pelo laco de quadros e nao por um leitor dentro do touchstart",
+  "observacao_da_pagina": "desde o ARMAR corre um laco de requestAnimationFrame que so le o destino e carimba as mudancas; nao escreve no DOM. As latencias saem da clock da pagina (performance.now e timeStamp do evento), porque a amostragem do lado do Node, a 600 ms como no ah2-mobile2, nao distingue 200 ms de 1200 ms.",
+  "limite_de_atribuicao": "uma mudanca de destino posta por um escritor periodico dentro da janela do toque seria atribuida ao toque; por isso a mesma ficha traz as mudancas de destino contadas na janela quieta, sem toque.",
+  "bandas": {
+    "w430": {
+      "largura": 430,
+      "ms_ready": 1113,
+      "estado_mobile": {
+        "presentation": "mobile",
+        "body_mobile": true,
+        "barra_existe": true,
+        "rotas": [
+          {
+            "rota": "inicio",
+            "largura": 80,
+            "altura": 61,
+            "texto": "🏠Início"
+          },
+          {
+            "rota": "secretaria",
+            "largura": 80,
+            "altura": 61,
+            "texto": "▥Secretaria de Edu"
+          },
+          {
+            "rota": "comunicacao",
+            "largura": 80,
+            "altura": 61,
+            "texto": "📢Comunicação"
+          },
+          {
+            "rota": "comunicados",
+            "largura": 80,
+            "altura": 61,
+            "texto": "📣Avisos"
+          },
+          {
+            "rota": "more",
+            "largura": 80,
+            "altura": 61,
+            "texto": "⋯Mais"
+          }
+        ],
+        "hamb": true,
+        "gaveta_existe": true,
+        "gaveta_classes": "bfr-mobile-drawer",
+        "gaveta_display": "block",
+        "vw": 430,
+        "destino": "inicio|secretary"
+      },
+      "modal_ao_chegar": [
+        {
+          "id": "preferredNameModal",
+          "classes": "modal",
+          "caixa": "430x720",
+          "z_index": "1300",
+          "texto": "× PRIMEIRO ACESSO Como você quer ser chamado? Esse nome aparece apenas"
+        }
+      ],
+      "modal_fechou_a_toque": true,
+      "estado_mobile_depois_do_cartao": {
+        "presentation": "mobile",
+        "body_mobile": true,
+        "barra_existe": true,
+        "rotas": [
+          {
+            "rota": "inicio",
+            "largura": 80,
+            "altura": 61,
+            "texto": "🏠Início"
+          },
+          {
+            "rota": "secretaria",
+            "largura": 80,
+            "altura": 61,
+            "texto": "▥Secretaria de Edu"
+          },
+          {
+            "rota": "comunicacao",
+            "largura": 80,
+            "altura": 61,
+            "texto": "📢Comunicação"
+          },
+          {
+            "rota": "comunicados",
+            "largura": 80,
+            "altura": 61,
+            "texto": "📣Avisos"
+          },
+          {
+            "rota": "more",
+            "largura": 80,
+            "altura": 61,
+            "texto": "⋯Mais"
+          }
+        ],
+        "hamb": true,
+        "gaveta_existe": true,
+        "gaveta_classes": "bfr-mobile-drawer",
+        "gaveta_display": "block",
+        "vw": 430,
+        "destino": "inicio|secretary"
+      },
+      "censo_inativo": {
+        "janela_ms": 30000,
+        "mutacoes_total": 6612,
+        "escritas_periodicas_em_controlos": 5305,
+        "mudancas_de_destino_na_janela_quieta": 0,
+        "por_alvo_top": [
+          {
+            "alvo": "button.nav-item",
+            "escritas": 4803,
+            "visivel": false
+          },
+          {
+            "alvo": "img",
+            "escritas": 352,
+            "visivel": false
+          },
+          {
+            "alvo": "p.publish-status",
+            "escritas": 316,
+            "visivel": false
+          },
+          {
+            "alvo": "button.mobile-more-option",
+            "escritas": 300,
+            "visivel": false
+          },
+          {
+            "alvo": "div#bfrMunicipalView.content",
+            "escritas": 200,
+            "visivel": false
+          },
+          {
+            "alvo": "button.hidden",
+            "escritas": 158,
+            "visivel": false
+          },
+          {
+            "alvo": "tr.schedule-complete",
+            "escritas": 96,
+            "visivel": false
+          },
+          {
+            "alvo": "div#authStatus.auth-status",
+            "escritas": 79,
+            "visivel": false
+          },
+          {
+            "alvo": "p#activityPublishStatus.publish-status",
+            "escritas": 79,
+            "visivel": false
+          },
+          {
+            "alvo": "button#liaFab.lia-fab",
+            "escritas": 44,
+            "visivel": false
+          },
+          {
+            "alvo": "div#appShell.app-shell",
+            "escritas": 26,
+            "visivel": true
+          },
+          {
+            "alvo": "div.secretary-workspace",
+            "escritas": 17,
+            "visivel": false
+          }
+        ],
+        "por_atributo": {
+          "class": 224,
+          "src": 176,
+          "alt": 176,
+          "aria-current": 4503,
+          "aria-pressed": 158,
+          "aria-live": 474,
+          "data-parent-nav": 26,
+          "data-mun-apto": 300,
+          "data-mun-vista": 300,
+          "type": 50,
+          "data-student-photo-nav": 50,
+          "data-section": 50
+        },
+        "previsao_lida_do_registo": 58,
+        "divergencia_previsao_medida": 5247
+      },
+      "toques": [
+        {
+          "alvo": "span.bfr-mobile-icon",
+          "texto": "🏠Início",
+          "caixa": {
+            "largura": 80,
+            "altura": 61
+          },
+          "cobridor": null,
+          "gaveta_aberta_antes_do_toque": false,
+          "fechar_gaveta_antes_do_toque": null,
+          "destino_depois": "inicio|secretary",
+          "gaveta_depois": {
+            "classes": "bfr-mobile-drawer",
+            "display": "block"
+          },
+          "destino_antes": "inicio|secretary",
+          "marco_do_evento": true,
+          "primeira_mutacao": 50,
+          "primeira_mutacao_de_controlo": 50,
+          "primeira_frame": 32,
+          "mudou_destino": false,
+          "ms_para_mudar_destino": null
+        },
+        {
+          "alvo": "button",
+          "texto": "▥Secretaria de Edu",
+          "caixa": {
+            "largura": 80,
+            "altura": 61
+          },
+          "cobridor": null,
+          "gaveta_aberta_antes_do_toque": false,
+          "fechar_gaveta_antes_do_toque": null,
+          "destino_depois": "secretaria|secretary",
+          "gaveta_depois": {
+            "classes": "bfr-mobile-drawer",
+            "display": "block"
+          },
+          "destino_antes": "inicio|secretary",
+          "marco_do_evento": true,
+          "primeira_mutacao": 47,
+          "primeira_mutacao_de_controlo": 47,
+          "primeira_frame": 29,
+          "mudou_destino": true,
+          "ms_para_mudar_destino": 46
+        },
+        {
+          "alvo": "span.bfr-mobile-icon",
+          "texto": "📢Comunicação",
+          "caixa": {
+            "largura": 80,
+            "altura": 61
+          },
+          "cobridor": null,
+          "gaveta_aberta_antes_do_toque": false,
+          "fechar_gaveta_antes_do_toque": null,
+          "destino_depois": "comunicacao|secretary",
+          "gaveta_depois": {
+            "classes": "bfr-mobile-drawer",
+            "display": "block"
+          },
+          "destino_antes": "secretaria|secretary",
+          "marco_do_evento": true,
+          "primeira_mutacao": 62,
+          "primeira_mutacao_de_controlo": 62,
+          "primeira_frame": 29,
+          "mudou_destino": true,
+          "ms_para_mudar_destino": 46
+        },
+        {
+          "alvo": "span.bfr-mobile-icon",
+          "texto": "📣Avisos",
+          "caixa": {
+            "largura": 80,
+            "altura": 61
+          },
+          "cobridor": null,
+          "gaveta_aberta_antes_do_toque": false,
+          "fechar_gaveta_antes_do_toque": null,
+          "destino_depois": "comunicados|secretary",
+          "gaveta_depois": {
+            "classes": "bfr-mobile-drawer",
+            "display": "block"
+          },
+          "destino_antes": "comunicacao|secretary",
+          "marco_do_evento": true,
+          "primeira_mutacao": 25,
+          "primeira_mutacao_de_controlo": 25,
+          "primeira_frame": 22,
+          "mudou_destino": true,
+          "ms_para_mudar_destino": 38
+        },
+        {
+          "alvo": "span.bfr-mobile-icon",
+          "texto": "⋯Mais",
+          "caixa": {
+            "largura": 80,
+            "altura": 61
+          },
+          "cobridor": null,
+          "gaveta_aberta_antes_do_toque": false,
+          "fechar_gaveta_antes_do_toque": null,
+          "destino_depois": "comunicados|secretary",
+          "gaveta_depois": {
+            "classes": "bfr-mobile-drawer is-open",
+            "display": "block"
+          },
+          "destino_antes": "comunicados|secretary",
+          "marco_do_evento": true,
+          "primeira_mutacao": 30,
+          "primeira_mutacao_de_controlo": 30,
+          "primeira_frame": 21,
+          "mudou_destino": false,
+          "ms_para_mudar_destino": null
+        },
+        {
+          "alvo": "button.bfr-mobile-menu-button",
+          "texto": "abre-gaveta",
+          "caixa": {
+            "largura": 44,
+            "altura": 44
+          },
+          "cobridor": null,
+          "gaveta_aberta_antes_do_toque": true,
+          "fechar_gaveta_antes_do_toque": {
+            "gesto": "toque_no_fundo_na_direita_do_painel",
+            "ponto": {
+              "x": 368,
+              "y": 360
+            },
+            "rotulo_no_ponto": "button",
+            "classes_depois": "bfr-mobile-drawer",
+            "fechou": true
+          },
+          "destino_depois": "comunicados|secretary",
+          "gaveta_depois": {
+            "classes": "bfr-mobile-drawer is-open",
+            "display": "block"
+          },
+          "destino_antes": "comunicados|secretary",
+          "marco_do_evento": true,
+          "primeira_mutacao": 34,
+          "primeira_mutacao_de_controlo": 34,
+          "primeira_frame": 27,
+          "mudou_destino": false,
+          "ms_para_mudar_destino": null
+        }
+      ],
+      "latencias": {
+        "ms_para_mudar_destino": [
+          46,
+          46,
+          38
+        ],
+        "primeira_frame": [
+          32,
+          29,
+          29,
+          22,
+          21,
+          27
+        ],
+        "primeira_mutacao": [
+          50,
+          47,
+          62,
+          25,
+          30,
+          34
+        ],
+        "primeira_mutacao_de_controlo": [
+          50,
+          47,
+          62,
+          25,
+          30,
+          34
+        ],
+        "toques_sem_mutacao_registada": 0,
+        "toques_em_que_o_destino_nao_mudou": 3,
+        "toques_sem_chegada_a_pagina": 0,
+        "toques_com_cobridor_por_cima": 0,
+        "alvos_sem_toque": 0
+      }
+    }
+  },
+  "fixtures": {
+    "corpos_injectados": {
+      "ARMAR": true,
+      "LIMPAR": true,
+      "LER": true,
+      "ESTADO_MOBILE": true,
+      "PONTO_GAVETA_FECHAVEL": true,
+      "retangulo": true,
+      "controlo_negativo_rejeitado": true
+    },
+    "suporte_event_timing": true,
+    "tarde": {
+      "primeira_mutacao": 419,
+      "mudou_destino": true,
+      "ms_para_mudar_destino": 435,
+      "mutacoes_de_controlo": 1,
+      "marco_do_evento": true
+    },
+    "imediato": {
+      "primeira_mutacao": 3,
+      "mudou_destino": true,
+      "ms_para_mudar_destino": 15,
+      "mutacoes_de_controlo": 1,
+      "marco_do_evento": true
+    },
+    "quieto": {
+      "toques": 0,
+      "mutacoes_de_controlo": 0
+    },
+    "periodico": {
+      "toques": 0,
+      "mutacoes_de_controlo": 24,
+      "mutacoes_total": 24
+    },
+    "visibilidade": {
+      "escondido": false,
+      "mostrado": true
+    }
+  },
+  "cadeia": {
+    "access_bytes": 824,
+    "expira_em_s": 3600,
+    "renovada_à_custa_do_refresh": true
+  },
+  "portoes": 24,
+  "falhas": [],
+  "em_fecho": "2026-11-26T20:58:52.736Z",
+  "veredito_de_aceitacao_rm_2_1": {
+    "aceitacao_lida_do_roadmap": "censo vivo com 0 escritas periodicas residuais",
+    "escritas_soma_das_larguras": 5305,
+    "larguras_com_escritas": 1,
+    "verifica_se": false
+  },
+  "resumo_por_largura": [
+    {
+      "largura": 430,
+      "escritas_periodicas_em_controlos": 5305,
+      "previsao_do_registo": 58,
+      "toques_registados": 6,
+      "toques_sem_chegada_a_pagina": 0,
+      "alvos_sem_toque": 0,
+      "destinos_mudaram": 3,
+      "destinos_nao_mudaram": 3,
+      "mediana_ms_para_mudar_destino": 46
+    }
+  ]
+}

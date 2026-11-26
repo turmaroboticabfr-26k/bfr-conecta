@@ -1,0 +1,240 @@
+{
+  "ciclo": "SM.78-PEN01",
+  "em": "2026-11-26T20:15:39.180Z",
+  "papel": "secretary",
+  "id_conta": "839e1f87",
+  "url": "https://bfr-conecta.turmaroboticabfr.workers.dev/",
+  "larguras": [
+    390
+  ],
+  "altura": 720,
+  "janela_inativa_ms": 30000,
+  "emissor_p192": {
+    "caminho": "scripts/p192-toque-paint-do-menu-mobile.mjs",
+    "bytes": 31498,
+    "md5": "a005a8b43518bd6b539ccee202b052a6"
+  },
+  "ar": {
+    "bytes": 3557197,
+    "md5": "573de00016fe2d9b87e671bb84d21559",
+    "declarada_por": "ah2-sonda-portas-por-papel-sm77tq2.json",
+    "em_registo": "2026-11-26T19:06:53.365Z",
+    "bate_com_o_registo_mais_novo": true
+  },
+  "previsao_estatica_do_menu": {
+    "registo": "ag5-rm21-timers-17-11.json",
+    "em_registo": "2026-11-17T03:04:40.272Z",
+    "ar_desse_registo": "7044c8c02368fbc2a99edc1b366e2326",
+    "periodos_ms": [
+      1200,
+      900
+    ],
+    "escritas_esperadas_na_janela": 58
+  },
+  "definicao_de_destino": "window.__p192_destino se existir, senao BFR_APP_RUNTIME.activeSection|activeView — o marco da latencia decisiva e a frame em que este valor muda",
+  "bandas": {
+    "w390": {
+      "largura": 390,
+      "ms_ready": 1157,
+      "estado_mobile": {
+        "presentation": "mobile",
+        "body_mobile": true,
+        "barra_existe": true,
+        "rotas": [
+          {
+            "rota": "inicio",
+            "largura": 72,
+            "altura": 61,
+            "texto": "🏠Início"
+          },
+          {
+            "rota": "secretaria",
+            "largura": 72,
+            "altura": 61,
+            "texto": "▥Secretaria de Edu"
+          },
+          {
+            "rota": "comunicacao",
+            "largura": 72,
+            "altura": 61,
+            "texto": "📢Comunicação"
+          },
+          {
+            "rota": "comunicados",
+            "largura": 72,
+            "altura": 61,
+            "texto": "📣Avisos"
+          },
+          {
+            "rota": "more",
+            "largura": 72,
+            "altura": 61,
+            "texto": "⋯Mais"
+          }
+        ],
+        "hamb": true,
+        "gaveta_existe": true,
+        "gaveta_classes": "bfr-mobile-drawer",
+        "gaveta_display": "block",
+        "vw": 390,
+        "destino": "inicio|secretary"
+      },
+      "censo_inativo": {
+        "janela_ms": 30000,
+        "mutacoes_total": 6613,
+        "escritas_periodicas_em_controlos": 5305,
+        "por_alvo_top": [
+          {
+            "alvo": "button.nav-item",
+            "escritas": 4803
+          },
+          {
+            "alvo": "img",
+            "escritas": 352
+          },
+          {
+            "alvo": "p.publish-status",
+            "escritas": 316
+          },
+          {
+            "alvo": "button.mobile-more-option",
+            "escritas": 300
+          },
+          {
+            "alvo": "div#bfrMunicipalView.content",
+            "escritas": 200
+          },
+          {
+            "alvo": "button.hidden",
+            "escritas": 158
+          },
+          {
+            "alvo": "tr.schedule-complete",
+            "escritas": 88
+          },
+          {
+            "alvo": "div#authStatus.auth-status",
+            "escritas": 79
+          },
+          {
+            "alvo": "p#activityPublishStatus.publish-status",
+            "escritas": 79
+          },
+          {
+            "alvo": "button#liaFab.lia-fab",
+            "escritas": 44
+          },
+          {
+            "alvo": "div#appShell.app-shell",
+            "escritas": 26
+          },
+          {
+            "alvo": "div.secretary-workspace",
+            "escritas": 17
+          }
+        ],
+        "por_atributo": {
+          "aria-current": 4503,
+          "aria-pressed": 158,
+          "aria-live": 474,
+          "type": 50,
+          "class": 224,
+          "data-student-photo-nav": 50,
+          "data-section": 50,
+          "src": 176,
+          "alt": 176,
+          "data-digital-media-observed": 1,
+          "data-mun-apto": 300,
+          "data-mun-vista": 300,
+          "data-parent-nav": 26
+        },
+        "previsao_lida_do_registo": 58,
+        "divergencia_previsao_medida": 5247
+      },
+      "toques": [
+        {
+          "alvo": "rota:inicio",
+          "motivo": "tapado_por_p"
+        },
+        {
+          "alvo": "rota:secretaria",
+          "motivo": "tapado_por_p"
+        },
+        {
+          "alvo": "rota:comunicacao",
+          "motivo": "tapado_por_p"
+        },
+        {
+          "alvo": "rota:comunicados",
+          "motivo": "tapado_por_p"
+        },
+        {
+          "alvo": "rota:more",
+          "motivo": "tapado_por_p"
+        },
+        {
+          "alvo": "hamburger",
+          "motivo": "tapado_por_div"
+        }
+      ],
+      "latencias": {
+        "ms_para_mudar_destino": [],
+        "primeira_frame": [],
+        "primeira_mutacao": [],
+        "primeira_mutacao_de_controlo": [],
+        "toques_sem_mutacao_registada": 0,
+        "toques_em_que_o_destino_nao_mudou": 0
+      }
+    }
+  },
+  "fixtures": {
+    "suporte_event_timing": true,
+    "tarde": {
+      "primeira_mutacao": 407,
+      "mudou_destino": true,
+      "ms_para_mudar_destino": 408,
+      "mutacoes_de_controlo": 1
+    },
+    "imediato": {
+      "primeira_mutacao": null,
+      "mudou_destino": null,
+      "ms_para_mudar_destino": null
+    },
+    "quieto": {
+      "toques": 0,
+      "mutacoes_de_controlo": 0
+    },
+    "periodico": {
+      "toques": 0,
+      "mutacoes_de_controlo": 24,
+      "mutacoes_total": 24
+    }
+  },
+  "cadeia": {
+    "access_bytes": 824,
+    "expira_em_s": 3600,
+    "renovada_à_custa_do_refresh": true
+  },
+  "portoes": 7,
+  "falhas": [
+    "fixture do toque imediato: o marco do destino tem positivo | dado=false | esperado=true"
+  ],
+  "em_fecho": "2026-11-26T20:16:22.242Z",
+  "veredito_de_aceitacao_rm_2_1": {
+    "aceitacao_lida_do_roadmap": "censo vivo com 0 escritas periodicas residuais",
+    "escritas_soma_das_larguras": 5305,
+    "larguras_com_escritas": 1,
+    "verifica_se": false
+  },
+  "resumo_por_largura": [
+    {
+      "largura": 390,
+      "escritas_periodicas_em_controlos": 5305,
+      "previsao_do_registo": 58,
+      "toques_registados": 0,
+      "destinos_mudaram": 0,
+      "destinos_nao_mudaram": 0,
+      "mediana_ms_para_mudar_destino": null
+    }
+  ]
+}

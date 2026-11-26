@@ -1,0 +1,1757 @@
+{
+  "peca": "scripts/p193-falha-visivel-do-home-do-aluno.mjs",
+  "emissor": {
+    "caminho": "scripts/p193-falha-visivel-do-home-do-aluno.mjs",
+    "bytes": 44255,
+    "md5": "7daba7c2d87014b5a467448a0df379e2"
+  },
+  "em": "2026-11-26T21:28:15.540Z",
+  "ciclo": "sm78a",
+  "papel": "student",
+  "largura": 1280,
+  "altura": 900,
+  "espera_ms": 5000,
+  "ar": {
+    "url": "https://bfr-conecta.turmaroboticabfr.workers.dev/",
+    "bytes": 3557197,
+    "md5": "573de00016fe2d9b87e671bb84d21559",
+    "declarado_por": "ah2-sonda-portas-por-papel-sm77tq2.json",
+    "bytes_locais": 3557197,
+    "md5_local": "573de00016fe2d9b87e671bb84d21559",
+    "bate_com_o_registo_mais_novo": true,
+    "bate_com_os_bytes_locais": true
+  },
+  "alvos": {
+    "selectors": {
+      "espaco_erro": ".bfr-student-error",
+      "espaco_refresh": "[data-student-refresh]",
+      "aprender_alerta_host": "[data-results-alert]",
+      "aprender_alerta": ".bfr-results-alert",
+      "aprender_pill": ".bfr-results-pill",
+      "regiao_espaco": "#platformSpaceView",
+      "regiao_aprender": "#platformLearnView",
+      "regiao_home": "#appShell .content:not(.hidden)",
+      "nav_espaco": "[data-platform-area=\"meu-espaco\"]",
+      "nav_aprender": "[data-platform-area=\"aprender\"]",
+      "nav_inicio": "[data-platform-area=\"inicio\"]"
+    },
+    "mensagens": {
+      "espaco_vinculo": "Não foi possível verificar seu vínculo escolar.",
+      "espaco_cadastro": "O cadastro do aluno não está disponível neste momento.",
+      "espaco_atualizar": "Não foi possível atualizar seu espaço agora.",
+      "espaco_parcial": "Alguns blocos não puderam ser atualizados. Os demais dados continuam disponíveis.",
+      "espaco_sem_vinculo": "Ainda não encontramos um aluno vinculado a esta conta.",
+      "aprender_vinculo": "Não foi possível confirmar o vínculo escolar.",
+      "aprender_cadastro": "O cadastro do estudante não pôde ser carregado.",
+      "aprender_turma": "A turma do estudante não pôde ser carregada.",
+      "aprender_oficiais": "Alguns registros oficiais ainda não estão disponíveis.",
+      "aprender_geral": "Alguns dados não puderam ser carregados. A tela não inventa números",
+      "pill_faltando": "com dados faltando",
+      "pill_carregados": "dados carregados",
+      "pill_atualizando": "atualizando",
+      "botao_repetir": "Tentar novamente"
+    },
+    "contagens_nos_bytes_servidos": {
+      "espaco_vinculo": 1,
+      "espaco_cadastro": 1,
+      "espaco_atualizar": 1,
+      "espaco_parcial": 1,
+      "espaco_sem_vinculo": 1,
+      "aprender_vinculo": 1,
+      "aprender_cadastro": 1,
+      "aprender_turma": 1,
+      "aprender_oficiais": 1,
+      "aprender_geral": 1,
+      "pill_faltando": 1,
+      "pill_carregados": 10,
+      "pill_atualizando": 5,
+      "botao_repetir": 13
+    }
+  },
+  "celulas": {
+    "inicio-controle": {
+      "id": "inicio-controle",
+      "area": "inicio",
+      "modo": "controle",
+      "ms_ready": 734,
+      "armado_no_documento": true,
+      "chegada": {
+        "via": "toque_no_botao_da_area",
+        "caixa_do_botao": "192x41"
+      },
+      "pedidos": {
+        "total": 22,
+        "fora_do_rest": 3,
+        "tabelas": {
+          "rest/v1/profiles": 1,
+          "rest/v1/guardian_students": 2,
+          "rest/v1/classes": 1,
+          "rest/v1/school_activities": 1,
+          "rest/v1/projects": 1,
+          "rest/v1/project_photos": 1,
+          "rest/v1/announcements": 2,
+          "rest/v1/school_events": 2,
+          "rest/v1/notification_preferences": 1,
+          "rest/v1/students": 1,
+          "rest/v1/gate_badges": 1,
+          "rest/v1/project_results": 1,
+          "rest/v1/school_notification_reads": 1,
+          "rest/v1/school_videos": 1,
+          "rest/v1/rpc": 2
+        },
+        "falhas_servidas": 0,
+        "falhas_por_modo": {},
+        "armado": true
+      },
+      "alvo_pedido": null,
+      "falhas_no_alvo": 0,
+      "regioes": {
+        "regioes": [
+          {
+            "nome": "home",
+            "selector": "#appShell .content:not(.hidden)",
+            "existe": true,
+            "class_hidden": false,
+            "display": "block",
+            "caixa": "1029x1087",
+            "elementos": 1308,
+            "texto_bytes": 1327,
+            "texto_hash": "1c3b411b",
+            "linhas": 63
+          },
+          {
+            "nome": "espaco",
+            "selector": "#platformSpaceView",
+            "existe": true,
+            "class_hidden": true,
+            "display": "none",
+            "caixa": "0x0",
+            "elementos": 7,
+            "texto_bytes": 224,
+            "texto_hash": "de5e12cb",
+            "linhas": 1
+          },
+          {
+            "nome": "aprender",
+            "selector": "#platformLearnView",
+            "existe": true,
+            "class_hidden": true,
+            "display": "none",
+            "caixa": "0x0",
+            "elementos": 0,
+            "texto_bytes": 0,
+            "texto_hash": "00001505",
+            "linhas": 1
+          }
+        ],
+        "destino": {
+          "activeSection": "inicio",
+          "activeView": "student"
+        },
+        "perfil": "student"
+      },
+      "superficies": [
+        {
+          "nome": "espaco_erro",
+          "selector": ".bfr-student-error",
+          "nos": 0,
+          "visiveis": 0,
+          "zero_caixa": 0,
+          "medidos": []
+        },
+        {
+          "nome": "espaco_botao_repetir",
+          "selector": "[data-student-refresh]",
+          "nos": 0,
+          "visiveis": 0,
+          "zero_caixa": 0,
+          "medidos": []
+        },
+        {
+          "nome": "aprender_alerta",
+          "selector": ".bfr-results-alert",
+          "nos": 0,
+          "visiveis": 0,
+          "zero_caixa": 0,
+          "medidos": []
+        },
+        {
+          "nome": "aprender_pill",
+          "selector": ".bfr-results-pill",
+          "nos": 0,
+          "visiveis": 0,
+          "zero_caixa": 0,
+          "medidos": []
+        }
+      ],
+      "mensagens_visiveis": []
+    },
+    "inicio-falha-rest_v1_announcements": {
+      "id": "inicio-falha-rest_v1_announcements",
+      "area": "inicio",
+      "modo": "rest/v1/announcements",
+      "ms_ready": 446,
+      "armado_no_documento": true,
+      "chegada": {
+        "via": "toque_no_botao_da_area",
+        "caixa_do_botao": "192x41"
+      },
+      "pedidos": {
+        "total": 22,
+        "fora_do_rest": 3,
+        "tabelas": {
+          "rest/v1/profiles": 1,
+          "rest/v1/guardian_students": 2,
+          "rest/v1/classes": 1,
+          "rest/v1/school_activities": 1,
+          "rest/v1/projects": 1,
+          "rest/v1/project_photos": 1,
+          "rest/v1/announcements": 2,
+          "rest/v1/school_events": 2,
+          "rest/v1/notification_preferences": 1,
+          "rest/v1/students": 1,
+          "rest/v1/gate_badges": 1,
+          "rest/v1/project_results": 1,
+          "rest/v1/school_notification_reads": 1,
+          "rest/v1/school_videos": 1,
+          "rest/v1/rpc": 2
+        },
+        "falhas_servidas": 2,
+        "falhas_por_modo": {
+          "rest/v1/announcements": 2
+        },
+        "armado": true
+      },
+      "alvo_pedido": true,
+      "falhas_no_alvo": 2,
+      "regioes": {
+        "regioes": [
+          {
+            "nome": "home",
+            "selector": "#appShell .content:not(.hidden)",
+            "existe": true,
+            "class_hidden": false,
+            "display": "block",
+            "caixa": "1029x1087",
+            "elementos": 1316,
+            "texto_bytes": 1327,
+            "texto_hash": "1c3b411b",
+            "linhas": 63
+          },
+          {
+            "nome": "espaco",
+            "selector": "#platformSpaceView",
+            "existe": true,
+            "class_hidden": true,
+            "display": "none",
+            "caixa": "0x0",
+            "elementos": 7,
+            "texto_bytes": 224,
+            "texto_hash": "de5e12cb",
+            "linhas": 1
+          },
+          {
+            "nome": "aprender",
+            "selector": "#platformLearnView",
+            "existe": true,
+            "class_hidden": true,
+            "display": "none",
+            "caixa": "0x0",
+            "elementos": 0,
+            "texto_bytes": 0,
+            "texto_hash": "00001505",
+            "linhas": 1
+          }
+        ],
+        "destino": {
+          "activeSection": "inicio",
+          "activeView": "student"
+        },
+        "perfil": "student"
+      },
+      "superficies": [
+        {
+          "nome": "espaco_erro",
+          "selector": ".bfr-student-error",
+          "nos": 0,
+          "visiveis": 0,
+          "zero_caixa": 0,
+          "medidos": []
+        },
+        {
+          "nome": "espaco_botao_repetir",
+          "selector": "[data-student-refresh]",
+          "nos": 0,
+          "visiveis": 0,
+          "zero_caixa": 0,
+          "medidos": []
+        },
+        {
+          "nome": "aprender_alerta",
+          "selector": ".bfr-results-alert",
+          "nos": 0,
+          "visiveis": 0,
+          "zero_caixa": 0,
+          "medidos": []
+        },
+        {
+          "nome": "aprender_pill",
+          "selector": ".bfr-results-pill",
+          "nos": 0,
+          "visiveis": 0,
+          "zero_caixa": 0,
+          "medidos": []
+        }
+      ],
+      "mensagens_visiveis": []
+    },
+    "inicio-falha-rest_v1_guardian_students": {
+      "id": "inicio-falha-rest_v1_guardian_students",
+      "area": "inicio",
+      "modo": "rest/v1/guardian_students",
+      "ms_ready": 372,
+      "armado_no_documento": true,
+      "chegada": {
+        "via": "fallback_api",
+        "resultado_da_api": "true",
+        "motivo": "tapado_por_bfr-paint-hold uniesco-splash-out"
+      },
+      "pedidos": {
+        "total": 22,
+        "fora_do_rest": 3,
+        "tabelas": {
+          "rest/v1/profiles": 1,
+          "rest/v1/guardian_students": 2,
+          "rest/v1/classes": 1,
+          "rest/v1/school_activities": 1,
+          "rest/v1/projects": 1,
+          "rest/v1/project_photos": 1,
+          "rest/v1/announcements": 2,
+          "rest/v1/school_events": 2,
+          "rest/v1/notification_preferences": 1,
+          "rest/v1/students": 1,
+          "rest/v1/gate_badges": 1,
+          "rest/v1/school_videos": 1,
+          "rest/v1/project_results": 1,
+          "rest/v1/school_notification_reads": 1,
+          "rest/v1/rpc": 2
+        },
+        "falhas_servidas": 2,
+        "falhas_por_modo": {
+          "rest/v1/guardian_students": 2
+        },
+        "armado": true
+      },
+      "alvo_pedido": true,
+      "falhas_no_alvo": 2,
+      "regioes": {
+        "regioes": [
+          {
+            "nome": "home",
+            "selector": "#appShell .content:not(.hidden)",
+            "existe": true,
+            "class_hidden": false,
+            "display": "block",
+            "caixa": "1029x1087",
+            "elementos": 1308,
+            "texto_bytes": 1329,
+            "texto_hash": "b59b0f27",
+            "linhas": 63
+          },
+          {
+            "nome": "espaco",
+            "selector": "#platformSpaceView",
+            "existe": true,
+            "class_hidden": true,
+            "display": "none",
+            "caixa": "0x0",
+            "elementos": 3,
+            "texto_bytes": 66,
+            "texto_hash": "51424ada",
+            "linhas": 1
+          },
+          {
+            "nome": "aprender",
+            "selector": "#platformLearnView",
+            "existe": true,
+            "class_hidden": true,
+            "display": "none",
+            "caixa": "0x0",
+            "elementos": 0,
+            "texto_bytes": 0,
+            "texto_hash": "00001505",
+            "linhas": 1
+          }
+        ],
+        "destino": {
+          "activeSection": "inicio",
+          "activeView": "student"
+        },
+        "perfil": "student"
+      },
+      "superficies": [
+        {
+          "nome": "espaco_erro",
+          "selector": ".bfr-student-error",
+          "nos": 1,
+          "visiveis": 0,
+          "zero_caixa": 1,
+          "medidos": [
+            {
+              "caixa": "0x0",
+              "largura": 0,
+              "altura": 0,
+              "display": "block",
+              "visibility": "visible",
+              "opacity": "1",
+              "pointer_events": "auto",
+              "offset_parent": false,
+              "aria_live": null,
+              "papel_aria": null,
+              "visivel": false,
+              "texto_bytes": 50,
+              "texto_hash": "53bb2cff",
+              "texto_vazio": false,
+              "tocavel": false,
+              "ponto_fora_ou_tapado": "por_cima_esta_outra_coisa",
+              "mensagem_conhecida": "espaco_vinculo"
+            }
+          ]
+        },
+        {
+          "nome": "espaco_botao_repetir",
+          "selector": "[data-student-refresh]",
+          "nos": 1,
+          "visiveis": 0,
+          "zero_caixa": 1,
+          "medidos": [
+            {
+              "caixa": "0x0",
+              "largura": 0,
+              "altura": 0,
+              "display": "block",
+              "visibility": "visible",
+              "opacity": "1",
+              "pointer_events": "auto",
+              "offset_parent": false,
+              "aria_live": null,
+              "papel_aria": null,
+              "visivel": false,
+              "texto_bytes": 16,
+              "texto_hash": "eb727ee0",
+              "texto_vazio": false,
+              "tocavel": false,
+              "ponto_fora_ou_tapado": "por_cima_esta_outra_coisa",
+              "mensagem_conhecida": "botao_repetir"
+            }
+          ]
+        },
+        {
+          "nome": "aprender_alerta",
+          "selector": ".bfr-results-alert",
+          "nos": 0,
+          "visiveis": 0,
+          "zero_caixa": 0,
+          "medidos": []
+        },
+        {
+          "nome": "aprender_pill",
+          "selector": ".bfr-results-pill",
+          "nos": 0,
+          "visiveis": 0,
+          "zero_caixa": 0,
+          "medidos": []
+        }
+      ],
+      "mensagens_visiveis": []
+    },
+    "inicio-falha-rest_v1_rpc": {
+      "id": "inicio-falha-rest_v1_rpc",
+      "area": "inicio",
+      "modo": "rest/v1/rpc",
+      "ms_ready": 729,
+      "armado_no_documento": true,
+      "chegada": {
+        "via": "toque_no_botao_da_area",
+        "caixa_do_botao": "192x41"
+      },
+      "pedidos": {
+        "total": 22,
+        "fora_do_rest": 3,
+        "tabelas": {
+          "rest/v1/profiles": 1,
+          "rest/v1/guardian_students": 2,
+          "rest/v1/classes": 1,
+          "rest/v1/school_activities": 1,
+          "rest/v1/projects": 1,
+          "rest/v1/project_photos": 1,
+          "rest/v1/announcements": 2,
+          "rest/v1/school_events": 2,
+          "rest/v1/notification_preferences": 1,
+          "rest/v1/students": 1,
+          "rest/v1/gate_badges": 1,
+          "rest/v1/school_videos": 1,
+          "rest/v1/project_results": 1,
+          "rest/v1/school_notification_reads": 1,
+          "rest/v1/rpc": 2
+        },
+        "falhas_servidas": 0,
+        "falhas_por_modo": {},
+        "armado": true
+      },
+      "alvo_pedido": true,
+      "falhas_no_alvo": 0,
+      "regioes": {
+        "regioes": [
+          {
+            "nome": "home",
+            "selector": "#appShell .content:not(.hidden)",
+            "existe": true,
+            "class_hidden": false,
+            "display": "block",
+            "caixa": "1029x1087",
+            "elementos": 1308,
+            "texto_bytes": 1327,
+            "texto_hash": "1c3b411b",
+            "linhas": 63
+          },
+          {
+            "nome": "espaco",
+            "selector": "#platformSpaceView",
+            "existe": true,
+            "class_hidden": true,
+            "display": "none",
+            "caixa": "0x0",
+            "elementos": 7,
+            "texto_bytes": 224,
+            "texto_hash": "de5e12cb",
+            "linhas": 1
+          },
+          {
+            "nome": "aprender",
+            "selector": "#platformLearnView",
+            "existe": true,
+            "class_hidden": true,
+            "display": "none",
+            "caixa": "0x0",
+            "elementos": 0,
+            "texto_bytes": 0,
+            "texto_hash": "00001505",
+            "linhas": 1
+          }
+        ],
+        "destino": {
+          "activeSection": "inicio",
+          "activeView": "student"
+        },
+        "perfil": "student"
+      },
+      "superficies": [
+        {
+          "nome": "espaco_erro",
+          "selector": ".bfr-student-error",
+          "nos": 0,
+          "visiveis": 0,
+          "zero_caixa": 0,
+          "medidos": []
+        },
+        {
+          "nome": "espaco_botao_repetir",
+          "selector": "[data-student-refresh]",
+          "nos": 0,
+          "visiveis": 0,
+          "zero_caixa": 0,
+          "medidos": []
+        },
+        {
+          "nome": "aprender_alerta",
+          "selector": ".bfr-results-alert",
+          "nos": 0,
+          "visiveis": 0,
+          "zero_caixa": 0,
+          "medidos": []
+        },
+        {
+          "nome": "aprender_pill",
+          "selector": ".bfr-results-pill",
+          "nos": 0,
+          "visiveis": 0,
+          "zero_caixa": 0,
+          "medidos": []
+        }
+      ],
+      "mensagens_visiveis": []
+    },
+    "espaco-controle": {
+      "id": "espaco-controle",
+      "area": "meu-espaco",
+      "modo": "controle",
+      "ms_ready": 384,
+      "armado_no_documento": true,
+      "chegada": {
+        "via": "fallback_api",
+        "resultado_da_api": "true",
+        "motivo": "tapado_por_responsibleRegistrationModal"
+      },
+      "pedidos": {
+        "total": 20,
+        "fora_do_rest": 2,
+        "tabelas": {
+          "rest/v1/profiles": 1,
+          "rest/v1/guardian_students": 3,
+          "rest/v1/classes": 1,
+          "rest/v1/school_activities": 1,
+          "rest/v1/projects": 1,
+          "rest/v1/project_photos": 1,
+          "rest/v1/announcements": 2,
+          "rest/v1/school_events": 2,
+          "rest/v1/notification_preferences": 1,
+          "rest/v1/students": 1,
+          "rest/v1/gate_badges": 1,
+          "rest/v1/project_results": 1,
+          "rest/v1/rpc": 1,
+          "rest/v1/school_notification_reads": 1
+        },
+        "falhas_servidas": 0,
+        "falhas_por_modo": {},
+        "armado": true
+      },
+      "alvo_pedido": null,
+      "falhas_no_alvo": 0,
+      "regioes": {
+        "regioes": [
+          {
+            "nome": "home",
+            "selector": "#appShell .content:not(.hidden)",
+            "existe": true,
+            "class_hidden": false,
+            "display": "block",
+            "caixa": "1044x324",
+            "elementos": 7,
+            "texto_bytes": 229,
+            "texto_hash": "2123bc0b",
+            "linhas": 6
+          },
+          {
+            "nome": "espaco",
+            "selector": "#platformSpaceView",
+            "existe": true,
+            "class_hidden": false,
+            "display": "block",
+            "caixa": "1044x324",
+            "elementos": 7,
+            "texto_bytes": 229,
+            "texto_hash": "2123bc0b",
+            "linhas": 6
+          },
+          {
+            "nome": "aprender",
+            "selector": "#platformLearnView",
+            "existe": true,
+            "class_hidden": true,
+            "display": "none",
+            "caixa": "0x0",
+            "elementos": 0,
+            "texto_bytes": 0,
+            "texto_hash": "00001505",
+            "linhas": 1
+          }
+        ],
+        "destino": {
+          "activeSection": "meu-espaco",
+          "activeView": "student"
+        },
+        "perfil": "student"
+      },
+      "superficies": [
+        {
+          "nome": "espaco_erro",
+          "selector": ".bfr-student-error",
+          "nos": 0,
+          "visiveis": 0,
+          "zero_caixa": 0,
+          "medidos": []
+        },
+        {
+          "nome": "espaco_botao_repetir",
+          "selector": "[data-student-refresh]",
+          "nos": 0,
+          "visiveis": 0,
+          "zero_caixa": 0,
+          "medidos": []
+        },
+        {
+          "nome": "aprender_alerta",
+          "selector": ".bfr-results-alert",
+          "nos": 0,
+          "visiveis": 0,
+          "zero_caixa": 0,
+          "medidos": []
+        },
+        {
+          "nome": "aprender_pill",
+          "selector": ".bfr-results-pill",
+          "nos": 0,
+          "visiveis": 0,
+          "zero_caixa": 0,
+          "medidos": []
+        }
+      ],
+      "mensagens_visiveis": []
+    },
+    "espaco-falha-guardian_students": {
+      "id": "espaco-falha-guardian_students",
+      "area": "meu-espaco",
+      "modo": "rest/v1/guardian_students",
+      "ms_ready": 374,
+      "armado_no_documento": true,
+      "chegada": {
+        "via": "fallback_api",
+        "resultado_da_api": "true",
+        "motivo": "tapado_por_bfr-paint-hold uniesco-splash-out"
+      },
+      "pedidos": {
+        "total": 20,
+        "fora_do_rest": 2,
+        "tabelas": {
+          "rest/v1/profiles": 1,
+          "rest/v1/guardian_students": 3,
+          "rest/v1/classes": 1,
+          "rest/v1/school_activities": 1,
+          "rest/v1/projects": 1,
+          "rest/v1/project_photos": 1,
+          "rest/v1/announcements": 2,
+          "rest/v1/school_events": 2,
+          "rest/v1/notification_preferences": 1,
+          "rest/v1/students": 1,
+          "rest/v1/gate_badges": 1,
+          "rest/v1/project_results": 1,
+          "rest/v1/school_notification_reads": 1,
+          "rest/v1/rpc": 1
+        },
+        "falhas_servidas": 3,
+        "falhas_por_modo": {
+          "rest/v1/guardian_students": 3
+        },
+        "armado": true
+      },
+      "alvo_pedido": true,
+      "falhas_no_alvo": 3,
+      "regioes": {
+        "regioes": [
+          {
+            "nome": "home",
+            "selector": "#appShell .content:not(.hidden)",
+            "existe": true,
+            "class_hidden": false,
+            "display": "block",
+            "caixa": "1044x216",
+            "elementos": 3,
+            "texto_bytes": 67,
+            "texto_hash": "1fe7eada",
+            "linhas": 2
+          },
+          {
+            "nome": "espaco",
+            "selector": "#platformSpaceView",
+            "existe": true,
+            "class_hidden": false,
+            "display": "block",
+            "caixa": "1044x216",
+            "elementos": 3,
+            "texto_bytes": 67,
+            "texto_hash": "1fe7eada",
+            "linhas": 2
+          },
+          {
+            "nome": "aprender",
+            "selector": "#platformLearnView",
+            "existe": true,
+            "class_hidden": true,
+            "display": "none",
+            "caixa": "0x0",
+            "elementos": 0,
+            "texto_bytes": 0,
+            "texto_hash": "00001505",
+            "linhas": 1
+          }
+        ],
+        "destino": {
+          "activeSection": "meu-espaco",
+          "activeView": "student"
+        },
+        "perfil": "student"
+      },
+      "superficies": [
+        {
+          "nome": "espaco_erro",
+          "selector": ".bfr-student-error",
+          "nos": 1,
+          "visiveis": 1,
+          "zero_caixa": 0,
+          "medidos": [
+            {
+              "caixa": "967x43",
+              "largura": 967,
+              "altura": 43,
+              "display": "block",
+              "visibility": "visible",
+              "opacity": "1",
+              "pointer_events": "auto",
+              "offset_parent": true,
+              "aria_live": null,
+              "papel_aria": null,
+              "visivel": true,
+              "texto_bytes": 50,
+              "texto_hash": "53bb2cff",
+              "texto_vazio": false,
+              "tocavel": true,
+              "ponto_fora_ou_tapado": null,
+              "mensagem_conhecida": "espaco_vinculo"
+            }
+          ]
+        },
+        {
+          "nome": "espaco_botao_repetir",
+          "selector": "[data-student-refresh]",
+          "nos": 1,
+          "visiveis": 1,
+          "zero_caixa": 0,
+          "medidos": [
+            {
+              "caixa": "967x33",
+              "largura": 967,
+              "altura": 33,
+              "display": "block",
+              "visibility": "visible",
+              "opacity": "1",
+              "pointer_events": "auto",
+              "offset_parent": true,
+              "aria_live": null,
+              "papel_aria": null,
+              "visivel": true,
+              "texto_bytes": 16,
+              "texto_hash": "eb727ee0",
+              "texto_vazio": false,
+              "tocavel": true,
+              "ponto_fora_ou_tapado": null,
+              "mensagem_conhecida": "botao_repetir"
+            }
+          ]
+        },
+        {
+          "nome": "aprender_alerta",
+          "selector": ".bfr-results-alert",
+          "nos": 0,
+          "visiveis": 0,
+          "zero_caixa": 0,
+          "medidos": []
+        },
+        {
+          "nome": "aprender_pill",
+          "selector": ".bfr-results-pill",
+          "nos": 0,
+          "visiveis": 0,
+          "zero_caixa": 0,
+          "medidos": []
+        }
+      ],
+      "mensagens_visiveis": [
+        {
+          "superficie": "espaco_erro",
+          "mensagem": "espaco_vinculo",
+          "bytes": 50,
+          "hash": "53bb2cff",
+          "tocavel": true
+        },
+        {
+          "superficie": "espaco_botao_repetir",
+          "mensagem": "botao_repetir",
+          "bytes": 16,
+          "hash": "eb727ee0",
+          "tocavel": true
+        }
+      ]
+    },
+    "espaco-falha-students": {
+      "id": "espaco-falha-students",
+      "area": "meu-espaco",
+      "modo": "rest/v1/students",
+      "ms_ready": 381,
+      "armado_no_documento": true,
+      "chegada": {
+        "via": "fallback_api",
+        "resultado_da_api": "sem_api_de_rota",
+        "motivo": "tapado_por_responsibleRegistrationModal"
+      },
+      "pedidos": {
+        "total": 21,
+        "fora_do_rest": 3,
+        "tabelas": {
+          "rest/v1/profiles": 1,
+          "rest/v1/guardian_students": 2,
+          "rest/v1/classes": 1,
+          "rest/v1/school_activities": 1,
+          "rest/v1/projects": 1,
+          "rest/v1/project_photos": 1,
+          "rest/v1/announcements": 2,
+          "rest/v1/school_events": 2,
+          "rest/v1/notification_preferences": 1,
+          "rest/v1/students": 1,
+          "rest/v1/gate_badges": 1,
+          "rest/v1/project_results": 1,
+          "rest/v1/school_videos": 1,
+          "rest/v1/rpc": 1,
+          "rest/v1/school_notification_reads": 1
+        },
+        "falhas_servidas": 1,
+        "falhas_por_modo": {
+          "rest/v1/students": 1
+        },
+        "armado": true
+      },
+      "alvo_pedido": true,
+      "falhas_no_alvo": 1,
+      "regioes": {
+        "regioes": [
+          {
+            "nome": "home",
+            "selector": "#appShell .content:not(.hidden)",
+            "existe": true,
+            "class_hidden": false,
+            "display": "block",
+            "caixa": "1029x1200",
+            "elementos": 90,
+            "texto_bytes": 1275,
+            "texto_hash": "de1dda6a",
+            "linhas": 61
+          },
+          {
+            "nome": "espaco",
+            "selector": "#platformSpaceView",
+            "existe": true,
+            "class_hidden": false,
+            "display": "block",
+            "caixa": "1029x1200",
+            "elementos": 90,
+            "texto_bytes": 1275,
+            "texto_hash": "de1dda6a",
+            "linhas": 61
+          },
+          {
+            "nome": "aprender",
+            "selector": "#platformLearnView",
+            "existe": true,
+            "class_hidden": true,
+            "display": "none",
+            "caixa": "0x0",
+            "elementos": 0,
+            "texto_bytes": 0,
+            "texto_hash": "00001505",
+            "linhas": 1
+          }
+        ],
+        "destino": {
+          "activeSection": "meu-espaco",
+          "activeView": "student"
+        },
+        "perfil": "student"
+      },
+      "superficies": [
+        {
+          "nome": "espaco_erro",
+          "selector": ".bfr-student-error",
+          "nos": 0,
+          "visiveis": 0,
+          "zero_caixa": 0,
+          "medidos": []
+        },
+        {
+          "nome": "espaco_botao_repetir",
+          "selector": "[data-student-refresh]",
+          "nos": 0,
+          "visiveis": 0,
+          "zero_caixa": 0,
+          "medidos": []
+        },
+        {
+          "nome": "aprender_alerta",
+          "selector": ".bfr-results-alert",
+          "nos": 0,
+          "visiveis": 0,
+          "zero_caixa": 0,
+          "medidos": []
+        },
+        {
+          "nome": "aprender_pill",
+          "selector": ".bfr-results-pill",
+          "nos": 0,
+          "visiveis": 0,
+          "zero_caixa": 0,
+          "medidos": []
+        }
+      ],
+      "mensagens_visiveis": []
+    },
+    "espaco-falha-grades": {
+      "id": "espaco-falha-grades",
+      "area": "meu-espaco",
+      "modo": "rest/v1/grades",
+      "ms_ready": 380,
+      "armado_no_documento": true,
+      "chegada": {
+        "via": "fallback_api",
+        "resultado_da_api": "true",
+        "motivo": "tapado_por_responsibleRegistrationModal"
+      },
+      "pedidos": {
+        "total": 20,
+        "fora_do_rest": 2,
+        "tabelas": {
+          "rest/v1/profiles": 1,
+          "rest/v1/guardian_students": 3,
+          "rest/v1/classes": 1,
+          "rest/v1/school_activities": 1,
+          "rest/v1/projects": 1,
+          "rest/v1/project_photos": 1,
+          "rest/v1/announcements": 2,
+          "rest/v1/school_events": 2,
+          "rest/v1/notification_preferences": 1,
+          "rest/v1/students": 1,
+          "rest/v1/gate_badges": 1,
+          "rest/v1/project_results": 1,
+          "rest/v1/school_notification_reads": 1,
+          "rest/v1/rpc": 1
+        },
+        "falhas_servidas": 0,
+        "falhas_por_modo": {},
+        "armado": true
+      },
+      "alvo_pedido": false,
+      "falhas_no_alvo": 0,
+      "regioes": {
+        "regioes": [
+          {
+            "nome": "home",
+            "selector": "#appShell .content:not(.hidden)",
+            "existe": true,
+            "class_hidden": false,
+            "display": "block",
+            "caixa": "1044x324",
+            "elementos": 7,
+            "texto_bytes": 229,
+            "texto_hash": "2123bc0b",
+            "linhas": 6
+          },
+          {
+            "nome": "espaco",
+            "selector": "#platformSpaceView",
+            "existe": true,
+            "class_hidden": false,
+            "display": "block",
+            "caixa": "1044x324",
+            "elementos": 7,
+            "texto_bytes": 229,
+            "texto_hash": "2123bc0b",
+            "linhas": 6
+          },
+          {
+            "nome": "aprender",
+            "selector": "#platformLearnView",
+            "existe": true,
+            "class_hidden": true,
+            "display": "none",
+            "caixa": "0x0",
+            "elementos": 0,
+            "texto_bytes": 0,
+            "texto_hash": "00001505",
+            "linhas": 1
+          }
+        ],
+        "destino": {
+          "activeSection": "meu-espaco",
+          "activeView": "student"
+        },
+        "perfil": "student"
+      },
+      "superficies": [
+        {
+          "nome": "espaco_erro",
+          "selector": ".bfr-student-error",
+          "nos": 0,
+          "visiveis": 0,
+          "zero_caixa": 0,
+          "medidos": []
+        },
+        {
+          "nome": "espaco_botao_repetir",
+          "selector": "[data-student-refresh]",
+          "nos": 0,
+          "visiveis": 0,
+          "zero_caixa": 0,
+          "medidos": []
+        },
+        {
+          "nome": "aprender_alerta",
+          "selector": ".bfr-results-alert",
+          "nos": 0,
+          "visiveis": 0,
+          "zero_caixa": 0,
+          "medidos": []
+        },
+        {
+          "nome": "aprender_pill",
+          "selector": ".bfr-results-pill",
+          "nos": 0,
+          "visiveis": 0,
+          "zero_caixa": 0,
+          "medidos": []
+        }
+      ],
+      "mensagens_visiveis": []
+    },
+    "aprender-controle": {
+      "id": "aprender-controle",
+      "area": "aprender",
+      "modo": "controle",
+      "ms_ready": 731,
+      "armado_no_documento": true,
+      "chegada": {
+        "via": "toque_no_botao_da_area",
+        "caixa_do_botao": "192x41"
+      },
+      "pedidos": {
+        "total": 21,
+        "fora_do_rest": 3,
+        "tabelas": {
+          "rest/v1/profiles": 1,
+          "rest/v1/guardian_students": 2,
+          "rest/v1/classes": 1,
+          "rest/v1/school_activities": 1,
+          "rest/v1/projects": 1,
+          "rest/v1/project_photos": 1,
+          "rest/v1/announcements": 2,
+          "rest/v1/school_events": 2,
+          "rest/v1/notification_preferences": 1,
+          "rest/v1/students": 1,
+          "rest/v1/gate_badges": 1,
+          "rest/v1/project_results": 1,
+          "rest/v1/school_videos": 1,
+          "rest/v1/school_notification_reads": 1,
+          "rest/v1/rpc": 1
+        },
+        "falhas_servidas": 0,
+        "falhas_por_modo": {},
+        "armado": true
+      },
+      "alvo_pedido": null,
+      "falhas_no_alvo": 0,
+      "regioes": {
+        "regioes": [
+          {
+            "nome": "home",
+            "selector": "#appShell .content:not(.hidden)",
+            "existe": true,
+            "class_hidden": false,
+            "display": "block",
+            "caixa": "1029x1009",
+            "elementos": 67,
+            "texto_bytes": 1073,
+            "texto_hash": "571a2cad",
+            "linhas": 68
+          },
+          {
+            "nome": "espaco",
+            "selector": "#platformSpaceView",
+            "existe": true,
+            "class_hidden": true,
+            "display": "none",
+            "caixa": "0x0",
+            "elementos": 7,
+            "texto_bytes": 224,
+            "texto_hash": "de5e12cb",
+            "linhas": 1
+          },
+          {
+            "nome": "aprender",
+            "selector": "#platformLearnView",
+            "existe": true,
+            "class_hidden": false,
+            "display": "block",
+            "caixa": "1029x1009",
+            "elementos": 67,
+            "texto_bytes": 1073,
+            "texto_hash": "571a2cad",
+            "linhas": 68
+          }
+        ],
+        "destino": {
+          "activeSection": "aprender",
+          "activeView": "student"
+        },
+        "perfil": "student"
+      },
+      "superficies": [
+        {
+          "nome": "espaco_erro",
+          "selector": ".bfr-student-error",
+          "nos": 0,
+          "visiveis": 0,
+          "zero_caixa": 0,
+          "medidos": []
+        },
+        {
+          "nome": "espaco_botao_repetir",
+          "selector": "[data-student-refresh]",
+          "nos": 0,
+          "visiveis": 0,
+          "zero_caixa": 0,
+          "medidos": []
+        },
+        {
+          "nome": "aprender_alerta",
+          "selector": ".bfr-results-alert",
+          "nos": 0,
+          "visiveis": 0,
+          "zero_caixa": 0,
+          "medidos": []
+        },
+        {
+          "nome": "aprender_pill",
+          "selector": ".bfr-results-pill",
+          "nos": 0,
+          "visiveis": 0,
+          "zero_caixa": 0,
+          "medidos": []
+        }
+      ],
+      "mensagens_visiveis": []
+    },
+    "aprender-falha-guardian_students": {
+      "id": "aprender-falha-guardian_students",
+      "area": "aprender",
+      "modo": "rest/v1/guardian_students",
+      "ms_ready": 380,
+      "armado_no_documento": true,
+      "chegada": {
+        "via": "fallback_api",
+        "resultado_da_api": "true",
+        "motivo": "tapado_por_bfr-paint-hold uniesco-splash-out"
+      },
+      "pedidos": {
+        "total": 19,
+        "fora_do_rest": 2,
+        "tabelas": {
+          "rest/v1/profiles": 1,
+          "rest/v1/guardian_students": 2,
+          "rest/v1/classes": 1,
+          "rest/v1/school_activities": 1,
+          "rest/v1/projects": 1,
+          "rest/v1/project_photos": 1,
+          "rest/v1/announcements": 2,
+          "rest/v1/school_events": 2,
+          "rest/v1/notification_preferences": 1,
+          "rest/v1/students": 1,
+          "rest/v1/gate_badges": 1,
+          "rest/v1/project_results": 1,
+          "rest/v1/school_notification_reads": 1,
+          "rest/v1/rpc": 1
+        },
+        "falhas_servidas": 2,
+        "falhas_por_modo": {
+          "rest/v1/guardian_students": 2
+        },
+        "armado": true
+      },
+      "alvo_pedido": true,
+      "falhas_no_alvo": 2,
+      "regioes": {
+        "regioes": [
+          {
+            "nome": "home",
+            "selector": "#appShell .content:not(.hidden)",
+            "existe": true,
+            "class_hidden": false,
+            "display": "block",
+            "caixa": "1029x1009",
+            "elementos": 67,
+            "texto_bytes": 1073,
+            "texto_hash": "571a2cad",
+            "linhas": 68
+          },
+          {
+            "nome": "espaco",
+            "selector": "#platformSpaceView",
+            "existe": true,
+            "class_hidden": true,
+            "display": "none",
+            "caixa": "0x0",
+            "elementos": 3,
+            "texto_bytes": 66,
+            "texto_hash": "51424ada",
+            "linhas": 1
+          },
+          {
+            "nome": "aprender",
+            "selector": "#platformLearnView",
+            "existe": true,
+            "class_hidden": false,
+            "display": "block",
+            "caixa": "1029x1009",
+            "elementos": 67,
+            "texto_bytes": 1073,
+            "texto_hash": "571a2cad",
+            "linhas": 68
+          }
+        ],
+        "destino": {
+          "activeSection": "aprender",
+          "activeView": "student"
+        },
+        "perfil": "student"
+      },
+      "superficies": [
+        {
+          "nome": "espaco_erro",
+          "selector": ".bfr-student-error",
+          "nos": 1,
+          "visiveis": 0,
+          "zero_caixa": 1,
+          "medidos": [
+            {
+              "caixa": "0x0",
+              "largura": 0,
+              "altura": 0,
+              "display": "block",
+              "visibility": "visible",
+              "opacity": "1",
+              "pointer_events": "auto",
+              "offset_parent": false,
+              "aria_live": null,
+              "papel_aria": null,
+              "visivel": false,
+              "texto_bytes": 50,
+              "texto_hash": "53bb2cff",
+              "texto_vazio": false,
+              "tocavel": false,
+              "ponto_fora_ou_tapado": "por_cima_esta_outra_coisa",
+              "mensagem_conhecida": "espaco_vinculo"
+            }
+          ]
+        },
+        {
+          "nome": "espaco_botao_repetir",
+          "selector": "[data-student-refresh]",
+          "nos": 1,
+          "visiveis": 0,
+          "zero_caixa": 1,
+          "medidos": [
+            {
+              "caixa": "0x0",
+              "largura": 0,
+              "altura": 0,
+              "display": "block",
+              "visibility": "visible",
+              "opacity": "1",
+              "pointer_events": "auto",
+              "offset_parent": false,
+              "aria_live": null,
+              "papel_aria": null,
+              "visivel": false,
+              "texto_bytes": 16,
+              "texto_hash": "eb727ee0",
+              "texto_vazio": false,
+              "tocavel": false,
+              "ponto_fora_ou_tapado": "por_cima_esta_outra_coisa",
+              "mensagem_conhecida": "botao_repetir"
+            }
+          ]
+        },
+        {
+          "nome": "aprender_alerta",
+          "selector": ".bfr-results-alert",
+          "nos": 0,
+          "visiveis": 0,
+          "zero_caixa": 0,
+          "medidos": []
+        },
+        {
+          "nome": "aprender_pill",
+          "selector": ".bfr-results-pill",
+          "nos": 0,
+          "visiveis": 0,
+          "zero_caixa": 0,
+          "medidos": []
+        }
+      ],
+      "mensagens_visiveis": []
+    },
+    "aprender-falha-students": {
+      "id": "aprender-falha-students",
+      "area": "aprender",
+      "modo": "rest/v1/students",
+      "ms_ready": 378,
+      "armado_no_documento": true,
+      "chegada": {
+        "via": "fallback_api",
+        "resultado_da_api": "true",
+        "motivo": "tapado_por_bfr-paint-hold uniesco-splash-out"
+      },
+      "pedidos": {
+        "total": 19,
+        "fora_do_rest": 2,
+        "tabelas": {
+          "rest/v1/profiles": 1,
+          "rest/v1/guardian_students": 2,
+          "rest/v1/classes": 1,
+          "rest/v1/school_activities": 1,
+          "rest/v1/projects": 1,
+          "rest/v1/project_photos": 1,
+          "rest/v1/announcements": 2,
+          "rest/v1/school_events": 2,
+          "rest/v1/notification_preferences": 1,
+          "rest/v1/students": 1,
+          "rest/v1/gate_badges": 1,
+          "rest/v1/project_results": 1,
+          "rest/v1/school_notification_reads": 1,
+          "rest/v1/rpc": 1
+        },
+        "falhas_servidas": 1,
+        "falhas_por_modo": {
+          "rest/v1/students": 1
+        },
+        "armado": true
+      },
+      "alvo_pedido": true,
+      "falhas_no_alvo": 1,
+      "regioes": {
+        "regioes": [
+          {
+            "nome": "home",
+            "selector": "#appShell .content:not(.hidden)",
+            "existe": true,
+            "class_hidden": false,
+            "display": "block",
+            "caixa": "1029x1009",
+            "elementos": 67,
+            "texto_bytes": 1073,
+            "texto_hash": "571a2cad",
+            "linhas": 68
+          },
+          {
+            "nome": "espaco",
+            "selector": "#platformSpaceView",
+            "existe": true,
+            "class_hidden": true,
+            "display": "none",
+            "caixa": "0x0",
+            "elementos": 7,
+            "texto_bytes": 224,
+            "texto_hash": "de5e12cb",
+            "linhas": 1
+          },
+          {
+            "nome": "aprender",
+            "selector": "#platformLearnView",
+            "existe": true,
+            "class_hidden": false,
+            "display": "block",
+            "caixa": "1029x1009",
+            "elementos": 67,
+            "texto_bytes": 1073,
+            "texto_hash": "571a2cad",
+            "linhas": 68
+          }
+        ],
+        "destino": {
+          "activeSection": "aprender",
+          "activeView": "student"
+        },
+        "perfil": "student"
+      },
+      "superficies": [
+        {
+          "nome": "espaco_erro",
+          "selector": ".bfr-student-error",
+          "nos": 0,
+          "visiveis": 0,
+          "zero_caixa": 0,
+          "medidos": []
+        },
+        {
+          "nome": "espaco_botao_repetir",
+          "selector": "[data-student-refresh]",
+          "nos": 0,
+          "visiveis": 0,
+          "zero_caixa": 0,
+          "medidos": []
+        },
+        {
+          "nome": "aprender_alerta",
+          "selector": ".bfr-results-alert",
+          "nos": 0,
+          "visiveis": 0,
+          "zero_caixa": 0,
+          "medidos": []
+        },
+        {
+          "nome": "aprender_pill",
+          "selector": ".bfr-results-pill",
+          "nos": 0,
+          "visiveis": 0,
+          "zero_caixa": 0,
+          "medidos": []
+        }
+      ],
+      "mensagens_visiveis": []
+    }
+  },
+  "definicoes": {
+    "visivel": "largura e altura medidas do rect, sem display:none, sem visibility:hidden, sem opacity 0, com offsetParent (salvo posição fixa) — a caixa 0x0 é contada à parte, porque uma mensagem dentro de um caixa zero não é vista",
+    "falha_sintetica": "GET cujo caminho contém o modo é respondido localmente com 503 JSON; nenhum outro método é tocado; nada é escrito no banco nem na app",
+    "anti_PII": "das regiões só guardo bytes, contagem de elementos, linhas e um hash djb2 do texto; das superfícies de erro guardo o texto só quando casa com uma mensagem do produto lida dos bytes servidos, e o hash fica sempre"
+  },
+  "cadeia": {
+    "papel": "student",
+    "access_bytes": 819,
+    "expira_em_s": 3600,
+    "renovada_a_custa_do_refresh": true
+  },
+  "ms_ready_login": 1453,
+  "cartao_ao_chegar": [
+    {
+      "id": "responsibleRegistrationModal",
+      "caixa": "1280x900",
+      "z_index": "1300"
+    }
+  ],
+  "cartao_fechado": true,
+  "recuperacao": {
+    "celula_de_partida": "espaco-falha-guardian_students",
+    "botao_alcancavel": false,
+    "tapado_por": null,
+    "antes": [
+      {
+        "nome": "espaco_erro",
+        "selector": ".bfr-student-error",
+        "nos": 0,
+        "visiveis": 0,
+        "zero_caixa": 0,
+        "medidos": []
+      },
+      {
+        "nome": "espaco_botao_repetir",
+        "selector": "[data-student-refresh]",
+        "nos": 0,
+        "visiveis": 0,
+        "zero_caixa": 0,
+        "medidos": []
+      },
+      {
+        "nome": "aprender_alerta",
+        "selector": ".bfr-results-alert",
+        "nos": 0,
+        "visiveis": 0,
+        "zero_caixa": 0,
+        "medidos": []
+      },
+      {
+        "nome": "aprender_pill",
+        "selector": ".bfr-results-pill",
+        "nos": 0,
+        "visiveis": 0,
+        "zero_caixa": 0,
+        "medidos": []
+      }
+    ]
+  },
+  "medido": {
+    "celulas": 11,
+    "tabelas_do_home_para_falhar": [
+      "rest/v1/announcements",
+      "rest/v1/guardian_students",
+      "rest/v1/rpc"
+    ],
+    "visiveis_por_celula": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      2,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "com_alvo_pedido": 7,
+    "recuperacao_tentada": true
+  },
+  "celulas_resumo": [
+    {
+      "id": "inicio-controle",
+      "modo": "controle",
+      "alvo_pedido": null,
+      "falhas_no_alvo": 0,
+      "pedidos": 22,
+      "area_na_tela": true,
+      "visiveis": [],
+      "regiao_home_hash": "1c3b411b",
+      "regiao_espaco_hash": "de5e12cb",
+      "regiao_aprender_hash": "00001505"
+    },
+    {
+      "id": "inicio-falha-rest_v1_announcements",
+      "modo": "rest/v1/announcements",
+      "alvo_pedido": true,
+      "falhas_no_alvo": 2,
+      "pedidos": 22,
+      "area_na_tela": true,
+      "visiveis": [],
+      "regiao_home_hash": "1c3b411b",
+      "regiao_espaco_hash": "de5e12cb",
+      "regiao_aprender_hash": "00001505"
+    },
+    {
+      "id": "inicio-falha-rest_v1_guardian_students",
+      "modo": "rest/v1/guardian_students",
+      "alvo_pedido": true,
+      "falhas_no_alvo": 2,
+      "pedidos": 22,
+      "area_na_tela": true,
+      "visiveis": [],
+      "regiao_home_hash": "b59b0f27",
+      "regiao_espaco_hash": "51424ada",
+      "regiao_aprender_hash": "00001505"
+    },
+    {
+      "id": "inicio-falha-rest_v1_rpc",
+      "modo": "rest/v1/rpc",
+      "alvo_pedido": true,
+      "falhas_no_alvo": 0,
+      "pedidos": 22,
+      "area_na_tela": true,
+      "visiveis": [],
+      "regiao_home_hash": "1c3b411b",
+      "regiao_espaco_hash": "de5e12cb",
+      "regiao_aprender_hash": "00001505"
+    },
+    {
+      "id": "espaco-controle",
+      "modo": "controle",
+      "alvo_pedido": null,
+      "falhas_no_alvo": 0,
+      "pedidos": 20,
+      "area_na_tela": true,
+      "visiveis": [],
+      "regiao_home_hash": "2123bc0b",
+      "regiao_espaco_hash": "2123bc0b",
+      "regiao_aprender_hash": "00001505"
+    },
+    {
+      "id": "espaco-falha-guardian_students",
+      "modo": "rest/v1/guardian_students",
+      "alvo_pedido": true,
+      "falhas_no_alvo": 3,
+      "pedidos": 20,
+      "area_na_tela": true,
+      "visiveis": [
+        "espaco_erro:espaco_vinculo",
+        "espaco_botao_repetir:botao_repetir"
+      ],
+      "regiao_home_hash": "1fe7eada",
+      "regiao_espaco_hash": "1fe7eada",
+      "regiao_aprender_hash": "00001505"
+    },
+    {
+      "id": "espaco-falha-students",
+      "modo": "rest/v1/students",
+      "alvo_pedido": true,
+      "falhas_no_alvo": 1,
+      "pedidos": 21,
+      "area_na_tela": true,
+      "visiveis": [],
+      "regiao_home_hash": "de1dda6a",
+      "regiao_espaco_hash": "de1dda6a",
+      "regiao_aprender_hash": "00001505"
+    },
+    {
+      "id": "espaco-falha-grades",
+      "modo": "rest/v1/grades",
+      "alvo_pedido": false,
+      "falhas_no_alvo": 0,
+      "pedidos": 20,
+      "area_na_tela": true,
+      "visiveis": [],
+      "regiao_home_hash": "2123bc0b",
+      "regiao_espaco_hash": "2123bc0b",
+      "regiao_aprender_hash": "00001505"
+    },
+    {
+      "id": "aprender-controle",
+      "modo": "controle",
+      "alvo_pedido": null,
+      "falhas_no_alvo": 0,
+      "pedidos": 21,
+      "area_na_tela": true,
+      "visiveis": [],
+      "regiao_home_hash": "571a2cad",
+      "regiao_espaco_hash": "de5e12cb",
+      "regiao_aprender_hash": "571a2cad"
+    },
+    {
+      "id": "aprender-falha-guardian_students",
+      "modo": "rest/v1/guardian_students",
+      "alvo_pedido": true,
+      "falhas_no_alvo": 2,
+      "pedidos": 19,
+      "area_na_tela": true,
+      "visiveis": [],
+      "regiao_home_hash": "571a2cad",
+      "regiao_espaco_hash": "51424ada",
+      "regiao_aprender_hash": "571a2cad"
+    },
+    {
+      "id": "aprender-falha-students",
+      "modo": "rest/v1/students",
+      "alvo_pedido": true,
+      "falhas_no_alvo": 1,
+      "pedidos": 19,
+      "area_na_tela": true,
+      "visiveis": [],
+      "regiao_home_hash": "571a2cad",
+      "regiao_espaco_hash": "de5e12cb",
+      "regiao_aprender_hash": "571a2cad"
+    }
+  ],
+  "resumo_por_celula": [
+    "inicio-controle | controle | pedido=null | falhas=0 | visiveis=nenhuma",
+    "inicio-falha-rest_v1_announcements | rest/v1/announcements | pedido=true | falhas=2 | visiveis=nenhuma",
+    "inicio-falha-rest_v1_guardian_students | rest/v1/guardian_students | pedido=true | falhas=2 | visiveis=nenhuma",
+    "inicio-falha-rest_v1_rpc | rest/v1/rpc | pedido=true | falhas=0 | visiveis=nenhuma",
+    "espaco-controle | controle | pedido=null | falhas=0 | visiveis=nenhuma",
+    "espaco-falha-guardian_students | rest/v1/guardian_students | pedido=true | falhas=3 | visiveis=espaco_erro:espaco_vinculo,espaco_botao_repetir:botao_repetir",
+    "espaco-falha-students | rest/v1/students | pedido=true | falhas=1 | visiveis=nenhuma",
+    "espaco-falha-grades | rest/v1/grades | pedido=false | falhas=0 | visiveis=nenhuma",
+    "aprender-controle | controle | pedido=null | falhas=0 | visiveis=nenhuma",
+    "aprender-falha-guardian_students | rest/v1/guardian_students | pedido=true | falhas=2 | visiveis=nenhuma",
+    "aprender-falha-students | rest/v1/students | pedido=true | falhas=1 | visiveis=nenhuma"
+  ],
+  "o_que_prova": [
+    "que cada célula existiu: o ar é o do registo mais novo da família do mapa, o documento tem o patch armado, a shell montou com o papel student, e a área foi alcançada pelo botão da área (ou pelo fallback declarado)",
+    "para cada tabela onde o carregador do aluno foi realmente chamado, se a app mostrou alguma coisa na superfície (com caixa, visível, e alcançável a toque) ou se ficou tudo como antes",
+    "a diferença entre «o carregador pôs estado de erro» e «o utilizador vê o erro», que é exactamente a pergunta que ficou aberta na célula PEN-04"
+  ],
+  "o_que_NAO_prova": [
+    "o conteúdo das listas não foi capturado, por regra do briefing contra expor dados pessoais: prové que a superfície mudou ou não mudou (hash do texto da região), não o que lá estava escrito",
+    "a falha sintética é uma falta de serviço simulada no meu browser; não prova que o catálogo ou o RLS estejam em falta — prova apenas o que a interface faz quando um pedido de leitura falha",
+    "as tabelas pedidas pelo Home dependem do estado da conta de teste (vínculo, turma, notas): uma célula em que a tabela alvo não foi pedida é alcançável por desenho, e isso está medido em `alvo_pedido`, não é um zero meu",
+    "esta peça corre com uma só largura e um só papel; a mesma régua em 320/390/430 ou noutro papel é outra corrida"
+  ],
+  "portoes": 15,
+  "falhas": [
+    "classificador anti-PII: mensagem do produto casa, nome de aluno e uuid não casam, vazio não casa | dado=[true,true,false,false,true] | esperado=[true,true,true,true,true]",
+    "nenhuma célula em que a tabela alvo foi pedida ficou sem falha servida (zero cego) | dado=[\"inicio-falha-rest_v1_rpc\"] | esperado=[]"
+  ]
+}
