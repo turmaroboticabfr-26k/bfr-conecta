@@ -12,12 +12,12 @@
 //      node scripts/p144-rm52-conteudo-preflight.mjs --reversao (modo reversao: exige a semente de 2026)
 //      P144PF_SUF=novo distingue corridas; P144PF_REG=evidence/p144-…json liga ao registo do gerador.
 import { createHash } from 'node:crypto';
-import { existsSync, readFileSync, writeFileSync } from 'node:fs';
+import { existsSync, readFileSync, writeFileSync, readdirSync, statSync, mkdtempSync } from 'node:fs';
+import { tmpdir } from 'node:os';
 import { createContext, runInContext } from 'node:vm';
 import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
 import { sql } from './c2-lib.mjs';
-
 const AQUI = dirname(fileURLToPath(import.meta.url));
 const REPO = dirname(AQUI);
 const EU = readFileSync(fileURLToPath(import.meta.url));
@@ -266,12 +266,67 @@ gate('as_colunas_vivas_batem_com_o_artefacto_p73',
 gate('as_restricoes_vivas_batem_com_o_artefacto_p73',
   [restricoesVivas.map((x) => [x.tabela, x.nome, x.tipo, x.definicao]).sort()],
   [restricoesArt], { vivas: restricoesVivas.length, artefacto: restricoesArt.length });
-gate('a_funcao_a1_continua_ausente_e_os_controlos_positivos_existem',
-  [rpcVivas.filter((r) => r.nome === 'bfr_confirm_school_calendar').length,
-   rpcVivas.filter((r) => r.nome === 'register_gate_checkin').map((r) => r.n),
+// A expectativa de A1 e LIDA do registo mais novo do aplicador, nao lembrada: desde 24/11 a funcao existe
+// no banco, e o numero 0 fixo aqui fazia deste portao um vermelho sem positivo possivel — um portao que nao
+// pode ficar verde nao protege nada. A derivação vive numa funcao pura para os fixtures corridos em baixo
+// usarem o MESMO codigo que a corrida viva, e nao uma copia aproximada.
+const a1DoRegistoMaisNovo = (fichas) => {
+  if (fichas.length === 0) throw new Error('ABORTA: nenhum registo do aplicador A1 em evidence/ — a expectativa nao pode ser lembrada');
+  const reg = JSON.parse(readFileSync(fichas[0].caminho, 'utf8'));
+  const n = reg?.preflight_depois?.catalogo_vivo?.funcao_a1?.n;
+  if (n !== 0 && n !== 1) throw new Error('ABORTA: o registo A1 nao declara preflight_depois.catalogo_vivo.funcao_a1.n em {0,1} — obtido ' + JSON.stringify(n));
+  return { n, veredicto: reg.veredicto, caminho: fichas[0].caminho };
+};
+const maisRecentePrimeiro = (fichas) => fichas.slice().sort((a, b) => b.m - a.m);
+const FICHAS_A1 = maisRecentePrimeiro(readdirSync(join(REPO, 'evidence'))
+  .filter((f) => /^p145-a1-confirmar-calendario-aplica-.*\.json$/.test(f))
+  .map((f) => ({ caminho: join(REPO, 'evidence', f), m: statSync(join(REPO, 'evidence', f)).mtimeMs })));
+let a1Esperado;
+try { a1Esperado = a1DoRegistoMaisNovo(FICHAS_A1); }
+catch (e) { console.error(String(e.message)); process.exit(2); }
+const nA1Vivo = rpcVivas.filter((r) => r.nome === 'bfr_confirm_school_calendar').length;
+gate('a_funcao_a1_viva_bate_com_o_estado_que_o_registo_do_aplicador_certifica',
+  [nA1Vivo], [a1Esperado.n],
+  { ficha_a1: a1Esperado.caminho.replace(REPO, '').replace(/^[\\/]+/, ''), veredicto_a1: a1Esperado.veredicto, registos_a1_lidos: FICHAS_A1.length,
+    nota: 'a expectativa vem do registo mais novo do aplicador; o numero fixo 0 dizia «ausente» sobre um banco que ja tem a funcao' });
+gate('os_dois_controlos_positivos_do_catalogo_existem',
+  [rpcVivas.filter((r) => r.nome === 'register_gate_checkin').map((r) => r.n),
    rpcVivas.filter((r) => r.nome === 'bfr_rls_session_role').map((r) => r.n)],
-  [0, [1], [1]],
-  { rpcVivas, nota: 'sem A1, confirmar o calendario continua impossivel por funcao; os dois controlos positivos provam que a query ve o catalogo' });
+  [[1], [1]],
+  { nota: 'sem estes dois, o zero de A1 poderia ser a query a ver o catalogo a menos' });
+// fixtures da derivação, em tempo de execucão e fora do repo: o mundo sem registo, o aplicado (n=1) e o
+// revertido (n=0) — cada um nos dois sentidos, para a clausula ter positivo E vermelho possiveis.
+const FIX_A1 = [];
+{
+  const dir = mkdtempSync(join(tmpdir(), 'p144a1f-'));
+  const escrito = (nome, obj, m) => { const c = join(dir, nome); writeFileSync(c, JSON.stringify(obj)); return { caminho: c, m }; };
+  const fAplicada = escrito('aplicada.json', { veredicto: 'P145_A1_REAPLICADA_E_CONFERIDA', preflight_depois: { catalogo_vivo: { funcao_a1: { n: 1 } } } }, 1);
+  const fRevertida = escrito('revertida.json', { veredicto: 'P145_A1_REVERTIDA', preflight_depois: { catalogo_vivo: { funcao_a1: { n: 0 } } } }, 2);
+  const fSemCampo = escrito('sem_campo.json', { veredicto: 'P145_A1_APLICACAO_ABORTADA', preflight_depois: { catalogo_vivo: {} } }, 3);
+  const fAplicadaNova = escrito('aplicada_nova.json', { veredicto: 'P145_A1_REAPLICADA_E_CONFERIDA', preflight_depois: { catalogo_vivo: { funcao_a1: { n: 1 } } } }, 4);
+  const prova = (id, fichas, espera) => {
+    let obtido;
+    try { obtido = 'n=' + a1DoRegistoMaisNovo(fichas).n; } catch (e) { obtido = 'aborta'; }
+    FIX_A1.push({ id, espera, obtido, bate: obtido === espera });
+  };
+  prova('sem_registo_aborta', [], 'aborta');
+  prova('aplicada_devolve_um', [fAplicada], 'n=1');
+  prova('revertida_devolve_zero', [fRevertida], 'n=0');
+  prova('sem_campo_aborta', [fSemCampo], 'aborta');
+  // a ordenacao e da casa, nao do leitor: os casos abaixo passam PELA MESMA funcao que a corrida viva usa, por isso
+  // nem a ordem de entrada nem um numero lembrado podem trocar o mundo escolhido — e o ultimo caso prova que a
+  // escolha nao esta fixa em «revertida», porque ai a aplicada e que e a mais nova.
+  const naoOrdenada = [fAplicada, fRevertida];
+  prova('a_ordenacao_escolhe_a_mais_recente', maisRecentePrimeiro(naoOrdenada), 'n=0');
+  prova('a_ordem_de_entrada_nao_troca_o_mundo', maisRecentePrimeiro([fRevertida, fAplicada]), 'n=0');
+  prova('quando_a_aplicada_e_a_mais_nova_o_mundo_e_um', maisRecentePrimeiro([fRevertida, fAplicadaNova]), 'n=1');
+  const ordemDepois = naoOrdenada.map((f) => f.m).join(',');
+  FIX_A1.push({ id: 'a_ordenacao_nao_altera_a_lista_original', espera: '1,2', obtido: ordemDepois, bate: ordemDepois === '1,2' });
+}
+gate('a_derivacao_da_expectativa_a1_dispara_em_todos_os_mundos',
+  [FIX_A1.filter((f) => !f.bate).map((f) => f.id), FIX_A1.length],
+  [[], FIX_A1.length],
+  { casos: FIX_A1 });
 gate(MODO === 'candidata'
   ? 'em_candidata_as_leituras_de_linhas_estao_vazias_como_o_censo'
   : 'em_reversao_as_linhas_vivas_sao_exactamente_as_da_candidata',

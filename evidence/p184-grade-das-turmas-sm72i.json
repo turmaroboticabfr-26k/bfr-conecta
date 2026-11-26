@@ -1,0 +1,49 @@
+{
+ "peca": "p184-grade-das-turmas-do-banco",
+ "emissor_bytes": 10225,
+ "emissor_md5": "afd6cd677d1c0bdc4e42ea907dc2a3c4",
+ "produtor_bytes": 24597,
+ "produtor_md5_8": "b67b07b9",
+ "captura_p183_bytes": 4111,
+ "captura_p183_md5_8": "ae043199",
+ "proveniencia_lida": {
+  "ref_8": "yyzqoxlk",
+  "pat_caminho": "C:/Users/pcmac/.supabase-pat",
+  "endpoint_prefixo": "https://api.supabase.com/v1/projects/",
+  "fuso": "America/Maceio"
+ },
+ "prova_proveniencia": [
+  {
+   "id": "f1_ref_ausente_aborta",
+   "espera": "aborta",
+   "obtido": "ABORTA: nao li a constante «f1_ref_ausen",
+   "bate": true
+  },
+  {
+   "id": "f2_ref_presente_devolve",
+   "espera": "zzz1",
+   "obtido": "zzz1",
+   "bate": true
+  },
+  {
+   "id": "f3_endpoint_ausente_aborta",
+   "espera": "aborta",
+   "obtido": "ABORTA: nao li a constante «f3_endpoint_",
+   "bate": true
+  },
+  {
+   "id": "f4_tabela_do_p183_ausente_aborta",
+   "espera": "aborta",
+   "obtido": "ABORTA: nao li a constante «f4_tabela_do",
+   "bate": true
+  },
+  {
+   "id": "f5_tabela_do_p183_devolve",
+   "espera": "bfr_schedule_entries",
+   "obtido": "bfr_schedule_entries",
+   "bate": true
+  }
+ ],
+ "modo": "selfteste",
+ "veredito": "P184_SELFTESTE_OK"
+}

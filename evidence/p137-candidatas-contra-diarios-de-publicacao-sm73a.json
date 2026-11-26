@@ -1,0 +1,88 @@
+{
+  "peca": "scripts/p137-candidatas-contra-diarios-de-publicacao.mjs",
+  "em": "2026-11-26T01:39:40.135Z",
+  "emissor_bytes": 6179,
+  "emissor_md5": "5ca9e3871fc45c10dd9f19fb1318fe9e",
+  "estado": "PORTAO_VERMELHO",
+  "pergunta": "ha candidata pronta a publicar, ou o grupo «OK de publicacao» das linhas abertas esta bloqueado sobre trabalho que ainda nao existe?",
+  "contagens": {
+    "directorios_candidata": 31,
+    "diarios_de_publicacao": 13,
+    "versoes_candidatas": 25
+  },
+  "mais_nova_candidata": "bfr-candidata-v144c-uniesco",
+  "mais_novo_diario": "audit-publicacao-v144.json",
+  "candidatas_acima_da_publicada": [],
+  "candidatas_sem_diario_de_publicacao": [
+    "bfr-candidata-v114-supervisao",
+    "bfr-candidata-v115-supervisao-embed",
+    "bfr-candidata-v124-anticliquejacking",
+    "bfr-candidata-v125-announcement-created-at",
+    "bfr-candidata-v126-a11y-secretaria",
+    "bfr-candidata-v126-a11y-secretaria-ANTERIOR-portao-insercao-mal-formulado",
+    "bfr-candidata-v127-secretaria-municipal",
+    "bfr-candidata-v127-secretaria-municipal-ANTERIOR-host-fora-do-seletor-do-mapa",
+    "bfr-candidata-v128-SEM-CERTIDAO-deixado-de-lado",
+    "bfr-candidata-v129-secretaria-municipal",
+    "bfr-candidata-v130-secretaria-municipal",
+    "bfr-candidata-v131-secretaria-municipal",
+    "bfr-candidata-v132-secretaria-municipal",
+    "bfr-candidata-v137-remendo-pen40",
+    "bfr-candidata-v138-DESCARTADA-parser-de-colunas-cortado",
+    "bfr-candidata-v138-painel-municipal",
+    "bfr-candidata-v139-sonda-honesta"
+  ],
+  "pega_da_mais_nova": {
+    "caminho_lido_do_nome_do_directorio": "bfr-candidata-v144c-uniesco/index.html",
+    "existe": true,
+    "bytes": 3557197,
+    "md5": "573de00016fe2d9b87e671bb84d21559",
+    "registo_do_diario": {
+      "md5": null,
+      "bytes": null
+    },
+    "byte_identico_ao_ar_registrado": false
+  },
+  "portoes": {
+    "total": 3,
+    "falhas": 1,
+    "lista": [
+      {
+        "nome": "a_versao_mais_nova_em_disco_e_a_mesma_do_diario_mais_novo",
+        "obtido": [
+          144,
+          144
+        ],
+        "esperado": [
+          144,
+          144
+        ],
+        "ok": true
+      },
+      {
+        "nome": "nenhuma_candidata_e_mais_nova_que_a_versao_publicada",
+        "obtido": 0,
+        "esperado": 0,
+        "ok": true
+      },
+      {
+        "nome": "o_shell_da_candidata_mais_nova_bate_com_o_ar_do_diario_mais_novo",
+        "obtido": false,
+        "esperado": true,
+        "ok": false
+      }
+    ]
+  },
+  "o_que_prova": [
+    "quantos directorios de candidata e quantos diarios de publicacao existem neste disco, por numero lido do nome",
+    "que a mais nova candidata em disco e a mesma versao do mais novo diario de publicacao",
+    "que a shell da candidata mais nova e byte a byte o ar que esse diario registou",
+    "que nenhuma candidata em disco esta acima da versao publicada"
+  ],
+  "o_que_NAO_prova": [
+    "por que razao as 17 pastas sem diario nao o tem: a peca conta apenas quantas estao acima da versao publicada (zero), e nao distingue trabalho abandonado de trabalho superado",
+    "que as 17 pastas sem diario estao bem ou mal",
+    "que o ar publicado e o ar servido: isso e a peca p136, que apanha a shell por URL lida do proprio diario",
+    "que nada ha a publicar no futuro: a pergunta desta peca e se ha candidata pronta AGORA"
+  ]
+}

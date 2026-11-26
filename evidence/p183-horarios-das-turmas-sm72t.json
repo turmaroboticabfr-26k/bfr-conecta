@@ -1,0 +1,75 @@
+{
+ "peca": "p183-onde-moram-os-horarios-das-turmas",
+ "ficheiro_do_produtor_lido": "scripts/p178-portao-da-portaria-lido-do-ar.mjs",
+ "emissor_bytes": 11520,
+ "emissor_md5": "cc3c3c46d49ddb3ebf092dd40e636661",
+ "produtor_bytes": 24597,
+ "produtor_md5_8": "b67b07b9",
+ "proveniencia_lida": {
+  "ref_8": "yyzqoxlk",
+  "pat_caminho": "C:/Users/pcmac/.supabase-pat",
+  "endpoint_prefixo": "https://api.supabase.com/v1/projects/",
+  "fuso": "America/Maceio",
+  "tabela_turno": "bfr_school_shift_settings"
+ },
+ "prova_proveniencia": [
+  {
+   "id": "f1_ref_ausente_aborta",
+   "espera": "aborta",
+   "obtido": "ABORTA: o produtor scripts/p178-portao-d",
+   "bate": true
+  },
+  {
+   "id": "f2_ref_presente_devolve",
+   "espera": "zzz1",
+   "obtido": "zzz1",
+   "bate": true
+  },
+  {
+   "id": "f3_fuso_ausente_aborta",
+   "espera": "aborta",
+   "obtido": "ABORTA: o produtor scripts/p178-portao-d",
+   "bate": true
+  },
+  {
+   "id": "f4_tabela_de_turno_ausente_aborta",
+   "espera": "aborta",
+   "obtido": "ABORTA: o produtor scripts/p178-portao-d",
+   "bate": true
+  }
+ ],
+ "prova_portaria_lida_do_registo": [
+  {
+   "id": "g1_sem_registo_aborta",
+   "espera": "aborta",
+   "obtido": "aborta",
+   "bate": true
+  },
+  {
+   "id": "g2_a_mais_nova_ganha",
+   "espera": "FECHADO_NENHUMA_LINHA_CONFIRMADA",
+   "obtido": "FECHADO_NENHUMA_LINHA_CONFIRMADA",
+   "bate": true
+  },
+  {
+   "id": "g3_a_ordem_de_entrada_nao_troca_o_mundo",
+   "espera": "FECHADO_NENHUMA_LINHA_CONFIRMADA",
+   "obtido": "FECHADO_NENHUMA_LINHA_CONFIRMADA",
+   "bate": true
+  },
+  {
+   "id": "g4_sem_medido_aborta",
+   "espera": "aborta",
+   "obtido": "aborta",
+   "bate": true
+  },
+  {
+   "id": "g5_vereditos_divergentes_aborta",
+   "espera": "aborta",
+   "obtido": "aborta",
+   "bate": true
+  }
+ ],
+ "modo": "selfteste",
+ "veredito": "P183_SELFTESTE_OK"
+}
