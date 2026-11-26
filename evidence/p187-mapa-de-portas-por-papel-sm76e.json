@@ -1,0 +1,767 @@
+{
+  "peca": "p187-mapa-de-portas-por-papel",
+  "pergunta": "quantas abas a regra servida autoriza a cada papel, quantas dessas abas tem item no markup estatico, e onde as duas contas divergem",
+  "metodo": "a identidade do ar vem da pegada escrita pelo inventario do p186, resolvida byte-a-byte contra as directorias de candidata; o mapa, o alias, os extras do admin, o recurso ao parent e o seletor da regra de visibilidade sao lidos dos proprios bytes, com aborto se algum nao estiver la; os itens de navegacao contam-se por analise das etiquetas do markup estatico, e as etiquetas cujo valor de rota e um template vao para balde proprio; a concordancia dos sitios de alias e medida por resolucao de cada papel do vocabulario, nunca por igualdade literal dos pares; a classe de cada ocorrencia de data-section decide-se pelo texto em volta, nunca por lista lembrada; das sessoes do mapa mestre so se leem as chaves",
+  "em": "2026-11-26T15:52:36.684Z",
+  "emissor": "scripts/p187-mapa-de-portas-por-papel.mjs",
+  "emissor_chars": 34728,
+  "emissor_bytes": 34789,
+  "emissor_md5": "4a9dc9c942c8aa5d96f29861ef18154d",
+  "proveniencias": [
+    {
+      "campo": "ar.md5 e ar.bytes",
+      "registo": "p186-inventario-do-ar-e-do-residuo-sm75e.json",
+      "em": "2026-11-26T06:24:02.639Z"
+    },
+    {
+      "campo": "abas.lista (os tokens do inventario)",
+      "registo": "p186-inventario-do-ar-e-do-residuo-sm75e.json",
+      "em": "2026-11-26T06:24:02.639Z"
+    },
+    {
+      "campo": "identidade conferida por verificador de versao",
+      "registo": "p116-consistencia-de-versao-21-11-sm75n.json",
+      "em": "2026-11-26T06:38:55.333Z"
+    },
+    {
+      "campo": "portas por papel medidas no browser",
+      "registo": "ah2-sonda-portas-por-papel-pp5.json",
+      "em": "2026-11-17T15:12:33.609Z",
+      "md5_shell": "d418e7fc917f1fbb1437054b7b531f9b"
+    },
+    {
+      "campo": "coluna Portas no ar (movel)",
+      "registo": "docs/bu-20-11/03-perfis-e-permissoes.md"
+    }
+  ],
+  "ar": {
+    "directora": "bfr-candidata-v144c-uniesco",
+    "md5": "573de00016fe2d9b87e671bb84d21559",
+    "bytes": 3557197,
+    "bate_com_o_inventario": true,
+    "bate_com_a_sonda_de_browser": false
+  },
+  "regra_servida": {
+    "linha_do_mapa": 9004,
+    "papeis_no_mapa": 14,
+    "seletor_da_regra": ".sidebar .nav-item[data-section],.mobile-more-option[data-section]",
+    "linhas_onde_o_seletor_aparece_entre_aspas": [
+      11386,
+      28736
+    ],
+    "sitios_de_alias": [
+      {
+        "linha": 10443,
+        "pares": 4
+      },
+      {
+        "linha": 11384,
+        "pares": 4
+      },
+      {
+        "linha": 28707,
+        "pares": 3
+      }
+    ],
+    "alias": {
+      "developer": "admin",
+      "pedagogical": "teacher",
+      "psychology": "psychology",
+      "social_work": "multiprofessional"
+    },
+    "alias_concordam": true,
+    "pares_por_sitio": [
+      4,
+      4,
+      3
+    ],
+    "resolucoes_por_papel": [
+      {
+        "papel": "parent",
+        "por_sitio": [
+          "parent",
+          "parent",
+          "parent"
+        ]
+      },
+      {
+        "papel": "student",
+        "por_sitio": [
+          "student",
+          "student",
+          "student"
+        ]
+      },
+      {
+        "papel": "pedagogical",
+        "por_sitio": [
+          "teacher",
+          "teacher",
+          "teacher"
+        ]
+      },
+      {
+        "papel": "coordinator",
+        "por_sitio": [
+          "coordinator",
+          "coordinator",
+          "coordinator"
+        ]
+      },
+      {
+        "papel": "monitor",
+        "por_sitio": [
+          "monitor",
+          "monitor",
+          "monitor"
+        ]
+      },
+      {
+        "papel": "gatekeeper",
+        "por_sitio": [
+          "gatekeeper",
+          "gatekeeper",
+          "gatekeeper"
+        ]
+      },
+      {
+        "papel": "developer",
+        "por_sitio": [
+          "admin",
+          "admin",
+          "admin"
+        ]
+      },
+      {
+        "papel": "director",
+        "por_sitio": [
+          "director",
+          "director",
+          "director"
+        ]
+      },
+      {
+        "papel": "secretary",
+        "por_sitio": [
+          "secretary",
+          "secretary",
+          "secretary"
+        ]
+      },
+      {
+        "papel": "aee",
+        "por_sitio": [
+          "aee",
+          "aee",
+          "aee"
+        ]
+      },
+      {
+        "papel": "psychology",
+        "por_sitio": [
+          "psychology",
+          "psychology",
+          "psychology"
+        ]
+      },
+      {
+        "papel": "social_work",
+        "por_sitio": [
+          "multiprofessional",
+          "multiprofessional",
+          "multiprofessional"
+        ]
+      },
+      {
+        "papel": "sports_operator",
+        "por_sitio": [
+          "sports_operator",
+          "sports_operator",
+          "sports_operator"
+        ]
+      },
+      {
+        "papel": "education_supervisor",
+        "por_sitio": [
+          "education_supervisor",
+          "education_supervisor",
+          "education_supervisor"
+        ]
+      },
+      {
+        "papel": "pending",
+        "por_sitio": [
+          "pending",
+          "pending",
+          "pending"
+        ]
+      }
+    ],
+    "resolucoes_divergentes": [],
+    "papeis_com_resolucao_divergente": 0,
+    "ocorrencias_da_clausula_do_parent": 1,
+    "extras_do_admin": [
+      "psychology",
+      "multiprofissional"
+    ],
+    "extras_do_admin_leitura": {
+      "ocorrencias": 1,
+      "trecho_pos_ancora": "\", 'psychology', 'multiprofissional'])] : (roleSectionAccess[viewRole] || roleSectionAccess\"",
+      "para_onde_a_corrida_foi": "\"]\""
+    },
+    "papeis_do_vocabulario": 15,
+    "chaves_de_sessao_lidas": 15,
+    "papeis_sem_chave_no_mapa": [
+      "pending"
+    ]
+  },
+  "censo_da_marca": {
+    "total_de_ocorrencias": 250,
+    "por_classe": {
+      "markup": {
+        "ocorrencias": 83,
+        "distintas": [
+          "administracao",
+          "aee",
+          "agenda",
+          "agenda-aluno",
+          "alimentacao",
+          "apoio",
+          "aprender",
+          "atividades",
+          "biblioteca",
+          "boletim",
+          "cadastro-alunos",
+          "chat-interno",
+          "comunicados",
+          "conteudos",
+          "coordenacao",
+          "cracha",
+          "direcao",
+          "escola",
+          "evoluir",
+          "experiencias",
+          "gate",
+          "horarios",
+          "inicio",
+          "jogos",
+          "jogos-escolares",
+          "meu-espaco",
+          "monitor",
+          "multiprofissional",
+          "mural",
+          "notas",
+          "noticias",
+          "notificacoes",
+          "ocorrencias",
+          "professor-agenda",
+          "professor-atividades",
+          "professor-avaliacoes",
+          "professor-biblioteca",
+          "professor-calendario",
+          "professor-comunicacao",
+          "professor-conteudos",
+          "professor-diario",
+          "professor-espaco",
+          "professor-frequencia",
+          "professor-inicio",
+          "professor-notificacoes",
+          "professor-planejamento",
+          "professor-relatorios",
+          "professor-turmas",
+          "psychology",
+          "relatorios",
+          "secretaria"
+        ]
+      },
+      "seletor": {
+        "ocorrencias": 167,
+        "distintas": [
+          "administracao",
+          "aee",
+          "agenda",
+          "agenda-aluno",
+          "alimentacao",
+          "apoio",
+          "aprender",
+          "atividades",
+          "biblioteca",
+          "boletim",
+          "cadastro-alunos",
+          "chat-interno",
+          "comunicacao",
+          "comunicados",
+          "conteudos",
+          "coordenacao",
+          "cracha",
+          "direcao",
+          "escola",
+          "evoluir",
+          "experiencias",
+          "fotos",
+          "gate",
+          "horarios",
+          "inicio",
+          "jogos",
+          "jogos-escolares",
+          "meu-espaco",
+          "monitor",
+          "more",
+          "multiprofissional",
+          "mural",
+          "notas",
+          "noticias",
+          "notificacoes",
+          "ocorrencias",
+          "professor-agenda",
+          "professor-atividades",
+          "professor-avaliacoes",
+          "professor-biblioteca",
+          "professor-calendario",
+          "professor-comunicacao",
+          "professor-conteudos",
+          "professor-diario",
+          "professor-espaco",
+          "professor-frequencia",
+          "professor-inicio",
+          "professor-notificacoes",
+          "professor-planejamento",
+          "professor-relatorios",
+          "professor-turmas",
+          "psychology",
+          "relatorios",
+          "resultados-aprendizagem",
+          "secretaria"
+        ]
+      },
+      "string_ou_outro": {
+        "ocorrencias": 0,
+        "distintas": []
+      }
+    }
+  },
+  "itens_de_markup": {
+    "etiquetas_analisadas": 15387,
+    "nav_item": {
+      "ocorrencias": 57,
+      "distintas": 51
+    },
+    "mobile_more_option": {
+      "ocorrencias": 26,
+      "distintas": 24
+    },
+    "recipientes": {
+      "etiqueta_com_classe_sidebar": 1,
+      "id_mobileMoreMenu": 1
+    },
+    "uniao_distinta": 51,
+    "itens_montados_por_template": {
+      "ocorrencias": 1,
+      "valores": [
+        "${section}"
+      ],
+      "linhas": [
+        17137
+      ]
+    }
+  },
+  "divergencia_contra_o_inventario": {
+    "tokens_no_inventario": 55,
+    "itens_no_parser": 51,
+    "sem_item_no_parser": [
+      "comunicacao",
+      "fotos",
+      "more",
+      "resultados-aprendizagem"
+    ],
+    "onde_vive_cada_um": {
+      "comunicacao": [
+        "seletor"
+      ],
+      "fotos": [
+        "seletor"
+      ],
+      "more": [
+        "seletor"
+      ],
+      "resultados-aprendizagem": [
+        "seletor"
+      ]
+    },
+    "so_na_classe_markup_do_classificador": [],
+    "sem_classe_nenhuma": [],
+    "diferenca_classificador_vs_parser": {
+      "so_no_classificador": [],
+      "so_no_parser": []
+    }
+  },
+  "matriz_por_papel": [
+    {
+      "papel": "parent",
+      "viewRole": "parent",
+      "origem": "direto_do_mapa",
+      "autorizado": 16,
+      "com_item_no_markup": 14,
+      "autorizado_sem_item_no_markup": [
+        "coordenacao-chat",
+        "escola-historia"
+      ],
+      "cadeia_de_teste": true
+    },
+    {
+      "papel": "student",
+      "viewRole": "student",
+      "origem": "direto_do_mapa",
+      "autorizado": 19,
+      "com_item_no_markup": 16,
+      "autorizado_sem_item_no_markup": [
+        "escola-historia",
+        "resultados-aprendizagem",
+        "videos-aprender"
+      ],
+      "cadeia_de_teste": true
+    },
+    {
+      "papel": "pedagogical",
+      "viewRole": "teacher",
+      "origem": "direto_do_mapa",
+      "autorizado": 22,
+      "com_item_no_markup": 19,
+      "autorizado_sem_item_no_markup": [
+        "escola-historia",
+        "professor-agenda-hoje",
+        "resultados-aprendizagem"
+      ],
+      "cadeia_de_teste": true
+    },
+    {
+      "papel": "coordinator",
+      "viewRole": "coordinator",
+      "origem": "direto_do_mapa",
+      "autorizado": 18,
+      "com_item_no_markup": 13,
+      "autorizado_sem_item_no_markup": [
+        "comunicacao",
+        "coordenacao-chat",
+        "escola-historia",
+        "fotos",
+        "resultados-aprendizagem"
+      ],
+      "cadeia_de_teste": true
+    },
+    {
+      "papel": "monitor",
+      "viewRole": "monitor",
+      "origem": "direto_do_mapa",
+      "autorizado": 8,
+      "com_item_no_markup": 7,
+      "autorizado_sem_item_no_markup": [
+        "escola-historia"
+      ],
+      "cadeia_de_teste": true
+    },
+    {
+      "papel": "gatekeeper",
+      "viewRole": "gatekeeper",
+      "origem": "direto_do_mapa",
+      "autorizado": 8,
+      "com_item_no_markup": 7,
+      "autorizado_sem_item_no_markup": [
+        "escola-historia"
+      ],
+      "cadeia_de_teste": true
+    },
+    {
+      "papel": "developer",
+      "viewRole": "admin",
+      "origem": "uniao_do_admin",
+      "autorizado": 28,
+      "com_item_no_markup": 21,
+      "autorizado_sem_item_no_markup": [
+        "admin-crachas",
+        "comunicacao",
+        "coordenacao-chat",
+        "escola-historia",
+        "fotos",
+        "resultados-aprendizagem",
+        "videos-aprender"
+      ],
+      "cadeia_de_teste": true
+    },
+    {
+      "papel": "director",
+      "viewRole": "director",
+      "origem": "direto_do_mapa",
+      "autorizado": 15,
+      "com_item_no_markup": 10,
+      "autorizado_sem_item_no_markup": [
+        "comunicacao",
+        "coordenacao-chat",
+        "escola-historia",
+        "fotos",
+        "resultados-aprendizagem"
+      ],
+      "cadeia_de_teste": true
+    },
+    {
+      "papel": "secretary",
+      "viewRole": "secretary",
+      "origem": "direto_do_mapa",
+      "autorizado": 11,
+      "com_item_no_markup": 7,
+      "autorizado_sem_item_no_markup": [
+        "comunicacao",
+        "coordenacao-chat",
+        "escola-historia",
+        "fotos"
+      ],
+      "cadeia_de_teste": true
+    },
+    {
+      "papel": "aee",
+      "viewRole": "aee",
+      "origem": "direto_do_mapa",
+      "autorizado": 10,
+      "com_item_no_markup": 9,
+      "autorizado_sem_item_no_markup": [
+        "escola-historia"
+      ],
+      "cadeia_de_teste": true
+    },
+    {
+      "papel": "psychology",
+      "viewRole": "psychology",
+      "origem": "direto_do_mapa",
+      "autorizado": 3,
+      "com_item_no_markup": 3,
+      "autorizado_sem_item_no_markup": [],
+      "cadeia_de_teste": true
+    },
+    {
+      "papel": "social_work",
+      "viewRole": "multiprofessional",
+      "origem": "direto_do_mapa",
+      "autorizado": 3,
+      "com_item_no_markup": 3,
+      "autorizado_sem_item_no_markup": [],
+      "cadeia_de_teste": true
+    },
+    {
+      "papel": "sports_operator",
+      "viewRole": "sports_operator",
+      "origem": "direto_do_mapa",
+      "autorizado": 4,
+      "com_item_no_markup": 4,
+      "autorizado_sem_item_no_markup": [],
+      "cadeia_de_teste": true
+    },
+    {
+      "papel": "education_supervisor",
+      "viewRole": "education_supervisor",
+      "origem": "direto_do_mapa",
+      "autorizado": 12,
+      "com_item_no_markup": 7,
+      "autorizado_sem_item_no_markup": [
+        "comunicacao",
+        "coordenacao-chat",
+        "escola-historia",
+        "fotos",
+        "supervisao"
+      ],
+      "cadeia_de_teste": true
+    },
+    {
+      "papel": "pending",
+      "viewRole": "pending",
+      "origem": "recurso_ao_parent",
+      "autorizado": 16,
+      "com_item_no_markup": 14,
+      "autorizado_sem_item_no_markup": [
+        "coordenacao-chat",
+        "escola-historia"
+      ],
+      "cadeia_de_teste": true
+    }
+  ],
+  "abas_sem_porta_em_nenhum_papel": [
+    "agenda-aluno",
+    "alimentacao",
+    "apoio",
+    "cracha",
+    "experiencias",
+    "mural",
+    "noticias"
+  ],
+  "comparacao_com_bu6": [
+    {
+      "papel": "developer",
+      "bu6_portas_no_ar": 28,
+      "p187_autorizado": 28,
+      "p187_com_item_no_markup": 21,
+      "origem": "uniao_do_admin"
+    },
+    {
+      "papel": "coordinator",
+      "bu6_portas_no_ar": 18,
+      "p187_autorizado": 18,
+      "p187_com_item_no_markup": 13,
+      "origem": "direto_do_mapa"
+    },
+    {
+      "papel": "director",
+      "bu6_portas_no_ar": 19,
+      "p187_autorizado": 15,
+      "p187_com_item_no_markup": 10,
+      "origem": "direto_do_mapa"
+    },
+    {
+      "papel": "aee",
+      "bu6_portas_no_ar": 11,
+      "p187_autorizado": 10,
+      "p187_com_item_no_markup": 9,
+      "origem": "direto_do_mapa"
+    },
+    {
+      "papel": "pedagogical",
+      "bu6_portas_no_ar": 17,
+      "p187_autorizado": 22,
+      "p187_com_item_no_markup": 19,
+      "origem": "direto_do_mapa"
+    },
+    {
+      "papel": "secretary",
+      "bu6_portas_no_ar": 12,
+      "p187_autorizado": 11,
+      "p187_com_item_no_markup": 7,
+      "origem": "direto_do_mapa"
+    },
+    {
+      "papel": "education_supervisor",
+      "bu6_portas_no_ar": 9,
+      "p187_autorizado": 12,
+      "p187_com_item_no_markup": 7,
+      "origem": "direto_do_mapa"
+    },
+    {
+      "papel": "psychology",
+      "bu6_portas_no_ar": 7,
+      "p187_autorizado": 3,
+      "p187_com_item_no_markup": 3,
+      "origem": "direto_do_mapa"
+    },
+    {
+      "papel": "social_work",
+      "bu6_portas_no_ar": 6,
+      "p187_autorizado": 3,
+      "p187_com_item_no_markup": 3,
+      "origem": "direto_do_mapa"
+    },
+    {
+      "papel": "monitor",
+      "bu6_portas_no_ar": 8,
+      "p187_autorizado": 8,
+      "p187_com_item_no_markup": 7,
+      "origem": "direto_do_mapa"
+    },
+    {
+      "papel": "gatekeeper",
+      "bu6_portas_no_ar": 8,
+      "p187_autorizado": 8,
+      "p187_com_item_no_markup": 7,
+      "origem": "direto_do_mapa"
+    },
+    {
+      "papel": "student",
+      "bu6_portas_no_ar": 19,
+      "p187_autorizado": 19,
+      "p187_com_item_no_markup": 16,
+      "origem": "direto_do_mapa"
+    },
+    {
+      "papel": "parent",
+      "bu6_portas_no_ar": 16,
+      "p187_autorizado": 16,
+      "p187_com_item_no_markup": 14,
+      "origem": "direto_do_mapa"
+    },
+    {
+      "papel": "sports_operator",
+      "bu6_portas_no_ar": 5,
+      "p187_autorizado": 4,
+      "p187_com_item_no_markup": 4,
+      "origem": "direto_do_mapa"
+    },
+    {
+      "papel": "pending",
+      "bu6_portas_no_ar": 0,
+      "p187_autorizado": 16,
+      "p187_com_item_no_markup": 14,
+      "origem": "recurso_ao_parent"
+    }
+  ],
+  "o_que_prova": "que estas sao as portas que a regra servida autoriza a cada papel do vocabulario do bundle, e que estes nomes autorizados nao tem item nenhum no markup estatico",
+  "o_que_NAO_prova": "que o browser esconda ou mostre exactamente estes itens: a mesma regra serve-se de ascendencia `.hidden`, de contentores por vista e do modal de primeiro acesso, e isso so se mede no browser; que uma autorizacao do mapa seja autorizada pelo backend; que as contagens de BU-6 sejam do mesmo shell; e que um item sem porta no mapa seja inalcanavel por outra via",
+  "portoes": [
+    {
+      "nome": "ar_resolve_numa_candidata_e_bate_com_o_inventario",
+      "ok": true,
+      "detalhe": "bfr-candidata-v144c-uniesco md5=573de00016fe2d9b87e671bb84d21559 esperado=573de00016fe2d9b87e671bb84d21559"
+    },
+    {
+      "nome": "seletor_da_regra_de_visibilidade_vive_dos_bytes",
+      "ok": true,
+      "detalhe": "linhas [11386,28736]"
+    },
+    {
+      "nome": "os_sitios_de_alias_resolvem_cada_papel_para_a_mesma_chave",
+      "ok": true,
+      "detalhe": "sitios=3 pares_por_sitio=[4,4,3] vocabulario=15 resolucoes_divergentes=[]"
+    },
+    {
+      "nome": "clausula_do_parent_existe_e_ha_papel_que_a_usa",
+      "ok": true,
+      "detalhe": "ocorrencias=1 papeis_que_herdam=[\"pending\"]"
+    },
+    {
+      "nome": "cada_papel_do_vocabulario_tem_cadeia_de_teste",
+      "ok": true,
+      "detalhe": "vocabulario=15 sessoes=15 so_sessoes=[] so_vocabulario=[]"
+    },
+    {
+      "nome": "cada_token_sem_item_no_parser_tem_classe_de_ocorrencia_lida",
+      "ok": true,
+      "detalhe": "sem_item=[\"comunicacao\",\"fotos\",\"more\",\"resultados-aprendizagem\"] sem_classe=[]"
+    },
+    {
+      "nome": "o_parser_de_etiquetas_levanta_itens_montados",
+      "ok": true,
+      "detalhe": "parser=51 etiquetas=15387"
+    },
+    {
+      "nome": "pelo_menos_um_papel_tem_porta_sem_item_no_markup",
+      "ok": true,
+      "detalhe": "por_papel=[\"parent:2\",\"student:3\",\"pedagogical:3\",\"coordinator:5\",\"monitor:1\",\"gatekeeper:1\",\"developer:7\",\"director:5\",\"secretary:4\",\"aee:1\",\"psychology:0\",\"social_work:0\",\"sports_operator:0\",\"education_supervisor:5\",\"pending:2\"]"
+    },
+    {
+      "nome": "pelo_menos_uma_aba_servida_nao_e_autorizada_a_nenhum_papel",
+      "ok": true,
+      "detalhe": "[\"agenda-aluno\",\"alimentacao\",\"apoio\",\"cracha\",\"experiencias\",\"mural\",\"noticias\"]"
+    },
+    {
+      "nome": "a_tabela_de_portas_no_ar_foi_lida_com_numero_em_toda_a_linha",
+      "ok": true,
+      "detalhe": "linhas=15 sem_numero=[]"
+    },
+    {
+      "nome": "nenhum_valor_de_sessao_chega_ao_registo",
+      "ok": true,
+      "detalhe": "procurado_no_texto_do_proprio_registo"
+    },
+    {
+      "nome": "extras_do_admin_sao_lidos_dos_bytes",
+      "ok": true,
+      "detalhe": "ancora_ocorrencias=1 itens=[\"psychology\",\"multiprofissional\"] para_onde=\"]\" trecho=\", 'psychology', 'multiprofissional'])] : (roleSectionAccess[viewRole] || roleSectionAccess\""
+    }
+  ],
+  "veredito": "P187_MATRIZ_MEDIDA 12/12"
+}

@@ -1,0 +1,276 @@
+{
+  "ciclo": "AH-2-V",
+  "em": "2026-11-26T17:05:13.547Z",
+  "tetos": {
+    "boot_s": 75,
+    "estabilizacao_ms": 6000,
+    "cdp_timeout_ms": 25000,
+    "praga_s": 470,
+    "watchdog_s": 560
+  },
+  "papeis": [
+    "psychology",
+    "social_work"
+  ],
+  "bandas": [
+    "1280"
+  ],
+  "url": "https://bfr-conecta.turmaroboticabfr.workers.dev/",
+  "md5_shell": "573de00016fe2d9b87e671bb84d21559",
+  "mapa_declarado": {
+    "parent": 16,
+    "student": 19,
+    "teacher": 22,
+    "coordinator": 18,
+    "admin": 26,
+    "director": 15,
+    "monitor": 8,
+    "gatekeeper": 8,
+    "secretary": 11,
+    "aee": 10,
+    "psychology": 3,
+    "multiprofessional": 3,
+    "sports_operator": 4,
+    "education_supervisor": 12
+  },
+  "traducao_lida_do_bundle": "viewRole = role === 'developer' ? 'admin' : role === 'pedagogical' ? 'teacher' : role === 'psychology' ? 'psychology' : role === 'social_work' ? 'multiprofessional' : role;",
+  "stages": {
+    "psychology": {
+      "1280": {
+        "nav": {
+          "tentativas": 1,
+          "ms": 131,
+          "ok": true
+        },
+        "ms_ready": 872,
+        "erro_boot": null,
+        "estado": {
+          "entrou": true,
+          "aviso_pendencia": false,
+          "login_visivel": false,
+          "nav_visiveis": 2
+        },
+        "papel_da_sessao": "psychology",
+        "botoes_no_dom": 36,
+        "peca": {
+          "inicio": {
+            "painel": {
+              "id": "psychologyView",
+              "c": 913
+            },
+            "ms": 2454,
+            "controles": 18,
+            "nos": 109,
+            "tap": 18,
+            "fonte": 1,
+            "cortados": 4,
+            "estouro_h": false,
+            "seccao_ativa": "inicio",
+            "papel_apos": "psychology",
+            "view_apos": "psychology",
+            "nao_estabilizou": false,
+            "botao_attivo": "inicio",
+            "view_antes": null
+          },
+          "psychology": {
+            "painel": {
+              "id": "psychologyView",
+              "c": 913
+            },
+            "ms": 1817,
+            "controles": 18,
+            "nos": 109,
+            "tap": 18,
+            "fonte": 1,
+            "cortados": 4,
+            "estouro_h": false,
+            "seccao_ativa": "psychology",
+            "papel_apos": "psychology",
+            "view_apos": "psychology",
+            "nao_estabilizou": false,
+            "botao_attivo": null,
+            "view_antes": "psychology"
+          },
+          "chat-interno": {
+            "painel": {
+              "id": "internalChatView",
+              "c": 852
+            },
+            "ms": 1819,
+            "controles": 18,
+            "nos": 179,
+            "tap": 11,
+            "fonte": 7,
+            "cortados": 3,
+            "estouro_h": false,
+            "seccao_ativa": "chat-interno",
+            "papel_apos": "psychology",
+            "view_apos": "psychology",
+            "nao_estabilizou": false,
+            "botao_attivo": "chat-interno",
+            "view_antes": "psychology"
+          }
+        },
+        "sem_botao": [],
+        "erros_console": [],
+        "erros_brutos": 0,
+        "log_rede_erros": 1,
+        "log_rede_amostra": [
+          {
+            "fonte": "network",
+            "texto": "Failed to load resource: the server responded with a status of 404 ()",
+            "url": "/cdn-cgi/rum"
+          }
+        ],
+        "falhas_api_rede": [],
+        "erros_brutos_amostra": [],
+        "n_erros": 0,
+        "painel_vazio": [],
+        "estouro": [],
+        "tap_total": 47,
+        "fonte_total": 9,
+        "abertas": 3,
+        "instaveis": [],
+        "ms_max": 2454,
+        "ms_de_inicio": 2454,
+        "seg_banda": 8.2
+      },
+      "declaradas": 3,
+      "secoes": [
+        "inicio",
+        "psychology",
+        "chat-interno"
+      ],
+      "injecao_1280": {
+        "expira_em_s": 3598,
+        "acesso_md5_8": "9fead802"
+      }
+    },
+    "social_work": {
+      "1280": {
+        "nav": {
+          "tentativas": 1,
+          "ms": 143,
+          "ok": true
+        },
+        "ms_ready": 443,
+        "erro_boot": null,
+        "estado": {
+          "entrou": true,
+          "aviso_pendencia": false,
+          "login_visivel": false,
+          "nav_visiveis": 2
+        },
+        "papel_da_sessao": "social_work",
+        "botoes_no_dom": 36,
+        "peca": {
+          "inicio": {
+            "painel": {
+              "id": "multiprofessionalView",
+              "c": 929
+            },
+            "ms": 2441,
+            "controles": 15,
+            "nos": 108,
+            "tap": 15,
+            "fonte": 0,
+            "cortados": 4,
+            "estouro_h": false,
+            "seccao_ativa": "inicio",
+            "papel_apos": "social_work",
+            "view_apos": "multiprofessional",
+            "nao_estabilizou": false,
+            "botao_attivo": "inicio",
+            "view_antes": null
+          },
+          "multiprofissional": {
+            "painel": {
+              "id": "multiprofessionalView",
+              "c": 929
+            },
+            "ms": 1830,
+            "controles": 15,
+            "nos": 108,
+            "tap": 15,
+            "fonte": 0,
+            "cortados": 4,
+            "estouro_h": false,
+            "seccao_ativa": "multiprofissional",
+            "papel_apos": "social_work",
+            "view_apos": "multiprofessional",
+            "nao_estabilizou": false,
+            "botao_attivo": null,
+            "view_antes": "multiprofessional"
+          },
+          "chat-interno": {
+            "painel": {
+              "id": "internalChatView",
+              "c": 852
+            },
+            "ms": 1845,
+            "controles": 18,
+            "nos": 179,
+            "tap": 11,
+            "fonte": 7,
+            "cortados": 3,
+            "estouro_h": false,
+            "seccao_ativa": "chat-interno",
+            "papel_apos": "social_work",
+            "view_apos": "multiprofessional",
+            "nao_estabilizou": false,
+            "botao_attivo": "chat-interno",
+            "view_antes": "multiprofessional"
+          }
+        },
+        "sem_botao": [],
+        "erros_console": [],
+        "erros_brutos": 0,
+        "log_rede_erros": 1,
+        "log_rede_amostra": [
+          {
+            "fonte": "network",
+            "texto": "Failed to load resource: the server responded with a status of 404 ()",
+            "url": "/cdn-cgi/rum"
+          }
+        ],
+        "falhas_api_rede": [],
+        "erros_brutos_amostra": [],
+        "n_erros": 0,
+        "painel_vazio": [],
+        "estouro": [],
+        "tap_total": 41,
+        "fonte_total": 7,
+        "abertas": 3,
+        "instaveis": [],
+        "ms_max": 2441,
+        "ms_de_inicio": 2441,
+        "seg_banda": 7
+      },
+      "declaradas": 3,
+      "secoes": [
+        "inicio",
+        "multiprofissional",
+        "chat-interno"
+      ],
+      "injecao_1280": {
+        "expira_em_s": 3598,
+        "acesso_md5_8": "8f1b55cc"
+      }
+    }
+  },
+  "portoes": 23,
+  "falhas": [
+    "o ar varrido é a v123 da régua | dado=\"573de00016fe2d9b87e671bb84d21559\" | esperado=\"d418e7fc917f1fbb1437054b7b531f9b\""
+  ],
+  "medido": {
+    "papeis": 2,
+    "bandas": 1,
+    "banda_nomes": [
+      "1280"
+    ],
+    "paineis_abertos": 6,
+    "secoes_sem_botao": {},
+    "completa": true
+  },
+  "veredito": "AH2_VARREDURA_COM_DEFEITOS"
+}

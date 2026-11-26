@@ -1,0 +1,697 @@
+{
+  "programa": "scripts/p73-entrar-por-senha-cadeias-20-11.mjs",
+  "em": "2026-11-26T16:41:48.991Z",
+  "duracao_ms": 10985,
+  "metodo": "POST /auth/v1/token?grant_type=password com a senha JÁ gravada fora do git; zero endpoint de admin (a chave de serviço não é lida por este programa); a cadeia nova escreve-se só no ficheiro do papel e o mestre fica byte a byte igual.",
+  "autorizacao": "Nenhum ato privilegiado novo: login com credencial existente. Sem OK não se rotaciona senha — por isso o programa aborta se algum alvo não tiver registo.",
+  "ar": {
+    "url": "https://bfr-conecta.turmaroboticabfr.workers.dev",
+    "md5_shell": "573de00016fe2d9b87e671bb84d21559",
+    "bytes": 3557197
+  },
+  "alvos": [
+    "aee",
+    "coordinator",
+    "developer",
+    "director",
+    "education_supervisor",
+    "gatekeeper",
+    "monitor",
+    "pedagogical",
+    "pending",
+    "psychology",
+    "secretary",
+    "social_work",
+    "sports_operator",
+    "student"
+  ],
+  "credenciais_de": "C:/Users/pcmac/.ah2-senhas-de-teste.json (fora do git)",
+  "hashes_senha": {
+    "antes": {
+      "aee": "bbb0ebd294b7",
+      "coordinator": "aba7b1ab12a8",
+      "developer": "4f12b2ca9979",
+      "director": "e087de005370",
+      "education_supervisor": "5f29d8b8972b",
+      "gatekeeper": "070c811fdbec",
+      "monitor": "26bd9434da3a",
+      "pedagogical": "fc956e51b02a",
+      "pending": "4ca151b9699b",
+      "psychology": "84b993040ec7",
+      "secretary": "177849151a1b",
+      "social_work": "87bce85845c5",
+      "sports_operator": "26d6574e7801",
+      "student": "22bff2d96497"
+    },
+    "depois": {
+      "aee": "bbb0ebd294b7",
+      "coordinator": "aba7b1ab12a8",
+      "developer": "4f12b2ca9979",
+      "director": "e087de005370",
+      "education_supervisor": "5f29d8b8972b",
+      "gatekeeper": "070c811fdbec",
+      "monitor": "26bd9434da3a",
+      "pedagogical": "fc956e51b02a",
+      "pending": "4ca151b9699b",
+      "psychology": "84b993040ec7",
+      "secretary": "177849151a1b",
+      "social_work": "87bce85845c5",
+      "sports_operator": "26d6574e7801",
+      "student": "22bff2d96497"
+    }
+  },
+  "baselines": {
+    "antes": {
+      "schools": 6,
+      "students": 848,
+      "profiles": 28,
+      "concessoes": 5,
+      "dias": 365,
+      "turnos": 1
+    },
+    "depois": {
+      "schools": 6,
+      "students": 848,
+      "profiles": 28,
+      "concessoes": 5,
+      "dias": 365,
+      "turnos": 1
+    }
+  },
+  "papeis": {
+    "aee": {
+      "uid_gravado": "c87d5c95",
+      "email_forma": "ah2-aee-<hex6>@bfr-conecta.test",
+      "cadeia_anterior": {
+        "http": 200,
+        "codigo": "renovou",
+        "ok": true
+      },
+      "login_http": 200,
+      "login_codigo": "ok",
+      "escritura_provada": true,
+      "uid_preservado": true,
+      "expira_em_s": 3599,
+      "comprimentos": {
+        "access": 814,
+        "refresh": 12
+      },
+      "cadeia_nova_hash": "8ef08694a9c4",
+      "leitura_de_prova": {
+        "http": 200,
+        "total": "1",
+        "corpo_bytes": 47
+      },
+      "gravado_em": "C:\\Users\\pcmac\\Documents\\Qoder\\2026-10-13\\28077d9a\\ah2-sessao-aee.json",
+      "ok": true
+    },
+    "coordinator": {
+      "uid_gravado": "9cd0f42e",
+      "email_forma": "ah2-coordinator-<hex6>@bfr-conecta.test",
+      "cadeia_anterior": {
+        "http": 200,
+        "codigo": "renovou",
+        "ok": true
+      },
+      "login_http": 200,
+      "login_codigo": "ok",
+      "escritura_provada": true,
+      "uid_preservado": true,
+      "expira_em_s": 3599,
+      "comprimentos": {
+        "access": 824,
+        "refresh": 12
+      },
+      "cadeia_nova_hash": "7779137894d7",
+      "leitura_de_prova": {
+        "http": 200,
+        "total": "1",
+        "corpo_bytes": 47
+      },
+      "gravado_em": "C:\\Users\\pcmac\\Documents\\Qoder\\2026-10-13\\28077d9a\\ah2-sessao-coordinator.json",
+      "ok": true
+    },
+    "developer": {
+      "uid_gravado": "49753880",
+      "email_forma": "ah2-developer-<hex6>@bfr-conecta.test",
+      "cadeia_anterior": {
+        "http": 200,
+        "codigo": "renovou",
+        "ok": true
+      },
+      "login_http": 200,
+      "login_codigo": "ok",
+      "escritura_provada": true,
+      "uid_preservado": true,
+      "expira_em_s": 3598,
+      "comprimentos": {
+        "access": 822,
+        "refresh": 12
+      },
+      "cadeia_nova_hash": "3355a95a2ab7",
+      "leitura_de_prova": {
+        "http": 200,
+        "total": "1",
+        "corpo_bytes": 47
+      },
+      "gravado_em": "C:\\Users\\pcmac\\Documents\\Qoder\\2026-10-13\\28077d9a\\ah2-sessao-developer.json",
+      "ok": true
+    },
+    "director": {
+      "uid_gravado": "b5be4883",
+      "email_forma": "ah2-director-<hex6>@bfr-conecta.test",
+      "cadeia_anterior": {
+        "http": 200,
+        "codigo": "renovou",
+        "ok": true
+      },
+      "login_http": 200,
+      "login_codigo": "ok",
+      "escritura_provada": true,
+      "uid_preservado": true,
+      "expira_em_s": 3599,
+      "comprimentos": {
+        "access": 820,
+        "refresh": 12
+      },
+      "cadeia_nova_hash": "8b4fda401e0c",
+      "leitura_de_prova": {
+        "http": 200,
+        "total": "1",
+        "corpo_bytes": 47
+      },
+      "gravado_em": "C:\\Users\\pcmac\\Documents\\Qoder\\2026-10-13\\28077d9a\\ah2-sessao-director.json",
+      "ok": true
+    },
+    "education_supervisor": {
+      "uid_gravado": "d7d45999",
+      "email_forma": "ah2-education_supervisor-<hex6>@bfr-conecta.test",
+      "cadeia_anterior": {
+        "http": 200,
+        "codigo": "renovou",
+        "ok": true
+      },
+      "login_http": 200,
+      "login_codigo": "ok",
+      "escritura_provada": true,
+      "uid_preservado": true,
+      "expira_em_s": 3598,
+      "comprimentos": {
+        "access": 836,
+        "refresh": 12
+      },
+      "cadeia_nova_hash": "6e46d9830ad2",
+      "leitura_de_prova": {
+        "http": 200,
+        "total": "1",
+        "corpo_bytes": 47
+      },
+      "gravado_em": "C:\\Users\\pcmac\\Documents\\Qoder\\2026-10-13\\28077d9a\\ah2-sessao-education_supervisor.json",
+      "ok": true
+    },
+    "gatekeeper": {
+      "uid_gravado": "422d584b",
+      "email_forma": "ah2-gatekeeper-<hex6>@bfr-conecta.test",
+      "cadeia_anterior": {
+        "http": 200,
+        "codigo": "renovou",
+        "ok": true
+      },
+      "login_http": 200,
+      "login_codigo": "ok",
+      "escritura_provada": true,
+      "uid_preservado": true,
+      "expira_em_s": 3599,
+      "comprimentos": {
+        "access": 823,
+        "refresh": 12
+      },
+      "cadeia_nova_hash": "b2a1eacfcfd8",
+      "leitura_de_prova": {
+        "http": 200,
+        "total": "1",
+        "corpo_bytes": 47
+      },
+      "gravado_em": "C:\\Users\\pcmac\\Documents\\Qoder\\2026-10-13\\28077d9a\\ah2-sessao-gatekeeper.json",
+      "ok": true
+    },
+    "monitor": {
+      "uid_gravado": "101e9ade",
+      "email_forma": "ah2-monitor-<hex6>@bfr-conecta.test",
+      "cadeia_anterior": {
+        "http": 200,
+        "codigo": "renovou",
+        "ok": true
+      },
+      "login_http": 200,
+      "login_codigo": "ok",
+      "escritura_provada": true,
+      "uid_preservado": true,
+      "expira_em_s": 3598,
+      "comprimentos": {
+        "access": 819,
+        "refresh": 12
+      },
+      "cadeia_nova_hash": "89d57e97efa1",
+      "leitura_de_prova": {
+        "http": 200,
+        "total": "1",
+        "corpo_bytes": 47
+      },
+      "gravado_em": "C:\\Users\\pcmac\\Documents\\Qoder\\2026-10-13\\28077d9a\\ah2-sessao-monitor.json",
+      "ok": true
+    },
+    "pedagogical": {
+      "uid_gravado": "1f5297d4",
+      "email_forma": "ah2-pedagogical-<hex6>@bfr-conecta.test",
+      "cadeia_anterior": {
+        "http": 200,
+        "codigo": "renovou",
+        "ok": true
+      },
+      "login_http": 200,
+      "login_codigo": "ok",
+      "escritura_provada": true,
+      "uid_preservado": true,
+      "expira_em_s": 3599,
+      "comprimentos": {
+        "access": 824,
+        "refresh": 12
+      },
+      "cadeia_nova_hash": "1f6e3c2f1054",
+      "leitura_de_prova": {
+        "http": 200,
+        "total": "1",
+        "corpo_bytes": 47
+      },
+      "gravado_em": "C:\\Users\\pcmac\\Documents\\Qoder\\2026-10-13\\28077d9a\\ah2-sessao-pedagogical.json",
+      "ok": true
+    },
+    "pending": {
+      "uid_gravado": "3d2329ed",
+      "email_forma": "ah2-pending-<hex6>@bfr-conecta.test",
+      "cadeia_anterior": {
+        "http": 200,
+        "codigo": "renovou",
+        "ok": true
+      },
+      "login_http": 200,
+      "login_codigo": "ok",
+      "escritura_provada": true,
+      "uid_preservado": true,
+      "expira_em_s": 3599,
+      "comprimentos": {
+        "access": 819,
+        "refresh": 12
+      },
+      "cadeia_nova_hash": "2e35fb58b892",
+      "leitura_de_prova": {
+        "http": 200,
+        "total": "1",
+        "corpo_bytes": 47
+      },
+      "gravado_em": "C:\\Users\\pcmac\\Documents\\Qoder\\2026-10-13\\28077d9a\\ah2-sessao-pending.json",
+      "ok": true
+    },
+    "psychology": {
+      "uid_gravado": "86923196",
+      "email_forma": "ah2-psychology-<hex6>@bfr-conecta.test",
+      "cadeia_anterior": {
+        "http": 200,
+        "codigo": "renovou",
+        "ok": true
+      },
+      "login_http": 200,
+      "login_codigo": "ok",
+      "escritura_provada": true,
+      "uid_preservado": true,
+      "expira_em_s": 3598,
+      "comprimentos": {
+        "access": 823,
+        "refresh": 12
+      },
+      "cadeia_nova_hash": "7be733c59570",
+      "leitura_de_prova": {
+        "http": 200,
+        "total": "1",
+        "corpo_bytes": 47
+      },
+      "gravado_em": "C:\\Users\\pcmac\\Documents\\Qoder\\2026-10-13\\28077d9a\\ah2-sessao-psychology.json",
+      "ok": true
+    },
+    "secretary": {
+      "uid_gravado": "839e1f87",
+      "email_forma": "ah2-secretary-<hex6>@bfr-conecta.test",
+      "cadeia_anterior": {
+        "http": 200,
+        "codigo": "renovou",
+        "ok": true
+      },
+      "login_http": 200,
+      "login_codigo": "ok",
+      "escritura_provada": true,
+      "uid_preservado": true,
+      "expira_em_s": 3599,
+      "comprimentos": {
+        "access": 822,
+        "refresh": 12
+      },
+      "cadeia_nova_hash": "f42f30484b4a",
+      "leitura_de_prova": {
+        "http": 200,
+        "total": "1",
+        "corpo_bytes": 47
+      },
+      "gravado_em": "C:\\Users\\pcmac\\Documents\\Qoder\\2026-10-13\\28077d9a\\ah2-sessao-secretary.json",
+      "ok": true
+    },
+    "social_work": {
+      "uid_gravado": "04d52df9",
+      "email_forma": "ah2-social_work-<hex6>@bfr-conecta.test",
+      "cadeia_anterior": {
+        "http": 200,
+        "codigo": "renovou",
+        "ok": true
+      },
+      "login_http": 200,
+      "login_codigo": "ok",
+      "escritura_provada": true,
+      "uid_preservado": true,
+      "expira_em_s": 3599,
+      "comprimentos": {
+        "access": 824,
+        "refresh": 12
+      },
+      "cadeia_nova_hash": "288bfc8fde03",
+      "leitura_de_prova": {
+        "http": 200,
+        "total": "1",
+        "corpo_bytes": 47
+      },
+      "gravado_em": "C:\\Users\\pcmac\\Documents\\Qoder\\2026-10-13\\28077d9a\\ah2-sessao-social_work.json",
+      "ok": true
+    },
+    "sports_operator": {
+      "uid_gravado": "2ea60576",
+      "email_forma": "ah2-sports_operator-<hex6>@bfr-conecta.test",
+      "cadeia_anterior": {
+        "http": 200,
+        "codigo": "renovou",
+        "ok": true
+      },
+      "login_http": 200,
+      "login_codigo": "ok",
+      "escritura_provada": true,
+      "uid_preservado": true,
+      "expira_em_s": 3598,
+      "comprimentos": {
+        "access": 830,
+        "refresh": 12
+      },
+      "cadeia_nova_hash": "2a5e739f3df7",
+      "leitura_de_prova": {
+        "http": 200,
+        "total": "1",
+        "corpo_bytes": 47
+      },
+      "gravado_em": "C:\\Users\\pcmac\\Documents\\Qoder\\2026-10-13\\28077d9a\\ah2-sessao-sports_operator.json",
+      "ok": true
+    },
+    "student": {
+      "uid_gravado": "13f597b2",
+      "email_forma": "ah2-student-<hex6>@bfr-conecta.test",
+      "cadeia_anterior": {
+        "http": 200,
+        "codigo": "renovou",
+        "ok": true
+      },
+      "login_http": 200,
+      "login_codigo": "ok",
+      "escritura_provada": true,
+      "uid_preservado": true,
+      "expira_em_s": 3599,
+      "comprimentos": {
+        "access": 819,
+        "refresh": 12
+      },
+      "cadeia_nova_hash": "956a2ed79654",
+      "leitura_de_prova": {
+        "http": 200,
+        "total": "1",
+        "corpo_bytes": 47
+      },
+      "gravado_em": "C:\\Users\\pcmac\\Documents\\Qoder\\2026-10-13\\28077d9a\\ah2-sessao-student.json",
+      "ok": true
+    }
+  },
+  "vivas": [
+    "aee",
+    "coordinator",
+    "developer",
+    "director",
+    "education_supervisor",
+    "gatekeeper",
+    "monitor",
+    "pedagogical",
+    "pending",
+    "psychology",
+    "secretary",
+    "social_work",
+    "sports_operator",
+    "student"
+  ],
+  "o_que_este_verde_nao_autoriza": "Não autoriza publicar, DDL, seed, mint nem rotação de senha; prova só que existem agora cadeias vivas para as seis personas, gravadas nos ficheiros locais de sessão.",
+  "portoes": [
+    {
+      "nome": "nenhuma_senha_foi_rotacionada_o_hash_antes_iguala_o_depois",
+      "verde": true,
+      "detalhe": {
+        "antes": {
+          "aee": "bbb0ebd294b7",
+          "coordinator": "aba7b1ab12a8",
+          "developer": "4f12b2ca9979",
+          "director": "e087de005370",
+          "education_supervisor": "5f29d8b8972b",
+          "gatekeeper": "070c811fdbec",
+          "monitor": "26bd9434da3a",
+          "pedagogical": "fc956e51b02a",
+          "pending": "4ca151b9699b",
+          "psychology": "84b993040ec7",
+          "secretary": "177849151a1b",
+          "social_work": "87bce85845c5",
+          "sports_operator": "26d6574e7801",
+          "student": "22bff2d96497"
+        },
+        "depois": {
+          "aee": "bbb0ebd294b7",
+          "coordinator": "aba7b1ab12a8",
+          "developer": "4f12b2ca9979",
+          "director": "e087de005370",
+          "education_supervisor": "5f29d8b8972b",
+          "gatekeeper": "070c811fdbec",
+          "monitor": "26bd9434da3a",
+          "pedagogical": "fc956e51b02a",
+          "pending": "4ca151b9699b",
+          "psychology": "84b993040ec7",
+          "secretary": "177849151a1b",
+          "social_work": "87bce85845c5",
+          "sports_operator": "26d6574e7801",
+          "student": "22bff2d96497"
+        }
+      }
+    },
+    {
+      "nome": "a_causa_do_vermelho_e_ja_queimada_ou_so_access_expirado_e_nao_falta_de_senha",
+      "verde": true,
+      "detalhe": {
+        "aee": "200/renovou",
+        "coordinator": "200/renovou",
+        "developer": "200/renovou",
+        "director": "200/renovou",
+        "education_supervisor": "200/renovou",
+        "gatekeeper": "200/renovou",
+        "monitor": "200/renovou",
+        "pedagogical": "200/renovou",
+        "pending": "200/renovou",
+        "psychology": "200/renovou",
+        "secretary": "200/renovou",
+        "social_work": "200/renovou",
+        "sports_operator": "200/renovou",
+        "student": "200/renovou"
+      }
+    },
+    {
+      "nome": "o_login_por_senha_bate_para_todos_os_alvos",
+      "verde": true,
+      "detalhe": {
+        "aee": "200/ok",
+        "coordinator": "200/ok",
+        "developer": "200/ok",
+        "director": "200/ok",
+        "education_supervisor": "200/ok",
+        "gatekeeper": "200/ok",
+        "monitor": "200/ok",
+        "pedagogical": "200/ok",
+        "pending": "200/ok",
+        "psychology": "200/ok",
+        "secretary": "200/ok",
+        "social_work": "200/ok",
+        "sports_operator": "200/ok",
+        "student": "200/ok"
+      }
+    },
+    {
+      "nome": "o_uid_de_cada_papel_e_o_mesmo_do_registo_a_rotação_nao_mudou_identidade",
+      "verde": true,
+      "detalhe": {
+        "aee": "c87d5c95",
+        "coordinator": "9cd0f42e",
+        "developer": "49753880",
+        "director": "b5be4883",
+        "education_supervisor": "d7d45999",
+        "gatekeeper": "422d584b",
+        "monitor": "101e9ade",
+        "pedagogical": "1f5297d4",
+        "pending": "3d2329ed",
+        "psychology": "86923196",
+        "secretary": "839e1f87",
+        "social_work": "04d52df9",
+        "sports_operator": "2ea60576",
+        "student": "13f597b2"
+      }
+    },
+    {
+      "nome": "a_cadeia_nova_fica_no_ficheiro_do_papel_e_o_mestre_nao_e_tocado",
+      "verde": true,
+      "detalhe": {
+        "mestre_antes": "7fe1623cd3ed",
+        "mestre_depois": "7fe1623cd3ed",
+        "ficheros": {
+          "aee": "C:\\Users\\pcmac\\Documents\\Qoder\\2026-10-13\\28077d9a\\ah2-sessao-aee.json",
+          "coordinator": "C:\\Users\\pcmac\\Documents\\Qoder\\2026-10-13\\28077d9a\\ah2-sessao-coordinator.json",
+          "developer": "C:\\Users\\pcmac\\Documents\\Qoder\\2026-10-13\\28077d9a\\ah2-sessao-developer.json",
+          "director": "C:\\Users\\pcmac\\Documents\\Qoder\\2026-10-13\\28077d9a\\ah2-sessao-director.json",
+          "education_supervisor": "C:\\Users\\pcmac\\Documents\\Qoder\\2026-10-13\\28077d9a\\ah2-sessao-education_supervisor.json",
+          "gatekeeper": "C:\\Users\\pcmac\\Documents\\Qoder\\2026-10-13\\28077d9a\\ah2-sessao-gatekeeper.json",
+          "monitor": "C:\\Users\\pcmac\\Documents\\Qoder\\2026-10-13\\28077d9a\\ah2-sessao-monitor.json",
+          "pedagogical": "C:\\Users\\pcmac\\Documents\\Qoder\\2026-10-13\\28077d9a\\ah2-sessao-pedagogical.json",
+          "pending": "C:\\Users\\pcmac\\Documents\\Qoder\\2026-10-13\\28077d9a\\ah2-sessao-pending.json",
+          "psychology": "C:\\Users\\pcmac\\Documents\\Qoder\\2026-10-13\\28077d9a\\ah2-sessao-psychology.json",
+          "secretary": "C:\\Users\\pcmac\\Documents\\Qoder\\2026-10-13\\28077d9a\\ah2-sessao-secretary.json",
+          "social_work": "C:\\Users\\pcmac\\Documents\\Qoder\\2026-10-13\\28077d9a\\ah2-sessao-social_work.json",
+          "sports_operator": "C:\\Users\\pcmac\\Documents\\Qoder\\2026-10-13\\28077d9a\\ah2-sessao-sports_operator.json",
+          "student": "C:\\Users\\pcmac\\Documents\\Qoder\\2026-10-13\\28077d9a\\ah2-sessao-student.json"
+        }
+      }
+    },
+    {
+      "nome": "cada_cadeia_nova_lem_um_linha_de_perfil_com_rls",
+      "verde": true,
+      "detalhe": {
+        "aee": {
+          "http": 200,
+          "total": "1",
+          "corpo_bytes": 47
+        },
+        "coordinator": {
+          "http": 200,
+          "total": "1",
+          "corpo_bytes": 47
+        },
+        "developer": {
+          "http": 200,
+          "total": "1",
+          "corpo_bytes": 47
+        },
+        "director": {
+          "http": 200,
+          "total": "1",
+          "corpo_bytes": 47
+        },
+        "education_supervisor": {
+          "http": 200,
+          "total": "1",
+          "corpo_bytes": 47
+        },
+        "gatekeeper": {
+          "http": 200,
+          "total": "1",
+          "corpo_bytes": 47
+        },
+        "monitor": {
+          "http": 200,
+          "total": "1",
+          "corpo_bytes": 47
+        },
+        "pedagogical": {
+          "http": 200,
+          "total": "1",
+          "corpo_bytes": 47
+        },
+        "pending": {
+          "http": 200,
+          "total": "1",
+          "corpo_bytes": 47
+        },
+        "psychology": {
+          "http": 200,
+          "total": "1",
+          "corpo_bytes": 47
+        },
+        "secretary": {
+          "http": 200,
+          "total": "1",
+          "corpo_bytes": 47
+        },
+        "social_work": {
+          "http": 200,
+          "total": "1",
+          "corpo_bytes": 47
+        },
+        "sports_operator": {
+          "http": 200,
+          "total": "1",
+          "corpo_bytes": 47
+        },
+        "student": {
+          "http": 200,
+          "total": "1",
+          "corpo_bytes": 47
+        }
+      }
+    },
+    {
+      "nome": "nenhuma_linha_de_produto_foi_escrita",
+      "verde": true,
+      "detalhe": {
+        "antes": {
+          "schools": 6,
+          "students": 848,
+          "profiles": 28,
+          "concessoes": 5,
+          "dias": 365,
+          "turnos": 1
+        },
+        "depois": {
+          "schools": 6,
+          "students": 848,
+          "profiles": 28,
+          "concessoes": 5,
+          "dias": 365,
+          "turnos": 1
+        }
+      }
+    },
+    {
+      "nome": "nenhum_valor_de_senha_ou_token_chega_ao_artefacto",
+      "verde": true,
+      "detalhe": {
+        "comparados": 70,
+        "presentes_no_corpo": 0,
+        "regexua": "cada valor real percorrido como string contra o artefacto serializado"
+      }
+    }
+  ],
+  "falhas": [],
+  "veredito": "P73_ENTRAR_CADEIAS_OK 14/0"
+}
