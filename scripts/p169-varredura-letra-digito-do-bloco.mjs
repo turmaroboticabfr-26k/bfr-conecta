@@ -128,13 +128,31 @@ if (process.argv[3] === '--redigir') {
 }
 
 
+// O alvo pode ser um caminho absoluto duma escrita FORA do repo (o bloco antes de ele ser appended, uma captura
+// de sessao) ou relativo ao repo (o diario). A 1.ª versao fazia sempre `REPO + '/' + ALVO`, por isso um absoluto
+// era colado ao repo e a peca rebentava em ENOENT com o caminho partido ao meio. Os tres casos abaixo dao as duas
+// faces (relativa prefixada, absoluta nao tocada) em Windows e POSIX, e abortam se alguma se mover.
+function caminhoDoAlvo(alvo, repo) {
+  if (/^[A-Za-z]:[\/\\]/.test(alvo) || alvo.startsWith('/')) return alvo;
+  return repo + '/' + alvo;
+}
+const provaCaminho = {
+  relativa: caminhoDoAlvo('docs/x.md', 'R:/repo'),
+  absoluta_windows: caminhoDoAlvo('C:/x/y.md', 'R:/repo'),
+  absoluta_posix: caminhoDoAlvo('/tmp/x.md', 'R:/repo'),
+};
+if (provaCaminho.relativa !== 'R:/repo/docs/x.md') throw new Error('ABORTA: o alvo relativo deixou de ser prefixado pelo repo, deu ' + provaCaminho.relativa);
+if (provaCaminho.absoluta_windows !== 'C:/x/y.md') throw new Error('ABORTA: o alvo absoluto em Windows foi colado ao repo, deu ' + provaCaminho.absoluta_windows);
+if (provaCaminho.absoluta_posix !== '/tmp/x.md') throw new Error('ABORTA: o alvo absoluto POSIX foi colado ao repo, deu ' + provaCaminho.absoluta_posix);
+
 say('alvo=' + ALVO + ' repo=' + REPOReal + ' MARCA=' + MARCA);
+say('PROVA_FIXTURE_CAMINHO relativa=' + provaCaminho.relativa + ' absoluta_windows=' + provaCaminho.absoluta_windows + ' absoluta_posix=' + provaCaminho.absoluta_posix);
 say('emissor_bytes=' + Buffer.byteLength(eu, 'utf8') + ' emissor_md5=' + createHash('md5').update(eu).digest('hex'));
 say('PROVA_FIXTURE positivo=' + JSON.stringify(positivo) + ' negativo=' + JSON.stringify(negativo));
 if (!positivo.includes('8p') || !positivo.includes('3c')) throw new Error('ABORTA: a regua nao dispara no fixture partido — nenhum zero faria sentido');
 if (negativo.length !== 0) throw new Error('ABORTA: o fixture limpo nao e limpo, deu ' + JSON.stringify(negativo));
 
-const bruto = readFileSync(REPOReal + '/' + ALVO, 'utf8');
+const bruto = readFileSync(caminhoDoAlvo(ALVO, REPOReal), 'utf8');
 const inicio = bruto.indexOf('**' + MARCA + '.');
 if (inicio < 0) throw new Error('ABORTA: o bloco ' + MARCA + ' nao esta no ficheiro');
 const numerode = Number(MARCA.split('.')[1]);
