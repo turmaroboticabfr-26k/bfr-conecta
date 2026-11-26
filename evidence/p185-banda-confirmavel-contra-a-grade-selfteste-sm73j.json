@@ -1,0 +1,221 @@
+{
+  "peca": "scripts/p185-banda-confirmavel-contra-a-grade.mjs",
+  "modo": "selfteste",
+  "em": "2026-11-26T02:43:29.346Z",
+  "emissor_bytes": 31304,
+  "emissor_md5": "a710130558453052acd30221e14d4bc7",
+  "estado": "MEDIDO",
+  "veredito": null,
+  "pergunta": "as bandas confirmaveis cobrem a hora em que a escola esta de facto em aula?",
+  "regra_deste_ciclo": "nenhum predicado dos produtores foi re-dactilografado aqui; cada campo resolve-se por Familia de grafias e aborta se nenhuma ou duas resolverem",
+  "leitura_de_campos_por_familia": {
+    "pega_md5": [
+      "emissor_md5",
+      "emissor.md5"
+    ],
+    "self_declarado": [
+      "modo",
+      "selfteste"
+    ],
+    "minuto_local": [
+      "medido.minutos_locais",
+      "instantaneo.minutos_desde_meia_noite"
+    ],
+    "data_local": [
+      "medido.data_local",
+      "instantaneo.data_local"
+    ]
+  },
+  "fixtures_do_leitor": [
+    {
+      "id": "r1_topo_resolve",
+      "espera": "emissor_md5",
+      "obtido": "emissor_md5",
+      "bate": true
+    },
+    {
+      "id": "r2_aninhado_resolve",
+      "espera": "emissor.md5",
+      "obtido": "emissor.md5",
+      "bate": true
+    },
+    {
+      "id": "r3_duas_grafias_aborta",
+      "espera": "ABORTA",
+      "obtido": "ABORTA: o ca",
+      "bate": true
+    },
+    {
+      "id": "r4_nenhuma_grafia_marca_falta",
+      "espera": true,
+      "obtido": true,
+      "bate": true
+    },
+    {
+      "id": "r5_minuto_aninhado_do_p184",
+      "espera": 1354,
+      "obtido": 1354,
+      "bate": true
+    },
+    {
+      "id": "r6_self_por_selfteste",
+      "espera": true,
+      "obtido": true,
+      "bate": true
+    },
+    {
+      "id": "r7_self_por_modo",
+      "espera": true,
+      "obtido": true,
+      "bate": true
+    },
+    {
+      "id": "r8_self_nao_declarado",
+      "espera": false,
+      "obtido": false,
+      "bate": true
+    },
+    {
+      "id": "r9_zero_e_valor_legitimo",
+      "espera": 0,
+      "obtido": 0,
+      "bate": true
+    }
+  ],
+  "fixtures_do_cruzamento": {
+    "casos": [
+      "iguais",
+      "banda_cobre_por_dentro",
+      "grade_foge_pelo_fim",
+      "grade_foge_pelo_comeco",
+      "so_banda",
+      "so_grade",
+      "nenhuma",
+      "banda_sem_horas_vira_sem_grade",
+      "grade_sem_horas_vira_sem_grade"
+    ],
+    "classes_obtidas": {
+      "iguais": "banda_e_grade_sao_a_mesma_janela",
+      "banda_cobre_por_dentro": "banda_cobre_a_grade",
+      "grade_foge_pelo_fim": "grade_passa_da_banda",
+      "grade_foge_pelo_comeco": "grade_passa_da_banda",
+      "so_banda": "banda_sem_grade_medida",
+      "so_grade": "grade_sem_banda",
+      "nenhuma": "nenhuma_das_duas",
+      "banda_sem_horas_vira_sem_grade": "banda_sem_grade_medida",
+      "grade_sem_horas_vira_sem_grade": "banda_sem_grade_medida"
+    },
+    "falhas": []
+  },
+  "fixtures_da_classificacao": {
+    "casos": [
+      "usavel",
+      "declara_selfteste_booleano",
+      "declara_selfteste_por_modo",
+      "sem_campo_obrigatorio",
+      "sem_pega_de_emissor",
+      "pega_nao_bate",
+      "sem_instante_lido"
+    ],
+    "classes_obtidas": [
+      "usavel",
+      "auto_declara_selfteste",
+      "auto_declara_selfteste",
+      "sem_campo_obrigatorio",
+      "sem_pega_de_emissor",
+      "pega_do_emissor_nao_bate",
+      "sem_instante_lido"
+    ],
+    "falhas": [],
+    "classes_de_exclusao_sem_positivo": [],
+    "classes_de_exclusao_declaradas": [
+      "auto_declara_selfteste",
+      "sem_campo_obrigatorio",
+      "sem_pega_de_emissor",
+      "pega_do_emissor_nao_bate",
+      "sem_instante_lido",
+      "usavel"
+    ]
+  },
+  "fixtures_dos_parseadores": {
+    "casos": [
+      "banda_boa",
+      "banda_sem_zero_na_hora",
+      "banda_com_traco_largo_NAO_e_lida",
+      "banda_sem_hifen_NAO_e_lida",
+      "hora_boa",
+      "hora_so_minuto",
+      "hora_nula_NAO_e_lida",
+      "hora_com_texto_NAO_e_lida"
+    ],
+    "sentidos": {
+      "positivos": 4,
+      "negativos": 4
+    },
+    "falhas": [],
+    "nota_da_agulha_negativa": "a janela larga do negativo e o codepoint U+2013 escrito por escape, para o fonte ficar ASCII"
+  },
+  "leituras_desta_corrida": {
+    "unicas": [],
+    "total": 1,
+    "familias_permitidas_declaradas": [
+      "evidence",
+      "scripts"
+    ]
+  },
+  "portoes": {
+    "total": 6,
+    "falhas": 0,
+    "lista": [
+      {
+        "nome": "nenhum_fixture_do_leitor_de_campos_bateu_errado",
+        "obtido": [],
+        "esperado": [],
+        "ok": true
+      },
+      {
+        "nome": "nenhum_fixture_da_classificacao_bateu_errado",
+        "obtido": [],
+        "esperado": [],
+        "ok": true
+      },
+      {
+        "nome": "toda_classe_de_exclusao_tem_positivo_na_fixture",
+        "obtido": [],
+        "esperado": [],
+        "ok": true
+      },
+      {
+        "nome": "nenhuma_fixture_do_cruzamento_bateu_errado",
+        "obtido": [],
+        "esperado": [],
+        "ok": true
+      },
+      {
+        "nome": "os_dois_parseadores_de_janela_tem_positivo_e_negativo",
+        "obtido": {
+          "falhas": [],
+          "dois_sentidos": true
+        },
+        "esperado": {
+          "falhas": [],
+          "dois_sentidos": true
+        },
+        "ok": true
+      },
+      {
+        "nome": "o_selfteste_nao_le_registos_do_corpus",
+        "obtido": 0,
+        "esperado": 0,
+        "ok": true
+      }
+    ]
+  },
+  "o_que_prova": [
+    "que o leitor de campos resolve as duas grafias, aborta com zero e com duas, e trata 0 como valor legitimo",
+    "que as nove classes do cruzamento e os oito sentidos do parser batem como o desenho declara"
+  ],
+  "o_que_NAO_prova": [
+    "nada do estado do ar ou do banco: o selfteste nao abre um unico registo de corpus, e o portao 4 mede isso"
+  ]
+}

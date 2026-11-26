@@ -1,0 +1,544 @@
+{
+  "peca": "scripts/p185-banda-confirmavel-contra-a-grade.mjs",
+  "modo": "corpus",
+  "em": "2026-11-26T02:40:42.851Z",
+  "emissor_bytes": 30711,
+  "emissor_md5": "0f336bce5ba7351442160711a3dc6488",
+  "estado": "MEDIDO",
+  "veredito": "PARCIAL_ALGUM_TURNO_NAO_E_CONFERIVEL",
+  "pergunta": "as bandas confirmaveis cobrem a hora em que a escola esta de facto em aula?",
+  "regra_deste_ciclo": "nenhum predicado dos produtores foi re-dactilografado aqui; cada campo resolve-se por Familia de grafias e aborta se nenhuma ou duas resolverem",
+  "leitura_de_campos_por_familia": {
+    "pega_md5": [
+      "emissor_md5",
+      "emissor.md5"
+    ],
+    "self_declarado": [
+      "modo",
+      "selfteste"
+    ],
+    "minuto_local": [
+      "medido.minutos_locais",
+      "instantaneo.minutos_desde_meia_noite"
+    ],
+    "data_local": [
+      "medido.data_local",
+      "instantaneo.data_local"
+    ]
+  },
+  "fixtures_do_leitor": [
+    {
+      "id": "r1_topo_resolve",
+      "espera": "emissor_md5",
+      "obtido": "emissor_md5",
+      "bate": true
+    },
+    {
+      "id": "r2_aninhado_resolve",
+      "espera": "emissor.md5",
+      "obtido": "emissor.md5",
+      "bate": true
+    },
+    {
+      "id": "r3_duas_grafias_aborta",
+      "espera": "ABORTA",
+      "obtido": "ABORTA: o ca",
+      "bate": true
+    },
+    {
+      "id": "r4_nenhuma_grafia_marca_falta",
+      "espera": true,
+      "obtido": true,
+      "bate": true
+    },
+    {
+      "id": "r5_minuto_aninhado_do_p184",
+      "espera": 1354,
+      "obtido": 1354,
+      "bate": true
+    },
+    {
+      "id": "r6_self_por_selfteste",
+      "espera": true,
+      "obtido": true,
+      "bate": true
+    },
+    {
+      "id": "r7_self_por_modo",
+      "espera": true,
+      "obtido": true,
+      "bate": true
+    },
+    {
+      "id": "r8_self_nao_declarado",
+      "espera": false,
+      "obtido": false,
+      "bate": true
+    },
+    {
+      "id": "r9_zero_e_valor_legitimo",
+      "espera": 0,
+      "obtido": 0,
+      "bate": true
+    }
+  ],
+  "fixtures_do_cruzamento": {
+    "casos": [
+      "iguais",
+      "banda_cobre_por_dentro",
+      "grade_foge_pelo_fim",
+      "grade_foge_pelo_comeco",
+      "so_banda",
+      "so_grade",
+      "nenhuma",
+      "banda_sem_horas_vira_sem_grade",
+      "grade_sem_horas_vira_sem_grade"
+    ],
+    "classes_obtidas": {
+      "iguais": "banda_e_grade_sao_a_mesma_janela",
+      "banda_cobre_por_dentro": "banda_cobre_a_grade",
+      "grade_foge_pelo_fim": "grade_passa_da_banda",
+      "grade_foge_pelo_comeco": "grade_passa_da_banda",
+      "so_banda": "banda_sem_grade_medida",
+      "so_grade": "grade_sem_banda",
+      "nenhuma": "nenhuma_das_duas",
+      "banda_sem_horas_vira_sem_grade": "banda_sem_grade_medida",
+      "grade_sem_horas_vira_sem_grade": "banda_sem_grade_medida"
+    },
+    "falhas": []
+  },
+  "fixtures_da_classificacao": {
+    "casos": [
+      "usavel",
+      "declara_selfteste_booleano",
+      "declara_selfteste_por_modo",
+      "sem_campo_obrigatorio",
+      "sem_pega_de_emissor",
+      "pega_nao_bate",
+      "sem_instante_lido"
+    ],
+    "classes_obtidas": [
+      "usavel",
+      "auto_declara_selfteste",
+      "auto_declara_selfteste",
+      "sem_campo_obrigatorio",
+      "sem_pega_de_emissor",
+      "pega_do_emissor_nao_bate",
+      "sem_instante_lido"
+    ],
+    "falhas": [],
+    "classes_de_exclusao_sem_positivo": [],
+    "classes_de_exclusao_declaradas": [
+      "auto_declara_selfteste",
+      "sem_campo_obrigatorio",
+      "sem_pega_de_emissor",
+      "pega_do_emissor_nao_bate",
+      "sem_instante_lido",
+      "usavel"
+    ]
+  },
+  "fixtures_dos_parseadores": {
+    "casos": [
+      "banda_boa",
+      "banda_sem_zero_na_hora",
+      "banda_com_traco_largo_NAO_e_lida",
+      "banda_sem_hifen_NAO_e_lida",
+      "hora_boa",
+      "hora_so_minuto",
+      "hora_nula_NAO_e_lida",
+      "hora_com_texto_NAO_e_lida"
+    ],
+    "sentidos": {
+      "positivos": 4,
+      "negativos": 4
+    },
+    "falhas": [],
+    "nota_da_agulha_negativa": "a janela larga do negativo e o codepoint U+2013 escrito por escape, para o fonte ficar ASCII"
+  },
+  "leituras_desta_corrida": {
+    "unicas": [
+      "evidence/p178-portao-da-portaria-selfteste-sm67b.json",
+      "evidence/p178-portao-da-portaria-selfteste-sm67j.json",
+      "evidence/p178-portao-da-portaria-sm67ak.json",
+      "evidence/p178-portao-da-portaria-sm67d.json",
+      "evidence/p178-portao-da-portaria-sm67e.json",
+      "evidence/p178-portao-da-portaria-sm67f.json",
+      "evidence/p178-portao-da-portaria-sm67g.json",
+      "evidence/p178-portao-da-portaria-sm67h.json",
+      "evidence/p178-portao-da-portaria-sm67k.json",
+      "evidence/p178-portao-da-portaria-sm67p.json",
+      "evidence/p178-portao-da-portaria-sm67x.json",
+      "evidence/p178-portao-da-portaria-sm68a.json",
+      "evidence/p178-portao-da-portaria-sm68g.json",
+      "evidence/p178-portao-da-portaria-sm69a.json",
+      "evidence/p178-portao-da-portaria-sm70a.json",
+      "evidence/p178-portao-da-portaria-sm70bi.json",
+      "evidence/p178-portao-da-portaria-sm70by.json",
+      "evidence/p178-portao-da-portaria-sm70r.json",
+      "evidence/p178-portao-da-portaria-sm71e.json",
+      "evidence/p178-portao-da-portaria-sm72a.json",
+      "evidence/p178-portao-da-portaria-sm73d.json",
+      "evidence/p184-grade-das-turmas-sm72h.json",
+      "evidence/p184-grade-das-turmas-sm72i.json",
+      "evidence/p184-grade-das-turmas-sm72j.json",
+      "evidence/p184-grade-das-turmas-sm72k.json",
+      "evidence/p184-grade-das-turmas-sm72v.json",
+      "scripts/p178-portao-da-portaria-lido-do-ar.mjs",
+      "scripts/p184-grade-das-turmas-do-banco.mjs"
+    ],
+    "total": 29,
+    "familias_permitidas_declaradas": [
+      "evidence",
+      "scripts"
+    ]
+  },
+  "portoes": {
+    "total": 11,
+    "falhas": 0,
+    "lista": [
+      {
+        "nome": "nenhum_usavel_da_familia_e_mais_novo_que_o_escolhido",
+        "obtido": [
+          [],
+          []
+        ],
+        "esperado": [
+          [],
+          []
+        ],
+        "ok": true
+      },
+      {
+        "nome": "toda_classe_de_exclusao_e_impressa_por_cada_produtor",
+        "obtido": [
+          [
+            "auto_declara_selfteste",
+            "pega_do_emissor_nao_bate",
+            "sem_campo_obrigatorio",
+            "sem_instante_lido",
+            "sem_pega_de_emissor",
+            "usavel"
+          ],
+          [
+            "auto_declara_selfteste",
+            "pega_do_emissor_nao_bate",
+            "sem_campo_obrigatorio",
+            "sem_instante_lido",
+            "sem_pega_de_emissor",
+            "usavel"
+          ]
+        ],
+        "esperado": [
+          [
+            "auto_declara_selfteste",
+            "pega_do_emissor_nao_bate",
+            "sem_campo_obrigatorio",
+            "sem_instante_lido",
+            "sem_pega_de_emissor",
+            "usavel"
+          ],
+          [
+            "auto_declara_selfteste",
+            "pega_do_emissor_nao_bate",
+            "sem_campo_obrigatorio",
+            "sem_instante_lido",
+            "sem_pega_de_emissor",
+            "usavel"
+          ]
+        ],
+        "ok": true
+      },
+      {
+        "nome": "nenhum_turno_fica_fora_das_classes_declaradas",
+        "obtido": [],
+        "esperado": [],
+        "ok": true
+      },
+      {
+        "nome": "toda_classe_de_cruzamento_tem_positivo_no_corpus_ou_na_fixture",
+        "obtido": [],
+        "esperado": [],
+        "ok": true
+      },
+      {
+        "nome": "nenhuma_fixture_do_cruzamento_bateu_errado",
+        "obtido": [],
+        "esperado": [],
+        "ok": true
+      },
+      {
+        "nome": "nenhum_fixture_do_leitor_de_campos_bateu_errado",
+        "obtido": [],
+        "esperado": [],
+        "ok": true
+      },
+      {
+        "nome": "nenhum_fixture_da_classificacao_bateu_errado",
+        "obtido": [],
+        "esperado": [],
+        "ok": true
+      },
+      {
+        "nome": "toda_classe_de_exclusao_tem_positivo_na_fixture",
+        "obtido": [],
+        "esperado": [],
+        "ok": true
+      },
+      {
+        "nome": "os_dois_parseadores_de_janela_tem_positivo_e_negativo",
+        "obtido": {
+          "falhas": [],
+          "dois_sentidos": true,
+          "janelas_do_corpus_nao_resolvidas": []
+        },
+        "esperado": {
+          "falhas": [],
+          "dois_sentidos": true,
+          "janelas_do_corpus_nao_resolvidas": []
+        },
+        "ok": true
+      },
+      {
+        "nome": "os_dois_instantes_usados_sao_do_mesmo_dia_local",
+        "obtido": [
+          "2026-11-25",
+          "2026-11-25",
+          true
+        ],
+        "esperado": [
+          "2026-11-25",
+          "2026-11-25",
+          true
+        ],
+        "ok": true
+      },
+      {
+        "nome": "as_leituras_desta_corrida_sao_registos_e_fontes_de_peca",
+        "obtido": {
+          "fora": [],
+          "familias": [
+            "evidence",
+            "scripts"
+          ],
+          "instrumento_cego": false
+        },
+        "esperado": {
+          "fora": [],
+          "familias": [
+            "evidence",
+            "scripts"
+          ],
+          "instrumento_cego": false
+        },
+        "ok": true
+      }
+    ]
+  },
+  "o_que_prova": [
+    "que o registo escolhido de cada produtor e o mais novo conferivel da familia, com as exclusoes nomeadas por classe",
+    "que a pega do emissor de cada registo escolhido bate com a peca em disco, e com que grafia cada campo foi lido",
+    "em que classe do cruzamento cai cada turno, com as seis classes declaradas impressas mesmo vazias",
+    "que os dois instantes usados sao do mesmo dia local e qual a diferenca de minutos entre eles"
+  ],
+  "o_que_NAO_prova": [
+    "que a banda confirmada sirva as aulas reais de hoje: o dia depende dos dias_da_semana e do calendario, que vivem no registo do p178, nao aqui",
+    "que o vespertino fique coberto quando ele gravar as horas: enquanto a grade da tarde nao tiver horas reais, nao ha janela a comparar",
+    "o estado vivo do ar ou do banco neste minuto: esta peca le registos, e um registo e o instante de quem o escreveu",
+    "que as seis classes sejam todas as possiveis: sao as que o desenho declara, e o portao prova que nenhum turno ficou fora delas e que cada uma tem positivo"
+  ],
+  "registos_usados": {
+    "p178": {
+      "nome": "p178-portao-da-portaria-sm73d.json",
+      "instante_lido": "2026-11-26T01:46:07.825Z",
+      "peca_lida": "p178-portao-da-portaria-lido-do-ar.mjs",
+      "pega_declarada": "b67b07b9752f978cd845e76c49522237",
+      "pega_medida": "b67b07b9752f978cd845e76c49522237",
+      "bate": true,
+      "grafias_lidas": {
+        "instante": "em",
+        "minuto_local": "medido.minutos_locais",
+        "data_local": "medido.data_local",
+        "bandas_linhas": "medido.linhas"
+      },
+      "registos_da_familia": 21,
+      "mais_novo_da_familia_por_instante": "p178-portao-da-portaria-sm73d.json",
+      "exclusoes_por_classe": {
+        "auto_declara_selfteste": [
+          "p178-portao-da-portaria-selfteste-sm67b.json",
+          "p178-portao-da-portaria-selfteste-sm67j.json"
+        ],
+        "sem_campo_obrigatorio": [],
+        "sem_pega_de_emissor": [],
+        "pega_do_emissor_nao_bate": [
+          "p178-portao-da-portaria-sm67d.json",
+          "p178-portao-da-portaria-sm67e.json",
+          "p178-portao-da-portaria-sm67f.json",
+          "p178-portao-da-portaria-sm67g.json",
+          "p178-portao-da-portaria-sm67h.json"
+        ],
+        "sem_instante_lido": [],
+        "usavel": [
+          "p178-portao-da-portaria-sm67ak.json",
+          "p178-portao-da-portaria-sm67k.json",
+          "p178-portao-da-portaria-sm67p.json",
+          "p178-portao-da-portaria-sm67x.json",
+          "p178-portao-da-portaria-sm68a.json",
+          "p178-portao-da-portaria-sm68g.json",
+          "p178-portao-da-portaria-sm69a.json",
+          "p178-portao-da-portaria-sm70a.json",
+          "p178-portao-da-portaria-sm70bi.json",
+          "p178-portao-da-portaria-sm70by.json",
+          "p178-portao-da-portaria-sm70r.json",
+          "p178-portao-da-portaria-sm71e.json",
+          "p178-portao-da-portaria-sm72a.json",
+          "p178-portao-da-portaria-sm73d.json"
+        ]
+      }
+    },
+    "p184": {
+      "nome": "p184-grade-das-turmas-sm72v.json",
+      "instante_lido": "2026-11-25T22:34",
+      "peca_lida": "p184-grade-das-turmas-do-banco.mjs",
+      "pega_declarada": "0226661e811d309ec74b9da27b8a25ae",
+      "pega_medida": "0226661e811d309ec74b9da27b8a25ae",
+      "bate": true,
+      "grafias_lidas": {
+        "instante": "instantaneo.data_local+hora_local",
+        "minuto_local": "instantaneo.minutos_desde_meia_noite",
+        "data_local": "instantaneo.data_local",
+        "grade_por_turno": "janela_real_da_grade_por_turno",
+        "turnos_sem_hora_nenhuma": "turnos_sem_hora_nenhuma"
+      },
+      "registos_da_familia": 5,
+      "mais_novo_da_familia_por_instante": "p184-grade-das-turmas-sm72v.json",
+      "exclusoes_por_classe": {
+        "auto_declara_selfteste": [
+          "p184-grade-das-turmas-sm72i.json"
+        ],
+        "sem_campo_obrigatorio": [
+          "p184-grade-das-turmas-sm72h.json",
+          "p184-grade-das-turmas-sm72j.json",
+          "p184-grade-das-turmas-sm72k.json"
+        ],
+        "sem_pega_de_emissor": [],
+        "pega_do_emissor_nao_bate": [],
+        "sem_instante_lido": [],
+        "usavel": [
+          "p184-grade-das-turmas-sm72v.json"
+        ]
+      }
+    }
+  },
+  "instantes": {
+    "minuto_local_do_p178": 1366,
+    "minuto_local_do_p184": 1354,
+    "data_local": {
+      "p178": "2026-11-25",
+      "p184": "2026-11-25"
+    },
+    "diferenca_de_minutos": 12
+  },
+  "bandas_lidas_do_p178": {
+    "matutino": {
+      "linha_existe": true,
+      "janela_texto": "07:00-11:30",
+      "abre": 420,
+      "fecha": 690,
+      "confirmado": false,
+      "dias": "1,2,3,4,5"
+    }
+  },
+  "grade_lida_do_p184": {
+    "matutino": {
+      "desde": 420,
+      "ate": 690,
+      "linhas": 308,
+      "texto": {
+        "desde": "07:00:00",
+        "ate": "11:30:00"
+      }
+    },
+    "vespertino": {
+      "desde": null,
+      "ate": null,
+      "linhas": 286,
+      "texto": {
+        "desde": null,
+        "ate": null
+      }
+    }
+  },
+  "turnos_sem_hora_nenhuma_do_p184": [
+    "vespertino"
+  ],
+  "classes_declaradas": [
+    "banda_e_grade_sao_a_mesma_janela",
+    "banda_cobre_a_grade",
+    "grade_passa_da_banda",
+    "banda_sem_grade_medida",
+    "grade_sem_banda",
+    "nenhuma_das_duas"
+  ],
+  "classes_de_exclusao_declaradas": [
+    "auto_declara_selfteste",
+    "sem_campo_obrigatorio",
+    "sem_pega_de_emissor",
+    "pega_do_emissor_nao_bate",
+    "sem_instante_lido",
+    "usavel"
+  ],
+  "cruzamento_por_classe": {
+    "banda_e_grade_sao_a_mesma_janela": [
+      "matutino"
+    ],
+    "banda_cobre_a_grade": [],
+    "grade_passa_da_banda": [],
+    "banda_sem_grade_medida": [],
+    "grade_sem_banda": [
+      "vespertino"
+    ],
+    "nenhuma_das_duas": []
+  },
+  "cruzamento": [
+    {
+      "turno": "matutino",
+      "classe": "banda_e_grade_sao_a_mesma_janela",
+      "banda": {
+        "linha_existe": true,
+        "janela_texto": "07:00-11:30",
+        "abre": 420,
+        "fecha": 690,
+        "confirmado": false,
+        "dias": "1,2,3,4,5"
+      },
+      "grade": {
+        "desde": 420,
+        "ate": 690,
+        "linhas": 308,
+        "texto": {
+          "desde": "07:00:00",
+          "ate": "11:30:00"
+        }
+      },
+      "turno_sem_hora_nenhuma_na_grade": false,
+      "cobre_o_instante_do_p178": false
+    },
+    {
+      "turno": "vespertino",
+      "classe": "grade_sem_banda",
+      "banda": null,
+      "grade": {
+        "desde": null,
+        "ate": null,
+        "linhas": 286,
+        "texto": {
+          "desde": null,
+          "ate": null
+        }
+      },
+      "turno_sem_hora_nenhuma_na_grade": true,
+      "cobre_o_instante_do_p178": false
+    }
+  ],
+  "classes_sem_positivo": []
+}

@@ -165,21 +165,57 @@ const ACAO_NOMEADA = [
 ];
 const CONTROLO_NEGATIVO_DE_FAMILIA = 'o censo registado bate com a ficha e nao ha mais nada a dizer';
 
+const CRASE = '\x60';
+// Apaga o conteudo de cada span entre duas plicas, sem tocar no comprimento: as posicoes do texto varrido sao as do
+// texto lido, por isso o contexto impresso continua a ser prosa real e a diferenca entre as duas contagens e
+// imputavel a uma posicao. Um span aberto ate ao fim da linha tambem se apaga, e o numero de plicas sem par
+// publica-se porque e ele que me diria que a suposicao do par estava errada no ledger.
+function foraDePlicas(texto) {
+  const letras = texto.split('');
+  let aberto = -1;
+  let semPar = 0;
+  for (let i = 0; i < texto.length; i++) {
+    if (texto[i] !== CRASE) continue;
+    if (aberto === -1) { aberto = i; continue; }
+    for (let k = aberto + 1; k < i; k++) letras[k] = ' ';
+    aberto = -1;
+  }
+  if (aberto !== -1) {
+    semPar = 1;
+    for (let k = aberto + 1; k < texto.length; k++) letras[k] = ' ';
+  }
+  return { texto: letras.join(''), semPar };
+}
+
 function acoesNomeadas(texto) {
-  const hits = [];
+  // O gatilho nao pode disparar dentro de um caminho citado entre plicas: um nome de ficheiro nomeia um ficheiro,
+  // nao um passo, e a 1.ª versao contava o que la dentro se lia como «candidata». A regra nova le o texto varrido
+  // por foraDePlicas e mantem, no mesmo registo, a contagem velha sobre o bruto: sem as duas lado a lado nao ha
+  // diferenca medida, so a minha opiniao de que a nova esta certa.
+  const bruto = texto;
+  const varrido = foraDePlicas(texto);
+  const novas = [];
+  const brutas = [];
   for (const [nome, re] of ACAO_NOMEADA) {
     const g = new RegExp(re.source, re.flags.includes('g') ? re.flags : re.flags + 'g');
+    const gb = new RegExp(re.source, re.flags.includes('g') ? re.flags : re.flags + 'g');
     let m;
     let n = 0;
     let primeiro = null;
-    while ((m = g.exec(texto)) !== null) {
+    while ((m = g.exec(varrido.texto)) !== null) {
       n++;
-      if (primeiro === null) primeiro = texto.slice(Math.max(0, m.index - 12), m.index + m[0].length + 12);
+      if (primeiro === null) primeiro = bruto.slice(Math.max(0, m.index - 12), m.index + m[0].length + 12);
       if (m.index === g.lastIndex) g.lastIndex++;
     }
-    if (n) hits.push({ nome, ocorrencias: n, gatilho: primeiro });
+    let nb = 0;
+    while ((m = gb.exec(bruto)) !== null) {
+      nb++;
+      if (m.index === gb.lastIndex) gb.lastIndex++;
+    }
+    if (n) novas.push({ nome, ocorrencias: n, ocorrencias_brutas: nb, so_dentro_de_plicas: nb - n, gatilho: primeiro });
+    if (nb) brutas.push({ nome, ocorrencias: nb });
   }
-  return hits;
+  return { novas, brutas, plicas_sem_par: varrido.semPar };
 }
 
 function okExigido(texto) {
@@ -189,6 +225,13 @@ function okExigido(texto) {
     if (m) hits.push({ exigido: nome, gatilho: m[0].slice(0, 40) });
   }
   return hits.length ? hits : [{ exigido: 'nenhum_familia_de_ok_lida', gatilho: '-' }];
+}
+function okExigidoForaDasPlicas(texto) {
+  // A mesma cegueira do gatilho de accao, medida antes de se consertar e nao por opiniao: na corrida sm73t da sonda
+  // p167 uma celula (PEN-24) declarava «OK de aplicacao de DDL» so porque a palavra vivia dentro de um literal
+  // citado entre plicas (`permissions_policy=null`, `Content-Security-Policy: ...`). Um valor medido citado entre
+  // plicas nomeia o que foi lido, nao o que se pede ao dono. A contagem velha continua publicada ao lado.
+  return okExigido(foraDePlicas(texto).texto);
 }
 const SEM_FAMILIA_DE_OK = 'nenhum_familia_de_ok_lida';
 
@@ -210,6 +253,7 @@ for (const r of rows) {
   const pri = c[4].trim();
   if (!CODIGOS_PRIORIDADE.includes(pri)) prioridadesForaDaLegenda[pri] = (prioridadesForaDaLegenda[pri] || 0) + 1;
   const lido = item + ' ' + estado;
+  const ac = acoesNomeadas(lido);
   itens.push({
     id, tipo: c[3].trim(), pri: pri,
     classe: av.classe,
@@ -219,8 +263,11 @@ for (const r of rows) {
     recorte: av.vencedor ? av.vencedor.recorte.slice(0, 170) : estado.slice(0, 170),
     n_sinais: av.s.length,
     texto_lido: lido,
-    ok: okExigido(lido),
-    acao: acoesNomeadas(lido),
+    ok: okExigidoForaDasPlicas(lido),
+    ok_regra_velha: okExigido(lido),
+    acao: ac.novas,
+    acao_regra_velha: ac.brutas,
+    plicas_sem_par_na_celula: ac.plicas_sem_par,
     bytes_estado: Buffer.byteLength(estado),
   });
 }
@@ -378,8 +425,37 @@ const facesDaClasseSemFamilia = {
   com_acao_nomeada: semFamilia.filter((i) => i.acao.length > 0).map((i) => i.id),
   sem_passo_nomeado: semFamilia.filter((i) => i.acao.length === 0).map((i) => i.id),
 };
-const usoAcaoNoCorpus = usoFamilia(ACAO_NOMEADA, itens.map((i) => i.texto_lido));
-const usoAcaoNaClasseSemFamilia = usoFamilia(ACAO_NOMEADA, semFamilia.map((i) => i.texto_lido));
+// O histograma le o mesmo texto que as listas por celula leem (o varrido), e a contagem velha sobre o bruto
+// publica-se ao lado: as duas rotas nao se harmonizam por decisao minha, comparam-se por medida e o portao e que da
+// o aviso quando uma delas voltar a escrever sobre outro texto.
+const usoFamiliaVarrida = (familia, itensDeCelula) => usoFamilia(familia, itensDeCelula.map((i) => foraDePlicas(i.texto_lido).texto));
+const usoAcaoNoCorpus = usoFamiliaVarrida(ACAO_NOMEADA, itens);
+const usoAcaoNaClasseSemFamilia = usoFamiliaVarrida(ACAO_NOMEADA, semFamilia);
+const usoAcaoNoCorpusNoBruto = usoFamilia(ACAO_NOMEADA, itens.map((i) => i.texto_lido));
+const usoAcaoNaClasseNoBruto = usoFamilia(ACAO_NOMEADA, semFamilia.map((i) => i.texto_lido));
+// O histograma por regex e as listas por celula sao duas rotas de contagem da mesma palavra: a 1.ª corre o texto
+// varrido, a 2.ª soma os disparos que a propria regla por celula publicou. Na corrida sm73r as duas divergiram
+// (candidata 21 vs 19, escrita 29 vs 28, indice_ou_gitignore 2 vs 1) porque so a primeira lia o bruto; o portao que
+// as confronta e o que avisa se alguma delas voltar a escrever sobre outro texto.
+const usoDasListas = (lista) => {
+  const uso = {};
+  for (const [nome] of ACAO_NOMEADA) uso[nome] = 0;
+  for (const i of lista) for (const h of i.acao) uso[h.nome] += 1;
+  return uso;
+};
+const usoNoCorpusDasCelulas = usoDasListas(itens);
+const usoNaClasseDasCelulas = usoDasListas(semFamilia);
+// O controlo prova que as duas rotas PODEM divergir, sobre uma celula fabricada em que a unica palavra de passo vive
+// dentro de um caminho entre plicas: sem isto, «o histograma bate com as listas» seria uma assercao que nenhuma
+// escrita legitima consegue rebentar. A plica compoe-se por codepoint, nunca digitada neste fonte.
+const CELULA_FABRICADA_DA_CONFRONTACAO = 'o passo mora em ' + CRASE + 'sql/p143-candidata.sql' + CRASE;
+const rotasDivergemNoControlo = (() => {
+  const bruto = usoFamilia(ACAO_NOMEADA, [CELULA_FABRICADA_DA_CONFRONTACAO]);
+  const porCelula = usoDasListas([{ texto_lido: CELULA_FABRICADA_DA_CONFRONTACAO, acao: acoesNomeadas(CELULA_FABRICADA_DA_CONFRONTACAO).novas }]);
+  return { no_histograma_bruto: bruto, nas_listas_varridas: porCelula, divergem: JSON.stringify(bruto) !== JSON.stringify(porCelula) };
+})();
+const divergenciasDeHistograma = (nome, doHistograma, dasCelulas) =>
+  ACAO_NOMEADA.map(([f]) => ({ campo: nome, familia: f, no_histograma: doHistograma[f], nas_celulas: dasCelulas[f] })).filter((x) => x.no_histograma !== x.nas_celulas);
 const usoAcaoNosFixtures = usoFamilia(ACAO_NOMEADA, ACAO_NOMEADA.map((f) => f[2]));
 const fixturesDeAcaoQueFalham = ACAO_NOMEADA.filter(([, re, fix]) => !re.test(fix)).map(([nome]) => nome);
 const familiasQueDisparamNoControloNegativo = ACAO_NOMEADA.filter(([, re]) => re.test(CONTROLO_NEGATIVO_DE_FAMILIA)).map(([nome]) => nome);
@@ -389,6 +465,98 @@ const particaoDasQuatroFaces = {
   so_acao_nomeada: facesDaClasseSemFamilia.com_acao_nomeada,
   nenhuma_das_duas: facesDaClasseSemFamilia.sem_passo_nomeado,
 };
+
+// A regra nova do gatilho so vale se tiver os dois sentidos postos em fixture: um caminho entre plicas que a regra
+// velha contava e a nova nao conta (o positivo da correccao), e a mesma palavra fora de plicas que as duas contam
+// (senao a regra nova seria apenas uma forma de nao contar nada). O quarto caso poe a plica sem par, que e o ramo
+// em que o span se apaga ate ao fim da celula, e por isso precisa do seu proprio fixture.
+const FIXTURES_DE_PLICA = [
+  { id: 'so_dentro_da_plica', texto: 'o passo mora em `sql/p143-candidata.sql` e nao na prosa da celula', espera: { candidata: { novas: 0, brutas: 1 } } },
+  { id: 'so_fora_da_plica', texto: 'o proximo passo e escrever a linha no produto', espera: { escrita: { novas: 1, brutas: 1 } } },
+  { id: 'as_duas_misturadas', texto: '`sql/p143-candidata.sql` esta em disco e o passo e escrever no produto', espera: { candidata: { novas: 0, brutas: 1 }, escrita: { novas: 1, brutas: 1 } } },
+  { id: 'plica_sem_par', texto: 'a celula abre `sql/candidata.sql e nao fecha a plica', espera: { candidata: { novas: 0, brutas: 1 } }, espera_sem_par: 1 },
+];
+const fixturesDePlicaQueFalham = [];
+const comprimentoQueFalha = [];
+for (const f of FIXTURES_DE_PLICA) {
+  const r = acoesNomeadas(f.texto);
+  const varrido = foraDePlicas(f.texto);
+  if (varrido.texto.length !== f.texto.length) comprimentoQueFalha.push({ id: f.id, bruto: f.texto.length, varrido: varrido.texto.length });
+  for (const [nome, espera] of Object.entries(f.espera)) {
+    const novas = (r.novas.find((h) => h.nome === nome) || { ocorrencias: 0 }).ocorrencias;
+    const brutas = (r.brutas.find((h) => h.nome === nome) || { ocorrencias: 0 }).ocorrencias;
+    if (novas !== espera.novas || brutas !== espera.brutas) fixturesDePlicaQueFalham.push({ id: f.id, nome, esperado: espera, obtido: { novas, brutas } });
+  }
+  if (f.espera_sem_par !== undefined && r.plicas_sem_par !== f.espera_sem_par) fixturesDePlicaQueFalham.push({ id: f.id, nome: 'plicas_sem_par', esperado: f.espera_sem_par, obtido: r.plicas_sem_par });
+}
+const diferencasDePlica = ACAO_NOMEADA.map(([nome]) => {
+  let novas = 0;
+  let brutas = 0;
+  for (const i of itens) {
+    const h = i.acao.find((x) => x.nome === nome);
+    if (h) novas += h.ocorrencias;
+    const b = i.acao_regra_velha.find((x) => x.nome === nome);
+    if (b) brutas += b.ocorrencias;
+  }
+  return { nome, na_regra_nova: novas, na_regra_velha: brutas, so_dentro_de_plicas: brutas - novas };
+});
+const linhasQueMudaramDeFace = itens.filter((i) => i.acao.length === 0 && i.acao_regra_velha.length > 0).map((i) => i.id);
+const plicasSemParNoCorpus = itens.filter((i) => i.plicas_sem_par_na_celula === 1).map((i) => i.id);
+const facesDaRegraVelha = {
+  com_acao_nomeada: semFamilia.filter((i) => i.acao_regra_velha.length > 0).map((i) => i.id),
+  sem_passo_nomeado: semFamilia.filter((i) => i.acao_regra_velha.length === 0).map((i) => i.id),
+};
+
+// A peneira aplicada ao vocabulario de OK, com as exigencias que aqui tem positivo: fixture nos dois sentidos, um
+// controlo fabricado que prove que as duas rotas de contagem podem divergir, e a peneira comprimento-preservante.
+// A terceira exigencia da face das accoes — histograma por regex contra soma das listas por celula — nao e portao
+// do OK porque as duas rotas leem o mesmo texto varrido: ver a razao junto do portao. As listas velha e nova
+// publicam-se lado a lado porque a diferenca e a medida, nao a minha preferencia.
+const FIXTURES_DE_PLICA_DO_OK = [
+  { id: 'ok_so_dentro_da_plica', texto: 'a conferenca le ' + CRASE + 'permissions_policy=null' + CRASE + ' no ar e nao ha mais nada a dizer', espera: { 'OK de aplicacao de DDL': { novas: 0, brutas: 1 } } },
+  { id: 'ok_so_fora_da_plica', texto: 'falta publicar a versao v145 depois de o dono autorizar', espera: { 'OK de publicacao': { novas: 1, brutas: 1 } } },
+  { id: 'ok_as_duas_misturadas', texto: 'le ' + CRASE + 'permissions_policy=null' + CRASE + ' e o que falta e mint de conta', espera: { 'OK de aplicacao de DDL': { novas: 0, brutas: 1 }, 'OK de mint ou rotacao de senha': { novas: 1, brutas: 1 } } },
+];
+const fixturesDePlicaDoOkQueFalham = [];
+const comprimentoDoOkQueFalha = [];
+for (const f of FIXTURES_DE_PLICA_DO_OK) {
+  const novas = okExigidoForaDasPlicas(f.texto).map((h) => h.exigido);
+  const brutas = okExigido(f.texto).map((h) => h.exigido);
+  const varrido = foraDePlicas(f.texto).texto;
+  if (varrido.length !== f.texto.length) comprimentoDoOkQueFalha.push({ id: f.id, bruto: f.texto.length, varrido: varrido.length });
+  for (const [nome, espera] of Object.entries(f.espera)) {
+    const n = novas.filter((x) => x === nome).length;
+    const b = brutas.filter((x) => x === nome).length;
+    if (n !== espera.novas || b !== espera.brutas) fixturesDePlicaDoOkQueFalham.push({ id: f.id, nome, esperado: espera, obtido: { novas: n, brutas: b } });
+  }
+}
+const nomesDeFamiliaDeOk = OK_EXIGIDO.map(([n]) => n);
+const usoOkNasCelulas = (lista, campo) => {
+  const uso = {};
+  for (const n of nomesDeFamiliaDeOk) uso[n] = 0;
+  for (const i of lista) for (const h of i[campo]) if (uso[h.exigido] !== undefined) uso[h.exigido]++;
+  return uso;
+};
+const usoOkNoVarrido = usoOkNasCelulas(itens, 'ok');
+const usoOkNoBruto = usoOkNasCelulas(itens, 'ok_regra_velha');
+const usoOkPorRegex = usoFamilia(OK_EXIGIDO, itens.map((i) => foraDePlicas(i.texto_lido).texto));
+const divergenciasOk = nomesDeFamiliaDeOk
+  .map((n) => ({ familia: n, no_histograma_por_regex: usoOkPorRegex[n], nas_listas_por_celula: usoOkNoVarrido[n], no_bruto: usoOkNoBruto[n] }))
+  .filter((x) => x.no_histograma_por_regex !== x.nas_listas_por_celula);
+const linhasDoOkQueMudaramDeLista = itens
+  .filter((i) => i.ok.map((h) => h.exigido).join(',') !== i.ok_regra_velha.map((h) => h.exigido).join(','))
+  .map((i) => ({ id: i.id, no_bruto: i.ok_regra_velha.map((h) => h.exigido), no_varrido: i.ok.map((h) => h.exigido) }));
+// A cara que interessa ao ledger e ao p171: uma celula que perdia a sua unica familia de OK passava a dizer
+// «nenhuma», e com isso muda de grupo em quem fecha a pendencia. Conta-se a entrada na classe, nao so a lista.
+const linhasQueEntraramNaClasseSemFamiliaDeOk = itens
+  .filter((i) => i.ok.length === 1 && i.ok[0].exigido === SEM_FAMILIA_DE_OK && i.ok_regra_velha.some((h) => h.exigido !== SEM_FAMILIA_DE_OK))
+  .map((i) => ({ id: i.id, familias_no_bruto: i.ok_regra_velha.map((h) => h.exigido) }));
+const CELULA_FABRICADA_DO_OK = 'a conferenca le ' + CRASE + 'permissions_policy=null' + CRASE + ' no ar';
+const rotasDoOkDivergemNoControlo = (() => {
+  const bruto = usoFamilia(OK_EXIGIDO, [CELULA_FABRICADA_DO_OK]);
+  const porCelula = usoOkNasCelulas([{ ok: okExigidoForaDasPlicas(CELULA_FABRICADA_DO_OK) }], 'ok');
+  return { no_histograma_bruto: bruto, nas_listas_varridas: porCelula, divergem: JSON.stringify(bruto) !== JSON.stringify(porCelula) };
+})();
 
 const portoes = [];
 const gate = (nome, ob, esp) => portoes.push({ nome, obtido: ob, esperado: esp, ok: JSON.stringify(ob) === JSON.stringify(esp) });
@@ -419,6 +587,23 @@ gate('cada_familia_de_acao_nomeada_dispara_no_fixture_que_lhe_foi_posto', fixtur
 gate('nenhuma_familia_de_acao_nomeada_dispara_no_controlo_negativo', familiasQueDisparamNoControloNegativo, []);
 gate('a_classe_sem_familia_de_ok_e_exactamente_a_soma_das_suas_duas_faces',
   [facesDaClasseSemFamilia.com_acao_nomeada.length + facesDaClasseSemFamilia.sem_passo_nomeado.length, semFamilia.length], [semFamilia.length, semFamilia.length]);
+gate('os_quatro_fixtures_da_plica_batem_nos_dois_sentidos', fixturesDePlicaQueFalham, []);
+gate('apagar_o_conteudo_das_plicas_nao_mexe_no_comprimento_da_celula', comprimentoQueFalha, []);
+gate('a_face_da_regra_velha_soma_a_mesma_classe_sem_familia_de_ok',
+  [facesDaRegraVelha.com_acao_nomeada.length + facesDaRegraVelha.sem_passo_nomeado.length, semFamilia.length], [semFamilia.length, semFamilia.length]);
+gate('o_histograma_do_corpus_bate_com_a_soma_das_listas_por_celula',
+  divergenciasDeHistograma('uso_no_corpus', usoAcaoNoCorpus, usoNoCorpusDasCelulas), []);
+gate('o_histograma_da_classe_bate_com_a_soma_das_listas_por_celula',
+  divergenciasDeHistograma('uso_na_classe', usoAcaoNaClasseSemFamilia, usoNaClasseDasCelulas), []);
+gate('a_confrontacao_entre_as_duas_rotas_de_contagem_pode_falhar', rotasDivergemNoControlo.divergem, true);
+gate('os_tres_fixtures_da_plica_do_ok_batem_nos_dois_sentidos', fixturesDePlicaDoOkQueFalham, []);
+gate('apagar_o_conteudo_das_plicas_nao_mexe_no_comprimento_duma_celula_de_ok', comprimentoDoOkQueFalha, []);
+// Nao ha portao aqui que confronte o histograma por regex com a soma das listas por celula do OK, ao contrario do
+// que existe para as accoes: as duas rotas de OK leem o mesmo texto varrido pela mesma celula, por isso a igualdade
+// nao tem positivo possivel e seria a assercao que nenhuma escrita legitima rebenta (§SM.70). A divergencia continua
+// publicada em divergencias_entre_as_rotas, e quem a mede por uma segunda mao e a sonda p167, que recorta estas
+// predicas deste ficheiro e conta de novo por conta propria.
+gate('o_controlo_fabricado_do_ok_diverge_entre_as_duas_rotas', rotasDoOkDivergemNoControlo.divergem, true);
 gate('as_quatro_familias_de_ok_do_desenho_continuam_os_quatro_nomes_e_a_mesma_ordem', OK_EXIGIDO.map(([n]) => n), ['OK de publicacao', 'OK de aplicacao de DDL', 'OK de mint ou rotacao de senha', 'decisao humana (produto ou aparelho)']);
 const falhas = portoes.filter((p) => !p.ok);
 const emissor = fs.readFileSync(REPO + '/scripts/p133-inventario-das-pendencias-abertas.mjs', 'utf8');
@@ -454,6 +639,18 @@ const saida = {
   rm_13: { do_produtor: rmDoProdutor, lidas_aqui: rmLinhas.length, abertas_pelo_produtor: rmAbertasDoProdutor, censo_falhou: censoFalhou },
   contador_do_ledger: { linhas_pen: linhasDoProdutor, ids_unicos: idsUnicosDoProdutor },
   vocabulario_de_ok_usado: vocabOk,
+  vocabulario_de_ok_pelas_duas_rotas: {
+    fixtures_definidas: FIXTURES_DE_PLICA_DO_OK.map((f) => f.id),
+    fixtures_que_falham: fixturesDePlicaDoOkQueFalham,
+    comprimento_que_falha: comprimentoDoOkQueFalha,
+    uso_no_varrido_contado_por_celula: usoOkNoVarrido,
+    uso_no_bruto_contado_por_celula: usoOkNoBruto,
+    uso_no_varrido_por_regex: usoOkPorRegex,
+    divergencias_entre_as_rotas: divergenciasOk,
+    linhas_que_mudaram_de_lista: linhasDoOkQueMudaramDeLista,
+    linhas_que_entraram_na_classe_sem_familia_de_ok: linhasQueEntraramNaClasseSemFamiliaDeOk,
+    controlo_das_duas_rotas: rotasDoOkDivergemNoControlo,
+  },
   vocabulario_de_acao_nomeada: {
     definidas: ACAO_NOMEADA.map(([n]) => n),
     celulas_lidas: itens.length,
@@ -461,16 +658,32 @@ const saida = {
     uso_no_corpus: usoAcaoNoCorpus,
     uso_na_classe_sem_familia_de_ok: usoAcaoNaClasseSemFamilia,
     uso_nos_fixtures: usoAcaoNosFixtures,
+    uso_no_corpus_contado_por_celula: usoNoCorpusDasCelulas,
+    uso_na_classe_contado_por_celula: usoNaClasseDasCelulas,
+    uso_no_corpus_no_bruto_regra_velha: usoAcaoNoCorpusNoBruto,
+    uso_na_classe_no_bruto_regra_velha: usoAcaoNaClasseNoBruto,
+    controlo_das_duas_rotas: rotasDivergemNoControlo,
     fixtures_que_falham: fixturesDeAcaoQueFalham,
     controlo_negativo: { frase: CONTROLO_NEGATIVO_DE_FAMILIA, familias_que_disparam: familiasQueDisparamNoControloNegativo },
+    plicas: {
+      fixtures_definidas: FIXTURES_DE_PLICA.map((f) => f.id),
+      fixtures_que_falham: fixturesDePlicaQueFalham,
+      comprimento_que_falha: comprimentoQueFalha,
+      diferencas_por_familia: diferencasDePlica,
+      linhas_que_mudaram_de_face: linhasQueMudaramDeFace,
+      plicas_sem_par_na_celula: plicasSemParNoCorpus,
+      faces_da_regra_velha: facesDaRegraVelha,
+    },
     faces_da_classe_sem_familia_de_ok: facesDaClasseSemFamilia,
     particao_das_quatro_faces: particaoDasQuatroFaces,
   },
   fixtures: { definidas: FIXTURES.length, disparados, falhas: fixturesFalham },
   abertas_com_registo: abertasComRegisto,
   portoes: { total: portoes.length, falhas: falhas.length, lista: portoes },
-  o_que_prova: ['que o ledger tem N linhas PEN de cinco celulas e em que classe cada celula cai pelo sinal mais recente, com a posicao e a data desse sinal', 'quais dessas linhas tem registo de aplicacao no banco em disco e com que frase de OK', 'que as tres contagens de pendencias (painel, paragrafo 15, linhas lidas) batem ou divergem', `que o classificador dispara em todas as ${FIXTURES.length} formas postas em fixture`, `que cada um dos ${IDIOMAS.length} idioms tem uso medido no corpus ou em fixture`, `que a janela de ${JANELA_FECHO} caracteres entre a palavra de fecho e a data cobre o maior intervalo medido no corpus (${intervalosCorpus.maior_intervalo}) e que tem fixture acima dela (${intervalosFixtures.maior_intervalo}) para nao virar ramo morto`, `que a janela de ${JANELA_ADENDO} caracteres entre a marca de data do adendo e a palavra de fecho cobre o maior intervalo medido no corpus (${adendoCorpus.maior_intervalo}) e que tem fixture acima dela (${adendoFixtures.maior_intervalo})`, `que das ${itens.length} celulas lidas ${semFamilia.length} nao dizem nenhuma das quatro familias de OK, e que dessas ${facesDaClasseSemFamilia.com_acao_nomeada.length} nomeiam na sua propria prosa um passo que nao e meu e ${facesDaClasseSemFamilia.sem_passo_nomeado.length} nao nomeiam passo nenhum, com as duas listas impressas mesmo vazias`, `que cada uma das ${ACAO_NOMEADA.length} familias de accao nomeada dispara no fixture que lhe foi posto e que nenhuma delas dispara no controlo negativo`],
-  o_que_NAO_prova: ['que a classe do ledger seja o estado vivo do produto: a fonte e prosa versionada, nao o ar', 'que o OK exigido por cada linha seja suficiente: a coluna e a assinatura lexical do texto, a frase concreta pertence ao utilizador', 'que as linhas RM-x.y abertas estejam bem ou mal: o censo so conta e classifica por sinais do texto', 'que uma celula SEM_DECLARACAO esteja fechada ou aberta: diz so que o texto nao declara estado em nenhum dos idioms medidos', 'que um fecho declarado no texto seja verdadeiro: a regua reconhece a forma «palavra de fecho + data» e a forma «adendo com a data antes da palavra», mas nao confere a corrida citada — foi assim que a PEN-36 pôde declarar as duas metades fechadas enquanto o ar publicado mantinha cinco rotulos com dois ou mais usos, dos sete nomes listados em 17/11 (medido por scripts/p134-rotulos-da-secretaria-no-ar.mjs)', `que o intervalo entre a palavra e a data esteja dentro da janela numa forma de escrita nova: acima de ${JANELA_FECHO} caracteres, com a data depois da palavra, ou acima de ${JANELA_ADENDO} caracteres de pura pontuacao, com a data antes dela, a data passa a nao contar, e os portoes das duas janelas sao o que da o aviso`, 'que a etiqueta nenhum_familia_de_ok_lida signifique que a linha se fecha por leitura: ela diz so que nenhuma das quatro familias de OK casou no texto. O passo que a celula nomeia esta publicado em vocabulario_de_acao_nomeada.faces_da_classe_sem_familia_de_ok.com_acao_nomeada; e uma celula que nao aparece em nenhuma das duas listas nao prova que nada falte — prova que a prosa do ledger nao o disse, que e um defeito de descricao e nao de regua'],
+  o_que_prova: ['que o ledger tem N linhas PEN de cinco celulas e em que classe cada celula cai pelo sinal mais recente, com a posicao e a data desse sinal', 'quais dessas linhas tem registo de aplicacao no banco em disco e com que frase de OK', 'que as tres contagens de pendencias (painel, paragrafo 15, linhas lidas) batem ou divergem', `que o classificador dispara em todas as ${FIXTURES.length} formas postas em fixture`, `que cada um dos ${IDIOMAS.length} idioms tem uso medido no corpus ou em fixture`, `que a janela de ${JANELA_FECHO} caracteres entre a palavra de fecho e a data cobre o maior intervalo medido no corpus (${intervalosCorpus.maior_intervalo}) e que tem fixture acima dela (${intervalosFixtures.maior_intervalo}) para nao virar ramo morto`, `que a janela de ${JANELA_ADENDO} caracteres entre a marca de data do adendo e a palavra de fecho cobre o maior intervalo medido no corpus (${adendoCorpus.maior_intervalo}) e que tem fixture acima dela (${adendoFixtures.maior_intervalo})`, `que das ${itens.length} celulas lidas ${semFamilia.length} nao dizem nenhuma das quatro familias de OK, e que dessas ${facesDaClasseSemFamilia.com_acao_nomeada.length} nomeiam na sua propria prosa um passo que nao e meu e ${facesDaClasseSemFamilia.sem_passo_nomeado.length} nao nomeiam passo nenhum, com as duas listas impressas mesmo vazias`, `que cada uma das ${ACAO_NOMEADA.length} familias de accao nomeada dispara no fixture que lhe foi posto e que nenhuma delas dispara no controlo negativo`, `que das ${itens.length} celulas lidas ${linhasQueMudaramDeFace.length} nomeavam um passo apenas porque a palavra vivia dentro de um caminho citado entre plicas, com as duas contagens publicadas lado a lado por familia em plicas.diferencas_por_familia`,
+    `que o histograma por regex (texto varrido) bate campo a campo com a soma das listas por celula, no corpus e na classe sem familia de OK, e que o controlo fabricado em vocabulario_de_acao_nomeada.controlo_das_duas_rotas prova que as duas rotas podem divergir — na corrida sm73r divergiram porque o histograma lia o bruto`,
+    `que a mesma peneira das plicas se aplica ao vocabulario de OK, com ${FIXTURES_DE_PLICA_DO_OK.length} fixtures nos dois sentidos, e que das ${itens.length} celulas lidas ${linhasDoOkQueMudaramDeLista.length} mudaram a sua lista de familias de OK e ${linhasQueEntraramNaClasseSemFamiliaDeOk.length} passaram a dizer «nenhuma familia de OK lida» — a diferenca esta publicada por familia em vocabulario_de_ok_pelas_duas_rotas, com as listas velha e nova ao lado`],
+  o_que_NAO_prova: ['que a classe do ledger seja o estado vivo do produto: a fonte e prosa versionada, nao o ar', 'que o OK exigido por cada linha seja suficiente: a coluna e a assinatura lexical do texto, a frase concreta pertence ao utilizador', 'que as linhas RM-x.y abertas estejam bem ou mal: o censo so conta e classifica por sinais do texto', 'que uma celula SEM_DECLARACAO esteja fechada ou aberta: diz so que o texto nao declara estado em nenhum dos idioms medidos', 'que um fecho declarado no texto seja verdadeiro: a regua reconhece a forma «palavra de fecho + data» e a forma «adendo com a data antes da palavra», mas nao confere a corrida citada — foi assim que a PEN-36 pôde declarar as duas metades fechadas enquanto o ar publicado mantinha cinco rotulos com dois ou mais usos, dos sete nomes listados em 17/11 (medido por scripts/p134-rotulos-da-secretaria-no-ar.mjs)', `que o intervalo entre a palavra e a data esteja dentro da janela numa forma de escrita nova: acima de ${JANELA_FECHO} caracteres, com a data depois da palavra, ou acima de ${JANELA_ADENDO} caracteres de pura pontuacao, com a data antes dela, a data passa a nao contar, e os portoes das duas janelas sao o que da o aviso`, 'que a etiqueta nenhum_familia_de_ok_lida signifique que a linha se fecha por leitura: ela diz so que nenhuma das quatro familias de OK casou no texto. O passo que a celula nomeia esta publicado em vocabulario_de_acao_nomeada.faces_da_classe_sem_familia_de_ok.com_acao_nomeada; e uma celula que nao aparece em nenhuma das duas listas nao prova que nada falte — prova que a prosa do ledger nao o disse, que e um defeito de descricao e nao de regua', 'que uma celula contada «passo nenhum» depois de se apagarem as plicas nao tenha passo nenhum: a regra nova retira do conteudo das plicas aquilo que la dentro e um nome de ficheiro ou de coluna, e nao julga o que a celula quis dizer. Quando a unica palavra de passo vivia num caminho, a linha passa a dizer «passo nenhum» e isso e a prosa do ledger a nao nomear o passo — nao e o passo que deixou de existir', 'que uma celula que perdeu uma familia de OK com a peneira das plicas deixe de precisar desse OK: a celula passa a dizer «nenhuma familia lida» porque a palavra que a declarava vivia dentro de um valor medido entre plicas, e nao porque a acao deixe de estar em falta. A linha que perde a familia deixa tambem de ser agrupada pelo p171 naquele grupo, e o grupo certo passa a ser o da prosa que o ledger ainda nao escreveu'],
 };
 saida.veredito = (falhas.length ? 'P133_INVENTARIO_VERMELHO ' : 'P133_INVENTARIO_MEDIDO ') + portoes.length + '/' + falhas.length + ' · esperanca=medir';
 fs.writeFileSync(OUT, JSON.stringify(saida, null, 2) + '\n');
@@ -480,5 +693,24 @@ console.log('ABERTAS:', saida.abertas.map((a) => a.id + '[' + a.pri + ']').join(
 console.log('FACES_DA_CLASSE_SEM_FAMILIA_DE_OK', JSON.stringify(saida.vocabulario_de_acao_nomeada.faces_da_classe_sem_familia_de_ok));
 console.log('USO_NA_CLASSE', JSON.stringify(saida.vocabulario_de_acao_nomeada.uso_na_classe_sem_familia_de_ok));
 console.log('PARTICAO', JSON.stringify(Object.fromEntries(Object.entries(saida.vocabulario_de_acao_nomeada.particao_das_quatro_faces).map(([k, v]) => [k, v.length]))));
+console.log('PLICA', JSON.stringify({
+  fixtures: saida.vocabulario_de_acao_nomeada.plicas.fixtures_definidas,
+  falhas: saida.vocabulario_de_acao_nomeada.plicas.fixtures_que_falham.length,
+  mudaram_de_face: saida.vocabulario_de_acao_nomeada.plicas.linhas_que_mudaram_de_face,
+  plicas_sem_par: saida.vocabulario_de_acao_nomeada.plicas.plicas_sem_par_na_celula,
+  por_familia: Object.fromEntries(saida.vocabulario_de_acao_nomeada.plicas.diferencas_por_familia.map((d) => [d.nome, d.na_regra_velha + '->' + d.na_regra_nova])),
+}));
+console.log('CONFRONTO', JSON.stringify({
+  no_corpus: Object.fromEntries(ACAO_NOMEADA.map(([n]) => [n, usoAcaoNoCorpus[n] + ' vs ' + usoNoCorpusDasCelulas[n]])),
+  na_classe: Object.fromEntries(ACAO_NOMEADA.map(([n]) => [n, usoAcaoNaClasseSemFamilia[n] + ' vs ' + usoNaClasseDasCelulas[n]])),
+  controlo_diverge: rotasDivergemNoControlo.divergem,
+}));
+console.log('OK_PLICA', JSON.stringify({
+  falhas: saida.vocabulario_de_ok_pelas_duas_rotas.fixtures_que_falham.length,
+  comprimento_que_falha: saida.vocabulario_de_ok_pelas_duas_rotas.comprimento_que_falha.length,
+  mudaram_de_lista: saida.vocabulario_de_ok_pelas_duas_rotas.linhas_que_mudaram_de_lista.map((l) => l.id),
+  entraram_na_classe: saida.vocabulario_de_ok_pelas_duas_rotas.linhas_que_entraram_na_classe_sem_familia_de_ok.map((l) => l.id),
+  por_familia: Object.fromEntries(nomesDeFamiliaDeOk.map((n) => [n, usoOkNoBruto[n] + '->' + usoOkNoVarrido[n]])),
+}));
 console.log('registo em ' + OUT);
 process.exit(falhas.length ? 1 : 0);

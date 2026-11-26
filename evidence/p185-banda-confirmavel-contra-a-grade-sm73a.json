@@ -1,0 +1,302 @@
+{
+  "peca": "scripts/p185-banda-confirmavel-contra-a-grade.mjs",
+  "em": "2026-11-26T02:29:50.949Z",
+  "emissor_bytes": 18960,
+  "emissor_md5": "52bdb71de4f6b7c2e0da0176db019935",
+  "estado": "PORTAO_VERMELHO",
+  "veredito": "PARCIAL_ALGUM_TURNO_NAO_E_CONFERIVEL",
+  "pergunta": "as bandas confirmaveis cobrem a hora em que a escola esta de facto em aula?",
+  "regra_deste_ciclo": "nenhum predicado dos produtores foi re-dactilografado aqui; leem-se os registos mais novos deles e aborta-se se nao existirem ou se a pega nao bater",
+  "registos_lidos": {
+    "p178": {
+      "nome": "p178-portao-da-portaria-sm73d.json",
+      "em": "2026-11-26T01:46:07.825Z",
+      "veredito": "FECHADO_NENHUMA_LINHA_CONFIRMADA",
+      "peca_do_registo": "p178-portao-da-portaria-lido-do-ar.mjs",
+      "emissor_md5_medido": "b67b07b9752f978cd845e76c49522237",
+      "pega_bate": false,
+      "registos_da_familia": 21,
+      "escolhe_por": "campo em do proprio produtor"
+    },
+    "p184": {
+      "nome": "p184-grade-das-turmas-sm72v.json",
+      "veredito": "P184_GRADE_MEDIDA",
+      "peca_do_registo": "p184-grade-das-turmas-do-banco.mjs",
+      "emissor_md5_medido": "0226661e811d309ec74b9da27b8a25ae",
+      "pega_bate": true,
+      "registos_da_familia": 5,
+      "escolhe_por": "campo em do proprio produtor"
+    }
+  },
+  "leituras_desta_corrida": {
+    "unicas": [
+      "evidence/p178-portao-da-portaria-selfteste-sm67b.json",
+      "evidence/p178-portao-da-portaria-selfteste-sm67j.json",
+      "evidence/p178-portao-da-portaria-sm67ak.json",
+      "evidence/p178-portao-da-portaria-sm67d.json",
+      "evidence/p178-portao-da-portaria-sm67e.json",
+      "evidence/p178-portao-da-portaria-sm67f.json",
+      "evidence/p178-portao-da-portaria-sm67g.json",
+      "evidence/p178-portao-da-portaria-sm67h.json",
+      "evidence/p178-portao-da-portaria-sm67k.json",
+      "evidence/p178-portao-da-portaria-sm67p.json",
+      "evidence/p178-portao-da-portaria-sm67x.json",
+      "evidence/p178-portao-da-portaria-sm68a.json",
+      "evidence/p178-portao-da-portaria-sm68g.json",
+      "evidence/p178-portao-da-portaria-sm69a.json",
+      "evidence/p178-portao-da-portaria-sm70a.json",
+      "evidence/p178-portao-da-portaria-sm70bi.json",
+      "evidence/p178-portao-da-portaria-sm70by.json",
+      "evidence/p178-portao-da-portaria-sm70r.json",
+      "evidence/p178-portao-da-portaria-sm71e.json",
+      "evidence/p178-portao-da-portaria-sm72a.json",
+      "evidence/p178-portao-da-portaria-sm73d.json",
+      "evidence/p184-grade-das-turmas-sm72h.json",
+      "evidence/p184-grade-das-turmas-sm72i.json",
+      "evidence/p184-grade-das-turmas-sm72j.json",
+      "evidence/p184-grade-das-turmas-sm72k.json",
+      "evidence/p184-grade-das-turmas-sm72v.json",
+      "scripts/p178-portao-da-portaria-lido-do-ar.mjs",
+      "scripts/p184-grade-das-turmas-do-banco.mjs",
+      "scripts/p185-banda-confirmavel-contra-a-grade.mjs"
+    ],
+    "total": 53,
+    "fora_das_familias": [],
+    "familias_permitidas_declaradas": [
+      "evidence",
+      "scripts"
+    ]
+  },
+  "instantes": {
+    "minuto_local_do_p178": 1366,
+    "minuto_local_do_p184": null,
+    "diferenca_de_minutos": null
+  },
+  "bandas_lidas_do_p178": {
+    "matutino": {
+      "linha_existe": true,
+      "janela_texto": "07:00-11:30",
+      "abre": 420,
+      "fecha": 690,
+      "confirmado": false,
+      "dias": "1,2,3,4,5"
+    }
+  },
+  "grade_lida_do_p184": {
+    "matutino": {
+      "desde": 420,
+      "ate": 690,
+      "linhas": 308,
+      "texto": {
+        "desde": "07:00:00",
+        "ate": "11:30:00"
+      }
+    },
+    "vespertino": {
+      "desde": null,
+      "ate": null,
+      "linhas": 286,
+      "texto": {
+        "desde": null,
+        "ate": null
+      }
+    }
+  },
+  "turnos_sem_hora_nenhuma_do_p184": [
+    "vespertino"
+  ],
+  "classes_declaradas": [
+    "banda_e_grade_sao_a_mesma_janela",
+    "banda_cobre_a_grade",
+    "grade_passa_da_banda",
+    "banda_sem_grade_medida",
+    "grade_sem_banda",
+    "nenhuma_das_duas"
+  ],
+  "cruzamento_por_classe": {
+    "banda_e_grade_sao_a_mesma_janela": [
+      "matutino"
+    ],
+    "banda_cobre_a_grade": [],
+    "grade_passa_da_banda": [],
+    "banda_sem_grade_medida": [],
+    "grade_sem_banda": [
+      "vespertino"
+    ],
+    "nenhuma_das_duas": []
+  },
+  "cruzamento": [
+    {
+      "turno": "matutino",
+      "classe": "banda_e_grade_sao_a_mesma_janela",
+      "banda": {
+        "linha_existe": true,
+        "janela_texto": "07:00-11:30",
+        "abre": 420,
+        "fecha": 690,
+        "confirmado": false,
+        "dias": "1,2,3,4,5"
+      },
+      "grade": {
+        "desde": 420,
+        "ate": 690,
+        "linhas": 308,
+        "texto": {
+          "desde": "07:00:00",
+          "ate": "11:30:00"
+        }
+      },
+      "turno_sem_hora_nenhuma_na_grade": false,
+      "cobre_o_instante_do_registo": false
+    },
+    {
+      "turno": "vespertino",
+      "classe": "grade_sem_banda",
+      "banda": null,
+      "grade": {
+        "desde": null,
+        "ate": null,
+        "linhas": 286,
+        "texto": {
+          "desde": null,
+          "ate": null
+        }
+      },
+      "turno_sem_hora_nenhuma_na_grade": true,
+      "cobre_o_instante_do_registo": false
+    }
+  ],
+  "fixtures_do_cruzamento": {
+    "casos": [
+      "iguais",
+      "banda_cobre_por_dentro",
+      "grade_foge_pelo_fim",
+      "grade_foge_pelo_comeco",
+      "so_banda",
+      "so_grade",
+      "nenhuma",
+      "banda_sem_horas_vira_sem_grade",
+      "grade_sem_horas_vira_sem_grade"
+    ],
+    "classes_obtidas": {
+      "iguais": "banda_e_grade_sao_a_mesma_janela",
+      "banda_cobre_por_dentro": "banda_cobre_a_grade",
+      "grade_foge_pelo_fim": "grade_passa_da_banda",
+      "grade_foge_pelo_comeco": "grade_passa_da_banda",
+      "so_banda": "banda_sem_grade_medida",
+      "so_grade": "grade_sem_banda",
+      "nenhuma": "nenhuma_das_duas",
+      "banda_sem_horas_vira_sem_grade": "banda_sem_grade_medida",
+      "grade_sem_horas_vira_sem_grade": "banda_sem_grade_medida"
+    },
+    "falhas": [],
+    "classes_sem_positivo": []
+  },
+  "fixtures_dos_parseadores": {
+    "casos": [
+      "banda_boa",
+      "banda_sem_zero_na_hora",
+      "banda_com_traco_largo_NAO_e_lida",
+      "banda_sem_hifen_NAO_e_lida",
+      "hora_boa",
+      "hora_so_minuto",
+      "hora_nula_NAO_e_lida",
+      "hora_com_texto_NAO_e_lida"
+    ],
+    "sentidos": {
+      "positivos": 4,
+      "negativos": 4
+    },
+    "falhas": [],
+    "janelas_do_corpus_nao_resolvidas": [],
+    "nota_da_agulha_negativa": "a janela larga do negativo e o codepoint U+2013 escrito por escape, para o fonte ficar ASCII"
+  },
+  "portoes": {
+    "total": 7,
+    "falhas": 2,
+    "lista": [
+      {
+        "nome": "ambos_os_registos_tem_a_pega_do_emissor_a_bater",
+        "obtido": [
+          false,
+          true
+        ],
+        "esperado": [
+          true,
+          true
+        ],
+        "ok": false
+      },
+      {
+        "nome": "nenhum_turno_fica_fora_das_classes_declaradas",
+        "obtido": [],
+        "esperado": [],
+        "ok": true
+      },
+      {
+        "nome": "toda_classe_declarada_tem_positivo_no_corpus_ou_na_fixture",
+        "obtido": [],
+        "esperado": [],
+        "ok": true
+      },
+      {
+        "nome": "nenhuma_fixture_do_cruzamento_bateu_errado",
+        "obtido": [],
+        "esperado": [],
+        "ok": true
+      },
+      {
+        "nome": "os_dois_parseadores_de_janela_tem_positivo_e_negativo",
+        "obtido": {
+          "falhas": [],
+          "dois_sentidos": true,
+          "janelas_do_corpus_nao_resolvidas": []
+        },
+        "esperado": {
+          "falhas": [],
+          "dois_sentidos": true,
+          "janelas_do_corpus_nao_resolvidas": []
+        },
+        "ok": true
+      },
+      {
+        "nome": "a_diferenca_de_instante_entre_os_dois_registos_esta_declarada",
+        "obtido": true,
+        "esperado": false,
+        "ok": false
+      },
+      {
+        "nome": "as_leituras_desta_corrida_sao_registos_e_fontes_de_peca",
+        "obtido": {
+          "fora": [],
+          "familias": [
+            "evidence",
+            "scripts"
+          ],
+          "instrumento_cego": false
+        },
+        "esperado": {
+          "fora": [],
+          "familias": [
+            "evidence",
+            "scripts"
+          ],
+          "instrumento_cego": false
+        },
+        "ok": true
+      }
+    ]
+  },
+  "o_que_prova": [
+    "que os dois registos mais novos existem, a que hora foram tirados e que a pega do emissor de cada um bate com a peca em disco",
+    "em que classe do cruzamento cai cada turno, com as seis classes declaradas impressas mesmo vazias",
+    "que a diferenca de instante entre as duas corridas esta declarada em minutos, nao escondida num «agora»",
+    "que as grandezas deste registo vem de ficheiros lidos: a lista de leituras da corrida esta no registo e o portao 7 julga-a contra as duas familias que a peca declara"
+  ],
+  "o_que_NAO_prova": [
+    "que a banda confirmada sirva as aulas reais de hoje: o dia depende dos `active_weekdays` e do calendario, e esses vivem no registo do p178, nao aqui",
+    "que o vespertino fique coberto quando ele gravar as horas: enquanto a grade da tarde nao tiver `start_time`, nao ha janela real a comparar",
+    "o estado vivo do ar ou do banco neste minuto: esta peca le registos, e um registo e o instante de quem o escreveu",
+    "que as seis classes sejam todas as possiveis: sao as que o desenho declara, e o portao so prova que nenhum turno ficou fora delas e que cada uma tem positivo"
+  ]
+}
