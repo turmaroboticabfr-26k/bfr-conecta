@@ -30,7 +30,12 @@ const FIX_LIMPO = 'a linha diz 28 papeis e 3 contas';
 const positivo = limpa(FIX_PARTIDO).match(RE) || [];
 const negativo = limpa(FIX_LIMPO).match(RE) || [];
 
-const faixasOfensoras = [[0x3000, 0x303f], [0x3040, 0x30ff], [0x3400, 0x4dbf], [0x4e00, 0x9fff], [0xac00, 0xd7a3], [0xd800, 0xdfff], [0xff00, 0xffef]];
+// A lista de faixas e medida, nao intuicao: o censo bloco a bloco do corpus de escrita propria (`p196`, registos
+// da familia p196-familias-de-escrita-do-corpus) deu um membro cirilico dentro dum vocábulo portugues, sem nenhum
+// uso legitimo do bloco nos meus ficheiros, e por isso a faixa cirilica entrou. O bloco grego tem ocorrencias
+// legitimas medidas (as duas maiusculas gregas usadas como notacao desde os ciclos antigos) e ficou FORA: alargar
+// uma faixa sem medir seria o portao a proibir uma classe legitima, e o verde viria da proibicao, nao da medição.
+const faixasOfensoras = [[0x0400, 0x04ff], [0x3000, 0x303f], [0x3040, 0x30ff], [0x3400, 0x4dbf], [0x4e00, 0x9fff], [0xac00, 0xd7a3], [0xd800, 0xdfff], [0xff00, 0xffef]];
 const ehOfensora = (c) => faixasOfensoras.some((f) => c >= f[0] && c <= f[1]);
 function foraDoASCII(t) {
   const ach = [];
@@ -65,6 +70,36 @@ function quadroDaLinha(bruto, varrido) {
   return { novas_linhas_bruto: nb, novas_linhas_varrido: nv, linha_e_do_bruto: nb === nv };
 }
 const GLIFO_FORA = String.fromCodePoint(0x79fb, 0x52a8);
+// Cada faixa declarada precisa dum positiva e dum negativa seus: uma lista de faixas sem membro que dispara e o
+// mesmo limiar metido dentro dum regex sem prova. O membro compoe-se por codepoint, nunca dactilografado, porque
+// o fonte que denuncia a familia nao pode passar a pertencer-lhe. O negativo e o codepoint nao-ofensor mais
+// proximo por baixo: duas faixas contiguas (U+3000-303F e U+3040-30FF) deixam o `f[0]-1` da segunda dentro da
+// primeira, e chamar a isso falta de negativo seria o portao a proibir uma classe legitima do proprio vocabulario.
+function negativoDaFaixa(f) {
+  let c = f[0] - 1, saltos = 0;
+  while (c >= 0x80 && ehOfensora(c)) { c -= 1; saltos += 1; }
+  return { cp: c, saltos: saltos };
+}
+const porFaixa = faixasOfensoras.map((f) => {
+  const neg = negativoDaFaixa(f);
+  return { faixa: 'U+' + f[0].toString(16).toUpperCase() + '-' + f[1].toString(16).toUpperCase(),
+    dentro: ofensoras(String.fromCodePoint(f[0] + 1)).length,
+    abaixo: ofensoras(String.fromCodePoint(neg.cp)).length, cp_abaixo: 'U+' + neg.cp.toString(16).toUpperCase(), saltos_ate_fora: neg.saltos };
+});
+const semPositivo = porFaixa.filter((r) => r.dentro !== 1);
+const semNegativo = porFaixa.filter((r) => r.abaixo !== 0 || r.cp_abaixo === 'U+7F');
+say('PROVA_FIXTURE_FAIXA_POR_FAIXA ' + JSON.stringify(porFaixa));
+say('FAIXAS_sem_positivo=' + JSON.stringify(semPositivo) + ' sem_negativo=' + JSON.stringify(semNegativo));
+if (semPositivo.length) throw new Error('ABORTA: uma faixa declarada nao dispara no proprio membro, deu ' + JSON.stringify(semPositivo));
+if (semNegativo.length) throw new Error('ABORTA: uma faixa declarada nao tem fronteira por baixo, deu ' + JSON.stringify(semNegativo));
+// O exemplar do defeito do ciclo anterior: a letra cirilica que a ferramenta de edição injerta dentro dum vocabulo
+// portugues. A faixa nova so esta provada pela string que ela existe para apanhar.
+const FIX_CIRILICO_EXEMPLAR = 'a palavra ass' + String.fromCodePoint(0x0435) + 'rcoes voltou a sair com letra cirilica';
+const cirilicoFix = ofensoras(FIX_CIRILICO_EXEMPLAR);
+const cirilicoRedigido = nomeiaGlifos(FIX_CIRILICO_EXEMPLAR);
+say('PROVA_FIXTURE_CIRILICO ocorrencias=' + cirilicoFix.length + ' codepoints=' + JSON.stringify(cirilicoFix.map((a) => a.cp)) + ' redigido_sem_glifo=' + (cirilicoRedigido.indexOf(String.fromCodePoint(0x0435)) < 0));
+if (cirilicoFix.length !== 1) throw new Error('ABORTA: o exemplar do defeito nao foi apanhado pela familia nova, deu ' + cirilicoFix.length);
+if (cirilicoRedigido.indexOf(String.fromCodePoint(0x0435)) >= 0) throw new Error('ABORTA: a redacao deixou o glifo na captura, o instrumento passaria a ser o ofensor');
 const FIX_LIMPO_FORA = 'a linha diz 28 papeis e 3 contas, com plicas «» ‘’ “” – — … , setas -> e <=> , matemática ≥ ≤ ≠ ≈ ± × ÷ ∪ ∩ ∑ ∆ ⋯ , sinais ✓ ✗ ⚠ † ‡ , e o emoji 📷 🏠 🃆 🔔 📅 🔎 📊 ❌ 🎮';
 const partidoNaoLatino = ofensoras(GLIFO_FORA + FIX_LIMPO_FORA);
 const limpoNaoLatino = ofensoras(FIX_LIMPO_FORA);

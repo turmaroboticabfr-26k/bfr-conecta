@@ -1,0 +1,1946 @@
+{
+  "ciclo": "SM.78-PEN01",
+  "em": "2026-11-27T00:36:31.734Z",
+  "papel": "secretary",
+  "id_conta": "839e1f87",
+  "url": "https://bfr-conecta.turmaroboticabfr.workers.dev/",
+  "larguras": [
+    320,
+    390,
+    430
+  ],
+  "altura": 720,
+  "janela_inativa_ms": 30000,
+  "emissor_p192": {
+    "caminho": "scripts/p192-toque-paint-do-menu-mobile.mjs",
+    "bytes": 65093,
+    "md5": "ece857e6dec7a5debddc200b0acc3eb3"
+  },
+  "ar": {
+    "bytes": 3557197,
+    "md5": "573de00016fe2d9b87e671bb84d21559",
+    "declarada_por": "ah2-sonda-portas-por-papel-sm77tq2.json",
+    "em_registo": "2026-11-26T19:06:53.365Z",
+    "bate_com_o_registo_mais_novo": true
+  },
+  "previsao_estatica_do_menu": {
+    "registo": "ag5-rm21-timers-17-11.json",
+    "em_registo": "2026-11-17T03:04:40.272Z",
+    "ar_desse_registo": "7044c8c02368fbc2a99edc1b366e2326",
+    "periodos_ms": [
+      1200,
+      900
+    ],
+    "escritas_esperadas_na_janela": 58
+  },
+  "definicao_de_destino": "window.__p192_destino se existir, senao BFR_APP_RUNTIME.activeSection|activeView — o marco da latencia decisiva e o quadro em que este valor muda, registado pelo laco de quadros e nao por um leitor dentro do touchstart",
+  "observacao_da_pagina": "desde o ARMAR corre um laco de requestAnimationFrame que so le o destino e carimba as mudancas; nao escreve no DOM. As latencias saem da clock da pagina (performance.now e timeStamp do evento), porque a amostragem do lado do Node, a 600 ms como no ah2-mobile2, nao distingue 200 ms de 1200 ms.",
+  "limite_de_atribuicao": "uma mudanca de destino posta por um escritor periodico dentro da janela do toque seria atribuida ao toque; por isso a mesma ficha traz as mudancas de destino contadas na janela quieta, sem toque.",
+  "bandas": {
+    "w320": {
+      "largura": 320,
+      "ms_ready": 802,
+      "estado_mobile": {
+        "presentation": "mobile",
+        "body_mobile": true,
+        "barra_existe": true,
+        "rotas": [
+          {
+            "rota": "inicio",
+            "largura": 61,
+            "altura": 61,
+            "texto": "🏠Início"
+          },
+          {
+            "rota": "secretaria",
+            "largura": 61,
+            "altura": 61,
+            "texto": "▥Secretaria de Edu"
+          },
+          {
+            "rota": "comunicacao",
+            "largura": 61,
+            "altura": 61,
+            "texto": "📢Comunicação"
+          },
+          {
+            "rota": "comunicados",
+            "largura": 61,
+            "altura": 61,
+            "texto": "📣Avisos"
+          },
+          {
+            "rota": "more",
+            "largura": 61,
+            "altura": 61,
+            "texto": "⋯Mais"
+          }
+        ],
+        "hamb": true,
+        "gaveta_existe": true,
+        "gaveta_classes": "bfr-mobile-drawer",
+        "gaveta_display": "block",
+        "vw": 320,
+        "destino": "inicio|secretary"
+      },
+      "modal_ao_chegar": [
+        {
+          "id": "preferredNameModal",
+          "classes": "modal",
+          "caixa": "320x720",
+          "z_index": "1300",
+          "texto": "× PRIMEIRO ACESSO Como você quer ser chamado? Esse nome aparece apenas"
+        }
+      ],
+      "modal_fechou_a_toque": true,
+      "estado_mobile_depois_do_cartao": {
+        "presentation": "mobile",
+        "body_mobile": true,
+        "barra_existe": true,
+        "rotas": [
+          {
+            "rota": "inicio",
+            "largura": 61,
+            "altura": 61,
+            "texto": "🏠Início"
+          },
+          {
+            "rota": "secretaria",
+            "largura": 61,
+            "altura": 61,
+            "texto": "▥Secretaria de Edu"
+          },
+          {
+            "rota": "comunicacao",
+            "largura": 61,
+            "altura": 61,
+            "texto": "📢Comunicação"
+          },
+          {
+            "rota": "comunicados",
+            "largura": 61,
+            "altura": 61,
+            "texto": "📣Avisos"
+          },
+          {
+            "rota": "more",
+            "largura": 61,
+            "altura": 61,
+            "texto": "⋯Mais"
+          }
+        ],
+        "hamb": true,
+        "gaveta_existe": true,
+        "gaveta_classes": "bfr-mobile-drawer",
+        "gaveta_display": "block",
+        "vw": 320,
+        "destino": "inicio|secretary"
+      },
+      "censo_inativo": {
+        "janela_ms": 30000,
+        "mutacoes_total": 6814,
+        "escritas_periodicas_em_controlos": 5429,
+        "mudancas_de_destino_na_janela_quieta": 0,
+        "por_alvo_top": [
+          {
+            "alvo": "button.nav-item",
+            "escritas": 4917,
+            "visivel": false
+          },
+          {
+            "alvo": "img",
+            "escritas": 376,
+            "visivel": false
+          },
+          {
+            "alvo": "p.publish-status",
+            "escritas": 324,
+            "visivel": false
+          },
+          {
+            "alvo": "button.mobile-more-option",
+            "escritas": 300,
+            "visivel": false
+          },
+          {
+            "alvo": "div#bfrMunicipalView.content",
+            "escritas": 200,
+            "visivel": false
+          },
+          {
+            "alvo": "button.hidden",
+            "escritas": 162,
+            "visivel": false
+          },
+          {
+            "alvo": "tr.schedule-complete",
+            "escritas": 96,
+            "visivel": false
+          },
+          {
+            "alvo": "div#authStatus.auth-status",
+            "escritas": 81,
+            "visivel": false
+          },
+          {
+            "alvo": "p#activityPublishStatus.publish-status",
+            "escritas": 81,
+            "visivel": false
+          },
+          {
+            "alvo": "button#liaFab.lia-fab",
+            "escritas": 46,
+            "visivel": false
+          },
+          {
+            "alvo": "div#appShell.app-shell",
+            "escritas": 26,
+            "visivel": true
+          },
+          {
+            "alvo": "div.secretary-workspace",
+            "escritas": 17,
+            "visivel": false
+          }
+        ],
+        "por_atributo": {
+          "data-mun-apto": 300,
+          "data-mun-vista": 300,
+          "data-parent-nav": 26,
+          "class": 235,
+          "src": 188,
+          "alt": 188,
+          "aria-current": 4617,
+          "aria-pressed": 162,
+          "aria-live": 486,
+          "type": 50,
+          "data-student-photo-nav": 50,
+          "data-section": 50,
+          "hidden": 4,
+          "aria-label": 4
+        },
+        "previsao_lida_do_registo": 58,
+        "divergencia_previsao_medida": 5371
+      },
+      "trafego_da_janela_quieta": {
+        "respostas": 3,
+        "metodos": {
+          "GET": 3
+        },
+        "urls_distintos": 1,
+        "estados": {
+          "200": 3
+        },
+        "pedidos": [
+          "GET https://api.open-meteo.com/v1/forecast"
+        ]
+      },
+      "criterio_de_subtracao": "uma resposta cujo par metodo+url tambem aparece na janela quieta de 30 s e atribuida ao laco do produto e nao ao toque; a subtracao nunca inventa resultado no destino — na pior das hipoteses uma celula que so recebeu heartbeat fica SEM_PEDIDO",
+      "toques": [
+        {
+          "alvo": "span.bfr-mobile-icon",
+          "nome_do_alvo": "rota:inicio",
+          "texto": "🏠Início",
+          "caixa": {
+            "largura": 61,
+            "altura": 61
+          },
+          "cobridor": null,
+          "gaveta_aberta_antes_do_toque": false,
+          "fechar_gaveta_antes_do_toque": null,
+          "destino_depois": "inicio|secretary",
+          "gaveta_depois": {
+            "classes": "bfr-mobile-drawer",
+            "display": "block"
+          },
+          "trafego": {
+            "classe": "DESTINO_SEM_PEDIDO",
+            "motivo": "nenhuma resposta de dados no intervalo entre o toque e o assentar",
+            "medida": {
+              "respostas": 0,
+              "com_corpo": 0,
+              "recusadas": 0,
+              "bytes_totais": 0,
+              "metodos": {}
+            },
+            "respostas_na_janela": 0,
+            "anteriores_ao_toque_rejeitadas": 0,
+            "periodicas_subtradas": 0,
+            "estados": [],
+            "bytes_por_resposta": [],
+            "pedidos": [],
+            "janela_ms": 3253
+          },
+          "destino_antes": "inicio|secretary",
+          "marco_do_evento": true,
+          "primeira_mutacao": 13,
+          "primeira_mutacao_de_controlo": 13,
+          "primeira_frame": 28,
+          "mudou_destino": false,
+          "ms_para_mudar_destino": null
+        },
+        {
+          "alvo": "span.bfr-mobile-icon",
+          "nome_do_alvo": "rota:secretaria",
+          "texto": "▥Secretaria de Edu",
+          "caixa": {
+            "largura": 61,
+            "altura": 61
+          },
+          "cobridor": null,
+          "gaveta_aberta_antes_do_toque": false,
+          "fechar_gaveta_antes_do_toque": null,
+          "destino_depois": "secretaria|secretary",
+          "gaveta_depois": {
+            "classes": "bfr-mobile-drawer",
+            "display": "block"
+          },
+          "trafego": {
+            "classe": "DESTINO_COM_RESULTADO",
+            "motivo": "6 de 8 respostas chegaram com estado 2xx e corpo",
+            "medida": {
+              "respostas": 8,
+              "com_corpo": 6,
+              "recusadas": 0,
+              "bytes_totais": 80002,
+              "metodos": {
+                "GET": 8
+              }
+            },
+            "respostas_na_janela": 8,
+            "anteriores_ao_toque_rejeitadas": 0,
+            "periodicas_subtradas": 0,
+            "estados": [
+              300,
+              300,
+              200,
+              200,
+              200,
+              200,
+              200,
+              200
+            ],
+            "bytes_por_resposta": [
+              1163,
+              0,
+              1689,
+              12535,
+              25191,
+              1689,
+              12538,
+              25197
+            ],
+            "pedidos": [
+              "yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/guardian_students",
+              "yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/guardian_students",
+              "T https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/classes",
+              "lkcvqpessypfjo.supabase.co/rest/v1/student_school_profiles",
+              " https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/students",
+              "T https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/classes",
+              "lkcvqpessypfjo.supabase.co/rest/v1/student_school_profiles",
+              " https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/students"
+            ],
+            "janela_ms": 3264
+          },
+          "destino_antes": "inicio|secretary",
+          "marco_do_evento": true,
+          "primeira_mutacao": 35,
+          "primeira_mutacao_de_controlo": 35,
+          "primeira_frame": 20,
+          "mudou_destino": true,
+          "ms_para_mudar_destino": 37
+        },
+        {
+          "alvo": "span.bfr-mobile-icon",
+          "nome_do_alvo": "rota:comunicacao",
+          "texto": "📢Comunicação",
+          "caixa": {
+            "largura": 61,
+            "altura": 61
+          },
+          "cobridor": null,
+          "gaveta_aberta_antes_do_toque": false,
+          "fechar_gaveta_antes_do_toque": null,
+          "destino_depois": "comunicacao|secretary",
+          "gaveta_depois": {
+            "classes": "bfr-mobile-drawer",
+            "display": "block"
+          },
+          "trafego": {
+            "classe": "DESTINO_COM_RESULTADO",
+            "motivo": "2 de 2 respostas chegaram com estado 2xx e corpo",
+            "medida": {
+              "respostas": 2,
+              "com_corpo": 2,
+              "recusadas": 0,
+              "bytes_totais": 3176,
+              "metodos": {
+                "GET": 2
+              }
+            },
+            "respostas_na_janela": 2,
+            "anteriores_ao_toque_rejeitadas": 0,
+            "periodicas_subtradas": 0,
+            "estados": [
+              200,
+              200
+            ],
+            "bytes_por_resposta": [
+              1738,
+              1438
+            ],
+            "pedidos": [
+              "T https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/classes",
+              " https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/profiles"
+            ],
+            "janela_ms": 3290
+          },
+          "destino_antes": "secretaria|secretary",
+          "marco_do_evento": true,
+          "primeira_mutacao": 73,
+          "primeira_mutacao_de_controlo": 73,
+          "primeira_frame": 27,
+          "mudou_destino": true,
+          "ms_para_mudar_destino": 44
+        },
+        {
+          "alvo": "span.bfr-mobile-icon",
+          "nome_do_alvo": "rota:comunicados",
+          "texto": "📣Avisos",
+          "caixa": {
+            "largura": 61,
+            "altura": 61
+          },
+          "cobridor": null,
+          "gaveta_aberta_antes_do_toque": false,
+          "fechar_gaveta_antes_do_toque": null,
+          "destino_depois": "comunicados|secretary",
+          "gaveta_depois": {
+            "classes": "bfr-mobile-drawer",
+            "display": "block"
+          },
+          "trafego": {
+            "classe": "DESTINO_SEM_PEDIDO",
+            "motivo": "nenhuma resposta de dados no intervalo entre o toque e o assentar",
+            "medida": {
+              "respostas": 0,
+              "com_corpo": 0,
+              "recusadas": 0,
+              "bytes_totais": 0,
+              "metodos": {}
+            },
+            "respostas_na_janela": 0,
+            "anteriores_ao_toque_rejeitadas": 0,
+            "periodicas_subtradas": 0,
+            "estados": [],
+            "bytes_por_resposta": [],
+            "pedidos": [],
+            "janela_ms": 3312
+          },
+          "destino_antes": "comunicacao|secretary",
+          "marco_do_evento": true,
+          "primeira_mutacao": 89,
+          "primeira_mutacao_de_controlo": 89,
+          "primeira_frame": 32,
+          "mudou_destino": true,
+          "ms_para_mudar_destino": 49
+        },
+        {
+          "alvo": "span.bfr-mobile-icon",
+          "nome_do_alvo": "rota:more",
+          "texto": "⋯Mais",
+          "caixa": {
+            "largura": 61,
+            "altura": 61
+          },
+          "cobridor": null,
+          "gaveta_aberta_antes_do_toque": false,
+          "fechar_gaveta_antes_do_toque": null,
+          "destino_depois": "comunicados|secretary",
+          "gaveta_depois": {
+            "classes": "bfr-mobile-drawer is-open",
+            "display": "block"
+          },
+          "trafego": {
+            "classe": "DESTINO_SEM_PEDIDO",
+            "motivo": "nenhuma resposta de dados no intervalo entre o toque e o assentar",
+            "medida": {
+              "respostas": 0,
+              "com_corpo": 0,
+              "recusadas": 0,
+              "bytes_totais": 0,
+              "metodos": {}
+            },
+            "respostas_na_janela": 0,
+            "anteriores_ao_toque_rejeitadas": 0,
+            "periodicas_subtradas": 0,
+            "estados": [],
+            "bytes_por_resposta": [],
+            "pedidos": [],
+            "janela_ms": 3258
+          },
+          "destino_antes": "comunicados|secretary",
+          "marco_do_evento": true,
+          "primeira_mutacao": 40,
+          "primeira_mutacao_de_controlo": 40,
+          "primeira_frame": 31,
+          "mudou_destino": false,
+          "ms_para_mudar_destino": null
+        },
+        {
+          "alvo": "button.bfr-mobile-menu-button",
+          "nome_do_alvo": "hamburger",
+          "texto": "abre-gaveta",
+          "caixa": {
+            "largura": 44,
+            "altura": 44
+          },
+          "cobridor": null,
+          "gaveta_aberta_antes_do_toque": true,
+          "fechar_gaveta_antes_do_toque": {
+            "gesto": "toque_no_fundo_na_direita_do_painel",
+            "ponto": {
+              "x": 290,
+              "y": 360
+            },
+            "rotulo_no_ponto": "button",
+            "classes_depois": "bfr-mobile-drawer",
+            "fechou": true
+          },
+          "destino_depois": "comunicados|secretary",
+          "gaveta_depois": {
+            "classes": "bfr-mobile-drawer is-open",
+            "display": "block"
+          },
+          "trafego": {
+            "classe": "DESTINO_SEM_PEDIDO",
+            "motivo": "nenhuma resposta de dados no intervalo entre o toque e o assentar",
+            "medida": {
+              "respostas": 0,
+              "com_corpo": 0,
+              "recusadas": 0,
+              "bytes_totais": 0,
+              "metodos": {}
+            },
+            "respostas_na_janela": 0,
+            "anteriores_ao_toque_rejeitadas": 0,
+            "periodicas_subtradas": 0,
+            "estados": [],
+            "bytes_por_resposta": [],
+            "pedidos": [],
+            "janela_ms": 3263
+          },
+          "destino_antes": "comunicados|secretary",
+          "marco_do_evento": true,
+          "primeira_mutacao": 40,
+          "primeira_mutacao_de_controlo": 40,
+          "primeira_frame": 25,
+          "mudou_destino": false,
+          "ms_para_mudar_destino": null
+        }
+      ],
+      "latencias": {
+        "ms_para_mudar_destino": [
+          37,
+          44,
+          49
+        ],
+        "primeira_frame": [
+          28,
+          20,
+          27,
+          32,
+          31,
+          25
+        ],
+        "primeira_mutacao": [
+          13,
+          35,
+          73,
+          89,
+          40,
+          40
+        ],
+        "primeira_mutacao_de_controlo": [
+          13,
+          35,
+          73,
+          89,
+          40,
+          40
+        ],
+        "toques_sem_mutacao_registada": 0,
+        "toques_em_que_o_destino_nao_mudou": 3,
+        "toques_sem_chegada_a_pagina": 0,
+        "toques_com_cobridor_por_cima": 0,
+        "alvos_sem_toque": 0,
+        "por_classe_de_destino": {
+          "DESTINO_SEM_PEDIDO": 4,
+          "DESTINO_COM_RESULTADO": 2
+        },
+        "metodos_de_resposta_dos_toques": {
+          "GET": 10
+        },
+        "metodos_fora_do_GET": [],
+        "fichas_de_destino": 6
+      }
+    },
+    "w390": {
+      "largura": 390,
+      "ms_ready": 415,
+      "estado_mobile": {
+        "presentation": "mobile",
+        "body_mobile": true,
+        "barra_existe": true,
+        "rotas": [
+          {
+            "rota": "inicio",
+            "largura": 72,
+            "altura": 61,
+            "texto": "🏠Início"
+          },
+          {
+            "rota": "secretaria",
+            "largura": 72,
+            "altura": 61,
+            "texto": "▥Secretaria de Edu"
+          },
+          {
+            "rota": "comunicacao",
+            "largura": 72,
+            "altura": 61,
+            "texto": "📢Comunicação"
+          },
+          {
+            "rota": "comunicados",
+            "largura": 72,
+            "altura": 61,
+            "texto": "📣Avisos"
+          },
+          {
+            "rota": "more",
+            "largura": 72,
+            "altura": 61,
+            "texto": "⋯Mais"
+          }
+        ],
+        "hamb": true,
+        "gaveta_existe": true,
+        "gaveta_classes": "bfr-mobile-drawer",
+        "gaveta_display": "block",
+        "vw": 390,
+        "destino": "comunicados|secretary"
+      },
+      "modal_ao_chegar": [],
+      "modal_fechou_a_toque": true,
+      "censo_inativo": {
+        "janela_ms": 30000,
+        "mutacoes_total": 6468,
+        "escritas_periodicas_em_controlos": 5246,
+        "mudancas_de_destino_na_janela_quieta": 0,
+        "por_alvo_top": [
+          {
+            "alvo": "button.nav-item",
+            "escritas": 4746,
+            "visivel": false
+          },
+          {
+            "alvo": "img",
+            "escritas": 352,
+            "visivel": false
+          },
+          {
+            "alvo": "button.mobile-more-option",
+            "escritas": 300,
+            "visivel": false
+          },
+          {
+            "alvo": "p.publish-status",
+            "escritas": 234,
+            "visivel": false
+          },
+          {
+            "alvo": "div#bfrMunicipalView.content",
+            "escritas": 200,
+            "visivel": false
+          },
+          {
+            "alvo": "button.hidden",
+            "escritas": 156,
+            "visivel": false
+          },
+          {
+            "alvo": "tr.schedule-complete",
+            "escritas": 96,
+            "visivel": false
+          },
+          {
+            "alvo": "div#authStatus.auth-status",
+            "escritas": 78,
+            "visivel": false
+          },
+          {
+            "alvo": "p#activityPublishStatus.publish-status",
+            "escritas": 78,
+            "visivel": false
+          },
+          {
+            "alvo": "button#liaFab.lia-fab",
+            "escritas": 44,
+            "visivel": false
+          },
+          {
+            "alvo": "div#appShell.app-shell",
+            "escritas": 26,
+            "visivel": true
+          },
+          {
+            "alvo": "div.secretary-workspace",
+            "escritas": 17,
+            "visivel": false
+          }
+        ],
+        "por_atributo": {
+          "aria-current": 4446,
+          "aria-pressed": 156,
+          "aria-live": 390,
+          "data-mun-apto": 300,
+          "data-mun-vista": 300,
+          "class": 223,
+          "src": 176,
+          "alt": 176,
+          "data-parent-nav": 26,
+          "type": 50,
+          "data-student-photo-nav": 50,
+          "data-section": 50
+        },
+        "previsao_lida_do_registo": 58,
+        "divergencia_previsao_medida": 5188
+      },
+      "trafego_da_janela_quieta": {
+        "respostas": 0,
+        "metodos": {},
+        "urls_distintos": 0,
+        "estados": {},
+        "pedidos": []
+      },
+      "criterio_de_subtracao": "uma resposta cujo par metodo+url tambem aparece na janela quieta de 30 s e atribuida ao laco do produto e nao ao toque; a subtracao nunca inventa resultado no destino — na pior das hipoteses uma celula que so recebeu heartbeat fica SEM_PEDIDO",
+      "toques": [
+        {
+          "alvo": "span.bfr-mobile-icon",
+          "nome_do_alvo": "rota:inicio",
+          "texto": "🏠Início",
+          "caixa": {
+            "largura": 72,
+            "altura": 61
+          },
+          "cobridor": null,
+          "gaveta_aberta_antes_do_toque": false,
+          "fechar_gaveta_antes_do_toque": null,
+          "destino_depois": "inicio|secretary",
+          "gaveta_depois": {
+            "classes": "bfr-mobile-drawer",
+            "display": "block"
+          },
+          "trafego": {
+            "classe": "DESTINO_SEM_PEDIDO",
+            "motivo": "nenhuma resposta de dados no intervalo entre o toque e o assentar",
+            "medida": {
+              "respostas": 0,
+              "com_corpo": 0,
+              "recusadas": 0,
+              "bytes_totais": 0,
+              "metodos": {}
+            },
+            "respostas_na_janela": 0,
+            "anteriores_ao_toque_rejeitadas": 0,
+            "periodicas_subtradas": 0,
+            "estados": [],
+            "bytes_por_resposta": [],
+            "pedidos": [],
+            "janela_ms": 3247
+          },
+          "destino_antes": "comunicados|secretary",
+          "marco_do_evento": true,
+          "primeira_mutacao": 34,
+          "primeira_mutacao_de_controlo": 34,
+          "primeira_frame": 19,
+          "mudou_destino": true,
+          "ms_para_mudar_destino": 36
+        },
+        {
+          "alvo": "button",
+          "nome_do_alvo": "rota:secretaria",
+          "texto": "▥Secretaria de Edu",
+          "caixa": {
+            "largura": 72,
+            "altura": 61
+          },
+          "cobridor": null,
+          "gaveta_aberta_antes_do_toque": false,
+          "fechar_gaveta_antes_do_toque": null,
+          "destino_depois": "secretaria|secretary",
+          "gaveta_depois": {
+            "classes": "bfr-mobile-drawer",
+            "display": "block"
+          },
+          "trafego": {
+            "classe": "DESTINO_COM_RESULTADO",
+            "motivo": "6 de 8 respostas chegaram com estado 2xx e corpo",
+            "medida": {
+              "respostas": 8,
+              "com_corpo": 6,
+              "recusadas": 0,
+              "bytes_totais": 78832,
+              "metodos": {
+                "GET": 8
+              }
+            },
+            "respostas_na_janela": 8,
+            "anteriores_ao_toque_rejeitadas": 0,
+            "periodicas_subtradas": 0,
+            "estados": [
+              300,
+              300,
+              200,
+              200,
+              200,
+              200,
+              200,
+              200
+            ],
+            "bytes_por_resposta": [
+              0,
+              0,
+              1687,
+              12530,
+              25196,
+              1688,
+              12536,
+              25195
+            ],
+            "pedidos": [
+              "yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/guardian_students",
+              "yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/guardian_students",
+              "T https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/classes",
+              "lkcvqpessypfjo.supabase.co/rest/v1/student_school_profiles",
+              " https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/students",
+              "T https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/classes",
+              "lkcvqpessypfjo.supabase.co/rest/v1/student_school_profiles",
+              " https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/students"
+            ],
+            "janela_ms": 3245
+          },
+          "destino_antes": "inicio|secretary",
+          "marco_do_evento": true,
+          "primeira_mutacao": 32,
+          "primeira_mutacao_de_controlo": 32,
+          "primeira_frame": 18,
+          "mudou_destino": true,
+          "ms_para_mudar_destino": 35
+        },
+        {
+          "alvo": "span.bfr-mobile-icon",
+          "nome_do_alvo": "rota:comunicacao",
+          "texto": "📢Comunicação",
+          "caixa": {
+            "largura": 72,
+            "altura": 61
+          },
+          "cobridor": null,
+          "gaveta_aberta_antes_do_toque": false,
+          "fechar_gaveta_antes_do_toque": null,
+          "destino_depois": "comunicacao|secretary",
+          "gaveta_depois": {
+            "classes": "bfr-mobile-drawer",
+            "display": "block"
+          },
+          "trafego": {
+            "classe": "DESTINO_COM_RESULTADO",
+            "motivo": "2 de 2 respostas chegaram com estado 2xx e corpo",
+            "medida": {
+              "respostas": 2,
+              "com_corpo": 2,
+              "recusadas": 0,
+              "bytes_totais": 3185,
+              "metodos": {
+                "GET": 2
+              }
+            },
+            "respostas_na_janela": 2,
+            "anteriores_ao_toque_rejeitadas": 0,
+            "periodicas_subtradas": 0,
+            "estados": [
+              200,
+              200
+            ],
+            "bytes_por_resposta": [
+              1744,
+              1441
+            ],
+            "pedidos": [
+              "T https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/classes",
+              " https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/profiles"
+            ],
+            "janela_ms": 3254
+          },
+          "destino_antes": "secretaria|secretary",
+          "marco_do_evento": true,
+          "primeira_mutacao": 46,
+          "primeira_mutacao_de_controlo": 46,
+          "primeira_frame": 19,
+          "mudou_destino": true,
+          "ms_para_mudar_destino": 35
+        },
+        {
+          "alvo": "span.bfr-mobile-icon",
+          "nome_do_alvo": "rota:comunicados",
+          "texto": "📣Avisos",
+          "caixa": {
+            "largura": 72,
+            "altura": 61
+          },
+          "cobridor": null,
+          "gaveta_aberta_antes_do_toque": false,
+          "fechar_gaveta_antes_do_toque": null,
+          "destino_depois": "comunicados|secretary",
+          "gaveta_depois": {
+            "classes": "bfr-mobile-drawer",
+            "display": "block"
+          },
+          "trafego": {
+            "classe": "DESTINO_SEM_PEDIDO",
+            "motivo": "nenhuma resposta de dados no intervalo entre o toque e o assentar",
+            "medida": {
+              "respostas": 0,
+              "com_corpo": 0,
+              "recusadas": 0,
+              "bytes_totais": 0,
+              "metodos": {}
+            },
+            "respostas_na_janela": 0,
+            "anteriores_ao_toque_rejeitadas": 0,
+            "periodicas_subtradas": 0,
+            "estados": [],
+            "bytes_por_resposta": [],
+            "pedidos": [],
+            "janela_ms": 3311
+          },
+          "destino_antes": "comunicacao|secretary",
+          "marco_do_evento": true,
+          "primeira_mutacao": 94,
+          "primeira_mutacao_de_controlo": 94,
+          "primeira_frame": 27,
+          "mudou_destino": true,
+          "ms_para_mudar_destino": 44
+        },
+        {
+          "alvo": "span.bfr-mobile-icon",
+          "nome_do_alvo": "rota:more",
+          "texto": "⋯Mais",
+          "caixa": {
+            "largura": 72,
+            "altura": 61
+          },
+          "cobridor": null,
+          "gaveta_aberta_antes_do_toque": false,
+          "fechar_gaveta_antes_do_toque": null,
+          "destino_depois": "comunicados|secretary",
+          "gaveta_depois": {
+            "classes": "bfr-mobile-drawer is-open",
+            "display": "block"
+          },
+          "trafego": {
+            "classe": "DESTINO_SEM_PEDIDO",
+            "motivo": "nenhuma resposta de dados no intervalo entre o toque e o assentar",
+            "medida": {
+              "respostas": 0,
+              "com_corpo": 0,
+              "recusadas": 0,
+              "bytes_totais": 0,
+              "metodos": {}
+            },
+            "respostas_na_janela": 0,
+            "anteriores_ao_toque_rejeitadas": 0,
+            "periodicas_subtradas": 0,
+            "estados": [],
+            "bytes_por_resposta": [],
+            "pedidos": [],
+            "janela_ms": 3243
+          },
+          "destino_antes": "comunicados|secretary",
+          "marco_do_evento": true,
+          "primeira_mutacao": 36,
+          "primeira_mutacao_de_controlo": 36,
+          "primeira_frame": 29,
+          "mudou_destino": false,
+          "ms_para_mudar_destino": null
+        },
+        {
+          "alvo": "button.bfr-mobile-menu-button",
+          "nome_do_alvo": "hamburger",
+          "texto": "abre-gaveta",
+          "caixa": {
+            "largura": 44,
+            "altura": 44
+          },
+          "cobridor": null,
+          "gaveta_aberta_antes_do_toque": true,
+          "fechar_gaveta_antes_do_toque": {
+            "gesto": "toque_no_fundo_na_direita_do_painel",
+            "ponto": {
+              "x": 351,
+              "y": 360
+            },
+            "rotulo_no_ponto": "button",
+            "classes_depois": "bfr-mobile-drawer",
+            "fechou": true
+          },
+          "destino_depois": "comunicados|secretary",
+          "gaveta_depois": {
+            "classes": "bfr-mobile-drawer is-open",
+            "display": "block"
+          },
+          "trafego": {
+            "classe": "DESTINO_SEM_PEDIDO",
+            "motivo": "nenhuma resposta de dados no intervalo entre o toque e o assentar",
+            "medida": {
+              "respostas": 0,
+              "com_corpo": 0,
+              "recusadas": 0,
+              "bytes_totais": 0,
+              "metodos": {}
+            },
+            "respostas_na_janela": 0,
+            "anteriores_ao_toque_rejeitadas": 0,
+            "periodicas_subtradas": 0,
+            "estados": [],
+            "bytes_por_resposta": [],
+            "pedidos": [],
+            "janela_ms": 3237
+          },
+          "destino_antes": "comunicados|secretary",
+          "marco_do_evento": true,
+          "primeira_mutacao": 24,
+          "primeira_mutacao_de_controlo": 24,
+          "primeira_frame": 19,
+          "mudou_destino": false,
+          "ms_para_mudar_destino": null
+        }
+      ],
+      "latencias": {
+        "ms_para_mudar_destino": [
+          36,
+          35,
+          35,
+          44
+        ],
+        "primeira_frame": [
+          19,
+          18,
+          19,
+          27,
+          29,
+          19
+        ],
+        "primeira_mutacao": [
+          34,
+          32,
+          46,
+          94,
+          36,
+          24
+        ],
+        "primeira_mutacao_de_controlo": [
+          34,
+          32,
+          46,
+          94,
+          36,
+          24
+        ],
+        "toques_sem_mutacao_registada": 0,
+        "toques_em_que_o_destino_nao_mudou": 2,
+        "toques_sem_chegada_a_pagina": 0,
+        "toques_com_cobridor_por_cima": 0,
+        "alvos_sem_toque": 0,
+        "por_classe_de_destino": {
+          "DESTINO_SEM_PEDIDO": 4,
+          "DESTINO_COM_RESULTADO": 2
+        },
+        "metodos_de_resposta_dos_toques": {
+          "GET": 10
+        },
+        "metodos_fora_do_GET": [],
+        "fichas_de_destino": 6
+      }
+    },
+    "w430": {
+      "largura": 430,
+      "ms_ready": 383,
+      "estado_mobile": {
+        "presentation": "mobile",
+        "body_mobile": true,
+        "barra_existe": true,
+        "rotas": [
+          {
+            "rota": "inicio",
+            "largura": 80,
+            "altura": 61,
+            "texto": "🏠Início"
+          },
+          {
+            "rota": "secretaria",
+            "largura": 80,
+            "altura": 61,
+            "texto": "▥Secretaria de Edu"
+          },
+          {
+            "rota": "comunicacao",
+            "largura": 80,
+            "altura": 61,
+            "texto": "📢Comunicação"
+          },
+          {
+            "rota": "comunicados",
+            "largura": 80,
+            "altura": 61,
+            "texto": "📣Avisos"
+          },
+          {
+            "rota": "more",
+            "largura": 80,
+            "altura": 61,
+            "texto": "⋯Mais"
+          }
+        ],
+        "hamb": true,
+        "gaveta_existe": true,
+        "gaveta_classes": "bfr-mobile-drawer",
+        "gaveta_display": "block",
+        "vw": 430,
+        "destino": "comunicados|secretary"
+      },
+      "modal_ao_chegar": [],
+      "modal_fechou_a_toque": true,
+      "censo_inativo": {
+        "janela_ms": 30000,
+        "mutacoes_total": 6468,
+        "escritas_periodicas_em_controlos": 5246,
+        "mudancas_de_destino_na_janela_quieta": 0,
+        "por_alvo_top": [
+          {
+            "alvo": "button.nav-item",
+            "escritas": 4746,
+            "visivel": false
+          },
+          {
+            "alvo": "img",
+            "escritas": 352,
+            "visivel": false
+          },
+          {
+            "alvo": "button.mobile-more-option",
+            "escritas": 300,
+            "visivel": false
+          },
+          {
+            "alvo": "p.publish-status",
+            "escritas": 234,
+            "visivel": false
+          },
+          {
+            "alvo": "div#bfrMunicipalView.content",
+            "escritas": 200,
+            "visivel": false
+          },
+          {
+            "alvo": "button.hidden",
+            "escritas": 156,
+            "visivel": false
+          },
+          {
+            "alvo": "tr.schedule-complete",
+            "escritas": 96,
+            "visivel": false
+          },
+          {
+            "alvo": "div#authStatus.auth-status",
+            "escritas": 78,
+            "visivel": false
+          },
+          {
+            "alvo": "p#activityPublishStatus.publish-status",
+            "escritas": 78,
+            "visivel": false
+          },
+          {
+            "alvo": "button#liaFab.lia-fab",
+            "escritas": 44,
+            "visivel": false
+          },
+          {
+            "alvo": "div#appShell.app-shell",
+            "escritas": 26,
+            "visivel": true
+          },
+          {
+            "alvo": "div.secretary-workspace",
+            "escritas": 17,
+            "visivel": false
+          }
+        ],
+        "por_atributo": {
+          "aria-current": 4446,
+          "aria-pressed": 156,
+          "aria-live": 390,
+          "data-mun-apto": 300,
+          "data-mun-vista": 300,
+          "class": 223,
+          "src": 176,
+          "alt": 176,
+          "data-parent-nav": 26,
+          "type": 50,
+          "data-student-photo-nav": 50,
+          "data-section": 50
+        },
+        "previsao_lida_do_registo": 58,
+        "divergencia_previsao_medida": 5188
+      },
+      "trafego_da_janela_quieta": {
+        "respostas": 0,
+        "metodos": {},
+        "urls_distintos": 0,
+        "estados": {},
+        "pedidos": []
+      },
+      "criterio_de_subtracao": "uma resposta cujo par metodo+url tambem aparece na janela quieta de 30 s e atribuida ao laco do produto e nao ao toque; a subtracao nunca inventa resultado no destino — na pior das hipoteses uma celula que so recebeu heartbeat fica SEM_PEDIDO",
+      "toques": [
+        {
+          "alvo": "span.bfr-mobile-icon",
+          "nome_do_alvo": "rota:inicio",
+          "texto": "🏠Início",
+          "caixa": {
+            "largura": 80,
+            "altura": 61
+          },
+          "cobridor": null,
+          "gaveta_aberta_antes_do_toque": false,
+          "fechar_gaveta_antes_do_toque": null,
+          "destino_depois": "inicio|secretary",
+          "gaveta_depois": {
+            "classes": "bfr-mobile-drawer",
+            "display": "block"
+          },
+          "trafego": {
+            "classe": "DESTINO_SEM_PEDIDO",
+            "motivo": "nenhuma resposta de dados no intervalo entre o toque e o assentar",
+            "medida": {
+              "respostas": 0,
+              "com_corpo": 0,
+              "recusadas": 0,
+              "bytes_totais": 0,
+              "metodos": {}
+            },
+            "respostas_na_janela": 0,
+            "anteriores_ao_toque_rejeitadas": 0,
+            "periodicas_subtradas": 0,
+            "estados": [],
+            "bytes_por_resposta": [],
+            "pedidos": [],
+            "janela_ms": 3255
+          },
+          "destino_antes": "comunicados|secretary",
+          "marco_do_evento": true,
+          "primeira_mutacao": 39,
+          "primeira_mutacao_de_controlo": 39,
+          "primeira_frame": 18,
+          "mudou_destino": true,
+          "ms_para_mudar_destino": 35
+        },
+        {
+          "alvo": "button",
+          "nome_do_alvo": "rota:secretaria",
+          "texto": "▥Secretaria de Edu",
+          "caixa": {
+            "largura": 80,
+            "altura": 61
+          },
+          "cobridor": null,
+          "gaveta_aberta_antes_do_toque": false,
+          "fechar_gaveta_antes_do_toque": null,
+          "destino_depois": "secretaria|secretary",
+          "gaveta_depois": {
+            "classes": "bfr-mobile-drawer",
+            "display": "block"
+          },
+          "trafego": {
+            "classe": "DESTINO_COM_RESULTADO",
+            "motivo": "6 de 8 respostas chegaram com estado 2xx e corpo",
+            "medida": {
+              "respostas": 8,
+              "com_corpo": 6,
+              "recusadas": 0,
+              "bytes_totais": 78838,
+              "metodos": {
+                "GET": 8
+              }
+            },
+            "respostas_na_janela": 8,
+            "anteriores_ao_toque_rejeitadas": 0,
+            "periodicas_subtradas": 0,
+            "estados": [
+              300,
+              300,
+              200,
+              200,
+              200,
+              200,
+              200,
+              200
+            ],
+            "bytes_por_resposta": [
+              0,
+              0,
+              1689,
+              12535,
+              25192,
+              12536,
+              1690,
+              25196
+            ],
+            "pedidos": [
+              "yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/guardian_students",
+              "yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/guardian_students",
+              "T https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/classes",
+              "lkcvqpessypfjo.supabase.co/rest/v1/student_school_profiles",
+              " https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/students",
+              "lkcvqpessypfjo.supabase.co/rest/v1/student_school_profiles",
+              "T https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/classes",
+              " https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/students"
+            ],
+            "janela_ms": 3277
+          },
+          "destino_antes": "inicio|secretary",
+          "marco_do_evento": true,
+          "primeira_mutacao": 49,
+          "primeira_mutacao_de_controlo": 49,
+          "primeira_frame": 26,
+          "mudou_destino": true,
+          "ms_para_mudar_destino": 43
+        },
+        {
+          "alvo": "span.bfr-mobile-icon",
+          "nome_do_alvo": "rota:comunicacao",
+          "texto": "📢Comunicação",
+          "caixa": {
+            "largura": 80,
+            "altura": 61
+          },
+          "cobridor": null,
+          "gaveta_aberta_antes_do_toque": false,
+          "fechar_gaveta_antes_do_toque": null,
+          "destino_depois": "comunicacao|secretary",
+          "gaveta_depois": {
+            "classes": "bfr-mobile-drawer",
+            "display": "block"
+          },
+          "trafego": {
+            "classe": "DESTINO_COM_RESULTADO",
+            "motivo": "2 de 2 respostas chegaram com estado 2xx e corpo",
+            "medida": {
+              "respostas": 2,
+              "com_corpo": 2,
+              "recusadas": 0,
+              "bytes_totais": 3181,
+              "metodos": {
+                "GET": 2
+              }
+            },
+            "respostas_na_janela": 2,
+            "anteriores_ao_toque_rejeitadas": 0,
+            "periodicas_subtradas": 0,
+            "estados": [
+              200,
+              200
+            ],
+            "bytes_por_resposta": [
+              1440,
+              1741
+            ],
+            "pedidos": [
+              " https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/profiles",
+              "T https://yyzqoxlkcvqpessypfjo.supabase.co/rest/v1/classes"
+            ],
+            "janela_ms": 3278
+          },
+          "destino_antes": "secretaria|secretary",
+          "marco_do_evento": true,
+          "primeira_mutacao": 10,
+          "primeira_mutacao_de_controlo": 10,
+          "primeira_frame": 27,
+          "mudou_destino": true,
+          "ms_para_mudar_destino": 44
+        },
+        {
+          "alvo": "span.bfr-mobile-icon",
+          "nome_do_alvo": "rota:comunicados",
+          "texto": "📣Avisos",
+          "caixa": {
+            "largura": 80,
+            "altura": 61
+          },
+          "cobridor": null,
+          "gaveta_aberta_antes_do_toque": false,
+          "fechar_gaveta_antes_do_toque": null,
+          "destino_depois": "comunicados|secretary",
+          "gaveta_depois": {
+            "classes": "bfr-mobile-drawer",
+            "display": "block"
+          },
+          "trafego": {
+            "classe": "DESTINO_SEM_PEDIDO",
+            "motivo": "nenhuma resposta de dados no intervalo entre o toque e o assentar",
+            "medida": {
+              "respostas": 0,
+              "com_corpo": 0,
+              "recusadas": 0,
+              "bytes_totais": 0,
+              "metodos": {}
+            },
+            "respostas_na_janela": 0,
+            "anteriores_ao_toque_rejeitadas": 0,
+            "periodicas_subtradas": 0,
+            "estados": [],
+            "bytes_por_resposta": [],
+            "pedidos": [],
+            "janela_ms": 3337
+          },
+          "destino_antes": "comunicacao|secretary",
+          "marco_do_evento": true,
+          "primeira_mutacao": 116,
+          "primeira_mutacao_de_controlo": 116,
+          "primeira_frame": 28,
+          "mudou_destino": true,
+          "ms_para_mudar_destino": 45
+        },
+        {
+          "alvo": "span.bfr-mobile-icon",
+          "nome_do_alvo": "rota:more",
+          "texto": "⋯Mais",
+          "caixa": {
+            "largura": 80,
+            "altura": 61
+          },
+          "cobridor": null,
+          "gaveta_aberta_antes_do_toque": false,
+          "fechar_gaveta_antes_do_toque": null,
+          "destino_depois": "comunicados|secretary",
+          "gaveta_depois": {
+            "classes": "bfr-mobile-drawer is-open",
+            "display": "block"
+          },
+          "trafego": {
+            "classe": "DESTINO_SEM_PEDIDO",
+            "motivo": "nenhuma resposta de dados no intervalo entre o toque e o assentar",
+            "medida": {
+              "respostas": 0,
+              "com_corpo": 0,
+              "recusadas": 0,
+              "bytes_totais": 0,
+              "metodos": {}
+            },
+            "respostas_na_janela": 0,
+            "anteriores_ao_toque_rejeitadas": 0,
+            "periodicas_subtradas": 0,
+            "estados": [],
+            "bytes_por_resposta": [],
+            "pedidos": [],
+            "janela_ms": 3251
+          },
+          "destino_antes": "comunicados|secretary",
+          "marco_do_evento": true,
+          "primeira_mutacao": 31,
+          "primeira_mutacao_de_controlo": 31,
+          "primeira_frame": 29,
+          "mudou_destino": false,
+          "ms_para_mudar_destino": null
+        },
+        {
+          "alvo": "button.bfr-mobile-menu-button",
+          "nome_do_alvo": "hamburger",
+          "texto": "abre-gaveta",
+          "caixa": {
+            "largura": 44,
+            "altura": 44
+          },
+          "cobridor": null,
+          "gaveta_aberta_antes_do_toque": true,
+          "fechar_gaveta_antes_do_toque": {
+            "gesto": "toque_no_fundo_na_direita_do_painel",
+            "ponto": {
+              "x": 368,
+              "y": 360
+            },
+            "rotulo_no_ponto": "button",
+            "classes_depois": "bfr-mobile-drawer",
+            "fechou": true
+          },
+          "destino_depois": "comunicados|secretary",
+          "gaveta_depois": {
+            "classes": "bfr-mobile-drawer is-open",
+            "display": "block"
+          },
+          "trafego": {
+            "classe": "DESTINO_SEM_PEDIDO",
+            "motivo": "nenhuma resposta de dados no intervalo entre o toque e o assentar",
+            "medida": {
+              "respostas": 0,
+              "com_corpo": 0,
+              "recusadas": 0,
+              "bytes_totais": 0,
+              "metodos": {}
+            },
+            "respostas_na_janela": 0,
+            "anteriores_ao_toque_rejeitadas": 0,
+            "periodicas_subtradas": 0,
+            "estados": [],
+            "bytes_por_resposta": [],
+            "pedidos": [],
+            "janela_ms": 3250
+          },
+          "destino_antes": "comunicados|secretary",
+          "marco_do_evento": true,
+          "primeira_mutacao": 34,
+          "primeira_mutacao_de_controlo": 34,
+          "primeira_frame": 28,
+          "mudou_destino": false,
+          "ms_para_mudar_destino": null
+        }
+      ],
+      "latencias": {
+        "ms_para_mudar_destino": [
+          35,
+          43,
+          44,
+          45
+        ],
+        "primeira_frame": [
+          18,
+          26,
+          27,
+          28,
+          29,
+          28
+        ],
+        "primeira_mutacao": [
+          39,
+          49,
+          10,
+          116,
+          31,
+          34
+        ],
+        "primeira_mutacao_de_controlo": [
+          39,
+          49,
+          10,
+          116,
+          31,
+          34
+        ],
+        "toques_sem_mutacao_registada": 0,
+        "toques_em_que_o_destino_nao_mudou": 2,
+        "toques_sem_chegada_a_pagina": 0,
+        "toques_com_cobridor_por_cima": 0,
+        "alvos_sem_toque": 0,
+        "por_classe_de_destino": {
+          "DESTINO_SEM_PEDIDO": 4,
+          "DESTINO_COM_RESULTADO": 2
+        },
+        "metodos_de_resposta_dos_toques": {
+          "GET": 10
+        },
+        "metodos_fora_do_GET": [],
+        "fichas_de_destino": 6
+      }
+    }
+  },
+  "escuta_de_rede": {
+    "habilitada": true,
+    "tipos_observados": [
+      "Fetch",
+      "XHR",
+      "Other"
+    ],
+    "url": "query removido antes de guardar, nenhum query e registrado",
+    "corpos": "nenhum corpo lido nem escrito — regra anti-PII da casa, o resultado no destino e medido por estado e bytes",
+    "vocabulario_de_destino": [
+      "DESTINO_NAO_OBSERVADO",
+      "DESTINO_SEM_PEDIDO",
+      "DESTINO_RECUSADO",
+      "DESTINO_COM_RESULTADO",
+      "DESTINO_RESULTADO_VAZIO"
+    ],
+    "janela_por_toque": "as respostas contadas sao as que chegam entre o toque e o assentar de 3 200 ms, cortadas pelo carimbo do relogio do Node"
+  },
+  "fixtures": {
+    "corpos_injectados": {
+      "ARMAR": true,
+      "LIMPAR": true,
+      "LER": true,
+      "ESTADO_MOBILE": true,
+      "PONTO_GAVETA_FECHAVEL": true,
+      "retangulo": true,
+      "controlo_negativo_rejeitado": true
+    },
+    "suporte_event_timing": true,
+    "tarde": {
+      "primeira_mutacao": 413,
+      "mudou_destino": true,
+      "ms_para_mudar_destino": 419,
+      "mutacoes_de_controlo": 1,
+      "marco_do_evento": true
+    },
+    "imediato": {
+      "primeira_mutacao": 7,
+      "mudou_destino": true,
+      "ms_para_mudar_destino": 20,
+      "mutacoes_de_controlo": 1,
+      "marco_do_evento": true
+    },
+    "quieto": {
+      "toques": 0,
+      "mutacoes_de_controlo": 0
+    },
+    "periodico": {
+      "toques": 0,
+      "mutacoes_de_controlo": 24,
+      "mutacoes_total": 24
+    },
+    "visibilidade": {
+      "escondido": false,
+      "mostrado": true
+    }
+  },
+  "cadeia": {
+    "access_bytes": 824,
+    "expira_em_s": 3600,
+    "renovada_à_custa_do_refresh": true
+  },
+  "cifras_de_destino": {
+    "origem": "as fichas de trafego guardadas por toque, recontadas por este agregado — nenhuma cifra de destino e lembrada desta linha",
+    "celulas_com_ficha": 18,
+    "soma_por_banda": 18,
+    "bate_com_as_fichas": true,
+    "por_classe": {
+      "DESTINO_SEM_PEDIDO": 12,
+      "DESTINO_COM_RESULTADO": 6
+    },
+    "metodos_de_resposta": {
+      "GET": 30
+    },
+    "metodos_fora_do_GET": [],
+    "classes_fora_do_vocabulario": [],
+    "vocabulario_de_destino": [
+      "DESTINO_NAO_OBSERVADO",
+      "DESTINO_SEM_PEDIDO",
+      "DESTINO_RECUSADO",
+      "DESTINO_COM_RESULTADO",
+      "DESTINO_RESULTADO_VAZIO"
+    ],
+    "fichas_por_toque": [
+      {
+        "banda": "w320",
+        "alvo": "rota:inicio",
+        "classe": "DESTINO_SEM_PEDIDO",
+        "medida": {
+          "respostas": 0,
+          "com_corpo": 0,
+          "recusadas": 0,
+          "bytes_totais": 0,
+          "metodos": {}
+        }
+      },
+      {
+        "banda": "w320",
+        "alvo": "rota:secretaria",
+        "classe": "DESTINO_COM_RESULTADO",
+        "medida": {
+          "respostas": 8,
+          "com_corpo": 6,
+          "recusadas": 0,
+          "bytes_totais": 80002,
+          "metodos": {
+            "GET": 8
+          }
+        }
+      },
+      {
+        "banda": "w320",
+        "alvo": "rota:comunicacao",
+        "classe": "DESTINO_COM_RESULTADO",
+        "medida": {
+          "respostas": 2,
+          "com_corpo": 2,
+          "recusadas": 0,
+          "bytes_totais": 3176,
+          "metodos": {
+            "GET": 2
+          }
+        }
+      },
+      {
+        "banda": "w320",
+        "alvo": "rota:comunicados",
+        "classe": "DESTINO_SEM_PEDIDO",
+        "medida": {
+          "respostas": 0,
+          "com_corpo": 0,
+          "recusadas": 0,
+          "bytes_totais": 0,
+          "metodos": {}
+        }
+      },
+      {
+        "banda": "w320",
+        "alvo": "rota:more",
+        "classe": "DESTINO_SEM_PEDIDO",
+        "medida": {
+          "respostas": 0,
+          "com_corpo": 0,
+          "recusadas": 0,
+          "bytes_totais": 0,
+          "metodos": {}
+        }
+      },
+      {
+        "banda": "w320",
+        "alvo": "hamburger",
+        "classe": "DESTINO_SEM_PEDIDO",
+        "medida": {
+          "respostas": 0,
+          "com_corpo": 0,
+          "recusadas": 0,
+          "bytes_totais": 0,
+          "metodos": {}
+        }
+      },
+      {
+        "banda": "w390",
+        "alvo": "rota:inicio",
+        "classe": "DESTINO_SEM_PEDIDO",
+        "medida": {
+          "respostas": 0,
+          "com_corpo": 0,
+          "recusadas": 0,
+          "bytes_totais": 0,
+          "metodos": {}
+        }
+      },
+      {
+        "banda": "w390",
+        "alvo": "rota:secretaria",
+        "classe": "DESTINO_COM_RESULTADO",
+        "medida": {
+          "respostas": 8,
+          "com_corpo": 6,
+          "recusadas": 0,
+          "bytes_totais": 78832,
+          "metodos": {
+            "GET": 8
+          }
+        }
+      },
+      {
+        "banda": "w390",
+        "alvo": "rota:comunicacao",
+        "classe": "DESTINO_COM_RESULTADO",
+        "medida": {
+          "respostas": 2,
+          "com_corpo": 2,
+          "recusadas": 0,
+          "bytes_totais": 3185,
+          "metodos": {
+            "GET": 2
+          }
+        }
+      },
+      {
+        "banda": "w390",
+        "alvo": "rota:comunicados",
+        "classe": "DESTINO_SEM_PEDIDO",
+        "medida": {
+          "respostas": 0,
+          "com_corpo": 0,
+          "recusadas": 0,
+          "bytes_totais": 0,
+          "metodos": {}
+        }
+      },
+      {
+        "banda": "w390",
+        "alvo": "rota:more",
+        "classe": "DESTINO_SEM_PEDIDO",
+        "medida": {
+          "respostas": 0,
+          "com_corpo": 0,
+          "recusadas": 0,
+          "bytes_totais": 0,
+          "metodos": {}
+        }
+      },
+      {
+        "banda": "w390",
+        "alvo": "hamburger",
+        "classe": "DESTINO_SEM_PEDIDO",
+        "medida": {
+          "respostas": 0,
+          "com_corpo": 0,
+          "recusadas": 0,
+          "bytes_totais": 0,
+          "metodos": {}
+        }
+      },
+      {
+        "banda": "w430",
+        "alvo": "rota:inicio",
+        "classe": "DESTINO_SEM_PEDIDO",
+        "medida": {
+          "respostas": 0,
+          "com_corpo": 0,
+          "recusadas": 0,
+          "bytes_totais": 0,
+          "metodos": {}
+        }
+      },
+      {
+        "banda": "w430",
+        "alvo": "rota:secretaria",
+        "classe": "DESTINO_COM_RESULTADO",
+        "medida": {
+          "respostas": 8,
+          "com_corpo": 6,
+          "recusadas": 0,
+          "bytes_totais": 78838,
+          "metodos": {
+            "GET": 8
+          }
+        }
+      },
+      {
+        "banda": "w430",
+        "alvo": "rota:comunicacao",
+        "classe": "DESTINO_COM_RESULTADO",
+        "medida": {
+          "respostas": 2,
+          "com_corpo": 2,
+          "recusadas": 0,
+          "bytes_totais": 3181,
+          "metodos": {
+            "GET": 2
+          }
+        }
+      },
+      {
+        "banda": "w430",
+        "alvo": "rota:comunicados",
+        "classe": "DESTINO_SEM_PEDIDO",
+        "medida": {
+          "respostas": 0,
+          "com_corpo": 0,
+          "recusadas": 0,
+          "bytes_totais": 0,
+          "metodos": {}
+        }
+      },
+      {
+        "banda": "w430",
+        "alvo": "rota:more",
+        "classe": "DESTINO_SEM_PEDIDO",
+        "medida": {
+          "respostas": 0,
+          "com_corpo": 0,
+          "recusadas": 0,
+          "bytes_totais": 0,
+          "metodos": {}
+        }
+      },
+      {
+        "banda": "w430",
+        "alvo": "hamburger",
+        "classe": "DESTINO_SEM_PEDIDO",
+        "medida": {
+          "respostas": 0,
+          "com_corpo": 0,
+          "recusadas": 0,
+          "bytes_totais": 0,
+          "metodos": {}
+        }
+      }
+    ],
+    "corpos": "nenhum corpo lido nem escrito; o resultado no destino e medido por estado, bytes e metodo"
+  },
+  "portoes": 78,
+  "falhas": [],
+  "em_fecho": "2026-11-27T00:39:25.261Z",
+  "veredito_de_aceitacao_rm_2_1": {
+    "aceitacao_lida_do_roadmap": "censo vivo com 0 escritas periodicas residuais",
+    "escritas_soma_das_larguras": 15921,
+    "larguras_com_escritas": 3,
+    "verifica_se": false
+  },
+  "resumo_por_largura": [
+    {
+      "largura": 320,
+      "escritas_periodicas_em_controlos": 5429,
+      "previsao_do_registo": 58,
+      "toques_registados": 6,
+      "toques_sem_chegada_a_pagina": 0,
+      "alvos_sem_toque": 0,
+      "destinos_mudaram": 3,
+      "destinos_nao_mudaram": 3,
+      "mediana_ms_para_mudar_destino": 44,
+      "por_classe_de_destino": {
+        "DESTINO_SEM_PEDIDO": 4,
+        "DESTINO_COM_RESULTADO": 2
+      },
+      "metodos_fora_do_GET": [],
+      "trafego_quieto": 3
+    },
+    {
+      "largura": 390,
+      "escritas_periodicas_em_controlos": 5246,
+      "previsao_do_registo": 58,
+      "toques_registados": 6,
+      "toques_sem_chegada_a_pagina": 0,
+      "alvos_sem_toque": 0,
+      "destinos_mudaram": 4,
+      "destinos_nao_mudaram": 2,
+      "mediana_ms_para_mudar_destino": 36,
+      "por_classe_de_destino": {
+        "DESTINO_SEM_PEDIDO": 4,
+        "DESTINO_COM_RESULTADO": 2
+      },
+      "metodos_fora_do_GET": [],
+      "trafego_quieto": 0
+    },
+    {
+      "largura": 430,
+      "escritas_periodicas_em_controlos": 5246,
+      "previsao_do_registo": 58,
+      "toques_registados": 6,
+      "toques_sem_chegada_a_pagina": 0,
+      "alvos_sem_toque": 0,
+      "destinos_mudaram": 4,
+      "destinos_nao_mudaram": 2,
+      "mediana_ms_para_mudar_destino": 44,
+      "por_classe_de_destino": {
+        "DESTINO_SEM_PEDIDO": 4,
+        "DESTINO_COM_RESULTADO": 2
+      },
+      "metodos_fora_do_GET": [],
+      "trafego_quieto": 0
+    }
+  ]
+}

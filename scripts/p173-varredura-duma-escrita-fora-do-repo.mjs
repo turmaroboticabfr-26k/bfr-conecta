@@ -69,6 +69,15 @@ if (fixAdjLimpo !== 0) throw new Error('ABORTA: a régua de adjacencia chumba o 
 if (fixFora !== 2) throw new Error('ABORTA: a familia do nao-Latino nao deu os dois glifos do fixture, deu ' + JSON.stringify(ofensoras(FIX_PARTIDO).map((o) => o.cp)));
 if (fixForaLimpo !== 0) throw new Error('ABORTA: a familia do nao-Latino proibe uma classe legitima, o fixture limpo deu ' + JSON.stringify(ofensoras(FIX_LIMPO).map((o) => o.cp)));
 if (nomeiaGlifos(FIX_PARTIDO).indexOf(String.fromCharCode(0x6392)) >= 0) throw new Error('ABORTA: a nomeacao por codepoint deixou ficar o glifo, a captura seria a ofensora');
+// O exemplar da faixa cirilica, lida do fonte do produtor: a letra que a ferramenta de edicao injerta dentro dum
+// vocabulo portugues. Composto por codepoint, nunca dactilografado, porque o fonte que denuncia nao pode passar a
+// pertencer a familia que ele varre. Sem este positiva, o leitor daria verde a uma escrita com o defeito do ciclo.
+const FIX_CIRILICO = 'a palavra ass' + String.fromCharCode(0x0435) + 'rcoes saiu com letra cirilica no meio';
+const cirilicoFix = ofensoras(FIX_CIRILICO);
+const cirilicoRedigido = nomeiaGlifos(FIX_CIRILICO);
+say('PROVA_FIXTURE_CIRILICO ocorrencias=' + cirilicoFix.length + ' codepoints=' + JSON.stringify(cirilicoFix.map((o) => o.cp)) + ' redigido_sem_glifo=' + (cirilicoRedigido.indexOf(String.fromCharCode(0x0435)) < 0));
+if (cirilicoFix.length !== 1) throw new Error('ABORTA: o exemplar cirilico nao foi apanhado pela faixa lida do produtor, deu ' + cirilicoFix.length);
+if (cirilicoRedigido.indexOf(String.fromCharCode(0x0435)) >= 0) throw new Error('ABORTA: a nomeacao por codepoint deixou o glifo cirilico na captura, o leitor seria o ofensor');
 
 // Os dois fixtures que seguem nao provam a regua de contar (ja provada acima): provam a localizacao, que e o ramo
 // novo. O controlo da regra velha e obrigatorio -- se as duas regras dessem o mesmo numero neste fixture, o verde

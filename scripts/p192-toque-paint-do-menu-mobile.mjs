@@ -18,6 +18,13 @@
 // (3) ARMAR e idempotente e o LIMPAR so limpa contadores, porque re-ARMAR antes de cada alvo empilhava ouvintes.
 // Se um alvo esta coberto por outro elemento, a ficha nomeia o cobridor (rotulo, caixa, posicao, z-index) e o
 // toque e dado na mesma: e aquilo que um utilizador recebe ao tocar naquele ponto, nao um zero cego.
+// O resultado no destino (regua do briefing: «nao aprove porque o botao funciona»): alem das grandezas da pagina,
+// cada toque e julgado pelo trafego que chegou DEPOIS dele. A escuta e passiva (Network.enable), o query e tirado
+// antes de guardar, nenhum corpo e lido nem escrito (regra anti-PII da casa), e a classe sai de cinco valores
+// declarados no topo deste ficheiro, cada um com fixture antes de qualquer browser. Dois cortes precedem a classe:
+// respostas chegadas antes do carimbo do toque (o gesto de fechar a gaveta tambem dispara pedidos) e o par
+// metodo+url aprendido na janela quieta de 30 s da propria banda (o laco do produto). Os dois cortam a mais, nunca
+// a menos: na pior hipotese uma celula que so recebeu heartbeat fica SEM_PEDIDO, que e uma limitacao declarada.
 // Regras desta corrida: 0 escrita no banco, 0 candidata publicada, 0 mint, 0 rotação, 0 push, 0 screenshot (as
 // vistas tem nomes de alunos). O unico ficheiro escrito e a ficha desta corrida.
 // Uso: node scripts/p192-toque-paint-do-menu-mobile.mjs [papel] [larguras csv] [rotulo]
@@ -140,10 +147,89 @@ if (!page) abort(1, 'sem alvo page no CDP');
 let seq = 0; const pend = new Map(); const ws = new WebSocket(page.webSocketDebuggerUrl);
 ws.onclose = () => { if (!abertaParaSaida) abort(4, 'ws fechado pelo chrome'); };
 await Promise.race([new Promise((res, rej) => { ws.onopen = res; ws.onerror = rej; }), new Promise((_, rej) => setTimeout(() => rej(new Error('handshake ws')), 30000))]).catch((e) => abort(5, String(e.message || e).slice(0, 120)));
+// Trafego do destino: a resposta a pergunta que a ficha de latencia nao responde — «o destino deu resultado?».
+// So se observam Fetch/XHR, o carimbo e o relogio do Node no instante do evento, o url perde o query antes de
+// ser guardado (e no query que vivem chaves e filtros), e nenhum corpo e lido: a regra anti-PII desta casa nao
+// se suspende porque o pedido saiu do browser. Os metodos vao todos no registo, inclusive os nao-GET, porque o
+// produto faz os seus proprios heartbeat e proibi-los de aparecer seria o portao a mentir sobre uma classe
+// legitima do trafego.
+const REDE = [];
+const PEDIDOS = {};
+let rede_ligada = false;
 ws.onmessage = (ev) => {
   const m = JSON.parse(ev.data);
   if (m.id && pend.has(m.id)) { const p = pend.get(m.id); pend.delete(m.id); m.error ? p.rej(new Error(m.error.message)) : p.res(m.result); return; }
+  if (!rede_ligada) return;
+  if (m.method === 'Network.requestWillBeSent') {
+    // O metodo vive no pedido, nao na resposta: contar `response.method` dava string vazia em todas as fichas,
+    // e o censo de metodos fora do GET — a unica face que mostra uma escrita no destino — era um zero cego.
+    const q = (m.params && m.params.request) || {};
+    PEDIDOS[String((m.params || {}).requestId)] = { metodo: String(q.method || ''), url_sem_query: String(q.url || '').split('?')[0] };
+    return;
+  }
+  if (m.method === 'Network.responseReceived') {
+    const r = (m.params && m.params.response) || {};
+    const tipo = String((m.params && m.params.type) || '');
+    if (!/^(Fetch|XHR|Other)$/.test(tipo)) return;
+    const rid = String(m.params.requestId);
+    const p = PEDIDOS[rid] || {};
+    REDE.push({ rid: rid, url_sem_query: p.url_sem_query || String(r.url || '').split('?')[0], status: Number(r.status) || 0, metodo: p.metodo || String(r.requestMethod || ''), bytes: 0, tipo: tipo, em_ms: Date.now() });
+  } else if (m.method === 'Network.loadingFinished') {
+    const a = REDE.find((x) => x.rid === String(m.params.requestId));
+    if (a && Number(m.params.encodedDataLength) > a.bytes) a.bytes = Number(m.params.encodedDataLength);
+    delete PEDIDOS[String(m.params.requestId)];
+  }
 };
+// A classe de destino e uma funcao pura sobre as fichas de trafego, para ter fixture que dispara em cada uma
+// das cinco classes antes de qualquer corrida: um veredicto que so sei tirar do browser nao e falsificavel.
+const DS_NADA_OBSERVADO = 'DESTINO_NAO_OBSERVADO';
+const DS_SEM_PEDIDO = 'DESTINO_SEM_PEDIDO';
+const DS_RECUSADO = 'DESTINO_RECUSADO';
+const DS_COM_RESULTADO = 'DESTINO_COM_RESULTADO';
+const DS_RESULTADO_VAZIO = 'DESTINO_RESULTADO_VAZIO';
+const VOCABULARIO_DE_DESTINO = [DS_NADA_OBSERVADO, DS_SEM_PEDIDO, DS_RECUSADO, DS_COM_RESULTADO, DS_RESULTADO_VAZIO];
+function classe_do_destino_pelo_trafego(respostas, rede_habilitada) {
+  if (rede_habilitada !== true) return { classe: DS_NADA_OBSERVADO, motivo: 'a escuta de rede nao foi ligada nesta corrida, nenhum zero abaixo e medido', medida: null };
+  const rs = Array.isArray(respostas) ? respostas : [];
+  const recusadas = rs.filter((r) => Number(r.status) >= 400);
+  const com_corpo = rs.filter((r) => Number(r.status) >= 200 && Number(r.status) < 300 && Number(r.bytes) > 0);
+  // As cinco grandezas existem tambem quando nada chegou: uma ficha de SEM_PEDIDO com campos em falta faria a
+  // fila impressa dizer `undefined`, e um campo que so existe nas celulas verdes e a regua a contar-se a si propria.
+  const medida = { respostas: rs.length, com_corpo: com_corpo.length, recusadas: recusadas.length,
+    bytes_totais: rs.reduce((a, r) => a + (Number(r.bytes) || 0), 0),
+    metodos: rs.reduce((h, r) => { const k = String(r.metodo || ''); h[k] = (h[k] || 0) + 1; return h; }, {}) };
+  if (!rs.length) return { classe: DS_SEM_PEDIDO, motivo: 'nenhuma resposta de dados no intervalo entre o toque e o assentar', medida };
+  if (recusadas.length) return { classe: DS_RECUSADO, motivo: recusadas.length + ' de ' + rs.length + ' respostas chegaram com estado igual ou acima de 400', medida };
+  if (com_corpo.length) return { classe: DS_COM_RESULTADO, motivo: com_corpo.length + ' de ' + rs.length + ' respostas chegaram com estado 2xx e corpo', medida };
+  return { classe: DS_RESULTADO_VAZIO, motivo: 'houve ' + rs.length + ' trafego(s) de dados e nenhum estado 2xx trouxe bytes', medida };
+}
+{
+  const fx = [];
+  const classesVistas = [];
+  const F = (nome, obtido, esperado) => { fx.push({ nome, ok: obtido.classe === esperado, obtido: obtido.classe, esperado, motivo: String(obtido.motivo).slice(0, 90) }); classesVistas.push(obtido.classe); };
+  F('nao_observado', classe_do_destino_pelo_trafego([{ status: 200, bytes: 10 }], false), DS_NADA_OBSERVADO);
+  F('sem_pedido', classe_do_destino_pelo_trafego([], true), DS_SEM_PEDIDO);
+  F('recusado', classe_do_destino_pelo_trafego([{ status: 200, bytes: 12 }, { status: 403, bytes: 0 }], true), DS_RECUSADO);
+  F('com_resultado', classe_do_destino_pelo_trafego([{ status: 200, bytes: 4120, metodo: 'GET' }], true), DS_COM_RESULTADO);
+  F('resultado_vazio', classe_do_destino_pelo_trafego([{ status: 200, bytes: 0, metodo: 'GET' }], true), DS_RESULTADO_VAZIO);
+  const com_corpo_fi = classe_do_destino_pelo_trafego([{ status: 200, bytes: 4120, metodo: 'GET' }, { status: 204, bytes: 0, metodo: 'POST' }], true);
+  fx.push({ nome: 'bytes_totais_e_metodos_sao_medidos_na_ficha', ok: com_corpo_fi.medida.bytes_totais === 4120 && com_corpo_fi.medida.metodos.GET === 1 && com_corpo_fi.medida.metodos.POST === 1, obtido: JSON.stringify(com_corpo_fi.medida), esperado: 'GET=1 POST=1 bytes=4120', motivo: '' });
+  classesVistas.push(com_corpo_fi.classe);
+  const sem_pedido_fi = classe_do_destino_pelo_trafego([], true);
+  const GRANDEZAS_DE_DESTINO = ['respostas', 'com_corpo', 'recusadas', 'bytes_totais', 'metodos'];
+  const faltam = GRANDEZAS_DE_DESTINO.filter((g) => !(g in (sem_pedido_fi.medida || {})));
+  fx.push({ nome: 'sem_pedido_declara_as_cinco_grandezas_zeradas', ok: faltam.length === 0 && sem_pedido_fi.medida.respostas === 0 && sem_pedido_fi.medida.bytes_totais === 0, obtido: JSON.stringify(sem_pedido_fi.medida), esperado: 'respostas=0 bytes_totais=0, cinco chaves', motivo: 'faltam=' + JSON.stringify(faltam) });
+  classesVistas.push(sem_pedido_fi.classe);
+  const sem_positivo = fx.filter((t) => !t.ok);
+  // O censo de classes so pode vir das chamadas que devolvem uma classe: contar o campo `obtido` do fx misturaria
+  // a ficha de medida duma assercao de bytes com os nomes do vocabulario, e o portao abortaria sobre o proprio output.
+  const classes_vistas = [...new Set(classesVistas)].sort();
+  if (classesVistas.length !== fx.length) { abertaParaSaida = true; console.log('ABORTA_CENSO_DE_CLASSES ' + JSON.stringify({ classesVistas: classesVistas.length, fx: fx.length })); process.exit(1); }
+  console.log('PROVA_FIXTURE_DESTINO_POR_TRAFEGO casos=' + fx.length + ' faltas=' + sem_positivo.length + ' classes_vistas=' + JSON.stringify(classes_vistas) + ' vocabulario=' + JSON.stringify(VOCABULARIO_DE_DESTINO));
+  if (sem_positivo.length) { abertaParaSaida = true; console.log('ABORTA_FIXTURE_DESTINO ' + JSON.stringify(sem_positivo)); try { spawn('taskkill', ['/pid', String(chrome.pid), '/t', '/f'], { stdio: 'ignore' }); } catch {} process.exit(1); }
+  const classes_fora = classes_vistas.filter((c) => VOCABULARIO_DE_DESTINO.indexOf(c) < 0);
+  if (classes_fora.length) { abertaParaSaida = true; console.log('ABORTA_CLASSE_FORA_DO_VOCABULARIO ' + JSON.stringify(classes_fora)); process.exit(1); }
+}
 const PRAZO = (method) => (method === 'Runtime.evaluate' ? 60000 : 150000);
 const send = (method, params = {}) => new Promise((res, rej) => {
   const i = ++seq; const prazo = PRAZO(method);
@@ -365,6 +451,8 @@ const FIX_PERIODICO = paginaDeFixture('<button id="alvo1">a</button><button id="
 const FIX_VISIVEL = paginaDeFixture('<button id="mostrado">a</button><button id="escondido" style="display:none">b</button><script>setInterval(function(){document.getElementById("mostrado").setAttribute("aria-current","1");document.getElementById("escondido").setAttribute("aria-current","2");},250);</script>');
 
 await send('Page.enable'); await send('Runtime.enable');
+await send('Network.enable'); rede_ligada = true;
+out.escuta_de_rede = { habilitada: true, tipos_observados: ['Fetch', 'XHR', 'Other'], url: 'query removido antes de guardar, nenhum query e registrado', corpos: 'nenhum corpo lido nem escrito — regra anti-PII da casa, o resultado no destino e medido por estado e bytes', vocabulario_de_destino: VOCABULARIO_DE_DESTINO, janela_por_toque: 'as respostas contadas sao as que chegam entre o toque e o assentar de 3 200 ms, cortadas pelo carimbo do relogio do Node' };
 await send('Emulation.setTouchEmulationEnabled', { enabled: true, maxTouchPoints: 1 });
 await send('Emulation.setDeviceMetricsOverride', { width: 390, height: ALTURA, deviceScaleFactor: 2, mobile: true });
 
@@ -451,11 +539,18 @@ for (const w of LARGURAS) {
   const moDepois = b.estado_mobile_depois_do_cartao || mo;
   const rotasParaTocar = moDepois.rotas;
   await E(ARMAR);
+  const marca_quieta = REDE.length;
   await dorme(JANELA_INATIVA_MS);
+  const respostasQuietas = REDE.slice(marca_quieta);
+  const urls_periodicos = new Set(respostasQuietas.map((x) => x.metodo + ' ' + x.url_sem_query));
   const lidoSemToque = await E(LER);
   gate(w + 'px: o instrumento sobreviveu aos 30 s de inatividade e devolveu o censo', !!lidoSemToque, true);
   b.censo_inativo = { janela_ms: JANELA_INATIVA_MS, mutacoes_total: lidoSemToque ? lidoSemToque.mutacoes_total : null, escritas_periodicas_em_controlos: lidoSemToque ? lidoSemToque.mutacoes_de_controlo : null, mudancas_de_destino_na_janela_quieta: lidoSemToque ? lidoSemToque.mudancas_de_destino : null, por_alvo_top: lidoSemToque ? lidoSemToque.por_alvo_top : [], por_atributo: lidoSemToque ? lidoSemToque.por_atributo : {}, previsao_lida_do_registo: PREVISAO.escritas_esperadas_na_janela, divergencia_previsao_medida: lidoSemToque ? lidoSemToque.mutacoes_de_controlo - PREVISAO.escritas_esperadas_na_janela : null };
+  b.trafego_da_janela_quieta = { respostas: respostasQuietas.length, metodos: respostasQuietas.reduce((h, x) => { h[x.metodo || '?'] = (h[x.metodo || '?'] || 0) + 1; return h; }, {}), urls_distintos: urls_periodicos.size, estados: respostasQuietas.reduce((h, x) => { h[String(x.status)] = (h[String(x.status)] || 0) + 1; return h; }, {}), pedidos: [...urls_periodicos].slice(0, 12).map((u) => u.slice(-58)) };
+  b.criterio_de_subtracao = 'uma resposta cujo par metodo+url tambem aparece na janela quieta de 30 s e atribuida ao laco do produto e nao ao toque; a subtracao nunca inventa resultado no destino — na pior das hipoteses uma celula que so recebeu heartbeat fica SEM_PEDIDO';
   b.toques = [];
+  const classe_hist = {};
+  const metodos_toque = {};
   const alvos = [];
   for (const rota of rotasParaTocar) alvos.push({ sel: '#bfrMobileBottomNav [data-bfr-mobile-route="' + rota.rota + '"]', nome: 'rota:' + rota.rota, texto: rota.texto });
   if (moDepois.hamb) alvos.push({ sel: '[data-bfr-open-drawer]', nome: 'hamburger', texto: 'abre-gaveta' });
@@ -486,14 +581,31 @@ for (const w of LARGURAS) {
     // Quando outro elemento esta por cima, o toque vai na mesma: e aquilo que um utilizador recebe ao tocar
     // naquele ponto. A ficha declara o cobridor em vez de fingir que o alvo estava la.
     const cobridor = r.tapado ? r.tapado : null;
+    const marca_rede = REDE.length;
+    const carimbo_antes_do_toque = Date.now();
     await toca(r.x, r.y);
     await dorme(3200);
+    const respostas_brutas = REDE.slice(marca_rede);
+    // Uma resposta que chegou antes do toque nao pode ser dele: o gesto de fechar a gaveta, medido acima, tambem
+    // dispara pedidos, e o corte e pelo carimbo de chegada e nao pelo indice do registo.
+    const respostas = respostas_brutas.filter((x) => x.em_ms >= carimbo_antes_do_toque);
+    const respostas_do_toque = respostas.filter((x) => !urls_periodicos.has(x.metodo + ' ' + x.url_sem_query));
+    const classe_destino = classe_do_destino_pelo_trafego(respostas_do_toque, rede_ligada);
+    classe_hist[classe_destino.classe] = (classe_hist[classe_destino.classe] || 0) + 1;
+    for (const x of respostas_do_toque) metodos_toque[x.metodo || '?'] = (metodos_toque[x.metodo || '?'] || 0) + 1;
+    const ficha_trafego = { classe: classe_destino.classe, motivo: classe_destino.motivo, medida: classe_destino.medida,
+      respostas_na_janela: respostas.length, anteriores_ao_toque_rejeitadas: respostas_brutas.length - respostas.length,
+      periodicas_subtradas: respostas.length - respostas_do_toque.length,
+      estados: respostas_do_toque.map((x) => x.status), bytes_por_resposta: respostas_do_toque.map((x) => x.bytes),
+      pedidos: respostas_do_toque.slice(0, 8).map((x) => (x.metodo + ' ' + x.url_sem_query).slice(-58)),
+      janela_ms: Date.now() - carimbo_antes_do_toque };
     const lido = await E(LER);
     const t = (lido && lido.toques.length === 1) ? lido.toques[0] : null;
     const depois = await E(ESTADO_MOBILE);
-    b.toques.push(Object.assign({ alvo: alvo.nome, texto: alvo.texto, caixa: { largura: r.largura, altura: r.altura }, cobridor, gaveta_aberta_antes_do_toque: gaveta_aberta_antes, fechar_gaveta_antes_do_toque: fechar_gaveta, destino_depois: depois.destino, gaveta_depois: { classes: depois.gaveta_classes, display: depois.gaveta_display } }, t || { toque_nao_chegou_a_pagina: true, registos_lidos: lido ? lido.toques.length : null }));
+    b.toques.push(Object.assign({ alvo: alvo.nome, nome_do_alvo: alvo.nome, texto: alvo.texto, caixa: { largura: r.largura, altura: r.altura }, cobridor, gaveta_aberta_antes_do_toque: gaveta_aberta_antes, fechar_gaveta_antes_do_toque: fechar_gaveta, destino_depois: depois.destino, gaveta_depois: { classes: depois.gaveta_classes, display: depois.gaveta_display }, trafego: ficha_trafego }, t || { toque_nao_chegou_a_pagina: true, registos_lidos: lido ? lido.toques.length : null }));
     gate(w + 'px ' + alvo.nome + ': um toque e um registo, e o carimbo do evento chegou', { registos: lido ? lido.toques.length : null, alvo_na_pagina: t ? typeof t.alvo === 'string' && t.alvo.length > 0 : null, marco_do_evento: t ? t.marco_do_evento : null }, { registos: 1, alvo_na_pagina: true, marco_do_evento: true });
     gate(w + 'px ' + alvo.nome + ': o destino tomou uma decisao — mudou ou nao mudou, nunca indeciso', { decidido: t ? t.mudou_destino !== null : null }, { decidido: true });
+    gate(w + 'px ' + alvo.nome + ': o trafego do destino ficou dentro do vocabulario declarado', { na_lista: VOCABULARIO_DE_DESTINO.indexOf(ficha_trafego.classe) >= 0, escuta: rede_ligada }, { na_lista: true, escuta: true });
   }
   b.latencias = {
     ms_para_mudar_destino: b.toques.filter((t) => typeof t.ms_para_mudar_destino === 'number').map((t) => t.ms_para_mudar_destino),
@@ -504,19 +616,46 @@ for (const w of LARGURAS) {
     toques_em_que_o_destino_nao_mudou: b.toques.filter((t) => t.mudou_destino === false).length,
     toques_sem_chegada_a_pagina: b.toques.filter((t) => t.toque_nao_chegou_a_pagina === true).length,
     toques_com_cobridor_por_cima: b.toques.filter((t) => !!t.cobridor).length,
-    alvos_sem_toque: b.toques.filter((t) => typeof t.motivo === 'string').length
+    alvos_sem_toque: b.toques.filter((t) => typeof t.motivo === 'string').length,
+    por_classe_de_destino: classe_hist,
+    metodos_de_resposta_dos_toques: metodos_toque,
+    metodos_fora_do_GET: Object.keys(metodos_toque).filter((m) => m !== 'GET').map((m) => m + '=' + metodos_toque[m]),
+    fichas_de_destino: b.toques.filter((t) => t.trafego && typeof t.trafego.classe === 'string').length
   };
+  gate(w + 'px: o histograma de classes de destino reproduz as fichas desta banda', { bate: Object.keys(classe_hist).reduce((a, c) => a + classe_hist[c], 0) === b.latencias.fichas_de_destino }, { bate: true });
   out.bandas['w' + w] = b;
 }
 
 abertaParaSaida = true;
+const fichasDeDestino = [];
+for (const k of Object.keys(out.bandas)) for (const t of (out.bandas[k].toques || [])) if (t.trafego && typeof t.trafego.classe === 'string') fichasDeDestino.push({ banda: k, alvo: t.nome_do_alvo || t.alvo, classe: t.trafego.classe, medida: t.trafego.medida });
+const classesDoAgregado = {};
+const metodosDoAgregado = {};
+for (const f of fichasDeDestino) {
+  classesDoAgregado[f.classe] = (classesDoAgregado[f.classe] || 0) + 1;
+  const mm = (f.medida && f.medida.metodos) || {};
+  for (const m of Object.keys(mm)) metodosDoAgregado[m] = (metodosDoAgregado[m] || 0) + mm[m];
+}
+const somaPorBanda = Object.keys(out.bandas).reduce((a, k) => a + (out.bandas[k].latencias ? out.bandas[k].latencias.fichas_de_destino : 0), 0);
+const classesForaDoVocabulario = Object.keys(classesDoAgregado).filter((c) => VOCABULARIO_DE_DESTINO.indexOf(c) < 0);
+out.cifras_de_destino = {
+  origem: 'as fichas de trafego guardadas por toque, recontadas por este agregado — nenhuma cifra de destino e lembrada desta linha',
+  celulas_com_ficha: fichasDeDestino.length, soma_por_banda: somaPorBanda,
+  bate_com_as_fichas: somaPorBanda === fichasDeDestino.length,
+  por_classe: classesDoAgregado, metodos_de_resposta: metodosDoAgregado,
+  metodos_fora_do_GET: Object.keys(metodosDoAgregado).filter((m) => m !== 'GET').map((m) => m + '=' + metodosDoAgregado[m]),
+  classes_fora_do_vocabulario: classesForaDoVocabulario, vocabulario_de_destino: VOCABULARIO_DE_DESTINO,
+  fichas_por_toque: fichasDeDestino,
+  corpos: 'nenhum corpo lido nem escrito; o resultado no destino e medido por estado, bytes e metodo'
+};
+gate('o agregado de destino reproduz a soma das fichas de todas as bandas', { bate: out.cifras_de_destino.bate_com_as_fichas, classes_fora_do_vocabulario: classesForaDoVocabulario.length }, { bate: true, classes_fora_do_vocabulario: 0 });
 out.portoes = portoes;
 out.falhas = falhas;
 out.em_fecho = new Date().toISOString();
 const resumoLarguras = Object.keys(out.bandas).map((k) => {
   const b = out.bandas[k];
   const escritas = b.censo_inativo ? b.censo_inativo.escritas_periodicas_em_controlos : null;
-  return { largura: b.largura, escritas_periodicas_em_controlos: escritas, previsao_do_registo: PREVISAO.escritas_esperadas_na_janela, toques_registados: b.toques ? b.toques.filter((t) => typeof t.destino_antes === 'string').length : 0, toques_sem_chegada_a_pagina: b.latencias ? b.latencias.toques_sem_chegada_a_pagina : 0, alvos_sem_toque: b.latencias ? b.latencias.alvos_sem_toque : 0, destinos_mudaram: b.toques ? b.toques.filter((t) => t.mudou_destino === true).length : 0, destinos_nao_mudaram: b.toques ? b.toques.filter((t) => t.mudou_destino === false).length : 0, mediana_ms_para_mudar_destino: b.latencias && b.latencias.ms_para_mudar_destino.length ? b.latencias.ms_para_mudar_destino.slice().sort((a, c) => a - c)[Math.floor(b.latencias.ms_para_mudar_destino.length / 2)] : null };
+  return { largura: b.largura, escritas_periodicas_em_controlos: escritas, previsao_do_registo: PREVISAO.escritas_esperadas_na_janela, toques_registados: b.toques ? b.toques.filter((t) => typeof t.destino_antes === 'string').length : 0, toques_sem_chegada_a_pagina: b.latencias ? b.latencias.toques_sem_chegada_a_pagina : 0, alvos_sem_toque: b.latencias ? b.latencias.alvos_sem_toque : 0, destinos_mudaram: b.toques ? b.toques.filter((t) => t.mudou_destino === true).length : 0, destinos_nao_mudaram: b.toques ? b.toques.filter((t) => t.mudou_destino === false).length : 0, mediana_ms_para_mudar_destino: b.latencias && b.latencias.ms_para_mudar_destino.length ? b.latencias.ms_para_mudar_destino.slice().sort((a, c) => a - c)[Math.floor(b.latencias.ms_para_mudar_destino.length / 2)] : null, por_classe_de_destino: b.latencias ? b.latencias.por_classe_de_destino : null, metodos_fora_do_GET: b.latencias ? b.latencias.metodos_fora_do_GET : null, trafego_quieto: b.trafego_da_janela_quieta ? b.trafego_da_janela_quieta.respostas : null };
 });
 const totalEscritas = resumoLarguras.reduce((a, r) => a + (typeof r.escritas_periodicas_em_controlos === 'number' ? r.escritas_periodicas_em_controlos : 0), 0);
 const largurasComEscritas = resumoLarguras.filter((r) => typeof r.escritas_periodicas_em_controlos === 'number' && r.escritas_periodicas_em_controlos > 0).length;
@@ -527,7 +666,7 @@ console.log('ar_md5=' + out.ar.md5 + ' ar_bytes=' + out.ar.bytes + ' registo_de_
 console.log('emissor_p192_bytes=' + out.emissor_p192.bytes + ' emissor_p192_md5=' + out.emissor_p192.md5);
 console.log('previsao_estatica: ' + JSON.stringify(PREVISAO));
 console.log('fixtures: ' + JSON.stringify(fx));
-console.log('TABELAS_DECLARADAS [TOQUE] · cada fila e uma medida sua do mesmo toque, declaracao lida pela regua de cifras em duo do p168');
+console.log('TABELAS_DECLARADAS [TOQUE DESTINO] · cada fila e uma medida sua do mesmo toque ou da mesma banda, declaracao lida pela regua de cifras em duo do p168');
 for (const k of Object.keys(out.bandas)) {
   const c = out.bandas[k].censo_inativo;
   if (c) console.log('CENSO largura=' + out.bandas[k].largura + ' janela_ms=' + c.janela_ms + ' mutacoes_total=' + c.mutacoes_total + ' escritas_em_controlos=' + c.escritas_periodicas_em_controlos + ' mudancas_de_destino=' + c.mudancas_de_destino_na_janela_quieta + ' previsao_do_registo=' + c.previsao_lida_do_registo);
@@ -535,8 +674,14 @@ for (const k of Object.keys(out.bandas)) {
 for (const k of Object.keys(out.bandas)) for (const t of (out.bandas[k].toques || [])) {
   if (typeof t.motivo === 'string') { console.log('TOQUE largura=' + out.bandas[k].largura + ' alvo=' + t.alvo + ' motivo=' + t.motivo); continue; }
   if (t.toque_nao_chegou_a_pagina === true) { console.log('TOQUE largura=' + out.bandas[k].largura + ' alvo=' + t.alvo + ' motivo=toque_nao_chegou_a_pagina registos=' + t.registos_lidos); continue; }
-  console.log('TOQUE largura=' + out.bandas[k].largura + ' alvo=' + t.alvo + ' primeira_mutacao=' + t.primeira_mutacao + ' primeira_mutacao_de_controlo=' + t.primeira_mutacao_de_controlo + ' primeira_frame=' + t.primeira_frame + ' ms_para_mudar_destino=' + t.ms_para_mudar_destino + ' mudou_destino=' + t.mudou_destino + ' caixa=' + (t.caixa ? t.caixa.largura + ' por ' + t.caixa.altura : 'null') + ' cobridor=' + (t.cobridor ? t.cobridor.rotulo : 'nenhum') + ' camadas=' + (t.cobridor && t.cobridor.pilha_de_camadas ? t.cobridor.pilha_de_camadas.map((c) => c.rotulo + '@' + c.z_index).join(' > ') : 'uma_so') + ' gaveta_antes=' + (t.gaveta_aberta_antes_do_toque ? 'sim' : 'nao') + ' gaveta_fechada_antes_do_toque=' + (t.fechar_gaveta_antes_do_toque ? t.fechar_gaveta_antes_do_toque.fechou : 'nao_houve_gaveta'));
+  console.log('TOQUE largura=' + out.bandas[k].largura + ' alvo=' + (t.nome_do_alvo || t.alvo) + ' elemento=' + t.alvo + ' primeira_mutacao=' + t.primeira_mutacao + ' primeira_mutacao_de_controlo=' + t.primeira_mutacao_de_controlo + ' primeira_frame=' + t.primeira_frame + ' ms_para_mudar_destino=' + t.ms_para_mudar_destino + ' mudou_destino=' + t.mudou_destino + ' caixa=' + (t.caixa ? t.caixa.largura + ' por ' + t.caixa.altura : 'null') + ' cobridor=' + (t.cobridor ? t.cobridor.rotulo : 'nenhum') + ' camadas=' + (t.cobridor && t.cobridor.pilha_de_camadas ? t.cobridor.pilha_de_camadas.map((c) => c.rotulo + '@' + c.z_index).join(' > ') : 'uma_so') + ' gaveta_antes=' + (t.gaveta_aberta_antes_do_toque ? 'sim' : 'nao') + ' gaveta_fechada_antes_do_toque=' + (t.fechar_gaveta_antes_do_toque ? t.fechar_gaveta_antes_do_toque.fechou : 'nao_houve_gaveta') + ' classe_destino=' + (t.trafego ? t.trafego.classe : 'sem_ficha') + ' destino_respostas=' + (t.trafego && t.trafego.medida ? t.trafego.medida.respostas : 'null') + ' destino_com_corpo=' + (t.trafego && t.trafego.medida ? t.trafego.medida.com_corpo : 'null') + ' destino_bytes=' + (t.trafego && t.trafego.medida ? t.trafego.medida.bytes_totais : 'null') + ' anteriores_ao_toque=' + (t.trafego ? t.trafego.anteriores_ao_toque_rejeitadas : 'null') + ' periodicas_subtradas=' + (t.trafego ? t.trafego.periodicas_subtradas : 'null'));
 }
+for (const k of Object.keys(out.bandas)) {
+  const l = out.bandas[k].latencias;
+  if (!l) continue;
+  console.log('DESTINO largura=' + out.bandas[k].largura + ' fichas=' + l.fichas_de_destino + ' por_classe=' + JSON.stringify(l.por_classe_de_destino) + ' metodos=' + JSON.stringify(l.metodos_de_resposta_dos_toques) + ' janela_quieta=' + (out.bandas[k].trafego_da_janela_quieta ? out.bandas[k].trafego_da_janela_quieta.respostas : 'null'));
+}
+console.log('cifras_de_destino ' + JSON.stringify(Object.assign({}, out.cifras_de_destino, { fichas_por_toque: out.cifras_de_destino.fichas_por_toque.length })));
 console.log('resumo_por_largura ' + JSON.stringify(resumoLarguras));
 console.log('veredito_de_aceitacao_rm_2_1 ' + JSON.stringify(out.veredito_de_aceitacao_rm_2_1));
 console.log('portoes=' + portoes + ' falhas=' + falhas.length);
