@@ -118,8 +118,11 @@ decisão de qual coluna é a intenção é do dono (documento = edição local; 
 ## 16. Resultado da limpeza das contas de teste
 
 **Parcial.** A batelada AH-1 foi limpa (4 contas + 9 linhas de resíduo, respeitando chaves estrangeiras);
-as bateladas posteriores permanecem criadas porque o trabalho não acabou. A listagem final e a exclusão
-(FASE 15) **não foram executadas** — exigem censo fresco em leitura e OK literal.
+as bateladas posteriores permanecem criadas porque o trabalho não acabou. A **listagem final passou a existir**
+como censo em leitura (§SM.89): 28 contas no total, 19 removíveis por domínio de teste, 9 reais intocáveis, e como
+o Admin API não transporta papel, a classificação vem de `profiles`. A **exclusão** (FASE 15) não foi executada:
+exige OK literal e, antes dele, o censo de chaves estrangeiras por conta — «removível por domínio» é uma classe
+medida, não um plano de exclusão. O portão `INVENTARIO_PRONTO_PARA_O_DESMONTADOR` diz que o censo existe, não autoriza apagá-lo.
 
 ## 17. Resultado da remoção da identidade BFR Conecta
 
@@ -153,7 +156,12 @@ e conferência pós-aplicação; limpezas FK-safe.
 
 ## 21. Pendências e dependências externas
 
-- **Push** dos commits locais — autorizado nesta ronda (o «meu ok» cobre o objeto nomeado no fôlego anterior: este relatório e o envio dos pendentes); executado no fecho desta ronda e verificado com `status -sb` e `p174`.
+- **Push** dos comites locais — a frase que aqui estava descrevia a ronda em que a palavra foi dada (§SM.82, 26/11),
+  quando `head` e `origin_main` resolviam no mesmo objeto, e **não** é estado corrente: hoje a primeira linha de
+  `status -sb` mostra `ahead` e os três portões vermelhos de `p174` saem **por construção**
+  (`o_hash_final_do_reflog_e_o_head`, `head_e_origin_main_sao_o_mesmo_objeto`, `a_primeira_linha_do_status_nao_mostra_ahead`).
+  A cifra dos comites por enviar vive na captura dessa corrida e não neste documento, porque cada comite local
+  muda o número — citá-la aqui seria uma régua que se move com aquilo que mede.
 - **Publicação** de candidata (v126 a11y e sucessoras) — OK literal.
 - **DDL/DML/grants** e **mint/rotação** — OK literal por peça.
 - **#277**: decisão do dono sobre os 9 de 15 papéis divergentes.
