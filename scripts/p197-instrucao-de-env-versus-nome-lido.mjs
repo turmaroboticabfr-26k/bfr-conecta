@@ -225,6 +225,9 @@ for (const c of classificadas) porClasse[c.classe] = (porClasse[c.classe] || 0) 
 const membros = (classe) => classificadas.filter((c) => c.classe === classe);
 const somaDasClasses = CLASSES.reduce((s, k) => s + (porClasse[k] || 0), 0);
 
+say('peca=' + relDe(fileURLToPath(import.meta.url)) + ' · quem emite esta saida, lido do proprio modulo e nao dactilografado');
+say('alvo=' + relDe(registro) + ' · o registo que esta corrida escreve; sem esta linha a corrida fica fora do dominio da regua de cifras em duo do p168, que so mede artefactos com regiao');
+say('TABELAS_DECLARADAS [MEMBRO] · cada fila e uma medida sua, declaracao lida pela regua de cifras em duo do p168');
 say('RAIZES ' + JSON.stringify(raizes.map(relDe)));
 say('FICHEIROS_VARRIDOS=' + ficheiros.length + ' com_env_lido=' + ficheirosComEnvLido);
 const regiaoEu = retiraRegiaoDeFixura(EU);
@@ -235,7 +238,7 @@ for (const k of CLASSES) {
   const lista = membros(k);
   const impressos = JULGADAS.includes(k) ? lista.length : 0;
   say('EIXO_' + k + ' ' + JSON.stringify({ total: lista.length, membros_impressos: impressos, nada_houve_para_explicar: lista.length === 0 }));
-  for (const m of lista.slice(0, impressos)) say('  ' + m.classe + ' fonte=' + m.fonte + ' linha=' + m.linha + ' nome=' + m.nome + ' site=' + m.site + ' alvos=' + JSON.stringify(m.alvos));
+  for (const m of lista.slice(0, impressos)) say('MEMBRO ' + m.classe + ' fonte=' + m.fonte + ' linha=' + m.linha + ' nome=' + m.nome + ' site=' + m.site + ' alvos=' + JSON.stringify(m.alvos));
 }
 say('EIXO_B_LEIDO_SEM_DECLARACAO ' + JSON.stringify({ fontes: eixoB.length, nomes: eixoB.reduce((s, b) => s + b.nomes.length, 0) }) + ' · classe de informacao, nao julgada');
 for (const b of eixoB) say('  B fonte=' + b.fonte + ' nomes=' + JSON.stringify(b.nomes));

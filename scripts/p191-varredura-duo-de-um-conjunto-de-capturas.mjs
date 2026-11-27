@@ -10,7 +10,7 @@ import { execFileSync } from 'node:child_process';
 import { readFileSync, writeFileSync, readdirSync, statSync, mkdtempSync, existsSync } from 'node:fs';
 import { createHash } from 'node:crypto';
 import { tmpdir } from 'node:os';
-import { join } from 'node:path';
+import { join, relative, sep } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const REPOReal = execFileSync('git', ['rev-parse', '--show-toplevel'], { encoding: 'utf8' }).trim();
@@ -96,6 +96,9 @@ say('regua_lida_de=scripts/p168-prova-de-edicao-sem-corte.mjs');
 say('produtor_bytes=' + Buffer.byteLength(produtorSrc, 'utf8') + ' produtor_md5=' + createHash('md5').update(produtorSrc).digest('hex'));
 say('emissor_p191_bytes=' + Buffer.byteLength(EU, 'utf8') + ' emissor_p191_md5=' + createHash('md5').update(EU).digest('hex'));
 say('conjunto_diretorio=' + DIRarg + ' prefixo=' + PREFIXO + ' capturas=' + nomes.length);
+say('peca=' + relative(REPOReal, fileURLToPath(import.meta.url)).split(sep).join('/') + ' · quem emite esta saida, lido do proprio modulo e nao dactilografado');
+say('alvo=' + DIRarg + ' · o conjunto varrido; sem esta linha esta propria corrida ficava FORA_DO_DOMINIO da regua que ela aplica, e o tally de um conjunto nao mediria a si mesmo');
+say('TABELAS_DECLARADAS [DUO_ACHADO] · cada fila e uma medida sua, declaracao lida pela regua de cifras em duo do p168');
 
 const tally = { [ACHADO]: [], [NENHUM]: [], [FORA]: [] };
 for (const n of nomes) {

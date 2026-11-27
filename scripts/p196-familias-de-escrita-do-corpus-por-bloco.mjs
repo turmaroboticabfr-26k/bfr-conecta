@@ -10,7 +10,7 @@
 // Uso: node scripts/p196-familias-de-escrita-do-corpus-por-bloco.mjs <caminho-do-registro> [--faixa 0xLO-0xHI]...
 // Env: P196_SUF (rotulo da corrida, obrigatorio)
 import { readFileSync, writeFileSync, existsSync, statSync, readdirSync } from 'node:fs';
-import { dirname } from 'node:path';
+import { dirname, relative, sep } from 'node:path';
 import { createHash } from 'node:crypto';
 import { execFileSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
@@ -22,6 +22,7 @@ const EU = readFileSync(fileURLToPath(import.meta.url), 'utf8');
 const registro = process.argv[2];
 if (!registro) throw new Error('ABORTA: uso - node scripts/p196-familias-de-escrita-do-corpus-por-bloco.mjs <caminho-do-registro>; um caminho lembrado nao e medido');
 if (existsSync(registro)) throw new Error('ABORTA: o registro ja existe, use sufixo novo -- ' + registro + ' tem ' + statSync(registro).size + ' bytes');
+const ALVO = String(registro).replace(/\\/g, '/');
 
 const produtorCaminho = REPOReal + '/scripts/p169-varredura-letra-digito-do-bloco.mjs';
 const produtor = readFileSync(produtorCaminho, 'utf8');
@@ -170,6 +171,9 @@ for (const raiz of RAIZES) {
   }
   porRaiz[raiz.nome] = { existe: true, caminho: raiz.caminho, ficheiros: arquivos.length, ocorrencias: occ };
 }
+say('peca=' + relative(REPOReal, fileURLToPath(import.meta.url)).split(sep).join('/') + ' · quem emite esta saida, lido do proprio modulo e nao dactilografado');
+say('alvo=' + ALVO + ' · o registo que esta corrida escreve; sem esta linha a corrida fica fora do dominio da regua de cifras em duo do p168, que so mede artefactos com regiao');
+say('TABELAS_DECLARADAS [BLOCO INTERROGADO MEMBRO] · cada fila e uma medida sua, declaracao lida pela regua de cifras em duo do p168');
 say('CORPUS ' + JSON.stringify(porRaiz));
 
 const blocos = [...acumulado.values()].sort((a, b) => b.ocorrencias - a.ocorrencias);
@@ -213,7 +217,7 @@ const difRuins = DIF_FIXOS.filter((c) => c.d.novos.length !== c.espera[0] || c.d
 say('PROVA_FIXTURE_DIFF casos=' + DIF_FIXOS.length + ' faltas=' + difRuins.length + ' obtido=' + JSON.stringify(DIF_FIXOS.map((c) => c.nome.split(' ')[0] + '=' + c.d.novos.length + '/' + c.d.perdidos.length + '/' + c.d.nada_houve_para_comparar)));
 if (difRuins.length) throw new Error('ABORTA: a comparacao de censos nao tem as quatro classes, faltaram ' + JSON.stringify(difRuins.map((c) => c.nome)));
 
-const caminhoDoRegistro = String(registro).replace(/\\/g, '/');
+const caminhoDoRegistro = ALVO;
 const DIR_REGISTRO = dirname(caminhoDoRegistro);
 const RE_FAMILIA = /^p196-familias-de-escrita-do-corpus-.*\.json$/;
 let nomesDoDir;
