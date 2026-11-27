@@ -1,0 +1,165 @@
+{
+ "peca": "p199-forma-do-indice-de-memoria.mjs",
+ "em": "2026-11-27T23:44:21.416Z",
+ "emissor_bytes": 19576,
+ "emissor_md5": "0d49c9172aca99a05024ec59bd71d0c3",
+ "sufixo": "sm01bc",
+ "o_que_prova": "que cada linha dos dois indices tem saldos equilibrados de parentesis, colchetes e chavetas FORA dos spans de backtick, backticks a pares, nenhum espaco duplo fora dos spans, e que o numero de linhas julgadas e o numero de linhas do ficheiro. Cada alvo vai com bytes e md5 de oito, para que a frase que cita um numero possa dizer que ficheiro foi medido. Imprime alem disso os totais brutos dos tres pares em todo o ficheiro e, por linha, os saldos e duplicos que caem DENTRO dos spans (soltos_dentro_dos_spans, total_espacos_duplos_dentro): esses numeros sao contagem para confrontar com medicao a mao, nao veredicto.",
+ "o_que_NAO_prova": "nada do conteudo das frases, nem a geometria dos apontadores (essa e do p181), nem as familias de escrita por codepoint (essa e do p173), nem que um span dentro doutro span seja bem formado: a extracao de spans e gulosa e de um nivel. Nao prova que os totais brutos estao equilibrados, nem que os saltos dentro dos spans estao equilibrados - um par dentro dum span fica de fora do veredicto de propositito.",
+ "agregados": [
+  {
+   "alvo": "C:/Users/pcmac/.qoder/projects/C--Users-pcmac-Documents-Qoder-2026-11-15-2e9c4296/memory/MEMORY.md",
+   "bytes": 207600,
+   "bytes_md5_8": "a7f94398",
+   "linhas": 71,
+   "linhas_julgadas": 71,
+   "linhas_de_verbete": 61,
+   "bruto": {
+    "par": {
+     "abertos": 1129,
+     "fechados": 1127
+    },
+    "colchete": {
+     "abertos": 259,
+     "fechados": 258
+    },
+    "chaveta": {
+     "abertos": 23,
+     "fechados": 21
+    }
+   },
+   "parenteses_fora_dos_spans": [],
+   "colchetes_fora_dos_spans": [],
+   "chavetas_fora_dos_spans": [],
+   "backticks_impares": [],
+   "espacos_duplos_fora_dos_spans": [],
+   "soltos_dentro_dos_spans": [
+    {
+     "linha": 12,
+     "par": 1,
+     "colchete": 0,
+     "chaveta": 0
+    },
+    {
+     "linha": 23,
+     "par": 0,
+     "colchete": 0,
+     "chaveta": 1
+    },
+    {
+     "linha": 48,
+     "par": 0,
+     "colchete": 0,
+     "chaveta": 1
+    },
+    {
+     "linha": 62,
+     "par": 0,
+     "colchete": 1,
+     "chaveta": 0
+    },
+    {
+     "linha": 63,
+     "par": 1,
+     "colchete": 0,
+     "chaveta": 0
+    }
+   ],
+   "total_espacos_duplos_fora": 0,
+   "total_espacos_duplos_dentro": 2
+  },
+  {
+   "alvo": "C:/Users/pcmac/.qoder/memory/MEMORY.md",
+   "bytes": 31704,
+   "bytes_md5_8": "b5b249ae",
+   "linhas": 22,
+   "linhas_julgadas": 22,
+   "linhas_de_verbete": 16,
+   "bruto": {
+    "par": {
+     "abertos": 144,
+     "fechados": 144
+    },
+    "colchete": {
+     "abertos": 32,
+     "fechados": 32
+    },
+    "chaveta": {
+     "abertos": 6,
+     "fechados": 5
+    }
+   },
+   "parenteses_fora_dos_spans": [],
+   "colchetes_fora_dos_spans": [],
+   "chavetas_fora_dos_spans": [],
+   "backticks_impares": [],
+   "espacos_duplos_fora_dos_spans": [],
+   "soltos_dentro_dos_spans": [
+    {
+     "linha": 17,
+     "par": 0,
+     "colchete": 0,
+     "chaveta": 1
+    }
+   ],
+   "total_espacos_duplos_fora": 0,
+   "total_espacos_duplos_dentro": 0
+  }
+ ],
+ "portoes": [
+  {
+   "nome": "C1_parenteses_equilibrados_fora_dos_spans_em_cada_linha",
+   "ok": true,
+   "obtido": [
+    [],
+    []
+   ]
+  },
+  {
+   "nome": "C2_colchetes_equilibrados_fora_dos_spans_em_cada_linha",
+   "ok": true,
+   "obtido": [
+    [],
+    []
+   ]
+  },
+  {
+   "nome": "C3_chavetas_equilibradas_fora_dos_spans_em_cada_linha",
+   "ok": true,
+   "obtido": [
+    [],
+    []
+   ]
+  },
+  {
+   "nome": "C4_backticks_a_pares_em_cada_linha",
+   "ok": true,
+   "obtido": [
+    [],
+    []
+   ]
+  },
+  {
+   "nome": "C5_nenhum_espaco_duplo_fora_dos_spans",
+   "ok": true,
+   "obtido": [
+    {
+     "fora": 0,
+     "dentro": 2
+    },
+    {
+     "fora": 0,
+     "dentro": 0
+    }
+   ]
+  },
+  {
+   "nome": "C6_todas_as_linhas_foram_julgadas_e_o_corpus_nao_e_vazio",
+   "ok": true,
+   "obtido": [
+    "71/71",
+    "22/22"
+   ]
+  }
+ ]
+}
