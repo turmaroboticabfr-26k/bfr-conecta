@@ -1,0 +1,1220 @@
+{
+  "peca": "scripts/p165-censo-em-leitura-das-pen-de-catalogo.mjs",
+  "em": "2026-11-27T15:44:28.945Z",
+  "modo": "somente leitura, zero escrita no banco",
+  "emissor_bytes": 42485,
+  "emissor_md5": "fed49df46582d4fe5a9f1ec1cca9e26b",
+  "sufixo": "-sm94d",
+  "produtores_lidos": [
+    {
+      "chave": "rm52",
+      "caminho": "scripts/p73-rm52-estado-calendario.mjs",
+      "bytes": 40678,
+      "md5": "6ac54ce448dba1ee7c426c8b58f7a2b3"
+    },
+    {
+      "chave": "a1",
+      "caminho": "scripts/p145-a1-confirmar-calendario-aplica.mjs",
+      "bytes": 23524,
+      "md5": "0d93f79ddb0ef0f633f6fbe238c96cab"
+    },
+    {
+      "chave": "pen41",
+      "caminho": "scripts/p73-pen41-preflight.mjs",
+      "bytes": 29394,
+      "md5": "ac15726f82e7d03f1fb3719b64276110"
+    },
+    {
+      "chave": "bu2",
+      "caminho": "scripts/bu2-censo-catalogo-20-11.mjs",
+      "bytes": 15924,
+      "md5": "a3f90326262a76f4164a5efca2785ebe"
+    },
+    {
+      "chave": "p138",
+      "caminho": "scripts/p138-censo-de-perfis-por-papel.mjs",
+      "bytes": 7547,
+      "md5": "cdd5e51909048fef5264a0accf4084d0"
+    },
+    {
+      "chave": "elo",
+      "caminho": "scripts/roadmap-rm11-elo.mjs",
+      "bytes": 2531,
+      "md5": "9566f70c83f8c8205c54d30c03117639"
+    },
+    {
+      "chave": "ag6s",
+      "caminho": "scripts/ag6-recon-schema.mjs",
+      "bytes": 1720,
+      "md5": "b5178b30085976ee446e453930ff791e"
+    },
+    {
+      "chave": "ag6f",
+      "caminho": "scripts/ag6-recon-fixture.mjs",
+      "bytes": 1784,
+      "md5": "b378c66f1aaec8ea60651b176f5fcf0f"
+    },
+    {
+      "chave": "ae5h",
+      "caminho": "scripts/ae5h-rm68-state.mjs",
+      "bytes": 4742,
+      "md5": "7d07fc334b61354b8cd80a8dff9cef73"
+    },
+    {
+      "chave": "ah2i",
+      "caminho": "scripts/ah2-inventario.mjs",
+      "bytes": 1955,
+      "md5": "e7dac4d2804be771d3c6f5267859f207"
+    },
+    {
+      "chave": "ae5i",
+      "caminho": "scripts/ae5i-rm68-constraints.mjs",
+      "bytes": 1974,
+      "md5": "bf94add010c6ab741bb266fe88b1ae01"
+    },
+    {
+      "chave": "c2r",
+      "caminho": "scripts/c2r-apply.mjs",
+      "bytes": 5309,
+      "md5": "03e2bc7a234e016208b36e3db0f7efb8"
+    },
+    {
+      "chave": "rm68l",
+      "caminho": "scripts/rm68-ruler3-limpeza.mjs",
+      "bytes": 3710,
+      "md5": "c27e3b3bc3b8ed7d8b69719b28edb602"
+    },
+    {
+      "chave": "rm12",
+      "caminho": "scripts/roadmap-rm12-recon.mjs",
+      "bytes": 1960,
+      "md5": "9985c593a6938cfdbf4f9f7c6b599b1d"
+    }
+  ],
+  "ancoras_resolvidas": [
+    {
+      "de": "rm52",
+      "peca": "scripts/p73-rm52-estado-calendario.mjs",
+      "linha": 31,
+      "agulha": "const TABELAS = ["
+    },
+    {
+      "de": "rm52",
+      "peca": "scripts/p73-rm52-estado-calendario.mjs",
+      "linha": 120,
+      "agulha": "const linhas = await sql("
+    },
+    {
+      "de": "a1",
+      "peca": "scripts/p145-a1-confirmar-calendario-aplica.mjs",
+      "linha": 300,
+      "agulha": "literalQueContem(as sem_at from public.bfr_school_calendar_days)"
+    },
+    {
+      "de": "rm52",
+      "peca": "scripts/p73-rm52-estado-calendario.mjs",
+      "linha": 32,
+      "agulha": "const RPCS_FRONT = ["
+    },
+    {
+      "de": "rm52",
+      "peca": "scripts/p73-rm52-estado-calendario.mjs",
+      "linha": 33,
+      "agulha": "const RPC_CONTROLO ="
+    },
+    {
+      "de": "rm52",
+      "peca": "scripts/p73-rm52-estado-calendario.mjs",
+      "linha": 126,
+      "agulha": "const NOMES_RPC_PROVADOS = ["
+    },
+    {
+      "de": "rm52",
+      "peca": "scripts/p73-rm52-estado-calendario.mjs",
+      "linha": 127,
+      "agulha": "const rpcExiste = await sql("
+    },
+    {
+      "de": "rm52",
+      "peca": "scripts/p73-rm52-estado-calendario.mjs",
+      "linha": 131,
+      "agulha": "literalQueContem(as estado_versao)"
+    },
+    {
+      "de": "p138",
+      "peca": "scripts/p138-censo-de-perfis-por-papel.mjs",
+      "linha": 25,
+      "agulha": "literalQueContem(from public.profiles group by 1)"
+    },
+    {
+      "de": "p138",
+      "peca": "scripts/p138-censo-de-perfis-por-papel.mjs",
+      "linha": 26,
+      "agulha": "literalQueContem(select count(*)::int as linhas from public.profiles)"
+    },
+    {
+      "de": "ag6s",
+      "peca": "scripts/ag6-recon-schema.mjs",
+      "linha": 20,
+      "agulha": "literalQueContem(from public.staff_schools group by 1)"
+    },
+    {
+      "de": "pen41",
+      "peca": "scripts/p73-pen41-preflight.mjs",
+      "linha": 162,
+      "agulha": "literalQueContem(as tem_vinculo)"
+    },
+    {
+      "de": "ag6f",
+      "peca": "scripts/ag6-recon-fixture.mjs",
+      "linha": 19,
+      "agulha": "literalQueContem(from public.bfr_teacher_directory)"
+    },
+    {
+      "de": "rm12",
+      "peca": "scripts/roadmap-rm12-recon.mjs",
+      "linha": 7,
+      "agulha": "literalQueContem(pg_get_functiondef(p.oid) def from pg_proc p join pg_namespace n on n.oid=p.pronamespace where n.nspname=)"
+    },
+    {
+      "de": "bu2",
+      "peca": "scripts/bu2-censo-catalogo-20-11.mjs",
+      "linha": 135,
+      "agulha": "const nucleares = ["
+    },
+    {
+      "de": "bu2",
+      "peca": "scripts/bu2-censo-catalogo-20-11.mjs",
+      "linha": 39,
+      "agulha": "literalQueContem(relforcerowsecurity)"
+    },
+    {
+      "de": "bu2",
+      "peca": "scripts/bu2-censo-catalogo-20-11.mjs",
+      "linha": 144,
+      "agulha": "rhsDe(const sel = existentes.map)"
+    },
+    {
+      "de": "bu2",
+      "peca": "scripts/bu2-censo-catalogo-20-11.mjs",
+      "linha": 145,
+      "agulha": "templateCompilado(res.volumes_exatos = sel)"
+    },
+    {
+      "de": "ae5i",
+      "peca": "scripts/ae5i-rm68-constraints.mjs",
+      "linha": 30,
+      "agulha": "literalQueContem(from pg_trigger where tgrelid in)"
+    },
+    {
+      "de": "elo",
+      "peca": "scripts/roadmap-rm11-elo.mjs",
+      "linha": 40,
+      "agulha": "literalQueContem(p.prosrc ilike '%insert%attendance%')"
+    },
+    {
+      "de": "elo",
+      "peca": "scripts/roadmap-rm11-elo.mjs",
+      "linha": 26,
+      "agulha": "literalQueContem(as cita_att)"
+    }
+  ],
+  "fixture_do_extractor": {
+    "texto_positivo": "// o que a peca' faz aqui\nconst q = await sql(\"select 1 from t where a='x'\");",
+    "texto_negativo": "// select 1 from t onde o autor escreveu 'x'\nconst nada = 1;",
+    "positivo": {
+      "sql": [
+        {
+          "texto": "select 1 from t where a='x'",
+          "linha": 2
+        }
+      ],
+      "outros": 0
+    },
+    "negativo": {
+      "sql": [],
+      "outros": 0
+    }
+  },
+  "perguntas": [
+    "pen08_calendario_conteudo_e_rpc",
+    "pen12_professores_vinculo_e_conta_real",
+    "pen13_censo_pela_peca_e_transicao_pending",
+    "pen17_caminho_de_aviso_ao_responsavel"
+  ],
+  "pen08": {
+    "tabelas_do_produtor": [
+      "bfr_school_shift_settings",
+      "bfr_school_calendar_days",
+      "bfr_school_calendar_month_targets"
+    ],
+    "linhas_por_tabela": [
+      {
+        "tabela": "bfr_school_shift_settings",
+        "linhas": 1,
+        "anos": "2026"
+      },
+      {
+        "tabela": "bfr_school_calendar_days",
+        "linhas": 365,
+        "anos": "2026"
+      },
+      {
+        "tabela": "bfr_school_calendar_month_targets",
+        "linhas": 12,
+        "anos": "2026"
+      }
+    ],
+    "rpc_nomes_provados_pelo_produtor": [
+      "bfr_confirm_school_calendar",
+      "register_gate_checkin",
+      "register_gate_checkin_v2",
+      "correct_gate_attendance",
+      "bfr_rls_session_role",
+      "bfr_nome_de_controlo_negativo_inexistente"
+    ],
+    "rpc_no_catalogo": [
+      {
+        "nome": "bfr_confirm_school_calendar",
+        "no_catalogo": 1,
+        "schemas": "public"
+      },
+      {
+        "nome": "bfr_nome_de_controlo_negativo_inexistente",
+        "no_catalogo": 0,
+        "schemas": ""
+      },
+      {
+        "nome": "bfr_rls_session_role",
+        "no_catalogo": 1,
+        "schemas": "public"
+      },
+      {
+        "nome": "correct_gate_attendance",
+        "no_catalogo": 0,
+        "schemas": ""
+      },
+      {
+        "nome": "register_gate_checkin",
+        "no_catalogo": 1,
+        "schemas": "public"
+      },
+      {
+        "nome": "register_gate_checkin_v2",
+        "no_catalogo": 1,
+        "schemas": "public"
+      }
+    ],
+    "rpc_ausentes_do_catalogo": [
+      "bfr_nome_de_controlo_negativo_inexistente",
+      "correct_gate_attendance"
+    ],
+    "chamadas_no_ar_dos_nomes_provados": {
+      "ficha_de_identidade": "evidence/p164-medicao-no-ar-das-pen-sem-ok-sm94c.json",
+      "caminho_contado": "bfr-candidata-v144c-uniesco/index.html",
+      "por_nome": {
+        "bfr_confirm_school_calendar": 1,
+        "register_gate_checkin": 3,
+        "register_gate_checkin_v2": 1,
+        "correct_gate_attendance": 1,
+        "bfr_rls_session_role": 0,
+        "bfr_nome_de_controlo_negativo_inexistente": 0
+      },
+      "nomes_de_rpc_chamados_no_ar": 25,
+      "ocorrencias_de_chamada": 32
+    },
+    "rpc_chamados_pelo_ar_sem_corpo_no_catalogo": "correct_gate_attendance",
+    "grade_de_tempos_por_estado_de_versao": [
+      {
+        "estado_versao": "published",
+        "entradas": 594,
+        "inicio_min": "07:00:00",
+        "fim_max": "11:30:00",
+        "dias": "quarta,quinta,segunda,sexta,terca"
+      }
+    ],
+    "dias_de_calendario": [
+      {
+        "confirmadas": 365,
+        "draft": 0,
+        "total": 365,
+        "confirmadores": 1,
+        "sem_at": 0
+      }
+    ]
+  },
+  "pen12": {
+    "papeis_do_produtor_p138": [
+      {
+        "papel": "secretary",
+        "linhas": 4
+      },
+      {
+        "papel": "developer",
+        "linhas": 3
+      },
+      {
+        "papel": "aee",
+        "linhas": 2
+      },
+      {
+        "papel": "coordinator",
+        "linhas": 2
+      },
+      {
+        "papel": "director",
+        "linhas": 2
+      },
+      {
+        "papel": "gatekeeper",
+        "linhas": 2
+      },
+      {
+        "papel": "monitor",
+        "linhas": 2
+      },
+      {
+        "papel": "pedagogical",
+        "linhas": 2
+      },
+      {
+        "papel": "pending",
+        "linhas": 2
+      },
+      {
+        "papel": "student",
+        "linhas": 2
+      },
+      {
+        "papel": "education_supervisor",
+        "linhas": 1
+      },
+      {
+        "papel": "parent",
+        "linhas": 1
+      },
+      {
+        "papel": "psychology",
+        "linhas": 1
+      },
+      {
+        "papel": "social_work",
+        "linhas": 1
+      },
+      {
+        "papel": "sports_operator",
+        "linhas": 1
+      }
+    ],
+    "total_do_produtor_p138": 28,
+    "links_staff_schools_do_produtor_ag6s": [
+      {
+        "r": "secretary",
+        "n": 2
+      },
+      {
+        "r": "director",
+        "n": 2
+      },
+      {
+        "r": "coordinator",
+        "n": 1
+      },
+      {
+        "r": "education_supervisor",
+        "n": 1
+      }
+    ],
+    "papeis_que_o_produtor_pen41_filtra": "'director', 'secretary'",
+    "populacao_pelo_texto_do_produtor": [
+      {
+        "papel": "director",
+        "perfis": 2,
+        "com_vinculo": 2,
+        "sem_vinculo": 0,
+        "ligado_a_escola_com_dados": 2
+      },
+      {
+        "papel": "secretary",
+        "perfis": 4,
+        "com_vinculo": 2,
+        "sem_vinculo": 2,
+        "ligado_a_escola_com_dados": 2
+      }
+    ],
+    "populacao_pelo_mesmo_texto_sem_o_filtro": [
+      {
+        "papel": "aee",
+        "perfis": 2,
+        "com_vinculo": 0,
+        "sem_vinculo": 2,
+        "ligado_a_escola_com_dados": 0
+      },
+      {
+        "papel": "coordinator",
+        "perfis": 2,
+        "com_vinculo": 1,
+        "sem_vinculo": 1,
+        "ligado_a_escola_com_dados": 1
+      },
+      {
+        "papel": "developer",
+        "perfis": 3,
+        "com_vinculo": 0,
+        "sem_vinculo": 3,
+        "ligado_a_escola_com_dados": 0
+      },
+      {
+        "papel": "director",
+        "perfis": 2,
+        "com_vinculo": 2,
+        "sem_vinculo": 0,
+        "ligado_a_escola_com_dados": 2
+      },
+      {
+        "papel": "education_supervisor",
+        "perfis": 1,
+        "com_vinculo": 1,
+        "sem_vinculo": 0,
+        "ligado_a_escola_com_dados": 1
+      },
+      {
+        "papel": "gatekeeper",
+        "perfis": 2,
+        "com_vinculo": 0,
+        "sem_vinculo": 2,
+        "ligado_a_escola_com_dados": 0
+      },
+      {
+        "papel": "monitor",
+        "perfis": 2,
+        "com_vinculo": 0,
+        "sem_vinculo": 2,
+        "ligado_a_escola_com_dados": 0
+      },
+      {
+        "papel": "parent",
+        "perfis": 1,
+        "com_vinculo": 0,
+        "sem_vinculo": 1,
+        "ligado_a_escola_com_dados": 0
+      },
+      {
+        "papel": "pedagogical",
+        "perfis": 2,
+        "com_vinculo": 0,
+        "sem_vinculo": 2,
+        "ligado_a_escola_com_dados": 0
+      },
+      {
+        "papel": "pending",
+        "perfis": 2,
+        "com_vinculo": 0,
+        "sem_vinculo": 2,
+        "ligado_a_escola_com_dados": 0
+      },
+      {
+        "papel": "psychology",
+        "perfis": 1,
+        "com_vinculo": 0,
+        "sem_vinculo": 1,
+        "ligado_a_escola_com_dados": 0
+      },
+      {
+        "papel": "secretary",
+        "perfis": 4,
+        "com_vinculo": 2,
+        "sem_vinculo": 2,
+        "ligado_a_escola_com_dados": 2
+      },
+      {
+        "papel": "social_work",
+        "perfis": 1,
+        "com_vinculo": 0,
+        "sem_vinculo": 1,
+        "ligado_a_escola_com_dados": 0
+      },
+      {
+        "papel": "sports_operator",
+        "perfis": 1,
+        "com_vinculo": 0,
+        "sem_vinculo": 1,
+        "ligado_a_escola_com_dados": 0
+      },
+      {
+        "papel": "student",
+        "perfis": 2,
+        "com_vinculo": 0,
+        "sem_vinculo": 2,
+        "ligado_a_escola_com_dados": 0
+      }
+    ],
+    "professor_no_directory_do_produtor_ag6f": 35,
+    "marcas_de_conta_de_teste": [
+      {
+        "peca": "scripts/ae5h-rm68-state.mjs",
+        "marcas": [
+          "%@bfr.test",
+          "ae5-%@bfr.test"
+        ]
+      },
+      {
+        "peca": "scripts/rm68-ruler3-limpeza.mjs",
+        "marcas": [
+          "s20-%@bfr.test"
+        ]
+      }
+    ],
+    "marcas_unicas": [
+      "%@bfr.test",
+      "ae5-%@bfr.test",
+      "s20-%@bfr.test"
+    ],
+    "fixture_da_predica_de_marca": {
+      "predica_casa_o_fixture": 1,
+      "negacao_casa_o_fixture": 0,
+      "predica_casa_o_invalido": 0
+    },
+    "real_por_papel": [
+      {
+        "papel": "secretary",
+        "perfis": 4,
+        "com_marca_de_teste": 0,
+        "sem_marca_de_teste": 4,
+        "email_nulo": 0,
+        "controlo_negativo": 0
+      },
+      {
+        "papel": "developer",
+        "perfis": 3,
+        "com_marca_de_teste": 0,
+        "sem_marca_de_teste": 3,
+        "email_nulo": 0,
+        "controlo_negativo": 0
+      },
+      {
+        "papel": "aee",
+        "perfis": 2,
+        "com_marca_de_teste": 0,
+        "sem_marca_de_teste": 2,
+        "email_nulo": 0,
+        "controlo_negativo": 0
+      },
+      {
+        "papel": "coordinator",
+        "perfis": 2,
+        "com_marca_de_teste": 0,
+        "sem_marca_de_teste": 2,
+        "email_nulo": 0,
+        "controlo_negativo": 0
+      },
+      {
+        "papel": "director",
+        "perfis": 2,
+        "com_marca_de_teste": 0,
+        "sem_marca_de_teste": 2,
+        "email_nulo": 0,
+        "controlo_negativo": 0
+      },
+      {
+        "papel": "gatekeeper",
+        "perfis": 2,
+        "com_marca_de_teste": 0,
+        "sem_marca_de_teste": 2,
+        "email_nulo": 0,
+        "controlo_negativo": 0
+      },
+      {
+        "papel": "monitor",
+        "perfis": 2,
+        "com_marca_de_teste": 0,
+        "sem_marca_de_teste": 2,
+        "email_nulo": 0,
+        "controlo_negativo": 0
+      },
+      {
+        "papel": "pedagogical",
+        "perfis": 2,
+        "com_marca_de_teste": 0,
+        "sem_marca_de_teste": 2,
+        "email_nulo": 0,
+        "controlo_negativo": 0
+      },
+      {
+        "papel": "pending",
+        "perfis": 2,
+        "com_marca_de_teste": 0,
+        "sem_marca_de_teste": 2,
+        "email_nulo": 0,
+        "controlo_negativo": 0
+      },
+      {
+        "papel": "student",
+        "perfis": 2,
+        "com_marca_de_teste": 0,
+        "sem_marca_de_teste": 2,
+        "email_nulo": 0,
+        "controlo_negativo": 0
+      },
+      {
+        "papel": "education_supervisor",
+        "perfis": 1,
+        "com_marca_de_teste": 0,
+        "sem_marca_de_teste": 1,
+        "email_nulo": 0,
+        "controlo_negativo": 0
+      },
+      {
+        "papel": "parent",
+        "perfis": 1,
+        "com_marca_de_teste": 0,
+        "sem_marca_de_teste": 1,
+        "email_nulo": 0,
+        "controlo_negativo": 0
+      },
+      {
+        "papel": "psychology",
+        "perfis": 1,
+        "com_marca_de_teste": 0,
+        "sem_marca_de_teste": 1,
+        "email_nulo": 0,
+        "controlo_negativo": 0
+      },
+      {
+        "papel": "social_work",
+        "perfis": 1,
+        "com_marca_de_teste": 0,
+        "sem_marca_de_teste": 1,
+        "email_nulo": 0,
+        "controlo_negativo": 0
+      },
+      {
+        "papel": "sports_operator",
+        "perfis": 1,
+        "com_marca_de_teste": 0,
+        "sem_marca_de_teste": 1,
+        "email_nulo": 0,
+        "controlo_negativo": 0
+      }
+    ],
+    "soma_de_perfis": 28,
+    "soma_com_marca": 0,
+    "soma_sem_marca": 28,
+    "soma_email_nulo": 0
+  },
+  "pen13": {
+    "p138_corrido_com_sufixo": "sm94d-pen13",
+    "p138_exit": 0,
+    "p138_portoes_na_saida": "portoes: 4/0",
+    "p138_stderr": "",
+    "p138_artefacto": "C:\\Users\\pcmac\\Documents\\Qoder\\2026-10-13\\28077d9a\\bfr-conecta\\evidence\\p138-censo-de-perfis-por-papel-sm94d-pen13.json",
+    "p138_total_profiles": 28,
+    "p138_linhas_em_pending": 2,
+    "p138_distribuicao": [
+      {
+        "papel": "secretary",
+        "linhas": 4
+      },
+      {
+        "papel": "developer",
+        "linhas": 3
+      },
+      {
+        "papel": "aee",
+        "linhas": 2
+      },
+      {
+        "papel": "coordinator",
+        "linhas": 2
+      },
+      {
+        "papel": "director",
+        "linhas": 2
+      },
+      {
+        "papel": "gatekeeper",
+        "linhas": 2
+      },
+      {
+        "papel": "monitor",
+        "linhas": 2
+      },
+      {
+        "papel": "pedagogical",
+        "linhas": 2
+      },
+      {
+        "papel": "pending",
+        "linhas": 2
+      },
+      {
+        "papel": "student",
+        "linhas": 2
+      },
+      {
+        "papel": "education_supervisor",
+        "linhas": 1
+      },
+      {
+        "papel": "parent",
+        "linhas": 1
+      },
+      {
+        "papel": "psychology",
+        "linhas": 1
+      },
+      {
+        "papel": "social_work",
+        "linhas": 1
+      },
+      {
+        "papel": "sports_operator",
+        "linhas": 1
+      }
+    ],
+    "funcao_de_transicao_no_catalogo": [
+      {
+        "corpo_chars": 644,
+        "corpo_bytes": 645,
+        "escreve_em_profiles": true,
+        "assinatura": "public.set_profile_role(target_profile_id uuid, target_role account_role, target_full_name text DEFAULT NULL::text)"
+      }
+    ]
+  },
+  "pen17": {
+    "array_nuclear_do_produtor_bu2": [
+      "students",
+      "profiles",
+      "schools",
+      "classes",
+      "guardian_students",
+      "staff_schools",
+      "gate_checkins",
+      "gate_badges",
+      "attendance",
+      "attendance_records",
+      "grades",
+      "announcements",
+      "internal_chat_messages",
+      "internal_chat_threads",
+      "occurrences",
+      "notifications",
+      "access_requests",
+      "route_incidents",
+      "routes",
+      "vehicles",
+      "learning_action_plans",
+      "support_requests",
+      "psychology_referrals",
+      "supervision_requests",
+      "supervision_responses",
+      "bfr_teacher_class_subjects",
+      "bfr_school_calendar_days",
+      "bfr_school_shift_settings",
+      "bfr_school_calendar_month_targets",
+      "school_documents",
+      "student_messages",
+      "school_activities",
+      "behavior_records",
+      "bfr_municipal_grants",
+      "bfr_municipal_audit",
+      "municipalities"
+    ],
+    "ficha_de_bu2_conferida_em_disco": {
+      "caminho": "evidence/bu2-censo-catalogo-20-11-23-11-aud.json",
+      "bytes": 56198,
+      "md5": "e54cf9439f69ad20ea1d5583cf7dd990",
+      "nucleares_nao_encontradas": [
+        "attendance_records",
+        "notifications",
+        "routes",
+        "vehicles",
+        "behavior_records",
+        "bfr_municipal_grants",
+        "municipalities"
+      ]
+    },
+    "mesas_ausentes_no_catalogo_vivo": [
+      "attendance_records",
+      "notifications",
+      "routes",
+      "vehicles",
+      "behavior_records",
+      "bfr_municipal_grants",
+      "municipalities"
+    ],
+    "alvos_de_aviso_por_mesa": [
+      {
+        "mesa": "notifications",
+        "no_catalogo_vivo": 0,
+        "no_array_nuclear_do_produtor": 1,
+        "ausente_na_ficha_de_bu2": 1,
+        "funcoes_que_escrevem_nele": 0
+      },
+      {
+        "mesa": "student_messages",
+        "no_catalogo_vivo": 1,
+        "no_array_nuclear_do_produtor": 1,
+        "ausente_na_ficha_de_bu2": 0,
+        "funcoes_que_escrevem_nele": 1
+      }
+    ],
+    "volumes_por_mesa": {
+      "students": 848,
+      "profiles": 28,
+      "schools": 6,
+      "classes": 27,
+      "guardian_students": 1,
+      "staff_schools": 6,
+      "gate_checkins": 272,
+      "gate_badges": 843,
+      "attendance": 25,
+      "grades": 112,
+      "announcements": 1,
+      "internal_chat_messages": 2,
+      "internal_chat_threads": 1,
+      "occurrences": 0,
+      "access_requests": 12,
+      "route_incidents": 0,
+      "learning_action_plans": 0,
+      "support_requests": 1,
+      "psychology_referrals": 0,
+      "supervision_requests": 0,
+      "supervision_responses": 0,
+      "bfr_teacher_class_subjects": 5,
+      "bfr_school_calendar_days": 365,
+      "bfr_school_shift_settings": 1,
+      "bfr_school_calendar_month_targets": 12,
+      "school_documents": 226,
+      "student_messages": 1,
+      "school_activities": 0,
+      "bfr_municipal_audit": 0
+    },
+    "gatilhos_em_grades_e_attendance_pelo_produtor_ae5i": [
+      {
+        "tabela": "grades",
+        "tgname": "bfr_prevent_duplicate_grade"
+      }
+    ],
+    "gatilhos_pelo_caminho_alternativo": 1,
+    "funcoes_que_escrevem_em_mesa_de_aviso": [
+      {
+        "nome": "bfr_notify_guardian_on_route_incident",
+        "definer": 1,
+        "corpo_chars": 1117,
+        "escreve_notifications": 0,
+        "escreve_student_messages": 1
+      }
+    ],
+    "nomes_do_controlo_positivo_c2r": {
+      "gatilho": "trg_route_incidents_notify_guardian",
+      "funcao": "bfr_notify_guardian_on_route_incident"
+    },
+    "controlo_positivo_e_negativo": {
+      "gatilho": 1,
+      "funcao": 1,
+      "controlo_negativo": 0
+    },
+    "funcoes_que_inserem_em_attendance_pelo_produtor_elo": [
+      "bfr_audit_lesson_attendance_change"
+    ],
+    "funcoes_que_citam_attendance_pelo_produtor_elo": [
+      {
+        "proname": "bfr_audit_lesson_attendance_change",
+        "cita_att": "cita attendance"
+      },
+      {
+        "proname": "bfr_supervision_comparativo",
+        "cita_att": "cita attendance"
+      },
+      {
+        "proname": "bfr_supervision_frequencia",
+        "cita_att": "cita attendance"
+      },
+      {
+        "proname": "bfr_teacher_context",
+        "cita_att": "cita attendance"
+      },
+      {
+        "proname": "bfr_teacher_lesson_gate_evidence",
+        "cita_att": "cita attendance"
+      },
+      {
+        "proname": "confirm_guardian_entry",
+        "cita_att": ""
+      },
+      {
+        "proname": "register_gate_checkin",
+        "cita_att": ""
+      }
+    ]
+  },
+  "o_que_prova": [
+    "o conteudo semeado do calendario letivo e dos turnos, contado pelas frases do produtor p73-rm52 e do aplicador p145",
+    "se cada nome de RPC que o produtor declara existe no catalogo, com o nome de controlo negativo do proprio produtor",
+    "quantas vezes cada nome de RPC e chamado nos bytes do ar, depois de a identidade do ar ser conferida contra a ficha do p164",
+    "quantos perfis ha por papel, medidos pela frase do p138 e por uma frase composta aqui, e se as duas batem",
+    "quantos dos perfis de professor tem vinculo em staff_schools, medido pelo texto do preflight da PEN-41 e pelo mesmo texto sem a clausula de filtro",
+    "quantas contas de cada papel sao de teste e quantas nao sao, pela predica de marca lida dos produtores que a usam",
+    "o que existe no catalogo para transicionar o estado pending, pelo censo re-corrido pela peca propria",
+    "se ha gatilho ou funcao que escreva um aviso ao responsavel a partir de nota ou frequencia, com o controlo positivo do aviso de itinerario",
+    "que o conjunto de mesa nuclear ja ausente do catalogo vivo bate, nome a nome, com o que o censo do produtor registou em disco, com bytes e md5 dessa ficha"
+  ],
+  "o_que_NAO_prova": [
+    "que o calendario semeado seja lido pela portaria no browser: isto e catalogo, nao render",
+    "que uma conta real de professor consiga render completo: o vinculo medido e linhas em mesas, nao sessao",
+    "que transicionar pending para papel funcione: nenhuma escrita foi tentada nesta corrida",
+    "que o aviso automatico ao responsavel exista de ponta a ponta: prova a ausencia de mecanismo no catalogo, nao a presenca de outro caminho",
+    "que a ficha de bu2 de 20/11 descreva o catalogo de hoje: e um instante velho, e o que o portao procura e a divergencia entre os dois, nao uma harmonia escrita a mao",
+    "nada sobre senhas, tokens ou valores de linha: so contagens, nomes de coluna e nomes de objeto",
+    "que uma chamada do ar funcione de ponta a ponta: conto o texto servido e a presenca no catalogo, e nenhuma chamada de RPC foi tentada nesta corrida"
+  ],
+  "portoes": {
+    "total": 31,
+    "falhas": 0,
+    "lista": [
+      {
+        "nome": "as_mesa_de_calendario_do_produtor_estao_todas_no_censo_de_linhas",
+        "obtido": "bfr_school_calendar_days,bfr_school_calendar_month_targets,bfr_school_shift_settings",
+        "esperado": "bfr_school_calendar_days,bfr_school_calendar_month_targets,bfr_school_shift_settings",
+        "ok": true
+      },
+      {
+        "nome": "o_censo_de_rpc_devolve_uma_linha_por_nome_provado_pelo_produtor",
+        "obtido": 6,
+        "esperado": 6,
+        "ok": true
+      },
+      {
+        "nome": "a_contagem_de_linhas_do_rm52_para_a_mesa_de_dias_bate_com_o_censo_do_aplicador_a1",
+        "obtido": [
+          "365",
+          1
+        ],
+        "esperado": [
+          "365",
+          1
+        ],
+        "ok": true
+      },
+      {
+        "nome": "o_nome_de_controlo_negativo_do_produtor_nao_existe_no_catalogo",
+        "obtido": [
+          1,
+          "0"
+        ],
+        "esperado": [
+          1,
+          "0"
+        ],
+        "ok": true
+      },
+      {
+        "nome": "a_grade_de_tempo_do_calendario_tem_linhas_no_catalogo",
+        "obtido": true,
+        "esperado": true,
+        "ok": true
+      },
+      {
+        "nome": "as_duas_contagens_de_chamada_no_ar_batem_em_cada_nome_provado",
+        "obtido": "",
+        "esperado": "",
+        "ok": true
+      },
+      {
+        "nome": "o_nome_de_controlo_do_produtor_e_chamado_pelo_ar_e_nao_existe_no_catalogo",
+        "obtido": [
+          1,
+          0
+        ],
+        "esperado": [
+          1,
+          0
+        ],
+        "ok": true
+      },
+      {
+        "nome": "as_das_rotas_de_contar_o_que_o_ar_chama_sem_ter_corpo_no_catalogo_batem",
+        "obtido": "correct_gate_attendance",
+        "esperado": "correct_gate_attendance",
+        "ok": true
+      },
+      {
+        "nome": "as_duas_contagens_independentes_de_perfis_batem",
+        "obtido": 28,
+        "esperado": 28,
+        "ok": true
+      },
+      {
+        "nome": "o_censo_por_papel_do_produtor_bate_com_o_meu_em_cada_papel",
+        "obtido": "aee:2,coordinator:2,developer:3,director:2,education_supervisor:1,gatekeeper:2,monitor:2,parent:1,pedagogical:2,pending:2,psychology:1,secretary:4,social_work:1,sports_operator:1,student:2",
+        "esperado": "aee:2,coordinator:2,developer:3,director:2,education_supervisor:1,gatekeeper:2,monitor:2,parent:1,pedagogical:2,pending:2,psychology:1,secretary:4,social_work:1,sports_operator:1,student:2",
+        "ok": true
+      },
+      {
+        "nome": "marca_mais_sem_marca_mais_email_nulo_bate_com_perfis_em_cada_papel",
+        "obtido": "",
+        "esperado": "",
+        "ok": true
+      },
+      {
+        "nome": "a_agulha_negativa_de_marca_nao_inventa_nada",
+        "obtido": 0,
+        "esperado": 0,
+        "ok": true
+      },
+      {
+        "nome": "a_predica_de_marca_tem_positivo_e_negativo_no_fixture",
+        "obtido": [
+          1,
+          0,
+          0
+        ],
+        "esperado": [
+          1,
+          0,
+          0
+        ],
+        "ok": true
+      },
+      {
+        "nome": "o_controlo_do_produtor_so_mostra_os_papeis_que_ele_filtra",
+        "obtido": "director,secretary",
+        "esperado": "director,secretary",
+        "ok": true
+      },
+      {
+        "nome": "a_derivacao_do_mesmo_texto_sem_o_filtro_alarga_o_censo_de_papeis",
+        "obtido": true,
+        "esperado": true,
+        "ok": true
+      },
+      {
+        "nome": "os_papeis_que_a_derivacao_acrescenta_estao_no_censo_de_perfis",
+        "obtido": "aee,coordinator,developer,education_supervisor,gatekeeper,monitor,parent,pedagogical,pending,psychology,social_work,sports_operator,student",
+        "esperado": "aee,coordinator,developer,education_supervisor,gatekeeper,monitor,parent,pedagogical,pending,psychology,social_work,sports_operator,student",
+        "ok": true
+      },
+      {
+        "nome": "a_derivacao_preserva_as_linhas_do_controlo_nos_papeis_dele",
+        "obtido": "true,true",
+        "esperado": "true,true",
+        "ok": true
+      },
+      {
+        "nome": "o_censo_de_professor_com_vinculo_vivo_tem_duas_fontes",
+        "obtido": [
+          true,
+          true
+        ],
+        "esperado": [
+          true,
+          true
+        ],
+        "ok": true
+      },
+      {
+        "nome": "a_peca_p138_corre_verde_e_o_seu_total_e_o_meu_total",
+        "obtido": [
+          0,
+          "0",
+          28
+        ],
+        "esperado": [
+          0,
+          "0",
+          28
+        ],
+        "ok": true
+      },
+      {
+        "nome": "a_funcao_de_transicao_pending_lida_do_catalogo_escreve_em_profiles",
+        "obtido": "true",
+        "esperado": "true",
+        "ok": true
+      },
+      {
+        "nome": "o_campo_de_bytes_do_corpo_e_medido_em_bytes_e_o_de_caracteres_em_caracteres_e_os_dois_divergem_no_fixture",
+        "obtido": [
+          true,
+          1
+        ],
+        "esperado": [
+          true,
+          1
+        ],
+        "ok": true
+      },
+      {
+        "nome": "cada_mesa_do_array_nuclear_que_ainda_existe_no_catalogo_tem_volume_medido",
+        "obtido": 29,
+        "esperado": 29,
+        "ok": true
+      },
+      {
+        "nome": "o_conjunto_ausente_do_catalogo_vivo_bate_com_o_que_o_produtor_registou_na_ficha",
+        "obtido": "attendance_records,behavior_records,bfr_municipal_grants,municipalities,notifications,routes,vehicles",
+        "esperado": "attendance_records,behavior_records,bfr_municipal_grants,municipalities,notifications,routes,vehicles",
+        "ok": true
+      },
+      {
+        "nome": "os_dois_caminhos_de_contar_gatilhos_de_nota_e_frequencia_batem",
+        "obtido": 1,
+        "esperado": 1,
+        "ok": true
+      },
+      {
+        "nome": "a_predica_de_escrita_em_aviso_tem_positivo_no_elo_de_itinerario_do_produtor",
+        "obtido": "1",
+        "esperado": "1",
+        "ok": true
+      },
+      {
+        "nome": "a_predica_de_escrita_em_aviso_nao_inventa_funcao_para_notifications",
+        "obtido": "",
+        "esperado": "",
+        "ok": true
+      },
+      {
+        "nome": "nenhum_alvo_de_aviso_ausente_do_catalogo_vivo_fica_sem_registo_de_ausencia_na_ficha_do_produtor",
+        "obtido": "",
+        "esperado": "",
+        "ok": true
+      },
+      {
+        "nome": "o_controlo_negativo_de_gatilho_nao_casa",
+        "obtido": 0,
+        "esperado": 0,
+        "ok": true
+      },
+      {
+        "nome": "a_leitura_do_censo_de_insercao_em_attendance_e_a_do_produtor_elo",
+        "obtido": "bfr_audit_lesson_attendance_change",
+        "esperado": "bfr_audit_lesson_attendance_change",
+        "ok": true
+      },
+      {
+        "nome": "nenhuma_agulha_do_produtor_foi_resolvida_duas_vezes_por_acaso",
+        "obtido": 21,
+        "esperado": 21,
+        "ok": true
+      },
+      {
+        "nome": "o_extractor_de_literal_le_o_que_tem_aspas_por_dentro_e_nao_inventa_o_que_so_vive_em_comentario",
+        "obtido": [
+          1,
+          "select 1 from t where a='x'",
+          0
+        ],
+        "esperado": [
+          1,
+          "select 1 from t where a='x'",
+          0
+        ],
+        "ok": true
+      }
+    ]
+  },
+  "estado": "MEDIDO",
+  "veredito_final": "P165_CENSO_MEDIDO 31/0"
+}
