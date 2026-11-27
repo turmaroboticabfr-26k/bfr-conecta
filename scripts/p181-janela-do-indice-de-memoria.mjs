@@ -87,7 +87,7 @@ function mede(p) {
     o_primeiro_e_o_mais_novo: ordemMede(items.map((it) => it.nome)),
     numeros_de_sm_lidos: items.map((it) => numeroDoNome(it.nome)).filter((n) => n !== null).length,
     nome_do_primeiro_verbete: conjuntoLinhas[0],
-    bytes_do_primeiro_verbete: items[0].bytes,
+    bytes_da_linha_do_primeiro_verbete: items[0].bytes,
     apontadores_partidos: items.filter((it) => !existsSync(dir + it.nome)).map((it) => it.nome),
     ficheiros_no_disco: noDisco.length,
     orfaos_sem_apontador: noDisco.filter((f) => !conjuntoLinhas.includes(f)),
@@ -141,6 +141,11 @@ function fixtures() {
   casos.push({ nome: 'positivo_apontador_que_resolve', fn: () => { const t = mk(['- [T](a.md) — x']); return nomesDasLinhas(t).length === 1 && nomesDasLinhas(t)[0].nome === 'a.md'; } });
   casos.push({ nome: 'aborta_linha_sem_apontador', fn: () => { let abortou = false; try { nomesDasLinhas('- [T] sem link'); } catch (e) { abortou = /sem apontador/.test(e.message); } return abortou; } });
   casos.push({ nome: 'extração_do_nome_por_offset_e_nao_por_travessao', fn: () => { const t = mk(['- [Ciclo X — o titulo tem travessao](f-tema.md) — prosa que nao e o titulo']); return nomesDasLinhas(t)[0].nome === 'f-tema.md'; } });
+  // `bytes` e da LINHA do indice (+ o salto de linha), nao do ficheiro apontado -- o instrumento nunca le o
+  // ficheiro para este campo, e a 1.ª versao chamava-lhe `bytes_do_primeiro_verbete`, o que prometia o ficheiro
+  // e dava 5 426 para um verbete que `wc -c` media em 10 292 no mesmo instante (corrida sm90a, 27/11).
+  casos.push({ nome: 'positivo_bytes_sao_da_linha_do_indice_e_nao_do_ficheiro', fn: () => { const L = '- [A](a.md) ' + 'x'.repeat(200); return nomesDasLinhas(mk([L]))[0].bytes === Buffer.byteLength(L, 'utf8') + 1; } });
+  casos.push({ nome: 'negativo_bytes_acompanham_o_comprimento_da_linha', fn: () => { const a = nomesDasLinhas(mk(['- [A](a.md) ' + 'x'.repeat(300)]))[0].bytes; const b = nomesDasLinhas(mk(['- [A](a.md) ' + 'x'.repeat(40)]))[0].bytes; return a > b && a - b === 260; } });
   casos.push({ nome: 'mapa_derivate_bate_com_o_conjunto', fn: () => { const itens = nomesDasLinhas(mk(['- [A](a.md) — 1', '- [B](b.md) — 2'])); const mapa = MARCO + itens.map((i) => '`' + i.nome + '`').join(' · '); const re = mapa.slice(MARCO.length).split(' · ').map((s) => s.replace(/`/g, '')); return JSON.stringify(re) === JSON.stringify(itens.map((i) => i.nome)); } });
   casos.push({ nome: 'negativo_mapa_com_uma_linha_a_mais', fn: () => { const mapa = MARCO + '`a.md` · `b.md` · `sobrou.md`'; const re = mapa.slice(MARCO.length).split(' · ').map((s) => s.replace(/`/g, '')); return JSON.stringify(re) !== JSON.stringify(['a.md', 'b.md']); } });
   // A ordem nao e um nome dactilografado (a 1.ª versao tinha `^campanha-sm69` dentro e rebentava no ciclo
