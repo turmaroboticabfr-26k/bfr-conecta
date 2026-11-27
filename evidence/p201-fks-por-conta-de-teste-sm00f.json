@@ -1,0 +1,4553 @@
+{
+  "peca": "scripts/p201-fks-por-conta-de-teste.mjs",
+  "em": "2026-11-27T22:51:32.358Z",
+  "emissor_bytes": 29519,
+  "emissor_md5": "b08dcfa73a27b00e07f0dee14e770a79",
+  "autorizacao": "somente leitura: 0 DDL, 0 DML, 0 grants, 0 escrita, 0 mint, 0 DELETE",
+  "estado": "MEDIDO",
+  "pergunta": "cada conta de teste pode ser apagada sem violar chaves estrangeiras, e que linhas teriam de sair antes?",
+  "origem_dos_predicados": [
+    {
+      "produtor": "scripts/ae5f-rm68-delete-mecanismo.mjs",
+      "agulha": "contype = 'f'",
+      "aparece_no_produtor": true
+    },
+    {
+      "produtor": "scripts/ae5f-rm68-delete-mecanismo.mjs",
+      "agulha": "'public.profiles'::regclass",
+      "aparece_no_produtor": true
+    },
+    {
+      "produtor": "scripts/ah2-inventario-contas.mjs",
+      "agulha": "/\\.test$/",
+      "aparece_no_produtor": true
+    },
+    {
+      "produtor": "scripts/ah2-inventario-contas.mjs",
+      "agulha": "auth/v1/admin/users?page=",
+      "aparece_no_produtor": true
+    }
+  ],
+  "fks_do_catalogo": {
+    "total": 220,
+    "por_classe": {
+      "bloqueia": 124,
+      "cascata": 57,
+      "anula_ref": 39
+    },
+    "por_deltype": {
+      "a": 102,
+      "c": 57,
+      "n": 39,
+      "r": 22
+    }
+  },
+  "vinculos": [
+    {
+      "conname": "access_requests_reviewed_by_fkey",
+      "tabela": "access_requests",
+      "referenciada": "profiles",
+      "deltype": "a",
+      "colunas_locais": "reviewed_by",
+      "colunas_referidas": "id"
+    },
+    {
+      "conname": "aee_activities_created_by_fkey",
+      "tabela": "aee_activities",
+      "referenciada": "profiles",
+      "deltype": "a",
+      "colunas_locais": "created_by",
+      "colunas_referidas": "id"
+    },
+    {
+      "conname": "aee_activity_recommendations_teacher_id_fkey",
+      "tabela": "aee_activity_recommendations",
+      "referenciada": "profiles",
+      "deltype": "a",
+      "colunas_locais": "teacher_id",
+      "colunas_referidas": "id"
+    },
+    {
+      "conname": "aee_adaptations_created_by_fkey",
+      "tabela": "aee_adaptations",
+      "referenciada": "profiles",
+      "deltype": "a",
+      "colunas_locais": "created_by",
+      "colunas_referidas": "id"
+    },
+    {
+      "conname": "aee_adaptations_teacher_id_fkey",
+      "tabela": "aee_adaptations",
+      "referenciada": "profiles",
+      "deltype": "a",
+      "colunas_locais": "teacher_id",
+      "colunas_referidas": "id"
+    },
+    {
+      "conname": "aee_attendance_teacher_id_fkey",
+      "tabela": "aee_attendance",
+      "referenciada": "profiles",
+      "deltype": "a",
+      "colunas_locais": "teacher_id",
+      "colunas_referidas": "id"
+    },
+    {
+      "conname": "aee_game_assignments_assigned_by_fkey",
+      "tabela": "aee_game_assignments",
+      "referenciada": "profiles",
+      "deltype": "a",
+      "colunas_locais": "assigned_by",
+      "colunas_referidas": "id"
+    },
+    {
+      "conname": "aee_game_assignments_teacher_id_fkey",
+      "tabela": "aee_game_assignments",
+      "referenciada": "profiles",
+      "deltype": "a",
+      "colunas_locais": "teacher_id",
+      "colunas_referidas": "id"
+    },
+    {
+      "conname": "aee_game_catalog_created_by_fkey",
+      "tabela": "aee_game_catalog",
+      "referenciada": "profiles",
+      "deltype": "a",
+      "colunas_locais": "created_by",
+      "colunas_referidas": "id"
+    },
+    {
+      "conname": "aee_game_favorites_profile_id_fkey",
+      "tabela": "aee_game_favorites",
+      "referenciada": "profiles",
+      "deltype": "c",
+      "colunas_locais": "profile_id",
+      "colunas_referidas": "id"
+    },
+    {
+      "conname": "aee_game_sessions_profile_id_fkey",
+      "tabela": "aee_game_sessions",
+      "referenciada": "profiles",
+      "deltype": "a",
+      "colunas_locais": "profile_id",
+      "colunas_referidas": "id"
+    },
+    {
+      "conname": "aee_materials_created_by_fkey",
+      "tabela": "aee_materials",
+      "referenciada": "profiles",
+      "deltype": "a",
+      "colunas_locais": "created_by",
+      "colunas_referidas": "id"
+    },
+    {
+      "conname": "aee_materials_teacher_id_fkey",
+      "tabela": "aee_materials",
+      "referenciada": "profiles",
+      "deltype": "a",
+      "colunas_locais": "teacher_id",
+      "colunas_referidas": "id"
+    },
+    {
+      "conname": "aee_messages_recipient_id_fkey",
+      "tabela": "aee_messages",
+      "referenciada": "profiles",
+      "deltype": "a",
+      "colunas_locais": "recipient_id",
+      "colunas_referidas": "id"
+    },
+    {
+      "conname": "aee_messages_sender_id_fkey",
+      "tabela": "aee_messages",
+      "referenciada": "profiles",
+      "deltype": "a",
+      "colunas_locais": "sender_id",
+      "colunas_referidas": "id"
+    },
+    {
+      "conname": "aee_plan_reviews_created_by_fkey",
+      "tabela": "aee_plan_reviews",
+      "referenciada": "profiles",
+      "deltype": "a",
+      "colunas_locais": "created_by",
+      "colunas_referidas": "id"
+    },
+    {
+      "conname": "aee_plans_created_by_fkey",
+      "tabela": "aee_plans",
+      "referenciada": "profiles",
+      "deltype": "a",
+      "colunas_locais": "created_by",
+      "colunas_referidas": "id"
+    },
+    {
+      "conname": "aee_plans_updated_by_fkey",
+      "tabela": "aee_plans",
+      "referenciada": "profiles",
+      "deltype": "a",
+      "colunas_locais": "updated_by",
+      "colunas_referidas": "id"
+    },
+    {
+      "conname": "aee_progress_teacher_id_fkey",
+      "tabela": "aee_progress",
+      "referenciada": "profiles",
+      "deltype": "a",
+      "colunas_locais": "teacher_id",
+      "colunas_referidas": "id"
+    },
+    {
+      "conname": "aee_resources_created_by_fkey",
+      "tabela": "aee_resources",
+      "referenciada": "profiles",
+      "deltype": "a",
+      "colunas_locais": "created_by",
+      "colunas_referidas": "id"
+    },
+    {
+      "conname": "aee_resources_teacher_id_fkey",
+      "tabela": "aee_resources",
+      "referenciada": "profiles",
+      "deltype": "a",
+      "colunas_locais": "teacher_id",
+      "colunas_referidas": "id"
+    },
+    {
+      "conname": "aee_sessions_teacher_id_fkey",
+      "tabela": "aee_sessions",
+      "referenciada": "profiles",
+      "deltype": "a",
+      "colunas_locais": "teacher_id",
+      "colunas_referidas": "id"
+    },
+    {
+      "conname": "aee_student_links_teacher_id_fkey",
+      "tabela": "aee_student_links",
+      "referenciada": "profiles",
+      "deltype": "c",
+      "colunas_locais": "teacher_id",
+      "colunas_referidas": "id"
+    },
+    {
+      "conname": "aee_student_profiles_updated_by_fkey",
+      "tabela": "aee_student_profiles",
+      "referenciada": "profiles",
+      "deltype": "a",
+      "colunas_locais": "updated_by",
+      "colunas_referidas": "id"
+    },
+    {
+      "conname": "announcement_reads_profile_id_fkey",
+      "tabela": "announcement_reads",
+      "referenciada": "profiles",
+      "deltype": "c",
+      "colunas_locais": "profile_id",
+      "colunas_referidas": "id"
+    },
+    {
+      "conname": "announcement_recipients_recipient_id_fkey",
+      "tabela": "announcement_recipients",
+      "referenciada": "profiles",
+      "deltype": "c",
+      "colunas_locais": "recipient_id",
+      "colunas_referidas": "id"
+    },
+    {
+      "conname": "announcements_published_by_fkey",
+      "tabela": "announcements",
+      "referenciada": "profiles",
+      "deltype": "a",
+      "colunas_locais": "published_by",
+      "colunas_referidas": "id"
+    },
+    {
+      "conname": "attendance_entered_by_fkey",
+      "tabela": "attendance",
+      "referenciada": "profiles",
+      "deltype": "a",
+      "colunas_locais": "entered_by",
+      "colunas_referidas": "id"
+    },
+    {
+      "conname": "identities_user_id_fkey",
+      "tabela": "auth.identities",
+      "referenciada": "auth.users",
+      "deltype": "c",
+      "colunas_locais": "user_id",
+      "colunas_referidas": "id"
+    },
+    {
+      "conname": "mfa_factors_user_id_fkey",
+      "tabela": "auth.mfa_factors",
+      "referenciada": "auth.users",
+      "deltype": "c",
+      "colunas_locais": "user_id",
+      "colunas_referidas": "id"
+    },
+    {
+      "conname": "mfa_recovery_code_sets_user_id_fkey",
+      "tabela": "auth.mfa_recovery_code_sets",
+      "referenciada": "auth.users",
+      "deltype": "c",
+      "colunas_locais": "user_id",
+      "colunas_referidas": "id"
+    },
+    {
+      "conname": "oauth_authorizations_user_id_fkey",
+      "tabela": "auth.oauth_authorizations",
+      "referenciada": "auth.users",
+      "deltype": "c",
+      "colunas_locais": "user_id",
+      "colunas_referidas": "id"
+    },
+    {
+      "conname": "oauth_consents_user_id_fkey",
+      "tabela": "auth.oauth_consents",
+      "referenciada": "auth.users",
+      "deltype": "c",
+      "colunas_locais": "user_id",
+      "colunas_referidas": "id"
+    },
+    {
+      "conname": "one_time_tokens_user_id_fkey",
+      "tabela": "auth.one_time_tokens",
+      "referenciada": "auth.users",
+      "deltype": "c",
+      "colunas_locais": "user_id",
+      "colunas_referidas": "id"
+    },
+    {
+      "conname": "scim_users_user_id_fkey",
+      "tabela": "auth.scim_users",
+      "referenciada": "auth.users",
+      "deltype": "n",
+      "colunas_locais": "user_id",
+      "colunas_referidas": "id"
+    },
+    {
+      "conname": "sessions_user_id_fkey",
+      "tabela": "auth.sessions",
+      "referenciada": "auth.users",
+      "deltype": "c",
+      "colunas_locais": "user_id",
+      "colunas_referidas": "id"
+    },
+    {
+      "conname": "webauthn_challenges_user_id_fkey",
+      "tabela": "auth.webauthn_challenges",
+      "referenciada": "auth.users",
+      "deltype": "c",
+      "colunas_locais": "user_id",
+      "colunas_referidas": "id"
+    },
+    {
+      "conname": "webauthn_credentials_user_id_fkey",
+      "tabela": "auth.webauthn_credentials",
+      "referenciada": "auth.users",
+      "deltype": "c",
+      "colunas_locais": "user_id",
+      "colunas_referidas": "id"
+    },
+    {
+      "conname": "bfr_coordination_messages_sender_id_fkey",
+      "tabela": "bfr_coordination_messages",
+      "referenciada": "profiles",
+      "deltype": "c",
+      "colunas_locais": "sender_id",
+      "colunas_referidas": "id"
+    },
+    {
+      "conname": "bfr_coordination_threads_assigned_to_fkey",
+      "tabela": "bfr_coordination_threads",
+      "referenciada": "profiles",
+      "deltype": "n",
+      "colunas_locais": "assigned_to",
+      "colunas_referidas": "id"
+    },
+    {
+      "conname": "bfr_coordination_threads_guardian_id_fkey",
+      "tabela": "bfr_coordination_threads",
+      "referenciada": "profiles",
+      "deltype": "c",
+      "colunas_locais": "guardian_id",
+      "colunas_referidas": "id"
+    },
+    {
+      "conname": "bfr_grade_audit_changed_by_fkey",
+      "tabela": "bfr_grade_audit",
+      "referenciada": "profiles",
+      "deltype": "n",
+      "colunas_locais": "changed_by",
+      "colunas_referidas": "id"
+    },
+    {
+      "conname": "bfr_grading_rules_updated_by_fkey",
+      "tabela": "bfr_grading_rules",
+      "referenciada": "profiles",
+      "deltype": "n",
+      "colunas_locais": "updated_by",
+      "colunas_referidas": "id"
+    },
+    {
+      "conname": "bfr_lesson_attendance_entered_by_fkey",
+      "tabela": "bfr_lesson_attendance",
+      "referenciada": "profiles",
+      "deltype": "r",
+      "colunas_locais": "entered_by",
+      "colunas_referidas": "id"
+    },
+    {
+      "conname": "bfr_lesson_attendance_updated_by_fkey",
+      "tabela": "bfr_lesson_attendance",
+      "referenciada": "profiles",
+      "deltype": "r",
+      "colunas_locais": "updated_by",
+      "colunas_referidas": "id"
+    },
+    {
+      "conname": "bfr_lesson_attendance_audit_changed_by_fkey",
+      "tabela": "bfr_lesson_attendance_audit",
+      "referenciada": "profiles",
+      "deltype": "r",
+      "colunas_locais": "changed_by",
+      "colunas_referidas": "id"
+    },
+    {
+      "conname": "bfr_municipal_access_grants_granted_by_fkey",
+      "tabela": "bfr_municipal_access_grants",
+      "referenciada": "profiles",
+      "deltype": "a",
+      "colunas_locais": "granted_by",
+      "colunas_referidas": "id"
+    },
+    {
+      "conname": "bfr_municipal_access_grants_profile_id_fkey",
+      "tabela": "bfr_municipal_access_grants",
+      "referenciada": "profiles",
+      "deltype": "c",
+      "colunas_locais": "profile_id",
+      "colunas_referidas": "id"
+    },
+    {
+      "conname": "bfr_municipal_access_grants_revoked_by_fkey",
+      "tabela": "bfr_municipal_access_grants",
+      "referenciada": "profiles",
+      "deltype": "a",
+      "colunas_locais": "revoked_by",
+      "colunas_referidas": "id"
+    },
+    {
+      "conname": "bfr_municipal_audit_actor_fkey",
+      "tabela": "bfr_municipal_audit",
+      "referenciada": "profiles",
+      "deltype": "a",
+      "colunas_locais": "actor",
+      "colunas_referidas": "id"
+    },
+    {
+      "conname": "bfr_schedule_changes_changed_by_fkey",
+      "tabela": "bfr_schedule_changes",
+      "referenciada": "profiles",
+      "deltype": "n",
+      "colunas_locais": "changed_by",
+      "colunas_referidas": "id"
+    },
+    {
+      "conname": "bfr_schedule_import_runs_started_by_fkey",
+      "tabela": "bfr_schedule_import_runs",
+      "referenciada": "profiles",
+      "deltype": "n",
+      "colunas_locais": "started_by",
+      "colunas_referidas": "id"
+    },
+    {
+      "conname": "bfr_schedule_versions_imported_by_fkey",
+      "tabela": "bfr_schedule_versions",
+      "referenciada": "profiles",
+      "deltype": "n",
+      "colunas_locais": "imported_by",
+      "colunas_referidas": "id"
+    },
+    {
+      "conname": "bfr_schedule_versions_published_by_fkey",
+      "tabela": "bfr_schedule_versions",
+      "referenciada": "profiles",
+      "deltype": "n",
+      "colunas_locais": "published_by",
+      "colunas_referidas": "id"
+    },
+    {
+      "conname": "bfr_school_key_map_confirmed_by_fkey",
+      "tabela": "bfr_school_key_map",
+      "referenciada": "profiles",
+      "deltype": "a",
+      "colunas_locais": "confirmed_by",
+      "colunas_referidas": "id"
+    },
+    {
+      "conname": "bfr_teacher_class_subjects_profile_id_fkey",
+      "tabela": "bfr_teacher_class_subjects",
+      "referenciada": "profiles",
+      "deltype": "c",
+      "colunas_locais": "profile_id",
+      "colunas_referidas": "id"
+    },
+    {
+      "conname": "bfr_teacher_content_profile_id_fkey",
+      "tabela": "bfr_teacher_content",
+      "referenciada": "profiles",
+      "deltype": "c",
+      "colunas_locais": "profile_id",
+      "colunas_referidas": "id"
+    },
+    {
+      "conname": "bfr_teacher_diary_profile_id_fkey",
+      "tabela": "bfr_teacher_diary",
+      "referenciada": "profiles",
+      "deltype": "c",
+      "colunas_locais": "profile_id",
+      "colunas_referidas": "id"
+    },
+    {
+      "conname": "bfr_teacher_directory_profile_id_fkey",
+      "tabela": "bfr_teacher_directory",
+      "referenciada": "profiles",
+      "deltype": "n",
+      "colunas_locais": "profile_id",
+      "colunas_referidas": "id"
+    },
+    {
+      "conname": "bfr_teacher_events_profile_id_fkey",
+      "tabela": "bfr_teacher_events",
+      "referenciada": "profiles",
+      "deltype": "c",
+      "colunas_locais": "profile_id",
+      "colunas_referidas": "id"
+    },
+    {
+      "conname": "bfr_teacher_plans_profile_id_fkey",
+      "tabela": "bfr_teacher_plans",
+      "referenciada": "profiles",
+      "deltype": "c",
+      "colunas_locais": "profile_id",
+      "colunas_referidas": "id"
+    },
+    {
+      "conname": "collaboration_notifications_actor_id_fkey",
+      "tabela": "collaboration_notifications",
+      "referenciada": "profiles",
+      "deltype": "n",
+      "colunas_locais": "actor_id",
+      "colunas_referidas": "id"
+    },
+    {
+      "conname": "collaboration_notifications_recipient_id_fkey",
+      "tabela": "collaboration_notifications",
+      "referenciada": "profiles",
+      "deltype": "c",
+      "colunas_locais": "recipient_id",
+      "colunas_referidas": "id"
+    },
+    {
+      "conname": "collaboration_project_members_added_by_fkey",
+      "tabela": "collaboration_project_members",
+      "referenciada": "profiles",
+      "deltype": "n",
+      "colunas_locais": "added_by",
+      "colunas_referidas": "id"
+    },
+    {
+      "conname": "collaboration_project_members_profile_id_fkey",
+      "tabela": "collaboration_project_members",
+      "referenciada": "profiles",
+      "deltype": "c",
+      "colunas_locais": "profile_id",
+      "colunas_referidas": "id"
+    },
+    {
+      "conname": "collaboration_project_stages_completed_by_fkey",
+      "tabela": "collaboration_project_stages",
+      "referenciada": "profiles",
+      "deltype": "n",
+      "colunas_locais": "completed_by",
+      "colunas_referidas": "id"
+    },
+    {
+      "conname": "collaboration_projects_created_by_fkey",
+      "tabela": "collaboration_projects",
+      "referenciada": "profiles",
+      "deltype": "r",
+      "colunas_locais": "created_by",
+      "colunas_referidas": "id"
+    },
+    {
+      "conname": "collaboration_projects_owner_id_fkey",
+      "tabela": "collaboration_projects",
+      "referenciada": "profiles",
+      "deltype": "r",
+      "colunas_locais": "owner_id",
+      "colunas_referidas": "id"
+    },
+    {
+      "conname": "collaboration_task_attachments_uploaded_by_fkey",
+      "tabela": "collaboration_task_attachments",
+      "referenciada": "profiles",
+      "deltype": "r",
+      "colunas_locais": "uploaded_by",
+      "colunas_referidas": "id"
+    },
+    {
+      "conname": "collaboration_task_comments_author_id_fkey",
+      "tabela": "collaboration_task_comments",
+      "referenciada": "profiles",
+      "deltype": "r",
+      "colunas_locais": "author_id",
+      "colunas_referidas": "id"
+    },
+    {
+      "conname": "collaboration_task_members_added_by_fkey",
+      "tabela": "collaboration_task_members",
+      "referenciada": "profiles",
+      "deltype": "n",
+      "colunas_locais": "added_by",
+      "colunas_referidas": "id"
+    },
+    {
+      "conname": "collaboration_task_members_profile_id_fkey",
+      "tabela": "collaboration_task_members",
+      "referenciada": "profiles",
+      "deltype": "c",
+      "colunas_locais": "profile_id",
+      "colunas_referidas": "id"
+    },
+    {
+      "conname": "collaboration_tasks_completed_by_fkey",
+      "tabela": "collaboration_tasks",
+      "referenciada": "profiles",
+      "deltype": "n",
+      "colunas_locais": "completed_by",
+      "colunas_referidas": "id"
+    },
+    {
+      "conname": "collaboration_tasks_created_by_fkey",
+      "tabela": "collaboration_tasks",
+      "referenciada": "profiles",
+      "deltype": "r",
+      "colunas_locais": "created_by",
+      "colunas_referidas": "id"
+    },
+    {
+      "conname": "collaboration_tasks_owner_id_fkey",
+      "tabela": "collaboration_tasks",
+      "referenciada": "profiles",
+      "deltype": "r",
+      "colunas_locais": "owner_id",
+      "colunas_referidas": "id"
+    },
+    {
+      "conname": "collaboration_tasks_updated_by_fkey",
+      "tabela": "collaboration_tasks",
+      "referenciada": "profiles",
+      "deltype": "n",
+      "colunas_locais": "updated_by",
+      "colunas_referidas": "id"
+    },
+    {
+      "conname": "director_routine_items_owner_id_fkey",
+      "tabela": "director_routine_items",
+      "referenciada": "auth.users",
+      "deltype": "c",
+      "colunas_locais": "owner_id",
+      "colunas_referidas": "id"
+    },
+    {
+      "conname": "entry_restrictions_created_by_fkey",
+      "tabela": "entry_restrictions",
+      "referenciada": "profiles",
+      "deltype": "r",
+      "colunas_locais": "created_by",
+      "colunas_referidas": "id"
+    },
+    {
+      "conname": "entry_restrictions_resolved_by_fkey",
+      "tabela": "entry_restrictions",
+      "referenciada": "profiles",
+      "deltype": "a",
+      "colunas_locais": "resolved_by",
+      "colunas_referidas": "id"
+    },
+    {
+      "conname": "gate_checkins_gatekeeper_id_fkey",
+      "tabela": "gate_checkins",
+      "referenciada": "profiles",
+      "deltype": "r",
+      "colunas_locais": "gatekeeper_id",
+      "colunas_referidas": "id"
+    },
+    {
+      "conname": "gate_checkins_guardian_confirmed_by_fkey",
+      "tabela": "gate_checkins",
+      "referenciada": "profiles",
+      "deltype": "a",
+      "colunas_locais": "guardian_confirmed_by",
+      "colunas_referidas": "id"
+    },
+    {
+      "conname": "gate_entry_alerts_acknowledged_by_fkey",
+      "tabela": "gate_entry_alerts",
+      "referenciada": "profiles",
+      "deltype": "a",
+      "colunas_locais": "acknowledged_by",
+      "colunas_referidas": "id"
+    },
+    {
+      "conname": "gate_entry_alerts_gatekeeper_id_fkey",
+      "tabela": "gate_entry_alerts",
+      "referenciada": "profiles",
+      "deltype": "r",
+      "colunas_locais": "gatekeeper_id",
+      "colunas_referidas": "id"
+    },
+    {
+      "conname": "gate_entry_alerts_resolved_by_fkey",
+      "tabela": "gate_entry_alerts",
+      "referenciada": "profiles",
+      "deltype": "a",
+      "colunas_locais": "resolved_by",
+      "colunas_referidas": "id"
+    },
+    {
+      "conname": "gate_messages_sender_id_fkey",
+      "tabela": "gate_messages",
+      "referenciada": "profiles",
+      "deltype": "a",
+      "colunas_locais": "sender_id",
+      "colunas_referidas": "id"
+    },
+    {
+      "conname": "grades_entered_by_fkey",
+      "tabela": "grades",
+      "referenciada": "profiles",
+      "deltype": "a",
+      "colunas_locais": "entered_by",
+      "colunas_referidas": "id"
+    },
+    {
+      "conname": "guardian_students_linked_by_fkey",
+      "tabela": "guardian_students",
+      "referenciada": "profiles",
+      "deltype": "n",
+      "colunas_locais": "linked_by",
+      "colunas_referidas": "id"
+    },
+    {
+      "conname": "guardian_students_profile_id_fkey",
+      "tabela": "guardian_students",
+      "referenciada": "profiles",
+      "deltype": "c",
+      "colunas_locais": "profile_id",
+      "colunas_referidas": "id"
+    },
+    {
+      "conname": "instagram_accounts_created_by_fkey",
+      "tabela": "instagram_accounts",
+      "referenciada": "profiles",
+      "deltype": "n",
+      "colunas_locais": "created_by",
+      "colunas_referidas": "id"
+    },
+    {
+      "conname": "instagram_posts_reviewed_by_fkey",
+      "tabela": "instagram_posts",
+      "referenciada": "profiles",
+      "deltype": "n",
+      "colunas_locais": "reviewed_by",
+      "colunas_referidas": "id"
+    },
+    {
+      "conname": "internal_chat_message_reactions_profile_id_fkey",
+      "tabela": "internal_chat_message_reactions",
+      "referenciada": "profiles",
+      "deltype": "c",
+      "colunas_locais": "profile_id",
+      "colunas_referidas": "id"
+    },
+    {
+      "conname": "internal_chat_message_reports_reporter_id_fkey",
+      "tabela": "internal_chat_message_reports",
+      "referenciada": "profiles",
+      "deltype": "c",
+      "colunas_locais": "reporter_id",
+      "colunas_referidas": "id"
+    },
+    {
+      "conname": "internal_chat_message_reports_reviewed_by_fkey",
+      "tabela": "internal_chat_message_reports",
+      "referenciada": "profiles",
+      "deltype": "n",
+      "colunas_locais": "reviewed_by",
+      "colunas_referidas": "id"
+    },
+    {
+      "conname": "internal_chat_messages_sender_id_fkey",
+      "tabela": "internal_chat_messages",
+      "referenciada": "profiles",
+      "deltype": "r",
+      "colunas_locais": "sender_id",
+      "colunas_referidas": "id"
+    },
+    {
+      "conname": "internal_chat_presence_profile_id_fkey",
+      "tabela": "internal_chat_presence",
+      "referenciada": "profiles",
+      "deltype": "c",
+      "colunas_locais": "profile_id",
+      "colunas_referidas": "id"
+    },
+    {
+      "conname": "internal_chat_room_members_profile_id_fkey",
+      "tabela": "internal_chat_room_members",
+      "referenciada": "profiles",
+      "deltype": "c",
+      "colunas_locais": "profile_id",
+      "colunas_referidas": "id"
+    },
+    {
+      "conname": "internal_chat_threads_created_by_fkey",
+      "tabela": "internal_chat_threads",
+      "referenciada": "auth.users",
+      "deltype": "n",
+      "colunas_locais": "created_by",
+      "colunas_referidas": "id"
+    },
+    {
+      "conname": "learning_action_items_created_by_fkey",
+      "tabela": "learning_action_items",
+      "referenciada": "profiles",
+      "deltype": "a",
+      "colunas_locais": "created_by",
+      "colunas_referidas": "id"
+    },
+    {
+      "conname": "learning_action_plans_approved_by_fkey",
+      "tabela": "learning_action_plans",
+      "referenciada": "profiles",
+      "deltype": "a",
+      "colunas_locais": "approved_by",
+      "colunas_referidas": "id"
+    },
+    {
+      "conname": "learning_action_plans_created_by_fkey",
+      "tabela": "learning_action_plans",
+      "referenciada": "profiles",
+      "deltype": "a",
+      "colunas_locais": "created_by",
+      "colunas_referidas": "id"
+    },
+    {
+      "conname": "learning_action_plans_responsible_id_fkey",
+      "tabela": "learning_action_plans",
+      "referenciada": "profiles",
+      "deltype": "a",
+      "colunas_locais": "responsible_id",
+      "colunas_referidas": "id"
+    },
+    {
+      "conname": "learning_assessment_results_recorded_by_fkey",
+      "tabela": "learning_assessment_results",
+      "referenciada": "profiles",
+      "deltype": "a",
+      "colunas_locais": "recorded_by",
+      "colunas_referidas": "id"
+    },
+    {
+      "conname": "learning_assessments_created_by_fkey",
+      "tabela": "learning_assessments",
+      "referenciada": "profiles",
+      "deltype": "a",
+      "colunas_locais": "created_by",
+      "colunas_referidas": "id"
+    },
+    {
+      "conname": "learning_evidence_created_by_fkey",
+      "tabela": "learning_evidence",
+      "referenciada": "profiles",
+      "deltype": "a",
+      "colunas_locais": "created_by",
+      "colunas_referidas": "id"
+    },
+    {
+      "conname": "learning_external_results_imported_by_fkey",
+      "tabela": "learning_external_results",
+      "referenciada": "profiles",
+      "deltype": "a",
+      "colunas_locais": "imported_by",
+      "colunas_referidas": "id"
+    },
+    {
+      "conname": "learning_goals_created_by_fkey",
+      "tabela": "learning_goals",
+      "referenciada": "profiles",
+      "deltype": "a",
+      "colunas_locais": "created_by",
+      "colunas_referidas": "id"
+    },
+    {
+      "conname": "learning_goals_teacher_id_fkey",
+      "tabela": "learning_goals",
+      "referenciada": "profiles",
+      "deltype": "a",
+      "colunas_locais": "teacher_id",
+      "colunas_referidas": "id"
+    },
+    {
+      "conname": "learning_indicator_settings_updated_by_fkey",
+      "tabela": "learning_indicator_settings",
+      "referenciada": "profiles",
+      "deltype": "a",
+      "colunas_locais": "updated_by",
+      "colunas_referidas": "id"
+    },
+    {
+      "conname": "learning_interventions_created_by_fkey",
+      "tabela": "learning_interventions",
+      "referenciada": "profiles",
+      "deltype": "a",
+      "colunas_locais": "created_by",
+      "colunas_referidas": "id"
+    },
+    {
+      "conname": "learning_meeting_actions_responsible_id_fkey",
+      "tabela": "learning_meeting_actions",
+      "referenciada": "profiles",
+      "deltype": "a",
+      "colunas_locais": "responsible_id",
+      "colunas_referidas": "id"
+    },
+    {
+      "conname": "learning_meetings_created_by_fkey",
+      "tabela": "learning_meetings",
+      "referenciada": "profiles",
+      "deltype": "a",
+      "colunas_locais": "created_by",
+      "colunas_referidas": "id"
+    },
+    {
+      "conname": "learning_notifications_profile_id_fkey",
+      "tabela": "learning_notifications",
+      "referenciada": "profiles",
+      "deltype": "a",
+      "colunas_locais": "profile_id",
+      "colunas_referidas": "id"
+    },
+    {
+      "conname": "learning_pedagogical_reports_generated_by_fkey",
+      "tabela": "learning_pedagogical_reports",
+      "referenciada": "profiles",
+      "deltype": "a",
+      "colunas_locais": "generated_by",
+      "colunas_referidas": "id"
+    },
+    {
+      "conname": "learning_skills_created_by_fkey",
+      "tabela": "learning_skills",
+      "referenciada": "profiles",
+      "deltype": "a",
+      "colunas_locais": "created_by",
+      "colunas_referidas": "id"
+    },
+    {
+      "conname": "learning_student_progress_recorded_by_fkey",
+      "tabela": "learning_student_progress",
+      "referenciada": "profiles",
+      "deltype": "a",
+      "colunas_locais": "recorded_by",
+      "colunas_referidas": "id"
+    },
+    {
+      "conname": "learning_subjects_created_by_fkey",
+      "tabela": "learning_subjects",
+      "referenciada": "profiles",
+      "deltype": "a",
+      "colunas_locais": "created_by",
+      "colunas_referidas": "id"
+    },
+    {
+      "conname": "learning_teacher_actions_assigned_by_fkey",
+      "tabela": "learning_teacher_actions",
+      "referenciada": "profiles",
+      "deltype": "a",
+      "colunas_locais": "assigned_by",
+      "colunas_referidas": "id"
+    },
+    {
+      "conname": "learning_teacher_actions_teacher_id_fkey",
+      "tabela": "learning_teacher_actions",
+      "referenciada": "profiles",
+      "deltype": "a",
+      "colunas_locais": "teacher_id",
+      "colunas_referidas": "id"
+    },
+    {
+      "conname": "literacy_activity_attempts_profile_id_fkey",
+      "tabela": "literacy_activity_attempts",
+      "referenciada": "profiles",
+      "deltype": "r",
+      "colunas_locais": "profile_id",
+      "colunas_referidas": "id"
+    },
+    {
+      "conname": "literacy_progress_updated_by_fkey",
+      "tabela": "literacy_progress",
+      "referenciada": "profiles",
+      "deltype": "n",
+      "colunas_locais": "updated_by",
+      "colunas_referidas": "id"
+    },
+    {
+      "conname": "meeting_notifications_recipient_id_fkey",
+      "tabela": "meeting_notifications",
+      "referenciada": "profiles",
+      "deltype": "c",
+      "colunas_locais": "recipient_id",
+      "colunas_referidas": "id"
+    },
+    {
+      "conname": "notification_preferences_profile_id_fkey",
+      "tabela": "notification_preferences",
+      "referenciada": "auth.users",
+      "deltype": "c",
+      "colunas_locais": "profile_id",
+      "colunas_referidas": "id"
+    },
+    {
+      "conname": "occurrences_created_by_fkey",
+      "tabela": "occurrences",
+      "referenciada": "profiles",
+      "deltype": "a",
+      "colunas_locais": "created_by",
+      "colunas_referidas": "id"
+    },
+    {
+      "conname": "photos_uploaded_by_fkey",
+      "tabela": "photos",
+      "referenciada": "profiles",
+      "deltype": "a",
+      "colunas_locais": "uploaded_by",
+      "colunas_referidas": "id"
+    },
+    {
+      "conname": "poll_votes_profile_id_fkey",
+      "tabela": "poll_votes",
+      "referenciada": "profiles",
+      "deltype": "c",
+      "colunas_locais": "profile_id",
+      "colunas_referidas": "id"
+    },
+    {
+      "conname": "polls_created_by_fkey",
+      "tabela": "polls",
+      "referenciada": "profiles",
+      "deltype": "a",
+      "colunas_locais": "created_by",
+      "colunas_referidas": "id"
+    },
+    {
+      "conname": "profiles_id_fkey",
+      "tabela": "profiles",
+      "referenciada": "auth.users",
+      "deltype": "c",
+      "colunas_locais": "id",
+      "colunas_referidas": "id"
+    },
+    {
+      "conname": "project_photos_uploaded_by_fkey",
+      "tabela": "project_photos",
+      "referenciada": "profiles",
+      "deltype": "a",
+      "colunas_locais": "uploaded_by",
+      "colunas_referidas": "id"
+    },
+    {
+      "conname": "project_results_updated_by_fkey",
+      "tabela": "project_results",
+      "referenciada": "profiles",
+      "deltype": "a",
+      "colunas_locais": "updated_by",
+      "colunas_referidas": "id"
+    },
+    {
+      "conname": "projects_created_by_fkey",
+      "tabela": "projects",
+      "referenciada": "profiles",
+      "deltype": "a",
+      "colunas_locais": "created_by",
+      "colunas_referidas": "id"
+    },
+    {
+      "conname": "psychology_articulations_created_by_fkey",
+      "tabela": "psychology_articulations",
+      "referenciada": "profiles",
+      "deltype": "a",
+      "colunas_locais": "created_by",
+      "colunas_referidas": "id"
+    },
+    {
+      "conname": "psychology_articulations_teacher_id_fkey",
+      "tabela": "psychology_articulations",
+      "referenciada": "profiles",
+      "deltype": "a",
+      "colunas_locais": "teacher_id",
+      "colunas_referidas": "id"
+    },
+    {
+      "conname": "psychology_meetings_created_by_fkey",
+      "tabela": "psychology_meetings",
+      "referenciada": "profiles",
+      "deltype": "a",
+      "colunas_locais": "created_by",
+      "colunas_referidas": "id"
+    },
+    {
+      "conname": "psychology_preventive_actions_created_by_fkey",
+      "tabela": "psychology_preventive_actions",
+      "referenciada": "profiles",
+      "deltype": "a",
+      "colunas_locais": "created_by",
+      "colunas_referidas": "id"
+    },
+    {
+      "conname": "psychology_referrals_created_by_fkey",
+      "tabela": "psychology_referrals",
+      "referenciada": "profiles",
+      "deltype": "a",
+      "colunas_locais": "created_by",
+      "colunas_referidas": "id"
+    },
+    {
+      "conname": "psychology_referrals_responsible_id_fkey",
+      "tabela": "psychology_referrals",
+      "referenciada": "profiles",
+      "deltype": "a",
+      "colunas_locais": "responsible_id",
+      "colunas_referidas": "id"
+    },
+    {
+      "conname": "psychology_returns_created_by_fkey",
+      "tabela": "psychology_returns",
+      "referenciada": "profiles",
+      "deltype": "a",
+      "colunas_locais": "created_by",
+      "colunas_referidas": "id"
+    },
+    {
+      "conname": "psychology_returns_reviewed_by_fkey",
+      "tabela": "psychology_returns",
+      "referenciada": "profiles",
+      "deltype": "a",
+      "colunas_locais": "reviewed_by",
+      "colunas_referidas": "id"
+    },
+    {
+      "conname": "push_notify_throttle_profile_id_fkey",
+      "tabela": "push_notify_throttle",
+      "referenciada": "profiles",
+      "deltype": "c",
+      "colunas_locais": "profile_id",
+      "colunas_referidas": "id"
+    },
+    {
+      "conname": "push_subscriptions_profile_id_fkey",
+      "tabela": "push_subscriptions",
+      "referenciada": "auth.users",
+      "deltype": "c",
+      "colunas_locais": "profile_id",
+      "colunas_referidas": "id"
+    },
+    {
+      "conname": "route_incidents_monitor_id_fkey",
+      "tabela": "route_incidents",
+      "referenciada": "profiles",
+      "deltype": "r",
+      "colunas_locais": "monitor_id",
+      "colunas_referidas": "id"
+    },
+    {
+      "conname": "school_activities_published_by_fkey",
+      "tabela": "school_activities",
+      "referenciada": "profiles",
+      "deltype": "r",
+      "colunas_locais": "published_by",
+      "colunas_referidas": "id"
+    },
+    {
+      "conname": "school_documents_created_by_fkey",
+      "tabela": "school_documents",
+      "referenciada": "auth.users",
+      "deltype": "a",
+      "colunas_locais": "created_by",
+      "colunas_referidas": "id"
+    },
+    {
+      "conname": "school_documents_recipient_id_fkey",
+      "tabela": "school_documents",
+      "referenciada": "auth.users",
+      "deltype": "n",
+      "colunas_locais": "recipient_id",
+      "colunas_referidas": "id"
+    },
+    {
+      "conname": "school_meeting_recipients_recipient_id_fkey",
+      "tabela": "school_meeting_recipients",
+      "referenciada": "profiles",
+      "deltype": "c",
+      "colunas_locais": "recipient_id",
+      "colunas_referidas": "id"
+    },
+    {
+      "conname": "school_meetings_created_by_fkey",
+      "tabela": "school_meetings",
+      "referenciada": "profiles",
+      "deltype": "a",
+      "colunas_locais": "created_by",
+      "colunas_referidas": "id"
+    },
+    {
+      "conname": "school_notification_reads_profile_id_fkey",
+      "tabela": "school_notification_reads",
+      "referenciada": "auth.users",
+      "deltype": "c",
+      "colunas_locais": "profile_id",
+      "colunas_referidas": "id"
+    },
+    {
+      "conname": "school_poll_responses_respondent_id_fkey",
+      "tabela": "school_poll_responses",
+      "referenciada": "auth.users",
+      "deltype": "c",
+      "colunas_locais": "respondent_id",
+      "colunas_referidas": "id"
+    },
+    {
+      "conname": "school_polls_created_by_fkey",
+      "tabela": "school_polls",
+      "referenciada": "auth.users",
+      "deltype": "a",
+      "colunas_locais": "created_by",
+      "colunas_referidas": "id"
+    },
+    {
+      "conname": "school_program_contents_updated_by_fkey",
+      "tabela": "school_program_contents",
+      "referenciada": "auth.users",
+      "deltype": "a",
+      "colunas_locais": "updated_by",
+      "colunas_referidas": "id"
+    },
+    {
+      "conname": "school_videos_created_by_fkey",
+      "tabela": "school_videos",
+      "referenciada": "profiles",
+      "deltype": "r",
+      "colunas_locais": "created_by",
+      "colunas_referidas": "id"
+    },
+    {
+      "conname": "secretary_profile_change_requests_requester_id_fkey",
+      "tabela": "secretary_profile_change_requests",
+      "referenciada": "auth.users",
+      "deltype": "c",
+      "colunas_locais": "requester_id",
+      "colunas_referidas": "id"
+    },
+    {
+      "conname": "secretary_profile_change_requests_reviewed_by_fkey",
+      "tabela": "secretary_profile_change_requests",
+      "referenciada": "auth.users",
+      "deltype": "a",
+      "colunas_locais": "reviewed_by",
+      "colunas_referidas": "id"
+    },
+    {
+      "conname": "secretary_request_attachments_uploaded_by_fkey",
+      "tabela": "secretary_request_attachments",
+      "referenciada": "auth.users",
+      "deltype": "c",
+      "colunas_locais": "uploaded_by",
+      "colunas_referidas": "id"
+    },
+    {
+      "conname": "secretary_request_events_created_by_fkey",
+      "tabela": "secretary_request_events",
+      "referenciada": "auth.users",
+      "deltype": "a",
+      "colunas_locais": "created_by",
+      "colunas_referidas": "id"
+    },
+    {
+      "conname": "secretary_request_messages_recipient_id_fkey",
+      "tabela": "secretary_request_messages",
+      "referenciada": "auth.users",
+      "deltype": "n",
+      "colunas_locais": "recipient_id",
+      "colunas_referidas": "id"
+    },
+    {
+      "conname": "secretary_request_messages_sender_id_fkey",
+      "tabela": "secretary_request_messages",
+      "referenciada": "auth.users",
+      "deltype": "c",
+      "colunas_locais": "sender_id",
+      "colunas_referidas": "id"
+    },
+    {
+      "conname": "secretary_requests_requester_id_fkey",
+      "tabela": "secretary_requests",
+      "referenciada": "auth.users",
+      "deltype": "c",
+      "colunas_locais": "requester_id",
+      "colunas_referidas": "id"
+    },
+    {
+      "conname": "secretary_requests_reviewed_by_fkey",
+      "tabela": "secretary_requests",
+      "referenciada": "auth.users",
+      "deltype": "a",
+      "colunas_locais": "reviewed_by",
+      "colunas_referidas": "id"
+    },
+    {
+      "conname": "sports_athletes_created_by_fkey",
+      "tabela": "sports_athletes",
+      "referenciada": "profiles",
+      "deltype": "n",
+      "colunas_locais": "created_by",
+      "colunas_referidas": "id"
+    },
+    {
+      "conname": "sports_audit_log_created_by_fkey",
+      "tabela": "sports_audit_log",
+      "referenciada": "profiles",
+      "deltype": "n",
+      "colunas_locais": "created_by",
+      "colunas_referidas": "id"
+    },
+    {
+      "conname": "sports_championships_created_by_fkey",
+      "tabela": "sports_championships",
+      "referenciada": "profiles",
+      "deltype": "n",
+      "colunas_locais": "created_by",
+      "colunas_referidas": "id"
+    },
+    {
+      "conname": "sports_match_events_created_by_fkey",
+      "tabela": "sports_match_events",
+      "referenciada": "profiles",
+      "deltype": "n",
+      "colunas_locais": "created_by",
+      "colunas_referidas": "id"
+    },
+    {
+      "conname": "sports_match_followers_profile_id_fkey",
+      "tabela": "sports_match_followers",
+      "referenciada": "profiles",
+      "deltype": "c",
+      "colunas_locais": "profile_id",
+      "colunas_referidas": "id"
+    },
+    {
+      "conname": "sports_matches_created_by_fkey",
+      "tabela": "sports_matches",
+      "referenciada": "profiles",
+      "deltype": "n",
+      "colunas_locais": "created_by",
+      "colunas_referidas": "id"
+    },
+    {
+      "conname": "sports_matches_updated_by_fkey",
+      "tabela": "sports_matches",
+      "referenciada": "profiles",
+      "deltype": "n",
+      "colunas_locais": "updated_by",
+      "colunas_referidas": "id"
+    },
+    {
+      "conname": "sports_schools_created_by_fkey",
+      "tabela": "sports_schools",
+      "referenciada": "profiles",
+      "deltype": "n",
+      "colunas_locais": "created_by",
+      "colunas_referidas": "id"
+    },
+    {
+      "conname": "sports_teams_created_by_fkey",
+      "tabela": "sports_teams",
+      "referenciada": "profiles",
+      "deltype": "n",
+      "colunas_locais": "created_by",
+      "colunas_referidas": "id"
+    },
+    {
+      "conname": "staff_announcement_reads_profile_id_fkey",
+      "tabela": "staff_announcement_reads",
+      "referenciada": "profiles",
+      "deltype": "c",
+      "colunas_locais": "profile_id",
+      "colunas_referidas": "id"
+    },
+    {
+      "conname": "staff_announcements_published_by_fkey",
+      "tabela": "staff_announcements",
+      "referenciada": "profiles",
+      "deltype": "r",
+      "colunas_locais": "published_by",
+      "colunas_referidas": "id"
+    },
+    {
+      "conname": "staff_channel_members_added_by_fkey",
+      "tabela": "staff_channel_members",
+      "referenciada": "profiles",
+      "deltype": "n",
+      "colunas_locais": "added_by",
+      "colunas_referidas": "id"
+    },
+    {
+      "conname": "staff_channel_members_profile_id_fkey",
+      "tabela": "staff_channel_members",
+      "referenciada": "profiles",
+      "deltype": "c",
+      "colunas_locais": "profile_id",
+      "colunas_referidas": "id"
+    },
+    {
+      "conname": "staff_channels_archived_by_fkey",
+      "tabela": "staff_channels",
+      "referenciada": "profiles",
+      "deltype": "n",
+      "colunas_locais": "archived_by",
+      "colunas_referidas": "id"
+    },
+    {
+      "conname": "staff_channels_created_by_fkey",
+      "tabela": "staff_channels",
+      "referenciada": "profiles",
+      "deltype": "n",
+      "colunas_locais": "created_by",
+      "colunas_referidas": "id"
+    },
+    {
+      "conname": "staff_message_attachments_uploaded_by_fkey",
+      "tabela": "staff_message_attachments",
+      "referenciada": "profiles",
+      "deltype": "r",
+      "colunas_locais": "uploaded_by",
+      "colunas_referidas": "id"
+    },
+    {
+      "conname": "staff_message_forwards_forwarded_by_fkey",
+      "tabela": "staff_message_forwards",
+      "referenciada": "profiles",
+      "deltype": "r",
+      "colunas_locais": "forwarded_by",
+      "colunas_referidas": "id"
+    },
+    {
+      "conname": "staff_message_reads_profile_id_fkey",
+      "tabela": "staff_message_reads",
+      "referenciada": "profiles",
+      "deltype": "c",
+      "colunas_locais": "profile_id",
+      "colunas_referidas": "id"
+    },
+    {
+      "conname": "staff_messages_recipient_id_fkey",
+      "tabela": "staff_messages",
+      "referenciada": "profiles",
+      "deltype": "r",
+      "colunas_locais": "recipient_id",
+      "colunas_referidas": "id"
+    },
+    {
+      "conname": "staff_messages_sender_id_fkey",
+      "tabela": "staff_messages",
+      "referenciada": "profiles",
+      "deltype": "r",
+      "colunas_locais": "sender_id",
+      "colunas_referidas": "id"
+    },
+    {
+      "conname": "staff_presence_profile_id_fkey",
+      "tabela": "staff_presence",
+      "referenciada": "profiles",
+      "deltype": "c",
+      "colunas_locais": "profile_id",
+      "colunas_referidas": "id"
+    },
+    {
+      "conname": "staff_schools_profile_id_fkey",
+      "tabela": "staff_schools",
+      "referenciada": "profiles",
+      "deltype": "c",
+      "colunas_locais": "profile_id",
+      "colunas_referidas": "id"
+    },
+    {
+      "conname": "staff_security_audit_actor_id_fkey",
+      "tabela": "staff_security_audit",
+      "referenciada": "profiles",
+      "deltype": "n",
+      "colunas_locais": "actor_id",
+      "colunas_referidas": "id"
+    },
+    {
+      "conname": "student_achievements_awarded_by_fkey",
+      "tabela": "student_achievements",
+      "referenciada": "auth.users",
+      "deltype": "a",
+      "colunas_locais": "awarded_by",
+      "colunas_referidas": "id"
+    },
+    {
+      "conname": "student_avatar_configs_profile_id_fkey",
+      "tabela": "student_avatar_configs",
+      "referenciada": "profiles",
+      "deltype": "c",
+      "colunas_locais": "profile_id",
+      "colunas_referidas": "id"
+    },
+    {
+      "conname": "student_avatar_configs_updated_by_fkey",
+      "tabela": "student_avatar_configs",
+      "referenciada": "profiles",
+      "deltype": "a",
+      "colunas_locais": "updated_by",
+      "colunas_referidas": "id"
+    },
+    {
+      "conname": "student_game_sessions_profile_id_fkey",
+      "tabela": "student_game_sessions",
+      "referenciada": "profiles",
+      "deltype": "c",
+      "colunas_locais": "profile_id",
+      "colunas_referidas": "id"
+    },
+    {
+      "conname": "student_location_consent_log_by_profile_id_fkey",
+      "tabela": "student_location_consent_log",
+      "referenciada": "profiles",
+      "deltype": "c",
+      "colunas_locais": "by_profile_id",
+      "colunas_referidas": "id"
+    },
+    {
+      "conname": "student_location_consent_log_profile_id_fkey",
+      "tabela": "student_location_consent_log",
+      "referenciada": "profiles",
+      "deltype": "c",
+      "colunas_locais": "profile_id",
+      "colunas_referidas": "id"
+    },
+    {
+      "conname": "student_location_report_throttle_profile_id_fkey",
+      "tabela": "student_location_report_throttle",
+      "referenciada": "profiles",
+      "deltype": "c",
+      "colunas_locais": "profile_id",
+      "colunas_referidas": "id"
+    },
+    {
+      "conname": "student_location_sharing_profile_id_fkey",
+      "tabela": "student_location_sharing",
+      "referenciada": "profiles",
+      "deltype": "c",
+      "colunas_locais": "profile_id",
+      "colunas_referidas": "id"
+    },
+    {
+      "conname": "student_locations_reported_by_profile_id_fkey",
+      "tabela": "student_locations",
+      "referenciada": "profiles",
+      "deltype": "n",
+      "colunas_locais": "reported_by_profile_id",
+      "colunas_referidas": "id"
+    },
+    {
+      "conname": "student_messages_recipient_id_fkey",
+      "tabela": "student_messages",
+      "referenciada": "profiles",
+      "deltype": "a",
+      "colunas_locais": "recipient_id",
+      "colunas_referidas": "id"
+    },
+    {
+      "conname": "student_messages_sender_id_fkey",
+      "tabela": "student_messages",
+      "referenciada": "profiles",
+      "deltype": "a",
+      "colunas_locais": "sender_id",
+      "colunas_referidas": "id"
+    },
+    {
+      "conname": "student_pairing_attempts_profile_id_fkey",
+      "tabela": "student_pairing_attempts",
+      "referenciada": "profiles",
+      "deltype": "c",
+      "colunas_locais": "profile_id",
+      "colunas_referidas": "id"
+    },
+    {
+      "conname": "student_pairing_codes_guardian_profile_id_fkey",
+      "tabela": "student_pairing_codes",
+      "referenciada": "profiles",
+      "deltype": "c",
+      "colunas_locais": "guardian_profile_id",
+      "colunas_referidas": "id"
+    },
+    {
+      "conname": "student_pairing_codes_used_by_profile_id_fkey",
+      "tabela": "student_pairing_codes",
+      "referenciada": "profiles",
+      "deltype": "n",
+      "colunas_locais": "used_by_profile_id",
+      "colunas_referidas": "id"
+    },
+    {
+      "conname": "student_programs_updated_by_fkey",
+      "tabela": "student_programs",
+      "referenciada": "auth.users",
+      "deltype": "a",
+      "colunas_locais": "updated_by",
+      "colunas_referidas": "id"
+    },
+    {
+      "conname": "student_reading_levels_updated_by_fkey",
+      "tabela": "student_reading_levels",
+      "referenciada": "profiles",
+      "deltype": "a",
+      "colunas_locais": "updated_by",
+      "colunas_referidas": "id"
+    },
+    {
+      "conname": "student_school_profiles_updated_by_fkey",
+      "tabela": "student_school_profiles",
+      "referenciada": "auth.users",
+      "deltype": "a",
+      "colunas_locais": "updated_by",
+      "colunas_referidas": "id"
+    },
+    {
+      "conname": "students_student_profile_id_fkey",
+      "tabela": "students",
+      "referenciada": "profiles",
+      "deltype": "n",
+      "colunas_locais": "student_profile_id",
+      "colunas_referidas": "id"
+    },
+    {
+      "conname": "supervision_action_plans_created_by_fkey",
+      "tabela": "supervision_action_plans",
+      "referenciada": "profiles",
+      "deltype": "a",
+      "colunas_locais": "created_by",
+      "colunas_referidas": "id"
+    },
+    {
+      "conname": "supervision_action_plans_responsible_id_fkey",
+      "tabela": "supervision_action_plans",
+      "referenciada": "profiles",
+      "deltype": "a",
+      "colunas_locais": "responsible_id",
+      "colunas_referidas": "id"
+    },
+    {
+      "conname": "supervision_alerts_acknowledged_by_fkey",
+      "tabela": "supervision_alerts",
+      "referenciada": "profiles",
+      "deltype": "a",
+      "colunas_locais": "acknowledged_by",
+      "colunas_referidas": "id"
+    },
+    {
+      "conname": "supervision_audit_profile_id_fkey",
+      "tabela": "supervision_audit",
+      "referenciada": "profiles",
+      "deltype": "a",
+      "colunas_locais": "profile_id",
+      "colunas_referidas": "id"
+    },
+    {
+      "conname": "supervision_requests_closed_by_fkey",
+      "tabela": "supervision_requests",
+      "referenciada": "profiles",
+      "deltype": "a",
+      "colunas_locais": "closed_by",
+      "colunas_referidas": "id"
+    },
+    {
+      "conname": "supervision_requests_created_by_fkey",
+      "tabela": "supervision_requests",
+      "referenciada": "profiles",
+      "deltype": "a",
+      "colunas_locais": "created_by",
+      "colunas_referidas": "id"
+    },
+    {
+      "conname": "supervision_response_attachments_created_by_fkey",
+      "tabela": "supervision_response_attachments",
+      "referenciada": "profiles",
+      "deltype": "a",
+      "colunas_locais": "created_by",
+      "colunas_referidas": "id"
+    },
+    {
+      "conname": "supervision_responses_created_by_fkey",
+      "tabela": "supervision_responses",
+      "referenciada": "profiles",
+      "deltype": "a",
+      "colunas_locais": "created_by",
+      "colunas_referidas": "id"
+    },
+    {
+      "conname": "supervision_responses_responsible_id_fkey",
+      "tabela": "supervision_responses",
+      "referenciada": "profiles",
+      "deltype": "a",
+      "colunas_locais": "responsible_id",
+      "colunas_referidas": "id"
+    },
+    {
+      "conname": "support_appointments_created_by_fkey",
+      "tabela": "support_appointments",
+      "referenciada": "profiles",
+      "deltype": "a",
+      "colunas_locais": "created_by",
+      "colunas_referidas": "id"
+    },
+    {
+      "conname": "support_appointments_updated_by_fkey",
+      "tabela": "support_appointments",
+      "referenciada": "profiles",
+      "deltype": "a",
+      "colunas_locais": "updated_by",
+      "colunas_referidas": "id"
+    },
+    {
+      "conname": "support_follow_ups_created_by_fkey",
+      "tabela": "support_follow_ups",
+      "referenciada": "profiles",
+      "deltype": "a",
+      "colunas_locais": "created_by",
+      "colunas_referidas": "id"
+    },
+    {
+      "conname": "support_messages_recipient_id_fkey",
+      "tabela": "support_messages",
+      "referenciada": "profiles",
+      "deltype": "a",
+      "colunas_locais": "recipient_id",
+      "colunas_referidas": "id"
+    },
+    {
+      "conname": "support_messages_sender_id_fkey",
+      "tabela": "support_messages",
+      "referenciada": "profiles",
+      "deltype": "a",
+      "colunas_locais": "sender_id",
+      "colunas_referidas": "id"
+    },
+    {
+      "conname": "support_plans_created_by_fkey",
+      "tabela": "support_plans",
+      "referenciada": "profiles",
+      "deltype": "a",
+      "colunas_locais": "created_by",
+      "colunas_referidas": "id"
+    },
+    {
+      "conname": "support_professionals_created_by_fkey",
+      "tabela": "support_professionals",
+      "referenciada": "profiles",
+      "deltype": "a",
+      "colunas_locais": "created_by",
+      "colunas_referidas": "id"
+    },
+    {
+      "conname": "support_professionals_profile_id_fkey",
+      "tabela": "support_professionals",
+      "referenciada": "profiles",
+      "deltype": "n",
+      "colunas_locais": "profile_id",
+      "colunas_referidas": "id"
+    },
+    {
+      "conname": "support_requests_assigned_to_fkey",
+      "tabela": "support_requests",
+      "referenciada": "profiles",
+      "deltype": "a",
+      "colunas_locais": "assigned_to",
+      "colunas_referidas": "id"
+    },
+    {
+      "conname": "support_requests_requester_id_fkey",
+      "tabela": "support_requests",
+      "referenciada": "profiles",
+      "deltype": "a",
+      "colunas_locais": "requester_id",
+      "colunas_referidas": "id"
+    },
+    {
+      "conname": "support_services_created_by_fkey",
+      "tabela": "support_services",
+      "referenciada": "profiles",
+      "deltype": "a",
+      "colunas_locais": "created_by",
+      "colunas_referidas": "id"
+    }
+  ],
+  "vinculos_compostos_nao_contados_por_coluna": [],
+  "vinculos_fora_do_padrao_coluna_referida_id": [],
+  "universo": {
+    "contas_no_banco": 28,
+    "contas_de_teste_por_sql": 19,
+    "contas_de_teste_por_admin": 19,
+    "so_no_sql": 0,
+    "so_no_admin": 0
+  },
+  "linhas_por_vinculo": [
+    {
+      "conname": "access_requests_reviewed_by_fkey",
+      "linhas_da_tabela": 12,
+      "linhas_de_contas_teste": 0
+    },
+    {
+      "conname": "aee_activities_created_by_fkey",
+      "linhas_da_tabela": 0,
+      "linhas_de_contas_teste": 0
+    },
+    {
+      "conname": "aee_activity_recommendations_teacher_id_fkey",
+      "linhas_da_tabela": 0,
+      "linhas_de_contas_teste": 0
+    },
+    {
+      "conname": "aee_adaptations_created_by_fkey",
+      "linhas_da_tabela": 0,
+      "linhas_de_contas_teste": 0
+    },
+    {
+      "conname": "aee_adaptations_teacher_id_fkey",
+      "linhas_da_tabela": 0,
+      "linhas_de_contas_teste": 0
+    },
+    {
+      "conname": "aee_attendance_teacher_id_fkey",
+      "linhas_da_tabela": 0,
+      "linhas_de_contas_teste": 0
+    },
+    {
+      "conname": "aee_game_assignments_assigned_by_fkey",
+      "linhas_da_tabela": 0,
+      "linhas_de_contas_teste": 0
+    },
+    {
+      "conname": "aee_game_assignments_teacher_id_fkey",
+      "linhas_da_tabela": 0,
+      "linhas_de_contas_teste": 0
+    },
+    {
+      "conname": "aee_game_catalog_created_by_fkey",
+      "linhas_da_tabela": 12,
+      "linhas_de_contas_teste": 0
+    },
+    {
+      "conname": "aee_game_favorites_profile_id_fkey",
+      "linhas_da_tabela": 0,
+      "linhas_de_contas_teste": 0
+    },
+    {
+      "conname": "aee_game_sessions_profile_id_fkey",
+      "linhas_da_tabela": 0,
+      "linhas_de_contas_teste": 0
+    },
+    {
+      "conname": "aee_materials_created_by_fkey",
+      "linhas_da_tabela": 0,
+      "linhas_de_contas_teste": 0
+    },
+    {
+      "conname": "aee_materials_teacher_id_fkey",
+      "linhas_da_tabela": 0,
+      "linhas_de_contas_teste": 0
+    },
+    {
+      "conname": "aee_messages_recipient_id_fkey",
+      "linhas_da_tabela": 0,
+      "linhas_de_contas_teste": 0
+    },
+    {
+      "conname": "aee_messages_sender_id_fkey",
+      "linhas_da_tabela": 0,
+      "linhas_de_contas_teste": 0
+    },
+    {
+      "conname": "aee_plan_reviews_created_by_fkey",
+      "linhas_da_tabela": 0,
+      "linhas_de_contas_teste": 0
+    },
+    {
+      "conname": "aee_plans_created_by_fkey",
+      "linhas_da_tabela": 0,
+      "linhas_de_contas_teste": 0
+    },
+    {
+      "conname": "aee_plans_updated_by_fkey",
+      "linhas_da_tabela": 0,
+      "linhas_de_contas_teste": 0
+    },
+    {
+      "conname": "aee_progress_teacher_id_fkey",
+      "linhas_da_tabela": 0,
+      "linhas_de_contas_teste": 0
+    },
+    {
+      "conname": "aee_resources_created_by_fkey",
+      "linhas_da_tabela": 0,
+      "linhas_de_contas_teste": 0
+    },
+    {
+      "conname": "aee_resources_teacher_id_fkey",
+      "linhas_da_tabela": 0,
+      "linhas_de_contas_teste": 0
+    },
+    {
+      "conname": "aee_sessions_teacher_id_fkey",
+      "linhas_da_tabela": 0,
+      "linhas_de_contas_teste": 0
+    },
+    {
+      "conname": "aee_student_links_teacher_id_fkey",
+      "linhas_da_tabela": 0,
+      "linhas_de_contas_teste": 0
+    },
+    {
+      "conname": "aee_student_profiles_updated_by_fkey",
+      "linhas_da_tabela": 0,
+      "linhas_de_contas_teste": 0
+    },
+    {
+      "conname": "announcement_reads_profile_id_fkey",
+      "linhas_da_tabela": 0,
+      "linhas_de_contas_teste": 0
+    },
+    {
+      "conname": "announcement_recipients_recipient_id_fkey",
+      "linhas_da_tabela": 0,
+      "linhas_de_contas_teste": 0
+    },
+    {
+      "conname": "announcements_published_by_fkey",
+      "linhas_da_tabela": 1,
+      "linhas_de_contas_teste": 0
+    },
+    {
+      "conname": "attendance_entered_by_fkey",
+      "linhas_da_tabela": 25,
+      "linhas_de_contas_teste": 0
+    },
+    {
+      "conname": "identities_user_id_fkey",
+      "linhas_da_tabela": 28,
+      "linhas_de_contas_teste": 19
+    },
+    {
+      "conname": "mfa_factors_user_id_fkey",
+      "linhas_da_tabela": 0,
+      "linhas_de_contas_teste": 0
+    },
+    {
+      "conname": "mfa_recovery_code_sets_user_id_fkey",
+      "linhas_da_tabela": 0,
+      "linhas_de_contas_teste": 0
+    },
+    {
+      "conname": "oauth_authorizations_user_id_fkey",
+      "linhas_da_tabela": 0,
+      "linhas_de_contas_teste": 0
+    },
+    {
+      "conname": "oauth_consents_user_id_fkey",
+      "linhas_da_tabela": 0,
+      "linhas_de_contas_teste": 0
+    },
+    {
+      "conname": "one_time_tokens_user_id_fkey",
+      "linhas_da_tabela": 0,
+      "linhas_de_contas_teste": 0
+    },
+    {
+      "conname": "scim_users_user_id_fkey",
+      "linhas_da_tabela": 0,
+      "linhas_de_contas_teste": 0
+    },
+    {
+      "conname": "sessions_user_id_fkey",
+      "linhas_da_tabela": 46,
+      "linhas_de_contas_teste": 45
+    },
+    {
+      "conname": "webauthn_challenges_user_id_fkey",
+      "linhas_da_tabela": 0,
+      "linhas_de_contas_teste": 0
+    },
+    {
+      "conname": "webauthn_credentials_user_id_fkey",
+      "linhas_da_tabela": 0,
+      "linhas_de_contas_teste": 0
+    },
+    {
+      "conname": "bfr_coordination_messages_sender_id_fkey",
+      "linhas_da_tabela": 0,
+      "linhas_de_contas_teste": 0
+    },
+    {
+      "conname": "bfr_coordination_threads_assigned_to_fkey",
+      "linhas_da_tabela": 0,
+      "linhas_de_contas_teste": 0
+    },
+    {
+      "conname": "bfr_coordination_threads_guardian_id_fkey",
+      "linhas_da_tabela": 0,
+      "linhas_de_contas_teste": 0
+    },
+    {
+      "conname": "bfr_grade_audit_changed_by_fkey",
+      "linhas_da_tabela": 0,
+      "linhas_de_contas_teste": 0
+    },
+    {
+      "conname": "bfr_grading_rules_updated_by_fkey",
+      "linhas_da_tabela": 4,
+      "linhas_de_contas_teste": 0
+    },
+    {
+      "conname": "bfr_lesson_attendance_entered_by_fkey",
+      "linhas_da_tabela": 268,
+      "linhas_de_contas_teste": 0
+    },
+    {
+      "conname": "bfr_lesson_attendance_updated_by_fkey",
+      "linhas_da_tabela": 268,
+      "linhas_de_contas_teste": 0
+    },
+    {
+      "conname": "bfr_lesson_attendance_audit_changed_by_fkey",
+      "linhas_da_tabela": 0,
+      "linhas_de_contas_teste": 0
+    },
+    {
+      "conname": "bfr_municipal_access_grants_granted_by_fkey",
+      "linhas_da_tabela": 5,
+      "linhas_de_contas_teste": 5
+    },
+    {
+      "conname": "bfr_municipal_access_grants_profile_id_fkey",
+      "linhas_da_tabela": 5,
+      "linhas_de_contas_teste": 5
+    },
+    {
+      "conname": "bfr_municipal_access_grants_revoked_by_fkey",
+      "linhas_da_tabela": 5,
+      "linhas_de_contas_teste": 0
+    },
+    {
+      "conname": "bfr_municipal_audit_actor_fkey",
+      "linhas_da_tabela": 0,
+      "linhas_de_contas_teste": 0
+    },
+    {
+      "conname": "bfr_schedule_changes_changed_by_fkey",
+      "linhas_da_tabela": 630,
+      "linhas_de_contas_teste": 0
+    },
+    {
+      "conname": "bfr_schedule_import_runs_started_by_fkey",
+      "linhas_da_tabela": 1,
+      "linhas_de_contas_teste": 0
+    },
+    {
+      "conname": "bfr_schedule_versions_imported_by_fkey",
+      "linhas_da_tabela": 1,
+      "linhas_de_contas_teste": 0
+    },
+    {
+      "conname": "bfr_schedule_versions_published_by_fkey",
+      "linhas_da_tabela": 1,
+      "linhas_de_contas_teste": 0
+    },
+    {
+      "conname": "bfr_school_key_map_confirmed_by_fkey",
+      "linhas_da_tabela": 6,
+      "linhas_de_contas_teste": 0
+    },
+    {
+      "conname": "bfr_teacher_class_subjects_profile_id_fkey",
+      "linhas_da_tabela": 5,
+      "linhas_de_contas_teste": 0
+    },
+    {
+      "conname": "bfr_teacher_content_profile_id_fkey",
+      "linhas_da_tabela": 0,
+      "linhas_de_contas_teste": 0
+    },
+    {
+      "conname": "bfr_teacher_diary_profile_id_fkey",
+      "linhas_da_tabela": 0,
+      "linhas_de_contas_teste": 0
+    },
+    {
+      "conname": "bfr_teacher_directory_profile_id_fkey",
+      "linhas_da_tabela": 35,
+      "linhas_de_contas_teste": 1
+    },
+    {
+      "conname": "bfr_teacher_events_profile_id_fkey",
+      "linhas_da_tabela": 0,
+      "linhas_de_contas_teste": 0
+    },
+    {
+      "conname": "bfr_teacher_plans_profile_id_fkey",
+      "linhas_da_tabela": 0,
+      "linhas_de_contas_teste": 0
+    },
+    {
+      "conname": "collaboration_notifications_actor_id_fkey",
+      "linhas_da_tabela": 1,
+      "linhas_de_contas_teste": 0
+    },
+    {
+      "conname": "collaboration_notifications_recipient_id_fkey",
+      "linhas_da_tabela": 1,
+      "linhas_de_contas_teste": 0
+    },
+    {
+      "conname": "collaboration_project_members_added_by_fkey",
+      "linhas_da_tabela": 0,
+      "linhas_de_contas_teste": 0
+    },
+    {
+      "conname": "collaboration_project_members_profile_id_fkey",
+      "linhas_da_tabela": 0,
+      "linhas_de_contas_teste": 0
+    },
+    {
+      "conname": "collaboration_project_stages_completed_by_fkey",
+      "linhas_da_tabela": 0,
+      "linhas_de_contas_teste": 0
+    },
+    {
+      "conname": "collaboration_projects_created_by_fkey",
+      "linhas_da_tabela": 0,
+      "linhas_de_contas_teste": 0
+    },
+    {
+      "conname": "collaboration_projects_owner_id_fkey",
+      "linhas_da_tabela": 0,
+      "linhas_de_contas_teste": 0
+    },
+    {
+      "conname": "collaboration_task_attachments_uploaded_by_fkey",
+      "linhas_da_tabela": 0,
+      "linhas_de_contas_teste": 0
+    },
+    {
+      "conname": "collaboration_task_comments_author_id_fkey",
+      "linhas_da_tabela": 0,
+      "linhas_de_contas_teste": 0
+    },
+    {
+      "conname": "collaboration_task_members_added_by_fkey",
+      "linhas_da_tabela": 0,
+      "linhas_de_contas_teste": 0
+    },
+    {
+      "conname": "collaboration_task_members_profile_id_fkey",
+      "linhas_da_tabela": 0,
+      "linhas_de_contas_teste": 0
+    },
+    {
+      "conname": "collaboration_tasks_completed_by_fkey",
+      "linhas_da_tabela": 0,
+      "linhas_de_contas_teste": 0
+    },
+    {
+      "conname": "collaboration_tasks_created_by_fkey",
+      "linhas_da_tabela": 0,
+      "linhas_de_contas_teste": 0
+    },
+    {
+      "conname": "collaboration_tasks_owner_id_fkey",
+      "linhas_da_tabela": 0,
+      "linhas_de_contas_teste": 0
+    },
+    {
+      "conname": "collaboration_tasks_updated_by_fkey",
+      "linhas_da_tabela": 0,
+      "linhas_de_contas_teste": 0
+    },
+    {
+      "conname": "director_routine_items_owner_id_fkey",
+      "linhas_da_tabela": 0,
+      "linhas_de_contas_teste": 0
+    },
+    {
+      "conname": "entry_restrictions_created_by_fkey",
+      "linhas_da_tabela": 2,
+      "linhas_de_contas_teste": 0
+    },
+    {
+      "conname": "entry_restrictions_resolved_by_fkey",
+      "linhas_da_tabela": 2,
+      "linhas_de_contas_teste": 0
+    },
+    {
+      "conname": "gate_checkins_gatekeeper_id_fkey",
+      "linhas_da_tabela": 272,
+      "linhas_de_contas_teste": 0
+    },
+    {
+      "conname": "gate_checkins_guardian_confirmed_by_fkey",
+      "linhas_da_tabela": 272,
+      "linhas_de_contas_teste": 0
+    },
+    {
+      "conname": "gate_entry_alerts_acknowledged_by_fkey",
+      "linhas_da_tabela": 1,
+      "linhas_de_contas_teste": 0
+    },
+    {
+      "conname": "gate_entry_alerts_gatekeeper_id_fkey",
+      "linhas_da_tabela": 1,
+      "linhas_de_contas_teste": 0
+    },
+    {
+      "conname": "gate_entry_alerts_resolved_by_fkey",
+      "linhas_da_tabela": 1,
+      "linhas_de_contas_teste": 0
+    },
+    {
+      "conname": "gate_messages_sender_id_fkey",
+      "linhas_da_tabela": 0,
+      "linhas_de_contas_teste": 0
+    },
+    {
+      "conname": "grades_entered_by_fkey",
+      "linhas_da_tabela": 112,
+      "linhas_de_contas_teste": 0
+    },
+    {
+      "conname": "guardian_students_linked_by_fkey",
+      "linhas_da_tabela": 1,
+      "linhas_de_contas_teste": 0
+    },
+    {
+      "conname": "guardian_students_profile_id_fkey",
+      "linhas_da_tabela": 1,
+      "linhas_de_contas_teste": 0
+    },
+    {
+      "conname": "instagram_accounts_created_by_fkey",
+      "linhas_da_tabela": 0,
+      "linhas_de_contas_teste": 0
+    },
+    {
+      "conname": "instagram_posts_reviewed_by_fkey",
+      "linhas_da_tabela": 0,
+      "linhas_de_contas_teste": 0
+    },
+    {
+      "conname": "internal_chat_message_reactions_profile_id_fkey",
+      "linhas_da_tabela": 0,
+      "linhas_de_contas_teste": 0
+    },
+    {
+      "conname": "internal_chat_message_reports_reporter_id_fkey",
+      "linhas_da_tabela": 0,
+      "linhas_de_contas_teste": 0
+    },
+    {
+      "conname": "internal_chat_message_reports_reviewed_by_fkey",
+      "linhas_da_tabela": 0,
+      "linhas_de_contas_teste": 0
+    },
+    {
+      "conname": "internal_chat_messages_sender_id_fkey",
+      "linhas_da_tabela": 2,
+      "linhas_de_contas_teste": 0
+    },
+    {
+      "conname": "internal_chat_presence_profile_id_fkey",
+      "linhas_da_tabela": 11,
+      "linhas_de_contas_teste": 5
+    },
+    {
+      "conname": "internal_chat_room_members_profile_id_fkey",
+      "linhas_da_tabela": 5,
+      "linhas_de_contas_teste": 0
+    },
+    {
+      "conname": "internal_chat_threads_created_by_fkey",
+      "linhas_da_tabela": 1,
+      "linhas_de_contas_teste": 0
+    },
+    {
+      "conname": "learning_action_items_created_by_fkey",
+      "linhas_da_tabela": 0,
+      "linhas_de_contas_teste": 0
+    },
+    {
+      "conname": "learning_action_plans_approved_by_fkey",
+      "linhas_da_tabela": 0,
+      "linhas_de_contas_teste": 0
+    },
+    {
+      "conname": "learning_action_plans_created_by_fkey",
+      "linhas_da_tabela": 0,
+      "linhas_de_contas_teste": 0
+    },
+    {
+      "conname": "learning_action_plans_responsible_id_fkey",
+      "linhas_da_tabela": 0,
+      "linhas_de_contas_teste": 0
+    },
+    {
+      "conname": "learning_assessment_results_recorded_by_fkey",
+      "linhas_da_tabela": 0,
+      "linhas_de_contas_teste": 0
+    },
+    {
+      "conname": "learning_assessments_created_by_fkey",
+      "linhas_da_tabela": 0,
+      "linhas_de_contas_teste": 0
+    },
+    {
+      "conname": "learning_evidence_created_by_fkey",
+      "linhas_da_tabela": 0,
+      "linhas_de_contas_teste": 0
+    },
+    {
+      "conname": "learning_external_results_imported_by_fkey",
+      "linhas_da_tabela": 0,
+      "linhas_de_contas_teste": 0
+    },
+    {
+      "conname": "learning_goals_created_by_fkey",
+      "linhas_da_tabela": 0,
+      "linhas_de_contas_teste": 0
+    },
+    {
+      "conname": "learning_goals_teacher_id_fkey",
+      "linhas_da_tabela": 0,
+      "linhas_de_contas_teste": 0
+    },
+    {
+      "conname": "learning_indicator_settings_updated_by_fkey",
+      "linhas_da_tabela": 1,
+      "linhas_de_contas_teste": 0
+    },
+    {
+      "conname": "learning_interventions_created_by_fkey",
+      "linhas_da_tabela": 0,
+      "linhas_de_contas_teste": 0
+    },
+    {
+      "conname": "learning_meeting_actions_responsible_id_fkey",
+      "linhas_da_tabela": 0,
+      "linhas_de_contas_teste": 0
+    },
+    {
+      "conname": "learning_meetings_created_by_fkey",
+      "linhas_da_tabela": 0,
+      "linhas_de_contas_teste": 0
+    },
+    {
+      "conname": "learning_notifications_profile_id_fkey",
+      "linhas_da_tabela": 0,
+      "linhas_de_contas_teste": 0
+    },
+    {
+      "conname": "learning_pedagogical_reports_generated_by_fkey",
+      "linhas_da_tabela": 0,
+      "linhas_de_contas_teste": 0
+    },
+    {
+      "conname": "learning_skills_created_by_fkey",
+      "linhas_da_tabela": 0,
+      "linhas_de_contas_teste": 0
+    },
+    {
+      "conname": "learning_student_progress_recorded_by_fkey",
+      "linhas_da_tabela": 0,
+      "linhas_de_contas_teste": 0
+    },
+    {
+      "conname": "learning_subjects_created_by_fkey",
+      "linhas_da_tabela": 0,
+      "linhas_de_contas_teste": 0
+    },
+    {
+      "conname": "learning_teacher_actions_assigned_by_fkey",
+      "linhas_da_tabela": 0,
+      "linhas_de_contas_teste": 0
+    },
+    {
+      "conname": "learning_teacher_actions_teacher_id_fkey",
+      "linhas_da_tabela": 0,
+      "linhas_de_contas_teste": 0
+    },
+    {
+      "conname": "literacy_activity_attempts_profile_id_fkey",
+      "linhas_da_tabela": 0,
+      "linhas_de_contas_teste": 0
+    },
+    {
+      "conname": "literacy_progress_updated_by_fkey",
+      "linhas_da_tabela": 0,
+      "linhas_de_contas_teste": 0
+    },
+    {
+      "conname": "meeting_notifications_recipient_id_fkey",
+      "linhas_da_tabela": 0,
+      "linhas_de_contas_teste": 0
+    },
+    {
+      "conname": "notification_preferences_profile_id_fkey",
+      "linhas_da_tabela": 1,
+      "linhas_de_contas_teste": 0
+    },
+    {
+      "conname": "occurrences_created_by_fkey",
+      "linhas_da_tabela": 0,
+      "linhas_de_contas_teste": 0
+    },
+    {
+      "conname": "photos_uploaded_by_fkey",
+      "linhas_da_tabela": 0,
+      "linhas_de_contas_teste": 0
+    },
+    {
+      "conname": "poll_votes_profile_id_fkey",
+      "linhas_da_tabela": 0,
+      "linhas_de_contas_teste": 0
+    },
+    {
+      "conname": "polls_created_by_fkey",
+      "linhas_da_tabela": 0,
+      "linhas_de_contas_teste": 0
+    },
+    {
+      "conname": "profiles_id_fkey",
+      "linhas_da_tabela": 28,
+      "linhas_de_contas_teste": 19
+    },
+    {
+      "conname": "project_photos_uploaded_by_fkey",
+      "linhas_da_tabela": 32,
+      "linhas_de_contas_teste": 0
+    },
+    {
+      "conname": "project_results_updated_by_fkey",
+      "linhas_da_tabela": 0,
+      "linhas_de_contas_teste": 0
+    },
+    {
+      "conname": "projects_created_by_fkey",
+      "linhas_da_tabela": 5,
+      "linhas_de_contas_teste": 0
+    },
+    {
+      "conname": "psychology_articulations_created_by_fkey",
+      "linhas_da_tabela": 0,
+      "linhas_de_contas_teste": 0
+    },
+    {
+      "conname": "psychology_articulations_teacher_id_fkey",
+      "linhas_da_tabela": 0,
+      "linhas_de_contas_teste": 0
+    },
+    {
+      "conname": "psychology_meetings_created_by_fkey",
+      "linhas_da_tabela": 0,
+      "linhas_de_contas_teste": 0
+    },
+    {
+      "conname": "psychology_preventive_actions_created_by_fkey",
+      "linhas_da_tabela": 0,
+      "linhas_de_contas_teste": 0
+    },
+    {
+      "conname": "psychology_referrals_created_by_fkey",
+      "linhas_da_tabela": 0,
+      "linhas_de_contas_teste": 0
+    },
+    {
+      "conname": "psychology_referrals_responsible_id_fkey",
+      "linhas_da_tabela": 0,
+      "linhas_de_contas_teste": 0
+    },
+    {
+      "conname": "psychology_returns_created_by_fkey",
+      "linhas_da_tabela": 0,
+      "linhas_de_contas_teste": 0
+    },
+    {
+      "conname": "psychology_returns_reviewed_by_fkey",
+      "linhas_da_tabela": 0,
+      "linhas_de_contas_teste": 0
+    },
+    {
+      "conname": "push_notify_throttle_profile_id_fkey",
+      "linhas_da_tabela": 0,
+      "linhas_de_contas_teste": 0
+    },
+    {
+      "conname": "push_subscriptions_profile_id_fkey",
+      "linhas_da_tabela": 0,
+      "linhas_de_contas_teste": 0
+    },
+    {
+      "conname": "route_incidents_monitor_id_fkey",
+      "linhas_da_tabela": 0,
+      "linhas_de_contas_teste": 0
+    },
+    {
+      "conname": "school_activities_published_by_fkey",
+      "linhas_da_tabela": 0,
+      "linhas_de_contas_teste": 0
+    },
+    {
+      "conname": "school_documents_created_by_fkey",
+      "linhas_da_tabela": 226,
+      "linhas_de_contas_teste": 0
+    },
+    {
+      "conname": "school_documents_recipient_id_fkey",
+      "linhas_da_tabela": 226,
+      "linhas_de_contas_teste": 0
+    },
+    {
+      "conname": "school_meeting_recipients_recipient_id_fkey",
+      "linhas_da_tabela": 0,
+      "linhas_de_contas_teste": 0
+    },
+    {
+      "conname": "school_meetings_created_by_fkey",
+      "linhas_da_tabela": 0,
+      "linhas_de_contas_teste": 0
+    },
+    {
+      "conname": "school_notification_reads_profile_id_fkey",
+      "linhas_da_tabela": 2,
+      "linhas_de_contas_teste": 0
+    },
+    {
+      "conname": "school_poll_responses_respondent_id_fkey",
+      "linhas_da_tabela": 0,
+      "linhas_de_contas_teste": 0
+    },
+    {
+      "conname": "school_polls_created_by_fkey",
+      "linhas_da_tabela": 1,
+      "linhas_de_contas_teste": 0
+    },
+    {
+      "conname": "school_program_contents_updated_by_fkey",
+      "linhas_da_tabela": 4,
+      "linhas_de_contas_teste": 0
+    },
+    {
+      "conname": "school_videos_created_by_fkey",
+      "linhas_da_tabela": 0,
+      "linhas_de_contas_teste": 0
+    },
+    {
+      "conname": "secretary_profile_change_requests_requester_id_fkey",
+      "linhas_da_tabela": 1,
+      "linhas_de_contas_teste": 0
+    },
+    {
+      "conname": "secretary_profile_change_requests_reviewed_by_fkey",
+      "linhas_da_tabela": 1,
+      "linhas_de_contas_teste": 0
+    },
+    {
+      "conname": "secretary_request_attachments_uploaded_by_fkey",
+      "linhas_da_tabela": 0,
+      "linhas_de_contas_teste": 0
+    },
+    {
+      "conname": "secretary_request_events_created_by_fkey",
+      "linhas_da_tabela": 0,
+      "linhas_de_contas_teste": 0
+    },
+    {
+      "conname": "secretary_request_messages_recipient_id_fkey",
+      "linhas_da_tabela": 0,
+      "linhas_de_contas_teste": 0
+    },
+    {
+      "conname": "secretary_request_messages_sender_id_fkey",
+      "linhas_da_tabela": 0,
+      "linhas_de_contas_teste": 0
+    },
+    {
+      "conname": "secretary_requests_requester_id_fkey",
+      "linhas_da_tabela": 0,
+      "linhas_de_contas_teste": 0
+    },
+    {
+      "conname": "secretary_requests_reviewed_by_fkey",
+      "linhas_da_tabela": 0,
+      "linhas_de_contas_teste": 0
+    },
+    {
+      "conname": "sports_athletes_created_by_fkey",
+      "linhas_da_tabela": 0,
+      "linhas_de_contas_teste": 0
+    },
+    {
+      "conname": "sports_audit_log_created_by_fkey",
+      "linhas_da_tabela": 0,
+      "linhas_de_contas_teste": 0
+    },
+    {
+      "conname": "sports_championships_created_by_fkey",
+      "linhas_da_tabela": 0,
+      "linhas_de_contas_teste": 0
+    },
+    {
+      "conname": "sports_match_events_created_by_fkey",
+      "linhas_da_tabela": 0,
+      "linhas_de_contas_teste": 0
+    },
+    {
+      "conname": "sports_match_followers_profile_id_fkey",
+      "linhas_da_tabela": 0,
+      "linhas_de_contas_teste": 0
+    },
+    {
+      "conname": "sports_matches_created_by_fkey",
+      "linhas_da_tabela": 0,
+      "linhas_de_contas_teste": 0
+    },
+    {
+      "conname": "sports_matches_updated_by_fkey",
+      "linhas_da_tabela": 0,
+      "linhas_de_contas_teste": 0
+    },
+    {
+      "conname": "sports_schools_created_by_fkey",
+      "linhas_da_tabela": 6,
+      "linhas_de_contas_teste": 0
+    },
+    {
+      "conname": "sports_teams_created_by_fkey",
+      "linhas_da_tabela": 0,
+      "linhas_de_contas_teste": 0
+    },
+    {
+      "conname": "staff_announcement_reads_profile_id_fkey",
+      "linhas_da_tabela": 0,
+      "linhas_de_contas_teste": 0
+    },
+    {
+      "conname": "staff_announcements_published_by_fkey",
+      "linhas_da_tabela": 0,
+      "linhas_de_contas_teste": 0
+    },
+    {
+      "conname": "staff_channel_members_added_by_fkey",
+      "linhas_da_tabela": 0,
+      "linhas_de_contas_teste": 0
+    },
+    {
+      "conname": "staff_channel_members_profile_id_fkey",
+      "linhas_da_tabela": 0,
+      "linhas_de_contas_teste": 0
+    },
+    {
+      "conname": "staff_channels_archived_by_fkey",
+      "linhas_da_tabela": 5,
+      "linhas_de_contas_teste": 0
+    },
+    {
+      "conname": "staff_channels_created_by_fkey",
+      "linhas_da_tabela": 5,
+      "linhas_de_contas_teste": 0
+    },
+    {
+      "conname": "staff_message_attachments_uploaded_by_fkey",
+      "linhas_da_tabela": 0,
+      "linhas_de_contas_teste": 0
+    },
+    {
+      "conname": "staff_message_forwards_forwarded_by_fkey",
+      "linhas_da_tabela": 0,
+      "linhas_de_contas_teste": 0
+    },
+    {
+      "conname": "staff_message_reads_profile_id_fkey",
+      "linhas_da_tabela": 0,
+      "linhas_de_contas_teste": 0
+    },
+    {
+      "conname": "staff_messages_recipient_id_fkey",
+      "linhas_da_tabela": 0,
+      "linhas_de_contas_teste": 0
+    },
+    {
+      "conname": "staff_messages_sender_id_fkey",
+      "linhas_da_tabela": 0,
+      "linhas_de_contas_teste": 0
+    },
+    {
+      "conname": "staff_presence_profile_id_fkey",
+      "linhas_da_tabela": 0,
+      "linhas_de_contas_teste": 0
+    },
+    {
+      "conname": "staff_schools_profile_id_fkey",
+      "linhas_da_tabela": 6,
+      "linhas_de_contas_teste": 4
+    },
+    {
+      "conname": "staff_security_audit_actor_id_fkey",
+      "linhas_da_tabela": 180,
+      "linhas_de_contas_teste": 0
+    },
+    {
+      "conname": "student_achievements_awarded_by_fkey",
+      "linhas_da_tabela": 0,
+      "linhas_de_contas_teste": 0
+    },
+    {
+      "conname": "student_avatar_configs_profile_id_fkey",
+      "linhas_da_tabela": 0,
+      "linhas_de_contas_teste": 0
+    },
+    {
+      "conname": "student_avatar_configs_updated_by_fkey",
+      "linhas_da_tabela": 0,
+      "linhas_de_contas_teste": 0
+    },
+    {
+      "conname": "student_game_sessions_profile_id_fkey",
+      "linhas_da_tabela": 0,
+      "linhas_de_contas_teste": 0
+    },
+    {
+      "conname": "student_location_consent_log_by_profile_id_fkey",
+      "linhas_da_tabela": 0,
+      "linhas_de_contas_teste": 0
+    },
+    {
+      "conname": "student_location_consent_log_profile_id_fkey",
+      "linhas_da_tabela": 0,
+      "linhas_de_contas_teste": 0
+    },
+    {
+      "conname": "student_location_report_throttle_profile_id_fkey",
+      "linhas_da_tabela": 0,
+      "linhas_de_contas_teste": 0
+    },
+    {
+      "conname": "student_location_sharing_profile_id_fkey",
+      "linhas_da_tabela": 0,
+      "linhas_de_contas_teste": 0
+    },
+    {
+      "conname": "student_locations_reported_by_profile_id_fkey",
+      "linhas_da_tabela": 0,
+      "linhas_de_contas_teste": 0
+    },
+    {
+      "conname": "student_messages_recipient_id_fkey",
+      "linhas_da_tabela": 1,
+      "linhas_de_contas_teste": 0
+    },
+    {
+      "conname": "student_messages_sender_id_fkey",
+      "linhas_da_tabela": 1,
+      "linhas_de_contas_teste": 0
+    },
+    {
+      "conname": "student_pairing_attempts_profile_id_fkey",
+      "linhas_da_tabela": 0,
+      "linhas_de_contas_teste": 0
+    },
+    {
+      "conname": "student_pairing_codes_guardian_profile_id_fkey",
+      "linhas_da_tabela": 0,
+      "linhas_de_contas_teste": 0
+    },
+    {
+      "conname": "student_pairing_codes_used_by_profile_id_fkey",
+      "linhas_da_tabela": 0,
+      "linhas_de_contas_teste": 0
+    },
+    {
+      "conname": "student_programs_updated_by_fkey",
+      "linhas_da_tabela": 2,
+      "linhas_de_contas_teste": 0
+    },
+    {
+      "conname": "student_reading_levels_updated_by_fkey",
+      "linhas_da_tabela": 0,
+      "linhas_de_contas_teste": 0
+    },
+    {
+      "conname": "student_school_profiles_updated_by_fkey",
+      "linhas_da_tabela": 848,
+      "linhas_de_contas_teste": 0
+    },
+    {
+      "conname": "students_student_profile_id_fkey",
+      "linhas_da_tabela": 848,
+      "linhas_de_contas_teste": 0
+    },
+    {
+      "conname": "supervision_action_plans_created_by_fkey",
+      "linhas_da_tabela": 0,
+      "linhas_de_contas_teste": 0
+    },
+    {
+      "conname": "supervision_action_plans_responsible_id_fkey",
+      "linhas_da_tabela": 0,
+      "linhas_de_contas_teste": 0
+    },
+    {
+      "conname": "supervision_alerts_acknowledged_by_fkey",
+      "linhas_da_tabela": 0,
+      "linhas_de_contas_teste": 0
+    },
+    {
+      "conname": "supervision_audit_profile_id_fkey",
+      "linhas_da_tabela": 0,
+      "linhas_de_contas_teste": 0
+    },
+    {
+      "conname": "supervision_requests_closed_by_fkey",
+      "linhas_da_tabela": 0,
+      "linhas_de_contas_teste": 0
+    },
+    {
+      "conname": "supervision_requests_created_by_fkey",
+      "linhas_da_tabela": 0,
+      "linhas_de_contas_teste": 0
+    },
+    {
+      "conname": "supervision_response_attachments_created_by_fkey",
+      "linhas_da_tabela": 0,
+      "linhas_de_contas_teste": 0
+    },
+    {
+      "conname": "supervision_responses_created_by_fkey",
+      "linhas_da_tabela": 0,
+      "linhas_de_contas_teste": 0
+    },
+    {
+      "conname": "supervision_responses_responsible_id_fkey",
+      "linhas_da_tabela": 0,
+      "linhas_de_contas_teste": 0
+    },
+    {
+      "conname": "support_appointments_created_by_fkey",
+      "linhas_da_tabela": 0,
+      "linhas_de_contas_teste": 0
+    },
+    {
+      "conname": "support_appointments_updated_by_fkey",
+      "linhas_da_tabela": 0,
+      "linhas_de_contas_teste": 0
+    },
+    {
+      "conname": "support_follow_ups_created_by_fkey",
+      "linhas_da_tabela": 0,
+      "linhas_de_contas_teste": 0
+    },
+    {
+      "conname": "support_messages_recipient_id_fkey",
+      "linhas_da_tabela": 0,
+      "linhas_de_contas_teste": 0
+    },
+    {
+      "conname": "support_messages_sender_id_fkey",
+      "linhas_da_tabela": 0,
+      "linhas_de_contas_teste": 0
+    },
+    {
+      "conname": "support_plans_created_by_fkey",
+      "linhas_da_tabela": 0,
+      "linhas_de_contas_teste": 0
+    },
+    {
+      "conname": "support_professionals_created_by_fkey",
+      "linhas_da_tabela": 2,
+      "linhas_de_contas_teste": 0
+    },
+    {
+      "conname": "support_professionals_profile_id_fkey",
+      "linhas_da_tabela": 2,
+      "linhas_de_contas_teste": 0
+    },
+    {
+      "conname": "support_requests_assigned_to_fkey",
+      "linhas_da_tabela": 1,
+      "linhas_de_contas_teste": 0
+    },
+    {
+      "conname": "support_requests_requester_id_fkey",
+      "linhas_da_tabela": 1,
+      "linhas_de_contas_teste": 0
+    },
+    {
+      "conname": "support_services_created_by_fkey",
+      "linhas_da_tabela": 7,
+      "linhas_de_contas_teste": 0
+    }
+  ],
+  "linhas_por_vinculo_e_conta": [
+    {
+      "conname": "identities_user_id_fkey",
+      "referencia": "04d52df9-4491-480f-bdbb-aab69b738a34",
+      "linhas": 1
+    },
+    {
+      "conname": "identities_user_id_fkey",
+      "referencia": "101e9ade-c1e9-42bd-b487-fc5d78e54eb7",
+      "linhas": 1
+    },
+    {
+      "conname": "identities_user_id_fkey",
+      "referencia": "13f597b2-1f49-4336-8dfa-d85dc7c1bd97",
+      "linhas": 1
+    },
+    {
+      "conname": "identities_user_id_fkey",
+      "referencia": "1f5297d4-77e1-4089-9bb2-3ca1cb997317",
+      "linhas": 1
+    },
+    {
+      "conname": "identities_user_id_fkey",
+      "referencia": "2ea60576-03fb-45a0-8723-e6d814e62826",
+      "linhas": 1
+    },
+    {
+      "conname": "identities_user_id_fkey",
+      "referencia": "3d2329ed-d72d-411c-bb5f-a1ed706d6570",
+      "linhas": 1
+    },
+    {
+      "conname": "identities_user_id_fkey",
+      "referencia": "422d584b-b758-4400-83a3-7dcf14c79a33",
+      "linhas": 1
+    },
+    {
+      "conname": "identities_user_id_fkey",
+      "referencia": "49753880-f7fc-4f0a-bbbb-c3883c37a29d",
+      "linhas": 1
+    },
+    {
+      "conname": "identities_user_id_fkey",
+      "referencia": "6083a77c-bedc-4ff9-b75b-f08ff0d33fe1",
+      "linhas": 1
+    },
+    {
+      "conname": "identities_user_id_fkey",
+      "referencia": "68075dee-13f4-4d8c-b74f-eceb14ce18d7",
+      "linhas": 1
+    },
+    {
+      "conname": "identities_user_id_fkey",
+      "referencia": "6936a45a-89ca-4917-b4a9-e7d47209aeae",
+      "linhas": 1
+    },
+    {
+      "conname": "identities_user_id_fkey",
+      "referencia": "7ff919cb-88f3-4109-b933-1d0a71bb8fce",
+      "linhas": 1
+    },
+    {
+      "conname": "identities_user_id_fkey",
+      "referencia": "839e1f87-c596-4355-9f89-2ed97711349f",
+      "linhas": 1
+    },
+    {
+      "conname": "identities_user_id_fkey",
+      "referencia": "86923196-28c9-4d13-8311-dc6ed6438fe5",
+      "linhas": 1
+    },
+    {
+      "conname": "identities_user_id_fkey",
+      "referencia": "86e31850-eefb-4539-93e1-192ceceb6d12",
+      "linhas": 1
+    },
+    {
+      "conname": "identities_user_id_fkey",
+      "referencia": "9cd0f42e-7676-48c3-8f0a-c43f2896e20d",
+      "linhas": 1
+    },
+    {
+      "conname": "identities_user_id_fkey",
+      "referencia": "b5be4883-f076-4706-b40c-6ab1e720baa7",
+      "linhas": 1
+    },
+    {
+      "conname": "identities_user_id_fkey",
+      "referencia": "c87d5c95-ff78-4188-b941-daa250d3426e",
+      "linhas": 1
+    },
+    {
+      "conname": "identities_user_id_fkey",
+      "referencia": "d7d45999-c21f-4322-8f94-46c6564ff728",
+      "linhas": 1
+    },
+    {
+      "conname": "sessions_user_id_fkey",
+      "referencia": "04d52df9-4491-480f-bdbb-aab69b738a34",
+      "linhas": 2
+    },
+    {
+      "conname": "sessions_user_id_fkey",
+      "referencia": "101e9ade-c1e9-42bd-b487-fc5d78e54eb7",
+      "linhas": 3
+    },
+    {
+      "conname": "sessions_user_id_fkey",
+      "referencia": "13f597b2-1f49-4336-8dfa-d85dc7c1bd97",
+      "linhas": 2
+    },
+    {
+      "conname": "sessions_user_id_fkey",
+      "referencia": "1f5297d4-77e1-4089-9bb2-3ca1cb997317",
+      "linhas": 2
+    },
+    {
+      "conname": "sessions_user_id_fkey",
+      "referencia": "2ea60576-03fb-45a0-8723-e6d814e62826",
+      "linhas": 2
+    },
+    {
+      "conname": "sessions_user_id_fkey",
+      "referencia": "3d2329ed-d72d-411c-bb5f-a1ed706d6570",
+      "linhas": 2
+    },
+    {
+      "conname": "sessions_user_id_fkey",
+      "referencia": "422d584b-b758-4400-83a3-7dcf14c79a33",
+      "linhas": 5
+    },
+    {
+      "conname": "sessions_user_id_fkey",
+      "referencia": "49753880-f7fc-4f0a-bbbb-c3883c37a29d",
+      "linhas": 5
+    },
+    {
+      "conname": "sessions_user_id_fkey",
+      "referencia": "6083a77c-bedc-4ff9-b75b-f08ff0d33fe1",
+      "linhas": 1
+    },
+    {
+      "conname": "sessions_user_id_fkey",
+      "referencia": "68075dee-13f4-4d8c-b74f-eceb14ce18d7",
+      "linhas": 1
+    },
+    {
+      "conname": "sessions_user_id_fkey",
+      "referencia": "6936a45a-89ca-4917-b4a9-e7d47209aeae",
+      "linhas": 1
+    },
+    {
+      "conname": "sessions_user_id_fkey",
+      "referencia": "7ff919cb-88f3-4109-b933-1d0a71bb8fce",
+      "linhas": 1
+    },
+    {
+      "conname": "sessions_user_id_fkey",
+      "referencia": "839e1f87-c596-4355-9f89-2ed97711349f",
+      "linhas": 4
+    },
+    {
+      "conname": "sessions_user_id_fkey",
+      "referencia": "86923196-28c9-4d13-8311-dc6ed6438fe5",
+      "linhas": 2
+    },
+    {
+      "conname": "sessions_user_id_fkey",
+      "referencia": "86e31850-eefb-4539-93e1-192ceceb6d12",
+      "linhas": 1
+    },
+    {
+      "conname": "sessions_user_id_fkey",
+      "referencia": "9cd0f42e-7676-48c3-8f0a-c43f2896e20d",
+      "linhas": 3
+    },
+    {
+      "conname": "sessions_user_id_fkey",
+      "referencia": "b5be4883-f076-4706-b40c-6ab1e720baa7",
+      "linhas": 3
+    },
+    {
+      "conname": "sessions_user_id_fkey",
+      "referencia": "c87d5c95-ff78-4188-b941-daa250d3426e",
+      "linhas": 2
+    },
+    {
+      "conname": "sessions_user_id_fkey",
+      "referencia": "d7d45999-c21f-4322-8f94-46c6564ff728",
+      "linhas": 3
+    },
+    {
+      "conname": "bfr_municipal_access_grants_granted_by_fkey",
+      "referencia": "49753880-f7fc-4f0a-bbbb-c3883c37a29d",
+      "linhas": 5
+    },
+    {
+      "conname": "bfr_municipal_access_grants_profile_id_fkey",
+      "referencia": "6083a77c-bedc-4ff9-b75b-f08ff0d33fe1",
+      "linhas": 1
+    },
+    {
+      "conname": "bfr_municipal_access_grants_profile_id_fkey",
+      "referencia": "68075dee-13f4-4d8c-b74f-eceb14ce18d7",
+      "linhas": 1
+    },
+    {
+      "conname": "bfr_municipal_access_grants_profile_id_fkey",
+      "referencia": "6936a45a-89ca-4917-b4a9-e7d47209aeae",
+      "linhas": 1
+    },
+    {
+      "conname": "bfr_municipal_access_grants_profile_id_fkey",
+      "referencia": "86e31850-eefb-4539-93e1-192ceceb6d12",
+      "linhas": 1
+    },
+    {
+      "conname": "bfr_municipal_access_grants_profile_id_fkey",
+      "referencia": "d7d45999-c21f-4322-8f94-46c6564ff728",
+      "linhas": 1
+    },
+    {
+      "conname": "bfr_teacher_directory_profile_id_fkey",
+      "referencia": "1f5297d4-77e1-4089-9bb2-3ca1cb997317",
+      "linhas": 1
+    },
+    {
+      "conname": "internal_chat_presence_profile_id_fkey",
+      "referencia": "b5be4883-f076-4706-b40c-6ab1e720baa7",
+      "linhas": 1
+    },
+    {
+      "conname": "internal_chat_presence_profile_id_fkey",
+      "referencia": "49753880-f7fc-4f0a-bbbb-c3883c37a29d",
+      "linhas": 1
+    },
+    {
+      "conname": "internal_chat_presence_profile_id_fkey",
+      "referencia": "9cd0f42e-7676-48c3-8f0a-c43f2896e20d",
+      "linhas": 1
+    },
+    {
+      "conname": "internal_chat_presence_profile_id_fkey",
+      "referencia": "1f5297d4-77e1-4089-9bb2-3ca1cb997317",
+      "linhas": 1
+    },
+    {
+      "conname": "internal_chat_presence_profile_id_fkey",
+      "referencia": "839e1f87-c596-4355-9f89-2ed97711349f",
+      "linhas": 1
+    },
+    {
+      "conname": "profiles_id_fkey",
+      "referencia": "422d584b-b758-4400-83a3-7dcf14c79a33",
+      "linhas": 1
+    },
+    {
+      "conname": "profiles_id_fkey",
+      "referencia": "d7d45999-c21f-4322-8f94-46c6564ff728",
+      "linhas": 1
+    },
+    {
+      "conname": "profiles_id_fkey",
+      "referencia": "49753880-f7fc-4f0a-bbbb-c3883c37a29d",
+      "linhas": 1
+    },
+    {
+      "conname": "profiles_id_fkey",
+      "referencia": "68075dee-13f4-4d8c-b74f-eceb14ce18d7",
+      "linhas": 1
+    },
+    {
+      "conname": "profiles_id_fkey",
+      "referencia": "7ff919cb-88f3-4109-b933-1d0a71bb8fce",
+      "linhas": 1
+    },
+    {
+      "conname": "profiles_id_fkey",
+      "referencia": "1f5297d4-77e1-4089-9bb2-3ca1cb997317",
+      "linhas": 1
+    },
+    {
+      "conname": "profiles_id_fkey",
+      "referencia": "13f597b2-1f49-4336-8dfa-d85dc7c1bd97",
+      "linhas": 1
+    },
+    {
+      "conname": "profiles_id_fkey",
+      "referencia": "2ea60576-03fb-45a0-8723-e6d814e62826",
+      "linhas": 1
+    },
+    {
+      "conname": "profiles_id_fkey",
+      "referencia": "839e1f87-c596-4355-9f89-2ed97711349f",
+      "linhas": 1
+    },
+    {
+      "conname": "profiles_id_fkey",
+      "referencia": "101e9ade-c1e9-42bd-b487-fc5d78e54eb7",
+      "linhas": 1
+    },
+    {
+      "conname": "profiles_id_fkey",
+      "referencia": "6083a77c-bedc-4ff9-b75b-f08ff0d33fe1",
+      "linhas": 1
+    },
+    {
+      "conname": "profiles_id_fkey",
+      "referencia": "3d2329ed-d72d-411c-bb5f-a1ed706d6570",
+      "linhas": 1
+    },
+    {
+      "conname": "profiles_id_fkey",
+      "referencia": "9cd0f42e-7676-48c3-8f0a-c43f2896e20d",
+      "linhas": 1
+    },
+    {
+      "conname": "profiles_id_fkey",
+      "referencia": "04d52df9-4491-480f-bdbb-aab69b738a34",
+      "linhas": 1
+    },
+    {
+      "conname": "profiles_id_fkey",
+      "referencia": "6936a45a-89ca-4917-b4a9-e7d47209aeae",
+      "linhas": 1
+    },
+    {
+      "conname": "profiles_id_fkey",
+      "referencia": "86e31850-eefb-4539-93e1-192ceceb6d12",
+      "linhas": 1
+    },
+    {
+      "conname": "profiles_id_fkey",
+      "referencia": "c87d5c95-ff78-4188-b941-daa250d3426e",
+      "linhas": 1
+    },
+    {
+      "conname": "profiles_id_fkey",
+      "referencia": "86923196-28c9-4d13-8311-dc6ed6438fe5",
+      "linhas": 1
+    },
+    {
+      "conname": "profiles_id_fkey",
+      "referencia": "b5be4883-f076-4706-b40c-6ab1e720baa7",
+      "linhas": 1
+    },
+    {
+      "conname": "staff_schools_profile_id_fkey",
+      "referencia": "d7d45999-c21f-4322-8f94-46c6564ff728",
+      "linhas": 1
+    },
+    {
+      "conname": "staff_schools_profile_id_fkey",
+      "referencia": "b5be4883-f076-4706-b40c-6ab1e720baa7",
+      "linhas": 1
+    },
+    {
+      "conname": "staff_schools_profile_id_fkey",
+      "referencia": "9cd0f42e-7676-48c3-8f0a-c43f2896e20d",
+      "linhas": 1
+    },
+    {
+      "conname": "staff_schools_profile_id_fkey",
+      "referencia": "839e1f87-c596-4355-9f89-2ed97711349f",
+      "linhas": 1
+    }
+  ],
+  "ponte_profiles_auth_users": {
+    "perfis_das_contas_lidos": 19,
+    "contas_de_teste": 19,
+    "conforme": true,
+    "contas_sem_perfil": []
+  },
+  "chaves_primarias_das_tabelas_bloqueantes": {
+    "bfr_municipal_access_grants": [
+      "id"
+    ]
+  },
+  "linhas_bloqueantes_em_causa": [
+    {
+      "vinculo_bloqueante": "bfr_municipal_access_grants_granted_by_fkey",
+      "tabela": "bfr_municipal_access_grants",
+      "coluna_de_identidade": "granted_by",
+      "registo": "988ffed7-5206-4100-9756-7d0c9bf46bd1",
+      "referencia": "49753880",
+      "referencia_e_conta_de_teste": true
+    },
+    {
+      "vinculo_bloqueante": "bfr_municipal_access_grants_granted_by_fkey",
+      "tabela": "bfr_municipal_access_grants",
+      "coluna_de_identidade": "granted_by",
+      "registo": "d3439a15-71d2-4c66-af9b-fc6fa13abc09",
+      "referencia": "49753880",
+      "referencia_e_conta_de_teste": true
+    },
+    {
+      "vinculo_bloqueante": "bfr_municipal_access_grants_granted_by_fkey",
+      "tabela": "bfr_municipal_access_grants",
+      "coluna_de_identidade": "granted_by",
+      "registo": "ebf0287d-3e0b-4964-8f2a-1d5553311749",
+      "referencia": "49753880",
+      "referencia_e_conta_de_teste": true
+    },
+    {
+      "vinculo_bloqueante": "bfr_municipal_access_grants_granted_by_fkey",
+      "tabela": "bfr_municipal_access_grants",
+      "coluna_de_identidade": "granted_by",
+      "registo": "a206f198-6b79-4eca-b54e-8bba7ef8a731",
+      "referencia": "49753880",
+      "referencia_e_conta_de_teste": true
+    },
+    {
+      "vinculo_bloqueante": "bfr_municipal_access_grants_granted_by_fkey",
+      "tabela": "bfr_municipal_access_grants",
+      "coluna_de_identidade": "granted_by",
+      "registo": "cf6fac96-8464-4d71-9991-f2ba10f7e565",
+      "referencia": "49753880",
+      "referencia_e_conta_de_teste": true
+    },
+    {
+      "vinculo_bloqueante": "bfr_municipal_access_grants_granted_by_fkey",
+      "tabela": "bfr_municipal_access_grants",
+      "coluna_de_identidade": "profile_id",
+      "registo": "988ffed7-5206-4100-9756-7d0c9bf46bd1",
+      "referencia": "86e31850",
+      "referencia_e_conta_de_teste": true
+    },
+    {
+      "vinculo_bloqueante": "bfr_municipal_access_grants_granted_by_fkey",
+      "tabela": "bfr_municipal_access_grants",
+      "coluna_de_identidade": "profile_id",
+      "registo": "d3439a15-71d2-4c66-af9b-fc6fa13abc09",
+      "referencia": "68075dee",
+      "referencia_e_conta_de_teste": true
+    },
+    {
+      "vinculo_bloqueante": "bfr_municipal_access_grants_granted_by_fkey",
+      "tabela": "bfr_municipal_access_grants",
+      "coluna_de_identidade": "profile_id",
+      "registo": "ebf0287d-3e0b-4964-8f2a-1d5553311749",
+      "referencia": "6083a77c",
+      "referencia_e_conta_de_teste": true
+    },
+    {
+      "vinculo_bloqueante": "bfr_municipal_access_grants_granted_by_fkey",
+      "tabela": "bfr_municipal_access_grants",
+      "coluna_de_identidade": "profile_id",
+      "registo": "a206f198-6b79-4eca-b54e-8bba7ef8a731",
+      "referencia": "6936a45a",
+      "referencia_e_conta_de_teste": true
+    },
+    {
+      "vinculo_bloqueante": "bfr_municipal_access_grants_granted_by_fkey",
+      "tabela": "bfr_municipal_access_grants",
+      "coluna_de_identidade": "profile_id",
+      "registo": "cf6fac96-8464-4d71-9991-f2ba10f7e565",
+      "referencia": "d7d45999",
+      "referencia_e_conta_de_teste": true
+    },
+    {
+      "vinculo_bloqueante": "bfr_municipal_access_grants_granted_by_fkey",
+      "tabela": "bfr_municipal_access_grants",
+      "coluna_de_identidade": "revoked_by",
+      "registo": "988ffed7-5206-4100-9756-7d0c9bf46bd1",
+      "referencia": "null",
+      "referencia_e_conta_de_teste": false
+    },
+    {
+      "vinculo_bloqueante": "bfr_municipal_access_grants_granted_by_fkey",
+      "tabela": "bfr_municipal_access_grants",
+      "coluna_de_identidade": "revoked_by",
+      "registo": "d3439a15-71d2-4c66-af9b-fc6fa13abc09",
+      "referencia": "null",
+      "referencia_e_conta_de_teste": false
+    },
+    {
+      "vinculo_bloqueante": "bfr_municipal_access_grants_granted_by_fkey",
+      "tabela": "bfr_municipal_access_grants",
+      "coluna_de_identidade": "revoked_by",
+      "registo": "ebf0287d-3e0b-4964-8f2a-1d5553311749",
+      "referencia": "null",
+      "referencia_e_conta_de_teste": false
+    },
+    {
+      "vinculo_bloqueante": "bfr_municipal_access_grants_granted_by_fkey",
+      "tabela": "bfr_municipal_access_grants",
+      "coluna_de_identidade": "revoked_by",
+      "registo": "a206f198-6b79-4eca-b54e-8bba7ef8a731",
+      "referencia": "null",
+      "referencia_e_conta_de_teste": false
+    },
+    {
+      "vinculo_bloqueante": "bfr_municipal_access_grants_granted_by_fkey",
+      "tabela": "bfr_municipal_access_grants",
+      "coluna_de_identidade": "revoked_by",
+      "registo": "cf6fac96-8464-4d71-9991-f2ba10f7e565",
+      "referencia": "null",
+      "referencia_e_conta_de_teste": false
+    }
+  ],
+  "ordem_de_remocao": {
+    "linhas_bloqueantes": [
+      {
+        "vinculo_bloqueante": "bfr_municipal_access_grants_granted_by_fkey",
+        "tabela": "bfr_municipal_access_grants",
+        "registo": "988ffed7-5206-4100-9756-7d0c9bf46bd1",
+        "libertadas_por_cascata_de": [
+          {
+            "id8": "86e31850",
+            "email": "sm8-secretario_municipal-7ed48b@bfr-conecta.test"
+          }
+        ],
+        "requer_passo_manual": false
+      },
+      {
+        "vinculo_bloqueante": "bfr_municipal_access_grants_granted_by_fkey",
+        "tabela": "bfr_municipal_access_grants",
+        "registo": "d3439a15-71d2-4c66-af9b-fc6fa13abc09",
+        "libertadas_por_cascata_de": [
+          {
+            "id8": "68075dee",
+            "email": "sm8-secretario_adjunto-871fa2@bfr-conecta.test"
+          }
+        ],
+        "requer_passo_manual": false
+      },
+      {
+        "vinculo_bloqueante": "bfr_municipal_access_grants_granted_by_fkey",
+        "tabela": "bfr_municipal_access_grants",
+        "registo": "ebf0287d-3e0b-4964-8f2a-1d5553311749",
+        "libertadas_por_cascata_de": [
+          {
+            "id8": "6083a77c",
+            "email": "sm8-gestor_autorizado-bd08cd@bfr-conecta.test"
+          }
+        ],
+        "requer_passo_manual": false
+      },
+      {
+        "vinculo_bloqueante": "bfr_municipal_access_grants_granted_by_fkey",
+        "tabela": "bfr_municipal_access_grants",
+        "registo": "a206f198-6b79-4eca-b54e-8bba7ef8a731",
+        "libertadas_por_cascata_de": [
+          {
+            "id8": "6936a45a",
+            "email": "sm8-equipe_administrativa-b6b5b3@bfr-conecta.test"
+          }
+        ],
+        "requer_passo_manual": false
+      },
+      {
+        "vinculo_bloqueante": "bfr_municipal_access_grants_granted_by_fkey",
+        "tabela": "bfr_municipal_access_grants",
+        "registo": "cf6fac96-8464-4d71-9991-f2ba10f7e565",
+        "libertadas_por_cascata_de": [
+          {
+            "id8": "d7d45999",
+            "email": "ah2-education_supervisor-81da0f@bfr-conecta.test"
+          }
+        ],
+        "requer_passo_manual": false
+      }
+    ],
+    "degraus_que_exigem_escrita_manual": 0,
+    "degraus_resolvidos_pela_ordem": 5
+  },
+  "listagem_de_bloqueios": {
+    "esperado": 15,
+    "listadas": 15,
+    "truncada": false,
+    "tabelas_sem_chave_primaria": [],
+    "vinculos_bloqueantes_com_linhas": [
+      {
+        "conname": "bfr_municipal_access_grants_granted_by_fkey",
+        "tabela": "bfr_municipal_access_grants",
+        "linhas": 5
+      }
+    ]
+  },
+  "plano_por_conta": [
+    {
+      "email": "ah2-aee-dfb3e0@bfr-conecta.test",
+      "id8": "c87d5c95",
+      "criado": "2026-11-17",
+      "linhas_bloqueantes": 0,
+      "degraus_bloqueantes": 0,
+      "degraus_anulados": 0,
+      "degraus_cascata": 3,
+      "passos": [
+        {
+          "conname": "identities_user_id_fkey",
+          "tabela": "auth.identities",
+          "coluna": "user_id",
+          "classe": "cascata",
+          "linhas": 1,
+          "degrau": 2
+        },
+        {
+          "conname": "sessions_user_id_fkey",
+          "tabela": "auth.sessions",
+          "coluna": "user_id",
+          "classe": "cascata",
+          "linhas": 2,
+          "degrau": 2
+        },
+        {
+          "conname": "profiles_id_fkey",
+          "tabela": "profiles",
+          "coluna": "id",
+          "classe": "cascata",
+          "linhas": 1,
+          "degrau": 2
+        },
+        {
+          "conname": "(a conta em auth.users)",
+          "tabela": "auth.users",
+          "coluna": "id",
+          "classe": "conta",
+          "linhas": 1,
+          "degrau": 3
+        }
+      ]
+    },
+    {
+      "email": "ah2-coordinator-494fa3@bfr-conecta.test",
+      "id8": "9cd0f42e",
+      "criado": "2026-11-17",
+      "linhas_bloqueantes": 0,
+      "degraus_bloqueantes": 0,
+      "degraus_anulados": 0,
+      "degraus_cascata": 5,
+      "passos": [
+        {
+          "conname": "identities_user_id_fkey",
+          "tabela": "auth.identities",
+          "coluna": "user_id",
+          "classe": "cascata",
+          "linhas": 1,
+          "degrau": 2
+        },
+        {
+          "conname": "sessions_user_id_fkey",
+          "tabela": "auth.sessions",
+          "coluna": "user_id",
+          "classe": "cascata",
+          "linhas": 3,
+          "degrau": 2
+        },
+        {
+          "conname": "internal_chat_presence_profile_id_fkey",
+          "tabela": "internal_chat_presence",
+          "coluna": "profile_id",
+          "classe": "cascata",
+          "linhas": 1,
+          "degrau": 2
+        },
+        {
+          "conname": "profiles_id_fkey",
+          "tabela": "profiles",
+          "coluna": "id",
+          "classe": "cascata",
+          "linhas": 1,
+          "degrau": 2
+        },
+        {
+          "conname": "staff_schools_profile_id_fkey",
+          "tabela": "staff_schools",
+          "coluna": "profile_id",
+          "classe": "cascata",
+          "linhas": 1,
+          "degrau": 2
+        },
+        {
+          "conname": "(a conta em auth.users)",
+          "tabela": "auth.users",
+          "coluna": "id",
+          "classe": "conta",
+          "linhas": 1,
+          "degrau": 3
+        }
+      ]
+    },
+    {
+      "email": "ah2-developer-54e9d1@bfr-conecta.test",
+      "id8": "49753880",
+      "criado": "2026-11-17",
+      "linhas_bloqueantes": 5,
+      "degraus_bloqueantes": 1,
+      "degraus_anulados": 0,
+      "degraus_cascata": 4,
+      "passos": [
+        {
+          "conname": "bfr_municipal_access_grants_granted_by_fkey",
+          "tabela": "bfr_municipal_access_grants",
+          "coluna": "granted_by",
+          "classe": "bloqueia",
+          "linhas": 5,
+          "degrau": 1
+        },
+        {
+          "conname": "identities_user_id_fkey",
+          "tabela": "auth.identities",
+          "coluna": "user_id",
+          "classe": "cascata",
+          "linhas": 1,
+          "degrau": 2
+        },
+        {
+          "conname": "sessions_user_id_fkey",
+          "tabela": "auth.sessions",
+          "coluna": "user_id",
+          "classe": "cascata",
+          "linhas": 5,
+          "degrau": 2
+        },
+        {
+          "conname": "internal_chat_presence_profile_id_fkey",
+          "tabela": "internal_chat_presence",
+          "coluna": "profile_id",
+          "classe": "cascata",
+          "linhas": 1,
+          "degrau": 2
+        },
+        {
+          "conname": "profiles_id_fkey",
+          "tabela": "profiles",
+          "coluna": "id",
+          "classe": "cascata",
+          "linhas": 1,
+          "degrau": 2
+        },
+        {
+          "conname": "(a conta em auth.users)",
+          "tabela": "auth.users",
+          "coluna": "id",
+          "classe": "conta",
+          "linhas": 1,
+          "degrau": 3
+        }
+      ]
+    },
+    {
+      "email": "ah2-director-ea0f26@bfr-conecta.test",
+      "id8": "b5be4883",
+      "criado": "2026-11-17",
+      "linhas_bloqueantes": 0,
+      "degraus_bloqueantes": 0,
+      "degraus_anulados": 0,
+      "degraus_cascata": 5,
+      "passos": [
+        {
+          "conname": "identities_user_id_fkey",
+          "tabela": "auth.identities",
+          "coluna": "user_id",
+          "classe": "cascata",
+          "linhas": 1,
+          "degrau": 2
+        },
+        {
+          "conname": "sessions_user_id_fkey",
+          "tabela": "auth.sessions",
+          "coluna": "user_id",
+          "classe": "cascata",
+          "linhas": 3,
+          "degrau": 2
+        },
+        {
+          "conname": "internal_chat_presence_profile_id_fkey",
+          "tabela": "internal_chat_presence",
+          "coluna": "profile_id",
+          "classe": "cascata",
+          "linhas": 1,
+          "degrau": 2
+        },
+        {
+          "conname": "profiles_id_fkey",
+          "tabela": "profiles",
+          "coluna": "id",
+          "classe": "cascata",
+          "linhas": 1,
+          "degrau": 2
+        },
+        {
+          "conname": "staff_schools_profile_id_fkey",
+          "tabela": "staff_schools",
+          "coluna": "profile_id",
+          "classe": "cascata",
+          "linhas": 1,
+          "degrau": 2
+        },
+        {
+          "conname": "(a conta em auth.users)",
+          "tabela": "auth.users",
+          "coluna": "id",
+          "classe": "conta",
+          "linhas": 1,
+          "degrau": 3
+        }
+      ]
+    },
+    {
+      "email": "ah2-education_supervisor-81da0f@bfr-conecta.test",
+      "id8": "d7d45999",
+      "criado": "2026-11-17",
+      "linhas_bloqueantes": 0,
+      "degraus_bloqueantes": 0,
+      "degraus_anulados": 0,
+      "degraus_cascata": 5,
+      "passos": [
+        {
+          "conname": "identities_user_id_fkey",
+          "tabela": "auth.identities",
+          "coluna": "user_id",
+          "classe": "cascata",
+          "linhas": 1,
+          "degrau": 2
+        },
+        {
+          "conname": "sessions_user_id_fkey",
+          "tabela": "auth.sessions",
+          "coluna": "user_id",
+          "classe": "cascata",
+          "linhas": 3,
+          "degrau": 2
+        },
+        {
+          "conname": "bfr_municipal_access_grants_profile_id_fkey",
+          "tabela": "bfr_municipal_access_grants",
+          "coluna": "profile_id",
+          "classe": "cascata",
+          "linhas": 1,
+          "degrau": 2
+        },
+        {
+          "conname": "profiles_id_fkey",
+          "tabela": "profiles",
+          "coluna": "id",
+          "classe": "cascata",
+          "linhas": 1,
+          "degrau": 2
+        },
+        {
+          "conname": "staff_schools_profile_id_fkey",
+          "tabela": "staff_schools",
+          "coluna": "profile_id",
+          "classe": "cascata",
+          "linhas": 1,
+          "degrau": 2
+        },
+        {
+          "conname": "(a conta em auth.users)",
+          "tabela": "auth.users",
+          "coluna": "id",
+          "classe": "conta",
+          "linhas": 1,
+          "degrau": 3
+        }
+      ]
+    },
+    {
+      "email": "ah2-gatekeeper-beb5ec@bfr-conecta.test",
+      "id8": "422d584b",
+      "criado": "2026-11-17",
+      "linhas_bloqueantes": 0,
+      "degraus_bloqueantes": 0,
+      "degraus_anulados": 0,
+      "degraus_cascata": 3,
+      "passos": [
+        {
+          "conname": "identities_user_id_fkey",
+          "tabela": "auth.identities",
+          "coluna": "user_id",
+          "classe": "cascata",
+          "linhas": 1,
+          "degrau": 2
+        },
+        {
+          "conname": "sessions_user_id_fkey",
+          "tabela": "auth.sessions",
+          "coluna": "user_id",
+          "classe": "cascata",
+          "linhas": 5,
+          "degrau": 2
+        },
+        {
+          "conname": "profiles_id_fkey",
+          "tabela": "profiles",
+          "coluna": "id",
+          "classe": "cascata",
+          "linhas": 1,
+          "degrau": 2
+        },
+        {
+          "conname": "(a conta em auth.users)",
+          "tabela": "auth.users",
+          "coluna": "id",
+          "classe": "conta",
+          "linhas": 1,
+          "degrau": 3
+        }
+      ]
+    },
+    {
+      "email": "ah2-monitor-f28704@bfr-conecta.test",
+      "id8": "101e9ade",
+      "criado": "2026-11-17",
+      "linhas_bloqueantes": 0,
+      "degraus_bloqueantes": 0,
+      "degraus_anulados": 0,
+      "degraus_cascata": 3,
+      "passos": [
+        {
+          "conname": "identities_user_id_fkey",
+          "tabela": "auth.identities",
+          "coluna": "user_id",
+          "classe": "cascata",
+          "linhas": 1,
+          "degrau": 2
+        },
+        {
+          "conname": "sessions_user_id_fkey",
+          "tabela": "auth.sessions",
+          "coluna": "user_id",
+          "classe": "cascata",
+          "linhas": 3,
+          "degrau": 2
+        },
+        {
+          "conname": "profiles_id_fkey",
+          "tabela": "profiles",
+          "coluna": "id",
+          "classe": "cascata",
+          "linhas": 1,
+          "degrau": 2
+        },
+        {
+          "conname": "(a conta em auth.users)",
+          "tabela": "auth.users",
+          "coluna": "id",
+          "classe": "conta",
+          "linhas": 1,
+          "degrau": 3
+        }
+      ]
+    },
+    {
+      "email": "ah2-parent-85529d@bfr-conecta.test",
+      "id8": "7ff919cb",
+      "criado": "2026-11-17",
+      "linhas_bloqueantes": 0,
+      "degraus_bloqueantes": 0,
+      "degraus_anulados": 0,
+      "degraus_cascata": 3,
+      "passos": [
+        {
+          "conname": "identities_user_id_fkey",
+          "tabela": "auth.identities",
+          "coluna": "user_id",
+          "classe": "cascata",
+          "linhas": 1,
+          "degrau": 2
+        },
+        {
+          "conname": "sessions_user_id_fkey",
+          "tabela": "auth.sessions",
+          "coluna": "user_id",
+          "classe": "cascata",
+          "linhas": 1,
+          "degrau": 2
+        },
+        {
+          "conname": "profiles_id_fkey",
+          "tabela": "profiles",
+          "coluna": "id",
+          "classe": "cascata",
+          "linhas": 1,
+          "degrau": 2
+        },
+        {
+          "conname": "(a conta em auth.users)",
+          "tabela": "auth.users",
+          "coluna": "id",
+          "classe": "conta",
+          "linhas": 1,
+          "degrau": 3
+        }
+      ]
+    },
+    {
+      "email": "ah2-pedagogical-e91330@bfr-conecta.test",
+      "id8": "1f5297d4",
+      "criado": "2026-11-17",
+      "linhas_bloqueantes": 0,
+      "degraus_bloqueantes": 0,
+      "degraus_anulados": 1,
+      "degraus_cascata": 4,
+      "passos": [
+        {
+          "conname": "identities_user_id_fkey",
+          "tabela": "auth.identities",
+          "coluna": "user_id",
+          "classe": "cascata",
+          "linhas": 1,
+          "degrau": 2
+        },
+        {
+          "conname": "sessions_user_id_fkey",
+          "tabela": "auth.sessions",
+          "coluna": "user_id",
+          "classe": "cascata",
+          "linhas": 2,
+          "degrau": 2
+        },
+        {
+          "conname": "bfr_teacher_directory_profile_id_fkey",
+          "tabela": "bfr_teacher_directory",
+          "coluna": "profile_id",
+          "classe": "anula_ref",
+          "linhas": 1,
+          "degrau": 2
+        },
+        {
+          "conname": "internal_chat_presence_profile_id_fkey",
+          "tabela": "internal_chat_presence",
+          "coluna": "profile_id",
+          "classe": "cascata",
+          "linhas": 1,
+          "degrau": 2
+        },
+        {
+          "conname": "profiles_id_fkey",
+          "tabela": "profiles",
+          "coluna": "id",
+          "classe": "cascata",
+          "linhas": 1,
+          "degrau": 2
+        },
+        {
+          "conname": "(a conta em auth.users)",
+          "tabela": "auth.users",
+          "coluna": "id",
+          "classe": "conta",
+          "linhas": 1,
+          "degrau": 3
+        }
+      ]
+    },
+    {
+      "email": "ah2-pending-6ea984@bfr-conecta.test",
+      "id8": "3d2329ed",
+      "criado": "2026-11-17",
+      "linhas_bloqueantes": 0,
+      "degraus_bloqueantes": 0,
+      "degraus_anulados": 0,
+      "degraus_cascata": 3,
+      "passos": [
+        {
+          "conname": "identities_user_id_fkey",
+          "tabela": "auth.identities",
+          "coluna": "user_id",
+          "classe": "cascata",
+          "linhas": 1,
+          "degrau": 2
+        },
+        {
+          "conname": "sessions_user_id_fkey",
+          "tabela": "auth.sessions",
+          "coluna": "user_id",
+          "classe": "cascata",
+          "linhas": 2,
+          "degrau": 2
+        },
+        {
+          "conname": "profiles_id_fkey",
+          "tabela": "profiles",
+          "coluna": "id",
+          "classe": "cascata",
+          "linhas": 1,
+          "degrau": 2
+        },
+        {
+          "conname": "(a conta em auth.users)",
+          "tabela": "auth.users",
+          "coluna": "id",
+          "classe": "conta",
+          "linhas": 1,
+          "degrau": 3
+        }
+      ]
+    },
+    {
+      "email": "ah2-psychology-069f2c@bfr-conecta.test",
+      "id8": "86923196",
+      "criado": "2026-11-17",
+      "linhas_bloqueantes": 0,
+      "degraus_bloqueantes": 0,
+      "degraus_anulados": 0,
+      "degraus_cascata": 3,
+      "passos": [
+        {
+          "conname": "identities_user_id_fkey",
+          "tabela": "auth.identities",
+          "coluna": "user_id",
+          "classe": "cascata",
+          "linhas": 1,
+          "degrau": 2
+        },
+        {
+          "conname": "sessions_user_id_fkey",
+          "tabela": "auth.sessions",
+          "coluna": "user_id",
+          "classe": "cascata",
+          "linhas": 2,
+          "degrau": 2
+        },
+        {
+          "conname": "profiles_id_fkey",
+          "tabela": "profiles",
+          "coluna": "id",
+          "classe": "cascata",
+          "linhas": 1,
+          "degrau": 2
+        },
+        {
+          "conname": "(a conta em auth.users)",
+          "tabela": "auth.users",
+          "coluna": "id",
+          "classe": "conta",
+          "linhas": 1,
+          "degrau": 3
+        }
+      ]
+    },
+    {
+      "email": "ah2-secretary-6d152f@bfr-conecta.test",
+      "id8": "839e1f87",
+      "criado": "2026-11-17",
+      "linhas_bloqueantes": 0,
+      "degraus_bloqueantes": 0,
+      "degraus_anulados": 0,
+      "degraus_cascata": 5,
+      "passos": [
+        {
+          "conname": "identities_user_id_fkey",
+          "tabela": "auth.identities",
+          "coluna": "user_id",
+          "classe": "cascata",
+          "linhas": 1,
+          "degrau": 2
+        },
+        {
+          "conname": "sessions_user_id_fkey",
+          "tabela": "auth.sessions",
+          "coluna": "user_id",
+          "classe": "cascata",
+          "linhas": 4,
+          "degrau": 2
+        },
+        {
+          "conname": "internal_chat_presence_profile_id_fkey",
+          "tabela": "internal_chat_presence",
+          "coluna": "profile_id",
+          "classe": "cascata",
+          "linhas": 1,
+          "degrau": 2
+        },
+        {
+          "conname": "profiles_id_fkey",
+          "tabela": "profiles",
+          "coluna": "id",
+          "classe": "cascata",
+          "linhas": 1,
+          "degrau": 2
+        },
+        {
+          "conname": "staff_schools_profile_id_fkey",
+          "tabela": "staff_schools",
+          "coluna": "profile_id",
+          "classe": "cascata",
+          "linhas": 1,
+          "degrau": 2
+        },
+        {
+          "conname": "(a conta em auth.users)",
+          "tabela": "auth.users",
+          "coluna": "id",
+          "classe": "conta",
+          "linhas": 1,
+          "degrau": 3
+        }
+      ]
+    },
+    {
+      "email": "ah2-social_work-842f33@bfr-conecta.test",
+      "id8": "04d52df9",
+      "criado": "2026-11-17",
+      "linhas_bloqueantes": 0,
+      "degraus_bloqueantes": 0,
+      "degraus_anulados": 0,
+      "degraus_cascata": 3,
+      "passos": [
+        {
+          "conname": "identities_user_id_fkey",
+          "tabela": "auth.identities",
+          "coluna": "user_id",
+          "classe": "cascata",
+          "linhas": 1,
+          "degrau": 2
+        },
+        {
+          "conname": "sessions_user_id_fkey",
+          "tabela": "auth.sessions",
+          "coluna": "user_id",
+          "classe": "cascata",
+          "linhas": 2,
+          "degrau": 2
+        },
+        {
+          "conname": "profiles_id_fkey",
+          "tabela": "profiles",
+          "coluna": "id",
+          "classe": "cascata",
+          "linhas": 1,
+          "degrau": 2
+        },
+        {
+          "conname": "(a conta em auth.users)",
+          "tabela": "auth.users",
+          "coluna": "id",
+          "classe": "conta",
+          "linhas": 1,
+          "degrau": 3
+        }
+      ]
+    },
+    {
+      "email": "ah2-sports_operator-cf5d7f@bfr-conecta.test",
+      "id8": "2ea60576",
+      "criado": "2026-11-17",
+      "linhas_bloqueantes": 0,
+      "degraus_bloqueantes": 0,
+      "degraus_anulados": 0,
+      "degraus_cascata": 3,
+      "passos": [
+        {
+          "conname": "identities_user_id_fkey",
+          "tabela": "auth.identities",
+          "coluna": "user_id",
+          "classe": "cascata",
+          "linhas": 1,
+          "degrau": 2
+        },
+        {
+          "conname": "sessions_user_id_fkey",
+          "tabela": "auth.sessions",
+          "coluna": "user_id",
+          "classe": "cascata",
+          "linhas": 2,
+          "degrau": 2
+        },
+        {
+          "conname": "profiles_id_fkey",
+          "tabela": "profiles",
+          "coluna": "id",
+          "classe": "cascata",
+          "linhas": 1,
+          "degrau": 2
+        },
+        {
+          "conname": "(a conta em auth.users)",
+          "tabela": "auth.users",
+          "coluna": "id",
+          "classe": "conta",
+          "linhas": 1,
+          "degrau": 3
+        }
+      ]
+    },
+    {
+      "email": "ah2-student-5f59e4@bfr-conecta.test",
+      "id8": "13f597b2",
+      "criado": "2026-11-17",
+      "linhas_bloqueantes": 0,
+      "degraus_bloqueantes": 0,
+      "degraus_anulados": 0,
+      "degraus_cascata": 3,
+      "passos": [
+        {
+          "conname": "identities_user_id_fkey",
+          "tabela": "auth.identities",
+          "coluna": "user_id",
+          "classe": "cascata",
+          "linhas": 1,
+          "degrau": 2
+        },
+        {
+          "conname": "sessions_user_id_fkey",
+          "tabela": "auth.sessions",
+          "coluna": "user_id",
+          "classe": "cascata",
+          "linhas": 2,
+          "degrau": 2
+        },
+        {
+          "conname": "profiles_id_fkey",
+          "tabela": "profiles",
+          "coluna": "id",
+          "classe": "cascata",
+          "linhas": 1,
+          "degrau": 2
+        },
+        {
+          "conname": "(a conta em auth.users)",
+          "tabela": "auth.users",
+          "coluna": "id",
+          "classe": "conta",
+          "linhas": 1,
+          "degrau": 3
+        }
+      ]
+    },
+    {
+      "email": "sm8-equipe_administrativa-b6b5b3@bfr-conecta.test",
+      "id8": "6936a45a",
+      "criado": "2026-11-18",
+      "linhas_bloqueantes": 0,
+      "degraus_bloqueantes": 0,
+      "degraus_anulados": 0,
+      "degraus_cascata": 4,
+      "passos": [
+        {
+          "conname": "identities_user_id_fkey",
+          "tabela": "auth.identities",
+          "coluna": "user_id",
+          "classe": "cascata",
+          "linhas": 1,
+          "degrau": 2
+        },
+        {
+          "conname": "sessions_user_id_fkey",
+          "tabela": "auth.sessions",
+          "coluna": "user_id",
+          "classe": "cascata",
+          "linhas": 1,
+          "degrau": 2
+        },
+        {
+          "conname": "bfr_municipal_access_grants_profile_id_fkey",
+          "tabela": "bfr_municipal_access_grants",
+          "coluna": "profile_id",
+          "classe": "cascata",
+          "linhas": 1,
+          "degrau": 2
+        },
+        {
+          "conname": "profiles_id_fkey",
+          "tabela": "profiles",
+          "coluna": "id",
+          "classe": "cascata",
+          "linhas": 1,
+          "degrau": 2
+        },
+        {
+          "conname": "(a conta em auth.users)",
+          "tabela": "auth.users",
+          "coluna": "id",
+          "classe": "conta",
+          "linhas": 1,
+          "degrau": 3
+        }
+      ]
+    },
+    {
+      "email": "sm8-gestor_autorizado-bd08cd@bfr-conecta.test",
+      "id8": "6083a77c",
+      "criado": "2026-11-18",
+      "linhas_bloqueantes": 0,
+      "degraus_bloqueantes": 0,
+      "degraus_anulados": 0,
+      "degraus_cascata": 4,
+      "passos": [
+        {
+          "conname": "identities_user_id_fkey",
+          "tabela": "auth.identities",
+          "coluna": "user_id",
+          "classe": "cascata",
+          "linhas": 1,
+          "degrau": 2
+        },
+        {
+          "conname": "sessions_user_id_fkey",
+          "tabela": "auth.sessions",
+          "coluna": "user_id",
+          "classe": "cascata",
+          "linhas": 1,
+          "degrau": 2
+        },
+        {
+          "conname": "bfr_municipal_access_grants_profile_id_fkey",
+          "tabela": "bfr_municipal_access_grants",
+          "coluna": "profile_id",
+          "classe": "cascata",
+          "linhas": 1,
+          "degrau": 2
+        },
+        {
+          "conname": "profiles_id_fkey",
+          "tabela": "profiles",
+          "coluna": "id",
+          "classe": "cascata",
+          "linhas": 1,
+          "degrau": 2
+        },
+        {
+          "conname": "(a conta em auth.users)",
+          "tabela": "auth.users",
+          "coluna": "id",
+          "classe": "conta",
+          "linhas": 1,
+          "degrau": 3
+        }
+      ]
+    },
+    {
+      "email": "sm8-secretario_adjunto-871fa2@bfr-conecta.test",
+      "id8": "68075dee",
+      "criado": "2026-11-18",
+      "linhas_bloqueantes": 0,
+      "degraus_bloqueantes": 0,
+      "degraus_anulados": 0,
+      "degraus_cascata": 4,
+      "passos": [
+        {
+          "conname": "identities_user_id_fkey",
+          "tabela": "auth.identities",
+          "coluna": "user_id",
+          "classe": "cascata",
+          "linhas": 1,
+          "degrau": 2
+        },
+        {
+          "conname": "sessions_user_id_fkey",
+          "tabela": "auth.sessions",
+          "coluna": "user_id",
+          "classe": "cascata",
+          "linhas": 1,
+          "degrau": 2
+        },
+        {
+          "conname": "bfr_municipal_access_grants_profile_id_fkey",
+          "tabela": "bfr_municipal_access_grants",
+          "coluna": "profile_id",
+          "classe": "cascata",
+          "linhas": 1,
+          "degrau": 2
+        },
+        {
+          "conname": "profiles_id_fkey",
+          "tabela": "profiles",
+          "coluna": "id",
+          "classe": "cascata",
+          "linhas": 1,
+          "degrau": 2
+        },
+        {
+          "conname": "(a conta em auth.users)",
+          "tabela": "auth.users",
+          "coluna": "id",
+          "classe": "conta",
+          "linhas": 1,
+          "degrau": 3
+        }
+      ]
+    },
+    {
+      "email": "sm8-secretario_municipal-7ed48b@bfr-conecta.test",
+      "id8": "86e31850",
+      "criado": "2026-11-18",
+      "linhas_bloqueantes": 0,
+      "degraus_bloqueantes": 0,
+      "degraus_anulados": 0,
+      "degraus_cascata": 4,
+      "passos": [
+        {
+          "conname": "identities_user_id_fkey",
+          "tabela": "auth.identities",
+          "coluna": "user_id",
+          "classe": "cascata",
+          "linhas": 1,
+          "degrau": 2
+        },
+        {
+          "conname": "sessions_user_id_fkey",
+          "tabela": "auth.sessions",
+          "coluna": "user_id",
+          "classe": "cascata",
+          "linhas": 1,
+          "degrau": 2
+        },
+        {
+          "conname": "bfr_municipal_access_grants_profile_id_fkey",
+          "tabela": "bfr_municipal_access_grants",
+          "coluna": "profile_id",
+          "classe": "cascata",
+          "linhas": 1,
+          "degrau": 2
+        },
+        {
+          "conname": "profiles_id_fkey",
+          "tabela": "profiles",
+          "coluna": "id",
+          "classe": "cascata",
+          "linhas": 1,
+          "degrau": 2
+        },
+        {
+          "conname": "(a conta em auth.users)",
+          "tabela": "auth.users",
+          "coluna": "id",
+          "classe": "conta",
+          "linhas": 1,
+          "degrau": 3
+        }
+      ]
+    }
+  ],
+  "agregado": {
+    "contas_sem_bloqueio": 18,
+    "total_linhas_bloqueantes": 5,
+    "total_degraus_bloqueantes": 1
+  },
+  "portoes": {
+    "total": 11,
+    "falhas": 0,
+    "lista": [
+      {
+        "nome": "as_agulhas_dos_predicados_estao_nosProdutores",
+        "obtido": 4,
+        "esperado": 4,
+        "ok": true
+      },
+      {
+        "nome": "nenhum_vinculo_fica_fora_do_censo_por_ser_de_classe_ignorada",
+        "obtido": 220,
+        "esperado": 220,
+        "ok": true
+      },
+      {
+        "nome": "o_resultado_tem_uma_linha_por_vinculo_contavel",
+        "obtido": 220,
+        "esperado": 220,
+        "ok": true
+      },
+      {
+        "nome": "a_soma_por_conta_bate_com_o_total_por_vinculo",
+        "obtido": true,
+        "esperado": true,
+        "ok": true
+      },
+      {
+        "nome": "as_duas_rotas_do_universo_batem_por_id",
+        "obtido": true,
+        "esperado": true,
+        "ok": true
+      },
+      {
+        "nome": "o_universo_de_teste_e_igual_a_classe_do_inventario",
+        "obtido": 19,
+        "esperado": 19,
+        "ok": true
+      },
+      {
+        "nome": "nenhuma_conta_fica_fora_do_plano",
+        "obtido": 19,
+        "esperado": 19,
+        "ok": true
+      },
+      {
+        "nome": "a_ponte_profiles_id_auth_users_fecha_para_toda_conta_de_teste",
+        "obtido": [
+          true,
+          0,
+          []
+        ],
+        "esperado": [
+          true,
+          0,
+          []
+        ],
+        "ok": true
+      },
+      {
+        "nome": "nenhuma_tabela_bloqueante_fica_sem_chave_primaria_lida",
+        "obtido": [],
+        "esperado": [],
+        "ok": true
+      },
+      {
+        "nome": "cada_linha_bloqueante_aparece_na_listagem_com_a_sua_chave",
+        "obtido": [
+          15,
+          15,
+          false
+        ],
+        "esperado": [
+          15,
+          15,
+          false
+        ],
+        "ok": true
+      },
+      {
+        "nome": "a_contagem_por_degrau_bate_com_a_listagem_por_linha",
+        "obtido": 5,
+        "esperado": 5,
+        "ok": true
+      }
+    ]
+  },
+  "o_que_prova": [
+    "quantas chaves estrangeiras apontam para auth.users e public.profiles e qual o ON DELETE de cada uma, lido do catalogo",
+    "quantas linhas de cada tabela referenciada pertencem a cada conta de teste, por vinculo e por conta, com a soma conferida contra o total por vinculo",
+    "quais contas tem degraus bloqueantes (RESTRICT / NO ACTION) e quantas linhas cada degrau tocaria",
+    "que o universo de contas de teste e o mesmo medido por SQL sobre auth.users e pelo Admin API, comparado por id",
+    "que a ponte profiles.id = auth.users.id fecha para cada conta de teste medida, sem o que a atribuicao das FKs sobre public.profiles nao valeria nada",
+    "que cada linha bloqueante tem nome: a chave primaria da linha e as suas colunas de identidade, com a bandeira de a referencia ser ou nao uma conta de teste",
+    "que cada portao tem positivo: os fixtures em tmpdir mostram as regras a ficarem falsas quando falta uma linha, uma conta, uma coluna ou uma rota"
+  ],
+  "o_que_NAO_prova": [
+    "que apagar seja o que se deve fazer: nada aqui apaga. A exclusao e a FASE 15 e continuam sem OK",
+    "o efeito de triggers sobre auth.users: este censo le pg_constraint, nao pg_trigger (isso e o ae5f)",
+    "que os dados referenciados sejam dispensaveis: uma linha bloqueante pode ser residuo real de teste e carecer de decisao do dono",
+    "o que as contas de teste representam nos fluxos humanos (pedidos de apoio, supervisao) — o plano nomea linhas, nao contexto",
+    "o valor de negocio de cada linha bloqueante: a listagem da a chave primaria e as referencias, nao diz se a linha ainda serve alguem"
+  ]
+}
