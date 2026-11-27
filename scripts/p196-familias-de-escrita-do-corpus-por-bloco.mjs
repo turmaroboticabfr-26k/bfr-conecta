@@ -7,9 +7,10 @@
 // A regua NAO e reimplementada: `faixasOfensoras` e lida do fonte do produtor (`p169`) e a peça aborta se nao a ler.
 // Nenhum glifo e escrito nesta fonte nem nas capturas: os membros nomeiam-se por codepoint, porque a prosa que
 // reproduz o glifo que denuncia passa a pertencer a familia que o portao proibe.
-// Uso: node scripts/p196-familias-de-escrita-do-corpus-por-bloco.mjs <caminho-do-registro>
-// Env: P196_SUF (rotulo da corrida, obrigatorio) · P196_BASE (raiz do repo, para o controle negativo)
+// Uso: node scripts/p196-familias-de-escrita-do-corpus-por-bloco.mjs <caminho-do-registro> [--faixa 0xLO-0xHI]...
+// Env: P196_SUF (rotulo da corrida, obrigatorio)
 import { readFileSync, writeFileSync, existsSync, statSync, readdirSync } from 'node:fs';
+import { dirname } from 'node:path';
 import { createHash } from 'node:crypto';
 import { execFileSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
@@ -187,6 +188,61 @@ const totalOcc = cpsDeCadaBloco.reduce((s, b) => s + b.ocorrencias, 0);
 const occFora = cpsDeCadaBloco.reduce((s, b) => s + b.nao_cobertas, 0);
 say('AGREGADO blocos=' + cpsDeCadaBloco.length + ' ocorrencias_nao_ascii=' + totalOcc + ' fora_das_faixas_do_produtor=' + occFora + ' blocos_sem_cobertura=' + semCobertura.length + ' blocos_parciais=' + parciais.length);
 
+// A face deixada no ciclo anterior: um bloco sem faixa declarada nao e proibido e nao e provado, pelo que passa as
+// duas varreduras em verde. Proibir por decreto seria um portao verde porque proibe, nao porque mede. A resposta e
+// dar memoria ao censo: o conjunto de blocos desta corrida e confrontado com o do registo mais novo da familia e
+// com a uniao de todos os registos lidos. Membro novo obriga declaracao; zero membros novos e classe legitima e
+// imprime-se na mesma. A familia e lida do diretorio do registo pedido -- nao ha caminho lembrado nesta fonte.
+const rotuloDe = (bloco) => 'U+' + bloco.toString(16).toUpperCase();
+function diffDeConjuntos(baseline, agora) {
+  if (baseline.length === 0) return { nada_houve_para_comparar: true, novos: [], perdidos: [] };
+  const b = new Set(baseline), a = new Set(agora);
+  return {
+    nada_houve_para_comparar: false,
+    novos: [...a].filter((x) => !b.has(x)).sort(),
+    perdidos: [...b].filter((x) => !a.has(x)).sort(),
+  };
+}
+const DIF_FIXOS = [
+  { nome: 'bloco_novo_de_um_script_nunca_medido_e_nomeado', d: diffDeConjuntos(['U+0', 'U+200'], ['U+0', 'U+200', 'U+500']), espera: [1, 0, false] },
+  { nome: 'censos_com_os_mesmos_blocos_nao_tem_o_que_explicar', d: diffDeConjuntos(['U+0', 'U+200'], ['U+200', 'U+0']), espera: [0, 0, false] },
+  { nome: 'bloco_perdido_por_correcao_de_prosa_e_impresso', d: diffDeConjuntos(['U+0', 'U+400'], ['U+0']), espera: [0, 1, false] },
+  { nome: 'primeiro_registo_da_familia_imprime_a_classe_legitima', d: diffDeConjuntos([], ['U+0']), espera: [0, 0, true] },
+];
+const difRuins = DIF_FIXOS.filter((c) => c.d.novos.length !== c.espera[0] || c.d.perdidos.length !== c.espera[1] || c.d.nada_houve_para_comparar !== c.espera[2]);
+say('PROVA_FIXTURE_DIFF casos=' + DIF_FIXOS.length + ' faltas=' + difRuins.length + ' obtido=' + JSON.stringify(DIF_FIXOS.map((c) => c.nome.split(' ')[0] + '=' + c.d.novos.length + '/' + c.d.perdidos.length + '/' + c.d.nada_houve_para_comparar)));
+if (difRuins.length) throw new Error('ABORTA: a comparacao de censos nao tem as quatro classes, faltaram ' + JSON.stringify(difRuins.map((c) => c.nome)));
+
+const caminhoDoRegistro = String(registro).replace(/\\/g, '/');
+const DIR_REGISTRO = dirname(caminhoDoRegistro);
+const RE_FAMILIA = /^p196-familias-de-escrita-do-corpus-.*\.json$/;
+let nomesDoDir;
+try { nomesDoDir = readdirSync(DIR_REGISTRO); } catch (e) { nomesDoDir = null; }
+const lidosDaFamilia = [], rejeitadosDaFamilia = [];
+for (const f of (nomesDoDir || []).filter((x) => RE_FAMILIA.test(x))) {
+  const caminho = DIR_REGISTRO + '/' + f;
+  if (caminho === caminhoDoRegistro) continue;
+  let j;
+  try { j = JSON.parse(readFileSync(caminho, 'utf8')); } catch (e) { rejeitadosDaFamilia.push({ ficheiro: f, causa: 'json ilegivel' }); continue; }
+  if (typeof j.em !== 'string') { rejeitadosDaFamilia.push({ ficheiro: f, causa: 'sem_campo_em' }); continue; }
+  if (!Array.isArray(j.blocos)) { rejeitadosDaFamilia.push({ ficheiro: f, causa: 'sem_lista_de_blocos' }); continue; }
+  lidosDaFamilia.push({ ficheiro: f, em: j.em, blocos: j.blocos.map((b) => b.bloco) });
+}
+lidosDaFamilia.sort((a, b) => (a.em < b.em ? 1 : -1));
+if (lidosDaFamilia.length > 1 && lidosDaFamilia[0].em === lidosDaFamilia[1].em) throw new Error('ABORTA EMPATE: dois registos da familia com o mesmo em=' + lidosDaFamilia[0].em + ' -- sem escolha unica nao ha baseline medido');
+const baseline = lidosDaFamilia.length ? lidosDaFamilia[0] : null;
+const emMax = lidosDaFamilia.length ? lidosDaFamilia.map((x) => x.em).sort().reverse()[0] : null;
+const uniaoDaFamilia = [...new Set(lidosDaFamilia.reduce((acc, x) => acc.concat(x.blocos), []))].sort();
+const rotulosAgora = cpsDeCadaBloco.map((b) => rotuloDe(b.bloco));
+const vsMaisNovo = diffDeConjuntos(baseline ? baseline.blocos : [], rotulosAgora);
+const vsUniao = diffDeConjuntos(uniaoDaFamilia, rotulosAgora);
+say('FAMILIA dir=' + DIR_REGISTRO + ' lidos=' + lidosDaFamilia.length + ' rejeitados=' + JSON.stringify(rejeitadosDaFamilia) + ' uniao_de_blocos=' + uniaoDaFamilia.length + ' inacessivel=' + (nomesDoDir === null));
+say('BASELINE mais_novo=' + (baseline ? baseline.ficheiro + ' em=' + baseline.em : 'nenhum_registo_na_familia') + ' blocos=' + (baseline ? baseline.blocos.length : 0) + ' em_max=' + emMax);
+say('BLOCOS_NOVOS_VS_MAIS_NOVO ' + JSON.stringify(vsMaisNovo.novos) + ' nada_houve_para_comparar=' + vsMaisNovo.nada_houve_para_comparar);
+say('BLOCOS_PERDIDOS_VS_MAIS_NOVO ' + JSON.stringify(vsMaisNovo.perdidos));
+say('BLOCOS_NOVOS_VS_UNIAO_DA_FAMILIA ' + JSON.stringify(vsUniao.novos));
+say('BLOCOS_FORA_DA_CORRIDA_ATUAL_VS_UNIAO ' + JSON.stringify(vsUniao.perdidos));
+
 // O ramo do produtor que nao tem positiva no corpus e uma faixa declarada sem medida atras: imprime-se, nao se cala.
 const faixasMortas = faixas.map((f) => ({ faixa: 'U+' + f[0].toString(16).toUpperCase() + '-' + f[1].toString(16).toUpperCase(), ocorrencias: cpsDeCadaBloco.filter((b) => b.codepoints.some((c) => c >= f[0] && c <= f[1])).reduce((s, b) => s + b.ocorrencias, 0) }));
 say('FAIXAS_DECLARADAS ' + JSON.stringify(faixasMortas));
@@ -208,6 +264,14 @@ const g = {
   // se imprimir -- a classe legitima em que nada houve para explicar nao pode ser proibida pelo instrumento.
   C6_cada_faixa_interrogada_imprime_uma_linha_por_ocorrencia: { ok: faixasInterrogadas.length === 0 || interrogatorio.every((q) => q.truncado === true || q.membros.length === q.ocorrencias), obtido: interrogatorio.map((q) => q.faixa + '=' + q.membros.length + '/' + q.ocorrencias + (q.truncado ? ' truncado' : '')) },
   C7_a_interrogacao_imprime_mesmo_sem_nada_para_explicar: { ok: faixasInterrogadas.length === 0 || interrogatorio.every((q) => typeof q.ocorrencias === 'number' && q.ocorrencias >= 0), obtido: interrogatorio.map((q) => q.faixa + ' nada_houve_para_explicar=' + (q.ocorrencias === 0)) },
+  // O baseline tem de ser escolhido pelo `em` lido dos ficheiros, nunca por um nome ou data lembrados por mim.
+  C8_o_baseline_e_o_em_mais_recento_lido_dos_ficheiros: { ok: lidosDaFamilia.length === 0 || baseline.em === emMax, obtido: [lidosDaFamilia.length, baseline ? baseline.em : null, emMax] },
+  C9_a_comparacao_de_censos_tem_positivo_nas_quatro_classes: { ok: difRuins.length === 0, obtido: DIF_FIXOS.map((c) => c.nome.split(' ')[0] + '=' + c.espera.join('/')) },
+  C10_os_quatro_eixos_da_comparacao_imprimem_se_mesmo_vazios: { ok: ['BLOCOS_NOVOS_VS_MAIS_NOVO ', 'BLOCOS_PERDIDOS_VS_MAIS_NOVO ', 'BLOCOS_NOVOS_VS_UNIAO_DA_FAMILIA ', 'BLOCOS_FORA_DA_CORRIDA_ATUAL_VS_UNIAO '].every((p) => saidaCapt.some((s) => s.startsWith(p))), obtido: ['BLOCOS_NOVOS_VS_MAIS_NOVO ', 'BLOCOS_PERDIDOS_VS_MAIS_NOVO ', 'BLOCOS_NOVOS_VS_UNIAO_DA_FAMILIA ', 'BLOCOS_FORA_DA_CORRIDA_ATUAL_VS_UNIAO '].map((p) => p.trim() + '=' + saidaCapt.filter((s) => s.startsWith(p)).length) },
+  // C11 julga o censo IMEDIATAMENTE anterior, nao a uniao da familia. A razao medida e o proprio cirilico: a uniao
+  // lembra o bloco que a corregao de prosa apagou, pelo que uma reinjeccao seria verde contra a uniao e vermelha
+  // contra o mais novo. A uniao fica impressa como eixo de informacao -- diz o que ja houve e ja nao esta.
+  C11_bloco_novo_face_ao_censo_anterior_obriga_a_declaracao: { ok: vsMaisNovo.novos.length === 0, obtido: { novos_vs_mais_novo: vsMaisNovo.novos, novos_vs_uniao: vsUniao.novos, fora_da_corrida_atual_vs_uniao: vsUniao.perdidos, nada_houve_para_comparar: vsMaisNovo.nada_houve_para_comparar } },
 };
 Object.keys(g).forEach((k) => say('portao_' + k + '=' + (g[k].ok ? 'OK' : 'VERMELHO') + ' obtido=' + JSON.stringify(g[k].obtido)));
 const vermelhos = Object.keys(g).filter((k) => !g[k].ok);
@@ -220,10 +284,21 @@ const corpo = {
   total_ocorrencias_nao_ascii: totalOcc, ocorrencias_fora_das_faixas: occFora,
   blocos: cpsDeCadaBloco.map((b) => ({ bloco: 'U+' + b.bloco.toString(16).toUpperCase(), ocorrencias: b.ocorrencias, ficheiros: b.ficheiros, codepoints_distintos: b.codepoints.length, cobertas: b.cobertas, fora: b.nao_cobertas, cobertura: b.cobertura })),
   faixas_declaradas_com_ocorrencias: faixasMortas,
+  familia: {
+    diretorio: DIR_REGISTRO, inacessivel: nomesDoDir === null,
+    lidos: lidosDaFamilia.map((x) => ({ ficheiro: x.ficheiro, em: x.em, blocos: x.blocos.length })),
+    rejeitados: rejeitadosDaFamilia, uniao_de_blocos: uniaoDaFamilia,
+  },
+  baseline: baseline ? { ficheiro: baseline.ficheiro, em: baseline.em, blocos: baseline.blocos } : null,
+  blocos_novos_vs_mais_novo: vsMaisNovo.novos,
+  blocos_perdidos_vs_mais_novo: vsMaisNovo.perdidos,
+  blocos_novos_vs_uniao_da_familia: vsUniao.novos,
+  blocos_fora_da_corrida_atual_vs_uniao: vsUniao.perdidos,
+  comparacao_por_fixture: DIF_FIXOS.map((c) => ({ nome: c.nome, esperados: c.espera, obtidos: [c.d.novos.length, c.d.perdidos.length, c.d.nada_houve_para_comparar] })),
   faixas_interrogadas: interrogatorio.map((q) => ({ faixa: q.faixa, ocorrencias: q.ocorrencias, ficheiros: q.ficheiros, truncado: q.truncado, membros: q.membros.map((m) => ({ cp: 'U+' + m.cp.toString(16).toUpperCase(), ficheiro: m.ficheiro.replace(REPOReal + '/', ''), linha: m.linha, coluna: m.coluna })) })),
   portoes: Object.keys(g).map((k) => ({ nome: k, ok: g[k].ok, obtido: g[k].obtido })),
-  o_que_prova: 'quantas ocorrencias de cada bloco de 0x100 existem no corpus de escrita propria e quantas caem dentro duma faixa ja declarada pelo produtor',
-  o_que_NAO_prova: 'que um bloco sem ocorrencias seja illegitimo -- so prova que nao ha uso registrado; nem que a faixa do produtor seja a unica via de higiene',
+  o_que_prova: 'quantas ocorrencias de cada bloco de 0x100 existem no corpus de escrita propia, quantas caem dentro duma faixa ja declarada pelo produtor, e que conjunto de blocos desta corrida e novo face ao registo mais novo da familia e face a uniao de todos os registos lidos',
+  o_que_NAO_prova: 'que um bloco sem ocorrencias seja illegitimo -- so prova que nao ha uso registrado; nem que a faixa do produtor seja a unica via de higiene; nem que um membro novo seja um defeito -- obriga a declaracao, nao a reversao. O positivo de C11 no corpus de hoje e o das fixuras de C9, que chamam a mesma funcao de diff: sem registo anterior na familia C11 corre a classe legitima nada_houve_para_comparar e nao um verde por cegueira.',
 };
 writeFileSync(registro, JSON.stringify(corpo, null, 1) + '\n', 'utf8');
 say('registro_em=' + registro + ' bytes=' + statSync(registro).size);
