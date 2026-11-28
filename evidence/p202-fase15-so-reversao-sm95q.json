@@ -1,0 +1,237 @@
+{
+  "peca": "scripts/p202-fase15-remocao-das-contas-de-teste.mjs",
+  "emissor": {
+    "bytes": 69977,
+    "md5": "672e81cc93e7074156619f3cf163f384"
+  },
+  "em": "2026-11-28T02:41:48.812Z",
+  "modo": "so-reversao",
+  "escreveu_no_banco": false,
+  "entrada": {
+    "censo": "evidence/p201-fks-por-conta-de-teste-sm93d.json",
+    "backup": "C:/Users/pcmac/Documents/Qoder/2026-11-15/2e9c4296/fase15f/fase15-backup-sm95f.json",
+    "backup_bytes": 27033,
+    "backup_md5": "b096a20eaff0f701a74f70969e8fd2c9",
+    "backup_md5_do_objeto": "b096a20eaff0f701a74f70969e8fd2c9"
+  },
+  "saida": {
+    "reversao": "C:/Users/pcmac/Documents/Qoder/2026-11-15/2e9c4296/fase15f/fase15-reversao-sm95q-corrigida.sql",
+    "reversao_bytes": 12918
+  },
+  "chaves_primarias_medidas": {
+    "bfr_municipal_access_grants": [
+      "id"
+    ],
+    "bfr_teacher_directory": [
+      "id"
+    ],
+    "internal_chat_presence": [
+      "profile_id"
+    ],
+    "profiles": [
+      "id"
+    ],
+    "staff_schools": [
+      "id"
+    ]
+  },
+  "estado_vivo_fora_do_modo": {
+    "contas_no_banco": 9,
+    "contas_de_teste": 0,
+    "porque": "os portoes de estado comparam o banco com o censo do dia da captura; as contas ja foram apagadas nesta serie, por isso a familia estado sai FORA_DO_MODO e nao como OK emprestado"
+  },
+  "medida": {
+    "insercoes": 33,
+    "updates": 1,
+    "chaves_repetidas": [],
+    "chaves_de_insert": [
+      "profiles#'04d52df9-4491-480f-bdbb-aab69b738a34'",
+      "profiles#'101e9ade-c1e9-42bd-b487-fc5d78e54eb7'",
+      "profiles#'13f597b2-1f49-4336-8dfa-d85dc7c1bd97'",
+      "profiles#'1f5297d4-77e1-4089-9bb2-3ca1cb997317'",
+      "profiles#'2ea60576-03fb-45a0-8723-e6d814e62826'",
+      "profiles#'3d2329ed-d72d-411c-bb5f-a1ed706d6570'",
+      "profiles#'422d584b-b758-4400-83a3-7dcf14c79a33'",
+      "profiles#'49753880-f7fc-4f0a-bbbb-c3883c37a29d'",
+      "profiles#'6083a77c-bedc-4ff9-b75b-f08ff0d33fe1'",
+      "profiles#'68075dee-13f4-4d8c-b74f-eceb14ce18d7'",
+      "profiles#'6936a45a-89ca-4917-b4a9-e7d47209aeae'",
+      "profiles#'7ff919cb-88f3-4109-b933-1d0a71bb8fce'",
+      "profiles#'839e1f87-c596-4355-9f89-2ed97711349f'",
+      "profiles#'86923196-28c9-4d13-8311-dc6ed6438fe5'",
+      "profiles#'86e31850-eefb-4539-93e1-192ceceb6d12'",
+      "profiles#'9cd0f42e-7676-48c3-8f0a-c43f2896e20d'",
+      "profiles#'b5be4883-f076-4706-b40c-6ab1e720baa7'",
+      "profiles#'c87d5c95-ff78-4188-b941-daa250d3426e'",
+      "profiles#'d7d45999-c21f-4322-8f94-46c6564ff728'",
+      "bfr_municipal_access_grants#'988ffed7-5206-4100-9756-7d0c9bf46bd1'",
+      "bfr_municipal_access_grants#'a206f198-6b79-4eca-b54e-8bba7ef8a731'",
+      "bfr_municipal_access_grants#'cf6fac96-8464-4d71-9991-f2ba10f7e565'",
+      "bfr_municipal_access_grants#'d3439a15-71d2-4c66-af9b-fc6fa13abc09'",
+      "bfr_municipal_access_grants#'ebf0287d-3e0b-4964-8f2a-1d5553311749'",
+      "internal_chat_presence#'1f5297d4-77e1-4089-9bb2-3ca1cb997317'",
+      "internal_chat_presence#'49753880-f7fc-4f0a-bbbb-c3883c37a29d'",
+      "internal_chat_presence#'839e1f87-c596-4355-9f89-2ed97711349f'",
+      "internal_chat_presence#'9cd0f42e-7676-48c3-8f0a-c43f2896e20d'",
+      "internal_chat_presence#'b5be4883-f076-4706-b40c-6ab1e720baa7'",
+      "staff_schools#'2fa3f500-9ac2-4726-a592-f9430fdca653'",
+      "staff_schools#'581c4ae9-1b20-4dd3-8b78-1cef5193052a'",
+      "staff_schools#'72955b7e-894c-4efd-9d78-996beeee0a92'",
+      "staff_schools#'d87d2761-2b98-4bab-9295-0f5fd887d26b'"
+    ],
+    "semChaveLida": [],
+    "tabelas_no_ficheiro": [
+      "bfr_municipal_access_grants",
+      "bfr_teacher_directory",
+      "internal_chat_presence",
+      "profiles",
+      "staff_schools"
+    ],
+    "tabelas_de_insert": [
+      "bfr_municipal_access_grants",
+      "internal_chat_presence",
+      "profiles",
+      "staff_schools"
+    ],
+    "updates_por_vinculo": [
+      "bfr_teacher_directory.profile_id=1"
+    ],
+    "bytes": 12918,
+    "chaves_sem_chave_lida": 0,
+    "insercoes_esperadas": 33,
+    "updates_esperados": 1,
+    "set_null_sem_update": [],
+    "insert_em_linha_que_sobrevive": [],
+    "linhas_alcancadas_por_apagar_e_anular": 0,
+    "caminho_citado": "C:/Users/pcmac/Documents/Qoder/2026-11-15/2e9c4296/fase15f/fase15-backup-sm95f.json",
+    "citada_nao_resolve": [],
+    "citada_e_o_backup_medido": true,
+    "backup_caminho": "C:/Users/pcmac/Documents/Qoder/2026-11-15/2e9c4296/fase15f/fase15-backup-sm95f.json"
+  },
+  "esperanca": {
+    "insercoes_esperadas": 33,
+    "updates_esperados": 1,
+    "anularSo": [
+      "bfr_teacher_directory#'681e6abc-4457-48b1-9c1e-70868b8b55d6'"
+    ],
+    "nomesSetNull": [
+      "bfr_teacher_directory.profile_id"
+    ]
+  },
+  "tabelas_sem_reversao": [],
+  "vinculo_sem_backup": [],
+  "vinculo_com_contagem_diferente": [],
+  "portoes": [
+    {
+      "nome": "o_censo_declarasomente_leitura_e_estado_medido",
+      "veredicto": "FORA_DO_MODO",
+      "esperado": "somente leitura + MEDIDO",
+      "familia": "estado"
+    },
+    {
+      "nome": "a_classe_de_conta_de_teste_e_lida_do_produtor",
+      "veredicto": "FORA_DO_MODO",
+      "esperado": "agulha presente no produtor e declarada no censo",
+      "familia": "estado"
+    },
+    {
+      "nome": "o_universo_do_banco_bate_com_o_censo",
+      "veredicto": "FORA_DO_MODO",
+      "esperado": "banco == censo",
+      "familia": "estado"
+    },
+    {
+      "nome": "as_duas_rotas_de_contagem_batem",
+      "veredicto": "FORA_DO_MODO",
+      "esperado": "sql == admin, 0 so de uma rota (contagem do campo, numero ou array)",
+      "familia": "estado"
+    },
+    {
+      "nome": "nenhuma_conta_real_entra_no_conjunto",
+      "veredicto": "FORA_DO_MODO",
+      "esperado": "0 alvos fora da classe",
+      "familia": "estado"
+    },
+    {
+      "nome": "a_ponte_profiles_nao_deixa_conta_sem_perfil",
+      "veredicto": "FORA_DO_MODO",
+      "esperado": "0 sem perfil, perfis == alvos",
+      "familia": "estado"
+    },
+    {
+      "nome": "as_linhas_bloqueantes_estao_no_sitio_do_censo",
+      "veredicto": "FORA_DO_MODO",
+      "esperado": "contadas e todas apontando para alvos",
+      "familia": "estado"
+    },
+    {
+      "nome": "a_ordem_nao_deixa_nada_para_escrita_manual",
+      "veredicto": "FORA_DO_MODO",
+      "esperado": "0 manuais (numero ou array), resolvidos == linhas",
+      "familia": "estado"
+    },
+    {
+      "nome": "o_backup_escre_fora_do_repo_e_confere",
+      "veredicto": "OK",
+      "esperado": "fora do repo, nao vazio, md5 relido",
+      "familia": "backup"
+    },
+    {
+      "nome": "o_backup_cobre_as_linhas_de_cada_vinculo",
+      "veredicto": "OK",
+      "esperado": "cada vinculo com linhas de teste tem backup com a mesma contagem",
+      "familia": "backup"
+    },
+    {
+      "nome": "a_reversao_nomeia_cada_tabela_em_causa",
+      "veredicto": "OK",
+      "esperado": "ficheiro de reversao cobre todas as tabelas",
+      "familia": "reversao"
+    },
+    {
+      "nome": "a_reversao_repoe_cada_linha_uma_soa_vez",
+      "veredicto": "OK",
+      "esperado": "lido no texto: 0 chaves repetidas e inserts == linhas unicas do backup",
+      "familia": "reversao"
+    },
+    {
+      "nome": "a_reversao_repone_os_vinculos_que_sobrevivem_por_update",
+      "veredicto": "OK",
+      "esperado": "updates == linhas set null do censo, cada vinculo desses reposto por update, 0 insert dessas linhas",
+      "familia": "reversao"
+    },
+    {
+      "nome": "a_reversao_cita_o_backup_que_existe",
+      "veredicto": "OK",
+      "esperado": "o cabecalho do .sql tem uma citacao lida do texto escrito",
+      "familia": "reversao"
+    },
+    {
+      "nome": "a_citacao_do_backup_resolve_em_disco",
+      "veredicto": "OK",
+      "esperado": "o caminho citado existe em disco",
+      "familia": "reversao"
+    },
+    {
+      "nome": "a_citacao_do_backup_e_a_que_esta_corrida_leu",
+      "veredicto": "OK",
+      "esperado": "o caminho citado e o mesmo ficheiro de backup que esta corrida leu",
+      "familia": "reversao"
+    },
+    {
+      "nome": "pos_apagar_nada_resta_das_contas_de_teste",
+      "veredicto": "FORA_DO_MODO",
+      "esperado": "0 contas, 0 vinculos, 0 linhas da ordem",
+      "familia": "pos"
+    },
+    {
+      "nome": "pos_apagar_as_contas_reais_estao_intactas",
+      "veredicto": "FORA_DO_MODO",
+      "esperado": "conjunto de reais identico",
+      "familia": "pos"
+    }
+  ],
+  "falhas": [],
+  "o_que_prova": "que o ficheiro de reversao agora escrito tem uma frase por (tabela, chave primaria) para as linhas que sumiram, que as linhas de vinculo set null sao repostas por UPDATE com o valor original lido do backup, e que o backup do dia continua a cobrir cada vinculo com a contagem do censo. Lido do disco, nao do laco. A outra face: o caminho do backup citado no cabecalho do .sql e lido do TEXTO escrito, resolvido em disco, e confrontado com o ficheiro que esta corrida efetivamente leu - tres portoes, um por eixo.",
+  "o_que_NAO_prova": "que a reposicao funcione contra um banco de verdade - isto e texto gerado e relido, nao um replay executado; que as contas de auth.users voltem (a palavra-passe nunca esteve no backup, e profiles.id tem FK em cascade para auth.users, logo as contas recriam-se pela API ANTES do primeiro insert do ficheiro); que o produto funcione depois de repôr."
+}
